@@ -1,0 +1,648 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T03:15:55.044Z",
+  "finishedAt": "2026-10-25T03:26:53.233Z",
+  "seconds": 658,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh101.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Real Numbers",
+    "edition": "Reprint 2026-27",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n20. Assertion(A): (2 + √3)√3 is an irrational number. 1\nReason(R): Product of two irrational numbers is always irrational.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n11. A) Irrational and distinct",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n26. Prove that √3 is an irrational number.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n11. The roots of the quadratic equation 𝑥 +x-1 = 0 are 2 1\nA) Irrational and distinct\nC ) rational and distinct"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 194096,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 25305,
+      "completionTokens": 7444
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 489540,
+      "in": 32,
+      "out": 26,
+      "rejects": 6,
+      "promptTokens": 21200,
+      "completionTokens": 8037
+    },
+    "solver": {
+      "calls": 232,
+      "ms": 251176,
+      "in": 26,
+      "out": 22,
+      "rejects": 4,
+      "promptTokens": 56726,
+      "completionTokens": 2907
+    },
+    "form": {
+      "calls": 10,
+      "ms": 50183,
+      "in": 22,
+      "out": 8,
+      "rejects": 14,
+      "promptTokens": 2717,
+      "completionTokens": 797
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 6573,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 486336,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 17740,
+      "completionTokens": 9185
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 3,
+    "4": 1,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which theorem states that every composite number can be expressed as a product of primes in a unique way?",
+      "ms": {
+        "draft": 5505,
+        "critique": 8930
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the Fundamental Theorem of Arithmetic guarantee about the prime factorisation of a composite number?",
+      "ms": {
+        "draft": 5505,
+        "critique": 10037,
+        "solver": 23603,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main purpose of the Fundamental Theorem of Arithmetic as discussed in the passage?",
+      "ms": {
+        "draft": 5505,
+        "critique": 13825,
+        "solver": 17745,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is not a correct application of the Fundamental Theorem of Arithmetic?",
+      "ms": {
+        "draft": 5505,
+        "critique": 9650,
+        "solver": 27722,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the product of HCF and LCM of two numbers?",
+      "ms": {
+        "draft": 4923,
+        "critique": 9868,
+        "solver": 2574,
+        "form": 5290
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of an irrational number?",
+      "ms": {
+        "draft": 4923,
+        "critique": 9803,
+        "solver": 3736,
+        "form": 8552
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements about the product of two irrational numbers is true?",
+      "ms": {
+        "draft": 4923,
+        "critique": 11066,
+        "solver": 26682,
+        "form": 4467
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following statements is true about the number 3?",
+      "ms": {
+        "draft": 5992,
+        "critique": 13721
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct example of an irrational number?",
+      "ms": {
+        "draft": 5992,
+        "critique": 9880
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the sum of a rational and an irrational number?",
+      "ms": {
+        "draft": 5992,
+        "critique": 9056,
+        "solver": 2134,
+        "form": 5159
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the product of two irrational numbers is rational, which of the following must be true?",
+      "ms": {
+        "draft": 5992,
+        "critique": 10605,
+        "solver": 1234
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is stated in the passage as a property of irrational numbers?",
+      "ms": {
+        "draft": 5595,
+        "critique": 8175,
+        "solver": 23045,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is an example of an irrational number?",
+      "ms": {
+        "draft": 5595,
+        "critique": 8621,
+        "solver": 24083,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a and b are coprime integers such that 5 - √3 = a/b, which of the following would be the result of rearranging the equation?",
+      "ms": {
+        "draft": 5595,
+        "critique": 8622,
+        "solver": 21318,
+        "form": 5850
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a and b are coprime integers and 2 + √5 = a/b, which of the following is the correct conclusion?",
+      "ms": {
+        "draft": 5595,
+        "critique": 12937
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the result of multiplying a non-zero rational number by an irrational number?",
+      "ms": {
+        "draft": 5595,
+        "critique": 10891
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of a rational number and an irrational number is rational, what is the most likely conclusion?",
+      "ms": {
+        "draft": 5595,
+        "critique": 12667,
+        "solver": 1971
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which theorem guarantees that the prime factorisation of any positive integer is unique?",
+      "ms": {
+        "draft": 8409,
+        "critique": 9660
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the HCF and LCM of two positive integers, as stated in the passage?",
+      "ms": {
+        "draft": 8409,
+        "critique": 11296,
+        "solver": 25619,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Example 3, what is the LCM of 96 and 404, given that their HCF is 4?",
+      "ms": {
+        "draft": 8409,
+        "critique": 9711,
+        "solver": 30511,
+        "form": 5374
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the HCF of 306 and 657 is 9, what is the LCM of these two numbers?",
+      "ms": {
+        "draft": 8409,
+        "critique": 14015,
+        "solver": 25725
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the Fundamental Theorem of Arithmetic?",
+      "ms": {
+        "draft": 6654,
+        "critique": 13646,
+        "solver": 3350,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Prove that √3 is irrational using the method described in the passage. Which step in the proof shows that 3 divides a?",
+      "ms": {
+        "draft": 8409,
+        "critique": 11334,
+        "solver": 24909,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Assertion(A): √3 is an irrational number. Reason(R): The square root of any prime number is irrational. Which of the following is correct?",
+      "ms": {
+        "draft": 6654,
+        "critique": 11044,
+        "solver": 1095
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the product of two irrational numbers?",
+      "ms": {
+        "draft": 5992,
+        "critique": 8662,
+        "solver": 1405,
+        "form": 2914
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the fundamental theorem of arithmetic used for?",
+      "ms": {
+        "draft": 4923,
+        "critique": 11982,
+        "solver": 3291,
+        "form": 4511,
+        "translation": 80848
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a composite number is factorised into primes, what can be said about the order of the prime factors?",
+      "ms": {
+        "draft": 5505,
+        "critique": 9783,
+        "solver": 26760,
+        "form": 0,
+        "translation": 66374
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the HCF of 96 and 404 is 4, what is their LCM?",
+      "ms": {
+        "draft": 4923,
+        "critique": 11330,
+        "solver": 31716,
+        "form": 7520,
+        "translation": 55931
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is the product of a non-zero rational number and an irrational number, what is the nature of the result?",
+      "ms": {
+        "draft": 5992,
+        "critique": 8527,
+        "solver": 3076,
+        "form": 5704,
+        "translation": 69328
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the Fundamental Theorem of Arithmetic state about the factorisation of a composite number?",
+      "ms": {
+        "draft": 6654,
+        "critique": 12649,
+        "solver": 1920,
+        "form": 0,
+        "translation": 47436
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What does the Fundamental Theorem of Arithmetic imply about the uniqueness of prime factorisations?",
+      "ms": {
+        "draft": 5505,
+        "critique": 10630,
+        "solver": 26907,
+        "form": 0,
+        "translation": 91817
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a number ends with the digit zero, what can be said about its prime factors?",
+      "ms": {
+        "draft": 4923,
+        "critique": 13257,
+        "solver": 2826,
+        "form": 0,
+        "translation": 66251
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which theorem states that every composite number can be expressed as a product of primes in a unique way?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the Fundamental Theorem of Arithmetic guarantee about the prime factorisation of a composite number?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main purpose of the Fundamental Theorem of Arithmetic as discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is not a correct application of the Fundamental Theorem of Arithmetic?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about the product of HCF and LCM of two numbers?",
+      "reason": "options 0 and 1 say the same thing (\"It is equal to the sum of the two numbers\" / \"It is equal to the difference of the two numbers\"); options 0 and 2 say the same thing (\"It is equal to the sum of the two numbers\" / \"It is equal to the product of the two numbers\"); options 0 and 3 say the same thing (\"It is equal to the sum of the two numbers\" / \"It is equal to the quotient of the two numbers\"); options 1 and 2 say the same thing (\"It is equal to the difference of the two numbers\" / \"It is equal to the product of the two numbers\"); options 1 and 3 say the same thing (\"It is equal to the difference of the two numbers\" / \"It is equal to the quotient of the two numbers\"); options 2 and 3 say the same thing (\"It is equal to the product of the two numbers\" / \"It is equal to the quotient of the two numbers\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of an irrational number?",
+      "reason": "options are in more than one unit (none, ...); options are written to different precisions (1 and 2 and 3 and 9 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements about the product of two irrational numbers is true?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following statements is true about the number 3?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a correct example of an irrational number?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the sum of a rational and an irrational number?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Believes that the sum of a rational and an irrational number…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the product of two irrational numbers is rational, which of the following must be true?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is stated in the passage as a property of irrational numbers?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"Confuses a general rule with a specific one mentioned in the…\"); distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's statement about the product of a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is an example of an irrational number?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a and b are coprime integers such that 5 - √3 = a/b, which of the following would be the result of rearranging the equation?",
+      "reason": "options 1 and 2 say the same thing (\"√3 = 5 - a/b\" / \"√3 = a/b - 5\"); option 1 repeats the stem's wording (\"√3 = 5 - a/b\"); option 2 repeats the stem's wording (\"√3 = a/b - 5\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a and b are coprime integers and 2 + √5 = a/b, which of the following is the correct conclusion?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what is the result of multiplying a non-zero rational number by an irrational number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the sum of a rational number and an irrational number is rational, what is the most likely conclusion?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which theorem guarantees that the prime factorisation of any positive integer is unique?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the relationship between the HCF and LCM of two positive integers, as stated in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 are the same (\"HCF + LCM = product of the numbers\"); options 1 and 3 are the same (\"HCF × LCM = sum of the numbers\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In Example 3, what is the LCM of 96 and 404, given that their HCF is 4?",
+      "reason": "options 1 and 2 are the same (\"404\"); options 1 and 2 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the HCF of 306 and 657 is 9, what is the LCM of these two numbers?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the Fundamental Theorem of Arithmetic?",
+      "reason": "options 0 and 1 say the same thing (\"Every integer can be expressed as a product of primes in only one way\" / \"Every composite number can be expressed as a product of primes in only one way\"); options 0 and 2 say the same thing (\"Every integer can be expressed as a product of primes in only one way\" / \"Every natural number can be expressed as a product of primes in only one way\"); options 0 and 3 say the same thing (\"Every integer can be expressed as a product of primes in only one way\" / \"Every rational number can be expressed as a product of primes in only one way\"); options 1 and 2 say the same thing (\"Every composite number can be expressed as a product of primes in only one way\" / \"Every natural number can be expressed as a product of primes in only one way\"); options 1 and 3 say the same thing (\"Every composite number can be expressed as a product of primes in only one way\" / \"Every rational number can be expressed as a product of primes in only one way\"); options 2 and 3 say the same thing (\"Every natural number can be expressed as a product of primes in only one way\" / \"Every rational number can be expressed as a product of primes in only one way\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Prove that √3 is irrational using the method described in the passage. Which step in the proof shows that 3 divides a?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Assertion(A): √3 is an irrational number. Reason(R): The square root of any prime number is irrational. Which of the following is correct?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the product of two irrational numbers?",
+      "reason": "near-duplicate of served question cmvjsbm1y0hpygpfhw5wwznv3 (cosine 0.908 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

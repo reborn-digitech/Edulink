@@ -1,0 +1,296 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T19:56:10.675Z",
+  "finishedAt": "2026-10-25T19:58:28.357Z",
+  "seconds": 138,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm115.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 15 — Data Through Pictures",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n35. The median of the following data is 50. Find the values of ‘p’ and ‘q’, if the sum of all frequencies is 5\n90. Also find the mode of the data.\nMarks obtained\n30 – 40\n40 – 50\n50 – 60\n60 – 70\n70 – 80\n80 - 90\nNumber of students\np\nq",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n25. Calculate mode of the following distribution:\nClass 5-10 10-15 15-20\nFrequency 5 6 15\n20-25 25-30 30-35\n10 5 4"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 47215,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 8692,
+      "completionTokens": 2828
+    },
+    "critique": {
+      "calls": 11,
+      "ms": 71048,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 5138,
+      "completionTokens": 1926
+    },
+    "solver": {
+      "calls": 48,
+      "ms": 24969,
+      "in": 8,
+      "out": 3,
+      "rejects": 5,
+      "promptTokens": 7607,
+      "completionTokens": 453
+    },
+    "form": {
+      "calls": 4,
+      "ms": 14799,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 2805,
+      "completionTokens": 412
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 4720,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 85532,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5482,
+      "completionTokens": 3042
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "The number of children who watch TV for more than two hours is ________.",
+      "ms": {
+        "draft": 3600,
+        "critique": 6375,
+        "solver": 1411
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many children watch TV for more than half an hour?",
+      "ms": {
+        "draft": 3600,
+        "critique": 8124
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many children watch TV for less than two hours?",
+      "ms": {
+        "draft": 3600,
+        "critique": 6769,
+        "solver": 1910
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "More children watch TV for two hours than half an hour. (True/False)",
+      "ms": {
+        "draft": 3600,
+        "critique": 2971,
+        "solver": 668
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the pictograph, which day had the most two-wheelers passing Deepti's house?",
+      "ms": {
+        "draft": 4269,
+        "critique": 7011,
+        "solver": 2405
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the scale is changed to 1 icon representing 10 items, how many icons would represent the total number of play items in Joseph Uncle's shop?",
+      "ms": {
+        "draft": 4269,
+        "critique": 6912
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 5 toys are represented by one icon, how many icons would represent 35 toys?",
+      "ms": {
+        "draft": 4269,
+        "critique": 6123,
+        "solver": 17299
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the same scale is used, how many icons would represent 45 board games?",
+      "ms": {
+        "draft": 4269,
+        "critique": 7558,
+        "solver": 1396,
+        "form": 3468
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a pictograph?",
+      "ms": {
+        "draft": 4269,
+        "critique": 6792,
+        "solver": 1569,
+        "form": 5002,
+        "translation": 41636
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using a scale in a pictograph?",
+      "ms": {
+        "draft": 4269,
+        "critique": 6183,
+        "solver": 1074,
+        "form": 1378,
+        "translation": 40122
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How many toys does Joseph Uncle have?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How many board games does Joseph Uncle have?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "The number of children who watch TV for more than two hours is ________.",
+      "reason": "the solver picked option 2 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How many children watch TV for more than half an hour?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many children watch TV for less than two hours?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "More children watch TV for two hours than half an hour. (True/False)",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the pictograph, which day had the most two-wheelers passing Deepti's house?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the scale is changed to 1 icon representing 10 items, how many icons would represent the total number of play items in Joseph Uncle's shop?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 5 toys are represented by one icon, how many icons would represent 35 toys?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the same scale is used, how many icons would represent 45 board games?",
+      "reason": "figure: figure spec refused: spec.yLabel: label key: letters, digits, _ and ', or a number"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-23T02:50:51.043Z",
+  "generatedAt": "2026-10-28T07:44:06.998Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the term used for the non-negative real number sqrt(a^2 + b^2) for a complex number a + ib?",
+      "stem": "What is the standard form of a complex number?",
       "choices": [
-        "Modulus",
-        "Conjugate",
-        "Imaginary part",
-        "Real part"
+        "a + ib",
+        "a - ib",
+        "a + b",
+        "a - b"
       ],
       "answerIndex": 0,
-      "solution": "The modulus of a complex number is the non-negative real number calculated as sqrt(a^2 + b^2). This represents the distance of the complex number from the origin in the complex plane. The conjugate is a - ib, the imaginary part is the coefficient b, and the real part is the coefficient a.",
+      "solution": "The standard form of a complex number is a + ib, where 'a' is the real part and 'b' is the imaginary part. The other options are not the standard form of a complex number.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक सम्मिश्र संख्या a + ib के लिए sqrt(a^2 + b^2) के रूप में गणना किए गए गैर-ऋणात्मक वास्तविक संख्या के लिए क्या शब्द प्रयोग किया जाता है?",
+          "stem": "एक सम्मिश्र संख्या का मानक रूप क्या है?",
           "choices": [
-            "मापांक",
-            "संयुग्मी",
-            "काल्पनिक भाग",
-            "वास्तविक भाग"
+            "a + ib",
+            "a - ib",
+            "a + b",
+            "a - b"
           ],
-          "solution": "एक सम्मिश्र संख्या का मापांक गैर-ऋणात्मक वास्तविक संख्या होती है जिसे sqrt(a^2 + b^2) के रूप में गणना की जाती है। यह सम्मिश्र संख्या के मूल बिंदु से दूरी का प्रतिनिधित्व करती है। संयुग्मी a - ib होता है, काल्पनिक भाग गुणांक b होता है और वास्तविक भाग गुणांक a होता है।",
+          "solution": "एक सम्मिश्र संख्या का मानक रूप a + ib होता है, जहां 'a' वास्तविक भाग है और 'b' काल्पनिक भाग है। अन्य विकल्प सम्मिश्र संख्या के मानक रूप नहीं हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used for mathematical concepts.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "a + ib संमिश्र संख्येसाठी sqrt(a^2 + b^2) असे नाव काय दिले जाते?",
+          "stem": "एका संकीर्ण संख्येची मानक रूपे काय आहे?",
           "choices": [
-            "मॉड्युलस",
-            "संयुग्म",
-            "काल्पनिक भाग",
-            "वास्तविक भाग"
+            "a + ib",
+            "a - ib",
+            "a + b",
+            "a - b"
           ],
-          "solution": "संमिश्र संख्येचा मॉड्युलस हा sqrt(a^2 + b^2) असा गणित केलेला असतो. हा संमिश्र संख्येचा मूलबिंदूपासून अंतर दर्शवतो. संयुग्म हा a - ib असतो, काल्पनिक भाग हा गुणक b असतो आणि वास्तविक भाग हा गुणक a असतो.",
+          "solution": "संकीर्ण संख्येची मानक रूपे a + ib आहे, जेथे 'a' वास्तविक भाग आहे आणि 'b' काल्पनिक भाग आहे. इतर विकल्प संकीर्ण संख्येची मानक रूपे नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and uses standard Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for complex numbers.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the definition of conjugate with modulus.",
-        "Refers to the imaginary part of the complex number.",
-        "Refers to the real part of the complex number."
+        "confuses the form with subtraction",
+        "thinks the imaginary part is not present",
+        "mistakenly combines the real and imaginary parts into one term"
       ],
       "solverAnswers": [
         0,
@@ -85,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'Modulus,' and the distractors represent common misconceptions about complex numbers.",
+      "critique": "The question is straightforward and tests recall of the standard form of a complex number. The correct answer is clearly a + ib, and the author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh104.pdf",
@@ -126,126 +126,21 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T02:50:51.043Z",
+      "generatedAt": "2026-10-28T07:44:06.998Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 1,
-      "stem": "What is the term used for the complex number a - ib, where the original complex number is a + ib?",
-      "choices": [
-        "Conjugate",
-        "Modulus",
-        "Imaginary conjugate",
-        "Imaginary part"
-      ],
-      "answerIndex": 0,
-      "solution": "The term for the complex number a - ib, when the original is a + ib, is the conjugate. This is because the conjugate of a complex number is formed by changing the sign of its imaginary part. The modulus refers to the magnitude of the complex number, the imaginary part is just the coefficient of i, and the imaginary conjugate is not a standard term in mathematics.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "a + ib मूल सम्मिश्र संख्या होने पर a - ib के लिए कौन सा शब्द प्रयोग किया जाता है?",
-          "choices": [
-            "संयुग्मी",
-            "परिमाण",
-            "काल्पनिक संयुग्मी",
-            "काल्पनिक भाग"
-          ],
-          "solution": "जब मूल सम्मिश्र संख्या a + ib होती है तो a - ib के लिए शब्द संयुग्मी होता है। इसका कारण यह है कि सम्मिश्र संख्या का संयुग्मी उसके काल्पनिक भाग के चिह्न को बदलकर बनाया जाता है। परिमाण सम्मिश्र संख्या के परिमाण को संदर्भित करता है, काल्पनिक भाग केवल i के गुणांक होता है और काल्पनिक संयुग्मी गणित में मानक शब्द नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as taught in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "a + ib असलेल्या समज्ञान संख्येच्या a - ib समज्ञान संख्येला कोणते नाव आहे?",
-          "choices": [
-            "संयुग्मक",
-            "मॉड्युलस",
-            "काल्पनिक संयुग्मक",
-            "काल्पनिक भाग"
-          ],
-          "solution": "a + ib असलेल्या समज्ञान संख्येच्या a - ib समज्ञान संख्येला संयुग्मक म्हणतात. कारण समज्ञान संख्येचा संयुग्मक त्याच्या काल्पनिक भागाच्या चिन्हाच्या बदलाने तयार होतो. मॉड्युलस समज्ञान संख्येच्या मोठेपणाला संदर्भित करतो, काल्पनिक भाग म्हणजे i चा गुणक असतो आणि काल्पनिक संयुग्मक हे गणितातील मानक शब्द नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the conjugate with the modulus, thinking they are the same concept",
-        "Confuses the concept of conjugate with a non-existent 'imaginary conjugate' term",
-        "Confuses the conjugate with the imaginary component of the complex number"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the correct answer is clearly 0 (Conjugate). The author's solution and reasoning for the distractors are accurate and reflect common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh104.pdf",
-          "ordinal": 3,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 4: Complex Numbers and Quadratic Equations"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh104.pdf",
-          "ordinal": 4,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 4: Complex Numbers and Quadratic Equations"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh104.pdf",
-          "ordinal": 5,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 4: Complex Numbers and Quadratic Equations"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh104.pdf",
-          "ordinal": 6,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 4: Complex Numbers and Quadratic Equations",
-            "Summary"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T02:50:51.043Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
+      "difficulty": 2,
       "stem": "What is the definition of a complex number?",
       "choices": [
-        "A number with only a real part",
-        "A number with only an imaginary part",
-        "A number with a real and an imaginary part",
-        "A number with a square root of a negative number"
+        "A number that is not real",
+        "A number of the form a + ib where a and b are real numbers",
+        "A number that has an imaginary part but no real part",
+        "A number that is purely imaginary"
       ],
-      "answerIndex": 2,
-      "solution": "A complex number is defined as a number that includes both a real part and an imaginary part. This is the standard mathematical definition. A number with only a real part is not complex, and a number with only an imaginary part is not fully complex either. The square root of a negative number is related to imaginary numbers but does not define a complex number on its own.",
+      "answerIndex": 1,
+      "solution": "A complex number is defined as a number of the form a + ib, where a and b are real numbers. The other options either misstate the definition or describe specific cases of complex numbers, not the general definition.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
@@ -253,27 +148,27 @@
         "hi": {
           "stem": "एक सम्मिश्र संख्या की परिभाषा क्या है?",
           "choices": [
-            "केवल वास्तविक भाग वाली संख्या",
-            "केवल काल्पनिक भाग वाली संख्या",
-            "एक वास्तविक और एक काल्पनिक भाग वाली संख्या",
-            "एक ऋणात्मक संख्या के वर्गमूल वाली संख्या"
+            "एक ऐसी संख्या जो वास्तविक नहीं है",
+            "एक ऐसी संख्या जो a + ib के रूप में होती है जहां a और b वास्तविक संख्याएं होती हैं",
+            "एक ऐसी संख्या जिसमें काल्पनिक भाग होता है लेकिन वास्तविक भाग नहीं होता",
+            "एक ऐसी संख्या जो शुद्ध रूप से काल्पनिक होती है"
           ],
-          "solution": "एक सम्मिश्र संख्या की परिभाषा एक संख्या है जिसमें वास्तविक भाग और काल्पनिक भाग दोनों शामिल होते हैं। यह मानक गणितीय परिभाषा है। केवल वास्तविक भाग वाली संख्या सम्मिश्र नहीं होती है, और केवल काल्पनिक भाग वाली संख्या भी पूरी तरह से सम्मिश्र नहीं होती है। ऋणात्मक संख्या के वर्गमूल का संबंध काल्पनिक संख्याओं से होता है लेकिन यह सम्मिश्र संख्या की परिभाषा नहीं होती है।",
+          "solution": "एक सम्मिश्र संख्या की परिभाषा एक ऐसी संख्या है जो a + ib के रूप में होती है, जहां a और b वास्तविक संख्याएं होती हैं। अन्य विकल्प परिभाषा को गलत तरीके से बताते हैं या सम्मिश्र संख्याओं के विशिष्ट मामलों का वर्णन करते हैं, सामान्य परिभाषा के बजाय।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains in the same position, and the distractors are still incorrect. Technical terms like 'सम्मिश्र संख्या' (complex number), 'वास्तविक भाग' (real part), and 'काल्पनिक भाग' (imaginary part) are standard in Hindi mathematics education.",
+          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका संकीर्ण संख्येची व्याख्या काय आहे?",
+          "stem": "सम्पूर्ण संख्येची व्याख्या काय आहे?",
           "choices": [
-            "केवळ वास्तविक भाग असलेली संख्या",
-            "केवळ काल्पनिक भाग असलेली संख्या",
-            "वास्तविक आणि काल्पनिक भाग असलेली संख्या",
-            "ऋणात्मक संख्येचा वर्गमूळ असलेली संख्या"
+            "एक अवास्तव संख्या",
+            "एक रूपात a + ib जेथे a आणि b वास्तविक संख्या आहेत",
+            "एक संख्या जी अवास्तव भाग असलेली पण वास्तविक भाग नसलेली",
+            "एक संख्या जी शुद्ध अवास्तव आहे"
           ],
-          "solution": "संकीर्ण संख्या म्हणजे वास्तविक आणि काल्पनिक भाग असलेली संख्या आहे. ही मानक गणितीय व्याख्या आहे. केवळ वास्तविक भाग असलेली संख्या संकीर्ण नाही, आणि केवळ काल्पनिक भाग असलेली संख्या देखील पूर्णपणे संकीर्ण नाही. ऋणात्मक संख्येचा वर्गमूळ असलेली संख्या काल्पनिक संख्यांशी संबंधित आहे परंतु ती संकीर्ण संख्याची व्याख्या नाही.",
+          "solution": "एक सम्पूर्ण संख्या एक रूपात a + ib असते, जेथे a आणि b वास्तविक संख्या आहेत. इतर विकल्प व्याख्या चुकीच्या पद्धतीने वर्णन करतात किंवा सम्पूर्ण संख्यांच्या विशिष्ट उदाहरणांचे वर्णन करतात, जे सामान्य व्याख्या नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
           "flag": null
         }
       },
@@ -282,125 +177,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses a real number with a complex number",
-        "Confuses a purely imaginary number with a complex number",
+        "Confuses complex numbers with non-real numbers",
         null,
-        "Confuses the definition of a complex number with the definition of an imaginary number"
+        "Confuses the definition of a purely imaginary number with that of a complex number",
+        "Students often confuse complex numbers with purely imaginary numbers, thinking that all complex numbers must have no real part."
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2, as a complex number is defined as having both a real and an imaginary part. The other options represent subsets or related concepts, but not the full definition of a complex number.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh104.pdf",
-          "ordinal": 3,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 4: Complex Numbers and Quadratic Equations"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh104.pdf",
-          "ordinal": 4,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 4: Complex Numbers and Quadratic Equations"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh104.pdf",
-          "ordinal": 5,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 4: Complex Numbers and Quadratic Equations"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh104.pdf",
-          "ordinal": 6,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 4: Complex Numbers and Quadratic Equations",
-            "Summary"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T02:50:51.043Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If the complex number z = a + ib has real part 2 and imaginary part 5, what is the value of Re(z) + Im(z)?",
-      "choices": [
-        "2",
-        "5",
-        "7",
-        "10"
-      ],
-      "answerIndex": 2,
-      "solution": "The real part of z is 2 and the imaginary part is 5. Adding them gives 2 + 5 = 7. The correct answer is 7. The option '2' is only the real part, '5' is only the imaginary part, and '10' is the product of the two parts, which is incorrect.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि सम्मिश्र संख्या z = a + ib का वास्तविक भाग 2 और काल्पनिक भाग 5 है, तो Re(z) + Im(z) का मान क्या है?",
-          "choices": [
-            "2",
-            "5",
-            "7",
-            "10"
-          ],
-          "solution": "z का वास्तविक भाग 2 है और काल्पनिक भाग 5 है। इनको जोड़ने पर 2 + 5 = 7 प्राप्त होता है। सही उत्तर 7 है। विकल्प '2' केवल वास्तविक भाग है, '5' केवल काल्पनिक भाग है, और '10' दोनों भागों का गुणनफल है, जो गलत है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर सम्मिश्र संख्या z = a + ib चा वास्तविक भाग 2 आहे आणि काल्पनिक भाग 5 आहे, तर Re(z) + Im(z) ची किंमत किती आहे?",
-          "choices": [
-            "2",
-            "5",
-            "7",
-            "10"
-          ],
-          "solution": "z चा वास्तविक भाग 2 आहे आणि काल्पनिक भाग 5 आहे. त्यांच्या बेरजेने 2 + 5 = 7 मिळते. योग्य उत्तर 7 आहे. विकल्प '2' हा केवळ वास्तविक भाग आहे, '5' हा केवळ काल्पनिक भाग आहे आणि '10' हा दोन्ही भागांचा गुणाकार आहे, जो चूक आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "only the real part is taken",
-        "only the imaginary part is taken",
-        null,
-        "the product of the real and imaginary parts is calculated"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. The real part is 2 and the imaginary part is 5, so their sum is 7. The correct answer is option 2.",
+      "critique": "The correct answer is option 1, which accurately defines a complex number as a + ib where a and b are real. The other options reflect common misconceptions about complex numbers.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh104.pdf",
@@ -431,7 +221,807 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T02:50:51.043Z",
+      "generatedAt": "2026-10-28T07:44:06.998Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the modulus of a complex number z = a + ib?",
+      "choices": [
+        "The non-positive real number a",
+        "The non-negative real number a",
+        "The non-positive real number sqrt(a² + b²)",
+        "The non-negative real number sqrt(a² + b²)"
+      ],
+      "answerIndex": 3,
+      "solution": "The modulus of a complex number z = a + ib is the non-negative real number sqrt(a² + b²), which represents the distance of the point (a, b) from the origin in the complex plane. The other options are incorrect because they either refer to only the real part a or incorrectly suggest the modulus is non-positive.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जटिल संख्या z = a + ib का मापांक क्या है?",
+          "choices": [
+            "गैर-धनात्मक वास्तविक संख्या a",
+            "गैर-ऋणात्मक वास्तविक संख्या a",
+            "गैर-धनात्मक वास्तविक संख्या sqrt(a² + b²)",
+            "गैर-ऋणात्मक वास्तविक संख्या sqrt(a² + b²)"
+          ],
+          "solution": "जटिल संख्या z = a + ib का मापांक गैर-ऋणात्मक वास्तविक संख्या sqrt(a² + b²) होती है, जो सम्मिश्र तल में बिंदु (a, b) की मूल बिंदु से दूरी का प्रतिनिधित्व करती है। अन्य विकल्प गलत हैं क्योंकि वे केवल वास्तविक भाग a को संदर्भित करते हैं या गलत तरीके से मापांक को ऋणात्मक मान लेते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जीवी एक जटिल संख्या z = a + ib असल्यास तिचा मॉड्युलस काय असतो?",
+          "choices": [
+            "निरपेक्ष ऋणात्मक वास्तविक संख्या a",
+            "निरपेक्ष धनात्मक वास्तविक संख्या a",
+            "निरपेक्ष ऋणात्मक वास्तविक संख्या sqrt(a² + b²)",
+            "निरपेक्ष धनात्मक वास्तविक संख्या sqrt(a² + b²)"
+          ],
+          "solution": "जीवी एक जटिल संख्या z = a + ib चा मॉड्युलस हा निरपेक्ष धनात्मक वास्तविक संख्या sqrt(a² + b²) असतो, जो जटिल समतलात बिंदू (a, b) ची मूलबिंदूपासून अंतर दर्शवतो. इतर विकल्प चुकीचे आहेत कारण ते केवळ वास्तविक भाग a ला हवे असतात किंवा मॉड्युलस ऋणात्मक असल्याचे चुकीचे सूचित करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the definition of modulus with the real part",
+        "Misunderstands the sign of the modulus",
+        "Misunderstands the definition of modulus with the real part and the sign of the modulus",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is the non-negative real number sqrt(a² + b²), which matches the definition of the modulus of a complex number. The other options incorrectly associate the modulus with the real part or misrepresent the sign.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 6,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations",
+            "Summary"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T07:44:06.998Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the equation x² + 2x + 5 = 0 is solved, the nature of the roots will be:",
+      "choices": [
+        "Real and equal",
+        "Real and distinct",
+        "Irrational and distinct",
+        "Complex and not real"
+      ],
+      "answerIndex": 3,
+      "solution": "The discriminant of the equation x² + 2x + 5 = 0 is b² - 4ac = (2)² - 4(1)(5) = 4 - 20 = -16, which is negative. A negative discriminant means the roots are complex and not real. Option 1 is incorrect because the discriminant is not zero. Option 2 is incorrect because the discriminant is not positive. Option 3 is incorrect because the roots are not irrational.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि समीकरण x² + 2x + 5 = 0 को हल किया जाता है, तो मूलों की प्रकृति क्या होगी?",
+          "choices": [
+            "वास्तविक एवं समान",
+            "वास्तविक एवं असमान",
+            "अपरिमेय एवं असमान",
+            "जटिल एवं वास्तविक नहीं"
+          ],
+          "solution": "समीकरण x² + 2x + 5 = 0 का विवेचक b² - 4ac = (2)² - 4(1)(5) = 4 - 20 = -16 है, जो ऋणात्मक है। ऋणात्मक विवेचक का अर्थ है कि मूल जटिल एवं वास्तविक नहीं हैं। विकल्प 1 गलत है क्योंकि विवेचक शून्य नहीं है। विकल्प 2 गलत है क्योंकि विवेचक धनात्मक नहीं है। विकल्प 3 गलत है क्योंकि मूल अपरिमेय नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate mathematical terminology and logical structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समीकरण x² + 2x + 5 = 0 सोडवल्यास मूळांची प्रकृती कशी असेल?",
+          "choices": [
+            "वास्तविक आणि समान",
+            "वास्तविक आणि विस्तारित",
+            "अपरिमेय आणि विस्तारित",
+            "जटिल आणि वास्तविक नाही"
+          ],
+          "solution": "समीकरण x² + 2x + 5 = 0 चा विवेचक b² - 4ac = (2)² - 4(1)(5) = 4 - 20 = -16 आहे, जो ऋण आहे. ऋण विवेचक म्हणजे मूळे जटिल आणि वास्तविक नाहीत. विकल्प 1 अयोग्य आहे कारण विवेचक शून्य नाही. विकल्प 2 अयोग्य आहे कारण विवेचक धन नाही. विकल्प 3 अयोग्य आहे कारण मूळे अपरिमेय नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terms used in Marathi mathematics education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses negative discriminant with real roots",
+        "Confuses negative discriminant with real and distinct roots",
+        "Confuses negative discriminant with irrational roots",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly calculates the discriminant and identifies that a negative discriminant implies complex, non-real roots. The reasoning for the distractors matches common misconceptions about the discriminant.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T07:44:06.998Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If the equation x² + 4x + 4 = 0 is solved, the nature of the roots will be:",
+      "choices": [
+        "Real and equal",
+        "Real and distinct",
+        "Irrational and distinct",
+        "Complex and not real"
+      ],
+      "answerIndex": 0,
+      "solution": "The discriminant of the equation x² + 4x + 4 = 0 is b² - 4ac = (4)² - 4(1)(4) = 16 - 16 = 0, which is zero. A discriminant of zero means the roots are real and equal. Option 1 is correct. Option 2 is incorrect because the discriminant is not positive. Option 3 is incorrect because the roots are not irrational. Option 4 is incorrect because the discriminant is zero.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि समीकरण x² + 4x + 4 = 0 को हल किया जाता है, तो मूलों की प्रकृति क्या होगी?",
+          "choices": [
+            "वास्तविक एवं समान",
+            "वास्तविक एवं भिन्न",
+            "अपरिमेय एवं भिन्न",
+            "जटिल एवं वास्तविक नहीं"
+          ],
+          "solution": "समीकरण x² + 4x + 4 = 0 का विवेचक b² - 4ac = (4)² - 4(1)(4) = 16 - 16 = 0 है, जो शून्य है। विवेचक शून्य होने का अर्थ है कि मूल वास्तविक एवं समान हैं। विकल्प 1 सही है। विकल्प 2 गलत है क्योंकि विवेचक धनात्मक नहीं है। विकल्प 3 गलत है क्योंकि मूल अपरिमेय नहीं हैं। विकल्प 4 गलत है क्योंकि विवेचक शून्य है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated and maintain their logical relationships.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समीकरण x² + 4x + 4 = 0 सोडवल्यास मूळांची प्रकृती कशी असेल?",
+          "choices": [
+            "वास्तविक आणि समान",
+            "वास्तविक आणि विस्तारित",
+            "अपरिमेय आणि विस्तारित",
+            "जटिल आणि वास्तविक नाही"
+          ],
+          "solution": "समीकरण x² + 4x + 4 = 0 चा विचलन बी² - 4ac = (4)² - 4(1)(4) = 16 - 16 = 0, जो शून्य आहे. शून्य विचलनाचा अर्थ मूळे वास्तविक आणि समान असतात. पर्याय 1 बरोबर आहे. पर्याय 2 चूक आहे कारण विचलन धन नाही. पर्याय 3 चूक आहे कारण मूळे अपरिमेय नाहीत. पर्याय 4 चूक आहे कारण विचलन शून्य आहे.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for discriminant (विचलन) and root types.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses zero discriminant with complex roots",
+        "Student incorrectly assumes that a perfect square trinomial has irrational roots",
+        "Confuses zero discriminant with irrational roots\",\"Confuses zero discriminant with negative discriminant"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The discriminant is zero, so the roots are real and equal. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T07:44:06.998Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the sum of the complex numbers 2 + i3 and –6 + i5?",
+      "choices": [
+        "-4 + i8",
+        "-4 + i5",
+        "4 + i2",
+        "4 + i8"
+      ],
+      "answerIndex": 0,
+      "solution": "To add complex numbers, add the real parts and the imaginary parts separately. So, (2 + i3) + (–6 + i5) = (2 – 6) + i(3 + 5) = -4 + i8. The other options incorrectly add or subtract the real or imaginary parts.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सम्मिश्र संख्याओं 2 + i3 और –6 + i5 का योग क्या है?",
+          "choices": [
+            "-4 + i8",
+            "-4 + i5",
+            "4 + i2",
+            "4 + i8"
+          ],
+          "solution": "सम्मिश्र संख्याओं को जोड़ने के लिए, वास्तविक भागों और काल्पनिक भागों को अलग-अलग जोड़ें। इसलिए, (2 + i3) + (–6 + i5) = (2 – 6) + i(3 + 5) = -4 + i8। अन्य विकल्प गलती से वास्तविक या काल्पनिक भागों को जोड़ते या घटाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology for a Hindi-medium math curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सम्मिश्र संख्या 2 + i3 आणि –6 + i5 ची बेरीज किती आहे?",
+          "choices": [
+            "-4 + i8",
+            "-4 + i5",
+            "4 + i2",
+            "4 + i8"
+          ],
+          "solution": "सम्मिश्र संख्या जोडण्यासाठी, वास्तविक भाग आणि काल्पनिक भाग अलग अलग जोडावे. म्हणून, (2 + i3) + (–6 + i5) = (2 – 6) + i(3 + 5) = -4 + i8. उरलेल्या विकल्पांमध्ये वास्तविक किंवा काल्पनिक भाग चुकीच्या प्रकारे जोडले किंवा वजा केले गेले आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for complex numbers.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Mistakenly adds the real parts correctly but keeps the imaginary part from the first number instead of adding them",
+        "Adding the real parts correctly but subtracting the imaginary parts instead of adding them",
+        "Adding the imaginary parts correctly but mistakenly adding the real parts instead of subtracting"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the key. The reasoning for the distractors reflects common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T07:44:06.998Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the conjugate of the complex number 3 + 4i?",
+      "choices": [
+        "3 - 4i",
+        "3 + 4i",
+        "-3 - 4i",
+        "-3 + 4i"
+      ],
+      "answerIndex": 0,
+      "solution": "The conjugate of a complex number is obtained by changing the sign of the imaginary part. So, the conjugate of 3 + 4i is 3 - 4i. The other options are not the correct conjugates.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सम्मिश्र संख्या 3 + 4i का संयुग्मी क्या है?",
+          "choices": [
+            "3 - 4i",
+            "3 + 4i",
+            "-3 - 4i",
+            "-3 + 4i"
+          ],
+          "solution": "एक सम्मिश्र संख्या का संयुग्मी काल्पनिक भाग के चिह्न को बदलकर प्राप्त किया जाता है। अतः 3 + 4i का संयुग्मी 3 - 4i है। अन्य विकल्प सही संयुग्मी नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सम्मिश्र संख्या 3 + 4i चा संयुग्म कोणता आहे?",
+          "choices": [
+            "3 - 4i",
+            "3 + 4i",
+            "-3 - 4i",
+            "-3 + 4i"
+          ],
+          "solution": "सम्मिश्र संख्येचा संयुग्म वास्तविक भाग बदलल्याशिवाय आभासी भागाचा चिन्ह बदलून मिळतो. म्हणून, 3 + 4i चा संयुग्म 3 - 4i आहे. इतर विकल्प योग्य संयुग्म नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms for complex numbers.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "thinks the conjugate is the same as the original number",
+        "confuses the signs of the real and imaginary parts",
+        "mistakenly uses the negative of the real part"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward and the solution is correct. The conjugate of 3 + 4i is indeed 3 - 4i, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 6,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations",
+            "Summary"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T07:44:06.998Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the equation 4x + i(3x – y) = 3 + i(–6) is satisfied, what is the value of x?",
+      "choices": [
+        "3/4",
+        "4/3",
+        "1/2",
+        "2/3"
+      ],
+      "answerIndex": 0,
+      "solution": "By equating the real and imaginary parts, we get 4x = 3 and 3x – y = –6. Solving 4x = 3 gives x = 3/4. The other options are incorrect calculations of the value of x.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि समीकरण 4x + i(3x – y) = 3 + i(–6) संतुष्ट होता है, तो x का मान क्या है?",
+          "choices": [
+            "3/4",
+            "4/3",
+            "1/2",
+            "2/3"
+          ],
+          "solution": "वास्तविक एवं काल्पनिक भागों की तुलना करने पर, हमें 4x = 3 एवं 3x – y = –6 प्राप्त होता है। 4x = 3 को हल करने पर x = 3/4 प्राप्त होता है। अन्य विकल्प x के मान की गलत गणना हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समीकरण 4x + i(3x – y) = 3 + i(–6) संतुष्ट होत असल्यास x ची किंमत किती असेल?",
+          "choices": [
+            "3/4",
+            "4/3",
+            "1/2",
+            "2/3"
+          ],
+          "solution": "वास्तविक आणि काल्पनिक भागांच्या तुलनेने, आम्हाला 4x = 3 आणि 3x – y = –6 मिळते. 4x = 3 चे उपायाने x = 3/4 मिळते. इतर विकल्प x च्या किंमतीच्या चुकीच्या गणना आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the real and imaginary parts and solves 3x - y = -6 for x instead of equating 4x = 3",
+        "Incorrectly swaps the numerator and denominator",
+        "Incorrectly divides 3 by 6 instead of 4"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly equates real and imaginary parts, leading to x = 3/4. The author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T07:44:06.998Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the discriminant of a quadratic equation is negative, what is the nature of its roots?",
+      "choices": [
+        "Not real",
+        "Real and distinct",
+        "Rational and distinct",
+        "Irrational and distinct"
+      ],
+      "answerIndex": 0,
+      "solution": "If the discriminant of a quadratic equation is negative, the roots are not real because the square root of a negative number is not defined within the real number system. This means the equation does not intersect the x-axis, and thus has no real solutions. The other options describe cases where the discriminant is positive or zero, which result in real roots.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक द्विघात समीकरण का विवेचक ऋणात्मक है, तो इसके मूलों की प्रकृति क्या होती है?",
+          "choices": [
+            "असत्य",
+            "वास्तविक एवं भिन्न",
+            "परिमेय एवं भिन्न",
+            "अपरिमेय एवं भिन्न"
+          ],
+          "solution": "यदि एक द्विघात समीकरण का विवेचक ऋणात्मक है, तो मूल असत्य होते हैं क्योंकि ऋणात्मक संख्या का वर्गमूल वास्तविक संख्या प्रणाली में परिभाषित नहीं है। इसका अर्थ है कि समीकरण x-अक्ष को काटता नहीं है, इसलिए इसके कोई वास्तविक हल नहीं होते हैं। अन्य विकल्प विवेचक के धनात्मक या शून्य होने पर वास्तविक मूलों के मामलों का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक द्विघात समीकरणाचा विवेचक ऋण असल्यास, त्याच्या मूळांची प्रकृती काय असते?",
+          "choices": [
+            "अवास्तव",
+            "वास्तव आणि विविध",
+            "तर्कसंगत आणि विविध",
+            "अतर्कसंगत आणि विविध"
+          ],
+          "solution": "जर एका द्विघात समीकरणाचा विवेचक ऋण असेल, तर मूळे अवास्तव असतात कारण ऋण संख्येचा वर्गमूळ वास्तव संख्या प्रणालीत व्यवहार्य नाही. ह्याचा अर्थ असा आहे की समीकरण x-अक्षाला छेदत नाही आणि म्हणूनच त्याला वास्तव समाधान नसते. इतर विकल्प असे आहेत ज्यांमध्ये विवेचक धन किंवा शून्य असतो, जे वास्तव मूळांच्या परिणामाचे वर्णन करतात.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology used for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student confuses discriminant rules, thinking negative discriminant leads to real roots",
+        "Misunderstands the meaning of a negative discriminant",
+        "Confuses the nature of the roots with irrational and distinct"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-posed and the solution is correct. The key is accurate, and the reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 6,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations",
+            "Summary"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T07:44:06.998Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the roots of a quadratic equation are complex, what is the nature of the discriminant?",
+      "choices": [
+        "Positive",
+        "Zero",
+        "Negative",
+        "Undefined"
+      ],
+      "answerIndex": 2,
+      "solution": "If the roots of a quadratic equation are complex, the discriminant must be negative. This is because the discriminant determines the type of roots, and a negative discriminant leads to the square root of a negative number, resulting in complex roots. A positive discriminant gives real roots, zero gives a repeated real root, and undefined is not a valid value for the discriminant in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि द्विघात समीकरण के मूल सम्मिश्र हैं, तो विवेचक की प्रकृति क्या होती है?",
+          "choices": [
+            "धनात्मक",
+            "शून्य",
+            "ऋणात्मक",
+            "अपरिभाषित"
+          ],
+          "solution": "यदि द्विघात समीकरण के मूल सम्मिश्र हैं, तो विवेचक ऋणात्मक होना चाहिए। यह इसलिए है क्योंकि विवेचक मूलों के प्रकार को निर्धारित करता है, और ऋणात्मक विवेचक ऋणात्मक संख्या के वर्गमूल के कारण सम्मिश्र मूल पैदा करता है। धनात्मक विवेचक वास्तविक मूल देता है, शून्य एक दोहरा वास्तविक मूल देता है, और अपरिभाषित इस संदर्भ में विवेचक के लिए एक वैध मान नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर वर्गीय समीकरणाचे मूळ संकीर्ण असतील, तर विवेचकाची प्रकृती कशी असते?",
+          "choices": [
+            "धनात्मक",
+            "शून्य",
+            "ऋणात्मक",
+            "अअस्तित्वात नाही"
+          ],
+          "solution": "जर वर्गीय समीकरणाचे मूळ संकीर्ण असतील, तर विवेचक ऋणात्मक असतो. हे कारण विवेचक मूळांच्या प्रकृतीला निश्चित करतो आणि ऋणात्मक विवेचक ऋणात्मक संख्येच्या वर्गमूळाच्या निर्माणामुळे संकीर्ण मूळांची निर्मिती होते. धनात्मक विवेचक वास्तव मूळे देतो, शून्य दुहेरी वास्तव मूळे देतो आणि अअस्तित्वात नाही हा विवेचकाच्या या संदर्भात वैध मूल्य नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning. Technical terms like 'विवेचक' (discriminant) and 'संकीर्ण मूळे' (complex roots) are correctly used in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the discriminant with a positive value",
+        "Confuses the discriminant with zero",
+        null,
+        "Misunderstands the meaning of a negative discriminant"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-posed and the solution correctly identifies that a negative discriminant leads to complex roots. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh104.pdf",
+          "ordinal": 6,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Complex Numbers and Quadratic Equations",
+            "Summary"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T07:44:06.998Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

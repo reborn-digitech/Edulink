@@ -1,0 +1,322 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T15:46:44.932Z",
+  "finishedAt": "2026-10-25T15:51:20.522Z",
+  "seconds": 276,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm108.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Fair Share",
+    "edition": "Reprint 2026-27",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n18. (a) 1/3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 67724,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8006,
+      "completionTokens": 1921
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 202581,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 6987,
+      "completionTokens": 2895
+    },
+    "solver": {
+      "calls": 85,
+      "ms": 106922,
+      "in": 10,
+      "out": 7,
+      "rejects": 3,
+      "promptTokens": 16424,
+      "completionTokens": 942
+    },
+    "form": {
+      "calls": 7,
+      "ms": 39138,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 1743,
+      "completionTokens": 575
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 7434,
+      "in": 5,
+      "out": 2,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 127929,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5105,
+      "completionTokens": 2632
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a way to check if two pieces are equal?",
+      "ms": {
+        "draft": 6223,
+        "critique": 13114,
+        "solver": 2635
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "On a number line, how far is 13 from the double of 7?",
+      "ms": {
+        "draft": 6223,
+        "critique": 13029
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Shabnam has eaten some chikki from 3 sides. What is the most likely answer?",
+      "ms": {
+        "draft": 6223,
+        "critique": 14378,
+        "solver": 25037,
+        "form": 3011
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is each share called when 1 whole is shared equally between 2 people?",
+      "ms": {
+        "draft": 5065,
+        "critique": 7461,
+        "solver": 29572
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many quarters make one whole?",
+      "ms": {
+        "draft": 5065,
+        "critique": 11898
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Shabnam has eaten some chikki from 3 sides, what is the most likely portion left?",
+      "ms": {
+        "draft": 5065,
+        "critique": 9654,
+        "solver": 36863,
+        "form": 6640
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 10 marbles are double of 5 marbles, how far is 5 from half of 10?",
+      "ms": {
+        "draft": 5065,
+        "critique": 11427,
+        "solver": 2592
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the share when 1 whole is divided equally between 2 people?",
+      "ms": {
+        "draft": 6223,
+        "critique": 12876,
+        "solver": 1539,
+        "form": 9642
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 6 marbles are double of 3 marbles, then 3 marbles are what of 6 marbles?",
+      "ms": {
+        "draft": 6223,
+        "critique": 13115,
+        "solver": 23185,
+        "form": 7135
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If I have half the number of marbles that you have, and I have 8 marbles, how many marbles do you have?",
+      "ms": {
+        "draft": 5065,
+        "critique": 9796,
+        "solver": 1674,
+        "form": 2011
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of sharing something equally?",
+      "ms": {
+        "draft": 5065,
+        "critique": 8047,
+        "solver": 36647,
+        "form": 9783,
+        "translation": 71195
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If I have half the number of marbles that you have, and you have 10 marbles, how many marbles do I have?",
+      "ms": {
+        "draft": 6223,
+        "critique": 11619,
+        "solver": 2221,
+        "form": 4183,
+        "translation": 52312
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a way to check if two pieces are equal?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "On a number line, how far is 13 from the double of 7?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Shabnam has eaten some chikki from 3 sides. What is the most likely answer?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); distractor 3's reason is not a one-line misconception (\"Chooses an option that is not supported by the passage.…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is each share called when 1 whole is shared equally between 2 people?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many quarters make one whole?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If Shabnam has eaten some chikki from 3 sides, what is the most likely portion left?",
+      "reason": "options 1 and 3 are the same (\"More than half\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 10 marbles are double of 5 marbles, how far is 5 from half of 10?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the share when 1 whole is divided equally between 2 people?",
+      "reason": "near-duplicate of served question cmvgzcr6305qagpfh2jlaoeon (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If 6 marbles are double of 3 marbles, then 3 marbles are what of 6 marbles?",
+      "reason": "near-duplicate of served question cmvk1k39m0iq8gpfhnpbb49db (cosine 0.942 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If I have half the number of marbles that you have, and I have 8 marbles, how many marbles do you have?",
+      "reason": "near-duplicate of batch item \"If I have half the number of marbles that you have…\" (cosine 0.914 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

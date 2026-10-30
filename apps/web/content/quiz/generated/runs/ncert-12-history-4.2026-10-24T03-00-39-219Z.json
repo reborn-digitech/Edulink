@@ -1,0 +1,843 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T03:00:39.219Z",
+  "finishedAt": "2026-10-24T03:10:11.362Z",
+  "seconds": 572,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Themes in Indian History-I",
+    "bookCode": "lehs1",
+    "document": "ncert/12/history/lehs104.pdf",
+    "classLevel": 12,
+    "subject": "History",
+    "chapter": "Chapter 4 — Thinkers, Beliefs and Buildings FOUR",
+    "edition": "Reprint 2026-27",
+    "chunks": 27,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII History, marking scheme, 2024-25]\n28. A. 8\ni. The emergence of influential thinkers such as Zarathustra in Iran, Kong Zi in\nChina, Socrates, Plato, and Aristotle in Greece, and Mahavira and Gautama\nBuddha in India marked a period of deep philosophical inquiry into the\nmysteries of existence.\nii. Relationship between humans and the cosmic order were discussed.\niii. New kingdoms and cities were developing, and social and economic life was\nundergoing significant changes in the Ganga valley.\niv. Prompting these thinkers to also contemplate these societal transformations.\nv. Pre-existing traditions, including the early Vedic tradition as known from the\nRigveda involved hymns praising deities like Agni, Indra, and Soma, often\nchan",
+      "[CBSE Class XII History, sample question paper, 2023-24]\n4. Section C - Question no 28 to 30 are Long Answer Type Questions, carrying 8 marks\neach. Answer to each question should not exceed 300-350 words",
+      "[CBSE Class XII History, marking scheme, 2026-27]\n12. (D) The gopuram or gateway of the Brihadishvara temple at Thanjavur 1\nNote: The following question is for the Candidates with Visual Impairment only\nin lieu of Q. No. 12.\n(D) Rayas",
+      "[CBSE Class XII History, sample question paper, 2026-27]\n10. The terms ‘Great and Little traditions’ were coined by a sociologist named ________. 1\n(A) John Marshall\n(B) Robert Redfield\n(C) Cyril Radcliffe\n(D) Francis Buchanan"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 187668,
+      "in": 46,
+      "out": 43,
+      "rejects": 3,
+      "promptTokens": 47153,
+      "completionTokens": 10619
+    },
+    "critique": {
+      "calls": 51,
+      "ms": 309971,
+      "in": 43,
+      "out": 37,
+      "rejects": 6,
+      "promptTokens": 24359,
+      "completionTokens": 8802
+    },
+    "solver": {
+      "calls": 243,
+      "ms": 116751,
+      "in": 37,
+      "out": 32,
+      "rejects": 5,
+      "promptTokens": 44287,
+      "completionTokens": 2481
+    },
+    "form": {
+      "calls": 10,
+      "ms": 27497,
+      "in": 32,
+      "out": 11,
+      "rejects": 21,
+      "promptTokens": 2610,
+      "completionTokens": 741
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 4,
+      "ms": 934,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 47,
+      "ms": 511854,
+      "in": 22,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 28980,
+      "completionTokens": 15138
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What was the main reason for the preservation of the Sanchi stupa complex?",
+      "ms": {
+        "draft": 3599,
+        "critique": 5265
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains the significance of the Sanchi stupa complex?",
+      "ms": {
+        "draft": 3599,
+        "critique": 5700
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between religious beliefs and societal changes in the Ganga valley?",
+      "ms": {
+        "draft": 3599,
+        "critique": 7060
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a source used by historians to understand the ideas and beliefs of the time?",
+      "ms": {
+        "draft": 3599,
+        "critique": 4611,
+        "solver": 13993
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a deity mentioned in the Rigveda?",
+      "ms": {
+        "draft": 3599,
+        "critique": 6729
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a philosopher could convince followers of a rival sect, what would happen according to the passage?",
+      "ms": {
+        "draft": 2968,
+        "critique": 6464,
+        "solver": 1755,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of the debates and discussions mentioned in the passage?",
+      "ms": {
+        "draft": 2968,
+        "critique": 6312,
+        "solver": 17144
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage imply about the nature of historical records of early philosophical ideas?",
+      "ms": {
+        "draft": 2968,
+        "critique": 6214,
+        "solver": 1458,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the texts of the Ajivikas and Lokayatas?",
+      "ms": {
+        "draft": 2968,
+        "critique": 8701,
+        "solver": 14784,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the Buddha's teachings?",
+      "ms": {
+        "draft": 3734,
+        "critique": 6224,
+        "solver": 1588,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why the Buddha's teachings were passed down in the form of stories?",
+      "ms": {
+        "draft": 3734,
+        "critique": 5176,
+        "solver": 1246
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what was the main reason people were drawn to Buddhist teachings?",
+      "ms": {
+        "draft": 6616,
+        "critique": 5316,
+        "solver": 1511,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what was the main reason the Buddha left the palace?",
+      "ms": {
+        "draft": 3734,
+        "critique": 5371,
+        "solver": 10475,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the role of the sangha in Buddhism?",
+      "ms": {
+        "draft": 6616,
+        "critique": 7313,
+        "solver": 1709,
+        "form": 4641
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a reason for building stupas according to the passage?",
+      "ms": {
+        "draft": 22028,
+        "critique": 7988,
+        "solver": 1426,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the passage, what is the main purpose of the railings around a stupa?",
+      "ms": {
+        "draft": 22028,
+        "critique": 6195,
+        "solver": 1864,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the story of Punna in the Therigatha suggest about the social and spiritual conditions of the time?",
+      "ms": {
+        "draft": 6616,
+        "critique": 8364,
+        "solver": 11315,
+        "form": 3786
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what can be inferred about the construction of stupas based on the donations mentioned?",
+      "ms": {
+        "draft": 22028,
+        "critique": 6367,
+        "solver": 1086,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was NOT a reason for Sanchi surviving while Amaravati did not?",
+      "ms": {
+        "draft": 5546,
+        "critique": 5997,
+        "solver": 575
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct reason for the construction of stupas according to the chapter?",
+      "ms": {
+        "draft": 2937,
+        "critique": 4824,
+        "solver": 1510,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a religious text mentioned in the chapter?",
+      "ms": {
+        "draft": 2937,
+        "critique": 6577,
+        "solver": 1682,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is true about the passage?",
+      "ms": {
+        "draft": 4057,
+        "critique": 9030,
+        "solver": 1464
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The chapter mentions that the Ganga valley experienced significant changes in social and economic life. Which of the following is most likely to have influenced the development of new religious ideas during this time?",
+      "ms": {
+        "draft": 2937,
+        "critique": 7714,
+        "solver": 15252,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is most likely to be true about the sculpture at Mahabalipuram?",
+      "ms": {
+        "draft": 4057,
+        "critique": 6163,
+        "solver": 1651,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred about the role of textual traditions in understanding ancient Indian art, based on the passage?",
+      "ms": {
+        "draft": 4057,
+        "critique": 5807,
+        "solver": 1856,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the preservation of religious traditions?",
+      "ms": {
+        "draft": 4057,
+        "critique": 6188,
+        "solver": 1680,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about the Puranas?",
+      "ms": {
+        "draft": 4165,
+        "critique": 6358,
+        "solver": 1361,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is the main reason why European scholars initially struggled to understand Indian sculptures?",
+      "ms": {
+        "draft": 4057,
+        "critique": 5581,
+        "solver": 14914,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did Sanchi survive while Amaravati did not?",
+      "ms": {
+        "draft": 3752,
+        "critique": 5979
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, which of the following best explains the purpose of the Puranas?",
+      "ms": {
+        "draft": 4165,
+        "critique": 6526,
+        "solver": 1279,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the sculpture at Sanchi depicting a woman swinging from a tree represent?",
+      "ms": {
+        "draft": 3752,
+        "critique": 6494
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following most accurately describes the purpose of stupas according to the passage?",
+      "ms": {
+        "draft": 7431,
+        "critique": 5636,
+        "solver": 862,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a central principle in Jainism?",
+      "ms": {
+        "draft": 3734,
+        "critique": 6384,
+        "solver": 1539,
+        "form": 3570,
+        "translation": 35170
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the name of the Buddha at birth?",
+      "ms": {
+        "draft": 3734,
+        "critique": 5149,
+        "solver": 1494,
+        "form": 2387,
+        "translation": 33196
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following was a feature of early temples in ancient India?",
+      "ms": {
+        "draft": 4165,
+        "critique": 5957,
+        "solver": 1611,
+        "form": 2621,
+        "translation": 43197
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a religious tradition discussed in the chapter that involves the worship of deities through hymns and rituals?",
+      "ms": {
+        "draft": 2937,
+        "critique": 4489,
+        "solver": 1230,
+        "form": 0,
+        "translation": 66504
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one reason people in the sixth century BCE were curious about the meaning of life?",
+      "ms": {
+        "draft": 2968,
+        "critique": 5030,
+        "solver": 1163,
+        "form": 2709,
+        "translation": 41681
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the context of religious developments in ancient India, which of the following best describes the concept of a Bodhisatta in Mahayana Buddhism?",
+      "ms": {
+        "draft": 4165,
+        "critique": 6495,
+        "solver": 1609,
+        "form": 0,
+        "translation": 51659
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to understand the meaning of a sculpture, which approach is most likely to help them?",
+      "ms": {
+        "draft": 4057,
+        "critique": 5943,
+        "solver": 1541,
+        "form": 2797,
+        "translation": 51178
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the chapter, which of the following is a similarity between early stupas and modern religious buildings?",
+      "ms": {
+        "draft": 2937,
+        "critique": 5461,
+        "solver": 1900,
+        "form": 2425,
+        "translation": 48981
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following can be inferred about the role of the rulers of Bhopal in the preservation of Sanchi?",
+      "ms": {
+        "draft": 3599,
+        "critique": 6800,
+        "solver": 10997,
+        "form": 2692,
+        "translation": 50699
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why did the Buddha's teachings get recorded in the Tipitaka?",
+      "ms": {
+        "draft": 2968,
+        "critique": 7149,
+        "solver": 2110,
+        "form": 2611,
+        "translation": 42163
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "The chapter suggests that religious texts are preserved and transmitted in different ways. Which of the following is an example of an oral tradition in the context of religious texts?",
+      "ms": {
+        "draft": 2937,
+        "critique": 6242,
+        "solver": 1441,
+        "form": 0,
+        "translation": 42199
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What does the passage suggest about the Buddha’s view on social equality?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What does the passage suggest about the Buddha’s view on social equality?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What was the main reason for the preservation of the Sanchi stupa complex?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following best explains the significance of the Sanchi stupa complex?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between religious beliefs and societal changes in the Ganga valley?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a source used by historians to understand the ideas and beliefs of the time?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a deity mentioned in the Rigveda?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a philosopher could convince followers of a rival sect, what would happen according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Thinks the passage suggests exclusion…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of the debates and discussions mentioned in the passage?",
+      "reason": "after redraft: the solver picked option 1 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage imply about the nature of historical records of early philosophical ideas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the texts of the Ajivikas and Lokayatas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 are the same (\"They were written in Sanskrit and Pali\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the Buddha's teachings?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"overlooks the mention of multiple languages in the passage…\"); distractor 3's reason is not a one-line misconception (\"misinterprets the influence of earlier traditions on the Bud…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following best explains why the Buddha's teachings were passed down in the form of stories?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what was the main reason people were drawn to Buddhist teachings?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's focus on spiritual goals…\"); distractor 3's reason is not a one-line misconception (\"Fails to understand the contrast between Vedic and Buddhist …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what was the main reason the Buddha left the palace?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"overlooks the passage's focus on the Buddha's personal exper…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the role of the sangha in Buddhism?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Fails to recognize the correct description of the sangha and…\"); distractor 3 has no reason"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a reason for building stupas according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer is not a distractor here, it is the correct o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Based on the passage, what is the main purpose of the railings around a stupa?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Incorrectly believes the railings mark the four cardinal dir…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the story of Punna in the Therigatha suggest about the social and spiritual conditions of the time?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misinterprets the passage as suggesting that all social clas…\"); distractor 3's reason is not a one-line misconception (\"difficulty':5, 'stem': 'What does the passage suggest about …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what can be inferred about the construction of stupas based on the donations mentioned?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Incorrectly thinks that the passage mentions only religious …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following was NOT a reason for Sanchi surviving while Amaravati did not?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key feature of Mahayana Buddhism?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a correct reason for the construction of stupas according to the chapter?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a religious text mentioned in the chapter?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following statements is true about the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The chapter mentions that the Ganga valley experienced significant changes in social and economic life. Which of the following is most likely to have influenced the development of new religious ideas during this time?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is most likely to be true about the sculpture at Mahabalipuram?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What can be inferred about the role of textual traditions in understanding ancient Indian art, based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage’s view of the importance of textua…\"); distractor 3's reason is not a one-line misconception (\"Fails to recognize that the passage suggests textual traditi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the preservation of religious traditions?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misinterprets the passage by suggesting that religious tradi…\"); distractor 3's reason is not a one-line misconception (\"Overlooks the fact that the passage mentions that some tradi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about the Puranas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what is the main reason why European scholars initially struggled to understand Indian sculptures?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Why did Sanchi survive while Amaravati did not?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, which of the following best explains the purpose of the Puranas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What does the sculpture at Sanchi depicting a woman swinging from a tree represent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following most accurately describes the purpose of stupas according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misunderstands the passage's emphasis on relics…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the role of stupas in royal or ceremonial cont…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Introductory Microeconomics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T20:36:49.899Z",
+  "generatedAt": "2026-10-29T08:38:07.546Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the term used to describe the relationship between inputs used and output produced by a firm?",
+      "stem": "What is the term used to describe the income earned by the owner of land?",
       "choices": [
-        "Production function",
-        "Cost function",
-        "Supply function",
-        "Demand function"
+        "Interest",
+        "Wage",
+        "Rent",
+        "Profit"
       ],
-      "answerIndex": 0,
-      "solution": "The production function is the term that describes how a firm's inputs relate to its outputs, as it directly represents this relationship in economic theory. A cost function relates inputs to costs, not outputs. A supply function shows how much a firm is willing to supply at different prices, and a demand function shows consumer behavior, not the relationship between inputs and outputs.",
+      "answerIndex": 2,
+      "solution": "The income earned by the owner of land is called rent. This is one of the factors of production and its corresponding remuneration. Interest is the income from capital, wage is from labor, and profit is from entrepreneurship.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "किसी फर्म द्वारा उपयोग किए गए इनपुट और उत्पादित आउटपुट के बीच संबंध के लिए उपयोग किए जाने वाले शब्द क्या है?",
+          "stem": "भूमि के मालिक द्वारा अर्जित आय के लिए क्या शब्द प्रयोग किया जाता है?",
           "choices": [
-            "उत्पादन फलन",
-            "लागत फलन",
-            "आपूर्ति फलन",
-            "मांग फलन"
+            "ब्याज",
+            "वेतन",
+            "किराया",
+            "लाभ"
           ],
-          "solution": "उत्पादन फलन एक ऐसा शब्द है जो फर्म के इनपुट और आउटपुट के बीच संबंध को व्यक्त करता है, क्योंकि यह आर्थिक सिद्धांत में इस संबंध का सीधा प्रतिनिधित्व करता है। लागत फलन इनपुट के साथ लागत के संबंध को दर्शाता है, आउटपुट के साथ नहीं। आपूर्ति फलन विभिन्न मूल्यों पर फर्म द्वारा आपूर्ति करने की क्षमता को दर्शाता है, और मांग फलन उपभोक्ता व्यवहार को दर्शाता है, इनपुट और आउटपुट के संबंध को नहीं।",
+          "solution": "भूमि के मालिक द्वारा अर्जित आय किराया कहलाती है। यह उत्पादन के एक कारक और इसके संगत प्रतिफल है। ब्याज पूंजी से अर्जित आय है, वेतन श्रम से अर्जित आय है और लाभ उद्यमिता से अर्जित आय है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard economic terminology in Hindi.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate economic terminology as taught in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "कंपनीने वापरलेल्या विषयांच्या आउटपुट उत्पादनाशी संबंध वर्णन करण्यासाठी वापरलेला शब्द काय आहे?",
+          "stem": "जमीनच्या मालकाला मिळणारे उत्पन्न याला कोणत्या शब्दाने ओळखले जाते?",
           "choices": [
-            "उत्पादन कार्य",
-            "खर्च कार्य",
-            "पुरवठा कार्य",
-            "मागणी कार्य"
+            "व्याज",
+            "वेतन",
+            "भाडे",
+            "फायदा"
           ],
-          "solution": "उत्पादन कार्य हा शब्द आहे जो कंपनीच्या विषयांच्या आउटपुट उत्पादनाशी संबंध वर्णन करतो, कारण तो आर्थिक सिद्धांतामध्ये हा संबंध सीधा प्रतिबिंबित करतो. खर्च कार्य विषयांच्या खर्चाशी संबंधित असते, आउटपुट नाही. पुरवठा कार्य विविध किंमतींवर कंपनी किती पुरवते याचे दर्शन करते, आणि मागणी कार्य ग्राहकांच्या वर्तनाशी संबंधित असते, विषयांच्या आउटपुट उत्पादनाशी नाही.",
+          "solution": "जमीनच्या मालकाला मिळणारे उत्पन्न भाडे म्हणतात. हे उत्पादनाच्या घटकांपैकी एक आहे आणि त्याचे संबंधित प्रतिपूर्ती आहे. व्याज हे पूंजीचे उत्पन्न आहे, वेतन हे श्रमाचे आहे आणि फायदा हे उद्योजकतेचे आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for economic concepts.",
           "flag": null
         }
       },
@@ -72,53 +72,56 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses the remuneration for capital with that for land.",
+        "Refers to the income for labor.",
         null,
-        "confuses production function with cost function",
-        "confuses production function with supply function",
-        "confuses production function with demand function"
+        "Incorrectly states the remuneration for entrepreneurship."
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and tests recall of a basic economic definition. The correct answer is clearly 0, and the author's reasoning aligns with the correct understanding.",
+      "critique": "The solution correctly identifies 'rent' as the income earned by the owner of land, and the reasoning for the other options aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/12/economics/leec203.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
+          "ordinal": 15,
+          "pageStart": 14,
+          "pageEnd": 15,
           "headingPath": [
-            "Chapter 3: Production and Costs"
+            "Chapter 3: Production and Costs",
+            "3.7"
           ]
         },
         {
           "document": "ncert/12/economics/leec203.pdf",
-          "ordinal": 1,
-          "pageStart": 1,
-          "pageEnd": 2,
+          "ordinal": 16,
+          "pageStart": 15,
+          "pageEnd": 16,
           "headingPath": [
             "Chapter 3: Production and Costs",
-            "3.1"
+            "3.7",
+            "Exercises"
           ]
         },
         {
           "document": "ncert/12/economics/leec203.pdf",
-          "ordinal": 2,
-          "pageStart": 2,
-          "pageEnd": 3,
+          "ordinal": 17,
+          "pageStart": 16,
+          "pageEnd": 17,
           "headingPath": [
             "Chapter 3: Production and Costs",
-            "3.1"
+            "3.7",
+            "Exercises"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T20:36:49.899Z",
+      "generatedAt": "2026-10-29T08:38:07.546Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
@@ -126,41 +129,41 @@
       "difficulty": 1,
       "stem": "What is the term used for the total cost per unit of output?",
       "choices": [
-        "Total variable cost",
-        "Total fixed cost",
-        "Average fixed cost",
-        "Short run average cost"
+        "Average Fixed Cost",
+        "Average Variable Cost",
+        "Average Total Cost",
+        "Marginal Cost"
       ],
-      "answerIndex": 3,
-      "solution": "Short run average cost is the term used for the total cost per unit of output. Total variable cost and total fixed cost are total costs, not per unit, while average fixed cost only considers fixed costs per unit, not the total cost.",
+      "answerIndex": 2,
+      "solution": "Average Total Cost is the term used for the total cost per unit of output because it represents the total cost divided by the quantity of output produced. Average Fixed Cost is total fixed cost divided by output, Average Variable Cost is total variable cost divided by output, and Marginal Cost is the cost of producing one additional unit of output.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "उत्पादन के एक इकाई के लिए कुल लागत के लिए उपयोग किए जाने वाले शब्द क्या है?",
+          "stem": "उत्पादन के एक इकाई के कुल लागत के लिए उपयोग किए जाने वाले शब्द क्या है?",
           "choices": [
-            "कुल परिवर्तनशील लागत",
-            "कुल अचल लागत",
-            "औसत अचल लागत",
-            "लघु अवधि की औसत लागत"
+            "औसत नियत लागत",
+            "औसत परिवर्तनीय लागत",
+            "औसत कुल लागत",
+            "सीमांत लागत"
           ],
-          "solution": "लघु अवधि की औसत लागत उत्पादन के एक इकाई के लिए कुल लागत के लिए उपयोग किए जाने वाला शब्द है। कुल परिवर्तनशील लागत और कुल अचल लागत कुल लागत हैं, न कि एक इकाई पर, जबकि औसत अचल लागत केवल अचल लागत के एक इकाई पर विचार करता है, न कि कुल लागत।",
+          "solution": "कुल लागत प्रति इकाई उत्पादन के लिए शब्द औसत कुल लागत है क्योंकि यह कुल लागत को उत्पादित आउटपुट की मात्रा से विभाजित करता है। औसत नियत लागत नियत लागत को आउटपुट से विभाजित करता है, औसत परिवर्तनीय लागत परिवर्तनीय लागत को आउटपुट से विभाजित करता है और सीमांत लागत एक अतिरिक्त इकाई उत्पादन की लागत है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard economic terminology as taught in Hindi-medium textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard economic terminology as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "उत्पादनाच्या एककाच्या एकूण खर्चासाठी वापरलेले शब्द काय आहे?",
+          "stem": "उत्पादनाच्या एककाच्या एकूण खर्चासाठी वापरलेला शब्द कोणता आहे?",
           "choices": [
-            "एकूण चल खर्च",
-            "एकूण निश्चित खर्च",
             "सरासरी निश्चित खर्च",
-            "लघुकालीन सरासरी खर्च"
+            "सरासरी चल खर्च",
+            "सरासरी एकूण खर्च",
+            "सीमांत खर्च"
           ],
-          "solution": "लघुकालीन सरासरी खर्च हा उत्पादनाच्या एककाच्या एकूण खर्चासाठी वापरलेला शब्द आहे. एकूण चल खर्च आणि एकूण निश्चित खर्च हे एकूण खर्च आहेत, एककाच्या खर्चाचे नाहीत, तर सरासरी निश्चित खर्च हा केवळ निश्चित खर्चाच्या एककाच्या खर्चाचा विचार करतो, एकूण खर्चाचा नाही.",
+          "solution": "एकूण खर्चाच्या एककासाठी वापरलेला शब्द सरासरी एकूण खर्च आहे कारण तो एकूण खर्च उत्पादनाच्या मात्रेने भागून दर्शवतो. सरासरी निश्चित खर्च म्हणजे एकूण निश्चित खर्च उत्पादनाने भागून दिलेला असतो. सरासरी चल खर्च म्हणजे एकूण चल खर्च उत्पादनाने भागून दिलेला असतो आणि सीमांत खर्च म्हणजे एका अतिरिक्त उत्पादनाच्या निर्माणाचा खर्च असतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi economic terminology.",
           "flag": null
         }
       },
@@ -169,20 +172,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses total and average concepts",
-        "Confuses total and average concepts",
-        "Only considers fixed cost part of SAC', ",
-        null
+        "Confuses average total cost with average fixed cost",
+        "Confuses average total cost with average variable cost",
+        null,
+        "Confuses total cost per unit with the cost of producing one additional unit"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 3 (Short run average cost), as it is defined as the total cost per unit of output. The other options are either total costs or partial averages, which do not represent the total cost per unit.",
+      "critique": "The question is well-posed and the solution is correct. The correct answer is Average Total Cost, as it is defined as total cost per unit of output. The other options represent different cost measures and are correctly identified as incorrect.",
       "sources": [
         {
           "document": "ncert/12/economics/leec203.pdf",
@@ -216,120 +219,61 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T20:36:49.899Z",
+      "generatedAt": "2026-10-29T08:38:07.546Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "If a firm’s LRAC curve is falling, what can be said about its LRMC curve?",
+      "difficulty": 2,
+      "stem": "Which of the following best describes the relationship between the marginal product and the total product of an input?",
       "choices": [
-        "LRMC is rising",
-        "LRMC is equal to LRAC",
-        "LRMC is less than LRAC",
-        "LRMC is not related to LRAC"
+        "The marginal product is the sum of all average products",
+        "The marginal product is the total product divided by the number of units of input",
+        "The marginal product is the additional output from the last unit of input",
+        "The marginal product is the same as the total product"
       ],
       "answerIndex": 2,
-      "solution": "When the long-run average cost (LRAC) curve is falling, the long-run marginal cost (LRMC) must be below LRAC because each additional unit is costing less than the average. This means the third option is correct. The other options are incorrect because LRMC can be rising while LRAC is falling, LRMC is not equal to LRAC in this region, and LRMC and LRAC are directly related in the long run.",
+      "solution": "The marginal product is the additional output produced by adding one more unit of input. The total product is the sum of all marginal products up to that level of input. The other options describe either the average product or misunderstand the relationship between marginal and total product.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक फर्म के लंबे समय के औसत लागत (LRAC) वक्र गिर रहा है, तो इसके लंबे समय के सीमांत लागत (LRMC) वक्र के बारे में क्या कहा जा सकता है?",
+          "stem": "निम्नलिखित में से कौन-सा किसी आगत के सीमांत उत्पाद एवं कुल उत्पाद के बीच संबंध का सबसे अच्छा वर्णन करता है?",
           "choices": [
-            "LRMC बढ़ रहा है",
-            "LRMC LRAC के बराबर है",
-            "LRMC LRAC से कम है",
-            "LRMC LRAC से संबंधित नहीं है"
+            "सीमांत उत्पाद सभी औसत उत्पादों का योग है",
+            "सीमांत उत्पाद आगत के इकाई की संख्या से कुल उत्पाद का भाग है",
+            "सीमांत उत्पाद अंतिम आगत इकाई से अतिरिक्त उत्पाद है",
+            "सीमांत उत्पाद कुल उत्पाद के समान है"
           ],
-          "solution": "जब लंबे समय के औसत लागत (LRAC) वक्र गिर रहा है, तो लंबे समय के सीमांत लागत (LRMC) LRAC से कम होना चाहिए क्योंकि प्रत्येक अतिरिक्त इकाई की लागत औसत से कम होती है। इसका अर्थ है कि तीसरा विकल्प सही है। अन्य विकल्प गलत हैं क्योंकि LRMC लागत गिरते समय बढ़ सकता है, इस क्षेत्र में LRMC LRAC के बराबर नहीं होता है, और लंबे समय में LRMC और LRAC सीधे संबंधित होते हैं।",
-          "imageAlt": "एक ग्राफ जिसमें LRAC और LRMC वक्र दिखाए गए हैं, जहां LRAC गिरते समय LRMC LRAC से नीचे होता है।",
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the structure matches the original.",
+          "solution": "सीमांत उत्पाद एक अतिरिक्त आगत इकाई जोड़ने से उत्पन्न अतिरिक्त उत्पाद है। कुल उत्पाद उस स्तर तक सभी सीमांत उत्पादों का योग है। अन्य विकल्प या तो औसत उत्पाद का वर्णन करते हैं या सीमांत एवं कुल उत्पाद के बीच संबंध को गलत समझते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi economic terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एका फर्मच्या लॉन्ग रन एव्हरेज कॉस्ट (LRAC) वक्राचा घसरत असेल, तर तिच्या लॉन्ग रन मार्जिनल कॉस्ट (LRMC) बद्दल काय म्हणायला शकता?",
+          "stem": "खालीलपैकी कोणते एक विषयाच्या सीमांत उत्पादन आणि एकूण उत्पादन यांच्या संबंधाचे सर्वात चांगले वर्णन करते?",
           "choices": [
-            "LRMC वाढत आहे",
-            "LRMC LRAC बरोबर आहे",
-            "LRMC LRAC पेक्षा कमी आहे",
-            "LRMC ला LRAC शी काही संबंध नाही"
+            "सीमांत उत्पादन हा सर्व ओसाड उत्पादनांचा बेरीज आहे",
+            "सीमांत उत्पादन हा विषयाच्या एककांच्या संख्येने एकूण उत्पादनाचा भागाकार आहे",
+            "सीमांत उत्पादन हा शेवटच्या विषयाच्या एककाने उत्पन्न केलेल्या अतिरिक्त उत्पादनाचे वर्णन करते",
+            "सीमांत उत्पादन हे एकूण उत्पादनासारखेच असते"
           ],
-          "solution": "जेव्हा लॉन्ग रन एव्हरेज कॉस्ट (LRAC) वक्र घसरत असतो, तेव्हा लॉन्ग रन मार्जिनल कॉस्ट (LRMC) ला LRAC पेक्षा कमी असतो कारण प्रत्येक अतिरिक्त एककाची किंमत एव्हरेज पेक्षा कमी असते. हे तिसरा विकल्प बरोबर आहे. इतर विकल्प चुकीचे आहेत कारण LRMC ला घसरत असताना वाढत असू शकते, LRAC च्या या क्षेत्रात LRMC ला LRAC बरोबर नसते आणि लॉन्ग रनमध्ये LRMC आणि LRAC चा सीधा संबंध असतो.",
-          "imageAlt": "एक ग्राफ ज्यात LRAC आणि LRMC वक्र दाखवले गेले आहेत, जेथे LRAC घसरत असताना LRMC LRAC पेक्षा खाली असतो.",
+          "solution": "सीमांत उत्पादन हे एका अतिरिक्त विषयाच्या एककाने उत्पन्न केलेल्या अतिरिक्त उत्पादनाचे वर्णन करते. एकूण उत्पादन हे त्या स्तरापर्यंतच्या सर्व सीमांत उत्पादनांच्या बेरजेने बनते. इतर विकल्प ओसाड उत्पादनाचे वर्णन करतात किंवा सीमांत आणि एकूण उत्पादन यांच्या संबंधाच्या चुकीच्या समजाचे वर्णन करतात.",
+          "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A graph showing the LRAC and LRMC curves, with LRMC below LRAC when LRAC is falling.",
-      "figure": {
-        "kind": "graph",
-        "spec": {
-          "x": {
-            "min": 0,
-            "max": 10,
-            "step": 1,
-            "label": "Output"
-          },
-          "y": {
-            "min": 0,
-            "max": 100,
-            "step": 10,
-            "label": "Cost"
-          },
-          "grid": true,
-          "curves": [
-            {
-              "poly": [
-                20,
-                40,
-                60,
-                80
-              ],
-              "label": "LRAC"
-            },
-            {
-              "poly": [
-                15,
-                35,
-                55,
-                75
-              ],
-              "label": "LRMC"
-            }
-          ]
-        },
-        "labels": {
-          "Output": {
-            "en": "Output",
-            "hi": "आउटपुट",
-            "mr": "उत्पादन"
-          },
-          "Cost": {
-            "en": "Cost",
-            "hi": "लागत",
-            "mr": "खर्च"
-          },
-          "LRAC": {
-            "en": "LRAC",
-            "hi": "LRAC",
-            "mr": "LRAC"
-          },
-          "LRMC": {
-            "en": "LRMC",
-            "hi": "LRMC",
-            "mr": "LRMC"
-          }
-        }
-      },
-      "needsFigure": true,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
-        "Assumes LRMC rises when LRAC falls",
-        "Believes LRMC equals LRAC at all levels of output",
+        "Confuses the definition of average product with marginal product.",
+        "Describes the average product instead of the marginal product.",
         null,
-        "Fails to recognize the relationship between the two curves"
+        "Incorrectly states that marginal product and total product are the same."
       ],
       "solverAnswers": [
         2,
@@ -339,7 +283,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies that when LRAC is falling, LRMC must be below LRAC, which matches the author's key. The reasoning aligns with standard microeconomic theory.",
+      "critique": "The correct answer is option 2, which accurately defines marginal product as the additional output from the last unit of input. The solution correctly distinguishes between marginal, total, and average products, and the reasons for the wrong options align with common misconceptions.",
       "sources": [
         {
           "document": "ncert/12/economics/leec203.pdf",
@@ -375,353 +319,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T20:36:49.899Z",
+      "generatedAt": "2026-10-29T08:38:07.546Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If a firm increases all its inputs by a proportional amount and the output increases by the same proportion, what type of returns to scale is the firm experiencing?",
+      "stem": "If a firm's short run marginal cost (SMC) curve is 'U'-shaped, what happens to the average variable cost (AVC) curve at the point where SMC intersects AVC?",
       "choices": [
-        "Increasing returns to scale",
-        "Decreasing returns to scale",
-        "Constant returns to scale",
-        "No returns to scale"
+        "AVC starts falling",
+        "AVC starts rising",
+        "AVC remains constant",
+        "AVC reaches its minimum"
       ],
-      "answerIndex": 2,
-      "solution": "When a firm increases all its inputs by a proportional amount and output increases by the same proportion, it is experiencing constant returns to scale. This means the output scales directly with the input, maintaining the same level of efficiency. Increasing returns to scale would require output to grow more than proportionally, while decreasing returns to scale would mean output grows less than proportionally. 'No returns to scale' is not a recognized economic concept.",
+      "answerIndex": 3,
+      "solution": "When the short run marginal cost (SMC) curve intersects the average variable cost (AVC) curve, the AVC curve is at its minimum point because SMC equals AVC at that point. Before the intersection, SMC is below AVC, causing AVC to fall, and after the intersection, SMC is above AVC, causing AVC to rise. The other options are incorrect because they do not align with the economic relationship between SMC and AVC.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई फर्म अपने सभी इनपुट को एक समान अनुपात में बढ़ाती है और आउटपुट उसी अनुपात में बढ़ जाता है, तो फर्म किस प्रकार के लाभ अनुपात का अनुभव कर रही है?",
+          "stem": "यदि एक फर्म के लघुकालीन सीमांत लागत (SMC) वक्र 'U' आकार का है, तो SMC वक्र औसत परिवर्तनीय लागत (AVC) वक्र के किस बिंदु पर प्रतिच्छेद करता है, तो AVC वक्र पर क्या होता है?",
           "choices": [
-            "बढ़ते लाभ अनुपात",
-            "घटते लाभ अनुपात",
-            "स्थिर लाभ अनुपात",
-            "कोई लाभ अनुपात नहीं"
+            "AVC गिरना शुरू हो जाता है",
+            "AVC बढ़ना शुरू हो जाता है",
+            "AVC अपरिवर्तित रहता है",
+            "AVC अपने न्यूनतम बिंदु पर पहुंच जाता है"
           ],
-          "solution": "जब कोई फर्म अपने सभी इनपुट को एक समान अनुपात में बढ़ाती है और आउटपुट उसी अनुपात में बढ़ जाता है, तो वह स्थिर लाभ अनुपात का अनुभव कर रही है। इसका अर्थ है कि आउटपुट इनपुट के सीधे अनुपात में बढ़ता है, दक्षता के स्तर को बरकरार रखते हुए। बढ़ते लाभ अनुपात के मामले में आउटपुट अनुपात से अधिक बढ़ेगा, जबकि घटते लाभ अनुपात के मामले में आउटपुट अनुपात से कम बढ़ेगा। 'कोई लाभ अनुपात नहीं' आर्थिक अवधारणा के रूप में मान्य नहीं है।",
-          "imageAlt": "तीन बिंदु A, B, और C एक सीधी रेखा पर बराबर दूरी पर हैं",
-          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options are correctly translated, and the correct answer remains in the same position. The solution is also accurately translated, maintaining the original explanation.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका कंपनीने तिच्या सर्व इनपुट्स एका प्रमाणात वाढवले आणि उत्पादन त्याच प्रमाणात वाढले, तर कंपनी कोणत्या प्रकारच्या स्केलच्या परताव्याचा अनुभव करत आहे?",
-          "choices": [
-            "वाढत्या परताव्याच्या स्केल",
-            "कमी होणायच्या परताव्याच्या स्केल",
-            "स्थिर परताव्याच्या स्केल",
-            "कोणत्याही परताव्याच्या स्केल नाही"
-          ],
-          "solution": "जेव्हा एका कंपनीने सर्व इनपुट्स एका प्रमाणात वाढवले आणि उत्पादन त्याच प्रमाणात वाढले, तेव्हा ती स्थिर परताव्याच्या स्केलचा अनुभव करत आहे. हे अर्थ असा की उत्पादन इनपुटसोबत थेट वाढते, अपरिवर्तित दराने. वाढत्या परताव्याच्या स्केलमध्ये उत्पादन प्रमाणात वाढले पाहिजे, तर कमी होणायच्या परताव्याच्या स्केलमध्ये उत्पादन प्रमाणात कमी वाढले पाहिजे. 'कोणत्याही परताव्याच्या स्केल नाही' हे अर्थशास्त्रीय संकल्पना नाही.",
-          "imageAlt": "तीन बिंदू A, B आणि C एका सरळ रेषेवर असलेले आहेत आणि त्यांच्यातील अंतर समान आहे",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "Three points A, B, and C on a straight line with equal distances between them",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 10,
-            "yMin": 0,
-            "yMax": 10,
-            "unit": "units"
-          },
-          "points": [
-            {
-              "id": "A",
-              "x": 2,
-              "y": 2
-            },
-            {
-              "id": "B",
-              "x": 5,
-              "y": 5
-            },
-            {
-              "id": "C",
-              "x": 8,
-              "y": 8
-            }
-          ],
-          "segments": [
-            {
-              "from": "A",
-              "to": "B",
-              "kind": "segment",
-              "length": {
-                "value": 4.24,
-                "unit": "units"
-              },
-              "label": "AB"
-            },
-            {
-              "from": "B",
-              "to": "C",
-              "kind": "segment",
-              "length": {
-                "value": 4.24,
-                "unit": "units"
-              },
-              "label": "BC"
-            }
-          ]
-        },
-        "labels": {
-          "AB": {
-            "en": "Segment AB",
-            "hi": "खंड AB",
-            "mr": "खंड AB"
-          },
-          "BC": {
-            "en": "Segment BC",
-            "hi": "खंड BC",
-            "mr": "खंड BC"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "confuses increasing returns with constant returns",
-        "confuses decreasing returns with constant returns",
-        null,
-        "incorrect terminology"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution correctly identifies constant returns to scale. The distractors reflect common misconceptions about returns to scale.",
-      "sources": [
-        {
-          "document": "ncert/12/economics/leec203.pdf",
-          "ordinal": 6,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 3: Production and Costs",
-            "3.5"
-          ]
-        },
-        {
-          "document": "ncert/12/economics/leec203.pdf",
-          "ordinal": 7,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Production and Costs",
-            "3.6"
-          ]
-        },
-        {
-          "document": "ncert/12/economics/leec203.pdf",
-          "ordinal": 8,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Production and Costs",
-            "3.7"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T20:36:49.899Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following best describes the short run in production?",
-      "choices": [
-        "All inputs are variable",
-        "Some inputs are fixed and some are variable",
-        "All inputs are fixed",
-        "Inputs are neither fixed nor variable"
-      ],
-      "answerIndex": 1,
-      "solution": "In the short run, production involves some inputs that cannot be changed, such as capital, while others, like labor, can be adjusted. This makes the correct option 'Some inputs are fixed and some are variable.' The other options are incorrect because they either describe the long run or contradict the nature of production constraints.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा उत्पादन के अल्पकाल का सबसे अच्छा वर्णन करता है?",
-          "choices": [
-            "सभी आगत चर होते हैं",
-            "कुछ आगत निश्चित होते हैं और कुछ चर होते हैं",
-            "सभी आगत निश्चित होते हैं",
-            "आगत न तो निश्चित होते हैं और न चर होते हैं"
-          ],
-          "solution": "अल्पकाल में, उत्पादन में कुछ आगत जैसे कि पूंजी को बदला नहीं जा सकता है, जबकि अन्य आगत जैसे श्रम को समायोजित किया जा सकता है। इसके कारण सही विकल्प 'कुछ आगत निश्चित होते हैं और कुछ चर होते हैं' है। अन्य विकल्प गलत हैं क्योंकि वे या तो दीर्घकाल का वर्णन करते हैं या उत्पादन की सीमाओं की प्रकृति के विरोध में हैं।",
-          "imageAlt": "एक पौधे की कोशिका का चित्र जिसमें कोशिका भित्ति, झिल्ली और केंद्रक अंकित है",
-          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains in the same position.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते उत्पादनाच्या लघुकालाचे सर्वात चांगले वर्णन करते?",
-          "choices": [
-            "सर्व विषय चलनी असतात",
-            "काही विषय निश्चित असतात आणि काही चलनी असतात",
-            "सर्व विषय निश्चित असतात",
-            "विषय निश्चित नसतात आणि चलनी नसतात"
-          ],
-          "solution": "लघुकालात, उत्पादनात अशा विषयांचा समावेश होतो जे बदलत नाहीत, जसे की पूर्वसंचय, जे बदलता येऊ शकतात, जसे की श्रम. हे बरोबर विकल्प 'काही विषय निश्चित असतात आणि काही चलनी असतात' बनवते. इतर विकल्प चुकीचे आहेत कारण ते लांबकाळाचे वर्णन करतात किंवा उत्पादनाच्या सीमा विरुद्ध आहेत.",
-          "imageAlt": "एका वनस्पतीच्या कोशिकेचा आरेख, ज्यात कोशिका भिंत, झिल्ली आणि न्यूक्लियस लेबल केलेले आहेत",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A diagram of a plant cell with cell wall, membrane, and nucleus labeled",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "plantCell",
-              "x": 50,
-              "y": 30,
-              "size": 30,
-              "labels": [
-                "cellWall",
-                "membrane",
-                "nucleus"
-              ]
-            }
-          ],
-          "texts": [
-            {
-              "x": 50,
-              "y": 10,
-              "label": "PlantCell"
-            }
-          ]
-        },
-        "labels": {
-          "cellWall": {
-            "en": "Cell wall",
-            "hi": "कोशिका भित्ति",
-            "mr": "कोशिका भिंत"
-          },
-          "membrane": {
-            "en": "Cell membrane",
-            "hi": "कोशिका झिल्ली",
-            "mr": "कोशिका झिल्ली"
-          },
-          "nucleus": {
-            "en": "Nucleus",
-            "hi": "केंद्रक",
-            "mr": "न्यूक्लियस"
-          },
-          "PlantCell": {
-            "en": "Plant cell diagram",
-            "hi": "पौधे की कोशिका चित्र",
-            "mr": "वनस्पती कोशिका आरेख"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "describes the long run",
-        null,
-        "incorrectly assumes all inputs are fixed",
-        "does not describe a realistic production scenario"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is about the definition of the short run in production, and the correct answer is that some inputs are fixed and some are variable. The author's solution and reasoning are accurate and align with standard economic theory.",
-      "sources": [
-        {
-          "document": "ncert/12/economics/leec203.pdf",
-          "ordinal": 6,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 3: Production and Costs",
-            "3.5"
-          ]
-        },
-        {
-          "document": "ncert/12/economics/leec203.pdf",
-          "ordinal": 7,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Production and Costs",
-            "3.6"
-          ]
-        },
-        {
-          "document": "ncert/12/economics/leec203.pdf",
-          "ordinal": 8,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Production and Costs",
-            "3.7"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T20:36:49.899Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A firm experiences increasing returns to scale at low levels of output, followed by constant returns to scale, and eventually decreasing returns to scale. What would be the shape of its Long Run Average Cost (LRAC) curve?",
-      "choices": [
-        "It would be a horizontal line",
-        "It would be 'U'-shaped",
-        "It would be a vertical line",
-        "It would be a straight upward slope"
-      ],
-      "answerIndex": 1,
-      "solution": "The LRAC curve would be 'U'-shaped because at low levels of output, increasing returns to scale cause average costs to decrease, then constant returns to scale keep costs stable, and finally decreasing returns to scale cause costs to rise. A horizontal line would imply constant costs throughout, a vertical line is irrelevant to cost behavior, and a straight upward slope would suggest only increasing costs, which does not match the described phases.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक फर्म कम आउटपुट के स्तर पर बढ़ते लाभ के अनुपात का अनुभव करती है, फिर स्थिर लाभ के अनुपात का, और अंततः घटते लाभ के अनुपात का। इसके लंबे समय के औसत लागत (LRAC) वक्र का आकार क्या होगा?",
-          "choices": [
-            "यह एक क्षैतिज रेखा होगी",
-            "यह 'U'-आकार की होगी",
-            "यह एक लंबवत रेखा होगी",
-            "यह एक सीधी ऊपर की ओर बढ़ती रेखा होगी"
-          ],
-          "solution": "LRAC वक्र 'U'-आकार की होगी क्योंकि कम आउटपुट के स्तर पर, बढ़ते लाभ के अनुपात औसत लागत को कम करते हैं, फिर स्थिर लाभ के अनुपात लागत को स्थिर रखते हैं, और अंततः घटते लाभ के अनुपात लागत को बढ़ा देते हैं। एक क्षैतिज रेखा का अर्थ होगा कि लागत सभी स्तरों पर स्थिर रहती है, एक लंबवत रेखा लागत व्यवहार के लिए असंबंधित है, और एक सीधी ऊपर की ओर बढ़ती रेखा का अर्थ होगा कि केवल बढ़ती लागत होती है, जो वर्णित चरणों के अनुरूप नहीं होती है।",
+          "solution": "जब लघुकालीन सीमांत लागत (SMC) वक्र औसत परिवर्तनीय लागत (AVC) वक्र के साथ प्रतिच्छेद करता है, तो AVC वक्र अपने न्यूनतम बिंदु पर होता है क्योंकि इस बिंदु पर SMC, AVC के बराबर होता है। प्रतिच्छेदन से पहले, SMC, AVC से नीचे होता है, जिसके कारण AVC गिरता है, और प्रतिच्छेदन के बाद, SMC, AVC से ऊपर होता है, जिसके कारण AVC बढ़ता है। अन्य विकल्प गलत हैं क्योंकि वे SMC और AVC के आर्थिक संबंध के साथ मेल नहीं खाते।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard economic terminology in Hindi.",
+          "critique": "Translation accurately reflects the original meaning, technical terms are correctly used in Hindi, and the correct answer remains option 3.",
           "flag": null
         },
         "mr": {
-          "stem": "एका कंपनीला निम्न उत्पादन पातळीवर वाढत योग्यता असते, नंतर नियत योग्यता असते आणि अखेरीस घटत योग्यता असते. तिच्या लॉन्ग रन एव्हरेज कॉस्ट (LRAC) वक्राचे आकार काय असेल?",
+          "stem": "जर एका फर्मच्या लघुकालीन सीमांत खर्च (SMC) वक्राचे आकार 'U' आहे, तर SMC वक्राने AVC वक्राशी छेदन केल्यास AVC वक्रावर काय होते?",
           "choices": [
-            "तो एक आडवा रेषा असेल",
-            "तो 'U' आकाराचा असेल",
-            "तो उभा रेषा असेल",
-            "तो सीधा वरच्या दिशेने वाढणारा ढाल असेल"
+            "AVC सुरू होते घसरते",
+            "AVC सुरू होते वाढते",
+            "AVC अचल राहते",
+            "AVC त्याचे न्यूनतम मूल्य प्राप्त करते"
           ],
-          "solution": "LRAC वक्र 'U' आकाराचा असेल कारण निम्न उत्पादन पातळीवर, वाढत योग्यता कारण औसत खर्च कमी होतात, नंतर नियत योग्यता खर्च स्थिर राहतात आणि अखेरीस घटत योग्यता कारण खर्च वाढतात. आडवा रेषा असल्यास खर्च स्थिर राहतील, उभा रेषा खर्चाच्या वर्तनाशी संबंधित नाही आणि सीधा वरच्या दिशेने वाढणारा ढाल असल्यास केवळ वाढत खर्च असतील, जे वर्णन केलेल्या टप्प्यांच्या तुलनेत नाही.",
+          "solution": "जेव्हा लघुकालीन सीमांत खर्च (SMC) वक्र औसत चल खर्च (AVC) वक्राशी छेदन करतो, तेव्हा AVC वक्र त्याच्या न्यूनतम बिंदूवर असतो कारण या बिंदूवर SMC आणि AVC समान असतात. छेदन बिंदूपूर्वी, SMC वर असतो, ज्यामुळे AVC घसरते आणि छेदन बिंदूनंतर, SMC वर असतो, ज्यामुळे AVC वाढते. इतर विकल्प अयोग्य आहेत कारण ते SMC आणि AVC दरम्यानच्या आर्थिक संबंधाशी जुळत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation accurately reflects the original English question and maintains the correct meaning, structure, and terminology used in Marathi economics education.",
+          "critique": "Translation is accurate, maintains the economic meaning, and uses standard Marathi terminology for microeconomic concepts.",
           "flag": null
         }
       },
@@ -730,20 +370,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Incorrectly assumes LRAC remains constant",
-        null,
-        "Confuses LRAC with a different type of curve",
-        "Believes LRAC only rises with output"
+        "Confuses the point of intersection with the start of a fall in AVC",
+        "Confuses the point of intersection with the start of a rise in AVC",
+        "Misunderstands the relationship between SMC and AVC at the intersection point",
+        null
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        3,
+        3,
+        3,
+        3,
+        3
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the LRAC curve is 'U'-shaped due to the three phases of returns to scale. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that the SMC curve intersects the AVC curve at its minimum point. The reasoning aligns with standard microeconomic theory, and the author's explanations for the distractors are valid misconceptions.",
       "sources": [
         {
           "document": "ncert/12/economics/leec203.pdf",
@@ -777,193 +417,244 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T20:36:49.899Z",
+      "generatedAt": "2026-10-29T08:38:07.546Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "A firm produces 100 units of output using 10 units of capital and 10 units of labour. If the firm doubles both inputs, the output increases by 200 units. What type of returns to scale is the firm experiencing?",
+      "stem": "A firm in the short run has 5 units of capital and can vary labor. The total product increases from 50 to 70 when labor increases from 1 to 2. It then increases to 90 when labor increases to 3. What is the marginal product of the second unit of labor?",
       "choices": [
-        "Increasing returns to scale",
-        "Decreasing returns to scale",
-        "Constant returns to scale",
-        "No returns to scale"
+        "20",
+        "30",
+        "40",
+        "50"
+      ],
+      "answerIndex": 0,
+      "solution": "The marginal product of the second unit of labor is calculated as the change in total product when labor increases from 1 to 2. The total product increases from 50 to 70, so the marginal product is 20. The first option is correct. The second option is incorrect because it would be the marginal product of the third unit. The third and fourth options are also incorrect.",
+      "checkExpr": "70-50",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अल्पकाल में एक फर्म के पास 5 इकाई पूंजी है और वह श्रम को बदल सकती है। जब श्रम 1 से 2 तक बढ़ता है तो कुल उत्पाद 50 से 70 तक बढ़ जाता है। फिर जब श्रम 3 तक बढ़ता है तो यह 90 तक पहुंच जाता है। द्वितीय इकाई श्रम का सीमांत उत्पाद क्या है?",
+          "choices": [
+            "20",
+            "30",
+            "40",
+            "50"
+          ],
+          "solution": "द्वितीय इकाई श्रम का सीमांत उत्पाद श्रम 1 से 2 तक बढ़ने पर कुल उत्पाद में परिवर्तन के रूप में गणना किया जाता है। कुल उत्पाद 50 से 70 तक बढ़ जाता है, इसलिए सीमांत उत्पाद 20 है। पहला विकल्प सही है। दूसरा विकल्प गलत है क्योंकि यह तीसरी इकाई का सीमांत उत्पाद होगा। तीसरा और चौथा विकल्प भी गलत हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate economic terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लघुकालात एक उत्पादक 5 एकक पूर्वसाधन आहे आणि श्रम बदलू शकतो. जेव्हा श्रम 1 ते 2 वाढतो तेव्हा एकूण उत्पादन 50 ते 70 वाढते. नंतर जेव्हा श्रम 3 वर पोहोचतो तेव्हा एकूण उत्पादन 90 वाढते. दुसर्या एकक श्रमाचे सीमांत उत्पादन किती आहे?",
+          "choices": [
+            "20",
+            "30",
+            "40",
+            "50"
+          ],
+          "solution": "दुसर्या एकक श्रमाचे सीमांत उत्पादन श्रम 1 ते 2 वाढताना एकूण उत्पादनातील बदल म्हणून गणले जाते. एकूण उत्पादन 50 ते 70 वाढते, त्यामुळे सीमांत उत्पादन 20 आहे. पहिला विकल्प बरोबर आहे. दुसरा विकल्प चुकीचा आहे कारण तो तिसर्या एकक श्रमाचे सीमांत उत्पादन असते. तिसरा आणि चौथा विकल्प देखील चुकीचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Calculates the total product at 2 units of labor (70) instead of the change in total product from 1 to 2 units (20)",
+        "calculates the marginal product of the third unit instead of the second",
+        "adds total product values instead of calculating the difference"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The marginal product of the second unit of labor is the change in total product when labor increases from 1 to 2, which is 70 - 50 = 20. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec203.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Production and Costs",
+            "3.2"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec203.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Production and Costs",
+            "3.2"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec203.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Production and Costs",
+            "3.4"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T08:38:07.546Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A firm produces 10 units of output using 4 units of labour and 1 unit of capital. It can also produce 10 units of output using 2 units of labour and 2 units of capital. What does this illustrate about the firm's production process?",
+      "choices": [
+        "The firm is using inefficient methods of production",
+        "The firm is producing different levels of output with the same inputs",
+        "The firm is using different combinations of inputs to produce the same level of output",
+        "The firm is not using any capital in its production process"
       ],
       "answerIndex": 2,
-      "solution": "When both inputs are doubled and output also doubles, the firm is experiencing constant returns to scale because the output increases in the same proportion as the inputs. Increasing returns to scale would require output to more than double, while decreasing returns to scale would result in less than a doubling of output. No returns to scale is not a recognized economic concept in this context.",
+      "solution": "The correct answer is that the firm is using different combinations of inputs to produce the same level of output. This is illustrated by the fact that the firm can produce 10 units of output with either (4L, 1K) or (2L, 2K). The other options are incorrect because they either contradict the given information or misinterpret the scenario. The firm is not inefficient, as it is producing the same output with different inputs. It is not producing different levels of output, and it is clearly using capital in its production process.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक फर्म 10 इकाई पूंजी और 10 इकाई श्रम के उपयोग से 100 इकाई उत्पादन करती है। यदि फर्म दोनों इनपुट को दोगुना कर देती है, तो उत्पादन 200 इकाई बढ़ जाता है। फर्म किस प्रकार के पैमाने पर लाभ का अनुभव कर रही है?",
+          "stem": "एक फर्म 4 इकाई श्रम और 1 इकाई पूंजी के साथ 10 इकाई उत्पादन करती है। यह 2 इकाई श्रम और 2 इकाई पूंजी के साथ भी 10 इकाई उत्पादन कर सकती है। यह फर्म के उत्पादन प्रक्रिया के बारे में क्या सुझाव देता है?",
           "choices": [
-            "बढ़ते पैमाने पर लाभ",
-            "घटते पैमाने पर लाभ",
+            "फर्म अकुशल उत्पादन विधियों का उपयोग कर रही है",
+            "फर्म एक ही आगतों के साथ अलग-अलग उत्पादन स्तर बना रही है",
+            "फर्म एक ही उत्पादन स्तर के लिए अलग-अलग आगत संयोजन का उपयोग कर रही है",
+            "फर्म अपने उत्पादन में कोई पूंजी का उपयोग नहीं कर रही है"
+          ],
+          "solution": "सही उत्तर यह है कि फर्म एक ही उत्पादन स्तर के लिए अलग-अलग आगत संयोजन का उपयोग कर रही है। यह इस तथ्य द्वारा दर्शाया जाता है कि फर्म 10 इकाई उत्पादन कर सकती है (4L, 1K) या (2L, 2K) के साथ। अन्य विकल्प गलत हैं क्योंकि वे दी गई जानकारी के विरोधाभास करते हैं या स्थिति की गलत व्याख्या करते हैं। फर्म अकुशल नहीं है, क्योंकि यह अलग-अलग आगतों के साथ एक ही उत्पादन कर रही है। यह अलग-अलग उत्पादन स्तर नहीं बना रही है, और यह स्पष्ट रूप से अपने उत्पादन प्रक्रिया में पूंजी का उपयोग कर रही है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer remaining in the same position (option 3). The distractors remain incorrect and distinct, and technical terms like 'आगत' (inputs) and 'उत्पादन स्तर' (output level) are appropriate for a Hindi-medium economics textbook.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका कंपनीने 4 एकक श्रम आणि 1 एकक पूंजी वापरून 10 एकक उत्पादन केले. ती 2 एकक श्रम आणि 2 एकक पूंजी वापरून देखील 10 एकक उत्पादन करू शकते. हे कंपनीच्या उत्पादन प्रक्रियेबद्दल काय सूचित करते?",
+          "choices": [
+            "कंपनी अक्षम उत्पादन पद्धती वापरत आहे",
+            "कंपनी समान आगारांसह वेगवेगळे उत्पादन पातळी तयार करत आहे",
+            "कंपनी समान उत्पादन पातळी तयार करण्यासाठी वेगवेगळे आगारांचे संयोजन वापरत आहे",
+            "कंपनी आपल्या उत्पादन प्रक्रियेत कोणतीही पूंजी वापरत नाही"
+          ],
+          "solution": "योग्य उत्तर असे आहे की कंपनी समान उत्पादन पातळी तयार करण्यासाठी वेगवेगळे आगारांचे संयोजन वापरत आहे. हे त्याच्या तथ्याने सूचित केले जाते की कंपनी 10 एकक उत्पादन 4L, 1K किंवा 2L, 2K वापरून तयार करू शकते. इतर विकल्प चुकीचे आहेत कारण ते दिलेल्या माहितीला विरोध करतात किंवा परिस्थितीचे चुकीचे अर्थ सांगतात. कंपनी अक्षम नाही, कारण ती वेगवेगळ्या आगारांसह समान उत्पादन तयार करत आहे. ती वेगवेगळे उत्पादन पातळी तयार करत नाही आणि ती आपल्या उत्पादन प्रक्रियेत पूंजी वापरत आहे हे स्पष्ट आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "A pupil who misunderstands the concept of production functions might think the firm is inefficient.",
+        "A pupil who misreads the question might think the firm is producing different levels of output.",
+        null,
+        "A pupil who overlooks the role of capital might think the firm is not using it at all."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly identifies that the firm uses different input combinations to produce the same output, which is a classic example of an isoquant. The other options are clearly incorrect based on the given information.",
+      "sources": [
+        {
+          "document": "ncert/12/economics/leec203.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 3: Production and Costs"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec203.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Production and Costs",
+            "3.1"
+          ]
+        },
+        {
+          "document": "ncert/12/economics/leec203.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Production and Costs",
+            "3.1"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T08:38:07.546Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In the long run, a firm can vary all inputs. If a firm doubles all inputs and output more than doubles, what type of returns to scale is it experiencing?",
+      "choices": [
+        "Constant returns to scale",
+        "Decreasing returns to scale",
+        "Increasing returns to scale",
+        "No returns to scale"
+      ],
+      "answerIndex": 2,
+      "solution": "If a firm doubles all inputs and output more than doubles, it is experiencing increasing returns to scale. This means that the firm is becoming more efficient as it scales up production. Constant returns to scale occur when output doubles with inputs, and decreasing returns to scale occur when output less than doubles. There is no such concept as 'no returns to scale'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "लंबे समय में, एक फर्म सभी इनपुट को बदल सकती है। यदि एक फर्म सभी इनपुट को दोगुना कर देती है और आउटपुट दोगुना से अधिक हो जाता है, तो यह किस प्रकार के पैमाने पर लाभ का अनुभव कर रही है?",
+          "choices": [
             "स्थिर पैमाने पर लाभ",
-            "कोई लाभ नहीं"
+            "कम होते पैमाने पर लाभ",
+            "बढ़ते पैमाने पर लाभ",
+            "कोई भी पैमाने पर लाभ नहीं"
           ],
-          "solution": "जब दोनों इनपुट दोगुने हो जाते हैं और उत्पादन भी दोगुना हो जाता है, तो फर्म स्थिर पैमाने पर लाभ का अनुभव कर रही है क्योंकि उत्पादन इनपुट के समान अनुपात में बढ़ता है। बढ़ते पैमाने पर लाभ के लिए उत्पादन को दोगुना से अधिक होना चाहिए, जबकि घटते पैमाने पर लाभ के मामले में उत्पादन केवल दोगुना होता है। कोई लाभ नहीं इस संदर्भ में आर्थिक अवधारणा नहीं है।",
-          "imageAlt": "एक संख्या रेखा जिसमें तीन इनपुट स्तर दिखाए गए हैं जिनके बीच अंतर है",
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard economic terminology in Hindi.",
+          "solution": "यदि एक फर्म सभी इनपुट को दोगुना कर देती है और आउटपुट दोगुना से अधिक हो जाता है, तो यह बढ़ते पैमाने पर लाभ का अनुभव कर रही है। इसका अर्थ है कि फर्म उत्पादन के पैमाने में बढ़ते साथ-साथ अधिक कुशल हो रही है। स्थिर पैमाने पर लाभ तब होता है जब आउटपुट इनपुट के समान दोगुना हो जाता है, और कम होते पैमाने पर लाभ तब होता है जब आउटपुट दोगुना से कम हो जाता है। 'कोई भी पैमाने पर लाभ नहीं' की अवधारणा कोई नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options are correctly translated, and the correct answer remains in the same position. The solution is consistent with the Hindi terminology used in economics education.",
           "flag": null
         },
         "mr": {
-          "stem": "एका कंपनीने 10 एकक पूंजी आणि 10 एकक कामगार वापरून 100 एकक उत्पादन तयार केले. जर कंपनीने दोन्ही वस्तू दुप्पट केल्या, तर उत्पादन 200 एककांनी वाढले. कंपनी कोणत्या प्रकारच्या पूर्तता दराचा अनुभव करत आहे?",
+          "stem": "लघुकाळात, एका कंपनीने सर्व दाखले बदलू शकते. जर एका कंपनीने सर्व दाखले दुप्पट केले आणि उत्पादन दुप्पटपेक्षा जास्त झाले, तर ती कोणत्या प्रकारच्या पैशांच्या परताव्याची अनुभूती घेत आहे?",
           "choices": [
-            "वाढत्या पूर्तता दराचा",
-            "कमी होणाऱ्या पूर्तता दराचा",
-            "अचल पूर्तता दराचा",
-            "कोणताही पूर्तता दर नाही"
+            "स्थिर पैशांच्या परताव्याची",
+            "कमी होणाऱ्या पैशांच्या परताव्याची",
+            "वाढत जाणाऱ्या पैशांच्या परताव्याची",
+            "पैशांच्या परताव्याची नाही"
           ],
-          "solution": "जेव्हा दोन्ही वस्तू दुप्पट केल्या जातात आणि उत्पादनही दुप्पट होते, तेव्हा कंपनी अचल पूर्तता दराचा अनुभव करत आहे कारण उत्पादन वस्तूंच्या तुलनेत एकाच प्रमाणात वाढते. वाढत्या पूर्तता दराच्या अनुभवासाठी उत्पादन दुप्पटपेक्षा जास्त वाढले पाहिजे, तर कमी होणाऱ्या पूर्तता दराच्या अनुभवासाठी उत्पादन दुप्पटपेक्षा कमी वाढले पाहिजे. कोणताही पूर्तता दर नाही हा विषय विशिष्ट आर्थिक संकल्पना नाही.",
-          "imageAlt": "एका संख्या रेषेवर तीन इनपुट स्तरांचे निर्देशक आहेत ज्यात त्यांच्यात अंतर आहे",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A number line showing three input levels with intervals between them",
-      "figure": {
-        "kind": "numberline",
-        "spec": {
-          "min": 0,
-          "max": 10,
-          "step": 1,
-          "points": [
-            {
-              "value": 2,
-              "label": "A"
-            },
-            {
-              "value": 5,
-              "label": "B"
-            },
-            {
-              "value": 8,
-              "label": "C"
-            }
-          ],
-          "intervals": [
-            {
-              "from": 2,
-              "to": 5,
-              "closedFrom": true,
-              "closedTo": true
-            },
-            {
-              "from": 5,
-              "to": 8,
-              "closedFrom": true,
-              "closedTo": true
-            }
-          ]
-        },
-        "labels": {
-          "A": {
-            "en": "Input level 1"
-          },
-          "B": {
-            "en": "Input level 2"
-          },
-          "C": {
-            "en": "Input level 3"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "mistakenly believes output doubling implies increasing returns",
-        "incorrectly assumes output doubling is less than proportional",
-        null,
-        "incorrect terminology"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that doubling inputs and doubling output corresponds to constant returns to scale. The reasoning for the distractors aligns with common misconceptions about returns to scale.",
-      "sources": [
-        {
-          "document": "ncert/12/economics/leec203.pdf",
-          "ordinal": 6,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 3: Production and Costs",
-            "3.5"
-          ]
-        },
-        {
-          "document": "ncert/12/economics/leec203.pdf",
-          "ordinal": 7,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Production and Costs",
-            "3.6"
-          ]
-        },
-        {
-          "document": "ncert/12/economics/leec203.pdf",
-          "ordinal": 8,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 3: Production and Costs",
-            "3.7"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T20:36:49.899Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If the Short Run Marginal Cost (SMC) curve intersects the Average Variable Cost (AVC) curve at its minimum point, what can be inferred about the relationship between SMC and AVC at that point?",
-      "choices": [
-        "SMC is greater than AVC",
-        "SMC is less than AVC",
-        "SMC is equal to AVC",
-        "SMC is unrelated to AVC"
-      ],
-      "answerIndex": 2,
-      "solution": "At the minimum point of the Average Variable Cost (AVC) curve, the Short Run Marginal Cost (SMC) curve must be equal to AVC because this is where the marginal cost equals the average cost, indicating the point of minimum average cost. When SMC is below AVC, AVC is decreasing, and when SMC is above AVC, AVC is increasing, so equality occurs at the minimum. The other options are incorrect because they do not reflect the fundamental relationship between marginal and average costs.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "अल्पकालीन सीमांत लागत (SMC) वक्र औसत परिवर्तनीय लागत (AVC) वक्र के न्यूनतम बिंदु पर प्रतिच्छेद करता है, तो इस बिंदु पर SMC और AVC के बीच संबंध के बारे में क्या निष्कर्ष निकाला जा सकता है?",
-          "choices": [
-            "SMC, AVC से अधिक है",
-            "SMC, AVC से कम है",
-            "SMC, AVC के बराबर है",
-            "SMC, AVC से असंबंधित है"
-          ],
-          "solution": "औसत परिवर्तनीय लागत (AVC) वक्र के न्यूनतम बिंदु पर, अल्पकालीन सीमांत लागत (SMC) वक्र AVC के बराबर होना चाहिए क्योंकि यह वह बिंदु है जहां सीमांत लागत औसत लागत के बराबर होती है, जो न्यूनतम औसत लागत के बिंदु को इंगित करता है। जब SMC, AVC से नीचे होता है, तो AVC घट रहा होता है, और जब SMC, AVC से ऊपर होता है, तो AVC बढ़ रहा होता है, इसलिए बराबरी न्यूनतम पर होती है। अन्य विकल्प गलत हैं क्योंकि वे सीमांत और औसत लागत के मूलभूत संबंध को नहीं दर्शाते हैं।",
+          "solution": "जर एका कंपनीने सर्व दाखले दुप्पट केले आणि उत्पादन दुप्पटपेक्षा जास्त झाले, तर ती वाढत जाणाऱ्या पैशांच्या परताव्याची अनुभूती घेत आहे. हे अर्थ असा की कंपनी उत्पादन वाढवित असताना अधिक कार्यक्षम होत आहे. स्थिर पैशांच्या परताव्याची अनुभूती तेव्हा होते जेव्हा उत्पादन दुप्पट होते आणि कमी होणाऱ्या पैशांच्या परताव्याची अनुभूती तेव्हा होते जेव्हा उत्पादन दुप्पटपेक्षा कमी होते. 'पैशांच्या परताव्याची नाही' अशा संकल्पनेचा अस्तित्व नाही.",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate economic terminology as used in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "शॉर्ट रन मार्जिनल कॉस्ट (SMC) कर्व एवं एव्हरेज वेरियबल कॉस्ट (AVC) कर्व च्या न्यूनतम बिंदूवर छेद करते, तर त्या बिंदूवर SMC आणि AVC च्या संबंधाबद्दल काय निष्कर्ष काढता येईल?",
-          "choices": [
-            "SMC, AVC पेक्षा मोठे आहे",
-            "SMC, AVC पेक्षा लहान आहे",
-            "SMC, AVC बरोबर आहे",
-            "SMC, AVC शी असंबंधित आहे"
-          ],
-          "solution": "एव्हरेज वेरियबल कॉस्ट (AVC) कर्व च्या न्यूनतम बिंदूवर, शॉर्ट रन मार्जिनल कॉस्ट (SMC) कर्व च्या AVC बरोबर असते, कारण हे बिंदू आहे जेथे सीमांत खर्च औसत खर्चाशी बरोबर होतो, जे औसत खर्चाच्या न्यूनतम बिंदूचे संकेत देतो. जेव्हा SMC, AVC पेक्षा खाली असतो तेव्हा AVC घटत असतो आणि जेव्हा SMC, AVC पेक्षा वर असतो तेव्हा AVC वाढत असतो, म्हणून न्यूनतम बिंदूवर समानता असते. इतर विकल्प चुकीचे आहेत कारण ते सीमांत आणि औसत खर्चाच्या मूलभूत संबंधाचे वर्णन करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "critique": "The Marathi translation accurately reflects the original English question and solution, with appropriate terminology used in Marathi that aligns with standard economics textbooks.",
           "flag": null
         }
       },
@@ -972,10 +663,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Misunderstands the point of intersection",
-        "Incorrectly assumes SMC is always below AVC",
+        "Misunderstands the definition of constant returns to scale.",
+        "Confuses decreasing returns with the scenario described.",
         null,
-        "Believes SMC and AVC are independent"
+        "Incorrectly assumes that no returns to scale exist."
       ],
       "solverAnswers": [
         2,
@@ -985,164 +676,7 @@
         2
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with standard microeconomic theory. The SMC curve intersects the AVC curve at its minimum point, and at that point, SMC equals AVC.",
-      "sources": [
-        {
-          "document": "ncert/12/economics/leec203.pdf",
-          "ordinal": 12,
-          "pageStart": 12,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 3: Production and Costs",
-            "3.7"
-          ]
-        },
-        {
-          "document": "ncert/12/economics/leec203.pdf",
-          "ordinal": 13,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Production and Costs",
-            "3.7"
-          ]
-        },
-        {
-          "document": "ncert/12/economics/leec203.pdf",
-          "ordinal": 14,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 3: Production and Costs",
-            "3.7"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T20:36:49.899Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If a firm is operating at a level of output where its LRAC curve is rising, what must be true about its LRMC curve?",
-      "choices": [
-        "LRMC is less than LRAC",
-        "LRMC is equal to LRAC",
-        "LRMC is greater than LRAC",
-        "LRMC is constant"
-      ],
-      "answerIndex": 2,
-      "solution": "When the LRAC curve is rising, the LRMC curve must be above it because the marginal cost of producing additional units is higher than the average cost. This reflects the inefficiencies that occur when a firm expands beyond the optimal scale of production. The other options do not align with the economic relationship between marginal and average costs.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक फर्म आउटपुट के उस स्तर पर कार्य कर रही है जहां इसका एलआरएसी वक्र बढ़ रहा है, तो इसके एलआरएमसी वक्र के बारे में क्या आवश्यकता होगी?",
-          "choices": [
-            "एलआरएमसी एलआरएसी से कम है",
-            "एलआरएमसी एलआरएसी के बराबर है",
-            "एलआरएमसी एलआरएसी से अधिक है",
-            "एलआरएमसी नियत है"
-          ],
-          "solution": "जब एलआरएसी वक्र बढ़ रहा है, तो एलआरएमसी वक्र इसके ऊपर होना चाहिए क्योंकि अतिरिक्त इकाइयों के उत्पादन का सीमांत लागत औसत लागत से अधिक होता है। इसका अर्थ है जब कोई फर्म उत्पादन के अनुकूल पैमाने से बाहर बढ़ती है तो अकुशलताएं होती हैं। अन्य विकल्प एमसी और एवरेज कॉस्ट के आर्थिक संबंध के साथ मेल नहीं खाते।",
-          "imageAlt": "एक ग्राफ जिसमें एलआरएसी और एलआरएमसी वक्र हैं, जहां एलआरएसी बढ़ता है तो एलआरएमसी इसके ऊपर होता है।",
-          "critique": "The translation is accurate, maintains the economic concepts, and uses standard Hindi terminology for cost curves.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक कंपनी आउटपुटच्या एका पातळीवर कार्यरत असेल जेथे तिच्या LRAC वक्राचा वर्तन वाढत असेल, तर तिच्या LRMC वक्राबद्दल काय खात्री असावी?",
-          "choices": [
-            "LRMC LRAC पेक्षा कमी आहे",
-            "LRMC LRAC बरोबर आहे",
-            "LRMC LRAC पेक्षा जास्त आहे",
-            "LRMC अचल आहे"
-          ],
-          "solution": "जेव्हा LRAC वक्र वाढत असतो तेव्हा LRMC वक्र त्यापेक्षा वर असतो कारण अतिरिक्त एककांच्या उत्पादनाचा सीमांत खर्च LRAC पेक्षा जास्त असतो. हे एका कंपनीच्या उत्पादनाच्या आदर्श पातळीपेक्षा विस्तार करताना घडणाऱ्या अक्षमतांचे प्रतिनिधित्व करते. इतर विकल्प मागील आणि वरच्या खर्चामधील आर्थिक संबंधांशी जुमानत नाहीत.",
-          "imageAlt": "एक ग्राफ ज्यात LRAC आणि LRMC वक्र आहेत, LRAC वाढत असताना LRMC त्यापेक्षा वर असतो.",
-          "critique": "The translation is accurate, maintains the economic logic, and uses appropriate Marathi terminology for cost curves.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A graph showing the LRAC and LRMC curves, with LRMC above LRAC when LRAC is rising.",
-      "figure": {
-        "kind": "graph",
-        "spec": {
-          "x": {
-            "min": 0,
-            "max": 10,
-            "step": 1,
-            "label": "Output"
-          },
-          "y": {
-            "min": 0,
-            "max": 100,
-            "step": 10,
-            "label": "Cost"
-          },
-          "grid": true,
-          "curves": [
-            {
-              "poly": [
-                20,
-                40,
-                60,
-                80
-              ],
-              "label": "LRAC"
-            },
-            {
-              "poly": [
-                25,
-                45,
-                65,
-                85
-              ],
-              "label": "LRMC"
-            }
-          ]
-        },
-        "labels": {
-          "Output": {
-            "en": "Output",
-            "hi": "आउटपुट",
-            "mr": "आउटपुट"
-          },
-          "Cost": {
-            "en": "Cost",
-            "hi": "लागत",
-            "mr": "खर्च"
-          },
-          "LRAC": {
-            "en": "LRAC",
-            "hi": "एलआरएसी",
-            "mr": "LRAC"
-          },
-          "LRMC": {
-            "en": "LRMC",
-            "hi": "एलआरएमसी",
-            "mr": "LRMC"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Believes LRMC is less than LRAC when LRAC is rising",
-        "Assumes LRMC equals LRAC at all levels of output",
-        null,
-        "Fails to understand that LRMC must be greater than LRAC when LRAC is rising"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that when LRAC is rising, LRMC must be greater than LRAC, which aligns with the standard economic theory of long-run costs.",
+      "critique": "The solution correctly identifies that increasing returns to scale occur when output more than doubles after all inputs are doubled. The reasoning aligns with standard economic theory.",
       "sources": [
         {
           "document": "ncert/12/economics/leec203.pdf",
@@ -1178,7 +712,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T20:36:49.899Z",
+      "generatedAt": "2026-10-29T08:38:07.546Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

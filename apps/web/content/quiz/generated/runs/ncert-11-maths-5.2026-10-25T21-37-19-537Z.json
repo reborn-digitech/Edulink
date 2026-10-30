@@ -1,0 +1,689 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T21:37:19.537Z",
+  "finishedAt": "2026-10-25T21:44:14.745Z",
+  "seconds": 415,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh105.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Linear Inequalities",
+    "edition": "Reprint 2026-27",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, marking scheme, 2023-24]\n11. (c) We observe,  0,0  does not satisfy the inequality x  y  1\nSo, the half plane represented by the above inequality will not contain origin\ntherefore, it will not contain the shaded feasible region.",
+      "[CBSE Class XII Mathematics, marking scheme, 2022-23]\n7. (b) The strict inequality represents an open half plane and it\ncontains the origin as (0, 0) satisfies it.",
+      "[CBSE Class XII Mathematics, sample question paper, 2022-23]\n7. The solution set of the inequality 3x + 5y < 4 is\n(a) an open half-plane not containing the origin.\n(b) an open half-plane containing the origin.\n(c) the whole XY-plane not containing the line 3x + 5y = 4.\n(d) a closed half plane containing the origin.",
+      "[CBSE Class XII Mathematics, sample question paper, 2023-24]\n11. The feasible region corresponding to the linear constraints of a Linear Programming Problem is given\nbelow.\nWhich of the following is not a constraint to the given Linear Programming Problem?\n(a) x  y  2 (b) x  2y  10 (c) x  y  1 (d) x  y  1\n       "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 175553,
+      "in": 35,
+      "out": 33,
+      "rejects": 2,
+      "promptTokens": 27760,
+      "completionTokens": 9831
+    },
+    "critique": {
+      "calls": 51,
+      "ms": 350979,
+      "in": 33,
+      "out": 25,
+      "rejects": 8,
+      "promptTokens": 25993,
+      "completionTokens": 9157
+    },
+    "solver": {
+      "calls": 252,
+      "ms": 181557,
+      "in": 25,
+      "out": 11,
+      "rejects": 14,
+      "promptTokens": 72248,
+      "completionTokens": 3198
+    },
+    "form": {
+      "calls": 2,
+      "ms": 11700,
+      "in": 11,
+      "out": 3,
+      "rejects": 8,
+      "promptTokens": 596,
+      "completionTokens": 251
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 28,
+      "ms": 5282,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 89098,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5690,
+      "completionTokens": 3060
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a numerical inequality?",
+      "ms": {
+        "draft": 4977,
+        "critique": 6591,
+        "solver": 13351
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student buys 6 packets of rice costing 30 each with 200, which inequality correctly represents the total cost?",
+      "ms": {
+        "draft": 4977,
+        "critique": 7210,
+        "solver": 14024,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the inequality 40x + 20y ≤ 120 represents the cost of x registers and y pens, and Reshma has 120, which of the following is not a possible solution?",
+      "ms": {
+        "draft": 4977,
+        "critique": 7147
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the inequality x - y ≥ 1 is given, which of the following points lies in the feasible region?",
+      "ms": {
+        "draft": 4977,
+        "critique": 7548
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the inequality 3x + 5y < 4 is given, which of the following is the correct description of its solution set?",
+      "ms": {
+        "draft": 4977,
+        "critique": 6688
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the solution to the inequality 5x – 3 < 3x + 1 when x is an integer?",
+      "ms": {
+        "draft": 4977,
+        "critique": 4952,
+        "solver": 17688
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following represents the solution set of the inequality 30x < 200 when x is a natural number?",
+      "ms": {
+        "draft": 4977,
+        "critique": 6385,
+        "solver": 17731,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a constraint that is not part of the feasible region in the given Linear Programming Problem?",
+      "ms": {
+        "draft": 4977,
+        "critique": 6498
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the minimum number of marks a student must score in the annual examination to have an average of at least 60 marks, given that the marks in the first and second terminal examinations are 62 and 48, respectively?",
+      "ms": {
+        "draft": 4977,
+        "critique": 9314
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the inequality x ≥ 2 represent on a number line?",
+      "ms": {
+        "draft": 5685,
+        "critique": 8838,
+        "solver": 1740,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the solution to the inequality 7x + 3 < 5x + 9?",
+      "ms": {
+        "draft": 4977,
+        "critique": 6406,
+        "solver": 17791
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The solution set of the inequality 5x + 1 > -24 and 5x - 1 < 24 is represented on a number line. Which of the following correctly describes the solution?",
+      "ms": {
+        "draft": 5685,
+        "critique": 9613
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the solution to the inequality 2 ≤ 3x – 4 ≤ 5?",
+      "ms": {
+        "draft": 5685,
+        "critique": 6730,
+        "solver": 16228
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A manufacturer has 600 litres of a 12% solution of acid. How many litres of a 30% acid solution must be added to it so that acid content in the resulting mixture will be more than 15% but less than 18%?",
+      "ms": {
+        "draft": 5685,
+        "critique": 6416,
+        "solver": 1684
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A solution is to be kept between 30° and 35° Celsius. What is the range of temperature in degree Fahrenheit?",
+      "ms": {
+        "draft": 5685,
+        "critique": 6686,
+        "solver": 8050
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents the solution set of the inequality x ≥ 2 on a number line?",
+      "ms": {
+        "draft": 6472,
+        "critique": 6717,
+        "solver": 1704,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A solution is to be kept between 68° F and 77° F. What is the range in Celsius if F = C + 32?",
+      "ms": {
+        "draft": 6472,
+        "critique": 13400
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A manufacturer has 600 litres of a 12% acid solution. How many litres of a 30% acid solution must be added so that the acid content in the resulting mixture is between 15% and 18%?",
+      "ms": {
+        "draft": 6472,
+        "critique": 6962,
+        "solver": 22192
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A solution of 8% boric acid is to be diluted by adding a 2% boric acid solution to it. The resulting mixture is to be more than 4% but less than 6% boric acid. If we have 640 litres of the 8% solution, how many litres of the 2% solution will have to be added?",
+      "ms": {
+        "draft": 6472,
+        "critique": 9091,
+        "solver": 17883
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a rule for solving an inequality as stated in the passage?",
+      "ms": {
+        "draft": 4235,
+        "critique": 9044,
+        "solver": 1389,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The solution set of the inequality 3x + 5y < 4 is given. Which of the following correctly describes the solution set?",
+      "ms": {
+        "draft": 4235,
+        "critique": 8791
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the solution to the inequality 2 ≤ 3x – 4 ≤ 5?",
+      "ms": {
+        "draft": 6472,
+        "critique": 9058,
+        "solver": 18506
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is asked to solve the inequality 2 (5 – 2x) ≤ x – 30 and provide the solution set for x. Which of the following is the correct solution?",
+      "ms": {
+        "draft": 4235,
+        "critique": 7008,
+        "solver": 2157
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Solve the inequality 5x – 3 < 3x + 1 and find the solution set for x as an integer.",
+      "ms": {
+        "draft": 4235,
+        "critique": 7882,
+        "solver": 10457,
+        "form": 6339
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is asked to solve the inequality 3(x – 1) ≤ 2(x – 3) and determine the solution set for x as a real number. Which of the following correctly describes the solution?",
+      "ms": {
+        "draft": 4235,
+        "critique": 5403,
+        "solver": 15718,
+        "form": 5361
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If x represents the number of packets of rice Ravi buys, and 30x < 200 is the inequality, which of the following values of x is a solution?",
+      "ms": {
+        "draft": 3496,
+        "critique": 6429,
+        "solver": 13961,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following inequalities represents a scenario where the origin does not satisfy the inequality?",
+      "ms": {
+        "draft": 3496,
+        "critique": 6609,
+        "solver": 1356
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a strict inequality?",
+      "ms": {
+        "draft": 3496,
+        "critique": 7398,
+        "solver": 19234
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is not a constraint for the given feasible region in the linear programming problem?",
+      "ms": {
+        "draft": 3496,
+        "critique": 5731,
+        "solver": 12389
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a linear inequality in two variables?",
+      "ms": {
+        "draft": 3496,
+        "critique": 6136,
+        "solver": 9763
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a rule for solving an inequality?",
+      "ms": {
+        "draft": 4977,
+        "critique": 6416,
+        "solver": 16011,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a solution is to be kept between 30° and 35° Celsius, what is the corresponding range in Fahrenheit using the formula C = (F – 32)?",
+      "ms": {
+        "draft": 6472,
+        "critique": 6306,
+        "solver": 1508,
+        "form": 0,
+        "translation": 41751
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is true about the inequality 30x < 200, where x is the number of rice packets bought?",
+      "ms": {
+        "draft": 4977,
+        "critique": 7567,
+        "solver": 11816,
+        "form": 0,
+        "translation": 42090
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the solution to the inequality 6 ≤ -3(2x - 4) < 12?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a numerical inequality?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student buys 6 packets of rice costing 30 each with 200, which inequality correctly represents the total cost?",
+      "reason": "options 0 and 1 are the same (\"30x > 200\"); options 0 and 2 are the same (\"30x > 200\"); options 0 and 3 are the same (\"30x > 200\"); options 1 and 2 are the same (\"30x < 200\"); options 1 and 3 are the same (\"30x < 200\"); options 2 and 3 are the same (\"30x = 200\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the inequality 40x + 20y ≤ 120 represents the cost of x registers and y pens, and Reshma has 120, which of the following is not a possible solution?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the inequality x - y ≥ 1 is given, which of the following points lies in the feasible region?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the inequality 3x + 5y < 4 is given, which of the following is the correct description of its solution set?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the solution to the inequality 5x – 3 < 3x + 1 when x is an integer?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following represents the solution set of the inequality 30x < 200 when x is a natural number?",
+      "reason": "options 0 and 1 say the same thing (\"{1, 2, 3, 4, 5, 6}\" / \"{0, 1, 2, 3, 4, 5, 6}\"); options 0 and 2 say the same thing (\"{1, 2, 3, 4, 5, 6}\" / \"{0, 1, 2, 3, 4, 5, 6}\"); options 0 and 3 say the same thing (\"{1, 2, 3, 4, 5, 6}\" / \"{1, 2, 3, 4, 5}\"); options 1 and 2 are the same (\"{0, 1, 2, 3, 4, 5, 6}\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a constraint that is not part of the feasible region in the given Linear Programming Problem?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the minimum number of marks a student must score in the annual examination to have an average of at least 60 marks, given that the marks in the first and second terminal examinations are 62 and 48, respectively?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the inequality x ≥ 2 represent on a number line?",
+      "reason": "options 0 and 1 say the same thing (\"A circle at 2 and a dark line to the left\" / \"A circle at 2 and a dark line to the right\"); options 0 and 2 say the same thing (\"A circle at 2 and a dark line to the left\" / \"A dark circle at 2 and a dark line to the left\"); options 0 and 3 say the same thing (\"A circle at 2 and a dark line to the left\" / \"A dark circle at 2 and a dark line to the right\"); options 1 and 2 say the same thing (\"A circle at 2 and a dark line to the right\" / \"A dark circle at 2 and a dark line to the left\"); options 1 and 3 say the same thing (\"A circle at 2 and a dark line to the right\" / \"A dark circle at 2 and a dark line to the right\"); options 2 and 3 say the same thing (\"A dark circle at 2 and a dark line to the left\" / \"A dark circle at 2 and a dark line to the right\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the solution to the inequality 7x + 3 < 5x + 9?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The solution set of the inequality 5x + 1 > -24 and 5x - 1 < 24 is represented on a number line. Which of the following correctly describes the solution?",
+      "reason": "the critic finds option 2 correct, the key is 0"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the solution to the inequality 2 ≤ 3x – 4 ≤ 5?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A manufacturer has 600 litres of a 12% solution of acid. How many litres of a 30% acid solution must be added to it so that acid content in the resulting mixture will be more than 15% but less than 18%?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A solution is to be kept between 30° and 35° Celsius. What is the range of temperature in degree Fahrenheit?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following statements about solving inequalities is true according to the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following represents the solution set of the inequality x ≥ 2 on a number line?",
+      "reason": "options 0 and 2 say the same thing (\"A closed circle at 2 and a dark line to the left\" / \"A closed circle at 2 and a dark line to the right\"); options 1 and 3 say the same thing (\"An open circle at 2 and a dark line to the left\" / \"An open circle at 2 and a dark line to the right\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A solution is to be kept between 68° F and 77° F. What is the range in Celsius if F = C + 32?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A manufacturer has 600 litres of a 12% acid solution. How many litres of a 30% acid solution must be added so that the acid content in the resulting mixture is between 15% and 18%?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A solution of 8% boric acid is to be diluted by adding a 2% boric acid solution to it. The resulting mixture is to be more than 4% but less than 6% boric acid. If we have 640 litres of the 8% solution, how many litres of the 2% solution will have to be added?",
+      "reason": "after redraft: the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a rule for solving an inequality as stated in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Multiplying by a negative number changes the sign, which is …\"); distractor 2's reason is not a one-line misconception (\"Adding equal numbers changes the sign, which is incorrect ac…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The solution set of the inequality 3x + 5y < 4 is given. Which of the following correctly describes the solution set?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the solution to the inequality 2 ≤ 3x – 4 ≤ 5?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student is asked to solve the inequality 2 (5 – 2x) ≤ x – 30 and provide the solution set for x. Which of the following is the correct solution?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Solve the inequality 5x – 3 < 3x + 1 and find the solution set for x as an integer.",
+      "reason": "options 0 and 2 are the same (\"x < 2\"); options 0 and 3 are the same (\"x < 2\"); options 2 and 3 are the same (\"x ≤ 2\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student is asked to solve the inequality 3(x – 1) ≤ 2(x – 3) and determine the solution set for x as a real number. Which of the following correctly describes the solution?",
+      "reason": "options 1 and 2 are the same (\"x ≤ 3\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If x represents the number of packets of rice Ravi buys, and 30x < 200 is the inequality, which of the following values of x is a solution?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following inequalities represents a scenario where the origin does not satisfy the inequality?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of a strict inequality?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is not a constraint for the given feasible region in the linear programming problem?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of a linear inequality in two variables?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a rule for solving an inequality?",
+      "reason": "near-duplicate of served question cmvkdzvfj0k5dgpfh3mxbmbri (cosine 0.909 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

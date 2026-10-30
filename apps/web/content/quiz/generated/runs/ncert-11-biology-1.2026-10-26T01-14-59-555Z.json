@@ -1,0 +1,612 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T01:14:59.555Z",
+  "finishedAt": "2026-10-26T01:25:05.940Z",
+  "seconds": 606,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo101.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 1 — NIT",
+    "edition": "Reprint 2026-27",
+    "chunks": 10,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n9. (b) dN/dt = r N 1",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[INBO 2011 — question paper]\nSECTION A\nCELL BIOLOGY (7)",
+      "[INBO 2021 — question paper]\nSECTION A\nCELL BIOLOGY (5 points)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 168633,
+      "in": 30,
+      "out": 28,
+      "rejects": 3,
+      "promptTokens": 20157,
+      "completionTokens": 7115
+    },
+    "critique": {
+      "calls": 35,
+      "ms": 301150,
+      "in": 28,
+      "out": 23,
+      "rejects": 5,
+      "promptTokens": 16543,
+      "completionTokens": 5997
+    },
+    "solver": {
+      "calls": 161,
+      "ms": 108439,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 26798,
+      "completionTokens": 1591
+    },
+    "form": {
+      "calls": 10,
+      "ms": 39806,
+      "in": 20,
+      "out": 4,
+      "rejects": 16,
+      "promptTokens": 2627,
+      "completionTokens": 738
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 52,
+      "ms": 12350,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 293859,
+      "in": 8,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 12437,
+      "completionTokens": 6642
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main purpose of scientific nomenclature according to the passage?",
+      "ms": {
+        "draft": 5442,
+        "critique": 6560,
+        "solver": 1921,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a new organism is discovered, what should be the first step according to the passage?",
+      "ms": {
+        "draft": 5442,
+        "critique": 7081,
+        "solver": 2484,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the scientific name of mango according to the passage?",
+      "ms": {
+        "draft": 5442,
+        "critique": 7480,
+        "solver": 3005,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the binomial nomenclature according to the passage?",
+      "ms": {
+        "draft": 5442,
+        "critique": 8926,
+        "solver": 1655,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the purpose of classification in biology?",
+      "ms": {
+        "draft": 4787,
+        "critique": 7848,
+        "solver": 1946,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct format for writing a biological name?",
+      "ms": {
+        "draft": 4787,
+        "critique": 10872,
+        "solver": 2349,
+        "form": 4876
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what is the significance of the author's name in a biological name?",
+      "ms": {
+        "draft": 4787,
+        "critique": 9609,
+        "solver": 1791,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given the biological name 'Canis lupus'. Which part of this name indicates the species?",
+      "ms": {
+        "draft": 4787,
+        "critique": 7868,
+        "solver": 1702,
+        "form": 7940
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a part of taxonomy?",
+      "ms": {
+        "draft": 4787,
+        "critique": 10814,
+        "solver": 20407,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two organisms belong to the same genus, what can be said about them?",
+      "ms": {
+        "draft": 7699,
+        "critique": 10398
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which taxonomic category includes a group of related species that have more characters in common?",
+      "ms": {
+        "draft": 7699,
+        "critique": 10908,
+        "solver": 17680,
+        "form": 4087
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which taxonomic category would include organisms with the fewest shared characteristics?",
+      "ms": {
+        "draft": 7699,
+        "critique": 8420
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct sequence of taxonomic categories from the most specific to the most general?",
+      "ms": {
+        "draft": 7699,
+        "critique": 9722,
+        "solver": 16513,
+        "form": 5722
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed two animals and noted their scientific names: Panthera tigris and Panthera uncia. Based on this, which taxonomic category do these two animals share?",
+      "ms": {
+        "draft": 7699,
+        "critique": 8667
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage says that 'the number of common characteristics goes on decreasing' as we move from species to kingdom. What does this imply about the relationship between organisms in the same genus versus those in the same family?",
+      "ms": {
+        "draft": 7699,
+        "critique": 7655,
+        "solver": 6680,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which taxonomic category includes a group of related species with more characters in common?",
+      "ms": {
+        "draft": 6427,
+        "critique": 8490
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which taxonomic category includes families that exhibit a few similar characters?",
+      "ms": {
+        "draft": 6427,
+        "critique": 9149,
+        "solver": 1802,
+        "form": 4930
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is asked to classify a new species that has some characteristics similar to a lion and a cat. Which taxonomic category would the student most likely place it in?",
+      "ms": {
+        "draft": 6427,
+        "critique": 10926,
+        "solver": 2436
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant belongs to the family Solanaceae, which taxonomic category would it belong to next?",
+      "ms": {
+        "draft": 6427,
+        "critique": 9931,
+        "solver": 20246
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the correct sequence of taxonomic categories from lowest to highest?",
+      "ms": {
+        "draft": 6427,
+        "critique": 11021,
+        "solver": 16677,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student observes that a new organism has some similarities with a tiger and a cat, but also some differences. Based on the passage, what can the student infer about the classification of this organism?",
+      "ms": {
+        "draft": 6427,
+        "critique": 9598,
+        "solver": 1638,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the scientific term for convenient categories used to study organisms?",
+      "ms": {
+        "draft": 3751,
+        "critique": 9236,
+        "solver": 2733
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a taxon?",
+      "ms": {
+        "draft": 3751,
+        "critique": 10732
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct format for a biological name?",
+      "ms": {
+        "draft": 3751,
+        "critique": 10560,
+        "solver": 1352,
+        "form": 2419
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the first word in a biological name called?",
+      "ms": {
+        "draft": 3751,
+        "critique": 10815,
+        "solver": 10670,
+        "form": 1520,
+        "translation": 38282
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a taxon at the highest level?",
+      "ms": {
+        "draft": 4787,
+        "critique": 7865,
+        "solver": 2291,
+        "form": 3463,
+        "translation": 55195
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a scientist discovers a new species of plant, what should they do to ensure it is recognized globally?",
+      "ms": {
+        "draft": 5442,
+        "critique": 8147,
+        "solver": 2509,
+        "form": 5564,
+        "translation": 118853
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the binomial nomenclature system important for scientists worldwide?",
+      "ms": {
+        "draft": 5442,
+        "critique": 7520,
+        "solver": 3588,
+        "form": 3138,
+        "translation": 77146
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of scientific nomenclature according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a new organism is discovered, what should be the first step according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the scientific name of mango according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"uses an incorrect format for scientific names with 'sp.' ins…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the significance of the binomial nomenclature according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the purpose of classification in biology?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Does not understand the purpose of classification as explain…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the correct format for writing a biological name?",
+      "reason": "options 0 and 3 say the same thing (\"Genus in italics, specific epithet in bold\" / \"Genus in bold, specific epithet in italics\"); options 1 and 2 say the same thing (\"Genus in lowercase, specific epithet in uppercase\" / \"Genus in uppercase, specific epithet in lowercase\"); distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, and the other opti…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what is the significance of the author's name in a biological name?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given the biological name 'Canis lupus'. Which part of this name indicates the species?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is not the longest option, and the other opti…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a part of taxonomy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If two organisms belong to the same genus, what can be said about them?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which taxonomic category includes a group of related species that have more characters in common?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Includes a broader category that groups multiple genera toge…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which taxonomic category would include organisms with the fewest shared characteristics?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct sequence of taxonomic categories from the most specific to the most general?",
+      "reason": "options 0 and 1 say the same thing (\"Species, Genus, Family, Phylum\" / \"Genus, Species, Family, Phylum\"); options 0 and 2 say the same thing (\"Species, Genus, Family, Phylum\" / \"Phylum, Family, Genus, Species\"); options 0 and 3 say the same thing (\"Species, Genus, Family, Phylum\" / \"Species, Family, Genus, Phylum\"); options 1 and 2 say the same thing (\"Genus, Species, Family, Phylum\" / \"Phylum, Family, Genus, Species\"); options 1 and 3 say the same thing (\"Genus, Species, Family, Phylum\" / \"Species, Family, Genus, Phylum\"); options 2 and 3 say the same thing (\"Phylum, Family, Genus, Species\" / \"Species, Family, Genus, Phylum\"); distractor 3's reason is not a one-line misconception (\"Reverses the correct order of categories from most general t…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student observed two animals and noted their scientific names: Panthera tigris and Panthera uncia. Based on this, which taxonomic category do these two animals share?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage says that 'the number of common characteristics goes on decreasing' as we move from species to kingdom. What does this imply about the relationship between organisms in the same genus versus those in the same family?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Organisms in the same genus have more common characteristics than those in the same family.\" / \"1: Organisms in the same family have more common characteristics than those in the same genus.\"); option 2 repeats the stem's wording (\"Organisms in the same family have the same number of characteristics as those in the same genus.\"); options mix numbers and words (1 of 4 are numbers); distractor 2's reason is not a one-line misconception (\"This is incorrect because the passage states that as we move…\"); distractor 3's reason is not a one-line misconception (\"This is incorrect because the passage clearly states that th…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term for the process of grouping organisms into categories based on observable characters?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the lowest category in the taxonomic hierarchy?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"What is the main idea of the first paragraph of the passage?\""
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which taxonomic category includes a group of related species with more characters in common?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which taxonomic category includes families that exhibit a few similar characters?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Believes phylum is the category for families, but it is high…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student is asked to classify a new species that has some characteristics similar to a lion and a cat. Which taxonomic category would the student most likely place it in?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a plant belongs to the family Solanaceae, which taxonomic category would it belong to next?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the correct sequence of taxonomic categories from lowest to highest?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Species, Genus, Family, Order, Class, Phylum, Kingdom\" / \"Species, Genus, Family, Order, Class, Kingdom, Phylum\"); options 0 and 2 say the same thing (\"Species, Genus, Family, Order, Class, Phylum, Kingdom\" / \"Species, Genus, Order, Family, Class, Phylum, Kingdom\"); options 0 and 3 say the same thing (\"Species, Genus, Family, Order, Class, Phylum, Kingdom\" / \"Species, Family, Order, Genus, Class, Phylum, Kingdom\"); options 1 and 2 say the same thing (\"Species, Genus, Family, Order, Class, Kingdom, Phylum\" / \"Species, Genus, Order, Family, Class, Phylum, Kingdom\"); options 1 and 3 say the same thing (\"Species, Genus, Family, Order, Class, Kingdom, Phylum\" / \"Species, Family, Order, Genus, Class, Phylum, Kingdom\"); options 2 and 3 say the same thing (\"Species, Genus, Order, Family, Class, Phylum, Kingdom\" / \"Species, Family, Order, Genus, Class, Phylum, Kingdom\"); distractor 2's reason is not a one-line misconception (\"Incorrectly places family before genus, but the passage stat…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly places order before family, but the passage stat…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student observes that a new organism has some similarities with a tiger and a cat, but also some differences. Based on the passage, what can the student infer about the classification of this organism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 2 say the same thing (\"It belongs to the same family as the tiger and the cat\" / \"It belongs to the same order as the tiger and the cat\"); options 1 and 3 say the same thing (\"It belongs to the same family as the tiger and the cat\" / \"It belongs to the same class as the tiger and the cat\"); options 2 and 3 say the same thing (\"It belongs to the same order as the tiger and the cat\" / \"It belongs to the same class as the tiger and the cat\"); distractor 0's reason is not a one-line misconception (\"Believes the organism has enough similarities to be in the s…\"); distractor 1's reason is not a one-line misconception (\"Believes the organism has enough similarities to be in the s…\"); distractor 2's reason is not a one-line misconception (\"Believes the organism has enough similarities to be in the s…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the scientific term for convenient categories used to study organisms?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a taxon?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the correct format for a biological name?",
+      "reason": "options 0 and 1 are the same (\"Mangifera Indica\"); options 0 and 2 are the same (\"Mangifera Indica\"); options 0 and 3 are the same (\"Mangifera Indica\"); options 1 and 2 are the same (\"mangifera indica\"); options 1 and 3 are the same (\"mangifera indica\"); options 2 and 3 are the same (\"Mangifera indica\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

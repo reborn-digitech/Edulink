@@ -1,0 +1,324 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T06:20:00.261Z",
+  "finishedAt": "2026-10-28T06:24:35.745Z",
+  "seconds": 275,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap105.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 5 — Seeds and Seeds",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 37544,
+      "in": 12,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 10290,
+      "completionTokens": 2365
+    },
+    "critique": {
+      "calls": 16,
+      "ms": 96773,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 6960,
+      "completionTokens": 2796
+    },
+    "solver": {
+      "calls": 77,
+      "ms": 42844,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 14012,
+      "completionTokens": 832
+    },
+    "form": {
+      "calls": 6,
+      "ms": 14688,
+      "in": 8,
+      "out": 3,
+      "rejects": 5,
+      "promptTokens": 1449,
+      "completionTokens": 425
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 3580,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 57304,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4797,
+      "completionTokens": 2582
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about how seeds spread?",
+      "ms": {
+        "draft": 3054,
+        "critique": 5382,
+        "solver": 1316,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of how seeds travel from one place to another?",
+      "ms": {
+        "draft": 3054,
+        "critique": 6884,
+        "solver": 12849,
+        "form": 2239
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if seeds did not spread and remained at one place only?",
+      "ms": {
+        "draft": 3054,
+        "critique": 6733,
+        "solver": 13610,
+        "form": 1846
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which plant was brought to India from South America?",
+      "ms": {
+        "draft": 2509,
+        "critique": 4535
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the poem in the passage?",
+      "ms": {
+        "draft": 2509,
+        "critique": 4921,
+        "solver": 1838,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of how seeds are spread?",
+      "ms": {
+        "draft": 2509,
+        "critique": 6929,
+        "solver": 1635
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Gopal soak more chana than needed?",
+      "ms": {
+        "draft": 16436,
+        "critique": 8186
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a seed is placed in a bowl with dry cotton wool, what will happen?",
+      "ms": {
+        "draft": 16436,
+        "critique": 8763,
+        "solver": 1398,
+        "form": 2018
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the experiment with the three bowls, in which bowl would seeds most likely sprout?",
+      "ms": {
+        "draft": 16436,
+        "critique": 7954,
+        "solver": 6891
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Gopal's mother do with the soaked chana?",
+      "ms": {
+        "draft": 16436,
+        "critique": 5904,
+        "solver": 14056,
+        "form": 2840
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of seeds being carried by humans?",
+      "ms": {
+        "draft": 3054,
+        "critique": 6044,
+        "solver": 1439,
+        "form": 4761,
+        "translation": 27031
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If seeds do not spread, what would happen?",
+      "ms": {
+        "draft": 2509,
+        "critique": 4557,
+        "solver": 1266,
+        "form": 3284,
+        "translation": 26422
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What did Gopal's mother do with half of the soaked chana?\",\n "
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about how seeds spread?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This ignores the other methods of seed dispersal mentioned i…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of how seeds travel from one place to another?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"This describes seed storage, not seed travel by nature's mea…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What would happen if seeds did not spread and remained at one place only?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This is the opposite of what the passage suggests about seed…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which plant was brought to India from South America?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of the poem in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of how seeds are spread?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Gopal soak more chana than needed?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a seed is placed in a bowl with dry cotton wool, what will happen?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This is incorrect because sprouting is a stage before a plan…\"); distractor 3's reason is not a one-line misconception (\"This is incorrect because dry conditions do not support spro…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the experiment with the three bowls, in which bowl would seeds most likely sprout?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What did Gopal's mother do with the soaked chana?",
+      "reason": "near-duplicate of served question cmvh833mn07hegpfhbcxyghnf (cosine 0.923 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

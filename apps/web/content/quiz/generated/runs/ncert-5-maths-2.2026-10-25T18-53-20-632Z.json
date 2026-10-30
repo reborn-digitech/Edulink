@@ -1,0 +1,513 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T18:53:20.632Z",
+  "finishedAt": "2026-10-25T18:59:15.679Z",
+  "seconds": 355,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm102.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Fractions",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2015 — question paper]\n3. Find all fractions which can be written simultaneously in the forms\n5k − 3\n6l − 1\nand , for some integers k, l.\n4l − 3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n33. (A) The numerator of a fraction is 3 less than its denominator. If 2 is added to both 5\nof its numerator and denominator then the sum of the new fraction and original\nfraction is 20 . Find the original fraction.\nOR\n(B) A train covers a distance of 300 km at a uniform speed. If the speed of the train 5\nis increased by 5 km/hr, it takes 2 hours less in the journey. Find the original\nspeed of the train.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n4. C Let numerator be x and denominator be y 1\nGiven , x + y = 11\n𝐱 𝟏\n(𝐲+𝟏) = 2\nSolving these equations, we get\nx = 4, y = 7; ∴ Fraction = 𝟒 7\n𝟒\n(C)",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n4. 1\nis increased by 1, the fraction becomes\n2 3\n(A) (B)\n9 8\n, then the fraction is\n4 5\n(C) (D)\n7 6\nIf one root of the quadratic equation 𝑎𝑥 + 𝑏𝑥 + 𝑐 = 0 is the reciprocal of the"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 105364,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 15696,
+      "completionTokens": 5514
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 245647,
+      "in": 24,
+      "out": 18,
+      "rejects": 6,
+      "promptTokens": 14929,
+      "completionTokens": 5828
+    },
+    "solver": {
+      "calls": 152,
+      "ms": 94505,
+      "in": 18,
+      "out": 13,
+      "rejects": 5,
+      "promptTokens": 26978,
+      "completionTokens": 1709
+    },
+    "form": {
+      "calls": 1,
+      "ms": 4160,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 301,
+      "completionTokens": 104
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 4256,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 139887,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 9565,
+      "completionTokens": 4141
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "When can we say that of something is greater than of something?",
+      "ms": {
+        "draft": 6088,
+        "critique": 5684
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Raman’s father cut the parathas into halves (2 equal parts) or fourths (4 equal parts) before serving them. If Dadiji took 9 pieces of paratha, how many parathas did she eat?",
+      "ms": {
+        "draft": 6088,
+        "critique": 6726
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Using the number line, how many parathas did Raman eat if he took 6 pieces of paratha?",
+      "ms": {
+        "draft": 6088,
+        "critique": 8051
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Raman’s family of 6 members ordered 2 pizzas and cut each pizza into 3 equal slices. If Dadiji and Dadaji gave their slices to Raman, how much pizza does Raman have?",
+      "ms": {
+        "draft": 6088,
+        "critique": 8844
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about comparing two fractions of two wholes?",
+      "ms": {
+        "draft": 6088,
+        "critique": 5329,
+        "solver": 12419,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following fractions is equal to half?",
+      "ms": {
+        "draft": 3408,
+        "critique": 8054,
+        "solver": 11657
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Raman’s father cut all the parathas into fourths. If Radhika took 6 pieces of paratha, how many parathas did she eat?",
+      "ms": {
+        "draft": 6088,
+        "critique": 7311,
+        "solver": 15335,
+        "form": 4922
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a fraction is less than 1 and more than 1/2, which of the following could it be?",
+      "ms": {
+        "draft": 3408,
+        "critique": 6507,
+        "solver": 1371
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 2 is added to both the numerator and denominator of a fraction, and the result is 3/4, which fraction could it be?",
+      "ms": {
+        "draft": 3408,
+        "critique": 7869,
+        "solver": 2074
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a fraction is less than 1 and its numerator is 3, what could be the denominator?",
+      "ms": {
+        "draft": 3408,
+        "critique": 7971,
+        "solver": 926,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Raman gave 1 slice to Radhika, and he had 2 slices. What fraction of the pizza did Radhika get?",
+      "ms": {
+        "draft": 3713,
+        "critique": 10493
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of equivalent fractions?",
+      "ms": {
+        "draft": 15161,
+        "critique": 6432,
+        "solver": 1585,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Dadiji took 9 pieces of a paratha that was cut into fourths. How many parathas did she eat?",
+      "ms": {
+        "draft": 15161,
+        "critique": 9875
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a fraction is equal to half of 2/3, what is the fraction?",
+      "ms": {
+        "draft": 3713,
+        "critique": 8641,
+        "solver": 20415
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Raman ate 6 pieces of a paratha that was cut into halves. How many parathas did he eat?",
+      "ms": {
+        "draft": 15161,
+        "critique": 10116,
+        "solver": 15835,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 1/2 of a chocolate is equal to 1/3 of another chocolate, which chocolate is larger?",
+      "ms": {
+        "draft": 15161,
+        "critique": 7806,
+        "solver": 11621
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following shows a fraction greater than one?",
+      "ms": {
+        "draft": 3408,
+        "critique": 6445,
+        "solver": 16620,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following fractions is greater than one?",
+      "ms": {
+        "draft": 3713,
+        "critique": 9588,
+        "solver": 2574,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of equivalent fractions?",
+      "ms": {
+        "draft": 15161,
+        "critique": 8029,
+        "solver": 8619,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the fraction that represents one part out of two equal parts?",
+      "ms": {
+        "draft": 3713,
+        "critique": 8782,
+        "solver": 17935,
+        "form": 0,
+        "translation": 21376
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 1/2 of a chocolate is equal to 2/4 of another chocolate, what can be said about the two chocolates?",
+      "ms": {
+        "draft": 15161,
+        "critique": 7754,
+        "solver": 1831,
+        "form": 0,
+        "translation": 28640
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a pizza is divided into 8 equal slices and 3 slices are eaten, what fraction of the pizza is left?",
+      "ms": {
+        "draft": 3713,
+        "critique": 9280,
+        "solver": 1707,
+        "form": 0,
+        "translation": 35278
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a fraction is added to 1/2 and the result is 3/4, what is the fraction?",
+      "ms": {
+        "draft": 3713,
+        "critique": 8356,
+        "solver": 2106,
+        "form": 0,
+        "translation": 28357
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a fraction is equal to 1/2 and its numerator is 4, what is the denominator?",
+      "ms": {
+        "draft": 3408,
+        "critique": 5084,
+        "solver": 769,
+        "form": 0,
+        "translation": 22211
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "When can we say that of something is greater than of something?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Raman’s father cut the parathas into halves (2 equal parts) or fourths (4 equal parts) before serving them. If Dadiji took 9 pieces of paratha, how many parathas did she eat?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Using the number line, how many parathas did Raman eat if he took 6 pieces of paratha?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Raman’s family of 6 members ordered 2 pizzas and cut each pizza into 3 equal slices. If Dadiji and Dadaji gave their slices to Raman, how much pizza does Raman have?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about comparing two fractions of two wholes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"Incorrectly assumes the condition for comparing fractions of…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following fractions is equal to half?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Raman’s father cut all the parathas into fourths. If Radhika took 6 pieces of paratha, how many parathas did she eat?",
+      "reason": "options are in more than one unit (and a half parathas, and a quarter parathas, and three-quarters parathas); options 0 and 1 are the same number; options 0 and 2 are the same number; options 1 and 2 are the same number; distractor 1's reason is not a one-line misconception (\"Adds the number of pieces directly without dividing by the n…\"); distractor 3's reason is not a one-line misconception (\"Multiplies the number of pieces by the number of pieces per …\"); ARITHMETIC MISMATCH — checkExpr \"6/4\" = 1.5, but the key says 1"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a fraction is less than 1 and more than 1/2, which of the following could it be?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 2 is added to both the numerator and denominator of a fraction, and the result is 3/4, which fraction could it be?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a fraction is less than 1 and its numerator is 3, what could be the denominator?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer is 4, others do not satisfy the condition…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Raman gave 1 slice to Radhika, and he had 2 slices. What fraction of the pizza did Radhika get?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of equivalent fractions?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct option…\"); distractor 3's reason is not a one-line misconception (\"Confuses equivalent fractions with reciprocal fractions, whi…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Dadiji took 9 pieces of a paratha that was cut into fourths. How many parathas did she eat?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a fraction is equal to half of 2/3, what is the fraction?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Raman ate 6 pieces of a paratha that was cut into halves. How many parathas did he eat?",
+      "reason": "options 0 and 1 are the same (\"3\"); options 0 and 2 are the same (\"3\"); options 1 and 2 are the same (\"3\"); options 0 and 1 are the same number; options 0 and 2 are the same number; options 1 and 2 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 1/2 of a chocolate is equal to 1/3 of another chocolate, which chocolate is larger?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following shows a fraction greater than one?",
+      "reason": "near-duplicate of served question cmvh5oq3k06yygpfhk8lcj30w (cosine 0.928 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following fractions is greater than one?",
+      "reason": "near-duplicate of served question cmvk7m7mb0jgqgpfhs1xatal8 (cosine 0.952 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of equivalent fractions?",
+      "reason": "near-duplicate of served question cmvk7m7m80jgegpfhlo5ky1xo (cosine 0.939 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

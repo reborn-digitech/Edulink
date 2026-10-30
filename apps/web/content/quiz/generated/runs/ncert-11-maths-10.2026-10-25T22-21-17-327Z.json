@@ -1,0 +1,784 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T22:21:17.327Z",
+  "finishedAt": "2026-10-25T22:32:01.072Z",
+  "seconds": 644,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh110.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Conic Sections",
+    "edition": "Reprint 2026-27",
+    "chunks": 18,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, sample question paper, 2025-26]\n10. The solution of the differential equation 𝑥𝑑𝑥 + 𝑦𝑑𝑦 = 0 represents a family of 1\n(A) straight lines (B) parabolas (C) Circles (D) Ellipses",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n16. are 1\n(A) Congruent but not similar (B) Similar but not congruent\n(C)Neither congruent nor similar (D) Congruent as well as similar\nIf tangents PA and PB from a point P to a circle with centre O and respective point",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n12. (d) 9π cm 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 202959,
+      "in": 43,
+      "out": 39,
+      "rejects": 4,
+      "promptTokens": 42533,
+      "completionTokens": 11228
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 313486,
+      "in": 39,
+      "out": 34,
+      "rejects": 5,
+      "promptTokens": 23172,
+      "completionTokens": 8454
+    },
+    "solver": {
+      "calls": 215,
+      "ms": 105266,
+      "in": 34,
+      "out": 29,
+      "rejects": 5,
+      "promptTokens": 40946,
+      "completionTokens": 2089
+    },
+    "form": {
+      "calls": 18,
+      "ms": 62504,
+      "in": 29,
+      "out": 14,
+      "rejects": 15,
+      "promptTokens": 5096,
+      "completionTokens": 1665
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 30,
+      "ms": 6099,
+      "in": 14,
+      "out": 10,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 440322,
+      "in": 20,
+      "out": 20,
+      "rejects": 2,
+      "promptTokens": 25961,
+      "completionTokens": 12167
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 4,
+    "2": 3,
+    "3": 0,
+    "4": 2,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name given to the curves obtained by intersecting a right circular cone by a plane?",
+      "ms": {
+        "draft": 3959,
+        "critique": 7029,
+        "solver": 1794,
+        "form": 4217
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the general equation of a circle with center at (h, k) and radius r?",
+      "ms": {
+        "draft": 3959,
+        "critique": 8326,
+        "solver": 10925
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given information, what is the radius of the circle whose equation is (x + 4) + (y + 5) = 49?",
+      "ms": {
+        "draft": 3959,
+        "critique": 9635,
+        "solver": 1981,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the equation of a circle that passes through the points (4,1) and (6,5) and whose center lies on the line 4x + y = 16?",
+      "ms": {
+        "draft": 3959,
+        "critique": 7784,
+        "solver": 1478,
+        "form": 4101
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the equation of the circle with radius 5 whose center lies on the x-axis and passes through the point (2,3)?",
+      "ms": {
+        "draft": 3959,
+        "critique": 8605
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The equation of a parabola is given as y^2 = 4ax. What is the axis of symmetry of the parabola?",
+      "ms": {
+        "draft": 12249,
+        "critique": 6390,
+        "solver": 1127,
+        "form": 4036
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the focus of the parabola y^2 = 8x?",
+      "ms": {
+        "draft": 12249,
+        "critique": 5386,
+        "solver": 10943,
+        "form": 4255
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the length of the latus rectum of an ellipse given by the equation x²/a² + y²/b² = 1?",
+      "ms": {
+        "draft": 4963,
+        "critique": 6272,
+        "solver": 2000,
+        "form": 3132
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Given the equation of an ellipse x²/16 + y²/9 = 1, what is the length of the major axis?",
+      "ms": {
+        "draft": 4963,
+        "critique": 6846,
+        "solver": 1004,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An ellipse has foci at (±3, 0) and the sum of distances from any point on the ellipse to the foci is 10. What is the length of the semi-minor axis?",
+      "ms": {
+        "draft": 4963,
+        "critique": 6794,
+        "solver": 1869,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An ellipse is centered at the origin, with foci on the x-axis. The length of the latus rectum is 4 and the eccentricity is 1/2. What is the equation of the ellipse?",
+      "ms": {
+        "draft": 4963,
+        "critique": 7130,
+        "solver": 13435,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the length of the latus rectum of a hyperbola with a = 3 and b = 4?",
+      "ms": {
+        "draft": 5206,
+        "critique": 9024
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the eccentricity of a hyperbola with a = 4 and c = 5?",
+      "ms": {
+        "draft": 5206,
+        "critique": 8330,
+        "solver": 1433
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the equation of a hyperbola with vertices at (± 3, 0) and foci at (± 5, 0)?",
+      "ms": {
+        "draft": 5206,
+        "critique": 7485,
+        "solver": 1322,
+        "form": 4100
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the standard equation of a hyperbola with its transverse axis along the x-axis and centre at the origin?",
+      "ms": {
+        "draft": 5206,
+        "critique": 9555,
+        "solver": 12481,
+        "form": 2307
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the length of the latus rectum of the parabola y² = 4ax?",
+      "ms": {
+        "draft": 6554,
+        "critique": 5032
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the definition of a parabola?",
+      "ms": {
+        "draft": 6554,
+        "critique": 5956
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "An arch is in the form of a parabola with its axis vertical. The arch is 10 m high and 5 m wide at the base. How wide is it 2 m from the vertex of the parabola?",
+      "ms": {
+        "draft": 6554,
+        "critique": 5635,
+        "solver": 1379,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An equilateral triangle is inscribed in the parabola y² = 4ax, with one vertex at the vertex of the parabola. What is the length of the side of the triangle?",
+      "ms": {
+        "draft": 6554,
+        "critique": 7873,
+        "solver": 12087
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A rod of length 12 cm moves with its ends always touching the coordinate axes. What is the equation of the locus of a point P on the rod, which is 3 cm from the end in contact with the x-axis?",
+      "ms": {
+        "draft": 6554,
+        "critique": 7240,
+        "solver": 15019
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A hyperbola has foci at (±5, 0) and vertices at (±3, 0). What is the equation of the hyperbola?",
+      "ms": {
+        "draft": 16668,
+        "critique": 6686,
+        "solver": 11640,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A hyperbola has vertices at (0, ±4) and foci at (0, ±6). What is the equation of the hyperbola?",
+      "ms": {
+        "draft": 16668,
+        "critique": 7094,
+        "solver": 2394,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A hyperbola has foci at (±4, 0) and the length of the latus rectum is 12. What is the equation of the hyperbola?",
+      "ms": {
+        "draft": 16668,
+        "critique": 7066,
+        "solver": 2090
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "For an ellipse, what is the term used to describe the distance between the two foci divided by 2?",
+      "ms": {
+        "draft": 4443,
+        "critique": 7916
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the equation of a hyperbola is given as (x^2/a^2) - (y^2/b^2) = 1, and it is known that the foci lie on the x-axis, what is the relationship between a, b, and c?",
+      "ms": {
+        "draft": 4443,
+        "critique": 7108,
+        "solver": 1703,
+        "form": 4029
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the length of the latus rectum of the parabola y^2 = 8x?",
+      "ms": {
+        "draft": 12249,
+        "critique": 5691,
+        "solver": 1532,
+        "form": 3982
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A parabola is symmetric about the y-axis and passes through the point (2, -3). What is the equation of the parabola?",
+      "ms": {
+        "draft": 12249,
+        "critique": 5339,
+        "solver": 1584,
+        "form": 4860
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A hyperbola has the equation $\frac{x^2}{9} - \frac{y^2}{16} = 1$. What is the length of its transverse axis?",
+      "ms": {
+        "draft": 16668,
+        "critique": 6014,
+        "solver": 1923,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the equation of a parabola with focus at (6,0) and directrix x = -6?",
+      "ms": {
+        "draft": 4956,
+        "critique": 7318,
+        "solver": 1642,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of an ellipse?",
+      "ms": {
+        "draft": 3477,
+        "critique": 8327,
+        "solver": 1463,
+        "form": 4231,
+        "translation": 47800
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the line segment joining the foci of a hyperbola?",
+      "ms": {
+        "draft": 3477,
+        "critique": 8108,
+        "solver": 1488,
+        "form": 2984,
+        "translation": 33309
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the line segment perpendicular to the transverse axis and passing through the center of a hyperbola?",
+      "ms": {
+        "draft": 3477,
+        "critique": 6283,
+        "solver": 1693,
+        "form": 3094,
+        "translation": 39207
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the set of all points in a plane where the difference of distances from two fixed points is constant?",
+      "ms": {
+        "draft": 4443,
+        "critique": 5975,
+        "solver": 1227,
+        "form": 3966,
+        "translation": 32800
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a conic section that is formed when the intersecting plane is perpendicular to the axis of the cone?",
+      "ms": {
+        "draft": 3959,
+        "critique": 6522,
+        "solver": 1369,
+        "form": 4800,
+        "translation": 45723
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the equation of a parabola with vertex at the origin and focus at (a, 0)?",
+      "ms": {
+        "draft": 12249,
+        "critique": 6453,
+        "solver": 1844,
+        "form": 5005,
+        "translation": 43216
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of an ellipse?",
+      "ms": {
+        "draft": 4963,
+        "critique": 6303,
+        "solver": 1270,
+        "form": 3105,
+        "translation": 47780
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A hyperbola has the equation $\frac{y^2}{25} - \frac{x^2}{144} = 1$. What is the length of its conjugate axis?",
+      "ms": {
+        "draft": 16668,
+        "critique": 5082,
+        "solver": 1782,
+        "form": 0,
+        "translation": 33294
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A parabola has its vertex at the origin and opens upwards. What is the equation of the parabola?",
+      "ms": {
+        "draft": 12249,
+        "critique": 6123,
+        "solver": 1648,
+        "form": 3254,
+        "translation": 80177
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "An ellipse has a major axis of length 2a and a minor axis of length 2b. What is the length of the latus rectum of the ellipse?",
+      "ms": {
+        "draft": 4956,
+        "critique": 7418,
+        "solver": 6782,
+        "form": 0,
+        "translation": 32437
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the equation of a parabola with vertex at the origin and focus at (0, -2)?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term used for the distance between the two vertices of a hyperbola?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term used for the distance between the two foci of a hyperbola?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name given to the curves obtained by intersecting a right circular cone by a plane?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"The correct answer is the only one that matches the passage'…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the general equation of a circle with center at (h, k) and radius r?",
+      "reason": "after redrafting distractor 2: the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the given information, what is the radius of the circle whose equation is (x + 4) + (y + 5) = 49?",
+      "reason": "checkExpr \"sqrt(49)\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the equation of a circle that passes through the points (4,1) and (6,5) and whose center lies on the line 4x + y = 16?",
+      "reason": "options 0 and 3 say the same thing (\"(x – 4) + (y – 4) = 16\" / \"(x – 5) + (y – 4) = 16\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the equation of the circle with radius 5 whose center lies on the x-axis and passes through the point (2,3)?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The equation of a parabola is given as y^2 = 4ax. What is the axis of symmetry of the parabola?",
+      "reason": "option 3 is a catch-all (\"none of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the focus of the parabola y^2 = 8x?",
+      "reason": "checkExpr \"2\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the length of the latus rectum of an ellipse given by the equation x²/a² + y²/b² = 1?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); checkExpr \"2*b^2/a\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Given the equation of an ellipse x²/16 + y²/9 = 1, what is the length of the major axis?",
+      "reason": "checkExpr \"2*sqrt(16)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "An ellipse has foci at (±3, 0) and the sum of distances from any point on the ellipse to the foci is 10. What is the length of the semi-minor axis?",
+      "reason": "checkExpr \"sqrt(5^2 - 3^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "An ellipse is centered at the origin, with foci on the x-axis. The length of the latus rectum is 4 and the eccentricity is 1/2. What is the equation of the ellipse?",
+      "reason": "checkExpr \"2*(3/4*a^2)/a=4\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the length of the latus rectum of a hyperbola with a = 3 and b = 4?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the eccentricity of a hyperbola with a = 4 and c = 5?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the equation of a hyperbola with vertices at (± 3, 0) and foci at (± 5, 0)?",
+      "reason": "options 0 and 1 say the same thing (\"x^2/9 - y^2/16 = 1\" / \"x^2/16 - y^2/9 = 1\"); options 0 and 2 say the same thing (\"x^2/9 - y^2/16 = 1\" / \"y^2/9 - x^2/16 = 1\"); options 0 and 3 say the same thing (\"x^2/9 - y^2/16 = 1\" / \"y^2/16 - x^2/9 = 1\"); options 1 and 2 say the same thing (\"x^2/16 - y^2/9 = 1\" / \"y^2/9 - x^2/16 = 1\"); options 1 and 3 say the same thing (\"x^2/16 - y^2/9 = 1\" / \"y^2/16 - x^2/9 = 1\"); options 2 and 3 say the same thing (\"y^2/9 - x^2/16 = 1\" / \"y^2/16 - x^2/9 = 1\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the standard equation of a hyperbola with its transverse axis along the x-axis and centre at the origin?",
+      "reason": "options 0 and 1 say the same thing (\"(x^2/a^2) + (y^2/b^2) = 1\" / \"(x^2/a^2) - (y^2/b^2) = 1\"); options 0 and 2 say the same thing (\"(x^2/a^2) + (y^2/b^2) = 1\" / \"(y^2/a^2) - (x^2/b^2) = 1\"); options 0 and 3 say the same thing (\"(x^2/a^2) + (y^2/b^2) = 1\" / \"(x^2/b^2) - (y^2/a^2) = 1\"); options 1 and 2 say the same thing (\"(x^2/a^2) - (y^2/b^2) = 1\" / \"(y^2/a^2) - (x^2/b^2) = 1\"); options 1 and 3 say the same thing (\"(x^2/a^2) - (y^2/b^2) = 1\" / \"(x^2/b^2) - (y^2/a^2) = 1\"); options 2 and 3 say the same thing (\"(y^2/a^2) - (x^2/b^2) = 1\" / \"(x^2/b^2) - (y^2/a^2) = 1\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the standard equation of a circle with centre (h, k) and radius r?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the length of the latus rectum of the parabola y² = 4ax?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the definition of a parabola?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "An arch is in the form of a parabola with its axis vertical. The arch is 10 m high and 5 m wide at the base. How wide is it 2 m from the vertex of the parabola?",
+      "reason": "checkExpr \"4\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "An equilateral triangle is inscribed in the parabola y² = 4ax, with one vertex at the vertex of the parabola. What is the length of the side of the triangle?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A rod of length 12 cm moves with its ends always touching the coordinate axes. What is the equation of the locus of a point P on the rod, which is 3 cm from the end in contact with the x-axis?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A hyperbola has foci at (±5, 0) and vertices at (±3, 0). What is the equation of the hyperbola?",
+      "reason": "options 0 and 1 say the same thing (\"$\\frac{x^2}{9} - \\frac{y^2}{16} = 1$\" / \"$\\frac{x^2}{16} - \\frac{y^2}{9} = 1$\"); options 2 and 3 say the same thing (\"$\\frac{x^2}{3} - \\frac{y^2}{5} = 1$\" / \"$\\frac{x^2}{5} - \\frac{y^2}{3} = 1$\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A hyperbola has vertices at (0, ±4) and foci at (0, ±6). What is the equation of the hyperbola?",
+      "reason": "options 0 and 1 say the same thing (\"$\\frac{x^2}{16} - \\frac{y^2}{20} = 1$\" / \"$\\frac{y^2}{16} - \\frac{x^2}{20} = 1$\"); options 0 and 2 say the same thing (\"$\\frac{x^2}{16} - \\frac{y^2}{20} = 1$\" / \"$\\frac{x^2}{20} - \\frac{y^2}{16} = 1$\"); options 0 and 3 say the same thing (\"$\\frac{x^2}{16} - \\frac{y^2}{20} = 1$\" / \"$\\frac{y^2}{20} - \\frac{x^2}{16} = 1$\"); options 1 and 2 say the same thing (\"$\\frac{y^2}{16} - \\frac{x^2}{20} = 1$\" / \"$\\frac{x^2}{20} - \\frac{y^2}{16} = 1$\"); options 1 and 3 say the same thing (\"$\\frac{y^2}{16} - \\frac{x^2}{20} = 1$\" / \"$\\frac{y^2}{20} - \\frac{x^2}{16} = 1$\"); options 2 and 3 say the same thing (\"$\\frac{x^2}{20} - \\frac{y^2}{16} = 1$\" / \"$\\frac{y^2}{20} - \\frac{x^2}{16} = 1$\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A hyperbola has foci at (±4, 0) and the length of the latus rectum is 12. What is the equation of the hyperbola?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "For an ellipse, what is the term used to describe the distance between the two foci divided by 2?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the equation of a hyperbola is given as (x^2/a^2) - (y^2/b^2) = 1, and it is known that the foci lie on the x-axis, what is the relationship between a, b, and c?",
+      "reason": "options 0 and 1 say the same thing (\"c^2 = a^2 + b^2\" / \"c^2 = a^2 - b^2\"); options 0 and 2 say the same thing (\"c^2 = a^2 + b^2\" / \"b^2 = c^2 + a^2\"); options 0 and 3 say the same thing (\"c^2 = a^2 + b^2\" / \"a^2 = b^2 + c^2\"); options 1 and 2 say the same thing (\"c^2 = a^2 - b^2\" / \"b^2 = c^2 + a^2\"); options 1 and 3 say the same thing (\"c^2 = a^2 - b^2\" / \"a^2 = b^2 + c^2\"); options 2 and 3 say the same thing (\"b^2 = c^2 + a^2\" / \"a^2 = b^2 + c^2\"); option 0 repeats the stem's wording (\"c^2 = a^2 + b^2\"); option 1 repeats the stem's wording (\"c^2 = a^2 - b^2\"); option 2 repeats the stem's wording (\"b^2 = c^2 + a^2\"); option 3 repeats the stem's wording (\"a^2 = b^2 + c^2\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the length of the latus rectum of the parabola y^2 = 8x?",
+      "reason": "near-duplicate of served question cmsmo5q9j09xiy2vy7by8a1rk (cosine 0.920 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A parabola is symmetric about the y-axis and passes through the point (2, -3). What is the equation of the parabola?",
+      "reason": "near-duplicate of served question cmvhc4ejs081zgpfht145063z (cosine 0.940 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A hyperbola has the equation $\frac{x^2}{9} - \frac{y^2}{16} = 1$. What is the length of its transverse axis?",
+      "reason": "near-duplicate of served question cmvhc4ell082ngpfhlwa4iymo (cosine 0.951 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the equation of a parabola with focus at (6,0) and directrix x = -6?",
+      "reason": "near-duplicate of served question cmvhc4ejo081hgpfhyhmnchvv (cosine 0.919 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

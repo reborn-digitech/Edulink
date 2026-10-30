@@ -1,0 +1,638 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T17:18:42.281Z",
+  "finishedAt": "2026-10-23T17:29:19.243Z",
+  "seconds": 637,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy213.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 13 — Movements of Ocean Water",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2025-26]\n29. 5\nA Hamburg\nB Capetown\nC Panama Canal\nD Amazon Basin\nE Santiago\nF Vladivostok\nG Downs\nFor Visually impaired students.\nA Hamburg/London/North Cape\nB Capetown\nC Rhine waterway\nD Amazon Basin\nE Santiago/ Buenos Airies\nF Vladivostok/ St. Petersburg\nG Downs",
+      "[CBSE Class XII Geography, marking scheme, 2023-24]\nWater provides a smooth surface for very cheap transport provided there is\nno turbulence.\nWaterways are the cheapest means of transport for heavy and bulky goods\nand it is more favored for international trading.\nIndented coastline is suitable for ports.\nOpening of Suez Canal also promotes encouraged seaports along the west\ncoast\nOR\nPorts as gateways of international trade-The chief gateways of the world of\ninternational trade are the harbours and ports.\nThe ports act as suction points of the resources from their hinterlands. The\nextension of railways and roadways towards the interior facilitates the linking\nof the local markets to regional markets, regional markets to national markets\nand na",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n6. c. It is situated at the head of Gulf of Kachchh",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n15. (b) Watershed development"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 184836,
+      "in": 31,
+      "out": 31,
+      "rejects": 0,
+      "promptTokens": 24805,
+      "completionTokens": 7635
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 349665,
+      "in": 31,
+      "out": 29,
+      "rejects": 2,
+      "promptTokens": 16885,
+      "completionTokens": 6717
+    },
+    "solver": {
+      "calls": 204,
+      "ms": 160652,
+      "in": 29,
+      "out": 25,
+      "rejects": 4,
+      "promptTokens": 37354,
+      "completionTokens": 2187
+    },
+    "form": {
+      "calls": 23,
+      "ms": 119302,
+      "in": 25,
+      "out": 10,
+      "rejects": 15,
+      "promptTokens": 12733,
+      "completionTokens": 2250
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 3215,
+      "in": 10,
+      "out": 7,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 435585,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 17446,
+      "completionTokens": 8910
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the motion of water particles in a wave?",
+      "ms": {
+        "draft": 5825,
+        "critique": 8528,
+        "solver": 1397,
+        "form": 7024
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a wave is moving towards a shallow region, what will happen to its speed and height?",
+      "ms": {
+        "draft": 5825,
+        "critique": 10876,
+        "solver": 2070,
+        "form": 4537
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why do cold-water ocean currents move towards the equator?",
+      "ms": {
+        "draft": 4189,
+        "critique": 10820,
+        "solver": 2415,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a harbour is located in an area with an indented coastline, what is the most likely impact on its functionality?",
+      "ms": {
+        "draft": 4189,
+        "critique": 11298
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a factor that influences the movement of ocean currents?",
+      "ms": {
+        "draft": 4189,
+        "critique": 10279,
+        "solver": 22085,
+        "form": 3945
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why are tides predictable?",
+      "ms": {
+        "draft": 4189,
+        "critique": 8578,
+        "solver": 25181,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct characteristic of ocean currents?",
+      "ms": {
+        "draft": 5381,
+        "critique": 8516,
+        "solver": 3266,
+        "form": 4779
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is true about the movement of ocean currents?",
+      "ms": {
+        "draft": 5381,
+        "critique": 8738,
+        "solver": 1607,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage states that ocean currents move from low latitudes to high latitudes. Which of the following is a reason for this movement?",
+      "ms": {
+        "draft": 5381,
+        "critique": 8934,
+        "solver": 2660,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a direct influence of ocean currents on human activities?",
+      "ms": {
+        "draft": 5381,
+        "critique": 11836,
+        "solver": 16667,
+        "form": 4199
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that ocean currents have a direct influence on the climate of coastal areas. Which of the following best explains this influence?",
+      "ms": {
+        "draft": 5381,
+        "critique": 7326,
+        "solver": 804,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a direct influence of ocean currents on human activities?",
+      "ms": {
+        "draft": 7425,
+        "critique": 8101
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains why cold currents are found near the western coasts of continents in the subtropical latitudes?",
+      "ms": {
+        "draft": 7425,
+        "critique": 9377,
+        "solver": 2755
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on Figure 13.3, which ocean has the most prominent example of a cold current moving towards the equator?",
+      "ms": {
+        "draft": 7425,
+        "critique": 7364,
+        "solver": 22765
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following would most likely be affected by the presence of a warm ocean current?",
+      "ms": {
+        "draft": 7425,
+        "critique": 11721,
+        "solver": 20481,
+        "form": 3634
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which factor is NOT listed as a primary force that initiates ocean current movement?",
+      "ms": {
+        "draft": 19784,
+        "critique": 9429,
+        "solver": 23964
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A port near a river estuary experiences high tides that prevent ships from entering. What is the most likely reason for this?",
+      "ms": {
+        "draft": 19784,
+        "critique": 10053,
+        "solver": 19180,
+        "form": 5635
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a surface current?",
+      "ms": {
+        "draft": 19784,
+        "critique": 10542,
+        "solver": 18519
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a factor that determines the maximum wave height?",
+      "ms": {
+        "draft": 9804,
+        "critique": 8534,
+        "solver": 1969,
+        "form": 5423
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What causes the horizontal motion of ocean water?",
+      "ms": {
+        "draft": 9804,
+        "critique": 9266,
+        "solver": 2486,
+        "form": 5810
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do waves slow down as they approach the shore?",
+      "ms": {
+        "draft": 9804,
+        "critique": 8591,
+        "solver": 2160,
+        "form": 2390
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a type of tide that has two high tides and two low tides every day?",
+      "ms": {
+        "draft": 4189,
+        "critique": 8352,
+        "solver": 2130,
+        "form": 4783
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which type of tide has two high tides and two low tides every day?",
+      "ms": {
+        "draft": 19784,
+        "critique": 7127,
+        "solver": 2327,
+        "form": 5125
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do cold water currents move from the poles towards the equator?",
+      "ms": {
+        "draft": 19784,
+        "critique": 9050,
+        "solver": 1803,
+        "form": 5817
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of waves in the open ocean?",
+      "ms": {
+        "draft": 5825,
+        "critique": 8568,
+        "solver": 2795,
+        "form": 0,
+        "translation": 70600
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main factor that determines the maximum height of a wave?",
+      "ms": {
+        "draft": 5825,
+        "critique": 7969,
+        "solver": 2375,
+        "form": 3258,
+        "translation": 53345
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary source of energy for ocean waves?",
+      "ms": {
+        "draft": 7425,
+        "critique": 8146,
+        "solver": 1586,
+        "form": 4728,
+        "translation": 31807
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a type of ocean current that moves in the upper 400 meters of the ocean?",
+      "ms": {
+        "draft": 4189,
+        "critique": 9437,
+        "solver": 2628,
+        "form": 4792,
+        "translation": 58323
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the movement of warm ocean currents in the northern hemisphere?",
+      "ms": {
+        "draft": 7425,
+        "critique": 7097,
+        "solver": 1932,
+        "form": 7422,
+        "translation": 67506
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given passage, what is the main reason for the formation of tidal bulges on Earth?",
+      "ms": {
+        "draft": 5825,
+        "critique": 9049,
+        "solver": 3580,
+        "form": 5236,
+        "translation": 79497
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why tidal bulges are larger on wide continental shelves?",
+      "ms": {
+        "draft": 5825,
+        "critique": 9308,
+        "solver": 2509,
+        "form": 4634,
+        "translation": 68932
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best describes the motion of water particles in a wave?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'wave'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a wave is moving towards a shallow region, what will happen to its speed and height?",
+      "reason": "options 0 and 1 say the same thing (\"Speed increases and height decreases\" / \"Speed decreases and height increases\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, why do cold-water ocean currents move towards the equator?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a harbour is located in an area with an indented coastline, what is the most likely impact on its functionality?",
+      "reason": "the critic finds option 1 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a factor that influences the movement of ocean currents?",
+      "reason": "option 3 is a catch-all (\"All of the above\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why are tides predictable?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct characteristic of ocean currents?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks wind has no effect on currents, which is incorrect as…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is true about the movement of ocean currents?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believes currents move from high to low latitudes, which is …\"); distractor 1's reason is not a one-line misconception (\"Thinks currents are not affected by Earth's rotation, which …\"); distractor 2's reason is not a one-line misconception (\"Assumes currents are most intense at the bottom, which is in…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage states that ocean currents move from low latitudes to high latitudes. Which of the following is a reason for this movement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a direct influence of ocean currents on human activities?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks tides are directly affected by currents, which is not…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that ocean currents have a direct influence on the climate of coastal areas. Which of the following best explains this influence?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Thinks currents prevent storms, which is not stated in the p…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a direct influence of ocean currents on human activities?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains why cold currents are found near the western coasts of continents in the subtropical latitudes?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on Figure 13.3, which ocean has the most prominent example of a cold current moving towards the equator?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following would most likely be affected by the presence of a warm ocean current?",
+      "reason": "option 3 is a catch-all (\"All of the above\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which factor is NOT listed as a primary force that initiates ocean current movement?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A port near a river estuary experiences high tides that prevent ships from entering. What is the most likely reason for this?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is an example of a surface current?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a factor that determines the maximum wave height?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What causes the horizontal motion of ocean water?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.normal: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do waves slow down as they approach the shore?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label wave"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is a type of tide that has two high tides and two low tides every day?",
+      "reason": "near-duplicate of served question cmvhsshh80akhgpfhhy1d9ciw (cosine 0.951 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which type of tide has two high tides and two low tides every day?",
+      "reason": "near-duplicate of served question cmvhsshh80akhgpfhhy1d9ciw (cosine 0.961 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why do cold water currents move from the poles towards the equator?",
+      "reason": "near-duplicate of served question cmvhsshmj0amngpfh0uj7a5l8 (cosine 0.916 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

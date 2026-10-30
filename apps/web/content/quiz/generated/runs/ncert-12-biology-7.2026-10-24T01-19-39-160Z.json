@@ -1,0 +1,817 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T01:19:39.160Z",
+  "finishedAt": "2026-10-24T01:28:36.251Z",
+  "seconds": 537,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo107.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 7 — Human Health and Disease",
+    "edition": "Reprint 2026-27",
+    "chunks": 28,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, sample question paper, 2024-25]\n30. Given below is the pattern of temperature in a person suffering from a 4\nnon-viral disease transmitted by mosquitoes. Study the graph and answer\nthe questions that follow:\nA. Explain the factor(s) responsible for this pattern of temperature. (1)\nB. How does this pathogen multiply in the human body? (2)\nAttempt either subpart C or D.\nC. How is this infection transmitted to humans? (1)\nOR\nD. Which stages of the life cycle of this pathogen are completed in the\nmosquito’s gut? (1)\n- - - - - - - - - - - - - - - - - - -\nFor visually impaired students\nA. A non-viral disease that is transmitted by mosquitoes causes recurring\nfever in an infected person. Explain giving reason(s). (1)\nB. How does ",
+      "[CBSE Class XII Biology, sample question paper, 2022-23]\n6. Interferons are most effective in making non-infected cells resistant against the 1\nspread of which of the following diseases in humans?\n(a) ascariasis\n(b) ringworm\n(c) amoebiasis\n(d) AIDS",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n9. D. Sporozoites, Liver infection, Erythrocyte infection, Gametocytes 1",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n6. (d) AIDS 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 173770,
+      "in": 44,
+      "out": 42,
+      "rejects": 2,
+      "promptTokens": 45122,
+      "completionTokens": 9191
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 326298,
+      "in": 42,
+      "out": 29,
+      "rejects": 13,
+      "promptTokens": 21198,
+      "completionTokens": 8252
+    },
+    "solver": {
+      "calls": 186,
+      "ms": 89926,
+      "in": 29,
+      "out": 26,
+      "rejects": 3,
+      "promptTokens": 29418,
+      "completionTokens": 1839
+    },
+    "form": {
+      "calls": 10,
+      "ms": 26333,
+      "in": 26,
+      "out": 10,
+      "rejects": 16,
+      "promptTokens": 2367,
+      "completionTokens": 685
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 33,
+      "ms": 6455,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 427626,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 20702,
+      "completionTokens": 10782
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the primary factor that affects the health of a person according to the passage?",
+      "ms": {
+        "draft": 2794,
+        "critique": 6256,
+        "solver": 1264,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the immune system as described in the passage?",
+      "ms": {
+        "draft": 2794,
+        "critique": 7962,
+        "solver": 1474,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements is true about the passage?",
+      "ms": {
+        "draft": 2794,
+        "critique": 5965,
+        "solver": 1515,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a disease caused by a protozoan parasite?",
+      "ms": {
+        "draft": 4532,
+        "critique": 6787
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person is infected with Plasmodium, which of the following symptoms is most likely to occur due to the rupture of red blood cells?",
+      "ms": {
+        "draft": 4532,
+        "critique": 7755
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that the malarial parasite requires two hosts to complete its life cycle. Which of the following best explains why this is necessary?",
+      "ms": {
+        "draft": 4532,
+        "critique": 7843,
+        "solver": 1374,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, how is the infection with Entamoeba histolytica mainly transmitted?",
+      "ms": {
+        "draft": 4532,
+        "critique": 7178,
+        "solver": 1893,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the most serious type of malaria caused by Plasmodium?",
+      "ms": {
+        "draft": 4532,
+        "critique": 9174,
+        "solver": 1537,
+        "form": 3450
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the role of the female Anopheles mosquito in the life cycle of Plasmodium?",
+      "ms": {
+        "draft": 4532,
+        "critique": 8995,
+        "solver": 16330,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a function of interferons in the immune system?",
+      "ms": {
+        "draft": 3637,
+        "critique": 5665,
+        "solver": 1790,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a patient suffering from a disease transmitted by mosquitoes, a pattern of recurring fever is observed. What is the most likely reason for this pattern?",
+      "ms": {
+        "draft": 3637,
+        "critique": 6215,
+        "solver": 1201,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Figure 7.4, which part of the antibody is responsible for recognizing and binding to a specific antigen?",
+      "ms": {
+        "draft": 3637,
+        "critique": 6756,
+        "solver": 1872,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is tissue matching necessary before an organ transplant?",
+      "ms": {
+        "draft": 3637,
+        "critique": 6662,
+        "solver": 1907,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the cause of Acquired Immuno Deficiency Syndrome (AIDS)?",
+      "ms": {
+        "draft": 6248,
+        "critique": 7302
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of immunity is described as being slow and taking time to give its full effective response?",
+      "ms": {
+        "draft": 3987,
+        "critique": 7328,
+        "solver": 15292
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage suggest that modern-day lifestyle may contribute to more allergies and asthma in children?",
+      "ms": {
+        "draft": 3987,
+        "critique": 8226,
+        "solver": 12452
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of tumor that can spread to other parts of the body?",
+      "ms": {
+        "draft": 6248,
+        "critique": 6266,
+        "solver": 10377,
+        "form": 1672
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a method used to detect cancers of the internal organs?",
+      "ms": {
+        "draft": 4474,
+        "critique": 6108,
+        "solver": 12666,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a vector-borne disease?",
+      "ms": {
+        "draft": 3537,
+        "critique": 6364
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a disease that can be prevented by immunisation?",
+      "ms": {
+        "draft": 3537,
+        "critique": 6813
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a method of preventing water-borne diseases?",
+      "ms": {
+        "draft": 3537,
+        "critique": 6977
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How does the immune system remember pathogens it has encountered before?",
+      "ms": {
+        "draft": 3537,
+        "critique": 7316
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary reason adolescents might start using drugs or alcohol?",
+      "ms": {
+        "draft": 3211,
+        "critique": 6940
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of addiction according to the passage?",
+      "ms": {
+        "draft": 3211,
+        "critique": 6366
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a disease caused by a virus?",
+      "ms": {
+        "draft": 3537,
+        "critique": 6756,
+        "solver": 11173,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person starts using drugs out of curiosity, what might happen according to the passage?",
+      "ms": {
+        "draft": 3211,
+        "critique": 7100
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a long-term effect of drug and alcohol abuse?",
+      "ms": {
+        "draft": 3211,
+        "critique": 6584
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person is using drugs to avoid facing problems, what might be the next step according to the passage?",
+      "ms": {
+        "draft": 3211,
+        "critique": 6080
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why might a person who is addicted to drugs ignore social norms according to the passage?",
+      "ms": {
+        "draft": 3211,
+        "critique": 5919
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a mode of transmission of HIV according to the passage?",
+      "ms": {
+        "draft": 4278,
+        "critique": 7301,
+        "solver": 1736,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the information in the passage, which of the following best explains why drugs like barbiturates and benzodiazepines are often abused?",
+      "ms": {
+        "draft": 3706,
+        "critique": 9228,
+        "solver": 1169
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct comparison between active and passive immunity?",
+      "ms": {
+        "draft": 67928,
+        "critique": 6937,
+        "solver": 831,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a preventive measure against infectious diseases?",
+      "ms": {
+        "draft": 2794,
+        "critique": 6542,
+        "solver": 1806,
+        "form": 3076
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for immunity when ready-made antibodies are directly given to protect the body?",
+      "ms": {
+        "draft": 3987,
+        "critique": 7064,
+        "solver": 1856,
+        "form": 2339,
+        "translation": 53702
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method used to detect cancers of the internal organs?",
+      "ms": {
+        "draft": 3706,
+        "critique": 6348,
+        "solver": 1656,
+        "form": 4414,
+        "translation": 56683
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT an example of an infectious disease?",
+      "ms": {
+        "draft": 2794,
+        "critique": 6863,
+        "solver": 2352,
+        "form": 2583,
+        "translation": 32662
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of the immune system in preventing diseases?",
+      "ms": {
+        "draft": 3537,
+        "critique": 6846,
+        "solver": 1651,
+        "form": 0,
+        "translation": 45775
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of innate immunity?",
+      "ms": {
+        "draft": 3637,
+        "critique": 7812,
+        "solver": 1123,
+        "form": 0,
+        "translation": 37425
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a reason for avoiding exposure to carcinogens for individuals with a genetic predisposition to cancer?",
+      "ms": {
+        "draft": 3706,
+        "critique": 5617,
+        "solver": 1332,
+        "form": 2794,
+        "translation": 60808
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the primary function of α-interferon in cancer treatment?",
+      "ms": {
+        "draft": 3706,
+        "critique": 6496,
+        "solver": 1786,
+        "form": 2976,
+        "translation": 47183
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following diseases is caused by a virus?",
+      "ms": {
+        "draft": 2794,
+        "critique": 7183,
+        "solver": 1821,
+        "form": 1951,
+        "translation": 33501
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person is infected with a pathogen and is given preformed antibodies to fight the infection. What type of immunisation is this?",
+      "ms": {
+        "draft": 3987,
+        "critique": 7336,
+        "solver": 1407,
+        "form": 3269,
+        "translation": 55520
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a way to prevent the spread of vector-borne diseases?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the primary factor that affects the health of a person according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\"); distractor 0's reason is not a one-line misconception (\"Focuses on only one factor mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the role of the immune system as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements is true about the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of a disease caused by a protozoan parasite?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person is infected with Plasmodium, which of the following symptoms is most likely to occur due to the rupture of red blood cells?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that the malarial parasite requires two hosts to complete its life cycle. Which of the following best explains why this is necessary?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, how is the infection with Entamoeba histolytica mainly transmitted?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is the most serious type of malaria caused by Plasmodium?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (as per the passage, t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the role of the female Anopheles mosquito in the life cycle of Plasmodium?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a function of interferons in the immune system?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given here, but others are wron…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a patient suffering from a disease transmitted by mosquitoes, a pattern of recurring fever is observed. What is the most likely reason for this pattern?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given here, but others are wron…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram in Figure 7.4, which part of the antibody is responsible for recognizing and binding to a specific antigen?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given here, but others are wron…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is tissue matching necessary before an organ transplant?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given here, but others are wron…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the cause of Acquired Immuno Deficiency Syndrome (AIDS)?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which type of immunity is described as being slow and taking time to give its full effective response?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why does the passage suggest that modern-day lifestyle may contribute to more allergies and asthma in children?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of tumor that can spread to other parts of the body?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a method used to detect cancers of the internal organs?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the function of helper T-lymphocytes in the body according to the passage?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a vector-borne disease?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of a disease that can be prevented by immunisation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a method of preventing water-borne diseases?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How does the immune system remember pathogens it has encountered before?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the primary reason adolescents might start using drugs or alcohol?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the definition of addiction according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a disease caused by a virus?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person starts using drugs out of curiosity, what might happen according to the passage?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a long-term effect of drug and alcohol abuse?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person is using drugs to avoid facing problems, what might be the next step according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why might a person who is addicted to drugs ignore social norms according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is NOT a mode of transmission of HIV according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Believes physical contact can spread HIV despite the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the information in the passage, which of the following best explains why drugs like barbiturates and benzodiazepines are often abused?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a correct comparison between active and passive immunity?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the source of passive immunity with active immunity…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is a preventive measure against infectious diseases?",
+      "reason": "near-duplicate of served question cmvibmz3g0c9igpfhsgv1e5p9 (cosine 0.901 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

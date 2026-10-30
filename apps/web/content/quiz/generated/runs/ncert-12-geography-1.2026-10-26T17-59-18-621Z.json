@@ -1,0 +1,618 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T17:59:18.621Z",
+  "finishedAt": "2026-10-26T18:06:54.999Z",
+  "seconds": 456,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamentals of Human Geography",
+    "bookCode": "legy1",
+    "document": "ncert/12/geography/legy101.pdf",
+    "classLevel": 12,
+    "subject": "Geography",
+    "chapter": "Chapter 1 — Human Geography Nature and Scope",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, sample question paper, 2022-23]\n22. How is „Naturalisation of Humans‟ different from „Humanisation 3\nof Nature‟?\nOR\n“The approaches to the study of human geography have been\nevolving over a period of time”. How have these schools of\nthought changed the approaches of study to human geography?\nElucidate any 3 characteristics of the most effective and",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n22. A. How is ‘Naturalisation of Humans’ different from ‘Humanisation of\nNature’? 3\nOR\nB. Evaluate the dualisms that exist in Geography.",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n22. Write any three points.\nNaturalisation of humans Humanisation of nature\nThis refers to early stages of This refers to the interaction\ninteraction between the natural between the forces of nature\nenvironment and humans and humans who begin to\nwhere humans are adapted to\ndictates of nature.\nIt indicates a very low level of\nunderstand the forces of\nnature.\nIt indicates development of\ntechnology and social efficient technology and better\ndevelopment. social and cultural relations.\nNaturalised humans listen to Humans move from a state of\nnature, are afraid of its fury necessity to a state of freedom.\nand worship nature.\nDirect dependence of humans Resources are obtained from\non nature. the en",
+      "[CBSE Class XII Geography, sample question paper, 2024-25]\n20. Explain humanisation of nature with the help of a real life example. 3\nOR\n“The concept of Neo- determinism is compared with traffic lights on the cross road”.\nAnalyze the statement with examples."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 120663,
+      "in": 29,
+      "out": 27,
+      "rejects": 3,
+      "promptTokens": 20475,
+      "completionTokens": 6194
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 202194,
+      "in": 27,
+      "out": 24,
+      "rejects": 3,
+      "promptTokens": 12760,
+      "completionTokens": 4930
+    },
+    "solver": {
+      "calls": 134,
+      "ms": 68415,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 19653,
+      "completionTokens": 1171
+    },
+    "form": {
+      "calls": 1,
+      "ms": 2527,
+      "in": 21,
+      "out": 0,
+      "rejects": 21,
+      "promptTokens": 262,
+      "completionTokens": 58
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 5836,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 162,
+      "completionTokens": 370
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the concept of 'Humanisation of Nature'?",
+      "ms": {
+        "draft": 13645,
+        "critique": 8702
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what does the term 'Naturalisation of Humans' refer to?",
+      "ms": {
+        "draft": 13645,
+        "critique": 8022,
+        "solver": 1332,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a society has a high level of technology and social development, which of the following would best describe their interaction with nature according to the passage?",
+      "ms": {
+        "draft": 13645,
+        "critique": 8313,
+        "solver": 2375,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key idea about the relationship between humans and nature?",
+      "ms": {
+        "draft": 13645,
+        "critique": 7158,
+        "solver": 1244,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, how does the concept of 'Environmental Determinism' describe early human societies?",
+      "ms": {
+        "draft": 13645,
+        "critique": 6536,
+        "solver": 2477,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage suggests that the metaphor of 'the face of the earth' or 'the eye of the storm' is used to describe what aspect of geography?",
+      "ms": {
+        "draft": 13645,
+        "critique": 6755,
+        "solver": 2050,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of technology in human-nature relationships?",
+      "ms": {
+        "draft": 5049,
+        "critique": 8241,
+        "solver": 1639,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the context of the passage, what does 'Humanisation of Nature' refer to?",
+      "ms": {
+        "draft": 5049,
+        "critique": 7356,
+        "solver": 2119,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes the relationship between humans and nature in the case of Benda's tribe?",
+      "ms": {
+        "draft": 5049,
+        "critique": 8399,
+        "solver": 1889,
+        "form": 3803
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best illustrates the concept of 'possibilism' as described in the passage?",
+      "ms": {
+        "draft": 5049,
+        "critique": 6607,
+        "solver": 1591,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following scenarios best represents the concept of 'Neodeterminism'?",
+      "ms": {
+        "draft": 5049,
+        "critique": 6545,
+        "solver": 2155
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How does the passage explain the transformation of human-nature relationships over time?",
+      "ms": {
+        "draft": 5049,
+        "critique": 6961,
+        "solver": 1654,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the nature of human geography?",
+      "ms": {
+        "draft": 3216,
+        "critique": 5952,
+        "solver": 1982,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT an approach in human geography?",
+      "ms": {
+        "draft": 3216,
+        "critique": 9193
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, which of the following is the most important factor in the interaction between people and environment?",
+      "ms": {
+        "draft": 3216,
+        "critique": 7214,
+        "solver": 1587
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what does the concept of neo-determinism suggest about the relationship between humans and nature?",
+      "ms": {
+        "draft": 3216,
+        "critique": 5930,
+        "solver": 1602,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the relationship between human geography and other disciplines?",
+      "ms": {
+        "draft": 3216,
+        "critique": 6676,
+        "solver": 1826,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the role of human geography according to the passage?",
+      "ms": {
+        "draft": 3216,
+        "critique": 6079,
+        "solver": 739,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a sub-field of human geography in the passage?",
+      "ms": {
+        "draft": 14409,
+        "critique": 5860
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is NOT an approach in human geography?",
+      "ms": {
+        "draft": 14409,
+        "critique": 5859,
+        "solver": 2233,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say is the core concern of geography as a discipline?",
+      "ms": {
+        "draft": 4023,
+        "critique": 5910,
+        "solver": 1316,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the relationship between humans and the environment according to the passage?",
+      "ms": {
+        "draft": 14409,
+        "critique": 5526,
+        "solver": 12771,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, which of the following best describes the interaction between humans and the physical environment in early stages?",
+      "ms": {
+        "draft": 4023,
+        "critique": 9128,
+        "solver": 1879,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the significance of technology in the relationship between humans and nature?",
+      "ms": {
+        "draft": 4023,
+        "critique": 7408,
+        "solver": 2156,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is NOT a source of geographical information?",
+      "ms": {
+        "draft": 14409,
+        "critique": 8567,
+        "solver": 18919
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses how both physical and human phenomena are described using metaphors from human anatomy. What does this suggest about the approach of human geography?",
+      "ms": {
+        "draft": 4023,
+        "critique": 6981,
+        "solver": 1032,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student observes that cities are often described as 'living organisms' in the passage, what can be inferred about the relationship between humans and the environment?",
+      "ms": {
+        "draft": 4023,
+        "critique": 8860,
+        "solver": 1541,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the concept of 'Humanisation of Nature'?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what does the term 'Naturalisation of Humans' refer to?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a society has a high level of technology and social development, which of the following would best describe their interaction with nature according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key idea about the relationship between humans and nature?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Contradicts the main idea of the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, how does the concept of 'Environmental Determinism' describe early human societies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Contradicts the passage's explanation of early human societi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage suggests that the metaphor of 'the face of the earth' or 'the eye of the storm' is used to describe what aspect of geography?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the role of technology in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of technology in human-nature relationships?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the context of the passage, what does 'Humanisation of Nature' refer to?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following best describes the relationship between humans and nature in the case of Benda's tribe?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer: direct dependence is described in the passag…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best illustrates the concept of 'possibilism' as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Based on the passage, which of the following scenarios best represents the concept of 'Neodeterminism'?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "How does the passage explain the transformation of human-nature relationships over time?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the nature of human geography?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's statement about relevance…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is NOT an approach in human geography?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "According to the passage, which of the following is the most important factor in the interaction between people and environment?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what does the concept of neo-determinism suggest about the relationship between humans and nature?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the relationship between human geography and other disciplines?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's statement about interface…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains the role of human geography according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following best describes the nature of human geography according to the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "According to the passage, which of the following is NOT a characteristic of the quantitative revolution?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"According to the passage, what is the relationship between hu"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a sub-field of human geography in the passage?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is NOT an approach in human geography?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"correct answer: quantitative revolution is a phase, not an a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage say is the core concern of geography as a discipline?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the relationship between humans and the environment according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, which of the following best describes the interaction between humans and the physical environment in early stages?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the significance of technology in the relationship between humans and nature?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, which of the following is NOT a source of geographical information?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses how both physical and human phenomena are described using metaphors from human anatomy. What does this suggest about the approach of human geography?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student observes that cities are often described as 'living organisms' in the passage, what can be inferred about the relationship between humans and the environment?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

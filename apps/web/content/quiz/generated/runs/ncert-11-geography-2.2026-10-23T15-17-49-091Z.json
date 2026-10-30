@@ -1,0 +1,727 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T15:17:49.091Z",
+  "finishedAt": "2026-10-23T15:28:49.185Z",
+  "seconds": 660,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Pratical Work in Geography",
+    "bookCode": "kegy3",
+    "document": "ncert/11/geography/kegy302.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 2 — Map Scale",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2025-26]\n7. Section E Question number 29 and 30 are Map based questions carrying 5\nmarks each.",
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\n7. Section E Question number 29 and 30 are map-based questions. Each\nquestion carries 5 marks.",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\nSECTION D\nQuestion numbers 29 & 30 are Map based questions having 5\nsub-parts each.",
+      "[CBSE Class XII Geography, sample question paper, 2025-26]\n7. Section E Question number 29 and 30 are Map based questions carrying 5\nmarks each."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 334527,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 23186,
+      "completionTokens": 13621
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 495557,
+      "in": 36,
+      "out": 25,
+      "rejects": 11,
+      "promptTokens": 24516,
+      "completionTokens": 9353
+    },
+    "solver": {
+      "calls": 230,
+      "ms": 178278,
+      "in": 25,
+      "out": 18,
+      "rejects": 7,
+      "promptTokens": 48890,
+      "completionTokens": 2626
+    },
+    "form": {
+      "calls": 12,
+      "ms": 71109,
+      "in": 18,
+      "out": 3,
+      "rejects": 15,
+      "promptTokens": 6490,
+      "completionTokens": 1219
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 9,
+      "ms": 1964,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 181669,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7359,
+      "completionTokens": 3856
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main purpose of a scale on a map?",
+      "ms": {
+        "draft": 11654,
+        "critique": 11714,
+        "solver": 18171,
+        "form": 5085
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a map has a scale of 1 cm = 5 km, what is the ground distance represented by 4 cm on the map?",
+      "ms": {
+        "draft": 11654,
+        "critique": 13591,
+        "solver": 20517,
+        "form": 3662
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the graphical scale shown in the passage, which of the following is true?",
+      "ms": {
+        "draft": 11654,
+        "critique": 9625,
+        "solver": 2149
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct example of a statement of scale?",
+      "ms": {
+        "draft": 11654,
+        "critique": 11096,
+        "solver": 20559,
+        "form": 4415
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of using a representative fraction (R. F.) to express map scale?",
+      "ms": {
+        "draft": 8683,
+        "critique": 9848
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A map with a scale of 1:24,000 is reduced to half its size. What is the new scale of the map?",
+      "ms": {
+        "draft": 11654,
+        "critique": 10104,
+        "solver": 17668
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the representative fraction (R.F.) considered the most versatile method of scale?",
+      "ms": {
+        "draft": 11654,
+        "critique": 9797,
+        "solver": 16474,
+        "form": 6343
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about a graphical scale?",
+      "ms": {
+        "draft": 8683,
+        "critique": 10569,
+        "solver": 15745,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a map has a scale of 1 : 50,000, what distance on the map represents 10 km on the ground?",
+      "ms": {
+        "draft": 8683,
+        "critique": 12854,
+        "solver": 22262,
+        "form": 8584
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the representative fraction (R. F.) considered more versatile than the statement of scale?",
+      "ms": {
+        "draft": 8683,
+        "critique": 14682
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a graphical scale is constructed to show 10 km on a map, and the scale is 1 cm : 2 km, how long should the line be drawn?",
+      "ms": {
+        "draft": 8683,
+        "critique": 8464
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a graphical scale is constructed to show 5 km on a map, and the scale is 1 cm : 1 km, how long should the line be drawn?",
+      "ms": {
+        "draft": 8683,
+        "critique": 9628,
+        "solver": 22600,
+        "form": 3167
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method of scale is considered a universal method?",
+      "ms": {
+        "draft": 8389,
+        "critique": 8253
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does 'Numerator' in a scale represent?",
+      "ms": {
+        "draft": 8389,
+        "critique": 7900
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 1 inch represents 1 yard, what is the Representative Fraction?",
+      "ms": {
+        "draft": 8389,
+        "critique": 7119
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a graphical scale?",
+      "ms": {
+        "draft": 8389,
+        "critique": 7995
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a graphical scale is drawn for a map with a scale of 1 : 50,000, what is the length in centimetres for 1 km on the ground?",
+      "ms": {
+        "draft": 8389,
+        "critique": 6162
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the 'Numerator' in a scale represent?",
+      "ms": {
+        "draft": 5634,
+        "critique": 6565,
+        "solver": 1800
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method of scale is known as a universal method?",
+      "ms": {
+        "draft": 5634,
+        "critique": 6599,
+        "solver": 2832,
+        "form": 3071
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a scale is 1 cm to 10 km, what is the Representative Fraction?",
+      "ms": {
+        "draft": 5634,
+        "critique": 11891,
+        "solver": 24930
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a feature of a graphical scale?",
+      "ms": {
+        "draft": 5634,
+        "critique": 10714,
+        "solver": 20701
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A map has a graphical scale where 2 cm represents 10 km. What is the Representative Fraction of the map?",
+      "ms": {
+        "draft": 5634,
+        "critique": 14265,
+        "solver": 17148,
+        "form": 5359
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Representative Fraction called a universal method?",
+      "ms": {
+        "draft": 5634,
+        "critique": 8658,
+        "solver": 2426,
+        "form": 4573
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A graphical scale is drawn such that 10 cm on the scale represents 5 km on the ground. What is the representative fraction (R.F.) of the map?",
+      "ms": {
+        "draft": 10267,
+        "critique": 11287,
+        "solver": 2067,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A map has a scale of 1 : 253,440. A student wants to convert this to a statement of scale in the metric system. What would be the correct statement of scale?",
+      "ms": {
+        "draft": 10267,
+        "critique": 12858,
+        "solver": 2751,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A map uses a graphical scale where 6 inches represents 4.73 miles. A student wants to construct a graphical scale that shows 5 miles. What is the length of the line that should be drawn for 5 miles?",
+      "ms": {
+        "draft": 10267,
+        "critique": 8980,
+        "solver": 2110,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A graphical scale is constructed such that 15 cm on the scale represents 7.5 km on the ground. What is the representative fraction (R.F.) of the map?",
+      "ms": {
+        "draft": 10267,
+        "critique": 12082,
+        "solver": 1835,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a map has a scale of 1 : 50,000, what distance on the map represents 10 km on the ground?",
+      "ms": {
+        "draft": 10267,
+        "critique": 10580,
+        "solver": 2846
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'Representative Fraction' refer to?",
+      "ms": {
+        "draft": 11129,
+        "critique": 10380
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a map has a scale of 1 cm : 10 km, what is the ground distance represented by 3 cm on the map?",
+      "ms": {
+        "draft": 11129,
+        "critique": 9924,
+        "solver": 20358,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on Figure 2.1, which of the following best describes the graphical scale?",
+      "ms": {
+        "draft": 11129,
+        "critique": 9970,
+        "solver": 14963
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A map has a scale of 1 cm : 5 km. If the length of a road on the map is 6 cm, what is the actual length of the road in kilometers?",
+      "ms": {
+        "draft": 11129,
+        "critique": 8472
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A map with a scale of 1 : 25,000 is reduced to half its size. What is the new representative fraction of the map?",
+      "ms": {
+        "draft": 11129,
+        "critique": 6042
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary purpose of a map scale?",
+      "ms": {
+        "draft": 11129,
+        "critique": 11209,
+        "solver": 16210,
+        "form": 4700,
+        "translation": 62156
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a map has a scale of 1 : 50,000, what distance on the map represents 2.5 km on the ground?",
+      "ms": {
+        "draft": 10267,
+        "critique": 9493,
+        "solver": 17312,
+        "form": 0,
+        "translation": 62234
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Representative Fraction method considered a universal method?",
+      "ms": {
+        "draft": 8389,
+        "critique": 5093,
+        "solver": 6979,
+        "form": 0,
+        "translation": 51725
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of a scale on a map?",
+      "reason": "the key is far longer than every distractor (55 vs 34 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a map has a scale of 1 cm = 5 km, what is the ground distance represented by 4 cm on the map?",
+      "reason": "options are in more than one unit (km, cm); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the graphical scale shown in the passage, which of the following is true?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct example of a statement of scale?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the purpose of using a representative fraction (R. F.) to express map scale?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A map with a scale of 1:24,000 is reduced to half its size. What is the new scale of the map?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the representative fraction (R.F.) considered the most versatile method of scale?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Assumes that ease of understanding is the main reason for ve…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about a graphical scale?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a map has a scale of 1 : 50,000, what distance on the map represents 10 km on the ground?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"10*100000/50000\" = 20, but the key says 2"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the representative fraction (R. F.) considered more versatile than the statement of scale?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a graphical scale is constructed to show 10 km on a map, and the scale is 1 cm : 2 km, how long should the line be drawn?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a graphical scale is constructed to show 5 km on a map, and the scale is 1 cm : 1 km, how long should the line be drawn?",
+      "reason": "options are in more than one unit (cm, km); options 0 and 1 are the same number; checkExpr \"5\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which method of scale is considered a universal method?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does 'Numerator' in a scale represent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 1 inch represents 1 yard, what is the Representative Fraction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is an example of a graphical scale?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a graphical scale is drawn for a map with a scale of 1 : 50,000, what is the length in centimetres for 1 km on the ground?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the 'Numerator' in a scale represent?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which method of scale is known as a universal method?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a scale is 1 cm to 10 km, what is the Representative Fraction?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a feature of a graphical scale?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A map has a graphical scale where 2 cm represents 10 km. What is the Representative Fraction of the map?",
+      "reason": "checkExpr \"500000\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the Representative Fraction called a universal method?",
+      "reason": "the key is far longer than every distractor (55 vs 30 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A graphical scale is drawn such that 10 cm on the scale represents 5 km on the ground. What is the representative fraction (R.F.) of the map?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(5*100000)/10\" = 50000, but the key says 1"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A map has a scale of 1 : 253,440. A student wants to convert this to a statement of scale in the metric system. What would be the correct statement of scale?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"253440/100000\" = 2.5344, but the key says 1"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A map uses a graphical scale where 6 inches represents 4.73 miles. A student wants to construct a graphical scale that shows 5 miles. What is the length of the line that should be drawn for 5 miles?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals); ARITHMETIC MISMATCH — checkExpr \"(6*5)/4.73\" = 6.342494714587737, but the key says 6.34"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A graphical scale is constructed such that 15 cm on the scale represents 7.5 km on the ground. What is the representative fraction (R.F.) of the map?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(7.5*100000)/15\" = 50000, but the key says 1"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a map has a scale of 1 : 50,000, what distance on the map represents 10 km on the ground?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the term 'Representative Fraction' refer to?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a map has a scale of 1 cm : 10 km, what is the ground distance represented by 3 cm on the map?",
+      "reason": "options are in more than one unit (cm, km); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on Figure 2.1, which of the following best describes the graphical scale?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A map has a scale of 1 cm : 5 km. If the length of a road on the map is 6 cm, what is the actual length of the road in kilometers?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A map with a scale of 1 : 25,000 is reduced to half its size. What is the new representative fraction of the map?",
+      "reason": "option 1 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

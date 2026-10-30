@@ -21,47 +21,47 @@
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-23T02:57:54.576Z",
+  "generatedAt": "2026-10-28T07:52:04.354Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is an example of a strict inequality?",
+      "stem": "Which rule is used to solve an inequality when equal numbers are added to or subtracted from both sides?",
       "choices": [
-        "3 < 5",
-        "40x + 20y ≤ 120",
-        "x ≥ 3",
-        "y ≤ 4"
+        "Rule 1",
+        "Rule 2",
+        "Rule 3",
+        "Rule 4"
       ],
       "answerIndex": 0,
-      "solution": "The correct answer is '3 < 5' because it uses the strict inequality symbol '<'. The other options use '≤' or '≥', which are not strict inequalities. '40x + 20y ≤ 120' is a slack inequality, and 'x ≥ 3' and 'y ≤ 4' are also not strict.",
+      "solution": "The rule that allows adding or subtracting equal numbers from both sides of an inequality without changing the direction of the inequality is known as Rule 1. This is a fundamental property of inequalities in mathematics. The other options do not represent this specific rule.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक सख्त असमानता का उदाहरण है?",
+          "stem": "असमानता को हल करने के लिए कौन सा नियम उपयोग किया जाता है जब दोनों ओर से समान संख्याओं को जोड़ा या घटाया जाता है?",
           "choices": [
-            "3 < 5",
-            "40x + 20y ≤ 120",
-            "x ≥ 3",
-            "y ≤ 4"
+            "नियम 1",
+            "नियम 2",
+            "नियम 3",
+            "नियम 4"
           ],
-          "solution": "सही उत्तर '3 < 5' है क्योंकि इसमें सख्त असमानता संकेत '<' का उपयोग किया गया है। अन्य विकल्पों में '≤' या '≥' का उपयोग किया गया है, जो सख्त असमानता नहीं हैं। '40x + 20y ≤ 120' एक शिथिल असमानता है, और 'x ≥ 3' और 'y ≤ 4' भी सख्त असमानता नहीं हैं।",
+          "solution": "असमानता के दोनों ओर समान संख्याओं को जोड़ने या घटाने पर असमानता की दिशा बदले बिना अनुमति देने वाला नियम नियम 1 के रूप में जाना जाता है। यह गणित में असमानताओं के एक मूलभूत गुण है। अन्य विकल्प इस विशिष्ट नियम का प्रतिनिधित्व नहीं करते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All technical terms like 'सख्त असमानता' (strict inequality) and 'शिथिल असमानता' (slack inequality) are appropriate for Hindi-medium math textbooks.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with 'नियम' used consistently for 'rule' as a standard term in Hindi math textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते एक शुद्ध असमानतेचे उदाहरण आहे?",
+          "stem": "असमानता सोडविण्यासाठी कोणता नियम वापरला जातो जेव्हा समान संख्या दोन्ही बाजूंना जोडल्या किंवा वजा केल्या जातात?",
           "choices": [
-            "3 < 5",
-            "40x + 20y ≤ 120",
-            "x ≥ 3",
-            "y ≤ 4"
+            "नियम 1",
+            "नियम 2",
+            "नियम 3",
+            "नियम 4"
           ],
-          "solution": "सही उत्तर '3 < 5' आहे कारण ते '<' शुद्ध असमानता प्रतीक वापरते. उरलेल्या विकल्पांमध्ये '≤' किंवा '≥' वापरले गेले आहेत, जे शुद्ध असमानता नाहीत. '40x + 20y ≤ 120' एक असमानता असते, आणि 'x ≥ 3' आणि 'y ≤ 4' देखील शुद्ध असमानता नाहीत.",
+          "solution": "असमानतेच्या दोन्ही बाजूंना समान संख्या जोडल्या किंवा वजा केल्या जातात तेव्हा असमानतेच्या दिशेत बदल होत नाही, असा नियम नियम 1 म्हणून ओळखला जातो. हे गणितात असमानतांच्या एका मूलभूत गुणधर्माचे प्रतिनिधित्व करते. इतर विकल्प या विशिष्ट नियमाचे प्रतिनिधित्व करत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses strict with slack inequalities",
-        "Confuses slack with strict inequalities",
-        "Confuses '≥' with '>'.','Confuses '≤' with '<'."
+        "Confuses Rule 1 with another rule",
+        "Confuses Rule 1 with another rule",
+        "Confuses Rule 1 with another rule"
       ],
       "solverAnswers": [
         0,
@@ -85,102 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. The only strict inequality is '3 < 5', as it uses the '<' symbol. The other options use '≤' or '≥', which are not strict. The author's reasoning for the distractors aligns with common misconceptions about inequality symbols.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh105.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 5: Linear Inequalities"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh105.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 5: Linear Inequalities"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh105.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 5: Linear Inequalities"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T02:57:54.576Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which rule states that equal numbers can be added to or subtracted from both sides of an inequality without affecting the sign of the inequality?",
-      "choices": [
-        "Rule 1",
-        "Rule 2",
-        "Rule 3",
-        "Rule 4"
-      ],
-      "answerIndex": 0,
-      "solution": "Rule 1 is the correct answer because it describes the principle that adding or subtracting the same number from both sides of an inequality does not change the direction of the inequality sign. Rule 2 involves multiplication or division, which can change the inequality sign if a negative number is involved. Rule 3 and Rule 4 are not related to this specific operation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कौन सा नियम बताता है कि असमानता के दोनों पक्षों में समान संख्या जोड़ी या घटाई जा सकती है बिना असमानता के चिन्ह के प्रभावित होने के?",
-          "choices": [
-            "नियम 1",
-            "नियम 2",
-            "नियम 3",
-            "नियम 4"
-          ],
-          "solution": "नियम 1 सही उत्तर है क्योंकि यह सिद्धांत बताता है कि असमानता के दोनों पक्षों में समान संख्या जोड़ने या घटाने से असमानता के चिन्ह की दिशा नहीं बदलती। नियम 2 में गुणा या भाग का संबंध होता है, जो ऋणात्मक संख्या के साथ होने पर असमानता के चिन्ह को बदल सकता है। नियम 3 और नियम 4 इस विशिष्ट संक्रिया से संबंधित नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation accurately reflects the original English content with appropriate Hindi terminology for mathematical concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "असे कोणते नियम आहे जे समान संख्या असे असलेल्या असमानतेच्या दोन्ही बाजूंवर जोडल्या किंवा वजा केल्या जाऊ शकतात ज्यामुळे असमानतेचा चिन्ह बदलत नाही?",
-          "choices": [
-            "नियम 1",
-            "नियम 2",
-            "नियम 3",
-            "नियम 4"
-          ],
-          "solution": "नियम 1 हा बरोबर उत्तर आहे कारण तो असा सिद्धांत वर्णन करतो की असमानतेच्या दोन्ही बाजूंवर एकसारखी संख्या जोडल्या किंवा वजा केल्या जातात तर असमानतेचा चिन्ह बदलत नाही. नियम 2 मध्ये गुणाकार किंवा भागाकारचा समावेश असतो, ज्यामुळे ऋण संख्या असल्यास असमानतेचा चिन्ह बदलू शकतो. नियम 3 आणि नियम 4 हे विशिष्ट क्रियाकलापाशी संबंधित नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses Rule 1 with Rule 2",
-        "Assumes there is a Rule 3",
-        "Assumes there is a Rule 4"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is correct. The correct answer is Rule 1, as it matches the described property of inequalities.",
+      "critique": "The question is clear and the correct answer is logically derived from the information given. The author's reasoning aligns with the correct interpretation of the rule.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh105.pdf",
@@ -211,71 +116,99 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T02:57:54.576Z",
+      "generatedAt": "2026-10-28T07:52:04.354Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 1,
-      "stem": "What does the symbol '≤' represent in inequalities?",
+      "difficulty": 3,
+      "stem": "If a solution must be kept between 68°F and 77°F, what is the range in Celsius?",
       "choices": [
-        "Less than",
-        "Greater than",
-        "Less than or equal to",
-        "Greater than or equal to"
+        "20°C to 25°C",
+        "22°C to 26°C",
+        "25°C to 30°C",
+        "20°C to 24°C"
       ],
-      "answerIndex": 2,
-      "solution": "The correct answer is 'Less than or equal to'. The symbol '≤' is used to denote that one value is less than or equal to another. The option 'Less than' is incorrect because it only represents the strict inequality. The option 'Greater than' is incorrect because it represents the opposite. The option 'Greater than or equal to' is incorrect because it is the opposite of '≤'.",
-      "checkExpr": null,
+      "answerIndex": 0,
+      "solution": "Using the formula F = (9/5)C + 32, solving for 68°F gives 20°C, and for 77°F gives 25°C. The second option incorrectly adds 32 instead of using the formula. The third option is too high. The fourth option is too low.",
+      "checkExpr": "(68-32)*5/9",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "असमानताओं में संकेत '≤' क्या प्रस्तुत करता है?",
+          "stem": "यदि एक घोल को 68°F और 77°F के बीच रखा जाना चाहिए, तो सेल्सियस में श्रेणी क्या होगी?",
           "choices": [
-            "कम से कम",
-            "अधिक से अधिक",
-            "कम या बराबर",
-            "अधिक या बराबर"
+            "20°C से 25°C",
+            "22°C से 26°C",
+            "25°C से 30°C",
+            "20°C से 24°C"
           ],
-          "solution": "सही उत्तर 'कम या बराबर' है। संकेत '≤' इसके लिए उपयोग किया जाता है कि एक मान दूसरे मान से कम या बराबर है। विकल्प 'कम से कम' गलत है क्योंकि यह केवल सख्त असमानता का प्रतिनिधित्व करता है। विकल्प 'अधिक से अधिक' गलत है क्योंकि यह विपरीत का प्रतिनिधित्व करता है। विकल्प 'अधिक या बराबर' गलत है क्योंकि यह '≤' के विपरीत है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question, with appropriate mathematical terminology and correct answer positioning.",
+          "solution": "सूत्र F = (9/5)C + 32 का उपयोग करके 68°F के लिए 20°C और 77°F के लिए 25°C प्राप्त किया जाता है। दूसरा विकल्प गलती से 32 जोड़ता है। तीसरा विकल्प बहुत ऊंचा है। चौथा विकल्प बहुत नीचा है।",
+          "imageAlt": "एक संख्या रेखा जिस पर 20 और 25 पर बंद वृत्त हैं और उनके बीच छायांकित रेखा है",
+          "critique": "Translation is accurate, technical terms are standard in Hindi textbooks, and the logic of the solution matches the original.",
           "flag": null
         },
         "mr": {
-          "stem": "असमानतांमध्ये संकेत '≤' काय प्रतिनिधित्व करतो?",
+          "stem": "जर एका द्रावणाला 68°F आणि 77°F दरम्यान ठेवायचे असेल, तर सेल्सिअसमध्ये त्याचा परिसर किती असेल?",
           "choices": [
-            "कमीत कमी",
-            "अधिकत अधिक",
-            "कमीत कमी किंवा समान",
-            "अधिकत अधिक किंवा समान"
+            "20°C ते 25°C",
+            "22°C ते 26°C",
+            "25°C ते 30°C",
+            "20°C ते 24°C"
           ],
-          "solution": "बरोबर उत्तर 'कमीत कमी किंवा समान' आहे. संकेत '≤' एका मूल्याचे दुसऱ्या मूल्यापेक्षा कमीत कमी किंवा समान असल्याचे दर्शविते. विकल्प 'कमीत कमी' अचूक नाही कारण तो केवळ शुद्ध असमानता प्रतिनिधित्व करतो. विकल्प 'अधिकत अधिक' अचूक नाही कारण तो विरुद्ध आहे. विकल्प 'अधिकत अधिक किंवा समान' अचूक नाही कारण तो '≤' च्या विरुद्ध आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology commonly found in Marathi textbooks.",
+          "solution": "सूत्र F = (9/5)C + 32 वापरून 68°F साठी 20°C मिळतो आणि 77°F साठी 25°C मिळतो. दुसरा विकल्प चूकीने 32 जोडतो आणि सूत्राचा वापर करत नाही. तिसरा विकल्प खूप जास्त आहे. चौथा विकल्प खूप कमी आहे.",
+          "imageAlt": "एका संख्या रेषेवर 20 आणि 25 वर बंद वर्तुळ असून त्यांच्यात छायाचित्रित रेषा आहे",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms for temperature conversion.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "A number line with a closed circle at 20 and 25, and a shaded line between them",
+      "figure": {
+        "kind": "numberline",
+        "spec": {
+          "min": 0,
+          "max": 30,
+          "step": 5,
+          "points": [
+            {
+              "value": 20,
+              "label": "A",
+              "open": false
+            },
+            {
+              "value": 25,
+              "label": "B",
+              "open": false
+            }
+          ],
+          "intervals": [
+            {
+              "from": 20,
+              "to": 25,
+              "closedFrom": true,
+              "closedTo": true
+            }
+          ]
+        },
+        "labels": {}
+      },
+      "needsFigure": true,
       "distractorReason": [
-        "represents strict inequality",
-        "represents the opposite of '≤'",
         null,
-        "represents the opposite of '≤'"
+        "Incorrectly adds 32 to the Fahrenheit values instead of using the formula",
+        "Confuses Celsius to Fahrenheit conversion by multiplying by 3 instead of using the correct formula",
+        "Confuses Fahrenheit to Celsius conversion by subtracting 32 but not dividing by 1.8"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and tests basic knowledge of inequality symbols. The correct answer is 'Less than or equal to', and the author's reasoning for the other options is accurate and reflects common misconceptions.",
+      "critique": "The solution correctly converts 68°F and 77°F to Celsius using the formula F = (9/5)C + 32. The distractors reflect common misconceptions about temperature conversion.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh105.pdf",
@@ -297,230 +230,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T02:57:54.576Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of a literal inequality?",
-      "choices": [
-        "3 < 5",
-        "7 > 5",
-        "x < 5",
-        "3: 3 < 5 < 7"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is 'x < 5' because a literal inequality involves variables. The other options are numerical inequalities as they only involve numbers.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक अक्षरात्मक असमानता का उदाहरण है?",
-          "choices": [
-            "3 < 5",
-            "7 > 5",
-            "x < 5",
-            "3 < 5 < 7"
-          ],
-          "solution": "सही उत्तर 'x < 5' है क्योंकि एक अक्षरात्मक असमानता में चर होते हैं। अन्य विकल्प संख्यात्मक असमानताएं हैं क्योंकि वे केवल संख्याओं के साथ होती हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. 'अक्षरात्मक असमानता' is the correct technical term for 'literal inequality' in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक अक्षरी असमानतेचे उदाहरण आहे?",
-          "choices": [
-            "3 < 5",
-            "7 > 5",
-            "x < 5",
-            "3 < 5 < 7"
-          ],
-          "solution": "बरोबर उत्तर 'x < 5' आहे कारण अक्षरी असमानतेमध्ये चल असतात. इतर उत्तरे संख्यात्मक असमानता आहेत कारण त्यांमध्ये केवळ संख्या असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for 'literal inequality' and 'numerical inequality'.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses numerical inequalities with literal inequalities",
-        "Confuses numerical inequalities with literal inequalities",
-        null,
-        "Student thinks that inequalities must have only one comparison symbol"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 'x < 5' because it contains a variable, making it a literal inequality. The other options are numerical inequalities. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh105.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 5: Linear Inequalities"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh105.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 5: Linear Inequalities"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh105.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 5: Linear Inequalities"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T02:57:54.576Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "If an inequality is reversed when both sides are multiplied by a negative number, which of the following is the correct action?",
-      "choices": [
-        "Keep the inequality sign as is",
-        "Change the direction of the inequality sign",
-        "Add the negative number to both sides",
-        "Subtract the negative number from both sides"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'Change the direction of the inequality sign'. When both sides of an inequality are multiplied by a negative number, the direction of the inequality sign must be reversed. The option 'Keep the inequality sign as is' is incorrect because it does not account for the reversal. The option 'Add the negative number to both sides' is incorrect because it is not a valid operation. The option 'Subtract the negative number from both sides' is incorrect because it is not a valid operation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक असमानता को दोनों ओर एक ऋणात्मक संख्या से गुणा करने पर उलट जाती है, तो निम्नलिखित में से कौन-सी कार्रवाई सही है?",
-          "choices": [
-            "असमानता के चिह्न को वैसे ही रखें",
-            "असमानता के चिह्न की दिशा बदलें",
-            "ऋणात्मक संख्या को दोनों ओर जोड़ें",
-            "ऋणात्मक संख्या को दोनों ओर से घटाएं"
-          ],
-          "solution": "सही उत्तर 'असमानता के चिह्न की दिशा बदलें' है। जब एक असमानता के दोनों ओर एक ऋणात्मक संख्या से गुणा किया जाता है, तो असमानता के चिह्न की दिशा को उलट देना आवश्यक होता है। विकल्प 'असमानता के चिह्न को वैसे ही रखें' गलत है क्योंकि इसमें उलटाव की गणना नहीं की गई है। विकल्प 'ऋणात्मक संख्या को दोनों ओर जोड़ें' गलत है क्योंकि यह एक वैध संक्रिया नहीं है। विकल्प 'ऋणात्मक संख्या को दोनों ओर से घटाएं' गलत है क्योंकि यह एक वैध संक्रिया नहीं है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर असे असेल की असमानतेचा दिशा दोन्ही बाजूंना ऋणात्मक संख्येने गुणल्यास बदलते, तर खालीलपैकी कोणती कृती योग्य आहे?",
-          "choices": [
-            "असमानता चिन्ह तसेच ठेवा",
-            "असमानता चिन्हाची दिशा बदला",
-            "दोन्ही बाजूंना ऋणात्मक संख्या जोडा",
-            "दोन्ही बाजूंमधून ऋणात्मक संख्या वजा करा"
-          ],
-          "solution": "योग्य उत्तर 'असमानता चिन्हाची दिशा बदला' आहे. जेव्हा असमानतेच्या दोन्ही बाजूंना ऋणात्मक संख्येने गुणले जाते, तेव्हा असमानता चिन्हाची दिशा बदलणे आवश्यक असते. 'असमानता चिन्ह तसेच ठेवा' हा विकल्प अयोग्य आहे कारण तो बदलाची गणना करत नाही. 'दोन्ही बाजूंना ऋणात्मक संख्या जोडा' हा विकल्प अयोग्य आहे कारण ही वैध कृती नाही. 'दोन्ही बाजूंमधून ऋणात्मक संख्या वजा करा' हा विकल्प अयोग्य आहे कारण ही वैध कृती नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "does not account for the reversal",
-        null,
-        "not a valid operation",
-        "not a valid operation"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution correctly identifies that multiplying both sides of an inequality by a negative number requires reversing the inequality sign. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh105.pdf",
-          "ordinal": 6,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 5: Linear Inequalities"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh105.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 5: Linear Inequalities"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T02:57:54.576Z",
+      "generatedAt": "2026-10-28T07:52:04.354Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "The feasible region for a linear programming problem is represented by the inequality x - y ≥ 1. Which of the following is true?",
+      "stem": "A manufacturer has 600 liters of a 12% solution of acid. How many liters of a 30% acid solution must be added to it so that the acid content in the resulting mixture is more than 15% but less than 18%?",
       "choices": [
-        "The origin lies in the feasible region.",
-        "The feasible region does not include the origin.",
-        "The feasible region is a closed half-plane.",
-        "The feasible region is an open half-plane containing the origin."
+        "Between 60 and 120 liters",
+        "Between 120 and 300 liters",
+        "Between 150 and 250 liters",
+        "Between 200 and 350 liters"
       ],
       "answerIndex": 1,
-      "solution": "The correct answer is 'The feasible region does not include the origin' because substituting (0,0) into x - y ≥ 1 gives 0 ≥ 1, which is false. Therefore, the origin is not part of the feasible region. The other options either contradict the inequality or misinterpret its nature.",
+      "solution": "Let x be the liters of 30% acid solution to be added. The total mixture is x + 600 liters. The acid content must satisfy 15% of (x + 600) < 30% of x + 12% of 600 < 18% of (x + 600). Solving these inequalities gives 120 < x < 300. The correct range is between 120 and 300 liters. The other options do not satisfy the inequality conditions.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक रैखिक प्रोग्रामिंग समस्या के लिए उपलब्ध क्षेत्र को असमानता x - y ≥ 1 द्वारा दर्शाया गया है। निम्नलिखित में से कौन सा सही है?",
+          "stem": "एक निर्माता के पास 12% अम्ल के 600 लीटर घोल है। 15% से अधिक लेकिन 18% से कम अम्ल सामग्री वाले मिश्रण में इसमें कितने लीटर 30% अम्ल घोल जोड़ा जाना चाहिए?",
           "choices": [
-            "मूल बिंदु उपलब्ध क्षेत्र में स्थित है।",
-            "उपलब्ध क्षेत्र मूल बिंदु को शामिल नहीं करता है।",
-            "उपलब्ध क्षेत्र एक बंद अर्ध-तल है।",
-            "उपलब्ध क्षेत्र मूल बिंदु को शामिल करने वाला खुला अर्ध-तल है।"
+            "60 और 120 लीटर के बीच",
+            "120 और 300 लीटर के बीच",
+            "150 और 250 लीटर के बीच",
+            "200 और 350 लीटर के बीच"
           ],
-          "solution": "सही उत्तर 'उपलब्ध क्षेत्र मूल बिंदु को शामिल नहीं करता है' है क्योंकि (0,0) को x - y ≥ 1 में प्रतिस्थापित करने पर 0 ≥ 1 प्राप्त होता है, जो असत्य है। अतः मूल बिंदु उपलब्ध क्षेत्र का हिस्सा नहीं है। अन्य विकल्प असमानता के विरोधाभास करते हैं या इसकी प्रकृति को गलत तरीके से समझते हैं।",
+          "solution": "मान लीजिए x लीटर 30% अम्ल घोल जोड़ा जाता है। मिश्रण की कुल मात्रा x + 600 लीटर है। अम्ल की मात्रा को 15% के (x + 600) < 30% के x + 12% के 600 < 18% के (x + 600) के रूप में संतुष्ट करना चाहिए। इन असमानताओं को हल करने पर 120 < x < 300 प्राप्त होता है। सही सीमा 120 और 300 लीटर के बीच है। अन्य विकल्प असमानता की शर्तों को संतुष्ट नहीं करते हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option (2) and the other options are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "रेषीय प्रोग्रामिंग समस्येचा शक्य प्रदेश x - y ≥ 1 असा असमानतेने दर्शविला गेला आहे. खालीलपैकी कोणते खरे आहे?",
+          "stem": "एक विनिर्माता जिथे 600 लिटर 12% अम्लाचे द्रावण आहे. 15% पेक्षा जास्त पण 18% पेक्षा कमी अम्लाची अंश असलेल्या अंशात जोडल्याने तयार होणारा मिश्रण किती लिटर 30% अम्लाचे द्रावण जोडावे लागेल?",
           "choices": [
-            "मूलबिंदू शक्य प्रदेशात आहे.",
-            "शक्य प्रदेश मूलबिंदू समाविष्ट करत नाही.",
-            "शक्य प्रदेश एक बंद अर्ध-मानक आहे.",
-            "शक्य प्रदेश मूलबिंदू अंतर्गत एक खुला अर्ध-मानक आहे."
+            "60 आणि 120 लिटरमध्ये",
+            "120 आणि 300 लिटरमध्ये",
+            "150 आणि 250 लिटरमध्ये",
+            "200 आणि 350 लिटरमध्ये"
           ],
-          "solution": "सही उत्तर 'शक्य प्रदेश मूलबिंदू समाविष्ट करत नाही.' असे आहे कारण (0,0) चे x - y ≥ 1 मध्ये प्रतिस्थापित करण्याने 0 ≥ 1 मिळते, जे असत्य आहे. त्यामुळे मूलबिंदू शक्य प्रदेशात नाही. इतर पर्याय असमानतेच्या विरुद्ध आहेत किंवा तिच्या प्रकृतीचा चुकीचा अर्थ देतात.",
+          "solution": "मानू ते x 30% अम्लाचे द्रावण जोडले जाते. एकूण मिश्रण x + 600 लिटर असेल. अम्लाची रक्कम 15% आहे (x + 600) < 30% आहे x + 12% आहे 600 < 18% आहे (x + 600). या असमानता सोडविण्याचे द्वारे 120 < x < 300 मिळते. योग्य श्रेणी 120 आणि 300 लिटरमध्ये आहे. इतर विकल्प असमानता शर्ती पूर्ण करत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The Marathi translation accurately reflects the original English question, with appropriate technical terms and correct mathematical phrasing.",
           "flag": null
         }
       },
@@ -529,10 +281,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Assumes the origin satisfies the inequality",
+        "Student incorrectly assumes the required volume is less than the original solution due to miscalculating percentage differences.",
         null,
-        "Confuses the nature of the feasible region",
-        "Fails to check whether the origin satisfies the inequality."
+        "Confuses the correct range",
+        "Incorrectly calculates the solution"
       ],
       "solverAnswers": [
         1,
@@ -542,102 +294,7 @@
         1
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the key. Substituting (0,0) into the inequality shows it does not satisfy the condition, so the origin is not in the feasible region. The other options are incorrect due to common misconceptions about the nature of the feasible region.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh105.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 5: Linear Inequalities"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh105.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 5: Linear Inequalities"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh105.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 5: Linear Inequalities"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T02:57:54.576Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "How many litres of water will have to be added to 1125 litres of the 45% solution of acid so that the resulting mixture will contain more than 25% but less than 30% acid content?",
-      "choices": [
-        "Less than 1000 litres",
-        "Between 1000 and 2000 litres",
-        "Between 2000 and 3000 litres",
-        "More than 3000 litres"
-      ],
-      "answerIndex": 1,
-      "solution": "Let x be the amount of water added. The inequalities 0.25 < (0.45*1125)/(1125 + x) < 0.30 lead to 1000 < x < 2000. The correct option is between 1000 and 2000 litres. The other options do not satisfy the inequality.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "1125 लीटर अम्ल के 45% घोल में कितने लीटर पानी मिलाया जाना चाहिए ताकि परिणामी मिश्रण में अम्ल की मात्रा 25% से अधिक परन्तु 30% से कम हो जाए?",
-          "choices": [
-            "1000 लीटर से कम",
-            "1000 और 2000 लीटर के बीच",
-            "2000 और 3000 लीटर के बीच",
-            "3000 लीटर से अधिक"
-          ],
-          "solution": "मान लीजिए x पानी की मात्रा है। असमानताएं 0.25 < (0.45*1125)/(1125 + x) < 0.30 के परिणामस्वरूप 1000 < x < 2000 प्राप्त होता है। सही विकल्प 1000 और 2000 लीटर के बीच है। अन्य विकल्प असमानता को संतुष्ट नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "1125 लिटर अम्लाच्या 45% द्रावणामध्ये किती लिटर पाणी घालावे लागेल जेणेकरून निर्माण झालेल्या मिश्रणामध्ये अम्लाचे विषमता 25% पेक्षा जास्त पण 30% पेक्षा कमी असेल?",
-          "choices": [
-            "1000 लिटर पेक्षा कमी",
-            "1000 आणि 2000 लिटरमध्ये",
-            "2000 आणि 3000 लिटरमध्ये",
-            "3000 लिटर पेक्षा जास्त"
-          ],
-          "solution": "मानू ते x पाणी घालले गेले. असे असेल की 0.25 < (0.45*1125)/(1125 + x) < 0.30 तर 1000 < x < 2000 या असेल. योग्य पर्याय 1000 आणि 2000 लिटरमध्ये आहे. इतर पर्याय असे असेल की असे असे नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Student incorrectly assumes the amount of water needed is less than the original solution due to misunderstanding the dilution process.",
-        null,
-        "Student incorrectly calculates the amount of water needed by subtracting the final concentration from the initial concentration without considering the total volume.",
-        "Believes that the amount of water needed is proportional to the original volume without considering the percentage change."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly sets up the inequality and solves it to find that x must be between 1000 and 2000. The reasoning for the distractors aligns with common misconceptions about dilution and percentage calculations.",
+      "critique": "The solution correctly sets up and solves the compound inequality, leading to the correct range of 120 < x < 300. The author's key and reasoning are accurate.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh105.pdf",
@@ -659,7 +316,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T02:57:54.576Z",
+      "generatedAt": "2026-10-28T07:52:04.354Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

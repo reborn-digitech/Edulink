@@ -21,47 +21,241 @@
   "board": "NCERT",
   "book": "Looking Around(EVS)",
   "edition": "2024 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-22T23:20:14.009Z",
+  "generatedAt": "2026-10-28T04:30:23.154Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "Which of the following is a reason for the change in the colour of the river water?",
+      "difficulty": 2,
+      "stem": "Why are there dead fish in some parts of the river?",
       "choices": [
-        "The river flows into the sea",
-        "The river has fish",
-        "The river has water-plants",
-        "Factories and washing clothes"
+        "Because of pollution",
+        "Because of too much water",
+        "Because of too few fish",
+        "Because of cold weather"
       ],
-      "answerIndex": 3,
-      "solution": "Factories and washing clothes can introduce pollutants and dyes into the river, which can change the color of the water. The other options, such as the river flowing into the sea or having fish and water-plants, do not directly cause a change in water color. The presence of fish and plants typically does not alter the color significantly, and the river flowing into the sea is a geographical feature, not a cause of discoloration.",
+      "answerIndex": 0,
+      "solution": "Pollution can harm aquatic life by reducing oxygen levels or introducing harmful substances into the water, which can cause fish to die. Too much water, too few fish, and cold weather do not directly lead to fish deaths in the way pollution does.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा नदी के पानी के रंग में परिवर्तन का कारण है?",
+          "stem": "नदी के कुछ हिस्सों में मरे हुए मछलियां क्यों हैं?",
           "choices": [
-            "नदी समुद्र में बहती है",
-            "नदी में मछली है",
-            "नदी में जल-पौधे हैं",
-            "फैक्टरी और कपड़े धोना"
+            "प्रदूषण के कारण",
+            "बहुत अधिक पानी के कारण",
+            "बहुत कम मछलियों के कारण",
+            "ठंडे वातावरण के कारण"
           ],
-          "solution": "फैक्टरी और कपड़े धोना नदी में प्रदूषक और रंग डाल सकते हैं, जो पानी के रंग को बदल सकते हैं। अन्य विकल्प, जैसे नदी समुद्र में बहना या मछली और जल-पौधों की उपस्थिति, पानी के रंग में परिवर्तन के सीधे कारण नहीं हैं। मछली और पौधों की उपस्थिति आमतौर पर रंग में महत्वपूर्ण परिवर्तन नहीं करती है, और नदी समुद्र में बहना एक भूगोलीय विशेषता है, न कि रंग बदलने का कारण।",
+          "solution": "प्रदूषण जल में ऑक्सीजन के स्तर कम करके या हानिकारक पदार्थों को जल में डालकर जलीय जीवों को नुकसान पहुंचा सकता है, जिसके कारण मछलियां मर सकती हैं। बहुत अधिक पानी, बहुत कम मछलियां और ठंडा वातावरण प्रदूषण के तरीके के रूप में मछलियों के मरने के लिए सीधे नहीं ले जाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (1). The distractors remain incorrect as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "काही भागात नदीत मृत मासे का असतात?",
+          "choices": [
+            "प्रदूषणामुळे",
+            "अतिशय जास्त पाणी असल्यामुळे",
+            "अतिशय कमी मासे असल्यामुळे",
+            "ठिणगी वातावरणामुळे"
+          ],
+          "solution": "प्रदूषणामुळे जलजीवांना नुकसान होऊ शकते, जलात ऑक्सीजनच्या पातळी कमी करून किंवा हानिकारक पदार्थ जोडून मासे मरू शकतात. जास्त पाणी, कमी मासे आणि ठिणगी वातावरण हे प्रदूषणाप्रमाणे मासांच्या मृत्यूला लागू नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes the river has too much water",
+        "Thinks the number of fish affects their survival",
+        "Assumes cold weather is the main reason for dead fish"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (Because of pollution), which aligns with the passage's explanation about human activities making the water dirty. The other options represent common misconceptions about why fish die.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 13: A River’s Tale"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap113.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: A River’s Tale",
+            "How doesHow does Water becomHow doesWater becomWater become Dirty?Water become Dirty?"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap113.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: A River’s Tale",
+            "How doesHow does Water becomHow doesWater becomWater become Dirty?Water become Dirty?"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-28T04:30:23.154Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Why might there be more fish in some parts of the river than in others?",
+      "choices": [
+        "Because of the colour of the river",
+        "Because of the amount of pollution",
+        "Because of the temperature of the river",
+        "Because of the size of the river"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is because of the amount of pollution. Pollution can harm aquatic life, making areas with less pollution more suitable for fish. The other options, such as the color, temperature, or size of the river, do not directly impact fish populations as significantly as pollution does.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्यों हो सकता है कि नदी के कुछ हिस्सों में मछलियां अधिक हों जबकि अन्य हिस्सों में कम हों?",
+          "choices": [
+            "नदी के रंग के कारण",
+            "नदी में प्रदूषण की मात्रा के कारण",
+            "नदी के तापमान के कारण",
+            "नदी के आकार के कारण"
+          ],
+          "solution": "सही उत्तर प्रदूषण की मात्रा के कारण है। प्रदूषण जलीय जीवन को नुकसान पहुंचा सकता है, जिसके कारण कम प्रदूषण वाले क्षेत्र मछलियों के लिए अधिक उपयुक्त होते हैं। अन्य विकल्प, जैसे नदी के रंग, तापमान या आकार, प्रदूषण की तुलना में मछली की आबादी पर बराबर प्रभाव नहीं डालते हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains in the same position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणत्या भागात नदीमध्ये अधिक मासे असू शकतात याचा कारण काय असू शकतो?",
+          "choices": [
+            "नदीच्या रंगामुळे",
+            "नदीमधील अपशिष्टाच्या प्रमाणामुळे",
+            "नदीच्या तापमानामुळे",
+            "नदीच्या आकारामुळे"
+          ],
+          "solution": "योग्य उत्तर अपशिष्टाच्या प्रमाणामुळे आहे. अपशिष्ट जलजीवांना नुकसान पोहोचू शकते, ज्यामुळे कमी अपशिष्ट असलेल्या भागांमध्ये मासे जीवित ठेवण्यास अधिक योग्य असतात. इतर विकल्प, रंग, तापमान किंवा नदीच्या आकाराच्या बाबतीत, अपशिष्टापेक्षा मासा लोकसंख्येवर थोड्या प्रमाणातच प्रभाव पाडतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on an irrelevant characteristic of the river",
+        null,
+        "Mistakenly attributes fish distribution to temperature",
+        "Assumes the size of the river affects fish population"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as pollution directly affects fish populations. The other options are not supported by the passage and represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 13: A River’s Tale"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap113.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: A River’s Tale",
+            "How doesHow does Water becomHow doesWater becomWater become Dirty?Water become Dirty?"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap113.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: A River’s Tale",
+            "How doesHow does Water becomHow doesWater becomWater become Dirty?Water become Dirty?"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-28T04:30:23.154Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If you were to live near a river, what would be a good reason to choose that place?",
+      "choices": [
+        "Because it is near a city",
+        "Because it has clean water",
+        "Because it has many factories",
+        "Because it has a lot of oil"
+      ],
+      "answerIndex": 1,
+      "solution": "A good reason to live near a river is if it has clean water, as clean water is essential for drinking, cooking, and maintaining health. Living near factories or oil sources can lead to pollution, which harms both the environment and human health. Being near a city is not directly related to the river's quality or safety.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर आप एक नदी के पास रहना चाहते हैं, तो उस स्थान का चयन करने का एक अच्छा कारण क्या होगा?",
+          "choices": [
+            "क्योंकि यह एक शहर के पास है",
+            "क्योंकि इसमें स्वच्छ पानी है",
+            "क्योंकि इसमें कई फैक्टरी हैं",
+            "क्योंकि इसमें बहुत अधिक तेल है"
+          ],
+          "solution": "नदी के पास रहने का एक अच्छा कारण यह है कि इसमें स्वच्छ पानी हो, क्योंकि स्वच्छ पानी पीने, खाना पकाने और स्वास्थ्य बनाए रखने के लिए आवश्यक है। फैक्टरी या तेल के स्रोत के पास रहना प्रदूषण के कारण पर्यावरण और मानव स्वास्थ्य को नुकसान पहुंचा सकता है। शहर के पास रहना नदी की गुणवत्ता या सुरक्षा से सीधा संबंध नहीं रखता।",
           "imageAlt": null,
           "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते नदीच्या पाण्याच्या रंगात बदलाचे कारण आहे?",
+          "stem": "जर तुम्ही एका नदीच्या जवळ राहायचे असतील, तर तेथे राहण्याचे एक चांगले कारण काय असेल?",
           "choices": [
-            "नदी समुद्रात वाहते",
-            "नदीला मासे आहेत",
-            "नदीला पाणी वनस्पती आहेत",
-            "कारखाने आणि कपडे धुणे"
+            "कारण ते शहराजवळ आहे",
+            "कारण त्यात शुद्ध पाणी आहे",
+            "कारण त्यात बरेच फॅक्टरी आहेत",
+            "कारण त्यात खूप तेल आहे"
           ],
-          "solution": "कारखाने आणि कपडे धुणे नदीत अपशिष्ट आणि रंगवणारे पदार्थ जोडू शकतात, जे पाण्याच्या रंगात बदल करू शकतात. इतर विकल्प, जसे की नदी समुद्रात वाहणे किंवा मासे आणि पाणी वनस्पती असणे, पाण्याच्या रंगात बदलाचे थेट कारण नाहीत. मासे आणि वनस्पती असल्याने पाण्याच्या रंगात थोडासा बदल होऊ शकतो, परंतु नदी समुद्रात वाहणे हा भूगोलीय वैशिष्ट्य आहे, जो रंग बदलाचे कारण नाही.",
+          "solution": "एका नदीच्या जवळ राहण्याचे चांगले कारण असे असू शकते की त्यात शुद्ध पाणी आहे, कारण शुद्ध पाणी पिण्यासाठी, राखण्यासाठी आणि आरोग्य राखण्यासाठी आवश्यक आहे. फॅक्टरी किंवा तेल स्रोताच्या जवळ राहणे अनियंत्रित वातावरणाच्या प्रदूषणामुळे वातावरण आणि मानवी आरोग्याला नुकसान होऊ शकते. शहराजवळ राहणे नदीच्या गुणवत्ता किंवा सुरक्षेशी सीधा संबंधित नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
           "flag": null
@@ -72,204 +266,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the effect of pollution with the physical movement of water",
-        "Mistakes a feature for a cause",
-        "Mistakes a feature for a cause",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 3, as the question is about the cause of the river's color change, and the passage implies that human activities like washing clothes and factory waste are responsible. The other options are features of the river, not causes of color change.",
-      "sources": [
-        {
-          "document": "ncert/4/environmental-studies/deap113.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 13: A River’s Tale"
-          ]
-        },
-        {
-          "document": "ncert/4/environmental-studies/deap113.pdf",
-          "ordinal": 1,
-          "pageStart": 4,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 13: A River’s Tale",
-            "How doesHow does Water becomHow doesWater becomWater become Dirty?Water become Dirty?"
-          ]
-        },
-        {
-          "document": "ncert/4/environmental-studies/deap113.pdf",
-          "ordinal": 2,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 13: A River’s Tale",
-            "How doesHow does Water becomHow doesWater becomWater become Dirty?Water become Dirty?"
-          ]
-        }
-      ],
-      "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T23:20:14.009Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a way to clean drinking water?",
-      "choices": [
-        "Boiling",
-        "Adding oil",
-        "Mixing with salt",
-        "Pouring into the river"
-      ],
-      "answerIndex": 0,
-      "solution": "Boiling water kills harmful microorganisms, making it safe to drink. Adding oil or mixing with salt does not clean water and can make it unsafe. Pouring water into a river does not clean it and can pollute the environment.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा पीने योग्य पानी को साफ करने का एक तरीका है?",
-          "choices": [
-            "उबालना",
-            "तेल मिलाना",
-            "नमक के साथ मिलाना",
-            "नदी में डालना"
-          ],
-          "solution": "उबाला हुआ पानी हानिकारक सूक्ष्मजीवों को मार देता है, जिससे यह पीने योग्य हो जाता है। तेल या नमक मिलाने से पानी साफ नहीं होता और यह खतरनाक हो सकता है। पानी को नदी में डालना पानी को साफ नहीं करता और पर्यावरण को प्रदूषित कर सकता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology commonly found in textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते पिण्याच्या पाण्याला शुद्ध करण्याचे प्रकार आहे?",
-          "choices": [
-            "उकळवणे",
-            "तेल घालणे",
-            "मीठासह मिसळणे",
-            "नदीत पाणी ओतणे"
-          ],
-          "solution": "उकळलेले पाणी हानिकारक जीवाणूंना मारते, जेणेकरून ते पिण्यास योग्य होते. तेल घालणे किंवा मीठासह मिसळणे पाणी शुद्ध करत नाही आणि ते असुरक्षित करू शकते. नदीत पाणी ओतणे पाणी शुद्ध करत नाही आणि पर्यावरणाला दूषित करू शकते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
+        "Chooses a place near a city without considering water quality",
         null,
-        "Chooses a common practice without understanding its purpose",
-        "Chooses an action that contaminates water",
-        "Chooses an action that does not clean water"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (Boiling), as it is a recognized method of water purification. The other options are clearly incorrect and represent common misconceptions or harmful practices.",
-      "sources": [
-        {
-          "document": "ncert/4/environmental-studies/deap113.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 13: A River’s Tale"
-          ]
-        },
-        {
-          "document": "ncert/4/environmental-studies/deap113.pdf",
-          "ordinal": 1,
-          "pageStart": 4,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 13: A River’s Tale",
-            "How doesHow does Water becomHow doesWater becomWater become Dirty?Water become Dirty?"
-          ]
-        },
-        {
-          "document": "ncert/4/environmental-studies/deap113.pdf",
-          "ordinal": 2,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 13: A River’s Tale",
-            "How doesHow does Water becomHow doesWater becomWater become Dirty?Water become Dirty?"
-          ]
-        }
-      ],
-      "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T23:20:14.009Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a river is used for washing clothes, what effect might this have on the water?",
-      "choices": [
-        "It may become clean",
-        "It may become darker",
-        "It may become warmer",
-        "It may become more transparent"
-      ],
-      "answerIndex": 1,
-      "solution": "Washing clothes in a river can introduce dirt, soap, and other substances, which may make the water appear darker. The other options are incorrect because they do not reflect the typical effects of such activity on water quality. Clean or more transparent water would result from removing contaminants, not adding them. Warmer water is not directly related to washing clothes.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक नदी कपड़े धोने के लिए उपयोग की जाती है, तो इसका पानी पर क्या प्रभाव पड़ सकता है?",
-          "choices": [
-            "इसके अधिक साफ होने की संभावना है",
-            "इसके अधिक गहरे होने की संभावना है",
-            "इसके अधिक गर्म होने की संभावना है",
-            "इसके अधिक पारदर्शी होने की संभावना है"
-          ],
-          "solution": "कपड़े धोने में नदी में गंदगी, साबुन और अन्य पदार्थ शामिल हो सकते हैं, जो पानी के रंग को गहरा कर सकते हैं। अन्य विकल्प गलत हैं क्योंकि ये ऐसी गतिविधि के पानी की गुणवत्ता पर आम असर को दर्शाने में असमर्थ हैं। साफ या अधिक पारदर्शी पानी का निर्माण प्रदूषकों के निकालने से होता है, न कि उनके जोड़ने से। गर्म पानी का तापमान कपड़े धोने से सीधे संबंध नहीं होता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर नदीवर कपडे धुले जात असतील तर त्याचा पाण्यावर काय परिणाम होऊ शकतो?",
-          "choices": [
-            "ते स्वच्छ होऊ शकते",
-            "ते अंधारट झाल्यास शकते",
-            "ते उष्ण होऊ शकते",
-            "ते अधिक पारदर्शक होऊ शकते"
-          ],
-          "solution": "नदीवर कपडे धुणे धूळ, साबण आणि इतर पदार्थांच्या उपस्थितीमुळे त्याचा पाणी अंधारट दिसू शकतो. इतर विकल्प अयोग्य आहेत कारण ते अशा क्रियाकलापामुळे पाण्याच्या गुणवत्तेवर होणाऱ्या सामान्य परिणामांचे प्रतिनिधित्व करत नाहीत. दूषित पदार्थ दूर करण्यामुळे स्वच्छ किंवा अधिक पारदर्शक पाणी तयार होते, न की जोडले जातात. उष्ण पाणी अपवाह कपडे धुण्याशी सीधा संबंध नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The correct answer remains option (1), and all distractors are still incorrect.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Assumes washing clothes cleans water",
-        null,
-        "Assumes a physical change unrelated to pollution",
-        "Assumes a visual change not caused by pollution"
+        "Believes factories are a positive feature",
+        "Thinks oil in the river is a good sign"
       ],
       "solverAnswers": [
         1,
@@ -279,7 +279,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as washing clothes would introduce dirt and pollutants, making the water darker. The reasoning in the author's solution is sound and matches the expected understanding of the topic.",
+      "critique": "The correct answer is 1, as clean water is a positive attribute for living near a river. The other options (city proximity, factories, oil) are all associated with pollution, which aligns with the passage's message.",
       "sources": [
         {
           "document": "ncert/4/environmental-studies/deap113.pdf",
@@ -312,49 +312,49 @@
         }
       ],
       "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T23:20:14.009Z",
+      "generatedAt": "2026-10-28T04:30:23.154Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "If the water in a river has a foul smell, what might this indicate?",
+      "difficulty": 3,
+      "stem": "If a river is used for washing clothes and bathing animals, what is likely to happen to the water quality?",
       "choices": [
-        "The river is clean",
-        "The river has many fish",
-        "The river is polluted",
-        "The river is near a city"
+        "It will become clearer",
+        "It will become dirtier",
+        "It will become colder",
+        "It will become more colourful"
       ],
-      "answerIndex": 2,
-      "solution": "A foul smell in water often indicates the presence of harmful substances or waste, which is a sign of pollution. Clean water typically does not have a strong, unpleasant odor. The presence of many fish or being near a city does not directly explain the foul smell.",
+      "answerIndex": 1,
+      "solution": "Washing clothes and bathing animals introduces dirt, soap, and organic matter into the water, which reduces its quality and makes it dirtier. Clearer water would require removing impurities, which does not happen here. Colder or more colourful water is unrelated to the effects of these activities on water quality.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक नदी में पानी की बदबू हो, तो इसका क्या अर्थ हो सकता है?",
+          "stem": "यदि एक नदी कपड़े धोने और पशुओं के स्नान के लिए उपयोग की जाती है, तो जल की गुणवत्ता में क्या संभावना है?",
           "choices": [
-            "नदी साफ है",
-            "नदी में कई मछलियां हैं",
-            "नदी प्रदूषित है",
-            "नदी एक शहर के पास है"
+            "यह स्पष्ट हो जाएगा",
+            "यह अधिक गंदा हो जाएगा",
+            "यह ठंडा हो जाएगा",
+            "यह अधिक रंगीन हो जाएगा"
           ],
-          "solution": "पानी में बदबू आमतौर पर हानिकारक पदार्थों या कचरे की उपस्थिति को इंगित करती है, जो प्रदूषण के संकेत होते हैं। साफ पानी में आमतौर पर मजबूत, असहज गंध नहीं होती। मछलियों की उपस्थिति या शहर के पास होना बदबू के सीधे स्पष्टीकरण नहीं है।",
+          "solution": "कपड़े धोने और पशुओं के स्नान के कारण पानी में गंदगी, साबुन और जैविक पदार्थ प्रवेश करते हैं, जो पानी की गुणवत्ता को कम करते हैं और इसे अधिक गंदा बना देते हैं। स्पष्ट पानी के लिए अशुद्धियों के निकालने की आवश्यकता होती है, जो यहां नहीं होती है। ठंडा या अधिक रंगीन पानी इन गतिविधियों के पानी की गुणवत्ता पर प्रभाव से असंबंधित है।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology.",
+          "critique": "The Hindi translation accurately conveys the meaning of the English question, with appropriate technical terms used in a way consistent with Hindi-medium science education.",
           "flag": null
         },
         "mr": {
-          "stem": "जर नदीमधील पाणी खराब वास असेल, तर हे काय सूचित करू शकते?",
+          "stem": "जर नदीवर कपडे धुण्यासाठी आणि पालक प्राण्यांना नाही करण्यासाठी वापरली जात असेल, तर पाण्याची गुणवत्ता काय होईल?",
           "choices": [
-            "नदी स्वच्छ आहे",
-            "नदीमध्ये बरेच मासे आहेत",
-            "नदी दूषित आहे",
-            "नदी शहराजवळ आहे"
+            "ते स्पष्ट होईल",
+            "ते अधिक गंदा होईल",
+            "ते अधिक थंड होईल",
+            "ते अधिक रंगीत होईल"
           ],
-          "solution": "पाण्यामध्ये खराब वास अक्सर नुकसानकारक पदार्थांच्या अस्तित्वाचा संकेत देतो, जो दूषणाचा लक्षण आहे. स्वच्छ पाणी सामान्यतः एखाद्या तीव्र, असोस वासाने भरलेले असते. मासांच्या उपस्थिती किंवा शहराजवळ असणे हे खराब वासाच्या व्याख्येशी सीधा संबंध नसतो.",
+          "solution": "कपडे धुणे आणि पालक प्राण्यांना नाही करणे या क्रियांमुळे पाण्यात गंदा, साबण आणि जैविक पदार्थ जोडले जातात, जे पाण्याची गुणवत्ता कमी करतात आणि ते अधिक गंदा बनवतात. स्पष्ट पाणी म्हणजे अशुद्धी दूर करणे, जे येथे होत नाही. थंड किंवा रंगीत पाणी ही क्रियांच्या पाण्याच्या गुणवत्तेवर परिणामाशी संबंधित नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option (2) and the distractors are still incorrect.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for water quality concepts.",
           "flag": null
         }
       },
@@ -363,20 +363,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses a sign of pollution with a positive feature",
-        "Mistakes a characteristic of a healthy river for a sign of pollution",
+        "Incorrectly assumes the water will become clearer",
         null,
-        "Mistakes a location feature for a water quality indicator"
+        "Mistakenly believes the water will change temperature",
+        "Imagines the water will change colour due to activities"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as a foul smell in water is a clear indicator of pollution. The author's reasoning is sound, and the misconceptions listed for the distractors are plausible for students.",
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution logically follows from the premise. The correct answer (1) is supported by the reasoning that washing clothes and bathing animals introduce contaminants, making the water dirtier. The distractors reflect common misconceptions about water quality changes.",
       "sources": [
         {
           "document": "ncert/4/environmental-studies/deap113.pdf",
@@ -409,7 +409,104 @@
         }
       ],
       "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T23:20:14.009Z",
+      "generatedAt": "2026-10-28T04:30:23.154Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is one reason why it is important to clean water before drinking it?",
+      "choices": [
+        "Because it is not possible to boil the water",
+        "Because some things dissolved in water can be harmful",
+        "Because the water is always clear",
+        "Because it is not safe to drink from a river"
+      ],
+      "answerIndex": 1,
+      "solution": "Cleaning water before drinking is important because some substances that dissolve in it can be harmful to health. The other options are incorrect as they do not address the actual risks of consuming contaminated water.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पानी के पीने से पहले इसे साफ करना क्यों महत्वपूर्ण है?",
+          "choices": [
+            "क्योंकि पानी को उबालना संभव नहीं है",
+            "क्योंकि पानी में घुले कुछ पदार्थ हानिकारक हो सकते हैं",
+            "क्योंकि पानी हमेशा स्पष्ट होता है",
+            "क्योंकि नदी से पीना सुरक्षित नहीं होता"
+          ],
+          "solution": "पानी के पीने से पहले इसे साफ करना महत्वपूर्ण है क्योंकि पानी में घुले कुछ पदार्थ स्वास्थ्य के लिए हानिकारक हो सकते हैं। अन्य विकल्प गलत हैं क्योंकि वे प्रदूषित पानी पीने के वास्तविक जोखिम को संबोधित नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाणी पिण्यापूर्वी ते साफ करणे का महत्वाचे आहे?",
+          "choices": [
+            "कारण पाणी उकळणे शक्य नाही",
+            "कारण पाण्यामध्ये विरघळलेली काही गोष्टी त्रासदायक असू शकतात",
+            "कारण पाणी नेहमी स्पष्ट असते",
+            "कारण नदीमधून पाणी पिणे असुरक्षित असते"
+          ],
+          "solution": "पाणी पिण्यापूर्वी साफ करणे महत्वाचे आहे कारण त्यामध्ये विरघळलेल्या काही पदार्थांमुळे आरोग्याला त्रास होऊ शकतो. इतर विकल्प अचूक नाहीत कारण ते दूषित पाणी घेण्याच्या खर्या धोक्यांचा उल्लेख करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for a textbook context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes boiling is not an option",
+        null,
+        "Mistakenly believes water is always clear",
+        "Overgeneralizes the safety of river water"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as it aligns with the scientific understanding that dissolved substances can be harmful. The other options represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 13: A River’s Tale"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap113.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: A River’s Tale",
+            "How doesHow does Water becomHow doesWater becomWater become Dirty?Water become Dirty?"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap113.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: A River’s Tale",
+            "How doesHow does Water becomHow doesWater becomWater become Dirty?Water become Dirty?"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-28T04:30:23.154Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

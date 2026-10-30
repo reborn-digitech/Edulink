@@ -1,0 +1,770 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T23:00:08.405Z",
+  "finishedAt": "2026-10-23T23:12:31.201Z",
+  "seconds": 743,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Physics Part-I",
+    "bookCode": "leph1",
+    "document": "ncert/12/physics/leph107.pdf",
+    "classLevel": 12,
+    "subject": "Physics",
+    "chapter": "Chapter 7 — Alternating Current",
+    "edition": "Reprint 2026-27",
+    "chunks": 24,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEP 2020 — question paper]\n16. An Alternating Current is expressed as i = i cos wt + i sin wt. The RMS value of current is 1\n(a)  i  i 1 2  2 (b) i i 1 2\n2 2\n(c)  i  i 1 2 2 2  (d)  i 1 i 2  2\n2 2",
+      "[CBSE Class XII Physics, sample question paper, 2025-26]\n3. If the phasor diagram for a device connected to AC supply is as shown in the fig, 1\nthen which of the following statements is true?\n(A) When the frequency of the AC source is increased than the impedance of the\ndevice decreases.\n(B) This device behaves as conducting wire when connected across DC source.\n(C) When the frequency of the AC source is decreased than the impedance of the\ndevice decreases.\n(D) D. This device stores energy in the form of magnetic potential energy.",
+      "[CBSE Class XII Physics, sample question paper, 2022-23]\n28. An a.c. source generating a voltage ε = ε 0 sin ωt is connected to a 3\ncapacitor of capacitance C. Find the expression for the current I flowing\nthrough it. Plot a graph of ε and I versus t to show that the current is\nahead of the voltage by π/2.\nOR\nAn ac voltage V = V 0 sin t is applied across a pure inductor of\ninductance L. Find an expression for the current i, flowing in the circuit\nand show mathematically that the current flowing through it lags behind\n\nthe applied voltage by a phase angle of . Also draw graphs of V and\ni versus t for the circuit.",
+      "[CBSE Class XII Physics, marking scheme, 2025-26]\n3. Answer: (A) 1\nWhen the frequency of the AC source is increased than the impedance of\nthe device decreases.\nAs in phasor diagram current leads the voltage, so given appliance is\ncapacitor."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 188995,
+      "in": 41,
+      "out": 38,
+      "rejects": 4,
+      "promptTokens": 49163,
+      "completionTokens": 10453
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 322661,
+      "in": 38,
+      "out": 27,
+      "rejects": 11,
+      "promptTokens": 22528,
+      "completionTokens": 8368
+    },
+    "solver": {
+      "calls": 202,
+      "ms": 105924,
+      "in": 27,
+      "out": 23,
+      "rejects": 4,
+      "promptTokens": 38760,
+      "completionTokens": 2131
+    },
+    "form": {
+      "calls": 6,
+      "ms": 31131,
+      "in": 23,
+      "out": 11,
+      "rejects": 12,
+      "promptTokens": 5011,
+      "completionTokens": 894
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 31,
+      "ms": 6035,
+      "in": 11,
+      "out": 7,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 329847,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 19811,
+      "completionTokens": 10338
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the relationship between the peak current (i) and the root mean square (rms) current (I) in an AC circuit?",
+      "ms": {
+        "draft": 12828,
+        "critique": 6697
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In an AC circuit with a resistor, what is the phase relationship between the voltage and the current?",
+      "ms": {
+        "draft": 12828,
+        "critique": 7112
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the RMS voltage of an AC supply is 220 V, what is the peak voltage?",
+      "ms": {
+        "draft": 12828,
+        "critique": 8945
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An AC voltage is given by v = v₀ sin(ωt) and the current is given by i = i₀ sin(ωt). What is the average power dissipated in the circuit?",
+      "ms": {
+        "draft": 12828,
+        "critique": 10048,
+        "solver": 1500
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the average power dissipated in a resistor in an AC circuit is 100 W, and the rms current is 0.454 A, what is the resistance of the resistor?",
+      "ms": {
+        "draft": 12828,
+        "critique": 6728,
+        "solver": 16445
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of the root mean square (rms) current in an AC circuit?",
+      "ms": {
+        "draft": 12828,
+        "critique": 6414,
+        "solver": 1883,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the current and voltage in a purely capacitive AC circuit?",
+      "ms": {
+        "draft": 3651,
+        "critique": 6847,
+        "solver": 1576,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a purely capacitive AC circuit, what is the phase difference between the current and the voltage?",
+      "ms": {
+        "draft": 3651,
+        "critique": 6536,
+        "solver": 1579,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The phase angle φ between the voltage and current in a series LCR circuit is given by tanφ = (X_L - X_C)/R. What does it mean if φ is negative?",
+      "ms": {
+        "draft": 4695,
+        "critique": 7204
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The resonant frequency of an LCR circuit is given by ω = 1/sqrt(LC). What happens to the resonant frequency if the inductance is doubled and the capacitance is halved?",
+      "ms": {
+        "draft": 4695,
+        "critique": 6684
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In an AC circuit, the average power dissipated depends on which of the following?",
+      "ms": {
+        "draft": 6289,
+        "critique": 5676
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A resistor of 200 Ω and a capacitor of 15.0 μF are connected in series to a 220 V, 50 Hz AC source. What is the RMS current in the circuit?",
+      "ms": {
+        "draft": 6289,
+        "critique": 5913
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a series LCR circuit, the power factor is given by cosφ, where φ is the phase difference between voltage and current. If the circuit is at resonance, what is the power factor?",
+      "ms": {
+        "draft": 6289,
+        "critique": 5456,
+        "solver": 1673,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the effective value of an alternating current?",
+      "ms": {
+        "draft": 56597,
+        "critique": 4308
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the current through a capacitor in an AC circuit?",
+      "ms": {
+        "draft": 13004,
+        "critique": 7569
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an AC source with a peak voltage of 300 V is connected to a resistor, what is the RMS voltage?",
+      "ms": {
+        "draft": 13004,
+        "critique": 7302,
+        "solver": 12131,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a series RLC circuit, what is the condition for resonance?",
+      "ms": {
+        "draft": 13004,
+        "critique": 6971,
+        "solver": 16694,
+        "form": 3412
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An AC source with voltage V = V0 sin wt is connected to a capacitor. What is the phase difference between the current and the voltage?",
+      "ms": {
+        "draft": 13004,
+        "critique": 10377,
+        "solver": 12786,
+        "form": 2674
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the RMS current in a 100 W resistor connected to a 220 V, 50 Hz AC supply?",
+      "ms": {
+        "draft": 13004,
+        "critique": 8554
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an AC circuit, the power factor is defined as cos φ. What does a power factor of zero indicate?",
+      "ms": {
+        "draft": 13004,
+        "critique": 7370,
+        "solver": 12326
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a transformer, if the number of turns in the primary coil is 100 and the number of turns in the secondary coil is 200, what happens to the voltage and current?",
+      "ms": {
+        "draft": 4421,
+        "critique": 5371,
+        "solver": 1602,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A transformer has a primary coil with 200 turns and a secondary coil with 50 turns. The primary is connected to a 220 V AC source. If the secondary is connected to a resistor of 10 ohms, what is the current in the secondary coil?",
+      "ms": {
+        "draft": 4421,
+        "critique": 7147
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An AC source with an RMS voltage of 100 V is connected to a transformer. The primary coil has 100 turns and the secondary coil has 500 turns. If the primary current is 2 A, what is the secondary current?",
+      "ms": {
+        "draft": 4421,
+        "critique": 7685,
+        "solver": 1398,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an ideal transformer, the primary coil has 50 turns and the secondary coil has 250 turns. If the primary voltage is 220 V, what is the secondary voltage?",
+      "ms": {
+        "draft": 4421,
+        "critique": 7020,
+        "solver": 11800
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the factor that affects the average power dissipated in an AC circuit, depending on the phase angle between voltage and current?",
+      "ms": {
+        "draft": 6628,
+        "critique": 5359,
+        "solver": 13520,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the current in an LCR series circuit when the frequency of the applied voltage matches the resonant frequency of the circuit?",
+      "ms": {
+        "draft": 7675,
+        "critique": 7178,
+        "solver": 1995,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the total opposition to the flow of alternating current in an LCR series circuit?",
+      "ms": {
+        "draft": 7675,
+        "critique": 8284,
+        "solver": 1287,
+        "form": 4607
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the frequency of an AC source connected to a capacitor is doubled, what happens to the capacitive reactance?",
+      "ms": {
+        "draft": 3651,
+        "critique": 7255,
+        "solver": 1472,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a purely capacitive AC circuit, what is the average power supplied to the capacitor over a complete cycle?",
+      "ms": {
+        "draft": 3651,
+        "critique": 7049,
+        "solver": 1722,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A capacitor is connected to an AC source. If the frequency of the AC source is increased, what happens to the current in the circuit?",
+      "ms": {
+        "draft": 3651,
+        "critique": 6904,
+        "solver": 1474,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of capacitive reactance?",
+      "ms": {
+        "draft": 3732,
+        "critique": 4644,
+        "solver": 812,
+        "form": 1652
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of a transformer?",
+      "ms": {
+        "draft": 4247,
+        "critique": 5477,
+        "solver": 968,
+        "form": 0,
+        "translation": 31470
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In an AC circuit, if the phase difference between voltage and current is π/2, what happens to the power dissipated?",
+      "ms": {
+        "draft": 6628,
+        "critique": 10376,
+        "solver": 16998,
+        "form": 0,
+        "translation": 27065
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a series LCR circuit, the current amplitude is given by i = v / sqrt(R^2 + (X_L - X_C)^2). If the inductive reactance is equal to the capacitive reactance, what happens to the current amplitude?",
+      "ms": {
+        "draft": 4695,
+        "critique": 7123,
+        "solver": 10454,
+        "form": 0,
+        "translation": 61657
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A transformer has a primary coil with 100 turns and a secondary coil with 25 turns. If the primary voltage is 200 V, what is the secondary voltage?",
+      "ms": {
+        "draft": 4421,
+        "critique": 6321,
+        "solver": 11952,
+        "form": 0,
+        "translation": 38358
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "An AC source with a voltage ε = ε_0 sin(ωt) is connected to a pure inductor of inductance L. Which of the following statements is correct?",
+      "ms": {
+        "draft": 4695,
+        "critique": 6737,
+        "solver": 1701,
+        "form": 0,
+        "translation": 63182
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "An AC source with a voltage v = v₀ sin ωt is connected to a capacitor. Which of the following statements is true about the current in the circuit?",
+      "ms": {
+        "draft": 3651,
+        "critique": 6825,
+        "solver": 1415,
+        "form": 0,
+        "translation": 52670
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a series LCR circuit, the impedance is given by Z = sqrt(R^2 + (X_L - X_C)^2). What happens to the impedance if the frequency of the AC source is increased beyond the resonant frequency?",
+      "ms": {
+        "draft": 4695,
+        "critique": 6224,
+        "solver": 1436,
+        "form": 0,
+        "translation": 50430
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is the term used to describe a vector that rotates about"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In an LCR series circuit, the current leads the voltage. What can be inferred about the circuit?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "A sinusoidal voltage of peak value 283 V is applied across an LCR circuit. What is the RMS voltage?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the relationship between the peak current (i) and the root mean square (rms) current (I) in an AC circuit?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In an AC circuit with a resistor, what is the phase relationship between the voltage and the current?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the RMS voltage of an AC supply is 220 V, what is the peak voltage?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "An AC voltage is given by v = v₀ sin(ωt) and the current is given by i = i₀ sin(ωt). What is the average power dissipated in the circuit?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the average power dissipated in a resistor in an AC circuit is 100 W, and the rms current is 0.454 A, what is the resistance of the resistor?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the definition of the root mean square (rms) current in an AC circuit?",
+      "reason": "the key is far longer than every distractor (62 vs 34 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the relationship between the current and voltage in a purely capacitive AC circuit?",
+      "reason": "options 2 and 3 say the same thing (\"The voltage leads the current by π/2\" / \"The current leads the voltage by π/2\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a purely capacitive AC circuit, what is the phase difference between the current and the voltage?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The phase angle φ between the voltage and current in a series LCR circuit is given by tanφ = (X_L - X_C)/R. What does it mean if φ is negative?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "The resonant frequency of an LCR circuit is given by ω = 1/sqrt(LC). What happens to the resonant frequency if the inductance is doubled and the capacitance is halved?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "In an AC circuit, the average power dissipated depends on which of the following?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A resistor of 200 Ω and a capacitor of 15.0 μF are connected in series to a 220 V, 50 Hz AC source. What is the RMS current in the circuit?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a series LCR circuit, the power factor is given by cosφ, where φ is the phase difference between voltage and current. If the circuit is at resonance, what is the power factor?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the effective value of an alternating current?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "In a transformer, if the primary coil has more turns than the secondary coil, what happens to the voltage and current?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is true about the current through a capacitor in an AC circuit?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If an AC source with a peak voltage of 300 V is connected to a resistor, what is the RMS voltage?",
+      "reason": "checkExpr \"300 / sqrt(2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a series RLC circuit, what is the condition for resonance?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "An AC source with voltage V = V0 sin wt is connected to a capacitor. What is the phase difference between the current and the voltage?",
+      "reason": "options 1 and 2 are the same (\"π/2\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the RMS current in a 100 W resistor connected to a 220 V, 50 Hz AC supply?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In an AC circuit, the power factor is defined as cos φ. What does a power factor of zero indicate?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a transformer, if the number of turns in the primary coil is 100 and the number of turns in the secondary coil is 200, what happens to the voltage and current?",
+      "reason": "options 0 and 1 say the same thing (\"Voltage is halved and current is doubled\" / \"Voltage is doubled and current is halved\"); options 0 and 3 say the same thing (\"Voltage is halved and current is doubled\" / \"Voltage is doubled and current is doubled\"); options 1 and 3 say the same thing (\"Voltage is doubled and current is halved\" / \"Voltage is doubled and current is doubled\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A transformer has a primary coil with 200 turns and a secondary coil with 50 turns. The primary is connected to a 220 V AC source. If the secondary is connected to a resistor of 10 ohms, what is the current in the secondary coil?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "An AC source with an RMS voltage of 100 V is connected to a transformer. The primary coil has 100 turns and the secondary coil has 500 turns. If the primary current is 2 A, what is the secondary current?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In an ideal transformer, the primary coil has 50 turns and the secondary coil has 250 turns. If the primary voltage is 220 V, what is the secondary voltage?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used to describe the factor that affects the average power dissipated in an AC circuit, depending on the phase angle between voltage and current?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the current in an LCR series circuit when the frequency of the applied voltage matches the resonant frequency of the circuit?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used to describe the total opposition to the flow of alternating current in an LCR series circuit?",
+      "reason": "figure: figure spec refused: spec.parts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the frequency of an AC source connected to a capacitor is doubled, what happens to the capacitive reactance?",
+      "reason": "near-duplicate of served question cmvi68qlk0bpygpfhzeaa3ljs (cosine 0.966 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In a purely capacitive AC circuit, what is the average power supplied to the capacitor over a complete cycle?",
+      "reason": "near-duplicate of served question cmvi68qlt0bqygpfh2ptnn9d5 (cosine 0.928 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A capacitor is connected to an AC source. If the frequency of the AC source is increased, what happens to the current in the circuit?",
+      "reason": "near-duplicate of served question cmvi68qls0bqsgpfh743fnyal (cosine 0.986 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the SI unit of capacitive reactance?",
+      "reason": "near-duplicate of served question cmvi68qli0bpsgpfhw7mghh90 (cosine 0.908 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,377 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:48:28.650Z",
+  "finishedAt": "2026-10-28T04:51:02.556Z",
+  "seconds": 154,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap120.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 20 — Eating Together",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 60321,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 14034,
+      "completionTokens": 3681
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 106261,
+      "in": 16,
+      "out": 10,
+      "rejects": 6,
+      "promptTokens": 7325,
+      "completionTokens": 2923
+    },
+    "solver": {
+      "calls": 58,
+      "ms": 22271,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 8547,
+      "completionTokens": 538
+    },
+    "form": {
+      "calls": 7,
+      "ms": 15745,
+      "in": 8,
+      "out": 3,
+      "rejects": 5,
+      "promptTokens": 1547,
+      "completionTokens": 471
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 3923,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 104541,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6629,
+      "completionTokens": 3403
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What did the class decide to do after discussing the idea of having a party?",
+      "ms": {
+        "draft": 3236,
+        "critique": 6385
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be done to make a party greater fun for everyone according to the passage?",
+      "ms": {
+        "draft": 3236,
+        "critique": 6730
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Aarti say was the most enjoyable part of the wedding?",
+      "ms": {
+        "draft": 3236,
+        "critique": 6752
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the Bhela Ghar in the celebration of Bihu?",
+      "ms": {
+        "draft": 3236,
+        "critique": 6743
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is unable to finish the food, what might be the reason according to the passage?",
+      "ms": {
+        "draft": 3154,
+        "critique": 7947,
+        "solver": 1655
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the right of every child as per the highest court's decision?",
+      "ms": {
+        "draft": 3154,
+        "critique": 6082,
+        "solver": 774
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if the children did not get food in school?",
+      "ms": {
+        "draft": 5152,
+        "critique": 6307
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of meal is served in the school according to the passage?",
+      "ms": {
+        "draft": 5152,
+        "critique": 6988
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do the children sing together before eating?",
+      "ms": {
+        "draft": 5152,
+        "critique": 6082,
+        "solver": 1353,
+        "form": 3034
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the reason for the parents helping in the school meal program?",
+      "ms": {
+        "draft": 5152,
+        "critique": 6333,
+        "solver": 1198,
+        "form": 3123
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the children decide to do in their school to have fun together?",
+      "ms": {
+        "draft": 3538,
+        "critique": 6130,
+        "solver": 1643,
+        "form": 2561
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Aarti enjoy the wedding feasts the most?",
+      "ms": {
+        "draft": 3538,
+        "critique": 5266,
+        "solver": 1815,
+        "form": 2325
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is one way the children in the passage planned to arrange their class party?",
+      "ms": {
+        "draft": 3538,
+        "critique": 5683,
+        "solver": 532,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main activity that the children do before they start eating their meal?",
+      "ms": {
+        "draft": 3154,
+        "critique": 5695,
+        "solver": 1427,
+        "form": 4198,
+        "translation": 31436
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the reason given for the improvement in the quality of food in the school?",
+      "ms": {
+        "draft": 3154,
+        "critique": 6632,
+        "solver": 12011,
+        "form": 833,
+        "translation": 34339
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How did the village in Assam prepare for the Bihu festival?",
+      "ms": {
+        "draft": 3538,
+        "critique": 5645,
+        "solver": 728,
+        "form": 934,
+        "translation": 34302
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What did the class decide to do after discussing the idea of having a party?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What can be done to make a party greater fun for everyone according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did Aarti say was the most enjoyable part of the wedding?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the significance of the Bhela Ghar in the celebration of Bihu?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student is unable to finish the food, what might be the reason according to the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, what is the right of every child as per the highest court's decision?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What would happen if the children did not get food in school?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What type of meal is served in the school according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why do the children sing together before eating?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Incorrectly assumes that the song is for celebration, not fo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the reason for the parents helping in the school meal program?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Incorrectly assumes that the parents helped to make the food…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that the parents helped to make the chil…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What did the children decide to do in their school to have fun together?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks the event is a picnic, not a party as mentioned in th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did Aarti enjoy the wedding feasts the most?",
+      "reason": "the key is far longer than every distractor (51 vs 27 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is one way the children in the passage planned to arrange their class party?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

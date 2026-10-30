@@ -1,0 +1,510 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T16:17:28.716Z",
+  "finishedAt": "2026-10-25T16:23:59.158Z",
+  "seconds": 390,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm113.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Time G oes O n",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\nSample Question Paper (2023-24)\nClass – X\nBasic Mathematics (241)\nTime Allowed: 3 Hrs Maximum Marks: 80\nGeneral Instructions:",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\nSAMPLE QUESTION PAPER\nClass X Session 2023-24\nMATHEMATICS STANDARD (Code No.041)\nTIME: 3 hours MAX.MARKS: 80\nGeneral Instructions:",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\nClass- X Session- 2022-23\nSubject- Mathematics (Standard)\nSample Question Paper\nTime Allowed: 3 Hrs. Maximum Marks : 80\nGeneral Instructions:",
+      "[IOQM 2020 — question paper]\nCode : M01\nRoll Number: Time: 3 Hours\nINSTRUCTIONS"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 138957,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 15050,
+      "completionTokens": 7464
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 247443,
+      "in": 24,
+      "out": 20,
+      "rejects": 4,
+      "promptTokens": 15233,
+      "completionTokens": 5975
+    },
+    "solver": {
+      "calls": 162,
+      "ms": 103974,
+      "in": 20,
+      "out": 13,
+      "rejects": 7,
+      "promptTokens": 31156,
+      "completionTokens": 1880
+    },
+    "form": {
+      "calls": 11,
+      "ms": 62925,
+      "in": 13,
+      "out": 7,
+      "rejects": 6,
+      "promptTokens": 10064,
+      "completionTokens": 1237
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 4819,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 260238,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 12612,
+      "completionTokens": 5581
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What is the date three days after July 22, and what day of the week is it?",
+      "ms": {
+        "draft": 6578,
+        "critique": 5409,
+        "solver": 1251
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many Sundays are there in July 2024?",
+      "ms": {
+        "draft": 6578,
+        "critique": 7266
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a school closes on July 7 for 15 days, on which date will it open again?",
+      "ms": {
+        "draft": 6578,
+        "critique": 8878,
+        "solver": 1907
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which activity takes about 2-3 weeks to complete?",
+      "ms": {
+        "draft": 4796,
+        "critique": 6611
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Hetal is twice as old as her brother and 10 years older, what is her age?",
+      "ms": {
+        "draft": 6578,
+        "critique": 6136,
+        "solver": 1390,
+        "form": 4656
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following activities takes about 15 minutes?",
+      "ms": {
+        "draft": 4796,
+        "critique": 6627,
+        "solver": 15908
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a school period lasts 30 minutes, how many such periods make 2 hours?",
+      "ms": {
+        "draft": 4796,
+        "critique": 7382,
+        "solver": 17752
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a digital clock shows 2:45 PM, and the analog clock shows the same time, what is the angle between the hour and minute hands?",
+      "ms": {
+        "draft": 4796,
+        "critique": 11333
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following activities takes about 2-3 weeks?",
+      "ms": {
+        "draft": 5248,
+        "critique": 8373,
+        "solver": 3330
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A digital clock shows 2:45 PM. If it takes 30 minutes to reach the next hour, what time will it show?",
+      "ms": {
+        "draft": 5248,
+        "critique": 10275
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a clock's hour hand moves from 3 to 6, how many hours have passed?",
+      "ms": {
+        "draft": 5248,
+        "critique": 7213,
+        "solver": 18018
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student starts studying at 4:30 PM and studies for 1 hour and 45 minutes, what time will it be when they finish?",
+      "ms": {
+        "draft": 5248,
+        "critique": 6627,
+        "solver": 19763,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many Sundays are there in July 2024?",
+      "ms": {
+        "draft": 6538,
+        "critique": 7896,
+        "solver": 1770,
+        "form": 3109
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which dates in July 2024 are Thursdays?",
+      "ms": {
+        "draft": 6538,
+        "critique": 7613,
+        "solver": 3764,
+        "form": 3654
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Three days after July 22 is which date and which day?",
+      "ms": {
+        "draft": 6538,
+        "critique": 8492,
+        "solver": 1908,
+        "form": 2533
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Hetal started her breakfast at 7:00 and finished at 07:15, how many minutes did she take?",
+      "ms": {
+        "draft": 6538,
+        "critique": 8895,
+        "solver": 1907,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a school closes on July 7 for 15 days, on which date will it open?",
+      "ms": {
+        "draft": 6538,
+        "critique": 8931,
+        "solver": 15187
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Hetal is twice as old as her brother. She is also 10 years older than her brother. What is Hetal's age?",
+      "ms": {
+        "draft": 6538,
+        "critique": 7420,
+        "solver": 7516,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What are the dates in July 2024 that fall on Thursdays?",
+      "ms": {
+        "draft": 6578,
+        "critique": 5872,
+        "solver": 2211,
+        "form": 5007,
+        "translation": 61986
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the same in all calendars?",
+      "ms": {
+        "draft": 6578,
+        "critique": 8245,
+        "solver": 1184,
+        "form": 3580,
+        "translation": 47803
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following can be done in 5 minutes?",
+      "ms": {
+        "draft": 5248,
+        "critique": 8119,
+        "solver": 14210,
+        "form": 5178,
+        "translation": 33874
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a sand clock takes 15 minutes to empty, how many such sand clocks will be needed to measure 1 hour?",
+      "ms": {
+        "draft": 5248,
+        "critique": 7563,
+        "solver": 15855,
+        "form": 0,
+        "translation": 37305
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the time taken for an activity is 45 minutes, how many minutes are left if the total time available is 1 hour?",
+      "ms": {
+        "draft": 4796,
+        "critique": 6761,
+        "solver": 2143,
+        "form": 0,
+        "translation": 36577
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a sand clock takes 10 minutes to empty, how many times must it be turned to measure 1 hour?",
+      "ms": {
+        "draft": 4796,
+        "critique": 7786,
+        "solver": 13007,
+        "form": 0,
+        "translation": 36518
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the date three days after July 22, and what day of the week is it?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How many Sundays are there in July 2024?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a school closes on July 7 for 15 days, on which date will it open again?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which activity takes about 2-3 weeks to complete?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If Hetal is twice as old as her brother and 10 years older, what is her age?",
+      "reason": "checkExpr \"20\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following activities takes about 15 minutes?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a school period lasts 30 minutes, how many such periods make 2 hours?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a digital clock shows 2:45 PM, and the analog clock shows the same time, what is the angle between the hour and minute hands?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following activities takes about 2-3 weeks?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A digital clock shows 2:45 PM. If it takes 30 minutes to reach the next hour, what time will it show?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a clock's hour hand moves from 3 to 6, how many hours have passed?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student starts studying at 4:30 PM and studies for 1 hour and 45 minutes, what time will it be when they finish?",
+      "reason": "checkExpr \"4:30 + 1:45\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "How many Sundays are there in July 2024?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'calendar'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which dates in July 2024 are Thursdays?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'calendar'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Three days after July 22 is which date and which day?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels Sun, Earth, Moon"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If Hetal started her breakfast at 7:00 and finished at 07:15, how many minutes did she take?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'clock'"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a school closes on July 7 for 15 days, on which date will it open?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Hetal is twice as old as her brother. She is also 10 years older than her brother. What is Hetal's age?",
+      "reason": "near-duplicate of served question cmvk280sf0isqgpfhm27taykq (cosine 0.949 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

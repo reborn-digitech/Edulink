@@ -1,0 +1,800 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T01:54:43.178Z",
+  "finishedAt": "2026-10-29T02:08:28.123Z",
+  "seconds": 825,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry-I",
+    "bookCode": "lech1",
+    "document": "ncert/12/chemistry/lech102.pdf",
+    "classLevel": 12,
+    "subject": "Chemistry",
+    "chapter": "Chapter 2 — Electrochemistry",
+    "edition": "Reprint 2026-27",
+    "chunks": 33,
+    "groups": 10
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Chemistry, marking scheme, 2022-23]\n23. Anode: Zn (s)  Zn 2+ (aq) + 2 e-\n– –\n(1/2+1/2)\n(1/2)\n(1/2)\n(1/2)\nCathode: O 2 (g) + 2H 2 O(l) + 4e → 4OH (aq). (1/2)\nOverall: 2 Zn (s) + O 2 (g) + 2H 2 O(l)  2 Zn 2+ (aq) + 4OH (aq) –\n2 Zn (s) + O 2 (g) + 2H 2 O(l)  2 Zn(OH) 2 (ppt) (1)",
+      "[CBSE Class XII Chemistry, sample question paper, 2022-23]\n23. Corrosion is an electrochemical phenomenon. The oxygen in moist air reacts as\nfollows:\nO 2 (g) + 2H 2 O(l) + 4e → 4OH (aq). – –\nWrite down the possible reactions for corrosion of zinc occurring at anode, cathode, and\noverall reaction to form a white layer of zinc hydroxide.",
+      "[CBSE Class XII Chemistry, sample question paper, 2022-23]\n33. a. Why does the cell voltage of a mercury cell remain constant during its\nlifetime?\nb. Write the reaction occurring at anode and cathode and the products of\nelectrolysis of aq KCl.\nc. What is the pH of HCl solution when the hydrogen gas electrode shows\na potential of -0.59 V at standard temperature and pressure?\nOR\na. Molar conductivity of substance “A” is 5.9×10 S/m and “B” is 1 x 10 3 -16\nS/m. Which of the two is most likely to be copper metal and why?\nb. What is the quantity of electricity in Coulombs required to produce 4.8 g of\nMg from molten MgCl 2 ? How much Ca will be produced if the same\namount of electricity was passed through molten CaCl 2 ? (Atomic mass of\nMg = 24 u, atomic m",
+      "[CBSE Class XII Chemistry, marking scheme, 2023-24]\n16. (d) A is false but R is true.\nCu will deposit at cathode"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 238718,
+      "in": 46,
+      "out": 40,
+      "rejects": 7,
+      "promptTokens": 56928,
+      "completionTokens": 13511
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 306814,
+      "in": 40,
+      "out": 34,
+      "rejects": 6,
+      "promptTokens": 24670,
+      "completionTokens": 8551
+    },
+    "solver": {
+      "calls": 223,
+      "ms": 108297,
+      "in": 34,
+      "out": 31,
+      "rejects": 3,
+      "promptTokens": 41333,
+      "completionTokens": 2258
+    },
+    "form": {
+      "calls": 11,
+      "ms": 44011,
+      "in": 31,
+      "out": 17,
+      "rejects": 14,
+      "promptTokens": 5053,
+      "completionTokens": 1244
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 30,
+      "ms": 5429,
+      "in": 17,
+      "out": 14,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 477493,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 32479,
+      "completionTokens": 15745
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 3,
+    "2": 4,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an electrochemical process?",
+      "ms": {
+        "draft": 12724,
+        "critique": 6283,
+        "solver": 1365,
+        "form": 2067
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a galvanic cell, the anode is the electrode where oxidation takes place. Which of the following is the correct representation of a galvanic cell where zinc is the anode and copper is the cathode?",
+      "ms": {
+        "draft": 5446,
+        "critique": 7192,
+        "solver": 1953,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the Daniell cell, which electrode undergoes reduction?",
+      "ms": {
+        "draft": 12724,
+        "critique": 7108,
+        "solver": 13437,
+        "form": 3187
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The standard hydrogen electrode (SHE) is used as a reference electrode. What is the standard electrode potential for the SHE?",
+      "ms": {
+        "draft": 5446,
+        "critique": 4706,
+        "solver": 1180,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A galvanic cell is represented as Zn(s) | Zn²+(aq) || Ag⁺(aq) | Ag(s). Which of the following statements is true about this cell?",
+      "ms": {
+        "draft": 5446,
+        "critique": 5808,
+        "solver": 1999,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a galvanic cell, the cell potential is 1.5 V. If the anode is zinc and the cathode is copper, what is the standard electrode potential of the cathode if the anode potential is -0.76 V?",
+      "ms": {
+        "draft": 5446,
+        "critique": 7909
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements correctly describes the role of standard electrode potentials in electrochemistry?",
+      "ms": {
+        "draft": 15008,
+        "critique": 6905
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A galvanic cell is set up with the following reactions: Anode: Zn(s) → Zn²+(aq) + 2e⁻, Cathode: Cu²+(aq) + 2e⁻ → Cu(s). If the cell potential is 1.10 V, what is the standard electrode potential of the cathode if the standard electrode potential of the anode is -0.76 V?",
+      "ms": {
+        "draft": 5446,
+        "critique": 10648
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the correct way to write the Nernst equation for an electrochemical reaction at 298 K?",
+      "ms": {
+        "draft": 15008,
+        "critique": 6770,
+        "solver": 1245,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The standard electrode potential for the reaction Ag⁺(aq) + e⁻ → Ag(s) is +0.80 V. What does this indicate about the reaction?",
+      "ms": {
+        "draft": 15008,
+        "critique": 7518
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of molar conductivity?",
+      "ms": {
+        "draft": 8883,
+        "critique": 7392,
+        "solver": 10871,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of the limiting molar conductivity of NaCl if its molar conductivity at a certain concentration is 124 S cm mol⁻¹ and the limiting molar conductivity is 150 S cm mol⁻¹?",
+      "ms": {
+        "draft": 8883,
+        "critique": 7002,
+        "solver": 11359,
+        "form": 4052
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct formula to calculate the amount of electricity (Q) passed through an electrolytic cell?",
+      "ms": {
+        "draft": 3480,
+        "critique": 7619
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an electrolytic cell, the products of electrolysis depend on the oxidising and reducing species present, along with their standard electrode potentials. Which of the following statements best explains why the electrolysis of aqueous NaCl produces NaOH, Cl₂, and H₂ instead of Na and Cl⁻?",
+      "ms": {
+        "draft": 7493,
+        "critique": 8027,
+        "solver": 1294
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the overall reaction in a fuel cell that uses hydrogen and oxygen to produce electricity?",
+      "ms": {
+        "draft": 6705,
+        "critique": 7569,
+        "solver": 791,
+        "form": 1755
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the molar conductivity of a solution if the conductivity is 0.01148 S cm⁻¹ and the concentration is 0.05 mol L⁻¹?",
+      "ms": {
+        "draft": 8883,
+        "critique": 6959,
+        "solver": 15298
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the corrosion of iron, which of the following is true about the anodic and cathodic reactions?",
+      "ms": {
+        "draft": 20317,
+        "critique": 5764,
+        "solver": 2810,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the anode reaction in a fuel cell is 2H2 → 4H+ + 4e-, what is the likely cathode reaction?",
+      "ms": {
+        "draft": 20317,
+        "critique": 6825,
+        "solver": 1664,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "During the electrolysis of aqueous sodium chloride solution, which reaction is preferred at the cathode?",
+      "ms": {
+        "draft": 4811,
+        "critique": 6210
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a fuel cell, hydrogen and oxygen react to form water. What is the main purpose of the catalysts like platinum or palladium in the electrodes?",
+      "ms": {
+        "draft": 20317,
+        "critique": 6132,
+        "solver": 1269,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a lead storage battery, what is the product formed at the cathode during discharge?",
+      "ms": {
+        "draft": 4811,
+        "critique": 7247,
+        "solver": 1613
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main purpose of using an inert electrode in an electrolytic cell?",
+      "ms": {
+        "draft": 5862,
+        "critique": 5411,
+        "solver": 1572,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a copper electrolysis process, how does the purity of the copper at the cathode compare to the copper at the anode?",
+      "ms": {
+        "draft": 5862,
+        "critique": 5898,
+        "solver": 875,
+        "form": 3161
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given the following information: The standard electrode potential for the reaction Zn²⁺(aq) + 2e⁻ → Zn(s) is -0.76 V, and for the reaction Cu²⁺(aq) + 2e⁻ → Cu(s) is +0.34 V. The student is asked to calculate the cell potential of the cell: Zn(s) | Zn²⁺(aq) || Cu²⁺(aq) | Cu(s). What is the correct cell potential?",
+      "ms": {
+        "draft": 15008,
+        "critique": 7002,
+        "solver": 1967,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a non-spontaneous redox reaction?",
+      "ms": {
+        "draft": 2265,
+        "critique": 6607,
+        "solver": 2238,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the main reason the cell voltage of a mercury cell remains constant during its lifetime?",
+      "ms": {
+        "draft": 5862,
+        "critique": 5550,
+        "solver": 1352,
+        "form": 1926
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a galvanic cell?",
+      "ms": {
+        "draft": 2265,
+        "critique": 5928,
+        "solver": 14724,
+        "form": 0,
+        "translation": 26512
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the standard electrode potential of the hydrogen electrode?",
+      "ms": {
+        "draft": 2265,
+        "critique": 6101,
+        "solver": 1712,
+        "form": 0,
+        "translation": 21194
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of molar conductivity?",
+      "ms": {
+        "draft": 2265,
+        "critique": 7859,
+        "solver": 1527,
+        "form": 0,
+        "translation": 19537
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of an electrochemical cell?",
+      "ms": {
+        "draft": 12724,
+        "critique": 5945,
+        "solver": 1411,
+        "form": 2570,
+        "translation": 35470
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the standard electrode potential and the equilibrium constant of a reaction?",
+      "ms": {
+        "draft": 2265,
+        "critique": 7858,
+        "solver": 1441,
+        "form": 0,
+        "translation": 21869
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a galvanic cell, the cell potential is the difference between the electrode potentials of the cathode and anode. If the standard electrode potential for zinc is -0.76 V and for copper is +0.34 V, what is the cell potential?",
+      "ms": {
+        "draft": 5446,
+        "critique": 5904,
+        "solver": 1600,
+        "form": 0,
+        "translation": 39522
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the Gibbs free energy change (ΔG) and the cell potential (E) of a galvanic cell?",
+      "ms": {
+        "draft": 4660,
+        "critique": 7118,
+        "solver": 11165,
+        "form": 0,
+        "translation": 40716
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a galvanic cell is reversed by applying a higher external voltage, what type of cell does it become?",
+      "ms": {
+        "draft": 12724,
+        "critique": 5667,
+        "solver": 992,
+        "form": 4587,
+        "translation": 42506
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct statement about fuel cells?",
+      "ms": {
+        "draft": 20317,
+        "critique": 6206,
+        "solver": 1672,
+        "form": 0,
+        "translation": 36497
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the Daniell cell, what happens when the external voltage is less than 1.1 V?",
+      "ms": {
+        "draft": 12724,
+        "critique": 6960,
+        "solver": 1249,
+        "form": 5767,
+        "translation": 44278
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is the overall reaction for the electrolysis of aqueous sodium chloride solution?",
+      "ms": {
+        "draft": 4811,
+        "critique": 6283,
+        "solver": 11696,
+        "form": 0,
+        "translation": 32171
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the potential of a galvanic cell is increased beyond its standard potential, what happens to the cell reaction?",
+      "ms": {
+        "draft": 12724,
+        "critique": 5815,
+        "solver": 2234,
+        "form": 3635,
+        "translation": 37121
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does the mercury cell maintain a constant voltage during its lifetime?",
+      "ms": {
+        "draft": 4811,
+        "critique": 4988,
+        "solver": 11536,
+        "form": 0,
+        "translation": 36500
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a concentration cell, the standard electrode potential is zero. However, the actual cell potential is non-zero. What explains this phenomenon?",
+      "ms": {
+        "draft": 15008,
+        "critique": 6029,
+        "solver": 1239,
+        "form": 0,
+        "translation": 39089
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is an example of an oxidizing agent based on the standard electrode potentials provided in the text?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is the correct formula to calculate the standard Gibbs free energy change (ΔG°) of a reaction from the cell potential (E°)?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the unit of conductivity (κ) in the SI system?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is the correct definition of conductivity (κ)?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"Which of the following is a conductor?\",\"options\":[\"Glass\",\"Teflon\",\"Silver\",\"Pure wat"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the significance of Faraday's constant (F) in electrochemistry?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of an electrochemical process?",
+      "reason": "the key is far longer than every distractor (40 vs 17 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a galvanic cell, the anode is the electrode where oxidation takes place. Which of the following is the correct representation of a galvanic cell where zinc is the anode and copper is the cathode?",
+      "reason": "options 0 and 1 say the same thing (\"Zn | Zn²+ || Cu²+ | Cu\" / \"Cu | Cu²+ || Zn²+ | Zn\"); options 0 and 2 say the same thing (\"Zn | Zn²+ || Cu²+ | Cu\" / \"Zn²+ | Zn || Cu | Cu²+\"); options 0 and 3 say the same thing (\"Zn | Zn²+ || Cu²+ | Cu\" / \"Cu²+ | Cu || Zn | Zn²+\"); options 1 and 2 say the same thing (\"Cu | Cu²+ || Zn²+ | Zn\" / \"Zn²+ | Zn || Cu | Cu²+\"); options 1 and 3 say the same thing (\"Cu | Cu²+ || Zn²+ | Zn\" / \"Cu²+ | Cu || Zn | Zn²+\"); options 2 and 3 say the same thing (\"Zn²+ | Zn || Cu | Cu²+\" / \"Cu²+ | Cu || Zn | Zn²+\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the order of the ions and electrodes in the c…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the Daniell cell, which electrode undergoes reduction?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "The standard hydrogen electrode (SHE) is used as a reference electrode. What is the standard electrode potential for the SHE?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A galvanic cell is represented as Zn(s) | Zn²+(aq) || Ag⁺(aq) | Ag(s). Which of the following statements is true about this cell?",
+      "reason": "options 0 and 1 say the same thing (\"Zinc is the cathode and silver is the anode\" / \"Zinc is the anode and silver is the cathode\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a galvanic cell, the cell potential is 1.5 V. If the anode is zinc and the cathode is copper, what is the standard electrode potential of the cathode if the anode potential is -0.76 V?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following statements correctly describes the role of standard electrode potentials in electrochemistry?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A galvanic cell is set up with the following reactions: Anode: Zn(s) → Zn²+(aq) + 2e⁻, Cathode: Cu²+(aq) + 2e⁻ → Cu(s). If the cell potential is 1.10 V, what is the standard electrode potential of the cathode if the standard electrode potential of the anode is -0.76 V?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is the correct way to write the Nernst equation for an electrochemical reaction at 298 K?",
+      "reason": "options 0 and 1 say the same thing (\"E = E° - (0.0591/n) log Q\" / \"E = E° + (0.0591/n) log Q\"); options 2 and 3 say the same thing (\"E = E° + (0.0591/n) ln Q\" / \"E = E° - (0.0591/n) ln Q\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The standard electrode potential for the reaction Ag⁺(aq) + e⁻ → Ag(s) is +0.80 V. What does this indicate about the reaction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the unit of molar conductivity?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the unit by using meters instead of centimeters, an…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of the limiting molar conductivity of NaCl if its molar conductivity at a certain concentration is 124 S cm mol⁻¹ and the limiting molar conductivity is 150 S cm mol⁻¹?",
+      "reason": "options 1 and 2 are the same (\"124.5 S cm mol⁻¹\"); option 0 repeats the stem's wording (\"150 S cm mol⁻¹\"); options are written to different precisions (0 and 1 decimals); options 1 and 2 are the same number; distractor 3's reason is not a one-line misconception (\"Adds the molar conductivity at a specific concentration to t…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the correct formula to calculate the amount of electricity (Q) passed through an electrolytic cell?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In an electrolytic cell, the products of electrolysis depend on the oxidising and reducing species present, along with their standard electrode potentials. Which of the following statements best explains why the electrolysis of aqueous NaCl produces NaOH, Cl₂, and H₂ instead of Na and Cl⁻?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the overall reaction in a fuel cell that uses hydrogen and oxygen to produce electricity?",
+      "reason": "options 0 and 1 say the same thing (\"2H₂(g) + O₂(g) → 2H₂O(l)\" / \"2H₂O(l) → 2H₂(g) + O₂(g)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the molar conductivity of a solution if the conductivity is 0.01148 S cm⁻¹ and the concentration is 0.05 mol L⁻¹?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is an example of a strong electrolyte?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the corrosion of iron, which of the following is true about the anodic and cathodic reactions?",
+      "reason": "options 0 and 1 say the same thing (\"Oxidation occurs at the cathode and reduction at the anode\" / \"Oxidation occurs at the anode and reduction at the cathode\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the anode reaction in a fuel cell is 2H2 → 4H+ + 4e-, what is the likely cathode reaction?",
+      "reason": "options 1 and 2 say the same thing (\"O2 + 4H+ + 4e- → 2H2O\" / \"2H2O → O2 + 4H+ + 4e-\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "During the electrolysis of aqueous sodium chloride solution, which reaction is preferred at the cathode?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a fuel cell, hydrogen and oxygen react to form water. What is the main purpose of the catalysts like platinum or palladium in the electrodes?",
+      "reason": "figure: figure spec refused: spec.parts.1.text.negative: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In a lead storage battery, what is the product formed at the cathode during discharge?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main purpose of using an inert electrode in an electrolytic cell?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Believes inert electrodes increase reaction rate due to thei…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a copper electrolysis process, how does the purity of the copper at the cathode compare to the copper at the anode?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks the current affects the purity of copper, but the pas…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A student is given the following information: The standard electrode potential for the reaction Zn²⁺(aq) + 2e⁻ → Zn(s) is -0.76 V, and for the reaction Cu²⁺(aq) + 2e⁻ → Cu(s) is +0.34 V. The student is asked to calculate the cell potential of the cell: Zn(s) | Zn²⁺(aq) || Cu²⁺(aq) | Cu(s). What is the correct cell potential?",
+      "reason": "near-duplicate of batch item \"In a galvanic cell, the cell potential is the diff…\" (cosine 0.900 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a non-spontaneous redox reaction?",
+      "reason": "near-duplicate of served question cmvi82nh30bvvgpfh9ub7964s (cosine 0.916 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "What is the main reason the cell voltage of a mercury cell remains constant during its lifetime?",
+      "reason": "near-duplicate of batch item \"Why does the mercury cell maintain a constant volt…\" (cosine 0.938 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,840 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T13:48:12.283Z",
+  "finishedAt": "2026-10-29T13:58:37.201Z",
+  "seconds": 625,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "gegp1",
+    "document": "ncert/7/mathematics/gegp101.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Large Numbers Around Us",
+    "edition": "Reprint 2026-27",
+    "chunks": 23,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 22 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n9. Draw neat and clean figures wherever required. Take 𝜋 = 22 7 wherever required if not stated.",
+      "[PRMO 2018 — question paper]\n19. Let N = 6 + 66 + 666 + · · · + 666 · · · 66, where there are hundred 6’s in the last term in the\nsum. How many times does the digit 7 occur in the number N?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 266804,
+      "in": 45,
+      "out": 43,
+      "rejects": 2,
+      "promptTokens": 47297,
+      "completionTokens": 10759
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 527508,
+      "in": 43,
+      "out": 33,
+      "rejects": 10,
+      "promptTokens": 26454,
+      "completionTokens": 10271
+    },
+    "solver": {
+      "calls": 239,
+      "ms": 180541,
+      "in": 33,
+      "out": 14,
+      "rejects": 19,
+      "promptTokens": 52375,
+      "completionTokens": 2737
+    },
+    "form": {
+      "calls": 5,
+      "ms": 24752,
+      "in": 14,
+      "out": 9,
+      "rejects": 5,
+      "promptTokens": 1385,
+      "completionTokens": 481
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 35,
+      "ms": 7895,
+      "in": 9,
+      "out": 6,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 278026,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13850,
+      "completionTokens": 6139
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "How many times must the +10 button be pressed to get 10,000?",
+      "ms": {
+        "draft": 5848,
+        "critique": 8935,
+        "solver": 1874
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a person eats 3 varieties of rice every day, how many varieties can they eat in 100 years?",
+      "ms": {
+        "draft": 5848,
+        "critique": 15151
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many floors should Somu's building have to be as high as the Kunchikal waterfall, which is 450 metres high, if each floor is 4 times Somu's height (1 m)?",
+      "ms": {
+        "draft": 5848,
+        "critique": 9957,
+        "solver": 1540
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the 2011 Census, the population of Chintamani was 75,000. How much less than one lakh is this?",
+      "ms": {
+        "draft": 5848,
+        "critique": 9479
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many zeroes does 1 crore have?",
+      "ms": {
+        "draft": 4233,
+        "critique": 7983
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the Indian system of naming numbers also called?",
+      "ms": {
+        "draft": 4233,
+        "critique": 9471
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the correct way to write 1 crore in the Indian system?",
+      "ms": {
+        "draft": 4233,
+        "critique": 9928
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers has 5 zeroes?",
+      "ms": {
+        "draft": 4233,
+        "critique": 10494,
+        "solver": 1910
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the smallest number of button clicks required to make 5072 using the Systematic Sippy calculator?",
+      "ms": {
+        "draft": 4233,
+        "critique": 10276
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the exact value of 14,63,128 – 4,90,020?",
+      "ms": {
+        "draft": 5970,
+        "critique": 9342,
+        "solver": 2625
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the number 9876501234 is written in the Indian system, how is it read?",
+      "ms": {
+        "draft": 4233,
+        "critique": 10485,
+        "solver": 18937
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the exact value of 4,63,128 + 4,19,682?",
+      "ms": {
+        "draft": 5970,
+        "critique": 10509,
+        "solver": 23054
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sum of two numbers is less than 8,50,000, what could be the maximum possible value of the sum?",
+      "ms": {
+        "draft": 5970,
+        "critique": 9640,
+        "solver": 25682,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Roxie says that the product of two 2-digit numbers can only be a 3- or a 4-digit number. Is she correct?",
+      "ms": {
+        "draft": 5970,
+        "critique": 13714,
+        "solver": 20240
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Roxie and Estu are playing with multiplication. They use a technique to multiply a number by 10, 100, 1000, and so on. Which of the following is a correct way to multiply 2 × 1768 × 50?",
+      "ms": {
+        "draft": 5970,
+        "critique": 12223,
+        "solver": 27281
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the distance between the Earth and the Moon is 3,84,400 km, how far would Roxie travel in 10 years if she travels 100 km every day?",
+      "ms": {
+        "draft": 7252,
+        "critique": 9357,
+        "solver": 1952
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct way to write 1 crore in the Indian numbering system?",
+      "ms": {
+        "draft": 5028,
+        "critique": 7853,
+        "solver": 2923,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the total number of button clicks required to type the number 99999 using the method described in the passage?",
+      "ms": {
+        "draft": 8069,
+        "critique": 8076,
+        "solver": 1125
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 250 babies are born every minute across the world, how many babies will be born in a day?",
+      "ms": {
+        "draft": 7252,
+        "critique": 9761,
+        "solver": 18663
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of lakhs in one billion?",
+      "ms": {
+        "draft": 5521,
+        "critique": 9301,
+        "solver": 1905
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a calculator has only '+10,000' and '+100' buttons, how many button clicks are needed to reach 70,25,700?",
+      "ms": {
+        "draft": 5521,
+        "critique": 10071,
+        "solver": 17681
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a grey-headed albatross flies 900 km per day, how many days would it take to cover a 12,000 km trip?",
+      "ms": {
+        "draft": 5521,
+        "critique": 11474,
+        "solver": 18355,
+        "form": 4715
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the smallest number of button clicks needed to form the number 40629?",
+      "ms": {
+        "draft": 4552,
+        "critique": 10822,
+        "solver": 2120
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct number name for 48121620 in the American system?",
+      "ms": {
+        "draft": 4552,
+        "critique": 10343,
+        "solver": 2289
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which city showed the maximum increase in population between 2001 and 2011?",
+      "ms": {
+        "draft": 4552,
+        "critique": 8008,
+        "solver": 1963
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the approximate increase in the population of Pune from 2001 to 2011?",
+      "ms": {
+        "draft": 4552,
+        "critique": 9871,
+        "solver": 2041
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is equal to one lakh?",
+      "ms": {
+        "draft": 8547,
+        "critique": 12056
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a building is 40 m tall and the Kunchikal waterfall is 410 m tall, how many floors would the building need to have to be as tall as the waterfall?",
+      "ms": {
+        "draft": 8547,
+        "critique": 12099
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the population of Chintamani increased from 75,000 to 1,06,000, how many times did it increase?",
+      "ms": {
+        "draft": 8547,
+        "critique": 12173
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the smallest 3-digit number that can be made using 30 button presses?",
+      "ms": {
+        "draft": 8547,
+        "critique": 8773
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the difference between one crore and one lakh?",
+      "ms": {
+        "draft": 8547,
+        "critique": 12956,
+        "solver": 20029
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 1 lakh buses can carry 50 people each, how many people can 1 lakh buses carry?",
+      "ms": {
+        "draft": 7473,
+        "critique": 8867,
+        "solver": 1913,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 250 babies are born every minute, how many babies are born in a day?",
+      "ms": {
+        "draft": 7473,
+        "critique": 7262,
+        "solver": 1514
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 100 kilometers are covered every day, how many kilometers would be covered in 10 years?",
+      "ms": {
+        "draft": 7473,
+        "critique": 7165,
+        "solver": 1169,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the number name of 1,00,000?",
+      "ms": {
+        "draft": 5848,
+        "critique": 9779,
+        "solver": 14159,
+        "form": 4316
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of people that 1 lakh buses can accommodate if each bus can carry 50 people?",
+      "ms": {
+        "draft": 7252,
+        "critique": 10159,
+        "solver": 1950,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person can count 1 coin every second, how many coins can they count in a day?",
+      "ms": {
+        "draft": 5521,
+        "critique": 9808,
+        "solver": 2526,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If each coin is 1 mm thick, how many coins are needed to reach the height of the Statue of Unity, which is 180 m?",
+      "ms": {
+        "draft": 5521,
+        "critique": 10190,
+        "solver": 3092,
+        "form": 5721,
+        "translation": 51476
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the difference between two numbers is greater than 9,50,000, what could be the minimum possible value of the difference?",
+      "ms": {
+        "draft": 5970,
+        "critique": 11455,
+        "solver": 3224,
+        "form": 0,
+        "translation": 43977
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 1000 movies can be watched in a year, how many movies can be watched in 5 years?",
+      "ms": {
+        "draft": 5028,
+        "critique": 9821,
+        "solver": 2008,
+        "form": 0,
+        "translation": 35261
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the population of Patna is multiplied by 7.39, what is the result?",
+      "ms": {
+        "draft": 4552,
+        "critique": 10707,
+        "solver": 2402,
+        "form": 4327,
+        "translation": 49656
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "How many hundreds are needed to make one lakh?",
+      "ms": {
+        "draft": 5848,
+        "critique": 8708,
+        "solver": 2363,
+        "form": 0,
+        "translation": 34659
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a number has 10 digits and uses each digit from 0 to 9 exactly once, what is the smallest possible even number?",
+      "ms": {
+        "draft": 5521,
+        "critique": 11575,
+        "solver": 16017,
+        "form": 5673,
+        "translation": 56130
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "How many times bigger is 1 crore compared to 1 lakh?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many times must the +10 button be pressed to get 10,000?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If a person eats 3 varieties of rice every day, how many varieties can they eat in 100 years?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many floors should Somu's building have to be as high as the Kunchikal waterfall, which is 450 metres high, if each floor is 4 times Somu's height (1 m)?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "According to the 2011 Census, the population of Chintamani was 75,000. How much less than one lakh is this?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "How many zeroes does 1 crore have?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what is the Indian system of naming numbers also called?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is the correct way to write 1 crore in the Indian system?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following numbers has 5 zeroes?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the smallest number of button clicks required to make 5072 using the Systematic Sippy calculator?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the exact value of 14,63,128 – 4,90,020?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the number 9876501234 is written in the Indian system, how is it read?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the exact value of 4,63,128 + 4,19,682?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the sum of two numbers is less than 8,50,000, what could be the maximum possible value of the sum?",
+      "reason": "options 1 and 3 are the same (\"8,50,001\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Roxie says that the product of two 2-digit numbers can only be a 3- or a 4-digit number. Is she correct?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Roxie and Estu are playing with multiplication. They use a technique to multiply a number by 10, 100, 1000, and so on. Which of the following is a correct way to multiply 2 × 1768 × 50?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the distance between the Earth and the Moon is 3,84,400 km, how far would Roxie travel in 10 years if she travels 100 km every day?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the correct way to write 1 crore in the Indian numbering system?",
+      "reason": "options 0 and 2 say the same thing (\"1,00,000\" / \"1,00,00,000\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the total number of button clicks required to type the number 99999 using the method described in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 250 babies are born every minute across the world, how many babies will be born in a day?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "How many zeros does a thousand lakh have?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the total number of lakhs in one billion?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a calculator has only '+10,000' and '+100' buttons, how many button clicks are needed to reach 70,25,700?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a grey-headed albatross flies 900 km per day, how many days would it take to cover a 12,000 km trip?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the smallest number of button clicks needed to form the number 40629?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is the correct number name for 48121620 in the American system?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which city showed the maximum increase in population between 2001 and 2011?",
+      "reason": "the solver picked option 0 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the approximate increase in the population of Pune from 2001 to 2011?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following numbers is equal to one lakh?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a building is 40 m tall and the Kunchikal waterfall is 410 m tall, how many floors would the building need to have to be as tall as the waterfall?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the population of Chintamani increased from 75,000 to 1,06,000, how many times did it increase?",
+      "reason": "the critic finds option 1 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the smallest 3-digit number that can be made using 30 button presses?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the difference between one crore and one lakh?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If 1 lakh buses can carry 50 people each, how many people can 1 lakh buses carry?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"100000*50\" = 5000000, but the key says 500000"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 250 babies are born every minute, how many babies are born in a day?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If 100 kilometers are covered every day, how many kilometers would be covered in 10 years?",
+      "reason": "options 0 and 3 say the same thing (\"3,650,000 km\" / \"3,650,000,000 km\"); ARITHMETIC MISMATCH — checkExpr \"100*365*10\" = 365000, but the key says 36500000"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the number name of 1,00,000?",
+      "reason": "near-duplicate of served question cmvfv5j4k00wtgpfh0fyd7hnr (cosine 0.934 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the total number of people that 1 lakh buses can accommodate if each bus can carry 50 people?",
+      "reason": "near-duplicate of served question cmvqd5vgu0athgp21eo0wlrgd (cosine 0.918 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a person can count 1 coin every second, how many coins can they count in a day?",
+      "reason": "near-duplicate of served question cmvitj3g90ef4gpfhaq4fb4x2 (cosine 0.922 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

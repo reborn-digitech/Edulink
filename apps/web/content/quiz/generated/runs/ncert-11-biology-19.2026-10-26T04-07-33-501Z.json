@@ -1,0 +1,721 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T04:07:33.501Z",
+  "finishedAt": "2026-10-26T04:18:12.423Z",
+  "seconds": 639,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo119.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 19 — Chemical Coordination and Integration",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEB 2017 — question paper]\n43. Four types of chemical messengers (Black Dots) released from the regulator cell\n(R) to the target cell (T) are depicted in I, II, III and IV.\nI II III IV\nR R R Blood stream R\nBlood stream\nAIR\nT T T T\nMatch I, II, III and IV sequentially with i) Steroid Hormone, ii) Pheromones,\niii) Neurohormone iv) Neurotransmitter and choose the correct option.\na) iv, iii, ii, i\nb) iv, iii, i, ii\nc) i, ii, iii, iv\nd) iii, iv, i, ii",
+      "[CBSE Class XII Biology, sample question paper, 2023-24]\nadrenaline into the blood circulation, both of which raise blood pressure and\nincrease heart rate.\n16 Assertion: PCR is a powerful technique to identify genetic disorders. 1\nReason: PCR can detect mutations in low amounts of DNA.\nSection - B\n17 Explain the process of hormonal regulation of spermatogenesis. 2\n18 The diagram below shows the sequence of amino acids in part of a haemoglobin 2\nmolecule.\na) If the base T* was substituted with A, how would it affect the haemoglobin\nchain?\nb) Name the condition and the effects associated with the above substitution.\n19 The graph given below indicates the administration of the first (L) and second dose 2\n(M) of a vaccine. The corresponding response o",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n3. C. FSH and LH",
+      "[INBO 2013 — solutions or answer key]\n5. Small size of ✔\nfragments\n37. (4 points)\nFeatures\nGlycolysis Kreb’s\ncycle\nEvolution of X ✔\nCO 2\nSynthesis of ✔ ✔\nATP\nUtilization of ✔ X\nATP\nUtilization of X X\nO 2\nFormation of ✔ ✔\nNADH\n✔ V\n✔ III\nIV\nProcesses\nOxidative Photosynthesis\nphosphorylation\nX X\n✔ ✔\nX ✔\n✔ X\nX X\nSource of Source of Expected outcome / interpretation\nfibroblasts LDL\nNormal Normal LDL is internalized by receptor-mediated\nindividual individual endocytosis\nNormal Affected\nindividual individual\nAffected Normal\nindividual individual\nAffected Affected\nindividual individual\nPLANT SCIENCES (7 points)\n39. (4 points)\nIII,IV\nI, II\nV\nFeatures Red algae Green algae Mosses Gymnosperms Angiosperms\nApical X X\nmeristem\nAlternation ✔ ✔"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 176948,
+      "in": 39,
+      "out": 35,
+      "rejects": 5,
+      "promptTokens": 37750,
+      "completionTokens": 10937
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 235106,
+      "in": 35,
+      "out": 27,
+      "rejects": 8,
+      "promptTokens": 20551,
+      "completionTokens": 7116
+    },
+    "solver": {
+      "calls": 174,
+      "ms": 69351,
+      "in": 27,
+      "out": 26,
+      "rejects": 1,
+      "promptTokens": 27374,
+      "completionTokens": 1664
+    },
+    "form": {
+      "calls": 13,
+      "ms": 58953,
+      "in": 26,
+      "out": 9,
+      "rejects": 17,
+      "promptTokens": 8731,
+      "completionTokens": 1568
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 61,
+      "ms": 10769,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 374252,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 22445,
+      "completionTokens": 11614
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the pituitary gland?",
+      "ms": {
+        "draft": 12683,
+        "critique": 6290,
+        "solver": 1455
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following correctly matches the hormone with its function?",
+      "ms": {
+        "draft": 12683,
+        "critique": 6492,
+        "solver": 1902,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which hormone is responsible for the regulation of the sleep-wake cycle and body temperature?",
+      "ms": {
+        "draft": 4446,
+        "critique": 6617,
+        "solver": 1029,
+        "form": 3278
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a diagram showing the interaction between the hypothalamus and the pituitary gland. Which of the following correctly explains the role of the hypothalamus in this interaction?",
+      "ms": {
+        "draft": 12683,
+        "critique": 8102,
+        "solver": 2301,
+        "form": 2960
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the context of the passage, which of the following best explains why the adrenal medulla is considered an 'emergency gland'?",
+      "ms": {
+        "draft": 4446,
+        "critique": 5895,
+        "solver": 1623,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a function of the adrenal medulla?",
+      "ms": {
+        "draft": 4446,
+        "critique": 6700,
+        "solver": 14027,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage describes the role of TSH in the regulation of the thyroid gland. What would be the effect of a deficiency in TSH?",
+      "ms": {
+        "draft": 4446,
+        "critique": 6054,
+        "solver": 1238,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following hormones is primarily responsible for increasing blood glucose levels?",
+      "ms": {
+        "draft": 14494,
+        "critique": 7182,
+        "solver": 1597,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The adrenal cortex secretes hormones that are involved in the metabolism of carbohydrates and regulation of electrolytes. Which of the following pairs correctly matches the hormone with its function?",
+      "ms": {
+        "draft": 14494,
+        "critique": 6660,
+        "solver": 1529,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a clinical scenario, a patient exhibits high blood pressure and low potassium levels. Which of the following hormones is most likely to be involved in this condition?",
+      "ms": {
+        "draft": 14494,
+        "critique": 5861
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a person has a defect in the adrenal cortex that leads to a deficiency of both glucocorticoids and mineralocorticoids, which of the following symptoms would most likely be observed?",
+      "ms": {
+        "draft": 14494,
+        "critique": 5491
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a function of the hormone cortisol?",
+      "ms": {
+        "draft": 14494,
+        "critique": 6609,
+        "solver": 9573,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A patient is diagnosed with a condition where the adrenal cortex is not producing enough aldosterone. Which of the following would be the most immediate consequence?",
+      "ms": {
+        "draft": 14494,
+        "critique": 5598
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which hormone is responsible for lowering blood pressure?",
+      "ms": {
+        "draft": 3714,
+        "critique": 3681
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which hormone is responsible for the maintenance of pregnancy?",
+      "ms": {
+        "draft": 2922,
+        "critique": 5647
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a deficiency of insulin, which condition might they develop?",
+      "ms": {
+        "draft": 2922,
+        "critique": 5817
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of insulin?",
+      "ms": {
+        "draft": 2922,
+        "critique": 6190
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a function of progesterone?",
+      "ms": {
+        "draft": 7355,
+        "critique": 5777,
+        "solver": 2174,
+        "form": 3051
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which hormone is involved in the stimulation of erythropoiesis?",
+      "ms": {
+        "draft": 2922,
+        "critique": 6027,
+        "solver": 9743,
+        "form": 3262
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following hormones is involved in regulating the basal metabolic rate?",
+      "ms": {
+        "draft": 7355,
+        "critique": 4720,
+        "solver": 1171,
+        "form": 3421
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following hormones is secreted by the gastrointestinal tract and stimulates the secretion of pancreatic enzymes?",
+      "ms": {
+        "draft": 7355,
+        "critique": 5883
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following hormones is secreted by the adrenal medulla?",
+      "ms": {
+        "draft": 7355,
+        "critique": 6301,
+        "solver": 10753,
+        "form": 3278
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which hormone is responsible for the regulation of the 24-hour rhythm of the body?",
+      "ms": {
+        "draft": 4019,
+        "critique": 5887,
+        "solver": 1406,
+        "form": 2504
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following conditions would the secretion of growth hormone be reduced?",
+      "ms": {
+        "draft": 2989,
+        "critique": 6441,
+        "solver": 1482,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a function of the hormone prolactin?",
+      "ms": {
+        "draft": 2989,
+        "critique": 6443,
+        "solver": 10871,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following hormones is secreted by the hypothalamus and regulates the release of gonadotrophins from the pituitary?",
+      "ms": {
+        "draft": 2989,
+        "critique": 5307,
+        "solver": 4585,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a function of progesterone?",
+      "ms": {
+        "draft": 3011,
+        "critique": 5131,
+        "solver": 914,
+        "form": 0,
+        "translation": 36080
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the posterior pituitary?",
+      "ms": {
+        "draft": 12683,
+        "critique": 5952,
+        "solver": 1106,
+        "form": 0,
+        "translation": 51503
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person is diagnosed with acromegaly. What is the most likely cause of this condition?",
+      "ms": {
+        "draft": 12683,
+        "critique": 5581,
+        "solver": 1406,
+        "form": 0,
+        "translation": 45774
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a deficiency in iodine, what would be the most likely effect on their thyroid gland?",
+      "ms": {
+        "draft": 4446,
+        "critique": 6021,
+        "solver": 1652,
+        "form": 3126,
+        "translation": 45478
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following hormones is secreted by the heart?",
+      "ms": {
+        "draft": 3011,
+        "critique": 4880,
+        "solver": 1585,
+        "form": 0,
+        "translation": 24341
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following hormones is secreted by the adrenal gland?",
+      "ms": {
+        "draft": 2922,
+        "critique": 5719,
+        "solver": 1018,
+        "form": 3585,
+        "translation": 27685
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person is diagnosed with a condition where the blood calcium level is abnormally high. Which hormone is most likely to be overactive?",
+      "ms": {
+        "draft": 4446,
+        "critique": 6327,
+        "solver": 1067,
+        "form": 1844,
+        "translation": 41581
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a person has a condition where the hypothalamus is unable to produce gonadotrophin-releasing hormone (GnRH), what would be the most likely effect on the endocrine system?",
+      "ms": {
+        "draft": 12683,
+        "critique": 6803,
+        "solver": 1728,
+        "form": 0,
+        "translation": 62227
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is true about hormones that interact with intracellular receptors?",
+      "ms": {
+        "draft": 3011,
+        "critique": 5160,
+        "solver": 877,
+        "form": 0,
+        "translation": 35630
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a function of the pituitary gland?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following correctly matches the hormone with its function?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which hormone is responsible for the regulation of the sleep-wake cycle and body temperature?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'brain'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a diagram showing the interaction between the hypothalamus and the pituitary gland. Which of the following correctly explains the role of the hypothalamus in this interaction?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'diagram'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the context of the passage, which of the following best explains why the adrenal medulla is considered an 'emergency gland'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a function of the adrenal medulla?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage describes the role of TSH in the regulation of the thyroid gland. What would be the effect of a deficiency in TSH?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following hormones is primarily responsible for increasing blood glucose levels?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the role of cortisol in glucose regulation an…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The adrenal cortex secretes hormones that are involved in the metabolism of carbohydrates and regulation of electrolytes. Which of the following pairs correctly matches the hormone with its function?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses the function of glucagon with that of aldosterone, …\"); distractor 1's reason is not a one-line misconception (\"Confuses the role of aldosterone with that of cortisol, whic…\"); distractor 2's reason is not a one-line misconception (\"Confuses the role of cortisol with that of aldosterone, whic…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a clinical scenario, a patient exhibits high blood pressure and low potassium levels. Which of the following hormones is most likely to be involved in this condition?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a person has a defect in the adrenal cortex that leads to a deficiency of both glucocorticoids and mineralocorticoids, which of the following symptoms would most likely be observed?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is NOT a function of the hormone cortisol?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Confuses cortisol's role with that of aldosterone, which mai…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the role of cortisol in the body and thinks i…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A patient is diagnosed with a condition where the adrenal cortex is not producing enough aldosterone. Which of the following would be the most immediate consequence?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which hormone is responsible for lowering blood pressure?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of a hyperglycemic hormone?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"Which hormone is responsible for maintaining the cardiovascular system and kidney func"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the role of parathyroid hormone (PTH) in the body?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which hormone is responsible for the development of T-lymphocytes?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the primary function of vasopressin?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which hormone is responsible for the maintenance of pregnancy?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person has a deficiency of insulin, which condition might they develop?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a function of insulin?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a function of progesterone?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Confuses progesterone with erythropoietin, which stimulates …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which hormone is involved in the stimulation of erythropoiesis?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following hormones is involved in regulating the basal metabolic rate?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly associated with metabolic rate, but epinephrine …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following hormones is secreted by the gastrointestinal tract and stimulates the secretion of pancreatic enzymes?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following hormones is secreted by the adrenal medulla?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which hormone is responsible for the regulation of the 24-hour rhythm of the body?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'brain'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In which of the following conditions would the secretion of growth hormone be reduced?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a function of the hormone prolactin?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following hormones is secreted by the hypothalamus and regulates the release of gonadotrophins from the pituitary?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

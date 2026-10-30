@@ -1,0 +1,539 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T16:11:01.594Z",
+  "finishedAt": "2026-10-27T16:15:44.945Z",
+  "seconds": 283,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu101.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 1 — Exploring the Investigative World of Science",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n8. A. Both A and R are true, and R is the correct explanation of A. 1",
+      "[CBSE Class X Science, sample question paper, 2024-25]\nSCIENCE SQP (2024-25)\nCLASS X\n(Science 086)\nMax. Marks: 80 Time Allowed: 3 hours\nGeneral Instructions:",
+      "[CBSE Class X Science, marking scheme, 2024-25]\nMARKING SCHEME\n2024 -25\nClass X Science (086)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 118787,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 15876,
+      "completionTokens": 4898
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 214636,
+      "in": 24,
+      "out": 20,
+      "rejects": 4,
+      "promptTokens": 11484,
+      "completionTokens": 4508
+    },
+    "solver": {
+      "calls": 123,
+      "ms": 82429,
+      "in": 20,
+      "out": 17,
+      "rejects": 3,
+      "promptTokens": 20378,
+      "completionTokens": 1209
+    },
+    "form": {
+      "calls": 2,
+      "ms": 8999,
+      "in": 17,
+      "out": 1,
+      "rejects": 16,
+      "promptTokens": 498,
+      "completionTokens": 134
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 91,
+      "ms": 19083,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 36633,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2863,
+      "completionTokens": 1758
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of investigation in science according to the passage?",
+      "ms": {
+        "draft": 5355,
+        "critique": 6356,
+        "solver": 1624,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to understand why a ball thrown up in the air falls back to the ground, which concept from the passage should they investigate?",
+      "ms": {
+        "draft": 5355,
+        "critique": 7054,
+        "solver": 3387,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about the role of curiosity in science?",
+      "ms": {
+        "draft": 5355,
+        "critique": 10325,
+        "solver": 2067,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is trying to understand why the Moon appears in different shapes each night. Which concept from the passage would best help them explain this phenomenon?",
+      "ms": {
+        "draft": 5355,
+        "critique": 8927,
+        "solver": 2550,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, how do scientists balance observation and creativity in their work?",
+      "ms": {
+        "draft": 5355,
+        "critique": 8428,
+        "solver": 2334,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the relationship between living organisms and their environment according to the passage?",
+      "ms": {
+        "draft": 5485,
+        "critique": 9759
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to investigate the effect of oil temperature on how a puri puffs up, what should they do according to the passage?",
+      "ms": {
+        "draft": 5485,
+        "critique": 7849,
+        "solver": 1819,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main idea behind the scientific method?",
+      "ms": {
+        "draft": 5485,
+        "critique": 7786,
+        "solver": 2357,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student observes that a puri puffs up and becomes thin on one side, what would be the best scientific approach to understand this phenomenon?",
+      "ms": {
+        "draft": 5485,
+        "critique": 9501
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage mention that even scientists do not fully understand why a puri puffs up?",
+      "ms": {
+        "draft": 5485,
+        "critique": 8534
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a factor that affects the puffing of a puri?",
+      "ms": {
+        "draft": 5485,
+        "critique": 5948
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 4825,
+        "critique": 7620,
+        "solver": 2531,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should be done while conducting an experiment to ensure accurate results?",
+      "ms": {
+        "draft": 4825,
+        "critique": 7235,
+        "solver": 1848,
+        "form": 6256
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student wants to test the effect of oil temperature on how a puri puffs up, which condition should be kept the same?",
+      "ms": {
+        "draft": 4825,
+        "critique": 11253,
+        "solver": 2296
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the nature of scientific knowledge?",
+      "ms": {
+        "draft": 4825,
+        "critique": 7601,
+        "solver": 2133,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the example of a puri puffing up when fried?",
+      "ms": {
+        "draft": 4825,
+        "critique": 8698,
+        "solver": 19860
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main role of a scientist?",
+      "ms": {
+        "draft": 4825,
+        "critique": 8791,
+        "solver": 1971,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say is the main goal of the chapter?",
+      "ms": {
+        "draft": 4133,
+        "critique": 8252,
+        "solver": 2576,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an investigative question mentioned in the passage?",
+      "ms": {
+        "draft": 4133,
+        "critique": 8697,
+        "solver": 2385
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, which of the following is a way to improve understanding in science?",
+      "ms": {
+        "draft": 4133,
+        "critique": 9369,
+        "solver": 2189,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student is asked to design an experiment to test the effect of light on plant growth, which of the following would be the most appropriate step according to the passage?",
+      "ms": {
+        "draft": 4133,
+        "critique": 8984,
+        "solver": 1883,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between observation and creative thinking in science?",
+      "ms": {
+        "draft": 4133,
+        "critique": 7929,
+        "solver": 19477,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student observes that a ball thrown up in the air falls back to the ground, what might the passage suggest is the next step in the investigative process?",
+      "ms": {
+        "draft": 4133,
+        "critique": 8969,
+        "solver": 12482,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of the questions given at the start of each chapter in the book?",
+      "ms": {
+        "draft": 5355,
+        "critique": 6579,
+        "solver": 2390,
+        "form": 5549,
+        "translation": 30445
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the role of investigation in science according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student wants to understand why a ball thrown up in the air falls back to the ground, which concept from the passage should they investigate?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about the role of curiosity in science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is trying to understand why the Moon appears in different shapes each night. Which concept from the passage would best help them explain this phenomenon?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, how do scientists balance observation and creativity in their work?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the relationship between living organisms and their environment according to the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student wants to investigate the effect of oil temperature on how a puri puffs up, what should they do according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the main idea behind the scientific method?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a student observes that a puri puffs up and becomes thin on one side, what would be the best scientific approach to understand this phenomenon?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why does the passage mention that even scientists do not fully understand why a puri puffs up?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a factor that affects the puffing of a puri?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Focuses on a detail mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What should be done while conducting an experiment to ensure accurate results?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Contradicts the passage's advice on controlled experiments…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a student wants to test the effect of oil temperature on how a puri puffs up, which condition should be kept the same?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the nature of scientific knowledge?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Contradicts the passage's acknowledgment of scientific uncer…\"); distractor 1's reason is not a one-line misconception (\"Only mentions part of the passage's message…\"); distractor 2's reason is not a one-line misconception (\"Misrepresents the passage's view of science…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the significance of the example of a puri puffing up when fried?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main role of a scientist?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Focuses on a detail mentioned in the passage…\"); distractor 2's reason is not a one-line misconception (\"Contradicts the passage's description of scientific work…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage say is the main goal of the chapter?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's intent as being about interest…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of an investigative question mentioned in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, which of the following is a way to improve understanding in science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Is the opposite of what the passage suggests…\"); distractor 1's reason is not a one-line misconception (\"Is not mentioned in the passage as a method of understanding…\"); distractor 3's reason is not a one-line misconception (\"Is not a valid approach to science as described in the passa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student is asked to design an experiment to test the effect of light on plant growth, which of the following would be the most appropriate step according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"Use only one plant and expose it to light\" / \"Use one plant and expose it to light for only one hour\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between observation and creative thinking in science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student observes that a ball thrown up in the air falls back to the ground, what might the passage suggest is the next step in the investigative process?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

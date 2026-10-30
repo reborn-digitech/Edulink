@@ -1,0 +1,620 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:01:37.044Z",
+  "finishedAt": "2026-10-28T04:07:01.754Z",
+  "seconds": 325,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm113.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — The Transport Museum",
+    "edition": "Reprint 2026-27",
+    "chunks": 10,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n11. Use of calculators is not allowed.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\nSection E consists of 3 case study based questions of 4 marks each."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 118098,
+      "in": 31,
+      "out": 31,
+      "rejects": 0,
+      "promptTokens": 25483,
+      "completionTokens": 7278
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 254472,
+      "in": 31,
+      "out": 26,
+      "rejects": 5,
+      "promptTokens": 19034,
+      "completionTokens": 7495
+    },
+    "solver": {
+      "calls": 196,
+      "ms": 99459,
+      "in": 26,
+      "out": 15,
+      "rejects": 11,
+      "promptTokens": 42362,
+      "completionTokens": 2286
+    },
+    "form": {
+      "calls": 8,
+      "ms": 27048,
+      "in": 15,
+      "out": 13,
+      "rejects": 2,
+      "promptTokens": 2129,
+      "completionTokens": 719
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 29,
+      "ms": 5300,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 194850,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15965,
+      "completionTokens": 6284
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is 15 × 100?",
+      "ms": {
+        "draft": 4913,
+        "critique": 5579
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, it is mentioned that 64 × 152 = 9728. How many people were carried in the first week of the Vande Bharat Mission?",
+      "ms": {
+        "draft": 4913,
+        "critique": 7662,
+        "solver": 1557,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 15 × 100 = 1500, then what is 15 × 200?",
+      "ms": {
+        "draft": 4913,
+        "critique": 5971,
+        "solver": 12320
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which child will not receive any change from the cashier?",
+      "ms": {
+        "draft": 4438,
+        "critique": 6972
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the ticket cost is 100 rupees, which child will have the least number of coins to pay exactly?",
+      "ms": {
+        "draft": 4438,
+        "critique": 6396
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, it is said that 11 × 200 = 2200. Using this pattern, what is 22 × 200?",
+      "ms": {
+        "draft": 4913,
+        "critique": 7876,
+        "solver": 15288
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If each cycle carries 1 person, each auto carries 3 people, and each car carries 5 people, how many people can travel in 75 cycles and 52 autos combined?",
+      "ms": {
+        "draft": 4438,
+        "critique": 6311,
+        "solver": 1056
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the ticket price is 200 rupees, and Chinnu has 10 coins of 10 rupees each, how much change will she receive?",
+      "ms": {
+        "draft": 4438,
+        "critique": 6635
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the ticket price is 100 rupees, and Bujji has 10 notes of 10 rupees each, while Chinnu has 20 coins of 5 rupees each, who will have more money?",
+      "ms": {
+        "draft": 4438,
+        "critique": 3152
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which child has all coins of 50 paise?",
+      "ms": {
+        "draft": 2926,
+        "critique": 5775,
+        "solver": 719
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which child will not receive any change from the cashier?",
+      "ms": {
+        "draft": 2926,
+        "critique": 6207,
+        "solver": 2049
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the ticket cost is 100 rupees, which child has the exact amount?",
+      "ms": {
+        "draft": 2926,
+        "critique": 5866,
+        "solver": 1309
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a pattern in the multiplication problems shown in the passage?",
+      "ms": {
+        "draft": 2926,
+        "critique": 8363,
+        "solver": 1294
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many people can travel in 15 train sleeper coaches if each coach carries 40 people?",
+      "ms": {
+        "draft": 2926,
+        "critique": 5804,
+        "solver": 15344
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the ticket cost is 125 rupees, and Chinnu has 25 coins of 5 rupees, will he receive any change?",
+      "ms": {
+        "draft": 2926,
+        "critique": 7269,
+        "solver": 17789
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 14 children can be seated in one coach, how many coaches are needed for 324 children?",
+      "ms": {
+        "draft": 3159,
+        "critique": 6416,
+        "solver": 1499
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 100 is multiplied by 45, what is the result?",
+      "ms": {
+        "draft": 4275,
+        "critique": 7072,
+        "solver": 15736,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A toy train has 15 coaches, and each coach can seat 14 children. How many children can be seated in the train?",
+      "ms": {
+        "draft": 3159,
+        "critique": 6368,
+        "solver": 7998
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 15 × 10?",
+      "ms": {
+        "draft": 3190,
+        "critique": 4311,
+        "solver": 1180,
+        "form": 3518
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 10 × 10?",
+      "ms": {
+        "draft": 3190,
+        "critique": 4019,
+        "solver": 1059,
+        "form": 4680
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 12 × 20 = 240, what is 12 × 40?",
+      "ms": {
+        "draft": 3190,
+        "critique": 5703,
+        "solver": 1508,
+        "form": 2779
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 15 × 100 = 1500 and 15 × 200 = 3000, what is 15 × 500?",
+      "ms": {
+        "draft": 4913,
+        "critique": 5805,
+        "solver": 11990,
+        "form": 4819
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a bus can seat 20 people, how many people can be seated in 12 buses?",
+      "ms": {
+        "draft": 3159,
+        "critique": 6031,
+        "solver": 1424,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 20 × 10?",
+      "ms": {
+        "draft": 3190,
+        "critique": 4339,
+        "solver": 1883,
+        "form": 3164,
+        "translation": 22865
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the pattern in the times-15 table?",
+      "ms": {
+        "draft": 3190,
+        "critique": 4659,
+        "solver": 1462,
+        "form": 3247,
+        "translation": 31778
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How does the times-15 table compare to the times-5 table?",
+      "ms": {
+        "draft": 3190,
+        "critique": 5153,
+        "solver": 1401,
+        "form": 3591,
+        "translation": 35700
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is equal to 20 × 100?",
+      "ms": {
+        "draft": 4913,
+        "critique": 7303,
+        "solver": 10467,
+        "form": 3968,
+        "translation": 25866
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is 15 × 10 in tens?",
+      "ms": {
+        "draft": 3159,
+        "critique": 5171,
+        "solver": 1574,
+        "form": 0,
+        "translation": 15469
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 100 is multiplied by 15, what is the result?",
+      "ms": {
+        "draft": 4275,
+        "critique": 5646,
+        "solver": 1330,
+        "form": 0,
+        "translation": 20704
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 100 is multiplied by 25, what is the result?",
+      "ms": {
+        "draft": 4275,
+        "critique": 8110,
+        "solver": 14704,
+        "form": 0,
+        "translation": 20807
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 100 is multiplied by 32, what is the result?",
+      "ms": {
+        "draft": 4275,
+        "critique": 9968,
+        "solver": 13894,
+        "form": 0,
+        "translation": 17732
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is 15 × 100?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, it is mentioned that 64 × 152 = 9728. How many people were carried in the first week of the Vande Bharat Mission?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 15 × 100 = 1500, then what is 15 × 200?",
+      "reason": "after redrafting distractor 2: option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which child will not receive any change from the cashier?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the ticket cost is 100 rupees, which child will have the least number of coins to pay exactly?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the passage, it is said that 11 × 200 = 2200. Using this pattern, what is 22 × 200?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If each cycle carries 1 person, each auto carries 3 people, and each car carries 5 people, how many people can travel in 75 cycles and 52 autos combined?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the ticket price is 200 rupees, and Chinnu has 10 coins of 10 rupees each, how much change will she receive?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the ticket price is 100 rupees, and Bujji has 10 notes of 10 rupees each, while Chinnu has 20 coins of 5 rupees each, who will have more money?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which child has all coins of 50 paise?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which child will not receive any change from the cashier?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the ticket cost is 100 rupees, which child has the exact amount?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a pattern in the multiplication problems shown in the passage?",
+      "reason": "the solver picked option 0 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many people can travel in 15 train sleeper coaches if each coach carries 40 people?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the ticket cost is 125 rupees, and Chinnu has 25 coins of 5 rupees, will he receive any change?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 14 children can be seated in one coach, how many coaches are needed for 324 children?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If 100 is multiplied by 45, what is the result?",
+      "reason": "options 0 and 3 are the same (\"4500\"); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A toy train has 15 coaches, and each coach can seat 14 children. How many children can be seated in the train?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is 15 × 10?",
+      "reason": "near-duplicate of served question cmvh2eyuk06chgpfhryw9pyqi (cosine 0.918 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is 10 × 10?",
+      "reason": "near-duplicate of served question cmvo495q4057ngp21k4o0a7hd (cosine 0.950 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If 12 × 20 = 240, what is 12 × 40?",
+      "reason": "near-duplicate of served question cmvo495ql058tgp21mt5pns18 (cosine 0.973 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If 15 × 100 = 1500 and 15 × 200 = 3000, what is 15 × 500?",
+      "reason": "near-duplicate of served question cmvh2eyun06ctgpfhrwmd33r6 (cosine 0.934 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If a bus can seat 20 people, how many people can be seated in 12 buses?",
+      "reason": "near-duplicate of served question cmvo495qg058bgp216yszfyq9 (cosine 0.923 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

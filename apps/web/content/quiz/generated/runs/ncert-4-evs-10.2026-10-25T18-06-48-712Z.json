@@ -1,0 +1,379 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T18:06:48.712Z",
+  "finishedAt": "2026-10-25T18:08:58.231Z",
+  "seconds": 130,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap110.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 10 — Hu Tu Tu, Hu Tu Tu",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 57705,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 13660,
+      "completionTokens": 3054
+    },
+    "critique": {
+      "calls": 16,
+      "ms": 117881,
+      "in": 16,
+      "out": 7,
+      "rejects": 9,
+      "promptTokens": 6411,
+      "completionTokens": 2816
+    },
+    "solver": {
+      "calls": 35,
+      "ms": 14718,
+      "in": 7,
+      "out": 3,
+      "rejects": 4,
+      "promptTokens": 4070,
+      "completionTokens": 280
+    },
+    "form": {
+      "calls": 1,
+      "ms": 2482,
+      "in": 3,
+      "out": 1,
+      "rejects": 2,
+      "promptTokens": 235,
+      "completionTokens": 66
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 3707,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 20708,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2240,
+      "completionTokens": 1277
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a team in Kabaddi has 7 players and 3 get 'out', how many players are left on the team?",
+      "ms": {
+        "draft": 3582,
+        "critique": 6392
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when a player touches the line in Kabaddi according to the passage?",
+      "ms": {
+        "draft": 3582,
+        "critique": 7711
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What game is described in the passage where players shout 'out' and try to touch a line?",
+      "ms": {
+        "draft": 3582,
+        "critique": 7968
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What game did Heera become a coach for?",
+      "ms": {
+        "draft": 3457,
+        "critique": 7277
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the game of Kabaddi, what does the passage say is required to be successful?",
+      "ms": {
+        "draft": 3582,
+        "critique": 7572,
+        "solver": 1422,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Leela and Heera get scolded in the cinema hall?",
+      "ms": {
+        "draft": 3457,
+        "critique": 8178,
+        "solver": 1958
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What would happen if in cricket, a rule changed so that the whole team is out if all the three stumps fall?",
+      "ms": {
+        "draft": 3457,
+        "critique": 6835
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should be done if 15 children want to play Kho-Kho and one is left out?",
+      "ms": {
+        "draft": 3457,
+        "critique": 7294
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happened when Leela and Heera were watching a movie?",
+      "ms": {
+        "draft": 3474,
+        "critique": 7389
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Leela and Heera have strong will for?",
+      "ms": {
+        "draft": 3474,
+        "critique": 7855
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if in cricket, the entire team is 'out' if all three stumps fall?",
+      "ms": {
+        "draft": 3474,
+        "critique": 8667
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What game are the girls playing in the passage?",
+      "ms": {
+        "draft": 3914,
+        "critique": 7397,
+        "solver": 1269
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 15 children want to play Kho-Kho, how can they form two equal teams?",
+      "ms": {
+        "draft": 3474,
+        "critique": 9335,
+        "solver": 2120
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the girls argue after Shyamala touched the line?",
+      "ms": {
+        "draft": 3914,
+        "critique": 6727,
+        "solver": 942
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the rules in games?",
+      "ms": {
+        "draft": 3914,
+        "critique": 5393,
+        "solver": 874,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens when a player touches the line in Kabaddi?",
+      "ms": {
+        "draft": 3914,
+        "critique": 6890,
+        "solver": 2092,
+        "form": 3330,
+        "translation": 15748
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a team in Kabaddi has 7 players and 3 get 'out', how many players are left on the team?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens when a player touches the line in Kabaddi according to the passage?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What game is described in the passage where players shout 'out' and try to touch a line?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What game did Heera become a coach for?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the game of Kabaddi, what does the passage say is required to be successful?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"remembers a specific part of the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did Leela and Heera get scolded in the cinema hall?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What would happen if in cricket, a rule changed so that the whole team is out if all the three stumps fall?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What should be done if 15 children want to play Kho-Kho and one is left out?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happened when Leela and Heera were watching a movie?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did Leela and Heera have strong will for?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What would happen if in cricket, the entire team is 'out' if all three stumps fall?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What game are the girls playing in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If 15 children want to play Kho-Kho, how can they form two equal teams?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did the girls argue after Shyamala touched the line?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the rules in games?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Refers to a concept not mentioned in the passage…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

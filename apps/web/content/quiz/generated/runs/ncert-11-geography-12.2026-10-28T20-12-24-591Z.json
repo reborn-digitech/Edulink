@@ -1,0 +1,651 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T20:12:24.591Z",
+  "finishedAt": "2026-10-28T20:20:27.507Z",
+  "seconds": 483,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy212.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 12 — Water (oceans)",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2025-26]\n29. 5\nA Hamburg\nB Capetown\nC Panama Canal\nD Amazon Basin\nE Santiago\nF Vladivostok\nG Downs\nFor Visually impaired students.\nA Hamburg/London/North Cape\nB Capetown\nC Rhine waterway\nD Amazon Basin\nE Santiago/ Buenos Airies\nF Vladivostok/ St. Petersburg\nG Downs",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n6. c. It is situated at the head of Gulf of Kachchh",
+      "[CBSE Class XII Geography, sample question paper, 2024-25]\n21. Study the map of Suez Canal and answer the following questions: 1+1+1\n=3\n(I) Name the two seas connected by the Suez Canal.\n(II) Why do we consider this as Europe’s gateway to the Indian Ocean?\n(III) Write one characteristic of the Suez Canal.\n21.1 The following questions are for Visually Impaired Candidates only in lieu of 1+1+1=\nQ.21 3\n(I) Name the two oceans connected by the Panama Canal.\n(II) Write one unique feature of the Panama Canal.\n(III) Why is this canal vital for the economies of Latin America?\n7 Geography SQP Class-XII 2024-25",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 131168,
+      "in": 33,
+      "out": 33,
+      "rejects": 0,
+      "promptTokens": 25796,
+      "completionTokens": 7296
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 275611,
+      "in": 33,
+      "out": 31,
+      "rejects": 2,
+      "promptTokens": 18157,
+      "completionTokens": 7111
+    },
+    "solver": {
+      "calls": 206,
+      "ms": 97391,
+      "in": 31,
+      "out": 24,
+      "rejects": 7,
+      "promptTokens": 36992,
+      "completionTokens": 2177
+    },
+    "form": {
+      "calls": 21,
+      "ms": 103014,
+      "in": 24,
+      "out": 13,
+      "rejects": 11,
+      "promptTokens": 12537,
+      "completionTokens": 2916
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 4607,
+      "in": 13,
+      "out": 11,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 507361,
+      "in": 22,
+      "out": 22,
+      "rejects": 2,
+      "promptTokens": 28470,
+      "completionTokens": 14394
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 4,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a major division of the ocean floor according to the passage?",
+      "ms": {
+        "draft": 3116,
+        "critique": 6772
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country has a very narrow continental shelf, what might be the reason according to the passage?",
+      "ms": {
+        "draft": 3116,
+        "critique": 7022,
+        "solver": 1142
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a country has a very large continental shelf, which of the following is most likely to be true according to the passage?",
+      "ms": {
+        "draft": 3116,
+        "critique": 7551,
+        "solver": 2364
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason for the water crisis on Earth?",
+      "ms": {
+        "draft": 3116,
+        "critique": 7219,
+        "solver": 13687,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of the ocean floor that is formed by volcanic activity?",
+      "ms": {
+        "draft": 3565,
+        "critique": 8573,
+        "solver": 1988
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the oceans are important for the formation of fossil fuels?",
+      "ms": {
+        "draft": 3116,
+        "critique": 7620,
+        "solver": 14786
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following factors most significantly affects the distribution of ocean temperature?",
+      "ms": {
+        "draft": 3565,
+        "critique": 6156,
+        "solver": 1301,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the thermocline?",
+      "ms": {
+        "draft": 3565,
+        "critique": 7190,
+        "solver": 14853,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a factor that influences the salinity of ocean water?",
+      "ms": {
+        "draft": 3508,
+        "critique": 6701,
+        "solver": 1240,
+        "form": 4155
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage and the figure, which of the following latitudes has the highest salinity?",
+      "ms": {
+        "draft": 3508,
+        "critique": 5897
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that salinity varies with depth. If a deep-sea diver experiences a sudden increase in salinity, what could this indicate about the water layer they are entering?",
+      "ms": {
+        "draft": 3508,
+        "critique": 5598,
+        "solver": 832,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A researcher observes that the salinity in a certain ocean region is decreasing. What could be a possible reason for this observation?",
+      "ms": {
+        "draft": 3508,
+        "critique": 5966,
+        "solver": 6744
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following statements about salinity is correct?",
+      "ms": {
+        "draft": 2998,
+        "critique": 4959,
+        "solver": 1324,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is asked to explain why the North Sea has higher salinity than expected for its latitude. Which of the following is the most accurate explanation based on the passage?",
+      "ms": {
+        "draft": 2998,
+        "critique": 6983,
+        "solver": 1670,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a factor influencing the salinity of ocean water?",
+      "ms": {
+        "draft": 2998,
+        "critique": 6599,
+        "solver": 15183
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the temperature decrease with depth in the ocean?",
+      "ms": {
+        "draft": 3539,
+        "critique": 7000,
+        "solver": 1123
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the figure, which process is shown as the transformation of water from liquid to gas?",
+      "ms": {
+        "draft": 8588,
+        "critique": 6462,
+        "solver": 1746,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is described as the circulation of water within the earth's hydrosphere in different forms?",
+      "ms": {
+        "draft": 8588,
+        "critique": 7296,
+        "solver": 12606,
+        "form": 3889
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the role of continental shelves in the water cycle?",
+      "ms": {
+        "draft": 8588,
+        "critique": 7822,
+        "solver": 16549,
+        "form": 2458
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the hydrological cycle considered a cyclic resource?",
+      "ms": {
+        "draft": 8588,
+        "critique": 8187,
+        "solver": 9782,
+        "form": 1545
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the cycle that describes the movement of water on, in, and above the Earth?",
+      "ms": {
+        "draft": 3116,
+        "critique": 7268,
+        "solver": 1898,
+        "form": 1944
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a warm ocean current is flowing along the eastern coast of North America, which of the following is likely to be the effect on the temperature of the region?",
+      "ms": {
+        "draft": 3565,
+        "critique": 6938,
+        "solver": 1639,
+        "form": 2515
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which feature of the ocean floor is described as a mountain with pointed summits rising off into a steep slope?",
+      "ms": {
+        "draft": 3539,
+        "critique": 6087,
+        "solver": 1738,
+        "form": 3073,
+        "translation": 67253
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the temperature of the ocean to decrease with increasing depth?",
+      "ms": {
+        "draft": 3565,
+        "critique": 7194,
+        "solver": 1401,
+        "form": 2301,
+        "translation": 38071
+      },
+      "outcome": "kept",
+      "flag": "level 2 but the solver missed it 2 of 5 times"
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the variation in the average annual temperature between the northern and southern hemispheres?",
+      "ms": {
+        "draft": 3508,
+        "critique": 5749,
+        "solver": 1942,
+        "form": 3517,
+        "translation": 44467
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a minor relief feature in the oceans?",
+      "ms": {
+        "draft": 2998,
+        "critique": 6611,
+        "solver": 1371,
+        "form": 2943,
+        "translation": 33530
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a submarine is moving from the continental shelf to the deep sea plain, through which region would it pass first?",
+      "ms": {
+        "draft": 3565,
+        "critique": 7336,
+        "solver": 1454,
+        "form": 5592,
+        "translation": 49556
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a seamount that is an extension of the Hawaiian Islands?",
+      "ms": {
+        "draft": 3539,
+        "critique": 7204,
+        "solver": 1375,
+        "form": 2785,
+        "translation": 39713
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the salinity of the ocean at a certain location increases, what is likely to happen to the density of the water?",
+      "ms": {
+        "draft": 3508,
+        "critique": 6709,
+        "solver": 1469,
+        "form": 2530,
+        "translation": 63787
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following regions would have the lowest salinity due to the influx of river water?",
+      "ms": {
+        "draft": 2998,
+        "critique": 5575,
+        "solver": 1756,
+        "form": 3027,
+        "translation": 34233
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following regions would you expect the temperature to decrease the slowest with depth?",
+      "ms": {
+        "draft": 3539,
+        "critique": 6461,
+        "solver": 1836,
+        "form": 2991,
+        "translation": 50690
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a map showing the surface salinity of the world's oceans. Which of the following areas would they most likely find the highest salinity?",
+      "ms": {
+        "draft": 2998,
+        "critique": 8602,
+        "solver": 1760,
+        "form": 3419,
+        "translation": 49449
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are enclosed seas in the low latitudes recorded to have higher temperatures than open seas?",
+      "ms": {
+        "draft": 3539,
+        "critique": 6964,
+        "solver": 1423,
+        "form": 2621,
+        "translation": 32193
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a major division of the ocean floor according to the passage?",
+      "reason": "option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a country has a very narrow continental shelf, what might be the reason according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a country has a very large continental shelf, which of the following is most likely to be true according to the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason for the water crisis on Earth?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Chooses a factor mentioned in the passage but incorrectly re…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a feature of the ocean floor that is formed by volcanic activity?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the oceans are important for the formation of fossil fuels?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 0 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following factors most significantly affects the distribution of ocean temperature?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the thermocline?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a factor that influences the salinity of ocean water?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage and the figure, which of the following latitudes has the highest salinity?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that salinity varies with depth. If a deep-sea diver experiences a sudden increase in salinity, what could this indicate about the water layer they are entering?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A researcher observes that the salinity in a certain ocean region is decreasing. What could be a possible reason for this observation?",
+      "reason": "after redraft: the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following statements about salinity is correct?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student is asked to explain why the North Sea has higher salinity than expected for its latitude. Which of the following is the most accurate explanation based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a factor influencing the salinity of ocean water?",
+      "reason": "after redraft: the solver picked option 0 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the temperature decrease with depth in the ocean?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the figure, which process is shown as the transformation of water from liquid to gas?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is described as the circulation of water within the earth's hydrosphere in different forms?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best describes the role of continental shelves in the water cycle?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the hydrological cycle considered a cyclic resource?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels Evaporation, Precipitation"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the cycle that describes the movement of water on, in, and above the Earth?",
+      "reason": "near-duplicate of served question cmvl8husd0mblgpfh7kyilcfx (cosine 0.941 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a warm ocean current is flowing along the eastern coast of North America, which of the following is likely to be the effect on the temperature of the region?",
+      "reason": "near-duplicate of served question cmvl8husn0mc9gpfhb397vzhs (cosine 0.928 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

@@ -1,0 +1,812 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T01:00:14.064Z",
+  "finishedAt": "2026-10-30T01:16:07.472Z",
+  "seconds": 953,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari PART-II",
+    "bookCode": "iemh2",
+    "document": "ncert/9/mathematics/iemh204.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Quadrilaterals",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 25,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n16. The points A(9,0), B(9, -6) ,C(-9,0) and D(-9,6) are the vertices of a 1\n(A) Square (B) Rectangle (C) Parallelogram (D) Trapezium",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n29. A circle touches all the four sides of quadrilateral ABCD. Prove that AB + CD = AD + BC.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n28. A quadrilateral ABCD is drawn to circumscribe a circle, as shown in the given 3\nAB + CD\nfigure. Show that = 1\nAD + BC\nFor visually Impaired students only\nShow that parallelogram circumscribing a circle is a rhombus.\n*Please note that the assessment scheme of the Academic Session 2024-25 will continue in the current session i.e. 2025-26",
+      "[INMO 2004 — question paper]\n1. Consider a convex quadrilateral ABCD, in which K, L, M, N are the midpoints of the sides AB,\nBC, CD, DA respectively. Suppose\n(a) BD bisects KM at Q;\n(b) QA =QB=QC =QD; and\n(¢) LK/LM = CD/CB.\nProve that ABCD is a square.\nSolution:\nD 14 c\n4 K B\nFig. 1.\nObserve that KLMN is a paralellogram, @ is the midpoint of MK and hence NL also passes\nthrough Q. Let T be the point of intersection of AC and BD; and let S be the point of intersection\nof BD and MN.\nConsider the triangle MNK. Note that SQ is parallel to NK and Q is the midpoint of MK.\nHence S is the mid-point of MN. Since MN is parallel to AC, it follows that 7\" is the mid-point\nof AC. Now Q is the circumcentre of AABC and the median BT pas"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 261877,
+      "in": 42,
+      "out": 41,
+      "rejects": 3,
+      "promptTokens": 53628,
+      "completionTokens": 13836
+    },
+    "critique": {
+      "calls": 55,
+      "ms": 378293,
+      "in": 41,
+      "out": 34,
+      "rejects": 7,
+      "promptTokens": 27215,
+      "completionTokens": 9693
+    },
+    "solver": {
+      "calls": 259,
+      "ms": 147562,
+      "in": 34,
+      "out": 26,
+      "rejects": 8,
+      "promptTokens": 51016,
+      "completionTokens": 2679
+    },
+    "form": {
+      "calls": 16,
+      "ms": 137572,
+      "in": 26,
+      "out": 11,
+      "rejects": 15,
+      "promptTokens": 13517,
+      "completionTokens": 3564
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 30,
+      "ms": 6208,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 370650,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 21235,
+      "completionTokens": 10872
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "A quadrilateral is formed by connecting four non-collinear points. Which of the following is NOT a requirement for a shape to be considered a quadrilateral?",
+      "ms": {
+        "draft": 4813,
+        "critique": 5869,
+        "solver": 17029
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a quadrilateral ABCD has all its sides equal and its diagonals are not equal, what type of quadrilateral is it?",
+      "ms": {
+        "draft": 4813,
+        "critique": 6891,
+        "solver": 10886,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, a grid of horizontal and vertical sticks is used to tile the plane. When the grid is pushed to change the angle between the two sets of sticks, what shape is formed that can be used to tile the plane?",
+      "ms": {
+        "draft": 4813,
+        "critique": 5175,
+        "solver": 1696,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a quadrilateral has opposite sides equal, what can be concluded about it according to the passage?",
+      "ms": {
+        "draft": 4135,
+        "critique": 8395
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a quadrilateral ABCD, if diagonals AC and BD bisect each other, what type of quadrilateral is it?",
+      "ms": {
+        "draft": 4135,
+        "critique": 8836
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a quadrilateral ABCD, if ∠A = ∠C and ∠B = ∠D, which of the following is true?",
+      "ms": {
+        "draft": 4135,
+        "critique": 7599
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a parallelogram according to the passage?",
+      "ms": {
+        "draft": 4135,
+        "critique": 7356,
+        "solver": 13925,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a parallelogram?",
+      "ms": {
+        "draft": 20832,
+        "critique": 8930
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a quadrilateral has opposite sides equal and diagonals that bisect each other, what can be concluded?",
+      "ms": {
+        "draft": 4135,
+        "critique": 6688,
+        "solver": 12586
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a quadrilateral, if one pair of opposite sides is both equal and parallel, what type of quadrilateral is it?",
+      "ms": {
+        "draft": 20832,
+        "critique": 7501
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is NOT a condition for a quadrilateral to be a parallelogram?",
+      "ms": {
+        "draft": 20832,
+        "critique": 6386
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the name of the theorem that states that the line drawn through the midpoint of one side of a triangle and parallel to another side bisects the third side?",
+      "ms": {
+        "draft": 4638,
+        "critique": 6872,
+        "solver": 2669
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the passage, what is the key property of the centroid of a triangle?",
+      "ms": {
+        "draft": 4638,
+        "critique": 7323,
+        "solver": 1583,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is true for a parallelogram?",
+      "ms": {
+        "draft": 20832,
+        "critique": 8213,
+        "solver": 14208,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the key insight that allows the proof of the Centroid Theorem?",
+      "ms": {
+        "draft": 4638,
+        "critique": 6046,
+        "solver": 2141
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a quadrilateral ABCD, if AB is parallel to DC and AB is not equal to DC, and G and H are the midpoints of AC and BD respectively, what can be said about the line GH?",
+      "ms": {
+        "draft": 4638,
+        "critique": 7676,
+        "solver": 1342,
+        "form": 3487
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a parallelogram?",
+      "ms": {
+        "draft": 6378,
+        "critique": 4088,
+        "solver": 822
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the diagram, ABCD is a quadrilateral with AB = CD and AD = BC. What type of quadrilateral is ABCD?",
+      "ms": {
+        "draft": 5155,
+        "critique": 5487,
+        "solver": 14700,
+        "form": 4677
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the opposite sides of a quadrilateral are equal, which of the following can be concluded?",
+      "ms": {
+        "draft": 5155,
+        "critique": 5487,
+        "solver": 15628,
+        "form": 4296
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the figure, ABCD is a quadrilateral with AB = CD and AD = BC. What is the measure of angle A if angle C is 120°?",
+      "ms": {
+        "draft": 5155,
+        "critique": 6037,
+        "solver": 1513
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a parallelogram ABCD, diagonal BD is divided by points P and Q such that DP = BQ. What can be said about the quadrilateral APCQ?",
+      "ms": {
+        "draft": 8619,
+        "critique": 8047,
+        "solver": 1949,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a self-intersecting quadrilateral ABCD, where AB and CD intersect at point E, what is the maximum possible sum of the interior angles?",
+      "ms": {
+        "draft": 8619,
+        "critique": 6911,
+        "solver": 1861
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a quadrilateral has AB = CD, AD = BC, and angle A = angle C, what type of quadrilateral is it?",
+      "ms": {
+        "draft": 5155,
+        "critique": 5859,
+        "solver": 2760,
+        "form": 3763
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a quadrilateral ABCD, AB is parallel to DC, and E is the midpoint of AD. A line through E intersects BC at F. If EF is parallel to AB, what can be said about F?",
+      "ms": {
+        "draft": 8619,
+        "critique": 6987,
+        "solver": 15218
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a quadrilateral ABCD, suppose AB is parallel to DC and E is the midpoint of AD. A line drawn through E intersects BC at F. If EF is parallel to AB, what is the length of EF in terms of AB and DC?",
+      "ms": {
+        "draft": 8619,
+        "critique": 6274,
+        "solver": 2299,
+        "form": 4052
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of the Varignon parallelogram of a quadrilateral?",
+      "ms": {
+        "draft": 7908,
+        "critique": 6977,
+        "solver": 2310,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a trapezium ABCD with AD and BC as the non-parallel sides, E and F are the midpoints of AD and BC respectively. What is the length of EF in terms of the parallel sides?",
+      "ms": {
+        "draft": 8619,
+        "critique": 8081,
+        "solver": 15261,
+        "form": 5519
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the Varignon parallelogram of a quadrilateral is a square, what can be said about the diagonals of the original quadrilateral?",
+      "ms": {
+        "draft": 7908,
+        "critique": 8033,
+        "solver": 12786,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for a quadrilateral to be a parallelogram according to the converse of (c)?",
+      "ms": {
+        "draft": 7274,
+        "critique": 7699
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the tiling of the plane using a 4-gon, what condition must the sum of the angles around any vertex satisfy?",
+      "ms": {
+        "draft": 7908,
+        "critique": 9216,
+        "solver": 12784,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a convex quadrilateral?",
+      "ms": {
+        "draft": 4813,
+        "critique": 6049,
+        "solver": 1797,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the parallelogram formed by joining the midpoints of the sides of a quadrilateral?",
+      "ms": {
+        "draft": 57676,
+        "critique": 6521,
+        "solver": 1530,
+        "form": 3028
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a definition of a quadrilateral?",
+      "ms": {
+        "draft": 4304,
+        "critique": 5268,
+        "solver": 1572,
+        "form": 2224,
+        "translation": 33355
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which property of parallelograms is used to tile the plane using any given triangle?",
+      "ms": {
+        "draft": 5468,
+        "critique": 7888,
+        "solver": 1683,
+        "form": 0,
+        "translation": 50409
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a parallelogram?",
+      "ms": {
+        "draft": 5155,
+        "critique": 6728,
+        "solver": 12433,
+        "form": 4984,
+        "translation": 42809
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a quadrilateral?",
+      "ms": {
+        "draft": 5155,
+        "critique": 5283,
+        "solver": 1597,
+        "form": 3807,
+        "translation": 35452
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following statements is true about a parallelogram?",
+      "ms": {
+        "draft": 4813,
+        "critique": 7174,
+        "solver": 1597,
+        "form": 0,
+        "translation": 37868
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a way to test if a quadrilateral is a parallelogram?",
+      "ms": {
+        "draft": 4135,
+        "critique": 8513,
+        "solver": 11577,
+        "form": 2528,
+        "translation": 39204
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the tiling of the plane using a 4-gon, what is the significance of the sum of the internal angles of the 4-gon?",
+      "ms": {
+        "draft": 7908,
+        "critique": 6307,
+        "solver": 1837,
+        "form": 0,
+        "translation": 34061
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A quadrilateral is formed by four points A, B, C, D, and it is given that AB + CD = AD + BC. What type of quadrilateral is this?",
+      "ms": {
+        "draft": 4813,
+        "critique": 6183,
+        "solver": 4124,
+        "form": 0,
+        "translation": 49161
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the diagonals of a quadrilateral bisect each other, then it is a parallelogram. What is the reason for this?",
+      "ms": {
+        "draft": 20832,
+        "critique": 7083,
+        "solver": 17439,
+        "form": 0,
+        "translation": 42261
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A quadrilateral is formed by connecting four non-collinear points. Which of the following is NOT a requirement for a shape to be considered a quadrilateral?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a quadrilateral ABCD has all its sides equal and its diagonals are not equal, what type of quadrilateral is it?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, a grid of horizontal and vertical sticks is used to tile the plane. When the grid is pushed to change the angle between the two sets of sticks, what shape is formed that can be used to tile the plane?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'arrows'"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a quadrilateral has opposite sides equal, what can be concluded about it according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a quadrilateral ABCD, if diagonals AC and BD bisect each other, what type of quadrilateral is it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a quadrilateral ABCD, if ∠A = ∠C and ∠B = ∠D, which of the following is true?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of a parallelogram according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a property of a parallelogram?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a quadrilateral has opposite sides equal and diagonals that bisect each other, what can be concluded?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a quadrilateral, if one pair of opposite sides is both equal and parallel, what type of quadrilateral is it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is NOT a condition for a quadrilateral to be a parallelogram?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, what is the name of the theorem that states that the line drawn through the midpoint of one side of a triangle and parallel to another side bisects the third side?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In the passage, what is the key property of the centroid of a triangle?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"It is the point where the medians intersect and divides each median in the ratio 1:2\" / \"It is the point where the medians intersect and divides each median in the ratio 2:1\"); distractor 3's reason is not a one-line misconception (\"Incorrectly identifies the centroid as the incenter of the t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements is true for a parallelogram?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "According to the passage, what is the key insight that allows the proof of the Centroid Theorem?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a quadrilateral ABCD, if AB is parallel to DC and AB is not equal to DC, and G and H are the midpoints of AC and BD respectively, what can be said about the line GH?",
+      "reason": "option 0 repeats the stem's wording (\"GH is parallel to AB and DC\"); distractor 2's reason is not a one-line misconception (\"Assumes a geometric property not mentioned in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a property of a parallelogram?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "In a parallelogram ABCD, the diagonals intersect at O. A line through O meets AB at P and CD at Q. What can be said about O in relation to PQ?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What does Theorem 7 (Converse of the Midpoint Theorem) state "
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 5, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"In a quadrilateral, which of the following is a pair of oppos"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the diagram, ABCD is a quadrilateral with AB = CD and AD = BC. What type of quadrilateral is ABCD?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the opposite sides of a quadrilateral are equal, which of the following can be concluded?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the figure, ABCD is a quadrilateral with AB = CD and AD = BC. What is the measure of angle A if angle C is 120°?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a parallelogram ABCD, diagonal BD is divided by points P and Q such that DP = BQ. What can be said about the quadrilateral APCQ?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not here, but this is the expected choice …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a self-intersecting quadrilateral ABCD, where AB and CD intersect at point E, what is the maximum possible sum of the interior angles?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a quadrilateral has AB = CD, AD = BC, and angle A = angle C, what type of quadrilateral is it?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels AB, BC, CD, DA"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a quadrilateral ABCD, AB is parallel to DC, and E is the midpoint of AD. A line through E intersects BC at F. If EF is parallel to AB, what can be said about F?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a quadrilateral ABCD, suppose AB is parallel to DC and E is the midpoint of AD. A line drawn through E intersects BC at F. If EF is parallel to AB, what is the length of EF in terms of AB and DC?",
+      "reason": "checkExpr \"(AB + DC)/2\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of the Varignon parallelogram of a quadrilateral?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed, but included for completen…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a trapezium ABCD with AD and BC as the non-parallel sides, E and F are the midpoints of AD and BC respectively. What is the length of EF in terms of the parallel sides?",
+      "reason": "checkExpr \"(AB + CD)/2\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the Varignon parallelogram of a quadrilateral is a square, what can be said about the diagonals of the original quadrilateral?",
+      "reason": "options 0 and 1 say the same thing (\"They are equal and not perpendicular\" / \"They are perpendicular and not equal\"); options 0 and 2 say the same thing (\"They are equal and not perpendicular\" / \"They are equal and perpendicular\"); options 0 and 3 are the same (\"They are equal and not perpendicular\"); options 1 and 2 say the same thing (\"They are perpendicular and not equal\" / \"They are equal and perpendicular\"); options 1 and 3 say the same thing (\"They are perpendicular and not equal\" / \"They are equal and not perpendicular\"); options 2 and 3 say the same thing (\"They are equal and perpendicular\" / \"They are equal and not perpendicular\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the condition for a quadrilateral to be a parallelogram according to the converse of (c)?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the tiling of the plane using a 4-gon, what condition must the sum of the angles around any vertex satisfy?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels AB, BC, CD, DA"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a property of a convex quadrilateral?",
+      "reason": "near-duplicate of served question cmvjj106h0gx4gpfh4u6sbxit (cosine 0.907 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the parallelogram formed by joining the midpoints of the sides of a quadrilateral?",
+      "reason": "near-duplicate of served question cmvfd70340415god812nqfx62 (cosine 0.957 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,734 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T05:44:01.417Z",
+  "finishedAt": "2026-10-29T05:52:53.424Z",
+  "seconds": 532,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamentals of Human Geography",
+    "bookCode": "legy1",
+    "document": "ncert/12/geography/legy104.pdf",
+    "classLevel": 12,
+    "subject": "Geography",
+    "chapter": "Chapter 4 — Primary Activities",
+    "edition": "Reprint 2026-27",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n23. “Quaternary activities centre around research and development.” 3\nExamine the statement.",
+      "[CBSE Class XII Geography, sample question paper, 2025-26]\n5. activity? 1\nA. Transporting coal from mines to factories via railways\nB. A lawyer drafting contracts for corporate clients\nC. A salesperson working at a local supermarket\nD. A scientist developing genetically modified crops in a research\nlab\nMatch the following policies with the pillar of human development they",
+      "[CBSE Class XII Geography, marking scheme, 2023-24]\n With social and cultural Development, humans develop better and more\nefficient technology.\n They move from a state of Necessity to a state of freedom.\n They create Possibilities with the resources obtained from the\nenvironment.\n Human has modified their surroundings according to their needs.\n Imprints of human may be seen everywhere on the earth.\nOR\nAns. The three dualism in geography which started wide-ranging debates in\nthe discipline of geography are:\na. Whether geography as a discipline should be a law making/ the orising\n(nomothetic) or descriptive (idiographic).\nb. Whether the approach of the study should be regional or systematic?\nc. Whether geographical phenomena can be interpr",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n10. a. Complex way of life, manufacturing of finished goods,\nnodes of economic growth."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 129055,
+      "in": 39,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 32967,
+      "completionTokens": 7253
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 315284,
+      "in": 37,
+      "out": 34,
+      "rejects": 3,
+      "promptTokens": 21704,
+      "completionTokens": 8494
+    },
+    "solver": {
+      "calls": 265,
+      "ms": 150841,
+      "in": 34,
+      "out": 28,
+      "rejects": 6,
+      "promptTokens": 49097,
+      "completionTokens": 2944
+    },
+    "form": {
+      "calls": 13,
+      "ms": 38506,
+      "in": 28,
+      "out": 14,
+      "rejects": 14,
+      "promptTokens": 3267,
+      "completionTokens": 973
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 2148,
+      "in": 14,
+      "out": 11,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 47,
+      "ms": 486336,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 28259,
+      "completionTokens": 14783
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a primary activity?",
+      "ms": {
+        "draft": 2716,
+        "critique": 5756,
+        "solver": 13213,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a primary activity?",
+      "ms": {
+        "draft": 2716,
+        "critique": 5192,
+        "solver": 14665
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, why are people in cold and hot climates more likely to engage in hunting?",
+      "ms": {
+        "draft": 2716,
+        "critique": 6083,
+        "solver": 12378,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of commercial livestock rearing?",
+      "ms": {
+        "draft": 11812,
+        "critique": 6902,
+        "solver": 10809,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the practice of shifting cultivation?",
+      "ms": {
+        "draft": 11812,
+        "critique": 6536,
+        "solver": 1475,
+        "form": 2251
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a quaternary activity according to the passage?",
+      "ms": {
+        "draft": 11812,
+        "critique": 6493,
+        "solver": 1720,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of agriculture involves the cultivation of high-value crops like vegetables, fruits, and flowers for urban markets?",
+      "ms": {
+        "draft": 3079,
+        "critique": 6039
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is commercial livestock rearing considered more organised than nomadic herding?",
+      "ms": {
+        "draft": 11812,
+        "critique": 7210,
+        "solver": 1381,
+        "form": 2705
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which region is viticulture, or grape cultivation, a speciality?",
+      "ms": {
+        "draft": 3079,
+        "critique": 5949
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which type of farming is characterised by the pooling of resources by farmers to improve agricultural production?",
+      "ms": {
+        "draft": 3079,
+        "critique": 7045,
+        "solver": 1113
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a method of surface mining?",
+      "ms": {
+        "draft": 4275,
+        "critique": 6980
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main income source in mixed farming?",
+      "ms": {
+        "draft": 3079,
+        "critique": 7816,
+        "solver": 1180
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is most likely to be a result of the development of transportation and refrigeration?",
+      "ms": {
+        "draft": 4275,
+        "critique": 7063,
+        "solver": 2126
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a characteristic feature of plantation agriculture?",
+      "ms": {
+        "draft": 4275,
+        "critique": 6368,
+        "solver": 9618
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the primary reason for the success of the co-operative movement in Denmark?",
+      "ms": {
+        "draft": 4275,
+        "critique": 7733,
+        "solver": 13184,
+        "form": 2362
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of surface mining?",
+      "ms": {
+        "draft": 4068,
+        "critique": 6439,
+        "solver": 16975,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a characteristic of co-operative farming?",
+      "ms": {
+        "draft": 4068,
+        "critique": 6283,
+        "solver": 17831,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is most likely to be an example of plantation agriculture?",
+      "ms": {
+        "draft": 4068,
+        "critique": 6872,
+        "solver": 1619,
+        "form": 5690
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains why developed economies are moving away from mining?",
+      "ms": {
+        "draft": 4068,
+        "critique": 6458,
+        "solver": 15006,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a plantation crop?",
+      "ms": {
+        "draft": 4068,
+        "critique": 4976,
+        "solver": 16558
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes Mediterranean agriculture?",
+      "ms": {
+        "draft": 2650,
+        "critique": 6242,
+        "solver": 1386,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is a key factor in the development of dairy farming?",
+      "ms": {
+        "draft": 2650,
+        "critique": 6083,
+        "solver": 1393,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a speciality of Mediterranean agriculture?",
+      "ms": {
+        "draft": 2650,
+        "critique": 6045,
+        "solver": 14523,
+        "form": 2519
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which of the following regions are reindeer primarily reared?",
+      "ms": {
+        "draft": 11812,
+        "critique": 6576,
+        "solver": 1502,
+        "form": 3021
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a feature of mixed farming?",
+      "ms": {
+        "draft": 2650,
+        "critique": 5811,
+        "solver": 1453,
+        "form": 3892
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the reason for the term 'red-collar workers' used for people engaged in primary activities?",
+      "ms": {
+        "draft": 3350,
+        "critique": 5875,
+        "solver": 815,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a primary activity?",
+      "ms": {
+        "draft": 3350,
+        "critique": 4752,
+        "solver": 1348,
+        "form": 0,
+        "translation": 41154
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of agriculture is practised in densely populated regions of monsoon Asia?",
+      "ms": {
+        "draft": 3680,
+        "critique": 8209,
+        "solver": 1728,
+        "form": 4297,
+        "translation": 45771
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main crop in the type of agriculture dominated by wet paddy cultivation?",
+      "ms": {
+        "draft": 3680,
+        "critique": 6622,
+        "solver": 918,
+        "form": 2621,
+        "translation": 50985
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the reason for the term 'red-collar workers' used for people engaged in primary activities?",
+      "ms": {
+        "draft": 2716,
+        "critique": 4846,
+        "solver": 1109,
+        "form": 0,
+        "translation": 40242
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a main product of commercial livestock rearing?",
+      "ms": {
+        "draft": 11812,
+        "critique": 6468,
+        "solver": 1963,
+        "form": 2635,
+        "translation": 34137
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a group of people in a coastal region is engaged in fishing, what factor is most likely influencing this activity?",
+      "ms": {
+        "draft": 2716,
+        "critique": 8927,
+        "solver": 1774,
+        "form": 1,
+        "translation": 38456
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is underground mining considered riskier than surface mining?",
+      "ms": {
+        "draft": 4068,
+        "critique": 7130,
+        "solver": 17678,
+        "form": 0,
+        "translation": 43654
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a feature of commercial livestock rearing?",
+      "ms": {
+        "draft": 3680,
+        "critique": 6067,
+        "solver": 1946,
+        "form": 1808,
+        "translation": 28745
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a feature of dairy farming?",
+      "ms": {
+        "draft": 3079,
+        "critique": 6137,
+        "solver": 16765,
+        "form": 3357,
+        "translation": 49746
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A region has a large population engaged in gathering and hunting. What could be the most likely reason for this?",
+      "ms": {
+        "draft": 2716,
+        "critique": 6749,
+        "solver": 1216,
+        "form": 4270,
+        "translation": 58381
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a quaternary activity?",
+      "ms": {
+        "draft": 3079,
+        "critique": 6660,
+        "solver": 1733,
+        "form": 0,
+        "translation": 50344
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is an example of a plantation crop?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a primary activity?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT a primary activity?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, why are people in cold and hot climates more likely to engage in hunting?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of commercial livestock rearing?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the practice of shifting cultivation?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Refers to scientific methods not mentioned in the passage fo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a quaternary activity according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of agriculture involves the cultivation of high-value crops like vegetables, fruits, and flowers for urban markets?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is commercial livestock rearing considered more organised than nomadic herding?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's focus on commercial rearing…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In which region is viticulture, or grape cultivation, a speciality?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which type of farming is characterised by the pooling of resources by farmers to improve agricultural production?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a method of surface mining?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main income source in mixed farming?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is most likely to be a result of the development of transportation and refrigeration?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is a characteristic feature of plantation agriculture?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the primary reason for the success of the co-operative movement in Denmark?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the main objective of collective farming?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of surface mining?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a characteristic of co-operative farming?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is most likely to be an example of plantation agriculture?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer: Plantation agriculture involves large-scale …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains why developed economies are moving away from mining?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is not a plantation crop?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes Mediterranean agriculture?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (74 vs 40 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following is a key factor in the development of dairy farming?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a speciality of Mediterranean agriculture?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"Confuses Mediterranean agriculture with Asian rice cultivati…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "In which of the following regions are reindeer primarily reared?",
+      "reason": "near-duplicate of served question cmvifpmxy0czmgpfh1y30ctrk (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is a feature of mixed farming?",
+      "reason": "near-duplicate of served question cmvifpmxt0cyygpfh8jcv0j37 (cosine 0.908 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the reason for the term 'red-collar workers' used for people engaged in primary activities?",
+      "reason": "near-duplicate of batch item \"What is the reason for the term 'red-collar worker…\" (cosine 0.982 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

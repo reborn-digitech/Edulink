@@ -1,0 +1,889 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T14:26:28.973Z",
+  "finishedAt": "2026-10-23T14:40:31.371Z",
+  "seconds": 842,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Themes in World History",
+    "bookCode": "kehs1",
+    "document": "ncert/11/history/kehs105.pdf",
+    "classLevel": 11,
+    "subject": "History",
+    "chapter": "Chapter 5 — Changing Cultural Traditions",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII History, marking scheme, 2024-25]\n13. ANS- B-By providing information on administrative and cultural traditions. 1",
+      "[CBSE Class XII History, sample question paper, 2026-27]\n10. The terms ‘Great and Little traditions’ were coined by a sociologist named ________. 1\n(A) John Marshall\n(B) Robert Redfield\n(C) Cyril Radcliffe\n(D) Francis Buchanan",
+      "[CBSE Class XII History, sample question paper, 2022-23]\n27. “Art and literature helped in keeping alive the memory of 1857.” Explain 3\nwith examples from Indian perspective.\nOR\n‘Rumours and prophesies played an important role in the Revolt of 1857.’\nExplain the statement with example",
+      "[CBSE Class XII History, marking scheme, 2026-27]\n15. (D) The Santhals"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 238316,
+      "in": 46,
+      "out": 45,
+      "rejects": 2,
+      "promptTokens": 36769,
+      "completionTokens": 11457
+    },
+    "critique": {
+      "calls": 55,
+      "ms": 444678,
+      "in": 45,
+      "out": 39,
+      "rejects": 6,
+      "promptTokens": 26434,
+      "completionTokens": 9580
+    },
+    "solver": {
+      "calls": 268,
+      "ms": 171319,
+      "in": 39,
+      "out": 30,
+      "rejects": 9,
+      "promptTokens": 49464,
+      "completionTokens": 2860
+    },
+    "form": {
+      "calls": 15,
+      "ms": 56041,
+      "in": 30,
+      "out": 8,
+      "rejects": 22,
+      "promptTokens": 3850,
+      "completionTokens": 1176
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 6,
+      "ms": 1398,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 31,
+      "ms": 494761,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 20059,
+      "completionTokens": 11011
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "According to the passage, what is one key characteristic of the 'humanist' culture that developed in Italian towns?",
+      "ms": {
+        "draft": 5318,
+        "critique": 6711,
+        "solver": 2638,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the ‘urban culture’ that developed in Europe from the fourteenth to the seventeenth century?",
+      "ms": {
+        "draft": 5318,
+        "critique": 6457,
+        "solver": 1362,
+        "form": 5608
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the main reason for the revival of Italian culture during the Renaissance?",
+      "ms": {
+        "draft": 5318,
+        "critique": 7167,
+        "solver": 3354,
+        "form": 3413
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains the role of art and literature in the context of the Revolt of 1857, as described in the passage?",
+      "ms": {
+        "draft": 5318,
+        "critique": 8449,
+        "solver": 2101
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements about the Renaissance is most accurate?",
+      "ms": {
+        "draft": 5318,
+        "critique": 7762,
+        "solver": 1909,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the study of law in European universities during the 11th century?",
+      "ms": {
+        "draft": 6713,
+        "critique": 8420
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what was the main purpose of the humanist educational programme?",
+      "ms": {
+        "draft": 6713,
+        "critique": 11009
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, who was the historian that wrote about the cultural changes of the Renaissance period?",
+      "ms": {
+        "draft": 5318,
+        "critique": 8668,
+        "solver": 14187,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to understand the cultural significance of a painting from the period described in the passage, which approach would be most appropriate according to the text?",
+      "ms": {
+        "draft": 6713,
+        "critique": 10337
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the role of the humanists in the context of the passage?",
+      "ms": {
+        "draft": 6713,
+        "critique": 8793
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is asked to explain the significance of the humanist movement in Europe. According to the passage, which of the following should be included in the explanation?",
+      "ms": {
+        "draft": 6713,
+        "critique": 8132
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses how humanists believed they were restoring 'true civilisation' after centuries of darkness. Based on this, what can be inferred about the humanists' view of the 'Middle Ages'?",
+      "ms": {
+        "draft": 6713,
+        "critique": 8368
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what was one of the main ways humanists shaped the minds of their age?",
+      "ms": {
+        "draft": 16720,
+        "critique": 7263,
+        "solver": 2059,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the role of geometry in the work of sixteenth-century Italian artists?",
+      "ms": {
+        "draft": 16720,
+        "critique": 7713,
+        "solver": 1768,
+        "form": 4053
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements best captures the main idea of the passage?",
+      "ms": {
+        "draft": 16720,
+        "critique": 8540,
+        "solver": 1944
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred about the relationship between science and art in the sixteenth century based on the passage?",
+      "ms": {
+        "draft": 16720,
+        "critique": 9139,
+        "solver": 2315,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the passage suggest about the role of women in merchant families compared to aristocratic families?",
+      "ms": {
+        "draft": 6003,
+        "critique": 8650,
+        "solver": 1745,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a reason that the humanist culture of Italy spread more rapidly after the fifteenth century?",
+      "ms": {
+        "draft": 16720,
+        "critique": 7723,
+        "solver": 20020
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what was a key reason for the limited role of women in public life during the period described?",
+      "ms": {
+        "draft": 6003,
+        "critique": 8383,
+        "solver": 1769,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains the significance of Cassandra Fedele's writings?",
+      "ms": {
+        "draft": 6003,
+        "critique": 7587,
+        "solver": 1450,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a historian were to compare the views on women in the passage with the current societal norms in India, which of the following would they most likely conclude?",
+      "ms": {
+        "draft": 6003,
+        "critique": 9697,
+        "solver": 2078,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main impact of the Scientific Revolution according to the passage?",
+      "ms": {
+        "draft": 4074,
+        "critique": 6191,
+        "solver": 2588,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How did the Scientific Revolution influence the role of individuals in society?",
+      "ms": {
+        "draft": 4074,
+        "critique": 5669,
+        "solver": 1438,
+        "form": 4804
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the Renaissance?",
+      "ms": {
+        "draft": 4074,
+        "critique": 7715,
+        "solver": 2318,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best represents the impact of the Scientific Revolution on European society?",
+      "ms": {
+        "draft": 4074,
+        "critique": 7939,
+        "solver": 1954,
+        "form": 3448
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why did historians in the past not acknowledge the influence of non-European cultures on the Renaissance?",
+      "ms": {
+        "draft": 4074,
+        "critique": 7876,
+        "solver": 1815,
+        "form": 2617
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the main idea of the passage about humanism?",
+      "ms": {
+        "draft": 5431,
+        "critique": 8307,
+        "solver": 1932
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what was the main difference between the views of Cassandra Fedele and Balthasar Castiglione on women?",
+      "ms": {
+        "draft": 5431,
+        "critique": 10889,
+        "solver": 2188
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage suggest about the role of education in the lives of women during the Renaissance?",
+      "ms": {
+        "draft": 5431,
+        "critique": 11283,
+        "solver": 2129
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be inferred about the role of women in aristocratic families based on the passage?",
+      "ms": {
+        "draft": 5431,
+        "critique": 8136,
+        "solver": 19061
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the limitations of the humanist ideals in the context of gender roles?",
+      "ms": {
+        "draft": 5431,
+        "critique": 7542,
+        "solver": 23502,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is mentioned in the passage as a reason for the spread of humanist culture in Europe?",
+      "ms": {
+        "draft": 4417,
+        "critique": 9974,
+        "solver": 14993,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was one of the main features of humanist culture according to the passage?",
+      "ms": {
+        "draft": 5431,
+        "critique": 8389,
+        "solver": 22374
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why Italian artists of the sixteenth century were able to create more realistic paintings?",
+      "ms": {
+        "draft": 4417,
+        "critique": 8592,
+        "solver": 2272,
+        "form": 4061
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the passage suggest about the spread of humanist ideas in Europe?",
+      "ms": {
+        "draft": 4417,
+        "critique": 7833,
+        "solver": 1987,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following contributed most to the realism in Italian art?",
+      "ms": {
+        "draft": 4417,
+        "critique": 10173,
+        "solver": 2030
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what can be inferred about the role of the Mongols in the development of Italian art?",
+      "ms": {
+        "draft": 4417,
+        "critique": 4524,
+        "solver": 8560,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which scientist proposed that the earth rotates around the sun?",
+      "ms": {
+        "draft": 4074,
+        "critique": 6121,
+        "solver": 1636,
+        "form": 5594
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main reason for the spread of humanist ideas in Europe?",
+      "ms": {
+        "draft": 5048,
+        "critique": 8610,
+        "solver": 20670,
+        "form": 6288,
+        "translation": 66262
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which scientist proposed that the earth rotates around the sun?",
+      "ms": {
+        "draft": 4632,
+        "critique": 5862,
+        "solver": 689,
+        "form": 1445,
+        "translation": 54555
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did the Protestant Reformation aim to achieve?",
+      "ms": {
+        "draft": 5048,
+        "critique": 9323,
+        "solver": 1504,
+        "form": 5136,
+        "translation": 101529
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How did the printing of the Bible in local languages impact the common people?",
+      "ms": {
+        "draft": 5048,
+        "critique": 9501,
+        "solver": 14126,
+        "form": 4778,
+        "translation": 69362
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the main idea behind the humanist movement in Europe?",
+      "ms": {
+        "draft": 5048,
+        "critique": 8904,
+        "solver": 18059,
+        "form": 4188,
+        "translation": 55286
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why did the humanists criticize the Catholic Church?",
+      "ms": {
+        "draft": 5048,
+        "critique": 7419,
+        "solver": 2001,
+        "form": 4298,
+        "translation": 72931
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What role did the printing of the Bible in local languages play in the spread of humanist ideas?",
+      "ms": {
+        "draft": 5048,
+        "critique": 8228,
+        "solver": 2111,
+        "form": 3998,
+        "translation": 67584
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What does the passage suggest about the role of education for women in the period described?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"Which of the following did Protestants criticise the Catholic Church for?\",\"options\":["
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is one key characteristic of the 'humanist' culture that developed in Italian towns?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's description of the medieval vie…\"); distractor 2's reason is not a one-line misconception (\"Incorrectly assumes the passage supports the idea that man w…\"); distractor 3 has no reason"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the ‘urban culture’ that developed in Europe from the fourteenth to the seventeenth century?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses the meaning of 'civilised' as per the passage…\"); distractor 2's reason is not a one-line misconception (\"Incorrectly assumes the passage supports rural values…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's focus on art and learning as avo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What was the main reason for the revival of Italian culture during the Renaissance?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's description of the clergy's role…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following best explains the role of art and literature in the context of the Revolt of 1857, as described in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements about the Renaissance is most accurate?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's description of the Renaissance …\"); distractor 1's reason is not a one-line misconception (\"Incorrectly assumes the passage discusses a limited politica…\"); distractor 3 has no reason"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage suggest about the study of law in European universities during the 11th century?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what was the main purpose of the humanist educational programme?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, who was the historian that wrote about the cultural changes of the Renaissance period?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 2's reason is not a one-line misconception (\"Incorrectly assumes the passage discusses John Marshall as t…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student wants to understand the cultural significance of a painting from the period described in the passage, which approach would be most appropriate according to the text?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following best describes the role of the humanists in the context of the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student is asked to explain the significance of the humanist movement in Europe. According to the passage, which of the following should be included in the explanation?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The passage discusses how humanists believed they were restoring 'true civilisation' after centuries of darkness. Based on this, what can be inferred about the humanists' view of the 'Middle Ages'?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what was one of the main ways humanists shaped the minds of their age?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"The pupil may think formal education was the main way, but t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best describes the role of geometry in the work of sixteenth-century Italian artists?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"The pupil may think geometry was used for perfect symmetry, …\"); distractor 3's reason is not a one-line misconception (\"The pupil may think geometry was used for realistic human fi…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following statements best captures the main idea of the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What can be inferred about the relationship between science and art in the sixteenth century based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"The pupil may think there was no overlap, but the passage sh…\"); distractor 2's reason is not a one-line misconception (\"The pupil may think artists made scientific discoveries, but…\"); distractor 3's reason is not a one-line misconception (\"The pupil may think science was unimportant, but the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the passage suggest about the role of women in merchant families compared to aristocratic families?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"Women in merchant families had more freedom and public roles than in aristocratic families.\" / \"Women in aristocratic families had more freedom and public roles than in merchant families.\"); distractor 3's reason is not a one-line misconception (\"misinterprets the passage's comparison between families of d…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a reason that the humanist culture of Italy spread more rapidly after the fifteenth century?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what was a key reason for the limited role of women in public life during the period described?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"overlooks the specific cultural and societal restrictions me…\"); distractor 2's reason is not a one-line misconception (\"assumes that the passage states a lack of interest or capabi…\"); distractor 3's reason is not a one-line misconception (\"misinterprets the passage's focus on societal norms rather t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains the significance of Cassandra Fedele's writings?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"contradicts the passage, which explicitly states that Fedele…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a historian were to compare the views on women in the passage with the current societal norms in India, which of the following would they most likely conclude?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"overlooks the changes described in the passage and the curre…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What was the main impact of the Scientific Revolution according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage…\"); distractor 2's reason is not a one-line misconception (\"Incorrectly assumes the opposite of what the passage states…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How did the Scientific Revolution influence the role of individuals in society?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misunderstands the passage…\"); distractor 1's reason is not a one-line misconception (\"Contradicts the passage's message…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the Renaissance?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage…\"); distractor 3's reason is not a one-line misconception (\"Focuses only on one aspect of the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best represents the impact of the Scientific Revolution on European society?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misinterprets the passage…\"); distractor 2's reason is not a one-line misconception (\"Incorrectly assumes the opposite of what the passage states…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why did historians in the past not acknowledge the influence of non-European cultures on the Renaissance?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misinterprets the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following best describes the main idea of the passage about humanism?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what was the main difference between the views of Cassandra Fedele and Balthasar Castiglione on women?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What does the passage suggest about the role of education in the lives of women during the Renaissance?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What can be inferred about the role of women in aristocratic families based on the passage?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the limitations of the humanist ideals in the context of gender roles?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is mentioned in the passage as a reason for the spread of humanist culture in Europe?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Confuses the passage's mention of schools being only for boy…\"); distractor 2's reason is not a one-line misconception (\"Incorrectly assumes the passage says schools were only for g…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What was one of the main features of humanist culture according to the passage?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best explains why Italian artists of the sixteenth century were able to create more realistic paintings?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Mistakenly assumes that the passage focuses on ancient texts…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the passage suggest about the spread of humanist ideas in Europe?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Contradicts the passage, which says ideas spread beyond Ital…\"); distractor 1's reason is not a one-line misconception (\"Misinterprets the passage, which says handwritten texts were…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which of the following contributed most to the realism in Italian art?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what can be inferred about the role of the Mongols in the development of Italian art?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Believing the Mongols brought religious influences despite n…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which scientist proposed that the earth rotates around the sun?",
+      "reason": "near-duplicate of batch item \"Which scientist proposed that the earth rotates ar…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

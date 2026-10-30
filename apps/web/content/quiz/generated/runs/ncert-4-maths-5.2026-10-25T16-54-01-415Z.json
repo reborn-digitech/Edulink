@@ -1,0 +1,519 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T16:54:01.415Z",
+  "finishedAt": "2026-10-25T17:00:26.682Z",
+  "seconds": 385,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm105.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Sharing and Measuring",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2024-25]\n½\n½\nOR\n27 (B). Let the line 4𝑥 + 𝑦 = 4 intersects AB at 𝑃(𝑥 , 𝑦 ) such that AP: PB=𝑘:1 1 1\n𝑥 = 1 3𝑘−2 and 𝑦 = 1 5𝑘−1 1\n𝑘+1 𝑘+1\n(𝑥 , 𝑦 ) lies on 4𝑥 + 𝑦 = 4 1 1\n3𝑘−2 5𝑘−1 ½\nTherefore, 4( 𝑘+1 )+( 𝑘+1 )=4\n⇒ 𝑘=1 1\nRequired ratio is 1:1 ½\n28. LHS= ( 1 − 𝑠𝑖𝑛𝐴)( 1 − 𝑐𝑜𝑠𝐴)\n𝑠𝑖𝑛𝐴 𝑐𝑜𝑠𝐴\n= 1−𝑠𝑖𝑛 𝐴 𝑠𝑖𝑛𝐴 2 × 1−𝑐𝑜𝑠 𝐴 𝑐𝑜𝑠𝐴 2\n= 𝑐𝑜𝑠 𝐴 𝑠𝑖𝑛𝐴 2 × 𝑠𝑖𝑛 𝐴 𝑐𝑜𝑠𝐴 2\n=𝑐𝑜𝑠𝐴 𝑠𝑖𝑛𝐴\nRHS = 𝑠𝑖𝑛 𝐴+𝑐𝑜𝑠 𝐴 𝑐𝑜𝑠𝐴 𝑠𝑖𝑛𝐴 2 2\n=𝑐𝑜𝑠𝐴 𝑠𝑖𝑛𝐴 = LHS\n29.\n½\n½\nClass x frequency(f) 𝑥 − 25 𝑓𝑢\n0-10 5 6\n10-20 15 10\n20-30 25 15\n30-40 35 9\n40-50 45 10\n∑ 𝑓 =50\n𝑀𝑒𝑎𝑛 = 25 + 10 × ( ) 50 7\n= 26.4\n30 (A).\n(i) 𝛥 𝑂𝐴𝑃 ⩭ 𝛥𝑂𝐵𝑃\n∠𝐴𝑃𝑂 = ∠𝐵𝑃𝑂\nOr OP",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n17. Answer – C 1\nAs, r 1 : r 2 = 3 : 4. So, the ratio of their areas = r 1 2 : r 2 2 = 9 :16",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n14. (c) 16 : 9"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 114962,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 18162,
+      "completionTokens": 4694
+    },
+    "critique": {
+      "calls": 35,
+      "ms": 329145,
+      "in": 24,
+      "out": 22,
+      "rejects": 2,
+      "promptTokens": 14645,
+      "completionTokens": 6164
+    },
+    "solver": {
+      "calls": 193,
+      "ms": 155035,
+      "in": 22,
+      "out": 15,
+      "rejects": 7,
+      "promptTokens": 42178,
+      "completionTokens": 2285
+    },
+    "form": {
+      "calls": 9,
+      "ms": 31042,
+      "in": 15,
+      "out": 9,
+      "rejects": 6,
+      "promptTokens": 2129,
+      "completionTokens": 628
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 5430,
+      "in": 9,
+      "out": 5,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 210132,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10564,
+      "completionTokens": 4712
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is each part called when an object is divided into two equal parts?",
+      "ms": {
+        "draft": 4481,
+        "critique": 8078
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a dhokla is divided into four equal parts, what is each part called?",
+      "ms": {
+        "draft": 4481,
+        "critique": 8380,
+        "solver": 2047,
+        "form": 5251
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Sumedha's dhokla is shared equally among 4 people. What fraction of the dhokla does each person get?",
+      "ms": {
+        "draft": 4481,
+        "critique": 11750,
+        "solver": 2035,
+        "form": 3074
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a paper is divided into 5 equal parts, what fraction represents each part?",
+      "ms": {
+        "draft": 4481,
+        "critique": 9449,
+        "solver": 20871
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a dosa has 1/4 of Spicy onion topping, what does this mean in terms of parts of the dosa?",
+      "ms": {
+        "draft": 4892,
+        "critique": 8838,
+        "solver": 3310,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the fraction of Classic potato topping in a dosa if it is mentioned as 1/2?",
+      "ms": {
+        "draft": 4892,
+        "critique": 9292,
+        "solver": 21785,
+        "form": 4593
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Meena has 8 diyas and 2 are coloured red, what fraction of the diyas are red?",
+      "ms": {
+        "draft": 4892,
+        "critique": 12481,
+        "solver": 20967
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a dosa has 1/3 of Chilly paneer and 1/6 of Tangy tomato, what fraction of the dosa is covered by these toppings combined?",
+      "ms": {
+        "draft": 4892,
+        "critique": 10416,
+        "solver": 26546
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the fraction of the dosa with Spicy onion topping?",
+      "ms": {
+        "draft": 5391,
+        "critique": 8614,
+        "solver": 1429
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the fraction of Classic potato topping in a dosa if it is used along with Spicy onion?",
+      "ms": {
+        "draft": 5391,
+        "critique": 8658,
+        "solver": 1689
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Meena has 8 diyas and 2 are coloured red, what fraction of the diyas are red?",
+      "ms": {
+        "draft": 5391,
+        "critique": 9529,
+        "solver": 23005
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Mohan’s ribbon is one-fourth as long as Rohan’s ribbon, and Mohan’s ribbon is 5 cm long, how long is Rohan’s ribbon?",
+      "ms": {
+        "draft": 5391,
+        "critique": 11302,
+        "solver": 26398
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a dhokla is divided into four equal parts, what is each part called?",
+      "ms": {
+        "draft": 4397,
+        "critique": 7786
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, Sumedha's share of the dhokla gets smaller as more people join. Why does this happen?",
+      "ms": {
+        "draft": 4397,
+        "critique": 12974,
+        "solver": 2551,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used when an object is divided into two equal parts?",
+      "ms": {
+        "draft": 4397,
+        "critique": 10565,
+        "solver": 19892,
+        "form": 3727
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the dhokla is shared among 6 people, what fraction of the dhokla does each person get?",
+      "ms": {
+        "draft": 4481,
+        "critique": 10157,
+        "solver": 2401,
+        "form": 2954
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a box of 16 barfis is divided into four equal parts, how many barfis are in each part?",
+      "ms": {
+        "draft": 5391,
+        "critique": 12654,
+        "solver": 16733,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a paper is folded into three equal parts and one part is shaded, then folded in half again, what fraction of the paper is shaded?",
+      "ms": {
+        "draft": 5391,
+        "critique": 8418,
+        "solver": 2354,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the dhokla is shared among 6 people, how much will each person get?",
+      "ms": {
+        "draft": 4397,
+        "critique": 8383,
+        "solver": 1326,
+        "form": 3092
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a paper is divided into 5 equal parts, how would you write the fraction for each part?",
+      "ms": {
+        "draft": 4397,
+        "critique": 9605,
+        "solver": 13548,
+        "form": 4027,
+        "translation": 41572
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a ribbon is divided into 8 equal parts and 3 parts are used, what fraction of the ribbon is used?",
+      "ms": {
+        "draft": 4892,
+        "critique": 7463,
+        "solver": 19351,
+        "form": 0,
+        "translation": 40176
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the dhokla is shared among 9 people, what fraction of the dhokla does Sumedha get?",
+      "ms": {
+        "draft": 4481,
+        "critique": 9011,
+        "solver": 2582,
+        "form": 4311,
+        "translation": 48966
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If Idha and Vinayak give their shares of the dhokla to Sumedha, what fraction of the dhokla will she get?",
+      "ms": {
+        "draft": 4397,
+        "critique": 7454,
+        "solver": 787,
+        "form": 1801,
+        "translation": 39648
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a dosa has 1/2 of Spicy onion and 1/4 of Classic potato, what fraction of the dosa is covered by these toppings combined?",
+      "ms": {
+        "draft": 4892,
+        "critique": 10313,
+        "solver": 12519,
+        "form": 0,
+        "translation": 35498
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is each part called when an object is divided into two equal parts?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a dhokla is divided into four equal parts, what is each part called?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer', 'Confuses quarter with whole…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Sumedha's dhokla is shared equally among 4 people. What fraction of the dhokla does each person get?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer', 'Fraction for five people…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a paper is divided into 5 equal parts, what fraction represents each part?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a dosa has 1/4 of Spicy onion topping, what does this mean in terms of parts of the dosa?",
+      "reason": "options 1 and 3 say the same thing (\"Two parts out of four\" / \"Four parts out of four\"); options 2 and 3 say the same thing (\"Three parts out of four\" / \"Four parts out of four\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the fraction of Classic potato topping in a dosa if it is mentioned as 1/2?",
+      "reason": "options 0 and 3 are the same (\"1/2\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Meena has 8 diyas and 2 are coloured red, what fraction of the diyas are red?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a dosa has 1/3 of Chilly paneer and 1/6 of Tangy tomato, what fraction of the dosa is covered by these toppings combined?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the fraction of the dosa with Spicy onion topping?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the fraction of Classic potato topping in a dosa if it is used along with Spicy onion?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Meena has 8 diyas and 2 are coloured red, what fraction of the diyas are red?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If Mohan’s ribbon is one-fourth as long as Rohan’s ribbon, and Mohan’s ribbon is 5 cm long, how long is Rohan’s ribbon?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If a dhokla is divided into four equal parts, what is each part called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, Sumedha's share of the dhokla gets smaller as more people join. Why does this happen?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used when an object is divided into two equal parts?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If the dhokla is shared among 6 people, what fraction of the dhokla does each person get?",
+      "reason": "near-duplicate of served question cmvh12ag0063pgpfhihfl5twp (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If a box of 16 barfis is divided into four equal parts, how many barfis are in each part?",
+      "reason": "near-duplicate of served question cmvk3erss0iwqgpfht46eb0i0 (cosine 0.950 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a paper is folded into three equal parts and one part is shaded, then folded in half again, what fraction of the paper is shaded?",
+      "reason": "near-duplicate of served question cmvh12afx063dgpfhmxm5bb0r (cosine 0.927 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If the dhokla is shared among 6 people, how much will each person get?",
+      "reason": "near-duplicate of served question cmvh12ag0063pgpfhihfl5twp (cosine 0.964 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

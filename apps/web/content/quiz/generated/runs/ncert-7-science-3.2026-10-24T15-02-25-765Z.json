@@ -1,0 +1,624 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T15:02:25.765Z",
+  "finishedAt": "2026-10-24T15:12:46.205Z",
+  "seconds": 620,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu103.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 3 — Electricity: Circuits and their Components",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\n37.\nThe figure shows a circuit with a 15 V battery connected to several resistors.\nUsing the given circuit diagram:\nA. Find the total current supplied by the battery.\nB. Calculate the potential difference between points A and B.\n- - - - - - - - - - - - - -\nFor visually impaired students\nA 15 V battery is connected in series with three resistors of 2 Ω, 3 Ω, and 5 Ω.\nCalculate:\nA. The total resistance in the circuit.\nB. The total current supplied by the battery.\nC. The voltage drop across the 3Ω resistor.",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n13. A complete circuit is left on for several minutes, causing the connecting copper wire to 1\nbecome hot. As the temperature of the wire increases, the electrical resistance of the wire\n(a) decreases.\n(b) remains the same.\n(c) increases.\n(d) increases for some time and then decreases .",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n32. (i) State the law that explains the heating effect of current with respect to the measurable 2+1\nproperties in an electrical circuit.\n(ii) List the factors on which the resistance of a conductor depends.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n36. Attempt either option A or B. 5\nA.\nThe above circuit is a part of an electrical device. Use the information\ngiven in the question to calculate the following.\n(i) Potential Difference across R 2 .\n(ii) Value of the resistance R 2 .\n(iii) Value of resistance R 1\nOR\nB.\nAs shown in the figure above A and B are two lamps. Lamp A is rated at 12 V,\n24W. Lamp B is rated at 6.0 V. When lamp B operates at its rated voltage, the\ncurrent in it is 3.0 A. The values of R 1 and R 2 are chosen so that both lamps\noperate at their rated voltages.\nBased on the information given, answer the following.\n(i) Calculate the current in Lamp A.\n(ii) State and give reason for the reading of the Voltmeter.\n(iii) Cal"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 145010,
+      "in": 33,
+      "out": 31,
+      "rejects": 3,
+      "promptTokens": 32180,
+      "completionTokens": 7967
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 248290,
+      "in": 31,
+      "out": 30,
+      "rejects": 1,
+      "promptTokens": 16978,
+      "completionTokens": 6601
+    },
+    "solver": {
+      "calls": 203,
+      "ms": 108413,
+      "in": 30,
+      "out": 27,
+      "rejects": 3,
+      "promptTokens": 38691,
+      "completionTokens": 2186
+    },
+    "form": {
+      "calls": 27,
+      "ms": 111808,
+      "in": 27,
+      "out": 18,
+      "rejects": 9,
+      "promptTokens": 17452,
+      "completionTokens": 2864
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 35,
+      "ms": 5591,
+      "in": 18,
+      "out": 14,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 571676,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 32415,
+      "completionTokens": 16769
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 4,
+    "4": 2,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 8,
+  "needsFigure": 3,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct way to connect two electric cells in a torch?",
+      "ms": {
+        "draft": 2777,
+        "critique": 5328,
+        "solver": 2151,
+        "form": 1819
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the function of the electric cell in a torchlight?",
+      "ms": {
+        "draft": 2777,
+        "critique": 6241
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an electrical circuit, what determines the direction of the electric current?",
+      "ms": {
+        "draft": 3174,
+        "critique": 5966,
+        "solver": 951,
+        "form": 3982
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student connects an LED to a battery, but the LED does not glow. What could be the most likely reason?",
+      "ms": {
+        "draft": 7770,
+        "critique": 8023,
+        "solver": 1710
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An LED is connected to a 6V battery, but it does not glow. What could be the reason?",
+      "ms": {
+        "draft": 3174,
+        "critique": 5863,
+        "solver": 15974,
+        "form": 1989
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student uses a conduction tester to test a material. The lamp does not glow. What can be concluded about the material?",
+      "ms": {
+        "draft": 7770,
+        "critique": 6272,
+        "solver": 17274,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a circuit with two identical lamps and a battery, one lamp glows brighter than the other. What could be the reason?",
+      "ms": {
+        "draft": 7770,
+        "critique": 8896,
+        "solver": 13952
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the circuit diagram in Fig. 3.16, which material between A and B would prevent the lamp from glowing?",
+      "ms": {
+        "draft": 3419,
+        "critique": 6737,
+        "solver": 14449,
+        "form": 2285
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student connected an LED in a circuit but it did not glow. What could be the most likely reason?",
+      "ms": {
+        "draft": 4348,
+        "critique": 6512,
+        "solver": 1936,
+        "form": 3612
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is NOT a function of a switch in an electrical circuit?",
+      "ms": {
+        "draft": 4348,
+        "critique": 8934,
+        "solver": 14052
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the incandescent lamp glows when the torch is switched on?",
+      "ms": {
+        "draft": 6199,
+        "critique": 8317,
+        "solver": 11682,
+        "form": 2281
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a terminal of the incandescent lamp?",
+      "ms": {
+        "draft": 6199,
+        "critique": 7031,
+        "solver": 12287,
+        "form": 2705
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is required for an incandescent lamp to glow?",
+      "ms": {
+        "draft": 6199,
+        "critique": 6335,
+        "solver": 10763,
+        "form": 3426
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the switch in a torchlight?",
+      "ms": {
+        "draft": 2777,
+        "critique": 4855,
+        "solver": 1735,
+        "form": 2684
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a portable source of electrical energy?",
+      "ms": {
+        "draft": 2777,
+        "critique": 4722,
+        "solver": 1162,
+        "form": 3794
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the filament in an incandescent lamp?",
+      "ms": {
+        "draft": 3174,
+        "critique": 6556,
+        "solver": 1461,
+        "form": 2725
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between an incandescent lamp and an LED lamp?",
+      "ms": {
+        "draft": 3174,
+        "critique": 7164,
+        "solver": 1477,
+        "form": 2938
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which component of an electrical circuit allows current to flow in only one direction?",
+      "ms": {
+        "draft": 4348,
+        "critique": 6671,
+        "solver": 1289,
+        "form": 0,
+        "translation": 37203
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an electrical conductor?",
+      "ms": {
+        "draft": 3419,
+        "critique": 5997,
+        "solver": 1261,
+        "form": 4551,
+        "translation": 35404
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a torch uses three electric cells, how will the voltage compare to a torch with one cell?",
+      "ms": {
+        "draft": 2777,
+        "critique": 5627,
+        "solver": 1023,
+        "form": 3221,
+        "translation": 43429
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student uses a wire with an insulator covering in a circuit, what will happen?",
+      "ms": {
+        "draft": 3419,
+        "critique": 6265,
+        "solver": 1816,
+        "form": 4346,
+        "translation": 42053
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens if the two terminals of an incandescent lamp are connected to the same terminal of an electric cell?",
+      "ms": {
+        "draft": 3174,
+        "critique": 6822,
+        "solver": 1754,
+        "form": 3535,
+        "translation": 46096
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct symbol for an electric cell?",
+      "ms": {
+        "draft": 7770,
+        "critique": 6948,
+        "solver": 1510,
+        "form": 0,
+        "translation": 32451
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a circuit, a switch is placed in the 'OFF' position. What happens to the flow of current?",
+      "ms": {
+        "draft": 7770,
+        "critique": 6078,
+        "solver": 1506,
+        "form": 0,
+        "translation": 44704
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a circuit diagram, what does the symbol with a long line and a short line represent?",
+      "ms": {
+        "draft": 4348,
+        "critique": 6721,
+        "solver": 1756,
+        "form": 3504,
+        "translation": 42568
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student connects two electric cells in a torch with both positive terminals together, what will happen?",
+      "ms": {
+        "draft": 2777,
+        "critique": 5862,
+        "solver": 1679,
+        "form": 2623,
+        "translation": 44181
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a torchlight circuit, what happens if the cells are connected in the wrong order?",
+      "ms": {
+        "draft": 3878,
+        "critique": 6064,
+        "solver": 1483,
+        "form": 0,
+        "translation": 34148
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a circuit, the switch is in the ‘OFF’ position. What happens in this case?",
+      "ms": {
+        "draft": 3419,
+        "critique": 6042,
+        "solver": 1673,
+        "form": 3561,
+        "translation": 35297
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the number of cells in a torchlight is increased, how does it affect the brightness of the lamp?",
+      "ms": {
+        "draft": 3878,
+        "critique": 6344,
+        "solver": 823,
+        "form": 0,
+        "translation": 30886
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In an electrical circuit, the direction of electric current is from the positive to the negative terminal of the battery. Why is this the case?",
+      "ms": {
+        "draft": 3419,
+        "critique": 6681,
+        "solver": 1234,
+        "form": 4029,
+        "translation": 57001
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to connect the terminals of the lamp and the cell correctly in a circuit?",
+      "ms": {
+        "draft": 3174,
+        "critique": 5619,
+        "solver": 2412,
+        "form": 3480,
+        "translation": 41315
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"Which of the following is a good conductor of electricity?\",\"options\":[\"Plastic\",\"Rubb"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct way to connect two electric cells in a torch?",
+      "reason": "options 0 and 1 say the same thing (\"Positive terminal of one cell connected to the positive terminal of the other\" / \"Negative terminal of one cell connected to the negative terminal of the other\"); options 0 and 2 say the same thing (\"Positive terminal of one cell connected to the positive terminal of the other\" / \"Positive terminal of one cell connected to the negative terminal of the other\"); options 0 and 3 say the same thing (\"Positive terminal of one cell connected to the positive terminal of the other\" / \"Positive terminal of one cell connected to the positive terminal of the other and negative terminal connected to the negative terminal\"); options 1 and 2 say the same thing (\"Negative terminal of one cell connected to the negative terminal of the other\" / \"Positive terminal of one cell connected to the negative terminal of the other\"); options 1 and 3 say the same thing (\"Negative terminal of one cell connected to the negative terminal of the other\" / \"Positive terminal of one cell connected to the positive terminal of the other and negative terminal connected to the negative terminal\"); options 2 and 3 say the same thing (\"Positive terminal of one cell connected to the negative terminal of the other\" / \"Positive terminal of one cell connected to the positive terminal of the other and negative terminal connected to the negative terminal\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the function of the electric cell in a torchlight?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an electrical circuit, what determines the direction of the electric current?",
+      "reason": "the key is far longer than every distractor (47 vs 24 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A student connects an LED to a battery, but the LED does not glow. What could be the most likely reason?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "An LED is connected to a 6V battery, but it does not glow. What could be the reason?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student uses a conduction tester to test a material. The lamp does not glow. What can be concluded about the material?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a circuit with two identical lamps and a battery, one lamp glows brighter than the other. What could be the reason?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of an electrical insulator?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the function of the insulator in an incandescent lamp?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the circuit diagram in Fig. 3.16, which material between A and B would prevent the lamp from glowing?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student connected an LED in a circuit but it did not glow. What could be the most likely reason?",
+      "reason": "figure: figure spec refused: spec.parts.2.type: Invalid enum value. Expected 'wire' | 'cell' | 'battery' | 'resistor' | 'rheostat' | 'bulb' | 'switchOpen' | 'switchClosed' | 'ammeter' | 'voltmeter' | 'galvanometer' | 'fuse', received 'led'"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is NOT a function of a switch in an electrical circuit?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 1 correct, the key is 3"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the incandescent lamp glows when the torch is switched on?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a terminal of the incandescent lamp?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is required for an incandescent lamp to glow?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'wire'"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the purpose of the switch in a torchlight?",
+      "reason": "near-duplicate of served question cmvfyblj801ahgpfh5lxzdt4t (cosine 0.908 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a portable source of electrical energy?",
+      "reason": "near-duplicate of served question cmvfybljd01angpfhxq828oyl (cosine 0.953 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the function of the filament in an incandescent lamp?",
+      "reason": "near-duplicate of served question cmvix4yl00eoagpfh0bts54uq (cosine 0.925 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the main difference between an incandescent lamp and an LED lamp?",
+      "reason": "near-duplicate of served question cmvix4yl50eoggpfht6p1y94c (cosine 0.913 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,870 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T13:47:11.457Z",
+  "finishedAt": "2026-10-28T14:04:52.007Z",
+  "seconds": 1061,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo108.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 8 — Nit of",
+    "edition": "Reprint 2026-27",
+    "chunks": 18,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2013 — question paper]\n26. (1 point) Which of the following correctly depicts a reaction involved in the\nnitrogen cycle?\na. N 2 + H + e + ATP + - NH 3 + ADP + Pi\nb. N 2 + H + e + ADP + Pi + - NH 3\nc. NO + e + ADP + Pi 2 - NH 3 +\nd. NO 3 - + H + e + ADP + Pi + - NH\n+ ATP\n+ ATP\n+\n3 + NO 2 + ATP",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n9. (b) dN/dt = r N 1",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[CBSE Class XII Biology, marking scheme, 2024-25]\n26. The main sources of biofertilizers are bacteria, fungi and cyanobacteria. 3\n- The nodules on the roots of leguminous plants are formed by the\nsymbiotic association of Rhizobium. These bacteria fix atmospheric\nnitrogen into organic forms, which is used by the plant as a nutrient.\nOther bacteria can fix atmospheric nitrogen while free-living in the soil\n(examples Azospirillum and Azotobacter), thus enriching the nitrogen\ncontent of the soil. (1)\n- Fungi are also known to form symbiotic associations with plants\n(mycorrhiza). Many members of the genus Glomus form mycorrhiza.\nThe fungal symbiont in these associations absorbs phosphorus from\nsoil and passes it to the plant. Plants having such "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 348464,
+      "in": 46,
+      "out": 45,
+      "rejects": 1,
+      "promptTokens": 43500,
+      "completionTokens": 13414
+    },
+    "critique": {
+      "calls": 64,
+      "ms": 626365,
+      "in": 45,
+      "out": 33,
+      "rejects": 12,
+      "promptTokens": 29096,
+      "completionTokens": 11404
+    },
+    "solver": {
+      "calls": 285,
+      "ms": 219440,
+      "in": 33,
+      "out": 28,
+      "rejects": 5,
+      "promptTokens": 52886,
+      "completionTokens": 3046
+    },
+    "form": {
+      "calls": 21,
+      "ms": 153057,
+      "in": 28,
+      "out": 8,
+      "rejects": 20,
+      "promptTokens": 16719,
+      "completionTokens": 2875
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 65,
+      "ms": 15570,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 521876,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 20458,
+      "completionTokens": 10644
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the fundamental structural and functional unit of all living organisms?",
+      "ms": {
+        "draft": 5141,
+        "critique": 7611
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the role of the microscope in the study of cells?",
+      "ms": {
+        "draft": 5141,
+        "critique": 11770,
+        "solver": 2594
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the cell theory?",
+      "ms": {
+        "draft": 5141,
+        "critique": 8968,
+        "solver": 16779,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main characteristic of prokaryotic cells?",
+      "ms": {
+        "draft": 4626,
+        "critique": 11832
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student reads in the passage that the cell theory was modified by Rudolf Virchow. What did he contribute?",
+      "ms": {
+        "draft": 5141,
+        "critique": 11939,
+        "solver": 19446,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what is the significance of the cell theory in biology?",
+      "ms": {
+        "draft": 5141,
+        "critique": 11991,
+        "solver": 17062,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell has a cell wall, what type of cell is it most likely to be?",
+      "ms": {
+        "draft": 4626,
+        "critique": 10583
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a function of the mesosome in prokaryotic cells?",
+      "ms": {
+        "draft": 4626,
+        "critique": 10447,
+        "solver": 2615,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a non-membrane bound organelle found in all cells?",
+      "ms": {
+        "draft": 4626,
+        "critique": 11107,
+        "solver": 15974,
+        "form": 3946
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a feature of the cell envelope in prokaryotic cells?",
+      "ms": {
+        "draft": 4626,
+        "critique": 10278
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is a unique feature of prokaryotic cells?",
+      "ms": {
+        "draft": 4626,
+        "critique": 11018
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell has a rigid structure that provides support and protection, which part of the cell is most likely responsible for this?",
+      "ms": {
+        "draft": 12032,
+        "critique": 10399
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the composition of the cell membrane?",
+      "ms": {
+        "draft": 12032,
+        "critique": 8215,
+        "solver": 15483,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main function of the plasma membrane?",
+      "ms": {
+        "draft": 12032,
+        "critique": 9105,
+        "solver": 15974,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram and passage, which part of the cell membrane is responsible for its fluidity?",
+      "ms": {
+        "draft": 12032,
+        "critique": 8067,
+        "solver": 2383
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT part of the endomembrane system?",
+      "ms": {
+        "draft": 5429,
+        "critique": 10638
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a cell lacks a cell wall, but has a plasma membrane with a phospholipid bilayer and integral proteins, which of the following functions would be most affected?",
+      "ms": {
+        "draft": 12032,
+        "critique": 10700,
+        "solver": 2464,
+        "form": 5458
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a plant cell, if the cell wall is not present, which of the following would most likely happen?",
+      "ms": {
+        "draft": 12032,
+        "critique": 11695,
+        "solver": 17319,
+        "form": 3155
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the function of the Golgi apparatus?",
+      "ms": {
+        "draft": 5429,
+        "critique": 11209
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of the cell is responsible for protein synthesis and secretion?",
+      "ms": {
+        "draft": 5429,
+        "critique": 12412,
+        "solver": 17965,
+        "form": 4675
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the role of the vacuole in plant cells?",
+      "ms": {
+        "draft": 5429,
+        "critique": 10507,
+        "solver": 10952
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not correct?",
+      "ms": {
+        "draft": 4278,
+        "critique": 7534
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Match the following",
+      "ms": {
+        "draft": 4278,
+        "critique": 6435,
+        "solver": 30190
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "New cells generate from",
+      "ms": {
+        "draft": 4278,
+        "critique": 7558,
+        "solver": 23595,
+        "form": 6042
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How do neutral solutes move across the plasma membrane? Can the polar molecules also move across it in the same way? If not, then how are these transported across the membrane?",
+      "ms": {
+        "draft": 4278,
+        "critique": 7324
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is correct:",
+      "ms": {
+        "draft": 4278,
+        "critique": 17416,
+        "solver": 21171,
+        "form": 5180
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is a mesosome in a prokaryotic cell? Mention the functions that it performs.",
+      "ms": {
+        "draft": 4278,
+        "critique": 10598,
+        "solver": 16345
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the primary function of the nuclear pores?",
+      "ms": {
+        "draft": 24498,
+        "critique": 8744,
+        "solver": 2369,
+        "form": 4691
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct statement about ribosomes?",
+      "ms": {
+        "draft": 24498,
+        "critique": 10127,
+        "solver": 2533,
+        "form": 3514
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT part of the endomembrane system?",
+      "ms": {
+        "draft": 7244,
+        "critique": 12885
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the primary function of the Golgi apparatus?",
+      "ms": {
+        "draft": 7244,
+        "critique": 10507,
+        "solver": 17328,
+        "form": 4122
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a cell is actively involved in protein synthesis and secretion, which of the following structures is likely to be most abundant?",
+      "ms": {
+        "draft": 7244,
+        "critique": 10492,
+        "solver": 18652,
+        "form": 5143
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the Golgi apparatus remains in close association with the endoplasmic reticulum?",
+      "ms": {
+        "draft": 7244,
+        "critique": 11055,
+        "solver": 19552,
+        "form": 5496
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the fluid mosaic model, how do proteins move within the cell membrane?",
+      "ms": {
+        "draft": 7973,
+        "critique": 9494,
+        "solver": 2082,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a function of the plasma membrane in prokaryotic cells?",
+      "ms": {
+        "draft": 44087,
+        "critique": 11103
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a unique feature of prokaryotic cells that helps in their classification?",
+      "ms": {
+        "draft": 44087,
+        "critique": 9874,
+        "solver": 1646,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic feature of prokaryotic cells?",
+      "ms": {
+        "draft": 44087,
+        "critique": 10067,
+        "solver": 16033,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of chloroplasts?",
+      "ms": {
+        "draft": 7454,
+        "critique": 12365,
+        "solver": 1126,
+        "form": 3060,
+        "translation": 65949
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of prokaryotic ribosomes?",
+      "ms": {
+        "draft": 7973,
+        "critique": 12357,
+        "solver": 16271,
+        "form": 0,
+        "translation": 51598
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is studying a single-celled organism, what can they conclude about its ability to perform life functions?",
+      "ms": {
+        "draft": 5141,
+        "critique": 8110,
+        "solver": 19038,
+        "form": 3274,
+        "translation": 73191
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a cell lacks a nucleus, which of the following is most likely to be affected?",
+      "ms": {
+        "draft": 24498,
+        "critique": 9171,
+        "solver": 2605,
+        "form": 0,
+        "translation": 61293
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following processes requires energy and is carried out by the plasma membrane?",
+      "ms": {
+        "draft": 7973,
+        "critique": 7988,
+        "solver": 2273,
+        "form": 0,
+        "translation": 63136
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the endoplasmic reticulum?",
+      "ms": {
+        "draft": 5429,
+        "critique": 10193,
+        "solver": 2531,
+        "form": 4815,
+        "translation": 67991
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are the ribosomes in chloroplasts smaller (70S) compared to cytoplasmic ribosomes (80S)?",
+      "ms": {
+        "draft": 24498,
+        "critique": 9476,
+        "solver": 2052,
+        "form": 4962,
+        "translation": 80622
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the fluidity of the cell membrane important for the function of the cell?",
+      "ms": {
+        "draft": 7973,
+        "critique": 10258,
+        "solver": 2525,
+        "form": 0,
+        "translation": 53345
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what is the fundamental structural and functional unit of all living organisms?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What does the passage say about the role of the microscope in the study of cells?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the cell theory?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main characteristic of prokaryotic cells?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student reads in the passage that the cell theory was modified by Rudolf Virchow. What did he contribute?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what is the significance of the cell theory in biology?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a cell has a cell wall, what type of cell is it most likely to be?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a function of the mesosome in prokaryotic cells?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a non-membrane bound organelle found in all cells?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is a feature of the cell envelope in prokaryotic cells?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, which of the following is a unique feature of prokaryotic cells?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a cell has a rigid structure that provides support and protection, which part of the cell is most likely responsible for this?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the composition of the cell membrane?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main function of the plasma membrane?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the diagram and passage, which part of the cell membrane is responsible for its fluidity?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is NOT part of the endomembrane system?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a cell lacks a cell wall, but has a plasma membrane with a phospholipid bilayer and integral proteins, which of the following functions would be most affected?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.membrane: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a plant cell, if the cell wall is not present, which of the following would most likely happen?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cellWall: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the function of the Golgi apparatus?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which part of the cell is responsible for protein synthesis and secretion?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following best explains the role of the vacuole in plant cells?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is true about the structure of cilia and flagella?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is not correct?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Match the following",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "New cells generate from",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How do neutral solutes move across the plasma membrane? Can the polar molecules also move across it in the same way? If not, then how are these transported across the membrane?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is correct:",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is a mesosome in a prokaryotic cell? Mention the functions that it performs.",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the primary function of the nuclear pores?",
+      "reason": "the key is far longer than every distractor (70 vs 29 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a correct statement about ribosomes?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'ribosome'"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT part of the endomembrane system?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the primary function of the Golgi apparatus?",
+      "reason": "the key is far longer than every distractor (39 vs 18 characters); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a cell is actively involved in protein synthesis and secretion, which of the following structures is likely to be most abundant?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Incorrectly associates the function with the Golgi apparatus…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why the Golgi apparatus remains in close association with the endoplasmic reticulum?",
+      "reason": "the key is far longer than every distractor (77 vs 43 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the fluid mosaic model, how do proteins move within the cell membrane?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'plasmaMembrane'"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT a function of the plasma membrane in prokaryotic cells?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a unique feature of prokaryotic cells that helps in their classification?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cell membrane: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic feature of prokaryotic cells?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cell membrane: label key: letters, digits, _ and ', or a number"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

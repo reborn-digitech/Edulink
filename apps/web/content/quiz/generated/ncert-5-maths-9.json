@@ -21,144 +21,49 @@
   "board": "NCERT",
   "book": "Math-Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-23T00:42:27.222Z",
+  "generatedAt": "2026-10-28T05:45:36.155Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "What is the quotient when 500 is divided by 10?",
+      "difficulty": 1,
+      "stem": "What is the result of 340 ÷ 34?",
       "choices": [
-        "5",
-        "50",
-        "500",
-        "5000"
+        "10",
+        "20",
+        "34",
+        "17"
       ],
-      "answerIndex": 1,
-      "solution": "Dividing 500 by 10 moves the digits one place to the right, reducing the value by a factor of 10, which results in 50. The option 5 is too small, 500 is the original number, and 5000 is larger, which does not match the operation of division by 10.",
-      "checkExpr": null,
+      "answerIndex": 0,
+      "solution": "Dividing 340 by 34 gives 10 because 34 multiplied by 10 equals 340. Choosing 20 would be incorrect because it assumes adding the numbers instead of dividing. Selecting 34 would be a mistake in identifying the quotient, and 17 is not a result of the division operation.",
+      "checkExpr": "340/34",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "500 के 10 से भाग देने पर भागफल क्या होता है?",
+          "stem": "340 ÷ 34 का परिणाम क्या है?",
           "choices": [
-            "5",
-            "50",
-            "500",
-            "5000"
+            "10",
+            "20",
+            "34",
+            "17"
           ],
-          "solution": "500 के 10 से भाग देने पर अंक एक स्थान दाईं ओर खिसक जाते हैं, जिससे मान में 10 गुना कमी आ जाती है, जिसके परिणामस्वरूप 50 प्राप्त होता है। विकल्प 5 बहुत छोटा है, 500 मूल संख्या है, और 5000 बड़ा है, जो 10 से भाग देने के कार्य के अनुरूप नहीं है।",
+          "solution": "340 को 34 से भाग देने पर 10 प्राप्त होता है क्योंकि 34 को 10 से गुणा करने पर 340 प्राप्त होता है। 20 चुनना गलत होगा क्योंकि यह संख्याओं को जोड़ने की मान्यता लेता है। 34 का चयन भागफल की पहचान में गलती होगी और 17 भाग ऑपरेशन का परिणाम नहीं है।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "500 ला 10 ने भागल्यास भागाकार काय असेल?",
+          "stem": "340 ÷ 34 चे परिणाम काय आहे?",
           "choices": [
-            "5",
-            "50",
-            "500",
-            "5000"
+            "10",
+            "20",
+            "34",
+            "17"
           ],
-          "solution": "500 ला 10 ने भागल्यास अंक एका स्थानाने डाव्या बाजूला जातात, मूल्य 10 ने कमी होते, जे 50 चे निर्णय देते. विकल्प 5 खूप लहान आहे, 500 मूळ संख्या आहे, आणि 5000 जास्त आहे, जे 10 ने भागण्याच्या क्रियेशी जुळत नाही.",
+          "solution": "340 ला 34 ने भागल्यास 10 मिळतो कारण 34 ला 10 ने गुणल्यास 340 मिळतो. 20 निवडल्यास अशी चूक होईल की संख्या जोडल्या जातात नाहीत भागाकार केल्या जातात. 34 निवडल्यास भागाकार ओळखण्यात चूक होईल आणि 17 हा भागाकार क्रियाकलापाचा परिणाम नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "incorrectly ignores the effect of dividing by 10",
-        null,
-        "does not reduce the number sufficiently",
-        "incorrectly increases the number"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and aligns with the mathematical operation of dividing by 10, which reduces the number by one place value. The reasoning for the distractors also reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/5/mathematics/eemm109.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 9: Coconut Farm"
-          ]
-        },
-        {
-          "document": "ncert/5/mathematics/eemm109.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 9: Coconut Farm"
-          ]
-        },
-        {
-          "document": "ncert/5/mathematics/eemm109.pdf",
-          "ordinal": 2,
-          "pageStart": 5,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 9: Coconut Farm"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T00:42:27.222Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the quotient when 1400 is divided by 100?",
-      "choices": [
-        "14",
-        "140",
-        "1400",
-        "14000"
-      ],
-      "answerIndex": 0,
-      "solution": "Dividing 1400 by 100 moves the decimal point two places to the left, resulting in 14. The correct answer is 14. The other options either keep the number the same or increase it, which does not follow the rules of division by 100.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "1400 के 100 से भाग देने पर भागफल क्या होता है?",
-          "choices": [
-            "14",
-            "140",
-            "1400",
-            "14000"
-          ],
-          "solution": "1400 के 100 से भाग देने पर दशमलव बिंदु को दो स्थान बाईं ओर ले जाने पर 14 प्राप्त होता है। सही उत्तर 14 है। अन्य विकल्प संख्या को वही रखते हैं या बढ़ा देते हैं, जो 100 से भाग देने के नियमों के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "1400 ला 100 ने भागल्यास भागाकार किती होईल?",
-          "choices": [
-            "14",
-            "140",
-            "1400",
-            "14000"
-          ],
-          "solution": "1400 ला 100 ने भागणे हे दशांश बिंदूला दोन जागा बाजूला हलविणे आहे, ज्यामुळे 14 मिळतो. योग्य उत्तर 14 आहे. इतर उत्तरे संख्या तशाच ठेवतात किंवा वाढवतात, जे 100 ने भागण्याच्या नियमांचे उल्लंघन करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for division and decimal points.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -168,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "does not reduce the number sufficiently",
-        "incorrectly increases the number",
-        "incorrectly increases the number"
+        "adds the denominators",
+        "confuses dividend with divisor",
+        "miscalculates the division"
       ],
       "solverAnswers": [
         0,
@@ -180,102 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The solution is correct and aligns with the mathematical operation of dividing 1400 by 100, which results in 14. The reasoning for the distractors is valid, as they represent common misconceptions about place value and division.",
-      "sources": [
-        {
-          "document": "ncert/5/mathematics/eemm109.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 9: Coconut Farm"
-          ]
-        },
-        {
-          "document": "ncert/5/mathematics/eemm109.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 9: Coconut Farm"
-          ]
-        },
-        {
-          "document": "ncert/5/mathematics/eemm109.pdf",
-          "ordinal": 2,
-          "pageStart": 5,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 9: Coconut Farm"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T00:42:27.222Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the result of dividing 576 km by 12 days?",
-      "choices": [
-        "48 km",
-        "50 km",
-        "52 km",
-        "54 km"
-      ],
-      "answerIndex": 0,
-      "solution": "Dividing 576 km by 12 days gives 48 km per day. The other options are incorrect because they do not result from dividing 576 by 12. 50 km is 12 × 50 = 600, which is more than 576. 52 km is 12 × 52 = 624, which is also more than 576. 54 km is 12 × 54 = 648, which is even more than 576.",
-      "checkExpr": "576/12",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "12 दिनों में 576 किमी के भाग देने पर परिणाम क्या होता है?",
-          "choices": [
-            "48 किमी",
-            "50 किमी",
-            "52 किमी",
-            "54 किमी"
-          ],
-          "solution": "576 किमी को 12 दिनों से भाग देने पर 48 किमी प्रति दिन प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे 576 को 12 से भाग देने पर प्राप्त नहीं होते। 50 किमी के लिए 12 × 50 = 600 होता है जो 576 से अधिक है। 52 किमी के लिए 12 × 52 = 624 होता है जो 576 से अधिक है। 54 किमी के लिए 12 × 54 = 648 होता है जो 576 से अधिक है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "12 दिवसांमध्ये 576 किमी भाग लागतो तर त्याचा निकाल काय असेल?",
-          "choices": [
-            "48 किमी",
-            "50 किमी",
-            "52 किमी",
-            "54 किमी"
-          ],
-          "solution": "12 दिवसांमध्ये 576 किमी भाग लागतो तर त्याचा निकाल 48 किमी दिवसाला असतो. इतर विकल्प चुकीचे आहेत कारण ते 576 ला 12 ने भाग देऊन मिळत नाहीत. 50 किमी हा 12 × 50 = 600 असतो, जो 576 पेक्षा जास्त आहे. 52 किमी हा 12 × 52 = 624 असतो, जो 576 पेक्षा जास्त आहे. 54 किमी हा 12 × 54 = 648 असतो, जो 576 पेक्षा जास्त आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for units and operations.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Overestimating the division result by rounding 576 to 600 and dividing by 12",
-        "Miscalculating 576 ÷ 12 as 52 due to an incorrect subtraction or addition error during division",
-        "Confuses the dividend and divisor, dividing 12 by 576 instead of 576 by 12"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 48 km, as 576 ÷ 12 = 48. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The correct answer is 10, as 340 ÷ 34 = 10. The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/5/mathematics/eemm109.pdf",
@@ -306,7 +116,482 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T00:42:27.222Z",
+      "generatedAt": "2026-10-28T05:45:36.155Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the result of 192 ÷ 4?",
+      "choices": [
+        "48",
+        "24",
+        "96",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "Dividing 192 by 4 gives 48 because 4 times 48 equals 192. Choosing 24 would be correct if dividing by 8 instead of 4. Selecting 96 would be the result of doubling the dividend before dividing. Picking 12 would be incorrect because it suggests halving the correct quotient instead of performing the actual division.",
+      "checkExpr": "192/4",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "192 ÷ 4 का परिणाम क्या है?",
+          "choices": [
+            "48",
+            "24",
+            "96",
+            "12"
+          ],
+          "solution": "192 को 4 से भाग देने पर 48 प्राप्त होता है क्योंकि 4 के 48 गुणज में 192 होता है। यदि 4 के स्थान पर 8 से भाग दिया जाए तो 24 सही उत्तर होता। 96 चुनना भाज्य को दोगुना करके भाग देने पर परिणाम होता। 12 चुनना गलत होता क्योंकि यह सही भाग देने के बजाय भागफल को आधा करने का संकेत देता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "192 ÷ 4 चे परिणाम किती आहे?",
+          "choices": [
+            "48",
+            "24",
+            "96",
+            "12"
+          ],
+          "solution": "192 ला 4 ने भागल्यास 48 मिळतो कारण 4 च्या 48 पटाने 192 मिळतो. 8 ने भागल्यास 24 असतो. 96 हे भाज्याचे दुप्पट करून मिळते. 12 हे चुकीचे असते कारण ते योग्य भागाकाराचे अर्धे सूचित करते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses divisor with a different number",
+        "doubles the dividend",
+        "halves the quotient"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The calculation 192 ÷ 4 = 48 is correct. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm109.pdf",
+          "ordinal": 6,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 9: Coconut Farm"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm109.pdf",
+          "ordinal": 7,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 9: Coconut Farm"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm109.pdf",
+          "ordinal": 8,
+          "pageStart": 17,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 9: Coconut Farm"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T05:45:36.155Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Megha packs 15 packets of 8 biscuits each for a 4-day trip. There are 6 people in the group. How many biscuits can each person have each day if they are distributed evenly?",
+      "choices": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is '5' because 15 × 8 = 120 biscuits in total. Dividing 120 by 6 people gives 20 biscuits per person over 4 days. 20 ÷ 4 = 5. The other options are incorrect because they do not match the result of the division.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मेघा एक 4-दिवसीय यात्रा के लिए प्रत्येक 8 बिस्किट वाले 15 पैकेट लेती है। समूह में 6 लोग हैं। यदि बिस्किट बराबर बांटे जाएं तो प्रत्येक व्यक्ति प्रतिदिन कितने बिस्किट खा सकता है?",
+          "choices": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "solution": "सही उत्तर '5' है क्योंकि 15 × 8 = 120 बिस्किट कुल हैं। 120 को 6 लोगों में विभाजित करने पर 4 दिनों में प्रति व्यक्ति 20 बिस्किट मिलते हैं। 20 ÷ 4 = 5। अन्य विकल्प गलत हैं क्योंकि वे विभाजन के परिणाम के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terms and structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मेघा एका 4-दिवसीय प्रवासासाठी प्रत्येकी 8 बिस्किटे असलेले 15 पॅकेट बांधते. समूहात 6 लोक आहेत. जर त्यांना समान वाटा दिला गेला तर प्रत्येक व्यक्ती दररोज किती बिस्किटे खाऊ शकते?",
+          "choices": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "solution": "बरोबर उत्तर '5' आहे कारण 15 × 8 = 120 बिस्किटे एकूण. 120 ला 6 लोकांमध्ये विभागल्यास 4 दिवसांत प्रत्येकाला 20 बिस्किटे मिळतात. 20 ÷ 4 = 5. इतर उत्तरे चुकीची आहेत कारण ते विभाजनाच्या परिणामाशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Mistakenly divides 120 by 24 instead of 6",
+        "Mistakenly divides 120 by 20 instead of 6",
+        "Mistakenly divides 120 by 15 instead of 6"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and logically arrives at the answer 5. The reasoning for the distractors is based on plausible student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm109.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Coconut Farm"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm109.pdf",
+          "ordinal": 4,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Coconut Farm"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm109.pdf",
+          "ordinal": 5,
+          "pageStart": 11,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Coconut Farm"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T05:45:36.155Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the given division, 200 ÷ 20 = 10, what is the value of the remainder?",
+      "choices": [
+        "0",
+        "10",
+        "20",
+        "200"
+      ],
+      "answerIndex": 0,
+      "solution": "The remainder is 0 because 200 is exactly divisible by 20, and there is no leftover value. The other options are incorrect: 10 is the quotient, 20 is the divisor, and 200 is the dividend.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दिए गए भागफल में, 200 ÷ 20 = 10, शेष का मान क्या है?",
+          "choices": [
+            "0",
+            "10",
+            "20",
+            "200"
+          ],
+          "solution": "शेष 0 है क्योंकि 200, 20 से बिल्कुल विभाज्य है और कोई बचा हुआ मान नहीं है। अन्य विकल्प गलत हैं: 10 भागफल है, 20 भाजक है और 200 भाज्य है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दिलेल्या भागात, 200 ÷ 20 = 10, शेषाची किंमत किती आहे?",
+          "choices": [
+            "0",
+            "10",
+            "20",
+            "200"
+          ],
+          "solution": "शेष 0 आहे कारण 200 ला 20 ने बरोबर भाग जातो आणि कोणताही उर्वरित मूल्य राहत नाही. इतर विकल्प चुकीचे आहेत: 10 भागाकार आहे, 20 भाजक आहे आणि 200 भाज्य आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the quotient with the remainder.",
+        "Confuses the divisor with the remainder.",
+        "Confuses the dividend with the remainder."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward. The division 200 ÷ 20 = 10 is exact, so the remainder is 0. The author's reasoning is sound and matches standard mathematical understanding.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Coconut Farm"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm109.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 9: Coconut Farm"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm109.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Coconut Farm"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T05:45:36.155Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A theatre company can accommodate 45 people per show. If 475 people bought tickets, how many shows are needed to seat everyone?",
+      "choices": [
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is '11' because 475 ÷ 45 = 10.55. Since partial shows are not possible, 11 shows are needed to seat everyone. The other options are incorrect because they do not account for the remainder.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक थिएटर कंपनी प्रत्येक शो में 45 लोगों के बैठने की जगह दे सकती है। यदि 475 लोग टिकट खरीदते हैं, तो सभी के बैठने के लिए कितने शो की आवश्यकता होती है?",
+          "choices": [
+            "10",
+            "11",
+            "12",
+            "13"
+          ],
+          "solution": "सही उत्तर '11' है क्योंकि 475 ÷ 45 = 10.55। आंशिक शो संभव नहीं हैं, इसलिए सभी के बैठने के लिए 11 शो की आवश्यकता होती है। अन्य विकल्प गलत हैं क्योंकि वे शेष के ध्यान में नहीं रखते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology and logical structure.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक नाट्य कंपनी एक शोमध्ये 45 लोकांना बसवू शकते. जर 475 लोकांनी टिकिट खरेदी केली असतील, तर सर्वांना बसवण्यासाठी किती शो आवश्यक असतील?",
+          "choices": [
+            "10",
+            "11",
+            "12",
+            "13"
+          ],
+          "solution": "सही उत्तर '11' आहे कारण 475 ÷ 45 = 10.55. अर्धा शो शक्य नसल्याने, सर्वांना बसवण्यासाठी 11 शो आवश्यक असतात. इतर विकल्प चुकीचे आहेत कारण ते शेष लक्षात घेत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Uses the whole number part of the division without rounding up",
+        null,
+        "Subtracts 1 from the correct answer",
+        "Mistakenly believes the division results in 10"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. 475 ÷ 45 = 10.55, which requires 11 shows to seat everyone, as partial shows are not possible. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm109.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Coconut Farm"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm109.pdf",
+          "ordinal": 4,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Coconut Farm"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm109.pdf",
+          "ordinal": 5,
+          "pageStart": 11,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Coconut Farm"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T05:45:36.155Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Ibrahim earns ₹8890 in a week by selling tender coconuts at ₹35 each. How many tender coconuts did he sell?",
+      "choices": [
+        "254",
+        "255",
+        "256",
+        "257"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is '254' because 8890 ÷ 35 = 254. This means Ibrahim sold 254 coconuts. The other options are incorrect because they do not match the result of the division.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "इब्राहिम एक सप्ताह में ₹8890 कमाता है, जब वह ₹35 प्रति छोटा नारियल बेचता है। उसने कितने छोटे नारियल बेचे?",
+          "choices": [
+            "254",
+            "255",
+            "256",
+            "257"
+          ],
+          "solution": "सही उत्तर '254' है क्योंकि 8890 ÷ 35 = 254। इसका अर्थ है कि इब्राहिम ने 254 नारियल बेचे। अन्य विकल्प गलत हैं क्योंकि वे भाग के परिणाम के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "इब्राहिम एका आठवड्यात रु. 8890 मिळवतो, जेव्हा तो तरुण कोकोनट रु. 35 प्रत्येक भावाने विकतो. त्याने किती तरुण कोकोनट विकले?",
+          "choices": [
+            "254",
+            "255",
+            "256",
+            "257"
+          ],
+          "solution": "बरोबर उत्तर '254' आहे कारण 8890 ÷ 35 = 254. हे दर्शवते की इब्राहिमने 254 कोकोनट विकले. उरलेले उत्तर चुकीचे आहेत कारण ते भागाकाराच्या परिणामाशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Adds 1 to the correct answer",
+        "Subtracts 1 from the correct answer",
+        "Mistakenly believes the division results in 257"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is mathematically sound, as 8890 ÷ 35 = 254. The distractors are plausible errors, such as adding or subtracting 1, or a miscalculation.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm109.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Coconut Farm"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm109.pdf",
+          "ordinal": 4,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Coconut Farm"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm109.pdf",
+          "ordinal": 5,
+          "pageStart": 11,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 9: Coconut Farm"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T05:45:36.155Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

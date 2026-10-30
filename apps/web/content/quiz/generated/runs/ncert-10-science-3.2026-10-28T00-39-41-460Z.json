@@ -1,0 +1,788 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T00:39:41.460Z",
+  "finishedAt": "2026-10-28T00:49:18.036Z",
+  "seconds": 577,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc103.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 3 — Metals and Non-metals",
+    "edition": "Reprint 2026-27",
+    "chunks": 27,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n6. C. X is a non-metal and Y is a metal.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n6. The electronic configuration of three elements X, Y and Z are X- 2, 8, 7; Y- 2,\n8, 2; and Z - 2, 8 1\nA. Y and Z are metals\nB. Y and X are non-metals\nC. X is a non -metal and Y is a metal\nD. Y is a non-metal and Z is a metal",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n2. Match column I with column II and select the correct option using the given\ncodes. 1\nColumn I Column II\na. A metal that forms amphoteric oxides (i) Ga\nb. A metal which melts when kept on our palm (ii) Au\nc. A metal that reacts with nitric acid (iii) Al\nd. A metal which cannot displace hydrogen from (iv) Mn\nacids\nA. a – (ii), b – (i), c – (iii), d – (iv)\nB. a – (iii), b – (i), c – (iv), d – (ii)\nC. a – (iv), b – (ii), c – (iii), d – (i)\nD. a – (iii), b – (ii), c – (i), d – (iv)\nThe solution in the given figure is likely to be\nA. HNO 3\nB. C 2 H 5 OH\nC. H 2 SO 4\nD. CO 2 in water\n- - - - - - - - - - - - - -\nFor Visual Impaired Students\nWhich among the following is considered as the strongest ",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n4. On adding dilute sulphuric acid to a test tube containing a metal ‘X’, a colourless gas is 1\nproduced when a burning match stick is brought near it. Which of the following correctly\nrepresents metal ‘X’?\na) Sodium\nb) Sulphur\nc) Copper\nd) Silver"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 176512,
+      "in": 41,
+      "out": 40,
+      "rejects": 1,
+      "promptTokens": 38093,
+      "completionTokens": 10019
+    },
+    "critique": {
+      "calls": 56,
+      "ms": 372946,
+      "in": 40,
+      "out": 34,
+      "rejects": 6,
+      "promptTokens": 25560,
+      "completionTokens": 9880
+    },
+    "solver": {
+      "calls": 279,
+      "ms": 155840,
+      "in": 34,
+      "out": 30,
+      "rejects": 4,
+      "promptTokens": 50320,
+      "completionTokens": 3149
+    },
+    "form": {
+      "calls": 20,
+      "ms": 74139,
+      "in": 30,
+      "out": 12,
+      "rejects": 18,
+      "promptTokens": 8698,
+      "completionTokens": 1899
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 42,
+      "ms": 6809,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 373470,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 22777,
+      "completionTokens": 11645
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a physical property of metals?",
+      "ms": {
+        "draft": 2856,
+        "critique": 7297,
+        "solver": 1642,
+        "form": 4381
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a non-metal that can exist in different forms?",
+      "ms": {
+        "draft": 2856,
+        "critique": 8000,
+        "solver": 13406
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following metals can be easily cut with a knife?",
+      "ms": {
+        "draft": 2856,
+        "critique": 7132,
+        "solver": 12371,
+        "form": 2760
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which metal is the best conductor of heat?",
+      "ms": {
+        "draft": 2856,
+        "critique": 7103,
+        "solver": 12581,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following metals reacts with cold water to form a metal hydroxide and hydrogen gas?",
+      "ms": {
+        "draft": 3735,
+        "critique": 7036
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that a metal produces a sound when struck, but it is not a good conductor of electricity. Which of the following metals could this be?",
+      "ms": {
+        "draft": 2856,
+        "critique": 8744,
+        "solver": 12672
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which metal forms an amphoteric oxide?",
+      "ms": {
+        "draft": 3735,
+        "critique": 6822,
+        "solver": 12950,
+        "form": 3635
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following metals would not react with dilute hydrochloric acid?",
+      "ms": {
+        "draft": 3735,
+        "critique": 6893,
+        "solver": 17422
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A metal X reacts with steam to form a metal oxide and hydrogen gas. It does not react with cold water or dilute acid. Which of the following could be metal X?",
+      "ms": {
+        "draft": 3735,
+        "critique": 7314,
+        "solver": 1633
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which element is the most reactive according to the reactivity series in the passage?",
+      "ms": {
+        "draft": 2725,
+        "critique": 5771,
+        "solver": 1581,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an ionic compound?",
+      "ms": {
+        "draft": 2725,
+        "critique": 7181,
+        "solver": 1444,
+        "form": 4176
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following metals would displace iron from its salt solution?",
+      "ms": {
+        "draft": 2725,
+        "critique": 6750,
+        "solver": 12079,
+        "form": 2260
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of ionic compounds?",
+      "ms": {
+        "draft": 5114,
+        "critique": 7118,
+        "solver": 1884,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a metal 'X' produces a colourless gas when reacted with dilute sulphuric acid, which metal is 'X'?",
+      "ms": {
+        "draft": 2725,
+        "critique": 8046,
+        "solver": 17588,
+        "form": 2964
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is true about the extraction of mercury?",
+      "ms": {
+        "draft": 5114,
+        "critique": 6248,
+        "solver": 1456,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student conducted an experiment to test the conductivity of a salt solution. The bulb did not light up. What could be the reason?",
+      "ms": {
+        "draft": 5114,
+        "critique": 6421,
+        "solver": 14039,
+        "form": 1403
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a chemical property of metals?",
+      "ms": {
+        "draft": 11891,
+        "critique": 6788
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A solution was used to clean gold bangles, which made them sparkle but reduced their weight. What is the likely nature of the solution?",
+      "ms": {
+        "draft": 11891,
+        "critique": 7206
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A metal 'X' reacts with dilute sulphuric acid to produce a colourless gas. What is the likely identity of 'X'?",
+      "ms": {
+        "draft": 11891,
+        "critique": 7602
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Copper is used to make hot water tanks, but steel is not. What is the main reason for this?",
+      "ms": {
+        "draft": 11891,
+        "critique": 7029
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of metals?",
+      "ms": {
+        "draft": 6331,
+        "critique": 6788,
+        "solver": 1363,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An element 'X' has an electronic configuration of 2, 8, 7. Another element 'Y' has an electronic configuration of 2, 8, 2. Which of the following is correct about 'X' and 'Y'?",
+      "ms": {
+        "draft": 11891,
+        "critique": 6609,
+        "solver": 11041,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of an alloy?",
+      "ms": {
+        "draft": 6331,
+        "critique": 5928,
+        "solver": 1493,
+        "form": 3420
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following metals is used for making electrical wires due to its high conductivity?",
+      "ms": {
+        "draft": 6331,
+        "critique": 6198,
+        "solver": 2219,
+        "form": 3017
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following metals will displace hydrogen from dilute acids?",
+      "ms": {
+        "draft": 6331,
+        "critique": 7904,
+        "solver": 12698,
+        "form": 3201
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of ionic compounds?",
+      "ms": {
+        "draft": 5247,
+        "critique": 6503
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A metal X is found in nature in the free state. Which of the following is most likely to be X?",
+      "ms": {
+        "draft": 5910,
+        "critique": 6011,
+        "solver": 8613,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the process of electrolytic refining of copper, which of the following is true about the impure metal?",
+      "ms": {
+        "draft": 5910,
+        "critique": 6640,
+        "solver": 1638,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A metal X reacts with dilute sulphuric acid to produce a colourless gas. Which of the following could be metal X?",
+      "ms": {
+        "draft": 2856,
+        "critique": 5918,
+        "solver": 1664,
+        "form": 2921
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which metal would react most vigorously with dilute hydrochloric acid?",
+      "ms": {
+        "draft": 2725,
+        "critique": 7058,
+        "solver": 1645,
+        "form": 2935
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a non-metal that is a good conductor of electricity?",
+      "ms": {
+        "draft": 6331,
+        "critique": 6801,
+        "solver": 14692,
+        "form": 2034
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is used to convert metal sulphides into metal oxides by heating strongly in the presence of excess air?",
+      "ms": {
+        "draft": 7747,
+        "critique": 5733,
+        "solver": 1151,
+        "form": 0,
+        "translation": 45443
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process of protecting steel and iron from rusting by coating them with a thin layer of zinc called?",
+      "ms": {
+        "draft": 6331,
+        "critique": 6575,
+        "solver": 13803,
+        "form": 3352,
+        "translation": 29956
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of non-metals?",
+      "ms": {
+        "draft": 11891,
+        "critique": 6403,
+        "solver": 1922,
+        "form": 0,
+        "translation": 26086
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a displacement reaction used to obtain a metal from its compound?",
+      "ms": {
+        "draft": 5910,
+        "critique": 7145,
+        "solver": 1426,
+        "form": 0,
+        "translation": 33854
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following metal oxides is basic in nature?",
+      "ms": {
+        "draft": 3735,
+        "critique": 7963,
+        "solver": 11482,
+        "form": 2960,
+        "translation": 32208
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following metals can be extracted by heating its ore in air?",
+      "ms": {
+        "draft": 5114,
+        "critique": 7252,
+        "solver": 1547,
+        "form": 0,
+        "translation": 49824
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which reaction is an example of a displacement reaction?",
+      "ms": {
+        "draft": 2725,
+        "critique": 7577,
+        "solver": 1521,
+        "form": 5554,
+        "translation": 44852
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements about metal reactivity is correct?",
+      "ms": {
+        "draft": 3735,
+        "critique": 6710,
+        "solver": 18212,
+        "form": 4079,
+        "translation": 56879
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is correct about the formation of ionic compounds?",
+      "ms": {
+        "draft": 5114,
+        "critique": 6462,
+        "solver": 2151,
+        "form": 4551,
+        "translation": 49368
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a physical property of metals?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed (skipped in distractor list…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a non-metal that can exist in different forms?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following metals can be easily cut with a knife?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which metal is the best conductor of heat?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following metals reacts with cold water to form a metal hydroxide and hydrogen gas?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student observes that a metal produces a sound when struck, but it is not a good conductor of electricity. Which of the following metals could this be?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which metal forms an amphoteric oxide?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following metals would not react with dilute hydrochloric acid?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A metal X reacts with steam to form a metal oxide and hydrogen gas. It does not react with cold water or dilute acid. Which of the following could be metal X?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which element is the most reactive according to the reactivity series in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an ionic compound?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer, but distractors are other common compounds.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following metals would displace iron from its salt solution?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a property of ionic compounds?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Thinks ionic compounds are soluble in non-polar solvents lik…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a metal 'X' produces a colourless gas when reacted with dilute sulphuric acid, which metal is 'X'?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is true about the extraction of mercury?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Thinks mercury can be extracted by reducing its oxide with c…\"); distractor 2's reason is not a one-line misconception (\"Thinks mercury requires electrolysis, which is not correct a…\"); distractor 3's reason is not a one-line misconception (\"Believes mercury cannot be extracted from its ore, which is …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student conducted an experiment to test the conductivity of a salt solution. The bulb did not light up. What could be the reason?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following is an example of a reduction process used to obtain a metal from its oxide?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a chemical property of metals?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A solution was used to clean gold bangles, which made them sparkle but reduced their weight. What is the likely nature of the solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A metal 'X' reacts with dilute sulphuric acid to produce a colourless gas. What is the likely identity of 'X'?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Copper is used to make hot water tanks, but steel is not. What is the main reason for this?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of metals?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, no misconception here, but the stem avoids t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "An element 'X' has an electronic configuration of 2, 8, 7. Another element 'Y' has an electronic configuration of 2, 8, 2. Which of the following is correct about 'X' and 'Y'?",
+      "reason": "options 0 and 1 say the same thing (\"X is a metal and Y is a non-metal\" / \"X is a non-metal and Y is a metal\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of an alloy?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, no misconception here, but the stem avoids t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following metals is used for making electrical wires due to its high conductivity?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"An alloy with lower conductivity, but it is used for welding…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following metals will displace hydrogen from dilute acids?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a property of ionic compounds?",
+      "reason": "the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A metal X is found in nature in the free state. Which of the following is most likely to be X?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the process of electrolytic refining of copper, which of the following is true about the impure metal?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.liquid: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A metal X reacts with dilute sulphuric acid to produce a colourless gas. Which of the following could be metal X?",
+      "reason": "near-duplicate of served question cmvgubvva04wcgpfhda2wskap (cosine 0.916 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which metal would react most vigorously with dilute hydrochloric acid?",
+      "reason": "near-duplicate of served question cmvni7x4s04afgp21h16f6xla (cosine 0.950 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which of the following is an example of a non-metal that is a good conductor of electricity?",
+      "reason": "near-duplicate of served question cmvgubvv004vogpfh1e8crnpc (cosine 0.972 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

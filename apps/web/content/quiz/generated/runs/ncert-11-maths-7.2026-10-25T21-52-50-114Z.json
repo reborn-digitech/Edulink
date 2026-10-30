@@ -1,0 +1,499 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T21:52:50.114Z",
+  "finishedAt": "2026-10-25T22:01:28.017Z",
+  "seconds": 518,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh107.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Binomial Theorem",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2026-27]\n17. Suppose a random variable 𝑋 follows the binomial distribution with parameters 1\n𝑃(𝑋=𝑟)\n𝑛 and 𝑝 , where 0 < 𝑝 < 1 . If 𝑃(𝑋=𝑛−𝑟)\nequals\n1 1 1\n(A) 2 (B) 3 (C) 5\nis independent of 𝑛 and 𝑟 , then 𝑝\n(D) 7",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2023-24]\n20. Assertion (A) : The probability of getting 6 heads when a unbiased coin is tossed 10 times is\nଵ ଵ଴\n𝐶(10,6) ቀ ቁ ଶ\nReason (R) In a Binomial distribution the probability is given by\nP(X= r) = C (n, r)(𝑝) (𝑞) ௥ ௡ି௥",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2024-25]\n31(a). (i) We have ,  P i=1 8 ( X = i ) = 1\n, which has to be maximized.\n½\n½\n p + 2 p + 2 p + p + 2 p + p + 2 p + 7 p + p = 1 2 2 2 ½\n 10p + 9 p −1 = 0 2\n(10 p − 1)( p + 1) = 0\n p  − 1\n1 1\n p =\n(ii)\nMean, E ( X ) =  i P i=1 8 ( X = i ) ½\n= 1 p + 2 p + 3 2 p + 4 p + 5 2 p + 6 p + 7 2 p + 8 2 2 ( 7 p + p 2 ) ½\n= 33 p + 76 p 2\n33 76 203\n= + = ½\n10 100 50\nOR\n31(b). 1 99\nWe have, p = 0.01 =  q = ½\n100 100\nLet number of Bernoulli trials be n.\nNow, the binomial distribution formula is for any random variable ( X ) is given by\nx n− x\nn  1   99 \nP ( X = x ) = C x   100   100    \nSo, the probability of at least one success is\nP ( X  1 ) = 1− P ( X = 0 ) = 1− C n 0  1  ",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n7. B 210 = 21 + (𝑛 − 1)21 ⇒ 𝑛 = 10\n(B) 𝟏𝟎 𝒕𝒉"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 115758,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 21206,
+      "completionTokens": 6449
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 229921,
+      "in": 24,
+      "out": 22,
+      "rejects": 2,
+      "promptTokens": 15863,
+      "completionTokens": 5754
+    },
+    "solver": {
+      "calls": 163,
+      "ms": 119004,
+      "in": 22,
+      "out": 15,
+      "rejects": 7,
+      "promptTokens": 47243,
+      "completionTokens": 2129
+    },
+    "form": {
+      "calls": 6,
+      "ms": 19515,
+      "in": 15,
+      "out": 10,
+      "rejects": 5,
+      "promptTokens": 1725,
+      "completionTokens": 594
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 28,
+      "ms": 5588,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 290653,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 19627,
+      "completionTokens": 8310
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What is the 5th term in the expansion of (a + b)^7?",
+      "ms": {
+        "draft": 13981,
+        "critique": 6159,
+        "solver": 1054
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the expansion of (a + b)^4 using the binomial theorem?",
+      "ms": {
+        "draft": 13981,
+        "critique": 6595,
+        "solver": 2001,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the coefficients of x^k and x^{k+1} in the expansion of (1 + x)^n are in the ratio 1:2, what is the value of k?",
+      "ms": {
+        "draft": 13981,
+        "critique": 6871,
+        "solver": 1817
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the coefficients of the 2nd, 3rd, and 4th terms in the expansion of (1 + x)^n are in arithmetic progression, what is the value of n?",
+      "ms": {
+        "draft": 13981,
+        "critique": 5400,
+        "solver": 17208
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the coefficient of x^4 in the expansion of (x + 2)^5?",
+      "ms": {
+        "draft": 13981,
+        "critique": 10987
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the expansion of (x - 2y)^5 according to the binomial theorem?",
+      "ms": {
+        "draft": 15159,
+        "critique": 9212,
+        "solver": 28474
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If (x + 1/x)^4 is expanded, what is the coefficient of x^2?",
+      "ms": {
+        "draft": 15159,
+        "critique": 8651
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If (1.01)^10000 is expanded using the binomial theorem, which of the following is true?",
+      "ms": {
+        "draft": 15159,
+        "critique": 9129,
+        "solver": 24786,
+        "form": 3627
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the value of (1 + x)^n when x = 1?",
+      "ms": {
+        "draft": 15159,
+        "critique": 5763,
+        "solver": 7761,
+        "form": 1403
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which expression is equivalent to (a + b)^5 - (a - b)^5?",
+      "ms": {
+        "draft": 14580,
+        "critique": 6501,
+        "solver": 1959
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the expansion of (x - 2y)^5?",
+      "ms": {
+        "draft": 14580,
+        "critique": 5360,
+        "solver": 29364
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If (1 + x)^n is expanded, and the coefficients of x^2 and x^3 are equal, what is the value of n?",
+      "ms": {
+        "draft": 14580,
+        "critique": 10015,
+        "solver": 18755
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the expansion of (1 + x)^4?",
+      "ms": {
+        "draft": 14580,
+        "critique": 6866,
+        "solver": 1723,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the binomial theorem, what is the sum of all the coefficients in the expansion of (a + b)^n?",
+      "ms": {
+        "draft": 2875,
+        "critique": 6945,
+        "solver": 1333,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the remainder when 6^n - 5n is divided by 25?",
+      "ms": {
+        "draft": 15159,
+        "critique": 13092,
+        "solver": 2506,
+        "form": 3539
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the triangular arrangement of coefficients used in the binomial theorem?",
+      "ms": {
+        "draft": 2875,
+        "critique": 3922,
+        "solver": 694,
+        "form": 972,
+        "translation": 29867
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct expansion of (a + b)^2 according to the binomial theorem?",
+      "ms": {
+        "draft": 2875,
+        "critique": 6314,
+        "solver": 1416,
+        "form": 0,
+        "translation": 28373
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of C(10,6) × (1/2)^10 according to the binomial distribution?",
+      "ms": {
+        "draft": 15159,
+        "critique": 5759,
+        "solver": 2057,
+        "form": 3291,
+        "translation": 35890
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If (a + b)^3 is expanded using the binomial theorem, what is the coefficient of the term containing b^2?",
+      "ms": {
+        "draft": 2875,
+        "critique": 6229,
+        "solver": 1423,
+        "form": 0,
+        "translation": 27068
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of (1.01)^1000?",
+      "ms": {
+        "draft": 14580,
+        "critique": 5883,
+        "solver": 2244,
+        "form": 7001,
+        "translation": 43343
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the binomial theorem, the expansion of (a + b)^5 has how many terms?",
+      "ms": {
+        "draft": 2875,
+        "critique": 6654,
+        "solver": 1775,
+        "form": 0,
+        "translation": 24260
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the coefficients of x^2 and x^3 in the expansion of (1 + x)^n are equal, what is the value of n?",
+      "ms": {
+        "draft": 13981,
+        "critique": 9591,
+        "solver": 1208,
+        "form": 0,
+        "translation": 31514
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If (a + b)^n is expanded and the coefficients of the first and last terms are both 1, what can be said about n?",
+      "ms": {
+        "draft": 2875,
+        "critique": 7197,
+        "solver": 1428,
+        "form": 0,
+        "translation": 26935
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If (a + b)^n is expanded, and the ratio of the coefficients of a^{n-2}b^2 and a^{n-3}b^3 is 3:1, what is the value of n?",
+      "ms": {
+        "draft": 14580,
+        "critique": 9978,
+        "solver": 13283,
+        "form": 0,
+        "translation": 39564
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the 5th term in the expansion of (a + b)^7?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the expansion of (a + b)^4 using the binomial theorem?",
+      "reason": "options 0 and 1 say the same thing (\"a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4\" / \"a^4 + 4a^3b + 4a^2b^2 + 4ab^3 + b^4\"); options 0 and 3 say the same thing (\"a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4\" / \"a^4 + 4a^3b + 6a^2b^2 + 6ab^3 + b^4\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the coefficients of x^k and x^{k+1} in the expansion of (1 + x)^n are in the ratio 1:2, what is the value of k?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the coefficients of the 2nd, 3rd, and 4th terms in the expansion of (1 + x)^n are in arithmetic progression, what is the value of n?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the coefficient of x^4 in the expansion of (x + 2)^5?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the expansion of (x - 2y)^5 according to the binomial theorem?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If (x + 1/x)^4 is expanded, what is the coefficient of x^2?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If (1.01)^10000 is expanded using the binomial theorem, which of the following is true?",
+      "reason": "options 2 and 3 are the same (\"It is equal to 10000\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the value of (1 + x)^n when x = 1?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which expression is equivalent to (a + b)^5 - (a - b)^5?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the expansion of (x - 2y)^5?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If (1 + x)^n is expanded, and the coefficients of x^2 and x^3 are equal, what is the value of n?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the expansion of (1 + x)^4?",
+      "reason": "options 0 and 2 say the same thing (\"1 + 4x + 6x^2 + 4x^3 + x^4\" / \"1 + 4x + 6x^2 + 4x^3 + 6x^4\"); options 0 and 3 say the same thing (\"1 + 4x + 6x^2 + 4x^3 + x^4\" / \"1 + 4x + 6x^2 + 4x^3 + 4x^4\"); options 1 and 2 say the same thing (\"1 + 4x + 6x^2 + 4x^3\" / \"1 + 4x + 6x^2 + 4x^3 + 6x^4\"); options 1 and 3 say the same thing (\"1 + 4x + 6x^2 + 4x^3\" / \"1 + 4x + 6x^2 + 4x^3 + 4x^4\"); options 2 and 3 say the same thing (\"1 + 4x + 6x^2 + 4x^3 + 6x^4\" / \"1 + 4x + 6x^2 + 4x^3 + 4x^4\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the binomial theorem, what is the sum of all the coefficients in the expansion of (a + b)^n?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the remainder when 6^n - 5n is divided by 25?",
+      "reason": "near-duplicate of served question cmvkekas50k81gpfhgpzw2l82 (cosine 0.981 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,678 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T13:06:41.387Z",
+  "finishedAt": "2026-10-23T13:20:49.646Z",
+  "seconds": 848,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo117.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 17 — Locomotion and Movement",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2013 — question paper]\n45. (2.5 points) A few types of locomotory actions are listed in column A. Choose\nfrom the options and fill in the table with the number of the appropriate animal.\nNo. A B\n1. Ciliary locomotion\n2. Looping movements\n3. Alternate movements of multiple limbs\n4. Alternate contraction circular and longitudinal muscles in the body\nI. Earthworm\nII. Nereis\nIII. Crab\nIV. Planarian\nV. Amoeba\nVI. Leech\nGENETICS & EVOLUTION (11.5 points)",
+      "[NSEB 2017 — question paper]\n44. Which of the following assist in the locomotion of earthworm?\ni. Muscles in the body wall\nii. Coelomic fluid\niii. Septa\niv. Setae\na) i, ii, iii and iv\nb) Only i, ii and iv\nc) Only ii, iii and iv\nd) Only i and iv\nB221",
+      "[INBO 2015 — question paper]\n45. (2 points) The chart shows different types of limb modifications (A, B, C and\nD) found in mammals. Limb\nLong\nA B\nPrehensile Non-prehensile\ndigits end with digits modified\nclaws and fused.\nShort\nC D\nPresence of Complete\ncompact strong modification, reduction\nbones, paws and compression of\nwith claws component bones\nAssign these modifications (A to D) to the animals with the following lifestyles.\n1. Animal prefers to run on ground. ________\n2. Animals swim in aquatic habitat. _________\n3. Animals live a subterranean life. _________\n4. Climbing animals living in and moving through trees. _________\nGENETICS & EVOLUTION (16.5 points)",
+      "[CBSE Class XII Biology, sample question paper, 2026-27]\n18. The movement of landmasses over geological time changed the distribution 2\nand evolution of animals. Explain this idea using two examples from different\nregions of the world."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 218481,
+      "in": 39,
+      "out": 32,
+      "rejects": 8,
+      "promptTokens": 30741,
+      "completionTokens": 8556
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 403009,
+      "in": 32,
+      "out": 26,
+      "rejects": 6,
+      "promptTokens": 20152,
+      "completionTokens": 7515
+    },
+    "solver": {
+      "calls": 209,
+      "ms": 143083,
+      "in": 26,
+      "out": 24,
+      "rejects": 2,
+      "promptTokens": 38584,
+      "completionTokens": 2227
+    },
+    "form": {
+      "calls": 14,
+      "ms": 68366,
+      "in": 24,
+      "out": 11,
+      "rejects": 13,
+      "promptTokens": 5247,
+      "completionTokens": 1212
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 50,
+      "ms": 11110,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 501160,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 25007,
+      "completionTokens": 12433
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 4,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which type of movement is shown by Amoeba?",
+      "ms": {
+        "draft": 17228,
+        "critique": 9182
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main characteristic of a sarcomere?",
+      "ms": {
+        "draft": 17228,
+        "critique": 11439
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a type of muscle that is under voluntary control?",
+      "ms": {
+        "draft": 17228,
+        "critique": 8675,
+        "solver": 16711,
+        "form": 4177
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has difficulty in moving their limbs, which system is likely to be affected?",
+      "ms": {
+        "draft": 17228,
+        "critique": 9794,
+        "solver": 15107,
+        "form": 4617
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Figure 17.2, which part of the muscle fibre is responsible for the contraction?",
+      "ms": {
+        "draft": 17228,
+        "critique": 9510,
+        "solver": 1741,
+        "form": 5931
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a type of muscle fibre that contains a high amount of myoglobin?",
+      "ms": {
+        "draft": 8807,
+        "critique": 9695,
+        "solver": 22118,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is responsible for the release of calcium ions during muscle contraction?",
+      "ms": {
+        "draft": 8807,
+        "critique": 12725
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the sliding filament theory, which part of the muscle fibre shortens during contraction?",
+      "ms": {
+        "draft": 8807,
+        "critique": 12985,
+        "solver": 16201,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a function of the vertebral column?",
+      "ms": {
+        "draft": 5597,
+        "critique": 10679
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the rib cage?",
+      "ms": {
+        "draft": 5597,
+        "critique": 9893,
+        "solver": 2107,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the sliding filament theory of muscle contraction?",
+      "ms": {
+        "draft": 5142,
+        "critique": 8390,
+        "solver": 13378
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is NOT a function of the sarcoplasmic reticulum in muscle contraction?",
+      "ms": {
+        "draft": 5142,
+        "critique": 11304,
+        "solver": 14454
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a voluntary muscle?",
+      "ms": {
+        "draft": 3497,
+        "critique": 6010,
+        "solver": 1817,
+        "form": 3862
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the rib is connected to the sternum with the help of hyaline cartilage?",
+      "ms": {
+        "draft": 6691,
+        "critique": 7964
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the vertebral column?",
+      "ms": {
+        "draft": 6691,
+        "critique": 7714,
+        "solver": 1599,
+        "form": 5661
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a type of joint that allows limited movement?",
+      "ms": {
+        "draft": 6691,
+        "critique": 7307,
+        "solver": 2488,
+        "form": 4665
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is not a function of the pelvic girdle?",
+      "ms": {
+        "draft": 6691,
+        "critique": 10263
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a key feature of a sarcomere in a muscle fibre?",
+      "ms": {
+        "draft": 5101,
+        "critique": 7359,
+        "solver": 2538,
+        "form": 2724
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following joints allows the greatest range of motion?",
+      "ms": {
+        "draft": 6691,
+        "critique": 7149,
+        "solver": 1873,
+        "form": 4450
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why do red fibres appear red and white fibres appear white?",
+      "ms": {
+        "draft": 5101,
+        "critique": 9043,
+        "solver": 1288,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the role of myoglobin in muscle fibres?",
+      "ms": {
+        "draft": 5101,
+        "critique": 9933,
+        "solver": 18353,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main function of cilia in the human body?",
+      "ms": {
+        "draft": 17228,
+        "critique": 10495,
+        "solver": 15951,
+        "form": 3117,
+        "translation": 50692
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of muscle found in the human body?",
+      "ms": {
+        "draft": 3497,
+        "critique": 6587,
+        "solver": 2141,
+        "form": 4003,
+        "translation": 37499
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of skeletal muscles?",
+      "ms": {
+        "draft": 3497,
+        "critique": 6862,
+        "solver": 2757,
+        "form": 3848,
+        "translation": 44679
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a part of the skeletal system?",
+      "ms": {
+        "draft": 8807,
+        "critique": 9914,
+        "solver": 17140,
+        "form": 0,
+        "translation": 37989
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the skeletal system?",
+      "ms": {
+        "draft": 8807,
+        "critique": 10252,
+        "solver": 18418,
+        "form": 0,
+        "translation": 45767
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when calcium ions are released into the sarcoplasm of a muscle fibre?",
+      "ms": {
+        "draft": 5101,
+        "critique": 9405,
+        "solver": 19530,
+        "form": 4224,
+        "translation": 46119
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a broken rib, which of the following activities would be most affected?",
+      "ms": {
+        "draft": 5597,
+        "critique": 10569,
+        "solver": 1761,
+        "form": 0,
+        "translation": 38336
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a muscle fibre under a microscope and notices that the 'I' bands are reducing in length. What can they conclude about the muscle fibre?",
+      "ms": {
+        "draft": 5101,
+        "critique": 9119,
+        "solver": 1619,
+        "form": 6095,
+        "translation": 49701
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a scenario where a person loses all their ribs, which of the following would be the most immediate consequence?",
+      "ms": {
+        "draft": 5597,
+        "critique": 8892,
+        "solver": 2372,
+        "form": 0,
+        "translation": 40804
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a characteristic of red fibres?",
+      "ms": {
+        "draft": 8807,
+        "critique": 10316,
+        "solver": 17437,
+        "form": 0,
+        "translation": 52677
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the vertebral column is considered a crucial part of the skeletal system?",
+      "ms": {
+        "draft": 5597,
+        "critique": 9234,
+        "solver": 2046,
+        "form": 0,
+        "translation": 53122
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is NOT a part of the axial skeleton?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "Which of the following is an example of a synovial joint that allows a wide range of movement?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "Which of the following is a characteristic of cardiac muscle?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "Which of the following is a function of the myosin head in muscle contraction?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of movement is shown by Amoeba?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main characteristic of a sarcomere?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a type of muscle that is under voluntary control?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person has difficulty in moving their limbs, which system is likely to be affected?",
+      "reason": "option 3 is a catch-all (\"All of the above\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram in Figure 17.2, which part of the muscle fibre is responsible for the contraction?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cytoplasm: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a type of muscle fibre that contains a high amount of myoglobin?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is responsible for the release of calcium ions during muscle contraction?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the sliding filament theory, which part of the muscle fibre shortens during contraction?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a function of the vertebral column?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the rib cage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"It is formed by the sternum and the vertebrae alone\" / \"It is formed by the sternum, ribs, and vertebrae\"); options 0 and 3 say the same thing (\"It is formed by the sternum and the vertebrae alone\" / \"It is formed by the vertebrae and the sternum\"); options 1 and 3 say the same thing (\"It is formed by the sternum, ribs, and vertebrae\" / \"It is formed by the vertebrae and the sternum\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the sliding filament theory of muscle contraction?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is NOT a function of the sarcoplasmic reticulum in muscle contraction?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a function of the skeletal system?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main component of the sarcomere?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a feature of the sliding filament theory of muscle contraction?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":3,\"stem\":\"Which of the following is a form of locomotion?\",\"options\":[\"Amoeboid movement of a ce"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a voluntary muscle?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which part of the rib is connected to the sternum with the help of hyaline cartilage?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main function of the vertebral column?",
+      "reason": "the key is far longer than every distractor (48 vs 21 characters); distractor 2's reason is not a one-line misconception (\"Correct answer…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a type of joint that allows limited movement?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer\",\"Confuses ball and socket joints with cartil…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is not a function of the pelvic girdle?",
+      "reason": "option 0 is not wrong; option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a key feature of a sarcomere in a muscle fibre?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct definition not understood…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following joints allows the greatest range of motion?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer\",\"Describes a joint with limited flexion and …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, why do red fibres appear red and white fibres appear white?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the role of myoglobin in muscle fibres?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,733 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T04:50:23.439Z",
+  "finishedAt": "2026-10-27T04:59:06.779Z",
+  "seconds": 523,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp107.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Fractions",
+    "edition": "Reprint 2026-27",
+    "chunks": 23,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2015 — question paper]\n3. Find all fractions which can be written simultaneously in the forms\n5k − 3\n6l − 1\nand , for some integers k, l.\n4l − 3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n4. C Let numerator be x and denominator be y 1\nGiven , x + y = 11\n𝐱 𝟏\n(𝐲+𝟏) = 2\nSolving these equations, we get\nx = 4, y = 7; ∴ Fraction = 𝟒 7\n𝟒\n(C)",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n4. 1\nis increased by 1, the fraction becomes\n2 3\n(A) (B)\n9 8\n, then the fraction is\n4 5\n(C) (D)\n7 6\nIf one root of the quadratic equation 𝑎𝑥 + 𝑏𝑥 + 𝑐 = 0 is the reciprocal of the"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 163193,
+      "in": 37,
+      "out": 36,
+      "rejects": 1,
+      "promptTokens": 42877,
+      "completionTokens": 8677
+    },
+    "critique": {
+      "calls": 51,
+      "ms": 361745,
+      "in": 36,
+      "out": 32,
+      "rejects": 4,
+      "promptTokens": 23945,
+      "completionTokens": 8970
+    },
+    "solver": {
+      "calls": 269,
+      "ms": 160156,
+      "in": 32,
+      "out": 26,
+      "rejects": 6,
+      "promptTokens": 55699,
+      "completionTokens": 3188
+    },
+    "form": {
+      "calls": 18,
+      "ms": 67866,
+      "in": 26,
+      "out": 15,
+      "rejects": 11,
+      "promptTokens": 6205,
+      "completionTokens": 1485
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 44,
+      "ms": 8792,
+      "in": 15,
+      "out": 6,
+      "rejects": 9,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 241621,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 15229,
+      "completionTokens": 7214
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If one roti is divided among 9 children, which fraction represents the share of each child?",
+      "ms": {
+        "draft": 3204,
+        "critique": 5958,
+        "solver": 1267,
+        "form": 4820
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which fraction represents the share of one child when one roti is divided equally among four children?",
+      "ms": {
+        "draft": 3204,
+        "critique": 6325,
+        "solver": 1948,
+        "form": 5263
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a strip of paper is folded into 2 equal parts and then folded again into 2 equal parts, how many equal parts does the strip have?",
+      "ms": {
+        "draft": 3204,
+        "critique": 7106
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a unit fraction?",
+      "ms": {
+        "draft": 3204,
+        "critique": 8112,
+        "solver": 14265
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are fractions called when their shares are equal?",
+      "ms": {
+        "draft": 3755,
+        "critique": 7071,
+        "solver": 13565,
+        "form": 4009
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the simplest form of the fraction 16/20?",
+      "ms": {
+        "draft": 3755,
+        "critique": 7059,
+        "solver": 16426
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the missing number in the statement: 5 glasses of juice shared equally among 4 friends is the same as ____ glasses of juice shared equally among 8 friends?",
+      "ms": {
+        "draft": 3755,
+        "critique": 9070,
+        "solver": 16479,
+        "form": 4878
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which group will each child get a larger share: 3 glasses of sugarcane juice divided equally among 4 children or 7 glasses of sugarcane juice divided equally among 10 children?",
+      "ms": {
+        "draft": 3755,
+        "critique": 5729,
+        "solver": 17489,
+        "form": 6365
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the first step in comparing the sizes of two or more fractions?",
+      "ms": {
+        "draft": 4587,
+        "critique": 8375,
+        "solver": 12095,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea of Brahmagupta’s method for adding fractions?",
+      "ms": {
+        "draft": 4587,
+        "critique": 6568,
+        "solver": 12797,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the sum of 1/3 and 1/5 using Brahmagupta’s method?",
+      "ms": {
+        "draft": 4587,
+        "critique": 7294,
+        "solver": 17345
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 3/4 of a cake is eaten and 1/8 of the cake is left, what fraction of the cake was eaten?",
+      "ms": {
+        "draft": 4587,
+        "critique": 9159,
+        "solver": 16584
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 2 cakes are divided equally among 5 children, how much cake does each child get?",
+      "ms": {
+        "draft": 6513,
+        "critique": 7151,
+        "solver": 1073,
+        "form": 4617
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 7 rotis are divided among 5 children, and each child gets 1.4 rotis, how many rotis would 14 children get if the same number of rotis is divided equally?",
+      "ms": {
+        "draft": 6513,
+        "critique": 11429,
+        "solver": 1743
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 4 kg of potatoes are divided equally into 3 bags, what is the weight of each bag in kilograms?",
+      "ms": {
+        "draft": 6513,
+        "critique": 6875,
+        "solver": 1818,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 12 glasses of juice are shared equally among 8 friends, and 18 glasses are shared equally among 12 friends, which group gets a larger share per person?",
+      "ms": {
+        "draft": 6513,
+        "critique": 7377
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 5 glasses of juice are shared equally among 4 friends, how many glasses does each friend get?",
+      "ms": {
+        "draft": 6513,
+        "critique": 9430
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Jaya walks 3/4 km to school by auto and then the remaining distance. If the total distance to her school is 2 km, how much does she walk after the auto?",
+      "ms": {
+        "draft": 5748,
+        "critique": 8401
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the number below the line in a fraction?",
+      "ms": {
+        "draft": 3652,
+        "critique": 6339,
+        "solver": 12285,
+        "form": 2751
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Jeevika takes 1/3 minutes to take a complete round of the park, and her friend Namit takes 1/2 minutes. Who takes less time and by how much?",
+      "ms": {
+        "draft": 5748,
+        "critique": 6597,
+        "solver": 14670
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following fractions is equal to the sum of 1/3 and 1/5?",
+      "ms": {
+        "draft": 5654,
+        "critique": 8455,
+        "solver": 10464,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a whole chikki is broken into 6 equal parts, what is the fractional unit of one piece?",
+      "ms": {
+        "draft": 3204,
+        "critique": 6880,
+        "solver": 1697,
+        "form": 3633
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the fraction that represents one half?",
+      "ms": {
+        "draft": 3204,
+        "critique": 6308,
+        "solver": 17189,
+        "form": 3133
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the fraction that represents a length divided into two equal parts on a number line?",
+      "ms": {
+        "draft": 11390,
+        "critique": 6957,
+        "solver": 1938,
+        "form": 3212
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a fraction that is greater than 1 unit?",
+      "ms": {
+        "draft": 11390,
+        "critique": 6350,
+        "solver": 1721,
+        "form": 2997
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is the simplest form of the fraction 36/60?",
+      "ms": {
+        "draft": 3755,
+        "critique": 7163,
+        "solver": 19161,
+        "form": 5563
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Jeevika takes 1/3 minutes to take a complete round of the park and her friend Namit takes 1/4 minutes to do the same. Who takes less time and by how much?",
+      "ms": {
+        "draft": 5013,
+        "critique": 6807,
+        "solver": 1556,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Can you find three different fractional units that add up to 1?",
+      "ms": {
+        "draft": 5013,
+        "critique": 6400,
+        "solver": 1137,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 3 glasses of sugarcane juice are divided equally among 4 children and 7 glasses are divided among 10 children, which group gets a larger share per child?",
+      "ms": {
+        "draft": 6513,
+        "critique": 7620,
+        "solver": 1867,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the number above the line in a fraction?",
+      "ms": {
+        "draft": 3652,
+        "critique": 6566,
+        "solver": 1777,
+        "form": 3179
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for a fraction that has no common factor between the numerator and the denominator except 1?",
+      "ms": {
+        "draft": 3652,
+        "critique": 6828,
+        "solver": 1648,
+        "form": 2598,
+        "translation": 40211
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the fraction that represents a length divided into five equal parts on a number line?",
+      "ms": {
+        "draft": 11390,
+        "critique": 7238,
+        "solver": 1460,
+        "form": 3192,
+        "translation": 38506
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a unit is divided into 8 equal parts, what is the fraction representing one part?",
+      "ms": {
+        "draft": 11390,
+        "critique": 7769,
+        "solver": 1541,
+        "form": 2585,
+        "translation": 31674
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many whole units are there in the fraction 5/2?",
+      "ms": {
+        "draft": 11390,
+        "critique": 7281,
+        "solver": 1815,
+        "form": 3397,
+        "translation": 26432
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Jaya's school is 3/4 km from her home daily, and then walks the remaining 1/2 km to reach her school. How much does she walk daily to reach the school?",
+      "ms": {
+        "draft": 5013,
+        "critique": 7172,
+        "solver": 1831,
+        "form": 0,
+        "translation": 43125
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a fraction that can be written in both the forms (5k - 3)/(6l - 1) and (4l - 3)/4, where k and l are integers?",
+      "ms": {
+        "draft": 8969,
+        "critique": 7957,
+        "solver": 6473,
+        "form": 0,
+        "translation": 56884
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following represents a mixed number?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If one roti is divided among 9 children, which fraction represents the share of each child?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer is 1/9, not 1/8, which is a common mistake wh…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which fraction represents the share of one child when one roti is divided equally among four children?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is 1/4, not 1/5, which is a common mistake wh…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a strip of paper is folded into 2 equal parts and then folded again into 2 equal parts, how many equal parts does the strip have?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a unit fraction?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What are fractions called when their shares are equal?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the simplest form of the fraction 16/20?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the missing number in the statement: 5 glasses of juice shared equally among 4 friends is the same as ____ glasses of juice shared equally among 8 friends?",
+      "reason": "options 0 and 3 are the same (\"10\"); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which group will each child get a larger share: 3 glasses of sugarcane juice divided equally among 4 children or 7 glasses of sugarcane juice divided equally among 10 children?",
+      "reason": "options 0 and 3 say the same thing (\"3 glasses among 4 children\" / \"3: 3 glasses among 4 children\"); option 0 repeats the stem's wording (\"3 glasses among 4 children\"); option 3 repeats the stem's wording (\"3: 3 glasses among 4 children\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the first step in comparing the sizes of two or more fractions?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main idea of Brahmagupta’s method for adding fractions?",
+      "reason": "options 2 and 3 say the same thing (\"Add the numerators and add the denominators\" / \"Multiply the denominators and add the numerators\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the sum of 1/3 and 1/5 using Brahmagupta’s method?",
+      "reason": "distractors 0, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 3/4 of a cake is eaten and 1/8 of the cake is left, what fraction of the cake was eaten?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If 2 cakes are divided equally among 5 children, how much cake does each child get?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"thinks the number of children is the numerator instead of th…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 7 rotis are divided among 5 children, and each child gets 1.4 rotis, how many rotis would 14 children get if the same number of rotis is divided equally?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 4 kg of potatoes are divided equally into 3 bags, what is the weight of each bag in kilograms?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If 12 glasses of juice are shared equally among 8 friends, and 18 glasses are shared equally among 12 friends, which group gets a larger share per person?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 5 glasses of juice are shared equally among 4 friends, how many glasses does each friend get?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Jaya walks 3/4 km to school by auto and then the remaining distance. If the total distance to her school is 2 km, how much does she walk after the auto?",
+      "reason": "the critic finds option 3 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the number below the line in a fraction?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Jeevika takes 1/3 minutes to take a complete round of the park, and her friend Namit takes 1/2 minutes. Who takes less time and by how much?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following fractions is equal to the sum of 1/3 and 1/5?",
+      "reason": "options 0 and 3 are the same (\"8/15\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a whole chikki is broken into 6 equal parts, what is the fractional unit of one piece?",
+      "reason": "near-duplicate of served question cmveh0n8l00k1go636so6g69i (cosine 0.926 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the fraction that represents one half?",
+      "reason": "near-duplicate of served question cmveh0n6500ivgo63xrq5qjdl (cosine 0.962 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the fraction that represents a length divided into two equal parts on a number line?",
+      "reason": "near-duplicate of served question cmv3npv3w00b1gnju1t2pc1hc (cosine 0.952 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a fraction that is greater than 1 unit?",
+      "reason": "near-duplicate of served question cmv3npv4100b7gnjugrcdz3cg (cosine 0.940 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which of the following is the simplest form of the fraction 36/60?",
+      "reason": "near-duplicate of served question cmv3npv6300ddgnju9sry9al2 (cosine 0.967 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Jeevika takes 1/3 minutes to take a complete round of the park and her friend Namit takes 1/4 minutes to do the same. Who takes less time and by how much?",
+      "reason": "near-duplicate of served question cmvm92cxk007zgp21fl0az6rm (cosine 0.956 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Can you find three different fractional units that add up to 1?",
+      "reason": "near-duplicate of served question cmvejdnyy009dgod8k6dd8nyv (cosine 0.900 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If 3 glasses of sugarcane juice are divided equally among 4 children and 7 glasses are divided among 10 children, which group gets a larger share per child?",
+      "reason": "near-duplicate of served question cmv3npv5v00cpgnju9tve9vk1 (cosine 0.979 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the number above the line in a fraction?",
+      "reason": "near-duplicate of served question cmvfpxh95008zgpfh8oyprq5q (cosine 0.935 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

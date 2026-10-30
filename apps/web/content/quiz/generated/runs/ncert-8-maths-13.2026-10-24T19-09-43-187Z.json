@@ -1,0 +1,473 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T19:09:43.187Z",
+  "finishedAt": "2026-10-24T19:14:44.652Z",
+  "seconds": 301,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "hemh1",
+    "document": "ncert/8/mathematics/hemh113.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Introduction to Graphs",
+    "edition": "Reprint 2024-25",
+    "chunks": 10,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class XII Mathematics, sample question paper, 2024-25]\n15. The graph drawn below depicts\n(A) y = 𝑠𝑖𝑛 −1 𝑥 (B) y = 𝑐𝑜𝑠 −1 𝑥\n(C) 𝑦 = 𝑥𝑙𝑜𝑔𝑥 + 𝑥 + 𝑐 (D) 𝑦 = 𝑥 + 𝑐\n(C) y = 𝑐𝑜𝑠 𝑒 𝑐 −1 𝑥 (D) y = 𝑐𝑜𝑡 −1 𝑥",
+      "[CBSE Class XII Mathematics, marking scheme, 2025-26]\nSECTION-A (MCQs of 1 mark each)\nSol. N. Hint / Solution Marks\n1 1\nClearly from the graph Domain is [− , ] 2 2",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 79808,
+      "in": 23,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 18180,
+      "completionTokens": 4284
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 220218,
+      "in": 22,
+      "out": 15,
+      "rejects": 7,
+      "promptTokens": 13268,
+      "completionTokens": 5450
+    },
+    "solver": {
+      "calls": 136,
+      "ms": 79958,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 26905,
+      "completionTokens": 1507
+    },
+    "form": {
+      "calls": 6,
+      "ms": 18420,
+      "in": 12,
+      "out": 7,
+      "rejects": 5,
+      "promptTokens": 1517,
+      "completionTokens": 486
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 40,
+      "ms": 8071,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 289293,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16043,
+      "completionTokens": 7897
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "ms": {
+        "draft": 3836,
+        "critique": 5022,
+        "solver": 1033,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the graph of the patient's temperature, what was the temperature at 1.30 p.m.?",
+      "ms": {
+        "draft": 3836,
+        "critique": 12086
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a car travels 50 km in the first hour, how far will it travel in the next hour if its speed remains the same?",
+      "ms": {
+        "draft": 3836,
+        "critique": 5620,
+        "solver": 16216
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of graph that displays data that changes continuously over periods of time?",
+      "ms": {
+        "draft": 3878,
+        "critique": 6461
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the sales in 2002 were 400 and in 2006 were 800, what is the difference between the sales in these two years?",
+      "ms": {
+        "draft": 3836,
+        "critique": 7328,
+        "solver": 14417
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the graph showing the relationship between the number of litres of petrol and its cost, what does it mean if the graph passes through the origin?",
+      "ms": {
+        "draft": 3878,
+        "critique": 7311,
+        "solver": 14321,
+        "form": 2927
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the graph of time and distance covered by Ajit riding a scooter, what is the distance covered in 2.5 hours?",
+      "ms": {
+        "draft": 3878,
+        "critique": 5981,
+        "solver": 16494
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the horizontal axis in a graph?",
+      "ms": {
+        "draft": 2644,
+        "critique": 6567
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a graph that displays data that changes continuously over periods of time?",
+      "ms": {
+        "draft": 2644,
+        "critique": 7331,
+        "solver": 13261,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a graph that is a whole unbroken line?",
+      "ms": {
+        "draft": 2644,
+        "critique": 7034,
+        "solver": 14994,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the purpose of a graph?",
+      "ms": {
+        "draft": 3533,
+        "critique": 10032
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given graph, during which period did the patient’s temperature show an upward trend?",
+      "ms": {
+        "draft": 3533,
+        "critique": 7823
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the cost of petrol is directly proportional to the quantity purchased, what would the graph look like?",
+      "ms": {
+        "draft": 2644,
+        "critique": 5868,
+        "solver": 13656,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The following graph shows the distance of a car from City P at different times. At what time did the car reach City Q, which is 350 km away?",
+      "ms": {
+        "draft": 3533,
+        "critique": 6315
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the graph showing the runs scored by two batsmen A and B, which batsman is more consistent?",
+      "ms": {
+        "draft": 3533,
+        "critique": 6519
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the horizontal line in a graph usually represent?",
+      "ms": {
+        "draft": 3836,
+        "critique": 5173,
+        "solver": 1784,
+        "form": 4889,
+        "translation": 47430
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the quantity that is affected by another quantity in a graph?",
+      "ms": {
+        "draft": 3878,
+        "critique": 5873,
+        "solver": 1715,
+        "form": 2458,
+        "translation": 38044
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the vertical axis in a graph?",
+      "ms": {
+        "draft": 2644,
+        "critique": 8220,
+        "solver": 16420,
+        "form": 0,
+        "translation": 15363
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the distance covered by a scooter is directly proportional to the time spent riding, what type of graph would best represent this relationship?",
+      "ms": {
+        "draft": 3878,
+        "critique": 6556,
+        "solver": 1444,
+        "form": 3057,
+        "translation": 47355
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a graph is a straight line passing through the origin, what type of relationship exists between the variables?",
+      "ms": {
+        "draft": 2644,
+        "critique": 7304,
+        "solver": 1102,
+        "form": 0,
+        "translation": 35616
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a plant grows 5 cm in the first week and 10 cm in the second week, how much does it grow in the third week if the growth rate is the same?",
+      "ms": {
+        "draft": 3836,
+        "critique": 11816,
+        "solver": 1524,
+        "form": 4433,
+        "translation": 57147
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a graph showing the relationship between the sum deposited and simple interest earned, if the graph is a straight line, what does this indicate about the relationship between the two quantities?",
+      "ms": {
+        "draft": 3878,
+        "critique": 9231,
+        "solver": 8634,
+        "form": 1054,
+        "translation": 44637
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the graph of the patient's temperature, what was the temperature at 1.30 p.m.?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a car travels 50 km in the first hour, how far will it travel in the next hour if its speed remains the same?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a type of graph that displays data that changes continuously over periods of time?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the sales in 2002 were 400 and in 2006 were 800, what is the difference between the sales in these two years?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the graph showing the relationship between the number of litres of petrol and its cost, what does it mean if the graph passes through the origin?",
+      "reason": "options 0 and 1 say the same thing (\"The cost is zero for 10 litres of petrol\" / \"The cost is zero for zero litres of petrol\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Based on the graph of time and distance covered by Ajit riding a scooter, what is the distance covered in 2.5 hours?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What does the horizontal axis of a graph typically represent?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used for the horizontal axis in a graph?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for a graph that displays data that changes continuously over periods of time?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for a graph that is a whole unbroken line?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following best describes the purpose of a graph?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the given graph, during which period did the patient’s temperature show an upward trend?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the cost of petrol is directly proportional to the quantity purchased, what would the graph look like?",
+      "reason": "the key is far longer than every distractor (42 vs 17 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The following graph shows the distance of a car from City P at different times. At what time did the car reach City Q, which is 350 km away?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the graph showing the runs scored by two batsmen A and B, which batsman is more consistent?",
+      "reason": "the solution's working is not sound"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

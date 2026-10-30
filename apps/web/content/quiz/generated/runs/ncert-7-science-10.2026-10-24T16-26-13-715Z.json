@@ -1,0 +1,734 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T16:26:13.715Z",
+  "finishedAt": "2026-10-24T16:43:50.531Z",
+  "seconds": 1057,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu110.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 10 — Life Processes in Plants",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\nC. Growth of pollen tubes towards the ovule is an example of\nchemotropism whereas bending of shoots towards sunlight is an\nexample of phototropism. (1)\nD.\ni) Although both plants and animals show electrical–chemical means to\nconvey the information from cell to cell but unlike nerve cells in\nanimals there is no specialized tissue in plants for conduction of\ninformation. (0.5)\nii) In animal cells, change in shape occurs because of the specialized\nproteins found in muscle cells; plant cells change shape by changing\nthe amount of water in them. (0.5)",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n29. No photosynthesis will occur so no glucose will be made. Also no respiration will 3\ntake place as no Oxygen will be taken in. (1)\nNo transpiration will occur so there would be no upward movement of water or\nminerals from the soil as there will be no transpirational pull.(1)\nTemperature regulation of leaf surface will be affected. (1)\nOR\nLymph carries digested and absorbed fat from the intestine (1) and drains excess\nfluid from extracellular space back into the blood (1). Blockage of lymphatic\nsystem will lead to water retention and poor fat absorption in the body\n(1- any one)",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n10. It is completely wrong to say that plants do not produce any excretory 2\nproducts.\nHowever, plants use completely different strategies for excretion than those\nof the animals.They get rid of these wastes in different manner (any two):\ni. Oxygen, a photosynthetic waste, is removed through stomata.\nii. Excess water is removed by transpiration through stomata.\niii. Other metabolic wastes are either stored in dead cells, resins and\ngums or are removed through falling of old leaves.\niv. Many waste products are stored in cellular vacuoles",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n38. Mohan and Rohit observed that shoots of a plant growing in shade bend 4\ntowards the sunlight. Whereas, leaves of ‘Touch me not’ plant fold and droop\nsoon after touching. They were curious to know how these movements occur\nin plants.\nA. Shoots of a plant bending towards light\nB. Folding of leaves Touch me not plant\nIn order to help them understand the movements in the plants, answer the\nfollowing questions:\nAttempt either subpart A or B.\nA. What causes the bending of shoots in the plants as shown in figure A?\nOR\nB. What causes the folding of the leaves in ‘Touch me not’ plant as shown\nin figure B? (2)\nC. Compare the movement of growth of the pollen tube towards ovule with\nthe movements sh"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 252819,
+      "in": 40,
+      "out": 38,
+      "rejects": 2,
+      "promptTokens": 39262,
+      "completionTokens": 9322
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 422376,
+      "in": 38,
+      "out": 30,
+      "rejects": 8,
+      "promptTokens": 19318,
+      "completionTokens": 7428
+    },
+    "solver": {
+      "calls": 193,
+      "ms": 134747,
+      "in": 30,
+      "out": 26,
+      "rejects": 4,
+      "promptTokens": 32445,
+      "completionTokens": 1940
+    },
+    "form": {
+      "calls": 22,
+      "ms": 151774,
+      "in": 26,
+      "out": 16,
+      "rejects": 10,
+      "promptTokens": 18159,
+      "completionTokens": 2759
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 38,
+      "ms": 7927,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 55,
+      "ms": 828727,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 30851,
+      "completionTokens": 15897
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 4,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 7,
+  "needsFigure": 3,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of food for plants?",
+      "ms": {
+        "draft": 5261,
+        "critique": 10379
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the experiment described in the passage?",
+      "ms": {
+        "draft": 5261,
+        "critique": 8846,
+        "solver": 1925
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to a plant if it is kept in the dark but receives adequate water?",
+      "ms": {
+        "draft": 5261,
+        "critique": 9418,
+        "solver": 24521
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the iodine test in Activity 10.2 reveal about the leaf?",
+      "ms": {
+        "draft": 5261,
+        "critique": 12708,
+        "solver": 1858,
+        "form": 5861
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred about the role of chlorophyll in plants based on the passage?",
+      "ms": {
+        "draft": 5261,
+        "critique": 8947,
+        "solver": 2644,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the role of chlorophyll in plants?",
+      "ms": {
+        "draft": 21235,
+        "critique": 8835,
+        "solver": 2487,
+        "form": 4330
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the experiment described in Activity 10.5, what would happen if set-up B was placed in sunlight instead of the dark?",
+      "ms": {
+        "draft": 21235,
+        "critique": 13577
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be concluded from the experiments described in Activities 10.3 and 10.4?",
+      "ms": {
+        "draft": 21235,
+        "critique": 9671,
+        "solver": 2078,
+        "form": 4366
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment shown in Fig. 10.3, what was the purpose of using sodium hydroxide solution?",
+      "ms": {
+        "draft": 21235,
+        "critique": 9729,
+        "solver": 20092,
+        "form": 3772
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant is placed in complete darkness for a long time, what will happen to its ability to perform photosynthesis?",
+      "ms": {
+        "draft": 7805,
+        "critique": 9260
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a plant is placed in a sealed container with no light. After a few days, what would be the effect on the plant's respiration and transpiration?",
+      "ms": {
+        "draft": 18532,
+        "critique": 11806,
+        "solver": 17889,
+        "form": 5581
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, two identical plants are kept in separate rooms. One room has high levels of carbon dioxide, while the other has normal levels. What would be the most likely outcome?",
+      "ms": {
+        "draft": 7805,
+        "critique": 9204,
+        "solver": 2282,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Kamala Sohonie's work help improve in plant foods?",
+      "ms": {
+        "draft": 77858,
+        "critique": 10184
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the experiment shown in Fig. 10.9?",
+      "ms": {
+        "draft": 7805,
+        "critique": 7966,
+        "solver": 22197,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was Kamala Sohonie's area of research?",
+      "ms": {
+        "draft": 4735,
+        "critique": 5981,
+        "solver": 2039
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main purpose of the passage about Kamala Sohonie?",
+      "ms": {
+        "draft": 4735,
+        "critique": 6708,
+        "solver": 2371,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant has poor nutritive value, what could be the reason?",
+      "ms": {
+        "draft": 4735,
+        "critique": 11557
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a product of respiration in plants?",
+      "ms": {
+        "draft": 6434,
+        "critique": 9743
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What would be the most effective way to improve the nutritive value of a plant?",
+      "ms": {
+        "draft": 4735,
+        "critique": 10606,
+        "solver": 22639
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the plant helps in the exchange of carbon dioxide and oxygen?",
+      "ms": {
+        "draft": 5065,
+        "critique": 10857
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which gas from the air is essential in the process of food preparation in plants?",
+      "ms": {
+        "draft": 16475,
+        "critique": 8873
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an experiment, two plants were kept under different conditions. One was in sunlight, and the other was in darkness. After some time, the plant in the dark showed no starch. What does this suggest?",
+      "ms": {
+        "draft": 6434,
+        "critique": 11096,
+        "solver": 2117,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of stomata in plants?",
+      "ms": {
+        "draft": 18532,
+        "critique": 7965,
+        "solver": 2163,
+        "form": 5240
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do plants store excess glucose as starch?",
+      "ms": {
+        "draft": 18532,
+        "critique": 11490,
+        "solver": 2963,
+        "form": 4848
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen to a plant if it were kept in complete darkness for a long time?",
+      "ms": {
+        "draft": 6434,
+        "critique": 11464,
+        "solver": 2513,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process by which plants prepare their food in the presence of sunlight and chlorophyll called?",
+      "ms": {
+        "draft": 21235,
+        "critique": 7398,
+        "solver": 2460,
+        "form": 4254,
+        "translation": 53277
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main source of carbon dioxide for plants during respiration?",
+      "ms": {
+        "draft": 6434,
+        "critique": 8281,
+        "solver": 2752,
+        "form": 0,
+        "translation": 65443
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Kamala Sohonie contribute to improving plant foods?",
+      "ms": {
+        "draft": 4735,
+        "critique": 7626,
+        "solver": 2966,
+        "form": 3266,
+        "translation": 53790
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the plant is responsible for transporting water and minerals from the roots to the leaves?",
+      "ms": {
+        "draft": 18532,
+        "critique": 8104,
+        "solver": 1542,
+        "form": 3862,
+        "translation": 49293
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a leaf is kept in the dark for 36 hours, what would happen to the starch in it?",
+      "ms": {
+        "draft": 21235,
+        "critique": 10194,
+        "solver": 18922,
+        "form": 5978,
+        "translation": 59732
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant is kept in complete darkness, what would happen to its ability to perform photosynthesis?",
+      "ms": {
+        "draft": 18532,
+        "critique": 8129,
+        "solver": 2717,
+        "form": 3344,
+        "translation": 60769
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, a potted plant is placed in a setup where it receives sunlight but no carbon dioxide. What will be the effect on the plant?",
+      "ms": {
+        "draft": 7805,
+        "critique": 9174,
+        "solver": 2491,
+        "form": 1,
+        "translation": 66938
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, a potted plant was placed under different conditions. Which condition would allow the plant to perform photosynthesis?",
+      "ms": {
+        "draft": 6434,
+        "critique": 10712,
+        "solver": 2012,
+        "form": 0,
+        "translation": 111429
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What can be inferred about the impact of Kamala Sohonie's work?",
+      "ms": {
+        "draft": 4735,
+        "critique": 11642,
+        "solver": 2160,
+        "form": 4037,
+        "translation": 77140
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 10.5, which part of the plant is responsible for capturing sunlight for photosynthesis?",
+      "ms": {
+        "draft": 18532,
+        "critique": 9208,
+        "solver": 1901,
+        "form": 3446,
+        "translation": 61547
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a plant is kept in the dark and receives no water, what is the most likely outcome?",
+      "ms": {
+        "draft": 5261,
+        "critique": 13083,
+        "solver": 2412,
+        "form": 4041,
+        "translation": 58555
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A plant is kept in a sealed container with a carbon dioxide indicator. After a few hours, the water turns from red to blue. What does this indicate?",
+      "ms": {
+        "draft": 6434,
+        "critique": 9941,
+        "solver": 2826,
+        "form": 0,
+        "translation": 83591
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A plant is kept in a sealed container with no access to air. What will be the primary process taking place in the plant?",
+      "ms": {
+        "draft": 7805,
+        "critique": 11648,
+        "solver": 2177,
+        "form": 0,
+        "translation": 58382
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the function of the xylem in plants?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a source of food for plants?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main purpose of the experiment described in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What happens to a plant if it is kept in the dark but receives adequate water?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the iodine test in Activity 10.2 reveal about the leaf?",
+      "reason": "figure: figure spec refused: spec.parts: leaf has no label \"leaf\" (it has lamina, midrib, vein, petiole)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What can be inferred about the role of chlorophyll in plants based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about the role of chlorophyll in plants?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not a distractor here, so this is the corr…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the experiment described in Activity 10.5, what would happen if set-up B was placed in sunlight instead of the dark?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What can be concluded from the experiments described in Activities 10.3 and 10.4?",
+      "reason": "the key is far longer than every distractor (84 vs 47 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment shown in Fig. 10.3, what was the purpose of using sodium hydroxide solution?",
+      "reason": "figure: figure spec refused: spec.parts.2.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'sodiumHydroxide'"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a plant is placed in complete darkness for a long time, what will happen to its ability to perform photosynthesis?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an experiment, a plant is placed in a sealed container with no light. After a few days, what would be the effect on the plant's respiration and transpiration?",
+      "reason": "options 2 and 3 say the same thing (\"Respiration would increase and transpiration would decrease\" / \"Respiration would decrease and transpiration would increase\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an experiment, two identical plants are kept in separate rooms. One room has high levels of carbon dioxide, while the other has normal levels. What would be the most likely outcome?",
+      "reason": "options 1 and 2 say the same thing (\"The plant in the high carbon dioxide room will grow faster\" / \"The plant in the normal carbon dioxide room will grow faster\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did Kamala Sohonie's work help improve in plant foods?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of the experiment shown in Fig. 10.9?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.tubeA: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main function of stomata in plants?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What was Kamala Sohonie's area of research?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main purpose of the passage about Kamala Sohonie?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a plant has poor nutritive value, what could be the reason?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a product of respiration in plants?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What would be the most effective way to improve the nutritive value of a plant?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the plant helps in the exchange of carbon dioxide and oxygen?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which gas from the air is essential in the process of food preparation in plants?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In an experiment, two plants were kept under different conditions. One was in sunlight, and the other was in darkness. After some time, the plant in the dark showed no starch. What does this suggest?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'sunlight'"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the main purpose of stomata in plants?",
+      "reason": "near-duplicate of served question cmveupr8o01pvgod82e1tam6r (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why do plants store excess glucose as starch?",
+      "reason": "near-duplicate of served question cmveupr9j01s7god81xtn5qlu (cosine 0.916 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What would happen to a plant if it were kept in complete darkness for a long time?",
+      "reason": "near-duplicate of served question cmvg0smi301m5gpfhj9j9rv0z (cosine 0.933 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

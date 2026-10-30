@@ -1,0 +1,841 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T07:28:12.251Z",
+  "finishedAt": "2026-10-27T07:37:11.257Z",
+  "seconds": 539,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "gegp1",
+    "document": "ncert/7/mathematics/gegp102.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Arithmetic Expressions",
+    "edition": "Reprint 2026-27",
+    "chunks": 24,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n7. C) 140 𝑂",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n20. ି ହ ହ 1\nStatement A (Assertion): -5, ଶ , 0, ଶ , …. is in Arithmetic Progression.\nStatement R (Reason) : The terms of an Arithmetic Progression cannot have both positive\nand negative rational numbers.\n(a) Both assertion (A) and reason (R) are true and reason (R) is the correct explanation\nof assertion (A)\n(b) Both assertion (A) and reason (R) are true and reason (R) is not the correct\nexplanation of assertion (A)\n(c) Assertion (A) is true but reason (R) is false.\n(d) Assertion (A) is false but reason (R) is true.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2026-27]\n5. The middle term of the A.P.: 10, 7, 4, …, – 62 is: 1\n(A) – 26 (B) – 29 (C) – 32 (D) – 35"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 214631,
+      "in": 44,
+      "out": 42,
+      "rejects": 2,
+      "promptTokens": 55525,
+      "completionTokens": 11021
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 388517,
+      "in": 42,
+      "out": 37,
+      "rejects": 5,
+      "promptTokens": 28173,
+      "completionTokens": 10357
+    },
+    "solver": {
+      "calls": 268,
+      "ms": 146167,
+      "in": 37,
+      "out": 27,
+      "rejects": 10,
+      "promptTokens": 57937,
+      "completionTokens": 2765
+    },
+    "form": {
+      "calls": 3,
+      "ms": 7653,
+      "in": 27,
+      "out": 9,
+      "rejects": 18,
+      "promptTokens": 724,
+      "completionTokens": 195
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 31,
+      "ms": 6088,
+      "in": 9,
+      "out": 6,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 215038,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13847,
+      "completionTokens": 5897
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is not an arithmetic expression?",
+      "ms": {
+        "draft": 4569,
+        "critique": 5573
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an arithmetic expression?",
+      "ms": {
+        "draft": 4569,
+        "critique": 4713,
+        "solver": 1644,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 10 + 2 = 12, then which of the following expressions is equal to 12?",
+      "ms": {
+        "draft": 4569,
+        "critique": 7145
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the correct expression to calculate the change Irfan will get back if he gave ₹100 and spent ₹15 + ₹56?",
+      "ms": {
+        "draft": 4569,
+        "critique": 6278,
+        "solver": 1844,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of the expression 6 × 5 + 3, according to the passage?",
+      "ms": {
+        "draft": 3332,
+        "critique": 7949,
+        "solver": 2183
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the expression 23 – 2 × 4 + 16, which part is evaluated first according to the passage?",
+      "ms": {
+        "draft": 3332,
+        "critique": 6242,
+        "solver": 1213,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of converting a subtraction into an addition according to the passage?",
+      "ms": {
+        "draft": 3332,
+        "critique": 8951,
+        "solver": 11430,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which property of addition explains why the order of adding terms does not change the sum?",
+      "ms": {
+        "draft": 3332,
+        "critique": 7968,
+        "solver": 1349,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the final position of the drone according to the passage?",
+      "ms": {
+        "draft": 3332,
+        "critique": 7881,
+        "solver": 1603
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Manasa added a list of numbers and got 11749, but later realized she missed the number 9055. If she recalculates, what will be the new sum?",
+      "ms": {
+        "draft": 3332,
+        "critique": 6139,
+        "solver": 12600
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the expression 5 × 2 + 3, which of the following correctly identifies the terms?",
+      "ms": {
+        "draft": 5870,
+        "critique": 7227,
+        "solver": 1648,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the total height of a window is 12 cm and the measurements are given as border 3 cm, grill 2 cm, and gap 5 cm, which expression correctly represents the total height?",
+      "ms": {
+        "draft": 5870,
+        "critique": 7630,
+        "solver": 1565,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an arithmetic expression?",
+      "ms": {
+        "draft": 5870,
+        "critique": 7348,
+        "solver": 1601,
+        "form": 3574
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following expressions is equivalent to 5 × (9 – 2)?",
+      "ms": {
+        "draft": 4377,
+        "critique": 5295,
+        "solver": 1806,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the value of the expression 200 – (40 + 3) if we remove the brackets and change the signs of the terms inside?",
+      "ms": {
+        "draft": 5870,
+        "critique": 6425,
+        "solver": 12467,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which expression is equivalent to 34 × 42 – 28 × 42?",
+      "ms": {
+        "draft": 5239,
+        "critique": 6115,
+        "solver": 1158,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Rahim supplies 9 kg of mangoes each day and Shyam supplies 11 kg of mangoes each day to the market. What is the total amount of mangoes supplied by them in a week?",
+      "ms": {
+        "draft": 5239,
+        "critique": 8636,
+        "solver": 1947
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following expressions is equal to 34 – 9 + 12?",
+      "ms": {
+        "draft": 11046,
+        "critique": 6320
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following expressions is equivalent to 7 × (9 + 11)?",
+      "ms": {
+        "draft": 14354,
+        "critique": 5161,
+        "solver": 14295,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a snail climbs 3 cm during the day and slips down 2 cm at night, how much distance does it cover in one full day cycle?",
+      "ms": {
+        "draft": 14354,
+        "critique": 5838,
+        "solver": 14750,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which expression correctly represents the total number of stories Melvin reads in 8 weeks if he reads 2 stories every day except on Tuesdays and Saturdays?",
+      "ms": {
+        "draft": 14354,
+        "critique": 6869,
+        "solver": 15927
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following expressions is equal to 1 – 2 + 3 – 4 + 5 – 6 + 7 – 8 + 9 – 10?",
+      "ms": {
+        "draft": 14354,
+        "critique": 8548
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following expressions is equal to 83 – 37 – 12?",
+      "ms": {
+        "draft": 14354,
+        "critique": 8185,
+        "solver": 1593
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 83 × 42 – 18 is compared to 83 × 40 – 18, which of the following is true?",
+      "ms": {
+        "draft": 14354,
+        "critique": 7222,
+        "solver": 15484,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which expression is equivalent to 87 – 46 + 109?",
+      "ms": {
+        "draft": 3663,
+        "critique": 7469,
+        "solver": 12596
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 5 × 4 + 3 ≠ 5 × (4 + 3), what is the value of 5 × (4 + 3)?",
+      "ms": {
+        "draft": 3663,
+        "critique": 8368
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which expression is equivalent to 73 – 14 + 1?",
+      "ms": {
+        "draft": 3663,
+        "critique": 10089,
+        "solver": 11417
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of the expression 28 – 7 + 8?",
+      "ms": {
+        "draft": 4926,
+        "critique": 7050,
+        "solver": 1422
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the expression 48 – 10 × 2 + 16 ÷ 2, what are the terms?",
+      "ms": {
+        "draft": 4926,
+        "critique": 7479,
+        "solver": 1805,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Using the distributive property, which expression is equivalent to 5 × (9 – 2)?",
+      "ms": {
+        "draft": 3663,
+        "critique": 9151,
+        "solver": 11568,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is equal to 27 – (8 + 3)?",
+      "ms": {
+        "draft": 4926,
+        "critique": 7672,
+        "solver": 1225,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following expressions is equal to 15 + 9 × 18?",
+      "ms": {
+        "draft": 6238,
+        "critique": 6988,
+        "solver": 10966,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following expressions is equal to 34 × 42 – 28 × 42?",
+      "ms": {
+        "draft": 6238,
+        "critique": 8942,
+        "solver": 9031
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 53 × 18 = 954, what is the value of 63 × 18?",
+      "ms": {
+        "draft": 4377,
+        "critique": 7258,
+        "solver": 1401,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which property of addition allows changing the order of terms in an expression without changing its value?",
+      "ms": {
+        "draft": 5239,
+        "critique": 5358,
+        "solver": 1403,
+        "form": 3268
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of the expression 319 – 537?",
+      "ms": {
+        "draft": 3663,
+        "critique": 8434,
+        "solver": 13439,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which property of arithmetic is used to add a number to a sum without changing the result?",
+      "ms": {
+        "draft": 6276,
+        "critique": 5522,
+        "solver": 1469,
+        "form": 2195,
+        "translation": 41976
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which property of arithmetic is demonstrated by the equation 2 × (43 + 24) = 2 × 43 + 2 × 24?",
+      "ms": {
+        "draft": 4377,
+        "critique": 6053,
+        "solver": 1536,
+        "form": 0,
+        "translation": 39142
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of the expression 5 × 25?",
+      "ms": {
+        "draft": 4569,
+        "critique": 5993,
+        "solver": 1857,
+        "form": 0,
+        "translation": 25966
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What value should replace the blank in 423 + ________ = 419 + ________ to make the equation true?",
+      "ms": {
+        "draft": 3663,
+        "critique": 6076,
+        "solver": 18225,
+        "form": 0,
+        "translation": 29920
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the correct way to evaluate the expression 30 + 5 × 4?",
+      "ms": {
+        "draft": 4569,
+        "critique": 6624,
+        "solver": 13422,
+        "form": 0,
+        "translation": 44579
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student forgot to include a number 9055 in a sum of 11749. What is the correct sum?",
+      "ms": {
+        "draft": 4926,
+        "critique": 6560,
+        "solver": 1498,
+        "form": 0,
+        "translation": 30094
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which expression is equivalent to 28 + (35 – 10)?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not an arithmetic expression?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong; option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an arithmetic expression?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 10 + 2 = 12, then which of the following expressions is equal to 12?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is the correct expression to calculate the change Irfan will get back if he gave ₹100 and spent ₹15 + ₹56?",
+      "reason": "options 0 and 1 are the same (\"100 – 15 + 56\"); options 0 and 2 say the same thing (\"100 – 15 + 56\" / \"100 + 15 – 56\"); options 0 and 3 are the same (\"100 – 15 + 56\"); options 1 and 2 say the same thing (\"100 – (15 + 56)\" / \"100 + 15 – 56\"); options 1 and 3 are the same (\"100 – (15 + 56)\"); options 2 and 3 say the same thing (\"100 + 15 – 56\" / \"(100 – 15) + 56\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the value of the expression 6 × 5 + 3, according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the expression 23 – 2 × 4 + 16, which part is evaluated first according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 repeats the stem's wording (\"23 – 2 × 4\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of converting a subtraction into an addition according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"15 + (-5)\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which property of addition explains why the order of adding terms does not change the sum?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the final position of the drone according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Manasa added a list of numbers and got 11749, but later realized she missed the number 9055. If she recalculates, what will be the new sum?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the expression 5 × 2 + 3, which of the following correctly identifies the terms?",
+      "reason": "options 0 and 1 are the same (\"5, 2, 3\"); options 0 and 2 are the same (\"5, 2, 3\"); options 0 and 3 say the same thing (\"5, 2, 3\" / \"5 × 2, 3 × 2\"); options 1 and 2 are the same (\"5 × 2, 3\"); options 1 and 3 say the same thing (\"5 × 2, 3\" / \"5 × 2, 3 × 2\"); options 2 and 3 say the same thing (\"5, 2 × 3\" / \"5 × 2, 3 × 2\"); option 3 repeats the stem's wording (\"5 × 2, 3 × 2\"); distractor 2's reason is not a one-line misconception (\"Correct option is not the longest and is the only one that a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the total height of a window is 12 cm and the measurements are given as border 3 cm, grill 2 cm, and gap 5 cm, which expression correctly represents the total height?",
+      "reason": "options 0 and 1 are the same (\"3 + 2 + 5\"); options 0 and 2 are the same (\"3 + 2 + 5\"); options 0 and 3 are the same (\"3 + 2 + 5\"); options 1 and 2 are the same (\"3 × 2 + 5\"); options 1 and 3 are the same (\"3 × 2 + 5\"); options 2 and 3 are the same (\"3 + 2 × 5\"); distractor 1's reason is not a one-line misconception (\"Correct option is not the longest and is the only one that c…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an arithmetic expression?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option is not the longest and is the only one that m…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following expressions is equivalent to 5 × (9 – 2)?",
+      "reason": "options 1 and 2 are the same (\"5 × 9 – 5 × 2\"); options 1 and 3 say the same thing (\"5 × 9 – 5 × 2\" / \"5 × 2 – 5 × 9\"); options 2 and 3 say the same thing (\"5 × 9 – 5 × 2\" / \"5 × 2 – 5 × 9\"); option 0 repeats the stem's wording (\"5 × 9 + 5 × 2\"); option 1 repeats the stem's wording (\"5 × 9 – 5 × 2\"); option 2 repeats the stem's wording (\"5 × 9 – 5 × 2\"); option 3 repeats the stem's wording (\"5 × 2 – 5 × 9\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the value of the expression 200 – (40 + 3) if we remove the brackets and change the signs of the terms inside?",
+      "reason": "options 0 and 2 say the same thing (\"200 – 40 – 3\" / \"200 – 40 + 3\"); options 1 and 3 are the same (\"200 + 40 + 3\"); option 0 repeats the stem's wording (\"200 – 40 – 3\"); option 2 repeats the stem's wording (\"200 – 40 + 3\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which expression is equivalent to 34 × 42 – 28 × 42?",
+      "reason": "options 0 and 1 say the same thing (\"(34 – 28) × 42\" / \"34 × (42 – 28)\"); options 2 and 3 are the same (\"34 + 28 × 42\"); option 0 repeats the stem's wording (\"(34 – 28) × 42\"); option 1 repeats the stem's wording (\"34 × (42 – 28)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Rahim supplies 9 kg of mangoes each day and Shyam supplies 11 kg of mangoes each day to the market. What is the total amount of mangoes supplied by them in a week?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following expressions is equal to 34 – 9 + 12?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the value of the expression 6 × 3 – 4 × 8 × 5?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following expressions is equivalent to 7 × (9 + 11)?",
+      "reason": "options 0 and 1 say the same thing (\"7 × 9 + 11\" / \"7 × 9 + 7 × 11\"); options 0 and 2 are the same (\"7 × 9 + 11\"); options 0 and 3 are the same (\"7 × 9 + 11\"); options 1 and 2 say the same thing (\"7 × 9 + 7 × 11\" / \"7 + 9 + 11\"); options 1 and 3 say the same thing (\"7 × 9 + 7 × 11\" / \"7 × 9 × 11\"); options 2 and 3 are the same (\"7 + 9 + 11\"); option 1 repeats the stem's wording (\"7 × 9 + 7 × 11\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a snail climbs 3 cm during the day and slips down 2 cm at night, how much distance does it cover in one full day cycle?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the distance climbed with the total distance covere…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which expression correctly represents the total number of stories Melvin reads in 8 weeks if he reads 2 stories every day except on Tuesdays and Saturdays?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following expressions is equal to 1 – 2 + 3 – 4 + 5 – 6 + 7 – 8 + 9 – 10?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following expressions is equal to 83 – 37 – 12?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 83 × 42 – 18 is compared to 83 × 40 – 18, which of the following is true?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); options 0 and 1 say the same thing (\"83 × 42 – 18 > 83 × 40 – 18\" / \"1: 83 × 42 – 18 < 83 × 40 – 18\"); options 0 and 2 are the same (\"83 × 42 – 18 > 83 × 40 – 18\"); options 1 and 2 say the same thing (\"1: 83 × 42 – 18 < 83 × 40 – 18\" / \"83 × 42 – 18 = 83 × 40 – 18\"); option 0 repeats the stem's wording (\"83 × 42 – 18 > 83 × 40 – 18\"); option 2 repeats the stem's wording (\"83 × 42 – 18 = 83 × 40 – 18\"); distractor 3's reason is not a one-line misconception (\"Confuses the operations and assumes that the two expressions…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which expression is equivalent to 87 – 46 + 109?",
+      "reason": "after redrafting distractor 2: option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 5 × 4 + 3 ≠ 5 × (4 + 3), what is the value of 5 × (4 + 3)?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which expression is equivalent to 73 – 14 + 1?",
+      "reason": "after redrafting distractor 1: option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the value of the expression 28 – 7 + 8?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the expression 48 – 10 × 2 + 16 ÷ 2, what are the terms?",
+      "reason": "options 0 and 1 say the same thing (\"48, 10 × 2, 16 ÷ 2\" / \"48, – 10 × 2, 16 ÷ 2\"); options 0 and 2 say the same thing (\"48, 10 × 2, 16 ÷ 2\" / \"48, – 10 × 2, 16 ÷ 2, 2\"); options 0 and 3 say the same thing (\"48, 10 × 2, 16 ÷ 2\" / \"48, 10 × 2, 16 ÷ 2, 2\"); options 1 and 2 say the same thing (\"48, – 10 × 2, 16 ÷ 2\" / \"48, – 10 × 2, 16 ÷ 2, 2\"); options 1 and 3 say the same thing (\"48, – 10 × 2, 16 ÷ 2\" / \"48, 10 × 2, 16 ÷ 2, 2\"); options 2 and 3 say the same thing (\"48, – 10 × 2, 16 ÷ 2, 2\" / \"48, 10 × 2, 16 ÷ 2, 2\"); option 0 repeats the stem's wording (\"48, 10 × 2, 16 ÷ 2\"); option 1 repeats the stem's wording (\"48, – 10 × 2, 16 ÷ 2\"); option 2 repeats the stem's wording (\"48, – 10 × 2, 16 ÷ 2, 2\"); option 3 repeats the stem's wording (\"48, 10 × 2, 16 ÷ 2, 2\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Using the distributive property, which expression is equivalent to 5 × (9 – 2)?",
+      "reason": "options 0 and 3 say the same thing (\"5 × 9 + 5 × 2\" / \"5 × 2 + 5 × 9\"); options 1 and 2 say the same thing (\"5 × 2 – 5 × 9\" / \"5 × 9 – 5 × 2\"); option 0 repeats the stem's wording (\"5 × 9 + 5 × 2\"); option 1 repeats the stem's wording (\"5 × 2 – 5 × 9\"); option 2 repeats the stem's wording (\"5 × 9 – 5 × 2\"); option 3 repeats the stem's wording (\"5 × 2 + 5 × 9\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is equal to 27 – (8 + 3)?",
+      "reason": "options 0 and 1 say the same thing (\"27 – 8 + 3\" / \"27 + (– 8 – 3)\"); options 0 and 2 say the same thing (\"27 – 8 + 3\" / \"27 – 8 – 3\"); options 0 and 3 say the same thing (\"27 – 8 + 3\" / \"27 – 3 – 8\"); options 1 and 2 are the same (\"27 + (– 8 – 3)\"); options 1 and 3 say the same thing (\"27 + (– 8 – 3)\" / \"27 – 3 – 8\"); options 2 and 3 say the same thing (\"27 – 8 – 3\" / \"27 – 3 – 8\"); option 0 repeats the stem's wording (\"27 – 8 + 3\"); option 1 repeats the stem's wording (\"27 + (– 8 – 3)\"); option 2 repeats the stem's wording (\"27 – 8 – 3\"); option 3 repeats the stem's wording (\"27 – 3 – 8\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following expressions is equal to 15 + 9 × 18?",
+      "reason": "options 0 and 1 are the same (\"15 + (9 × 18)\"); options 0 and 2 are the same (\"15 + (9 × 18)\"); options 0 and 3 are the same (\"15 + (9 × 18)\"); options 1 and 2 are the same (\"(15 + 9) × 18\"); options 1 and 3 are the same (\"(15 + 9) × 18\"); options 2 and 3 are the same (\"15 × 9 + 18\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following expressions is equal to 34 × 42 – 28 × 42?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If 53 × 18 = 954, what is the value of 63 × 18?",
+      "reason": "near-duplicate of served question cmveoz7rp0106god8k7dh2l2u (cosine 0.964 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which property of addition allows changing the order of terms in an expression without changing its value?",
+      "reason": "near-duplicate of served question cmveoz7rc00z6god8yg008421 (cosine 0.939 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the value of the expression 319 – 537?",
+      "reason": "near-duplicate of served question cmvfvgcqj00y5gpfhxmmamox7 (cosine 0.908 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

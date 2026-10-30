@@ -1,0 +1,820 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T01:32:24.308Z",
+  "finishedAt": "2026-10-29T01:41:44.809Z",
+  "seconds": 561,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Physics Part-I",
+    "bookCode": "leph1",
+    "document": "ncert/12/physics/leph108.pdf",
+    "classLevel": 12,
+    "subject": "Physics",
+    "chapter": "Chapter 8 — Electromagnetic",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Physics, sample question paper, 2025-26]\n17. The amplitude of the magnetic field of a plane electromagnetic wave propagating 2\nalong positive X axis in vacuum is 510 nT𝑘̂ and its angular frequency is 60 x 10 6\nrad/sec. Write the expression for the electric field ( → 𝐸 ).",
+      "[CBSE Class XII Physics, sample question paper, 2023-24]\n10. The diagram below shows the electric field (E) and magnetic field (B) components\nof an electromagnetic wave at a certain time and location.\nThe direction of the propagation of the electromagnetic wave is\n(a) perpendicular to E and B and out of plane of the paper\n(b) perpendicular to E and B and into the plane of the paper\n(c) parallel and in the same direction as E\n(d) parallel and in the same direction as B",
+      "[CBSE Class XII Physics, sample question paper, 2022-23]\n8. Which of the following statement is NOT true about the properties 1\nof electromagnetic waves?\n(I) These waves do not require any material medium for their\npropagation\n(ii) Both electric and magnetic field vectors attain the maxima and\nminima at the same time\n(iii) The energy in electromagnetic wave is divided equally between\nelectric and magnetic fields\n(iv) Both electric and magnetic field vectors are parallel to each other",
+      "[CBSE Class XII Physics, sample question paper, 2026-27]\n4. If electric field associated with an electromagnetic wave is given by 1\nE= 30 sin (0.2π × 10 m x −0.6 π × 10 Hz t) -4 -1 4 then the direction of\npropagation of the wave is along,\nA. 𝑖̂\nB. -𝑖̂\nC. 𝑘̂\nD. -𝑘̂"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 186207,
+      "in": 41,
+      "out": 41,
+      "rejects": 0,
+      "promptTokens": 43857,
+      "completionTokens": 10994
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 346848,
+      "in": 41,
+      "out": 27,
+      "rejects": 14,
+      "promptTokens": 24907,
+      "completionTokens": 9582
+    },
+    "solver": {
+      "calls": 218,
+      "ms": 108172,
+      "in": 27,
+      "out": 23,
+      "rejects": 4,
+      "promptTokens": 42318,
+      "completionTokens": 2353
+    },
+    "form": {
+      "calls": 5,
+      "ms": 13498,
+      "in": 23,
+      "out": 8,
+      "rejects": 15,
+      "promptTokens": 1179,
+      "completionTokens": 362
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 35,
+      "ms": 6980,
+      "in": 8,
+      "out": 2,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 8,
+      "ms": 82175,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5559,
+      "completionTokens": 3089
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following statements is NOT true about the properties of electromagnetic waves?",
+      "ms": {
+        "draft": 5833,
+        "critique": 6258
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The diagram shows the electric field (E) and magnetic field (B) components of an electromagnetic wave at a certain time and location. What is the direction of the propagation of the electromagnetic wave?",
+      "ms": {
+        "draft": 5833,
+        "critique": 6486,
+        "solver": 1364,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A plane electromagnetic wave is propagating in a vacuum. The magnetic field amplitude is 510 nT in the k̂ direction, and the angular frequency is 60 x 10^6 rad/s. What is the direction of the electric field?",
+      "ms": {
+        "draft": 5833,
+        "critique": 7078,
+        "solver": 1628
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the electric field associated with an electromagnetic wave is given by E = 30 sin (0.2π × 10^4 m^-1 x − 0.6π × 10^4 Hz t), what is the direction of propagation of the wave?",
+      "ms": {
+        "draft": 5833,
+        "critique": 6520,
+        "solver": 1755
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A parallel plate capacitor is being charged. What is the physical quantity that is responsible for creating a magnetic field between the plates of the capacitor?",
+      "ms": {
+        "draft": 5833,
+        "critique": 7985,
+        "solver": 1407
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the source of a magnetic field?",
+      "ms": {
+        "draft": 4544,
+        "critique": 5956,
+        "solver": 1423,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that the laws of electricity and magnetism are more symmetrical due to the introduction of displacement current. Which of the following best explains this symmetry?",
+      "ms": {
+        "draft": 4544,
+        "critique": 6517,
+        "solver": 1062,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, how does the displacement current differ from the conduction current?",
+      "ms": {
+        "draft": 4544,
+        "critique": 7647,
+        "solver": 1852,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the direction of propagation of an electromagnetic wave if the electric field is along the x-axis and the magnetic field is along the y-axis?",
+      "ms": {
+        "draft": 5499,
+        "critique": 6234
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the relationship between the electric and magnetic fields in an electromagnetic wave?",
+      "ms": {
+        "draft": 5499,
+        "critique": 5158
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electromagnetic wave propagates in vacuum with an electric field of 300 N/C and a magnetic field of 1 x 10^-6 T. What is the speed of the wave?",
+      "ms": {
+        "draft": 5499,
+        "critique": 5990,
+        "solver": 16572
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the source of electromagnetic waves?",
+      "ms": {
+        "draft": 5499,
+        "critique": 5845
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the velocity of electromagnetic waves in free space or vacuum?",
+      "ms": {
+        "draft": 3698,
+        "critique": 5745,
+        "solver": 1177,
+        "form": 4110
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the same physical quantity for X-rays, red light, and radiowaves?",
+      "ms": {
+        "draft": 27500,
+        "critique": 6252
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the electromagnetic spectrum is detected by the human eye?",
+      "ms": {
+        "draft": 27776,
+        "critique": 5127,
+        "solver": 10716,
+        "form": 2840
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the direction of the electric and magnetic field vectors of a plane electromagnetic wave traveling in vacuum along the z-direction?",
+      "ms": {
+        "draft": 27500,
+        "critique": 6229
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary source of ultraviolet radiation on Earth?",
+      "ms": {
+        "draft": 27776,
+        "critique": 7159,
+        "solver": 7734,
+        "form": 909
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A plane electromagnetic wave is traveling in the z-direction. What is the relationship between the electric and magnetic field vectors?",
+      "ms": {
+        "draft": 4340,
+        "critique": 7755,
+        "solver": 1934,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about electromagnetic waves?",
+      "ms": {
+        "draft": 4340,
+        "critique": 4912,
+        "solver": 12861,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the direction of propagation of an electromagnetic wave?",
+      "ms": {
+        "draft": 4340,
+        "critique": 5985,
+        "solver": 12889,
+        "form": 3023
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A charged particle oscillates about its mean equilibrium position with a frequency of 10 Hz. What is the frequency of the electromagnetic waves produced by the oscillator?",
+      "ms": {
+        "draft": 4340,
+        "critique": 7776
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A plane electromagnetic wave has an electric field given by E = 120 N/C and a frequency of 50.0 MHz. What is the amplitude of the magnetic field of the wave?",
+      "ms": {
+        "draft": 4340,
+        "critique": 7841,
+        "solver": 1592,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of electromagnetic waves according to the passage?",
+      "ms": {
+        "draft": 4492,
+        "critique": 7219
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the speed of electromagnetic waves in a material medium?",
+      "ms": {
+        "draft": 4492,
+        "critique": 6841
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an electromagnetic wave has an electric field given by E = E0 sin(kz - ωt), what is the direction of propagation of the wave according to the passage?",
+      "ms": {
+        "draft": 4492,
+        "critique": 6810
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between the electric and magnetic fields in an electromagnetic wave?",
+      "ms": {
+        "draft": 4492,
+        "critique": 5819
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the velocity of electromagnetic waves in free space or vacuum?",
+      "ms": {
+        "draft": 3703,
+        "critique": 5839
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the direction of the magnetic field if the electric field is along the y-direction and the wave propagates along the x-axis?",
+      "ms": {
+        "draft": 3703,
+        "critique": 7684
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the electric field of a plane electromagnetic wave is given by E = 30 sin (0.2π × 10^4 x − 0.6π × 10^6 t) V/m, what is the direction of propagation of the wave?",
+      "ms": {
+        "draft": 3703,
+        "critique": 8067
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes electromagnetic waves as having electric and magnetic fields that oscillate sinusoidally. If a wave has an electric field given by E = E0 sin(kz - ωt), what is the phase relationship between the electric and magnetic fields?",
+      "ms": {
+        "draft": 4492,
+        "critique": 6084,
+        "solver": 14942,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary source of electromagnetic waves according to the passage?",
+      "ms": {
+        "draft": 3587,
+        "critique": 6394,
+        "solver": 12363,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between the frequency of an electromagnetic wave and the frequency of the oscillating charge that produces it?",
+      "ms": {
+        "draft": 3587,
+        "critique": 7333,
+        "solver": 13793,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the source of a magnetic field?",
+      "ms": {
+        "draft": 55222,
+        "critique": 7929,
+        "solver": 7705,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A plane electromagnetic wave is propagating along the positive X-axis. The electric field is in the Y-direction. In which direction is the magnetic field?",
+      "ms": {
+        "draft": 4544,
+        "critique": 6844,
+        "solver": 10693,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electromagnetic wave is propagating in a vacuum with an electric field given by E = 30 sin (0.2π × 10^4 x − 0.6π × 10^4 t) N/C. What is the direction of propagation of the wave?",
+      "ms": {
+        "draft": 4544,
+        "critique": 5676,
+        "solver": 1823,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The electric field of an electromagnetic wave is given by E = 510 sin (kx - ωt) nT. What is the direction of propagation of the wave?",
+      "ms": {
+        "draft": 4544,
+        "critique": 6783,
+        "solver": 1679,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an electromagnetic wave has an electric field given by E = 30 sin (0.2π × 10^4 x − 0.6π × 10^4 t), what is the direction of propagation of the wave?",
+      "ms": {
+        "draft": 5499,
+        "critique": 7385,
+        "solver": 12996,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the electric field of an electromagnetic wave is given by E = E0 sin(kz - ωt), what is the direction of propagation of the wave?",
+      "ms": {
+        "draft": 5499,
+        "critique": 8631,
+        "solver": 10381,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An electromagnetic wave has an electric field given by E = 30 sin(0.2π × 10^4 x − 0.6π × 10^4 t). What is the direction of propagation of the wave?",
+      "ms": {
+        "draft": 4340,
+        "critique": 5238,
+        "solver": 1783,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of electromagnetic wave is used in microwave ovens?",
+      "ms": {
+        "draft": 3698,
+        "critique": 5430,
+        "solver": 1361,
+        "form": 3869,
+        "translation": 38949
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Maxwell's equations predict that electromagnetic waves travel at the speed of light. What is the physical reason for this?",
+      "ms": {
+        "draft": 5833,
+        "critique": 7462,
+        "solver": 12419,
+        "form": 0,
+        "translation": 43226
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following statements is NOT true about the properties of electromagnetic waves?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The diagram shows the electric field (E) and magnetic field (B) components of an electromagnetic wave at a certain time and location. What is the direction of the propagation of the electromagnetic wave?",
+      "reason": "options 0 and 1 say the same thing (\"perpendicular to E and B and out of the plane of the paper\" / \"perpendicular to E and B and into the plane of the paper\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A plane electromagnetic wave is propagating in a vacuum. The magnetic field amplitude is 510 nT in the k̂ direction, and the angular frequency is 60 x 10^6 rad/s. What is the direction of the electric field?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the electric field associated with an electromagnetic wave is given by E = 30 sin (0.2π × 10^4 m^-1 x − 0.6π × 10^4 Hz t), what is the direction of propagation of the wave?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A parallel plate capacitor is being charged. What is the physical quantity that is responsible for creating a magnetic field between the plates of the capacitor?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the source of a magnetic field?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"overlooks the mention of displacement current in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that the laws of electricity and magnetism are more symmetrical due to the introduction of displacement current. Which of the following best explains this symmetry?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, how does the displacement current differ from the conduction current?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the direction of propagation of an electromagnetic wave if the electric field is along the x-axis and the magnetic field is along the y-axis?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the relationship between the electric and magnetic fields in an electromagnetic wave?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "An electromagnetic wave propagates in vacuum with an electric field of 300 N/C and a magnetic field of 1 x 10^-6 T. What is the speed of the wave?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the source of electromagnetic waves?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the velocity of electromagnetic waves in free space or vacuum?",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number; ARITHMETIC MISMATCH — checkExpr \"3*10^8\" = 300000000, but the key says 3"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the same physical quantity for X-rays, red light, and radiowaves?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the electromagnetic spectrum is detected by the human eye?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the direction of the electric and magnetic field vectors of a plane electromagnetic wave traveling in vacuum along the z-direction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary source of ultraviolet radiation on Earth?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A plane electromagnetic wave is traveling in the z-direction. What is the relationship between the electric and magnetic field vectors?",
+      "reason": "options 1 and 2 say the same thing (\"They are perpendicular to the z-direction and to each other.\" / \"They are parallel to each other and perpendicular to the z-direction.\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about electromagnetic waves?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about the direction of propagation of an electromagnetic wave?",
+      "reason": "options 0 and 2 say the same thing (\"It is parallel to both the electric and magnetic field vectors.\" / \"It is perpendicular to both the electric and magnetic field vectors.\"); options 1 and 3 say the same thing (\"It is perpendicular to the electric field vector but parallel to the magnetic field vector.\" / \"It is parallel to the electric field vector but perpendicular to the magnetic field vector.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A charged particle oscillates about its mean equilibrium position with a frequency of 10 Hz. What is the frequency of the electromagnetic waves produced by the oscillator?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A plane electromagnetic wave has an electric field given by E = 120 N/C and a frequency of 50.0 MHz. What is the amplitude of the magnetic field of the wave?",
+      "reason": "options are written to different precisions (0 and 1 decimals); ARITHMETIC MISMATCH — checkExpr \"120/(3*10^8)\" = 4e-7, but the key says 1.7"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a property of electromagnetic waves according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage say about the speed of electromagnetic waves in a material medium?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If an electromagnetic wave has an electric field given by E = E0 sin(kz - ωt), what is the direction of propagation of the wave according to the passage?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between the electric and magnetic fields in an electromagnetic wave?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the velocity of electromagnetic waves in free space or vacuum?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the direction of the magnetic field if the electric field is along the y-direction and the wave propagates along the x-axis?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the electric field of a plane electromagnetic wave is given by E = 30 sin (0.2π × 10^4 x − 0.6π × 10^6 t) V/m, what is the direction of propagation of the wave?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage describes electromagnetic waves as having electric and magnetic fields that oscillate sinusoidally. If a wave has an electric field given by E = E0 sin(kz - ωt), what is the phase relationship between the electric and magnetic fields?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"They are out of phase by 180 degrees\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the primary source of electromagnetic waves according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between the frequency of an electromagnetic wave and the frequency of the oscillating charge that produces it?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"The frequency of the electromagnetic wave is half the frequency of the oscillating charge\" / \"The frequency of the electromagnetic wave is independent of the oscillating charge\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the source of a magnetic field?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A plane electromagnetic wave is propagating along the positive X-axis. The electric field is in the Y-direction. In which direction is the magnetic field?",
+      "reason": "near-duplicate of served question cmvlliwsb0n46gpfheb9hzmhk (cosine 0.906 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "An electromagnetic wave is propagating in a vacuum with an electric field given by E = 30 sin (0.2π × 10^4 x − 0.6π × 10^4 t) N/C. What is the direction of propagation of the wave?",
+      "reason": "near-duplicate of served question cmvi6zrqy0brqgpfhf5awysyj (cosine 0.928 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "The electric field of an electromagnetic wave is given by E = 510 sin (kx - ωt) nT. What is the direction of propagation of the wave?",
+      "reason": "near-duplicate of served question cmvi6zrqy0brqgpfhf5awysyj (cosine 0.931 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If an electromagnetic wave has an electric field given by E = 30 sin (0.2π × 10^4 x − 0.6π × 10^4 t), what is the direction of propagation of the wave?",
+      "reason": "near-duplicate of served question cmvi6zrqy0brqgpfhf5awysyj (cosine 0.948 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If the electric field of an electromagnetic wave is given by E = E0 sin(kz - ωt), what is the direction of propagation of the wave?",
+      "reason": "near-duplicate of served question cmvi6zrqy0brqgpfhf5awysyj (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "An electromagnetic wave has an electric field given by E = 30 sin(0.2π × 10^4 x − 0.6π × 10^4 t). What is the direction of propagation of the wave?",
+      "reason": "near-duplicate of served question cmvi6zrqy0brqgpfhf5awysyj (cosine 0.949 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+    "topic words not written: the model's answer was not JSON (finish: length): {\n  \"summary\": \"This chapter discusses electromagnetic waves and the contributions of James Clerk Maxwell and Heinrich R"
+  ]
+}

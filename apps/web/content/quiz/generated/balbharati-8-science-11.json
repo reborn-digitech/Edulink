@@ -21,430 +21,36 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-22T07:28:01.156Z",
+  "generatedAt": "2026-10-29T20:54:54.594Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the function of blood donation?",
-      "choices": [
-        "To treat cancer",
-        "To restore lost blood",
-        "To provide antibodies to fight infections",
-        "To increase body weight"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is to restore lost blood because when someone loses blood, donating blood can replenish their supply and help maintain proper bodily functions. Treating cancer is not a direct function of blood donation, as it is not designed to cure diseases. Providing antibodies is a role of the immune system, not blood donation itself. Increasing body weight is unrelated to the purpose of donating blood.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "रक्त दान का कार्य क्या है?",
-          "choices": [
-            "कैंसर का उपचार करना",
-            "हानि हुए रक्त को बहाल करना",
-            "संक्रमण के विरुद्ध प्रतिरक्षा रोधक प्रदान करना",
-            "शरीर के वजन को बढ़ाना"
-          ],
-          "solution": "सही उत्तर हानि हुए रक्त को बहाल करना है क्योंकि जब कोई व्यक्ति रक्त खो देता है, तो रक्त दान उसके आपूर्ति को पुनः पूर्ति कर सकता है और शरीर के सही कार्य करने में सहायता कर सकता है। कैंसर का उपचार रक्त दान का सीधा कार्य नहीं है, क्योंकि यह बीमारियों के उपचार के लिए नहीं बनाया गया है। प्रतिरक्षा रोधक प्रदान करना प्रतिरक्षा प्रणाली का कार्य है, न कि रक्त दान का। शरीर के वजन को बढ़ाना रक्त दान के उद्देश्य से असंबंधित है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate medical terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "रक्तदानाचे कार्य काय आहे?",
-          "choices": [
-            "कर्करोग उपचार करणे",
-            "हरवलेले रक्त पुनर्प्राप्त करणे",
-            "संसर्गांविरुद्ध प्रतिरोधक देणे",
-            "शरीराचा वजन वाढवणे"
-          ],
-          "solution": "बरोबर उत्तर हरवलेले रक्त पुनर्प्राप्त करणे आहे कारण जेव्हा कोणी रक्त हरवतो तेव्हा रक्तदानाने त्याच्या पुरवठ्याची पुनर्पूर्ती केली जाऊ शकते आणि शारीरिक कार्ये ठीक राहतात. कर्करोग उपचार करणे रक्तदानाचे एक थेट कार्य नाही, कारण ते आजारांचे उपचार करण्यासाठी डिझाइन केलेले नाही. प्रतिरोधक देणे हे प्रतिरोध प्रणालीचे कार्य आहे, रक्तदानाचे नाही. शरीराचा वजन वाढवणे रक्तदानाच्या उद्देशाशी संबंधित नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for medical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the purpose of blood donation with treating cancer",
-        null,
-        "believes blood donation's main purpose is to supply immune components rather than replace lost blood",
-        "Believing that donating blood leads to weight gain due to a misunderstanding of how blood volume and metabolism are related."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as blood donation's primary function is to restore lost blood. The other options represent common misconceptions about blood donation.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 102,
-          "pageStart": 90,
-          "pageEnd": 90,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 103,
-          "pageStart": 91,
-          "pageEnd": 91,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 104,
-          "pageStart": 91,
-          "pageEnd": 92,
-          "headingPath": [
-            "11. Human Body and Organ System",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:28:01.156Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
       "difficulty": 2,
-      "stem": "Which of the following is a function of the circulatory system?",
+      "stem": "Which of the following is NOT a type of blood cell?",
       "choices": [
-        "Filtering air",
-        "Absorbing nutrients",
-        "Transporting substances",
-        "Breaking down food"
-      ],
-      "answerIndex": 2,
-      "solution": "The circulatory system transports substances like oxygen, nutrients, and waste throughout the body. It does not filter air, absorb nutrients, or break down food, which are the functions of the respiratory and digestive systems, respectively. Therefore, the correct answer is 'Transporting substances'.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा परिसंचरण तंत्र का कार्य है?",
-          "choices": [
-            "हवा का छानना",
-            "पोषक तत्वों का अवशोषण",
-            "पदार्थों का परिवहन",
-            "भोजन का अपचयन"
-          ],
-          "solution": "परिसंचरण तंत्र ऑक्सीजन, पोषक तत्व आदि पदार्थों का शरीर में परिवहन करता है। यह हवा का छानना, पोषक तत्वों का अवशोषण या भोजन का अपचयन नहीं करता, जो क्रमशः श्वसन तथा पाचन तंत्र के कार्य हैं। अतः सही उत्तर 'पदार्थों का परिवहन' है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English content with appropriate terminology used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते रक्तपरिसंचरण प्रणालीचे कार्य आहे?",
-          "choices": [
-            "वायू फिल्टर करणे",
-            "पोषक द्रव्ये अवशोषित करणे",
-            "द्रव्ये परिवहन करणे",
-            "खाद्य पदार्थ विघटित करणे"
-          ],
-          "solution": "रक्तपरिसंचरण प्रणाली ऑक्सीजन, पोषक द्रव्ये आणि कचरा अशा द्रव्यांचे शरीरात परिवहन करते. ते वायू फिल्टर करणे, पोषक द्रव्ये अवशोषित करणे किंवा खाद्य पदार्थ विघटित करणे या कार्यांचे कार्य नसते, जे श्वासोच्छ्वास प्रणाली आणि पाचन प्रणालीचे कार्य आहेत. म्हणूनच योग्य उत्तर 'द्रव्ये परिवहन करणे' आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological systems.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the function of the respiratory system with the circulatory system",
-        "Thinks the circulatory system is involved in nutrient absorption",
-        null,
-        "Mistakenly believes the circulatory system breaks down food"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies 'Transporting substances' as the function of the circulatory system and correctly explains why the other options are incorrect. The misconceptions listed for the distractors are plausible for students at this level.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 96,
-          "pageStart": 85,
-          "pageEnd": 85,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 97,
-          "pageStart": 85,
-          "pageEnd": 86,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 98,
-          "pageStart": 86,
-          "pageEnd": 87,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:28:01.156Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a function of blood?",
-      "choices": [
-        "Transport of gases",
-        "Formation of urine",
-        "Digestion of food",
-        "Production of hormones"
-      ],
-      "answerIndex": 0,
-      "solution": "Blood's primary role includes transporting gases like oxygen and carbon dioxide throughout the body. Formation of urine is handled by the kidneys, digestion of food is managed by the digestive system, and hormones are produced by endocrine glands, not blood.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा रक्त का कार्य है?",
-          "choices": [
-            "गैसों का परिवहन",
-            "मूत्र का निर्माण",
-            "भोजन का पाचन",
-            "हार्मोन का उत्पादन"
-          ],
-          "solution": "रक्त की प्राथमिक भूमिका में शरीर के भीतर ऑक्सीजन और कार्बन डाइऑक्साइड जैसी गैसों के परिवहन का कार्य शामिल है। मूत्र का निर्माण किडनी द्वारा किया जाता है, भोजन का पाचन पाचन तंत्र द्वारा किया जाता है, और हार्मोन एंडोक्राइन ग्रंथियों द्वारा उत्पादित किए जाते हैं, न कि रक्त द्वारा।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी रक्ताचे कार्य कोणते आहे?",
-          "choices": [
-            "गॅसचे परिवहन",
-            "मूत्राचे निर्माण",
-            "खाद्य पदार्थांचे पाचन",
-            "हॉर्मोनचे निर्माण"
-          ],
-          "solution": "रक्ताचे मुख्य कार्य शरीरात ऑक्सीजन आणि कार्बन डायऑक्साइड अशा गॅसचे परिवहन करणे आहे. मूत्राचे निर्माण किडनी करतात, खाद्य पदार्थांचे पाचन पाचन प्रणाली करते आणि हॉर्मोन अंतःस्त्रावी ग्रंथी द्वारे निर्मित होतात, रक्ताद्वारे नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological functions.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses blood's function with that of the kidneys",
-        "Confuses blood's function with that of the digestive system",
-        "Confuses blood's function with that of the endocrine system"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (Transport of gases), as blood's primary role includes carrying oxygen and carbon dioxide. The other options are correctly identified as functions of other systems, and the misconceptions described are common among students.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 99,
-          "pageStart": 87,
-          "pageEnd": 88,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 100,
-          "pageStart": 88,
-          "pageEnd": 89,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 101,
-          "pageStart": 89,
-          "pageEnd": 90,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:28:01.156Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which type of blood cells are responsible for carrying oxygen in the blood?",
-      "choices": [
-        "White blood cells",
-        "Red blood cells",
-        "Platelets",
-        "Plasma"
-      ],
-      "answerIndex": 1,
-      "solution": "Red blood cells are responsible for carrying oxygen because they contain hemoglobin, a protein that binds to oxygen. White blood cells are involved in fighting infections, platelets help in blood clotting, and plasma is the liquid component of blood that carries cells and nutrients.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "रक्त में ऑक्सीजन के वहन के लिए कौन से रक्त कोशिकाएं जिम्मेदार होती हैं?",
-          "choices": [
-            "श्वेत रक्त कोशिकाएं",
-            "लाल रक्त कोशिकाएं",
-            "प्लेटलेट्स",
-            "प्लाज्मा"
-          ],
-          "solution": "लाल रक्त कोशिकाएं ऑक्सीजन के वहन के लिए जिम्मेदार होती हैं क्योंकि वे हीमोग्लोबिन नामक प्रोटीन रखती हैं जो ऑक्सीजन से जुड़ जाती है। श्वेत रक्त कोशिकाएं संक्रमण के खिलाफ लड़ती हैं, प्लेटलेट्स रक्त थक्का बनाने में मदद करती हैं और प्लाज्मा रक्त के तरल घटक होता है जो कोशिकाओं और पोषक तत्वों को ले जाता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi medical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "रक्तातील ऑक्सीजन वहावे जाणारे रक्ताणू कोणत्या प्रकारचे असतात?",
-          "choices": [
-            "श्वेत रक्ताणू",
-            "लाल रक्ताणू",
-            "प्लेटलेट्स",
-            "प्लाज्मा"
-          ],
-          "solution": "लाल रक्ताणू ऑक्सीजन वहावे जाणारे असतात कारण त्यांमध्ये हिमोग्लोबिन नावाचे प्रोटीन असते, जे ऑक्सीजनशी जोडले जाते. श्वेत रक्ताणू संसर्ग लढण्यात सहायता करतात, प्लेटलेट्स रक्ताच्या थक्कतेत सहायता करतात आणि प्लाज्मा रक्ताचा द्रव घटक असतो जो रक्ताणू आणि पोषक द्रव्ये वहावे जाण्यात मदत करतो.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the function of white blood cells with that of red blood cells",
-        null,
-        "Confuses the function of platelets with that of red blood cells",
-        "Confuses the role of plasma with that of red blood cells"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution correctly identifies red blood cells as the oxygen-carrying component of blood.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 99,
-          "pageStart": 87,
-          "pageEnd": 88,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 100,
-          "pageStart": 88,
-          "pageEnd": 89,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 101,
-          "pageStart": 89,
-          "pageEnd": 90,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:28:01.156Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which part of the respiratory system is responsible for the initial filtration of air?",
-      "choices": [
-        "Lungs",
-        "Diaphragm",
-        "Pharynx",
-        "Nose"
+        "Red blood cell",
+        "White blood cell",
+        "Platelet",
+        "Stem cell"
       ],
       "answerIndex": 3,
-      "solution": "The nose is the first part of the respiratory system that air passes through. It filters the air using hair and mucus. The other options are involved in other functions of the respiratory system, but not the initial filtration. Therefore, the correct answer is 'Nose'.",
+      "solution": "Stem cells are not classified as blood cells; they are undifferentiated cells that can develop into various cell types, including blood cells. Red blood cells, white blood cells, and platelets are all recognized types of blood cells. Therefore, the correct answer is 'Stem cell' because it is not a type of blood cell.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
-        "hi": {
-          "stem": "श्वसन प्रणाली का कौन-सा भाग हवा के प्रारंभिक छानने के लिए उत्तरदायी है?",
-          "choices": [
-            "फेफड़े",
-            "डायफ्राम",
-            "फारिंक्स",
-            "नाक"
-          ],
-          "solution": "नाक श्वसन प्रणाली का पहला भाग है जिससे हवा गुजरती है। यह हवा को बाल और म्यूकस के उपयोग से छानता है। अन्य विकल्प श्वसन प्रणाली के अन्य कार्यों में शामिल हैं, लेकिन प्रारंभिक छानने में नहीं। इसलिए, सही उत्तर 'नाक' है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect, and the technical terms used are standard in Hindi medical/health education.",
-          "flag": null
-        },
         "mr": {
-          "stem": "श्वसन प्रणालीच्या कोणत्या भागाने हवा अग्रिम फिल्टरिंग केली जाते?",
+          "stem": "खालीलपैकी कोणता रक्ताणू नाही?",
           "choices": [
-            "फुफ्फुस",
-            "डायफ्राम",
-            "फारिन्क्स",
-            "नाक"
+            "लाल रक्ताणू",
+            "श्वेत रक्ताणू",
+            "प्लेटलेट",
+            "स्टेम सेल"
           ],
-          "solution": "नाक हा श्वसन प्रणालीचा पहिला भाग आहे ज्यातून हवा जाते. तो हवा लहान वाल आणि म्यूकस वापरून फिल्टर करतो. इतर विकल्प श्वसन प्रणालीच्या इतर कार्यांमध्ये संलग्न आहेत, परंतु अग्रिम फिल्टरिंगसाठी नाहीत. म्हणूनच योग्य उत्तर 'नाक' आहे.",
+          "solution": "स्टेम सेल रक्ताणू म्हणून वर्गीकृत केले जात नाहीत; ते अपेक्षित नसलेले सेल आहेत जे विविध सेल प्रकारांमध्ये विकसित होऊ शकतात, जे रक्ताणू देखील आहेत. लाल रक्ताणू, श्वेत रक्ताणू आणि प्लेटलेट हे सर्व रक्ताणूचे ओळखले गेलेले प्रकार आहेत. त्यामुळे सही उत्तर 'स्टेम सेल' आहे कारण ते रक्ताणूचा प्रकार नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for biological concepts.",
           "flag": null
         }
       },
@@ -453,9 +59,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the function of the lungs with that of the nose",
-        "Thinks the diaphragm is responsible for filtering air",
-        "Believes the pharynx is the first point of air filtration",
+        "Confuses stem cells with blood cells",
+        "Thinks all blood components are types of blood cells",
+        "Mistakenly includes stem cells as a blood cell type",
         null
       ],
       "solverAnswers": [
@@ -466,7 +72,102 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies the nose as the initial site of air filtration in the respiratory system. The reasoning aligns with standard biology knowledge.",
+      "critique": "The solution is correct. Stem cells are not classified as a type of blood cell, while red blood cells, white blood cells, and platelets are. The reasoning aligns with standard biology.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 99,
+          "pageStart": 87,
+          "pageEnd": 88,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 100,
+          "pageStart": 88,
+          "pageEnd": 89,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 101,
+          "pageStart": 89,
+          "pageEnd": 90,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:54:54.594Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens to the diaphragm during inhalation?",
+      "choices": [
+        "It relaxes and moves upward",
+        "It contracts and moves downward",
+        "It remains stationary",
+        "It contracts and moves upward"
+      ],
+      "answerIndex": 1,
+      "solution": "During inhalation, the diaphragm contracts and moves downward, increasing the volume of the thoracic cavity and allowing air to enter the lungs. The other options describe the opposite or incorrect movements of the diaphragm.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "श्वास लेने के दौरान डायफ्राम क्या होता है?",
+          "choices": [
+            "यह शिथिल हो जाता है और ऊपर की ओर जाता है",
+            "यह संकुचित हो जाता है और नीचे की ओर जाता है",
+            "यह स्थिर रहता है",
+            "यह संकुचित हो जाता है और ऊपर की ओर जाता है"
+          ],
+          "solution": "श्वास लेने के दौरान डायफ्राम संकुचित हो जाता है और नीचे की ओर जाता है, जिससे थोरेसिक गुहा का आयतन बढ़ जाता है और हवा फेफड़ों में प्रवेश कर जाती है। अन्य विकल्प डायफ्राम के विपरीत या गलत गति का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and option structure. The correct answer remains option 1, and all distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "श्वासाच्या वेळी डायफ्राम काय होतो?",
+          "choices": [
+            "तो शिथिल होतो आणि वर जातो",
+            "तो खिचून खाली जातो",
+            "तो थांबलेला राहतो",
+            "तो खिचून वर जातो"
+          ],
+          "solution": "श्वासाच्या वेळी, डायफ्राम खिचून खाली जातो, जेणेकरून थोरॅक्स कॅव्हिटीचा आकार वाढतो आणि हवा फुफ्फुसात प्रवेश करतो. इतर विकल्पांमध्ये डायफ्रामच्या विरुद्ध किंवा चुकीच्या गतीचे वर्णन केले आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, technical terms are appropriately used in Marathi, and the correct answer remains in the same position.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the movement of the diaphragm during exhalation with that during inhalation",
+        null,
+        "Incorrectly assumes the diaphragm remains stationary during inhalation",
+        "Misunderstands the role of the diaphragm in increasing thoracic cavity volume during inhalation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly explains that the diaphragm contracts and moves downward during inhalation, which matches the correct answer. The reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -497,428 +198,47 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:28:01.156Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What happens to the rate of heart beat during physical exercise?",
-      "choices": [
-        "It increases",
-        "It decreases",
-        "It remains the same",
-        "It becomes irregular"
-      ],
-      "answerIndex": 0,
-      "solution": "During physical exercise, the body requires more oxygen and nutrients, which causes the heart to pump faster. This leads to an increase in the rate of heart beat. The other options do not align with how the cardiovascular system responds to increased physical activity.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "शारीरिक अभ्यास के दौरान हृदय गति की दर क्या होती है?",
-          "choices": [
-            "यह बढ़ जाती है",
-            "यह घट जाती है",
-            "यह एक ही रहती है",
-            "यह अनियमित हो जाती है"
-          ],
-          "solution": "शारीरिक अभ्यास के दौरान शरीर को अधिक ऑक्सीजन और पोषक तत्व की आवश्यकता होती है, जिसके कारण हृदय तेजी से रक्त पंप करता है। इससे हृदय गति की दर बढ़ जाती है। अन्य विकल्प शारीरिक गतिविधि के बढ़ने पर कार्डियोवैस्कुलर प्रणाली के प्रतिक्रिया के साथ मेल नहीं खाते।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for a textbook context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "शारीरिक व्यायाम दरम्यान हृदयाच्या ठोक्याच्या दरावर काय परिणाम होतो?",
-          "choices": [
-            "तो वाढतो",
-            "तो घटतो",
-            "तो त्याच राहतो",
-            "तो अनियमित होतो"
-          ],
-          "solution": "शारीरिक व्यायाम दरम्यान, शरीराला अधिक ऑक्सिजन आणि पोषक द्रव्यांची आवश्यकता असते, ज्यामुळे हृदय जास्त वेगाने पंप करते. हे हृदयाच्या ठोक्याच्या दरात वाढीस लावते. इतर विकल्प शारीरिक क्रियाकलापामुळे हृदय-रक्तवाहिनी प्रणालीच्या प्रतिसादाशी संगत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer (option 1) is in the same position as in the English version. All distractors remain incorrect in Marathi.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the effect of rest with that of exercise",
-        "Thinks heart rate is unaffected by physical activity",
-        "Believes heart rate is always constant regardless of activity level"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as the heart rate increases during physical exercise. The author's reasoning is sound and aligns with scientific understanding. The distractors reflect common misconceptions about heart rate.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 99,
-          "pageStart": 87,
-          "pageEnd": 88,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 100,
-          "pageStart": 88,
-          "pageEnd": 89,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 101,
-          "pageStart": 89,
-          "pageEnd": 90,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:28:01.156Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Why are veins provided with valves?",
-      "choices": [
-        "To prevent backflow of blood",
-        "To increase the speed of blood flow",
-        "To decrease the pressure of blood",
-        "To regulate the temperature of blood"
-      ],
-      "answerIndex": 0,
-      "solution": "Veins have valves to stop blood from flowing backward, which is essential because blood in veins has low pressure and needs assistance to move toward the heart. Increasing the speed of blood flow, decreasing pressure, or regulating temperature are not functions of valves. Valves ensure blood moves in one direction, maintaining efficient circulation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "शिराओं में वाल्व क्यों होते हैं?",
-          "choices": [
-            "रक्त के पीछे की ओर बहाव को रोकने के लिए",
-            "रक्त के प्रवाह की गति बढ़ाने के लिए",
-            "रक्त के दबाव को कम करने के लिए",
-            "रक्त के तापमान को नियंत्रित करने के लिए"
-          ],
-          "solution": "शिराओं में वाल्व होते हैं ताकि रक्त पीछे की ओर बहे ना। यह आवश्यक है क्योंकि शिराओं में रक्त का दबाव कम होता है और दिल की ओर बहाव के लिए सहायता की आवश्यकता होती है। रक्त के प्रवाह की गति बढ़ाना, दबाव कम करना या तापमान नियंत्रित करना वाल्व के कार्य नहीं हैं। वाल्व रक्त के एक ही दिशा में बहाव को सुनिश्चित करते हैं, जो कि प्रभावी परिसंचरण बनाए रखते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate medical terminology as used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "रक्तवाहिन्यांमध्ये वाल्व्ह असतात का?",
-          "choices": [
-            "रक्ताच्या परत वाहनाचा अडथळा निर्माण करण्यासाठी",
-            "रक्ताच्या वाहनाच्या वेगात वाढ करण्यासाठी",
-            "रक्ताच्या दाबात कमी करण्यासाठी",
-            "रक्ताच्या तापमानाचे नियमन करण्यासाठी"
-          ],
-          "solution": "रक्तवाहिन्यांमध्ये वाल्व्ह असतात कारण रक्ताच्या परत वाहनाचा अडथळा निर्माण करणे आवश्यक आहे, कारण रक्तवाहिन्यांमध्ये रक्ताचा दाब कमी असतो आणि हृदयाकडे जाण्यासाठी सहाय्य आवश्यक असतो. रक्ताच्या वाहनाच्या वेगात वाढ करणे, दाब कमी करणे किंवा तापमान नियमन करणे हे वाल्व्हचे कार्य नाहीत. वाल्व्ह रक्ताला एका दिशेने वाहत ठेवतात, जेणेकरून परिसंचरणाची प्रभावीता राखली जाऊ शकते.",
-          "imageAlt": null,
-          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for biological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the function of valves with that of increasing blood flow",
-        "Confuses the function of valves with that of decreasing blood pressure",
-        "Confuses the function of valves with that of regulating body temperature"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as valves in veins prevent backflow of blood. The other options represent common misconceptions about the function of valves.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 99,
-          "pageStart": 87,
-          "pageEnd": 88,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 100,
-          "pageStart": 88,
-          "pageEnd": 89,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 101,
-          "pageStart": 89,
-          "pageEnd": 90,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:28:01.156Z",
+      "generatedAt": "2026-10-29T20:54:54.594Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "What happens if a blood transfusion is performed without matching blood groups?",
+      "stem": "Which of the following processes involves the exchange of gases between blood and body cells?",
       "choices": [
-        "It is always safe",
-        "It can be fatal for the patient",
-        "It is necessary for all patients",
-        "It is only harmful for children"
+        "External respiration",
+        "Internal respiration",
+        "Cellular respiration",
+        "Breathing"
       ],
       "answerIndex": 1,
-      "solution": "If a blood transfusion is performed without matching blood groups, the patient's immune system may attack the foreign blood cells, leading to a severe and potentially fatal reaction. The other options are incorrect because they either suggest safety where there is danger or make unsupported claims about who is affected.",
+      "solution": "Internal respiration refers to the exchange of gases between blood and body cells. External respiration involves the lungs, while cellular respiration is the process within cells. Breathing is the physical act of inhaling and exhaling air.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "अगर रक्त संयोजन के बिना एक रक्त आधान किया जाता है तो क्या होता है?",
+          "stem": "निम्नलिखित में से कौन-सी प्रक्रिया रक्त एवं शरीर की कोशिकाओं के बीच गैसों के आदान-प्रदान के लिए जिम्मेदार है?",
           "choices": [
-            "यह हमेशा सुरक्षित होता है",
-            "रोगी के लिए यह मृत्यु के कारण हो सकता है",
-            "यह सभी रोगियों के लिए आवश्यक है",
-            "यह केवल बच्चों के लिए हानिकारक होता है"
+            "बाह्य श्वसन",
+            "आंतरिक श्वसन",
+            "कोशिकीय श्वसन",
+            "श्वास लेना"
           ],
-          "solution": "अगर रक्त संयोजन के बिना एक रक्त आधान किया जाता है तो रोगी के प्रतिरक्षा प्रणाली विदेशी रक्त कोशिकाओं पर हमला कर सकती है, जिसके परिणामस्वरूप एक गंभीर और जानलेवा प्रतिक्रिया हो सकती है। अन्य विकल्प गलत हैं क्योंकि वे खतरे में सुरक्षा का सुझाव देते हैं या किसके प्रभावित होने के बारे में असमर्थित दावे करते हैं।",
+          "solution": "आंतरिक श्वसन रक्त एवं शरीर की कोशिकाओं के बीच गैसों के आदान-प्रदान के लिए जिम्मेदार है। बाह्य श्वसन फेफड़ों से संबंधित होता है, जबकि कोशिकीय श्वसन कोशिकाओं में होने वाली प्रक्रिया है। श्वास लेना हवा के अंदर आने एवं बाहर जाने की शारीरिक क्रिया है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate medical terminology as used in Hindi textbooks.",
+          "critique": "The Hindi translation accurately reflects the English content with appropriate terminology used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "रक्ताच्या वाटपाच्या वेळी रक्तगटांचा तुलना केल्याशिवाय काय होतो?",
+          "stem": "खालीलपैकी कोणता प्रक्रिया रक्त आणि शारीरिक कोशिकांमध्ये वायूंच्या विनिमयाशी संबंधित आहे?",
           "choices": [
-            "हे नेहमी सुरक्षित असते",
-            "रुग्णासाठी हे जीवघेणे असू शकते",
-            "हे सर्व रुग्णांसाठी आवश्यक असते",
-            "हे मुलांसाठी फक्त हानिकारक असते"
+            "बाह्य श्वसन",
+            "आंतरिक श्वसन",
+            "कोशिकांतील श्वसन",
+            "श्वासोच्छ्वास"
           ],
-          "solution": "रक्तगटांचा तुलना केल्याशिवाय रक्ताच्या वाटपाच्या वेळी रुग्णाच्या प्रतिकार प्रणालीमुळे विदेशी रक्ताच्या कोशिका निर्माण होऊ शकतात, जे गंभीर आणि जीवघेणे प्रतिक्रिया निर्माण करू शकतात. इतर विकल्प चुकीचे आहेत कारण ते जखमी असताना सुरक्षिततेचा दावा करतात किंवा कोणास प्रभावित करतो याबद्दल असुरक्षित दावे करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Ignores the risk of mismatched transfusions",
-        null,
-        "Assumes transfusions are always safe",
-        "Limits the risk to only children"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as mismatched blood transfusions can be fatal. The other options are clearly incorrect and represent common misconceptions about blood transfusions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 102,
-          "pageStart": 90,
-          "pageEnd": 90,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 103,
-          "pageStart": 91,
-          "pageEnd": 91,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 104,
-          "pageStart": 91,
-          "pageEnd": 92,
-          "headingPath": [
-            "11. Human Body and Organ System",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:28:01.156Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following statements is true about arteries?",
-      "choices": [
-        "They have thin walls and no valves",
-        "They carry deoxygenated blood only",
-        "They have thick walls and no valves",
-        "They are located superficially in the body"
-      ],
-      "answerIndex": 2,
-      "solution": "Arteries have thick walls and no valves. This is because they need to withstand high pressure from the heart's pumping action and do not require valves to prevent backflow. The other options are incorrect as veins have thin walls and valves, some arteries carry oxygenated blood, and veins are superficially located.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा कथन धमनियों के बारे में सही है?",
-          "choices": [
-            "उनकी दीवारें पतली होती हैं और कोई वैल्व नहीं होते",
-            "वे केवल अक्सीजनहीन रक्त ले जाते हैं",
-            "उनकी दीवारें मोटी होती हैं और कोई वैल्व नहीं होते",
-            "वे शरीर में सतही रूप से स्थित होते हैं"
-          ],
-          "solution": "धमनियाँ मोटी दीवारों वाली होती हैं और कोई वैल्व नहीं होते। इसका कारण यह है कि उन्हें हृदय के पंपिंग कार्य से उत्पन्न उच्च दबाव का सामना करना पड़ता है और वे पीछे के प्रवाह को रोकने के लिए वैल्व की आवश्यकता नहीं होती। अन्य विकल्प गलत हैं क्योंकि शिराओं में पतली दीवारें और वैल्व होते हैं, कुछ धमनियाँ ऑक्सीजनयुक्त रक्त ले जाती हैं और शिराएँ सतही रूप से स्थित होती हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi medical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता विधान रक्तनालांबद्दल खरा आहे?",
-          "choices": [
-            "त्यांच्या अल्प भिंती आहेत आणि कोणतेही वाल्व नाहीत",
-            "ते केवल अऑक्सिजनरहित रक्त वहातात",
-            "त्यांच्या मोठ्या भिंती आहेत आणि कोणतेही वाल्व नाहीत",
-            "ते शरीरातील उपरिभागी असतात"
-          ],
-          "solution": "रक्तनालांच्या मोठ्या भिंती असतात आणि त्यांच्याकडे कोणतेही वाल्व नसतात. हे कारण त्यांना हृदयाच्या पंपिंग क्रियेमुळे उच्च दाब टिकवायला लागतो आणि त्यांना पुन्हा प्रवाह रोखण्यासाठी वाल्व लागत नाहीत. इतर विकल्प चूक आहेत कारण रक्तवाहिन्यांच्या अल्प भिंती आहेत आणि वाल्व असतात, काही रक्तनालांमध्ये ऑक्सिजनयुक्त रक्त वाहत असते आणि रक्तवाहिन्या उपरिभागी असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Describes veins instead of arteries",
-        "Incorrectly assumes all arteries carry deoxygenated blood",
-        null,
-        "Confuses the location of arteries with that of veins"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as arteries have thick walls to withstand high pressure and lack valves. The other options correctly describe veins or contain misconceptions about blood oxygenation and location.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 99,
-          "pageStart": 87,
-          "pageEnd": 88,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 100,
-          "pageStart": 88,
-          "pageEnd": 89,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 101,
-          "pageStart": 89,
-          "pageEnd": 90,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:28:01.156Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Why is it important for the respiratory system to filter air before it reaches the lungs?",
-      "choices": [
-        "To increase the temperature of air",
-        "To prevent the entry of harmful particles",
-        "To reduce the amount of oxygen in air",
-        "To make air more humid"
-      ],
-      "answerIndex": 1,
-      "solution": "The respiratory system filters air using hair and mucus in the nose to prevent harmful particles from entering the lungs. This protects the delicate tissues of the lungs from damage. The other options describe effects of the respiratory system, but not its purpose in filtering air. Therefore, the correct answer is 'To prevent the entry of harmful particles'.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "श्वसन प्रणाली के लिए वायु के फेफड़ों तक पहुंचने से पहले इसके छानना क्यों महत्वपूर्ण है?",
-          "choices": [
-            "वायु के तापमान को बढ़ाने के लिए",
-            "हानिकारक कणों के प्रवेश को रोकने के लिए",
-            "वायु में ऑक्सीजन की मात्रा कम करने के लिए",
-            "वायु को अधिक आर्द्र बनाने के लिए"
-          ],
-          "solution": "श्वसन प्रणाली नाक में बाल और म्यूसस के उपयोग से वायु को छानती है ताकि हानिकारक कण फेफड़ों में प्रवेश न कर सकें। इससे फेफड़ों के नाजुक ऊतकों को नुकसान से बचाया जाता है। अन्य विकल्प श्वसन प्रणाली के प्रभावों को बताते हैं, लेकिन वायु के छानने के उद्देश्य को नहीं। इसलिए सही उत्तर 'हानिकारक कणों के प्रवेश को रोकने के लिए' है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer is in the same position (option 2) and the distractors remain incorrect.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "श्वासोच्छ्वास प्रणालीला फुफ्फुसांपर्यंत पोहोचण्यापूर्वी हवा फिल्टर करणे का महत्वाचे आहे?",
-          "choices": [
-            "हवेचे तापमान वाढवणे",
-            "हानिकारक कणांच्या प्रवेशाला अडवणे",
-            "हवेतील ऑक्सीजनचे प्रमाण कमी करणे",
-            "हवेला अधिक आर्द्रता देणे"
-          ],
-          "solution": "श्वासोच्छ्वास प्रणाली हाताच्या घामातून आणि नाकातील घामातून हवा फिल्टर करते जेणेकरून हानिकारक कणांचा फुफ्फुसांमध्ये प्रवेश रोखला जाईल. फुफ्फुसांच्या पातळ ऊतींच्या नुकसानीपासून त्याचा रक्षण केला जातो. इतर विकल्प हवेच्या श्वासोच्छ्वास प्रणालीच्या परिणामांचे वर्णन करतात, परंतु हवा फिल्टर करण्याच्या उद्देशाचे नाहीत. त्यामुळे योग्य उत्तर 'हानिकारक कणांच्या प्रवेशाला अडवणे' आहे.",
+          "solution": "आंतरिक श्वसन हा रक्त आणि शारीरिक कोशिकांमध्ये वायूंच्या विनिमयाशी संबंधित आहे. बाह्य श्वसन हा फुफ्फुसाशी जुडलेला असतो, तर कोशिकांतील श्वसन ही कोशिकांमध्ये होणारी प्रक्रिया आहे. श्वासोच्छ्वास ही वायूंच्या श्वास घेण्याच्या आणि बाहेर काढण्याच्या शारीरिक क्रियेचा अंग आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
           "flag": null
@@ -929,10 +249,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks the purpose of filtration is to increase air temperature",
+        "Confuses the process of gas exchange in the lungs with that in the body",
         null,
-        "Believes the purpose is to reduce oxygen levels in the air",
-        "Mistakenly assumes filtration is for making air more humid"
+        "Confuses the process of gas exchange in the cells with that in the body",
+        "Confuses the process of energy production in the cells with that in the body"
       ],
       "solverAnswers": [
         1,
@@ -940,9 +260,104 @@
         1,
         1,
         1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is accurate. Internal respiration correctly refers to gas exchange between blood and body cells, while the other options involve different processes.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 96,
+          "pageStart": 85,
+          "pageEnd": 85,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 97,
+          "pageStart": 85,
+          "pageEnd": 86,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 98,
+          "pageStart": 86,
+          "pageEnd": 87,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:54:54.594Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of external respiration?",
+      "choices": [
+        "Oxygen moving from blood to tissue fluid",
+        "Carbon dioxide moving from tissue fluid to blood",
+        "Oxygen entering the blood from the alveoli",
+        "Water vapour moving from blood to the alveoli"
+      ],
+      "answerIndex": 2,
+      "solution": "External respiration refers to the exchange of gases between the alveoli and the blood. Oxygen enters the blood from the alveoli, while carbon dioxide moves from the blood into the alveoli. The other options describe internal respiration, which involves gas exchange between the blood and body cells.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा बाह्य श्वसन का उदाहरण है?",
+          "choices": [
+            "रक्त से ऊतक द्रव में ऑक्सीजन का गमन",
+            "ऊतक द्रव से रक्त में कार्बन डाइऑक्साइड का गमन",
+            "एल्विओली से रक्त में ऑक्सीजन का प्रवेश",
+            "रक्त से एल्विओली में जल वाष्प का गमन"
+          ],
+          "solution": "बाह्य श्वसन एल्विओली और रक्त के बीच गैसों के आदान-प्रदान को कहते हैं। ऑक्सीजन एल्विओली से रक्त में प्रवेश करती है, जबकि कार्बन डाइऑक्साइड रक्त से एल्विओली में गमन करती है। अन्य विकल्प आंतरिक श्वसन को दर्शाते हैं, जिसमें रक्त और शरीर की कोशिकाओं के बीच गैसों का आदान-प्रदान होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते बाह्य श्वासोच्छ्वासाचे उदाहरण आहे?",
+          "choices": [
+            "रक्तातून ऊतक द्रवात ऑक्सीजन चलतो",
+            "ऊतक द्रवातून रक्तात कार्बन डायऑक्साइड चलतो",
+            "अल्विओलीमधून रक्तात ऑक्सीजन प्रवेश करतो",
+            "रक्तातून अल्विओलीमध्ये जल वाफ चलतो"
+          ],
+          "solution": "बाह्य श्वासोच्छ्वास म्हणजे अल्विओली आणि रक्त दरम्यान वायूंचा विनिमय आहे. अल्विओलीमधून रक्तात ऑक्सीजन प्रवेश करतो, तर कार्बन डायऑक्साइड रक्तातून अल्विओलीमध्ये जातो. इतर विकल्प आंतरिक श्वासोच्छ्वास दर्शवतात, जो रक्त आणि शरीरातील सेल दरम्यान वायूंचा विनिमय आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard biology textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Describes internal respiration, not external respiration",
+        "Confuses the direction of gas movement during external respiration",
+        null,
+        "Misinterprets the process of gas exchange in the alveoli as internal respiration"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the respiratory system filters air to prevent harmful particles from entering the lungs. The distractors reflect common misconceptions about the purpose of air filtration.",
+      "critique": "The solution correctly identifies external respiration as gas exchange between alveoli and blood. Option 2 matches this, while the other options describe internal respiration or incorrect gas movement.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -973,49 +388,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:28:01.156Z",
+      "generatedAt": "2026-10-29T20:54:54.594Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "Which of the following best explains why the alveoli in the lungs are adapted for gas exchange?",
+      "stem": "Which of the following is an example of a situation where blood transfusion is necessary?",
       "choices": [
-        "They are large and have thick walls",
-        "They are small and have thick walls",
-        "They are large and have thin walls",
-        "They are small and have thin walls"
+        "A person with a broken leg",
+        "A person with a mild cold",
+        "A person with anemia",
+        "A person with a headache"
       ],
-      "answerIndex": 3,
-      "solution": "The alveoli are small and have thin walls, which allows for efficient gas exchange. Thin walls reduce the distance gases must travel, and small size increases the surface area for exchange. The other options describe structures that would not support efficient gas exchange. Therefore, the correct answer is 'They are small and have thin walls'.",
+      "answerIndex": 2,
+      "solution": "Anemia is a condition where the body lacks enough healthy red blood cells, making blood transfusion necessary to restore oxygen delivery. A broken leg, mild cold, and headache do not involve a significant loss or deficiency of blood cells, so they do not require a transfusion.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा वास्तव में फेफड़ों में एल्विओली के गैस विनिमय के लिए अनुकूलित होने की व्याख्या करता है?",
+          "stem": "निम्नलिखित में से कौन-सी स्थिति रक्त आधान की आवश्यकता होती है इसका एक उदाहरण है?",
           "choices": [
-            "वे बड़े और मोटी दीवार वाले होते हैं",
-            "वे छोटे और मोटी दीवार वाले होते हैं",
-            "वे बड़े और पतली दीवार वाले होते हैं",
-            "वे छोटे और पतली दीवार वाले होते हैं"
+            "टूटी हुई जांघ वाला व्यक्ति",
+            "हल्का बुखार वाला व्यक्ति",
+            "एनीमिया वाला व्यक्ति",
+            "सिरदर्द वाला व्यक्ति"
           ],
-          "solution": "एल्विओली छोटे और पतली दीवार वाले होते हैं, जो गैस विनिमय के लिए कुशल होते हैं। पतली दीवारें गैसों के यात्रा की दूरी कम करती हैं, और छोटा आकार विनिमय के लिए सतह क्षेत्र को बढ़ाता है। अन्य विकल्प ऐसी संरचनाओं का वर्णन करते हैं जो कुशल गैस विनिमय के लिए समर्थन नहीं करती हैं। इसलिए, सही उत्तर 'वे छोटे और पतली दीवार वाले होते हैं' है।",
+          "solution": "एनीमिया एक ऐसी स्थिति है जिसमें शरीर के पर्याप्त स्वस्थ लाल रक्त कोशिकाओं की कमी होती है, जिसके कारण रक्त आधान की आवश्यकता होती है। टूटी हुई जांघ, हल्का बुखार और सिरदर्द में रक्त कोशिकाओं के महत्वपूर्ण हानि या कमी नहीं होती है, इसलिए इनमें आधान की आवश्यकता नहीं होती है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question, with appropriate terminology and logical structure. The correct answer remains option 4, and the explanation is consistent.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate medical terminology as found in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते फुफ्फुसातील एल्विओली च्या वातानुकूलनासाठी विशेषीकरणाचे सर्वात चांगले स्पष्टीकरण देते?",
+          "stem": "खालीलपैकी कोणता एक असा परिस्थितीचा उदाहरण आहे जेथे रक्त प्रत्यारोपण आवश्यक असते?",
           "choices": [
-            "त्या मोठ्या आणि मोठ्या भिंती असतात",
-            "त्या लहान आणि मोठ्या भिंती असतात",
-            "त्या मोठ्या आणि पातळ भिंती असतात",
-            "त्या लहान आणि पातळ भिंती असतात"
+            "टूकडा तुटलेल्या व्यक्ती",
+            "हलका खाज असलेल्या व्यक्ती",
+            "एनेमियाच्या असलेल्या व्यक्ती",
+            "मानेच्या व्यक्ती"
           ],
-          "solution": "एल्विओली लहान आणि पातळ भिंती असतात, जे वातानुकूलनासाठी अत्यंत प्रभावी असतात. पातळ भिंती वातानुकूलनासाठी गॅसच्या प्रवासाची अंतर कमी करतात आणि लहान आकार वातानुकूलनासाठी पृष्ठभागाचे क्षेत्र वाढवतात. इतर विकल्प वातानुकूलनासाठी अनुकूल नसलेल्या संरचना वर्णन करतात. म्हणूनच, योग्य उत्तर 'त्या लहान आणि पातळ भिंती असतात' आहे.",
+          "solution": "एनेमिया ही एक अशी अवस्था आहे जेथे शरीरात पुरेसे आरोग्यकर लाल रक्ताणू नसतात, ज्यामुळे ऑक्सीजन पुरवठा पुन्हा सुरू करण्यासाठी रक्त प्रत्यारोपण आवश्यक असते. टूकडा तुटलेल्या, हलका खाज असलेल्या आणि मानेच्या व्यक्तींमध्ये रक्ताणूंच्या मोठ्या गुंतवणुकीचा किंवा कमतरतेचा अभाव नसतो, ज्यामुळे त्यांना प्रत्यारोपण आवश्यक नसते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological structures.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
           "flag": null
         }
       },
@@ -1024,146 +439,52 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Students often confuse the structure of alveoli, thinking that larger size and thicker walls would improve gas exchange, not realizing that thin walls and small size increase surface area for efficient diffusion.",
-        "Students may think that smaller size and thick walls increase gas exchange efficiency, not realizing that thin walls are necessary for diffusion.",
-        "students may confuse the size of alveoli with their structural adaptations, thinking that larger size aids in gas exchange, when in fact small size increases surface area-to-volume ratio",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that small size and thin walls are adaptations for efficient gas exchange. The reasoning aligns with biological principles, and the misconceptions described for the distractors are plausible for students.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 96,
-          "pageStart": 85,
-          "pageEnd": 85,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 97,
-          "pageStart": 85,
-          "pageEnd": 86,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 98,
-          "pageStart": 86,
-          "pageEnd": 87,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:28:01.156Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why are the walls of arteries thicker than those of veins?",
-      "choices": [
-        "To prevent backflow of blood",
-        "To withstand the high pressure of blood",
-        "To allow easy exchange of materials",
-        "To store oxygenated blood"
-      ],
-      "answerIndex": 1,
-      "solution": "Arteries have thick walls to withstand the high pressure of blood pumped by the heart. This is different from veins, which have thinner walls and valves to prevent backflow. The other options are incorrect because backflow is prevented by valves, exchange of materials happens in capillaries, and arteries do not store blood.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "क्यों धमनियों की दीवारें रक्तवाहिकाओं की तुलना में मोटी होती हैं?",
-          "choices": [
-            "रक्त के पीछे की ओर बहाव को रोकने के लिए",
-            "रक्त के उच्च दबाव का सामना करने के लिए",
-            "सामग्री के आसान आदान-प्रदान की अनुमति देने के लिए",
-            "ऑक्सीजनयुक्त रक्त को भंडारित करने के लिए"
-          ],
-          "solution": "धमनियों की मोटी दीवारें हृदय द्वारा पम्प किए गए रक्त के उच्च दबाव का सामना करने के लिए होती हैं। यह रक्तवाहिकाओं से अलग है, जिनकी पतली दीवारें और वैल्व बैकफ्लो को रोकते हैं। अन्य विकल्प गलत हैं क्योंकि बैकफ्लो वैल्व द्वारा रोका जाता है, सामग्री के आदान-प्रदान की परासरण नलिकाओं में होती है, और धमनियाँ रक्त नहीं भंडारित करती हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate medical terminology as taught in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "रक्तवाहिन्यांच्या भिंती रक्तवाहिन्यांच्या भिंतींपेक्षा मोठ्या का असतात?",
-          "choices": [
-            "रक्ताच्या प्रतिक्षेपाची टाळणी करण्यासाठी",
-            "रक्ताच्या उच्च दाबाला सहन करण्यासाठी",
-            "सामग्रींच्या सोयीस्कर विनिमयासाठी",
-            "ऑक्सिजनयुक्त रक्त भंडारण्यासाठी"
-          ],
-          "solution": "रक्तवाहिन्यांच्या मोठ्या भिंती रक्ताच्या हृदयाने पंप केलेल्या उच्च दाबाला सहन करण्यासाठी असतात. हे रक्तवाहिन्यांपेक्षा वेगळे असते, ज्यांच्या भिंती थोडी थोडी असतात आणि रक्ताच्या प्रतिक्षेपाची टाळणी करण्यासाठी बॅल्व्ह असतात. इतर विकल्प चुकीचे आहेत कारण प्रतिक्षेप बॅल्व्ह द्वारे टाळला जातो, सामग्रींचा विनिमय कॅपिलरीमध्ये होतो आणि रक्तवाहिन्या रक्त भंडारत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the function of valves with that of artery walls",
+        "Mistakenly thinks broken legs require transfusion",
+        "Mistakenly thinks colds require transfusion",
         null,
-        "Misunderstands the role of capillaries in material exchange",
-        "Believes arteries store blood like veins"
+        "Mistakenly thinks headaches require transfusion"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as arteries need thick walls to withstand high blood pressure. The author's reasoning for the wrong options aligns with common misconceptions.",
+      "critique": "The correct answer is 2 (anemia), as blood transfusion is indeed necessary in cases of anemia. The other options are not valid reasons for a blood transfusion, and the author's reasoning for the distractors reflects common misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 99,
-          "pageStart": 87,
-          "pageEnd": 88,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 100,
-          "pageStart": 88,
-          "pageEnd": 89,
-          "headingPath": [
-            "11. Human Body and Organ System"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 101,
-          "pageStart": 89,
+          "ordinal": 102,
+          "pageStart": 90,
           "pageEnd": 90,
           "headingPath": [
             "11. Human Body and Organ System"
           ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 103,
+          "pageStart": 91,
+          "pageEnd": 91,
+          "headingPath": [
+            "11. Human Body and Organ System"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 104,
+          "pageStart": 91,
+          "pageEnd": 92,
+          "headingPath": [
+            "11. Human Body and Organ System",
+            "Exercises"
+          ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:28:01.156Z",
+      "generatedAt": "2026-10-29T20:54:54.594Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

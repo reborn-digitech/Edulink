@@ -1,0 +1,486 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T02:31:27.004Z",
+  "finishedAt": "2026-10-28T02:35:47.816Z",
+  "seconds": 261,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm105.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Fun with Shapes",
+    "edition": "Reprint 2026-27",
+    "chunks": 8,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated.",
+      "[PRMO 2018 — question paper]\n24. If N is the number of triangles of different shapes (i.e., not similar) whose angles are all\nintegers (in degrees), what is N/100?",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 75821,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 15369,
+      "completionTokens": 4687
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 189292,
+      "in": 23,
+      "out": 19,
+      "rejects": 4,
+      "promptTokens": 13714,
+      "completionTokens": 5498
+    },
+    "solver": {
+      "calls": 153,
+      "ms": 69818,
+      "in": 19,
+      "out": 16,
+      "rejects": 3,
+      "promptTokens": 23363,
+      "completionTokens": 1602
+    },
+    "form": {
+      "calls": 5,
+      "ms": 9345,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 1070,
+      "completionTokens": 295
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 4090,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 230353,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15808,
+      "completionTokens": 7301
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "How many sides does a rectangle have?",
+      "ms": {
+        "draft": 3620,
+        "critique": 6753
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a rectangle?",
+      "ms": {
+        "draft": 3620,
+        "critique": 6245,
+        "solver": 10397
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many squares can be made by joining 2 squares?",
+      "ms": {
+        "draft": 3620,
+        "critique": 6794,
+        "solver": 16194
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following shapes has all its corners as square corners?",
+      "ms": {
+        "draft": 3620,
+        "critique": 8127,
+        "solver": 13102,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which shape has straight edges?",
+      "ms": {
+        "draft": 2224,
+        "critique": 6284,
+        "solver": 10818,
+        "form": 723
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a property of a triangle?",
+      "ms": {
+        "draft": 2732,
+        "critique": 6501
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following shapes has curved sides?",
+      "ms": {
+        "draft": 2732,
+        "critique": 6716,
+        "solver": 1399,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following shapes can be split into three triangles by drawing one line?",
+      "ms": {
+        "draft": 2732,
+        "critique": 7133,
+        "solver": 1600
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many different rectangles can you get by tracing the faces of a cuboid?",
+      "ms": {
+        "draft": 4873,
+        "critique": 5786
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 12 matchsticks are used to make squares, how many squares can be made?",
+      "ms": {
+        "draft": 4873,
+        "critique": 7376
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many sides does a triangle have?",
+      "ms": {
+        "draft": 2224,
+        "critique": 4985,
+        "solver": 1689,
+        "form": 2904
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a shape has four sides and four corners, what is it called?",
+      "ms": {
+        "draft": 2732,
+        "critique": 5928,
+        "solver": 1638,
+        "form": 1612
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many sides does a triangle have?",
+      "ms": {
+        "draft": 2732,
+        "critique": 5619,
+        "solver": 1038,
+        "form": 3143
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of a shape that has four equal sides and four square corners?",
+      "ms": {
+        "draft": 4873,
+        "critique": 6284,
+        "solver": 9621,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a square is folded in half, what shape is formed?",
+      "ms": {
+        "draft": 4873,
+        "critique": 7313,
+        "solver": 9055,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of a shape that has four equal sides and four square corners?",
+      "ms": {
+        "draft": 3620,
+        "critique": 6222,
+        "solver": 9612,
+        "form": 0,
+        "translation": 27057
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many corners does a triangle have?",
+      "ms": {
+        "draft": 2224,
+        "critique": 6097,
+        "solver": 1283,
+        "form": 2349,
+        "translation": 29867
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rectangle is split into 3 triangles, how many lines are needed?",
+      "ms": {
+        "draft": 2224,
+        "critique": 5345,
+        "solver": 1484,
+        "form": 0,
+        "translation": 30149
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many triangles can be formed using the dots on a circle with 6 points?",
+      "ms": {
+        "draft": 2224,
+        "critique": 7545,
+        "solver": 1424,
+        "form": 0,
+        "translation": 30748
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a square is folded along its diagonal, what shape is formed?",
+      "ms": {
+        "draft": 3620,
+        "critique": 6418,
+        "solver": 11400,
+        "form": 0,
+        "translation": 27745
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If you move two matchsticks to turn one triangle into two triangles, how many matchsticks are used in total?",
+      "ms": {
+        "draft": 2224,
+        "critique": 6173,
+        "solver": 1450,
+        "form": 0,
+        "translation": 33343
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a child makes 3 rows of triangles with 2 triangles in each row, how many triangles are there in total?",
+      "ms": {
+        "draft": 2732,
+        "critique": 6176,
+        "solver": 1311,
+        "form": 0,
+        "translation": 22314
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a square is folded so that all its corners meet at the center, what shape is formed?",
+      "ms": {
+        "draft": 4873,
+        "critique": 3695,
+        "solver": 4170,
+        "form": 0,
+        "translation": 24997
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "How many sides does a rectangle have?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is not a rectangle?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many squares can be made by joining 2 squares?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following shapes has all its corners as square corners?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which shape has straight edges?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not a property of a triangle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following shapes has curved sides?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following shapes can be split into three triangles by drawing one line?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many different rectangles can you get by tracing the faces of a cuboid?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 12 matchsticks are used to make squares, how many squares can be made?",
+      "reason": "the critic finds option 2 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "How many sides does a triangle have?",
+      "reason": "near-duplicate of served question cmsjsuwiq00may2kqv8v0pa7a (cosine 0.949 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a shape has four sides and four corners, what is it called?",
+      "reason": "near-duplicate of served question cmvgyvbgj05mjgpfhcbrvzlm7 (cosine 0.932 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "How many sides does a triangle have?",
+      "reason": "near-duplicate of served question cmsjsuwiq00may2kqv8v0pa7a (cosine 0.949 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the name of a shape that has four equal sides and four square corners?",
+      "reason": "near-duplicate of batch item \"What is the name of a shape that has four equal si…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a square is folded in half, what shape is formed?",
+      "reason": "near-duplicate of served question cmvk1725i0inwgpfhw0ix20yq (cosine 0.913 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

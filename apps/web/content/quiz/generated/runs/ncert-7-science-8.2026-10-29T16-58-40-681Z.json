@@ -1,0 +1,769 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T16:58:40.681Z",
+  "finishedAt": "2026-10-29T17:11:02.752Z",
+  "seconds": 742,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu108.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 8 — Measurement of Time and Motion",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2014 — question paper]\n65. A particle is moving on the real line, and its position is observed at four different\ntime stamps. At time t = 0, the particle is at x = 0, at time t = 20 seconds, we have\nx = 40, at time t = 40 seconds, x = 60 and at time t = 60 seconds, we have x = 90.\nShow that at some point of time between 0 and 60 seconds, the acceleration of the\nparticle was zero. [5 Marks]",
+      "[INJSO 2011 — question paper]\n34. Velocity time graph of four athletes for a given interval of time are as given below. Who has\ntravelled maximum distance?\na) A b) B c) C d) D",
+      "[INJSO 2013 — question paper]\n60. A 100 m sprinter increases her speed from rest uniformly at the rate of 1 m/s upto 2\n40 m and covers the remaining distance with uniform speed. The sprinter covers the\nfirst half of the run in t 1 s and the second half in t 2 s. Then:\nA. t 1 > t 2\nB. t < t 1 2\nC. t = t 1 2\nD. information given is incomplete.",
+      "[INJSO 2011 — question paper]\n6. A ball is dropped from a height h on a floor and suffers multiple perfectly elastic bounces. The\nvelocity vs t graph is as shown. Here time T depicts the time required to complete one cycle.\nWhich of the following graph correctly shows the cumulative distance vs time?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 240551,
+      "in": 40,
+      "out": 38,
+      "rejects": 2,
+      "promptTokens": 35614,
+      "completionTokens": 10162
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 398851,
+      "in": 38,
+      "out": 33,
+      "rejects": 5,
+      "promptTokens": 21036,
+      "completionTokens": 8058
+    },
+    "solver": {
+      "calls": 231,
+      "ms": 163558,
+      "in": 33,
+      "out": 28,
+      "rejects": 5,
+      "promptTokens": 44012,
+      "completionTokens": 2429
+    },
+    "form": {
+      "calls": 17,
+      "ms": 115667,
+      "in": 28,
+      "out": 13,
+      "rejects": 15,
+      "promptTokens": 13274,
+      "completionTokens": 2140
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 48,
+      "ms": 9299,
+      "in": 13,
+      "out": 7,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 313198,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 15122,
+      "completionTokens": 7032
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a water clock is constructed with a bottle that has a hole in the cap, and it takes 10 minutes for the water to drip completely, what will happen if the hole is made larger?",
+      "ms": {
+        "draft": 8533,
+        "critique": 8442,
+        "solver": 2329,
+        "form": 6655
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a device that measures time based on the flow of water?",
+      "ms": {
+        "draft": 8533,
+        "critique": 7896,
+        "solver": 1603,
+        "form": 6477
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following devices would be most suitable for measuring a short interval of time accurately?",
+      "ms": {
+        "draft": 8533,
+        "critique": 9019,
+        "solver": 20195,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, it is mentioned that the Ghatika-yantra, or the sinking bowl water clock, was used in ancient India. If the bowl in the Ghatika-yantra was made of a material that is heavier than the water, how would this affect the time measurement?",
+      "ms": {
+        "draft": 8533,
+        "critique": 11261
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a school race, two runners start from the same point and finish at the same time. The time taken by each runner is measured using a stopwatch. If the stopwatch is not working properly and shows a delay, how will this affect the measurement of their race time?",
+      "ms": {
+        "draft": 8533,
+        "critique": 9348,
+        "solver": 1631,
+        "form": 5268
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pendulum completes 10 oscillations in 20 seconds, what is its time period?",
+      "ms": {
+        "draft": 5150,
+        "critique": 11146,
+        "solver": 2677
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following devices uses the motion of a pendulum to measure time?",
+      "ms": {
+        "draft": 8533,
+        "critique": 8892,
+        "solver": 2651,
+        "form": 4185
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the time period of a simple pendulum?",
+      "ms": {
+        "draft": 5150,
+        "critique": 7703,
+        "solver": 1745,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following describes the motion of an object that covers equal distances in equal intervals of time?",
+      "ms": {
+        "draft": 17673,
+        "critique": 9127
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A train travels 360 km at a speed of 90 km/h. How long will it take to cover the distance?",
+      "ms": {
+        "draft": 17673,
+        "critique": 10629
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the length of a pendulum is doubled, what will happen to its time period?",
+      "ms": {
+        "draft": 5150,
+        "critique": 10012,
+        "solver": 2377,
+        "form": 3383
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, what does the term 'average speed' refer to?",
+      "ms": {
+        "draft": 17673,
+        "critique": 9120,
+        "solver": 2106,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If an object covers equal distances in equal time intervals, what type of motion is it in?",
+      "ms": {
+        "draft": 17673,
+        "critique": 8862,
+        "solver": 2316,
+        "form": 5927
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A vehicle moves along a straight line and covers a distance of 2 km. In the first 500 m, it moves with a speed of 10 m/s and in the next 500 m, it moves with a speed of 5 m/s. What should be its speed for the remaining 1000 m to complete the journey in 200 s?",
+      "ms": {
+        "draft": 6121,
+        "critique": 9423
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The table shows the distances covered by two trains at different times. Which train is in uniform motion?",
+      "ms": {
+        "draft": 6121,
+        "critique": 9409,
+        "solver": 2308,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes uniform linear motion?",
+      "ms": {
+        "draft": 16602,
+        "critique": 9155,
+        "solver": 3336,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A car moves with a speed of 25 m/s and covers a distance of 360 km. How much time does it take?",
+      "ms": {
+        "draft": 16602,
+        "critique": 12926
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A train covers a distance of 180 km in 3 hours. What is the speed of the train in m/s?",
+      "ms": {
+        "draft": 6263,
+        "critique": 9881,
+        "solver": 15606,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A train travels 360 km in 4 hours. What is the speed of the train?",
+      "ms": {
+        "draft": 6263,
+        "critique": 9742,
+        "solver": 24149
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A train starts from station A and reaches station D. It moves at a constant speed between B and C, but not between A and B or C and D. What type of motion is the train undergoing between A and B?",
+      "ms": {
+        "draft": 6263,
+        "critique": 7385,
+        "solver": 22145,
+        "form": 3393
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A train travels between two stations, covering 10 km in 20 minutes. If it travels the same distance in 15 minutes, what is the change in its speed?",
+      "ms": {
+        "draft": 6263,
+        "critique": 9521,
+        "solver": 2026
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, what is the smallest interval of time that can be measured using a wall clock?",
+      "ms": {
+        "draft": 5045,
+        "critique": 8968,
+        "solver": 1891
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a pendulum completes 10 oscillations in 20 seconds, what is its time period?",
+      "ms": {
+        "draft": 5045,
+        "critique": 8188,
+        "solver": 17843,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is true about the water clock described in the passage?",
+      "ms": {
+        "draft": 5451,
+        "critique": 8532,
+        "solver": 1396,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a water clock is designed such that water flows out from a vessel with uniform speed, which of the following would be true about the water level in the vessel?",
+      "ms": {
+        "draft": 5451,
+        "critique": 5318,
+        "solver": 8848
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the motion of a pendulum that repeats its path after a fixed interval of time?",
+      "ms": {
+        "draft": 5150,
+        "critique": 10859,
+        "solver": 18741,
+        "form": 4257
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A car travels 150 metres in 10 seconds. What is its speed in km/h?",
+      "ms": {
+        "draft": 6121,
+        "critique": 8669,
+        "solver": 2832,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A pendulum takes 2 seconds to complete one oscillation. How many oscillations will it complete in 30 seconds?",
+      "ms": {
+        "draft": 6121,
+        "critique": 7523,
+        "solver": 947,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit of time?",
+      "ms": {
+        "draft": 16602,
+        "critique": 8859,
+        "solver": 2704,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the time taken by a pendulum to complete one oscillation?",
+      "ms": {
+        "draft": 5045,
+        "critique": 8399,
+        "solver": 13847,
+        "form": 4281
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which ancient timekeeping device uses the position of the shadow of an object to measure time?",
+      "ms": {
+        "draft": 5451,
+        "critique": 10370,
+        "solver": 2262,
+        "form": 3341
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of time?",
+      "ms": {
+        "draft": 5150,
+        "critique": 8693,
+        "solver": 2333,
+        "form": 3398,
+        "translation": 38777
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the average speed of an object?",
+      "ms": {
+        "draft": 16602,
+        "critique": 6071,
+        "solver": 1579,
+        "form": 0,
+        "translation": 36730
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A car covers 60 km in the first hour, 70 km in the second hour, and 50 km in the third hour. What can be said about the car's motion?",
+      "ms": {
+        "draft": 16602,
+        "critique": 8818,
+        "solver": 2465,
+        "form": 0,
+        "translation": 56520
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the SI unit of speed?",
+      "ms": {
+        "draft": 6263,
+        "critique": 7167,
+        "solver": 1606,
+        "form": 0,
+        "translation": 20486
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The table shows the distance covered by an object in different time intervals. What can be said about the object's motion?",
+      "ms": {
+        "draft": 16602,
+        "critique": 8082,
+        "solver": 1838,
+        "form": 0,
+        "translation": 52889
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a 100 m race, runner A covers the distance in 10 seconds, and runner B covers the same distance in 12 seconds. Who is faster?",
+      "ms": {
+        "draft": 5150,
+        "critique": 8797,
+        "solver": 1713,
+        "form": 2693,
+        "translation": 54041
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A car travels 100 km in 2 hours. It then travels 150 km in 3 hours. What is the average speed of the car for the entire journey?",
+      "ms": {
+        "draft": 17673,
+        "critique": 8356,
+        "solver": 20391,
+        "form": 0,
+        "translation": 48615
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the SI unit of speed?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A runner completes 400 metres in 50 seconds. Another runner completes the same distance in 45 seconds. Who has a greater speed?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a water clock is constructed with a bottle that has a hole in the cap, and it takes 10 minutes for the water to drip completely, what will happen if the hole is made larger?",
+      "reason": "figure: figure spec refused: spec.parts: beaker has no label \"cap\" (it has beaker, liquid)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a device that measures time based on the flow of water?",
+      "reason": "figure: figure spec refused: spec.parts: beaker has no label \"water\" (it has beaker, liquid)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following devices would be most suitable for measuring a short interval of time accurately?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the passage, it is mentioned that the Ghatika-yantra, or the sinking bowl water clock, was used in ancient India. If the bowl in the Ghatika-yantra was made of a material that is heavier than the water, how would this affect the time measurement?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a school race, two runners start from the same point and finish at the same time. The time taken by each runner is measured using a stopwatch. If the stopwatch is not working properly and shows a delay, how will this affect the measurement of their race time?",
+      "reason": "options 0 and 1 say the same thing (\"It will show a shorter time for both runners\" / \"It will show a longer time for both runners\"); option 3 repeats the stem's wording (\"It will not affect the measurement\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a pendulum completes 10 oscillations in 20 seconds, what is its time period?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following devices uses the motion of a pendulum to measure time?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'clock'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the time period of a simple pendulum?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's information about amplitude…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following describes the motion of an object that covers equal distances in equal intervals of time?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A train travels 360 km at a speed of 90 km/h. How long will it take to cover the distance?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the length of a pendulum is doubled, what will happen to its time period?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, what does the term 'average speed' refer to?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Refers to an object at rest, not mentioned in the passage.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If an object covers equal distances in equal time intervals, what type of motion is it in?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Implies motion not discussed in the passage.…\"); distractor 3's reason is not a one-line misconception (\"Refers to a different type of motion not described in the pa…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A vehicle moves along a straight line and covers a distance of 2 km. In the first 500 m, it moves with a speed of 10 m/s and in the next 500 m, it moves with a speed of 5 m/s. What should be its speed for the remaining 1000 m to complete the journey in 200 s?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The table shows the distances covered by two trains at different times. Which train is in uniform motion?",
+      "reason": "figure: figure spec refused: spec.title: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes uniform linear motion?",
+      "reason": "options 2 and 3 say the same thing (\"Motion where an object moves in a straight line with changing speed\" / \"Motion where an object moves in a straight line with constant speed\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A car moves with a speed of 25 m/s and covers a distance of 360 km. How much time does it take?",
+      "reason": "the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A train covers a distance of 180 km in 3 hours. What is the speed of the train in m/s?",
+      "reason": "options are written to different precisions (0 and 2 decimals); ARITHMETIC MISMATCH — checkExpr \"180/3/3.6\" = 16.666666666666668, but the key says 16.67"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A train travels 360 km in 4 hours. What is the speed of the train?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A train starts from station A and reaches station D. It moves at a constant speed between B and C, but not between A and B or C and D. What type of motion is the train undergoing between A and B?",
+      "reason": "options 2 and 3 are the same (\"Circular motion\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A train travels between two stations, covering 10 km in 20 minutes. If it travels the same distance in 15 minutes, what is the change in its speed?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the passage, what is the smallest interval of time that can be measured using a wall clock?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a pendulum completes 10 oscillations in 20 seconds, what is its time period?",
+      "reason": "options are in more than one unit (seconds, second)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements is true about the water clock described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a water clock is designed such that water flows out from a vessel with uniform speed, which of the following would be true about the water level in the vessel?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term used to describe the motion of a pendulum that repeats its path after a fixed interval of time?",
+      "reason": "near-duplicate of served question cmvqic2890bangp21vvblkaw9 (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A car travels 150 metres in 10 seconds. What is its speed in km/h?",
+      "reason": "near-duplicate of served question cmvg05g5l01j5gpfhgypamt4y (cosine 0.933 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A pendulum takes 2 seconds to complete one oscillation. How many oscillations will it complete in 30 seconds?",
+      "reason": "near-duplicate of served question cmvqic28h0bbhgp219gkffmj8 (cosine 0.924 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the SI unit of time?",
+      "reason": "near-duplicate of batch item \"What is the SI unit of time?…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term used to describe the time taken by a pendulum to complete one oscillation?",
+      "reason": "near-duplicate of served question cmviyubdt0evigpfh15j8mqf9 (cosine 0.952 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which ancient timekeeping device uses the position of the shadow of an object to measure time?",
+      "reason": "near-duplicate of served question cmvg05g5g01izgpfh674591df (cosine 0.925 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

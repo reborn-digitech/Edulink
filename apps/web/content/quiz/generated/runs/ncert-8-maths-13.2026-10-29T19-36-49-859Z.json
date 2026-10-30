@@ -1,0 +1,470 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T19:36:49.859Z",
+  "finishedAt": "2026-10-29T19:42:25.749Z",
+  "seconds": 336,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "hemh1",
+    "document": "ncert/8/mathematics/hemh113.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Introduction to Graphs",
+    "edition": "Reprint 2024-25",
+    "chunks": 10,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class XII Mathematics, sample question paper, 2024-25]\n15. The graph drawn below depicts\n(A) y = 𝑠𝑖𝑛 −1 𝑥 (B) y = 𝑐𝑜𝑠 −1 𝑥\n(C) 𝑦 = 𝑥𝑙𝑜𝑔𝑥 + 𝑥 + 𝑐 (D) 𝑦 = 𝑥 + 𝑐\n(C) y = 𝑐𝑜𝑠 𝑒 𝑐 −1 𝑥 (D) y = 𝑐𝑜𝑡 −1 𝑥",
+      "[CBSE Class XII Mathematics, marking scheme, 2025-26]\nSECTION-A (MCQs of 1 mark each)\nSol. N. Hint / Solution Marks\n1 1\nClearly from the graph Domain is [− , ] 2 2",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 71876,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 18150,
+      "completionTokens": 4277
+    },
+    "critique": {
+      "calls": 30,
+      "ms": 178765,
+      "in": 22,
+      "out": 21,
+      "rejects": 1,
+      "promptTokens": 12932,
+      "completionTokens": 5274
+    },
+    "solver": {
+      "calls": 163,
+      "ms": 86299,
+      "in": 21,
+      "out": 14,
+      "rejects": 7,
+      "promptTokens": 33441,
+      "completionTokens": 1855
+    },
+    "form": {
+      "calls": 5,
+      "ms": 16133,
+      "in": 14,
+      "out": 10,
+      "rejects": 4,
+      "promptTokens": 1275,
+      "completionTokens": 390
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 48,
+      "ms": 8787,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 299084,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 18622,
+      "completionTokens": 9195
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "ms": {
+        "draft": 3334,
+        "critique": 5019,
+        "solver": 14672,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a graph shows a steady increase in temperature over time, what does this indicate about the patient’s condition?",
+      "ms": {
+        "draft": 3334,
+        "critique": 7248
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the graph of the patient’s temperature, at what time was the temperature 38.5°C?",
+      "ms": {
+        "draft": 3334,
+        "critique": 6772,
+        "solver": 15964
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The graph shows the relationship between the amount of money deposited and the simple interest earned. If a person wants to earn a simple interest of 280, how much money should they deposit?",
+      "ms": {
+        "draft": 3610,
+        "critique": 5496,
+        "solver": 1593
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the graph showing the relationship between time and distance for Ajit's scooter ride, how much distance does Ajit cover in 3 hours?",
+      "ms": {
+        "draft": 11254,
+        "critique": 6884,
+        "solver": 2435
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The graph below shows the relationship between the time of a journey and the distance covered. Based on the graph, during which time interval did the person cover the maximum distance?",
+      "ms": {
+        "draft": 11254,
+        "critique": 7010,
+        "solver": 1870
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the scale used on the horizontal axis in the graph showing the relationship between the number of litres of petrol and the cost of petrol?",
+      "ms": {
+        "draft": 11254,
+        "critique": 6314,
+        "solver": 14901
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "ms": {
+        "draft": 2810,
+        "critique": 7753,
+        "solver": 12272,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where two quantities are in direct variation?",
+      "ms": {
+        "draft": 11254,
+        "critique": 8730,
+        "solver": 16005
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the time-temperature graph, what does the horizontal axis represent?",
+      "ms": {
+        "draft": 2810,
+        "critique": 7129,
+        "solver": 9896,
+        "form": 2739
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the graph showing runs scored by two batsmen, during which match did both batsmen score the same number of runs?",
+      "ms": {
+        "draft": 2810,
+        "critique": 4788,
+        "solver": 710
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the vertical axis in the time-temperature graph indicate?",
+      "ms": {
+        "draft": 2810,
+        "critique": 5252,
+        "solver": 920,
+        "form": 1543
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the vertical axis (y-axis) represent in a time-temperature graph?",
+      "ms": {
+        "draft": 3334,
+        "critique": 4301,
+        "solver": 1298,
+        "form": 3356
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a car travels 50 km in the first hour and 100 km in the second hour, what can be concluded about its speed?",
+      "ms": {
+        "draft": 3334,
+        "critique": 5599,
+        "solver": 1500,
+        "form": 4861
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where two quantities are in direct variation?",
+      "ms": {
+        "draft": 3610,
+        "critique": 5076,
+        "solver": 14264,
+        "form": 0,
+        "translation": 37054
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where one quantity affects another?",
+      "ms": {
+        "draft": 11254,
+        "critique": 5679,
+        "solver": 11578,
+        "form": 0,
+        "translation": 33197
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a graph shows the relationship between the number of litres of petrol and the cost of petrol, and the graph is a straight line passing through the origin, what can be concluded about the relationship?",
+      "ms": {
+        "draft": 3610,
+        "critique": 6174,
+        "solver": 1897,
+        "form": 0,
+        "translation": 38877
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the purpose of drawing a graph in the context of data presentation?",
+      "ms": {
+        "draft": 3610,
+        "critique": 4124,
+        "solver": 600,
+        "form": 0,
+        "translation": 32076
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The following table shows the distance covered by Ajit on his scooter at different times. Which of the following is the correct graph for this data?",
+      "ms": {
+        "draft": 3610,
+        "critique": 6159,
+        "solver": 1334,
+        "form": 0,
+        "translation": 38878
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a car is 200 km away from City P at 11 a.m. and remains 200 km at 12 noon, what can be concluded about its movement?",
+      "ms": {
+        "draft": 3334,
+        "critique": 5429,
+        "solver": 1526,
+        "form": 5251,
+        "translation": 51443
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a graph showing the relationship between two quantities, the graph does not pass through the origin. What could this indicate about the relationship between the quantities?",
+      "ms": {
+        "draft": 3610,
+        "critique": 5753,
+        "solver": 793,
+        "form": 0,
+        "translation": 32594
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the graph showing the relationship between the number of litres of petrol and the cost of petrol, why does the graph pass through the origin?",
+      "ms": {
+        "draft": 11254,
+        "critique": 6253,
+        "solver": 1625,
+        "form": 0,
+        "translation": 31410
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 are the same (\"To show the exact values of data\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a graph shows a steady increase in temperature over time, what does this indicate about the patient’s condition?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the graph of the patient’s temperature, at what time was the temperature 38.5°C?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The graph shows the relationship between the amount of money deposited and the simple interest earned. If a person wants to earn a simple interest of 280, how much money should they deposit?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the graph showing the relationship between time and distance for Ajit's scooter ride, how much distance does Ajit cover in 3 hours?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The graph below shows the relationship between the time of a journey and the distance covered. Based on the graph, during which time interval did the person cover the maximum distance?",
+      "reason": "the solver picked option 0 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the scale used on the horizontal axis in the graph showing the relationship between the number of litres of petrol and the cost of petrol?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where two quantities are in direct variation?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the time-temperature graph, what does the horizontal axis represent?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the graph showing runs scored by two batsmen, during which match did both batsmen score the same number of runs?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the vertical axis in the time-temperature graph indicate?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"The correct answer is directly stated in the passage…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What does the vertical axis (y-axis) represent in a time-temperature graph?",
+      "reason": "near-duplicate of served question cmvqp2rxf0bnvgp21z1y2pgu1 (cosine 0.903 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a car travels 50 km in the first hour and 100 km in the second hour, what can be concluded about its speed?",
+      "reason": "near-duplicate of served question cmvj4yxst0fjogpfhga09o5nc (cosine 0.914 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

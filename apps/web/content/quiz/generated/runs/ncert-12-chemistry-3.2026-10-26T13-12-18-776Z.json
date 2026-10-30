@@ -1,0 +1,797 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T13:12:18.776Z",
+  "finishedAt": "2026-10-26T13:26:58.455Z",
+  "seconds": 880,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry-I",
+    "bookCode": "lech1",
+    "document": "ncert/12/chemistry/lech103.pdf",
+    "classLevel": 12,
+    "subject": "Chemistry",
+    "chapter": "Chapter 3 — Chemical Kinetics",
+    "edition": "Reprint 2026-27",
+    "chunks": 24,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Chemistry, marking scheme, 2024-25]\n5. (c) the order of reaction is zero as the unit of k is molL s . Thus half -1 -1 1\nlife = [R] / 2k = 4.62 x 10 /2 x 2.31 x 10 o -2 -2",
+      "[CBSE Class XII Chemistry, sample question paper, 2023-24]\n10. If the initial concentration of substance A is 1.5 M and after 120 seconds the concentration of\nsubstance A is 0.75 M, the rate constant for the reaction if it follows zero - order kinetics is:\n(a) 0.00625 molL s -1 -1 (b) 0.00625 s -1 (c) 0.00578 molL s -1 -1 (d) 0.00578 s -1",
+      "[CBSE Class XII Chemistry, marking scheme, 2023-24]\n10. (a) 0.00625 molL s -1 -1 for zero order k = [Ro] –[R] / t = 1.5 -0.75 /120",
+      "[CBSE Class XII Chemistry, sample question paper, 2023-24]\n28. The rate constants of a reaction at 200K and 500K are 0.02s and 0.20s respectively. Calculate the –1 –1\nvalue of Ea (Given 2.303R = 19.15 JK -1 mol ) -1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 241076,
+      "in": 41,
+      "out": 40,
+      "rejects": 2,
+      "promptTokens": 39618,
+      "completionTokens": 12130
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 342654,
+      "in": 40,
+      "out": 37,
+      "rejects": 3,
+      "promptTokens": 25084,
+      "completionTokens": 8716
+    },
+    "solver": {
+      "calls": 256,
+      "ms": 141688,
+      "in": 37,
+      "out": 35,
+      "rejects": 2,
+      "promptTokens": 53263,
+      "completionTokens": 2843
+    },
+    "form": {
+      "calls": 9,
+      "ms": 40556,
+      "in": 35,
+      "out": 15,
+      "rejects": 20,
+      "promptTokens": 6005,
+      "completionTokens": 1067
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 5160,
+      "in": 15,
+      "out": 10,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 375139,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 23886,
+      "completionTokens": 11369
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 4,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does the passage say about the study of chemical kinetics?",
+      "ms": {
+        "draft": 21868,
+        "critique": 5547
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the units of the rate of a reaction?",
+      "ms": {
+        "draft": 21868,
+        "critique": 9563,
+        "solver": 1598,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a reaction has a rate constant k of 0.00625 molL⁻¹s⁻¹ and the initial concentration of a reactant is 1.5 M, what is the concentration of the reactant after 120 seconds assuming zero-order kinetics?",
+      "ms": {
+        "draft": 21868,
+        "critique": 5350,
+        "solver": 13910,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the initial concentration of a reactant is 1.5 M and after 120 seconds the concentration is 0.75 M, what is the rate constant for a zero-order reaction?",
+      "ms": {
+        "draft": 21868,
+        "critique": 6143,
+        "solver": 13923,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage and the style block, which of the following is an example of a zero-order reaction?",
+      "ms": {
+        "draft": 21868,
+        "critique": 9410
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main difference between the rate of a reaction and the extent of a reaction, according to the passage?",
+      "ms": {
+        "draft": 21868,
+        "critique": 8466,
+        "solver": 2249,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be said about the order of a reaction?",
+      "ms": {
+        "draft": 4980,
+        "critique": 6938,
+        "solver": 1775,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the order of a reaction if the rate expression is Rate = k [A]^{1/2} [B]^{3/2} ?",
+      "ms": {
+        "draft": 14847,
+        "critique": 5945,
+        "solver": 1746,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "For the reaction A → B, the rate constant is 0.05 mol L⁻¹ s⁻¹. If the initial concentration of A is 0.1 M and it decreases to 0.05 M in 10 seconds, what is the order of the reaction?",
+      "ms": {
+        "draft": 4980,
+        "critique": 6986,
+        "solver": 1574,
+        "form": 4991
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of the rate constant for a first order reaction?",
+      "ms": {
+        "draft": 14847,
+        "critique": 6856
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the rate constant of a reaction is 3 × 10^{-2} s^{-1}, what is the order of the reaction?",
+      "ms": {
+        "draft": 14847,
+        "critique": 5474,
+        "solver": 15566,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the half-life of a first-order reaction if the rate constant is 1.15 × 10^-3 s^-1?",
+      "ms": {
+        "draft": 16818,
+        "critique": 8441,
+        "solver": 14871
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the concentration of a reactant in a first-order reaction reduces from 5 g to 3 g, what is the time required for this change if the rate constant is 1.15 × 10^-3 s^-1?",
+      "ms": {
+        "draft": 16818,
+        "critique": 7596,
+        "solver": 12774,
+        "form": 3935
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The rate constants of a reaction at 200K and 500K are 0.02 s^-1 and 0.20 s^-1, respectively. What is the activation energy of the reaction?",
+      "ms": {
+        "draft": 16818,
+        "critique": 7844,
+        "solver": 1835,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The half-life of a first-order reaction is 60 minutes. What is the rate constant of the reaction?",
+      "ms": {
+        "draft": 16818,
+        "critique": 8423,
+        "solver": 16552,
+        "form": 3680
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The rate constants of a reaction at 500K and 700K are 0.02s⁻¹ and 0.07s⁻¹ respectively. Using the Arrhenius equation, what is the activation energy (Ea) of the reaction?",
+      "ms": {
+        "draft": 8452,
+        "critique": 8100,
+        "solver": 8780,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The rate constant for the decomposition of N2O at various temperatures is given. If the rate constant at 546 K is 2.418 × 10^(-5) s^(-1) and the activation energy is 179.9 kJ mol^(-1), what is the pre-exponential factor?",
+      "ms": {
+        "draft": 5791,
+        "critique": 6555,
+        "solver": 1955
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A graph between ln k and 1/T is plotted. What can be determined from the slope of this graph?",
+      "ms": {
+        "draft": 5791,
+        "critique": 7047,
+        "solver": 2725,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the rate of a reaction represent?",
+      "ms": {
+        "draft": 3138,
+        "critique": 7309,
+        "solver": 1160,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The rate constant for a reaction is found to quadruple when the temperature is increased from 293 K to 313 K. What is the activation energy of the reaction?",
+      "ms": {
+        "draft": 5791,
+        "critique": 9082,
+        "solver": 17746,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "For a first-order reaction, if the half-life is 444 seconds, what is the rate constant?",
+      "ms": {
+        "draft": 5791,
+        "critique": 9423,
+        "solver": 16476,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The rate constants of a reaction at 500K and 700K are 0.02s and 0.07s respectively. What is the value of the activation energy (Ea) for the reaction?",
+      "ms": {
+        "draft": 7556,
+        "critique": 6555,
+        "solver": 1477,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The rate constant of a reaction is 1.60 × 10 s at 600K, and the activation energy is 209 kJ/mol. What is the rate constant at 700K?",
+      "ms": {
+        "draft": 7556,
+        "critique": 7442,
+        "solver": 1496,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the rate of a reaction increases by a factor of 8 when the concentration of a reactant is doubled, what is the order of the reaction with respect to that reactant?",
+      "ms": {
+        "draft": 3138,
+        "critique": 7958,
+        "solver": 13264,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the effect of a catalyst on the activation energy of a reaction?",
+      "ms": {
+        "draft": 7556,
+        "critique": 5655,
+        "solver": 1818,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the rate of a reaction is independent of the concentration of the reactants, what is the order of the reaction?",
+      "ms": {
+        "draft": 14847,
+        "critique": 5470,
+        "solver": 1493,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The rate constant for a reaction is 2.3 × 10^{-2} L mol^{-1} s^{-1}. What is the order of the reaction?",
+      "ms": {
+        "draft": 14847,
+        "critique": 8335,
+        "solver": 1902,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the initial concentration of a reactant A is 1.5 M and after 120 seconds its concentration is 0.75 M, what is the rate constant for the reaction if it follows zero-order kinetics?",
+      "ms": {
+        "draft": 5791,
+        "critique": 6809,
+        "solver": 1855,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the order of a reaction whose rate constant has units of mol L^{-1} s^{-1}?",
+      "ms": {
+        "draft": 5791,
+        "critique": 7082,
+        "solver": 3338,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "For a reaction with the rate law rate = k[A]^2[B], what is the overall order of the reaction?",
+      "ms": {
+        "draft": 3138,
+        "critique": 6304,
+        "solver": 1820,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the unit of the rate constant for a zero-order reaction?",
+      "ms": {
+        "draft": 16818,
+        "critique": 6913,
+        "solver": 1843,
+        "form": 4071,
+        "translation": 37471
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the half-life of a first-order reaction?",
+      "ms": {
+        "draft": 5929,
+        "critique": 5750,
+        "solver": 920,
+        "form": 2291,
+        "translation": 22016
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the sum of the powers of the concentrations of reactants in the rate law?",
+      "ms": {
+        "draft": 3138,
+        "critique": 5629,
+        "solver": 1139,
+        "form": 0,
+        "translation": 31497
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the rate of a reaction in terms of the concentration of reactants?",
+      "ms": {
+        "draft": 4980,
+        "critique": 7262,
+        "solver": 1191,
+        "form": 4519,
+        "translation": 41046
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is true about the rate law of a reaction?",
+      "ms": {
+        "draft": 4980,
+        "critique": 6461,
+        "solver": 1438,
+        "form": 2790,
+        "translation": 47511
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a factor that affects the rate of a chemical reaction?",
+      "ms": {
+        "draft": 3138,
+        "critique": 8626,
+        "solver": 1775,
+        "form": 0,
+        "translation": 34047
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "For the reaction 2NO(g) + O₂(g) → 2NO₂(g), the rate law is given as Rate = k[NO]²[O₂]. What is the overall order of the reaction?",
+      "ms": {
+        "draft": 4980,
+        "critique": 6380,
+        "solver": 1123,
+        "form": 0,
+        "translation": 32819
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a reaction is first order with respect to a reactant, what happens to the rate when the concentration of the reactant is doubled?",
+      "ms": {
+        "draft": 3138,
+        "critique": 5868,
+        "solver": 1406,
+        "form": 0,
+        "translation": 41881
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A reaction follows zero order kinetics. If the initial concentration of the reactant is 1.5 M and after 120 seconds it is 0.75 M, what is the rate constant?",
+      "ms": {
+        "draft": 14847,
+        "critique": 8322,
+        "solver": 1786,
+        "form": 0,
+        "translation": 35473
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a reaction, the rate law is found to be Rate = k[A]²[B]. What would happen to the rate if the concentration of A is doubled and the concentration of B is halved?",
+      "ms": {
+        "draft": 4980,
+        "critique": 9112,
+        "solver": 1724,
+        "form": 0,
+        "translation": 46980
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following statements best describes a zero order"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage say about the study of chemical kinetics?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage say about the units of the rate of a reaction?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Overgeneralizes the units of the rate, not accounting for th…\"); distractor 1's reason is not a one-line misconception (\"Fails to recognize that the units are not fixed and depend o…\"); distractor 2's reason is not a one-line misconception (\"Misinterprets the passage by stating that the units depend o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a reaction has a rate constant k of 0.00625 molL⁻¹s⁻¹ and the initial concentration of a reactant is 1.5 M, what is the concentration of the reactant after 120 seconds assuming zero-order kinetics?",
+      "reason": "options are written to different precisions (1 and 2 and 3 decimals); distractor 3's reason is not a one-line misconception (\"Adds the rate constant and initial concentration instead of …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the initial concentration of a reactant is 1.5 M and after 120 seconds the concentration is 0.75 M, what is the rate constant for a zero-order reaction?",
+      "reason": "options are in more than one unit (moll⁻¹s⁻¹, s⁻¹); options 0 and 1 are the same number; options 2 and 3 are the same number; distractor 2's reason is not a one-line misconception (\"Confuses the units of the rate constant, using s⁻¹ instead o…\"); distractor 3's reason is not a one-line misconception (\"Fails to calculate the rate constant correctly, possibly by …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the passage and the style block, which of the following is an example of a zero-order reaction?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main difference between the rate of a reaction and the extent of a reaction, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"The rate is determined by thermodynamics while the extent is determined by chemical kinetics\" / \"The rate is determined by chemical kinetics while the extent is determined by thermodynamics\"); options 2 and 3 say the same thing (\"The rate is the speed at which a reaction occurs while the extent is the amount of product formed\" / \"The rate is the amount of product formed while the extent is the speed at which a reaction occurs\"); distractor 0's reason is not a one-line misconception (\"Confuses the roles of thermodynamics and chemical kinetics i…\"); distractor 1's reason is not a one-line misconception (\"Confuses the roles of thermodynamics and chemical kinetics i…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the definitions of rate and extent of a react…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be said about the order of a reaction?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the order of a reaction if the rate expression is Rate = k [A]^{1/2} [B]^{3/2} ?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"incorrectly adds the exponents as 1/2 + 3/2 = 2, but chooses…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "For the reaction A → B, the rate constant is 0.05 mol L⁻¹ s⁻¹. If the initial concentration of A is 0.1 M and it decreases to 0.05 M in 10 seconds, what is the order of the reaction?",
+      "reason": "checkExpr \"0.05\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the unit of the rate constant for a first order reaction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the rate constant of a reaction is 3 × 10^{-2} s^{-1}, what is the order of the reaction?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the half-life of a first-order reaction if the rate constant is 1.15 × 10^-3 s^-1?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the concentration of a reactant in a first-order reaction reduces from 5 g to 3 g, what is the time required for this change if the rate constant is 1.15 × 10^-3 s^-1?",
+      "reason": "checkExpr \"ln(5/3)/(1.15*10^-3)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The rate constants of a reaction at 200K and 500K are 0.02 s^-1 and 0.20 s^-1, respectively. What is the activation energy of the reaction?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(19.15)*(1/(1/200 - 1/500))\" = 6383.333333333332, but the key says 19150"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The half-life of a first-order reaction is 60 minutes. What is the rate constant of the reaction?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"0.693/60\" = 0.01155, but the key says 0.0116"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The rate constants of a reaction at 500K and 700K are 0.02s⁻¹ and 0.07s⁻¹ respectively. Using the Arrhenius equation, what is the activation energy (Ea) of the reaction?",
+      "reason": "checkExpr \"18230.8\" is a bare literal"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "If the initial concentration of a substance is 1.5 M and after 120 seconds it is 0.75 M, what is the rate constant for a zero-order reaction?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The rate constant for the decomposition of N2O at various temperatures is given. If the rate constant at 546 K is 2.418 × 10^(-5) s^(-1) and the activation energy is 179.9 kJ mol^(-1), what is the pre-exponential factor?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A graph between ln k and 1/T is plotted. What can be determined from the slope of this graph?",
+      "reason": "figure: figure spec refused: spec.x.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the rate of a reaction represent?",
+      "reason": "options 0 and 3 say the same thing (\"Increase in concentration of reactants per unit time\" / \"Increase in concentration of reactants and products per unit time\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The rate constant for a reaction is found to quadruple when the temperature is increased from 293 K to 313 K. What is the activation energy of the reaction?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Student confuses the activation energy with a previously men…\"); checkExpr \"((2.303*8.314)*(log(4)))/(1/293 - 1/313)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "For a first-order reaction, if the half-life is 444 seconds, what is the rate constant?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"0.693/444\" = 0.0015608108108108108, but the key says 1.57"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The rate constants of a reaction at 500K and 700K are 0.02s and 0.07s respectively. What is the value of the activation energy (Ea) for the reaction?",
+      "reason": "options are written to different precisions (0 and 1 decimals); ARITHMETIC MISMATCH — checkExpr \"0.544 * 19.15 / 5.714 * 10\" = 18.231711585579276, but the key says 18230.8"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The rate constant of a reaction is 1.60 × 10 s at 600K, and the activation energy is 209 kJ/mol. What is the rate constant at 700K?",
+      "reason": "checkExpr \"10^(log(1.60*10) + (2.303*8.314*100)/(8.314*600*700))\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the rate of a reaction increases by a factor of 8 when the concentration of a reactant is doubled, what is the order of the reaction with respect to that reactant?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the effect of a catalyst on the activation energy of a reaction?",
+      "reason": "figure: figure spec refused: spec.parts: prism has no label \"activation energy\" (it has prism, whiteLight, spectrum, red, violet)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If the rate of a reaction is independent of the concentration of the reactants, what is the order of the reaction?",
+      "reason": "near-duplicate of served question cmvlmpsyw0n96gpfhhsej0spb (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "The rate constant for a reaction is 2.3 × 10^{-2} L mol^{-1} s^{-1}. What is the order of the reaction?",
+      "reason": "near-duplicate of served question cmvlmpsyr0n8igpfhk4bvcef5 (cosine 0.977 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the initial concentration of a reactant A is 1.5 M and after 120 seconds its concentration is 0.75 M, what is the rate constant for the reaction if it follows zero-order kinetics?",
+      "reason": "near-duplicate of batch item \"A reaction follows zero order kinetics. If the ini…\" (cosine 0.964 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following best describes the order of a reaction whose rate constant has units of mol L^{-1} s^{-1}?",
+      "reason": "near-duplicate of batch item \"Which of the following is the unit of the rate con…\" (cosine 0.900 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "For a reaction with the rate law rate = k[A]^2[B], what is the overall order of the reaction?",
+      "reason": "near-duplicate of served question cmsnbx2l602c8y2vbvt9cv76f (cosine 0.934 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,893 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T22:56:15.663Z",
+  "finishedAt": "2026-10-29T23:11:03.866Z",
+  "seconds": 888,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu106.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 6 — Pressure, Winds, Storms, and Cyclones",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2013 — question paper]\n62. The atmospheric pressure on the earth’s surface is P N/m . A table of area 2 m is a 2 2\ntilted at 45 to the horizontal. The force on the top surface of the table due to the 0\natmosphere is (in newtons):\nA. 2 P √ a\nB. √ 2P a\nC. 2 2P √ a\nD. P / 2 a",
+      "[INJSO 2013 — solutions or answer key]\n62. The atmospheric pressure on the earth’s surface is P N/m . A table of area 2 m is a 2 2\ntilted at 45 to the horizontal. The force on the top surface of the table due to the 0\natmosphere is (in newtons):\nA. 2 P √ a\nB. √ 2P a\nC. 2 2P √ a\nD. P / 2 a",
+      "[INJSO 2013 — question paper]\n51. Estimate the order of magnitude of the pressure in N/m exerted on the Earth by an 2\naverage adult human being when standing bare feet on both legs.\nA. 10 3\nB. 10 5\nC. 10 7\nD. 10 9",
+      "[NSEJS 2020 — answer key]\n2. External pressure will increase with depth:\nF = PA = hρg A\nHence, h = F/ρ g A = 2.5 / (9.8 X 1.05 X10 X 3.14 X (0.5 X 10 ) ) = 3.09 m ~ 3m 3 -2 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 260741,
+      "in": 47,
+      "out": 45,
+      "rejects": 3,
+      "promptTokens": 41692,
+      "completionTokens": 12632
+    },
+    "critique": {
+      "calls": 55,
+      "ms": 421306,
+      "in": 45,
+      "out": 40,
+      "rejects": 5,
+      "promptTokens": 25704,
+      "completionTokens": 9534
+    },
+    "solver": {
+      "calls": 272,
+      "ms": 162469,
+      "in": 40,
+      "out": 32,
+      "rejects": 8,
+      "promptTokens": 49571,
+      "completionTokens": 2815
+    },
+    "form": {
+      "calls": 17,
+      "ms": 74888,
+      "in": 32,
+      "out": 8,
+      "rejects": 24,
+      "promptTokens": 9581,
+      "completionTokens": 1644
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 107,
+      "ms": 17882,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 344498,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 18687,
+      "completionTokens": 9320
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why are water tanks usually placed at a height?",
+      "ms": {
+        "draft": 8168,
+        "critique": 7419,
+        "solver": 1587,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the pressure at the bottom of a pipe if more water is added to it?",
+      "ms": {
+        "draft": 8168,
+        "critique": 7954,
+        "solver": 2109,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, two pipes of different diameters but the same height are filled with water. The balloons at the bottom of the pipes bulge equally. What does this show?",
+      "ms": {
+        "draft": 8168,
+        "critique": 8201,
+        "solver": 3910,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An overhead water tank is placed at a height of 10 m. What is the pressure exerted by the water at the bottom of the tank? (Take g = 10 m/s², density of water = 1000 kg/m³)",
+      "ms": {
+        "draft": 8168,
+        "critique": 8052,
+        "solver": 1690,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why do broad straps on a bag make it more comfortable to carry?",
+      "ms": {
+        "draft": 8168,
+        "critique": 6338,
+        "solver": 2227,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In which direction do liquids exert pressure according to the passage?",
+      "ms": {
+        "draft": 4705,
+        "critique": 10229,
+        "solver": 2224,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A plastic bottle with holes near the bottom is filled with water and the holes are opened. What is the reason water flows out of the holes?",
+      "ms": {
+        "draft": 4705,
+        "critique": 10703,
+        "solver": 1339,
+        "form": 4304
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person is carrying a bucket with a narrow handle. The force on the person's hand is 200 N and the area of the handle is 0.01 m². What is the pressure exerted by the handle on the person's hand?",
+      "ms": {
+        "draft": 8168,
+        "critique": 10215,
+        "solver": 19191,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A dam is constructed with a broader base than the top. What is the main reason for this design?",
+      "ms": {
+        "draft": 4705,
+        "critique": 7529,
+        "solver": 1554,
+        "form": 2689
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student conducts an experiment by blowing air into a balloon. The balloon expands equally in all directions. What conclusion can be drawn from this observation?",
+      "ms": {
+        "draft": 4705,
+        "critique": 7009,
+        "solver": 1922,
+        "form": 3291
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is it more difficult to lift a paper plate covered with an unfolded chart paper compared to a folded one?",
+      "ms": {
+        "draft": 4705,
+        "critique": 6797,
+        "solver": 1954,
+        "form": 2956
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student places a rubber sucker on a flat surface and presses it. When trying to pull it off, it is difficult. What is the scientific reason for this?",
+      "ms": {
+        "draft": 4705,
+        "critique": 9263,
+        "solver": 2340,
+        "form": 3599
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the practical unit of air pressure?",
+      "ms": {
+        "draft": 4907,
+        "critique": 7425,
+        "solver": 1595,
+        "form": 4714
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main cause of land breeze and sea breeze?",
+      "ms": {
+        "draft": 4907,
+        "critique": 7057
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the activity with two balloons, what happens when air is blown between them?",
+      "ms": {
+        "draft": 4907,
+        "critique": 6941,
+        "solver": 2145,
+        "form": 3063
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a storm has a pressure difference of 1000 mb and 980 mb, which area will experience stronger winds?",
+      "ms": {
+        "draft": 23785,
+        "critique": 8666,
+        "solver": 1861,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct statement about pressure?",
+      "ms": {
+        "draft": 25418,
+        "critique": 6683,
+        "solver": 2059,
+        "form": 2889
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A water tank is placed on the roof of a building at a height 'H'. To get water with more pressure on the ground floor, what should be done?",
+      "ms": {
+        "draft": 25418,
+        "critique": 7005,
+        "solver": 1975,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the air when it rises and expands in a storm?",
+      "ms": {
+        "draft": 23785,
+        "critique": 7699,
+        "solver": 1568,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two vessels, A and B, contain water up to the same level. P and P are the pressures at the bottom of the vessels, and F and F are the forces exerted by the water at the bottom of the vessels A and B. Which of the following is correct?",
+      "ms": {
+        "draft": 25418,
+        "critique": 6992,
+        "solver": 1665
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student performed an experiment with a 18 cm long and 2 cm wide strip of paper. When they blew over the paper, it lifted up. What is the reason for this phenomenon?",
+      "ms": {
+        "draft": 4546,
+        "critique": 6044,
+        "solver": 1231,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a factor that causes a thunderstorm?",
+      "ms": {
+        "draft": 4048,
+        "critique": 5937,
+        "solver": 2906,
+        "form": 3486
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is standing on a flat surface, which of the following factors affects the pressure exerted by their feet?",
+      "ms": {
+        "draft": 4048,
+        "critique": 5724,
+        "solver": 14366,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains the phenomenon observed when blowing over a strip of paper?",
+      "ms": {
+        "draft": 4048,
+        "critique": 8483,
+        "solver": 16814
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person of mass 60 kg is standing on a platform of area 0.5 m², what is the pressure exerted by the person on the platform?",
+      "ms": {
+        "draft": 4048,
+        "critique": 8900,
+        "solver": 16790
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Two vessels, A and B, contain water up to the same level. P and P is the pressure at the bottom of the vessels. F and F is the force exerted by the water at the bottom of the vessels. What is the correct relationship between these quantities?",
+      "ms": {
+        "draft": 6214,
+        "critique": 9397,
+        "solver": 1591,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A table of area 2 m² is tilted at 45 degrees to the horizontal. The atmospheric pressure on the Earth’s surface is P N/m². What is the force on the top surface of the table due to the atmosphere?",
+      "ms": {
+        "draft": 6214,
+        "critique": 7192,
+        "solver": 2176
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A water tank is placed on the roof of a building at a height ‘H’. To get water with more pressure on the ground floor, what should be done?",
+      "ms": {
+        "draft": 6214,
+        "critique": 8025,
+        "solver": 18262
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main cause of wind circulation according to the passage?",
+      "ms": {
+        "draft": 4795,
+        "critique": 9374
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rubber sucker (M) is pressed on a flat smooth surface and an identical sucker (N) is pressed on a rough surface. Which of the following is correct?",
+      "ms": {
+        "draft": 6214,
+        "critique": 9244,
+        "solver": 2075
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An elephant stands on four feet. If the area covered by one foot is 0.25 m², and its weight is 20000 N, what is the pressure exerted by the elephant on the ground?",
+      "ms": {
+        "draft": 6214,
+        "critique": 7720,
+        "solver": 14420
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main function of a lightning conductor as described in the passage?",
+      "ms": {
+        "draft": 4795,
+        "critique": 9659
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary reason for the formation of lightning according to the passage?",
+      "ms": {
+        "draft": 4795,
+        "critique": 6742,
+        "solver": 14550,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a cyclone moves from the ocean to the land, what happens to its strength?",
+      "ms": {
+        "draft": 4795,
+        "critique": 8235
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage mention that the region of lowest pressure in a cyclone is called the eye of the cyclone?",
+      "ms": {
+        "draft": 4795,
+        "critique": 9013
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a paper plate is covered with a folded sheet of paper, it is easier to lift compared to when it is covered with an unfolded sheet. What is the main reason for this?",
+      "ms": {
+        "draft": 4547,
+        "critique": 8767,
+        "solver": 1695
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason a dam's base is broader than its top?",
+      "ms": {
+        "draft": 4547,
+        "critique": 9203,
+        "solver": 11996,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is true about the pressure exerted by a liquid?",
+      "ms": {
+        "draft": 4546,
+        "critique": 5851,
+        "solver": 1502,
+        "form": 1991,
+        "translation": 43605
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of pressure?",
+      "ms": {
+        "draft": 4907,
+        "critique": 8117,
+        "solver": 15446,
+        "form": 0,
+        "translation": 33147
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when warm air rises to great heights in a storm?",
+      "ms": {
+        "draft": 4795,
+        "critique": 7757,
+        "solver": 19136,
+        "form": 2634,
+        "translation": 48150
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements about pressure is correct?",
+      "ms": {
+        "draft": 6214,
+        "critique": 7974,
+        "solver": 2484,
+        "form": 0,
+        "translation": 85840
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following explains why holes are made in banners and hoardings?",
+      "ms": {
+        "draft": 4048,
+        "critique": 5459,
+        "solver": 1393,
+        "form": 4007,
+        "translation": 41874
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When does air flow stop between two balloons?",
+      "ms": {
+        "draft": 4907,
+        "critique": 7222,
+        "solver": 2846,
+        "form": 4200,
+        "translation": 53536
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do cyclones form more frequently in certain regions of India?",
+      "ms": {
+        "draft": 4048,
+        "critique": 9357,
+        "solver": 1609,
+        "form": 0,
+        "translation": 42837
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A balloon expands in all directions when filled with air. Why does this happen?",
+      "ms": {
+        "draft": 4547,
+        "critique": 8145,
+        "solver": 1778,
+        "form": 2115,
+        "translation": 43292
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the main cause of lightning during a storm?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the purpose of a lightning conductor?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why are water tanks usually placed at a height?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct reason is not chosen…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the role of area in pressure calculation, thi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to the pressure at the bottom of a pipe if more water is added to it?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not recognize that increasing height increases pressure…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an experiment, two pipes of different diameters but the same height are filled with water. The balloons at the bottom of the pipes bulge equally. What does this show?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that area is the same in both pipes, whi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "An overhead water tank is placed at a height of 10 m. What is the pressure exerted by the water at the bottom of the tank? (Take g = 10 m/s², density of water = 1000 kg/m³)",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly uses 1000 instead of 10000, thinking the calcula…\"); ARITHMETIC MISMATCH — checkExpr \"1000*10*10\" = 100000, but the key says 10000"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why do broad straps on a bag make it more comfortable to carry?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Fails to recognize that increasing area reduces pressure, th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In which direction do liquids exert pressure according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A plastic bottle with holes near the bottom is filled with water and the holes are opened. What is the reason water flows out of the holes?",
+      "reason": "the key is far longer than every distractor (51 vs 30 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A person is carrying a bucket with a narrow handle. The force on the person's hand is 200 N and the area of the handle is 0.01 m². What is the pressure exerted by the handle on the person's hand?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"200/0.01\" = 20000, but the key says 2000"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A dam is constructed with a broader base than the top. What is the main reason for this design?",
+      "reason": "the key is far longer than every distractor (58 vs 36 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student conducts an experiment by blowing air into a balloon. The balloon expands equally in all directions. What conclusion can be drawn from this observation?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'balloon'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why is it more difficult to lift a paper plate covered with an unfolded chart paper compared to a folded one?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'stick'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student places a rubber sucker on a flat surface and presses it. When trying to pull it off, it is difficult. What is the scientific reason for this?",
+      "reason": "options 1 and 2 say the same thing (\"Air pressure inside the sucker is higher than outside\" / \"Air pressure outside the sucker is higher than inside\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the practical unit of air pressure?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"correct SI unit but not the practical unit…\"); distractor 1's reason is not a one-line misconception (\"correct SI unit but not the practical unit…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main cause of land breeze and sea breeze?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the activity with two balloons, what happens when air is blown between them?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"describes a scenario not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a storm has a pressure difference of 1000 mb and 980 mb, which area will experience stronger winds?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"1000-980\" = 20, but the key says 980"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a correct statement about pressure?",
+      "reason": "options 1 and 2 say the same thing (\"Pressure is the force per unit area.\" / \"Pressure is the area per unit force.\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A water tank is placed on the roof of a building at a height 'H'. To get water with more pressure on the ground floor, what should be done?",
+      "reason": "options 0 and 1 say the same thing (\"Increase the height 'H' at which the tank is placed.\" / \"Decrease the height 'H' at which the tank is placed.\"); options 2 and 3 say the same thing (\"Replace the tank with another tank of the same height that can hold more water.\" / \"Replace the tank with another tank of the same height that can hold less water.\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What happens to the air when it rises and expands in a storm?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels rising, expanding"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Two vessels, A and B, contain water up to the same level. P and P are the pressures at the bottom of the vessels, and F and F are the forces exerted by the water at the bottom of the vessels A and B. Which of the following is correct?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student performed an experiment with a 18 cm long and 2 cm wide strip of paper. When they blew over the paper, it lifted up. What is the reason for this phenomenon?",
+      "reason": "options 0 and 1 say the same thing (\"Air pressure above the paper is lower than below\" / \"Air pressure above the paper is higher than below\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 4,\n      \"stem\": \"In which direction does air move when there is a pressure dif"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a factor that causes a thunderstorm?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person is standing on a flat surface, which of the following factors affects the pressure exerted by their feet?",
+      "reason": "option 3 is a catch-all (\"All of the above\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following best explains the phenomenon observed when blowing over a strip of paper?",
+      "reason": "after redraft: the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a person of mass 60 kg is standing on a platform of area 0.5 m², what is the pressure exerted by the person on the platform?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Two vessels, A and B, contain water up to the same level. P and P is the pressure at the bottom of the vessels. F and F is the force exerted by the water at the bottom of the vessels. What is the correct relationship between these quantities?",
+      "reason": "options 0 and 1 are the same (\"P = P , F = F\"); options 0 and 2 are the same (\"P = P , F = F\"); options 0 and 3 are the same (\"P = P , F = F\"); options 1 and 2 are the same (\"P = P , F <F\"); options 1 and 3 are the same (\"P = P , F <F\"); options 2 and 3 are the same (\"P < P , F = F\"); option 0 repeats the stem's wording (\"P = P , F = F\"); option 1 repeats the stem's wording (\"P = P , F <F\"); option 2 repeats the stem's wording (\"P < P , F = F\"); option 3 repeats the stem's wording (\"P > P , F > F\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A table of area 2 m² is tilted at 45 degrees to the horizontal. The atmospheric pressure on the Earth’s surface is P N/m². What is the force on the top surface of the table due to the atmosphere?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A water tank is placed on the roof of a building at a height ‘H’. To get water with more pressure on the ground floor, what should be done?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main cause of wind circulation according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A rubber sucker (M) is pressed on a flat smooth surface and an identical sucker (N) is pressed on a rough surface. Which of the following is correct?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "An elephant stands on four feet. If the area covered by one foot is 0.25 m², and its weight is 20000 N, what is the pressure exerted by the elephant on the ground?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main function of a lightning conductor as described in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the primary reason for the formation of lightning according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a cyclone moves from the ocean to the land, what happens to its strength?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why does the passage mention that the region of lowest pressure in a cyclone is called the eye of the cyclone?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a paper plate is covered with a folded sheet of paper, it is easier to lift compared to when it is covered with an unfolded sheet. What is the main reason for this?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason a dam's base is broader than its top?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

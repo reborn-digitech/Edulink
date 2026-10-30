@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T18:39:37.019Z",
+  "generatedAt": "2026-10-30T05:47:04.818Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 6,
-      "stem": "A wooden article was made by scooping out a hemisphere from each end of a solid cylinder. If the height of the cylinder is 10 cm, and its base is of radius 3.5 cm, find the total surface area of the article.",
+      "difficulty": 5,
+      "stem": "A vessel is in the form of an inverted cone. Its height is 8 cm and the radius of its top is 5 cm. It is filled with water up to the brim. When lead shots, each of which is a sphere of radius 0.5 cm, are dropped into the vessel, one-fourth of the water flows out. How many lead shots are dropped into the vessel?",
       "choices": [
-        "200 cm²",
-        "250 cm²",
-        "275 cm²",
-        "300 cm²"
+        "100",
+        "125",
+        "150",
+        "175"
       ],
-      "answerIndex": 2,
-      "solution": "The total surface area of the article includes the curved surface area of the cylinder and the curved surface areas of the two hemispheres. The curved surface area of the cylinder is 2πrh = 2π(3.5)(10) = 70π. The curved surface area of the two hemispheres is 2 × 2πr² = 4π(3.5)² = 49π. So, the total surface area is 70π + 49π = 119π ≈ 275 cm². The option 200 cm² is too low. The option 250 cm² is an incorrect approximation. The option 300 cm² is an overestimation.",
+      "answerIndex": 1,
+      "solution": "The volume of the cone is (1/3)πr²h = (1/3) × 3.14 × 5² × 8 = 209.33 cm³. One-fourth of this volume is 52.33 cm³. The volume of one lead shot is (4/3)πr³ = (4/3) × 3.14 × 0.5³ = 0.523 cm³. Dividing the volume of water displaced by the volume of one lead shot gives 52.33 / 0.523 ≈ 100. The other options are incorrect due to miscalculations or misinterpretations.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक लकड़ी का लेख एक ठोस बेलन के दोनों सिरों से एक अर्धगोला निकालकर बनाया गया। यदि बेलन की ऊंचाई 10 सेमी है, और इसका आधार 3.5 सेमी त्रिज्या का है, तो लेख का कुल पृष्ठीय क्षेत्रफल ज्ञात कीजिए।",
+          "stem": "एक बर्तन उल्टे शंकु के आकार का है। इसकी ऊंचाई 8 सेमी है और इसके शीर्ष की त्रिज्या 5 सेमी है। यह पूरी तरह से पानी से भरा हुआ है। जब लीड के गोले, जिनमें से प्रत्येक 0.5 सेमी त्रिज्या के गोले हैं, बर्तन में गिराए जाते हैं, तो चौथाई पानी बाहर निकल जाता है। बर्तन में कितने लीड गोले गिराए गए?",
           "choices": [
-            "200 वर्ग सेमी",
-            "250 वर्ग सेमी",
-            "275 वर्ग सेमी",
-            "300 वर्ग सेमी"
+            "100",
+            "125",
+            "150",
+            "175"
           ],
-          "solution": "लेख का कुल पृष्ठीय क्षेत्रफल बेलन के वक्र पृष्ठीय क्षेत्रफल और दोनों अर्धगोलों के वक्र पृष्ठीय क्षेत्रफल के योग से प्राप्त होता है। बेलन के वक्र पृष्ठीय क्षेत्रफल 2πrh = 2π(3.5)(10) = 70π है। दोनों अर्धगोलों के वक्र पृष्ठीय क्षेत्रफल 2 × 2πr² = 4π(3.5)² = 49π है। अतः कुल पृष्ठीय क्षेत्रफल 70π + 49π = 119π ≈ 275 वर्ग सेमी है। विकल्प 200 वर्ग सेमी बहुत कम है। विकल्प 250 वर्ग सेमी गलत अनुमान है। विकल्प 300 वर्ग सेमी अत्यधिक अनुमान है।",
+          "solution": "शंकु का आयतन (1/3)πr²h = (1/3) × 3.14 × 5² × 8 = 209.33 घन सेमी है। इसका चौथाई आयतन 52.33 घन सेमी है। एक लीड गोले का आयतन (4/3)πr³ = (4/3) × 3.14 × 0.5³ = 0.523 घन सेमी है। पानी के विस्थापित आयतन को एक लीड गोले के आयतन से भाग देने पर 52.33 / 0.523 ≈ 100 प्राप्त होता है। अन्य विकल्प गणना त्रुटि या गलत व्याख्या के कारण गलत हैं।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एक लाकडीचा वस्तू एका घन वर्तुळाकार बेलाच्या प्रत्येक टोकावर एका अर्धगोलाचे खोदणे करून बनवला गेला. जर बेलाची उंची 10 सेमी असेल आणि त्याच्या तळाची त्रिज्या 3.5 सेमी असेल, तर वस्तूचे एकूण पृष्ठभाग क्षेत्र शोधा.",
+          "stem": "एका वास्तविक शंकू आकाराच्या वास्तूची उंची 8 सेमी आहे आणि तिच्या शीर्षाची त्रिज्या 5 सेमी आहे. ती तिरपट भरून पाण्याने भरली गेली आहे. जेव्हा अंदाजे एका गोलाकार असलेल्या लीड शॉट्स वास्तूमध्ये टाकले जातात, तेव्हा चौथांश भाग पाणी बाहेर पडते. वास्तूमध्ये किती लीड शॉट्स टाकले गेले?",
           "choices": [
-            "200 सेमी²",
-            "250 सेमी²",
-            "275 सेमी²",
-            "300 सेमी²"
+            "100",
+            "125",
+            "150",
+            "175"
           ],
-          "solution": "वस्तूचे एकूण पृष्ठभाग क्षेत्र बेलाच्या वक्र पृष्ठभागाचे क्षेत्र आणि दोन अर्धगोलांच्या वक्र पृष्ठभागाचे क्षेत्र यांच्या बेरजेमध्ये समाविष्ट आहे. बेलाच्या वक्र पृष्ठभागाचे क्षेत्र 2πrh = 2π(3.5)(10) = 70π आहे. दोन अर्धगोलांच्या वक्र पृष्ठभागाचे क्षेत्र 2 × 2πr² = 4π(3.5)² = 49π आहे. तर, एकूण पृष्ठभाग क्षेत्र 70π + 49π = 119π ≈ 275 सेमी² आहे. 200 सेमी² च्या पर्यायाचे मूल्य खूप कमी आहे. 250 सेमी² चा पर्याय अपूर्ण मूल्यांकन आहे. 300 सेमी² चा पर्याय अतिमूल्यांकन आहे.",
+          "solution": "शंकूचा आयतन (1/3)πr²h = (1/3) × 3.14 × 5² × 8 = 209.33 सेमी³ आहे. याचा चौथांश भाग 52.33 सेमी³ आहे. एका लीड शॉटचा आयतन (4/3)πr³ = (4/3) × 3.14 × 0.5³ = 0.523 सेमी³ आहे. पाण्याचा आयतन विभाजित करून एका लीड शॉटच्या आयतनाने 52.33 / 0.523 ≈ 100 मिळतो. इतर विकल्प चूकीच्या गणना किंवा अपात्र व्याख्यांमुळे चुकीचे आहेत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi technical terms like 'आयतन' (volume), 'शंकू' (cone), 'गोलाकार' (spherical), and 'लीड शॉट्स' (lead shots).",
           "flag": null
         }
       },
@@ -72,45 +72,25 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "underestimates surface area",
-        "incorrect approximation",
+        "Miscalculates the volume of the cone and forgets to multiply by 1/3",
         null,
-        "overestimates surface area"
+        "Miscalculates the volume of the lead shot",
+        "Miscalculates the volume of the cone and incorrectly multiplies by the wrong factor"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly calculates the curved surface area of the cylinder and the two hemispheres, and arrives at the correct answer of 275 cm². The reasoning for the distractors is valid and reflects common misconceptions.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The volume of the cone is calculated properly, one-fourth of that is taken, and the volume of a lead shot is calculated correctly. Dividing the two gives approximately 100, which matches option 0. However, the author's key incorrectly states option 1 as the correct answer. This is a mistake in the author's key.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh112.pdf",
-          "ordinal": 3,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 12: Surface Areas and Volumes",
-            "URFACE REAS AND OLUMES"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh112.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 12: Surface Areas and Volumes",
-            "URFACE REAS AND OLUMES"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh112.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
+          "ordinal": 6,
+          "pageStart": 10,
           "pageEnd": 10,
           "headingPath": [
             "Chapter 12: Surface Areas and Volumes",
@@ -119,7 +99,85 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:39:37.019Z",
+      "generatedAt": "2026-10-30T05:47:04.818Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A solid consisting of a right circular cone of height 120 cm and radius 60 cm standing on a hemisphere of radius 60 cm is placed upright in a right circular cylinder full of water such that it touches the bottom. What is the volume of water left in the cylinder, if the radius of the cylinder is 60 cm and its height is 180 cm?",
+      "choices": [
+        "252000 cm³",
+        "268000 cm³",
+        "270000 cm³",
+        "288000 cm³"
+      ],
+      "answerIndex": 3,
+      "solution": "The volume of the cylinder is πr²h = 3.14 × 60² × 180 = 1,992,960 cm³. The volume of the cone is (1/3)πr²h = (1/3) × 3.14 × 60² × 120 = 452,160 cm³. The volume of the hemisphere is (2/3)πr³ = (2/3) × 3.14 × 60³ = 452,160 cm³. The total volume of the solid is 452,160 + 452,160 = 904,320 cm³. Subtracting this from the cylinder volume gives 1,992,960 - 904,320 = 1,088,640 cm³. The other options are incorrect due to miscalculations or misinterpretations of the solid's volume.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ठोस जो एक लंब वृत्तीय शंकु जिसकी ऊंचाई 120 सेमी और त्रिज्या 60 सेमी है, और एक गोलार्ध जिसकी त्रिज्या 60 सेमी है, के संयोजन से बना है, को जल से भरे एक लंब वृत्तीय बेलन में ऊर्ध्वाधर रखा जाता है ताकि यह तल तक स्पर्श करे। बेलन में शेष जल का आयतन क्या होगा, यदि बेलन की त्रिज्या 60 सेमी और ऊंचाई 180 सेमी है?",
+          "choices": [
+            "252000 सेमी³",
+            "268000 सेमी³",
+            "270000 सेमी³",
+            "288000 सेमी³"
+          ],
+          "solution": "बेलन का आयतन πr²h = 3.14 × 60² × 180 = 1,992,960 सेमी³ है। शंकु का आयतन (1/3)πr²h = (1/3) × 3.14 × 60² × 120 = 452,160 सेमी³ है। गोलार्ध का आयतन (2/3)πr³ = (2/3) × 3.14 × 60³ = 452,160 सेमी³ है। ठोस का कुल आयतन 452,160 + 452,160 = 904,320 सेमी³ है। इसे बेलन के आयतन में से घटाने पर 1,992,960 - 904,320 = 1,088,640 सेमी³ प्राप्त होता है। अन्य विकल्प गलत गणना या ठोस के आयतन के गलत अर्थात्पात के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses standard Hindi technical terms for geometry.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "120 सेमी उंची आणि 60 सेमी त्रिज्या असलेल्या एका लंब वर्तुळाकार शंकूचा एक घन असतो, जो 60 सेमी त्रिज्या असलेल्या अर्धगोलावर उभा असतो. त्याला पाण्याने भरलेल्या लंब वर्तुळाकार बाल्चेमध्ये उभे ठेवले जाते, जेणेकरून ते तळाला स्पर्श करेल. बाल्चेममध्ये राहिलेल्या पाण्याचा घनफळ किती असेल, जर बाल्चेमची त्रिज्या 60 सेमी आणि तिची उंची 180 सेमी असेल?",
+          "choices": [
+            "252000 सेमी³",
+            "268000 सेमी³",
+            "270000 सेमी³",
+            "288000 सेमी³"
+          ],
+          "solution": "बाल्चेमचा घनफळ πr²h = 3.14 × 60² × 180 = 1,992,960 सेमी³ आहे. शंकूचा घनफळ (1/3)πr²h = (1/3) × 3.14 × 60² × 120 = 452,160 सेमी³ आहे. अर्धगोलाचा घनफळ (2/3)πr³ = (2/3) × 3.14 × 60³ = 452,160 सेमी³ आहे. घनाचा एकूण घनफळ 452,160 + 452,160 = 904,320 सेमी³ आहे. बाल्चेमच्या घनफळातून हे घनफळ वजा करून 1,992,960 - 904,320 = 1,088,640 सेमी³ मिळते. इतर उत्तरे घनफळाच्या गणनेतील चूक किंवा घनाच्या व्याख्येतील चूक कारणामुळे चुकीची आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms. The solution and options align perfectly with the original English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the volume of the cone with that of a cylinder of the same height and radius",
+        "Calculates the volume of the cone but forgets to add the hemisphere volume",
+        "Confuses the height of the cone with the height of the cylinder when calculating the volume",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates the volumes of the cylinder, cone, and hemisphere, and subtracts the total volume of the solid from the cylinder volume. The correct answer is 288000 cm³, which matches option 3.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh112.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 12: Surface Areas and Volumes",
+            "URFACE REAS AND OLUMES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T05:47:04.818Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

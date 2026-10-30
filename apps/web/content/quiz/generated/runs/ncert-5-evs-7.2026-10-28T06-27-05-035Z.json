@@ -1,0 +1,367 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T06:27:05.035Z",
+  "finishedAt": "2026-10-28T06:29:59.173Z",
+  "seconds": 174,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap107.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 7 — Experiments with Water",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 51645,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 13665,
+      "completionTokens": 3148
+    },
+    "critique": {
+      "calls": 21,
+      "ms": 122260,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 8816,
+      "completionTokens": 3633
+    },
+    "solver": {
+      "calls": 102,
+      "ms": 51329,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 17941,
+      "completionTokens": 1172
+    },
+    "form": {
+      "calls": 12,
+      "ms": 27744,
+      "in": 12,
+      "out": 5,
+      "rejects": 7,
+      "promptTokens": 2815,
+      "completionTokens": 836
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 3598,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 129499,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7202,
+      "completionTokens": 3745
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "According to the passage, what happened when Ayesha put a soap cake in the soap case?",
+      "ms": {
+        "draft": 3735,
+        "critique": 5194
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what happened when Ayesha put a puffed puri in a bowl of water?",
+      "ms": {
+        "draft": 3735,
+        "critique": 5453
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the passage say about the iron nail and the katori?",
+      "ms": {
+        "draft": 3735,
+        "critique": 7190
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Ayesha observe when she put a steel plate on water?",
+      "ms": {
+        "draft": 3735,
+        "critique": 4824,
+        "solver": 13310,
+        "form": 2512
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Ayesha's mother find very little water left in the pan after boiling?",
+      "ms": {
+        "draft": 3173,
+        "critique": 7297,
+        "solver": 14277,
+        "form": 3332
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one way to dry a handkerchief quickly?",
+      "ms": {
+        "draft": 3325,
+        "critique": 6065,
+        "solver": 1237,
+        "form": 4210
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did Chittibabu and Chinnababu keep their mango jelly in the sun?",
+      "ms": {
+        "draft": 3325,
+        "critique": 6266,
+        "solver": 10285,
+        "form": 2778
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happened to the water in the pan when Ayesha's mother forgot about it?",
+      "ms": {
+        "draft": 3325,
+        "critique": 7113,
+        "solver": 10310,
+        "form": 2492
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to water when it is left in the sun?",
+      "ms": {
+        "draft": 3325,
+        "critique": 6209,
+        "solver": 1795,
+        "form": 2335
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happened to the puri when it was put in hot oil?",
+      "ms": {
+        "draft": 3472,
+        "critique": 5470,
+        "solver": 1278,
+        "form": 3693
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the soap case float on water even when the soap was inside it?",
+      "ms": {
+        "draft": 3472,
+        "critique": 5488,
+        "solver": 1508,
+        "form": 2568
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a steel plate was put on water?",
+      "ms": {
+        "draft": 3472,
+        "critique": 6127,
+        "solver": 1315,
+        "form": 2314
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can you do to dry a handkerchief quickly?",
+      "ms": {
+        "draft": 3173,
+        "critique": 8535,
+        "solver": 11110,
+        "form": 2169,
+        "translation": 43164
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did the eggs come up and float when salt was added to the water?",
+      "ms": {
+        "draft": 3472,
+        "critique": 3318,
+        "solver": 759,
+        "form": 1068,
+        "translation": 39786
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Why did Chittibabu and Chinnababu keep their mango jelly in the sun?",
+      "ms": {
+        "draft": 3173,
+        "critique": 6079,
+        "solver": 9841,
+        "form": 1152,
+        "translation": 43610
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what happened when Ayesha put a soap cake in the soap case?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what happened when Ayesha put a puffed puri in a bowl of water?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did the passage say about the iron nail and the katori?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What did Ayesha observe when she put a steel plate on water?",
+      "reason": "options 1 and 3 are the same (\"It floated on the water\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did Ayesha's mother find very little water left in the pan after boiling?",
+      "reason": "options 0 and 2 are the same (\"The water was used to make tea\"); options 0 and 3 are the same (\"The water was used to make tea\"); options 2 and 3 are the same (\"The water was used to make tea\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is one way to dry a handkerchief quickly?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, no reason needed for distractors in this cas…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Why did Chittibabu and Chinnababu keep their mango jelly in the sun?",
+      "reason": "options 0 and 2 are the same (\"To make it sweet\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What happened to the water in the pan when Ayesha's mother forgot about it?",
+      "reason": "options 0 and 3 are the same (\"It was used to make tea\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to water when it is left in the sun?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, no reason needed for distractors in this cas…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What happened to the puri when it was put in hot oil?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"imagines a different outcome not described in the passage…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why did the soap case float on water even when the soap was inside it?",
+      "reason": "near-duplicate of served question cmvh8aj5i07i8gpfhw9m198jg (cosine 0.957 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What would happen if a steel plate was put on water?",
+      "reason": "near-duplicate of served question cmvkao92k0jukgpfhhccf5806 (cosine 0.940 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

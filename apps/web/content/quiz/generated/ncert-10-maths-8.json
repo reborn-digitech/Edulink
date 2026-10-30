@@ -15,27 +15,27 @@
     },
     "mr": {
       "name": "अध्याय 8 - त्रिकोणमितीचा परिचय",
-      "summary": "हा अध्याय त्रिकोणमितीच्या तत्वांचे आणि त्रिकोणमितीय गुणोत्तरांच्या अनुप्रयोगांचे परिचय देतो."
+      "summary": "हा अध्याय त्रिकोणमितीच्या आधारभूत अवधारणां आणि त्रिकोणमितीय गुणोत्तरांच्या उपयोगाचे परिचय देतो."
     }
   },
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T18:14:06.327Z",
+  "generatedAt": "2026-10-30T05:19:41.941Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What does the word 'trigonometry' mean?",
+      "stem": "What is the meaning of the word 'trigonometry'?",
       "choices": [
-        "Measurement of three sides",
-        "Measurement of four sides",
-        "Measurement of five sides",
-        "Measurement of six sides"
+        "Three sides and measure",
+        "Three angles and measure",
+        "Three lines and measure",
+        "Three triangles and measure"
       ],
       "answerIndex": 0,
-      "solution": "The word 'trigonometry' comes from Greek roots meaning 'three,' 'sides,' and 'measure,' so it refers to the measurement of three sides. The other options use incorrect numbers of sides and do not align with the true etymology of the word.",
+      "solution": "The word 'trigonometry' is derived from the Greek words 'tri' (meaning three), 'gon' (meaning sides), and 'metron' (meaning measure). So, the correct answer is 'Three sides and measure'. The other options are incorrect as they do not accurately reflect the origin of the word.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
@@ -43,215 +43,25 @@
         "hi": {
           "stem": "शब्द 'त्रिकोणमिति' का अर्थ क्या है?",
           "choices": [
-            "तीन भुजाओं का माप",
-            "चार भुजाओं का माप",
-            "पांच भुजाओं का माप",
-            "छह भुजाओं का माप"
-          ],
-          "solution": "शब्द 'त्रिकोणमिति' ग्रीक मूल शब्दों 'त्रिकोण' (तीन), 'भुजा' (भुजा) और 'माप' से बना है, इसलिए इसका अर्थ तीन भुजाओं के माप से है। अन्य विकल्प गलत भुजाओं की संख्या का उपयोग करते हैं और शब्द के वास्तविक उत्पत्ति से मेल नहीं खाते।",
-          "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the English original in meaning, options, and solution. Technical terms like 'भुजा' (side) and 'माप' (measure) are standard in Hindi math textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "शब्द 'त्रिकोणमिती' म्हणजे काय?",
-          "choices": [
-            "तीन बाजूंचे मापन",
-            "चार बाजूंचे मापन",
-            "पाच बाजूंचे मापन",
-            "छक बाजूंचे मापन"
-          ],
-          "solution": "शब्द 'त्रिकोणमिती' ग्रीक उत्पत्तीमुळे 'तीन', 'बाजू', आणि 'मापन' असे अर्थ असतो, त्यामुळे तीन बाजूंचे मापन दर्शवतो. इतर विकल्पांमध्ये बाजूंची चुकीची संख्या आहे आणि शब्दाच्या खर्या उत्पत्तीशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The solution explanation is correctly aligned with the options.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses 'tri' with a different number",
-        "Confuses 'tri' with a different number",
-        "Confuses 'tri' with a different number"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 0, and the distractors are plausible based on confusion with the prefix 'tri' (meaning three).",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh108.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
-          "headingPath": [
-            "Chapter 8: Introduction to Trigonometry"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh108.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 8: Introduction to Trigonometry"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh108.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 8: Introduction to Trigonometry"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:14:06.327Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the meaning of the word 'trigonometry' based on its Greek roots?",
-      "choices": [
-        "Three sides and measure",
-        "Three angles and measure",
-        "Three sides and length",
-        "Three angles and length"
-      ],
-      "answerIndex": 0,
-      "solution": "The word 'trigonometry' comes from the Greek words 'tri' (meaning three), 'gon' (meaning sides), and 'metron' (meaning measure). Therefore, it refers to the study of relationships between the sides and angles of a triangle. The other options incorrectly interpret the meaning of the word.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "त्रिकोणमिति शब्द का अर्थ इसके यूनानी मूलों के आधार पर क्या है?",
-          "choices": [
-            "तीन पक्ष और माप",
+            "तीन भुजाएं और माप",
             "तीन कोण और माप",
-            "तीन पक्ष और लंबाई",
-            "तीन कोण और लंबाई"
+            "तीन रेखाएं और माप",
+            "तीन त्रिभुज और माप"
           ],
-          "solution": "शब्द 'त्रिकोणमिति' यूनानी शब्दों 'ट्री' (अर्थ तीन), 'गॉन' (अर्थ पक्ष) और 'मेट्रॉन' (अर्थ माप) से आया है। इसलिए, यह त्रिभुज के पक्षों और कोणों के बीच संबंधों के अध्ययन को संदर्भित करता है। अन्य विकल्प शब्द के अर्थ की गलत व्याख्या करते हैं।",
+          "solution": "शब्द 'त्रिकोणमिति' ग्रीक शब्दों 'ट्राई' (अर्थ तीन), 'गॉन' (अर्थ भुजाएं) और 'मेट्रॉन' (अर्थ माप) से लिया गया है। अतः सही उत्तर 'तीन भुजाएं और माप' है। अन्य विकल्प गलत हैं क्योंकि वे शब्द की उत्पत्ति को सही ढंग से प्रतिबिंबित नहीं करते।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. 'गॉन' (gon) and 'मेट्रॉन' (metron) are correctly translated as 'पक्ष' (sides) and 'माप' (measure), which are standard terms in Hindi mathematics textbooks.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains in the same position. The technical terms like 'भुजाएं' (sides) and 'माप' (measure) are standard in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "त्रिकोणमिती शब्दाचा अर्थ त्याच्या ग्रीक मूळावरून काय आहे?",
+          "stem": "शब्द 'त्रिकोणमिती' चा अर्थ काय आहे?",
           "choices": [
             "तीन बाजू आणि मोजमाप",
             "तीन कोन आणि मोजमाप",
-            "तीन बाजू आणि लांबी",
-            "तीन कोन आणि लांबी"
+            "तीन रेषा आणि मोजमाप",
+            "तीन त्रिकोण आणि मोजमाप"
           ],
-          "solution": "त्रिकोणमिती शब्द ग्रीक शब्द 'ट्राई' (अर्थ तीन), 'गॉन' (अर्थ बाजू) आणि 'मेट्रॉन' (अर्थ मोजमाप) वरून आला आहे. त्यामुळे तो त्रिकोणाच्या बाजू आणि कोनांच्या संबंधांच्या अभ्यासाला संदर्भित करतो. इतर विकल्प शब्दाचा चुकीचा अर्थ देतात.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English content with appropriate terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses 'gon' with 'angles'",
-        "Confuses 'metron' with 'length'",
-        "Confuses 'tri' with 'three angles'"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as 'trigonometry' derives from 'tri' (three), 'gon' (sides), and 'metron' (measure). The other options reflect common misconceptions about the Greek roots.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh108.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
-          "headingPath": [
-            "Chapter 8: Introduction to Trigonometry"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh108.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 8: Introduction to Trigonometry"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh108.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 8: Introduction to Trigonometry"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:14:06.327Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "If the angle A remains the same, what happens to the trigonometric ratios of angle A in different triangles?",
-      "choices": [
-        "They change with the length of the sides",
-        "They remain the same",
-        "They depend on the type of triangle",
-        "They vary with the angle measure"
-      ],
-      "answerIndex": 1,
-      "solution": "Trigonometric ratios depend only on the angle's measure, not on the triangle's side lengths. If angle A remains the same, its sine, cosine, and tangent will be identical in all triangles. The other options are incorrect because they suggest the ratios change with side lengths or triangle type, which is not true for a fixed angle.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोण A अपरिवर्तित रहता है, तो विभिन्न त्रिभुजों में कोण A के त्रिकोणमितीय अनुपात क्या होते हैं?",
-          "choices": [
-            "वे भुजाओं की लंबाई के साथ बदल जाते हैं",
-            "वे एक ही रहते हैं",
-            "वे त्रिभुज के प्रकार पर निर्भर करते हैं",
-            "वे कोण के माप के साथ बदल जाते हैं"
-          ],
-          "solution": "त्रिकोणमितीय अनुपात केवल कोण के माप पर निर्भर करते हैं, भुजाओं की लंबाई पर नहीं। यदि कोण A अपरिवर्तित रहता है, तो इसकी ज्या, कोज्या और स्पर्शज्या सभी त्रिभुजों में समान होती हैं। अन्य विकल्प गलत हैं क्योंकि वे अनुपातों के भुजाओं की लंबाई या त्रिभुज के प्रकार पर बदलने के बारे में कहते हैं, जो एक निश्चित कोण के लिए सही नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology and logical structure.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर कोन A समान राहत असेल, तर विविध त्रिकोणांमधील कोन A चे त्रिकोणमितीय गुणोत्तर काय होते?",
-          "choices": [
-            "ते बाजूंच्या लांबीवर बदलतात",
-            "ते समान राहतात",
-            "ते त्रिकोणाच्या प्रकारावर अवलंबून असतात",
-            "ते कोनाच्या मापावर बदलतात"
-          ],
-          "solution": "त्रिकोणमितीय गुणोत्तर केवळ कोनाच्या मापावर अवलंबून असतात, बाजूंच्या लांबीवर नाही. जर कोन A समान राहत असेल, तर त्याचे जीव, कोजीव आणि स्पर्शज्या सर्व त्रिकोणांमध्ये एकसारखे असतात. इतर विकल्प चुकीचे आहेत कारण ते गुणोत्तर बाजूंच्या लांबी किंवा त्रिकोणाच्या प्रकारावर बदलतात असे सूचित करतात, जे निश्चित कोनासाठी खरे नाही.",
+          "solution": "शब्द 'त्रिकोणमिती' हा ग्रीक शब्द 'ट्राय' (अर्थ: तीन), 'गॉन' (अर्थ: बाजू) आणि 'मेट्रॉन' (अर्थ: मोजमाप) यांच्या संयोजनातून तयार झाला आहे. म्हणून, योग्य उत्तर 'तीन बाजू आणि मोजमाप' आहे. इतर पर्याय अयोग्य आहेत कारण ते शब्दाच्या उत्पत्तीचा योग्य अंदाज देत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -262,20 +72,115 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Believes that the ratios depend on the side lengths",
         null,
-        "Confuses the concept of angle measure with side lengths",
-        "Misunderstands the relationship between angles and ratios"
+        "Confuses 'gon' with 'angles' instead of 'sides'",
+        "Mistakenly associates 'tri' with 'three angles' instead of 'three sides'",
+        "Incorrectly interprets 'metron' as 'measure of triangles' instead of 'measure of sides' in a triangle"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as trigonometric ratios depend only on the angle, not on the side lengths or type of triangle. The author's reasoning aligns with standard trigonometric principles.",
+      "critique": "The solution correctly explains the etymology of 'trigonometry' and identifies the correct option. The reasoning for the distractors aligns with common misconceptions about the word's origin.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 8: Introduction to Trigonometry"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh108.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 8: Introduction to Trigonometry"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh108.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 8: Introduction to Trigonometry"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T05:19:41.941Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If sin A is defined as the ratio of the opposite side to the hypotenuse in a right triangle, what is the value of sin A if the opposite side is 1 and the hypotenuse is 3?",
+      "choices": [
+        "1/3",
+        "1/2",
+        "2/3",
+        "3/1"
+      ],
+      "answerIndex": 0,
+      "solution": "Since sin A is the ratio of the opposite side to the hypotenuse, and the opposite side is 1 while the hypotenuse is 3, sin A equals 1/3. The other options do not match this ratio. 1/2 and 2/3 represent different ratios, and 3/1 is the reciprocal of the correct ratio.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि sin A को समकोण त्रिभुज में विपरीत भुजा और कर्ण के अनुपात के रूप में परिभाषित किया जाता है, तो sin A का मान क्या है यदि विपरीत भुजा 1 है और कर्ण 3 है?",
+          "choices": [
+            "1/3",
+            "1/2",
+            "2/3",
+            "3/1"
+          ],
+          "solution": "चूंकि sin A विपरीत भुजा और कर्ण के अनुपात के रूप में परिभाषित है, और विपरीत भुजा 1 है जबकि कर्ण 3 है, तो sin A बराबर 1/3 है। अन्य विकल्प इस अनुपात के अनुरूप नहीं हैं। 1/2 और 2/3 अलग-अलग अनुपात दर्शाते हैं, और 3/1 सही अनुपात का व्युत्क्रम है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर साइन A एका समकोन त्रिकोणातील विरुद्ध बाजू आणि कर्णाच्या गुणोत्तराने व्यक्त केला जातो, तर जर विरुद्ध बाजू 1 आहे आणि कर्ण 3 आहे, तर साइन A ची किंमत काय असेल?",
+          "choices": [
+            "1/3",
+            "1/2",
+            "2/3",
+            "3/1"
+          ],
+          "solution": "जर साइन A हा विरुद्ध बाजू आणि कर्णाच्या गुणोत्तराने व्यक्त केला जात असेल, आणि विरुद्ध बाजू 1 असेल आणि कर्ण 3 असेल, तर साइन A 1/3 च्या बरोबर असेल. इतर विकल्प या गुणोत्तराशी जुळत नाहीत. 1/2 आणि 2/3 हे वेगळे गुणोत्तर दर्शवतात, आणि 3/1 हा योग्य गुणोत्तराचा व्यस्त आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the ratio with a common Pythagorean triple (1-2-√3)",
+        "Confuses the adjacent side with the opposite side in the sine ratio",
+        "Confuses the definition of sine with the ratio of hypotenuse to opposite side"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and aligns with the definition of sine. The correct answer is 1/3, and the author's reasoning for the distractors is valid and reflects common student misconceptions.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh108.pdf",
@@ -306,424 +211,54 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:14:06.327Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "In a right triangle, if the angle A is 30°, and the side opposite to angle A is 5 cm, what is the length of the hypotenuse?",
-      "choices": [
-        "5 cm",
-        "10 cm",
-        "15 cm",
-        "20 cm"
-      ],
-      "answerIndex": 1,
-      "solution": "The sine of 30° is 0.5. Since sine is the ratio of the opposite side to the hypotenuse, 0.5 = 5 / hypotenuse. Solving this, hypotenuse = 10 cm. The other options are incorrect because they do not satisfy the trigonometric ratio for 30°.",
-      "checkExpr": "5/0.5",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक समकोण त्रिभुज में, यदि कोण A 30° है, और कोण A के सम्मुख भुजा 5 सेमी है, तो कर्ण की लंबाई क्या है?",
-          "choices": [
-            "5 सेमी",
-            "10 सेमी",
-            "15 सेमी",
-            "20 सेमी"
-          ],
-          "solution": "30° का साइन 0.5 होता है। चूंकि साइन विपरीत भुजा और कर्ण के अनुपात के बराबर होता है, 0.5 = 5 / कर्ण। इसको हल करने पर, कर्ण = 10 सेमी। अन्य विकल्प गलत हैं क्योंकि वे 30° के लिए त्रिकोणमितीय अनुपात को संतुष्ट नहीं करते।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "समकोन त्रिकोणात, जर कोन A 30° असेल आणि कोन A च्या विरुद्ध बाजू 5 सेमी असेल, तर कर्णाची लांबी किती असेल?",
-          "choices": [
-            "5 सेमी",
-            "10 सेमी",
-            "15 सेमी",
-            "20 सेमी"
-          ],
-          "solution": "30° चा साइन 0.5 आहे. साइन हा विरुद्ध बाजू आणि कर्णाचा गुणोत्तर असतो, म्हणून 0.5 = 5 / कर्ण. हे सोडवल्यास कर्ण = 10 सेमी. इतर विकल्प चुकीचे आहेत कारण ते 30° च्या त्रिकोणमितीय गुणोत्तराला अनुरूप नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for trigonometry.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Uses the opposite side directly as the hypotenuse",
-        null,
-        "Adds the opposite side to itself",
-        "Multiplies the opposite side by 4"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly applies the sine ratio for a 30° angle, which is 0.5, and solves for the hypotenuse. The reasoning for the distractors is plausible and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh108.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
-          "headingPath": [
-            "Chapter 8: Introduction to Trigonometry"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh108.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 8: Introduction to Trigonometry"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh108.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 8: Introduction to Trigonometry"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:14:06.327Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "In a right-angled triangle, if the angle opposite to a side is 30°, what is the ratio of the length of that side to the hypotenuse?",
-      "choices": [
-        "1:2",
-        "1:√3",
-        "√3:2",
-        "2:1"
-      ],
-      "answerIndex": 0,
-      "solution": "In a 30°-60°-90° triangle, the side opposite the 30° angle is always half the length of the hypotenuse, making the ratio 1:2. The option 1:√3 represents the ratio between the sides opposite 30° and 60°, while √3:2 is the ratio between the side opposite 60° and the hypotenuse. The ratio 2:1 is the inverse of the correct relationship and is therefore incorrect.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक समकोण त्रिभुज में, यदि किसी भुजा के सामने का कोण 30° है, तो उस भुजा की लंबाई और कर्ण के अनुपात क्या है?",
-          "choices": [
-            "1:2",
-            "1:√3",
-            "√3:2",
-            "2:1"
-          ],
-          "solution": "30°-60°-90° त्रिभुज में, 30° कोण के सामने वाली भुजा हमेशा कर्ण की लंबाई के आधी होती है, जिसके कारण अनुपात 1:2 होता है। विकल्प 1:√3 30° और 60° कोण के सामने वाली भुजाओं के बीच अनुपात को दर्शाता है, जबकि √3:2 60° कोण के सामने वाली भुजा और कर्ण के बीच अनुपात को दर्शाता है। अनुपात 2:1 सही संबंध के व्युत्क्रम है और इसलिए गलत है।",
-          "imageAlt": "एक समकोण त्रिभुज जिसमें कोण A 90° है, भुजा AB 30° के सामने है, भुजा AC कर्ण है, और भुजा BC 60° के सामने है।",
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect as in the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "समकोण त्रिकोणात, जर एका बाजूला विरुद्ध असलेला कोन 30° असेल, तर त्या बाजूच्या लांबीचे कर्णाशी असलेले गुणोत्तर काय असेल?",
-          "choices": [
-            "1:2",
-            "1:√3",
-            "√3:2",
-            "2:1"
-          ],
-          "solution": "30°-60°-90° त्रिकोणात, 30° कोनाच्या विरुद्ध असलेल्या बाजूचे लांबी कर्णाच्या अर्ध्या असते, ज्यामुळे गुणोत्तर 1:2 असते. 1:√3 हे 30° आणि 60° कोनांच्या बाजूंचे गुणोत्तर दर्शवते, तर √3:2 हे 60° कोनाच्या बाजू आणि कर्णाचे गुणोत्तर दर्शवते. 2:1 हे योग्य संबंधाचे उलटे गुणोत्तर असून ते चुकीचे आहे.",
-          "imageAlt": "समकोण त्रिकोण, ज्यात कोन A 90° आहे, बाजू AB 30° च्या विरुद्ध आहे, बाजू AC ही कर्ण आहे आणि बाजू BC 60° च्या विरुद्ध आहे.",
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A right-angled triangle with angle A as 90°, side AB opposite to 30°, side AC as the hypotenuse, and side BC opposite to 60°.",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 10,
-            "yMin": 0,
-            "yMax": 10
-          },
-          "points": [
-            {
-              "id": "A",
-              "x": 2,
-              "y": 2,
-              "label": "A"
-            },
-            {
-              "id": "B",
-              "x": 2,
-              "y": 8,
-              "label": "B"
-            },
-            {
-              "id": "C",
-              "x": 8,
-              "y": 2,
-              "label": "C"
-            }
-          ],
-          "segments": [
-            {
-              "from": "A",
-              "to": "B",
-              "label": "AB"
-            },
-            {
-              "from": "A",
-              "to": "C",
-              "label": "AC"
-            },
-            {
-              "from": "B",
-              "to": "C",
-              "label": "BC"
-            }
-          ],
-          "angles": [
-            {
-              "vertex": "A",
-              "from": "B",
-              "to": "C",
-              "measure": 90,
-              "label": "A"
-            }
-          ],
-          "texts": [
-            {
-              "x": 5,
-              "y": 9,
-              "label": "30"
-            },
-            {
-              "x": 1,
-              "y": 5,
-              "label": "60"
-            }
-          ]
-        },
-        "labels": {
-          "AB": {
-            "en": "Opposite to 30°",
-            "hi": "30° के सामने",
-            "mr": "30° च्या विरुद्ध"
-          },
-          "AC": {
-            "en": "Hypotenuse",
-            "hi": "कर्ण",
-            "mr": "कर्ण"
-          },
-          "BC": {
-            "en": "Opposite to 60°",
-            "hi": "60° के सामने",
-            "mr": "60° च्या विरुद्ध"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        null,
-        "Confuses the ratio of the side opposite 30° with the side opposite 60°",
-        "Confuses the ratio of the side opposite 30° with the side opposite 60°",
-        "Confuses the ratio of the side opposite 30° with the hypotenuse"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 1:2, as the side opposite the 30° angle is half the hypotenuse in a 30°-60°-90° triangle. The distractors reflect common misconceptions about the ratios in such triangles.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh108.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 8: Introduction to Trigonometry"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh108.pdf",
-          "ordinal": 7,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 8: Introduction to Trigonometry"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh108.pdf",
-          "ordinal": 8,
-          "pageStart": 14,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 8: Introduction to Trigonometry"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:14:06.327Z",
+      "generatedAt": "2026-10-30T05:19:41.941Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "In a right triangle, if tan A = 4/3, what is the length of the hypotenuse in terms of a positive number k?",
+      "stem": "In a right triangle, the side opposite to an acute angle is called what?",
       "choices": [
-        "3k",
-        "4k",
-        "5k",
-        "7k"
+        "Adjacent side",
+        "Hypotenuse",
+        "Opposite side",
+        "Base side"
       ],
       "answerIndex": 2,
-      "solution": "If tan A = 4/3, then the opposite side is 4k and the adjacent side is 3k. Using the Pythagorean theorem, the hypotenuse is sqrt((4k)^2 + (3k)^2) = 5k. The other options do not satisfy the Pythagorean relationship for a triangle with tan A = 4/3.",
+      "solution": "In a right triangle, the side opposite to an acute angle is called the opposite side. The adjacent side is the one that forms the angle with the hypotenuse, and the hypotenuse is the longest side. The term 'base side' is not a standard term in trigonometry.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक समकोण त्रिभुज में, यदि tan A = 4/3 है, तो लंबाई के सकारात्मक संख्या k के संदर्भ में कर्ण की लंबाई क्या है?",
+          "stem": "एक समकोण त्रिभुज में, एक न्यून कोण के विपरीत भुजा को क्या कहते हैं?",
           "choices": [
-            "3k",
-            "4k",
-            "5k",
-            "7k"
+            "समीपवर्ती भुजा",
+            "कर्ण",
+            "विपरीत भुजा",
+            "आधार भुजा"
           ],
-          "solution": "यदि tan A = 4/3 है, तो विपरीत भुजा 4k है और समीप भुजा 3k है। पाइथागोरस प्रमेय के उपयोग से, कर्ण sqrt((4k)^2 + (3k)^2) = 5k है। अन्य विकल्प tan A = 4/3 के लिए पाइथागोरस संबंध को संतुष्ट नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "solution": "एक समकोण त्रिभुज में, एक न्यून कोण के विपरीत भुजा को विपरीत भुजा कहते हैं। समीपवर्ती भुजा कर्ण के साथ कोण बनाने वाली भुजा होती है, और कर्ण सबसे लंबी भुजा होती है। 'आधार भुजा' त्रिकोणमिति में एक मानक शब्द नहीं है।",
+          "imageAlt": "एक समकोण त्रिभुज जिसमें भुजाओं को चिह्नित किया गया है: विपरीत, समीपवर्ती, और कर्ण।",
+          "critique": "The translation is accurate, maintains the same meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "समकोन त्रिकोणात, जर tan A = 4/3 असेल, तर कर्णाची लांबी कोणत्या धनात्मक संख्या k च्या बरोबरीने काय असेल?",
+          "stem": "एका समकोन त्रिकोणात, एका अधिक कोनाच्या विरुद्ध बाजूला काय म्हणतात?",
           "choices": [
-            "3k",
-            "4k",
-            "5k",
-            "7k"
+            "समांतर बाजू",
+            "कर्ण",
+            "विरुद्ध बाजू",
+            "आधार बाजू"
           ],
-          "solution": "जर tan A = 4/3 असेल, तर विरुद्ध बाजू 4k आहे आणि समीप बाजू 3k आहे. पायथागोरसच्या प्रमेयानुसार, कर्ण sqrt((4k)^2 + (3k)^2) = 5k आहे. इतर विकल्प tan A = 4/3 असलेल्या त्रिकोणासाठी पायथागोरसच्या संबंधाला अनुरूप नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "solution": "एका समकोन त्रिकोणात, एका अधिक कोनाच्या विरुद्ध बाजूला विरुद्ध बाजू म्हणतात. समांतर बाजू ही कर्णासह कोन बनवणारी बाजू आहे, आणि कर्ण ही सर्वात लांब बाजू आहे. 'आधार बाजू' हे त्रिकोणमितीत एक मानक शब्द नाही.",
+          "imageAlt": "एका समकोन त्रिकोणाच्या बाजूंची नावे दर्शविणारा आकृती: विरुद्ध, समांतर आणि कर्ण.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Uses the denominator as the hypotenuse",
-        "Uses the numerator as the hypotenuse",
-        null,
-        "Adds the numerator and denominator"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Given tan A = 4/3, the sides opposite and adjacent are 4k and 3k, and the hypotenuse is calculated as 5k using the Pythagorean theorem. The distractors reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh108.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 8: Introduction to Trigonometry"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh108.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 8: Introduction to Trigonometry"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh108.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 8: Introduction to Trigonometry"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:14:06.327Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If sin θ = 3/5, then what is the value of tan θ + cot θ?",
-      "choices": [
-        "25/12",
-        "12/25",
-        "5/3",
-        "3/5"
-      ],
-      "answerIndex": 0,
-      "solution": "If sin θ = 3/5, then the opposite side is 3 and the hypotenuse is 5. Using the Pythagorean theorem, the adjacent side is 4. Therefore, tan θ = 3/4 and cot θ = 4/3. Adding these gives 3/4 + 4/3 = 25/12. The other options are incorrect because they do not match the calculated value of tan θ + cot θ.",
-      "checkExpr": "(3/4)+(4/3)",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि sin θ = 3/5 है, तो tan θ + cot θ का मान क्या है?",
-          "choices": [
-            "25/12",
-            "12/25",
-            "5/3",
-            "3/5"
-          ],
-          "solution": "यदि sin θ = 3/5 है, तो विपरीत भुजा 3 है और कर्ण 5 है। पाइथागोरस प्रमेय का उपयोग करके, समीप भुजा 4 है। अतः tan θ = 3/4 और cot θ = 4/3 है। इनको जोड़ने पर 3/4 + 4/3 = 25/12 मिलता है। अन्य विकल्प गलत हैं क्योंकि वे tan θ + cot θ के गणना मान के बराबर नहीं हैं।",
-          "imageAlt": "एक समकोण त्रिभुज जिसकी भुजाएं विपरीत (4 सेमी), समीप (3 सेमी), और कर्ण (5 सेमी) के रूप में चिह्नित हैं।",
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर sin θ = 3/5 असेल, तर tan θ + cot θ ची किंमत किती असेल?",
-          "choices": [
-            "25/12",
-            "12/25",
-            "5/3",
-            "3/5"
-          ],
-          "solution": "जर sin θ = 3/5 असेल, तर विरुद्ध बाजू 3 आहे आणि कर्ण 5 आहे. पायथागोरसच्या प्रमेयाचा वापर करून, जवळची बाजू 4 आहे. म्हणून, tan θ = 3/4 आणि cot θ = 4/3. यांच्या बेरजेने 3/4 + 4/3 = 25/12 मिळते. इतर विकल्प चुकीचे आहेत कारण ते tan θ + cot θ च्या गणिताने मिळालेल्या किंमतीशी जुळत नाहीत.",
-          "imageAlt": "एक समकोन त्रिकोण ज्याच्या बाजू विरुद्ध (4 सेमी), जवळची (3 सेमी), आणि कर्ण (5 सेमी) अशा नावाने निर्दिष्ट केलेल्या आहेत.",
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for trigonometric functions and geometric terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A right triangle with sides labeled as opposite (4 cm), adjacent (3 cm), and hypotenuse (5 cm).",
+      "imageAlt": "A right triangle with labeled sides: opposite, adjacent, and hypotenuse.",
       "figure": {
         "kind": "geometry",
         "spec": {
@@ -738,49 +273,34 @@
             {
               "id": "A",
               "x": 1,
-              "y": 1,
-              "label": "A"
+              "y": 1
             },
             {
               "id": "B",
               "x": 1,
-              "y": 5,
-              "label": "B"
+              "y": 5
             },
             {
               "id": "C",
-              "x": 5,
-              "y": 1,
-              "label": "C"
+              "x": 6,
+              "y": 1
             }
           ],
           "segments": [
             {
               "from": "A",
               "to": "B",
-              "label": "opposite",
-              "length": {
-                "value": 4,
-                "unit": "cm"
-              }
+              "label": "opposite"
             },
             {
               "from": "A",
               "to": "C",
-              "label": "adjacent",
-              "length": {
-                "value": 3,
-                "unit": "cm"
-              }
+              "label": "adjacent"
             },
             {
               "from": "B",
               "to": "C",
-              "label": "hypotenuse",
-              "length": {
-                "value": 5,
-                "unit": "cm"
-              }
+              "label": "hypotenuse"
             }
           ]
         },
@@ -792,8 +312,8 @@
           },
           "adjacent": {
             "en": "adjacent side",
-            "hi": "समीप भुजा",
-            "mr": "जवळची बाजू"
+            "hi": "समीपवर्ती भुजा",
+            "mr": "समांतर बाजू"
           },
           "hypotenuse": {
             "en": "hypotenuse",
@@ -804,20 +324,20 @@
       },
       "needsFigure": true,
       "distractorReason": [
+        "Confuses opposite with adjacent",
+        "Refers to the hypotenuse instead of the opposite side",
         null,
-        "Confuses the reciprocal relationship between tan and cot, and incorrectly uses the legs of the triangle as the numerator and denominator",
-        "Confuses the hypotenuse with the adjacent side in the tangent ratio",
-        "Confuses the value of sin θ with tan θ or cot θ"
+        "Uses a non-standard term"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the key. The calculation of tan θ + cot θ as 25/12 is accurate based on the given triangle.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward and the solution is correct. The correct answer is 'Opposite side' as defined in trigonometry. The distractors are all common misconceptions or non-standard terms.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh108.pdf",
@@ -848,49 +368,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:14:06.327Z",
+      "generatedAt": "2026-10-30T05:19:41.941Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If in a right triangle, sin A = cos A, what is the measure of angle A?",
+      "difficulty": 6,
+      "stem": "If in a right triangle, the lengths of the sides are in the ratio 1:√3:2, what is the value of sin 60°?",
       "choices": [
-        "30°",
-        "45°",
-        "60°",
-        "90°"
+        "1/2",
+        "√3/2",
+        "2/√3",
+        "√3/1"
       ],
       "answerIndex": 1,
-      "solution": "In a right triangle, if sin A equals cos A, the angle A must be 45°, because at this angle, the sine and cosine values are both equal to √2/2. The other options do not satisfy this condition, as sin 30° = 1/2 and cos 30° = √3/2, sin 60° = √3/2 and cos 60° = 1/2, and sin 90° = 1 while cos 90° = 0.",
+      "solution": "In a right triangle with side lengths in the ratio 1:√3:2, the angles are 30°, 60°, and 90°. For a 60° angle, the opposite side is √3 and the hypotenuse is 2. Therefore, sin 60° is √3/2. The other options are incorrect because they do not match the ratio of the opposite side to the hypotenuse for a 60° angle.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक समकोण त्रिभुज में, sin A = cos A, तो कोण A का माप क्या है?",
+          "stem": "यदि एक समकोण त्रिभुज में भुजाओं की लंबाइयां 1:√3:2 के अनुपात में हों, तो sin 60° का मान क्या होगा?",
           "choices": [
-            "30°",
-            "45°",
-            "60°",
-            "90°"
+            "1/2",
+            "√3/2",
+            "2/√3",
+            "√3/1"
           ],
-          "solution": "एक समकोण त्रिभुज में, यदि sin A बराबर cos A होता है, तो कोण A का माप 45° होना चाहिए, क्योंकि इस कोण पर, sin और cos के मान दोनों √2/2 के बराबर होते हैं। अन्य विकल्प इस स्थिति को संतुष्ट नहीं करते हैं, क्योंकि sin 30° = 1/2 और cos 30° = √3/2, sin 60° = √3/2 और cos 60° = 1/2, और sin 90° = 1 जबकि cos 90° = 0।",
+          "solution": "1:√3:2 के अनुपात में भुजाओं वाले एक समकोण त्रिभुज में कोण 30°, 60° और 90° होते हैं। 60° के कोण के लिए विपरीत भुजा √3 होती है और कर्ण 2 होता है। इसलिए sin 60° का मान √3/2 होता है। अन्य विकल्प गलत हैं क्योंकि वे 60° के कोण के लिए विपरीत भुजा के कर्ण से अनुपात के साथ मेल नहीं खाते।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एका समकोन त्रिकोणात, sin A = cos A असेल, तर कोन A चे माप किती असेल?",
+          "stem": "जर एका समकोन त्रिकोणात बाजूंच्या लांबींचे गुणोत्तर 1:√3:2 असेल, तर sin 60° चे मूल्य किती असेल?",
           "choices": [
-            "30°",
-            "45°",
-            "60°",
-            "90°"
+            "1/2",
+            "√3/2",
+            "2/√3",
+            "√3/1"
           ],
-          "solution": "समकोन त्रिकोणात, जर sin A समान असेल cos A ला, तर कोन A चे माप 45° असेल, कारण या कोनावर साइन आणि कॉसाइन च्या मूल्यांना दोन्ही √2/2 असतात. इतर विकल्प या अटीला अनुरूप नाहीत, कारण sin 30° = 1/2 आणि cos 30° = √3/2, sin 60° = √3/2 आणि cos 60° = 1/2, आणि sin 90° = 1 आणि cos 90° = 0.",
+          "solution": "1:√3:2 गुणोत्तरातील बाजू असलेल्या समकोन त्रिकोणात, कोन 30°, 60° आणि 90° असतात. 60° कोनासाठी, विरुद्ध बाजू √3 आणि कर्ण 2 असतो. म्हणून, sin 60° चे मूल्य √3/2 असते. इतर विकल्प चुकीचे असतात कारण ते 60° कोनासाठी विरुद्ध बाजू आणि कर्णाच्या गुणोत्तराशी मेळ नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -899,10 +419,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Chooses a common angle with different values",
+        "This is the value of sin 30°, not sin 60°. The other options are incorrect because they do not match the ratio of the opposite side to the hypotenuse for a 60° angle.",
         null,
-        "Confuses the angle with a different value",
-        "Chooses an angle where sine and cosine are not equal"
+        "Confuses the reciprocal of sine with the actual value of sine",
+        "This is the value of cosec 60°, not sin 60°. The other options are incorrect because they do not match the ratio of the opposite side to the hypotenuse for a 60° angle."
       ],
       "solverAnswers": [
         1,
@@ -911,8 +431,8 @@
         1,
         1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The condition sin A = cos A is only satisfied when A = 45°, as sin 45° = cos 45° = √2/2. The other options do not meet this condition.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is √3/2, and the reasoning for the distractors aligns with common student misconceptions.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh108.pdf",
@@ -943,7 +463,102 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:14:06.327Z",
+      "generatedAt": "2026-10-30T05:19:41.941Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If tan A = 3/4, then what is the value of tan 2A?",
+      "choices": [
+        "24/7",
+        "7/24",
+        "12/7",
+        "7/12"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 24/7. Using the double angle identity for tangent, tan 2A = 2 tan A / (1 - tan²A). Substituting tan A = 3/4, we get tan 2A = 2*(3/4) / (1 - (3/4)²) = (3/2) / (1 - 9/16) = (3/2) / (7/16) = (3/2) * (16/7) = 24/7. The other options are incorrect because they do not follow from the identity. 7/24 is the reciprocal of the correct value, 12/7 is an incorrect simplification, and 7/12 is not derived from the identity.",
+      "checkExpr": "(2*(3/4))/(1 - (3/4)^2)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि tan A = 3/4 है, तो tan 2A का मान क्या है?",
+          "choices": [
+            "24/7",
+            "7/24",
+            "12/7",
+            "7/12"
+          ],
+          "solution": "सही उत्तर 24/7 है। स्पष्टीकरण के लिए द्विगुण कोण पहचान का उपयोग करें, tan 2A = 2 tan A / (1 - tan²A)। tan A = 3/4 के मान को स्थानापन्न करने पर, हमें tan 2A = 2*(3/4) / (1 - (3/4)²) = (3/2) / (1 - 9/16) = (3/2) / (7/16) = (3/2) * (16/7) = 24/7 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे पहचान से नहीं निकलते हैं। 7/24 सही मान का व्युत्क्रम है, 12/7 एक गलत सरलीकरण है और 7/12 पहचान से निकला नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "tan A = 3/4 असल्यास tan 2A ची किंमत काय असेल?",
+          "choices": [
+            "24/7",
+            "7/24",
+            "12/7",
+            "7/12"
+          ],
+          "solution": "सही उत्तर 24/7 आहे. स्पर्शज्या च्या दुहेरी कोन ओळखाचा वापर करून, tan 2A = 2 tan A / (1 - tan²A). tan A = 3/4 ची ठिकाणी ठेवल्यास, आपल्याला tan 2A = 2*(3/4) / (1 - (3/4)²) = (3/2) / (1 - 9/16) = (3/2) / (7/16) = (3/2) * (16/7) = 24/7 मिळते. इतर उत्तरे चुकीची आहेत कारण ते ओळखाच्या अनुसरणाने नाहीत. 7/24 हे सही मूल्याचे व्यस्त आहे, 12/7 हे चुकीचे सरलीकरण आहे आणि 7/12 हे ओळखाच्या अनुसरणाने मिळत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "uses the reciprocal of the correct answer",
+        "incorrectly simplifies the expression",
+        "confuses the identity with another trigonometric identity"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the double angle identity for tangent and arrives at the correct answer. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh108.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 8: Introduction to Trigonometry"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh108.pdf",
+          "ordinal": 10,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 8: Introduction to Trigonometry"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh108.pdf",
+          "ordinal": 11,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 8: Introduction to Trigonometry"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T05:19:41.941Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

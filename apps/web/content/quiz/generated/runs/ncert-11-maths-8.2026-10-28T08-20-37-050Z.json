@@ -1,0 +1,756 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T08:20:37.050Z",
+  "finishedAt": "2026-10-28T08:34:13.782Z",
+  "seconds": 817,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh108.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Sequences and Series",
+    "edition": "Reprint 2026-27",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n19. Assertion(A): The sequence −1, −1 − 1, . . . , −1 is an AP. 1\nReason(R): In an AP, 𝑎 − 𝑎 𝑛 𝑛−1 is constant where 𝑛 ≥ 2 and 𝑛 ∈ 𝑁",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n21. (A) The A.P 8, 10, 12,……. has 60 terms. Find the sum of last 10 terms. 2\nOR\n(B) Find the middle term of A.P 6,13, 20, ……., 230",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n6. C 𝑎 10 = 𝑎 + (10 − 1)𝑑 = 𝑝 + 9𝑞\n(C) 𝒑 + 𝟗𝒒",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n21. n =60, a =8 and d=2\n(A) 𝑡 = 8 + 59(2) =126 ଺଴\n𝑡 = 108 ହଵ\nଵ଴\n½\n½\nHence 𝑡 ହଵ + 𝑡 +……..+ 𝑡 = ହଶ ଺଴ ଶ (108 +126) =1170\nOR\n(B) 230 = 6 + (n -1)7 gives n=33\n⸫ Middle Term = 𝑡 = 6 + (16)(7) = 118 ଵ଻"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 267580,
+      "in": 40,
+      "out": 39,
+      "rejects": 1,
+      "promptTokens": 38398,
+      "completionTokens": 9845
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 522774,
+      "in": 39,
+      "out": 32,
+      "rejects": 7,
+      "promptTokens": 25738,
+      "completionTokens": 9199
+    },
+    "solver": {
+      "calls": 261,
+      "ms": 236527,
+      "in": 32,
+      "out": 21,
+      "rejects": 11,
+      "promptTokens": 62335,
+      "completionTokens": 3090
+    },
+    "form": {
+      "calls": 5,
+      "ms": 21364,
+      "in": 21,
+      "out": 10,
+      "rejects": 11,
+      "promptTokens": 1217,
+      "completionTokens": 375
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 34,
+      "ms": 8886,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 538568,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 23147,
+      "completionTokens": 10244
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What is the 5th term of the sequence defined by a = (n – 1)(2 – n)(3 + n)?",
+      "ms": {
+        "draft": 6601,
+        "critique": 11096
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the general term of the sequence of even natural numbers?",
+      "ms": {
+        "draft": 6601,
+        "critique": 9108,
+        "solver": 25296,
+        "form": 3968
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the sum of the first 10 terms of the sequence defined by a = 2n?",
+      "ms": {
+        "draft": 6601,
+        "critique": 11792
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the Fibonacci sequence, what is the value of a if a = 1, a = 1, and a = a + a for n > 2?",
+      "ms": {
+        "draft": 6601,
+        "critique": 11235,
+        "solver": 1855
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a finite sequence?",
+      "ms": {
+        "draft": 6601,
+        "critique": 15157,
+        "solver": 26664
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the sum of the first three terms of a G.P. is 12 and their product is -1, what is the common ratio?",
+      "ms": {
+        "draft": 7273,
+        "critique": 14748
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the 3rd term of a G.P. is 24 and the 6th term is 192, what is the 10th term?",
+      "ms": {
+        "draft": 7273,
+        "critique": 8379,
+        "solver": 19916
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a G.P., the 10th term is 5^10 and the 11th term is 5^11. What is the sum of the first 10 terms?",
+      "ms": {
+        "draft": 7273,
+        "critique": 16867,
+        "solver": 3254
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the common ratio of a geometric progression (G.P.) if the first term is 1 and the fifth term is 90?",
+      "ms": {
+        "draft": 7172,
+        "critique": 9972
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sum of the first three terms of a G.P. is 16 and the sum of the next three terms is 128, what is the common ratio of the G.P.?",
+      "ms": {
+        "draft": 7172,
+        "critique": 7941,
+        "solver": 2085
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of the first n terms of a G.P. is 315, the first term is 5, and the common ratio is 2, what is the number of terms?",
+      "ms": {
+        "draft": 7172,
+        "critique": 8047
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the first term of a G.P. is 1 and the sum of the third term and fifth term is 90, what is the common ratio?",
+      "ms": {
+        "draft": 7172,
+        "critique": 11537,
+        "solver": 2242
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of a sequence according to the passage?",
+      "ms": {
+        "draft": 25454,
+        "critique": 11056,
+        "solver": 2467,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the sum of two numbers is 6 times their geometric mean, what is the ratio of the numbers?",
+      "ms": {
+        "draft": 7172,
+        "critique": 8841,
+        "solver": 15494,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the definition of a finite series?",
+      "ms": {
+        "draft": 25454,
+        "critique": 7475,
+        "solver": 1370,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general term of a geometric progression (G.P.) according to the passage?",
+      "ms": {
+        "draft": 25454,
+        "critique": 6205,
+        "solver": 1027,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of a sequence according to the passage?",
+      "ms": {
+        "draft": 4472,
+        "critique": 10052,
+        "solver": 2458,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person writes a letter to four friends and asks each to mail it to four more people. If this continues for 8 sets of letters, how many total letters are mailed?",
+      "ms": {
+        "draft": 4472,
+        "critique": 9565
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the first term of a geometric progression is 3 and the common ratio is 2, what is the fifth term?",
+      "ms": {
+        "draft": 4472,
+        "critique": 9741,
+        "solver": 16784
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the arithmetic mean (A.M.) and geometric mean (G.M.) of two numbers are 10 and 8, respectively, what are the numbers?",
+      "ms": {
+        "draft": 7757,
+        "critique": 8494,
+        "solver": 29155
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the arithmetic mean (A.M.) and geometric mean (G.M.) of two positive real numbers?",
+      "ms": {
+        "draft": 7757,
+        "critique": 10364,
+        "solver": 31074,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the 8th term of a geometric progression is 192 and the common ratio is 2, what is the 12th term?",
+      "ms": {
+        "draft": 7757,
+        "critique": 14358,
+        "solver": 25062,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the general term of a geometric progression (G.P.)?",
+      "ms": {
+        "draft": 6831,
+        "critique": 13138
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the sum of the first 5 terms of the geometric series 1 + 1/2 + 1/4 + 1/8 + 1/16 + ...?",
+      "ms": {
+        "draft": 6831,
+        "critique": 9787,
+        "solver": 2602,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the pth, qth, and rth terms of a geometric progression are a, b, and c respectively, what is the relationship between a, b, and c?",
+      "ms": {
+        "draft": 7757,
+        "critique": 9820,
+        "solver": 31752,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a geometric progression, the 3rd term is 24 and the 6th term is 192. What is the 10th term?",
+      "ms": {
+        "draft": 6831,
+        "critique": 10475,
+        "solver": 1954
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of the first three terms of a geometric progression is 13/4 and their product is -1, what is the common ratio?",
+      "ms": {
+        "draft": 6831,
+        "critique": 8469,
+        "solver": 18713
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the sequence 2, 4, 8, 16, 32, ...?",
+      "ms": {
+        "draft": 8366,
+        "critique": 10253,
+        "solver": 15100,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the nth term of a sequence is given by a_n = 3n + 2, what is the 10th term?",
+      "ms": {
+        "draft": 8366,
+        "critique": 10603,
+        "solver": 14463
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which term is used to describe the numbers in a sequence?",
+      "ms": {
+        "draft": 6601,
+        "critique": 9735,
+        "solver": 20296,
+        "form": 5695,
+        "translation": 60104
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of a geometric progression (G.P.)?",
+      "ms": {
+        "draft": 4472,
+        "critique": 8465,
+        "solver": 2891,
+        "form": 4605,
+        "translation": 63013
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the common ratio of the geometric progression 5, 25, 125,...?",
+      "ms": {
+        "draft": 7273,
+        "critique": 8857,
+        "solver": 1971,
+        "form": 1,
+        "translation": 51378
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a sequence has a finite number of terms, what is it called?",
+      "ms": {
+        "draft": 4472,
+        "critique": 8245,
+        "solver": 1487,
+        "form": 5273,
+        "translation": 64418
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the general term of a geometric progression?",
+      "ms": {
+        "draft": 4472,
+        "critique": 7779,
+        "solver": 2438,
+        "form": 3653,
+        "translation": 41413
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the 10th term of the geometric progression 5, 25, 125,...?",
+      "ms": {
+        "draft": 7273,
+        "critique": 9070,
+        "solver": 2098,
+        "form": 0,
+        "translation": 45576
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the pth, qth, and rth terms of a G.P. are a, b, and c respectively, what is the relationship between a, b, and c?",
+      "ms": {
+        "draft": 7172,
+        "critique": 8483,
+        "solver": 1991,
+        "form": 0,
+        "translation": 49551
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If the sum of the first three terms of a geometric progression is 16 and the sum of the next three terms is 128, what is the common ratio of the geometric progression?",
+      "ms": {
+        "draft": 7757,
+        "critique": 11642,
+        "solver": 26375,
+        "form": 0,
+        "translation": 26329
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "The 5th, 8th, and 11th terms of a geometric progression are p, q, and s respectively. What is the relationship between p, q, and s?",
+      "ms": {
+        "draft": 7757,
+        "critique": 9665,
+        "solver": 2328,
+        "form": 1,
+        "translation": 41971
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of the first 3 terms of a G.P. is 12 and the sum of the first 6 terms is 18, what is the sum of the first 9 terms?",
+      "ms": {
+        "draft": 7273,
+        "critique": 10442,
+        "solver": 2116,
+        "form": 1,
+        "translation": 88365
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "According to the passage, what is the geometric mean (G.M.) of two positive numbers a and b?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the 5th term of the sequence defined by a = (n – 1)(2 – n)(3 + n)?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the general term of the sequence of even natural numbers?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the sum of the first 10 terms of the sequence defined by a = 2n?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the Fibonacci sequence, what is the value of a if a = 1, a = 1, and a = a + a for n > 2?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is an example of a finite sequence?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If the sum of the first three terms of a G.P. is 12 and their product is -1, what is the common ratio?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the 3rd term of a G.P. is 24 and the 6th term is 192, what is the 10th term?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a G.P., the 10th term is 5^10 and the 11th term is 5^11. What is the sum of the first 10 terms?",
+      "reason": "the solver picked option 0 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the common ratio of a geometric progression (G.P.) if the first term is 1 and the fifth term is 90?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the sum of the first three terms of a G.P. is 16 and the sum of the next three terms is 128, what is the common ratio of the G.P.?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the sum of the first n terms of a G.P. is 315, the first term is 5, and the common ratio is 2, what is the number of terms?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the first term of a G.P. is 1 and the sum of the third term and fifth term is 90, what is the common ratio?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of a sequence according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Partially correct but not the full definition given in the p…\"); distractor 3's reason is not a one-line misconception (\"Describes an infinite series, not a sequence as defined in t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the sum of two numbers is 6 times their geometric mean, what is the ratio of the numbers?",
+      "reason": "options 0 and 1 say the same thing (\"(3 + 2√2) : (3 - 2√2)\" / \"(3 + √2) : (3 - √2)\"); options 0 and 2 say the same thing (\"(3 + 2√2) : (3 - 2√2)\" / \"(3 + 2√3) : (3 - 2√3)\"); options 1 and 2 say the same thing (\"(3 + √2) : (3 - √2)\" / \"(3 + 2√3) : (3 - 2√3)\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the definition of a finite series?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Partially correct but not the full definition given in the p…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the general term of a geometric progression (G.P.) according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Partially correct but not the full definition given in the p…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of a sequence according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A person writes a letter to four friends and asks each to mail it to four more people. If this continues for 8 sets of letters, how many total letters are mailed?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the first term of a geometric progression is 3 and the common ratio is 2, what is the fifth term?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the arithmetic mean (A.M.) and geometric mean (G.M.) of two numbers are 10 and 8, respectively, what are the numbers?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the relationship between the arithmetic mean (A.M.) and geometric mean (G.M.) of two positive real numbers?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the 8th term of a geometric progression is 192 and the common ratio is 2, what is the 12th term?",
+      "reason": "options mix numbers and words (3 of 4 are numbers); ARITHMETIC MISMATCH — checkExpr \"192*2^4\" = 3072, but the key says 1536"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the general term of a geometric progression (G.P.)?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the sum of the first 5 terms of the geometric series 1 + 1/2 + 1/4 + 1/8 + 1/16 + ...?",
+      "reason": "options are written to different precisions (1 and 3 decimals); ARITHMETIC MISMATCH — checkExpr \"(1 - (1/2)^5)/(1 - 1/2)\" = 1.9375, but the key says 1.875"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the pth, qth, and rth terms of a geometric progression are a, b, and c respectively, what is the relationship between a, b, and c?",
+      "reason": "options 0 and 1 say the same thing (\"a^{q - r} × b^{r - p} × c^{p - q} = 1\" / \"a^{q - r} × b^{r + p} × c^{p - q} = 1\"); options 0 and 2 say the same thing (\"a^{q - r} × b^{r - p} × c^{p - q} = 1\" / \"a^{q - r} × b^{r - p} × c^{p + q} = 1\"); options 0 and 3 say the same thing (\"a^{q - r} × b^{r - p} × c^{p - q} = 1\" / \"a^{q + r} × b^{r - p} × c^{p + q} = 1\"); options 1 and 2 say the same thing (\"a^{q - r} × b^{r + p} × c^{p - q} = 1\" / \"a^{q - r} × b^{r - p} × c^{p + q} = 1\"); options 1 and 3 say the same thing (\"a^{q - r} × b^{r + p} × c^{p - q} = 1\" / \"a^{q + r} × b^{r - p} × c^{p + q} = 1\"); options 2 and 3 say the same thing (\"a^{q - r} × b^{r - p} × c^{p + q} = 1\" / \"a^{q + r} × b^{r - p} × c^{p + q} = 1\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a geometric progression, the 3rd term is 24 and the 6th term is 192. What is the 10th term?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the sum of the first three terms of a geometric progression is 13/4 and their product is -1, what is the common ratio?",
+      "reason": "after redraft: the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the sequence 2, 4, 8, 16, 32, ...?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the nth term of a sequence is given by a_n = 3n + 2, what is the 10th term?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

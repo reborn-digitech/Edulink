@@ -1,0 +1,866 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T01:15:56.363Z",
+  "finishedAt": "2026-10-25T01:30:38.922Z",
+  "seconds": 883,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc104.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 4 — Describing Motion Around Us",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 29,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2010 — question paper]\n48. Which of the following is not a simple harmonic motion?\na) Earth moving around Sun\nb) pendulum\nc) oscillating mass attached to a spring\nd) vibrating string of guitar",
+      "[INJSO 2014 — question paper]\n60. A smooth flat horizontal turntable 4.0 m in diameter is rotating at 0.050 revs per\nsecond. A student at the centre of the turntable, and rotating with it, Places a\nsmooth flat puck on the turntable 0.50 m from the edge. Which of the following\nfigures describes the motion of the puck as seen by a stationary observer who is\nstanding at the side of the turntable and above the turntable?\nSection B: Questions 61 to 68 are of 5 marks each. Marks will also be indicated in the\nquestions if there are more than one part to it.",
+      "[NSEJS 2015 — question paper]\n1. Which of the following graphs is correct for a particle moving in a circle of radius r at a speed\nof v (where ‘a’ is magnitude of acceleration) ?\na) | a | b) | a |\nv\n+\nc) | a | d) | a |\nv v v",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n16. (d) The field consists of concentric circles centred around the wire. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 14,
+      "ms": 263436,
+      "in": 48,
+      "out": 43,
+      "rejects": 6,
+      "promptTokens": 58148,
+      "completionTokens": 14944
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 349089,
+      "in": 43,
+      "out": 33,
+      "rejects": 10,
+      "promptTokens": 25282,
+      "completionTokens": 9276
+    },
+    "solver": {
+      "calls": 238,
+      "ms": 127118,
+      "in": 33,
+      "out": 26,
+      "rejects": 7,
+      "promptTokens": 45307,
+      "completionTokens": 2437
+    },
+    "form": {
+      "calls": 10,
+      "ms": 98699,
+      "in": 26,
+      "out": 8,
+      "rejects": 18,
+      "promptTokens": 14708,
+      "completionTokens": 2052
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 40,
+      "ms": 7578,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 35,
+      "ms": 454538,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 23540,
+      "completionTokens": 12290
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 5,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "When is the total distance travelled equal to the magnitude of displacement?",
+      "ms": {
+        "draft": 15132,
+        "critique": 4789
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of average speed and average velocity?",
+      "ms": {
+        "draft": 15132,
+        "critique": 5045
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A ball is thrown vertically upwards and falls back to the same point. What is its displacement?",
+      "ms": {
+        "draft": 15132,
+        "critique": 5288,
+        "solver": 12438,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A ball is thrown vertically upwards and falls back to the same point. What is the nature of its motion?",
+      "ms": {
+        "draft": 15132,
+        "critique": 6945
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the graph in Fig. 4.5, which of the following is true for the ball's motion?",
+      "ms": {
+        "draft": 15132,
+        "critique": 7862,
+        "solver": 15436
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ball rolls down an inclined track from O to D. At which point is the total distance travelled equal to the magnitude of displacement?",
+      "ms": {
+        "draft": 15132,
+        "critique": 6759,
+        "solver": 17186
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A bus moves with a velocity of 36 km/h and then increases to 54 km/h in 10 seconds. What is the average acceleration of the bus during this time?",
+      "ms": {
+        "draft": 12400,
+        "critique": 7188
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A car moves 200 km north in 3 hours and then 200 km south in 2 hours. What is the average velocity of the car for the entire trip?",
+      "ms": {
+        "draft": 12400,
+        "critique": 6213
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The velocity of a bus changes from 54 km/h to 0 m/s in 5 seconds. What is the average acceleration of the bus during this time?",
+      "ms": {
+        "draft": 12400,
+        "critique": 6076,
+        "solver": 10943
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the velocity of an object changes from 10 m/s to 20 m/s in 5 seconds, what is its average acceleration?",
+      "ms": {
+        "draft": 12400,
+        "critique": 5604,
+        "solver": 10470
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements about acceleration is correct?",
+      "ms": {
+        "draft": 4515,
+        "critique": 5358,
+        "solver": 1915,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A bus is moving on a straight highway at a constant velocity. What is the acceleration of the bus?",
+      "ms": {
+        "draft": 4515,
+        "critique": 7692,
+        "solver": 2028,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the data in Table 4.3, what can be concluded about the motion of the vehicle?",
+      "ms": {
+        "draft": 4515,
+        "critique": 7702,
+        "solver": 2096
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A position-time graph for an object is a straight line. What can be said about the object's motion?",
+      "ms": {
+        "draft": 3956,
+        "critique": 4678,
+        "solver": 1699,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A position-time graph shows that an object's position does not change with time. What can be concluded about the object?",
+      "ms": {
+        "draft": 3956,
+        "critique": 6474,
+        "solver": 1397,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A position-time graph for an object is curved. What does this indicate about the object's motion?",
+      "ms": {
+        "draft": 3956,
+        "critique": 5662,
+        "solver": 3189,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A car moves with constant velocity. What does the slope of its velocity-time graph represent?",
+      "ms": {
+        "draft": 30644,
+        "critique": 4436,
+        "solver": 972,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the motion of an object moving in a circular path?",
+      "ms": {
+        "draft": 7168,
+        "critique": 6606
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which equation is used to calculate the velocity of an object at any time if the initial velocity and acceleration are known?",
+      "ms": {
+        "draft": 7105,
+        "critique": 8199,
+        "solver": 1063,
+        "form": 2325
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A car starts from rest and reaches a velocity of 24 m/s in 6 seconds. What is the average acceleration of the car?",
+      "ms": {
+        "draft": 4718,
+        "critique": 7790
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does a constant speedometer reading on a scooter indicate?",
+      "ms": {
+        "draft": 4718,
+        "critique": 6929,
+        "solver": 12498,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the difference between distance and displacement?",
+      "ms": {
+        "draft": 4718,
+        "critique": 7185,
+        "solver": 12953,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A car is moving at a constant velocity of 6 m/s for 2 minutes and then accelerates with a constant acceleration of 1 m/s² for 6 seconds. What is the total displacement of the car?",
+      "ms": {
+        "draft": 4718,
+        "critique": 7469
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Fig. 4.27, two objects A and B are moving along parallel tracks. Do they ever have equal velocity?",
+      "ms": {
+        "draft": 4718,
+        "critique": 8360,
+        "solver": 1534,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "An object is moving in a circular path with constant speed. What can be said about its velocity?",
+      "ms": {
+        "draft": 9381,
+        "critique": 5507
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An athlete runs along a circular track. What is the distance travelled by the athlete in one complete revolution?",
+      "ms": {
+        "draft": 9381,
+        "critique": 7900,
+        "solver": 1537,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A girl is running on a straight road and her velocity-time graph shows varying speeds. How can she estimate the total distance she ran?",
+      "ms": {
+        "draft": 4718,
+        "critique": 6351,
+        "solver": 1249,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the displacement of an object that completes one full revolution in a circular path?",
+      "ms": {
+        "draft": 9381,
+        "critique": 7605,
+        "solver": 1884,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A velocity-time graph for an object moving with constant acceleration is a straight line. What does the slope of this graph represent?",
+      "ms": {
+        "draft": 5256,
+        "critique": 6348,
+        "solver": 1394,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A car is moving with a constant acceleration of -4 m/s². If the car comes to a stop after travelling 28.1 m, what was its initial velocity?",
+      "ms": {
+        "draft": 5256,
+        "critique": 7969,
+        "solver": 19859
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A car is moving with a constant acceleration of -4 m/s². If the car comes to a stop after 10 seconds, what was its initial velocity?",
+      "ms": {
+        "draft": 5256,
+        "critique": 8661,
+        "solver": 17251
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does a velocity-time graph show about an object's motion?",
+      "ms": {
+        "draft": 6230,
+        "critique": 7770
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How is the displacement of an object calculated from a velocity-time graph?",
+      "ms": {
+        "draft": 6230,
+        "critique": 7034,
+        "solver": 1900,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the acceleration due to gravity on Earth as calculated in the passage?",
+      "ms": {
+        "draft": 3925,
+        "critique": 7014,
+        "solver": 1573,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does a straight line on a position-time graph indicate about the motion of an object?",
+      "ms": {
+        "draft": 7917,
+        "critique": 7022,
+        "solver": 7740,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total vertical distance travelled by a student who runs from the ground floor to the fourth floor and then to the second floor, if each floor is 3 m high?",
+      "ms": {
+        "draft": 6279,
+        "critique": 4901,
+        "solver": 695,
+        "form": 0,
+        "translation": 59540
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Under what condition is the magnitude of average velocity of an object equal to its average speed?",
+      "ms": {
+        "draft": 12400,
+        "critique": 6874,
+        "solver": 1285,
+        "form": 3424,
+        "translation": 57839
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When is the magnitude of average velocity of an object zero while its average speed is not zero?",
+      "ms": {
+        "draft": 12400,
+        "critique": 6136,
+        "solver": 1581,
+        "form": 4358,
+        "translation": 98030
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A car is moving in a straight line with a constant acceleration. What does this imply about its velocity?",
+      "ms": {
+        "draft": 4515,
+        "critique": 6121,
+        "solver": 10834,
+        "form": 0,
+        "translation": 39379
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A marble is moving inside a ring with constant speed. What happens to the marble when the ring is lifted?",
+      "ms": {
+        "draft": 9381,
+        "critique": 6929,
+        "solver": 1226,
+        "form": 0,
+        "translation": 54891
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the example of an object dropped from a height, what is the significance of choosing the origin and positive direction?",
+      "ms": {
+        "draft": 4515,
+        "critique": 5686,
+        "solver": 911,
+        "form": 0,
+        "translation": 51842
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A car is moving with a constant acceleration. If the car's velocity decreases from 30 m/s to 10 m/s in 5 seconds, what is the car's acceleration?",
+      "ms": {
+        "draft": 5256,
+        "critique": 7112,
+        "solver": 1888,
+        "form": 1,
+        "translation": 35721
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "An object is moving in a circular path with constant speed. What can be said about its acceleration?",
+      "ms": {
+        "draft": 9381,
+        "critique": 6259,
+        "solver": 1913,
+        "form": 0,
+        "translation": 52578
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following best describes the motion of an athlet"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main difference between speed and velocity?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "From a position-time graph, what can be determined about an object's velocity?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "Two objects, A and B, have position-time graphs. Object A's graph has a steeper slope than object B's. What can be said about their velocities?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A car's velocity decreases uniformly. What does the area under its velocity-time graph represent?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "When is the total distance travelled equal to the magnitude of displacement?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the SI unit of average speed and average velocity?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A ball is thrown vertically upwards and falls back to the same point. What is its displacement?",
+      "reason": "option lengths are unalike (4 to 41 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A ball is thrown vertically upwards and falls back to the same point. What is the nature of its motion?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the graph in Fig. 4.5, which of the following is true for the ball's motion?",
+      "reason": "after redraft: the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A ball rolls down an inclined track from O to D. At which point is the total distance travelled equal to the magnitude of displacement?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A bus moves with a velocity of 36 km/h and then increases to 54 km/h in 10 seconds. What is the average acceleration of the bus during this time?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A car moves 200 km north in 3 hours and then 200 km south in 2 hours. What is the average velocity of the car for the entire trip?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The velocity of a bus changes from 54 km/h to 0 m/s in 5 seconds. What is the average acceleration of the bus during this time?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the velocity of an object changes from 10 m/s to 20 m/s in 5 seconds, what is its average acceleration?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following statements about acceleration is correct?",
+      "reason": "options 0 and 1 say the same thing (\"Acceleration is the rate of change of distance with time.\" / \"Acceleration is the rate of change of speed with time.\"); options 0 and 2 say the same thing (\"Acceleration is the rate of change of distance with time.\" / \"Acceleration is the rate of change of velocity with time.\"); options 0 and 3 say the same thing (\"Acceleration is the rate of change of distance with time.\" / \"Acceleration is the rate of change of displacement with time.\"); options 1 and 2 say the same thing (\"Acceleration is the rate of change of speed with time.\" / \"Acceleration is the rate of change of velocity with time.\"); options 1 and 3 say the same thing (\"Acceleration is the rate of change of speed with time.\" / \"Acceleration is the rate of change of displacement with time.\"); options 2 and 3 say the same thing (\"Acceleration is the rate of change of velocity with time.\" / \"Acceleration is the rate of change of displacement with time.\"); distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed, as per instructions, this …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A bus is moving on a straight highway at a constant velocity. What is the acceleration of the bus?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 1's reason is not a one-line misconception (\"Correct answer, no reason needed, as per instructions, this …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the data in Table 4.3, what can be concluded about the motion of the vehicle?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A position-time graph for an object is a straight line. What can be said about the object's motion?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given here for this option, but…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A position-time graph shows that an object's position does not change with time. What can be concluded about the object?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given here for this option, but…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A position-time graph for an object is curved. What does this indicate about the object's motion?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given here for this option, but…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A car moves with constant velocity. What does the slope of its velocity-time graph represent?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the motion of an object moving in a circular path?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which equation is used to calculate the velocity of an object at any time if the initial velocity and acceleration are known?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Mistakenly uses an equation that is not derived in the passa…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a kinematic equation for motion with constant acceleration?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A car starts from rest and reaches a velocity of 24 m/s in 6 seconds. What is the average acceleration of the car?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does a constant speedometer reading on a scooter indicate?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the difference between distance and displacement?",
+      "reason": "options 0 and 1 say the same thing (\"Distance is the total path length covered, while displacement is the shortest distance between the initial and final positions.\" / \"Distance is the shortest distance between the initial and final positions, while displacement is the total path length covered.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A car is moving at a constant velocity of 6 m/s for 2 minutes and then accelerates with a constant acceleration of 1 m/s² for 6 seconds. What is the total displacement of the car?",
+      "reason": "the critic finds option 3 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In Fig. 4.27, two objects A and B are moving along parallel tracks. Do they ever have equal velocity?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "An object is moving in a circular path with constant speed. What can be said about its velocity?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "An athlete runs along a circular track. What is the distance travelled by the athlete in one complete revolution?",
+      "reason": "options 1 and 3 say the same thing (\"The radius of the circle\" / \"Twice the radius of the circle\"); distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (not a distractor here…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A girl is running on a straight road and her velocity-time graph shows varying speeds. How can she estimate the total distance she ran?",
+      "reason": "figure: figure spec refused: spec.x.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the displacement of an object that completes one full revolution in a circular path?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label Displacement"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A velocity-time graph for an object moving with constant acceleration is a straight line. What does the slope of this graph represent?",
+      "reason": "figure: figure spec refused: spec.curves.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A car is moving with a constant acceleration of -4 m/s². If the car comes to a stop after travelling 28.1 m, what was its initial velocity?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A car is moving with a constant acceleration of -4 m/s². If the car comes to a stop after 10 seconds, what was its initial velocity?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does a velocity-time graph show about an object's motion?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "How is the displacement of an object calculated from a velocity-time graph?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the acceleration due to gravity on Earth as calculated in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 are the same (\"9.8 m s\"); options 0 and 2 are the same (\"9.8 m s\"); options 0 and 3 are the same (\"9.8 m s\"); options 1 and 2 are the same (\"9.8 m s\"); options 1 and 3 are the same (\"9.8 m s\"); options 2 and 3 are the same (\"9.8 m s\"); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does a straight line on a position-time graph indicate about the motion of an object?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

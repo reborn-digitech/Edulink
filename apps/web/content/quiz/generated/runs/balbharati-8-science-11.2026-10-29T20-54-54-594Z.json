@@ -1,0 +1,567 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T20:54:54.594Z",
+  "finishedAt": "2026-10-29T21:00:27.862Z",
+  "seconds": 333,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Human Body and Organ System",
+    "edition": "First Edition 2018",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n11. Students to attempt either option A or B. 2\nA. How many chambers are there in the heart of the following organisms?\nHow is mixing of oxygenated and deoxygenated blood prevented in their\nbody?\n(i) Fishes\n(ii) Humans\nOR\nB. Explain the mechanism by which the water is transported in plants?",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n23. What is the purpose of making urine in the human body? Name the organs that stores and 2\nreleases the urine.\nOR\nWhy do arteries have thick and elastic walls whereas veins have valves?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 100433,
+      "in": 30,
+      "out": 24,
+      "rejects": 6,
+      "promptTokens": 25679,
+      "completionTokens": 5510
+    },
+    "critique": {
+      "calls": 34,
+      "ms": 216357,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 14327,
+      "completionTokens": 5795
+    },
+    "solver": {
+      "calls": 174,
+      "ms": 87984,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 27492,
+      "completionTokens": 1780
+    },
+    "form": {
+      "calls": 13,
+      "ms": 55713,
+      "in": 20,
+      "out": 11,
+      "rejects": 9,
+      "promptTokens": 4932,
+      "completionTokens": 1363
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 102,
+      "ms": 16357,
+      "in": 11,
+      "out": 5,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 19,
+      "ms": 155363,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 9831,
+      "completionTokens": 4990
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the respiratory system?",
+      "ms": {
+        "draft": 4243,
+        "critique": 4583,
+        "solver": 1180,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the respiratory system is responsible for filtering the air before it reaches the lungs?",
+      "ms": {
+        "draft": 4243,
+        "critique": 7088,
+        "solver": 15797
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the wall of the alveoli very thin?",
+      "ms": {
+        "draft": 4243,
+        "critique": 6919,
+        "solver": 1975,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a function of blood?",
+      "ms": {
+        "draft": 2696,
+        "critique": 5403,
+        "solver": 15381
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a function of blood according to the passage?",
+      "ms": {
+        "draft": 2676,
+        "critique": 7120
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person with blood group AB receives blood from a person with blood group A, what will happen?",
+      "ms": {
+        "draft": 3403,
+        "critique": 6805,
+        "solver": 13000,
+        "form": 3051
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "ms": {
+        "draft": 3403,
+        "critique": 6775,
+        "solver": 11697,
+        "form": 4621
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which blood group can receive blood from any other blood group?",
+      "ms": {
+        "draft": 3403,
+        "critique": 7270,
+        "solver": 11626,
+        "form": 5666
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main purpose of a sphygmomanometer?",
+      "ms": {
+        "draft": 3403,
+        "critique": 6259,
+        "solver": 13544,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of blood vessel carries blood away from the heart?",
+      "ms": {
+        "draft": 3938,
+        "critique": 5790,
+        "solver": 12743,
+        "form": 3879
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the heart has the thickest wall?",
+      "ms": {
+        "draft": 3938,
+        "critique": 6075,
+        "solver": 14069,
+        "form": 3444
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main function of red blood cells?",
+      "ms": {
+        "draft": 3938,
+        "critique": 6858,
+        "solver": 11863,
+        "form": 1850
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a part of the respiratory system?",
+      "ms": {
+        "draft": 3084,
+        "critique": 6127,
+        "solver": 9733
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main function of the heart in the circulatory system?",
+      "ms": {
+        "draft": 4243,
+        "critique": 8174,
+        "solver": 1612,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main component of plasma?",
+      "ms": {
+        "draft": 2696,
+        "critique": 5141,
+        "solver": 1031,
+        "form": 4349
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "ms": {
+        "draft": 2676,
+        "critique": 5143,
+        "solver": 1876,
+        "form": 2225
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is blood donation considered a life-saving act?",
+      "ms": {
+        "draft": 2676,
+        "critique": 6418,
+        "solver": 1481,
+        "form": 3901
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person has blood group A, which blood groups can they receive blood from?",
+      "ms": {
+        "draft": 2676,
+        "critique": 6029,
+        "solver": 1442,
+        "form": 3209
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of an organ system in the human body?",
+      "ms": {
+        "draft": 3084,
+        "critique": 6466,
+        "solver": 1463,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a type of blood cell?",
+      "ms": {
+        "draft": 2696,
+        "critique": 5352,
+        "solver": 1182,
+        "form": 3662,
+        "translation": 89621
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the diaphragm during inhalation?",
+      "ms": {
+        "draft": 4243,
+        "critique": 5067,
+        "solver": 1749,
+        "form": 0,
+        "translation": 32867
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following processes involves the exchange of gases between blood and body cells?",
+      "ms": {
+        "draft": 3084,
+        "critique": 6023,
+        "solver": 1095,
+        "form": 0,
+        "translation": 32715
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of external respiration?",
+      "ms": {
+        "draft": 4243,
+        "critique": 7744,
+        "solver": 1232,
+        "form": 0,
+        "translation": 39917
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a situation where blood transfusion is necessary?",
+      "ms": {
+        "draft": 2676,
+        "critique": 5485,
+        "solver": 624,
+        "form": 965,
+        "translation": 38210
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main function of red blood cells?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a function of white blood cells?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is NOT a component of plasma?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a function of the respiratory system?",
+      "reason": "the key is far longer than every distractor (55 vs 33 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which part of the respiratory system is responsible for filtering the air before it reaches the lungs?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the wall of the alveoli very thin?",
+      "reason": "figure: figure spec refused: spec.arrows.1.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a function of blood?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 0 correct, the key is 3; the solution's working is not sound; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT a function of blood according to the passage?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main reason for blood donation being considered a life-saving act?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the main reason for checking the health parameters of a blood donor?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is not a function of blood?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person with blood group AB receives blood from a person with blood group A, what will happen?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which blood group can receive blood from any other blood group?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the main purpose of a sphygmomanometer?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"To measure heart rate\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which type of blood vessel carries blood away from the heart?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the heart has the thickest wall?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main function of red blood cells?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT a part of the respiratory system?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the main function of the heart in the circulatory system?",
+      "reason": "near-duplicate of served question cmvg7g0hn02kxgpfh7vqxmmu8 (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the main component of plasma?",
+      "reason": "near-duplicate of served question cmvf2pnyu02wugod8lp24lu1t (cosine 0.910 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "reason": "near-duplicate of served question cmvf2pnyn02w6god80r3gf6bo (cosine 0.954 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Why is blood donation considered a life-saving act?",
+      "reason": "near-duplicate of served question cmvmun5km02avgp21icfmqmk8 (cosine 0.944 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a person has blood group A, which blood groups can they receive blood from?",
+      "reason": "near-duplicate of served question cmvf2pnyw02x0god8o55029aj (cosine 0.915 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following is an example of an organ system in the human body?",
+      "reason": "near-duplicate of served question cmvf2pnyy02xagod83v18fles (cosine 0.912 ≥ 0.9)"
+    },
+    {
+      "stage": "translation",
+      "level": 2,
+      "stem": "Which of the following is NOT a type of blood cell?",
+      "reason": "hi: the model's answer was not JSON (finish: length): {\n  \"stem\": \"निम्नलिखित में से कौन रक्त कोशिका का प्रकार नहीं है?\",\n  \"options\": [\n    \"लाल रक्त कोशिका\",\n    \"श्वेत रक्"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

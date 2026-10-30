@@ -1,0 +1,519 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T06:08:21.136Z",
+  "finishedAt": "2026-10-28T06:12:29.144Z",
+  "seconds": 248,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap101.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 1 — Super Senses",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 67104,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 20968,
+      "completionTokens": 4105
+    },
+    "critique": {
+      "calls": 36,
+      "ms": 200540,
+      "in": 24,
+      "out": 22,
+      "rejects": 2,
+      "promptTokens": 14586,
+      "completionTokens": 6124
+    },
+    "solver": {
+      "calls": 198,
+      "ms": 103451,
+      "in": 22,
+      "out": 15,
+      "rejects": 7,
+      "promptTokens": 37019,
+      "completionTokens": 2318
+    },
+    "form": {
+      "calls": 11,
+      "ms": 22832,
+      "in": 15,
+      "out": 6,
+      "rejects": 9,
+      "promptTokens": 2498,
+      "completionTokens": 711
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 3442,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 144352,
+      "in": 8,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 10850,
+      "completionTokens": 5202
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 2870,
+        "critique": 4929,
+        "solver": 11890,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the guard ant let the first ant in?",
+      "ms": {
+        "draft": 2870,
+        "critique": 4372,
+        "solver": 13746,
+        "form": 2886
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a strong sense of smell, which of the following can they do?",
+      "ms": {
+        "draft": 2870,
+        "critique": 5223,
+        "solver": 15062,
+        "form": 2410
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If an ant is blocked by a pencil, why do the other ants continue to follow the path?",
+      "ms": {
+        "draft": 2870,
+        "critique": 6447,
+        "solver": 1323,
+        "form": 1754
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a way that animals send messages according to the passage?",
+      "ms": {
+        "draft": 3381,
+        "critique": 5976,
+        "solver": 13055
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child wants to test whether covering their ears makes a sound seem louder, which of the following would be the best way to do this?",
+      "ms": {
+        "draft": 3381,
+        "critique": 8608,
+        "solver": 14518
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the passage that talks about making a paper dog?",
+      "ms": {
+        "draft": 2692,
+        "critique": 7023,
+        "solver": 1320,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which animal has a sense of hearing that allows it to detect the difference between the rustling of leaves and the sound of an animal moving on the grass?",
+      "ms": {
+        "draft": 3381,
+        "critique": 4956,
+        "solver": 15167,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is one threat to tigers?",
+      "ms": {
+        "draft": 2692,
+        "critique": 6097,
+        "solver": 12694
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the main idea of the passage?",
+      "ms": {
+        "draft": 2692,
+        "critique": 5164,
+        "solver": 1001
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child wants to make a paper dog, what should they do first?",
+      "ms": {
+        "draft": 2692,
+        "critique": 5931,
+        "solver": 7132,
+        "form": 976
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest to do with the paper after cutting the strips?",
+      "ms": {
+        "draft": 2563,
+        "critique": 4125,
+        "solver": 1119
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of making small cuts on the lines marked 1 to 6 in the paper strip?",
+      "ms": {
+        "draft": 2563,
+        "critique": 7010,
+        "solver": 1759
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animals can see things only in black and white colours?",
+      "ms": {
+        "draft": 2296,
+        "critique": 5977
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is one threat to the tiger mentioned in the passage?",
+      "ms": {
+        "draft": 2563,
+        "critique": 5245,
+        "solver": 12247,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the activity where students put their hands behind their ears?",
+      "ms": {
+        "draft": 2296,
+        "critique": 5196
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the eagle take away from the child?",
+      "ms": {
+        "draft": 2976,
+        "critique": 5891,
+        "solver": 1372
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student hears a sound more clearly after putting their hands behind their ears, what does this suggest?",
+      "ms": {
+        "draft": 2296,
+        "critique": 6317,
+        "solver": 10814,
+        "form": 2234
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the guard ant let the first ant in?",
+      "ms": {
+        "draft": 2976,
+        "critique": 5864,
+        "solver": 1442,
+        "form": 2898
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Sushila cover her nose when cleaning Deepak’s nappy?",
+      "ms": {
+        "draft": 2976,
+        "critique": 3742,
+        "solver": 913,
+        "form": 1027
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animal is described as spending almost 17 hours a day sleeping while hanging upside down on a tree branch?",
+      "ms": {
+        "draft": 3381,
+        "critique": 5308,
+        "solver": 14570,
+        "form": 2881,
+        "translation": 28544
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the reason that snakes can hear vibrations on the ground?",
+      "ms": {
+        "draft": 2296,
+        "critique": 5049,
+        "solver": 10688,
+        "form": 2487,
+        "translation": 49208
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if you block the path of ants with a pencil?",
+      "ms": {
+        "draft": 2976,
+        "critique": 5423,
+        "solver": 721,
+        "form": 1910,
+        "translation": 31168
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to make a paper dog, which of the following should they use?",
+      "ms": {
+        "draft": 2563,
+        "critique": 4643,
+        "solver": 1426,
+        "form": 3253,
+        "translation": 31895
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"The passage says animals have good senses, not poor ones…\"); distractor 1's reason is not a one-line misconception (\"The passage talks about animals and humans together but does…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did the guard ant let the first ant in?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"The passage says ants are recognised by smell, not by being …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person has a strong sense of smell, which of the following can they do?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If an ant is blocked by a pencil, why do the other ants continue to follow the path?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"The passage says ants use smell, not vision…\"); distractor 1's reason is not a one-line misconception (\"The passage does not mention hearing as a method…\"); distractor 3's reason is not a one-line misconception (\"The passage does not mention the sound of the pencil…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a way that animals send messages according to the passage?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a child wants to test whether covering their ears makes a sound seem louder, which of the following would be the best way to do this?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of the passage that talks about making a paper dog?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"misunderstands the purpose of the passage…\"); distractor 2's reason is not a one-line misconception (\"misinterprets the content of the passage…\"); distractor 3's reason is not a one-line misconception (\"does not relate to the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which animal has a sense of hearing that allows it to detect the difference between the rustling of leaves and the sound of an animal moving on the grass?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, what is one threat to tigers?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following best describes the main idea of the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a child wants to make a paper dog, what should they do first?",
+      "reason": "options 2 and 3 are the same (\"Make a cut in the mark on the leg\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage suggest to do with the paper after cutting the strips?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the purpose of making small cuts on the lines marked 1 to 6 in the paper strip?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which animals can see things only in black and white colours?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is one threat to the tiger mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Confuses a threat with an example of a threat mentioned in t…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the purpose of the activity where students put their hands behind their ears?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did the eagle take away from the child?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student hears a sound more clearly after putting their hands behind their ears, what does this suggest?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why did the guard ant let the first ant in?",
+      "reason": "near-duplicate of served question cmvk9zi1d0jregpfh89vbbc3u (cosine 0.933 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Why did Sushila cover her nose when cleaning Deepak’s nappy?",
+      "reason": "near-duplicate of served question cmvh7qi4r07eggpfh75pw4yjx (cosine 0.977 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

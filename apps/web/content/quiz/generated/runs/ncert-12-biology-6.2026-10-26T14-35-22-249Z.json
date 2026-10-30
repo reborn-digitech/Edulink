@@ -1,0 +1,915 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T14:35:22.249Z",
+  "finishedAt": "2026-10-26T14:43:42.423Z",
+  "seconds": 500,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo106.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 6 — Evolution",
+    "edition": "Reprint 2026-27",
+    "chunks": 18,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, sample question paper, 2026-27]\n18. The movement of landmasses over geological time changed the distribution 2\nand evolution of animals. Explain this idea using two examples from different\nregions of the world.",
+      "[INBO 2024 — question paper]\n26. (1 point) Which of the following statements best describes evolution?\na. Genetic drift is a random process, but mutation and selection are non-random.\nb. Mutation and genetic drift are random processes, but selection is non-random.\nc. Mutation and selection are random processes, but genetic drift is non-random.\nd. Selection is a random process, but mutation and genetic drift are non-random.",
+      "[CBSE Class XII Biology, sample question paper, 2025-26]\n25. Shown below are certain aquatic vertebrates, where natural selection has 3\nfavoured them to develop certain characteristics which enable them to live\nin water.\nA. Name and explain the phenomenon exhibited by the above animals.\nB. Which one of the above is the most primitive one? What is its\nsignificance?\n- - - - - - - - - - - - - - - - - - -\nFor Visually impaired students\nA. What are the basic conceptual similarities and differences between\nLamarckian and Darwinian theory of evolution?\nB. Give an example that supports any one of the above two theories.",
+      "[INBO 2020 — question paper]\n16. (1 point) The cladogram shows phylogenetic relationship amongst seven vertebrate species A - G.\nSpecies G is amphibious and adapted to both terrestrial and aquatic habitats. Species A and F are\nexclusively aquatic while B, C, D, E are terrestrial. The most logical explanation for the mode of\nevolution of A and F will be\nA\nB\nC\nD\nE\nF\nG\na. Disruptive selection\nb. Convergent evolution\nc. Divergent evolution\nd. Co-evolution"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 222203,
+      "in": 47,
+      "out": 45,
+      "rejects": 2,
+      "promptTokens": 43585,
+      "completionTokens": 12711
+    },
+    "critique": {
+      "calls": 61,
+      "ms": 393458,
+      "in": 45,
+      "out": 42,
+      "rejects": 3,
+      "promptTokens": 29159,
+      "completionTokens": 10436
+    },
+    "solver": {
+      "calls": 321,
+      "ms": 171069,
+      "in": 42,
+      "out": 33,
+      "rejects": 9,
+      "promptTokens": 63789,
+      "completionTokens": 3610
+    },
+    "form": {
+      "calls": 10,
+      "ms": 42804,
+      "in": 33,
+      "out": 3,
+      "rejects": 30,
+      "promptTokens": 4577,
+      "completionTokens": 1050
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 40,
+      "ms": 7308,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 169320,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 8481,
+      "completionTokens": 4870
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "According to the passage, which theory was disproven by Louis Pasteur's experiments?",
+      "ms": {
+        "draft": 4007,
+        "critique": 4822,
+        "solver": 1067,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did the passage say about the origin of life on Earth?",
+      "ms": {
+        "draft": 4007,
+        "critique": 5226,
+        "solver": 1559,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a scientist observed the formation of amino acids in a laboratory under conditions similar to those of early Earth, which theory would this support?",
+      "ms": {
+        "draft": 4007,
+        "critique": 5740,
+        "solver": 2003,
+        "form": 2760
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage describes the conditions on early Earth. Which of the following is NOT a condition mentioned?",
+      "ms": {
+        "draft": 4007,
+        "critique": 7680
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the passage, the origin of life is described as a unique event in the history of the universe. Which of the following best supports this idea?",
+      "ms": {
+        "draft": 4007,
+        "critique": 6567,
+        "solver": 1335
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the passage, which of the following best describes the phenomenon observed in the moth population in England after industrialization?",
+      "ms": {
+        "draft": 6851,
+        "critique": 6921,
+        "solver": 1711,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what does the theory of special creation suggest about the diversity of life on Earth?",
+      "ms": {
+        "draft": 6851,
+        "critique": 8316,
+        "solver": 2371,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is an example of homologous structures?",
+      "ms": {
+        "draft": 6851,
+        "critique": 7180,
+        "solver": 2012,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes the Big Bang theory and the formation of the universe. Which of the following best explains why the passage mentions that we see stars as they were in the past?",
+      "ms": {
+        "draft": 4007,
+        "critique": 7518,
+        "solver": 15868,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following is an example of convergent evolution?",
+      "ms": {
+        "draft": 6851,
+        "critique": 6661,
+        "solver": 1546,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best supports the idea that evolution has occurred over time, as discussed in the passage?",
+      "ms": {
+        "draft": 6851,
+        "critique": 6209,
+        "solver": 17842,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a population of organisms shows a wide range of variation in a trait, and only those with a specific trait survive and reproduce, which of the following is most likely to occur?",
+      "ms": {
+        "draft": 6851,
+        "critique": 7129,
+        "solver": 1515,
+        "form": 3916
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a forest with light-coloured trees, a population of moths includes both white-winged and dark-winged varieties. After industrial pollution causes the trees to darken, the dark-winged moths become more common. What is the most likely explanation for this change?",
+      "ms": {
+        "draft": 6909,
+        "critique": 7369,
+        "solver": 12542,
+        "form": 2335
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A group of scientists observes different species of finches on an island, each with unique beak shapes. They conclude that these finches evolved from a common ancestor. What concept does this observation best illustrate?",
+      "ms": {
+        "draft": 6909,
+        "critique": 8278,
+        "solver": 10083,
+        "form": 4290
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A new species of fish is discovered in a remote lake. It has traits similar to a species found in a different part of the world. Scientists believe that the two species evolved separately but developed similar traits. What is the most likely explanation for this similarity?",
+      "ms": {
+        "draft": 6909,
+        "critique": 6474,
+        "solver": 11302,
+        "form": 2692
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the process of evolution as explained in the passage?",
+      "ms": {
+        "draft": 4107,
+        "critique": 6885,
+        "solver": 1733
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 6909,
+        "critique": 7788,
+        "solver": 11955,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a transitional form in the evolution of vertebrates?",
+      "ms": {
+        "draft": 3736,
+        "critique": 6326,
+        "solver": 1442
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the presence of pouched mammals in Australia?",
+      "ms": {
+        "draft": 3736,
+        "critique": 6448,
+        "solver": 1449,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the most likely reason for the change in frequency of an allele in a population?",
+      "ms": {
+        "draft": 4107,
+        "critique": 6836,
+        "solver": 12347
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for the appearance of new species according to the passage?",
+      "ms": {
+        "draft": 4328,
+        "critique": 6258,
+        "solver": 1224
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of homology as explained in the passage?",
+      "ms": {
+        "draft": 4286,
+        "critique": 5654,
+        "solver": 1960
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A population of moths living in an industrial area shows a shift from light to dark coloration over time. Which of the following best explains this change?",
+      "ms": {
+        "draft": 4286,
+        "critique": 4666,
+        "solver": 12866,
+        "form": 3931
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a mechanism of evolution?",
+      "ms": {
+        "draft": 4286,
+        "critique": 4667,
+        "solver": 17044
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A new species of bird is observed to have a unique beak shape that allows it to feed on a specific type of fruit. According to the passage, which of the following is most likely to have caused this adaptation?",
+      "ms": {
+        "draft": 4286,
+        "critique": 6927,
+        "solver": 12602,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements best describes the process of evolution as explained in the passage?",
+      "ms": {
+        "draft": 3972,
+        "critique": 9666,
+        "solver": 1398,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is a type of evidence for evolution?",
+      "ms": {
+        "draft": 4286,
+        "critique": 5723,
+        "solver": 14589,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that 'variations in a population result in variable fitness.' Which of the following scenarios best illustrates this idea?",
+      "ms": {
+        "draft": 4286,
+        "critique": 5651,
+        "solver": 16056,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, which of the following is an example of an organism that evolved from land reptiles to live in water?",
+      "ms": {
+        "draft": 3972,
+        "critique": 7699,
+        "solver": 1409,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is the most likely reason for the survival of pouched mammals in Australia?",
+      "ms": {
+        "draft": 3972,
+        "critique": 6154,
+        "solver": 15463
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage states that the first organisms to invade land were plants. Which of the following best explains this statement?",
+      "ms": {
+        "draft": 3972,
+        "critique": 7166,
+        "solver": 16637,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage discusses the evolution of hominids. Which of the following is an example of a hominid with a brain capacity between 650-800cc?",
+      "ms": {
+        "draft": 3972,
+        "critique": 8389,
+        "solver": 1332,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes the evolution of man with language skills and self-consciousness as the most successful story. Which of the following supports this idea?",
+      "ms": {
+        "draft": 3972,
+        "critique": 8051,
+        "solver": 14816,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a heritable variation according to the passage?",
+      "ms": {
+        "draft": 3164,
+        "critique": 6272,
+        "solver": 1932
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of mutations in evolution?",
+      "ms": {
+        "draft": 3164,
+        "critique": 6869,
+        "solver": 1359,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a population of organisms shows a shift in a particular trait over generations, what might this indicate according to the passage?",
+      "ms": {
+        "draft": 3164,
+        "critique": 7309,
+        "solver": 1083,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the significance of the Hardy-Weinberg principle?",
+      "ms": {
+        "draft": 3164,
+        "critique": 6330,
+        "solver": 1794,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A population of fish in a lake shows a shift towards larger body size over several generations. What is the most likely explanation for this according to the passage?",
+      "ms": {
+        "draft": 3164,
+        "critique": 7498,
+        "solver": 1430,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which phenomenon is described in the passage as the evolution of different species in a given geographical area starting from a point and radiating to other areas?",
+      "ms": {
+        "draft": 4780,
+        "critique": 6607
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the best explanation for the origin of new species?",
+      "ms": {
+        "draft": 3164,
+        "critique": 6847,
+        "solver": 1520,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a scenario where two species from different regions evolve similar traits due to similar environmental pressures, which of the following best describes this process?",
+      "ms": {
+        "draft": 4780,
+        "critique": 5908
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the main idea of the theory of special creation?",
+      "ms": {
+        "draft": 5176,
+        "critique": 3927,
+        "solver": 4699,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the process by which different species evolve from a common ancestor in a given geographical area?",
+      "ms": {
+        "draft": 6909,
+        "critique": 7086,
+        "solver": 1379,
+        "form": 2843,
+        "translation": 49582
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a population of organisms has a high frequency of a particular allele, what can be inferred about the population?",
+      "ms": {
+        "draft": 4107,
+        "critique": 7022,
+        "solver": 1132,
+        "form": 4530,
+        "translation": 55585
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A population of bacteria is exposed to an antibiotic. Most of the bacteria are killed, but a few survive. These survivors are able to reproduce and pass on their resistance traits. What does this scenario best illustrate?",
+      "ms": {
+        "draft": 6909,
+        "critique": 7163,
+        "solver": 1399,
+        "form": 3590,
+        "translation": 59986
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does the passage say about the role of mutations in evolution?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If a population experiences a sudden change in allele frequency due to chance, what is this phenomenon called?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, which theory was disproven by Louis Pasteur's experiments?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"refers to a theory that is still accepted today and not disp…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What did the passage say about the origin of life on Earth?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (61 vs 34 characters); distractor 0's reason is not a one-line misconception (\"refers to a theory mentioned but not supported by the passag…\"); distractor 3's reason is not a one-line misconception (\"refers to a belief not discussed in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a scientist observed the formation of amino acids in a laboratory under conditions similar to those of early Earth, which theory would this support?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"refers to a theory not discussed in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The passage describes the conditions on early Earth. Which of the following is NOT a condition mentioned?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the passage, the origin of life is described as a unique event in the history of the universe. Which of the following best supports this idea?",
+      "reason": "the solver picked option 2 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Based on the passage, which of the following best describes the phenomenon observed in the moth population in England after industrialization?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"An increase in the number of white-winged moths due to natural selection.\" / \"An increase in the number of dark-winged moths due to natural selection.\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what does the theory of special creation suggest about the diversity of life on Earth?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is an example of homologous structures?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage describes the Big Bang theory and the formation of the universe. Which of the following best explains why the passage mentions that we see stars as they were in the past?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"refers to a fact not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, which of the following is an example of convergent evolution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best supports the idea that evolution has occurred over time, as discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a population of organisms shows a wide range of variation in a trait, and only those with a specific trait survive and reproduce, which of the following is most likely to occur?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.incidentRay: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a forest with light-coloured trees, a population of moths includes both white-winged and dark-winged varieties. After industrial pollution causes the trees to darken, the dark-winged moths become more common. What is the most likely explanation for this change?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A group of scientists observes different species of finches on an island, each with unique beak shapes. They conclude that these finches evolved from a common ancestor. What concept does this observation best illustrate?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A new species of fish is discovered in a remote lake. It has traits similar to a species found in a different part of the world. Scientists believe that the two species evolved separately but developed similar traits. What is the most likely explanation for this similarity?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following best describes the process of evolution as explained in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"Misinterprets the passage, which states that evolution is a …\"); distractor 3's reason is not a one-line misconception (\"Believes that evolution only affects plants and not animals,…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of a transitional form in the evolution of vertebrates?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the presence of pouched mammals in Australia?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the most likely reason for the change in frequency of an allele in a population?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main reason for the appearance of new species according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of homology as explained in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A population of moths living in an industrial area shows a shift from light to dark coloration over time. Which of the following best explains this change?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a mechanism of evolution?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A new species of bird is observed to have a unique beak shape that allows it to feed on a specific type of fruit. According to the passage, which of the following is most likely to have caused this adaptation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following statements best describes the process of evolution as explained in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"Evolution is the process of development of complex life forms from simple life forms through natural selection\" / \"Evolution is the process of development of complex life forms from simple life forms through mutation\"); options 1 and 2 say the same thing (\"Evolution is the process of development of complex life forms from simple life forms through genetic drift\" / \"Evolution is the process of development of complex life forms from simple life forms through mutation\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is a type of evidence for evolution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage states that 'variations in a population result in variable fitness.' Which of the following scenarios best illustrates this idea?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, which of the following is an example of an organism that evolved from land reptiles to live in water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is the most likely reason for the survival of pouched mammals in Australia?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage states that the first organisms to invade land were plants. Which of the following best explains this statement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 are the same (\"Plants were the first to appear on Earth, so they naturally invaded land first\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage discusses the evolution of hominids. Which of the following is an example of a hominid with a brain capacity between 650-800cc?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Refers to Homo sapiens, which is not associated with this br…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage describes the evolution of man with language skills and self-consciousness as the most successful story. Which of the following supports this idea?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of a heritable variation according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of mutations in evolution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a population of organisms shows a shift in a particular trait over generations, what might this indicate according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the significance of the Hardy-Weinberg principle?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A population of fish in a lake shows a shift towards larger body size over several generations. What is the most likely explanation for this according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which phenomenon is described in the passage as the evolution of different species in a given geographical area starting from a point and radiating to other areas?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the best explanation for the origin of new species?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Overlooks the gradual process described in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a scenario where two species from different regions evolve similar traits due to similar environmental pressures, which of the following best describes this process?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the main idea of the theory of special creation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

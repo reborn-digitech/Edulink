@@ -21,148 +21,47 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T02:41:37.520Z",
+  "generatedAt": "2026-10-29T16:35:02.492Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the main cause of changes during adolescence?",
+      "stem": "When does menstruation begin in girls?",
       "choices": [
-        "Hormones",
-        "Genes",
-        "Environment",
-        "Diet"
-      ],
-      "answerIndex": 0,
-      "solution": "Hormones are the main cause of changes during adolescence because they regulate growth, development, and physical transformations in the body. Genes influence traits but do not directly cause the changes that occur during this period. Environment and diet can affect development, but they are not the primary internal drivers of adolescent changes.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "किशोरावस्था के दौरान परिवर्तनों का मुख्य कारण क्या है?",
-          "choices": [
-            "हॉर्मोन",
-            "जीन",
-            "पर्यावरण",
-            "आहार"
-          ],
-          "solution": "हॉर्मोन किशोरावस्था के दौरान परिवर्तनों का मुख्य कारण है क्योंकि वे शरीर में वृद्धि, विकास और शारीरिक परिवर्तनों को नियंत्रित करते हैं। जीन विशेषताओं को प्रभावित करते हैं लेकिन इस अवधि में होने वाले परिवर्तनों के सीधे कारण नहीं होते। पर्यावरण और आहार विकास को प्रभावित कर सकते हैं, लेकिन वे किशोरावस्था के दौरान होने वाले परिवर्तनों के प्राथमिक आंतरिक चालक नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology commonly found in textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "अकाल वयातील बदलांचे मुख्य कारण काय आहे?",
-          "choices": [
-            "हॉर्मोन",
-            "जीन",
-            "वातावरण",
-            "आहार"
-          ],
-          "solution": "हॉर्मोन अकाल वयातील बदलांचे मुख्य कारण आहेत कारण ते शरीरातील वाढ, विकास आणि शारीरिक बदलांचे नियंत्रण करतात. जीन लक्षणांचा अंदाज देतात परंतु या काळात होणाऱ्या बदलांचे सीधा कारण नाहीत. वातावरण आणि आहार विकासावर प्रभाव टाकू शकतात, परंतु अकाल वयातील बदलांचे प्राथमिक आंतरिक धक्का नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for biological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses hormones with genes",
-        "Misunderstands the role of environment",
-        "Misinterprets the role of diet"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and aligns with the stem. Hormones are indeed the primary cause of physical and emotional changes during adolescence, as stated in the passage.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 11,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.5 The ‘Why’ Question for Adolescence",
-            "In a Nutshell"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 12,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.5 The ‘Why’ Question for Adolescence",
-            "Let Us Enhance Our Learning"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 13,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.5 The ‘Why’ Question for Adolescence",
-            "Exploratory Projects"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:41:37.520Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the term used for features that distinguish males from females but are not directly involved in reproduction?",
-      "choices": [
-        "Primary sexual characteristics",
-        "Secondary sexual characteristics",
-        "Reproductive characteristics",
-        "Genetic characteristics"
+        "At birth",
+        "At puberty",
+        "At the age of 45",
+        "At the age of 55"
       ],
       "answerIndex": 1,
-      "solution": "Secondary sexual characteristics are traits that differentiate males and females but are not directly related to reproduction. These include features like body shape, facial hair, or voice depth. Primary sexual characteristics are directly involved in reproduction, while reproductive and genetic characteristics do not specifically refer to non-reproductive distinguishing traits.",
+      "solution": "Menstruation begins at puberty, which is when the body starts developing secondary sexual characteristics. At birth, the body is not yet developed enough for this process. The other options refer to later stages of life, not the beginning of menstruation.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "नर और मादा के बीच अंतर करने वाले लक्षणों के लिए क्या शब्द प्रयोग किया जाता है जो प्रजनन में सीधे शामिल नहीं होते?",
+          "stem": "लड़कियों में मासिक धर्म कब शुरू होता है?",
           "choices": [
-            "प्राथमिक लैंगिक विशेषताएं",
-            "द्वितीयक लैंगिक विशेषताएं",
-            "प्रजनन विशेषताएं",
-            "आनुवंशिक विशेषताएं"
+            "जन्म के समय",
+            "प्रारंभिक यौवन में",
+            "45 वर्ष की आयु में",
+            "55 वर्ष की आयु में"
           ],
-          "solution": "द्वितीयक लैंगिक विशेषताएं वे लक्षण होते हैं जो नर और मादा के बीच अंतर करते हैं लेकिन प्रजनन से सीधे संबंधित नहीं होते। इनमें शरीर के आकार, चेहरे के बाल या आवाज की गहराई जैसी विशेषताएं शामिल होती हैं। प्राथमिक लैंगिक विशेषताएं प्रजनन में सीधे शामिल होती हैं, जबकि प्रजनन और आनुवंशिक विशेषताएं अप्रजनन संबंधी अंतर करने वाली विशेषताओं के विशिष्ट रूप से उल्लेख नहीं करती हैं।",
+          "solution": "मासिक धर्म प्रारंभिक यौवन में शुरू होता है, जब शरीर द्वितीयक यौन लक्षणों के विकास की प्रक्रिया शुरू कर देता है। जन्म के समय शरीर इस प्रक्रिया के लिए पर्याप्त विकसित नहीं होता है। अन्य विकल्प जीवन के बाद के चरणों को संदर्भित करते हैं, न कि मासिक धर्म की शुरुआत को।",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "पुरुष आणि स्त्री यांना वेगळे करणारी वैशिष्ट्ये परंतु प्रजोत्पादनाशी सीधा संबंध नसलेली शब्द काय आहे?",
+          "stem": "मुलींमध्ये मासिक पाळी कधी सुरू होते?",
           "choices": [
-            "प्राथमिक लैंगिक वैशिष्ट्ये",
-            "द्वितीयक लैंगिक वैशिष्ट्ये",
-            "प्रजोत्पादक वैशिष्ट्ये",
-            "आनुवंशिक वैशिष्ट्ये"
+            "जन्माच्या वेळी",
+            "संपूर्ण परिपक्वतेच्या वेळी",
+            "45 वर्षांच्या वयात",
+            "55 वर्षांच्या वयात"
           ],
-          "solution": "द्वितीयक लैंगिक वैशिष्ट्ये ही वैशिष्ट्ये आहेत जी पुरुष आणि स्त्री यांना वेगळे करतात परंतु प्रजोत्पादनाशी सीधा संबंध नाही. यामध्ये शरीराचा आकार, चेहरा वाढ, किंवा आवाजाची खालची आहेत. प्राथमिक लैंगिक वैशिष्ट्ये प्रजोत्पादनाशी सीधा संबंध असतात, तर प्रजोत्पादक आणि आनुवंशिक वैशिष्ट्ये विशिष्ट रूपाने प्रजोत्पादक वैशिष्ट्यांशी संबंधित नसतात.",
+          "solution": "मासिक पाळी संपूर्ण परिपक्वतेच्या वेळी सुरू होते, जेव्हा शरीराला द्वितीयक लैंगिक लक्षणे विकसित होतात. जन्माच्या वेळी शरीर अद्याप परिपक्व नसते. इतर विकल्पांमध्ये जीवनाच्या नंतरच्या टप्प्यांचा संदर्भ असतो, मासिक पाळी सुरू होण्याच्या सुरुवातीचा नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
           "flag": null
@@ -173,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses primary with secondary characteristics",
+        "Confuses the start of menstruation with birth",
         null,
-        "Thinks reproductive characteristics are the correct term",
-        "Mistakes genetic characteristics for the correct term"
+        "Mistakes the end of menstruation for the start",
+        "Confuses the age of menopause with the start of menstruation"
       ],
       "solverAnswers": [
         1,
@@ -186,7 +85,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The question is correctly answered with option 1. The solution is sound and matches the key. The distractors are all plausible misconceptions that students might have.",
+      "critique": "The question is straightforward and the correct answer is clearly supported by the content. The distractors reflect common misconceptions about the timing of menstruation.",
       "sources": [
         {
           "document": "ncert/7/science/gecu106.pdf",
@@ -223,262 +122,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:41:37.520Z",
+      "generatedAt": "2026-10-29T16:35:02.492Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "Which of the following is a correct statement about adolescence?",
+      "difficulty": 1,
+      "stem": "What is the common name for the menstrual cycle?",
       "choices": [
-        "It is a period of complete physical and mental maturity",
-        "It is marked by significant changes in physical, biological, and emotional aspects",
-        "It only affects boys and not girls",
-        "It is a stage where no emotional changes occur"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct statement is that adolescence is marked by significant changes in physical, biological, and emotional aspects, as these changes are fundamental to the developmental stage. The other options are incorrect because adolescence is not a time of complete maturity, it affects both boys and girls, and emotional changes are a key part of this period.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा विवरण यौवन के बारे में सही है?",
-          "choices": [
-            "यह पूर्ण शारीरिक एवं मानसिक परिपक्वता का काल है",
-            "यह शारीरिक, जैविक एवं भावनात्मक पहलुओं में महत्वपूर्ण परिवर्तनों को चिह्नित करता है",
-            "यह केवल लड़कों को प्रभावित करता है और लड़कियों को नहीं",
-            "यह एक ऐसा चरण है जहां कोई भावनात्मक परिवर्तन नहीं होता"
-          ],
-          "solution": "सही विवरण यह है कि यौवन शारीरिक, जैविक एवं भावनात्मक पहलुओं में महत्वपूर्ण परिवर्तनों को चिह्नित करता है, क्योंकि ये परिवर्तन विकासात्मक अवस्था के लिए मूलभूत हैं। अन्य विकल्प गलत हैं क्योंकि यौवन पूर्ण परिपक्वता का समय नहीं है, यह लड़कों एवं लड़कियों दोनों को प्रभावित करता है एवं भावनात्मक परिवर्तन इस अवस्था के लिए महत्वपूर्ण हैं।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning, technical terms are appropriately used in Hindi, and the structure matches the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता विधान अल्पवयाबद्दल बरोबर आहे?",
-          "choices": [
-            "हे पूर्ण शारीरिक आणि मानसिक परिपक्वतेचे कालावधी आहे",
-            "हे शारीरिक, जैविक आणि भावनात्मक अंगातील महत्त्वपूर्ण बदलांनी चिन्हांकित केलेले आहे",
-            "हे फक्त लडक्यांना प्रभावित करते आणि लडक्यांना प्रभावित करत नाही",
-            "हे एखाद्या टप्प्यात भावनात्मक बदल होत नाहीत"
-          ],
-          "solution": "अल्पवय हे शारीरिक, जैविक आणि भावनात्मक अंगातील महत्त्वपूर्ण बदलांनी चिन्हांकित केलेले आहे, कारण या विकासाच्या टप्प्यात हे बदल मूलभूत आहेत. इतर विधाने अचूक आहेत कारण अल्पवय हे पूर्ण परिपक्वतेचा कालावधी नाही, ते लडक्यांना आणि लडक्यांना दोन्हींना प्रभावित करते आणि भावनात्मक बदल हे या कालावधीचा मुख्य भाग आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for developmental stages and biological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks adolescence is a period of complete maturity",
-        null,
-        "Believes adolescence only affects boys",
-        "Denies the presence of emotional changes"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as adolescence is indeed marked by significant changes in physical, biological, and emotional aspects. The other options represent common misconceptions about adolescence.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 11,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.5 The ‘Why’ Question for Adolescence",
-            "In a Nutshell"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 12,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.5 The ‘Why’ Question for Adolescence",
-            "Let Us Enhance Our Learning"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 13,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.5 The ‘Why’ Question for Adolescence",
-            "Exploratory Projects"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:41:37.520Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the main purpose of the initiatives like the Menstrual Hygiene Scheme (MHS) and the Rashtriya Kishor Swasthya Karyakram (RKSK)?",
-      "choices": [
-        "To provide free education to girls",
-        "To improve the health and hygiene of adolescents",
-        "To reduce the number of teenage pregnancies",
-        "To encourage early marriage"
-      ],
-      "answerIndex": 1,
-      "solution": "The initiatives like the Menstrual Hygiene Scheme and the Rashtriya Kishor Swasthya Karyakram focus on addressing the health and hygiene needs of adolescents, particularly during their formative years. Other options, such as providing free education or encouraging early marriage, are not aligned with the core objectives of these programs. Reducing teenage pregnancies may be a secondary effect but is not the primary goal.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "मेन्स्ट्रुअल हाइजीन स्कीम (MHS) और राष्ट्रीय किशोर स्वास्थ्य कार्यक्रम (RKSK) जैसे प्रयासों का मुख्य उद्देश्य क्या है?",
-          "choices": [
-            "लड़कियों को मुफ्त शिक्षा प्रदान करना",
-            "किशोरों के स्वास्थ्य एवं हाइजीन को सुधारना",
-            "किशोर गर्भधारण की संख्या कम करना",
-            "जल्दी विवाह को बढ़ावा देना"
-          ],
-          "solution": "मेन्स्ट्रुअल हाइजीन स्कीम और राष्ट्रीय किशोर स्वास्थ्य कार्यक्रम जैसे प्रयास किशोरों के स्वास्थ्य एवं हाइजीन की आवश्यकताओं को संबोधित करने पर ध्यान केंद्रित करते हैं, विशेष रूप से उनके विकासशील वर्षों में। अन्य विकल्प, जैसे मुफ्त शिक्षा प्रदान करना या जल्दी विवाह को बढ़ावा देना, इन कार्यक्रमों के मूल उद्देश्यों के साथ संगत नहीं हैं। किशोर गर्भधारण की संख्या कम करना एक द्वितीयक प्रभाव हो सकता है लेकिन इसका मुख्य उद्देश्य नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'किशोर स्वास्थ्य' (adolescent health) are appropriately used as per Indian educational context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "मेंस्ट्रुअल हायजीन स्कीम (MHS) आणि राष्ट्रीय किशोर स्वास्थ्य कार्यक्रम (RKSK) अशा प्रकल्पांचे मुख्य उद्देश काय आहे?",
-          "choices": [
-            "मुलींना मुफ्त शिक्षण पुरविणे",
-            "किशोरांच्या आरोग्य आणि हायजीन ची वाढ करणे",
-            "किशोरी गर्भधारणांची संख्या कमी करणे",
-            "मुलांच्या लग्नाचे उत्साह निर्माण करणे"
-          ],
-          "solution": "मेंस्ट्रुअल हायजीन स्कीम आणि राष्ट्रीय किशोर स्वास्थ्य कार्यक्रम अशा प्रकल्पांचा मुख्य उद्देश किशोरांच्या आरोग्य आणि हायजीन ची वाढ करणे आहे, विशेषतः त्यांच्या विकासाच्या वर्षांत. इतर विकल्प, जसे की मुलींना मुफ्त शिक्षण पुरविणे किंवा मुलांच्या लग्नाचे उत्साह निर्माण करणे, हे या कार्यक्रमांच्या मुख्य उद्देशांशी संरेखित नाहीत. किशोरी गर्भधारणांची संख्या कमी करणे हे द्वितीयक परिणाम असू शकते परंतु ते प्राथमिक उद्देश नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for government programs.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the purpose of the initiative with education",
-        null,
-        "Misunderstands the goal as reducing pregnancies",
-        "Does not recognize the focus on health and hygiene"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as the initiatives are explicitly aimed at improving adolescent health and hygiene. The other options are either unrelated or contradictory to the stated purpose.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.4 Making Adolescence a Joyful",
-            "6.4.3 Physical activities"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 8,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.4 Making Adolescence a Joyful",
-            "6.4.4 Balanced social life"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 9,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.4 Making Adolescence a Joyful",
-            "6.4.5 Avoiding harmful substances — learn to",
-            "say NO"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 10,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.5 The ‘Why’ Question for Adolescence"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:41:37.520Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a boy starts developing a deep voice during adolescence, which of the following is likely to be the reason?",
-      "choices": [
-        "Hormonal changes",
-        "Genetic inheritance",
-        "Environmental factors",
-        "Dietary changes"
+        "Period",
+        "Menopause",
+        "Pregnancy",
+        "Ovulation"
       ],
       "answerIndex": 0,
-      "solution": "Hormonal changes are responsible for the development of secondary sexual characteristics, such as a deep voice in boys during adolescence. These changes are triggered by the release of hormones like testosterone. Genetic inheritance, environmental factors, and dietary changes do not directly cause the deepening of the voice in this context.",
+      "solution": "The common name for the menstrual cycle is 'period' because it refers to the monthly shedding of the uterine lining. Menopause is the end of a woman's reproductive years, pregnancy is the state of carrying a developing fetus, and ovulation is the release of an egg from the ovary, none of which are the same as the menstrual cycle.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक लड़का के किशोरावस्था के दौरान गहरी आवाज विकसित हो रही है, तो निम्नलिखित में से कौन-सा कारण संभावित हो सकता है?",
+          "stem": "मासिक चक्र के लिए सामान्य नाम क्या है?",
           "choices": [
-            "हार्मोनल परिवर्तन",
-            "आनुवंशिक विरासत",
-            "पर्यावरणीय कारक",
-            "आहार में परिवर्तन"
+            "मासिक धर्म",
+            "मेनोपॉज",
+            "गर्भावस्था",
+            "अंडोत्सर्ग"
           ],
-          "solution": "हार्मोनल परिवर्तन द्वारा द्वितीयक लैंगिक विशेषताओं के विकास, जैसे कि किशोरावस्था में लड़कों की गहरी आवाज के लिए उत्तरदायी होते हैं। इन परिवर्तनों को टेस्टोस्टेरॉन जैसे हार्मोन के उत्सर्जन द्वारा प्रेरित किया जाता है। आनुवंशिक विरासत, पर्यावरणीय कारक और आहार में परिवर्तन इस संदर्भ में आवाज के गहरा होने के लिए सीधे रूप से कारण नहीं होते हैं।",
+          "solution": "मासिक चक्र के लिए सामान्य नाम 'मासिक धर्म' है क्योंकि यह गर्भाशय के आवरण के मासिक झड़ने को संदर्भित करता है। मेनोपॉज महिला के जनन काल के अंत को संदर्भित करता है, गर्भावस्था एक विकसित भ्रूण के साथ ले जाने की स्थिति है, और अंडोत्सर्ग अंडाशय से अंडे के निकलने को संदर्भित करता है, जो कोई भी मासिक चक्र के बराबर नहीं है।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology used in school textbooks.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for medical concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "एका मुलाला वयाच्या तिसर्या टप्प्यात गहिरा आवाज विकसित होत असल्यास, खालीलपैकी कोणते कारण शक्य असू शकते?",
+          "stem": "मासिक चक्राचे सामान्य नाव काय आहे?",
           "choices": [
-            "हॉर्मोनल बदल",
-            "जीनी वारसा",
-            "पर्यावरणीय कारक",
-            "आहारातील बदल"
+            "मासिक पाळी",
+            "मेनोपॉज",
+            "गर्भधारणा",
+            "अंडास्राव"
           ],
-          "solution": "हॉर्मोनल बदलांमुळे द्वितीयक लैंगिक लक्षणांचा विकास होतो, जसे की मुलांमध्ये वयाच्या तिसर्या टप्प्यात गहिरा आवाज. हे बदल टेस्टोस्टेरॉन अशा हॉर्मोनच्या रिलीजमुळे घडतात. जीनी वारसा, पर्यावरणीय कारक आणि आहारातील बदल ह्या विषयात आवाजाच्या गहिराच्या विकासाला सीधा कारण नाहीत.",
+          "solution": "मासिक चक्राचे सामान्य नाव 'मासिक पाळी' आहे कारण ते मासिक गर्भाशयाच्या आतल्या थराच्या निर्मोकाच्या बरोबरीने घडते. मेनोपॉज हा स्त्रियांच्या उत्पादक वर्षांचा अंत आहे, गर्भधारणा हा विकसित भ्रूण वाहून नेण्याची स्थिती आहे आणि अंडास्राव हा अंडाशयातून अंड्याच्या बाहेर येण्याची प्रक्रिया आहे, जे मासिक चक्राच्या समान नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "critique": "The translation is accurate and uses appropriate Marathi terminology. The solution clearly explains why the correct answer is correct and why the others are wrong.",
           "flag": null
         }
       },
@@ -488,9 +174,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses hormonal changes with genetic inheritance",
-        "Misunderstands environmental factors",
-        "Misinterprets dietary changes"
+        "Confuses the scientific term with the common term",
+        "Refers to the end of reproductive capability",
+        "Refers to the process of egg release from the ovary"
       ],
       "solverAnswers": [
         0,
@@ -500,418 +186,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer (hormonal changes) and plausible distractors. The reasoning provided by the author is accurate and aligns with scientific understanding of adolescent development.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 11,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.5 The ‘Why’ Question for Adolescence",
-            "In a Nutshell"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 12,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.5 The ‘Why’ Question for Adolescence",
-            "Let Us Enhance Our Learning"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 13,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.5 The ‘Why’ Question for Adolescence",
-            "Exploratory Projects"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:41:37.520Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a boy develops a bulge on the front of his neck at the age of 11, what could be the possible reason?",
-      "choices": [
-        "It is a sign of illness",
-        "It is a sign of a serious disease",
-        "It is a part of normal growth during adolescence",
-        "It is a result of poor diet"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is that it is a part of normal growth during adolescence, as the neck area can develop noticeable changes during this stage due to hormonal and physical growth. Illness or serious disease is less likely without additional symptoms, and poor diet is not typically associated with a bulge in this specific location.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक लड़का 11 वर्ष की उम्र में अपने गले के सामने एक उभार विकसित करता है, तो संभावित कारण क्या हो सकता है?",
-          "choices": [
-            "यह बीमारी का संकेत है",
-            "यह गंभीर बीमारी का संकेत है",
-            "यह किशोरावस्था के दौरान सामान्य वृद्धि का हिस्सा है",
-            "यह खराब आहार का परिणाम है"
-          ],
-          "solution": "सही उत्तर यह है कि यह किशोरावस्था के दौरान सामान्य वृद्धि का हिस्सा है, क्योंकि इस चरण में हार्मोनल और शारीरिक वृद्धि के कारण गले के क्षेत्र में ध्यान देने योग्य परिवर्तन हो सकते हैं। अतिरिक्त लक्षणों के बिना बीमारी या गंभीर बीमारी कम संभावना है, और खराब आहार इस विशिष्ट स्थान पर उभार के साथ आमतौर पर जुड़ा नहीं होता है।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains in the same position.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका मुलाला 11 वर्षांच्या वयात त्याच्या गर्दनेच्या आगलीकडे एक फुगा झाला तर त्याचे शक्य कारण काय असू शकते?",
-          "choices": [
-            "हे आजाराचा लक्षण आहे",
-            "हे गंभीर आजाराचा लक्षण आहे",
-            "हे वयोनिर्देशक वाढीच्या काळात सामान्य वाढीचा भाग आहे",
-            "हे खराब आहारामुळे झालेले आहे"
-          ],
-          "solution": "हे सामान्य वयोनिर्देशक वाढीच्या काळातील वाढीचा भाग आहे, कारण हा काळ हार्मोन आणि शारीरिक वाढीमुळे गर्दनेच्या भागात दिसणारे बदल असू शकतात. आजार किंवा गंभीर आजाराच्या लक्षणांच्या अभावात ते कमी शक्य आहे आणि खराब आहार हा विशिष्ट जागेवर फुगा निर्माण करण्यासाठी सामान्यतः संबंधित नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology, with no inconsistencies or ambiguities.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks it is a sign of illness",
-        "Believes it is a sign of a serious disease",
-        null,
-        "Mistakes diet as the cause"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as the question refers to a normal growth change during adolescence. The other options reflect common misconceptions about physical changes.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 11,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.5 The ‘Why’ Question for Adolescence",
-            "In a Nutshell"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 12,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.5 The ‘Why’ Question for Adolescence",
-            "Let Us Enhance Our Learning"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 13,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.5 The ‘Why’ Question for Adolescence",
-            "Exploratory Projects"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:41:37.520Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following is an example of a physical activity that helps maintain fitness during adolescence?",
-      "choices": [
-        "Reading a book",
-        "Playing video games",
-        "Swimming in a lake",
-        "Watching a movie"
-      ],
-      "answerIndex": 2,
-      "solution": "Swimming in a lake is a physical activity that helps maintain fitness during adolescence. It involves full-body movement, improves cardiovascular health, and builds stamina. Reading a book, playing video games, and watching a movie are not physical activities and do not contribute to physical fitness.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक शारीरिक गतिविधि का उदाहरण है जो कि किशोरावस्था में फिटनेस बनाए रखने में मदद करता है?",
-          "choices": [
-            "एक किताब पढ़ना",
-            "वीडियो खेल खेलना",
-            "एक झील में तैरना",
-            "एक फिल्म देखना"
-          ],
-          "solution": "एक झील में तैरना किशोरावस्था में फिटनेस बनाए रखने में मदद करने वाली एक शारीरिक गतिविधि है। इसमें पूरे शरीर की गतिविधि होती है, हृदय-रक्त वाहिका स्वास्थ्य में सुधार होता है और स्टेमिना बनाए रखता है। एक किताब पढ़ना, वीडियो खेल खेलना और एक फिल्म देखना शारीरिक गतिविधि नहीं हैं और शारीरिक फिटनेस में योगदान नहीं करते।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Hindi terminology for physical activity and fitness.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक शारीरिक क्रियाकलाप आहे जे वयोनिर्देशकांमध्ये फिटनेस बरकरार ठेवण्यास मदत करते?",
-          "choices": [
-            "एका पुस्तकाचे वाचन",
-            "व्हिडिओ खेळ खेळणे",
-            "तालुक्यात तरंगणे",
-            "चित्रपट पाहणे"
-          ],
-          "solution": "तालुक्यात तरंगणे हा एक शारीरिक क्रियाकलाप आहे जो वयोनिर्देशकांमध्ये फिटनेस बरकरार ठेवण्यास मदत करतो. त्यामध्ये पूर्ण शरीराचे गतिविधी आहेत, हृदय-रक्तवाहिनी स्वास्थ्य सुधारते आणि स्टेमिना वाढते. पुस्तकाचे वाचन, व्हिडिओ खेळ खेळणे आणि चित्रपट पाहणे शारीरिक क्रियाकलाप नाहीत आणि शारीरिक फिटनेसमध्ये योगदान देत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for physical activity and fitness.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses mental activities with physical activities",
-        "Thinks all screen-based activities are physical",
-        null,
-        "Does not recognize water-based activities as physical exercises"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2 (Swimming in a lake), as it is a physical activity that contributes to fitness. The other options are sedentary and do not involve physical exertion. The author's reasoning for the distractors aligns with common misconceptions about physical activity.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.4 Making Adolescence a Joyful",
-            "6.4.3 Physical activities"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 8,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.4 Making Adolescence a Joyful",
-            "6.4.4 Balanced social life"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 9,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.4 Making Adolescence a Joyful",
-            "6.4.5 Avoiding harmful substances — learn to",
-            "say NO"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 10,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.5 The ‘Why’ Question for Adolescence"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:41:37.520Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following is a secondary sexual characteristic observed in boys during adolescence?",
-      "choices": [
-        "Increase in height",
-        "Development of breasts",
-        "Change in voice",
-        "Growth of facial hair"
-      ],
-      "answerIndex": 3,
-      "solution": "Growth of facial hair is a secondary sexual characteristic in boys during adolescence because it is a physical change directly related to male hormone development. Increase in height is a general growth phase, not specific to secondary sexual traits. Development of breasts is a female characteristic, and change in voice, while related to hormones, is not classified as a secondary sexual characteristic in this context.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा लड़कों में यौवन काल में अवलंबित लैंगिक लक्षण है?",
-          "choices": [
-            "ऊंचाई में वृद्धि",
-            "छातियों का विकास",
-            "आवाज में परिवर्तन",
-            "मुंहासे के बालों का विकास"
-          ],
-          "solution": "यौवन काल में लड़कों में मुंहासे के बालों का विकास एक अवलंबित लैंगिक लक्षण है क्योंकि यह पुरुष हॉर्मोन विकास से सीधे संबंधित शारीरिक परिवर्तन है। ऊंचाई में वृद्धि एक सामान्य वृद्धि चरण है, जो अवलंबित लैंगिक लक्षणों के लिए विशिष्ट नहीं है। छातियों का विकास एक महिला लक्षण है, और आवाज में परिवर्तन, हालांकि हॉर्मोन से संबंधित है, इस संदर्भ में एक अवलंबित लैंगिक लक्षण के रूप में वर्गीकृत नहीं किया जाता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The term 'अवलंबित लैंगिक लक्षण' is the correct technical term used in Hindi biology textbooks for 'secondary sexual characteristics'.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते लघुजनन वयात लहान मुलांमध्ये अवलंबून असलेले द्वितीयक लैंगिक लक्षण आहे?",
-          "choices": [
-            "उंचीत वाढ",
-            "छातीचा विकास",
-            "आवाजात बदल",
-            "मुक्कामात वाढ"
-          ],
-          "solution": "लहान मुलांमध्ये लैंगिक हॉर्मोन विकासाशी संबंधित शारीरिक बदलांमुळे मुक्कामात वाढ हा द्वितीयक लैंगिक लक्षण आहे. उंचीत वाढ हा सामान्य विकास टप्पा आहे, जो द्वितीयक लैंगिक लक्षणांशी संबंधित नाही. छातीचा विकास हा महिलांचे लक्षण आहे, आणि आवाजात बदल हा हॉर्मोनशी संबंधित असला तरी या संदर्भात द्वितीयक लैंगिक लक्षण म्हणून वर्गीकृत केला जात नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses general growth changes with secondary sexual characteristics",
-        "Refers to a characteristic observed in girls",
-        "Mistakenly associates voice change with secondary sexual characteristics",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 3 (Growth of facial hair), as it is a secondary sexual characteristic in boys. The other options are either general growth changes, female characteristics, or not classified as secondary sexual characteristics in the passage.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.1 Growing With Age: The Teenage Years"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu106.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 6: Adolescence: A Stage of Growth and Change",
-            "6.1 Growing With Age: The Teenage Years"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:41:37.520Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why is it important for adolescents to maintain a nutritious diet?",
-      "choices": [
-        "To avoid physical isolation from peers",
-        "To support growth and development",
-        "To avoid being excluded from social activities",
-        "To avoid emotional instability"
-      ],
-      "answerIndex": 1,
-      "solution": "A nutritious diet is essential during adolescence because the body undergoes significant growth and development, which requires proper nutrients. The other options, such as avoiding physical isolation or emotional instability, are not directly linked to the biological needs of this stage of life.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "क्यों महत्वपूर्ण है कि किशोर अपने आहार की आहार संरचना बनाए रखें?",
-          "choices": [
-            "अपने सहपाठियों से शारीरिक अलगाव से बचने के लिए",
-            "वृद्धि और विकास के समर्थन के लिए",
-            "सामाजिक गतिविधियों से बाहर कर दिए जाने से बचने के लिए",
-            "भावनात्मक अस्थिरता से बचने के लिए"
-          ],
-          "solution": "किशोरावस्था में एक पौष्टिक आहार आवश्यक होता है क्योंकि शरीर वृद्धि और विकास के लिए महत्वपूर्ण बदलाव के माध्यम से गुजरता है, जिसके लिए सही पोषक तत्वों की आवश्यकता होती है। अन्य विकल्प, जैसे शारीरिक अलगाव या भावनात्मक अस्थिरता से बचना, इस जीवन चरण की जैविक आवश्यकताओं से सीधा संबंध नहीं रखते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "का वयोवृद्धि वर्गातील विद्यार्थ्यांनी पोषक आहार ठेवणे आवश्यक आहे?",
-          "choices": [
-            "मित्रांपासून शारीरिक अलगत्व टाळण्यासाठी",
-            "वृद्धी आणि विकासासाठी समर्थन करण्यासाठी",
-            "सामाजिक क्रियाकलापांपासून वगळले जाणे टाळण्यासाठी",
-            "भावनिक अस्थिरता टाळण्यासाठी"
-          ],
-          "solution": "वयोवृद्धि वर्गात पोषक आहार आवश्यक आहे कारण शरीराला महत्वाची वृद्धी आणि विकास होत असतो, ज्यासाठी योग्य पोषक घटकांची आवश्यकता असते. इतर विकल्प, जसे की शारीरिक अलगत्व किंवा भावनिक अस्थिरता टाळणे, हे या वयाच्या जीवनाच्या जैविक आवश्यकतांशी सीधा संबंध नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with educational materials.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "students may confuse social aspects of adolescence with nutritional needs",
-        null,
-        "students may mistakenly believe that diet affects social acceptance rather than physical health",
-        "students may confuse mood swings with emotional instability and think diet affects it directly"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as it directly aligns with the biological and developmental needs of adolescents. The other options reflect common misconceptions about the social and emotional impacts of diet, which are not supported by the passage.",
+      "critique": "The correct answer is 'Period' as it is the common name for the menstrual cycle. The other options are incorrect and represent different biological processes.",
       "sources": [
         {
           "document": "ncert/7/science/gecu106.pdf",
@@ -959,7 +234,500 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:41:37.520Z",
+      "generatedAt": "2026-10-29T16:35:02.492Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the primary reason for the changes that occur during adolescence?",
+      "choices": [
+        "To prepare the body for reproduction",
+        "To increase height only",
+        "To develop facial hair only",
+        "To change the voice only"
+      ],
+      "answerIndex": 0,
+      "solution": "The primary reason for changes during adolescence is to prepare the body for reproduction, as hormonal changes drive the development of secondary sexual characteristics and reproductive systems. The other options describe specific physical changes that occur during this time but do not explain the overall purpose of adolescence.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किशोरावस्था के दौरान होने वाले परिवर्तनों का प्राथमिक कारण क्या है?",
+          "choices": [
+            "शारीरिक पुनरुत्पादन के लिए तैयार करना",
+            "केवल ऊंचाई बढ़ाना",
+            "केवल चेहरे के बाल विकसित करना",
+            "केवल आवाज बदलना"
+          ],
+          "solution": "किशोरावस्था के दौरान परिवर्तनों का प्राथमिक कारण शारीरिक पुनरुत्पादन के लिए तैयार करना है, क्योंकि हार्मोनल परिवर्तन द्वारा द्वितीयक लैंगिक विशेषताओं और पुनरुत्पादन प्रणाली के विकास को बढ़ावा दिया जाता है। अन्य विकल्प इस समय होने वाले विशिष्ट शारीरिक परिवर्तनों का वर्णन करते हैं लेकिन किशोरावस्था के समग्र उद्देश्य की व्याख्या नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content with appropriate terminology used in Indian textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वयाच्या अंतर्गत घडणाऱ्या बदलांचे प्राथमिक कारण काय आहे?",
+          "choices": [
+            "शरीराला प्रजोत्पादनासाठी तयार करणे",
+            "मात्र उंची वाढविणे",
+            "मात्र चेहर्यावर लेश विकसित करणे",
+            "मात्र आवाज बदलणे"
+          ],
+          "solution": "वयाच्या अंतर्गत घडणाऱ्या बदलांचे प्राथमिक कारण शरीराला प्रजोत्पादनासाठी तयार करणे आहे, कारण हार्मोनच्या बदलामुळे द्वितीयक लैंगिक लक्षणे आणि प्रजोत्पादक प्रणाली विकसित होतात. इतर विकल्प या काळात होणाऱ्या विशिष्ट शारीरिक बदलांना दर्शवतात परंतु वयाच्या अंतर्गत घडणाऱ्या बदलांच्या सामान्य उद्देशाचे विवरण देत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "focuses on one specific change rather than the overall purpose",
+        "overlooks the broader purpose of adolescence",
+        "overlooks the broader purpose of adolescence"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the primary reason for changes during adolescence is to prepare the body for reproduction and adulthood. The other options focus on specific physical changes rather than the overall purpose.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Adolescence: A Stage of Growth and Change"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu106.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Adolescence: A Stage of Growth and Change",
+            "6.1 Growing With Age: The Teenage Years"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu106.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Adolescence: A Stage of Growth and Change",
+            "6.1 Growing With Age: The Teenage Years"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:35:02.492Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a physical change observed in both boys and girls during adolescence?",
+      "choices": [
+        "Development of breasts",
+        "Growth of facial hair",
+        "Change in voice",
+        "Growth of hair in the pubic region"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is the growth of hair in the pubic region, which occurs in both boys and girls during adolescence due to hormonal changes. Development of breasts is specific to girls, and growth of facial hair is typical in boys. Change in voice is also more common in boys, making it less universal than pubic hair growth.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा लड़कों और लड़कियों दोनों के बीच प्रौढ़ावस्था के दौरान एक भौतिक परिवर्तन है?",
+          "choices": [
+            "स्तन का विकास",
+            "चेहरे के बालों का विकास",
+            "आवाज में परिवर्तन",
+            "गुल्लक क्षेत्र में बालों का विकास"
+          ],
+          "solution": "सही उत्तर गुल्लक क्षेत्र में बालों का विकास है, जो प्रौढ़ावस्था के दौरान लड़कों और लड़कियों दोनों में हार्मोनल परिवर्तन के कारण होता है। स्तन का विकास लड़कियों के लिए विशिष्ट है, और चेहरे के बालों का विकास लड़कों के लिए विशिष्ट है। आवाज में परिवर्तन भी लड़कों में अधिक सामान्य है, जो गुल्लक क्षेत्र में बालों के विकास की तुलना में कम सामान्य है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their original intent. The correct answer remains in the same position (option 3). The distractors are still incorrect in the Hindi version, and the technical terms used are standard in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते लैंगिक परिपक्वतेच्या काळात लहान मुलां आणि लहान मुलीं दोघांमध्ये दिसून येणारे शारीरिक बदल आहे?",
+          "choices": [
+            "छातीचा विकास",
+            "चेहर्यावरील वाढ",
+            "आवाजात बदल",
+            "मूत्रमार्गात वाढलेले वाल"
+          ],
+          "solution": "योग्य उत्तर मूत्रमार्गात वाढलेले वाल आहे, जे लैंगिक परिपक्वतेच्या काळात हार्मोनच्या बदलामुळे लहान मुलां आणि लहान मुलीं दोघांमध्ये होते. छातीचा विकास मुलींसाठी विशिष्ट आहे, आणि चेहर्यावरील वाढ मुलांसाठी विशिष्ट आहे. आवाजात बदल मुलांमध्ये अधिक सामान्य असतो, जे मूत्रमार्गात वाढलेल्या वालापेक्षा विशिष्ट नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological changes during adolescence.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a characteristic specific to one gender",
+        "Chooses a characteristic specific to one gender",
+        "Chooses a characteristic specific to one gender",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        2,
+        2,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as growth of hair in the pubic region is a physical change observed in both boys and girls during adolescence. The other options are gender-specific, which matches the author's reasoning.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu106.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: Adolescence: A Stage of Growth and Change",
+            "6.5 The ‘Why’ Question for Adolescence",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu106.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 6: Adolescence: A Stage of Growth and Change",
+            "6.5 The ‘Why’ Question for Adolescence",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu106.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Adolescence: A Stage of Growth and Change",
+            "6.5 The ‘Why’ Question for Adolescence",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:35:02.492Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the process called in which the body of a child undergoes observable and internal changes to develop into an adult capable of reproduction?",
+      "choices": [
+        "Menstruation",
+        "Adolescence",
+        "Secondary sexual characteristics",
+        "Puberty"
+      ],
+      "answerIndex": 3,
+      "solution": "Puberty is the process during which a child's body undergoes both visible and internal changes that prepare it for adulthood and the ability to reproduce. Menstruation is a part of the female reproductive cycle, not the overall developmental process. Adolescence refers to the broader transitional period between childhood and adulthood, not specifically the biological changes of reproduction. Secondary sexual characteristics are physical traits that develop during puberty but are not the entire process itself.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बच्चे के शरीर में दृश्य एवं आंतरिक परिवर्तन होने की प्रक्रिया क्या कहलाती है जिससे वह वयस्क बनकर जनन क्षमता वाला हो जाता है?",
+          "choices": [
+            "मासिक चक्र",
+            "किशोरावस्था",
+            "द्वितीयक लैंगिक लक्षण",
+            "शुक्रवीर्य"
+          ],
+          "solution": "शुक्रवीर्य वह प्रक्रिया है जिसमें बच्चे के शरीर में दृश्य एवं आंतरिक परिवर्तन होते हैं जो वयस्कता एवं जनन क्षमता के लिए तैयार करते हैं। मासिक चक्र महिला जनन चक्र का एक हिस्सा है, न कि समग्र विकास प्रक्रिया। किशोरावस्था बचपन एवं वयस्कता के बीच व्यापक संक्रमण काल को कहते हैं, जो जनन के जैविक परिवर्तनों के विशिष्ट रूप में नहीं है। द्वितीयक लैंगिक लक्षण शुक्रवीर्य के दौरान विकसित होने वाले शारीरिक लक्षण हैं लेकिन पूरी प्रक्रिया नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Indian school textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बालकाच्या शरीरात विकास होऊन पुरुषांच्या निर्मितीची क्षमता असलेल्या वयात आलेल्या व्यक्तीमध्ये दृश्य आणि आंतरिक बदल होण्याच्या प्रक्रियेला काय म्हणतात?",
+          "choices": [
+            "मासिक पाळी",
+            "किशोरावस्था",
+            "द्वितीयक लैंगिक लक्षणे",
+            "प्रौढता"
+          ],
+          "solution": "प्रौढता ही एक प्रक्रिया आहे ज्यामध्ये बालकाच्या शरीरात दृश्य आणि आंतरिक बदल होतात, जे पुरुषांच्या निर्मितीची क्षमता असलेल्या पुरुषांच्या वयात आलेल्या व्यक्तीमध्ये तयार करतात. मासिक पाळी ही स्त्री जनन प्रक्रियेचा भाग आहे, जी समग्र विकासाची प्रक्रिया नाही. किशोरावस्था ही बालपण आणि पुरुषांच्या वयात आलेल्या व्यक्तीमध्ये असलेल्या अंतरालाचा सामान्य वेळ दर्शवते, जी निर्मितीच्या जैविक बदलांच्या विशिष्ट प्रक्रियेची नाही. द्वितीयक लैंगिक लक्षणे ही प्रौढतेदरम्यान विकसित होणारी शारीरिक लक्षणे आहेत परंतु ती पूर्ण प्रक्रिया नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Refers to the process of menstruation in girls",
+        "Refers to the overall period of change from childhood to adulthood",
+        "Confuses secondary sexual characteristics with the process of puberty",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer (puberty) and plausible distractors that reflect common misconceptions. The author's reasoning for the wrong options is accurate and aligns with typical student misunderstandings.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu106.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: Adolescence: A Stage of Growth and Change",
+            "6.5 The ‘Why’ Question for Adolescence",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu106.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 6: Adolescence: A Stage of Growth and Change",
+            "6.5 The ‘Why’ Question for Adolescence",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu106.pdf",
+          "ordinal": 13,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Adolescence: A Stage of Growth and Change",
+            "6.5 The ‘Why’ Question for Adolescence",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:35:02.492Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a student notices that their voice is changing and they are growing taller, which stage of life are they most likely experiencing?",
+      "choices": [
+        "Infancy",
+        "Childhood",
+        "Adolescence",
+        "Old age"
+      ],
+      "answerIndex": 2,
+      "solution": "Adolescence is the stage of life when the body undergoes significant changes, including growth spurts and voice changes due to hormonal shifts. These physical developments are characteristic of this period, which typically occurs during the teenage years. Infancy and childhood do not involve such dramatic physical changes, and old age is associated with the slowing down of bodily functions rather than growth.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र ध्यान देता है कि उनकी आवाज बदल रही है और वे लंबे हो रहे हैं, तो वे सबसे अधिक किस जीवन चरण में हो सकते हैं?",
+          "choices": [
+            "अंतःकाल",
+            "बाल्यावस्था",
+            "किशोरावस्था",
+            "वृद्धावस्था"
+          ],
+          "solution": "किशोरावस्था वह जीवन चरण है जिसमें शरीर में महत्वपूर्ण परिवर्तन होते हैं, जैसे वृद्धि के झटके और हॉर्मोनल परिवर्तनों के कारण आवाज में परिवर्तन। ये शारीरिक विकास इस अवधि की विशेषता है, जो आमतौर पर नौसिखिया वर्षों में होती है। अंतःकाल और बाल्यावस्था में ऐसे आश्चर्यजनक शारीरिक परिवर्तन शामिल नहीं होते हैं, और वृद्धावस्था के साथ शरीर के कार्यों के धीमा होने के साथ-साथ वृद्धि के स्थान पर होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for life stages.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला त्यांच्या आवाजात बदल आणि उंचीत वाढ दिसत असेल तर ते जीवनाच्या कोणत्या टप्प्यात असावे लागेल?",
+          "choices": [
+            "शिशुपाल",
+            "मुलापणा",
+            "किशोरपाल",
+            "वृद्धावस्था"
+          ],
+          "solution": "किशोरपाल हा जीवनाचा टप्पा आहे ज्यामध्ये शरीराच्या महत्त्वपूर्ण बदलांचा समावेश होतो, ज्यामध्ये उंचीत वाढ आणि हार्मोनच्या बदलांमुळे आवाजात बदल होतो. हे शारीरिक विकास हा किशोरावस्थेच्या काळाचे वैशिष्ट्य आहे, जो तरुण वयात होतो. शिशुपाल आणि मुलापणा ह्या टप्प्यांमध्ये अशा विपर्यासी शारीरिक बदलांचा समावेश नसतो आणि वृद्धावस्थेमध्ये शारीरिक क्रियांचा वेग कमी होतो बरोबर वाढीचा नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for life stages.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "refers to an earlier stage of life",
+        "refers to an earlier stage of life",
+        null,
+        "refers to a later stage of life"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly identifies adolescence as the stage where voice changes and growth occur. The solution is sound and aligns with the key.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Adolescence: A Stage of Growth and Change"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu106.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Adolescence: A Stage of Growth and Change",
+            "6.1 Growing With Age: The Teenage Years"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu106.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Adolescence: A Stage of Growth and Change",
+            "6.1 Growing With Age: The Teenage Years"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:35:02.492Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why are secondary sexual characteristics considered natural signs of adolescence?",
+      "choices": [
+        "Because they are the only changes that occur during adolescence",
+        "Because they help distinguish males from females",
+        "Because they are the main reason for reproduction",
+        "Because they are the same for all individuals"
+      ],
+      "answerIndex": 1,
+      "solution": "Secondary sexual characteristics help distinguish males from females by developing during adolescence, which is a key indicator of puberty. The other options are incorrect because these characteristics are not the only changes during adolescence, they are not the main reason for reproduction, and they vary among individuals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्यों द्विगुणित लैंगिक लक्षणों को प्राकृतिक लक्षणों के रूप में माना जाता है कि बाल्यावस्था के लक्षण हैं?",
+          "choices": [
+            "क्योंकि वे बाल्यावस्था के दौरान होने वाले एकमात्र परिवर्तन हैं",
+            "क्योंकि वे पुरुषों और महिलाओं को अलग करने में मदद करते हैं",
+            "क्योंकि वे जनन के मुख्य कारण हैं",
+            "क्योंकि वे सभी व्यक्तियों के लिए समान हैं"
+          ],
+          "solution": "द्विगुणित लैंगिक लक्षण पुरुषों और महिलाओं को अलग करने में मदद करते हैं, क्योंकि वे बाल्यावस्था के दौरान विकसित होते हैं, जो कि प्रौढ़ता का एक महत्वपूर्ण संकेत है। अन्य विकल्प गलत हैं क्योंकि ये लक्षण बाल्यावस्था के दौरान होने वाले एकमात्र परिवर्तन नहीं हैं, वे जनन के मुख्य कारण नहीं हैं, और वे व्यक्तिगत रूप से भिन्न होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation accurately preserves the meaning, technical terms, and structure of the original question. The correct answer remains option (2), and the distractors are still incorrect in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दुसरे लैंगिक लक्षण का वयोज्यतेचे प्राकृतिक संकेत मानले जातात?",
+          "choices": [
+            "कारण ते वयोज्यतेदरम्यान होणारे एकमेव बदल आहेत",
+            "कारण ते पुरुष आणि स्त्री दरम्यान फरक करून देतात",
+            "कारण ते प्रजोत्पादनाचे मुख्य कारण आहेत",
+            "कारण ते सर्व व्यक्तींसाठी समान असतात"
+          ],
+          "solution": "दुसरे लैंगिक लक्षण वयोज्यतेदरम्यान विकसित होतात, जे वयोज्यतेचे मुख्य संकेत आहे. इतर विकल्प चुकीचे आहेत कारण ही वैशिष्ट्ये वयोज्यतेदरम्यान होणारे एकमेव बदल नाहीत, ते प्रजोत्पादनाचे मुख्य कारण नाहीत आणि व्यक्तींमध्ये विस्तारलेले असतात.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and natural, with appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "overlooks the role of secondary sexual characteristics",
+        null,
+        "overlooks the role of secondary sexual characteristics",
+        "misunderstands the role of secondary sexual characteristics"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as secondary sexual characteristics are indeed used to distinguish males from females during adolescence. The other options are incorrect and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Adolescence: A Stage of Growth and Change"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu106.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Adolescence: A Stage of Growth and Change",
+            "6.1 Growing With Age: The Teenage Years"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu106.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Adolescence: A Stage of Growth and Change",
+            "6.1 Growing With Age: The Teenage Years"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:35:02.492Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

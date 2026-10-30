@@ -1,0 +1,390 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T20:12:48.158Z",
+  "finishedAt": "2026-10-25T20:15:57.623Z",
+  "seconds": 189,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap106.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 6 — Every Drop Counts",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 52979,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 14394,
+      "completionTokens": 3127
+    },
+    "critique": {
+      "calls": 26,
+      "ms": 164096,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 10605,
+      "completionTokens": 4493
+    },
+    "solver": {
+      "calls": 159,
+      "ms": 112235,
+      "in": 16,
+      "out": 10,
+      "rejects": 6,
+      "promptTokens": 37092,
+      "completionTokens": 2126
+    },
+    "form": {
+      "calls": 3,
+      "ms": 10375,
+      "in": 10,
+      "out": 2,
+      "rejects": 8,
+      "promptTokens": 683,
+      "completionTokens": 191
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 3177,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 57704,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4434,
+      "completionTokens": 2239
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why did people come to Ghadsisar according to the passage?",
+      "ms": {
+        "draft": 3450,
+        "critique": 6470,
+        "solver": 16302
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of water mentioned in the passage?",
+      "ms": {
+        "draft": 3266,
+        "critique": 6886,
+        "solver": 1741
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why were the stepwells important according to the passage?",
+      "ms": {
+        "draft": 3450,
+        "critique": 6373,
+        "solver": 15719,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason some people in the passage have to walk far to get water?",
+      "ms": {
+        "draft": 3266,
+        "critique": 7063,
+        "solver": 1506,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, why do people in some colonies have to buy drinking water?",
+      "ms": {
+        "draft": 3266,
+        "critique": 5990,
+        "solver": 15591,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a family fills water from a tanker for half an hour and uses it all day, what problem might they face?",
+      "ms": {
+        "draft": 3266,
+        "critique": 7887,
+        "solver": 9865
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of water mentioned in the passage?",
+      "ms": {
+        "draft": 2870,
+        "critique": 7574,
+        "solver": 16032,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one reason people in the passage have to walk far to get water?",
+      "ms": {
+        "draft": 2870,
+        "critique": 6169,
+        "solver": 18471,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a family fills water from a tanker for half an hour and uses it all day, what might happen to the water?",
+      "ms": {
+        "draft": 2870,
+        "critique": 6482,
+        "solver": 19139,
+        "form": 2233
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the meaning of the word 'sar' in the name 'Ghadsisar'?",
+      "ms": {
+        "draft": 3658,
+        "critique": 6662,
+        "solver": 1340,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason given in the passage for the drying up of the nine lakes near Ghadsisar?",
+      "ms": {
+        "draft": 3658,
+        "critique": 6607,
+        "solver": 1628,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did people in Rajasthan build stepwells according to the passage?",
+      "ms": {
+        "draft": 3658,
+        "critique": 6866,
+        "solver": 1745
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why might some people put a pump directly in the Jal Board pipeline?",
+      "ms": {
+        "draft": 2870,
+        "critique": 6980,
+        "solver": 17030
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a house has a system to collect rainwater from the roof, how might the water reach an underground tank?",
+      "ms": {
+        "draft": 3658,
+        "critique": 7771,
+        "solver": 10213
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the meaning of 'sar' in the word 'Ghadsisar'?",
+      "ms": {
+        "draft": 3450,
+        "critique": 6175,
+        "solver": 15607,
+        "form": 4200,
+        "translation": 24176
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen to rainwater if there were no lakes in an area?",
+      "ms": {
+        "draft": 3450,
+        "critique": 5980,
+        "solver": 1101,
+        "form": 5815,
+        "translation": 29827
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did people come to Ghadsisar according to the passage?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a source of water mentioned in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why were the stepwells important according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Students might confuse the function of stepwells with that o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main reason some people in the passage have to walk far to get water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, why do people in some colonies have to buy drinking water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a family fills water from a tanker for half an hour and uses it all day, what problem might they face?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a source of water mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Believes water comes from the sky as rain, not recognizing i…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is one reason people in the passage have to walk far to get water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"A student might think that water from a well is always hot, …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a family fills water from a tanker for half an hour and uses it all day, what might happen to the water?",
+      "reason": "options 1 and 3 are the same (\"It might become saltier\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the meaning of the word 'sar' in the name 'Ghadsisar'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason given in the passage for the drying up of the nine lakes near Ghadsisar?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Why did people in Rajasthan build stepwells according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Why might some people put a pump directly in the Jal Board pipeline?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a house has a system to collect rainwater from the roof, how might the water reach an underground tank?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

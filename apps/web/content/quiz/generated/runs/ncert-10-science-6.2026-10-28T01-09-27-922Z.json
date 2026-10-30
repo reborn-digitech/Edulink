@@ -1,0 +1,705 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T01:09:27.922Z",
+  "finishedAt": "2026-10-28T01:17:37.622Z",
+  "seconds": 490,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc106.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 6 — Control and Coordination",
+    "edition": "Reprint 2026-27",
+    "chunks": 18,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\n11. Students to attempt either option A or B. 2\nA. Which parts of the brain perform certain actions for which we do not have\nany thinking control? What are such actions called, give two examples.\nOR\nB. How is the information of touch in the ‘sensitive plant' controlled and\ncoordinated?",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n11. The actions on which we do not have any thinking control are controlled by 2\nthe mid-brain and hind-brain. These are called involuntary actions.\nExamples (any two) blood pressure, salivation and vomiting\nOR\nThe information of touch is communicated by electrical-chemical means\nfrom cell to cell. Plant cells change shape by changing the amount of water\nin them, resulting in swelling or shrinking, thus changing shapes and\ncausing movement.\n12  Uterine lining thickens and is richly supplied with blood vessels to 2\nnourish the embryo.\n Placental connection is developed between the uterus and embryo.\n13  When a nerve impulse reaches the muscle, the muscle cells will move 3\nby changing their",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n11. C. Posture and balance.",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n13. How do muscles move at the cellular level and respond when processed 3\nmessages are received from the brain?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 143778,
+      "in": 40,
+      "out": 35,
+      "rejects": 5,
+      "promptTokens": 36138,
+      "completionTokens": 8767
+    },
+    "critique": {
+      "calls": 40,
+      "ms": 230662,
+      "in": 35,
+      "out": 27,
+      "rejects": 8,
+      "promptTokens": 17343,
+      "completionTokens": 6599
+    },
+    "solver": {
+      "calls": 165,
+      "ms": 70920,
+      "in": 27,
+      "out": 25,
+      "rejects": 2,
+      "promptTokens": 23726,
+      "completionTokens": 1471
+    },
+    "form": {
+      "calls": 11,
+      "ms": 63988,
+      "in": 25,
+      "out": 17,
+      "rejects": 8,
+      "promptTokens": 9686,
+      "completionTokens": 1522
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 45,
+      "ms": 7030,
+      "in": 17,
+      "out": 12,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 459148,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 28273,
+      "completionTokens": 14525
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 1,
+    "4": 2,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the figure showing a neuron, which part is responsible for transmitting the electrical impulse to the next neuron?",
+      "ms": {
+        "draft": 3461,
+        "critique": 5841
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student touches a hot object and immediately pulls their hand away. What type of response is this?",
+      "ms": {
+        "draft": 3461,
+        "critique": 5863
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the neuron is responsible for acquiring information from the environment?",
+      "ms": {
+        "draft": 3461,
+        "critique": 6579
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "When a person touches a hot object, the hand is pulled away before they feel the pain. Why does this happen?",
+      "ms": {
+        "draft": 3461,
+        "critique": 6013,
+        "solver": 11321,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a person has a cold and their nose is blocked, they may not be able to fully appreciate the taste of food. What is the most likely reason for this?",
+      "ms": {
+        "draft": 3461,
+        "critique": 6544,
+        "solver": 11617,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How do muscle cells move according to the passage?",
+      "ms": {
+        "draft": 11550,
+        "critique": 5778,
+        "solver": 1605,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to a plant's tendrils when they touch a support?",
+      "ms": {
+        "draft": 3023,
+        "critique": 5123,
+        "solver": 1860
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of the brain controls involuntary actions like blood pressure and salivation?",
+      "ms": {
+        "draft": 4369,
+        "critique": 5820
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a controlled experiment, a student observed that a plant's leaves curled when exposed to a chemical. What is the most likely explanation for this response?",
+      "ms": {
+        "draft": 4369,
+        "critique": 5911,
+        "solver": 1385,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How do plant cells respond to touch in the 'sensitive plant'?",
+      "ms": {
+        "draft": 4369,
+        "critique": 6900,
+        "solver": 3490,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student conducted an experiment to observe the movement of a plant in response to touch. What is the most likely reason for the plant's movement?",
+      "ms": {
+        "draft": 4369,
+        "critique": 6441,
+        "solver": 929,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the brain controls involuntary actions such as blood pressure and salivation?",
+      "ms": {
+        "draft": 2843,
+        "critique": 6048
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the sensitive plant, how do cells respond to touch?",
+      "ms": {
+        "draft": 2843,
+        "critique": 6613
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of movement is shown by the leaves of the sensitive plant when touched?",
+      "ms": {
+        "draft": 8390,
+        "critique": 6145,
+        "solver": 1026,
+        "form": 3715
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the brain is responsible for interpreting sensory information and making decisions about how to respond?",
+      "ms": {
+        "draft": 3239,
+        "critique": 6984
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How do plant cells change shape to allow movement without muscles?",
+      "ms": {
+        "draft": 8390,
+        "critique": 6364,
+        "solver": 1286,
+        "form": 1859
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the movement of the sensitive plant happen faster than the movement of a plant responding to light?",
+      "ms": {
+        "draft": 8390,
+        "critique": 5454,
+        "solver": 9926
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person loses the ability to maintain balance and coordinate voluntary movements, which part of the brain is most likely to be affected?",
+      "ms": {
+        "draft": 3239,
+        "critique": 3622
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the brain controls involuntary actions like blood pressure and salivation?",
+      "ms": {
+        "draft": 11550,
+        "critique": 5427,
+        "solver": 1192,
+        "form": 3133
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the brain is responsible for maintaining posture and balance?",
+      "ms": {
+        "draft": 11550,
+        "critique": 6104,
+        "solver": 1241,
+        "form": 3902
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a plant hormone?",
+      "ms": {
+        "draft": 3057,
+        "critique": 4267,
+        "solver": 652,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the function of receptors in our body?",
+      "ms": {
+        "draft": 2364,
+        "critique": 5566,
+        "solver": 959,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a plant hormone?",
+      "ms": {
+        "draft": 2364,
+        "critique": 6217,
+        "solver": 1387,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the nervous system, what is the role of the synapse?",
+      "ms": {
+        "draft": 3461,
+        "critique": 6690,
+        "solver": 11824,
+        "form": 0,
+        "translation": 42743
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the reflex arc in the nervous system?",
+      "ms": {
+        "draft": 11550,
+        "critique": 5385,
+        "solver": 1236,
+        "form": 2963,
+        "translation": 38101
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How do plant cells respond to touch without a nervous system or muscles?",
+      "ms": {
+        "draft": 3023,
+        "critique": 5483,
+        "solver": 1265,
+        "form": 0,
+        "translation": 48691
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to muscle cells when a nerve impulse reaches them?",
+      "ms": {
+        "draft": 11550,
+        "critique": 4716,
+        "solver": 1864,
+        "form": 2426,
+        "translation": 37054
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How does the nervous system respond to a stimulus?",
+      "ms": {
+        "draft": 2364,
+        "critique": 5853,
+        "solver": 1504,
+        "form": 0,
+        "translation": 32185
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In which direction do plant roots grow in response to gravity?",
+      "ms": {
+        "draft": 3023,
+        "critique": 4648,
+        "solver": 1152,
+        "form": 0,
+        "translation": 34467
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a scenario where a person is exposed to a sudden danger, which hormone is likely to be released?",
+      "ms": {
+        "draft": 2364,
+        "critique": 7326,
+        "solver": 1566,
+        "form": 0,
+        "translation": 28436
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why is the spinal cord important for reflex actions?",
+      "ms": {
+        "draft": 11550,
+        "critique": 5862,
+        "solver": 1431,
+        "form": 2976,
+        "translation": 40446
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a plant's shoot is turned away from the light, what will happen to its new growth?",
+      "ms": {
+        "draft": 3023,
+        "critique": 6738,
+        "solver": 1417,
+        "form": 0,
+        "translation": 36150
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "How do hormones in plants differ from hormones in animals?",
+      "ms": {
+        "draft": 2843,
+        "critique": 7313,
+        "solver": 10275,
+        "form": 0,
+        "translation": 41444
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "How does the body maintain the balance of blood sugar levels?",
+      "ms": {
+        "draft": 2364,
+        "critique": 6095,
+        "solver": 1088,
+        "form": 0,
+        "translation": 35495
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason plants cannot respond as quickly as animals to stimuli?",
+      "ms": {
+        "draft": 3023,
+        "critique": 6229,
+        "solver": 1171,
+        "form": 0,
+        "translation": 38304
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What type of movement is shown by the sensitive plant when touched?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which hormone is responsible for increasing the heart rate during a stressful situation?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the figure showing a neuron, which part is responsible for transmitting the electrical impulse to the next neuron?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A student touches a hot object and immediately pulls their hand away. What type of response is this?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which part of the neuron is responsible for acquiring information from the environment?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "When a person touches a hot object, the hand is pulled away before they feel the pain. Why does this happen?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a person has a cold and their nose is blocked, they may not be able to fully appreciate the taste of food. What is the most likely reason for this?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "How do muscle cells move according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What happens to a plant's tendrils when they touch a support?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which part of the brain controls involuntary actions like blood pressure and salivation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a controlled experiment, a student observed that a plant's leaves curled when exposed to a chemical. What is the most likely explanation for this response?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "How do plant cells respond to touch in the 'sensitive plant'?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student conducted an experiment to observe the movement of a plant in response to touch. What is the most likely reason for the plant's movement?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a function of the hypothalamus?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What is the main function of auxin in plants?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What happens to the body when adrenaline is released in response to a scary situation?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which part of the brain controls involuntary actions such as blood pressure and salivation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the sensitive plant, how do cells respond to touch?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What type of movement is shown by the leaves of the sensitive plant when touched?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"confuses growth-dependent movement with the movement describ…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the brain is responsible for interpreting sensory information and making decisions about how to respond?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How do plant cells change shape to allow movement without muscles?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cellWall: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why does the movement of the sensitive plant happen faster than the movement of a plant responding to light?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person loses the ability to maintain balance and coordinate voluntary movements, which part of the brain is most likely to be affected?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which part of the brain controls involuntary actions like blood pressure and salivation?",
+      "reason": "near-duplicate of served question cmvgvp4ai0536gpfhfxar8mdi (cosine 0.955 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which part of the brain is responsible for maintaining posture and balance?",
+      "reason": "near-duplicate of served question cmvgvp4ey054ogpfheomppm7y (cosine 0.933 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a plant hormone?",
+      "reason": "near-duplicate of served question cmvgvp4ab052ugpfhrf6vdr77 (cosine 0.931 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the function of receptors in our body?",
+      "reason": "near-duplicate of served question cmvjygkr90i7ogpfhxccbveti (cosine 0.900 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a plant hormone?",
+      "reason": "near-duplicate of served question cmvgvp4ab052ugpfhrf6vdr77 (cosine 0.931 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

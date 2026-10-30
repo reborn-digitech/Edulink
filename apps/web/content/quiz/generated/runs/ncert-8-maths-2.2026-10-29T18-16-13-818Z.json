@@ -1,0 +1,837 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T18:16:13.818Z",
+  "finishedAt": "2026-10-29T18:24:20.347Z",
+  "seconds": 487,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-I",
+    "bookCode": "hegp1",
+    "document": "ncert/8/mathematics/hegp102.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Power Play",
+    "edition": "Reprint 2026-27",
+    "chunks": 26,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n8. (B) ଷଵ\nଷ଺\nProbability of getting sum 8 is ଷ଺ ହ\nProbability of not getting sum 8 is ଷଵ ଷ଺",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n14. B) 3 8",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n8. (d) RHS"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 183503,
+      "in": 44,
+      "out": 43,
+      "rejects": 1,
+      "promptTokens": 46061,
+      "completionTokens": 9750
+    },
+    "critique": {
+      "calls": 55,
+      "ms": 393914,
+      "in": 43,
+      "out": 34,
+      "rejects": 9,
+      "promptTokens": 25341,
+      "completionTokens": 10124
+    },
+    "solver": {
+      "calls": 257,
+      "ms": 143516,
+      "in": 34,
+      "out": 26,
+      "rejects": 8,
+      "promptTokens": 59561,
+      "completionTokens": 2981
+    },
+    "form": {
+      "calls": 7,
+      "ms": 28724,
+      "in": 26,
+      "out": 9,
+      "rejects": 17,
+      "promptTokens": 1873,
+      "completionTokens": 696
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 45,
+      "ms": 8739,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 264230,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 17424,
+      "completionTokens": 7870
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the value of 5⁴ according to the passage?",
+      "ms": {
+        "draft": 3776,
+        "critique": 6875,
+        "solver": 1705,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many times does the thickness of a paper increase after 10 folds, according to the passage?",
+      "ms": {
+        "draft": 3776,
+        "critique": 8073,
+        "solver": 1594,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the total number of diamonds in the poem 'The Stones that Shine' according to the passage?",
+      "ms": {
+        "draft": 3776,
+        "critique": 6140,
+        "solver": 2002
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a sheet of paper is folded 15 times, what is the approximate thickness in centimeters, given that the initial thickness is 0.001 cm?",
+      "ms": {
+        "draft": 3776,
+        "critique": 7645
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the expression for the thickness of a sheet of paper after it is folded 10 times if the initial thickness is represented by v?",
+      "ms": {
+        "draft": 3776,
+        "critique": 7008,
+        "solver": 1294,
+        "form": 3956
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the total number of 5-digit passwords possible if each digit can be from 0 to 9?",
+      "ms": {
+        "draft": 3902,
+        "critique": 6584,
+        "solver": 2006,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 2^4 is the number of lotuses in the doubling pond after 4 days, what is the number of lotuses in the tripling pond after 4 more days?",
+      "ms": {
+        "draft": 3902,
+        "critique": 6411,
+        "solver": 19005
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 4^6 is the number of lotuses in the doubling pond after 6 days, and the number of lotuses triples every day in the tripling pond, what is the total number of lotuses in the tripling pond after 6 days if it started with 4^6 lotuses?",
+      "ms": {
+        "draft": 3902,
+        "critique": 8182,
+        "solver": 17027,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a line of length 2 units is halved 5 times, what is the final length of the line in exponential form?",
+      "ms": {
+        "draft": 3902,
+        "critique": 9205,
+        "solver": 11274
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the number of lotuses in a doubling pond is 2^a and they are placed in a tripling pond, what is the number of lotuses in the tripling pond after b days?",
+      "ms": {
+        "draft": 3902,
+        "critique": 7752,
+        "solver": 2146,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct expanded form of 172 using powers of 10?",
+      "ms": {
+        "draft": 5005,
+        "critique": 9258,
+        "solver": 1541,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the scientific notation of 59,76,00,00,00,00,00,00,00,00,00,000 kg, the mass of the Earth?",
+      "ms": {
+        "draft": 5005,
+        "critique": 6802,
+        "solver": 1782,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 2^4 is the number of lotuses in the doubling pond after 4 days, and these lotuses are placed in a tripling pond, what is the number of lotuses in the tripling pond after 5 more days?",
+      "ms": {
+        "draft": 3902,
+        "critique": 7490,
+        "solver": 17760,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The number line shows the distance from the Sun to Saturn as 1.4335 × 10^12 meters. Where would the distance to the Sun and Earth, 1.496 × 10^11 meters, be located on the number line?",
+      "ms": {
+        "draft": 5005,
+        "critique": 7608,
+        "solver": 1717
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Roxie's weight is 45 kg, and the cost of 1 kg of jaggery is ₹70. If she wants to donate jaggery equal to her weight, what is the approximate cost in scientific notation?",
+      "ms": {
+        "draft": 5005,
+        "critique": 6625,
+        "solver": 826,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the approximate number of starlings globally, as stated in the passage?",
+      "ms": {
+        "draft": 3818,
+        "critique": 7489,
+        "solver": 16091,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the distance around the Earth is 40,000 km and a person walks non-stop, how many times can they circumnavigate the Earth in their lifetime, assuming an average lifespan of 80 years and walking 8 hours per day?",
+      "ms": {
+        "draft": 3818,
+        "critique": 10943
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 10^10 is called a googol, then 10^100 is called a googolplex. What is the name of 10^1000?",
+      "ms": {
+        "draft": 6772,
+        "critique": 6299
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the scientific notation for the number of stars in the observable universe?",
+      "ms": {
+        "draft": 3800,
+        "critique": 7478,
+        "solver": 7904
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following products are equal?",
+      "ms": {
+        "draft": 3734,
+        "critique": 7690
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 1.2 if 12 = 144?",
+      "ms": {
+        "draft": 3734,
+        "critique": 8383,
+        "solver": 975,
+        "form": 6235
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the total number of pieces of clothing if each person has 30 pieces and the global population is 8.2 × 10^9?",
+      "ms": {
+        "draft": 3734,
+        "critique": 7663,
+        "solver": 1726
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many unique alphanumeric passcodes of length 5 are possible?",
+      "ms": {
+        "draft": 3734,
+        "critique": 7373,
+        "solver": 1556,
+        "form": 4446
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the minimum number of digits required for a unique ID code if a dairy produces 8.5 billion packets of milk?",
+      "ms": {
+        "draft": 3734,
+        "critique": 8701,
+        "solver": 16696,
+        "form": 5098
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct expression for the thickness of a sheet of paper after it is folded 10 times, if the initial thickness is represented by 'v'?",
+      "ms": {
+        "draft": 4137,
+        "critique": 6191,
+        "solver": 1817,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the numerical value of 2^5 × 10^3?",
+      "ms": {
+        "draft": 4137,
+        "critique": 9612
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a game, Roxie wrote 10^13 and Estu wrote 999999 × 999999. Who won the round?",
+      "ms": {
+        "draft": 4137,
+        "critique": 7248,
+        "solver": 12552,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which number is called a googol?",
+      "ms": {
+        "draft": 4167,
+        "critique": 7431
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a way to express 100 million?",
+      "ms": {
+        "draft": 4167,
+        "critique": 6120
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct way to express 8^3 as a power of a power?",
+      "ms": {
+        "draft": 4137,
+        "critique": 8695,
+        "solver": 18855
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the scientific notation for the estimated number of stars in the observable universe?",
+      "ms": {
+        "draft": 4853,
+        "critique": 8856
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of 10^100 divided by 10^90?",
+      "ms": {
+        "draft": 4167,
+        "critique": 7134,
+        "solver": 17461
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A digital locker has an alphanumeric passcode of length 5. How many different passcodes are possible if each character can be a digit (0-9) or a letter (A-Z)?",
+      "ms": {
+        "draft": 4167,
+        "critique": 8661,
+        "solver": 11278,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a person is 4840 days old, how many hours old is that person?",
+      "ms": {
+        "draft": 4853,
+        "critique": 3336
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the distance from the Sun to Saturn is 1.4335 × 10^12 meters and the distance from the Sun to Uranus is 1.439 × 10^12 meters, which is farther?",
+      "ms": {
+        "draft": 5005,
+        "critique": 5884,
+        "solver": 1893,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the repeated multiplication of a number by itself?",
+      "ms": {
+        "draft": 3776,
+        "critique": 6241,
+        "solver": 1353,
+        "form": 4860,
+        "translation": 41152
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the traditional practice of walking long distances as part of a religious or spiritual pursuit?",
+      "ms": {
+        "draft": 3818,
+        "critique": 7154,
+        "solver": 1641,
+        "form": 5027,
+        "translation": 37568
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the distance from the Sun to Saturn is 1.4335 × 10^12 meters and the distance from the Sun to Earth is 1.496 × 10^11 meters, which is farther?",
+      "ms": {
+        "draft": 5005,
+        "critique": 6012,
+        "solver": 1220,
+        "form": 0,
+        "translation": 39113
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following describes numbers that are both square and cube numbers?",
+      "ms": {
+        "draft": 3734,
+        "critique": 7216,
+        "solver": 1304,
+        "form": 2943,
+        "translation": 39765
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person walks 400 km to reach a place and arrives early in the morning, how long ago did they start their journey? Assume they walk at a speed of 5 km/h.",
+      "ms": {
+        "draft": 3818,
+        "critique": 6230,
+        "solver": 12250,
+        "form": 0,
+        "translation": 32030
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a number is written as 5 × 10^6, how many times larger is this number than 5 × 10^3?",
+      "ms": {
+        "draft": 4137,
+        "critique": 7623,
+        "solver": 1881,
+        "form": 0,
+        "translation": 31355
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a number is both a square and a cube, what must be true about its prime factorization?",
+      "ms": {
+        "draft": 4167,
+        "critique": 7690,
+        "solver": 1085,
+        "form": 0,
+        "translation": 22595
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 2^x = 64, what is the value of x?",
+      "ms": {
+        "draft": 4137,
+        "critique": 7916,
+        "solver": 981,
+        "form": 0,
+        "translation": 16671
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "How many seconds does it take for light to reach the Earth from the Sun according to the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of 5⁴ according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "How many times does the thickness of a paper increase after 10 folds, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the total number of diamonds in the poem 'The Stones that Shine' according to the passage?",
+      "reason": "the solver picked option 0 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a sheet of paper is folded 15 times, what is the approximate thickness in centimeters, given that the initial thickness is 0.001 cm?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the expression for the thickness of a sheet of paper after it is folded 10 times if the initial thickness is represented by v?",
+      "reason": "options 2 and 3 are the same (\"v × 2¹⁰\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the total number of 5-digit passwords possible if each digit can be from 0 to 9?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"10^5\" = 100000, but the key says 10"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 2^4 is the number of lotuses in the doubling pond after 4 days, what is the number of lotuses in the tripling pond after 4 more days?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If 4^6 is the number of lotuses in the doubling pond after 6 days, and the number of lotuses triples every day in the tripling pond, what is the total number of lotuses in the tripling pond after 6 days if it started with 4^6 lotuses?",
+      "reason": "options 0 and 1 say the same thing (\"4^6 × 3^6\" / \"4^6 × 3^4\"); options 0 and 2 are the same (\"4^6 × 3^6\"); options 0 and 3 say the same thing (\"4^6 × 3^6\" / \"4^6 × 3^3\"); options 1 and 2 say the same thing (\"4^6 × 3^4\" / \"4^6 + 3^6\"); options 1 and 3 say the same thing (\"4^6 × 3^4\" / \"4^6 × 3^3\"); options 2 and 3 say the same thing (\"4^6 + 3^6\" / \"4^6 × 3^3\"); ARITHMETIC MISMATCH — checkExpr \"4^6*3^6\" = 2985984, but the key says 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a line of length 2 units is halved 5 times, what is the final length of the line in exponential form?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the number of lotuses in a doubling pond is 2^a and they are placed in a tripling pond, what is the number of lotuses in the tripling pond after b days?",
+      "reason": "options 0 and 1 are the same (\"2^a × 3^b\"); options 0 and 2 say the same thing (\"2^a × 3^b\" / \"(2 + 3)^{a + b}\"); options 1 and 2 say the same thing (\"2^a + 3^b\" / \"(2 + 3)^{a + b}\"); checkExpr \"2^a*3^b\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the correct expanded form of 172 using powers of 10?",
+      "reason": "options 0 and 1 say the same thing (\"(1 × 10^1) + (7 × 10^1) + (2 × 10^0)\" / \"(1 × 10^2) + (7 × 10^1) + (2 × 10^0)\"); options 0 and 3 say the same thing (\"(1 × 10^1) + (7 × 10^1) + (2 × 10^0)\" / \"(1 × 10^2) + (7 × 10^0) + (2 × 10^1)\"); options 1 and 3 say the same thing (\"(1 × 10^2) + (7 × 10^1) + (2 × 10^0)\" / \"(1 × 10^2) + (7 × 10^0) + (2 × 10^1)\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the scientific notation of 59,76,00,00,00,00,00,00,00,00,00,000 kg, the mass of the Earth?",
+      "reason": "options are written to different precisions (1 and 2 and 3 decimals); options 0 and 1 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 2^4 is the number of lotuses in the doubling pond after 4 days, and these lotuses are placed in a tripling pond, what is the number of lotuses in the tripling pond after 5 more days?",
+      "reason": "options 0 and 2 say the same thing (\"2^4 × 3^5\" / \"2^5 × 3^4\"); options 0 and 3 are the same (\"2^4 × 3^5\"); options 2 and 3 say the same thing (\"2^5 × 3^4\" / \"2^4 × 3^5\"); ARITHMETIC MISMATCH — checkExpr \"2^4*3^5\" = 3888, but the key says 2"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The number line shows the distance from the Sun to Saturn as 1.4335 × 10^12 meters. Where would the distance to the Sun and Earth, 1.496 × 10^11 meters, be located on the number line?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Roxie's weight is 45 kg, and the cost of 1 kg of jaggery is ₹70. If she wants to donate jaggery equal to her weight, what is the approximate cost in scientific notation?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals); options 0 and 1 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the approximate number of starlings globally, as stated in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options are in more than one unit (trillion, billion, million, thousand); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the distance around the Earth is 40,000 km and a person walks non-stop, how many times can they circumnavigate the Earth in their lifetime, assuming an average lifespan of 80 years and walking 8 hours per day?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If 10^10 is called a googol, then 10^100 is called a googolplex. What is the name of 10^1000?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is the scientific notation for the number of stars in the observable universe?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following products are equal?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of 1.2 if 12 = 144?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the total number of pieces of clothing if each person has 30 pieces and the global population is 8.2 × 10^9?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "How many unique alphanumeric passcodes of length 5 are possible?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the minimum number of digits required for a unique ID code if a dairy produces 8.5 billion packets of milk?",
+      "reason": "options 2 and 3 are the same (\"11\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct expression for the thickness of a sheet of paper after it is folded 10 times, if the initial thickness is represented by 'v'?",
+      "reason": "options 1 and 2 are the same (\"2 × 10 × v\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the numerical value of 2^5 × 10^3?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a game, Roxie wrote 10^13 and Estu wrote 999999 × 999999. Who won the round?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which number is called a googol?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a way to express 100 million?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a correct way to express 8^3 as a power of a power?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the scientific notation for the estimated number of stars in the observable universe?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the value of 10^100 divided by 10^90?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A digital locker has an alphanumeric passcode of length 5. How many different passcodes are possible if each character can be a digit (0-9) or a letter (A-Z)?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"36^5\" = 60466176, but the key says 36"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a person is 4840 days old, how many hours old is that person?",
+      "reason": "option 1 is not wrong; option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If the distance from the Sun to Saturn is 1.4335 × 10^12 meters and the distance from the Sun to Uranus is 1.439 × 10^12 meters, which is farther?",
+      "reason": "near-duplicate of batch item \"If the distance from the Sun to Saturn is 1.4335 ×…\" (cosine 0.927 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,758 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T01:53:34.861Z",
+  "finishedAt": "2026-10-26T02:07:11.604Z",
+  "seconds": 817,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo104.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 4 — Animal Kingdom",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2005 — question paper]\n54. A cladistic classification of kingdom Animalia is shown. Assign the\nappropriate features (from the options given below) to the numbers 1- 9.\nSalamander\nLung fish 9\nShark\nSea squirt 6\n5 7 8\nlung\n3 4\n1 2\nAorta\n1. Cephalization\n2. ____________\n3. Hinged jaw\n4. ____________\n5. ____________\n6. ____________\n7. Limbs\n8. ____________\n9. ____________\nSwim bladder\nLimbs\nThree chambered heart\nHinged jaw\nVertebrae\nInternal development of egg\nLong sticky tongue\nCephalization\nGill slits\nAmniotic egg\nFibrous protein skeleton\nBony fin\nMuscular lobed fins\n***************",
+      "[INBO 2025 — question paper]\n56. (4 points) A classification of animals is shown below with important evolutionary traits.\nPlace the given phyla against the appropriate alphabet.\nIndicate the position of the following phyla (1 – 4) in the cladogram and fill in the\nrespective alphabet (P – W) in the blanks.\n1. Echinoderms\n2. Mollusks\n3. Roundworms\n4. Arthropods\n********* END OF SECTION B *********",
+      "[INBO 2005 — question paper]\n22. If a taxon of animals is further classified on the basis of ‘canal systems’,\nthe taxon has to be:\na. Phylum Echinodermata\nb. Phylum Porifera\nc. Class Osteichthyes\nd. Class Insecta\nGENETICS & EVOLUTION",
+      "[INBO 2014 — question paper]\n38. (1 point) In the following scheme, three domain classification key with one\nrepresentative example on each domain is shown. A, B and C respectively are:\nA B C\nCyanobacteria Halophiles\nCiliates\na. Plantae, Eubacteria, Animalia\nb. Plantae, Archaebacteria, Eukaryota\nc. Eubacteria, Archaebacteria, Eukaryota\nd. Plantae, Prokaryota, Eukaryota.\n********* END OF SECTION A *******\nINDIAN NATIONAL BIOLOGY OLYMPIAD – 2014"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 231214,
+      "in": 41,
+      "out": 39,
+      "rejects": 3,
+      "promptTokens": 40985,
+      "completionTokens": 11847
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 297474,
+      "in": 39,
+      "out": 28,
+      "rejects": 11,
+      "promptTokens": 19135,
+      "completionTokens": 7302
+    },
+    "solver": {
+      "calls": 162,
+      "ms": 80211,
+      "in": 28,
+      "out": 25,
+      "rejects": 3,
+      "promptTokens": 26547,
+      "completionTokens": 1521
+    },
+    "form": {
+      "calls": 25,
+      "ms": 151685,
+      "in": 25,
+      "out": 12,
+      "rejects": 13,
+      "promptTokens": 23077,
+      "completionTokens": 3398
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 54,
+      "ms": 10909,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 463773,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 26098,
+      "completionTokens": 12252
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 4,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following features is not found in diploblastic animals?",
+      "ms": {
+        "draft": 4222,
+        "critique": 5488
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of an animal with a tissue level of organisation?",
+      "ms": {
+        "draft": 4222,
+        "critique": 6034
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following animals has a body symmetry that can be divided into two identical halves in only one plane?",
+      "ms": {
+        "draft": 4222,
+        "critique": 6527
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If an animal exhibits metamerism, which of the following is most likely to be true about its body structure?",
+      "ms": {
+        "draft": 4222,
+        "critique": 5661
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a classification of animals, the presence of a notochord is used to distinguish between which two groups?",
+      "ms": {
+        "draft": 4222,
+        "critique": 6235
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a characteristic of pseudocoelomates?",
+      "ms": {
+        "draft": 4222,
+        "critique": 6406
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is studying the characteristics of different animal phyla. Which of the following phyla is known for having a chitinous exoskeleton and jointed appendages?",
+      "ms": {
+        "draft": 6540,
+        "critique": 6434
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a cnidarian that exhibits both polyp and medusa forms in its life cycle?",
+      "ms": {
+        "draft": 6540,
+        "critique": 6139,
+        "solver": 14988,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A diagram shows an animal with a segmented body, a closed circulatory system, and nephridia for excretion. Which phylum does this animal belong to?",
+      "ms": {
+        "draft": 6540,
+        "critique": 5228,
+        "solver": 2636,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct match between a phylum and its characteristic?",
+      "ms": {
+        "draft": 8101,
+        "critique": 6922,
+        "solver": 1771,
+        "form": 4595
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of echinoderms?",
+      "ms": {
+        "draft": 8101,
+        "critique": 8557,
+        "solver": 1979,
+        "form": 4026
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a diagram of an animal with the following features: it has a notochord in the adult, a closed circulatory system, and a post-anal tail. Which of the following could it be?",
+      "ms": {
+        "draft": 8101,
+        "critique": 8078,
+        "solver": 1818,
+        "form": 4242
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about cartilaginous fishes?",
+      "ms": {
+        "draft": 8101,
+        "critique": 6324,
+        "solver": 1219,
+        "form": 4257
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A new animal is discovered, and it has a closed circulatory system, a post-anal tail, and gill slits in the adult stage. What can be inferred about its classification?",
+      "ms": {
+        "draft": 8101,
+        "critique": 7113,
+        "solver": 2052,
+        "form": 4879
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the presence of a coelom important in the classification of animals?",
+      "ms": {
+        "draft": 4585,
+        "critique": 7221
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which group of animals is known for having a water vascular system?",
+      "ms": {
+        "draft": 4585,
+        "critique": 7788
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic feature of Echinodermata?",
+      "ms": {
+        "draft": 4069,
+        "critique": 6969,
+        "solver": 1334,
+        "form": 3772
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of Phylum Echinodermata?",
+      "ms": {
+        "draft": 16316,
+        "critique": 8033
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is not a feature of all vertebrates?",
+      "ms": {
+        "draft": 4069,
+        "critique": 8136,
+        "solver": 1262
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observes an animal with a chitinous exoskeleton, jointed appendages, and an open circulatory system. Which phylum does this animal belong to?",
+      "ms": {
+        "draft": 21023,
+        "critique": 8362
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a characteristic of both Chordata and Hemichordata?",
+      "ms": {
+        "draft": 16316,
+        "critique": 9896,
+        "solver": 1548
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a cladogram showing evolutionary relationships, which phylum would be most closely related to Chordata?",
+      "ms": {
+        "draft": 16316,
+        "critique": 7540,
+        "solver": 19024,
+        "form": 4574
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student is given a diagram showing an animal with radial symmetry, a gastro-vascular cavity, and cnidoblasts. Which phylum does this animal belong to?",
+      "ms": {
+        "draft": 21023,
+        "critique": 6588,
+        "solver": 1254,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An animal is observed with a dorso-ventrally flattened body, is a parasite, and has flame cells. Which of the following is most likely the phylum of this animal?",
+      "ms": {
+        "draft": 21023,
+        "critique": 8142,
+        "solver": 16692
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An animal is found with a closed circulatory system, a segmented body, and parapodia. Which phylum is this animal most likely to belong to?",
+      "ms": {
+        "draft": 21023,
+        "critique": 8922,
+        "solver": 1531,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What type of symmetry is shown by coelenterates?",
+      "ms": {
+        "draft": 5361,
+        "critique": 5443,
+        "solver": 1069,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student identifies an animal with a body covered by a calcareous shell, a muscular foot, and a mantle. Which phylum does this animal belong to?",
+      "ms": {
+        "draft": 21023,
+        "critique": 8000,
+        "solver": 1977,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a bony fish?",
+      "ms": {
+        "draft": 3626,
+        "critique": 6568,
+        "solver": 1847,
+        "form": 4330,
+        "translation": 43248
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an amphibian?",
+      "ms": {
+        "draft": 3626,
+        "critique": 6100,
+        "solver": 1590,
+        "form": 3857,
+        "translation": 35443
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of amphibians?",
+      "ms": {
+        "draft": 3626,
+        "critique": 5856,
+        "solver": 1657,
+        "form": 2259,
+        "translation": 37518
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a feature of bony fishes?",
+      "ms": {
+        "draft": 3626,
+        "critique": 6873,
+        "solver": 1481,
+        "form": 2811,
+        "translation": 42482
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which level of organisation is exhibited by sponges?",
+      "ms": {
+        "draft": 5361,
+        "critique": 6608,
+        "solver": 1885,
+        "form": 0,
+        "translation": 30519
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which group of animals has a notochord during their embryonic life?",
+      "ms": {
+        "draft": 4069,
+        "critique": 7321,
+        "solver": 2137,
+        "form": 3085,
+        "translation": 37735
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a cartilaginous fish?",
+      "ms": {
+        "draft": 16316,
+        "critique": 7935,
+        "solver": 1203,
+        "form": 4767,
+        "translation": 32367
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a feature of the phylum Arthropoda?",
+      "ms": {
+        "draft": 4069,
+        "critique": 7321,
+        "solver": 1265,
+        "form": 4557,
+        "translation": 41327
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a distinguishing feature of Phylum Hemichordata?",
+      "ms": {
+        "draft": 16316,
+        "critique": 7484,
+        "solver": 2047,
+        "form": 4308,
+        "translation": 36726
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a chordate that does not have jaws?",
+      "ms": {
+        "draft": 4069,
+        "critique": 6698,
+        "solver": 2088,
+        "form": 3552,
+        "translation": 33886
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a classification diagram, a student notices a branch that includes animals with a chitinous exoskeleton, jointed appendages, and an open circulatory system. Which of the following phyla would this branch represent?",
+      "ms": {
+        "draft": 6540,
+        "critique": 9488,
+        "solver": 1518,
+        "form": 1,
+        "translation": 46914
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student is analyzing the evolutionary traits of different phyla and observes that a certain group has a pseudocoelom, a complete digestive system, and separate sexes. Which phylum is this most likely to represent?",
+      "ms": {
+        "draft": 6540,
+        "critique": 7659,
+        "solver": 1505,
+        "form": 0,
+        "translation": 42285
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A student is studying the classification of animals. Which of the following phyla is characterized by a bilateral body symmetry, triploblastic nature, and a pseudocoelom?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "Which of the following is a characteristic feature of arthropods?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following features is not found in diploblastic animals?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of an animal with a tissue level of organisation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following animals has a body symmetry that can be divided into two identical halves in only one plane?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If an animal exhibits metamerism, which of the following is most likely to be true about its body structure?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a classification of animals, the presence of a notochord is used to distinguish between which two groups?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a characteristic of pseudocoelomates?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A student is studying the characteristics of different animal phyla. Which of the following phyla is known for having a chitinous exoskeleton and jointed appendages?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a cnidarian that exhibits both polyp and medusa forms in its life cycle?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A diagram shows an animal with a segmented body, a closed circulatory system, and nephridia for excretion. Which phylum does this animal belong to?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.circulatorySystem: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a correct match between a phylum and its characteristic?",
+      "reason": "figure: figure spec refused: spec.parts: animalCell has no label \"stomochord\" (it has membrane, nucleus, cytoplasm, mitochondrion)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a feature of echinoderms?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'starfish'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a diagram of an animal with the following features: it has a notochord in the adult, a closed circulatory system, and a post-anal tail. Which of the following could it be?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.tail: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is true about cartilaginous fishes?",
+      "reason": "figure: figure spec refused: spec.parts: animalCell has no label \"skeleton\" (it has membrane, nucleus, cytoplasm, mitochondrion)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A new animal is discovered, and it has a closed circulatory system, a post-anal tail, and gill slits in the adult stage. What can be inferred about its classification?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.membrane: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the presence of a coelom important in the classification of animals?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which group of animals is known for having a water vascular system?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 3,\n      \"stem\": \"Which of the following is not a characteristic of bony fishes"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic feature of Echinodermata?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"No misconception, this is correct, so not a distractor for o…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a feature of Phylum Echinodermata?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is not a feature of all vertebrates?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A student observes an animal with a chitinous exoskeleton, jointed appendages, and an open circulatory system. Which phylum does this animal belong to?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is a characteristic of both Chordata and Hemichordata?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a cladogram showing evolutionary relationships, which phylum would be most closely related to Chordata?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student is given a diagram showing an animal with radial symmetry, a gastro-vascular cavity, and cnidoblasts. Which phylum does this animal belong to?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cavity: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "An animal is observed with a dorso-ventrally flattened body, is a parasite, and has flame cells. Which of the following is most likely the phylum of this animal?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "An animal is found with a closed circulatory system, a segmented body, and parapodia. Which phylum is this animal most likely to belong to?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.membrane: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What type of symmetry is shown by coelenterates?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student identifies an animal with a body covered by a calcareous shell, a muscular foot, and a mantle. Which phylum does this animal belong to?",
+      "reason": "figure: figure spec refused: spec.parts: animalCell has no label \"cellWall\" (it has membrane, nucleus, cytoplasm, mitochondrion)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

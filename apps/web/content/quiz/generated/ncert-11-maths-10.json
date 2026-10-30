@@ -21,334 +21,49 @@
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-23T03:37:32.744Z",
+  "generatedAt": "2026-10-28T08:48:49.750Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the name given to the curves obtained by intersecting a right circular cone by a plane?",
-      "choices": [
-        "Parabola",
-        "Ellipse",
-        "Conic sections",
-        "Hyperbola"
-      ],
-      "answerIndex": 2,
-      "solution": "The general term for the curves formed by intersecting a right circular cone with a plane is conic sections. This term encompasses all possible curves, including parabolas, ellipses, and hyperbolas, which are specific types of conic sections. The other options refer to individual types of curves, not the overall classification.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक समकोणीय शंकु के द्वारा एक समतल द्वारा काटने से प्राप्त वक्रों के लिए क्या नाम दिया जाता है?",
-          "choices": [
-            "परवलय",
-            "दीर्घवृत्त",
-            "शांकव खंड",
-            "अतिपरवलय"
-          ],
-          "solution": "एक समकोणीय शंकु के द्वारा एक समतल द्वारा काटने से बने वक्रों के लिए सामान्य नाम शांकव खंड है। इस शब्द के अंतर्गत सभी संभावित वक्र शामिल हैं, जिनमें परवलय, दीर्घवृत्त और अतिपरवलय शामिल हैं, जो शांकव खंड के विशिष्ट प्रकार हैं। अन्य विकल्प वक्रों के व्यक्तिगत प्रकार को संदर्भित करते हैं, न कि समग्र वर्गीकरण को।",
-          "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in Indian curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका दुसऱ्या वर्तुळाकार शंकूला एका समतलाने छेदून मिळणाऱ्या वक्रांना कोणते नाव दिले जाते?",
-          "choices": [
-            "परवलय",
-            "अंडाकृती",
-            "शंकु छेद",
-            "अतिवृत्त"
-          ],
-          "solution": "एका दुसऱ्या वर्तुळाकार शंकूला एका समतलाने छेदून मिळणाऱ्या वक्रांच्या सामान्य नावास शंकु छेद म्हणतात. हे नाव सर्व संभाव्य वक्रांना समाविष्ट करते, जे परवलय, अंडाकृती आणि अतिवृत्त यांच्या विशिष्ट प्रकारांचा समावेश करते. इतर विकल्पांमध्ये विशिष्ट प्रकारांचे वक्र दर्शविले गेले आहेत, जे सामान्य वर्गीकरण नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses standard mathematical terminology appropriate for a Marathi-medium curriculum.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses a specific type of conic section with the general term",
-        "Confuses a specific type of conic section with the general term",
-        null,
-        "A student might confuse the name of the general category with one of its specific types, thinking that 'hyperbola' is the overall term for all such curves."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is correctly formulated and the key is accurate. The correct answer is 'Conic sections,' which is the general term for all curves formed by intersecting a cone with a plane. The other options are specific types of conic sections.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh110.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 10: Conic Sections"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh110.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 10: Conic Sections"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh110.pdf",
-          "ordinal": 2,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 10: Conic Sections"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:37:32.744Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the term used for the line segment joining the two foci of a hyperbola?",
-      "choices": [
-        "Transverse axis",
-        "Conjugate axis",
-        "Major axis",
-        "Minor axis"
-      ],
-      "answerIndex": 0,
-      "solution": "The line segment joining the two foci of a hyperbola is called the transverse axis. The conjugate axis is the line through the centre and perpendicular to the transverse axis. The terms major and minor axes are used for ellipses, not hyperbolas.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक अतिपरवलय के दो नाभियों को जोड़ने वाले रेखा खंड के लिए क्या शब्द प्रयोग किया जाता है?",
-          "choices": [
-            "अनुप्रस्थ अक्ष",
-            "अनुलोम अक्ष",
-            "बड़ा अक्ष",
-            "छोटा अक्ष"
-          ],
-          "solution": "एक अतिपरवलय के दो नाभियों को जोड़ने वाला रेखा खंड अनुप्रस्थ अक्ष कहलाता है। अनुलोम अक्ष अनुप्रस्थ अक्ष के लंबवत और केंद्र से गुजरने वाला रेखा खंड होता है। बड़ा अक्ष और छोटा अक्ष के शब्द अंडाकार के लिए प्रयोग किए जाते हैं, अतिपरवलय के लिए नहीं।",
-          "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms are standard in Hindi mathematics textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "हायपर्बोलाच्या दोन फोकसमध्ये जोडणारा रेखाखंड कोणत्या नावाने ओळखला जातो?",
-          "choices": [
-            "प्रतिलोम अक्ष",
-            "संयुग्मक अक्ष",
-            "मुख्य अक्ष",
-            "गौण अक्ष"
-          ],
-          "solution": "हायपर्बोलाच्या दोन फोकसमध्ये जोडणारा रेखाखंड प्रतिलोम अक्ष म्हणतात. संयुग्मक अक्ष हा केंद्रमधून जाणारा अक्ष आहे आणि प्रतिलोम अक्षला लंब असतो. मुख्य आणि गौण अक्ष शब्द उपयोग केले जातात अंडाकृतीसाठी, हायपर्बोलासाठी नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the technical terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses transverse axis with conjugate axis",
-        "Confusing terms between ellipse and hyperbola, thinking the line between foci is called the major axis",
-        "Confuses transverse axis with major axis of an ellipse, which is not applicable here"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is the transverse axis, as it is the line segment joining the two foci of a hyperbola. The other options are either terms specific to ellipses or refer to different parts of the hyperbola. The author's reasoning aligns with standard definitions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh110.pdf",
-          "ordinal": 9,
-          "pageStart": 17,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 10: Conic Sections"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh110.pdf",
-          "ordinal": 10,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 10: Conic Sections"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh110.pdf",
-          "ordinal": 11,
-          "pageStart": 21,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 10: Conic Sections"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:37:32.744Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the term used for the fixed points in a hyperbola?",
-      "choices": [
-        "Foci",
-        "Vertices",
-        "Center",
-        "Axes"
-      ],
-      "answerIndex": 0,
-      "solution": "The fixed points in a hyperbola are called the foci. The vertices are the points where the hyperbola intersects the transverse axis. The center is the midpoint of the line segment joining the foci, and the axes are the lines that define the orientation of the hyperbola.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक हाइपरबोला में नियत बिंदुओं के लिए कौन सा शब्द प्रयोग किया जाता है?",
-          "choices": [
-            "फोकी",
-            "शीर्ष बिंदु",
-            "केंद्र",
-            "अक्ष"
-          ],
-          "solution": "हाइपरबोला में नियत बिंदुओं को फोकी कहा जाता है। शीर्ष बिंदु वे बिंदु होते हैं जहां हाइपरबोला अनुप्रस्थ अक्ष को काटती है। केंद्र फोकी को जोड़ने वाले रेखा खंड के मध्य बिंदु होता है और अक्ष हाइपरबोला के अभिमुख को निर्दिष्ट करने वाली रेखाएं होती हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका हायपरबोलातील फक्त बिंदूंसाठी वापरलेले शब्द काय आहे?",
-          "choices": [
-            "फोकी",
-            "शीर्षबिंदू",
-            "केंद्र",
-            "अक्ष"
-          ],
-          "solution": "हायपरबोलातील फक्त बिंदूंना फोकी म्हणतात. शीर्षबिंदू हे बिंदू आहेत जेथे हायपरबोला अनुलंब अक्षाला छेदते. केंद्र हा फोकींना जोडणार्‍या रेखाखंडाचा मध्यबिंदू आहे आणि अक्ष हे रेषा आहेत ज्या हायपरबोलाच्या दिशेचे निर्धारण करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the technical terminology used in Marathi mathematics textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses foci with vertices",
-        "Confuses foci with center",
-        "Confuses foci with axes"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and tests recall of basic conic section terminology. The correct answer is 'Foci' and the author's reasoning for the distractors is accurate and reflects common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh110.pdf",
-          "ordinal": 9,
-          "pageStart": 17,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 10: Conic Sections"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh110.pdf",
-          "ordinal": 10,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 10: Conic Sections"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh110.pdf",
-          "ordinal": 11,
-          "pageStart": 21,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 10: Conic Sections"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:37:32.744Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a conic section that is formed when a plane intersects the cone at an angle β = 90 degrees?",
+      "stem": "What is the name of the curve obtained when a plane cuts the nappe of a cone at an angle of 90 degrees?",
       "choices": [
         "Ellipse",
         "Parabola",
-        "Circle",
-        "Hyperbola"
+        "Hyperbola",
+        "Circle"
       ],
-      "answerIndex": 2,
-      "solution": "A circle is formed when a plane intersects a cone at a right angle (β = 90 degrees), as this results in a perfectly symmetrical cross-section. An ellipse is formed when the plane is tilted slightly, a parabola when it is parallel to the cone's side, and a hyperbola when it cuts through both nappes of the cone.",
+      "answerIndex": 3,
+      "solution": "When a plane cuts the nappe of a cone at a right angle, the resulting curve is a circle because the intersection forms a perfectly round shape. An ellipse is formed when the plane is tilted at an angle less than 90 degrees but not parallel to the side. A parabola occurs when the plane is parallel to the cone's side, and a hyperbola is created when the plane intersects both nappes of the cone.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक शंकु खंड है जो एक तल द्वारा शंकु को 90 डिग्री के कोण पर काटने पर बनता है?",
+          "stem": "एक शंकु के नैप को एक समतल द्वारा 90 डिग्री के कोण पर काटने पर प्राप्त वक्र का नाम क्या है?",
           "choices": [
             "दीर्घवृत्त",
             "परवलय",
-            "वृत्त",
-            "अतिपरवलय"
+            "अतिपरवलय",
+            "वृत्त"
           ],
-          "solution": "जब एक तल शंकु को समकोण (β = 90 डिग्री) पर काटता है तो एक वृत्त बनता है, क्योंकि इससे एक पूर्ण रूप से सममित अनुप्रस्थ काट प्राप्त होता है। जब तल थोड़ा झुका होता है तो दीर्घवृत्त बनता है, जब यह शंकु के पार्श्व भाग के समांतर होता है तो परवलय बनता है और जब यह शंकु के दोनों नप्पेस को काटता है तो अतिपरवलय बनता है।",
+          "solution": "जब एक समतल शंकु के नैप को समकोण पर काटता है, तो परिणामी वक्र एक वृत्त होता है क्योंकि प्रतिच्छेदन एक पूर्ण गोल आकृति बनाता है। जब समतल 90 डिग्री से कम लेकिन भुजा के समांतर नहीं कोण पर झुका होता है तो दीर्घवृत्त बनता है। जब समतल शंकु की भुजा के समांतर होता है तो परवलय बनता है और जब समतल शंकु के दोनों नैप को काटता है तो अतिपरवलय बनता है।",
           "imageAlt": null,
-          "critique": "All terms are standard in Hindi mathematics textbooks. The translation is accurate and maintains the original meaning.",
+          "critique": "All technical terms (ellipse, parabola, hyperbola, circle) are correctly translated into their standard Hindi equivalents used in textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता एक अंगुली वक्र आहे जो एका समतलाने शंकूला β = 90 अंशांत छेदून तयार होतो?",
+          "stem": "एका तलावाच्या नॅपे ला 90 अंशांच्या कोनात तल छेदत असताना मिळणाऱ्या वक्राचे नाव काय असते?",
           "choices": [
             "अण्डाकृती",
             "पराबोला",
-            "वर्तुळ",
-            "अतिवृत्त"
+            "अतिवृत्त",
+            "वर्तुळ"
           ],
-          "solution": "जेव्हा एका समतलाने शंकूला लंब कोनात (β = 90 अंश) छेदून तयार होतो तेव्हा एक वर्तुळ तयार होतो, कारण हे एक पूर्णतः सममितीय छेदन आहे. जेव्हा समतल थोडासा झुकलेला असतो तेव्हा अण्डाकृती तयार होते, पराबोला जेव्हा तो शंकूच्या बाजूला समांतर असतो आणि अतिवृत्त जेव्हा तो शंकूच्या दोन भागांमध्ये छेदून जातो.",
+          "solution": "जेव्हा एका तलावाच्या नॅपे ला लंब कोनात तल छेदत असतो तेव्हा निर्माण होणारा वक्र वर्तुळ असतो कारण छेदन एका पूर्ण वृत्ताकृती आकृती बनते. अण्डाकृती तल लंब नसलेल्या कोनात छेदत असताना तयार होते. पराबोला तल तलावाच्या बाजूला समांतर असताना तयार होतो आणि अतिवृत्त तल तलावाच्या दोन्ही नॅपेस छेदत असताना तयार होतो.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms from Marathi-medium textbooks.",
+          "critique": "The Marathi translation is accurate, maintains the correct answer position, and uses appropriate technical terms. The solution explanation is also correctly translated.",
           "flag": null
         }
       },
@@ -357,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the condition for an ellipse with that for a circle",
-        "Confuses the condition for a parabola with that for a circle",
-        null,
-        "Student thinks that intersecting a cone at a right angle creates a hyperbola instead of a circle."
+        "Confuses the angle for an ellipse",
+        "Confuses the angle for a parabola",
+        "Confuses the angle for a hyperbola",
+        null
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2 (Circle). The solution is sound and matches the key. The author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The question is correctly answered with 'Circle' (option 3). The solution is accurate and aligns with standard conic section definitions. The distractors are reasonable misconceptions, as students often confuse the angles at which different conic sections are formed.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh110.pdf",
@@ -401,49 +116,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:37:32.744Z",
+      "generatedAt": "2026-10-28T08:48:49.750Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "What is the definition of a parabola?",
+      "difficulty": 1,
+      "stem": "What is the definition of the axis of a parabola?",
       "choices": [
-        "A parabola is the set of all points in a plane that are equidistant from a fixed line and a fixed point.",
-        "A parabola is the set of all points in a plane that are at a constant distance from a fixed point.",
-        "A parabola is the set of all points in a plane that are equidistant from two fixed points.",
-        "A parabola is the set of all points in a plane that lie on a straight line."
+        "The line perpendicular to the directrix and passing through the focus.",
+        "The line that is equidistant from the focus and the directrix.",
+        "The line that intersects the parabola at two points.",
+        "The line that is parallel to the directrix and passes through the focus."
       ],
       "answerIndex": 0,
-      "solution": "The definition of a parabola is the set of all points in a plane that are equidistant from a fixed line (directrix) and a fixed point (focus). The other options describe different geometric shapes or concepts, such as a circle or a line, and are not correct.",
+      "solution": "The axis of a parabola is the line that is perpendicular to the directrix and passes through the focus, as it serves as the line of symmetry for the parabola. The second option incorrectly describes a line equidistant from the focus and directrix, which is not the definition of the axis. The third option refers to a secant line, not the axis, and the fourth option is parallel to the directrix, which contradicts the definition of the axis.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक परवलय की परिभाषा क्या है?",
+          "stem": "परवलय के अक्ष की परिभाषा क्या है?",
           "choices": [
-            "एक परवलय एक समतल में सभी बिंदुओं का समुच्चय है जो एक निश्चित रेखा और एक निश्चित बिंदु से समान दूरी पर होते हैं।",
-            "एक परवलय एक समतल में सभी बिंदुओं का समुच्चय है जो एक निश्चित बिंदु से नियत दूरी पर होते हैं।",
-            "एक परवलय एक समतल में सभी बिंदुओं का समुच्चय है जो दो निश्चित बिंदुओं से समान दूरी पर होते हैं।",
-            "एक परवलय एक समतल में सभी बिंदुओं का समुच्चय है जो एक सीधी रेखा पर होते हैं।"
+            "अक्ष की लंबवत रेखा जो फोकस से गुजरती है।",
+            "फोकस और नियता से समान दूरी पर रहने वाली रेखा।",
+            "परवलय को दो बिंदुओं पर काटने वाली रेखा।",
+            "नियता के समांतर रहने वाली रेखा जो फोकस से गुजरती है।"
           ],
-          "solution": "एक परवलय की परिभाषा एक समतल में सभी बिंदुओं का समुच्चय है जो एक निश्चित रेखा (नियता) और एक निश्चित बिंदु (फोकस) से समान दूरी पर होते हैं। अन्य विकल्प वृत्त या रेखा जैसी अलग-अलग ज्यामितीय आकृतियों या अवधारणाओं का वर्णन करते हैं और सही नहीं हैं।",
+          "solution": "परवलय का अक्ष वह रेखा होती है जो नियता के लंबवत होती है और फोकस से गुजरती है, क्योंकि यह परवलय के लिए सममिति की रेखा होती है। दूसरा विकल्प फोकस और नियता से समान दूरी पर रहने वाली रेखा का गलत वर्णन करता है, जो अक्ष की परिभाषा नहीं है। तीसरा विकल्प एक छेदक रेखा के बारे में बताता है, जो अक्ष नहीं है, और चौथा विकल्प नियता के समांतर होता है, जो अक्ष की परिभाषा के विरोधी है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options are correctly translated, and the correct answer remains option (1). The distractors remain incorrect as in the original.",
+          "critique": "The Hindi translation accurately reflects the original English question and maintains the correct meaning, structure, and terminology used in Hindi mathematics textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "पराबोलाची व्याख्या काय आहे?",
+          "stem": "पराबोलाच्या अक्षाची व्याख्या काय आहे?",
           "choices": [
-            "एक पराबोला एका समतलातील सर्व बिंदूंचा संच आहे जे एका फिक्स रेषेपासून आणि एका फिक्स बिंदूपासून समान अंतरावर असतात.",
-            "एक पराबोला एका समतलातील सर्व बिंदूंचा संच आहे जे एका फिक्स बिंदूपासून स्थिर अंतरावर असतात.",
-            "एक पराबोला एका समतलातील सर्व बिंदूंचा संच आहे जे दोन फिक्स बिंदूंपासून समान अंतरावर असतात.",
-            "एक पराबोला एका समतलातील सर्व बिंदूंचा संच आहे जे एका सरळ रेषेवर असतात."
+            "लांबीच्या नियतक लांबीला लंब असणारी आणि फोकस मार्गे जाणारी रेषा.",
+            "फोकस आणि नियतक लांबीपासून समान अंतरावर असणारी रेषा.",
+            "पराबोलाला दोन बिंदूंमध्ये छेदणारी रेषा.",
+            "नियतक लांबीला समांतर असणारी आणि फोकस मार्गे जाणारी रेषा."
           ],
-          "solution": "पराबोलाची व्याख्या एका समतलातील सर्व बिंदूंचा संच आहे जे एका फिक्स रेषेपासून (दिशारेखा) आणि एका फिक्स बिंदूपासून (फोकस) समान अंतरावर असतात. इतर विकल्पांमध्ये वेगळे भौमितिक आकृती किंवा संकल्पना, जसे की वर्तुळ किंवा रेषा, वर्णन केली गेली आहेत आणि त्या चुकीच्या आहेत.",
+          "solution": "पराबोलाचा अक्ष ही लांबीच्या नियतक लांबीला लंब असणारी आणि फोकस मार्गे जाणारी रेषा आहे, कारण ती पराबोलाच्या सममितीच्या रेषेच्या रूपात कार्य करते. दुसरा विकल्प फोकस आणि नियतक लांबीपासून समान अंतरावर असणारी रेषा दर्शवतो, जी अक्षाची व्याख्या नाही. तिसरा विकल्प स्पर्श रेषेच्या वर्णनास संदर्भित करतो, जी अक्ष नाही. आणि चौथा विकल्प नियतक लांबीला समांतर असतो, जे अक्षाच्या व्याख्येला विरोधी आहे.",
           "imageAlt": null,
-          "critique": "The Marathi translation accurately conveys the meaning of the original English question. Technical terms like 'फिक्स रेषा' (fixed line) and 'फिक्स बिंदू' (fixed point) are appropriately used, and the structure of the question matches the original.",
+          "critique": "The Marathi translation accurately reflects the English content with appropriate technical terms and maintains the same meaning, structure, and correctness of options.",
           "flag": null
         }
       },
@@ -453,9 +168,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the definition of a parabola with that of a circle.",
-        "Misunderstands the definition of a parabola as a circle.",
-        "Misunderstands the definition of a parabola as a straight line, which is incorrect."
+        "Confuses the definition of the directrix with the axis of the parabola.",
+        "A student might confuse the axis with a secant line that intersects the parabola at two points.",
+        "Confuses the orientation of the axis"
       ],
       "solverAnswers": [
         0,
@@ -465,7 +180,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is option 0, which accurately defines a parabola as the set of points equidistant from a fixed point (focus) and a fixed line (directrix). The other options describe incorrect geometric concepts, and the author's reasons for the wrong options align with common misconceptions.",
+      "critique": "The correct answer is 0, as the axis of a parabola is indeed the line through the focus and perpendicular to the directrix. The other options represent common misconceptions.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh110.pdf",
@@ -496,49 +211,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:37:32.744Z",
+      "generatedAt": "2026-10-28T08:48:49.750Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "What is the difference between the distances of any point on a hyperbola from the two fixed points?",
+      "difficulty": 1,
+      "stem": "Which of the following is the standard form of the equation of a hyperbola with its transverse axis along the x-axis?",
       "choices": [
-        "A constant",
-        "An increasing value",
-        "A decreasing value",
-        "Zero"
+        "x²/a² + y²/b² = 1",
+        "x²/a² - y²/b² = 1",
+        "y²/a² + x²/b² = 1",
+        "y²/a² - x²/b² = 1"
       ],
-      "answerIndex": 0,
-      "solution": "The difference between the distances of any point on a hyperbola from the two fixed points (foci) is a constant. This is the defining property of a hyperbola. It is not increasing, decreasing, or zero.",
+      "answerIndex": 1,
+      "solution": "The standard form of a hyperbola with its transverse axis along the x-axis is x²/a² - y²/b² = 1. The other forms represent ellipses or hyperbolas with the transverse axis along the y-axis.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक हाइपरबोला पर किसी भी बिंदु की दो निश्चित बिंदुओं से दूरियों के बीच अंतर क्या है?",
+          "stem": "निम्नलिखित में से कौन-सा एक अतिपरवलय के समीकरण का मानक रूप है जिसका अनुप्रस्थ अक्ष x-अक्ष के साथ है?",
           "choices": [
-            "एक नियत राशि",
-            "एक बढ़ती हुई राशि",
-            "एक घटती हुई राशि",
-            "शून्य"
+            "x²/a² + y²/b² = 1",
+            "x²/a² - y²/b² = 1",
+            "y²/a² + x²/b² = 1",
+            "y²/a² - x²/b² = 1"
           ],
-          "solution": "एक हाइपरबोला पर किसी भी बिंदु की दो निश्चित बिंदुओं (फोकस) से दूरियों के बीच अंतर एक नियत राशि होती है। यह हाइपरबोला की परिभाषा है। यह बढ़ती, घटती या शून्य नहीं होती।",
+          "solution": "x-अक्ष के साथ अनुप्रस्थ अक्ष वाले अतिपरवलय का मानक रूप x²/a² - y²/b² = 1 है। अन्य रूप दीर्घवृत्त या y-अक्ष के साथ अनुप्रस्थ अक्ष वाले अतिपरवलय का प्रतिनिधित्व करते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "Translation is accurate, technical terms are standard in Hindi textbooks, and the question structure matches the original.",
           "flag": null
         },
         "mr": {
-          "stem": "एखाद्या हायपरबोलावरील कोणत्याही बिंदूच्या दोन फक्त बिंदूंपासून अंतराचा फरक किती असतो?",
+          "stem": "खालीलपैकी कोणते एक वक्रता वक्राच्या समीकरणाचे मानक रूप आहे ज्याचा अनुलंब अक्ष x-अक्षावर आहे?",
           "choices": [
-            "एक स्थिर मूल्य",
-            "वाढते मूल्य",
-            "कमी होणारे मूल्य",
-            "शून्य"
+            "x²/a² + y²/b² = 1",
+            "x²/a² - y²/b² = 1",
+            "y²/a² + x²/b² = 1",
+            "y²/a² - x²/b² = 1"
           ],
-          "solution": "एखाद्या हायपरबोलावरील कोणत्याही बिंदूच्या दोन फक्त बिंदूंपासून (फोकस) अंतराचा फरक स्थिर असतो. ही हायपरबोलाची वैशिष्ट्ये आहे. ते वाढते, कमी होते किंवा शून्य नाही.",
+          "solution": "x-अक्षावर अनुलंब अक्ष असलेल्या वक्रता वक्राचे मानक रूप x²/a² - y²/b² = 1 आहे. इतर रूपांमध्ये दुय्यम वक्र असतात किंवा अनुलंब अक्ष y-अक्षावर असलेल्या वक्रता वक्राचे रूप असते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'फोकस' for 'foci'.",
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for conic sections.",
           "flag": null
         }
       },
@@ -547,20 +262,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Represents an ellipse",
         null,
-        "Misunderstands the definition of a hyperbola",
-        "Misunderstands the definition of a hyperbola",
-        "Misunderstands the definition of a hyperbola"
+        "Uses the correct form but with a different orientation",
+        "Represents a hyperbola with the transverse axis along the y-axis"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is correct. The key is accurate, and the reasoning for the distractors is valid, as all incorrect options stem from a misunderstanding of the definition of a hyperbola.",
+      "critique": "The correct answer is option 1, which matches the standard form of a hyperbola with a horizontal transverse axis. The author's reasoning for the other options is accurate and reflects common student misconceptions.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh110.pdf",
@@ -591,49 +306,144 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:37:32.744Z",
+      "generatedAt": "2026-10-28T08:48:49.750Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is a degenerated case of a hyperbola?",
+      "choices": [
+        "A point",
+        "A straight line",
+        "A pair of intersecting lines",
+        "A circle"
+      ],
+      "answerIndex": 2,
+      "solution": "A hyperbola can degenerate into a pair of intersecting lines when the plane passes through the apex of the cone. A point is a degenerate ellipse, a straight line is a degenerate parabola, and a circle is not a degenerate conic section. Therefore, the correct answer is a pair of intersecting lines.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक अतिपरवलय के एक विचित्र अवस्था है?",
+          "choices": [
+            "एक बिंदु",
+            "एक सीधी रेखा",
+            "एक प्रतिच्छेदी रेखा युग्म",
+            "एक वृत्त"
+          ],
+          "solution": "जब समतल शंकु के शीर्ष से गुजरता है तो एक अतिपरवलय एक प्रतिच्छेदी रेखा युग्म में विचित्र हो सकता है। एक बिंदु एक विचित्र दीर्घवृत्त है, एक सीधी रेखा एक विचित्र परवलय है और एक वृत्त एक विचित्र परिच्छेद नहीं है। इसलिए, सही उत्तर एक प्रतिच्छेदी रेखा युग्म है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the meaning, structure, and technical terms of the original English question. The correct answer remains in the same position, and the distractors are still incorrect. Technical terms like 'विचित्र अवस्था' (degenerate case), 'अतिपरवलय' (hyperbola), 'परवलय' (parabola), 'दीर्घवृत्त' (ellipse), and 'वृत्त' (circle) are standard in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक अतिपराबोलाचे अविकृत (डेजेनरेटेड) उदाहरण आहे?",
+          "choices": [
+            "एक बिंदू",
+            "एक सरळ रेषा",
+            "एका छेदित रेषांच्या जोड्या",
+            "एक वर्तुळ"
+          ],
+          "solution": "एका अतिपराबोलाचे अविकृत रूप असते जेव्हा तल शंकूच्या शिरोबिंदूमधून जाते. एक बिंदू अंडाकृतीचे अविकृत रूप असते, एक सरळ रेषा पराबोलाचे अविकृत रूप असते आणि वर्तुळ अविकृत वक्र नसते. म्हणून, योग्य उत्तर एका छेदित रेषांच्या जोड्या आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for conic sections.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the degenerated case of an ellipse",
+        "Confuses the degenerated case of a parabola",
+        null,
+        "Confuses the degenerated case of a circle"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. A degenerate hyperbola occurs when the plane passes through the apex of the cone, resulting in a pair of intersecting lines. The other options correspond to degenerate cases of other conic sections.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh110.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: Conic Sections"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh110.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 10: Conic Sections"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh110.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 10: Conic Sections"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T08:48:49.750Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If the distance between the two foci of a hyperbola is 10 units, what is the value of 'c'?",
+      "stem": "The equation of the ellipse with major axis along the x-axis and semi-major axis of length 'a' and semi-minor axis of length 'b' is given by which of the following?",
       "choices": [
-        "5",
-        "10",
-        "15",
-        "20"
+        "x²/a² + y²/b² = 1",
+        "x²/b² + y²/a² = 1",
+        "x²/a² - y²/b² = 1",
+        "x²/b² - y²/a² = 1"
       ],
       "answerIndex": 0,
-      "solution": "The distance between the two foci of a hyperbola is 2c. If this distance is 10 units, then 2c = 10, so c = 5. The other options are either double or more than double the actual value.",
-      "checkExpr": "10/2",
+      "solution": "The standard equation of an ellipse with the major axis along the x-axis is x²/a² + y²/b² = 1. This is directly derived from the geometric definition of an ellipse where the sum of distances from two foci is constant. The other options represent hyperbolas or incorrect orientations of the ellipse.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक अतिपरवलय के दो नाभियों के बीच की दूरी 10 इकाई है, तो 'c' का मान क्या है?",
+          "stem": "x-अक्ष के साथ दीर्घवृत्त के दीर्घ अक्ष और 'a' लंबाई के अर्ध-दीर्घ अक्ष और 'b' लंबाई के अर्ध-लघु अक्ष के साथ दीर्घवृत्त का समीकरण निम्न में से किसके द्वारा दिया जाता है?",
           "choices": [
-            "5",
-            "10",
-            "15",
-            "20"
+            "x²/a² + y²/b² = 1",
+            "x²/b² + y²/a² = 1",
+            "x²/a² - y²/b² = 1",
+            "x²/b² - y²/a² = 1"
           ],
-          "solution": "अतिपरवलय के दो नाभियों के बीच की दूरी 2c होती है। यदि यह दूरी 10 इकाई है, तो 2c = 10, अतः c = 5। अन्य विकल्प वास्तविक मान के दोगुने या उससे अधिक हैं।",
+          "solution": "x-अक्ष के साथ दीर्घ अक्ष वाले दीर्घवृत्त का मानक समीकरण x²/a² + y²/b² = 1 है। यह दीर्घवृत्त की ज्यामितीय परिभाषा से सीधे व्युत्पन्न होता है जहां दो नाभियों से दूरियों का योग स्थिर होता है। अन्य विकल्प अतिपरवलय या दीर्घवृत्त के गलत उन्मुखता दर्शाते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses standard Hindi terminology for conic sections.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "जर अतिच्छेदकाच्या दोन नाभींमधील अंतर 10 एकक असेल, तर 'c' ची किंमत किती असेल?",
+          "stem": "x-अक्षावर असलेल्या मुख्य अक्षासह अर्धा मुख्य अक्षाची लांबी 'a' आणि अर्धा छोटा अक्षाची लांबी 'b' असलेल्या दुभुजाकृतीचे समीकरण खालीलपैकी कोणत्या द्वारे दिले जाते?",
           "choices": [
-            "5",
-            "10",
-            "15",
-            "20"
+            "x²/a² + y²/b² = 1",
+            "x²/b² + y²/a² = 1",
+            "x²/a² - y²/b² = 1",
+            "x²/b² - y²/a² = 1"
           ],
-          "solution": "अतिच्छेदकाच्या दोन नाभींमधील अंतर 2c असते. जर हे अंतर 10 एकक असेल, तर 2c = 10, म्हणून c = 5. इतर विकल्प खालीलपेकी एक असतात जे खर्या मूल्याच्या दुप्पट किंवा त्यापेक्षा जास्त असतात.",
+          "solution": "x-अक्षावर असलेल्या मुख्य अक्षासह दुभुजाकृतीचे मानक समीकरण x²/a² + y²/b² = 1 आहे. हे दुभुजाकृतीच्या भौमितिक व्याख्येपासून लक्षात आले जाते जेथे दोन फोकसपासून अंतराची बेरीज अचल असते. इतर विकल्प हायपरबोला किंवा दुभुजाकृतीच्या चुकीच्या अभिमुखतेचे प्रतिनिधित्व करतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for conic sections.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms for conic sections.",
           "flag": null
         }
       },
@@ -643,9 +453,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses 2c with c",
-        "Adds the distances instead of dividing",
-        "Adds the distances instead of dividing"
+        "Confuses the standard form of the ellipse with that of a hyperbola",
+        "Misunderstands the orientation of the major axis",
+        "Confuses the signs in the equation of the ellipse with that of a hyperbola"
       ],
       "solverAnswers": [
         0,
@@ -655,197 +465,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The solution is correct and matches the key. The question is straightforward and tests understanding of the relationship between the distance between foci and the parameter 'c' in a hyperbola.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh110.pdf",
-          "ordinal": 9,
-          "pageStart": 17,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 10: Conic Sections"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh110.pdf",
-          "ordinal": 10,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 10: Conic Sections"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh110.pdf",
-          "ordinal": 11,
-          "pageStart": 21,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 10: Conic Sections"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:37:32.744Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "The equation of a parabola is x² = 8y. What is the direction in which the parabola opens?",
-      "choices": [
-        "Upwards",
-        "Downwards",
-        "Left",
-        "Right"
-      ],
-      "answerIndex": 0,
-      "solution": "The equation x² = 8y represents a parabola that opens upwards because the x² term is positive, and the parabola is symmetric about the y-axis. The other options represent incorrect directions based on the form of the equation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "परवलय का समीकरण x² = 8y है। परवलय किस दिशा में खुलता है?",
-          "choices": [
-            "ऊपर की ओर",
-            "नीचे की ओर",
-            "बाएं",
-            "दाएं"
-          ],
-          "solution": "समीकरण x² = 8y एक परवलय का प्रतिनिधित्व करता है जो ऊपर की ओर खुलता है क्योंकि x² पद धनात्मक है, और परवलय y-अक्ष के सापेक्ष सममित होता है। अन्य विकल्प समीकरण के रूप पर आधारित गलत दिशाएं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पराबोलाची समीकरण x² = 8y आहे. पराबोल कोणत्या दिशेने खाली खुलतो?",
-          "choices": [
-            "उजवीकडे",
-            "डावीकडे",
-            "खाली",
-            "वर"
-          ],
-          "solution": "x² = 8y समीकरणामुळे पराबोल वर खुलतो कारण x² चे चिन्ह धन आहे आणि पराबोल y-अक्षाच्या सममित आहे. इतर विकल्प समीकरणाच्या रूपामुळे चुकीचे दिशा दर्शवतात.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position (option 4).",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Chooses the opposite direction based on the sign of the coefficient in the equation.",
-        "Confuses the orientation of the parabola, thinking it opens to the left instead of upwards.",
-        "Confuses the orientation of the parabola, thinking it opens to the right instead of upwards."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The equation x² = 8y is in the standard form of a parabola that opens upwards. The reasoning matches the correct answer and the misconceptions are plausible for students.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh110.pdf",
-          "ordinal": 3,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 10: Conic Sections"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh110.pdf",
-          "ordinal": 4,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 10: Conic Sections"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh110.pdf",
-          "ordinal": 5,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 10: Conic Sections"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:37:32.744Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Which of the following represents the equation of an ellipse centered at the origin with major axis along the x-axis and semi-major axis length 4 and semi-minor axis length 3?",
-      "choices": [
-        "x²/16 + y²/9 = 1",
-        "x²/9 + y²/16 = 1",
-        "x²/4 + y²/3 = 1",
-        "x²/3 + y²/4 = 1"
-      ],
-      "answerIndex": 0,
-      "solution": "The standard form of an ellipse centered at the origin with major axis along the x-axis is x²/a² + y²/b² = 1, where a is the semi-major axis and b is the semi-minor axis. Here, a = 4 and b = 3, so the equation is x²/16 + y²/9 = 1. The other options either switch a and b or use the original values instead of their squares.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक ऐसे दीर्घवृत्त के समीकरण का प्रतिनिधित्व करता है जो मूल बिंदु पर केंद्रित है, जिसका दीर्घ अक्ष x-अक्ष के साथ है और दीर्घ अर्धअक्ष की लंबाई 4 और लघु अर्धअक्ष की लंबाई 3 है?",
-          "choices": [
-            "x²/16 + y²/9 = 1",
-            "x²/9 + y²/16 = 1",
-            "x²/4 + y²/3 = 1",
-            "x²/3 + y²/4 = 1"
-          ],
-          "solution": "मूल बिंदु पर केंद्रित एक दीर्घवृत्त के मानक रूप में x²/a² + y²/b² = 1 होता है, जहां a दीर्घ अर्धअक्ष है और b लघु अर्धअक्ष है। यहां, a = 4 और b = 3 है, इसलिए समीकरण x²/16 + y²/9 = 1 है। अन्य विकल्प या तो a और b को बदल देते हैं या मूल मानों का उपयोग करते हैं बजाय उनके वर्गों के।",
-          "imageAlt": null,
-          "critique": "Translation accurately preserves mathematical meaning, terminology, and structure. All options and solution align with the original English version.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक वृत्तांतर (एलिप्स) चे समीकरण दर्शविते ज्याचे केंद्र मूलबिंदू आहे आणि मुख्य अक्ष x-अक्षावर आहे आणि अर्धा मुख्य अक्षाची लांबी 4 आहे आणि अर्धा छोटा अक्ष 3 आहे?",
-          "choices": [
-            "x²/16 + y²/9 = 1",
-            "x²/9 + y²/16 = 1",
-            "x²/4 + y²/3 = 1",
-            "x²/3 + y²/4 = 1"
-          ],
-          "solution": "मूलबिंदूवर केंद्रित आणि x-अक्षावर मुख्य अक्ष असलेल्या वृत्तांतराचे मानक स्वरूप x²/a² + y²/b² = 1 आहे, जेथे a हा अर्धा मुख्य अक्ष आहे आणि b हा अर्धा छोटा अक्ष आहे. येथे a = 4 आणि b = 3, म्हणून समीकरण x²/16 + y²/9 = 1 आहे. इतर पर्यायांमध्ये a आणि b चा विनिमय केला गेला आहे किंवा मूल्ये वापरली गेली आहेत त्यांच्या वर्गाऐवजी.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for ellipse components.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the values of a and b",
-        "Uses the original values of a and b instead of their squares",
-        "Confuses the major and minor axes"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies the standard form of an ellipse and applies the given values of semi-major and semi-minor axes. The reasoning for the distractors is valid and reflects common student misconceptions.",
+      "critique": "The correct answer is option 0, which matches the standard form of an ellipse with the major axis along the x-axis. The other options either represent hyperbolas or incorrectly place the axes.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh110.pdf",
@@ -876,49 +496,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:37:32.744Z",
+      "generatedAt": "2026-10-28T08:48:49.750Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "A circle with radius 5 has its centre on the x-axis and passes through the point (2, 3). What is the equation of the circle?",
+      "difficulty": 4,
+      "stem": "What is the center and radius of the circle given by the equation (x + 5) + (y – 3) = 36?",
       "choices": [
-        "(x - 2)² + (y - 3)² = 25",
-        "(x - 0)² + (y - 0)² = 25",
-        "(x - 4)² + y² = 25",
-        "(x - 3)² + y² = 25"
+        "(–5, 3), 6",
+        "(5, –3), 6",
+        "(–5, 3), 36",
+        "(5, –3), 36"
       ],
-      "answerIndex": 2,
-      "solution": "The equation of a circle is (x - h)² + (y - k)² = r², where (h, k) is the center and r is the radius. Since the center is on the x-axis, k = 0. Using the distance formula between (h, 0) and (2, 3), we find h = 4, making the equation (x - 4)² + y² = 25. The other options either have incorrect centers or do not satisfy the distance requirement for the radius.",
+      "answerIndex": 0,
+      "solution": "The equation (x + 5) + (y – 3) = 36 can be written as (x – (–5)) + (y – 3) = 6². Hence, the center is (–5, 3) and the radius is 6. The other options are incorrect due to errors in signs or misinterpreting the radius as the squared value.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "5 त्रिज्या वाला एक वृत्त जिसका केंद्र x-अक्ष पर है और बिंदु (2, 3) से गुजरता है। वृत्त का समीकरण क्या है?",
+          "stem": "समीकरण (x + 5) + (y – 3) = 36 द्वारा दी गई वृत्त का केंद्र और त्रिज्या क्या है?",
           "choices": [
-            "(x - 2)² + (y - 3)² = 25",
-            "(x - 0)² + (y - 0)² = 25",
-            "(x - 4)² + y² = 25",
-            "(x - 3)² + y² = 25"
+            "(-5, 3), 6",
+            "(5, -3), 6",
+            "(-5, 3), 36",
+            "(5, -3), 36"
           ],
-          "solution": "वृत्त का समीकरण (x - h)² + (y - k)² = r² होता है, जहाँ (h, k) केंद्र है और r त्रिज्या है। केंद्र x-अक्ष पर है, इसलिए k = 0। (h, 0) और (2, 3) के बीच दूरी के सूत्र का उपयोग करके, हम पाते हैं कि h = 4, जिसके कारण समीकरण (x - 4)² + y² = 25 होता है। अन्य विकल्प या गलत केंद्र का उपयोग करते हैं या त्रिज्या की दूरी की आवश्यकता को पूरा नहीं करते।",
+          "solution": "समीकरण (x + 5) + (y – 3) = 36 को (x – (–5)) + (y – 3) = 6² के रूप में लिखा जा सकता है। इसलिए, केंद्र (-5, 3) और त्रिज्या 6 है। अन्य विकल्प चिह्नों में त्रुटि या त्रिज्या के वर्ग मान के रूप में गलत व्याख्या के कारण गलत हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains mathematical meaning, technical terms, and logical structure.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "5 त्रिज्येचा वर्तुळ x-अक्षावर केंद्र असलेला आहे आणि (2, 3) बिंदूतून जातो. वर्तुळाचे समीकरण काय आहे?",
+          "stem": "समीकरण (x + 5) + (y – 3) = 36 द्वारे दिलेल्या वर्तुळाचे केंद्र आणि त्रिज्या काय आहेत?",
           "choices": [
-            "(x - 2)² + (y - 3)² = 25",
-            "(x - 0)² + (y - 0)² = 25",
-            "(x - 4)² + y² = 25",
-            "(x - 3)² + y² = 25"
+            "(–5, 3), 6",
+            "(5, –3), 6",
+            "(–5, 3), 36",
+            "(5, –3), 36"
           ],
-          "solution": "वर्तुळाचे समीकरण (x - h)² + (y - k)² = r² आहे, जेथे (h, k) केंद्र आहे आणि r त्रिज्या आहे. केंद्र x-अक्षावर असल्याने k = 0. (h, 0) आणि (2, 3) या बिंदूंमधील अंतर शोधून, आम्ही h = 4 शोधतो, ज्यामुळे समीकरण (x - 4)² + y² = 25 असते. इतर विकल्पांमध्ये चुकीचे केंद्र आहे किंवा त्रिज्येच्या अंतराची आवश्यकता पूर्ण होत नाही.",
+          "solution": "समीकरण (x + 5) + (y – 3) = 36 ला (x – (–5)) + (y – 3) = 6² असे लिहिता येते. म्हणून, केंद्र (–5, 3) आहे आणि त्रिज्या 6 आहे. इतर विकल्प चूक असतात कारण चिन्हांमध्ये चूक असते किंवा त्रिज्येला वर्गित मूल्य मानले जाते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -927,20 +547,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Incorrectly assumes the centre is at (2, 3)",
-        "Incorrectly assumes the centre is at the origin",
         null,
-        "Confuses the x-coordinate of the center with the x-coordinate of the point on the circle"
+        "Uses incorrect signs for the center",
+        "Misinterprets the radius as the squared value",
+        "Misinterprets the radius as the squared value"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is (x - 4)² + y² = 25. The center lies on the x-axis, so its coordinates are (h, 0). Using the distance formula between (h, 0) and (2, 3), we find h = 4. The other options incorrectly place the center or misinterpret the given point.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is flawed because the given equation is not a circle. The equation (x + 5) + (y – 3) = 36 is linear, not quadratic, and does not represent a circle. The correct form of a circle is (x - h)^2 + (y - k)^2 = r^2. The author's solution incorrectly assumes the equation is a circle, which is a fundamental error.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh110.pdf",
@@ -971,7 +591,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:37:32.744Z",
+      "generatedAt": "2026-10-28T08:48:49.750Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,319 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:35:47.242Z",
+  "finishedAt": "2026-10-28T04:39:42.259Z",
+  "seconds": 235,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap116.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 16 — A Busy Month",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 32970,
+      "in": 12,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 9916,
+      "completionTokens": 2101
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 102632,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 7447,
+      "completionTokens": 3147
+    },
+    "solver": {
+      "calls": 94,
+      "ms": 56287,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 19097,
+      "completionTokens": 1191
+    },
+    "form": {
+      "calls": 4,
+      "ms": 10267,
+      "in": 8,
+      "out": 3,
+      "rejects": 5,
+      "promptTokens": 907,
+      "completionTokens": 279
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 3834,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 102728,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6387,
+      "completionTokens": 3307
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a bird's nest is found on top of a cupboard, which bird is it most likely to belong to ?",
+      "ms": {
+        "draft": 2424,
+        "critique": 5271,
+        "solver": 15066
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which bird is described as having a 'crown on the head and coins on the tail' ?",
+      "ms": {
+        "draft": 2424,
+        "critique": 5497,
+        "solver": 15895,
+        "form": 3365
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the passage?",
+      "ms": {
+        "draft": 2671,
+        "critique": 5848,
+        "solver": 1121,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which bird is known for laying its eggs in a crow’s nest ?",
+      "ms": {
+        "draft": 2424,
+        "critique": 6435,
+        "solver": 15670,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the role of teeth in animals?",
+      "ms": {
+        "draft": 2671,
+        "critique": 5275,
+        "solver": 1019,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a function of teeth?",
+      "ms": {
+        "draft": 2671,
+        "critique": 7509,
+        "solver": 13864
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animals have sharp curved teeth but do not chew their prey?",
+      "ms": {
+        "draft": 3147,
+        "critique": 5799
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has no back teeth, which of the following food items would they have difficulty eating?",
+      "ms": {
+        "draft": 3147,
+        "critique": 7534
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about squirrel teeth?",
+      "ms": {
+        "draft": 3147,
+        "critique": 6207,
+        "solver": 6477,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which bird makes its nest by stitching together two leaves on a bush ?",
+      "ms": {
+        "draft": 2424,
+        "critique": 4487,
+        "solver": 1410,
+        "form": 4562,
+        "translation": 28552
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the large flat teeth in cows?",
+      "ms": {
+        "draft": 3147,
+        "critique": 6348,
+        "solver": 8768,
+        "form": 1521,
+        "translation": 34500
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has no back teeth, which of the following foods would be difficult to eat?",
+      "ms": {
+        "draft": 2671,
+        "critique": 6440,
+        "solver": 1625,
+        "form": 1944,
+        "translation": 34770
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a bird's nest is found on top of a cupboard, which bird is it most likely to belong to ?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which bird is described as having a 'crown on the head and coins on the tail' ?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage as being about animals in general…\"); distractor 1's reason is not a one-line misconception (\"Confuses the passage's focus with the human body…\"); distractor 3's reason is not a one-line misconception (\"Thinks the passage is about drawing teeth rather than their …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which bird is known for laying its eggs in a crow’s nest ?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 are the same (\"Barbet\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the role of teeth in animals?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Believes the passage does not mention multiple roles of teet…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the passage as saying teeth are not important…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT a function of teeth?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"Which bird is mentioned as not making its own nest?\",\"options\":[\"Crow\",\"Koel\",\"Barbet\""
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which animals have sharp curved teeth but do not chew their prey?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person has no back teeth, which of the following food items would they have difficulty eating?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about squirrel teeth?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

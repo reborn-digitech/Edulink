@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Exploration",
   "edition": "2026 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-22T15:57:14.241Z",
+  "generatedAt": "2026-10-30T03:28:16.129Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is a characteristic of a sound wave?",
+      "stem": "What is the minimum distance required for an echo to be heard clearly, assuming the speed of sound is 340 m/s?",
       "choices": [
-        "It travels in a straight line",
-        "It can travel through a vacuum",
-        "It is a transverse wave",
-        "It needs a medium to travel"
+        "17 m",
+        "34 m",
+        "68 m",
+        "85 m"
       ],
-      "answerIndex": 3,
-      "solution": "Sound waves are mechanical waves that require a medium to propagate, which makes 'It needs a medium to travel' the correct answer. Sound does not travel in a straight line because it can diffract around objects. It cannot travel through a vacuum since there is no medium to carry the vibrations. Additionally, sound is a longitudinal wave, not a transverse one.",
+      "answerIndex": 0,
+      "solution": "The minimum time gap for an echo to be heard is 0.1 s. The distance sound travels in 0.1 s is 340 m/s × 0.1 s = 34 m. This is the total distance for the sound to travel to the surface and back, so the minimum distance is half of this, which is 17 m. The option '34 m' is incorrect because it represents the total distance, not the one-way distance. The option '68 m' and '85 m' are incorrect because they are larger than the calculated minimum distance.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक ध्वनि तरंग की विशेषता है?",
+          "stem": "ध्वनि के वेग 340 मीटर/सेकंड मानते हुए, एक गूंज स्पष्ट रूप से सुनी जा सकती है, इसके लिए आवश्यक न्यूनतम दूरी क्या होती है?",
           "choices": [
-            "यह एक सीधी रेखा में यात्रा करता है",
-            "यह एक निर्वात में यात्रा कर सकता है",
-            "यह एक अनुप्रस्थ तरंग है",
-            "इसे यात्रा करने के लिए एक माध्यम की आवश्यकता होती है"
+            "17 मीटर",
+            "34 मीटर",
+            "68 मीटर",
+            "85 मीटर"
           ],
-          "solution": "ध्वनि तरंगें यांत्रिक तरंगें होती हैं जिन्हें प्रसारित करने के लिए एक माध्यम की आवश्यकता होती है, जिसके कारण 'इसे यात्रा करने के लिए एक माध्यम की आवश्यकता होती है' सही उत्तर है। ध्वनि एक सीधी रेखा में नहीं यात्रा करती क्योंकि यह वस्तुओं के चारों ओर विवर्तन कर सकती है। एक निर्वात में यह नहीं यात्रा कर सकती क्योंकि विस्पंदन को ले जाने के लिए कोई माध्यम नहीं होता है। साथ ही, ध्वनि एक अनुदैर्ध्य तरंग है, एक अनुप्रस्थ तरंग नहीं।",
+          "solution": "गूंज सुनने के लिए न्यूनतम समय अंतर 0.1 सेकंड होता है। 0.1 सेकंड में ध्वनि द्वारा तय की गई दूरी 340 मीटर/सेकंड × 0.1 सेकंड = 34 मीटर होती है। यह ध्वनि द्वारा सतह तक जाने और वापस आने की कुल दूरी होती है, इसलिए आवश्यक न्यूनतम दूरी इसके आधे के बराबर होती है, जो 17 मीटर होता है। विकल्प '34 मीटर' गलत है क्योंकि यह कुल दूरी है, न कि एक दिशा में दूरी। विकल्प '68 मीटर' और '85 मीटर' गलत हैं क्योंकि ये गणना की गई न्यूनतम दूरी से अधिक हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते ध्वनी तरंगाचे वैशिष्ट्य आहे?",
+          "stem": "आवाजाचा निश्चितपणे ऐकू येण्यासाठी आवश्यक असलेली अल्पतम अंतर काय आहे, जर ध्वनीचा वेग 340 मी/से असेल?",
           "choices": [
-            "ते सरळ रेषेत पसरते",
-            "ते निर्वातातून पसरू शकते",
-            "ते अनुप्रस्थ तरंग आहे",
-            "त्याला प्रसारित होण्यासाठी माध्यम लागते"
+            "17 मी",
+            "34 मी",
+            "68 मी",
+            "85 मी"
           ],
-          "solution": "ध्वनी तरंग मॅकेनिकल तरंग आहेत ज्यांना प्रसारित होण्यासाठी माध्यम लागते, ज्यामुळे 'त्याला प्रसारित होण्यासाठी माध्यम लागते' हा बरोबर उत्तर ठरतो. ध्वनी सरळ रेषेत पसरत नाही कारण ते वस्तूंच्या आजूबाजूने विचलित होऊ शकते. निर्वातात ध्वनी पसरू शकत नाही कारण त्याला विरती वाहून नेण्यासाठी कोणताही माध्यम नसतो. तसेच, ध्वनी अनुप्रस्थ तरंग नसून अनुदैर्घ्य तरंग आहे.",
+          "solution": "आवाजाच्या परावर्तनासाठी आवश्यक असलेला अल्पतम वेळ अंतर 0.1 से आहे. 0.1 से मध्ये ध्वनीचा अंतर 340 मी/से × 0.1 से = 34 मी असतो. हे ध्वनीला पृष्ठभागापर्यंत जाऊन परत येण्यासाठीचे एकूण अंतर आहे, म्हणून आवश्यक असलेले अल्पतम अंतर हे त्याच्या अर्ध्या असते, जे 17 मी आहे. '34 मी' ची निवड चुकीची आहे कारण ती एकूण अंतर दर्शवते, नाही की एकदिश अंतर. '68 मी' आणि '85 मी' ची निवड चुकीची आहे कारण ती गणित केलेल्या अल्पतम अंतरापेक्षा जास्त आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for physics concepts.",
+          "critique": "The translation is accurate, maintains the technical terms used in Marathi textbooks, and preserves the logical structure of the question and solution.",
           "flag": null
         }
       },
@@ -72,114 +72,110 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses sound waves with light waves",
-        "Incorrectly assumes sound can travel in a vacuum",
-        "Misunderstands the nature of sound waves as transverse instead of longitudinal",
-        null
+        null,
+        "Confuses total distance with one-way distance",
+        "Incorrectly uses the full distance without halving",
+        "Incorrectly uses a different time value"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 'It needs a medium to travel' as sound is a mechanical wave and cannot propagate in a vacuum. The other options are incorrect due to common misconceptions about wave behavior.",
+      "critique": "The solution is correct and matches the reasoning. The minimum distance for an echo is 17 m, as the sound must travel to the reflecting surface and back, and the human ear requires a 0.1 s delay.",
       "sources": [
         {
           "document": "ncert/9/science/iesc110.pdf",
-          "ordinal": 26,
-          "pageStart": 21,
-          "pageEnd": 22,
+          "ordinal": 22,
+          "pageStart": 17,
+          "pageEnd": 18,
           "headingPath": [
             "Chapter 10: Sound Waves: Characteristics and Applications",
-            "10.8 Ultrasonic and Infrasonic Waves, and their",
-            "10.8.1 Echolocation",
-            "At a Glance"
+            "10.7 Reflection of Sound",
+            "10.7.1 Echo"
           ]
         },
         {
           "document": "ncert/9/science/iesc110.pdf",
-          "ordinal": 27,
-          "pageStart": 22,
-          "pageEnd": 23,
+          "ordinal": 23,
+          "pageStart": 18,
+          "pageEnd": 18,
           "headingPath": [
             "Chapter 10: Sound Waves: Characteristics and Applications",
-            "10.8 Ultrasonic and Infrasonic Waves, and their",
-            "10.8.1 Echolocation",
-            "Revise, Reflect, Refine"
+            "10.7 Reflection of Sound",
+            "10.7.2 Reverberation"
           ]
         },
         {
           "document": "ncert/9/science/iesc110.pdf",
-          "ordinal": 28,
-          "pageStart": 23,
-          "pageEnd": 24,
+          "ordinal": 24,
+          "pageStart": 19,
+          "pageEnd": 20,
           "headingPath": [
             "Chapter 10: Sound Waves: Characteristics and Applications",
             "10.8 Ultrasonic and Infrasonic Waves, and their",
-            "10.8.1 Echolocation",
-            "Revise, Reflect, Refine"
+            "10.8.1 Echolocation"
           ]
         },
         {
           "document": "ncert/9/science/iesc110.pdf",
-          "ordinal": 29,
-          "pageStart": 24,
-          "pageEnd": 24,
+          "ordinal": 25,
+          "pageStart": 20,
+          "pageEnd": 20,
           "headingPath": [
             "Chapter 10: Sound Waves: Characteristics and Applications",
             "10.8 Ultrasonic and Infrasonic Waves, and their",
-            "10.8.1 Echolocation",
-            "The Journey Beyond"
+            "10.8.1 Echolocation"
           ]
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T15:57:14.241Z",
+      "generatedAt": "2026-10-30T03:28:16.129Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "Why do we perceive some sounds as high-pitched and others as low-pitched?",
+      "difficulty": 1,
+      "stem": "What does the vacuum bell jar experiment demonstrate?",
       "choices": [
-        "Because of the speed of sound in the medium",
-        "Because of the frequency of the sound waves",
-        "Because of the amplitude of the sound waves",
-        "Because of the loudness of the sound waves"
+        "Sound can travel through a vacuum",
+        "Sound cannot travel through a vacuum",
+        "Sound travels faster in a vacuum",
+        "Sound is produced only in a vacuum"
       ],
       "answerIndex": 1,
-      "solution": "We perceive some sounds as high-pitched and others as low-pitched because of the frequency of the sound waves. High-pitched sounds have higher frequency, while low-pitched sounds have lower frequency. The option 'Because of the speed of sound in the medium' is incorrect because speed does not directly affect pitch. The option 'Because of the amplitude of the sound waves' is incorrect because amplitude affects loudness, not pitch. The option 'Because of the loudness of the sound waves' is incorrect because loudness is related to amplitude, not pitch.",
+      "solution": "The vacuum bell jar experiment shows that sound cannot travel through a vacuum because the loudness of the sound decreases as air is removed from the jar. The correct answer is 'Sound cannot travel through a vacuum.' The other options are incorrect because they contradict the results of the experiment.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "हम कुछ ध्वनियों को ऊंची और कुछ को नीची के रूप में क्यों महसूस करते हैं?",
+          "stem": "वैक्यूम बेल जार प्रयोग क्या दर्शाता है?",
           "choices": [
-            "माध्यम में ध्वनि की गति के कारण",
-            "ध्वनि तरंगों की आवृत्ति के कारण",
-            "ध्वनि तरंगों के आयाम के कारण",
-            "ध्वनि तरंगों की तीव्रता के कारण"
+            "ध्वनि वैक्यूम में यात्रा कर सकती है",
+            "ध्वनि वैक्यूम में यात्रा नहीं कर सकती है",
+            "ध्वनि वैक्यूम में तेज यात्रा करती है",
+            "ध्वनि केवल वैक्यूम में उत्पन्न होती है"
           ],
-          "solution": "हम कुछ ध्वनियों को ऊंची और कुछ को नीची के रूप में महसूस करते हैं क्योंकि ध्वनि तरंगों की आवृत्ति के कारण। ऊंची ध्वनि वाली आवृत्ति अधिक होती है, जबकि नीची ध्वनि वाली आवृत्ति कम होती है। विकल्प 'माध्यम में ध्वनि की गति के कारण' गलत है क्योंकि गति सीधे ध्वनि के ऊंचाई पर प्रभाव नहीं डालती है। विकल्प 'ध्वनि तरंगों के आयाम के कारण' गलत है क्योंकि आयाम ध्वनि की तीव्रता को प्रभावित करता है, न कि ऊंचाई को। विकल्प 'ध्वनि तरंगों की तीव्रता के कारण' गलत है क्योंकि तीव्रता आयाम से संबंधित है, न कि ऊंचाई से।",
+          "solution": "वैक्यूम बेल जार प्रयोग दर्शाता है कि ध्वनि वैक्यूम में यात्रा नहीं कर सकती है क्योंकि जार से हवा हटाए जाने पर ध्वनि की तीव्रता कम हो जाती है। सही उत्तर 'ध्वनि वैक्यूम में यात्रा नहीं कर सकती है' है। अन्य विकल्प गलत हैं क्योंकि वे प्रयोग के परिणामों के विरोधी हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their original logical relationship. The correct answer is in the same position. The technical terms like 'वैक्यूम' (vacuum) and 'ध्वनि' (sound) are standard in Hindi science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "आम्हाला काही आवाजांना उंच आवाज आणि काही लहान आवाज म्हणून का ओळखतो?",
+          "stem": "व्हॅक्यूम बेल जार प्रयोग काय दर्शवितो?",
           "choices": [
-            "माध्यमात आवाजाच्या वेगामुळे",
-            "आवाजाच्या तरंगांच्या आवृत्तीमुळे",
-            "आवाजाच्या तरंगांच्या आयामामुळे",
-            "आवाजाच्या तीव्रतेमुळे"
+            "ध्वनी व्हॅक्यूममधून पसरू शकतो",
+            "ध्वनी व्हॅक्यूममधून पसरू शकत नाही",
+            "ध्वनी व्हॅक्यूममध्ये जास्त वेगाने पसरतो",
+            "ध्वनी व्हॅक्यूममध्येच तयार होतो"
           ],
-          "solution": "आम्हाला काही आवाजांना उंच आवाज आणि काही लहान आवाज म्हणून का ओळखतो याचे कारण आवाजाच्या तरंगांच्या आवृत्तीमुळे आहे. उंच आवाज असलेल्या आवाजांची आवृत्ती जास्त असते, तर लहान आवाज असलेल्या आवाजांची आवृत्ती कमी असते. 'माध्यमात आवाजाच्या वेगामुळे' हा विकल्प चूक आहे कारण वेग आवाजाच्या उंचीवर सीधा प्रभाव टाकत नाही. 'आवाजाच्या तरंगांच्या आयामामुळे' हा विकल्प चूक आहे कारण आयाम आवाजाच्या तीव्रतेवर प्रभाव टाकतो, आवाजाच्या उंचीवर नाही. 'आवाजाच्या तीव्रतेमुळे' हा विकल्प चूक आहे कारण तीव्रता आयामाशी संबंधित आहे, आवाजाच्या उंचीशी नाही.",
+          "solution": "व्हॅक्यूम बेल जार प्रयोग दर्शवितो की ध्वनी व्हॅक्यूममधून पसरू शकत नाही कारण जेव्हा जारमधून हवा काढली जाते तेव्हा ध्वनीची तीव्रता कमी होते. योग्य उत्तर 'ध्वनी व्हॅक्यूममधून पसरू शकत नाही' आहे. इतर विकल्प चुकीचे आहेत कारण ते प्रयोगाच्या निष्कर्षांचा विरोध करतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms (e.g., 'आवृत्ती' for frequency, 'आयाम' for amplitude, 'तीव्रता' for loudness).",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -188,10 +184,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses speed with pitch",
+        "Pupils may think sound can travel in a vacuum due to a misunderstanding of the experiment.",
         null,
-        "confuses amplitude with pitch",
-        "confuses loudness with pitch"
+        "Pupils may confuse the behavior of light with sound, thinking sound can travel in a vacuum.",
+        "Pupils may think sound behaves differently in a vacuum, not realizing it needs a medium."
       ],
       "solverAnswers": [
         1,
@@ -201,7 +197,214 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is 1, and the author's reasoning is accurate. The distractors correctly reflect common misconceptions about the relationship between sound characteristics and pitch.",
+      "critique": "The question is well-constructed and the correct answer is clearly supported by the experiment. The distractors reflect common misconceptions about sound and vacuums.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc110.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 10: Sound Waves: Characteristics and Applications",
+            "10.2 Propagation of Sound",
+            "10.2.1 Sound needs a medium to propagate"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc110.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 10: Sound Waves: Characteristics and Applications",
+            "10.3 Sound Waves"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc110.pdf",
+          "ordinal": 7,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 10: Sound Waves: Characteristics and Applications",
+            "10.3 Sound Waves"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T03:28:16.129Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What type of wave is a sound wave?",
+      "choices": [
+        "Transverse wave",
+        "Longitudinal wave",
+        "Electromagnetic wave",
+        "Standing wave"
+      ],
+      "answerIndex": 1,
+      "solution": "A sound wave is a longitudinal wave because the particles of the medium move parallel to the direction the wave travels. Transverse waves involve particles moving perpendicular to the wave's direction, which does not apply to sound. Electromagnetic waves do not need a medium, whereas sound requires one. Standing waves are patterns formed by wave interference, not a type of wave itself.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ध्वनि तरंग किस प्रकार की तरंग होती है?",
+          "choices": [
+            "अनुप्रस्थ तरंग",
+            "अनुदैर्ध्य तरंग",
+            "विद्युत चुम्बकीय तरंग",
+            "स्थिर तरंग"
+          ],
+          "solution": "एक ध्वनि तरंग अनुदैर्ध्य तरंग होती है क्योंकि माध्यम के कण तरंग के दिशा में समानांतर गति करते हैं। अनुप्रस्थ तरंगों में कण तरंग की दिशा के लंबवत गति करते हैं, जो ध्वनि के लिए लागू नहीं होता है। विद्युत चुम्बकीय तरंगों के लिए माध्यम की आवश्यकता नहीं होती है, जबकि ध्वनि के लिए आवश्यक होता है। स्थिर तरंगें तरंग अध्यारोपण द्वारा बने पैटर्न होते हैं, एक तरंग के प्रकार के रूप में नहीं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the technical terminology used in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आवाजाचा तरंग कोणत्या प्रकारचा असतो?",
+          "choices": [
+            "अनुप्रस्थ तरंग",
+            "अनुदैर्घ्य तरंग",
+            "विद्युतचुंबकीय तरंग",
+            "स्थिर तरंग"
+          ],
+          "solution": "आवाजाचा तरंग अनुदैर्घ्य तरंग असतो कारण माध्यमाचे कण तरंगाच्या दिशेशी समांतर गती करतात. अनुप्रस्थ तरंगांमध्ये कण तरंगाच्या दिशेशी लंब गती करतात, जे आवाजासाठी लागू होत नाही. विद्युतचुंबकीय तरंगांना माध्यम लागत नाही, तर आवाजाला लागतो. स्थिर तरंग हे तरंग अंतर्क्रियेमुळे तयार होणारे आकृती असतात, ते तरंगाचा प्रकार नसतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for wave types.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses transverse and longitudinal waves",
+        null,
+        "Confuses sound waves with light waves, thinking they both travel through empty space",
+        "Confuses sound waves with standing waves that form in confined spaces"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'Longitudinal wave,' and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc110.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 10: Sound Waves: Characteristics and Applications",
+            "10.3 Sound Waves"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc110.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 10: Sound Waves: Characteristics and Applications",
+            "10.3 Sound Waves"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc110.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 10: Sound Waves: Characteristics and Applications",
+            "10.4 Energy of Sound Waves"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc110.pdf",
+          "ordinal": 11,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 10: Sound Waves: Characteristics and Applications",
+            "10.4 Energy of Sound Waves"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T03:28:16.129Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the term used to describe the quality of sound that allows us to distinguish between two musical instruments playing the same note?",
+      "choices": [
+        "Loudness",
+        "Pitch",
+        "Timbre",
+        "Frequency"
+      ],
+      "answerIndex": 2,
+      "solution": "Timbre is the quality of sound that allows us to distinguish between different instruments even when they play the same note. Loudness refers to the amplitude, pitch refers to frequency, and frequency is a physical property of the sound wave.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ही नोट बजाने वाले दो संगीत वाद्ययंत्रों के बीच अंतर बताने के लिए उपयोग किए जाने वाले ध्वनि के गुण के लिए क्या शब्द प्रयोग किया जाता है?",
+          "choices": [
+            "ध्वनि की तीव्रता",
+            "टोन",
+            "टिम्बर",
+            "आवृत्ति"
+          ],
+          "solution": "टिम्बर ध्वनि का गुण है जो एक ही नोट बजाने वाले विभिन्न वाद्ययंत्रों के बीच अंतर बताने में सहायता करता है। ध्वनि की तीव्रता आयाम को संदर्भित करती है, टोन आवृत्ति को संदर्भित करता है और आवृत्ति ध्वनि तरंग के भौतिक गुण है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and structure. 'Timbre' is correctly translated as 'टिम्बर' which is the standard term used in Hindi science textbooks. The solution explanation is consistent with the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एकाच नोट बजावलेल्या दोन संगीत वाद्यांमध्ये फरक करून दाखविण्यासाठी वापरल्या जाणार्‍या ध्वनीच्या गुणवत्तेला काय म्हणतात?",
+          "choices": [
+            "ध्वनिमान",
+            "ऊंची",
+            "टिम्बर",
+            "दोलनांक"
+          ],
+          "solution": "टिम्बर हा ध्वनीचा गुण आहे ज्यामुळे एकाच नोट बजावलेल्या वेगवेगळ्या वाद्यांमध्ये फरक करता येतो. ध्वनिमान हा तीव्रतेशी संबंधित आहे, ऊंची हा दोलनांकाशी संबंधित आहे आणि दोलनांक हा ध्वनी तरंगाचा भौतिक गुण आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately conveys the original meaning with appropriate terminology used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses loudness with timbre",
+        "confuses pitch with timbre",
+        null,
+        "confuses frequency with timbre"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution correctly identifies timbre as the quality that distinguishes instruments. The distractors are common misconceptions.",
       "sources": [
         {
           "document": "ncert/9/science/iesc110.pdf",
@@ -237,166 +440,50 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T15:57:14.241Z",
+      "generatedAt": "2026-10-30T03:28:16.129Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "In a room, the reflected sound reaches the ear 0.05 seconds after its production. What type of sound effect is this?",
+      "difficulty": 2,
+      "stem": "What is the main reason sound waves cannot travel through a vacuum?",
       "choices": [
-        "Echo",
-        "Reverberation",
-        "Reflection",
-        "Diffraction"
-      ],
-      "answerIndex": 1,
-      "solution": "Reverberation occurs when sound reflects off surfaces and reaches the ear within a short time, typically less than 0.1 seconds. Since the delay here is 0.05 seconds, it is classified as reverberation. An echo requires a longer delay, and reflection and diffraction are not specific sound effects in this context.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक कमरे में, परावर्तित ध्वनि उत्पादन के 0.05 सेकंड बाद कान तक पहुंचती है। यह किस प्रकार के ध्वनि प्रभाव का उदाहरण है?",
-          "choices": [
-            "प्रतिध्वनि",
-            "प्रतिगामी ध्वनि",
-            "परावर्तन",
-            "अपवर्तन"
-          ],
-          "solution": "प्रतिगामी ध्वनि तब होती है जब ध्वनि सतहों से परावर्तित होकर कुछ क्षण के भीतर कान तक पहुंचती है, आमतौर पर 0.1 सेकंड से कम समय में। चूंकि यहां देरी 0.05 सेकंड है, इसे प्रतिगामी ध्वनि के रूप में वर्गीकृत किया जाता है। एक प्रतिध्वनि के लिए लंबी देरी की आवश्यकता होती है, और परावर्तन और अपवर्तन इस संदर्भ में विशिष्ट ध्वनि प्रभाव नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains technical terminology appropriate for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका खोलीत, प्रतिबिंबित ध्वनी त्याच्या उत्पादनानंतर 0.05 सेकंदांनी कानात पोहोचतो. हा कोणत्या प्रकारचा ध्वनी प्रभाव आहे?",
-          "choices": [
-            "एको",
-            "प्रतिध्वनी",
-            "प्रतिबिंब",
-            "विच्छेदन"
-          ],
-          "solution": "प्रतिध्वनी हा ध्वनी सतत असलेल्या पृष्ठभागांवरून परावर्तित होऊन कानात लहान वेळात पोहोचतो, सामान्यतः 0.1 सेकंदापेक्षा कमी वेळ. येथे विलंब 0.05 सेकंद आहे, म्हणून त्याला प्रतिध्वनी म्हणतात. एकोसाठी लांब विलंब आवश्यक असतो, आणि परावर्तन आणि विच्छेदन हे या संदर्भात विशिष्ट ध्वनी प्रभाव नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses echo with reverberation",
-        null,
-        "Assumes reflection is a specific sound effect",
-        "Misunderstands diffraction as a sound effect"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly distinguishes between echo and reverberation based on the time delay. The reasoning aligns with standard physics definitions, and the misconceptions listed for the wrong options are valid.",
-      "sources": [
-        {
-          "document": "ncert/9/science/iesc110.pdf",
-          "ordinal": 26,
-          "pageStart": 21,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 10: Sound Waves: Characteristics and Applications",
-            "10.8 Ultrasonic and Infrasonic Waves, and their",
-            "10.8.1 Echolocation",
-            "At a Glance"
-          ]
-        },
-        {
-          "document": "ncert/9/science/iesc110.pdf",
-          "ordinal": 27,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 10: Sound Waves: Characteristics and Applications",
-            "10.8 Ultrasonic and Infrasonic Waves, and their",
-            "10.8.1 Echolocation",
-            "Revise, Reflect, Refine"
-          ]
-        },
-        {
-          "document": "ncert/9/science/iesc110.pdf",
-          "ordinal": 28,
-          "pageStart": 23,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 10: Sound Waves: Characteristics and Applications",
-            "10.8 Ultrasonic and Infrasonic Waves, and their",
-            "10.8.1 Echolocation",
-            "Revise, Reflect, Refine"
-          ]
-        },
-        {
-          "document": "ncert/9/science/iesc110.pdf",
-          "ordinal": 29,
-          "pageStart": 24,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 10: Sound Waves: Characteristics and Applications",
-            "10.8 Ultrasonic and Infrasonic Waves, and their",
-            "10.8.1 Echolocation",
-            "The Journey Beyond"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T15:57:14.241Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why does a sound wave with a larger amplitude travel a larger distance before its intensity reduces to zero?",
-      "choices": [
-        "Because it carries more energy",
-        "Because it has a higher frequency",
-        "Because it travels faster",
-        "Because it has a shorter wavelength"
+        "They require a medium to carry the energy",
+        "They are transverse waves",
+        "They are too weak",
+        "They travel too fast"
       ],
       "answerIndex": 0,
-      "solution": "A sound wave with a larger amplitude carries more energy, which allows it to travel a larger distance before its intensity reduces to zero. Higher frequency and shorter wavelength relate to the wave's characteristics but not the distance it can travel. Faster speed would not necessarily mean the wave lasts longer, as intensity depends on energy dissipation over distance.",
+      "solution": "Sound waves are mechanical waves that require a medium to propagate because they transfer energy through the vibration of particles. The other options are incorrect because transverse waves are not the reason, and the strength or speed of the wave is not the main reason.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक ध्वनि तरंग जिसका आयाम अधिक होता है, इसकी तीव्रता शून्य तक कम होने से अधिक दूरी तक क्यों यात्रा करती है?",
+          "stem": "ध्वनि तरंगें निर्वात में क्यों नहीं यात्रा कर सकती हैं?",
           "choices": [
-            "क्योंकि यह अधिक ऊर्जा ले जाती है",
-            "क्योंकि इसकी आवृत्ति अधिक होती है",
-            "क्योंकि यह तेज गति से यात्रा करती है",
-            "क्योंकि इसकी तरंग दैर्ध्य कम होती है"
+            "उन्हें ऊर्जा ले जाने के लिए एक माध्यम की आवश्यकता होती है",
+            "वे अनुप्रस्थ तरंगें हैं",
+            "वे बहुत कमजोर हैं",
+            "वे बहुत तेज यात्रा करती हैं"
           ],
-          "solution": "एक ध्वनि तरंग जिसका आयाम अधिक होता है, अधिक ऊर्जा ले जाती है, जिसके कारण इसकी तीव्रता शून्य तक कम होने से अधिक दूरी तक यात्रा करती है। उच्च आवृत्ति और कम तरंग दैर्ध्य तरंग की विशेषताओं से संबंधित होते हैं लेकिन इसके द्वारा तय की गई दूरी से संबंधित नहीं होते। अधिक गति आवश्यक रूप से तरंग के लंबे समय तक रहने के लिए पर्याप्त नहीं होती, क्योंकि तीव्रता दूरी के साथ ऊर्जा के अपसारण पर निर्भर करती है।",
+          "solution": "ध्वनि तरंगें यांत्रिक तरंगें होती हैं जिन्हें प्रसारित करने के लिए एक माध्यम की आवश्यकता होती है क्योंकि वे कणों के कंपन द्वारा ऊर्जा स्थानांतरित करती हैं। अन्य विकल्प गलत हैं क्योंकि अनुप्रस्थ तरंगें कारण नहीं हैं, और तरंग की ताकत या गति मुख्य कारण नहीं है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for physics concepts.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "एका आवाजाच्या लहान आवर्तनाच्या जास्त तीव्रतेमुळे त्याचा आवाज शून्य होईपर्यंत जास्त अंतर का जातो?",
+          "stem": "आवाजाच्या तरंगांना निर्वातमध्ये पसरत नाहीत याचा मुख्य कारण काय आहे?",
           "choices": [
-            "कारण ते जास्त ऊर्जा वहिने जाते",
-            "कारण ते जास्त विस्तार असते",
-            "कारण ते जास्त वेगाने जाते",
-            "कारण ते लहान तरंगलांबी असते"
+            "त्यांना ऊर्जा वहन करण्यासाठी माध्यम आवश्यक असतो",
+            "ते अनुदैर्घ्य तरंग आहेत",
+            "ते खूप कमजोर असतात",
+            "ते खूप वेगाने पसरतात"
           ],
-          "solution": "एका आवाजाच्या जास्त आवर्तनाच्या जास्त ऊर्जा असते, जेणेकरून तो आवाज शून्य होईपर्यंत जास्त अंतर जाऊ शकतो. जास्त विस्तार आणि लहान तरंगलांबी तरंगाच्या वैशिष्ट्यांशी संबंधित असतात परंतु त्यांच्या जास्त अंतर जाण्याशी संबंधित नसतात. जास्त वेगाने जाणे तरंगाच्या अंतर जाण्याशी संबंधित नसते, कारण तीव्रता अंतरावर ऊर्जा विखुरल्यावर अवलंबून असते.",
+          "solution": "आवाजाचे तरंग यांत्रिक तरंग आहेत ज्यांना पसरण्यासाठी माध्यम आवश्यक असतो कारण ते कणांच्या कंपनाद्वारे ऊर्जा हस्तांतरित करतात. इतर विकल्प अयोग्य आहेत कारण अनुदैर्घ्य तरंग नाहीत आणि तरंगाची तीव्रता किंवा वेग मुख्य कारण नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation contains multiple errors: the stem is mistranslated (incorrectly refers to 'frequency' instead of 'amplitude'), the correct answer (option 1) is not in the same position as in English, and the distractors are not equivalent to the original. Technical terms like 'amplitude' are not properly translated.",
-          "flag": "translation critique: meaning changed; not one answer at the same position; a distractor no longer wrong; terms not the board's"
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
         }
       },
       "imageKey": null,
@@ -405,9 +492,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses amplitude with frequency",
-        "Confuses speed with distance traveled",
-        "Confuses wavelength with energy"
+        "Misunderstands the nature of transverse waves",
+        "Incorrectly assumes that the strength of the wave affects its propagation",
+        "Confuses the speed of sound with its need for a medium"
       ],
       "solverAnswers": [
         0,
@@ -416,87 +503,94 @@
         0,
         0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed, with a clear and correct explanation. The reasoning for the correct answer and the distractors aligns with common student misconceptions.",
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as sound waves are mechanical and require a medium to propagate. The other options reflect common misconceptions about wave properties.",
       "sources": [
         {
           "document": "ncert/9/science/iesc110.pdf",
-          "ordinal": 16,
-          "pageStart": 12,
-          "pageEnd": 13,
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
           "headingPath": [
             "Chapter 10: Sound Waves: Characteristics and Applications",
-            "10.6 Characteristics of a Sound Wave",
-            "10.6.2 Amplitude and intensity of the sound waves"
+            "10.3 Sound Waves"
           ]
         },
         {
           "document": "ncert/9/science/iesc110.pdf",
-          "ordinal": 17,
-          "pageStart": 13,
-          "pageEnd": 13,
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
           "headingPath": [
             "Chapter 10: Sound Waves: Characteristics and Applications",
-            "10.6 Characteristics of a Sound Wave",
-            "10.6.3 Speed of Sound"
+            "10.3 Sound Waves"
           ]
         },
         {
           "document": "ncert/9/science/iesc110.pdf",
-          "ordinal": 18,
-          "pageStart": 13,
-          "pageEnd": 14,
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 10: Sound Waves: Characteristics and Applications",
-            "10.6 Characteristics of a Sound Wave",
-            "10.6.3 Speed of Sound"
+            "10.4 Energy of Sound Waves"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc110.pdf",
+          "ordinal": 11,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 10: Sound Waves: Characteristics and Applications",
+            "10.4 Energy of Sound Waves"
           ]
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T15:57:14.241Z",
+      "generatedAt": "2026-10-30T03:28:16.129Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "In the vacuum bell jar experiment, the electric bell is observed to ring even when no sound is heard. What does this indicate about the nature of sound?",
+      "difficulty": 5,
+      "stem": "A sonar device sends a signal into water and receives the echo after 1.2 s. If the speed of sound in water is 1500 m/s, what is the depth of the water at that location?",
       "choices": [
-        "Sound can travel without a medium",
-        "Sound is a form of energy that can exist independently",
-        "Sound requires a medium to propagate",
-        "Sound is produced only when there is air"
+        "900 m",
+        "1800 m",
+        "300 m",
+        "600 m"
       ],
-      "answerIndex": 2,
-      "solution": "The observation that the electric bell rings but produces no sound in a vacuum indicates that sound requires a medium to propagate. Without air, vibrations cannot travel, so no sound is heard. The other options are incorrect because sound cannot travel through a vacuum, and it is not independent of a medium or limited to air.",
-      "checkExpr": null,
+      "answerIndex": 0,
+      "solution": "The sound travels to the bottom of the water and back, so the total distance is 1500 m/s × 1.2 s = 1800 m. The depth of the water is half of this, which is 900 m. The option '1800 m' incorrectly assumes the total distance is the depth of the water. The option '300 m' and '600 m' are based on incorrect calculations.",
+      "checkExpr": "1500*1.2/2",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निर्वात घंटी के प्रयोग में, बिजली के घंटे को तब भी बजते हुए देखा जाता है जब कोई ध्वनि सुनाई नहीं देती। यह ध्वनि की प्रकृति के बारे में क्या संकेत देता है?",
+          "stem": "एक सोनार उपकरण जल में एक संकेत भेजता है और 1.2 सेकंड के बाद परावर्तित ध्वनि के साथ वापस आता है। यदि जल में ध्वनि की गति 1500 मी/से है, तो उस स्थान पर जल की गहराई क्या है?",
           "choices": [
-            "ध्वनि एक माध्यम के बिना यात्रा कर सकती है",
-            "ध्वनि ऊर्जा के एक रूप है जो स्वतंत्र रूप से अस्तित्व में हो सकती है",
-            "ध्वनि के प्रसार के लिए माध्यम की आवश्यकता होती है",
-            "ध्वनि केवल वायु होने पर उत्पन्न होती है"
+            "900 मी",
+            "1800 मी",
+            "300 मी",
+            "600 मी"
           ],
-          "solution": "बिजली के घंटे के बजते हुए देखे जाने के बावजूद निर्वात में कोई ध्वनि सुनाई नहीं देना दर्शाता है कि ध्वनि के प्रसार के लिए माध्यम की आवश्यकता होती है। वायु के बिना दोलन यात्रा नहीं कर सकते, इसलिए कोई ध्वनि सुनाई नहीं देती। अन्य विकल्प गलत हैं क्योंकि ध्वनि निर्वात में यात्रा नहीं कर सकती है, और यह माध्यम से स्वतंत्र नहीं है या वायु तक सीमित नहीं है।",
+          "solution": "ध्वनि जल के तल तक जाती है और वापस आती है, इसलिए कुल दूरी 1500 मी/से × 1.2 से = 1800 मी है। जल की गहराई इसका आधा है, जो 900 मी है। विकल्प '1800 मी' कुल दूरी को जल की गहराई मान लेता है। विकल्प '300 मी' और '600 मी' गलत गणना पर आधारित हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium educational context.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "निर्वात घंटा विस्फोट प्रयोगात, विद्युत घंटा ऐकल्या न जाता देखील वाजत असल्याचे निरीक्षण केले जाते. हे काय सूचित करते की ध्वनीच्या प्रकृतीबद्दल?",
+          "stem": "एक सोनार उपकरण पाण्यात संकेत पाठवते आणि 1.2 सेकंद नंतर त्याचा प्रतिध्वनी घेते. जर पाण्यात ध्वनीची वेग 1500 मी/से असेल, तर त्या जागी पाण्याची खोली किती असेल?",
           "choices": [
-            "ध्वनी एक माध्यम विना पसरू शकतो",
-            "ध्वनी ऊर्जेचा एक प्रकार आहे जो स्वतंत्रपणे असू शकतो",
-            "ध्वनी पसरण्यासाठी माध्यम आवश्यक आहे",
-            "ध्वनी केवळ वायू असताना तयार होतो"
+            "900 मी",
+            "1800 मी",
+            "300 मी",
+            "600 मी"
           ],
-          "solution": "निर्वातात विद्युत घंटा वाजत असल्याचे निरीक्षण आणि ऐकल्या न जाणारी ध्वनी हे दर्शवते की ध्वनी पसरण्यासाठी माध्यम आवश्यक आहे. वायू नसल्यामुळे विस्तार न होता तर ध्वनी ऐकली जात नाही. इतर विकल्प अयोग्य आहेत कारण ध्वनी निर्वातातून पसरू शकत नाही आणि ती माध्यमापासून स्वतंत्र नाही किंवा वायू वर फक्त मर्यादित नाही.",
+          "solution": "ध्वनी पाण्याच्या तलावर जाते आणि परत येते, म्हणून एकूण अंतर 1500 मी/से × 1.2 से = 1800 मी असते. पाण्याची खोली हे एकूण अंतराच्या अर्ध्याचे असते, जे 900 मी असते. विकल्प '1800 मी' एकूण अंतराला पाण्याची खोली मानतो. '300 मी' आणि '600 मी' विकल्प चुकीच्या गणनावर आधारित आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
@@ -505,20 +599,132 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Misunderstands the role of medium in sound propagation",
-        "Incorrectly assumes that sound can exist independently of a medium",
         null,
-        "Confuses the idea of sound requiring a medium with other properties of sound"
+        "assumes total distance is the depth of the water",
+        "Pupil thinks the time is not doubled for the round trip",
+        "Confuses the time for one way instead of round trip, thinking 1.2 s is the time for sound to reach the bottom, not the total time for the echo."
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as the experiment shows that sound requires a medium to propagate. The other options represent common misconceptions about sound.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly accounts for the round trip of the sound wave, dividing the total distance by 2 to get the depth. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc110.pdf",
+          "ordinal": 22,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 10: Sound Waves: Characteristics and Applications",
+            "10.7 Reflection of Sound",
+            "10.7.1 Echo"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc110.pdf",
+          "ordinal": 23,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 10: Sound Waves: Characteristics and Applications",
+            "10.7 Reflection of Sound",
+            "10.7.2 Reverberation"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc110.pdf",
+          "ordinal": 24,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 10: Sound Waves: Characteristics and Applications",
+            "10.8 Ultrasonic and Infrasonic Waves, and their",
+            "10.8.1 Echolocation"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc110.pdf",
+          "ordinal": 25,
+          "pageStart": 20,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 10: Sound Waves: Characteristics and Applications",
+            "10.8 Ultrasonic and Infrasonic Waves, and their",
+            "10.8.1 Echolocation"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T03:28:16.129Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student hears a sound coming from a room that is completely sealed and has no windows. What can be concluded about the medium in the room?",
+      "choices": [
+        "The room must have a medium for sound to travel",
+        "The room must be empty of any medium",
+        "The sound must be coming from outside the room",
+        "The room must have a vacuum"
+      ],
+      "answerIndex": 0,
+      "solution": "Sound requires a medium to travel, so if a student hears a sound from a sealed room, there must be a medium present inside the room. The option stating the room must be empty or have a vacuum contradicts the basic principle that sound cannot travel through a vacuum. The claim that the sound is from outside the room is not supported by the observation of hearing it from inside.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र को एक कमरे से आवाज सुनाई देती है जो पूरी तरह से बंद है और उसमें कोई खिड़की नहीं है। कमरे में माध्यम के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "कमरे में ध्वनि के यात्रा के लिए एक माध्यम अवश्य होना चाहिए",
+            "कमरा किसी भी माध्यम से रहित होना चाहिए",
+            "ध्वनि के बाहर कमरे से आना चाहिए",
+            "कमरे में निर्वात होना चाहिए"
+          ],
+          "solution": "ध्वनि के यात्रा के लिए माध्यम की आवश्यकता होती है, इसलिए यदि छात्र एक बंद कमरे से ध्वनि सुनता है, तो कमरे में आवश्यक रूप से माध्यम उपस्थित होना चाहिए। वह विकल्प जो कहता है कि कमरा रहित है या निर्वात है, ध्वनि के निर्वात में यात्रा न करने के मूल सिद्धांत के विरोध में है। बाहर कमरे से ध्वनि आने का दावा आंतरिक रूप से इसे सुने जाने के अवलोकन द्वारा समर्थित नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for scientific concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीला एका पूर्णपणे बंद आणि खिडक्या नसलेल्या खोलीतून आवाज ऐकू येतो. खोलीतील माध्यमाबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "खोलीत आवाज पसरण्यासाठी एक माध्यम असणे आवश्यक आहे",
+            "खोलीत कोणताही माध्यम नसावा",
+            "आवाज खोलीबाहेरून येत असावा",
+            "खोलीत निर्वात असावा"
+          ],
+          "solution": "आवाज पसरण्यासाठी माध्यम आवश्यक आहे, म्हणून जर एका बंद खोलीतून आवाज ऐकू येत असेल तर खोलीत माध्यम असणे आवश्यक आहे. खोलीत कोणताही माध्यम नसल्याचा विधान आवाज निर्वातमध्ये पसरू शकत नाही या मूलभूत तत्त्वाशी विरोधाभास आहे. आवाज खोलीबाहेरून येत असावा या दाव्याला खोलीतून ऐकल्याच्या अवलोकनाने समर्थन मिळत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Misunderstands the requirement for a medium for sound to travel",
+        "Incorrectly assumes that a sealed room implies no medium",
+        "Confuses the source of the sound with the presence of a medium"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as sound requires a medium to travel, and the fact that the student hears the sound implies a medium is present. The other options are incorrect due to misconceptions about the nature of sound propagation.",
       "sources": [
         {
           "document": "ncert/9/science/iesc110.pdf",
@@ -553,7 +759,106 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T15:57:14.241Z",
+      "generatedAt": "2026-10-30T03:28:16.129Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a vacuum, can sound waves be produced by vibrating objects?",
+      "choices": [
+        "Yes, if the objects are in contact with each other",
+        "No, because there is no medium for the waves to travel through",
+        "Yes, if the objects are in a solid medium",
+        "No, because the objects cannot vibrate in a vacuum"
+      ],
+      "answerIndex": 1,
+      "solution": "Sound waves require a medium to travel through, such as air, water, or a solid. In a vacuum, there is no medium available, so sound cannot propagate. The other options are incorrect because vibrations alone do not produce sound without a medium, and objects can vibrate in a vacuum but cannot transmit sound without a medium.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक निर्वात में, कंपन करने वाले वस्तुओं द्वारा ध्वनि तरंगें उत्पन्न की जा सकती हैं?",
+          "choices": [
+            "हाँ, यदि वस्तुएँ एक दूसरे के संपर्क में हों",
+            "नहीं, क्योंकि तरंगों के यात्रा के लिए कोई माध्यम नहीं है",
+            "हाँ, यदि वस्तुएँ एक ठोस माध्यम में हों",
+            "नहीं, क्योंकि वस्तुएँ एक निर्वात में कंपन नहीं कर सकतीं"
+          ],
+          "solution": "ध्वनि तरंगों के लिए एक माध्यम की आवश्यकता होती है, जैसे हवा, पानी या एक ठोस। एक निर्वात में, कोई माध्यम उपलब्ध नहीं होता, इसलिए ध्वनि प्रसारित नहीं हो सकती। अन्य विकल्प गलत हैं क्योंकि केवल कंपन बिना माध्यम के ध्वनि उत्पन्न नहीं कर सकते हैं, और वस्तुएँ एक निर्वात में कंपन कर सकती हैं लेकिन माध्यम के बिना ध्वनि संचारित नहीं कर सकतीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms and correct answer positioning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका निर्वातात, कंपमान वस्तूंद्वारे ध्वनी तरंग तयार करता येतील का?",
+          "choices": [
+            "होय, जर वस्तू एकमेकांशी संपर्कात असतील",
+            "नाही, कारण तरंग वाहून नेण्यासाठी कोणताही माध्यम नाही",
+            "होय, जर वस्तू घन माध्यमात असतील",
+            "नाही, कारण निर्वातात वस्तू विस्तारू शकत नाहीत"
+          ],
+          "solution": "ध्वनी तरंग वाहून नेण्यासाठी माध्यम आवश्यक असतो, जसे की हवा, पाणी किंवा घन. निर्वातात, माध्यम उपलब्ध नसल्यामुळे ध्वनी पसरू शकत नाही. इतर पर्याय अयोग्य आहेत कारण माध्यम नसल्यास विस्तार ध्वनी तयार करत नाहीत, आणि वस्तू निर्वातात विस्तारू शकतात परंतु माध्यम नसल्यामुळे ध्वनी पसरू शकत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes that vibration alone is sufficient for sound production",
+        null,
+        "Incorrectly believes that a solid medium is not needed in a vacuum",
+        "Misunderstands the role of a medium in sound wave production"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as sound requires a medium to propagate and a vacuum lacks one. All distractors reflect common misconceptions about the role of a medium in sound wave production.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc110.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 10: Sound Waves: Characteristics and Applications",
+            "10.2 Propagation of Sound",
+            "10.2.1 Sound needs a medium to propagate"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc110.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 10: Sound Waves: Characteristics and Applications",
+            "10.3 Sound Waves"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc110.pdf",
+          "ordinal": 7,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 10: Sound Waves: Characteristics and Applications",
+            "10.3 Sound Waves"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T03:28:16.129Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

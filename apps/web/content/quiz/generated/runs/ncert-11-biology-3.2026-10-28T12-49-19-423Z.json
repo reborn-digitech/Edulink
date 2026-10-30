@@ -1,0 +1,629 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T12:49:19.423Z",
+  "finishedAt": "2026-10-28T12:59:57.314Z",
+  "seconds": 638,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo103.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 3 — Plant Kingdom",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2016 — question paper]\n58. (2 points) A classification of plant kingdom based on evolution of various characters is\nshown below.\norsetail ycad\nAlgae ornwort Liverwort Moss Club mossH C Angiosperm\nH\nU\nT\nS\nR\nQ\nP\nA few of these characters (I to IV) are listed below. For each of these characters, choose a\nsingle appropriate alphabet from the cladogram and fill in the blanks.\nI. Wood: ______\nII. Seed development: ______\nIII. Cuticle, protected embryo: ______\nIV. Independent sporophyte: ______\n********* END OF SECTION B *********",
+      "[INBO 2011 — question paper]\n66. (3 points) A tree of major taxa of vascular plants is shown below. Choose\nfrom the options given below and match them against I – IV and VI – VII.\nGnetales\nI II III IV V VI VII\n200 mya\nSporangium covered by carpel 300 mya\nSporangium covered by integument\n400 mya\nSporangium not covered by integument\nA. Pteridophytes\nB. Eudicotyledons\nC. Monocotyledons\nD. Magnolids\nE. Conifers\nF. Basal angiosperms\nI. ________\nII. ________\nIII. ________\nIV. ________\nVI. ________\nVII. ________\n********",
+      "[INBO 2014 — question paper]\n38. (1 point) In the following scheme, three domain classification key with one\nrepresentative example on each domain is shown. A, B and C respectively are:\nA B C\nCyanobacteria Halophiles\nCiliates\na. Plantae, Eubacteria, Animalia\nb. Plantae, Archaebacteria, Eukaryota\nc. Eubacteria, Archaebacteria, Eukaryota\nd. Plantae, Prokaryota, Eukaryota.\n********* END OF SECTION A *******\nINDIAN NATIONAL BIOLOGY OLYMPIAD – 2014",
+      "[INBO 2011 — question paper]\n30. (1 point) Which of the following best depicts the evolutionary sequence of\nplant characters?\n1. Transition to land habitat\n2. Evolution of seeds\n3. Evolution of fruits\n4. Evolution of vascular structures\na. 1 – 4 – 2 – 3\nb. 4 – 1 – 2 – 3\nc. 1 – 4 – 3 – 2\nd. 4 – 1 – 3 – 2\nETHOLOGY (3)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 171092,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 33034,
+      "completionTokens": 7240
+    },
+    "critique": {
+      "calls": 40,
+      "ms": 349097,
+      "in": 32,
+      "out": 30,
+      "rejects": 2,
+      "promptTokens": 18953,
+      "completionTokens": 6991
+    },
+    "solver": {
+      "calls": 201,
+      "ms": 142776,
+      "in": 30,
+      "out": 29,
+      "rejects": 1,
+      "promptTokens": 37932,
+      "completionTokens": 2209
+    },
+    "form": {
+      "calls": 11,
+      "ms": 37944,
+      "in": 29,
+      "out": 15,
+      "rejects": 14,
+      "promptTokens": 4718,
+      "completionTokens": 873
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 62,
+      "ms": 13751,
+      "in": 15,
+      "out": 13,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 764956,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 32307,
+      "completionTokens": 16281
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 3,
+    "4": 2,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason for the change in the classification of algae?",
+      "ms": {
+        "draft": 4606,
+        "critique": 6695,
+        "solver": 3308,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A researcher is studying a new organism found in a freshwater lake. It has chlorophyll, is filamentous, and reproduces by fragmentation. Based on the passage, which classification would it most likely fit into?",
+      "ms": {
+        "draft": 4606,
+        "critique": 9574,
+        "solver": 2330,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses the evolution of classification systems in the plant kingdom. Based on the information provided, which of the following would be the most accurate classification for an organism that has a rigid cell wall, contains chlorophyll, and reproduces by flagellated zoospores?",
+      "ms": {
+        "draft": 4606,
+        "critique": 8678,
+        "solver": 2126,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following correctly represents the evolutionary sequence of plant characters?",
+      "ms": {
+        "draft": 5497,
+        "critique": 8100,
+        "solver": 2445,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is true about the reproductive method of red algae?",
+      "ms": {
+        "draft": 5497,
+        "critique": 9417,
+        "solver": 19943
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the information in the passage, which of the following is most likely to be true about the role of bryophytes in plant succession?",
+      "ms": {
+        "draft": 5497,
+        "critique": 9280,
+        "solver": 3217,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following correctly represents the classification of plants based on the presence of vascular structures and seeds?",
+      "ms": {
+        "draft": 5497,
+        "critique": 12161,
+        "solver": 17374,
+        "form": 4136
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a plant specimen that has microphylls and macrophylls. Which of the following is the most likely classification of this plant?",
+      "ms": {
+        "draft": 5646,
+        "critique": 8832,
+        "solver": 1645,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key difference between gymnosperms and angiosperms?",
+      "ms": {
+        "draft": 5666,
+        "critique": 9293,
+        "solver": 1843,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of gymnosperms?",
+      "ms": {
+        "draft": 5666,
+        "critique": 11575
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student noticed that both gymnosperms and angiosperms have seeds, but the passage states they are classified separately. Why is this the case?",
+      "ms": {
+        "draft": 5666,
+        "critique": 11087,
+        "solver": 2274,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which of the following plant groups are the male and female gametophytes not independent and free-living?",
+      "ms": {
+        "draft": 5666,
+        "critique": 10182,
+        "solver": 22421,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student was given a diagram of a plant with spores and seeds. Which of the following is most likely the correct classification of the plant?",
+      "ms": {
+        "draft": 5666,
+        "critique": 9002,
+        "solver": 18225,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given the following information about plant evolution: (1) Evolution of vascular structures, (2) Transition to land habitat, (3) Evolution of seeds, (4) Evolution of fruits. Which of the following is the correct sequence of these developments?",
+      "ms": {
+        "draft": 5944,
+        "critique": 10612
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the life cycle of pteridophytes?",
+      "ms": {
+        "draft": 5944,
+        "critique": 10015,
+        "solver": 2231,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes that in pteridophytes, some species produce two kinds of spores, macro and micro, and are called heterosporous. Which of the following best explains the evolutionary significance of this feature?",
+      "ms": {
+        "draft": 5944,
+        "critique": 8718,
+        "solver": 1720,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following correctly represents the evolutionary sequence of plant characters?",
+      "ms": {
+        "draft": 5810,
+        "critique": 7922,
+        "solver": 2965,
+        "form": 2613
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a common feature of all algae?",
+      "ms": {
+        "draft": 4606,
+        "critique": 5892,
+        "solver": 1887,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main plant body of bryophytes called?",
+      "ms": {
+        "draft": 5666,
+        "critique": 7282,
+        "solver": 1677,
+        "form": 3661
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main characteristic of gymnosperms that distinguishes them from angiosperms?",
+      "ms": {
+        "draft": 4286,
+        "critique": 9565,
+        "solver": 14420,
+        "form": 2329,
+        "translation": 52288
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the male gametophyte in gymnosperms?",
+      "ms": {
+        "draft": 4286,
+        "critique": 8926,
+        "solver": 2148,
+        "form": 2693,
+        "translation": 40691
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a feature of angiosperms?",
+      "ms": {
+        "draft": 4286,
+        "critique": 8148,
+        "solver": 1812,
+        "form": 3255,
+        "translation": 53025
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of pyrenoids in green algae?",
+      "ms": {
+        "draft": 4606,
+        "critique": 8935,
+        "solver": 1720,
+        "form": 3636,
+        "translation": 57342
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a common characteristic of liverworts and mosses?",
+      "ms": {
+        "draft": 5944,
+        "critique": 10871,
+        "solver": 2188,
+        "form": 4676,
+        "translation": 65223
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student finds a green, filamentous organism in a pond, which class of algae is it most likely to belong to?",
+      "ms": {
+        "draft": 4606,
+        "critique": 6397,
+        "solver": 2428,
+        "form": 4323,
+        "translation": 54589
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a characteristic of brown algae that differentiates them from red algae?",
+      "ms": {
+        "draft": 5497,
+        "critique": 9446,
+        "solver": 2705,
+        "form": 0,
+        "translation": 79667
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason bryophytes are called amphibians of the plant kingdom?",
+      "ms": {
+        "draft": 5497,
+        "critique": 8043,
+        "solver": 16816,
+        "form": 0,
+        "translation": 67762
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic of pteridophytes that is not found in bryophytes?",
+      "ms": {
+        "draft": 5646,
+        "critique": 8818,
+        "solver": 23005,
+        "form": 0,
+        "translation": 62396
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "The gametophyte of pteridophytes is described as inconspicuous, small, and multicellular. Which of the following best explains why it is inconspicuous?",
+      "ms": {
+        "draft": 5646,
+        "critique": 9121,
+        "solver": 16484,
+        "form": 0,
+        "translation": 53341
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a characteristic feature of red algae?",
+      "ms": {
+        "draft": 5810,
+        "critique": 8457,
+        "solver": 1832,
+        "form": 3298,
+        "translation": 34717
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a plant that has a sporophyte with true roots, stems, and leaves, and produces spores in sporangia. However, the plant does not form seeds. What type of plant is this most likely to be?",
+      "ms": {
+        "draft": 5646,
+        "critique": 6600,
+        "solver": 1939,
+        "form": 0,
+        "translation": 71723
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a given ecosystem, pteridophytes are found in cool, damp, shady places. Which of the following best explains this distribution pattern?",
+      "ms": {
+        "draft": 5646,
+        "critique": 10606,
+        "solver": 2204,
+        "form": 0,
+        "translation": 68076
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason for the change in the classification of algae?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (55 vs 27 characters); distractor 2's reason is not a one-line misconception (\"Overlooks the context of the passage on classification chang…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A researcher is studying a new organism found in a freshwater lake. It has chlorophyll, is filamentous, and reproduces by fragmentation. Based on the passage, which classification would it most likely fit into?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses the evolution of classification systems in the plant kingdom. Based on the information provided, which of the following would be the most accurate classification for an organism that has a rigid cell wall, contains chlorophyll, and reproduces by flagellated zoospores?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following correctly represents the evolutionary sequence of plant characters?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Transition to land habitat – Evolution of vascular structures – Evolution of seeds – Evolution of fruits\" / \"Evolution of vascular structures – Transition to land habitat – Evolution of seeds – Evolution of fruits\"); options 0 and 2 say the same thing (\"Transition to land habitat – Evolution of vascular structures – Evolution of seeds – Evolution of fruits\" / \"Transition to land habitat – Evolution of vascular structures – Evolution of fruits – Evolution of seeds\"); options 0 and 3 say the same thing (\"Transition to land habitat – Evolution of vascular structures – Evolution of seeds – Evolution of fruits\" / \"Evolution of vascular structures – Transition to land habitat – Evolution of fruits – Evolution of seeds\"); options 1 and 2 say the same thing (\"Evolution of vascular structures – Transition to land habitat – Evolution of seeds – Evolution of fruits\" / \"Transition to land habitat – Evolution of vascular structures – Evolution of fruits – Evolution of seeds\"); options 1 and 3 say the same thing (\"Evolution of vascular structures – Transition to land habitat – Evolution of seeds – Evolution of fruits\" / \"Evolution of vascular structures – Transition to land habitat – Evolution of fruits – Evolution of seeds\"); options 2 and 3 say the same thing (\"Transition to land habitat – Evolution of vascular structures – Evolution of fruits – Evolution of seeds\" / \"Evolution of vascular structures – Transition to land habitat – Evolution of fruits – Evolution of seeds\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is true about the reproductive method of red algae?",
+      "reason": "after redrafting distractors 0, 1, 2: the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the information in the passage, which of the following is most likely to be true about the role of bryophytes in plant succession?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following correctly represents the classification of plants based on the presence of vascular structures and seeds?",
+      "reason": "options 0 and 1 say the same thing (\"Algae – Pteridophytes – Gymnosperms – Angiosperms\" / \"Pteridophytes – Algae – Gymnosperms – Angiosperms\"); options 0 and 2 say the same thing (\"Algae – Pteridophytes – Gymnosperms – Angiosperms\" / \"Gymnosperms – Angiosperms – Pteridophytes – Algae\"); options 0 and 3 say the same thing (\"Algae – Pteridophytes – Gymnosperms – Angiosperms\" / \"Angiosperms – Gymnosperms – Pteridophytes – Algae\"); options 1 and 2 say the same thing (\"Pteridophytes – Algae – Gymnosperms – Angiosperms\" / \"Gymnosperms – Angiosperms – Pteridophytes – Algae\"); options 1 and 3 say the same thing (\"Pteridophytes – Algae – Gymnosperms – Angiosperms\" / \"Angiosperms – Gymnosperms – Pteridophytes – Algae\"); options 2 and 3 say the same thing (\"Gymnosperms – Angiosperms – Pteridophytes – Algae\" / \"Angiosperms – Gymnosperms – Pteridophytes – Algae\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a plant specimen that has microphylls and macrophylls. Which of the following is the most likely classification of this plant?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.leaves: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key difference between gymnosperms and angiosperms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of gymnosperms?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student noticed that both gymnosperms and angiosperms have seeds, but the passage states they are classified separately. Why is this the case?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In which of the following plant groups are the male and female gametophytes not independent and free-living?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student was given a diagram of a plant with spores and seeds. Which of the following is most likely the correct classification of the plant?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student is given the following information about plant evolution: (1) Evolution of vascular structures, (2) Transition to land habitat, (3) Evolution of seeds, (4) Evolution of fruits. Which of the following is the correct sequence of these developments?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the life cycle of pteridophytes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage describes that in pteridophytes, some species produce two kinds of spores, macro and micro, and are called heterosporous. Which of the following best explains the evolutionary significance of this feature?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following correctly represents the evolutionary sequence of plant characters?",
+      "reason": "options 0 and 1 say the same thing (\"Transition to land habitat – Evolution of vascular structures – Evolution of seeds – Evolution of fruits\" / \"Evolution of vascular structures – Transition to land habitat – Evolution of seeds – Evolution of fruits\"); options 0 and 2 say the same thing (\"Transition to land habitat – Evolution of vascular structures – Evolution of seeds – Evolution of fruits\" / \"Transition to land habitat – Evolution of vascular structures – Evolution of fruits – Evolution of seeds\"); options 0 and 3 say the same thing (\"Transition to land habitat – Evolution of vascular structures – Evolution of seeds – Evolution of fruits\" / \"Evolution of vascular structures – Transition to land habitat – Evolution of fruits – Evolution of seeds\"); options 1 and 2 say the same thing (\"Evolution of vascular structures – Transition to land habitat – Evolution of seeds – Evolution of fruits\" / \"Transition to land habitat – Evolution of vascular structures – Evolution of fruits – Evolution of seeds\"); options 1 and 3 say the same thing (\"Evolution of vascular structures – Transition to land habitat – Evolution of seeds – Evolution of fruits\" / \"Evolution of vascular structures – Transition to land habitat – Evolution of fruits – Evolution of seeds\"); options 2 and 3 say the same thing (\"Transition to land habitat – Evolution of vascular structures – Evolution of fruits – Evolution of seeds\" / \"Evolution of vascular structures – Transition to land habitat – Evolution of fruits – Evolution of seeds\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a common feature of all algae?",
+      "reason": "near-duplicate of served question cmvhigh8x092fgpfhop0wuakb (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the main plant body of bryophytes called?",
+      "reason": "near-duplicate of served question cmvknesnf0kytgpfhl6g3v5qj (cosine 0.930 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

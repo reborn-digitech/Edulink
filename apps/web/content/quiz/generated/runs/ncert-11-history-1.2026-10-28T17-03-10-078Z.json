@@ -1,0 +1,926 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T17:03:10.078Z",
+  "finishedAt": "2026-10-28T17:19:03.420Z",
+  "seconds": 953,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Themes in World History",
+    "bookCode": "kehs1",
+    "document": "ncert/11/history/kehs101.pdf",
+    "classLevel": 11,
+    "subject": "History",
+    "chapter": "Chapter 1 — early societies",
+    "edition": "Reprint 2026-27",
+    "chunks": 26,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII History, sample question paper, 2023-24]\n28. “The Mahabharata is an invaluable source available to historians to 8\nstudy social practices and norms in early societies”, Justify the\nstatement.\nOR\nExamine the elements analysed by the historians on the text of\nMahabharata.",
+      "[CBSE Class XII History, marking scheme, 2025-26]\n11. D. Sangama dynasty 1",
+      "[CBSE Class XII History, marking scheme, 2023-24]\n28. “The Mahabharata is an invaluable source available to historians to 8\nstudy social practices and norms in early societies”, Justify the CB\nstatement.\nAnswer-\n Mahabharata a dynamic epic-contains vivid descriptions of battles,\nforests, palaces & settlements.\n Its growth was not hindered by its language.\n Over the centuries it has been written in many languages of the world.\n It depicts an on-going dialogue between the people & communities on\nthe one hand and the authors on the other hand.\n It incorporated many stories that originated in different regions.\n Main story of the epic was often retold in different ways.\n Many episodes of this text had been depicted in sculptures and\npain",
+      "[CBSE Class XII History, sample question paper, 2022-23]\n28. Describe the familial relationship observed during Mahabharat era. 8\nOR\nDescribe the Social implications of access to Resources during\nMahabharat period"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 309574,
+      "in": 47,
+      "out": 46,
+      "rejects": 1,
+      "promptTokens": 46857,
+      "completionTokens": 11675
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 553083,
+      "in": 46,
+      "out": 39,
+      "rejects": 7,
+      "promptTokens": 26984,
+      "completionTokens": 9884
+    },
+    "solver": {
+      "calls": 264,
+      "ms": 196930,
+      "in": 39,
+      "out": 32,
+      "rejects": 7,
+      "promptTokens": 48251,
+      "completionTokens": 2750
+    },
+    "form": {
+      "calls": 7,
+      "ms": 28667,
+      "in": 32,
+      "out": 2,
+      "rejects": 30,
+      "promptTokens": 1938,
+      "completionTokens": 538
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 10,
+      "ms": 2244,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 100022,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5183,
+      "completionTokens": 2877
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following would be a result of the shift from nomadic life to settled agriculture as described in the passage?",
+      "ms": {
+        "draft": 18498,
+        "critique": 8953,
+        "solver": 2126,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an early society as described in the passage?",
+      "ms": {
+        "draft": 18498,
+        "critique": 9748,
+        "solver": 2359
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of agriculture in the development of early societies?",
+      "ms": {
+        "draft": 18498,
+        "critique": 9786,
+        "solver": 4012,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a historian is studying the social practices of early societies, which of the following sources would be most useful according to the passage?",
+      "ms": {
+        "draft": 18498,
+        "critique": 8945,
+        "solver": 1834
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the development of writing in early societies?",
+      "ms": {
+        "draft": 18498,
+        "critique": 7650,
+        "solver": 2492,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of writing in Mesopotamia?",
+      "ms": {
+        "draft": 4971,
+        "critique": 8084,
+        "solver": 2676,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a historian is studying early societies, which of the following would be most relevant to their research based on the passage?",
+      "ms": {
+        "draft": 4971,
+        "critique": 8244,
+        "solver": 3137
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is mentioned as a development in Mesopotamia?",
+      "ms": {
+        "draft": 4971,
+        "critique": 12856,
+        "solver": 2261
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following can be inferred about the spread of writing in Mesopotamia?",
+      "ms": {
+        "draft": 4971,
+        "critique": 9882,
+        "solver": 2494,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is comparing the development of writing in Mesopotamia with that in other regions. According to the passage, which of the following is a unique feature of Mesopotamian writing?",
+      "ms": {
+        "draft": 4971,
+        "critique": 9768,
+        "solver": 20268,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that the name Mesopotamia is derived from the Greek words meaning 'middle' and 'river'. Based on this, which of the following best explains why Mesopotamia was named so?",
+      "ms": {
+        "draft": 4971,
+        "critique": 8015,
+        "solver": 25972,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of cities in early societies according to the passage?",
+      "ms": {
+        "draft": 11329,
+        "critique": 15074,
+        "solver": 17355,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a city in Mesopotamia lacked sufficient metal resources, what would be the most likely outcome?",
+      "ms": {
+        "draft": 11329,
+        "critique": 9008,
+        "solver": 2249,
+        "form": 5386
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the importance of trade in Mesopotamian cities?",
+      "ms": {
+        "draft": 11329,
+        "critique": 12982,
+        "solver": 2316,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of the division of labor in Mesopotamian cities?",
+      "ms": {
+        "draft": 11329,
+        "critique": 9686,
+        "solver": 18760,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When did writing first begin according to the passage?",
+      "ms": {
+        "draft": 5479,
+        "critique": 8958,
+        "solver": 2700,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A historian claims that the Mahabharata is a useful source for understanding early societies. Which of the following supports this claim?",
+      "ms": {
+        "draft": 11329,
+        "critique": 12410,
+        "solver": 25663,
+        "form": 4115
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is a reason that the Euphrates was important for Mesopotamian agriculture?",
+      "ms": {
+        "draft": 11329,
+        "critique": 12999,
+        "solver": 17536
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of writing in Mesopotamian society?",
+      "ms": {
+        "draft": 5479,
+        "critique": 9618,
+        "solver": 2149,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage imply about the importance of writing in Mesopotamia?",
+      "ms": {
+        "draft": 5479,
+        "critique": 9253,
+        "solver": 2736,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what does the story of Enmerkar suggest about writing?",
+      "ms": {
+        "draft": 5479,
+        "critique": 9872,
+        "solver": 1775,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a reason for conflict in early Mesopotamian society?",
+      "ms": {
+        "draft": 6994,
+        "critique": 9180,
+        "solver": 9719,
+        "form": 1596
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of schools in early Mesopotamian society?",
+      "ms": {
+        "draft": 19723,
+        "critique": 10680
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is asked to explain why Sumerian continued to be taught in schools even after it ceased to be spoken, which of the following would be the best explanation?",
+      "ms": {
+        "draft": 19723,
+        "critique": 10199,
+        "solver": 2720,
+        "form": 4860
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student is asked to explain why Assurbanipal collected tablets in his library, which of the following would be the most accurate response?",
+      "ms": {
+        "draft": 19723,
+        "critique": 12324
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why would the passage suggest that the initiative of the king was important for the development of new institutions in early cities?",
+      "ms": {
+        "draft": 19723,
+        "critique": 10431
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the role of writing in Mesopotamian society?",
+      "ms": {
+        "draft": 19723,
+        "critique": 9288
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a reason why Assurbanipal's library had a total of some 1,000 texts?",
+      "ms": {
+        "draft": 19723,
+        "critique": 9885,
+        "solver": 17941,
+        "form": 4511
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the purpose of the large storerooms in the palace of Mari?",
+      "ms": {
+        "draft": 6093,
+        "critique": 9443,
+        "solver": 2069,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a historian wants to understand the social practices of early societies, which source would the passage support as most useful?",
+      "ms": {
+        "draft": 6093,
+        "critique": 9245,
+        "solver": 2906,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a trader wanted to bring goods to Mari, what would be the most important step they had to take according to the passage?",
+      "ms": {
+        "draft": 6093,
+        "critique": 10929,
+        "solver": 2176,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why might the passage suggest that the people of Mari valued city life?",
+      "ms": {
+        "draft": 6093,
+        "critique": 9985,
+        "solver": 2537,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what does the mention of pig bones in a house burial suggest about the people of Mari?",
+      "ms": {
+        "draft": 6093,
+        "critique": 9160,
+        "solver": 17400
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the passage suggest about the daily life of the king of Mari?",
+      "ms": {
+        "draft": 6093,
+        "critique": 10439,
+        "solver": 2125,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of family structure was common in Mesopotamian society?",
+      "ms": {
+        "draft": 23243,
+        "critique": 10600
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the primary purpose of the seals in Mesopotamia?",
+      "ms": {
+        "draft": 23243,
+        "critique": 10673,
+        "solver": 2598,
+        "form": 5030
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the social structure of Mesopotamian society?",
+      "ms": {
+        "draft": 23243,
+        "critique": 11415
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What can be inferred from the description of Ur’s residential area?",
+      "ms": {
+        "draft": 23243,
+        "critique": 10213
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage suggest about the interaction between pastoral and agricultural communities in Mesopotamia?",
+      "ms": {
+        "draft": 23243,
+        "critique": 8955,
+        "solver": 2012,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what was the role of war leaders in early Mesopotamian society?",
+      "ms": {
+        "draft": 24133,
+        "critique": 9546,
+        "solver": 2616,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what can be inferred about the relationship between war and temple development in Mesopotamia?",
+      "ms": {
+        "draft": 24133,
+        "critique": 12723,
+        "solver": 2326,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was NOT a function of temples in early Mesopotamian cities?",
+      "ms": {
+        "draft": 24133,
+        "critique": 8363,
+        "solver": 23330
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred from the passage about the role of trade in Mesopotamian cities?",
+      "ms": {
+        "draft": 7042,
+        "critique": 9299,
+        "solver": 1325,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred about the role of writing in Mesopotamian society from the passage?",
+      "ms": {
+        "draft": 9425,
+        "critique": 12216,
+        "solver": 10942,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why did the Mesopotamians need to keep records of transactions?",
+      "ms": {
+        "draft": 5479,
+        "critique": 11401,
+        "solver": 2510,
+        "form": 4368,
+        "translation": 47931
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the timeline provided, which of the following events happened the earliest?",
+      "ms": {
+        "draft": 18498,
+        "critique": 10402,
+        "solver": 3612,
+        "form": 0,
+        "translation": 45205
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following would be a result of the shift from nomadic life to settled agriculture as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of an early society as described in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of agriculture in the development of early societies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a historian is studying the social practices of early societies, which of the following sources would be most useful according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the development of writing in early societies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misreads the passage's emphasis on writing…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of writing in Mesopotamia?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a historian is studying early societies, which of the following would be most relevant to their research based on the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is mentioned as a development in Mesopotamia?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following can be inferred about the spread of writing in Mesopotamia?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is comparing the development of writing in Mesopotamia with that in other regions. According to the passage, which of the following is a unique feature of Mesopotamian writing?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage states that the name Mesopotamia is derived from the Greek words meaning 'middle' and 'river'. Based on this, which of the following best explains why Mesopotamia was named so?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 are the same (\"Because it was the central region of ancient Greece\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the role of cities in early societies according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 are the same (\"Cities were places where people could live without relying on food production.\"); distractor 1's reason is not a one-line misconception (\"This distractor incorrectly suggests that cities allowed peo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a city in Mesopotamia lacked sufficient metal resources, what would be the most likely outcome?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"This distractor assumes an immediate collapse, which is not …\"); distractor 1's reason is not a one-line misconception (\"This distractor incorrectly suggests that trade would stop, …\"); distractor 3's reason is not a one-line misconception (\"This is the correct answer because the passage describes how…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the importance of trade in Mesopotamian cities?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This distractor limits trade to luxury goods, but the passag…\"); distractor 2's reason is not a one-line misconception (\"This is the correct answer because the passage clearly expla…\"); distractor 3's reason is not a one-line misconception (\"This distractor incorrectly assumes that trade was limited t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of the division of labor in Mesopotamian cities?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"This distractor describes a trader, but the passage focuses …\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "When did writing first begin according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A historian claims that the Mahabharata is a useful source for understanding early societies. Which of the following supports this claim?",
+      "reason": "the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, which of the following is a reason that the Euphrates was important for Mesopotamian agriculture?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of writing in Mesopotamian society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage imply about the importance of writing in Mesopotamia?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what does the story of Enmerkar suggest about writing?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (58 vs 29 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following was a reason for conflict in early Mesopotamian society?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main reason given in the passage for the construction of defensive walls around cities like Uruk?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of schools in early Mesopotamian society?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student is asked to explain why Sumerian continued to be taught in schools even after it ceased to be spoken, which of the following would be the best explanation?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, not a distractor…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a student is asked to explain why Assurbanipal collected tablets in his library, which of the following would be the most accurate response?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why would the passage suggest that the initiative of the king was important for the development of new institutions in early cities?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage say about the role of writing in Mesopotamian society?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following was a reason why Assurbanipal's library had a total of some 1,000 texts?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the purpose of the large storerooms in the palace of Mari?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a historian wants to understand the social practices of early societies, which source would the passage support as most useful?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a trader wanted to bring goods to Mari, what would be the most important step they had to take according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why might the passage suggest that the people of Mari valued city life?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what does the mention of pig bones in a house burial suggest about the people of Mari?",
+      "reason": "after redraft: the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the passage suggest about the daily life of the king of Mari?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What type of family structure was common in Mesopotamian society?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What was the primary purpose of the seals in Mesopotamia?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks seals were used for storage, which is not mentioned i…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage suggest about the social structure of Mesopotamian society?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What can be inferred from the description of Ur’s residential area?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage suggest about the interaction between pastoral and agricultural communities in Mesopotamia?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Thinks the communities were completely isolated, which contr…\"); distractor 2's reason is not a one-line misconception (\"Thinks the communities were in constant conflict, which is n…\"); distractor 3's reason is not a one-line misconception (\"Thinks the communities were equal in power, which is not men…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what was the role of war leaders in early Mesopotamian society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Overlooks the emphasis on power and influence in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, what can be inferred about the relationship between war and temple development in Mesopotamia?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following was NOT a function of temples in early Mesopotamian cities?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What can be inferred from the passage about the role of trade in Mesopotamian cities?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This ignores the passage's discussion of trade for non-agric…\"); distractor 3's reason is not a one-line misconception (\"This contradicts the passage's emphasis on long-distance tra…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What can be inferred about the role of writing in Mesopotamian society from the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

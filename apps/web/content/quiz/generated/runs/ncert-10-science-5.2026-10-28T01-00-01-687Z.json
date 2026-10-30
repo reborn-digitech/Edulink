@@ -1,0 +1,784 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T01:00:01.687Z",
+  "finishedAt": "2026-10-28T01:09:26.907Z",
+  "seconds": 565,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc105.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 5 — Life Processes",
+    "edition": "Reprint 2026-27",
+    "chunks": 30,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2022-23]\n29. No photosynthesis will occur so no glucose will be made. Also no respiration will 3\ntake place as no Oxygen will be taken in. (1)\nNo transpiration will occur so there would be no upward movement of water or\nminerals from the soil as there will be no transpirational pull.(1)\nTemperature regulation of leaf surface will be affected. (1)\nOR\nLymph carries digested and absorbed fat from the intestine (1) and drains excess\nfluid from extracellular space back into the blood (1). Blockage of lymphatic\nsystem will lead to water retention and poor fat absorption in the body\n(1- any one)",
+      "[CBSE Class X Science, marking scheme, 2023-24]\nMarking Scheme (2023-24)\nClass-X\nScience (Subject Code – 086) b\nQ. No. Answer Marks\nSection–A\n1 b) Barium sulphate\n2 b) Colourless\n3 d) NaHCO 3\n4 a) Sodium\n6 d) 11 (2,8,1)\n7 c) 14\n8 b) Mushroom\n9 a) tongue\n10 c) Vegetative propagation\n11 c) Growth hormones under the influence of the enzymes coded by a gene. 1\n12 c) lack of oxygen and formation of lactic acid. 1\n13 d) behind the mirror and its position varies according to the object distance. 1\n14 c) scattering of light.\n15 c) CFCs, Ozone\n16 a) Broken down by biological processes\n17 d) Assertion is false but Reason is true\n18 a) Both A and R are true and R is the correct explanation of A. 1\n19 d) Assertion is false but Reason is true 1\n20 c) ",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 203234,
+      "in": 46,
+      "out": 39,
+      "rejects": 7,
+      "promptTokens": 55058,
+      "completionTokens": 11359
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 285332,
+      "in": 39,
+      "out": 34,
+      "rejects": 5,
+      "promptTokens": 22724,
+      "completionTokens": 8250
+    },
+    "solver": {
+      "calls": 227,
+      "ms": 93733,
+      "in": 34,
+      "out": 31,
+      "rejects": 3,
+      "promptTokens": 35987,
+      "completionTokens": 2173
+    },
+    "form": {
+      "calls": 9,
+      "ms": 26532,
+      "in": 31,
+      "out": 16,
+      "rejects": 15,
+      "promptTokens": 2389,
+      "completionTokens": 721
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 43,
+      "ms": 6990,
+      "in": 16,
+      "out": 14,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 59,
+      "ms": 597492,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 36131,
+      "completionTokens": 18559
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main source of energy for living organisms according to the passage?",
+      "ms": {
+        "draft": 3604,
+        "critique": 5895,
+        "solver": 971
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of living organisms according to the passage?",
+      "ms": {
+        "draft": 3604,
+        "critique": 7101
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of enzymes in heterotrophic organisms according to the passage?",
+      "ms": {
+        "draft": 3604,
+        "critique": 6583,
+        "solver": 1335,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In multi-cellular organisms, why is a transportation system necessary?",
+      "ms": {
+        "draft": 3604,
+        "critique": 7074,
+        "solver": 1565,
+        "form": 2070
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason why viruses are considered not fully alive?",
+      "ms": {
+        "draft": 3604,
+        "critique": 6116
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a source of energy for plants?",
+      "ms": {
+        "draft": 3153,
+        "critique": 6620,
+        "solver": 1657
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why is starch used as an energy reserve in plants?",
+      "ms": {
+        "draft": 3153,
+        "critique": 4789,
+        "solver": 1180,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a unicellular organism that uses cilia to move food into its body?",
+      "ms": {
+        "draft": 6241,
+        "critique": 5735,
+        "solver": 1312,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of an autotroph?",
+      "ms": {
+        "draft": 3153,
+        "critique": 5718,
+        "solver": 10296
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment described in the passage, what does a change in colour after adding iodine solution indicate?",
+      "ms": {
+        "draft": 6241,
+        "critique": 7464,
+        "solver": 1221,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person's small intestine were to be shorter than normal, which of the following would most likely occur?",
+      "ms": {
+        "draft": 6241,
+        "critique": 7777,
+        "solver": 1435,
+        "form": 2622
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the small intestine coiled in the human body?",
+      "ms": {
+        "draft": 6241,
+        "critique": 7329
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a function of the lymphatic system?",
+      "ms": {
+        "draft": 6422,
+        "critique": 5914,
+        "solver": 1638,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the primary driving force for the movement of water in the xylem during the day?",
+      "ms": {
+        "draft": 6422,
+        "critique": 5900,
+        "solver": 976,
+        "form": 3124
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why a plant cannot be reconstructed from a fragment in complex multicellular organisms?",
+      "ms": {
+        "draft": 5586,
+        "critique": 6676,
+        "solver": 6339,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What are the byproducts of autotrophic nutrition?",
+      "ms": {
+        "draft": 2907,
+        "critique": 4986,
+        "solver": 1296,
+        "form": 2375
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage describes the structure of the excretory system in humans, including the kidneys, ureters, urinary bladder, and urethra. Which of the following correctly describes the function of the urinary bladder?",
+      "ms": {
+        "draft": 5116,
+        "critique": 5238,
+        "solver": 1031,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage explains that in the kidneys, the basic filtration unit is a cluster of thin-walled blood capillaries. If a person has a condition that reduces the number of these filtration units, what would be the most likely consequence?",
+      "ms": {
+        "draft": 5116,
+        "critique": 5403,
+        "solver": 1638,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses the process of excretion in plants, stating that some waste products are stored in cellular vacuoles, while others are released into the soil. Which of the following best explains why plants can store waste in vacuoles?",
+      "ms": {
+        "draft": 5116,
+        "critique": 6629,
+        "solver": 1653,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of platelets in the human body?",
+      "ms": {
+        "draft": 5281,
+        "critique": 5828
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The passage describes the process of transpiration in plants, where water is lost through the leaves. Which of the following is a function of transpiration?",
+      "ms": {
+        "draft": 5116,
+        "critique": 6645,
+        "solver": 1476,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains why transpiration helps in the upward movement of water in plants?",
+      "ms": {
+        "draft": 5281,
+        "critique": 5733
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How does the human respiratory system ensure efficient gas exchange in the lungs?",
+      "ms": {
+        "draft": 4964,
+        "critique": 7264,
+        "solver": 1571,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the plant is responsible for the transport of water?",
+      "ms": {
+        "draft": 2907,
+        "critique": 5999,
+        "solver": 1045,
+        "form": 4592
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which system is responsible for the removal of excretory products in humans?",
+      "ms": {
+        "draft": 2907,
+        "critique": 6447,
+        "solver": 10657,
+        "form": 3208
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary function of ATP in cells?",
+      "ms": {
+        "draft": 4108,
+        "critique": 6516,
+        "solver": 10318,
+        "form": 0,
+        "translation": 37782
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the role of the acid in our stomach?",
+      "ms": {
+        "draft": 4108,
+        "critique": 6334,
+        "solver": 10063,
+        "form": 0,
+        "translation": 29627
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which process allows organisms to obtain energy from food?",
+      "ms": {
+        "draft": 3604,
+        "critique": 6095,
+        "solver": 1798,
+        "form": 4014,
+        "translation": 48183
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of saliva in the digestion of food?",
+      "ms": {
+        "draft": 2907,
+        "critique": 6638,
+        "solver": 9396,
+        "form": 0,
+        "translation": 25761
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student set up an experiment with two pots, one containing a plant and the other with a stick. Both were covered with plastic sheets and placed in sunlight. After some time, the student observed moisture on the plastic sheet above the pot with the plant. What is the main reason for this observation?",
+      "ms": {
+        "draft": 5116,
+        "critique": 6284,
+        "solver": 1675,
+        "form": 0,
+        "translation": 47940
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following would happen if a plant's stomata were permanently closed?",
+      "ms": {
+        "draft": 3153,
+        "critique": 5496,
+        "solver": 1615,
+        "form": 0,
+        "translation": 40178
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for the presence of mucus in the stomach?",
+      "ms": {
+        "draft": 6241,
+        "critique": 5783,
+        "solver": 13912,
+        "form": 2406,
+        "translation": 62941
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the human respiratory system is responsible for filtering and warming the air before it reaches the lungs?",
+      "ms": {
+        "draft": 3709,
+        "critique": 6467,
+        "solver": 1514,
+        "form": 0,
+        "translation": 44350
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why the human heart has four chambers instead of two?",
+      "ms": {
+        "draft": 3709,
+        "critique": 5670,
+        "solver": 1672,
+        "form": 0,
+        "translation": 44307
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person has a blockage in the lymphatic system. What would be the most likely effect on the body?",
+      "ms": {
+        "draft": 5281,
+        "critique": 6050,
+        "solver": 11302,
+        "form": 0,
+        "translation": 31886
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a leaf from a variegated plant was tested for starch. The green areas turned blue-black, while the non-green areas did not. What does this suggest?",
+      "ms": {
+        "draft": 3153,
+        "critique": 7062,
+        "solver": 1301,
+        "form": 4849,
+        "translation": 57696
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following processes is responsible for the production of lactic acid in muscle cells during intense physical activity?",
+      "ms": {
+        "draft": 5191,
+        "critique": 5660,
+        "solver": 604,
+        "form": 0,
+        "translation": 25480
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do plants not require a circulatory system like animals, even though they have a transport system?",
+      "ms": {
+        "draft": 5281,
+        "critique": 7095,
+        "solver": 9464,
+        "form": 0,
+        "translation": 33999
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student conducted an experiment where one plant was kept in a jar with potassium hydroxide and another without. After exposure to sunlight, the plant in the jar without potassium hydroxide showed more starch. What is the most likely reason?",
+      "ms": {
+        "draft": 3153,
+        "critique": 6890,
+        "solver": 2442,
+        "form": 0,
+        "translation": 61269
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the main function of the villi in the small intestine?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the function of digestive enzymes?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main difference between aerobic and anaerobic respiration?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In human beings, which respiratory pigment is responsible for carrying oxygen from the lungs to the body's tissues?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main source of energy for living organisms according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of living organisms according to the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the role of enzymes in heterotrophic organisms according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In multi-cellular organisms, why is a transportation system necessary?",
+      "reason": "option 3 is a catch-all (\"Both A and B\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason why viruses are considered not fully alive?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a source of energy for plants?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, why is starch used as an energy reserve in plants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a unicellular organism that uses cilia to move food into its body?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the structure of humans as unicellular organi…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of an autotroph?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment described in the passage, what does a change in colour after adding iodine solution indicate?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Confuses the role of iodine in detecting starch, thinking th…\"); distractor 2 has no reason; distractor 3 has no reason"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a person's small intestine were to be shorter than normal, which of the following would most likely occur?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Assumes that a shorter small intestine would improve fat dig…\"); distractor 1 has no reason; distractor 3 has no reason"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the small intestine coiled in the human body?",
+      "reason": "the critic finds option 0 correct, the key is 3; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a function of the lymphatic system?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Believes the lymphatic system regulates body temperature dir…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the primary driving force for the movement of water in the xylem during the day?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Believes root pressure is the main driving force, which the …\"); distractor 2's reason is not a one-line misconception (\"Thinks transpiration pull is not the main force, which contr…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the role of osmotic pressure, which is a proc…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why a plant cannot be reconstructed from a fragment in complex multicellular organisms?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is required for autotrophic nutrition?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Where does the breakdown of pyruvate take place?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the role of haemoglobin in the human body?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What are the byproducts of autotrophic nutrition?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage describes the structure of the excretory system in humans, including the kidneys, ureters, urinary bladder, and urethra. Which of the following correctly describes the function of the urinary bladder?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage explains that in the kidneys, the basic filtration unit is a cluster of thin-walled blood capillaries. If a person has a condition that reduces the number of these filtration units, what would be the most likely consequence?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses the process of excretion in plants, stating that some waste products are stored in cellular vacuoles, while others are released into the soil. Which of the following best explains why plants can store waste in vacuoles?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the function of platelets in the human body?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "The passage describes the process of transpiration in plants, where water is lost through the leaves. Which of the following is a function of transpiration?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following best explains why transpiration helps in the upward movement of water in plants?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "How does the human respiratory system ensure efficient gas exchange in the lungs?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Believes the alveoli are filled with water for gas dissoluti…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which part of the plant is responsible for the transport of water?",
+      "reason": "near-duplicate of served question cmvjy5ptj0i56gpfhnw6xf8sa (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which system is responsible for the removal of excretory products in humans?",
+      "reason": "near-duplicate of served question cmvntja4204c7gp217q13nrfk (cosine 0.936 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

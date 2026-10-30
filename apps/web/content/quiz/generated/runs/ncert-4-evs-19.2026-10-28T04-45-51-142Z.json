@@ -1,0 +1,366 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:45:51.142Z",
+  "finishedAt": "2026-10-28T04:48:27.757Z",
+  "seconds": 157,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap119.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 19 — Abdul in the Garden",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 53933,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 13399,
+      "completionTokens": 3301
+    },
+    "critique": {
+      "calls": 19,
+      "ms": 123199,
+      "in": 15,
+      "out": 4,
+      "rejects": 11,
+      "promptTokens": 8341,
+      "completionTokens": 3318
+    },
+    "solver": {
+      "calls": 48,
+      "ms": 25423,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 9004,
+      "completionTokens": 587
+    },
+    "form": {
+      "calls": 2,
+      "ms": 3581,
+      "in": 4,
+      "out": 0,
+      "rejects": 4,
+      "promptTokens": 441,
+      "completionTokens": 121
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 3096,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 181,
+      "completionTokens": 223
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What did Abdul find when he dug out the grass plant?",
+      "ms": {
+        "draft": 2826,
+        "critique": 6575
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Abdul wonder about the radish?",
+      "ms": {
+        "draft": 2826,
+        "critique": 7076
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a living thing that grows?",
+      "ms": {
+        "draft": 19407,
+        "critique": 9643
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did Abbu say that Abdul had to dig out the grass?",
+      "ms": {
+        "draft": 2826,
+        "critique": 6850,
+        "solver": 12548,
+        "form": 1764
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you did not cut your nails for a year, how would they look?",
+      "ms": {
+        "draft": 19407,
+        "critique": 6256
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Abbu say about the neem tree after the strong wind?",
+      "ms": {
+        "draft": 2826,
+        "critique": 7325,
+        "solver": 9608,
+        "form": 1817
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a living thing that grows?",
+      "ms": {
+        "draft": 19407,
+        "critique": 4788
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a thing that grows according to the passage?",
+      "ms": {
+        "draft": 3220,
+        "critique": 6266
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child had never cut their nails, what would happen over time?",
+      "ms": {
+        "draft": 3220,
+        "critique": 6466
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did Abdul find it difficult to pull out the small grass?",
+      "ms": {
+        "draft": 4630,
+        "critique": 7029
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the neem tree not fall despite the strong wind?",
+      "ms": {
+        "draft": 4630,
+        "critique": 6825
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of something that grows according to the passage?",
+      "ms": {
+        "draft": 3220,
+        "critique": 6946,
+        "solver": 13853,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct reason for considering a thing to be growing?",
+      "ms": {
+        "draft": 3220,
+        "critique": 6625,
+        "solver": 12051,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen to the plants if nobody gave them water?",
+      "ms": {
+        "draft": 4630,
+        "critique": 5757
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Abdul wonder if the radish was a root?",
+      "ms": {
+        "draft": 4630,
+        "critique": 5843
+      },
+      "outcome": "critique",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did Abdul find when he dug out the grass plant?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did Abdul wonder about the radish?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a living thing that grows?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Why did Abbu say that Abdul had to dig out the grass?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the description of the grass\",\"Misreads the p…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If you did not cut your nails for a year, how would they look?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What did Abbu say about the neem tree after the strong wind?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misunderstands the description of the tree\",\"Misinterprets t…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is not a living thing that grows?",
+      "reason": "option 0 is not wrong; option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a thing that grows according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a child had never cut their nails, what would happen over time?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Why did Abdul find it difficult to pull out the small grass?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did the neem tree not fall despite the strong wind?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of something that grows according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct reason for considering a thing to be growing?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What would happen to the plants if nobody gave them water?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Why did Abdul wonder if the radish was a root?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,620 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T08:16:00.001Z",
+  "finishedAt": "2026-10-30T08:31:17.890Z",
+  "seconds": 918,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc108.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 8 — Heredity",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2025-26]\n14. A. RY, Ry, rY, ry 3\nB. The traits which are independently inherited are as follows\nTall round: 81\nTall wrinkled: 27\nShort round: 27\nShort wrinkled: 9\n(Ratio :- 9 : 3 : 3 : 1)",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n15. In order to study patterns of inheritance, Neha had performed typical Mendelian 4\nexperiments with pea plants in the field. In experiment one, she crossed a pea\nplant having white flowers (vv) with another pea plant bearing violet flowers\n(VV). In another experiment, in addition to the colour of the flower she also\nfocussed on the height of the pea plant. This time she crossed a pea plant\nhaving violet flowers and tall height (VVTT) with another pea plant having white\nflowers and short height (vvtt).\nWhat percentage is expected for the following traits as a result of these\nexperiments? Give a reason.\nA. Violet flowers in F1 and F2 generation in experiment one? (1)\nB. Tall height plants w",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n14. In a genetic experiment, plants with pure round green seeds (RRyy) were 3\ncrossed with plants with wrinkled yellow seeds (rrYY).\n(i) Show the gametes formed when F1 was self-pollinated.\n(ii) A total of 144 seeds were produced which developed into saplings.\nShow the ratio in which these traits are independently inherited in\nthese144 sapling.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n12. D. sex is not genetically determined in snails. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 148492,
+      "in": 31,
+      "out": 30,
+      "rejects": 1,
+      "promptTokens": 23840,
+      "completionTokens": 8113
+    },
+    "critique": {
+      "calls": 36,
+      "ms": 393017,
+      "in": 30,
+      "out": 21,
+      "rejects": 9,
+      "promptTokens": 17053,
+      "completionTokens": 6610
+    },
+    "solver": {
+      "calls": 143,
+      "ms": 88989,
+      "in": 21,
+      "out": 15,
+      "rejects": 6,
+      "promptTokens": 24810,
+      "completionTokens": 1392
+    },
+    "form": {
+      "calls": 5,
+      "ms": 38251,
+      "in": 15,
+      "out": 8,
+      "rejects": 7,
+      "promptTokens": 1403,
+      "completionTokens": 462
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 53,
+      "ms": 10411,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 1044154,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 13188,
+      "completionTokens": 7203
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does the passage say about the inheritance of traits in asexually reproducing organisms?",
+      "ms": {
+        "draft": 5046,
+        "critique": 5370
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child inherits one dominant and one recessive allele for a trait, what will be the expression of that trait?",
+      "ms": {
+        "draft": 5046,
+        "critique": 5700
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what would happen if a trait is present in 60% of a population of an asexually reproducing species?",
+      "ms": {
+        "draft": 5046,
+        "critique": 6194
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a trait A exists in 10% of a population and trait B exists in 60% of the same population, which trait is more likely to have been present for a longer time?",
+      "ms": {
+        "draft": 5046,
+        "critique": 5221
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a Mendelian experiment, F1 progeny with genotype Tt Rr are self-pollinated. If the F2 generation has 1600 seeds, how many of them will be tall plants with wrinkled seeds?",
+      "ms": {
+        "draft": 4170,
+        "critique": 11308
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a Mendelian experiment, a tall plant with round seeds (TT RR) is crossed with a short plant with wrinkled seeds (tt rr). What will be the genotype of the F1 progeny?",
+      "ms": {
+        "draft": 4170,
+        "critique": 7393,
+        "solver": 15801,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a genetic experiment, plants with pure round green seeds (RRyy) were crossed with plants with wrinkled yellow seeds (rrYY). If 144 seeds were produced, what is the expected number of seeds with wrinkled yellow seeds?",
+      "ms": {
+        "draft": 4170,
+        "critique": 8183
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a Mendelian experiment, a tall plant with round seeds (TTRR) is crossed with a short plant with wrinkled seeds (ttrr). If the F1 progeny are self-pollinated and 1600 seeds are produced, how many of them will be short plants with round seeds?",
+      "ms": {
+        "draft": 4170,
+        "critique": 7807,
+        "solver": 1528
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a genetic experiment, plants with pure round green seeds (RRyy) were crossed with plants with wrinkled yellow seeds (rrYY). What is the ratio of the traits in the F2 generation?",
+      "ms": {
+        "draft": 4170,
+        "critique": 8290,
+        "solver": 1869,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a Mendelian experiment, tall pea plants with violet flowers were crossed with short pea plants with white flowers. The progeny all had violet flowers, but almost half were short. What is the likely genetic make-up of the tall parent?",
+      "ms": {
+        "draft": 14909,
+        "critique": 8428,
+        "solver": 14303,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A man with blood group A marries a woman with blood group O and their daughter has blood group O. What can be concluded about the dominance of blood group A and O?",
+      "ms": {
+        "draft": 14909,
+        "critique": 5488,
+        "solver": 1280
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a genetic experiment, plants with pure round green seeds (RRyy) were crossed with plants with wrinkled yellow seeds (rrYY). After self-pollination of the F1 generation, 144 seeds were produced. What is the expected number of round yellow seeds in the F2 generation?",
+      "ms": {
+        "draft": 4528,
+        "critique": 8488
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A man with blood group A marries a woman with blood group O, and their daughter has blood group O. Can we determine which blood group is dominant?",
+      "ms": {
+        "draft": 4528,
+        "critique": 7477,
+        "solver": 1424
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a Mendelian experiment, tall pea plants with violet flowers were crossed with short pea plants with white flowers. The progeny all had violet flowers, but half were short. Which of the following statements best explains this result?",
+      "ms": {
+        "draft": 4528,
+        "critique": 7332,
+        "solver": 2394
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a Mendelian experiment, a tall pea plant with violet flowers was crossed with a short pea plant with white flowers. All the progeny had violet flowers, but half of them were short. What is the genetic make-up of the tall parent?",
+      "ms": {
+        "draft": 4528,
+        "critique": 8487,
+        "solver": 13969
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a Mendelian experiment, a tall plant with round seeds (TT RR) is crossed with a short plant with wrinkled seeds (tt rr). What will be the genotype of the F1 progeny?",
+      "ms": {
+        "draft": 17211,
+        "critique": 7947
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the role of the X and Y chromosomes in determining the sex of a child in humans?",
+      "ms": {
+        "draft": 4528,
+        "critique": 8444,
+        "solver": 1918,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a genetic cross, a pea plant with pure round green seeds (RRyy) is crossed with a pea plant with wrinkled yellow seeds (rrYY). If the F1 progeny are self-pollinated, what will be the ratio of the offspring showing the traits of round seeds and yellow seeds?",
+      "ms": {
+        "draft": 17211,
+        "critique": 8981,
+        "solver": 1903,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a genetic experiment, plants with pure round green seeds (RRyy) are crossed with plants with wrinkled yellow seeds (rrYY). The F1 progeny are self-pollinated, and 144 seeds are produced. How many of these seeds are expected to be round and yellow?",
+      "ms": {
+        "draft": 17211,
+        "critique": 22801
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a genetic cross, a pea plant with violet flowers and tall height (VVTT) is crossed with a pea plant with white flowers and short height (vvtt). What is the reason that the F1 generation shows only violet flowers and tall height?",
+      "ms": {
+        "draft": 17211,
+        "critique": 15869,
+        "solver": 6018
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a genetic experiment, plants with pure round green seeds (RRyy) were crossed with plants with wrinkled yellow seeds (rrYY). What is the expected ratio of the traits in the F2 generation?",
+      "ms": {
+        "draft": 25210,
+        "critique": 50243,
+        "solver": 1885,
+        "form": 2856
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Mendel's experiment, what percentage of the F2 generation was short when a tall plant (TT) was crossed with a short plant (tt)?",
+      "ms": {
+        "draft": 25210,
+        "critique": 50851,
+        "solver": 2602,
+        "form": 2277
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a pea plant with violet flowers (VV) is crossed with a pea plant with white flowers (vv). What percentage of the F1 generation is expected to have violet flowers?",
+      "ms": {
+        "draft": 5046,
+        "critique": 6288,
+        "solver": 1662,
+        "form": 5829
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a genetic experiment, a pea plant with white flowers (vv) was crossed with a pea plant with violet flowers (VV). What is the percentage of violet flowers in the F2 generation?",
+      "ms": {
+        "draft": 4170,
+        "critique": 6798,
+        "solver": 13493,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How is the equal genetic contribution of male and female parents ensured in the progeny?",
+      "ms": {
+        "draft": 14909,
+        "critique": 6672,
+        "solver": 1650,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for variations in sexually reproducing organisms?",
+      "ms": {
+        "draft": 25210,
+        "critique": 28051,
+        "solver": 13051,
+        "form": 25027,
+        "translation": 245239
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Mendel conclude about the inheritance of traits based on his experiments with pea plants?",
+      "ms": {
+        "draft": 5046,
+        "critique": 6251,
+        "solver": 12080,
+        "form": 3900,
+        "translation": 253235
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If children with light-coloured eyes are likely to have parents with light-coloured eyes, what can be inferred about the light eye colour trait?",
+      "ms": {
+        "draft": 14909,
+        "critique": 6526,
+        "solver": 1672,
+        "form": 0,
+        "translation": 136681
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a study, it was observed that children with light-coloured eyes tend to have parents with light-coloured eyes. What can be concluded about the light eye colour trait?",
+      "ms": {
+        "draft": 4528,
+        "critique": 7494,
+        "solver": 1629,
+        "form": 0,
+        "translation": 240880
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A project is designed to find the dominant coat colour in dogs. What would be the best way to conduct this experiment?",
+      "ms": {
+        "draft": 14909,
+        "critique": 7672,
+        "solver": 10952,
+        "form": 0,
+        "translation": 162634
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage say about the inheritance of traits in asexually reproducing organisms?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a child inherits one dominant and one recessive allele for a trait, what will be the expression of that trait?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what would happen if a trait is present in 60% of a population of an asexually reproducing species?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a trait A exists in 10% of a population and trait B exists in 60% of the same population, which trait is more likely to have been present for a longer time?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a Mendelian experiment, F1 progeny with genotype Tt Rr are self-pollinated. If the F2 generation has 1600 seeds, how many of them will be tall plants with wrinkled seeds?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a Mendelian experiment, a tall plant with round seeds (TT RR) is crossed with a short plant with wrinkled seeds (tt rr). What will be the genotype of the F1 progeny?",
+      "reason": "options 0 and 1 are the same (\"Tt rr\"); options 0 and 2 are the same (\"Tt rr\"); options 0 and 3 are the same (\"Tt rr\"); options 1 and 2 are the same (\"tt Rr\"); options 1 and 3 are the same (\"tt Rr\"); options 2 and 3 are the same (\"Tt Rr\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a genetic experiment, plants with pure round green seeds (RRyy) were crossed with plants with wrinkled yellow seeds (rrYY). If 144 seeds were produced, what is the expected number of seeds with wrinkled yellow seeds?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a Mendelian experiment, a tall plant with round seeds (TTRR) is crossed with a short plant with wrinkled seeds (ttrr). If the F1 progeny are self-pollinated and 1600 seeds are produced, how many of them will be short plants with round seeds?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a genetic experiment, plants with pure round green seeds (RRyy) were crossed with plants with wrinkled yellow seeds (rrYY). What is the ratio of the traits in the F2 generation?",
+      "reason": "options 1 and 3 say the same thing (\"3:1:3:1\" / \"3:3:1:1\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a Mendelian experiment, tall pea plants with violet flowers were crossed with short pea plants with white flowers. The progeny all had violet flowers, but almost half were short. What is the likely genetic make-up of the tall parent?",
+      "reason": "options 0 and 1 are the same (\"TTww\"); options 0 and 2 are the same (\"TTww\"); options 0 and 3 are the same (\"TTww\"); options 1 and 2 are the same (\"TTww\"); options 1 and 3 are the same (\"TTww\"); options 2 and 3 are the same (\"TtWW\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A man with blood group A marries a woman with blood group O and their daughter has blood group O. What can be concluded about the dominance of blood group A and O?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "In the process of sex determination in humans, what is the probability that a child will be a girl if the father contributes an X chromosome?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a genetic experiment, plants with pure round green seeds (RRyy) were crossed with plants with wrinkled yellow seeds (rrYY). After self-pollination of the F1 generation, 144 seeds were produced. What is the expected number of round yellow seeds in the F2 generation?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A man with blood group A marries a woman with blood group O, and their daughter has blood group O. Can we determine which blood group is dominant?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a Mendelian experiment, tall pea plants with violet flowers were crossed with short pea plants with white flowers. The progeny all had violet flowers, but half were short. Which of the following statements best explains this result?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In a Mendelian experiment, a tall pea plant with violet flowers was crossed with a short pea plant with white flowers. All the progeny had violet flowers, but half of them were short. What is the genetic make-up of the tall parent?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a Mendelian experiment, a tall plant with round seeds (TT RR) is crossed with a short plant with wrinkled seeds (tt rr). What will be the genotype of the F1 progeny?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the role of the X and Y chromosomes in determining the sex of a child in humans?",
+      "reason": "options 0 and 1 say the same thing (\"The X chromosome determines male sex and Y determines female\" / \"The Y chromosome determines male sex and X determines female\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a genetic cross, a pea plant with pure round green seeds (RRyy) is crossed with a pea plant with wrinkled yellow seeds (rrYY). If the F1 progeny are self-pollinated, what will be the ratio of the offspring showing the traits of round seeds and yellow seeds?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"correct answer…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a genetic experiment, plants with pure round green seeds (RRyy) are crossed with plants with wrinkled yellow seeds (rrYY). The F1 progeny are self-pollinated, and 144 seeds are produced. How many of these seeds are expected to be round and yellow?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a genetic cross, a pea plant with violet flowers and tall height (VVTT) is crossed with a pea plant with white flowers and short height (vvtt). What is the reason that the F1 generation shows only violet flowers and tall height?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a genetic experiment, plants with pure round green seeds (RRyy) were crossed with plants with wrinkled yellow seeds (rrYY). What is the expected ratio of the traits in the F2 generation?",
+      "reason": "checkExpr \"9:3:3:1\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In Mendel's experiment, what percentage of the F2 generation was short when a tall plant (TT) was crossed with a short plant (tt)?",
+      "reason": "checkExpr \"25\" is a bare literal"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In an experiment, a pea plant with violet flowers (VV) is crossed with a pea plant with white flowers (vv). What percentage of the F1 generation is expected to have violet flowers?",
+      "reason": "near-duplicate of served question cmvnujil904hpgp21tul97mvs (cosine 0.906 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In a genetic experiment, a pea plant with white flowers (vv) was crossed with a pea plant with violet flowers (VV). What is the percentage of violet flowers in the F2 generation?",
+      "reason": "near-duplicate of served question cmvnujil904hpgp21tul97mvs (cosine 0.900 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "How is the equal genetic contribution of male and female parents ensured in the progeny?",
+      "reason": "near-duplicate of served question cmvrfy9zn0e3rgp21q5av40qp (cosine 0.910 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

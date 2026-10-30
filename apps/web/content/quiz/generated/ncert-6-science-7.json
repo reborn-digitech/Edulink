@@ -21,71 +21,77 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T23:40:35.139Z",
+  "generatedAt": "2026-10-29T12:34:17.434Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "Which of the following is the correct scale for a thermometer with a smallest division of 0.5 °C, between 10 °C and 20 °C?",
+      "difficulty": 3,
+      "stem": "If a thermometer has a scale where the smallest division reads 0.5 °C, what would be the temperature reading if the mercury level is between 12 °C and 13 °C, but closer to 13 °C?",
       "choices": [
-        "10, 10.5, 11, 11.5, 12",
-        "10, 11, 12, 13, 14",
-        "10, 15, 20",
-        "10, 12, 14, 16, 18"
+        "12.5 °C",
+        "12.0 °C",
+        "13.0 °C",
+        "12.2 °C"
       ],
       "answerIndex": 0,
-      "solution": "A thermometer with a smallest division of 0.5 °C would show values like 10, 10.5, 11, 11.5, 12, etc. A student who misses the half degrees might choose the option with whole numbers. A student who thinks the divisions are larger might choose the option with 5 °C steps. A student who misinterprets the range might choose the option with 2 °C steps.",
+      "solution": "If the smallest division reads 0.5 °C, each major division represents 1 °C, and the smaller marks represent 0.5 °C. If the mercury level is closer to 13 °C, the reading would be 12.5 °C. The option '12.0 °C' is incorrect because it assumes no division, '13.0 °C' is incorrect because it assumes the level is exactly at 13 °C, and '12.2 °C' is incorrect because it assumes a smaller division than 0.5 °C.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन सा थर्मामीटर के स्केल का सही विकल्प है जिसका सबसे छोटा विभाजन 0.5 °C है, 10 °C और 20 °C के बीच?",
+          "stem": "यदि एक थर्मामीटर के पैमाने पर सबसे छोटा विभाजन 0.5 °C दर्शाता है, तो यदि पारा का स्तर 12 °C और 13 °C के बीच है, लेकिन 13 °C के करीब है, तो तापमान का पाठ्यांक क्या होगा?",
           "choices": [
-            "10, 10.5, 11, 11.5, 12",
-            "10, 11, 12, 13, 14",
-            "10, 15, 20",
-            "10, 12, 14, 16, 18"
+            "12.5 °C",
+            "12.0 °C",
+            "13.0 °C",
+            "12.2 °C"
           ],
-          "solution": "एक थर्मामीटर जिसका सबसे छोटा विभाजन 0.5 °C है, वह 10, 10.5, 11, 11.5, 12 आदि मान दिखाएगा। अगर छात्र आधा डिग्री छोड़ दे तो वह पूर्ण संख्या वाला विकल्प चुन सकता है। अगर छात्र विभाजन के आकार को बड़ा समझे तो 5 °C के अंतर वाला विकल्प चुन सकता है। अगर छात्र श्रेणी को गलत समझे तो 2 °C के अंतर वाला विकल्प चुन सकता है।",
-          "imageAlt": "10 °C और 20 °C के बीच थर्मामीटर के स्केल को दर्शाने वाली एक संख्या रेखा जिसमें 0.5 °C के विभाजन हैं।",
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms.",
+          "solution": "यदि सबसे छोटा विभाजन 0.5 °C दर्शाता है, तो प्रत्येक मुख्य विभाजन 1 °C का होता है, और छोटे चिह्न 0.5 °C के होते हैं। यदि पारा का स्तर 13 °C के करीब है, तो पाठ्यांक 12.5 °C होगा। विकल्प '12.0 °C' गलत है क्योंकि यह विभाजन के बिना मान लेता है, '13.0 °C' गलत है क्योंकि यह मान लेता है कि स्तर ठीक 13 °C पर है, और '12.2 °C' गलत है क्योंकि यह छोटे विभाजन के बराबर मान लेता है।",
+          "imageAlt": "10 से 20 तक की एक संख्या रेखा जिस पर 12.5 पर एक बिंदु है",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता तापमापकाचा योग्य अंकन आहे ज्याचा सर्वांत लहान विभाग 0.5 °C असून 10 °C ते 20 °C दरम्यान आहे?",
+          "stem": "जर तापमानमापकाच्या पट्टीवर सर्वात लहान विभाग 0.5 °C दर्शवत असेल, तर 12 °C आणि 13 °C दरम्यान, परंतु 13 °C जवळ असलेल्या रासायनिक तापमानाचे वाचन काय असेल?",
           "choices": [
-            "10, 10.5, 11, 11.5, 12",
-            "10, 11, 12, 13, 14",
-            "10, 15, 20",
-            "10, 12, 14, 16, 18"
+            "12.5 °C",
+            "12.0 °C",
+            "13.0 °C",
+            "12.2 °C"
           ],
-          "solution": "0.5 °C चा सर्वांत लहान विभाग असलेला तापमापक 10, 10.5, 11, 11.5, 12 अशा मूल्यांना दर्शवेल. अर्धे अंक टाळल्यास विद्यार्थी पूर्ण अंकांचा विकल्प निवडू शकतो. विभाग 5 °C चे असल्याचा विचार करून विद्यार्थी 5 °C च्या अंतराने अंकन निवडू शकतो. श्रेणी चुकून वाचल्यास विद्यार्थी 2 °C च्या अंतराने अंकन निवडू शकतो.",
-          "imageAlt": "10 °C ते 20 °C दरम्यान तापमापकाच्या अंकनाचा एक अंकन रेषा दर्शविते ज्याचा सर्वांत लहान विभाग 0.5 °C आहे.",
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for thermometer scales.",
+          "solution": "जर सर्वात लहान विभाग 0.5 °C दर्शवत असेल, तर प्रत्येक मुख्य विभाग 1 °C दर्शवतो आणि लहान चिन्ह 0.5 °C दर्शवतात. जर रासायनिक तापमान 13 °C जवळ असेल तर वाचन 12.5 °C असेल. '12.0 °C' अशी निवड चूक आहे कारण ती कोणताही विभाग नसल्याचा अंदाज घेते, '13.0 °C' अशी निवड चूक आहे कारण ती रासायनिक तापमान 13 °C वर असल्याचा अंदाज घेते आणि '12.2 °C' अशी निवड चूक आहे कारण ती 0.5 °C पेक्षा लहान विभाग असल्याचा अंदाज घेते.",
+          "imageAlt": "10 ते 20 चा संख्या रेषा ज्यावर 12.5 वर एक बिंदू आहे",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for scientific concepts.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A number line showing the scale of a thermometer between 10 °C and 20 °C with divisions of 0.5 °C.",
+      "imageAlt": "A number line from 10 to 20 with a point at 12.5",
       "figure": {
         "kind": "numberline",
         "spec": {
           "min": 10,
           "max": 20,
-          "step": 0.5,
-          "labelEvery": 1,
-          "points": []
+          "step": 1,
+          "minor": 1,
+          "points": [
+            {
+              "value": 12.5,
+              "label": "A",
+              "open": false
+            }
+          ]
         },
         "labels": {}
       },
       "needsFigure": true,
       "distractorReason": [
         null,
-        "misses the half degrees",
-        "thinks the divisions are larger",
-        "misinterprets the range"
+        "assumes the level is exactly at a major division",
+        "assumes no division is present",
+        "assumes a smaller division than 0.5 °C"
       ],
       "solverAnswers": [
         0,
@@ -95,7 +101,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is option 0, as it shows the proper 0.5 °C divisions between 10 and 20 °C. The other options reflect common misconceptions about thermometer scales.",
+      "critique": "The correct answer is 12.5 °C, as the thermometer has divisions of 0.5 °C. The mercury is between 12 and 13, closer to 13, so the reading is 12.5. The author's reasoning is sound and matches the misconceptions students might have.",
       "sources": [
         {
           "document": "ncert/6/science/fecu107.pdf",
@@ -120,271 +126,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T23:40:35.139Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a person has a body temperature of 39 °C, what is the temperature in Fahrenheit?",
-      "choices": [
-        "102.2 °F",
-        "101.4 °F",
-        "100.6 °F",
-        "103.8 °F"
-      ],
-      "answerIndex": 0,
-      "solution": "The formula to convert Celsius to Fahrenheit is (°C × 9/5) + 32. Using 39 °C, the calculation is (39 × 9/5) + 32 = 102.2 °F. The correct answer is '102.2 °F'.",
-      "checkExpr": "(39*9/5)+32",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक व्यक्ति का शरीर के तापमान 39 °C है, तो फारेनहाइट में तापमान क्या है?",
-          "choices": [
-            "102.2 °F",
-            "101.4 °F",
-            "100.6 °F",
-            "103.8 °F"
-          ],
-          "solution": "सेल्सियस को फारेनहाइट में बदलने का सूत्र (°C × 9/5) + 32 है। 39 °C के साथ गणना (39 × 9/5) + 32 = 102.2 °F है। सही उत्तर '102.2 °F' है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एखाद्या व्यक्तीचे शरीराचे तापमान 39 °C असेल, तर फॅरेनहाइटमध्ये तापमान किती असेल?",
-          "choices": [
-            "102.2 °F",
-            "101.4 °F",
-            "100.6 °F",
-            "103.8 °F"
-          ],
-          "solution": "सेल्सिअस ते फॅरेनहाइट रूपांतरित करण्याचा सूत्र (°C × 9/5) + 32 आहे. 39 °C वापरून, गणना (39 × 9/5) + 32 = 102.2 °F आहे. योग्य उत्तर '102.2 °F' आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the technical terms used in Marathi science textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Adds 32 before multiplying by 9/5",
-        "Incorrectly uses 9/5 instead of 5/9",
-        "Uses a different conversion formula"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The calculation is correct. The formula (°C × 9/5) + 32 is properly applied to 39 °C, resulting in 102.2 °F. The distractors reflect common misconceptions in temperature conversion.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu107.pdf",
-          "ordinal": 10,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 7: Temperature and its Measurement",
-            "7.3 Measuring Temperature",
-            "Learning further"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu107.pdf",
-          "ordinal": 11,
-          "pageStart": 19,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 7: Temperature and its Measurement",
-            "Notes"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T23:40:35.139Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following thermometers is best suited to measure the temperature of a person's body?",
-      "choices": [
-        "A laboratory thermometer",
-        "A clinical thermometer",
-        "A thermometer with a range from -10 °C to 110 °C",
-        "A thermometer with a range from 35 °C to 42 °C"
-      ],
-      "answerIndex": 1,
-      "solution": "A clinical thermometer is designed specifically for measuring body temperature, making it the most accurate and appropriate choice. A laboratory thermometer has a wider range and is not calibrated for the narrower, more precise temperatures needed for body measurements. A thermometer with a range from -10 °C to 110 °C is too broad and not suitable for human body temperature. A thermometer with a range from 35 °C to 42 °C, while narrower, is not the standard instrument designed for this purpose.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा थर्मामीटर व्यक्ति के शरीर के तापमान को मापने के लिए उपयुक्त है?",
-          "choices": [
-            "एक प्रयोगशाला थर्मामीटर",
-            "एक नैदानिक थर्मामीटर",
-            "एक थर्मामीटर जिसकी सीमा -10 °C से 110 °C तक हो",
-            "एक थर्मामीटर जिसकी सीमा 35 °C से 42 °C तक हो"
-          ],
-          "solution": "एक नैदानिक थर्मामीटर को विशेष रूप से शरीर के तापमान को मापने के लिए डिज़ाइन किया गया है, इसलिए यह सबसे सटीक और उपयुक्त विकल्प है। एक प्रयोगशाला थर्मामीटर के पास एक व्यापक श्रेणी होती है और इसे शरीर के माप के लिए आवश्यक संकीर्ण और अधिक सटीक तापमान के लिए अभिकलित नहीं किया जाता है। -10 °C से 110 °C तक की सीमा वाला थर्मामीटर बहुत व्यापक है और मनुष्य के शरीर के तापमान के लिए उपयुक्त नहीं है। 35 °C से 42 °C तक की सीमा वाला थर्मामीटर, यहां तक कि एक संकीर्ण सीमा होने के कारण, इस उद्देश्य के लिए मानक उपकरण नहीं है।",
-          "imageAlt": "एक नैदानिक थर्मामीटर का चित्र, जिसमें एक बल्ब और पैमाना होता है, जो एक शुष्क सेल द्वारा दर्शाया गया है।",
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता थर्मॉमीटर एखाद्या व्यक्तीच्या शरीराच्या तापमानाचे मोजण्यास उत्तम असेल?",
-          "choices": [
-            "एका प्रयोगशाळेचा थर्मॉमीटर",
-            "एका वैद्यकीय थर्मॉमीटर",
-            "एका थर्मॉमीटर ज्याचा श्रेणी -10 °C ते 110 °C आहे",
-            "एका थर्मॉमीटर ज्याचा श्रेणी 35 °C ते 42 °C आहे"
-          ],
-          "solution": "एका वैद्यकीय थर्मॉमीटर शरीराच्या तापमानाचे मोजण्यासाठी विशेषतः डिझाइन केलेला आहे, जे सर्वात अचूक आणि उपयुक्त निवड बनते. एका प्रयोगशाळेचा थर्मॉमीटर विस्तृत श्रेणी असते आणि शरीराच्या मोजणीसाठी आवश्यक असलेल्या अंतर्गत, अधिक शुद्ध तापमानासाठी कॅलिब्रेट केलेला नसतो. -10 °C ते 110 °C च्या श्रेणीचा थर्मॉमीटर खूप विस्तृत आहे आणि मानवी शरीराच्या तापमानासाठी अनुकूल नाही. 35 °C ते 42 °C च्या श्रेणीचा थर्मॉमीटर, जरी अधिक निर्दिष्ट असला तरी, ह्या हेतूसाठी डिझाइन केलेला मानक उपकरण नाही.",
-          "imageAlt": "एका वैद्यकीय थर्मॉमीटरचा आकृती ज्यामध्ये एक बल्ब आणि स्केल असतो, एका शुष्क सेलच्या निरूपणाद्वारे.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for thermometers.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A diagram showing a clinical thermometer with a bulb and scale, represented by a dry cell with labeled parts.",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "dryCell",
-              "x": 10,
-              "y": 10,
-              "size": 20,
-              "labels": [
-                "positive",
-                "negative"
-              ],
-              "text": {
-                "positive": "bulb",
-                "negative": "scale"
-              }
-            }
-          ],
-          "arrows": [],
-          "texts": []
-        },
-        "labels": {
-          "bulb": {
-            "en": "bulb",
-            "hi": "बल्ब",
-            "mr": "बल्ब"
-          },
-          "scale": {
-            "en": "scale",
-            "hi": "पैमाना",
-            "mr": "स्केल"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Confuses laboratory thermometer with clinical thermometer",
-        null,
-        "Believes that a wider range is always better for measuring body temperature",
-        "Believes the thermometer must match the body temperature range exactly, without considering scale precision or design"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1 (clinical thermometer), as it is specifically designed for measuring body temperature. The other options either have incorrect ranges or are not designed for this purpose. The author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu107.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 7: Temperature and its Measurement",
-            "7.3 Measuring Temperature"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu107.pdf",
-          "ordinal": 8,
-          "pageStart": 12,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 7: Temperature and its Measurement",
-            "7.3 Measuring Temperature"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu107.pdf",
-          "ordinal": 9,
-          "pageStart": 15,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 7: Temperature and its Measurement",
-            "7.3 Measuring Temperature",
-            "Let us enhance our learning"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T23:40:35.139Z",
+      "generatedAt": "2026-10-29T12:34:17.434Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "In an experiment, if the temperature of a body increases, what happens to its temperature reading on a thermometer?",
+      "stem": "If a person measures their temperature using a digital thermometer and it reads 37.5 °C, what does this indicate?",
       "choices": [
-        "It decreases",
-        "It remains the same",
-        "It increases",
-        "It becomes negative"
+        "They have a fever.",
+        "They are dehydrated.",
+        "They have a high body temperature.",
+        "They need to rest."
       ],
-      "answerIndex": 2,
-      "solution": "If the temperature of a body increases, the temperature reading on a thermometer will also increase because thermometers measure the thermal energy of a substance. When a body becomes hotter, the molecules move more rapidly, causing the thermometer's liquid or electronic sensor to register a higher temperature. The other options contradict the fundamental relationship between heat and temperature measurement.",
+      "answerIndex": 0,
+      "solution": "A temperature of 37.5 °C is slightly above the typical normal range, which is generally considered to be around 37.0 °C, and may indicate a mild fever. Dehydration, high body temperature, and the need to rest are not direct conclusions from this reading alone, as they require additional symptoms or context to be confirmed.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक प्रयोग में, यदि किसी वस्तु के तापमान में वृद्धि होती है, तो थर्मामीटर पर इसके तापमान का पाठ्यांक क्या होता है?",
+          "stem": "यदि कोई व्यक्ति डिजिटल थर्मामीटर के उपयोग से अपने तापमान को मापता है और यह 37.5 °C दर्शाता है, तो यह क्या संकेत देता है?",
           "choices": [
-            "यह कम हो जाता है",
-            "यह समान रहता है",
-            "यह बढ़ जाता है",
-            "यह ऋणात्मक हो जाता है"
+            "उन्हें बुखार है।",
+            "उन्हें नीरसता है।",
+            "उनका शरीर उच्च तापमान वाला है।",
+            "उन्हें आराम करने की आवश्यकता है।"
           ],
-          "solution": "यदि किसी वस्तु के तापमान में वृद्धि होती है, तो थर्मामीटर पर इसके तापमान का पाठ्यांक भी बढ़ जाता है क्योंकि थर्मामीटर किसी पदार्थ की तापीय ऊर्जा को मापता है। जब वस्तु गर्म हो जाती है, तो अणु अधिक तेजी से गति करते हैं, जिसके कारण थर्मामीटर के द्रव या इलेक्ट्रॉनिक सेंसर को एक उच्च तापमान का पता लगता है। अन्य विकल्प ताप और तापमान मापन के मूल संबंध के विरोधी हैं।",
+          "solution": "37.5 °C का तापमान सामान्य सीमा के थोड़ा ऊपर है, जिसे सामान्यतः 37.0 °C के आसपास माना जाता है, और यह हल्का बुखार हो सकता है। नीरसता, उच्च शारीरिक तापमान और आराम की आवश्यकता इस पाठ्यक्रम के अकेले रीडिंग से निर्धारित नहीं किया जा सकता है, क्योंकि इनके लिए अतिरिक्त लक्षणों या संदर्भ की आवश्यकता होती है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (1). The distractors remain incorrect as in the original. Technical terms like 'बुखार' (fever) and 'नीरसता' (dehydration) are standard in Hindi medical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका प्रयोगात, जर कोणत्याही वस्तूच्या तापमानात वाढ होते, तर तापमापकावर त्याचे तापमान वाचन काय होते?",
+          "stem": "एका व्यक्तीने डिजिटल तापमापकाच्या माध्यमातून त्यांचा तापमान मोजला आणि तो 37.5 °C दाखवतो, हे काय सूचित करते?",
           "choices": [
-            "ते कमी होते",
-            "ते अचल राहते",
-            "ते वाढते",
-            "ते ऋणात्मक होते"
+            "त्यांना ताप आहे.",
+            "त्यांना निर्जलीकरण आहे.",
+            "त्यांचा शरीराचा तापमान उच्च आहे.",
+            "त्यांना विश्रांती घ्यायला हवी."
           ],
-          "solution": "जर कोणत्याही वस्तूच्या तापमानात वाढ होते, तर तापमापकावर त्याचे तापमान वाचन देखील वाढेल, कारण तापमापक द्रव्याच्या तापीय ऊर्जेचे मोजतात. जेव्हा वस्तू उबदार होते, तेव्हा अणू जास्त वेगाने चालतात, ज्यामुळे तापमापकाच्या द्रव किंवा इलेक्ट्रॉनिक सेन्सरला जास्त तापमान नोंदवायला मिळते. इतर विकल्प ताप आणि तापमान मोजण्याच्या मूलभूत संबंधांना विरोध करतात.",
+          "solution": "37.5 °C हा तापमान सामान्य परिसरापेक्षा थोडा जास्त असतो, जो सामान्यतः 37.0 °C च्या आसपास मानला जातो आणि एखाद्या हलक्या तापाची दुर्लक्ष करू शकतो. निर्जलीकरण, उच्च शरीराचा तापमान आणि विश्रांतीची आवश्यकता हे या वाचनावरून थेट निष्कर्ष नाहीत, कारण त्यांना अतिरिक्त लक्षणे किंवा संदर्भाची आवश्यकता असते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate medical terminology commonly found in Marathi textbooks.",
           "flag": null
         }
       },
@@ -393,20 +177,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Incorrectly assumes that temperature decreases when a body becomes hotter",
-        "Incorrectly assumes that temperature does not change",
         null,
-        "student thinks temperature can go below zero when heated"
+        "A student might confuse fever symptoms with dehydration due to a lack of understanding of temperature's role in health indicators.",
+        "Confuses the definition of fever with just any high temperature",
+        "Confuses symptoms with actions needed, thinking rest is a direct result of temperature reading"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward and the correct answer is clearly 2. The reasoning provided by the author is sound and aligns with the basic principles of temperature measurement. The distractors reflect common misconceptions that students might have.",
+      "critique": "The solution correctly identifies 37.5°C as a slight fever, and the reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/science/fecu107.pdf",
@@ -449,7 +233,204 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T23:40:35.139Z",
+      "generatedAt": "2026-10-29T12:34:17.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is it important to read the temperature while the thermometer is immersed in water?",
+      "choices": [
+        "To ensure that the bulb does not touch the sides of the beaker.",
+        "To avoid the liquid column falling due to cooling.",
+        "To prevent the thermometer from breaking.",
+        "To get an accurate temperature reading."
+      ],
+      "answerIndex": 3,
+      "solution": "It is important to read the temperature while the thermometer is immersed in water to get an accurate temperature reading. When the thermometer is removed, the liquid inside may contract as it cools, causing the liquid column to fall and giving an incorrect reading. The other options, such as avoiding the bulb touching the beaker or preventing the thermometer from breaking, are not the primary reasons for this practice.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पानी में थर्मामीटर के डूबे रहने के कारण तापमान को पढ़ना क्यों महत्वपूर्ण है?",
+          "choices": [
+            "ताकि बल्ब बीकर के पक्षों से स्पर्श न करे।",
+            "ठंडा होने के कारण तरल स्तंभ गिरने से बचने के लिए।",
+            "थर्मामीटर टूटने से बचाने के लिए।",
+            "ठीक तापमान का पठन प्राप्त करने के लिए।"
+          ],
+          "solution": "पानी में थर्मामीटर के डूबे रहने के कारण तापमान को पढ़ना ठीक तापमान का पठन प्राप्त करने के लिए महत्वपूर्ण है। जब थर्मामीटर को बाहर निकाल लिया जाता है, तो भीतर का तरल ठंडा होकर संकुचित हो सकता है, जिसके कारण तरल स्तंभ गिर जाता है और गलत पठन प्राप्त होता है। अन्य विकल्प, जैसे बल्ब के बीकर के पक्षों से स्पर्श न करना या थर्मामीटर के टूटने से बचाना, इस प्रथा के मुख्य कारण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer (option 3) maintaining its position and validity.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाण्यात थर्मॉमीटर बुडवल्यावर तापमान वाचणे का महत्वाचे आहे?",
+          "choices": [
+            "बर्नरच्या बाजूंशी तापमानमापकाचा बल्ब छेडू नये याची खात्री करण्यासाठी.",
+            "तापमानमापकाच्या तरल वक्राच्या थंड होण्यामुळे खाली येण्याचा टाळण्यासाठी.",
+            "तापमानमापक फुटू नये याची खात्री करण्यासाठी.",
+            "तापमानाचे अचूक वाचन मिळविण्यासाठी."
+          ],
+          "solution": "पाण्यात थर्मॉमीटर बुडवल्यावर तापमान वाचणे अचूक तापमान वाचन मिळविण्यासाठी महत्वाचे आहे. जेव्हा थर्मॉमीटर काढला जातो तेव्हा आतील तरल थंड होऊन संकोच होऊ शकतो, ज्यामुळे तरल वक्र खाली येऊन अचूक वाचन मिळत नाही. बर्नरच्या बाजूंशी तापमानमापकाचा बल्ब छेडू नये याची खात्री करणे किंवा तापमानमापक फुटू नये याची खात्री करणे या विधीचे प्राथमिक कारण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the reason for preventing the bulb from touching the beaker",
+        "Mistakenly believes the main reason is to avoid cooling",
+        "Incorrectly assumes that the main reason is to prevent the thermometer from breaking",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as the question emphasizes the importance of reading the temperature while the thermometer is immersed to ensure accuracy. The author's reasoning is sound and aligns with the scientific principle that removing the thermometer can cause the liquid column to contract, leading to an inaccurate reading.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu107.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 7: Temperature and its Measurement",
+            "7.3 Measuring Temperature"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu107.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: Temperature and its Measurement",
+            "7.3 Measuring Temperature"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu107.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 7: Temperature and its Measurement",
+            "7.3 Measuring Temperature"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T12:34:17.434Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the temperature of a body increases from 25 °C to 35 °C, what is the change in temperature in kelvin?",
+      "choices": [
+        "10 K",
+        "25 K",
+        "35 K",
+        "60 K"
+      ],
+      "answerIndex": 0,
+      "solution": "The change in temperature in kelvin is the same as the change in degree Celsius. Since the temperature increased by 10 °C, the change in kelvin is also 10 K. The other options incorrectly use the absolute values instead of the difference.",
+      "checkExpr": "35-25",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी वस्तु के तापमान में 25 °C से 35 °C तक वृद्धि होती है, तो केल्विन में तापमान में परिवर्तन क्या है?",
+          "choices": [
+            "10 K",
+            "25 K",
+            "35 K",
+            "60 K"
+          ],
+          "solution": "केल्विन में तापमान में परिवर्तन डिग्री सेल्सियस में परिवर्तन के समान होता है। चूंकि तापमान में 10 °C की वृद्धि हुई है, केल्विन में परिवर्तन भी 10 K है। अन्य विकल्प अपने परिवर्तन के स्थान पर निरपेक्ष मानों का उपयोग करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखाद्या वस्तूच्या तापमानात 25 °C ते 35 °C पर्यंत वाढ होत असेल, तर केल्विनमध्ये तापमानात किती बदल होतो?",
+          "choices": [
+            "10 K",
+            "25 K",
+            "35 K",
+            "60 K"
+          ],
+          "solution": "केल्विनमध्ये तापमानातील बदल सेल्सियसमध्ये तापमानातील बदलाच्या समान असतो. जर तापमान 10 °C ने वाढले असेल, तर केल्विनमध्ये बदल देखील 10 K असेल. इतर विकल्प चूकीने निरपेक्ष मूल्यांचा वापर करतात आणि फरकाचा वापर करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for temperature scales.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses Celsius temperature with Kelvin, thinking the value remains the same in Kelvin",
+        "uses initial temperature as the change",
+        "uses final temperature as the change"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. A change in temperature of 10°C is equivalent to a change of 10 K, as the size of a degree in Celsius and Kelvin is the same. The other options incorrectly use absolute temperatures instead of the difference.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu107.pdf",
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 7: Temperature and its Measurement",
+            "7.3 Measuring Temperature"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu107.pdf",
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: Temperature and its Measurement",
+            "7.3 Measuring Temperature"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu107.pdf",
+          "ordinal": 9,
+          "pageStart": 15,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 7: Temperature and its Measurement",
+            "7.3 Measuring Temperature",
+            "Let us enhance our learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T12:34:17.434Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,313 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T05:58:26.630Z",
+  "finishedAt": "2026-10-28T06:02:01.656Z",
+  "seconds": 215,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm113.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Animal Jumps",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n6. Answer – B\n50(51)\nAs, 2 = 25𝑘 ⟹ 𝑘 = 51\nAnswer – D",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n6. (c) 5 Unit",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n5. (D) ଵ\n௫\n௦௘௖௾ା௧௔௡௾ ଵ = (௦௘௖௾ା௧௔௡௾)(௦௘௖௾ି ௧௔௡௾) (௦௘௖௾ି௧௔௡௾ ) = (௦௘௖௾ି௧௔௡௾ ) ଵ = secϴ-tanϴ",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n5. B) 20 cm"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 36842,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 9444,
+      "completionTokens": 2234
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 131136,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 9735,
+      "completionTokens": 4004
+    },
+    "solver": {
+      "calls": 121,
+      "ms": 82886,
+      "in": 11,
+      "out": 7,
+      "rejects": 4,
+      "promptTokens": 33109,
+      "completionTokens": 1683
+    },
+    "form": {
+      "calls": 7,
+      "ms": 16598,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 1939,
+      "completionTokens": 593
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 28,
+      "ms": 5128,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 103738,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8757,
+      "completionTokens": 3683
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the first common multiple of 3 and 4?",
+      "ms": {
+        "draft": 3451,
+        "critique": 6839,
+        "solver": 15440
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which numbers are multiples of 1, 2, and 4?",
+      "ms": {
+        "draft": 3451,
+        "critique": 7252,
+        "solver": 17587
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is a common factor of 24 and 36?",
+      "ms": {
+        "draft": 3451,
+        "critique": 5586,
+        "solver": 14077
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Mowgli jumps by 2 steps starting from 0, which numbers will he touch?",
+      "ms": {
+        "draft": 3451,
+        "critique": 8716,
+        "solver": 11459,
+        "form": 1532
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the first common multiple of 2 and 5?",
+      "ms": {
+        "draft": 10807,
+        "critique": 5830
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the first common multiple of 3 and 6?",
+      "ms": {
+        "draft": 10807,
+        "critique": 5782,
+        "solver": 8713
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rabbit jumps by 2 steps and a frog jumps by 3 steps, which number will they both touch?",
+      "ms": {
+        "draft": 10807,
+        "critique": 4632,
+        "solver": 11900,
+        "form": 3284
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the first common multiple of 3 and 4?",
+      "ms": {
+        "draft": 10807,
+        "critique": 4844,
+        "solver": 14339,
+        "form": 2928
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which numbers are factors of 12?",
+      "ms": {
+        "draft": 3451,
+        "critique": 7597,
+        "solver": 18197,
+        "form": 2921,
+        "translation": 29420
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is a common multiple of 4 and 6?",
+      "ms": {
+        "draft": 10807,
+        "critique": 5065,
+        "solver": 12124,
+        "form": 2375,
+        "translation": 23655
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Mowgli jumps by 5 steps starting from 0, which numbers will he touch?",
+      "ms": {
+        "draft": 3451,
+        "critique": 9243,
+        "solver": 1743,
+        "form": 3098,
+        "translation": 32397
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the first common multiple of 3 and 5?",
+      "ms": {
+        "draft": 10807,
+        "critique": 5703,
+        "solver": 6980,
+        "form": 1089,
+        "translation": 14300
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the first common multiple of 3 and 4?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which numbers are multiples of 1, 2, and 4?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is a common factor of 24 and 36?",
+      "reason": "after redrafting distractors 1, 2, 3: the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If Mowgli jumps by 2 steps starting from 0, which numbers will he touch?",
+      "reason": "options 0 and 1 say the same thing (\"2, 4, 6, 8, 10, ...\" / \"1: 2, 4, 6, 8, 10, ...\"); options 0 and 2 say the same thing (\"2, 4, 6, 8, 10, ...\" / \"2: 2, 4, 6, 8, 10, ...\"); options 1 and 2 say the same thing (\"1: 2, 4, 6, 8, 10, ...\" / \"2: 2, 4, 6, 8, 10, ...\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the first common multiple of 2 and 5?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, what is the first common multiple of 3 and 6?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a rabbit jumps by 2 steps and a frog jumps by 3 steps, which number will they both touch?",
+      "reason": "near-duplicate of served question cmvo8wbcl05s1gp218u3u4l8y (cosine 0.906 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the first common multiple of 3 and 4?",
+      "reason": "near-duplicate of served question cmvk9i2jb0jqegpfhmhs7w9s6 (cosine 0.931 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,711 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T18:51:02.910Z",
+  "finishedAt": "2026-10-23T19:01:53.624Z",
+  "seconds": 651,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Political Theory",
+    "bookCode": "keps1",
+    "document": "ncert/11/political-science/keps107.pdf",
+    "classLevel": 11,
+    "subject": "Political Science",
+    "chapter": "Chapter 7 — Nationalism",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, marking scheme, 2025-26]\n7. C) National security and economic development 1",
+      "[CBSE Class XII Political Science, marking scheme, 2024-25]\nstate boundaries. It strengthened national unity. Above all, the linguistic states\nunderlined theacceptance of the principle of diversity.\n(All points)\n29 A) Ans: 6\nThe facts mentioned below make the European Union a highly influential\nregionalorganisation:",
+      "[CBSE Class XII Political Science, sample question paper, 2024-25]\n15. It is now an almost universally-accepted view that countries should only go to war for2\nthe right reasons. Explain with an example.",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\n21. Do you agree with the statement that the foreign policy of independent India has 1+3=4\npursued the dream of a peaceful world”? Support your answer with three suitable\narguments."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 159144,
+      "in": 35,
+      "out": 34,
+      "rejects": 3,
+      "promptTokens": 24344,
+      "completionTokens": 8182
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 304051,
+      "in": 34,
+      "out": 19,
+      "rejects": 15,
+      "promptTokens": 20714,
+      "completionTokens": 7742
+    },
+    "solver": {
+      "calls": 178,
+      "ms": 113650,
+      "in": 19,
+      "out": 17,
+      "rejects": 2,
+      "promptTokens": 37387,
+      "completionTokens": 2175
+    },
+    "form": {
+      "calls": 4,
+      "ms": 12031,
+      "in": 17,
+      "out": 2,
+      "rejects": 15,
+      "promptTokens": 1081,
+      "completionTokens": 311
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 956,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 91679,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5835,
+      "completionTokens": 3379
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of nationalism according to the passage?",
+      "ms": {
+        "draft": 5141,
+        "critique": 5718
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about nationalism is most accurate?",
+      "ms": {
+        "draft": 5141,
+        "critique": 6366
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following scenarios best illustrates the idea of a nation as an 'imagined' community?",
+      "ms": {
+        "draft": 5141,
+        "critique": 7379
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is the key reason that a nation exists even if its members do not personally know each other?",
+      "ms": {
+        "draft": 5141,
+        "critique": 5862
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A group of students in a class discusses the idea of a nation. One student argues that since people in a nation may not know each other, a nation is not real. Which of the following best supports the idea that a nation is a real community?",
+      "ms": {
+        "draft": 5141,
+        "critique": 6863
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned in the passage as a feature of a nation?",
+      "ms": {
+        "draft": 5141,
+        "critique": 6292
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of historical identity in a nation?",
+      "ms": {
+        "draft": 5318,
+        "critique": 6069
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the primary basis of a nation's collective identity?",
+      "ms": {
+        "draft": 5318,
+        "critique": 6751
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why is it important for a nation to have a shared vision of the future?",
+      "ms": {
+        "draft": 5318,
+        "critique": 7364
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following scenarios best illustrates the concept of a nation based on political ideals rather than cultural identity?",
+      "ms": {
+        "draft": 5318,
+        "critique": 7454
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the main reason why democracies should emphasize a political rather than cultural identity?",
+      "ms": {
+        "draft": 5318,
+        "critique": 7718
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a group of people shares a common language but does not share a political vision, what does the passage suggest about their status as a nation?",
+      "ms": {
+        "draft": 5318,
+        "critique": 6711,
+        "solver": 17679,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main reason why nations seek self-determination?",
+      "ms": {
+        "draft": 3636,
+        "critique": 7786,
+        "solver": 12522,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the passage, what can be inferred about the Basque region in Spain?",
+      "ms": {
+        "draft": 3636,
+        "critique": 7358,
+        "solver": 14425,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between self-determination and state boundaries?",
+      "ms": {
+        "draft": 3636,
+        "critique": 8147,
+        "solver": 13357,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what is the author's view on the right to self-determination?",
+      "ms": {
+        "draft": 3636,
+        "critique": 7451,
+        "solver": 2000,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is the key challenge for modern nation-states?",
+      "ms": {
+        "draft": 3636,
+        "critique": 8188,
+        "solver": 11990,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the Indian constitution provide for the protection of minorities?",
+      "ms": {
+        "draft": 3517,
+        "critique": 6650,
+        "solver": 1942,
+        "form": 2971
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the definition of national identity in a democratic society?",
+      "ms": {
+        "draft": 3517,
+        "critique": 8004,
+        "solver": 18908,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following scenarios best reflects the challenges of nationalism as described in the passage?",
+      "ms": {
+        "draft": 3517,
+        "critique": 9084,
+        "solver": 15987
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is the most important factor in preventing divisions and violence caused by identity claims?",
+      "ms": {
+        "draft": 3517,
+        "critique": 3809,
+        "solver": 6994,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a group of people in a country shares a common language and religious beliefs but does not agree on the political values of the state, what would the passage suggest about their status as a nation?",
+      "ms": {
+        "draft": 4864,
+        "critique": 5526,
+        "solver": 1430,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the main idea of the passage?",
+      "ms": {
+        "draft": 4864,
+        "critique": 6106,
+        "solver": 3124,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses how a nation is defined by a belief in a shared political identity. Which of the following scenarios best illustrates this idea?",
+      "ms": {
+        "draft": 4864,
+        "critique": 6155,
+        "solver": 1794,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason why democratic states should emphasize a political identity over a cultural one?",
+      "ms": {
+        "draft": 4864,
+        "critique": 5886,
+        "solver": 13334,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one of the main concerns of the chapter on nationalism?",
+      "ms": {
+        "draft": 14251,
+        "critique": 6673
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is a key reason why people imagine themselves as a nation?",
+      "ms": {
+        "draft": 4864,
+        "critique": 8239,
+        "solver": 1427
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a group of people in a country starts demanding a separate state, what does this indicate according to the chapter?",
+      "ms": {
+        "draft": 14251,
+        "critique": 5589
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one of the key ideas the chapter discusses about the nature of a nation?",
+      "ms": {
+        "draft": 14251,
+        "critique": 6778
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the chapter, which of the following best explains why it is difficult to define 'nation' or 'nationalism'?",
+      "ms": {
+        "draft": 14251,
+        "critique": 7136
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the chapter, what is the relationship between nationalism and the formation of nation-states?",
+      "ms": {
+        "draft": 14251,
+        "critique": 5454,
+        "solver": 1340,
+        "form": 3850
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the chapter, how does the author describe the role of nationalism in the modern world?",
+      "ms": {
+        "draft": 14251,
+        "critique": 5252,
+        "solver": 7809,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a reason why some groups may demand separate statehood despite the benefits of a unified nation?",
+      "ms": {
+        "draft": 3517,
+        "critique": 6823,
+        "solver": 19805,
+        "form": 3130,
+        "translation": 39152
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A country recently restructured its states based on language, claiming it would promote unity. However, some people argue that this may lead to exclusion of certain groups. Which of the following best explains why this might happen?",
+      "ms": {
+        "draft": 4864,
+        "critique": 8707,
+        "solver": 15109,
+        "form": 2856,
+        "translation": 48245
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does the passage say about the Basque Nationalist Movement?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the role of nationalism according to the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about nationalism is most accurate?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following scenarios best illustrates the idea of a nation as an 'imagined' community?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, which of the following is the key reason that a nation exists even if its members do not personally know each other?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A group of students in a class discusses the idea of a nation. One student argues that since people in a nation may not know each other, a nation is not real. Which of the following best supports the idea that a nation is a real community?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned in the passage as a feature of a nation?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the role of historical identity in a nation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what is the primary basis of a nation's collective identity?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, why is it important for a nation to have a shared vision of the future?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following scenarios best illustrates the concept of a nation based on political ideals rather than cultural identity?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, what is the main reason why democracies should emphasize a political rather than cultural identity?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a group of people shares a common language but does not share a political vision, what does the passage suggest about their status as a nation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main reason why nations seek self-determination?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Based on the passage, what can be inferred about the Basque region in Spain?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"A pupil might think that the passage says the Basque region …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between self-determination and state boundaries?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what is the author's view on the right to self-determination?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"The passage suggests that self-determination has consequence…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what is the key challenge for modern nation-states?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the Indian constitution provide for the protection of minorities?",
+      "reason": "options 0 and 1 say the same thing (\"It provides for the protection of only religious minorities\" / \"It provides for the protection of only linguistic minorities\"); options 0 and 3 say the same thing (\"It provides for the protection of only religious minorities\" / \"It provides for the protection of only cultural minorities\"); options 1 and 3 say the same thing (\"It provides for the protection of only linguistic minorities\" / \"It provides for the protection of only cultural minorities\"); distractor 3's reason is not a one-line misconception (\"correct option is the only one that includes all three types…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the definition of national identity in a democratic society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (82 vs 41 characters); distractor 0's reason is not a one-line misconception (\"students may believe that national identity requires a singl…\"); distractor 2's reason is not a one-line misconception (\"students may believe that national identity is defined by th…\"); distractor 3's reason is not a one-line misconception (\"A student might mistakenly believe that national identity is…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following scenarios best reflects the challenges of nationalism as described in the passage?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following is the most important factor in preventing divisions and violence caused by identity claims?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following best describes the main idea of the pa"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"According to the passage, what is one key reason why nations seek self-determination?\""
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a group of people in a country shares a common language and religious beliefs but does not agree on the political values of the state, what would the passage suggest about their status as a nation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses how a nation is defined by a belief in a shared political identity. Which of the following scenarios best illustrates this idea?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"emphasizes religion and festivals, which the passage suggest…\"); distractor 3's reason is not a one-line misconception (\"mentions history and festivals, which the passage says are n…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason why democratic states should emphasize a political identity over a cultural one?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"focuses on cultural identity, which the passage argues is no…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is one of the main concerns of the chapter on nationalism?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, what is a key reason why people imagine themselves as a nation?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a group of people in a country starts demanding a separate state, what does this indicate according to the chapter?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is one of the key ideas the chapter discusses about the nature of a nation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the chapter, which of the following best explains why it is difficult to define 'nation' or 'nationalism'?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the chapter, what is the relationship between nationalism and the formation of nation-states?",
+      "reason": "the key is far longer than every distractor (85 vs 52 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the chapter, how does the author describe the role of nationalism in the modern world?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"suggests a position not discussed in the text…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

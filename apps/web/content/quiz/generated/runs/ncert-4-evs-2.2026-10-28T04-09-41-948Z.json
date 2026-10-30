@@ -1,0 +1,245 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:09:41.948Z",
+  "finishedAt": "2026-10-28T04:10:46.532Z",
+  "seconds": 65,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap102.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 2 — Ear to Ear",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 18401,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7180,
+      "completionTokens": 1187
+    },
+    "critique": {
+      "calls": 10,
+      "ms": 47059,
+      "in": 8,
+      "out": 3,
+      "rejects": 5,
+      "promptTokens": 3693,
+      "completionTokens": 1695
+    },
+    "solver": {
+      "calls": 31,
+      "ms": 15178,
+      "in": 3,
+      "out": 1,
+      "rejects": 2,
+      "promptTokens": 6821,
+      "completionTokens": 421
+    },
+    "form": {
+      "calls": 1,
+      "ms": 1289,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 193,
+      "completionTokens": 60
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 3514,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 16073,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2009,
+      "completionTokens": 1211
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which animal has ears like fans?",
+      "ms": {
+        "draft": 2224,
+        "critique": 4240
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animal has ears like leaves?",
+      "ms": {
+        "draft": 2224,
+        "critique": 4493
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animal has ears on the top of its head?",
+      "ms": {
+        "draft": 2224,
+        "critique": 4241,
+        "solver": 10893
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animal has ears on both sides of its head?",
+      "ms": {
+        "draft": 2224,
+        "critique": 5526,
+        "solver": 7654
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animal has ears like fans?",
+      "ms": {
+        "draft": 2376,
+        "critique": 5939
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animal has ears on the top of its head?",
+      "ms": {
+        "draft": 2376,
+        "critique": 6131
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animal has ears on both sides of its head?",
+      "ms": {
+        "draft": 2376,
+        "critique": 3233
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animal has ears like leaves?",
+      "ms": {
+        "draft": 2376,
+        "critique": 5756,
+        "solver": 937,
+        "form": 1289,
+        "translation": 11144
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which animal has ears like fans?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which animal has ears like leaves?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which animal has ears on the top of its head?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which animal has ears on both sides of its head?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which animal has ears like fans?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which animal has ears on the top of its head?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which animal has ears on both sides of its head?",
+      "reason": "option 3 is not wrong"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

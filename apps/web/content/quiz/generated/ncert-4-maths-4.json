@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Math-Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T21:54:13.752Z",
+  "generatedAt": "2026-10-28T03:20:32.025Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the expanded form of the number 1001?",
+      "difficulty": 4,
+      "stem": "Which time slot had the most number of people?",
       "choices": [
-        "100 + 1",
-        "1000 + 10",
-        "1000 + 1",
-        "100 + 10 + 1"
+        "52 people",
+        "145 people",
+        "325 people",
+        "508 people"
       ],
-      "answerIndex": 2,
-      "solution": "The correct expanded form of 1001 is 1000 + 1 because 1000 represents the thousands place and 1 represents the ones place. The option 100 + 1 equals 101, which is too small. The option 1000 + 10 equals 1010, which is too large. The option 100 + 10 + 1 equals 111, which is also incorrect.",
+      "answerIndex": 3,
+      "solution": "The time slot with 508 people is the largest number among the given options. The option 52 people is the smallest number. The option 145 people is smaller than 508. The option 325 people is also smaller than 508.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "संख्या 1001 का विस्तारित रूप क्या है?",
+          "stem": "कौन सा समय अंतराल सबसे अधिक लोगों के साथ रहा?",
           "choices": [
-            "100 + 1",
-            "1000 + 10",
-            "1000 + 1",
-            "100 + 10 + 1"
+            "52 लोग",
+            "145 लोग",
+            "325 लोग",
+            "508 लोग"
           ],
-          "solution": "1001 का सही विस्तारित रूप 1000 + 1 है क्योंकि 1000 हजार के स्थान को दर्शाता है और 1 इकाई के स्थान को दर्शाता है। विकल्प 100 + 1 के बराबर 101 है, जो बहुत छोटा है। विकल्प 1000 + 10 के बराबर 1010 है, जो बहुत बड़ा है। विकल्प 100 + 10 + 1 के बराबर 111 है, जो भी गलत है।",
+          "solution": "508 लोग वाला समय अंतराल दिए गए विकल्पों में सबसे बड़ी संख्या है। 52 लोग वाला विकल्प सबसे छोटी संख्या है। 145 लोग वाला विकल्प 508 से छोटा है। 325 लोग वाला विकल्प भी 508 से छोटा है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used.",
           "flag": null
         },
         "mr": {
-          "stem": "संख्या 1001 चे विस्तारित रूप काय आहे?",
+          "stem": "कोणत्या वेळेच्या विभागात सर्वाधिक लोक होते?",
           "choices": [
-            "100 + 1",
-            "1000 + 10",
-            "1000 + 1",
-            "100 + 10 + 1"
+            "52 लोक",
+            "145 लोक",
+            "325 लोक",
+            "508 लोक"
           ],
-          "solution": "1001 चे योग्य विस्तारित रूप 1000 + 1 आहे कारण 1000 हजारांच्या जागेचे प्रतिनिधित्व करते आणि 1 एककांच्या जागेचे प्रतिनिधित्व करते. 100 + 1 चे बेरीज 101 असते, जे खूप लहान आहे. 1000 + 10 चे बेरीज 1010 असते, जे खूप मोठे आहे. 100 + 10 + 1 चे बेरीज 111 असते, जे देखील चूक आहे.",
+          "solution": "508 लोक असलेला वेळेचा विभाग दिलेल्या पर्यायांमध्ये सर्वाधिक नंबर आहे. 52 लोक असलेला पर्याय सर्वात लहान नंबर आहे. 145 लोक असलेला पर्याय 508 पेक्षा लहान आहे. 325 लोक असलेला पर्याय 508 पेक्षा लहान आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology.",
           "flag": null
         }
       },
@@ -72,118 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses the place values of the digits",
-        "adds the tens and hundreds instead of the thousands and ones",
-        null,
-        "Confuses place values, thinking that 1001 is made of 100, 10, and 1 instead of 1000 and 1"
+        "chooses the smallest number",
+        "chooses a smaller number",
+        "chooses a smaller number",
+        null
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        3,
+        3,
+        3,
+        3,
+        3
       ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1000 + 1. The author's solution is accurate and the reasoning for the distractors reflects common misconceptions about place value.",
-      "sources": [
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 4,
-          "pageStart": 13,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us",
-            "Times-10Numbers Beyond 1000 (One Thousand)"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 5,
-          "pageStart": 18,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us",
-            "Times-10Numbers Beyond 1000 (One Thousand)"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 6,
-          "pageStart": 21,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us",
-            "Times-10Numbers Beyond 1000 (One Thousand)"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:54:13.752Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the number that is 200 less than 508?",
-      "choices": [
-        "308",
-        "208",
-        "200",
-        "300"
-      ],
-      "answerIndex": 0,
-      "solution": "To find the number that is 200 less than 508, subtract 200 from 508, which equals 308. The option 208 is incorrect because it subtracts 300 instead of 200. The options 200 and 300 are not the result of subtracting 200 from 508.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "508 से 200 कम कौन सी संख्या है?",
-          "choices": [
-            "308",
-            "208",
-            "200",
-            "300"
-          ],
-          "solution": "508 से 200 कम करने के लिए, 508 में से 200 घटाएं, जो 308 के बराबर है। 208 विकल्प गलत है क्योंकि यह 300 घटाता है बजाय 200 के। 200 और 300 विकल्प 508 में से 200 घटाने के परिणाम नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately preserves the meaning, structure, and mathematical terms of the original English question.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "508 पेक्षा 200 ने कमी असलेला संख्या कोणती आहे?",
-          "choices": [
-            "308",
-            "208",
-            "200",
-            "300"
-          ],
-          "solution": "508 पासून 200 वजा करून 508 - 200 = 308 हा उत्तर मिळतो. 208 हा विकल्प चुकीचा आहे कारण त्यात 300 वजा केला गेला आहे. 200 आणि 300 हे विकल्प 508 मधून 200 वजा करून मिळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "subtracts 200 incorrectly",
-        "subtracts 300 instead of 200",
-        "subtracts 208 instead of 200"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 308, as 508 - 200 = 308. The distractors represent common errors: subtracting 200 incorrectly (208), subtracting 300 (200), and subtracting 208 (300).",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward, asking for the largest number among the given options. The correct answer is 508 (option 3), and the author's reasoning is sound. The distractors are all smaller numbers, and the reasons given for why they are wrong align with common misconceptions.",
       "sources": [
         {
           "document": "ncert/4/mathematics/demm104.pdf",
@@ -225,49 +127,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:54:13.752Z",
+      "generatedAt": "2026-10-28T03:20:32.025Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "What is the correct number for 7 Thousand 0 Hundreds 2 Tens 4 Ones?",
+      "difficulty": 4,
+      "stem": "In the number 145, which place does the digit 4 occupy?",
       "choices": [
-        "724",
-        "7024",
-        "70024",
-        "7204"
+        "Hundreds",
+        "Tens",
+        "Ones",
+        "Thousands"
       ],
       "answerIndex": 1,
-      "solution": "The correct number for 7 Thousand 0 Hundreds 2 Tens 4 Ones is 7024. The correct option is 7024. The other options misplace the digits or add extra digits that are not present in the original description.",
+      "solution": "In the number 145, the digit 4 occupies the tens place. The rightmost digit is the ones place, the middle digit is the tens place, and the leftmost digit is the hundreds place. The other options incorrectly assign the place value of the digit 4.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "7 हजार 0 सैकड़ा 2 दहाई 4 इकाई के लिए सही संख्या क्या है?",
+          "stem": "संख्या 145 में अंक 4 कौन से स्थान पर है?",
           "choices": [
-            "724",
-            "7024",
-            "70024",
-            "7204"
+            "सैकड़ा",
+            "दहाई",
+            "इकाई",
+            "हजार"
           ],
-          "solution": "7 हजार 0 सैकड़ा 2 दहाई 4 इकाई के लिए सही संख्या 7024 है। सही विकल्प 7024 है। अन्य विकल्प अंकों को गलत जगह पर रखते हैं या मूल विवरण में उपस्थित अंकों के साथ अतिरिक्त अंक जोड़ देते हैं।",
+          "solution": "संख्या 145 में अंक 4 दहाई के स्थान पर है। सबसे दाहिने अंक इकाई के स्थान पर होता है, मध्य अंक दहाई के स्थान पर होता है और सबसे बाएं अंक सैकड़ा के स्थान पर होता है। अन्य विकल्प अंक 4 के स्थानीय मान को गलत ढंग से निर्दिष्ट करते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate numerical terms as taught in Hindi-medium textbooks.",
+          "critique": "The Hindi translation accurately reflects the English question and options, with appropriate terminology used for place values.",
           "flag": null
         },
         "mr": {
-          "stem": "7 हजार 0 शेकडे 2 दहावे 4 एकके ची बरोबर संख्या कोणती?",
+          "stem": "145 ह्या संख्येत, अंक 4 कोणत्या स्थानावर आहे?",
           "choices": [
-            "724",
-            "7024",
-            "70024",
-            "7204"
+            "शेकडे",
+            "दशक",
+            "एकक",
+            "हजार"
           ],
-          "solution": "7 हजार 0 शेकडे 2 दहावे 4 एकके ची बरोबर संख्या 7024 आहे. बरोबर विकल्प 7024 आहे. इतर विकल्पांमध्ये अंक चुकून ठेवले गेले आहेत किंवा मूळ वर्णनामध्ये असलेल्या अंकांपेक्षा अधिक अंक जोडले गेले आहेत.",
+          "solution": "145 ह्या संख्येत, अंक 4 दशकाच्या स्थानावर आहे. उजव्या बाजूचा अंक एककाच्या स्थानावर असतो, मध्यम अंक दशकाच्या स्थानावर असतो आणि बाजूचा अंक शेकडे च्या स्थानावर असतो. इतर विकल्प अंक 4 च्या स्थान मूल्याची चुकीने विनंती करतात.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses standard numerical terminology as taught in Marathi-medium schools.",
+          "critique": "The translation is accurate, maintains the correct answer position, and uses appropriate Marathi terms for place values.",
           "flag": null
         }
       },
@@ -276,10 +178,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "omits the zero in the hundreds place",
+        "Confuses the tens place with the hundreds place",
         null,
-        "adds an extra zero between 7 and 2",
-        "includes an extra digit in the thousands place"
+        "Confuses the tens place with the ones place",
+        "Confuses the tens place with the thousands place"
       ],
       "solverAnswers": [
         1,
@@ -288,8 +190,114 @@
         1,
         1
       ],
-      "levelFlag": null,
-      "critique": "The correct answer is 7024, as it correctly places 7 in the thousands, 0 in the hundreds, 2 in the tens, and 4 in the ones. The other options either omit or misplace digits.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the tens place for the digit 4 in 145. The reasoning aligns with standard place value understanding.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm104.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 4: Thousands Around Us"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm104.pdf",
+          "ordinal": 1,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: Thousands Around Us"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm104.pdf",
+          "ordinal": 2,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Thousands Around Us",
+            "Times-10One Thousand (1000)"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm104.pdf",
+          "ordinal": 3,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 4: Thousands Around Us",
+            "Grouping and Regrouping"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T03:20:32.025Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which number lies between 2226 and 3226?",
+      "choices": [
+        "2126",
+        "3326",
+        "3226",
+        "2326"
+      ],
+      "answerIndex": 3,
+      "solution": "The number 2326 lies between 2226 and 3226. 2126 is smaller than 2226, 3326 is larger than 3226, and 3226 is the upper limit, not between. 2326 is within the range specified.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "2226 और 3226 के बीच कौन-सी संख्या होती है?",
+          "choices": [
+            "2126",
+            "3326",
+            "3226",
+            "2326"
+          ],
+          "solution": "2326, 2226 और 3226 के बीच होती है। 2126, 2226 से छोटी है, 3326, 3226 से बड़ी है और 3226 ऊपरी सीमा है, जो बीच में नहीं होती है। 2326 निर्दिष्ट सीमा के भीतर होती है।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning, options, and solution. Technical terms like 'between' and 'range' are correctly translated. Only option (4) is correct, as in the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोणता संख्या 2226 आणि 3226 दरम्यान आहे?",
+          "choices": [
+            "2126",
+            "3326",
+            "3226",
+            "2326"
+          ],
+          "solution": "2326 ही 2226 आणि 3226 दरम्यान आहे. 2126 ही 2226 पेक्षा लहान आहे, 3326 ही 3226 पेक्षा मोठी आहे आणि 3226 ही वरच्या सीमेचा आहे, निश्चितपणे दरम्यान नाही. 2326 ही निश्चितपणे निर्दिष्ट अंतरात आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "is less than 2226",
+        "is greater than 3226",
+        "is the upper limit of the range",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2326, which is between 2226 and 3226. The other options are either outside the range or at the boundary, which is not considered 'between' in this context.",
       "sources": [
         {
           "document": "ncert/4/mathematics/demm104.pdf",
@@ -323,463 +331,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:54:13.752Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If 900 + ___ = 1000, what number should fill the blank?",
-      "choices": [
-        "100",
-        "10",
-        "50",
-        "200"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 100 because 900 + 100 = 1000. A student might think that 900 + 10 = 910 or 900 + 50 = 950, which are incorrect. Another might think the answer is 200, thinking 900 + 200 = 1100, which is also incorrect.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 900 + ___ = 1000, खाली स्थान भरने वाली संख्या क्या होगी?",
-          "choices": [
-            "100",
-            "10",
-            "50",
-            "200"
-          ],
-          "solution": "सही उत्तर 100 है क्योंकि 900 + 100 = 1000। एक छात्र 900 + 10 = 910 या 900 + 50 = 950 सोच सकता है, जो गलत है। एक अन्य छात्र 200 सोच सकता है, जिसके कारण 900 + 200 = 1100 हो जाता है, जो भी गलत है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "900 + ___ = 1000 असल्यास खालील रिक्त जागेला कोणता संख्या भरावी?",
-          "choices": [
-            "100",
-            "10",
-            "50",
-            "200"
-          ],
-          "solution": "बरोबर उत्तर 100 आहे कारण 900 + 100 = 1000. एका विद्यार्थीला असे वाटू शकते की 900 + 10 = 910 किंवा 900 + 50 = 950, हे चुकीचे आहे. एका विद्यार्थीला उत्तर 200 असेल असे वाटू शकते, 900 + 200 = 1100 असे वाटून, हे देखील चुकीचे आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Adds 10 instead of 100 to 900",
-        "Adds 50 instead of 100 to 900",
-        "Adds 200 instead of 100 to 900"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and the solution is correct. The correct answer is 100, and the author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 1,
-          "pageStart": 5,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 2,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us",
-            "Times-10One Thousand (1000)"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 3,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us",
-            "Grouping and Regrouping"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:54:13.752Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "How many hundreds are there in 800?",
-      "choices": [
-        "8",
-        "80",
-        "800",
-        "8000"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 8. 800 divided by 100 is 8. A student might think 80 because they count the number of tens instead of hundreds. Another might think 800 because they confuse the place values. A student might also think 8000, which is 10 times larger than 800.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "800 में कितने सैकड़े हैं?",
-          "choices": [
-            "8",
-            "80",
-            "800",
-            "8000"
-          ],
-          "solution": "सही उत्तर 8 है। 800 को 100 से विभाजित करने पर 8 प्राप्त होता है। एक छात्र 80 सोच सकता है क्योंकि वह दहाई की संख्या की गणना करता है। एक अन्य छात्र 800 सोच सकता है क्योंकि वह स्थानीय मानों को भ्रमित कर सकता है। एक छात्र 8000 के बारे में भी सोच सकता है, जो 800 के 10 गुना बड़ा होता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "800 मध्ये किती शेकडे आहेत?",
-          "choices": [
-            "8",
-            "80",
-            "800",
-            "8000"
-          ],
-          "solution": "बरोबर उत्तर 8 आहे. 800 ला 100 ने भागल्यास 8 मिळतो. एका विद्यार्थी शेकडे बरोबर गणल्याबद्दल 80 असे विचार करू शकतो. दुसरा विद्यार्थी 800 असे विचार करू शकतो, कारण तो स्थान मूल्याच्या चुकीच्या विचारात असतो. एका विद्यार्थी 8000 असे विचार करू शकतो, जे 800 पेक्षा 10 पट जास्त आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Counts the number of tens in 800 instead of the number of hundreds",
-        "Confuses the place value of hundreds with the number itself",
-        "Confuses 800 with 8000, which is 10 times larger"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution is mathematically sound. The correct answer is 8, and the author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 1,
-          "pageStart": 5,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 2,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us",
-            "Times-10One Thousand (1000)"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 3,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us",
-            "Grouping and Regrouping"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:54:13.752Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If the number 3452 is made up of the cards 3000, 400, 50, and 2, which cards would be used to make 4085?",
-      "choices": [
-        "4000, 80, 5",
-        "4000, 8, 5",
-        "4000, 80, 50",
-        "400, 80, 5"
-      ],
-      "answerIndex": 0,
-      "solution": "The number 4085 can be broken down into 4000, 80, and 5, which correspond to the thousands, tens, and ones places. The option with 4000, 80, and 5 correctly represents these place values. The other options have incorrect values, such as 8 instead of 80 or 50 instead of 5, which do not match the digit positions in 4085.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि संख्या 3452 कार्ड 3000, 400, 50 और 2 से बनी है, तो 4085 बनाने के लिए कौन-से कार्ड का उपयोग किया जाएगा?",
-          "choices": [
-            "4000, 80, 5",
-            "4000, 8, 5",
-            "4000, 80, 50",
-            "400, 80, 5"
-          ],
-          "solution": "संख्या 4085 को 4000, 80 और 5 में तोड़ा जा सकता है, जो हजार, दहाई और इकाई के स्थान के अनुरूप है। 4000, 80 और 5 वाला विकल्प सही रूप से इन स्थान मूल्यों का प्रतिनिधित्व करता है। अन्य विकल्पों में गलत मान हैं, जैसे 80 के स्थान पर 8 या 5 के स्थान पर 50, जो 4085 में अंकों के स्थानों के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "संख्या 3452 चा वापर कार्ड 3000, 400, 50 आणि 2 यांच्यापासून केला जातो, तर 4085 बनवण्यासाठी कोणते कार्ड वापरले जातील?",
-          "choices": [
-            "4000, 80, 5",
-            "4000, 8, 5",
-            "4000, 80, 50",
-            "400, 80, 5"
-          ],
-          "solution": "संख्या 4085 ला 4000, 80 आणि 5 मध्ये विभाजित केले जाऊ शकते, जे हजार, दशक आणि एकक स्थानांच्या अनुरूप आहे. 4000, 80 आणि 5 असलेला विकल्प हे स्थान मूल्यांच्या योग्य अनुरूपतेला दर्शवतो. इतर विकल्पांमध्ये 80 ऐवजी 8 किंवा 5 ऐवजी 50 अशी चुकीची मूल्ये असतात, जी 4085 मधील अंक स्थानांशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for place values.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses tens and ones place values, thinking 80 is just 8",
-        "adds an extra 800 instead of 80",
-        "adds 50 instead of 5"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (4000, 80, 5), as it matches the place value pattern from the example. The author's reasoning about the misconceptions is valid and aligns with common student errors.",
-      "sources": [
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 4,
-          "pageStart": 13,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us",
-            "Times-10Numbers Beyond 1000 (One Thousand)"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 5,
-          "pageStart": 18,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us",
-            "Times-10Numbers Beyond 1000 (One Thousand)"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 6,
-          "pageStart": 21,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us",
-            "Times-10Numbers Beyond 1000 (One Thousand)"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:54:13.752Z",
+      "generatedAt": "2026-10-28T03:20:32.025Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If 2 Hundreds, 13 Tens, and 7 Ones is equal to a number, what is that number?",
+      "stem": "What is the smallest 4-digit number that can be formed using the digits 1, 2, 3, and 4 without repeating any digit?",
       "choices": [
-        "337",
-        "327",
-        "307",
-        "347"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 337. 2 Hundreds is 200, 13 Tens is 130, and 7 Ones is 7. Adding these together gives 200 + 130 + 7 = 337. A student might think 200 + 13 + 7 = 220, which is incorrect. Another might think 200 + 120 + 7 = 327, which is also incorrect. A third might think 200 + 100 + 7 = 307, which is incorrect.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 2 सैकड़ा, 13 दहाई और 7 इकाई किसी संख्या के बराबर है, तो वह संख्या क्या है?",
-          "choices": [
-            "337",
-            "327",
-            "307",
-            "347"
-          ],
-          "solution": "सही उत्तर 337 है। 2 सैकड़ा 200 है, 13 दहाई 130 है, और 7 इकाई 7 है। इनको जोड़ने पर 200 + 130 + 7 = 337 प्राप्त होता है। एक छात्र 200 + 13 + 7 = 220 सोच सकता है, जो गलत है। एक अन्य छात्र 200 + 120 + 7 = 327 सोच सकता है, जो भी गलत है। एक तीसरा छात्र 200 + 100 + 7 = 307 सोच सकता है, जो भी गलत है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "2 शेकडे, 13 दहावे आणि 7 एकक एका संख्येस बरोबर आहे, तर ती संख्या कोणती आहे?",
-          "choices": [
-            "337",
-            "327",
-            "307",
-            "347"
-          ],
-          "solution": "बरोबर उत्तर 337 आहे. 2 शेकडे 200 आहे, 13 दहावे 130 आहे, आणि 7 एकक 7 आहे. यांच्या जोडण्याने 200 + 130 + 7 = 337 मिळते. एका विद्यार्थ्याला 200 + 13 + 7 = 220 असे वाटू शकते, जे चूक आहे. दुसऱ्या विद्यार्थ्याला 200 + 120 + 7 = 327 असे वाटू शकते, जे देखील चूक आहे. तिसऱ्या विद्यार्थ्याला 200 + 100 + 7 = 307 असे वाटू शकते, जे देखील चूक आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Adds 13 instead of 130 to 200 and 7, giving 220",
-        "Adds 120 instead of 130 to 200 and 7, giving 327",
-        "Adds 100 instead of 130 to 200 and 7, giving 307"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the author's key. The correct answer is 337, calculated as 200 + 130 + 7. The distractors reflect common misconceptions, such as misreading 13 Tens as 13 or 120.",
-      "sources": [
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 1,
-          "pageStart": 5,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 2,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us",
-            "Times-10One Thousand (1000)"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 3,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us",
-            "Grouping and Regrouping"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:54:13.752Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Which of the following numbers has the same digit in all places?",
-      "choices": [
-        "1111",
-        "1221",
         "1234",
-        "1122"
+        "1324",
+        "1243",
+        "1432"
       ],
       "answerIndex": 0,
-      "solution": "The number 1111 has the same digit, 1, in all four places. The other options have different digits in at least one place, which means they do not meet the condition of having the same digit in all places.",
+      "solution": "The smallest 4-digit number that can be formed using the digits 1, 2, 3, and 4 without repeating any digit is 1234. This is because the digits are arranged in ascending order, starting with the smallest digit in the thousands place. Other options have digits arranged in different orders, making them larger than 1234.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी संख्या में सभी स्थानों पर एक ही अंक है?",
+          "stem": "अंक 1, 2, 3 और 4 का प्रयोग करके कौन सी सबसे छोटी 4 अंकों की संख्या बनाई जा सकती है जिसमें किसी भी अंक की पुनरावृत्ति नहीं होती?",
           "choices": [
-            "1111",
-            "1221",
             "1234",
-            "1122"
+            "1324",
+            "1243",
+            "1432"
           ],
-          "solution": "संख्या 1111 में सभी चार स्थानों पर एक ही अंक, 1 है। अन्य विकल्पों में कम से कम एक स्थान पर अलग-अलग अंक हैं, जिसका अर्थ है कि वे सभी स्थानों पर एक ही अंक होने की शर्त को पूरा नहीं करते।",
+          "solution": "अंक 1, 2, 3 और 4 का प्रयोग करके किसी भी अंक की पुनरावृत्ति बिना सबसे छोटी 4 अंकों की संख्या 1234 है। इसका कारण यह है कि अंक आरोही क्रम में व्यवस्थित किए गए हैं, जिसमें हजार के स्थान पर सबसे छोटा अंक है। अन्य विकल्पों में अंक अलग-अलग क्रम में व्यवस्थित हैं, जिसके कारण वे 1234 से बड़ी हो जाती हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणत्या संख्येत सर्व जागी एकाच अंकाचा असतो?",
+          "stem": "चार अंकी सर्वात छोटी संख्या कोणती असेल जी अंक 1, 2, 3 आणि 4 वापरून तयार करता येईल आणि कोणताही अंक पुनरावृत्ती करू नये?",
           "choices": [
-            "1111",
-            "1221",
             "1234",
-            "1122"
+            "1324",
+            "1243",
+            "1432"
           ],
-          "solution": "संख्या 1111 मध्ये सर्व चार जागी एकाच अंक, 1 असतो. इतर विकल्पांमध्ये कमीत कमी एक जागी वेगळा अंक असतो, ज्यामुळे ते सर्व जागी एकाच अंक असण्याच्या अटीला पात्र नसतात.",
+          "solution": "अंक 1, 2, 3 आणि 4 वापरून तयार करता येईल अशी चार अंकी सर्वात छोटी संख्या 1234 आहे. कारण अंक वर्णक्रमानुसार व्यवस्थित केले गेले आहेत, आणि हजारांच्या थरात सर्वात छोटा अंक ठेवला गेला आहे. इतर विकल्पांमध्ये अंक वेगळ्या क्रमाने व्यवस्थित केले गेले आहेत, ज्यामुळे ते 1234 पेक्षा मोठी असतात.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -791,9 +383,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Believes that a number with repeating digits in some places is considered to have the same digit in all places",
-        "has different digits in different places",
-        "has different digits in different places, with 1s and 2s alternating"
+        "Confuses the order of digits after the first, thinking that 3 should come before 2 in the tens place",
+        "Confuses the order of digits after the first two, thinking the third digit should be the next smallest instead of the next in sequence",
+        "Confuses the order of digits, placing the largest remaining digit in the tens place instead of the ones."
       ],
       "solverAnswers": [
         0,
@@ -803,7 +395,7 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is clear and the correct answer is unambiguous. The solution correctly identifies 1111 as the only number with the same digit in all places.",
+      "critique": "The correct answer is 1234, as it is the smallest 4-digit number formed by arranging the digits 1, 2, 3, and 4 in ascending order. The author's reasoning is sound and the distractors reflect plausible misconceptions.",
       "sources": [
         {
           "document": "ncert/4/mathematics/demm104.pdf",
@@ -837,113 +429,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:54:13.752Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Which of the following represents the number 1000 in the Indian number system?",
-      "choices": [
-        "One thousand",
-        "Ten hundreds",
-        "One hundred tens",
-        "Ten thousands"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'Ten hundreds' because 10 hundreds is 1000. A student might think it is 'One thousand,' which is correct in English but not in the Indian number system. Another might think it is 'One hundred tens,' which would be 1000 as well, but the Indian system uses the term 'ten hundreds' for 1000. A student might also think 'Ten thousands' is the correct term, but that is 10,000, not 1000.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन सी संख्या 1000 के भारतीय संख्या प्रणाली में प्रस्तुत करता है?",
-          "choices": [
-            "एक हजार",
-            "दस सौ",
-            "एक सौ दस",
-            "दस हजार"
-          ],
-          "solution": "सही उत्तर 'दस सौ' है क्योंकि 10 सौ 1000 होता है। एक छात्र यह सोच सकता है कि 'एक हजार' सही है, जो अंग्रेजी में सही है लेकिन भारतीय संख्या प्रणाली में नहीं है। एक अन्य छात्र 'एक सौ दस' को सही सोच सकता है, जो भी 1000 होता है, लेकिन भारतीय प्रणाली में 1000 के लिए शब्द 'दस सौ' का उपयोग किया जाता है। एक छात्र 'दस हजार' को सही शब्द सोच सकता है, लेकिन यह 10,000 होता है, न कि 1000।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question, with appropriate terminology used in Indian education context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते भारतीय संख्या पद्धतीत 1000 चे प्रतिनिधित्व करते?",
-          "choices": [
-            "एक हजार",
-            "दहा शेर",
-            "एक शे दहा",
-            "दहा हजार"
-          ],
-          "solution": "बरोबर उत्तर 'दहा शेर' आहे कारण दहा शेर 1000 आहे. एक विद्यार्थी 'एक हजार' विचार करू शकतो, जे इंग्रजीत बरोबर आहे परंतु भारतीय संख्या पद्धतीत नाही. एक विद्यार्थी 'एक शे दहा' विचार करू शकतो, जे 1000 असेल परंतु भारतीय पद्धतीत 1000 च्या बरोबरीने 'दहा शेर' शब्द वापरला जातो. एक विद्यार्थी 'दहा हजार' बरोबर विचार करू शकतो, परंतु ते 10,000 आहे, 1000 नाही.",
-          "imageAlt": null,
-          "critique": "The translation accurately reflects the original question and solution, with appropriate Marathi terms for number system concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Represents the number 1000 in English but not in the Indian number system",
-        null,
-        "Confuses 'ten hundreds' with 'one hundred tens,' which is also 1000 but not the standard term in the Indian system",
-        "Represents the number 10,000, not 1000"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is valid and the solution is correct. The Indian number system uses 'ten hundreds' to represent 1000, and the explanation correctly identifies the misconceptions associated with the other options.",
-      "sources": [
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 1,
-          "pageStart": 5,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 2,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us",
-            "Times-10One Thousand (1000)"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm104.pdf",
-          "ordinal": 3,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 4: Thousands Around Us",
-            "Grouping and Regrouping"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:54:13.752Z",
+      "generatedAt": "2026-10-28T03:20:32.025Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

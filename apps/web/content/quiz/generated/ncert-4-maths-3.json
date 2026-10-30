@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Math-Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T21:51:01.682Z",
+  "generatedAt": "2026-10-28T03:17:56.905Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 4,
-      "stem": "Shiv arranges his numbers in pairs and calls them even numbers. Shirley arranges her numbers in a way that they cannot be paired. What term is used for these numbers?",
+      "difficulty": 2,
+      "stem": "Which of the following numbers is an odd number?",
       "choices": [
-        "Odd numbers",
-        "Prime numbers",
-        "Composite numbers",
-        "Whole numbers"
+        "12",
+        "18",
+        "24",
+        "29"
       ],
-      "answerIndex": 0,
-      "solution": "Odd numbers are those that cannot be paired evenly, while even numbers can be. Prime and composite numbers relate to factors, not pairing. Whole numbers include all counting numbers but do not specifically refer to pairing. Therefore, the correct term is odd numbers.",
+      "answerIndex": 3,
+      "solution": "The correct answer is 29 because odd numbers are not divisible by 2. 12, 18, and 24 are divisible by 2, so they are even. 29 is not divisible by 2, making it odd.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "शिव अपनी संख्याओं के जोड़े बनाता है और उन्हें सम संख्याएं कहता है। शिरली अपनी संख्याओं को एक ऐसे तरीके से व्यवस्थित करती है जिसमें उन्हें जोड़ा नहीं जा सकता। इन संख्याओं के लिए कौन सा शब्द प्रयोग किया जाता है?",
+          "stem": "निम्नलिखित में से कौन-सी संख्या एक विषम संख्या है?",
           "choices": [
-            "विषम संख्याएं",
-            "अभाज्य संख्याएं",
-            "भाज्य संख्याएं",
-            "पूर्ण संख्याएं"
+            "12",
+            "18",
+            "24",
+            "29"
           ],
-          "solution": "विषम संख्याएं वे होती हैं जिन्हें समान रूप से जोड़ा नहीं जा सकता, जबकि सम संख्याएं जोड़ा जा सकती हैं। अभाज्य और भाज्य संख्याएं कारकों से संबंधित होती हैं, न कि जोड़े बनाने से। पूर्ण संख्याएं सभी गणना संख्याओं को शामिल करती हैं लेकिन जोड़े बनाने के संदर्भ में विशिष्ट रूप से संदर्भित नहीं करती हैं। इसलिए, सही शब्द विषम संख्याएं है।",
+          "solution": "सही उत्तर 29 है क्योंकि विषम संख्याएं 2 से विभाज्य नहीं होती हैं। 12, 18 और 24 2 से विभाज्य हैं, इसलिए वे सम हैं। 29 2 से विभाज्य नहीं है, इसलिए यह विषम है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and maintains the correct answer and distractors.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as taught in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "शिव त्याच्या संख्या जोड्यांमध्ये ठेवतो आणि त्यांना सम संख्या म्हणतो. शिरली तिच्या संख्या अशा प्रकारे ठेवते की त्यांना जोड्यांमध्ये ठेवता येत नाही. या संख्यांसाठी कोणते शब्द वापरला जातो?",
+          "stem": "खालीलपैकी कोणता संख्या विषम संख्या आहे?",
           "choices": [
-            "अविषम संख्या",
-            "अभाज्य संख्या",
-            "भाज्य संख्या",
-            "पूर्ण संख्या"
+            "12",
+            "18",
+            "24",
+            "29"
           ],
-          "solution": "अविषम संख्या ह्या त्या संख्या आहेत ज्या समान जोड्यांमध्ये ठेवता येत नाहीत, तर सम संख्या जोड्यांमध्ये ठेवता येतात. अभाज्य आणि भाज्य संख्या घटकांशी संबंधित आहेत, जोड्यांशी नाहीत. पूर्ण संख्या सर्व गणन संख्यांचा समावेश करतात परंतु जोड्यांशी विशिष्ट नाहीत. म्हणून, योग्य शब्द अविषम संख्या आहे.",
+          "solution": "बरोबर उत्तर 29 आहे कारण विषम संख्या 2 ने भाग जात नाहीत. 12, 18 आणि 24 ही संख्या 2 ने भाग जातात, म्हणून त्या सम आहेत. 29 ही संख्या 2 ने भाग जात नाही, त्यामुळे ती विषम आहे.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses standard mathematical terminology as taught in Marathi-medium schools.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        null,
-        "A pupil might confuse even and odd numbers with prime numbers, thinking that unpairable numbers are prime.",
-        "Confuses the classification of numbers based on factors and divisibility, not pairing ability",
-        "Confuses the classification of numbers based on factors and divisibility, not pairing ability"
+        "Confuses odd and even numbers",
+        "Confuses odd and even numbers",
+        "Confuses odd and even numbers",
+        null
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        3,
+        3,
+        3,
+        3,
+        3
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question correctly identifies odd numbers as the term for numbers that cannot be paired, and the reasoning for the other options aligns with common misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. All distractors are even numbers, and the correct answer is indeed 29, an odd number not divisible by 2.",
       "sources": [
         {
           "document": "ncert/4/mathematics/demm103.pdf",
@@ -108,7 +108,442 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:51:01.682Z",
+      "generatedAt": "2026-10-28T03:17:56.905Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Shiv has arranged his numbers in pairs. Which of the following numbers is an example of an even number?",
+      "choices": [
+        "7",
+        "9",
+        "11",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is 12 because even numbers can be arranged in pairs without any remainder. 7, 9, and 11 cannot be arranged in pairs without a remainder, so they are odd. 12 can be paired completely, making it even.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शिव ने अपनी संख्याओं के जोड़े व्यवस्थित किए हैं। निम्नलिखित में से कौन-सी संख्या सम संख्या का एक उदाहरण है?",
+          "choices": [
+            "7",
+            "9",
+            "11",
+            "12"
+          ],
+          "solution": "सही उत्तर 12 है क्योंकि सम संख्याओं को कोई शेष बिना जोड़े व्यवस्थित किया जा सकता है। 7, 9 और 11 को शेष बिना जोड़े व्यवस्थित नहीं किया जा सकता है, इसलिए वे विषम हैं। 12 पूरी तरह से जोड़े जा सकते हैं, इसलिए यह सम है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शिवने आपली संख्या जोड्यांमध्ये ठेवली आहे. खालीलपैकी कोणती संख्या सम संख्येचे उदाहरण आहे?",
+          "choices": [
+            "7",
+            "9",
+            "11",
+            "12"
+          ],
+          "solution": "सही उत्तर 12 आहे कारण सम संख्या शिल्लक न राहता जोड्यांमध्ये ठेवता येतात. 7, 9 आणि 11 शिल्लक राहतात म्हणून त्या विषम आहेत. 12 जोड्यांमध्ये पूर्णपणे ठेवता येते, त्यामुळे ती सम आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses odd and even numbers",
+        "Confuses odd and even numbers",
+        "Confuses odd and even numbers",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward. The correct answer is 12, as it is the only even number among the options. The author's reasoning is accurate and matches the definition of even numbers. The distractors are all odd numbers, and the author's stated reasons for the wrong options (confusing odd and even) are valid misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Patterns Around Us"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm103.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Patterns Around Us",
+            "Crayons Arrangement"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T03:17:56.905Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If a number is even, which of the following must be true?",
+      "choices": [
+        "It is divisible by 2",
+        "It is a prime number",
+        "It is a multiple of 10",
+        "It is a multiple of 4"
+      ],
+      "answerIndex": 0,
+      "solution": "An even number is defined as a number that is divisible by 2, which is always true. Prime numbers are not necessarily even, as most primes are odd. Multiples of 10 or 4 are not guaranteed for all even numbers, as some even numbers are not divisible by 10 or 4.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक संख्या सम है, तो निम्नलिखित में से कौन-सा आवश्यक रूप से सत्य होगा?",
+          "choices": [
+            "यह 2 से विभाज्य है",
+            "यह एक अभाज्य संख्या है",
+            "यह 10 का गुणज है",
+            "यह 4 का गुणज है"
+          ],
+          "solution": "एक सम संख्या को 2 से विभाज्य होने के रूप में परिभाषित किया जाता है, जो हमेशा सत्य होता है। अभाज्य संख्याएं आवश्यक रूप से सम नहीं होतीं, क्योंकि अधिकांश अभाज्य संख्याएं विषम होती हैं। 10 या 4 के गुणज होने की गारंटी सभी सम संख्याओं के लिए नहीं होती है, क्योंकि कुछ सम संख्याएं 10 या 4 से विभाज्य नहीं होती हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक संख्या सम असेल, तर खालीलपैकी कोणते खात्रीनामा खरे असेल?",
+          "choices": [
+            "ती 2 ने भागला जाऊ शकते",
+            "ती अभाज्य संख्या असते",
+            "ती 10 ची बहुकल्पी असते",
+            "ती 4 ची बहुकल्पी असते"
+          ],
+          "solution": "सम संख्या म्हणजे 2 ने भागला जाणारी संख्या, हे नेहमी खरे असते. अभाज्य संख्या नेहमी सम असत नाहीत, कारण अभाज्य संख्यांचा जास्तीत जास्त असे विषम असतात. 10 किंवा 4 ची बहुकल्पी असणे नेहमी खरे असत नाही, कारण काही सम संख्या 10 किंवा 4 ने भागली जाऊ शकत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "A student might think that even numbers are only 2 and not realize that other even numbers like 4, 6, 8 are not prime.",
+        "Student thinks even numbers must end in 0",
+        "students often confuse even numbers with multiples of 4"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as even numbers are defined as those divisible by 2. The other options represent common misconceptions about even numbers.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Patterns Around Us"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm103.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Patterns Around Us",
+            "Crayons Arrangement"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T03:17:56.905Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Shirley and Shiv have arranged their coins in different ways. Which of the following numbers is an odd number?",
+      "choices": [
+        "14",
+        "16",
+        "18",
+        "19"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is 19 because odd numbers cannot be divided into pairs. 14, 16, and 18 can be divided into pairs, so they are even. 19 cannot be divided into pairs, making it odd.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शिरली और शिव अपने सिक्कों को अलग-अलग तरीके से व्यवस्थित कर चुके हैं। निम्नलिखित में से कौन-सी संख्या एक विषम संख्या है?",
+          "choices": [
+            "14",
+            "16",
+            "18",
+            "19"
+          ],
+          "solution": "सही उत्तर 19 है क्योंकि विषम संख्याओं को जोड़ों में विभाजित नहीं किया जा सकता है। 14, 16 और 18 को जोड़ों में विभाजित किया जा सकता है, इसलिए वे सम हैं। 19 को जोड़ों में विभाजित नहीं किया जा सकता है, इसलिए यह विषम है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शिर्ली आणि शिव आपले नाणी वेगवेगळ्या पद्धतीने ठेवले आहेत. खालीलपैकी कोणती संख्या विषम संख्या आहे?",
+          "choices": [
+            "14",
+            "16",
+            "18",
+            "19"
+          ],
+          "solution": "बरोबर उत्तर 19 आहे कारण विषम संख्या जोड्यांमध्ये विभाजित करता येत नाहीत. 14, 16 आणि 18 जोड्यांमध्ये विभाजित करता येतात, म्हणून ते सम आहेत. 19 जोड्यांमध्ये विभाजित करता येत नाही, त्यामुळे ती विषम आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses odd and even numbers",
+        "Confuses odd and even numbers",
+        "Confuses odd and even numbers",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward and the solution is correct. 19 is the only odd number among the options, and the explanation aligns with the definition of odd numbers.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Patterns Around Us"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm103.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Patterns Around Us",
+            "Crayons Arrangement"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T03:17:56.905Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Shirley notices that both the numbers before and after an odd number are even. If the number is 27, which of the following numbers are even?",
+      "choices": [
+        "25 and 26",
+        "26 and 28",
+        "28 and 29",
+        "29 and 30"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 26 and 28 because they are the numbers before and after 27, which is an odd number. According to the pattern, numbers adjacent to an odd number are even. 25 and 26 are not both even. 28 and 29 are not both even. 29 and 30 are not both even.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शिरली ध्यान देती है कि एक विषम संख्या के आगे और पीछे दोनों संख्याएं सम होती हैं। यदि संख्या 27 है, तो निम्नलिखित में से कौन-सी संख्याएं सम हैं?",
+          "choices": [
+            "25 और 26",
+            "26 और 28",
+            "28 और 29",
+            "29 और 30"
+          ],
+          "solution": "सही उत्तर 26 और 28 है क्योंकि वे 27 के आगे और पीछे की संख्याएं हैं, जो एक विषम संख्या है। पैटर्न के अनुसार, विषम संख्या के आसपास की संख्याएं सम होती हैं। 25 और 26 दोनों सम नहीं हैं। 28 और 29 दोनों सम नहीं हैं। 29 और 30 दोनों सम नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शिर्ली लक्षात घेते की विषम संख्येच्या आधी आणि नंतरच्या दोन संख्या सम आहेत. जर संख्या 27 असेल, तर खालीलपैकी कोणत्या संख्या सम आहेत?",
+          "choices": [
+            "25 आणि 26",
+            "26 आणि 28",
+            "28 आणि 29",
+            "29 आणि 30"
+          ],
+          "solution": "बरोबर उत्तर 26 आणि 28 आहे कारण ते 27 च्या आधी आणि नंतरच्या संख्या आहेत, जी विषम संख्या आहे. नमुन्यानुसार, विषम संख्येच्या जवळच्या संख्या सम असतात. 25 आणि 26 दोन्ही सम नाहीत. 28 आणि 29 दोन्ही सम नाहीत. 29 आणि 30 दोन्ही सम नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the pattern of odd and even numbers",
+        null,
+        "Includes one odd number in the pair",
+        "Includes one odd number in the pair"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 26 and 28, as they are the numbers immediately before and after 27, an odd number. The solution is sound and matches the key.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Patterns Around Us"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm103.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Patterns Around Us",
+            "Crayons Arrangement"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T03:17:56.905Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Shiv wonders if both the numbers before and after an even number will be odd. If the number is 18, which of the following numbers are odd?",
+      "choices": [
+        "16 and 17",
+        "17 and 19",
+        "19 and 20",
+        "20 and 21"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 17 and 19 because they are the numbers before and after 18, which is an even number. According to the pattern, numbers adjacent to an even number are odd. 16 and 17 are not both odd. 19 and 20 are not both odd. 20 and 21 are not both odd.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शिव के मन में यह सवाल है कि क्या किसी सम संख्या के आगे और पीछे की संख्याएं विषम होती हैं? यदि संख्या 18 है, तो निम्नलिखित में से कौन-सी संख्याएं विषम हैं?",
+          "choices": [
+            "16 और 17",
+            "17 और 19",
+            "19 और 20",
+            "20 और 21"
+          ],
+          "solution": "सही उत्तर 17 और 19 है क्योंकि ये 18 के आगे और पीछे की संख्याएं हैं, जो एक सम संख्या है। पैटर्न के अनुसार, सम संख्या के पास की संख्याएं विषम होती हैं। 16 और 17 दोनों विषम नहीं हैं। 19 और 20 दोनों विषम नहीं हैं। 20 और 21 दोनों विषम नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शिवला वाटते की सम संख्येच्या आधी आणि नंतरच्या दोन संख्या विषम असतील. जर संख्या 18 असेल तर खालीलपैकी कोणत्या संख्या विषम आहेत?",
+          "choices": [
+            "16 आणि 17",
+            "17 आणि 19",
+            "19 आणि 20",
+            "20 आणि 21"
+          ],
+          "solution": "बरोबर उत्तर 17 आणि 19 आहे कारण ते 18 च्या आधी आणि नंतरच्या संख्या आहेत, जी सम संख्या आहे. पॅटर्न नुसार, सम संख्येच्या जवळच्या संख्या विषम असतात. 16 आणि 17 दोन्ही विषम नाहीत. 19 आणि 20 दोन्ही विषम नाहीत. 20 आणि 21 दोन्ही विषम नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Includes one even number in the pair",
+        null,
+        "Includes one even number in the pair",
+        "Includes one even number in the pair"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is valid and the solution is correct. The correct answer is 17 and 19, which are both odd and adjacent to the even number 18. The distractors all contain one even number, which is a common misconception.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Patterns Around Us"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm103.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Patterns Around Us",
+            "Crayons Arrangement"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T03:17:56.905Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

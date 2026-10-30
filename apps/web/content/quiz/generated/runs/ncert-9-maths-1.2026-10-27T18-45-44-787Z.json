@@ -1,0 +1,531 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T18:45:44.787Z",
+  "finishedAt": "2026-10-27T18:51:14.234Z",
+  "seconds": 329,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari PART-II",
+    "bookCode": "iemh2",
+    "document": "ncert/9/mathematics/iemh201.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Propositions and their Converses",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n22. Given:-AB II CD II EF\nTo prove:- ா஽ ஺ா = ஻ி ி஼\nConstruction:- Join BD to\nintersect EF at G.\nProof:- in ∆ ABD\nEG II AB ( EF II AB )\nா஽ ஺ா = ஻ீீ ஽ ( by BPT )___________(1)\nIn ∆𝐷𝐵𝐶\nGF II CD ( EF II CD )\n஻ி ி஼ = ஻ீீ ஽ ( by BPT )___________(2)\n𝑓𝑟𝑜𝑚 (1) & (2)\nா஽ ஺ா = ஻ி ி஼\nGiven AD=6cm, DB=9cm\nAE=8cm, EC=12cm, ∠ADE=48\nTo find:- ∠ABC=?\nProof:\nIn ∆𝐴𝐵𝐶\n஽஻ ஺஽ = = ଺ ଽ ଶ ଷ ……(1)\n஺ா ா஼ = ଵଶ ଼ = ଶ ଷ ……..(2)\nFrom (1) & (2)\n஽஻ ஺஽ = ஺ா ா஼\nDE II BC (Converse of BPT)\n∠ADE=∠ABC (Corresponding angles)\n⇒ ∠ABC=48˚\nOR",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n29. A circle touches all the four sides of quadrilateral ABCD. Prove that AB + CD = AD + BC.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n22. In the figure, altitudes AD and CE of Δ ABC intersect 2\neach other at the point P. Show that:\n(i) ΔABD ~ ΔCBE\n(ii) ΔPDC ~ ΔBEC\n[OR]\nBF BE\nIn the figure, DE || AC and DF || AE. Prove that FE = EC",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n7. (a) ∆𝑃𝑄𝑅~ ∆ 𝐶𝐴𝐵"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 133431,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17512,
+      "completionTokens": 7014
+    },
+    "critique": {
+      "calls": 35,
+      "ms": 279266,
+      "in": 24,
+      "out": 18,
+      "rejects": 6,
+      "promptTokens": 18363,
+      "completionTokens": 6260
+    },
+    "solver": {
+      "calls": 164,
+      "ms": 133477,
+      "in": 18,
+      "out": 16,
+      "rejects": 2,
+      "promptTokens": 44251,
+      "completionTokens": 2232
+    },
+    "form": {
+      "calls": 3,
+      "ms": 24810,
+      "in": 16,
+      "out": 2,
+      "rejects": 14,
+      "promptTokens": 2568,
+      "completionTokens": 667
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 5631,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 72342,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5042,
+      "completionTokens": 2732
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a proposition?",
+      "ms": {
+        "draft": 6427,
+        "critique": 8323
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct statement about the converse of a proposition?",
+      "ms": {
+        "draft": 6427,
+        "critique": 7371,
+        "solver": 1537,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, DE is parallel to BC. If AE = 12 cm, EC = 8 cm, and AD = 6 cm, what is the length of DB?",
+      "ms": {
+        "draft": 6427,
+        "critique": 9589
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a counterexample to the proposition 'If it rains, then the road is wet'",
+      "ms": {
+        "draft": 6427,
+        "critique": 7598,
+        "solver": 17838
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number has an odd number of factors, then it is a perfect square. Which of the following is a correct explanation for why this statement is true?",
+      "ms": {
+        "draft": 6427,
+        "critique": 9903
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is a multiple of 6, then it is a multiple of 3. Which of the following is a counterexample to the converse of the above proposition?",
+      "ms": {
+        "draft": 6427,
+        "critique": 9929,
+        "solver": 14876,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a quadrilateral is a square, then all its angles are equal. Which of the following is the converse of this proposition?",
+      "ms": {
+        "draft": 5952,
+        "critique": 7754,
+        "solver": 1659,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the figure, AB is parallel to CD, and EF intersects them at G and H. If ∠AGE = 120°, what is the measure of ∠CHG?",
+      "ms": {
+        "draft": 5952,
+        "critique": 8686
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If x = y, then a + x = a + y. Which of the following is the converse of this proposition?",
+      "ms": {
+        "draft": 5952,
+        "critique": 7451,
+        "solver": 1974,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a number is divisible by 8, then it is divisible by both 2 and 4. Which of the following is a counterexample to this statement?",
+      "ms": {
+        "draft": 5952,
+        "critique": 13085
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the figure, DE is parallel to BC. If AE = 5 cm, EC = 3 cm, and AB = 10 cm, what is the length of AD?",
+      "ms": {
+        "draft": 5952,
+        "critique": 9777,
+        "solver": 15794,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a quadrilateral has equal diagonals, then it is a rectangle. Which of the following is a counterexample to this statement?",
+      "ms": {
+        "draft": 5952,
+        "critique": 7874,
+        "solver": 1606,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the converse of the proposition: 'If two lines are parallel, then the corresponding angles formed by a transversal are equal'?",
+      "ms": {
+        "draft": 4899,
+        "critique": 7350,
+        "solver": 16673,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the following proposition: 'If x = y, then a + x = a + y, where x, y and a are any three numbers', which of the following is the converse?",
+      "ms": {
+        "draft": 4899,
+        "critique": 7694,
+        "solver": 17124,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the converse of the proposition: 'If a quadrilateral is a square, then all its angles are equal'?",
+      "ms": {
+        "draft": 4899,
+        "critique": 7351,
+        "solver": 20920,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the passage, the proposition 'If n is the square of a prime number, then it has exactly 3 factors' is given. Which of the following is the converse of this proposition?",
+      "ms": {
+        "draft": 4899,
+        "critique": 7571,
+        "solver": 19741
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, the proposition 'If a and b are perfect squares, then ab is a perfect square' is stated. Which of the following is the correct converse of this proposition?",
+      "ms": {
+        "draft": 4899,
+        "critique": 7452,
+        "solver": 21793,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the passage, the proposition 'If n is a product of two unequal prime numbers, then it has exactly 4 divisors' is given. Which of the following is the converse of this proposition?",
+      "ms": {
+        "draft": 4899,
+        "critique": 7704,
+        "solver": 18790,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, it is stated that a counterexample is a situation that illustrates why a proposition is not true. Which of the following is a counterexample for the proposition 'If a number is a multiple of 6, then it is a multiple of 3'?",
+      "ms": {
+        "draft": 4960,
+        "critique": 10894
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses the Baudhāyana–Pythagoras theorem and its converse. Which of the following is the correct statement for the converse of the theorem?",
+      "ms": {
+        "draft": 4960,
+        "critique": 7077,
+        "solver": 2551,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The converse of the statement 'If two angles of a triangle are equal, then the sides opposite the equal angles have equal lengths' is:",
+      "ms": {
+        "draft": 4960,
+        "critique": 7412,
+        "solver": 18614,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the passage, the statement 'If n is a perfect square, then it has an odd number of factors' is given. What is the converse of this statement?",
+      "ms": {
+        "draft": 4960,
+        "critique": 6525,
+        "solver": 15971,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two sides of a triangle are equal, then the angles opposite the equal sides are equal. What is this proposition called?",
+      "ms": {
+        "draft": 4960,
+        "critique": 6714,
+        "solver": 2003,
+        "form": 5238,
+        "translation": 32910
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the converse of a proposition is true, what does this imply about the original proposition?",
+      "ms": {
+        "draft": 4960,
+        "critique": 7669,
+        "solver": 957,
+        "form": 2781,
+        "translation": 35238
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a proposition?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a correct statement about the converse of a proposition?",
+      "reason": "options 0 and 1 say the same thing (\"The converse of a proposition is always true if the proposition is true\" / \"The converse of a proposition is always false if the proposition is true\"); options 0 and 3 say the same thing (\"The converse of a proposition is always true if the proposition is true\" / \"The converse of a proposition is always false if the proposition is false\"); options 1 and 3 say the same thing (\"The converse of a proposition is always false if the proposition is true\" / \"The converse of a proposition is always false if the proposition is false\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given figure, DE is parallel to BC. If AE = 12 cm, EC = 8 cm, and AD = 6 cm, what is the length of DB?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a counterexample to the proposition 'If it rains, then the road is wet'",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a number has an odd number of factors, then it is a perfect square. Which of the following is a correct explanation for why this statement is true?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a number is a multiple of 6, then it is a multiple of 3. Which of the following is a counterexample to the converse of the above proposition?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a quadrilateral is a square, then all its angles are equal. Which of the following is the converse of this proposition?",
+      "reason": "options 0 and 2 say the same thing (\"If all its angles are equal, then it is a square.\" / \"If all its angles are equal, then it is not a square.\"); options 1 and 2 say the same thing (\"If a quadrilateral is not a square, then not all its angles are equal.\" / \"If all its angles are equal, then it is not a square.\"); options 1 and 3 say the same thing (\"If a quadrilateral is not a square, then not all its angles are equal.\" / \"If a quadrilateral is not a square, then all its angles are equal.\"); options 2 and 3 say the same thing (\"If all its angles are equal, then it is not a square.\" / \"If a quadrilateral is not a square, then all its angles are equal.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the figure, AB is parallel to CD, and EF intersects them at G and H. If ∠AGE = 120°, what is the measure of ∠CHG?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If x = y, then a + x = a + y. Which of the following is the converse of this proposition?",
+      "reason": "options 0 and 1 say the same thing (\"If a + x = a + y, then x = y.\" / \"If x ≠ y, then a + x ≠ a + y.\"); options 0 and 2 are the same (\"If a + x = a + y, then x = y.\"); options 0 and 3 say the same thing (\"If a + x = a + y, then x = y.\" / \"If x = y, then a + x ≠ a + y.\"); options 1 and 2 say the same thing (\"If x ≠ y, then a + x ≠ a + y.\" / \"If a + x ≠ a + y, then x ≠ y.\"); options 1 and 3 are the same (\"If x ≠ y, then a + x ≠ a + y.\"); options 2 and 3 say the same thing (\"If a + x ≠ a + y, then x ≠ y.\" / \"If x = y, then a + x ≠ a + y.\"); option 0 repeats the stem's wording (\"If a + x = a + y, then x = y.\"); option 1 repeats the stem's wording (\"If x ≠ y, then a + x ≠ a + y.\"); option 2 repeats the stem's wording (\"If a + x ≠ a + y, then x ≠ y.\"); option 3 repeats the stem's wording (\"If x = y, then a + x ≠ a + y.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a number is divisible by 8, then it is divisible by both 2 and 4. Which of the following is a counterexample to this statement?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the figure, DE is parallel to BC. If AE = 5 cm, EC = 3 cm, and AB = 10 cm, what is the length of AD?",
+      "reason": "options are written to different precisions (1 and 2 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a quadrilateral has equal diagonals, then it is a rectangle. Which of the following is a counterexample to this statement?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label Rhombus"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the converse of the proposition: 'If two lines are parallel, then the corresponding angles formed by a transversal are equal'?",
+      "reason": "options 0 and 1 say the same thing (\"If the corresponding angles formed by a transversal are equal, then the two lines are parallel.\" / \"If the corresponding angles formed by a transversal are not equal, then the two lines are parallel.\"); options 0 and 2 say the same thing (\"If the corresponding angles formed by a transversal are equal, then the two lines are parallel.\" / \"If the two lines are not parallel, then the corresponding angles formed by a transversal are not equal.\"); options 0 and 3 say the same thing (\"If the corresponding angles formed by a transversal are equal, then the two lines are parallel.\" / \"If the two lines are parallel, then the corresponding angles formed by a transversal are not equal.\"); options 1 and 2 say the same thing (\"If the corresponding angles formed by a transversal are not equal, then the two lines are parallel.\" / \"If the two lines are not parallel, then the corresponding angles formed by a transversal are not equal.\"); options 1 and 3 say the same thing (\"If the corresponding angles formed by a transversal are not equal, then the two lines are parallel.\" / \"If the two lines are parallel, then the corresponding angles formed by a transversal are not equal.\"); options 2 and 3 say the same thing (\"If the two lines are not parallel, then the corresponding angles formed by a transversal are not equal.\" / \"If the two lines are parallel, then the corresponding angles formed by a transversal are not equal.\"); option 0 repeats the stem's wording (\"If the corresponding angles formed by a transversal are equal, then the two lines are parallel.\"); option 1 repeats the stem's wording (\"If the corresponding angles formed by a transversal are not equal, then the two lines are parallel.\"); option 3 repeats the stem's wording (\"If the two lines are parallel, then the corresponding angles formed by a transversal are not equal.\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the following proposition: 'If x = y, then a + x = a + y, where x, y and a are any three numbers', which of the following is the converse?",
+      "reason": "options 0 and 1 say the same thing (\"If a + x = a + y, then x = y.\" / \"If x ≠ y, then a + x = a + y.\"); options 0 and 2 say the same thing (\"If a + x = a + y, then x = y.\" / \"If x = y, then a + x ≠ a + y.\"); options 0 and 3 are the same (\"If a + x = a + y, then x = y.\"); options 1 and 2 are the same (\"If x ≠ y, then a + x = a + y.\"); options 1 and 3 say the same thing (\"If x ≠ y, then a + x = a + y.\" / \"If a + x ≠ a + y, then x ≠ y.\"); options 2 and 3 say the same thing (\"If x = y, then a + x ≠ a + y.\" / \"If a + x ≠ a + y, then x ≠ y.\"); option 0 repeats the stem's wording (\"If a + x = a + y, then x = y.\"); option 1 repeats the stem's wording (\"If x ≠ y, then a + x = a + y.\"); option 2 repeats the stem's wording (\"If x = y, then a + x ≠ a + y.\"); option 3 repeats the stem's wording (\"If a + x ≠ a + y, then x ≠ y.\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the converse of the proposition: 'If a quadrilateral is a square, then all its angles are equal'?",
+      "reason": "options 0 and 1 say the same thing (\"If all its angles are equal, then the quadrilateral is a square.\" / \"If the quadrilateral is not a square, then all its angles are equal.\"); options 0 and 2 say the same thing (\"If all its angles are equal, then the quadrilateral is a square.\" / \"If all its angles are equal, then the quadrilateral is not a square.\"); options 0 and 3 say the same thing (\"If all its angles are equal, then the quadrilateral is a square.\" / \"If the quadrilateral is a square, then all its angles are not equal.\"); options 1 and 2 say the same thing (\"If the quadrilateral is not a square, then all its angles are equal.\" / \"If all its angles are equal, then the quadrilateral is not a square.\"); options 1 and 3 say the same thing (\"If the quadrilateral is not a square, then all its angles are equal.\" / \"If the quadrilateral is a square, then all its angles are not equal.\"); options 2 and 3 say the same thing (\"If all its angles are equal, then the quadrilateral is not a square.\" / \"If the quadrilateral is a square, then all its angles are not equal.\"); option 0 repeats the stem's wording (\"If all its angles are equal, then the quadrilateral is a square.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the passage, the proposition 'If n is the square of a prime number, then it has exactly 3 factors' is given. Which of the following is the converse of this proposition?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, the proposition 'If a and b are perfect squares, then ab is a perfect square' is stated. Which of the following is the correct converse of this proposition?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"If ab is a perfect square, then a and b are perfect squares.\" / \"If a and b are not perfect squares, then ab is a perfect square.\"); options 0 and 2 say the same thing (\"If ab is a perfect square, then a and b are perfect squares.\" / \"If ab is not a perfect square, then a and b are perfect squares.\"); options 0 and 3 say the same thing (\"If ab is a perfect square, then a and b are perfect squares.\" / \"If a and b are perfect squares, then ab is a perfect square.\"); options 1 and 2 say the same thing (\"If a and b are not perfect squares, then ab is a perfect square.\" / \"If ab is not a perfect square, then a and b are perfect squares.\"); options 1 and 3 say the same thing (\"If a and b are not perfect squares, then ab is a perfect square.\" / \"If a and b are perfect squares, then ab is a perfect square.\"); options 2 and 3 say the same thing (\"If ab is not a perfect square, then a and b are perfect squares.\" / \"If a and b are perfect squares, then ab is a perfect square.\"); option 0 repeats the stem's wording (\"If ab is a perfect square, then a and b are perfect squares.\"); option 3 repeats the stem's wording (\"If a and b are perfect squares, then ab is a perfect square.\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the passage, the proposition 'If n is a product of two unequal prime numbers, then it has exactly 4 divisors' is given. Which of the following is the converse of this proposition?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"If a number has exactly 4 divisors, then it is a product of two unequal prime numbers.\" / \"If a number has exactly 4 divisors, then it is a product of two equal prime numbers.\"); options 0 and 3 say the same thing (\"If a number has exactly 4 divisors, then it is a product of two unequal prime numbers.\" / \"If a number is not a product of two unequal prime numbers, then it has exactly 4 divisors.\"); options 1 and 3 say the same thing (\"If a number has exactly 4 divisors, then it is a product of two equal prime numbers.\" / \"If a number is not a product of two unequal prime numbers, then it has exactly 4 divisors.\"); options 2 and 3 say the same thing (\"If a number is a product of two unequal prime numbers, then it does not have exactly 4 divisors.\" / \"If a number is not a product of two unequal prime numbers, then it has exactly 4 divisors.\"); option 0 repeats the stem's wording (\"If a number has exactly 4 divisors, then it is a product of two unequal prime numbers.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the passage, it is stated that a counterexample is a situation that illustrates why a proposition is not true. Which of the following is a counterexample for the proposition 'If a number is a multiple of 6, then it is a multiple of 3'?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses the Baudhāyana–Pythagoras theorem and its converse. Which of the following is the correct statement for the converse of the theorem?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"If a triangle is right-angled, then the sum of the squares of the two shorter sides is equal to the square of the longest side.\" / \"If the sum of the squares of the two shorter sides of a triangle is equal to the square of the longest side, then the triangle is right-angled.\"); options 0 and 2 say the same thing (\"If a triangle is right-angled, then the sum of the squares of the two shorter sides is equal to the square of the longest side.\" / \"If a triangle is not right-angled, then the sum of the squares of the two shorter sides is not equal to the square of the longest side.\"); options 0 and 3 say the same thing (\"If a triangle is right-angled, then the sum of the squares of the two shorter sides is equal to the square of the longest side.\" / \"If the sum of the squares of the two shorter sides of a triangle is not equal to the square of the longest side, then the triangle is not right-angled.\"); options 1 and 2 say the same thing (\"If the sum of the squares of the two shorter sides of a triangle is equal to the square of the longest side, then the triangle is right-angled.\" / \"If a triangle is not right-angled, then the sum of the squares of the two shorter sides is not equal to the square of the longest side.\"); options 1 and 3 say the same thing (\"If the sum of the squares of the two shorter sides of a triangle is equal to the square of the longest side, then the triangle is right-angled.\" / \"If the sum of the squares of the two shorter sides of a triangle is not equal to the square of the longest side, then the triangle is not right-angled.\"); options 2 and 3 say the same thing (\"If a triangle is not right-angled, then the sum of the squares of the two shorter sides is not equal to the square of the longest side.\" / \"If the sum of the squares of the two shorter sides of a triangle is not equal to the square of the longest side, then the triangle is not right-angled.\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "The converse of the statement 'If two angles of a triangle are equal, then the sides opposite the equal angles have equal lengths' is:",
+      "reason": "options 0 and 1 say the same thing (\"If the sides opposite the equal angles are equal, then two angles of a triangle are equal.\" / \"If two angles of a triangle are equal, then the sides opposite the equal angles are not equal.\"); options 0 and 2 say the same thing (\"If the sides opposite the equal angles are equal, then two angles of a triangle are equal.\" / \"If two sides of a triangle are equal, then the angles opposite the equal sides are not equal.\"); options 0 and 3 say the same thing (\"If the sides opposite the equal angles are equal, then two angles of a triangle are equal.\" / \"If the angles opposite the equal sides are equal, then two sides of a triangle are not equal.\"); options 1 and 2 say the same thing (\"If two angles of a triangle are equal, then the sides opposite the equal angles are not equal.\" / \"If two sides of a triangle are equal, then the angles opposite the equal sides are not equal.\"); options 1 and 3 say the same thing (\"If two angles of a triangle are equal, then the sides opposite the equal angles are not equal.\" / \"If the angles opposite the equal sides are equal, then two sides of a triangle are not equal.\"); options 2 and 3 say the same thing (\"If two sides of a triangle are equal, then the angles opposite the equal sides are not equal.\" / \"If the angles opposite the equal sides are equal, then two sides of a triangle are not equal.\"); option 0 repeats the stem's wording (\"If the sides opposite the equal angles are equal, then two angles of a triangle are equal.\"); option 1 repeats the stem's wording (\"If two angles of a triangle are equal, then the sides opposite the equal angles are not equal.\"); option 2 repeats the stem's wording (\"If two sides of a triangle are equal, then the angles opposite the equal sides are not equal.\"); option 3 repeats the stem's wording (\"If the angles opposite the equal sides are equal, then two sides of a triangle are not equal.\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the passage, the statement 'If n is a perfect square, then it has an odd number of factors' is given. What is the converse of this statement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"If n has an odd number of factors, then it is a perfect square.\" / \"If n is not a perfect square, then it has an odd number of factors.\"); options 0 and 2 say the same thing (\"If n has an odd number of factors, then it is a perfect square.\" / \"If n has an odd number of factors, then it is not a perfect square.\"); options 0 and 3 say the same thing (\"If n has an odd number of factors, then it is a perfect square.\" / \"If n is a perfect square, then it has an even number of factors.\"); options 1 and 2 say the same thing (\"If n is not a perfect square, then it has an odd number of factors.\" / \"If n has an odd number of factors, then it is not a perfect square.\"); options 1 and 3 say the same thing (\"If n is not a perfect square, then it has an odd number of factors.\" / \"If n is a perfect square, then it has an even number of factors.\"); options 2 and 3 say the same thing (\"If n has an odd number of factors, then it is not a perfect square.\" / \"If n is a perfect square, then it has an even number of factors.\"); option 0 repeats the stem's wording (\"If n has an odd number of factors, then it is a perfect square.\"); option 1 repeats the stem's wording (\"If n is not a perfect square, then it has an odd number of factors.\"); option 2 repeats the stem's wording (\"If n has an odd number of factors, then it is not a perfect square.\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

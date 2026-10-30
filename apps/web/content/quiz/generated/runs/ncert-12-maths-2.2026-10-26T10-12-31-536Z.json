@@ -1,0 +1,475 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T10:12:31.536Z",
+  "finishedAt": "2026-10-26T10:17:33.506Z",
+  "seconds": 302,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics Part-II",
+    "bookCode": "lemh2",
+    "document": "ncert/12/mathematics/lemh202.pdf",
+    "classLevel": 12,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Application of Integrals",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n9. In the given figure, the area bounded by the curve 𝑥 = 𝑓(𝑦), 𝑦 -axis and abscissa 𝑦 = 𝑎 and 𝑦 =\n𝑏 is equal to -\na) ∫ 𝑓(𝑦)𝑑𝑦 𝑎 𝑏 b) ∫ 𝑓(𝑥)𝑑𝑥 𝑎 𝑏 c) ∫ |𝑓(𝑦)| 𝑑𝑦 𝑎 𝑏 d) ∫ |𝑓(𝑥)| 𝑑𝑥 𝑎 𝑏",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2024-25]\n1. (C) 4\n 3 \nThe required area is given by 4 x dx =  x 2  = 2 ( 8 − 1 ) = 14 squnits.\n 1 ( )  3  3 3\n \n 2  1",
+      "[CBSE Class XII Mathematics, sample question paper, 2026-27]\n34. Using Integration, find the area of the region\n(A). {(𝑥, 𝑦): 0 ≤ 𝑦 ≤ √4 − 𝑥 , 𝑥 ≥ 2 − 𝑦}. 2\nOR 5\nQ34 Using Integration, find the area of the region bounded by the curve\n(B). 𝑦 = 2𝑥 and the line 𝑥 − 2𝑦 = 0. 2\nFor Visually Impaired:\nQ34 Using Integration, find the area of the region enclosed within 25𝑥 + 16𝑦 = 2 2\n(A). 400\nOR 5\nQ34 Using Integration find the area of the region in the first quadrant bounded by\n(B). the curve 𝑦 = 8𝑥, and the lines 𝑥 = 2, 𝑥 = 5 2 and x-axis.",
+      "[CBSE Class XII Mathematics, sample question paper, 2023-24]\n32. Make a rough sketch of the region   x y,  : 0  y  x 1, 0  y  x 1, 0  x  2 2  and find the\narea of the region, using the method of integration."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 95651,
+      "in": 22,
+      "out": 20,
+      "rejects": 2,
+      "promptTokens": 17584,
+      "completionTokens": 5180
+    },
+    "critique": {
+      "calls": 25,
+      "ms": 176857,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 11672,
+      "completionTokens": 4548
+    },
+    "solver": {
+      "calls": 132,
+      "ms": 66944,
+      "in": 20,
+      "out": 15,
+      "rejects": 5,
+      "promptTokens": 22985,
+      "completionTokens": 1318
+    },
+    "form": {
+      "calls": 7,
+      "ms": 23319,
+      "in": 15,
+      "out": 6,
+      "rejects": 9,
+      "promptTokens": 1901,
+      "completionTokens": 549
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 3538,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 155177,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7558,
+      "completionTokens": 4070
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct method to calculate the area enclosed by a circle using integration?",
+      "ms": {
+        "draft": 4038,
+        "critique": 7493,
+        "solver": 1650
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary use of integral calculus as described in the passage?",
+      "ms": {
+        "draft": 3972,
+        "critique": 6386,
+        "solver": 1769,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, who first clearly appreciated the relationship between antiderivatives and definite integrals?",
+      "ms": {
+        "draft": 3972,
+        "critique": 6420,
+        "solver": 1771
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following correctly represents the area bounded by a curve x = f(y), the y-axis, and the lines y = a and y = b?",
+      "ms": {
+        "draft": 3972,
+        "critique": 6651,
+        "solver": 1618,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the contribution of Isaac Newton and Gottfried Leibniz to calculus?",
+      "ms": {
+        "draft": 3972,
+        "critique": 6344,
+        "solver": 1387,
+        "form": 2101
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the concept of limit in the development of integral calculus?",
+      "ms": {
+        "draft": 3972,
+        "critique": 5762,
+        "solver": 794,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the inverse of differentiation in calculus?",
+      "ms": {
+        "draft": 13231,
+        "critique": 6561,
+        "solver": 1298
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, who first clearly appreciated the relationship between the antiderivative and the definite integral?",
+      "ms": {
+        "draft": 13231,
+        "critique": 7150,
+        "solver": 1693,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the area bounded by the curve x = f(y), y-axis, and the lines y = a and y = b is to be found, which integral should be used?",
+      "ms": {
+        "draft": 13231,
+        "critique": 7454,
+        "solver": 1940,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the formula to calculate the area under a curve y = f(x) between x = a and x = b?",
+      "ms": {
+        "draft": 5145,
+        "critique": 7788,
+        "solver": 13776,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the formula to calculate the area under a curve x = g(y) between y = c and y = d?",
+      "ms": {
+        "draft": 5145,
+        "critique": 9441,
+        "solver": 13997,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The area bounded by the curve y = x^2 and the line y = 4 is calculated by:",
+      "ms": {
+        "draft": 5145,
+        "critique": 7359,
+        "solver": 2054,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The area of the region bounded by the curve y = 4x, y-axis, and the line y = 3 is:",
+      "ms": {
+        "draft": 5145,
+        "critique": 7853,
+        "solver": 1082
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The area bounded by the curve y = 3x + 2, the x-axis, and the lines x = -1 and x = 1 is calculated by:",
+      "ms": {
+        "draft": 5145,
+        "critique": 7073,
+        "solver": 10309
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate the area under a curve x = g(y) between y = c and y = d?",
+      "ms": {
+        "draft": 4038,
+        "critique": 7469,
+        "solver": 1317,
+        "form": 4499
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate the area under a curve y = f(x) between x = a and x = b?",
+      "ms": {
+        "draft": 4038,
+        "critique": 8271,
+        "solver": 12053,
+        "form": 4768
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which century did the systematic approach to the theory of Calculus begin?",
+      "ms": {
+        "draft": 13231,
+        "critique": 7899,
+        "solver": 1438,
+        "form": 4678
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate the area enclosed by an ellipse?",
+      "ms": {
+        "draft": 4038,
+        "critique": 8421,
+        "solver": 1580,
+        "form": 4677,
+        "translation": 47361
+      },
+      "outcome": "kept",
+      "flag": "level 1 but the solver missed it 2 of 5 times"
+    },
+    {
+      "level": 3,
+      "stem": "What is the main idea behind the method of exhaustion?",
+      "ms": {
+        "draft": 13231,
+        "critique": 7357,
+        "solver": 2415,
+        "form": 3088,
+        "translation": 51029
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the significance of the relationship between the antiderivative and the definite integral?",
+      "ms": {
+        "draft": 13231,
+        "critique": 6186,
+        "solver": 17197,
+        "form": 2632,
+        "translation": 52772
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the correct method to calculate the area enclosed by a curve that lies partially above and partially below the x-axis?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the correct method to calculate the area of the region bounded by the curve y = cos x between x = 0 and x = 2π?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the correct method to calculate the area enclosed by a circle using integration?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary use of integral calculus as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "According to the passage, who first clearly appreciated the relationship between antiderivatives and definite integrals?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following correctly represents the area bounded by a curve x = f(y), the y-axis, and the lines y = a and y = b?",
+      "reason": "options 0 and 2 are the same (\"∫ f(y) dy from a to b\"); options 1 and 3 are the same (\"∫ f(x) dx from a to b\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best describes the contribution of Isaac Newton and Gottfried Leibniz to calculus?",
+      "reason": "options 1 and 2 say the same thing (\"Newton developed calculus first, and Leibniz improved upon it\" / \"Leibniz developed calculus first, and Newton improved upon it\"); distractor 2's reason is not a one-line misconception (\"contradicts the passage which states they had different appr…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the concept of limit in the development of integral calculus?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the term used for the inverse of differentiation in calculus?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, who first clearly appreciated the relationship between the antiderivative and the definite integral?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the area bounded by the curve x = f(y), y-axis, and the lines y = a and y = b is to be found, which integral should be used?",
+      "reason": "options 0 and 2 are the same (\"∫ f(x) dx from a to b\"); options 1 and 3 are the same (\"∫ f(y) dy from a to b\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the formula to calculate the area under a curve y = f(x) between x = a and x = b?",
+      "reason": "options 1 and 3 say the same thing (\"∫ f(y) dy from a to b\" / \"∫ f(y) dy from b to a\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the formula to calculate the area under a curve x = g(y) between y = c and y = d?",
+      "reason": "options 0 and 2 say the same thing (\"∫ g(y) dy from c to d\" / \"∫ g(y) dy from d to c\"); options 1 and 3 say the same thing (\"∫ g(x) dx from c to d\" / \"∫ g(x) dx from d to c\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The area bounded by the curve y = x^2 and the line y = 4 is calculated by:",
+      "reason": "options 0 and 1 say the same thing (\"∫ (4 - x^2) dx from -2 to 2\" / \"∫ (x^2 - 4) dx from -2 to 2\"); options 2 and 3 say the same thing (\"∫ (4 - x^2) dx from 0 to 2\" / \"∫ (x^2 - 4) dx from 0 to 2\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "The area of the region bounded by the curve y = 4x, y-axis, and the line y = 3 is:",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The area bounded by the curve y = 3x + 2, the x-axis, and the lines x = -1 and x = 1 is calculated by:",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the formula to calculate the area under a curve x = g(y) between y = c and y = d?",
+      "reason": "near-duplicate of served question cmvi09hmt0b86gpfhsa0y81gb (cosine 0.987 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the formula to calculate the area under a curve y = f(x) between x = a and x = b?",
+      "reason": "near-duplicate of served question cmvi09hmt0b86gpfhsa0y81gb (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In which century did the systematic approach to the theory of Calculus begin?",
+      "reason": "near-duplicate of served question cmvi09hn50b8ogpfh7rhry503 (cosine 0.957 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

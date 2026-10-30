@@ -1,0 +1,184 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:15:23.008Z",
+  "finishedAt": "2026-10-28T04:18:40.839Z",
+  "seconds": 198,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap106.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 6 — Omana’s Journey",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 1,
+      "ms": 10482,
+      "in": 4,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 3260,
+      "completionTokens": 688
+    },
+    "critique": {
+      "calls": 4,
+      "ms": 17588,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 1682,
+      "completionTokens": 717
+    },
+    "solver": {
+      "calls": 15,
+      "ms": 6744,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 1850,
+      "completionTokens": 120
+    },
+    "form": {
+      "calls": 3,
+      "ms": 7484,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 735,
+      "completionTokens": 236
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 3711,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 53482,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4662,
+      "completionTokens": 2360
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What food items did Omana's mother pack for the journey?",
+      "ms": {
+        "draft": 14441,
+        "critique": 5154,
+        "solver": 2195,
+        "form": 2764
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Omana think the fields looked brown and dry from the train?",
+      "ms": {
+        "draft": 14441,
+        "critique": 3076
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the reason for the crowd at the door of the coach?",
+      "ms": {
+        "draft": 14441,
+        "critique": 4410,
+        "solver": 1317,
+        "form": 3351,
+        "translation": 23021
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you were on a train journey, which of the following would you most likely take to pass the time?",
+      "ms": {
+        "draft": 14441,
+        "critique": 4951,
+        "solver": 1431,
+        "form": 3171,
+        "translation": 27797
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Why was it so crowded at the door of the coach?\",\n      \"opti"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What food items did Omana's mother pack for the journey?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Mixes up the food items mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Why did Omana think the fields looked brown and dry from the train?",
+      "reason": "the solution's working is not sound"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

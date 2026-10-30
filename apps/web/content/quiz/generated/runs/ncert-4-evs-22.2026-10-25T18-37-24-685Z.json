@@ -1,0 +1,250 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T18:37:24.685Z",
+  "finishedAt": "2026-10-25T18:38:16.497Z",
+  "seconds": 52,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap122.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 22 — The World in my Home",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 22893,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7804,
+      "completionTokens": 1407
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 50717,
+      "in": 8,
+      "out": 3,
+      "rejects": 5,
+      "promptTokens": 3600,
+      "completionTokens": 1576
+    },
+    "solver": {
+      "calls": 21,
+      "ms": 8207,
+      "in": 3,
+      "out": 1,
+      "rejects": 2,
+      "promptTokens": 2818,
+      "completionTokens": 196
+    },
+    "form": {
+      "calls": 1,
+      "ms": 823,
+      "in": 1,
+      "out": 0,
+      "rejects": 1,
+      "promptTokens": 207,
+      "completionTokens": 51
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 4648,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 195,
+      "completionTokens": 352
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What did Pilloo Aunty do when the kulfi-seller made a mistake in the number of kulfis?",
+      "ms": {
+        "draft": 3383,
+        "critique": 6194
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Akshay's grandmother warned him not to drink water at Anil's house, what might be the reason?",
+      "ms": {
+        "draft": 3383,
+        "critique": 6215
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, who is the person that decides about all the small and big things for Dhondu's family?",
+      "ms": {
+        "draft": 3383,
+        "critique": 6665
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about decision-making in families?",
+      "ms": {
+        "draft": 3383,
+        "critique": 2498
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does Mummy like to watch on TV?",
+      "ms": {
+        "draft": 2341,
+        "critique": 6127,
+        "solver": 1143
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does Pilloo Aunty do when the kulfi-seller makes a mistake?",
+      "ms": {
+        "draft": 2341,
+        "critique": 6562,
+        "solver": 1521
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why does Akshay’s grandmother warn him not to drink anything at Anil’s house?",
+      "ms": {
+        "draft": 2341,
+        "critique": 6333
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does Marietta's family quarrel about?",
+      "ms": {
+        "draft": 2341,
+        "critique": 6777,
+        "solver": 7979,
+        "form": 823
+      },
+      "outcome": "form",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What did Pilloo Aunty do when the kulfi-seller made a mistake in the number of kulfis?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If Akshay's grandmother warned him not to drink water at Anil's house, what might be the reason?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, who is the person that decides about all the small and big things for Dhondu's family?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage suggest about decision-making in families?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What does Mummy like to watch on TV?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What does Pilloo Aunty do when the kulfi-seller makes a mistake?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Why does Akshay’s grandmother warn him not to drink anything at Anil’s house?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does Marietta's family quarrel about?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"The passage does not mention fans as a source of quarrel.…\"); distractor 2's reason is not a one-line misconception (\"The passage mentions TV as the main cause of the quarrel.…\"); distractor 3's reason is not a one-line misconception (\"students might confuse the topic of family quarrels with phy…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

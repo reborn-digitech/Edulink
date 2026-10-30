@@ -1,0 +1,522 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T03:20:32.025Z",
+  "finishedAt": "2026-10-28T03:25:49.510Z",
+  "seconds": 317,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm104.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Thousands Around Us",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n10. The 4 𝑡ℎ term from the end of the A.P −8, −5, −2, … ,49 is 1\n(A) 37 (B) 40 (C) 1 (D) 43",
+      "[IOQM 2024 — question paper]\n21. An intenger n is such that is a three digit number with equal digits, and is a 4 digit\n9 4\nnumber with the digits 2, 0, 2, 4 in some order. What is the remainder when n is divided by 100?\nSpace for rough work",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[RMO 2013 — question paper]\n1. Find the number of eight-digit numbers the sum of whose digits is 4."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 78480,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 18460,
+      "completionTokens": 4811
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 257558,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 17810,
+      "completionTokens": 7178
+    },
+    "solver": {
+      "calls": 221,
+      "ms": 132009,
+      "in": 23,
+      "out": 12,
+      "rejects": 11,
+      "promptTokens": 51132,
+      "completionTokens": 2711
+    },
+    "form": {
+      "calls": 3,
+      "ms": 6240,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 765,
+      "completionTokens": 254
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 4974,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 106043,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8124,
+      "completionTokens": 3572
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 3,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the number represented by 4 Ones + 7 Tens?",
+      "ms": {
+        "draft": 11234,
+        "critique": 4764
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents the number 145?",
+      "ms": {
+        "draft": 11234,
+        "critique": 5051,
+        "solver": 1793,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many more people are needed to make 1000 if there are currently 508 people?",
+      "ms": {
+        "draft": 11234,
+        "critique": 5022,
+        "solver": 16546
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct number name for 7024?",
+      "ms": {
+        "draft": 3704,
+        "critique": 6073,
+        "solver": 992
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 325 people came for lunch and 145 people left, how many people are still there?",
+      "ms": {
+        "draft": 11234,
+        "critique": 8444,
+        "solver": 16460
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the correct number for 'five thousand six hundred three'?",
+      "ms": {
+        "draft": 3704,
+        "critique": 6966,
+        "solver": 12799
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is increased by 10, what is the new number if the original number is 2785?",
+      "ms": {
+        "draft": 3704,
+        "critique": 7764,
+        "solver": 11905
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is decreased by 2, what is the new number if the original number is 3369?",
+      "ms": {
+        "draft": 3704,
+        "critique": 6079,
+        "solver": 8828,
+        "form": 2278
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is 2000 + 300 + 0 + 5, what is the number?",
+      "ms": {
+        "draft": 3506,
+        "critique": 5919,
+        "solver": 13362
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is read as 'three thousand four hundred fifty two'?",
+      "ms": {
+        "draft": 3506,
+        "critique": 4898,
+        "solver": 17365
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to write the number 734 in terms of hundreds, tens, and ones?",
+      "ms": {
+        "draft": 3029,
+        "critique": 9979,
+        "solver": 1358,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 3000 + 400 + 50 + 2 = 3452, what is 4000 + 500 + 60 + 3?",
+      "ms": {
+        "draft": 3506,
+        "critique": 5921,
+        "solver": 15793
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 1000 is represented as 10 Hundreds, which of the following is the correct representation of 3250?",
+      "ms": {
+        "draft": 3029,
+        "critique": 8026,
+        "solver": 17007
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a school has 1234 students and 1200 of them are boys, how many girls are there?",
+      "ms": {
+        "draft": 3029,
+        "critique": 6892,
+        "solver": 15668
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the place value of the digit 9 in the number 932?",
+      "ms": {
+        "draft": 3029,
+        "critique": 6935,
+        "solver": 774,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following numbers can be represented as 100 + 200 + 300 + 400?",
+      "ms": {
+        "draft": 3029,
+        "critique": 10756,
+        "solver": 10903
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following numbers is less than 550 and can be formed using the digits 3, 5, 0, and 8?",
+      "ms": {
+        "draft": 11234,
+        "critique": 7863,
+        "solver": 989,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the expanded form of the number 1001?",
+      "ms": {
+        "draft": 3704,
+        "critique": 7091,
+        "solver": 13145,
+        "form": 2471
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is between 2226 and 3226?",
+      "ms": {
+        "draft": 3704,
+        "critique": 6230,
+        "solver": 7571,
+        "form": 1491
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the expanded form of the number 1001?",
+      "ms": {
+        "draft": 3506,
+        "critique": 5678,
+        "solver": 14531,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which time slot had the most number of people?",
+      "ms": {
+        "draft": 11234,
+        "critique": 7483,
+        "solver": 1457,
+        "form": 1,
+        "translation": 26550
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the number 145, which place does the digit 4 occupy?",
+      "ms": {
+        "draft": 3029,
+        "critique": 7032,
+        "solver": 1411,
+        "form": 0,
+        "translation": 15780
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which number lies between 2226 and 3226?",
+      "ms": {
+        "draft": 3506,
+        "critique": 7338,
+        "solver": 1000,
+        "form": 0,
+        "translation": 24825
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the smallest 4-digit number that can be formed using the digits 1, 2, 3, and 4 without repeating any digit?",
+      "ms": {
+        "draft": 3506,
+        "critique": 6635,
+        "solver": 18160,
+        "form": 1,
+        "translation": 34577
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the number represented by 4 Ones + 7 Tens?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following represents the number 145?",
+      "reason": "options 0 and 3 say the same thing (\"One hundred forty-five\" / \"One hundred forty-five hundred\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many more people are needed to make 1000 if there are currently 508 people?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the correct number name for 7024?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 325 people came for lunch and 145 people left, how many people are still there?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the correct number for 'five thousand six hundred three'?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a number is increased by 10, what is the new number if the original number is 2785?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a number is decreased by 2, what is the new number if the original number is 3369?",
+      "reason": "options 0 and 1 are the same (\"3367\"); options 0 and 1 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a number is 2000 + 300 + 0 + 5, what is the number?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following numbers is read as 'three thousand four hundred fifty two'?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct way to write the number 734 in terms of hundreds, tens, and ones?",
+      "reason": "options 0 and 1 say the same thing (\"7 Hundreds + 3 Tens + 4 Ones\" / \"7 Tens + 3 Hundreds + 4 Ones\"); options 0 and 2 say the same thing (\"7 Hundreds + 3 Tens + 4 Ones\" / \"7 Ones + 3 Tens + 4 Hundreds\"); options 0 and 3 say the same thing (\"7 Hundreds + 3 Tens + 4 Ones\" / \"7 Hundreds + 3 Ones + 4 Tens\"); options 1 and 2 say the same thing (\"7 Tens + 3 Hundreds + 4 Ones\" / \"7 Ones + 3 Tens + 4 Hundreds\"); options 1 and 3 say the same thing (\"7 Tens + 3 Hundreds + 4 Ones\" / \"7 Hundreds + 3 Ones + 4 Tens\"); options 2 and 3 say the same thing (\"7 Ones + 3 Tens + 4 Hundreds\" / \"7 Hundreds + 3 Ones + 4 Tens\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 3000 + 400 + 50 + 2 = 3452, what is 4000 + 500 + 60 + 3?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 1000 is represented as 10 Hundreds, which of the following is the correct representation of 3250?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a school has 1234 students and 1200 of them are boys, how many girls are there?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the place value of the digit 9 in the number 932?",
+      "reason": "options are in more than one unit (ones, tens, hundreds, thousands); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following numbers can be represented as 100 + 200 + 300 + 400?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which of the following numbers is less than 550 and can be formed using the digits 3, 5, 0, and 8?",
+      "reason": "near-duplicate of served question cmvh0ue8d062qgpfh93z4rxbt (cosine 0.953 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the expanded form of the number 1001?",
+      "reason": "near-duplicate of served question cmvk36b8s0iukgpfhjg5pv89y (cosine 0.933 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following numbers is between 2226 and 3226?",
+      "reason": "near-duplicate of served question cmvh0ue860628gpfhs95mcfux (cosine 0.939 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the expanded form of the number 1001?",
+      "reason": "near-duplicate of served question cmvk36b8s0iukgpfhjg5pv89y (cosine 0.933 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

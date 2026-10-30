@@ -1,0 +1,538 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T12:21:46.307Z",
+  "finishedAt": "2026-10-27T12:28:01.509Z",
+  "seconds": 375,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "hemh1",
+    "document": "ncert/8/mathematics/hemh110.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Exponents and Powers",
+    "edition": "Reprint 2024-25",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n1. Answer – D 1\nAs, 2025 = 3 × 5 4 4\nSo, the exponent of 3 in the prime factorization of 2025 is 4",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n1. The exponent of 3 in the prime factorization of 2025 is\nA) 1\nB) 2\nC) 3\nD) 4",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n8. (d) RHS"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 172890,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 19850,
+      "completionTokens": 6693
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 323659,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 16180,
+      "completionTokens": 5569
+    },
+    "solver": {
+      "calls": 155,
+      "ms": 138740,
+      "in": 21,
+      "out": 15,
+      "rejects": 6,
+      "promptTokens": 38212,
+      "completionTokens": 1720
+    },
+    "form": {
+      "calls": 4,
+      "ms": 26882,
+      "in": 15,
+      "out": 3,
+      "rejects": 12,
+      "promptTokens": 1142,
+      "completionTokens": 396
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 43,
+      "ms": 10442,
+      "in": 3,
+      "out": 1,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 23565,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2283,
+      "completionTokens": 1076
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is equal to 10^{-3}?",
+      "ms": {
+        "draft": 6923,
+        "critique": 8754,
+        "solver": 2144,
+        "form": 7681
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following represents the number 150,000,000,000 in standard form?",
+      "ms": {
+        "draft": 6923,
+        "critique": 11314,
+        "solver": 3663,
+        "form": 5796
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the multiplicative inverse of 3^2?",
+      "ms": {
+        "draft": 6923,
+        "critique": 9983,
+        "solver": 17803,
+        "form": 10028
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The diameter of a red blood cell is 0.000007 mm. Express this in standard form.",
+      "ms": {
+        "draft": 6923,
+        "critique": 11508,
+        "solver": 4385,
+        "form": 5274
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Simplify (2^3 × 2^4) ÷ 2^2.",
+      "ms": {
+        "draft": 6923,
+        "critique": 8598,
+        "solver": 24693
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the standard form of the number 0.000035?",
+      "ms": {
+        "draft": 6879,
+        "critique": 13130
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a number expressed in standard form?",
+      "ms": {
+        "draft": 6879,
+        "critique": 12148,
+        "solver": 2242,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 5^m ÷ 5^3 = 5^2, what is the value of m?",
+      "ms": {
+        "draft": 6923,
+        "critique": 9411,
+        "solver": 26686,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The distance between the Sun and the Earth is 1.496 × 10^8 meters, and the distance between the Earth and the Moon is 3.84 × 10^8 meters. What is the distance between the Sun and the Moon when the Moon is between the Earth and the Sun?",
+      "ms": {
+        "draft": 6879,
+        "critique": 11028,
+        "solver": 2210
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The mass of the Earth is 5.97 × 10^24 kg, and the mass of the Moon is 7.35 × 10^22 kg. What is the total mass of the Earth and the Moon?",
+      "ms": {
+        "draft": 6879,
+        "critique": 12522
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the standard form of 4050000?",
+      "ms": {
+        "draft": 9594,
+        "critique": 10013,
+        "solver": 1884,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the standard form of 0.000035?",
+      "ms": {
+        "draft": 9594,
+        "critique": 10285,
+        "solver": 2828,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the distance between the Moon and the Sun during a solar eclipse if the distance between the Sun and Earth is 1.496 × 10⁸ m and the distance between the Earth and Moon is 3.84 × 10⁵ m?",
+      "ms": {
+        "draft": 9594,
+        "critique": 11944,
+        "solver": 1922
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the usual form of 3.52 × 10⁵?",
+      "ms": {
+        "draft": 9594,
+        "critique": 10939,
+        "solver": 20245,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 10 raised to the power of -1?",
+      "ms": {
+        "draft": 5419,
+        "critique": 7834,
+        "solver": 1912,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is written in standard form as 3.52 × 10⁵, what is the value of the number when the exponent is decreased by 2?",
+      "ms": {
+        "draft": 9594,
+        "critique": 12407,
+        "solver": 3069
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the total mass of the Earth and the Moon if the mass of the Earth is 5.97 × 10²⁴ kg and the mass of the Moon is 7.35 × 10²² kg?",
+      "ms": {
+        "draft": 9594,
+        "critique": 13509,
+        "solver": 21744
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 3^0?",
+      "ms": {
+        "draft": 5419,
+        "critique": 11351,
+        "solver": 2194,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 2^m × 4^2 = 16^3, find the value of m.",
+      "ms": {
+        "draft": 5419,
+        "critique": 12587
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the standard form of 0.000007 m?",
+      "ms": {
+        "draft": 5419,
+        "critique": 11223,
+        "solver": 27048,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If (–3)^m × (–3)^6 = (–3)^7, find the value of m.",
+      "ms": {
+        "draft": 5419,
+        "critique": 14847,
+        "solver": 16094
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The number 2025 can be expressed as 3^4 × 5^2. What is the exponent of 3 in the prime factorization of 2025?",
+      "ms": {
+        "draft": 6879,
+        "critique": 7914,
+        "solver": 1061,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Simplify 2^5 × 2^3 and express the result in exponential form.",
+      "ms": {
+        "draft": 5419,
+        "critique": 11252,
+        "solver": 3199,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The diameter of the Earth is 1.2756 × 10^7 meters. What is the usual form of this number?",
+      "ms": {
+        "draft": 6879,
+        "critique": 11820,
+        "solver": 2033,
+        "form": 0,
+        "translation": 17384
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is equal to 10^{-3}?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); distractor 1's reason is not a one-line misconception (\"Correct answer is 1/1000, so this is the correct option, but…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following represents the number 150,000,000,000 in standard form?",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number; distractor 3's reason is not a one-line misconception (\"Correct answer is 1.5 × 10^11, so this is correct, but the d…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the multiplicative inverse of 3^2?",
+      "reason": "options 2 and 3 are the same (\"3^1\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The diameter of a red blood cell is 0.000007 mm. Express this in standard form.",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Correct answer is 7 × 10^{-6}, so this is the correct option…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Simplify (2^3 × 2^4) ÷ 2^2.",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the standard form of the number 0.000035?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a number expressed in standard form?",
+      "reason": "options are written to different precisions (0 and 1 and 4 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 5^m ÷ 5^3 = 5^2, what is the value of m?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); checkExpr \"5\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The distance between the Sun and the Earth is 1.496 × 10^8 meters, and the distance between the Earth and the Moon is 3.84 × 10^8 meters. What is the distance between the Sun and the Moon when the Moon is between the Earth and the Sun?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The mass of the Earth is 5.97 × 10^24 kg, and the mass of the Moon is 7.35 × 10^22 kg. What is the total mass of the Earth and the Moon?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the standard form of 4050000?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Moves the decimal point two places incorrectly, leading to a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the standard form of 0.000035?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Adds the exponents incorrectly but keeps the decimal correct…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the distance between the Moon and the Sun during a solar eclipse if the distance between the Sun and Earth is 1.496 × 10⁸ m and the distance between the Earth and Moon is 3.84 × 10⁵ m?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the usual form of 3.52 × 10⁵?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Moves the decimal point only three places instead of five, a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of 10 raised to the power of -1?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a number is written in standard form as 3.52 × 10⁵, what is the value of the number when the exponent is decreased by 2?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the total mass of the Earth and the Moon if the mass of the Earth is 5.97 × 10²⁴ kg and the mass of the Moon is 7.35 × 10²² kg?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of 3^0?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 2^m × 4^2 = 16^3, find the value of m.",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the standard form of 0.000007 m?",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If (–3)^m × (–3)^6 = (–3)^7, find the value of m.",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "The number 2025 can be expressed as 3^4 × 5^2. What is the exponent of 3 in the prime factorization of 2025?",
+      "reason": "near-duplicate of served question cmvg4d6xb0229gpfhiy7hbfp1 (cosine 0.952 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Simplify 2^5 × 2^3 and express the result in exponential form.",
+      "reason": "near-duplicate of served question cmvg4d6x3021rgpfhgaan1kn2 (cosine 0.933 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

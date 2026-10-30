@@ -1,0 +1,764 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T08:21:38.054Z",
+  "finishedAt": "2026-10-23T08:35:19.967Z",
+  "seconds": 822,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo108.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 8 — Nit of",
+    "edition": "Reprint 2026-27",
+    "chunks": 18,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2013 — question paper]\n26. (1 point) Which of the following correctly depicts a reaction involved in the\nnitrogen cycle?\na. N 2 + H + e + ATP + - NH 3 + ADP + Pi\nb. N 2 + H + e + ADP + Pi + - NH 3\nc. NO + e + ADP + Pi 2 - NH 3 +\nd. NO 3 - + H + e + ADP + Pi + - NH\n+ ATP\n+ ATP\n+\n3 + NO 2 + ATP",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n9. (b) dN/dt = r N 1",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[CBSE Class XII Biology, marking scheme, 2024-25]\n26. The main sources of biofertilizers are bacteria, fungi and cyanobacteria. 3\n- The nodules on the roots of leguminous plants are formed by the\nsymbiotic association of Rhizobium. These bacteria fix atmospheric\nnitrogen into organic forms, which is used by the plant as a nutrient.\nOther bacteria can fix atmospheric nitrogen while free-living in the soil\n(examples Azospirillum and Azotobacter), thus enriching the nitrogen\ncontent of the soil. (1)\n- Fungi are also known to form symbiotic associations with plants\n(mycorrhiza). Many members of the genus Glomus form mycorrhiza.\nThe fungal symbiont in these associations absorbs phosphorus from\nsoil and passes it to the plant. Plants having such "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 269312,
+      "in": 40,
+      "out": 40,
+      "rejects": 0,
+      "promptTokens": 30822,
+      "completionTokens": 10097
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 470580,
+      "in": 40,
+      "out": 33,
+      "rejects": 7,
+      "promptTokens": 22812,
+      "completionTokens": 9343
+    },
+    "solver": {
+      "calls": 254,
+      "ms": 198700,
+      "in": 33,
+      "out": 28,
+      "rejects": 5,
+      "promptTokens": 49574,
+      "completionTokens": 2933
+    },
+    "form": {
+      "calls": 15,
+      "ms": 73536,
+      "in": 28,
+      "out": 13,
+      "rejects": 15,
+      "promptTokens": 5702,
+      "completionTokens": 1407
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 46,
+      "ms": 9835,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 593171,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 30263,
+      "completionTokens": 15595
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main reason why cell theory is important?",
+      "ms": {
+        "draft": 5822,
+        "critique": 7840,
+        "solver": 2248,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the fundamental structural and functional unit of all living organisms?",
+      "ms": {
+        "draft": 5822,
+        "critique": 8175,
+        "solver": 21884,
+        "form": 5214
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a scientist is studying the molecular basis of physiological processes, which approach is he most likely using?",
+      "ms": {
+        "draft": 5822,
+        "critique": 9316,
+        "solver": 28926
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student reads that the cell theory includes the idea that all living organisms are made of cells and their products. Which of the following scenarios best fits this idea?",
+      "ms": {
+        "draft": 5822,
+        "critique": 11414,
+        "solver": 1725
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following correctly describes the formation of new cells?",
+      "ms": {
+        "draft": 5822,
+        "critique": 15050,
+        "solver": 26467,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is NOT a function of the plasma membrane in prokaryotic cells?",
+      "ms": {
+        "draft": 6431,
+        "critique": 11025,
+        "solver": 18293
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the fluid mosaic model in describing the plasma membrane?",
+      "ms": {
+        "draft": 7953,
+        "critique": 8266,
+        "solver": 2174,
+        "form": 4424
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which model explains the structure of the plasma membrane as a fluid mosaic?",
+      "ms": {
+        "draft": 7953,
+        "critique": 10308,
+        "solver": 15260,
+        "form": 4800
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell has a membrane with a high percentage of proteins, what can be inferred about its function?",
+      "ms": {
+        "draft": 7953,
+        "critique": 8097,
+        "solver": 1892,
+        "form": 4003
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the plasma membrane's ability to change shape?",
+      "ms": {
+        "draft": 7953,
+        "critique": 8684,
+        "solver": 2156,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a cell's membrane is not fluid, how would that affect its ability to grow?",
+      "ms": {
+        "draft": 7953,
+        "critique": 7916,
+        "solver": 3506,
+        "form": 3894
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a cell is unable to perform active transport, what could be a possible reason?",
+      "ms": {
+        "draft": 7953,
+        "critique": 7939,
+        "solver": 18376,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not part of the endomembrane system?",
+      "ms": {
+        "draft": 5743,
+        "critique": 11000,
+        "solver": 24721
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the Golgi apparatus in a cell?",
+      "ms": {
+        "draft": 5743,
+        "critique": 11182,
+        "solver": 18885,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following structures is described as having a single membrane and being involved in osmoregulation in some cells?",
+      "ms": {
+        "draft": 5743,
+        "critique": 10159
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a cell has a high number of cristae in its mitochondria, what does this indicate?",
+      "ms": {
+        "draft": 5743,
+        "critique": 6680,
+        "solver": 10060,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not correct about chromosomes?",
+      "ms": {
+        "draft": 10717,
+        "critique": 5886
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a chromosome has a terminal centromere, how would it appear?",
+      "ms": {
+        "draft": 10717,
+        "critique": 7224
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the centromere in a chromosome?",
+      "ms": {
+        "draft": 10717,
+        "critique": 7778
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the classification of chromosomes based on centromere position?",
+      "ms": {
+        "draft": 10717,
+        "critique": 7620
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a chromosome has a secondary constriction, what would happen to the genetic material in that region?",
+      "ms": {
+        "draft": 10717,
+        "critique": 7782
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is most likely to be found in the stroma of a chloroplast?",
+      "ms": {
+        "draft": 4943,
+        "critique": 7530,
+        "solver": 2203,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is most likely to be true for a chromosome with a secondary constriction?",
+      "ms": {
+        "draft": 10717,
+        "critique": 7333,
+        "solver": 19078,
+        "form": 4856
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of a cilium or flagellum, which part is responsible for the 9+2 arrangement of microtubules?",
+      "ms": {
+        "draft": 4943,
+        "critique": 9567,
+        "solver": 1800,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which organelle is described as having a cis and a trans face?",
+      "ms": {
+        "draft": 23282,
+        "critique": 10485
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT part of the endomembrane system?",
+      "ms": {
+        "draft": 23282,
+        "critique": 8766,
+        "solver": 19192
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the rough endoplasmic reticulum?",
+      "ms": {
+        "draft": 23282,
+        "critique": 8812,
+        "solver": 16392,
+        "form": 2105
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell is actively involved in protein synthesis, which structure would be most abundant?",
+      "ms": {
+        "draft": 5743,
+        "critique": 11678,
+        "solver": 2011,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a function of the nucleus?",
+      "ms": {
+        "draft": 4943,
+        "critique": 9658,
+        "solver": 1761,
+        "form": 0,
+        "translation": 38449
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main difference between eukaryotic and prokaryotic cells?",
+      "ms": {
+        "draft": 6431,
+        "critique": 10253,
+        "solver": 2309,
+        "form": 7149,
+        "translation": 82478
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main structural difference between prokaryotic and eukaryotic ribosomes?",
+      "ms": {
+        "draft": 4943,
+        "critique": 10458,
+        "solver": 2113,
+        "form": 0,
+        "translation": 46803
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of prokaryotic cells?",
+      "ms": {
+        "draft": 6431,
+        "critique": 8859,
+        "solver": 1824,
+        "form": 3791,
+        "translation": 51413
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is found in both eukaryotic and prokaryotic cells?",
+      "ms": {
+        "draft": 6431,
+        "critique": 8913,
+        "solver": 2615,
+        "form": 4908,
+        "translation": 47095
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the function of the mesosome in prokaryotic cells?",
+      "ms": {
+        "draft": 6431,
+        "critique": 8990,
+        "solver": 16226,
+        "form": 6083,
+        "translation": 60619
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a cell with multiple nuclei, which of the following is most likely to be true?",
+      "ms": {
+        "draft": 4943,
+        "critique": 9638,
+        "solver": 1875,
+        "form": 0,
+        "translation": 46845
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a bacterium is Gram positive, what is the likely composition of its cell envelope?",
+      "ms": {
+        "draft": 6431,
+        "critique": 8441,
+        "solver": 2516,
+        "form": 4722,
+        "translation": 52420
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following processes is most likely to be affected if the Golgi apparatus is non-functional?",
+      "ms": {
+        "draft": 5743,
+        "critique": 7564,
+        "solver": 1328,
+        "form": 0,
+        "translation": 40579
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a scientist is studying the structure of a protein and its role in cellular function, which scientist's work would be most relevant to this study?",
+      "ms": {
+        "draft": 5822,
+        "critique": 8800,
+        "solver": 3069,
+        "form": 4827,
+        "translation": 49423
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a key feature of the nuclear envelope?",
+      "ms": {
+        "draft": 4943,
+        "critique": 9685,
+        "solver": 1793,
+        "form": 0,
+        "translation": 45928
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the Golgi apparatus is closely associated with the endoplasmic reticulum?",
+      "ms": {
+        "draft": 23282,
+        "critique": 6904,
+        "solver": 1816,
+        "form": 4078,
+        "translation": 27523
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main reason why cell theory is important?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Correct answer highlights the importance of cell theory…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the fundamental structural and functional unit of all living organisms?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a scientist is studying the molecular basis of physiological processes, which approach is he most likely using?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student reads that the cell theory includes the idea that all living organisms are made of cells and their products. Which of the following scenarios best fits this idea?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following correctly describes the formation of new cells?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Believes cells can form from non-cellular material despite t…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is NOT a function of the plasma membrane in prokaryotic cells?",
+      "reason": "after redrafting distractors 0, 1: the critic finds option 1 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the function of the fluid mosaic model in describing the plasma membrane?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which model explains the structure of the plasma membrane as a fluid mosaic?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a cell has a membrane with a high percentage of proteins, what can be inferred about its function?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the plasma membrane's ability to change shape?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; figure is set without imageAlt"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a cell's membrane is not fluid, how would that affect its ability to grow?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a cell is unable to perform active transport, what could be a possible reason?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); figure is set without imageAlt"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is not part of the endomembrane system?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the function of the Golgi apparatus in a cell?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following structures is described as having a single membrane and being involved in osmoregulation in some cells?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a cell has a high number of cristae in its mitochondria, what does this indicate?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is not correct about chromosomes?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a chromosome has a terminal centromere, how would it appear?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the function of the centromere in a chromosome?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following best describes the classification of chromosomes based on centromere position?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a chromosome has a secondary constriction, what would happen to the genetic material in that region?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is most likely to be found in the stroma of a chloroplast?",
+      "reason": "the key is far longer than every distractor (34 vs 12 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is most likely to be true for a chromosome with a secondary constriction?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of a cilium or flagellum, which part is responsible for the 9+2 arrangement of microtubules?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.incidentRay: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which organelle is described as having a cis and a trans face?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT part of the endomembrane system?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main function of the rough endoplasmic reticulum?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a cell is actively involved in protein synthesis, which structure would be most abundant?",
+      "reason": "near-duplicate of served question cmvhjyqoo09a2gpfhyjy23dyj (cosine 0.927 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

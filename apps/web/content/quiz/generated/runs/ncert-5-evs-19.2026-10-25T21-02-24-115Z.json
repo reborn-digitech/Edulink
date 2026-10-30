@@ -1,0 +1,391 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T21:02:24.115Z",
+  "finishedAt": "2026-10-25T21:04:59.119Z",
+  "seconds": 155,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap119.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 19 — A Seed Tells a Farmer’s Story",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 48344,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15868,
+      "completionTokens": 2742
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 133161,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 9488,
+      "completionTokens": 3739
+    },
+    "solver": {
+      "calls": 112,
+      "ms": 72614,
+      "in": 13,
+      "out": 9,
+      "rejects": 4,
+      "promptTokens": 24808,
+      "completionTokens": 1463
+    },
+    "form": {
+      "calls": 7,
+      "ms": 17159,
+      "in": 9,
+      "out": 2,
+      "rejects": 7,
+      "promptTokens": 1711,
+      "completionTokens": 475
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 3482,
+      "in": 2,
+      "out": 1,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 22689,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2625,
+      "completionTokens": 1522
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "How did farmers in the past store their seeds?",
+      "ms": {
+        "draft": 2539,
+        "critique": 6059
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the grain that the seed in the passage is talking about?",
+      "ms": {
+        "draft": 2539,
+        "critique": 7127
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did Hasmukh use to pump water from the fields?",
+      "ms": {
+        "draft": 2539,
+        "critique": 7343,
+        "solver": 1389
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What did the passage suggest about the changes in farming practices over time?",
+      "ms": {
+        "draft": 2539,
+        "critique": 6196
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a farmer grows only one type of crop continuously, what might happen to the land?",
+      "ms": {
+        "draft": 3337,
+        "critique": 6326,
+        "solver": 2319,
+        "form": 2913
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Paresh not want to become a farmer like his father?",
+      "ms": {
+        "draft": 3337,
+        "critique": 7490,
+        "solver": 1489
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was one of the main reasons Hasmukh's farm became difficult to manage?",
+      "ms": {
+        "draft": 3337,
+        "critique": 6198,
+        "solver": 12214,
+        "form": 2956
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main problem faced by farmers in Andhra Pradesh according to the passage?",
+      "ms": {
+        "draft": 3025,
+        "critique": 5346,
+        "solver": 1724,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is one way that farmers can keep their soil fertile without using factory-made fertilizers?",
+      "ms": {
+        "draft": 3025,
+        "critique": 5512,
+        "solver": 2843,
+        "form": 2308
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the story of Nallappa Reddy highlight about loans in India?",
+      "ms": {
+        "draft": 3025,
+        "critique": 8056,
+        "solver": 1369,
+        "form": 2011
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Hasmukh's son Paresh not become a farmer?",
+      "ms": {
+        "draft": 3025,
+        "critique": 5059,
+        "solver": 16449
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main reason for the farmer Damjibhai keeping aside some seeds from a good crop?",
+      "ms": {
+        "draft": 3186,
+        "critique": 6627,
+        "solver": 1565,
+        "form": 3926
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what was the significance of the wooden box that Damjibhai made?",
+      "ms": {
+        "draft": 3186,
+        "critique": 6418,
+        "solver": 17696,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the change in farming practices over time?",
+      "ms": {
+        "draft": 3186,
+        "critique": 6039,
+        "solver": 16884
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a farmer decides to grow only one or two crops that give better prices in the market, what might be the consequence?",
+      "ms": {
+        "draft": 3186,
+        "critique": 7281,
+        "solver": 14806,
+        "form": 2277
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What did Bhaskarbhai use to know when to water his farm?",
+      "ms": {
+        "draft": 3337,
+        "critique": 4643,
+        "solver": 8548,
+        "form": 1133,
+        "translation": 19344
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How did farmers in the past store their seeds?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the grain that the seed in the passage is talking about?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What did Hasmukh use to pump water from the fields?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What did the passage suggest about the changes in farming practices over time?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a farmer grows only one type of crop continuously, what might happen to the land?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"The passage suggests the opposite, that the soil became poor…\"); distractor 2's reason is not a one-line misconception (\"The passage does not say that the land will produce more cro…\"); distractor 3's reason is not a one-line misconception (\"The passage does not mention that the land will need more wa…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did Paresh not want to become a farmer like his father?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What was one of the main reasons Hasmukh's farm became difficult to manage?",
+      "reason": "the key is far longer than every distractor (53 vs 29 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What was the main problem faced by farmers in Andhra Pradesh according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"The pupil might misunderstand the passage and think farmers …\"); distractor 3's reason is not a one-line misconception (\"The pupil might think the problem was about seeds, but the p…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is one way that farmers can keep their soil fertile without using factory-made fertilizers?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"The pupil might think chemicals are used, but the passage sa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the story of Nallappa Reddy highlight about loans in India?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"The pupil might think loans are easy to repay, but the passa…\"); distractor 1's reason is not a one-line misconception (\"The pupil might think big businessmen are punished, but the …\"); distractor 3's reason is not a one-line misconception (\"The pupil might think all farmers commit suicide, but the pa…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did Hasmukh's son Paresh not become a farmer?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What was the main reason for the farmer Damjibhai keeping aside some seeds from a good crop?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This is a misunderstanding of the passage's message.…\"); distractor 3's reason is not a one-line misconception (\"This is not mentioned in the passage as a reason for storing…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what was the significance of the wooden box that Damjibhai made?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the change in farming practices over time?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a farmer decides to grow only one or two crops that give better prices in the market, what might be the consequence?",
+      "reason": "near-duplicate of served question cmvh9pprz07rigpfh30953i8s (cosine 0.946 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

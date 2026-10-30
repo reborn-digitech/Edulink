@@ -21,254 +21,47 @@
   "board": "NCERT",
   "book": "Ganita Manjari PART-II",
   "edition": "2026 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-22T12:37:59.535Z",
+  "generatedAt": "2026-10-30T01:16:08.766Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "Which of the following best describes a solution to a pair of linear equations in two variables?",
+      "difficulty": 1,
+      "stem": "What is the condition for a pair of linear equations in two variables to have infinitely many solutions?",
       "choices": [
-        "A line that represents all possible solutions",
-        "An ordered pair that satisfies both equations",
-        "A single value that satisfies one equation",
-        "A graph that intersects at two points"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is an ordered pair that satisfies both equations, as this represents the point where the two lines intersect, fulfilling both equations simultaneously. A line that represents all possible solutions would describe a single equation, not a system. A single value that satisfies one equation does not account for both equations. A graph that intersects at two points would imply two separate solutions, which is not possible for a consistent linear system.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा दो चरों वाले रैखिक समीकरणों के युग्म के हल का सबसे अच्छा वर्णन करता है?",
-          "choices": [
-            "एक रेखा जो सभी संभावित हलों का प्रतिनिधित्व करती है",
-            "एक क्रमित युग्म जो दोनों समीकरणों को संतुष्ट करता है",
-            "एक एकल मान जो एक समीकरण को संतुष्ट करता है",
-            "एक ग्राफ जो दो बिंदुओं पर प्रतिच्छेद करता है"
-          ],
-          "solution": "सही उत्तर एक क्रमित युग्म जो दोनों समीकरणों को संतुष्ट करता है, क्योंकि यह दोनों रेखाओं के प्रतिच्छेद बिंदु का प्रतिनिधित्व करता है, जो दोनों समीकरणों को एक साथ संतुष्ट करता है। एक रेखा जो सभी संभावित हलों का प्रतिनिधित्व करती है, एक एकल समीकरण का वर्णन करती है, न कि एक प्रणाली का। एक एकल मान जो एक समीकरण को संतुष्ट करता है, दोनों समीकरणों की गणना नहीं करता है। दो बिंदुओं पर प्रतिच्छेद करने वाला ग्राफ दो अलग-अलग हलों को इंगित करता है, जो एक संगत रैखिक प्रणाली के लिए संभव नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English content with appropriate mathematical terminology and maintains the same logical structure and meaning.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते दोन चलांमधील रेषीय समीकरणांच्या जोडीचे उकल योग्यरित्या वर्णन करते?",
-          "choices": [
-            "सर्व संभाव्य उकलींचे निरूपण करणारा एक रेषा",
-            "दोन्ही समीकरणांना संतुष्ट करणारा एक क्रमवार जोडा",
-            "एका समीकरणाला संतुष्ट करणारा एक एकल मूल्य",
-            "दोन बिंदूंवर छेद करणारा ग्राफ"
-          ],
-          "solution": "योग्य उत्तर दोन्ही समीकरणांना संतुष्ट करणारा एक क्रमवार जोडा आहे, कारण हे दोन रेषांच्या छेदनबिंदूला दर्शवते, जे दोन्ही समीकरणांना एकाच वेळी संतुष्ट करते. सर्व संभाव्य उकलींचे निरूपण करणारा एक रेषा एक समीकरणाचे वर्णन करेल, नाही की एका प्रणालीचे. एका समीकरणाला संतुष्ट करणारा एक एकल मूल्य दोन्ही समीकरणांचा विचार करत नाही. दोन बिंदूंवर छेद करणारा ग्राफ दोन वेगवेगळ्या उकलींचा अर्थ असेल, जे एका संगत रेषीय प्रणालीसाठी शक्य नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the solution of a single equation with that of a pair",
-        null,
-        "Incorrectly assumes a solution is a single value",
-        "Misunderstands the graphical representation of a system"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as a solution to a system of two linear equations in two variables is an ordered pair that satisfies both equations. The other options reflect common misconceptions about what constitutes a solution to a system of equations.",
-      "sources": [
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 10,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.4. Pair of Linear Equations in Two Variables"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 11,
-          "pageStart": 21,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.4. Pair of Linear Equations in Two Variables"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 12,
-          "pageStart": 21,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.5 Finding Solutions to a Pair of Linear Equations"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 13,
-          "pageStart": 23,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.5 Finding Solutions to a Pair of Linear Equations"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T12:37:59.535Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What does it mean if two lines representing a pair of linear equations intersect at a point?",
-      "choices": [
-        "The equations have no solution",
-        "The equations have infinitely many solutions",
-        "The equations have a unique solution",
-        "The equations are parallel"
+        "When the lines are parallel",
+        "When the lines intersect at a single point",
+        "When the lines are coincident",
+        "When the lines have different slopes"
       ],
       "answerIndex": 2,
-      "solution": "If two lines representing a pair of linear equations intersect at a point, it means that the equations have a unique solution. This is because the point of intersection represents the values of x and y that satisfy both equations. The other options describe different scenarios, such as no solution for parallel lines or infinitely many solutions for coincident lines.",
+      "solution": "The correct condition is when the lines are coincident, meaning they overlap completely. If the lines are parallel, there are no solutions. If they intersect at a single point, there is a unique solution. If the lines have different slopes, they will intersect at one point, not be coincident.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि रैखिक समीकरणों के एक युग्म के लिए दो रेखाएं एक बिंदु पर प्रतिच्छेद करती हैं, तो इसका क्या अर्थ है?",
+          "stem": "दो चरों वाले रैखिक समीकरणों के एक युग्म के अनंत हल होने की क्या शर्त है?",
           "choices": [
-            "समीकरणों का कोई हल नहीं होता है",
-            "समीकरणों के अनंत हल होते हैं",
-            "समीकरणों का एक अद्वितीय हल होता है",
-            "समीकरण समांतर होते हैं"
+            "जब रेखाएँ समांतर होती हैं",
+            "जब रेखाएँ एक बिंदु पर प्रतिच्छेद करती हैं",
+            "जब रेखाएँ संपाती होती हैं",
+            "जब रेखाएँ अलग-अलग ढलान वाली होती हैं"
           ],
-          "solution": "यदि रैखिक समीकरणों के एक युग्म के लिए दो रेखाएं एक बिंदु पर प्रतिच्छेद करती हैं, तो इसका अर्थ है कि समीकरणों का एक अद्वितीय हल होता है। यह इसलिए है क्योंकि प्रतिच्छेद बिंदु उन मानों का प्रतिनिधित्व करता है जो दोनों समीकरणों को संतुष्ट करते हैं। अन्य विकल्प विभिन्न परिस्थितियों का वर्णन करते हैं, जैसे समांतर रेखाओं के लिए कोई हल नहीं होता है या संपाती रेखाओं के लिए अनंत हल होते हैं।",
+          "solution": "सही शर्त यह है कि रेखाएँ संपाती हों, जिसका अर्थ है कि वे पूरी तरह से एक दूसरे के ऊपर हों। यदि रेखाएँ समांतर होती हैं, तो कोई हल नहीं होता है। यदि वे एक बिंदु पर प्रतिच्छेद करती हैं, तो एक अद्वितीय हल होता है। यदि रेखाएँ अलग-अलग ढलान वाली होती हैं, तो वे एक बिंदु पर प्रतिच्छेद करती हैं, न कि संपाती होती हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology used in Hindi textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर रेषीय समीकरणांच्या दोन रेषा एका बिंदूत छेदत असतील तर त्याचा अर्थ काय असतो?",
+          "stem": "दोन चलांमधील रेषीय समीकरणांच्या जोडीसाठी अनंत समाधाने असण्याची अट कोणती आहे?",
           "choices": [
-            "समीकरणांना कोणताही उकल नाही",
-            "समीकरणांना अनंत उकल आहेत",
-            "समीकरणांना एक अद्वितीय उकल आहे",
-            "समीकरणे समांतर आहेत"
+            "जेव्हा रेषा समांतर असतात",
+            "जेव्हा रेषा एका बिंदूत छेदतात",
+            "जेव्हा रेषा जुळतात",
+            "जेव्हा रेषांचे वेगवेगळे ढाल असतात"
           ],
-          "solution": "जर रेषीय समीकरणांच्या दोन रेषा एका बिंदूत छेदत असतील तर त्याचा अर्थ असा होतो की समीकरणांना एक अद्वितीय उकल आहे. हे त्यामुळे होते कारण छेद बिंदू असे x आणि y च्या मूल्यांचे प्रतिनिधित्व करतो जे दोन्ही समीकरणांना संतुष्ट करतात. इतर विकल्पांमध्ये वेगवेगळ्या परिस्थितींचे वर्णन केले गेले आहे, उदाहरणार्थ, समांतर रेषांसाठी कोणताही उकल नसल्याचे किंवा संपाती रेषांसाठी अनंत उकल असल्याचे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Describes parallel lines.",
-        "Describes coincident lines.",
-        null,
-        "Describes parallel lines."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that intersecting lines have a unique solution. The reasoning for the distractors aligns with common misconceptions about parallel and coincident lines.",
-      "sources": [
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 20,
-          "pageStart": 33,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.6 Graphical Method for Solving A Pair of Linear",
-            "Equations in Two Variables"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 21,
-          "pageStart": 34,
-          "pageEnd": 36,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "End-of-c"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 22,
-          "pageStart": 36,
-          "pageEnd": 37,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "End-of-c"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T12:37:59.535Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following pairs of linear equations have solutions?",
-      "choices": [
-        "x + y = 5, 2x + 2y = 10",
-        "1: x – y = 8, 3x – 3y = 16",
-        "2: 2x + y – 6 = 0, 4x – 2y – 4 = 0",
-        "3: 2x – 2y – 2 = 0, 4x – 4y – 4 = 0"
-      ],
-      "answerIndex": 0,
-      "solution": "The pair x + y = 5 and 2x + 2y = 10 represents lines that are coincident, meaning they have infinitely many solutions. The other pairs either represent parallel lines (no solution) or intersecting lines (one solution).",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा रैखिक समीकरणों का युग्म हल है?",
-          "choices": [
-            "x + y = 5, 2x + 2y = 10",
-            "x – y = 8, 3x – 3y = 16",
-            "2x + y – 6 = 0, 4x – 2y – 4 = 0",
-            "2x – 2y – 2 = 0, 4x – 4y – 4 = 0"
-          ],
-          "solution": "x + y = 5 और 2x + 2y = 10 का युग्म संपाती रेखाओं का प्रतिनिधित्व करता है, जिसके अनंत हल होते हैं। अन्य युग्म समांतर रेखाओं (कोई हल नहीं) या प्रतिच्छेदी रेखाओं (एक हल) का प्रतिनिधित्व करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology. The correct answer (option 1) is in the same position as in the English version. All distractors remain incorrect.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणत्या रेषीय समीकरणांच्या जोड्यांना उकल आहे?",
-          "choices": [
-            "x + y = 5, 2x + 2y = 10",
-            "x – y = 8, 3x – 3y = 16",
-            "2x + y – 6 = 0, 4x – 2y – 4 = 0",
-            "2x – 2y – 2 = 0, 4x – 4y – 4 = 0"
-          ],
-          "solution": "x + y = 5 आणि 2x + 2y = 10 ची जोडी एकरूप रेषा दर्शवते, ज्यामुळे त्यांना अनंत उकल आहेत. इतर जोड्या काही तरी समांतर रेषा (कोणतीही उकल नाही) किंवा छेदक रेषा (एक उकल) दर्शवतात.",
+          "solution": "योग्य अट म्हणजे रेषा जुळतात, जे त्यांना पूर्णपणे ओव्हरलॅप करते. जर रेषा समांतर असतील तर कोणतेही समाधान नसते. जर त्या एका बिंदूत छेदत असतील तर एक अद्वितीय समाधान असते. जर रेषांचे वेगवेगळे ढाल असतील तर त्या एका बिंदूत छेदतील, जुळत नसतील.",
           "imageAlt": null,
           "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
           "flag": null
@@ -279,590 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses parallel lines with coincident lines",
+        "Confuses intersecting lines with coincident lines",
         null,
-        "Student thinks that if coefficients are multiples, the system has a solution, not realizing 3x - 3y = 16 is not a multiple of x - y = 8",
-        "A student might think that the equations are dependent because they have similar coefficients but not realize they are inconsistent.",
-        "Confuses the coefficients of the second equation, thinking that multiplying the first equation by 2 gives the second, not noticing the constant term is different"
+        "Incorrectly thinks different slopes can lead to coincident lines"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is option 0, as the two equations are multiples of each other and represent coincident lines with infinitely many solutions. The other options either represent parallel lines (no solution) or inconsistent systems.",
-      "sources": [
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 20,
-          "pageStart": 33,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.6 Graphical Method for Solving A Pair of Linear",
-            "Equations in Two Variables"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 21,
-          "pageStart": 34,
-          "pageEnd": 36,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "End-of-c"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 22,
-          "pageStart": 36,
-          "pageEnd": 37,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "End-of-c"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T12:37:59.535Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the condition for a linear equation in two variables to pass through the origin?",
-      "choices": [
-        "The constant term is zero",
-        "The coefficients of x and y are equal",
-        "The equation has only one solution",
-        "The equation is in standard form"
-      ],
-      "answerIndex": 0,
-      "solution": "A linear equation in two variables passes through the origin if the constant term is zero. This is because the origin (0, 0) satisfies the equation ax + by = 0. The other options are not necessarily true for an equation to pass through the origin.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दो चरों वाले रैखिक समीकरण के मूल बिंदु से गुजरने की शर्त क्या है?",
-          "choices": [
-            "अचर पद शून्य होना चाहिए",
-            "x और y के गुणांक बराबर होने चाहिए",
-            "समीकरण केवल एक हल होना चाहिए",
-            "समीकरण मानक रूप में होना चाहिए"
-          ],
-          "solution": "दो चरों वाला रैखिक समीकरण मूल बिंदु से गुजरता है यदि अचर पद शून्य हो। यह इसलिए है क्योंकि मूल बिंदु (0, 0) समीकरण ax + by = 0 को संतुष्ट करता है। अन्य विकल्प मूल बिंदु से गुजरने के लिए आवश्यक नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दोन चलांमधील रेषीय समीकरण मूलबिंदूमार्गे जाण्याची अट कोणती आहे?",
-          "choices": [
-            "अचूक वस्तुमान शून्य असल्यास",
-            "x आणि y चे गुणक समान असल्यास",
-            "समीकरणाला केवळ एक समाधान असल्यास",
-            "समीकरण मानक रूपात असल्यास"
-          ],
-          "solution": "दोन चलांमधील रेषीय समीकरण मूलबिंदूमार्गे जाते जेव्हा अचूक वस्तुमान शून्य असतो. हे कारण असे आहे की मूलबिंदू (0, 0) समीकरण ax + by = 0 ला संतुष्ट करतो. इतर विकल्प मूलबिंदूमार्गे जाण्यासाठी आवश्यक नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the role of the constant term",
-        "Misunderstands the structure of the equation",
-        "Misinterprets the meaning of a single solution"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 0, as the origin (0, 0) satisfies the equation only when the constant term is zero. The other options are incorrect for the reasons given.",
-      "sources": [
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.2 Solution of Linear Equation in Two Variables"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.2 Solution of Linear Equation in Two Variables"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 5,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.2 Solution of Linear Equation in Two Variables"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T12:37:59.535Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "A linear equation in two variables is given as 60x + 50y = 280, where x is the number of kilograms of mangoes and y is the number of kilograms of bananas. If Radha buys 3 kg of mangoes, how many kilograms of bananas does she buy?",
-      "choices": [
-        "3 kg",
-        "2 kg",
-        "4 kg",
-        "5 kg"
-      ],
-      "answerIndex": 1,
-      "solution": "Substitute x = 3 into the equation 60x + 50y = 280. This gives 60(3) + 50y = 280, or 180 + 50y = 280. Subtracting 180 from both sides gives 50y = 100, so y = 2. The option '3 kg' is incorrect because it assumes x and y are equal. The option '4 kg' is incorrect because it uses an incorrect calculation. The option '5 kg' is incorrect because it assumes a different value for x.",
-      "checkExpr": "100/50",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक दो चरों में रैखिक समीकरण 60x + 50y = 280 दिया गया है, जहां x आम के किलोग्राम की संख्या है और y केले के किलोग्राम की संख्या है। यदि राधा 3 किग्रा आम खरीदती है, तो वह कितने किलोग्राम केले खरीदती है?",
-          "choices": [
-            "3 किग्रा",
-            "2 किग्रा",
-            "4 किग्रा",
-            "5 किग्रा"
-          ],
-          "solution": "x = 3 के मान को समीकरण 60x + 50y = 280 में रखें। इससे 60(3) + 50y = 280 प्राप्त होता है, या 180 + 50y = 280। दोनों ओर से 180 घटाने पर 50y = 100 प्राप्त होता है, इसलिए y = 2। विकल्प '3 किग्रा' गलत है क्योंकि यह मान लेता है कि x और y बराबर हैं। विकल्प '4 किग्रा' गलत है क्योंकि इसमें गलत गणना की गई है। विकल्प '5 किग्रा' गलत है क्योंकि इसमें x के एक अलग मान को माना गया है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक द्विचलकी रेषीय समीकरण 60x + 50y = 280 दिले आहे, जेथे x बेरींच्या किलोग्रॅममधील संख्या आहे आणि y केळींच्या किलोग्रॅममधील संख्या आहे. राधा 3 किलोग्रॅम बेरी खरेदी करते, तर तिने किती किलोग्रॅम केळी खरेदी केल्या जातात?",
-          "choices": [
-            "3 किग्रॅ",
-            "2 किग्रॅ",
-            "4 किग्रॅ",
-            "5 किग्रॅ"
-          ],
-          "solution": "x = 3 ची किंमत 60x + 50y = 280 मध्ये ठेवल्यास 60(3) + 50y = 280, किंवा 180 + 50y = 280 मिळते. दोन्ही बाजूंमधून 180 वजा केल्यास 50y = 100 मिळते, म्हणून y = 2. '3 किग्रॅ' ची निवड चुकीची आहे कारण x आणि y समान आहेत असे गृहीत धरले जाते. '4 किग्रॅ' ची निवड चुकीची आहे कारण चुकीचा गणना केली जाते. '5 किग्रॅ' ची निवड चुकीची आहे कारण x ची वेगळी किंमत घेतली जाते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the structure of the question is preserved.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "assumes x and y are equal",
-        null,
-        "incorrect calculation",
-        "assumes a different value for x"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct, and the reasoning for the distractors aligns with common misconceptions. The correct answer is 2 kg.",
-      "sources": [
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.1 Linear e"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.1 Linear e"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.2 Solution of Linear Equation in Two Variables"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T12:37:59.535Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "A pair of linear equations in two variables has a unique solution at (5, -1). One of the equations is x - y = 6. Which of the following could be the other equation?",
-      "choices": [
-        "3x - 3y = 18",
-        "2x - 3y = 13",
-        "2: 2x - 3y = 16",
-        "3x - 2y = 15"
-      ],
-      "answerIndex": 1,
-      "solution": "The point (5, -1) must satisfy both equations. Substituting x = 5 and y = -1 into 2x - 3y = 13 gives 2(5) - 3(-1) = 10 + 3 = 13, which is correct. The other options either do not satisfy the point or are not in the correct form. The distractors may result from miscalculating the substitution or choosing equations with similar coefficients but incorrect constants.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दो चरों में रैखिक समीकरणों का एक युग्म (5, -1) पर एक अद्वितीय हल है। एक समीकरण x - y = 6 है। निम्न में से कौन-सा समीकरण दूसरा समीकरण हो सकता है?",
-          "choices": [
-            "3x - 3y = 18",
-            "2x - 3y = 13",
-            "2x - 3y = 16",
-            "3x - 2y = 15"
-          ],
-          "solution": "बिंदु (5, -1) दोनों समीकरणों को संतुष्ट करना चाहिए। x = 5 और y = -1 को 2x - 3y = 13 में प्रतिस्थापित करने पर 2(5) - 3(-1) = 10 + 3 = 13, जो सही है। अन्य विकल्प या बिंदु को संतुष्ट नहीं करते हैं या सही रूप में नहीं हैं। भ्रमित करने वाले विकल्प या तो स्थानापन्न की गलत गणना के कारण हो सकते हैं या समान गुणांक लेकिन गलत अचर वाले समीकरण चुने जा सकते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दोन चलांमधील रेषीय समीकरणांच्या जोडीचे एक अद्वितीय उकल (5, -1) आहे. एका समीकरणाचे रूप x - y = 6 आहे. खालीलपैकी कोणते समीकरण दुसरे असू शकते?",
-          "choices": [
-            "3x - 3y = 18",
-            "2x - 3y = 13",
-            "2x - 3y = 16",
-            "3x - 2y = 15"
-          ],
-          "solution": "बिंदू (5, -1) दोन्ही समीकरणांना संतुष्ट करणे आवश्यक आहे. x = 5 आणि y = -1 ची 2x - 3y = 13 मध्ये ठिकाणी ठेवल्यास 2(5) - 3(-1) = 10 + 3 = 13, हे बरोबर आहे. इतर विकल्प काही वेळा बिंदूला संतुष्ट करत नाहीत किंवा योग्य रूपात नाहीत. गैरउत्तरांमध्ये उपायाच्या चुकीच्या गणनेमुळे किंवा समान गुणकांसह परंतु चुकीच्या स्थिरांसह समीकरण निवडल्यामुळे असू शकतात.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Simplifies 3x - 3y = 18 to x - y = 6, which is the same as the given equation.",
-        null,
-        "A student might incorrectly substitute (5, -1) into the equation but miscalculate the right-hand side.",
-        "Incorrect substitution or calculation of the equation's constants from the point (5, -1)."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 1, as it is the only equation that satisfies the point (5, -1). The other options either do not satisfy the point or are based on common misconceptions like simplifying equations incorrectly or miscalculating substitutions.",
-      "sources": [
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 23,
-          "pageStart": 38,
-          "pageEnd": 38,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "End-of-c",
-            "Chapter Summary"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T12:37:59.535Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following represents the standard form of the equation 3y = 5?",
-      "choices": [
-        "0x + 3y - 5 = 0",
-        "3x + 0y - 5 = 0",
-        "5x + 3y - 1 = 0",
-        "3x + 5y - 1 = 0"
-      ],
-      "answerIndex": 0,
-      "solution": "The standard form of a linear equation in two variables is ax + by + c = 0. The equation 3y = 5 can be written as 0x + 3y - 5 = 0. The option '3x + 0y - 5 = 0' is incorrect because it incorrectly places the coefficient of x. The option '5x + 3y - 1 = 0' is incorrect because it uses the wrong coefficients. The option '3x + 5y - 1 = 0' is incorrect because it uses the wrong coefficients.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन समीकरण 3y = 5 के मानक रूप का प्रतिनिधित्व करता है?",
-          "choices": [
-            "0x + 3y - 5 = 0",
-            "3x + 0y - 5 = 0",
-            "5x + 3y - 1 = 0",
-            "3x + 5y - 1 = 0"
-          ],
-          "solution": "दो चरों में रैखिक समीकरण का मानक रूप ax + by + c = 0 होता है। समीकरण 3y = 5 को 0x + 3y - 5 = 0 के रूप में लिखा जा सकता है। विकल्प '3x + 0y - 5 = 0' गलत है क्योंकि इसमें x के गुणांक को गलत रखा गया है। विकल्प '5x + 3y - 1 = 0' गलत है क्योंकि इसमें गलत गुणांक प्रयोग किए गए हैं। विकल्प '3x + 5y - 1 = 0' गलत है क्योंकि इसमें गलत गुणांक प्रयोग किए गए हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते समीकरण 3y = 5 चे मानक रूप दर्शविते?",
-          "choices": [
-            "0x + 3y - 5 = 0",
-            "3x + 0y - 5 = 0",
-            "5x + 3y - 1 = 0",
-            "3x + 5y - 1 = 0"
-          ],
-          "solution": "दोन चलांमधील रेषीय समीकरणाचे मानक रूप ax + by + c = 0 आहे. समीकरण 3y = 5 ला 0x + 3y - 5 = 0 असे लिहिता येते. '3x + 0y - 5 = 0' विकल्प चुकीचा आहे कारण तो x चा गुणक चुकीच्या पद्धतीने ठेवतो. '5x + 3y - 1 = 0' विकल्प चुकीचा आहे कारण तो चुकीचे गुणक वापरतो. '3x + 5y - 1 = 0' विकल्प चुकीचा आहे कारण तो चुकीचे गुणक वापरतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "incorrectly places the coefficient of x",
-        "uses the wrong coefficients",
-        "uses the wrong coefficients"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0 because the standard form of a linear equation in two variables is ax + by + c = 0. The equation 3y = 5 can be rewritten as 0x + 3y - 5 = 0. The other options either have incorrect coefficients or incorrectly place the x term.",
-      "sources": [
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.1 Linear e"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.1 Linear e"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.2 Solution of Linear Equation in Two Variables"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T12:37:59.535Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "The equation 3x + 2y = 12 can be rewritten in the form y = mx + c. What is the value of m?",
-      "choices": [
-        "-3/2",
-        "3/2",
-        "2/3",
-        "-2/3"
-      ],
-      "answerIndex": 0,
-      "solution": "Rewriting 3x + 2y = 12 in the form y = mx + c gives y = -3/2x + 6. The value of m is -3/2. The option '3/2' is incorrect because it uses the wrong sign. The option '2/3' is incorrect because it uses the reciprocal. The option '-2/3' is incorrect because it uses the reciprocal and the wrong sign.",
-      "checkExpr": "-3/2",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "समीकरण 3x + 2y = 12 को y = mx + c के रूप में लिखा जा सकता है। m का मान क्या है?",
-          "choices": [
-            "-3/2",
-            "3/2",
-            "2/3",
-            "-2/3"
-          ],
-          "solution": "3x + 2y = 12 को y = mx + c के रूप में लिखने पर y = -3/2x + 6 प्राप्त होता है। m का मान -3/2 है। विकल्प '3/2' गलत है क्योंकि इसमें गलत चिह्न है। विकल्प '2/3' गलत है क्योंकि इसमें व्युत्क्रम लिया गया है। विकल्प '-2/3' गलत है क्योंकि इसमें व्युत्क्रम और गलत चिह्न दोनों हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the solution clearly explains why each incorrect option is wrong. The term 'व्युत्क्रम' (reciprocal) is the appropriate Hindi term for 'reciprocal' in a mathematical context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "समीकरण 3x + 2y = 12 ला y = mx + c रूपात लिहिले जाऊ शकते. m ची किंमत काय आहे?",
-          "choices": [
-            "-3/2",
-            "3/2",
-            "2/3",
-            "-2/3"
-          ],
-          "solution": "3x + 2y = 12 ला y = mx + c रूपात लिहिल्यास y = -3/2x + 6 मिळते. m ची किंमत -3/2 आहे. विकल्प '3/2' अयोग्य आहे कारण त्यात चुकीचा चिन्ह वापरला आहे. विकल्प '2/3' अयोग्य आहे कारण त्यात व्युत्क्रम वापरला आहे. विकल्प '-2/3' अयोग्य आहे कारण त्यात व्युत्क्रम आणि चुकीचा चिन्ह वापरला आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "uses the wrong sign",
-        "uses the reciprocal",
-        "uses the reciprocal and the wrong sign"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is -3/2, as shown in the solution. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.1 Linear e"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.1 Linear e"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 13: Two Variables, One Line",
-            "13.2 Solution of Linear Equation in Two Variables"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T12:37:59.535Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "The point (2, 3) is the solution to a pair of linear equations. One of the equations is x + y = 5. Which of the following could be the other equation?",
-      "choices": [
-        "x – y = –5",
-        "x – y = –1",
-        "2x + 2y = 10",
-        "x + 2y = 8"
-      ],
-      "answerIndex": 3,
-      "solution": "The point (2, 3) satisfies the equation x + y = 5. To find the other equation, we test the options: x + 2y = 8 gives 2 + 2×3 = 8, which is true. The other options do not satisfy (2, 3). Therefore, x + 2y = 8 is the correct answer. The other options are incorrect because they do not satisfy the given point.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "बिंदु (2, 3) दो रैखिक समीकरणों का हल है। एक समीकरण x + y = 5 है। निम्नलिखित में से कौन-सा समीकरण दूसरा हो सकता है?",
-          "choices": [
-            "x – y = –5",
-            "x – y = –1",
-            "2x + 2y = 10",
-            "x + 2y = 8"
-          ],
-          "solution": "बिंदु (2, 3) समीकरण x + y = 5 को संतुष्ट करता है। दूसरा समीकरण ज्ञात करने के लिए, हम विकल्पों की जांच करते हैं: x + 2y = 8 द्वारा 2 + 2×3 = 8, जो सत्य है। अन्य विकल्प (2, 3) को संतुष्ट नहीं करते हैं। अतः x + 2y = 8 सही उत्तर है। अन्य विकल्प गलत हैं क्योंकि वे दिए गए बिंदु को संतुष्ट नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "बिंदू (2, 3) रेषीय समीकरणांच्या एका जोडीचे उकल आहे. एका समीकरणाचे रूप x + y = 5 आहे. खालीलपैकी कोणते समीकरण दुसरे समीकरण असू शकते?",
-          "choices": [
-            "x – y = –5",
-            "x – y = –1",
-            "2x + 2y = 10",
-            "x + 2y = 8"
-          ],
-          "solution": "बिंदू (2, 3) समीकरण x + y = 5 ला अनुरूप आहे. दुसरे समीकरण शोधण्यासाठी, आम्ही विकल्प तपासतो: x + 2y = 8 द्वारे 2 + 2×3 = 8, जे खरे आहे. इतर विकल्प (2, 3) ला अनुरूप नाहीत. म्हणून, x + 2y = 8 हे योग्य उत्तर आहे. इतर विकल्प चुकीचे आहेत कारण ते दिलेल्या बिंदूला अनुरूप नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Student incorrectly substitutes x=2 and y=3 into x - y and subtracts 2 - 3 = -1, but then mistakenly adds 4 to get -5 instead of -1.",
-        "Student incorrectly substitutes x = 2 and y = 3 into the equation but miscalculates the result.",
-        "Represents the same line as x + y = 5, which would mean infinitely many solutions, but the point is unique (this is a distractor)",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is option 3, as (2, 3) satisfies x + 2y = 8. The other options either do not satisfy the point or represent the same line, which would contradict the uniqueness of the solution.",
+      "critique": "The solution is correct and aligns with the key. The reasoning for the distractors reflects common misconceptions among students.",
       "sources": [
         {
           "document": "ncert/9/mathematics/iemh205.pdf",
@@ -899,47 +122,314 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T12:37:59.535Z",
+      "generatedAt": "2026-10-30T01:16:08.766Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "If the equations 10x – 5y = 20 and 4x – 2y = 8 are solved, how many solutions do they have?",
+      "difficulty": 1,
+      "stem": "Which of the following points lies on the graph of the equation 2x + y = 7?",
       "choices": [
-        "Infinitely many solutions",
-        "No solution",
-        "Exactly one solution",
-        "Cannot be determined"
+        "(0, 7)",
+        "(1, 6)",
+        "(2, 4)",
+        "(3, 2)"
       ],
       "answerIndex": 0,
-      "solution": "The equations 10x – 5y = 20 and 4x – 2y = 8 are multiples of each other, meaning they represent the same line and thus have infinitely many solutions. If one equation can be obtained by multiplying the other by a constant, they are not independent and share all points on the line. The other options are incorrect because the equations are not parallel (which would mean no solution) or inconsistent (which would also mean no solution).",
+      "solution": "Substituting x = 0 into 2x + y = 7 gives y = 7, so (0, 7) is a solution. Substituting x = 1 gives y = 5, not 6. Substituting x = 2 gives y = 3, not 4. Substituting x = 3 gives y = 1, not 2.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि समीकरण 10x – 5y = 20 और 4x – 2y = 8 को हल किया जाए, तो उनके कितने हल होंगे?",
+          "stem": "निम्नलिखित में से कौन-सा बिंदु समीकरण 2x + y = 7 के ग्राफ पर स्थित है?",
           "choices": [
-            "अनंत रूप से बहुत सारे हल",
-            "कोई हल नहीं",
-            "ठीक एक हल",
-            "निर्धारित नहीं किया जा सकता"
+            "(0, 7)",
+            "(1, 6)",
+            "(2, 4)",
+            "(3, 2)"
           ],
-          "solution": "समीकरण 10x – 5y = 20 और 4x – 2y = 8 एक दूसरे के गुणक हैं, जिसका अर्थ है कि वे एक ही रेखा का प्रतिनिधित्व करते हैं और इसलिए अनंत रूप से बहुत सारे हल होते हैं। यदि एक समीकरण दूसरे को एक नियतांक से गुणा करके प्राप्त किया जा सकता है, तो वे स्वतंत्र नहीं होते हैं और रेखा पर सभी बिंदुओं को साझा करते हैं। अन्य विकल्प गलत हैं क्योंकि समीकरण समांतर नहीं हैं (जिसका अर्थ है कोई हल नहीं) या असंगत हैं (जिसका अर्थ है कोई हल नहीं)।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "solution": "x = 0 के मान को 2x + y = 7 में प्रतिस्थापित करने पर y = 7 प्राप्त होता है, अतः (0, 7) एक हल है। x = 1 के मान को प्रतिस्थापित करने पर y = 5 प्राप्त होता है, जो 6 नहीं है। x = 2 के मान को प्रतिस्थापित करने पर y = 3 प्राप्त होता है, जो 4 नहीं है। x = 3 के मान को प्रतिस्थापित करने पर y = 1 प्राप्त होता है, जो 2 नहीं है।",
+          "imageAlt": "समीकरण 2x + y = 7 का ग्राफ, बिंदु A (0, 7), B (1, 5), C (2, 3), और D (3, 1)",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर समीकरण 10x – 5y = 20 आणि 4x – 2y = 8 सोडवले गेले, तर त्यांना किती उकल असतील?",
+          "stem": "खालीलपैकी कोणता बिंदू समीकरण 2x + y = 7 च्या आलेखावर आहे?",
           "choices": [
-            "अनंत उकल असतील",
-            "कोणतीही उकल नाही",
-            "अचूक एक उकल असतील",
-            "निश्चित करता येणार नाही"
+            "(0, 7)",
+            "(1, 6)",
+            "(2, 4)",
+            "(3, 2)"
           ],
-          "solution": "समीकरण 10x – 5y = 20 आणि 4x – 2y = 8 एकमेकांचे गुणक आहेत, म्हणजेच ते एकाच रेषेला दर्शवतात आणि त्यामुळे अनंत उकल असतील. जर एक समीकरण दुसऱ्याला एका अचूक संख्येने गुणून मिळत असेल, तर ते स्वतंत्र नसतात आणि रेषेवरील सर्व बिंदूंसह शेअर करतात. इतर विकल्प अयोग्य आहेत कारण समीकरण समांतर नाहीत (जे उकल नसल्याचा अर्थ असतो) किंवा असंगत नाहीत (जे उकल नसल्याचा अर्थ असतो).",
+          "solution": "x = 0 ची 2x + y = 7 मध्ये बदल केल्याने y = 7 मिळतो, म्हणून (0, 7) हे उकल आहे. x = 1 ची बदल केल्याने y = 5 मिळतो, 6 नाही. x = 2 ची बदल केल्याने y = 3 मिळतो, 4 नाही. x = 3 ची बदल केल्याने y = 1 मिळतो, 2 नाही.",
+          "imageAlt": "समीकरण 2x + y = 7 चा आलेख ज्यावर A (0, 7), B (1, 5), C (2, 3), आणि D (3, 1) बिंदू आहेत",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "Graph of the equation 2x + y = 7 with points A (0, 7), B (1, 5), C (2, 3), and D (3, 1)",
+      "figure": {
+        "kind": "graph",
+        "spec": {
+          "x": {
+            "min": -1,
+            "max": 5,
+            "step": 1,
+            "label": "x"
+          },
+          "y": {
+            "min": 0,
+            "max": 8,
+            "step": 1,
+            "label": "y"
+          },
+          "grid": true,
+          "curves": [
+            {
+              "poly": [
+                2,
+                1,
+                7
+              ],
+              "dashed": false,
+              "label": "line"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 7,
+              "label": "A"
+            },
+            {
+              "x": 1,
+              "y": 5,
+              "label": "B"
+            },
+            {
+              "x": 2,
+              "y": 3,
+              "label": "C"
+            },
+            {
+              "x": 3,
+              "y": 1,
+              "label": "D"
+            }
+          ]
+        },
+        "labels": {
+          "line": {
+            "en": "2x + y = 7",
+            "hi": "2x + y = 7",
+            "mr": "2x + y = 7"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "confuses the value of y when x = 1",
+        "mistakes the value of y when x = 2",
+        "mistakes the value of y when x = 3"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is (0, 7), as substituting x = 0 into 2x + y = 7 yields y = 7. The other options incorrectly state the y-values for x = 1, 2, and 3, which are 5, 3, and 1 respectively.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.2 Solution of Linear Equation in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.2 Solution of Linear Equation in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.2 Solution of Linear Equation in Two Variables"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T01:16:08.766Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the slope of a line that goes upward from left to right?",
+      "choices": [
+        "Negative slope",
+        "Zero slope",
+        "Undefined slope",
+        "Positive slope"
+      ],
+      "answerIndex": 3,
+      "solution": "A positive slope indicates that as we move from left to right on a line, the line rises or goes upward. A negative slope would mean the line goes downward, a zero slope means the line is flat and horizontal, and an undefined slope means the line is vertical. Therefore, the correct answer is positive slope.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक रेखा की ढलान क्या है जो बाएं तरफ से ऊपर की ओर जाती है?",
+          "choices": [
+            "ऋणात्मक ढलान",
+            "शून्य ढलान",
+            "अपरिभाषित ढलान",
+            "धनात्मक ढलान"
+          ],
+          "solution": "धनात्मक ढलान दर्शाता है कि जब हम बाएं तरफ से दाएं तरफ एक रेखा पर जाते हैं, तो रेखा ऊपर की ओर बढ़ती है। ऋणात्मक ढलान का अर्थ होगा कि रेखा नीचे की ओर जाती है, शून्य ढलान का अर्थ होगा कि रेखा फ्लैट और क्षैतिज है और अपरिभाषित ढलान का अर्थ होगा कि रेखा लंबवत है। इसलिए, सही उत्तर धनात्मक ढलान है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content, with appropriate mathematical terminology used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रेषा बाजूने वर जात असताना तिचा चढता काय असतो?",
+          "choices": [
+            "नकारात्मक चढता",
+            "शून्य चढता",
+            "अनिश्चित चढता",
+            "धनात्मक चढता"
+          ],
+          "solution": "धनात्मक चढता असलेल्या रेषेवर बाजूने जाताना रेषा वर जाते. नकारात्मक चढता असलेल्या रेषेने खाली जाते, शून्य चढता असलेल्या रेषेने रेषा तपासून ठेवते आणि अनिश्चित चढता असलेल्या रेषेने रेषा उभी असते. म्हणूनच, योग्य उत्तर धनात्मक चढता आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology commonly used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses positive and negative slope",
+        "thinks slope is zero for upward lines",
+        "thinks slope is undefined for upward lines",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution correctly identifies the positive slope as the correct answer. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.3 Slope-intercept form of a Linear Equation",
+            "in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 7,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.3 Slope-intercept form of a Linear Equation",
+            "in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 8,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.3 Slope-intercept form of a Linear Equation",
+            "in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.3 Slope-intercept form of a Linear Equation",
+            "in Two Variables"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T01:16:08.766Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a linear equation in two variables has a solution (–3, 4), what must be true about the equation?",
+      "choices": [
+        "The equation must be of the form ax + by = 0",
+        "The equation must pass through the origin",
+        "The equation must have only one solution",
+        "The equation must satisfy the condition 3a + 4b = –2"
+      ],
+      "answerIndex": 3,
+      "solution": "The equation must satisfy 3a + 4b = –2 because substituting x = –3 and y = 4 into the equation ax + by = c results in –3a + 4b = c, which rearranges to 3a + 4b = –c. The other options are incorrect: the equation does not have to be of the form ax + by = 0, it does not necessarily pass through the origin, and a linear equation in two variables has infinitely many solutions, not just one.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो चरों में एक रैखिक समीकरण का हल (–3, 4) है, तो समीकरण के बारे में क्या आवश्यकता है?",
+          "choices": [
+            "समीकरण के रूप ax + by = 0 होना आवश्यक है",
+            "समीकरण मूल बिंदु से गुजरना आवश्यक है",
+            "समीकरण के केवल एक हल होना आवश्यक है",
+            "समीकरण के लिए 3a + 4b = –2 की स्थिति पूरी होनी आवश्यक है"
+          ],
+          "solution": "समीकरण के लिए 3a + 4b = –2 की स्थिति पूरी होनी आवश्यक है क्योंकि x = –3 और y = 4 को समीकरण ax + by = c में प्रतिस्थापित करने पर –3a + 4b = c प्राप्त होता है, जो 3a + 4b = –c में पुनर्व्यवस्थित किया जा सकता है। अन्य विकल्प गलत हैं: समीकरण के रूप ax + by = 0 होना आवश्यक नहीं है, यह आवश्यक नहीं है कि मूल बिंदु से गुजरे, और दो चरों में एक रैखिक समीकरण के अनंत हल होते हैं, केवल एक नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन चलांतील एक रेषीय समीकरणाचे उकल (–3, 4) असेल, तर त्या समीकरणाबद्दल काय खात्री असावी?",
+          "choices": [
+            "समीकरण अवश्य रूपात ax + by = 0 असावे",
+            "समीकरण मूलबिंदूतून जावे",
+            "समीकरणाला फक्त एक उकल असावी",
+            "समीकरणाने 3a + 4b = –2 ची अट पूर्ण करावी"
+          ],
+          "solution": "समीकरणाने 3a + 4b = –2 ची अट पूर्ण करावी कारण x = –3 आणि y = 4 या मूल्यांचा वापर समीकरण ax + by = c मध्ये केल्यास –3a + 4b = c मिळतो, जो 3a + 4b = –c च्या रूपात लिहिता येतो. इतर विकल्प चुकीचे आहेत: समीकरण अवश्य रूपात ax + by = 0 असावे असे नाही, ते मूलबिंदूतून जाणे आवश्यक नाही, आणि दोन चलांतील रेषीय समीकरणाला फक्त एक उकल नसून अनंत उकल असतात.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -950,10 +440,206 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses the form of the equation",
+        "Misunderstands the concept of a solution",
+        "Believes a linear equation has only one solution",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 3, as substituting (–3, 4) into the general form ax + by = c gives 3a + 4b = –2. The other options are incorrect because a linear equation in two variables does not have to be of the form ax + by = 0, does not have to pass through the origin, and has infinitely many solutions, not just one.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.2 Solution of Linear Equation in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.2 Solution of Linear Equation in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.2 Solution of Linear Equation in Two Variables"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T01:16:08.766Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If a linear equation in two variables has infinitely many solutions, the graph of the equation would represent",
+      "choices": [
+        "Two intersecting lines",
+        "Two parallel lines",
+        "A single line",
+        "A point"
+      ],
+      "answerIndex": 2,
+      "solution": "A linear equation in two variables always represents a straight line. If the equation has infinitely many solutions, it means the equation represents a single line. The other options represent different scenarios that do not match the condition of infinitely many solutions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि दो चरों वाला एक रैखिक समीकरण अनंत हलों के साथ हो, तो समीकरण का ग्राफ प्रदर्शित करेगा",
+          "choices": [
+            "दो प्रतिच्छेदी रेखाएं",
+            "दो समांतर रेखाएं",
+            "एक एकल रेखा",
+            "एक बिंदु"
+          ],
+          "solution": "दो चरों वाला एक रैखिक समीकरण हमेशा एक सीधी रेखा का प्रतिनिधित्व करता है। यदि समीकरण के अनंत हल होते हैं, तो इसका अर्थ है कि समीकरण एक एकल रेखा का प्रतिनिधित्व करता है। अन्य विकल्प अलग-अलग परिस्थितियों का प्रतिनिधित्व करते हैं जो अनंत हलों की स्थिति के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन चलांमधील रेषीय समीकरणाला अनंत उत्तरे असतील, तर समीकरणाचा आलेख दर्शविलेला असेल",
+          "choices": [
+            "दोन छेदिलेल्या रेषा",
+            "दोन समांतर रेषा",
+            "एक एकल रेषा",
+            "एक बिंदू"
+          ],
+          "solution": "दोन चलांमधील रेषीय समीकरणाचा आलेख सदैव एका सरळ रेषेचा असतो. जर समीकरणाला अनंत उत्तरे असतील, तर तो समीकरण एका एकल रेषेचा दर्शवितो. इतर पर्याय वेगवेगळ्या परिस्थितींचा दर्शवितात जे अनंत उत्तरांच्या अटीशी मेळ नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the graph of two equations with that of one equation",
+        "Misunderstands the condition for parallel lines",
         null,
-        "confuses the condition for infinitely many solutions with no solution",
-        "mistakenly thinks the equations are inconsistent",
-        "does not recognize that the equations are multiples of each other"
+        "Misinterprets the meaning of infinitely many solutions"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed. The correct answer is 'A single line,' as a linear equation in two variables represents a line, and infinitely many solutions imply that the equation is not restricted to a single point or multiple lines.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.1 Linear e"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.1 Linear e"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.2 Solution of Linear Equation in Two Variables"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T01:16:08.766Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following equations has the same solution set as the equation 3x + 2y = 12?",
+      "choices": [
+        "6x + 4y = 24",
+        "3x + 2y = 6",
+        "x + y = 4",
+        "2x + 3y = 12"
+      ],
+      "answerIndex": 0,
+      "solution": "The equation 6x + 4y = 24 is a multiple of 3x + 2y = 12, so they have the same solution set. The other equations do not match the original equation's solution set.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा समीकरण समीकरण 3x + 2y = 12 के समान हल समुच्चय रखता है?",
+          "choices": [
+            "6x + 4y = 24",
+            "3x + 2y = 6",
+            "x + y = 4",
+            "2x + 3y = 12"
+          ],
+          "solution": "समीकरण 6x + 4y = 24, 3x + 2y = 12 का गुणज है, अतः इनके समान हल समुच्चय होते हैं। अन्य समीकरण मूल समीकरण के हल समुच्चय के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the mathematical meaning, terminology, and structure of the original question.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणत्या समीकरणाचे उत्तरसेट मूळ समीकरण 3x + 2y = 12 च्या उत्तरसेटसोबत एकसारखे आहे?",
+          "choices": [
+            "6x + 4y = 24",
+            "3x + 2y = 6",
+            "x + y = 4",
+            "2x + 3y = 12"
+          ],
+          "solution": "6x + 4y = 24 हे 3x + 2y = 12 चे गुणक आहे, म्हणून त्यांचे उत्तरसेट एकसारखे आहेत. इतर समीकरणे मूळ समीकरणाच्या उत्तरसेटसोबत एकसारखे नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for equations and solution sets.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the original equation with a similar one but with a different constant term.",
+        "Chooses an equation with a different constant term",
+        "Confuses the coefficients of x and y"
       ],
       "solverAnswers": [
         0,
@@ -963,41 +649,139 @@
         0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The two equations are scalar multiples of each other, meaning they represent the same line and have infinitely many solutions.",
+      "critique": "The correct answer is 0 because 6x + 4y = 24 is a scalar multiple of 3x + 2y = 12, so they have the same solution set. The other options are incorrect for the reasons stated by the author.",
       "sources": [
         {
           "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 14,
-          "pageStart": 24,
-          "pageEnd": 25,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 13: Two Variables, One Line",
-            "13.5 Finding Solutions to a Pair of Linear Equations"
+            "13.1 Linear e"
           ]
         },
         {
           "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 15,
-          "pageStart": 26,
-          "pageEnd": 27,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 13: Two Variables, One Line",
-            "13.5 Finding Solutions to a Pair of Linear Equations"
+            "13.1 Linear e"
           ]
         },
         {
           "document": "ncert/9/mathematics/iemh205.pdf",
-          "ordinal": 16,
-          "pageStart": 27,
-          "pageEnd": 28,
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
           "headingPath": [
             "Chapter 13: Two Variables, One Line",
-            "13.5 Finding Solutions to a Pair of Linear Equations"
+            "13.2 Solution of Linear Equation in Two Variables"
           ]
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T12:37:59.535Z",
+      "generatedAt": "2026-10-30T01:16:08.766Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the equation 3x + 2y = 12 is equivalent to y = –x + 6, which of the following must be true about their graphs?",
+      "choices": [
+        "They are parallel lines",
+        "They are perpendicular lines",
+        "They are the same line",
+        "They intersect at one point"
+      ],
+      "answerIndex": 2,
+      "solution": "The equation 3x + 2y = 12 can be rearranged to y = –x + 6, showing they represent the same relationship between x and y. This means their graphs are identical, so they are the same line. Parallel lines have different slopes, perpendicular lines have slopes that multiply to –1, and intersecting lines meet at one point, none of which apply here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि समीकरण 3x + 2y = 12, y = –x + 6 के बराबर है, तो उनके ग्राफ के बारे में निम्न में से कौन-सा आवश्यक रूप से सही होगा?",
+          "choices": [
+            "वे समानांतर रेखाएँ हैं",
+            "वे लंबवत रेखाएँ हैं",
+            "वे एक ही रेखा हैं",
+            "वे एक बिंदु पर काटते हैं"
+          ],
+          "solution": "समीकरण 3x + 2y = 12 को y = –x + 6 के रूप में पुनर्व्यवस्थित किया जा सकता है, जो दर्शाता है कि वे x और y के बीच एक ही संबंध का प्रतिनिधित्व करते हैं। इसका अर्थ है कि उनके ग्राफ समान हैं, इसलिए वे एक ही रेखा हैं। समानांतर रेखाओं की ढलान अलग होती है, लंबवत रेखाओं की ढलान का गुणनफल –1 होता है, और काटती हुई रेखाएँ एक बिंदु पर मिलती हैं, जिनमें से कोई भी यहाँ लागू नहीं होता है।",
+          "imageAlt": null,
+          "critique": "Translation accurately conveys mathematical concepts with appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर समीकरण 3x + 2y = 12 हे y = –x + 6 शी समतुल्य असेल, तर त्यांच्या आलेखांबद्दल खालीलपैकी काय खासगी असेल?",
+          "choices": [
+            "ते समांतर रेषा असतील",
+            "ते लंब रेषा असतील",
+            "ते एकाच रेषा असतील",
+            "ते एका बिंदूत छेदतील"
+          ],
+          "solution": "समीकरण 3x + 2y = 12 ला y = –x + 6 च्या रूपात लिहिले जाऊ शकते, जे x आणि y च्या संबंधाचे एकाच व्याख्यान दर्शवते. हे त्यांच्या आलेखांच्या एकाच रेषा असल्याचे दर्शवते. समांतर रेषांची ढाल वेगळी असते, लंब रेषांची ढाल एकमेकांच्या गुणाकाराने –1 असतात आणि छेदक रेषांचा एक बिंदू असतो, जे येथे लागू होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the concept of equivalent equations",
+        "Confuses slope relationships",
+        null,
+        "Believes the lines intersect at one point"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The equations are equivalent, so they represent the same line. The author's reasoning for the wrong options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.2 Solution of Linear Equation in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.2 Solution of Linear Equation in Two Variables"
+          ]
+        },
+        {
+          "document": "ncert/9/mathematics/iemh205.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Two Variables, One Line",
+            "13.2 Solution of Linear Equation in Two Variables"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T01:16:08.766Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

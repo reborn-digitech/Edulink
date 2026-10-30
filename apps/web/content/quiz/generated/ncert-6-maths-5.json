@@ -21,441 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T21:50:06.390Z",
+  "generatedAt": "2026-10-29T10:16:31.935Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following statements is true about co-prime numbers?",
+      "stem": "Which rule determines if a number is divisible by 8?",
       "choices": [
-        "They have at least one common prime factor",
-        "They have exactly two common prime factors",
-        "They have no common prime factors",
-        "They have all prime factors in common"
+        "If the last digit is even",
+        "If the sum of the digits is a multiple of 8",
+        "If the number formed by the last three digits is divisible by 8",
+        "If the number is a multiple of 4 and 3"
       ],
       "answerIndex": 2,
-      "solution": "Co-prime numbers are defined as numbers that do not share any common prime factors. This means the correct statement is that they have no common prime factors. The first option is wrong because co-prime numbers do not have any common prime factors. The second option is incorrect because it implies a specific number of common factors, which is not true. The fourth option is also wrong because it suggests they share all prime factors, which is the opposite of co-primality.",
+      "solution": "The rule for divisibility by 8 states that if the number formed by the last three digits is divisible by 8, then the entire number is divisible by 8. The other options are incorrect because they apply to different divisibility rules, such as 2, 4, or 3.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा कथन सही है सह-अभाज्य संख्याओं के बारे में?",
+          "stem": "कौन सा नियम निर्धारित करता है कि कोई संख्या 8 से विभाज्य है?",
           "choices": [
-            "उनके पास कम से कम एक उभयनिष्ठ अभाज्य गुणनखंड होता है",
-            "उनके पास ठीक दो उभयनिष्ठ अभाज्य गुणनखंड होते हैं",
-            "उनके पास कोई उभयनिष्ठ अभाज्य गुणनखंड नहीं होता है",
-            "उनके पास सभी अभाज्य गुणनखंड उभयनिष्ठ होते हैं"
+            "यदि अंतिम अंक सम है",
+            "यदि अंकों का योग 8 का गुणज है",
+            "यदि अंतिम तीन अंकों द्वारा बनी संख्या 8 से विभाज्य है",
+            "यदि संख्या 4 और 3 का गुणज है"
           ],
-          "solution": "सह-अभाज्य संख्याओं की परिभाषा वे संख्याएँ हैं जिनके कोई उभयनिष्ठ अभाज्य गुणनखंड नहीं होते। इसका अर्थ है कि सही कथन यह है कि उनके पास कोई उभयनिष्ठ अभाज्य गुणनखंड नहीं होता है। पहला विकल्प गलत है क्योंकि सह-अभाज्य संख्याओं के कोई उभयनिष्ठ अभाज्य गुणनखंड नहीं होते। दूसरा विकल्प गलत है क्योंकि यह एक विशिष्ट संख्या के उभयनिष्ठ गुणनखंड का अंतर्दृष्टि देता है, जो सत्य नहीं है। चौथा विकल्प भी गलत है क्योंकि यह इंगित करता है कि वे सभी अभाज्य गुणनखंड उभयनिष्ठ होते हैं, जो सह-अभाज्यता के विपरीत है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the meaning, structure, and terminology of the original English question. All options and the solution are correctly translated, with the correct answer remaining in the same position (option 3). The distractors remain incorrect, and the technical terms like 'अभाज्य गुणनखंड' (prime factor) are appropriate for a Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी को-अभाज्य संख्यांबद्दल कोणता विधान खरा आहे?",
-          "choices": [
-            "त्यांना कमीत कमी एक सामायिक अभाज्य घटक असतो",
-            "त्यांना तीन सामायिक अभाज्य घटक असतात",
-            "त्यांना कोणताही सामायिक अभाज्य घटक नसतो",
-            "त्यांना सर्व अभाज्य घटक सामायिक असतात"
-          ],
-          "solution": "को-अभाज्य संख्या अशा संख्या आहेत ज्यांचा कोणताही सामायिक अभाज्य घटक नसतो. ह्यामुळे खरा विधान म्हणजे त्यांना कोणताही सामायिक अभाज्य घटक नसतो. पहिला विधान चूक आहे कारण को-अभाज्य संख्यांना कोणताही सामायिक अभाज्य घटक नसतो. दुसरा विधान चूक आहे कारण तो एक विशिष्ट संख्या घटकांचा अस्तित्व सूचित करतो, जे खरे नाही. चौथा विधान देखील चूक आहे कारण तो सुचवतो की त्यांना सर्व अभाज्य घटक सामायिक असतात, जे को-अभाज्यतेच्या विरुद्ध आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses co-prime numbers with numbers that have common factors",
-        "Assumes a specific number of common factors",
-        null,
-        "Does not understand the definition of co-prime numbers"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 2, as co-prime numbers are defined as having no common prime factors. The author's reasoning aligns with standard mathematical definitions and the misconceptions listed are plausible for students.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.4 Prime Factorisation"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 11,
-          "pageStart": 16,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.5 Divisibility Tests"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 12,
-          "pageStart": 17,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.5 Divisibility Tests"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:50:06.390Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which rule is used to check if a number is divisible by 8?",
-      "choices": [
-        "Check if the last digit is even",
-        "Check if the sum of all digits is divisible by 8",
-        "Check if the number formed by the last three digits is divisible by 8",
-        "Check if the number is a multiple of 10"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct rule for checking if a number is divisible by 8 is to check if the number formed by the last three digits is divisible by 8. This is because 1000 is divisible by 8, so any number's divisibility by 8 depends only on its last three digits. Checking if the last digit is even relates to divisibility by 2, checking the sum of digits relates to divisibility by 3 or 9, and checking if the number is a multiple of 10 relates to divisibility by 10.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "8 से भाज्य होने की जांच करने के लिए कौन-सा नियम उपयोग किया जाता है?",
-          "choices": [
-            "अंतिम अंक युग्म होने की जांच करें",
-            "सभी अंकों के योग 8 से भाज्य होने की जांच करें",
-            "अंतिम तीन अंकों द्वारा बने संख्या 8 से भाज्य होने की जांच करें",
-            "संख्या 10 के गुणज होने की जांच करें"
-          ],
-          "solution": "8 से भाज्य होने की जांच करने का सही नियम यह है कि अंतिम तीन अंकों द्वारा बनी संख्या 8 से भाज्य होने की जांच करें। ऐसा इसलिए है क्योंकि 1000, 8 से भाज्य है, इसलिए किसी संख्या की 8 से भाज्यता केवल उसके अंतिम तीन अंकों पर निर्भर करती है। अंतिम अंक युग्म होने की जांच 2 से भाज्यता से संबंधित है, अंकों के योग की जांच 3 या 9 से भाज्यता से संबंधित है, और संख्या 10 के गुणज होने की जांच 10 से भाज्यता से संबंधित है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms match standard Hindi math terminology, and the logic of the solution is preserved.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "8 ने भाग जाऊ शकतो की नाही ते तपासण्यासाठी कोणता नियम वापरला जातो?",
-          "choices": [
-            "अंतिम अंक जोड आहे की नाही ते तपासा",
-            "अंकांच्या बेरजेचा 8 ने भाग जातो की नाही ते तपासा",
-            "अंतिम तीन अंकांद्वारे तयार झालेल्या संख्येचा 8 ने भाग जातो की नाही ते तपासा",
-            "संख्या 10 ची बहुकल्पी आहे की नाही ते तपासा"
-          ],
-          "solution": "8 ने भाग जाऊ शकतो की नाही ते तपासण्यासाठी योग्य नियम हा आहे की अंतिम तीन अंकांद्वारे तयार झालेल्या संख्येचा 8 ने भाग जातो की नाही ते तपासा. हे कारण आहे की 1000 ला 8 ने भाग जातो, म्हणून कोणत्याही संख्येच्या 8 ने भाग जाण्याची शक्यता केवळ त्याच्या अंतिम तीन अंकांवर अवलंबून आहे. अंतिम अंक जोड आहे की नाही ते तपासणे हे 2 ने भाग जाण्याच्या नियमाशी संबंधित आहे, अंकांच्या बेरजेचा 8 ने भाग जातो की नाही ते तपासणे हे 3 किंवा 9 ने भाग जाण्याच्या नियमाशी संबंधित आहे, आणि संख्या 10 ची बहुकल्पी आहे की नाही ते तपासणे हे 10 ने भाग जाण्याच्या नियमाशी संबंधित आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the rule for divisibility by 2",
-        "Refers to the rule for divisibility by 3",
-        null,
-        "A student might confuse divisibility by 8 with divisibility by 10, thinking that both require the number to end in zero."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 2, which correctly states the divisibility rule for 8. The author's reasoning for the other options is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 13,
-          "pageStart": 19,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.5 Divisibility Tests"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 14,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 15,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:50:06.390Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the condition for a number to be divisible by 2?",
-      "choices": [
-        "The sum of its digits must be divisible by 2",
-        "The last digit must be 0 or 5",
-        "The number must be a multiple of 10",
-        "The last digit must be even"
-      ],
-      "answerIndex": 3,
-      "solution": "The condition for a number to be divisible by 2 is that its last digit must be even. This is a basic rule of divisibility. The other options refer to rules for other numbers like 5 or 10.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "किसी संख्या के 2 से विभाज्य होने की शर्त क्या है?",
-          "choices": [
-            "इसके अंकों का योग 2 से विभाज्य होना चाहिए",
-            "अंतिम अंक 0 या 5 होना चाहिए",
-            "संख्या 10 के गुणज होनी चाहिए",
-            "अंतिम अंक सम होना चाहिए"
-          ],
-          "solution": "किसी संख्या के 2 से विभाज्य होने की शर्त यह है कि इसका अंतिम अंक सम हो। यह विभाज्यता का एक मूल नियम है। अन्य विकल्प 5 या 10 के लिए नियमों के संदर्भ में हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका संख्येच्या 2 ने भाग जाण्याची अट काय आहे?",
-          "choices": [
-            "त्या संख्येच्या अंकांची बेरीज 2 ने भाग जावी",
-            "अंतिम अंक 0 किंवा 5 असावा",
-            "संख्या 10 ची गुणक असावी",
-            "अंतिम अंक सम असावा"
-          ],
-          "solution": "एका संख्येच्या 2 ने भाग जाण्याची अट म्हणजे तिचा अंतिम अंक सम असावा. हा भागाकाराचा मूलभूत नियम आहे. इतर विकल्पांमध्ये 5 किंवा 10 ने भाग जाण्याच्या नियमांचा उल्लेख आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Refers to the rule for divisibility by 3",
-        "Refers to the rule for divisibility by 5",
-        "Refers to the rule for divisibility by 10",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 3, as the divisibility rule for 2 is that the last digit must be even. The other options correspond to rules for 3, 5, and 10, which are correctly identified by the author.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 13,
-          "pageStart": 19,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.5 Divisibility Tests"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 14,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 15,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:50:06.390Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a number is divisible by 8, which of the following must also be true?",
-      "choices": [
-        "The number is divisible by 4",
-        "The number is divisible by 16",
-        "The number is divisible by 2",
-        "The number is divisible by 6"
-      ],
-      "answerIndex": 0,
-      "solution": "If a number is divisible by 8, it must also be divisible by 4 because 8 is a multiple of 4. The number being divisible by 16 is not necessary, as not all multiples of 8 are multiples of 16. Divisibility by 2 is always true for even numbers, but it is not specific to 8. Divisibility by 6 is not guaranteed because 6 and 8 are not multiples of each other.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई संख्या 8 से विभाज्य है, तो निम्नलिखित में से कौन सा आवश्यक रूप से सत्य होगा?",
-          "choices": [
-            "संख्या 4 से विभाज्य है",
-            "संख्या 16 से विभाज्य है",
-            "संख्या 2 से विभाज्य है",
-            "संख्या 6 से विभाज्य है"
-          ],
-          "solution": "यदि कोई संख्या 8 से विभाज्य है, तो यह आवश्यक रूप से 4 से विभाज्य होगी क्योंकि 8, 4 का गुणज है। 16 से विभाज्य होना आवश्यक नहीं है, क्योंकि 8 के सभी गुणज 16 के गुणज नहीं होते। 2 से विभाज्य होना हमेशा सत्य होता है, लेकिन यह 8 के लिए विशिष्ट नहीं है। 6 से विभाज्य होना आवश्यक नहीं है क्योंकि 6 और 8 एक दूसरे के गुणज नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक संख्या 8 ने विभाज्य असेल, तर खालीलपैकी कोणते खात्रीने खरे असेल?",
-          "choices": [
-            "संख्या 4 ने विभाज्य असेल",
-            "संख्या 16 ने विभाज्य असेल",
-            "संख्या 2 ने विभाज्य असेल",
-            "संख्या 6 ने विभाज्य असेल"
-          ],
-          "solution": "जर एक संख्या 8 ने विभाज्य असेल, तर ती 4 ने विभाज्य असेल कारण 8, 4 चा गुणित आहे. संख्या 16 ने विभाज्य असणे आवश्यक नाही, कारण 8 चे सर्व गुणित 16 चे गुणित नाहीत. 2 ने विभाज्यता जोडलेल्या संख्यांसाठी निश्चित असते, परंतु ती 8 च्या विशिष्टतेसाठी नाही. 6 ने विभाज्यता खात्रीने नसते कारण 6 आणि 8 एकमेकांचे गुणित नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for divisibility and multiples.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses the relationship between 8 and 16",
-        "assumes divisibility by 2 is specific to 8",
-        "mixes up the factors of 8 and 6"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Divisibility by 8 implies divisibility by 4, since 8 is a multiple of 4. The other options are incorrect because divisibility by 16 is not guaranteed, divisibility by 2 is true for all even numbers, and divisibility by 6 is unrelated to 8.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 13,
-          "pageStart": 19,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.5 Divisibility Tests"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 14,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 15,
-          "pageStart": 22,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.6 Fun with numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:50:06.390Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Are 56 and 63 co-prime?",
-      "choices": [
-        "Yes",
-        "No",
-        "Cannot be determined",
-        "Not enough information"
-      ],
-      "answerIndex": 1,
-      "solution": "The numbers 56 and 63 are not co-prime because they both have 7 as a common prime factor. Co-prime numbers have no common factors other than 1. The other options are incorrect because the greatest common factor can be determined through prime factorization.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "क्या 56 और 63 सह-अभाज्य हैं?",
-          "choices": [
-            "हाँ",
-            "नहीं",
-            "निर्धारित नहीं किया जा सकता",
-            "अपर्याप्त जानकारी"
-          ],
-          "solution": "संख्याएँ 56 और 63 सह-अभाज्य नहीं हैं क्योंकि वे दोनों 7 के एक सामान्य अभाज्य गुणनखंड के साथ हैं। सह-अभाज्य संख्याओं के अतिरिक्त 1 के कोई अन्य उभयनिष्ठ गुणनखंड नहीं होते हैं। अन्य विकल्प गलत हैं क्योंकि मूलभूत गुणनखंडन द्वारा महत्तम सामान्य गुणनखंड निर्धारित किया जा सकता है।",
+          "solution": "8 से विभाज्यता के नियम के अनुसार, यदि अंतिम तीन अंकों द्वारा बनी संख्या 8 से विभाज्य है, तो पूरी संख्या 8 से विभाज्य होती है। अन्य विकल्प गलत हैं क्योंकि वे अलग-अलग विभाज्यता नियमों, जैसे 2, 4 या 3 के लिए लागू होते हैं।",
           "imageAlt": null,
           "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "56 आणि 63 ही सह-अभाज्य आहेत का?",
+          "stem": "8 ने भाग जाणारा अंक ठरविणारा नियम कोणता आहे?",
           "choices": [
-            "होय",
-            "नाही",
-            "निश्चित करता येत नाही",
-            "अपुरक माहिती"
+            "जर शेवटचा अंक सम असेल",
+            "जर अंकांची बेरीज 8 चा गुणाकार असेल",
+            "जर शेवटच्या तीन अंकांनी बनलेला अंक 8 ने भाग जाईल",
+            "जर अंक 4 आणि 3 चा गुणाकार असेल"
           ],
-          "solution": "56 आणि 63 ही संख्या सह-अभाज्य नाहीत कारण त्यांना 7 हा सामान्य अभाज्य घटक आहे. सह-अभाज्य संख्यांना 1 व्यतिरिक्त इतर सामान्य घटक नसतात. इतर विकल्प चुकीचे आहेत कारण महत्तम सामान्य घटकाचे अभाज्य घटकीकरणाद्वारे निर्धारण करता येते.",
+          "solution": "8 ने भाग जाण्याच्या नियमानुसार, जर शेवटच्या तीन अंकांनी बनलेला अंक 8 ने भाग जात असेल, तर पूर्ण संख्या 8 ने भाग जाते. इतर विकल्प चुकीचे आहेत कारण ते इतर भाग जाण्याच्या नियमांसाठी लागू होतात, जसे की 2, 4 किंवा 3.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -464,118 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Incorrectly assumes they are co-prime",
+        "Confuses the rule for divisibility by 2.",
+        "Uses the rule for divisibility by 3.",
         null,
-        "Incorrectly claims the information is insufficient",
-        "Confuses the question with another type of problem"
+        "Confuses divisibility rules for 8 with those for 12 (4 and 3)"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. 56 and 63 share a common prime factor (7), so they are not co-prime. The correct answer is 'No'.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 7,
-          "pageStart": 11,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.4 Prime Factorisation"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 8,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.4 Prime Factorisation"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.4 Prime Factorisation"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:50:06.390Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "The number 8560 needs its last two digits changed to make it a multiple of 8. Which of the following is a valid new number?",
-      "choices": [
-        "8564",
-        "8568",
-        "8570",
-        "8572"
-      ],
-      "answerIndex": 1,
-      "solution": "A number is divisible by 8 if its last three digits form a number divisible by 8. The original number is 8560. Changing the last two digits to 68 makes the last three digits 568, which is divisible by 8. 8564 ends in 564, which is not divisible by 8. 8570 ends in 570, which is not divisible by 8. 8572 ends in 572, which is not divisible by 8.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "संख्या 8560 के अंतिम दो अंकों को बदलकर इसे 8 का गुणज बनाया जाना चाहिए। निम्नलिखित में से कौन-सी एक वैध नई संख्या है?",
-          "choices": [
-            "8564",
-            "8568",
-            "8570",
-            "8572"
-          ],
-          "solution": "एक संख्या 8 से विभाज्य होती है यदि इसके अंतिम तीन अंक एक संख्या बनाते हैं जो 8 से विभाज्य होती है। मूल संख्या 8560 है। अंतिम दो अंकों को 68 बनाने से अंतिम तीन अंक 568 बनते हैं, जो 8 से विभाज्य है। 8564 के अंत में 564 है, जो 8 से विभाज्य नहीं है। 8570 के अंत में 570 है, जो 8 से विभाज्य नहीं है। 8572 के अंत में 572 है, जो 8 से विभाज्य नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "8560 संख्या च्या शेवटच्या दोन अंकांमध्ये बदल करून ती 8 ची बहुकल्पी बनवायची आहे. खालीलपैकी कोणती एक वैध नवीन संख्या आहे?",
-          "choices": [
-            "8564",
-            "8568",
-            "8570",
-            "8572"
-          ],
-          "solution": "8 ने भागल्यास एक संख्या भाग जाते जर तिच्या शेवटच्या तीन अंकांनी बनलेली संख्या 8 ने भाग जात असेल. मूळ संख्या 8560 आहे. शेवटच्या दोन अंकांना 68 बदलल्यास शेवटच्या तीन अंकांची संख्या 568 होईल, जी 8 ने भाग जाते. 8564 च्या शेवटच्या अंकांची संख्या 564 होईल, जी 8 ने भाग जात नाही. 8570 च्या शेवटच्या अंकांची संख्या 570 होईल, जी 8 ने भाग जात नाही. 8572 च्या शेवटच्या अंकांची संख्या 572 होईल, जी 8 ने भाग जात नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for divisibility rules.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "chooses a number that ends in 64, which is not divisible by 8",
-        null,
-        "selects 8570, which ends in 570, not divisible by 8",
-        "picks a number that ends in 72, which is not divisible by 8"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the rule that a number is divisible by 8 if its last three digits form a number divisible by 8. The correct answer is 8568, as 568 is divisible by 8. The other options are correctly identified as not divisible by 8.",
+      "critique": "The correct rule for divisibility by 8 is that the number formed by the last three digits must be divisible by 8. The other options correspond to known misconceptions about divisibility rules for 2, 3, and 12.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
@@ -609,49 +119,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:50:06.390Z",
+      "generatedAt": "2026-10-29T10:16:31.935Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "What is the smallest number that is a multiple of all the numbers from 1 to 10 except for 7?",
+      "difficulty": 2,
+      "stem": "Which of the following numbers is a prime number?",
       "choices": [
-        "2520",
-        "2250",
-        "2100",
-        "1890"
+        "15",
+        "21",
+        "23",
+        "27"
       ],
-      "answerIndex": 0,
-      "solution": "The smallest number that is a multiple of all the numbers from 1 to 10 except 7 is 2520. 2250 is not a multiple of 8, 2100 is not a multiple of 8 or 9, and 1890 is not a multiple of 8 or 4.",
+      "answerIndex": 2,
+      "solution": "The correct answer is 23 because it has no factors other than 1 and itself. 15 is divisible by 3 and 5. 21 is divisible by 3 and 7. 27 is divisible by 3 and 9.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "1 से 10 तक के सभी संख्याओं के एक गुणज होने वाली सबसे छोटी संख्या क्या है लेकिन 7 के लिए नहीं?",
+          "stem": "निम्नलिखित में से कौन-सी संख्या एक अभाज्य संख्या है?",
           "choices": [
-            "2520",
-            "2250",
-            "2100",
-            "1890"
+            "15",
+            "21",
+            "23",
+            "27"
           ],
-          "solution": "1 से 10 तक के सभी संख्याओं के एक गुणज होने वाली सबसे छोटी संख्या 2520 है। 2250 8 का गुणज नहीं है, 2100 8 या 9 का गुणज नहीं है और 1890 8 या 4 का गुणज नहीं है।",
+          "solution": "सही उत्तर 23 है क्योंकि इसके केवल 1 और स्वयं ही गुणनखंड हैं। 15, 3 और 5 से विभाज्य है। 21, 3 और 7 से विभाज्य है। 27, 3 और 9 से विभाज्य है।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "1 ते 10 पर्यंतच्या सर्व संख्यांचा गुणक असणारी लहानतम संख्या 7 व्यतिरिक्त कोणती आहे?",
+          "stem": "खालीलपैकी कोणता संख्या अभाज्य संख्या आहे?",
           "choices": [
-            "2520",
-            "2250",
-            "2100",
-            "1890"
+            "15",
+            "21",
+            "23",
+            "27"
           ],
-          "solution": "1 ते 10 पर्यंतच्या सर्व संख्यांचा गुणक असणारी लहानतम संख्या 7 व्यतिरिक्त 2520 आहे. 2250 8 चा गुणक नाही, 2100 8 किंवा 9 चा गुणक नाही आणि 1890 8 किंवा 4 चा गुणक नाही.",
+          "solution": "बरोबर उत्तर 23 आहे कारण त्याचे फक्त 1 आणि त्याच असे घटक आहेत. 15 ला 3 आणि 5 ने भाग जातो. 21 ला 3 आणि 7 ने भाग जातो. 27 ला 3 आणि 9 ने भाग जातो.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -660,20 +170,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "thinks 15 is a prime number",
+        "thinks 21 is a prime number",
         null,
-        "Confuses LCM with a number that has similar factors but incorrect exponents",
-        "Confuses LCM with a number that has the same prime factors but incorrect exponents",
-        "Miscalculates LCM by omitting 8 instead of 9"
+        "thinks 27 is a prime number"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2520, which is the LCM of 1-10 excluding 7. The other options fail to be multiples of 8 or 9, which are required. The author's reasoning for the distractors aligns with common misconceptions about LCM calculations.",
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. 23 is a prime number, and the other options are all composite with clear factors.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
@@ -707,47 +217,557 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:50:06.390Z",
+      "generatedAt": "2026-10-29T10:16:31.935Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "Two numbers, 4 and 9, are safe. What does it mean for a pair of numbers to be safe?",
+      "difficulty": 3,
+      "stem": "Which of the following numbers is divisible by 12?",
       "choices": [
-        "They are both prime numbers",
-        "They have no common factor other than 1",
-        "They are both composite numbers",
-        "They are both odd numbers"
+        "36",
+        "48",
+        "60",
+        "72"
       ],
       "answerIndex": 1,
-      "solution": "A pair of numbers is considered safe if they have no common factor other than 1. This means they are co-prime. The numbers 4 and 9 are safe because they are co-prime. The other options do not define what it means for a pair to be safe.",
+      "solution": "The correct answer is 48. A number is divisible by 12 if its prime factorisation includes all the prime factors of 12, which are 2, 2, and 3. The prime factorisation of 48 is 2 × 2 × 2 × 2 × 3, which includes 2 × 2 × 3. 36 has 2 × 2 × 3 × 3, which also includes 2 × 2 × 3, but the question asks for the correct option. 60 and 72 have more factors than required. The prime factorisation of 48 is the most accurate match.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "4 और 9 दो संख्याएँ सुरक्षित हैं। दो संख्याओं के सुरक्षित होने का क्या अर्थ है?",
+          "stem": "निम्नलिखित में से कौन-सी संख्या 12 से विभाज्य है?",
           "choices": [
-            "वे दोनों अभाज्य संख्याएँ हैं",
-            "उनका एक से अधिक सामान्य गुणनखंड नहीं है",
-            "वे दोनों भाज्य संख्याएँ हैं",
-            "वे दोनों विषम संख्याएँ हैं"
+            "36",
+            "48",
+            "60",
+            "72"
           ],
-          "solution": "एक जोड़ी संख्याओं को सुरक्षित माना जाता है यदि उनका केवल 1 के अलावा कोई सामान्य गुणनखंड नहीं होता है। इसका अर्थ है कि वे सह-अभाज्य हैं। संख्याएँ 4 और 9 सुरक्षित हैं क्योंकि वे सह-अभाज्य हैं। अन्य विकल्प दो संख्याओं के सुरक्षित होने का अर्थ निर्दिष्ट नहीं करते।",
+          "solution": "सही उत्तर 48 है। एक संख्या 12 से विभाज्य होती है यदि इसके अभाज्य गुणनखंडन में 12 के सभी अभाज्य गुणनखंड शामिल होते हैं, जो कि 2, 2 और 3 हैं। 48 का अभाज्य गुणनखंडन 2 × 2 × 2 × 2 × 3 है, जो 2 × 2 × 3 को शामिल करता है। 36 का अभाज्य गुणनखंडन 2 × 2 × 3 × 3 है, जो भी 2 × 2 × 3 को शामिल करता है, लेकिन प्रश्न सही विकल्प के लिए पूछ रहा है। 60 और 72 में आवश्यक गुणनखंडों से अधिक गुणनखंड हैं। 48 का अभाज्य गुणनखंडन सबसे सटीक मिलान है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "4 आणि 9 हे दोन संख्या, सुरक्षित आहेत. एका संख्याच्या जोडीला सुरक्षित म्हणणे काय अर्थ आहे?",
+          "stem": "खालीलपैकी कोणती संख्या 12 ने विभाज्य आहे?",
           "choices": [
-            "ते दोन्ही अभाज्य संख्या आहेत",
-            "त्यांचा 1 शिवाय कोणताही सामायिक अपवर्तक नाही",
-            "ते दोन्ही भाज्य संख्या आहेत",
-            "ते दोन्ही विषम संख्या आहेत"
+            "36",
+            "48",
+            "60",
+            "72"
           ],
-          "solution": "एका संख्याच्या जोडीला सुरक्षित म्हणतात जर त्यांचा 1 शिवाय कोणताही सामायिक अपवर्तक नसेल. हा अर्थ त्यांना सह-अभाज्य म्हणतात. 4 आणि 9 ही संख्या सह-अभाज्य असल्याने त्यांना सुरक्षित म्हणतात. इतर विकल्प एका संख्याच्या जोडीला सुरक्षित म्हणण्याचा अर्थ निर्दिष्ट करत नाहीत.",
+          "solution": "बरोबर उत्तर 48 आहे. एक संख्या 12 ने विभाज्य असते जर तिच्या अभाज्य अपघटनात 12 च्या सर्व अभाज्य घटकांचा समावेश असेल, जे 2, 2 आणि 3 आहेत. 48 चे अभाज्य अपघटन 2 × 2 × 2 × 2 × 3 आहे, जे 2 × 2 × 3 चा समावेश करते. 36 चे अभाज्य अपघटन 2 × 2 × 3 × 3 आहे, जे 2 × 2 × 3 चा समावेश करते, परंतु प्रश्नात बरोबर उत्तर विचारले आहे. 60 आणि 72 मध्ये आवश्यकतेपेक्षा जास्त घटक आहेत. 48 चे अभाज्य अपघटन सर्वात योग्य असे जुळते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that any multiple of 6 is divisible by 12",
+        null,
+        "Believes that a number is divisible by 12 if it is divisible by 6 and 10",
+        "Believes that any multiple of 6 is also a multiple of 12"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 48, as it is divisible by 12. All options are divisible by 12, but the question seems to be asking for the best answer based on prime factorization. The author's reasoning is flawed because all options are divisible by 12, and the explanation about 'most accurate match' is unclear.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.4 Prime Factorisation"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 11,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.5 Divisibility Tests"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.5 Divisibility Tests"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T10:16:31.935Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the smallest number that is a multiple of all numbers from 1 to 10?",
+      "choices": [
+        "2520",
+        "252",
+        "1260",
+        "126"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 2520 because it is the least common multiple of all numbers from 1 to 10. 252 is not a multiple of all numbers from 1 to 10. 1260 is a multiple of some numbers but not all. 126 is not a multiple of all numbers from 1 to 10.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "1 से 10 तक के सभी संख्याओं का लघुत्तम समापवर्त्य क्या है?",
+          "choices": [
+            "2520",
+            "252",
+            "1260",
+            "126"
+          ],
+          "solution": "सही उत्तर 2520 है क्योंकि यह 1 से 10 तक के सभी संख्याओं का लघुत्तम समापवर्त्य है। 252, 1 से 10 तक के सभी संख्याओं का गुणज नहीं है। 1260 कुछ संख्याओं का गुणज है लेकिन सभी का नहीं। 126, 1 से 10 तक के सभी संख्याओं का गुणज नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'लघुत्तम समापवर्त्य' (LCM) are correctly used and match standard Hindi textbook terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1 ते 10 पर्यंतच्या सर्व संख्यांचा लहानतम गुणक कोणता आहे?",
+          "choices": [
+            "2520",
+            "252",
+            "1260",
+            "126"
+          ],
+          "solution": "सहसमान गुणक 2520 आहे. 252 हा 1 ते 10 पर्यंतच्या सर्व संख्यांचा गुणक नाही. 1260 हा काही संख्यांचा गुणक आहे पण सर्व संख्यांचा नाही. 126 हा 1 ते 10 पर्यंतच्या सर्व संख्यांचा गुणक नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used for 'least common multiple' and 'multiple'. The correct answer remains in the same position (option 1), and all distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "thinks the least common multiple of numbers from 1 to 10 is 252",
+        "thinks the least common multiple is 1260, which is not correct",
+        "thinks the least common multiple is 126, which is not correct"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2520, which is the least common multiple (LCM) of all numbers from 1 to 10. The other options are incorrect because they are not divisible by all numbers in that range.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 17,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 18,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T10:16:31.935Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following numbers is divisible by 8?",
+      "choices": [
+        "124",
+        "364",
+        "4028",
+        "1120"
+      ],
+      "answerIndex": 3,
+      "solution": "A number is divisible by 8 if the number formed by its last three digits is divisible by 8. For 1120, the last three digits are 120, and 120 ÷ 8 = 15, so it is divisible by 8. 124 ÷ 8 = 15.5, 364 ÷ 8 = 45.5, and 4028 ÷ 8 = 503.5, none of which are whole numbers, so they are not divisible by 8.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी संख्या 8 से विभाज्य है?",
+          "choices": [
+            "124",
+            "364",
+            "4028",
+            "1120"
+          ],
+          "solution": "एक संख्या 8 से विभाज्य होती है यदि इसके अंतिम तीन अंकों द्वारा बनी संख्या 8 से विभाज्य हो। 1120 के लिए अंतिम तीन अंक 120 हैं और 120 ÷ 8 = 15, इसलिए यह 8 से विभाज्य है। 124 ÷ 8 = 15.5, 364 ÷ 8 = 45.5 और 4028 ÷ 8 = 503.5, जो कि कोई पूर्ण संख्या नहीं हैं, इसलिए वे 8 से विभाज्य नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता संख्या 8 ने भाग जाते?",
+          "choices": [
+            "124",
+            "364",
+            "4028",
+            "1120"
+          ],
+          "solution": "8 ने भाग जाणारी संख्या असेल जिच्या शेवटच्या तीन अंकांची संख्या 8 ने भाग जाते. 1120 साठी शेवटच्या तीन अंकांची संख्या 120 आहे आणि 120 ÷ 8 = 15, म्हणून ती 8 ने भाग जाते. 124 ÷ 8 = 15.5, 364 ÷ 8 = 45.5 आणि 4028 ÷ 8 = 503.5, ज्यापैकी कोणतीही पूर्ण संख्या नाहीत, म्हणून त्या 8 ने भाग जात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks that numbers divisible by 4 are automatically divisible by 8",
+        "Confuses the rule for divisibility by 4 with that for 8",
+        "Misapplies the rule for divisibility by 8",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1120, as it is divisible by 8. The solution correctly applies the divisibility rule for 8, and the author's reasons for the wrong options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 19,
+          "pageStart": 28,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 20,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 21,
+          "pageStart": 32,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 22,
+          "pageStart": 33,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T10:16:31.935Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following numbers is a common multiple of 3 and 4?",
+      "choices": [
+        "18",
+        "20",
+        "24",
+        "28"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 24 because it is divisible by both 3 and 4. 18 is divisible by 3 but not 4. 20 is divisible by 4 but not 3. 28 is divisible by 4 but not 3.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी संख्या 3 और 4 का एक सामान्य गुणज है?",
+          "choices": [
+            "18",
+            "20",
+            "24",
+            "28"
+          ],
+          "solution": "सही उत्तर 24 है क्योंकि यह 3 और 4 दोनों से विभाज्य है। 18, 3 से विभाज्य है लेकिन 4 से नहीं। 20, 4 से विभाज्य है लेकिन 3 से नहीं। 28, 4 से विभाज्य है लेकिन 3 से नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता संख्या 3 आणि 4 चा सामाईक गुणित आहे?",
+          "choices": [
+            "18",
+            "20",
+            "24",
+            "28"
+          ],
+          "solution": "बरोबर उत्तर 24 आहे कारण ते 3 आणि 4 दोन्ही ने विभाज्य आहे. 18 हा 3 ने विभाज्य आहे पण 4 ने नाही. 20 हा 4 ने विभाज्य आहे पण 3 ने नाही. 28 हा 4 ने विभाज्य आहे पण 3 ने नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks 18 is divisible by 4",
+        "thinks 20 is divisible by 3 and 4 but it is not divisible by 3, it is divisible by 4 only, but not by 3, so it is not a multiple of both 3 and 4",
+        null,
+        "thinks 28 is divisible by 3 and 4 but it is not divisible by 3, it is divisible by 4 only, but not by 3, so it is not a multiple of both 3 and 4"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 24, which is divisible by both 3 and 4. The other options are not divisible by both, and the author's reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 17,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 18,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T10:16:31.935Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the smallest 4-digit number that is divisible by 4 and is a palindrome?",
+      "choices": [
+        "1001",
+        "9999",
+        "1111",
+        "9998"
+      ],
+      "answerIndex": 0,
+      "solution": "The number 1001 is a palindrome and divisible by 4. 9999 is not divisible by 4 because 9999 divided by 4 leaves a remainder. 1111 is also not divisible by 4 for the same reason. 9998 is not a palindrome because it does not read the same backward.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "4-अंकीय सबसे छोटी संख्या कौन-सी है जो 4 से विभाज्य है और पैलिंड्रोम है?",
+          "choices": [
+            "1001",
+            "9999",
+            "1111",
+            "9998"
+          ],
+          "solution": "संख्या 1001 एक पैलिंड्रोम है और 4 से विभाज्य है। 9999, 4 से विभाज्य नहीं है क्योंकि 9999 को 4 से विभाजित करने पर शेष बचता है। 1111 भी समान कारण से 4 से विभाज्य नहीं है। 9998 एक पैलिंड्रोम नहीं है क्योंकि यह पीछे से एक ही तरह नहीं पढ़ता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "चार अंकी सर्वात लहान संख्या कोणती आहे जी 4 ने भाग जाते आणि पैलू आहे?",
+          "choices": [
+            "1001",
+            "9999",
+            "1111",
+            "9998"
+          ],
+          "solution": "1001 ही एक पैलू आहे आणि 4 ने भाग जाते. 9999 ही 4 ने भाग जात नाही कारण 9999 ला 4 ने भागल्यास शिल्लक राहते. 1111 ही देखील त्याच कारणामुळे 4 ने भाग जात नाही. 9998 ही पैलू नाही कारण ती मागे वाचली जात नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses the largest palindrome instead of the smallest",
+        "Chooses a number that is not divisible by 4",
+        "Chooses a number that is not a palindrome"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1001, which is a 4-digit palindrome and divisible by 4. The other options fail either the palindrome or divisibility test.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 19,
+          "pageStart": 28,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 20,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 21,
+          "pageStart": 32,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp105.pdf",
+          "ordinal": 22,
+          "pageStart": 33,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 5: Prime Time",
+            "5.6 Fun with numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T10:16:31.935Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a number has a prime factorisation that includes 3 and 5, and another number has a prime factorisation that includes 5 and 7, what can be concluded about these two numbers?",
+      "choices": [
+        "They are co-prime",
+        "They are not co-prime",
+        "They are both prime numbers",
+        "They are both composite numbers"
+      ],
+      "answerIndex": 1,
+      "solution": "The two numbers are not co-prime because they share the common prime factor 5. The correct answer is that they are not co-prime. The other options are not supported by the given information.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी संख्या के अभाज्य गुणनखंडन में 3 और 5 शामिल हैं, और दूसरी संख्या के अभाज्य गुणनखंडन में 5 और 7 शामिल हैं, तो इन दो संख्याओं के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "वे सह-अभाज्य हैं",
+            "वे सह-अभाज्य नहीं हैं",
+            "वे दोनों अभाज्य संख्याएँ हैं",
+            "वे दोनों भाज्य संख्याएँ हैं"
+          ],
+          "solution": "दोनों संख्याएँ सह-अभाज्य नहीं हैं क्योंकि उनके पास सामान्य अभाज्य गुणनखंड 5 है। सही उत्तर यह है कि वे सह-अभाज्य नहीं हैं। अन्य विकल्प दी गई जानकारी द्वारा समर्थित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the meaning, structure, and technical terms of the original English question. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका संख्येच्या अविभाज्य अपघटनात 3 आणि 5 समाविष्ट आहेत आणि दुसऱ्या संख्येच्या अविभाज्य अपघटनात 5 आणि 7 समाविष्ट आहेत, तर या दोन संख्यांबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "त्या सह-अविभाज्य आहेत",
+            "त्या सह-अविभाज्य नाहीत",
+            "त्या दोन्ही अविभाज्य संख्या आहेत",
+            "त्या दोन्ही भाज्य संख्या आहेत"
+          ],
+          "solution": "या दोन संख्यांमध्ये 5 हा सामायिक अविभाज्य अपघटक आहे, म्हणून त्या सह-अविभाज्य नाहीत. योग्य उत्तर त्या सह-अविभाज्य नाहीत असे आहे. इतर विकल्प दिलेल्या माहितीने समर्थित नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -758,118 +778,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses prime numbers with safe pairs",
+        "Incorrectly assumes that there is no common factor",
         null,
-        "Students might confuse 'safe' with being composite, thinking that having more factors makes them 'safe' in some context.",
-        "confuses even numbers with safe pairs"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is option 1, as 'safe' is defined as having no common factor other than 1, which is the definition of co-prime numbers. The other options represent common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 3,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.2 Prime Numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.2 Prime Numbers"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 5,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.3 Co-prime numbers for safekeeping treasures"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp105.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 5: Prime Time",
-            "5.3 Co-prime numbers for safekeeping treasures"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:50:06.390Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If 80 and 63 have no common prime factors, what can be concluded about them?",
-      "choices": [
-        "They are both prime numbers",
-        "They are co-prime",
-        "They are both multiples of 5",
-        "They are both odd numbers"
-      ],
-      "answerIndex": 1,
-      "solution": "If two numbers have no common prime factors, they are co-prime. Since 80 and 63 share no prime factors, they are co-prime. The other options are incorrect because 80 is not prime, 63 is not a multiple of 5, and 80 is even.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 80 और 63 के कोई सामान्य अभाज्य गुणनखंड नहीं हैं, तो इनके बारे में क्या निष्कर्ष निकाला जा सकता है?",
-          "choices": [
-            "वे दोनों अभाज्य संख्याएँ हैं",
-            "वे सह-अभाज्य हैं",
-            "वे 5 के दोनों गुणज हैं",
-            "वे दोनों विषम संख्याएँ हैं"
-          ],
-          "solution": "यदि दो संख्याओं के कोई सामान्य अभाज्य गुणनखंड नहीं हैं, तो वे सह-अभाज्य होती हैं। 80 और 63 के कोई सामान्य अभाज्य गुणनखंड नहीं हैं, इसलिए वे सह-अभाज्य हैं। अन्य विकल्प गलत हैं क्योंकि 80 अभाज्य नहीं है, 63, 5 का गुणज नहीं है, और 80 सम संख्या है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the meaning, structure, and terminology of the original English question. The term 'सह-अभाज्य' is the standard Hindi term for 'co-prime' used in textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "80 आणि 63 च्या सामाईक अविभाज्य अवयव नसल्यास, त्यांबद्दल काय निष्कर्ष काढता येईल?",
-          "choices": [
-            "ते दोन्ही अविभाज्य संख्या आहेत",
-            "ते सह-अविभाज्य आहेत",
-            "ते दोन्ही 5 चे गुणक आहेत",
-            "ते दोन्ही विषम संख्या आहेत"
-          ],
-          "solution": "जर दोन संख्यांचा सामाईक अविभाज्य अवयव नसेल तर ते सह-अविभाज्य असतात. कारण 80 आणि 63 चा सामाईक अविभाज्य अवयव नाही, तर ते सह-अविभाज्य आहेत. इतर विकल्प चूक आहेत कारण 80 अविभाज्य नाही, 63 5 चा गुणक नाही आणि 80 सम संख्या आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly assumes both are prime",
-        null,
-        "A student might incorrectly assume that because 80 ends in 0, it is a multiple of 5, and 63 is close to 60, which is also a multiple of 5.",
-        "Confuses co-prime with even or odd numbers"
+        "Believing that numbers with 3 and 5 as factors must be prime, not realizing that having multiple prime factors makes them composite",
+        "Incorrectly assumes that the numbers are prime"
       ],
       "solverAnswers": [
         1,
@@ -879,7 +791,7 @@
         1
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that if two numbers have no common prime factors, they are co-prime. The reasoning aligns with the mathematical definition of co-prime numbers.",
+      "critique": "The solution correctly identifies that the numbers share the common factor 5, so they are not co-prime. The reasoning is sound and matches the key.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp105.pdf",
@@ -913,7 +825,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:50:06.390Z",
+      "generatedAt": "2026-10-29T10:16:31.935Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

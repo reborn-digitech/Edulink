@@ -1,0 +1,478 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T19:36:00.553Z",
+  "finishedAt": "2026-10-28T19:41:47.320Z",
+  "seconds": 347,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy207.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 7 — NIT LIMATE",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2024-25]\n16. Ans: D- Nigeria 1\nFor Visually Challenged students\nAns: B - The arrangement or spread of people across a given area.",
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\nSection E\n29 A- Northern part of Eurasia 1X5\nB- Vancouver\nC- Kolkata\nD- Jeddah\nE- Darwin\nF- Panama Canal\nG- St. Lawrence waterway\nFor Visually Impaired Candidates only\n29 A- Arabian peninsula /Mongolia/Central China\n29 B- Vancouver\n29 C- Kolkata\n29 D- Johannesburg\n29 E- Darwin\n29 F- Suez Canal\n29 G- St. Lawrence waterway\n30 Locate and label any five of the following geographical features on the 1x5\nPolitical Outline map of India with appropriate symbols:\nA. Arunachal Pradesh\nB. Paradwip\nC. Neyveli\nD. Bailadila iron-ore mines, Chattisgarh\nE. Jamnagar\nF. Uttar Pradesh\nG. Thiruvananthapuram\nFor visually impaired students\nAttempt any five.\nA. Arunachal Pradesh\nB. Paradwip\nC. Neyveli\nD. Chhatisga",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n9. a. Hugli, Salem, Bhilai",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 89397,
+      "in": 23,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 15347,
+      "completionTokens": 4550
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 198450,
+      "in": 22,
+      "out": 13,
+      "rejects": 9,
+      "promptTokens": 12407,
+      "completionTokens": 5018
+    },
+    "solver": {
+      "calls": 102,
+      "ms": 65175,
+      "in": 13,
+      "out": 9,
+      "rejects": 4,
+      "promptTokens": 19528,
+      "completionTokens": 1161
+    },
+    "form": {
+      "calls": 6,
+      "ms": 14568,
+      "in": 9,
+      "out": 5,
+      "rejects": 4,
+      "promptTokens": 1612,
+      "completionTokens": 431
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 4405,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 235569,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11799,
+      "completionTokens": 6137
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which layer of the atmosphere is responsible for reflecting radio waves back to the Earth?",
+      "ms": {
+        "draft": 3710,
+        "critique": 6177,
+        "solver": 1907,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes the atmosphere as consisting of different layers with varying density and temperature. Which of the following best explains why the density of the atmosphere decreases with increasing altitude?",
+      "ms": {
+        "draft": 3710,
+        "critique": 10246,
+        "solver": 1933
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a function of the ozone layer in the atmosphere?",
+      "ms": {
+        "draft": 3710,
+        "critique": 6431,
+        "solver": 18343
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason given in the passage for the importance of understanding the atmosphere?",
+      "ms": {
+        "draft": 3710,
+        "critique": 6627,
+        "solver": 1573,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which gas constitutes the major portion of the atmosphere?",
+      "ms": {
+        "draft": 4556,
+        "critique": 6429
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which atmospheric layer is important for human beings?",
+      "ms": {
+        "draft": 4556,
+        "critique": 5997
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are sea salt, pollen, ash, smoke, and soot associated with?",
+      "ms": {
+        "draft": 4556,
+        "critique": 6625
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "At what height is oxygen gas in negligible quantity in the atmosphere?",
+      "ms": {
+        "draft": 4556,
+        "critique": 6540
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the correct sequence of atmospheric layers from the Earth's surface upwards?",
+      "ms": {
+        "draft": 4556,
+        "critique": 7476,
+        "solver": 1260,
+        "form": 2730
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which gas is transparent to incoming solar radiation and opaque to outgoing terrestrial radiation?",
+      "ms": {
+        "draft": 4556,
+        "critique": 6595,
+        "solver": 11400,
+        "form": 1150
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which gas constitutes the major portion of the atmosphere?",
+      "ms": {
+        "draft": 3180,
+        "critique": 5491
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which atmospheric layer is important for human beings?",
+      "ms": {
+        "draft": 3180,
+        "critique": 5870
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are sea salt, pollen, ash, and smoke associated with?",
+      "ms": {
+        "draft": 3180,
+        "critique": 6602
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a component of the Earth's atmosphere?",
+      "ms": {
+        "draft": 16156,
+        "critique": 6434
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "At what height is oxygen gas in negligible quantity in the atmosphere?",
+      "ms": {
+        "draft": 3180,
+        "critique": 6440,
+        "solver": 14039
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the troposphere?",
+      "ms": {
+        "draft": 3180,
+        "critique": 7166,
+        "solver": 16480
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which layer of the atmosphere contains the ozone layer?",
+      "ms": {
+        "draft": 16156,
+        "critique": 7022
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the amount of carbon dioxide in the atmosphere increases, what is the most likely effect on the Earth's temperature?",
+      "ms": {
+        "draft": 3710,
+        "critique": 5902,
+        "solver": 1466,
+        "form": 0,
+        "translation": 50140
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main function of the ozone layer in the atmosphere?",
+      "ms": {
+        "draft": 16156,
+        "critique": 9553,
+        "solver": 13226,
+        "form": 3450,
+        "translation": 57536
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is asked to identify the layer of the atmosphere that contains the ozone layer and is located above the tropopause. Which of the following is the correct answer?",
+      "ms": {
+        "draft": 3710,
+        "critique": 9502,
+        "solver": 2362,
+        "form": 3856,
+        "translation": 45786
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What happens to the temperature in the mesosphere as altitude increases?",
+      "ms": {
+        "draft": 16156,
+        "critique": 6837,
+        "solver": 10117,
+        "form": 3027,
+        "translation": 39958
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the atmosphere essential for life on Earth?",
+      "ms": {
+        "draft": 16156,
+        "critique": 7217,
+        "solver": 9368,
+        "form": 1114,
+        "translation": 38368
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which layer of the atmosphere is responsible for reflecting radio waves back to the Earth?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage describes the atmosphere as consisting of different layers with varying density and temperature. Which of the following best explains why the density of the atmosphere decreases with increasing altitude?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a function of the ozone layer in the atmosphere?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason given in the passage for the importance of understanding the atmosphere?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's emphasis on water vapour…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which gas constitutes the major portion of the atmosphere?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which atmospheric layer is important for human beings?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What are sea salt, pollen, ash, smoke, and soot associated with?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "At what height is oxygen gas in negligible quantity in the atmosphere?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is the correct sequence of atmospheric layers from the Earth's surface upwards?",
+      "reason": "options 0 and 1 say the same thing (\"Troposphere, Stratosphere, Mesosphere, Thermosphere, Exosphere\" / \"Stratosphere, Troposphere, Mesosphere, Thermosphere, Exosphere\"); options 0 and 2 say the same thing (\"Troposphere, Stratosphere, Mesosphere, Thermosphere, Exosphere\" / \"Troposphere, Mesosphere, Stratosphere, Thermosphere, Exosphere\"); options 0 and 3 say the same thing (\"Troposphere, Stratosphere, Mesosphere, Thermosphere, Exosphere\" / \"Thermosphere, Troposphere, Stratosphere, Mesosphere, Exosphere\"); options 1 and 2 say the same thing (\"Stratosphere, Troposphere, Mesosphere, Thermosphere, Exosphere\" / \"Troposphere, Mesosphere, Stratosphere, Thermosphere, Exosphere\"); options 1 and 3 say the same thing (\"Stratosphere, Troposphere, Mesosphere, Thermosphere, Exosphere\" / \"Thermosphere, Troposphere, Stratosphere, Mesosphere, Exosphere\"); options 2 and 3 say the same thing (\"Troposphere, Mesosphere, Stratosphere, Thermosphere, Exosphere\" / \"Thermosphere, Troposphere, Stratosphere, Mesosphere, Exosphere\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which gas is transparent to incoming solar radiation and opaque to outgoing terrestrial radiation?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which gas is transparent to incoming solar radiation and opaque to outgoing terrestrial radiation?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which gas constitutes the major portion of the atmosphere?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which atmospheric layer is important for human beings?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What are sea salt, pollen, ash, and smoke associated with?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a component of the Earth's atmosphere?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "At what height is oxygen gas in negligible quantity in the atmosphere?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the troposphere?",
+      "reason": "after redrafting distractors 2, 3: the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which layer of the atmosphere contains the ozone layer?",
+      "reason": "option 0 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

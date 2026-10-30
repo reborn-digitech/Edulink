@@ -1,0 +1,381 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T06:36:50.684Z",
+  "finishedAt": "2026-10-28T06:40:47.533Z",
+  "seconds": 237,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap110.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 10 — Walls Tell Stories",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 55971,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15984,
+      "completionTokens": 3456
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 109730,
+      "in": 16,
+      "out": 12,
+      "rejects": 4,
+      "promptTokens": 7314,
+      "completionTokens": 3091
+    },
+    "solver": {
+      "calls": 76,
+      "ms": 38812,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 12702,
+      "completionTokens": 742
+    },
+    "form": {
+      "calls": 8,
+      "ms": 23599,
+      "in": 10,
+      "out": 5,
+      "rejects": 5,
+      "promptTokens": 3572,
+      "completionTokens": 634
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 3609,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 123612,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7408,
+      "completionTokens": 4004
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What are the structures called that are built in a round shape on the fort wall?",
+      "ms": {
+        "draft": 3435,
+        "critique": 6059
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why were big holes made in the bastions of the fort?",
+      "ms": {
+        "draft": 3435,
+        "critique": 6810
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is standing at Bodli Darwaza and looks towards Katora Hauz, in which direction is Katora Hauz?",
+      "ms": {
+        "draft": 3435,
+        "critique": 5876,
+        "solver": 1306
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what was the main purpose of the thick walls and bastions in the fort?",
+      "ms": {
+        "draft": 3435,
+        "critique": 6878,
+        "solver": 1569,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a museum according to the passage?",
+      "ms": {
+        "draft": 4004,
+        "critique": 5883,
+        "solver": 2152,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What material was the big gun that Shreedhar saw made of?",
+      "ms": {
+        "draft": 4004,
+        "critique": 5952,
+        "solver": 1038,
+        "form": 3463
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can we infer about the function of the wheels and pulleys in the old fort?",
+      "ms": {
+        "draft": 4004,
+        "critique": 4980,
+        "solver": 981,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a metal used by tribal people to make things?",
+      "ms": {
+        "draft": 2767,
+        "critique": 6595,
+        "solver": 14159
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the chapter, what is the purpose of the gears and wheels shown in the painting?",
+      "ms": {
+        "draft": 2767,
+        "critique": 5812,
+        "solver": 1654,
+        "form": 2668
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are the structures called that are higher than the wall and help in seeing things from a distance?",
+      "ms": {
+        "draft": 16074,
+        "critique": 8264
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the map of the fort, if you are entering from Bodli Darwaza, in which direction is Katora Hauz located?",
+      "ms": {
+        "draft": 16074,
+        "critique": 7227
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea of the chapter 'Walls Tell Stories'?",
+      "ms": {
+        "draft": 2767,
+        "critique": 6182,
+        "solver": 1664,
+        "form": 3845
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a soldier is standing on a bastion, which direction would they be able to see more clearly?",
+      "ms": {
+        "draft": 16074,
+        "critique": 5918,
+        "solver": 1289,
+        "form": 1346
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why were big holes made in the bastions of the fort?",
+      "ms": {
+        "draft": 16074,
+        "critique": 5607,
+        "solver": 1603,
+        "form": 2415,
+        "translation": 63890
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you were to visit an old monument, which of the following would you most likely be able to learn about?",
+      "ms": {
+        "draft": 4004,
+        "critique": 5923,
+        "solver": 1373,
+        "form": 931,
+        "translation": 43455
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child wants to know how people in the past lived, what should they do?",
+      "ms": {
+        "draft": 2767,
+        "critique": 5966,
+        "solver": 15659,
+        "form": 4092,
+        "translation": 50616
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What are the structures called that are built in a round shape on the fort wall?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why were big holes made in the bastions of the fort?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student is standing at Bodli Darwaza and looks towards Katora Hauz, in which direction is Katora Hauz?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what was the main purpose of the thick walls and bastions in the fort?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of a museum according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What material was the big gun that Shreedhar saw made of?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"chooses a metal not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can we infer about the function of the wheels and pulleys in the old fort?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a metal used by tribal people to make things?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the chapter, what is the purpose of the gears and wheels shown in the painting?",
+      "reason": "figure: figure spec refused: spec.parts: lever has no label \"direction\" (it has fulcrum, effort, load)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What are the structures called that are higher than the wall and help in seeing things from a distance?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the map of the fort, if you are entering from Bodli Darwaza, in which direction is Katora Hauz located?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the main idea of the chapter 'Walls Tell Stories'?",
+      "reason": "near-duplicate of served question cmvkb3mwb0jw2gpfhdnpch40z (cosine 0.907 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a soldier is standing on a bastion, which direction would they be able to see more clearly?",
+      "reason": "near-duplicate of served question cmvoa9bf705wpgp21q1rr8ely (cosine 0.964 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

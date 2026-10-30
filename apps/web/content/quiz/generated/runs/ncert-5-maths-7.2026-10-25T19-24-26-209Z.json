@@ -1,0 +1,518 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T19:24:26.209Z",
+  "finishedAt": "2026-10-25T19:29:40.519Z",
+  "seconds": 314,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm107.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Shapes and Patterns",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n36. A tiling or tessellation of a flat surface is the covering of a plane using one or more geometric\nshapes, called tiles, with no overlaps and no gaps. Historically, tessellations were used in\nancient Rome and in Islamic art. You may find tessellation patterns on floors, walls, paintings\netc. Shown below is a tiled floor in the archaeological Museum of Seville, made using\nsquares, triangles and hexagons.\nA craftsman thought of making a floor pattern after being inspired by the above design. To\nensure accuracy in his work, he made the pattern on the Cartesian plane. He used regular\noctagons, squares and triangles for his floor tessellation pattern\nUse the above figure to answer the question",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n2. This Question Paper is divided into 5 Sections A, B, C, D and E."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 103009,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17168,
+      "completionTokens": 6303
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 165170,
+      "in": 24,
+      "out": 17,
+      "rejects": 7,
+      "promptTokens": 11969,
+      "completionTokens": 4884
+    },
+    "solver": {
+      "calls": 107,
+      "ms": 43398,
+      "in": 17,
+      "out": 14,
+      "rejects": 3,
+      "promptTokens": 19812,
+      "completionTokens": 1071
+    },
+    "form": {
+      "calls": 5,
+      "ms": 50095,
+      "in": 14,
+      "out": 4,
+      "rejects": 10,
+      "promptTokens": 4850,
+      "completionTokens": 1417
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 4196,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 159790,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9448,
+      "completionTokens": 5181
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 3,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main purpose of weaving mats as described in the passage?",
+      "ms": {
+        "draft": 2951,
+        "critique": 6758
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is a regular pentagon?",
+      "ms": {
+        "draft": 2951,
+        "critique": 6305,
+        "solver": 1714,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the key difference between tessellating shapes and other shapes as described in the passage?",
+      "ms": {
+        "draft": 2951,
+        "critique": 6120,
+        "solver": 1334,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a tiling pattern using triangles and squares, if the triangles are equilateral, how many triangles would fit around a single point?",
+      "ms": {
+        "draft": 2951,
+        "critique": 5447
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which quadrilateral has opposite sides equal and all angles equal to 90 degrees?",
+      "ms": {
+        "draft": 13167,
+        "critique": 5915
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a quadrilateral has all sides equal but angles not equal to 90 degrees, what is it called?",
+      "ms": {
+        "draft": 13167,
+        "critique": 6767
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which shape is formed when two pairs of adjacent sides are equal?",
+      "ms": {
+        "draft": 13167,
+        "critique": 5620,
+        "solver": 11353,
+        "form": 2360
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a circle, if two diameters are drawn and their endpoints are joined, what shape is formed?",
+      "ms": {
+        "draft": 13167,
+        "critique": 6277
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a craftsman uses regular octagons and squares to create a floor pattern, and the pattern requires that each octagon is surrounded by squares, how many squares would fit around one octagon?",
+      "ms": {
+        "draft": 2951,
+        "critique": 9567,
+        "solver": 16280,
+        "form": 4576
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a cube is made of 27 small cubes and painted on the outside, how many small cubes have exactly two faces painted?",
+      "ms": {
+        "draft": 13167,
+        "critique": 5837
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a craftsman uses regular octagons, squares, and triangles to make a tessellation, which shape can be used to fill the space without gaps?",
+      "ms": {
+        "draft": 13167,
+        "critique": 5910,
+        "solver": 6523
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a property of a parallelogram?",
+      "ms": {
+        "draft": 5491,
+        "critique": 8241,
+        "solver": 1424,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Nisha has glued 27 small cubes together to make a large solid cube. She paints the large cube red. How many of the original small cubes have two faces painted red?",
+      "ms": {
+        "draft": 5491,
+        "critique": 5682,
+        "solver": 1448,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a 3x3x3 cube, how many small cubes have exactly one face painted red?",
+      "ms": {
+        "draft": 5491,
+        "critique": 6295,
+        "solver": 1382
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is making a mat using the weaving pattern described in the passage. If the first row follows the pattern '1 under, 1 over, 1 under, 1 over...', what will the second row look like?",
+      "ms": {
+        "draft": 3801,
+        "critique": 6589,
+        "solver": 1398,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student is trying to create a tessellation pattern using regular pentagons. According to the passage, can regular pentagons fit together around a point without any gaps or overlaps?",
+      "ms": {
+        "draft": 3801,
+        "critique": 6824,
+        "solver": 1407,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is creating a tiling pattern using shapes and observes that at certain points, triangles and squares meet. According to the passage, what must be true about the triangles in this pattern?",
+      "ms": {
+        "draft": 3801,
+        "critique": 8091
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is observing a pattern made with regular octagons and notices that they do not tessellate. According to the passage, what is the reason for this?",
+      "ms": {
+        "draft": 3801,
+        "critique": 7262,
+        "solver": 1299,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student is creating a tiling pattern with different shapes. According to the passage, what is a requirement for shapes to tessellate?",
+      "ms": {
+        "draft": 3801,
+        "critique": 4176,
+        "solver": 926,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is creating a pattern using a repeating sequence of shapes. If the pattern begins with '2 over, 1 under, 2 over, 1 under...', what will the next part of the pattern be?",
+      "ms": {
+        "draft": 3801,
+        "critique": 6488,
+        "solver": 515
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which shape is formed when the four endpoints of two diameters of a circle are joined?",
+      "ms": {
+        "draft": 5491,
+        "critique": 4697,
+        "solver": 1464,
+        "form": 0,
+        "translation": 49325
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a type of quadrilateral with all sides equal but not all angles equal?",
+      "ms": {
+        "draft": 5491,
+        "critique": 4317,
+        "solver": 1024,
+        "form": 0,
+        "translation": 39561
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you want to make a mat with the pattern '1 under, 1 over' for each row, how many rows would you need to complete the pattern if the pattern repeats every two rows?",
+      "ms": {
+        "draft": 2951,
+        "critique": 5967,
+        "solver": 1077,
+        "form": 3104,
+        "translation": 43849
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a craftsman uses regular octagons, squares, and triangles to make a floor tessellation, which of the following is most likely to be a tile in the design?",
+      "ms": {
+        "draft": 5491,
+        "critique": 5543,
+        "solver": 3036,
+        "form": 0,
+        "translation": 22842
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main purpose of weaving mats as described in the passage?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is a regular pentagon?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the key difference between tessellating shapes and other shapes as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a tiling pattern using triangles and squares, if the triangles are equilateral, how many triangles would fit around a single point?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which quadrilateral has opposite sides equal and all angles equal to 90 degrees?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a quadrilateral has all sides equal but angles not equal to 90 degrees, what is it called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which shape is formed when two pairs of adjacent sides are equal?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a circle, if two diameters are drawn and their endpoints are joined, what shape is formed?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a craftsman uses regular octagons and squares to create a floor pattern, and the pattern requires that each octagon is surrounded by squares, how many squares would fit around one octagon?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a cube is made of 27 small cubes and painted on the outside, how many small cubes have exactly two faces painted?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a craftsman uses regular octagons, squares, and triangles to make a tessellation, which shape can be used to fill the space without gaps?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a property of a parallelogram?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Nisha has glued 27 small cubes together to make a large solid cube. She paints the large cube red. How many of the original small cubes have two faces painted red?",
+      "reason": "checkExpr \"12\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a 3x3x3 cube, how many small cubes have exactly one face painted red?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student is making a mat using the weaving pattern described in the passage. If the first row follows the pattern '1 under, 1 over, 1 under, 1 over...', what will the second row look like?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"1 under, 1 over, 1 under, 1 over...\" / \"1 over, 1 under, 1 over, 1 under...\"); options 2 and 3 say the same thing (\"2 under, 1 over, 2 under, 1 over...\" / \"2 over, 1 under, 2 over, 1 under...\"); option 0 repeats the stem's wording (\"1 under, 1 over, 1 under, 1 over...\"); option 1 repeats the stem's wording (\"1 over, 1 under, 1 over, 1 under...\"); distractor 2's reason is not a one-line misconception (\"Correct pattern is not chosen…\"); distractor 3's reason is not a one-line misconception (\"Incorrect pattern is assumed based on different rules not me…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student is trying to create a tessellation pattern using regular pentagons. According to the passage, can regular pentagons fit together around a point without any gaps or overlaps?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Thinks pentagons can be combined with other shapes without c…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student is creating a tiling pattern using shapes and observes that at certain points, triangles and squares meet. According to the passage, what must be true about the triangles in this pattern?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student is observing a pattern made with regular octagons and notices that they do not tessellate. According to the passage, what is the reason for this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student is creating a tiling pattern with different shapes. According to the passage, what is a requirement for shapes to tessellate?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A student is creating a pattern using a repeating sequence of shapes. If the pattern begins with '2 over, 1 under, 2 over, 1 under...', what will the next part of the pattern be?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

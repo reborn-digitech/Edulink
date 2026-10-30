@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-23T03:55:41.865Z",
+  "generatedAt": "2026-10-28T09:15:39.022Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "Which of the following is an example of applying the first principle of derivatives?",
+      "stem": "What is the value of the limit lim (x^2 - 1)/(x - 1) as x approaches 1?",
       "choices": [
-        "Finding the derivative of sin x at x = 0",
-        "Using the product rule to differentiate x^2",
-        "Applying the quotient rule to differentiate x^3",
-        "Calculating the area under the curve"
+        "2",
+        "1",
+        "0",
+        "3"
       ],
       "answerIndex": 0,
-      "solution": "The first principle of derivatives involves calculating the limit of the difference quotient as the change in x approaches zero. Finding the derivative of sin x at x = 0 directly using this limit definition is an example of applying the first principle. The other options involve derivative rules or integration, not the fundamental limit-based approach.",
-      "checkExpr": null,
+      "solution": "The expression can be factored as (x - 1)(x + 1) and simplified, resulting in x + 1. Evaluating this at x = 1 gives 2. Option '1' is incorrect because it assumes the simplified expression is 1. Option '0' is incorrect because it assumes the limit is 0. Option '3' is incorrect because it assumes the simplified expression is x + 2.",
+      "checkExpr": "1 + 1",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा अवकलजों के प्रथम सिद्धांत के लागू करने का उदाहरण है?",
+          "stem": "सीमा lim (x^2 - 1)/(x - 1) का मान क्या है जब x, 1 के अगल-बगल आता है?",
           "choices": [
-            "x = 0 पर sin x के अवकलज की गणना करना",
-            "x^2 का अवकलज लेने के लिए गुणन नियम का उपयोग करना",
-            "x^3 का अवकलज लेने के लिए भागफल नियम का उपयोग करना",
-            "वक्र के नीचे के क्षेत्रफल की गणना करना"
+            "2",
+            "1",
+            "0",
+            "3"
           ],
-          "solution": "अवकलजों के प्रथम सिद्धांत में x में परिवर्तन शून्य की ओर जाते हुए अंतर भाग के सीमा की गणना शामिल होती है। x = 0 पर sin x के अवकलज की गणना इस सीमा परिभाषा के उपयोग से सीधे करना प्रथम सिद्धांत के लागू करने का एक उदाहरण है। अन्य विकल्प अवकलज नियमों या समाकलन के उपयोग को दर्शाते हैं, अर्थात आधारभूत सीमा-आधारित प्रक्रिया के बजाय।",
+          "solution": "अभिव्यक्ति को (x - 1)(x + 1) के रूप में गुणनखंडित किया जा सकता है और सरल किया जा सकता है, जिसके परिणामस्वरूप x + 1 प्राप्त होता है। x = 1 पर इसका मूल्यांकन 2 देता है। विकल्प '1' गलत है क्योंकि यह मान लेता है कि सरलीकृत अभिव्यक्ति 1 है। विकल्प '0' गलत है क्योंकि यह मान लेता है कि सीमा 0 है। विकल्प '3' गलत है क्योंकि यह मान लेता है कि सरलीकृत अभिव्यक्ति x + 2 है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, maintaining the same logical relationships and technical terms used in Indian curriculum.",
+          "critique": "Hindi translation is accurate, maintains the same meaning, technical terms are appropriate for a Hindi-medium curriculum, and the structure matches the original.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते व्युत्पन्नाच्या पहिल्या तत्त्वाच्या अनुप्रयोगाचे उदाहरण आहे?",
+          "stem": "x च्या मूल्याची सीमा lim (x^2 - 1)/(x - 1) चे मूल्य काय आहे जेव्हा x 1 ला जातो?",
           "choices": [
-            "x = 0 वर sin x चे व्युत्पन्न शोधणे",
-            "x^2 चे व्युत्पन्न करण्यासाठी गुणाकार नियम वापरणे",
-            "x^3 चे व्युत्पन्न करण्यासाठी भागाकार नियम वापरणे",
-            "वक्राखालील क्षेत्रफळ गणना करणे"
+            "2",
+            "1",
+            "0",
+            "3"
           ],
-          "solution": "व्युत्पन्नाच्या पहिल्या तत्त्वाशी संबंधित विभाजक अंतराच्या सीमेचे गणन करणे होय. x = 0 वर sin x चे व्युत्पन्न या सीमा व्याख्येच्या वापराने सीधा शोधणे हे पहिल्या तत्त्वाच्या अनुप्रयोगाचे उदाहरण आहे. इतर विकल्पांमध्ये व्युत्पन्न नियम किंवा समाकलन वापरले जाते, परंतु मूळ सीमा-आधारित पद्धती नाही.",
+          "solution": "अभिव्यक्तीला (x - 1)(x + 1) म्हणून अपघटित केले जाऊ शकते आणि सोपे केले जाऊ शकते, ज्यामुळे x + 1 मिळते. x = 1 वर याचे मूल्य 2 असते. विकल्प '1' असतो कारण तो सोपे केलेल्या अभिव्यक्तीला 1 म्हणून घेतो. विकल्प '0' असतो कारण तो सीमा 0 म्हणून घेतो. विकल्प '3' असतो कारण तो सोपे केलेल्या अभिव्यक्तीला x + 2 म्हणून घेतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for calculus concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Marathi.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the first principle with using standard derivative rules",
-        "Mistakenly applies the product rule instead of the first principle",
-        "Uses the quotient rule incorrectly as an example of the first principle"
+        "incorrectly assumes the simplified expression is 1",
+        "incorrectly assumes the limit is 0",
+        "incorrectly assumes the simplified expression is x + 2"
       ],
       "solverAnswers": [
         0,
@@ -85,175 +85,80 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0, as it involves using the limit definition of a derivative, which is the first principle. The other options involve derivative rules or unrelated concepts.",
+      "critique": "The solution is correct. The expression factors to (x - 1)(x + 1)/(x - 1), cancels to x + 1, and evaluates to 2 as x approaches 1. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 12,
-          "pageStart": 24,
-          "pageEnd": 26,
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 19,
           "headingPath": [
             "Chapter 12: Limits and Derivatives"
           ]
         },
         {
           "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 13,
-          "pageStart": 26,
-          "pageEnd": 28,
+          "ordinal": 10,
+          "pageStart": 19,
+          "pageEnd": 22,
           "headingPath": [
             "Chapter 12: Limits and Derivatives"
           ]
         },
         {
           "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 14,
-          "pageStart": 28,
-          "pageEnd": 30,
+          "ordinal": 11,
+          "pageStart": 22,
+          "pageEnd": 24,
           "headingPath": [
             "Chapter 12: Limits and Derivatives"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:55:41.865Z",
+      "generatedAt": "2026-10-28T09:15:39.022Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "What is the derivative of sin x with respect to x?",
+      "difficulty": 3,
+      "stem": "The limit of a function f(x) as x approaches a is the value that f(x) approaches as x gets arbitrarily close to a. Which of the following is an example of this concept?",
       "choices": [
-        "sin x",
-        "cos x",
-        "cot x",
-        "sec x"
-      ],
-      "answerIndex": 1,
-      "solution": "The derivative of sin x with respect to x is cos x, as this is a fundamental result in calculus. The other options are incorrect because the derivative of sin x is not sin x, cot x, or sec x. These functions have different derivatives that do not match the rate of change of sin x.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "sin x का x के सापेक्ष अवकलज क्या है?",
-          "choices": [
-            "sin x",
-            "cos x",
-            "cot x",
-            "sec x"
-          ],
-          "solution": "sin x का x के सापेक्ष अवकलज cos x होता है, जो कलन का एक मूलभूत परिणाम है। अन्य विकल्प गलत हैं क्योंकि sin x का अवकलज sin x, cot x या sec x नहीं होता है। इन फलनों के अवकलज अलग होते हैं जो sin x के परिवर्तन की दर के साथ मेल नहीं खाते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "sin x चे x च्या संदर्भात अवकलज काय आहे?",
-          "choices": [
-            "sin x",
-            "cos x",
-            "cot x",
-            "sec x"
-          ],
-          "solution": "sin x चे x च्या संदर्भात अवकलज cos x आहे, हे कलनशास्त्रातील एक आधारभूत निकाल आहे. इतर विकल्प अयोग्य आहेत कारण sin x चे अवकलज sin x, cot x किंवा sec x नाही. ह्या फंक्शन्सचे अवकलज वेगवेगळे असतात आणि sin x च्या बदलाच्या दराशी मेळ नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the derivative of sin x with the function itself.",
-        null,
-        "Confuses derivative of sin x with that of cos x or other trigonometric functions",
-        "Confuses the derivative of sin x with tan x, which is not the case here."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and the correct answer is clearly cos x. The author's reasoning for the distractors aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 15,
-          "pageStart": 30,
-          "pageEnd": 31,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 16,
-          "pageStart": 31,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 17,
-          "pageStart": 34,
-          "pageEnd": 37,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:55:41.865Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the limit of the function f(x) as x approaches a, if the left-hand limit and right-hand limit both exist and are equal?",
-      "choices": [
-        "The function value at a",
-        "The derivative at a",
-        "The limit at a",
-        "The slope of the tangent at a"
+        "The value of f(x) at x = a is 5",
+        "The function f(x) is defined only for x > 3",
+        "As x approaches 2, f(x) approaches 4",
+        "The function f(x) is continuous at x = 1"
       ],
       "answerIndex": 2,
-      "solution": "If the left-hand limit and right-hand limit of a function at a point are equal, then the limit of the function at that point is defined as the common value. The correct option is 'The limit at a'. The other options refer to different concepts such as the function value, derivative, or slope of the tangent, which are not directly related to the definition of a limit.",
+      "solution": "The correct answer is that as x approaches 2, f(x) approaches 4. This is an example of a limit, where the function approaches a specific value as x gets close to a point, even if the function is not defined at that point. The other options describe properties of functions, but not the concept of a limit.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "फलन f(x) का x, a की ओर अग्रसर होते समय सीमा क्या है, यदि बाएं हाथ की सीमा और दाएं हाथ की सीमा दोनों मौजूद हैं और बराबर हैं?",
+          "stem": "किसी फलन f(x) की x, a के अभिसरण की सीमा वह मान होता है जिसे f(x) अपने आसपास के मानों के निकट आता है। निम्नलिखित में से कौन सा इस अवधारणा का उदाहरण है?",
           "choices": [
-            "a पर फलन का मान",
-            "a पर अवकलज",
-            "a पर सीमा",
-            "a पर स्पर्शरेखा की ढलान"
+            "x = a पर f(x) का मान 5 है",
+            "फलन f(x) केवल x > 3 के लिए परिभाषित है",
+            "जब x, 2 के निकट आता है तो f(x), 4 के निकट आता है",
+            "फलन f(x), x = 1 पर सतत है"
           ],
-          "solution": "यदि किसी बिंदु पर फलन की बाएं हाथ की सीमा और दाएं हाथ की सीमा बराबर होती हैं, तो उस बिंदु पर फलन की सीमा को सामान्य मान के रूप में परिभाषित किया जाता है। सही विकल्प 'a पर सीमा' है। अन्य विकल्पों में फलन के मान, अवकलज या स्पर्शरेखा की ढलान जैसे अलग अवधारणाएं शामिल हैं, जो सीमा की परिभाषा से सीधे संबंधित नहीं हैं।",
+          "solution": "सही उत्तर यह है कि जब x, 2 के निकट आता है तो f(x), 4 के निकट आता है। यह सीमा की अवधारणा का एक उदाहरण है, जहां फलन एक बिंदु के निकट एक विशिष्ट मान के निकट आता है, भले ही फलन उस बिंदु पर परिभाषित न हो। अन्य विकल्प फलनों के गुणों का वर्णन करते हैं, लेकिन सीमा की अवधारणा का वर्णन नहीं करते।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, uses standard mathematical terminology, and preserves the structure and logic of the question.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer remaining in the same position. The technical terms used are appropriate for a Hindi-medium mathematics curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "f(x) चे मूल्य x = a च्या जवळ जात असताना फंक्शनचे सीमा काय असेल, जर बाजूला सीमा आणि उजवी सीमा दोन्ही असतील आणि समान असतील?",
+          "stem": "फंक्शन f(x) चे x, a ला जात असताना विचलन हे f(x) चे मूल्य आहे जे x, a ला अतिशय जवळ जात असताना f(x) जात असते. खालीलपैकी कोणते हा संकल्पना उदाहरण आहे?",
           "choices": [
-            "a वरील फंक्शन मूल्य",
-            "a वरील व्युत्पन्न",
-            "a वरील सीमा",
-            "a वरील स्पर्श रेषेचा ढाल"
+            "x = a वर f(x) चे मूल्य 5 आहे",
+            "फंक्शन f(x) फक्त x > 3 ला वर्णन करते",
+            "x, 2 ला जात असताना f(x) 4 ला जात असते",
+            "फंक्शन f(x) x = 1 ला सतत आहे"
           ],
-          "solution": "जर एखाद्या बिंदूवर फंक्शनच्या बाजूच्या सीमा आणि उजव्या सीमा समान असतील, तर त्या बिंदूवर फंक्शनची सीमा त्या सामान्य मूल्याने व्यक्त केली जाते. योग्य पर्याय 'a वरील सीमा' आहे. इतर पर्यायांमध्ये फंक्शन मूल्य, व्युत्पन्न किंवा स्पर्श रेषेचा ढाल अशा वेगळ्या संकल्पना सूचित केल्या जातात, ज्यांचा सीमेच्या व्याख्येशी सीधा संबंध नसतो.",
+          "solution": "बरोबर उत्तर हे x, 2 ला जात असताना f(x) 4 ला जात असते. हे विचलनाचे उदाहरण आहे, जेव्हा x एका बिंदूला जात असताना फंक्शन एका विशिष्ट मूल्याकडे जात असते, जरी फंक्शन त्या बिंदूवर परिभाषित नसेल. इतर विकल्पांमध्ये फंक्शनच्या गुणधर्मांचे वर्णन आहे, परंतु विचलनाची संकल्पना नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for calculus concepts.",
           "flag": null
         }
       },
@@ -262,10 +167,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Refers to the function value at a, which may not be the same as the limit.",
-        "Refers to the derivative at a, which is a different concept.",
+        "Describes the value of the function at a point, not the limit as x approaches a point",
+        "Describes the domain of the function, not the limit concept",
         null,
-        "Refers to the slope of the tangent at a, which is not directly related to the definition of a limit."
+        "Believes continuity implies the limit exists, but doesn't understand that continuity is a separate concept from the limit"
       ],
       "solverAnswers": [
         2,
@@ -275,93 +180,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The question correctly identifies that if the left-hand and right-hand limits are equal, the limit at that point is defined as that common value. The correct answer is option 2, and the author's reasoning is sound.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 18,
-          "pageStart": 37,
-          "pageEnd": 39,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 19,
-          "pageStart": 39,
-          "pageEnd": 40,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:55:41.865Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a body is dropped from a tall cliff and covers a distance of 4.9t² metres in t seconds, what is the average velocity between t = 1 and t = 2 seconds?",
-      "choices": [
-        "9.8 m/s",
-        "14.7 m/s",
-        "19.6 m/s",
-        "24.5 m/s"
-      ],
-      "answerIndex": 1,
-      "solution": "The average velocity is calculated by finding the change in distance between t = 1 and t = 2 seconds and dividing by the time interval. At t = 1, the distance is 4.9(1)² = 4.9 m, and at t = 2, it is 4.9(2)² = 19.6 m. The difference is 14.7 m over 1 second, giving 14.7 m/s. The other options do not match this calculation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक वस्तु एक ऊंचे चट्टान से गिराई जाती है और t सेकंड में 4.9t² मीटर की दूरी तय करती है, तो t = 1 और t = 2 सेकंड के बीच औसत वेग क्या है?",
-          "choices": [
-            "9.8 मी/से",
-            "14.7 मी/से",
-            "19.6 मी/से",
-            "24.5 मी/से"
-          ],
-          "solution": "औसत वेग की गणना t = 1 और t = 2 सेकंड के बीच दूरी में परिवर्तन को समय अंतराल से विभाजित करके की जाती है। t = 1 पर दूरी 4.9(1)² = 4.9 मी है, और t = 2 पर यह 4.9(2)² = 19.6 मी है। अंतर 1 सेकंड में 14.7 मी है, जिसके कारण 14.7 मी/से प्राप्त होता है। अन्य विकल्प इस गणना के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the structure matches the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक वस्तू एका उंच खडकावरून टाकली जाते आणि t सेकंदात 4.9t² मीटर अंतर जाते, t = 1 आणि t = 2 सेकंद दरम्यान सरासरी वेग किती असेल?",
-          "choices": [
-            "9.8 मी/से",
-            "14.7 मी/से",
-            "19.6 मी/से",
-            "24.5 मी/से"
-          ],
-          "solution": "सरासरी वेग शोधण्यासाठी t = 1 आणि t = 2 सेकंद दरम्यान अंतरातील फरक शोधून ते समय अंतरालाने भागले जाते. t = 1 वर, अंतर 4.9(1)² = 4.9 मी असते, आणि t = 2 वर, ते 4.9(2)² = 19.6 मी असते. फरक 14.7 मी असून 1 सेकंदात ते 14.7 मी/से असते. इतर विकल्प या गणनेशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the average velocity at t = 0 to t = 2 seconds",
-        null,
-        "Calculates the velocity at t = 2 seconds instead of the average between t = 1 and t = 2",
-        "Confuses the velocity at t = 2 seconds with the velocity at t = 3 seconds"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 14.7 m/s, calculated as the change in position between t = 1 and t = 2 divided by the time interval. The author's reasoning is sound, and the distractors reflect common misconceptions.",
+      "critique": "The question is well-constructed. Option 2 correctly illustrates the concept of a limit, while the other options describe function properties that are not directly related to the limit concept. The author's reasoning for the distractors is sound and reflects common student misconceptions.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh112.pdf",
@@ -392,49 +211,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:55:41.865Z",
+      "generatedAt": "2026-10-28T09:15:39.022Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If the derivative of a function at a point is 0, what does this indicate about the function at that point?",
+      "stem": "If f(x) = (ax + b) (cx + d), what is the derivative of f(x)?",
       "choices": [
-        "The function is increasing",
-        "The function is decreasing",
-        "The function has a horizontal tangent",
-        "The function is undefined"
+        "ac",
+        "a + c",
+        "ad + bc",
+        "acx + ad + bc + bd"
       ],
       "answerIndex": 2,
-      "solution": "If the derivative of a function at a point is 0, it means the slope of the tangent line to the function at that point is 0, which corresponds to a horizontal tangent. A horizontal tangent indicates that the function is neither increasing nor decreasing at that specific point. The function being undefined is unrelated to the derivative being 0, and the function cannot be both increasing and decreasing at the same point.",
+      "solution": "Using the product rule, the derivative of (ax + b)(cx + d) is a(cx + d) + c(ax + b), which simplifies to ad + bc. The other options are incorrect simplifications of the derivative.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि किसी फलन के एक बिंदु पर अवकलज 0 है, तो इसका अर्थ फलन के उस बिंदु पर क्या होता है?",
+          "stem": "यदि f(x) = (ax + b) (cx + d) है, तो f(x) का अवकलज क्या है?",
           "choices": [
-            "फलन बढ़ रहा है",
-            "फलन घट रहा है",
-            "फलन के एक क्षैतिज स्पर्शरेखा है",
-            "फलन अपरिभाषित है"
+            "ac",
+            "a + c",
+            "ad + bc",
+            "acx + ad + bc + bd"
           ],
-          "solution": "यदि किसी फलन के एक बिंदु पर अवकलज 0 है, तो इसका अर्थ है कि फलन के उस बिंदु पर स्पर्शरेखा रेखा की प्रवणता 0 है, जो क्षैतिज स्पर्शरेखा के अनुरूप होता है। एक क्षैतिज स्पर्शरेखा इंगित करता है कि फलन उस विशिष्ट बिंदु पर न तो बढ़ रहा है और न ही घट रहा है। फलन के अपरिभाषित होने का संबंध अवकलज के 0 होने से नहीं होता है, और फलन एक ही समय में बढ़ और घट नहीं सकता है।",
+          "solution": "गुणनफल नियम का उपयोग करके, (ax + b)(cx + d) का अवकलज a(cx + d) + c(ax + b) होता है, जो ad + bc में सरल हो जाता है। अन्य विकल्प अवकलज के गलत सरलीकरण हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used in a Hindi-medium context.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका फलनाचा बिंदूवर अवकलज 0 असल्यास, तो फलनाबद्दल त्या बिंदूवर काय सूचित करतो?",
+          "stem": "f(x) = (ax + b) (cx + d) असल्यास f(x) चा व्युत्पन्न काय आहे?",
           "choices": [
-            "फलन वाढत आहे",
-            "फलन घटत आहे",
-            "फलनाला एक क्षैतिज स्पर्शमिती आहे",
-            "फलन अअस्तित्वात नाही"
+            "ac",
+            "a + c",
+            "ad + bc",
+            "acx + ad + bc + bd"
           ],
-          "solution": "एका फलनाचा बिंदूवर अवकलज 0 असल्यास, तो फलनाच्या त्या बिंदूवर स्पर्शमितीचा ढाल 0 असल्याचा अर्थ आहे, जो क्षैतिज स्पर्शमितीशी संबंधित आहे. क्षैतिज स्पर्शमिती दर्शवते की फलन त्या विशिष्ट बिंदूवर वाढत नाही किंवा घटत नाही. फलन अस्तित्वात नसल्याचे अवकलज 0 असल्याशी संबंधित नाही, आणि फलन एकाच वेळी वाढत आणि घटत असू शकत नाही.",
+          "solution": "उत्पादन नियम वापरून, (ax + b)(cx + d) चा व्युत्पन्न a(cx + d) + c(ax + b) असतो, जो ad + bc असा सोपा केला जातो. इतर विकल्प व्युत्पन्नाच्या चुकीच्या सोप्या रूपात आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate mathematical terminology used in Marathi.",
           "flag": null
         }
       },
@@ -443,10 +262,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Incorrectly assumes that a zero derivative means the function is increasing",
-        "Incorrectly assumes that a zero derivative means the function is decreasing",
+        "Calculates the coefficient of x only",
+        "Adds the coefficients of x incorrectly",
         null,
-        "Mistakenly thinks that a zero derivative implies the function is undefined"
+        "Fails to simplify the expression properly"
       ],
       "solverAnswers": [
         2,
@@ -456,197 +275,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2, as a derivative of 0 indicates a horizontal tangent. The other options represent common misconceptions about the meaning of a zero derivative.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 12,
-          "pageStart": 24,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 13,
-          "pageStart": 26,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 14,
-          "pageStart": 28,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:55:41.865Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If f(x) = 6x^5 - x^3 + x, what is f'(x)?",
-      "choices": [
-        "30x^4 - 3x^2 + 1",
-        "6x^4 - x^2 + 1",
-        "30x^4 - x^2 + 1",
-        "30x^4 - 3x^2 + 0"
-      ],
-      "answerIndex": 0,
-      "solution": "To find f'(x), apply the power rule to each term. The derivative of 6x^5 is 30x^4, the derivative of -x^3 is -3x^2, and the derivative of x is 1. Therefore, the correct answer is 30x^4 - 3x^2 + 1. The other options contain errors in the coefficients or the exponents.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि f(x) = 6x^5 - x^3 + x, तो f'(x) क्या है?",
-          "choices": [
-            "30x^4 - 3x^2 + 1",
-            "6x^4 - x^2 + 1",
-            "30x^4 - x^2 + 1",
-            "30x^4 - 3x^2 + 0"
-          ],
-          "solution": "f'(x) ज्ञात करने के लिए प्रत्येक पद पर घात नियम लागू करें। 6x^5 का अवकलज 30x^4 है, -x^3 का अवकलज -3x^2 है, और x का अवकलज 1 है। इसलिए, सही उत्तर 30x^4 - 3x^2 + 1 है। अन्य विकल्पों में गुणांक या घात में त्रुटि होती है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "f(x) = 6x^5 - x^3 + x असल्यास f'(x) किती आहे?",
-          "choices": [
-            "30x^4 - 3x^2 + 1",
-            "6x^4 - x^2 + 1",
-            "30x^4 - x^2 + 1",
-            "30x^4 - 3x^2 + 0"
-          ],
-          "solution": "f'(x) शोधण्यासाठी प्रत्येक पदासाठी शक्ती नियम लागू करा. 6x^5 चा व्युत्पन्न 30x^4 आहे, -x^3 चा व्युत्पन्न -3x^2 आहे, आणि x चा व्युत्पन्न 1 आहे. त्यामुळे, योग्य उत्तर 30x^4 - 3x^2 + 1 आहे. इतर विकल्पांमध्ये सहगुणक किंवा घातांकात चूक असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same mathematical meaning, and uses appropriate Marathi technical terms for calculus (e.g., 'व्युत्पन्न' for 'derivative').",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Correctly computes the derivative of 6x^5 and x but makes an error in the derivative of -x^3.",
-        "Computes the derivative of 6x^5 correctly but misses the coefficient of -x^3.",
-        "Incorrectly computes the derivative of x as 0 instead of 1."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly applies the power rule to each term of the polynomial. The correct derivative is 30x^4 - 3x^2 + 1, matching option 0. The author's reasoning for the incorrect options is valid and reflects common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 15,
-          "pageStart": 30,
-          "pageEnd": 31,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 16,
-          "pageStart": 31,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 17,
-          "pageStart": 34,
-          "pageEnd": 37,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:55:41.865Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What is the derivative of f(x) = (px + q) with respect to x?",
-      "choices": [
-        "p",
-        "q",
-        "px + q",
-        "p + q"
-      ],
-      "answerIndex": 0,
-      "solution": "The derivative of f(x) = (px + q) with respect to x is found by differentiating each term. The derivative of px is p, and the derivative of q (a constant) is 0. So, f'(x) = p. The correct answer is 'p'. The other options either include the constant term or incorrectly add the terms.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "f(x) = (px + q) का x के सापेक्ष अवकलज क्या है?",
-          "choices": [
-            "p",
-            "q",
-            "px + q",
-            "p + q"
-          ],
-          "solution": "f(x) = (px + q) का x के सापेक्ष अवकलज दोनों पदों के अवकलज ज्ञात करके प्राप्त किया जाता है। px का अवकलज p होता है, और q (एक अचर) का अवकलज 0 होता है। अतः f'(x) = p। सही उत्तर 'p' है। अन्य विकल्प अचर पद शामिल करते हैं या सही तरीके से पदों को जोड़ देते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "f(x) = (px + q) चा x च्या संदर्भात अवकलज काय आहे?",
-          "choices": [
-            "p",
-            "q",
-            "px + q",
-            "p + q"
-          ],
-          "solution": "f(x) = (px + q) चा x च्या संदर्भात अवकलज शोधला जातो. px चा अवकलज p आहे, आणि q (एक स्थिरांक) चा अवकलज 0 आहे. म्हणून, f'(x) = p. योग्य उत्तर 'p' आहे. इतर विकल्पांमध्ये स्थिरांक घटक समाविष्ट असतो किंवा घटक चुकून जोडले जातात.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Includes the constant term q, which has a derivative of 0.",
-        "Includes the original function (px + q) instead of its derivative.",
-        "Adds the derivative of the constant term (q) with p, which is incorrect."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies the derivative of px + q as p, and the reasoning for the distractors aligns with common student misconceptions.",
+      "critique": "The correct answer is 2 (ad + bc), derived using the product rule. The solution is sound and matches the key. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh112.pdf",
@@ -668,292 +297,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:55:41.865Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "From the given passage, what does the slope of the tangent to the curve s = 4.9t² at t = 2 represent?",
-      "choices": [
-        "The average velocity between t = 1 and t = 2",
-        "The instantaneous velocity at t = 2",
-        "The total distance covered by the body",
-        "The acceleration of the body"
-      ],
-      "answerIndex": 1,
-      "solution": "The slope of the tangent to the curve s = 4.9t² at t = 2 represents the rate of change of position with respect to time at that exact moment, which is the definition of instantaneous velocity. The other options describe different physical quantities: average velocity involves a time interval, total distance is a scalar quantity, and acceleration is the rate of change of velocity.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दिए गए पाठ से, समीकरण s = 4.9t² के वक्र पर t = 2 पर स्पर्श रेखा का झुकाव क्या प्रस्तुत करता है?",
-          "choices": [
-            "t = 1 और t = 2 के बीच औसत वेग",
-            "t = 2 पर तात्कालिक वेग",
-            "वस्तु द्वारा तय की गई कुल दूरी",
-            "वस्तु का त्वरण"
-          ],
-          "solution": "समीकरण s = 4.9t² के वक्र पर t = 2 पर स्पर्श रेखा का झुकाव उस क्षण पर स्थिति के समय के सापेक्ष परिवर्तन की दर को प्रस्तुत करता है, जो तात्कालिक वेग के परिभाषा के अनुरूप है। अन्य विकल्पों में विभिन्न भौतिक राशियां वर्णित हैं: औसत वेग एक समय अंतराल के साथ संबंधित है, कुल दूरी एक अदिश राशि है, और त्वरण वेग के परिवर्तन की दर है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard physics terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दिलेल्या पाठावरून, s = 4.9t² वरील स्पर्श रेषेचा ढाल t = 2 वर काय प्रतिनिधित्व करतो?",
-          "choices": [
-            "t = 1 आणि t = 2 दरम्यानचा सरासरी वेग",
-            "t = 2 वरील तात्काळ वेग",
-            "वस्तूने ओलांडलेला एकूण अंतर",
-            "वस्तूचे त्वरण"
-          ],
-          "solution": "s = 4.9t² वरील स्पर्श रेषेचा ढाल t = 2 वर त्या क्षणी स्थानाच्या वेळेशी बदलाचा दर दर्शवतो, जो तात्काळ वेगाच्या निर्वचनाशी सुसंगत आहे. इतर विकल्पांमध्ये वेगळ्या भौतिक राशींचे वर्णन आहे: सरासरी वेग एका वेळेच्या अंतराशी संबंधित आहे, एकूण अंतर एका अदिश राशी आहे आणि त्वरण वेगाच्या बदलाचा दर आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses standard technical terms as found in Marathi-medium physics textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses average velocity with instantaneous velocity",
-        null,
-        "Confuses the concept of distance with velocity",
-        "Confuses acceleration with velocity"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed and the solution is correct. The correct answer is the instantaneous velocity at t = 2, as the slope of the tangent to the position-time curve gives the instantaneous velocity.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:55:41.865Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the derivative of a function f(x) at x = a is 3, what can be said about the function at x = a?",
-      "choices": [
-        "The function is constant",
-        "The function has a maximum point",
-        "The function is increasing",
-        "The function has a minimum point"
-      ],
-      "answerIndex": 2,
-      "solution": "If the derivative of a function at a point is 3, it indicates that the function is increasing at that point. This is because the derivative represents the slope of the tangent line. A positive derivative implies an increasing function. The other options do not align with the definition of a positive derivative.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक फलन f(x) का x = a पर अवकलज 3 है, तो x = a पर फलन के बारे में क्या कहा जा सकता है?",
-          "choices": [
-            "फलन नियत है",
-            "फलन का एक अधिकतम बिंदु है",
-            "फलन बढ़ रहा है",
-            "फलन का एक न्यूनतम बिंदु है"
-          ],
-          "solution": "यदि एक फलन के एक बिंदु पर अवकलज 3 है, तो इसका अर्थ है कि उस बिंदु पर फलन बढ़ रहा है। यह अवकलज के द्वारा स्पर्श रेखा के ढाल को दर्शाता है। एक धनात्मक अवकलज बढ़ते फलन को दर्शाता है। अन्य विकल्प धनात्मक अवकलज के परिभाषा के साथ संगत नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एका फलन f(x) च्या x = a वर अवकलज 3 असेल, तर x = a वर फलनाबद्दल काय म्हणता येईल?",
-          "choices": [
-            "फलन स्थिर आहे",
-            "फलनाला एक उच्चतम बिंदू आहे",
-            "फलन वाढत आहे",
-            "फलनाला एक निम्नतम बिंदू आहे"
-          ],
-          "solution": "जर एका फलनाचा एका बिंदूवर अवकलज 3 असेल, तर तो बिंदूवर फलन वाढत आहे असे सांगता येईल. हे अवकलजाचा स्पर्श रेषेचा ढाल दर्शवतो. धनात्मक अवकलज वाढत असलेल्या फलनाचा अर्थ दर्शवतो. इतर विकल्प धनात्मक अवकलजाच्या व्याख्येशी सुसंगत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the derivative with a constant function",
-        "Incorrectly assumes a maximum point from a positive derivative",
-        null,
-        "Mistakenly associates a positive derivative with a minimum point"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that a positive derivative indicates an increasing function. The other options are properly dismissed as misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 12,
-          "pageStart": 24,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 13,
-          "pageStart": 26,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 14,
-          "pageStart": 28,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:55:41.865Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If f(x) = 1 + x + x^2 + ... + x^50, what is f'(1)?",
-      "choices": [
-        "50",
-        "1275",
-        "51",
-        "2550"
-      ],
-      "answerIndex": 1,
-      "solution": "The function f(x) = 1 + x + x^2 + ... + x^50 is a polynomial. Its derivative f'(x) = 1 + 2x + 3x^2 + ... + 50x^49. When x = 1, f'(1) becomes the sum of the first 50 positive integers, which is 1 + 2 + 3 + ... + 50 = 1275. The other options are incorrect because they do not represent the correct sum of the coefficients after differentiation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि f(x) = 1 + x + x^2 + ... + x^50, तो f'(1) क्या है?",
-          "choices": [
-            "50",
-            "1275",
-            "51",
-            "2550"
-          ],
-          "solution": "फलन f(x) = 1 + x + x^2 + ... + x^50 एक बहुपद है। इसका अवकलज f'(x) = 1 + 2x + 3x^2 + ... + 50x^49 है। जब x = 1, तो f'(1) पहले 50 धनात्मक पूर्णांकों के योग के बराबर हो जाता है, जो 1 + 2 + 3 + ... + 50 = 1275 है। अन्य विकल्प गलत हैं क्योंकि वे अवकलन के बाद गुणांकों के सही योग का प्रतिनिधित्व नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "f(x) = 1 + x + x^2 + ... + x^50 असल्यास f'(1) किती आहे?",
-          "choices": [
-            "50",
-            "1275",
-            "51",
-            "2550"
-          ],
-          "solution": "फंक्शन f(x) = 1 + x + x^2 + ... + x^50 एक बहुपद आहे. त्याचे व्युत्पन्न f'(x) = 1 + 2x + 3x^2 + ... + 50x^49 असते. x = 1 असताना f'(1) हे पहिल्या 50 धन पूर्णांकांच्या बेरजेसारखे असते, जे 1 + 2 + 3 + ... + 50 = 1275 आहे. इतर विकल्प चुकीचे आहेत कारण ते व्युत्पन्नानंतर सहगुणकांच्या बरोबर बेरजेचे प्रतिनिधित्व करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for polynomials and derivatives.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Fails to recognize the pattern of the series and computes the sum incorrectly.",
-        null,
-        "Confuses the sum of the first 50 natural numbers with 50.",
-        "Incorrectly multiplies the sum of the first 50 natural numbers by 2."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly computes the derivative of the polynomial and evaluates it at x = 1, resulting in the sum of the first 50 natural numbers, which is 1275. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 15,
-          "pageStart": 30,
-          "pageEnd": 31,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 16,
-          "pageStart": 31,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh112.pdf",
-          "ordinal": 17,
-          "pageStart": 34,
-          "pageEnd": 37,
-          "headingPath": [
-            "Chapter 12: Limits and Derivatives"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:55:41.865Z",
+      "generatedAt": "2026-10-28T09:15:39.022Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

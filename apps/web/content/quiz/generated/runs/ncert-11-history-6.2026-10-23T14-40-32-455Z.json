@@ -1,0 +1,950 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T14:40:32.455Z",
+  "finishedAt": "2026-10-23T14:51:48.998Z",
+  "seconds": 677,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Themes in World History",
+    "bookCode": "kehs1",
+    "document": "ncert/11/history/kehs106.pdf",
+    "classLevel": 11,
+    "subject": "History",
+    "chapter": "Chapter 6 — TOWARDS Modernisation",
+    "edition": "Reprint 2026-27",
+    "chunks": 29,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII History, sample question paper, 2024-25]\n21. Which of the following were the key ideals associated with the social struggles 1\nin India since the nineteenth century?\nA. Autonomy, hierarchy, and traditionalism\nB. Democracy, equality, and justice\nC. Imperialism, colonialism, and bureaucracy\nD. Monarchy, privilege, and conservatism",
+      "[CBSE Class XII History, marking scheme, 2025-26]\n20. C. Pandit Jawaharlal Nehru",
+      "[CBSE Class XII History, marking scheme, 2025-26]\n13. C. mulk-abadi",
+      "[CBSE Class XII History, sample question paper, 2023-24]\n30. “The Quit India Movement genuinely a mass movement”. Justify the 8\nstatement.\nOR\nExamine the different kinds of sources from which the political career\nof Gandhiji and the history of the National movement could be\nreconstructed."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 254304,
+      "in": 50,
+      "out": 47,
+      "rejects": 3,
+      "promptTokens": 49667,
+      "completionTokens": 10859
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 461143,
+      "in": 47,
+      "out": 45,
+      "rejects": 2,
+      "promptTokens": 24574,
+      "completionTokens": 9155
+    },
+    "solver": {
+      "calls": 267,
+      "ms": 173098,
+      "in": 45,
+      "out": 37,
+      "rejects": 8,
+      "promptTokens": 44611,
+      "completionTokens": 2582
+    },
+    "form": {
+      "calls": 10,
+      "ms": 37527,
+      "in": 37,
+      "out": 5,
+      "rejects": 32,
+      "promptTokens": 2598,
+      "completionTokens": 800
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 7,
+      "ms": 1498,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 309887,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 14134,
+      "completionTokens": 8025
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "Which of the following statements best captures the meaning of 'mainstream culture' as discussed in the passage?",
+      "ms": {
+        "draft": 4666,
+        "critique": 7901,
+        "solver": 1518
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the impact of colonialism on indigenous cultures?",
+      "ms": {
+        "draft": 4666,
+        "critique": 8321,
+        "solver": 1796,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best explains the role of the state in the process of industrialisation according to the passage?",
+      "ms": {
+        "draft": 4666,
+        "critique": 8321,
+        "solver": 2765,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what was a key factor in the development of modernisation?",
+      "ms": {
+        "draft": 4666,
+        "critique": 7827,
+        "solver": 1668,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why nationalist movements arose in both colonial and non-colonial contexts?",
+      "ms": {
+        "draft": 4666,
+        "critique": 9866,
+        "solver": 2253
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the Industrial Revolution in Britain?",
+      "ms": {
+        "draft": 4666,
+        "critique": 9454,
+        "solver": 3203,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the main theme of the passage?",
+      "ms": {
+        "draft": 4333,
+        "critique": 10278,
+        "solver": 1522,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what contributed to the success of the Chinese Communist Party in maintaining control after 1949?",
+      "ms": {
+        "draft": 4333,
+        "critique": 9900,
+        "solver": 2341
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the concept of 'modernity' in different countries?",
+      "ms": {
+        "draft": 4333,
+        "critique": 9308,
+        "solver": 2900,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why might the author consider the Japanese economic recovery after the Second World War as more than just a 'post-war miracle'?",
+      "ms": {
+        "draft": 4333,
+        "critique": 7168,
+        "solver": 1509,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of how a country in the passage redefined its approach to modernisation?",
+      "ms": {
+        "draft": 4333,
+        "critique": 8902,
+        "solver": 2451,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the role of education in Japan's modernisation?",
+      "ms": {
+        "draft": 4333,
+        "critique": 6797,
+        "solver": 3118,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the information in the passage, which of the following events can be considered as part of the process of modernisation in India?",
+      "ms": {
+        "draft": 5121,
+        "critique": 7525,
+        "solver": 1915,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following best explains the reason for the decline of native populations in countries like America and Australia?",
+      "ms": {
+        "draft": 5121,
+        "critique": 7368,
+        "solver": 2382,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a social reform in 19th century India as mentioned in the passage?",
+      "ms": {
+        "draft": 5121,
+        "critique": 10720,
+        "solver": 2917,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage highlights the importance of including native histories in understanding the past. Which of the following supports this idea?",
+      "ms": {
+        "draft": 5121,
+        "critique": 9101,
+        "solver": 1608,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, which of the following is an example of a political event in the history of India?",
+      "ms": {
+        "draft": 5121,
+        "critique": 8289,
+        "solver": 2240,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what was the main reason for establishing colonies?",
+      "ms": {
+        "draft": 4341,
+        "critique": 9778,
+        "solver": 1307,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following countries was a colony of England according to the passage?",
+      "ms": {
+        "draft": 4341,
+        "critique": 11080,
+        "solver": 2247,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what was the primary method of obtaining goods among the native peoples of North America?",
+      "ms": {
+        "draft": 4341,
+        "critique": 9210,
+        "solver": 2261
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If you were to create a timeline of events related to modernisation in India, which of the following would you include based on the passage?",
+      "ms": {
+        "draft": 5121,
+        "critique": 13819,
+        "solver": 24083
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the term 'aboriginal'?",
+      "ms": {
+        "draft": 4341,
+        "critique": 8040,
+        "solver": 1315,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, which of the following is NOT a name of a native tribe?",
+      "ms": {
+        "draft": 6671,
+        "critique": 7490
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the reason for the establishment of Canberra as the capital of Australia?",
+      "ms": {
+        "draft": 6960,
+        "critique": 9595,
+        "solver": 2870
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements best reflects the impact of the 'Great Australian Silence' on the understanding of native cultures?",
+      "ms": {
+        "draft": 6960,
+        "critique": 11079
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the passage suggest about the economic development of Australia under European settlement?",
+      "ms": {
+        "draft": 6960,
+        "critique": 8786,
+        "solver": 17393,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the reason for the European settlers in Australia to eject the natives from their land?",
+      "ms": {
+        "draft": 6960,
+        "critique": 11463,
+        "solver": 16055,
+        "form": 3454
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the concept of 'terra nullius' in the context of Australian history?",
+      "ms": {
+        "draft": 6960,
+        "critique": 9299,
+        "solver": 1867,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of Chinese immigrants in Australia during the 19th century?",
+      "ms": {
+        "draft": 6960,
+        "critique": 10423,
+        "solver": 1944,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what was the outcome of the natives' resistance to the Canadian government's 1969 announcement?",
+      "ms": {
+        "draft": 15329,
+        "critique": 8749,
+        "solver": 2634,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the main idea of the passage about the Native American experience in the USA?",
+      "ms": {
+        "draft": 5502,
+        "critique": 8460,
+        "solver": 2125,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what was one reason for the rapid industrial development in the USA?",
+      "ms": {
+        "draft": 5502,
+        "critique": 8945,
+        "solver": 2123
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the impact of the 'democratic spirit' on American identity?",
+      "ms": {
+        "draft": 5502,
+        "critique": 10018,
+        "solver": 1519,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes the main reason for the expansion of the USA in the 19th century?",
+      "ms": {
+        "draft": 5639,
+        "critique": 13531,
+        "solver": 1629,
+        "form": 3427
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage imply about the role of Native Americans in the development of democratic ideas in Europe?",
+      "ms": {
+        "draft": 5502,
+        "critique": 8877,
+        "solver": 21548,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the significance of the 'Gold Rush' in the USA according to the passage?",
+      "ms": {
+        "draft": 5502,
+        "critique": 9052,
+        "solver": 26238
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains the attitude of European settlers towards the native Americans as described in the passage?",
+      "ms": {
+        "draft": 5639,
+        "critique": 8427,
+        "solver": 2135,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why did the passage suggest that the idea of 'primitive man' disappearing with 'primitive animals' was a harmful belief?",
+      "ms": {
+        "draft": 5639,
+        "critique": 8580,
+        "solver": 2216,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what was the consequence of the invention of barbed wire in the USA?",
+      "ms": {
+        "draft": 5639,
+        "critique": 9181,
+        "solver": 15130,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a reason for the natives of America being called 'uncivilised' by western Europeans in the eighteenth century?",
+      "ms": {
+        "draft": 5229,
+        "critique": 7482,
+        "solver": 1489,
+        "form": 4862
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the natives of America believe about the goods they exchanged with the Europeans?",
+      "ms": {
+        "draft": 5229,
+        "critique": 8015,
+        "solver": 2208,
+        "form": 4087
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes the main reason for European colonial expansion in the 17th and 18th centuries?",
+      "ms": {
+        "draft": 4840,
+        "critique": 8262,
+        "solver": 1185,
+        "form": 3654
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main reason for the poor conditions of native peoples in the USA and Canada in the early 20th century?",
+      "ms": {
+        "draft": 15329,
+        "critique": 8296,
+        "solver": 2361,
+        "form": 5667,
+        "translation": 86192
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did the Indian Reorganisation Act of 1934 allow native peoples in the USA to do?",
+      "ms": {
+        "draft": 15329,
+        "critique": 8916,
+        "solver": 2000,
+        "form": 3501,
+        "translation": 48792
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the 'Dreamtime' in the context of Australian aboriginal culture?",
+      "ms": {
+        "draft": 15329,
+        "critique": 8973,
+        "solver": 1988,
+        "form": 4952,
+        "translation": 50481
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why the East India Company was able to expand its power in South Asia?",
+      "ms": {
+        "draft": 4341,
+        "critique": 9263,
+        "solver": 2231,
+        "form": 4767,
+        "translation": 66515
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best reflects the theme of modernisation as discussed in the chapter?",
+      "ms": {
+        "draft": 6644,
+        "critique": 7440,
+        "solver": 1066,
+        "form": 1839,
+        "translation": 50359
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following statements best captures the meaning of 'mainstream culture' as discussed in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the impact of colonialism on indigenous cultures?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"overlooks the resistance mentioned in the passage…\"); distractor 1's reason is not a one-line misconception (\"misinterprets the passage as suggesting total assimilation…\"); distractor 3's reason is not a one-line misconception (\"ignores the evidence of cultural resistance in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best explains the role of the state in the process of industrialisation according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"confuses the passage's message about variation with a univer…\"); distractor 3's reason is not a one-line misconception (\"overlooks the mention of state involvement in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what was a key factor in the development of modernisation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"mentions a related concept but not the one highlighted in th…\"); distractor 2's reason is not a one-line misconception (\"confuses the passage's focus…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why nationalist movements arose in both colonial and non-colonial contexts?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the Industrial Revolution in Britain?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the main theme of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Focuses on one aspect of the passage…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets a part of the passage as the main idea…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "According to the passage, what contributed to the success of the Chinese Communist Party in maintaining control after 1949?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the concept of 'modernity' in different countries?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets a part of the passage as the main idea…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, why might the author consider the Japanese economic recovery after the Second World War as more than just a 'post-war miracle'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Focuses on a detail not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of how a country in the passage redefined its approach to modernisation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Assumes a factor not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"Focuses on a detail not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the role of education in Japan's modernisation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Focuses on a detail not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Based on the information in the passage, which of the following events can be considered as part of the process of modernisation in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following best explains the reason for the decline of native populations in countries like America and Australia?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a social reform in 19th century India as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage highlights the importance of including native histories in understanding the past. Which of the following supports this idea?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, which of the following is an example of a political event in the history of India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what was the main reason for establishing colonies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following countries was a colony of England according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer is Ireland, but the pupil chooses a different…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what was the primary method of obtaining goods among the native peoples of North America?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If you were to create a timeline of events related to modernisation in India, which of the following would you include based on the passage?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the term 'aboriginal'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, which of the following is NOT a name of a native tribe?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What was the main goal of the US and Canadian governments in the 1950s and 1960s regarding native peoples?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does the passage suggest about the impact of European colonization on the aboriginal people of Australia?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following was NOT a feature of the administrative system in South Asia under the East India Company?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the reason for the establishment of Canberra as the capital of Australia?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following statements best reflects the impact of the 'Great Australian Silence' on the understanding of native cultures?",
+      "reason": "the critic finds option 3 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the passage suggest about the economic development of Australia under European settlement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage as stating that the economy was mo…\"); distractor 1's reason is not a one-line misconception (\"Confuses the passage's statement about the economy not being…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the reason for the European settlers in Australia to eject the natives from their land?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Misinterprets the passage as focusing on democratic governan…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the concept of 'terra nullius' in the context of Australian history?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage as suggesting that 'terra nullius…\"); distractor 1's reason is not a one-line misconception (\"Confuses the passage's statement about 'terra nullius' with …\"); distractor 3's reason is not a one-line misconception (\"Confuses the passage's statement about 'terra nullius' with …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of Chinese immigrants in Australia during the 19th century?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage as suggesting that Chinese immigra…\"); distractor 1's reason is not a one-line misconception (\"Misunderstands the passage as suggesting that Chinese immigr…\"); distractor 2's reason is not a one-line misconception (\"Confuses the passage's statement about the ban on Chinese im…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what was the outcome of the natives' resistance to the Canadian government's 1969 announcement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the main idea of the passage about the Native American experience in the USA?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This option incorrectly suggests that Native Americans were …\"); distractor 2's reason is not a one-line misconception (\"This option misrepresents the passage by suggesting Native A…\"); distractor 3's reason is not a one-line misconception (\"This option incorrectly assigns the cause of the Industrial …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "According to the passage, what was one reason for the rapid industrial development in the USA?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the impact of the 'democratic spirit' on American identity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This option is incorrect as the passage clearly states that …\"); distractor 2's reason is not a one-line misconception (\"This option misrepresents the passage by suggesting that the…\"); distractor 3's reason is not a one-line misconception (\"This option is incorrect as the passage clearly shows the im…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following best describes the main reason for the expansion of the USA in the 19th century?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misunderstands the passage's focus on land acquisition…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage imply about the role of Native Americans in the development of democratic ideas in Europe?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 are the same (\"They were the primary source of democratic ideas in Europe.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What was the significance of the 'Gold Rush' in the USA according to the passage?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best explains the attitude of European settlers towards the native Americans as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why did the passage suggest that the idea of 'primitive man' disappearing with 'primitive animals' was a harmful belief?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what was the consequence of the invention of barbed wire in the USA?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following was a reason for the natives of America being called 'uncivilised' by western Europeans in the eighteenth century?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misunderstands the passage's description of 'uncivilised'…\"); distractor 3's reason is not a one-line misconception (\"Ignores the passage's focus on literacy and religion as crit…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What did the natives of America believe about the goods they exchanged with the Europeans?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's description of the goods as comm…\"); distractor 3's reason is not a one-line misconception (\"Ignores the passage's focus on friendship in trade with the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following best describes the main reason for European colonial expansion in the 17th and 18th centuries?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's focus on economic gain as cultur…\"); distractor 3's reason is not a one-line misconception (\"Overlooks the text's emphasis on profit and trade over polit…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

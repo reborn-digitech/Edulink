@@ -1,0 +1,829 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T01:39:33.133Z",
+  "finishedAt": "2026-10-30T01:46:48.797Z",
+  "seconds": 436,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari",
+    "bookCode": "iemh1",
+    "document": "ncert/9/mathematics/iemh107.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — The Mathematics of Maybe: Introduction to Probability",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n19. Assertion (A) : Kuhu and Beena are two equally capable badminton players. Probability that Beena\nwill beat Kuhu in 3 games out of 4 is 25%\nReason (R) : The probability of 𝑟 successes in 𝑛 trials, denoted by P(X = 𝑟) is given by\nP(X = 𝑟) = C n r 𝑝 𝑞 𝑟 𝑛−𝑟 , 𝑟 = 0, 1, . . . , 𝑛 where 𝑝 denotes success and 𝑞 denotes failure in each trial. 1\na) (i) b) (ii) c) (iii) d) (iv)",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n18. An event is most unlikely to happen. Its probability is\nA) 0.0001\nB) 0.001\nC) 0.01\nD) 0.1\nEach of the following questions contains two statements i.e., ASSERTION\nand REASON, and has following four choices. Only one of which is the\ncorrect answer.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n15. (B) ଽ 1\nସ\nProbability of getting vowels in the word Mathematics is ଵଵ ସ ,\nSo, ଶ௫ାଵ ଵଵ ଶ = ସ\nଽ\n⇒ 𝑥 = ସ",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n18. Answer – A 1\nSince, the event is most unlikely to happen. Therefore, its probability is 0.0001"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 186060,
+      "in": 43,
+      "out": 41,
+      "rejects": 2,
+      "promptTokens": 38787,
+      "completionTokens": 10240
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 335895,
+      "in": 41,
+      "out": 34,
+      "rejects": 7,
+      "promptTokens": 22572,
+      "completionTokens": 8484
+    },
+    "solver": {
+      "calls": 222,
+      "ms": 109955,
+      "in": 34,
+      "out": 29,
+      "rejects": 5,
+      "promptTokens": 40818,
+      "completionTokens": 2263
+    },
+    "form": {
+      "calls": 11,
+      "ms": 61545,
+      "in": 29,
+      "out": 14,
+      "rejects": 15,
+      "promptTokens": 13490,
+      "completionTokens": 1622
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 31,
+      "ms": 6388,
+      "in": 14,
+      "out": 5,
+      "rejects": 9,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 168257,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11329,
+      "completionTokens": 5407
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 4,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the probability scale, which of the following events is most likely to happen?",
+      "ms": {
+        "draft": 5137,
+        "critique": 7295
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 5137,
+        "critique": 7939
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the probability of flipping a coin and getting heads?",
+      "ms": {
+        "draft": 5137,
+        "critique": 7322,
+        "solver": 1428,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a deck of 6 cards contains 3 purple cards and 3 green cards, what is the probability of picking a purple card?",
+      "ms": {
+        "draft": 5137,
+        "critique": 10159,
+        "solver": 17238
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the probability of an event is 0.0001, what does this mean?",
+      "ms": {
+        "draft": 5137,
+        "critique": 7526,
+        "solver": 14806
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a game of Jñān-Chaupad̤, a player moves forward if they land on a ladder and backward if they land on a snake. What does this game symbolically represent?",
+      "ms": {
+        "draft": 4370,
+        "critique": 6748,
+        "solver": 1891,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A die is rolled 50 times, and it lands on a 4 exactly 8 times. What is the experimental probability of rolling a 4?",
+      "ms": {
+        "draft": 4370,
+        "critique": 6533,
+        "solver": 19193
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a game of Jñān-Chaupad̤, a player lands on a ladder 60% of the time and on a snake 40% of the time. What is the theoretical probability of landing on a ladder?",
+      "ms": {
+        "draft": 4370,
+        "critique": 7189,
+        "solver": 1800,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a class of 50 students, 20 like mango, 15 like apples, 10 like bananas, and 5 like grapes. What is the probability that a randomly selected student likes mango?",
+      "ms": {
+        "draft": 4370,
+        "critique": 9033,
+        "solver": 16348
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the probability of getting an even number when rolling a fair 6-sided die?",
+      "ms": {
+        "draft": 3801,
+        "critique": 5474
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the theoretical probability of rolling a 4 on a standard 6-sided die?",
+      "ms": {
+        "draft": 4370,
+        "critique": 6645,
+        "solver": 1364,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A paper cup is tossed 100 times, and it lands on its bottom 45 times, on its top 30 times, and on its side 25 times. What is the experimental probability of the cup landing on its side?",
+      "ms": {
+        "draft": 3801,
+        "critique": 8966
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A fair coin is tossed 100 times, and it lands on heads 52 times. A student claims that the probability of getting heads is 52%. What is the correct interpretation of this result?",
+      "ms": {
+        "draft": 3801,
+        "critique": 6324,
+        "solver": 1337,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the probability of getting heads when tossing a fair coin?",
+      "ms": {
+        "draft": 3672,
+        "critique": 6397,
+        "solver": 1490,
+        "form": 3928
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the probability of an impossible event?",
+      "ms": {
+        "draft": 3672,
+        "critique": 8084,
+        "solver": 14272,
+        "form": 3039
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A tree diagram is used to show all possible outcomes of which type of experiment?",
+      "ms": {
+        "draft": 3672,
+        "critique": 5811,
+        "solver": 1485,
+        "form": 3445
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A game of chance has an arrow that points at numbers 1 to 8. What is the probability that the arrow points at an odd number?",
+      "ms": {
+        "draft": 5811,
+        "critique": 5576,
+        "solver": 954,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the probability of an event that is certain to happen?",
+      "ms": {
+        "draft": 3691,
+        "critique": 6754,
+        "solver": 2293,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A fair coin is tossed. What is the probability of getting a head?",
+      "ms": {
+        "draft": 3691,
+        "critique": 7624,
+        "solver": 1491,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A bag contains 4 red balls and 5 blue balls. One ball is drawn and laid aside, and a second ball is drawn. What is the probability of drawing a red ball and then a blue ball?",
+      "ms": {
+        "draft": 3691,
+        "critique": 7355
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A fair coin is tossed twice. What is the probability of getting exactly one head?",
+      "ms": {
+        "draft": 4261,
+        "critique": 6974,
+        "solver": 1460,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Fig. 7.7, the arrow is equally likely to point at any of the numbers 1 to 8. What is the probability that it will point at a number greater than 2?",
+      "ms": {
+        "draft": 3691,
+        "critique": 7642,
+        "solver": 1867,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, a paper cup is tossed 100 times, and it lands on its bottom 45 times, on its top 25 times, and on its side 30 times. What is the experimental probability of the cup landing on its side?",
+      "ms": {
+        "draft": 4390,
+        "critique": 6744,
+        "solver": 1259,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A fair die is rolled 60 times, and a 3 is rolled 10 times. What is the experimental probability of rolling a 3?",
+      "ms": {
+        "draft": 4390,
+        "critique": 7545
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a fair coin is flipped 5 times and lands on heads every time, what is the probability of getting heads on the 6th flip?",
+      "ms": {
+        "draft": 4390,
+        "critique": 7661,
+        "solver": 11510,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A die is rolled 100 times, and the results are: 1 (18 times), 2 (17 times), 3 (15 times), 4 (16 times), 5 (19 times), and 6 (15 times). What is the experimental probability of rolling an even number?",
+      "ms": {
+        "draft": 4390,
+        "critique": 7442
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a certain event?",
+      "ms": {
+        "draft": 4433,
+        "critique": 6303,
+        "solver": 4500
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a fair coin is tossed 20 times and lands on heads 12 times, what is the experimental probability of getting heads?",
+      "ms": {
+        "draft": 3801,
+        "critique": 6078,
+        "solver": 1486,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the set of all possible outcomes of a random experiment?",
+      "ms": {
+        "draft": 3672,
+        "critique": 7735,
+        "solver": 1638,
+        "form": 3983
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the range of values that probability can take?",
+      "ms": {
+        "draft": 5811,
+        "critique": 6138,
+        "solver": 1825,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A box contains 4 balls numbered 1 to 4. A ball is drawn, recorded, and returned. A second ball is drawn. What is the size of the sample space?",
+      "ms": {
+        "draft": 5811,
+        "critique": 6018,
+        "solver": 1184,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the range of probability values for any event?",
+      "ms": {
+        "draft": 3691,
+        "critique": 6239,
+        "solver": 1017,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term for the list of all possible outcomes of a random experiment?",
+      "ms": {
+        "draft": 3691,
+        "critique": 6269,
+        "solver": 1728,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the set of all possible outcomes of a random experiment?",
+      "ms": {
+        "draft": 4261,
+        "critique": 7553,
+        "solver": 1942,
+        "form": 2809
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A bag contains 3 red balls, 2 blue balls, and 1 green ball. One ball is picked at random. What is the probability that it is not red?",
+      "ms": {
+        "draft": 4261,
+        "critique": 7048,
+        "solver": 1533,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a village fair, there are 3 snacks (Samosa, Pakora, Bhaji) and 2 drinks (Chai, Lassi). What is the probability of choosing Samosa as a snack and Chai as a drink?",
+      "ms": {
+        "draft": 4261,
+        "critique": 6650,
+        "solver": 1797,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following events is an example of a 'certain' event?",
+      "ms": {
+        "draft": 4370,
+        "critique": 7055,
+        "solver": 1430,
+        "form": 0,
+        "translation": 31950
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a game of Snakes and Ladders, a player rolls a fair 6-sided die. They rolled a 6 three times in a row and believe the next roll is less likely to be a 6. What is the correct probability of rolling a 6 on the next roll?",
+      "ms": {
+        "draft": 3801,
+        "critique": 7399,
+        "solver": 11901,
+        "form": 0,
+        "translation": 39093
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the probability of rain is 0.75, what does this mean?",
+      "ms": {
+        "draft": 5137,
+        "critique": 6882,
+        "solver": 1337,
+        "form": 0,
+        "translation": 39946
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A die is rolled twice. What is the probability of getting a sum of 7?",
+      "ms": {
+        "draft": 4261,
+        "critique": 7573,
+        "solver": 1776,
+        "form": 0,
+        "translation": 28191
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a fair game, the probability of winning is 1/3. If a player plays the game 300 times, how many times would they expect to win?",
+      "ms": {
+        "draft": 4390,
+        "critique": 7918,
+        "solver": 1517,
+        "form": 0,
+        "translation": 24103
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the experimental probability of getting a 4 when rolling a 6-sided die 12 times and getting a 4 three times?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the probability scale, which of the following events is most likely to happen?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the probability of flipping a coin and getting heads?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a deck of 6 cards contains 3 purple cards and 3 green cards, what is the probability of picking a purple card?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the probability of an event is 0.0001, what does this mean?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a game of Jñān-Chaupad̤, a player moves forward if they land on a ladder and backward if they land on a snake. What does this game symbolically represent?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A die is rolled 50 times, and it lands on a 4 exactly 8 times. What is the experimental probability of rolling a 4?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a game of Jñān-Chaupad̤, a player lands on a ladder 60% of the time and on a snake 40% of the time. What is the theoretical probability of landing on a ladder?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a class of 50 students, 20 like mango, 15 like apples, 10 like bananas, and 5 like grapes. What is the probability that a randomly selected student likes mango?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the probability of getting an even number when rolling a fair 6-sided die?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the theoretical probability of rolling a 4 on a standard 6-sided die?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'die'"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A paper cup is tossed 100 times, and it lands on its bottom 45 times, on its top 30 times, and on its side 25 times. What is the experimental probability of the cup landing on its side?",
+      "reason": "the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A fair coin is tossed 100 times, and it lands on heads 52 times. A student claims that the probability of getting heads is 52%. What is the correct interpretation of this result?",
+      "reason": "options 1 and 3 say the same thing (\"The probability of heads is 50% because the coin is fair\" / \"The probability of heads is 50% because the coin is biased\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the probability of getting heads when tossing a fair coin?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the probability of an impossible event?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A tree diagram is used to show all possible outcomes of which type of experiment?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.effort: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A game of chance has an arrow that points at numbers 1 to 8. What is the probability that the arrow points at an odd number?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'circle'"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the probability of getting a number greater than 4 when a fair die is rolled once?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the probability of an event that is certain to happen?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A fair coin is tossed. What is the probability of getting a head?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A bag contains 4 red balls and 5 blue balls. One ball is drawn and laid aside, and a second ball is drawn. What is the probability of drawing a red ball and then a blue ball?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A fair coin is tossed twice. What is the probability of getting exactly one head?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In Fig. 7.7, the arrow is equally likely to point at any of the numbers 1 to 8. What is the probability that it will point at a number greater than 2?",
+      "reason": "figure: figure spec refused: spec.parts.0.labels: Array must contain at most 8 element(s)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an experiment, a paper cup is tossed 100 times, and it lands on its bottom 45 times, on its top 25 times, and on its side 30 times. What is the experimental probability of the cup landing on its side?",
+      "reason": "options are written to different precisions (1 and 2 decimals); distractor 2's reason is not a one-line misconception (\"Correct value, but not the one for the side…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A fair die is rolled 60 times, and a 3 is rolled 10 times. What is the experimental probability of rolling a 3?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a fair coin is flipped 5 times and lands on heads every time, what is the probability of getting heads on the 6th flip?",
+      "reason": "options are written to different precisions (1 and 2 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A die is rolled 100 times, and the results are: 1 (18 times), 2 (17 times), 3 (15 times), 4 (16 times), 5 (19 times), and 6 (15 times). What is the experimental probability of rolling an even number?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of a certain event?",
+      "reason": "after redrafting distractor 0: the critic finds option 0 correct, the key is 3; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a fair coin is tossed 20 times and lands on heads 12 times, what is the experimental probability of getting heads?",
+      "reason": "near-duplicate of served question cmvr4b8hh0cz3gp213k6af3b7 (cosine 0.989 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term used for the set of all possible outcomes of a random experiment?",
+      "reason": "near-duplicate of served question cmvfegwic0474god8eigtzakl (cosine 0.910 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the range of values that probability can take?",
+      "reason": "near-duplicate of served question cmvgfw6xh03tcgpfh53d4odzp (cosine 0.900 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A box contains 4 balls numbered 1 to 4. A ball is drawn, recorded, and returned. A second ball is drawn. What is the size of the sample space?",
+      "reason": "near-duplicate of served question cmvn3mend03crgp21i9aeizbu (cosine 0.976 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the range of probability values for any event?",
+      "reason": "near-duplicate of served question cmvgfw6xh03tcgpfh53d4odzp (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term for the list of all possible outcomes of a random experiment?",
+      "reason": "near-duplicate of served question cmvgfw6xl03tigpfhd4f3ut87 (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term used to describe the set of all possible outcomes of a random experiment?",
+      "reason": "near-duplicate of served question cmvfegwic0474god8eigtzakl (cosine 0.915 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A bag contains 3 red balls, 2 blue balls, and 1 green ball. One ball is picked at random. What is the probability that it is not red?",
+      "reason": "near-duplicate of served question cmvn3mem103cfgp21y5zw6105 (cosine 0.951 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In a village fair, there are 3 snacks (Samosa, Pakora, Bhaji) and 2 drinks (Chai, Lassi). What is the probability of choosing Samosa as a snack and Chai as a drink?",
+      "reason": "near-duplicate of served question cmvn3mem303clgp21ibtrztfi (cosine 0.932 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

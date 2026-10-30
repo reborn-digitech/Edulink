@@ -1,0 +1,324 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T17:43:16.625Z",
+  "finishedAt": "2026-10-25T17:45:35.408Z",
+  "seconds": 139,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm114.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — Data Handling",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n31. The length of 40 leaves of a plant are measured correct to nearest millimetre, and the data 3\nobtained is represented in the following table.\nLength [in mm]\n118 – 126\n127 – 135\nNumber of leaves\n172 – 180\nFind the mean length of the leaves.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n16. Which of the following gives the middle most observation of the data? 1\nA) Median B) Mean C) Range D) Mode",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2023-24]\n35.\nMarks obtained Number of Cumulative\n20 – 30\n30 – 40\n40 – 50\n50 – 60\n60 – 70\n70 – 80\n80 - 90\np + q + 78 = 90\np + q = 12\n೙ మ ି௖\nMedian = (𝑙) + ௙ . h\nସହି (௣ାସ଴)\n50 = 50 + . 10\nଶ଴\nସହି (௣ାସ଴)\n. 10 = 0\nଶ଴\n45 − (𝑝 + 40) = 0\nP = 5\n5 + q = 12\nq = 7\n௙ଵି ௙଴\nMode = 𝑙 + ଶ௙ଵି ௙଴ି ௙ଶ . h\nstudents frequency\np p\n15 p + 15\n25 p + 40 1\n20 p + 60\nq p + q + 60\n8 p + q + 68 ½\n10 p + q + 78 ½\n½\n½\n½\n½\nଶହି ଵହ\n= 40 + . 10\nଶ(ଶହ)ି ଵହି ଶ଴\nଵ଴଴\n= 40 + ଵହ = 40 + 6.67 = 46.67",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 40614,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 9674,
+      "completionTokens": 2015
+    },
+    "critique": {
+      "calls": 13,
+      "ms": 90748,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 5376,
+      "completionTokens": 2249
+    },
+    "solver": {
+      "calls": 67,
+      "ms": 32025,
+      "in": 12,
+      "out": 7,
+      "rejects": 5,
+      "promptTokens": 9850,
+      "completionTokens": 596
+    },
+    "form": {
+      "calls": 4,
+      "ms": 12428,
+      "in": 7,
+      "out": 2,
+      "rejects": 5,
+      "promptTokens": 978,
+      "completionTokens": 264
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 5197,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 84885,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4967,
+      "completionTokens": 2724
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which subject is most liked by the children according to the data collected?",
+      "ms": {
+        "draft": 3269,
+        "critique": 7170,
+        "solver": 1395
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a way to represent the number of children who like each subject?",
+      "ms": {
+        "draft": 3269,
+        "critique": 7997,
+        "solver": 1624,
+        "form": 2942
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 10 more children liked Mathematics, how many children would like Mathematics in total?",
+      "ms": {
+        "draft": 3269,
+        "critique": 6727,
+        "solver": 2075
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the data, which subject is liked by the least number of children?",
+      "ms": {
+        "draft": 3269,
+        "critique": 7557,
+        "solver": 1018
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a way to display information as shown in the passage?",
+      "ms": {
+        "draft": 3500,
+        "critique": 5220,
+        "solver": 1183,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many children like Physical Education the most?",
+      "ms": {
+        "draft": 3500,
+        "critique": 5438,
+        "solver": 1936,
+        "form": 4047
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which subject is liked by the least number of children?",
+      "ms": {
+        "draft": 3500,
+        "critique": 9861,
+        "solver": 1563
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a 'change' type of problem as described in the passage?",
+      "ms": {
+        "draft": 3500,
+        "critique": 8010,
+        "solver": 1749,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the most common favourite subject among the children?",
+      "ms": {
+        "draft": 3500,
+        "critique": 5913,
+        "solver": 16177
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a 'combine' type of problem as described in the passage?",
+      "ms": {
+        "draft": 3500,
+        "critique": 5924,
+        "solver": 776,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a way to display information about the favourite subjects of children?",
+      "ms": {
+        "draft": 3269,
+        "critique": 7448,
+        "solver": 1822,
+        "form": 3219,
+        "translation": 38280
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a question that can be answered using the data collected about children's favourite subjects?",
+      "ms": {
+        "draft": 3269,
+        "critique": 8052,
+        "solver": 1894,
+        "form": 3317,
+        "translation": 41381
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which subject is most liked by the children according to the data collected?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a way to represent the number of children who like each subject?",
+      "reason": "the key is far longer than every distractor (59 vs 34 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 10 more children liked Mathematics, how many children would like Mathematics in total?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the data, which subject is liked by the least number of children?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a way to display information as shown in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misunderstands the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How many children like Physical Education the most?",
+      "reason": "checkExpr \"14\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which subject is liked by the least number of children?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a 'change' type of problem as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is the most common favourite subject among the children?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is an example of a 'combine' type of problem as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,816 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T21:44:15.904Z",
+  "finishedAt": "2026-10-25T21:52:49.034Z",
+  "seconds": 513,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh106.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — Permutations and Combinations",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[PRMO 2018 — question paper]\n26. What is the number of ways in which one can choose 60 unit squares from a 11 ⇥ 11\nchessboard such that no two chosen squares have a side in common?\nSPACE FOR ROUGH WORK\n22. एक पूणाӚक k को हम अ͚छा कह Ӓ गे अगर{1, 2, 3, . . . , 20} को हम उѠचत उपसमू֭Ӗ (proper subsets)\nमӒ џवभािजत कर सकते हӔ (ऐसे ўक एक सं͖या एक हҰ उपसमू֭ मӒ हो) ताўक हर उपसमू֭ मӒ आने\nवालҰ सं͖याओं का योग k हो। ўकतनी सं͖याएँ\n23. ऐसा सबसे बड़ा पूणाӚक n कौनसा है िजससे ўक\na 2 b 2\n+ +\nb c c a\n+ +\n29 31 29 31\nअ͚छұ ह Ӕ ?\nc 2\n≥ n(a + b + c)\na b\n+\n29 31\nसभी धनाͤमक वाःतџवक सं͖ याओं a, b, c के Ѡलए सच हो?\n24. अगर N अलग अलग आकार के िऽभुज (मतलब असमҋप िऽभुज) हӔ िजनके सभी कोण (ўडमी मӒ) पूणाӚक\nहӔ तो [N/100] का मान Թा होगा?\n25. मान लो ўक T सबसे छो",
+      "[PRMO 2017 — question paper]\n7. Find the number of positive integers n, such that n + n + 1 < 11.\n8 A pen costs 11 and a notebook costs 13. Find the number of ways in which a person\ncan spend exactly 1000 to buy pens and notebooks.\n9. There are five cities A, B, C, D, E on a certain island. Each city is connected to every\nother city by road. In how many ways can a person starting from city A come back to A\nafter visiting some cities without visiting a city more than once and without taking the\nsame road more than once? (The order in which he visits the cities also matters: e.g.,\nthe routes A ! B ! C ! A and A ! C ! B ! A are different.)",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2026-27]\n13. (A) 1 Total outcomes = 36 1\n4 Favourable outcomes = (1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3), (3, 1),\n(3, 2), (3, 3)\n9 1\nP (E) = 36 = 4",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 224983,
+      "in": 47,
+      "out": 40,
+      "rejects": 7,
+      "promptTokens": 54056,
+      "completionTokens": 11610
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 349351,
+      "in": 40,
+      "out": 34,
+      "rejects": 6,
+      "promptTokens": 23197,
+      "completionTokens": 8816
+    },
+    "solver": {
+      "calls": 231,
+      "ms": 122489,
+      "in": 34,
+      "out": 17,
+      "rejects": 17,
+      "promptTokens": 44324,
+      "completionTokens": 2446
+    },
+    "form": {
+      "calls": 5,
+      "ms": 19996,
+      "in": 17,
+      "out": 11,
+      "rejects": 6,
+      "promptTokens": 1361,
+      "completionTokens": 438
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 28,
+      "ms": 5513,
+      "in": 11,
+      "out": 8,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 326554,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 18935,
+      "completionTokens": 8769
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 4,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "How many 2-digit even numbers can be formed from the digits 1, 2, 3, 4, 5 if repetition is allowed?",
+      "ms": {
+        "draft": 5432,
+        "critique": 6044
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many different signals can be generated using at least 2 flags out of 5 different flags, with each signal having a specific order?",
+      "ms": {
+        "draft": 5432,
+        "critique": 7355,
+        "solver": 1077,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many 4-letter words, with or without meaning, can be formed from the letters of the word 'ROSE' without repetition?",
+      "ms": {
+        "draft": 5432,
+        "critique": 9671,
+        "solver": 1880
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the basic principle used to count the number of ways an event can occur in succession?",
+      "ms": {
+        "draft": 5432,
+        "critique": 6270,
+        "solver": 15347,
+        "form": 2539
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many different signals can be generated using 2 flags out of 5 different colored flags, one below the other?",
+      "ms": {
+        "draft": 3789,
+        "critique": 5983,
+        "solver": 1249
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many 5-digit telephone numbers can be constructed using the digits 0 to 9 if each number starts with 67 and no digit appears more than once?",
+      "ms": {
+        "draft": 3789,
+        "critique": 7768
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of 7! – 5! ?",
+      "ms": {
+        "draft": 3789,
+        "critique": 9223,
+        "solver": 1829
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many different 8-letter arrangements can be made from the letters of the word DAUGHTER if all vowels occur together?",
+      "ms": {
+        "draft": 5310,
+        "critique": 8002,
+        "solver": 1607
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many different 8-letter arrangements can be made from the letters of the word DAUGHTER if all vowels do not occur together?",
+      "ms": {
+        "draft": 5310,
+        "critique": 8830,
+        "solver": 1808
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the relationship between permutations (P) and combinations (C) for the same values of n and r?",
+      "ms": {
+        "draft": 5306,
+        "critique": 7204,
+        "solver": 1777,
+        "form": 3899
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many ways can 3 persons be selected from a group of 2 men and 3 women, if the committee must consist of 1 man and 2 women?",
+      "ms": {
+        "draft": 5306,
+        "critique": 8879,
+        "solver": 1469
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If C(n, r) = C(n, n - r), which of the following is true?",
+      "ms": {
+        "draft": 5306,
+        "critique": 7138,
+        "solver": 17308
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In how many ways can 5 girls and 3 boys be seated in a row so that no two boys are together?",
+      "ms": {
+        "draft": 5464,
+        "critique": 7683,
+        "solver": 1336
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many 7-digit numbers can be formed using the digits 1, 2, 0, 2, 4, 2, 4 such that the number is greater than 1000000?",
+      "ms": {
+        "draft": 5464,
+        "critique": 10496,
+        "solver": 1906
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many different words can be formed using all the letters of the word 'AGAIN' where the letter 'A' appears twice?",
+      "ms": {
+        "draft": 5464,
+        "critique": 7838,
+        "solver": 16066
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many ways can 60 unit squares be chosen from an 11 × 11 chessboard such that no two chosen squares have a side in common?",
+      "ms": {
+        "draft": 6330,
+        "critique": 5242,
+        "solver": 533,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which ancient Indian mathematician is credited with providing the general formulae for permutations and combinations?",
+      "ms": {
+        "draft": 4345,
+        "critique": 5498,
+        "solver": 2988
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person wants to choose 60 unit squares from an 11 x 11 chessboard such that no two squares are adjacent, how many such combinations can be made?",
+      "ms": {
+        "draft": 4345,
+        "critique": 6764
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person wants to buy pens costing 11 and notebooks costing 13, spending exactly 1000. How many ways can this be done?",
+      "ms": {
+        "draft": 4345,
+        "critique": 7210,
+        "solver": 1504
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In which ancient Indian text is the method of determining the number of combinations of a given number of letters described?",
+      "ms": {
+        "draft": 4345,
+        "critique": 5226,
+        "solver": 13328,
+        "form": 3403
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many numbers greater than 1000000 can be formed using the digits 1, 2, 0, 2, 4, 2, 4?",
+      "ms": {
+        "draft": 4718,
+        "critique": 9688,
+        "solver": 1740
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the number of ways to arrange n objects is 120, what is the value of n?",
+      "ms": {
+        "draft": 4345,
+        "critique": 6137,
+        "solver": 16040
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In how many ways can 5 girls and 3 boys be seated in a row so that no two boys are together?",
+      "ms": {
+        "draft": 4718,
+        "critique": 6311,
+        "solver": 1637
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many ways can the letters of the word 'ASSASSINATION' be arranged so that all the S’s are together?",
+      "ms": {
+        "draft": 4718,
+        "critique": 7631
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many words, with or without meaning, each of 2 vowels and 3 consonants can be formed from the letters of the word 'DAUGHTER'?",
+      "ms": {
+        "draft": 4718,
+        "critique": 11039
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In how many ways can 4 letters be selected from the word \"MATHEMATICS\" such that all letters are different?",
+      "ms": {
+        "draft": 5494,
+        "critique": 10442,
+        "solver": 1836,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In how many ways can 6 people be divided into 2 groups of 3 such that each group has at least one man and one woman, given that there are 3 men and 3 women?",
+      "ms": {
+        "draft": 5494,
+        "critique": 7928
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many 3-digit numbers can be formed using the digits 1 to 9 if no digit is repeated?",
+      "ms": {
+        "draft": 4883,
+        "critique": 6761,
+        "solver": 1067
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In how many ways can a committee of 8 persons choose a chairman and a vice chairman if one person cannot hold both positions?",
+      "ms": {
+        "draft": 4883,
+        "critique": 4302,
+        "solver": 787
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many 3-digit numbers can be formed from the digits 1, 2, 3, 4 and 5 if repetition of the digits is not allowed?",
+      "ms": {
+        "draft": 3789,
+        "critique": 8115,
+        "solver": 1680,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 5! ?",
+      "ms": {
+        "draft": 3789,
+        "critique": 6561,
+        "solver": 1652,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many different ways can 4 red, 3 yellow, and 2 green discs be arranged in a row if the discs of the same color are indistinguishable?",
+      "ms": {
+        "draft": 5310,
+        "critique": 7726,
+        "solver": 16925,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of ways to choose 2 flags from 4 different flags, one below the other?",
+      "ms": {
+        "draft": 5432,
+        "critique": 5732,
+        "solver": 2192,
+        "form": 0,
+        "translation": 51444
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many different words can be formed using all the letters of the word 'AGAIN' where the letter 'A' appears twice?",
+      "ms": {
+        "draft": 4718,
+        "critique": 8721,
+        "solver": 1514,
+        "form": 0,
+        "translation": 36418
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of the term 'Vikalpa' in the context of permutations and combinations?",
+      "ms": {
+        "draft": 4345,
+        "critique": 5077,
+        "solver": 1056,
+        "form": 5451,
+        "translation": 38293
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many 4-letter codes can be formed using the first 10 letters of the English alphabet, if no letter can be repeated?",
+      "ms": {
+        "draft": 3789,
+        "critique": 8358,
+        "solver": 14037,
+        "form": 0,
+        "translation": 38071
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many ways can 3 people be seated in 5 chairs?",
+      "ms": {
+        "draft": 5494,
+        "critique": 7511,
+        "solver": 1538,
+        "form": 0,
+        "translation": 22683
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A number lock has 4 wheels, each with digits 0-9. The first digit is known to be 7. How many 3-digit sequences must be tried to open the lock if no digit can be repeated?",
+      "ms": {
+        "draft": 5432,
+        "critique": 5331,
+        "solver": 1508,
+        "form": 0,
+        "translation": 50442
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "How many ways can 3 different books be arranged on a shelf if the order of the books matters?",
+      "ms": {
+        "draft": 3589,
+        "critique": 9233,
+        "solver": 16891,
+        "form": 0,
+        "translation": 34825
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a committee of 5 members must include exactly 4 bowlers from a group of 17 players, where only 5 can bowl, how many such committees can be formed?",
+      "ms": {
+        "draft": 5306,
+        "critique": 8918,
+        "solver": 1932,
+        "form": 5982,
+        "translation": 50719
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How many 4-digit numbers can be formed using the digits 1 to 9 without repeating any digit?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How many different ways can the letters of the word INSTITUTE be arranged?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How many numbers lying between 100 and 1000 can be formed with the digits 0, 1, 2, 3, 4, 5, if repetition of digits is not allowed?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In how many ways can 4 people be seated in a row of 4 chairs?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "How many ways can 5 people be seated in a row of 5 chairs?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In how many ways can the letters of the word 'CAT' be arranged?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In how many ways can the letters of the word 'DOG' be arranged?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How many 2-digit even numbers can be formed from the digits 1, 2, 3, 4, 5 if repetition is allowed?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "How many different signals can be generated using at least 2 flags out of 5 different flags, with each signal having a specific order?",
+      "reason": "options 2 and 3 are the same (\"5^2 + 5^3 + 5^4 + 5^5\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "How many 4-letter words, with or without meaning, can be formed from the letters of the word 'ROSE' without repetition?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the basic principle used to count the number of ways an event can occur in succession?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many different signals can be generated using 2 flags out of 5 different colored flags, one below the other?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "How many 5-digit telephone numbers can be constructed using the digits 0 to 9 if each number starts with 67 and no digit appears more than once?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the value of 7! – 5! ?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many different 8-letter arrangements can be made from the letters of the word DAUGHTER if all vowels occur together?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many different 8-letter arrangements can be made from the letters of the word DAUGHTER if all vowels do not occur together?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the relationship between permutations (P) and combinations (C) for the same values of n and r?",
+      "reason": "options 1 and 2 are the same (\"P = C + r!\"); distractor 3's reason is not a one-line misconception (\"Correct option is not the longest, as per the rule, and it i…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "How many ways can 3 persons be selected from a group of 2 men and 3 women, if the committee must consist of 1 man and 2 women?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If C(n, r) = C(n, n - r), which of the following is true?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In how many ways can 5 girls and 3 boys be seated in a row so that no two boys are together?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "How many 7-digit numbers can be formed using the digits 1, 2, 0, 2, 4, 2, 4 such that the number is greater than 1000000?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many different words can be formed using all the letters of the word 'AGAIN' where the letter 'A' appears twice?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "How many ways can 60 unit squares be chosen from an 11 × 11 chessboard such that no two chosen squares have a side in common?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which ancient Indian mathematician is credited with providing the general formulae for permutations and combinations?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person wants to choose 60 unit squares from an 11 x 11 chessboard such that no two squares are adjacent, how many such combinations can be made?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A person wants to buy pens costing 11 and notebooks costing 13, spending exactly 1000. How many ways can this be done?",
+      "reason": "the solver picked option 1 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "In which ancient Indian text is the method of determining the number of combinations of a given number of letters described?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses Sushruta's work with the text on letter combination…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many numbers greater than 1000000 can be formed using the digits 1, 2, 0, 2, 4, 2, 4?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the number of ways to arrange n objects is 120, what is the value of n?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In how many ways can 5 girls and 3 boys be seated in a row so that no two boys are together?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "How many ways can the letters of the word 'ASSASSINATION' be arranged so that all the S’s are together?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How many words, with or without meaning, each of 2 vowels and 3 consonants can be formed from the letters of the word 'DAUGHTER'?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In how many ways can 4 letters be selected from the word \"MATHEMATICS\" such that all letters are different?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"70*24\" = 1680, but the key says 840"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In how many ways can 6 people be divided into 2 groups of 3 such that each group has at least one man and one woman, given that there are 3 men and 3 women?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many 3-digit numbers can be formed using the digits 1 to 9 if no digit is repeated?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In how many ways can a committee of 8 persons choose a chairman and a vice chairman if one person cannot hold both positions?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "How many 3-digit numbers can be formed from the digits 1, 2, 3, 4 and 5 if repetition of the digits is not allowed?",
+      "reason": "near-duplicate of served question cmsmo5qbs0a1oy2vyxbxa1xuu (cosine 0.942 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the value of 5! ?",
+      "reason": "near-duplicate of served question cmsmo5qbk0a10y2vy84klcyxa (cosine 0.959 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "How many different ways can 4 red, 3 yellow, and 2 green discs be arranged in a row if the discs of the same color are indistinguishable?",
+      "reason": "near-duplicate of served question cmvkec3kh0k7dgpfhk1jx7htd (cosine 0.978 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,788 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T22:53:25.477Z",
+  "finishedAt": "2026-10-27T23:02:06.650Z",
+  "seconds": 521,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh103.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — Pair of Linear Equations in Two Variables",
+    "edition": "Reprint 2026-27",
+    "chunks": 10,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n4. Graphically, the pair of equations given by\n6x – 3y + 10 = 0\n2x – y + 9 = 0\nrepresents two lines which are\n(a) intersecting at exactly one point.\n(c) coincident.\n(c) 5 (d) –5\n(b) parallel.\n(d) intersecting at exactly two points.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n9(10𝑥 + 𝑦) = 2(10𝑦 + 𝑥) -------------(2) ½\nSolving (1) and (2), we get\n𝑥 = 1 , 𝑦 = 8 1\nRequired Number = 18 ½",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n21. Adding the two equations and dividing by 10, we get : x+y = 10 ½\nSubtracting the two equations and dividing by -2, we get : x-y =1 ½\nSolving these two new equations, we get, x = 11/2 ½",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n21. Find whether the following pair of linear equations is consistent or inconsistent:\n3x + 2y = 8\n6x – 4y = 9"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 165325,
+      "in": 43,
+      "out": 40,
+      "rejects": 3,
+      "promptTokens": 35071,
+      "completionTokens": 9692
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 349514,
+      "in": 40,
+      "out": 31,
+      "rejects": 9,
+      "promptTokens": 26645,
+      "completionTokens": 9557
+    },
+    "solver": {
+      "calls": 266,
+      "ms": 141686,
+      "in": 31,
+      "out": 21,
+      "rejects": 10,
+      "promptTokens": 55144,
+      "completionTokens": 2924
+    },
+    "form": {
+      "calls": 6,
+      "ms": 17411,
+      "in": 21,
+      "out": 11,
+      "rejects": 10,
+      "promptTokens": 1690,
+      "completionTokens": 521
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 5490,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 353420,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 20913,
+      "completionTokens": 10292
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "A pair of linear equations in two variables that has no solution is called what?",
+      "ms": {
+        "draft": 4545,
+        "critique": 4848
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The equations 2x + 3y = 9 and 4x + 6y = 18 represent what type of lines?",
+      "ms": {
+        "draft": 4545,
+        "critique": 5145
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the lines represented by the equations a1x + b1y + c1 = 0 and a2x + b2y + c2 = 0 are parallel, what can be said about the ratios a1/a2, b1/b2, and c1/c2?",
+      "ms": {
+        "draft": 4545,
+        "critique": 6195,
+        "solver": 1695,
+        "form": 2910
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The equations 3x + 2y = 8 and 6x – 4y = 9 are",
+      "ms": {
+        "draft": 4545,
+        "critique": 6801,
+        "solver": 1601
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the lines represented by the equations a1x + b1y + c1 = 0 and a2x + b2y + c2 = 0 are coincident, which of the following is true?",
+      "ms": {
+        "draft": 4545,
+        "critique": 5655,
+        "solver": 1449,
+        "form": 3975
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the ratios of the coefficients of x and y in two linear equations are equal, but the ratio of the constants is different, what can be said about the lines represented by the equations?",
+      "ms": {
+        "draft": 3917,
+        "critique": 5778
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A pair of linear equations in two variables is given as 3x + 2y = 5 and 6x + 4y = 10. What can be said about these equations?",
+      "ms": {
+        "draft": 3917,
+        "critique": 6928
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the condition for a pair of linear equations to have infinitely many solutions?",
+      "ms": {
+        "draft": 4545,
+        "critique": 6949,
+        "solver": 11885,
+        "form": 2559
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The equations 2x + 3y = 12 and 4x + 6y = 24 represent two lines. What is the relationship between these lines?",
+      "ms": {
+        "draft": 3917,
+        "critique": 6650
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The equations 2x + 3y – 8 = 0 and 4x + 6y – 16 = 0 represent two lines. What is the relationship between these lines?",
+      "ms": {
+        "draft": 3917,
+        "critique": 6903,
+        "solver": 11260,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Two linear equations are given as x + 2y = 3 and 2x + 4y = 7. What is the relationship between these lines?",
+      "ms": {
+        "draft": 3917,
+        "critique": 6168
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the coefficients of one variable are made equal in two equations, what is the next step in the elimination method?",
+      "ms": {
+        "draft": 3206,
+        "critique": 7724
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The pair of equations x + y = 5 and 2x + 2y = 10 represents two lines. What is the relationship between these lines?",
+      "ms": {
+        "draft": 3917,
+        "critique": 6711,
+        "solver": 11528,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens if, after eliminating one variable, we get a false statement in the elimination method?",
+      "ms": {
+        "draft": 3206,
+        "critique": 5573
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method is used to eliminate one variable by making the coefficients of that variable equal in both equations?",
+      "ms": {
+        "draft": 3206,
+        "critique": 7115,
+        "solver": 11964,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The sum of the digits of a two-digit number is 9, and nine times this number is twice the number obtained by reversing the digits. What is the number?",
+      "ms": {
+        "draft": 3206,
+        "critique": 5679,
+        "solver": 18438
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A lending library has a fixed charge for the first three days and an additional charge for each day thereafter. Saritha paid ₹27 for a book kept for seven days, while Susy paid ₹21 for the book she kept for five days. What is the fixed charge and the charge for each extra day?",
+      "ms": {
+        "draft": 3378,
+        "critique": 4127,
+        "solver": 1122
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The equations 6x - 3y + 10 = 0 and 2x - y + 9 = 0 represent two lines that are:",
+      "ms": {
+        "draft": 3378,
+        "critique": 5822,
+        "solver": 4545,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Saritha paid ₹27 for a book kept for seven days, and Susy paid ₹21 for a book kept for five days. If the library has a fixed charge for the first three days and an additional charge for each day thereafter, what is the fixed charge for the first three days?",
+      "ms": {
+        "draft": 5681,
+        "critique": 4962,
+        "solver": 852
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The graph of a pair of linear equations in two variables is represented by two lines. If the lines are parallel, what can be said about the pair of equations?",
+      "ms": {
+        "draft": 5681,
+        "critique": 5207,
+        "solver": 10665
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Meena got 25 notes in total, consisting of ₹50 and ₹100 notes. If the total amount is ₹2000, how many ₹50 notes did she receive?",
+      "ms": {
+        "draft": 5681,
+        "critique": 8683,
+        "solver": 14205,
+        "form": 4620
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method is used to solve a pair of linear equations by finding the point of intersection of the lines?",
+      "ms": {
+        "draft": 5681,
+        "critique": 7836,
+        "solver": 14679
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the lines represented by the equations 2x + 3y = 6 and 4x + 6y = 12 are considered, what can be said about the pair of equations?",
+      "ms": {
+        "draft": 5681,
+        "critique": 8134,
+        "solver": 12679,
+        "form": 2918
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a pair of linear equations in two variables?",
+      "ms": {
+        "draft": 11626,
+        "critique": 6998,
+        "solver": 1444
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A fraction becomes 1/2 if 1 is added to the numerator and 1 is subtracted from the denominator. It becomes 2/3 if 1 is added to the denominator. What is the fraction?",
+      "ms": {
+        "draft": 11626,
+        "critique": 6991,
+        "solver": 14217
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The sum of a two-digit number and the number obtained by reversing the digits is 66. If the digits differ by 2, how many such numbers are there?",
+      "ms": {
+        "draft": 11626,
+        "critique": 8766,
+        "solver": 11185,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the solution to the pair of equations x + y = 5 and 2x - 3y = 4?",
+      "ms": {
+        "draft": 11626,
+        "critique": 7508,
+        "solver": 12118
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for a pair of linear equations to be consistent?",
+      "ms": {
+        "draft": 3540,
+        "critique": 7186,
+        "solver": 1750
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the graphical representation of a pair of linear equations that has infinitely many solutions?",
+      "ms": {
+        "draft": 3262,
+        "critique": 6147
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The ratio of the incomes of two persons is 9:7, and the ratio of their expenditures is 4:3. Each saves 2000 per month. What are their monthly incomes?",
+      "ms": {
+        "draft": 3206,
+        "critique": 5470,
+        "solver": 16748,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the ratio of incomes of two persons is 9 : 7 and the ratio of their expenditures is 4 : 3, and each saves 2000 per month, what is the monthly income of the first person?",
+      "ms": {
+        "draft": 11626,
+        "critique": 6320,
+        "solver": 1507,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a pair of linear equations that has no solution?",
+      "ms": {
+        "draft": 3262,
+        "critique": 5730,
+        "solver": 5386,
+        "form": 1106,
+        "translation": 34531
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for a pair of linear equations to be inconsistent?",
+      "ms": {
+        "draft": 3378,
+        "critique": 7057,
+        "solver": 12614,
+        "form": 1,
+        "translation": 36862
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does it mean if the ratio of the coefficients of x is not equal to the ratio of the coefficients of y but equal to the ratio of the constants?",
+      "ms": {
+        "draft": 3540,
+        "critique": 7692,
+        "solver": 1614,
+        "form": 0,
+        "translation": 40880
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is true about a pair of linear equations that represent two parallel lines?",
+      "ms": {
+        "draft": 5681,
+        "critique": 4985,
+        "solver": 10290,
+        "form": 0,
+        "translation": 47691
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two linear equations have no solution, what can we say about the lines they represent?",
+      "ms": {
+        "draft": 3540,
+        "critique": 6301,
+        "solver": 1217,
+        "form": 0,
+        "translation": 42512
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the solution to the pair of equations x + 2y = 3 and 7x - 15y = 2?",
+      "ms": {
+        "draft": 3540,
+        "critique": 6986,
+        "solver": 1792,
+        "form": 0,
+        "translation": 34231
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What does the elimination method involve?",
+      "ms": {
+        "draft": 11626,
+        "critique": 6843,
+        "solver": 1600,
+        "form": 0,
+        "translation": 39479
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A shopkeeper sells 2 pencils and 3 erasers for ₹9 and 4 pencils and 6 erasers for ₹18. What can be said about the system of equations formed?",
+      "ms": {
+        "draft": 3540,
+        "critique": 7279,
+        "solver": 1481,
+        "form": 0,
+        "translation": 36595
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Two rails are represented by the equations x + 2y – 4 = 0 and 2x + 4y – 12 = 0. What can be said about the rails?",
+      "ms": {
+        "draft": 3540,
+        "critique": 7400,
+        "solver": 1577,
+        "form": 0,
+        "translation": 36162
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the condition for a pair of linear equations to have infinitely many solutions?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "A pair of linear equations in two variables that has no solution is called what?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The equations 2x + 3y = 9 and 4x + 6y = 18 represent what type of lines?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the lines represented by the equations a1x + b1y + c1 = 0 and a2x + b2y + c2 = 0 are parallel, what can be said about the ratios a1/a2, b1/b2, and c1/c2?",
+      "reason": "options 0 and 1 are the same (\"a1/a2 = b1/b2 ≠ c1/c2\"); options 0 and 2 are the same (\"a1/a2 = b1/b2 ≠ c1/c2\"); options 0 and 3 are the same (\"a1/a2 = b1/b2 ≠ c1/c2\"); options 1 and 2 are the same (\"a1/a2 ≠ b1/b2 = c1/c2\"); options 1 and 3 are the same (\"a1/a2 ≠ b1/b2 = c1/c2\"); options 2 and 3 are the same (\"a1/a2 = b1/b2 = c1/c2\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The equations 3x + 2y = 8 and 6x – 4y = 9 are",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the lines represented by the equations a1x + b1y + c1 = 0 and a2x + b2y + c2 = 0 are coincident, which of the following is true?",
+      "reason": "options 0 and 1 are the same (\"a1/a2 = b1/b2 ≠ c1/c2\"); options 0 and 2 are the same (\"a1/a2 = b1/b2 ≠ c1/c2\"); options 0 and 3 are the same (\"a1/a2 = b1/b2 ≠ c1/c2\"); options 1 and 2 are the same (\"a1/a2 ≠ b1/b2 = c1/c2\"); options 1 and 3 are the same (\"a1/a2 ≠ b1/b2 = c1/c2\"); options 2 and 3 are the same (\"a1/a2 = b1/b2 = c1/c2\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the ratios of the coefficients of x and y in two linear equations are equal, but the ratio of the constants is different, what can be said about the lines represented by the equations?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A pair of linear equations in two variables is given as 3x + 2y = 5 and 6x + 4y = 10. What can be said about these equations?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the condition for a pair of linear equations to have infinitely many solutions?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The equations 2x + 3y = 12 and 4x + 6y = 24 represent two lines. What is the relationship between these lines?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The equations 2x + 3y – 8 = 0 and 4x + 6y – 16 = 0 represent two lines. What is the relationship between these lines?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Two linear equations are given as x + 2y = 3 and 2x + 4y = 7. What is the relationship between these lines?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the coefficients of one variable are made equal in two equations, what is the next step in the elimination method?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "The pair of equations x + y = 5 and 2x + 2y = 10 represents two lines. What is the relationship between these lines?",
+      "reason": "options 0 and 3 say the same thing (\"Intersecting at one point\" / \"3: Intersecting at one point\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What happens if, after eliminating one variable, we get a false statement in the elimination method?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which method is used to eliminate one variable by making the coefficients of that variable equal in both equations?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The sum of the digits of a two-digit number is 9, and nine times this number is twice the number obtained by reversing the digits. What is the number?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A lending library has a fixed charge for the first three days and an additional charge for each day thereafter. Saritha paid ₹27 for a book kept for seven days, while Susy paid ₹21 for the book she kept for five days. What is the fixed charge and the charge for each extra day?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The equations 6x - 3y + 10 = 0 and 2x - y + 9 = 0 represent two lines that are:",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term used for a pair of linear equations that has infinitely many solutions?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term used for a pair of linear equations that has a solution?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Saritha paid ₹27 for a book kept for seven days, and Susy paid ₹21 for a book kept for five days. If the library has a fixed charge for the first three days and an additional charge for each day thereafter, what is the fixed charge for the first three days?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The graph of a pair of linear equations in two variables is represented by two lines. If the lines are parallel, what can be said about the pair of equations?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Meena got 25 notes in total, consisting of ₹50 and ₹100 notes. If the total amount is ₹2000, how many ₹50 notes did she receive?",
+      "reason": "checkExpr \"50*x+100*(25-x)=2000\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which method is used to solve a pair of linear equations by finding the point of intersection of the lines?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the lines represented by the equations 2x + 3y = 6 and 4x + 6y = 12 are considered, what can be said about the pair of equations?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a pair of linear equations in two variables?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A fraction becomes 1/2 if 1 is added to the numerator and 1 is subtracted from the denominator. It becomes 2/3 if 1 is added to the denominator. What is the fraction?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The sum of a two-digit number and the number obtained by reversing the digits is 66. If the digits differ by 2, how many such numbers are there?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the solution to the pair of equations x + y = 5 and 2x - 3y = 4?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the condition for a pair of linear equations to be consistent?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the graphical representation of a pair of linear equations that has infinitely many solutions?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "The ratio of the incomes of two persons is 9:7, and the ratio of their expenditures is 4:3. Each saves 2000 per month. What are their monthly incomes?",
+      "reason": "near-duplicate of served question cmvgnyucq04hjgpfhe5rf6zhg (cosine 0.984 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the ratio of incomes of two persons is 9 : 7 and the ratio of their expenditures is 4 : 3, and each saves 2000 per month, what is the monthly income of the first person?",
+      "reason": "near-duplicate of served question cmvgnyucq04hjgpfhe5rf6zhg (cosine 0.949 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

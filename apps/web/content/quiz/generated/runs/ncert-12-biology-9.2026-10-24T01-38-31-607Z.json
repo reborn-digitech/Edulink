@@ -1,0 +1,832 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T01:38:31.607Z",
+  "finishedAt": "2026-10-24T01:49:30.962Z",
+  "seconds": 659,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo109.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 9 — Biotechnology : Principles and Processes",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n20. Anyone who can use/modify any living organism or their products using 2\ntechnology is considered to be a biotechnologist. (1)\nThus, cheese maker can be a biotechnologist as he uses microbes like\nbacteria, fungi to make cheese for commercial purpose (1)\nOR\nSelection of recombinants due to inactivation of antibiotics is a cumbersome\nprocedure because it requires simultaneous plating on two plates having\ndifferent antibiotics. (1)\nIn insertional inactivation method, insertion of recombinant DNA within the\ncoding sequence of the enzyme beta galactosidase results into inactivation of\nthis enzyme and the colonies do not produce any colour. The presence of a\nchromogenic substrate gives blue col",
+      "[CBSE Class XII Biology, sample question paper, 2025-26]\n20. Attempt either option A or B. 2\nA. A cheese maker claims to be a biotechnologist. How will you\nsupport the same?\nOR\nB. Why does the 'insertional inactivation' method to detect\nrecombinant DNA is preferred to 'antibiotic resistance' procedure?",
+      "[CBSE Class XII Biology, sample question paper, 2024-25]\n32. Attempt either option A or B. 5\nA. Explain how advent of biotechnology has helped in preventing\ninfestation by nematodes and thereby increasing crop yield.\nOR\nB. In the future, genetic therapies may be used to prevent, treat, or cure\ncertain inherited disorders in humans. Justify the statement with a\nsuitable example.",
+      "[CBSE Class XII Biology, marking scheme, 2023-24]\nc) The Bt-toxin gene is cloned and inserted into the plant genome by recombinant\nDNA technology. These genetically modified (GM) plants express the Bt-toxin genes and\nbecome pest-resistant. [1]\nOR\na) (i) Functional enzyme lipase is given to the patient by injection. [0.5]\n(ii) This procedure is not completely curative. [0.5]\nb)\n The disease can be treated by using Gene therapy. [0.5]\n Gene therapy is a collection of methods that allows correction of a gene defect that has\nbeen diagnosed in a child/embryo. [0.5]\n Here genes are inserted into a person’s cells and tissues to treat a disease. Correction of\na genetic defect involves delivery of a normal gene into the individual or embryo\nto ta"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 244398,
+      "in": 44,
+      "out": 43,
+      "rejects": 1,
+      "promptTokens": 42225,
+      "completionTokens": 13616
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 292812,
+      "in": 43,
+      "out": 35,
+      "rejects": 8,
+      "promptTokens": 22012,
+      "completionTokens": 7797
+    },
+    "solver": {
+      "calls": 199,
+      "ms": 94110,
+      "in": 35,
+      "out": 30,
+      "rejects": 5,
+      "promptTokens": 33746,
+      "completionTokens": 1859
+    },
+    "form": {
+      "calls": 20,
+      "ms": 118466,
+      "in": 30,
+      "out": 11,
+      "rejects": 19,
+      "promptTokens": 18279,
+      "completionTokens": 2922
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 34,
+      "ms": 6557,
+      "in": 11,
+      "out": 10,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 506591,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 26674,
+      "completionTokens": 14334
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "According to the passage, what happens when a piece of DNA is integrated into the genome of a recipient organism?",
+      "ms": {
+        "draft": 3087,
+        "critique": 6158,
+        "solver": 1243,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of biotechnology as described in the passage?",
+      "ms": {
+        "draft": 3087,
+        "critique": 6330,
+        "solver": 1909,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of biotechnology according to the passage?",
+      "ms": {
+        "draft": 3087,
+        "critique": 6769,
+        "solver": 2398,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of restriction enzymes in biotechnology?",
+      "ms": {
+        "draft": 3087,
+        "critique": 7888,
+        "solver": 1217,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, why is genetic engineering considered a significant advancement in biotechnology?",
+      "ms": {
+        "draft": 3087,
+        "critique": 7266,
+        "solver": 1711,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a key requirement for the multiplication of an alien piece of DNA in an organism?",
+      "ms": {
+        "draft": 7115,
+        "critique": 7513
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plasmid is used as a vector to transfer a gene of interest into a host organism, which of the following must be true?",
+      "ms": {
+        "draft": 7115,
+        "critique": 7362
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the process of creating recombinant DNA, what is the function of restriction enzymes?",
+      "ms": {
+        "draft": 7115,
+        "critique": 5817
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the importance of the 'origin of replication' in recombinant DNA technology?",
+      "ms": {
+        "draft": 7115,
+        "critique": 5680
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A scientist is trying to create recombinant DNA using a plasmid and a gene of interest. She notices that the colonies do not produce any color when a chromogenic substrate is added. What could be the reason?",
+      "ms": {
+        "draft": 7115,
+        "critique": 6265
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the process of making multiple copies of a DNA molecule?",
+      "ms": {
+        "draft": 7115,
+        "critique": 6024
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A scientist wants to create a recombinant DNA molecule and is using a plasmid vector. If the foreign DNA is inserted into the tetracycline resistance gene of the plasmid, what will happen to the bacteria containing this recombinant plasmid?",
+      "ms": {
+        "draft": 8633,
+        "critique": 5897,
+        "solver": 3251
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of a cloning vector that allows the replication of the DNA fragment it carries?",
+      "ms": {
+        "draft": 8633,
+        "critique": 5339,
+        "solver": 1361,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student is observing a gel electrophoresis experiment and notices that the DNA fragments in one lane have moved farther than those in another lane. What can the student conclude about the size of the DNA fragments in the lane that moved the farthest?",
+      "ms": {
+        "draft": 8633,
+        "critique": 7583,
+        "solver": 1750,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A company claims to use biotechnology to produce a new type of pest-resistant crop. Which of the following mechanisms is most likely being used to achieve this?",
+      "ms": {
+        "draft": 8633,
+        "critique": 7038,
+        "solver": 2470,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A scientist is trying to clone a gene in a plasmid vector and notices that the recombinant colonies do not produce blue color when grown on a medium with a chromogenic substrate. What is the most likely reason for this?",
+      "ms": {
+        "draft": 8633,
+        "critique": 6049,
+        "solver": 1828,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is trying to insert a gene into a bacterial cell. The student treats the bacteria with calcium ions and then applies heat shock. What is the purpose of this treatment?",
+      "ms": {
+        "draft": 5904,
+        "critique": 5784,
+        "solver": 1809,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a method used to visualize DNA fragments after gel electrophoresis?",
+      "ms": {
+        "draft": 8633,
+        "critique": 7246,
+        "solver": 1493,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A biotechnologist is attempting to create a pest-resistant plant by inserting a gene from a bacterium. The gene is cloned into a vector, and the vector is introduced into the plant cells using a disarmed pathogen. Which of the following is most likely to be the role of the disarmed pathogen?",
+      "ms": {
+        "draft": 5904,
+        "critique": 6823,
+        "solver": 1815,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of bioreactor is commonly used and is shown in the passage?",
+      "ms": {
+        "draft": 11564,
+        "critique": 5107
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main purpose of a bioreactor?",
+      "ms": {
+        "draft": 11870,
+        "critique": 5196,
+        "solver": 1724,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a part of downstream processing?",
+      "ms": {
+        "draft": 11870,
+        "critique": 4834,
+        "solver": 15706
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to a host cell after it is transformed with a recombinant DNA that includes an ampicillin resistance gene?",
+      "ms": {
+        "draft": 5631,
+        "critique": 5412,
+        "solver": 1409,
+        "form": 3482
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a method used to introduce recombinant DNA into a host cell?",
+      "ms": {
+        "draft": 5631,
+        "critique": 6522,
+        "solver": 1957,
+        "form": 4267
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the selectable marker in recombinant DNA technology?",
+      "ms": {
+        "draft": 5631,
+        "critique": 7100,
+        "solver": 1766,
+        "form": 2601
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A scientist wants to introduce a gene for pest resistance into a plant. Which method would be most suitable for this purpose?",
+      "ms": {
+        "draft": 5631,
+        "critique": 8833,
+        "solver": 2086
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the use of a disarmed pathogen as a vector advantageous in recombinant DNA technology?",
+      "ms": {
+        "draft": 5631,
+        "critique": 6571,
+        "solver": 18416,
+        "form": 3577
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A biotechnologist wants to select recombinant bacteria from non-recombinant ones. Which of the following methods would be most efficient?",
+      "ms": {
+        "draft": 4288,
+        "critique": 6189,
+        "solver": 1743
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the pBR322 plasmid, which of the following is true about the selectable markers?",
+      "ms": {
+        "draft": 4288,
+        "critique": 7187,
+        "solver": 1541,
+        "form": 4238
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the specific sequence in a chromosome that allows an alien DNA to replicate?",
+      "ms": {
+        "draft": 5485,
+        "critique": 6716,
+        "solver": 1457,
+        "form": 3880
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is trying to insert a gene for pest resistance into a plant using recombinant DNA technology. They use a restriction enzyme to cut the DNA and a plasmid as a vector. However, the gene does not get expressed in the plant. What is the most likely reason for this failure?",
+      "ms": {
+        "draft": 5485,
+        "critique": 5725,
+        "solver": 1060
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a core technique that enabled the birth of modern biotechnology?",
+      "ms": {
+        "draft": 4533,
+        "critique": 5201
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a feature of a cloning vector?",
+      "ms": {
+        "draft": 4288,
+        "critique": 7541,
+        "solver": 1508,
+        "form": 3024
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main goal of recombinant DNA technology?",
+      "ms": {
+        "draft": 11870,
+        "critique": 7204,
+        "solver": 1343,
+        "form": 1991,
+        "translation": 40023
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of making bacterial cells 'competent' before transformation?",
+      "ms": {
+        "draft": 5631,
+        "critique": 7549,
+        "solver": 14457,
+        "form": 3432,
+        "translation": 50614
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A researcher wants to produce a large quantity of a recombinant protein. Which method would be most suitable for this purpose?",
+      "ms": {
+        "draft": 11870,
+        "critique": 5437,
+        "solver": 2527,
+        "form": 0,
+        "translation": 46652
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plasmid is used as a vector to transfer a gene for antibiotic resistance, what is the most likely outcome when the plasmid is introduced into a bacterial host?",
+      "ms": {
+        "draft": 5485,
+        "critique": 5906,
+        "solver": 1365,
+        "form": 2858,
+        "translation": 41200
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a DNA fragment is inserted into the tetracycline resistance gene of a plasmid, which of the following will happen?",
+      "ms": {
+        "draft": 4288,
+        "critique": 6359,
+        "solver": 1862,
+        "form": 2805,
+        "translation": 48261
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In recombinant DNA technology, a gene of interest is amplified using PCR. What is the role of the thermostable DNA polymerase in this process?",
+      "ms": {
+        "draft": 5904,
+        "critique": 6969,
+        "solver": 1617,
+        "form": 0,
+        "translation": 59400
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A biotechnologist wants to produce a recombinant protein in large quantities. They have two options: using a stirred-tank bioreactor or a shake flask. Which would be a better choice and why?",
+      "ms": {
+        "draft": 11870,
+        "critique": 7719,
+        "solver": 1817,
+        "form": 3337,
+        "translation": 63125
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a piece of DNA is transferred into an alien organism but does not integrate into the genome, what is the most likely outcome?",
+      "ms": {
+        "draft": 3087,
+        "critique": 6857,
+        "solver": 1952,
+        "form": 2867,
+        "translation": 51805
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to perform downstream processing after the biosynthetic stage?",
+      "ms": {
+        "draft": 11870,
+        "critique": 6148,
+        "solver": 1278,
+        "form": 0,
+        "translation": 44466
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the process of recombinant DNA technology, after the DNA has been isolated, it is fragmented using restriction enzymes. Why is it necessary to fragment the DNA before it can be used for cloning?",
+      "ms": {
+        "draft": 5904,
+        "critique": 5855,
+        "solver": 837,
+        "form": 0,
+        "translation": 55661
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "In the process of making bacterial cells competent, what is the role of calcium ions?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what happens when a piece of DNA is integrated into the genome of a recipient organism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's explanation of DNA integration…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of biotechnology as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's focus on human welfare…\"); distractor 3's reason is not a one-line misconception (\"Misreads the passage as being about DNA study only…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of biotechnology according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Confuses the example given in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of restriction enzymes in biotechnology?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, why is genetic engineering considered a significant advancement in biotechnology?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (76 vs 38 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a key requirement for the multiplication of an alien piece of DNA in an organism?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a plasmid is used as a vector to transfer a gene of interest into a host organism, which of the following must be true?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the process of creating recombinant DNA, what is the function of restriction enzymes?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following best explains the importance of the 'origin of replication' in recombinant DNA technology?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A scientist is trying to create recombinant DNA using a plasmid and a gene of interest. She notices that the colonies do not produce any color when a chromogenic substrate is added. What could be the reason?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the process of making multiple copies of a DNA molecule?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A scientist wants to create a recombinant DNA molecule and is using a plasmid vector. If the foreign DNA is inserted into the tetracycline resistance gene of the plasmid, what will happen to the bacteria containing this recombinant plasmid?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a feature of a cloning vector that allows the replication of the DNA fragment it carries?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'plasmid'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student is observing a gel electrophoresis experiment and notices that the DNA fragments in one lane have moved farther than those in another lane. What can the student conclude about the size of the DNA fragments in the lane that moved the farthest?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'gel'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A company claims to use biotechnology to produce a new type of pest-resistant crop. Which of the following mechanisms is most likely being used to achieve this?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'bacterium'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A scientist is trying to clone a gene in a plasmid vector and notices that the recombinant colonies do not produce blue color when grown on a medium with a chromogenic substrate. What is the most likely reason for this?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'plasmid'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student is trying to insert a gene into a bacterial cell. The student treats the bacteria with calcium ions and then applies heat shock. What is the purpose of this treatment?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"This is the correct answer, so no reason is given here for a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a method used to visualize DNA fragments after gel electrophoresis?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'gel'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A biotechnologist is attempting to create a pest-resistant plant by inserting a gene from a bacterium. The gene is cloned into a vector, and the vector is introduced into the plant cells using a disarmed pathogen. Which of the following is most likely to be the role of the disarmed pathogen?",
+      "reason": "the key is far longer than every distractor (70 vs 39 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of bioreactor is commonly used and is shown in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main purpose of a bioreactor?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (71 vs 26 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a part of downstream processing?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to a host cell after it is transformed with a recombinant DNA that includes an ampicillin resistance gene?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"This is the opposite of what the passage states. The resista…\"); distractor 1's reason is not a one-line misconception (\"This is incorrect. The passage states that the transformed c…\"); distractor 3's reason is not a one-line misconception (\"This is correct, but the other options are incorrect. The pa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a method used to introduce recombinant DNA into a host cell?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"This is a method for animal cells, not the main method descr…\"); distractor 2's reason is not a one-line misconception (\"This is part of the heat shock process, not the main method …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the role of the selectable marker in recombinant DNA technology?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"This is correct, but the other options are incorrect. The pa…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A scientist wants to introduce a gene for pest resistance into a plant. Which method would be most suitable for this purpose?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the use of a disarmed pathogen as a vector advantageous in recombinant DNA technology?",
+      "reason": "options 1 and 2 are the same (\"It prevents the host cell from recognizing the DNA as foreign\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A biotechnologist wants to select recombinant bacteria from non-recombinant ones. Which of the following methods would be most efficient?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of the pBR322 plasmid, which of the following is true about the selectable markers?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'plasmid'"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for the specific sequence in a chromosome that allows an alien DNA to replicate?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'plasmid'"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student is trying to insert a gene for pest resistance into a plant using recombinant DNA technology. They use a restriction enzyme to cut the DNA and a plasmid as a vector. However, the gene does not get expressed in the plant. What is the most likely reason for this failure?",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a core technique that enabled the birth of modern biotechnology?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a feature of a cloning vector?",
+      "reason": "near-duplicate of served question cmvicbgtj0ce0gpfh3h3r1s64 (cosine 0.919 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

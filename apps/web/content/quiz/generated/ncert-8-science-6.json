@@ -21,148 +21,49 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T09:30:35.445Z",
+  "generatedAt": "2026-10-29T22:56:15.663Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is a type of storm that is accompanied by lightning and thunder?",
+      "stem": "Which of the following is true about the pressure exerted by a liquid?",
       "choices": [
-        "Cyclone",
-        "Thunderstorm",
-        "Tornado",
-        "Hurricane"
-      ],
-      "answerIndex": 1,
-      "solution": "A thunderstorm is a type of storm that is accompanied by lightning and thunder, which is a defining characteristic of this weather phenomenon. Cyclones, tornadoes, and hurricanes can be intense storms, but they are not specifically defined by the presence of lightning and thunder. Thunderstorms involve the rapid movement of air and the buildup of electrical charges, leading to lightning and the sound of thunder.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक तूफान के प्रकार है जिसके साथ बिजली और गरज के साथ आता है?",
-          "choices": [
-            "चक्रवात",
-            "गरज तूफान",
-            "तूफान",
-            "आंधी"
-          ],
-          "solution": "एक गरज तूफान एक तूफान के प्रकार है जिसके साथ बिजली और गरज के साथ आता है, जो इस मौसमी घटना की विशेषता है। चक्रवात, तूफान और आंधी तीव्र तूफान हो सकते हैं, लेकिन वे बिजली और गरज की उपस्थिति द्वारा विशेष रूप से परिभाषित नहीं किए जाते हैं। गरज तूफान में हवा के तेज गति और बिजली के आवेश के एकत्र होने के कारण बिजली और गरज के ध्वनि होती है।",
-          "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Indian textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता वादळाचा प्रकार आहे जो विजेच्या झटक्यासह आणि गडगडाटासह येतो?",
-          "choices": [
-            "चक्रीवादळ",
-            "गडगडाटाचे वादळ",
-            "टॉर्नेडो",
-            "हरिकेन"
-          ],
-          "solution": "गडगडाटाचे वादळ हे विजेच्या झटक्यासह आणि गडगडाटासह येणारे वादळाचे एक प्रकार आहे, जे या हवामान घटनेचे निर्धारक लक्षण आहे. चक्रीवादळे, टॉर्नेडो आणि हरिकेन जोरदार वादळे असू शकतात, परंतु त्यांना विजेच्या झटक्यासह आणि गडगडाटासह येण्याचे विशिष्ट वर्णन नाही. गडगडाटाचे वादळात हवेच्या तीव्र गती आणि विद्युत आवेशांच्या जमा होण्यामुळे विजा आणि गडगडाट उद्भवतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for weather phenomena.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses thunderstorm with other types of storms",
-        null,
-        "Does not understand the specific characteristics of a thunderstorm",
-        "Does not know the definition of a thunderstorm"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 'Thunderstorm' as it is explicitly described in the passage as a storm accompanied by lightning and thunder. The other options are types of storms but are not specifically described as having lightning and thunder.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu106.pdf",
-          "ordinal": 10,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
-            "6.5 Storms, Thunderstorms, and Lightning"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu106.pdf",
-          "ordinal": 11,
-          "pageStart": 12,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
-            "6.5 Storms, Thunderstorms, and Lightning",
-            "A step further"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu106.pdf",
-          "ordinal": 12,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
-            "6.6 Cyclone"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:30:35.445Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a result of the movement of warm and moist air?",
-      "choices": [
-        "Cooler air flows to replace it",
-        "It creates a high pressure area",
-        "It causes the ground to become negatively charged",
-        "It leads to the formation of lightning"
+        "It increases with depth",
+        "It decreases with depth",
+        "It is zero at the bottom",
+        "It is constant throughout"
       ],
       "answerIndex": 0,
-      "solution": "When warm and moist air rises, it creates a low-pressure area, which causes cooler air to flow in and replace it. This is a direct consequence of the movement of warm air. The other options are incorrect because high pressure is not created by rising warm air, and there is no direct link between warm air movement and the ground becoming charged or lightning formation.",
+      "solution": "The pressure exerted by a liquid increases with depth because the weight of the liquid above a point increases as you go deeper. This is due to the gravitational force acting on the liquid, making the pressure greater at lower depths. The other options are incorrect because pressure does not decrease with depth, nor is it zero at the bottom, and it is not constant throughout the liquid.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन गर्म और आर्द्र हवा के गति का परिणाम है?",
+          "stem": "निम्नलिखित में से कौन-सा द्रव द्वारा लगाए गए दाब के बारे में सही है?",
           "choices": [
-            "ठंडी हवा इसके स्थान को भर देती है",
-            "इसके कारण उच्च दाब क्षेत्र बनता है",
-            "इसके कारण जमीन ऋणात्मक आवेशित हो जाती है",
-            "इसके कारण बिजली के बरसात होती है"
+            "यह गहराई के साथ बढ़ता है",
+            "यह गहराई के साथ घटता है",
+            "यह तल पर शून्य होता है",
+            "यह पूरे में नियत रहता है"
           ],
-          "solution": "जब गर्म और आर्द्र हवा ऊपर उठती है, तो इसके कारण कम दाब क्षेत्र बनता है, जिसके कारण ठंडी हवा आकर इसके स्थान को भर देती है। यह गर्म हवा के गति का सीधा परिणाम है। अन्य विकल्प गलत हैं क्योंकि ऊपर उठती गर्म हवा द्वारा उच्च दाब का निर्माण नहीं किया जाता है, और गर्म हवा के गति और जमीन के ऋणात्मक आवेशित होने या बिजली के बरसात होने में कोई सीधा संबंध नहीं है।",
+          "solution": "द्रव द्वारा लगाए गए दाब गहराई के साथ बढ़ता है क्योंकि एक बिंदु पर ऊपर के द्रव के भार में वृद्धि होती है जैसे-जैसे हम नीचे जाते हैं। यह गुरुत्वाकर्षण बल के कारण होता है जो द्रव पर कार्य करता है, जिसके कारण निम्न गहराई पर दाब अधिक होता है। अन्य विकल्प गलत हैं क्योंकि दाब गहराई के साथ नहीं घटता है, न ही तल पर शून्य होता है, और यह पूरे द्रव में नियत नहीं रहता है।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains the scientific meaning, and uses appropriate Hindi terminology.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते उष्ण आणि आर्द्र हवेच्या गतीचे परिणाम आहे?",
+          "stem": "खालीलपैकी कोणते द्रवाकडून लागू होणाऱ्या दाबाबद्दल खरे आहे?",
           "choices": [
-            "ठिणगी असलेली हवा त्याच्या जागी प्रवेश करते",
-            "त्यामुळे उच्च दाबाच्या क्षेत्राची निर्मिती होते",
-            "त्यामुळे जमीन ऋणात्मक धारिता असते",
-            "त्यामुळे बिजलीच्या उद्भवाची शक्यता असते"
+            "ते खोलीसह वाढते",
+            "ते खोलीसह कमी होते",
+            "ते तळाशी शून्य असते",
+            "ते एकसारखे असते"
           ],
-          "solution": "उष्ण आणि आर्द्र हवा उंचावल्यामुळे त्यामुळे खालच्या भागात खालच्या दाबाच्या क्षेत्राची निर्मिती होते, ज्यामुळे ठिणगी असलेली हवा त्याच्या जागी प्रवेश करते. हे उष्ण हवेच्या गतीचे सीधा परिणाम आहे. इतर विकल्प चुकीचे आहेत कारण उष्ण हवा उंचावल्यामुळे उच्च दाब निर्माण होत नाही आणि उष्ण हवेच्या गती आणि जमिनीच्या ऋणात्मक धारितेमध्ये कोणताही सीधा संबंध नाही आणि बिजलीच्या उद्भवामागे उष्ण हवेच्या गतीचा सीधा संबंध नाही.",
+          "solution": "द्रवाकडून लागू होणाऱ्या दाबाची खोलीसह वाढ होते कारण एखाद्या बिंदूवर वरून असलेल्या द्रवाच्या वजनात वाढ होते जेव्हा आपण खाली जातो. हे गुरुत्वाकर्षणाच्या बलामुळे होते, ज्यामुळे खालच्या खोलीत दाब जास्त असतो. इतर विकल्प अयोग्य आहेत कारण दाब खोलीसह कमी होत नाही, तळाशी शून्य असत नाही आणि द्रवात सर्वत्र एकसारखा असत नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer (option 1) is in the same position as in the English version. All distractors remain incorrect in Marathi.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium science textbooks.",
           "flag": null
         }
       },
@@ -172,118 +73,19 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses cause and effect",
-        "students may confuse the charge on the ground with the charge on the cloud",
-        "Misunderstands the process of charge separation in clouds"
+        "Confuses the concept of pressure with something else",
+        "Thinks pressure is always zero",
+        "Does not understand the variation of pressure with depth"
       ],
       "solverAnswers": [
         0,
         0,
         0,
         0,
-        3
+        0
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies that rising warm air creates a low-pressure area, leading to cooler air flowing in. The reasoning for the other options aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu106.pdf",
-          "ordinal": 10,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
-            "6.5 Storms, Thunderstorms, and Lightning"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu106.pdf",
-          "ordinal": 11,
-          "pageStart": 12,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
-            "6.5 Storms, Thunderstorms, and Lightning",
-            "A step further"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu106.pdf",
-          "ordinal": 12,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
-            "6.6 Cyclone"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:30:35.445Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the main reason for making holes in banners and hoardings?",
-      "choices": [
-        "To make them easier to carry",
-        "To allow wind to pass through",
-        "To make them look attractive",
-        "To make them more durable"
-      ],
-      "answerIndex": 1,
-      "solution": "The main reason for making holes in banners and hoardings is to allow wind to pass through, reducing the force of the wind on the structure. This helps prevent damage caused by strong winds. The other options do not address the physical interaction between wind and the material.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "बैनर और होर्डिंग में छेद क्यों बनाए जाते हैं?",
-          "choices": [
-            "उन्हें ले जाना आसान बनाने के लिए",
-            "हवा के पार जाने की अनुमति देने के लिए",
-            "उन्हें आकर्षक बनाने के लिए",
-            "उन्हें अधिक टिकाऊ बनाने के लिए"
-          ],
-          "solution": "बैनर और होर्डिंग में छेद बनाने का मुख्य कारण हवा के पार जाने की अनुमति देना है, जो हवा के बल को कम करता है। यह तीव्र हवाओं के कारण होने वाले नुकसान को रोकने में मदद करता है। अन्य विकल्प हवा और सामग्री के भौतिक अंतःक्रिया को ध्यान में नहीं रखते।",
-          "imageAlt": null,
-          "critique": "Translation accurately preserves meaning, technical terms are appropriate for Hindi curriculum, and the correct answer remains option 2 (which is labeled as 1 in the key, indicating a possible numbering error in the key).",
-          "flag": null
-        },
-        "mr": {
-          "stem": "बॅनर आणि होर्डिंगमध्ये छिद्र का बनवले जातात?",
-          "choices": [
-            "त्यांना वाहून नेणे सोपे करण्यासाठी",
-            "हवा त्यांच्यामध्ये जाऊ देण्यासाठी",
-            "त्यांना आकर्षक बनवण्यासाठी",
-            "त्यांना अधिक टिकाऊ बनवण्यासाठी"
-          ],
-          "solution": "बॅनर आणि होर्डिंगमध्ये छिद्र बनवल्याचे मुख्य कारण हवा त्यांच्यामध्ये जाऊ देणे आहे, जेणेकरून हवेच्या बलावर नियंत्रण ठेवता येईल. हे जोरदार हवेमुळे होणाऱ्या नुकसानीपासून बचाव करते. इतर पर्याय हवा आणि वस्तूच्या भौतिक अंतर्क्रियेला नकार देत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for technical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "students might think holes help in handling or transporting the banners",
-        null,
-        "focuses on aesthetics rather than function",
-        "focuses on durability rather than wind pressure"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as holes in banners and hoardings allow wind to pass through, reducing the pressure that could otherwise cause damage. The other options are based on misconceptions about function, aesthetics, and durability.",
+      "critique": "The correct answer is 'It increases with depth,' which aligns with the physical principle that liquid pressure increases with depth. The other options represent common misconceptions about pressure in fluids.",
       "sources": [
         {
           "document": "ncert/8/science/hecu106.pdf",
@@ -298,47 +100,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:30:35.445Z",
+      "generatedAt": "2026-10-29T22:56:15.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "What happens to the water droplets in the clouds when the air expands and cools?",
+      "difficulty": 2,
+      "stem": "What happens when warm air rises to great heights in a storm?",
       "choices": [
-        "They become ice particles",
-        "They rise higher in the clouds",
-        "They fall as rain",
-        "They separate into positive and negative charges"
+        "It becomes cooler and forms water droplets",
+        "It becomes warmer and forms clouds",
+        "It causes the ground to become positively charged",
+        "It causes the ground to become negatively charged"
       ],
       "answerIndex": 0,
-      "solution": "When air expands and cools, the water droplets in the clouds can freeze into ice particles due to the low temperatures at higher altitudes. This process is a direct result of the temperature drop, making the formation of ice particles the correct answer. The other options describe different phenomena, such as precipitation or charge separation, which are not directly caused by the cooling and expansion of air alone.",
+      "solution": "When warm air rises, it expands due to lower pressure at higher altitudes, causing it to cool. As it cools, the moisture in the air condenses into water droplets, forming clouds. The other options incorrectly suggest warming or unrelated electrical effects that do not result from the basic physical process of rising air.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "बादलों में पानी की बूंदें क्या हो जाती हैं जब हवा फैलती है और ठंडी हो जाती है?",
+          "stem": "एक तूफान में गर्म हवा ऊंचाई तक क्यों उठती है?",
           "choices": [
-            "वे बर्फ के कण बन जाते हैं",
-            "वे बादलों में अधिक ऊपर उठ जाते हैं",
-            "वे बारिश के रूप में गिर जाते हैं",
-            "वे धनात्मक और ऋणात्मक आवेशों में अलग हो जाते हैं"
+            "यह ठंडा हो जाता है और पानी के बूंद बन जाते हैं",
+            "यह गर्म हो जाता है और बादल बन जाते हैं",
+            "यह जमीन को धनात्मक रूप से आवेशित कर देता है",
+            "यह जमीन को ऋणात्मक रूप से आवेशित कर देता है"
           ],
-          "solution": "जब हवा फैलती है और ठंडी हो जाती है, तो बादलों में पानी की बूंदें ऊंचाई पर कम तापमान के कारण बर्फ के कण बन जाती हैं। यह प्रक्रिया तापमान में गिरावट के कारण होती है, जिसके कारण बर्फ के कण बनना सही उत्तर है। अन्य विकल्पों में बारिश या आवेश विभाजन जैसी अलग घटनाएं शामिल हैं, जो हवा के ठंडा होने और फैलने से अकेले नहीं होतीं।",
+          "solution": "जब गर्म हवा ऊपर उठती है, तो ऊंचाई पर कम दबाव के कारण यह फैल जाती है, जिसके कारण यह ठंडा हो जाती है। जब यह ठंडा होती है, तो हवा में नमी जल की बूंदों में जम जाती है, जिससे बादल बनते हैं। अन्य विकल्प गलत रूप से गर्म होने या असंबंधित विद्युत प्रभावों का सुझाव देते हैं जो ऊपर उठती हवा की मूल भौतिक प्रक्रिया के परिणामस्वरूप नहीं होते हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate scientific terminology and logical structure.",
           "flag": null
         },
         "mr": {
-          "stem": "मेघांमधील पाण्याच्या थेंबांवर काय परिणाम होतो जेव्हा हवा विस्तारते आणि थंड होते?",
+          "stem": "तूफानात उष्ण हवा मोठ्या उंचीवर उठल्यास काय होते?",
           "choices": [
-            "ते बर्फाचे कण बनतात",
-            "ते मेघांमध्ये जास्त उंचीवर जातात",
-            "ते पाऊस म्हणून पडतात",
-            "ते धनात्मक आणि ऋणात्मक आवेशांमध्ये विभक्त होतात"
+            "ती थंड होते आणि पाण्याच्या थेंबांचे बनते",
+            "ती उबदार होते आणि ढगांचे बनते",
+            "ती जमिनीचे धनात्मक ध्रुवीकरण करते",
+            "ती जमिनीचे ऋणात्मक ध्रुवीकरण करते"
           ],
-          "solution": "जेव्हा हवा विस्तारते आणि थंड होते, मेघांमधील पाण्याच्या थेंबांना उंच अंतरावरील कमी तापमानामुळे बर्फाचे कण बनतात. हा प्रक्रिया तापमान घटाच्या निमित्ताने घडते, ज्यामुळे बर्फाचे कण तयार होणे हे योग्य उत्तर ठरते. इतर विकल्पांमध्ये वर्षाव किंवा आवेश विभाजन यासारख्या वेगळ्या घटना वर्णन केल्या गेल्या आहेत, ज्या हवा थंड होण्यामुळे एकट्याच निमित्ताने घडत नाहीत.",
+          "solution": "उष्ण हवा उठल्यास ती उंचीवर खालच्या दाबामुळे विस्तारते, ज्यामुळे ती थंड होते. ती थंड होत असताना हवेतील नमी थेंबांमध्ये घनीभूत होते, ढग बनवते. इतर विकल्प चुकीचे असतात जे उबदार होण्याचा किंवा असंबंधित विद्युत परिणामांचा उल्लेख करतात जे उठत जाणाऱ्या हवेच्या मूळ भौतिक प्रक्रियेपासून निर्माण होत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -350,9 +152,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the process of condensation with the formation of rain",
-        "Misunderstands the effect of temperature on water droplets",
-        "Misinterprets the process of charge separation in clouds"
+        "Believes that rising air warms up instead of cooling, confusing convection with heating",
+        "Confuses the charge separation process in clouds with the effect on the ground",
+        "Confuses the charge distribution in clouds with the effect on the ground"
       ],
       "solverAnswers": [
         0,
@@ -362,7 +164,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies that cooling and expansion of air leads to condensation and the formation of ice particles at high altitudes. The reasoning for the other options aligns with common misconceptions.",
+      "critique": "The solution correctly explains that rising warm air cools and condenses to form water droplets. The author's reasoning for the distractors aligns with common misconceptions about air temperature changes and charge separation.",
       "sources": [
         {
           "document": "ncert/8/science/hecu106.pdf",
@@ -397,49 +199,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:30:35.445Z",
+      "generatedAt": "2026-10-29T22:56:15.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "If a person stands on one foot instead of two, what happens to the pressure exerted on the ground?",
+      "difficulty": 2,
+      "stem": "Which of the following statements about pressure is correct?",
       "choices": [
-        "It doubles",
-        "It remains the same",
-        "It reduces by half",
-        "It increases by three times"
+        "Liquids exert pressure only at the bottom of a container.",
+        "Pressure is defined as force per unit area.",
+        "Atmospheric pressure is the pressure exerted by water on the Earth's surface.",
+        "Pressure is measured in kilograms per square metre."
       ],
-      "answerIndex": 0,
-      "solution": "Pressure is defined as force per unit area. If the area decreases (standing on one foot instead of two), the pressure increases. Since the force remains the same, the pressure doubles. The other options do not correctly represent the relationship between force and area.",
+      "answerIndex": 1,
+      "solution": "Pressure is correctly defined as force per unit area. The SI unit of pressure is pascal (N/m²). Liquids exert pressure on all sides of a container, not just the bottom. Atmospheric pressure is the pressure exerted by air, not water.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई व्यक्ति दो पैरों के बजाय एक पैर पर खड़ा हो जाए, तो जमीन पर लगने वाला दाब क्या होता है?",
+          "stem": "निम्नलिखित में से कौन-सा दबाव के बारे में कथन सही है?",
           "choices": [
-            "यह दोगुना हो जाता है",
-            "यह वही रहता है",
-            "यह आधा हो जाता है",
-            "यह तीन गुना हो जाता है"
+            "द्रव एक पात्र के नीचे केवल दबाव डालते हैं।",
+            "दबाव बल प्रति इकाई क्षेत्र के रूप में परिभाषित किया जाता है।",
+            "वायुमंडलीय दबाव पृथ्वी की सतह पर जल द्वारा डाला गया दबाव है।",
+            "दबाव किलोग्राम प्रति वर्ग मीटर में मापा जाता है।"
           ],
-          "solution": "दाब बल के एकांक क्षेत्रफल पर लगने वाले बल के रूप में परिभाषित किया जाता है। यदि क्षेत्रफल कम हो जाता है (एक पैर के बजाय दो पैर), तो दाब बढ़ जाता है। चूंकि बल वही रहता है, दाब दोगुना हो जाता है। अन्य विकल्प बल और क्षेत्रफल के बीच संबंध को सही ढंग से प्रतिनिधित्व नहीं करते।",
+          "solution": "दबाव सही ढंग से बल प्रति इकाई क्षेत्र के रूप में परिभाषित किया जाता है। दबाव का एसआई इकाई पास्कल (एन/एम²) है। द्रव एक पात्र के सभी पक्षों पर दबाव डालते हैं, केवल नीचे नहीं। वायुमंडलीय दबाव हवा द्वारा डाला गया दबाव है, न कि जल द्वारा।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terminology. All options are correctly translated and maintain their original logical relationship with the solution.",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium context.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एखादा माणूस दोन पायांऐवजी एका पायावर उभा राहिला, तर जमिनीवर लागणारा दाब काय होतो?",
+          "stem": "खालीलपैकी कोणता दावा दाबाबद्दल बरोबर आहे?",
           "choices": [
-            "तो दुप्पट होतो",
-            "तो अचूक राहतो",
-            "तो अर्धा होतो",
-            "तो तीन पट होतो"
+            "तरले केवळ वास्तविक बाजूने दाब लावतात.",
+            "दाब म्हणजे एकक क्षेत्रावर लागणारा बल.",
+            "वातावरणीय दाब हा पृथ्वीच्या सतहवर जलाने लावलेला दाब आहे.",
+            "दाब किलोग्राम प्रति चौरस मीटरमध्ये मोजला जातो."
           ],
-          "solution": "दाब हा बलाचा एकक क्षेत्रावर असलेला अंश आहे. जर क्षेत्र कमी होते (एका पायावर उभे राहणे दोन पायांऐवजी), तर दाब वाढतो. कारण बल समान राहते, तर दाब दुप्पट होतो. इतर विकल्प बल आणि क्षेत्राच्या संबंधाचे योग्य निरूपण करत नाहीत.",
+          "solution": "दाब योग्यरित्या बलाच्या एकक क्षेत्रावर वर्णन केला जातो. दाबाचा SI एकक पास्कल (N/m²) आहे. तरले संपूर्ण वास्तविक बाजूने दाब लावतात, केवळ तलावर नाही. वातावरणीय दाब हा हवेने लावलेला दाब आहे, केवळ जलाने नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms (e.g., 'दाब' for pressure, 'क्षेत्र' for area).",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
           "flag": null
         }
       },
@@ -448,75 +250,96 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Believes liquids only exert pressure at the bottom",
         null,
-        "confuses the inverse relationship between area and pressure",
-        "does not understand the concept of pressure",
-        "does not understand the concept of pressure"
+        "Confuses the definition of pressure",
+        "Misunderstands the source of atmospheric pressure"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The solution correctly applies the formula for pressure (P = F/A) and correctly concludes that halving the area doubles the pressure, assuming the force remains constant. The reasoning aligns with the physics of pressure.",
+      "critique": "The correct answer is option 1, as pressure is indeed defined as force per unit area. The other options contain common misconceptions about the nature of pressure and its units.",
       "sources": [
         {
           "document": "ncert/8/science/hecu106.pdf",
-          "ordinal": 16,
-          "pageStart": 17,
-          "pageEnd": 18,
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
+            "6.6 Cyclone"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu106.pdf",
+          "ordinal": 14,
+          "pageStart": 14,
+          "pageEnd": 16,
           "headingPath": [
             "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
             "6.6 Cyclone",
-            "Discover, design, and debate"
+            "Keep the curiosity alive"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu106.pdf",
+          "ordinal": 15,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
+            "6.6 Cyclone",
+            "Keep the curiosity alive"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:30:35.445Z",
+      "generatedAt": "2026-10-29T22:56:15.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "A person standing on a flat surface experiences a pressure of 1000 N/m². If the person stands on a smaller area of 0.5 m², what will be the new pressure?",
+      "difficulty": 2,
+      "stem": "Which of the following explains why holes are made in banners and hoardings?",
       "choices": [
-        "1500 N/m²",
-        "1000 N/m²",
-        "2000 N/m²",
-        "4000 N/m²"
+        "To reduce wind resistance",
+        "To increase weight",
+        "To make them more colorful",
+        "To make them heavier"
       ],
-      "answerIndex": 2,
-      "solution": "Pressure is force divided by area. If the area is halved, the pressure doubles. The correct calculation is 1000 / 0.5 = 2000 N/m². The other options do not match the correct calculation.",
-      "checkExpr": "1000/0.5",
+      "answerIndex": 0,
+      "solution": "Holes in banners and hoardings allow wind to pass through, reducing the force exerted on them and preventing damage. Increasing weight or making them heavier would not help with wind resistance. Coloring is unrelated to the structural purpose of the holes.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक व्यक्ति एक तल पर खड़ा होकर 1000 न्यूटन/मीटर² का दबाव अनुभव करता है। यदि व्यक्ति 0.5 मीटर² के छोटे क्षेत्र पर खड़ा हो जाए, तो नया दबाव क्या होगा?",
+          "stem": "निम्नलिखित में से कौन-सा बैनर और होर्डिंग में छेद क्यों किए जाते हैं?",
           "choices": [
-            "1500 न्यूटन/मीटर²",
-            "1000 न्यूटन/मीटर²",
-            "2000 न्यूटन/मीटर²",
-            "4000 न्यूटन/मीटर²"
+            "हवा के प्रतिरोध को कम करने के लिए",
+            "भार को बढ़ाने के लिए",
+            "उन्हें अधिक रंगीन बनाने के लिए",
+            "उन्हें भारी बनाने के लिए"
           ],
-          "solution": "दबाव बल के क्षेत्र से विभाजित होता है। यदि क्षेत्र आधा हो जाता है, तो दबाव दुगुना हो जाता है। सही गणना 1000 / 0.5 = 2000 न्यूटन/मीटर² है। अन्य विकल्प सही गणना के अनुरूप नहीं हैं।",
+          "solution": "बैनर और होर्डिंग में छेद हवा के पार होने की अनुमति देते हैं, जिससे उन पर लगने वाला बल कम हो जाता है और नुकसान से बचा जा सकता है। भार बढ़ाने या उन्हें भारी बनाने से हवा के प्रतिरोध में सुधार नहीं होता। रंगीन बनाना हवा के प्रतिरोध से संबंधित संरचनात्मक उद्देश्य के साथ असंबंधित है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate technical terms in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "एक व्यक्ती सपाट सतहवर उभी राहिल्याने 1000 न्यूटन/मी² दाब अनुभवते. जर व्यक्ती 0.5 मी² च्या लहान क्षेत्रावर उभी राहिली तर नवीन दाब किती असेल?",
+          "stem": "खालीलपैकी कोणते बॅनर आणि होर्डिंगवर छिद्रे का काढली जातात याचे स्पष्टीकरण देते?",
           "choices": [
-            "1500 न्यूटन/मी²",
-            "1000 न्यूटन/मी²",
-            "2000 न्यूटन/मी²",
-            "4000 न्यूटन/मी²"
+            "वाऱ्याचा प्रतिकार कमी करण्यासाठी",
+            "वजन वाढवण्यासाठी",
+            "त्यांना अधिक रंगीत करण्यासाठी",
+            "त्यांना भारी करण्यासाठी"
           ],
-          "solution": "दाब बलाच्या क्षेत्रावर विभागणे आहे. जर क्षेत्र अर्धे केले गेले तर दाब दुप्पट होतो. योग्य गणना 1000 / 0.5 = 2000 न्यूटन/मी² आहे. इतर विकल्प योग्य गणनेशी मेळ खात नाहीत.",
+          "solution": "बॅनर आणि होर्डिंगवरील छिद्रांमुळे वाऱ्याचा पारगमन होतो, ज्यामुळे त्यांवर लागणारा बल कमी होतो आणि नुकसान होण्यापासून बचाव होतो. वजन वाढवणे किंवा त्यांना भारी करणे वाऱ्याच्या प्रतिकाराला मदत करणार नाही. रंगविणे हे छिद्रांच्या रचनात्मक उद्देशाशी संबंधित नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
@@ -527,20 +350,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses pressure with a linear increase based on area change without understanding inverse relationship",
-        "does not understand the inverse relationship between area and pressure",
         null,
-        "multiplies the pressure instead of dividing"
+        "Confuses the purpose of holes",
+        "Incorrect assumption about weight",
+        "Ignores the purpose of holes in banners and hoardings"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the inverse relationship between pressure and area. The calculation 1000 / 0.5 = 2000 N/m² is accurate, and the reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as holes in banners and hoardings reduce wind resistance, which aligns with the physical principle of air flow. The other options are clearly incorrect and represent common misconceptions.",
       "sources": [
         {
           "document": "ncert/8/science/hecu106.pdf",
@@ -555,49 +378,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:30:35.445Z",
+      "generatedAt": "2026-10-29T22:56:15.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If the pressure in a region is 1000 Pa, and the area of a roof is 20 m², what is the force acting on the roof due to air pressure?",
+      "difficulty": 2,
+      "stem": "When does air flow stop between two balloons?",
       "choices": [
-        "20000 N",
-        "50 N",
-        "2000 N",
-        "200 N"
+        "When the balloons are of the same size",
+        "When the air pressure in both balloons is the same",
+        "When the balloons are tied with strings",
+        "When the air pressure in the inflated balloon is higher than the air pressure in the uninflated balloon"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 20000 N. The formula for pressure is pressure = force / area, so force = pressure × area. Therefore, force = 1000 Pa × 20 m² = 20000 N. The other options are incorrect because they do not use the correct formula or miscalculate the multiplication.",
-      "checkExpr": "1000*20",
+      "answerIndex": 1,
+      "solution": "Air flow stops between two balloons when the air pressure in both balloons is the same. This is because air moves from areas of higher pressure to areas of lower pressure, and when pressures are equal, there is no net movement. The other options are incorrect because the size of the balloons, whether they are tied, or the relative pressure difference do not determine when air flow stops.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि किसी क्षेत्र में दाब 1000 पैस्कल है, और छत का क्षेत्रफल 20 वर्ग मीटर है, तो हवा के दाब के कारण छत पर लगने वाला बल क्या है?",
+          "stem": "किस समय हवा का प्रवाह दो गुब्बारों के बीच रुक जाता है?",
           "choices": [
-            "20000 न्यूटन",
-            "50 न्यूटन",
-            "2000 न्यूटन",
-            "200 न्यूटन"
+            "जब गुब्बारे एक ही आकार के होते हैं",
+            "जब दोनों गुब्बारों में हवा का दबाव एक समान होता है",
+            "जब गुब्बारों को रस्सी से बांध दिया जाता है",
+            "जब फुलाए गए गुब्बारे में हवा का दबाव अफुलाए गए गुब्बारे के मुकाबले अधिक होता है"
           ],
-          "solution": "सही उत्तर 20000 न्यूटन है। दाब का सूत्र दाब = बल / क्षेत्रफल है, इसलिए बल = दाब × क्षेत्रफल। इसलिए, बल = 1000 पैस्कल × 20 वर्ग मीटर = 20000 न्यूटन। अन्य विकल्प गलत हैं क्योंकि वे सही सूत्र का उपयोग नहीं करते हैं या गुणन की गणना में गलती करते हैं।",
+          "solution": "जब दोनों गुब्बारों में हवा का दबाव एक समान होता है, तो दो गुब्बारों के बीच हवा का प्रवाह रुक जाता है। इसका कारण यह है कि हवा उच्च दबाव वाले क्षेत्र से निम्न दबाव वाले क्षेत्र में गति करती है, और जब दबाव समान होता है, तो कोई शुद्ध गति नहीं होती। अन्य विकल्प गलत हैं क्योंकि गुब्बारों के आकार, उनके बांधे जाने या दबाव अंतर के आपसी संबंध वास्तव में हवा के प्रवाह के रुकने का निर्धारण नहीं करते।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "critique": "The Hindi translation accurately reflects the original English question, with equivalent technical terms and logical structure. All options and the solution are correctly translated and maintain the same meaning.",
           "flag": null
         },
         "mr": {
-          "stem": "जर क्षेत्रातील दाब 1000 पा आहे, आणि छताचे क्षेत्र 20 चौरस मीटर आहे, तर हवेच्या दाबामुळे छतावर कार्य करणारी बल किती आहे?",
+          "stem": "दोन बॅलूनमध्ये हवा प्रवाह कधी थांबतो?",
           "choices": [
-            "20000 एन",
-            "50 एन",
-            "2000 एन",
-            "200 एन"
+            "जेव्हा बॅलून समान आकाराचे असतात",
+            "जेव्हा दोन्ही बॅलूनमध्ये हवा दाब समान असतो",
+            "जेव्हा बॅलूनला रस्सीने बांधले जाते",
+            "जेव्हा फुगलेल्या बॅलूनमध्ये हवा दाब अफुगलेल्या बॅलूनमध्ये हवा दाबापेक्षा जास्त असतो"
           ],
-          "solution": "सही उत्तर 20000 एन आहे. दाबाचा सूत्र दाब = बल / क्षेत्र असा आहे, म्हणून बल = दाब × क्षेत्र. त्यामुळे, बल = 1000 पा × 20 चौरस मीटर = 20000 एन. इतर उत्तरे अयोग्य आहेत कारण ते चुकीचा सूत्र वापरतात किंवा गुणाकार चुकीचा करतात.",
+          "solution": "दोन बॅलूनमध्ये हवा प्रवाह थांबतो जेव्हा दोन्ही बॅलूनमध्ये हवा दाब समान असतो. हे कारण असे आहे की हवा उच्च दाबाच्या भागातून निम्न दाबाच्या भागात जाते आणि जेव्हा दाब समान असतो तेव्हा कोणताही नेट गती नसतो. इतर विकल्प चुकीचे आहेत कारण बॅलूनच्या आकाराची, त्यांना रस्सीने बांधले जाणे किंवा दाबातील फरक यांच्या आधारे हवा प्रवाह थांबत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for physics concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
           "flag": null
         }
       },
@@ -606,20 +429,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "describes a visual condition but not the actual reason",
         null,
-        "Confuses pressure with force and divides pressure by area instead of multiplying",
-        "Confuses pressure (Pa) with force (N) by not multiplying by area",
-        "Confuses pressure with force and divides pressure by area instead of multiplying"
+        "describes the initial condition of air flow",
+        "describes the initial condition of air flow"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is mathematically correct and aligns with the standard formula for pressure. The reasoning for the distractors is plausible and reflects common misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the physical principle that air flows from high to low pressure until equilibrium is reached. The correct answer is option 1, and the author's reasoning is sound.",
       "sources": [
         {
           "document": "ncert/8/science/hecu106.pdf",
@@ -655,148 +478,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:30:35.445Z",
+      "generatedAt": "2026-10-29T22:56:15.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "If a water tank is placed at a height of 20 meters, and the pressure at the base is 200,000 Pa, what is the density of the liquid in the tank? (Take g = 10 m/s²)",
+      "stem": "Why do cyclones form more frequently in certain regions of India?",
       "choices": [
-        "1000 kg/m³",
-        "2000 kg/m³",
-        "500 kg/m³",
-        "100 kg/m³"
+        "Due to the presence of high mountains",
+        "Due to the availability of warm and moist air",
+        "Due to the presence of deep water bodies",
+        "Due to the high altitude of the region"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is '1000 kg/m³.' This is calculated using the formula: Pressure = density × g × height. Rearranging the formula, we get density = pressure / (g × height). Substituting the values, we get 200000 / (10 × 20) = 1000 kg/m³. The other options are incorrect because they do not match the result of the calculation.",
-      "checkExpr": "200000/(10*20)",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक पानी के टैंक को 20 मीटर की ऊंचाई पर रखा जाता है, और आधार पर दाब 200,000 पास्कल है, तो टैंक में द्रव का घनत्व क्या है? (g = 10 मी/से² लें)",
-          "choices": [
-            "1000 किग्रा/मी³",
-            "2000 किग्रा/मी³",
-            "500 किग्रा/मी³",
-            "100 किग्रा/मी³"
-          ],
-          "solution": "सही उत्तर '1000 किग्रा/मी³' है। इसे दाब = घनत्व × g × ऊंचाई के सूत्र के उपयोग से गणना की जाती है। सूत्र को फिर से व्यवस्थित करने पर, हमें घनत्व = दाब / (g × ऊंचाई) प्राप्त होता है। मानों के प्रतिस्थापन से, हमें 200000 / (10 × 20) = 1000 किग्रा/मी³ प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे गणना के परिणाम के साथ मेल नहीं खाते।",
-          "imageAlt": null,
-          "critique": "Translation accurately preserves meaning, technical terms, and structure. All options and solution align with the original English version.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर 20 मीटर उंचीवर पाण्याचा टॅंक ठेवला गेला आहे आणि त्याच्या तळावर दाब 200,000 पॅस्कल आहे, तर टॅंकमधील द्रवाची घनता काय आहे? (g = 10 मीटर/सेकंद² घ्या)",
-          "choices": [
-            "1000 किग्रा/मीटर³",
-            "2000 किग्रा/मीटर³",
-            "500 किग्रा/मीटर³",
-            "100 किग्रा/मीटर³"
-          ],
-          "solution": "योग्य उत्तर '1000 किग्रा/मीटर³' आहे. याची गणना दाब = घनता × g × उंची या सूत्राद्वारे केली जाते. सूत्र व्यवस्थित करून, आम्ही घनता = दाब / (g × उंची) मिळतो. मूल्यांचा प्रतिस्थापन करून, आम्ही 200000 / (10 × 20) = 1000 किग्रा/मीटर³ मिळतो. इतर विकल्प चुकीचे आहेत कारण ते गणनेच्या परिणामाशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Uses the same pressure value without dividing by height",
-        "Confuses density with pressure",
-        "Multiplies instead of divides\",\"Does not understand the relationship between pressure and density\"]}]}**.**"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the formula for pressure in a fluid column. The reasoning for the distractors is plausible and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu106.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
-            "Probe and ponder"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu106.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
-            "Probe and ponder"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu106.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
-            "Probe and ponder",
-            "Activity 6.1: Let us try and find out"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:30:35.445Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "A cylinder filled with water is placed on a table, and a small hole is made at the bottom of the cylinder. What will happen to the water coming out of the hole?",
-      "choices": [
-        "It will flow out horizontally",
-        "It will flow out vertically",
-        "It will not flow out at all",
-        "It will flow out in all directions"
-      ],
-      "answerIndex": 0,
-      "solution": "The water will flow out horizontally because the pressure from the column of water above the hole pushes the water outward in the direction perpendicular to the surface of the hole. Vertical flow would require a force pulling the water down, which is not the case here. The water does not flow out in all directions because the hole is a single point, and it does flow out, so the option that it will not flow at all is incorrect.",
+      "answerIndex": 1,
+      "solution": "Cyclones form when warm, moist air rises, creating a low-pressure area that draws in more air. This is more common in regions with warm and moist air. The other options do not directly contribute to cyclone formation.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "जल से भरा एक बेलन एक मेज पर रखा जाता है, और बेलन के नीचे एक छोटा छेद किया जाता है। छेद से बाहर आने वाले पानी के साथ क्या होगा?",
+          "stem": "भारत के कुछ क्षेत्रों में चक्रवात अधिक बार बनते क्यों हैं?",
           "choices": [
-            "यह क्षैतिज दिशा में बहेगा",
-            "यह ऊर्ध्वाधर दिशा में बहेगा",
-            "यह कभी बाहर नहीं बहेगा",
-            "यह सभी दिशाओं में बहेगा"
+            "उच्च पहाड़ों की उपस्थिति के कारण",
+            "गर्म और नम हवा की उपलब्धता के कारण",
+            "गहरे जल निकायों की उपस्थिति के कारण",
+            "क्षेत्र की ऊंचाई के कारण"
           ],
-          "solution": "पानी क्षैतिज दिशा में बहेगा क्योंकि छेद के ऊपर के पानी के स्तंभ के कारण दबाव पानी को छेद की सतह के लंबवत दिशा में बाहर की ओर धकेलता है। ऊर्ध्वाधर बहाव के लिए पानी के नीचे की ओर खींचने वाला बल आवश्यक होता है, जो यहां उपलब्ध नहीं है। पानी सभी दिशाओं में बहता नहीं है क्योंकि छेद एक बिंदु है, और यह बाहर बहता है, इसलिए यह कभी नहीं बहता है वाला विकल्प गलत है।",
+          "solution": "चक्रवात तब बनते हैं जब गर्म और नम हवा ऊपर उठती है, जिससे एक कम दबाव का क्षेत्र बनता है जो अधिक हवा को आकर्षित करता है। यह उन क्षेत्रों में अधिक सामान्य होता है जहां गर्म और नम हवा उपलब्ध होती है। अन्य विकल्प चक्रवात बनने में सीधे योगदान नहीं करते।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for meteorological concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "पाण्याने भरलेला एक बेलेन टेबलवर ठेवला गेला आहे, आणि बेलेनच्या खालच्या बाजूला एक लहान छिद्र काढले गेले आहे. छिद्रातून पाणी काय होईल?",
+          "stem": "भारतातील काही प्रदेशांमध्ये वादळे जास्तीत जास्त तयार होतात कारण काय?",
           "choices": [
-            "ते क्षैतिज वाहू शकते",
-            "ते उर्ध्वाधर वाहू शकते",
-            "ते एकही पाणी वाहू शकत नाही",
-            "ते सर्व दिशांमध्ये वाहू शकते"
+            "उंच उभयांगांच्या उपस्थितीमुळे",
+            "उबदार आणि ओल्या हवामानाच्या उपलब्धतेमुळे",
+            "खोल पाणी वस्तूंच्या उपस्थितीमुळे",
+            "प्रदेशाच्या उंचीमुळे"
           ],
-          "solution": "पाणी क्षैतिज वाहू शकते कारण छिद्रावरील पाण्याच्या स्तंभाचा दाब छिद्राच्या सतही लांब बाहेर वाहू शकतो. उर्ध्वाधर वाहनासाठी एखादा बल आवश्यक असतो जो पाणी खाली खेचतो, जे येथे नाही. पाणी सर्व दिशांमध्ये वाहत नाही कारण छिद्र एक बिंदू आहे, आणि ते वाहत असते, म्हणून ते एकही पाणी वाहत नाही असा विकल्प चुकीचा आहे.",
+          "solution": "वादळे तयार होतात जेव्हा उबदार आणि ओल्या हवामानाचा उठाव होतो, ज्यामुळे निम्न दाबाचे क्षेत्र तयार होते आणि अधिक हवा आकर्षित होते. हे उबदार आणि ओल्या हवामानाच्या प्रदेशांमध्ये जास्त घडते. इतर विकल्प वादळ तयार होण्यासाठी सीधा योगदान नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for meteorological concepts.",
           "flag": null
         }
       },
@@ -805,20 +529,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Misunderstanding of cyclone formation",
         null,
-        "confuses the direction of water flow with vertical or all directions",
-        "does not understand the concept of pressure in a liquid",
-        "does not understand the concept of pressure in a liquid"
+        "Incorrect assumption about mountain influence",
+        "Incorrect assumption about water bodies"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as water exits a hole in a container horizontally due to the pressure from the column of water above it. The author's reasoning is sound and aligns with the physical principles of fluid pressure.",
+      "critique": "The solution correctly identifies that warm and moist air is essential for cyclone formation. The other options are incorrect, and the reasons provided by the author align with common misconceptions.",
       "sources": [
         {
           "document": "ncert/8/science/hecu106.pdf",
@@ -833,7 +557,118 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:30:35.445Z",
+      "generatedAt": "2026-10-29T22:56:15.663Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A balloon expands in all directions when filled with air. Why does this happen?",
+      "choices": [
+        "Air is lighter than the balloon material",
+        "Air exerts pressure only on the bottom of the balloon",
+        "Air exerts pressure in all directions",
+        "Air is compressed inside the balloon"
+      ],
+      "answerIndex": 2,
+      "solution": "Air exerts pressure in all directions, which pushes against the inside of the balloon equally, causing it to expand uniformly. The other options are incorrect because air's pressure is not limited to the bottom, air's weight is not the main factor in expansion, and compression is not the reason for the balloon's shape.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हवा से भरे गेंद में सभी दिशाओं में फैलाव होता है। ऐसा क्यों होता है?",
+          "choices": [
+            "हवा गेंद के सामग्री से हल्की होती है",
+            "हवा गेंद के नीचे केवल दबाव डालती है",
+            "हवा सभी दिशाओं में दबाव डालती है",
+            "हवा गेंद के भीतर संपीडित होती है"
+          ],
+          "solution": "हवा सभी दिशाओं में दबाव डालती है, जो गेंद के भीतर समान रूप से धक्का देती है, जिससे वह समान रूप से फैलती है। अन्य विकल्प गलत हैं क्योंकि हवा के दबाव का नीचे तक सीमित होना सही नहीं है, हवा के भार का फैलाव में मुख्य कारण नहीं है और गेंद के आकार के लिए संपीड़न कारण नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriate for Hindi-medium curriculum, and the logic of the question and solution is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हवा भरलेल्या बॅलून एका बाजूने नाही तर सर्व दिशांनी फैलावतो. हे का होते?",
+          "choices": [
+            "हवा बॅलूनच्या सामग्रीपेक्षा हलका असतो",
+            "हवा बॅलूनच्या खालच्या बाजूला दाब लावते",
+            "हवा सर्व दिशांना दाब लावते",
+            "हवा बॅलूनमध्ये दाबली जाते"
+          ],
+          "solution": "हवा सर्व दिशांना दाब लावते, जो बॅलूनच्या आतील बाजूला समानरूपाने लागतो आणि त्यामुळे तो समानरूपाने फैलावतो. इतर विकल्प अयोग्य आहेत कारण हवेचा दाब खालच्या बाजूला मर्यादित नाही, हवेचा वजन फैलावण्याचा मुख्य कारण नाही आणि बॅलूनच्या आकाराचे कारण दाबलेली हवा नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses air's weight with its behavior",
+        "Assumes pressure is directional",
+        null,
+        "Focuses on compression rather than pressure"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as air exerts pressure in all directions, which explains the uniform expansion of the balloon. The other options reflect common misconceptions about air's behavior.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu106.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
+            "Probe and ponder",
+            "Activity 6.2: Let us find out"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu106.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
+            "6.2 Pressure Exerted by Air"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu106.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
+            "6.2 Pressure Exerted by Air",
+            "Activity 6.3: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu106.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: — Pressure, Winds, Storms, and Cyclones",
+            "6.2 Pressure Exerted by Air",
+            "Activity 6.4: Let us perform"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T22:56:15.663Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

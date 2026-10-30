@@ -1,0 +1,888 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T09:35:28.015Z",
+  "finishedAt": "2026-10-24T09:47:07.483Z",
+  "seconds": 699,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp104.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Data Handling and Presentation",
+    "edition": "Reprint 2026-27",
+    "chunks": 25,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n10. B 𝑁 66\n= = 33, which lies in the interval 10-15\n2 2\n⇒ Median Class is 10-15\nLower limit of median class =10\n(B) 𝟏𝟎",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n31. The length of 40 leaves of a plant are measured correct to nearest millimetre, and the data 3\nobtained is represented in the following table.\nLength [in mm]\n118 – 126\n127 – 135\nNumber of leaves\n172 – 180\nFind the mean length of the leaves."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 238927,
+      "in": 49,
+      "out": 45,
+      "rejects": 4,
+      "promptTokens": 53424,
+      "completionTokens": 10932
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 434619,
+      "in": 45,
+      "out": 35,
+      "rejects": 10,
+      "promptTokens": 23677,
+      "completionTokens": 9291
+    },
+    "solver": {
+      "calls": 244,
+      "ms": 157313,
+      "in": 35,
+      "out": 21,
+      "rejects": 14,
+      "promptTokens": 47823,
+      "completionTokens": 2707
+    },
+    "form": {
+      "calls": 8,
+      "ms": 36481,
+      "in": 21,
+      "out": 8,
+      "rejects": 13,
+      "promptTokens": 3707,
+      "completionTokens": 681
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 39,
+      "ms": 7744,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 308574,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 15431,
+      "completionTokens": 7441
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the list of students and their favourite games, which game is the most popular in the class?",
+      "ms": {
+        "draft": 3866,
+        "critique": 5872,
+        "solver": 1029
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of data?",
+      "ms": {
+        "draft": 3866,
+        "critique": 5873,
+        "solver": 2485,
+        "form": 5445
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Shri Nilesh recorded the preferences of students for sweets using tally marks. If the tally marks for 'Jalebi' are |||| || ||, how many students chose Jalebi?",
+      "ms": {
+        "draft": 3866,
+        "critique": 10581,
+        "solver": 2158
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How did Navya and Naresh collect data about their classmates' favourite games?",
+      "ms": {
+        "draft": 3866,
+        "critique": 5873,
+        "solver": 19162
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of arranging data in ascending order?",
+      "ms": {
+        "draft": 3866,
+        "critique": 7135,
+        "solver": 2023,
+        "form": 2650
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the purpose of a scale or key in a pictograph?",
+      "ms": {
+        "draft": 4314,
+        "critique": 7663,
+        "solver": 3346,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the passage, what does the symbol \"=\" represent in the pictograph showing the number of students absent in each class?",
+      "ms": {
+        "draft": 4314,
+        "critique": 9559,
+        "solver": 1750
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main advantage of using a pictograph according to the passage?",
+      "ms": {
+        "draft": 4314,
+        "critique": 8253,
+        "solver": 15995,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the pictograph provided, which day had the highest number of books borrowed from the library?",
+      "ms": {
+        "draft": 4314,
+        "critique": 7551,
+        "solver": 1697
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pictograph uses the symbol \"=\" to represent 10 students, how many symbols would be needed to show 25 students?",
+      "ms": {
+        "draft": 4314,
+        "critique": 7276,
+        "solver": 1948,
+        "form": 4699
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a scale used in a bar graph as mentioned in the passage?",
+      "ms": {
+        "draft": 14679,
+        "critique": 8161
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a use of bar graphs as mentioned in the passage?",
+      "ms": {
+        "draft": 14679,
+        "critique": 7852,
+        "solver": 2030,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the total number of vehicles passing through the crossing between 6 a.m. and noon is 4800, and the bar for 7–8 a.m. represents 1200 vehicles, what percentage of the total traffic is accounted for by the 7–8 a.m. interval?",
+      "ms": {
+        "draft": 14679,
+        "critique": 8514
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the bar graph of vehicular traffic, why might traffic be lighter between 11 a.m.–12 noon compared to the earlier hours?",
+      "ms": {
+        "draft": 14679,
+        "critique": 8918,
+        "solver": 2081,
+        "form": 2781
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bar graph has a scale of 1 unit length = 100 vehicles, what does a bar of length 12 units represent?",
+      "ms": {
+        "draft": 14679,
+        "critique": 8265,
+        "solver": 21323
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Imran's family has a bar graph showing their monthly expenditures. Which item do they spend the most on?",
+      "ms": {
+        "draft": 9264,
+        "critique": 8579,
+        "solver": 1786,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Pooja prepared a bar graph for the number of tickets sold for different cities. The bar for Vidisha is 6 unit lengths and the bar for Jabalpur is 5 unit lengths. What is the scale for this graph?",
+      "ms": {
+        "draft": 9264,
+        "critique": 10212,
+        "solver": 2171
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The following pictograph shows the number of tractors in five different villages. Which village has the smallest number of tractors?",
+      "ms": {
+        "draft": 9264,
+        "critique": 7918,
+        "solver": 2110
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of a bar graph according to the passage?",
+      "ms": {
+        "draft": 4950,
+        "critique": 8334
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A pictograph is created to represent the number of books borrowed from a library in a week. Each symbol represents 10 books. If the total number of books borrowed is 85, how many symbols would be needed?",
+      "ms": {
+        "draft": 6443,
+        "critique": 7510,
+        "solver": 1096
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The table below shows the number of wickets taken by Jaspreet Bumrah in his last 30 matches. What is the total number of wickets he has taken?",
+      "ms": {
+        "draft": 10222,
+        "critique": 6296,
+        "solver": 846
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which day had the least number of saplings planted?",
+      "ms": {
+        "draft": 3311,
+        "critique": 10946,
+        "solver": 1777
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using a pictograph as described in the passage?",
+      "ms": {
+        "draft": 3311,
+        "critique": 7868,
+        "solver": 17311,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method to visually represent data according to the passage?",
+      "ms": {
+        "draft": 3311,
+        "critique": 8779,
+        "solver": 18740,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the total number of saplings planted during the week is 310, and 70 saplings were planted on Wednesday and Thursday, what is the total number of saplings planted on the other days of the week?",
+      "ms": {
+        "draft": 3311,
+        "critique": 8249
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why might more saplings have been planted on certain days of the week and less on others?",
+      "ms": {
+        "draft": 3311,
+        "critique": 8143,
+        "solver": 23339
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pictograph uses a symbol to represent 100 kites, how many symbols would represent 700 kites?",
+      "ms": {
+        "draft": 4634,
+        "critique": 9499,
+        "solver": 21053,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the bar graph showing the number of tickets sold for different cities, if the bar for Vidisha is 6 unit lengths and the bar for Jabalpur is 5 unit lengths, what is the scale of the graph?",
+      "ms": {
+        "draft": 4634,
+        "critique": 11180,
+        "solver": 18214
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the cost of education is Rs. 800 and the cost of food is Rs. 3400, is the cost of education less than one-fourth the cost of food?",
+      "ms": {
+        "draft": 4634,
+        "critique": 7542,
+        "solver": 2511,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using the same width for bars in a bar graph?",
+      "ms": {
+        "draft": 15090,
+        "critique": 7282
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pictograph uses one symbol to represent 10 students, how many symbols would be needed to represent 33 students?",
+      "ms": {
+        "draft": 15090,
+        "critique": 7898
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a bar graph, if the y-axis represents the number of students and the bars are of uniform width, what does the height of the bar indicate?",
+      "ms": {
+        "draft": 15090,
+        "critique": 8350
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to be careful when making or reading infographics?",
+      "ms": {
+        "draft": 15090,
+        "critique": 8466
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of data handling according to the passage?",
+      "ms": {
+        "draft": 4422,
+        "critique": 9418
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a step to draw a bar graph?",
+      "ms": {
+        "draft": 4786,
+        "critique": 7871
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a pictograph uses a symbol to represent 5 students, and the total number of students is 27, how many full symbols and partial symbols are needed?",
+      "ms": {
+        "draft": 15090,
+        "critique": 8172,
+        "solver": 19408,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In which class were the maximum number of students absent?",
+      "ms": {
+        "draft": 5931,
+        "critique": 5006,
+        "solver": 611
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the frequency distribution table of wickets taken by Jaspreet Bumrah, if 3 wickets were taken in 8 matches, how many total wickets were taken in those matches?",
+      "ms": {
+        "draft": 4634,
+        "critique": 7481,
+        "solver": 1632,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of data handling?",
+      "ms": {
+        "draft": 4634,
+        "critique": 7420,
+        "solver": 1221,
+        "form": 0,
+        "translation": 44971
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a way to collect data on the number of vehicles passing a road?",
+      "ms": {
+        "draft": 4634,
+        "critique": 7142,
+        "solver": 1787,
+        "form": 0,
+        "translation": 30462
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the number of saplings planted on Monday is 10 and on Tuesday is 15, what is the total number of saplings planted on these two days?",
+      "ms": {
+        "draft": 4422,
+        "critique": 9375,
+        "solver": 1658,
+        "form": 0,
+        "translation": 35775
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the scale of a pictograph is 1 symbol = 6 dogs, how many symbols would represent 18 dogs?",
+      "ms": {
+        "draft": 3311,
+        "critique": 7649,
+        "solver": 1763,
+        "form": 0,
+        "translation": 34246
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the bar graph of vehicular traffic, which time interval had the least number of vehicles passing through the crossing?",
+      "ms": {
+        "draft": 14679,
+        "critique": 7085,
+        "solver": 1503,
+        "form": 4546,
+        "translation": 47781
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a pictograph uses the symbol \"=\" to represent 5 students, how many symbols would be needed to show 45 students?",
+      "ms": {
+        "draft": 4314,
+        "critique": 8774,
+        "solver": 1769,
+        "form": 3299,
+        "translation": 38792
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "The teacher asked the students to record the number of trees of each type in their surroundings. If the table shows that Peepal trees are the most common, what conclusion can be drawn?",
+      "ms": {
+        "draft": 3866,
+        "critique": 7961,
+        "solver": 1978,
+        "form": 4110,
+        "translation": 72217
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Imran's family has a bar graph showing their monthly expenditures. Is the cost of electricity about one-half the cost of education?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Imran's family has a bar graph showing their monthly expenditures. Is the cost of education less than one-fourth the cost of food?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What does the passage say about the bars in a bar graph?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the list of students and their favourite games, which game is the most popular in the class?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of data?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Shri Nilesh recorded the preferences of students for sweets using tally marks. If the tally marks for 'Jalebi' are |||| || ||, how many students chose Jalebi?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How did Navya and Naresh collect data about their classmates' favourite games?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of arranging data in ascending order?",
+      "reason": "the key is far longer than every distractor (57 vs 33 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the purpose of a scale or key in a pictograph?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Thinks the key is for artistic reasons, which is not stated …\"); distractor 3's reason is not a one-line misconception (\"Confuses the key with showing exact numbers, which is not me…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "In the passage, what does the symbol \"=\" represent in the pictograph showing the number of students absent in each class?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main advantage of using a pictograph according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Thinks pictographs are difficult to create and require advan…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the pictograph provided, which day had the highest number of books borrowed from the library?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a pictograph uses the symbol \"=\" to represent 10 students, how many symbols would be needed to show 25 students?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a scale used in a bar graph as mentioned in the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is NOT a use of bar graphs as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the total number of vehicles passing through the crossing between 6 a.m. and noon is 4800, and the bar for 7–8 a.m. represents 1200 vehicles, what percentage of the total traffic is accounted for by the 7–8 a.m. interval?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the bar graph of vehicular traffic, why might traffic be lighter between 11 a.m.–12 noon compared to the earlier hours?",
+      "reason": "the key is far longer than every distractor (57 vs 33 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a bar graph has a scale of 1 unit length = 100 vehicles, what does a bar of length 12 units represent?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Imran's family has a bar graph showing their monthly expenditures. Which item do they spend the most on?",
+      "reason": "figure: figure spec refused: spec.yLabel: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Pooja prepared a bar graph for the number of tickets sold for different cities. The bar for Vidisha is 6 unit lengths and the bar for Jabalpur is 5 unit lengths. What is the scale for this graph?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The following pictograph shows the number of tractors in five different villages. Which village has the smallest number of tractors?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main purpose of a bar graph according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A pictograph is created to represent the number of books borrowed from a library in a week. Each symbol represents 10 books. If the total number of books borrowed is 85, how many symbols would be needed?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The table below shows the number of wickets taken by Jaspreet Bumrah in his last 30 matches. What is the total number of wickets he has taken?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of data?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which day had the least number of saplings planted?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of using a pictograph as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"The passage describes the use of symbols to represent data…\"); distractor 3's reason is not a one-line misconception (\"This is not the focus of the passage's explanation of pictog…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a method to visually represent data according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the total number of saplings planted during the week is 310, and 70 saplings were planted on Wednesday and Thursday, what is the total number of saplings planted on the other days of the week?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "According to the passage, why might more saplings have been planted on certain days of the week and less on others?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a pictograph uses a symbol to represent 100 kites, how many symbols would represent 700 kites?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the bar graph showing the number of tickets sold for different cities, if the bar for Vidisha is 6 unit lengths and the bar for Jabalpur is 5 unit lengths, what is the scale of the graph?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the cost of education is Rs. 800 and the cost of food is Rs. 3400, is the cost of education less than one-fourth the cost of food?",
+      "reason": "checkExpr is set but the key \"Yes, it is less than one-fourth\" states no number"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of using the same width for bars in a bar graph?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a pictograph uses one symbol to represent 10 students, how many symbols would be needed to represent 33 students?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a bar graph, if the y-axis represents the number of students and the bars are of uniform width, what does the height of the bar indicate?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is it important to be careful when making or reading infographics?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main purpose of data handling according to the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a step to draw a bar graph?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a pictograph uses a symbol to represent 5 students, and the total number of students is 27, how many full symbols and partial symbols are needed?",
+      "reason": "options 0 and 2 say the same thing (\"5 full and 2 partial\" / \"2: 5 full and 2 partial\"); ARITHMETIC MISMATCH — checkExpr \"27/5\" = 5.4, but the key says 5"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "In which class were the maximum number of students absent?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "In the frequency distribution table of wickets taken by Jaspreet Bumrah, if 3 wickets were taken in 8 matches, how many total wickets were taken in those matches?",
+      "reason": "near-duplicate of served question cmvefhn110061gowcplp0qwav (cosine 0.911 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

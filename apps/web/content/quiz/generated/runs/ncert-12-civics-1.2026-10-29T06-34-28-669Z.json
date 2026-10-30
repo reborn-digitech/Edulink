@@ -1,0 +1,776 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T06:34:28.669Z",
+  "finishedAt": "2026-10-29T06:44:19.723Z",
+  "seconds": 591,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Politics in India Since Independence",
+    "bookCode": "leps2",
+    "document": "ncert/12/political-science/leps201.pdf",
+    "classLevel": 12,
+    "subject": "Political Science",
+    "chapter": "Chapter 1 — In this chapter…",
+    "edition": "Reprint 2026-27",
+    "chunks": 22,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, sample question paper, 2023-24]\nSECTION-D (12 MARKS)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSECTION – B\n(12 Marks)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSECTION – A\n(12 Marks)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSection – D\n(12 Marks)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 166844,
+      "in": 41,
+      "out": 40,
+      "rejects": 1,
+      "promptTokens": 38913,
+      "completionTokens": 9378
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 337610,
+      "in": 40,
+      "out": 24,
+      "rejects": 16,
+      "promptTokens": 24661,
+      "completionTokens": 9278
+    },
+    "solver": {
+      "calls": 218,
+      "ms": 135163,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 45046,
+      "completionTokens": 2595
+    },
+    "form": {
+      "calls": 17,
+      "ms": 46776,
+      "in": 23,
+      "out": 10,
+      "rejects": 13,
+      "promptTokens": 4307,
+      "completionTokens": 1248
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 429,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 366828,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 20740,
+      "completionTokens": 11254
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 0,
+    "4": 2,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the challenge of 'shaping a nation that was united yet accommodative of diversity'?",
+      "ms": {
+        "draft": 4953,
+        "critique": 5516
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the first challenge faced by independent India according to the passage?",
+      "ms": {
+        "draft": 4953,
+        "critique": 5548
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a new state were to be formed in India today, which of the following challenges would be most relevant according to the passage?",
+      "ms": {
+        "draft": 4953,
+        "critique": 6205
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which challenge is most closely related to the idea of national unity?",
+      "ms": {
+        "draft": 4953,
+        "critique": 5803
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is told that a new state in India is being formed, and they are to identify the challenge that would be most similar to the integration of princely states. Which challenge would this be?",
+      "ms": {
+        "draft": 4953,
+        "critique": 6377
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the passage is read in the context of the challenges faced by a newly independent nation, which of the following best explains why the challenge of shaping a united nation was considered the most urgent?",
+      "ms": {
+        "draft": 4953,
+        "critique": 6059
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the reason why the issue of national unity and security became a primary challenge at the time of Independence?",
+      "ms": {
+        "draft": 12662,
+        "critique": 5348,
+        "solver": 2735,
+        "form": 3900
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the approach of the new republic to the issue of religious diversity?",
+      "ms": {
+        "draft": 12662,
+        "critique": 4977,
+        "solver": 12298,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what might be the most important factor for the success of the new republic in dealing with its challenges?",
+      "ms": {
+        "draft": 12662,
+        "critique": 6279,
+        "solver": 1736,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main principle used to divide British India into India and Pakistan?",
+      "ms": {
+        "draft": 3660,
+        "critique": 6213
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the impact of the partition on minorities?",
+      "ms": {
+        "draft": 3660,
+        "critique": 5707,
+        "solver": 1811,
+        "form": 2092
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the consequence of the lack of planning during the partition?",
+      "ms": {
+        "draft": 3660,
+        "critique": 6108,
+        "solver": 1669,
+        "form": 3067
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was one of the main reasons for the violence during the Partition of India in 1947?",
+      "ms": {
+        "draft": 4423,
+        "critique": 8025
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the ideals of the Indian national movement?",
+      "ms": {
+        "draft": 4423,
+        "critique": 6109,
+        "solver": 1603,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main concern of the Indian government regarding the Princely States after Independence?",
+      "ms": {
+        "draft": 4877,
+        "critique": 5996
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which state was the first to hold an election based on universal adult franchise?",
+      "ms": {
+        "draft": 4048,
+        "critique": 4412
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is stated in the passage as a reason for the creation of linguistic states?",
+      "ms": {
+        "draft": 4294,
+        "critique": 5577
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what does the acceptance of linguistic states indicate about democracy in India?",
+      "ms": {
+        "draft": 4294,
+        "critique": 5923
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a region in India demands a separate state based on regional culture, which of the following is most similar to the scenario described in the passage?",
+      "ms": {
+        "draft": 4294,
+        "critique": 6407
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a new state were to be formed in India based on a unique regional culture, what does the passage suggest about the potential long-term impact on the country’s political structure?",
+      "ms": {
+        "draft": 4294,
+        "critique": 5823,
+        "solver": 13277,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why the author mentions the Soviet Union in the context of nation-building?",
+      "ms": {
+        "draft": 4294,
+        "critique": 6337,
+        "solver": 14754,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements, if true, would most directly challenge the idea that linguistic states strengthened national unity as described in the passage?",
+      "ms": {
+        "draft": 4294,
+        "critique": 5572,
+        "solver": 17669,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In which year was the Merger Agreement between Manipur and India signed?",
+      "ms": {
+        "draft": 2937,
+        "critique": 6222
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which state was the first to hold an election based on universal adult franchise?",
+      "ms": {
+        "draft": 2937,
+        "critique": 8503
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a state was formed on the basis of the linguistic principle, what would be the most likely effect on the unity of the nation?",
+      "ms": {
+        "draft": 2937,
+        "critique": 7540
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why was the decision of the British regarding the Princely States a serious problem for India?",
+      "ms": {
+        "draft": 4276,
+        "critique": 7397,
+        "solver": 1546,
+        "form": 3670
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT mentioned as a reason for postponing the reorganisation of states on linguistic lines?",
+      "ms": {
+        "draft": 2937,
+        "critique": 7005,
+        "solver": 15363,
+        "form": 3267
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the main reason for the Partition of British India in 1947?",
+      "ms": {
+        "draft": 30467,
+        "critique": 6271,
+        "solver": 16232
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred about the role of the people in the integration of the Princely States?",
+      "ms": {
+        "draft": 4276,
+        "critique": 6555,
+        "solver": 14414,
+        "form": 3637
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What was the impact of Gandhi's last fast in 1948?",
+      "ms": {
+        "draft": 30467,
+        "critique": 4527,
+        "solver": 4456,
+        "form": 1352
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the phrase 'division of hearts' refer to in the context of the partition?",
+      "ms": {
+        "draft": 3660,
+        "critique": 8130,
+        "solver": 15930,
+        "form": 2811
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the story of Salim Mirza illustrate about the impact of the Partition?",
+      "ms": {
+        "draft": 4423,
+        "critique": 5915,
+        "solver": 1690,
+        "form": 2439
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main reason for the Vishal Andhra movement?",
+      "ms": {
+        "draft": 2937,
+        "critique": 7965,
+        "solver": 11878,
+        "form": 2986,
+        "translation": 38822
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main focus of the first three chapters of the book?",
+      "ms": {
+        "draft": 12662,
+        "critique": 5667,
+        "solver": 11341,
+        "form": 3534,
+        "translation": 43880
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the purpose of the book?",
+      "ms": {
+        "draft": 12662,
+        "critique": 6445,
+        "solver": 1471,
+        "form": 2525,
+        "translation": 47501
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the main reason the Indian government wanted to integrate the Princely States into the Indian Union?",
+      "ms": {
+        "draft": 4276,
+        "critique": 6805,
+        "solver": 17931,
+        "form": 2634,
+        "translation": 39992
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Why was the North Western Frontier Province (NWFP) made to merge with Pakistan despite opposition?",
+      "ms": {
+        "draft": 3660,
+        "critique": 6658,
+        "solver": 18461,
+        "form": 3071,
+        "translation": 48939
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If you were to design the stamps in 1950 to mark the first Republic Day, which of the following images would best represent the challenges the new republic faced?",
+      "ms": {
+        "draft": 12662,
+        "critique": 6089,
+        "solver": 1481,
+        "form": 2455,
+        "translation": 46075
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why did the Indian government face challenges in treating religious minorities after the Partition?",
+      "ms": {
+        "draft": 4423,
+        "critique": 6051,
+        "solver": 1816,
+        "form": 3018,
+        "translation": 56770
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why was the partition of Punjab and Bengal particularly traumatic?",
+      "ms": {
+        "draft": 3660,
+        "critique": 8108,
+        "solver": 14958,
+        "form": 2702,
+        "translation": 39138
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What was the role of Mahatma Gandhi during the Partition?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the challenge of 'shaping a nation that was united yet accommodative of diversity'?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the first challenge faced by independent India according to the passage?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a new state were to be formed in India today, which of the following challenges would be most relevant according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which challenge is most closely related to the idea of national unity?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student is told that a new state in India is being formed, and they are to identify the challenge that would be most similar to the integration of princely states. Which challenge would this be?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the passage is read in the context of the challenges faced by a newly independent nation, which of the following best explains why the challenge of shaping a united nation was considered the most urgent?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best describes the reason why the issue of national unity and security became a primary challenge at the time of Independence?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"refers to a social factor but not the reason mentioned in th…\"); distractor 3's reason is not a one-line misconception (\"correct option, not a distractor (no reason needed here as p…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the approach of the new republic to the issue of religious diversity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"represents a misunderstanding of the passage's message…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what might be the most important factor for the success of the new republic in dealing with its challenges?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"important but not the central focus of the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the main principle used to divide British India into India and Pakistan?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the impact of the partition on minorities?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Negates the negative impact described in the passage…\"); distractor 3's reason is not a one-line misconception (\"Refers to a scenario not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What was the consequence of the lack of planning during the partition?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Implies a positive outcome not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"Refers to a scenario not discussed in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What was one of the main reasons for the violence during the Partition of India in 1947?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the ideals of the Indian national movement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the main concern of the Indian government regarding the Princely States after Independence?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which state was the first to hold an election based on universal adult franchise?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is stated in the passage as a reason for the creation of linguistic states?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what does the acceptance of linguistic states indicate about democracy in India?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a region in India demands a separate state based on regional culture, which of the following is most similar to the scenario described in the passage?",
+      "reason": "the critic finds option 3 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a new state were to be formed in India based on a unique regional culture, what does the passage suggest about the potential long-term impact on the country’s political structure?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage’s focus on unity as a threat to st…\"); distractor 3's reason is not a one-line misconception (\"Confuses the passage's focus on unity with instability\",\"Mis…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why the author mentions the Soviet Union in the context of nation-building?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage’s comparison as focused on simila…\"); distractor 3's reason is not a one-line misconception (\"Confuses the passage's focus on comparison with a judgment o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements, if true, would most directly challenge the idea that linguistic states strengthened national unity as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"students might think that efficiency supports unity, ignorin…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "In which year was the Merger Agreement between Manipur and India signed?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which state was the first to hold an election based on universal adult franchise?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a state was formed on the basis of the linguistic principle, what would be the most likely effect on the unity of the nation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why was the decision of the British regarding the Princely States a serious problem for India?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"This option suggests the states had control over their leade…\"); distractor 3's reason is not a one-line misconception (\"This option suggests the people had a say, which is not the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is NOT mentioned as a reason for postponing the reorganisation of states on linguistic lines?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What was the main reason for the Partition of British India in 1947?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What can be inferred about the role of the people in the integration of the Princely States?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"This option is directly contradicted by the passage, which m…\"); distractor 3's reason is not a one-line misconception (\"This option is incorrect as the passage shows the people wer…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What was the impact of Gandhi's last fast in 1948?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"This option is incorrect because the passage states that the…\"); distractor 3's reason is not a one-line misconception (\"This option is incorrect because the passage states that Gan…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "What does the phrase 'division of hearts' refer to in the context of the partition?",
+      "reason": "near-duplicate of served question cmvpn57zh0a07gp214vuuy5hx (cosine 0.965 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What does the story of Salim Mirza illustrate about the impact of the Partition?",
+      "reason": "near-duplicate of served question cmvihmz9l0dbygpfhn4s872r7 (cosine 0.927 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

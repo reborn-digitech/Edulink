@@ -1,0 +1,746 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T14:06:22.095Z",
+  "finishedAt": "2026-10-26T14:13:35.093Z",
+  "seconds": 433,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo103.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 3 — Reproductive Health",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n22. (i) Condoms; these act by blocking the entry of microbes and sperms in the 3\ncervix.\n(ii) Surgical methods such as Tubectomy by her or vasectomy by her\nhusband as these are highly effective but irreversible methods.\n(iii) Oral pills containing progestogens or progestogen – estrogen combination\nare very effective and can be repeated as long as the female derives to\nprevent conception. (1 x 3 =3)",
+      "[CBSE Class XII Biology, sample question paper, 2025-26]\n22. Suggest a suitable contraceptive device for the following cases with 3\njustification.\n(i) Mohini does not want to take the risk of conception and sexually\ntransmitted infections (STIs).\n(ii) Lalita has two children and does not want any more children.\n(iii) Geeta wants a contraceptive that she can take till she wants to\navoid conception and can resume back to her fertile life without the\nintervention of the doctor. Also, it should have a lower failure rate.",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n17. (a) A –Pituitary gland; B: Ovary(½ x 2 =1 Mark) 2\n(b) Endometrium of the uterus regenerates through proliferation.\n(1 Mark)",
+      "[CBSE Class XII Biology, marking scheme, 2026-27]\n2. A. Blockage of sperm transport into the ejaculatory duct and urethra 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 135897,
+      "in": 39,
+      "out": 38,
+      "rejects": 1,
+      "promptTokens": 34619,
+      "completionTokens": 7924
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 270542,
+      "in": 38,
+      "out": 32,
+      "rejects": 6,
+      "promptTokens": 20021,
+      "completionTokens": 7987
+    },
+    "solver": {
+      "calls": 214,
+      "ms": 99409,
+      "in": 32,
+      "out": 27,
+      "rejects": 5,
+      "promptTokens": 33801,
+      "completionTokens": 2092
+    },
+    "form": {
+      "calls": 8,
+      "ms": 20574,
+      "in": 27,
+      "out": 12,
+      "rejects": 15,
+      "promptTokens": 2021,
+      "completionTokens": 554
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 38,
+      "ms": 6997,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 418913,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 23293,
+      "completionTokens": 12213
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key goal of the RCH programmes?",
+      "ms": {
+        "draft": 2619,
+        "critique": 5944,
+        "solver": 1193,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a method to prevent conception by blocking the transport of sperm?",
+      "ms": {
+        "draft": 2619,
+        "critique": 6018,
+        "solver": 2067
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following contraceptive methods is described as a 'barrier method' and is available for both males and females?",
+      "ms": {
+        "draft": 3223,
+        "critique": 4527,
+        "solver": 1091,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A couple wants a contraceptive method that is reversible, has a low failure rate, and can be used without a doctor's intervention. Which of the following would be the best choice according to the passage?",
+      "ms": {
+        "draft": 3223,
+        "critique": 7155,
+        "solver": 1644
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which contraceptive method is most suitable for a couple who wants to prevent both pregnancy and sexually transmitted infections (STIs)?",
+      "ms": {
+        "draft": 3223,
+        "critique": 6092,
+        "solver": 10073,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a method of contraception that prevents sperm from entering the female reproductive tract?",
+      "ms": {
+        "draft": 3223,
+        "critique": 6252,
+        "solver": 11505,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that the lactational amenorrhea method is effective only up to six months after childbirth. Which of the following best explains why this is the case?",
+      "ms": {
+        "draft": 3223,
+        "critique": 5990,
+        "solver": 1343,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which contraceptive method is described as a 'once a week' pill with very few side effects?",
+      "ms": {
+        "draft": 3902,
+        "critique": 6568,
+        "solver": 1395,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a method of contraception that prevents the entry of sperms into the uterus?",
+      "ms": {
+        "draft": 3902,
+        "critique": 5548,
+        "solver": 9905,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a sexually transmitted infection (STI)?",
+      "ms": {
+        "draft": 2747,
+        "critique": 5620
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a method to prevent the transmission of STIs?",
+      "ms": {
+        "draft": 2747,
+        "critique": 6496
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a technique used in assisted reproductive technologies (ART)?",
+      "ms": {
+        "draft": 2747,
+        "critique": 6982
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about STIs?",
+      "ms": {
+        "draft": 2747,
+        "critique": 7310,
+        "solver": 1644,
+        "form": 2715
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a reason for the low success rate of ART in India?",
+      "ms": {
+        "draft": 2747,
+        "critique": 6907,
+        "solver": 8549,
+        "form": 1056
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A couple wants a contraceptive method that is reversible and has a low failure rate. Which of the following would be the best option for them?",
+      "ms": {
+        "draft": 3443,
+        "critique": 5860,
+        "solver": 1188
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason for the ban on amniocentesis for sex determination?",
+      "ms": {
+        "draft": 3443,
+        "critique": 7833
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method of contraception that is a barrier method?",
+      "ms": {
+        "draft": 3443,
+        "critique": 6162,
+        "solver": 12467,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the use of contraceptives justified according to the passage?",
+      "ms": {
+        "draft": 3443,
+        "critique": 6276,
+        "solver": 1417,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the most important reason for early detection and treatment of STIs?",
+      "ms": {
+        "draft": 4355,
+        "critique": 7199
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about sexually transmitted infections (STIs)?",
+      "ms": {
+        "draft": 4355,
+        "critique": 7119,
+        "solver": 1522,
+        "form": 4411
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person wants to prevent both pregnancy and STIs. Which of the following methods is most suitable for them?",
+      "ms": {
+        "draft": 4355,
+        "critique": 6417
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A couple wants to use a method that allows them to have children in the future, is effective, and has a low failure rate. Which of the following would be the best choice?",
+      "ms": {
+        "draft": 4355,
+        "critique": 5386,
+        "solver": 1489
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a couple wants a contraceptive that is reversible and has a lower failure rate, which method should they use?",
+      "ms": {
+        "draft": 4355,
+        "critique": 6858,
+        "solver": 13062
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the primary reason for legalising medical termination of pregnancy (MTP) in India?",
+      "ms": {
+        "draft": 3615,
+        "critique": 6740,
+        "solver": 1681,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for infections transmitted through sexual contact?",
+      "ms": {
+        "draft": 4355,
+        "critique": 7361,
+        "solver": 13132,
+        "form": 1792
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which contraceptive method uses a thin rubber sheath to prevent the entry of semen into the female reproductive tract?",
+      "ms": {
+        "draft": 6675,
+        "critique": 6600,
+        "solver": 6699,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a method to prevent the entry of microbes and sperms into the cervix?",
+      "ms": {
+        "draft": 2619,
+        "critique": 6541,
+        "solver": 2087,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a contraceptive method that is inserted into the uterus?",
+      "ms": {
+        "draft": 3011,
+        "critique": 5786,
+        "solver": 707,
+        "form": 2264
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of contraceptive method that does not use any drugs or devices?",
+      "ms": {
+        "draft": 3223,
+        "critique": 5682,
+        "solver": 1534,
+        "form": 0,
+        "translation": 38020
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about contraceptive methods?",
+      "ms": {
+        "draft": 3443,
+        "critique": 4461,
+        "solver": 1731,
+        "form": 4577,
+        "translation": 53246
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a method of contraception that is administered as implants under the skin?",
+      "ms": {
+        "draft": 3615,
+        "critique": 6535,
+        "solver": 1969,
+        "form": 0,
+        "translation": 19879
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which contraceptive method would be most suitable for a person who wants to avoid conception for a short period and resume fertility without medical help?",
+      "ms": {
+        "draft": 2619,
+        "critique": 6207,
+        "solver": 1667,
+        "form": 0,
+        "translation": 44347
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A woman who wants to avoid pregnancy for a short period and has no plans for future children would most likely be advised which method of contraception?",
+      "ms": {
+        "draft": 3902,
+        "critique": 6530,
+        "solver": 1438,
+        "form": 0,
+        "translation": 45321
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a couple wants to avoid pregnancy but also wants to protect against sexually transmitted infections (STIs), which contraceptive method should they prefer?",
+      "ms": {
+        "draft": 2619,
+        "critique": 6997,
+        "solver": 1245,
+        "form": 0,
+        "translation": 34998
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following contraceptive methods is most suitable for a woman who wants to avoid pregnancy but also wishes to maintain her fertility for future use?",
+      "ms": {
+        "draft": 3443,
+        "critique": 7251,
+        "solver": 1684,
+        "form": 0,
+        "translation": 36208
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A woman who has had two children and wants to avoid further pregnancies but may want to have more children in the future would be best advised which contraceptive method?",
+      "ms": {
+        "draft": 3902,
+        "critique": 5971,
+        "solver": 1516,
+        "form": 3152,
+        "translation": 49061
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the use of the 'Saheli' pill significant in the context of reproductive health?",
+      "ms": {
+        "draft": 2619,
+        "critique": 6629,
+        "solver": 1482,
+        "form": 0,
+        "translation": 38207
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are emergency contraceptives effective only if used within 72 hours of coitus?",
+      "ms": {
+        "draft": 3902,
+        "critique": 6090,
+        "solver": 1518,
+        "form": 3113,
+        "translation": 53804
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a surgical method of contraception?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key goal of the RCH programmes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a method to prevent conception by blocking the transport of sperm?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following contraceptive methods is described as a 'barrier method' and is available for both males and females?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A couple wants a contraceptive method that is reversible, has a low failure rate, and can be used without a doctor's intervention. Which of the following would be the best choice according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which contraceptive method is most suitable for a couple who wants to prevent both pregnancy and sexually transmitted infections (STIs)?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a method of contraception that prevents sperm from entering the female reproductive tract?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage states that the lactational amenorrhea method is effective only up to six months after childbirth. Which of the following best explains why this is the case?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which contraceptive method is described as a 'once a week' pill with very few side effects?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a method of contraception that prevents the entry of sperms into the uterus?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a sexually transmitted infection (STI)?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a method to prevent the transmission of STIs?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a technique used in assisted reproductive technologies (ART)?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a correct statement about STIs?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a reason for the low success rate of ART in India?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A couple wants a contraceptive method that is reversible and has a low failure rate. Which of the following would be the best option for them?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason for the ban on amniocentesis for sex determination?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a method of contraception that is a barrier method?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the use of contraceptives justified according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the most important reason for early detection and treatment of STIs?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about sexually transmitted infections (STIs)?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct statement, but the stem does not match it directly, …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A person wants to prevent both pregnancy and STIs. Which of the following methods is most suitable for them?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A couple wants to use a method that allows them to have children in the future, is effective, and has a low failure rate. Which of the following would be the best choice?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a couple wants a contraceptive that is reversible and has a lower failure rate, which method should they use?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the primary reason for legalising medical termination of pregnancy (MTP) in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Thinks the main purpose is to reduce the number of abortions…\"); distractor 2's reason is not a one-line misconception (\"Believes the main reason is to provide safe care, but the pa…\"); distractor 3's reason is not a one-line misconception (\"Assumes MTP is allowed for any reason, but the passage menti…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for infections transmitted through sexual contact?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which contraceptive method uses a thin rubber sheath to prevent the entry of semen into the female reproductive tract?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 1's reason is not a one-line misconception (\"Thinks IUDs are the primary method described in the passage…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a method to prevent the entry of microbes and sperms into the cervix?",
+      "reason": "near-duplicate of served question cmvloizsn0ngigpfht6t5a5t0 (cosine 0.969 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a contraceptive method that is inserted into the uterus?",
+      "reason": "near-duplicate of served question cmviaayl70c3ogpfh5hto6p3t (cosine 0.947 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

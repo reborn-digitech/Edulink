@@ -1,0 +1,727 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T05:55:04.910Z",
+  "finishedAt": "2026-10-26T06:03:50.885Z",
+  "seconds": 526,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Pratical Work in Geography",
+    "bookCode": "kegy3",
+    "document": "ncert/11/geography/kegy305.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 5 — Topographical Maps",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n7. Section E Question number 29 and 30 are Map based questions.",
+      "[CBSE Class XII Geography, sample question paper, 2022-23]\nSECTION D\nQuestion numbers 29 & 30 are Map based questions having 5\nsub-parts each.",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\nSECTION E\nQuestion numbers 29 & 30 are Map based questions having 5 sub-parts each."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 160694,
+      "in": 40,
+      "out": 35,
+      "rejects": 5,
+      "promptTokens": 31186,
+      "completionTokens": 8176
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 286458,
+      "in": 35,
+      "out": 26,
+      "rejects": 9,
+      "promptTokens": 16358,
+      "completionTokens": 6694
+    },
+    "solver": {
+      "calls": 159,
+      "ms": 87196,
+      "in": 26,
+      "out": 18,
+      "rejects": 8,
+      "promptTokens": 26062,
+      "completionTokens": 1610
+    },
+    "form": {
+      "calls": 8,
+      "ms": 23398,
+      "in": 18,
+      "out": 7,
+      "rejects": 11,
+      "promptTokens": 1820,
+      "completionTokens": 550
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 3317,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 287723,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13613,
+      "completionTokens": 7009
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a feature shown on topographical maps?",
+      "ms": {
+        "draft": 3990,
+        "critique": 7276
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a topographical map has a contour interval of 20 meters, what does this mean?",
+      "ms": {
+        "draft": 3990,
+        "critique": 8339
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a topographical map, which of the following indicates a steep slope?",
+      "ms": {
+        "draft": 3990,
+        "critique": 9412
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A topographical map has a scale of 1:50,000. If a river is shown as 3 cm on the map, what is the actual length of the river in kilometers?",
+      "ms": {
+        "draft": 3990,
+        "critique": 9965
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A topographical map uses a contour interval of 50 meters. If a hill is represented by 6 contour lines, what is the total elevation of the hill?",
+      "ms": {
+        "draft": 3990,
+        "critique": 7591,
+        "solver": 17657
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a contour line has a wide gap between its two sides, what type of landform is it most likely representing?",
+      "ms": {
+        "draft": 13230,
+        "critique": 8399,
+        "solver": 1631
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is trying to identify a landform on a topographical map. The innermost contour line has a very small gap between its two sides, and the contour values increase uniformly outward. What is the most likely landform?",
+      "ms": {
+        "draft": 13230,
+        "critique": 6388,
+        "solver": 1770
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a map shows a spur, how would the contour lines appear?",
+      "ms": {
+        "draft": 13230,
+        "critique": 6964,
+        "solver": 1593
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary purpose of conventional signs and symbols on a topographical map?",
+      "ms": {
+        "draft": 4557,
+        "critique": 7983
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a part of 'marginal information' on a topographical sheet?",
+      "ms": {
+        "draft": 4557,
+        "critique": 7725
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is interpreting a topographical sheet and notes that the spacing between contour lines is very close. What can be inferred about the terrain?",
+      "ms": {
+        "draft": 4557,
+        "critique": 7416
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the yellow colour on a topographical map refer to?",
+      "ms": {
+        "draft": 3132,
+        "critique": 7711
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are conventional signs and symbols important for interpreting topographical maps?",
+      "ms": {
+        "draft": 4557,
+        "critique": 8915,
+        "solver": 1918
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What means of transportation is used to cross the river by the people of Bhatauli village?",
+      "ms": {
+        "draft": 3132,
+        "critique": 6528,
+        "solver": 1384,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a topographical map has a scale of 1:50,000, what does this mean in terms of ground distance?",
+      "ms": {
+        "draft": 4557,
+        "critique": 7872,
+        "solver": 20002,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Give the height of the highest point on the map.",
+      "ms": {
+        "draft": 3132,
+        "critique": 6982
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the height of the highest point on the map?",
+      "ms": {
+        "draft": 4847,
+        "critique": 7385,
+        "solver": 1526
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which quarter of the map is the river Jamtihwa Nadi flowing?",
+      "ms": {
+        "draft": 4847,
+        "critique": 6970,
+        "solver": 1599,
+        "form": 4137
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the direction of the flow of the Kuardari?",
+      "ms": {
+        "draft": 4847,
+        "critique": 7385,
+        "solver": 2617,
+        "form": 3058
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a means of transport mentioned in the passage?",
+      "ms": {
+        "draft": 16374,
+        "critique": 5786,
+        "solver": 1534
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What type of settlement does the area have?",
+      "ms": {
+        "draft": 4847,
+        "critique": 8317,
+        "solver": 1590,
+        "form": 3934
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What geographical feature is represented by white patches in the middle of Sipu Nadi?",
+      "ms": {
+        "draft": 4847,
+        "critique": 6580,
+        "solver": 2246,
+        "form": 3139
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of slope mentioned in the passage?",
+      "ms": {
+        "draft": 3185,
+        "critique": 7834,
+        "solver": 1924,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of landform mentioned in the passage?",
+      "ms": {
+        "draft": 3185,
+        "critique": 7036,
+        "solver": 1419,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a topographical sheet has a scale of 1:50,000, what does this indicate about the map?",
+      "ms": {
+        "draft": 16374,
+        "critique": 7726,
+        "solver": 15930,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of a 'V'-shaped valley as described in the passage?",
+      "ms": {
+        "draft": 3185,
+        "critique": 7363,
+        "solver": 1928,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following scales is used for topographical maps in the India and Adjacent Countries Series?",
+      "ms": {
+        "draft": 4982,
+        "critique": 6752,
+        "solver": 1810
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a feature shown on topographical maps?",
+      "ms": {
+        "draft": 4982,
+        "critique": 7325,
+        "solver": 1486,
+        "form": 3172
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main purpose of conventional signs and symbols on a topographical map?",
+      "ms": {
+        "draft": 16374,
+        "critique": 7291,
+        "solver": 1932,
+        "form": 3299
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes a steep slope based on contour lines?",
+      "ms": {
+        "draft": 13230,
+        "critique": 9650,
+        "solver": 13981,
+        "form": 0,
+        "translation": 53261
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a compact rural settlement?",
+      "ms": {
+        "draft": 13230,
+        "critique": 7475,
+        "solver": 2023,
+        "form": 0,
+        "translation": 46156
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is used to show the relief features of an area on a topographical map?",
+      "ms": {
+        "draft": 3990,
+        "critique": 7347,
+        "solver": 1589,
+        "form": 0,
+        "translation": 36850
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the description of a 'V'-shaped valley, which of the following will be the lowest contour value?",
+      "ms": {
+        "draft": 13230,
+        "critique": 8322,
+        "solver": 1283,
+        "form": 0,
+        "translation": 48049
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are contour lines important in understanding the topography of an area?",
+      "ms": {
+        "draft": 4982,
+        "critique": 5549,
+        "solver": 858,
+        "form": 1168,
+        "translation": 47349
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to superimpose a contour map over a land use map during map interpretation?",
+      "ms": {
+        "draft": 16374,
+        "critique": 6740,
+        "solver": 2211,
+        "form": 3088,
+        "translation": 50644
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a part of 'land use' as described in the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "River Jamtihwa Nadi is flowing through which quarter of the map?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a feature shown on topographical maps?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a topographical map has a contour interval of 20 meters, what does this mean?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a topographical map, which of the following indicates a steep slope?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A topographical map has a scale of 1:50,000. If a river is shown as 3 cm on the map, what is the actual length of the river in kilometers?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A topographical map uses a contour interval of 50 meters. If a hill is represented by 6 contour lines, what is the total elevation of the hill?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a contour line has a wide gap between its two sides, what type of landform is it most likely representing?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student is trying to identify a landform on a topographical map. The innermost contour line has a very small gap between its two sides, and the contour values increase uniformly outward. What is the most likely landform?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a map shows a spur, how would the contour lines appear?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the primary purpose of conventional signs and symbols on a topographical map?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a part of 'marginal information' on a topographical sheet?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student is interpreting a topographical sheet and notes that the spacing between contour lines is very close. What can be inferred about the terrain?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does the yellow colour on a topographical map refer to?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why are conventional signs and symbols important for interpreting topographical maps?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What means of transportation is used to cross the river by the people of Bhatauli village?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Confuses boat with bridge, which is not mentioned in the cha…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a topographical map has a scale of 1:50,000, what does this mean in terms of ground distance?",
+      "reason": "options 0 and 1 say the same thing (\"1 cm on the map equals 50,000 cm on the ground\" / \"1: 1 cm on the map equals 50,000 meters on the ground\"); options 0 and 2 say the same thing (\"1 cm on the map equals 50,000 cm on the ground\" / \"2: 1 cm on the map equals 50,000 km on the ground\"); options 0 and 3 say the same thing (\"1 cm on the map equals 50,000 cm on the ground\" / \"3: 1 cm on the map equals 50,000 inches on the ground\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Give the height of the highest point on the map.",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Name the two types of vegetation shown on the topographical sheet.",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What information can be derived from the 'Marginal Information' section of a topographical sheet?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a feature of a 'U'-shaped valley as described in the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the height of the highest point on the map?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In which quarter of the map is the river Jamtihwa Nadi flowing?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"chooses the quarter that is not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the direction of the flow of the Kuardari?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"chooses the direction that is not mentioned in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a means of transport mentioned in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What type of settlement does the area have?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"chooses a type that is not described in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What geographical feature is represented by white patches in the middle of Sipu Nadi?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"chooses a feature that is not described in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of slope mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of landform mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a topographical sheet has a scale of 1:50,000, what does this indicate about the map?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); checkExpr \"500\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a feature of a 'V'-shaped valley as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following scales is used for topographical maps in the India and Adjacent Countries Series?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is NOT a feature shown on topographical maps?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Recalls one of the features mentioned in the passage…\"); distractor 2's reason is not a one-line misconception (\"Recalls another feature mentioned in the passage…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the main purpose of conventional signs and symbols on a topographical map?",
+      "reason": "near-duplicate of served question cmvhqso5d0a7dgpfhfozunrxy (cosine 0.918 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

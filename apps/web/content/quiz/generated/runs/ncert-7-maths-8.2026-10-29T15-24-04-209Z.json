@@ -1,0 +1,779 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T15:24:04.209Z",
+  "finishedAt": "2026-10-29T15:38:58.508Z",
+  "seconds": 894,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "gegp1",
+    "document": "ncert/7/mathematics/gegp108.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Working with Fractions",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n4. C Let numerator be x and denominator be y 1\nGiven , x + y = 11\n𝐱 𝟏\n(𝐲+𝟏) = 2\nSolving these equations, we get\nx = 4, y = 7; ∴ Fraction = 𝟒 7\n𝟒\n(C)",
+      "[RMO 2015 — question paper]\n3. Find all fractions which can be written simultaneously in the forms\n5k − 3\n6l − 1\nand , for some integers k, l.\n4l − 3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n4. 1\nis increased by 1, the fraction becomes\n2 3\n(A) (B)\n9 8\n, then the fraction is\n4 5\n(C) (D)\n7 6\nIf one root of the quadratic equation 𝑎𝑥 + 𝑏𝑥 + 𝑐 = 0 is the reciprocal of the",
+      "[RMO 2015 — solutions or answer key]\n3. Find all fractions which can be written simultaneously in the forms and , for\n5k − 3 4l − 3\nsome integers k, l.\n7k − 5 6l − 1\nSolution: If a fraction is simultaneously in the forms and , we must have\n5k − 3 4l − 3\n7k − 5 6l − 1\n= .\n5k − 3 4l − 3\nThis simplifies to kl + 8k + l − 6 = 0. We can write this in the form\n(k + 1)(l + 8) = 14.\nNow 14 can be factored in 8 ways: 1 × 14, 2 × 7, 7 × 2, 14 × 1, (−1) × (−14), (−2) × (−7),\n(−7) × (−2) and (−14) × (−1). Thus we get 8 pairs:\n(k, l) = (13, −7), (6, −6), (1, −1), (0, 6), (−15, −9), (−8, −10), (−3, −15), (−2, −22).\nThese lead respectively to 8 fractions:\n43 31 55\n, , 1,\n31 27 39\n5 61 19 13\n, , , , .\n3 43 13 9"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 296674,
+      "in": 41,
+      "out": 37,
+      "rejects": 5,
+      "promptTokens": 46600,
+      "completionTokens": 12012
+    },
+    "critique": {
+      "calls": 51,
+      "ms": 492426,
+      "in": 37,
+      "out": 33,
+      "rejects": 4,
+      "promptTokens": 24839,
+      "completionTokens": 9043
+    },
+    "solver": {
+      "calls": 263,
+      "ms": 198161,
+      "in": 33,
+      "out": 26,
+      "rejects": 7,
+      "promptTokens": 54770,
+      "completionTokens": 3001
+    },
+    "form": {
+      "calls": 14,
+      "ms": 141829,
+      "in": 26,
+      "out": 15,
+      "rejects": 11,
+      "promptTokens": 11168,
+      "completionTokens": 2581
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 37,
+      "ms": 8514,
+      "in": 15,
+      "out": 5,
+      "rejects": 10,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 256254,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11738,
+      "completionTokens": 5458
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the distance covered by Aaron in 2/5 hours if he walks 3 km in 1 hour?",
+      "ms": {
+        "draft": 6431,
+        "critique": 8830,
+        "solver": 1618
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the distance covered by the tortoise in 3 hours if it walks 1/4 km in 1 hour?",
+      "ms": {
+        "draft": 6431,
+        "critique": 13347,
+        "solver": 20318
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the distance covered by Aaron in 5 hours if he walks 3 km in 1 hour?",
+      "ms": {
+        "draft": 6431,
+        "critique": 9289,
+        "solver": 22808,
+        "form": 4889
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the distance covered by the tortoise in 1/2 hour if it walks 1/4 km in 1 hour?",
+      "ms": {
+        "draft": 6431,
+        "critique": 13110,
+        "solver": 14503,
+        "form": 3718
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a farmer distributes 1/5 acre of land to each of her 5 grandchildren, how much land in total does she give?",
+      "ms": {
+        "draft": 6431,
+        "critique": 9705,
+        "solver": 17967,
+        "form": 3328
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the area of a rectangle with length 3/4 units and width 2/5 units?",
+      "ms": {
+        "draft": 14547,
+        "critique": 13821,
+        "solver": 17304
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the product of 3/4 and 2/5?",
+      "ms": {
+        "draft": 14547,
+        "critique": 10174,
+        "solver": 21766,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a water tank is filled to 3/4 in 1 hour, how much of the tank is filled in 1/2 hour?",
+      "ms": {
+        "draft": 14547,
+        "critique": 10092,
+        "solver": 2105,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of 1 cowrie shell in terms of copper panas?",
+      "ms": {
+        "draft": 4920,
+        "critique": 9367,
+        "solver": 2384
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the product of 2/3 and 3/4?",
+      "ms": {
+        "draft": 14547,
+        "critique": 9470,
+        "solver": 2406,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of multiplying a fraction by its reciprocal?",
+      "ms": {
+        "draft": 6254,
+        "critique": 8292,
+        "solver": 2064,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a fraction can be written in the forms (5k - 3)/(7k - 5) and (4l - 3)/(6l - 1) for some integers k and l, what is the value of the fraction?",
+      "ms": {
+        "draft": 6254,
+        "critique": 8109,
+        "solver": 2119
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A baker needs 1/2 kg of flour to make one loaf of bread. He has 5 kg of flour. How many loaves of bread can he make?",
+      "ms": {
+        "draft": 6121,
+        "critique": 9046,
+        "solver": 16892,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of 5 divided by 1?",
+      "ms": {
+        "draft": 6164,
+        "critique": 9425
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of 7 × 3/4?",
+      "ms": {
+        "draft": 21252,
+        "critique": 12883
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Amritpal takes a train, it will take him 5 hours to get to his destination. If he takes a plane, it will take him 1.5 hours. How many hours does the plane save?",
+      "ms": {
+        "draft": 6164,
+        "critique": 10176,
+        "solver": 21180
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when one of the numbers being multiplied is between 0 and 1?",
+      "ms": {
+        "draft": 21252,
+        "critique": 12653,
+        "solver": 16663,
+        "form": 5002
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 1/2 of Somu’s land is taken to build a road and she gives half of the remaining land to her daughter, what part of the original land does the daughter get?",
+      "ms": {
+        "draft": 21252,
+        "critique": 9955,
+        "solver": 15497,
+        "form": 7433
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If kg of flour is used to make 12 rotis, how much flour is used to make 6 rotis?",
+      "ms": {
+        "draft": 6758,
+        "critique": 9799,
+        "solver": 2431
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the result of 3 ÷ ?",
+      "ms": {
+        "draft": 5231,
+        "critique": 9708
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A fraction is written in the form 5k − 3/7k − 5. What is the value of the fraction when k = 3?",
+      "ms": {
+        "draft": 9308,
+        "critique": 12034
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A colony of ants splits equally at each point and reaches two food sources. What fraction of the original group reached each food source?",
+      "ms": {
+        "draft": 6758,
+        "critique": 8792,
+        "solver": 2467,
+        "form": 4598
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a tap fills 1/5 of a tank in 1 hour, how much of the tank is filled in 3 hours?",
+      "ms": {
+        "draft": 6254,
+        "critique": 8944,
+        "solver": 2402,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of 1 cowrie shell in terms of gold dinars?",
+      "ms": {
+        "draft": 4920,
+        "critique": 9263,
+        "solver": 21657,
+        "form": 6716
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a fraction becomes 2/3 when 1 is added to its numerator and 1 is subtracted from its denominator, what is the original fraction?",
+      "ms": {
+        "draft": 6254,
+        "critique": 9417,
+        "solver": 1934,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A car runs 16 km using 1 litre of petrol. How far will it go using 2.75 litres of petrol?",
+      "ms": {
+        "draft": 6121,
+        "critique": 12599,
+        "solver": 1908,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of 8 divided by 2?",
+      "ms": {
+        "draft": 6164,
+        "critique": 8020,
+        "solver": 1996,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 1/2 meter of ribbon is used to make 8 badges, what is the length of ribbon used for each badge?",
+      "ms": {
+        "draft": 6164,
+        "critique": 8827,
+        "solver": 2497,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 3/4 kg of flour is used to make 12 rotis, how much flour is used to make 6 rotis?",
+      "ms": {
+        "draft": 6164,
+        "critique": 10488,
+        "solver": 1587,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a car runs 16 km using 1 litre of petrol, how far will it go using 2.75 litres of petrol?",
+      "ms": {
+        "draft": 6164,
+        "critique": 10380,
+        "solver": 2222,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the tap is open for 1 hour, 1/5 of the tank gets filled. How much of the tank is filled if the tap is open for 3/4 hour?",
+      "ms": {
+        "draft": 21252,
+        "critique": 11152,
+        "solver": 22792,
+        "form": 6726
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 1 cowrie shell in terms of gold dinar, given that 1 gold dinar = 12 silver drammas, 1 silver dramma = 4 copper panas, and 1 pana = 30 cowrie shells?",
+      "ms": {
+        "draft": 6758,
+        "critique": 9338,
+        "solver": 24677,
+        "form": 6056
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 1 cowrie shell in terms of copper panas, given that 1 pana = 30 cowrie shells?",
+      "ms": {
+        "draft": 6758,
+        "critique": 8704,
+        "solver": 2115,
+        "form": 4468,
+        "translation": 39984
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 8 m of lace is used to decorate bags and 1/4 m of lace is used for each bag, how many bags were decorated?",
+      "ms": {
+        "draft": 4920,
+        "critique": 7873,
+        "solver": 2875,
+        "form": 0,
+        "translation": 43191
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 1/2 m of ribbon is used to make 8 badges, what is the length of ribbon used for each badge?",
+      "ms": {
+        "draft": 4920,
+        "critique": 8657,
+        "solver": 2317,
+        "form": 0,
+        "translation": 37874
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 1/4 of a cake is eaten, what fraction of the cake is left?",
+      "ms": {
+        "draft": 6121,
+        "critique": 9499,
+        "solver": 15665,
+        "form": 0,
+        "translation": 45274
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the product of two fractions is less than both of them, what can you infer about the fractions?",
+      "ms": {
+        "draft": 14547,
+        "critique": 10717,
+        "solver": 2479,
+        "form": 0,
+        "translation": 84051
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the distance covered by the tortoise in 3/4 hour if it walks 1/4 km in 1 hour?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following is the correct way to divide two fract"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If a baker needs 1/2 kg of flour to make one loaf of bread and has 5 kg of flour, how many loaves of bread can he make?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the distance covered by Aaron in 2/5 hours if he walks 3 km in 1 hour?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the distance covered by the tortoise in 3 hours if it walks 1/4 km in 1 hour?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the distance covered by Aaron in 5 hours if he walks 3 km in 1 hour?",
+      "reason": "options 1 and 3 are the same (\"10 km\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the distance covered by the tortoise in 1/2 hour if it walks 1/4 km in 1 hour?",
+      "reason": "options 1 and 2 are the same (\"1/2 km\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a farmer distributes 1/5 acre of land to each of her 5 grandchildren, how much land in total does she give?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the area of a rectangle with length 3/4 units and width 2/5 units?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the product of 3/4 and 2/5?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a water tank is filled to 3/4 in 1 hour, how much of the tank is filled in 1/2 hour?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the value of 1 cowrie shell in terms of copper panas?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the product of 2/3 and 3/4?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the result of multiplying a fraction by its reciprocal?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a fraction can be written in the forms (5k - 3)/(7k - 5) and (4l - 3)/(6l - 1) for some integers k and l, what is the value of the fraction?",
+      "reason": "the solver picked option 2 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A baker needs 1/2 kg of flour to make one loaf of bread. He has 5 kg of flour. How many loaves of bread can he make?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the result of multiplying a fraction by its reciprocal?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the result of 1 ÷ ?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the result of 5 divided by 1?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the value of 7 × 3/4?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Amritpal takes a train, it will take him 5 hours to get to his destination. If he takes a plane, it will take him 1.5 hours. How many hours does the plane save?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens when one of the numbers being multiplied is between 0 and 1?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Believes the product is always equal, which is not true for …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If 1/2 of Somu’s land is taken to build a road and she gives half of the remaining land to her daughter, what part of the original land does the daughter get?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Believes the daughter gets half of the original land, which …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If kg of flour is used to make 12 rotis, how much flour is used to make 6 rotis?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the result of 3 ÷ ?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A fraction is written in the form 5k − 3/7k − 5. What is the value of the fraction when k = 3?",
+      "reason": "the critic finds option 2 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A colony of ants splits equally at each point and reaches two food sources. What fraction of the original group reached each food source?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'splitPoint'"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If a tap fills 1/5 of a tank in 1 hour, how much of the tank is filled in 3 hours?",
+      "reason": "near-duplicate of served question cmvqfmz6y0b1zgp21wqoqedqx (cosine 0.985 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the value of 1 cowrie shell in terms of gold dinars?",
+      "reason": "near-duplicate of served question cmver9t89019agod8pjz6ypre (cosine 0.940 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a fraction becomes 2/3 when 1 is added to its numerator and 1 is subtracted from its denominator, what is the original fraction?",
+      "reason": "near-duplicate of served question cmvmijqqr0119gp21c0inku2s (cosine 0.931 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A car runs 16 km using 1 litre of petrol. How far will it go using 2.75 litres of petrol?",
+      "reason": "near-duplicate of served question cmvqfmz720b2hgp2189b6vv4e (cosine 0.906 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the result of 8 divided by 2?",
+      "reason": "near-duplicate of served question cmver9t8e019ggod8so6fdqcn (cosine 0.906 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If 1/2 meter of ribbon is used to make 8 badges, what is the length of ribbon used for each badge?",
+      "reason": "near-duplicate of served question cmvfxg8o0017ngpfhg46k7dum (cosine 0.928 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If 3/4 kg of flour is used to make 12 rotis, how much flour is used to make 6 rotis?",
+      "reason": "near-duplicate of served question cmver9t8m01a4god889ory5hx (cosine 0.933 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a car runs 16 km using 1 litre of petrol, how far will it go using 2.75 litres of petrol?",
+      "reason": "near-duplicate of served question cmvqfmz720b2hgp2189b6vv4e (cosine 0.920 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If the tap is open for 1 hour, 1/5 of the tank gets filled. How much of the tank is filled if the tap is open for 3/4 hour?",
+      "reason": "near-duplicate of served question cmvqfmz6y0b1zgp21wqoqedqx (cosine 0.906 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the value of 1 cowrie shell in terms of gold dinar, given that 1 gold dinar = 12 silver drammas, 1 silver dramma = 4 copper panas, and 1 pana = 30 cowrie shells?",
+      "reason": "near-duplicate of served question cmviw81ka0emmgpfhszreuzvu (cosine 0.934 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

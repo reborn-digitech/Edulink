@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Math-Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T22:40:52.127Z",
+  "generatedAt": "2026-10-28T03:58:07.960Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "If a person was born on 29 February 2016, which year will they celebrate their 4th birthday?",
+      "difficulty": 2,
+      "stem": "What is the total number of hours in a day?",
       "choices": [
-        "2018",
-        "2020",
-        "2022",
-        "2024"
+        "12 hours",
+        "18 hours",
+        "24 hours",
+        "30 hours"
       ],
-      "answerIndex": 3,
-      "solution": "Since 2016 is a leap year, the person will celebrate their birthday every 4 years. Adding 4 years to 2016 gives 2020, but they will celebrate their 4th birthday in 2024 as it is the next leap year after 2020. 2018 and 2022 are not leap years, and 2020 is only the third birthday.",
+      "answerIndex": 2,
+      "solution": "The correct answer is 24 hours. A day is divided into 24 hours, starting from midnight to the next midnight. The other options are incorrect because 12 hours is half a day, 18 hours is less than a full day, and 30 hours is more than a day.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई व्यक्ति 2016 में 29 फरवरी को पैदा हुआ, तो वह अपना 4वां जन्मदिन किस वर्ष मनाएगा?",
+          "stem": "एक दिन में कुल घंटों की संख्या क्या है?",
           "choices": [
-            "2018",
-            "2020",
-            "2022",
-            "2024"
+            "12 घंटे",
+            "18 घंटे",
+            "24 घंटे",
+            "30 घंटे"
           ],
-          "solution": "2016 एक लीप वर्ष है, इसलिए व्यक्ति प्रत्येक 4 वर्ष बाद अपना जन्मदिन मनाएगा। 2016 में 4 वर्ष जोड़ने पर 2020 प्राप्त होता है, लेकिन वह 2024 में अपना 4वां जन्मदिन मनाएगा क्योंकि 2020 के बाद अगला लीप वर्ष 2024 है। 2018 और 2022 लीप वर्ष नहीं हैं, और 2020 केवल तीसरा जन्मदिन है।",
+          "solution": "सही उत्तर 24 घंटे है। एक दिन में 24 घंटे होते हैं, जो रात के बजे से अगले दिन के बजे तक होते हैं। अन्य विकल्प गलत हैं क्योंकि 12 घंटे एक दिन का आधा है, 18 घंटे एक पूर्ण दिन से कम हैं, और 30 घंटे एक दिन से अधिक हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Hindi terms for leap year and birthday.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi terms for hours and days.",
           "flag": null
         },
         "mr": {
-          "stem": "जर कोणी व्यक्ती 2016 मध्ये 29 फेब्रुवारी रोजी जन्मली असेल, तर ती तिच्या 4 व्या वाढदिवसाचा उत्सव कोणत्या वर्षी साजरा करेल?",
+          "stem": "एका दिवसातील एकूण तासांची संख्या किती असते?",
           "choices": [
-            "2018",
-            "2020",
-            "2022",
-            "2024"
+            "12 तास",
+            "18 तास",
+            "24 तास",
+            "30 तास"
           ],
-          "solution": "2016 हे कालांतर वर्ष आहे, म्हणून व्यक्ती प्रत्येक 4 वर्षांनी तिच्या वाढदिवसाचा उत्सव साजरा करेल. 2016 मध्ये 4 वर्षे जोडल्याने 2020 मिळते, परंतु ती तिच्या 4 व्या वाढदिवसाचा उत्सव 2024 मध्ये साजरा करेल, कारण 2020 नंतरचे अगले कालांतर वर्ष 2024 आहे. 2018 आणि 2022 हे कालांतर वर्ष नाहीत, आणि 2020 हे केवळ तिसरा वाढदिवस आहे.",
+          "solution": "बरोबर उत्तर 24 तास आहे. दिवस 24 तासांमध्ये विभाजित केला जातो, रात्री अकरा वाजल्यापासून दुसऱ्या दिवशी रात्री अकरा वाजेपर्यंत. इतर विकल्प चूक आहेत कारण 12 तास दिवसाच्या अर्ध्या आहेत, 18 तास एकूण दिवसापेक्षा कमी आहेत आणि 30 तास एका दिवसापेक्षा जास्त आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for leap years ('कालांतर वर्ष') and proper structure.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for time units.",
           "flag": null
         }
       },
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Not a leap year, so the person cannot celebrate their birthday on 29 February",
-        "Not the next leap year after 2020, and only the third birthday",
-        "Not a leap year, so the person cannot celebrate their birthday on 29 February",
-        null
+        "Confuses the number of hours in a day with the number of hours in a night",
+        "Thinks a day has 18 hours based on a common mistake",
+        null,
+        "Believes a day has 30 hours due to a miscalculation"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The solution is flawed in its explanation, as it incorrectly states that 2020 is the third birthday and 2024 is the fourth. However, the correct answer is 2024, as it is the next leap year after 2020, and the person would have only celebrated their 1st, 2nd, 3rd, and then 4th birthday in 2024.",
+      "critique": "The question is straightforward and the solution is correct. The correct answer is 24 hours, and the author's reasoning for the distractors is plausible for a Class 4 student.",
       "sources": [
         {
           "document": "ncert/4/mathematics/demm112.pdf",
@@ -117,7 +117,103 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T22:40:52.127Z",
+      "generatedAt": "2026-10-28T03:58:07.960Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many minutes are there in an hour?",
+      "choices": [
+        "30 minutes",
+        "45 minutes",
+        "60 minutes",
+        "90 minutes"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 60 minutes. An hour is made up of 60 minutes. The other options are incorrect because 30 minutes is half an hour, 45 minutes is three quarters of an hour, and 90 minutes is one and a half hours.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक घंटे में कितने मिनट होते हैं?",
+          "choices": [
+            "30 मिनट",
+            "45 मिनट",
+            "60 मिनट",
+            "90 मिनट"
+          ],
+          "solution": "सही उत्तर 60 मिनट है। एक घंटा 60 मिनट से मिलकर बना होता है। अन्य विकल्प गलत हैं क्योंकि 30 मिनट एक घंटे का आधा होता है, 45 मिनट एक घंटे का तीन-चौथाई होता है और 90 मिनट एक घंटे के आधा घंटा होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका तासामध्ये किती मिनिटे असतात?",
+          "choices": [
+            "30 मिनिटे",
+            "45 मिनिटे",
+            "60 मिनिटे",
+            "90 मिनिटे"
+          ],
+          "solution": "बरोबर उत्तर 60 मिनिटे आहे. एका तासामध्ये 60 मिनिटे असतात. इतर विकल्प चुकीचे आहेत कारण 30 मिनिटे अर्धा तास आहे, 45 मिनिटे तीन चौथाई तास आहे आणि 90 मिनिटे एक आणि अर्धा तास आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for time units.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks an hour has 30 minutes",
+        "Believes an hour has 45 minutes",
+        null,
+        "Confuses an hour with 90 minutes"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. The correct answer is 60 minutes, and the reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm112.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 12: Ticking Clocks and Turning Calendar"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm112.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 12: Ticking Clocks and Turning Calendar"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm112.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 12: Ticking Clocks and Turning Calendar",
+            "8:00 PM"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T03:58:07.960Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

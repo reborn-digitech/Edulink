@@ -1,0 +1,864 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T01:02:28.623Z",
+  "finishedAt": "2026-10-26T01:14:58.265Z",
+  "seconds": 750,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry Part-I",
+    "bookCode": "kech1",
+    "document": "ncert/11/chemistry/kech106.pdf",
+    "classLevel": 11,
+    "subject": "Chemistry",
+    "chapter": "Chapter 6 — EqUilibriUm",
+    "edition": "Reprint 2026-27",
+    "chunks": 69,
+    "groups": 21
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Chemistry, marking scheme, 2026-27]\n5. A. Solubility of gas will increase until dynamic equilibrium is reached 1\nHenry’s law\n(for visually challenged learners)\nB. mole fraction of the gas in the solution",
+      "[CBSE Class XII Chemistry, marking scheme, 2025-26]\ni  0.7 2   1\n= 1.4 + 1 = 2.4\n𝑃 − 𝑃 𝐴 𝑜 𝑠\n𝑜 = 𝑖\n𝑃 𝐴 𝐴\n23.8 Ps 1\n 2.4\n23.8 56.5\n 2.4 \n23.8 1    Ps\n 56.5 \n22.9mm of Hg Ps\n23 I. 𝐸 = 𝐸 𝑜 – 2.303 𝑅𝑇 log\n𝑐𝑒𝑙𝑙 𝑐𝑒𝑙𝑙 2𝐹\n½\n½\n½\n𝑛 𝐵\n𝑛 + 𝑛 𝐵 ½\n½\n½\n[𝑁𝑖 2+ ] 1\n[ 𝐶𝑢 2+ ]\nII. 𝐸 𝑐𝑒𝑙𝑙 = 𝐸 𝑐𝑒𝑙𝑙 𝑜 – 2.303 𝑅𝑇 6𝐹 log\nIII. 𝐸 𝑐𝑒𝑙𝑙 = 𝐸 𝑐𝑒𝑙𝑙 𝑜 – 2.303 𝑅𝑇 2𝐹 log\n3+ 2\n[𝐴𝑙 ]\n[ 𝐹𝑒 2+ 3 ]\n[𝑀𝑔 2+ ]\n[ 𝐴𝑔 ] + 2 1\n24 I. Cl 2 in presence of sunlight forms free radical as an intermediate and 1\nhence toluene undergoes free radical substitution of the alky group\nto form benzyl alcohol whereas Cl 2 in dark forms Cl , an electrophile +\nas an intermediate, making toluene undergo electrophilic substi",
+      "[INChO 2019 — solutions or answer key]\n1. 1\nEquilibrium at pH = pK a1\nH O 2\nEquilibrium at pH = pK a2\nH O 2\npI = pK a 1 +pK 2 a 2\n1.2\n1.3. a. True X\nb. True X\n1.4. a. iv. 2.2, 9.0, 12.5 X\nb. 12.5",
+      "[CBSE Class XII Chemistry, sample question paper, 2026-27]\n6. Aavya carries out hydrolysis of acetyl chloride. The reaction is 1\nrepresented by the following equation:\nCH 3 COCl + H 2 O CH 3 COOH + HCl\nShe carries out the reaction with (i) equimolar amounts of acetyl chloride\nand water (ii) excess of water. The rate law obeyed in the two cases will\nbe:\nA. (i) First order (ii) Second Order\nB. (i) First order (ii) First order\nC. (i) Second order (ii) Second order\nD. (i) Second order (ii) First order"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 317071,
+      "in": 46,
+      "out": 43,
+      "rejects": 3,
+      "promptTokens": 61563,
+      "completionTokens": 12443
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 416195,
+      "in": 43,
+      "out": 37,
+      "rejects": 6,
+      "promptTokens": 24717,
+      "completionTokens": 8374
+    },
+    "solver": {
+      "calls": 223,
+      "ms": 142543,
+      "in": 37,
+      "out": 28,
+      "rejects": 9,
+      "promptTokens": 36554,
+      "completionTokens": 2017
+    },
+    "form": {
+      "calls": 13,
+      "ms": 71223,
+      "in": 28,
+      "out": 9,
+      "rejects": 19,
+      "promptTokens": 5230,
+      "completionTokens": 1230
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 6083,
+      "in": 9,
+      "out": 6,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 376949,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 15841,
+      "completionTokens": 8574
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about equilibrium?",
+      "ms": {
+        "draft": 6552,
+        "critique": 6965,
+        "solver": 2463,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the rate of evaporation and condensation when a liquid reaches equilibrium in a closed container?",
+      "ms": {
+        "draft": 6552,
+        "critique": 6611,
+        "solver": 1784,
+        "form": 5721
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of physical equilibrium?",
+      "ms": {
+        "draft": 6552,
+        "critique": 7632,
+        "solver": 2778,
+        "form": 5621
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the volume of water in a closed container is decreased while keeping the temperature constant, what will happen to the equilibrium between liquid and vapour?",
+      "ms": {
+        "draft": 6552,
+        "critique": 9872,
+        "solver": 2341,
+        "form": 6587
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the equilibrium between ice and water is considered dynamic?",
+      "ms": {
+        "draft": 6552,
+        "critique": 9108,
+        "solver": 16921,
+        "form": 4231
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main characteristic of a system at chemical equilibrium?",
+      "ms": {
+        "draft": 6552,
+        "critique": 8643,
+        "solver": 14610,
+        "form": 5094
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the pressure exerted by water molecules at a given temperature when water and water vapour are in equilibrium?",
+      "ms": {
+        "draft": 4892,
+        "critique": 7709,
+        "solver": 2211,
+        "form": 7339
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a closed vessel containing water and water vapour is heated, what happens to the boiling point of water?",
+      "ms": {
+        "draft": 4892,
+        "critique": 10152
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a closed system, when the intensity of the violet colour in a vessel containing solid iodine becomes constant, what does this indicate?",
+      "ms": {
+        "draft": 4892,
+        "critique": 9681,
+        "solver": 21549,
+        "form": 3502
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the nature of chemical equilibrium?",
+      "ms": {
+        "draft": 19411,
+        "critique": 8345,
+        "solver": 2409,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the activity described in the passage, what does the level of coloured water in the cylinders represent?",
+      "ms": {
+        "draft": 19411,
+        "critique": 9296,
+        "solver": 1764,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of solid-vapour equilibrium?",
+      "ms": {
+        "draft": 4892,
+        "critique": 8557,
+        "solver": 17898,
+        "form": 7079
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the activity, what is the purpose of using two glass tubes of different diameters?",
+      "ms": {
+        "draft": 19411,
+        "critique": 9489,
+        "solver": 2003
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If in the activity, the coloured water is transferred more quickly from cylinder 1 to cylinder 2, what will happen to the levels in the cylinders?",
+      "ms": {
+        "draft": 19411,
+        "critique": 9115,
+        "solver": 1950
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "For the reaction H₂(g) + I₂(g) ⇌ 2HI(g), what is the correct expression for the equilibrium constant, K?",
+      "ms": {
+        "draft": 6494,
+        "critique": 11053,
+        "solver": 2273,
+        "form": 6515
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the reaction H₂(g) + I₂(g) ⇌ 2HI(g), if the initial concentrations of H₂ and I₂ are 1 mol/L each and the equilibrium concentration of HI is 2 mol/L, what is the value of the equilibrium constant, K?",
+      "ms": {
+        "draft": 6494,
+        "critique": 9522
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the reaction H₂(g) + I₂(g) ⇌ 2HI(g), if the equilibrium constant K is 4, and the equilibrium concentration of HI is 2 mol/L, what is the equilibrium concentration of H₂?",
+      "ms": {
+        "draft": 6494,
+        "critique": 9629,
+        "solver": 2077
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the subscript 'c' in the equilibrium constant K indicate?",
+      "ms": {
+        "draft": 8029,
+        "critique": 8278
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is true about the equilibrium constant for a reaction involving pure solids or liquids?",
+      "ms": {
+        "draft": 10500,
+        "critique": 7436
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A 0.05M solution of propanoic acid has an ionization constant of 1.32 × 10^-5. What is the pH of this solution?",
+      "ms": {
+        "draft": 7345,
+        "critique": 6291,
+        "solver": 2026
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The ionization constant of cyanic acid (HCNO) is 3.5 × 10^-4. What is the degree of ionization of a 0.1M solution of this acid?",
+      "ms": {
+        "draft": 7345,
+        "critique": 7084,
+        "solver": 3307
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The ionization constant of benzoic acid is 6.46 × 10^-5. What is the pH of a 0.1M solution of sodium benzoate?",
+      "ms": {
+        "draft": 7345,
+        "critique": 11595
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The pH of a 0.1M solution of cyanic acid (HCNO) is 2.34. What is the ionization constant of the acid?",
+      "ms": {
+        "draft": 7345,
+        "critique": 15524
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the equilibrium constant for a reaction is 10.1 at 400°C, what can be said about the reaction at this temperature?",
+      "ms": {
+        "draft": 6344,
+        "critique": 8701,
+        "solver": 2108,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following reactions has an appreciable concentration of both reactants and products at equilibrium?",
+      "ms": {
+        "draft": 6344,
+        "critique": 10432,
+        "solver": 2316
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A reaction vessel at 400°C is charged with an equimolar mixture of CO and steam. If the equilibrium constant (K) for the reaction CO(g) + H2O(g) → CO2(g) + H2(g) is 10.1, what is the concentration of H2 at equilibrium?",
+      "ms": {
+        "draft": 6344,
+        "critique": 8198,
+        "solver": 2240
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the equilibrium constant for the reaction 2NOCl(g) → 2NO(g) + Cl2(g) is 1.8, what is the value of K for the reverse reaction?",
+      "ms": {
+        "draft": 6344,
+        "critique": 8152,
+        "solver": 2598,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "For the equilibrium reaction 2NO (g) + Cl₂ (g) ⇌ 2NOCl (g), the equilibrium constant K is given as 1.8 × 10⁻². What is the value of K for the reverse reaction?",
+      "ms": {
+        "draft": 7724,
+        "critique": 8599,
+        "solver": 1919
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The equilibrium constant for the reaction N₂ (g) + 3H₂ (g) ⇌ 2NH₃ (g) is given as 1.7 × 10⁻² at 500 K. A mixture containing 1.57 mol of N₂, 1.92 mol of H₂, and 8.13 mol of NH₃ is introduced into a 20 L vessel. In which direction will the reaction proceed to reach equilibrium?",
+      "ms": {
+        "draft": 7724,
+        "critique": 8821,
+        "solver": 2023
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the equilibrium constant expression for the reaction: aA + bB ⇌ cC + dD?",
+      "ms": {
+        "draft": 5791,
+        "critique": 9535,
+        "solver": 2071,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the solubility of barium sulphate (BaSO₄) if its solubility product constant (K) is 1.1 × 10⁻¹⁰?",
+      "ms": {
+        "draft": 9043,
+        "critique": 9144,
+        "solver": 2508,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for dynamic equilibrium in a physical process?",
+      "ms": {
+        "draft": 5791,
+        "critique": 8681,
+        "solver": 15200,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the pH of an ammonium acetate solution, given that the pK of acetic acid is 4.76 and the pK of ammonium hydroxide is 4.75?",
+      "ms": {
+        "draft": 9842,
+        "critique": 7692,
+        "solver": 1779,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the solubility of AgCN is 7.8 × 10⁻⁶ mol/L and the solubility of Ni(OH)₂ is 0.58 × 10⁻⁶ mol/L, which salt is more soluble?",
+      "ms": {
+        "draft": 9043,
+        "critique": 10283,
+        "solver": 1032,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A 0.01M solution of HCl is added to a 0.05M solution of propanoic acid. How does this affect the degree of ionization of the acid?",
+      "ms": {
+        "draft": 7345,
+        "critique": 6770,
+        "solver": 2173,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A 0.02M solution of pyridinium hydrochloride has a pH of 3.44. What is the ionization constant of pyridine?",
+      "ms": {
+        "draft": 7345,
+        "critique": 11432,
+        "solver": 2740,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the effect on the equilibrium constant (K) when the temperature is increased for an exothermic reaction?",
+      "ms": {
+        "draft": 6344,
+        "critique": 9379,
+        "solver": 2599,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the state in which the rates of forward and reverse reactions are equal, and there is no net change in composition?",
+      "ms": {
+        "draft": 6494,
+        "critique": 8496,
+        "solver": 2735,
+        "form": 5084,
+        "translation": 57414
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the significance of the equilibrium constant K in predicting the direction of a reaction?",
+      "ms": {
+        "draft": 8517,
+        "critique": 4438,
+        "solver": 5799,
+        "form": 0,
+        "translation": 57316
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements correctly explains why pure liquids and solids are ignored in the equilibrium constant expression?",
+      "ms": {
+        "draft": 7724,
+        "critique": 8220,
+        "solver": 2953,
+        "form": 0,
+        "translation": 62424
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the pressure inside a closed vessel containing a gas and its solution in a liquid is increased, what happens to the solubility of the gas in the liquid?",
+      "ms": {
+        "draft": 4892,
+        "critique": 8824,
+        "solver": 3119,
+        "form": 5168,
+        "translation": 51622
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "According to Henry’s law, what is the relationship between the concentration of a gas dissolved in a liquid and the pressure of the gas above the liquid?",
+      "ms": {
+        "draft": 4892,
+        "critique": 12376,
+        "solver": 2403,
+        "form": 5794,
+        "translation": 63199
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the chemical synthesis of ammonia by Haber’s process, what happens when the rates of the forward and reverse reactions become equal?",
+      "ms": {
+        "draft": 19411,
+        "critique": 9673,
+        "solver": 1755,
+        "form": 0,
+        "translation": 80060
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main idea conveyed in the passage about equilibrium in physical processes?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about equilibrium?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Confuses equilibrium with open systems, which do not maintai…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to the rate of evaporation and condensation when a liquid reaches equilibrium in a closed container?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not understand that both rates remain constant at equil…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of physical equilibrium?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses physical equilibrium with combustion reactions, whi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the volume of water in a closed container is decreased while keeping the temperature constant, what will happen to the equilibrium between liquid and vapour?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Does not understand the effect of volume change on equilibri…\"); distractor 2 has no reason; distractor 3 has no reason"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why the equilibrium between ice and water is considered dynamic?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misunderstands dynamic equilibrium as a change in mass over …\"); distractor 3 has no reason"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main characteristic of a system at chemical equilibrium?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 2's reason is not a one-line misconception (\"Does not understand that in equilibrium, concentrations rema…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the term used for the pressure exerted by water molecules at a given temperature when water and water vapour are in equilibrium?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Does not understand the specific term used in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a closed vessel containing water and water vapour is heated, what happens to the boiling point of water?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a closed system, when the intensity of the violet colour in a vessel containing solid iodine becomes constant, what does this indicate?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the nature of chemical equilibrium?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"None of these are valid reasons for this option as it is the…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the activity described in the passage, what does the level of coloured water in the cylinders represent?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of solid-vapour equilibrium?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the activity, what is the purpose of using two glass tubes of different diameters?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If in the activity, the coloured water is transferred more quickly from cylinder 1 to cylinder 2, what will happen to the levels in the cylinders?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "For the reaction H₂(g) + I₂(g) ⇌ 2HI(g), what is the correct expression for the equilibrium constant, K?",
+      "reason": "options 0 and 1 say the same thing (\"[HI] / [H₂][I₂]\" / \"[H₂][I₂] / [HI]\"); options 0 and 2 say the same thing (\"[HI] / [H₂][I₂]\" / \"[HI]² / [H₂][I₂]\"); options 0 and 3 say the same thing (\"[HI] / [H₂][I₂]\" / \"[H₂][I₂] / [HI]²\"); options 1 and 2 say the same thing (\"[H₂][I₂] / [HI]\" / \"[HI]² / [H₂][I₂]\"); options 1 and 3 say the same thing (\"[H₂][I₂] / [HI]\" / \"[H₂][I₂] / [HI]²\"); options 2 and 3 say the same thing (\"[HI]² / [H₂][I₂]\" / \"[H₂][I₂] / [HI]²\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the reaction H₂(g) + I₂(g) ⇌ 2HI(g), if the initial concentrations of H₂ and I₂ are 1 mol/L each and the equilibrium concentration of HI is 2 mol/L, what is the value of the equilibrium constant, K?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the reaction H₂(g) + I₂(g) ⇌ 2HI(g), if the equilibrium constant K is 4, and the equilibrium concentration of HI is 2 mol/L, what is the equilibrium concentration of H₂?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does the subscript 'c' in the equilibrium constant K indicate?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is true about the equilibrium constant for a reaction involving pure solids or liquids?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "For the equilibrium reaction 2SO₂ (g) + O₂ (g) ⇌ 2SO₃ (g), the equilibrium constant K is 8.3 × 10⁻² at 473 K. If the initial concentrations are [SO₂] = 0.5 M, [O₂] = 0.3 M, and [SO₃] = 0.2 M, what is the value of the reaction quotient Q?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the definition of a strong electrolyte?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A 0.05M solution of propanoic acid has an ionization constant of 1.32 × 10^-5. What is the pH of this solution?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The ionization constant of cyanic acid (HCNO) is 3.5 × 10^-4. What is the degree of ionization of a 0.1M solution of this acid?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The ionization constant of benzoic acid is 6.46 × 10^-5. What is the pH of a 0.1M solution of sodium benzoate?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The pH of a 0.1M solution of cyanic acid (HCNO) is 2.34. What is the ionization constant of the acid?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the equilibrium constant for a reaction is 10.1 at 400°C, what can be said about the reaction at this temperature?",
+      "reason": "options 1 and 3 say the same thing (\"The reaction is not at equilibrium\" / \"The reaction is at equilibrium\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following reactions has an appreciable concentration of both reactants and products at equilibrium?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A reaction vessel at 400°C is charged with an equimolar mixture of CO and steam. If the equilibrium constant (K) for the reaction CO(g) + H2O(g) → CO2(g) + H2(g) is 10.1, what is the concentration of H2 at equilibrium?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the equilibrium constant for the reaction 2NOCl(g) → 2NO(g) + Cl2(g) is 1.8, what is the value of K for the reverse reaction?",
+      "reason": "options are written to different precisions (1 and 2 decimals); ARITHMETIC MISMATCH — checkExpr \"1/1.8\" = 0.5555555555555556, but the key says 0.56"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "For the equilibrium reaction 2NO (g) + Cl₂ (g) ⇌ 2NOCl (g), the equilibrium constant K is given as 1.8 × 10⁻². What is the value of K for the reverse reaction?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "The equilibrium constant for the reaction N₂ (g) + 3H₂ (g) ⇌ 2NH₃ (g) is given as 1.7 × 10⁻² at 500 K. A mixture containing 1.57 mol of N₂, 1.92 mol of H₂, and 8.13 mol of NH₃ is introduced into a 20 L vessel. In which direction will the reaction proceed to reach equilibrium?",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the equilibrium constant expression for the reaction: aA + bB ⇌ cC + dD?",
+      "reason": "options 0 and 1 say the same thing (\"K = [C][D]/[A][B]\" / \"K = [C]^c [D]^d / [A]^a [B]^b\"); options 0 and 2 say the same thing (\"K = [C][D]/[A][B]\" / \"K = [A]^a [B]^b / [C]^c [D]^d\"); options 0 and 3 say the same thing (\"K = [C][D]/[A][B]\" / \"K = [A][B]/[C][D]\"); options 1 and 2 say the same thing (\"K = [C]^c [D]^d / [A]^a [B]^b\" / \"K = [A]^a [B]^b / [C]^c [D]^d\"); options 1 and 3 say the same thing (\"K = [C]^c [D]^d / [A]^a [B]^b\" / \"K = [A][B]/[C][D]\"); options 2 and 3 say the same thing (\"K = [A]^a [B]^b / [C]^c [D]^d\" / \"K = [A][B]/[C][D]\"); distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed for it, but included for fo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the solubility of barium sulphate (BaSO₄) if its solubility product constant (K) is 1.1 × 10⁻¹⁰?",
+      "reason": "checkExpr \"sqrt(1.1*10^-10)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the condition for dynamic equilibrium in a physical process?",
+      "reason": "options 0 and 1 say the same thing (\"The rate of forward reaction is greater than the rate of reverse reaction\" / \"The rate of reverse reaction is greater than the rate of forward reaction\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the pH of an ammonium acetate solution, given that the pK of acetic acid is 4.76 and the pK of ammonium hydroxide is 4.75?",
+      "reason": "options are written to different precisions (1 and 2 and 3 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the solubility of AgCN is 7.8 × 10⁻⁶ mol/L and the solubility of Ni(OH)₂ is 0.58 × 10⁻⁶ mol/L, which salt is more soluble?",
+      "reason": "option 1 repeats the stem's wording (\"Ni(OH)₂ is more soluble\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A 0.01M solution of HCl is added to a 0.05M solution of propanoic acid. How does this affect the degree of ionization of the acid?",
+      "reason": "near-duplicate of served question cmvhhlld108wagpfhlvspw65g (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A 0.02M solution of pyridinium hydrochloride has a pH of 3.44. What is the ionization constant of pyridine?",
+      "reason": "near-duplicate of served question cmvhhlld608wsgpfhjowuact5 (cosine 0.994 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the effect on the equilibrium constant (K) when the temperature is increased for an exothermic reaction?",
+      "reason": "near-duplicate of served question cmvkm7e690ktxgpfhc0kt57aq (cosine 0.962 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

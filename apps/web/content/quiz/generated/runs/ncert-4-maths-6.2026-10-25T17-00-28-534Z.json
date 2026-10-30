@@ -1,0 +1,455 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T17:00:28.534Z",
+  "finishedAt": "2026-10-25T17:07:58.477Z",
+  "seconds": 450,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm106.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — Measuring Length",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n5. B) 20 cm",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n4. (C) 6cm\nAB+CD=AD+BC\nAB+4=3+7\nAB=6cm",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n10. (c) 8cm",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n17. (a) 3.5 cm"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 123132,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 15256,
+      "completionTokens": 5301
+    },
+    "critique": {
+      "calls": 30,
+      "ms": 288931,
+      "in": 22,
+      "out": 20,
+      "rejects": 2,
+      "promptTokens": 13794,
+      "completionTokens": 5464
+    },
+    "solver": {
+      "calls": 150,
+      "ms": 124012,
+      "in": 20,
+      "out": 15,
+      "rejects": 5,
+      "promptTokens": 29786,
+      "completionTokens": 1776
+    },
+    "form": {
+      "calls": 6,
+      "ms": 33510,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 3314,
+      "completionTokens": 625
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 5301,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 454735,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 21584,
+      "completionTokens": 9576
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a student measures the length of their textbook and finds it to be 25 cm, what is the length in metres?",
+      "ms": {
+        "draft": 4012,
+        "critique": 9801,
+        "solver": 15865,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student uses a broken scale to measure an object and finds that it starts from the 5 cm mark. If the object ends at the 27 cm mark, what is the length of the object?",
+      "ms": {
+        "draft": 4012,
+        "critique": 8649,
+        "solver": 24394
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the length of the boundary of a closed figure?",
+      "ms": {
+        "draft": 6946,
+        "critique": 9810
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Ramu reads his height as 120 cm and Shamu reads his as 1 m 20 cm. Who is correct?",
+      "ms": {
+        "draft": 6946,
+        "critique": 9523,
+        "solver": 19576
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Bhola is making a boundary with bricks. He needs to cover the entire perimeter of a rectangular garden. If the length is 10 m and the breadth is 5 m, how many bricks will he need if each brick is 20 cm long?",
+      "ms": {
+        "draft": 6946,
+        "critique": 12873
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 4 m 60 cm is equal to 460 cm, then which of the following is equal to 5 m 50 cm?",
+      "ms": {
+        "draft": 6946,
+        "critique": 11827,
+        "solver": 25735
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a classroom, the length of the blackboard is more than a metre, and the breadth of the blackboard is also more than a metre. What can be said about the blackboard?",
+      "ms": {
+        "draft": 7876,
+        "critique": 9626,
+        "solver": 2740,
+        "form": 3534
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student measures the length of a textbook as 25 cm, what is the length in metres?",
+      "ms": {
+        "draft": 7876,
+        "critique": 11695,
+        "solver": 20524
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Ashwin’s scale is broken, but he needs to measure the length of his textbook. He places the textbook at the 3 cm mark and the end of the textbook is at the 28 cm mark. What is the length of the textbook?",
+      "ms": {
+        "draft": 7876,
+        "critique": 8796,
+        "solver": 2644,
+        "form": 4829
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a treasure hunt, a student follows a route that covers 20 cm on the map. If 1 cm on the map represents 10 m in real life, what is the actual length of the route?",
+      "ms": {
+        "draft": 7876,
+        "critique": 10940,
+        "solver": 18235
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a board is 2 metres long and a sticker is 20 cm long, how many stickers are needed to cover the board completely?",
+      "ms": {
+        "draft": 6946,
+        "critique": 10811,
+        "solver": 15213,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which unit is used to measure small objects like an eraser or a rice grain?",
+      "ms": {
+        "draft": 7876,
+        "critique": 11212,
+        "solver": 15651,
+        "form": 4741,
+        "translation": 31152
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total length of a board if 10 stickers of 20 cm each are used to cover it completely?",
+      "ms": {
+        "draft": 4158,
+        "critique": 9821,
+        "solver": 2280,
+        "form": 0,
+        "translation": 43030
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a unit used to measure length?",
+      "ms": {
+        "draft": 4012,
+        "critique": 8744,
+        "solver": 1854,
+        "form": 5819,
+        "translation": 37551
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a length measurement?",
+      "ms": {
+        "draft": 4012,
+        "critique": 12584,
+        "solver": 1727,
+        "form": 0,
+        "translation": 44571
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the length of 6 m in centimeters?",
+      "ms": {
+        "draft": 4158,
+        "critique": 8556,
+        "solver": 2347,
+        "form": 0,
+        "translation": 35632
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the length of 800 m in meters?",
+      "ms": {
+        "draft": 4158,
+        "critique": 10970,
+        "solver": 2646,
+        "form": 0,
+        "translation": 31922
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Ramu reads his height as 120 cm and Shamu reads it as 1 m 20 cm, who is correct?",
+      "ms": {
+        "draft": 4158,
+        "critique": 9081,
+        "solver": 1807,
+        "form": 0,
+        "translation": 42235
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A measuring tape is divided into 100 equal parts. What is the name of each part?",
+      "ms": {
+        "draft": 4012,
+        "critique": 9715,
+        "solver": 2018,
+        "form": 6853,
+        "translation": 54770
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the correct conversion of 1 m 40 cm into centimeters?",
+      "ms": {
+        "draft": 4158,
+        "critique": 9288,
+        "solver": 1571,
+        "form": 0,
+        "translation": 36102
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A measuring tape shows 0 cm at one end and 100 cm at the other end. What is the length of the tape?",
+      "ms": {
+        "draft": 4158,
+        "critique": 9837,
+        "solver": 1913,
+        "form": 0,
+        "translation": 35353
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student measures the length of a classroom and finds that it is 500 cm. Another student measures the same classroom and finds it to be 5 m. What explains this difference?",
+      "ms": {
+        "draft": 4012,
+        "critique": 8090,
+        "solver": 2460,
+        "form": 0,
+        "translation": 56028
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student measures the length of their textbook and finds it to be 25 cm, what is the length in metres?",
+      "reason": "options are written to different precisions (0 and 2 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student uses a broken scale to measure an object and finds that it starts from the 5 cm mark. If the object ends at the 27 cm mark, what is the length of the object?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the length of the boundary of a closed figure?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Ramu reads his height as 120 cm and Shamu reads his as 1 m 20 cm. Who is correct?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Bhola is making a boundary with bricks. He needs to cover the entire perimeter of a rectangular garden. If the length is 10 m and the breadth is 5 m, how many bricks will he need if each brick is 20 cm long?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 4 m 60 cm is equal to 460 cm, then which of the following is equal to 5 m 50 cm?",
+      "reason": "after redrafting distractors 1, 2, 3: option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a classroom, the length of the blackboard is more than a metre, and the breadth of the blackboard is also more than a metre. What can be said about the blackboard?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Assumes that the blackboard is a square because both length …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student measures the length of a textbook as 25 cm, what is the length in metres?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Ashwin’s scale is broken, but he needs to measure the length of his textbook. He places the textbook at the 3 cm mark and the end of the textbook is at the 28 cm mark. What is the length of the textbook?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label scale"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a treasure hunt, a student follows a route that covers 20 cm on the map. If 1 cm on the map represents 10 m in real life, what is the actual length of the route?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a board is 2 metres long and a sticker is 20 cm long, how many stickers are needed to cover the board completely?",
+      "reason": "near-duplicate of served question cmvh197uu064ogpfh9efuy7u2 (cosine 0.984 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

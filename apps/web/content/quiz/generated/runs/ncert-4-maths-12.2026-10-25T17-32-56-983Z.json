@@ -1,0 +1,316 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T17:32:56.983Z",
+  "finishedAt": "2026-10-25T17:35:19.111Z",
+  "seconds": 142,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm112.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 12 — Ticking Clocks and Turning Calendar",
+    "edition": "Reprint 2026-27",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n11. Use of calculators is not allowed.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n11. Use of calculators is not allowed.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[PRMO 2019 — question paper]\n7. On a clock, there are two instants between 12 noon and 1 PM, when the hour hand and\nthe minute hand are at right angles. The difference in minutes between these two instants is\nwritten as a + , where a, b, c are positive integers, with b < c and b/c in the reduced form. What c b\nis the value of a + b + c ?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 65667,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8874,
+      "completionTokens": 3344
+    },
+    "critique": {
+      "calls": 15,
+      "ms": 114259,
+      "in": 12,
+      "out": 4,
+      "rejects": 8,
+      "promptTokens": 7797,
+      "completionTokens": 2777
+    },
+    "solver": {
+      "calls": 43,
+      "ms": 29222,
+      "in": 4,
+      "out": 2,
+      "rejects": 2,
+      "promptTokens": 10754,
+      "completionTokens": 599
+    },
+    "form": {
+      "calls": 1,
+      "ms": 1338,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 296,
+      "completionTokens": 79
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 5101,
+      "in": 2,
+      "out": 1,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 19553,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2316,
+      "completionTokens": 1163
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If July 1 is a Monday, what will be the date of the next Monday?",
+      "ms": {
+        "draft": 6386,
+        "critique": 8133
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many days are there in a leap year?",
+      "ms": {
+        "draft": 6386,
+        "critique": 8441
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many hours are there in a day according to the passage?",
+      "ms": {
+        "draft": 6386,
+        "critique": 9195
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the format of the date 04/07/2024?",
+      "ms": {
+        "draft": 6386,
+        "critique": 11266,
+        "solver": 16146
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a doctor spends 8 hours sleeping, 2 hours eating, 1 hour cooking, 8 hours working, and 5 hours resting, how many hours are left in a day?",
+      "ms": {
+        "draft": 6386,
+        "critique": 9817,
+        "solver": 1225
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many days are there in February 2024?",
+      "ms": {
+        "draft": 4559,
+        "critique": 5313
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If Raghav leaves home at 8:20 AM and returns at 8:35 AM, how much time has he taken?",
+      "ms": {
+        "draft": 4559,
+        "critique": 6504
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If today is Monday, what day will it be 10 days from today?",
+      "ms": {
+        "draft": 4559,
+        "critique": 8783
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If today is 4th of July 2024 and it is a Monday, what day will 15th of July 2024 fall on?",
+      "ms": {
+        "draft": 4559,
+        "critique": 8700
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a leap year has 366 days, how many days are there in 5 leap years?",
+      "ms": {
+        "draft": 4559,
+        "critique": 5056
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If July 1 is a Monday, what day will July 8 be?",
+      "ms": {
+        "draft": 4559,
+        "critique": 7440,
+        "solver": 12617,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Raghav leaves home at 8:20 AM and returns back at 8:35 AM, how much time has he taken?",
+      "ms": {
+        "draft": 6386,
+        "critique": 8860,
+        "solver": 13110,
+        "form": 1338,
+        "translation": 15356
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If July 1 is a Monday, what will be the date of the next Monday?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "How many days are there in a leap year?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many hours are there in a day according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the format of the date 04/07/2024?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a doctor spends 8 hours sleeping, 2 hours eating, 1 hour cooking, 8 hours working, and 5 hours resting, how many hours are left in a day?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How many days are there in February 2024?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If Raghav leaves home at 8:20 AM and returns at 8:35 AM, how much time has he taken?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If today is Monday, what day will it be 10 days from today?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If today is 4th of July 2024 and it is a Monday, what day will 15th of July 2024 fall on?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a leap year has 366 days, how many days are there in 5 leap years?",
+      "reason": "the critic finds option 1 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If July 1 is a Monday, what day will July 8 be?",
+      "reason": "near-duplicate of served question cmvh24m3k06bcgpfhgbuoeu2y (cosine 0.972 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

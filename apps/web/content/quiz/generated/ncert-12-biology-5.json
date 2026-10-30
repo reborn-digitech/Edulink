@@ -21,157 +21,49 @@
   "board": "NCERT",
   "book": "Biology",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T15:56:10.538Z",
+  "generatedAt": "2026-10-29T03:21:32.504Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which type of DNA replication was proposed by Watson and Crick?",
+      "stem": "What is the function of RNA polymerase III in eukaryotic transcription?",
       "choices": [
-        "Conservative replication",
-        "Semi-conservative replication",
-        "Dispersive replication",
-        "Full replication"
-      ],
-      "answerIndex": 1,
-      "solution": "Watson and Crick proposed that DNA replication is semi-conservative, meaning each new DNA molecule contains one original strand and one newly synthesized strand. Conservative replication would keep the original DNA strands together, which contradicts the structure they proposed. Dispersive replication suggests the DNA is fragmented and reassembled, which is not supported by their model. Full replication is not a recognized type of DNA replication in this context.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "डीएनए प्रतिकृति के किस प्रकार का प्रस्ताव वॉटसन एवं क्रिक द्वारा किया गया था?",
-          "choices": [
-            "संरक्षी प्रतिकृति",
-            "अर्धसंरक्षी प्रतिकृति",
-            "विसरित प्रतिकृति",
-            "पूर्ण प्रतिकृति"
-          ],
-          "solution": "वॉटसन एवं क्रिक ने डीएनए प्रतिकृति के अर्धसंरक्षी प्रकार का प्रस्ताव दिया था, जिसका अर्थ है कि प्रत्येक नए डीएनए अणु में एक मूल श्रृंखला एवं एक नए रूप से संश्लेषित श्रृंखला होती है। संरक्षी प्रतिकृति मूल डीएनए श्रृंखलाओं को एक साथ रखेगी, जो उनके द्वारा प्रस्तावित संरचना के विरोधी होगा। विसरित प्रतिकृति के अनुसार डीएनए अणु टुकड़ों में विभाजित हो जाएगा एवं पुनः संयोजित हो जाएगा, जो उनके मॉडल द्वारा समर्थित नहीं है। पूर्ण प्रतिकृति इस संदर्भ में डीएनए प्रतिकृति के किसी भी मान्य प्रकार के रूप में अपरिचित है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a way that aligns with standard Hindi-medium biology textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "वॉटसन आणि क्रिक द्वारे कोणत्या प्रकारच्या डीएनए प्रतिकृतीचा अभ्यास केला गेला?",
-          "choices": [
-            "संरक्षक प्रतिकृती",
-            "अर्धसंरक्षक प्रतिकृती",
-            "विसर्जित प्रतिकृती",
-            "पूर्ण प्रतिकृती"
-          ],
-          "solution": "वॉटसन आणि क्रिक द्वारे डीएनए प्रतिकृती अर्धसंरक्षक असल्याचा अभ्यास केला गेला, ज्यामध्ये प्रत्येक नवीन डीएनए अणूमध्ये एक मूळ स्ट्रॅंड आणि एक नवीन तयार झालेला स्ट्रॅंड असतो. संरक्षक प्रतिकृतीमध्ये मूळ डीएनए स्ट्रॅंड एकत्र राहतात, जे त्यांनी घोषित केलेल्या संरचनेशी विरोधात आहे. विसर्जित प्रतिकृतीमध्ये डीएनए तुकड्यांमध्ये विभक्त आहे आणि पुन्हा एकत्र केला जातो, जे त्यांच्या मॉडेलने समर्थित नाही. पूर्ण प्रतिकृती हा या संदर्भात ओळखली जाणारी प्रतिकृतीची प्रकार नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English content, with appropriate terminology used in a Marathi science context.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the type of replication with another",
-        null,
-        "Does not understand the term 'semiconservative'",
-        "Misinterprets the process of replication as dispersal of DNA strands"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions about DNA replication mechanisms.",
-      "sources": [
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 10,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.4"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 11,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.4"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 12,
-          "pageStart": 12,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.4"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 13,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.4"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:56:10.538Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What was the result of the DNA extracted from the culture one generation after the transfer from N to N medium?",
-      "choices": [
-        "It had light density DNA only",
-        "It had heavy density DNA only",
-        "It had hybrid or intermediate density DNA",
-        "It had a mix of heavy and light DNA"
+        "Transcribes hnRNA",
+        "Transcribes mRNA",
+        "Transcribes tRNA, 5S rRNA, and snRNAs",
+        "3: Transcribes 28S, 18S, and 5.8S rRNA"
       ],
       "answerIndex": 2,
-      "solution": "The DNA extracted one generation after the transfer had a hybrid or intermediate density because it contained both original and newly synthesized strands. Light density DNA only would imply no new DNA was made, which is incorrect. Heavy density DNA only would suggest no dilution of the original DNA, which also doesn't match the results. A mix of heavy and light DNA would not occur because the replication process forms hybrids.",
+      "solution": "RNA polymerase III transcribes tRNA, 5S rRNA, and snRNAs, which are small RNA molecules involved in various cellular processes. Other RNA polymerases have distinct roles, such as RNA polymerase II transcribing mRNA and hnRNA, while RNA polymerase I transcribes large rRNAs like 28S, 18S, and 5.8S. The correct option reflects the specific function of RNA polymerase III in eukaryotic transcription.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "N से N माध्यम में स्थानांतरण के एक पीढ़ी बाद निकाले गए DNA का परिणाम क्या रहा?",
+          "stem": "RNA पॉलीमरेज III का कार्य यूकैरियोटिक अनुलेखन में क्या होता है?",
           "choices": [
-            "इसमें केवल हल्का घनत्व DNA था",
-            "इसमें केवल भारी घनत्व DNA था",
-            "इसमें हाइब्रिड या मध्यम घनत्व DNA था",
-            "इसमें भारी और हल्का DNA का मिश्रण था"
+            "hnRNA का अनुलेखन करता है",
+            "mRNA का अनुलेखन करता है",
+            "tRNA, 5S rRNA और snRNAs का अनुलेखन करता है",
+            "28S, 18S और 5.8S rRNA का अनुलेखन करता है"
           ],
-          "solution": "N से N माध्यम में स्थानांतरण के एक पीढ़ी बाद निकाले गए DNA में हाइब्रिड या मध्यम घनत्व था क्योंकि इसमें मूल और नए रूप से संश्लेषित स्ट्रैंड दोनों शामिल थे। केवल हल्का घनत्व DNA इसका अर्थ होता है कि कोई नया DNA नहीं बना, जो गलत है। केवल भारी घनत्व DNA इसका अर्थ होता है कि मूल DNA का कोई तनाव नहीं हुआ, जो परिणामों के अनुरूप नहीं है। भारी और हल्का DNA का मिश्रण तब नहीं होता क्योंकि प्रतिकृति प्रक्रिया हाइब्रिड बनाती है।",
+          "solution": "RNA पॉलीमरेज III tRNA, 5S rRNA और snRNAs का अनुलेखन करता है, जो विभिन्न सेलुलर प्रक्रियाओं में शामिल छोटे आरएनए अणु हैं। अन्य RNA पॉलीमरेज की अलग-अलग भूमिकाएं होती हैं, जैसे RNA पॉलीमरेज II mRNA और hnRNA का अनुलेखन करता है, जबकि RNA पॉलीमरेज I बड़े rRNA जैसे 28S, 18S और 5.8S का अनुलेखन करता है। सही विकल्प यूकैरियोटिक अनुलेखन में RNA पॉलीमरेज III के विशिष्ट कार्य को प्रतिबिंबित करता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "N माध्यमातून N माध्यमात बदलल्यानंतर एका पिढीनंतर बाजूला घेतलेल्या DNA चा निकाल काय होता?",
+          "stem": "RNA पॉलिमरेज III चे कार्य असे काय आहे जेव्हा एकूटिक रूपात रीतीने रीती लिहिली जाते?",
           "choices": [
-            "त्यात केवळ हलके घनत्वाचे DNA होते",
-            "त्यात केवळ भारी घनत्वाचे DNA होते",
-            "त्यात हायब्रिड किंवा मध्यम घनत्वाचे DNA होते",
-            "त्यात भारी आणि हलके DNA चा मिश्रण होते"
+            "hnRNA चे लेखन करते",
+            "mRNA चे लेखन करते",
+            "tRNA, 5S rRNA आणि snRNAs चे लेखन करते",
+            "28S, 18S आणि 5.8S rRNA चे लेखन करते"
           ],
-          "solution": "बदलल्यानंतर एका पिढीनंतर बाजूला घेतलेल्या DNA चा निकाल हायब्रिड किंवा मध्यम घनत्वाचा होता, कारण त्यात मूळ आणि नवीन संश्लेषित स्ट्रॅंड दोन्ही होते. केवळ हलके घनत्वाचे DNA होते असे म्हणणे नवीन DNA बनला नसल्याचा अर्थ आहे, जे चूक आहे. केवळ भारी घनत्वाचे DNA होते असे म्हणणे मूळ DNA च्या विरलीकरणाचा अर्थ आहे, जे निकालाशी मेळ बसत नाही. भारी आणि हलके DNA चा मिश्रण होणार नाही कारण प्रतिकृती प्रक्रिया हायब्रिड तयार करते.",
+          "solution": "RNA पॉलिमरेज III हा tRNA, 5S rRNA आणि snRNAs चे लेखन करतो, जे विविध सेलुलर प्रक्रियांमध्ये सहभागी होणारे छोटे RNA अणू आहेत. इतर RNA पॉलिमरेजच्या वेगवेगळ्या भूमिका आहेत, उदाहरणार्थ RNA पॉलिमरेज II हा mRNA आणि hnRNA चे लेखन करतो, तर RNA पॉलिमरेज I हा 28S, 18S आणि 5.8S चे लेखन करतो. योग्य विकल्प हा एकूटिक रूपात रीतीने रीती लिहिली जाते मध्ये RNA पॉलिमरेज III च्या विशिष्ट कार्याचे प्रतिबिंबित करतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and technical terminology. The correct answer (option 2) is in the same position, and the distractors remain incorrect. Technical terms like 'RNA पॉलिमरेज III' and 'tRNA' are correctly used as per Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -180,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks the DNA was completely light",
-        "Thinks the DNA was completely heavy",
+        "Confuses RNA polymerase III with RNA polymerase II, which transcribes hnRNA and mRNA.",
+        "Confuses RNA polymerase III with RNA polymerase II, which transcribes mRNA.",
         null,
-        "Does not understand the concept of hybrid DNA"
+        "Confuses RNA polymerase III with RNA polymerase I, which transcribes rRNAs like 28S, 18S, and 5.8S"
       ],
       "solverAnswers": [
         2,
@@ -193,91 +85,81 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The question refers to the classic Meselson-Stahl experiment, where DNA was labeled with heavy nitrogen (15N) and then transferred to light nitrogen (14N) medium. After one generation, the DNA was found to be hybrid (15N-14N), not purely light or heavy. The reasoning in the author's solution is accurate and matches the expected understanding of semi-conservative replication.",
+      "critique": "The solution is correct and aligns with the known functions of eukaryotic RNA polymerases. RNA polymerase III transcribes tRNA, 5S rRNA, and snRNAs, which matches the correct answer. The other options are correctly attributed to other polymerases.",
       "sources": [
         {
           "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 10,
-          "pageStart": 10,
-          "pageEnd": 11,
+          "ordinal": 17,
+          "pageStart": 16,
+          "pageEnd": 17,
           "headingPath": [
             "Chapter 5: Molecular Basis of Inheritance",
-            "5.4"
+            "5.5"
           ]
         },
         {
           "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 11,
-          "pageStart": 11,
-          "pageEnd": 12,
+          "ordinal": 18,
+          "pageStart": 17,
+          "pageEnd": 18,
           "headingPath": [
             "Chapter 5: Molecular Basis of Inheritance",
-            "5.4"
+            "5.6"
           ]
         },
         {
           "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 12,
-          "pageStart": 12,
-          "pageEnd": 12,
+          "ordinal": 19,
+          "pageStart": 18,
+          "pageEnd": 19,
           "headingPath": [
             "Chapter 5: Molecular Basis of Inheritance",
-            "5.4"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 13,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.4"
+            "5.6"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:56:10.538Z",
+      "generatedAt": "2026-10-29T03:21:32.504Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 1,
-      "stem": "What is the role of DNA-dependent DNA polymerase in DNA replication?",
+      "stem": "What is the term used for a cluster of genes regulated by a common promoter and regulatory genes in bacteria?",
       "choices": [
-        "To break the DNA strands",
-        "To add new nucleotides to a growing DNA strand",
-        "To separate the DNA strands",
-        "To provide energy for the replication process"
+        "Operon",
+        "Chromosome",
+        "Plasmid",
+        "Genome"
       ],
-      "answerIndex": 1,
-      "solution": "DNA-dependent DNA polymerase adds new nucleotides to a growing DNA strand by using an existing DNA strand as a template. This process ensures accurate replication of the genetic material. Helicase is responsible for breaking and separating the DNA strands, while deoxyribonucleoside triphosphates provide the energy needed for the reaction.",
+      "answerIndex": 0,
+      "solution": "An operon is the term for a cluster of genes regulated by a common promoter and regulatory elements in bacteria. A chromosome is a larger DNA structure that contains many genes but not specifically grouped in this way. A plasmid is a small, circular DNA molecule that is separate from the main chromosome. A genome refers to all the genetic material in an organism, not a specific gene cluster.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "DNA-निर्भर DNA पॉलीमरेज की DNA प्रतिकृति में क्या भूमिका होती है?",
+          "stem": "बैक्टीरिया में एक सामान्य प्रोमोटर और नियामक जीन द्वारा नियंत्रित जीन के समूह के लिए शब्द क्या है?",
           "choices": [
-            "DNA अणु के रूप में टूटना",
-            "एक बढ़ते DNA अणु में नए न्यूक्लियोटाइड जोड़ना",
-            "DNA अणु के रूप में अलग करना",
-            "प्रतिकृति प्रक्रिया के लिए ऊर्जा प्रदान करना"
+            "ओपेरॉन",
+            "क्रोमोसोम",
+            "प्लाज्मिड",
+            "जीनोम"
           ],
-          "solution": "DNA-निर्भर DNA पॉलीमरेज एक मौजूदा DNA अणु के रूप में पैटर्न का उपयोग करके एक बढ़ते DNA अणु में नए न्यूक्लियोटाइड जोड़ता है। यह प्रक्रिया आनुवंशिक सामग्री की सटीक प्रतिकृति सुनिश्चित करती है। हेलिकेज DNA अणु के टूटने और अलग होने के लिए जिम्मेदार होता है, जबकि डीऑक्सीराइबोन्यूक्लियोसाइड ट्राइफॉस्फेट अभिक्रिया के लिए आवश्यक ऊर्जा प्रदान करते हैं।",
+          "solution": "ओपेरॉन बैक्टीरिया में एक सामान्य प्रोमोटर और नियामक तत्वों द्वारा नियंत्रित जीन के समूह के लिए शब्द है। क्रोमोसोम एक बड़ी डीएनए संरचना है जिसमें कई जीन होते हैं लेकिन इस तरह से विशिष्ट रूप से समूहित नहीं होते। प्लाज्मिड एक छोटा, गोलाकार डीएनए अणु है जो मुख्य क्रोमोसोम से अलग होता है। जीनोम एक जीव में सभी आनुवंशिक सामग्री को संदर्भित करता है, एक विशिष्ट जीन समूह नहीं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi biological terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "DNA-मागदर्शक DNA पॉलिमरेजची DNA प्रतिकृतीत काय भूमिका आहे?",
+          "stem": "बॅक्टेरियामध्ये सामान्य प्रोमोटर आणि नियंत्रक जीन्स द्वारे नियंत्रित जीन्सच्या समूहासाठी वापरलेले शब्द काय आहे?",
           "choices": [
-            "DNA दोन तारा तोडणे",
-            "वाढत्या DNA तारेवर नवीन न्यूक्लिओटाइड जोडणे",
-            "DNA तारा विभक्त करणे",
-            "प्रतिकृती प्रक्रियेसाठी ऊर्जा पुरविणे"
+            "ओपेरॉन",
+            "क्रोमोझोम",
+            "प्लाझ्मिड",
+            "जीनोम"
           ],
-          "solution": "DNA-मागदर्शक DNA पॉलिमरेज अस्तित्वात असलेल्या DNA तारेच्या अनुक्रमावर आधारित वाढत्या DNA तारेवर नवीन न्यूक्लिओटाइड जोडते. ही प्रक्रिया आनुवंशिक विषयाच्या अचूक प्रतिकृतीची खात्री देते. हेलिकेस डीएनए तारा तोडण्यासाठी आणि विभक्त करण्यासाठी जबाबदार आहे, तर डेऑक्सीराइबोन्यूक्लिओसाइड ट्रायफॉस्फेट अभिक्रियेसाठी आवश्यक ऊर्जा पुरवतात.",
+          "solution": "ओपेरॉन हा बॅक्टेरियामध्ये सामान्य प्रोमोटर आणि नियंत्रक घटकांद्वारे नियंत्रित जीन्सच्या समूहासाठी वापरलेला शब्द आहे. क्रोमोझोम हा जीन्सचा एक मोठा डीएनए संरचना आहे, ज्यामध्ये अनेक जीन्स असतात परंतु विशिष्ट प्रकारे समूहीत नसतात. प्लाझ्मिड हा मुख्य क्रोमोझोमपासून विलग असलेला छोटा, वर्तुळाकार डीएनए अणू आहे. जीनोम हा एका सजीवामधील सर्व आनुवंशिक लक्षणांचा संग्रह आहे, विशिष्ट जीन्सच्या समूहाचे नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
           "flag": null
@@ -288,10 +170,226 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the role of helicase with that of DNA polymerase",
         null,
-        "Does not understand the function of DNA polymerase",
-        "Misunderstands the energy source for replication"
+        "Confuses operon with a general term for genetic material",
+        "Refers to a separate DNA structure in bacteria",
+        "Refers to the entire genetic material of an organism"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the correct answer is clearly supported. The distractors represent common misconceptions about bacterial genetics.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 23,
+          "pageStart": 22,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.8"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 24,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.8"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 25,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.9"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 26,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.9"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T03:21:32.504Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which gene in the lac operon codes for the enzyme that breaks down lactose into glucose and galactose?",
+      "choices": [
+        "z gene",
+        "y gene",
+        "a gene",
+        "i gene"
+      ],
+      "answerIndex": 0,
+      "solution": "The z gene codes for the enzyme beta-galactosidase, which breaks down lactose into glucose and galactose. The y gene produces permease, which increases membrane permeability to lactose, the a gene produces transacetylase, which modifies galactose, and the i gene produces a repressor protein that inhibits transcription. Only the z gene directly codes for the enzyme that breaks down lactose.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "लैक ऑपेरॉन में कौन सा जीन एंजाइम को कोड करता है जो लैक्टोज को ग्लूकोज और गैलेक्टोज में तोड़ देता है?",
+          "choices": [
+            "z जीन",
+            "y जीन",
+            "a जीन",
+            "i जीन"
+          ],
+          "solution": "z जीन एंजाइम बीटा-गैलेक्टोसिडेज को कोड करता है, जो लैक्टोज को ग्लूकोज और गैलेक्टोज में तोड़ देता है। y जीन पेर्मिएज उत्पादित करता है, जो लैक्टोज के लिए झिल्ली की पारगम्यता बढ़ा देता है, a जीन ट्रांसएसिलेज उत्पादित करता है, जो गैलेक्टोज को संशोधित करता है, और i जीन एक रोकने वाला प्रोटीन उत्पादित करता है जो अनुलेखन को रोकता है। केवल z जीन लैक्टोज को तोड़ने वाले एंजाइम को सीधे कोड करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are correctly used in Hindi, and the question structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लॅक ऑपेरॉनमधील कोणता जीन लॅक्टोजला ग्लुकोज आणि गॅलॅक्टोजमध्ये विघटित करणारा एन्झाइम बनवतो?",
+          "choices": [
+            "z जीन",
+            "y जीन",
+            "a जीन",
+            "i जीन"
+          ],
+          "solution": "z जीन बीटा-गॅलॅक्टोसिडेज एन्झाइम बनवते, जो लॅक्टोजला ग्लुकोज आणि गॅलॅक्टोजमध्ये विघटित करतो. y जीन पर्मिअझ बनवते, जो लॅक्टोजला अंतर्गत झिल्लीच्या पारदर्शकतेला वाढवते, a जीन ट्रान्सएसिलेज बनवते, जो गॅलॅक्टोजला बदलते आणि i जीन रिप्रेसर प्रोटीन बनवते, जो ट्रान्सक्रिप्शनला अवरोधित करते. केवळ z जीन लॅक्टोजला विघटित करणारा एन्झाइम बनवते.",
+          "imageAlt": null,
+          "critique": "The translation accurately reflects the original English content with appropriate Marathi terminology for genetic concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the function of the z gene with the y gene",
+        "Confuses the function of the y gene with the z gene",
+        "Confuses the function of the a gene with the z gene"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and tests recall of the lac operon's gene functions. The correct answer is z gene, and the distractors reflect common misconceptions about the roles of the other genes.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 23,
+          "pageStart": 22,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.8"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 24,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.8"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 25,
+          "pageStart": 24,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.9"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 26,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.9"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T03:21:32.504Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the role of DNA-dependent DNA polymerase in DNA replication?",
+      "choices": [
+        "To unwind the DNA double helix",
+        "To add nucleotides to the growing DNA strand",
+        "To cut the DNA at specific sites",
+        "To synthesize RNA primers for DNA replication"
+      ],
+      "answerIndex": 1,
+      "solution": "DNA-dependent DNA polymerase adds nucleotides to the growing DNA strand by using the existing DNA strand as a template. This process ensures the accurate replication of the genetic material. The other options describe functions of different enzymes, such as helicase for unwinding DNA, restriction enzymes for cutting DNA, and primase for synthesizing RNA primers.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "DNA-निर्भर DNA पॉलीमरेज की DNA प्रतिकृति में क्या भूमिका होती है?",
+          "choices": [
+            "DNA डबल हेलिक्स को खोलना",
+            "बढ़ते DNA रज्जु में न्यूक्लियोटाइड जोड़ना",
+            "विशिष्ट स्थानों पर DNA काटना",
+            "DNA प्रतिकृति के लिए RNA प्राइमर संश्लेषित करना"
+          ],
+          "solution": "DNA-निर्भर DNA पॉलीमरेज विद्यमान DNA रज्जु के रूप में मापदंड के रूप में उपयोग करके बढ़ते DNA रज्जु में न्यूक्लियोटाइड जोड़ता है। यह प्रक्रिया आनुवंशिक सामग्री की सटीक प्रतिकृति सुनिश्चित करती है। अन्य विकल्प विभिन्न एंजाइमों के कार्यों का वर्णन करते हैं, जैसे हेलिकेज DNA को खोलता है, सीमांकन एंजाइम DNA काटते हैं, और प्राइमेज DNA के लिए RNA प्राइमर संश्लेषित करता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "DNA-मागदर डीएनए पॉलिमेरेजचे डीएनए प्रतिकृतीमध्ये कार्य काय आहे?",
+          "choices": [
+            "डीएनए डबल हेलिक्स विस्तारित करणे",
+            "विस्तारण डीएनए स्ट्रँडवर न्यूक्लिओटाइड जोडणे",
+            "विशिष्ट ठिकाणी डीएनए कापणे",
+            "डीएनए प्रतिकृतीसाठी आरएनए प्राइमर्स संश्लेषित करणे"
+          ],
+          "solution": "डीएनए-मागदर डीएनए पॉलिमेरेज अस्तित्वात असलेल्या डीएनए स्ट्रँड च्या अनुलेखावर आधारित विस्तारण डीएनए स्ट्रँड वर न्यूक्लिओटाइड जोडते. हा प्रक्रिया आनुवंशिक सामग्रीच्या योग्य प्रतिकृती खात्री करते. इतर विकल्पांमध्ये वेगळ्या एन्झाइम्सचे कार्य वर्णन केले गेले आहे, जसे की हेलिकेस डीएनए विस्तारित करण्यासाठी, रिस्ट्रिक्शन एन्झाइम्स डीएनए कापण्यासाठी आणि प्राइमेस आरएनए प्राइमर्स संश्लेषित करण्यासाठी.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of helicase with DNA polymerase",
+        null,
+        "Misunderstands the function of restriction enzymes",
+        "Confuses DNA polymerase with primase, which is responsible for RNA primer synthesis"
       ],
       "solverAnswers": [
         1,
@@ -301,7 +399,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies the role of DNA-dependent DNA polymerase as adding new nucleotides. The explanation for the distractors is accurate and reflects common misconceptions.",
+      "critique": "The correct answer is 1, as DNA-dependent DNA polymerase adds nucleotides to the growing DNA strand during replication. The other options correctly describe the functions of helicase, restriction enzymes, and primase, respectively, and the author's reasoning for the distractors is accurate.",
       "sources": [
         {
           "document": "ncert/12/biology/lebo105.pdf",
@@ -345,49 +443,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:56:10.538Z",
+      "generatedAt": "2026-10-29T03:21:32.504Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "Why is DNA considered more stable than RNA as a genetic material?",
+      "difficulty": 3,
+      "stem": "What is the primary purpose of using a VNTR probe in DNA fingerprinting?",
       "choices": [
-        "DNA has a 2-OH group at each nucleotide",
-        "RNA is double-stranded, whereas DNA is single-stranded",
-        "DNA has thymine, whereas RNA has uracil",
-        "DNA is not reactive and is less prone to degradation"
+        "To isolate DNA from a sample",
+        "To cut DNA into fragments",
+        "To identify variations in DNA sequences",
+        "To detect specific DNA fragments"
       ],
-      "answerIndex": 3,
-      "solution": "DNA is considered more stable than RNA because it is less reactive and less prone to degradation. The 2-OH group in RNA makes it labile and easily degradable, while DNA lacks this group. DNA is not single-stranded, and RNA does not have thymine; it has uracil. The presence of thymine in DNA also adds stability, but the main reason is the lack of the reactive 2-OH group in DNA.",
+      "answerIndex": 2,
+      "solution": "The VNTR probe is used to identify variations in DNA sequences by hybridizing with the DNA fragments that contain tandem repeats. This allows the detection of unique banding patterns. The other options are incorrect because isolating DNA, cutting DNA into fragments, and detecting specific DNA fragments are steps in the overall process, but the main purpose of the probe is to identify sequence variations.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "DNA को आनुवंशिक पदार्थ के रूप में RNA की तुलना में अधिक स्थायी क्यों माना जाता है?",
+          "stem": "DNA फिंगरप्रिंटिंग में VNTR प्रोब का प्राथमिक उद्देश्य क्या है?",
           "choices": [
-            "DNA में प्रत्येक न्यूक्लियोटाइड में 2-OH समूह होता है",
-            "RNA द्विस्ट्रैंडेड होता है, जबकि DNA एकल-स्ट्रैंडेड होता है",
-            "DNA में थायमिन होता है, जबकि RNA में यूरेसिल होता है",
-            "DNA अभिक्रियाशील नहीं होता है और अपघटन के लिए कम प्रवण होता है"
+            "एक नमूने से DNA को अलग करना",
+            "DNA को अंशों में काटना",
+            "DNA अनुक्रमों में भिन्नता की पहचान करना",
+            "विशिष्ट DNA अंशों की पहचान करना"
           ],
-          "solution": "DNA को RNA की तुलना में अधिक स्थायी माना जाता है क्योंकि यह कम अभिक्रियाशील होता है और अपघटन के लिए कम प्रवण होता है। RNA में 2-OH समूह होने के कारण यह अस्थायी और आसानी से अपघटित हो जाता है, जबकि DNA में इस समूह की कमी होती है। DNA एकल-स्ट्रैंडेड नहीं होता है, और RNA में थायमिन नहीं होता है, बल्कि यूरेसिल होता है। DNA में थायमिन की उपस्थिति भी स्थायित्व जोड़ती है, लेकिन मुख्य कारण DNA में अभिक्रियाशील 2-OH समूह की कमी है।",
+          "solution": "VNTR प्रोब का उपयोग DNA अनुक्रमों में भिन्नता की पहचान करने के लिए किया जाता है, जो टैंडम दोहराव वाले DNA अंशों के साथ हाइब्रिडाइजेशन के माध्यम से किया जाता है। इससे अद्वितीय बैंडिंग पैटर्न की पहचान होती है। अन्य विकल्प गलत हैं क्योंकि DNA को अलग करना, DNA को अंशों में काटना और विशिष्ट DNA अंशों की पहचान करना समग्र प्रक्रिया के चरण हैं, लेकिन प्रोब का मुख्य उद्देश्य अनुक्रम भिन्नता की पहचान करना है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology as taught in Hindi-medium textbooks.",
+          "critique": "Translation accurately reflects the original meaning with appropriate scientific terminology used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "DNA लहान जीनेटिक पदार्थ म्हणून रीतसर निश्चित केला जातो कारण काय?",
+          "stem": "DNA फिंगरप्रिंटिंगमध्ये VNTR प्रोबचा मुख्य उद्देश काय आहे?",
           "choices": [
-            "DNA मध्ये प्रत्येक न्यूक्लिओटाइडमध्ये 2-OH गट असतो",
-            "RNA दुहेरी रांगेत असतो, तर DNA एक रांगेत असतो",
-            "DNA मध्ये थायमिन असतो, तर RNA मध्ये यूरेसिल असतो",
-            "DNA अप्रतिक्रियाशील असतो आणि विघटनापासून कमी प्रतिकूल असतो"
+            "नमुना वरून DNA विलग करणे",
+            "DNA अपिरत खंडांमध्ये कापणे",
+            "DNA अनुक्रमांमधील फरक ओळखणे",
+            "खास DNA खंडांचे निरीक्षण करणे"
           ],
-          "solution": "DNA लहान जीनेटिक पदार्थ म्हणून रीतसर निश्चित केला जातो कारण तो कमी प्रतिक्रियाशील आणि कमी विघटनापासून प्रतिकूल असतो. RNA मध्ये 2-OH गट असल्यामुळे तो अस्थिर आणि सहज विघटित होतो, तर DNA मध्ये या गटाची अनुपस्थिती असते. DNA एक रांगेत नसतो, आणि RNA मध्ये थायमिन नसतो; त्यामध्ये यूरेसिल असतो. DNA मध्ये थायमिन असल्यामुळे स्थिरता वाढते, परंतु मुख्य कारण हे आहे की DNA मध्ये प्रतिक्रियाशील 2-OH गट नसतो.",
+          "solution": "VNTR प्रोबचा उपयोग DNA अनुक्रमांमधील फरक ओळखण्यासाठी केला जातो कारण तो DNA खंडांशी हायब्रिडाइज करतो ज्यामध्ये टॅंडम रिपीट असतात. हे अद्वितीय बँडिंग पॅटर्न ओळखण्यास मदत करते. इतर विकल्प अयोग्य आहेत कारण DNA विलग करणे, DNA खंडांमध्ये कापणे आणि खास DNA खंडांचे निरीक्षण करणे हे समग्र प्रक्रियेचे टप्पे आहेत, परंतु प्रोबचा मुख्य उद्देश अनुक्रमांमधील फरक ओळखणे आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with textbook usage.",
           "flag": null
         }
       },
@@ -396,9 +494,227 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "incorrectly states a feature of RNA",
-        "misrepresents the structure of DNA and RNA",
-        "partially correct but not the main reason for DNA's stability",
+        "Confuses the step of DNA isolation with the role of the VNTR probe",
+        "Confuses the role of restriction enzymes with that of the VNTR probe",
+        null,
+        "Misunderstands the function of the VNTR probe, which is to identify sequence variations, not just detect DNA fragments"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as the VNTR probe's primary role is to identify variations in DNA sequences through hybridization. The other options represent common misconceptions about the roles of DNA isolation, restriction enzymes, and general DNA detection.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 30,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.10 DNA F"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 31,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.10 DNA F"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 32,
+          "pageStart": 30,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.10 DNA F",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 33,
+          "pageStart": 30,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.10 DNA F",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T03:21:32.504Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In the Meselson and Stahl experiment, why was it necessary to use cesium chloride (CsCl) density gradients to separate DNA molecules?",
+      "choices": [
+        "To determine the sequence of nitrogenous bases",
+        "To measure the amount of DNA produced",
+        "To distinguish between heavy and light DNA based on density",
+        "To observe the replication process under a microscope"
+      ],
+      "answerIndex": 2,
+      "solution": "The experiment used CsCl density gradients because the heavy nitrogen (N) and light nitrogen (N) form DNA molecules with different densities. This allowed the separation of DNA molecules based on their mass. The other options are incorrect because they do not explain the purpose of the density gradient. The correct answer is to distinguish between heavy and light DNA based on density.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मेसेलसन एवं स्टैल के प्रयोग में, डीएनए अणुओं को अलग करने के लिए सीसियम क्लोराइड (CsCl) घनत्व वर्णक्रम का उपयोग करना क्यों आवश्यक था?",
+          "choices": [
+            "नाइट्रोजनी क्षारकों के क्रम का निर्धारण करने के लिए",
+            "उत्पादित डीएनए की मात्रा का मापन करने के लिए",
+            "घनत्व के आधार पर भारी एवं हल्के डीएनए के बीच अंतर करने के लिए",
+            "माइक्रोस्कोप के नीचे प्रतिकृति प्रक्रिया का अवलोकन करने के लिए"
+          ],
+          "solution": "प्रयोग में CsCl घनत्व वर्णक्रम का उपयोग इसलिए किया गया क्योंकि भारी नाइट्रोजन (N) एवं हल्की नाइट्रोजन (N) अणुओं से डीएनए अणु बनते हैं जिनका घनत्व अलग-अलग होता है। इससे डीएनए अणुओं के द्रव्यमान के आधार पर अलग करना संभव हो गया। अन्य विकल्प गलत हैं क्योंकि वे घनत्व वर्णक्रम के उद्देश्य की व्याख्या नहीं करते। सही उत्तर घनत्व के आधार पर भारी एवं हल्के डीएनए के बीच अंतर करना है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मेसेलसन आणि स्टॉलच्या प्रयोगात, DNA अणूंना वेगळे करण्यासाठी सिसियम क्लोराइड (CsCl) घनता अंतर्गत का वापरले गेले?",
+          "choices": [
+            "नाइट्रोजनी बेसचा क्रम ठरवण्यासाठी",
+            "उत्पन्न झालेल्या DNA चे प्रमाण मोजण्यासाठी",
+            "घनतेवर आधारित भारी आणि हलका DNA वेगळा करण्यासाठी",
+            "मायक्रोस्कोपमध्ये प्रतिकृती प्रक्रिया पाहण्यासाठी"
+          ],
+          "solution": "हा प्रयोग CsCl घनता अंतर्गत वापरला कारण भारी नाइट्रोजन (N) आणि हलकी नाइट्रोजन (N) अणूंनी DNA अणूंची घनता वेगळी बनवली. यामुळे DNA अणूंचे त्यांच्या वजनावर आधारित वेगळे करणे शक्य झाले. इतर विकल्प चुकीचे आहेत कारण ते घनता अंतर्गत वापरल्याचे कारण स्पष्ट करत नाहीत. योग्य उत्तर घनतेवर आधारित भारी आणि हलका DNA वेगळा करण्यासाठी आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the purpose of the experiment",
+        "Confuses the function of the gradient with DNA quantification",
+        null,
+        "Thinks the gradient is used for visual observation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the purpose of the CsCl gradient was to separate DNA based on density. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.4"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 11,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.4"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 12,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.4"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 13,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.4"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T03:21:32.504Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A forensic scientist finds a DNA sample at a crime scene and compares it to two suspects, A and B. The DNA fingerprint of the crime scene sample matches with suspect B but not with suspect A. What can be concluded about the suspects?",
+      "choices": [
+        "Suspect A is definitely not the criminal",
+        "Suspect B is definitely the criminal",
+        "Suspect A and B are both innocent",
+        "Suspect B may be the criminal, but further testing is needed"
+      ],
+      "answerIndex": 3,
+      "solution": "The DNA fingerprint of the crime scene sample matches with suspect B, which suggests that B could be the criminal, but it does not definitively prove it. Further testing is required to confirm the match. The other options are incorrect because the match with B does not rule out A definitively, and it is not possible to conclude that both are innocent. The conclusion that B is definitely the criminal is premature without further evidence.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक अपराध विज्ञान विज्ञानी एक अपराध स्थल पर डीएनए के नमूना पाता है और इसे दो आरोपी, ए और बी के साथ तुलना करता है। अपराध स्थल के डीएनए फिंगरप्रिंट आरोपी बी के साथ मेल खाता है लेकिन आरोपी ए के साथ नहीं। आरोपियों के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "आरोपी ए निश्चित रूप से अपराधी नहीं है",
+            "आरोपी बी निश्चित रूप से अपराधी है",
+            "आरोपी ए और बी दोनों अक्लिक हैं",
+            "आरोपी बी अपराधी हो सकता है, लेकिन अधिक जांच की आवश्यकता है"
+          ],
+          "solution": "अपराध स्थल के डीएनए फिंगरप्रिंट आरोपी बी के साथ मेल खाता है, जो बी के अपराधी हो सकने की संभावना दर्शाता है, लेकिन इसका अर्थ यह नहीं है कि यह निश्चित रूप से साबित हो गया है। मेल की पुष्टि करने के लिए अधिक जांच की आवश्यकता है। अन्य विकल्प गलत हैं क्योंकि बी के साथ मेल ए को निश्चित रूप से अपवर्जित नहीं करता है, और दोनों के अक्लिक होने का निष्कर्ष निकालना संभव नहीं है। बी के निश्चित रूप से अपराधी होने का निष्कर्ष अधिक साक्ष्य के बिना अप्रासंगिक है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक अपराध विज्ञान विशेषज्ञ एका गुन्ह्याच्या जागेवर डीएनए नमुना शोधून काढतो आणि त्याची दोन आरोपीं, ए आणि बी शी तुलना करतो. गुन्ह्याच्या जागेचा डीएनए फिंगरप्रिंट आरोपी बी शी जुळतो पण आरोपी ए शी जुळत नाही. आरोपींबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "आरोपी ए निश्चितपणे गुन्हेगार नाही",
+            "आरोपी बी निश्चितपणे गुन्हेगार आहे",
+            "आरोपी ए आणि बी दोन्ही अनिंद्रित आहेत",
+            "आरोपी बी गुन्हेगार असू शकतो, पण अधिक चाचणी आवश्यक आहे"
+          ],
+          "solution": "गुन्ह्याच्या जागेचा डीएनए फिंगरप्रिंट आरोपी बी शी जुळतो, जे बी हा गुन्हेगार असू शकतो, पण त्याची निश्चिती करण्यासाठी अधिक चाचणी आवश्यक आहे. इतर विकल्प चुकीचे आहेत कारण बी शी जुळणे ए ला निश्चितपणे नकारत नाही, आणि दोन्ही अनिंद्रित आहेत असे निष्कर्ष काढणे शक्य नाही. अधिक पुराव्याशिवाय बी हा निश्चितपणे गुन्हेगार असल्याचे निष्कर्ष अगोदरच घेणे अयोग्य आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for forensic science.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes that a mismatch with A means A is definitely not the criminal, which is not always the case",
+        "Assumes that a match with B means B is definitely the criminal, which is not a valid conclusion without further testing",
+        "Ignores the need for further testing and assumes the match is conclusive without additional evidence",
         null
       ],
       "solverAnswers": [
@@ -408,8 +724,196 @@
         3,
         3
       ],
-      "levelFlag": null,
-      "critique": "The correct answer is 3, as DNA's lack of the 2-OH group makes it less reactive and more stable. The other options contain misconceptions about RNA's structure, DNA's structure, and the role of thymine versus uracil.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as a DNA match does not definitively prove guilt without further testing. The other options represent common misconceptions about the certainty of DNA evidence.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 30,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.10 DNA F"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 31,
+          "pageStart": 28,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.10 DNA F"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 32,
+          "pageStart": 30,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.10 DNA F",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 33,
+          "pageStart": 30,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "5.10 DNA F",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T03:21:32.504Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a gene defect leads to Phenylketonuria (PKU), what is the molecular mechanism behind this?",
+      "choices": [
+        "A mutation causes a non-functional enzyme leading to accumulation of phenylalanine",
+        "A mutation causes a functional enzyme leading to rapid breakdown of phenylalanine",
+        "A mutation causes overproduction of phenylalanine",
+        "A mutation causes a deficiency in phenylalanine"
+      ],
+      "answerIndex": 0,
+      "solution": "PKU is caused by a mutation in the gene encoding the enzyme phenylalanine hydroxylase, which leads to a non-functional enzyme. This results in the accumulation of phenylalanine in the body. The other options describe incorrect or opposite effects of the mutation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक जीन दोष फेनिलकीटोन्यूरिया (PKU) के कारण होता है, तो इसके परमाणु या अणुगत यांत्रिकी क्या है?",
+          "choices": [
+            "एक उत्परिवर्तन अक्रिय एंजाइम के कारण फेनिलएलेनाइन के संचय होता है",
+            "एक उत्परिवर्तन कार्यक्षम एंजाइम के कारण फेनिलएलेनाइन के तेजी से विघटन होता है",
+            "एक उत्परिवर्तन फेनिलएलेनाइन के अत्यधिक उत्पादन के कारण होता है",
+            "एक उत्परिवर्तन फेनिलएलेनाइन की कमी के कारण होता है"
+          ],
+          "solution": "PKU फेनिलएलेनाइन हाइड्रॉक्सिलेज एंजाइम के जीन में उत्परिवर्तन के कारण होता है, जिसके कारण अक्रिय एंजाइम बनता है। इसके परिणामस्वरूप शरीर में फेनिलएलेनाइन का संचय होता है। अन्य विकल्प उत्परिवर्तन के गलत या विपरीत प्रभावों का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for genetic concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जीन दोषामुळे फेनिलकेटोन्यूरिया (PKU) होतो, तर याचा अणुगती यंत्रणा काय असते?",
+          "choices": [
+            "एक उत्परिवर्तन अक्रिय एन्झाइम तयार करते ज्यामुळे फेनिलएलॅनिनचा संचय होतो",
+            "एक उत्परिवर्तन क्रियाशील एन्झाइम तयार करते ज्यामुळे फेनिलएलॅनिनचा तीव्र विघटन होतो",
+            "एक उत्परिवर्तन फेनिलएलॅनिनच्या अतिउत्पादनाची निर्मिती करते",
+            "एक उत्परिवर्तन फेनिलएलॅनिनच्या अभावाची निर्मिती करते"
+          ],
+          "solution": "PKU हा फेनिलएलॅनिन हाइड्रॉक्सिलेज एन्झाइमच्या जीनमध्ये उत्परिवर्तनामुळे होतो, ज्यामुळे अक्रिय एन्झाइम तयार होतो. यामुळे शरीरात फेनिलएलॅनिनचा संचय होतो. इतर विकल्पांमध्ये उत्परिवर्तनाच्या चुकीच्या किंवा विरुद्ध परिणामांचे वर्णन केले आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the effect of a defective enzyme with a functional one, thinking that PKU is caused by excess breakdown of phenylalanine",
+        "This would not cause PKU and is the opposite of what happens.",
+        "This would not cause PKU and is the opposite of what happens."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 0, as PKU results from a non-functional enzyme leading to phenylalanine accumulation. The other options represent common misconceptions or incorrect biological mechanisms.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo105.pdf",
+          "ordinal": 34,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 5: Molecular Basis of Inheritance",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T03:21:32.504Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a genetic disorder is caused by a single gene mutation and results in multiple symptoms, what is the most likely explanation for this phenomenon?",
+      "choices": [
+        "The gene is involved in multiple biological processes",
+        "The mutation causes the gene to produce only one protein",
+        "The disorder is caused by multiple genes",
+        "The mutation affects only one protein in the body"
+      ],
+      "answerIndex": 0,
+      "solution": "This phenomenon is known as pleiotropy, where a single gene can affect multiple traits or characteristics. The correct option correctly identifies this. The other options are incorrect because they either contradict the concept of pleiotropy or describe different genetic mechanisms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक आनुवंशिक विकार एक जीन उत्परिवर्तन के कारण होता है और विभिन्न लक्षण पैदा करता है, तो इस घटना के लिए सबसे संभावित स्पष्टीकरण क्या है?",
+          "choices": [
+            "जीन विभिन्न जैविक प्रक्रियाओं में शामिल होता है",
+            "उत्परिवर्तन जीन के केवल एक प्रोटीन के उत्पादन के कारण होता है",
+            "विकार बहुगुणसूत्री द्वारा होता है",
+            "उत्परिवर्तन शरीर के केवल एक प्रोटीन पर प्रभाव डालता है"
+          ],
+          "solution": "इस घटना को प्लीओट्रॉपी कहा जाता है, जहां एक ही जीन विभिन्न लक्षणों या गुणों को प्रभावित कर सकता है। सही विकल्प इसे सही ढंग से पहचानता है। अन्य विकल्प गलत हैं क्योंकि वे प्लीओट्रॉपी के अवधारणा के विरोध में हैं या अलग आनुवंशिक तंत्र का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for genetic concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखादा आनुवंशिक विकार एका जीन म्यूटेशनमुळे होतो आणि अनेक लक्षणे दर्शवतो, तर हा प्रकार कमतरता असलेल्या घटनेचे सर्वात शक्य स्पष्टीकरण काय असू शकते?",
+          "choices": [
+            "जीन अनेक जैविक प्रक्रियांमध्ये संलग्न असते",
+            "म्यूटेशन मुळे जीन केवळ एका प्रोटीनचा उत्पादन करते",
+            "विकार अनेक जीनमुळे होतो",
+            "म्यूटेशन शरीरातील केवळ एका प्रोटीनवर प्रभाव पाडते"
+          ],
+          "solution": "ही घटना प्लेयोट्रॉपी म्हणून ओळखली जाते, जेथे एका जीनमुळे अनेक लक्षणे किंवा वैशिष्ट्ये प्रभावित होतात. योग्य पर्याय याचे योग्य ओळख करतो. इतर पर्याय अशा घटनांच्या असंगती किंवा वेगळ्या आनुवंशिक यंत्रणांचे वर्णन करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for genetics.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Incorrectly suggests that the gene is involved in only one process, which is the opposite of what pleiotropy implies",
+        "Incorrectly states that a single gene mutation only produces one protein, which is not consistent with the concept of pleiotropy",
+        "Incorrectly suggests that the disorder is caused by multiple genes, which is not the case for a single gene mutation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly identifies pleiotropy as the explanation for a single gene mutation causing multiple symptoms. The solution is sound and aligns with the correct answer. The distractors reflect common misconceptions about gene function and genetic disorders.",
       "sources": [
         {
           "document": "ncert/12/biology/lebo105.pdf",
@@ -453,49 +957,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:56:10.538Z",
+      "generatedAt": "2026-10-29T03:21:32.504Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "If a DNA molecule has a sequence of bases on one strand, what can be said about the sequence on the other strand?",
+      "difficulty": 6,
+      "stem": "If a DNA molecule has a sequence of A-T-G-C on one strand, what will be the sequence on the complementary strand and how does this support the concept of genetic inheritance?",
       "choices": [
-        "It is completely random and unrelated",
-        "It is identical to the first strand",
-        "It is complementary to the first strand",
-        "It is the reverse of the first strand"
+        "T-A-C-G, because the base pairing ensures that genetic information is accurately copied during replication",
+        "A-T-G-C, because DNA is copied exactly as it is without any changes during inheritance",
+        "T-A-C-G, because the complementary strand is a mirror image and does not affect inheritance",
+        "G-C-T-A, because the complementary strand is the reverse complement and ensures genetic diversity"
       ],
-      "answerIndex": 2,
-      "solution": "The sequence on the other DNA strand is complementary because each base pairs specifically with its complement—adenine with thymine and cytosine with guanine. This ensures that the two strands are not random, identical, or reversed, but rather mirror each other in a specific way. The correct option reflects the fundamental principle of DNA structure.",
+      "answerIndex": 0,
+      "solution": "The correct sequence is T-A-C-G because the base pairing rules ensure that each nucleotide on one strand pairs with its complementary nucleotide on the other strand, allowing genetic information to be accurately copied during replication. The other options are incorrect because they either suggest DNA is copied exactly without base pairing or incorrectly describe the role of the complementary strand in inheritance.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि डीएनए अणु के एक स्ट्रैंड पर बेस का अनुक्रम है, तो दूसरे स्ट्रैंड पर बेस के अनुक्रम के बारे में क्या कहा जा सकता है?",
+          "stem": "यदि एक DNA अणु के एक स्ट्रैंड पर अनुक्रम A-T-G-C है, तो संपूरक स्ट्रैंड पर अनुक्रम क्या होगा और यह आनुवंशिक विरासत की अवधारणा को कैसे समर्थित करता है?",
           "choices": [
-            "यह पूरी तरह से यादृच्छिक और असंबंधित है",
-            "यह पहले स्ट्रैंड के समान है",
-            "यह पहले स्ट्रैंड के पूरक है",
-            "यह पहले स्ट्रैंड के विपरीत है"
+            "T-A-C-G, क्योंकि बेस जोड़ने के नियम यह सुनिश्चित करते हैं कि प्रतिकृति के दौरान आनुवंशिक जानकारी सटीक रूप से बनाई जाती है",
+            "A-T-G-C, क्योंकि विरासत के दौरान DNA की कोई बदलाव बिना बराबर बनाई जाती है",
+            "T-A-C-G, क्योंकि संपूरक स्ट्रैंड एक दर्पण चित्र है और विरासत पर कोई प्रभाव नहीं डालता",
+            "G-C-T-A, क्योंकि संपूरक स्ट्रैंड विपरीत पूरक है और आनुवंशिक विविधता सुनिश्चित करता है"
           ],
-          "solution": "दूसरे डीएनए स्ट्रैंड पर अनुक्रम पूरक होता है क्योंकि प्रत्येक बेस अपने पूरक के साथ विशिष्ट रूप से जुड़ता है-एडीनीन थायमीन के साथ और साइटोसीन ग्वानीन के साथ। इससे यह सुनिश्चित होता है कि दोनों स्ट्रैंड यादृच्छिक, समान या विपरीत नहीं होते, बल्कि एक विशिष्ट तरीके से एक दूसरे के दर्पण होते हैं। सही विकल्प डीएनए संरचना के मूल स principio को प्रतिबिंबित करता है।",
+          "solution": "सही अनुक्रम T-A-C-G है क्योंकि बेस जोड़ने के नियम यह सुनिश्चित करते हैं कि एक स्ट्रैंड पर प्रत्येक न्यूक्लियोटाइड दूसरे स्ट्रैंड पर अपने संपूरक न्यूक्लियोटाइड के साथ जुड़ता है, जिससे प्रतिकृति के दौरान आनुवंशिक जानकारी सटीक रूप से बनाई जाती है। अन्य विकल्प गलत हैं क्योंकि वे या तो DNA की प्रतिकृति बेस जोड़ने के बिना बराबर बनाने का सुझाव देते हैं या संपूरक स्ट्रैंड के विरासत में भूमिका का गलत वर्णन करते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "एका डीएनए अणूच्या एका तारेवरील बेसचा क्रम काय असेल तर दुसर्‍या तारेवरील बेसचा क्रम काय म्हणता येईल?",
+          "stem": "एक DNA अणूच्या एका तारेवर A-T-G-C चा क्रम असल्यास, पार्श्वस्थ तारेवर कोणता क्रम असेल आणि हे आनुवंशिकतेच्या अवधारणेला कशी मदत करते?",
           "choices": [
-            "तो पूर्णपणे अयोग्य आणि असंबद्ध असतो",
-            "तो पहिल्या तारेसारखा असतो",
-            "तो पहिल्या तारेच्या पूरक असतो",
-            "तो पहिल्या तारेचा उलटा असतो"
+            "T-A-C-G, कारण बेस जोडणी जीवनांशाची माहिती प्रतिकृती दरम्यान अचूक प्रतिकृत करते",
+            "A-T-G-C, कारण आनुवंशिकतेदरम्यान DNA चे कोणत्याही बदलाशिवाय अचूक प्रतिकृत केले जाते",
+            "T-A-C-G, कारण पार्श्वस्थ तारा ही एक दर्पण छाया असून आनुवंशिकतेवर प्रभाव पाडत नाही",
+            "G-C-T-A, कारण पार्श्वस्थ तारा ही विलोम पूरक असून आनुवंशिक विविधता खात्री करते"
           ],
-          "solution": "दुसर्‍या डीएनए तारेवरील क्रम पूरक असतो कारण प्रत्येक बेस त्याच्या पूरकशी विशिष्टपणे जोडलेला असतो- एडिनीन थायमिनशी आणि सायटोसिन ग्वॅनिनशी. हे खात्री करते की दोन्ही तारा अयोग्य, समान किंवा उलट्या नसतात, परंतु विशिष्ट प्रकारे एकमेकांच्या दर्पणासारख्या असतात. योग्य पर्याय डीएनएच्या संरचनेच्या मूलभूत तत्त्वाला दर्शवतो.",
+          "solution": "सही क्रम T-A-C-G असेल कारण बेस जोडणीच्या नियमांमुळे एका तारेवरील प्रत्येक न्यूक्लिओटाईड दुसर्‍या तारेवरील त्याच्या पार्श्वस्थ न्यूक्लिओटाईडशी जुळते, ज्यामुळे जीवनांशाची माहिती प्रतिकृती दरम्यान अचूक प्रतिकृत केली जाते. इतर विकल्प चुकीचे आहेत कारण ते DNA च्या प्रतिकृतीच्या बेस जोडणीशिवाय अचूक प्रतिकृत केल्याचा असा अंदाज देतात किंवा पार्श्वस्थ तारेच्या आनुवंशिकतेमध्ये भूमिकेचे चुकीचे वर्णन करतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for genetics.",
           "flag": null
         }
       },
@@ -504,20 +1008,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Misunderstands the concept of complementarity",
-        "Believes that both strands are the same, not complementary",
         null,
-        "Thinks that the strands are reversed, not complementary\",\"Does not understand the concept of complementary base pairing in DNA."
+        "belief that DNA is not complementary and is copied identically in both strands",
+        "Believes that the complementary strand is a mirror image and does not play a role in inheritance",
+        "Confuses complementary base pairing with reverse complementation and incorrectly assumes it promotes genetic diversity"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as DNA strands are complementary, not identical or reversed. The author's reasoning aligns with standard biology and correctly identifies the misconceptions behind the other options.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the complementary strand of A-T-G-C is T-A-C-G due to base pairing rules (A-T, G-C). The explanation correctly emphasizes accurate replication as the basis for genetic inheritance. All distractors reflect common misconceptions about DNA structure and replication.",
       "sources": [
         {
           "document": "ncert/12/biology/lebo105.pdf",
@@ -552,479 +1056,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:56:10.538Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following best describes the role of histones in the packaging of DNA in eukaryotic cells?",
-      "choices": [
-        "They provide a rigid framework for DNA to attach to",
-        "They help in the replication of DNA",
-        "They neutralize the negative charge of DNA",
-        "They prevent DNA from being transcribed"
-      ],
-      "answerIndex": 2,
-      "solution": "Histones are positively charged proteins that bind to the negatively charged DNA, helping to package it into a compact structure. This neutralization of charge allows DNA to be organized into nucleosomes and further into chromatin. The other options are incorrect because histones do not provide a rigid framework, they are not directly involved in DNA replication, and they do not prevent transcription.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा यूकैरियोटिक कोशिकाओं में डीएनए के पैकेजिंग में हिस्टोन्स के कार्य का सबसे अच्छा वर्णन करता है?",
-          "choices": [
-            "वे डीएनए के लिए एक कठोर ढांचा प्रदान करते हैं",
-            "वे डीएनए के प्रतिकृति में सहायता करते हैं",
-            "वे डीएनए के ऋणात्मक आवेश को उदासीन करते हैं",
-            "वे डीएनए के अनुलेखन को रोकते हैं"
-          ],
-          "solution": "हिस्टोन्स धनात्मक आवेश वाले प्रोटीन होते हैं जो ऋणात्मक आवेश वाले डीएनए से बंधते हैं, जिससे डीएनए को एक संकुचित संरचना में पैक करने में सहायता मिलती है। इस आवेश के उदासीनीकरण के कारण डीएनए न्यूक्लियोसोम में और आगे चीनी में संगठित हो जाता है। अन्य विकल्प गलत हैं क्योंकि हिस्टोन्स एक कठोर ढांचा प्रदान नहीं करते, वे डीएनए की प्रतिकृति में सीधे शामिल नहीं होते, और वे अनुलेखन को रोकते नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi biological terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एककोशिक जीवांमध्ये DNA च्या पॅकेजिंगमध्ये हिस्टोनच्या भूमिकेचे सर्वात चांगले वर्णन करते?",
-          "choices": [
-            "ते DNA ला जुळविण्यासाठी एक कठोर ढाचा पुरवतात",
-            "ते DNA च्या प्रतिकृतीमध्ये मदत करतात",
-            "ते DNA च्या ऋणात्मक आवेशाचे न्यूट्रलीकरण करतात",
-            "ते DNA च्या अनुलेखनाला रोखतात"
-          ],
-          "solution": "हिस्टोन धनात्मक आवेश असलेले प्रोटीन असतात जे ऋणात्मक आवेश असलेल्या DNA ला जुळवतात, जेणेकरून ते एका संपूर्ण रचनेत पॅकेज केले जाते. आवेशाचे न्यूट्रलीकरण DNA ला न्यूक्लिओसोममध्ये आणि त्यानंतर क्रोमॅटिनमध्ये संगोपन करण्यास मदत करते. इतर विकल्प अयोग्य आहेत कारण हिस्टोन एक कठोर ढाचा पुरवत नाहीत, ते DNA प्रतिकृतीमध्ये सीधा संलग्न नाहीत आणि ते अनुलेखन रोखत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate biological terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Pupils may think histones only provide structural support",
-        "Pupils might confuse the role of histones with enzymes involved in replication",
-        null,
-        "Pupils may not understand the electrostatic interaction between histones and DNA"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that histones neutralize DNA's negative charge through electrostatic interactions, which is the primary mechanism for DNA packaging. The reasoning for the distractors aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 3,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.1",
-            "DNA"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.1",
-            "DNA"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.2"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:56:10.538Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the sequence of mRNA if the coding strand of a transcription unit is 5 -ATGCATGCATGCATGCATGCATGCATGC-3?",
-      "choices": [
-        "5 -UACGUACGUACGUACGUACGUACGUACG-3",
-        "5 -ATGCATGCATGCATGCATGCATGCATGC-3",
-        "5 -GCATGCATGCATGCATGCATGCATGCA-3",
-        "5 -CGUACGUACGUACGUACGUACGUACGU-3"
-      ],
-      "answerIndex": 0,
-      "solution": "The mRNA sequence is the same as the coding strand, except thymine is replaced by uracil. The correct sequence is 5 -UACGUACGUACGUACGUACGUACGUACG-3.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "mRNA के क्रम क्या है यदि एक अनुलेखन इकाई का कोडिंग स्ट्रैंड 5 -ATGCATGCATGCATGCATGCATGCATGC-3 है?",
-          "choices": [
-            "5 -UACGUACGUACGUACGUACGUACGUACG-3",
-            "5 -ATGCATGCATGCATGCATGCATGCATGC-3",
-            "5 -GCATGCATGCATGCATGCATGCATGCA-3",
-            "5 -CGUACGUACGUACGUACGUACGUACGU-3"
-          ],
-          "solution": "mRNA का क्रम कोडिंग स्ट्रैंड के समान होता है, बस थायमिन के स्थान पर यूरेसिल होता है। सही क्रम 5 -UACGUACGUACGUACGUACGUACGUACG-3 है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the scientific meaning, with appropriate Hindi terminology for biological concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "mRNA ची अनुक्रम काय असेल जर एका ट्रान्सक्रिप्शन युनिट चा कोडिंग स्ट्रँड 5 -ATGCATGCATGCATGCATGCATGCATGC-3 असेल?",
-          "choices": [
-            "5 -UACGUACGUACGUACGUACGUACGUACG-3",
-            "5 -ATGCATGCATGCATGCATGCATGCATGC-3",
-            "5 -GCATGCATGCATGCATGCATGCATGCA-3",
-            "5 -CGUACGUACGUACGUACGUACGUACGU-3"
-          ],
-          "solution": "mRNA चा अनुक्रम कोडिंग स्ट्रँड च्या समान असतो, तथापि थायमिन ला युरेसिल ने बदलले जाते. योग्य अनुक्रम 5 -UACGUACGUACGUACGUACGUACGUACG-3 असतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium biology curriculum.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Fails to replace thymine with uracil",
-        "Fails to understand that the coding strand is the same as the mRNA sequence",
-        "Confuses the directionality of the mRNA."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is option 0, as mRNA is complementary to the template strand and identical to the coding strand except with uracil instead of thymine. The author's solution and reasoning are accurate.",
-      "sources": [
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 34,
-          "pageStart": 31,
-          "pageEnd": 31,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "EXERCISES"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:56:10.538Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What did the Hershey-Chase experiment demonstrate about the role of DNA in viral infection?",
-      "choices": [
-        "DNA is the only genetic material in viruses",
-        "Proteins are the primary genetic material",
-        "DNA is the material that enters the bacterial cell during infection",
-        "RNA is the only genetic material in viruses"
-      ],
-      "answerIndex": 2,
-      "solution": "The Hershey-Chase experiment demonstrated that DNA is the material that enters the bacterial cell during infection. This was shown by using radioactive labeling and separating the viral coats from the bacteria. The experiment ruled out proteins as the genetic material and showed that DNA is the key to viral replication. RNA is not the only genetic material, and DNA is clearly involved in viral replication.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "हर्शी-चेस प्रयोग ने विषाणु संक्रमण में डीएनए की भूमिका के बारे में क्या साबित किया?",
-          "choices": [
-            "विषाणुओं में डीएनए ही एकमात्र आनुवंशिक पदार्थ है",
-            "प्रोटीन आनुवंशिक पदार्थ के मुख्य स्रोत हैं",
-            "संक्रमण के दौरान बैक्टीरियल कोशिका में प्रवेश करने वाला पदार्थ डीएनए है",
-            "विषाणुओं में आरएनए ही एकमात्र आनुवंशिक पदार्थ है"
-          ],
-          "solution": "हर्शी-चेस प्रयोग दिखाया कि संक्रमण के दौरान बैक्टीरियल कोशिका में प्रवेश करने वाला पदार्थ डीएनए है। इसे रेडियोएक्टिव लेबलिंग के उपयोग और विषाणु कोट को बैक्टीरिया से अलग करके दिखाया गया। प्रयोग ने प्रोटीन को आनुवंशिक पदार्थ के रूप में अस्वीकृत कर दिया और डीएनए को विषाणु प्रतिकृति के लिए मुख्य पदार्थ दिखाया। आरएनए एकमात्र आनुवंशिक पदार्थ नहीं है, और डीएनए स्पष्ट रूप से विषाणु प्रतिकृति में शामिल है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains the original meaning, and uses standard biological terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "हर्शी-चेस प्रयोगाने व्हायरल संसर्गातील डीएनएच्या भूमिकेबद्दल काय दर्शविले?",
-          "choices": [
-            "व्हायरसमधील एकमात्र आनुवंशिक पदार्थ डीएनए आहे",
-            "प्रोटीन्स हे प्राथमिक आनुवंशिक पदार्थ आहेत",
-            "संसर्गादरम्यान बॅक्टेरियल कोशिकेत प्रवेश करणारा पदार्थ डीएनए आहे",
-            "व्हायरसमधील एकमात्र आनुवंशिक पदार्थ आरएनए आहे"
-          ],
-          "solution": "हर्शी-चेस प्रयोगाने दर्शविले की संसर्गादरम्यान बॅक्टेरियल कोशिकेत प्रवेश करणारा पदार्थ डीएनए आहे. हे रेडिओएक्टिव्ह लेबलिंग वापरून आणि व्हायरल कोट्स आणि बॅक्टेरियांमध्ये विभाजन करून दर्शविले गेले. हा प्रयोग प्रोटीन्स ला आनुवंशिक पदार्थ म्हणून नकारले आणि डीएनए हा व्हायरल प्रतिकृतीचा मुख्य भाग असल्याचे दर्शविले. आरएनए हा एकमात्र आनुवंशिक पदार्थ नाही आणि डीएनए व्हायरल प्रतिकृतीमध्ये स्पष्टपणे संलग्न आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confusion between DNA being the genetic material in bacteria and viruses",
-        "Confuses the role of proteins and DNA, thinking proteins are the main genetic material due to their visible structure",
-        null,
-        "incorrectly generalizes the results to all viruses"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as the Hershey-Chase experiment showed that DNA, not protein, enters the bacterial cell during viral infection. The other options reflect common misconceptions about the role of DNA, RNA, and proteins in viral genetics.",
-      "sources": [
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.2"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 7,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.2"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 8,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.2"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 9,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.3 RNA W"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:56:10.538Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the sequence of the coding strand is 5 -ATGCATGCATGCATGCATGCATGCATGC-3, and the lac operon is induced by lactose, how will the expression of the operon be affected?",
-      "choices": [
-        "It will be repressed",
-        "It will be activated",
-        "It will be inhibited",
-        "It will be silenced"
-      ],
-      "answerIndex": 1,
-      "solution": "The lac operon is activated in the presence of lactose. When lactose is added, the repressor protein is inactivated, allowing RNA polymerase to transcribe the operon. Therefore, the expression will be activated.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोडिंग स्ट्रैंड का अनुक्रम 5 -ATGCATGCATGCATGCATGCATGCATGC-3 है, और लैक ऑपेरॉन लैक्टोज द्वारा प्रेरित होता है, तो ऑपेरॉन के व्यवहार पर क्या प्रभाव पड़ेगा?",
-          "choices": [
-            "इसे अवरुद्ध कर दिया जाएगा",
-            "इसे सक्रिय कर दिया जाएगा",
-            "इसे अवरुद्ध कर दिया जाएगा",
-            "इसे बंद कर दिया जाएगा"
-          ],
-          "solution": "लैक ऑपेरॉन लैक्टोज की उपस्थिति में सक्रिय होता है। जब लैक्टोज जोड़ा जाता है, तो अवरोधक प्रोटीन अक्रिय हो जाता है, जिससे आरएनए पॉलीमरेज ऑपेरॉन के अनुलेखन के लिए अनुमति देता है। इसलिए, ऑपेरॉन के व्यवहार को सक्रिय कर दिया जाएगा।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, with correct technical terms and consistent answer positioning. The solution correctly identifies option 2 as the correct answer, and the distractors remain incorrect.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर कोडिंग स्ट्रँडचा क्रम 5 -ATGCATGCATGCATGCATGCATGCATGC-3 असेल, आणि लॅक ऑपेरॉन लॅक्टोजमुळे उत्प्रेरित होत असेल, तर ऑपेरॉनची व्यवस्थापन कशी प्रभावित होईल?",
-          "choices": [
-            "त्याची अवरोधन होईल",
-            "त्याची सक्रियता होईल",
-            "त्याची अवरोधन होईल",
-            "त्याची निष्क्रियता होईल"
-          ],
-          "solution": "लॅक ऑपेरॉन लॅक्टोजच्या उपस्थितीत सक्रिय होते. जेव्हा लॅक्टोज जोडला जातो तेव्हा अवरोधक प्रोटीन अक्रिय होते, ज्यामुळे आरएनए पॉलिमरेज ऑपेरॉनचे अनुलेखन करू शकते. त्यामुळे, ऑपेरॉनची व्यवस्थापन सक्रिय होईल.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The solution and options are correctly aligned with the English version.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the role of the repressor protein",
-        null,
-        "Fails to understand the function of lactose in the lac operon",
-        "Confuses the mechanism of gene regulation in prokaryotes."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question correctly identifies that lactose induces the lac operon by inactivating the repressor, leading to activation. The solution is accurate and matches the key. The distractors reflect common misconceptions about the lac operon mechanism.",
-      "sources": [
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 34,
-          "pageStart": 31,
-          "pageEnd": 31,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "EXERCISES"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:56:10.538Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A scientist found that a virus's genetic material can be both DNA and RNA. Which of the following is most likely true about this virus?",
-      "choices": [
-        "It is a retrovirus that can convert RNA to DNA",
-        "It has a protein coat that contains both DNA and RNA",
-        "It can only replicate in host cells with both DNA and RNA",
-        "It cannot express its genetic material"
-      ],
-      "answerIndex": 0,
-      "solution": "A virus that can have both DNA and RNA as genetic material is most likely a retrovirus, which uses reverse transcriptase to convert RNA into DNA. Retroviruses can have RNA as their genome and then form DNA. The other options do not accurately describe the nature of such a virus. Retroviruses are known for this property, and the question implies an understanding beyond the textbook, which is typical of a competitive level question.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक वैज्ञानिक ने पाया कि एक वायरस के आनुवंशिक सामग्री दोनों डीएनए और आरएनए हो सकते हैं। इस वायरस के बारे में निम्नलिखित में से कौन सा सबसे अधिक संभावित सत्य है?",
-          "choices": [
-            "यह एक रिट्रोवायरस है जो आरएनए को डीएनए में परिवर्तित कर सकता है",
-            "इसकी प्रोटीन कोट दोनों डीएनए और आरएनए को समाहित करती है",
-            "इसके पास केवल डीएनए और आरएनए दोनों वाले होस्ट सेल में अपनी प्रतिकृति बनाने की क्षमता है",
-            "इसके पास अपनी आनुवंशिक सामग्री को व्यक्त नहीं करने की क्षमता है"
-          ],
-          "solution": "जिस वायरस के आनुवंशिक सामग्री दोनों डीएनए और आरएनए हो सकते हैं, वह अधिक संभावना रिट्रोवायरस होता है, जो आरएनए को डीएनए में परिवर्तित करने के लिए रिवर्स ट्रांसक्रिप्टेज का उपयोग करता है। रिट्रोवायरस आरएनए के जीनोम के साथ हो सकते हैं और फिर डीएनए बना सकते हैं। अन्य विकल्प ऐसे वायरस की प्रकृति का सही वर्णन नहीं करते हैं। रिट्रोवायरस इस गुण के लिए जाने जाते हैं, और प्रश्न एक प्रतियोगी स्तर के प्रश्न के अनुरूप एक पाठ्यपुस्तक से आगे की समझ को इंगित करता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi, and the correct answer remains in the same position.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विज्ञानीने असे शोधले की एका व्हायरसचे जीनेटिक पदार्थ डीएनए आणि आरएनए दोन्ही असू शकतात. खालीलपैकी कोणते असे व्हायरसबद्दल सर्वात जास्त खरे असू शकते?",
-          "choices": [
-            "तो रेट्रोव्हायरस असू शकतो जो आरएनए ला डीएनए मध्ये बदलू शकतो",
-            "त्याचा प्रोटीन कोट डीएनए आणि आरएनए दोन्ही असतो",
-            "तो माता-जीवामध्ये डीएनए आणि आरएनए दोन्ही असल्यास फक्त प्रतिकृती करू शकतो",
-            "तो त्याचे जीनेटिक पदार्थ व्यक्त करू शकत नाही"
-          ],
-          "solution": "जीनेटिक पदार्थ म्हणून डीएनए आणि आरएनए दोन्ही असलेला व्हायरस रेट्रोव्हायरस असण्याची शक्यता असते, जो आरएनए ला डीएनए मध्ये बदलण्यासाठी रिव्हर्स ट्रान्सक्रिप्टेज वापरतो. रेट्रोव्हायरस आरएनए ला जीनोम म्हणून घेऊ शकतात आणि नंतर डीएनए बनवू शकतात. इतर विकल्प अशा व्हायरसच्या प्रकृतीचे योग्य वर्णन करत नाहीत. रेट्रोव्हायरस या गुणामुळे ओळखले जातात आणि प्रश्नामध्ये आता पाठ्यपुस्तकापेक्षा अधिक ज्ञानाचे सूचना दिली जाते, हे असे प्रश्न जे प्रतियोगी पातळीचे असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "incorrectly assumes the virus has both DNA and RNA in its coat",
-        "misunderstands the function of the virus's genetic material",
-        "contradicts the ability of viruses to express genetic material"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as retroviruses like HIV have RNA as their genetic material and use reverse transcriptase to convert it into DNA. The other options reflect common misconceptions about viral structure and function.",
-      "sources": [
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.2"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 7,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.2"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 8,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.2"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo105.pdf",
-          "ordinal": 9,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 5: Molecular Basis of Inheritance",
-            "5.3 RNA W"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:56:10.538Z",
+      "generatedAt": "2026-10-29T03:21:32.504Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Math-Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-23T00:53:39.624Z",
+  "generatedAt": "2026-10-28T05:55:42.367Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "Which unit is used to measure small differences in time taken by participants in a race?",
+      "difficulty": 4,
+      "stem": "Raghu took 20 seconds to read a sentence. Rani took 30 seconds. Ritu took 40 seconds. Who took the least time?",
       "choices": [
-        "Minutes",
-        "Hours",
-        "Days",
-        "Seconds"
+        "Raghu",
+        "Rani",
+        "Ritu",
+        "All took the same time"
       ],
-      "answerIndex": 3,
-      "solution": "Seconds are used to measure small differences in time because they are the smallest unit among the options and provide the precision needed for timing races. Minutes and hours are too large for such small time intervals, and days are far too extensive to be relevant in this context.",
+      "answerIndex": 0,
+      "solution": "Raghu took the least time because 20 seconds is less than 30 and 40 seconds. Rani took longer, and Ritu took the longest. All others took more time than Raghu.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक प्रतियोगिता में प्रतिभागियों द्वारा लिए गए समय में छोटे अंतर को मापने के लिए कौन सी इकाई का उपयोग किया जाता है?",
+          "stem": "रघु ने एक वाक्य पढ़ने में 20 सेकंड लिया। रानी ने 30 सेकंड लिया। रीतू ने 40 सेकंड लिया। किसने सबसे कम समय लिया?",
           "choices": [
-            "मिनट",
-            "घंटे",
-            "दिन",
-            "सेकंड"
+            "रघु",
+            "रानी",
+            "रीतू",
+            "सभी ने एक ही समय लिया"
           ],
-          "solution": "सेकंड का उपयोग एक प्रतियोगिता में प्रतिभागियों द्वारा लिए गए समय में छोटे अंतर को मापने के लिए किया जाता है क्योंकि यह विकल्पों में सबसे छोटी इकाई है और इसके द्वारा दौड़ के समय के लिए आवश्यक अचूकता प्राप्त की जा सकती है। मिनट और घंटे ऐसे छोटे समय अंतरों के लिए बहुत बड़ी इकाइयाँ हैं, और दिन इस संदर्भ में बहुत व्यापक हैं।",
+          "solution": "रघु ने सबसे कम समय लिया क्योंकि 20 सेकंड 30 और 40 सेकंड से कम है। रानी को अधिक समय लगा, और रीतू को सबसे अधिक समय लगा। अन्य सभी रघु के मुकाबले अधिक समय लेते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terms for time units as would be found in a Hindi-medium textbook.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "कोणता एकक रेसमध्ये पार्टिसिपंट्सने घेतलेल्या वेळेतील लहान फरकांचे मोजण्यासाठी वापरला जातो?",
+          "stem": "राघूने एका वाक्याचे वाचन 20 सेकंद घेतले. राणीला 30 सेकंद लागले. रितूला 40 सेकंद लागले. कोणाला सर्वात कमी वेळ लागला?",
           "choices": [
-            "मिनिटे",
-            "तास",
-            "दिवस",
-            "सेकंद"
+            "राघू",
+            "राणी",
+            "रितू",
+            "सर्वांना एकसारखा वेळ लागला"
           ],
-          "solution": "सेकंद वेळेतील लहान फरकांचे मोजण्यासाठी वापरले जातात कारण ते विकल्पांमध्ये सर्वात लहान एकक आहेत आणि रेसमध्ये आवश्यक असलेल्या अचूकतेसह वेळ मोजण्यासाठी उपयुक्त आहेत. मिनिटे आणि तास अशा लहान वेळ अंतरासाठी खूप मोठे आहेत आणि दिवस या संदर्भात खूप मोठे असतात.",
+          "solution": "राघूला सर्वात कमी वेळ लागला कारण 20 सेकंद 30 आणि 40 सेकंद पेक्षा कमी आहे. राणीला जास्त वेळ लागला, आणि रितूला सर्वात जास्त वेळ लागला. राघूपेक्षा इतर सर्वांना जास्त वेळ लागला.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for time units.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
           "flag": null
         }
       },
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses minutes with seconds",
-        "Confuses hours with seconds",
-        "Does not understand the context of small time intervals",
-        null
+        null,
+        "confuses with Rani's time",
+        "confuses with Ritu's time",
+        "incorrect assumption"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": null,
-      "critique": "The question is clear and the correct answer is 'Seconds' as they are used to measure small time differences in races. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward. The correct answer is Raghu, as 20 seconds is the least time among the given options. The distractors are all based on common misconceptions, such as confusing the times of the other individuals or assuming all took the same time.",
       "sources": [
         {
           "document": "ncert/5/mathematics/eemm112.pdf",
@@ -116,49 +116,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T00:53:39.624Z",
+      "generatedAt": "2026-10-28T05:55:42.367Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "If Rani took 30 seconds to color a rectangle and Raghav took 60 seconds to move from his room to the kitchen, how much more time did Raghav take than Rani?",
+      "difficulty": 5,
+      "stem": "A race starts at 09:00 AM. If the race takes 1 hour 20 minutes, at what time will it end?",
       "choices": [
-        "10 seconds",
-        "20 seconds",
-        "30 seconds",
-        "40 seconds"
+        "10:20 AM",
+        "10:10 AM",
+        "10:30 AM",
+        "10:25 AM"
       ],
-      "answerIndex": 2,
-      "solution": "Raghav took 60 seconds and Rani took 30 seconds. The difference is 60 - 30 = 30 seconds. Therefore, the correct answer is '30 seconds'. The other options do not match the subtraction of the given times.",
-      "checkExpr": "60-30",
+      "answerIndex": 0,
+      "solution": "Adding 1 hour 20 minutes to 09:00 AM gives 10:20 AM. The other options are incorrect due to miscalculations.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "रानी ने एक आयत को रंगने में 30 सेकंड लिया और राघव ने अपने कमरे से रसोई में जाने में 60 सेकंड लिया, राघव ने रानी के मुकाबले कितना अधिक समय लिया?",
+          "stem": "एक दौड़ 09:00 बजे शुरू होती है। यदि दौड़ में 1 घंटा 20 मिनट लगते हैं, तो यह किस समय खत्म होगी?",
           "choices": [
-            "10 सेकंड",
-            "20 सेकंड",
-            "30 सेकंड",
-            "40 सेकंड"
+            "10:20 बजे दोपहर",
+            "10:10 बजे दोपहर",
+            "10:30 बजे दोपहर",
+            "10:25 बजे दोपहर"
           ],
-          "solution": "राघव ने 60 सेकंड लिया और रानी ने 30 सेकंड लिया। अंतर 60 - 30 = 30 सेकंड है। इसलिए, सही उत्तर '30 सेकंड' है। अन्य विकल्प दिए गए समय के घटाव के बराबर नहीं हैं।",
+          "solution": "09:00 बजे दोपहर में 1 घंटा 20 मिनट जोड़ने पर 10:20 बजे दोपहर प्राप्त होता है। अन्य विकल्प गलत गणना के कारण गलत हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi terminology.",
+          "critique": "Hindi translation accurately reflects the original English question and options, with appropriate time format and terminology used in Indian textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "राणीला एक आयत रंगविण्यास 30 सेकंद लागले आणि राघवला त्याच्या खोलीतून रस्त्यात जाण्यास 60 सेकंद लागले, तर राघवला राणीपेक्षा किती जास्त वेळ लागला?",
+          "stem": "एक धाव 09:00 दुपारी सुरू होते. जर धाव 1 तास 20 मिनिट लागत असेल तर ती किती वाजता संपेल?",
           "choices": [
-            "10 सेकंद",
-            "20 सेकंद",
-            "30 सेकंद",
-            "40 सेकंद"
+            "10:20 दुपारी",
+            "10:10 दुपारी",
+            "10:30 दुपारी",
+            "10:25 दुपारी"
           ],
-          "solution": "राघवला 60 सेकंद लागले आणि राणीला 30 सेकंद लागले. फरक 60 - 30 = 30 सेकंद आहे. म्हणून, योग्य उत्तर '30 सेकंद' आहे. इतर विकल्प दिलेल्या वेळांच्या बेरजेशी मेळ नाहीत.",
+          "solution": "09:00 दुपारी ला 1 तास 20 मिनिट जोडल्याने 10:20 दुपारी मिळते. इतर विकल्प चुकीच्या गणनेमुळे अयोग्य आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for time and mathematical operations.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi time expressions and technical terms.",
           "flag": null
         }
       },
@@ -167,20 +167,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Adds the times instead of subtracting",
-        "Miscalculates the difference",
         null,
-        "Confuses the order of subtraction"
+        "Adding 1 hour and 20 minutes incorrectly as 1 hour and 10 minutes",
+        "Adding 1 hour and 20 minutes as 1 hour plus 30 minutes instead of 20 minutes",
+        "Adding 1 hour and 20 minutes as 1 hour + 25 minutes instead of 20 minutes"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": null,
-      "critique": "The solution is correct and straightforward. The subtraction 60 - 30 = 30 seconds is accurate, and the correct answer is option 2. The distractors are plausible errors students might make, such as adding instead of subtracting, miscalculating, or reversing the order of subtraction.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 10:20 AM, and the author's solution is accurate. The distractors reflect common misconceptions about time addition.",
       "sources": [
         {
           "document": "ncert/5/mathematics/eemm112.pdf",
@@ -211,7 +211,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T00:53:39.624Z",
+      "generatedAt": "2026-10-28T05:55:42.367Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

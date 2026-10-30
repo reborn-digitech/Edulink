@@ -1,0 +1,672 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T16:35:28.772Z",
+  "finishedAt": "2026-10-28T16:49:41.695Z",
+  "seconds": 853,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo118.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 18 — Neural Control and Coordination",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2022 — question paper]\n22. (2 points) The stimulus received from external factors like heat, pressure, odour, movement\nand current generates impulse which travels rapidly along the length of a neuron. This\ntransmission of impulse is not a simple electric current but it is an electrochemical change\npropagating through the length of an axon. This is how the neurons communicate the\nstimulus to another neuron or effector organ.\nConsider a situation where an isolated neuron from Aplysia (sea slug) having a long axon is\nplaced under experimental condition. Two electrodes (I and II) are placed several centimeters\napart on the surface of the axon. They are connected to the recording equipment. During an\nexperiment, an ext",
+      "[INBO 2024 — question paper]\n51. (2 points) The sympathetic nervous system is best known for its role in responding to\ndangerous or stressful situations and parasympathetic nervous systems controls various\ninvoluntary physiological processes, including but not limited to those illustrated in the table\nbelow:\nPhysiologic functions Effects\nCardiovascular Decreased cardiac output (a) Increased cardiac output (b)\nPulmonary Bronchial dilation (a) Bronchial constriction (b)\nPupillary Pupillary dilation (a) Pupillary constriction (b)\nMusculoskeletal Muscular relaxation (a) Muscular contraction (b)\nAssociate physiological functions with either the sympathetic or parasympathetic nervous\nsystem and fill in the choices using alpha",
+      "[INBO 2017 — question paper]\n34. (2 points) Following are the functional aspects of stimulation of autonomous nervous\nsystem. Mark P for parasympathetic and S for sympathetic response against them.\nParasympathetic (P) or Sympathetic (S)\ni. Increase peristalsis in gastro\nintestinal tract\nii. Constriction of bronchi in lungs\niii. Dilation of pupil\niv. Inhibition of contraction of urinary\nbladder",
+      "[NSEB 2015 — question paper]\n69. Activation of the sympathetic nervous system corresponds to arousal and energy\ngeneration- the so called “fight and flight”- response. Which of the following is an\nexample of this?\na) Stimulation of activity of the stomach and intestine.\nb) Stimulation of salivary glands.\nc) Stimulation of glucose release from liver.\nd) Constriction of bronchi in the lungs.\nB 342"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 247230,
+      "in": 35,
+      "out": 34,
+      "rejects": 1,
+      "promptTokens": 26016,
+      "completionTokens": 8938
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 414946,
+      "in": 34,
+      "out": 20,
+      "rejects": 14,
+      "promptTokens": 18676,
+      "completionTokens": 7103
+    },
+    "solver": {
+      "calls": 144,
+      "ms": 109228,
+      "in": 20,
+      "out": 19,
+      "rejects": 1,
+      "promptTokens": 23585,
+      "completionTokens": 1430
+    },
+    "form": {
+      "calls": 8,
+      "ms": 60287,
+      "in": 19,
+      "out": 8,
+      "rejects": 11,
+      "promptTokens": 5818,
+      "completionTokens": 986
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 70,
+      "ms": 16975,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 35,
+      "ms": 625191,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 21739,
+      "completionTokens": 11497
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 4,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What happens to the ion concentration inside the axon when a neuron is at rest?",
+      "ms": {
+        "draft": 6673,
+        "critique": 8738
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the neural system transmits impulses from the central nervous system to skeletal muscles?",
+      "ms": {
+        "draft": 6673,
+        "critique": 9615
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "During a stressful situation, which part of the autonomic nervous system is most likely to be activated?",
+      "ms": {
+        "draft": 6673,
+        "critique": 13778
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a neuron is damaged and the myelin sheath is lost, what is the most likely consequence?",
+      "ms": {
+        "draft": 6673,
+        "critique": 8325,
+        "solver": 23436,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the cell body of a neuron?",
+      "ms": {
+        "draft": 6673,
+        "critique": 12440,
+        "solver": 2592
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the membrane potential of a neuron when it receives a stimulus?",
+      "ms": {
+        "draft": 9773,
+        "critique": 11840,
+        "solver": 2545,
+        "form": 5310
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the human brain (Figure 18.4), which structure connects the two cerebral hemispheres?",
+      "ms": {
+        "draft": 9773,
+        "critique": 12169,
+        "solver": 2339,
+        "form": 5743
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary function of the cerebral cortex?",
+      "ms": {
+        "draft": 9773,
+        "critique": 10551,
+        "solver": 3156,
+        "form": 4399
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the action potential is conducted along an axon in one direction?",
+      "ms": {
+        "draft": 9773,
+        "critique": 12330,
+        "solver": 2063,
+        "form": 6759
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a scenario where the sympathetic nervous system is activated, which of the following would most likely occur?",
+      "ms": {
+        "draft": 9773,
+        "critique": 13137,
+        "solver": 21131,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the brain is responsible for maintaining balance and coordinating voluntary movements?",
+      "ms": {
+        "draft": 5826,
+        "critique": 9957
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about the hindbrain is correct?",
+      "ms": {
+        "draft": 5826,
+        "critique": 12183,
+        "solver": 3376,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a person is exposed to a stressful situation, which of the following responses is most likely to be triggered by the sympathetic nervous system?",
+      "ms": {
+        "draft": 5826,
+        "critique": 8868
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of the sympathetic nervous system's",
+      "ms": {
+        "draft": 5826,
+        "critique": 6104
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the electrical potential difference across the resting neural membrane?",
+      "ms": {
+        "draft": 19494,
+        "critique": 6648
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person's medulla oblongata is damaged, which of the following functions is most likely to be affected?",
+      "ms": {
+        "draft": 19494,
+        "critique": 7016
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the brain is responsible for controlling respiration, cardiovascular reflexes, and gastric secretions?",
+      "ms": {
+        "draft": 19494,
+        "critique": 7749
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the corpus callosum is damaged, which of the following functions is most likely to be impaired?",
+      "ms": {
+        "draft": 19494,
+        "critique": 7714
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a synapse?",
+      "ms": {
+        "draft": 19494,
+        "critique": 9616
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the membrane at a site when a stimulus is applied to a polarised neuron?",
+      "ms": {
+        "draft": 22212,
+        "critique": 11741
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the permeability of a neuron's membrane to K+ increases after an action potential, what is the likely outcome?",
+      "ms": {
+        "draft": 22212,
+        "critique": 9466,
+        "solver": 23109,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the human brain, which part is responsible for coordinating sensory and motor signals?",
+      "ms": {
+        "draft": 22212,
+        "critique": 11258,
+        "solver": 2531,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a neuron's axon is damaged and K+ ions are unable to exit the cell, what would be the effect on the resting potential?",
+      "ms": {
+        "draft": 22212,
+        "critique": 12193
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of the human neural system is responsible for transmitting regulatory impulses from the central nervous system to the involuntary organs and smooth muscles?",
+      "ms": {
+        "draft": 5755,
+        "critique": 11979
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the corpus callosum in the cerebrum?",
+      "ms": {
+        "draft": 22212,
+        "critique": 9490,
+        "solver": 1689,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which system is responsible for maintaining the concentration gradients of ions across the axonal membrane?",
+      "ms": {
+        "draft": 5755,
+        "critique": 11786,
+        "solver": 2217,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the brain is responsible for controlling body temperature, eating, and drinking?",
+      "ms": {
+        "draft": 9773,
+        "critique": 10819,
+        "solver": 19419,
+        "form": 0,
+        "translation": 75528
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is suffering from damage to the medulla oblongata, which of the following functions is most likely to be affected?",
+      "ms": {
+        "draft": 5826,
+        "critique": 11872,
+        "solver": 17706,
+        "form": 0,
+        "translation": 58529
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a scenario where a neuron is not conducting an impulse. Which of the following correctly describes the condition of the axonal membrane?",
+      "ms": {
+        "draft": 5755,
+        "critique": 8758,
+        "solver": 1344,
+        "form": 0,
+        "translation": 70269
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a situation where the sympathetic nervous system is activated, which of the following is most likely to occur?",
+      "ms": {
+        "draft": 22212,
+        "critique": 10940,
+        "solver": 3015,
+        "form": 0,
+        "translation": 80442
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a situation where an isolated neuron is placed under experimental conditions, and an impulse is generated, which of the following best describes the nature of the impulse?",
+      "ms": {
+        "draft": 5826,
+        "critique": 10986,
+        "solver": 2195,
+        "form": 5974,
+        "translation": 97674
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person is exposed to a stressful situation. Which of the following responses would most likely occur?",
+      "ms": {
+        "draft": 19494,
+        "critique": 8129,
+        "solver": 15300,
+        "form": 6430,
+        "translation": 132702
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the sodium-potassium pump essential for the resting potential of a neuron?",
+      "ms": {
+        "draft": 6673,
+        "critique": 15869,
+        "solver": 18658,
+        "form": 0,
+        "translation": 63842
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the sodium-potassium pump is inhibited, which of the following would occur in a neuron?",
+      "ms": {
+        "draft": 5755,
+        "critique": 6351,
+        "solver": 1102,
+        "form": 0,
+        "translation": 40076
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What happens to the ion concentration inside the axon when a neuron is at rest?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which part of the neural system transmits impulses from the central nervous system to skeletal muscles?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "During a stressful situation, which part of the autonomic nervous system is most likely to be activated?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a neuron is damaged and the myelin sheath is lost, what is the most likely consequence?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the primary function of the cell body of a neuron?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to the membrane potential of a neuron when it receives a stimulus?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Believes that the membrane becomes more negative, which is n…\"); distractor 2's reason is not a one-line misconception (\"Believes that the membrane potential remains the same, which…\"); distractor 3's reason is not a one-line misconception (\"Believes that the membrane potential becomes zero, which is …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of the human brain (Figure 18.4), which structure connects the two cerebral hemispheres?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses the cerebrum with the structure that connects the h…\"); distractor 1's reason is not a one-line misconception (\"Confuses the thalamus with the structure that connects the h…\"); distractor 2's reason is not a one-line misconception (\"Confuses the hypothalamus with the structure that connects t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the primary function of the cerebral cortex?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses the cerebral cortex with the hypothalamus, which co…\"); distractor 1's reason is not a one-line misconception (\"Confuses the cerebral cortex with the hypothalamus, which pr…\"); distractor 3's reason is not a one-line misconception (\"Confuses the cerebral cortex with the limbic system, which i…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why the action potential is conducted along an axon in one direction?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Believes that the myelin sheath is the reason for directiona…\"); distractor 1's reason is not a one-line misconception (\"Believes that the sodium-potassium pump is responsible for d…\"); distractor 3's reason is not a one-line misconception (\"Believes that the resting potential being negative is the re…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a scenario where the sympathetic nervous system is activated, which of the following would most likely occur?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Believes that the sympathetic nervous system increases saliv…\"); distractor 1's reason is not a one-line misconception (\"Believes that the sympathetic nervous system decreases heart…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which part of the brain is responsible for maintaining balance and coordinating voluntary movements?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about the hindbrain is correct?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a person is exposed to a stressful situation, which of the following responses is most likely to be triggered by the sympathetic nervous system?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is an example of the sympathetic nervous system's",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a function of the parasympathetic nervous system?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used to describe the electrical potential difference across the resting neural membrane?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person's medulla oblongata is damaged, which of the following functions is most likely to be affected?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the brain is responsible for controlling respiration, cardiovascular reflexes, and gastric secretions?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the corpus callosum is damaged, which of the following functions is most likely to be impaired?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is an example of a synapse?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens to the membrane at a site when a stimulus is applied to a polarised neuron?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the permeability of a neuron's membrane to K+ increases after an action potential, what is the likely outcome?",
+      "reason": "options 0 and 1 are the same (\"The membrane becomes more positively charged inside\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of the human brain, which part is responsible for coordinating sensory and motor signals?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'brain'"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a neuron's axon is damaged and K+ ions are unable to exit the cell, what would be the effect on the resting potential?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which part of the human neural system is responsible for transmitting regulatory impulses from the central nervous system to the involuntary organs and smooth muscles?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main function of the corpus callosum in the cerebrum?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'brain'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which system is responsible for maintaining the concentration gradients of ions across the axonal membrane?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

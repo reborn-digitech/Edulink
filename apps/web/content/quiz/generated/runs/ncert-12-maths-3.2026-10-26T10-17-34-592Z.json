@@ -1,0 +1,905 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T10:17:34.592Z",
+  "finishedAt": "2026-10-26T10:28:33.494Z",
+  "seconds": 659,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics Part-II",
+    "bookCode": "lemh2",
+    "document": "ncert/12/mathematics/lemh203.pdf",
+    "classLevel": 12,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — Differential Equations",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, sample question paper, 2022-23]\n29. Solve the differential equation: 𝑦𝑑𝑥 + (𝑥 − 𝑦 )𝑑𝑦 = 0 ଶ\nOR\nSolve the differential equation: 𝑥𝑑𝑦 − 𝑦𝑑𝑥 = ඥ𝑥 + 𝑦 𝑑𝑥 ଶ ଶ",
+      "[CBSE Class XII Mathematics, sample question paper, 2023-24]\n29. Solve the differential equation: ye dx   xe  y dy,   y  0 . \n\nOR\n2 dy\n\n\n  \nSolve the differential equation:  cos x  dx  y  tan x;   0  x  2   .",
+      "[CBSE Class XII Mathematics, marking scheme, 2023-24]\n6. (c)  2  3  2  2\nThe degree of the differential equation 1  dy       d y 2  is 2\n   dx     dx ",
+      "[CBSE Class XII Mathematics, sample question paper, 2024-25]\n14. What is the general solution of the differential equation e y ′ = x?\n(A)𝑦 = 𝑥𝑙𝑜𝑔𝑥 + 𝑐 (B) 𝑦 = 𝑥𝑙𝑜𝑔𝑥 − 𝑥 + 𝑐"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 227412,
+      "in": 52,
+      "out": 41,
+      "rejects": 12,
+      "promptTokens": 63068,
+      "completionTokens": 11841
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 330373,
+      "in": 41,
+      "out": 33,
+      "rejects": 8,
+      "promptTokens": 22398,
+      "completionTokens": 8503
+    },
+    "solver": {
+      "calls": 213,
+      "ms": 110142,
+      "in": 33,
+      "out": 21,
+      "rejects": 12,
+      "promptTokens": 39254,
+      "completionTokens": 2138
+    },
+    "form": {
+      "calls": 3,
+      "ms": 8395,
+      "in": 21,
+      "out": 7,
+      "rejects": 14,
+      "promptTokens": 709,
+      "completionTokens": 213
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 3424,
+      "in": 7,
+      "out": 0,
+      "rejects": 7,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 3660,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 149,
+      "completionTokens": 264
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the definition of a differential equation according to the passage?",
+      "ms": {
+        "draft": 12372,
+        "critique": 5653
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the degree of a differential equation?",
+      "ms": {
+        "draft": 12372,
+        "critique": 4897,
+        "solver": 1262,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the order of a differential equation according to the passage?",
+      "ms": {
+        "draft": 12372,
+        "critique": 5142,
+        "solver": 1892,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following differential equations has an order of 3?",
+      "ms": {
+        "draft": 12372,
+        "critique": 8072
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a first-order differential equation?",
+      "ms": {
+        "draft": 12372,
+        "critique": 6370,
+        "solver": 15940
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the general solution of the differential equation dy/dx = -4xy given that y = 1 when x = 0?",
+      "ms": {
+        "draft": 3414,
+        "critique": 8341
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the general solution of the differential equation (2 - y) dy = (x + 1) dx?",
+      "ms": {
+        "draft": 3414,
+        "critique": 8121,
+        "solver": 1555
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the particular solution of the differential equation dy/dx = (2x + 1)/x that passes through the point (1, 1)?",
+      "ms": {
+        "draft": 3414,
+        "critique": 7878,
+        "solver": 2147
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a homogeneous differential equation?",
+      "ms": {
+        "draft": 4942,
+        "critique": 7155,
+        "solver": 1616
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the general solution of the differential equation e^y' = x?",
+      "ms": {
+        "draft": 4942,
+        "critique": 7464,
+        "solver": 2444,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the general solution of the differential equation dy/dx + y = cos x?",
+      "ms": {
+        "draft": 7390,
+        "critique": 6669
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general solution of the differential equation y dy = 2x dx?",
+      "ms": {
+        "draft": 7063,
+        "critique": 10736,
+        "solver": 18127
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the equation of a curve passing through (0, 1) if the slope of the tangent at any point (x, y) is equal to the sum of the x-coordinate and the product of the x and y coordinates?",
+      "ms": {
+        "draft": 7390,
+        "critique": 7965
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the general solution of the differential equation x dy/dx + 2y = x^2?",
+      "ms": {
+        "draft": 7390,
+        "critique": 5980,
+        "solver": 12089,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the general solution of the differential equation: (tan y - x) dy = (1 + y^2) dx?",
+      "ms": {
+        "draft": 23597,
+        "critique": 7782,
+        "solver": 1469,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the method that allows us to solve differential equations by expressing them in terms of variables that can be integrated separately?",
+      "ms": {
+        "draft": 3862,
+        "critique": 5817
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the general solution of the differential equation: (x - 3xy^2) dx = (y - 3x^2y) dy?",
+      "ms": {
+        "draft": 23597,
+        "critique": 6674,
+        "solver": 757
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the integrating factor of the differential equation dy/dx + 2y = sin x?",
+      "ms": {
+        "draft": 4957,
+        "critique": 4989,
+        "solver": 1303,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following represents the general solution of the differential equation dy/dx + y = x?",
+      "ms": {
+        "draft": 4957,
+        "critique": 5225,
+        "solver": 1888,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the general solution of the differential equation (x - 3xy) dx = (y - 3xy) dy?",
+      "ms": {
+        "draft": 4199,
+        "critique": 5249,
+        "solver": 2634
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the general solution of the differential equation dy/dx + y cot x = 2x + x cot x?",
+      "ms": {
+        "draft": 4957,
+        "critique": 5864,
+        "solver": 898
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general form of a first-order linear differential equation?",
+      "ms": {
+        "draft": 4957,
+        "critique": 5095,
+        "solver": 1768,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the general solution of the differential equation y dx - (x + 2y^2) dy = 0?",
+      "ms": {
+        "draft": 4957,
+        "critique": 7251,
+        "solver": 2268
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the degree of the differential equation [1 + (dy/dx)^2]^3 = (d^2y/dx^2)^2?",
+      "ms": {
+        "draft": 3785,
+        "critique": 7496
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Solve the differential equation y dx + (x - y^2) dy = 0.",
+      "ms": {
+        "draft": 3785,
+        "critique": 7971,
+        "solver": 1251,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Show that the differential equation (x + y) dy + (x - y) dx = 0 is homogeneous and find its particular solution when x = 1 and y = 1.",
+      "ms": {
+        "draft": 3785,
+        "critique": 7078,
+        "solver": 2140
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the general solution of the differential equation e^y' = x?",
+      "ms": {
+        "draft": 3785,
+        "critique": 6815,
+        "solver": 11881,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general form of a differential equation that can be solved by separating variables?",
+      "ms": {
+        "draft": 3560,
+        "critique": 7872
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the general solution of the differential equation y log y dx – x dy = 0?",
+      "ms": {
+        "draft": 3560,
+        "critique": 7075,
+        "solver": 2481
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of C, if the curve passes through (–2, 3) and its equation is y² = x² + C?",
+      "ms": {
+        "draft": 3560,
+        "critique": 7574,
+        "solver": 14534
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the slope of the tangent to a curve at any point (x, y) is given by dy/dx = e^x sin x, what is the general solution of the differential equation?",
+      "ms": {
+        "draft": 3560,
+        "critique": 7963,
+        "solver": 13245,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the general solution of the differential equation e^x tan y dx + (1 – e^x) sec^2 y dy = 0?",
+      "ms": {
+        "draft": 3560,
+        "critique": 6944,
+        "solver": 13054,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a particular solution of a differential equation?",
+      "ms": {
+        "draft": 3932,
+        "critique": 6346,
+        "solver": 855,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the degree of the differential equation − sin y = 0?",
+      "ms": {
+        "draft": 58594,
+        "critique": 5092,
+        "solver": 517,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for a solution of a differential equation that contains arbitrary constants?",
+      "ms": {
+        "draft": 3414,
+        "critique": 8731,
+        "solver": 1629,
+        "form": 2370
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following differential equations has a degree of 1?",
+      "ms": {
+        "draft": 12372,
+        "critique": 9404,
+        "solver": 12833,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for a solution of a differential equation that does not contain arbitrary constants?",
+      "ms": {
+        "draft": 3414,
+        "critique": 6851,
+        "solver": 1631,
+        "form": 3180
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which substitution is used to solve a homogeneous differential equation?",
+      "ms": {
+        "draft": 4942,
+        "critique": 7857,
+        "solver": 1871,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the order of the differential equation: d^2y/dx^2 + 5x(dy/dx) - 6y = log x?",
+      "ms": {
+        "draft": 23597,
+        "critique": 6820,
+        "solver": 1235,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which substitution is used to solve a homogeneous differential equation?",
+      "ms": {
+        "draft": 3785,
+        "critique": 6540,
+        "solver": 1685,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for a solution of a differential equation that contains arbitrary constants?",
+      "ms": {
+        "draft": 3932,
+        "critique": 6079,
+        "solver": 1156,
+        "form": 3651
+      },
+      "outcome": "dedupe",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the term used for the curve y = φ(x) that satisfies a differential equation?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the general solution of the differential equation dy/dx = (x + 2)/(y + 2)?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the general solution of the differential equation (e^x + e^(-x)) dy - (e^x - e^(-x)) dx = 0?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the general solution of the differential equation y log y dx - x dy = 0?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which term was first used by Joseph Louis Lagrange to describe the process of finding a function that satisfies a differential equation?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following is a method developed by John Bernoulli to solve differential equations?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the definition of a differential equation according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the degree of a differential equation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the order of a differential equation according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following differential equations has an order of 3?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a first-order differential equation?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the general solution of the differential equation dy/dx = -4xy given that y = 1 when x = 0?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the general solution of the differential equation (2 - y) dy = (x + 1) dx?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the particular solution of the differential equation dy/dx = (2x + 1)/x that passes through the point (1, 1)?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a homogeneous differential equation?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the general solution of the differential equation e^y' = x?",
+      "reason": "options 0 and 1 say the same thing (\"y = x log x + c\" / \"y = x log x − x + c\"); options 0 and 2 say the same thing (\"y = x log x + c\" / \"y = x log x + x + c\"); options 0 and 3 say the same thing (\"y = x log x + c\" / \"y = x log x + 2x + c\"); options 1 and 2 say the same thing (\"y = x log x − x + c\" / \"y = x log x + x + c\"); options 2 and 3 say the same thing (\"y = x log x + x + c\" / \"y = x log x + 2x + c\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the general solution of the differential equation dy/dx + y = cos x?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the general solution of the differential equation y dy = 2x dx?",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the equation of a curve passing through (0, 1) if the slope of the tangent at any point (x, y) is equal to the sum of the x-coordinate and the product of the x and y coordinates?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the general solution of the differential equation x dy/dx + 2y = x^2?",
+      "reason": "options 0 and 1 say the same thing (\"y = (x^2 + C)/x^2\" / \"y = (x^2 + C)/x\"); options 0 and 2 say the same thing (\"y = (x^2 + C)/x^2\" / \"y = (x^2 + C)/x^3\"); options 0 and 3 say the same thing (\"y = (x^2 + C)/x^2\" / \"y = (x + C)/x\"); options 1 and 2 say the same thing (\"y = (x^2 + C)/x\" / \"y = (x^2 + C)/x^3\"); options 1 and 3 say the same thing (\"y = (x^2 + C)/x\" / \"y = (x + C)/x\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the general solution of the differential equation: (tan y - x) dy = (1 + y^2) dx?",
+      "reason": "options 0 and 1 say the same thing (\"x = (tan y - 1) + C e^{-tan y}\" / \"y = (tan x - 1) + C e^{-tan x}\"); options 0 and 2 say the same thing (\"x = (tan y - 1) + C e^{-tan y}\" / \"x = (tan x - 1) + C e^{-tan y}\"); options 0 and 3 say the same thing (\"x = (tan y - 1) + C e^{-tan y}\" / \"y = (tan y - 1) + C e^{-tan x}\"); options 1 and 2 say the same thing (\"y = (tan x - 1) + C e^{-tan x}\" / \"x = (tan x - 1) + C e^{-tan y}\"); options 1 and 3 say the same thing (\"y = (tan x - 1) + C e^{-tan x}\" / \"y = (tan y - 1) + C e^{-tan x}\"); options 2 and 3 say the same thing (\"x = (tan x - 1) + C e^{-tan y}\" / \"y = (tan y - 1) + C e^{-tan x}\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following best describes the method that allows us to solve differential equations by expressing them in terms of variables that can be integrated separately?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the general solution of the differential equation: (x - 3xy^2) dx = (y - 3x^2y) dy?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following is a method for solving differential e"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is the general solution of the differential equation (tan y - x) dy = (1 + y) dx?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the general solution of the differential equation e^y dy + (y e^y + 2x) dx = 0?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is the general solution of the differential equation dy/dx = 3x + 4y?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is the general solution of the differential equation dy/dx = (y/x) tan(y/x)?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the order and degree of the differential equation (d^2y/dx^2) + 5x(dy/dx) - 6y = log x?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the integrating factor of the differential equation dy/dx + 2y = sin x?",
+      "reason": "checkExpr \"e^(2x)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following represents the general solution of the differential equation dy/dx + y = x?",
+      "reason": "options 0 and 2 say the same thing (\"y = x - 1 + Ce^x\" / \"y = x - 1 + Ce^(-x)\"); options 0 and 3 say the same thing (\"y = x - 1 + Ce^x\" / \"y = x + 1 + Ce^x\"); options 1 and 2 say the same thing (\"y = x + 1 + Ce^(-x)\" / \"y = x - 1 + Ce^(-x)\"); options 1 and 3 say the same thing (\"y = x + 1 + Ce^(-x)\" / \"y = x + 1 + Ce^x\"); checkExpr \"x - 1 + Ce^(-x)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is the general solution of the differential equation (x - 3xy) dx = (y - 3xy) dy?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the general solution of the differential equation dy/dx + y cot x = 2x + x cot x?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the general form of a first-order linear differential equation?",
+      "reason": "options 0 and 1 say the same thing (\"dy/dx + P(x) y = Q(x)\" / \"dy/dx + P(x) = Q(y)\"); options 0 and 2 say the same thing (\"dy/dx + P(x) y = Q(x)\" / \"dy/dx = P(x) Q(y)\"); options 0 and 3 say the same thing (\"dy/dx + P(x) y = Q(x)\" / \"dy/dx + P(y) y = Q(x)\"); options 1 and 2 are the same (\"dy/dx + P(x) = Q(y)\"); options 1 and 3 say the same thing (\"dy/dx + P(x) = Q(y)\" / \"dy/dx + P(y) y = Q(x)\"); options 2 and 3 say the same thing (\"dy/dx = P(x) Q(y)\" / \"dy/dx + P(y) y = Q(x)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the general solution of the differential equation y dx - (x + 2y^2) dy = 0?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the degree of the differential equation [1 + (dy/dx)^2]^3 = (d^2y/dx^2)^2?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Solve the differential equation y dx + (x - y^2) dy = 0.",
+      "reason": "options 0 and 2 say the same thing (\"x + y^2 = C\" / \"x^2 + y^2 = C\"); options 0 and 3 say the same thing (\"x + y^2 = C\" / \"x^2 + y = C\"); options 2 and 3 say the same thing (\"x^2 + y^2 = C\" / \"x^2 + y = C\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Show that the differential equation (x + y) dy + (x - y) dx = 0 is homogeneous and find its particular solution when x = 1 and y = 1.",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the general solution of the differential equation e^y' = x?",
+      "reason": "options 0 and 1 say the same thing (\"y = x log x - c\" / \"y = x log x - x + c\"); options 0 and 2 say the same thing (\"y = x log x - c\" / \"y = x log x + x + c\"); options 0 and 3 say the same thing (\"y = x log x - c\" / \"y = x log x - x - c\"); options 1 and 2 say the same thing (\"y = x log x - x + c\" / \"y = x log x + x + c\"); options 1 and 3 say the same thing (\"y = x log x - x + c\" / \"y = x log x - x - c\"); options 2 and 3 say the same thing (\"y = x log x + x + c\" / \"y = x log x - x - c\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the general form of a differential equation that can be solved by separating variables?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the general solution of the differential equation y log y dx – x dy = 0?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the value of C, if the curve passes through (–2, 3) and its equation is y² = x² + C?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the slope of the tangent to a curve at any point (x, y) is given by dy/dx = e^x sin x, what is the general solution of the differential equation?",
+      "reason": "options 0 and 1 say the same thing (\"y = e^x (sin x - cos x) + C\" / \"y = e^x (sin x - 2 cos x) + C\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the general solution of the differential equation e^x tan y dx + (1 – e^x) sec^2 y dy = 0?",
+      "reason": "options 0 and 1 say the same thing (\"tan y = C (1 – e^x)\" / \"tan y = C (1 + e^x)\"); options 0 and 2 say the same thing (\"tan y = C (1 – e^x)\" / \"tan y = C (e^x – 1)\"); options 0 and 3 say the same thing (\"tan y = C (1 – e^x)\" / \"tan y = C (1 + e^x)\"); options 1 and 2 say the same thing (\"tan y = C (1 + e^x)\" / \"tan y = C (e^x – 1)\"); options 1 and 3 are the same (\"tan y = C (1 + e^x)\"); options 2 and 3 say the same thing (\"tan y = C (e^x – 1)\" / \"tan y = C (1 + e^x)\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a particular solution of a differential equation?",
+      "reason": "options 0 and 3 say the same thing (\"y = a sin(x + b)\" / \"y = a cos x + b sin x\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the degree of the differential equation − sin y = 0?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term used for a solution of a differential equation that contains arbitrary constants?",
+      "reason": "near-duplicate of served question cmvi0sbal0b96gpfhqihs6r7p (cosine 0.952 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following differential equations has a degree of 1?",
+      "reason": "near-duplicate of served question cmvi0sbae0b90gpfhomuu0c1f (cosine 0.962 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term used for a solution of a differential equation that does not contain arbitrary constants?",
+      "reason": "near-duplicate of served question cmvi0sbao0b9cgpfhfuq620az (cosine 0.933 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which substitution is used to solve a homogeneous differential equation?",
+      "reason": "near-duplicate of served question cmvi0sbaz0ba0gpfhahpx0oty (cosine 0.938 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the order of the differential equation: d^2y/dx^2 + 5x(dy/dx) - 6y = log x?",
+      "reason": "near-duplicate of served question cmvi0sbau0b9ogpfhp0x7ufh0 (cosine 0.994 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which substitution is used to solve a homogeneous differential equation?",
+      "reason": "near-duplicate of served question cmvi0sbaz0ba0gpfhahpx0oty (cosine 0.938 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for a solution of a differential equation that contains arbitrary constants?",
+      "reason": "near-duplicate of served question cmvi0sbal0b96gpfhqihs6r7p (cosine 0.949 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

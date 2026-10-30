@@ -1,0 +1,743 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T17:53:16.262Z",
+  "finishedAt": "2026-10-29T18:05:51.989Z",
+  "seconds": 756,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu112.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 12 — Earth, Moon, and the Sun",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2023 — question paper]\n11. Angular size of an object is the angle subtended by that object for that distance and size.\nFrom the surface of the Earth, the Sun and the Moon appear to be of the same size, because\nboth subtend nearly the same angle at the surface of the Earth.\nIf someone observes the Moon from the equator of the Earth, it takes nearly 2 minutes for\nthe full disc of the Moon to sink below the horizon. Angular size of the Earth, when observed\nfrom the Moon is nearly ...\nA. 0.5 ◦ B. 1 ◦ C. 1.5 ◦ D. 2 ◦",
+      "[INJSO 2014 — question paper]\n3. Which of the following cannot be visible from our moon?\nI) Annular eclipse of the Sun.\nII) Partial eclipse of the Earth.\nIII) Total eclipse of the Sun.\na) I and II b) II and III\nc) I and IV d) Only II",
+      "[INJSO 2023 — solutions or answer key]\n11. Angular size of an object is the angle subtended by that object for that distance and size.\nFrom the surface of the Earth, the Sun and the Moon appear to be of the same size, because\nboth subtend nearly the same angle at the surface of the Earth.\nIf someone observes the Moon from the equator of the Earth, it takes nearly 2 minutes for\nthe full disc of the Moon to sink below the horizon. Angular size of the Earth, when observed\nfrom the Moon is nearly ...\nA. 0.5 ◦ B. 1 ◦ C. 1.5 ◦ D. 2 ◦\nSolution:\nAs we need to get approximate answer, we can neglect radii of the Earth and the Moon\nin comparison with the distance r between the two. From the Earth, the circumference of\n2πr is covered in 24 h",
+      "[INJSO 2013 — question paper]\n72. Considering Earth and the Sun to be spherical object, the amount of radiant energy\nreceived by the Earth per second is nearly\nA. 1360 W.\nB. 1.75 X 10 17 W.\nC. 3.5 X 10 17 W.\nD. 7 X 10 17 W."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 218709,
+      "in": 39,
+      "out": 37,
+      "rejects": 3,
+      "promptTokens": 40525,
+      "completionTokens": 11455
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 268923,
+      "in": 37,
+      "out": 36,
+      "rejects": 1,
+      "promptTokens": 20762,
+      "completionTokens": 7155
+    },
+    "solver": {
+      "calls": 214,
+      "ms": 107054,
+      "in": 36,
+      "out": 34,
+      "rejects": 2,
+      "promptTokens": 35878,
+      "completionTokens": 2004
+    },
+    "form": {
+      "calls": 10,
+      "ms": 52531,
+      "in": 34,
+      "out": 16,
+      "rejects": 18,
+      "promptTokens": 9554,
+      "completionTokens": 1404
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 50,
+      "ms": 8554,
+      "in": 16,
+      "out": 12,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 51,
+      "ms": 617733,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 31731,
+      "completionTokens": 16661
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 1,
+    "4": 3,
+    "5": 4,
+    "6": 2
+  },
+  "flagged": 9,
+  "needsFigure": 4,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following best explains why the Big Dipper appears to move around the Pole Star in the night sky?",
+      "ms": {
+        "draft": 6545,
+        "critique": 6713,
+        "solver": 1500,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an observer on the Earth sees the Moon take 2 minutes to sink below the horizon, what would be the angular size of the Earth when viewed from the Moon?",
+      "ms": {
+        "draft": 6545,
+        "critique": 8592,
+        "solver": 2085
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary reason for the changing appearance of stars in the night sky throughout the year?",
+      "ms": {
+        "draft": 6545,
+        "critique": 7045,
+        "solver": 1846
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why does the Sun appear to rise in the east and set in the west?",
+      "ms": {
+        "draft": 6545,
+        "critique": 6798,
+        "solver": 1926,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does the Northern Hemisphere experience more intense sunlight in June?",
+      "ms": {
+        "draft": 8919,
+        "critique": 7131,
+        "solver": 1547,
+        "form": 4180
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage and the diagram, what causes the seasons on Earth?",
+      "ms": {
+        "draft": 8919,
+        "critique": 6821,
+        "solver": 1838,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What happens at the North Pole during the summer solstice?",
+      "ms": {
+        "draft": 8919,
+        "critique": 6520,
+        "solver": 2278,
+        "form": 2680
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the Earth's axis were not tilted, what would happen to the length of day and night?",
+      "ms": {
+        "draft": 8919,
+        "critique": 7279,
+        "solver": 16016,
+        "form": 3042
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the duration of daylight after the summer solstice in the Northern Hemisphere?",
+      "ms": {
+        "draft": 8919,
+        "critique": 6477,
+        "solver": 1511,
+        "form": 3421
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following correctly describes the conditions during a total solar eclipse?",
+      "ms": {
+        "draft": 4304,
+        "critique": 8185,
+        "solver": 1738,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "During a solar eclipse, the Moon blocks the light from the Sun. Why can the Moon, which is smaller than the Sun, appear to cover the Sun completely?",
+      "ms": {
+        "draft": 4304,
+        "critique": 7489,
+        "solver": 16470,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The Moon's apparent size in the sky is similar to the Sun's, allowing it to block the Sun during a solar eclipse. If the Moon were the same size as the Sun but twice as far from Earth, what would happen to the possibility of a total solar eclipse?",
+      "ms": {
+        "draft": 4304,
+        "critique": 5771,
+        "solver": 1835,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about a lunar eclipse?",
+      "ms": {
+        "draft": 4304,
+        "critique": 6466,
+        "solver": 1580,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following situations would a lunar eclipse definitely not occur?",
+      "ms": {
+        "draft": 4685,
+        "critique": 5562
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "During a total solar eclipse, which of the following is true?",
+      "ms": {
+        "draft": 4685,
+        "critique": 6625,
+        "solver": 1362,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does the Moon appear to block the Sun during a solar eclipse, even though the Moon is much smaller than the Sun?",
+      "ms": {
+        "draft": 4955,
+        "critique": 6530,
+        "solver": 1376,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why does the Northern Hemisphere receive more intense sunlight in June?",
+      "ms": {
+        "draft": 17718,
+        "critique": 5407,
+        "solver": 1240,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person observes a solar eclipse from a location on Earth where the Moon partially blocks the Sun, what type of eclipse is this called?",
+      "ms": {
+        "draft": 4955,
+        "critique": 6916,
+        "solver": 11582,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What would happen to the length of daylight in the Northern Hemisphere if the Earth's axis was not tilted?",
+      "ms": {
+        "draft": 17718,
+        "critique": 7183,
+        "solver": 1270,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which direction does the Sun appear to move in the sky due to the Earth's rotation?",
+      "ms": {
+        "draft": 7802,
+        "critique": 7153,
+        "solver": 1847,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When the Earth rotates on its axis, which direction does it spin when viewed from above the North Pole?",
+      "ms": {
+        "draft": 5474,
+        "critique": 6675,
+        "solver": 1384,
+        "form": 3416
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following causes day and night on Earth?",
+      "ms": {
+        "draft": 3698,
+        "critique": 6186,
+        "solver": 1623,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When the Moon fully covers the Sun from our view, what type of solar eclipse is it called?",
+      "ms": {
+        "draft": 3698,
+        "critique": 4395,
+        "solver": 845,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why can a total solar eclipse be seen only from a small part of the Earth?",
+      "ms": {
+        "draft": 4685,
+        "critique": 6958,
+        "solver": 1164,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a cause of day and night?",
+      "ms": {
+        "draft": 4685,
+        "critique": 6033,
+        "solver": 2207,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the reason for the occurrence of seasons on Earth?",
+      "ms": {
+        "draft": 3698,
+        "critique": 5562,
+        "solver": 1869,
+        "form": 0,
+        "translation": 53046
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following events occurs when the Earth comes between the Sun and the Moon?",
+      "ms": {
+        "draft": 3698,
+        "critique": 5465,
+        "solver": 1062,
+        "form": 0,
+        "translation": 40428
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an observer in Pune notes the orientation of the Big Dipper and the Pole Star at 11 PM and then again at 1 AM, what would they observe?",
+      "ms": {
+        "draft": 6545,
+        "critique": 7621,
+        "solver": 1660,
+        "form": 0,
+        "translation": 62456
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "During a solar eclipse, why is it not safe to look directly at the Sun even when the Moon is blocking it?",
+      "ms": {
+        "draft": 4955,
+        "critique": 6041,
+        "solver": 1791,
+        "form": 0,
+        "translation": 50542
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Based on the description of the Foucault pendulum, what can be inferred about its purpose?",
+      "ms": {
+        "draft": 6545,
+        "critique": 6755,
+        "solver": 1938,
+        "form": 0,
+        "translation": 49567
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the length of daylight in the Northern Hemisphere after the summer solstice?",
+      "ms": {
+        "draft": 17718,
+        "critique": 8699,
+        "solver": 11810,
+        "form": 0,
+        "translation": 58341
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "During a solar eclipse, the Sun appears to be completely blocked by the Moon. If the Moon were twice as far from the Earth as it is now, what would happen to the appearance of the Sun?",
+      "ms": {
+        "draft": 4304,
+        "critique": 6348,
+        "solver": 2109,
+        "form": 0,
+        "translation": 49221
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A solar eclipse can only be seen from a small region on Earth. Why is this the case?",
+      "ms": {
+        "draft": 4955,
+        "critique": 6066,
+        "solver": 2358,
+        "form": 0,
+        "translation": 44592
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the Moon's orbit were perfectly aligned with the Earth's orbit around the Sun, how often would lunar eclipses occur?",
+      "ms": {
+        "draft": 4685,
+        "critique": 5530,
+        "solver": 1345,
+        "form": 0,
+        "translation": 44250
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person is at the equator, how long does the day last throughout the year?",
+      "ms": {
+        "draft": 8919,
+        "critique": 8413,
+        "solver": 15709,
+        "form": 4605,
+        "translation": 54221
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the Moon were to move farther away from the Earth, how would this affect the possibility of a total solar eclipse?",
+      "ms": {
+        "draft": 4955,
+        "critique": 7206,
+        "solver": 1759,
+        "form": 1,
+        "translation": 51538
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do different stars appear in the night sky over the course of a year?",
+      "ms": {
+        "draft": 7802,
+        "critique": 8137,
+        "solver": 1874,
+        "form": 0,
+        "translation": 53834
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"What causes the change in the length of shadows of objects during the day?\",\"options\":"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Why is it safe to watch a lunar eclipse with the naked eye, but not a solar eclipse?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best explains why the Big Dipper appears to move around the Pole Star in the night sky?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the stability of the Pole Star's position in …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If an observer on the Earth sees the Moon take 2 minutes to sink below the horizon, what would be the angular size of the Earth when viewed from the Moon?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the primary reason for the changing appearance of stars in the night sky throughout the year?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why does the Sun appear to rise in the east and set in the west?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why does the Northern Hemisphere experience more intense sunlight in June?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, not a distractor in this case (index 2 is co…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage and the diagram, what causes the seasons on Earth?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"assumes the Earth's orbit around the Sun is the main cause o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What happens at the North Pole during the summer solstice?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"incorrectly assumes the North Pole receives no sunlight, whi…\"); distractor 3's reason is not a one-line misconception (\"assumes the North Pole receives sunlight for 18 hours, which…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the Earth's axis were not tilted, what would happen to the length of day and night?",
+      "reason": "options 1 and 2 say the same thing (\"They would become longer in summer and shorter in winter\" / \"They would become shorter in summer and longer in winter\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to the duration of daylight after the summer solstice in the Northern Hemisphere?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"assumes the duration of daylight remains the same, which is …\"); distractor 3's reason is not a one-line misconception (\"assumes the duration of daylight becomes 12 hours, which is …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following correctly describes the conditions during a total solar eclipse?",
+      "reason": "options 0 and 1 say the same thing (\"The Earth is between the Sun and the Moon.\" / \"The Moon is between the Sun and the Earth.\"); options 0 and 2 say the same thing (\"The Earth is between the Sun and the Moon.\" / \"The Sun is between the Earth and the Moon.\"); options 1 and 2 say the same thing (\"The Moon is between the Sun and the Earth.\" / \"The Sun is between the Earth and the Moon.\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "During a solar eclipse, the Moon blocks the light from the Sun. Why can the Moon, which is smaller than the Sun, appear to cover the Sun completely?",
+      "reason": "options 0 and 3 are the same (\"The Moon is much closer to Earth than the Sun.\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The Moon's apparent size in the sky is similar to the Sun's, allowing it to block the Sun during a solar eclipse. If the Moon were the same size as the Sun but twice as far from Earth, what would happen to the possibility of a total solar eclipse?",
+      "reason": "options 0 and 1 say the same thing (\"It would still be possible to have a total solar eclipse.\" / \"It would not be possible to have a total solar eclipse.\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about a lunar eclipse?",
+      "reason": "options 0 and 1 say the same thing (\"It occurs when the Moon is between the Sun and the Earth.\" / \"It occurs when the Earth is between the Sun and the Moon.\"); options 0 and 2 say the same thing (\"It occurs when the Moon is between the Sun and the Earth.\" / \"It occurs when the Sun is between the Earth and the Moon.\"); options 1 and 2 say the same thing (\"It occurs when the Earth is between the Sun and the Moon.\" / \"It occurs when the Sun is between the Earth and the Moon.\")"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following best explains why the equator experiences little variation in the intensity of sunlight throughout the year?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In which of the following situations would a lunar eclipse definitely not occur?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "During a total solar eclipse, which of the following is true?",
+      "reason": "options 0 and 1 say the same thing (\"The Earth comes between the Sun and the Moon\" / \"The Sun comes between the Earth and the Moon\"); options 0 and 2 say the same thing (\"The Earth comes between the Sun and the Moon\" / \"The Moon comes between the Sun and the Earth\"); options 1 and 2 say the same thing (\"The Sun comes between the Earth and the Moon\" / \"The Moon comes between the Sun and the Earth\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why does the Moon appear to block the Sun during a solar eclipse, even though the Moon is much smaller than the Sun?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct reason but not stated in the options…\"); distractor 3's reason is not a one-line misconception (\"Confuses the reflective properties of the Moon and Sun with …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why does the Northern Hemisphere receive more intense sunlight in June?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct concept but not the reason for intensity…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person observes a solar eclipse from a location on Earth where the Moon partially blocks the Sun, what type of eclipse is this called?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What would happen to the length of daylight in the Northern Hemisphere if the Earth's axis was not tilted?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Fails to recognize the role of tilt in causing seasonal vari…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which direction does the Sun appear to move in the sky due to the Earth's rotation?",
+      "reason": "options 0 and 1 say the same thing (\"East to West\" / \"West to East\"); options 2 and 3 say the same thing (\"North to South\" / \"South to North\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "When the Earth rotates on its axis, which direction does it spin when viewed from above the North Pole?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Imagines the Earth moving in a vertical direction instead of…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following causes day and night on Earth?",
+      "reason": "near-duplicate of served question cmvevj4m501u5god8ufidzcnv (cosine 0.944 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "When the Moon fully covers the Sun from our view, what type of solar eclipse is it called?",
+      "reason": "near-duplicate of served question cmvmnuntg01izgp21ujim7den (cosine 0.968 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why can a total solar eclipse be seen only from a small part of the Earth?",
+      "reason": "near-duplicate of served question cmvevj4sw01vbgod8s8fx4iyb (cosine 0.956 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a cause of day and night?",
+      "reason": "near-duplicate of served question cmvevj4m501u5god8ufidzcnv (cosine 0.943 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

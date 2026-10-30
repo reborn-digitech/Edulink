@@ -1,0 +1,669 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T06:30:44.457Z",
+  "finishedAt": "2026-10-30T06:49:27.404Z",
+  "seconds": 1123,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc101.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 1 — Chemical Reactions and Equations",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2025-26]\n17. D. Both equations 1 and 2 are redox reactions, p= 2 and q=10 1",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n5. C. Displacement reaction",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n27. to 33 are short answer questions.\n27 i) 3\nii)\nIdentify the types of reaction mentioned above in (i) and (ii). Give one example for\neach type in the form of a balanced chemical equation.",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n17. Which of the following equations represent redox reactions and what are the\nvalues for ‘p’ and ‘q’ in these equations? 1\nEquation 1: Fe 2 O 3 (s) + 2Al(s) Al 2 O 3 (s) + p Fe(l) + heat\nEquation 2: 2C 4 H 10 (g) + 13O 2 (g) △ 8CO 2 (g)+ q H 2 O(g)\nA. Only equation 1 is a redox reaction, p =1 and q=3\nB. Both equations 1 and 2 are redox reactions, p= 2 and q=4\nC. Only equation 2 is a redox reaction, p= 2 and q= 10\nD. Both equations 1 and 2 are redox reactions, p= 2 and q=10"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 256896,
+      "in": 35,
+      "out": 34,
+      "rejects": 2,
+      "promptTokens": 29618,
+      "completionTokens": 7586
+    },
+    "critique": {
+      "calls": 45,
+      "ms": 495180,
+      "in": 34,
+      "out": 28,
+      "rejects": 6,
+      "promptTokens": 19518,
+      "completionTokens": 7766
+    },
+    "solver": {
+      "calls": 214,
+      "ms": 168106,
+      "in": 28,
+      "out": 26,
+      "rejects": 2,
+      "promptTokens": 39276,
+      "completionTokens": 2333
+    },
+    "form": {
+      "calls": 2,
+      "ms": 9615,
+      "in": 26,
+      "out": 17,
+      "rejects": 9,
+      "promptTokens": 448,
+      "completionTokens": 142
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 50,
+      "ms": 10748,
+      "in": 17,
+      "out": 13,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 52,
+      "ms": 793402,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 27967,
+      "completionTokens": 12794
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following observations indicates a chemical reaction has occurred?",
+      "ms": {
+        "draft": 5007,
+        "critique": 14070,
+        "solver": 31532,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct representation of a chemical reaction?",
+      "ms": {
+        "draft": 5007,
+        "critique": 14093
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following equations represents a redox reaction?",
+      "ms": {
+        "draft": 5007,
+        "critique": 17028,
+        "solver": 34683
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of an endothermic reaction?",
+      "ms": {
+        "draft": 5623,
+        "critique": 10424,
+        "solver": 4139
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a redox reaction?",
+      "ms": {
+        "draft": 19369,
+        "critique": 15523
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes a redox reaction?",
+      "ms": {
+        "draft": 19369,
+        "critique": 14090,
+        "solver": 20170,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the reaction 2Cu + O2 → 2CuO, what happens to copper and oxygen?",
+      "ms": {
+        "draft": 19369,
+        "critique": 12771,
+        "solver": 21756,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the reaction CuO + H2 → Cu + H2O is a redox reaction?",
+      "ms": {
+        "draft": 19369,
+        "critique": 14599,
+        "solver": 15528,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of oxidation?",
+      "ms": {
+        "draft": 19369,
+        "critique": 10602,
+        "solver": 14915,
+        "form": 4393
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the reaction: Fe2O3(s) + 2Al(s) → Al2O3(s) + 2Fe(l) + heat, which element is oxidized?",
+      "ms": {
+        "draft": 6876,
+        "critique": 8299,
+        "solver": 2588,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a displacement reaction?",
+      "ms": {
+        "draft": 14866,
+        "critique": 8023
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following reactions is both a redox reaction and a combination reaction?",
+      "ms": {
+        "draft": 14866,
+        "critique": 10056
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the reaction 2C4H10 + 13O2 → 8CO2 + 10H2O, which of the following is true?",
+      "ms": {
+        "draft": 14866,
+        "critique": 9914
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the reaction CuSO4 + Fe → FeSO4 + Cu, which element is oxidized and which is reduced?",
+      "ms": {
+        "draft": 14866,
+        "critique": 10384,
+        "solver": 17742,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe a reaction in which heat is released?",
+      "ms": {
+        "draft": 14866,
+        "critique": 10926
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the reaction 2Al + Fe2O3 → Al2O3 + 2Fe, which of the following is correct?",
+      "ms": {
+        "draft": 14866,
+        "critique": 10077,
+        "solver": 14936,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the reaction 2PbO(s) + C(s) → 2Pb(s) + CO(g), which substances are oxidised and reduced?",
+      "ms": {
+        "draft": 5245,
+        "critique": 8566,
+        "solver": 1496,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a displacement reaction?",
+      "ms": {
+        "draft": 6876,
+        "critique": 8230,
+        "solver": 18743,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following reactions is an example of a displacement reaction?",
+      "ms": {
+        "draft": 5245,
+        "critique": 9183,
+        "solver": 1730,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a displacement reaction?",
+      "ms": {
+        "draft": 5145,
+        "critique": 9050,
+        "solver": 1814,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the reaction 2FeSO4(s) → Fe2O3(s) + SO2(g) + SO3(g), what type of reaction is this?",
+      "ms": {
+        "draft": 5145,
+        "critique": 7689,
+        "solver": 1372,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a redox reaction?",
+      "ms": {
+        "draft": 5245,
+        "critique": 8265,
+        "solver": 2340,
+        "form": 0,
+        "translation": 48056
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process called when a substance loses oxygen?",
+      "ms": {
+        "draft": 5245,
+        "critique": 6897,
+        "solver": 1652,
+        "form": 0,
+        "translation": 37242
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a physical change?",
+      "ms": {
+        "draft": 5007,
+        "critique": 12826,
+        "solver": 2361,
+        "form": 0,
+        "translation": 70657
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a chemical change?",
+      "ms": {
+        "draft": 5007,
+        "critique": 13819,
+        "solver": 2506,
+        "form": 0,
+        "translation": 58787
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a balanced chemical equation?",
+      "ms": {
+        "draft": 5007,
+        "critique": 14520,
+        "solver": 34639,
+        "form": 1,
+        "translation": 63192
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which type of reaction is represented by the equation 2FeSO₄(s) → Fe₂O₃(s) + SO₂(g) + SO₃(g)?",
+      "ms": {
+        "draft": 5623,
+        "critique": 13010,
+        "solver": 2115,
+        "form": 0,
+        "translation": 100783
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main form of energy required for the decomposition of silver chloride into silver and chlorine?",
+      "ms": {
+        "draft": 5623,
+        "critique": 12245,
+        "solver": 2684,
+        "form": 5222,
+        "translation": 85289
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the reaction Fe(s) + CuSO₄(aq) → FeSO₄(aq) + Cu(s), which element is displaced?",
+      "ms": {
+        "draft": 5623,
+        "critique": 10791,
+        "solver": 1695,
+        "form": 0,
+        "translation": 86347
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the reaction Fe2O3 + 2Al → Al2O3 + 2Fe, what is the role of iron(III) oxide?",
+      "ms": {
+        "draft": 19369,
+        "critique": 12205,
+        "solver": 19334,
+        "form": 0,
+        "translation": 47117
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following reactions is an example of a redox reaction?",
+      "ms": {
+        "draft": 5623,
+        "critique": 12595,
+        "solver": 2353,
+        "form": 0,
+        "translation": 48488
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a redox reaction, which of the following is true?",
+      "ms": {
+        "draft": 6876,
+        "critique": 5404,
+        "solver": 1322,
+        "form": 0,
+        "translation": 55604
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the reaction 2Pb(NO₃)₂(s) → 2PbO(s) + 4NO₂(g) + O₂(g), which element is oxidized?",
+      "ms": {
+        "draft": 5623,
+        "critique": 13405,
+        "solver": 2368,
+        "form": 0,
+        "translation": 47354
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the electrolysis of water, why is the volume of hydrogen gas collected double that of oxygen gas?",
+      "ms": {
+        "draft": 5145,
+        "critique": 6938,
+        "solver": 1417,
+        "form": 0,
+        "translation": 44503
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of an exothermic reaction?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following observations indicates a chemical reaction has occurred?",
+      "reason": "option 3 is a catch-all (\"All of the above\"); options 1 and 2 are the same (\"Change in state\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following is a correct representation of a chemical reaction?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following equations represents a redox reaction?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is an example of an endothermic reaction?",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of a redox reaction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes a redox reaction?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the reaction 2Cu + O2 → 2CuO, what happens to copper and oxygen?",
+      "reason": "options 0 and 1 say the same thing (\"Copper is reduced and oxygen is oxidised\" / \"Copper is oxidised and oxygen is reduced\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why the reaction CuO + H2 → Cu + H2O is a redox reaction?",
+      "reason": "options 0 and 1 say the same thing (\"Copper is reduced and hydrogen is oxidised\" / \"Copper is oxidised and hydrogen is reduced\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of oxidation?",
+      "reason": "options 0 and 1 say the same thing (\"Gain of oxygen or loss of hydrogen\" / \"Loss of oxygen or gain of hydrogen\"); distractor 3's reason is not a one-line misconception (\"Describes electron transfer, which is a more advanced concep…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the reaction: Fe2O3(s) + 2Al(s) → Al2O3(s) + 2Fe(l) + heat, which element is oxidized?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a displacement reaction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following reactions is both a redox reaction and a combination reaction?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the reaction 2C4H10 + 13O2 → 8CO2 + 10H2O, which of the following is true?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the reaction CuSO4 + Fe → FeSO4 + Cu, which element is oxidized and which is reduced?",
+      "reason": "options 0 and 1 say the same thing (\"Iron is oxidized, copper is reduced\" / \"Copper is oxidized, iron is reduced\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe a reaction in which heat is released?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the reaction 2Al + Fe2O3 → Al2O3 + 2Fe, which of the following is correct?",
+      "reason": "options 0 and 1 say the same thing (\"Al is oxidized and Fe2O3 is reduced\" / \"Fe2O3 is oxidized and Al is reduced\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the reaction 2PbO(s) + C(s) → 2Pb(s) + CO(g), which substances are oxidised and reduced?",
+      "reason": "options 0 and 3 say the same thing (\"Pb is oxidised, C is reduced\" / \"Pb is reduced, C is oxidised\"); options 1 and 2 say the same thing (\"PbO is oxidised, C is reduced\" / \"PbO is reduced, C is oxidised\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a displacement reaction?",
+      "reason": "near-duplicate of served question cmvrecr830duxgp2111bk94y8 (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following reactions is an example of a displacement reaction?",
+      "reason": "near-duplicate of served question cmvrecr830duxgp2111bk94y8 (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following is an example of a displacement reaction?",
+      "reason": "near-duplicate of served question cmvrecr830duxgp2111bk94y8 (cosine 0.936 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In the reaction 2FeSO4(s) → Fe2O3(s) + SO2(g) + SO3(g), what type of reaction is this?",
+      "reason": "near-duplicate of batch item \"Which type of reaction is represented by the equat…\" (cosine 0.944 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+    "topic words not written: the model's answer was not JSON (finish: length): {\n  \"summary\": \"This chapter explains how chemical reactions are represented by equations and describes different types "
+  ]
+}

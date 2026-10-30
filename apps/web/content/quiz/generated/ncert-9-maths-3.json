@@ -21,147 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Manjari PART-II",
   "edition": "2026 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-22T12:03:05.558Z",
+  "generatedAt": "2026-10-30T00:52:11.363Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is an algorithm?",
-      "choices": [
-        "A process to count dots",
-        "A step-by-step procedure to solve a problem",
-        "A way to draw numbers",
-        "A method to multiply large numbers"
-      ],
-      "answerIndex": 1,
-      "solution": "An algorithm is a step-by-step procedure to solve a problem. This definition reflects the structured approach used in solving computational or mathematical tasks. The other options describe specific actions or tools but do not capture the general, systematic nature of an algorithm.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक एल्गोरिथ्म क्या है?",
-          "choices": [
-            "डॉट्स की गिनती की प्रक्रिया",
-            "एक समस्या हल करने के लिए चरण-दर-चरण प्रक्रिया",
-            "संख्याओं के चित्रण का तरीका",
-            "बड़ी संख्याओं के गुणन का तरीका"
-          ],
-          "solution": "एक एल्गोरिथ्म एक समस्या हल करने के लिए चरण-दर-चरण प्रक्रिया है। इस परिभाषा में गणितीय या गणनात्मक कार्यों में उपयोग किए जाने वाले संरचित दृष्टिकोण को दर्शाया गया है। अन्य विकल्प विशिष्ट क्रियाओं या उपकरणों का वर्णन करते हैं लेकिन एल्गोरिथ्म की सामान्य, प्रणालीगत प्रकृति को नहीं दर्शाते।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate technical terms in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक अल्गोरिथम काय आहे?",
-          "choices": [
-            "डॉट्स गणना करण्याची प्रक्रिया",
-            "समस्या सोडवण्यासाठी एक चरण-काळजीपूर्वक प्रक्रिया",
-            "संख्या काढण्याचा एक मार्ग",
-            "मोठ्या संख्यांच्या गुणाकाराचा एक पद्धत"
-          ],
-          "solution": "एक अल्गोरिथम समस्या सोडवण्यासाठी एक चरण-काळजीपूर्वक प्रक्रिया आहे. ही व्याख्या गणितीय किंवा गणक विधींमध्ये वापरलेल्या संरचित पद्धतीचे प्रतिबिंबित करते. इतर विकल्प संख्या किंवा उपकरणांच्या विशिष्ट क्रियांचे वर्णन करतात परंतु अल्गोरिथमच्या सामान्य आणि पद्धतशीर स्वरूपाचे वर्णन करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. The term 'अल्गोरिथम' is used as is, which is standard in Marathi technical contexts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses algorithm with a general process",
-        null,
-        "Misunderstands the definition of algorithm",
-        "Thinks algorithm is related to counting only"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is clearly 1, as it aligns with the standard definition of an algorithm. The other options are either too narrow or incorrect, and the author's reasoning for why they are wrong matches common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 11: The World of Algorithms",
-            "11.1 Adding Numbers"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 11: The World of Algorithms",
-            "11.1 Adding Numbers"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 11: The World of Algorithms",
-            "11.2 Greatest Common Divisor"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T12:03:05.558Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What is the greatest common divisor (gcd) of 375 and 825?",
+      "difficulty": 5,
+      "stem": "Using Āryabhaṭa’s algorithm, what is the value of gcd(825, 375)?",
       "choices": [
         "75",
-        "125",
         "150",
-        "225"
+        "225",
+        "375"
       ],
       "answerIndex": 0,
-      "solution": "The greatest common divisor (gcd) of 375 and 825 is 75 because it is the largest number that divides both 375 and 825 without leaving a remainder. 125 does not divide 825 evenly, 150 does not divide 375 evenly, and 225 does not divide either number evenly.",
+      "solution": "Using Āryabhaṭa’s algorithm, we repeatedly replace the larger number with the remainder when divided by the smaller. Starting with 825 and 375, we find 825 ÷ 375 = 2 with remainder 75. Then, 375 ÷ 75 = 5 with remainder 0, so the gcd is 75. 150, 225, and 375 do not divide both numbers evenly without a remainder.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "375 और 825 का महत्तम समापवर्तक (म.स.प.) क्या है?",
+          "stem": "आर्यभट के एल्गोरिथ्म का उपयोग करके, gcd(825, 375) का मान क्या है?",
           "choices": [
             "75",
-            "125",
             "150",
-            "225"
+            "225",
+            "375"
           ],
-          "solution": "375 और 825 का महत्तम समापवर्तक (म.स.प.) 75 है क्योंकि यह वह सबसे बड़ी संख्या है जो 375 और 825 को शेष बिना विभाजित करती है। 125, 825 को बराबर रूप से विभाजित नहीं करता, 150, 375 को बराबर रूप से विभाजित नहीं करता और 225 कोई भी संख्या बराबर रूप से विभाजित नहीं करता।",
+          "solution": "आर्यभट के एल्गोरिथ्म का उपयोग करके, हम बड़ी संख्या को छोटी संख्या से विभाजित करने पर शेषफल के बराबर बदल देते हैं। 825 और 375 के साथ शुरू करते हुए, हम 825 ÷ 375 = 2 और शेष 75 पाते हैं। फिर, 375 ÷ 75 = 5 और शेष 0 होता है, इसलिए gcd 75 है। 150, 225 और 375 दोनों संख्याओं को शेष बिना बराबर विभाजित नहीं करते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "375 आणि 825 चा महासामायिक भाजक (gcd) किती आहे?",
+          "stem": "आर्यभटांच्या अल्गोरिथमचा वापर करून, gcd(825, 375) ची किंमत काय आहे?",
           "choices": [
             "75",
-            "125",
             "150",
-            "225"
+            "225",
+            "375"
           ],
-          "solution": "375 आणि 825 चा महासामायिक भाजक (gcd) 75 आहे कारण ते दोन्ही संख्यांना शिल्लक न ठेवता भाग जाते. 125 825 ला समान भाग जात नाही, 150 375 ला समान भाग जात नाही आणि 225 कोणत्याही संख्येला समान भाग जात नाही.",
+          "solution": "आर्यभटांच्या अल्गोरिथमचा वापर करून, आम्ही मोठ्या संख्येला लहान संख्याने भागल्यानंतर उर्वरिताने बदलतो. 825 आणि 375 च्या सुरुवातीला, आम्ही 825 ÷ 375 = 2 आणि उर्वरित 75 शोधतो. नंतर, 375 ÷ 75 = 5 आणि उर्वरित 0 असतो, म्हणून gcd 75 आहे. 150, 225 आणि 375 दोन्ही संख्यांना शिल्लक विना विभाजित करू शकत नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for gcd and algorithm.",
           "flag": null
         }
       },
@@ -171,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "confuses 125 with a divisor of both numbers",
-        "assumes 150 is a divisor of both numbers",
-        "chooses a number not a divisor of either"
+        "Chooses the larger number as the GCD",
+        "Chooses a multiple of the correct answer",
+        "Chooses the second number as the GCD"
       ],
       "solverAnswers": [
         0,
@@ -182,216 +84,8 @@
         0,
         0
       ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies the greatest common divisor by listing the common divisors of both numbers and selecting the largest. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 11: The World of Algorithms",
-            "11.2 Greatest Common Divisor"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 11: The World of Algorithms",
-            "11.2 Greatest Common Divisor",
-            "Think and Reflect"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 11: The World of Algorithms",
-            "11.2 Greatest Common Divisor",
-            "Think and Reflect"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 11: The World of Algorithms",
-            "11.3 Data Structures"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T12:03:05.558Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the sum of two digits in a column is 12, what will be the value written below the column and what will be the carry?",
-      "choices": [
-        "12 and 1",
-        "2 and 1",
-        "12 and 0",
-        "2 and 0"
-      ],
-      "answerIndex": 1,
-      "solution": "If the sum of two digits in a column is 12, the value written below the column will be 2 and the carry will be 1. The algorithm specifies that only the units digit of the sum is written, and the carry is 1 if the sum is more than 10. The other options do not follow the rules of the algorithm.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक स्तंभ में दो अंकों का योग 12 है, तो स्तंभ के नीचे लिखा गया मान क्या होगा और कैरी क्या होगी?",
-          "choices": [
-            "12 और 1",
-            "2 और 1",
-            "12 और 0",
-            "2 और 0"
-          ],
-          "solution": "यदि एक स्तंभ में दो अंकों का योग 12 है, तो स्तंभ के नीचे लिखा गया मान 2 होगा और कैरी 1 होगी। एल्गोरिथ्म निर्देश देता है कि योग के इकाई अंक को लिखा जाता है, और कैरी 1 होती है यदि योग 10 से अधिक हो। अन्य विकल्प एल्गोरिथ्म के नियमों का अनुसरण नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in a Hindi-medium math context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एका खालील वर्गातील दोन अंकांची बेरीज 12 असेल, तर खालील वर्गाखाली लिहिलेली किंमत काय असेल आणि किती कॅरी असेल?",
-          "choices": [
-            "12 आणि 1",
-            "2 आणि 1",
-            "12 आणि 0",
-            "2 आणि 0"
-          ],
-          "solution": "जर एका खालील वर्गातील दोन अंकांची बेरीज 12 असेल, तर खालील वर्गाखाली लिहिलेली किंमत 2 असेल आणि कॅरी 1 असेल. एल्गोरिथम सांगतो की बेरीजचा एकक अंक लिहिला जातो आणि जर बेरीज 10 पेक्षा जास्त असेल तर कॅरी 1 असते. इतर विकल्प एल्गोरिथमच्या नियमांचे अनुसरण करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks both values are written",
-        null,
-        "Confuses the carry with the sum",
-        "Believes no carry is needed"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that only the units digit (2) is written and a carry of 1 is generated when the sum exceeds 10. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 11: The World of Algorithms",
-            "11.1 Adding Numbers"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 11: The World of Algorithms",
-            "11.1 Adding Numbers"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 11: The World of Algorithms",
-            "11.2 Greatest Common Divisor"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T12:03:05.558Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the GCD of two numbers is 1, which of the following is a correct statement about the two numbers?",
-      "choices": [
-        "They are both composite numbers",
-        "They share no common factors other than 1",
-        "They are both prime numbers",
-        "They are multiples of 1"
-      ],
-      "answerIndex": 1,
-      "solution": "If the greatest common divisor (GCD) of two numbers is 1, it means that the only positive integer that divides both numbers is 1. This directly implies that they share no common factors other than 1. The other options are incorrect because two numbers can have a GCD of 1 without both being prime or composite, and while all numbers are multiples of 1, this is not a unique or meaningful property in this context.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि दो संख्याओं का महत्तम समापवर्तक 1 है, तो निम्नलिखित में से कौन-सा कथन दोनों संख्याओं के बारे में सही है?",
-          "choices": [
-            "वे दोनों भाज्य संख्याएँ हैं",
-            "वे 1 के अतिरिक्त कोई अन्य उभयनिष्ठ गुणनखंड साझा नहीं करते हैं",
-            "वे दोनों अभाज्य संख्याएँ हैं",
-            "वे 1 के गुणज हैं"
-          ],
-          "solution": "यदि दो संख्याओं का महत्तम समापवर्तक (GCD) 1 है, तो इसका अर्थ है कि दोनों संख्याओं को विभाजित करने वाला केवल धनात्मक पूर्णांक 1 है। इसका सीधा अर्थ है कि वे 1 के अतिरिक्त कोई अन्य उभयनिष्ठ गुणनखंड साझा नहीं करते हैं। अन्य विकल्प गलत हैं क्योंकि दो संख्याओं का GCD 1 हो सकता है बशर्ते दोनों अभाज्य या भाज्य न हों, और यद्यपि सभी संख्याएँ 1 के गुणज हैं, लेकिन इस संदर्भ में यह एक विशिष्ट या महत्वपूर्ण गुण नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर दोन संख्यांचा महत्तम सामायिक अपवर्तक 1 असेल, तर खालीलपैकी कोणता विधान दोन संख्यांबद्दल बरोबर आहे?",
-          "choices": [
-            "त्या दोन्ही संख्या युग्मसंख्या आहेत",
-            "त्यांचा 1 शिवाय इतर कोणताही सामायिक अपवर्तक नाही",
-            "त्या दोन्ही संख्या अभाज्य संख्या आहेत",
-            "त्या 1 च्या बरोबरीच्या गुणक आहेत"
-          ],
-          "solution": "जर दोन संख्यांचा महत्तम सामायिक अपवर्तक (GCD) 1 असेल, तर त्याचा अर्थ असा आहे की दोन्ही संख्यांना विभाजित करणारा फक्त 1 हा धनात्मक पूर्णांक आहे. हे सीधा अर्थ असा आहे की त्यांचा 1 शिवाय इतर कोणताही सामायिक अपवर्तक नाही. इतर विकल्प अयोग्य आहेत कारण दोन संख्यांचा GCD 1 असू शकतो जर त्यांपैकी दोन्ही अभाज्य किंवा युग्मसंख्या नसतील, आणि जरी सर्व संख्या 1 च्या गुणक असतील तरी ते या संदर्भात अद्वितीय किंवा अर्थपूर्ण गुणधर्म नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "assumes both numbers are composite, which is not necessarily true",
-        null,
-        "confuses the definition of prime numbers with co-prime numbers",
-        "chooses a trivial statement not specific to the GCD being 1"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is option 1, as it accurately reflects the definition of co-prime numbers. The other options are incorrect due to misconceptions or unsupported assumptions.",
+      "critique": "The solution correctly applies Āryabhaṭa’s algorithm (equivalent to the Euclidean algorithm) and arrives at the correct answer of 75. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/9/mathematics/iemh203.pdf",
@@ -436,105 +130,7 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T12:03:05.558Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "In the algorithm for adding two numbers, why can the carry value never be more than 1?",
-      "choices": [
-        "Because the maximum sum of two digits is 9",
-        "Because the maximum sum of two digits and a carry is 19",
-        "Because the algorithm only allows one carry",
-        "Because the carry is always zero"
-      ],
-      "answerIndex": 1,
-      "solution": "The carry value can never be more than 1 because the maximum sum of two digits and a carry is 19 (e.g., 9 + 9 + 1 = 19). The units digit of this sum is 9, and the carry is 1. The other options are incorrect because they do not consider the maximum possible sum in the algorithm.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एल्गोरिथ्म में दो संख्याओं को जोड़ते समय क्यों ले जाने का मान कभी-भी 1 से अधिक नहीं हो सकता?",
-          "choices": [
-            "क्योंकि दो अंकों का अधिकतम योग 9 होता है",
-            "क्योंकि दो अंकों और एक के योग का अधिकतम योग 19 होता है",
-            "क्योंकि एल्गोरिथ्म केवल एक ले जाने की अनुमति देता है",
-            "क्योंकि ले जाना हमेशा शून्य होता है"
-          ],
-          "solution": "ले जाने का मान कभी-भी 1 से अधिक नहीं हो सकता क्योंकि दो अंकों और एक के योग का अधिकतम योग 19 होता है (उदाहरण के लिए, 9 + 9 + 1 = 19)। इस योग का इकाई अंक 9 होता है और ले जाना 1 होता है। अन्य विकल्प गलत हैं क्योंकि वे एल्गोरिथ्म में संभावित अधिकतम योग को ध्यान में नहीं रखते।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "संख्यांच्या जोडण्याच्या अल्गोरिथममध्ये वाढ (carry) मूल्य का 1 पेक्षा जास्त असू शकत नाही?",
-          "choices": [
-            "कारण दोन अंकांची जोड जास्तीत जास्त 9 असते",
-            "कारण दोन अंकांची जोड आणि वाढ जास्तीत जास्त 19 असते",
-            "कारण अल्गोरिथममध्ये फक्त एक वाढ अनुमत आहे",
-            "कारण वाढ फारच शून्य असते"
-          ],
-          "solution": "वाढ मूल्य जास्तीत जास्त 1 असू शकत नाही कारण दोन अंकांची जोड आणि वाढ जास्तीत जास्त 19 असते (उदा., 9 + 9 + 1 = 19). ह्या जोडीचा एकक अंक 9 असतो आणि वाढ 1 असते. इतर विकल्प चुकीचे आहेत कारण ते अल्गोरिथममध्ये जास्तीत जास्त संभाव्य जोड विचारात घेत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks the maximum sum is 9",
-        null,
-        "Misunderstands the role of carry",
-        "Believes carry is always zero"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the maximum sum involving two digits and a carry is 19, leading to a carry of 1. The other options reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 11: The World of Algorithms",
-            "11.1 Adding Numbers"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 11: The World of Algorithms",
-            "11.1 Adding Numbers"
-          ]
-        },
-        {
-          "document": "ncert/9/mathematics/iemh203.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 11: The World of Algorithms",
-            "11.2 Greatest Common Divisor"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T12:03:05.558Z",
+      "generatedAt": "2026-10-30T00:52:11.363Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

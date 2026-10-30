@@ -21,47 +21,640 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T09:42:05.864Z",
+  "generatedAt": "2026-10-29T23:11:06.890Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following best describes the movement of particles in a gas?",
+      "stem": "Which of the following best describes the movement of particles in gases?",
       "choices": [
-        "They are tightly packed and vibrate in fixed positions.",
-        "They move freely in all directions.",
-        "They are loosely packed and move within a limited space.",
-        "They are loosely packed and move in a fixed path."
+        "They move in fixed positions with strong attractions.",
+        "They are closely packed and move freely in all directions.",
+        "They move past each other in a limited space.",
+        "They are completely free to move in all directions."
       ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'They move freely in all directions.' This is because gases have the maximum interparticle spacing and the weakest interparticle attractions, allowing their particles to move freely. The other options describe solids and liquids, not gases.",
+      "answerIndex": 3,
+      "solution": "Gases have particles that are completely free to move in all directions because the interparticle attractions are negligible. The other options describe solids or liquids, which have stronger attractions and limited movement.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा गैस में कणों के गति का सबसे अच्छा वर्णन करता है?",
+          "stem": "निम्नलिखित में से कौन-सा गैसों में कणों के गति का सबसे अच्छा वर्णन करता है?",
           "choices": [
-            "वे घनी रूप से बंधे हुए होते हैं और निश्चित स्थिति में कंपन करते हैं।",
-            "वे सभी दिशाओं में मुक्त रूप से गति करते हैं।",
-            "वे ढीले रूप से बंधे हुए होते हैं और सीमित स्थान में गति करते हैं।",
-            "वे ढीले रूप से बंधे हुए होते हैं और निश्चित पथ पर गति करते हैं।"
+            "वे निश्चित स्थिति में गति करते हैं और मजबूत आकर्षण रखते हैं।",
+            "वे घनी रूप से बंधे हुए हैं और सभी दिशाओं में मुक्त रूप से गति करते हैं।",
+            "वे सीमित स्थान में एक दूसरे के पास गति करते हैं।",
+            "वे पूरी तरह से सभी दिशाओं में गति करने के लिए मुक्त हैं।"
           ],
-          "solution": "सही उत्तर 'वे सभी दिशाओं में मुक्त रूप से गति करते हैं।' है। इसका कारण यह है कि गैसों में अणुओं के बीच अधिकतम अंतराणुक दूरी होती है और अंतराणुक आकर्षण सबसे कम होता है, जिसके कारण उनके अणु मुक्त रूप से गति कर सकते हैं। अन्य विकल्प ठोस और तरल के वर्णन करते हैं, गैस के नहीं।",
+          "solution": "गैसों में कण पूरी तरह से सभी दिशाओं में गति करने के लिए मुक्त होते हैं क्योंकि अंतरकण आकर्षण नगण्य होता है। अन्य विकल्प ठोस या द्रव का वर्णन करते हैं, जिनमें मजबूत आकर्षण और सीमित गति होती है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate scientific terminology used in a Hindi-medium context.",
+          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
           "flag": null
         },
         "mr": {
           "stem": "खालीलपैकी कोणते वायूमधील कणांच्या गतीचे सर्वात चांगले वर्णन करते?",
           "choices": [
-            "ते घन विशिष्ट ठिकाणी कंपन करतात.",
-            "ते सर्व दिशांमध्ये मुक्तपणे चालतात.",
-            "ते अल्प घन असतात आणि मर्यादित जागेत चालतात.",
-            "ते अल्प घन असतात आणि फिक्स पाथमध्ये चालतात."
+            "ते निश्चित ठिकाणी चालतात आणि तीव्र आकर्षण असते.",
+            "ते निकट विश्रांतीत असतात आणि सर्व दिशांमध्ये मुक्तपणे चालतात.",
+            "ते सीमित जागेत एकमेकांच्या मागे चालतात.",
+            "ते सर्व दिशांमध्ये पूर्णपणे मुक्तपणे चालतात."
           ],
-          "solution": "योग्य उत्तर 'ते सर्व दिशांमध्ये मुक्तपणे चालतात.' असे आहे. कारण वायूमध्ये कणांमधील अंतर अधिकतम असते आणि कणांमधील आकर्षण सर्वात कमी असते, ज्यामुळे त्यांच्या कणांना मुक्तपणे चालण्याची परवानगी असते. इतर विकल्प घनपदार्थ आणि द्रवपदार्थांचे वर्णन करतात, वायू नाही.",
+          "solution": "वायूमधील कण पूर्णपणे सर्व दिशांमध्ये मुक्तपणे चालतात कारण त्यांच्यातील अणुमधील आकर्षण नगण्य असते. इतर विकल्प घनपदार्थ किंवा द्रव पदार्थांचे वर्णन करतात, ज्यांच्यात जास्त आकर्षण असते आणि गती बरीच मर्यादित असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the movement of solids with gases.",
+        "Confuses the movement of liquids with gases.",
+        "Misunderstands the movement of particles in liquids.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as gas particles have negligible intermolecular forces and are free to move in all directions. The author's reasoning for the distractors aligns with common misconceptions about the states of matter.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "Activity 7.9: Let us find out"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "States of Matter"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "States of Matter"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T23:11:06.890Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is an example of the movement of gas particles?",
+      "choices": [
+        "Smelling a flower from a distance",
+        "Seeing a stone fall to the ground",
+        "Holding a book in your hand",
+        "Watching a shadow move"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'Smelling a flower from a distance' because it demonstrates the movement of gas particles. When you smell a flower, the fragrance particles spread through the air, which is a gas, and reach your nose. The other options involve forces or actions that do not directly relate to the movement of gas particles. Smelling a flower is a direct example of gas particles moving through the air.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा गैस के कणों के गति का उदाहरण है?",
+          "choices": [
+            "दूर से एक फूल की खुशबू गंध करना",
+            "एक पत्थर के जमीन पर गिरने को देखना",
+            "अपने हाथ में एक किताब पकड़े रखना",
+            "एक छाया के गति को देखना"
+          ],
+          "solution": "सही उत्तर 'दूर से एक फूल की खुशबू गंध करना' है क्योंकि यह गैस के कणों की गति को दर्शाता है। जब आप एक फूल की खुशबू गंध करते हैं, तो सुगंध के कण हवा, जो एक गैस है, में फैलते हैं और आपके नाक तक पहुंचते हैं। अन्य विकल्प ऐसी बलों या क्रियाओं को दर्शाते हैं जो सीधे गैस के कणों की गति से संबंधित नहीं हैं। एक फूल की खुशबू गंध करना गैस के कणों के हवा में गति का सीधा उदाहरण है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately conveys the meaning of the original English question. Technical terms like 'गैस के कणों' (gas particles) are correctly used. The correct answer remains in the same position (option 1). All distractors remain incorrect in the Hindi version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते वायू अणूंच्या गतीचे उदाहरण आहे?",
+          "choices": [
+            "दूर एका फुलाचा वास घेणे",
+            "एका शिळा खाली पडत असल्याचे पाहणे",
+            "एका पुस्तकाला तुमच्या हातात धरणे",
+            "एका छायेची गती पाहणे"
+          ],
+          "solution": "बरोबर उत्तर 'दूर एका फुलाचा वास घेणे' आहे कारण ते वायू अणूंच्या गतीचे दर्शन करते. जेव्हा तुम्ही फुलाचा वास घेता, तेव्हा सुगंध अणू वायू असलेल्या हवेतून फैलावतात आणि तुमच्या नाकापर्यंत पोहोचतात. इतर विकल्पांमध्ये बल किंवा क्रियांचा संबंध असतो जो वायू अणूंच्या गतीशी सीधा संबंध नसतो. फुलाचा वास घेणे हे वायू अणूंच्या हवेतून गतीचे सीधे उदाहरण आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses gas movement with other types of motion",
+        "Ignores the role of gas particles in the process",
+        "Misunderstands the physical action involved in holding an object"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as the movement of fragrance particles through the air is a direct example of gas particle movement. The other options do not involve gas particles and are correctly dismissed.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "Activity 7.9: Let us find out"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "States of Matter"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "States of Matter"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T23:11:06.890Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What are the tiny particles that make up all matter?",
+      "choices": [
+        "Cells",
+        "Atoms and molecules",
+        "Bacteria",
+        "Dust particles"
+      ],
+      "answerIndex": 1,
+      "solution": "Atoms and molecules are the fundamental building blocks of all matter, as they combine to form everything around us. Cells are the basic units of living organisms, not all matter. Bacteria are living organisms, and dust particles are made up of many different substances, not the fundamental particles of matter.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सभी पदार्थों के बने हुए छोटे कण क्या हैं?",
+          "choices": [
+            "कोशिकाएं",
+            "परमाणु और अणु",
+            "जीवाणु",
+            "धूल के कण"
+          ],
+          "solution": "परमाणु और अणु सभी पदार्थों के मूल निर्माण इकाइयां हैं, क्योंकि वे हमारे चारों ओर के सभी चीजों को बनाने के लिए जुड़ते हैं। कोशिकाएं जीवित जीवों की मूल इकाइयां हैं, लेकिन सभी पदार्थ नहीं। जीवाणु जीवित जीव हैं, और धूल के कण अलग-अलग वस्तुओं से बने होते हैं, पदार्थ के मूल कण नहीं।",
+          "imageAlt": null,
+          "critique": "Hindi translation is accurate, but the key is incorrect (should be 2, not 1).",
+          "flag": "translation critique: not one answer at the same position"
+        },
+        "mr": {
+          "stem": "सर्व द्रव्याचे छोटे कण कोणते आहेत?",
+          "choices": [
+            "कोशिका",
+            "अणू आणि अणूसमूह",
+            "जीवाणू",
+            "मैलाचे कण"
+          ],
+          "solution": "अणू आणि अणूसमूह सर्व द्रव्याचे मूलभूत बांधकाम एकक आहेत, कारण ते आमच्या आजूबाजूच्या सर्व काही बनवतात. कोशिका जीवित जीवांचे मूलभूत एकक आहेत, सर्व द्रव्यासाठी नाही. जीवाणू जीवित जीव आहेत आणि मैलाचे कण विविध विविध पदार्थांनी बनलेले असतात, द्रव्याचे मूलभूत कण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses basic biological units with scientific particles",
+        null,
+        "Confuses living organisms with fundamental particles of matter",
+        "Incorrectly assumes particles are visible to the naked eye or are living entities"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Atoms and molecules' as they are the fundamental particles that make up all matter. The other options are incorrect for the reasons stated by the author.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "States of Matter"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T23:11:06.890Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason why gases mix easily?",
+      "choices": [
+        "They have very high density",
+        "They have very low interparticle forces",
+        "They have fixed shape and volume",
+        "They are always in a liquid state"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 'They have very low interparticle forces.' Gases mix easily because the particles in a gas have very weak forces of attraction between them, allowing them to move freely and mix with each other. The other options are incorrect because gases do not have fixed shape or volume, they are not always in a liquid state, and their density is not the main reason for mixing.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गैसों के आसानी से मिश्रित होने का मुख्य कारण क्या है?",
+          "choices": [
+            "उनका बहुत अधिक घनत्व होता है",
+            "उनके बीच अणु-अंतर काफी कम होता है",
+            "उनका निश्चित आकार और आयतन होता है",
+            "वे हमेशा द्रव अवस्था में रहते हैं"
+          ],
+          "solution": "सही उत्तर 'उनके बीच अणु-अंतर काफी कम होता है' है। गैसें आसानी से मिश्रित हो जाती हैं क्योंकि गैस में अणुओं के बीच आकर्षण के बल बहुत कम होते हैं, जिससे वे स्वतंत्र रूप से गति कर सकते हैं और एक दूसरे के साथ मिश्रित हो सकते हैं। अन्य विकल्प गलत हैं क्योंकि गैसों का निश्चित आकार या आयतन नहीं होता है, वे हमेशा द्रव अवस्था में नहीं रहते हैं और उनका घनत्व मिश्रण का मुख्य कारण नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their original intent. The correct answer remains in the same position. The distractors are still incorrect in Hindi, and the technical terms used are appropriate for a Hindi-medium science curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गॅसेस मिसळू शकतात याचा मुख्य कारण काय आहे?",
+          "choices": [
+            "त्यांची खूप उच्च घनता असते",
+            "त्यांच्यातील कणांचे खूप कमी अंतरकणीय बल असते",
+            "त्यांची निश्चित आकार आणि आयतन असते",
+            "त्या नेहमी द्रवाच्या अवस्थेत असतात"
+          ],
+          "solution": "बरोबर उत्तर 'त्यांच्यातील कणांचे खूप कमी अंतरकणीय बल असते' आहे. गॅसेस मिसळतात कारण गॅसमधील कणांमध्ये खूप कमी आकर्षण बल असते, ज्यामुळे ते स्वतंत्रपणे चालू शकतात आणि एकमेकांसह मिसळू शकतात. इतर विकल्प चुकीचे आहेत कारण गॅसेसचा निश्चित आकार आणि आयतन नसतो, त्या नेहमी द्रवाच्या अवस्थेत नसतात आणि त्यांची घनता मिसळण्याचा मुख्य कारण नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses density with mixing ability",
+        null,
+        "Misunderstands the nature of gas particles",
+        "Incorrectly assumes gases have fixed shape and volume"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as gases mix easily due to weak interparticle forces. The other options reflect common misconceptions about gas properties.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "Activity 7.9: Let us find out"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "States of Matter"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "States of Matter"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T23:11:06.890Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a student breaks a piece of chalk into smaller pieces and then grinds it further, what can be concluded about the particles of chalk?",
+      "choices": [
+        "They are not made up of smaller units",
+        "They can be broken down further into smaller units",
+        "They change into a different type of particle",
+        "They disappear completely"
+      ],
+      "answerIndex": 1,
+      "solution": "The process of breaking and grinding chalk shows that it can be divided into smaller parts, which supports the idea that it is made of smaller units. The correct option reflects that particles can be further divided, while the other options contradict the physical reality of matter being conserved and not changing into different types or disappearing.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र चॉक के एक टुकड़े को छोटे-छोटे टुकड़ों में तोड़ देता है और फिर उसे आगे चूरा कर देता है, तो चॉक के कणों के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "वे छोटे इकाइयों से बने नहीं होते",
+            "वे छोटी इकाइयों में आगे तोड़े जा सकते हैं",
+            "वे एक अलग प्रकार के कण में बदल जाते हैं",
+            "वे पूरी तरह से लुप्त हो जाते हैं"
+          ],
+          "solution": "चॉक के टुकड़े को तोड़ने और चूरा करने की प्रक्रिया दर्शाती है कि इसे छोटे-छोटे भागों में विभाजित किया जा सकता है, जो इस विचार के समर्थन में है कि यह छोटी इकाइयों से बना होता है। सही विकल्प यह दर्शाता है कि कणों को आगे विभाजित किया जा सकता है, जबकि अन्य विकल्प पदार्थ के भौतिक वास्तविकता के विरोधी हैं जो बदले बिना रहता है और अलग प्रकार के कण में नहीं बदलता या लुप्त नहीं होता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने चॅल्कचा एक तुकडा लहान तुकड्यांमध्ये तुडवला आणि नंतर अधिक चिरावले, तर चॅल्कच्या कणांबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "ते लहान एककांनी बनलेले नाहीत",
+            "ते अधिक लहान एककांमध्ये तुडवता येऊ शकतात",
+            "ते वेगळ्या प्रकारच्या कणांमध्ये बदलतात",
+            "ते पूर्णपणे नाहीसे होतात"
+          ],
+          "solution": "चॅल्कच्या तुडवण्याच्या आणि चिरण्याच्या प्रक्रियेमुळे त्याला लहान भागांमध्ये विभाजित करता येते, जे त्याच्या लहान एककांनी बनलेल्या असल्याच्या विचाराला बल देते. बरोबर विकल्प कणांना अधिक विभाजित करता येऊ शकतात असे दर्शवतो, तर इतर विकल्प पदार्थाच्या संरक्षणाच्या भौतिक वास्तवाला विरोध करतात आणि ते वेगळ्या प्रकारच्या कणांमध्ये बदलतात किंवा नाहीसे होतात असे दर्शवतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "mistakenly believes particles are indivisible",
+        null,
+        "A student might think that breaking or grinding a substance changes its fundamental nature",
+        "thinks the particles change into a different substance"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the question implies that chalk can be broken down into smaller units, consistent with the particulate nature of matter. The author's reasoning aligns with the scientific understanding that particles can be divided, and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "Probe and ponder"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.1 What Is Matter Composed of?",
+            "Activity 7.1: Let us explore"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.1 What Is Matter Composed of?",
+            "Activity 7.2: Let us perform"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.2 What Decides Different States of Matter?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T23:11:06.890Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "When a candle is lit, the wax melts and turns into a liquid. What happens to the particles of wax during this process?",
+      "choices": [
+        "They stop moving completely.",
+        "They move more freely and spread out.",
+        "They become smaller in size.",
+        "They stick together more tightly."
+      ],
+      "answerIndex": 1,
+      "solution": "When wax melts, the particles gain thermal energy and move more freely, allowing them to spread out. This is a one-step application of the concept that thermal energy affects particle movement.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जब एक मोमबत्ती जलती है, तो मोम पिघल जाता है और द्रव में बदल जाता है। इस प्रक्रिया के दौरान मोम के कण क्या होते हैं?",
+          "choices": [
+            "वे पूरी तरह से गति बंद कर देते हैं।",
+            "वे अधिक स्वतंत्र रूप से गति करते हैं और फैल जाते हैं।",
+            "वे आकार में छोटे हो जाते हैं।",
+            "वे एक दूसरे के अधिक करीब हो जाते हैं।"
+          ],
+          "solution": "जब मोम पिघलता है, तो कणों को तापीय ऊर्जा मिलती है और वे अधिक स्वतंत्र रूप से गति करते हैं, जिससे वे फैल जाते हैं। यह कण गति की अवधारणा के एक चरण के अनुप्रयोग है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning, with appropriate Hindi terminology used for 'particles' and 'thermal energy'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मोमबत्ती ज्वलित केली जाते, तेव्हा मोम घन झालेला असतो आणि तो द्रव बनतो. हा प्रक्रियेत मोमाच्या कणांचा काय विचार होतो?",
+          "choices": [
+            "ते पूर्णपणे गती बंद करतात.",
+            "ते जास्त आत्मसात करून विस्तारतात.",
+            "त्यांचा आकार लहान होतो.",
+            "ते एकमेकांशी जास्त घन बनतात."
+          ],
+          "solution": "मोम घन झाल्यावर, कणांना ऊष्मा ऊर्जा मिळते आणि ते जास्त स्वातंत्र्याने गती करतात, ज्यामुळे ते विस्तारतात. हा ऊष्मा ऊर्जेच्या कणांच्या गतीवर प्रभावाच्या अवधारणेचा एक चरण आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes particles stop moving when they melt.",
+        null,
+        "Thinks melting reduces the size of particles.",
+        "Thinks melting increases the attraction between particles."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as melting involves particles gaining energy and moving more freely. The distractors reflect common misconceptions about particle behavior during phase changes.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "Activity 7.9: Let us find out"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "States of Matter"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "States of Matter"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T23:11:06.890Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a student dissolves salt in water, what can be said about the particles of salt and water?",
+      "choices": [
+        "They form a new substance",
+        "They remain as separate particles",
+        "They combine to form a different type of particle",
+        "They disappear"
+      ],
+      "answerIndex": 1,
+      "solution": "When salt dissolves in water, the particles of salt and water do not chemically change; they remain as separate entities, just dispersed throughout the solution. The other options suggest a chemical reaction or loss of matter, which does not occur in this process.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक छात्र नमक को पानी में घोलता है, तो नमक और पानी के कणों के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "वे एक नया पदार्थ बनाते हैं",
+            "वे अलग-अलग कण रहते हैं",
+            "वे एक अलग प्रकार के कण बनाते हैं",
+            "वे गायब हो जाते हैं"
+          ],
+          "solution": "जब नमक पानी में घुल जाता है, तो नमक और पानी के कण रासायनिक रूप से बदल जाते हैं; वे अलग-अलग वस्तुओं के रूप में रहते हैं, केवल विलयन में फैले हुए होते हैं। अन्य विकल्प रासायनिक अभिक्रिया या पदार्थ के नष्ट होने के संकेत देते हैं, जो इस प्रक्रिया में नहीं होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific meaning. Technical terms like 'कण' (particles) and 'रासायनिक बदलाव' (chemical change) are appropriate for Hindi-medium science curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक विद्यार्थी पाण्यात खारट पाणी विरघळवतो, तर खारट पाण्याच्या कणांबद्दल काय म्हणता येईल?",
+          "choices": [
+            "ते नवीन पदार्थ बनवतात",
+            "ते वेगळे कण राहतात",
+            "ते वेगळ्या प्रकारचे कण बनवतात",
+            "ते अदृश्य होतात"
+          ],
+          "solution": "खारट पाणी पाण्यात विरघळत असताना, खारट पाण्याचे कण आणि पाण्याचे कण रासायनिकरित्या बदलत नाहीत; ते वेगळे रहातात, फक्त द्रावणात वितरित होतात. इतर विकल्पांमध्ये रासायनिक अभिक्रिया किंवा पदार्थाच्या अदृश्य होण्याचा अंदाज असतो, जो या प्रक्रियेमध्ये घडत नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
           "flag": null
@@ -72,10 +665,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the movement of gas particles with solid particles",
+        "Incorrectly assumes a chemical change occurs",
         null,
-        "Incorrectly assumes gas particles are restricted in movement",
-        "Student thinks gas particles move in predictable paths rather than randomly"
+        "believes that dissolving changes the type of particles, not just their arrangement",
+        "Misunderstands the concept of dissolution"
       ],
       "solverAnswers": [
         1,
@@ -85,34 +678,12 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the solution correctly identifies the movement of gas particles. The distractors reflect common misconceptions about the states of matter.",
+      "critique": "The question correctly identifies that dissolving salt in water is a physical change, and the correct answer (option 1) reflects that the particles remain separate. The author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 10,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "Activity 7.9: Let us find out"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "States of Matter"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
+          "ordinal": 13,
+          "pageStart": 18,
           "pageEnd": 18,
           "headingPath": [
             "Chapter 7: — Particulate Nature of Matter",
@@ -122,71 +693,139 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:42:05.864Z",
+      "generatedAt": "2026-10-29T23:11:06.890Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 1,
-      "stem": "What happens to the volume of gas when the plunger of a syringe is pushed inwards?",
+      "difficulty": 3,
+      "stem": "What would happen if you tried to compress a liquid like water in a syringe?",
       "choices": [
-        "The volume increases",
-        "The volume decreases",
-        "The volume remains the same",
-        "The volume becomes zero"
+        "It would expand",
+        "It would become a gas",
+        "It would not compress much",
+        "It would turn into a solid"
       ],
-      "answerIndex": 1,
-      "solution": "When the plunger of a syringe is pushed inwards, the volume of gas inside decreases because the gas particles are forced closer together. This shows that gas particles have a lot of space between them, which can be reduced by applying pressure. The other options are incorrect because they contradict the observed behavior of gas under compression.",
+      "answerIndex": 2,
+      "solution": "Water is practically incompressible, so it would not compress much when you push the plunger. The other options are incorrect because liquids do not expand significantly when compressed, do not turn into a gas under normal pressure, and do not become a solid without a change in temperature.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "सुई के प्लंजर को अंदर की ओर दबाने पर गैस का आयतन क्या होता है?",
+          "stem": "आप जब पानी जैसे द्रव को सिरिंज में संपीड़ित करने की कोशिश करते हैं तो क्या होता है?",
           "choices": [
-            "आयतन बढ़ जाता है",
-            "आयतन घट जाता है",
-            "आयतन वही रहता है",
-            "आयतन शून्य हो जाता है"
+            "यह फैल जाएगा",
+            "यह गैस में बदल जाएगा",
+            "यह बहुत कम संपीड़ित होगा",
+            "यह ठोस में बदल जाएगा"
           ],
-          "solution": "जब सुई के प्लंजर को अंदर की ओर दबाया जाता है, तो गैस का आयतन घट जाता है क्योंकि गैस के कणों को एक दूसरे के पास ले जाया जाता है। यह दर्शाता है कि गैस के कणों के बीच बहुत जगह होती है, जिसे दबाव लगाकर कम किया जा सकता है। अन्य विकल्प गलत हैं क्योंकि वे गैस के संपीड़न के अवलोकित व्यवहार के विरोधी हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option (2) and the distractors are still incorrect.",
+          "solution": "पानी लगभग असंपीड़नीय होता है, इसलिए जब आप प्लंजर को दबाते हैं तो यह बहुत कम संपीड़ित होता है। अन्य विकल्प गलत हैं क्योंकि द्रव दबाए जाने पर बहुत कम फैलते हैं, सामान्य दबाव में गैस में नहीं बदलते हैं और तापमान में परिवर्तन के बिना ठोस में नहीं बदलते हैं।",
+          "imageAlt": "एक बीकर में द्रव और एक दर्पण, जिसमें एक तीर दबाव की ओर दिखाता है",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "सिरिंजच्या प्लुंजरला आंतरिक बाजूला धक्का दिल्यास वायूचा आयतन काय होतो?",
+          "stem": "तुम्ही एका सिरिंजमध्ये पाण्यासारखा द्रव दाबाला तर काय होईल?",
           "choices": [
-            "आयतन वाढतो",
-            "आयतन कमी होतो",
-            "आयतन त्याच राहतो",
-            "आयतन शून्य होतो"
+            "तो विस्तारेल",
+            "तो वायू बनेल",
+            "तो थोडासा दाबला जाईल",
+            "तो घन बनेल"
           ],
-          "solution": "जेव्हा सिरिंजच्या प्लुंजरला आंतरिक बाजूला धक्का दिला जातो, तेव्हा त्यामध्ये असलेल्या वायूचा आयतन कमी होतो, कारण वायूचे कण एकमेकांजवळ आणले जातात. हे दर्शवते की वायूचे कण एकमेकांमध्ये जास्त जागा ठेवतात, जी दाब लावून कमी करता येते. इतर विकल्प अयोग्य आहेत कारण ते दाबाखाली वायूच्या वर्तनाशी विरोधात आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "solution": "पाणी खूप छोट्या प्रमाणात दाबला जाऊ शकत नाही, म्हणून जेव्हा तुम्ही प्लुंजर दाबता तेव्हा तो थोडासा दाबला जाईल. इतर विकल्प अयोग्य आहेत कारण द्रव दाबल्यानंतर थोडासा विस्तारत नाहीत, सामान्य दाबाखाली वायू बनत नाहीत आणि तापमानात बदल झाल्याशिवाय घन बनत नाहीत.",
+          "imageAlt": "एका बेकरमध्ये द्रव आणि दर्पण असून दाबाचा तीर दाखवला आहे",
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi scientific terms used.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "A beaker with liquid and a mirror, with an arrow showing a push",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "beaker",
+              "x": 50,
+              "y": 30,
+              "size": 40,
+              "labels": [
+                "beaker",
+                "liquid"
+              ],
+              "text": {
+                "beaker": "beaker",
+                "liquid": "liquid"
+              }
+            },
+            {
+              "part": "planeMirror",
+              "x": 70,
+              "y": 30,
+              "size": 10,
+              "labels": [
+                "mirror"
+              ],
+              "text": {
+                "mirror": "mirror"
+              }
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                40,
+                30
+              ],
+              "to": [
+                60,
+                30
+              ],
+              "label": "push",
+              "curved": false
+            }
+          ]
+        },
+        "labels": {
+          "beaker": {
+            "en": "beaker",
+            "hi": "बीकर",
+            "mr": "बेकर"
+          },
+          "liquid": {
+            "en": "liquid",
+            "hi": "द्रव",
+            "mr": "द्रव"
+          },
+          "mirror": {
+            "en": "mirror",
+            "hi": "दर्पण",
+            "mr": "दर्पण"
+          },
+          "push": {
+            "en": "push",
+            "hi": "दबाव",
+            "mr": "दाब"
+          }
+        }
+      },
+      "needsFigure": true,
       "distractorReason": [
-        "Confuses the effect of pushing the plunger with the effect of pulling it",
+        "Assumes liquids expand when compressed",
+        "Thinks compression changes the state of matter",
         null,
-        "Believes gas does not respond to pressure",
-        "Ignores the effect of compression on gas volume"
+        "Believes liquids behave like gases under pressure"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions in the distractors. The solution correctly explains the physical behavior of gas under pressure.",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions about the behavior of liquids under pressure.",
       "sources": [
         {
           "document": "ncert/8/science/hecu107.pdf",
@@ -223,47 +862,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:42:05.864Z",
+      "generatedAt": "2026-10-29T23:11:06.890Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "What happens to the interparticle spaces when sugar is dissolved in water?",
+      "difficulty": 5,
+      "stem": "A student observes that when sugar is dissolved in water, the water becomes sweet. What conclusion can be drawn about the sugar particles?",
       "choices": [
-        "They increase",
-        "They remain the same",
-        "They disappear",
-        "They become filled with water"
+        "They disappear completely",
+        "They are no longer present as individual particles",
+        "They are still visible to the naked eye",
+        "They are not affected by the water"
       ],
-      "answerIndex": 0,
-      "solution": "When sugar dissolves in water, the sugar particles spread out and fit into the spaces between water particles, causing the interparticle spaces to increase. The other options are incorrect because the spaces do not stay the same, disappear, or get filled with water, as the sugar particles themselves occupy the spaces.",
+      "answerIndex": 1,
+      "solution": "When sugar dissolves in water, it breaks into tiny particles that are too small to see but still exist, which is why the water tastes sweet. The option that they disappear completely is incorrect because the sugar is still present in a different form. The option that they are still visible to the naked eye is wrong because the particles are too small to be seen. The option that they are not affected by the water is also incorrect because the water causes the sugar to spread out and dissolve.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "चीनी के पानी में घुल जाने पर अणुओं के बीच के अंतर क्या होता है?",
+          "stem": "एक छात्र देखता है कि जब चीनी को पानी में घोला जाता है, तो पानी मीठा हो जाता है। चीनी के कणों के बारे में कौन सा निष्कर्ष निकाला जा सकता है?",
           "choices": [
-            "वे बढ़ जाते हैं",
-            "वे वही रहते हैं",
-            "वे लुप्त हो जाते हैं",
-            "वे पानी से भर जाते हैं"
+            "वे पूरी तरह से गायब हो जाते हैं",
+            "वे अब अलग-अलग कणों के रूप में उपस्थित नहीं रहते",
+            "वे नंगी आंखों से दिखाई देते हैं",
+            "वे पानी से प्रभावित नहीं होते"
           ],
-          "solution": "जब चीनी पानी में घुल जाती है, तो चीनी के अणु फैल जाते हैं और पानी के अणुओं के बीच के अंतर में फिट हो जाते हैं, जिसके कारण अणुओं के बीच के अंतर बढ़ जाते हैं। अन्य विकल्प गलत हैं क्योंकि अंतर वही नहीं रहते, लुप्त नहीं होते और पानी से भर नहीं जाते, क्योंकि चीनी के अणु खुद अंतर को अपनाते हैं।",
+          "solution": "जब चीनी पानी में घुल जाती है, तो यह छोटे कणों में टूट जाती है जो देखने लायक नहीं होते लेकिन अभी भी मौजूद रहते हैं, जिसके कारण पानी मीठा हो जाता है। विकल्प कि वे पूरी तरह से गायब हो जाते हैं गलत है क्योंकि चीनी एक अलग रूप में अभी भी मौजूद है। विकल्प कि वे नंगी आंखों से दिखाई देते हैं गलत है क्योंकि कण बहुत छोटे होते हैं जिन्हें देखा नहीं जा सकता। विकल्प कि वे पानी से प्रभावित नहीं होते भी गलत है क्योंकि पानी चीनी के कणों को फैलाकर घुला देता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate technical terms like 'अणुओं के बीच के अंतर' (interparticle spaces) used as in standard Hindi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "पाण्यात शुगर विरघळल्यानंतर अणूमधील अंतर काय होते?",
+          "stem": "एका विद्यार्थ्याने लक्षात घेतले की पाण्यात चावल विरघळल्यानंतर पाणी मीठा होते. चावलाच्या कणांबद्दल काय निष्कर्ष काढता येईल?",
           "choices": [
-            "ते वाढतात",
-            "ते बरोबर रहातात",
-            "ते नाहीसे होतात",
-            "ते पाण्याने भरलेले असतात"
+            "ते पूर्णपणे अदृश्य होतात",
+            "ते विशिष्ट कणांच्या रूपात राहत नाहीत",
+            "ते नग्न नेत्राने दिसतात",
+            "ते पाण्यामुळे प्रभावित होत नाहीत"
           ],
-          "solution": "जेव्हा शुगर पाण्यात विरघळते तेव्हा शुगरचे अणू विस्तारतात आणि पाण्याच्या अणूंमधील अंतरात फिट होतात, ज्यामुळे अणूमधील अंतर वाढते. इतर विकल्प अयोग्य आहेत कारण अंतर बरोबर रहात नाहीत, नाहीसे होत नाहीत किंवा पाण्याने भरलेले नाहीत, कारण शुगरचे अणू स्वतः अंतर व्यापतात.",
+          "solution": "जेव्हा चावल पाण्यात विरघळतो तेव्हा तो छोट्या कणांमध्ये विभाजला जातो जे दिसत नाहीत परंतु असतात, ज्यामुळे पाणी मीठा होते. ते पूर्णपणे अदृश्य होतात असा विकल्प चुकीचा आहे कारण चावल वेगळ्या रूपात असतो. ते नग्न नेत्राने दिसतात असा विकल्प चुकीचा आहे कारण कण खूप छोटे असतात. ते पाण्यामुळे प्रभावित होत नाहीत असा विकल्प देखील चुकीचा आहे कारण पाणी चावलाला विसर्जित करते आणि विरघळते.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -274,20 +913,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "thinks sugar particles vanish",
         null,
-        "Incorrectly assumes the spaces do not change",
-        "Believes the spaces remain unchanged",
-        "Student thinks dissolved particles replace air in interparticle spaces"
+        "students may think that if something is dissolved, it must still be visible",
+        "assumes sugar changes into a new substance"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": null,
-      "critique": "The solution is correct and aligns with the scientific understanding that dissolving sugar in water increases interparticle spaces as sugar particles fit into the gaps between water molecules.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the sugar particles break into smaller units that are not visible but still present, which aligns with the particulate nature of matter. The distractors reflect common misconceptions about dissolution.",
       "sources": [
         {
           "document": "ncert/8/science/hecu107.pdf",
@@ -333,350 +972,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:42:05.864Z",
+      "generatedAt": "2026-10-29T23:11:06.890Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "Why does the fragrance of an incense stick spread throughout a room?",
+      "difficulty": 5,
+      "stem": "A student observes that when camphor is heated, the fragrance spreads throughout the room. Which of the following best explains this phenomenon?",
       "choices": [
-        "Because the particles of the incense stick are very light.",
-        "Because the particles of the incense stick move and mix with air particles.",
-        "Because the incense stick is placed in a corner of the room.",
-        "Because the air in the room is dense."
+        "The camphor particles become heavier and sink to the bottom.",
+        "The camphor particles are released into the air and move freely.",
+        "The camphor particles combine with air particles to form a new substance.",
+        "The camphor particles are absorbed by the walls of the room."
       ],
       "answerIndex": 1,
-      "solution": "The correct answer is 'Because the particles of the incense stick move and mix with air particles.' This demonstrates the constant movement of gas particles, which allows the fragrance to spread. The other options do not explain the movement of particles, which is the key concept here.",
+      "solution": "When camphor is heated, the particles gain energy and move freely in the air, spreading throughout the room. This is a real-life application of the concept of particle movement in gases. The other options describe incorrect chemical or physical processes.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक दिव्य गुटके की गंध कमरे में क्यों फैल जाती है?",
+          "stem": "एक छात्र देखता है कि जब कम्पोर को गर्म किया जाता है, तो सुगंध कमरे में पूरी तरह से फैल जाती है। निम्नलिखित में से कौन-सा इस घटना की सबसे अच्छी व्याख्या करता है?",
           "choices": [
-            "क्योंकि दिव्य गुटके के कण बहुत हल्के होते हैं।",
-            "क्योंकि दिव्य गुटके के कण गति करते हैं और हवा के कणों के साथ मिश्रित हो जाते हैं।",
-            "क्योंकि दिव्य गुटका कमरे के एक कोने में रखा जाता है।",
-            "क्योंकि कमरे में हवा घनी होती है।"
+            "कम्पोर के कण भारी हो जाते हैं और तल पर बैठ जाते हैं।",
+            "कम्पोर के कण हवा में छोड़ दिए जाते हैं और मुक्त रूप से चलते हैं।",
+            "कम्पोर के कण हवा के कणों के साथ मिलकर एक नए पदार्थ का निर्माण करते हैं।",
+            "कम्पोर के कण कमरे की दीवारों द्वारा अवशोषित कर लिए जाते हैं।"
           ],
-          "solution": "सही उत्तर 'क्योंकि दिव्य गुटके के कण गति करते हैं और हवा के कणों के साथ मिश्रित हो जाते हैं' है। यह गैस कणों की निरंतर गति को दर्शाता है, जिसके कारण गंध फैल जाती है। अन्य विकल्प कणों की गति की व्याख्या नहीं करते हैं, जो यहां मुख्य अवधारणा है।",
+          "solution": "जब कम्पोर को गर्म किया जाता है, तो कणों को ऊर्जा प्राप्त होती है और वे हवा में मुक्त रूप से चलते हैं, कमरे में पूरी तरह से फैल जाते हैं। यह गैसों में कण गति की अवधारणा के वास्तविक जीवन के अनुप्रयोग है। अन्य विकल्प गलत रासायनिक या भौतिक प्रक्रियाओं का वर्णन करते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate scientific terminology and correct positioning of the correct answer.",
           "flag": null
         },
         "mr": {
-          "stem": "एखाद्या दारूणाच्या तीक्ष्ण वासाचा एकूण खोलीत पसरलेला का असतो?",
+          "stem": "एका विद्यार्थ्याने नोंद केले की कॅम्फॉर तापल्यावर त्याचा वास खोलीत विस्तारतो. खालीलपैकी कोणते या घटनेचे सर्वात चांगले स्पष्टीकरण देते?",
           "choices": [
-            "कारण दारूणाच्या कणांचे वजन खूप लहान असते.",
-            "कारण दारूणाच्या कणांचा गती असते आणि ते हवेच्या कणांसोबत जुळतात.",
-            "कारण दारूण खोलीच्या एका कोपऱ्यात ठेवला जातो.",
-            "कारण खोलीतील हवा घन असते."
+            "कॅम्फॉर चणे भारी होतात आणि खोलीच्या तळाला खाली पडतात.",
+            "कॅम्फॉर चणे हवेत सोडली जातात आणि स्वतंत्रपणे चालतात.",
+            "कॅम्फॉर चणे हवेच्या चण्यांसोबत जोडून नवीन पदार्थ तयार करतात.",
+            "कॅम्फॉर चणे खोलीच्या भिंतींद्वारे शोषली जातात."
           ],
-          "solution": "बरोबर उत्तर 'कारण दारूणाच्या कणांचा गती असते आणि ते हवेच्या कणांसोबत जुळतात.' यामुळे वासाचा पसरलेला असतो. इतर उत्तरे कणांच्या गतीच्या समजाचा अभाव दर्शवतात, जे येथे मुख्य अंश आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning. 'कण' (particle) is the standard term used in Marathi science textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Ignores the role of particle movement",
-        null,
-        "Focuses on the location of the incense stick",
-        "Misunderstands the density of air as the cause"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as it correctly identifies particle movement as the reason for the fragrance spreading. The other options are incorrect and reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 10,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "Activity 7.9: Let us find out"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "States of Matter"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "States of Matter"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:42:05.864Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Why does the water level in a glass vessel not increase much when sugar is dissolved in it?",
-      "choices": [
-        "Because sugar particles are very large",
-        "Because water particles occupy the spaces between sugar particles",
-        "Because sugar dissolves completely in water",
-        "Because water particles move very slowly"
-      ],
-      "answerIndex": 1,
-      "solution": "When sugar is dissolved in water, the water particles occupy the spaces between the sugar particles, which is why the water level does not increase much. This indicates that there is some space between the particles of water. The other options are incorrect because they do not explain the observed phenomenon.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक ग्लास बर्तन में पानी का स्तर जब चीनी घुल जाती है तो बहुत नहीं बढ़ता क्यों?",
-          "choices": [
-            "क्योंकि चीनी के कण बहुत बड़े होते हैं",
-            "क्योंकि पानी के कण चीनी के कणों के बीच के स्थान ले लेते हैं",
-            "क्योंकि चीनी पानी में पूरी तरह से घुल जाती है",
-            "क्योंकि पानी के कण बहुत धीरे-धीरे गति करते हैं"
-          ],
-          "solution": "जब चीनी को पानी में घोला जाता है तो पानी के कण चीनी के कणों के बीच के स्थान ले लेते हैं, जिसके कारण पानी का स्तर बहुत नहीं बढ़ता। इससे स्पष्ट होता है कि पानी के कणों के बीच कुछ स्थान होता है। अन्य विकल्प गलत हैं क्योंकि वे दृश्यमान घटना की व्याख्या नहीं करते।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "काचेच्या वाशीत चक्की विरघळल्यानंतर पाण्याचा पातळी खूप वाढत नाही कारण काय?",
-          "choices": [
-            "कारण चक्कीचे कण खूप मोठे असतात",
-            "कारण पाण्याचे कण चक्कीच्या कणांमधील जागा घेतात",
-            "कारण चक्की पूर्णपणे पाण्यात विरघळते",
-            "कारण पाण्याचे कण खूप धीम्या गतीने चालतात"
-          ],
-          "solution": "चक्की पाण्यात विरघळल्यानंतर पाण्याचे कण चक्कीच्या कणांमधील जागा घेतात, ज्यामुळे पाण्याचा पातळी खूप वाढत नाही. हे दर्शवते की पाण्याच्या कणांमध्ये काही जागा असते. इतर विकल्प चुकीचे आहेत कारण ते निरीक्षित घटनेचे व्याख्यान करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning. The term 'कण' (particle) is correctly used, and the explanation aligns with standard Marathi science terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Believes sugar particles are too large to fit into water",
-        null,
-        "Thinks dissolution is a physical change without space occupation",
-        "Misunderstands the concept of solubility"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as the explanation aligns with the particulate nature of matter, where water particles fill the spaces between sugar particles. The other options reflect common misconceptions about particle size, dissolution, and particle movement.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.3 How Does the Interparticle Spacing",
-            "Activity 7.6: Let us experiment"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.3 How Does the Interparticle Spacing",
-            "Activity 7.7: Let us observe"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "Activity 7.8: Let us experiment"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:42:05.864Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a solid is heated and changes into a liquid, what happens to the interparticle forces and the movement of particles?",
-      "choices": [
-        "The interparticle forces increase and the particles stop moving.",
-        "The interparticle forces decrease and the particles can move past each other.",
-        "The interparticle forces remain the same but the particles vibrate more.",
-        "The interparticle forces increase and the particles move freely."
-      ],
-      "answerIndex": 1,
-      "solution": "When a solid is heated, the added energy weakens the interparticle forces, allowing the particles to move more freely and slide past each other. This matches the correct option, as the forces decrease and the particles gain mobility. The other options incorrectly suggest forces increase or particles stop moving, which contradicts the behavior of particles during melting.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई ठोस गर्म किया जाता है और तरल में बदल जाता है, तो कणों के बीच के बल और कणों के गति पर क्या प्रभाव पड़ता है?",
-          "choices": [
-            "कणों के बीच के बल बढ़ जाते हैं और कण गति बंद कर देते हैं।",
-            "कणों के बीच के बल कम हो जाते हैं और कण एक दूसरे के पास गति कर सकते हैं।",
-            "कणों के बीच के बल समान रहते हैं लेकिन कण अधिक झूलते हैं।",
-            "कणों के बीच के बल बढ़ जाते हैं और कण स्वतंत्र रूप से गति करते हैं।"
-          ],
-          "solution": "जब कोई ठोस गर्म किया जाता है, तो जोड़ा गया ऊर्जा कणों के बीच के बल कम कर देता है, जिससे कण अधिक स्वतंत्र रूप से गति कर सकते हैं और एक दूसरे के पास फिसल सकते हैं। यह सही विकल्प के साथ मेल खाता है, क्योंकि बल कम हो जाते हैं और कणों की गति बढ़ जाती है। अन्य विकल्प गलत रूप से बल बढ़ने या कणों की गति रुक जाने का अनुमान लगाते हैं, जो पिघलने के दौरान कणों के व्यवहार के विरोधी हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning, with appropriate Hindi terminology used for particle forces and motion.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका घन पदार्थाला उकळल्यास तो द्रवात बदलतो, तर अणूमधील बलांचा आणि अणूंच्या गतीचा काय बदल होतो?",
-          "choices": [
-            "अणूमधील बल वाढतात आणि अणूंचा गती थांबतो.",
-            "अणूमधील बल कमी होतात आणि अणू एकमेकांवरून जाऊ शकतात.",
-            "अणूमधील बल समान राहतात परंतु अणूंचा विलग गती वाढतो.",
-            "अणूमधील बल वाढतात आणि अणूंचा गती मुक्त राहतो."
-          ],
-          "solution": "जेव्हा घन पदार्थ उकळला जातो तेव्हा वाढलेली ऊर्जा अणूमधील बल कमी करते, ज्यामुळे अणूंना अधिक मुक्तपणे गती करण्याची संधी मिळते आणि ते एकमेकांवरून जाऊ शकतात. हे योग्य विकल्पाशी जुळते, कारण बल कमी होतात आणि अणूंची गती वाढते. इतर विकल्प चुकीचे आहेत, ज्यामध्ये बल वाढतात किंवा अणूंचा गती थांबतो, जे घन पदार्थ द्रवात बदलताना अणूंच्या वर्तनाशी विरोधात आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning. The terms used are appropriate for a Marathi-medium science curriculum.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Assumes forces increase with heat",
-        null,
-        "Misunderstands the effect of heat on particle movement",
-        "Incorrectly believes that particle movement increases without a change in forces"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as heating a solid reduces interparticle forces, allowing particles to move past each other. The distractors reflect common misconceptions about the effects of heat on particle behavior.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 10,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "Activity 7.9: Let us find out"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "States of Matter"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "States of Matter"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:42:05.864Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If we remove all the constituent particles from a chair, what would happen?",
-      "choices": [
-        "The chair will still remain as it is.",
-        "The chair will become lighter but still exist.",
-        "The chair will completely disappear.",
-        "The chair will change its shape."
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is 'The chair will completely disappear.' This is because a chair is made of particles, and if all the particles are removed, there would be nothing left. The other options incorrectly assume that the chair would still exist in some form after removing its particles.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि हम एक कुर्सी से सभी घटक कण हटा दें, तो क्या होगा?",
-          "choices": [
-            "कुर्सी अपने आप में रहेगी।",
-            "कुर्सी हल्की हो जाएगी लेकिन अभी भी मौजूद रहेगी।",
-            "कुर्सी पूरी तरह से लुप्त हो जाएगी।",
-            "कुर्सी अपनी आकृति बदल देगी।"
-          ],
-          "solution": "सही उत्तर 'कुर्सी पूरी तरह से लुप्त हो जाएगी।' है। इसके पीछे कारण यह है कि कुर्सी कणों से बनी होती है, और यदि सभी कण हटा दिए जाएं, तो कुछ भी बचे नहीं। अन्य विकल्प गलत रूप से यह मानते हैं कि कुर्सी कणों के हटाने के बाद कुछ रूप में मौजूद रहेगी।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर आम्ही एका खुर्चीमधील सर्व घटक कण दूर करू, तर काय होईल?",
-          "choices": [
-            "खुर्ची तिच्या आधीच्या प्रकारात राहील.",
-            "खुर्ची हलकी होईल पण अजूनही असेल.",
-            "खुर्ची पूर्णपणे अस्तित्वातून निघून जाईल.",
-            "खुर्ची आकृती बदलेल."
-          ],
-          "solution": "सही उत्तर 'खुर्ची पूर्णपणे अस्तित्वातून निघून जाईल.' असे आहे. कारण खुर्ची कणांपासून बनलेली असते, आणि जर सर्व कण दूर केले गेले तर काहीही उरणार नाही. इतर विकल्प खुर्चीच्या कणांच्या दूर करण्यानंतर खुर्ची काही प्रकारात असणार असा चूकीचा अंदाज घेतात.",
+          "solution": "कॅम्फॉर तापल्यावर चणे ऊर्जा मिळते आणि हवेत स्वतंत्रपणे चालतात, खोलीत विस्तारतात. हे वास्तविक जीवनातील वायूमधील चण्यांच्या गतीच्या अवधारणेचे अनुप्रयोग आहे. इतर विकल्पांमध्ये चुकीच्या रासायनिक किंवा भौतिक प्रक्रिया वर्णन केल्या आहेत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -687,20 +1023,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Believes the chair retains its form without particles",
-        "Thinks mass alone determines the existence of an object",
+        "Believes particles become heavier when heated.",
         null,
-        "Misunderstands the concept of matter being made of particles"
+        "Thinks a new substance is formed.",
+        "Thinks particles are absorbed by the surroundings."
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is logically sound. The correct answer is 2, as removing all particles would leave nothing behind. The distractors reflect common misconceptions about the nature of matter.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as heating camphor gives particles enough energy to move freely in the air. The other options reflect common misconceptions about particle behavior.",
       "sources": [
         {
           "document": "ncert/8/science/hecu107.pdf",
@@ -737,47 +1073,227 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:42:05.864Z",
+      "generatedAt": "2026-10-29T23:11:06.890Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "Which of the following statements is true about the movement of particles in a liquid?",
+      "difficulty": 5,
+      "stem": "If a student observes that the smell of a burning incense stick spreads throughout the room, what can they conclude about the particles in the air?",
       "choices": [
-        "Particles in a liquid move in fixed positions",
-        "Particles in a liquid are tightly packed and do not move",
-        "Particles in a liquid move freely in all directions",
-        "Particles in a liquid move only in a straight line"
+        "They are not moving",
+        "They are moving constantly",
+        "They are not present",
+        "They are only in one part of the room"
       ],
-      "answerIndex": 2,
-      "solution": "Particles in a liquid move freely in all directions, which is why substances like potassium permanganate spread throughout the liquid. This movement is slower than in gases but faster than in solids. The other options are incorrect because they describe the behavior of solids or gases, not liquids.",
+      "answerIndex": 1,
+      "solution": "The correct answer is 'They are moving constantly.' The spreading of the smell indicates that particles in the air are in motion, carrying the fragrance throughout the room. The other options are incorrect because they suggest particles are stationary, absent, or confined, which would prevent the smell from spreading.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा कथन द्रव में कणों के गति के बारे में सही है?",
+          "stem": "यदि एक छात्र देखता है कि जलते हुए अगरबत्ती की गंध कमरे में पूरी तरह फैल जाती है, तो वे हवा में कणों के बारे में क्या निष्कर्ष निकाल सकते हैं?",
           "choices": [
-            "द्रव में कण निश्चित स्थिति में गति करते हैं",
-            "द्रव में कण घनी रूप से पैक किए गए होते हैं और गति नहीं करते",
-            "द्रव में कण सभी दिशाओं में मुक्त रूप से गति करते हैं",
-            "द्रव में कण केवल सीधी रेखा में गति करते हैं"
+            "वे गतिशील नहीं हैं",
+            "वे लगातार गतिशील हैं",
+            "वे उपस्थित नहीं हैं",
+            "वे कमरे के एक ही हिस्से में हैं"
           ],
-          "solution": "द्रव में कण सभी दिशाओं में मुक्त रूप से गति करते हैं, जिसके कारण पोटैशियम परमैंगनेट जैसे पदार्थ द्रव में फैल जाते हैं। यह गति गैसों की तुलना में धीमी होती है लेकिन ठोसों की तुलना में तेज होती है। अन्य विकल्प ठोसों या गैसों के व्यवहार के वर्णन करते हैं, न कि द्रवों के।",
+          "solution": "सही उत्तर 'वे लगातार गतिशील हैं' है। गंध के फैलने का अर्थ है कि हवा में कण गतिशील हैं, जो गंध को पूरे कमरे में ले जाते हैं। अन्य विकल्प गलत हैं क्योंकि वे कणों के स्थिर होने, अनुपस्थित होने या सीमित होने का सुझाव देते हैं, जो गंध के फैलने से रोकते हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the scientific meaning, with appropriate Hindi terminology used.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'गतिशील' (moving) and 'कण' (particles) are appropriately used as per standard Hindi science curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "कोणत्या खालील विधानाचे द्रवातील कणांच्या गतीबद्दल खरे असते?",
+          "stem": "एका विद्यार्थीने जेव्हा एखाद्या दारूण दिव्याच्या जाळ्याचा वास खोलीत सर्वत्र पसरत असल्याचे निरीक्षण करते, तेव्हा ती वायूमधील कणांबद्दल काय निष्कर्ष काढू शकते?",
           "choices": [
-            "द्रवातील कण निश्चित ठिकाणी गती करतात",
-            "द्रवातील कण घन एकत्र असतात आणि गती करत नाहीत",
-            "द्रवातील कण सर्व दिशांमध्ये मुक्तपणे गती करतात",
-            "द्रवातील कण केवळ सरळ रेषेत गती करतात"
+            "ते गतीत नाहीत",
+            "ते अतूटपणे गतीत आहेत",
+            "ते अस्तित्वात नाहीत",
+            "ते खोलीच्या एका भागात असतात"
           ],
-          "solution": "द्रवातील कण सर्व दिशांमध्ये मुक्तपणे गती करतात, ज्यामुळे कॅलियम परमॅंगनेट अशा पदार्थांचे द्रवामध्ये पसरणे होते. ही गती वाफेमध्ये असलेल्या कणांच्या गतीपेक्षा धीमी असते पण घन पदार्थांच्या कणांच्या गतीपेक्षा जलद असते. इतर विधाने घन पदार्थ किंवा वाफेच्या वर्तनाचे वर्णन करतात, जे द्रवांच्या गतीबद्दल अयोग्य असतात.",
+          "solution": "बरोबर उत्तर 'ते अतूटपणे गतीत आहेत.' वासाचा पसार होणे दर्शवते की वायूमधील कण गतीत असतात, जे खोलीत सर्वत्र वास वाहून नेतात. इतर उत्तरे अयोग्य आहेत कारण ते कणांच्या गतीशीलतेचा अभाव, अस्तित्वाशीलतेचा अभाव किंवा सीमिततेचा अंदाज देतात, जे वासाच्या पसरणाला अडथळा आणतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Ignores the movement of particles",
+        null,
+        "Misunderstands the role of air particles",
+        "Incorrectly states that particles are not present"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly links the observation of a spreading smell to the constant motion of air particles. The correct answer is 1, and the distractors reflect common misconceptions about particle behavior.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "Activity 7.9: Let us find out"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 11,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "States of Matter"
+          ]
+        },
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "States of Matter"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T23:11:06.890Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student observes that iodine vapour spreads throughout a gas jar. What does this observation suggest about iodine particles?",
+      "choices": [
+        "They are heavy",
+        "They are very light",
+        "They move freely",
+        "They are fixed in position"
+      ],
+      "answerIndex": 2,
+      "solution": "The observation that iodine vapour spreads throughout a gas jar shows that the particles are in constant motion, moving freely in all directions. This supports the idea that particles are not fixed in position or heavy, as they would not spread if they were. The option that they are very light is not directly supported by the observation, as the key point is their movement, not their mass.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र देखता है कि आयोडीन वाष्प एक गैस जार में पूरी तरह से फैल जाती है। यह अवलोकन आयोडीन कणों के बारे में क्या सुझाव देता है?",
+          "choices": [
+            "वे भारी हैं",
+            "वे बहुत हल्के हैं",
+            "वे स्वतंत्र रूप से गतिमान हैं",
+            "वे स्थिर स्थिति में हैं"
+          ],
+          "solution": "आयोडीन वाष्प एक गैस जार में पूरी तरह से फैल जाने का अवलोकन दर्शाता है कि कण निरंतर गति में रहते हैं और सभी दिशाओं में स्वतंत्र रूप से गतिमान होते हैं। यह विचार के समर्थन में है कि कण स्थिर स्थिति में नहीं होते या भारी नहीं होते, क्योंकि यदि वे भारी होते या स्थिर होते तो वे फैल नहीं सकते। विकल्प कि वे बहुत हल्के हैं, अवलोकन द्वारा सीधे समर्थित नहीं है, क्योंकि मुख्य बिंदु उनकी गति है, न कि उनका द्रव्यमान।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and scientific terminology. All options and the solution are correctly translated, with no ambiguity or distortion of meaning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने लक्षात घेतले की आयोडीन वाफ एका वायु वास्तूमध्ये पूर्णपणे पसरते. ही निरीक्षणे आयोडीन कणांबद्दल काय सूचित करतात?",
+          "choices": [
+            "ते भारी आहेत",
+            "ते खूप हलके आहेत",
+            "ते स्वतंत्रपणे चालतात",
+            "ते स्थिर ठिकाणी असतात"
+          ],
+          "solution": "आयोडीन वाफ एका वायु वास्तूमध्ये पूर्णपणे पसरत असल्याचे निरीक्षण दर्शवते की कण अतूट गतीत असतात आणि सर्व दिशांमध्ये स्वतंत्रपणे चालतात. हे असे दर्शवते की कण ठिकाणी स्थिर नसतात किंवा भारी नसतात, जर ते भारी असते तर ते पसरले नसते. ते खूप हलके आहेत असे निरीक्षणाद्वारे सीधा समर्थित केले जात नाही, कारण मुख्य मुद्दा त्यांची गती आहे, नाही की त्यांचा द्रव्यमान.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes particles are heavy and do not move",
+        "Belief that light particles spread more easily",
+        null,
+        "Misinterprets the nature of gas particles"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the spreading of iodine vapour indicates free movement of particles. The reasoning in the solution is sound and aligns with the particulate nature of matter.",
+      "sources": [
+        {
+          "document": "ncert/8/science/hecu107.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 7: — Particulate Nature of Matter",
+            "7.4 How Particles Move in Different States",
+            "States of Matter"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T23:11:06.890Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student performs an experiment where a solid is heated and turns into a gas. What can be inferred about the particles of the solid?",
+      "choices": [
+        "They become larger",
+        "They move more freely",
+        "They lose their identity",
+        "They change into a different substance"
+      ],
+      "answerIndex": 1,
+      "solution": "When a solid is heated and turns into a gas, its particles gain energy and move more freely, which explains the change in state. The other options are incorrect because particles do not become larger, lose their identity, or change into a different substance during this physical process.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र एक प्रयोग करता है जहां एक ठोस को गर्म किया जाता है और यह एक गैस में बदल जाता है। ठोस के कणों के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "वे बड़े हो जाते हैं",
+            "वे अधिक स्वतंत्र रूप से गति करते हैं",
+            "वे अपनी पहचान खो देते हैं",
+            "वे एक अलग पदार्थ में बदल जाते हैं"
+          ],
+          "solution": "जब एक ठोस को गर्म किया जाता है और यह एक गैस में बदल जाता है, तो इसके कण ऊर्जा प्राप्त करते हैं और अधिक स्वतंत्र रूप से गति करते हैं, जो अवस्था में परिवर्तन की व्याख्या करता है। अन्य विकल्प गलत हैं क्योंकि कण बड़े नहीं होते, अपनी पहचान नहीं खोते, या इस भौतिक प्रक्रिया में एक अलग पदार्थ में नहीं बदलते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने एका पदार्थाला गरम करून त्याचे वायूत बदलण्याचा प्रयोग केला. त्या ठिकाणी पदार्थाच्या कणांबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "ते जास्त मोठे होतात",
+            "ते जास्त स्वातंत्र्याने चालतात",
+            "ते आपली ओळख गमावतात",
+            "ते वेगळ्या पदार्थात बदलतात"
+          ],
+          "solution": "जेव्हा एका घन पदार्थाला गरम केला जातो आणि तो वायूत बदलतो, तेव्हा त्याच्या कणांना ऊर्जा मिळते आणि ते जास्त स्वातंत्र्याने चालतात, जे अवस्था बदलाचे स्पष्टीकरण देते. इतर विकल्प अयोग्य आहेत कारण कण जास्त मोठे होत नाहीत, आपली ओळख गमावत नाहीत किंवा वेगळ्या पदार्थात बदलत नाहीत या भौमितिक प्रक्रियेदरम्यान.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -788,524 +1304,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Believes liquid particles are fixed like in solids",
-        "Thinks liquid particles do not move at all",
+        "Misunderstands the process of sublimation",
         null,
-        "Mistakenly compares liquid movement to that of solids"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as liquid particles do move freely in all directions, though more slowly than in gases. The author's reasoning for the distractors aligns with common misconceptions about particle behavior in different states of matter.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.3 How Does the Interparticle Spacing",
-            "Activity 7.6: Let us experiment"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.3 How Does the Interparticle Spacing",
-            "Activity 7.7: Let us observe"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "Activity 7.8: Let us experiment"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:42:05.864Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a student grinds a piece of chalk into powder and then dissolves it in water, what can be inferred about the constituent particles of chalk?",
-      "choices": [
-        "They are not affected by water",
-        "They become larger in size",
-        "They are still present in the solution",
-        "They are completely destroyed"
-      ],
-      "answerIndex": 2,
-      "solution": "When chalk is dissolved in water, its particles remain in the solution, even if they are not visible to the naked eye. This is because dissolving does not destroy the particles, but rather separates them. The other options are incorrect because water can affect particles, they do not become larger, and they are not destroyed.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक छात्र चूना के एक टुकड़े को चूरा कर देता है और फिर उसे पानी में घोल देता है, तो चूने के घटक कणों के बारे में क्या निष्कर्ष निकाला जा सकता है?",
-          "choices": [
-            "उन पानी से प्रभावित नहीं होते",
-            "उनका आकार बड़ा हो जाता है",
-            "वे घोल में अभी भी उपस्थित होते हैं",
-            "वे पूरी तरह नष्ट हो जाते हैं"
-          ],
-          "solution": "जब चूना पानी में घुल जाता है, तो इसके कण घोल में अभी भी उपस्थित रहते हैं, भले ही उन्हें नग्न आंखों से देखा न जा सके। यह इसलिए है क्योंकि घुलना कणों को नष्ट नहीं करता, बल्कि उन्हें अलग कर देता है। अन्य विकल्प गलत हैं क्योंकि पानी कणों पर प्रभाव डाल सकता है, वे बड़े नहीं होते, और वे पूरी तरह नष्ट नहीं होते।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थ्याने चॅल्कच्या एका तुकड्याला चूर्ण केला आणि नंतर तो पाण्यात विरघळला, तर चॅल्कच्या घटक कणांबद्दल काय अंदाज लावता येईल?",
-          "choices": [
-            "ते पाण्यामुळे प्रभावित झालेले नाहीत",
-            "ते आकारात मोठे झालेले आहेत",
-            "ते विरघळलेल्या द्रवात अजूनही उपलब्ध आहेत",
-            "ते पूर्णपणे नाहीसे झालेले आहेत"
-          ],
-          "solution": "जेव्हा चॅल्क पाण्यात विरघळतो, तेव्हा त्याचे कण विरघळलेल्या द्रवात अजूनही उपलब्ध असतात, तरीही ते नग्न नेत्राने दिसत नाहीत. हे त्यामुळे आहे कारण विरघळणे कणांचे नाश करत नाही, तर त्यांना विभक्त करते. इतर विकल्प अयोग्य आहेत कारण पाणी कणांवर प्रभाव टाकू शकते, ते मोठे होत नाहीत, आणि ते पूर्णपणे नाहीसे होत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the scientific terminology, and preserves the logical structure of the question and solution.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly assumes that water has no effect",
-        "Believes the size of the particles increases",
-        null,
-        "Imagines that the particles are destroyed"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the principle that particles remain in a solution even if not visible, and the reasoning aligns with the correct answer. The distractors reflect common misconceptions about dissolution.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "Probe and ponder"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.1 What Is Matter Composed of?",
-            "Activity 7.1: Let us explore"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.1 What Is Matter Composed of?",
-            "Activity 7.2: Let us perform"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.2 What Decides Different States of Matter?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:42:05.864Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Why does the water in the ocean taste salty even though the salt is not visible?",
-      "choices": [
-        "Salt particles are too large to see but affect the taste.",
-        "Salt dissolves in water and the particles are invisible.",
-        "The salt is in a different state and does not mix with water.",
-        "The salt particles are attracted to the taste buds in the tongue."
-      ],
-      "answerIndex": 1,
-      "solution": "Salt dissolves in water, and the particles become so small that they are invisible, yet they still affect the taste. The other options incorrectly suggest that salt particles are too large, in a different state, or that they are attracted to taste buds, which does not explain why the water tastes salty.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "समुद्र में पानी खारा क्यों लगता है जबकि नमक दिखाई नहीं देता?",
-          "choices": [
-            "नमक के कण बहुत बड़े होते हैं लेकिन स्वाद पर प्रभाव डालते हैं।",
-            "नमक पानी में घुल जाता है और कण अदृश्य हो जाते हैं।",
-            "नमक एक अलग अवस्था में होता है और पानी से मिश्रित नहीं होता।",
-            "नमक के कण जीभ पर स्वाद ग्राहकों की ओर आकर्षित होते हैं।"
-          ],
-          "solution": "नमक पानी में घुल जाता है और कण इतने छोटे हो जाते हैं कि वे अदृश्य हो जाते हैं, फिर भी वे स्वाद पर प्रभाव डालते हैं। अन्य विकल्प गलत रूप से सुझाते हैं कि नमक के कण बहुत बड़े हैं, एक अलग अवस्था में हैं, या वे जीभ पर स्वाद ग्राहकों की ओर आकर्षित होते हैं, जो समुद्री पानी के खारा होने की व्याख्या नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology, with no misleading or ambiguous phrasing.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "समुद्रातील पाणी खारट का वाटते, जर खारटपणा दिसत नसेल?",
-          "choices": [
-            "खारटपणाचे कण खूप मोठे असतात पण छाप टाकतात.",
-            "खारटपणा पाण्यात विरघळतो आणि कण अदृश्य होतात.",
-            "खारटपणा वेगळ्या अवस्थेत असतो आणि पाण्याशी मिसळत नाही.",
-            "खारटपणाचे कण जिभेवरील स्वाद ग्राहकांकडे आकर्षित होतात."
-          ],
-          "solution": "खारटपणा पाण्यात विरघळतो आणि कण इतके छोटे होतात की ते अदृश्य होतात, परंतु ते अजूनही स्वाद प्रभावित करतात. इतर विकल्प चुकीचे असतात जे सूचित करतात की खारटपणाचे कण खूप मोठे असतात, वेगळ्या अवस्थेत असतात, किंवा ते जिभेवरील स्वाद ग्राहकांकडे आकर्षित होतात, जे समुद्रातील पाण्याचा खारटपणा स्पष्ट करत नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and options, maintaining the scientific concepts and the correct answer. The terminology used is appropriate for a Marathi-medium science curriculum.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Misunderstands the size of salt particles",
-        null,
-        "Incorrectly assumes salt does not mix with water",
-        "Confuses the role of taste buds in detecting salt"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as salt dissolves in water and becomes invisible. The other options reflect common misconceptions about particle size, solubility, and taste perception.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 10,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "Activity 7.9: Let us find out"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "States of Matter"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "States of Matter"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:42:05.864Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Which of the following statements is true about the particulate nature of matter?",
-      "choices": [
-        "In a gas, the particles are closely packed and have weak interparticle attraction.",
-        "In a liquid, the particles can move freely in all directions.",
-        "In a solid, the particles are tightly packed and can move past each other.",
-        "In a solid, the particles are closely packed and have strong interparticle attraction."
-      ],
-      "answerIndex": 3,
-      "solution": "The correct answer is 'In a solid, the particles are closely packed and have strong interparticle attraction.' This is because in a solid, particles are held in fixed positions by strong forces of attraction, which restrict their movement. The other options incorrectly describe the arrangement and movement of particles in different states of matter.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा कथन पदार्थ की कणिका प्रकृति के बारे में सत्य है?",
-          "choices": [
-            "एक गैस में, कण घनी रूप से पैक किए गए होते हैं और इनके बीच दुर्बल अंतरकणिका आकर्षण होता है।",
-            "एक द्रव में, कण सभी दिशाओं में मुक्त रूप से गति कर सकते हैं।",
-            "एक ठोस में, कण घनी रूप से पैक किए गए होते हैं और एक दूसरे के पास गति कर सकते हैं।",
-            "एक ठोस में, कण घनी रूप से पैक किए गए होते हैं और इनके बीच मजबूत अंतरकणिका आकर्षण होता है।"
-          ],
-          "solution": "सही उत्तर 'एक ठोस में, कण घनी रूप से पैक किए गए होते हैं और इनके बीच मजबूत अंतरकणिका आकर्षण होता है।' इसका कारण यह है कि ठोस में कणों को मजबूत आकर्षण बलों द्वारा निश्चित स्थितियों में बांध दिया जाता है, जो इनकी गति को सीमित कर देता है। अन्य विकल्प विभिन्न प्रावस्थाओं में कणों की व्यवस्था और गति का गलत वर्णन करते हैं।",
-          "imageAlt": null,
-          "critique": "The translation accurately reflects the original meaning, technical terms are appropriately used in Hindi, and the correct answer remains in the same position. All distractors remain incorrect.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता विधान पदार्थाच्या कणात्मक प्रकृतीबद्दल खरा आहे?",
-          "choices": [
-            "एका वायूमध्ये, कण जवळ जवळ बसलेले असतात आणि त्यांच्यातील अंतरकणात्मक आकर्षण कमी असते.",
-            "एका द्रवमध्ये, कण सर्व दिशांमध्ये मुक्तपणे चालू शकतात.",
-            "एका घनमध्ये, कण घन बसलेले असतात आणि एकमेकांवरून चालू शकतात.",
-            "एका घनमध्ये, कण जवळ जवळ बसलेले असतात आणि त्यांच्यातील अंतरकणात्मक आकर्षण मजबूत असते."
-          ],
-          "solution": "योग्य उत्तर 'एका घनमध्ये, कण जवळ जवळ बसलेले असतात आणि त्यांच्यातील अंतरकणात्मक आकर्षण मजबूत असते.' हे कारण घनमध्ये कण त्यांच्या निश्चित स्थानांमध्ये मजबूत आकर्षणाने बांधलेले असतात, जे त्यांच्या गतीला बाधित करतात. इतर विकल्प विविध पदार्थांच्या अवस्थांमध्ये कणांच्या व्यवस्थेचे आणि गतीचे चुकीचे वर्णन करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the properties of gases and solids, thinking gas particles are close together like in solids.",
-        "Confuses the movement of liquid particles with gas particles",
-        "Misunderstands the movement of solid particles",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 3, as solids have particles that are closely packed with strong interparticle attraction. The other options contain common misconceptions about the particulate nature of matter.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 10,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "Activity 7.9: Let us find out"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "States of Matter"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "States of Matter"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:42:05.864Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "A student claims that the particles in a solid can only vibrate in place. Is this statement correct?",
-      "choices": [
-        "Yes, because solids have fixed shape and volume.",
-        "No, because particles in solids can move freely.",
-        "Yes, because the particles in solids are always moving in random directions.",
-        "No, because particles in solids can move past each other."
-      ],
-      "answerIndex": 0,
-      "solution": "Yes, because solids have fixed shape and volume. This reflects the nature of particles in solids, which are tightly packed and only vibrate in place, maintaining the solid's structure. The other options incorrectly suggest that particles can move freely or past each other, which does not align with the behavior of solids.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र का कथन है कि ठोस में कण केवल अपने स्थान पर कंपन कर सकते हैं। क्या यह कथन सही है?",
-          "choices": [
-            "हाँ, क्योंकि ठोसों में निश्चित आकृति और आयतन होता है।",
-            "नहीं, क्योंकि ठोसों में कण स्वतंत्र रूप से गति कर सकते हैं।",
-            "हाँ, क्योंकि ठोसों में कण यादृच्छिक दिशाओं में हमेशा गति करते रहते हैं।",
-            "नहीं, क्योंकि ठोसों में कण एक दूसरे के पास गति कर सकते हैं।"
-          ],
-          "solution": "हाँ, क्योंकि ठोसों में निश्चित आकृति और आयतन होता है। इसका अर्थ है कि कणों की प्रकृति ठोसों में घनी रूप से बंधी होती है और केवल अपने स्थान पर कंपन करती है, जो ठोस की संरचना को बनाए रखती है। अन्य विकल्प गलत रूप से सुझाते हैं कि कण स्वतंत्र रूप से गति कर सकते हैं या एक दूसरे के पास गति कर सकते हैं, जो ठोसों के व्यवहार के साथ मेल नहीं खाता।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थ्याने असा दावा केला की घनातील कण केवळ जागेवर झटकून राहतात. हा विधान बरोबर आहे का?",
-          "choices": [
-            "होय, कारण घनांमध्ये निश्चित आकार आणि आयतन असतो.",
-            "नाही, कारण घनांमधील कण स्वतंत्रपणे चालू शकतात.",
-            "होय, कारण घनांमधील कण अयोग्य दिशांमध्ये हरवू शकतात.",
-            "नाही, कारण घनांमधील कण एकमेकांच्या जवळ चालू शकतात."
-          ],
-          "solution": "होय, कारण घनांमध्ये निश्चित आकार आणि आयतन असतो. हे घनांमधील कणांच्या प्रकृतीला प्रतिबिंबित करते, जे घनांच्या संरचनेला ठेवतात. इतर विकल्प चुकीचे दावा करतात की कण स्वतंत्रपणे चालू शकतात किंवा एकमेकांच्या जवळ चालू शकतात, जे घनांच्या वर्तनाशी जुळत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning. The terms used are appropriate for a Marathi-medium science curriculum.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Misunderstands the movement of solid particles",
-        "Believes particles in solids move randomly like in gases, not just vibrate",
-        "Confuses the behavior of solid particles with that of liquids"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the statement aligns with the particulate nature of solids, where particles vibrate in fixed positions. The other options reflect common misconceptions about particle movement in solids.",
-      "sources": [
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 10,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "Activity 7.9: Let us find out"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "States of Matter"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "States of Matter"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:42:05.864Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why do gases mix easily while solids do not?",
-      "choices": [
-        "Gases have higher interparticle forces than solids.",
-        "Gases have lower interparticle forces than solids.",
-        "Gases have fixed positions while solids do not.",
-        "Gases are more dense than solids."
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'Gases have lower interparticle forces than solids.' This allows gas particles to move freely and mix easily. Solids, on the other hand, have strong interparticle forces that keep their particles in fixed positions, preventing mixing. The other options contradict the chapter's explanation of interparticle forces and particle movement.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "गैसें आसानी से मिश्रित क्यों हो जाती हैं जबकि ठोस नहीं?",
-          "choices": [
-            "गैसों में ठोसों की तुलना में अधिक अंतरण कण बल होते हैं।",
-            "गैसों में ठोसों की तुलना में कम अंतरण कण बल होते हैं।",
-            "गैसों में निश्चित स्थिति होती है जबकि ठोसों में नहीं होती।",
-            "गैसें ठोसों की तुलना में अधिक घनी होती हैं।"
-          ],
-          "solution": "सही उत्तर 'गैसों में ठोसों की तुलना में कम अंतरण कण बल होते हैं।' यह गैस कणों के मुक्त रूप से गति करने की अनुमति देता है और आसानी से मिश्रित हो जाते हैं। ठोस दूसरी ओर, अपने कणों को निश्चित स्थिति में रखने वाले मजबूत अंतरण कण बलों के कारण मिश्रण रोकते हैं। अन्य विकल्प अंतरण कण बलों और कण गति के अध्याय के विवरण के विरोधी हैं।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "का वायू सहज एकमेकांसोबत मिसळतात आणि घन पदार्थ नाही?",
-          "choices": [
-            "वायूंमध्ये घन पदार्थांपेक्षा जास्त अणुमधील बल असते.",
-            "वायूंमध्ये घन पदार्थांपेक्षा कमी अणुमधील बल असते.",
-            "वायूंमध्ये निश्चित स्थान असते तर घन पदार्थांमध्ये नसते.",
-            "वायू घन पदार्थांपेक्षा जास्त घनत्व असतात."
-          ],
-          "solution": "योग्य उत्तर 'वायूंमध्ये घन पदार्थांपेक्षा कमी अणुमधील बल असते.' हे वायू अणूंना स्वतंत्रपणे चालण्यास परवानगी देते आणि सहज मिसळतात. घन पदार्थांच्या बाबतीत, त्यांच्या अणूंना निश्चित स्थानात ठेवणारे जास्त अणुमधील बल असतात, जे मिश्रणाला अडवतात. इतर विकल्प अणुमधील बल आणि अणूंच्या गतीबद्दल अध्यायाच्या व्याख्येशी विरोधात आहेत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly assumes gas particles have higher forces",
-        null,
-        "Confuses the movement of solid particles with gas particles",
-        "Misunderstands the density of gases and solids"
+        "students may think that particles change their fundamental nature when changing state",
+        "Incorrectly assumes a chemical change occurs"
       ],
       "solverAnswers": [
         1,
@@ -1315,34 +1317,12 @@
         1
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as gases have weaker interparticle forces, allowing them to mix easily. The other options reflect common misconceptions about interparticle forces, particle movement, and density.",
+      "critique": "The correct answer is 1, as heating a solid gives particles more energy, allowing them to move more freely and transition to a gas. The other options reflect common misconceptions about phase changes and chemical reactions.",
       "sources": [
         {
           "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 10,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "Activity 7.9: Let us find out"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 11,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 7: — Particulate Nature of Matter",
-            "7.4 How Particles Move in Different States",
-            "States of Matter"
-          ]
-        },
-        {
-          "document": "ncert/8/science/hecu107.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
+          "ordinal": 13,
+          "pageStart": 18,
           "pageEnd": 18,
           "headingPath": [
             "Chapter 7: — Particulate Nature of Matter",
@@ -1352,7 +1332,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T09:42:05.864Z",
+      "generatedAt": "2026-10-29T23:11:06.890Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

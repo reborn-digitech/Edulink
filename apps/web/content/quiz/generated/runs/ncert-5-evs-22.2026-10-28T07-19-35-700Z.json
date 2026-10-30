@@ -1,0 +1,250 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T07:19:35.700Z",
+  "finishedAt": "2026-10-28T07:21:44.003Z",
+  "seconds": 128,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap122.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 22 — 22. On the Move Again",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 31107,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8082,
+      "completionTokens": 1332
+    },
+    "critique": {
+      "calls": 8,
+      "ms": 57448,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 3207,
+      "completionTokens": 1337
+    },
+    "solver": {
+      "calls": 40,
+      "ms": 23156,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 4700,
+      "completionTokens": 320
+    },
+    "form": {
+      "calls": 5,
+      "ms": 16334,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 1104,
+      "completionTokens": 349
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 5951,
+      "in": 4,
+      "out": 2,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 99123,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5067,
+      "completionTokens": 2771
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What happens to Dhanu and other children when their families go for work?",
+      "ms": {
+        "draft": 3813,
+        "critique": 7565,
+        "solver": 2463
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do the villagers borrow money from the mukadam?",
+      "ms": {
+        "draft": 3813,
+        "critique": 6515,
+        "solver": 2259,
+        "form": 3460
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the name of the person who lends money to the villagers?",
+      "ms": {
+        "draft": 3964,
+        "critique": 9415,
+        "solver": 3106,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the children who move with their families for work?",
+      "ms": {
+        "draft": 3964,
+        "critique": 6326,
+        "solver": 1053
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the agent who lends money to the villagers?",
+      "ms": {
+        "draft": 3813,
+        "critique": 6050,
+        "solver": 1515,
+        "form": 4670
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason that families like Dhanu’s leave their village for six months?",
+      "ms": {
+        "draft": 3964,
+        "critique": 8512,
+        "solver": 1658,
+        "form": 6130
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Dhanu’s family did not leave the village for work, what would most likely happen?",
+      "ms": {
+        "draft": 3964,
+        "critique": 8827,
+        "solver": 2688,
+        "form": 5496,
+        "translation": 49056
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason the villagers leave their village for six months?",
+      "ms": {
+        "draft": 3813,
+        "critique": 4244,
+        "solver": 699,
+        "form": 1368,
+        "translation": 44124
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What happens to Dhanu and other children when their families go for work?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why do the villagers borrow money from the mukadam?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Focuses on a detail mentioned in the passage but not the mai…\"); distractor 1's reason is not a one-line misconception (\"Focuses on a detail mentioned in the passage but not the mai…\"); distractor 3's reason is not a one-line misconception (\"Focuses on a detail mentioned in the passage but not the mai…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the name of the person who lends money to the villagers?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What does the passage suggest about the children who move with their families for work?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the agent who lends money to the villagers?",
+      "reason": "near-duplicate of served question cmvobtu620621gp215txo9uww (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the main reason that families like Dhanu’s leave their village for six months?",
+      "reason": "near-duplicate of served question cmvobtu68062dgp21ar2zaxs9 (cosine 0.929 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

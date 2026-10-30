@@ -21,47 +21,498 @@
   "board": "NCERT",
   "book": "India -People And Economy",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T18:49:32.234Z",
+  "generatedAt": "2026-10-29T06:24:41.628Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which type of pollution is caused by the release of substances and energy from waste products of human activities?",
+      "stem": "Which of the following is a natural process that leads to land degradation?",
       "choices": [
-        "Air pollution",
-        "Water pollution",
-        "Land pollution",
-        "Noise pollution"
+        "Salinisation",
+        "Deforestation",
+        "Overgrazing",
+        "Urbanisation"
       ],
       "answerIndex": 0,
-      "solution": "The release of substances and energy from human waste can lead to air pollution, as these materials often enter the atmosphere through emissions and combustion. Water pollution involves contaminants entering water bodies, land pollution involves waste on or in the soil, and noise pollution is the result of excessive sound, not substances or energy from waste. Therefore, air pollution is the correct answer.",
+      "solution": "Salinisation is a natural process where salts accumulate in the soil, often due to evaporation and poor drainage, leading to land degradation. Deforestation, overgrazing, and urbanisation are all human activities that contribute to land degradation but are not natural processes themselves.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "मानव गतिविधियों के अपशिष्ट उत्पादों से उत्सर्जित पदार्थों और ऊर्जा के कारण किस प्रकार का प्रदूषण होता है?",
+          "stem": "निम्नलिखित में से कौन-सी एक प्राकृतिक प्रक्रिया है जो भूमि क्षरण के कारण होती है?",
           "choices": [
-            "वायु प्रदूषण",
-            "जल प्रदूषण",
-            "भूमि प्रदूषण",
-            "ध्वनि प्रदूषण"
+            "लवणीकरण",
+            "वनोन्मूलन",
+            "अतिचराई",
+            "शहरीकरण"
           ],
-          "solution": "मानव अपशिष्ट उत्पादों से उत्सर्जित पदार्थों और ऊर्जा वायु प्रदूषण के कारण हो सकते हैं, क्योंकि ये सामग्री आमतौर पर उत्सर्जन और ज्वलन के माध्यम से वातावरण में प्रवेश करती हैं। जल प्रदूषण में जल निकायों में अशुद्धियां प्रवेश करती हैं, भूमि प्रदूषण में मिट्टी पर या मिट्टी में अपशिष्ट होता है, और ध्वनि प्रदूषण अत्यधिक ध्वनि के कारण होता है, न कि अपशिष्ट से उत्सर्जित पदार्थों या ऊर्जा के कारण। इसलिए, वायु प्रदूषण सही उत्तर है।",
+          "solution": "लवणीकरण एक प्राकृतिक प्रक्रिया है जिसमें लवण मिट्टी में संचित हो जाते हैं, जो वाष्पीकरण और खराब जल निकासी के कारण होता है, जिसके कारण भूमि क्षरण होता है। वनोन्मूलन, अतिचराई और शहरीकरण सभी मानव गतिविधियां हैं जो भूमि क्षरण के कारण होती हैं लेकिन वे स्वयं प्राकृतिक प्रक्रियाएं नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard terminology used in Hindi textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "मानवी क्रियाकलापांच्या अपशिष्ट उत्पादनांमधून पदार्थ आणि ऊर्जेच्या निर्मोचनामुळे कोणत्या प्रकारचा प्रदूषण होतो?",
+          "stem": "खालीलपैकी कोणते भूमीच्या निर्मूलनाला लावणारे प्राकृतिक प्रक्रिया आहे?",
+          "choices": [
+            "सलिनिझेशन",
+            "वनत्याग",
+            "अतिगोंधन",
+            "शहरीकरण"
+          ],
+          "solution": "सलिनिझेशन ही एक प्राकृतिक प्रक्रिया आहे जेव्हा खरबरी आणि खराब निर्वहनामुळे मातीत लवण जमा होतात, जे भूमीच्या निर्मूलनाला लावतात. वनत्याग, अतिगोंधन आणि शहरीकरण ही सर्व मानवी क्रियाकलाप आहेत जे भूमीच्या निर्मूलनाला लावतात पण ते प्राकृतिक प्रक्रिया नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses natural and human causes",
+        "confuses natural and human causes",
+        "confuses natural and human causes"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies salinisation as a natural process and correctly labels the other options as human-induced. The reasoning aligns with standard geographical understanding.",
+      "sources": [
+        {
+          "document": "ncert/12/geography/legy209.pdf",
+          "ordinal": 10,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
+            "AND PROBLEMS"
+          ]
+        },
+        {
+          "document": "ncert/12/geography/legy209.pdf",
+          "ordinal": 11,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
+            "AND PROBLEMS"
+          ]
+        },
+        {
+          "document": "ncert/12/geography/legy209.pdf",
+          "ordinal": 12,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
+            "AND PROBLEMS"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T06:24:41.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What are the major sources of air pollution?",
+      "choices": [
+        "Vehicle emissions, industrial waste, and burning of fossil fuels",
+        "Agricultural practices, natural disasters, and volcanic eruptions",
+        "Deforestation, soil erosion, and water contamination",
+        "Urbanization, population growth, and migration"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'Vehicle emissions, industrial waste, and burning of fossil fuels.' These are the main sources of air pollution. The other options include factors that may contribute to pollution but are not the primary sources of air pollution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "वायु प्रदूषण के मुख्य स्रोत क्या हैं?",
+          "choices": [
+            "वाहन उत्सर्जन, औद्योगिक अपशिष्ट, एवं ज्वलनीय ईंधन के जलने से",
+            "कृषि विधियां, प्राकृतिक आपदाएं, एवं ज्वालामुखी विस्फोट",
+            "वन विनाश, मृदा अपरदन, एवं जल प्रदूषण",
+            "शहरीकरण, जनसंख्या वृद्धि, एवं प्रवास"
+          ],
+          "solution": "सही उत्तर 'वाहन उत्सर्जन, औद्योगिक अपशिष्ट, एवं ज्वलनीय ईंधन के जलने से' है। ये वायु प्रदूषण के मुख्य स्रोत हैं। अन्य विकल्पों में ऐसे कारक शामिल हैं जो प्रदूषण के लिए योगदान कर सकते हैं लेकिन वायु प्रदूषण के प्रमुख स्रोत नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. Technical terms like 'वाहन उत्सर्जन' (vehicle emissions) and 'ज्वलनीय ईंधन' (fossil fuels) are appropriate for a Hindi-medium science curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वायू दूषणाचे मुख्य स्रोत कोणते आहेत?",
+          "choices": [
+            "वाहन उत्सर्जन, औद्योगिक अपशिष्ट आणि खनिज इंधनांचे जाळणे",
+            "शेतीची पद्धती, प्राकृतिक विपत्ती आणि ज्वालामुखींचे उफाळ",
+            "वन नामुक्ती, भूकंप आणि पाणी दूषित होणे",
+            "शहरीकरण, लोकसंख्या वाढ आणि प्रवास"
+          ],
+          "solution": "योग्य उत्तर 'वाहन उत्सर्जन, औद्योगिक अपशिष्ट आणि खनिज इंधनांचे जाळणे' आहे. हे वायू दूषणाचे मुख्य स्रोत आहेत. इतर विकल्पांमध्ये दूषणास जबाबदार असलेल्या घटकांचा समावेश असू शकतो परंतु ते वायू दूषणाचे प्रमुख स्रोत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Includes indirect factors",
+        "Includes natural and unrelated causes",
+        "Includes environmental issues not related to air pollution"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as vehicle emissions, industrial waste, and burning of fossil fuels are the primary sources of air pollution. The other options include indirect or unrelated factors, which aligns with the author's reasoning.",
+      "sources": [
+        {
+          "document": "ncert/12/geography/legy209.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
+            "AND PROBLEMS",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T06:24:41.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What are the major problems associated with urban waste disposal in India?",
+      "choices": [
+        "Lack of proper waste management, illegal dumping, and inadequate disposal facilities",
+        "High population density, lack of recycling, and pollution from vehicles",
+        "Inadequate public awareness, excessive use of plastic, and improper segregation of waste",
+        "Inadequate public transport, excessive construction, and poor sanitation"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'Lack of proper waste management, illegal dumping, and inadequate disposal facilities.' These are the main issues in urban waste disposal. The other options describe different types of pollution or unrelated environmental problems.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "भारत में शहरी अपशिष्ट निपटान से जुड़ी मुख्य समस्याएं क्या हैं?",
+          "choices": [
+            "अपशिष्ट प्रबंधन की अनुपस्थिति, अवैध डंपिंग, और अपर्याप्त निपटान सुविधाएं",
+            "उच्च जनसंख्या घनत्व, पुनर्चक्रण की कमी, और वाहनों से प्रदूषण",
+            "अपर्याप्त सार्वजनिक जागरूकता, अत्यधिक प्लास्टिक के उपयोग, और अपशिष्ट के अनुचित वर्गीकरण",
+            "अपर्याप्त सार्वजनिक परिवहन, अत्यधिक निर्माण, और खराब स्वच्छता"
+          ],
+          "solution": "सही उत्तर 'अपशिष्ट प्रबंधन की अनुपस्थिति, अवैध डंपिंग, और अपर्याप्त निपटान सुविधाएं' है। ये शहरी अपशिष्ट निपटान में मुख्य समस्याएं हैं। अन्य विकल्प अलग प्रकार के प्रदूषण या असंबंधित पर्यावरणीय समस्याओं का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for environmental issues.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भारतात शहरी अपशिष्ट विसर्जनाशी संबंधित मुख्य समस्या कोणत्या आहेत?",
+          "choices": [
+            "अपशिष्ट व्यवस्थापनाची अनुपस्थिती, अकायदेशीर अपशिष्ट फेकणे आणि अपुरे विसर्जन सुविधा",
+            "उच्च लोकसंख्या घनता, पुनर्वापर नसणे आणि वाहनांमुळे दूषण",
+            "अपुरी लोकांची जागरूकता, अतिरिक्त प्लास्टिकचा वापर आणि अपशिष्टाचे अयोग्य विभाजन",
+            "अपुरी लोकभाडे वाहतूक, अतिरिक्त बांधकाम आणि खराब स्वच्छता"
+          ],
+          "solution": "बरोबर उत्तर 'अपशिष्ट व्यवस्थापनाची अनुपस्थिती, अकायदेशीर अपशिष्ट फेकणे आणि अपुरे विसर्जन सुविधा' आहे. ही शहरी अपशिष्ट विसर्जनाच्या मुख्य समस्या आहेत. इतर विकल्पांमध्ये वेगळ्या प्रकारचे दूषण किंवा असंबंधित पर्यावरणीय समस्या वर्णन केल्या आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for environmental concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confusing urban waste issues with general urban problems like traffic pollution",
+        "Students may confuse waste management practices with general environmental issues",
+        "Misconception that urban waste issues stem from infrastructure rather than waste management practices"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 0, which directly addresses the core issues of urban waste disposal. The other options mix in unrelated or secondary issues, which aligns with the author's reasoning about common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/geography/legy209.pdf",
+          "ordinal": 13,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
+            "AND PROBLEMS",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T06:24:41.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the main reason for the self-purifying capacity of water to fail?",
+      "choices": [
+        "High rainfall",
+        "Low temperature",
+        "Increase in the concentration of substances",
+        "Decrease in the number of bacteria"
+      ],
+      "answerIndex": 2,
+      "solution": "The main reason for the self-purifying capacity of water to fail is when the concentration of substances in the water increases, overwhelming the natural processes that break down pollutants. High rainfall, low temperature, and a decrease in the number of bacteria do not directly interfere with the ability of water to purify itself through natural means.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जल की स्व-शुद्धिकरण क्षमता के विफल होने का मुख्य कारण क्या है?",
+          "choices": [
+            "उच्च वर्षा",
+            "निम्न तापमान",
+            "पदार्थों की सांद्रता में वृद्धि",
+            "बैक्टीरिया की संख्या में कमी"
+          ],
+          "solution": "जल की स्व-शुद्धिकरण क्षमता के विफल होने का मुख्य कारण जल में पदार्थों की सांद्रता में वृद्धि होती है, जो प्रदूषकों के विघटन में प्राकृतिक प्रक्रियाओं को अतिक्रमित कर देती है। उच्च वर्षा, निम्न तापमान और बैक्टीरिया की संख्या में कमी जल की प्राकृतिक तरीकों से शुद्ध होने की क्षमता को सीधे रूप से प्रभावित नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "पाण्याच्या स्वतःच्या शुद्धीकरण क्षमतेचा अपयश करण्याचे मुख्य कारण काय आहे?",
+          "choices": [
+            "उच्च पाऊस",
+            "कमी तापमान",
+            "द्रव्यांच्या एकाग्रतेत वाढ",
+            "बॅक्टेरियांच्या संख्येत घट"
+          ],
+          "solution": "पाण्याच्या स्वतःच्या शुद्धीकरण क्षमतेचा अपयश करण्याचे मुख्य कारण असते जेव्हा पाण्यातील द्रव्यांच्या एकाग्रतेत वाढ होते, जे अपशिष्टांच्या विघटनाच्या प्राकृतिक प्रक्रियांवर वर्चस्व घेते. उच्च पाऊस, कमी तापमान आणि बॅक्टेरियांच्या संख्येत घट ही पाण्याच्या स्वतःच्या शुद्धीकरण क्षमतेच्या प्राकृतिक मार्गांवर लक्ष्य करत नाहीत.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes increased water volume from rain helps pollute water rather than dilute it",
+        "Believes lower temperature increases pollution rather than enhances self-purification",
+        null,
+        "Incorrectly assumes a decrease in substances"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as increased concentration of substances overwhelms the self-purifying capacity of water. The author's reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/geography/legy209.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 9: Geographical Perspective on Selected Issues and Problems"
+          ]
+        },
+        {
+          "document": "ncert/12/geography/legy209.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
+            "AND PROBLEMS"
+          ]
+        },
+        {
+          "document": "ncert/12/geography/legy209.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
+            "AND PROBLEMS"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T06:24:41.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following is a consequence of land degradation?",
+      "choices": [
+        "Increase in agricultural productivity",
+        "Improved water quality",
+        "Decline in land fertility",
+        "Reduction in soil erosion"
+      ],
+      "answerIndex": 2,
+      "solution": "Land degradation leads to a decrease in the ability of soil to support plant growth, which results in a decline in land fertility. The other options describe improvements that are not caused by land degradation. A decline in land fertility directly reflects the negative impact of unsustainable land use.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा भूमि क्षरण का परिणाम है?",
+          "choices": [
+            "कृषि उत्पादकता में वृद्धि",
+            "जल की गुणवत्ता में सुधार",
+            "भूमि उर्वरता में गिरावट",
+            "मृदा अपरदन में कमी"
+          ],
+          "solution": "भूमि क्षरण मृदा के पौधों के विकास के लिए क्षमता में कमी के कारण होता है, जिसके परिणामस्वरूप भूमि उर्वरता में गिरावट आती है। अन्य विकल्प ऐसे सुधारों का वर्णन करते हैं जो भूमि क्षरण के कारण नहीं होते। भूमि उर्वरता में गिरावट अस्थायी भूमि उपयोग के नकारात्मक प्रभाव को सीधे दर्शाती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English content, with appropriate terminology used in a Hindi-medium educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते भूक्षेत्र निर्माणाचे परिणाम आहे?",
+          "choices": [
+            "कृषी उत्पादकतेत वाढ",
+            "जल गुणवत्तेत सुधारणा",
+            "भूमीच्या पोषकतेत घट",
+            "मृदा अपरदनात घट"
+          ],
+          "solution": "भूक्षेत्र निर्माणामुळे मृदेच्या वनस्पतींच्या वाढीला साथ देण्याच्या क्षमतेत घट होते, जी भूमीच्या पोषकतेत घट निर्माण करते. इतर विकल्पांमध्ये उल्लेखित सुधारणा भूक्षेत्र निर्माणामुळे घडत नाहीत. भूमीच्या पोषकतेत घट हा असुस्थिर भूमी वापराच्या नकारात्मक परिणामाचा सीधा परिणाम आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'भूमीच्या पोषकतेत घट' for 'decline in land fertility' and 'मृदा अपरदनात घट' for 'reduction in soil erosion'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses cause and effect",
+        "confuses cause and effect",
+        null,
+        "confuses cause and effect"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as land degradation leads to a decline in land fertility. The other options represent positive outcomes that are not consequences of land degradation, and the author's reasoning about 'confusing cause and effect' is valid for all three distractors.",
+      "sources": [
+        {
+          "document": "ncert/12/geography/legy209.pdf",
+          "ordinal": 10,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
+            "AND PROBLEMS"
+          ]
+        },
+        {
+          "document": "ncert/12/geography/legy209.pdf",
+          "ordinal": 11,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
+            "AND PROBLEMS"
+          ]
+        },
+        {
+          "document": "ncert/12/geography/legy209.pdf",
+          "ordinal": 12,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
+            "AND PROBLEMS"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T06:24:41.628Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which type of pollution is caused by the release of industrial wastes into water bodies?",
+      "choices": [
+        "Air pollution",
+        "Land pollution",
+        "Noise pollution",
+        "Water pollution"
+      ],
+      "answerIndex": 3,
+      "solution": "Industrial wastes released into water bodies introduce harmful substances directly into the water, which is the defining characteristic of water pollution. Air pollution involves the release of contaminants into the atmosphere, land pollution involves waste accumulating on the ground, and noise pollution refers to excessive sound levels, none of which are caused by waste in water.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जल निकायों में औद्योगिक अपशिष्टों के छोड़े जाने से किस प्रकार के प्रदूषण का कारण होता है?",
+          "choices": [
+            "वायु प्रदूषण",
+            "भूमि प्रदूषण",
+            "ध्वनि प्रदूषण",
+            "जल प्रदूषण"
+          ],
+          "solution": "जल निकायों में औद्योगिक अपशिष्टों के छोड़े जाने से हानिकारक पदार्थ सीधे जल में प्रवेश कर जाते हैं, जो जल प्रदूषण की परिभाषा है। वायु प्रदूषण वातावरण में अशुद्धियों के छोड़े जाने से होता है, भूमि प्रदूषण भूमि पर अपशिष्टों के जमा होने से होता है और ध्वनि प्रदूषण अत्यधिक ध्वनि स्तरों के कारण होता है, जिसका कोई भी कारण जल में अपशिष्टों के कारण नहीं होता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard terminology as found in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जल निर्माण करणारी औद्योगिक अपशिष्टे कोणत्या प्रकारच्या प्रदूषणाची निर्मिती करतात?",
           "choices": [
             "वायू प्रदूषण",
-            "पाणी प्रदूषण",
             "भूमी प्रदूषण",
-            "ध्वनी प्रदूषण"
+            "ध्वनी प्रदूषण",
+            "जल प्रदूषण"
           ],
-          "solution": "मानवी अपशिष्टांमधून पदार्थ आणि ऊर्जेच्या निर्मोचनामुळे वायू प्रदूषण होऊ शकते, कारण या सामग्री वायुमार्गांमधून उत्सर्जन आणि ज्वलनाद्वारे प्रवेश करतात. पाणी प्रदूषण हे जल शरीरांमध्ये अशुद्धी घुसविण्याशी संबंधित आहे, भूमी प्रदूषण हे मातीवर किंवा मातीमध्ये अपशिष्टांशी संबंधित आहे आणि ध्वनी प्रदूषण हे अतिरिक्त ध्वनीच्या परिणामामुळे होते, पदार्थ किंवा ऊर्जा अपशिष्टांमुळे नव्हे. त्यामुळे वायू प्रदूषण हे योग्य उत्तर आहे.",
+          "solution": "जल निर्माण करणारी औद्योगिक अपशिष्टे जलात लागल्याने जलात विषारी पदार्थ जातात, हे जल प्रदूषणाचे वैशिष्ट्य आहे. वायू प्रदूषणात वातावरणात अपशिष्टे जातात, भूमी प्रदूषणात अपशिष्ट जमीनीवर जमतात आणि ध्वनी प्रदूषणात अतिरिक्त ध्वनीच्या पातळी असतात, जे जलातील अपशिष्टामुळे होत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi terminology for environmental concepts.",
           "flag": null
@@ -72,1020 +523,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        null,
-        "Confuses the general definition with a specific type of pollution.",
-        "Confuses the general definition with a specific type of pollution.",
-        "Confuses the general definition with a specific type of pollution."
+        "Confuses air pollution with water pollution",
+        "Refers to land pollution as the result of waste on land, not in water",
+        "Associates noise pollution with sound, not water contamination",
+        null
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors. The author's reasoning aligns with the correct interpretation of the definition provided.",
-      "sources": [
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 1,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 2,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the main reason for the improvement in the standard of living of Ramesh’s family?",
-      "choices": [
-        "Remittances from Ramesh",
-        "Improvement in agriculture",
-        "Building of houses",
-        "Purchase of land"
-      ],
-      "answerIndex": 0,
-      "solution": "Remittances from Ramesh provide a steady income that directly supports daily needs, healthcare, and education, leading to an improved standard of living. Improvement in agriculture, building of houses, and purchase of land are not directly linked to the specific financial support mentioned. Without direct evidence of these factors contributing to the family's improvement, remittances remain the most plausible reason.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "रमेश के परिवार के जीवन स्तर में सुधार का मुख्य कारण क्या है?",
-          "choices": [
-            "रमेश से प्राप्त अनुदान",
-            "कृषि में सुधार",
-            "मकान बनाना",
-            "जमीन खरीदना"
-          ],
-          "solution": "रमेश से प्राप्त अनुदान नियमित आय प्रदान करता है जो दैनिक आवश्यकताओं, स्वास्थ्य देखभाल एवं शिक्षा का समर्थन करता है, जिसके कारण जीवन स्तर में सुधार होता है। कृषि में सुधार, मकान बनाना एवं जमीन खरीदना विशिष्ट वित्तीय समर्थन से सीधा संबंधित नहीं हैं। इन कारकों के परिवार के सुधार में योगदान के प्रत्यक्ष साक्ष्य के बिना, अनुदान सबसे संभावित कारण बनता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for educational context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "रमेशच्या कुटुंबाच्या जीवनाच्या मानाच्या सुधारणेचे मुख्य कारण काय आहे?",
-          "choices": [
-            "रमेशकडून पाठवलेल्या रकमा",
-            "शेतीत सुधारणा",
-            "घरांचे बांधकाम",
-            "जमीन खरेदी करणे"
-          ],
-          "solution": "रमेशकडून पाठवलेल्या रकमा ही नियमित उत्पन्नाची स्रोत आहे जी दैनिक आवश्यकता, आरोग्य आणि शिक्षणाला आधार देते, ज्यामुळे जीवनाच्या मानात सुधारणा होते. शेतीत सुधारणा, घरांचे बांधकाम आणि जमीन खरेदी करणे हे विशिष्ट आर्थिक समर्थनाशी सीधा संबंध नाहीत. या घटकांच्या कुटुंबाच्या सुधारणेवर प्रभाव पडल्याचे सीधे पुरावा नसल्यामुळे रमेशकडून पाठवलेल्या रकमा हे सर्वात शक्य उत्तर राहते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with educational materials.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the main cause with a secondary effect",
-        "Chooses a supporting detail as the main reason",
-        "Chooses a supporting detail as the main reason"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as the passage explicitly states that remittances from Ramesh are the main reason for the improvement in the family's standard of living. The other options are either secondary effects or supporting details, not the main cause.",
-      "sources": [
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 7,
-          "pageStart": 6,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 8,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 9,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What happens when the concentration of suspended particles and substances in water increases?",
-      "choices": [
-        "Water becomes polluted",
-        "Water becomes clearer",
-        "Water becomes colder",
-        "Water becomes warmer"
-      ],
-      "answerIndex": 0,
-      "solution": "When the concentration of suspended particles and substances in water increases, it leads to pollution, making the water unsafe for use. The other options are incorrect because increased particles do not make water clearer, colder, or warmer; they typically reduce clarity and can affect temperature indirectly but not as a direct result.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "जब पानी में निलंबित कणों और पदार्थों की सांद्रता बढ़ जाती है तो क्या होता है?",
-          "choices": [
-            "पानी प्रदूषित हो जाता है",
-            "पानी स्पष्ट हो जाता है",
-            "पानी ठंडा हो जाता है",
-            "पानी गर्म हो जाता है"
-          ],
-          "solution": "जब पानी में निलंबित कणों और पदार्थों की सांद्रता बढ़ जाती है, तो प्रदूषण होता है जिससे पानी उपयोग के लायक नहीं रह जाता है। अन्य विकल्प गलत हैं क्योंकि बढ़े हुए कण पानी को स्पष्ट नहीं बनाते, ठंडा या गर्म भी नहीं करते; वे साफ़ दिखाई देने में कमी ला सकते हैं और तापमान पर अप्रत्यक्ष रूप से प्रभाव डाल सकते हैं लेकिन सीधे परिणाम के रूप में नहीं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जलात अविलीन कणांच्या आणि पदार्थांच्या एकाग्रतेत वाढ झाल्यास काय होते?",
-          "choices": [
-            "जल दूषित होते",
-            "जल स्पष्ट होते",
-            "जल थंड होते",
-            "जल उबदार होते"
-          ],
-          "solution": "जलात अविलीन कणांच्या आणि पदार्थांच्या एकाग्रतेत वाढ झाल्यास ते दूषित होते, जल वापरासाठी असुरक्षित होते. इतर विकल्प अयोग्य आहेत कारण वाढलेल्या कणांमुळे जल स्पष्ट होत नाही, थंड किंवा उबदार होत नाही; ते स्पष्टता कमी करतात आणि तापमानावर प्रत्यक्ष परिणाम होत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Misunderstands the effect of increased substances in water.",
-        "Incorrectly assumes that more particles make water clearer.",
-        "Incorrectly assumes that more particles make water warmer."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as increased suspended particles and substances in water lead to pollution. The other options are clearly incorrect and represent common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 1,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 2,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a major source of air pollution?",
-      "choices": [
-        "Industrial emissions",
-        "Solar energy",
-        "Planting trees",
-        "Wind currents"
-      ],
-      "answerIndex": 0,
-      "solution": "Industrial emissions are a major source of air pollution because they release harmful substances like carbon dioxide, sulfur dioxide, and particulate matter into the atmosphere. Solar energy, planting trees, and wind currents do not contribute to air pollution; in fact, they are associated with cleaner or beneficial environmental effects.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन वायु प्रदूषण का एक प्रमुख स्रोत है?",
-          "choices": [
-            "औद्योगिक उत्सर्जन",
-            "सौर ऊर्जा",
-            "वृक्षारोपण",
-            "हवा के धाराएं"
-          ],
-          "solution": "औद्योगिक उत्सर्जन वायु प्रदूषण का एक प्रमुख स्रोत है क्योंकि यह वातावरण में कार्बन डाइऑक्साइड, सल्फर डाइऑक्साइड और कणीय पदार्थ जैसे हानिकारक पदार्थ छोड़ता है। सौर ऊर्जा, वृक्षारोपण और हवा के धाराएं वायु प्रदूषण में योगदान नहीं देती हैं; वास्तव में, वे शुद्ध या लाभदायक पर्यावरण प्रभावों से जुड़ी हुई हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते हवा दूषणाचे मुख्य स्रोत आहे?",
-          "choices": [
-            "उद्योगी उत्सर्जन",
-            "सौर ऊर्जा",
-            "वृक्ष लावणे",
-            "वाऱ्याचे वाहन"
-          ],
-          "solution": "उद्योगी उत्सर्जन हवा दूषणाचे मुख्य स्रोत आहे कारण ते वातावरणात कार्बन डायऑक्साइड, सल्फर डायऑक्साइड आणि कणीय पदार्थ अशा हानिकारक द्रव्यांचे उत्सर्जन करतात. सौर ऊर्जा, वृक्ष लावणे आणि वाऱ्याचे वाहन हवा दूषणास पाठिंबा देत नाहीत; खरे तर ते शुद्ध किंवा लाभदायक पर्यावरणीय परिणामांशी संबंधित आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses renewable energy sources with pollutants",
-        "Misunderstands the role of plants in air quality",
-        "Ignores the environmental benefits of trees in reducing pollution"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (Industrial emissions), as they are a well-established source of air pollution. The other options are either beneficial to air quality or not sources of pollution. The author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 13,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS",
-            "EXERCISES"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the main cause of acid rain?",
-      "choices": [
-        "Sulfur dioxide and nitrogen oxides",
-        "Carbon dioxide",
-        "Ozone depletion",
-        "Water evaporation"
-      ],
-      "answerIndex": 0,
-      "solution": "Acid rain is primarily caused by sulfur dioxide and nitrogen oxides, which react with water in the atmosphere to form acidic compounds. Carbon dioxide, ozone depletion, and water evaporation are not the main causes of acid rain. Sulfur dioxide and nitrogen oxides are the correct answer.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "अम्लीय वर्षा का मुख्य कारण क्या है?",
-          "choices": [
-            "सल्फर डाइऑक्साइड और नाइट्रोजन ऑक्साइड",
-            "कार्बन डाइऑक्साइड",
-            "ओजोन क्षरण",
-            "जल वाष्पीकरण"
-          ],
-          "solution": "अम्लीय वर्षा मुख्य रूप से सल्फर डाइऑक्साइड और नाइट्रोजन ऑक्साइड के कारण होती है, जो वातावरण में जल के साथ अभिक्रिया करके अम्लीय यौगिक बनाते हैं। कार्बन डाइऑक्साइड, ओजोन क्षरण और जल वाष्पीकरण अम्लीय वर्षा के मुख्य कारण नहीं हैं। सल्फर डाइऑक्साइड और नाइट्रोजन ऑक्साइड सही उत्तर हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आम्ल वार्षिकाचा मुख्य कारण काय आहे?",
-          "choices": [
-            "सल्फर डायऑक्साइड आणि नाइट्रोजन ऑक्साइड",
-            "कार्बन डायऑक्साइड",
-            "ओझोन विनाश",
-            "पाणी वाफीकरण"
-          ],
-          "solution": "आम्ल वार्षिकाचा मुख्य कारण सल्फर डायऑक्साइड आणि नाइट्रोजन ऑक्साइड आहे, जे वातावरणातील पाण्याशी अभिक्रिया करून अम्लीय द्रव्य तयार करतात. कार्बन डायऑक्साइड, ओझोन विनाश आणि पाणी वाफीकरण आम्ल वार्षिकाचे मुख्य कारण नाहीत. सल्फर डायऑक्साइड आणि नाइट्रोजन ऑक्साइड हे योग्य उत्तर आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses greenhouse gases with acid rain causes",
-        "Misunderstands the role of ozone in the atmosphere",
-        "Ignores the chemical reactions involved in acid rain formation"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is clearly 0, and the author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 13,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS",
-            "EXERCISES"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a reason for the growth of slums in urban areas?",
-      "choices": [
-        "Improved infrastructure in rural areas",
-        "Lack of housing and basic facilities in cities",
-        "High literacy rates in urban areas",
-        "Strict land use regulations in cities"
-      ],
-      "answerIndex": 1,
-      "solution": "The growth of slums in urban areas is often due to the lack of housing and basic facilities, which forces people to settle in inadequate conditions. Improved infrastructure in rural areas would likely reduce migration to cities, not increase slums. High literacy rates in urban areas do not directly cause slums, and strict land use regulations would typically limit uncontrolled urban expansion.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा शहरी क्षेत्रों में झुग्गी-झोपड़ियों के विकास का कारण है?",
-          "choices": [
-            "ग्रामीण क्षेत्रों में सुधरा हुआ बुनियादी ढांचा",
-            "शहरों में आवास और मूलभूत सुविधाओं की कमी",
-            "शहरी क्षेत्रों में उच्च साक्षरता दर",
-            "शहरों में कठोर भूमि उपयोग नियम"
-          ],
-          "solution": "शहरी क्षेत्रों में झुग्गी-झोपड़ियों के विकास के पीछे आमतौर पर आवास और मूलभूत सुविधाओं की कमी होती है, जो लोगों को अनुचित स्थितियों में बसने के लिए मजबूर करती है। ग्रामीण क्षेत्रों में सुधरा हुआ बुनियादी ढांचा शहरों में प्रवास को कम कर सकता है, न कि झुग्गी-झोपड़ियों को बढ़ाए। शहरी क्षेत्रों में उच्च साक्षरता दर झुग्गी-झोपड़ियों के लिए सीधे कारण नहीं होती, और कठोर भूमि उपयोग नियम आमतौर पर अनियंत्रित शहरी विस्तार को सीमित करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते शहरी भागात झाडपानांच्या वाढीचे कारण आहे?",
-          "choices": [
-            "गावी बेसिक सुविधांची वाढ",
-            "शहरांमध्ये रहिवासी आणि बेसिक सुविधांची कमतरता",
-            "शहरांमध्ये उच्च शिक्षण प्राप्ती",
-            "शहरांमध्ये जमीन वापराच्या नियमांची कठोरता"
-          ],
-          "solution": "शहरी भागात झाडपानांच्या वाढीचे मुख्य कारण शहरांमध्ये रहिवासी आणि बेसिक सुविधांची कमतरता असते, जी लोकांना अपुर्या परिस्थितीत राहण्यास भाग पाडते. गावी बेसिक सुविधांची वाढ शहरांमध्ये प्रवास कमी करेल, झाडपानांची वाढ वाढविणार नाही. शहरांमध्ये उच्च शिक्षण प्राप्ती झाडपानांची वाढ लक्ष्य करत नाही, आणि जमीन वापराच्या नियमांची कठोरता अकाट शहरी विस्ताराला थांबविण्याचा प्रयत्न करेल.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for technical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the cause with rural improvements",
-        null,
-        "Misunderstands the role of literacy",
-        "Incorrectly assumes regulations prevent slums"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as lack of housing and basic facilities directly contributes to slum growth. The other options are either unrelated or represent common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 7,
-          "pageStart": 6,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 8,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 9,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "How do the people in Petlawad block manage their common property resources?",
-      "choices": [
-        "By encroaching on the land",
-        "By planting and maintaining trees",
-        "By using the land for industrial purposes",
-        "By selling the land"
-      ],
-      "answerIndex": 1,
-      "solution": "Planting and maintaining trees is the correct answer because it reflects a sustainable method of managing shared natural resources. Encroaching on land, using it for industry, or selling it would typically lead to depletion or loss of the common property, which is not consistent with long-term resource management.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "पेटलवाड़ ब्लॉक के लोग सामान्य संपत्ति संसाधनों का प्रबंधन कैसे करते हैं?",
-          "choices": [
-            "भूमि पर अवैध बस्ती बनाकर",
-            "वृक्ष लगाकर और बनाए रखकर",
-            "भूमि का औद्योगिक उद्देश्यों के लिए उपयोग करके",
-            "भूमि को बेचकर"
-          ],
-          "solution": "वृक्ष लगाकर और बनाए रखकर सही उत्तर है क्योंकि यह साझा प्राकृतिक संसाधनों के प्रबंधन की स्थायी विधि को दर्शाता है। भूमि पर अवैध बस्ती बनाना, इसका औद्योगिक उद्देश्यों के लिए उपयोग करना या इसे बेच देना आमतौर पर सामान्य संपत्ति के उद्धार या हानि के कारण होता है, जो लंबे समय तक संसाधन प्रबंधन के अनुरूप नहीं होता।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate local terminology and correct answer positioning.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पेटलावाड ब्लॉक मधील लोक सामाईक संपत्ती संसाधनांची व्यवस्थापन कशी करतात?",
-          "choices": [
-            "भूमीवर अवैध वस्ती वसवून",
-            "वृक्ष लावून आणि त्यांची देखभाल करून",
-            "भूमीचा औद्योगिक उपयोग करून",
-            "भूमी विकून"
-          ],
-          "solution": "वृक्ष लावून आणि त्यांची देखभाल करून हे योग्य उत्तर आहे कारण ते संसाधनांच्या लांबलचक व्यवस्थापनाच्या एका स्थिर विधीचे प्रतिनिधित्व करते. भूमीवर अवैध वस्ती वसवणे, औद्योगिक उपयोग करणे किंवा भूमी विकणे हे सामाईक संपत्तीच्या निर्मूलनाच्या असंगत असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for technical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses encroaching on the land, which is incorrect",
-        null,
-        "Misunderstands the use of land for industrial purposes",
-        "Incorrectly assumes the land is sold"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as the passage explicitly states that households planted and maintained trees on common property. The other options are clearly contradicted by the passage and represent common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 10,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 11,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 12,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following is an effect of air pollution on human health?",
-      "choices": [
-        "Improved respiratory function",
-        "Respiratory infections",
-        "Increased immunity",
-        "Better vision"
-      ],
-      "answerIndex": 1,
-      "solution": "Air pollution can lead to respiratory infections as harmful particles and gases enter the lungs and irritate the respiratory system. Improved respiratory function, increased immunity, and better vision are not effects of air pollution. Respiratory infections are the correct answer.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा वायु प्रदूषण का मानव स्वास्थ्य पर प्रभाव है?",
-          "choices": [
-            "सांस लेने की क्षमता में सुधार",
-            "श्वसन संक्रमण",
-            "प्रतिरोधक क्षमता में वृद्धि",
-            "अच्छी दृष्टि"
-          ],
-          "solution": "वायु प्रदूषण श्वसन संक्रमण का कारण बन सकता है क्योंकि हानिकारक कण और गैसें फेफड़ों में प्रवेश करती हैं और श्वसन प्रणाली को उत्तेजित करती हैं। सांस लेने की क्षमता में सुधार, प्रतिरोधक क्षमता में वृद्धि और अच्छी दृष्टि वायु प्रदूषण के प्रभाव नहीं हैं। श्वसन संक्रमण सही उत्तर है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology used in textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी वायु प्रदूषणाचा मानवी आरोग्यावर कोणता परिणाम आहे?",
-          "choices": [
-            "श्वसन कार्य सुधारले",
-            "श्वसन संक्रमण",
-            "प्रतिरोधक क्षमता वाढली",
-            "चांगले दृष्टिकोन"
-          ],
-          "solution": "वायु प्रदूषणामुळे श्वसन संक्रमण होऊ शकतात कारण विषारी कण आणि वायू फुफ्फुसात जातात आणि श्वसन प्रणालीला जाहले जातात. श्वसन कार्य सुधारले, प्रतिरोधक क्षमता वाढली आणि चांगले दृष्टिकोन हे वायु प्रदूषणाचे परिणाम नाहीत. श्वसन संक्रमण हे बरोबर उत्तर आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with textbook language.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Believes pollution has positive effects on health",
-        null,
-        "Confuses health benefits with pollution effects",
-        "Ignores the health risks of air pollution"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1 (Respiratory infections), as air pollution is known to cause such issues. The other options represent misconceptions or false beliefs about pollution's effects.",
-      "sources": [
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 13,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS",
-            "EXERCISES"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Why do poor people in rural areas often bypass smaller and medium cities to move directly to mega cities?",
-      "choices": [
-        "To find better educational opportunities",
-        "To access higher paying jobs",
-        "To avoid cultural differences",
-        "To escape political instability"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is to access higher paying jobs because mega cities typically offer more employment opportunities with better wages compared to smaller and medium cities. Other options like avoiding cultural differences or escaping political instability are not directly related to the primary economic motivations for migration. Finding better educational opportunities is also not the main reason for this specific type of movement.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "ग्रामीण क्षेत्रों में गरीब लोग क्यों छोटे और मध्यम शहरों को छोड़कर सीधे मेगा शहरों में जाते हैं?",
-          "choices": [
-            "बेहतर शैक्षिक अवसर खोजने के लिए",
-            "अधिक भुगतान करने वाले काम प्राप्त करने के लिए",
-            "सांस्कृतिक अंतरों से बचने के लिए",
-            "राजनीतिक अस्थिरता से भागने के लिए"
-          ],
-          "solution": "सही उत्तर अधिक भुगतान करने वाले काम प्राप्त करने के लिए है क्योंकि मेगा शहरों में छोटे और मध्यम शहरों की तुलना में अधिक रोजगार के अवसर होते हैं जिनमें अच्छे वेतन होते हैं। अन्य विकल्प जैसे सांस्कृतिक अंतरों से बचना या राजनीतिक अस्थिरता से भागना यात्रा के मुख्य आर्थिक प्रेरक बलों से सीधा संबंधित नहीं हैं। बेहतर शैक्षिक अवसर खोजना इस विशिष्ट प्रकार के गतिविधि के मुख्य कारण नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "ग्रामीण भागातील गरीब लोग का लहान आणि मध्यम शहरांमध्ये जाण्याऐवजी थेट मेगा शहरांमध्ये जातात?",
-          "choices": [
-            "उत्तम शैक्षणिक संधी शोधण्यासाठी",
-            "उच्च वेतनाच्या नोकरी वापरण्यासाठी",
-            "सांस्कृतिक फरकांचा बचाव करण्यासाठी",
-            "राजकीय अस्थिरतेपासून बचाव करण्यासाठी"
-          ],
-          "solution": "योग्य उत्तर उच्च वेतनाच्या नोकरी वापरण्यासाठी आहे कारण मेगा शहरांमध्ये लहान आणि मध्यम शहरांच्या तुलनेत अधिक नोकरीच्या संधी आहेत आणि वेतन उच्च असते. सांस्कृतिक फरकांचा बचाव करणे किंवा राजकीय अस्थिरतेपासून बचाव करणे ही या विशिष्ट प्रकारच्या पळाल्याच्या मुख्य आर्थिक प्रेरणांशी सीधा संबंध नाही. उत्तम शैक्षणिक संधी शोधणे हे या विशिष्ट प्रकारच्या गतीचे मुख्य कारण नाही.",
-          "imageAlt": null,
-          "critique": "The translation accurately reflects the original meaning, maintains the correct answer position, and uses appropriate Marathi terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Misinterprets the reason for migration",
-        null,
-        "Confuses the cause with education",
-        "Incorrectly assumes cultural factors are the main reason"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as the reasoning aligns with the author's key and the solution. The distractors represent plausible but incorrect misconceptions about migration motives.",
-      "sources": [
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 7,
-          "pageStart": 6,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 8,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 9,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which river is mentioned as highly polluted in the context of India?",
-      "choices": [
-        "Brahmaputra",
-        "Satluj",
-        "Yamuna",
-        "Godavari"
-      ],
-      "answerIndex": 2,
-      "solution": "Yamuna is recognized as one of the most polluted rivers in India due to industrial waste, sewage, and other contaminants. Other rivers like Brahmaputra and Godavari are not typically highlighted as being as severely polluted in scientific discussions. Satluj is also not commonly associated with high levels of pollution in the same context.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "भारत के संदर्भ में कौन-सी नदी को अत्यधिक प्रदूषित माना जाता है?",
-          "choices": [
-            "ब्रह्मपुत्र",
-            "सतलज",
-            "यमुना",
-            "गोदावरी"
-          ],
-          "solution": "यमुना को भारत में सबसे अधिक प्रदूषित नदियों में से एक माना जाता है क्योंकि इसके कारण औद्योगिक अपशिष्ट, सीवेज और अन्य प्रदूषक हैं। वैज्ञानिक चर्चाओं में ब्रह्मपुत्र और गोदावरी को इतना गंभीर रूप से प्रदूषित नहीं माना जाता है। सतलज को इस संदर्भ में उच्च स्तर के प्रदूषण से जुड़ा नहीं माना जाता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard Indian terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "भारताच्या संदर्भात उच्च प्रदूषित नदी म्हणून उल्लेखिली गेलेली नदी कोणती आहे?",
-          "choices": [
-            "ब्रह्मपुत्र",
-            "सतलज",
-            "यमुना",
-            "गोदावरी"
-          ],
-          "solution": "यमुना भारतातील सर्वात जास्त प्रदूषित नदींपैकी एक मानली जाते, कारण औद्योगिक अपशिष्ट, मानवी अपशिष्ट आणि इतर प्रदूषक. ब्रह्मपुत्र आणि गोदावरी या नद्या वैज्ञानिक चर्चांमध्ये अशा गंभीर प्रदूषणासाठी उल्लेखल्या जात नाहीत. सतलज देखील त्याच विषयात उच्च प्रदूषणासह जोडली जात नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for rivers and pollution.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses a major river with a polluted one due to lack of awareness about specific pollution cases in India",
-        "A student might confuse the Satluj with the Yamuna due to similar spelling or regional familiarity.",
-        null,
-        "Confuses the most well-known river with the most polluted one"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is Yamuna, as it is explicitly mentioned as highly polluted in the context of India. The reasoning for the distractors aligns with common misconceptions students might have about Indian rivers.",
-      "sources": [
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 13,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS",
-            "EXERCISES"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the main reason for the high percentage of rural-urban migration in India?",
-      "choices": [
-        "Urban areas have better healthcare facilities",
-        "Rural areas have more natural resources",
-        "Urban areas offer better job opportunities",
-        "Rural areas are more densely populated"
-      ],
-      "answerIndex": 2,
-      "solution": "The main reason for rural-urban migration in India is the availability of better job opportunities in urban areas, which attract people seeking employment. Other factors, such as healthcare or natural resources, are not the primary drivers of this migration. The option about rural population density is also not the main cause of migration.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "भारत में ग्रामीण-शहरी पलायन का उच्च प्रतिशत का मुख्य कारण क्या है?",
-          "choices": [
-            "शहरी क्षेत्रों में बेहतर स्वास्थ्य सुविधाएं हैं",
-            "ग्रामीण क्षेत्रों में अधिक प्राकृतिक संसाधन हैं",
-            "शहरी क्षेत्रों में बेहतर रोजगार के अवसर हैं",
-            "ग्रामीण क्षेत्र अधिक घनी आबादी वाले हैं"
-          ],
-          "solution": "भारत में ग्रामीण-शहरी पलायन का मुख्य कारण शहरी क्षेत्रों में बेहतर रोजगार के अवसर की उपलब्धता है, जो रोजगार की तलाश में लोगों को आकर्षित करते हैं। अन्य कारक, जैसे स्वास्थ्य या प्राकृतिक संसाधन, इस पलायन के प्रमुख कारक नहीं हैं। ग्रामीण आबादी घनत्व के बारे में विकल्प भी पलायन के मुख्य कारण नहीं है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "भारतात ग्रामीण-शहरी स्थलांतराच्या उच्च टक्केवारीचे मुख्य कारण काय आहे?",
-          "choices": [
-            "शहरी भागात चांगली आरोग्यसेवा उपलब्ध आहेत",
-            "ग्रामीण भागात जास्त प्राकृतिक संसाधने आहेत",
-            "शहरी भागात चांगल्या नोकरीच्या संधी उपलब्ध आहेत",
-            "ग्रामीण भाग जास्त घनतेने वसलेले आहेत"
-          ],
-          "solution": "भारतात ग्रामीण-शहरी स्थलांतराचे मुख्य कारण शहरी भागात उपलब्ध असलेल्या चांगल्या नोकरीच्या संधी आहेत, जी नोकरीसाठी शोधत असलेल्या लोकांना आकर्षित करतात. इतर कारणे, जसे की आरोग्यसेवा किंवा प्राकृतिक संसाधने, ह्या स्थलांतराच्या प्रमुख कारणांपेक्षा नाहीत. ग्रामीण लोकसंख्येच्या घनतेबद्दलचा विकल्प देखील स्थलांतराचे मुख्य कारण नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for social science concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses healthcare with job opportunities",
-        "Misunderstands the role of natural resources",
-        null,
-        "Incorrectly assumes population density is the main factor"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as better job opportunities are a primary driver of rural-urban migration in India. The author's reasoning aligns with the solution and the misconceptions listed for the other options are plausible.",
-      "sources": [
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 7,
-          "pageStart": 6,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 8,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 9,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a river has high levels of nitrates from agricultural activities, what type of pollution is likely to occur?",
-      "choices": [
-        "Water pollution",
-        "Air pollution",
-        "Land pollution",
-        "Noise pollution"
-      ],
-      "answerIndex": 0,
-      "solution": "Nitrates from agricultural activities entering a river are a form of water pollution because they contaminate the water itself. Air pollution involves contaminants in the atmosphere, land pollution involves contaminants in soil, and noise pollution involves excessive sound, none of which are related to nitrates in a river.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक नदी में कृषि गतिविधियों से नाइट्रेट के उच्च स्तर हैं, तो किस प्रकार के प्रदूषण के होने की संभावना है?",
-          "choices": [
-            "जल प्रदूषण",
-            "वायु प्रदूषण",
-            "भूमि प्रदूषण",
-            "ध्वनि प्रदूषण"
-          ],
-          "solution": "कृषि गतिविधियों से नाइट्रेट नदी में प्रवेश करना जल प्रदूषण के रूप में माना जाता है क्योंकि यह जल के स्वयं को प्रदूषित करता है। वायु प्रदूषण में वातावरण में प्रदूषक होते हैं, भूमि प्रदूषण में मिट्टी में प्रदूषक होते हैं और ध्वनि प्रदूषण में अत्यधिक ध्वनि होती है, जिनमें से कोई भी नदी में नाइट्रेट से संबंधित नहीं है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology for environmental concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एका नदीत शेती क्रियाकलापांमुळे नायट्रेटचे उच्च पातळी असतील, तर कोणत्या प्रकारचे प्रदूषण घडू शकते?",
-          "choices": [
-            "पाणी प्रदूषण",
-            "वायू प्रदूषण",
-            "जमीन प्रदूषण",
-            "ध्वनी प्रदूषण"
-          ],
-          "solution": "शेती क्रियाकलापांमुळे नदीत नायट्रेट जाऊ शकतात, हे पाणी प्रदूषणाचे एक प्रकार आहे कारण ते पाण्याला दूषित करतात. वायू प्रदूषणाशी वातावरणातील दूषक जुळतात, जमीन प्रदूषणाशी जमीनातील दूषक जुळतात आणि ध्वनी प्रदूषणाशी अतिरिक्त आवाज जुळतात, जे नदीत नायट्रेटशी संबंधित नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with textbook usage.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses water pollution with another type of pollution.",
-        "Incorrectly associates nitrates with air pollution.",
-        "Confuses land pollution with a different type of pollution."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed, and the correct answer is clearly water pollution. The distractors reflect common misconceptions about the types of pollution associated with nitrates.",
+      "critique": "The question is clear and the solution correctly identifies water pollution as the correct answer based on the description of industrial waste being released into water bodies.",
       "sources": [
         {
           "document": "ncert/12/geography/legy209.pdf",
@@ -1118,360 +569,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Which of the following diseases is caused by water pollution?",
-      "choices": [
-        "Conjunctivitis",
-        "Diarrhoea",
-        "Respiratory infections",
-        "Bronchitis"
-      ],
-      "answerIndex": 1,
-      "solution": "Water pollution can lead to diseases like diarrhoea, which is caused by contaminated water. Conjunctivitis, respiratory infections, and bronchitis are not directly caused by water pollution. Diarrhoea is the correct answer.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा रोग जल प्रदूषण के कारण होता है?",
-          "choices": [
-            "कॉन्जंक्टिविटिस",
-            "डायरिया",
-            "श्वसन संक्रमण",
-            "ब्रोंकाइटिस"
-          ],
-          "solution": "जल प्रदूषण से डायरिया जैसे रोग हो सकते हैं, जो कि संक्रमित जल के कारण होता है। कॉन्जंक्टिविटिस, श्वसन संक्रमण और ब्रोंकाइटिस जल प्रदूषण के सीधे कारण नहीं होते हैं। डायरिया सही उत्तर है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate medical terms used in a Hindi-medium context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता आजार पाणी प्रदूषणामुळे होतो?",
-          "choices": [
-            "कॉन्जंक्टिविटिस",
-            "डायरिया",
-            "श्वासनली आजार",
-            "ब्रँकायटिस"
-          ],
-          "solution": "पाणी प्रदूषणामुळे डायरिया अशा आजारांची शक्यता असते, जो पाण्याच्या दूषिततेमुळे होतो. कॉन्जंक्टिविटिस, श्वासनली आजार आणि ब्रँकायटिस पाणी प्रदूषणामुळे सीधा होत नाहीत. डायरिया हा बरोबर उत्तर आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses a disease caused by air pollution",
-        null,
-        "Confuses the effects of pollution on different body systems",
-        "Selects a disease not related to water contamination"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1 (Diarrhoea), as water pollution is a known cause of this disease. The author's reasoning is sound, and the distractors reflect common misconceptions about the effects of different types of pollution.",
-      "sources": [
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 13,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS",
-            "EXERCISES"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why is the Ganga river considered to be a major concern in terms of pollution?",
-      "choices": [
-        "It flows through a highly populated region",
-        "It is the longest river in India",
-        "It is the only river in India",
-        "It has the most number of tributaries"
-      ],
-      "answerIndex": 0,
-      "solution": "The Ganga river is considered a major concern in terms of pollution because it flows through a highly populated region, leading to increased waste and contaminants. The other options are true but do not explain why pollution is a significant issue. The length, uniqueness, or number of tributaries of the river are not directly related to pollution concerns.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "गंगा नदी प्रदूषण के संदर्भ में एक प्रमुख चिंता क्यों मानी जाती है?",
-          "choices": [
-            "यह एक अत्यधिक जनसंख्या वाले क्षेत्र से बहती है",
-            "यह भारत की सबसे लंबी नदी है",
-            "यह भारत की एकमात्र नदी है",
-            "इसकी सबसे अधिक सहायक नदियां हैं"
-          ],
-          "solution": "गंगा नदी को प्रदूषण के संदर्भ में एक प्रमुख चिंता माना जाता है क्योंकि यह एक अत्यधिक जनसंख्या वाले क्षेत्र से बहती है, जिसके कारण अपशिष्ट और प्रदूषक बढ़ जाते हैं। अन्य विकल्प सत्य हैं लेकिन यह स्पष्ट नहीं करते कि प्रदूषण क्यों एक महत्वपूर्ण समस्या है। नदी की लंबाई, एकमात्रता या सहायक नदियों की संख्या प्रदूषण के संदर्भ में सीधे संबंधित नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "गंगा नदी अपशिष्टाच्या दृष्टीने महत्वाची मानली जाते कारण काय?",
-          "choices": [
-            "ती जास्तीत जास्त लोकसंख्या असलेल्या प्रदेशात वाहते",
-            "ती भारतातील सर्वात लांब नदी आहे",
-            "ती भारतातील एकमात्र नदी आहे",
-            "तिला सर्वात जास्त बालनद्या आहेत"
-          ],
-          "solution": "गंगा नदी अपशिष्टाच्या दृष्टीने महत्वाची मानली जाते कारण ती जास्तीत जास्त लोकसंख्या असलेल्या प्रदेशात वाहते, ज्यामुळे अपशिष्ट आणि दूषित पदार्थांची प्रमाण वाढते. इतर विकल्प खरे आहेत पण अपशिष्टाच्या दृष्टीने महत्वाचे नाहीत. नदीची लांबी, एकमेवता किंवा बालनद्यांची संख्या हे अपशिष्टाच्या दृष्टीने सीमित नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The structure and logic of the question and solution are preserved.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the population aspect with a different fact about the river.",
-        "Misunderstands the reason for the concern as being about length.",
-        "Incorrectly assumes that the Ganga is the only river in India."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the Ganga's pollution is a major concern due to its passage through a highly populated region. The other options are factually incorrect or irrelevant to the reason for concern.",
-      "sources": [
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 1,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 2,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "What is the significance of the community participation in the Petlawad block's watershed management?",
-      "choices": [
-        "It increases the use of fertilizers",
-        "It reduces the need for natural resources",
-        "It ensures sustainable management of resources",
-        "It increases land degradation"
-      ],
-      "answerIndex": 2,
-      "solution": "Community participation in the Petlawad block's watershed management ensures that resources are managed in a way that can be maintained over time, promoting long-term environmental health. This aligns with the idea of sustainable resource management. The other options suggest negative outcomes or incorrect effects that are not supported by the principles of effective watershed management.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "पेटलवाड़ ब्लॉक के जलस्तर प्रबंधन में सामुदायिक भागीदारी का क्या महत्व है?",
-          "choices": [
-            "इससे उर्वरकों के उपयोग में वृद्धि होती है",
-            "इससे प्राकृतिक संसाधनों की आवश्यकता कम हो जाती है",
-            "इससे संसाधनों के स्थायी प्रबंधन की गारंटी मिलती है",
-            "इससे भूमि क्षरण बढ़ जाता है"
-          ],
-          "solution": "पेटलवाड़ ब्लॉक के जलस्तर प्रबंधन में सामुदायिक भागीदारी संसाधनों के ऐसे प्रबंधन को सुनिश्चित करता है जो लंबे समय तक बरकरार रखा जा सके, जिससे लंबे समय तक पर्यावरणीय स्वास्थ्य को बढ़ावा मिलता है। यह स्थायी संसाधन प्रबंधन के विचार के साथ मेल खाता है। अन्य विकल्प नकारात्मक परिणामों या गलत प्रभावों को सूचित करते हैं जो वास्तविक जलस्तर प्रबंधन के सिद्धांतों द्वारा समर्थित नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पेटलावद ब्लॉकच्या जलसेचन व्यवस्थापनात समुदाय भागीदारीचा काय अर्थ आहे?",
-          "choices": [
-            "त्यामुळे उर्वरकांचा वापर वाढतो",
-            "त्यामुळे प्राकृतिक संसाधनांची आवश्यकता कमी होते",
-            "त्यामुळे संसाधनांचे स्थिर व्यवस्थापन खात्री होते",
-            "त्यामुळे जमीन निर्माण होते"
-          ],
-          "solution": "पेटलावद ब्लॉकच्या जलसेचन व्यवस्थापनात समुदाय भागीदारीमुळे संसाधनांचे व्यवस्थापन अशा प्रकारे होते जेणेकरून ते लांबलचक राहू शकतात आणि लांबलचक पर्यावरणीय आरोग्याला बाजूला ठेवता येते. हे स्थिर संसाधन व्यवस्थापनाच्या अर्थाशी जुळते. इतर विकल्पांमध्ये नकारात्मक परिणाम किंवा चुकीच्या परिणामांची शक्यता असते जी जलसेचन व्यवस्थापनाच्या तत्त्वांना समर्थन देत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer (option 2) maintaining its position and validity.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses an option that misrepresents the benefits of participation",
-        "Assumes that natural resources are less needed with participation",
-        null,
-        "Incorrectly states that land degradation increases"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as community participation in watershed management leads to sustainable resource management. The other options either contradict the passage or reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 10,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 11,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        },
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 12,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Which of the following is a major problem associated with urban waste disposal in India?",
-      "choices": [
-        "Improper segregation of waste",
-        "High levels of recycling",
-        "Effective waste management systems",
-        "Low population density"
-      ],
-      "answerIndex": 0,
-      "solution": "Improper segregation of waste is a major problem in urban waste disposal in India. High levels of recycling, effective waste management systems, and low population density are not major problems. Improper segregation of waste is the correct answer.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी भारत में शहरी अपशिष्ट निपटान से जुड़ी एक प्रमुख समस्या है?",
-          "choices": [
-            "अपशिष्ट के अनुचित वर्गीकरण",
-            "उच्च स्तर के पुनर्चक्रण",
-            "प्रभावी अपशिष्ट प्रबंधन प्रणाली",
-            "कम जनसंख्या घनत्व"
-          ],
-          "solution": "भारत में शहरी अपशिष्ट निपटान से जुड़ी एक प्रमुख समस्या अपशिष्ट के अनुचित वर्गीकरण है। उच्च स्तर के पुनर्चक्रण, प्रभावी अपशिष्ट प्रबंधन प्रणाली और कम जनसंख्या घनत्व प्रमुख समस्याएं नहीं हैं। अपशिष्ट के अनुचित वर्गीकरण सही उत्तर है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for technical concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "भारतात शहरी अपशिष्ट वितरणाशी संबंधित खालीलपैकी कोणता मुख्य समस्या आहे?",
-          "choices": [
-            "अपशिष्टाचे अयोग्य विभाजन",
-            "उच्च पातळीवर पुनर्वापर",
-            "कार्यक्षम अपशिष्ट व्यवस्थापन प्रणाली",
-            "कमी लोकसंख्या घनता"
-          ],
-          "solution": "भारतात शहरी अपशिष्ट वितरणाशी संबंधित अपशिष्टाचे अयोग्य विभाजन ही मुख्य समस्या आहे. उच्च पातळीवर पुनर्वापर, कार्यक्षम अपशिष्ट व्यवस्थापन प्रणाली आणि कमी लोकसंख्या घनता ही मुख्य समस्या नाहीत. अपशिष्टाचे अयोग्य विभाजन ही योग्य उत्तर आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for technical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Chooses a solution rather than a problem",
-        "Confuses the role of recycling in waste management",
-        "Ignores the challenges of urban population density"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as improper segregation of waste is indeed a major issue in urban waste disposal in India. The other options represent either solutions, misconceptions, or irrelevant factors.",
-      "sources": [
-        {
-          "document": "ncert/12/geography/legy209.pdf",
-          "ordinal": 13,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 9: Geographical Perspective on Selected Issues and Problems",
-            "AND PROBLEMS",
-            "EXERCISES"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T18:49:32.234Z",
+      "generatedAt": "2026-10-29T06:24:41.628Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

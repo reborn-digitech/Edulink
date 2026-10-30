@@ -1,0 +1,769 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T05:45:16.680Z",
+  "finishedAt": "2026-10-27T05:55:33.532Z",
+  "seconds": 617,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "fecu1",
+    "document": "ncert/6/science/fecu103.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 3 — Mindful Eating: A Pathto a Healthy Body",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n29. We are advised to take iodised salt in our diet by doctors. Justify it's importance in our 3\nbody.",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n23. Patients whose gallbladder are removed are recommended to eat less oily food. 2\nWhy?",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 147943,
+      "in": 43,
+      "out": 41,
+      "rejects": 2,
+      "promptTokens": 40543,
+      "completionTokens": 8167
+    },
+    "critique": {
+      "calls": 51,
+      "ms": 325405,
+      "in": 41,
+      "out": 25,
+      "rejects": 16,
+      "promptTokens": 20804,
+      "completionTokens": 8758
+    },
+    "solver": {
+      "calls": 192,
+      "ms": 107746,
+      "in": 25,
+      "out": 23,
+      "rejects": 2,
+      "promptTokens": 33329,
+      "completionTokens": 2051
+    },
+    "form": {
+      "calls": 11,
+      "ms": 29332,
+      "in": 23,
+      "out": 16,
+      "rejects": 7,
+      "promptTokens": 2490,
+      "completionTokens": 736
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 44,
+      "ms": 7659,
+      "in": 16,
+      "out": 14,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 507382,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 27850,
+      "completionTokens": 13003
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 4,
+    "4": 1,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "According to the passage, what is one of the main reasons for the diversity in traditional food across Indian states?",
+      "ms": {
+        "draft": 4112,
+        "critique": 5001,
+        "solver": 1684,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the Sanskrit saying 'annena jātāni jivanti' mean?",
+      "ms": {
+        "draft": 4112,
+        "critique": 4567,
+        "solver": 13094,
+        "form": 4001
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage and Fig. 3.1, what change has occurred in cooking practices over time?",
+      "ms": {
+        "draft": 4112,
+        "critique": 8477,
+        "solver": 18396,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a source of vitamin C?",
+      "ms": {
+        "draft": 2687,
+        "critique": 6024
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a person is advised to eat laddoos in winter, what is the most likely reason according to the passage?",
+      "ms": {
+        "draft": 4112,
+        "critique": 7262,
+        "solver": 16217,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of fat?",
+      "ms": {
+        "draft": 2687,
+        "critique": 7886,
+        "solver": 11191,
+        "form": 3716
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person is experiencing weakness and shortness of breath. Which of the following deficiencies might be the cause?",
+      "ms": {
+        "draft": 2687,
+        "critique": 7622
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main purpose of including fruits and vegetables in the diet?",
+      "ms": {
+        "draft": 2687,
+        "critique": 6129,
+        "solver": 12419
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a function of dietary fibre?",
+      "ms": {
+        "draft": 3135,
+        "critique": 5786
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person's diet is low in dietary fibre, what problem might they face?",
+      "ms": {
+        "draft": 3135,
+        "critique": 6784
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the tests described, which food item is likely to contain both protein and fat?",
+      "ms": {
+        "draft": 3135,
+        "critique": 7331
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student conducted an experiment to detect starch in various food items. The food item turned blue-black after adding iodine. What does this indicate?",
+      "ms": {
+        "draft": 3135,
+        "critique": 6708
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to test for nutrients in food?",
+      "ms": {
+        "draft": 3135,
+        "critique": 7186
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person consumes a lot of potato wafers, what health issue might they face?",
+      "ms": {
+        "draft": 3642,
+        "critique": 7590
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the nutritional information provided, which food item is considered a junk food?",
+      "ms": {
+        "draft": 3642,
+        "critique": 7427
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How might eating local food help reduce food miles?",
+      "ms": {
+        "draft": 3642,
+        "critique": 7735
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a balanced diet?",
+      "ms": {
+        "draft": 3642,
+        "critique": 7820,
+        "solver": 11477,
+        "form": 3017
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person consumes a diet that lacks sufficient iodine, which of the following health problems might they face?",
+      "ms": {
+        "draft": 14513,
+        "critique": 5070
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the nutritional information provided, which of the following is most likely to be considered a junk food?",
+      "ms": {
+        "draft": 14513,
+        "critique": 6508
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a balanced diet?",
+      "ms": {
+        "draft": 14513,
+        "critique": 7539
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are millets considered nutri-cereals according to the passage?",
+      "ms": {
+        "draft": 14513,
+        "critique": 5767
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for reducing food miles?",
+      "ms": {
+        "draft": 14513,
+        "critique": 5961
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to eat locally grown and plant-based foods?",
+      "ms": {
+        "draft": 3440,
+        "critique": 6423,
+        "solver": 1598,
+        "form": 3101
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a function of water in the body?",
+      "ms": {
+        "draft": 3440,
+        "critique": 6748,
+        "solver": 14228
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an energy-giving food according to the passage?",
+      "ms": {
+        "draft": 60643,
+        "critique": 7275
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is another name for dietary fibre?",
+      "ms": {
+        "draft": 3440,
+        "critique": 5416,
+        "solver": 1390,
+        "form": 2287
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which food item is known to contain both proteins and fats?",
+      "ms": {
+        "draft": 3440,
+        "critique": 6896,
+        "solver": 2016,
+        "form": 2501
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not a nutri-cereal?",
+      "ms": {
+        "draft": 4355,
+        "critique": 5385,
+        "solver": 526,
+        "form": 1095,
+        "translation": 29561
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of these is a source of protein?",
+      "ms": {
+        "draft": 2978,
+        "critique": 8093,
+        "solver": 1495,
+        "form": 1217,
+        "translation": 24235
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is another name for dietary fibre?",
+      "ms": {
+        "draft": 3135,
+        "critique": 6417,
+        "solver": 1785,
+        "form": 1933,
+        "translation": 30076
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of proteins in the body?",
+      "ms": {
+        "draft": 2806,
+        "critique": 6635,
+        "solver": 2182,
+        "form": 0,
+        "translation": 34569
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is from a region where rice is the main crop, which food item would they most likely consume?",
+      "ms": {
+        "draft": 4112,
+        "critique": 5423,
+        "solver": 1536,
+        "form": 3865,
+        "translation": 41460
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a source of carbohydrates?",
+      "ms": {
+        "draft": 2806,
+        "critique": 6380,
+        "solver": 1704,
+        "form": 0,
+        "translation": 33960
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a deficiency disease?",
+      "ms": {
+        "draft": 2806,
+        "critique": 6028,
+        "solver": 1363,
+        "form": 0,
+        "translation": 27638
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is suffering from goitre, which of the following should they include in their diet?",
+      "ms": {
+        "draft": 2687,
+        "critique": 6785,
+        "solver": 1217,
+        "form": 0,
+        "translation": 32665
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Referring to the figure, what is the function of the part labelled 'O'?",
+      "ms": {
+        "draft": 2806,
+        "critique": 7065,
+        "solver": 1333,
+        "form": 0,
+        "translation": 39551
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person in a region where maize is the main crop eats makki di roti, what is the most likely reason for this?",
+      "ms": {
+        "draft": 4112,
+        "critique": 7454,
+        "solver": 16272,
+        "form": 3421,
+        "translation": 48039
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why is it important to take iodized salt in our diet?",
+      "ms": {
+        "draft": 3642,
+        "critique": 6201,
+        "solver": 9994,
+        "form": 0,
+        "translation": 101738
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that when iodine is applied to a food sample, it does not turn blue-black. What could be the reason?",
+      "ms": {
+        "draft": 2806,
+        "critique": 7150,
+        "solver": 2467,
+        "form": 0,
+        "translation": 37776
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it recommended to eat locally grown food?",
+      "ms": {
+        "draft": 2806,
+        "critique": 6166,
+        "solver": 1812,
+        "form": 0,
+        "translation": 35051
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it recommended to include raw vegetables in the diet?",
+      "ms": {
+        "draft": 2687,
+        "critique": 5009,
+        "solver": 11603,
+        "form": 1,
+        "translation": 41640
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a function of dietary fibre?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is one of the main reasons for the diversity in traditional food across Indian states?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the Sanskrit saying 'annena jātāni jivanti' mean?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"contradicts the passage…\"); distractor 3's reason is not a one-line misconception (\"is not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage and Fig. 3.1, what change has occurred in cooking practices over time?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a source of vitamin C?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a person is advised to eat laddoos in winter, what is the most likely reason according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a source of fat?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"A student might think animals are sources of fat because the…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A person is experiencing weakness and shortness of breath. Which of the following deficiencies might be the cause?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the main purpose of including fruits and vegetables in the diet?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not a function of dietary fibre?",
+      "reason": "option 0 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person's diet is low in dietary fibre, what problem might they face?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the tests described, which food item is likely to contain both protein and fat?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student conducted an experiment to detect starch in various food items. The food item turned blue-black after adding iodine. What does this indicate?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is it important to test for nutrients in food?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person consumes a lot of potato wafers, what health issue might they face?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the nutritional information provided, which food item is considered a junk food?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How might eating local food help reduce food miles?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a balanced diet?",
+      "reason": "the key is far longer than every distractor (85 vs 44 characters)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of these is a source of fat?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person consumes a diet that lacks sufficient iodine, which of the following health problems might they face?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the nutritional information provided, which of the following is most likely to be considered a junk food?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a balanced diet?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why are millets considered nutri-cereals according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main reason for reducing food miles?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is it important to eat locally grown and plant-based foods?",
+      "reason": "the key is far longer than every distractor (49 vs 23 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a function of water in the body?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of an energy-giving food according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is another name for dietary fibre?",
+      "reason": "near-duplicate of batch item \"What is another name for dietary fibre?…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which food item is known to contain both proteins and fats?",
+      "reason": "near-duplicate of served question cmv48eco4004agnbawsi8mqwo (cosine 0.902 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

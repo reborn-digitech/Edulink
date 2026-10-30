@@ -1,0 +1,355 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T05:41:31.808Z",
+  "finishedAt": "2026-10-29T05:44:00.292Z",
+  "seconds": 148,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamentals of Human Geography",
+    "bookCode": "legy1",
+    "document": "ncert/12/geography/legy103.pdf",
+    "classLevel": 12,
+    "subject": "Geography",
+    "chapter": "Chapter 3 — Human Development",
+    "edition": "Reprint 2026-27",
+    "chunks": 12,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, sample question paper, 2026-27]\n20. Explain the concept of human development as introduced by Dr 3\nMahbub-ul-Haq.",
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\n20. The concept of human development was introduced by Dr Mahbub-ul- 3\nHaq. Dr Haq has described human development as development that\nenlarges people’s choices and improves their lives. People are central\nto all development under this concept. The basic goal of development\nis to create conditions where people can live meaningful lives.\nLeading a long and healthy life, being able to gain knowledge and\nhaving enough means to be able to live a decent life are the most\nimportant aspects of human development. Therefore, access to\nresources, health and education are the key areas in human\ndevelopment.",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n20. A. “The basic goal of development is to create conditions where the\npeople can live a meaningful life” – What do you mean by meaningful 3\nlife?\nOR\nB. How do people’s choices get affected in different aspects of life\ndue to lack of human development?",
+      "[CBSE Class XII Geography, sample question paper, 2024-25]\n19. Study the following table and answer the questions: 3 x1=3\n(I) Identify the human development score for the countries classified as having\nMedium Human Development?\n(II) What can you infer about the well-being of people living in countries with a high\nlevel of human development?\n(III) Give reasons for low level of human development in 33 countries."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 45693,
+      "in": 12,
+      "out": 12,
+      "rejects": 6,
+      "promptTokens": 13680,
+      "completionTokens": 2358
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 101765,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 8038,
+      "completionTokens": 3124
+    },
+    "solver": {
+      "calls": 77,
+      "ms": 49172,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 18914,
+      "completionTokens": 981
+    },
+    "form": {
+      "calls": 3,
+      "ms": 6442,
+      "in": 6,
+      "out": 2,
+      "rejects": 4,
+      "promptTokens": 803,
+      "completionTokens": 233
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 1933,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 73814,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5439,
+      "completionTokens": 2668
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the basic goal of human development according to Dr Mahbub-ul-Haq?",
+      "ms": {
+        "draft": 4409,
+        "critique": 5577
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the concept of empowerment in human development?",
+      "ms": {
+        "draft": 4409,
+        "critique": 9885
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT an approach to human development mentioned in the passage?",
+      "ms": {
+        "draft": 4409,
+        "critique": 5338,
+        "solver": 15725
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country has a human development score of 0.268, what does this indicate about its level of human development?",
+      "ms": {
+        "draft": 4409,
+        "critique": 5022,
+        "solver": 17128,
+        "form": 4399
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a country has a high human development index (HDI) but a low human poverty index (HPI), what can be inferred about the distribution of development?",
+      "ms": {
+        "draft": 4409,
+        "critique": 8182
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the basic goal of human development?",
+      "ms": {
+        "draft": 3207,
+        "critique": 4770,
+        "solver": 1749,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a dimension used to calculate the Human Development Index (HDI)?",
+      "ms": {
+        "draft": 3207,
+        "critique": 8426
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person cannot access medical treatment due to lack of resources, what does this indicate about their level of human development?",
+      "ms": {
+        "draft": 3207,
+        "critique": 4792,
+        "solver": 11579
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the relationship between education and human development?",
+      "ms": {
+        "draft": 3207,
+        "critique": 4564,
+        "solver": 12347,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, how does the Human Poverty Index differ from the Human Development Index?",
+      "ms": {
+        "draft": 3207,
+        "critique": 4870,
+        "solver": 926,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person who is unable to access education due to financial constraints is an example of which aspect of human development?",
+      "ms": {
+        "draft": 4409,
+        "critique": 7278,
+        "solver": 7827,
+        "form": 1003,
+        "translation": 33476
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a country has a very low Human Development Index score, what can be inferred about the people living in that country?",
+      "ms": {
+        "draft": 3207,
+        "critique": 4482,
+        "solver": 6888,
+        "form": 1041,
+        "translation": 36966
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"request (9175 tokens) exceeds the available context size (8192 tokens), try increasing it\",\"type\":\"exceed_context_size_error\",\"n_prompt_tokens\":9175,\"n_ctx\":8192}}"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"request (18086 tokens) exceeds the available context size (8192 tokens), try increasing it\",\"type\":\"exceed_context_size_error\",\"n_prompt_tokens\":18086,\"n_ctx\":8192}}"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 1)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"request (9888 tokens) exceeds the available context size (8192 tokens), try increasing it\",\"type\":\"exceed_context_size_error\",\"n_prompt_tokens\":9888,\"n_ctx\":8192}}"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the basic goal of human development according to Dr Mahbub-ul-Haq?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the concept of empowerment in human development?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT an approach to human development mentioned in the passage?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a country has a human development score of 0.268, what does this indicate about its level of human development?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a country has a high human development index (HDI) but a low human poverty index (HPI), what can be inferred about the distribution of development?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"request (9888 tokens) exceeds the available context size (8192 tokens), try increasing it\",\"type\":\"exceed_context_size_error\",\"n_prompt_tokens\":9888,\"n_ctx\":8192}}"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"request (18086 tokens) exceeds the available context size (8192 tokens), try increasing it\",\"type\":\"exceed_context_size_error\",\"n_prompt_tokens\":18086,\"n_ctx\":8192}}"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 2)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"request (9175 tokens) exceeds the available context size (8192 tokens), try increasing it\",\"type\":\"exceed_context_size_error\",\"n_prompt_tokens\":9175,\"n_ctx\":8192}}"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the basic goal of human development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a dimension used to calculate the Human Development Index (HDI)?",
+      "reason": "the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person cannot access medical treatment due to lack of resources, what does this indicate about their level of human development?",
+      "reason": "after redrafting distractor 0: the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the relationship between education and human development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 are the same (\"Education is the only factor that determines human development\"); distractor 3's reason is not a one-line misconception (\"Negates the passage's point about education's impact…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, how does the Human Poverty Index differ from the Human Development Index?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

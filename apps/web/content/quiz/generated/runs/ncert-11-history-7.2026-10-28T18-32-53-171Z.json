@@ -1,0 +1,792 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T18:32:53.171Z",
+  "finishedAt": "2026-10-28T18:46:03.704Z",
+  "seconds": 791,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Themes in World History",
+    "bookCode": "kehs1",
+    "document": "ncert/11/history/kehs107.pdf",
+    "classLevel": 11,
+    "subject": "History",
+    "chapter": "Chapter 7 — Paths to Modernisation",
+    "edition": "Reprint 2026-27",
+    "chunks": 39,
+    "groups": 12
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII History, sample question paper, 2023-24]\n30. “The Quit India Movement genuinely a mass movement”. Justify the 8\nstatement.\nOR\nExamine the different kinds of sources from which the political career\nof Gandhiji and the history of the National movement could be\nreconstructed.",
+      "[CBSE Class XII History, marking scheme, 2025-26]\n20. C. Pandit Jawaharlal Nehru",
+      "[CBSE Class XII History, sample question paper, 2024-25]\n21. Which of the following were the key ideals associated with the social struggles 1\nin India since the nineteenth century?\nA. Autonomy, hierarchy, and traditionalism\nB. Democracy, equality, and justice\nC. Imperialism, colonialism, and bureaucracy\nD. Monarchy, privilege, and conservatism",
+      "[CBSE Class XII History, marking scheme, 2024-25]\n12. ANS-B- The opening of the new world through voyages. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 217890,
+      "in": 40,
+      "out": 40,
+      "rejects": 1,
+      "promptTokens": 44102,
+      "completionTokens": 8677
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 379311,
+      "in": 40,
+      "out": 35,
+      "rejects": 5,
+      "promptTokens": 21354,
+      "completionTokens": 7980
+    },
+    "solver": {
+      "calls": 226,
+      "ms": 155136,
+      "in": 35,
+      "out": 28,
+      "rejects": 7,
+      "promptTokens": 39165,
+      "completionTokens": 2324
+    },
+    "form": {
+      "calls": 14,
+      "ms": 54741,
+      "in": 28,
+      "out": 9,
+      "rejects": 19,
+      "promptTokens": 3731,
+      "completionTokens": 1039
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 11,
+      "ms": 2505,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 468488,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 21387,
+      "completionTokens": 11584
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the main reason for the difference in modernisation between China and Japan in the 19th century?",
+      "ms": {
+        "draft": 5125,
+        "critique": 7763,
+        "solver": 1307,
+        "form": 7601
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How did the Meiji government in Japan approach the study of history?",
+      "ms": {
+        "draft": 5125,
+        "critique": 7796,
+        "solver": 2619,
+        "form": 7766
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, how did the modernisation of Japan and China reflect their different approaches to tradition?",
+      "ms": {
+        "draft": 5125,
+        "critique": 9579,
+        "solver": 18431
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage suggest about the role of European historians in understanding East Asian history?",
+      "ms": {
+        "draft": 5125,
+        "critique": 9889,
+        "solver": 22620
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what was the main source of protein in Japan?",
+      "ms": {
+        "draft": 5225,
+        "critique": 9630,
+        "solver": 2020,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the main reason for the Tokugawa shoguns ordering the daimyo to live in the capitals of their domains?",
+      "ms": {
+        "draft": 5225,
+        "critique": 8660,
+        "solver": 2236,
+        "form": 3716
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of the samurai in Japanese society?",
+      "ms": {
+        "draft": 5225,
+        "critique": 9811,
+        "solver": 2445,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How did the passage describe the effect of the Heian period on Japanese literature?",
+      "ms": {
+        "draft": 5225,
+        "critique": 11051,
+        "solver": 2411,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage imply about the relationship between Japan and China during the Heian period?",
+      "ms": {
+        "draft": 5225,
+        "critique": 9280,
+        "solver": 1760,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following was a key development in Japan’s economy during the Tokugawa period?",
+      "ms": {
+        "draft": 5225,
+        "critique": 9403,
+        "solver": 2292,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why did the Japanese government emphasize the study of Japanese history in the school curriculum?",
+      "ms": {
+        "draft": 6771,
+        "critique": 8535,
+        "solver": 2423,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the impact of the rapid industrial growth on Japanese society?",
+      "ms": {
+        "draft": 4890,
+        "critique": 8288,
+        "solver": 2009
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what was the significance of Fukuzawa Yukichi's work?",
+      "ms": {
+        "draft": 4890,
+        "critique": 6693,
+        "solver": 1805,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what was the term used for the new type of family structure in Japan during the early 20th century?",
+      "ms": {
+        "draft": 6445,
+        "critique": 6526,
+        "solver": 2319,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the attitude of some Japanese intellectuals towards Western ideas?",
+      "ms": {
+        "draft": 4890,
+        "critique": 8145,
+        "solver": 3069,
+        "form": 2481
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which war led to the undermining of the Qing dynasty and strengthened demands for reform in China?",
+      "ms": {
+        "draft": 7968,
+        "critique": 9391,
+        "solver": 1422
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student is asked to write an essay on the 'interplay of the global and the local' as discussed in the passage, which of the following would be the most appropriate approach?",
+      "ms": {
+        "draft": 4992,
+        "critique": 5725,
+        "solver": 1081
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the role of primary sources in historical study?",
+      "ms": {
+        "draft": 4992,
+        "critique": 5725,
+        "solver": 2143,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the main idea of the passage?",
+      "ms": {
+        "draft": 4992,
+        "critique": 5743,
+        "solver": 2509,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the relationship between the historian and historical facts?",
+      "ms": {
+        "draft": 4992,
+        "critique": 6737,
+        "solver": 1990,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a primary source as defined in the passage?",
+      "ms": {
+        "draft": 4992,
+        "critique": 6587,
+        "solver": 3144,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements best reflects the idea that 'history can be made to speak to us in varied voices'?",
+      "ms": {
+        "draft": 4992,
+        "critique": 7570,
+        "solver": 21567,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the main reason for the suspension of democracy in South Korea under the Yusin Constitution?",
+      "ms": {
+        "draft": 17008,
+        "critique": 10870,
+        "solver": 12964
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What can be inferred about the role of economic development in South Korea's political history based on the passage?",
+      "ms": {
+        "draft": 17008,
+        "critique": 6681,
+        "solver": 1450
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the key outcome of the June Democracy Movement of 1987?",
+      "ms": {
+        "draft": 17008,
+        "critique": 8598,
+        "solver": 16273,
+        "form": 3855
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between economic growth and democratic reforms in South Korea?",
+      "ms": {
+        "draft": 17008,
+        "critique": 7341,
+        "solver": 2000,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key factor that contributed to South Korea’s economic growth in the 1960s?",
+      "ms": {
+        "draft": 5515,
+        "critique": 8796
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following events marked the end of Japanese colonial rule in Korea?",
+      "ms": {
+        "draft": 5515,
+        "critique": 9954
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the long-term impact of the Korean War on South Korea’s development?",
+      "ms": {
+        "draft": 5515,
+        "critique": 7795
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the main goal of the Communist Party of China during the Long March?",
+      "ms": {
+        "draft": 6288,
+        "critique": 6514
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of the Communist Party's attempt to create a 'socialist man'?",
+      "ms": {
+        "draft": 6288,
+        "critique": 7434
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main social base of the Guomindang?",
+      "ms": {
+        "draft": 6780,
+        "critique": 7596,
+        "solver": 1410,
+        "form": 1888
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a key feature of the Meiji reforms?",
+      "ms": {
+        "draft": 4890,
+        "critique": 8597,
+        "solver": 2436,
+        "form": 3347,
+        "translation": 55561
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a written material that helped scholars understand East Asian history?",
+      "ms": {
+        "draft": 5125,
+        "critique": 8624,
+        "solver": 1883,
+        "form": 4470,
+        "translation": 57522
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the main reason the Japanese government promoted the idea of 'fukoku kyohei'?",
+      "ms": {
+        "draft": 6771,
+        "critique": 9838,
+        "solver": 2441,
+        "form": 4249,
+        "translation": 61886
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following was a key measure taken by the Meiji government to integrate the nation?",
+      "ms": {
+        "draft": 6771,
+        "critique": 8537,
+        "solver": 2561,
+        "form": 5438,
+        "translation": 42282
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following can be inferred about the role of history in Chinese and Japanese societies?",
+      "ms": {
+        "draft": 5125,
+        "critique": 8167,
+        "solver": 24349,
+        "form": 4645,
+        "translation": 73818
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What was the primary purpose of the new school system introduced in Japan in the 1870s?",
+      "ms": {
+        "draft": 6771,
+        "critique": 11209,
+        "solver": 2519,
+        "form": 4835,
+        "translation": 68335
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What was the consequence of the 1997 foreign currency crisis in South Korea?",
+      "ms": {
+        "draft": 17008,
+        "critique": 7814,
+        "solver": 16816,
+        "form": 2261,
+        "translation": 34765
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why the Japanese government faced opposition during the process of modernization?",
+      "ms": {
+        "draft": 6771,
+        "critique": 9235,
+        "solver": 1726,
+        "form": 4813,
+        "translation": 68731
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the main reason for the difference in modernisation between China and Japan in the 19th century?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Fails to account for China's internal struggles as described…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How did the Meiji government in Japan approach the study of history?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Excludes the role of European sources as mentioned in the pa…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the passage, how did the modernisation of Japan and China reflect their different approaches to tradition?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What does the passage suggest about the role of European historians in understanding East Asian history?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what was the main source of protein in Japan?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Does not consider the passage's information about protein so…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What was the main reason for the Tokugawa shoguns ordering the daimyo to live in the capitals of their domains?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not focus on the passage's specific political reason…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of the samurai in Japanese society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "How did the passage describe the effect of the Heian period on Japanese literature?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage imply about the relationship between Japan and China during the Heian period?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's reference to cultural independe…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following was a key development in Japan’s economy during the Tokugawa period?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's mention of printing…\"); distractor 2's reason is not a one-line misconception (\"Confuses the passage's details about animal rearing…\"); distractor 3's reason is not a one-line misconception (\"Does not consider the passage's information on gold exports…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, why did the Japanese government emphasize the study of Japanese history in the school curriculum?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What was the impact of the rapid industrial growth on Japanese society?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what was the significance of Fukuzawa Yukichi's work?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what was the term used for the new type of family structure in Japan during the early 20th century?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Correct term is not chosen…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best describes the attitude of some Japanese intellectuals towards Western ideas?",
+      "reason": "the key is far longer than every distractor (57 vs 34 characters); distractor 0's reason is not a one-line misconception (\"Misinterprets the passage about the next generation of intel…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which war led to the undermining of the Qing dynasty and strengthened demands for reform in China?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"According to the passage, what was the main reason for the tr"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a student is asked to write an essay on the 'interplay of the global and the local' as discussed in the passage, which of the following would be the most appropriate approach?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the role of primary sources in historical study?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best describes the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's focus on historical method.…\"); distractor 3's reason is not a one-line misconception (\"Focuses on a historical event rather than the overall theme …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the relationship between the historian and historical facts?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a primary source as defined in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements best reflects the idea that 'history can be made to speak to us in varied voices'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following best describes the main reason for the suspension of democracy in South Korea under the Yusin Constitution?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What can be inferred about the role of economic development in South Korea's political history based on the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What was the key outcome of the June Democracy Movement of 1987?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correctly identifies the outcome but is not the main one sta…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between economic growth and democratic reforms in South Korea?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Makes a generalisation not supported by the passage.…\"); distractor 1's reason is not a one-line misconception (\"Negates the relationship between economic growth and democra…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly suggests that economic growth and democratic ref…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a key factor that contributed to South Korea’s economic growth in the 1960s?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following events marked the end of Japanese colonial rule in Korea?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following best explains the long-term impact of the Korean War on South Korea’s development?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the main goal of the Communist Party of China during the Long March?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following is an example of the Communist Party's attempt to create a 'socialist man'?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What was the main social base of the Guomindang?",
+      "reason": "near-duplicate of served question cmvhpo3zy0a1igpfhugvx3x2h (cosine 0.949 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,356 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T18:22:03.694Z",
+  "finishedAt": "2026-10-25T18:25:10.193Z",
+  "seconds": 186,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap116.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 16 — A Busy Month",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 57024,
+      "in": 15,
+      "out": 14,
+      "rejects": 1,
+      "promptTokens": 14031,
+      "completionTokens": 3009
+    },
+    "critique": {
+      "calls": 20,
+      "ms": 142703,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 8416,
+      "completionTokens": 3451
+    },
+    "solver": {
+      "calls": 110,
+      "ms": 59833,
+      "in": 14,
+      "out": 9,
+      "rejects": 5,
+      "promptTokens": 17264,
+      "completionTokens": 1143
+    },
+    "form": {
+      "calls": 8,
+      "ms": 24451,
+      "in": 9,
+      "out": 5,
+      "rejects": 4,
+      "promptTokens": 1821,
+      "completionTokens": 560
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 3826,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 130660,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6686,
+      "completionTokens": 3595
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 3,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which bird is described as having a nest that hangs from a branch?",
+      "ms": {
+        "draft": 4053,
+        "critique": 6715,
+        "solver": 1289
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bird is observed sitting in a nest and making a 'chee chee' sound, what might this indicate?",
+      "ms": {
+        "draft": 4053,
+        "critique": 10917,
+        "solver": 1608
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a bird's nest according to the passage?",
+      "ms": {
+        "draft": 4053,
+        "critique": 6946,
+        "solver": 17644,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animals have sharp curved teeth but do not chew their prey?",
+      "ms": {
+        "draft": 3248,
+        "critique": 7622,
+        "solver": 12197,
+        "form": 3017
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a person does not have any teeth, what kind of food would they be able to eat?",
+      "ms": {
+        "draft": 3248,
+        "critique": 7202,
+        "solver": 12716,
+        "form": 1432
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child has no back teeth, what would be the easiest way to eat a roti?",
+      "ms": {
+        "draft": 3248,
+        "critique": 7754,
+        "solver": 846
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a person has no back teeth, what kind of food would be difficult to eat?",
+      "ms": {
+        "draft": 3362,
+        "critique": 5872,
+        "solver": 14118
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which bird is mentioned as not making its own nest?",
+      "ms": {
+        "draft": 4790,
+        "critique": 7978,
+        "solver": 1729,
+        "form": 3128
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which bird makes a nest that hangs from the branch of a tree?",
+      "ms": {
+        "draft": 4790,
+        "critique": 6088,
+        "solver": 942
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What do cows use their large flat teeth for?",
+      "ms": {
+        "draft": 3362,
+        "critique": 6850,
+        "solver": 16342,
+        "form": 2928
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which bird is described as using its beak to stitch leaves together to make a nest?",
+      "ms": {
+        "draft": 4790,
+        "critique": 7663,
+        "solver": 875,
+        "form": 2726
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which bird is described as laying its eggs in a crow's nest?",
+      "ms": {
+        "draft": 4053,
+        "critique": 7338,
+        "solver": 2951,
+        "form": 4342,
+        "translation": 40395
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What kind of teeth do cows have for chewing grass?",
+      "ms": {
+        "draft": 3248,
+        "critique": 8212,
+        "solver": 12917,
+        "form": 2747,
+        "translation": 42549
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animal has sharp curved teeth but does not chew its prey?",
+      "ms": {
+        "draft": 3362,
+        "critique": 4970,
+        "solver": 1564,
+        "form": 4779,
+        "translation": 41942
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which bird is described as having a nest that hangs from a branch?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a bird is observed sitting in a nest and making a 'chee chee' sound, what might this indicate?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of a bird's nest according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 are the same (\"To lay eggs\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which animals have sharp curved teeth but do not chew their prey?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a person does not have any teeth, what kind of food would they be able to eat?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a child has no back teeth, what would be the easiest way to eat a roti?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What do squirrels use their front teeth for?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If a person has no back teeth, what kind of food would be difficult to eat?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which bird is mentioned as not making its own nest?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks the Tailor bird makes its own nest because it stitche…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which bird makes a nest that hangs from the branch of a tree?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What do cows use their large flat teeth for?",
+      "reason": "near-duplicate of served question cmvk6cyi50jaqgpfhvdf02ng6 (cosine 0.935 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which bird is described as using its beak to stitch leaves together to make a nest?",
+      "reason": "near-duplicate of served question cmvh481vu06r1gpfhkctmf6up (cosine 0.948 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

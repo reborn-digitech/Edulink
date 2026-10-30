@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Maths Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T21:14:53.053Z",
+  "generatedAt": "2026-10-28T02:46:20.092Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "If 6 marbles are double of 3 marbles, what is 3 marbles in relation to 6 marbles?",
+      "difficulty": 2,
+      "stem": "If 3 is half of 6, what is 6 in relation to 3?",
       "choices": [
+        "Double",
         "Half",
         "Quarter",
-        "Double",
-        "One"
+        "Third"
       ],
       "answerIndex": 0,
-      "solution": "If 6 marbles are double of 3 marbles, then 3 marbles are half of 6 marbles because doubling 3 gives 6. A quarter would be too small, double would mean 3 is larger than 6, and one does not describe a proportional relationship.",
+      "solution": "If 3 is half of 6, then 6 must be twice as large as 3, making it the double of 3. The other options do not match this relationship: half would mean 3 is larger, quarter would mean 6 is much smaller, and third would not fit the numerical relationship.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि 6 गेंदें 3 गेंदों के दुगुने हैं, तो 3 गेंदें 6 गेंदों के संबंध में क्या हैं?",
+          "stem": "यदि 3, 6 का आधा है, तो 6, 3 के संबंध में क्या है?",
           "choices": [
+            "दोगुना",
             "आधा",
             "चौथाई",
-            "दुगुना",
-            "एक"
+            "तिहाई"
           ],
-          "solution": "यदि 6 गेंदें 3 गेंदों के दुगुने हैं, तो 3 गेंदें 6 गेंदों के आधे हैं क्योंकि 3 को दुगुना करने पर 6 प्राप्त होता है। चौथाई बहुत छोटा हिस्सा होगा, दुगुना कहने से 3, 6 से बड़ा होगा और एक अनुपातिक संबंध को व्यक्त नहीं करता।",
+          "solution": "यदि 3, 6 का आधा है, तो 6 को 3 का दोगुना होना चाहिए। अन्य विकल्प इस संबंध के अनुरूप नहीं हैं: आधा का अर्थ होगा कि 3 बड़ा है, चौथाई का अर्थ होगा कि 6 बहुत छोटा है, और तिहाई का अर्थ होगा कि संख्यात्मक संबंध फिट नहीं होता।",
           "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the meaning, structure, and intent of the original English question. Technical terms like 'आधा' (half), 'चौथाई' (quarter), 'दुगुना' (double) are standard in Hindi math textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "6 गोलमार्बल 3 गोलमार्बलच्या दुप्पट असल्यास, 3 गोलमार्बल 6 गोलमार्बलच्या कोणत्या संबंधात असेल?",
+          "stem": "जर 3 हा 6 चा अर्धा असेल, तर 6 हा 3 शी कसा संबंधित असेल?",
           "choices": [
+            "दुप्पट",
             "अर्धा",
             "चौथाई",
-            "दुप्पट",
-            "एक"
+            "तृतीयांश"
           ],
-          "solution": "6 गोलमार्बल 3 गोलमार्बलच्या दुप्पट असल्यास, 3 गोलमार्बल 6 गोलमार्बलच्या अर्ध्या असतील, कारण 3 ची दुप्पट करून 6 मिळते. चौथाई हे खूप लहान असेल, दुप्पट म्हणजे 3 हे 6 पेक्षा मोठे असेल आणि एक हे प्रमाणातील संबंध दर्शवत नाही.",
+          "solution": "जर 3 हा 6 चा अर्धा असेल, तर 6 हा 3 च्या दुप्पट असावा, जेणेकरून तो 3 चा दुप्पट असेल. इतर विकल्प या संबंधाशी जुळत नाहीत: अर्धा असल्यास 3 हा मोठा असावा, चौथाई असल्यास 6 हा खूप लहान असावा आणि तृतीयांश असल्यास संख्यात्मक संबंध जुळत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terms.",
+          "critique": "The translation is accurate, maintains the logical structure, and uses standard Marathi mathematical terms.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the relationship",
-        "Confuses the relationship",
-        "Confuses the relationship"
+        "Confuses double with half",
+        "Confuses double with another fraction",
+        "Does not understand the concept of doubling"
       ],
       "solverAnswers": [
         0,
@@ -85,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is clear and the correct answer is 'Half.' The solution correctly identifies the relationship described in the passage and the other options are reasonably explained as misunderstandings of that relationship.",
+      "critique": "The question is clear and the solution is correct. The relationship between 3 and 6 is correctly interpreted as 'double.' The distractors reflect common misconceptions about fractions and doubling.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm108.pdf",
@@ -119,7 +119,203 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:14:53.053Z",
+      "generatedAt": "2026-10-28T02:46:20.092Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "If a rectangle is divided into 4 equal parts, what is each part called?",
+      "choices": [
+        "Half",
+        "Quarter",
+        "Third",
+        "Tenth"
+      ],
+      "answerIndex": 1,
+      "solution": "A rectangle divided into 4 equal parts means each part represents one-fourth of the whole, which is called a quarter. A half would be two parts, a third would require three equal parts, and a tenth would require ten equal parts. Therefore, the correct answer is quarter.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक आयत को 4 बराबर भागों में विभाजित किया जाता है, तो प्रत्येक भाग क्या कहलाता है?",
+          "choices": [
+            "आधा",
+            "चौथाई",
+            "तिहाई",
+            "दसवां"
+          ],
+          "solution": "एक आयत को 4 बराबर भागों में विभाजित करने से अर्थ यह है कि प्रत्येक भाग पूरे का एक-चौथाई होता है, जिसे चौथाई कहते हैं। आधा दो भागों के बराबर होता है, तिहाई तीन बराबर भागों के बराबर होता है और दसवां दस भागों के बराबर होता है। इसलिए सही उत्तर चौथाई है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर आयत 4 समान भागांमध्ये विभागला गेला असेल, तर प्रत्येक भागाला काय म्हणतात?",
+          "choices": [
+            "अर्धा",
+            "चौथाई",
+            "तृतीयांश",
+            "दहावा"
+          ],
+          "solution": "आयत 4 समान भागांमध्ये विभागला गेला असेल तर प्रत्येक भाग एक-चौथाई असतो, ज्याला चौथाई म्हणतात. अर्धा दोन भागांचा असतो, तृतीयांश तीन समान भागांमध्ये विभागलेला असतो आणि दहावा दहा समान भागांमध्ये विभागलेला असतो. म्हणून, योग्य उत्तर चौथाई आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms used for fractions.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses quarter with half",
+        null,
+        "Does not understand the concept of division into four parts",
+        "Does not understand the concept of portions"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is clear and the correct answer is 'Quarter'. The reasoning provided by the author is accurate and aligns with the mathematical definition of dividing a whole into four equal parts.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: Fair Share",
+            "Let us Discuss"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm108.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Fair Share",
+            "Let us Discuss"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm108.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Fair Share",
+            "Let us Discuss"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:46:20.092Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A teacher gave 12 mangoes to be shared equally between two children. How many mangoes will each child get?",
+      "choices": [
+        "4",
+        "6",
+        "8",
+        "10"
+      ],
+      "answerIndex": 1,
+      "solution": "If 12 mangoes are shared equally between 2 children, each child will get 6 mangoes. The other options are incorrect because they do not represent an equal division of 12 mangoes between 2 children.",
+      "checkExpr": "12/2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक अध्यापिका ने दो बच्चों के बीच बराबर बांटने के लिए 12 आम दिए। प्रत्येक बच्चे को कितने आम मिलेंगे?",
+          "choices": [
+            "4",
+            "6",
+            "8",
+            "10"
+          ],
+          "solution": "यदि 12 आम दो बच्चों के बीच बराबर बांटे जाएं, तो प्रत्येक बच्चे को 6 आम मिलेंगे। अन्य विकल्प गलत हैं क्योंकि वे 12 आम के दो बच्चों के बीच बराबर बांटने का प्रतिनिधित्व नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शिक्षकाने दोन मुलांमध्ये समान प्रमाणात वाटल्या जाणार 12 आंबे दिले. प्रत्येक मुलाला किती आंबे मिळतील?",
+          "choices": [
+            "4",
+            "6",
+            "8",
+            "10"
+          ],
+          "solution": "12 आंबे दोन मुलांमध्ये समान प्रमाणात वाटल्यास प्रत्येक मुलाला 6 आंबे मिळतील. इतर विकल्प चुकीचे आहेत कारण ते 12 आंब्यांचे दोन मुलांमध्ये समान विभाजन दर्शवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a number less than the correct answer",
+        null,
+        "Confuses dividing by 2 with multiplying by 2",
+        "Chooses a number greater than the correct answer"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward and the solution is correct. The correct answer is 6, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm108.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 8: Fair Share",
+            "Let us Discuss"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm108.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 8: Fair Share",
+            "Let us Discuss"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm108.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Fair Share",
+            "Let us Discuss"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:46:20.092Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

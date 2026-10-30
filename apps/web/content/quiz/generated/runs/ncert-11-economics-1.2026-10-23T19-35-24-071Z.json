@@ -1,0 +1,805 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T19:35:24.071Z",
+  "finishedAt": "2026-10-23T19:45:29.997Z",
+  "seconds": 606,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Indian Economic Development",
+    "bookCode": "keec1",
+    "document": "ncert/11/economics/keec101.pdf",
+    "classLevel": 11,
+    "subject": "Economics",
+    "chapter": "Chapter 1 — Indian Economy on the Eve of Independence",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Economics, sample question paper, 2024-25]\n34. (I) ‘Under the Industrial Policy Resolution (IPR) 1956 in India, the system of 4\n(A) industrial licensing was introduced to promote regional equality.’\nJustify the given statement with valid arguments.\n(II) Discuss briefly the estimates made by notable scholars regarding the 2\nnational income and per capita income during the colonial rule in India.\nOR\n34. (I) ‘During the colonial period, India’s foreign trade was characterized by a 3\n(B) large export surplus, however, this did not result in any flow of gold or silver\ninto India.’\nJustify the given statement with valid arguments.\n(II) Explain the rationale behind choosing 'Self-reliance' as a central planning 3\nobjective in India's develo",
+      "[CBSE Class XII Economics, sample question paper, 2023-24]\n28. (A) “During the colonial period, a number of socio(A) “During the colonial period, a number of socio-economic indicators were in aeconomic indicators were in a dilapidated\nstate.” 3\nList any three such indicators that led to the worsening of India’s demographic profile.\nOR\n(B) “The pre-independent India’s occupational structure experienced growing regionalindependent India’s occupational structure experienced growing regional 3\nvariation.”\nJustify the above statement with validJustify the above statement with valid explanation.",
+      "[CBSE Class XII Economics, marking scheme, 2024-25]\n34. (I) Under the Industrial Policy Resolution (IPR) 1956, the policymakers\n(A) reserved a category of industries for the private sector, however, the sector\nwas kept under state control through a system of licenses. No new industry 4\nwas allowed unless a license was obtained from the government.\nIt was easier to obtain a license if the industrial unit was established in an\neconomically backward area. In addition, such units were given certain\nbenefits such as tax holidays and subsidised electricity. The purpose of this\npolicy was to promote regional equality.\n(II) Several notable scholars, such as Dadabhai Naoroji, William Digby,\nFindlay Shirras, V.K.R.V. Rao, and R.C. Desai, made earnest e",
+      "[CBSE Class XII Economics, sample question paper, 2024-25]\n21. In the post-independence era, the policymakers of India adopted an economic 1\nsystem that fundamentally implies the coexistence of ______ and ________.\n(Choose the correct option to fill up the blank)\nA. small and large-scale industries B. small and medium-scale industries\nC. public and private sector D. private and foreign sector"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Economics in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 177034,
+      "in": 43,
+      "out": 41,
+      "rejects": 2,
+      "promptTokens": 37425,
+      "completionTokens": 10010
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 334853,
+      "in": 41,
+      "out": 38,
+      "rejects": 3,
+      "promptTokens": 24032,
+      "completionTokens": 9097
+    },
+    "solver": {
+      "calls": 265,
+      "ms": 132000,
+      "in": 38,
+      "out": 31,
+      "rejects": 7,
+      "promptTokens": 46854,
+      "completionTokens": 2696
+    },
+    "form": {
+      "calls": 23,
+      "ms": 65290,
+      "in": 31,
+      "out": 12,
+      "rejects": 19,
+      "promptTokens": 6142,
+      "completionTokens": 1753
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 6,
+      "ms": 1064,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 538861,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 29557,
+      "completionTokens": 16011
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following was a main reason for agricultural stagnation in India under British rule?",
+      "ms": {
+        "draft": 6881,
+        "critique": 7056,
+        "solver": 13180
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes the main occupation of the majority of the Indian population before independence?",
+      "ms": {
+        "draft": 6881,
+        "critique": 7379,
+        "solver": 14227
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage imply about the state of India’s economy under British rule?",
+      "ms": {
+        "draft": 6881,
+        "critique": 6712,
+        "solver": 15897,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct inference about the impact of British colonial rule on India's economy?",
+      "ms": {
+        "draft": 6881,
+        "critique": 7578,
+        "solver": 1607,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements is a valid inference about the colonial government's attitude toward the agricultural sector in India?",
+      "ms": {
+        "draft": 6881,
+        "critique": 6836,
+        "solver": 1648,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why the British colonial government's economic policies were considered exploitative?",
+      "ms": {
+        "draft": 6881,
+        "critique": 7467,
+        "solver": 1389,
+        "form": 3426
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the demographic transition in India during the colonial period?",
+      "ms": {
+        "draft": 3759,
+        "critique": 7273,
+        "solver": 1736,
+        "form": 2764
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the infant mortality rate in India during the colonial period was 218 per thousand, and it is now 28 per thousand, what is the percentage decrease in the infant mortality rate?",
+      "ms": {
+        "draft": 3759,
+        "critique": 6447,
+        "solver": 1234
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a key feature of India's occupational structure on the eve of independence?",
+      "ms": {
+        "draft": 3759,
+        "critique": 6668,
+        "solver": 14353,
+        "form": 3589
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following can be inferred about the Suez Canal?",
+      "ms": {
+        "draft": 3759,
+        "critique": 5721,
+        "solver": 1275,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the focus of the economic policies pursued by the colonial government in India?",
+      "ms": {
+        "draft": 4083,
+        "critique": 6078,
+        "solver": 1951,
+        "form": 2669
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what was the purpose of the British colonial government's infrastructure development in India?",
+      "ms": {
+        "draft": 4083,
+        "critique": 7929,
+        "solver": 12623
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the main cause of India’s agricultural stagnation during the colonial period?",
+      "ms": {
+        "draft": 4083,
+        "critique": 6182,
+        "solver": 16116,
+        "form": 2984
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the British colonial government's policies were focused on their own economic interests, what can be inferred about the economic condition of India at the time of independence?",
+      "ms": {
+        "draft": 4083,
+        "critique": 6858,
+        "solver": 11250
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What was the primary reason for the stagnation of India's agricultural sector before independence?",
+      "ms": {
+        "draft": 4606,
+        "critique": 6548
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of understanding the Indian economy on the eve of independence?",
+      "ms": {
+        "draft": 4083,
+        "critique": 7295,
+        "solver": 1697
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following was a key feature of India's economy on the eve of independence?",
+      "ms": {
+        "draft": 4606,
+        "critique": 6782,
+        "solver": 5493,
+        "form": 1003
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following was a major cause of India's economic stagnation on the eve of independence?",
+      "ms": {
+        "draft": 3057,
+        "critique": 6639,
+        "solver": 2470,
+        "form": 1764
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains the economic condition of India on the eve of independence?",
+      "ms": {
+        "draft": 3057,
+        "critique": 6265,
+        "solver": 1206,
+        "form": 3977
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be inferred about India's foreign trade during the colonial period from the given passage?",
+      "ms": {
+        "draft": 3057,
+        "critique": 6414,
+        "solver": 1895,
+        "form": 3657
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what was the impact of heavy taxation on farmers in pre-independence India?",
+      "ms": {
+        "draft": 3057,
+        "critique": 6794,
+        "solver": 1417,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred about India's economic development strategy post-independence from the given passage?",
+      "ms": {
+        "draft": 3057,
+        "critique": 6648,
+        "solver": 1810
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a characteristic of India's occupational structure before independence?",
+      "ms": {
+        "draft": 3057,
+        "critique": 6378,
+        "solver": 2427,
+        "form": 2047
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what was the main reason for the collapse of India’s traditional handicraft industries?",
+      "ms": {
+        "draft": 4059,
+        "critique": 6808,
+        "solver": 1274,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following was NOT a cause of frequent famines in India before independence?",
+      "ms": {
+        "draft": 4059,
+        "critique": 7599
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the focus of the economic policies pursued by the British in India?",
+      "ms": {
+        "draft": 4059,
+        "critique": 7838,
+        "solver": 2126,
+        "form": 3305
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what can be inferred about the British approach to infrastructure development in India?",
+      "ms": {
+        "draft": 4059,
+        "critique": 6912,
+        "solver": 1745,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why did the British introduce railways in India, according to the passage?",
+      "ms": {
+        "draft": 3398,
+        "critique": 5487,
+        "solver": 1051,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main motive of the colonial government in systematically industrialising India?",
+      "ms": {
+        "draft": 5157,
+        "critique": 4775
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes the main reason for the decline of India's indigenous handicraft industries during the colonial period?",
+      "ms": {
+        "draft": 11945,
+        "critique": 7120,
+        "solver": 1302,
+        "form": 3416
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the primary purpose of building railways in India during the colonial period?",
+      "ms": {
+        "draft": 3759,
+        "critique": 7069,
+        "solver": 1273,
+        "form": 3086,
+        "translation": 49133
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following was a key effect of the British revenue settlements in India?",
+      "ms": {
+        "draft": 11945,
+        "critique": 6049,
+        "solver": 1624,
+        "form": 2175,
+        "translation": 47214
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following was a basic requirement for setting up a modern industry in India?",
+      "ms": {
+        "draft": 3398,
+        "critique": 6643,
+        "solver": 1123,
+        "form": 3244,
+        "translation": 40876
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the state of India’s agricultural sector during the colonial period?",
+      "ms": {
+        "draft": 4059,
+        "critique": 6559,
+        "solver": 11422,
+        "form": 3247,
+        "translation": 46505
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the primary motive behind the British policy of systematically industrializing India?",
+      "ms": {
+        "draft": 11945,
+        "critique": 6013,
+        "solver": 1552,
+        "form": 3125,
+        "translation": 56987
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the primary motive behind the British policies of infrastructure development in India?",
+      "ms": {
+        "draft": 4059,
+        "critique": 6846,
+        "solver": 15514,
+        "form": 3500,
+        "translation": 48394
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains the impact of the Suez Canal on India's foreign trade during the colonial period?",
+      "ms": {
+        "draft": 11945,
+        "critique": 6406,
+        "solver": 2258,
+        "form": 3312,
+        "translation": 62813
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What was the main purpose of the Industrial Policy Resolution (IPR) 1956 in India?",
+      "ms": {
+        "draft": 3398,
+        "critique": 7913,
+        "solver": 1395,
+        "form": 3163,
+        "translation": 37809
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What was the most significant characteristic of India’s foreign trade during the colonial period?",
+      "ms": {
+        "draft": 11945,
+        "critique": 5912,
+        "solver": 11815,
+        "form": 4357,
+        "translation": 60144
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the impact of the railways on the occupational structure of India during the colonial period?",
+      "ms": {
+        "draft": 3398,
+        "critique": 6146,
+        "solver": 985,
+        "form": 2577,
+        "translation": 29454
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "How did the British policy of industrializing India affect the country's economic development?",
+      "ms": {
+        "draft": 11945,
+        "critique": 7146,
+        "solver": 1616,
+        "form": 2697,
+        "translation": 53553
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following was a major problem with public health facilities in India during the colonial period?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following was a main reason for agricultural stagnation in India under British rule?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following best describes the main occupation of the majority of the Indian population before independence?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage imply about the state of India’s economy under British rule?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct inference about the impact of British colonial rule on India's economy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believes the agricultural output increased, which contradict…\"); distractor 1's reason is not a one-line misconception (\"Thinks the British promoted regional equality by setting up …\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage, thinking that India became self-…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements is a valid inference about the colonial government's attitude toward the agricultural sector in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believes the British supported cultivators, which the passag…\"); distractor 1's reason is not a one-line misconception (\"Thinks the British ensured high productivity, but the passag…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage, thinking that the British aimed …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best explains why the British colonial government's economic policies were considered exploitative?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Thinks the British focused on industrial development, which …\"); distractor 1's reason is not a one-line misconception (\"Believes the British aimed to increase agricultural producti…\"); distractor 2's reason is not a one-line misconception (\"Misunderstands the passage, thinking that cultivators benefi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the demographic transition in India during the colonial period?",
+      "reason": "options 0 and 1 say the same thing (\"India was in the first stage of demographic transition\" / \"India was in the second stage of demographic transition\"); options 0 and 2 say the same thing (\"India was in the first stage of demographic transition\" / \"India was in the third stage of demographic transition\"); options 0 and 3 say the same thing (\"India was in the first stage of demographic transition\" / \"India was in the fourth stage of demographic transition\"); options 1 and 2 say the same thing (\"India was in the second stage of demographic transition\" / \"India was in the third stage of demographic transition\"); options 1 and 3 say the same thing (\"India was in the second stage of demographic transition\" / \"India was in the fourth stage of demographic transition\"); options 2 and 3 say the same thing (\"India was in the third stage of demographic transition\" / \"India was in the fourth stage of demographic transition\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the infant mortality rate in India during the colonial period was 218 per thousand, and it is now 28 per thousand, what is the percentage decrease in the infant mortality rate?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following was a key feature of India's occupational structure on the eve of independence?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following can be inferred about the Suez Canal?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the focus of the economic policies pursued by the colonial government in India?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This option is correct but the reasoning is based on a misun…\"); distractor 3's reason is not a one-line misconception (\"This option misinterprets the policies as being for India's …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what was the purpose of the British colonial government's infrastructure development in India?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What was the main cause of India’s agricultural stagnation during the colonial period?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the British colonial government's policies were focused on their own economic interests, what can be inferred about the economic condition of India at the time of independence?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What was the primary reason for the stagnation of India's agricultural sector before independence?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of understanding the Indian economy on the eve of independence?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following was a key feature of India's economy on the eve of independence?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What was the infant mortality rate in India during the colonial period, as mentioned in the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following was a major cause of India's economic stagnation on the eve of independence?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is the only one that aligns with the passage'…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best explains the economic condition of India on the eve of independence?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Fails to recognize the passage's focus on basic needs and ag…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What can be inferred about India's foreign trade during the colonial period from the given passage?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Overlooks the key point about the export surplus mentioned i…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what was the impact of heavy taxation on farmers in pre-independence India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What can be inferred about India's economic development strategy post-independence from the given passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following was a characteristic of India's occupational structure before independence?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Fails to recognize the passage's mention of regional variati…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what was the main reason for the collapse of India’s traditional handicraft industries?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Believes modern industries caused the decline, which is not …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following was NOT a cause of frequent famines in India before independence?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best describes the focus of the economic policies pursued by the British in India?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Believes the policies aimed at improving living standards fo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what can be inferred about the British approach to infrastructure development in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Thinks the development was due to Indian demand, which is no…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why did the British introduce railways in India, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the main motive of the colonial government in systematically industrialising India?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following best describes the main reason for the decline of India's indigenous handicraft industries during the colonial period?",
+      "reason": "near-duplicate of served question cmvhwn4um0awdgpfhdup89ft8 (cosine 0.915 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Economics in the prompt"
+  ]
+}

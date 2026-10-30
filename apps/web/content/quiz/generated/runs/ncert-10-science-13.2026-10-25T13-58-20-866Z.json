@@ -1,0 +1,618 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T13:58:20.866Z",
+  "finishedAt": "2026-10-25T14:08:19.065Z",
+  "seconds": 598,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc113.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 13 — Our Environment",
+    "edition": "Reprint 2026-27",
+    "chunks": 12,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2022-23]\n26. A lot of waste is generated in neighborhood. However, almost all of it is 2\nbiodegradable. What impact will it have on the environment or human health?",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n16. B. Enrichment of oxygen in the atmosphere. 1",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n16. Which of the following features relates to biodegradable substances? 1\na) Broken down by biological processes\nb) Remain inert\nc) Persist in environment for long time\nd) May harm the ecosystem",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n26. Excess generation of biodegradable wastes can be harmful as - 2\nIts decomposition is a slow process leading to production of foul smell and gases.\n(1mark)\nIt can be the breeding ground for germs that create unhygienic conditions.(1 mark)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 159770,
+      "in": 30,
+      "out": 30,
+      "rejects": 1,
+      "promptTokens": 20582,
+      "completionTokens": 7442
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 270412,
+      "in": 30,
+      "out": 22,
+      "rejects": 8,
+      "promptTokens": 17263,
+      "completionTokens": 6345
+    },
+    "solver": {
+      "calls": 153,
+      "ms": 91690,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 24614,
+      "completionTokens": 1476
+    },
+    "form": {
+      "calls": 16,
+      "ms": 73703,
+      "in": 22,
+      "out": 7,
+      "rejects": 15,
+      "promptTokens": 5949,
+      "completionTokens": 1555
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 41,
+      "ms": 8005,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 382683,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 17672,
+      "completionTokens": 9455
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the term used for all interacting organisms in an area along with the non-living components of the environment?",
+      "ms": {
+        "draft": 4657,
+        "critique": 6465
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an aquarium is not cleaned regularly, what might happen to the organisms inside?",
+      "ms": {
+        "draft": 4657,
+        "critique": 7317
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an ecosystem, what is the primary source of energy for producers?",
+      "ms": {
+        "draft": 4657,
+        "critique": 8098
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that a garden has many plants, animals, and microorganisms. What can be concluded about this garden?",
+      "ms": {
+        "draft": 4657,
+        "critique": 8452
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the transfer of energy between trophic levels in an ecosystem not 100% efficient?",
+      "ms": {
+        "draft": 4657,
+        "critique": 6980
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes biodegradable substances?",
+      "ms": {
+        "draft": 5768,
+        "critique": 6580,
+        "solver": 1783,
+        "form": 3836
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a food chain has a producer, a primary consumer, a secondary consumer, and a tertiary consumer, what is the most likely effect on the tertiary consumer due to biological magnification?",
+      "ms": {
+        "draft": 5768,
+        "critique": 8339,
+        "solver": 1997,
+        "form": 4598
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student collects waste from their home and buries it in the soil, which of the following materials would most likely remain unchanged after several months?",
+      "ms": {
+        "draft": 5768,
+        "critique": 8810,
+        "solver": 2064,
+        "form": 4110
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of biodegradable substances?",
+      "ms": {
+        "draft": 6589,
+        "critique": 7058,
+        "solver": 2943,
+        "form": 4010
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of energy flow in an ecosystem, which of the following is true?",
+      "ms": {
+        "draft": 5768,
+        "critique": 7682,
+        "solver": 2358,
+        "form": 3062
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following groups contains only biodegradable items?",
+      "ms": {
+        "draft": 6589,
+        "critique": 10189
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a biodegradable substance?",
+      "ms": {
+        "draft": 6589,
+        "critique": 6978,
+        "solver": 1618,
+        "form": 4925
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an environment-friendly practice?",
+      "ms": {
+        "draft": 6589,
+        "critique": 9136
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main impact of non-biodegradable waste on the environment?",
+      "ms": {
+        "draft": 6589,
+        "critique": 8267,
+        "solver": 14314,
+        "form": 3612
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What would happen if all the waste generated was biodegradable?",
+      "ms": {
+        "draft": 6589,
+        "critique": 7863,
+        "solver": 7171,
+        "form": 1330
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a biodegradable substance?",
+      "ms": {
+        "draft": 4081,
+        "critique": 5848,
+        "solver": 1982,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What would be the long-term effect of not properly disposing of non-biodegradable waste?",
+      "ms": {
+        "draft": 4081,
+        "critique": 7670,
+        "solver": 2064,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What impact can excess generation of biodegradable waste have on the environment?",
+      "ms": {
+        "draft": 4081,
+        "critique": 6751,
+        "solver": 16411,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What would be the long-term effect of not properly disposing of non-biodegradable waste?",
+      "ms": {
+        "draft": 4081,
+        "critique": 7855,
+        "solver": 1555,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason that energy available at each trophic level diminishes progressively?",
+      "ms": {
+        "draft": 5534,
+        "critique": 8431
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes a biodegradable substance?",
+      "ms": {
+        "draft": 5534,
+        "critique": 7267,
+        "solver": 2348,
+        "form": 2859
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of decomposers in the ecosystem according to the passage?",
+      "ms": {
+        "draft": 5534,
+        "critique": 8629,
+        "solver": 17282,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a farmer uses a lot of pesticides on his crops, what is the most likely effect on the environment?",
+      "ms": {
+        "draft": 5534,
+        "critique": 9013,
+        "solver": 16062,
+        "form": 4273
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a human-made ecosystem?",
+      "ms": {
+        "draft": 4657,
+        "critique": 5970,
+        "solver": 1405,
+        "form": 3638,
+        "translation": 41724
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason why a food chain typically has only three or four steps?",
+      "ms": {
+        "draft": 5768,
+        "critique": 7311,
+        "solver": 1767,
+        "form": 4726,
+        "translation": 61006
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student buries a plastic bag in the soil, what is most likely to happen after several months?",
+      "ms": {
+        "draft": 5768,
+        "critique": 6246,
+        "solver": 1751,
+        "form": 3411,
+        "translation": 58042
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct way to deal with biodegradable and non-biodegradable waste?",
+      "ms": {
+        "draft": 4081,
+        "critique": 6998,
+        "solver": 3793,
+        "form": 0,
+        "translation": 70208
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A town is experiencing a high level of pesticide contamination in its food supply. What could be the most likely reason for this contamination?",
+      "ms": {
+        "draft": 5534,
+        "critique": 8378,
+        "solver": 14925,
+        "form": 3761,
+        "translation": 64222
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the main reason for the concern about the ozone layer damage?",
+      "ms": {
+        "draft": 4081,
+        "critique": 9944,
+        "solver": 1647,
+        "form": 0,
+        "translation": 45531
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to reduce the use of non-biodegradable substances?",
+      "ms": {
+        "draft": 5534,
+        "critique": 4237,
+        "solver": 5351,
+        "form": 1019,
+        "translation": 35062
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for all interacting organisms in an area along with the non-living components of the environment?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If an aquarium is not cleaned regularly, what might happen to the organisms inside?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In an ecosystem, what is the primary source of energy for producers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student observed that a garden has many plants, animals, and microorganisms. What can be concluded about this garden?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the transfer of energy between trophic levels in an ecosystem not 100% efficient?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes biodegradable substances?",
+      "reason": "options 0 and 2 say the same thing (\"They are not broken down by biological processes\" / \"They are broken down by biological processes\"); distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed for distractor reasons list…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a food chain has a producer, a primary consumer, a secondary consumer, and a tertiary consumer, what is the most likely effect on the tertiary consumer due to biological magnification?",
+      "reason": "options 0 and 2 say the same thing (\"It will have the lowest concentration of harmful chemicals\" / \"It will have the highest concentration of harmful chemicals\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student collects waste from their home and buries it in the soil, which of the following materials would most likely remain unchanged after several months?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed for distractor reasons list…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of biodegradable substances?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Mistakenly believes biodegradable substances persist in the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of energy flow in an ecosystem, which of the following is true?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'animal'"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following groups contains only biodegradable items?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a biodegradable substance?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Incorrectly identifies plastic as biodegradable, which is no…\"); distractor 1's reason is not a one-line misconception (\"Incorrectly identifies glass as biodegradable, which is not …\"); distractor 3's reason is not a one-line misconception (\"Correct answer, as leather is a natural material that can be…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is an environment-friendly practice?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main impact of non-biodegradable waste on the environment?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes non-biodegradable waste enriches oxygen,…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What would happen if all the waste generated was biodegradable?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Incorrectly assumes that biodegradable waste has no impact, …\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that biodegradable waste harms the ecosy…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following is NOT a component of an ecosystem?\",\n"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a biodegradable substance?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is banana peel, so this is correct\",\"Thinks m…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What would be the long-term effect of not properly disposing of non-biodegradable waste?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks it promotes plant growth\",\"Correct answer is that it …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What impact can excess generation of biodegradable waste have on the environment?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What would be the long-term effect of not properly disposing of non-biodegradable waste?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks it promotes plant growth\",\"Correct answer is that it …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason that energy available at each trophic level diminishes progressively?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following best describes a biodegradable substance?",
+      "reason": "options 0 and 2 say the same thing (\"A substance that is not broken down by biological processes\" / \"A substance that is broken down by biological processes\"); distractor 3's reason is not a one-line misconception (\"correct answer, no reason needed for distractors in this cas…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the role of decomposers in the ecosystem according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a farmer uses a lot of pesticides on his crops, what is the most likely effect on the environment?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

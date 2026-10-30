@@ -1,0 +1,835 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T13:56:20.714Z",
+  "finishedAt": "2026-10-23T14:06:23.248Z",
+  "seconds": 603,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Themes in World History",
+    "bookCode": "kehs1",
+    "document": "ncert/11/history/kehs102.pdf",
+    "classLevel": 11,
+    "subject": "History",
+    "chapter": "Chapter 2 — empires",
+    "edition": "Reprint 2026-27",
+    "chunks": 55,
+    "groups": 17
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII History, marking scheme, 2025-26]\nEmpire. Chandragupta Maurya, who founded the empire (c. 321 BCE),\nextended control as far northwest as Afghanistan and Baluchistan, and his\ngrandson Asoka, arguably the most famous ruler of early India, conquered\nKalinga (present-day coastal Orissa).",
+      "[CBSE Class XII History, marking scheme, 2025-26]\n11. D. Sangama dynasty 1",
+      "[CBSE Class XII History, sample question paper, 2025-26]\n13. Choose the correct option: The book deals with the fiscal side of the empire and 1\nprovides rich quantitative information on revenue rates.\nA. Manzil-abadi\nB. Sipah-abadi\nC. Mulk-abadi\nD. Aam-abadi",
+      "[CBSE Class XII History, sample question paper, 2025-26]\n11. Which of the following was the first dynasty to rule over the Vijayanagara Empire? 1\nA. Suluva dynasty\nB. Aravidu dynasty\nC. Tuluva dynasty\nD. Sangama dynasty"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 178272,
+      "in": 45,
+      "out": 43,
+      "rejects": 2,
+      "promptTokens": 41521,
+      "completionTokens": 9548
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 368301,
+      "in": 43,
+      "out": 36,
+      "rejects": 7,
+      "promptTokens": 23893,
+      "completionTokens": 9217
+    },
+    "solver": {
+      "calls": 255,
+      "ms": 145940,
+      "in": 36,
+      "out": 26,
+      "rejects": 10,
+      "promptTokens": 49116,
+      "completionTokens": 2830
+    },
+    "form": {
+      "calls": 15,
+      "ms": 45192,
+      "in": 26,
+      "out": 12,
+      "rejects": 14,
+      "promptTokens": 3980,
+      "completionTokens": 1130
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 979,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 465348,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 25407,
+      "completionTokens": 13233
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 4,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "What was one of the main reasons for the collapse of the Western Roman Empire?",
+      "ms": {
+        "draft": 3188,
+        "critique": 6383,
+        "solver": 1487
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which empire is described in the passage as being maintained by pastoral people for a long time and with success?",
+      "ms": {
+        "draft": 3188,
+        "critique": 6109,
+        "solver": 16854,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following was a key factor in the success of the Mongol Empire?",
+      "ms": {
+        "draft": 3188,
+        "critique": 6359,
+        "solver": 18548,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a significant event in the passage?",
+      "ms": {
+        "draft": 3416,
+        "critique": 9448,
+        "solver": 15175
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following can be inferred from the passage about the Roman Empire?",
+      "ms": {
+        "draft": 3416,
+        "critique": 6295,
+        "solver": 1205,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be concluded about the relationship between the Roman Empire and the caliphate mentioned in the passage?",
+      "ms": {
+        "draft": 3416,
+        "critique": 8892,
+        "solver": 1236,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following statements best describes the role of the Roman Empire in the development of the Fertile Crescent?",
+      "ms": {
+        "draft": 3416,
+        "critique": 9412,
+        "solver": 1901
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following events is an example of long-distance trade as described in the passage?",
+      "ms": {
+        "draft": 3416,
+        "critique": 7836,
+        "solver": 16268,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main reason the Roman Empire was culturally diverse?",
+      "ms": {
+        "draft": 13372,
+        "critique": 7783
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be inferred about the Roman army from the passage?",
+      "ms": {
+        "draft": 13372,
+        "critique": 7727
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of cultural exchange mentioned in the passage?",
+      "ms": {
+        "draft": 3416,
+        "critique": 8168,
+        "solver": 15572,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why might the passage mention that the Senate existed for centuries and was dominated by wealthy families?",
+      "ms": {
+        "draft": 13372,
+        "critique": 7515,
+        "solver": 1477,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why did the Romans have a paid professional army according to the passage?",
+      "ms": {
+        "draft": 13372,
+        "critique": 6602,
+        "solver": 1292,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is mentioned in the passage as a reason for the stability of the first two centuries of the Roman Empire?",
+      "ms": {
+        "draft": 3754,
+        "critique": 6371,
+        "solver": 2089
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what was the main function of the urban centres in the Roman Empire?",
+      "ms": {
+        "draft": 3754,
+        "critique": 6357,
+        "solver": 1462
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what can be inferred about the role of the provincial upper classes in the Roman Empire?",
+      "ms": {
+        "draft": 3754,
+        "critique": 6659,
+        "solver": 2091
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the main function of the 'MPIRE CROSS' as mentioned in the passage?",
+      "ms": {
+        "draft": 3464,
+        "critique": 8155,
+        "solver": 1134,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred about the Roman Empire from the passage about the third century?",
+      "ms": {
+        "draft": 3464,
+        "critique": 7639,
+        "solver": 1030,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main reason for the prevalence of illness in the countryside during the famine?",
+      "ms": {
+        "draft": 3464,
+        "critique": 5579,
+        "solver": 12724,
+        "form": 1132
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why is Genghis Khan considered an iconic figure in modern Mongolia?",
+      "ms": {
+        "draft": 4211,
+        "critique": 5860,
+        "solver": 1583
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of written records in understanding nomadic societies?",
+      "ms": {
+        "draft": 4211,
+        "critique": 8681,
+        "solver": 12784,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How does the passage reflect the idea that the legacy of Genghis Khan is used in modern times?",
+      "ms": {
+        "draft": 4211,
+        "critique": 8028
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains the reason for Timur's claim to sovereignty?",
+      "ms": {
+        "draft": 4211,
+        "critique": 7818,
+        "solver": 1535
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a historian in the 14th century wanted to understand the Mongol approach to governance, which of the following would they most likely find useful?",
+      "ms": {
+        "draft": 4709,
+        "critique": 7089,
+        "solver": 2289,
+        "form": 3356
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the reference to 'Abdullah Khan's prayer at the Muslim festival ground' in the passage suggest?",
+      "ms": {
+        "draft": 4709,
+        "critique": 7546,
+        "solver": 12759
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage about the Mongols and their empire?",
+      "ms": {
+        "draft": 4709,
+        "critique": 7859
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a system used by the Mongols for rapid communication across their empire?",
+      "ms": {
+        "draft": 3062,
+        "critique": 6267
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the name of the pass given to travellers for safe conduct under the Mongol regime?",
+      "ms": {
+        "draft": 3062,
+        "critique": 7408
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following was the main reason for the ecological devastation in Khurasan after the Mongol campaigns?",
+      "ms": {
+        "draft": 3062,
+        "critique": 6839
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the role of the 'tuman' in the Mongol military organisation?",
+      "ms": {
+        "draft": 7101,
+        "critique": 7411,
+        "solver": 1898,
+        "form": 5233
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred from the passage about the political structure of the Mongol Empire after Genghis Khan's death?",
+      "ms": {
+        "draft": 7101,
+        "critique": 7561,
+        "solver": 1282
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which empire was established by Alexander the Great?",
+      "ms": {
+        "draft": 3188,
+        "critique": 6659,
+        "solver": 1791,
+        "form": 4293
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following was the first dynasty to rule over the Vijayanagara Empire?",
+      "ms": {
+        "draft": 3062,
+        "critique": 8043,
+        "solver": 1513,
+        "form": 3337
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a reason for Timur's hesitation to declare himself monarch?",
+      "ms": {
+        "draft": 4211,
+        "critique": 6017,
+        "solver": 13778,
+        "form": 2955,
+        "translation": 46840
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'Hellenised' mean in the context of Alexander's empire?",
+      "ms": {
+        "draft": 3188,
+        "critique": 6697,
+        "solver": 2919,
+        "form": 3424,
+        "translation": 42606
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of an empire that was not city-centric?",
+      "ms": {
+        "draft": 3188,
+        "critique": 7060,
+        "solver": 3356,
+        "form": 3489,
+        "translation": 40031
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best explains why the Mongols needed a 'yasa'?",
+      "ms": {
+        "draft": 4709,
+        "critique": 7036,
+        "solver": 1842,
+        "form": 3581,
+        "translation": 57153
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the significance of the 'yasa' in the Mongol Empire?",
+      "ms": {
+        "draft": 4709,
+        "critique": 6187,
+        "solver": 1666,
+        "form": 3221,
+        "translation": 41802
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How did the Mongols contribute to the spread of cultural exchange?",
+      "ms": {
+        "draft": 4211,
+        "critique": 5407,
+        "solver": 12997,
+        "form": 3710,
+        "translation": 52092
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains why the Roman Empire was called a 'mosaic of territories and cultures'?",
+      "ms": {
+        "draft": 13372,
+        "critique": 8220,
+        "solver": 1479,
+        "form": 2536,
+        "translation": 48841
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a historian is trying to understand the Roman Empire, which of the following would be the most useful?",
+      "ms": {
+        "draft": 13372,
+        "critique": 6658,
+        "solver": 1764,
+        "form": 2672,
+        "translation": 46572
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best describes the reason for the Mongol Empire's success in military campaigns?",
+      "ms": {
+        "draft": 5537,
+        "critique": 6338,
+        "solver": 7118,
+        "form": 1310,
+        "translation": 31119
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "How did the Mongols use the 'yasa' to maintain their identity in a multiethnic empire?",
+      "ms": {
+        "draft": 4709,
+        "critique": 6829,
+        "solver": 1612,
+        "form": 4351,
+        "translation": 52852
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "Which of the following statements best reflects the passage's view of the Roman Empire's administration?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What was one of the main reasons for the collapse of the Western Roman Empire?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which empire is described in the passage as being maintained by pastoral people for a long time and with success?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, which of the following was a key factor in the success of the Mongol Empire?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a significant event in the passage?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following can be inferred from the passage about the Roman Empire?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What can be concluded about the relationship between the Roman Empire and the caliphate mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Based on the passage, which of the following statements best describes the role of the Roman Empire in the development of the Fertile Crescent?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following events is an example of long-distance trade as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What was the main reason the Roman Empire was culturally diverse?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What can be inferred about the Roman army from the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of cultural exchange mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why might the passage mention that the Senate existed for centuries and was dominated by wealthy families?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Focuses on the military, which is not the main point of the …\"); distractor 2's reason is not a one-line misconception (\"Misinterprets the purpose of the passage's mention of the Se…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why did the Romans have a paid professional army according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is mentioned in the passage as a reason for the stability of the first two centuries of the Roman Empire?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, what was the main function of the urban centres in the Roman Empire?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Based on the passage, what can be inferred about the role of the provincial upper classes in the Roman Empire?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What was the main function of the 'MPIRE CROSS' as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What can be inferred about the Roman Empire from the passage about the third century?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Overlooks the challenges mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What was the main reason for the prevalence of illness in the countryside during the famine?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Believing that entertainment causes illness due to a misinte…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following was a tax paid by traders for safe passage under the Mongol regime?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why is Genghis Khan considered an iconic figure in modern Mongolia?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of written records in understanding nomadic societies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How does the passage reflect the idea that the legacy of Genghis Khan is used in modern times?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following best explains the reason for Timur's claim to sovereignty?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a historian in the 14th century wanted to understand the Mongol approach to governance, which of the following would they most likely find useful?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's emphasis on law and administrati…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What does the reference to 'Abdullah Khan's prayer at the Muslim festival ground' in the passage suggest?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main idea of the passage about the Mongols and their empire?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following was a system used by the Mongols for rapid communication across their empire?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the name of the pass given to travellers for safe conduct under the Mongol regime?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, which of the following was the main reason for the ecological devastation in Khurasan after the Mongol campaigns?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best describes the role of the 'tuman' in the Mongol military organisation?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the size of the tuman with another unit of the Mong…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What can be inferred from the passage about the political structure of the Mongol Empire after Genghis Khan's death?",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which empire was established by Alexander the Great?",
+      "reason": "near-duplicate of served question cmvho8pjw09vbgpfh001xn0oa (cosine 0.933 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following was the first dynasty to rule over the Vijayanagara Empire?",
+      "reason": "near-duplicate of served question cmvho8pk909whgpfhbe0w0vj9 (cosine 0.925 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

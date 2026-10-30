@@ -1,0 +1,792 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T20:43:18.121Z",
+  "finishedAt": "2026-10-26T20:52:42.803Z",
+  "seconds": 565,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Introductory Microeconomics",
+    "bookCode": "leec2",
+    "document": "ncert/12/economics/leec201.pdf",
+    "classLevel": 12,
+    "subject": "Economics",
+    "chapter": "Chapter 1 — Introduction",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Economics, sample question paper, 2022-23]\n1. This question paper contains two sections:",
+      "[CBSE Class XII Economics, sample question paper, 2023-24]\n1. This question paper contains two sections:",
+      "[CBSE Class XII Economics, sample question paper, 2022-23]\nSection A – Macro Economics",
+      "[CBSE Class XII Economics, sample question paper, 2024-25]\nSection A – Macro Economics"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Economics in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 170758,
+      "in": 41,
+      "out": 41,
+      "rejects": 0,
+      "promptTokens": 29233,
+      "completionTokens": 8794
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 303600,
+      "in": 41,
+      "out": 25,
+      "rejects": 16,
+      "promptTokens": 17595,
+      "completionTokens": 7208
+    },
+    "solver": {
+      "calls": 131,
+      "ms": 55344,
+      "in": 25,
+      "out": 23,
+      "rejects": 2,
+      "promptTokens": 16924,
+      "completionTokens": 1076
+    },
+    "form": {
+      "calls": 14,
+      "ms": 46263,
+      "in": 23,
+      "out": 7,
+      "rejects": 16,
+      "promptTokens": 3528,
+      "completionTokens": 1083
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 1181,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 529191,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 18959,
+      "completionTokens": 10632
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What does the term 'goods' refer to in the passage?",
+      "ms": {
+        "draft": 13383,
+        "critique": 6714,
+        "solver": 1393,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main reason individuals must make choices?",
+      "ms": {
+        "draft": 13383,
+        "critique": 7245,
+        "solver": 1941,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a society produces more corn than people want, what should happen?",
+      "ms": {
+        "draft": 13383,
+        "critique": 7500,
+        "solver": 1369,
+        "form": 3385
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the central problem of an economy according to the passage?",
+      "ms": {
+        "draft": 4276,
+        "critique": 7727,
+        "solver": 1227
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage mean when it says that resources have competing usages?",
+      "ms": {
+        "draft": 4276,
+        "critique": 6874,
+        "solver": 1872,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an economy decides to produce more education services, what is likely to happen?",
+      "ms": {
+        "draft": 4276,
+        "critique": 6870,
+        "solver": 2013,
+        "form": 3446
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An economy produces 3 units of corn and 4 units of cotton. If it wants to increase cotton production by 2 units, what will happen?",
+      "ms": {
+        "draft": 4276,
+        "critique": 7898,
+        "solver": 1533,
+        "form": 5367
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage say that the production possibility frontier is a curve?",
+      "ms": {
+        "draft": 4276,
+        "critique": 7642,
+        "solver": 1711,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 3676,
+        "critique": 7491
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a market according to the passage?",
+      "ms": {
+        "draft": 3676,
+        "critique": 7634
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the production possibility frontier illustrate?",
+      "ms": {
+        "draft": 4276,
+        "critique": 9653,
+        "solver": 11699,
+        "form": 4171
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which type of economy does the government make all major decisions?",
+      "ms": {
+        "draft": 3676,
+        "critique": 6627
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes a mixed economy?",
+      "ms": {
+        "draft": 3676,
+        "critique": 5544
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of prices in a market economy?",
+      "ms": {
+        "draft": 3676,
+        "critique": 6096
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is opportunity cost important in economics?",
+      "ms": {
+        "draft": 3676,
+        "critique": 5992
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a question studied in macroeconomics?",
+      "ms": {
+        "draft": 3908,
+        "critique": 5980
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are the two broad branches of economics studied in the passage?",
+      "ms": {
+        "draft": 3908,
+        "critique": 5341,
+        "solver": 1637,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a branch of economics that studies the behavior of individual economic agents?",
+      "ms": {
+        "draft": 4016,
+        "critique": 5478
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is studying the market for a single commodity, which branch of economics is he most likely studying?",
+      "ms": {
+        "draft": 4016,
+        "critique": 6329
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main focus of macroeconomics?",
+      "ms": {
+        "draft": 4016,
+        "critique": 5440,
+        "solver": 1498,
+        "form": 3311
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a country is experiencing rising prices and high unemployment, which branch of economics would study this phenomenon?",
+      "ms": {
+        "draft": 4016,
+        "critique": 7605
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of an aggregate measure studied in macroeconomics?",
+      "ms": {
+        "draft": 4016,
+        "critique": 9038,
+        "solver": 2186,
+        "form": 3782
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main way that a centrally planned economy makes decisions about production, exchange, and consumption?",
+      "ms": {
+        "draft": 4444,
+        "critique": 8822
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is asked to explain the difference between microeconomics and macroeconomics. Which of the following best captures the core distinction between the two?",
+      "ms": {
+        "draft": 4016,
+        "critique": 7434,
+        "solver": 2417,
+        "form": 4171
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of price in a market economy?",
+      "ms": {
+        "draft": 4444,
+        "critique": 8209
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a government decides to provide more education and health services in an economy, which type of economic system is most likely to do this?",
+      "ms": {
+        "draft": 4444,
+        "critique": 8129
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the key difference between a market economy and a centrally planned economy?",
+      "ms": {
+        "draft": 4444,
+        "critique": 9380
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a market economy, what is the likely effect of an increase in the demand for a product?",
+      "ms": {
+        "draft": 4444,
+        "critique": 8580
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why might an economy be described as a mixed economy?",
+      "ms": {
+        "draft": 4444,
+        "critique": 8906
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the central problem of an economy according to the passage?",
+      "ms": {
+        "draft": 4666,
+        "critique": 7981,
+        "solver": 2127,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say about the production possibility frontier?",
+      "ms": {
+        "draft": 4666,
+        "critique": 9825,
+        "solver": 1225,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the opportunity cost of producing more of one good?",
+      "ms": {
+        "draft": 4666,
+        "critique": 7347,
+        "solver": 1941,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best defines a 'resource' in economics?",
+      "ms": {
+        "draft": 6242,
+        "critique": 7604,
+        "solver": 1188,
+        "form": 2601
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A family farm produces corn and uses part of it for consumption. It exchanges the rest for clothing and housing. Which of the following best describes the economic problem faced by the family farm?",
+      "ms": {
+        "draft": 6242,
+        "critique": 7095,
+        "solver": 583
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a family farm produces corn and wants to obtain clothing, what must it do?",
+      "ms": {
+        "draft": 13383,
+        "critique": 7502,
+        "solver": 2629,
+        "form": 2284,
+        "translation": 62109
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country is studying how its overall employment level changes over time, which branch of economics is it most likely focusing on?",
+      "ms": {
+        "draft": 3908,
+        "critique": 6838,
+        "solver": 1933,
+        "form": 3270,
+        "translation": 92129
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main challenge in the allocation of resources in an economy?",
+      "ms": {
+        "draft": 13383,
+        "critique": 8769,
+        "solver": 2294,
+        "form": 3548,
+        "translation": 62934
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the difference between microeconomics and macroeconomics?",
+      "ms": {
+        "draft": 3908,
+        "critique": 7492,
+        "solver": 1452,
+        "form": 3420,
+        "translation": 111858
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student is asked to evaluate the impact of a government policy on overall employment. Which branch of economics is the student most likely applying?",
+      "ms": {
+        "draft": 3908,
+        "critique": 7365,
+        "solver": 1711,
+        "form": 1,
+        "translation": 63600
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the distribution of goods and services important in an economy?",
+      "ms": {
+        "draft": 13383,
+        "critique": 7942,
+        "solver": 1621,
+        "form": 4317,
+        "translation": 67097
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If an economy is experiencing rising prices, which branch of economics would most directly address the causes of this phenomenon?",
+      "ms": {
+        "draft": 3908,
+        "critique": 4103,
+        "solver": 609,
+        "form": 1366,
+        "translation": 63915
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the term 'goods' refer to in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main reason individuals must make choices?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a society produces more corn than people want, what should happen?",
+      "reason": "the key is far longer than every distractor (82 vs 43 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the central problem of an economy according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage mean when it says that resources have competing usages?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"contradicts the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If an economy decides to produce more education services, what is likely to happen?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "An economy produces 3 units of corn and 4 units of cotton. If it wants to increase cotton production by 2 units, what will happen?",
+      "reason": "option 1 repeats the stem's wording (\"Corn production will increase by 2 units\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage say that the production possibility frontier is a curve?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"contradicts the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the purpose of a market according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the production possibility frontier illustrate?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"contradicts the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In which type of economy does the government make all major decisions?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following best describes a mixed economy?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the role of prices in a market economy?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is opportunity cost important in economics?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a question studied in macroeconomics?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What are the two broad branches of economics studied in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a branch of economics that studies the behavior of individual economic agents?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student is studying the market for a single commodity, which branch of economics is he most likely studying?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main focus of macroeconomics?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer', 'focuses on a single commodity, which is mi…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a country is experiencing rising prices and high unemployment, which branch of economics would study this phenomenon?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of an aggregate measure studied in macroeconomics?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer', 'pertains to a specific product, which is m…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main way that a centrally planned economy makes decisions about production, exchange, and consumption?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student is asked to explain the difference between microeconomics and macroeconomics. Which of the following best captures the core distinction between the two?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"confuses descriptive with prescriptive analysis, which is no…\"); distractor 3's reason is not a one-line misconception (\"focuses on goods versus services, which is not the main dist…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the role of price in a market economy?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a government decides to provide more education and health services in an economy, which type of economic system is most likely to do this?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the key difference between a market economy and a centrally planned economy?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a market economy, what is the likely effect of an increase in the demand for a product?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why might an economy be described as a mixed economy?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the central problem of an economy according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage say about the production possibility frontier?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the opportunity cost of producing more of one good?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best defines a 'resource' in economics?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option and matches the pas…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A family farm produces corn and uses part of it for consumption. It exchanges the rest for clothing and housing. Which of the following best describes the economic problem faced by the family farm?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Economics in the prompt"
+  ]
+}

@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-23T02:41:02.078Z",
+  "generatedAt": "2026-10-28T07:32:12.219Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "If sin x = 3/5 and cos y = -12/13, and both x and y lie in the second quadrant, what is sin(x + y)?",
+      "stem": "If sin x = 0, what can be said about x?",
       "choices": [
-        "-56/65",
-        "56/65",
-        "-36/65",
-        "36/65"
+        "x is an odd multiple of π",
+        "x is an integral multiple of π",
+        "x is an even multiple of π",
+        "x is a fraction of π"
       ],
-      "answerIndex": 0,
-      "solution": "Using the identity sin(x + y) = sin x cos y + cos x sin y, we find cos x = -4/5 and sin y = 5/13. Substituting, we get sin(x + y) = (3/5)(-12/13) + (-4/5)(5/13) = -36/65 - 20/65 = -56/65. The other options result from incorrect signs or miscalculations.",
-      "checkExpr": "(-36-20)/65",
+      "answerIndex": 1,
+      "solution": "The sine of an angle is zero at every multiple of π, meaning x can be any integer multiple of π. The correct option states that x is an integral multiple of π, which aligns with this mathematical fact. The option 'x is an odd multiple of π' is incorrect because it excludes even multiples, while 'x is an even multiple of π' is also incorrect for the same reason. The option 'x is a fraction of π' is wrong because it does not account for the full set of solutions.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि sin x = 3/5 और cos y = -12/13 है, और x और y दोनों द्वितीय चतुर्थांश में हैं, तो sin(x + y) क्या है?",
+          "stem": "यदि sin x = 0, तो x के बारे में क्या कहा जा सकता है?",
           "choices": [
-            "-56/65",
-            "56/65",
-            "-36/65",
-            "36/65"
+            "x, π का विषम गुणज है",
+            "x, π का पूर्णांक गुणज है",
+            "x, π का सम गुणज है",
+            "x, π का भिन्न है"
           ],
-          "solution": "सूत्र sin(x + y) = sin x cos y + cos x sin y का प्रयोग करके, हम पाते हैं कि cos x = -4/5 और sin y = 5/13 है। प्रतिस्थापन करने पर, हमें sin(x + y) = (3/5)(-12/13) + (-4/5)(5/13) = -36/65 - 20/65 = -56/65 मिलता है। अन्य विकल्प गलत चिह्नों या गणना त्रुटियों के कारण हैं।",
+          "solution": "कोण की ज्या तब शून्य होती है जब वह π के किसी भी गुणज में होता है, जिसका अर्थ है x किसी भी पूर्णांक गुणज π हो सकता है। सही विकल्प बताता है कि x, π का पूर्णांक गुणज है, जो गणितीय तथ्य के अनुरूप है। विकल्प 'x, π का विषम गुणज है' गलत है क्योंकि यह सम गुणज को छोड़ देता है, जबकि 'x, π का सम गुणज है' भी इसी कारण से गलत है। विकल्प 'x, π का भिन्न है' गलत है क्योंकि यह समाधान के पूर्ण सेट को ध्यान में नहीं रखता।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same mathematical meaning, and uses appropriate terminology consistent with Indian curriculum.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर sin x = 3/5 आणि cos y = -12/13 आहे, आणि x आणि y दोन्ही दुसर्‍या चतुर्थांशात आहेत, तर sin(x + y) किती आहे?",
+          "stem": "जर sin x = 0, तर x बद्दल काय म्हणाल जाऊ शकते?",
           "choices": [
-            "-56/65",
-            "56/65",
-            "-36/65",
-            "36/65"
+            "x हा π चा विषम बरोबरी असतो",
+            "x हा π चा पूर्णांक बरोबरी असतो",
+            "x हा π चा सम बरोबरी असतो",
+            "x हा π चा भिन्न असतो"
           ],
-          "solution": "सूत्र sin(x + y) = sin x cos y + cos x sin y वापरून, आम्ही cos x = -4/5 आणि sin y = 5/13 शोधतो. प्रतिस्थापित करून, आम्ही sin(x + y) = (3/5)(-12/13) + (-4/5)(5/13) = -36/65 - 20/65 = -56/65 मिळतो. इतर विकल्प चुकीच्या चिन्हांमुळे किंवा गणनाच्या चूकीमुळे मिळतात.",
+          "solution": "कोनाचा साइन शून्य असतो जेव्हा तो π चा कोणताही बरोबरी असतो, जे x ला कोणताही पूर्णांक बरोबरी असण्याची अनुमती देते. योग्य विकल्प जो की x हा π चा पूर्णांक बरोबरी असतो, हा गणितीय तथ्याशी जुळतो. 'x हा π चा विषम बरोबरी असतो' हा विकल्प चुकीचा आहे कारण तो सम बरोबरी वगळतो, तर 'x हा π चा सम बरोबरी असतो' हा विकल्प त्याच कारणामुळे चुकीचा आहे. 'x हा π चा भिन्न असतो' हा विकल्प चुकीचा आहे कारण तो समाधानांच्या पूर्ण सेट लक्षात घेत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for trigonometric functions and quadrants.",
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for mathematical concepts.",
           "flag": null
         }
       },
@@ -72,124 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "confuses odd multiples with all multiples",
         null,
-        "incorrectly uses positive signs for cos x and sin y",
-        "incorrectly adds the absolute values of the fractions",
-        "incorrectly uses the absolute values of the numerators"
+        "incorrectly assumes only even multiples satisfy the condition",
+        "misunderstands the nature of the solution"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The solution is correct and follows the standard identity for sin(x + y). The correct answer is -56/65, and the author's reasoning for the distractors aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh103.pdf",
-          "ordinal": 12,
-          "pageStart": 25,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 3: Trigonometric Functions"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh103.pdf",
-          "ordinal": 13,
-          "pageStart": 28,
-          "pageEnd": 31,
-          "headingPath": [
-            "Chapter 3: Trigonometric Functions"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh103.pdf",
-          "ordinal": 14,
-          "pageStart": 31,
-          "pageEnd": 33,
-          "headingPath": [
-            "Chapter 3: Trigonometric Functions"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh103.pdf",
-          "ordinal": 15,
-          "pageStart": 33,
-          "pageEnd": 33,
-          "headingPath": [
-            "Chapter 3: Trigonometric Functions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T02:41:02.078Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "If an arc of length 2π cm is subtended by an angle of 2π radians at the center of a circle, what is the radius of the circle?",
-      "choices": [
-        "1 cm",
-        "2 cm",
-        "3 cm",
-        "4 cm"
-      ],
-      "answerIndex": 0,
-      "solution": "The formula for arc length is l = rθ, where l is the arc length, r is the radius, and θ is the angle in radians. Substituting l = 2π cm and θ = 2π radians, we get r = l/θ = (2π)/(2π) = 1 cm. The correct answer is 1 cm. The other options are incorrect because they do not match the calculated value of r.",
-      "checkExpr": "(2*3.14)/(2*3.14)",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 2π सेमी लंबाई का चाप वृत्त के केंद्र पर 2π रेडियन के कोण द्वारा बनाया जाता है, तो वृत्त की त्रिज्या क्या है?",
-          "choices": [
-            "1 सेमी",
-            "2 सेमी",
-            "3 सेमी",
-            "4 सेमी"
-          ],
-          "solution": "चाप की लंबाई का सूत्र l = rθ है, जहां l चाप की लंबाई है, r त्रिज्या है, और θ रेडियन में कोण है। l = 2π सेमी और θ = 2π रेडियन रखने पर, हम पाते हैं r = l/θ = (2π)/(2π) = 1 सेमी। सही उत्तर 1 सेमी है। अन्य विकल्प गलत हैं क्योंकि वे गणना के बराबर r के मान के साथ मेल नहीं खाते।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर 2π सेमी लांबीचा चाप केंद्रावर 2π रेडियन कोन तयार करत असेल, तर वर्तुळाच्या त्रिज्येचे माप काय असेल?",
-          "choices": [
-            "1 सेमी",
-            "2 सेमी",
-            "3 सेमी",
-            "4 सेमी"
-          ],
-          "solution": "चापाच्या लांबीचे सूत्र l = rθ आहे, जेथे l चापाची लांबी, r त्रिज्या आहे आणि θ रेडियनमध्ये कोन आहे. l = 2π सेमी आणि θ = 2π रेडियन ठेवल्यास, आपल्याला r = l/θ = (2π)/(2π) = 1 सेमी मिळते. योग्य उत्तर 1 सेमी आहे. इतर विकल्प चुकीचे आहेत कारण ते r च्या गणितीय मूल्याशी मेळ नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Miscalculates the division",
-        "Uses θ instead of l in the formula",
-        "Confuses the formula with the circumference"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly applies the arc length formula l = rθ and solves for r. The correct answer is 1 cm, and the reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The solution correctly identifies that sin x = 0 implies x = nπ, where n is any integer, making option 1 the correct answer. The reasoning for the other options aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh103.pdf",
@@ -220,105 +116,71 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T02:41:02.078Z",
+      "generatedAt": "2026-10-28T07:32:12.219Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Which of the following is an identity for cos(π + x)?",
+      "difficulty": 3,
+      "stem": "If tan x = 3/4 and x is in the first quadrant, what is the value of cos x?",
       "choices": [
-        "cos x",
-        "-cos x",
-        "sin x",
-        "-sin x"
+        "4/5",
+        "3/5",
+        "5/4",
+        "4/3"
       ],
-      "answerIndex": 1,
-      "solution": "The identity cos(π + x) = -cos x is derived from the unit circle. The other options do not match the identity. 'cos x' is incorrect because the cosine function is negative in the third quadrant. 'sin x' and '-sin x' are not related to this identity.",
-      "checkExpr": null,
+      "answerIndex": 0,
+      "solution": "Using the identity 1 + tan^2 x = sec^2 x, we find sec x = 5/4, so cos x = 4/5. The other options do not match the calculated value.",
+      "checkExpr": "4/5",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा cos(π + x) के लिए एक सर्वसमिका है?",
+          "stem": "यदि tan x = 3/4 और x प्रथम चतुर्थांश में है, तो cos x का मान क्या है?",
           "choices": [
-            "cos x",
-            "-cos x",
-            "sin x",
-            "-sin x"
+            "4/5",
+            "3/5",
+            "5/4",
+            "4/3"
           ],
-          "solution": "इकाई वृत्त से cos(π + x) = -cos x सर्वसमिका व्युत्पन्न की जाती है। अन्य विकल्प सर्वसमिका के अनुरूप नहीं हैं। 'cos x' गलत है क्योंकि तृतीय चतुर्थांश में कोसाइन फलन ऋणात्मक होता है। 'sin x' और '-sin x' इस सर्वसमिका से संबंधित नहीं हैं।",
-          "imageAlt": "एक समतल दर्पण जिसमें आपतित किरण, परावर्तित किरण और अभिलंब हैं",
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "solution": "सर्वसमिका 1 + tan^2 x = sec^2 x का उपयोग करके, हम sec x = 5/4 पाते हैं, अतः cos x = 4/5। अन्य विकल्प गणना के मान के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते cos(π + x) चे ओळख आहे?",
+          "stem": "tan x = 3/4 आणि x पहिल्या चतुर्थांशात आहे, तर cos x ची किंमत काय आहे?",
           "choices": [
-            "cos x",
-            "-cos x",
-            "sin x",
-            "-sin x"
+            "4/5",
+            "3/5",
+            "5/4",
+            "4/3"
           ],
-          "solution": "युनिट वर्तुळावरून cos(π + x) = -cos x हा ओळख मिळतो. इतर विकल्प ओळखाशी संगत नाहीत. 'cos x' अयोग्य आहे कारण कोसाइन फंक्शन तृतीय चतुर्थांशात नकारात्मक असते. 'sin x' आणि '-sin x' हे या ओळखाशी संबंधित नाहीत.",
-          "imageAlt": "एक समतल दर्पण ज्यावर आपातन किरण, प्रतिबिंबित किरण आणि सामान्य आहे",
+          "solution": "1 + tan^2 x = sec^2 x च्या ओळखीचा वापर करून, आम्ही sec x = 5/4 शोधतो, म्हणून cos x = 4/5. इतर विकल्प गणित केलेल्या मूल्याशी जुळत नाहीत.",
+          "imageAlt": null,
           "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A plane mirror with incident ray, reflected ray, and normal",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "planeMirror",
-              "x": 50,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "incidentRay",
-                "reflectedRay",
-                "normal"
-              ]
-            }
-          ]
-        },
-        "labels": {
-          "incidentRay": {
-            "en": "Incident Ray",
-            "hi": "आपतित किरण",
-            "mr": "आपातन किरण"
-          },
-          "reflectedRay": {
-            "en": "Reflected Ray",
-            "hi": "परावर्तित किरण",
-            "mr": "प्रतिबिंबित किरण"
-          },
-          "normal": {
-            "en": "Normal",
-            "hi": "अभिलंब",
-            "mr": "सामान्य"
-          }
-        }
-      },
-      "needsFigure": true,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
-        "confuses the identity with the cosine of x itself",
         null,
-        "confuses the identity with the sine function",
-        "confuses the identity with the sine function"
+        "confuses the numerator and denominator",
+        "uses the value of tan x directly",
+        "uses the reciprocal of the correct value"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is -cos x, as cos(π + x) = -cos x is a standard trigonometric identity derived from the unit circle. The author's reasoning is sound and the misconceptions described for the distractors are plausible.",
+      "levelFlag": null,
+      "critique": "The solution correctly applies the identity 1 + tan²x = sec²x and derives cos x = 4/5. The reasoning for the distractors aligns with common student misconceptions.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh103.pdf",
@@ -358,7 +220,102 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T02:41:02.078Z",
+      "generatedAt": "2026-10-28T07:32:12.219Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the value of 1 - tan² 30° divided by 1 + tan² 30°?",
+      "choices": [
+        "cos 60°",
+        "sin 60°",
+        "tan 60°",
+        "sec 60°"
+      ],
+      "answerIndex": 0,
+      "solution": "The expression (1 - tan² 30°)/(1 + tan² 30°) can be simplified using the trigonometric identity (1 - tan² θ)/(1 + tan² θ) = cos 2θ. Substituting θ = 30°, this becomes cos 60°. The other options do not correspond to the identity when applied to 30°. Cos 60° is the correct value of the expression.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "1 - tan² 30° का मान 1 + tan² 30° से विभाजित क्या है?",
+          "choices": [
+            "cos 60°",
+            "sin 60°",
+            "tan 60°",
+            "sec 60°"
+          ],
+          "solution": "अभिव्यक्ति (1 - tan² 30°)/(1 + tan² 30°) को त्रिकोणमितीय पहचान (1 - tan² θ)/(1 + tan² θ) = cos 2θ के उपयोग से सरल किया जा सकता है। θ = 30° के स्थान पर रखने पर यह cos 60° बन जाता है। अन्य विकल्प 30° पर पहचान के उपयोग के बाद संगत नहीं होते। cos 60° अभिव्यक्ति का सही मान है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard trigonometric terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1 - tan² 30° चे मूल्य 1 + tan² 30° ने भागल्यास किती होईल?",
+          "choices": [
+            "cos 60°",
+            "sin 60°",
+            "tan 60°",
+            "sec 60°"
+          ],
+          "solution": "अभिव्यक्ती (1 - tan² 30°)/(1 + tan² 30°) चे त्रिकोणमितीय ओळख (1 - tan² θ)/(1 + tan² θ) = cos 2θ वापरून सरलीकरण केले जाऊ शकते. θ = 30° ची बदली केल्यास ती cos 60° असते. इतर विकल्प 30° वर ओळख लागू केल्यानंतर ओळख नाहीत. cos 60° हा अभिव्यक्तीचा योग्य मूल्य आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate trigonometric terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the identity with sin 2θ",
+        "Incorrectly assumes the value corresponds to tan 2θ",
+        "Incorrectly assumes the value corresponds to sec 2θ"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the identity (1 - tan²θ)/(1 + tan²θ) = cos 2θ, which leads to cos 60°. The reasoning for the distractors aligns with common misconceptions about trigonometric identities.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Trigonometric Functions"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh103.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Trigonometric Functions"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh103.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Trigonometric Functions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T07:32:12.219Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,389 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:42:05.012Z",
+  "finishedAt": "2026-10-28T04:45:50.198Z",
+  "seconds": 225,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap118.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 18 — Too Much Water, Too Little Water",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 8,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 52520,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15314,
+      "completionTokens": 3218
+    },
+    "critique": {
+      "calls": 24,
+      "ms": 134832,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 10636,
+      "completionTokens": 4187
+    },
+    "solver": {
+      "calls": 139,
+      "ms": 80164,
+      "in": 16,
+      "out": 9,
+      "rejects": 7,
+      "promptTokens": 28871,
+      "completionTokens": 1688
+    },
+    "form": {
+      "calls": 7,
+      "ms": 15995,
+      "in": 9,
+      "out": 3,
+      "rejects": 6,
+      "promptTokens": 1612,
+      "completionTokens": 454
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 3947,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 70683,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4763,
+      "completionTokens": 2717
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What did Suguna's family offer the guest when he arrived at their house?",
+      "ms": {
+        "draft": 2858,
+        "critique": 4800,
+        "solver": 1421
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of drinking water in the school according to the passage?",
+      "ms": {
+        "draft": 2682,
+        "critique": 5063,
+        "solver": 1657,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of having a long-handled ladle at the drinking water place according to the passage?",
+      "ms": {
+        "draft": 2682,
+        "critique": 6538,
+        "solver": 1467
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, how often should the containers or matkas be cleaned?",
+      "ms": {
+        "draft": 2682,
+        "critique": 6130,
+        "solver": 11885,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there is no tap, matka, or handpump, what method does the passage suggest for getting drinking water?",
+      "ms": {
+        "draft": 2682,
+        "critique": 7190,
+        "solver": 7930
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one reason the drinking water places get dirty?",
+      "ms": {
+        "draft": 14728,
+        "critique": 4438,
+        "solver": 16660
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there is no tap, matka, or handpump, how do students get drinking water?",
+      "ms": {
+        "draft": 14728,
+        "critique": 4994,
+        "solver": 16731
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one way the children in Holgundi tried to solve the water problem?",
+      "ms": {
+        "draft": 14728,
+        "critique": 5174,
+        "solver": 14370,
+        "form": 2610
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is one reason why Suguna's family offered a cold drink to the guest?",
+      "ms": {
+        "draft": 4842,
+        "critique": 6192,
+        "solver": 1797
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the children's panchayat in Holgundi?",
+      "ms": {
+        "draft": 14728,
+        "critique": 6453,
+        "solver": 1167,
+        "form": 3300
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the woman in Bazaar Gaon get angry at the water park?",
+      "ms": {
+        "draft": 4842,
+        "critique": 7018,
+        "solver": 15471
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the water from the taps in a house is contaminated, what should people do to protect themselves?",
+      "ms": {
+        "draft": 4842,
+        "critique": 6856,
+        "solver": 8900,
+        "form": 1729
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a village has no water for drinking, which of the following is the most likely solution?",
+      "ms": {
+        "draft": 4842,
+        "critique": 8794,
+        "solver": 10363,
+        "form": 1443
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the guest refuse to take a cold drink?",
+      "ms": {
+        "draft": 2858,
+        "critique": 4354,
+        "solver": 1254,
+        "form": 3594
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should people do if they suspect that their drinking water is contaminated?",
+      "ms": {
+        "draft": 2858,
+        "critique": 4966,
+        "solver": 2050,
+        "form": 2576,
+        "translation": 33722
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the reason for the crowd at the water park in Bazaar Gaon?",
+      "ms": {
+        "draft": 2858,
+        "critique": 5976,
+        "solver": 1572,
+        "form": 2365,
+        "translation": 31454
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did Suguna's family offer the guest when he arrived at their house?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a source of drinking water in the school according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the purpose of having a long-handled ladle at the drinking water place according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, how often should the containers or matkas be cleaned?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If there is no tap, matka, or handpump, what method does the passage suggest for getting drinking water?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is one reason the drinking water places get dirty?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If there is no tap, matka, or handpump, how do students get drinking water?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is one way the children in Holgundi tried to solve the water problem?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"The passage says they cleaned the tank and made the area gre…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is one reason why Suguna's family offered a cold drink to the guest?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the children's panchayat in Holgundi?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"The passage mentions the village panchayat, not the children…\"); distractor 2's reason is not a one-line misconception (\"The passage does not mention a children's council…\"); distractor 3's reason is not a one-line misconception (\"The passage does not mention a water committee…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did the woman in Bazaar Gaon get angry at the water park?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the water from the taps in a house is contaminated, what should people do to protect themselves?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"This is dangerous and not recommended. The passage warns aga…\"); distractor 1's reason is not a one-line misconception (\"This is not safe and not recommended. The passage warns agai…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a village has no water for drinking, which of the following is the most likely solution?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This is not safe and not mentioned as a solution in the pass…\"); distractor 3's reason is not a one-line misconception (\"This is not possible if the water is not clean or not availa…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why did the guest refuse to take a cold drink?",
+      "reason": "near-duplicate of served question cmvo5zsl905ffgp21k3lm862q (cosine 0.940 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

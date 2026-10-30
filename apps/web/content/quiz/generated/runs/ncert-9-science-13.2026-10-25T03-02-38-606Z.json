@@ -1,0 +1,659 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T03:02:38.606Z",
+  "finishedAt": "2026-10-25T03:15:53.119Z",
+  "seconds": 795,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc113.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 13 — Earth as a System: Energy, Matter, and Life",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 29,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\n9. Assertion (A): In an ecosystem, 1% of energy is available for transfer from one 1\ntrophic level to the next.\nReason (R): An average of 10% of the food eaten by organisms is available for\nflow in the form of chemical energy.",
+      "[INJSO 2015 — question paper]\n25. Study the following ray diagram in which: ‘A’ represents atmosphere, ‘B’ represents\ngreen plants, ‘C’ represents decomposers and ‘D’ represents animals.\nB C\nA D\nThe above ray diagram represents\na) Energy flow through the given ecosystem.\nb) Interconnections among different food chains in the given ecosystem.\nc) Movement of carbon among A, B, C and D.\nd) Movement of nitrogen among A, B, C and D",
+      "[INJSO 2019 — question paper]\n33. (9 MARKS) Consider a self-sustaining ecosystem consisting of three components X, Y\nand Z set up in a laboratory for several weeks. During a 26-day observation period, it was\ndisturbed by human intervention on a particular day. The population size of the three\ncomponents during this period is tabulated below.\nDay Population size\nComponent X Component Y Component Z\n1 10\n4 11\n7 15\n10 14\n13 14\n17 0\n20 0\n23 0\n26 0\n40 200\n42 220\n54 210\n53 190\n43 220\n120 100\n130 30\n30 30\n15 150\n(A) Assign the correct component alphabet to each of the following:\ni. Primary producer _____\nii. Herbivore _____\niii. Carnivore _____\n(1.5 MARKS)\n(1.5 MARKS)\n(1.5 MARKS)\n(B) The average biomass of a producer is 0.0060 g",
+      "[INJSO 2020 — question paper]\n24. An ecological pyramid is a diagrammatic representation of the relationship between various\norganisms in an ecosystem. These pyramids can be drawn to represent the organic material\n(biomass), or number, or energy at each trophic level.\nWe list here four different ecosystems (i to iv) and five different ecological pyramids (P to T).\nMatch the ecosystems with the correct pyramids.\nEcosystems:\ni. Number pyramid of an ecosystem consisting of grasses, snails and mice.\nii. Number pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niii. Biomass pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niv. Number pyramid of an ecosystem consisting of a rose bush, aph"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 183633,
+      "in": 37,
+      "out": 35,
+      "rejects": 2,
+      "promptTokens": 50505,
+      "completionTokens": 7696
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 311538,
+      "in": 35,
+      "out": 35,
+      "rejects": 0,
+      "promptTokens": 18767,
+      "completionTokens": 7073
+    },
+    "solver": {
+      "calls": 219,
+      "ms": 127550,
+      "in": 35,
+      "out": 34,
+      "rejects": 1,
+      "promptTokens": 32983,
+      "completionTokens": 2049
+    },
+    "form": {
+      "calls": 22,
+      "ms": 96193,
+      "in": 34,
+      "out": 21,
+      "rejects": 13,
+      "promptTokens": 9248,
+      "completionTokens": 2029
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 21,
+      "out": 21,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 46,
+      "ms": 8956,
+      "in": 21,
+      "out": 21,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 87,
+      "ms": 1224811,
+      "in": 42,
+      "out": 42,
+      "rejects": 0,
+      "promptTokens": 51912,
+      "completionTokens": 26627
+    }
+  },
+  "kept": 21,
+  "keptByLevel": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 2,
+    "5": 3,
+    "6": 4
+  },
+  "flagged": 9,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is the main source of energy for the Earth's system?",
+      "ms": {
+        "draft": 4371,
+        "critique": 5902,
+        "solver": 1505,
+        "form": 5195
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best represents the interaction between the cryosphere and the hydrosphere?",
+      "ms": {
+        "draft": 4371,
+        "critique": 6138,
+        "solver": 2159,
+        "form": 5056
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the albedo of surfaces?",
+      "ms": {
+        "draft": 4501,
+        "critique": 8399,
+        "solver": 1563,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a solar panel receives 1 kWm of insolation, how much energy will it receive in one hour over an area of 1 m²?",
+      "ms": {
+        "draft": 4501,
+        "critique": 9863,
+        "solver": 21302,
+        "form": 4954
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A solar panel is placed in an area where the insolation is 1 kWm. If the panel has an efficiency of 20%, how much energy in kWh will it produce in one hour?",
+      "ms": {
+        "draft": 4501,
+        "critique": 9034,
+        "solver": 14593,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a city experiences a significant increase in air conditioning usage, what would be the most likely effect on the urban heat island effect?",
+      "ms": {
+        "draft": 4574,
+        "critique": 7889,
+        "solver": 1730,
+        "form": 3215
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main function of the ozone layer according to the passage?",
+      "ms": {
+        "draft": 4574,
+        "critique": 6841,
+        "solver": 2222,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is caused by the uneven heating of the Earth?",
+      "ms": {
+        "draft": 4386,
+        "critique": 7107,
+        "solver": 2126
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the Earth stopped rotating, what would be the most likely impact on the wind patterns?",
+      "ms": {
+        "draft": 4386,
+        "critique": 7722,
+        "solver": 2087,
+        "form": 3551
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reservoir of carbon on Earth?",
+      "ms": {
+        "draft": 5332,
+        "critique": 7165,
+        "solver": 13689,
+        "form": 2371
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following processes is responsible for restoring atmospheric oxygen levels?",
+      "ms": {
+        "draft": 5557,
+        "critique": 7400,
+        "solver": 9104,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the figure showing the urban heat island effect, which of the following is a result of this phenomenon?",
+      "ms": {
+        "draft": 4461,
+        "critique": 7903,
+        "solver": 1711,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Suppose there are two mountains, one covered with grass and another covered with barren rocks. Would the temperature of the two mountain breezes be different? If so, how?",
+      "ms": {
+        "draft": 7724,
+        "critique": 8313,
+        "solver": 1515,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements correctly describes the movement of air in the equatorial low pressure belt?",
+      "ms": {
+        "draft": 7443,
+        "critique": 7205,
+        "solver": 861,
+        "form": 3445
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What causes the air to rise near the equator?",
+      "ms": {
+        "draft": 4386,
+        "critique": 6495,
+        "solver": 1515,
+        "form": 4636,
+        "translation": 42511
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a part of the water cycle?",
+      "ms": {
+        "draft": 5332,
+        "critique": 7277,
+        "solver": 13370,
+        "form": 0,
+        "translation": 38240
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes the role of biogeochemical cycles in an ecosystem?",
+      "ms": {
+        "draft": 7724,
+        "critique": 10402,
+        "solver": 2102,
+        "form": 0,
+        "translation": 63670
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a system in the Earth's environment?",
+      "ms": {
+        "draft": 4461,
+        "critique": 7544,
+        "solver": 2311,
+        "form": 0,
+        "translation": 43452
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a part of the biosphere?",
+      "ms": {
+        "draft": 4371,
+        "critique": 8278,
+        "solver": 1967,
+        "form": 5781,
+        "translation": 52134
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the term 'ecosystem'?",
+      "ms": {
+        "draft": 4461,
+        "critique": 8615,
+        "solver": 2351,
+        "form": 0,
+        "translation": 55945
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes insolation?",
+      "ms": {
+        "draft": 4501,
+        "critique": 8580,
+        "solver": 14820,
+        "form": 5334,
+        "translation": 61034
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of the albedo of a surface?",
+      "ms": {
+        "draft": 4501,
+        "critique": 7920,
+        "solver": 1917,
+        "form": 3419,
+        "translation": 50622
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there is less snowfall during winters for a few years, what effect might this have on the environment?",
+      "ms": {
+        "draft": 4371,
+        "critique": 6539,
+        "solver": 3083,
+        "form": 2490,
+        "translation": 54252
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the warm air that rises near the equator?",
+      "ms": {
+        "draft": 4386,
+        "critique": 6505,
+        "solver": 2942,
+        "form": 3088,
+        "translation": 57498
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a solar panel is placed in a desert, what is the most likely effect on the environment?",
+      "ms": {
+        "draft": 4461,
+        "critique": 7317,
+        "solver": 1610,
+        "form": 0,
+        "translation": 49504
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason cities are warmer than rural areas during summer?",
+      "ms": {
+        "draft": 4574,
+        "critique": 7877,
+        "solver": 2119,
+        "form": 3179,
+        "translation": 103229
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the primary source of energy for the Earth's weather processes?",
+      "ms": {
+        "draft": 5366,
+        "critique": 7988,
+        "solver": 2180,
+        "form": 3661,
+        "translation": 54870
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which atmospheric layer is responsible for trapping outgoing heat from the Earth's surface?",
+      "ms": {
+        "draft": 4574,
+        "critique": 6948,
+        "solver": 2094,
+        "form": 3767,
+        "translation": 72608
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the Earth's atmosphere becomes warmer due to increased greenhouse gases, which of the following is most likely to happen?",
+      "ms": {
+        "draft": 4371,
+        "critique": 9847,
+        "solver": 1582,
+        "form": 5458,
+        "translation": 70342
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the carbon cycle, which process involves the conversion of atmospheric carbon dioxide into glucose by plants?",
+      "ms": {
+        "draft": 5652,
+        "critique": 7690,
+        "solver": 8269,
+        "form": 0,
+        "translation": 48068
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a self-sustaining ecosystem, if the population of a component suddenly drops to zero, what could be the most likely reason?",
+      "ms": {
+        "draft": 4461,
+        "critique": 7515,
+        "solver": 2273,
+        "form": 1,
+        "translation": 50403
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the role of the ozone layer in the Earth's system?",
+      "ms": {
+        "draft": 4371,
+        "critique": 9677,
+        "solver": 2586,
+        "form": 2907,
+        "translation": 64813
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In an ecosystem, if the number of herbivores increases significantly, what would be the most immediate effect on the ecosystem?",
+      "ms": {
+        "draft": 4461,
+        "critique": 6755,
+        "solver": 2777,
+        "form": 0,
+        "translation": 51430
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do equatorial regions remain warmer than polar regions?",
+      "ms": {
+        "draft": 4501,
+        "critique": 8160,
+        "solver": 1495,
+        "form": 4763,
+        "translation": 72835
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the Earth would be uninhabitable without the atmosphere?",
+      "ms": {
+        "draft": 4574,
+        "critique": 9398,
+        "solver": 2071,
+        "form": 3653,
+        "translation": 60006
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the main source of energy for the Earth's system?",
+      "reason": "option lengths are unalike (7 to 47 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best represents the interaction between the cryosphere and the hydrosphere?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'snow'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the albedo of surfaces?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a solar panel receives 1 kWm of insolation, how much energy will it receive in one hour over an area of 1 m²?",
+      "reason": "options 0 and 2 are the same (\"3.6 × 10⁶ J\"); ARITHMETIC MISMATCH — checkExpr \"1*1000*3600\" = 3600000, but the key says 3.6"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A solar panel is placed in an area where the insolation is 1 kWm. If the panel has an efficiency of 20%, how much energy in kWh will it produce in one hour?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a city experiences a significant increase in air conditioning usage, what would be the most likely effect on the urban heat island effect?",
+      "reason": "option 2 repeats the stem's wording (\"It would increase the heat island effect\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main function of the ozone layer according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is caused by the uneven heating of the Earth?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the Earth stopped rotating, what would be the most likely impact on the wind patterns?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This is not supported by the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main reservoir of carbon on Earth?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following processes is responsible for restoring atmospheric oxygen levels?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is primarily responsible for the warming of the Earth?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which process restores atmospheric oxygen primarily?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the figure showing the urban heat island effect, which of the following is a result of this phenomenon?",
+      "reason": "the key is far longer than every distractor (65 vs 36 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Suppose there are two mountains, one covered with grass and another covered with barren rocks. Would the temperature of the two mountain breezes be different? If so, how?",
+      "reason": "options 1 and 3 say the same thing (\"Yes, the mountain breeze from the grass-covered mountain would be cooler.\" / \"Yes, the mountain breeze from the grass-covered mountain would be warmer.\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements correctly describes the movement of air in the equatorial low pressure belt?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the direction of air movement and the altitude at w…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

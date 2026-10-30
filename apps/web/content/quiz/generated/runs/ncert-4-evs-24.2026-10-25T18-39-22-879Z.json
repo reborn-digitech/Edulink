@@ -1,0 +1,254 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T18:39:22.879Z",
+  "finishedAt": "2026-10-25T18:41:41.902Z",
+  "seconds": 139,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap124.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 24 — Home and Abroad",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 28135,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7626,
+      "completionTokens": 1748
+    },
+    "critique": {
+      "calls": 11,
+      "ms": 53170,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 5140,
+      "completionTokens": 1883
+    },
+    "solver": {
+      "calls": 60,
+      "ms": 26630,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 10023,
+      "completionTokens": 608
+    },
+    "form": {
+      "calls": 5,
+      "ms": 12293,
+      "in": 5,
+      "out": 2,
+      "rejects": 3,
+      "promptTokens": 1206,
+      "completionTokens": 338
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 3632,
+      "in": 2,
+      "out": 1,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 18973,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2431,
+      "completionTokens": 1310
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What did Shanta say about the flight from Abu Dhabi to India?",
+      "ms": {
+        "draft": 15336,
+        "critique": 4919,
+        "solver": 1588
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is one reason that many trees cannot grow in desert areas?",
+      "ms": {
+        "draft": 15336,
+        "critique": 6485,
+        "solver": 943,
+        "form": 2307
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In which country did Chittappan work for five years?",
+      "ms": {
+        "draft": 15336,
+        "critique": 6081,
+        "solver": 9441,
+        "form": 1348
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Shanta say that she was not tired after her journey from Abu Dhabi?",
+      "ms": {
+        "draft": 4323,
+        "critique": 5312,
+        "solver": 2839,
+        "form": 2399
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason that many trees cannot grow in desert areas according to the passage?",
+      "ms": {
+        "draft": 4323,
+        "critique": 5129,
+        "solver": 9535
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the climate in Abu Dhabi?",
+      "ms": {
+        "draft": 4323,
+        "critique": 4344,
+        "solver": 6020
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why do you think people in Abu Dhabi wear loose cotton clothes?",
+      "ms": {
+        "draft": 15336,
+        "critique": 4535,
+        "solver": 1061,
+        "form": 3269
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person in Abu Dhabi wants to buy a drink, what is the most likely source of money they would use?",
+      "ms": {
+        "draft": 4323,
+        "critique": 4655,
+        "solver": 1343,
+        "form": 4890,
+        "translation": 15751
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What did Shanta say about the flight from Abu Dhabi to India?",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is one reason that many trees cannot grow in desert areas?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Assumes soil is the main factor, which is not mentioned in t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "In which country did Chittappan work for five years?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did Shanta say that she was not tired after her journey from Abu Dhabi?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Mistakenly believes planes fly slowly in general, not consid…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main reason that many trees cannot grow in desert areas according to the passage?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the climate in Abu Dhabi?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Why do you think people in Abu Dhabi wear loose cotton clothes?",
+      "reason": "near-duplicate of served question cmvh5443906vwgpfhw5ztgv3t (cosine 0.936 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

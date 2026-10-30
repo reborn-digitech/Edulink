@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T00:37:46.882Z",
+  "generatedAt": "2026-10-29T13:48:12.283Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the value of 1 lakh × 50?",
+      "difficulty": 2,
+      "stem": "If each coin is 1 mm thick, how many coins are needed to reach the height of the Statue of Unity, which is 180 m?",
       "choices": [
-        "5000",
-        "50,000",
-        "5,00,000",
-        "50,00,000"
+        "1,800",
+        "18,000",
+        "1,80,000",
+        "18,00,000"
       ],
       "answerIndex": 2,
-      "solution": "The value of 1 lakh × 50 is 5,00,000. 1 lakh is 100,000, and multiplying it by 50 gives 5,00,000. The option 50,000 is 10 times smaller, 50,000 is 10 times larger, and 5000 is 100 times smaller.",
+      "solution": "The height of the Statue of Unity is 180 meters, which equals 180,000 millimeters. Since each coin is 1 millimeter thick, 180,000 coins are needed to reach that height. The option '1,800' is too small, '18,000' is also too small, and '18,00,000' is ten times larger than needed.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "1 लाख × 50 का मान क्या है?",
+          "stem": "यदि प्रत्येक सिक्का 1 मिमी मोटा है, तो स्टैचू ऑफ यूनिटी की ऊंचाई, जो 180 मीटर है, तक पहुंचने के लिए कितने सिक्कों की आवश्यकता होगी?",
           "choices": [
-            "5000",
-            "50,000",
-            "5,00,000",
-            "50,00,000"
+            "1,800",
+            "18,000",
+            "1,80,000",
+            "18,00,000"
           ],
-          "solution": "1 लाख × 50 का मान 5,00,000 है। 1 लाख 100,000 होता है और इसे 50 से गुणा करने पर 5,00,000 प्राप्त होता है। विकल्प 50,000 10 गुना छोटा है, 50,000 10 गुना बड़ा है और 5000 100 गुना छोटा है।",
+          "solution": "स्टैचू ऑफ यूनिटी की ऊंचाई 180 मीटर है, जो 180,000 मिमी के बराबर है। चूंकि प्रत्येक सिक्का 1 मिमी मोटा है, इसलिए इस ऊंचाई तक पहुंचने के लिए 180,000 सिक्कों की आवश्यकता होगी। विकल्प '1,800' बहुत छोटा है, '18,000' भी बहुत छोटा है, और '18,00,000' आवश्यकता के दस गुना बड़ा है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate use of numerical formatting and terms like 'लाख' (lakh) which are standard in Hindi textbooks.",
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate numerical formatting and terminology used in Indian educational context.",
           "flag": null
         },
         "mr": {
-          "stem": "1 लाख × 50 ची किंमत किती आहे?",
+          "stem": "जर प्रत्येक छापर 1 मिमी जास्ती असेल, तर स्टॅचू ऑफ युनिटीच्या उंचीला पोहोचण्यासाठी किती छापरांची आवश्यकता असेल, जी 180 मीटर आहे?",
           "choices": [
-            "5000",
-            "50,000",
-            "5,00,000",
-            "50,00,000"
+            "1,800",
+            "18,000",
+            "1,80,000",
+            "18,00,000"
           ],
-          "solution": "1 लाख × 50 ची किंमत 5,00,000 आहे. 1 लाख हा 100,000 असून त्याचा 50 ने गुणाकार केल्यास 5,00,000 मिळतो. 50,000 ही 10 पट लहान आहे, 50,000 ही 10 पट मोठी आहे आणि 5000 ही 100 पट लहान आहे.",
+          "solution": "स्टॅचू ऑफ युनिटीची उंची 180 मीटर आहे, जी 180,000 मिमी च्या बरोबरीत आहे. प्रत्येक छापर 1 मिमी जास्ती असल्याने, त्या उंचीला पोहोचण्यासाठी 180,000 छापरांची आवश्यकता असेल. '1,800' खूप लहान आहे, '18,000' देखील खूप लहान आहे आणि '18,00,000' हे आवश्यकतेपेक्षा दहापट जास्त आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate use of Marathi numerical notation (e.g., 5,00,000).",
+          "critique": "The translation is accurate, maintains the mathematical logic, and uses appropriate Marathi terminology for units and numbers.",
           "flag": null
         }
       },
@@ -72,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses 1 lakh with 10,000",
-        "multiplies 10,000 by 50 instead of 100,000",
+        "Confuses meters with centimeters",
+        "Confuses meters with decimeters",
         null,
-        "does not account for the correct number of zeros in 1 lakh"
+        "Confuses meters with kilometers"
       ],
       "solverAnswers": [
         2,
@@ -85,105 +85,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. 1 lakh is 100,000, and 100,000 × 50 = 5,00,000. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 11,
-          "pageStart": 17,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 1: Large Numbers Around Us",
-            "1.5 Patterns in Products"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 12,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 1: Large Numbers Around Us",
-            "1.5 Patterns in Products"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 13,
-          "pageStart": 21,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 1: Large Numbers Around Us",
-            "1.5 Patterns in Products"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T00:37:46.882Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "If a single sheet of paper weighs 5 grams, what is the weight of 1,00,000 sheets of paper?",
-      "choices": [
-        "500 kg",
-        "5000 kg",
-        "50 kg",
-        "5 kg"
-      ],
-      "answerIndex": 0,
-      "solution": "The weight of 1,00,000 sheets of paper, if each sheet weighs 5 grams, is 500 kg. The other options either have incorrect unit conversions or miscalculations.",
-      "checkExpr": "5*100000/1000",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक शीट कागज का वजन 5 ग्राम है, तो 1,00,000 शीट कागज का वजन क्या होगा?",
-          "choices": [
-            "500 किग्रा",
-            "5000 किग्रा",
-            "50 किग्रा",
-            "5 किग्रा"
-          ],
-          "solution": "यदि प्रत्येक शीट 5 ग्राम की हो, तो 1,00,000 शीट कागज का वजन 500 किग्रा होगा। अन्य विकल्प गलत इकाई रूपांतरण या गणना के कारण गलत हैं।",
-          "imageAlt": null,
-          "critique": "All elements match the original. Hindi uses standard terms like 'किग्रा' (kg) and 'ग्राम' (gram) as in Indian textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक कागदाचा पान 5 ग्रॅम वजनाचा असेल, तर 1,00,000 कागदाच्या पानांचे वजन किती असेल?",
-          "choices": [
-            "500 किलोग्रॅम",
-            "5000 किलोग्रॅम",
-            "50 किलोग्रॅम",
-            "5 किलोग्रॅम"
-          ],
-          "solution": "जर प्रत्येक पान 5 ग्रॅम वजनाचे असेल तर 1,00,000 पानांचे वजन 500 किलोग्रॅम असेल. इतर विकल्प चुकीच्या एककांच्या रूपांतरांमुळे किंवा गणनांमुळे चुकीचे असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for units (किलोग्रॅम, ग्रॅम) as used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Fails to convert grams to kilograms",
-        "Adds an extra zero",
-        "Forgets to convert grams to kilograms"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct calculation is 100,000 × 5 grams = 500,000 grams = 500 kg. All distractors reflect common misconceptions about unit conversion or arithmetic errors.",
+      "critique": "The solution correctly converts 180 meters to millimeters (180,000 mm) and divides by 1 mm per coin, resulting in 180,000 coins. Option 2 is correct. The author's reasoning for the distractors is plausible and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp101.pdf",
@@ -220,49 +122,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T00:37:46.882Z",
+      "generatedAt": "2026-10-29T13:48:12.283Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If you can count 1 coin every second, how many coins can you count in a day?",
+      "stem": "If the difference between two numbers is greater than 9,50,000, what could be the minimum possible value of the difference?",
       "choices": [
-        "86,400",
-        "8,640",
-        "864",
-        "864,000"
+        "9,50,001",
+        "9,50,000",
+        "9,50,010",
+        "9,50,011"
       ],
       "answerIndex": 0,
-      "solution": "If you can count 1 coin every second, you can count 86,400 coins in a day (60 seconds × 60 minutes × 24 hours). The other options either have incorrect multiplication or fewer digits.",
-      "checkExpr": "60*60*24",
+      "solution": "If the difference is greater than 9,50,000, the minimum possible value of the difference is 9,50,001. This is the smallest number greater than 9,50,000. The other options are either equal to or less than the correct answer but not the minimum possible value.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि आप प्रति सेकंड 1 सिक्का गिन सकते हैं, तो एक दिन में आप कितने सिक्के गिन सकते हैं?",
+          "stem": "यदि दो संख्याओं के अंतर में 9,50,000 से अधिक हो, तो अंतर का न्यूनतम संभव मान क्या हो सकता है?",
           "choices": [
-            "86,400",
-            "8,640",
-            "864",
-            "864,000"
+            "9,50,001",
+            "9,50,000",
+            "9,50,010",
+            "9,50,011"
           ],
-          "solution": "यदि आप प्रति सेकंड 1 सिक्का गिन सकते हैं, तो आप एक दिन में 86,400 सिक्के गिन सकते हैं (60 सेकंड × 60 मिनट × 24 घंटे)। अन्य विकल्प गलत गुणा करते हैं या कम अंक होते हैं।",
+          "solution": "यदि अंतर 9,50,000 से अधिक है, तो अंतर का न्यूनतम संभव मान 9,50,001 है। यह 9,50,000 से बड़ा होने वाला सबसे छोटा संख्या है। अन्य विकल्प या तो सही उत्तर के बराबर हैं या उससे कम हैं लेकिन न्यूनतम संभव मान नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate numerical notation and terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर तुम्ही एका सेकंदाला 1 नाणे गणू शकता, तर एका दिवसात तुम्ही किती नाणे गणू शकाल?",
+          "stem": "जर दोन संख्यांच्या फरकाचे मूल्य 9,50,000 पेक्षा जास्त असेल, तर फरकाचे न्यूनतम शक्य मूल्य काय असू शकते?",
           "choices": [
-            "86,400",
-            "8,640",
-            "864",
-            "864,000"
+            "9,50,001",
+            "9,50,000",
+            "9,50,010",
+            "9,50,011"
           ],
-          "solution": "जर तुम्ही एका सेकंदाला 1 नाणे गणू शकता, तर तुम्ही एका दिवसात 86,400 नाणे गणू शकता (60 सेकंद × 60 मिनिटे × 24 तास). इतर विकल्पांमध्ये चुकीचे गुणाकार किंवा कमी अंक असतात.",
+          "solution": "जर फरक 9,50,000 पेक्षा जास्त असेल, तर फरकाचे न्यूनतम शक्य मूल्य 9,50,001 असेल. हे 9,50,000 पेक्षा जास्त असलेले सर्वात लहान संख्या आहे. इतर विकल्पांमध्ये फरक बरोबर किंवा 9,50,001 पेक्षा कमी असतो, परंतु ते न्यूनतम शक्य मूल्य नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for time units.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for numbers and mathematical concepts.",
           "flag": null
         }
       },
@@ -272,9 +174,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Fails to multiply by 24 hours",
-        "Fails to multiply by 60 minutes",
-        "Fails to multiply by 60 seconds"
+        "Chooses the exact value stated in the question",
+        "Chooses a higher value by mistake",
+        "Chooses a higher value by mistake"
       ],
       "solverAnswers": [
         0,
@@ -284,86 +186,83 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. The calculation 60 seconds × 60 minutes × 24 hours = 86,400 is accurate. The distractors represent common errors in multiplication by 60 or 24.",
+      "critique": "The question asks for the minimum possible value of a difference that is greater than 9,50,000. The correct answer is 9,50,001, which is the smallest integer greater than 9,50,000. The author's solution and reasoning are accurate.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 20,
-          "pageStart": 34,
-          "pageEnd": 35,
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 13,
           "headingPath": [
             "Chapter 1: Large Numbers Around Us",
-            "1.5 Patterns in Products",
-            "SUMMARY"
+            "1.4 Exact and Approximate Values"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 21,
-          "pageStart": 36,
-          "pageEnd": 37,
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 15,
           "headingPath": [
             "Chapter 1: Large Numbers Around Us",
-            "1.5 Patterns in Products",
-            "SUMMARY"
+            "1.5 Patterns in Products"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 22,
-          "pageStart": 37,
-          "pageEnd": 38,
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 17,
           "headingPath": [
             "Chapter 1: Large Numbers Around Us",
-            "1.5 Patterns in Products",
-            "SUMMARY"
+            "1.5 Patterns in Products"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T00:37:46.882Z",
+      "generatedAt": "2026-10-29T13:48:12.283Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "If a building has 45 floors and each floor is 4 times the height of Somu, who is 1 metre tall, what is the total height of the building?",
+      "stem": "If 1000 movies can be watched in a year, how many movies can be watched in 5 years?",
       "choices": [
-        "180 metres",
-        "90 metres",
-        "45 metres",
-        "135 metres"
+        "5000",
+        "10,000",
+        "50,000",
+        "1,00,000"
       ],
       "answerIndex": 0,
-      "solution": "If each floor is 4 times the height of Somu (1 metre), then each floor is 4 metres. For 45 floors, the total height is 45 × 4 = 180 metres. The other options are incorrect because they do not multiply 45 by 4 correctly.",
+      "solution": "If 1000 movies can be watched in a year, then in 5 years, 5 × 1000 = 5000 movies can be watched. The other options are either too large or not calculated correctly.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक इमारत में 45 मंजिलें हैं और प्रत्येक मंजिल सोमू की ऊंचाई के 4 गुना है, जो 1 मीटर लंबा है, इमारत की कुल ऊंचाई क्या है?",
+          "stem": "यदि एक वर्ष में 1000 फिल्में देखी जा सकती हैं, तो 5 वर्ष में कितनी फिल्में देखी जा सकती हैं?",
           "choices": [
-            "180 मीटर",
-            "90 मीटर",
-            "45 मीटर",
-            "135 मीटर"
+            "5000",
+            "10,000",
+            "50,000",
+            "1,00,000"
           ],
-          "solution": "यदि प्रत्येक मंजिल सोमू की ऊंचाई (1 मीटर) के 4 गुना है, तो प्रत्येक मंजिल 4 मीटर है। 45 मंजिलों के लिए, कुल ऊंचाई 45 × 4 = 180 मीटर है। अन्य विकल्प गलत हैं क्योंकि वे 45 को 4 से सही तरह से गुणा नहीं करते हैं।",
+          "solution": "यदि एक वर्ष में 1000 फिल्में देखी जा सकती हैं, तो 5 वर्ष में 5 × 1000 = 5000 फिल्में देखी जा सकती हैं। अन्य विकल्प या तो बहुत बड़े हैं या गलत तरीके से गणना किए गए हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate numerical formatting and terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका इमारतीला 45 मजले आहेत आणि प्रत्येक मजला सोमूच्या उंचीच्या 4 पट आहे, जो 1 मीटर उंच आहे, इमारतीची एकूण उंची किती आहे?",
+          "stem": "1000 चलचित्र एका वर्षात पाहता येतील, तर 5 वर्षांत किती चलचित्र पाहता येतील?",
           "choices": [
-            "180 मीटर",
-            "90 मीटर",
-            "45 मीटर",
-            "135 मीटर"
+            "5000",
+            "10,000",
+            "50,000",
+            "1,00,000"
           ],
-          "solution": "प्रत्येक मजला सोमूच्या उंचीच्या 4 पट आहे (1 मीटर), म्हणजे प्रत्येक मजला 4 मीटर आहे. 45 मजल्यांसाठी, एकूण उंची 45 × 4 = 180 मीटर आहे. इतर विकल्प चुकीचे आहेत कारण 45 ला 4 ने गुणले जात नाही.",
+          "solution": "जर 1000 चलचित्र एका वर्षात पाहता येतील, तर 5 वर्षांत 5 × 1000 = 5000 चलचित्र पाहता येतील. इतर विकल्प जास्त जास्त असतात किंवा चुकीच्या पद्धतीने गणित केले गेले आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terms for numbers and concepts.",
           "flag": null
         }
       },
@@ -373,9 +272,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Multiplies 45 by 2 instead of 4",
-        "Multiplies 45 by 1 instead of 4",
-        "Multiplies 45 by 3 instead of 4"
+        "incorrectly multiplies by 10",
+        "adds an extra zero",
+        "confuses the place values"
       ],
       "solverAnswers": [
         0,
@@ -385,93 +284,86 @@
         0
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the author's key. The reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The question is straightforward and the solution is correct. The reasoning for the distractors aligns with common misconceptions among students learning about multiplication and place value.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
+          "ordinal": 14,
+          "pageStart": 22,
+          "pageEnd": 23,
           "headingPath": [
             "Chapter 1: Large Numbers Around Us",
-            "1.1 A Lakh Varieties!"
+            "1.5 Patterns in Products",
+            "SUMMARY"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 4,
+          "ordinal": 15,
+          "pageStart": 23,
+          "pageEnd": 26,
           "headingPath": [
             "Chapter 1: Large Numbers Around Us",
-            "1.1 A Lakh Varieties!"
+            "1.5 Patterns in Products",
+            "SUMMARY"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 5,
+          "ordinal": 16,
+          "pageStart": 26,
+          "pageEnd": 28,
           "headingPath": [
             "Chapter 1: Large Numbers Around Us",
-            "1.1 A Lakh Varieties!"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 1: Large Numbers Around Us",
-            "1.2 Land of Tens"
+            "1.5 Patterns in Products",
+            "SUMMARY"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T00:37:46.882Z",
+      "generatedAt": "2026-10-29T13:48:12.283Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If a calculator has a +1000 button, how many times should it be pressed to show 1,00,000?",
+      "stem": "If the population of Patna is multiplied by 7.39, what is the result?",
       "choices": [
-        "100 times",
-        "10 times",
-        "1000 times",
-        "10,000 times"
+        "Approximately the population of Mumbai",
+        "Exactly the population of Mumbai",
+        "Less than the population of Mumbai",
+        "More than the population of Mumbai"
       ],
       "answerIndex": 0,
-      "solution": "To show 1,00,000 using a +1000 button, it needs to be pressed 1,00,000 ÷ 1000 = 100 times. The other options are incorrect because they do not divide 1,00,000 by 1000 correctly.",
+      "solution": "Multiplying Patna's population by 7.39 results in a number that is close to Mumbai's population. The option 'Approximately the population of Mumbai' is correct because the multiplication yields an estimate, not an exact value. The other options are incorrect because they suggest exactness or a clear comparison that is not supported by the calculation.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक कैलकुलेटर में +1000 बटन हो, तो 1,00,000 दिखाने के लिए इसे कितनी बार दबाना होगा?",
+          "stem": "अगर पटना की जनसंख्या को 7.39 से गुणा किया जाए, तो परिणाम क्या होगा?",
           "choices": [
-            "100 बार",
-            "10 बार",
-            "1000 बार",
-            "10,000 बार"
+            "लगभग मुंबई की जनसंख्या",
+            "ठीक मुंबई की जनसंख्या",
+            "मुंबई की जनसंख्या से कम",
+            "मुंबई की जनसंख्या से अधिक"
           ],
-          "solution": "1,00,000 को +1000 बटन के उपयोग से दिखाने के लिए इसे 1,00,000 ÷ 1000 = 100 बार दबाना होगा। अन्य विकल्प गलत हैं क्योंकि वे 1,00,000 को 1000 से सही से विभाजित नहीं करते।",
+          "solution": "पटना की जनसंख्या को 7.39 से गुणा करने पर एक संख्या प्राप्त होती है जो मुंबई की जनसंख्या के निकट होती है। विकल्प 'लगभग मुंबई की जनसंख्या' सही है क्योंकि गुणा एक अनुमान प्रदान करता है, न कि एक निश्चित मान। अन्य विकल्प गलत हैं क्योंकि वे निश्चितता या एक स्पष्ट तुलना का अनुमान लगाते हैं जो गणना द्वारा समर्थित नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate numerical notation and terminology.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer remains option (1) and the distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एका कॅल्क्युलेटरमध्ये +1000 बटन असेल, तर 1,00,000 दाखवण्यासाठी तो किती वेळा दाबावा लागेल?",
+          "stem": "पाटणा ची लोकसंख्या 7.39 ने गुणली गेली असती तर निकाल काय होतो?",
           "choices": [
-            "100 वेळा",
-            "10 वेळा",
-            "1000 वेळा",
-            "10,000 वेळा"
+            "मुंबई ची लोकसंख्या जवळपास",
+            "मुंबई ची लोकसंख्या बरोबर",
+            "मुंबई ची लोकसंख्या पेक्षा कमी",
+            "मुंबई ची लोकसंख्या पेक्षा जास्त"
           ],
-          "solution": "1,00,000 दाखवण्यासाठी +1000 बटन वापरून तो 1,00,000 ÷ 1000 = 100 वेळा दाबावा लागेल. इतर विकल्प चुकीचे आहेत कारण ते 1,00,000 ला 1000 ने भागले जात नाहीत.",
+          "solution": "पाटणा ची लोकसंख्या 7.39 ने गुणली गेली असती तर निकाल मुंबई ची लोकसंख्या जवळपास असतो. निकाल 'मुंबई ची लोकसंख्या जवळपास' बरोबर असतो कारण गुणाकाराने अंदाज निकाल मिळतो, बरोबर निकाल नाही. इतर पर्याय चुकीचे असतात कारण ते बरोबर निकाल किंवा स्पष्ट तुलना दर्शवतात जी गणनेने समर्थित नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate numerical notation and terminology as used in Marathi-medium education.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for population and mathematical operations.",
           "flag": null
         }
       },
@@ -481,9 +373,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Divides 1,00,000 by 10,000 instead of 1000",
-        "Divides 1,00,000 by 100 instead of 1000",
-        "Divides 1,00,000 by 10 instead of 1000"
+        "suggests exact match",
+        "suggests a comparison that is not supported",
+        "suggests a comparison that is not supported"
       ],
       "solverAnswers": [
         0,
@@ -493,7 +385,108 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. 1,00,000 ÷ 1000 = 100, so the correct answer is 100 times. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The question is based on a passage that states multiplying Patna's population by 7.39 gives a number close to Mumbai's population. The correct answer is 'Approximately the population of Mumbai' (option 0), as the passage implies an approximation, not an exact match or a definitive comparison of 'more than' or 'less than'.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp101.pdf",
+          "ordinal": 17,
+          "pageStart": 28,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 1: Large Numbers Around Us",
+            "1.5 Patterns in Products",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp101.pdf",
+          "ordinal": 18,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 1: Large Numbers Around Us",
+            "1.5 Patterns in Products",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp101.pdf",
+          "ordinal": 19,
+          "pageStart": 32,
+          "pageEnd": 34,
+          "headingPath": [
+            "Chapter 1: Large Numbers Around Us",
+            "1.5 Patterns in Products",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T13:48:12.283Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "How many hundreds are needed to make one lakh?",
+      "choices": [
+        "100",
+        "1,000",
+        "10,000",
+        "100,000"
+      ],
+      "answerIndex": 1,
+      "solution": "One lakh is 100,000. To find how many hundreds make one lakh, divide 100,000 by 100: 100,000 ÷ 100 = 1,000. The option '100' is too low, '10,000' and '100,000' are too high.",
+      "checkExpr": "100000/100",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक लाख बनाने के लिए कितने सैकड़े चाहिए?",
+          "choices": [
+            "100",
+            "1,000",
+            "10,000",
+            "100,000"
+          ],
+          "solution": "एक लाख 100,000 होता है। एक लाख बनाने के लिए कितने सैकड़े चाहिए, इसका पता लगाने के लिए 100,000 को 100 से विभाजित करें: 100,000 ÷ 100 = 1,000। विकल्प '100' बहुत कम है, '10,000' और '100,000' बहुत अधिक हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate numerical terms as used in Indian educational contexts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक लक्ष बनवण्यासाठी किती शेकडे लागतील?",
+          "choices": [
+            "100",
+            "1,000",
+            "10,000",
+            "100,000"
+          ],
+          "solution": "एक लक्ष 100,000 आहे. एक लक्ष बनवण्यासाठी किती शेकडे लागतील हे शोधण्यासाठी, 100,000 ला 100 ने भागा: 100,000 ÷ 100 = 1,000. विकल्प '100' खूप कमी आहे, '10,000' आणि '100,000' खूप जास्त आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and maintains the mathematical meaning, with appropriate use of local terminology like 'लक्ष' for 'lakh' and 'शेकडे' for 'hundreds'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the number of hundreds with the total value",
+        null,
+        "Incorrectly divides by 10 instead of 100",
+        "Repeats the total value"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates 100,000 ÷ 100 = 1,000. The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp101.pdf",
@@ -537,49 +530,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T00:37:46.882Z",
+      "generatedAt": "2026-10-29T13:48:12.283Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "What is the value of 10,50,00,000 ÷ 700?",
+      "stem": "If a number has 10 digits and uses each digit from 0 to 9 exactly once, what is the smallest possible even number?",
       "choices": [
-        "1,50,000",
-        "15,000",
-        "1,500",
-        "15,00,000"
+        "1023456789",
+        "1023456798",
+        "1023456987",
+        "1023456897"
       ],
-      "answerIndex": 0,
-      "solution": "The value of 10,50,00,000 ÷ 700 is 1,50,000. Dividing 10,50,00,000 by 700 gives 1,50,000. The option 15,000 is 10 times smaller, 1,500 is 100 times smaller, and 15,00,000 is 10 times larger.",
+      "answerIndex": 1,
+      "solution": "The correct answer is 1023456798 because it is the smallest 10-digit number using all digits from 0 to 9 exactly once and ends with an even digit, making it even. The option 1023456789 ends with 9, which is odd, so it is not even. Similarly, 1023456987 and 1023456897 also end with odd digits, so they are not even.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "10,50,00,000 ÷ 700 का मान क्या है?",
+          "stem": "यदि एक संख्या 10 अंकों की है और 0 से 9 तक के प्रत्येक अंक का एक बार उपयोग करती है, तो सबसे छोटी संभव सम संख्या क्या है?",
           "choices": [
-            "1,50,000",
-            "15,000",
-            "1,500",
-            "15,00,000"
+            "1023456789",
+            "1023456798",
+            "1023456987",
+            "1023456897"
           ],
-          "solution": "10,50,00,000 ÷ 700 का मान 1,50,000 है। 10,50,00,000 को 700 से भाग देने पर 1,50,000 प्राप्त होता है। विकल्प 15,000 10 गुना छोटा है, 1,500 100 गुना छोटा है और 15,00,000 10 गुना बड़ा है।",
+          "solution": "सही उत्तर 1023456798 है क्योंकि यह 0 से 9 तक के सभी अंकों का एक बार उपयोग करते हुए सबसे छोटी 10 अंकों वाली संख्या है और यह एक सम अंक पर समाप्त होती है, जिसके कारण यह सम है। विकल्प 1023456789 अंक 9 पर समाप्त होता है, जो विषम है, इसलिए यह सम नहीं है। इसी तरह, 1023456987 और 1023456897 भी विषम अंक पर समाप्त होते हैं, इसलिए वे सम नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate numerical formatting and terminology used in Indian educational context.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "10,50,00,000 ÷ 700 ची किंमत किती आहे?",
+          "stem": "एका संख्येचे 10 अंक असतील आणि ती 0 ते 9 अंकांपैकी प्रत्येक अंक एकदम वापरतील, तर त्या संख्येचे सर्वात लहान शक्य जोड संख्या काय असेल?",
           "choices": [
-            "1,50,000",
-            "15,000",
-            "1,500",
-            "15,00,000"
+            "1023456789",
+            "1023456798",
+            "1023456987",
+            "1023456897"
           ],
-          "solution": "10,50,00,000 ÷ 700 ची किंमत 1,50,000 आहे. 10,50,00,000 ला 700 ने भागल्यास 1,50,000 मिळते. 15,000 ही 10 पट लहान आहे, 1,500 ही 100 पट लहान आहे आणि 15,00,000 ही 10 पट मोठी आहे.",
+          "solution": "सही उत्तर 1023456798 आहे कारण ते 0 ते 9 अंकांपैकी प्रत्येक अंक एकदम वापरत असलेल्या सर्वात लहान 10 अंकी संख्या आहे आणि ती सम अंकावर संपते, ज्यामुळे ती सम संख्या बनते. ऑप्शन 1023456789 अंक 9 वर संपते, जो विषम अंक आहे, म्हणून ती सम नाही. समानपणे, 1023456987 आणि 1023456897 देखील विषम अंकावर संपतात, म्हणून त्या सम नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate numerical notation and terminology as used in Marathi-medium textbooks.",
+          "critique": "The translation accurately preserves the meaning, structure, and technical terms of the original question. All options and the solution are correctly translated, maintaining the logical relationships and mathematical concepts.",
           "flag": null
         }
       },
@@ -588,54 +581,57 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Assuming the number must start with 1023456789 and not check if it's even",
         null,
-        "divides 10,50,00,000 by 7000 instead of 700",
-        "divides 10,50,00,000 by 70,000 instead of 700",
-        "divides 10,50,00,000 by 70 instead of 700"
+        "Chooses a number that is not even",
+        "Chooses a number that is not the smallest possible"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1,50,000. The solution is sound and matches the author's key. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The correct answer is 1023456798 (option 1), which is the smallest 10-digit pandigital even number. The author's reasoning is sound and matches the correct logic.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 11,
-          "pageStart": 17,
-          "pageEnd": 19,
+          "ordinal": 20,
+          "pageStart": 34,
+          "pageEnd": 35,
           "headingPath": [
             "Chapter 1: Large Numbers Around Us",
-            "1.5 Patterns in Products"
+            "1.5 Patterns in Products",
+            "SUMMARY"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 12,
-          "pageStart": 19,
-          "pageEnd": 20,
+          "ordinal": 21,
+          "pageStart": 36,
+          "pageEnd": 37,
           "headingPath": [
             "Chapter 1: Large Numbers Around Us",
-            "1.5 Patterns in Products"
+            "1.5 Patterns in Products",
+            "SUMMARY"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp101.pdf",
-          "ordinal": 13,
-          "pageStart": 21,
-          "pageEnd": 21,
+          "ordinal": 22,
+          "pageStart": 37,
+          "pageEnd": 38,
           "headingPath": [
             "Chapter 1: Large Numbers Around Us",
-            "1.5 Patterns in Products"
+            "1.5 Patterns in Products",
+            "SUMMARY"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T00:37:46.882Z",
+      "generatedAt": "2026-10-29T13:48:12.283Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

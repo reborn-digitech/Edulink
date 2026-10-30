@@ -1,0 +1,497 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T03:51:44.151Z",
+  "finishedAt": "2026-10-28T03:55:52.094Z",
+  "seconds": 248,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm110.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Elephants, Tigers, and Leopards",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n5. (c) k = 4",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n7. In Section E, Questions no. 36-38 are case study based questions carrying 4 marks each with\nsub parts of the values of 1, 1 and 2 marks each respectively.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n7. In Section E, Questions no. 36-38 are case study based questions carrying 4 marks each with\nsub parts of the values of 1, 1 and 2 marks each respectively."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 80348,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 16212,
+      "completionTokens": 4986
+    },
+    "critique": {
+      "calls": 30,
+      "ms": 188746,
+      "in": 21,
+      "out": 19,
+      "rejects": 2,
+      "promptTokens": 13388,
+      "completionTokens": 5537
+    },
+    "solver": {
+      "calls": 165,
+      "ms": 92601,
+      "in": 19,
+      "out": 6,
+      "rejects": 13,
+      "promptTokens": 41445,
+      "completionTokens": 2088
+    },
+    "form": {
+      "calls": 1,
+      "ms": 5245,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 253,
+      "completionTokens": 124
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 29,
+      "ms": 5177,
+      "in": 3,
+      "out": 1,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 15221,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2245,
+      "completionTokens": 1103
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a player reaches the total of 8 and it is your turn, what should you choose to ensure you win the game?",
+      "ms": {
+        "draft": 4007,
+        "critique": 4714,
+        "solver": 1008
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the addition chart, how many times does the number 9 appear?",
+      "ms": {
+        "draft": 4007,
+        "critique": 5009,
+        "solver": 1574
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the 'More or Less?' section, Assam has 5719 elephants and it has 3965 more elephants than Meghalaya. How many elephants are there in Meghalaya?",
+      "ms": {
+        "draft": 4007,
+        "critique": 8358,
+        "solver": 992
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the 'How Many Animals?' section, the population of elephants in Karnataka is 6049 and in Kerala is 3054. What is the total number of elephants in these two states?",
+      "ms": {
+        "draft": 4007,
+        "critique": 5819,
+        "solver": 12940,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the 'More or Less?' section, the population of leopards in three states is given as 1355 in Gujarat, 1131 in Karnataka, and 1817 in Madhya Pradesh. What is the total number of leopards in these three states?",
+      "ms": {
+        "draft": 4007,
+        "critique": 8755,
+        "solver": 1602
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct way to compare 139 + 175 and 314 – 175 without calculating?",
+      "ms": {
+        "draft": 3171,
+        "critique": 8615
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of 5429 + 3287?",
+      "ms": {
+        "draft": 3171,
+        "critique": 5951,
+        "solver": 16736
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a subtraction problem that can be solved by subtracting 100 and then adding 1?",
+      "ms": {
+        "draft": 3171,
+        "critique": 7985,
+        "solver": 17478
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 456 + 209 = 665, what is the value of 446 + 219?",
+      "ms": {
+        "draft": 3171,
+        "critique": 6030,
+        "solver": 6319
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total amount deposited by Raju?",
+      "ms": {
+        "draft": 10739,
+        "critique": 4423,
+        "solver": 1508
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 139 + 175 = 314, what is 314 – 175?",
+      "ms": {
+        "draft": 10739,
+        "critique": 4758,
+        "solver": 14179
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a subtraction problem given in the passage?",
+      "ms": {
+        "draft": 10739,
+        "critique": 4117,
+        "solver": 17239,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct way to solve 5010 + 95?",
+      "ms": {
+        "draft": 10739,
+        "critique": 8085,
+        "solver": 16720
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 456 + 209 = 665, what is 446 + 219?",
+      "ms": {
+        "draft": 10739,
+        "critique": 8294,
+        "solver": 1209,
+        "form": 5828
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the other player has reached a total of 6 and it is your turn, what number should you choose to ensure you win the game?",
+      "ms": {
+        "draft": 3207,
+        "critique": 6658,
+        "solver": 1632
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the other player has reached a total of 7 and it is your turn, what number should you choose to ensure you win the game?",
+      "ms": {
+        "draft": 3207,
+        "critique": 5606,
+        "solver": 1289
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the difference between 3999 + 290 and 3999 + 291?",
+      "ms": {
+        "draft": 10739,
+        "critique": 6303,
+        "solver": 14163
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the other player has reached a total of 8 and it is your turn, what number should you choose to ensure you win the game?",
+      "ms": {
+        "draft": 3207,
+        "critique": 4090
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total amount deposited by Raju, Rani, and Roja together?",
+      "ms": {
+        "draft": 3171,
+        "critique": 6117,
+        "solver": 1417,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 139 + 175 = 314, what is the value of 314 – 175?",
+      "ms": {
+        "draft": 3171,
+        "critique": 5257,
+        "solver": 1589,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the 'More or Less?' section, the leopard population in Central India and the Eastern Ghats increased by 749 from 2018 to 2022. If the population in 2022 was 8820, what was the population in 2018?",
+      "ms": {
+        "draft": 4007,
+        "critique": 7525,
+        "solver": 15770,
+        "form": 0,
+        "translation": 11206
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a player reaches the total of 8 and it is your turn, what should you choose to ensure you win the game?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "In the addition chart, how many times does the number 9 appear?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In the 'More or Less?' section, Assam has 5719 elephants and it has 3965 more elephants than Meghalaya. How many elephants are there in Meghalaya?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the 'How Many Animals?' section, the population of elephants in Karnataka is 6049 and in Kerala is 3054. What is the total number of elephants in these two states?",
+      "reason": "options 0 and 2 are the same (\"9003\"); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In the 'More or Less?' section, the population of leopards in three states is given as 1355 in Gujarat, 1131 in Karnataka, and 1817 in Madhya Pradesh. What is the total number of leopards in these three states?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a correct way to compare 139 + 175 and 314 – 175 without calculating?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the result of 5429 + 3287?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a subtraction problem that can be solved by subtracting 100 and then adding 1?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 456 + 209 = 665, what is the value of 446 + 219?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the total number of elephants in Karnataka and Kerala?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the total number of leopards in Gujarat, Karnataka, and Madhya Pradesh?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How many tigers does Madhya Pradesh have if it has 341 more tigers than Maharashtra, which has 444 tigers?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the total amount deposited by Raju?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 139 + 175 = 314, what is 314 – 175?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a subtraction problem given in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Student thinks addition is a subtraction problem because of …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a correct way to solve 5010 + 95?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 456 + 209 = 665, what is 446 + 219?",
+      "reason": "checkExpr \"666\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the other player has reached a total of 6 and it is your turn, what number should you choose to ensure you win the game?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the other player has reached a total of 7 and it is your turn, what number should you choose to ensure you win the game?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the difference between 3999 + 290 and 3999 + 291?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the other player has reached a total of 8 and it is your turn, what number should you choose to ensure you win the game?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the total amount deposited by Raju, Rani, and Roja together?",
+      "reason": "near-duplicate of served question cmvo3qb8y055bgp21jfz7freu (cosine 0.926 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If 139 + 175 = 314, what is the value of 314 – 175?",
+      "reason": "near-duplicate of served question cmvh1xsa3069wgpfh5ooytv9k (cosine 0.977 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

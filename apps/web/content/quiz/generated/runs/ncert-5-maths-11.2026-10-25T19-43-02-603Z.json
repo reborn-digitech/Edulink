@@ -1,0 +1,416 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T19:43:02.603Z",
+  "finishedAt": "2026-10-25T19:48:24.992Z",
+  "seconds": 322,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm111.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Grandmother’s Quilt",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n1. This Question Paper has 5 Sections A, B, C, D, and E.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n1. This Question Paper has 5 Sections A, B, C, D, and E.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n15. (B) ଽ 1\nସ\nProbability of getting vowels in the word Mathematics is ଵଵ ସ ,\nSo, ଶ௫ାଵ ଵଵ ଶ = ସ\nଽ\n⇒ 𝑥 = ସ",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n1. This Question Paper has 5 Sections A-E."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 62142,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 11600,
+      "completionTokens": 3789
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 129461,
+      "in": 18,
+      "out": 11,
+      "rejects": 7,
+      "promptTokens": 9157,
+      "completionTokens": 3865
+    },
+    "solver": {
+      "calls": 77,
+      "ms": 35334,
+      "in": 11,
+      "out": 8,
+      "rejects": 3,
+      "promptTokens": 12942,
+      "completionTokens": 817
+    },
+    "form": {
+      "calls": 2,
+      "ms": 3389,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 510,
+      "completionTokens": 128
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 4446,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 118206,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8338,
+      "completionTokens": 3990
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a square has a perimeter of 20 units, what is the length of one side?",
+      "ms": {
+        "draft": 3682,
+        "critique": 6231
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangle has a length of 8 units and a breadth of 5 units. What is the area of the rectangle?",
+      "ms": {
+        "draft": 3682,
+        "critique": 7344
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the perimeter of a shape?",
+      "ms": {
+        "draft": 3682,
+        "critique": 5936,
+        "solver": 1134,
+        "form": 2188
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following shapes can be used to measure the area of a region without leaving any gaps or overlaps?",
+      "ms": {
+        "draft": 3682,
+        "critique": 7149,
+        "solver": 1482
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements is correct about the area and perimeter of a shape?",
+      "ms": {
+        "draft": 3682,
+        "critique": 6707,
+        "solver": 9870,
+        "form": 1576
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to find the area of a rectangle?",
+      "ms": {
+        "draft": 11110,
+        "critique": 4699
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the length of a rectangle is 12 cm and the breadth is 8 cm, what is its area?",
+      "ms": {
+        "draft": 11110,
+        "critique": 5053
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A rectangular field has a length of 42 m and a breadth of 34 m. What is its area?",
+      "ms": {
+        "draft": 11110,
+        "critique": 6705
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a game, two players take turns adding square tiles to a figure. The goal is to make the perimeter of the figure equal to 24 units. If the first player adds 10 tiles, what is the minimum number of tiles the second player needs to add to win?",
+      "ms": {
+        "draft": 11110,
+        "critique": 5649
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A figure is made up of square tiles arranged in a certain pattern. If the total number of tiles is 32 and the perimeter is 24, what is the length of the figure if the width is 4 tiles?",
+      "ms": {
+        "draft": 11110,
+        "critique": 5359
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangular garden has an area of 64 m² and a length of 16 m. What is its breadth?",
+      "ms": {
+        "draft": 11110,
+        "critique": 5390,
+        "solver": 12436
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A rectangle has an area of 12 cm². If its length is 6 cm, what is its breadth?",
+      "ms": {
+        "draft": 3499,
+        "critique": 6452,
+        "solver": 7222
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rectangle has a length of 6 cm and a breadth of 4 cm, what is its area?",
+      "ms": {
+        "draft": 3499,
+        "critique": 5057,
+        "solver": 1857,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A square has a side length of 5 cm. What is its perimeter?",
+      "ms": {
+        "draft": 3499,
+        "critique": 7221,
+        "solver": 1681,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of these is the correct way to calculate the perimeter of a shape?",
+      "ms": {
+        "draft": 3499,
+        "critique": 6021,
+        "solver": 1124,
+        "form": 0,
+        "translation": 37142
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of these is the correct way to calculate the area of a shape?",
+      "ms": {
+        "draft": 3499,
+        "critique": 5781,
+        "solver": 545,
+        "form": 0,
+        "translation": 21974
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A square has a side length of 6 cm. What is the perimeter of the square?",
+      "ms": {
+        "draft": 3682,
+        "critique": 8116,
+        "solver": 10170,
+        "form": 0,
+        "translation": 25356
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A shape has a perimeter of 20 cm. If all its sides are equal, what could be the length of each side?",
+      "ms": {
+        "draft": 3499,
+        "critique": 7564,
+        "solver": 1090,
+        "form": 0,
+        "translation": 29412
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"What is the formula to find the area of a rectangle?\",\"options\":[\"Length + Breadth\",\"L"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a square has a perimeter of 20 units, what is the length of one side?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A rectangle has a length of 8 units and a breadth of 5 units. What is the area of the rectangle?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the perimeter of a shape?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"defines area incorrectly and uses a different term for it, n…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following shapes can be used to measure the area of a region without leaving any gaps or overlaps?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements is correct about the area and perimeter of a shape?",
+      "reason": "options 2 and 3 say the same thing (\"The area of a shape is always larger than its perimeter\" / \"The perimeter of a shape is always larger than its area\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the formula to find the area of a rectangle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the length of a rectangle is 12 cm and the breadth is 8 cm, what is its area?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A rectangular field has a length of 42 m and a breadth of 34 m. What is its area?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a game, two players take turns adding square tiles to a figure. The goal is to make the perimeter of the figure equal to 24 units. If the first player adds 10 tiles, what is the minimum number of tiles the second player needs to add to win?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A figure is made up of square tiles arranged in a certain pattern. If the total number of tiles is 32 and the perimeter is 24, what is the length of the figure if the width is 4 tiles?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A rectangular garden has an area of 64 m² and a length of 16 m. What is its breadth?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A rectangle has an area of 12 cm². If its length is 6 cm, what is its breadth?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a rectangle has a length of 6 cm and a breadth of 4 cm, what is its area?",
+      "reason": "near-duplicate of served question cmvh79xll07b8gpfhrf01tmkx (cosine 0.967 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A square has a side length of 5 cm. What is its perimeter?",
+      "reason": "near-duplicate of served question cmvh79xlm07begpfh6rgl8uqu (cosine 0.954 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

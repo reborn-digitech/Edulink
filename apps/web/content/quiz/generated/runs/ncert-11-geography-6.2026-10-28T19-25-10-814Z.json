@@ -1,0 +1,707 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T19:25:10.814Z",
+  "finishedAt": "2026-10-28T19:35:59.251Z",
+  "seconds": 648,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Pratical Work in Geography",
+    "bookCode": "kegy3",
+    "document": "ncert/11/geography/kegy306.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 6 — Introduction To Remote Sensing",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 14,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, sample question paper, 2024-25]\n13. Satellite is mode of communication in themselves as well as they regulate the use of\nother means of communication. Choose the correct satellite system used by India.\n1. India Remote Sensing Satellite System (IRS)\n2. Indian Space Research Organization (ISRO)\n3. Indian Nation Satellite System (INSAT)\n4. India Regional Navigation Satellite System\nCodes\nA. Both I and III\nB. Only I\nC. Both II and III\nD. Only IV",
+      "[CBSE Class XII Geography, sample question paper, 2026-27]\n16. A coastal district is preparing for an approaching cyclone. The disaster 1\nmanagement team needs real-time information on cloud movement\nand storm intensity. Which satellite system will provide the most\nreliable support for this purpose?\nA. IRS – Indian Remote Sensing Satellite\nB. INSAT – Indian National Satellite System\nC. GSAT – Communication satellite for TV channels\nD. PSLV – Launch vehicle for satellites",
+      "[CBSE Class XII Geography, marking scheme, 2023-24]\n With social and cultural Development, humans develop better and more\nefficient technology.\n They move from a state of Necessity to a state of freedom.\n They create Possibilities with the resources obtained from the\nenvironment.\n Human has modified their surroundings according to their needs.\n Imprints of human may be seen everywhere on the earth.\nOR\nAns. The three dualism in geography which started wide-ranging debates in\nthe discipline of geography are:\na. Whether geography as a discipline should be a law making/ the orising\n(nomothetic) or descriptive (idiographic).\nb. Whether the approach of the study should be regional or systematic?\nc. Whether geographical phenomena can be interpr",
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\n16. B. INSAT – Indian National Satellite System 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 211604,
+      "in": 37,
+      "out": 35,
+      "rejects": 2,
+      "promptTokens": 41152,
+      "completionTokens": 9627
+    },
+    "critique": {
+      "calls": 40,
+      "ms": 318426,
+      "in": 35,
+      "out": 30,
+      "rejects": 5,
+      "promptTokens": 18175,
+      "completionTokens": 6804
+    },
+    "solver": {
+      "calls": 186,
+      "ms": 107288,
+      "in": 30,
+      "out": 22,
+      "rejects": 8,
+      "promptTokens": 31034,
+      "completionTokens": 1778
+    },
+    "form": {
+      "calls": 18,
+      "ms": 123158,
+      "in": 22,
+      "out": 10,
+      "rejects": 12,
+      "promptTokens": 15192,
+      "completionTokens": 2404
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 4449,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 35,
+      "ms": 504242,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 22256,
+      "completionTokens": 11747
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 0,
+    "4": 1,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a stage in the remote sensing data acquisition process?",
+      "ms": {
+        "draft": 14595,
+        "critique": 8172,
+        "solver": 2236
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on Figure 6.3, which of the following regions of the electromagnetic spectrum is used in remote sensing?",
+      "ms": {
+        "draft": 14595,
+        "critique": 8421,
+        "solver": 18639,
+        "form": 4176
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main difference between Sun Synchronous and Geostationary satellites in terms of their orbital characteristics?",
+      "ms": {
+        "draft": 5505,
+        "critique": 7286,
+        "solver": 12993
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a non-photographic sensor used in satellite remote sensing?",
+      "ms": {
+        "draft": 5505,
+        "critique": 7886,
+        "solver": 2343,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are Pushbroom Scanners more efficient than Whiskbroom Scanners for capturing images of the Earth's surface?",
+      "ms": {
+        "draft": 5505,
+        "critique": 6860,
+        "solver": 1524,
+        "form": 7041
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main difference between a photograph and an image in remote sensing?",
+      "ms": {
+        "draft": 5187,
+        "critique": 9913,
+        "solver": 2284
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the purpose of the images shown in Figure 6.9?",
+      "ms": {
+        "draft": 5187,
+        "critique": 8279,
+        "solver": 2061,
+        "form": 3979
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A researcher wants to compare the topography of an area before and after a natural disaster using satellite images. Which of the following would be the most useful type of satellite data?",
+      "ms": {
+        "draft": 5187,
+        "critique": 8016,
+        "solver": 2213,
+        "form": 2650
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a satellite image shows a region with a coarse texture, what might this suggest about the area?",
+      "ms": {
+        "draft": 4643,
+        "critique": 7824,
+        "solver": 1592
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A remote sensing image shows a water body that appears in dark blue to black. What does this indicate about the water body?",
+      "ms": {
+        "draft": 4643,
+        "critique": 8889,
+        "solver": 2519
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT an element of visual interpretation of satellite images?",
+      "ms": {
+        "draft": 4643,
+        "critique": 9275,
+        "solver": 16113
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not used in visual interpretation technique?",
+      "ms": {
+        "draft": 4673,
+        "critique": 6658,
+        "solver": 9319
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an element of image interpretation discussed in the passage?",
+      "ms": {
+        "draft": 8190,
+        "critique": 7952,
+        "solver": 2444,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A remote sensing image shows a river that appears light blue in a standard false colour composite. Which of the following is most likely the type of river?",
+      "ms": {
+        "draft": 5207,
+        "critique": 9754
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is analyzing a satellite image of a city. Which element of image interpretation will help them identify planned residential areas?",
+      "ms": {
+        "draft": 8190,
+        "critique": 7979,
+        "solver": 3394,
+        "form": 2590
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a remote sensing image, an area appears with a fine texture. Which of the following could this represent?",
+      "ms": {
+        "draft": 5207,
+        "critique": 7794
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A coastal district is preparing for an approaching cyclone and needs real-time information on cloud movement and storm intensity. Which satellite system would provide the most reliable support?",
+      "ms": {
+        "draft": 8190,
+        "critique": 7755,
+        "solver": 1542,
+        "form": 5377
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A remote sensing image shows a region with a red to magenta colour. According to the passage, what type of surface is this most likely to be?",
+      "ms": {
+        "draft": 5207,
+        "critique": 7381,
+        "solver": 2236
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A remote sensing image has a region that appears light blue with a coarse texture. Based on the passage, what could this region represent?",
+      "ms": {
+        "draft": 5207,
+        "critique": 8479,
+        "solver": 1806,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary purpose of the images shown in Figure 6.9?",
+      "ms": {
+        "draft": 7095,
+        "critique": 8213,
+        "solver": 1950,
+        "form": 3974
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which satellite system is used to acquire the images shown in Figures 6.9 and 6.10?",
+      "ms": {
+        "draft": 7095,
+        "critique": 9374,
+        "solver": 2385,
+        "form": 3793
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, how does the spectral resolution of a sensor help in remote sensing?",
+      "ms": {
+        "draft": 7095,
+        "critique": 10164
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains the difference between a photograph and an image in remote sensing?",
+      "ms": {
+        "draft": 7095,
+        "critique": 9404
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary purpose of a sensor in remote sensing?",
+      "ms": {
+        "draft": 6402,
+        "critique": 7365
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a definition of remote sensing as given in the passage?",
+      "ms": {
+        "draft": 6325,
+        "critique": 7181,
+        "solver": 711,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A coastal district is preparing for an approaching cyclone. The disaster management team needs real-time information on cloud movement and storm intensity. Which satellite system will provide the most reliable support for this purpose?",
+      "ms": {
+        "draft": 5505,
+        "critique": 8665,
+        "solver": 1532,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A disaster management team needs real-time data on a cyclone's movement and intensity. Which satellite system would be most suitable for this purpose?",
+      "ms": {
+        "draft": 5187,
+        "critique": 7599,
+        "solver": 1927,
+        "form": 3229
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct description of remote sensing?",
+      "ms": {
+        "draft": 14595,
+        "critique": 7540,
+        "solver": 1778,
+        "form": 0,
+        "translation": 70952
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a definition of a sensor in remote sensing?",
+      "ms": {
+        "draft": 14595,
+        "critique": 8658,
+        "solver": 1856,
+        "form": 0,
+        "translation": 51021
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of satellite is used for Earth resources applications such as monitoring land use and natural resources?",
+      "ms": {
+        "draft": 5505,
+        "critique": 7399,
+        "solver": 1690,
+        "form": 5151,
+        "translation": 69735
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the term 'temporal resolution' refer to in satellite remote sensing?",
+      "ms": {
+        "draft": 5187,
+        "critique": 7364,
+        "solver": 2143,
+        "form": 2867,
+        "translation": 45239
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A researcher is studying a forested area using remote sensing technology. Which of the following would be most useful for identifying the health of the trees?",
+      "ms": {
+        "draft": 14595,
+        "critique": 11420,
+        "solver": 15566,
+        "form": 1,
+        "translation": 100828
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which satellite system is primarily used for telecommunication and weather monitoring in India?",
+      "ms": {
+        "draft": 5505,
+        "critique": 8669,
+        "solver": 3635,
+        "form": 0,
+        "translation": 55108
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a remote sensing sensor is designed to capture data in the near-infrared region of the spectrum, which of the following would it be most effective for detecting?",
+      "ms": {
+        "draft": 14595,
+        "critique": 9590,
+        "solver": 1699,
+        "form": 0,
+        "translation": 58795
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is a high radiometric resolution important in remote sensing?",
+      "ms": {
+        "draft": 5187,
+        "critique": 8233,
+        "solver": 2387,
+        "form": 4656,
+        "translation": 47309
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is NOT a stage in the remote sensing data acquisition process?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on Figure 6.3, which of the following regions of the electromagnetic spectrum is used in remote sensing?",
+      "reason": "the key is far longer than every distractor (40 vs 11 characters); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the main difference between Sun Synchronous and Geostationary satellites in terms of their orbital characteristics?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a non-photographic sensor used in satellite remote sensing?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why are Pushbroom Scanners more efficient than Whiskbroom Scanners for capturing images of the Earth's surface?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.mirror: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, what is the main difference between a photograph and an image in remote sensing?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the purpose of the images shown in Figure 6.9?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels vegetation, May, November"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A researcher wants to compare the topography of an area before and after a natural disaster using satellite images. Which of the following would be the most useful type of satellite data?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels Pre_disaster, Post_disaster, Figure_6_10"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a satellite image shows a region with a coarse texture, what might this suggest about the area?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A remote sensing image shows a water body that appears in dark blue to black. What does this indicate about the water body?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT an element of visual interpretation of satellite images?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is not used in visual interpretation technique?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is not used in visual interpretation technique?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is not used in satellite remote sensing?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an element of image interpretation discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Introduces a concept not discussed in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A remote sensing image shows a river that appears light blue in a standard false colour composite. Which of the following is most likely the type of river?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student is analyzing a satellite image of a city. Which element of image interpretation will help them identify planned residential areas?",
+      "reason": "figure: figure spec refused: spec.title: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a remote sensing image, an area appears with a fine texture. Which of the following could this represent?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A coastal district is preparing for an approaching cyclone and needs real-time information on cloud movement and storm intensity. Which satellite system would provide the most reliable support?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels Sun, Earth, Moon"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A remote sensing image shows a region with a red to magenta colour. According to the passage, what type of surface is this most likely to be?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A remote sensing image has a region that appears light blue with a coarse texture. Based on the passage, what could this region represent?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the primary purpose of the images shown in Figure 6.9?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Ignores the context of vegetation changes in the passage and…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which satellite system is used to acquire the images shown in Figures 6.9 and 6.10?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Ignores the context of the satellite system used for imaging…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the information in the passage, how does the spectral resolution of a sensor help in remote sensing?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains the difference between a photograph and an image in remote sensing?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the primary purpose of a sensor in remote sensing?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a definition of remote sensing as given in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct definition is not chosen, but the other options are …\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A coastal district is preparing for an approaching cyclone. The disaster management team needs real-time information on cloud movement and storm intensity. Which satellite system will provide the most reliable support for this purpose?",
+      "reason": "near-duplicate of served question cmvl6bt880m4lgpfht3erixge (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A disaster management team needs real-time data on a cyclone's movement and intensity. Which satellite system would be most suitable for this purpose?",
+      "reason": "near-duplicate of served question cmvl6bt880m4lgpfht3erixge (cosine 0.909 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

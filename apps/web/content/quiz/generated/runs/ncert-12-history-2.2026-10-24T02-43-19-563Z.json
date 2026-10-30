@@ -1,0 +1,948 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T02:43:19.563Z",
+  "finishedAt": "2026-10-24T02:53:34.140Z",
+  "seconds": 615,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Themes in Indian History-I",
+    "bookCode": "lehs1",
+    "document": "ncert/12/history/lehs102.pdf",
+    "classLevel": 12,
+    "subject": "History",
+    "chapter": "Chapter 2 — Kings, Farmers and Towns",
+    "edition": "Reprint 2026-27",
+    "chunks": 30,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII History, sample question paper, 2025-26]\n16. The __________ were most powerful in North Bengal, although rich peasants and 1\nvillage headmen were emerging as commanding figures in the countryside in other\nparts of Bengal as well.\nA. Zamindars\nB. Jotedars\nC. Taluqdars\nD. Ryots",
+      "[CBSE Class XII History, sample question paper, 2025-26]\n25. What was the condition of an average peasant of North India during the seventeenth 3\ncentury?",
+      "[CBSE Class XII History, sample question paper, 2026-27]\n28. A Explain how land grants provide some insight into the relationship between cultivators 8\nand the state.\nOR\n28. B How has the study of coins helped the Numismatists to reconstruct possible\ncommercial networks?",
+      "[CBSE Class XII History, sample question paper, 2022-23]\n26. “The power of the Jotedars was more effective than that of the zamindars. 3\nJustify the statement with suitable arguments."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 229978,
+      "in": 48,
+      "out": 47,
+      "rejects": 2,
+      "promptTokens": 45292,
+      "completionTokens": 12668
+    },
+    "critique": {
+      "calls": 61,
+      "ms": 406507,
+      "in": 47,
+      "out": 46,
+      "rejects": 1,
+      "promptTokens": 28633,
+      "completionTokens": 10591
+    },
+    "solver": {
+      "calls": 332,
+      "ms": 192069,
+      "in": 46,
+      "out": 35,
+      "rejects": 11,
+      "promptTokens": 66051,
+      "completionTokens": 3837
+    },
+    "form": {
+      "calls": 14,
+      "ms": 53442,
+      "in": 35,
+      "out": 4,
+      "rejects": 31,
+      "promptTokens": 7344,
+      "completionTokens": 1329
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 4,
+      "ms": 708,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 137041,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9432,
+      "completionTokens": 4834
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 3,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a historian finds an inscription mentioning a king named Asoka, which of the following can they infer?",
+      "ms": {
+        "draft": 8070,
+        "critique": 5552
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given passage and the figure, what can be inferred about the mahajanapadas?",
+      "ms": {
+        "draft": 8070,
+        "critique": 5583,
+        "solver": 1887,
+        "form": 4281
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the mahajanapadas?",
+      "ms": {
+        "draft": 8070,
+        "critique": 6635,
+        "solver": 1770,
+        "form": 3687
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred about the relationship between the state and cultivators from the passage?",
+      "ms": {
+        "draft": 8070,
+        "critique": 5583,
+        "solver": 1398,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a historian finds a coin that is inscribed with the name of a king and is dated to the sixth century BCE, which of the following would be the most likely source of information about that king?",
+      "ms": {
+        "draft": 8070,
+        "critique": 7797,
+        "solver": 1428,
+        "form": 3046
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a major development in the sixth century BCE?",
+      "ms": {
+        "draft": 8070,
+        "critique": 5668,
+        "solver": 2735,
+        "form": 2784
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a reason for the rise of Magadha?",
+      "ms": {
+        "draft": 3819,
+        "critique": 9934,
+        "solver": 13924
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why were the fortification walls of Rajagaha built?",
+      "ms": {
+        "draft": 3819,
+        "critique": 7249,
+        "solver": 1354,
+        "form": 3476
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred from the fact that Asoka's messages were engraved in multiple locations across the Mauryan Empire?",
+      "ms": {
+        "draft": 3819,
+        "critique": 5411,
+        "solver": 1265
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A historian finds an inscription in the Kharosthi script in the northwest region of the Mauryan Empire. Which of the following could be the most likely language of the inscription?",
+      "ms": {
+        "draft": 3819,
+        "critique": 6624,
+        "solver": 2385
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is mentioned as a source for the history of the Mauryan Empire?",
+      "ms": {
+        "draft": 3819,
+        "critique": 5247,
+        "solver": 1898,
+        "form": 2957
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following was NOT a function of the subcommittees mentioned in the passage?",
+      "ms": {
+        "draft": 3677,
+        "critique": 8031,
+        "solver": 2227
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of the dhamma mahamatta?",
+      "ms": {
+        "draft": 3677,
+        "critique": 6815,
+        "solver": 1409,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the Greek accounts of the Mauryan army were true, which of the following would the ruler have needed to maintain?",
+      "ms": {
+        "draft": 3677,
+        "critique": 6026,
+        "solver": 1504,
+        "form": 4250
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what can be inferred about the power of a chief in a chiefdom?",
+      "ms": {
+        "draft": 3677,
+        "critique": 6156,
+        "solver": 1783,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which group of people were most powerful in North Bengal according to the passage?",
+      "ms": {
+        "draft": 3170,
+        "critique": 6590,
+        "solver": 1020
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the Mauryan Empire is considered important in early Indian history?",
+      "ms": {
+        "draft": 3677,
+        "critique": 6997,
+        "solver": 1493,
+        "form": 3834
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the main reason for the relationship between kings and samantas according to the passage?",
+      "ms": {
+        "draft": 3170,
+        "critique": 6654,
+        "solver": 1743,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of the king in relation to the people?",
+      "ms": {
+        "draft": 3170,
+        "critique": 6461,
+        "solver": 1412,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a legal text of early India mentioned in the passage?",
+      "ms": {
+        "draft": 3818,
+        "critique": 8735,
+        "solver": 1259,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what was the purpose of the gifts brought by people to the king?",
+      "ms": {
+        "draft": 3170,
+        "critique": 5865,
+        "solver": 15974,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was mentioned as a craftsperson in the passage?",
+      "ms": {
+        "draft": 4705,
+        "critique": 6084,
+        "solver": 2008,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why did the kings in the passage claim divine status?",
+      "ms": {
+        "draft": 3170,
+        "critique": 6136,
+        "solver": 15129,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student compares two sources: one mentions the distribution of land to farmers, and the other talks about the responsibilities of the state in maintaining roads. What can be inferred from these sources?",
+      "ms": {
+        "draft": 7523,
+        "critique": 7364,
+        "solver": 14288
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student finds a coin with the image of a king and the name of a city. How might this coin help in understanding the history of the region?",
+      "ms": {
+        "draft": 7523,
+        "critique": 7919,
+        "solver": 17362
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A historian finds inscriptions that mention the names of people who contributed to the construction of a temple. What does this indicate about the society?",
+      "ms": {
+        "draft": 7523,
+        "critique": 7211,
+        "solver": 19081
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say about the role of epigraphists?",
+      "ms": {
+        "draft": 7523,
+        "critique": 7522,
+        "solver": 15812,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of inscriptions in understanding Indian history?",
+      "ms": {
+        "draft": 7523,
+        "critique": 8388,
+        "solver": 16976,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a source of historical evidence mentioned in the chapter?",
+      "ms": {
+        "draft": 2858,
+        "critique": 5830,
+        "solver": 1375,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, which of the following was the main focus of Asokan inscriptions?",
+      "ms": {
+        "draft": 2858,
+        "critique": 6686,
+        "solver": 2267
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the limitations of epigraphy?",
+      "ms": {
+        "draft": 2858,
+        "critique": 7116,
+        "solver": 1597,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the understanding of Prakrit in the regions of the subcontinent?",
+      "ms": {
+        "draft": 2858,
+        "critique": 5445,
+        "solver": 16407,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which group was mentioned in the passage as being exempt from providing grass, animal hides, and charcoal to royal officers?",
+      "ms": {
+        "draft": 4654,
+        "critique": 6519,
+        "solver": 1827,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following was NOT mentioned as a group that lived in towns according to the passage?",
+      "ms": {
+        "draft": 4654,
+        "critique": 6884,
+        "solver": 1663
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is an example of a city that was on a riverine route?",
+      "ms": {
+        "draft": 4654,
+        "critique": 6670,
+        "solver": 1141,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage suggests that historians may not always be certain about the meaning of words in inscriptions. Why is this a challenge?",
+      "ms": {
+        "draft": 2858,
+        "critique": 5907,
+        "solver": 17018
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the passage, which of the following would be an example of a group that was not under the control of the state or samantas?",
+      "ms": {
+        "draft": 4654,
+        "critique": 6965,
+        "solver": 15127,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage mentions that the Roman Empire had a high demand for which of the following?",
+      "ms": {
+        "draft": 4654,
+        "critique": 7568,
+        "solver": 2421,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of inscriptions in understanding land grants?",
+      "ms": {
+        "draft": 4240,
+        "critique": 7756,
+        "solver": 1404,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the study of coins is useful for historians?",
+      "ms": {
+        "draft": 4654,
+        "critique": 6166,
+        "solver": 15479,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what can be inferred about the distribution of land in early Indian society?",
+      "ms": {
+        "draft": 4240,
+        "critique": 6603,
+        "solver": 1353,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between legal texts and actual land practices in early India?",
+      "ms": {
+        "draft": 4240,
+        "critique": 5838,
+        "solver": 896,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What was the primary reason for the Kushanas adopting the title 'devaputra' or 'son of god'?",
+      "ms": {
+        "draft": 5044,
+        "critique": 5839,
+        "solver": 4620,
+        "form": 1306
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following was a term used in Pali texts to refer to landless agricultural labourers?",
+      "ms": {
+        "draft": 4240,
+        "critique": 7818,
+        "solver": 1439,
+        "form": 3836,
+        "translation": 21114
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a historian wants to study the relationship between cultivators and the state, which of the following would be most useful?",
+      "ms": {
+        "draft": 2858,
+        "critique": 8190,
+        "solver": 1533,
+        "form": 1947,
+        "translation": 31431
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A historian finds an inscription that mentions the construction of a temple and the names of people who donated money. What can this inscription tell us about the society?",
+      "ms": {
+        "draft": 7523,
+        "critique": 6699,
+        "solver": 19653,
+        "form": 0,
+        "translation": 41837
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a historian finds an inscription in the Brahmi script in South India, which of the following is most likely to be the language of the inscription?",
+      "ms": {
+        "draft": 3819,
+        "critique": 8574,
+        "solver": 1603,
+        "form": 3984,
+        "translation": 37312
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does the passage say about the role of the Arthashastra?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a historian finds an inscription mentioning a king named Asoka, which of the following can they infer?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the given passage and the figure, what can be inferred about the mahajanapadas?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, so no reason given here for this option (it …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the mahajanapadas?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, so no reason given here for this option (it …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What can be inferred about the relationship between the state and cultivators from the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a historian finds a coin that is inscribed with the name of a king and is dated to the sixth century BCE, which of the following would be the most likely source of information about that king?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following was a major development in the sixth century BCE?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.early states: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a reason for the rise of Magadha?",
+      "reason": "after redrafting distractors 0, 1: the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why were the fortification walls of Rajagaha built?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Does not understand that the passage does not mention trade …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What can be inferred from the fact that Asoka's messages were engraved in multiple locations across the Mauryan Empire?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A historian finds an inscription in the Kharosthi script in the northwest region of the Mauryan Empire. Which of the following could be the most likely language of the inscription?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is mentioned as a source for the history of the Mauryan Empire?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following was NOT a function of the subcommittees mentioned in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of the dhamma mahamatta?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the Greek accounts of the Mauryan army were true, which of the following would the ruler have needed to maintain?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the text's focus on the army as referring to r…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, what can be inferred about the power of a chief in a chiefdom?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the text's use of 'may or may not be hereditar…\"); distractor 1's reason is not a one-line misconception (\"Focuses on the mention of trade but ignores the passage's ma…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's emphasis on heredity as being i…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which group of people were most powerful in North Bengal according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why the Mauryan Empire is considered important in early Indian history?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misunderstands the passage's reference to 'landmark' as mean…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What was the main reason for the relationship between kings and samantas according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of the king in relation to the people?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following was a legal text of early India mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what was the purpose of the gifts brought by people to the king?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following was mentioned as a craftsperson in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why did the kings in the passage claim divine status?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 are the same (\"To be seen as a military leader\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"What does the passage suggest about the use of punch-marked c"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A student compares two sources: one mentions the distribution of land to farmers, and the other talks about the responsibilities of the state in maintaining roads. What can be inferred from these sources?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student finds a coin with the image of a king and the name of a city. How might this coin help in understanding the history of the region?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A historian finds inscriptions that mention the names of people who contributed to the construction of a temple. What does this indicate about the society?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage say about the role of epigraphists?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 are the same (\"They are only interested in coins\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of inscriptions in understanding Indian history?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 2 are the same (\"They are only useful for studying the kings\"); options 1 and 3 are the same (\"They are only useful for studying the kings\"); options 2 and 3 are the same (\"They are only useful for studying the kings\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following was a source of historical evidence mentioned in the chapter?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, which of the following was the main focus of Asokan inscriptions?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the limitations of epigraphy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the understanding of Prakrit in the regions of the subcontinent?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which group was mentioned in the passage as being exempt from providing grass, animal hides, and charcoal to royal officers?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following was NOT mentioned as a group that lived in towns according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is an example of a city that was on a riverine route?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The passage suggests that historians may not always be certain about the meaning of words in inscriptions. Why is this a challenge?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Based on the passage, which of the following would be an example of a group that was not under the control of the state or samantas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option lengths are unalike (7 to 42 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage mentions that the Roman Empire had a high demand for which of the following?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of inscriptions in understanding land grants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the study of coins is useful for historians?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, what can be inferred about the distribution of land in early Indian society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Assumes an equal distribution of land, which the passage doe…\"); distractor 2's reason is not a one-line misconception (\"Ignores the social and power dynamics described in the passa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between legal texts and actual land practices in early India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Assumes legal texts accurately reflected land practices, whi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What was the primary reason for the Kushanas adopting the title 'devaputra' or 'son of god'?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Focuses on wealth instead of divine status as explained in t…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

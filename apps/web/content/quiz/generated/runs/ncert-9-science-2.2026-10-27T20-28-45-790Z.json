@@ -1,0 +1,775 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T20:28:45.790Z",
+  "finishedAt": "2026-10-27T20:39:21.496Z",
+  "seconds": 636,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc102.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 2 — Cell: The Building Block of Life",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 25,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEJS 2016 — question paper]\n23. Which of the following does NOT contain living cells?\na) Bone tissue\nb) Xylem sieve tubes\nc) Phloem\nd) Epidermis",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 199720,
+      "in": 42,
+      "out": 41,
+      "rejects": 1,
+      "promptTokens": 38104,
+      "completionTokens": 10973
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 315323,
+      "in": 41,
+      "out": 24,
+      "rejects": 17,
+      "promptTokens": 22650,
+      "completionTokens": 8381
+    },
+    "solver": {
+      "calls": 168,
+      "ms": 84744,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 29252,
+      "completionTokens": 1711
+    },
+    "form": {
+      "calls": 5,
+      "ms": 24184,
+      "in": 21,
+      "out": 13,
+      "rejects": 8,
+      "promptTokens": 3142,
+      "completionTokens": 558
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 47,
+      "ms": 8543,
+      "in": 13,
+      "out": 11,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 479551,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 26597,
+      "completionTokens": 13433
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the basic unit of structure and function in all living organisms?",
+      "ms": {
+        "draft": 6360,
+        "critique": 5205
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is NOT a function of a microscope in studying cells?",
+      "ms": {
+        "draft": 6360,
+        "critique": 6320
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell is 200 μm in size and a microscope provides 100X magnification, what will be the apparent size of the cell?",
+      "ms": {
+        "draft": 6360,
+        "critique": 6641
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student used a light microscope with 10X magnification for the eyepiece and 40X magnification for the objective lens. If a cell is 10 μm in size, what will be its apparent size under the microscope?",
+      "ms": {
+        "draft": 6360,
+        "critique": 8167
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the cell membrane?",
+      "ms": {
+        "draft": 6360,
+        "critique": 5865,
+        "solver": 1948,
+        "form": 4154
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the cell membrane?",
+      "ms": {
+        "draft": 13352,
+        "critique": 7998
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell is placed in a hypertonic solution, what is likely to happen?",
+      "ms": {
+        "draft": 13352,
+        "critique": 6986
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a biology lab, a student observed a cell under a microscope. The student counted 25 cells along the diameter of the field of view, and the diameter of the field of view was found to be 5 mm. What is the approximate size of one cell?",
+      "ms": {
+        "draft": 6360,
+        "critique": 5983,
+        "solver": 17787
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what can be inferred about the structure of the cell membrane?",
+      "ms": {
+        "draft": 13352,
+        "critique": 6947,
+        "solver": 1520,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a potato piece is placed in a 20 per cent salt solution. What would happen to the potato piece, and why?",
+      "ms": {
+        "draft": 13352,
+        "critique": 7063
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a cell is placed in a solution where the solute concentration is equal to that inside the cell, what will happen to the cell?",
+      "ms": {
+        "draft": 13352,
+        "critique": 6716
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of different cells in Figure 2.10, which cell is most likely to be a prokaryotic cell?",
+      "ms": {
+        "draft": 4728,
+        "critique": 8719,
+        "solver": 1644,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main difference between plant cells and animal cells as observed under a microscope?",
+      "ms": {
+        "draft": 13352,
+        "critique": 6917,
+        "solver": 1465,
+        "form": 4529
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following cell organelles is known as the 'powerhouse of the cell'?",
+      "ms": {
+        "draft": 4139,
+        "critique": 8007
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main function of the endoplasmic reticulum?",
+      "ms": {
+        "draft": 4139,
+        "critique": 6394,
+        "solver": 15091,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a function of the vacuole in a plant cell?",
+      "ms": {
+        "draft": 21261,
+        "critique": 6713
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is NOT a type of plastid found in plant cells?",
+      "ms": {
+        "draft": 21261,
+        "critique": 5547
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A cell membrane is made up of proteins and lipids. Which of the following is the correct pathway for these compounds to reach the cell membrane?",
+      "ms": {
+        "draft": 3808,
+        "critique": 6710,
+        "solver": 1848
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If gametes are formed by mitotic divisions, what would be the consequence for the offspring?",
+      "ms": {
+        "draft": 3808,
+        "critique": 8194,
+        "solver": 2172
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the basic structural and functional unit of all living organisms?",
+      "ms": {
+        "draft": 4361,
+        "critique": 8134
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "ms": {
+        "draft": 3808,
+        "critique": 6691,
+        "solver": 12765,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant cell is placed in a hypertonic solution, what will happen to the cell?",
+      "ms": {
+        "draft": 4361,
+        "critique": 7780
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of a cell (Fig. 2.20), which part controls all the activities of the cell?",
+      "ms": {
+        "draft": 4361,
+        "critique": 6014
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a feature of eukaryotic cells that is not present in prokaryotic cells?",
+      "ms": {
+        "draft": 4361,
+        "critique": 6540
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "ms": {
+        "draft": 4361,
+        "critique": 7422,
+        "solver": 12429,
+        "form": 3058
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process allows living organisms to grow, repair damaged tissues, and reproduce?",
+      "ms": {
+        "draft": 7342,
+        "critique": 5943
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements about cell division is correct according to the passage?",
+      "ms": {
+        "draft": 7342,
+        "critique": 6089,
+        "solver": 1931,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the main reason complex multicellular organisms cannot be reconstructed from a fragment?",
+      "ms": {
+        "draft": 7342,
+        "critique": 8235
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why can't a whole organism be reconstructed from a fragment in complex multicellular organisms?",
+      "ms": {
+        "draft": 21261,
+        "critique": 4741,
+        "solver": 575,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a cell is placed in a solution where the concentration of solutes is the same inside and outside the cell, what will happen to the cell?",
+      "ms": {
+        "draft": 4361,
+        "critique": 5480,
+        "solver": 1732,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a function of the nucleus?",
+      "ms": {
+        "draft": 4139,
+        "critique": 7871,
+        "solver": 11434,
+        "form": 0,
+        "translation": 36421
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the function of lysosomes?",
+      "ms": {
+        "draft": 4139,
+        "critique": 6206,
+        "solver": 1398,
+        "form": 0,
+        "translation": 33471
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a structure found in a plant cell but not in an animal cell?",
+      "ms": {
+        "draft": 3808,
+        "critique": 6024,
+        "solver": 1805,
+        "form": 0,
+        "translation": 32252
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a plant cell that is not found in an animal cell?",
+      "ms": {
+        "draft": 4728,
+        "critique": 6678,
+        "solver": 1126,
+        "form": 0,
+        "translation": 41918
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the number of chromosomes during the first division of meiosis?",
+      "ms": {
+        "draft": 7342,
+        "critique": 5999,
+        "solver": 11609,
+        "form": 2898,
+        "translation": 36263
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell is unable to produce proteins, which organelle is most likely to be affected?",
+      "ms": {
+        "draft": 3808,
+        "critique": 5292,
+        "solver": 1618,
+        "form": 0,
+        "translation": 37513
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen to a plant cell if its cell wall were absent?",
+      "ms": {
+        "draft": 4728,
+        "critique": 6491,
+        "solver": 3469,
+        "form": 0,
+        "translation": 55418
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a function of the vacuole in a plant cell?",
+      "ms": {
+        "draft": 4480,
+        "critique": 6629,
+        "solver": 7993,
+        "form": 0,
+        "translation": 37149
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A farmer uses salt and sugar to preserve food. Which scientific concept is used in this process?",
+      "ms": {
+        "draft": 3808,
+        "critique": 7493,
+        "solver": 1471,
+        "form": 0,
+        "translation": 36709
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student placed a plant cell in a concentrated sugar solution and observed that the cell did not shrink. What is the most likely reason for this observation?",
+      "ms": {
+        "draft": 4728,
+        "critique": 6916,
+        "solver": 1454,
+        "form": 0,
+        "translation": 62891
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the cell wall of a plant cell not considered a living structure?",
+      "ms": {
+        "draft": 4728,
+        "critique": 7512,
+        "solver": 1414,
+        "form": 0,
+        "translation": 64097
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which type of cell lacks a well-defined nucleus and membrane-bound organelles?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the basic unit of structure and function in all living organisms?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is NOT a function of a microscope in studying cells?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a cell is 200 μm in size and a microscope provides 100X magnification, what will be the apparent size of the cell?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A student used a light microscope with 10X magnification for the eyepiece and 40X magnification for the objective lens. If a cell is 10 μm in size, what will be its apparent size under the microscope?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary function of the cell membrane?",
+      "reason": "the key is far longer than every distractor (69 vs 27 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main function of the cell membrane?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a cell is placed in a hypertonic solution, what is likely to happen?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a biology lab, a student observed a cell under a microscope. The student counted 25 cells along the diameter of the field of view, and the diameter of the field of view was found to be 5 mm. What is the approximate size of one cell?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, what can be inferred about the structure of the cell membrane?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In an experiment, a potato piece is placed in a 20 per cent salt solution. What would happen to the potato piece, and why?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a cell is placed in a solution where the solute concentration is equal to that inside the cell, what will happen to the cell?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of different cells in Figure 2.10, which cell is most likely to be a prokaryotic cell?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main difference between plant cells and animal cells as observed under a microscope?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cell wall: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following cell organelles is known as the 'powerhouse of the cell'?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main function of the endoplasmic reticulum?",
+      "reason": "options 0 and 3 are the same (\"It stores genetic information\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a function of the vacuole in a plant cell?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is NOT a type of plastid found in plant cells?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A cell membrane is made up of proteins and lipids. Which of the following is the correct pathway for these compounds to reach the cell membrane?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If gametes are formed by mitotic divisions, what would be the consequence for the offspring?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the basic structural and functional unit of all living organisms?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "reason": "the key is far longer than every distractor (54 vs 27 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a plant cell is placed in a hypertonic solution, what will happen to the cell?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the diagram of a cell (Fig. 2.20), which part controls all the activities of the cell?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following is a feature of eukaryotic cells that is not present in prokaryotic cells?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process allows living organisms to grow, repair damaged tissues, and reproduce?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements about cell division is correct according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Confuses mitosis with meiosis, which produces four daughter …\"); distractor 2 has no reason; distractor 3 has no reason"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the main reason complex multicellular organisms cannot be reconstructed from a fragment?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why can't a whole organism be reconstructed from a fragment in complex multicellular organisms?",
+      "reason": "near-duplicate of served question cmvghacd503yagpfhi1ylpjsm (cosine 0.929 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a cell is placed in a solution where the concentration of solutes is the same inside and outside the cell, what will happen to the cell?",
+      "reason": "near-duplicate of served question cmvjlvyy70h6sgpfh7nt4zvvc (cosine 0.907 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

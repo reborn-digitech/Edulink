@@ -1,0 +1,426 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T21:38:27.682Z",
+  "finishedAt": "2026-10-29T21:44:20.124Z",
+  "seconds": 352,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 17 — Man made Materials",
+    "edition": "First Edition 2018",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2025-26]\n7. C. Use of plastic as packaging material. 1",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n25. Carbon forms millions of compounds whereas silicon, which is just below it in 2\nthe Periodic Table, forms a few compounds. Explain the reason for the\ndifference in their ability to form compounds.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n20. Assertion: Biodegradable substances result in the formation of compost and natural 1\nreplenishment.\nReason: It is due to breakdown of complex inorganic substances into simple organic\nsubstances."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 65171,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 12595,
+      "completionTokens": 3375
+    },
+    "critique": {
+      "calls": 23,
+      "ms": 146484,
+      "in": 18,
+      "out": 16,
+      "rejects": 2,
+      "promptTokens": 9868,
+      "completionTokens": 3951
+    },
+    "solver": {
+      "calls": 115,
+      "ms": 62981,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 19013,
+      "completionTokens": 1224
+    },
+    "form": {
+      "calls": 2,
+      "ms": 6542,
+      "in": 13,
+      "out": 5,
+      "rejects": 8,
+      "promptTokens": 501,
+      "completionTokens": 135
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 103,
+      "ms": 16887,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 19,
+      "ms": 167382,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9374,
+      "completionTokens": 4679
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which type of glass is used in electric bulbs?",
+      "ms": {
+        "draft": 3205,
+        "critique": 6004
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which property of plastic allows it to be moulded into any shape?",
+      "ms": {
+        "draft": 3205,
+        "critique": 7064,
+        "solver": 16501,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the use of silica glass in laboratories?",
+      "ms": {
+        "draft": 3205,
+        "critique": 6649,
+        "solver": 17571,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a natural material?",
+      "ms": {
+        "draft": 3205,
+        "critique": 4252,
+        "solver": 6839,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a use of lead glass?",
+      "ms": {
+        "draft": 3445,
+        "critique": 6876,
+        "solver": 1077
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a disadvantage of glass as mentioned in the passage?",
+      "ms": {
+        "draft": 3445,
+        "critique": 7965,
+        "solver": 1875
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of glass as mentioned in the passage?",
+      "ms": {
+        "draft": 3445,
+        "critique": 7276,
+        "solver": 12560,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student wants to store a chemical that reacts with water. Which type of glass would be most suitable for this purpose?",
+      "ms": {
+        "draft": 3445,
+        "critique": 7171
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why silica glass is used in laboratory equipment?",
+      "ms": {
+        "draft": 3445,
+        "critique": 6423,
+        "solver": 1851,
+        "form": 3075
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a thermoplastic?",
+      "ms": {
+        "draft": 4213,
+        "critique": 7340,
+        "solver": 1967,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a property of thermocol?",
+      "ms": {
+        "draft": 4213,
+        "critique": 6090,
+        "solver": 1330,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for using plastic in the healthcare sector?",
+      "ms": {
+        "draft": 4213,
+        "critique": 7429,
+        "solver": 1188
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is thermocol considered harmful to the environment?",
+      "ms": {
+        "draft": 4213,
+        "critique": 5862,
+        "solver": 9933,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which type of glass is used in vehicles to avoid injuries during accidents?",
+      "ms": {
+        "draft": 3445,
+        "critique": 6900,
+        "solver": 2109,
+        "form": 3934
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why are plastic tanks used for storage of chemicals?",
+      "ms": {
+        "draft": 4213,
+        "critique": 6459,
+        "solver": 1413,
+        "form": 0,
+        "translation": 63358
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a degradable material?",
+      "ms": {
+        "draft": 4213,
+        "critique": 5264,
+        "solver": 1863,
+        "form": 0,
+        "translation": 22357
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a thermoplastic?",
+      "ms": {
+        "draft": 3205,
+        "critique": 10140,
+        "solver": 2001,
+        "form": 0,
+        "translation": 39232
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is glass considered non-degradable?",
+      "ms": {
+        "draft": 3205,
+        "critique": 6736,
+        "solver": 1063,
+        "form": 0,
+        "translation": 38120
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following is an example of a manmade material?\","
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which type of glass is used in electric bulbs?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which property of plastic allows it to be moulded into any shape?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main reason for the use of silica glass in laboratories?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a natural material?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a use of lead glass?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a disadvantage of glass as mentioned in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of glass as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student wants to store a chemical that reacts with water. Which type of glass would be most suitable for this purpose?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why silica glass is used in laboratory equipment?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Chooses a reason not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a thermoplastic?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed (as per rules, this is not …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a property of thermocol?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer, no reason needed (as per rules, this is not …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main reason for using plastic in the healthcare sector?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is thermocol considered harmful to the environment?",
+      "reason": "options 0 and 2 are the same (\"It is a good conductor of heat\"); the key is far longer than every distractor (60 vs 30 characters)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which type of glass is used in vehicles to avoid injuries during accidents?",
+      "reason": "near-duplicate of served question cmvj9s51b0g4kgpfhjgdn34u4 (cosine 0.960 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

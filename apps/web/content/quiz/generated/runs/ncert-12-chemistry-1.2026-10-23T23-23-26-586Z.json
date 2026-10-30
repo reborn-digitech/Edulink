@@ -1,0 +1,872 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T23:23:26.586Z",
+  "finishedAt": "2026-10-23T23:35:21.730Z",
+  "seconds": 715,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry-I",
+    "bookCode": "lech1",
+    "document": "ncert/12/chemistry/lech101.pdf",
+    "classLevel": 12,
+    "subject": "Chemistry",
+    "chapter": "Chapter 1 — Unit Objectives Solutions",
+    "edition": "Reprint 2026-27",
+    "chunks": 33,
+    "groups": 11
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Chemistry, sample question paper, 2025-26]\n7. All questions are compulsory.",
+      "[CBSE Class XII Chemistry, sample question paper, 2026-27]\n7. All questions are compulsory.",
+      "[CBSE Class XII Chemistry, marking scheme, 2024-25]\nSECTION B",
+      "[CBSE Class XII Chemistry, marking scheme, 2024-25]\nMARKING SCHEME\nSAMPLE PAPER (2024 -25)\nCHEMISTRY THEORY\n(043)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 306875,
+      "in": 47,
+      "out": 45,
+      "rejects": 2,
+      "promptTokens": 50826,
+      "completionTokens": 17437
+    },
+    "critique": {
+      "calls": 55,
+      "ms": 368011,
+      "in": 45,
+      "out": 28,
+      "rejects": 17,
+      "promptTokens": 29260,
+      "completionTokens": 9697
+    },
+    "solver": {
+      "calls": 210,
+      "ms": 116024,
+      "in": 28,
+      "out": 24,
+      "rejects": 4,
+      "promptTokens": 44512,
+      "completionTokens": 2344
+    },
+    "form": {
+      "calls": 14,
+      "ms": 57969,
+      "in": 24,
+      "out": 7,
+      "rejects": 17,
+      "promptTokens": 7340,
+      "completionTokens": 1560
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 4278,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 294722,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 18181,
+      "completionTokens": 9515
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a way to describe the concentration of a solution quantitatively?",
+      "ms": {
+        "draft": 3635,
+        "critique": 4902,
+        "solver": 1146,
+        "form": 5155
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a solution is described as 10% glucose in water by mass, what does this mean?",
+      "ms": {
+        "draft": 3635,
+        "critique": 5880,
+        "solver": 2165,
+        "form": 5706
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a solution contains 20 g of ethylene glycol and 80 g of water, what is the mole fraction of ethylene glycol?",
+      "ms": {
+        "draft": 3635,
+        "critique": 6789,
+        "solver": 1363,
+        "form": 6666
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for calculating molarity of a solution?",
+      "ms": {
+        "draft": 16269,
+        "critique": 5633,
+        "solver": 1572,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the solubility of a solid in a liquid?",
+      "ms": {
+        "draft": 16269,
+        "critique": 5915,
+        "solver": 2213,
+        "form": 1868
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a correct statement about the factors affecting solubility?",
+      "ms": {
+        "draft": 16269,
+        "critique": 6765,
+        "solver": 1435,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student calculates the molarity of a 30 g solution of Co(NO3)2·6H2O in 4.3 L of solution, but forgets to consider the molar mass of the hydrate. What will be the error in the calculation?",
+      "ms": {
+        "draft": 16269,
+        "critique": 9722
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does Henry's law state about the solubility of a gas in a liquid?",
+      "ms": {
+        "draft": 4552,
+        "critique": 7401
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 5 g of NaOH is dissolved in 450 mL of solution, what is the molarity of the solution?",
+      "ms": {
+        "draft": 16269,
+        "critique": 7896,
+        "solver": 15375,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the partial pressure of a gas above a solution is halved, what happens to the solubility of the gas in the solution?",
+      "ms": {
+        "draft": 4552,
+        "critique": 5952
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the solubility of a gas in a liquid when the temperature increases?",
+      "ms": {
+        "draft": 4552,
+        "critique": 7669
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the solubility of a gas in a liquid increase with an increase in pressure?",
+      "ms": {
+        "draft": 16269,
+        "critique": 8487,
+        "solver": 14253,
+        "form": 1966
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why are aquatic species more comfortable in cold water compared to warm water?",
+      "ms": {
+        "draft": 4552,
+        "critique": 6525
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the Henry’s law constant for a gas is 76.48 kbar, and the partial pressure is 0.987 bar, what is the mole fraction of the gas in the solution?",
+      "ms": {
+        "draft": 4552,
+        "critique": 7007,
+        "solver": 1769
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the solubility of a gas decrease with an increase in temperature, according to the passage?",
+      "ms": {
+        "draft": 4552,
+        "critique": 6749
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to Raoult's law, what is the relationship between the partial vapour pressure of a component and its mole fraction in the solution?",
+      "ms": {
+        "draft": 5989,
+        "critique": 7286
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the vapour pressure of a solvent when a non-volatile solute is added to it?",
+      "ms": {
+        "draft": 5989,
+        "critique": 6515
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a solution is prepared by mixing 25.5 g of CHCl3 and 40 g of CH2Cl2 at 298 K, what is the mole fraction of CHCl3 in the solution?",
+      "ms": {
+        "draft": 5989,
+        "critique": 7204
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the vapour phase always rich in the more volatile component in an ideal solution?",
+      "ms": {
+        "draft": 5989,
+        "critique": 6442
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A non-volatile solute is added to a volatile solvent, causing the vapour pressure of the solvent to decrease. Which of the following is a direct consequence of this decrease?",
+      "ms": {
+        "draft": 9251,
+        "critique": 6792
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for the decrease in vapour pressure when a non-volatile solute is added to a solvent?",
+      "ms": {
+        "draft": 17461,
+        "critique": 6652,
+        "solver": 1022,
+        "form": 2264
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the osmotic pressure of a solution is 1.52 bars at 300 K, what would be its concentration? Given that 36 g of glucose in a litre of solution has an osmotic pressure of 4.98 bars at the same temperature.",
+      "ms": {
+        "draft": 5563,
+        "critique": 4796,
+        "solver": 1434
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A lake water sample has a density of 1.25 g/mL and contains 92 g of Na+ ions per kg of water. Calculate the molarity of Na+ ions in the lake.",
+      "ms": {
+        "draft": 5563,
+        "critique": 7236
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Calculate the mass percentage of aspirin (C9H8O4) in acetonitrile (CH3CN) when 6.5 g of C9H8O4 is dissolved in 450 g of CH3CN.",
+      "ms": {
+        "draft": 5563,
+        "critique": 7899,
+        "solver": 2390
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on solute-solvent interactions, arrange the following in order of increasing solubility in n-octane: Cyclohexane, KCl, CH3OH, CH3CN.",
+      "ms": {
+        "draft": 5563,
+        "critique": 5359,
+        "solver": 14486,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of a solution?",
+      "ms": {
+        "draft": 3853,
+        "critique": 7219
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a solution has a mass percentage of 68% nitric acid, and its density is 1.504 g/mL, what is the molarity of the solution?",
+      "ms": {
+        "draft": 3853,
+        "critique": 6261
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Vapour pressure of pure acetone and chloroform at 328 K are 741.8 mm Hg and 632.8 mm Hg respectively. Assuming they form an ideal solution, plot the vapour pressure of the mixture as a function of the mole fraction of acetone. Indicate whether it has positive or negative deviation.",
+      "ms": {
+        "draft": 5563,
+        "critique": 5762,
+        "solver": 1807,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A solution of a non-volatile solute reduces the vapour pressure of water to 80% of its original value. What is the mole fraction of the solute?",
+      "ms": {
+        "draft": 3853,
+        "critique": 6106
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the effect of dissociation of a solute on the experimentally determined molar mass?",
+      "ms": {
+        "draft": 10555,
+        "critique": 9295
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A solution of glucose in water is labelled as 10% w/w. What is the molality of the solution?",
+      "ms": {
+        "draft": 3853,
+        "critique": 7697,
+        "solver": 12299,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the density of a 10% w/w glucose solution is 1.2 g/mL, what is its molarity?",
+      "ms": {
+        "draft": 3853,
+        "critique": 6741,
+        "solver": 15520,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a solution of acetic acid in water shows a van't Hoff factor of 1.041, what is the degree of dissociation of the acid?",
+      "ms": {
+        "draft": 10555,
+        "critique": 7235,
+        "solver": 1793
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the van't Hoff factor for a solute that completely dissociates into two ions?",
+      "ms": {
+        "draft": 10555,
+        "critique": 6989,
+        "solver": 1758,
+        "form": 3666
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a practical application of reverse osmosis?",
+      "ms": {
+        "draft": 5529,
+        "critique": 7889
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, how does the van't Hoff factor relate to the extent of dissociation or association of a solute?",
+      "ms": {
+        "draft": 10555,
+        "critique": 6583,
+        "solver": 16014,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for the elevation of boiling point in a solution?",
+      "ms": {
+        "draft": 61143,
+        "critique": 5989,
+        "solver": 905,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the lowering of the freezing point of a solvent when a non-volatile solute is added?",
+      "ms": {
+        "draft": 9406,
+        "critique": 6947,
+        "solver": 1722,
+        "form": 3070
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for two solutions that have the same osmotic pressure at a given temperature?",
+      "ms": {
+        "draft": 5529,
+        "critique": 7992,
+        "solver": 14623,
+        "form": 2880,
+        "translation": 33165
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a common way to express the concentration of a solution in medicine and pharmacy?",
+      "ms": {
+        "draft": 3635,
+        "critique": 5107,
+        "solver": 15138,
+        "form": 3834,
+        "translation": 47871
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the concentration of a solution in terms of the number of moles of solute per kilogram of solvent?",
+      "ms": {
+        "draft": 3853,
+        "critique": 5457,
+        "solver": 1743,
+        "form": 3166,
+        "translation": 40864
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct statement about the mole fraction of a solution?",
+      "ms": {
+        "draft": 3635,
+        "critique": 6005,
+        "solver": 1572,
+        "form": 3388,
+        "translation": 54848
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A solution contains 100 g of a solute dissolved in 900 g of water. What is the mass percentage of the solute?",
+      "ms": {
+        "draft": 3635,
+        "critique": 6269,
+        "solver": 989,
+        "form": 0,
+        "translation": 40457
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A 0.9% (mass/volume) sodium chloride solution is safe to inject intravenously because it is isotonic with blood cells. What would happen to blood cells if they were placed in a solution with a lower concentration of sodium chloride?",
+      "ms": {
+        "draft": 5529,
+        "critique": 7841,
+        "solver": 11473,
+        "form": 0,
+        "translation": 20369
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "The depression in freezing point of water observed for the same amount of acetic acid, trichloroacetic acid, and trifluoroacetic acid increases in the order given. Explain this trend.",
+      "ms": {
+        "draft": 5563,
+        "critique": 8712,
+        "solver": 14371,
+        "form": 1,
+        "translation": 50615
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the correct relationship between the vapour pressure of a solvent in a solution and its mole fraction according to Raoult’s law?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a way to describe the concentration of a solution quantitatively?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a solution is described as 10% glucose in water by mass, what does this mean?",
+      "reason": "options 1 and 2 say the same thing (\"10 g of glucose is dissolved in 100 g of water\" / \"10 g of glucose is dissolved in 10 g of water\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a solution contains 20 g of ethylene glycol and 80 g of water, what is the mole fraction of ethylene glycol?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"0.322/(0.322+4.444)\" = 0.06756189676877886, but the key says 0.068"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for calculating molarity of a solution?",
+      "reason": "options 0 and 3 say the same thing (\"Molarity = Moles of solute / Mass of solvent in kg\" / \"Molarity = Mass of solute / Mass of solvent in kg\"); options 1 and 2 say the same thing (\"Molarity = Mass of solute / Volume of solution in litre\" / \"Molarity = Moles of solute / Volume of solution in litre\"); distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here, but the question is d…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about the solubility of a solid in a liquid?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here, but the question is d…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a correct statement about the factors affecting solubility?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here, but the question is d…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student calculates the molarity of a 30 g solution of Co(NO3)2·6H2O in 4.3 L of solution, but forgets to consider the molar mass of the hydrate. What will be the error in the calculation?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does Henry's law state about the solubility of a gas in a liquid?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 5 g of NaOH is dissolved in 450 mL of solution, what is the molarity of the solution?",
+      "reason": "options 0 and 2 are the same (\"0.25 M\"); options are written to different precisions (1 and 2 and 3 decimals); options 0 and 2 are the same number; distractor 3's reason is not a one-line misconception (\"Incorrectly divides 5 by 40 and 450 without multiplying by 1…\"); ARITHMETIC MISMATCH — checkExpr \"0.125*1000/450\" = 0.2777777777777778, but the key says 0.278"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the partial pressure of a gas above a solution is halved, what happens to the solubility of the gas in the solution?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens to the solubility of a gas in a liquid when the temperature increases?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the solubility of a gas in a liquid increase with an increase in pressure?",
+      "reason": "options 0 and 2 say the same thing (\"Because the increase in pressure increases the number of gas molecules that can escape from the liquid\" / \"Because the increase in pressure increases the number of gas molecules that can dissolve in the liquid\"); options 1 and 2 say the same thing (\"Because the increase in pressure reduces the number of gas molecules that can dissolve in the liquid\" / \"Because the increase in pressure increases the number of gas molecules that can dissolve in the liquid\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Why are aquatic species more comfortable in cold water compared to warm water?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the Henry’s law constant for a gas is 76.48 kbar, and the partial pressure is 0.987 bar, what is the mole fraction of the gas in the solution?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why does the solubility of a gas decrease with an increase in temperature, according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to Raoult's law, what is the relationship between the partial vapour pressure of a component and its mole fraction in the solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What happens to the vapour pressure of a solvent when a non-volatile solute is added to it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a solution is prepared by mixing 25.5 g of CHCl3 and 40 g of CH2Cl2 at 298 K, what is the mole fraction of CHCl3 in the solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the vapour phase always rich in the more volatile component in an ideal solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A non-volatile solute is added to a volatile solvent, causing the vapour pressure of the solvent to decrease. Which of the following is a direct consequence of this decrease?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main reason for the decrease in vapour pressure when a non-volatile solute is added to a solvent?",
+      "reason": "the key is far longer than every distractor (107 vs 58 characters); distractor 3's reason is not a one-line misconception (\"incorrectly assumes a chemical reaction occurs between solut…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the abnormal molar mass of benzoic acid in benzene if its experimentally determined molar mass is 241.98 g mol⁻¹ and its normal molar mass is 122 g mol⁻¹?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the osmotic pressure of a solution is 1.52 bars at 300 K, what would be its concentration? Given that 36 g of glucose in a litre of solution has an osmotic pressure of 4.98 bars at the same temperature.",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A lake water sample has a density of 1.25 g/mL and contains 92 g of Na+ ions per kg of water. Calculate the molarity of Na+ ions in the lake.",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Calculate the mass percentage of aspirin (C9H8O4) in acetonitrile (CH3CN) when 6.5 g of C9H8O4 is dissolved in 450 g of CH3CN.",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on solute-solvent interactions, arrange the following in order of increasing solubility in n-octane: Cyclohexane, KCl, CH3OH, CH3CN.",
+      "reason": "options 0 and 1 say the same thing (\"KCl < CH3OH < CH3CN < Cyclohexane\" / \"Cyclohexane < CH3OH < KCl < CH3CN\"); options 0 and 2 say the same thing (\"KCl < CH3OH < CH3CN < Cyclohexane\" / \"KCl < Cyclohexane < CH3OH < CH3CN\"); options 0 and 3 say the same thing (\"KCl < CH3OH < CH3CN < Cyclohexane\" / \"CH3OH < KCl < Cyclohexane < CH3CN\"); options 1 and 2 say the same thing (\"Cyclohexane < CH3OH < KCl < CH3CN\" / \"KCl < Cyclohexane < CH3OH < CH3CN\"); options 1 and 3 say the same thing (\"Cyclohexane < CH3OH < KCl < CH3CN\" / \"CH3OH < KCl < Cyclohexane < CH3CN\"); options 2 and 3 say the same thing (\"KCl < Cyclohexane < CH3OH < CH3CN\" / \"CH3OH < KCl < Cyclohexane < CH3CN\"); option 0 repeats the stem's wording (\"KCl < CH3OH < CH3CN < Cyclohexane\"); option 1 repeats the stem's wording (\"Cyclohexane < CH3OH < KCl < CH3CN\"); option 2 repeats the stem's wording (\"KCl < Cyclohexane < CH3OH < CH3CN\"); option 3 repeats the stem's wording (\"CH3OH < KCl < Cyclohexane < CH3CN\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the definition of a solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a solution has a mass percentage of 68% nitric acid, and its density is 1.504 g/mL, what is the molarity of the solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Vapour pressure of pure acetone and chloroform at 328 K are 741.8 mm Hg and 632.8 mm Hg respectively. Assuming they form an ideal solution, plot the vapour pressure of the mixture as a function of the mole fraction of acetone. Indicate whether it has positive or negative deviation.",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels ideal, actual"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A solution of a non-volatile solute reduces the vapour pressure of water to 80% of its original value. What is the mole fraction of the solute?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the effect of dissociation of a solute on the experimentally determined molar mass?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A solution of glucose in water is labelled as 10% w/w. What is the molality of the solution?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"10/180*1000/90\" = 0.6172839506172839, but the key says 1.11"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the density of a 10% w/w glucose solution is 1.2 g/mL, what is its molarity?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"10*1.2*1000/(180)\" = 66.66666666666667, but the key says 0.83"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a solution of acetic acid in water shows a van't Hoff factor of 1.041, what is the degree of dissociation of the acid?",
+      "reason": "the solver picked option 1 3 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the van't Hoff factor for a solute that completely dissociates into two ions?",
+      "reason": "options are written to different precisions (0 and 1 decimals); distractor 3's reason is not a one-line misconception (\"Correct, as the passage states that for dissociation, the fa…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a practical application of reverse osmosis?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, how does the van't Hoff factor relate to the extent of dissociation or association of a solute?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"It is directly proportional to the extent of dissociation and inversely proportional to the extent of association\" / \"It is directly proportional to the extent of association and inversely proportional to the extent of dissociation\"); options 2 and 3 say the same thing (\"It is inversely proportional to both dissociation and association\" / \"It is directly proportional to both dissociation and association\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main reason for the elevation of boiling point in a solution?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correctly identifies the effect but not the reason for boili…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used to describe the lowering of the freezing point of a solvent when a non-volatile solute is added?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels DT, freezingPointDepression"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

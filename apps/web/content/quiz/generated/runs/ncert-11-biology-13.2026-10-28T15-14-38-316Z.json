@@ -1,0 +1,829 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T15:14:38.316Z",
+  "finishedAt": "2026-10-28T15:31:04.349Z",
+  "seconds": 986,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo113.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 13 — Plant Growth and Development",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2024 — question paper]\n44. (3 points) Auxins play an important role in the growth of plants. The distribution of auxin\nand the resulting changes in the shoot growth were being observed in the plant kept near a\nwindow (plant 1) and the shoot of a fallen potted plant exhibiting negative gravitropism\n(plant 2). Complete the table by putting tick marks in the appropriate boxes for the two\nplants.",
+      "[INBO 2016 — question paper]\n58. (2 points) A classification of plant kingdom based on evolution of various characters is\nshown below.\norsetail ycad\nAlgae ornwort Liverwort Moss Club mossH C Angiosperm\nH\nU\nT\nS\nR\nQ\nP\nA few of these characters (I to IV) are listed below. For each of these characters, choose a\nsingle appropriate alphabet from the cladogram and fill in the blanks.\nI. Wood: ______\nII. Seed development: ______\nIII. Cuticle, protected embryo: ______\nIV. Independent sporophyte: ______\n********* END OF SECTION B *********",
+      "[NSEB 2016 — question paper]\n59. When a plant cell undergoes expansive growth, the increase in volume is caused\nmostly by:\na) uptake of minerals b) uptake of water c)synthesis of cellulose d)synthesis of proteins.",
+      "[INBO 2011 — question paper]\n30. (1 point) Which of the following best depicts the evolutionary sequence of\nplant characters?\n1. Transition to land habitat\n2. Evolution of seeds\n3. Evolution of fruits\n4. Evolution of vascular structures\na. 1 – 4 – 2 – 3\nb. 4 – 1 – 2 – 3\nc. 1 – 4 – 3 – 2\nd. 4 – 1 – 3 – 2\nETHOLOGY (3)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 302795,
+      "in": 42,
+      "out": 42,
+      "rejects": 0,
+      "promptTokens": 37720,
+      "completionTokens": 11004
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 595952,
+      "in": 42,
+      "out": 36,
+      "rejects": 6,
+      "promptTokens": 25783,
+      "completionTokens": 9873
+    },
+    "solver": {
+      "calls": 286,
+      "ms": 248238,
+      "in": 36,
+      "out": 33,
+      "rejects": 3,
+      "promptTokens": 57314,
+      "completionTokens": 3202
+    },
+    "form": {
+      "calls": 22,
+      "ms": 142305,
+      "in": 33,
+      "out": 9,
+      "rejects": 24,
+      "promptTokens": 14117,
+      "completionTokens": 2260
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 67,
+      "ms": 17858,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 447817,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16055,
+      "completionTokens": 8207
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "A plant is kept near a window, and its shoot grows towards the light. Another plant, which has fallen, shows negative gravitropism. How does auxin distribution affect the growth of these two plants?",
+      "ms": {
+        "draft": 5345,
+        "critique": 10407,
+        "solver": 3288,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The growth of a plant's root is measured as an increase in length. Which of the following best describes the type of growth this represents?",
+      "ms": {
+        "draft": 5345,
+        "critique": 9344,
+        "solver": 2528,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A plant cell undergoes expansive growth, and the increase in volume is mainly due to the uptake of water. Which of the following processes is primarily responsible for this increase in volume?",
+      "ms": {
+        "draft": 5345,
+        "critique": 13637,
+        "solver": 20348,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of open form of growth in plants?",
+      "ms": {
+        "draft": 5345,
+        "critique": 11269,
+        "solver": 24559,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant shows exponential growth, which phase of growth is it in?",
+      "ms": {
+        "draft": 20264,
+        "critique": 9981,
+        "solver": 18390,
+        "form": 5987
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, which part of the curve represents the exponential phase of growth?",
+      "ms": {
+        "draft": 20264,
+        "critique": 11108,
+        "solver": 22161,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A plant is observed to have a sigmoid growth curve. Which of the following statements is true about its growth?",
+      "ms": {
+        "draft": 20264,
+        "critique": 13811,
+        "solver": 18374,
+        "form": 6056
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a plant has a high relative growth rate, what does this indicate about its growth efficiency?",
+      "ms": {
+        "draft": 20264,
+        "critique": 10404,
+        "solver": 17422,
+        "form": 4810
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of plant plasticity?",
+      "ms": {
+        "draft": 6292,
+        "critique": 10429,
+        "solver": 1836,
+        "form": 6324
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the reason for apical dominance in plants?",
+      "ms": {
+        "draft": 6292,
+        "critique": 10118,
+        "solver": 23500,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A plant kept near a window shows growth towards the light. Another plant, when placed horizontally, shows growth in the opposite direction of gravity. What could be the reason for these responses?",
+      "ms": {
+        "draft": 6292,
+        "critique": 10054,
+        "solver": 2207,
+        "form": 4753
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which plant growth regulator is known to delay leaf senescence and promote nutrient mobilisation?",
+      "ms": {
+        "draft": 7624,
+        "critique": 14277
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of the term 'plasticity' in the context of plant development?",
+      "ms": {
+        "draft": 6292,
+        "critique": 9791,
+        "solver": 2762,
+        "form": 3810
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main function of gibberellins in plants?",
+      "ms": {
+        "draft": 7624,
+        "critique": 12132,
+        "solver": 2054,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a plant is exposed to a chemical that prevents the synthesis of auxins, what would be the most likely effect on the plant?",
+      "ms": {
+        "draft": 6292,
+        "critique": 8623,
+        "solver": 27171
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A farmer uses a plant growth regulator to increase the yield of sugarcane. Which of the following is most likely to be the regulator used?",
+      "ms": {
+        "draft": 7624,
+        "critique": 11736,
+        "solver": 3030,
+        "form": 7035
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the increase in size of a plant over time?",
+      "ms": {
+        "draft": 5791,
+        "critique": 8662,
+        "solver": 13880,
+        "form": 4265
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best describes the relationship between gibberellins and abscisic acid in plant growth?",
+      "ms": {
+        "draft": 7624,
+        "critique": 14036,
+        "solver": 16219,
+        "form": 1233
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct characteristic of geometric growth in plants?",
+      "ms": {
+        "draft": 24530,
+        "critique": 10453,
+        "solver": 3066,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a plant is exposed to a unilateral light source, which of the following will happen?",
+      "ms": {
+        "draft": 24530,
+        "critique": 10400,
+        "solver": 1624,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant is kept in a dark room, which of the following is most likely to occur?",
+      "ms": {
+        "draft": 24530,
+        "critique": 11061,
+        "solver": 27107,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a plant is exposed to a continuous light source, what is the most likely outcome for its growth?",
+      "ms": {
+        "draft": 24530,
+        "critique": 10327,
+        "solver": 2884,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student wants to study the effect of auxin on root growth. Which of the following setups would best demonstrate this?",
+      "ms": {
+        "draft": 24530,
+        "critique": 11833,
+        "solver": 25770
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of auxins in plants?",
+      "ms": {
+        "draft": 24530,
+        "critique": 12166,
+        "solver": 2859,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which plant growth regulator is known to delay senescence in plants?",
+      "ms": {
+        "draft": 7590,
+        "critique": 10738
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following situations would ethylene most likely be involved?",
+      "ms": {
+        "draft": 7590,
+        "critique": 11468
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A farmer sprays a crop with a plant growth regulator that increases stem length and improves fruit shape. Which regulator is most likely being used?",
+      "ms": {
+        "draft": 7590,
+        "critique": 11074
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe all changes an organism goes through during its life cycle from germination to senescence?",
+      "ms": {
+        "draft": 7517,
+        "critique": 11650
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant's apical bud is removed, which of the following is most likely to happen?",
+      "ms": {
+        "draft": 7590,
+        "critique": 12342,
+        "solver": 19094,
+        "form": 5030
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a plant with apical dominance, what happens when the shoot tip is removed?",
+      "ms": {
+        "draft": 7517,
+        "critique": 8905,
+        "solver": 4580,
+        "form": 4758
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is NOT a function of auxins?",
+      "ms": {
+        "draft": 7517,
+        "critique": 12389
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment shown in Figure 13.10, what was the purpose of placing the coleoptile tip under unilateral illumination?",
+      "ms": {
+        "draft": 7517,
+        "critique": 12802,
+        "solver": 19267
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which type of growth is represented by a linear curve when the length of an organ is plotted against time?",
+      "ms": {
+        "draft": 4547,
+        "critique": 10433,
+        "solver": 1948,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the increased growth per unit time?",
+      "ms": {
+        "draft": 20264,
+        "critique": 10064,
+        "solver": 2585,
+        "form": 5348
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the increased growth per unit time?",
+      "ms": {
+        "draft": 4547,
+        "critique": 8254,
+        "solver": 2297,
+        "form": 4257
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process called when cells lose their ability to divide and become specialized?",
+      "ms": {
+        "draft": 20264,
+        "critique": 10169,
+        "solver": 3844,
+        "form": 3785,
+        "translation": 60950
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the meristematic zone in plant growth?",
+      "ms": {
+        "draft": 5345,
+        "critique": 11532,
+        "solver": 3367,
+        "form": 0,
+        "translation": 45733
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A plant's root tip shows three distinct zones of growth: meristematic, elongation, and maturation. Which of these zones is responsible for the formation of new cells?",
+      "ms": {
+        "draft": 5345,
+        "critique": 8830,
+        "solver": 2024,
+        "form": 0,
+        "translation": 74274
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a function of auxins in plants?",
+      "ms": {
+        "draft": 6292,
+        "critique": 9857,
+        "solver": 2599,
+        "form": 4070,
+        "translation": 68702
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In arithmetic growth, what happens to the daughter cells after mitotic cell division?",
+      "ms": {
+        "draft": 4547,
+        "critique": 9256,
+        "solver": 1871,
+        "form": 3876,
+        "translation": 73724
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which plant growth regulator is most likely to be responsible for the formation of an apical hook in dicot seedlings?",
+      "ms": {
+        "draft": 7590,
+        "critique": 12320,
+        "solver": 24045,
+        "form": 0,
+        "translation": 69334
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a characteristic of geometric growth in plants?",
+      "ms": {
+        "draft": 4547,
+        "critique": 8057,
+        "solver": 1177,
+        "form": 1390,
+        "translation": 47308
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A plant is kept near a window, and its shoot grows towards the light. Another plant, which has fallen, shows negative gravitropism. How does auxin distribution affect the growth of these two plants?",
+      "reason": "options 2 and 3 say the same thing (\"It causes growth towards light in the first plant and away from light in the second\" / \"It causes growth away from light in the first plant and towards light in the second\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The growth of a plant's root is measured as an increase in length. Which of the following best describes the type of growth this represents?",
+      "reason": "figure: figure spec refused: spec.parts: plant has no label \"shoot\" (it has root, stem, leaf, flower)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A plant cell undergoes expansive growth, and the increase in volume is mainly due to the uptake of water. Which of the following processes is primarily responsible for this increase in volume?",
+      "reason": "option 1 repeats the stem's wording (\"Uptake of water\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of open form of growth in plants?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a plant shows exponential growth, which phase of growth is it in?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, which part of the curve represents the exponential phase of growth?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A plant is observed to have a sigmoid growth curve. Which of the following statements is true about its growth?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"describes a scenario not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a plant has a high relative growth rate, what does this indicate about its growth efficiency?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"refers to a process not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of plant plasticity?",
+      "reason": "the key is far longer than every distractor (59 vs 34 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the reason for apical dominance in plants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A plant kept near a window shows growth towards the light. Another plant, when placed horizontally, shows growth in the opposite direction of gravity. What could be the reason for these responses?",
+      "reason": "options 2 and 3 say the same thing (\"The first shows phototropism and the second shows gravitropism\" / \"The first shows gravitropism and the second shows phototropism\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which plant growth regulator is known to delay leaf senescence and promote nutrient mobilisation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the meaning of the term 'plasticity' in the context of plant development?",
+      "reason": "the key is far longer than every distractor (72 vs 38 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main function of gibberellins in plants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct, as stated in the passage: 'Their ability to cause a…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a plant is exposed to a chemical that prevents the synthesis of auxins, what would be the most likely effect on the plant?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A farmer uses a plant growth regulator to increase the yield of sugarcane. Which of the following is most likely to be the regulator used?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Abscisic acid is a stress hormone that inhibits growth and i…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used to describe the increase in size of a plant over time?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best describes the relationship between gibberellins and abscisic acid in plant growth?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"The passage clearly states that ABA acts as an antagonist to…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct characteristic of geometric growth in plants?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a plant is exposed to a unilateral light source, which of the following will happen?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.stem: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a plant is kept in a dark room, which of the following is most likely to occur?",
+      "reason": "options 0 and 1 are the same (\"It will grow taller and thinner\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a plant is exposed to a continuous light source, what is the most likely outcome for its growth?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'light'"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student wants to study the effect of auxin on root growth. Which of the following setups would best demonstrate this?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main function of auxins in plants?",
+      "reason": "figure: figure spec refused: spec.parts: plant has no label \"cell\" (it has root, stem, leaf, flower)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which plant growth regulator is known to delay senescence in plants?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In which of the following situations would ethylene most likely be involved?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A farmer sprays a crop with a plant growth regulator that increases stem length and improves fruit shape. Which regulator is most likely being used?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe all changes an organism goes through during its life cycle from germination to senescence?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a plant's apical bud is removed, which of the following is most likely to happen?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a plant with apical dominance, what happens when the shoot tip is removed?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's explanation of apical dominance …\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage by associating decapitation with …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, which of the following is NOT a function of auxins?",
+      "reason": "option 0 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the experiment shown in Figure 13.10, what was the purpose of placing the coleoptile tip under unilateral illumination?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, which type of growth is represented by a linear curve when the length of an organ is plotted against time?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term used to describe the increased growth per unit time?",
+      "reason": "near-duplicate of served question cmvhls55w09gqgpfhrt1qfnjh (cosine 0.930 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term used to describe the increased growth per unit time?",
+      "reason": "near-duplicate of served question cmvhls55w09gqgpfhrt1qfnjh (cosine 0.930 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:51:53.360Z",
+  "finishedAt": "2026-10-28T04:52:54.947Z",
+  "seconds": 62,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap123.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 23 — Pochampalli",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 21639,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 6816,
+      "completionTokens": 1385
+    },
+    "critique": {
+      "calls": 10,
+      "ms": 47047,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 3995,
+      "completionTokens": 1687
+    },
+    "solver": {
+      "calls": 49,
+      "ms": 21377,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 7692,
+      "completionTokens": 482
+    },
+    "form": {
+      "calls": 6,
+      "ms": 12926,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 1358,
+      "completionTokens": 411
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 3906,
+      "in": 3,
+      "out": 0,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 3619,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 164,
+      "completionTokens": 272
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT mentioned as a traditional craft in the passage?",
+      "ms": {
+        "draft": 2716,
+        "critique": 2841
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where do Vani and Prasad live?",
+      "ms": {
+        "draft": 2694,
+        "critique": 6131,
+        "solver": 1312
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the special cloth made in Pochampalli called?",
+      "ms": {
+        "draft": 2694,
+        "critique": 5646,
+        "solver": 1090,
+        "form": 3840
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How do weavers in Pochampalli learn their craft?",
+      "ms": {
+        "draft": 2694,
+        "critique": 6353,
+        "solver": 8777,
+        "form": 2164
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a weaver in Pochampalli wants to make a silk saree, what will they need?",
+      "ms": {
+        "draft": 2694,
+        "critique": 5107,
+        "solver": 7268,
+        "form": 826
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why are many weavers in Pochampalli leaving their villages?",
+      "ms": {
+        "draft": 2716,
+        "critique": 4649,
+        "solver": 941,
+        "form": 3347
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How do the weavers in Pochampalli learn their craft?",
+      "ms": {
+        "draft": 2716,
+        "critique": 4796,
+        "solver": 2155,
+        "form": 2207
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the special cloth made in Pochampalli called?",
+      "ms": {
+        "draft": 2716,
+        "critique": 4680,
+        "solver": 1764,
+        "form": 3146
+      },
+      "outcome": "dedupe",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT mentioned as a traditional craft in the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Where do Vani and Prasad live?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the special cloth made in Pochampalli called?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"mentions another traditional craft from the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "How do weavers in Pochampalli learn their craft?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"refers to an official training institution not mentioned in …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a weaver in Pochampalli wants to make a silk saree, what will they need?",
+      "reason": "options 2 and 3 are the same (\"Wool thread\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Why are many weavers in Pochampalli leaving their villages?",
+      "reason": "near-duplicate of served question cmvh514xm06vlgpfhhp7dffg3 (cosine 0.908 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "How do the weavers in Pochampalli learn their craft?",
+      "reason": "near-duplicate of served question cmvh514xh06v9gpfhn83ol2tp (cosine 0.961 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the special cloth made in Pochampalli called?",
+      "reason": "near-duplicate of served question cmvh514xb06v3gpfhu6sl29nc (cosine 0.952 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

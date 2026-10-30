@@ -1,0 +1,715 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T19:50:54.823Z",
+  "finishedAt": "2026-10-28T19:57:27.196Z",
+  "seconds": 392,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy209.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 9 — Atmospheric Circulation and Weather Systems",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)",
+      "[CBSE Class XII Geography, sample question paper, 2026-27]\n16. A coastal district is preparing for an approaching cyclone. The disaster 1\nmanagement team needs real-time information on cloud movement\nand storm intensity. Which satellite system will provide the most\nreliable support for this purpose?\nA. IRS – Indian Remote Sensing Satellite\nB. INSAT – Indian National Satellite System\nC. GSAT – Communication satellite for TV channels\nD. PSLV – Launch vehicle for satellites",
+      "[CBSE Class XII Geography, sample question paper, 2026-27]\n1. to 17 are Multiple Choice Type Questions 17X1=17\n1 Match the following:\nColumn A – Places\nI Thar desert 1\nII Mediterranean 2\nregions\nIII Katanga–Zambia 3\ncopper belt\nIV Kobe–Osaka region 4\nColumn B – Factors Affecting\nPopulation Distribution\nPleasant and comfortable climate\nIndustrialisation and job\nopportunities\nHarsh climatic condition and\ndifficult landform\nMineral deposits and mining\nactivities\nCodes-\nA. I-2, II-1, III-4, IV-3\nB. I-1, II-2, III-3, IV-4\nC. I-3, II-1, III-4, IV-2\nD. I-2, II-3, III-1, IV-4",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n24. \"There is low yield per acre but high yield per person in the interior\nparts of semi-arid lands of the mid-latitudes in the world.\" Support the 5\nstatement with suitable examples from different parts of the world."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 145964,
+      "in": 36,
+      "out": 35,
+      "rejects": 1,
+      "promptTokens": 34041,
+      "completionTokens": 7606
+    },
+    "critique": {
+      "calls": 43,
+      "ms": 274451,
+      "in": 35,
+      "out": 28,
+      "rejects": 7,
+      "promptTokens": 19525,
+      "completionTokens": 7408
+    },
+    "solver": {
+      "calls": 194,
+      "ms": 97417,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 32592,
+      "completionTokens": 1958
+    },
+    "form": {
+      "calls": 20,
+      "ms": 67929,
+      "in": 28,
+      "out": 15,
+      "rejects": 13,
+      "promptTokens": 6996,
+      "completionTokens": 1834
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 4312,
+      "in": 15,
+      "out": 6,
+      "rejects": 9,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 240102,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14042,
+      "completionTokens": 7410
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the primary cause of wind formation?",
+      "ms": {
+        "draft": 4452,
+        "critique": 5634,
+        "solver": 1916,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements best describes the movement of air due to pressure differences?",
+      "ms": {
+        "draft": 4452,
+        "critique": 5982,
+        "solver": 12813,
+        "form": 4285
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the direction of wind in the northern hemisphere around a low-pressure system?",
+      "ms": {
+        "draft": 4630,
+        "critique": 6774,
+        "solver": 1955,
+        "form": 3001
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is the main factor that determines the pattern of planetary winds?",
+      "ms": {
+        "draft": 4630,
+        "critique": 7199,
+        "solver": 1659,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, how does the El Niño phenomenon influence global weather patterns?",
+      "ms": {
+        "draft": 4630,
+        "critique": 7243,
+        "solver": 14697,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of air mass is warm and which is cold according to the passage?",
+      "ms": {
+        "draft": 4510,
+        "critique": 6821
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when a cold front moves faster than a warm front?",
+      "ms": {
+        "draft": 4510,
+        "critique": 7079
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is an airmass?",
+      "ms": {
+        "draft": 4630,
+        "critique": 8319,
+        "solver": 15471,
+        "form": 2341
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main difference between extra-tropical cyclones and tropical cyclones according to the passage?",
+      "ms": {
+        "draft": 4510,
+        "critique": 6163,
+        "solver": 1754,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the primary energy source that intensifies a tropical cyclone according to the passage?",
+      "ms": {
+        "draft": 4510,
+        "critique": 6676,
+        "solver": 1897,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a type of front mentioned in the passage?",
+      "ms": {
+        "draft": 4510,
+        "critique": 7481
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct direction of wind around a low-pressure system in the northern hemisphere?",
+      "ms": {
+        "draft": 4103,
+        "critique": 6500
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the surface air pressure is 1,000 mb, what would be the air pressure at 1 km above the surface?",
+      "ms": {
+        "draft": 4103,
+        "critique": 7192
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A coastal district is preparing for an approaching cyclone. The disaster management team needs real-time information on cloud movement and storm intensity. Which satellite system will provide the most reliable support for this purpose?",
+      "ms": {
+        "draft": 4103,
+        "critique": 5716,
+        "solver": 11205,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main cause of precipitation during a warm front?",
+      "ms": {
+        "draft": 3176,
+        "critique": 6578,
+        "solver": 1527,
+        "form": 4075
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of air mass is warm?",
+      "ms": {
+        "draft": 3176,
+        "critique": 6121,
+        "solver": 13936,
+        "form": 2172
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main difference between extra tropical cyclones and tropical cyclones?",
+      "ms": {
+        "draft": 3176,
+        "critique": 7180,
+        "solver": 1340,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the movement of air due to differences in atmospheric pressure?",
+      "ms": {
+        "draft": 4417,
+        "critique": 5888
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A coastal district is preparing for an approaching cyclone and needs real-time information on cloud movement and storm intensity. Which of the following satellite systems is most suitable for this purpose?",
+      "ms": {
+        "draft": 4417,
+        "critique": 7500
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main factor that determines the pattern of planetary winds?",
+      "ms": {
+        "draft": 3427,
+        "critique": 6152,
+        "solver": 9695,
+        "form": 1237
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A coastal district is preparing for an approaching cyclone. The disaster management team needs real-time information on cloud movement and storm intensity. Which satellite system will provide the most reliable support for this purpose?",
+      "ms": {
+        "draft": 4452,
+        "critique": 7719,
+        "solver": 1818,
+        "form": 3261
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A coastal district is preparing for an approaching cyclone. The disaster management team needs real-time information on cloud movement and storm intensity. Which satellite system will provide the most reliable support for this purpose?",
+      "ms": {
+        "draft": 4452,
+        "critique": 7100,
+        "solver": 1471,
+        "form": 3259
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A coastal district is preparing for an approaching cyclone. The disaster management team needs real-time information on cloud movement and storm intensity. Which satellite system will provide the most reliable support for this purpose?",
+      "ms": {
+        "draft": 4452,
+        "critique": 6507,
+        "solver": 1324,
+        "form": 3233
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A coastal district is preparing for an approaching cyclone. The disaster management team needs real-time information on cloud movement and storm intensity. Which satellite system will provide the most reliable support for this purpose?",
+      "ms": {
+        "draft": 4630,
+        "critique": 6244,
+        "solver": 1662,
+        "form": 2976
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are the winds north easterlies in the tropics even though the pressure gradient force is from north to south?",
+      "ms": {
+        "draft": 3329,
+        "critique": 6282,
+        "solver": 866,
+        "form": 1595
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct source region for the formation of air masses?",
+      "ms": {
+        "draft": 4103,
+        "critique": 6466,
+        "solver": 10805,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the correct location for the Inter Tropical Convergence Zone (ITCZ)?",
+      "ms": {
+        "draft": 4103,
+        "critique": 7743,
+        "solver": 11881,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do tropical cyclones dissipate when they reach land?",
+      "ms": {
+        "draft": 3176,
+        "critique": 6041,
+        "solver": 1673,
+        "form": 3424
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the wind that blows parallel to the isobars in the upper atmosphere?",
+      "ms": {
+        "draft": 3427,
+        "critique": 6752,
+        "solver": 1678,
+        "form": 4055
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit used in measuring air pressure?",
+      "ms": {
+        "draft": 3329,
+        "critique": 7222,
+        "solver": 1433,
+        "form": 2982,
+        "translation": 30362
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which force is primarily responsible for the movement of winds in the upper atmosphere?",
+      "ms": {
+        "draft": 3427,
+        "critique": 6063,
+        "solver": 1390,
+        "form": 3100,
+        "translation": 23873
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when two different air masses meet?",
+      "ms": {
+        "draft": 3176,
+        "critique": 7664,
+        "solver": 1498,
+        "form": 3243,
+        "translation": 39698
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to atmospheric pressure as one moves upward from sea level?",
+      "ms": {
+        "draft": 4452,
+        "critique": 5248,
+        "solver": 1226,
+        "form": 4744,
+        "translation": 35493
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the source region for the formation of air masses?",
+      "ms": {
+        "draft": 3329,
+        "critique": 6905,
+        "solver": 1737,
+        "form": 2978,
+        "translation": 43646
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information provided, what is the primary reason for the formation of the Hadley Cell?",
+      "ms": {
+        "draft": 4630,
+        "critique": 5896,
+        "solver": 1656,
+        "form": 4801,
+        "translation": 62286
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the primary cause of wind formation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following statements best describes the movement of air due to pressure differences?",
+      "reason": "options 0 and 1 say the same thing (\"Air moves from low pressure to high pressure\" / \"Air moves from high pressure to low pressure\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best describes the direction of wind in the northern hemisphere around a low-pressure system?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks the wind moves directly towards the pressure centre i…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what is the main factor that determines the pattern of planetary winds?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"The distribution of oceans and continents is a factor, but n…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, how does the El Niño phenomenon influence global weather patterns?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of air mass is warm and which is cold according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What happens when a cold front moves faster than a warm front?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is an airmass?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses airmass with ocean current systems due to mention o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main difference between extra-tropical cyclones and tropical cyclones according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the primary energy source that intensifies a tropical cyclone according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a type of front mentioned in the passage?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the name of the low-pressure zone where winds from the tropics converge?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the correct direction of wind around a low-pressure system in the northern hemisphere?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the surface air pressure is 1,000 mb, what would be the air pressure at 1 km above the surface?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A coastal district is preparing for an approaching cyclone. The disaster management team needs real-time information on cloud movement and storm intensity. Which satellite system will provide the most reliable support for this purpose?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main cause of precipitation during a warm front?",
+      "reason": "options 0 and 1 say the same thing (\"Cool air rising over warm air\" / \"Warm air rising over cool air\"); options 2 and 3 say the same thing (\"Cold air sinking below warm air\" / \"Warm air sinking below cold air\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which type of air mass is warm?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main difference between extra tropical cyclones and tropical cyclones?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following best describes the movement of air due to differences in atmospheric pressure?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A coastal district is preparing for an approaching cyclone and needs real-time information on cloud movement and storm intensity. Which of the following satellite systems is most suitable for this purpose?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main factor that determines the pattern of planetary winds?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A coastal district is preparing for an approaching cyclone. The disaster management team needs real-time information on cloud movement and storm intensity. Which satellite system will provide the most reliable support for this purpose?",
+      "reason": "near-duplicate of served question cmvl6bt880m4lgpfht3erixge (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A coastal district is preparing for an approaching cyclone. The disaster management team needs real-time information on cloud movement and storm intensity. Which satellite system will provide the most reliable support for this purpose?",
+      "reason": "near-duplicate of served question cmvl6bt880m4lgpfht3erixge (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A coastal district is preparing for an approaching cyclone. The disaster management team needs real-time information on cloud movement and storm intensity. Which satellite system will provide the most reliable support for this purpose?",
+      "reason": "near-duplicate of served question cmvl6bt880m4lgpfht3erixge (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A coastal district is preparing for an approaching cyclone. The disaster management team needs real-time information on cloud movement and storm intensity. Which satellite system will provide the most reliable support for this purpose?",
+      "reason": "near-duplicate of served question cmvl6bt880m4lgpfht3erixge (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why are the winds north easterlies in the tropics even though the pressure gradient force is from north to south?",
+      "reason": "near-duplicate of served question cmvhrv1nt0agfgpfhushod7q4 (cosine 0.968 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is the correct source region for the formation of air masses?",
+      "reason": "near-duplicate of served question cmvhrv1nj0af9gpfhl1p3qash (cosine 0.902 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following is the correct location for the Inter Tropical Convergence Zone (ITCZ)?",
+      "reason": "near-duplicate of served question cmvhrv1nq0ag3gpfhxlk9r0u4 (cosine 0.924 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why do tropical cyclones dissipate when they reach land?",
+      "reason": "near-duplicate of served question cmvovwksi07xvgp213iojn0l6 (cosine 0.901 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the wind that blows parallel to the isobars in the upper atmosphere?",
+      "reason": "near-duplicate of served question cmvovwks607wpgp21oxqh6kqv (cosine 0.923 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

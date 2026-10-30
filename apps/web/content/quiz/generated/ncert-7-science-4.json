@@ -21,147 +21,47 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T02:25:12.657Z",
+  "generatedAt": "2026-10-29T16:10:45.574Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "If a material allows electricity to pass through it, what can we conclude about it?",
+      "difficulty": 1,
+      "stem": "Which of the following is a property of metals?",
       "choices": [
-        "It is a non-metal",
-        "It is a poor conductor of electricity",
-        "It is a good conductor of electricity",
-        "It is not suitable for use in electric circuits"
+        "They are generally non-lustrous",
+        "They are poor conductors of heat and electricity",
+        "They are malleable and ductile",
+        "They react vigorously with water"
       ],
       "answerIndex": 2,
-      "solution": "If a material allows electricity to pass through it, it must be a good conductor of electricity because that is the defining property of such materials. Non-metals are typically poor conductors, so the option stating it is a non-metal is incorrect. The statement that it is a poor conductor directly contradicts the ability to allow electricity to pass. Materials that are good conductors are suitable for use in electric circuits, making the last option incorrect.",
+      "solution": "Metals are known for being malleable and ductile, which means they can be shaped into different forms without breaking. Non-lustrous is a property of non-metals, poor conductors refer to non-metals, and not reacting with water is not a general property of metals.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई पदार्थ बिजली के पार गुजरने की अनुमति देता है, तो हम क्या निष्कर्ष निकाल सकते हैं?",
+          "stem": "निम्नलिखित में से कौन-सा धातुओं का गुण है?",
           "choices": [
-            "यह एक अधातु है",
-            "यह बिजली का खराब चालक है",
-            "यह बिजली का अच्छा चालक है",
-            "यह बिजली के परिपथ में उपयोग के लिए उपयुक्त नहीं है"
+            "वे आमतौर पर चमकीले नहीं होते",
+            "वे ऊष्मा और विद्युत के खराब चालक होते हैं",
+            "वे ढालने योग्य और खींचने योग्य होते हैं",
+            "वे पानी के साथ तीव्र रूप से अभिक्रिया करते हैं"
           ],
-          "solution": "यदि कोई पदार्थ बिजली के पार गुजरने की अनुमति देता है, तो यह बिजली का अच्छा चालक होना चाहिए क्योंकि ऐसे पदार्थों की विशेषता यही है। अधातु आमतौर पर खराब चालक होते हैं, इसलिए यह विकल्प गलत है। यह कथन कि यह बिजली का खराब चालक है, बिजली के पार गुजरने की क्षमता के सीधे विरोधाभास है। अच्छे चालक पदार्थ बिजली के परिपथ में उपयोग के लिए उपयुक्त होते हैं, इसलिए अंतिम विकल्प गलत है।",
+          "solution": "धातुओं के ढालने योग्य और खींचने योग्य होने के कारण उन्हें अलग-अलग आकृति में बनाया जा सकता है। चमकीले नहीं होना अधातुओं का गुण है, खराब चालक अधातुओं के लिए है, और पानी के साथ अभिक्रिया न करना धातुओं का सामान्य गुण नहीं है।",
           "imageAlt": null,
-          "critique": "Translation is accurate, technical terms match standard Hindi textbook usage, and the logic of the solution aligns with the original.",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium educational context.",
           "flag": null
         },
         "mr": {
-          "stem": "एका सामग्रीने विद्युत पार करू शकते, तर आपण काय निष्कर्ष काढू शकतो?",
+          "stem": "खालीलपैकी कोणते धातूंचे गुणधर्म आहे?",
           "choices": [
-            "ती अधातू आहे",
-            "ती विद्युत खराब वाहक आहे",
-            "ती विद्युत चांगला वाहक आहे",
-            "ती विद्युत परिपथांमध्ये वापरण्यास अनुकूल नाही"
+            "ते सामान्यतः अपारदर्शक असतात",
+            "ते ऊष्मा आणि विद्युत वाईट वाहक असतात",
+            "ते तापू शकणारे आणि रूपांतरित करणारे असतात",
+            "ते पाण्याशी तीव्र रूपाने ऍक्टिव्ह होतात"
           ],
-          "solution": "एका सामग्रीने विद्युत पार करू शकते, तर ती विद्युत चांगला वाहक असणे आवश्यक आहे कारण अशा सामग्रीची वैशिष्ट्य असे आहे. अधातू सामान्यतः खराब वाहक असतात, त्यामुळे ती अधातू आहे असा विकल्प चूक आहे. ती खराब वाहक आहे असा विकल्प विद्युत पार करण्याच्या क्षमतेला विरोध करतो. चांगले वाहक असलेल्या सामग्री विद्युत परिपथांमध्ये वापरण्यास अनुकूल असतात, त्यामुळे शेवटचा विकल्प चूक आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses non-metals with metals",
-        "Confuses good conductors with poor conductors",
-        null,
-        "Misunderstands the application of conductors in circuits"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as materials that allow electricity to pass through are good conductors. The other options are incorrect and represent common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.1 Properties of Materials",
-            "4.1.4 Conduction of heat"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.1 Properties of Materials",
-            "4.1.5 Conduction of electricity"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 7,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.2 Effect of Air and Water on Metals: Iron"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:25:12.657Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following is a property of non-metals?",
-      "choices": [
-        "They are good conductors of electricity",
-        "They are malleable and ductile",
-        "They are sonorous",
-        "They are poor conductors of heat"
-      ],
-      "answerIndex": 3,
-      "solution": "Non-metals are poor conductors of heat, which is a fundamental property of these elements. Unlike metals, non-metals do not conduct electricity well and are typically brittle, not malleable or ductile. They also do not produce a ringing sound when struck, meaning they are not sonorous.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा अधातुओं का गुण है?",
-          "choices": [
-            "वे विद्युत के अच्छे चालक होते हैं",
-            "वे ढालने योग्य और खींचे जा सकने वाले होते हैं",
-            "वे ध्वनि उत्पन्न करते हैं",
-            "वे ऊष्मा के खराब चालक होते हैं"
-          ],
-          "solution": "अधातु ऊष्मा के खराब चालक होते हैं, जो इन तत्वों का आधारभूत गुण है। धातुओं के विपरीत, अधातु विद्युत के अच्छे चालक नहीं होते और आमतौर पर भंगुर होते हैं, ढालने योग्य या खींचे जा सकने वाले नहीं होते। वे ठोकर मारने पर ध्वनि उत्पन्न नहीं करते, अर्थात वे ध्वनि उत्पन्न करने वाले नहीं होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option 3, and all distractors are still incorrect.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते अधातूंचे गुणधर्म आहे?",
-          "choices": [
-            "ते विद्युत चांगले वाहक आहेत",
-            "ते तापनीय आणि तांबेदार आहेत",
-            "ते ध्वनिमय आहेत",
-            "ते उष्मा चांगले वाहक नाहीत"
-          ],
-          "solution": "अधातू उष्मा चांगले वाहक नसतात, जे या घटकांचा मूलभूत गुणधर्म आहे. धातूंपेक्षा अधातू विद्युत चांगले वाहक नसतात आणि सामान्यतः तुटक असतात, तापनीय किंवा तांबेदार नसतात. त्यांना ठेचल्यास ते ध्वनिमय नसतात, म्हणजेच ते ध्वनिमय नसतात.",
+          "solution": "धातूंचे तापू शकणारे आणि रूपांतरित करणारे असतात, जे त्यांना विविध आकारात बनविण्यास परवानगी देते. अपारदर्शक हे अधातूंचे गुणधर्म आहे, वाईट वाहक अधातूंचे सूचित करतात, आणि पाण्याशी ऍक्टिव्ह होणे धातूंचे सामान्य गुणधर्म नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
           "flag": null
@@ -172,120 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses non-metals with metals",
-        "Thinks non-metals are malleable",
-        "Thinks non-metals are sonorous",
-        null
+        "Confuses properties of non-metals with metals",
+        "Confuses properties of non-metals with metals",
+        null,
+        "students often confuse metals with reactive non-metals like halogens"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 3, as non-metals are indeed poor conductors of heat and electricity. The other options describe properties of metals, and the author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 8,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.2 Effect of Air and Water on Metals: Iron"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 9,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.3 Eff ect of Air and Water on Other",
-            "Metals"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 10,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.4 Substances that Behave Diff erently",
-            "from Metals in Air and Water"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:25:12.657Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following is a non-metal that is essential for respiration?",
-      "choices": [
-        "Oxygen",
-        "Carbon",
-        "Nitrogen",
-        "Chlorine"
-      ],
-      "answerIndex": 0,
-      "solution": "Oxygen is a non-metal that is essential for respiration because it is required for cellular respiration, where it acts as the final electron acceptor in the production of energy. Carbon, nitrogen, and chlorine are also non-metals, but they are not directly involved in the respiratory process in the same critical way as oxygen.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक अधातु है जो श्वसन के लिए आवश्यक है?",
-          "choices": [
-            "ऑक्सीजन",
-            "कार्बन",
-            "नाइट्रोजन",
-            "क्लोरीन"
-          ],
-          "solution": "ऑक्सीजन एक अधातु है जो श्वसन के लिए आवश्यक है क्योंकि यह सेलुलर श्वसन में ऊर्जा के उत्पादन में अंतिम इलेक्ट्रॉन ग्राहक के रूप में कार्य करती है। कार्बन, नाइट्रोजन और क्लोरीन भी अधातु हैं, लेकिन वे श्वसन प्रक्रिया में ऑक्सीजन के समान आवश्यक तरीके से शामिल नहीं होते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता अधातू श्वासोच्छ्वासासाठी आवश्यक आहे?",
-          "choices": [
-            "ऑक्सीजन",
-            "कार्बन",
-            "नायट्रोजन",
-            "क्लोरीन"
-          ],
-          "solution": "ऑक्सीजन एक अधातू आहे जी श्वासोच्छ्वासासाठी आवश्यक आहे कारण ती सेल्युलर श्वासोच्छ्वासात ऊर्जेच्या उत्पादनात अंतिम इलेक्ट्रॉन ग्राहक म्हणून कार्य करते. कार्बन, नायट्रोजन आणि क्लोरीन देखील अधातू आहेत, परंतु ते श्वासोच्छ्वास प्रक्रियेत ऑक्सीजनपेक्षा अधिक महत्वपूर्ण पद्धतीने संलग्न नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses oxygen with other non-metals",
-        "Confuses carbon's role in life forms with its role in respiration",
-        "Confuses nitrogen's use in fertilizers with its role in respiration"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed. Oxygen is indeed a non-metal essential for respiration, and the reasoning for the other options reflects common misconceptions.",
+      "critique": "The correct answer is 2, as metals are indeed malleable and ductile. The other options are common misconceptions about non-metal properties, which align with the author's reasoning.",
       "sources": [
         {
           "document": "ncert/7/science/gecu104.pdf",
@@ -324,49 +124,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:25:12.657Z",
+      "generatedAt": "2026-10-29T16:10:45.574Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Based on the experiment with iron nails, which condition causes the formation of brown deposits?",
+      "difficulty": 2,
+      "stem": "What is the main reason for using metal vessels for cooking?",
       "choices": [
-        "Only air",
-        "Only water",
-        "Both air and water",
-        "Neither air nor water"
+        "They are light in weight",
+        "They are cheap",
+        "They are good conductors of heat",
+        "They are not durable"
       ],
       "answerIndex": 2,
-      "solution": "The formation of brown deposits on an iron nail occurs when both air and water are present, as this combination leads to rusting. Without air, the nail does not corrode, and without water, the chemical reaction necessary for rust cannot take place. Therefore, the correct answer is that both air and water cause the formation of brown deposits.",
+      "solution": "Metals are good conductors of heat, allowing them to transfer heat efficiently and cook food evenly. Other options like weight, cost, or durability are not related to the primary reason for their use in cooking.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "लोहे के कीलों के प्रयोग पर आधारित, कौन सी स्थिति भूरे निक्षेपों के निर्माण के कारण होती है?",
+          "stem": "कुकिंग के लिए धातु के बर्तन क्यों उपयोग किए जाते हैं?",
           "choices": [
-            "केवल हवा",
-            "केवल पानी",
-            "केवल हवा और पानी",
-            "न ही हवा और न ही पानी"
+            "वे भारी होते हैं",
+            "वे सस्ते होते हैं",
+            "वे ऊष्मा के अच्छे चालक होते हैं",
+            "वे अटूट नहीं होते"
           ],
-          "solution": "लोहे के कील पर भूरे निक्षेपों के निर्माण के कारण जब हवा और पानी दोनों उपलब्ध होते हैं, क्योंकि यह संयोजन जंग लगने के कारण होता है। हवा के बिना कील जंग नहीं खाती है, और पानी के बिना जंग लगने के लिए आवश्यक रासायनिक अभिक्रिया नहीं हो सकती है। इसलिए, सही उत्तर यह है कि हवा और पानी भूरे निक्षेपों के निर्माण के कारण होते हैं।",
+          "solution": "धातु ऊष्मा के अच्छे चालक होते हैं, जिससे वे ऊष्मा के प्रभावी रूप से संचरण की अनुमति देते हैं और खाना समान रूप से पका सकते हैं। भार, लागत या टिकाऊपन जैसे अन्य विकल्प खाना पकाने में उनके उपयोग के प्राथमिक कारण से संबंधित नहीं हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "लोखंडी नाल्यांच्या प्रयोगावर आधारित, कोणती अवस्था बॅगन जमा बनवते?",
+          "stem": "रोजगारासाठी धातूच्या बर्ती वापरण्याचा मुख्य कारण काय आहे?",
           "choices": [
-            "केवळ हवा",
-            "केवळ पाणी",
-            "केवळ हवा आणि पाणी",
-            "हवा किंवा पाणी नाही"
+            "त्या भारी असतात",
+            "त्या स्वस्त असतात",
+            "त्या ऊष्मा चांगले वाहू शकतात",
+            "त्या अटूक नसतात"
           ],
-          "solution": "लोखंडी नाल्यावर बॅगन जमा बनतो जेव्हा हवा आणि पाणी दोन्ही उपलब्ध असतात, कारण हा संयोग जंगल बनवतो. हवा नसल्यास नाल्याचा अपघटन होत नाही, आणि पाणी नसल्यास जंगल बनवण्यासाठी आवश्यक रासायनिक अभिक्रिया होत नाही. म्हणूनच, बॅगन जमा बनवण्यासाठी हवा आणि पाणी दोन्ही आवश्यक आहेत.",
+          "solution": "धातू ऊष्मा चांगले वाहू शकतात, ज्यामुळे ते ऊष्मा जलदपणे परिवहित करू शकतात आणि खाद्य पाक करताना समानरूपे गरम करू शकतात. वजन, किंमत किंवा कायमस्वरूपीता यासारख्या इतर विकल्प त्यांच्या रोजगारासाठी वापरल्याच्या मुख्य कारणाशी संबंधित नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms like 'जंगल' (rust) which is commonly used in Marathi science textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for 'good conductors of heat' and 'durable'.",
           "flag": null
         }
       },
@@ -375,10 +175,213 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Overlooks the combined effect of air and water",
-        "Misinterprets the role of water alone in the process",
+        "Incorrectly assumes that the purpose is to reduce weight",
+        "Incorrectly suggests that cost is the main factor",
         null,
-        "Ignores the role of air in the process"
+        "Confuses the purpose of material choice in cooking vessels with durability"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as metals are good conductors of heat, which is essential for cooking. The other options are incorrect and reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu104.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: The World of Metals and Non-metals",
+            "4.1 Properties of Materials",
+            "4.1.4 Conduction of heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu104.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: The World of Metals and Non-metals",
+            "4.1 Properties of Materials",
+            "4.1.5 Conduction of electricity"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu104.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: The World of Metals and Non-metals",
+            "4.2 Effect of Air and Water on Metals: Iron"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:10:45.574Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What happens when a metal reacts with oxygen?",
+      "choices": [
+        "It forms an acidic oxide",
+        "It forms a basic oxide",
+        "It forms a neutral oxide",
+        "It does not react"
+      ],
+      "answerIndex": 1,
+      "solution": "Metals typically react with oxygen to form basic oxides, which have properties opposite to acids. This is because metal atoms tend to lose electrons, forming cations that combine with oxide ions to create basic compounds. Acidic oxides are usually formed by non-metals, and neutral oxides are rare and not typically formed by metals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "धातु के ऑक्सीजन के साथ अभिक्रिया होने पर क्या होता है?",
+          "choices": [
+            "यह एसिडीक ऑक्साइड बनाता है",
+            "यह बेसिक ऑक्साइड बनाता है",
+            "यह न्यूट्रल ऑक्साइड बनाता है",
+            "यह अभिक्रिया नहीं करता"
+          ],
+          "solution": "धातु आम तौर पर ऑक्सीजन के साथ अभिक्रिया करके बेसिक ऑक्साइड बनाते हैं, जिनके गुण एसिड के विपरीत होते हैं। यह इसलिए होता है क्योंकि धातु के परमाणु इलेक्ट्रॉन खो देते हैं, जिससे कैटायन बनते हैं जो ऑक्साइड आयनों के साथ मिलकर बेसिक यौगिक बनाते हैं। एसिडिक ऑक्साइड आमतौर पर अधातुओं द्वारा बनाए जाते हैं, और न्यूट्रल ऑक्साइड दुर्लभ होते हैं और आमतौर पर धातुओं द्वारा नहीं बनाए जाते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "धातू ऑक्सीजनशी अभिक्रिया करताना काय होते?",
+          "choices": [
+            "ते अम्लीय ऑक्साइड तयार करते",
+            "ते क्षारीय ऑक्साइड तयार करते",
+            "ते उदासीन ऑक्साइड तयार करते",
+            "ते अभिक्रिया करत नाही"
+          ],
+          "solution": "धातूंनी ऑक्सीजनशी अभिक्रिया करून क्षारीय ऑक्साइड तयार करतात, जे अम्लांच्या विरुद्ध गुणधर्म असतात. हे तर धातू अणू इलेक्ट्रॉन गमावतात, ज्यामुळे कॅटायन तयार होतात जे ऑक्साइड आयॉन्ससह जोडून क्षारीय यौगिके तयार करतात. अम्लीय ऑक्साइड मुख्यतः अधातूंमुळे तयार होतात, आणि उदासीन ऑक्साइड अतिशय दुर्मिळ असतात आणि मुख्यतः धातूंमुळे तयार होत नाहीत.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the reaction of non-metals with oxygen",
+        null,
+        "Confuses the reaction of non-metals with oxygen",
+        "Confuses the reaction of non-metals with oxygen"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Metals typically form basic oxides when reacting with oxygen, which aligns with the author's key. The distractors are all plausible misconceptions, as non-metals form acidic or neutral oxides, and some non-metals may not react.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu104.pdf",
+          "ordinal": 11,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: The World of Metals and Non-metals",
+            "4.5 Are Non-metals Essential in",
+            "Everyday Life?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu104.pdf",
+          "ordinal": 12,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 4: The World of Metals and Non-metals",
+            "4.5 Are Non-metals Essential in",
+            "Everyday Life?",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu104.pdf",
+          "ordinal": 13,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 4: The World of Metals and Non-metals",
+            "4.5 Are Non-metals Essential in",
+            "Everyday Life?",
+            "Let Us Enhance Our Learning"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:10:45.574Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Based on the observation in Activity 4.4, which of the following materials is a good conductor of electricity?",
+      "choices": [
+        "Sulfur",
+        "Dry wood",
+        "Copper wire",
+        "Nylon rope"
+      ],
+      "answerIndex": 2,
+      "solution": "Copper wire is a good conductor of electricity because it allows electric current to flow easily through it. Sulfur, dry wood, and nylon rope are poor conductors, as they do not allow electric current to pass through them effectively.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्रियाकलाप 4.4 में अवलोकन के आधार पर, निम्नलिखित में से कौन-सा पदार्थ विद्युत का अच्छा चालक है?",
+          "choices": [
+            "सल्फर",
+            "शुष्क लकड़ी",
+            "तांबे का तार",
+            "नायलॉन का रस्सा"
+          ],
+          "solution": "तांबे का तार विद्युत का अच्छा चालक है क्योंकि यह विद्युत धारा के प्रवाह की अनुमति देता है। सल्फर, शुष्क लकड़ी और नायलॉन का रस्सा खराब चालक हैं, क्योंकि ये विद्युत धारा के पारगमन की अनुमति नहीं देते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "क्रियाकलाप 4.4 मधील निरीक्षणानुसार, खालीलपैकी कोणता सामग्री विद्युत चांगला वाहक आहे?",
+          "choices": [
+            "सल्फर",
+            "शुष्क लाकडे",
+            "तांब्याचा तार",
+            "नायलॉन रस्सी"
+          ],
+          "solution": "तांब्याचा तार विद्युत चांगला वाहक आहे कारण तो विद्युत प्रवाह त्यामधून सहज वाहू देतो. सल्फर, शुष्क लाकडे आणि नायलॉन रस्सी खराब वाहक आहेत, कारण ते विद्युत प्रवाह त्यांमधून पार करू शकत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Sulfur is a non-metal and a poor conductor",
+        "Dry wood is a poor conductor",
+        null,
+        "Nylon rope is a poor conductor"
       ],
       "solverAnswers": [
         2,
@@ -388,7 +391,7 @@
         2
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as the experiment shows that both air and water are required for rusting, which causes brown deposits. The author's reasoning and solution are accurate.",
+      "critique": "The correct answer is 2 (Copper wire), as copper is a metal and a good conductor of electricity. The other options are non-metals or insulators, which aligns with the author's reasoning and the scientific understanding of conductivity.",
       "sources": [
         {
           "document": "ncert/7/science/gecu104.pdf",
@@ -424,49 +427,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:25:12.657Z",
+      "generatedAt": "2026-10-29T16:10:45.574Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "An electrician uses a screwdriver with a plastic handle. What is the most likely reason for this?",
+      "difficulty": 4,
+      "stem": "Based on the experiment described, which condition is essential for the formation of rust on an iron nail?",
       "choices": [
-        "Plastic is a good conductor of electricity",
-        "Plastic is a poor conductor of electricity",
-        "Plastic is very expensive",
-        "Plastic is very light"
+        "Only water",
+        "Only air",
+        "Both water and air",
+        "Only oil"
       ],
-      "answerIndex": 1,
-      "solution": "Plastic is a poor conductor of electricity, which means it does not allow electric current to pass through easily, making it safe to use as a handle to prevent electric shocks. Other options are incorrect because being a good conductor would be dangerous, being expensive or light is unrelated to the purpose of the handle.",
+      "answerIndex": 2,
+      "solution": "Rust forms when iron reacts with both water and oxygen, which are present in air. Experiments show that iron nails do not rust in dry air or water alone, but do rust when both are present. Therefore, both water and air are essential for rust formation. Only water or only air cannot cause rust, and oil would prevent it by blocking contact with water and air.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक बिजली के कारीगर ने प्लास्टिक के हैंडल वाला स्क्रूड्राइवर उपयोग करता है। इसके लिए सबसे संभावित कारण क्या है?",
+          "stem": "विवरण में वर्णित प्रयोग के आधार पर, लोहे की कील पर जंग के निर्माण के लिए कौन सी स्थिति आवश्यक है?",
           "choices": [
-            "प्लास्टिक विद्युत का अच्छा चालक है",
-            "प्लास्टिक विद्युत का खराब चालक है",
-            "प्लास्टिक बहुत महंगा है",
-            "प्लास्टिक बहुत हल्का है"
+            "केवल पानी",
+            "केवल हवा",
+            "पानी और हवा दोनों",
+            "केवल तेल"
           ],
-          "solution": "प्लास्टिक विद्युत का खराब चालक है, जिसका अर्थ है कि यह विद्युत धारा के पार आसानी से नहीं गुजरता है, जो हैंडल के रूप में उपयोग करने के लिए सुरक्षित है ताकि विद्युत झटका न लगे। अन्य विकल्प गलत हैं क्योंकि अच्छा चालक होना खतरनाक होता, महंगा या हल्का होना हैंडल के उद्देश्य से संबंधित नहीं है।",
+          "solution": "जंग लोहे के पानी और ऑक्सीजन के साथ अभिक्रिया के कारण बनती है, जो हवा में उपस्थित होते हैं। प्रयोग दर्शाते हैं कि सूखी हवा या पानी के अकेले होने पर लोहे की कील जंग नहीं खाती है, लेकिन जब दोनों मौजूद होते हैं तो जंग खाती है। इसलिए पानी और हवा दोनों जंग के निर्माण के लिए आवश्यक हैं। केवल पानी या केवल हवा जंग नहीं कर सकते हैं और तेल जंग को रोकता है क्योंकि यह पानी और हवा के संपर्क को रोकता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms like 'खराब चालक' for 'poor conductor'.",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terms.",
           "flag": null
         },
         "mr": {
-          "stem": "एक विद्युत अभियंता प्लास्टिक बॉडी असलेल्या स्क्रूड्राइवरचा वापर करतो. हे करण्याचा सर्वात शक्य कारण काय असेल?",
+          "stem": "प्रयोगावर आधारित, लोखंडाच्या तारावर जंगली बनण्यासाठी कोणती परिस्थिती आवश्यक आहे?",
           "choices": [
-            "प्लास्टिक विद्युत चांगला वाहक आहे",
-            "प्लास्टिक विद्युत खराब वाहक आहे",
-            "प्लास्टिक खूप महाग आहे",
-            "प्लास्टिक खूप हलका आहे"
+            "केवळ पाणी",
+            "केवळ हवा",
+            "केवळ पाणी आणि हवा",
+            "केवळ तेल"
           ],
-          "solution": "प्लास्टिक विद्युत खराब वाहक आहे, जे विद्युत प्रवाह आसानीने पार करू शकत नाही, जे हाताच्या भागासाठी सुरक्षित बनवते आणि विद्युत झटका टाळते. इतर विकल्प चुकीचे आहेत कारण चांगला वाहक धोकादायक असेल, आणि महाग असणे किंवा हलके असणे हे हाताच्या भागाच्या उद्देशाशी निगडित नाही.",
+          "solution": "लोखंड जंगली बनतो जेव्हा लोखंड पाण्यासह ऑक्सिजनसह अभिक्रिया करतो, जे हवेत उपलब्ध असते. प्रयोगांमध्ये दिसून येते की शुष्क हवेत किंवा केवळ पाण्यात लोखंडाच्या तारांवर जंगली बनत नाही, परंतु जेव्हा दोन्ही उपलब्ध असतात तेव्हा जंगली बनते. म्हणून, जंगली बनण्यासाठी पाणी आणि हवा दोन्ही आवश्यक आहेत. केवळ पाणी किंवा केवळ हवा जंगली बनवू शकत नाही, आणि तेल जंगली बनण्यास अडथळा निर्माण करून लोखंडाच्या तारांवर पाणी आणि हवेशी संपर्क रोखते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms like 'वाहक' (conductor) that are standard in Marathi-medium science education.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
@@ -475,444 +478,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses conductors with insulators",
+        "Misunderstands the experiment's results",
+        "Misunderstands the experiment's results",
         null,
-        "Misunderstands the purpose of using plastic",
-        "Focuses on irrelevant properties of plastic"
+        "Student thinks oil prevents rust and therefore is the only condition needed"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as plastic is a poor conductor of electricity, making it suitable for insulating the handle of a screwdriver. The other options are either incorrect or irrelevant.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.1 Properties of Materials",
-            "4.1.4 Conduction of heat"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.1 Properties of Materials",
-            "4.1.5 Conduction of electricity"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 7,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.2 Effect of Air and Water on Metals: Iron"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:25:12.657Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If a material is not lustrous and breaks into pieces when beaten, what can be concluded about it?",
-      "choices": [
-        "It is a metal",
-        "It is a non-metal",
-        "It is a liquid",
-        "It is a gas"
-      ],
-      "answerIndex": 1,
-      "solution": "Non-metals typically lack luster and are brittle, meaning they break when struck. This matches the description of the material, making it a non-metal. Metals are shiny and can be shaped without breaking, while liquids and gases do not have a fixed shape or break in this way.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई पदार्थ चमकदार नहीं है और जब इसे बीच दिया जाता है तो यह टुकड़ों में टूट जाता है, तो इसके बारे में क्या निष्कर्ष निकाला जा सकता है?",
-          "choices": [
-            "यह धातु है",
-            "यह अधातु है",
-            "यह द्रव है",
-            "यह गैस है"
-          ],
-          "solution": "अधातुओं के पास आमतौर पर चमक नहीं होती है और वे भंगुर होते हैं, अर्थात जब इन्हें मारा जाता है तो ये टूट जाते हैं। यह विवरण पदार्थ के विवरण के साथ मेल खाता है, जिसके कारण यह एक अधातु है। धातुओं के पास चमक होती है और इन्हें टूटे बिना आकार दिया जा सकता है, जबकि द्रव और गैसों के पास एक निश्चित आकार नहीं होता है या इन्हें इस तरह से टूटते नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard scientific terminology (अधातु, धातु) as used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर कोणताही वस्तू चकचकीत नसेल आणि ती ठेचल्यावर तुकडे होईल, तर त्याबद्दल काय निष्कर्ष काढता येईल?",
-          "choices": [
-            "तो धातू आहे",
-            "तो अधातू आहे",
-            "तो द्रव आहे",
-            "तो वायू आहे"
-          ],
-          "solution": "अधातूंची सामान्य वैशिष्ट्ये चकचकीत नसणे आणि तुटक असणे असते, म्हणजेच त्यांना ठेचल्यावर तुकडे होतात. हे वर्णन वस्तूच्या वर्णनाशी जुळते, ज्यामुळे तो अधातू असतो. धातूंची चकचकीत असते आणि त्यांना तुटू नये असे आकृती देण्यात येते, तर द्रव आणि वायूंची स्थिर आकृती नसते किंवा ते अशा प्रकारे तुटत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms (अधातू, धातू) that are standard in Marathi science textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses non-metals with metals",
-        null,
-        "Misinterprets the properties of gases",
-        "Confuses liquid properties with the given description"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that non-metals are not lustrous and brittle, and the reasoning aligns with the properties of non-metals. The distractors are all plausible misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.1 Properties of Materials",
-            "4.1.1 Malleability"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.1 Properties of Materials",
-            "4.1.1 Malleability"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.1 Properties of Materials",
-            "4.1.2 Ductility"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.1 Properties of Materials",
-            "4.1.3 Sonority"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:25:12.657Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why are only a few metals suitable for making jewellery?",
-      "choices": [
-        "Because they are too light",
-        "Because they are not lustrous",
-        "Because they are not ductile",
-        "Because they are not reactive"
-      ],
-      "answerIndex": 3,
-      "solution": "Metals that are suitable for making jewellery are usually not reactive, as they do not tarnish or corrode easily. Reactivity is a key factor in determining the suitability of metals for jewellery. Other factors include luster, malleability, and ductility, but the main reason is the low reactivity of the metal. Heavy metals are not suitable for jewellery, and lustrous or malleable metals are not necessarily unsuitable, but reactivity is the key issue.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "क्योंकि केवल कुछ धातुओं के लिए आभूषण बनाने के लिए उपयुक्त होता है?",
-          "choices": [
-            "क्योंकि वे बहुत हल्के होते हैं",
-            "क्योंकि वे चमकदार नहीं होते",
-            "क्योंकि वे तन्य नहीं होते",
-            "क्योंकि वे अभिक्रियाशील नहीं होते"
-          ],
-          "solution": "आभूषण बनाने के लिए उपयुक्त धातुएं आमतौर पर अभिक्रियाशील नहीं होती हैं, क्योंकि वे आसानी से गलन या जंग नहीं खाती हैं। अभिक्रियाशीलता धातुओं के आभूषण बनाने के लिए उपयुक्त होने के निर्धारण में एक मुख्य कारक है। अन्य कारकों में चमक, ढालनशीलता और तन्यता शामिल हैं, लेकिन मुख्य कारण धातु की कम अभिक्रियाशीलता है। भारी धातुएं आभूषण के लिए उपयुक्त नहीं होती हैं, और चमकदार या ढालनशील धातुएं आवश्यक रूप से अनुपयुक्त नहीं होती हैं, लेकिन अभिक्रियाशीलता मुख्य मुद्दा है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and structure. All options and the solution are correctly translated and maintain the original intent and logic.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "काही धातू अभरणे बनवण्यासाठी योग्य का आहेत?",
-          "choices": [
-            "कारण ते खूप हलकी आहेत",
-            "कारण ते चकचकीत नाहीत",
-            "कारण ते नसतात विस्तारीत",
-            "कारण ते अतिशय प्रतिक्रियाशील नाहीत"
-          ],
-          "solution": "अभरणे बनवण्यासाठी उपयुक्त धातू अक्सर प्रतिक्रियाशील नसतात, कारण ते ताजे राहतात किंवा खुरकी खात नाहीत. प्रतिक्रियाशीलता धातू अभरणे बनवण्यासाठी योग्य असल्याचे ठरविण्याचा मुख्य कारक आहे. इतर कारकांमध्ये चकचकीतपणा, तापडता आणि विस्तारीतपणा समाविष्ट आहेत, परंतु मुख्य कारण धातूची कमी प्रतिक्रियाशीलता आहे. भारी धातू अभरणे बनवण्यासाठी योग्य नसतात, आणि चकचकीत किंवा तापडता धातू आवश्यकतेनुसार अयोग्य नसतात, परंतु प्रतिक्रियाशीलता हा मुख्य विषय आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for 'ductile' and 'reactive'.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "students may confuse weight with suitability for jewelry, thinking lighter metals are better",
-        "Students may confuse the property of luster with reactivity, thinking that non-reactive metals are not lustrous",
-        "students may confuse malleability with ductility and think only ductility is important for jewelry",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 3, as low reactivity is indeed a key factor in metal suitability for jewelry. The author's reasoning is sound, and the misconceptions described for the other options are plausible for students.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 11,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.5 Are Non-metals Essential in",
-            "Everyday Life?"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 12,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.5 Are Non-metals Essential in",
-            "Everyday Life?",
-            "In a Nutshell"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 13,
-          "pageStart": 16,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.5 Are Non-metals Essential in",
-            "Everyday Life?",
-            "Let Us Enhance Our Learning"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:25:12.657Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why do metals generally not form a large number of compounds compared to non-metals?",
-      "choices": [
-        "Metals are not reactive",
-        "Metals have a tendency to lose electrons",
-        "Metals are not found in nature",
-        "Metals are not malleable"
-      ],
-      "answerIndex": 1,
-      "solution": "Metals have a tendency to lose electrons, which allows them to form ionic compounds, but this limited type of bonding results in fewer compound varieties compared to non-metals, which can form a wide range of covalent bonds. The option that metals are not reactive is incorrect because many metals are highly reactive. The claim that metals are not found in nature is false, as metals are commonly found in various natural forms. The statement about malleability is unrelated to the number of compounds formed.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "धातुएँ सामान्य रूप से अधिक संख्या में यौगिक नहीं बनाती क्योंकि गैर-धातुओं की तुलना में अधिक संख्या में यौगिक बनाती हैं?",
-          "choices": [
-            "धातुएँ अभिक्रियाशील नहीं होती हैं",
-            "धातुओं के इलेक्ट्रॉन खोने की प्रवृत्ति होती है",
-            "धातु प्रकृति में नहीं पाए जाते हैं",
-            "धातुएँ नमनीय नहीं होती हैं"
-          ],
-          "solution": "धातुओं के इलेक्ट्रॉन खोने की प्रवृत्ति होती है, जो आयनिक यौगिक बनाने की अनुमति देती है, लेकिन इस सीमित प्रकार के बंधन के कारण गैर-धातुओं की तुलना में कम यौगिकों के विविधता होती है, जो विविध कोवेलेंट बंधन बना सकते हैं। धातुएँ अभिक्रियाशील नहीं होती हैं का विकल्प गलत है क्योंकि कई धातुएँ अत्यधिक अभिक्रियाशील होती हैं। धातु प्रकृति में नहीं पाए जाते हैं का कथन असत्य है, क्योंकि धातु विभिन्न प्राकृतिक रूपों में सामान्य रूप से पाए जाते हैं। नमनीयता के बारे में कथन बनाए गए यौगिकों की संख्या से संबंधित नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "धातूंना अन्य धातूंपेक्षा अधिक संख्येने यौगिक बनवण्याची शक्ती का नसते?",
-          "choices": [
-            "धातू अतिशय अभिक्रियाशील नाहीत",
-            "धातूंना इलेक्ट्रॉन गमावण्याची प्रवृत्ती असते",
-            "धातूंना प्रकृतीत आढळत नाहीत",
-            "धातूंना चाकूने वाकवता येत नाही"
-          ],
-          "solution": "धातूंना इलेक्ट्रॉन गमावण्याची प्रवृत्ती असते, ज्यामुळे ते आयनिक यौगिक बनवू शकतात, परंतु हे सीमित प्रकारचे बंधन अन्य धातूंपेक्षा अधिक यौगिक प्रकार बनविण्यास अनुमती देत नाही. धातू अतिशय अभिक्रियाशील नाहीत असा विधान चुकीचा आहे, कारण बर्याच धातू अतिशय अभिक्रियाशील असतात. धातू प्रकृतीत आढळत नाहीत असा दावा खोटा आहे, कारण धातूंना विविध प्राकृतिक रूपांमध्ये आढळतात. चाकूने वाकवता येण्याच्या विधानाचा यौगिकांच्या संख्येशी कोणताही संबंध नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Misunderstands the chemical properties of metals",
-        null,
-        "Confuses the behavior of non-metals with metals",
-        "Ignores the role of electron behavior in compound formation"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as metals tend to lose electrons and form ionic compounds, which are fewer in number compared to the covalent compounds formed by non-metals. The other options are either factually incorrect or irrelevant to the question.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.1 Properties of Materials",
-            "4.1.4 Conduction of heat"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.1 Properties of Materials",
-            "4.1.5 Conduction of electricity"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu104.pdf",
-          "ordinal": 7,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 4: The World of Metals and Non-metals",
-            "4.2 Effect of Air and Water on Metals: Iron"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:25:12.657Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why does sodium metal need to be stored in kerosene?",
-      "choices": [
-        "To prevent it from reacting with water and air",
-        "To make it more conductive",
-        "To increase its reactivity with water",
-        "To make it more reactive"
-      ],
-      "answerIndex": 0,
-      "solution": "Sodium metal is highly reactive with water and oxygen, which can cause dangerous reactions. Storing it in kerosene prevents these reactions by keeping it isolated from moisture and air. The other options are incorrect because they suggest increasing reactivity or improving conductivity, which are not reasons for storing sodium in kerosene.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "सोडियम धातु को केरोसीन में क्यों रखा जाता है?",
-          "choices": [
-            "इसके पानी और हवा से अभिक्रिया करने से रोकने के लिए",
-            "इसकी चालकता बढ़ाने के लिए",
-            "इसकी पानी से अभिक्रिया को बढ़ाने के लिए",
-            "इसकी अभिक्रियाशीलता बढ़ाने के लिए"
-          ],
-          "solution": "सोडियम धातु पानी और ऑक्सीजन के साथ अत्यधिक अभिक्रियाशील होता है जो खतरनाक अभिक्रियाएं कर सकता है। केरोसीन में इसके भंडारण से इसकी नमी और हवा से अलग रखा जाता है। अन्य विकल्प गलत हैं क्योंकि वे अभिक्रियाशीलता बढ़ाने या चालकता में सुधार के बारे में कहते हैं जो सोडियम के केरोसीन में भंडारण के कारण नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "सोडियम धातू खजूर तेलात का ठेवावी लागते?",
-          "choices": [
-            "त्याला पाणी आणि हवा सोबत प्रतिक्रिया करू देऊ नये म्हणून",
-            "त्याला अधिक विद्युत वाहकता बनवण्यासाठी",
-            "त्याला पाण्यासोबत अधिक अभिक्रियाशील बनवण्यासाठी",
-            "त्याला अधिक अभिक्रियाशील बनवण्यासाठी"
-          ],
-          "solution": "सोडियम धातू पाण्यासोबत आणि ऑक्सीजनसोबत खूप अभिक्रियाशील असतो, ज्यामुळे धोकादायक प्रतिक्रिया होऊ शकतात. खजूर तेलात ठेवण्याने त्याला आर्द्रता आणि हवा द्वारे विच्छेदित केले जाते. इतर विकल्प अयोग्य आहेत कारण ते अभिक्रियाशीलता वाढवण्याचा किंवा विद्युत वाहकता सुधारण्याचा अंदाज घेतात, जे सोडियम खजूर तेलात ठेवण्याचे कारण नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Students may confuse the purpose of storage with the material's properties, thinking that storing in kerosene affects conductivity.",
-        "students may think that storing in kerosene makes the metal more reactive",
-        "students may confuse the purpose of storing metals with increasing their reactivity"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as sodium is stored in kerosene to prevent reaction with water and air. The other options reflect common misconceptions about the purpose of storage.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly interprets the experiment, noting that rust forms only when both water and air are present. The reasoning for the distractors aligns with common misconceptions about rust formation.",
       "sources": [
         {
           "document": "ncert/7/science/gecu104.pdf",
@@ -948,7 +527,207 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:25:12.657Z",
+      "generatedAt": "2026-10-29T16:10:45.574Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following best explains why an iron object develops brown deposits when left in the open?",
+      "choices": [
+        "It reacts with dry air only",
+        "It reacts with water only",
+        "It reacts with both air and water",
+        "It reacts with air and oil"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is that iron reacts with both air and water because the presence of oxygen and moisture leads to the formation of rust, which appears as brown deposits. Other options are incorrect because rust does not form in dry air alone, nor does it form with water alone or with air and oil.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा सबसे अच्छा समझाता है कि लोहे का वस्तु खुले में छोड़ देने पर भूरे निक्षेप बन जाते हैं?",
+          "choices": [
+            "यह केवल सух हवा के साथ अभिक्रिया करता है",
+            "यह केवल पानी के साथ अभिक्रिया करता है",
+            "यह हवा और पानी दोनों के साथ अभिक्रिया करता है",
+            "यह हवा और तेल के साथ अभिक्रिया करता है"
+          ],
+          "solution": "सही उत्तर यह है कि लोहा हवा और पानी दोनों के साथ अभिक्रिया करता है क्योंकि ऑक्सीजन और नमी की उपस्थिति के कारण जंग का निर्माण होता है, जो भूरे निक्षेप के रूप में दिखाई देता है। अन्य विकल्प गलत हैं क्योंकि शुष्क हवा में जंग नहीं बनती है, न ही पानी में और न ही हवा और तेल में।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते विधान खुल्या ठिकाणी ठेवलेल्या लोखंडी वस्तूवर भूरा जमा होण्याच्या कारणाचे सर्वात चांगले स्पष्टीकरण देते?",
+          "choices": [
+            "ते शुष्क हवेशी फक्त अभिक्रिया करते",
+            "ते पाण्याशी फक्त अभिक्रिया करते",
+            "ते हवा आणि पाण्याशी अभिक्रिया करते",
+            "ते हवा आणि तेलाशी अभिक्रिया करते"
+          ],
+          "solution": "बरोबर उत्तर हे आहे की लोखंड हवा आणि पाण्याशी अभिक्रिया करते, कारण ऑक्सिजन आणि आर्द्रतेच्या उपस्थितीमुळे रॉस्ट तयार होतो, जो भूरा जमा दर्शवतो. इतर विकल्प चूक आहेत कारण शुष्क हवेत रॉस्ट तयार होत नाही, आणि पाण्यात रॉस्ट तयार होत नाही किंवा हवा आणि तेलातही रॉस्ट तयार होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly suggests that only dry air causes rust",
+        "Incorrectly suggests that only water causes rust",
+        null,
+        "Student thinks oxygen and oil are both necessary for rusting"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as iron rusts when exposed to both air (oxygen) and water. The other options reflect common misconceptions about the conditions required for rusting.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu104.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: The World of Metals and Non-metals",
+            "4.1 Properties of Materials",
+            "4.1.4 Conduction of heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu104.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: The World of Metals and Non-metals",
+            "4.1 Properties of Materials",
+            "4.1.5 Conduction of electricity"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu104.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: The World of Metals and Non-metals",
+            "4.2 Effect of Air and Water on Metals: Iron"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:10:45.574Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a material allows electricity to pass through it easily, what can we say about its conductivity?",
+      "choices": [
+        "It is a poor conductor",
+        "It is a good conductor",
+        "It is not lustrous",
+        "It is not malleable"
+      ],
+      "answerIndex": 1,
+      "solution": "If a material allows electricity to pass through it easily, it is a good conductor because conductivity is defined by how well a material allows electric current to flow. The other options are unrelated to conductivity and do not describe the property of allowing electricity to pass through.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई पदार्थ बिजली के प्रवाह को आसानी से पार करने देता है, तो हम इसकी चालकता के बारे में क्या कह सकते हैं?",
+          "choices": [
+            "यह एक खराब चालक है",
+            "यह एक अच्छा चालक है",
+            "यह चमकदार नहीं है",
+            "यह ढालने योग्य नहीं है"
+          ],
+          "solution": "यदि कोई पदार्थ बिजली के प्रवाह को आसानी से पार करने देता है, तो यह अच्छा चालक होता है क्योंकि चालकता की परिभाषा यह है कि कोई पदार्थ बिजली के धारा के प्रवाह को कितना अच्छी तरह से अनुमति देता है। अन्य विकल्प चालकता से संबंधित नहीं हैं और बिजली के प्रवाह के गुण का वर्णन नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर कोणताही द्रव्य विद्युत वाहू लागल्यास सहज वाहू देतो, तर आपण त्याच्या विद्युत वाहकतेबद्दल काय म्हणू शकता?",
+          "choices": [
+            "ते खराब वाहक आहे",
+            "ते चांगला वाहक आहे",
+            "ते चकचकीत नाही",
+            "ते ताडकलेय नाही"
+          ],
+          "solution": "जर कोणताही द्रव्य विद्युत वाहू लागल्यास सहज वाहू देतो, तर ते चांगला वाहक आहे कारण विद्युत वाहकता ही एका द्रव्याच्या विद्युत वाहकतेच्या वाहकतेच्या विषयी वर्णन करते. इतर विकल्प विद्युत वाहकतेशी संबंधित नाहीत आणि विद्युत वाहू देण्याच्या गुणधर्माचे वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly states the opposite of what is true about conductivity",
+        null,
+        "Confuses the property of conductivity with other properties like luster or malleability",
+        "Confuses the property of conductivity with other properties like luster or malleability"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution correctly identifies option 1 as the correct answer. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu104.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 4: The World of Metals and Non-metals",
+            "4.1 Properties of Materials",
+            "4.1.4 Conduction of heat"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu104.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: The World of Metals and Non-metals",
+            "4.1 Properties of Materials",
+            "4.1.5 Conduction of electricity"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu104.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: The World of Metals and Non-metals",
+            "4.2 Effect of Air and Water on Metals: Iron"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T16:10:45.574Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

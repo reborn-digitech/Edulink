@@ -1,0 +1,504 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T20:59:13.165Z",
+  "finishedAt": "2026-10-24T21:03:12.018Z",
+  "seconds": 239,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 17 — Man made Materials",
+    "edition": "First Edition 2018",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2025-26]\n7. C. Use of plastic as packaging material. 1",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n25. Carbon forms millions of compounds whereas silicon, which is just below it in 2\nthe Periodic Table, forms a few compounds. Explain the reason for the\ndifference in their ability to form compounds.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n20. Assertion: Biodegradable substances result in the formation of compost and natural 1\nreplenishment.\nReason: It is due to breakdown of complex inorganic substances into simple organic\nsubstances."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 60602,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 16920,
+      "completionTokens": 3724
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 155879,
+      "in": 23,
+      "out": 12,
+      "rejects": 11,
+      "promptTokens": 11513,
+      "completionTokens": 5103
+    },
+    "solver": {
+      "calls": 96,
+      "ms": 47402,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 17336,
+      "completionTokens": 1079
+    },
+    "form": {
+      "calls": 5,
+      "ms": 13853,
+      "in": 10,
+      "out": 3,
+      "rejects": 7,
+      "promptTokens": 1162,
+      "completionTokens": 347
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 75,
+      "ms": 11172,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 102060,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6677,
+      "completionTokens": 3453
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the property of plastic that allows it to be molded into any shape?",
+      "ms": {
+        "draft": 2364,
+        "critique": 4457
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a manmade material?",
+      "ms": {
+        "draft": 2364,
+        "critique": 4922
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of plastic can be remolded after it has been shaped?",
+      "ms": {
+        "draft": 2364,
+        "critique": 5395
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a material is non-degradable, what does that mean?",
+      "ms": {
+        "draft": 2364,
+        "critique": 4539
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for using plastic in the healthcare sector?",
+      "ms": {
+        "draft": 2364,
+        "critique": 5584
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is thermocol used to pack delicate items during transport?",
+      "ms": {
+        "draft": 2364,
+        "critique": 5062
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student wants to store a chemical that reacts with water. Which type of glass should they use?",
+      "ms": {
+        "draft": 2494,
+        "critique": 4694
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which type of glass is used in the production of spectacles and lenses?",
+      "ms": {
+        "draft": 2494,
+        "critique": 5083,
+        "solver": 8980,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which property of plastic allows it to be moulded into any shape?",
+      "ms": {
+        "draft": 2494,
+        "critique": 5134,
+        "solver": 11633,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main ingredient used in the production of glass?",
+      "ms": {
+        "draft": 2494,
+        "critique": 5367
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is silica glass preferred for laboratory glassware?",
+      "ms": {
+        "draft": 2494,
+        "critique": 6460,
+        "solver": 1394,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which type of glass is used in vehicles to prevent injuries during accidents?",
+      "ms": {
+        "draft": 2494,
+        "critique": 8326,
+        "solver": 9312
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which type of glass is used in the manufacture of light bulbs?",
+      "ms": {
+        "draft": 10520,
+        "critique": 6203,
+        "solver": 2025
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to glass when it is suddenly cooled after being heated to a high temperature?",
+      "ms": {
+        "draft": 10520,
+        "critique": 5243,
+        "solver": 1250,
+        "form": 3286
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a manmade material?",
+      "ms": {
+        "draft": 2652,
+        "critique": 6710
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is silica glass used for laboratory glassware?",
+      "ms": {
+        "draft": 10520,
+        "critique": 4946,
+        "solver": 9935,
+        "form": 2440
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a thermoplastic?",
+      "ms": {
+        "draft": 2652,
+        "critique": 7324
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why are plastic tanks used for storing chemicals?",
+      "ms": {
+        "draft": 2652,
+        "critique": 7660
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of plastic?",
+      "ms": {
+        "draft": 2652,
+        "critique": 6588,
+        "solver": 11247,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a reason for replacing domestic items with plastic?",
+      "ms": {
+        "draft": 2652,
+        "critique": 5716,
+        "solver": 6447,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main component of glass?",
+      "ms": {
+        "draft": 10520,
+        "critique": 5931,
+        "solver": 1619,
+        "form": 2911,
+        "translation": 27573
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of adding pieces of discarded glass during the glass manufacturing process?",
+      "ms": {
+        "draft": 10520,
+        "critique": 5679,
+        "solver": 1148,
+        "form": 3178,
+        "translation": 31979
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct match between the type of glass and its use?",
+      "ms": {
+        "draft": 10520,
+        "critique": 5030,
+        "solver": 1065,
+        "form": 4386,
+        "translation": 38637
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the property of plastic that allows it to be molded into any shape?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a manmade material?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of plastic can be remolded after it has been shaped?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a material is non-degradable, what does that mean?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason for using plastic in the healthcare sector?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Why is thermocol used to pack delicate items during transport?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student wants to store a chemical that reacts with water. Which type of glass should they use?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which type of glass is used in the production of spectacles and lenses?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which property of plastic allows it to be moulded into any shape?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main ingredient used in the production of glass?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is silica glass preferred for laboratory glassware?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which type of glass is used in vehicles to prevent injuries during accidents?",
+      "reason": "after redrafting distractors 1, 3: the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a thermosetting plastic?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which type of glass is used in the manufacture of light bulbs?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What happens to glass when it is suddenly cooled after being heated to a high temperature?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks glass becomes magnetic, which is not mentioned in the…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a manmade material?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is silica glass used for laboratory glassware?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks it is highly flexible, which is not mentioned in the …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a thermoplastic?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why are plastic tanks used for storing chemicals?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a property of plastic?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a reason for replacing domestic items with plastic?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

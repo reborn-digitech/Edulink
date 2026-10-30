@@ -1,0 +1,373 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T06:54:00.619Z",
+  "finishedAt": "2026-10-28T06:57:35.274Z",
+  "seconds": 215,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap115.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 15 — Blow Hot, Blow Cold",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 57697,
+      "in": 16,
+      "out": 15,
+      "rejects": 1,
+      "promptTokens": 14586,
+      "completionTokens": 3430
+    },
+    "critique": {
+      "calls": 20,
+      "ms": 122898,
+      "in": 15,
+      "out": 14,
+      "rejects": 1,
+      "promptTokens": 9042,
+      "completionTokens": 3402
+    },
+    "solver": {
+      "calls": 100,
+      "ms": 52090,
+      "in": 14,
+      "out": 10,
+      "rejects": 4,
+      "promptTokens": 15040,
+      "completionTokens": 957
+    },
+    "form": {
+      "calls": 4,
+      "ms": 16313,
+      "in": 10,
+      "out": 4,
+      "rejects": 6,
+      "promptTokens": 2726,
+      "completionTokens": 435
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 3910,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 93649,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6255,
+      "completionTokens": 3072
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Why did the woodcutter blow on his hands?",
+      "ms": {
+        "draft": 5518,
+        "critique": 7393
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Mian Balishtiye think about the woodcutter after seeing him blow on the hot potato?",
+      "ms": {
+        "draft": 5518,
+        "critique": 6439,
+        "solver": 1162
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the story?",
+      "ms": {
+        "draft": 5518,
+        "critique": 6352,
+        "solver": 1837,
+        "form": 2311
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did the woodcutter blow on the hot potato?",
+      "ms": {
+        "draft": 5518,
+        "critique": 6595,
+        "solver": 11298
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the air is moving downwards, in which direction will the paper snake move?",
+      "ms": {
+        "draft": 2781,
+        "critique": 6585,
+        "solver": 1328
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens when hot air from our mouth comes in contact with a cold mirror?",
+      "ms": {
+        "draft": 3323,
+        "critique": 5480,
+        "solver": 12820,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for the mirror becoming hazy when we breathe on it?",
+      "ms": {
+        "draft": 3323,
+        "critique": 5737,
+        "solver": 14884,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you hang the paper snake under a fan, in which direction will it move?",
+      "ms": {
+        "draft": 3323,
+        "critique": 7196,
+        "solver": 1190
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does the snake move in a clockwise direction when hung near a hot object?",
+      "ms": {
+        "draft": 3323,
+        "critique": 4621,
+        "solver": 12790,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if Mian Balishtiye had blown on his hands in the cold?",
+      "ms": {
+        "draft": 15973,
+        "critique": 6323,
+        "solver": 1585,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the woodcutter blow on the hot potato?",
+      "ms": {
+        "draft": 15973,
+        "critique": 7380,
+        "solver": 1936,
+        "form": 2889
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the reason the mirror becomes hazy when you blow on it?",
+      "ms": {
+        "draft": 2781,
+        "critique": 5896,
+        "solver": 1189,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the woodcutter blow on his hands in the cold?",
+      "ms": {
+        "draft": 15973,
+        "critique": 5262,
+        "solver": 10815,
+        "form": 2143,
+        "translation": 27771
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does the chest move when you breathe in?",
+      "ms": {
+        "draft": 2781,
+        "critique": 6918,
+        "solver": 1646,
+        "form": 0,
+        "translation": 30207
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the movement of the paper snake tell us about the direction of air flow?",
+      "ms": {
+        "draft": 2781,
+        "critique": 6304,
+        "solver": 1046,
+        "form": 0,
+        "translation": 31598
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Why did the woodcutter blow on his hands?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What did Mian Balishtiye think about the woodcutter after seeing him blow on the hot potato?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main idea of the story?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Thinks blowing on hands makes them cold, which is the opposi…\"); distractor 1's reason is not a one-line misconception (\"Thinks blowing on food makes it hot, which is not true in th…\"); distractor 3's reason is not a one-line misconception (\"Correct answer…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Why did the woodcutter blow on the hot potato?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the air is moving downwards, in which direction will the paper snake move?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does the passage show about the air from our mouth?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What happens when hot air from our mouth comes in contact with a cold mirror?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main reason for the mirror becoming hazy when we breathe on it?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If you hang the paper snake under a fan, in which direction will it move?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why does the snake move in a clockwise direction when hung near a hot object?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'paperSnake'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What would happen if Mian Balishtiye had blown on his hands in the cold?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not read the passage carefully…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did the woodcutter blow on the hot potato?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not read the passage carefully…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the reason the mirror becomes hazy when you blow on it?",
+      "reason": "near-duplicate of served question cmvh98qqc07nygpfhowxmhwke (cosine 0.913 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

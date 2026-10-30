@@ -21,676 +21,71 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T01:34:07.786Z",
+  "generatedAt": "2026-10-29T15:05:45.959Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "How many intersection points can two circles of the same radius have?",
+      "difficulty": 1,
+      "stem": "What is the name of the shape formed by three line segments joining three non-collinear points?",
       "choices": [
-        "One",
-        "Two",
-        "Three",
-        "Four"
-      ],
-      "answerIndex": 1,
-      "solution": "Two circles of the same radius can intersect at a maximum of two points. If the distance between their centers is less than the radius, they do not intersect. If the distance is equal to the radius, they intersect at one point. If the distance is less than twice the radius but greater than the radius, they intersect at two points. If the distance is equal to twice the radius, they intersect at one point. If the distance is greater than twice the radius, they do not intersect. Therefore, the correct answer is two.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक ही त्रिज्या वाले दो वृत्त कितने प्रतिच्छेद बिंदुओं के साथ हो सकते हैं?",
-          "choices": [
-            "एक",
-            "दो",
-            "तीन",
-            "चार"
-          ],
-          "solution": "एक ही त्रिज्या वाले दो वृत्त अधिकतम दो बिंदुओं पर प्रतिच्छेद कर सकते हैं। यदि उनके केंद्रों के बीच की दूरी त्रिज्या से कम हो तो वे प्रतिच्छेद नहीं करते। यदि दूरी त्रिज्या के बराबर हो तो वे एक बिंदु पर प्रतिच्छेद करते हैं। यदि दूरी त्रिज्या से अधिक लेकिन दोगुनी त्रिज्या से कम हो तो वे दो बिंदुओं पर प्रतिच्छेद करते हैं। यदि दूरी दोगुनी त्रिज्या के बराबर हो तो वे एक बिंदु पर प्रतिच्छेद करते हैं। यदि दूरी दोगुनी त्रिज्या से अधिक हो तो वे प्रतिच्छेद नहीं करते। इसलिए सही उत्तर दो है।",
-          "imageAlt": "एक ही त्रिज्या वाले दो वृत्त दो बिंदुओं पर प्रतिच्छेद करते हैं, जिनके केंद्र A और B लेबल किए गए हैं।",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एकसारख्या त्रिज्येच्या दोन वर्तुळांना किती छेदन बिंदू असू शकतात?",
-          "choices": [
-            "एक",
-            "दोन",
-            "तीन",
-            "चार"
-          ],
-          "solution": "एकसारख्या त्रिज्येच्या दोन वर्तुळांना एकापेक्षा जास्त छेदन बिंदू असू शकत नाहीत. जर त्यांच्या केंद्रांमधील अंतर त्रिज्येपेक्षा कमी असेल तर ते छेदत नाहीत. जर अंतर त्रिज्येसोबत बरोबर असेल तर ते एका बिंदूवर छेदतात. जर अंतर त्रिज्येपेक्षा जास्त पण दुप्पट त्रिज्येपेक्षा कमी असेल तर ते दोन बिंदूंवर छेदतात. जर अंतर दुप्पट त्रिज्येसोबत बरोबर असेल तर ते एका बिंदूवर छेदतात. जर अंतर दुप्पट त्रिज्येपेक्षा जास्त असेल तर ते छेदत नाहीत. म्हणून, योग्य उत्तर दोन आहे.",
-          "imageAlt": "एकसारख्या त्रिज्येच्या दोन वर्तुळांना दोन छेदन बिंदू असतात, ज्यांच्या केंद्रांचे नाव A आणि B आहे.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "Two circles of equal radius intersect at two points, with their centers labeled A and B.",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": -5,
-            "xMax": 5,
-            "yMin": -5,
-            "yMax": 5,
-            "unit": "cm"
-          },
-          "points": [
-            {
-              "id": "A",
-              "x": -2,
-              "y": 0,
-              "label": "A"
-            },
-            {
-              "id": "B",
-              "x": 2,
-              "y": 0,
-              "label": "B"
-            }
-          ],
-          "segments": [
-            {
-              "from": "A",
-              "to": "B",
-              "dashed": false,
-              "length": {
-                "value": 4,
-                "unit": "cm"
-              }
-            }
-          ],
-          "circles": [
-            {
-              "center": "A",
-              "radius": 3,
-              "dashed": false,
-              "shade": false
-            },
-            {
-              "center": "B",
-              "radius": 3,
-              "dashed": false,
-              "shade": false
-            }
-          ],
-          "arcs": [],
-          "angles": [],
-          "texts": []
-        },
-        "labels": {
-          "A": {
-            "en": "Center of first circle"
-          },
-          "B": {
-            "en": "Center of second circle"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Thinks that the maximum number of intersection points is one",
-        null,
-        "Believes that the maximum number of intersection points is three",
-        "Assumes that the maximum number of intersection points is four"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly explains that two circles of the same radius can intersect at a maximum of two points. The reasoning aligns with geometric principles.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "LINES"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 1,
-          "pageStart": 1,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.1 Equilateral Triangles"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.2 Constructing a Triangle When its Sides are",
-            "Given"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.2 Constructing a Triangle When its Sides are",
-            "Given"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:34:07.786Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following sets of lengths can form a triangle based on the triangle inequality?",
-      "choices": [
-        "3 cm, 4 cm, 8 cm",
-        "5 cm, 6 cm, 12 cm",
-        "7 cm, 8 cm, 15 cm",
-        "2 cm, 3 cm, 4 cm"
-      ],
-      "answerIndex": 3,
-      "solution": "The set 2 cm, 3 cm, and 4 cm satisfies the triangle inequality because each length is less than the sum of the other two. The other options do not satisfy the condition, as one of the lengths is greater than or equal to the sum of the other two.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा लंबाई का सेट त्रिभुज असमानता के आधार पर एक त्रिभुज बना सकता है?",
-          "choices": [
-            "3 सेमी, 4 सेमी, 8 सेमी",
-            "5 सेमी, 6 सेमी, 12 सेमी",
-            "7 सेमी, 8 सेमी, 15 सेमी",
-            "2 सेमी, 3 सेमी, 4 सेमी"
-          ],
-          "solution": "2 सेमी, 3 सेमी और 4 सेमी के सेट में त्रिभुज असमानता का पालन किया जाता है क्योंकि प्रत्येक लंबाई अन्य दो के योग से कम होती है। अन्य विकल्पों में शर्त का पालन नहीं किया जाता है, क्योंकि अन्य दो के योग के बराबर या अधिक लंबाई एक होती है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणत्या लांबींच्या वर्गामुळे त्रिकोण तयार होऊ शकतो?",
-          "choices": [
-            "3 सेमी, 4 सेमी, 8 सेमी",
-            "5 सेमी, 6 सेमी, 12 सेमी",
-            "7 सेमी, 8 सेमी, 15 सेमी",
-            "2 सेमी, 3 सेमी, 4 सेमी"
-          ],
-          "solution": "2 सेमी, 3 सेमी आणि 4 सेमी चा वर्ग त्रिकोणाच्या असमानतेच्या नियमाला अनुरूप आहे कारण प्रत्येक लांबी इतर दोन लांबींच्या बेरजेपेक्षा लहान आहे. इतर विकल्प या अटीला अनुरूप नाहीत, कारण इतर दोन लांबींच्या बेरजेपेक्षा एका लांबीची बरोबरी किंवा जास्त आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Fails to check all three inequalities.",
-        "Includes a set where the sum of two smaller lengths is less than the largest length.",
-        "Includes a set where one length is equal to the sum of the other two.",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 3 (2 cm, 3 cm, 4 cm) because it satisfies the triangle inequality. The other options fail because one side is greater than or equal to the sum of the other two. The author's reasoning for the wrong options is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.2 Constructing a Triangle When its Sides are",
-            "Given"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.2 Constructing a Triangle When its Sides are",
-            "Given"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.2 Constructing a Triangle When its Sides are",
-            "Given"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:34:07.786Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the sum of the angles of a triangle?",
-      "choices": [
-        "It is always 90°",
-        "It is always 180°",
-        "It is always 270°",
-        "It is always 360°"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct option states that the sum of the angles of a triangle is always 180°, which is a fundamental property of triangles in Euclidean geometry. A triangle has three interior angles that, when added together, always equal 180°. The other options are incorrect because 90° is too small, and 270° and 360° are not possible sums for the angles of a triangle.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "त्रिभुज के कोणों का योग क्या होता है?",
-          "choices": [
-            "यह हमेशा 90° होता है",
-            "यह हमेशा 180° होता है",
-            "यह हमेशा 270° होता है",
-            "यह हमेशा 360° होता है"
-          ],
-          "solution": "सही विकल्प यह बताता है कि त्रिभुज के कोणों का योग हमेशा 180° होता है, जो यूक्लिडियन ज्यामिति में त्रिभुज का आधारभूत गुण है। एक त्रिभुज में तीन आंतरिक कोण होते हैं जो एक साथ जोड़े जाने पर हमेशा 180° के बराबर होते हैं। अन्य विकल्प गलत हैं क्योंकि 90° बहुत छोटा है और 270° और 360° त्रिभुज के कोणों के योग के लिए संभव नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "त्रिकोणाच्या कोनांची बेरीज किती असते?",
-          "choices": [
-            "ती नेहमी 90° असते",
-            "ती नेहमी 180° असते",
-            "ती नेहमी 270° असते",
-            "ती नेहमी 360° असते"
-          ],
-          "solution": "सही विकल्प सांगतो की त्रिकोणाच्या कोनांची बेरीज नेहमी 180° असते, जे युक्लिडियन ज्यामितीत त्रिकोणांचे एक मूलभूत गुणधर्म आहे. एका त्रिकोणात तीन आंतरिक कोन असतात ज्यांची बेरीज नेहमी 180° असते. इतर विकल्प चुकीचे आहेत कारण 90° खूप लहान आहे आणि 270° आणि 360° त्रिकोणाच्या कोनांच्या बेरजेसाठी शक्य नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses the sum of angles with a right angle",
-        null,
-        "confuses the sum of angles with a larger value",
-        "confuses the sum of angles with a full circle"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward and the correct answer is clearly 180°, which is a well-established geometric fact. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 14,
-          "pageStart": 22,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.4 Constructions Related to Altitudes of Triangles"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 15,
-          "pageStart": 24,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.5 Types of Triangles"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 16,
-          "pageStart": 26,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.5 Types of Triangles",
-            "SUMMARY"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:34:07.786Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "If the sum of the two smaller lengths is greater than the longest length, which case will the circles fall into?",
-      "choices": [
-        "Case 1: Circles touch each other at a point",
-        "Case 2: Circles do not intersect",
-        "Case 3: Circles intersect each other internally",
-        "3: Case 2: Circles do not intersect internally"
+        "Quadrilateral",
+        "Pentagon",
+        "Triangle",
+        "Hexagon"
       ],
       "answerIndex": 2,
-      "solution": "When the sum of the two smaller lengths is greater than the longest length, the circles intersect each other internally because the distance between their centers is less than the difference of their radii. Case 1 occurs when the circles touch at a single point, which happens when the distance between centers equals the sum of the radii. Case 2 occurs when the circles do not intersect, which happens when the distance between centers is greater than the sum of the radii.",
+      "solution": "A triangle is formed when three line segments connect three non-collinear points, making it the simplest closed shape with three sides. A quadrilateral has four sides, a pentagon has five, and a hexagon has six, so they do not fit the description. Therefore, the correct answer is 'Triangle'.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि दो छोटी लंबाइयों का योग सबसे लंबी लंबाई से अधिक है, तो वृत्त किस स्थिति में आ जाएंगे?",
+          "stem": "तीन रेखा खंडों द्वारा तीन असीमांत बिंदुओं को जोड़ने से बनी आकृति का नाम क्या है?",
           "choices": [
-            "मामला 1: वृत्त एक बिंदु पर एक दूसरे को स्पर्श करते हैं",
-            "मामला 2: वृत्त एक दूसरे को प्रतिच्छेदित नहीं करते हैं",
-            "मामला 3: वृत्त एक दूसरे को आंतरिक रूप से प्रतिच्छेदित करते हैं",
-            "मामला 2: वृत्त एक दूसरे को आंतरिक रूप से प्रतिच्छेदित नहीं करते हैं"
+            "चतुर्भुज",
+            "पंचभुज",
+            "त्रिभुज",
+            "षट्भुज"
           ],
-          "solution": "जब दो छोटी लंबाइयों का योग सबसे लंबी लंबाई से अधिक होता है, तो वृत्त एक दूसरे को आंतरिक रूप से प्रतिच्छेदित करते हैं क्योंकि उनके केंद्रों के बीच की दूरी उनकी त्रिज्याओं के अंतर से कम होती है। मामला 1 तब होता है जब वृत्त एक बिंदु पर एक दूसरे को स्पर्श करते हैं, जो तब होता है जब केंद्रों के बीच की दूरी त्रिज्याओं के योग के बराबर होती है। मामला 2 तब होता है जब वृत्त एक दूसरे को प्रतिच्छेदित नहीं करते हैं, जो तब होता है जब केंद्रों के बीच की दूरी त्रिज्याओं के योग से अधिक होती है।",
-          "imageAlt": "दो वृत्त एक दूसरे को आंतरिक रूप से प्रतिच्छेदित करते हैं जिनके केंद्र बिंदु A और B पर हैं।",
-          "critique": "The translation is accurate and maintains the technical terms and logical structure of the original question.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर दोन लहान लांबींची बेरीज सर्वात मोठ्या लांबीपेक्षा जास्त असेल, तर वर्तुळे कोणत्या प्रकरणात येतील?",
-          "choices": [
-            "प्रकरण 1: वर्तुळे एका बिंदूवर स्पर्श करतात",
-            "प्रकरण 2: वर्तुळे एकमेकांना छेदत नाहीत",
-            "प्रकरण 3: वर्तुळे एकमेकांना आंतरिकरीत्या छेदतात",
-            "प्रकरण 2: वर्तुळे एकमेकांना आंतरिकरीत्या छेदत नाहीत"
-          ],
-          "solution": "जेव्हा दोन लहान लांबींची बेरीज सर्वात मोठ्या लांबीपेक्षा जास्त असते, तेव्हा वर्तुळे एकमेकांना आंतरिकरीत्या छेदतात कारण त्यांच्या केंद्रांमधील अंतर त्यांच्या त्रिज्यांच्या फरकापेक्षा कमी असते. प्रकरण 1 वर्तुळे एका बिंदूवर स्पर्श करतात, जेव्हा केंद्रांमधील अंतर त्रिज्यांच्या बेरजेइतके असते. प्रकरण 2 वर्तुळे एकमेकांना छेदत नाहीत, जेव्हा केंद्रांमधील अंतर त्रिज्यांच्या बेरजेपेक्षा जास्त असते.",
-          "imageAlt": "एकमेकांना आंतरिकरीत्या छेदणारी दोन वर्तुळे, केंद्रांच्या बिंदूंवर A आणि B असतात.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geometric concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "Two circles intersecting each other internally with centers at points A and B.",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 10,
-            "yMin": 0,
-            "yMax": 7,
-            "unit": "cm"
-          },
-          "points": [
-            {
-              "id": "A",
-              "x": 2,
-              "y": 3,
-              "label": "A"
-            },
-            {
-              "id": "B",
-              "x": 8,
-              "y": 3,
-              "label": "B"
-            }
-          ],
-          "circles": [
-            {
-              "center": "A",
-              "radius": 4,
-              "dashed": false
-            },
-            {
-              "center": "B",
-              "radius": 3,
-              "dashed": false
-            }
-          ]
-        },
-        "labels": {
-          "A": {
-            "en": "Point A"
-          },
-          "B": {
-            "en": "Point B"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "confuses the condition for Case 1",
-        "confuses the condition for Case 2",
-        null,
-        "Student confuses the condition for circles not intersecting with the condition for internal intersection"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2 (Case 3: Circles intersect each other internally). The reasoning is sound and matches the condition described in the question. The author's explanation of the other options as misconceptions is valid.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 7,
-          "pageStart": 11,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.2 Constructing a Triangle When its Sides are",
-            "Given"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 8,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.2 Constructing a Triangle When its Sides are",
-            "Given"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 9,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.3 Construction of Triangles When Some Sides",
-            "and Angles are Given"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:34:07.786Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Two circles are drawn with centers at points A and B, and they intersect at two points. A triangle is formed by connecting points A, B, and one of the intersection points. What is the name of this triangle?",
-      "choices": [
-        "Equilateral triangle",
-        "Isosceles triangle",
-        "Right-angled triangle",
-        "Obtuse-angled triangle"
-      ],
-      "answerIndex": 1,
-      "solution": "The triangle formed by connecting points A, B, and one of the intersection points of the circles is an isosceles triangle. This is because the sides from A and B to the intersection point are both equal to the radius of the circles, making them of equal length. An equilateral triangle would require all three sides to be equal, which is not the case here. A right-angled or obtuse-angled triangle would require specific angle measures, which are not guaranteed in this configuration.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दो वृत्त बिंदुओं A और B पर केंद्र वाले खींचे जाते हैं, और वे दो बिंदुओं पर प्रतिच्छेद करते हैं। बिंदुओं A, B और प्रतिच्छेद बिंदु में से एक को जोड़कर एक त्रिभुज बनाया जाता है। इस त्रिभुज का नाम क्या है?",
-          "choices": [
-            "समबाहु त्रिभुज",
-            "समद्विबाहु त्रिभुज",
-            "समकोण त्रिभुज",
-            "अधिककोण त्रिभुज"
-          ],
-          "solution": "बिंदुओं A, B और वृत्तों के प्रतिच्छेद बिंदु में से एक को जोड़कर बने त्रिभुज का नाम समद्विबाहु त्रिभुज होता है। इसके कारण बिंदु A और B से प्रतिच्छेद बिंदु तक की भुजाएं वृत्त की त्रिज्या के बराबर होती हैं, जिसके कारण वे समान लंबाई की होती हैं। एक समबाहु त्रिभुज में तीनों भुजाएं समान होती हैं, जो यहां नहीं है। समकोण या अधिककोण त्रिभुज के लिए विशिष्ट कोण माप की आवश्यकता होती है, जो इस व्यवस्था में गारंटी नहीं है।",
-          "imageAlt": "समान त्रिज्या वाले दो वृत्त बिंदु C पर प्रतिच्छेद करते हैं। वृत्तों के केंद्र A और B हैं, और A, B और C को जोड़कर बने त्रिभुज को दिखाया गया है।",
+          "solution": "तीन रेखा खंड तीन असीमांत बिंदुओं को जोड़ने से त्रिभुज बनता है, जो तीन भुजाओं वाली सबसे सरल बंद आकृति है। एक चतुर्भुज में चार भुजाएं होती हैं, एक पंचभुज में पांच होती हैं और एक षट्भुज में छह होती हैं, इसलिए वे विवरण के अनुरूप नहीं हैं। अतः सही उत्तर 'त्रिभुज' है।",
+          "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard geometric terminology as taught in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "दोन वर्तुळे बिंदूं A आणि B वर खालील आहेत आणि ते दोन बिंदूंमध्ये छेदतात. A, B आणि छेदनबिंदूपैकी एकाला जोडून त्रिकोण तयार केला जातो. ह्या त्रिकोणाचे नाव काय आहे?",
+          "stem": "तीन रेषाखंडांनी तीन अ-रेखीय बिंदूंना जोडल्याने तयार होणाऱ्या आकृतीचे नाव काय आहे?",
           "choices": [
-            "समबाहू त्रिकोण",
-            "समद्विभुज त्रिकोण",
-            "समकोनी त्रिकोण",
-            "अधिककोनी त्रिकोण"
+            "चौबाजू",
+            "पंचभुज",
+            "त्रिकोण",
+            "षट्भुज"
           ],
-          "solution": "बिंदूं A, B आणि वर्तुळांच्या छेदनबिंदूपैकी एकाला जोडून तयार होणारा त्रिकोण समद्विभुज त्रिकोण आहे. कारण A आणि B च्या छेदनबिंदूपर्यंतच्या बाजू वर्तुळाच्या त्रिज्येइतक्या असतात, ज्यामुळे त्यांची लांबी समान असते. समबाहू त्रिकोणासाठी तीन बाजू समान असणे आवश्यक असते, जे येथे नाही. समकोनी किंवा अधिककोनी त्रिकोणासाठी विशिष्ट कोन माप आवश्यक असतात, जे या व्यवस्थेत खात्री नसते.",
-          "imageAlt": "समान त्रिज्या असलेली दोन वर्तुळे बिंदू C वर छेदतात. वर्तुळांचे केंद्र बिंदू A आणि B असून A, B आणि C ला जोडून तयार होणारा त्रिकोण दाखवला आहे.",
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "solution": "तीन रेषाखंडांनी तीन अ-रेखीय बिंदूंना जोडल्याने त्रिकोण तयार होतो, जो तीन बाजू असलेला सरळ आकृती आहे. चौबाजूला चार बाजू असतात, पंचभुजला पाच आणि षट्भुजला छह बाजू असतात, त्यामुळे ते वर्णनास अनुरूप नाहीत. त्यामुळे योग्य उत्तर 'त्रिकोण' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "Two circles with equal radii intersect at point C. The centers of the circles are labeled A and B, and the triangle formed by A, B, and C is shown.",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": -5,
-            "xMax": 5,
-            "yMin": -5,
-            "yMax": 5,
-            "unit": "cm"
-          },
-          "points": [
-            {
-              "id": "A",
-              "x": -2,
-              "y": 0,
-              "label": "A"
-            },
-            {
-              "id": "B",
-              "x": 2,
-              "y": 0,
-              "label": "B"
-            },
-            {
-              "id": "C",
-              "x": 0,
-              "y": 3,
-              "label": "C"
-            }
-          ],
-          "segments": [
-            {
-              "from": "A",
-              "to": "B",
-              "dashed": false,
-              "length": {
-                "value": 4,
-                "unit": "cm"
-              }
-            },
-            {
-              "from": "A",
-              "to": "C",
-              "dashed": false,
-              "length": {
-                "value": 5,
-                "unit": "cm"
-              }
-            },
-            {
-              "from": "B",
-              "to": "C",
-              "dashed": false,
-              "length": {
-                "value": 5,
-                "unit": "cm"
-              }
-            }
-          ],
-          "circles": [
-            {
-              "center": "A",
-              "radius": 5,
-              "dashed": false,
-              "shade": false
-            },
-            {
-              "center": "B",
-              "radius": 5,
-              "dashed": false,
-              "shade": false
-            }
-          ],
-          "arcs": [],
-          "angles": [],
-          "texts": []
-        },
-        "labels": {
-          "A": {
-            "en": "Center of first circle"
-          },
-          "B": {
-            "en": "Center of second circle"
-          },
-          "C": {
-            "en": "One of the intersection points"
-          }
-        }
-      },
-      "needsFigure": true,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
-        "Thinks that the triangle is equilateral if the circles have the same radius",
+        "Confuses triangle with quadrilateral",
+        "Confuses triangle with pentagon",
         null,
-        "Assumes that the triangle is right-angled without any evidence",
-        "Believes that the triangle is obtuse-angled without any basis in the given data"
+        "Confuses the number of sides with the number of vertices, thinking a triangle has six sides"
       ],
       "solverAnswers": [
-        1,
-        1,
-        0,
-        0,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies that the triangle is isosceles because the two sides from A and B to the intersection point are radii of the circles and hence equal. The other options are invalid due to incorrect assumptions about the triangle's properties.",
+      "critique": "The question is straightforward and the solution correctly identifies 'Triangle' as the shape formed by three non-collinear points. The distractors reflect common misconceptions about polygon names based on the number of sides.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp107.pdf",
@@ -736,49 +131,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:34:07.786Z",
+      "generatedAt": "2026-10-29T15:05:45.959Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "In a triangle, if the sum of the lengths of two sides is equal to the length of the third side, what can be said about the triangle?",
+      "difficulty": 2,
+      "stem": "In a triangle, the direct path between two vertices is always shorter than the roundabout path via the third vertex. What is the mathematical principle that explains this?",
       "choices": [
-        "It is a valid triangle.",
-        "It is a degenerate triangle.",
-        "It is not a triangle.",
-        "It is an isosceles triangle."
+        "The triangle inequality",
+        "The Pythagorean theorem",
+        "The properties of parallel lines",
+        "The properties of intersecting lines"
       ],
-      "answerIndex": 2,
-      "solution": "If the sum of the lengths of two sides equals the third side, the three points would lie on a straight line, which means the figure is not a triangle. A degenerate triangle is one where the three points are collinear, but it is still technically considered a triangle in some contexts. An isosceles triangle requires two sides to be equal, which is not necessarily the case here. A valid triangle must have the sum of any two sides greater than the third, so this case does not form a valid triangle.",
+      "answerIndex": 0,
+      "solution": "The triangle inequality states that the sum of the lengths of any two sides of a triangle must be greater than the length of the third side. This explains why the direct path is always shorter than the roundabout path. The other options are unrelated to this principle.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक त्रिभुज में, यदि दो भुजाओं की लंबाइयों का योग तीसरी भुजा की लंबाई के बराबर है, तो त्रिभुज के बारे में क्या कहा जा सकता है?",
+          "stem": "एक त्रिभुज में, दो शीर्षों के बीच सीधा मार्ग हमेशा तीसरे शीर्ष से होकर जाने वाले चक्करदार मार्ग से छोटा होता है। इसकी व्याख्या करने वाला गणितीय सिद्धांत क्या है?",
           "choices": [
-            "यह एक वैध त्रिभुज है।",
-            "यह एक विचित्र त्रिभुज है।",
-            "यह एक त्रिभुज नहीं है।",
-            "यह एक समद्विबाहु त्रिभुज है।"
+            "त्रिभुज असमानता",
+            "पाइथागोरस प्रमेय",
+            "समांतर रेखाओं के गुण",
+            "प्रतिच्छेदी रेखाओं के गुण"
           ],
-          "solution": "यदि दो भुजाओं की लंबाइयों का योग तीसरी भुजा की लंबाई के बराबर है, तो तीन बिंदु एक सीधी रेखा पर होंगे, जिसका अर्थ है कि आकृति एक त्रिभुज नहीं है। एक विचित्र त्रिभुज वह होता है जहां तीन बिंदु सरल रेखा पर होते हैं, लेकिन कुछ संदर्भों में इसे अभी भी एक त्रिभुज माना जाता है। एक समद्विबाहु त्रिभुज में दो भुजाएं समान होती हैं, जो यहां आवश्यक नहीं है। एक वैध त्रिभुज में किन्हीं दो भुजाओं का योग तीसरी भुजा से अधिक होना चाहिए, इसलिए यह मामला एक वैध त्रिभुज नहीं बनाता है।",
+          "solution": "त्रिभुज असमानता कहती है कि किसी त्रिभुज की किन्हीं दो भुजाओं की लंबाई का योग हमेशा तीसरी भुजा की लंबाई से अधिक होता है। इससे सीधा मार्ग हमेशा चक्करदार मार्ग से छोटा होने की व्याख्या हो जाती है। अन्य विकल्प इस सिद्धांत से संबंधित नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard mathematical terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "त्रिकोणात, जर दोन बाजूंच्या लांबींची बेरीज तिसर्‍या बाजूच्या लांबीसोबत बरोबर असेल, तर त्रिकोण बद्दल काय म्हणता येईल?",
+          "stem": "त्रिकोणात दोन शीर्षकांमधील थेट मार्ग हा तिसर्‍या शीर्षकामार्फत फेरफटका घेणार्‍या मार्गापेक्षा लहान असतो. हे समजावून सांगणारा गणितीय सिद्धांत कोणता आहे?",
           "choices": [
-            "तो एक वैध त्रिकोण आहे.",
-            "तो एक अविच्छिन्न त्रिकोण आहे.",
-            "तो त्रिकोण नाही.",
-            "तो समद्विबाहू त्रिकोण आहे."
+            "त्रिकोणाची असमानता",
+            "पायथागोरसचा सिद्धांत",
+            "समांतर रेषांच्या गुणधर्मांचा",
+            "छेदक रेषांच्या गुणधर्मांचा"
           ],
-          "solution": "जर दोन बाजूंच्या लांबींची बेरीज तिसर्‍या बाजूच्या लांबीसोबत बरोबर असेल, तर तीन बिंदू एका सरळ रेषेवर असतील, ज्यामुळे आकृती त्रिकोण नसते. अविच्छिन्न त्रिकोण म्हणजे तीन बिंदू एका सरळ रेषेवर असलेला त्रिकोण असतो, परंतु काही संदर्भांमध्ये त्याला त्रिकोण मानले जाते. समद्विबाहू त्रिकोणमध्ये दोन बाजू बरोबर असतात, जे येथे आवश्यक नाही. वैध त्रिकोणमध्ये कोणत्याही दोन बाजूंची बेरीज तिसर्‍या बाजूपेक्षा जास्त असते, ज्यामुळे या प्रकरणात वैध त्रिकोण तयार होत नाही.",
+          "solution": "त्रिकोणाची असमानता सांगते की त्रिकोणाच्या कोणत्याही दोन बाजूंच्या लांबींची बेरीज तिसर्‍या बाजूच्या लांबीपेक्षा मोठी असते. हे थेट मार्ग हा फेरफटका घेणार्‍या मार्गापेक्षा लहान असल्याचे समजावून सांगते. इतर पर्याय या सिद्धांताशी संबंधित नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for mathematical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard textbooks.",
           "flag": null
         }
       },
@@ -787,20 +182,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Assumes that the condition forms a valid triangle.",
-        "Misunderstands the concept of a degenerate triangle.",
         null,
-        "Incorrectly identifies the type of triangle."
+        "Confusing the triangle inequality with the Pythagorean theorem for right triangles",
+        "Confusing the concept of triangle inequality with properties of parallel lines",
+        "Confusing the triangle inequality with properties of lines intersecting or parallel"
       ],
       "solverAnswers": [
-        2,
-        2,
-        1,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies that if the sum of two sides equals the third, the triangle is degenerate (collinear points), and thus not a valid triangle. The reasoning aligns with geometric principles.",
+      "critique": "The question is well-constructed, and the correct answer is clearly supported by the triangle inequality. The distractors reflect common misconceptions, and the author's reasoning is accurate.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp107.pdf",
@@ -837,49 +232,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:34:07.786Z",
+      "generatedAt": "2026-10-29T15:05:45.959Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "In a triangle, if one angle is 120°, and the other two angles are equal, what is the measure of each of the equal angles?",
+      "difficulty": 3,
+      "stem": "Which of the following sets of lengths can form a triangle?",
       "choices": [
-        "20°",
-        "30°",
-        "40°",
-        "50°"
+        "5 cm, 10 cm, 15 cm",
+        "7 cm, 8 cm, 10 cm",
+        "3 cm, 4 cm, 8 cm",
+        "2 cm, 3 cm, 6 cm"
       ],
       "answerIndex": 1,
-      "solution": "The sum of the angles in a triangle is 180°. If one angle is 120°, the remaining 60° is split equally between the other two angles. So, 60° ÷ 2 = 30°. The option 20° is too small, 40° and 50° are too large and do not divide 60° equally.",
+      "solution": "The set 7 cm, 8 cm, and 10 cm satisfies the triangle inequality because each length is less than the sum of the other two. The other sets do not satisfy the condition: 5 + 10 = 15, 3 + 4 < 8, and 2 + 3 < 6. Therefore, only the second set can form a triangle.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक त्रिभुज में, यदि एक कोण 120° है, और अन्य दो कोण बराबर हैं, तो बराबर कोणों में से प्रत्येक का माप क्या है?",
+          "stem": "निम्नलिखित में से कौन-सा लंबाई का सेट एक त्रिभुज बना सकता है?",
           "choices": [
-            "20°",
-            "30°",
-            "40°",
-            "50°"
+            "5 सेमी, 10 सेमी, 15 सेमी",
+            "7 सेमी, 8 सेमी, 10 सेमी",
+            "3 सेमी, 4 सेमी, 8 सेमी",
+            "2 सेमी, 3 सेमी, 6 सेमी"
           ],
-          "solution": "त्रिभुज के कोणों का योग 180° होता है। यदि एक कोण 120° है, तो शेष 60° के बराबर अन्य दो कोणों में बांटा जाता है। इसलिए, 60° ÷ 2 = 30°। विकल्प 20° बहुत छोटा है, 40° और 50° बहुत बड़े हैं और 60° को बराबर रूप से विभाजित नहीं करते।",
+          "solution": "7 सेमी, 8 सेमी और 10 सेमी का सेट त्रिभुज के असमानता को संतुष्ट करता है क्योंकि प्रत्येक लंबाई अन्य दो के योग से कम है। अन्य सेट इस शर्त को संतुष्ट नहीं करते हैं: 5 + 10 = 15, 3 + 4 < 8 और 2 + 3 < 6। इसलिए, केवल दूसरा सेट एक त्रिभुज बना सकता है।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "त्रिकोणात जर एक कोन 120° असेल आणि इतर दोन कोन समान असतील, तर समान कोनांपैकी प्रत्येकाचे माप किती असेल?",
+          "stem": "खालीलपैकी कोणत्या लांबींच्या समूहामुळे त्रिकोण तयार होऊ शकतो?",
           "choices": [
-            "20°",
-            "30°",
-            "40°",
-            "50°"
+            "5 सेंमी, 10 सेंमी, 15 सेंमी",
+            "7 सेंमी, 8 सेंमी, 10 सेंमी",
+            "3 सेंमी, 4 सेंमी, 8 सेंमी",
+            "2 सेंमी, 3 सेंमी, 6 सेंमी"
           ],
-          "solution": "त्रिकोणाच्या कोनांची बेरीज 180° असते. जर एक कोन 120° असेल, तर उरलेल्या 60° ची विभाजनाची बेरीज इतर दोन कोनांमध्ये समान वाटप होते. म्हणून, 60° ÷ 2 = 30°. 20° खूप लहान आहे, 40° आणि 50° खूप मोठे आहेत आणि 60° ला समान वाटप करत नाहीत.",
+          "solution": "7 सेंमी, 8 सेंमी आणि 10 सेंमी चा समूह त्रिकोणाच्या असमानतेचे नियम पूर्ण करतो कारण प्रत्येक लांबी इतर दोन लांबींच्या बेरजेपेक्षा लहान आहे. इतर समूह या अटीचे पालन करत नाहीत: 5 + 10 = 15, 3 + 4 < 8 आणि 2 + 3 < 6. म्हणूनच, केवळ दुसरा समूह त्रिकोण तयार करू शकतो.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -888,10 +283,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Mistakenly divides 120° by 4 instead of 2",
+        "Fails to recognize that the sum of two sides must be greater than the third",
         null,
-        "Assumes one of the angles is the same as the given 120°",
-        "Adds 120° and 30° to get 150° and assumes the other angle is 30°"
+        "Student adds the two smaller sides and incorrectly believes the sum must be greater than the largest side, but forgets to check if the sum is actually greater.",
+        "Fails to recognize that the sum of two sides must be greater than the third"
       ],
       "solverAnswers": [
         1,
@@ -900,8 +295,109 @@
         1,
         1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the triangle angle sum property and divides the remaining 60° equally between the two equal angles. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution correctly applies the triangle inequality theorem, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.2 Constructing a Triangle When its Sides are",
+            "Given"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.2 Constructing a Triangle When its Sides are",
+            "Given"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.2 Constructing a Triangle When its Sides are",
+            "Given"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:05:45.959Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a triangle, if one angle is 90° and another is 30°, what is the measure of the third angle?",
+      "choices": [
+        "60°",
+        "90°",
+        "30°",
+        "180°"
+      ],
+      "answerIndex": 0,
+      "solution": "The sum of the angles in a triangle is always 180°. Adding the two given angles, 90° + 30° = 120°. To find the third angle, subtract 120° from 180°, which gives 60°. The option 90° is incorrect because it repeats one of the given angles. The option 30° is incorrect because it repeats one of the given angles. The option 180° is incorrect because it is the total sum of the angles, not the third angle.",
+      "checkExpr": "180-90-30",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक त्रिभुज में, यदि एक कोण 90° है और दूसरा 30° है, तो तीसरे कोण का माप क्या है?",
+          "choices": [
+            "60°",
+            "90°",
+            "30°",
+            "180°"
+          ],
+          "solution": "त्रिभुज के कोणों का योग हमेशा 180° होता है। दिए गए दो कोणों को जोड़ने पर, 90° + 30° = 120° होता है। तीसरा कोण ज्ञात करने के लिए 120° को 180° में से घटाएं, जो 60° देता है। विकल्प 90° गलत है क्योंकि यह दिए गए कोणों में से एक की पुनरावृत्ति करता है। विकल्प 30° गलत है क्योंकि यह दिए गए कोणों में से एक की पुनरावृत्ति करता है। विकल्प 180° गलत है क्योंकि यह कोणों का कुल योग है, न कि तीसरा कोण।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "त्रिकोणात जर एक कोन 90° असेल आणि दुसरा 30° असेल, तर तिसरा कोनाचे माप किती असेल?",
+          "choices": [
+            "60°",
+            "90°",
+            "30°",
+            "180°"
+          ],
+          "solution": "त्रिकोणाच्या कोनांची बेरीज हमेशा 180° असते. दिलेल्या दोन कोनांची बेरीज 90° + 30° = 120° असते. तिसरा कोन शोधण्यासाठी 120° ची 180° मधून वजा करावी लागते, जी 60° देते. 90° अशी विकल्प चुकीचा आहे कारण तो दिलेल्या कोनांपैकी एक आहे. 30° अशी विकल्प चुकीचा आहे कारण तो दिलेल्या कोनांपैकी एक आहे. 180° अशी विकल्प चुकीचा आहे कारण तो कोनांची एकूण बेरीज आहे, नाही की तिसरा कोन.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "repeats one of the given angles",
+        "repeats one of the given angles",
+        "total sum of the angles"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp107.pdf",
@@ -949,49 +445,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:34:07.786Z",
+      "generatedAt": "2026-10-29T15:05:45.959Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "If a triangle has side lengths a, b, and c, and a + b < c, what can be concluded about the triangle?",
+      "difficulty": 5,
+      "stem": "If the sum of the two smaller lengths is less than the longest length, what happens to the circles constructed with these lengths as radii?",
       "choices": [
-        "The triangle is valid.",
-        "The triangle is degenerate.",
-        "The triangle cannot exist.",
-        "The triangle is equilateral."
+        "They intersect internally",
+        "They touch each other at a point",
+        "They do not intersect",
+        "They are completely separate"
       ],
       "answerIndex": 2,
-      "solution": "If a + b < c, the triangle cannot exist because the sum of the lengths of any two sides of a triangle must be greater than the length of the third side, according to the triangle inequality theorem. The other options are incorrect because a valid triangle requires the sum of any two sides to be greater than the third, a degenerate triangle has sides that sum to exactly the third, and an equilateral triangle has all sides equal.",
+      "solution": "If the sum of the two smaller lengths is less than the longest length, the circles do not intersect because the distance between their centers is greater than the sum of their radii. This means the circles are completely separate and do not touch or overlap. The condition for intersection requires the sum of the radii to be at least equal to the distance between the centers, which is not met here.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक त्रिभुज की भुजा लंबाइयाँ a, b, और c हैं, और a + b < c, तो त्रिभुज के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "stem": "यदि दो छोटी लंबाइयों का योग लंबी लंबाई से कम है, तो इन लंबाइयों के रेडियस के साथ बनाए गए वृत्तों के साथ क्या होता है?",
           "choices": [
-            "त्रिभुज मान्य है।",
-            "त्रिभुज विघटित है।",
-            "त्रिभुज अस्तित्व में नहीं हो सकता।",
-            "त्रिभुज समबाहु है।"
+            "वे आंतरिक रूप से प्रतिच्छेद करते हैं",
+            "वे एक बिंदु पर एक दूसरे को स्पर्श करते हैं",
+            "वे एक दूसरे को प्रतिच्छेद नहीं करते",
+            "वे पूरी तरह से अलग होते हैं"
           ],
-          "solution": "यदि a + b < c, तो त्रिभुज अस्तित्व में नहीं हो सकता क्योंकि त्रिभुज की किन्हीं दो भुजाओं की लंबाइयों का योग तीसरी भुजा की लंबाई से अधिक होना चाहिए, त्रिभुज असमानता प्रमेय के अनुसार। अन्य विकल्प गलत हैं क्योंकि एक मान्य त्रिभुज के लिए किन्हीं दो भुजाओं के योग को तीसरी भुजा से अधिक होना आवश्यक है, एक विघटित त्रिभुज की भुजाएं बिल्कुल तीसरी भुजा के बराबर होती हैं, और एक समबाहु त्रिभुज में सभी भुजाएं बराबर होती हैं।",
+          "solution": "यदि दो छोटी लंबाइयों का योग लंबी लंबाई से कम है, तो वृत्त एक दूसरे को प्रतिच्छेद नहीं करते क्योंकि उनके केंद्रों के बीच की दूरी उनकी त्रिज्याओं के योग से अधिक होती है। इसका अर्थ है कि वृत्त पूरी तरह से अलग होते हैं और एक दूसरे को स्पर्श या ओवरलैप नहीं करते। प्रतिच्छेद की स्थिति में त्रिज्याओं के योग को केंद्रों के बीच की दूरी के बराबर या अधिक होना आवश्यक है, जो यहां पूरा नहीं होता।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एका त्रिकोणाच्या बाजूंच्या लांबी a, b आणि c असतील, आणि a + b < c असेल, तर त्रिकोणाबद्दल काय निष्कर्ष काढता येईल?",
+          "stem": "दोन लहान लांबींच्या बेरजेचा लांबतर लांबीपेक्षा कमी असल्यास, या लांबी त्रिज्या म्हणून बनवलेल्या वर्तुळांचा काय फायदा होतो?",
           "choices": [
-            "त्रिकोण वैध आहे.",
-            "त्रिकोण अविच्छिन्न आहे.",
-            "त्रिकोण अस्तित्वात नाही.",
-            "त्रिकोण समभुज आहे."
+            "ते आत्मस्पर्श करतात",
+            "ते एका बिंदूवर स्पर्श करतात",
+            "ते एकमेकांना छेदत नाहीत",
+            "ते पूर्णपणे विलग असतात"
           ],
-          "solution": "जर a + b < c असेल, तर त्रिकोण अस्तित्वात नाही कारण त्रिकोणाच्या कोणत्याही दोन बाजूंच्या लांबींची बेरीज तिसरी बाजूच्या लांबीपेक्षा मोठी असावी, असे त्रिकोणाच्या अस्तित्वाच्या नियमानुसार आहे. इतर विकल्प चुकीचे आहेत कारण वैध त्रिकोणासाठी कोणत्याही दोन बाजूंच्या लांबींची बेरीज तिसरी बाजूपेक्षा मोठी असावी, अविच्छिन्न त्रिकोणाच्या बाजूंची बेरीज तिसरी बाजूसारखी असते आणि समभुज त्रिकोणाच्या सर्व बाजू बरोबर असतात.",
+          "solution": "जर दोन लहान लांबींची बेरीज लांबतर लांबीपेक्षा कमी असेल तर वर्तुळे एकमेकांना छेदत नाहीत कारण त्यांच्या केंद्रांमधील अंतर त्यांच्या त्रिज्यांच्या बेरजेपेक्षा जास्त असते. हे वर्तुळे पूर्णपणे विलग असतात आणि एकमेकांना स्पर्श करत नाहीत किंवा ओव्हरलॅप करत नाहीत. छेदनाची शर्त ही आहे की त्रिज्यांची बेरीज केंद्रांमधील अंतरापेक्षा कमी नसावी, जे येथे पूर्ण होत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometry.",
           "flag": null
         }
       },
@@ -1000,10 +496,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Assumes the triangle is valid despite violating the triangle inequality.",
-        "Misunderstands the meaning of a degenerate triangle.",
+        "Confuses Case 1 with this situation",
+        "Misunderstands the condition for intersection",
         null,
-        "Incorrectly identifies the type of triangle."
+        "Incorrectly assumes the circles are completely separate"
       ],
       "solverAnswers": [
         2,
@@ -1012,14 +508,14 @@
         2,
         2
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the triangle inequality theorem, which states that the sum of the lengths of any two sides of a triangle must be greater than the length of the third side. Since a + b < c, the triangle cannot exist.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2. The condition given (sum of two smaller lengths < longest length) implies that the circles do not intersect. The author's solution is correct, and the reasons for the wrong options align with common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 8,
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 14,
           "headingPath": [
             "Chapter 7: A Tale of Three Intersecting Lines",
             "7.2 Constructing a Triangle When its Sides are",
@@ -1028,9 +524,9 @@
         },
         {
           "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
+          "ordinal": 8,
+          "pageStart": 14,
+          "pageEnd": 15,
           "headingPath": [
             "Chapter 7: A Tale of Three Intersecting Lines",
             "7.2 Constructing a Triangle When its Sides are",
@@ -1039,18 +535,130 @@
         },
         {
           "document": "ncert/7/mathematics/gegp107.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 11,
+          "ordinal": 9,
+          "pageStart": 15,
+          "pageEnd": 17,
           "headingPath": [
             "Chapter 7: A Tale of Three Intersecting Lines",
-            "7.2 Constructing a Triangle When its Sides are",
-            "Given"
+            "7.3 Construction of Triangles When Some Sides",
+            "and Angles are Given"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:34:07.786Z",
+      "generatedAt": "2026-10-29T15:05:45.959Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a triangle, if the sum of two angles is 180°, what can be said about the triangle?",
+      "choices": [
+        "The triangle is equilateral",
+        "The triangle is right-angled",
+        "The triangle is valid",
+        "The triangle is not possible"
+      ],
+      "answerIndex": 3,
+      "solution": "If the sum of two angles in a triangle is 180°, the third angle must be 0°, which is impossible in a valid triangle. An equilateral triangle has all angles equal to 60°, so their sum would be 180°, but this does not match the given condition. A right-angled triangle has one 90° angle, but the sum of two angles being 180° contradicts the requirement that all three angles must add to 180°. Therefore, the triangle cannot exist.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक त्रिभुज में, यदि दो कोणों का योग 180° है, तो त्रिभुज के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "त्रिभुज समबाहु है",
+            "त्रिभुज समकोणीय है",
+            "त्रिभुज मान्य है",
+            "त्रिभुज संभव नहीं है"
+          ],
+          "solution": "यदि एक त्रिभुज में दो कोणों का योग 180° है, तो तीसरा कोण शून्य होना चाहिए, जो कि एक मान्य त्रिभुज में संभव नहीं है। एक समबाहु त्रिभुज में सभी कोण 60° होते हैं, इसलिए उनका योग 180° होता है, लेकिन यह दिए गए शर्त के अनुरूप नहीं है। एक समकोणीय त्रिभुज में एक कोण 90° होता है, लेकिन दो कोणों का योग 180° होना तीनों कोणों के योग 180° होने की आवश्यकता के विरोध में है। इसलिए, त्रिभुज असंभव है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "त्रिकोणात, जर दोन कोनांची बेरीज 180° असेल, तर त्रिकोण बद्दल काय म्हणता येईल?",
+          "choices": [
+            "त्रिकोण समभुज असेल",
+            "त्रिकोण समकोनी असेल",
+            "त्रिकोण वैध असेल",
+            "त्रिकोण असंभव असेल"
+          ],
+          "solution": "जर त्रिकोणातील दोन कोनांची बेरीज 180° असेल, तर तिसरा कोन शून्य असावा, जे वैध त्रिकोणासाठी असंभव आहे. समभुज त्रिकोणात सर्व कोन 60° असतात, म्हणून त्यांची बेरीज 180° असते, परंतु हे दिलेल्या अटीशी जुमानत नाही. समकोनी त्रिकोणात एक 90° कोन असतो, परंतु दोन कोनांची बेरीज 180° ही तीन कोनांची बेरीज 180° असण्याच्या आवश्यकतेशी विरोधात आहे. म्हणून, त्रिकोण अस्तित्वात नसेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the property of equilateral triangles with the condition for the existence of a triangle.",
+        "Mistakenly assumes that a triangle with a sum of 180° is right-angled, without understanding the rule for triangle validity.",
+        "Fails to recognize that a triangle with the sum of two angles equal to 180° is not possible.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The sum of two angles in a triangle cannot be 180°, as that would leave no room for the third angle, making the triangle impossible. The reasoning aligns with the key and the misconceptions are valid.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 10,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.3 Construction of Triangles When Some Sides",
+            "and Angles are Given"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 11,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.3 Construction of Triangles When Some Sides",
+            "and Angles are Given"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 12,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.3 Construction of Triangles When Some Sides",
+            "and Angles are Given"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp107.pdf",
+          "ordinal": 13,
+          "pageStart": 22,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 7: A Tale of Three Intersecting Lines",
+            "7.3 Construction of Triangles When Some Sides",
+            "and Angles are Given"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:05:45.959Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,361 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T03:23:21.480Z",
+  "finishedAt": "2026-10-24T03:26:00.269Z",
+  "seconds": 159,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamentals of Human Geography",
+    "bookCode": "legy1",
+    "document": "ncert/12/geography/legy103.pdf",
+    "classLevel": 12,
+    "subject": "Geography",
+    "chapter": "Chapter 3 — Human Development",
+    "edition": "Reprint 2026-27",
+    "chunks": 12,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, sample question paper, 2026-27]\n20. Explain the concept of human development as introduced by Dr 3\nMahbub-ul-Haq.",
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\n20. The concept of human development was introduced by Dr Mahbub-ul- 3\nHaq. Dr Haq has described human development as development that\nenlarges people’s choices and improves their lives. People are central\nto all development under this concept. The basic goal of development\nis to create conditions where people can live meaningful lives.\nLeading a long and healthy life, being able to gain knowledge and\nhaving enough means to be able to live a decent life are the most\nimportant aspects of human development. Therefore, access to\nresources, health and education are the key areas in human\ndevelopment.",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n20. A. “The basic goal of development is to create conditions where the\npeople can live a meaningful life” – What do you mean by meaningful 3\nlife?\nOR\nB. How do people’s choices get affected in different aspects of life\ndue to lack of human development?",
+      "[CBSE Class XII Geography, sample question paper, 2024-25]\n19. Study the following table and answer the questions: 3 x1=3\n(I) Identify the human development score for the countries classified as having\nMedium Human Development?\n(II) What can you infer about the well-being of people living in countries with a high\nlevel of human development?\n(III) Give reasons for low level of human development in 33 countries."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 45834,
+      "in": 12,
+      "out": 12,
+      "rejects": 6,
+      "promptTokens": 13680,
+      "completionTokens": 2428
+    },
+    "critique": {
+      "calls": 17,
+      "ms": 103522,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 7268,
+      "completionTokens": 2878
+    },
+    "solver": {
+      "calls": 74,
+      "ms": 44179,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 16642,
+      "completionTokens": 846
+    },
+    "form": {
+      "calls": 1,
+      "ms": 1220,
+      "in": 7,
+      "out": 1,
+      "rejects": 6,
+      "promptTokens": 259,
+      "completionTokens": 79
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 8,
+      "ms": 1231,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 26226,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 3078,
+      "completionTokens": 1661
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does the passage suggest is the key to improving human development?",
+      "ms": {
+        "draft": 8178,
+        "critique": 5064,
+        "solver": 1874,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is the purpose of the Human Poverty Index?",
+      "ms": {
+        "draft": 8178,
+        "critique": 8709,
+        "solver": 1794,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is the main goal of human development?",
+      "ms": {
+        "draft": 8178,
+        "critique": 5540,
+        "solver": 13100,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a dimension used to calculate the Human Development Index (HDI)?",
+      "ms": {
+        "draft": 8178,
+        "critique": 4880,
+        "solver": 17534
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses the concept of empowerment in human development. Which of the following best explains the idea of empowerment according to the passage?",
+      "ms": {
+        "draft": 8178,
+        "critique": 5623,
+        "solver": 828,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is asked to explain why the Human Development Index (HDI) is not the most reliable measure. Based on the passage, what is the most appropriate reason?",
+      "ms": {
+        "draft": 8178,
+        "critique": 6184,
+        "solver": 7641,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person lacks access to education, what is the most likely impact on their life?",
+      "ms": {
+        "draft": 4239,
+        "critique": 6986
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea behind the concept of human development introduced by Dr Mahbub-ul-Haq?",
+      "ms": {
+        "draft": 4239,
+        "critique": 7304
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about people who lack resources?",
+      "ms": {
+        "draft": 4239,
+        "critique": 7563
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is a key area of human development?",
+      "ms": {
+        "draft": 4239,
+        "critique": 6430,
+        "solver": 12548,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the concept of empowerment important in human development?",
+      "ms": {
+        "draft": 4239,
+        "critique": 6840
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A country has a very low human development score. What does this suggest about its people?",
+      "ms": {
+        "draft": 4239,
+        "critique": 8460,
+        "solver": 8409,
+        "form": 1220,
+        "translation": 22587
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"request (9175 tokens) exceeds the available context size (8192 tokens), try increasing it\",\"type\":\"exceed_context_size_error\",\"n_prompt_tokens\":9175,\"n_ctx\":8192}}"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"request (18086 tokens) exceeds the available context size (8192 tokens), try increasing it\",\"type\":\"exceed_context_size_error\",\"n_prompt_tokens\":18086,\"n_ctx\":8192}}"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 1)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"request (9888 tokens) exceeds the available context size (8192 tokens), try increasing it\",\"type\":\"exceed_context_size_error\",\"n_prompt_tokens\":9888,\"n_ctx\":8192}}"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest is the key to improving human development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Focuses on the environment, which is not a primary focus of …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what is the purpose of the Human Poverty Index?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what is the main goal of human development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a dimension used to calculate the Human Development Index (HDI)?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses the concept of empowerment in human development. Which of the following best explains the idea of empowerment according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is asked to explain why the Human Development Index (HDI) is not the most reliable measure. Based on the passage, what is the most appropriate reason?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 are the same (\"It only measures the income of a country\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"request (9888 tokens) exceeds the available context size (8192 tokens), try increasing it\",\"type\":\"exceed_context_size_error\",\"n_prompt_tokens\":9888,\"n_ctx\":8192}}"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"request (18086 tokens) exceeds the available context size (8192 tokens), try increasing it\",\"type\":\"exceed_context_size_error\",\"n_prompt_tokens\":18086,\"n_ctx\":8192}}"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 2)",
+      "reason": "chat endpoint answered 400: {\"error\":{\"code\":400,\"message\":\"request (9175 tokens) exceeds the available context size (8192 tokens), try increasing it\",\"type\":\"exceed_context_size_error\",\"n_prompt_tokens\":9175,\"n_ctx\":8192}}"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person lacks access to education, what is the most likely impact on their life?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main idea behind the concept of human development introduced by Dr Mahbub-ul-Haq?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage suggest about people who lack resources?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is a key area of human development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the concept of empowerment important in human development?",
+      "reason": "option 3 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

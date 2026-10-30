@@ -1,0 +1,189 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T06:12:30.073Z",
+  "finishedAt": "2026-10-28T06:14:26.343Z",
+  "seconds": 116,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap102.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 2 — A Snake Charmer’s Story",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 1,
+      "ms": 10379,
+      "in": 4,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 4005,
+      "completionTokens": 615
+    },
+    "critique": {
+      "calls": 4,
+      "ms": 17201,
+      "in": 4,
+      "out": 1,
+      "rejects": 3,
+      "promptTokens": 1610,
+      "completionTokens": 705
+    },
+    "solver": {
+      "calls": 5,
+      "ms": 1836,
+      "in": 1,
+      "out": 0,
+      "rejects": 1,
+      "promptTokens": 650,
+      "completionTokens": 40
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 2342,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 152,
+      "completionTokens": 167
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does Aryanath say he can do?",
+      "ms": {
+        "draft": 2595,
+        "critique": 4399
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would Aryanath’s grandfather most likely do if someone was bitten by a snake?",
+      "ms": {
+        "draft": 2595,
+        "critique": 4974
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does Aryanath’s grandfather say snakes are his treasure?",
+      "ms": {
+        "draft": 2595,
+        "critique": 5054
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the Kalbelia dance?",
+      "ms": {
+        "draft": 2595,
+        "critique": 2774,
+        "solver": 689
+      },
+      "outcome": "solver",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does Aryanath say he can do?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What would Aryanath’s grandfather most likely do if someone was bitten by a snake?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why does Aryanath’s grandfather say snakes are his treasure?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What does the passage suggest about the Kalbelia dance?",
+      "reason": "the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"What is the special skill that Aryanath says he can do?\",\"options\":[\"He can play the f"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

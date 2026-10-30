@@ -1,0 +1,873 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T17:28:54.187Z",
+  "finishedAt": "2026-10-24T17:38:43.586Z",
+  "seconds": 589,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-I",
+    "bookCode": "hegp1",
+    "document": "ncert/8/mathematics/hegp102.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Power Play",
+    "edition": "Reprint 2026-27",
+    "chunks": 26,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n8. (B) ଷଵ\nଷ଺\nProbability of getting sum 8 is ଷ଺ ହ\nProbability of not getting sum 8 is ଷଵ ଷ଺",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n14. B) 3 8",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n8. (d) RHS"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 15,
+      "ms": 327780,
+      "in": 51,
+      "out": 43,
+      "rejects": 8,
+      "promptTokens": 68962,
+      "completionTokens": 11687
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 387146,
+      "in": 43,
+      "out": 25,
+      "rejects": 18,
+      "promptTokens": 22252,
+      "completionTokens": 8940
+    },
+    "solver": {
+      "calls": 162,
+      "ms": 93181,
+      "in": 25,
+      "out": 19,
+      "rejects": 6,
+      "promptTokens": 31913,
+      "completionTokens": 1644
+    },
+    "form": {
+      "calls": 4,
+      "ms": 20822,
+      "in": 19,
+      "out": 9,
+      "rejects": 10,
+      "promptTokens": 1035,
+      "completionTokens": 435
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 36,
+      "ms": 8068,
+      "in": 9,
+      "out": 6,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 212810,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 12377,
+      "completionTokens": 5306
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which expression correctly represents the thickness of a paper after 7 folds if the initial thickness is 0.001 cm?",
+      "ms": {
+        "draft": 5381,
+        "critique": 9216,
+        "solver": 2313,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is 4 × 4 × 4 expressed as a power of a power?",
+      "ms": {
+        "draft": 5213,
+        "critique": 11273
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the thickness of a sheet of paper after 10 folds if its initial thickness is 0.001 cm?",
+      "ms": {
+        "draft": 5381,
+        "critique": 8113,
+        "solver": 15780,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the number of lotuses in a pond doubles every day and is fully covered on day 30, on which day was the pond half full?",
+      "ms": {
+        "draft": 5213,
+        "critique": 7344
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the number of lotuses in a pond triples every day and 1 lotus is placed on day 1, how many lotuses will be in the pond after 4 days?",
+      "ms": {
+        "draft": 5213,
+        "critique": 7826
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Estu has 4 dresses and 3 caps, how many different combinations of dress and cap can he make?",
+      "ms": {
+        "draft": 5213,
+        "critique": 7754
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the value of 2^5 ÷ 2^3?",
+      "ms": {
+        "draft": 5213,
+        "critique": 6687
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following represents the number 172 in expanded form using powers of 10?",
+      "ms": {
+        "draft": 8475,
+        "critique": 8617,
+        "solver": 2362,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct way to write 5642 in expanded form using powers of 10?",
+      "ms": {
+        "draft": 8475,
+        "critique": 8018,
+        "solver": 2090,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of the blank in the expression 561.903 = (5 × 10^2) + (6 × 10^1) + (1 × 10^0) + (9 × 10^-1) + (0 × 10^-2) + (3 × 10^-3)?",
+      "ms": {
+        "draft": 8475,
+        "critique": 7513,
+        "solver": 2174
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers, when expressed in scientific notation, is written as 1.496 × 10^11?",
+      "ms": {
+        "draft": 8475,
+        "critique": 8733,
+        "solver": 2323
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person walks non-stop and covers 40,000 km (the Earth's circumference), how many times can they circumnavigate the Earth in their lifetime if they walk 10 km per day and live for 80 years?",
+      "ms": {
+        "draft": 6291,
+        "critique": 13645
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Estu and Roxie talk about donating items worth their weight every year. If a person weighs 50 kg, and a notebook weighs 200 grams, how many notebooks can they donate?",
+      "ms": {
+        "draft": 6291,
+        "critique": 10739,
+        "solver": 22652
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many seconds are in 100 years?",
+      "ms": {
+        "draft": 7192,
+        "critique": 11348
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 10 seconds is approximately 1 year, how many years are in 3.17 × 10⁹ seconds?",
+      "ms": {
+        "draft": 7192,
+        "critique": 8643
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the age of the oldest known living tree is approximately 5000 years, how many seconds is this?",
+      "ms": {
+        "draft": 7192,
+        "critique": 9562
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The chapter explains the difference between linear and exponential growth. If a ladder is built to reach the moon, and each step is 20 cm, how many steps are needed to reach the moon (384,400 km)?",
+      "ms": {
+        "draft": 6291,
+        "critique": 8458,
+        "solver": 20387
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the value of 10 × 10 ?",
+      "ms": {
+        "draft": 5700,
+        "critique": 8069
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following expressions represents the number of ways Roxie can dress up if she has 7 dresses, 2 hats, and 3 pairs of shoes?",
+      "ms": {
+        "draft": 7485,
+        "critique": 6461,
+        "solver": 1384,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which number is greater: 4 or 3?",
+      "ms": {
+        "draft": 4531,
+        "critique": 6709
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following expressions are equivalent?",
+      "ms": {
+        "draft": 4531,
+        "critique": 8877
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of (1.2) if (12) = 144?",
+      "ms": {
+        "draft": 4531,
+        "critique": 6295,
+        "solver": 1385,
+        "form": 5546
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of (– 1) ?",
+      "ms": {
+        "draft": 5172,
+        "critique": 8696
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many digits are needed to create a unique ID for 8.5 billion milk packets using digits 0–9?",
+      "ms": {
+        "draft": 4531,
+        "critique": 9711,
+        "solver": 1881,
+        "form": 6994
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the numerical value of 3 × 10 ?",
+      "ms": {
+        "draft": 5172,
+        "critique": 8166
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of (– 2) ?",
+      "ms": {
+        "draft": 5172,
+        "critique": 7973,
+        "solver": 1625
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which expression describes the thickness of a sheet of paper after it is folded 10 times, if the initial thickness is represented by v?",
+      "ms": {
+        "draft": 5172,
+        "critique": 7037,
+        "solver": 2093,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the value of 2 × 10 ?",
+      "ms": {
+        "draft": 5172,
+        "critique": 8143
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many seconds are in 10 years?",
+      "ms": {
+        "draft": 7230,
+        "critique": 7612,
+        "solver": 1801
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the Earth is 4.5 billion years old, how many seconds is this approximately?",
+      "ms": {
+        "draft": 7230,
+        "critique": 7848,
+        "solver": 1969,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a person walks 400 km to reach a place and arrives early in the morning, how long ago would they have started their journey if they walk at a constant speed of 5 km/h?",
+      "ms": {
+        "draft": 10173,
+        "critique": 9259
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a person walks non-stop and the distance around the Earth is 40,000 km, how many times can they circumnavigate the Earth in their lifetime if they walk 5 km per day for 80 years?",
+      "ms": {
+        "draft": 10173,
+        "critique": 9737
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following represents 172 in expanded form using powers of 10?",
+      "ms": {
+        "draft": 8613,
+        "critique": 7214,
+        "solver": 2028,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 2^a × 5^b = (2×5)^c, where a, b, and c are counting numbers, what is the value of c?",
+      "ms": {
+        "draft": 7459,
+        "critique": 7109
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the thickness of a paper doubles after every fold, what is the factor by which the thickness increases after 10 folds?",
+      "ms": {
+        "draft": 5381,
+        "critique": 5953,
+        "solver": 2866,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following numbers is both a square and a cube?",
+      "ms": {
+        "draft": 5241,
+        "critique": 5481,
+        "solver": 8566,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Estu says she would like to donate notebooks worth her weight every year. If the average weight of a notebook is 0.5 kg and a person weighs 50 kg, how many notebooks can she donate in a year?",
+      "ms": {
+        "draft": 10173,
+        "critique": 7586,
+        "solver": 1688,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the number 10^12?",
+      "ms": {
+        "draft": 6566,
+        "critique": 7441,
+        "solver": 13848,
+        "form": 5152,
+        "translation": 32085
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the scientific notation of a number, which part is more important in determining the scale of the number?",
+      "ms": {
+        "draft": 8475,
+        "critique": 8455,
+        "solver": 2354,
+        "form": 0,
+        "translation": 42079
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of 2^10?",
+      "ms": {
+        "draft": 5381,
+        "critique": 5921,
+        "solver": 1578,
+        "form": 0,
+        "translation": 25994
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the general form of numbers that are both perfect squares and perfect cubes?",
+      "ms": {
+        "draft": 4531,
+        "critique": 6545,
+        "solver": 1986,
+        "form": 4818,
+        "translation": 36083
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Roxie and Estu talk about walking long distances. If they walked 400 km to reach a place and their walking speed is 5 km/h, how many hours did they take to reach there?",
+      "ms": {
+        "draft": 6291,
+        "critique": 8969,
+        "solver": 2819,
+        "form": 0,
+        "translation": 40403
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person is 4840 days old, how many hours old are they?",
+      "ms": {
+        "draft": 7230,
+        "critique": 8870,
+        "solver": 2131,
+        "form": 0,
+        "translation": 31473
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the exponential form of 2 × 2 × 2 × 2 × 2 × 2 × 2?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the value of 3^5?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "Which of the following is equal to 10 ?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which expression correctly represents the thickness of a paper after 7 folds if the initial thickness is 0.001 cm?",
+      "reason": "options 1 and 2 say the same thing (\"0.001 × 7^2\" / \"0.001 × 2^7\"); options 1 and 3 say the same thing (\"0.001 × 7^2\" / \"0.001 × 2 × 7\"); options 2 and 3 are the same (\"0.001 × 2^7\"); ARITHMETIC MISMATCH — checkExpr \"0.001*2^7\" = 0.128, but the key says 0.001"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is 4 × 4 × 4 expressed as a power of a power?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the thickness of a sheet of paper after 10 folds if its initial thickness is 0.001 cm?",
+      "reason": "options are written to different precisions (0 and 2 and 3 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the number of lotuses in a pond doubles every day and is fully covered on day 30, on which day was the pond half full?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If the number of lotuses in a pond triples every day and 1 lotus is placed on day 1, how many lotuses will be in the pond after 4 days?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If Estu has 4 dresses and 3 caps, how many different combinations of dress and cap can he make?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the value of 2^5 ÷ 2^3?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following represents the number 172 in expanded form using powers of 10?",
+      "reason": "options 0 and 2 say the same thing (\"(1 × 10^2) + (7 × 10^1) + (2 × 10^0)\" / \"(1 × 10^1) + (7 × 10^0) + (2 × 10^2)\"); options 0 and 3 say the same thing (\"(1 × 10^2) + (7 × 10^1) + (2 × 10^0)\" / \"(1 × 10^2) + (7 × 10^0) + (2 × 10^1)\"); options 2 and 3 say the same thing (\"(1 × 10^1) + (7 × 10^0) + (2 × 10^2)\" / \"(1 × 10^2) + (7 × 10^0) + (2 × 10^1)\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the correct way to write 5642 in expanded form using powers of 10?",
+      "reason": "options 0 and 1 say the same thing (\"(5 × 10^3) + (6 × 10^2) + (4 × 10^1) + (2 × 10^0)\" / \"(5 × 10^2) + (6 × 10^1) + (4 × 10^0) + (2 × 10^1)\"); options 0 and 2 say the same thing (\"(5 × 10^3) + (6 × 10^2) + (4 × 10^1) + (2 × 10^0)\" / \"(5 × 10^3) + (6 × 10^1) + (4 × 10^2) + (2 × 10^0)\"); options 0 and 3 say the same thing (\"(5 × 10^3) + (6 × 10^2) + (4 × 10^1) + (2 × 10^0)\" / \"(5 × 10^2) + (6 × 10^3) + (4 × 10^1) + (2 × 10^0)\"); options 1 and 2 say the same thing (\"(5 × 10^2) + (6 × 10^1) + (4 × 10^0) + (2 × 10^1)\" / \"(5 × 10^3) + (6 × 10^1) + (4 × 10^2) + (2 × 10^0)\"); options 1 and 3 say the same thing (\"(5 × 10^2) + (6 × 10^1) + (4 × 10^0) + (2 × 10^1)\" / \"(5 × 10^2) + (6 × 10^3) + (4 × 10^1) + (2 × 10^0)\"); options 2 and 3 say the same thing (\"(5 × 10^3) + (6 × 10^1) + (4 × 10^2) + (2 × 10^0)\" / \"(5 × 10^2) + (6 × 10^3) + (4 × 10^1) + (2 × 10^0)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the value of the blank in the expression 561.903 = (5 × 10^2) + (6 × 10^1) + (1 × 10^0) + (9 × 10^-1) + (0 × 10^-2) + (3 × 10^-3)?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following numbers, when expressed in scientific notation, is written as 1.496 × 10^11?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person walks non-stop and covers 40,000 km (the Earth's circumference), how many times can they circumnavigate the Earth in their lifetime if they walk 10 km per day and live for 80 years?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Estu and Roxie talk about donating items worth their weight every year. If a person weighs 50 kg, and a notebook weighs 200 grams, how many notebooks can they donate?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many seconds are in 100 years?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If 10 seconds is approximately 1 year, how many years are in 3.17 × 10⁹ seconds?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the age of the oldest known living tree is approximately 5000 years, how many seconds is this?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The chapter explains the difference between linear and exponential growth. If a ladder is built to reach the moon, and each step is 20 cm, how many steps are needed to reach the moon (384,400 km)?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the value of 10 × 10 ?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following expressions represents the number of ways Roxie can dress up if she has 7 dresses, 2 hats, and 3 pairs of shoes?",
+      "reason": "options 0 and 1 are the same (\"7 + 2 + 3\"); options 0 and 2 are the same (\"7 + 2 + 3\"); options 0 and 3 are the same (\"7 + 2 + 3\"); options 1 and 2 are the same (\"7 × 2 + 3\"); options 1 and 3 are the same (\"7 × 2 + 3\"); options 2 and 3 are the same (\"7 + 2 × 3\")"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How many unique alphanumeric passcodes of length 5 are possible?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the name of the number 10^18?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the name of the number 10^15?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the name of the number 10^100?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What is the scientific notation for 80,00,000?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which number is greater: 4 or 3?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following expressions are equivalent?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of (1.2) if (12) = 144?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals); checkExpr \"1.44\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the value of (– 1) ?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How many digits are needed to create a unique ID for 8.5 billion milk packets using digits 0–9?",
+      "reason": "checkExpr \"10\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the numerical value of 3 × 10 ?",
+      "reason": "the critic finds option 0 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the value of (– 2) ?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which expression describes the thickness of a sheet of paper after it is folded 10 times, if the initial thickness is represented by v?",
+      "reason": "options 1 and 3 are the same (\"2 × 10 × v\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the value of 2 × 10 ?",
+      "reason": "the critic finds option 0 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many seconds are in 10 years?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the Earth is 4.5 billion years old, how many seconds is this approximately?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"4.5*10^9*3.17*10^7\" = 142650000000000000, but the key says 1.42"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a person walks 400 km to reach a place and arrives early in the morning, how long ago would they have started their journey if they walk at a constant speed of 5 km/h?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a person walks non-stop and the distance around the Earth is 40,000 km, how many times can they circumnavigate the Earth in their lifetime if they walk 5 km per day for 80 years?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following represents 172 in expanded form using powers of 10?",
+      "reason": "options 0 and 2 say the same thing (\"(1 × 10^2) + (7 × 10^1) + (2 × 10^0)\" / \"(1 × 10^1) + (7 × 10^0) + (2 × 10^-1)\"); options 0 and 3 say the same thing (\"(1 × 10^2) + (7 × 10^1) + (2 × 10^0)\" / \"(1 × 10^2) + (7 × 10^0) + (2 × 10^1)\"); options 2 and 3 say the same thing (\"(1 × 10^1) + (7 × 10^0) + (2 × 10^-1)\" / \"(1 × 10^2) + (7 × 10^0) + (2 × 10^1)\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If 2^a × 5^b = (2×5)^c, where a, b, and c are counting numbers, what is the value of c?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the thickness of a paper doubles after every fold, what is the factor by which the thickness increases after 10 folds?",
+      "reason": "near-duplicate of served question cmvj117q90f5ugpfhfzdmha90 (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which of the following numbers is both a square and a cube?",
+      "reason": "near-duplicate of served question cmvj117qe0f6cgpfh8yj7poz7 (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Estu says she would like to donate notebooks worth her weight every year. If the average weight of a notebook is 0.5 kg and a person weighs 50 kg, how many notebooks can she donate in a year?",
+      "reason": "near-duplicate of served question cmvew651v01z3god8iohum7ta (cosine 0.914 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,799 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T07:34:20.565Z",
+  "finishedAt": "2026-10-29T07:44:26.497Z",
+  "seconds": 606,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Politics in India Since Independence",
+    "bookCode": "leps2",
+    "document": "ncert/12/political-science/leps206.pdf",
+    "classLevel": 12,
+    "subject": "Political Science",
+    "chapter": "Chapter 6 — In this chapter…",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, sample question paper, 2023-24]\nSECTION-D (12 MARKS)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSECTION – B\n(12 Marks)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSECTION – A\n(12 Marks)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSection – D\n(12 Marks)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 184412,
+      "in": 43,
+      "out": 40,
+      "rejects": 4,
+      "promptTokens": 38880,
+      "completionTokens": 9849
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 272410,
+      "in": 40,
+      "out": 27,
+      "rejects": 13,
+      "promptTokens": 19202,
+      "completionTokens": 7484
+    },
+    "solver": {
+      "calls": 163,
+      "ms": 86388,
+      "in": 27,
+      "out": 20,
+      "rejects": 7,
+      "promptTokens": 26300,
+      "completionTokens": 1539
+    },
+    "form": {
+      "calls": 12,
+      "ms": 37139,
+      "in": 20,
+      "out": 7,
+      "rejects": 13,
+      "promptTokens": 3071,
+      "completionTokens": 866
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 490,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 295597,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16985,
+      "completionTokens": 8806
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What was the impact of the failure of monsoons in 1972-1973?",
+      "ms": {
+        "draft": 3443,
+        "critique": 5594
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When was the 'emergency' imposed in India?",
+      "ms": {
+        "draft": 3443,
+        "critique": 5595
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does 'garibi hatao' mean?",
+      "ms": {
+        "draft": 3443,
+        "critique": 6211
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the reason given by the Congress party for the Supreme Court's position on government initiatives?",
+      "ms": {
+        "draft": 3443,
+        "critique": 5711
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why did the opposition parties in Gujarat demand fresh elections?",
+      "ms": {
+        "draft": 3443,
+        "critique": 5549
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What was the main reason for the students' movement in Bihar?",
+      "ms": {
+        "draft": 3443,
+        "critique": 6527
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why did the government appoint Justice A. N. Ray as Chief Justice of India in 1973?",
+      "ms": {
+        "draft": 4452,
+        "critique": 7311,
+        "solver": 2049
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why did the Supreme Court's decision in 1976 regarding habeas corpus during the emergency cause controversy?",
+      "ms": {
+        "draft": 4302,
+        "critique": 6756
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is true about the effects of the emergency on fundamental rights?",
+      "ms": {
+        "draft": 4302,
+        "critique": 6480,
+        "solver": 1925,
+        "form": 3173
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following was not a consequence of the emergency?",
+      "ms": {
+        "draft": 4302,
+        "critique": 6851
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the purpose of the forty-second amendment to the Constitution during the emergency?",
+      "ms": {
+        "draft": 4302,
+        "critique": 6005
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the main reason given by the government for declaring a state of emergency in 1975?",
+      "ms": {
+        "draft": 4302,
+        "critique": 6287,
+        "solver": 11242,
+        "form": 2690
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Who became the Prime Minister after the 1977 elections?",
+      "ms": {
+        "draft": 3960,
+        "critique": 6757
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which states did the Congress party lose very badly in the 1977 elections?",
+      "ms": {
+        "draft": 3960,
+        "critique": 5737,
+        "solver": 1606,
+        "form": 3548
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What change in the Congress party is highlighted in the passage after 1977?",
+      "ms": {
+        "draft": 3960,
+        "critique": 6745,
+        "solver": 1345
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was not a reason for the proclamation of the Emergency?",
+      "ms": {
+        "draft": 4353,
+        "critique": 5688
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a reason for the declaration of the Emergency in 1975?",
+      "ms": {
+        "draft": 4538,
+        "critique": 6031
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of political parties during the Emergency?",
+      "ms": {
+        "draft": 4538,
+        "critique": 5008,
+        "solver": 1310,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following could be an example of a political crisis as discussed in the passage?",
+      "ms": {
+        "draft": 4538,
+        "critique": 5248,
+        "solver": 1836,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what was the significance of the 1977 elections?",
+      "ms": {
+        "draft": 4538,
+        "critique": 6532,
+        "solver": 1203,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the passage had mentioned that the Emergency was declared due to a specific economic crisis, what would this imply about the government's actions?",
+      "ms": {
+        "draft": 4538,
+        "critique": 6555,
+        "solver": 1932
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between democracy and the party system in India?",
+      "ms": {
+        "draft": 4538,
+        "critique": 6122,
+        "solver": 2538
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is most accurate about the 1977 elections?",
+      "ms": {
+        "draft": 4769,
+        "critique": 6112,
+        "solver": 1462,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the impact of the 1977 elections on Indian politics?",
+      "ms": {
+        "draft": 4769,
+        "critique": 11010,
+        "solver": 1504,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why did the Janata Party government led by Charan Singh last only four months?",
+      "ms": {
+        "draft": 4769,
+        "critique": 6939,
+        "solver": 17666,
+        "form": 2544
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following was a key factor in the success of the Janata Party in 1977?",
+      "ms": {
+        "draft": 4769,
+        "critique": 6823,
+        "solver": 1887
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the main lesson learned from the Emergency according to the passage?",
+      "ms": {
+        "draft": 4545,
+        "critique": 5878,
+        "solver": 1141,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between the Emergency and the strength of democracy in India?",
+      "ms": {
+        "draft": 4545,
+        "critique": 5342,
+        "solver": 1695
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why did the Congress party lose the 1977 Lok Sabha elections?",
+      "ms": {
+        "draft": 4545,
+        "critique": 6088,
+        "solver": 2505,
+        "form": 3433
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which event is described as a 'state of emergency' in the passage?",
+      "ms": {
+        "draft": 31340,
+        "critique": 7982
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the role of the judiciary after the Emergency?",
+      "ms": {
+        "draft": 4545,
+        "critique": 8072,
+        "solver": 1521,
+        "form": 2786
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of the passage?",
+      "ms": {
+        "draft": 31340,
+        "critique": 6537,
+        "solver": 1155
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the reason for the conflict between the government and the judiciary during the period described in the passage?",
+      "ms": {
+        "draft": 6563,
+        "critique": 5534,
+        "solver": 645,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct statement about the Emergency?",
+      "ms": {
+        "draft": 4353,
+        "critique": 5687,
+        "solver": 734,
+        "form": 0,
+        "translation": 45485
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main reason for the Bihar movement in 1974?",
+      "ms": {
+        "draft": 4452,
+        "critique": 6405,
+        "solver": 13139,
+        "form": 3952,
+        "translation": 47498
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the Railway employees in 1974 go on a strike?",
+      "ms": {
+        "draft": 4452,
+        "critique": 5377,
+        "solver": 1449,
+        "form": 4541,
+        "translation": 45619
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What issue did the Kesavananda Bharati Case address?",
+      "ms": {
+        "draft": 4452,
+        "critique": 6886,
+        "solver": 1928,
+        "form": 3784,
+        "translation": 38811
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the main reason the Janata Party government under Morarji Desai lost its majority?",
+      "ms": {
+        "draft": 4769,
+        "critique": 7743,
+        "solver": 17678,
+        "form": 4049,
+        "translation": 28959
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the consequence of the Railway strike of 1974?",
+      "ms": {
+        "draft": 4452,
+        "critique": 5344,
+        "solver": 1925,
+        "form": 4181,
+        "translation": 45588
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why did the Janata Party government fail to remain in power for long?",
+      "ms": {
+        "draft": 3960,
+        "critique": 5954,
+        "solver": 1537,
+        "form": 3150,
+        "translation": 39013
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What was the outcome of the High Court's decision in 1975 regarding Indira Gandhi?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is one of the key lessons of the Emergency according to "
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is correctly matched?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What was the impact of the failure of monsoons in 1972-1973?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "When was the 'emergency' imposed in India?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does 'garibi hatao' mean?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What was the reason given by the Congress party for the Supreme Court's position on government initiatives?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why did the opposition parties in Gujarat demand fresh elections?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What was the main reason for the students' movement in Bihar?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Why did the government appoint Justice A. N. Ray as Chief Justice of India in 1973?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why did the Supreme Court's decision in 1976 regarding habeas corpus during the emergency cause controversy?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements is true about the effects of the emergency on fundamental rights?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Overlooks the passage's statement about the suspension of al…\"); distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason here…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following was not a consequence of the emergency?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What was the purpose of the forty-second amendment to the Constitution during the emergency?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What was the main reason given by the government for declaring a state of emergency in 1975?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's mention of the army as the main …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Who became the Prime Minister after the 1977 elections?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which states did the Congress party lose very badly in the 1977 elections?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Mentions a region not specifically highlighted in the passag…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What change in the Congress party is highlighted in the passage after 1977?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following was not a reason for the proclamation of the Emergency?",
+      "reason": "option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What was the significance of the 1977 Lok Sabha elections?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following was a reason for the declaration of the Emergency in 1975?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of political parties during the Emergency?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following could be an example of a political crisis as discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what was the significance of the 1977 elections?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the passage had mentioned that the Emergency was declared due to a specific economic crisis, what would this imply about the government's actions?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between democracy and the party system in India?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is most accurate about the 1977 elections?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"The Congress party won in most states of north India\" / \"The Janata Party won in most states of north India\"); options 1 and 3 say the same thing (\"The Janata Party won in most states of south India\" / \"The Janata Party won in most states of north India\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the impact of the 1977 elections on Indian politics?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Why did the Janata Party government led by Charan Singh last only four months?",
+      "reason": "options 0 and 1 say the same thing (\"Because it was not supported by the Congress party\" / \"Because it was supported by the Congress party\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which of the following was a key factor in the success of the Janata Party in 1977?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What was the main lesson learned from the Emergency according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"contradicts the passage which states Congress was defeated i…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between the Emergency and the strength of democracy in India?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Why did the Congress party lose the 1977 Lok Sabha elections?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"overlooks the specific reason given in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which event is described as a 'state of emergency' in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What was the role of the judiciary after the Emergency?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"contradicts the passage which states the judiciary became ac…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main purpose of the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains the reason for the conflict between the government and the judiciary during the period described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misrepresents the judiciary's stance as supportive of the ru…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:56:12.913Z",
+  "finishedAt": "2026-10-28T04:58:19.459Z",
+  "seconds": 127,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap126.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 26 — Defence Officer: Wahida",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 20488,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7826,
+      "completionTokens": 1291
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 42044,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 3738,
+      "completionTokens": 1544
+    },
+    "solver": {
+      "calls": 48,
+      "ms": 19138,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 7478,
+      "completionTokens": 477
+    },
+    "form": {
+      "calls": 7,
+      "ms": 12211,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 1665,
+      "completionTokens": 455
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 3957,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 190476,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13090,
+      "completionTokens": 6371
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of the first woman to lead a parade in the Indian Navy?",
+      "ms": {
+        "draft": 2343,
+        "critique": 6841,
+        "solver": 1542
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a naval ship did not have a doctor on board?",
+      "ms": {
+        "draft": 2780,
+        "critique": 4438,
+        "solver": 1723,
+        "form": 2863
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a profession that people in the defence services can have?",
+      "ms": {
+        "draft": 2780,
+        "critique": 4795,
+        "solver": 2037,
+        "form": 1592,
+        "translation": 28467
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the village where Wahida was born?",
+      "ms": {
+        "draft": 2343,
+        "critique": 7021,
+        "solver": 2122,
+        "form": 1787,
+        "translation": 27321
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the first woman to work on a naval ship?",
+      "ms": {
+        "draft": 2343,
+        "critique": 6440,
+        "solver": 1256,
+        "form": 3124,
+        "translation": 34446
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Wahida want to become a doctor?",
+      "ms": {
+        "draft": 2780,
+        "critique": 4193,
+        "solver": 1102,
+        "form": 3644,
+        "translation": 29674
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Wahida's parents have to move out of their village?",
+      "ms": {
+        "draft": 2343,
+        "critique": 3894,
+        "solver": 443,
+        "form": 706,
+        "translation": 28912
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason why Wahida is considered special?",
+      "ms": {
+        "draft": 2780,
+        "critique": 2658,
+        "solver": 5823,
+        "form": 1197,
+        "translation": 38728
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the first woman to lead a parade in the Indian Navy?",
+      "reason": "the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What would happen if a naval ship did not have a doctor on board?",
+      "reason": "near-duplicate of served question cmvk75c510jeqgpfhye9qfywm (cosine 0.908 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

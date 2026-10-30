@@ -1,0 +1,693 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T19:19:36.234Z",
+  "finishedAt": "2026-10-24T19:26:51.703Z",
+  "seconds": 435,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 2 — Health and Diseases",
+    "edition": "First Edition 2018",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2023-24]\nMarking Scheme (2023-24)\nClass-X\nScience (Subject Code – 086) b\nQ. No. Answer Marks\nSection–A\n1 b) Barium sulphate\n2 b) Colourless\n3 d) NaHCO 3\n4 a) Sodium\n6 d) 11 (2,8,1)\n7 c) 14\n8 b) Mushroom\n9 a) tongue\n10 c) Vegetative propagation\n11 c) Growth hormones under the influence of the enzymes coded by a gene. 1\n12 c) lack of oxygen and formation of lactic acid. 1\n13 d) behind the mirror and its position varies according to the object distance. 1\n14 c) scattering of light.\n15 c) CFCs, Ozone\n16 a) Broken down by biological processes\n17 d) Assertion is false but Reason is true\n18 a) Both A and R are true and R is the correct explanation of A. 1\n19 d) Assertion is false but Reason is true 1\n20 c) ",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n8. D. A is false but R is true.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n8. A. Both A and R are true, and R is the correct explanation of A. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 121808,
+      "in": 35,
+      "out": 35,
+      "rejects": 0,
+      "promptTokens": 24842,
+      "completionTokens": 6735
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 313360,
+      "in": 35,
+      "out": 24,
+      "rejects": 11,
+      "promptTokens": 19424,
+      "completionTokens": 8247
+    },
+    "solver": {
+      "calls": 202,
+      "ms": 111541,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 35743,
+      "completionTokens": 2185
+    },
+    "form": {
+      "calls": 15,
+      "ms": 37020,
+      "in": 21,
+      "out": 9,
+      "rejects": 12,
+      "promptTokens": 3287,
+      "completionTokens": 935
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 69,
+      "ms": 10866,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 31,
+      "ms": 259074,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 15738,
+      "completionTokens": 7649
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a person is suffering from dengue, which of the following should they avoid?",
+      "ms": {
+        "draft": 3349,
+        "critique": 5458
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a mode of infection for hepatitis?",
+      "ms": {
+        "draft": 3349,
+        "critique": 8280
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an infectious disease?",
+      "ms": {
+        "draft": 3349,
+        "critique": 5078,
+        "solver": 11723,
+        "form": 3363
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to avoid open food in areas where dengue is common?",
+      "ms": {
+        "draft": 3349,
+        "critique": 7371,
+        "solver": 2148
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is trying to understand the difference between infectious and non-infectious diseases. Which of the following is an infectious disease?",
+      "ms": {
+        "draft": 3349,
+        "critique": 7347,
+        "solver": 11717,
+        "form": 1955
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a non-infectious disease?",
+      "ms": {
+        "draft": 3343,
+        "critique": 7662,
+        "solver": 13128,
+        "form": 2942
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a part of a healthy lifestyle according to the passage?",
+      "ms": {
+        "draft": 12147,
+        "critique": 7516
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an infectious disease?",
+      "ms": {
+        "draft": 12147,
+        "critique": 6131
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason for Master 'X' to suffer from diseases?",
+      "ms": {
+        "draft": 12147,
+        "critique": 8526
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be achieved by drinking boiled and filtered water?",
+      "ms": {
+        "draft": 12147,
+        "critique": 5546,
+        "solver": 17817,
+        "form": 2023
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What can be inferred about the Pradhan Mantri Jan Aushadhi Yojana from the passage?",
+      "ms": {
+        "draft": 12147,
+        "critique": 8642,
+        "solver": 15848,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the significance of donating blood four times a year according to the passage?",
+      "ms": {
+        "draft": 12147,
+        "critique": 8510,
+        "solver": 11703,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an infectious disease?",
+      "ms": {
+        "draft": 3246,
+        "critique": 5255
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a preventive measure against infectious diseases?",
+      "ms": {
+        "draft": 3246,
+        "critique": 5838
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person follows a healthy lifestyle, what is the likely impact on their health?",
+      "ms": {
+        "draft": 3246,
+        "critique": 5870
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred about the role of the Pradhan Mantri Jan Aushadhi Yojana?",
+      "ms": {
+        "draft": 3246,
+        "critique": 5198
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the importance of blood donation according to the passage?",
+      "ms": {
+        "draft": 3246,
+        "critique": 6304
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a reason for diabetes and heart diseases as mentioned in the passage?",
+      "ms": {
+        "draft": 3246,
+        "critique": 5527,
+        "solver": 15824
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is bitten by a dog, which of the following should be done immediately?",
+      "ms": {
+        "draft": 4085,
+        "critique": 6317
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a viral disease?",
+      "ms": {
+        "draft": 4085,
+        "critique": 9338,
+        "solver": 13041,
+        "form": 2775
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a non-infectious disease?",
+      "ms": {
+        "draft": 4085,
+        "critique": 6108,
+        "solver": 12490,
+        "form": 2270
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to avoid the misuse of medicines?",
+      "ms": {
+        "draft": 4085,
+        "critique": 6507,
+        "solver": 11607
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a preventive measure for heart disease?",
+      "ms": {
+        "draft": 4085,
+        "critique": 5704,
+        "solver": 11223,
+        "form": 2651
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of an infectious disease as mentioned in the chapter?",
+      "ms": {
+        "draft": 3504,
+        "critique": 6411,
+        "solver": 1123,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct mode of transmission for dengue as described in the chapter?",
+      "ms": {
+        "draft": 3504,
+        "critique": 5776,
+        "solver": 833,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to drink boiled water in rainy season according to the chapter?",
+      "ms": {
+        "draft": 3504,
+        "critique": 4687,
+        "solver": 721,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a symptom of rabies?",
+      "ms": {
+        "draft": 3343,
+        "critique": 6243,
+        "solver": 1850,
+        "form": 2672
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the spread of Rabies?",
+      "ms": {
+        "draft": 4085,
+        "critique": 8263,
+        "solver": 11782,
+        "form": 4035
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of disease classified in the chapter?",
+      "ms": {
+        "draft": 3504,
+        "critique": 6938,
+        "solver": 1718,
+        "form": 2748,
+        "translation": 28939
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main cause of rabies?",
+      "ms": {
+        "draft": 3343,
+        "critique": 6813,
+        "solver": 1265,
+        "form": 3319,
+        "translation": 37193
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a method to prevent cholera?",
+      "ms": {
+        "draft": 3349,
+        "critique": 5969,
+        "solver": 11694,
+        "form": 2767,
+        "translation": 53551
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a disease that lasts for a long time, which type of disease would it be classified as?",
+      "ms": {
+        "draft": 3504,
+        "critique": 5961,
+        "solver": 1026,
+        "form": 0,
+        "translation": 31854
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can prevent the fatality of rabies?",
+      "ms": {
+        "draft": 3343,
+        "critique": 6970,
+        "solver": 1893,
+        "form": 2520,
+        "translation": 32041
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a reason for heart disease?",
+      "ms": {
+        "draft": 3343,
+        "critique": 8002,
+        "solver": 1828,
+        "form": 1835,
+        "translation": 27950
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the correct first aid for a heart attack?",
+      "ms": {
+        "draft": 3343,
+        "critique": 5775,
+        "solver": 1619,
+        "form": 3077,
+        "translation": 43523
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person is suffering from dengue, which of the following should they avoid?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a mode of infection for hepatitis?",
+      "reason": "the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of an infectious disease?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is it important to avoid open food in areas where dengue is common?",
+      "reason": "the solver picked option 0 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is trying to understand the difference between infectious and non-infectious diseases. Which of the following is an infectious disease?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a non-infectious disease?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a part of a healthy lifestyle according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of an infectious disease?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason for Master 'X' to suffer from diseases?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What can be achieved by drinking boiled and filtered water?",
+      "reason": "options 2 and 3 are the same (\"Improved digestion\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What can be inferred about the Pradhan Mantri Jan Aushadhi Yojana from the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the significance of donating blood four times a year according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of an infectious disease?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a preventive measure against infectious diseases?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person follows a healthy lifestyle, what is the likely impact on their health?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What can be inferred about the role of the Pradhan Mantri Jan Aushadhi Yojana?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the importance of blood donation according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a reason for diabetes and heart diseases as mentioned in the passage?",
+      "reason": "after redrafting distractors 0, 1, 3: the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person is bitten by a dog, which of the following should be done immediately?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a viral disease?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a non-infectious disease?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is it important to avoid the misuse of medicines?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a preventive measure for heart disease?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of an infectious disease as mentioned in the chapter?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a correct mode of transmission for dengue as described in the chapter?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is it important to drink boiled water in rainy season according to the chapter?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a symptom of rabies?",
+      "reason": "near-duplicate of served question cmvf02l8a02iwgod8qsx33qrx (cosine 0.931 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the main reason for the spread of Rabies?",
+      "reason": "near-duplicate of batch item \"What is the main cause of rabies?…\" (cosine 0.910 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

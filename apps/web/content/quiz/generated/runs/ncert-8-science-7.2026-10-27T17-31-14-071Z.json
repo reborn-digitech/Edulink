@@ -1,0 +1,795 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T17:31:14.071Z",
+  "finishedAt": "2026-10-27T17:43:25.857Z",
+  "seconds": 732,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu107.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 7 — Particulate Nature of Matter",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2026-27]\n17. C. physical change because the space between crystals is adjusted. 1\nNo new substance is formed in this process, only the spacing between\ncrystals changes that alters the wavelength of light reflected.",
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer.",
+      "[INJSO 2009 — question paper]\n37. Which conclusion was a direct result of the gold foil experiment?\n| a) An atom is mostly empty space with a dense, positively charged nucleus.\nb) An atom is composed of at least three types of subatomic particles.\n¢) An electron has a positive charge and is located inside the nucleus.\nd) An electron has properties of both waves and particles.",
+      "[INJSO 2021 — solutions or answer key]\n8. D. Gravitational force is an attractive force and the Coulomb force, which is responsible for the\nscattering of alpha particles, is repulsive ."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 233095,
+      "in": 42,
+      "out": 41,
+      "rejects": 1,
+      "promptTokens": 39553,
+      "completionTokens": 9226
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 441930,
+      "in": 41,
+      "out": 32,
+      "rejects": 9,
+      "promptTokens": 21933,
+      "completionTokens": 8702
+    },
+    "solver": {
+      "calls": 213,
+      "ms": 140450,
+      "in": 32,
+      "out": 28,
+      "rejects": 4,
+      "promptTokens": 34095,
+      "completionTokens": 2073
+    },
+    "form": {
+      "calls": 23,
+      "ms": 166232,
+      "in": 28,
+      "out": 10,
+      "rejects": 18,
+      "promptTokens": 16731,
+      "completionTokens": 2800
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 93,
+      "ms": 20043,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 619502,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 24499,
+      "completionTokens": 12485
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 3,
+    "4": 1,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the particles of a solid?",
+      "ms": {
+        "draft": 4635,
+        "critique": 7044
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can we infer about the interparticle spaces in a liquid?",
+      "ms": {
+        "draft": 4635,
+        "critique": 7345,
+        "solver": 2569
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the particles in a liquid?",
+      "ms": {
+        "draft": 5199,
+        "critique": 8072
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the reason that solids have a fixed shape and volume?",
+      "ms": {
+        "draft": 4635,
+        "critique": 8879,
+        "solver": 18063,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a liquid is transferred from one container to another, what will remain the same?",
+      "ms": {
+        "draft": 5199,
+        "critique": 9092
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the observation that smoke fills the entire space of a gas jar, what can be concluded about gases?",
+      "ms": {
+        "draft": 5199,
+        "critique": 8430
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student pours water from one container to another and notices that the water level is slightly less in the second container, what is the most likely reason?",
+      "ms": {
+        "draft": 5199,
+        "critique": 8830
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which property do both liquids and gases share according to the passage?",
+      "ms": {
+        "draft": 5199,
+        "critique": 9473
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage mention that ice has particles that are farther apart than water?",
+      "ms": {
+        "draft": 5199,
+        "critique": 7676,
+        "solver": 19983
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student adds 50 mL of water and 50 mL of alcohol to a container, what would they most likely observe?",
+      "ms": {
+        "draft": 5760,
+        "critique": 9777,
+        "solver": 2015,
+        "form": 9468
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the experiment with sugar in water suggest about the particles in liquids?",
+      "ms": {
+        "draft": 5760,
+        "critique": 9898,
+        "solver": 2452,
+        "form": 5191
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following correctly describes the movement of particles in gases?",
+      "ms": {
+        "draft": 5825,
+        "critique": 9341,
+        "solver": 2052,
+        "form": 3448
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does potassium permanganate spread faster in hot water than in ice-cold water?",
+      "ms": {
+        "draft": 5760,
+        "critique": 7962,
+        "solver": 2625,
+        "form": 6078
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about the interparticle forces in solids and gases is true?",
+      "ms": {
+        "draft": 5825,
+        "critique": 10025,
+        "solver": 2072,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If you heat a solid, what happens to the interparticle forces and the movement of particles?",
+      "ms": {
+        "draft": 5825,
+        "critique": 8597
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do gases not have a fixed shape or volume, while solids do?",
+      "ms": {
+        "draft": 5825,
+        "critique": 7975,
+        "solver": 2292,
+        "form": 3560
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are the tiny particles that make up all matter called?",
+      "ms": {
+        "draft": 4227,
+        "critique": 8415,
+        "solver": 6364,
+        "form": 1109
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a molecule?",
+      "ms": {
+        "draft": 4454,
+        "critique": 9138,
+        "solver": 1839,
+        "form": 5529
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two atoms of hydrogen combine, what do they form?",
+      "ms": {
+        "draft": 4454,
+        "critique": 9472,
+        "solver": 16033
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about molecules?",
+      "ms": {
+        "draft": 4454,
+        "critique": 7388,
+        "solver": 1969,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are the tiny particles that make up all matter?",
+      "ms": {
+        "draft": 4454,
+        "critique": 10390,
+        "solver": 14039,
+        "form": 4116
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best explains why the fragrance of an incense stick spreads throughout a room?",
+      "ms": {
+        "draft": 5716,
+        "critique": 9666
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes the motion of gas particles according to the passage?",
+      "ms": {
+        "draft": 5716,
+        "critique": 9783,
+        "solver": 15181,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the particles in solids?",
+      "ms": {
+        "draft": 5716,
+        "critique": 11277
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why does the passage state that the particles of a gas have negligible interparticle attraction?",
+      "ms": {
+        "draft": 5716,
+        "critique": 10469,
+        "solver": 2178,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the syringe activity show about the particles of a gas?",
+      "ms": {
+        "draft": 7779,
+        "critique": 9126,
+        "solver": 1710,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the sugar and water experiment indicate about the particles of a liquid?",
+      "ms": {
+        "draft": 7779,
+        "critique": 10620,
+        "solver": 21043
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the potassium permanganate experiment show about the movement of particles in water?",
+      "ms": {
+        "draft": 7779,
+        "critique": 8767,
+        "solver": 1690,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a student adds salt to a glass of water and observes that the water level does not increase. What can the student infer about the particles of salt and water?",
+      "ms": {
+        "draft": 7779,
+        "critique": 9704,
+        "solver": 3221,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why sugar dissolves in water and cannot be seen as particles?",
+      "ms": {
+        "draft": 7027,
+        "critique": 8746,
+        "solver": 1344,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a science fair, a student performs an experiment with a syringe and water. He fills the syringe with water and tries to compress it, but the plunger does not move. What does this experiment suggest about the nature of water particles?",
+      "ms": {
+        "draft": 7779,
+        "critique": 11908,
+        "solver": 1989,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is true about the particles in a gas?",
+      "ms": {
+        "draft": 5760,
+        "critique": 10389,
+        "solver": 2500,
+        "form": 3369,
+        "translation": 62411
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the experiments with chalk and sugar?",
+      "ms": {
+        "draft": 4635,
+        "critique": 9460,
+        "solver": 2377,
+        "form": 4007,
+        "translation": 76139
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a solid is heated and starts to melt, what happens to the particles of that solid?",
+      "ms": {
+        "draft": 4635,
+        "critique": 6652,
+        "solver": 1928,
+        "form": 4208,
+        "translation": 71729
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why does the fragrance of an incense stick spread throughout the room?",
+      "ms": {
+        "draft": 5825,
+        "critique": 10196,
+        "solver": 15563,
+        "form": 3865,
+        "translation": 61284
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the volume of a gas when it is compressed in a syringe?",
+      "ms": {
+        "draft": 5760,
+        "critique": 8862,
+        "solver": 2586,
+        "form": 5275,
+        "translation": 64173
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains why water takes the shape of the container it is poured into?",
+      "ms": {
+        "draft": 5357,
+        "critique": 10247,
+        "solver": 2031,
+        "form": 0,
+        "translation": 38476
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that a sugar cube dissolves completely in water and the solution tastes sweet. What can the student conclude about the sugar particles?",
+      "ms": {
+        "draft": 4635,
+        "critique": 9244,
+        "solver": 2552,
+        "form": 6465,
+        "translation": 82400
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that a certain element cannot exist independently but forms a stable particle when combined with other atoms. What can be concluded about this element?",
+      "ms": {
+        "draft": 4454,
+        "critique": 10897,
+        "solver": 15828,
+        "form": 5372,
+        "translation": 57964
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If we remove all the constituent particles from a chair, what would be the most accurate description of the result?",
+      "ms": {
+        "draft": 5716,
+        "critique": 9695,
+        "solver": 2494,
+        "form": 5165,
+        "translation": 55802
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a molecule is formed by combining two hydrogen atoms and one oxygen atom, what is the likely nature of the molecule?",
+      "ms": {
+        "draft": 4454,
+        "critique": 7599,
+        "solver": 2388,
+        "form": 3546,
+        "translation": 43586
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage suggest about the particles of a solid?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what can we infer about the interparticle spaces in a liquid?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is true about the particles in a liquid?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the reason that solids have a fixed shape and volume?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (74 vs 46 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a liquid is transferred from one container to another, what will remain the same?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the observation that smoke fills the entire space of a gas jar, what can be concluded about gases?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a student pours water from one container to another and notices that the water level is slightly less in the second container, what is the most likely reason?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which property do both liquids and gases share according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why does the passage mention that ice has particles that are farther apart than water?",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student adds 50 mL of water and 50 mL of alcohol to a container, what would they most likely observe?",
+      "reason": "options 1 and 2 say the same thing (\"The total volume will be more than 100 mL\" / \"The total volume will be less than 100 mL\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the experiment with sugar in water suggest about the particles in liquids?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'sugarParticle'"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following correctly describes the movement of particles in gases?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (no reason needed).', …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does potassium permanganate spread faster in hot water than in ice-cold water?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.liquid: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about the interparticle forces in solids and gases is true?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (no reason needed).', …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If you heat a solid, what happens to the interparticle forces and the movement of particles?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do gases not have a fixed shape or volume, while solids do?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (no reason needed).', …\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What are the tiny particles that make up all matter called?",
+      "reason": "options 0 and 2 are the same (\"Cells\"); distractor 3's reason is not a one-line misconception (\"Refers to a different type of small particle not mentioned i…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What happens to the volume of water when it is transferred from one container to another?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a molecule?",
+      "reason": "distractor 3 has no reason"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If two atoms of hydrogen combine, what do they form?",
+      "reason": "after redraft: the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about molecules?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What are the tiny particles that make up all matter?",
+      "reason": "options 0 and 2 are the same (\"Cells\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best explains why the fragrance of an incense stick spreads throughout a room?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following best describes the motion of gas particles according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the particles in solids?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Why does the passage state that the particles of a gas have negligible interparticle attraction?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's explanation of particle movement…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the syringe activity show about the particles of a gas?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels north, south, syringe"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the sugar and water experiment indicate about the particles of a liquid?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the potassium permanganate experiment show about the movement of particles in water?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.potassium permanganate: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an experiment, a student adds salt to a glass of water and observes that the water level does not increase. What can the student infer about the particles of salt and water?",
+      "reason": "figure: figure spec refused: spec.parts: beaker has no label \"salt\" (it has beaker, liquid)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why sugar dissolves in water and cannot be seen as particles?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct understanding, no misconception here (but listed as …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a science fair, a student performs an experiment with a syringe and water. He fills the syringe with water and tries to compress it, but the plunger does not move. What does this experiment suggest about the nature of water particles?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label compress"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

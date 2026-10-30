@@ -1,0 +1,711 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T19:45:30.929Z",
+  "finishedAt": "2026-10-23T19:54:16.976Z",
+  "seconds": 526,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Indian Economic Development",
+    "bookCode": "keec1",
+    "document": "ncert/11/economics/keec102.pdf",
+    "classLevel": 11,
+    "subject": "Economics",
+    "chapter": "Chapter 2 — Indian Economy 1950-1990",
+    "edition": "Reprint 2026-27",
+    "chunks": 24,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Economics, sample question paper, 2024-25]\n27. During the period 1951-2016, __________ led to an increase in the milk 1\nproduction in India by about ten times.\n(Choose the correct option to fill up the blank)\nA. Green Revolution B. Golden Revolution\nC. Operation Flood D. Industrial Revolution",
+      "[CBSE Class XII Economics, sample question paper, 2026-27]\n(C) Amartya Sen\n(Choose the correct option)\n(B) Prasanta Chandra Mahalanobis\n(D) Dadabhai Naoroji\nNote: The following question is for the candidates with visual impairment\nonly , in lieu of Q.22.\n_______ established the Indian Statistical Institute (ISI) in Calcutta. 1\n(Choose the correct option to fill up the blank)\n(A) Jawaharlal Nehru (B) Prasanta Chandra Mahalanobis\n(C) Amartya Sen (D) Dadabhai Naoroji\n23 Arrange the following events in chronological order: 1\n(i) Introduction of economic reforms in Pakistan\n(ii) China’s Great Proletarian Cultural Revolution\n(iii) Nationalisation of capital goods industries in Pakistan\n(iv) India’s last Five-Year Plan\nChoose the correct option:\n(A) (ii) →",
+      "[CBSE Class XII Economics, sample question paper, 2024-25]\n34. (I) ‘Under the Industrial Policy Resolution (IPR) 1956 in India, the system of 4\n(A) industrial licensing was introduced to promote regional equality.’\nJustify the given statement with valid arguments.\n(II) Discuss briefly the estimates made by notable scholars regarding the 2\nnational income and per capita income during the colonial rule in India.\nOR\n34. (I) ‘During the colonial period, India’s foreign trade was characterized by a 3\n(B) large export surplus, however, this did not result in any flow of gold or silver\ninto India.’\nJustify the given statement with valid arguments.\n(II) Explain the rationale behind choosing 'Self-reliance' as a central planning 3\nobjective in India's develo",
+      "[CBSE Class XII Economics, marking scheme, 2025-26]\n33. The industries were classified under three heads as per Industrial Policy\n(A) Resolution 1956:\n(I) • The first category, comprised industries which would be exclusively 1\nowned by the government.\n• The second category, private sector could supplement the efforts of 1\nthe public sector, with the government taking the sole responsibility for\nstarting new units.\n• The third category consisted of the remaining industries which were 1\nleft in the hands of private sector.\n(II) Yes. A few former Zamindars, used legislative loopholes to continue to own\nlarge areas of land. Tenants were evicted and the landowners claimed to be\nself-cultivators. The big landlords delayed its implementation; by cha"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Economics in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 148291,
+      "in": 38,
+      "out": 37,
+      "rejects": 1,
+      "promptTokens": 37459,
+      "completionTokens": 8355
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 251085,
+      "in": 37,
+      "out": 31,
+      "rejects": 6,
+      "promptTokens": 19387,
+      "completionTokens": 7027
+    },
+    "solver": {
+      "calls": 184,
+      "ms": 82166,
+      "in": 31,
+      "out": 29,
+      "rejects": 2,
+      "promptTokens": 29116,
+      "completionTokens": 1728
+    },
+    "form": {
+      "calls": 20,
+      "ms": 56364,
+      "in": 29,
+      "out": 16,
+      "rejects": 13,
+      "promptTokens": 5370,
+      "completionTokens": 1552
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 6,
+      "ms": 1288,
+      "in": 16,
+      "out": 14,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 666906,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 35868,
+      "completionTokens": 19214
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 3,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which type of economic system did Jawaharlal Nehru prefer for India after independence?",
+      "ms": {
+        "draft": 3435,
+        "critique": 6428
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main goal of India's Five-Year Plans according to the passage?",
+      "ms": {
+        "draft": 3435,
+        "critique": 5801,
+        "solver": 1386,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best describes a mixed economy?",
+      "ms": {
+        "draft": 3435,
+        "critique": 7919,
+        "solver": 1638,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which term is used for the five-year plans in India?",
+      "ms": {
+        "draft": 3034,
+        "critique": 5308
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a five-year plan?",
+      "ms": {
+        "draft": 3034,
+        "critique": 6394
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a feature of a socialist economy?",
+      "ms": {
+        "draft": 3435,
+        "critique": 7243,
+        "solver": 15424
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main challenge in balancing the goals of a plan?",
+      "ms": {
+        "draft": 3034,
+        "critique": 6255
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the role of the government in the first category of industries under the Industrial Policy Resolution 1956?",
+      "ms": {
+        "draft": 3034,
+        "critique": 5922,
+        "solver": 1419,
+        "form": 2279
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the Industrial Policy Resolution 1956?",
+      "ms": {
+        "draft": 3034,
+        "critique": 6330
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which sector in India had the highest share in GDP by 1990?",
+      "ms": {
+        "draft": 3235,
+        "critique": 6959,
+        "solver": 1202
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements about the Indian economy during 1950-1990 is supported by the passage?",
+      "ms": {
+        "draft": 3034,
+        "critique": 6063,
+        "solver": 14752,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, why was the green revolution not beneficial to the poorest agricultural labourers?",
+      "ms": {
+        "draft": 3425,
+        "critique": 6483,
+        "solver": 1565,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main reason for a large proportion of the population being engaged in agriculture in India even though agricultural output could have grown with fewer people working in the sector?",
+      "ms": {
+        "draft": 5433,
+        "critique": 6295,
+        "solver": 4644,
+        "form": 1075
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following is a drawback of public sector undertakings?",
+      "ms": {
+        "draft": 2857,
+        "critique": 5783,
+        "solver": 1240,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following correctly matches the term with its definition?",
+      "ms": {
+        "draft": 2857,
+        "critique": 7481,
+        "solver": 1836,
+        "form": 4455
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following was a major policy initiative in the agriculture sector during 1950-1990?",
+      "ms": {
+        "draft": 7427,
+        "critique": 8711
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what was the main objective of the five-year plans in India?",
+      "ms": {
+        "draft": 7427,
+        "critique": 7107,
+        "solver": 1296,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains the rationale behind import substitution?",
+      "ms": {
+        "draft": 2857,
+        "critique": 5830,
+        "solver": 12893,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the public sector was given a leading role in industrial development during the planning period?",
+      "ms": {
+        "draft": 7427,
+        "critique": 7227,
+        "solver": 1114,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the main reason for the inefficient functioning of public sector enterprises during the planning period?",
+      "ms": {
+        "draft": 7427,
+        "critique": 8318,
+        "solver": 1775,
+        "form": 3661
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is correct regarding the impact of the Green Revolution on India's economy during 1950-1990?",
+      "ms": {
+        "draft": 7427,
+        "critique": 8139,
+        "solver": 1867,
+        "form": 4028
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following terms refers to the use of high-yielding variety seeds to increase food grain production in India?",
+      "ms": {
+        "draft": 3425,
+        "critique": 6303,
+        "solver": 1003,
+        "form": 2814
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why was the private sector regulated under the Industrial Policy Resolution 1956?",
+      "ms": {
+        "draft": 2857,
+        "critique": 5652,
+        "solver": 2205,
+        "form": 1766
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main reason for a large proportion of the population being engaged in agriculture in India even as agricultural output could have grown with fewer people?",
+      "ms": {
+        "draft": 5015,
+        "critique": 5889,
+        "solver": 946,
+        "form": 2418,
+        "translation": 41194
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main purpose of the industrial policy in India during 1950-1990?",
+      "ms": {
+        "draft": 4799,
+        "critique": 7051,
+        "solver": 956,
+        "form": 3170,
+        "translation": 41136
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a reason for the public sector to be essential in industries?",
+      "ms": {
+        "draft": 2857,
+        "critique": 5173,
+        "solver": 1850,
+        "form": 3292,
+        "translation": 45123
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of import substitution in protecting domestic industry?",
+      "ms": {
+        "draft": 2857,
+        "critique": 4968,
+        "solver": 1269,
+        "form": 0,
+        "translation": 42778
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main reason for promoting 'High Yielding Variety' (HYV) seeds in India?",
+      "ms": {
+        "draft": 3235,
+        "critique": 5792,
+        "solver": 1728,
+        "form": 2498,
+        "translation": 40022
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a society is based on market forces of supply and demand, what type of economy is it?",
+      "ms": {
+        "draft": 3435,
+        "critique": 6149,
+        "solver": 1931,
+        "form": 2350,
+        "translation": 43987
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why did the green revolution primarily benefit the wheat-growing regions of India?",
+      "ms": {
+        "draft": 3425,
+        "critique": 5906,
+        "solver": 1613,
+        "form": 2340,
+        "translation": 61875
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would be the impact on farmers if they do not own the land they cultivate?",
+      "ms": {
+        "draft": 3235,
+        "critique": 5870,
+        "solver": 1854,
+        "form": 2604,
+        "translation": 48228
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the main reason for the failure of land ceiling legislation in some states during the green revolution?",
+      "ms": {
+        "draft": 3425,
+        "critique": 5608,
+        "solver": 1280,
+        "form": 2512,
+        "translation": 52966
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains the role of land reforms in India?",
+      "ms": {
+        "draft": 3235,
+        "critique": 6283,
+        "solver": 1212,
+        "form": 3569,
+        "translation": 43144
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following events is mentioned as a key part of India's economic development from 1950-1990?",
+      "ms": {
+        "draft": 3435,
+        "critique": 6484,
+        "solver": 1201,
+        "form": 5402,
+        "translation": 42269
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following policies was introduced to reduce the concentration of land ownership?",
+      "ms": {
+        "draft": 3235,
+        "critique": 5854,
+        "solver": 1951,
+        "form": 3443,
+        "translation": 47839
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What was the purpose of the government providing loans at a low interest rate to small farmers during the green revolution?",
+      "ms": {
+        "draft": 3425,
+        "critique": 6865,
+        "solver": 1390,
+        "form": 2564,
+        "translation": 50670
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why was the policy of 'land to the tiller' implemented in India?",
+      "ms": {
+        "draft": 3235,
+        "critique": 6310,
+        "solver": 1421,
+        "form": 3738,
+        "translation": 60460
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What does the term 'marketed surplus' refer to in the context of the green revolution?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of economic system did Jawaharlal Nehru prefer for India after independence?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What was the main goal of India's Five-Year Plans according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage’s focus…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following best describes a mixed economy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which term is used for the five-year plans in India?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of a five-year plan?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT a feature of a socialist economy?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main challenge in balancing the goals of a plan?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best describes the role of the government in the first category of industries under the Industrial Policy Resolution 1956?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct option…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the Industrial Policy Resolution 1956?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which sector in India had the highest share in GDP by 1990?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements about the Indian economy during 1950-1990 is supported by the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, why was the green revolution not beneficial to the poorest agricultural labourers?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What was the main reason for a large proportion of the population being engaged in agriculture in India even though agricultural output could have grown with fewer people working in the sector?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"refers to a detail not discussed in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, which of the following is a drawback of public sector undertakings?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Contradicts the passage's statement on their importance…\"); distractor 1's reason is not a one-line misconception (\"Misunderstands the passage's point about profitability…\"); distractor 3's reason is not a one-line misconception (\"Thinks the passage says they are not regulated…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following correctly matches the term with its definition?",
+      "reason": "the key is far longer than every distractor (101 vs 63 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following was a major policy initiative in the agriculture sector during 1950-1990?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what was the main objective of the five-year plans in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Confuses economic liberalisation, privatisation, and globali…\"); distractor 2's reason is not a one-line misconception (\"Confuses industrialisation and export promotion with the goa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains the rationale behind import substitution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the public sector was given a leading role in industrial development during the planning period?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Confuses the role of the public sector with protecting the i…\"); distractor 1's reason is not a one-line misconception (\"Confuses the role of the public sector with ensuring governm…\"); distractor 3's reason is not a one-line misconception (\"Confuses the role of the public sector with reducing the bur…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What was the main reason for the inefficient functioning of public sector enterprises during the planning period?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Confuses lack of government support with the reason for inef…\"); distractor 2's reason is not a one-line misconception (\"Confuses high competition from private sector firms with the…\"); distractor 3's reason is not a one-line misconception (\"Confuses low demand for public sector goods with the reason …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements is correct regarding the impact of the Green Revolution on India's economy during 1950-1990?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses the impact of the Green Revolution on the number of…\"); distractor 2's reason is not a one-line misconception (\"Confuses the impact of the Green Revolution on the contribut…\"); distractor 3's reason is not a one-line misconception (\"Confuses the impact of the Green Revolution on the use of HY…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following terms refers to the use of high-yielding variety seeds to increase food grain production in India?",
+      "reason": "near-duplicate of served question cmvhx17pa0awogpfhcyykw26v (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Why was the private sector regulated under the Industrial Policy Resolution 1956?",
+      "reason": "near-duplicate of served question cmvhx17pf0awugpfhndlhipw1 (cosine 0.915 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Economics in the prompt"
+  ]
+}

@@ -1,0 +1,740 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T21:41:48.024Z",
+  "finishedAt": "2026-10-24T21:52:35.154Z",
+  "seconds": 647,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu104.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 4 — Electricity: Magnetic and Heating Effects",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n32. (i) State the law that explains the heating effect of current with respect to the measurable 2+1\nproperties in an electrical circuit.\n(ii) List the factors on which the resistance of a conductor depends.",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n13. A complete circuit is left on for several minutes, causing the connecting copper wire to 1\nbecome hot. As the temperature of the wire increases, the electrical resistance of the wire\n(a) decreases.\n(b) remains the same.\n(c) increases.\n(d) increases for some time and then decreases .",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n32. (a) When iron filings are placed in a magnetic field around a bar magnet, they 3\nbehave like tiny magnets. The magnetic force experienced by these tiny magnets\nmake them rotate and align themselves along the direction of field lines. (1 mark)\n(b)The physical property indicated by this arrangement is the magnetic field\nproduced by the bar magnet. (1 mark)\n(c) Magnetic field lines never intersect, magnetic field lines are closed curves.\n(1mark)\nOR\n(a) The deflection in the compass needle increases as Magnetic field of the current\ncarrying conductor is directly proportional to current flowing through it.\n(1.5marks)\n(b) The deflection in the needle decreases as the magnetic field is inversel",
+      "[CBSE Class X Science, marking scheme, 2025-26]\nCurrent through R 2 :\nStep 2: Calculate the Heat Generated in Each Resistor\nUsing Joule’s Law of Heating, H = I Rt: 2\n Heat generate in R 1 :\n Heat generate in R 2 :\n Total Heat Generated H:\nSo, the total heat generated in both resistor is 43200 J.\nStep 3 : Determine if each Resistor is safe\nThe power dissipated by each resistor can be calculated using P = V x I\n Power dissipated by R 1 :\n Power dissipated by R 2 :\nGiven that the power rating of each resistor is 100 W:\n R 1 is operating at 96 W, which is within the 100 W limit. Hence, it is\nsafe.\n R 2 is operating at 48 W, which is also within the 100 W limit. Hence,\nit is safe.\n**********"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 189610,
+      "in": 39,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 37153,
+      "completionTokens": 10462
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 274696,
+      "in": 37,
+      "out": 30,
+      "rejects": 7,
+      "promptTokens": 19577,
+      "completionTokens": 7524
+    },
+    "solver": {
+      "calls": 198,
+      "ms": 107390,
+      "in": 30,
+      "out": 28,
+      "rejects": 2,
+      "promptTokens": 34372,
+      "completionTokens": 2015
+    },
+    "form": {
+      "calls": 20,
+      "ms": 117788,
+      "in": 28,
+      "out": 15,
+      "rejects": 13,
+      "promptTokens": 16142,
+      "completionTokens": 3261
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 78,
+      "ms": 12696,
+      "in": 15,
+      "out": 9,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 444774,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 23561,
+      "completionTokens": 12655
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 2,
+    "4": 2,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What happens to the iron paper clips when the electric current is stopped in an electromagnet?",
+      "ms": {
+        "draft": 5416,
+        "critique": 7189,
+        "solver": 1742,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What causes the compass needle to deflect when electric current flows through a wire?",
+      "ms": {
+        "draft": 5416,
+        "critique": 6642,
+        "solver": 15044,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT an application of the magnetic effect of electric current?",
+      "ms": {
+        "draft": 5416,
+        "critique": 7429,
+        "solver": 4197,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two identical resistors are connected in parallel, how does the total resistance compare to the resistance of a single resistor?",
+      "ms": {
+        "draft": 5416,
+        "critique": 5030,
+        "solver": 1474,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the phenomenon called when a current-carrying wire produces a magnetic field around it?",
+      "ms": {
+        "draft": 5416,
+        "critique": 7414,
+        "solver": 1892,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student made an electromagnet by winding a coil of 20 turns around an iron core. When connected to a battery, the compass needle deflected slightly. The student then rewound the coil with 40 turns and connected it to the same battery. What would be the most likely effect on the magnetic strength of the electromagnet?",
+      "ms": {
+        "draft": 4022,
+        "critique": 6022,
+        "solver": 13088,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of the heating effect of electric current?",
+      "ms": {
+        "draft": 15607,
+        "critique": 6407
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a wire is connected to a single cell, it generates a certain amount of heat. What happens if the wire is connected to two cells instead?",
+      "ms": {
+        "draft": 15607,
+        "critique": 6789
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a wire is kept in a circuit for a longer time, what is the likely effect on its electrical resistance?",
+      "ms": {
+        "draft": 15607,
+        "critique": 6968
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a circuit with two resistors in series, which resistor generates more heat if both have the same current flowing through them?",
+      "ms": {
+        "draft": 15607,
+        "critique": 8356
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which effect of electric current is used in electric heaters?",
+      "ms": {
+        "draft": 6091,
+        "critique": 7235
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following cases will the LED glow when the switch is closed?",
+      "ms": {
+        "draft": 6091,
+        "critique": 8196,
+        "solver": 1850
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for using nichrome wire in heating devices?",
+      "ms": {
+        "draft": 6091,
+        "critique": 7709,
+        "solver": 9990
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What happens to the resistance of a copper wire when its temperature increases?",
+      "ms": {
+        "draft": 6091,
+        "critique": 4171
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Fig. 4.13, when current is passed through the coils, which coils will show deflection in the compass needle?",
+      "ms": {
+        "draft": 3456,
+        "critique": 5878,
+        "solver": 1401,
+        "form": 3504
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of the heating effect of electric current?",
+      "ms": {
+        "draft": 12337,
+        "critique": 6149
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the lemon cell experiment described in the passage, which part acts as the electrolyte?",
+      "ms": {
+        "draft": 12337,
+        "critique": 4999,
+        "solver": 2190,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the same wire is used in two experiments, one with a 1-cell battery and another with a 2-cell battery, which experiment will produce more heat?",
+      "ms": {
+        "draft": 12337,
+        "critique": 5141,
+        "solver": 12552,
+        "form": 3864
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name given to a coil of wire that behaves like a magnet when electric current flows through it?",
+      "ms": {
+        "draft": 3639,
+        "critique": 5801,
+        "solver": 1796,
+        "form": 3081
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student made a lemon cell and connected an LED. The LED did not glow. What could be the reason?",
+      "ms": {
+        "draft": 12337,
+        "critique": 6947,
+        "solver": 16629,
+        "form": 3786
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary reason for the deflection of the compass needle when electric current flows through the wire?",
+      "ms": {
+        "draft": 8569,
+        "critique": 6176,
+        "solver": 1917,
+        "form": 2226
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which phenomenon is demonstrated when a compass needle is deflected by a current-carrying wire?",
+      "ms": {
+        "draft": 8569,
+        "critique": 5703,
+        "solver": 13532,
+        "form": 1991
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a circuit with a copper wire, what happens to the resistance of the wire as its temperature increases?",
+      "ms": {
+        "draft": 5416,
+        "critique": 5930,
+        "solver": 1865,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a device that generates electric current due to chemical reactions?",
+      "ms": {
+        "draft": 3456,
+        "critique": 7093,
+        "solver": 2216,
+        "form": 2747
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is nichrome wire commonly used in electrical heating devices?",
+      "ms": {
+        "draft": 3456,
+        "critique": 6465,
+        "solver": 1217,
+        "form": 4894
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the temperature of a copper wire increases while it is part of a complete circuit, what happens to its electrical resistance?",
+      "ms": {
+        "draft": 3456,
+        "critique": 5313,
+        "solver": 2141,
+        "form": 3240
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an electric circuit, what happens to the resistance of a copper wire as its temperature increases?",
+      "ms": {
+        "draft": 12337,
+        "critique": 5652,
+        "solver": 1823,
+        "form": 3502
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What happens to the magnetic effect of a coil when the current is stopped?",
+      "ms": {
+        "draft": 3639,
+        "critique": 5844,
+        "solver": 994,
+        "form": 3340
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When electric current flows through a conductor, what phenomenon is observed?",
+      "ms": {
+        "draft": 3456,
+        "critique": 6640,
+        "solver": 1848,
+        "form": 2759,
+        "translation": 37820
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of an electromagnet?",
+      "ms": {
+        "draft": 4022,
+        "critique": 7851,
+        "solver": 1305,
+        "form": 0,
+        "translation": 49823
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason an electromagnet can attract iron objects?",
+      "ms": {
+        "draft": 4022,
+        "critique": 6515,
+        "solver": 1037,
+        "form": 0,
+        "translation": 56020
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An electromagnet is made by wrapping a coil of wire around an iron nail. When current is passed through the coil, the nail becomes magnetic. What happens to the magnetic strength of the electromagnet if the number of turns in the coil is doubled?",
+      "ms": {
+        "draft": 4022,
+        "critique": 6672,
+        "solver": 957,
+        "form": 0,
+        "translation": 55739
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a practical use of electromagnets?",
+      "ms": {
+        "draft": 4022,
+        "critique": 7607,
+        "solver": 1803,
+        "form": 0,
+        "translation": 46909
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, a current-carrying coil is placed near a compass. The compass needle deflects, showing that the coil is acting like a magnet. What does this deflection indicate about the coil?",
+      "ms": {
+        "draft": 4022,
+        "critique": 6204,
+        "solver": 2682,
+        "form": 0,
+        "translation": 62800
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a circuit, the heat generated in a wire depends on which of the following factors?",
+      "ms": {
+        "draft": 15607,
+        "critique": 5471,
+        "solver": 15253,
+        "form": 0,
+        "translation": 47928
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If an electromagnet is left on for a long time, what could be the reason the iron nail no longer picks up paper clips?",
+      "ms": {
+        "draft": 3456,
+        "critique": 5950,
+        "solver": 1958,
+        "form": 2885,
+        "translation": 39976
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason an electromagnet can attract iron clips?",
+      "ms": {
+        "draft": 3639,
+        "critique": 6251,
+        "solver": 1724,
+        "form": 4929,
+        "translation": 43044
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a source of electric current?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to the iron paper clips when the electric current is stopped in an electromagnet?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What causes the compass needle to deflect when electric current flows through a wire?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is NOT an application of the magnetic effect of electric current?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'motor'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If two identical resistors are connected in parallel, how does the total resistance compare to the resistance of a single resistor?",
+      "reason": "options 1 and 2 say the same thing (\"It is twice the resistance of a single resistor\" / \"It is half the resistance of a single resistor\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the phenomenon called when a current-carrying wire produces a magnetic field around it?",
+      "reason": "figure: figure spec refused: spec.parts.1.type: Invalid enum value. Expected 'wire' | 'cell' | 'battery' | 'resistor' | 'rheostat' | 'bulb' | 'switchOpen' | 'switchClosed' | 'ammeter' | 'voltmeter' | 'galvanometer' | 'fuse', received 'compass'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student made an electromagnet by winding a coil of 20 turns around an iron core. When connected to a battery, the compass needle deflected slightly. The student then rewound the coil with 40 turns and connected it to the same battery. What would be the most likely effect on the magnetic strength of the electromagnet?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of the heating effect of electric current?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a wire is connected to a single cell, it generates a certain amount of heat. What happens if the wire is connected to two cells instead?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a wire is kept in a circuit for a longer time, what is the likely effect on its electrical resistance?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a circuit with two resistors in series, which resistor generates more heat if both have the same current flowing through them?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which effect of electric current is used in electric heaters?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In which of the following cases will the LED glow when the switch is closed?",
+      "reason": "the solver picked option 0 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main reason for using nichrome wire in heating devices?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What happens to the resistance of a copper wire when its temperature increases?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following appliances uses the heating effect of electric current?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In Fig. 4.13, when current is passed through the coils, which coils will show deflection in the compass needle?",
+      "reason": "options 1 and 2 say the same thing (\"Only in circuits (a) and (b)\" / \"Only in circuits (a), (b), and (c)\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of the heating effect of electric current?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the lemon cell experiment described in the passage, which part acts as the electrolyte?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the same wire is used in two experiments, one with a 1-cell battery and another with a 2-cell battery, which experiment will produce more heat?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name given to a coil of wire that behaves like a magnet when electric current flows through it?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Does not understand the specific term used in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student made a lemon cell and connected an LED. The LED did not glow. What could be the reason?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the primary reason for the deflection of the compass needle when electric current flows through the wire?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.needle: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which phenomenon is demonstrated when a compass needle is deflected by a current-carrying wire?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'wire'"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In a circuit with a copper wire, what happens to the resistance of the wire as its temperature increases?",
+      "reason": "near-duplicate of served question cmvf6yvru03gigod8i1hrmehs (cosine 0.933 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a device that generates electric current due to chemical reactions?",
+      "reason": "near-duplicate of served question cmvgahwhb033cgpfhz5dft7mt (cosine 0.920 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Why is nichrome wire commonly used in electrical heating devices?",
+      "reason": "near-duplicate of served question cmvf6yvry03gugod8locahw22 (cosine 0.924 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If the temperature of a copper wire increases while it is part of a complete circuit, what happens to its electrical resistance?",
+      "reason": "near-duplicate of served question cmvf6yvru03gigod8i1hrmehs (cosine 0.962 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "In an electric circuit, what happens to the resistance of a copper wire as its temperature increases?",
+      "reason": "near-duplicate of served question cmvf6yvru03gigod8i1hrmehs (cosine 0.935 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "What happens to the magnetic effect of a coil when the current is stopped?",
+      "reason": "near-duplicate of served question cmvgahwhv0356gpfhmtvkqw9l (cosine 0.957 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

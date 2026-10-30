@@ -1,0 +1,475 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T12:51:32.636Z",
+  "finishedAt": "2026-10-27T13:01:42.024Z",
+  "seconds": 609,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "hemh1",
+    "document": "ncert/8/mathematics/hemh113.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Introduction to Graphs",
+    "edition": "Reprint 2024-25",
+    "chunks": 10,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class XII Mathematics, sample question paper, 2024-25]\n15. The graph drawn below depicts\n(A) y = 𝑠𝑖𝑛 −1 𝑥 (B) y = 𝑐𝑜𝑠 −1 𝑥\n(C) 𝑦 = 𝑥𝑙𝑜𝑔𝑥 + 𝑥 + 𝑐 (D) 𝑦 = 𝑥 + 𝑐\n(C) y = 𝑐𝑜𝑠 𝑒 𝑐 −1 𝑥 (D) y = 𝑐𝑜𝑡 −1 𝑥",
+      "[CBSE Class XII Mathematics, marking scheme, 2025-26]\nSECTION-A (MCQs of 1 mark each)\nSol. N. Hint / Solution Marks\n1 1\nClearly from the graph Domain is [− , ] 2 2",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 122958,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 18180,
+      "completionTokens": 4833
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 224237,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 12008,
+      "completionTokens": 4498
+    },
+    "solver": {
+      "calls": 143,
+      "ms": 107380,
+      "in": 23,
+      "out": 21,
+      "rejects": 2,
+      "promptTokens": 25631,
+      "completionTokens": 1423
+    },
+    "form": {
+      "calls": 8,
+      "ms": 31742,
+      "in": 21,
+      "out": 14,
+      "rejects": 7,
+      "promptTokens": 2004,
+      "completionTokens": 579
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 44,
+      "ms": 10970,
+      "in": 14,
+      "out": 12,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 745446,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 29529,
+      "completionTokens": 14775
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 4,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "ms": {
+        "draft": 4378,
+        "critique": 6997,
+        "solver": 2815,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the graph of the time-distance relationship for Ajit's scooter ride, what does the point (3, 90) represent?",
+      "ms": {
+        "draft": 18839,
+        "critique": 8146,
+        "solver": 1619,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A graph is drawn to show the relationship between the side of a square and its perimeter. If the graph is linear, what does this imply about the relationship between the side and the perimeter?",
+      "ms": {
+        "draft": 18839,
+        "critique": 9657,
+        "solver": 1982,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where two quantities are in direct variation?",
+      "ms": {
+        "draft": 18839,
+        "critique": 9999,
+        "solver": 19520,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where one quantity affects another?",
+      "ms": {
+        "draft": 18839,
+        "critique": 5007,
+        "solver": 799
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A graph is drawn showing the distance covered by a scooter over time. The graph shows that in the first hour, the scooter covers 30 km, in the second hour, it covers 60 km, and so on. What does this indicate about the motion of the scooter?",
+      "ms": {
+        "draft": 5605,
+        "critique": 7664,
+        "solver": 16515,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "ms": {
+        "draft": 5460,
+        "critique": 9326,
+        "solver": 1953,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the horizontal axis of a graph usually represent?",
+      "ms": {
+        "draft": 5460,
+        "critique": 8064,
+        "solver": 3122,
+        "form": 3217
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the example of the batsmen's performance, what does the dotted line indicate?",
+      "ms": {
+        "draft": 5460,
+        "critique": 11245,
+        "solver": 1732
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A graph is drawn to show the relationship between the deposit amount and the simple interest earned. The graph is a straight line passing through the origin. What does this tell us about the relationship between deposit and interest?",
+      "ms": {
+        "draft": 5605,
+        "critique": 10591,
+        "solver": 2965,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a car is 200 km away from city P at 11 a.m. and remains 200 km away at 12 noon, what does this indicate?",
+      "ms": {
+        "draft": 5460,
+        "critique": 10637,
+        "solver": 21717,
+        "form": 3944
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the vertical axis (y-axis) show in the time-temperature graph?",
+      "ms": {
+        "draft": 4378,
+        "critique": 6498,
+        "solver": 1796,
+        "form": 6166,
+        "translation": 51848
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a graph showing the relationship between two quantities, what does it mean if the graph is a straight line?",
+      "ms": {
+        "draft": 5605,
+        "critique": 9434,
+        "solver": 1642,
+        "form": 0,
+        "translation": 52135
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a car is 200 km away from City P at 11 a.m. and also at 12 noon, what does this indicate?",
+      "ms": {
+        "draft": 4378,
+        "critique": 7766,
+        "solver": 3169,
+        "form": 4530,
+        "translation": 54902
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a graph showing the relationship between the quantity of petrol and the cost of petrol is drawn, what can be said about the graph?",
+      "ms": {
+        "draft": 18839,
+        "critique": 8911,
+        "solver": 3214,
+        "form": 0,
+        "translation": 50907
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A courier-person cycles from a town to a neighbouring suburban area to deliver a parcel. His distance from the town at different times is shown by a graph. If the graph shows a horizontal line, what does it indicate?",
+      "ms": {
+        "draft": 5605,
+        "critique": 7272,
+        "solver": 2819,
+        "form": 0,
+        "translation": 78046
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A graph is drawn to show the relationship between the side of a square and its perimeter. If the graph is a straight line, what does this indicate about the relationship between the side and the perimeter?",
+      "ms": {
+        "draft": 5605,
+        "critique": 8960,
+        "solver": 2566,
+        "form": 0,
+        "translation": 57568
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the time-temperature graph, what does the increase from 37°C to 40°C between 6 a.m. and 10 a.m. indicate?",
+      "ms": {
+        "draft": 4378,
+        "critique": 10086,
+        "solver": 2272,
+        "form": 4139,
+        "translation": 54281
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "The graph shown represents the relationship between the number of litres of petrol and the cost of petrol. If the graph is a straight line passing through the origin, what does this indicate?",
+      "ms": {
+        "draft": 5605,
+        "critique": 6692,
+        "solver": 2241,
+        "form": 1,
+        "translation": 69768
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a line graph shows the total runs scored by two batsmen in ten matches, and their scores meet at the 4th match, what can be concluded?",
+      "ms": {
+        "draft": 4378,
+        "critique": 10179,
+        "solver": 2461,
+        "form": 3833,
+        "translation": 75804
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A graph shows the interest on deposits for a year. The graph passes through the origin. What does this indicate about the relationship between the deposit and the interest?",
+      "ms": {
+        "draft": 18839,
+        "critique": 10102,
+        "solver": 2327,
+        "form": 0,
+        "translation": 64793
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a graph shows the height of two plants over three weeks, and they are of the same height during any week, what can be inferred?",
+      "ms": {
+        "draft": 4378,
+        "critique": 7860,
+        "solver": 2338,
+        "form": 6003,
+        "translation": 73911
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the temperature graph of a patient, if the temperature was 38.5°C at 11 a.m. and again at 3 p.m., what might this indicate about the patient's condition?",
+      "ms": {
+        "draft": 5460,
+        "critique": 10078,
+        "solver": 19127,
+        "form": 3003,
+        "translation": 55963
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the graph of the time-distance relationship for Ajit's scooter ride, what does the point (3, 90) represent?",
+      "reason": "options 0 and 1 say the same thing (\"Ajit rode for 3 hours and covered 90 km\" / \"Ajit rode for 90 hours and covered 3 km\"); options 0 and 2 say the same thing (\"Ajit rode for 3 hours and covered 90 km\" / \"Ajit rode for 3 km and covered 90 hours\"); options 0 and 3 say the same thing (\"Ajit rode for 3 hours and covered 90 km\" / \"Ajit rode for 30 hours and covered 90 km\"); options 1 and 2 say the same thing (\"Ajit rode for 90 hours and covered 3 km\" / \"Ajit rode for 3 km and covered 90 hours\"); options 1 and 3 say the same thing (\"Ajit rode for 90 hours and covered 3 km\" / \"Ajit rode for 30 hours and covered 90 km\"); options 2 and 3 say the same thing (\"Ajit rode for 3 km and covered 90 hours\" / \"Ajit rode for 30 hours and covered 90 km\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A graph is drawn to show the relationship between the side of a square and its perimeter. If the graph is linear, what does this imply about the relationship between the side and the perimeter?",
+      "reason": "the key is far longer than every distractor (86 vs 52 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where two quantities are in direct variation?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where one quantity affects another?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A graph is drawn showing the distance covered by a scooter over time. The graph shows that in the first hour, the scooter covers 30 km, in the second hour, it covers 60 km, and so on. What does this indicate about the motion of the scooter?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the purpose of a graph according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Refers to a specific instance from the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the horizontal axis of a graph usually represent?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Refers to a specific example from the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the example of the batsmen's performance, what does the dotted line indicate?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A graph is drawn to show the relationship between the deposit amount and the simple interest earned. The graph is a straight line passing through the origin. What does this tell us about the relationship between deposit and interest?",
+      "reason": "near-duplicate of served question cmvg53b86027lgpfh56dsx5ra (cosine 0.957 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a car is 200 km away from city P at 11 a.m. and remains 200 km away at 12 noon, what does this indicate?",
+      "reason": "near-duplicate of batch item \"If a car is 200 km away from City P at 11 a.m. and…\" (cosine 0.941 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,825 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T20:10:41.426Z",
+  "finishedAt": "2026-10-29T20:19:29.867Z",
+  "seconds": 528,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 5 — Inside the Atom",
+    "edition": "First Edition 2018",
+    "chunks": 13,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2009 — question paper]\n37. Which conclusion was a direct result of the gold foil experiment?\n| a) An atom is mostly empty space with a dense, positively charged nucleus.\nb) An atom is composed of at least three types of subatomic particles.\n¢) An electron has a positive charge and is located inside the nucleus.\nd) An electron has properties of both waves and particles.",
+      "[INJSO 2013 — question paper]\n63. The ratio of the size of the atom to the size of the nucleus is typically:\nA. 10\nB. 10 2\nC. 10 4\nD. 10 8",
+      "[INJSO 2013 — solutions or answer key]\n63. The ratio of the size of the atom to the size of the nucleus is typically:\nA. 10\nB. 10 2\nC. 10 4\nD. 10 8",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n7. An element ‘M' has 50% of the electrons filled in the 3 rd shell as in the 2nd shell. The 1\natomic number of ‘M’ is:\na) 10\nb) 12\nc) 14\nd) 18"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 181614,
+      "in": 44,
+      "out": 41,
+      "rejects": 3,
+      "promptTokens": 40694,
+      "completionTokens": 10210
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 320146,
+      "in": 41,
+      "out": 37,
+      "rejects": 4,
+      "promptTokens": 22025,
+      "completionTokens": 8498
+    },
+    "solver": {
+      "calls": 240,
+      "ms": 110163,
+      "in": 37,
+      "out": 30,
+      "rejects": 7,
+      "promptTokens": 38341,
+      "completionTokens": 2385
+    },
+    "form": {
+      "calls": 14,
+      "ms": 50176,
+      "in": 30,
+      "out": 14,
+      "rejects": 16,
+      "promptTokens": 5721,
+      "completionTokens": 1351
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 98,
+      "ms": 15503,
+      "in": 14,
+      "out": 9,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 35,
+      "ms": 375046,
+      "in": 18,
+      "out": 17,
+      "rejects": 1,
+      "promptTokens": 21869,
+      "completionTokens": 10931
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 1,
+    "4": 0,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following best describes the nature of an atom?",
+      "ms": {
+        "draft": 3216,
+        "critique": 6878,
+        "solver": 1722
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following conclusions can be drawn about the atomic model proposed by Thomson?",
+      "ms": {
+        "draft": 3216,
+        "critique": 6605,
+        "solver": 1380,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the atom electrically neutral, according to the passage?",
+      "ms": {
+        "draft": 3216,
+        "critique": 5282,
+        "solver": 1640,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the main idea of Rutherford's atomic model?",
+      "ms": {
+        "draft": 4718,
+        "critique": 6939,
+        "solver": 1422,
+        "form": 3103
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between the nucleus and the extranuclear part of an atom according to the passage?",
+      "ms": {
+        "draft": 4718,
+        "critique": 7187,
+        "solver": 1879,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an atom has 12 protons and 12 neutrons, what is its mass number?",
+      "ms": {
+        "draft": 4718,
+        "critique": 7213,
+        "solver": 1624
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the stability of an atom?",
+      "ms": {
+        "draft": 4718,
+        "critique": 5509,
+        "solver": 1625,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is the mass of an electron considered negligible in an atom?",
+      "ms": {
+        "draft": 4718,
+        "critique": 7045,
+        "solver": 1482,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is correct about the valence shell?",
+      "ms": {
+        "draft": 3467,
+        "critique": 7703,
+        "solver": 1414,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements correctly describes the electronic configuration of sodium?",
+      "ms": {
+        "draft": 3467,
+        "critique": 8215,
+        "solver": 16360,
+        "form": 2652
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an element has 12 electrons, which shell will have the highest energy?",
+      "ms": {
+        "draft": 3467,
+        "critique": 8375,
+        "solver": 14940,
+        "form": 3525
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An element has an electronic configuration of 2, 8, 18, 8. What can be inferred about its valency?",
+      "ms": {
+        "draft": 3467,
+        "critique": 6598,
+        "solver": 1770
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An element has 6 electrons in its outermost shell. What would be the valency of this element?",
+      "ms": {
+        "draft": 4838,
+        "critique": 6217,
+        "solver": 1804
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements correctly describes the relationship between the number of valence electrons and the valency of an element?",
+      "ms": {
+        "draft": 4838,
+        "critique": 6408,
+        "solver": 1398,
+        "form": 3707
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If an element has an atomic number of 17, what is its valency based on the electronic configuration?",
+      "ms": {
+        "draft": 4838,
+        "critique": 7168,
+        "solver": 1816
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the charge of an electron?",
+      "ms": {
+        "draft": 3325,
+        "critique": 5397
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which subatomic particle is neutral?",
+      "ms": {
+        "draft": 3325,
+        "critique": 4893
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an element has 12 protons and 12 neutrons, what is its atomic mass number?",
+      "ms": {
+        "draft": 3968,
+        "critique": 7522,
+        "solver": 2649
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the atom, which part is responsible for the positive charge?",
+      "ms": {
+        "draft": 3968,
+        "critique": 7226,
+        "solver": 1531,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If an atom has 10 electrons, what is the likely number of protons in it?",
+      "ms": {
+        "draft": 3968,
+        "critique": 7206,
+        "solver": 12250
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the primary function of a moderator in a nuclear reactor?",
+      "ms": {
+        "draft": 5623,
+        "critique": 6959,
+        "solver": 1403,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If an element has an atomic number of 17, what is the number of neutrons in its most common isotope, given that its mass number is 35?",
+      "ms": {
+        "draft": 5623,
+        "critique": 5980
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason that inert gases like helium and neon do not form chemical bonds?",
+      "ms": {
+        "draft": 3843,
+        "critique": 7960,
+        "solver": 1194,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the purpose of the controller in a nuclear reactor?",
+      "ms": {
+        "draft": 5623,
+        "critique": 6467,
+        "solver": 13630,
+        "form": 4344
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following elements has an electronic configuration of 2, 8, 1?",
+      "ms": {
+        "draft": 3843,
+        "critique": 7231,
+        "solver": 15631,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what determines the energy of an electron?",
+      "ms": {
+        "draft": 3215,
+        "critique": 7484
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which subatomic particle is positively charged?",
+      "ms": {
+        "draft": 3215,
+        "critique": 5818,
+        "solver": 7740,
+        "form": 941
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is considered the smallest unit of matter?",
+      "ms": {
+        "draft": 3216,
+        "critique": 7389,
+        "solver": 1760,
+        "form": 2549
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the maximum number of electrons that can be accommodated in the K shell?",
+      "ms": {
+        "draft": 3467,
+        "critique": 7088,
+        "solver": 1422,
+        "form": 4355
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the electronic configuration of an element is 2, 8, 7, what is its valency?",
+      "ms": {
+        "draft": 3467,
+        "critique": 5685,
+        "solver": 1591,
+        "form": 2780
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an element has 6 valence electrons, what is its valency?",
+      "ms": {
+        "draft": 5623,
+        "critique": 8088,
+        "solver": 10294,
+        "form": 3924
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the maximum number of electrons that can be accommodated in the K shell of an atom?",
+      "ms": {
+        "draft": 3843,
+        "critique": 6830,
+        "solver": 1714,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the relationship between the number of valence electrons and the valency of an element?",
+      "ms": {
+        "draft": 5623,
+        "critique": 5724,
+        "solver": 1222,
+        "form": 5871,
+        "translation": 70361
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of the nucleus in an atom?",
+      "ms": {
+        "draft": 3968,
+        "critique": 7161,
+        "solver": 947,
+        "form": 0,
+        "translation": 40208
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the valency of an element if it has 2 valence electrons?",
+      "ms": {
+        "draft": 3968,
+        "critique": 7305,
+        "solver": 11661,
+        "form": 0,
+        "translation": 27734
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In Rutherford's experiment, what did the observation that most alpha particles passed through the gold foil suggest about the structure of an atom?",
+      "ms": {
+        "draft": 3216,
+        "critique": 6624,
+        "solver": 1210,
+        "form": 4632,
+        "translation": 48070
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An element 'X' has 50% of the electrons filled in the 3rd shell as in the 2nd shell. What is the atomic number of 'X'?",
+      "ms": {
+        "draft": 3216,
+        "critique": 6993,
+        "solver": 1736,
+        "form": 4969,
+        "translation": 39201
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If an element has 10 electrons and 12 protons, what can be said about its charge and atomic number?",
+      "ms": {
+        "draft": 4718,
+        "critique": 6186,
+        "solver": 1732,
+        "form": 0,
+        "translation": 43250
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "An element has 12 electrons and 12 protons. Which of the following is true about this element?",
+      "ms": {
+        "draft": 3968,
+        "critique": 6143,
+        "solver": 1661,
+        "form": 0,
+        "translation": 38324
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What conclusion did Rutherford's gold foil experiment directly support?",
+      "ms": {
+        "draft": 5440,
+        "critique": 6696,
+        "solver": 820,
+        "form": 0,
+        "translation": 84137
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If an atom has an atomic number of 17, what would be its electronic configuration?",
+      "ms": {
+        "draft": 3843,
+        "critique": 6285,
+        "solver": 1780,
+        "form": 0,
+        "translation": 37555
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In a nuclear reactor, what is the role of a moderator?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "If an element has 16 protons and 16 neutrons, what is its mass number?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, which of the following best describes the nature of an atom?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following conclusions can be drawn about the atomic model proposed by Thomson?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (84 vs 48 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the atom electrically neutral, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the main idea of Rutherford's atomic model?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"incorrectly describes the charge of electrons and their loca…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main difference between the nucleus and the extranuclear part of an atom according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If an atom has 12 protons and 12 neutrons, what is its mass number?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the stability of an atom?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is the mass of an electron considered negligible in an atom?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (81 vs 46 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is correct about the valence shell?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following statements correctly describes the electronic configuration of sodium?",
+      "reason": "options 1 and 2 say the same thing (\"2, 8, 8\" / \"2, 8, 2\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If an element has 12 electrons, which shell will have the highest energy?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "An element has an electronic configuration of 2, 8, 18, 8. What can be inferred about its valency?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "An element has 6 electrons in its outermost shell. What would be the valency of this element?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements correctly describes the relationship between the number of valence electrons and the valency of an element?",
+      "reason": "options 1 and 2 say the same thing (\"Valency is equal to the number of valence electrons if it is greater than 4.\" / \"Valency is equal to the number of valence electrons if it is less than 4.\"); options 2 and 3 say the same thing (\"Valency is equal to the number of valence electrons if it is less than 4.\" / \"Valency is equal to 8 minus the number of valence electrons if it is less than 4.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If an element has an atomic number of 17, what is its valency based on the electronic configuration?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the charge of an electron?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which subatomic particle is neutral?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the mass of an electron compared to a proton?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If an element has 12 protons and 12 neutrons, what is its atomic mass number?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of the atom, which part is responsible for the positive charge?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'atom'"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If an atom has 10 electrons, what is the likely number of protons in it?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the primary function of a moderator in a nuclear reactor?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If an element has an atomic number of 17, what is the number of neutrons in its most common isotope, given that its mass number is 35?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason that inert gases like helium and neon do not form chemical bonds?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the purpose of the controller in a nuclear reactor?",
+      "reason": "the key is far longer than every distractor (57 vs 26 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following elements has an electronic configuration of 2, 8, 1?",
+      "reason": "options 1 and 3 are the same (\"Chlorine\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what determines the energy of an electron?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which subatomic particle is positively charged?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is considered the smallest unit of matter?",
+      "reason": "near-duplicate of served question cmvg69ehu02d3gpfh2wu4qaee (cosine 0.956 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the maximum number of electrons that can be accommodated in the K shell?",
+      "reason": "near-duplicate of served question cmvg69ei302drgpfh12hig6lr (cosine 0.983 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If the electronic configuration of an element is 2, 8, 7, what is its valency?",
+      "reason": "near-duplicate of served question cmvj6n0lg0fqogpfhh3095eig (cosine 0.991 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If an element has 6 valence electrons, what is its valency?",
+      "reason": "near-duplicate of served question cmvg69ei602e3gpfhltbzog6j (cosine 0.973 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the maximum number of electrons that can be accommodated in the K shell of an atom?",
+      "reason": "near-duplicate of served question cmvg69ei302drgpfh12hig6lr (cosine 0.970 ≥ 0.9)"
+    },
+    {
+      "stage": "translation",
+      "level": 6,
+      "stem": "What conclusion did Rutherford's gold foil experiment directly support?",
+      "reason": "mr: the model's answer was not JSON (finish: length): {\n  \"stem\": \"रदरफोर्डच्या सोन्याच्या पानाच्या प्रयोगाने कोणता निष्कर्ष सीधा समर्थन केला?\",\n  \"options\": [\n    \"एक परमाणू"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

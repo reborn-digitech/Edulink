@@ -21,332 +21,47 @@
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-23T04:15:34.701Z",
+  "generatedAt": "2026-10-28T09:45:02.760Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the probability of the empty set φ according to the axiomatic approach?",
+      "stem": "What is the total number of outcomes when a fair coin is tossed four times?",
       "choices": [
-        "0: P(φ) = 1",
-        "1: P(φ) = 1",
-        "P(φ) = 0",
-        "3: P(φ) = 1"
+        "4",
+        "8",
+        "16",
+        "32"
       ],
       "answerIndex": 2,
-      "solution": "According to the axiomatic approach, the probability of the empty set φ is 0. This follows from the third axiom of probability, which states that if E and F are mutually exclusive events, then P(E ∪ F) = P(E) + P(F). By taking F = φ, we can deduce that P(φ) = 0. The other options are incorrect because they contradict the axiomatic definition.",
-      "checkExpr": null,
+      "solution": "When a fair coin is tossed four times, each toss has 2 possible outcomes: head or tail. So, the total number of outcomes is 2 × 2 × 2 × 2 = 16. The option '4' is incorrect because it assumes only one toss. The option '8' is incorrect because it assumes three tosses. The option '32' is incorrect because it assumes five tosses.",
+      "checkExpr": "2^4",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "अक्षांशीय दृष्टिकोण के अनुसार खाली सेट φ की प्रायिकता क्या है?",
+          "stem": "एक न्यायसंगत सिक्का चार बार उछाला जाता है, तो कुल परिणामों की संख्या क्या है?",
           "choices": [
-            "P(φ) = 1",
-            "P(φ) = 1",
-            "P(φ) = 0",
-            "P(φ) = 1"
+            "4",
+            "8",
+            "16",
+            "32"
           ],
-          "solution": "अक्षांशीय दृष्टिकोण के अनुसार, खाली सेट φ की प्रायिकता 0 होती है। यह द्वितीय अक्षांश के आधार पर होता है, जो कहता है कि यदि E और F अपवर्जी कार्य हैं, तो P(E ∪ F) = P(E) + P(F)। F = φ लेकर हम P(φ) = 0 के निष्कर्ष पर पहुंच सकते हैं। अन्य विकल्प अक्षांशीय परिभाषा के विरोधी हैं।",
+          "solution": "जब एक न्यायसंगत सिक्का चार बार उछाला जाता है, तो प्रत्येक उछाल में 2 संभावित परिणाम होते हैं: चित या पट। इसलिए, कुल परिणामों की संख्या 2 × 2 × 2 × 2 = 16 है। विकल्प '4' गलत है क्योंकि यह केवल एक उछाल की मानता है। विकल्प '8' गलत है क्योंकि यह तीन उछाल की मानता है। विकल्प '32' गलत है क्योंकि यह पांच उछाल की मानता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The solution correctly identifies option (2) as the answer.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains option (3) and the distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "φ रिक्त समुच्चयाची अभिकल्पीय पद्धतीनुसार संभाव्यता किती आहे?",
+          "stem": "एका न्याय्य सिक्का चार वेळा उडवल्यास एकूण परिणामांची संख्या किती असेल?",
           "choices": [
-            "P(φ) = 1",
-            "P(φ) = 1",
-            "P(φ) = 0",
-            "P(φ) = 1"
+            "4",
+            "8",
+            "16",
+            "32"
           ],
-          "solution": "अभिकल्पीय पद्धतीनुसार, φ रिक्त समुच्चयाची संभाव्यता 0 आहे. याचे कारण तिसऱ्या अभिकल्पाचे आहे, जे म्हणते की जर E आणि F अनुवर्ती घटना असतील, तर P(E ∪ F) = P(E) + P(F). F = φ घेऊन, आपण P(φ) = 0 चे निष्कर्ष काढू शकतो. इतर विकल्प अभिकल्पीय विधानाच्या विरुद्ध आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for probability concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Believes the empty set has a probability of 1 because it is 'certain' in some misinterpreted way",
-        "Believes the empty set has a non-zero probability because it is not an impossible event",
-        null,
-        "Confuses the probability of the empty set with that of the sample space"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. The probability of the empty set is 0 by definition in the axiomatic approach. The author's reasoning is sound and the misconceptions listed for the distractors are plausible.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 6,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T04:15:34.701Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the probability of getting a number less than 6 when a die is rolled?",
-      "choices": [
-        "1/6",
-        "1/2",
-        "2/3",
-        "5/6"
-      ],
-      "answerIndex": 3,
-      "solution": "The total number of outcomes when a die is rolled is 6 (1, 2, 3, 4, 5, 6). The numbers less than 6 are 1, 2, 3, 4, and 5, which gives 5 favorable outcomes. So, the probability is 5/6. The option 1/6 is incorrect because it counts only one favorable outcome. The option 1/2 is incorrect because it assumes only 3 favorable outcomes. The option 2/3 is incorrect because it assumes 4 favorable outcomes.",
-      "checkExpr": "5/6",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक पासा फेंके जाने पर 6 से कम संख्या प्राप्त करने की प्रायिकता क्या है?",
-          "choices": [
-            "1/6",
-            "1/2",
-            "2/3",
-            "5/6"
-          ],
-          "solution": "जब एक पासा फेंका जाता है तो कुल परिणामों की संख्या 6 (1, 2, 3, 4, 5, 6) होती है। 6 से कम संख्याएँ 1, 2, 3, 4 और 5 हैं, जिसके कारण 5 अनुकूल परिणाम होते हैं। अतः, प्रायिकता 5/6 है। विकल्प 1/6 गलत है क्योंकि यह केवल एक अनुकूल परिणाम की गणना करता है। विकल्प 1/2 गलत है क्योंकि यह केवल 3 अनुकूल परिणामों की गणना करता है। विकल्प 2/3 गलत है क्योंकि यह 4 अनुकूल परिणामों की गणना करता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology commonly found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका छक्का फेकल्यास 6 पेक्षा लहान संख्या मिळण्याची असंभाव्यता किती आहे?",
-          "choices": [
-            "1/6",
-            "1/2",
-            "2/3",
-            "5/6"
-          ],
-          "solution": "एका छक्का फेकल्यास एकूण निकाल 6 असतात (1, 2, 3, 4, 5, 6). 6 पेक्षा लहान संख्या 1, 2, 3, 4 आणि 5 असून त्यामुळे 5 फायदेशीर निकाल मिळतात. म्हणून, असंभाव्यता 5/6 आहे. 1/6 असा विकल्प चूक आहे कारण तो फक्त एक फायदेशीर निकाल गणतो. 1/2 असा विकल्प चूक आहे कारण तो फक्त 3 फायदेशीर निकाल गणतो. 2/3 असा विकल्प चूक आहे कारण तो फक्त 4 फायदेशीर निकाल गणतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "counts only one favorable outcome",
-        "assumes only 3 favorable outcomes",
-        "assumes 4 favorable outcomes",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. There are 5 favorable outcomes (1-5) out of 6 possible outcomes, making the probability 5/6. The author's reasoning for the incorrect options is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 12,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 13,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 14,
-          "pageStart": 20,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T04:15:34.701Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the probability of getting a number greater than 4 when a fair die is rolled once?",
-      "choices": [
-        "1/3",
-        "1/4",
-        "1/6",
-        "2/6"
-      ],
-      "answerIndex": 0,
-      "solution": "The probability of getting a number greater than 4 when a fair die is rolled once is 1/3 because there are 2 favorable outcomes (5 and 6) out of 6 possible outcomes. The other options are incorrect because they do not represent the correct probability for this scenario.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक न्याय्य पासा एक बार फेंका जाता है, तो 4 से बड़ी संख्या पाने की प्रायिकता क्या है?",
-          "choices": [
-            "1/3",
-            "1/4",
-            "1/6",
-            "2/6"
-          ],
-          "solution": "एक न्याय्य पासा एक बार फेंका जाता है, तो 4 से बड़ी संख्या पाने की प्रायिकता 1/3 है क्योंकि 6 संभावित परिणामों में 2 अनुकूल परिणाम (5 और 6) हैं। अन्य विकल्प गलत हैं क्योंकि इनमें इस परिदृश्य के लिए सही प्रायिकता प्रस्तुत नहीं की जाती है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका न्याय्य छक्का फेकल्यास 4 पेक्षा मोठ्या संख्येच्या मिळण्याची शक्यता किती आहे?",
-          "choices": [
-            "1/3",
-            "1/4",
-            "1/6",
-            "2/6"
-          ],
-          "solution": "एका न्याय्य छक्का फेकल्यास 4 पेक्षा मोठ्या संख्येच्या मिळण्याची शक्यता 1/3 आहे कारण 6 शक्य परिणामांपैकी 2 अनुकूल परिणाम (5 आणि 6) आहेत. इतर विकल्प चुकीचे आहेत कारण ते या परिस्थितीसाठी योग्य शक्यता प्रतिनिधित्व करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology as used in Marathi-medium textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Student counts only the numbers 5 and 6 as greater than 4 but incorrectly divides by 4 instead of 6",
-        "believes only one specific number (like 5) is the only outcome greater than 4",
-        "Confuses the number of favorable outcomes with the total number of outcomes without simplifying the fraction"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct, with 2 favorable outcomes (5 and 6) out of 6 possible outcomes, resulting in a probability of 1/3. The author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 12,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 13,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 14,
-          "pageStart": 20,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T04:15:34.701Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a coin is tossed, what is the probability of getting a head?",
-      "choices": [
-        "1/2",
-        "1/4",
-        "1/8",
-        "3: 1/2"
-      ],
-      "answerIndex": 0,
-      "solution": "When a coin is tossed, the sample space is {Head, Tail}, which has 2 outcomes. The probability of getting a head is 1/2, since there is one favorable outcome (Head) out of two possible outcomes. The other options are incorrect: 1/4 would be correct if there were four outcomes, 1/8 if there were eight outcomes, and 3/4 if three outcomes were favorable.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक सिक्का उछाला जाता है, तो एक चित के आने की प्रायिकता क्या है?",
-          "choices": [
-            "1/2",
-            "1/4",
-            "1/8",
-            "1/2"
-          ],
-          "solution": "जब एक सिक्का उछाला जाता है, तो सम्भाव्य अंतराल {चित, पट} होता है, जिसमें 2 परिणाम होते हैं। चित के आने की प्रायिकता 1/2 होती है, क्योंकि दो संभावित परिणामों में से एक अनुकूल परिणाम (चित) होता है। अन्य विकल्प गलत हैं: 1/4 तब सही होता यदि चार परिणाम होते, 1/8 यदि आठ परिणाम होते, और 3/4 यदि तीन परिणाम अनुकूल होते।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक नाणे उडवले गेले, तर एक डोके मिळण्याची शक्यता किती असेल?",
-          "choices": [
-            "1/2",
-            "1/4",
-            "1/8",
-            "1/2"
-          ],
-          "solution": "जर एक नाणे उडवले गेले, तर नमुना अंतर  {डोके, पाठ} असते, ज्यामध्ये 2 परिणाम असतात. डोके मिळण्याची शक्यता 1/2 असते, कारण दोन परिणामांमध्ये एक अनुकूल परिणाम (डोके) असतो. इतर विकल्प चुकीचे आहेत: 1/4 जर चार परिणाम असते तर बरोबर असते, 1/8 जर आठ परिणाम असते तर बरोबर असते आणि 3/4 जर तीन परिणाम अनुकूल असतील तर बरोबर असते.",
+          "solution": "एका न्याय्य सिक्का चार वेळा उडवल्यास प्रत्येक उडवणीला 2 शक्य परिणाम असतात: छाप वा पाठ. म्हणून, परिणामांची एकूण संख्या 2 × 2 × 2 × 2 = 16 असते. '4' विकल्प चूक आहे कारण तो केवळ एक उडवणीचा अंदाज घेतो. '8' विकल्प चूक आहे कारण तो तीन उडवणींचा अंदाज घेतो. '32' विकल्प चूक आहे कारण तो पाच उडवणींचा अंदाज घेतो.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability concepts.",
           "flag": null
@@ -357,93 +72,93 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "assumes only one toss",
+        "assumes three tosses",
         null,
-        "confuses the number of outcomes",
-        "confuses the number of outcomes",
-        "Confuses the probability of a single coin toss with the probability of getting a head in multiple tosses"
+        "assumes five tosses"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and the solution is correct. The correct answer is 1/2, and the author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The solution correctly calculates 2^4 = 16 outcomes. The reasoning for the distractors is accurate and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
+          "ordinal": 12,
+          "pageStart": 18,
+          "pageEnd": 19,
           "headingPath": [
             "Chapter 14: Probability"
           ]
         },
         {
           "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
+          "ordinal": 13,
+          "pageStart": 19,
+          "pageEnd": 20,
           "headingPath": [
             "Chapter 14: Probability"
           ]
         },
         {
           "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
+          "ordinal": 14,
+          "pageStart": 20,
+          "pageEnd": 22,
           "headingPath": [
             "Chapter 14: Probability"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T04:15:34.701Z",
+      "generatedAt": "2026-10-28T09:45:02.760Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "A box contains 10 red marbles, 20 blue marbles and 30 green marbles. 5 marbles are drawn from the box. What is the probability that all will be blue?",
+      "difficulty": 2,
+      "stem": "What is the probability of getting a head when a fair coin is tossed?",
       "choices": [
-        "C(20,5)/C(60,5)",
-        "C(20,5)/C(50,5)",
-        "C(20,5)/C(30,5)",
-        "C(20,5)/C(40,5)"
+        "1/2",
+        "1: 1/4",
+        "2: 1/4",
+        "1: 1/2"
       ],
       "answerIndex": 0,
-      "solution": "The total number of marbles is 10 + 20 + 30 = 60. The number of ways to choose 5 blue marbles from 20 is C(20,5). The total number of ways to choose 5 marbles from 60 is C(60,5). The probability that all 5 marbles will be blue is C(20,5)/C(60,5). The option C(20,5)/C(50,5) is incorrect because it uses 50 instead of 60 as the total number of marbles. The option C(20,5)/C(30,5) is incorrect because it uses 30 instead of 60. The option C(20,5)/C(40,5) is incorrect because it uses 40 instead of 60.",
+      "solution": "A fair coin has two sides, head and tail. The probability of getting a head is 1 out of 2, which is 1/2. The other options incorrectly assume more or fewer outcomes than what is possible.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक बॉक्स में 10 लाल मार्बल, 20 नीले मार्बल और 30 हरे मार्बल हैं। 5 मार्बल बॉक्स से निकाले जाते हैं। क्या संभावना है कि सभी नीले हों?",
+          "stem": "एक न्याय्य सिक्का फेंका जाता है, तो चित के आने की प्रायिकता क्या है?",
           "choices": [
-            "C(20,5)/C(60,5)",
-            "C(20,5)/C(50,5)",
-            "C(20,5)/C(30,5)",
-            "C(20,5)/C(40,5)"
+            "1/2",
+            "1/4",
+            "1/4",
+            "1/2"
           ],
-          "solution": "कुल मार्बल की संख्या 10 + 20 + 30 = 60 है। 20 में से 5 नीले मार्बल चुनने के तरीकों की संख्या C(20,5) है। 60 में से 5 मार्बल चुनने के तरीकों की संख्या C(60,5) है। 5 मार्बल के नीले होने की संभावना C(20,5)/C(60,5) है। C(20,5)/C(50,5) गलत है क्योंकि यह मार्बल की कुल संख्या के रूप में 50 का उपयोग करता है। C(20,5)/C(30,5) गलत है क्योंकि यह मार्बल की कुल संख्या के रूप में 30 का उपयोग करता है। C(20,5)/C(40,5) गलत है क्योंकि यह मार्बल की कुल संख्या के रूप में 40 का उपयोग करता है।",
+          "solution": "एक न्याय्य सिक्का में दो पक्ष होते हैं, चित और पट। चित के आने की प्रायिकता 2 में से 1 होती है, जो 1/2 है। अन्य विकल्प गलत ढंग से अधिक या कम परिणाम मान लेते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
+          "critique": "Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and solution are correctly translated and maintain the same logical relationships.",
           "flag": null
         },
         "mr": {
-          "stem": "एका बॉक्समध्ये 10 लाल मार्बल, 20 निळे मार्बल आणि 30 हिरवे मार्बल आहेत. 5 मार्बल बॉक्समधून घेतले जातात. त्यांपैकी सर्व निळे असण्याची शक्यता किती आहे?",
+          "stem": "एक न्याय्य सिक्का फेकल्यास डब्बा मिळण्याची असंभाव्यता किती असेल?",
           "choices": [
-            "C(20,5)/C(60,5)",
-            "C(20,5)/C(50,5)",
-            "C(20,5)/C(30,5)",
-            "C(20,5)/C(40,5)"
+            "1/2",
+            "1/4",
+            "1/4",
+            "1/2"
           ],
-          "solution": "एकूण मार्बलची संख्या 10 + 20 + 30 = 60 आहे. 20 निळ्या मार्बलमधून 5 मार्बल निवडण्याच्या पद्धतींची संख्या C(20,5) आहे. 60 मार्बलमधून 5 मार्बल निवडण्याच्या पद्धतींची संख्या C(60,5) आहे. 5 मार्बल निळे असण्याची शक्यता C(20,5)/C(60,5) आहे. C(20,5)/C(50,5) ही विकल्प चुकीची आहे कारण ती 60 ऐवजी 50 चा वापर करते. C(20,5)/C(30,5) ही विकल्प चुकीची आहे कारण ती 60 ऐवजी 30 चा वापर करते. C(20,5)/C(40,5) ही विकल्प चुकीची आहे कारण ती 60 ऐवजी 40 चा वापर करते.",
+          "solution": "न्याय्य सिक्क्याला दोन बाजू असतात, डब्बा आणि लाच. डब्बा मिळण्याची असंभाव्यता 2 पैकी 1 असते, जी 1/2 आहे. इतर विकल्पांमध्ये असंभाव्यता चुकीच्या परिस्थितींवर आधारित असतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability and combinations.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution correctly identifies option (1) as the correct answer.",
           "flag": null
         }
       },
@@ -453,9 +168,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "uses incorrect total number of marbles",
-        "uses incorrect total number of marbles",
-        "uses incorrect total number of marbles"
+        "Confuses the probability of getting a head with the probability of getting two heads in a row",
+        "Believes that each outcome in a multi-step experiment must be considered separately",
+        "Confuses the format of probability with a ratio"
       ],
       "solverAnswers": [
         0,
@@ -465,7 +180,197 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is option 0, as the total number of marbles is 60, and the probability is calculated as the number of ways to choose 5 blue marbles divided by the number of ways to choose 5 marbles from the total. The other options incorrectly use smaller totals, which reflects a common misconception.",
+      "critique": "The question is straightforward and the solution is correct. The correct answer is 1/2, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh114.pdf",
+          "ordinal": 12,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 14: Probability"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh114.pdf",
+          "ordinal": 13,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 14: Probability"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh114.pdf",
+          "ordinal": 14,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 14: Probability"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T09:45:02.760Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "A die is rolled. What is the probability of getting an even number?",
+      "choices": [
+        "1/2",
+        "1/3",
+        "1/6",
+        "2/3"
+      ],
+      "answerIndex": 0,
+      "solution": "The even numbers on a die are 2, 4, and 6, so there are 3 favorable outcomes. Since a die has 6 faces, the probability is 3/6, which simplifies to 1/2. The other options either miscount the number of favorable outcomes or the total outcomes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पासा फेंका जाता है। सम संख्या प्राप्त करने की प्रायिकता क्या है?",
+          "choices": [
+            "1/2",
+            "1/3",
+            "1/6",
+            "2/3"
+          ],
+          "solution": "एक पासे पर सम संख्याएँ 2, 4 और 6 होती हैं, अतः 3 अनुकूल परिणाम हैं। चूंकि एक पासे में 6 फलक होते हैं, अतः प्रायिकता 3/6 है, जो 1/2 में सरलीकृत हो जाता है। अन्य विकल्प या तो अनुकूल परिणामों की संख्या गलत गिनती करते हैं या कुल परिणामों की।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका छाननीचा फेकला गेला. सम संख्या मिळविण्याची शक्यता किती?",
+          "choices": [
+            "1/2",
+            "1/3",
+            "1/6",
+            "2/3"
+          ],
+          "solution": "छाननीवरील सम संख्या 2, 4 आणि 6 आहेत, त्यामुळे 3 फायदेशीर निकाल आहेत. छाननीला 6 बाजू असतात, म्हणून शक्यता 3/6 आहे, जी 1/2 च्या समान आहे. इतर विकल्प फायदेशीर निकाल किंवा एकूण निकाल गणनेमध्ये चूक करतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Counts the number of favorable outcomes as 2 instead of 3",
+        "Counts the number of favorable outcomes as 1 instead of 3",
+        "Incorrectly assumes the total outcomes as 3"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The reasoning is sound and the misconceptions listed for the distractors are plausible.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh114.pdf",
+          "ordinal": 12,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 14: Probability"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh114.pdf",
+          "ordinal": 13,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 14: Probability"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh114.pdf",
+          "ordinal": 14,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 14: Probability"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T09:45:02.760Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If a die is rolled once, and the probability of getting a number that is not 3 is 5/6, what is the probability of getting a number that is 3?",
+      "choices": [
+        "1/6",
+        "1/3",
+        "1/2",
+        "5/6"
+      ],
+      "answerIndex": 0,
+      "solution": "The probability of getting a number that is not 3 is 5/6, so the probability of getting a number that is 3 is 1 - 5/6 = 1/6. The other options are incorrect because they fail to recognize the complement rule or misinterpret the given probability.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक पासा एक बार फेंका जाता है, और 3 के नहीं प्राप्त करने की प्रायिकता 5/6 है, तो 3 के प्राप्त करने की प्रायिकता क्या है?",
+          "choices": [
+            "1/6",
+            "1/3",
+            "1/2",
+            "5/6"
+          ],
+          "solution": "3 के नहीं प्राप्त करने की प्रायिकता 5/6 है, अतः 3 के प्राप्त करने की प्रायिकता 1 - 5/6 = 1/6 है। अन्य विकल्प गलत हैं क्योंकि वे पूरक नियम को समझने में विफल रहते हैं या दी गई प्रायिकता की गलत व्याख्या करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका छक्का एकदा फेकला गेला आणि 3 नसलेल्या संख्येची शक्यता 5/6 असेल, तर 3 ची शक्यता किती असेल?",
+          "choices": [
+            "1/6",
+            "1/3",
+            "1/2",
+            "5/6"
+          ],
+          "solution": "3 नसलेल्या संख्येची शक्यता 5/6 असल्याने, 3 ची शक्यता 1 - 5/6 = 1/6 असेल. इतर विकल्प चूक आहेत कारण ते पूरक नियम ओळखत नाहीत किंवा दिलेली शक्यता चुकून वाटतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Fails to recognize the complement rule",
+        "Confuses the probability of getting a number that is not 3 with the probability of getting a number that is 3",
+        "Incorrectly assumes the probability of getting a number that is 3 is the same as the probability of getting a number that is not 3"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly applies the complement rule, and the correct answer is 1/6. The distractors reflect common misconceptions about probability.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh114.pdf",
@@ -496,49 +401,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T04:15:34.701Z",
+      "generatedAt": "2026-10-28T09:45:02.760Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If A and B are two events such that A ∩ B = φ, which of the following statements is true?",
+      "stem": "A die is rolled. What is the probability of getting a number greater than 4?",
       "choices": [
-        "A and B are independent",
-        "A and B are exhaustive",
-        "A and B are mutually exclusive",
-        "A and B are dependent"
+        "1/4",
+        "1/3",
+        "1/6",
+        "2/3"
       ],
-      "answerIndex": 2,
-      "solution": "The correct answer is 'A and B are mutually exclusive' because if the intersection of A and B is an empty set, it means there are no outcomes common to both events. 'A and B are independent' is incorrect because mutual exclusivity does not imply independence. 'A and B are exhaustive' is false because exhaustive events must cover the entire sample space. 'A and B are dependent' is also incorrect as mutual exclusivity does not imply dependence.",
+      "answerIndex": 1,
+      "solution": "The numbers greater than 4 on a die are 5 and 6, so there are 2 favorable outcomes. Since a die has 6 faces, the probability is 2/6, which simplifies to 1/3. The other options incorrectly count the total outcomes or the favorable outcomes.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि A तथा B दो घटनाएँ इस प्रकार हों कि A ∩ B = φ, तो निम्नलिखित में से कौन-सा कथन सत्य है?",
+          "stem": "एक पासा फेंका जाता है। 4 से बड़ी संख्या प्राप्त करने की प्रायिकता क्या है?",
           "choices": [
-            "A तथा B स्वतंत्र हैं",
-            "A तथा B पूरक हैं",
-            "A तथा B परस्पर अपवर्जी हैं",
-            "A तथा B आश्रित हैं"
+            "1/4",
+            "1/3",
+            "1/6",
+            "2/3"
           ],
-          "solution": "सही उत्तर 'A तथा B परस्पर अपवर्जी हैं' है क्योंकि यदि A तथा B के प्रतिच्छेदन एक खाली समुच्चय है, तो इसका अर्थ है कि दोनों घटनाओं के साथ उभयनिष्ठ परिणाम नहीं हैं। 'A तथा B स्वतंत्र हैं' गलत है क्योंकि परस्पर अपवर्जीता स्वतंत्रता के अर्थ नहीं होती। 'A तथा B पूरक हैं' असत्य है क्योंकि पूरक घटनाएँ पूर्ण नमूना स्थान को आच्छादित करना आवश्यक है। 'A तथा B आश्रित हैं' भी गलत है क्योंकि परस्पर अपवर्जीता आश्रितता के अर्थ नहीं होती।",
+          "solution": "एक पासे पर 4 से बड़ी संख्याएँ 5 और 6 हैं, अतः 2 अनुकूल परिणाम हैं। चूंकि एक पासे में 6 फलक होते हैं, अतः प्रायिकता 2/6 है, जो सरलीकृत करने पर 1/3 हो जाता है। अन्य विकल्प गलती से कुल परिणामों या अनुकूल परिणामों की गणना करते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology for probability concepts.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "A आणि B हे दोन घटना असतील ज्यांचा A ∩ B = φ असेल, तर खालीलपैकी कोणता विधान खरा आहे?",
+          "stem": "एका छक्का फेकला गेला. 4 पेक्षा मोठा नंबर मिळविण्याची संभाव्यता किती?",
           "choices": [
-            "A आणि B स्वतंत्र आहेत",
-            "A आणि B पूर्ण आहेत",
-            "A आणि B परस्पर विवर्जित आहेत",
-            "A आणि B आश्रित आहेत"
+            "1/4",
+            "1/3",
+            "1/6",
+            "2/3"
           ],
-          "solution": "सही उत्तर 'A आणि B परस्पर विवर्जित आहेत' आहे कारण A आणि B चा छेद एक खालील असल्याने दोन्ही घटनांमध्ये सामायिक निकाल नाहीत. 'A आणि B स्वतंत्र आहेत' चूक आहे कारण परस्पर विवर्जितता स्वतंत्रतेचा अर्थ नाही. 'A आणि B पूर्ण आहेत' चूक आहे कारण पूर्ण घटनांनी पूर्ण नमुना अंतर्गत असावे. 'A आणि B आश्रित आहेत' देखील चूक आहे कारण परस्पर विवर्जितता आश्रिततेचा अर्थ नाही.",
+          "solution": "छक्क्यावर 4 पेक्षा मोठे नंबर 5 आणि 6 आहेत, म्हणून 2 फायदेशीर निकाल आहेत. छक्क्याला 6 बाजू असतात, म्हणून संभाव्यता 2/6 आहे, जी 1/3 मध्ये सोपे केली जाऊ शकते. इतर विकल्प चुकीने एकूण निकाल किंवा फायदेशीर निकाल गणतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability concepts.",
           "flag": null
         }
       },
@@ -547,188 +452,93 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses mutual exclusivity with independence",
-        "Thinks that mutually exclusive events cover the entire sample space",
+        "Student thinks only 4 numbers are possible on a die instead of 6",
         null,
-        "Thinks that mutual exclusivity implies dependence"
+        "Confuses the probability of a specific number with the probability of a range",
+        "Miscounts the number of favorable outcomes as 3 instead of 2"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies that if A ∩ B = φ, the events are mutually exclusive. The reasoning for the other options is accurate, highlighting common misconceptions.",
+      "critique": "The correct answer is 1/3, as there are 2 favorable outcomes (5 and 6) out of 6 possible outcomes. The author's solution is correct and the reasoning for the distractors aligns with common student misconceptions.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
+          "ordinal": 12,
+          "pageStart": 18,
+          "pageEnd": 19,
           "headingPath": [
             "Chapter 14: Probability"
           ]
         },
         {
           "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
+          "ordinal": 13,
+          "pageStart": 19,
+          "pageEnd": 20,
           "headingPath": [
             "Chapter 14: Probability"
           ]
         },
         {
           "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
+          "ordinal": 14,
+          "pageStart": 20,
+          "pageEnd": 22,
           "headingPath": [
             "Chapter 14: Probability"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T04:15:34.701Z",
+      "generatedAt": "2026-10-28T09:45:02.760Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "In a sample space of 10 outcomes, an event E has 3 outcomes. What is the probability of the event E not occurring?",
-      "choices": [
-        "1/10",
-        "3/10",
-        "7/10",
-        "3: 3/10"
-      ],
-      "answerIndex": 2,
-      "solution": "The probability of an event occurring is the number of favorable outcomes divided by the total number of outcomes. Here, the probability of event E occurring is 3/10. The probability of event E not occurring is the complement of this, which is 1 - 3/10 = 7/10. The other options are incorrect: 1/10 would be the probability of a single outcome, 3/10 is the probability of E occurring, and 9/10 would be the probability of E not occurring if there were only 1 favorable outcome for E.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "10 परिणामों के एक नमूना स्थान में, घटना E के 3 परिणाम हैं। घटना E के नहीं होने की प्रायिकता क्या है?",
-          "choices": [
-            "1/10",
-            "3/10",
-            "7/10",
-            "3/10"
-          ],
-          "solution": "किसी घटना के होने की प्रायिकता अनुकूल परिणामों की संख्या को कुल परिणामों की संख्या से विभाजित करके प्राप्त की जाती है। यहां, घटना E के होने की प्रायिकता 3/10 है। घटना E के नहीं होने की प्रायिकता इसके पूरक होती है, जो 1 - 3/10 = 7/10 है। अन्य विकल्प गलत हैं: 1/10 एक एकल परिणाम की प्रायिकता होगी, 3/10 E के होने की प्रायिकता है, और 9/10 E के नहीं होने की प्रायिकता होगी यदि E के केवल 1 अनुकूल परिणाम होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology commonly found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "10 निकालांच्या नमुना अंतरालात, एका घटना E ला 3 निकाल आहेत. घटना E न घडण्याची असंभाव्यता किती आहे?",
-          "choices": [
-            "1/10",
-            "3/10",
-            "7/10",
-            "3/10"
-          ],
-          "solution": "एका घटनेची असंभाव्यता फायदेशीर निकालांच्या संख्येचे एकूण निकालांच्या संख्येने भाग असते. येथे, घटना E घडण्याची असंभाव्यता 3/10 आहे. घटना E न घडण्याची असंभाव्यता ही तिच्या पूरक असते, जी 1 - 3/10 = 7/10 आहे. इतर विकल्प चुकीचे आहेत: 1/10 एका निकालाची असंभाव्यता असते, 3/10 E घडण्याची असंभाव्यता आहे, आणि 9/10 E न घडण्याची असंभाव्यता असते जर E ला केवळ 1 फायदेशीर निकाल असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses the probability of a single outcome",
-        "confuses the probability of the event occurring",
-        null,
-        "Confuses the probability of the event occurring with the probability of it not occurring"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the principles of probability. The complement rule is applied properly, and the reasoning for the distractors is valid.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T04:15:34.701Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the probability of getting an ace of spades when a card is selected from a pack of 52 cards?",
+      "difficulty": 3,
+      "stem": "A card is drawn from a standard deck of 52 cards. What is the probability of drawing a king?",
       "choices": [
         "1/13",
         "1/52",
         "1/4",
         "1/26"
       ],
-      "answerIndex": 1,
-      "solution": "A standard deck of cards has 52 cards, and there is only one ace of spades. Therefore, the probability of selecting the ace of spades is 1/52. The option 1/13 is incorrect because it is the probability of getting any ace. The option 1/4 is incorrect because it is the probability of getting a spade. The option 1/26 is incorrect because it is the probability of getting any ace of a suit.",
-      "checkExpr": "1/52",
+      "answerIndex": 0,
+      "solution": "There are 4 kings in a deck of 52 cards, so the probability is 4/52, which simplifies to 1/13. The other options either miscount the number of kings or the total number of cards.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "52 कार्ड के एक पैकेट से एक कार्ड चुने जाने पर एक स्पेड्स के एस के प्रायिकता क्या है?",
+          "stem": "एक मानक 52 कार्ड के डेक से एक कार्ड निकाला जाता है। एक राजा निकालने की प्रायिकता क्या है?",
           "choices": [
             "1/13",
             "1/52",
             "1/4",
             "1/26"
           ],
-          "solution": "एक मानक ताश के डेक में 52 कार्ड होते हैं, और केवल एक स्पेड्स के एस होता है। इसलिए, स्पेड्स के एस के चयन की प्रायिकता 1/52 है। विकल्प 1/13 गलत है क्योंकि यह किसी भी एस के प्रायिकता है। विकल्प 1/4 गलत है क्योंकि यह एक स्पेड्स के प्रायिकता है। विकल्प 1/26 गलत है क्योंकि यह किसी भी स्पेड्स के एस के प्रायिकता है।",
+          "solution": "52 कार्ड के डेक में 4 राजा होते हैं, अतः प्रायिकता 4/52 है, जो सरलीकृत करने पर 1/13 हो जाता है। अन्य विकल्प या तो राजाओं की संख्या गलत गिनती करते हैं या कुल कार्डों की संख्या गलत लेते हैं।",
           "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate terminology used for probability and cards.",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for probability and cards.",
           "flag": null
         },
         "mr": {
-          "stem": "52 कार्डच्या पॅकमधून एक कार्ड निवडल्यास एक एस एस एक्स प्राप्त होण्याची शक्यता किती आहे?",
+          "stem": "एका मानक 52 कार्डच्या डेकमधून एक कार्ड काढला गेला. राजा घेण्याची संभाव्यता किती आहे?",
           "choices": [
             "1/13",
             "1/52",
             "1/4",
             "1/26"
           ],
-          "solution": "मानक कार्डच्या डेकमध्ये 52 कार्ड असतात आणि फक्त एक एस एस एक्स असतो. म्हणून, एस एस एक्स निवडण्याची शक्यता 1/52 आहे. 1/13 चूक आहे कारण ही कोणत्याही एक्स निवडण्याची शक्यता आहे. 1/4 चूक आहे कारण ही एखादा स्पेड निवडण्याची शक्यता आहे. 1/26 चूक आहे कारण ही कोणत्याही एक्स स्पेड निवडण्याची शक्यता आहे.",
+          "solution": "52 कार्डच्या डेकमध्ये 4 राजे असतात, म्हणून संभाव्यता 4/52 आहे, जी 1/13 मध्ये सोपे केली जाऊ शकते. इतर विकल्प कार्डच्या संख्या किंवा राजांच्या संख्येचे गणन करताना चूक करतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for probability concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability and card game concepts.",
           "flag": null
         }
       },
@@ -737,20 +547,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "probability of getting any ace",
         null,
-        "probability of getting a spade",
-        "probability of getting any ace of a suit"
+        "Confuses the probability of drawing a specific card with the probability of drawing any king",
+        "Believes there are 4 suits and assumes one suit has the desired card",
+        "Confuses the number of kings with the number of suits, thinking there are 26 kings instead of 4."
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the key. The probability of drawing the ace of spades from a standard 52-card deck is indeed 1/52. The distractors represent common misconceptions about probabilities of aces, spades, and ace-of-suit cards.",
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The correct answer is 1/13, as there are 4 kings in a 52-card deck. The author's explanations for the distractors are reasonable and reflect common misconceptions.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh114.pdf",
@@ -781,47 +591,237 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T04:15:34.701Z",
+      "generatedAt": "2026-10-28T09:45:02.760Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "A bag contains 6 red balls and 4 blue balls. A ball is drawn at random. What is the probability that it is not blue?",
+      "difficulty": 4,
+      "stem": "In the sample space S = {BBB, BBG, BGB, GBB, BGG, GBG, GGB, GGG}, what is the probability of the event A, which is 'exactly one defective pen'?",
       "choices": [
+        "1/8",
+        "1/4",
         "1/2",
-        "2/5",
-        "3/5",
-        "4/10"
+        "3/8"
       ],
-      "answerIndex": 2,
-      "solution": "The total number of balls is 10. The number of balls that are not blue (i.e., red) is 6. The probability of drawing a red ball is 6/10, which simplifies to 3/5. The other options are incorrect: 1/2 would be correct if there were an equal number of red and blue balls, 2/5 would be correct if there were 4 red and 6 blue balls, and 4/5 would be correct if there were only 2 red balls.",
+      "answerIndex": 3,
+      "solution": "The event A consists of the outcomes where exactly one pen is defective, which are {BGG, GBG, GGB}. These are three favorable outcomes out of a total of eight possible outcomes, making the probability 3/8. The other options do not reflect the correct count of favorable outcomes relative to the total number of outcomes.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक बैग में 6 लाल गेंदें और 4 नीली गेंदें हैं। एक गेंद यादृच्छिक रूप से निकाली जाती है। इसकी प्रायिकता क्या है कि यह नीली नहीं है?",
+          "stem": "नमूना अंतराल S = {BBB, BBG, BGB, GBB, BGG, GBG, GGB, GGG} में, घटना A, जो 'एक खराब पेन हो' के लिए क्या प्रायिकता है?",
           "choices": [
+            "1/8",
+            "1/4",
             "1/2",
-            "2/5",
-            "3/5",
-            "4/10"
+            "3/8"
           ],
-          "solution": "कुल गेंदों की संख्या 10 है। नीली गेंदों के बजाय लाल गेंदों की संख्या 6 है। लाल गेंद निकालने की प्रायिकता 6/10 है, जो 3/5 में सरलीकृत हो जाता है। अन्य विकल्प गलत हैं: यदि लाल और नीली गेंदों की संख्या समान होती तो 1/2 सही होता, 2/5 यदि 4 लाल और 6 नीली गेंदें होतीं तो सही होता और 4/5 यदि केवल 2 लाल गेंदें होतीं तो सही होता।",
+          "solution": "घटना A वे परिणाम हैं जहां एक पेन खराब होता है, जो {BGG, GBG, GGB} हैं। ये आठ संभावित परिणामों में तीन अनुकूल परिणाम हैं, जिसके कारण प्रायिकता 3/8 होती है। अन्य विकल्प अंतिम परिणामों के संबंध में सही अनुकूल परिणामों की गणना को प्रतिबिंबित नहीं करते हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for probability concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "एका बॅगमध्ये 6 लाल गोले आणि 4 निळे गोले आहेत. एक गोला यादृच्छिकरित्या घेतला जातो. तो निळा नसल्याची शक्यता किती आहे?",
+          "stem": "नमुना अवकाश S = {BBB, BBG, BGB, GBB, BGG, GBG, GGB, GGG} मध्ये, घटना A ची अस्तित्वात असलेल्या एक बरोबर नाही लेखी पेन असल्याची अनुकूलता काय आहे?",
           "choices": [
+            "1/8",
+            "1/4",
             "1/2",
-            "2/5",
-            "3/5",
-            "4/10"
+            "3/8"
           ],
-          "solution": "एकूण गोल्यांची संख्या 10 आहे. निळा नसलेल्या गोल्यांची (म्हणजे लाल) संख्या 6 आहे. लाल गोला घेण्याची शक्यता 6/10 आहे, जी 3/5 वर घटविता येते. इतर विकल्प चुकीचे आहेत: जर लाल आणि निळ्या गोल्यांची संख्या समान असती तर 1/2 बरोबर असती, जर 4 लाल आणि 6 निळे गोले असते तर 2/5 बरोबर असते आणि जर केवळ 2 लाल गोले असते तर 4/5 बरोबर असते.",
+          "solution": "घटना A मध्ये असलेल्या निकालांमध्ये एक बरोबर नाही लेखी पेन असल्याची अनुकूलता असते, जे {BGG, GBG, GGB} आहे. हे एकूण आठ शक्य निकालांपैकी तीन अनुकूल निकाल आहेत, ज्यामुळे अनुकूलता 3/8 असते. इतर पर्याय एकूण निकालांच्या तुलनेत अनुकूल निकालांच्या योग्य गणनेचे नकार करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for probability and outcomes.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes there is only one favorable outcome",
+        "Miscounts the number of favorable outcomes",
+        "Confuses the probability of a single outcome with the probability of the event",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The event 'exactly one defective pen' corresponds to three outcomes (BGG, GBG, GGB) out of eight total, giving a probability of 3/8. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh114.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 14: Probability"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh114.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 14: Probability"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh114.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 14: Probability"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T09:45:02.760Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a random experiment, the probability of getting exactly one defective pen is 0.3 and the probability of getting at least two defective pens is 0.5. What is the probability of getting no defective pens?",
+      "choices": [
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.4"
+      ],
+      "answerIndex": 0,
+      "solution": "The total probability of all possible outcomes in a sample space must be 1. If the probability of exactly one defective pen is 0.3 and the probability of at least two defective pens is 0.5, the remaining probability must be for getting no defective pens. So, 1 - (0.3 + 0.5) = 0.2. The other options incorrectly assume that the probabilities are not mutually exclusive or do not add up to 1.",
+      "checkExpr": "1-0.3-0.5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक यादृच्छिक प्रयोग में, ठीक एक खराब पेन प्राप्त करने की प्रायिकता 0.3 है और कम से कम दो खराब पेन प्राप्त करने की प्रायिकता 0.5 है। खराब पेन न प्राप्त करने की प्रायिकता क्या है?",
+          "choices": [
+            "0.2",
+            "0.3",
+            "0.5",
+            "0.4"
+          ],
+          "solution": "एक नमूना अंतराल में सभी संभावित परिणामों की कुल प्रायिकता 1 होनी चाहिए। यदि ठीक एक खराब पेन प्राप्त करने की प्रायिकता 0.3 है और कम से कम दो खराब पेन प्राप्त करने की प्रायिकता 0.5 है, तो शेष प्रायिकता खराब पेन न प्राप्त करने के लिए होगी। अतः, 1 - (0.3 + 0.5) = 0.2। अन्य विकल्प गलत रूप से मान लेते हैं कि प्रायिकताएं असंगत नहीं हैं या 1 के बराबर नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका अयोग्य प्रयोगात, एका खराब कलम मिळण्याची संभाव्यता 0.3 आहे आणि दोन किंवा अधिक खराब कलम मिळण्याची संभाव्यता 0.5 आहे. शून्य खराब कलम मिळण्याची संभाव्यता किती आहे?",
+          "choices": [
+            "0.2",
+            "0.3",
+            "0.5",
+            "0.4"
+          ],
+          "solution": "नमुना अवकाशातील सर्व संभाव्य परिणामांची एकूण संभाव्यता 1 असते. जर एका खराब कलम मिळण्याची संभाव्यता 0.3 आहे आणि दोन किंवा अधिक खराब कलम मिळण्याची संभाव्यता 0.5 असेल, तर उरलेली संभाव्यता शून्य खराब कलम मिळण्यासाठी असेल. म्हणून, 1 - (0.3 + 0.5) = 0.2. इतर विकल्प चुकीच्या पद्धतीने असे मानतात की संभाव्यता अन्योन्य विस्तारित नाहीत किंवा 1 च्या बरोबर जमत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for probability concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the probability of exactly one defective pen with the probability of no defective pens",
+        "Adds the probabilities instead of subtracting them",
+        "Incorrectly assumes the probability of no defective pens is the same as the probability of one defective pen"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly uses the total probability rule, subtracting the given probabilities from 1 to find the probability of no defective pens. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh114.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 14: Probability"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh114.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 14: Probability"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh114.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 14: Probability"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T09:45:02.760Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If an event has a probability of 0.6 of occurring, what is the probability of its complement occurring?",
+      "choices": [
+        "0.4",
+        "0.5",
+        "0.6",
+        "0.7"
+      ],
+      "answerIndex": 0,
+      "solution": "The probability of an event and its complement always adds up to 1. If an event has a probability of 0.6, then the complement must have a probability of 1 - 0.6 = 0.4. The other options do not satisfy this fundamental rule of probability.",
+      "checkExpr": "1 - 0.6",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी घटना के होने की प्रायिकता 0.6 है, तो इसके पूरक के होने की प्रायिकता क्या है?",
+          "choices": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.7"
+          ],
+          "solution": "किसी घटना और इसके पूरक की प्रायिकता हमेशा 1 के बराबर होती है। यदि किसी घटना की प्रायिकता 0.6 है, तो पूरक की प्रायिकता 1 - 0.6 = 0.4 होगी। अन्य विकल्प प्रायिकता के इस मूलभूत नियम को संतुष्ट नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखाद्या घटनेची घडण्याची शक्यता 0.6 असेल, तर त्याच्या पूरक घटनेची घडण्याची शक्यता किती असेल?",
+          "choices": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.7"
+          ],
+          "solution": "एखाद्या घटनेची शक्यता आणि तिच्या पूरक घटनेची शक्यता एकूण 1 असते. जर घटनेची शक्यता 0.6 असेल, तर पूरक घटनेची शक्यता 1 - 0.6 = 0.4 असेल. इतर विकल्प या मूलभूत नियमाला अनुरूप नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -832,20 +832,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses the ratio of red to blue balls",
-        "confuses the number of red balls",
         null,
-        "Confuses total number of blue balls with probability"
+        "Believes the complement of an event is always 0.5, regardless of the original probability",
+        "Confuses the probability of the event with the probability of its complement",
+        "Confuses the complement with adding 0.1 to the original probability"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The probability of drawing a red (not blue) ball is 6/10 = 3/5. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the fundamental probability rule that the sum of an event and its complement is 1. The reasoning for the distractors is plausible and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh114.pdf",
@@ -876,292 +876,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T04:15:34.701Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "The probability of winning a lottery by choosing six different natural numbers from 1 to 20 is?",
-      "choices": [
-        "1/38760",
-        "1/4845",
-        "1/125970",
-        "1/65000"
-      ],
-      "answerIndex": 0,
-      "solution": "The total number of ways to choose 6 numbers from 20 is C(20,6) = 38760. So, the probability of winning the lottery is 1/38760. The option 1/4845 is incorrect because it is the value of C(20,4). The option 1/125970 is incorrect because it is the value of C(20,5). The option 1/65000 is an incorrect approximation of the actual probability.",
-      "checkExpr": "1/38760",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "लॉटरी जीतने की प्रायिकता छह अलग-अलग प्राकृतिक संख्याएं 1 से 20 तक चुनने से होती है?",
-          "choices": [
-            "1/38760",
-            "1/4845",
-            "1/125970",
-            "1/65000"
-          ],
-          "solution": "20 में से 6 संख्याओं के चयन के कुल तरीके C(20,6) = 38760 हैं। अतः लॉटरी जीतने की प्रायिकता 1/38760 है। 1/4845 विकल्प गलत है क्योंकि यह C(20,4) के मान के बराबर है। 1/125970 विकल्प गलत है क्योंकि यह C(20,5) के मान के बराबर है। 1/65000 विकल्प वास्तविक प्रायिकता का गलत अनुमान है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "लॉटरीमध्ये 1 ते 20 च्या प्राकृतिक संख्यांमधून छह वेगवेगळ्या संख्या निवडून जिंकण्याची शक्यता किती आहे?",
-          "choices": [
-            "1/38760",
-            "1/4845",
-            "1/125970",
-            "1/65000"
-          ],
-          "solution": "20 मधून 6 संख्या निवडण्याच्या एकूण पद्धती C(20,6) = 38760 आहेत. म्हणून लॉटरी जिंकण्याची शक्यता 1/38760 आहे. 1/4845 हा विकल्प चुकीचा आहे कारण तो C(20,4) च्या मूल्याचा आहे. 1/125970 हा विकल्प चुकीचा आहे कारण तो C(20,5) च्या मूल्याचा आहे. 1/65000 हा विकल्प खर्या शक्यतेचा चुकीचा अंदाज आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for combinations and probability.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "value of C(20,4)",
-        "value of C(20,5)",
-        "incorrect approximation"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly calculates the number of combinations C(20,6) as 38760, leading to the probability 1/38760. The distractors are correctly identified as values of C(20,4), C(20,5), and an incorrect approximation.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 12,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 13,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 14,
-          "pageStart": 20,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T04:15:34.701Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "In a class of 40 students, 25 are boys and 15 are girls. A student is selected at random. What is the probability that the selected student is a girl?",
-      "choices": [
-        "1/4",
-        "3/8",
-        "1/2",
-        "3: 5/8"
-      ],
-      "answerIndex": 1,
-      "solution": "The total number of students is 40. The number of girls is 15. The probability of selecting a girl is 15/40, which simplifies to 3/8. The other options are incorrect: 1/4 would be correct if there were 10 girls, 1/2 would be correct if there were 20 girls, and 3/5 would be correct if there were 24 girls.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "40 छात्रों की एक कक्षा में, 25 लड़के और 15 लड़कियां हैं। एक छात्र को यादृच्छिक रूप से चुना जाता है। चयनित छात्र के लड़की होने की प्रायिकता क्या है?",
-          "choices": [
-            "1/4",
-            "3/8",
-            "1/2",
-            "5/8"
-          ],
-          "solution": "कुल छात्रों की संख्या 40 है। लड़कियों की संख्या 15 है। लड़की के चयन की प्रायिकता 15/40 है, जो 3/8 में सरलीकृत हो जाता है। अन्य विकल्प गलत हैं: यदि 10 लड़कियां होतीं तो 1/4 सही होता, यदि 20 लड़कियां होतीं तो 1/2 सही होता, और यदि 24 लड़कियां होतीं तो 3/5 सही होता।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "40 विद्यार्थींच्या वर्गात 25 बालके आहेत आणि 15 बालिका आहेत. यापैकी एक विद्यार्थी यादृच्छिकरित्या निवडला जातो. निवडलेला विद्यार्थी बालिका असण्याची शक्यता किती?",
-          "choices": [
-            "1/4",
-            "3/8",
-            "1/2",
-            "5/8"
-          ],
-          "solution": "एकूण विद्यार्थींची संख्या 40 आहे. बालिकांची संख्या 15 आहे. बालिका निवडण्याची शक्यता 15/40 आहे, जी 3/8 मध्ये सोपी केली जाते. इतर विकल्प चुकीचे आहेत: 1/4 असे असते जर 10 बालिका असत्या, 1/2 असे असते जर 20 बालिका असत्या आणि 3/5 असे असते जर 24 बालिका असत्या.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The structure and logic of the question and solution are preserved.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses the number of girls",
-        null,
-        "confuses the total number of students",
-        "Confuses the number of girls with the total students and subtracts incorrectly from 1"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the key. The probability of selecting a girl is 15/40 = 3/8, which is option 1. The other options reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T04:15:34.701Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Two events A and B are such that P(A) = 0.5, P(B) = 0.6, and P(A ∩ B) = 0.3. What is the probability of A ∪ B?",
-      "choices": [
-        "0.8",
-        "0.9",
-        "0.6",
-        "1.0"
-      ],
-      "answerIndex": 0,
-      "solution": "The probability of A ∪ B is calculated using the formula P(A ∪ B) = P(A) + P(B) - P(A ∩ B). Substituting the given values, 0.5 + 0.6 - 0.3 = 0.8. The other options are incorrect because 0.9 is the probability of A ∪ B if P(A ∩ B) was 0.2, 1.0 is the probability of a certain event, and 1.1 is not a valid probability as it exceeds 1.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दो घटनाएं A और B इस प्रकार हैं कि P(A) = 0.5, P(B) = 0.6, और P(A ∩ B) = 0.3। A ∪ B की प्रायिकता क्या है?",
-          "choices": [
-            "0.8",
-            "0.9",
-            "0.6",
-            "1.0"
-          ],
-          "solution": "A ∪ B की प्रायिकता सूत्र P(A ∪ B) = P(A) + P(B) - P(A ∩ B) के उपयोग से गणना की जाती है। दिए गए मानों को स्थानापन्न करने पर, 0.5 + 0.6 - 0.3 = 0.8। अन्य विकल्प गलत हैं क्योंकि 0.9 A ∪ B की प्रायिकता होती यदि P(A ∩ B) 0.2 होता, 1.0 एक निश्चित घटना की प्रायिकता होती है, और 1.1 एक वैध प्रायिकता नहीं होती क्योंकि यह 1 से अधिक होती है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दोन घटना A आणि B असून P(A) = 0.5, P(B) = 0.6 आणि P(A ∩ B) = 0.3 आहे. A ∪ B ची संभाव्यता किती आहे?",
-          "choices": [
-            "0.8",
-            "0.9",
-            "0.6",
-            "1.0"
-          ],
-          "solution": "A ∪ B ची संभाव्यता सूत्र P(A ∪ B) = P(A) + P(B) - P(A ∩ B) वापरून गणली जाते. दिलेल्या मूल्यांचा वापर करून, 0.5 + 0.6 - 0.3 = 0.8. इतर विकल्प चुकीचे आहेत कारण 0.9 ही संभाव्यता A ∪ B ची असेल जर P(A ∩ B) 0.2 असती, 1.0 ही खात्रीच्या घटनेची संभाव्यता आहे आणि 1.1 ही वैध संभाव्यता नाही कारण ती 1 पेक्षा जास्त आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for probability concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes P(A ∪ B) = P(A) + P(B) without subtracting the intersection",
-        "Believes P(A ∪ B) is just the maximum of P(A) and P(B)",
-        "Confuses the formula for union with the sum of probabilities without subtracting the intersection"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the formula for the union of two events. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh114.pdf",
-          "ordinal": 11,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T04:15:34.701Z",
+      "generatedAt": "2026-10-28T09:45:02.760Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

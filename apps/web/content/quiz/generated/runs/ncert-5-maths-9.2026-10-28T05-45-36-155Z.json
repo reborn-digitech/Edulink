@@ -1,0 +1,596 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T05:45:36.155Z",
+  "finishedAt": "2026-10-28T05:50:28.745Z",
+  "seconds": 293,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm109.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Coconut Farm",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n2. Coordinate of Kota (K) is ( 3 x 5 + 2 x 0 3 x 7 + 2 x 10 3 + 2 ,\n= ( 15+0 5 , 21+20 5 )= (3, 41 5 )",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n5. (c) k = 4",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n5. B) 20 cm",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n6. (c) 5 Unit"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 122901,
+      "in": 31,
+      "out": 28,
+      "rejects": 3,
+      "promptTokens": 27915,
+      "completionTokens": 7115
+    },
+    "critique": {
+      "calls": 34,
+      "ms": 215881,
+      "in": 28,
+      "out": 22,
+      "rejects": 6,
+      "promptTokens": 15611,
+      "completionTokens": 6070
+    },
+    "solver": {
+      "calls": 150,
+      "ms": 85348,
+      "in": 22,
+      "out": 15,
+      "rejects": 7,
+      "promptTokens": 32072,
+      "completionTokens": 1721
+    },
+    "form": {
+      "calls": 6,
+      "ms": 15720,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 1575,
+      "completionTokens": 505
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 28,
+      "ms": 5019,
+      "in": 12,
+      "out": 6,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 155085,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 11937,
+      "completionTokens": 4945
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the relationship between the dividend (N), divisor (D), quotient (Q), and remainder (R) when a number is divided?",
+      "ms": {
+        "draft": 3668,
+        "critique": 6162,
+        "solver": 1356,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 870 ÷ 10 = 87, what is the value of 870 ÷ 100?",
+      "ms": {
+        "draft": 3668,
+        "critique": 8955
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Using the pattern in the passage, what is the value of 1400 ÷ 100?",
+      "ms": {
+        "draft": 3668,
+        "critique": 8537,
+        "solver": 1112,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 35 ÷ 7 = 5, which of the following is a correct division fact based on this?",
+      "ms": {
+        "draft": 3668,
+        "critique": 6803,
+        "solver": 14890
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Rani wants to serve one samosa to each of 250 guests. Samosas are available in packs of 6 or 8. Which pack should she buy to avoid having any leftover samosas?",
+      "ms": {
+        "draft": 3645,
+        "critique": 7263
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Susie and Sunitha used 4376 coconuts to extract oil. They can extract 1 liter of oil from 8 coconuts. How many liters of oil did they extract?",
+      "ms": {
+        "draft": 3645,
+        "critique": 6737,
+        "solver": 1799
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 440 ÷ 22 = 20, what is the value of 440 ÷ 44?",
+      "ms": {
+        "draft": 3668,
+        "critique": 5716,
+        "solver": 10396
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Naina bought 5 kg of ice cream for 23 friends. After everyone had an equal share, 400 g of ice cream was left. How much ice cream did each friend get?",
+      "ms": {
+        "draft": 3645,
+        "critique": 7116,
+        "solver": 1119
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of dividing 340 by 17?",
+      "ms": {
+        "draft": 3976,
+        "critique": 6537,
+        "solver": 16878
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of dividing 192 by 8?",
+      "ms": {
+        "draft": 3976,
+        "critique": 6966,
+        "solver": 18386
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "After resting for one day, the company has 4 days left to cover the same distance. How much should they cycle each day?",
+      "ms": {
+        "draft": 3976,
+        "critique": 6922
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Rani needs to serve one samosa to each of 250 guests. Samosas are available in packs of 6 or 8. Which pack should she buy to have no leftovers?",
+      "ms": {
+        "draft": 4802,
+        "critique": 5690
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Ibrahim earned ₹8890 by selling tender coconuts at ₹35 each. He bought them for ₹20 each. How much extra money did he earn?",
+      "ms": {
+        "draft": 4802,
+        "critique": 5519
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Naina bought 5 kg of ice cream for 23 friends. After distribution, 400 g was left. How much ice cream did each friend get?",
+      "ms": {
+        "draft": 4802,
+        "critique": 8289
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the relationship between the dividend, divisor, quotient, and remainder?",
+      "ms": {
+        "draft": 3794,
+        "critique": 7492,
+        "solver": 1294,
+        "form": 2152
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Susie and Sunitha extracted 547 litres of coconut oil. If they sell it at ₹175 per litre, how much will they earn?",
+      "ms": {
+        "draft": 4802,
+        "critique": 6819,
+        "solver": 15032
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a company needs to cover 576 km in 12 days, how much distance should they cycle each day?",
+      "ms": {
+        "draft": 3956,
+        "critique": 5781,
+        "solver": 1923,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a fruit vendor sells 6 baskets of mangoes, each containing 12 mangoes, how much did the vendor earn in total?",
+      "ms": {
+        "draft": 3956,
+        "critique": 5573,
+        "solver": 798,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If Rahul buys 5 cricket bats for ₹3500, what is the cost of one bat?",
+      "ms": {
+        "draft": 3956,
+        "critique": 4267,
+        "solver": 662,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a company covers 576 km in 12 days, how much distance should they cycle every day?",
+      "ms": {
+        "draft": 3976,
+        "critique": 6657,
+        "solver": 17666,
+        "form": 3552
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many coconuts does each customer get if 582 coconuts are sold equally to 6 customers?",
+      "ms": {
+        "draft": 3794,
+        "critique": 6080,
+        "solver": 1686,
+        "form": 2975
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 535 coconuts are packed into bags that hold 25 coconuts each, how many bags are needed?",
+      "ms": {
+        "draft": 3794,
+        "critique": 4289,
+        "solver": 679,
+        "form": 1185
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of 340 ÷ 34?",
+      "ms": {
+        "draft": 3956,
+        "critique": 6782,
+        "solver": 1372,
+        "form": 4157,
+        "translation": 23668
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of 192 ÷ 4?",
+      "ms": {
+        "draft": 3956,
+        "critique": 6417,
+        "solver": 1184,
+        "form": 4083,
+        "translation": 19829
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Megha packs 15 packets of 8 biscuits each for a 4-day trip. There are 6 people in the group. How many biscuits can each person have each day if they are distributed evenly?",
+      "ms": {
+        "draft": 3645,
+        "critique": 6296,
+        "solver": 1945,
+        "form": 0,
+        "translation": 32383
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given division, 200 ÷ 20 = 10, what is the value of the remainder?",
+      "ms": {
+        "draft": 3668,
+        "critique": 6138,
+        "solver": 1120,
+        "form": 0,
+        "translation": 21660
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A theatre company can accommodate 45 people per show. If 475 people bought tickets, how many shows are needed to seat everyone?",
+      "ms": {
+        "draft": 3645,
+        "critique": 6745,
+        "solver": 1295,
+        "form": 0,
+        "translation": 27320
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Ibrahim earns ₹8890 in a week by selling tender coconuts at ₹35 each. How many tender coconuts did he sell?",
+      "ms": {
+        "draft": 3645,
+        "critique": 5326,
+        "solver": 1556,
+        "form": 0,
+        "translation": 26421
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the relationship between the dividend (N), divisor (D), quotient (Q), and remainder (R) when a number is divided?",
+      "reason": "options 0 and 1 say the same thing (\"N = D + Q + R\" / \"N = D × Q - R\"); options 0 and 2 are the same (\"N = D + Q + R\"); options 0 and 3 are the same (\"N = D + Q + R\"); options 1 and 2 say the same thing (\"N = D × Q - R\" / \"N = D × Q + R\"); options 1 and 3 say the same thing (\"N = D × Q - R\" / \"N = D × Q × R\"); options 2 and 3 are the same (\"N = D × Q + R\"); option 0 repeats the stem's wording (\"N = D + Q + R\"); option 2 repeats the stem's wording (\"N = D × Q + R\"); option 3 repeats the stem's wording (\"N = D × Q × R\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 870 ÷ 10 = 87, what is the value of 870 ÷ 100?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Using the pattern in the passage, what is the value of 1400 ÷ 100?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; checkExpr \"14\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 35 ÷ 7 = 5, which of the following is a correct division fact based on this?",
+      "reason": "after redrafting distractors 1, 2, 3: the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Rani wants to serve one samosa to each of 250 guests. Samosas are available in packs of 6 or 8. Which pack should she buy to avoid having any leftover samosas?",
+      "reason": "the critic finds option 3 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Susie and Sunitha used 4376 coconuts to extract oil. They can extract 1 liter of oil from 8 coconuts. How many liters of oil did they extract?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 440 ÷ 22 = 20, what is the value of 440 ÷ 44?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Naina bought 5 kg of ice cream for 23 friends. After everyone had an equal share, 400 g of ice cream was left. How much ice cream did each friend get?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the result of dividing 704 by 22?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "If 5 cricket bats cost ₹3500, how much does one bat cost?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Megha packs 15 packets of biscuits for a 4-day trip. Each packet has 8 biscuits. There are 6 people in the group. How many biscuits does each person get per day?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the result of dividing 340 by 17?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the result of dividing 192 by 8?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "After resting for one day, the company has 4 days left to cover the same distance. How much should they cycle each day?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Rani needs to serve one samosa to each of 250 guests. Samosas are available in packs of 6 or 8. Which pack should she buy to have no leftovers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Ibrahim earned ₹8890 by selling tender coconuts at ₹35 each. He bought them for ₹20 each. How much extra money did he earn?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Naina bought 5 kg of ice cream for 23 friends. After distribution, 400 g was left. How much ice cream did each friend get?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the relationship between the dividend, divisor, quotient, and remainder?",
+      "reason": "options 0 and 1 are the same (\"Dividend = Divisor × Quotient + Remainder\"); options 0 and 2 say the same thing (\"Dividend = Divisor × Quotient + Remainder\" / \"Dividend = Divisor × Quotient - Remainder\"); options 0 and 3 say the same thing (\"Dividend = Divisor × Quotient + Remainder\" / \"Dividend = Divisor × Remainder + Quotient\"); options 1 and 2 say the same thing (\"Dividend = Divisor + Quotient × Remainder\" / \"Dividend = Divisor × Quotient - Remainder\"); options 1 and 3 say the same thing (\"Dividend = Divisor + Quotient × Remainder\" / \"Dividend = Divisor × Remainder + Quotient\"); options 2 and 3 say the same thing (\"Dividend = Divisor × Quotient - Remainder\" / \"Dividend = Divisor × Remainder + Quotient\"); option 0 repeats the stem's wording (\"Dividend = Divisor × Quotient + Remainder\"); option 1 repeats the stem's wording (\"Dividend = Divisor + Quotient × Remainder\"); option 3 repeats the stem's wording (\"Dividend = Divisor × Remainder + Quotient\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Susie and Sunitha extracted 547 litres of coconut oil. If they sell it at ₹175 per litre, how much will they earn?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If a company needs to cover 576 km in 12 days, how much distance should they cycle each day?",
+      "reason": "near-duplicate of served question cmvo8j3na05pdgp21s6z2qaoo (cosine 0.943 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If a fruit vendor sells 6 baskets of mangoes, each containing 12 mangoes, how much did the vendor earn in total?",
+      "reason": "near-duplicate of served question cmvh73n5s07a3gpfh5oj7v63p (cosine 0.935 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If Rahul buys 5 cricket bats for ₹3500, what is the cost of one bat?",
+      "reason": "near-duplicate of served question cmvh73n5u07a9gpfhmpvx7xft (cosine 0.943 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a company covers 576 km in 12 days, how much distance should they cycle every day?",
+      "reason": "near-duplicate of served question cmvo8j3na05pdgp21s6z2qaoo (cosine 0.932 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "How many coconuts does each customer get if 582 coconuts are sold equally to 6 customers?",
+      "reason": "near-duplicate of served question cmvo8j3ne05ppgp21ki0mcjrx (cosine 0.948 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If 535 coconuts are packed into bags that hold 25 coconuts each, how many bags are needed?",
+      "reason": "near-duplicate of served question cmvo8j3nf05pvgp21mrnunnz5 (cosine 0.973 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

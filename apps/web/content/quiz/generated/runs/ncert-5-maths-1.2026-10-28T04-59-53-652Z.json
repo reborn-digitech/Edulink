@@ -1,0 +1,553 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:59:53.652Z",
+  "finishedAt": "2026-10-28T05:07:14.274Z",
+  "seconds": 441,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm101.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — We the Travellers—I",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n1. This Question Paper has 5 Sections A-E.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n1. This Question Paper has 5 Sections A, B, C, D, and E.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n1. This Question Paper has 5 Sections A, B, C, D, and E.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n1. This Question Paper has 5 Sections A, B, C, D and E."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 120556,
+      "in": 26,
+      "out": 26,
+      "rejects": 1,
+      "promptTokens": 21077,
+      "completionTokens": 7370
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 207242,
+      "in": 26,
+      "out": 20,
+      "rejects": 6,
+      "promptTokens": 15276,
+      "completionTokens": 5987
+    },
+    "solver": {
+      "calls": 138,
+      "ms": 58442,
+      "in": 20,
+      "out": 13,
+      "rejects": 7,
+      "promptTokens": 23247,
+      "completionTokens": 1330
+    },
+    "form": {
+      "calls": 7,
+      "ms": 61742,
+      "in": 13,
+      "out": 7,
+      "rejects": 6,
+      "promptTokens": 5777,
+      "completionTokens": 1735
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 4603,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 150058,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11583,
+      "completionTokens": 4869
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to write the number ten thousand?",
+      "ms": {
+        "draft": 11503,
+        "critique": 5910
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 461 girls and 439 boys go on a trip, and each bicycle can carry 2 people, how many bicycles are needed?",
+      "ms": {
+        "draft": 11503,
+        "critique": 7515,
+        "solver": 1673
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of digits used to write the numbers from 1 to 100?",
+      "ms": {
+        "draft": 4042,
+        "critique": 6172
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is formed by two different digits, and the difference between the two 2-digit numbers made from them is always divisible by 9, what is the common factor of all such differences?",
+      "ms": {
+        "draft": 4042,
+        "critique": 6303
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Ravi’s car has been driven for 56,987 km and Sheetal’s car has been driven 67,543 km. What is the difference in the distances they have driven?",
+      "ms": {
+        "draft": 4042,
+        "critique": 7027
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The caretaker arranged 18 horses in the stable with 5 on each side. If the thief steals 3 more horses, how many horses will remain, and can the caretaker still arrange them with 5 on each side?",
+      "ms": {
+        "draft": 7237,
+        "critique": 5145,
+        "solver": 13063,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The caretaker said there were 20 horses because there were 5 on each of 4 sides. But when the thief stole one horse, only 18 remained. How could the caretaker still arrange 18 horses with 5 on each side?",
+      "ms": {
+        "draft": 7237,
+        "critique": 4786,
+        "solver": 14420
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The caretaker managed to arrange 18 horses in the stable with 5 on each side. If the king had counted 6 horses on each side instead of 5, how many horses would be needed in total?",
+      "ms": {
+        "draft": 7237,
+        "critique": 7751
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the caretaker arranged 18 horses with 5 on each side, how many horses were on the sides only, excluding the corners?",
+      "ms": {
+        "draft": 7237,
+        "critique": 8306
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The king counted 5 horses along each side of the square stable. If the caretaker arranged 18 horses with 5 on each side, how many horses were at the corners?",
+      "ms": {
+        "draft": 7237,
+        "critique": 5586,
+        "solver": 2031,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a 4-digit number?",
+      "ms": {
+        "draft": 4590,
+        "critique": 6159,
+        "solver": 1466,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many trips does the boatman need to make to safely transport the lion, sheep, and grass across the river?",
+      "ms": {
+        "draft": 4590,
+        "critique": 7084,
+        "solver": 1642
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the difference between the numbers 93,743 and 89,999?",
+      "ms": {
+        "draft": 4590,
+        "critique": 7024,
+        "solver": 1160
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the difference between two numbers formed by two digits is 27, what could the digits be?",
+      "ms": {
+        "draft": 4590,
+        "critique": 7420,
+        "solver": 1366
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the first form of transport invented by humans according to the passage?",
+      "ms": {
+        "draft": 3777,
+        "critique": 6471,
+        "solver": 1330,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the number of vehicles in a state today?",
+      "ms": {
+        "draft": 3777,
+        "critique": 5857,
+        "solver": 1375
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The king counted 5 horses along each side of the square stable. The caretaker said there were 20 horses, but there were actually 18. Why was the caretaker’s count wrong?",
+      "ms": {
+        "draft": 7237,
+        "critique": 7086,
+        "solver": 11389,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student said 9,990 is greater than 49,014 because 9 is greater than 4. Is the student correct?",
+      "ms": {
+        "draft": 3777,
+        "critique": 8999,
+        "solver": 737
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a cyclist covers 15 km in one hour, how much distance will she cover in 4 hours?",
+      "ms": {
+        "draft": 3777,
+        "critique": 7683,
+        "solver": 9991,
+        "form": 1221
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a cyclist covers 15 km in one hour, how much distance will she cover in 4 hours?",
+      "ms": {
+        "draft": 11503,
+        "critique": 8496,
+        "solver": 10175,
+        "form": 2214
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a book has 200 pages and each page has 50 words, how many words are there in total?",
+      "ms": {
+        "draft": 4042,
+        "critique": 5272,
+        "solver": 1622,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to write the number 'ten thousand two'?",
+      "ms": {
+        "draft": 11503,
+        "critique": 6687,
+        "solver": 1822,
+        "form": 3178,
+        "translation": 31066
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the expanded form of 8,062?",
+      "ms": {
+        "draft": 4042,
+        "critique": 4878,
+        "solver": 481,
+        "form": 0,
+        "translation": 25373
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the nearest thousand to the number 2,346?",
+      "ms": {
+        "draft": 11503,
+        "critique": 7992,
+        "solver": 10073,
+        "form": 4207,
+        "translation": 28443
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers is the smallest when rounded to the nearest hundred?",
+      "ms": {
+        "draft": 11503,
+        "critique": 6447,
+        "solver": 1711,
+        "form": 5417,
+        "translation": 34561
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the number 43,001, what is the value of the digit 3?",
+      "ms": {
+        "draft": 4042,
+        "critique": 6065,
+        "solver": 1235,
+        "form": 0,
+        "translation": 26516
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 4,\n      \"stem\": \"The caretaker said there were 20 horses in the stable, with 5"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the correct way to write the number ten thousand?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 461 girls and 439 boys go on a trip, and each bicycle can carry 2 people, how many bicycles are needed?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the total number of digits used to write the numbers from 1 to 100?",
+      "reason": "the critic finds option 3 correct, the key is 2"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a number is formed by two different digits, and the difference between the two 2-digit numbers made from them is always divisible by 9, what is the common factor of all such differences?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Ravi’s car has been driven for 56,987 km and Sheetal’s car has been driven 67,543 km. What is the difference in the distances they have driven?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The caretaker arranged 18 horses in the stable with 5 on each side. If the thief steals 3 more horses, how many horses will remain, and can the caretaker still arrange them with 5 on each side?",
+      "reason": "options are in more than one unit (horses yes, horses no); options 0 and 1 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "The caretaker said there were 20 horses because there were 5 on each of 4 sides. But when the thief stole one horse, only 18 remained. How could the caretaker still arrange 18 horses with 5 on each side?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The caretaker managed to arrange 18 horses in the stable with 5 on each side. If the king had counted 6 horses on each side instead of 5, how many horses would be needed in total?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the caretaker arranged 18 horses with 5 on each side, how many horses were on the sides only, excluding the corners?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The king counted 5 horses along each side of the square stable. If the caretaker arranged 18 horses with 5 on each side, how many horses were at the corners?",
+      "reason": "figure: figure spec refused: spec.segments: segments names point A, which is not defined"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a 4-digit number?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but the one with f…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many trips does the boatman need to make to safely transport the lion, sheep, and grass across the river?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the difference between the numbers 93,743 and 89,999?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the difference between two numbers formed by two digits is 27, what could the digits be?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the first form of transport invented by humans according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage say about the number of vehicles in a state today?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The king counted 5 horses along each side of the square stable. The caretaker said there were 20 horses, but there were actually 18. Why was the caretaker’s count wrong?",
+      "reason": "figure: figure spec refused: spec.segments: segments names point A, which is not defined"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student said 9,990 is greater than 49,014 because 9 is greater than 4. Is the student correct?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a cyclist covers 15 km in one hour, how much distance will she cover in 4 hours?",
+      "reason": "options 1 and 3 are the same (\"45 km\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a cyclist covers 15 km in one hour, how much distance will she cover in 4 hours?",
+      "reason": "near-duplicate of served question cmvk7giho0jfwgpfhy08u4r6u (cosine 0.915 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a book has 200 pages and each page has 50 words, how many words are there in total?",
+      "reason": "near-duplicate of served question cmvh5jqij06ybgpfh0n7gr02f (cosine 0.922 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,781 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T20:27:24.709Z",
+  "finishedAt": "2026-10-23T20:36:26.845Z",
+  "seconds": 542,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Indian Economic Development",
+    "bookCode": "keec1",
+    "document": "ncert/11/economics/keec106.pdf",
+    "classLevel": 11,
+    "subject": "Economics",
+    "chapter": "Chapter 6 — Employment : Growth, Informalisation and Other Issues",
+    "edition": "Reprint 2026-27",
+    "chunks": 22,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Economics, sample question paper, 2024-25]\n26. “Assuming in a hypothetical economy, Real Gross Domestic Product 1\nrecorded a growth rate of 9% during a fiscal year. However, the economy\nfaced a significant challenge in terms of creating an adequate number of\nemployment opportunities.”\nIdentify the situation indicated in the given statement and choose the correct\noption.\nA. Casualisation of workforce B. Informalisation of workforce\nC. Formalisation of workforce D. Jobless growth",
+      "[CBSE Class XII Economics, marking scheme, 2024-25]\n26. D. Jobless Growth",
+      "[CBSE Class XII Economics, sample question paper, 2026-27]\nIn light of the given statements, choose the correct option from the following:\n(A) Statement 1 is true and Statement 2 is false.\n(B) Statement 1 is false and Statement 2 is true.\n(C) Both Statements 1 and 2 are true.\n(D) Both Statements 1 and 2 are false.\n19 Match the set of type of employment given in Column I with corresponding 1\nexample given in Column II and choose the correct option:\nColumn I\n(p) Self-employed i\n(q) Regular salaried employees ii\n(r) Casual wage labourers iii\n(A) (p)-ii, (q)-i, (r)-iii\n(C) (p)-i, (q)-iii, (r)-ii\nColumn II\nAn engineer working with ONGC\nA construction worker\nPhotographer running own studio\n(B) (p)-iii, (q)-ii, (r)-i\n(D) (p)-iii, (q)-i, (r)-ii\n20 Read the ",
+      "[CBSE Class XII Economics, marking scheme, 2023-24]\ninformal sector employment. This situation is popularly known as ‘informalisation of 1\nthe workforce’.\nIn India, informal sector includes millions of farmers, agricultural labourers, non-farm\ncasual wage labourers, owners of small enterprises and the self-employed people. The 3\nworkforce in the informal sector does not get regular income; they do not have any\nprotection or regulation from the government. Workers may be dismissed without any\ncompensation/notice.\nThe Government is taking steps to safeguard the interests of the workers in the\ninformal sector.\n33 (A)Before the advent of Green Revolution, a large proportion of agricultural produce\nwas consumed by the farmers themselves instead of"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Economics in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 201866,
+      "in": 41,
+      "out": 39,
+      "rejects": 2,
+      "promptTokens": 55989,
+      "completionTokens": 10539
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 310181,
+      "in": 39,
+      "out": 30,
+      "rejects": 9,
+      "promptTokens": 22181,
+      "completionTokens": 7981
+    },
+    "solver": {
+      "calls": 205,
+      "ms": 100364,
+      "in": 30,
+      "out": 27,
+      "rejects": 3,
+      "promptTokens": 33673,
+      "completionTokens": 2044
+    },
+    "form": {
+      "calls": 16,
+      "ms": 47607,
+      "in": 27,
+      "out": 14,
+      "rejects": 13,
+      "promptTokens": 4070,
+      "completionTokens": 1233
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 9,
+      "ms": 1750,
+      "in": 14,
+      "out": 7,
+      "rejects": 7,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 31,
+      "ms": 345005,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 19111,
+      "completionTokens": 10351
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which type of employment is described as not getting regular income and lacking government protection?",
+      "ms": {
+        "draft": 12828,
+        "critique": 6460,
+        "solver": 1139,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why might the passage suggest that housewives working at home without pay should be considered as engaged in economic activity?",
+      "ms": {
+        "draft": 12828,
+        "critique": 7018,
+        "solver": 13553,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason people work according to the passage?",
+      "ms": {
+        "draft": 12828,
+        "critique": 5703,
+        "solver": 16466,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the difference in participation rates between men and women in urban areas?",
+      "ms": {
+        "draft": 3798,
+        "critique": 6289,
+        "solver": 1464,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why are women in rural areas not always counted as workers?",
+      "ms": {
+        "draft": 3798,
+        "critique": 6858,
+        "solver": 1568,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a self-employed worker?",
+      "ms": {
+        "draft": 3185,
+        "critique": 8179
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the term used to describe a situation where GDP grows but employment does not?",
+      "ms": {
+        "draft": 3185,
+        "critique": 5908,
+        "solver": 1691,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which sector provides the largest share of employment in rural India?",
+      "ms": {
+        "draft": 3185,
+        "critique": 5675,
+        "solver": 1516,
+        "form": 3166
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the context of the passage, which of the following best describes the informal sector?",
+      "ms": {
+        "draft": 3185,
+        "critique": 5965,
+        "solver": 1770,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which term is used to describe the situation where workers in the informal sector do not have any protection or regulation from the government?",
+      "ms": {
+        "draft": 11857,
+        "critique": 7320
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a marginal farmer becomes a full-time agricultural labourer and earns more in daily wage work, what would be the most likely outcome according to the passage?",
+      "ms": {
+        "draft": 11857,
+        "critique": 7051,
+        "solver": 1386
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the proportion of workers in the informal sector has not decreased despite economic growth?",
+      "ms": {
+        "draft": 11857,
+        "critique": 7200
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of disguised unemployment?",
+      "ms": {
+        "draft": 8709,
+        "critique": 8401
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of dam construction work according to the passage?",
+      "ms": {
+        "draft": 3921,
+        "critique": 7840
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is NOT a characteristic of the informal sector?",
+      "ms": {
+        "draft": 11857,
+        "critique": 7866,
+        "solver": 14775
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of employment is described as having no regular income and no government protection?",
+      "ms": {
+        "draft": 3883,
+        "critique": 5227
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a region has a high number of workers engaged in casual work and no government protection, what is the likely impact on the worker-population ratio?",
+      "ms": {
+        "draft": 3883,
+        "critique": 6941,
+        "solver": 1500
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a characteristic of the informal sector?",
+      "ms": {
+        "draft": 3883,
+        "critique": 8369,
+        "solver": 10931,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of an informal sector worker?",
+      "ms": {
+        "draft": 4408,
+        "critique": 6306,
+        "solver": 1732,
+        "form": 2174
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a direct way of employment generation by the government?",
+      "ms": {
+        "draft": 4408,
+        "critique": 7541,
+        "solver": 11099,
+        "form": 3181
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of unemployment is described when a farmer employs more workers than needed for the work on his farm?",
+      "ms": {
+        "draft": 4390,
+        "critique": 7412
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for unemployment that occurs when people are looking for jobs in urban areas during certain seasons but return to their villages when there is no work?",
+      "ms": {
+        "draft": 4390,
+        "critique": 6772
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is an example of informal sector employment?",
+      "ms": {
+        "draft": 4390,
+        "critique": 6882
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the term 'jobless growth' refer to in the context of economic development?",
+      "ms": {
+        "draft": 7650,
+        "critique": 7148,
+        "solver": 1462,
+        "form": 4474
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the term 'jobless growth' refer to?",
+      "ms": {
+        "draft": 5329,
+        "critique": 6494,
+        "solver": 1741,
+        "form": 2924
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an economy records a 9% growth in real GDP but does not create enough jobs, what is this phenomenon known as?",
+      "ms": {
+        "draft": 12828,
+        "critique": 7065,
+        "solver": 2351,
+        "form": 3623
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a country's GDP grows by 9% but there is no significant increase in employment opportunities, what is this situation known as?",
+      "ms": {
+        "draft": 3798,
+        "critique": 6103,
+        "solver": 16161,
+        "form": 3146
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a country experiences economic growth but fails to create enough jobs, what is this phenomenon called?",
+      "ms": {
+        "draft": 3185,
+        "critique": 6739,
+        "solver": 1117,
+        "form": 4563
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of informal sector employment?",
+      "ms": {
+        "draft": 4103,
+        "critique": 4811,
+        "solver": 580,
+        "form": 1244
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the situation where the economy grows but does not create enough jobs?",
+      "ms": {
+        "draft": 3883,
+        "critique": 4949,
+        "solver": 1157,
+        "form": 4221
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of informal sector employment?",
+      "ms": {
+        "draft": 3883,
+        "critique": 5227,
+        "solver": 11096,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best describes the situation where an economy grows in terms of GDP but fails to create sufficient employment opportunities?",
+      "ms": {
+        "draft": 5352,
+        "critique": 6437,
+        "solver": 1561,
+        "form": 3891
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the situation where an economy grows but does not create enough jobs?",
+      "ms": {
+        "draft": 12828,
+        "critique": 6483,
+        "solver": 1819,
+        "form": 4092,
+        "translation": 74668
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'worker-population ratio' indicate?",
+      "ms": {
+        "draft": 3798,
+        "critique": 5852,
+        "solver": 1792,
+        "form": 1,
+        "translation": 43802
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of casual wage labour?",
+      "ms": {
+        "draft": 3798,
+        "critique": 9022,
+        "solver": 1784,
+        "form": 0,
+        "translation": 53857
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the largest source of employment in India?",
+      "ms": {
+        "draft": 3798,
+        "critique": 7805,
+        "solver": 1440,
+        "form": 3189,
+        "translation": 39836
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of an informal sector worker?",
+      "ms": {
+        "draft": 4408,
+        "critique": 7886,
+        "solver": 11957,
+        "form": 2810,
+        "translation": 39242
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a country's GDP grows by 7% but the employment rate remains stagnant, what is this scenario known as?",
+      "ms": {
+        "draft": 12828,
+        "critique": 7447,
+        "solver": 1736,
+        "form": 1986,
+        "translation": 38598
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the connection between disguised unemployment and informal sector employment?",
+      "ms": {
+        "draft": 3883,
+        "critique": 5380,
+        "solver": 1887,
+        "form": 3549,
+        "translation": 50326
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of a regular salaried employee?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which type of employment is described as not getting regular income and lacking government protection?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why might the passage suggest that housewives working at home without pay should be considered as engaged in economic activity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason people work according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the difference in participation rates between men and women in urban areas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why are women in rural areas not always counted as workers?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a self-employed worker?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the term used to describe a situation where GDP grows but employment does not?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which sector provides the largest share of employment in rural India?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the context of the passage, which of the following best describes the informal sector?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which term is used to describe the situation where workers in the informal sector do not have any protection or regulation from the government?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a marginal farmer becomes a full-time agricultural labourer and earns more in daily wage work, what would be the most likely outcome according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the proportion of workers in the informal sector has not decreased despite economic growth?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of disguised unemployment?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main purpose of dam construction work according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which of the following is NOT a characteristic of the informal sector?",
+      "reason": "after redraft: the solver picked option 0 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the term used for the situation where economic growth occurs without a corresponding increase in employment?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of employment is described as having no regular income and no government protection?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a region has a high number of workers engaged in casual work and no government protection, what is the likely impact on the worker-population ratio?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a characteristic of the informal sector?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of an informal sector worker?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Thinks government jobs are informal\",\"Confuses factory worke…\"); distractor 1's reason is not a one-line misconception (\"difficulty\":2,\"stem\":\"What is the term used for the situatio…\"); distractor 3's reason is not a one-line misconception (\"distractorReasons\":[\"Confuses jobless growth with informalis…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a direct way of employment generation by the government?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Assumes factories are always government-run\",\"Ignores the sp…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of unemployment is described when a farmer employs more workers than needed for the work on his farm?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for unemployment that occurs when people are looking for jobs in urban areas during certain seasons but return to their villages when there is no work?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is an example of informal sector employment?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the term 'jobless growth' refer to in the context of economic development?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets growth as a decline in productivity and not a …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the term 'jobless growth' refer to?",
+      "reason": "options 0 and 1 say the same thing (\"Economic growth without an increase in the number of jobs\" / \"Economic growth with an increase in the number of jobs\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If an economy records a 9% growth in real GDP but does not create enough jobs, what is this phenomenon known as?",
+      "reason": "near-duplicate of batch item \"Which of the following best describes the situatio…\" (cosine 0.902 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a country's GDP grows by 9% but there is no significant increase in employment opportunities, what is this situation known as?",
+      "reason": "near-duplicate of batch item \"If a country's GDP grows by 7% but the employment …\" (cosine 0.947 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a country experiences economic growth but fails to create enough jobs, what is this phenomenon called?",
+      "reason": "near-duplicate of batch item \"Which of the following best describes the situatio…\" (cosine 0.924 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of informal sector employment?",
+      "reason": "near-duplicate of served question cmvhyqwvj0b3kgpfh4ks7ofyb (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term used to describe the situation where the economy grows but does not create enough jobs?",
+      "reason": "near-duplicate of batch item \"Which of the following best describes the situatio…\" (cosine 0.962 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is an example of informal sector employment?",
+      "reason": "near-duplicate of served question cmvhyqwvj0b3kgpfh4ks7ofyb (cosine 0.946 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which of the following best describes the situation where an economy grows in terms of GDP but fails to create sufficient employment opportunities?",
+      "reason": "near-duplicate of served question cmvhyqwvw0b4qgpfhqxdbnfx6 (cosine 0.903 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Economics in the prompt"
+  ]
+}

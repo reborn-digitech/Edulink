@@ -1,0 +1,328 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T07:13:45.084Z",
+  "finishedAt": "2026-10-28T07:19:33.168Z",
+  "seconds": 348,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap121.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 21 — Like Father, Like Daughter",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 47355,
+      "in": 12,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 10620,
+      "completionTokens": 2386
+    },
+    "critique": {
+      "calls": 12,
+      "ms": 83968,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 5039,
+      "completionTokens": 2078
+    },
+    "solver": {
+      "calls": 40,
+      "ms": 19374,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 4760,
+      "completionTokens": 320
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 0,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 7108,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 152,
+      "completionTokens": 370
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does Nilima’s mother say about the relationship between Nilima and Kiran?",
+      "ms": {
+        "draft": 4145,
+        "critique": 7466,
+        "solver": 1569
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child has curly hair like their grandmother, which family member is most likely to have the same trait?",
+      "ms": {
+        "draft": 4145,
+        "critique": 8190,
+        "solver": 2040
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what habit or trait does Ashima have that is similar to her father?",
+      "ms": {
+        "draft": 4145,
+        "critique": 9076,
+        "solver": 1898
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what does the teacher suggest about the origin of certain traits?",
+      "ms": {
+        "draft": 4145,
+        "critique": 8638,
+        "solver": 1905
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say about polio?",
+      "ms": {
+        "draft": 18830,
+        "critique": 8116,
+        "solver": 1591,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what did Gregor Mendel discover about pea plants?",
+      "ms": {
+        "draft": 18830,
+        "critique": 9084,
+        "solver": 2413,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a habit of talking loudly, what might the passage suggest about the cause?",
+      "ms": {
+        "draft": 18830,
+        "critique": 4918,
+        "solver": 1070,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about traits like loud talking?",
+      "ms": {
+        "draft": 18830,
+        "critique": 6434,
+        "solver": 1350,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what did Gregor Mendel discover about pea plants?",
+      "ms": {
+        "draft": 19280,
+        "critique": 6664
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about how traits are passed from parents to children?",
+      "ms": {
+        "draft": 19280,
+        "critique": 7462
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a trait that is not inherited from their parents, what could be the reason?",
+      "ms": {
+        "draft": 19280,
+        "critique": 7499
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason that some people may have polio?",
+      "ms": {
+        "draft": 19280,
+        "critique": 3844
+      },
+      "outcome": "critique",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does Nilima’s mother say about the relationship between Nilima and Kiran?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a child has curly hair like their grandmother, which family member is most likely to have the same trait?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, what habit or trait does Ashima have that is similar to her father?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what does the teacher suggest about the origin of certain traits?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage say about polio?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what did Gregor Mendel discover about pea plants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the color trait described in the passage as a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person has a habit of talking loudly, what might the passage suggest about the cause?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about traits like loud talking?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"According to the passage, how did Ashima's mother recognize t"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what did Gregor Mendel discover about pea plants?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage say about how traits are passed from parents to children?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person has a trait that is not inherited from their parents, what could be the reason?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason that some people may have polio?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

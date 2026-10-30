@@ -1,0 +1,775 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T18:40:00.578Z",
+  "finishedAt": "2026-10-24T18:47:40.243Z",
+  "seconds": 460,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "hemh1",
+    "document": "ncert/8/mathematics/hemh109.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Mensuration",
+    "edition": "Reprint 2024-25",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n10. (c) 8cm",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 174390,
+      "in": 41,
+      "out": 38,
+      "rejects": 3,
+      "promptTokens": 35471,
+      "completionTokens": 10212
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 303537,
+      "in": 38,
+      "out": 30,
+      "rejects": 8,
+      "promptTokens": 22854,
+      "completionTokens": 8665
+    },
+    "solver": {
+      "calls": 225,
+      "ms": 116731,
+      "in": 30,
+      "out": 21,
+      "rejects": 9,
+      "promptTokens": 46059,
+      "completionTokens": 2451
+    },
+    "form": {
+      "calls": 5,
+      "ms": 32773,
+      "in": 21,
+      "out": 11,
+      "rejects": 10,
+      "promptTokens": 3050,
+      "completionTokens": 868
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 38,
+      "ms": 7247,
+      "in": 11,
+      "out": 5,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 171627,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 12123,
+      "completionTokens": 5388
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "A trapezium has parallel sides of lengths 10 cm and 14 cm, and the perpendicular distance between them is 6 cm. What is its area?",
+      "ms": {
+        "draft": 4807,
+        "critique": 5941
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula used to calculate the area of a trapezium?",
+      "ms": {
+        "draft": 4807,
+        "critique": 7632
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given polygon, AD = 8 cm, AH = 6 cm, AG = 4 cm, AF = 3 cm, BF = 2 cm, CH = 3 cm, and EG = 2.5 cm. What is the area of the polygon?",
+      "ms": {
+        "draft": 4807,
+        "critique": 6893,
+        "solver": 1489
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A trapezium-shaped field has a perimeter of 120 m. If BC = 48 m, CD = 17 m, and AD = 40 m, and side AB is perpendicular to the parallel sides AD and BC, find the area of the field.",
+      "ms": {
+        "draft": 4807,
+        "critique": 6739,
+        "solver": 1434,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A trapezium has an area of 34 cm², one of the parallel sides is 10 cm, and the height is 4 cm. What is the length of the other parallel side?",
+      "ms": {
+        "draft": 4807,
+        "critique": 9344
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which shape has all congruent faces?",
+      "ms": {
+        "draft": 3766,
+        "critique": 7869
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total surface area of a cuboid?",
+      "ms": {
+        "draft": 3766,
+        "critique": 6048,
+        "solver": 12170,
+        "form": 3527
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the lateral surface area of a cuboid with length 10 cm, width 5 cm, and height 8 cm?",
+      "ms": {
+        "draft": 3766,
+        "critique": 6282,
+        "solver": 1382
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cylinder has a radius of 7 cm and a height of 10 cm. What is its total surface area if π = 22/7?",
+      "ms": {
+        "draft": 3766,
+        "critique": 7952
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A cylindrical pillar has a radius of 28 cm and a height of 4 m. What is the curved surface area of the pillar?",
+      "ms": {
+        "draft": 12599,
+        "critique": 6304,
+        "solver": 1624
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cuboidal box has external dimensions 80 cm × 30 cm × 40 cm. The base, side faces, and back face are to be covered with a paper. What is the area of the paper required?",
+      "ms": {
+        "draft": 12599,
+        "critique": 6628,
+        "solver": 1293
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A cylinder has a total surface area of 968 cm² and a radius of 7 cm. What is the height of the cylinder?",
+      "ms": {
+        "draft": 12599,
+        "critique": 6182,
+        "solver": 2002
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate the volume of a cuboid?",
+      "ms": {
+        "draft": 3426,
+        "critique": 6425
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the volume of a cuboid with a base area of 25 cm² and a height of 11 cm?",
+      "ms": {
+        "draft": 3426,
+        "critique": 5725
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to calculate the volume of a cube?",
+      "ms": {
+        "draft": 3426,
+        "critique": 6046,
+        "solver": 9031,
+        "form": 1775
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cuboidal box has dimensions 3 cm × 8 cm × 20 cm. What is its volume?",
+      "ms": {
+        "draft": 3426,
+        "critique": 5785,
+        "solver": 6846
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangular paper of width 14 cm is rolled along its width to form a cylinder. If the radius of the cylinder is 20 cm, what is the volume of the cylinder?",
+      "ms": {
+        "draft": 4542,
+        "critique": 5287,
+        "solver": 2315
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A rectangular piece of paper 11 cm × 4 cm is folded to make a cylinder of height 4 cm. What is the volume of the cylinder?",
+      "ms": {
+        "draft": 4542,
+        "critique": 6918,
+        "solver": 1641,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the total surface area of a cylinder?",
+      "ms": {
+        "draft": 3769,
+        "critique": 5371,
+        "solver": 2077,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the lateral surface area of a cylinder?",
+      "ms": {
+        "draft": 3769,
+        "critique": 8173,
+        "solver": 13040,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cylindrical tank with radius 7 m and height 3 m is made from a sheet of metal. How much sheet of metal is required?",
+      "ms": {
+        "draft": 3769,
+        "critique": 6881
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following solids has all congruent faces?",
+      "ms": {
+        "draft": 5645,
+        "critique": 5516,
+        "solver": 1107,
+        "form": 2279
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the total surface area of a cuboid?",
+      "ms": {
+        "draft": 5645,
+        "critique": 6123,
+        "solver": 1682,
+        "form": 2904
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the area of a trapezium?",
+      "ms": {
+        "draft": 3672,
+        "critique": 7925,
+        "solver": 1378,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cuboid has length 10 cm, breadth 5 cm, and height 8 cm. What is its total surface area?",
+      "ms": {
+        "draft": 5645,
+        "critique": 7835,
+        "solver": 13347,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two cubes, each with side b, are joined to form a cuboid. What is the surface area of the cuboid?",
+      "ms": {
+        "draft": 5645,
+        "critique": 7891,
+        "solver": 12153
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the area of a rhombus is 240 cm² and one of the diagonals is 16 cm, what is the length of the other diagonal?",
+      "ms": {
+        "draft": 3672,
+        "critique": 7361,
+        "solver": 10418
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A rhombus has diagonals of 7.5 cm and 12 cm. What is its area?",
+      "ms": {
+        "draft": 4807,
+        "critique": 6457,
+        "solver": 1408,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the total surface area of a cube with side length 5 cm?",
+      "ms": {
+        "draft": 3766,
+        "critique": 6506,
+        "solver": 15180,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cylinder has a radius of 7 cm and a height of 15 cm. What is the total surface area of the cylinder?",
+      "ms": {
+        "draft": 12599,
+        "critique": 5553,
+        "solver": 1077,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A cuboidal room has dimensions 12 m × 8 m × 4 m. What is the area of the four walls?",
+      "ms": {
+        "draft": 12599,
+        "critique": 6441,
+        "solver": 1691,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A cuboidal room has length 12 m, width 8 m, and height 4 m. What is the area of the four walls of the room?",
+      "ms": {
+        "draft": 3769,
+        "critique": 7951,
+        "solver": 12617,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total surface area of a cylinder with radius 7 cm and height 15 cm?",
+      "ms": {
+        "draft": 3769,
+        "critique": 7439,
+        "solver": 16880,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the area of a trapezium is 480 m², the distance between the parallel sides is 15 m, and one of the parallel sides is 20 m, what is the length of the other parallel side?",
+      "ms": {
+        "draft": 3672,
+        "critique": 6016,
+        "solver": 12433,
+        "form": 0,
+        "translation": 26708
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the volume of a cuboid with base area 25 cm² and height 11 cm?",
+      "ms": {
+        "draft": 4542,
+        "critique": 4561,
+        "solver": 1183,
+        "form": 0,
+        "translation": 39923
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the volume of a cube with side 4 cm?",
+      "ms": {
+        "draft": 4542,
+        "critique": 4985,
+        "solver": 1652,
+        "form": 0,
+        "translation": 31155
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the volume of a cuboid with dimensions 60 cm × 54 cm × 30 cm?",
+      "ms": {
+        "draft": 4542,
+        "critique": 5502,
+        "solver": 1291,
+        "form": 0,
+        "translation": 31046
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A cube is cut into 64 smaller cubes of equal size. How many of the smaller cubes have no face painted?",
+      "ms": {
+        "draft": 3766,
+        "critique": 5803,
+        "solver": 1880,
+        "form": 0,
+        "translation": 39436
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A cube has a surface area of 600 cm². What is the length of its side?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A trapezium has parallel sides of lengths 10 cm and 14 cm, and the perpendicular distance between them is 6 cm. What is its area?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the formula used to calculate the area of a trapezium?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given polygon, AD = 8 cm, AH = 6 cm, AG = 4 cm, AF = 3 cm, BF = 2 cm, CH = 3 cm, and EG = 2.5 cm. What is the area of the polygon?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A trapezium-shaped field has a perimeter of 120 m. If BC = 48 m, CD = 17 m, and AD = 40 m, and side AB is perpendicular to the parallel sides AD and BC, find the area of the field.",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(40 + 35)*8/2\" = 300, but the key says 480"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A trapezium has an area of 34 cm², one of the parallel sides is 10 cm, and the height is 4 cm. What is the length of the other parallel side?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which shape has all congruent faces?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total surface area of a cuboid?",
+      "reason": "options are in more than one unit ((lb + bh + hl), (l + b + h), (lb + bh), (l + b)); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the lateral surface area of a cuboid with length 10 cm, width 5 cm, and height 8 cm?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A cylinder has a radius of 7 cm and a height of 10 cm. What is its total surface area if π = 22/7?",
+      "reason": "the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A cylindrical pillar has a radius of 28 cm and a height of 4 m. What is the curved surface area of the pillar?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A cuboidal box has external dimensions 80 cm × 30 cm × 40 cm. The base, side faces, and back face are to be covered with a paper. What is the area of the paper required?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A cylinder has a total surface area of 968 cm² and a radius of 7 cm. What is the height of the cylinder?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the formula to calculate the volume of a cuboid?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the volume of a cuboid with a base area of 25 cm² and a height of 11 cm?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to calculate the volume of a cube?",
+      "reason": "options 0 and 3 are the same (\"l × b × h\"); options 1 and 2 are the same (\"l + l + l\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A cuboidal box has dimensions 3 cm × 8 cm × 20 cm. What is its volume?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the volume of a cylinder with radius 20 cm and height 14 cm?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the formula for the area of a rhombus?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A rectangular paper of width 14 cm is rolled along its width to form a cylinder. If the radius of the cylinder is 20 cm, what is the volume of the cylinder?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A rectangular piece of paper 11 cm × 4 cm is folded to make a cylinder of height 4 cm. What is the volume of the cylinder?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the total surface area of a cylinder?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the lateral surface area of a cylinder?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A cylindrical tank with radius 7 m and height 3 m is made from a sheet of metal. How much sheet of metal is required?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following solids has all congruent faces?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the formula for the total surface area of a cuboid?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the area of a trapezium?",
+      "reason": "options 0 and 2 are the same (\"(a + b) × h\"); options 1 and 3 say the same thing (\"(a + b) / h\" / \"(a + b) × h / 2\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A cuboid has length 10 cm, breadth 5 cm, and height 8 cm. What is its total surface area?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"2*(10*5 + 5*8 + 8*10)\" = 340, but the key says 360"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Two cubes, each with side b, are joined to form a cuboid. What is the surface area of the cuboid?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the area of a rhombus is 240 cm² and one of the diagonals is 16 cm, what is the length of the other diagonal?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A rhombus has diagonals of 7.5 cm and 12 cm. What is its area?",
+      "reason": "near-duplicate of served question cmskj0egh071ty206cf6c4tpd (cosine 0.901 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the total surface area of a cube with side length 5 cm?",
+      "reason": "near-duplicate of served question cmveyl09k02bkgod8mgjhypxw (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A cylinder has a radius of 7 cm and a height of 15 cm. What is the total surface area of the cylinder?",
+      "reason": "near-duplicate of served question cmveyl09l02bqgod8w5z7nqy7 (cosine 0.934 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A cuboidal room has dimensions 12 m × 8 m × 4 m. What is the area of the four walls?",
+      "reason": "near-duplicate of served question cmveyl09n02bwgod8vav2368w (cosine 0.970 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A cuboidal room has length 12 m, width 8 m, and height 4 m. What is the area of the four walls of the room?",
+      "reason": "near-duplicate of served question cmveyl09n02bwgod8vav2368w (cosine 0.983 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the total surface area of a cylinder with radius 7 cm and height 15 cm?",
+      "reason": "near-duplicate of served question cmveyl09l02bqgod8w5z7nqy7 (cosine 0.979 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

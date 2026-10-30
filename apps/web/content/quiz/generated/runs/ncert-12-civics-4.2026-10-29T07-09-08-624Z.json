@@ -1,0 +1,827 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T07:09:08.624Z",
+  "finishedAt": "2026-10-29T07:23:10.713Z",
+  "seconds": 842,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Politics in India Since Independence",
+    "bookCode": "leps2",
+    "document": "ncert/12/political-science/leps204.pdf",
+    "classLevel": 12,
+    "subject": "Political Science",
+    "chapter": "Chapter 4 — In this chapter…",
+    "edition": "Reprint 2026-27",
+    "chunks": 20,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, sample question paper, 2023-24]\nSECTION-D (12 MARKS)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSECTION – B\n(12 Marks)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSECTION – A\n(12 Marks)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSection – D\n(12 Marks)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 183238,
+      "in": 46,
+      "out": 41,
+      "rejects": 6,
+      "promptTokens": 38858,
+      "completionTokens": 10155
+    },
+    "critique": {
+      "calls": 55,
+      "ms": 377553,
+      "in": 41,
+      "out": 31,
+      "rejects": 10,
+      "promptTokens": 24542,
+      "completionTokens": 9578
+    },
+    "solver": {
+      "calls": 252,
+      "ms": 148757,
+      "in": 31,
+      "out": 21,
+      "rejects": 10,
+      "promptTokens": 49561,
+      "completionTokens": 2896
+    },
+    "form": {
+      "calls": 13,
+      "ms": 37281,
+      "in": 21,
+      "out": 8,
+      "rejects": 13,
+      "promptTokens": 3124,
+      "completionTokens": 946
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 493,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 378013,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19351,
+      "completionTokens": 10024
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the main focus of this chapter?",
+      "ms": {
+        "draft": 12734,
+        "critique": 6647,
+        "solver": 2649
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what was the main reason for the division of the world into two camps after World War II?",
+      "ms": {
+        "draft": 12734,
+        "critique": 6755,
+        "solver": 1481
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why did India's foreign policy focus on peace and development in its neighborhood?",
+      "ms": {
+        "draft": 12734,
+        "critique": 6670,
+        "solver": 1768
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a major objective of Nehru's foreign policy?",
+      "ms": {
+        "draft": 12627,
+        "critique": 7147
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'non-alignment' refer to in the context of India's foreign policy?",
+      "ms": {
+        "draft": 12627,
+        "critique": 6670
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why did India not join either the US-led or the Soviet-led military alliances during the Cold War?",
+      "ms": {
+        "draft": 12627,
+        "critique": 7457
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the significance of the Bandung Conference in India's foreign policy?",
+      "ms": {
+        "draft": 12627,
+        "critique": 7722
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which region is mentioned as a major issue that caused tension between India and China?",
+      "ms": {
+        "draft": 3681,
+        "critique": 8364,
+        "solver": 1362
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How did India's economic development strategy affect its foreign relations?",
+      "ms": {
+        "draft": 12627,
+        "critique": 7457,
+        "solver": 17893
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why did Nehru believe that India could maintain peace with China despite concerns from some of his colleagues?",
+      "ms": {
+        "draft": 12627,
+        "critique": 7711,
+        "solver": 17209
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What was the result of the 1962 Chinese invasion of India?",
+      "ms": {
+        "draft": 3681,
+        "critique": 8571,
+        "solver": 1506,
+        "form": 2417
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What was the significance of the Panchsheel agreement between India and China?",
+      "ms": {
+        "draft": 3681,
+        "critique": 7050,
+        "solver": 1656
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the impact of the 1962 Sino-Indian conflict on India's political landscape?",
+      "ms": {
+        "draft": 5264,
+        "critique": 9010
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happened to the Tibetan spiritual leader Dalai Lama in 1959?",
+      "ms": {
+        "draft": 3681,
+        "critique": 7458,
+        "solver": 11751,
+        "form": 5149
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the main reason for the split in the Communist Party of India after the 1962 Sino-Indian conflict?",
+      "ms": {
+        "draft": 5264,
+        "critique": 7657
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what was the significance of the Tashkent Agreement in 1966?",
+      "ms": {
+        "draft": 5264,
+        "critique": 9671,
+        "solver": 14510
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage suggest about the role of the Indian army in the 1962 Sino-Indian conflict?",
+      "ms": {
+        "draft": 5264,
+        "critique": 8146,
+        "solver": 16763,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the long-term impact of the 1962 Sino-Indian conflict on India's foreign policy?",
+      "ms": {
+        "draft": 5264,
+        "critique": 7597,
+        "solver": 15634,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which country did India sign a 20-year Treaty of Peace and Friendship with to counter the US-Pakistan-China axis?",
+      "ms": {
+        "draft": 5092,
+        "critique": 4663
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, how has India's foreign policy changed after 1990?",
+      "ms": {
+        "draft": 13066,
+        "critique": 5546,
+        "solver": 3017,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What can be inferred about India's foreign policy from the passage?",
+      "ms": {
+        "draft": 13066,
+        "critique": 7111,
+        "solver": 1972,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what was the main reason for India's opposition to the NPT and CTBT?",
+      "ms": {
+        "draft": 13066,
+        "critique": 5328,
+        "solver": 13262,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what did the Janata Party government announce in 1977?",
+      "ms": {
+        "draft": 13066,
+        "critique": 7790,
+        "solver": 1388,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the passage suggest about India's approach to international relations after the 1962 Sino-Indian conflict?",
+      "ms": {
+        "draft": 3977,
+        "critique": 7224,
+        "solver": 2155
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what would be a key consideration in evaluating the success of India's foreign policy?",
+      "ms": {
+        "draft": 13066,
+        "critique": 7639,
+        "solver": 12316,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the impact of the 1962 Sino-Indian conflict on India's political landscape?",
+      "ms": {
+        "draft": 3977,
+        "critique": 7116,
+        "solver": 1228,
+        "form": 5712
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which event led to the Dalai Lama seeking asylum in India?",
+      "ms": {
+        "draft": 3790,
+        "critique": 7994
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student reads the passage and concludes that the Sino-Indian conflict had no long-term effects on India's foreign policy, what mistake is the student making?",
+      "ms": {
+        "draft": 3977,
+        "critique": 6376,
+        "solver": 19214
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains the reason for the split in the Communist Party of India (CPI) according to the passage?",
+      "ms": {
+        "draft": 3977,
+        "critique": 6965,
+        "solver": 16243,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a major objective of Nehru’s foreign policy?",
+      "ms": {
+        "draft": 3649,
+        "critique": 7802,
+        "solver": 12736,
+        "form": 1917
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did India choose to remain non-aligned during the Cold War?",
+      "ms": {
+        "draft": 3649,
+        "critique": 7732,
+        "solver": 10554,
+        "form": 3567
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What was the significance of the Bandung Conference according to the passage?",
+      "ms": {
+        "draft": 3649,
+        "critique": 6646
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main aim of India's foreign policy after independence?",
+      "ms": {
+        "draft": 31685,
+        "critique": 5249
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What policy did India's leaders adopt to respond to external challenges?",
+      "ms": {
+        "draft": 12734,
+        "critique": 6416,
+        "solver": 1300,
+        "form": 4881,
+        "translation": 52526
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which principle of the Indian Constitution promotes international peace and security?",
+      "ms": {
+        "draft": 31685,
+        "critique": 4598,
+        "solver": 6624,
+        "form": 945,
+        "translation": 37288
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did India concede in the 1954 Panchsheel agreement with China?",
+      "ms": {
+        "draft": 3681,
+        "critique": 6912,
+        "solver": 1852,
+        "form": 2649,
+        "translation": 38921
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country is part of the Non-Aligned Movement, what does it imply about its foreign policy?",
+      "ms": {
+        "draft": 12734,
+        "critique": 6647,
+        "solver": 1876,
+        "form": 2831,
+        "translation": 48149
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does India's nuclear doctrine of 'credible minimum nuclear deterrence' imply?",
+      "ms": {
+        "draft": 13066,
+        "critique": 5085,
+        "solver": 1314,
+        "form": 5079,
+        "translation": 59565
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the reason for the border disputes between India and China?",
+      "ms": {
+        "draft": 3681,
+        "critique": 6148,
+        "solver": 1510,
+        "form": 3463,
+        "translation": 35650
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What was the consequence of the 1962 Chinese invasion?",
+      "ms": {
+        "draft": 3790,
+        "critique": 7803,
+        "solver": 12772,
+        "form": 2566,
+        "translation": 41839
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If India had joined one of the two global camps after World War II, what would have been a likely consequence?",
+      "ms": {
+        "draft": 12734,
+        "critique": 7021,
+        "solver": 1543,
+        "form": 3251,
+        "translation": 58579
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What was the outcome of the 1965 Indo-Pak conflict according to the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following best describes the main focus of this chapter?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, what was the main reason for the division of the world into two camps after World War II?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why did India's foreign policy focus on peace and development in its neighborhood?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following was a major objective of Nehru's foreign policy?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the term 'non-alignment' refer to in the context of India's foreign policy?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Why did India not join either the US-led or the Soviet-led military alliances during the Cold War?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What was the significance of the Bandung Conference in India's foreign policy?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which region is mentioned as a major issue that caused tension between India and China?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "How did India's economic development strategy affect its foreign relations?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why did Nehru believe that India could maintain peace with China despite concerns from some of his colleagues?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What was the result of the 1962 Chinese invasion of India?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"invents a resolution not mentioned in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What was the significance of the Panchsheel agreement between India and China?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the impact of the 1962 Sino-Indian conflict on India's political landscape?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happened to the Tibetan spiritual leader Dalai Lama in 1959?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"invents an event not mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What was the main reason for the split in the Communist Party of India after the 1962 Sino-Indian conflict?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what was the significance of the Tashkent Agreement in 1966?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage suggest about the role of the Indian army in the 1962 Sino-Indian conflict?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 1's reason is not a one-line misconception (\"Contradicts the passage's description of the army's struggle…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the long-term impact of the 1962 Sino-Indian conflict on India's foreign policy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which country did India sign a 20-year Treaty of Peace and Friendship with to counter the US-Pakistan-China axis?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"What was the main reason for India signing the 20-year Treaty"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What does the passage say about the 1965 Indo-Pak conflict?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What does the passage suggest about the 1971 Bangladesh conflict?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main reason for the tension between India and China according to the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What was the reason for the Chinese government's protest against the Dalai Lama's asylum in India?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, how has India's foreign policy changed after 1990?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Incorrectly interprets the passage as suggesting a greater f…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What can be inferred about India's foreign policy from the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage as suggesting India's foreign poli…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what was the main reason for India's opposition to the NPT and CTBT?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (95 vs 59 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what did the Janata Party government announce in 1977?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What does the passage suggest about India's approach to international relations after the 1962 Sino-Indian conflict?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what would be a key consideration in evaluating the success of India's foreign policy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What was the impact of the 1962 Sino-Indian conflict on India's political landscape?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's mention of the CPI-M formation a…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which event led to the Dalai Lama seeking asylum in India?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a student reads the passage and concludes that the Sino-Indian conflict had no long-term effects on India's foreign policy, what mistake is the student making?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best explains the reason for the split in the Communist Party of India (CPI) according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"A student might confuse the cause of the CPI split with gene…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following was a major objective of Nehru’s foreign policy?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"This option contradicts the idea of non-alignment and is not…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why did India choose to remain non-aligned during the Cold War?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This contradicts the idea of non-alignment and is not mentio…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What was the significance of the Bandung Conference according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the main aim of India's foreign policy after independence?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

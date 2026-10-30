@@ -1,0 +1,652 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T16:05:31.932Z",
+  "finishedAt": "2026-10-28T16:18:54.550Z",
+  "seconds": 803,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo116.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 16 — Roducts and Their",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[INBO 2011 — solutions or answer key]\n56. (2 points)\na. b. c. d.\n√\na. b. c. d. e.\n√\n58. (0.5 x 6 = 3 points)\nGenotype Constitutively Synthesis Synthesis\nformed\nlacI lacO lacZ + + +\nlacI lacO lacZ - + + √\nlacI lacO lacZ + C + √\n- + + +\nlacI lacO lacZ / lacI\nlacI lacO lacZ S + +\nlacI lacO lacZ / lacI S + + +\nETHOLOGY (2)\n59. (2 points)\na. b. c. d.\n√\nECOLOGY (7)\n60. (2 points)\na. b. c. d.\n√\nrepressed Induced\n√\n√\n√\n√\nINBO - 2011\n61. (1 x 2 = 2 points)\na. b. c. d. e.\n√ √\n62. (1 x 3 = 3 points)\nCommunity Dominance Productivity\nindex (high / low)\n(high / low)\nMonoculture high high\ncrop\nRain forest low low\nClimax low low\ncommunity\nBIOSYSTEMATICS (10)\n63. (0.5 x 4 = 2 points)\nI: ___________X\nII: __________Y\nIII: _________Z\nIV: _________Z",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n11. A. Lysozyme, ribonuclease, protease, chilled ethanol 1",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n4. C. Frederick Griffith"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 212601,
+      "in": 34,
+      "out": 33,
+      "rejects": 2,
+      "promptTokens": 29846,
+      "completionTokens": 7952
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 342098,
+      "in": 33,
+      "out": 22,
+      "rejects": 11,
+      "promptTokens": 16491,
+      "completionTokens": 6402
+    },
+    "solver": {
+      "calls": 140,
+      "ms": 107504,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 24812,
+      "completionTokens": 1450
+    },
+    "form": {
+      "calls": 14,
+      "ms": 68022,
+      "in": 22,
+      "out": 17,
+      "rejects": 5,
+      "promptTokens": 5363,
+      "completionTokens": 1429
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 69,
+      "ms": 16716,
+      "in": 17,
+      "out": 11,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 654218,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 26834,
+      "completionTokens": 13471
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 3,
+    "4": 0,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which part of the nephron is responsible for the process of ultrafiltration?",
+      "ms": {
+        "draft": 5650,
+        "critique": 8026,
+        "solver": 3465,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a part of the human excretory system?",
+      "ms": {
+        "draft": 5650,
+        "critique": 9817
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of antidiuretic hormone (ADH)?",
+      "ms": {
+        "draft": 6363,
+        "critique": 9655
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person experiences a decrease in body fluid volume, which of the following will most likely occur?",
+      "ms": {
+        "draft": 6363,
+        "critique": 7829
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following mechanisms helps regulate blood pressure and glomerular filtration rate (GFR) in the kidneys?",
+      "ms": {
+        "draft": 6363,
+        "critique": 8880
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a patient with uremia, what is the primary reason for using hemodialysis?",
+      "ms": {
+        "draft": 6363,
+        "critique": 8775
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of the micturition reflex in the urinary system?",
+      "ms": {
+        "draft": 6363,
+        "critique": 9482
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is most likely to occur if the ascending limb of Henle’s loop becomes impermeable to electrolytes?",
+      "ms": {
+        "draft": 7724,
+        "critique": 11619,
+        "solver": 2327,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A person is found to have a very high concentration of urea in their urine. Based on the passage, what could be the most likely reason for this?",
+      "ms": {
+        "draft": 7724,
+        "critique": 8856,
+        "solver": 2679,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a diagram of a nephron and is asked to identify the structure responsible for maintaining the osmotic gradient in the kidney. Which structure should they select?",
+      "ms": {
+        "draft": 7724,
+        "critique": 9907,
+        "solver": 1748,
+        "form": 3964
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following mechanisms is responsible for the regulation of blood pressure through the kidneys?",
+      "ms": {
+        "draft": 6260,
+        "critique": 10544
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A patient shows a high level of urea in their blood. Which of the following conditions is this most likely indicative of?",
+      "ms": {
+        "draft": 6260,
+        "critique": 9417
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the nephrons in the process of urine formation?",
+      "ms": {
+        "draft": 6260,
+        "critique": 13220
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the nephron is lined by simple cuboidal brush border epithelium?",
+      "ms": {
+        "draft": 8557,
+        "critique": 11058
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a function of the proximal convoluted tubule?",
+      "ms": {
+        "draft": 8557,
+        "critique": 9967
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains the mechanism responsible for the concentration of urine in the kidneys?",
+      "ms": {
+        "draft": 8557,
+        "critique": 9091,
+        "solver": 1424,
+        "form": 5132
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the functional unit of the kidney?",
+      "ms": {
+        "draft": 7724,
+        "critique": 9405,
+        "solver": 2198,
+        "form": 7017
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the functional unit of the kidney?",
+      "ms": {
+        "draft": 4884,
+        "critique": 6411,
+        "solver": 1778,
+        "form": 6543
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains the role of the counter-current mechanism in the kidney?",
+      "ms": {
+        "draft": 4884,
+        "critique": 11111,
+        "solver": 2934,
+        "form": 4625
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do terrestrial animals mostly excrete urea or uric acid instead of ammonia?",
+      "ms": {
+        "draft": 4884,
+        "critique": 8980,
+        "solver": 2802,
+        "form": 5048
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person loses a large amount of body fluid, what is the most likely effect on the release of ADH?",
+      "ms": {
+        "draft": 6260,
+        "critique": 9385,
+        "solver": 2024,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the atrial natriuretic factor (ANF) is not released, what would be the most likely consequence?",
+      "ms": {
+        "draft": 6260,
+        "critique": 8480,
+        "solver": 22567,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process of excreting ammonia called?",
+      "ms": {
+        "draft": 4684,
+        "critique": 8062,
+        "solver": 1242,
+        "form": 1995,
+        "translation": 43358
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the most toxic form of nitrogenous waste excreted by animals?",
+      "ms": {
+        "draft": 5650,
+        "critique": 7575,
+        "solver": 2878,
+        "form": 4987,
+        "translation": 51319
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the main site of reabsorption in the nephron?",
+      "ms": {
+        "draft": 4884,
+        "critique": 7576,
+        "solver": 2898,
+        "form": 4576,
+        "translation": 64902
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of antidiuretic hormone (ADH)?",
+      "ms": {
+        "draft": 6260,
+        "critique": 11688,
+        "solver": 17556,
+        "form": 0,
+        "translation": 50537
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following animals excrete urea as their main nitrogenous waste?",
+      "ms": {
+        "draft": 5650,
+        "critique": 6844,
+        "solver": 1934,
+        "form": 7649,
+        "translation": 59499
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is suffering from a condition that reduces the number of nephrons in the kidney, what would be the most direct effect?",
+      "ms": {
+        "draft": 7724,
+        "critique": 11247,
+        "solver": 22241,
+        "form": 4556,
+        "translation": 67286
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the ascending limb of the Henle's loop becomes impermeable to water, which of the following will happen?",
+      "ms": {
+        "draft": 4884,
+        "critique": 7021,
+        "solver": 2659,
+        "form": 0,
+        "translation": 51803
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following animals would you expect the highest concentration of urea in the kidney matrix?",
+      "ms": {
+        "draft": 5650,
+        "critique": 10678,
+        "solver": 2171,
+        "form": 7198,
+        "translation": 75079
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person is found to have a low GFR. Which of the following could be the most likely reason?",
+      "ms": {
+        "draft": 4884,
+        "critique": 8993,
+        "solver": 1315,
+        "form": 0,
+        "translation": 42367
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If an animal excretes nitrogenous waste in the form of uric acid, what can be inferred about its water conservation strategy?",
+      "ms": {
+        "draft": 5650,
+        "critique": 9697,
+        "solver": 2468,
+        "form": 3932,
+        "translation": 73417
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a key factor in the regulation of glomerular filtration rate (GFR) by the juxtaglomerular apparatus (JGA)?",
+      "ms": {
+        "draft": 6363,
+        "critique": 9829,
+        "solver": 26504,
+        "form": 0,
+        "translation": 69543
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which part of the nephron is responsible for reabsorbing near"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which part of the nephron is responsible for the process of ultrafiltration?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not a part of the human excretory system?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a function of antidiuretic hormone (ADH)?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person experiences a decrease in body fluid volume, which of the following will most likely occur?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following mechanisms helps regulate blood pressure and glomerular filtration rate (GFR) in the kidneys?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a patient with uremia, what is the primary reason for using hemodialysis?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the role of the micturition reflex in the urinary system?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is most likely to occur if the ascending limb of Henle’s loop becomes impermeable to electrolytes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A person is found to have a very high concentration of urea in their urine. Based on the passage, what could be the most likely reason for this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a diagram of a nephron and is asked to identify the structure responsible for maintaining the osmotic gradient in the kidney. Which structure should they select?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'nephron'"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is the most toxic form of nitrogenous waste?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following mechanisms is responsible for the regulation of blood pressure through the kidneys?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A patient shows a high level of urea in their blood. Which of the following conditions is this most likely indicative of?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the primary function of the nephrons in the process of urine formation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the nephron is lined by simple cuboidal brush border epithelium?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is not a function of the proximal convoluted tubule?",
+      "reason": "option 0 is not wrong; option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best explains the mechanism responsible for the concentration of urine in the kidneys?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"The counter current mechanism is the correct answer, but stu…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is the functional unit of the kidney?",
+      "reason": "near-duplicate of served question cmvhmq44h09l1gpfhurtlru2k (cosine 0.962 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is the functional unit of the kidney?",
+      "reason": "near-duplicate of served question cmvhmq44h09l1gpfhurtlru2k (cosine 0.962 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following best explains the role of the counter-current mechanism in the kidney?",
+      "reason": "near-duplicate of served question cmvoq0jlz07a3gp21rbayw4tq (cosine 0.900 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why do terrestrial animals mostly excrete urea or uric acid instead of ammonia?",
+      "reason": "near-duplicate of served question cmvkzhrfp0li3gpfhlm0pja5f (cosine 0.951 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a person loses a large amount of body fluid, what is the most likely effect on the release of ADH?",
+      "reason": "near-duplicate of served question cmvkzhrfg0lh9gpfhz4vc58af (cosine 0.942 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If the atrial natriuretic factor (ANF) is not released, what would be the most likely consequence?",
+      "reason": "near-duplicate of served question cmvkzhrfo0lhxgpfhoj3u10kf (cosine 0.900 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

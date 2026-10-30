@@ -1,0 +1,885 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T23:11:25.660Z",
+  "finishedAt": "2026-10-28T23:19:20.269Z",
+  "seconds": 475,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Indian Economic Development",
+    "bookCode": "keec1",
+    "document": "ncert/11/economics/keec107.pdf",
+    "classLevel": 11,
+    "subject": "Economics",
+    "chapter": "Chapter 7 — Environment and Sustainable Development",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Economics, sample question paper, 2022-23]\n28. Interpret the given picture on account of current environmental challenges. 3\nSource: https://www.theenvironmentalblog.org/current-environmental-issues",
+      "[CBSE Class XII Economics, sample question paper, 2023-24]\n34. Read the following text carefully:\nSustainable development is the development that meets the needs of the present, without\ncompromising the ability of future generations to meet their own needs. India is critical in\ndetermining the success in a pursuit to achieve sustainable development.\nThe Union Budget 2023 presented by Finance Minister Nirmala Sitharaman builds on India’s\ncommitment to lead the global action against climate change, preserve biodiversity and\nsupport sustainable development.\nThe government has accelerated the pace of Green Growth as India is facing the grave reality\nof depleting natural resources, limited supply of water, minerals, and fossil fuels. In a bid to\ncounter ",
+      "[CBSE Class XII Economics, marking scheme, 2025-26]\n24. A. reversal of supply-demand relationship of environmental resources 1",
+      "[CBSE Class XII Economics, marking scheme, 2025-26]\n29. Sustainable Development, seeks to meet the basic needs of the present\n(A) generation without compromising the needs of the future generations.\nAs per Edward Barbier, it must be used to increase the standard of living of the\npoor through measurable increase in income, educational and health services, 3\nsanitation, etc. The aim of Sustainable Development should be to reduce\nabsolute poverty by creating livelihoods while minimizing resource depletion,\nenvironmental harm, cultural disruption, and social instability.\nOR\n29 People, who own and operate an enterprise to earn their livelihood are known 1 + ½\n(B) as self-employed workers. For example, a cement shop owner.\nWhereas;\nA hired worker i"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Economics in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 159295,
+      "in": 45,
+      "out": 44,
+      "rejects": 2,
+      "promptTokens": 39532,
+      "completionTokens": 9626
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 276799,
+      "in": 44,
+      "out": 32,
+      "rejects": 12,
+      "promptTokens": 20261,
+      "completionTokens": 7939
+    },
+    "solver": {
+      "calls": 182,
+      "ms": 72434,
+      "in": 32,
+      "out": 29,
+      "rejects": 3,
+      "promptTokens": 26925,
+      "completionTokens": 1653
+    },
+    "form": {
+      "calls": 4,
+      "ms": 10950,
+      "in": 29,
+      "out": 3,
+      "rejects": 26,
+      "promptTokens": 1002,
+      "completionTokens": 315
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 16,
+      "ms": 2932,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 120752,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7380,
+      "completionTokens": 4067
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Why has water become an economic commodity, according to the passage?",
+      "ms": {
+        "draft": 2658,
+        "critique": 4429,
+        "solver": 1405,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main cause of the current environmental crisis?",
+      "ms": {
+        "draft": 2658,
+        "critique": 5213,
+        "solver": 1294,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is NOT a function of the environment?",
+      "ms": {
+        "draft": 2658,
+        "critique": 5403,
+        "solver": 1706,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the passage describes the human species as the 'most unstable and potentially disruptive element' in the environment?",
+      "ms": {
+        "draft": 2658,
+        "critique": 6470,
+        "solver": 835,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 2658,
+        "critique": 5896,
+        "solver": 1646
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a result of global warming according to the passage?",
+      "ms": {
+        "draft": 2982,
+        "critique": 6693,
+        "solver": 1212,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the passage suggest about the relationship between resource demand and regeneration?",
+      "ms": {
+        "draft": 2982,
+        "critique": 6147,
+        "solver": 1955,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a consequence of deforestation?",
+      "ms": {
+        "draft": 2982,
+        "critique": 6182,
+        "solver": 1340,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage imply about the importance of sustainable development?",
+      "ms": {
+        "draft": 2982,
+        "critique": 4743,
+        "solver": 1044,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is the main cause of the reversal of the supply-demand relationship for environmental resources?",
+      "ms": {
+        "draft": 2982,
+        "critique": 6181,
+        "solver": 1615,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a cause of ozone depletion according to the passage?",
+      "ms": {
+        "draft": 2982,
+        "critique": 5814,
+        "solver": 1274,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between industrial development and environmental protection?",
+      "ms": {
+        "draft": 2624,
+        "critique": 5840,
+        "solver": 1042,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is the per capita forest land in India?",
+      "ms": {
+        "draft": 2624,
+        "critique": 7045,
+        "solver": 1919,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following factors is NOT mentioned as a cause of land degradation?",
+      "ms": {
+        "draft": 2624,
+        "critique": 6940,
+        "solver": 12916
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following best defines sustainable development?",
+      "ms": {
+        "draft": 4254,
+        "critique": 6374,
+        "solver": 1128,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage mentions the UN Sustainable Development Goals (SDGs) aimed at being achieved by 2030. Which of the following best describes the purpose of the SDGs?",
+      "ms": {
+        "draft": 4254,
+        "critique": 5602,
+        "solver": 1897,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the role of the Central Pollution Control Board (CPCB) in India?",
+      "ms": {
+        "draft": 4254,
+        "critique": 5819,
+        "solver": 1297,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of a gobar gas plant as described in the passage?",
+      "ms": {
+        "draft": 3784,
+        "critique": 5471
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the passage, which of the following is a key feature of sustainable development?",
+      "ms": {
+        "draft": 4254,
+        "critique": 5810,
+        "solver": 1361,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a water body mentioned in the chapter?",
+      "ms": {
+        "draft": 3245,
+        "critique": 4261
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the chapter, what is the main purpose of sustainable development?",
+      "ms": {
+        "draft": 11583,
+        "critique": 5966
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a village plans to set up a paper factory, which of the following is most likely to be an environmental concern?",
+      "ms": {
+        "draft": 11583,
+        "critique": 6960
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a cause of environmental degradation mentioned in the chapter?",
+      "ms": {
+        "draft": 11583,
+        "critique": 7158
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the chapter, which of the following best explains why the government is focusing on green growth?",
+      "ms": {
+        "draft": 11583,
+        "critique": 7355
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A village has to choose between building a paper factory and protecting its river. Which of the following should be the priority according to the chapter?",
+      "ms": {
+        "draft": 11583,
+        "critique": 7103
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a function of the environment according to the passage?",
+      "ms": {
+        "draft": 3624,
+        "critique": 7467,
+        "solver": 1433,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes sustainable development according to the passage?",
+      "ms": {
+        "draft": 3624,
+        "critique": 7354,
+        "solver": 1450,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The chapter discusses the concept of 'reversal of supply-demand relationship of environmental resources.' What does this mean in the context of environmental economics?",
+      "ms": {
+        "draft": 11583,
+        "critique": 6740,
+        "solver": 13716
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a major factor contributing to environmental degradation in India?",
+      "ms": {
+        "draft": 3624,
+        "critique": 5049,
+        "solver": 1153,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a renewable resource according to the passage?",
+      "ms": {
+        "draft": 3624,
+        "critique": 5846,
+        "solver": 1937,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is the main reason for the environmental crisis in the world today?",
+      "ms": {
+        "draft": 3624,
+        "critique": 5877,
+        "solver": 1766,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the purpose of gobar gas plants as mentioned in the passage?",
+      "ms": {
+        "draft": 4714,
+        "critique": 5743
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of intergenerational equity in sustainable development?",
+      "ms": {
+        "draft": 3624,
+        "critique": 6157,
+        "solver": 746,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is the main goal of sustainable development?",
+      "ms": {
+        "draft": 4714,
+        "critique": 5566
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a village decides to use mini-hydel plants, what is the most likely environmental benefit?",
+      "ms": {
+        "draft": 4714,
+        "critique": 7401
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage suggest that biocomposting is important for agriculture?",
+      "ms": {
+        "draft": 4714,
+        "critique": 6689
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a conventional source of energy mentioned in the passage?",
+      "ms": {
+        "draft": 4714,
+        "critique": 6894
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the use of traditional knowledge systems in India?",
+      "ms": {
+        "draft": 4714,
+        "critique": 6529,
+        "solver": 9817,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the key idea behind sustainable development?",
+      "ms": {
+        "draft": 4246,
+        "critique": 5908,
+        "solver": 1412,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the Central Pollution Control Board (CPCB)?",
+      "ms": {
+        "draft": 4246,
+        "critique": 5261,
+        "solver": 1640,
+        "form": 2823
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the concept of 'sustainable development' as described in the passage?",
+      "ms": {
+        "draft": 4246,
+        "critique": 5095,
+        "solver": 902,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which movement aimed at protecting forests in the Himalayas?",
+      "ms": {
+        "draft": 2624,
+        "critique": 6441,
+        "solver": 939,
+        "form": 4243,
+        "translation": 38476
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the main reason for the Appiko Movement?",
+      "ms": {
+        "draft": 2624,
+        "critique": 5850,
+        "solver": 1545,
+        "form": 2406,
+        "translation": 37572
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a country's development leads to the depletion of its natural resources and the pollution of its water bodies, what is the most likely impact on its people?",
+      "ms": {
+        "draft": 2658,
+        "critique": 7282,
+        "solver": 2069,
+        "form": 2068,
+        "translation": 39981
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "The passage highlights the importance of non-conventional sources of energy. Which of the following best explains why this is important?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 5, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following is an example of a renewable resource?"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why has water become an economic commodity, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main cause of the current environmental crisis?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is NOT a function of the environment?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misreads the passage's mention of life sustenance as a funct…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why the passage describes the human species as the 'most unstable and potentially disruptive element' in the environment?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a result of global warming according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's information about sea levels…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the passage suggest about the relationship between resource demand and regeneration?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a consequence of deforestation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage imply about the importance of sustainable development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what is the main cause of the reversal of the supply-demand relationship for environmental resources?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a cause of ozone depletion according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between industrial development and environmental protection?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what is the per capita forest land in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options are written to different precisions (0 and 1 and 2 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following factors is NOT mentioned as a cause of land degradation?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following best defines sustainable development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Overlooks the economic dimension of the concept as described…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage mentions the UN Sustainable Development Goals (SDGs) aimed at being achieved by 2030. Which of the following best describes the purpose of the SDGs?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the role of the Central Pollution Control Board (CPCB) in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Focuses on economic data, which is not the primary role of t…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main purpose of a gobar gas plant as described in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Based on the passage, which of the following is a key feature of sustainable development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Contradicts the passage, which supports a balanced approach …\"); distractor 3's reason is not a one-line misconception (\"Incorrectly suggests that non-renewable resources should be …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a water body mentioned in the chapter?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the chapter, what is the main purpose of sustainable development?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a village plans to set up a paper factory, which of the following is most likely to be an environmental concern?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a cause of environmental degradation mentioned in the chapter?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the chapter, which of the following best explains why the government is focusing on green growth?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A village has to choose between building a paper factory and protecting its river. Which of the following should be the priority according to the chapter?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a function of the environment according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes sustainable development according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The chapter discusses the concept of 'reversal of supply-demand relationship of environmental resources.' What does this mean in the context of environmental economics?",
+      "reason": "after redraft: the solver picked option 0 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a major factor contributing to environmental degradation in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a renewable resource according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what is the main reason for the environmental crisis in the world today?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the purpose of gobar gas plants as mentioned in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of intergenerational equity in sustainable development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "According to the passage, what is the main goal of sustainable development?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a village decides to use mini-hydel plants, what is the most likely environmental benefit?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why does the passage suggest that biocomposting is important for agriculture?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a conventional source of energy mentioned in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the use of traditional knowledge systems in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Contradicts the passage, which emphasizes traditional system…\"); distractor 3's reason is not a one-line misconception (\"Not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the key idea behind sustainable development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"ignores the present generation's needs as mentioned in the p…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of the Central Pollution Control Board (CPCB)?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"misunderstands the focus of the passage…\"); distractor 3's reason is not a one-line misconception (\"does not read the passage carefully to identify the main fun…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains the concept of 'sustainable development' as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Economics in the prompt"
+  ]
+}

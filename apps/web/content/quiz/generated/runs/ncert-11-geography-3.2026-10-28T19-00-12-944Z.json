@@ -1,0 +1,493 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T19:00:12.944Z",
+  "finishedAt": "2026-10-28T19:07:34.161Z",
+  "seconds": 441,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Pratical Work in Geography",
+    "bookCode": "kegy3",
+    "document": "ncert/11/geography/kegy303.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 3 — Latitude, Longitude and Time",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n1. c. London with Paris",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)",
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\nSection E\n29 A- Northern part of Eurasia 1X5\nB- Vancouver\nC- Kolkata\nD- Jeddah\nE- Darwin\nF- Panama Canal\nG- St. Lawrence waterway\nFor Visually Impaired Candidates only\n29 A- Arabian peninsula /Mongolia/Central China\n29 B- Vancouver\n29 C- Kolkata\n29 D- Johannesburg\n29 E- Darwin\n29 F- Suez Canal\n29 G- St. Lawrence waterway\n30 Locate and label any five of the following geographical features on the 1x5\nPolitical Outline map of India with appropriate symbols:\nA. Arunachal Pradesh\nB. Paradwip\nC. Neyveli\nD. Bailadila iron-ore mines, Chattisgarh\nE. Jamnagar\nF. Uttar Pradesh\nG. Thiruvananthapuram\nFor visually impaired students\nAttempt any five.\nA. Arunachal Pradesh\nB. Paradwip\nC. Neyveli\nD. Chhatisga",
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\nGEOGRAPHY CODE - 029\nMARKING SCHEME\nCLASS: XII (2026- 27)\nTime allowed: 3 Hours Maximum marks: 70\nGeneral Instructions:"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 162045,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 18427,
+      "completionTokens": 8744
+    },
+    "critique": {
+      "calls": 28,
+      "ms": 212325,
+      "in": 23,
+      "out": 17,
+      "rejects": 6,
+      "promptTokens": 14051,
+      "completionTokens": 5247
+    },
+    "solver": {
+      "calls": 118,
+      "ms": 60934,
+      "in": 17,
+      "out": 15,
+      "rejects": 2,
+      "promptTokens": 22286,
+      "completionTokens": 1211
+    },
+    "form": {
+      "calls": 9,
+      "ms": 62931,
+      "in": 15,
+      "out": 6,
+      "rejects": 9,
+      "promptTokens": 10764,
+      "completionTokens": 1439
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 3786,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 27,
+      "ms": 283342,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14884,
+      "completionTokens": 8005
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 3,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If the equator is 0°, what is the latitude of the North Pole?",
+      "ms": {
+        "draft": 7554,
+        "critique": 6115,
+        "solver": 1481,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the largest circle on the Earth?",
+      "ms": {
+        "draft": 7554,
+        "critique": 7036,
+        "solver": 2092,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are meridians of longitude not all of the same length?",
+      "ms": {
+        "draft": 7554,
+        "critique": 8743,
+        "solver": 1791
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a place is located at 15°E, which direction is it from the Prime Meridian?",
+      "ms": {
+        "draft": 7554,
+        "critique": 7036,
+        "solver": 2423,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the time at the Prime Meridian is 8:00 a.m., what will be the time at a place located at 120°W longitude?",
+      "ms": {
+        "draft": 5669,
+        "critique": 11311
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is correct about the International Date Line?",
+      "ms": {
+        "draft": 5669,
+        "critique": 8288,
+        "solver": 1729,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Indian Standard Time 5.5 hours ahead of the Prime Meridian?",
+      "ms": {
+        "draft": 5669,
+        "critique": 7260,
+        "solver": 1795,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 12:00 noon, what will be the local time at a place located at 75°E longitude?",
+      "ms": {
+        "draft": 5669,
+        "critique": 10019,
+        "solver": 18468,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 9:00 a.m., what will be the time at a place located at 30°W longitude?",
+      "ms": {
+        "draft": 5669,
+        "critique": 8572
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the primary reason for the existence of different time zones around the world?",
+      "ms": {
+        "draft": 9023,
+        "critique": 7316
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 12:00 noon, what will be the local time at a place located at 60° east longitude?",
+      "ms": {
+        "draft": 9023,
+        "critique": 8235
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the time at the Prime Meridian is 10:00 a.m., and a plane takes off from London at 10:00 a.m. and lands in New York after a 5-hour flight, what will be the local time in New York when the plane lands?",
+      "ms": {
+        "draft": 9023,
+        "critique": 14809
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following correctly describes the relationship between longitude and time?",
+      "ms": {
+        "draft": 9023,
+        "critique": 8669,
+        "solver": 12854,
+        "form": 4303
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the significance of the 82°30’E longitude for India?",
+      "ms": {
+        "draft": 9023,
+        "critique": 7059
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that the time at the International Date Line is exactly 12 hours different from the Prime Meridian. Why does this happen?",
+      "ms": {
+        "draft": 9023,
+        "critique": 8888,
+        "solver": 12912,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do the meridians of longitude converge at the poles?",
+      "ms": {
+        "draft": 17036,
+        "critique": 5525,
+        "solver": 9421
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the time at 0° longitude is 12:00 noon, what will be the time at 45°E longitude?",
+      "ms": {
+        "draft": 17036,
+        "critique": 5825,
+        "solver": 11799,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the line that divides the Earth into two equal halves and is the largest circle?",
+      "ms": {
+        "draft": 17036,
+        "critique": 7281,
+        "solver": 1803,
+        "form": 4009,
+        "translation": 50360
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the angular distance measured from the center of the Earth called?",
+      "ms": {
+        "draft": 7554,
+        "critique": 6654,
+        "solver": 1708,
+        "form": 0,
+        "translation": 53352
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the angular distance of a place north or south of the equator?",
+      "ms": {
+        "draft": 17036,
+        "critique": 7084,
+        "solver": 972,
+        "form": 4254,
+        "translation": 33174
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a place is located at 30°N, which direction is it from the equator?",
+      "ms": {
+        "draft": 17036,
+        "critique": 6568,
+        "solver": 1804,
+        "form": 2693,
+        "translation": 37586
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about the meridians of longitude?",
+      "ms": {
+        "draft": 7554,
+        "critique": 7803,
+        "solver": 2134,
+        "form": 0,
+        "translation": 40559
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the correct reason for the use of standard time in a country?",
+      "ms": {
+        "draft": 5669,
+        "critique": 4318,
+        "solver": 722,
+        "form": 0,
+        "translation": 64338
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the equator is 0°, what is the latitude of the North Pole?",
+      "reason": "options are in more than one unit (°n, °s, °e, °w); options 0 and 1 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the largest circle on the Earth?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label Equator"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why are meridians of longitude not all of the same length?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a place is located at 15°E, which direction is it from the Prime Meridian?",
+      "reason": "figure: figure spec refused: spec.segments.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the time at the Prime Meridian is 8:00 a.m., what will be the time at a place located at 120°W longitude?",
+      "reason": "the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements is correct about the International Date Line?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label orbit"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the Indian Standard Time 5.5 hours ahead of the Prime Meridian?",
+      "reason": "options 0 and 1 say the same thing (\"Because the Standard Meridian is at 82°30'E\" / \"Because the Standard Meridian is at 82°E\"); ARITHMETIC MISMATCH — checkExpr \"82.5*4/60\" = 5.5, but the key says 82"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 12:00 noon, what will be the local time at a place located at 75°E longitude?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"75*4/60\" = 5, but the key says 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 9:00 a.m., what will be the time at a place located at 30°W longitude?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the primary reason for the existence of different time zones around the world?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 12:00 noon, what will be the local time at a place located at 60° east longitude?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the time at the Prime Meridian is 10:00 a.m., and a plane takes off from London at 10:00 a.m. and lands in New York after a 5-hour flight, what will be the local time in New York when the plane lands?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following correctly describes the relationship between longitude and time?",
+      "reason": "options 0 and 2 say the same thing (\"Time decreases as we move eastward from the Prime Meridian\" / \"Time increases as we move eastward from the Prime Meridian\"); options 1 and 2 say the same thing (\"Time increases as we move westward from the Prime Meridian\" / \"Time increases as we move eastward from the Prime Meridian\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what is the significance of the 82°30’E longitude for India?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that the time at the International Date Line is exactly 12 hours different from the Prime Meridian. Why does this happen?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why do the meridians of longitude converge at the poles?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the time at 0° longitude is 12:00 noon, what will be the time at 45°E longitude?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"12*60 + 45*4\" = 900, but the key says 3"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

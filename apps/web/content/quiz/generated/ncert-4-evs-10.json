@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Looking Around(EVS)",
   "edition": "2024 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-22T23:10:47.885Z",
+  "generatedAt": "2026-10-28T04:22:13.274Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "Why did Shyamala's team get 'out' in the game?",
+      "stem": "Why did Leela and Heera feel excited about their matches?",
       "choices": [
-        "Because she touched the line",
-        "Because she shouted 'out'",
-        "Because she was caught by the other team",
-        "Because she held her breath"
+        "Because they won the matches",
+        "Because they lost the matches",
+        "Because they were able to win after being in trouble",
+        "Because they had to play in a different town"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is because she touched the line, which caused the opposing team to hold her, resulting in her team being 'out'. Shouting 'out' is not a rule in the game, being caught by the other team is not mentioned as a reason, and holding breath has no relevance to the game's outcome.",
+      "answerIndex": 2,
+      "solution": "The correct option is because they were able to win after being in trouble, as this shows a dramatic and emotionally significant moment. The other options either contradict the situation or do not explain the excitement as effectively.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "श्यामला की टीम खेल में 'आउट' क्यों हो गई?",
+          "stem": "लीला और हीरा अपने मैचों के लिए क्यों उत्साहित महसूस कर रहे थे?",
           "choices": [
-            "क्योंकि उसने लाइन छू ली",
-            "क्योंकि उसने 'आउट' कह दिया",
-            "क्योंकि उसे दूसरी टीम ने पकड़ लिया",
-            "क्योंकि उसने अपनी सांस रोक ली"
+            "क्योंकि वे मैच जीत गए",
+            "क्योंकि वे मैच हार गए",
+            "क्योंकि वे दुर्दशा में रहते हुए जीत गए",
+            "क्योंकि वे एक अलग शहर में खेलना पड़ा"
           ],
-          "solution": "सही उत्तर यह है कि उसने लाइन छू ली, जिसके कारण विपक्षी टीम ने उसे पकड़ लिया, जिसके कारण उसकी टीम 'आउट' हो गई। 'आउट' कहना खेल के नियम में नहीं है, दूसरी टीम द्वारा पकड़ना एक कारण के रूप में उल्लेखित नहीं है, और सांस रोकना खेल के परिणाम से कोई संबंध नहीं है।",
+          "solution": "सही विकल्प क्योंकि वे दुर्दशा में रहते हुए जीत गए है, क्योंकि यह एक आकर्षक और भावनात्मक रूप से महत्वपूर्ण क्षण दर्शाता है। अन्य विकल्प या तो स्थिति के विरोधी हैं या उत्साह को इतना अच्छी तरह से समझाने में असमर्थ हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "critique": "The Hindi translation accurately reflects the original English question and options, with appropriate terminology and structure for a Hindi-medium student.",
           "flag": null
         },
         "mr": {
-          "stem": "श्यामलाच्या टीमला खेळात 'आउट' का केले गेले?",
+          "stem": "लीला आणि हीरा आपल्या खेळांबद्दल का उत्साही वाटले?",
           "choices": [
-            "कारण तिने रेषा स्पर्श केली",
-            "कारण तिने 'आउट' म्हटले",
-            "कारण तिला इतर टीमने बांधले",
-            "कारण तिने आपले श्वास रोखले"
+            "कारण त्यांनी खेळ जिंकले",
+            "कारण त्यांनी खेळ हरले",
+            "कारण त्यांनी त्रासात असताना जिंकले",
+            "कारण त्यांनी वेगळ्या शहरात खेळावे लागले"
           ],
-          "solution": "योग्य उत्तर हा आहे की तिने रेषा स्पर्श केली, ज्यामुळे विरोधी टीमने तिला बांधले, ज्यामुळे तिच्या टीमला 'आउट' करण्यात आले. 'आउट' म्हणणे हा खेळाच्या नियमांमध्ये नाही, इतर टीमने बांधले हे खेळाच्या नियमांमध्ये नाही आणि श्वास रोखणे खेळाच्या निकालाशी संबंधित नाही.",
+          "solution": "योग्य विकल्प त्यांनी त्रासात असताना जिंकले, कारण हे एक आकर्षक आणि भावनिक अर्थपूर्ण क्षण दर्शवते. इतर विकल्प घटनेच्या स्थितीला विरोधी असतात किंवा उत्साहाचे कारण असे असत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for the game context.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The correct answer is in the same position (option 2) and the distractors remain incorrect.",
           "flag": null
         }
       },
@@ -72,117 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "thinks they felt excited because they won",
+        "thinks they felt excited because they lost",
         null,
-        "Believes that shouting 'out' results in being eliminated, not realizing it's part of the game's chant",
-        "Believes that being caught automatically results in being 'out' without considering the rule about touching the line",
-        "Students might think holding breath leads to being 'out' due to confusion with the game's rules about breathing"
+        "thinks they felt excited because they played in a different town"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0, as the passage explicitly states that Shyamala's team got 'out' because she touched the line. The other options are plausible misconceptions that students might have about the game rules.",
-      "sources": [
-        {
-          "document": "ncert/4/environmental-studies/deap110.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 10: Hu Tu Tu, Hu Tu Tu"
-          ]
-        },
-        {
-          "document": "ncert/4/environmental-studies/deap110.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 10: Hu Tu Tu, Hu Tu Tu",
-            "The Game of Kabaddi"
-          ]
-        },
-        {
-          "document": "ncert/4/environmental-studies/deap110.pdf",
-          "ordinal": 2,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 10: Hu Tu Tu, Hu Tu Tu",
-            "A Story of Three Sisters"
-          ]
-        }
-      ],
-      "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T23:10:47.885Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What did Leela and Heera have to do because of their strong will?",
-      "choices": [
-        "Win matches they were about to lose",
-        "Watch a movie",
-        "Get scolded by their mama",
-        "Play Kabaddi"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is that Leela and Heera won matches they were about to lose because of their strong will. This reflects their determination and perseverance. The other options are unrelated actions and do not demonstrate the impact of their strong will.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "लीला और हीरा के मजबूत इच्छा शक्ति के कारण क्या करना पड़ा?",
-          "choices": [
-            "हारने वाले मैच जीते",
-            "एक फिल्म देखी",
-            "अपने मामा से डांटा गया",
-            "कबड्डी खेली"
-          ],
-          "solution": "सही उत्तर यह है कि लीला और हीरा के मजबूत इच्छा शक्ति के कारण वे हारने वाले मैच जीत गए। इससे उनकी निरंतरता और धैर्य का पता चलता है। अन्य विकल्प असंबंधित कार्य हैं और उनकी मजबूत इच्छा शक्ति के प्रभाव को नहीं दर्शाते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with no ambiguity or distortion.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "लीला आणि हीराला त्यांच्या शक्तिशाली इच्छाशक्तीमुळे काय करावे लागले?",
-          "choices": [
-            "त्यांनी हरवणार असलेल्या सामन्यांची जिंकली",
-            "चित्रपट पाहिला",
-            "त्यांच्या मामांनी फटकारले",
-            "कबड्डी खेळली"
-          ],
-          "solution": "लीला आणि हीराने त्यांच्या शक्तिशाली इच्छाशक्तीमुळे त्यांनी हरवणार असलेल्या सामन्यांची जिंकली. हे त्यांच्या निर्धार आणि धैर्याचे प्रतिबिंब दर्शवते. इतर विकल्प असंबंधित कृती आहेत आणि त्यांच्या शक्तिशाली इच्छाशक्तीचा परिणाम दर्शवत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Pupils might confuse the movie activity with the main action of the story",
-        "Believes the scolding happened because of their strong will instead of their actions",
-        "Believes the story is about their experience with Kabaddi despite difficulties"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as the passage explicitly states that Leela and Heera won matches they were about to lose due to their strong will. The other options are plausible but not supported by the text as the main point.",
+      "critique": "The correct answer is 2, as it aligns with the passage's explanation that Leela and Heera felt excited because they won matches they were about to lose. The other options are either incorrect or not the main reason.",
       "sources": [
         {
           "document": "ncert/4/environmental-studies/deap110.pdf",
@@ -196,7 +99,85 @@
         }
       ],
       "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T23:10:47.885Z",
+      "generatedAt": "2026-10-28T04:22:13.274Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What would happen if, in cricket, the entire team was 'out' if all the three stumps fell?",
+      "choices": [
+        "It would not be fun",
+        "It would be more fun",
+        "It would be easier to play",
+        "It would be the same as before"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'It would not be fun' because if all three stumps falling resulted in the entire team being out, it would make the game too easy to end and reduce the challenge and excitement. The other options are incorrect because they suggest improvements or neutrality, which do not align with the likely impact of such a rule change on the game's enjoyment.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्रिकेट में, यदि तीनों स्टम्प गिर जाने पर पूरी टीम 'आउट' हो जाए तो क्या होगा?",
+          "choices": [
+            "इसे मजेदार नहीं रहेगा",
+            "इसे अधिक मजेदार रहेगा",
+            "खेलना आसान हो जाएगा",
+            "इसके पहले के समान हो जाएगा"
+          ],
+          "solution": "सही उत्तर 'इसे मजेदार नहीं रहेगा' है क्योंकि यदि तीनों स्टम्प गिर जाने पर पूरी टीम आउट हो जाए तो खेल बहुत आसानी से समाप्त हो सकता है और चुनौती और उत्साह कम हो जाएगा। अन्य विकल्प गलत हैं क्योंकि वे सुधार या उदासीनता के बारे में कहते हैं, जो ऐसे नियम परिवर्तन के खेल के आनंद पर संभावित प्रभाव के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "Translation accurately preserves meaning, technical terms like 'स्टम्प' are standard in Hindi cricket terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "क्रिकेटमध्ये, जर तीनही स्टम्प जमीनीवर पडल्यास पूर्ण संघ 'आऊट' होईल तर काय होईल?",
+          "choices": [
+            "ते आनंददायक राहील नाही",
+            "ते अधिक आनंददायक राहील",
+            "खेळणे सोपे होईल",
+            "मागीलपेकी तितकेच राहील"
+          ],
+          "solution": "हे बरोबर उत्तर आहे 'ते आनंददायक राहील नाही' कारण जर तीनही स्टम्प जमीनीवर पडल्यास पूर्ण संघ आऊट होईल तर खेळ सोपा आणि टिकाऊ राहील आणि चॅलेंज आणि उत्साह कमी होईल. इतर उत्तरे चुकीची आहेत कारण ते सुधारणा किंवा निरपेक्षता सूचित करतात, जे खेळाच्या आनंदावर अशा नियमांच्या बदलाचा अपेक्षित परिणाम नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi cricket terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "misunderstands the effect of changing game rules",
+        "assumes a change would improve the game without evidence",
+        "assumes the game experience would not change"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is based on a hypothetical rule change in cricket and asks for an evaluation of its impact on the game's enjoyment. The correct answer (0) aligns with the reasoning that changing the rule would make the game less fun, as suggested by the passage. The other options represent common misconceptions about how rule changes affect gameplay.",
+      "sources": [
+        {
+          "document": "ncert/4/environmental-studies/deap110.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 10: Hu Tu Tu, Hu Tu Tu",
+            "Remembering Those Days!"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-28T04:22:13.274Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

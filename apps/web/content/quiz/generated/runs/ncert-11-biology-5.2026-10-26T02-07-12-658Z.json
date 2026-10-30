@@ -1,0 +1,835 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T02:07:12.658Z",
+  "finishedAt": "2026-10-26T02:17:28.600Z",
+  "seconds": 616,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo105.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 5 — NIT",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n9. (b) dN/dt = r N 1",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[INBO 2011 — question paper]\nSECTION A\nCELL BIOLOGY (7)",
+      "[INBO 2021 — question paper]\nSECTION A\nCELL BIOLOGY (5 points)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 239519,
+      "in": 48,
+      "out": 40,
+      "rejects": 8,
+      "promptTokens": 39637,
+      "completionTokens": 13812
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 289367,
+      "in": 40,
+      "out": 32,
+      "rejects": 8,
+      "promptTokens": 21113,
+      "completionTokens": 7922
+    },
+    "solver": {
+      "calls": 199,
+      "ms": 86619,
+      "in": 32,
+      "out": 27,
+      "rejects": 5,
+      "promptTokens": 31180,
+      "completionTokens": 1867
+    },
+    "form": {
+      "calls": 18,
+      "ms": 106807,
+      "in": 27,
+      "out": 7,
+      "rejects": 20,
+      "promptTokens": 25339,
+      "completionTokens": 2668
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 55,
+      "ms": 10664,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 31,
+      "ms": 235638,
+      "in": 14,
+      "out": 14,
+      "rejects": 1,
+      "promptTokens": 15273,
+      "completionTokens": 7509
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 0,
+    "4": 2,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "In which type of root system are the primary roots replaced by a large number of roots that originate from the base of the stem?",
+      "ms": {
+        "draft": 4532,
+        "critique": 7610,
+        "solver": 2000,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a plant with a fibrous root system, which of the following is most likely to be true?",
+      "ms": {
+        "draft": 4532,
+        "critique": 6212,
+        "solver": 1853,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a function of the root hairs?",
+      "ms": {
+        "draft": 4532,
+        "critique": 4767,
+        "solver": 1262,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is responsible for the growth of the root in length?",
+      "ms": {
+        "draft": 4532,
+        "critique": 6372,
+        "solver": 1564,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the leaf is responsible for holding the blade to light?",
+      "ms": {
+        "draft": 14421,
+        "critique": 5538
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a leaf has incisions that reach up to the midrib and break it into a number of leaflets, what type of leaf is it?",
+      "ms": {
+        "draft": 14421,
+        "critique": 5728
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the arrangement of veins in the lamina of a leaf?",
+      "ms": {
+        "draft": 14421,
+        "critique": 5492,
+        "solver": 1416,
+        "form": 2936
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a whorled type of phyllotaxy?",
+      "ms": {
+        "draft": 14421,
+        "critique": 6442,
+        "solver": 1707,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a flower, if the calyx and corolla are not distinct and are termed as perianth, what is the likely classification of the flower?",
+      "ms": {
+        "draft": 14421,
+        "critique": 7359,
+        "solver": 1714
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the flower is responsible for attracting insects for pollination?",
+      "ms": {
+        "draft": 4237,
+        "critique": 6513
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a flower with vexillary aestivation, how are the petals arranged?",
+      "ms": {
+        "draft": 4237,
+        "critique": 6453,
+        "solver": 1718,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a flower is described as hypogynous, what does this imply about the position of the gynoecium relative to the calyx, corolla, and androecium?",
+      "ms": {
+        "draft": 14421,
+        "critique": 7174,
+        "solver": 11847,
+        "form": 4175
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a flower with parietal placentation, where are the ovules attached?",
+      "ms": {
+        "draft": 4237,
+        "critique": 5683,
+        "solver": 1816,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of a dicotyledonous seed contains reserve food materials?",
+      "ms": {
+        "draft": 7207,
+        "critique": 6135
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A plant has a fibrous root system and monocotyledonous seeds. Which of the following is most likely to be true about the plant?",
+      "ms": {
+        "draft": 7207,
+        "critique": 7161,
+        "solver": 2293,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the endosperm present in some seeds but not in others?",
+      "ms": {
+        "draft": 7207,
+        "critique": 6919
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main difference between a monocotyledonous and a dicotyledonous seed?",
+      "ms": {
+        "draft": 7207,
+        "critique": 7125,
+        "solver": 12771
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of root system is found in plants like wheat and rice?",
+      "ms": {
+        "draft": 3426,
+        "critique": 6929
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the function of the hilum in a seed?",
+      "ms": {
+        "draft": 7207,
+        "critique": 6114,
+        "solver": 6708,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of root described in the chapter?",
+      "ms": {
+        "draft": 2808,
+        "critique": 4978,
+        "solver": 1745,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a flower has a superior ovary, where is the ovary located?",
+      "ms": {
+        "draft": 2808,
+        "critique": 5184,
+        "solver": 15500
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following characteristics is common to both monocots and dicots?",
+      "ms": {
+        "draft": 2808,
+        "critique": 8028,
+        "solver": 1463
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of a dicotyledonous seed contains the reserve food materials?",
+      "ms": {
+        "draft": 5582,
+        "critique": 6550
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant has a fibrous root system, which of the following is likely to be its type of inflorescence?",
+      "ms": {
+        "draft": 2808,
+        "critique": 8604,
+        "solver": 12967,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which type of seed are the cotyledons usually not present in the mature seed?",
+      "ms": {
+        "draft": 5582,
+        "critique": 8554,
+        "solver": 1379
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of the monocotyledonous seed is responsible for protecting the plumule and radicle?",
+      "ms": {
+        "draft": 5582,
+        "critique": 7456,
+        "solver": 1146,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the flower is composed of sepals?",
+      "ms": {
+        "draft": 16455,
+        "critique": 7309,
+        "solver": 1632,
+        "form": 2434
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which type of aestivation do the sepals or petals just touch one another at the margin without overlapping?",
+      "ms": {
+        "draft": 16455,
+        "critique": 7146,
+        "solver": 1659,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the flower is responsible for producing pollen grains?",
+      "ms": {
+        "draft": 16455,
+        "critique": 6886,
+        "solver": 1813,
+        "form": 2302
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which type of placentation are the ovules attached to the central axis of the ovary and the septa are absent?",
+      "ms": {
+        "draft": 16455,
+        "critique": 5752,
+        "solver": 1960,
+        "form": 3696
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a characteristic of a drupe?",
+      "ms": {
+        "draft": 16455,
+        "critique": 7611,
+        "solver": 1508,
+        "form": 3663
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of a plant develops from the plumule of the embryo of a germinating seed?",
+      "ms": {
+        "draft": 3330,
+        "critique": 6018
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the leaf is the green expanded part with veins and veinlets?",
+      "ms": {
+        "draft": 6014,
+        "critique": 6213,
+        "solver": 5677,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of a flowering plant develops from the plumule of the embryo of a germinating seed?",
+      "ms": {
+        "draft": 4532,
+        "critique": 7315,
+        "solver": 1674,
+        "form": 0,
+        "translation": 32971
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the stem in a flowering plant?",
+      "ms": {
+        "draft": 4532,
+        "critique": 6957,
+        "solver": 1073,
+        "form": 0,
+        "translation": 41649
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of the term 'placentation'?",
+      "ms": {
+        "draft": 2808,
+        "critique": 4807,
+        "solver": 1111,
+        "form": 0,
+        "translation": 29149
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the flower contains the pollen sacs?",
+      "ms": {
+        "draft": 4237,
+        "critique": 5955,
+        "solver": 1416,
+        "form": 0,
+        "translation": 33542
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A flower with a perigynous ovary has its ovary attached where?",
+      "ms": {
+        "draft": 2808,
+        "critique": 8566,
+        "solver": 1253,
+        "form": 0,
+        "translation": 19565
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the function of the stigma in the gynoecium?",
+      "ms": {
+        "draft": 4237,
+        "critique": 6042,
+        "solver": 1679,
+        "form": 0,
+        "translation": 36369
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A flower with a single carpel that is free is known as?",
+      "ms": {
+        "draft": 4237,
+        "critique": 5597,
+        "solver": 1920,
+        "form": 0,
+        "translation": 36284
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In which type of root system are the primary roots replaced by a large number of roots that originate from the base of the stem?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a plant with a fibrous root system, which of the following is most likely to be true?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a function of the root hairs?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.structure: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is responsible for the growth of the root in length?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.region: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the leaf is responsible for holding the blade to light?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a leaf has incisions that reach up to the midrib and break it into a number of leaflets, what type of leaf is it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the term used to describe the arrangement of veins in the lamina of a leaf?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Confuses the term inflorescence with venation, as infloresce…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a whorled type of phyllotaxy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer. Sunflower has alternate phyllotaxy, not whor…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a flower, if the calyx and corolla are not distinct and are termed as perianth, what is the likely classification of the flower?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which part of the flower is responsible for attracting insects for pollination?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a flower with vexillary aestivation, how are the petals arranged?",
+      "reason": "the key is far longer than every distractor (105 vs 60 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a flower is described as hypogynous, what does this imply about the position of the gynoecium relative to the calyx, corolla, and androecium?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"This is not described in the passage for hypogynous flowers,…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a flower with parietal placentation, where are the ovules attached?",
+      "reason": "figure: figure spec refused: spec.parts: flower has no label \"ovary\" (it has petal, sepal, stamen, pistil)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which part of a dicotyledonous seed contains reserve food materials?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A plant has a fibrous root system and monocotyledonous seeds. Which of the following is most likely to be true about the plant?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason needed here (skip this entry in…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the endosperm present in some seeds but not in others?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the main difference between a monocotyledonous and a dicotyledonous seed?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of root system is found in plants like wheat and rice?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the function of the hilum in a seed?",
+      "reason": "options 0 and 3 are the same (\"To store food\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the function of the micropyle in a seed?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main function of the aleurone layer in a monocotyledonous seed?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does the term 'endospermic' refer to in seeds?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term used to describe the arrangement of veins and veinlets in the leaf?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term used for a leaf with a single leaflet attached to the rachis?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What type of phyllotaxy is characterized by a single leaf at each node in an alternate manner?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the main function of the root system in plants?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which type of root system is found in monocotyledonous plants?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of root described in the chapter?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a flower has a superior ovary, where is the ovary located?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following characteristics is common to both monocots and dicots?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which part of a dicotyledonous seed contains the reserve food materials?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a plant has a fibrous root system, which of the following is likely to be its type of inflorescence?",
+      "reason": "options 2 and 3 are the same (\"Spike\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In which type of seed are the cotyledons usually not present in the mature seed?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which part of the monocotyledonous seed is responsible for protecting the plumule and radicle?",
+      "reason": "figure: figure spec refused: spec.parts: plantCell has no label \"coleoptile\" (it has cellWall, membrane, nucleus, vacuole, chloroplast, cytoplasm)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the flower is composed of sepals?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels Sepal, Petal, Stamen, Pistil"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In which type of aestivation do the sepals or petals just touch one another at the margin without overlapping?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.valvate: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which part of the flower is responsible for producing pollen grains?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In which type of placentation are the ovules attached to the central axis of the ovary and the septa are absent?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.freeCentral: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a characteristic of a drupe?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.drupe: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which part of a plant develops from the plumule of the embryo of a germinating seed?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the leaf is the green expanded part with veins and veinlets?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

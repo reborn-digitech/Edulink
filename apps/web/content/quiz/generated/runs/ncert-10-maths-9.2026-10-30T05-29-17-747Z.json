@@ -1,0 +1,433 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T05:29:17.747Z",
+  "finishedAt": "2026-10-30T05:33:12.760Z",
+  "seconds": 235,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh109.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Some Applications of Trigonometry",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2026-27]\n17. (C) 48 m\ntan θ = 5\n⸫ sin θ = 13\nh 12\n⇒ = ⇒ h = 48 m\n52 13",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n29. If 𝑠𝑖𝑛𝛳 + 𝑐𝑜𝑠𝛳 = √3 ,then prove that 𝑡𝑎𝑛𝛳 + 𝑐𝑜𝑡𝛳 = 1 3\nOR\nProve that 𝑐𝑜𝑠𝐴−𝑠𝑖𝑛𝐴+1 𝑐𝑜𝑠𝐴+𝑠𝑖𝑛𝐴−1 =cosecA + cotA",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2023-24]\n24. ∵ tan(𝐴 + 𝐵) = √3 ∴ 𝐴 + 𝐵 = 60 ଴\n∵ tan(𝐴 − 𝐵) = √ଷ ଵ ∴ 𝐴 − 𝐵 = 30 ଴\n଴\n…(1) ½\n…(2) ½\n଴ ½\nAdding (1) & (2), we get 2A=90 ⟹ 𝐴 = 45 ½\nAlso (1) –(2), we get 2𝐵 = 30 ⟹ 𝐵 = 45 ଴ ଴\n2 2 ଷ 2\n2 cosec 30 + x sin 60 – tan 30 = 10\nସ\nଶ ଶ\n2 √ଷ 3 ଵ\n⇒ 2(2) + x ቀ ቁ ଶ − 4 ቀ ቁ = √ଷ\n⇒ 2(4)+ x ቀ ቁ − 3 4 3 4 ቀ ቁ = 10 1 3\n3 1\n⇒ 8+ x ቀ ቁ − 4 4 = 10\n⇒ 32+ x ( 3 ) −1 = 40\n⇒ 3x = 9 ⇒ x = 3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2023-24]\n30. Given, 1 + sin θ = 3 sin θ cos θ 2\nDividing both sides by cos θ, 2\nଵ 2\nୡ୭ୱ ఏ మ + tan θ = 3 tan 𝜃\nsec θ + tan θ = 3 tan 𝜃 2 2 ½\n1 + tan θ + tan θ = 3 tan 𝜃 2 2 ½\n1 + 2 tan θ = 3 tan 𝜃 2 ½\n2 tan θ - 3 tan 𝜃 +1 = 0 2 ½\nIf tan θ = x, then the equation becomes 2x -3x + 1 = 0 2\n⇒ (𝑥 − 1)(2𝑥 − 1) = 0 x = 1 or ଵ"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 127782,
+      "in": 23,
+      "out": 16,
+      "rejects": 7,
+      "promptTokens": 21268,
+      "completionTokens": 6812
+    },
+    "critique": {
+      "calls": 21,
+      "ms": 151715,
+      "in": 16,
+      "out": 9,
+      "rejects": 7,
+      "promptTokens": 10522,
+      "completionTokens": 3879
+    },
+    "solver": {
+      "calls": 80,
+      "ms": 52326,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 20496,
+      "completionTokens": 1012
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 2,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 32,
+      "ms": 6818,
+      "in": 2,
+      "out": 1,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 27121,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 3013,
+      "completionTokens": 1662
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a student stands 15 m away from a tower and measures the angle of elevation to the top of the tower as 60°, what is the height of the tower?",
+      "ms": {
+        "draft": 7572,
+        "critique": 7336
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is defined as the angle formed by the line of sight with the horizontal when the point being viewed is above the horizontal level?",
+      "ms": {
+        "draft": 7572,
+        "critique": 8042
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The shadow of a tower is 40 m longer when the Sun’s altitude is 30° than when it is 60°. What is the height of the tower?",
+      "ms": {
+        "draft": 7572,
+        "critique": 7693,
+        "solver": 1306,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An observer 1.5 m tall is 28.5 m away from a chimney. The angle of elevation of the top of the chimney from her eyes is 45°. What is the height of the chimney?",
+      "ms": {
+        "draft": 7572,
+        "critique": 9800
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ladder is placed against a wall at an angle of 60° to the horizontal. The foot of the ladder is 2.14 m from the base of the wall. What is the length of the ladder?",
+      "ms": {
+        "draft": 7572,
+        "critique": 8574
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A flag is hoisted at the top of a 10 m tall building, and the angle of elevation of the top of the flagstaff from a point P on the ground is 45°. If the angle of elevation of the top of the building from the same point is 30°, what is the length of the flagstaff?",
+      "ms": {
+        "draft": 7572,
+        "critique": 9292,
+        "solver": 17462,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A slide for children below 5 years is to be installed at a height of 1.5 m, inclined at an angle of 30° to the ground. What is the length of the slide?",
+      "ms": {
+        "draft": 4396,
+        "critique": 4968,
+        "solver": 1188,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the angle formed by the line of sight with the horizontal when the object is above the horizontal level?",
+      "ms": {
+        "draft": 6204,
+        "critique": 5672
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A tree breaks and the top of the tree touches the ground making an angle of 30° with the ground. The distance between the foot of the tree and the point where the top touches the ground is 8 m. What is the height of the tree?",
+      "ms": {
+        "draft": 4159,
+        "critique": 6061,
+        "solver": 1633,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A 20 m long rope is tied from the top of a vertical pole to the ground. The rope makes an angle of 30° with the ground. What is the height of the pole?",
+      "ms": {
+        "draft": 4159,
+        "critique": 6879,
+        "solver": 20003,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In Example 4, the angle of elevation to the top of the building is 30° and to the top of the flagstaff is 45°. If the height of the building is 10 m, what is the length of the flagstaff?",
+      "ms": {
+        "draft": 6204,
+        "critique": 10345,
+        "solver": 13848,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In Example 5, the shadow of the tower is 40 m longer when the Sun's altitude is 30° than when it is 60°. Using trigonometric relationships, what is the height of the tower?",
+      "ms": {
+        "draft": 6204,
+        "critique": 6538
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Example 1, the electrician needs to reach a point 1.3 m below the top of a 5 m tall pole. What is the height from the ground to the point she needs to reach?",
+      "ms": {
+        "draft": 6204,
+        "critique": 10402,
+        "solver": 19421
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Example 2, an electrician needs to reach a point 1.3 m below the top of a pole of height 5 m. What is the vertical distance from the ground to this point?",
+      "ms": {
+        "draft": 6204,
+        "critique": 4392
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A vertical pole is tied to the ground with a 20 m long rope that makes an angle of 30° with the ground. What is the height of the pole?",
+      "ms": {
+        "draft": 4396,
+        "critique": 6253,
+        "solver": 1341,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A tree breaks during a storm, and the broken part touches the ground making an angle of 30° with the ground. If the distance from the foot of the tree to the point where the top touches the ground is 8 m, what is the total height of the tree before it broke?",
+      "ms": {
+        "draft": 4396,
+        "critique": 6423,
+        "solver": 5675,
+        "form": 0,
+        "translation": 22144
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "The angle of elevation of the top of a tower from a point 30 m away from the base of the tower is 30°. What is the height of the tower?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A kite is flying at a height of 60 m, and the string is inclined at an angle of 60° with the ground. What is the length of the string?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A 1.5 m tall boy is standing at a distance from a 30 m tall building. As he walks towards the building, the angle of elevation from his eyes to the top of the building increases from 30° to 60°. What is the distance he walked?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student stands 15 m away from a tower and measures the angle of elevation to the top of the tower as 60°, what is the height of the tower?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is defined as the angle formed by the line of sight with the horizontal when the point being viewed is above the horizontal level?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The shadow of a tower is 40 m longer when the Sun’s altitude is 30° than when it is 60°. What is the height of the tower?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); checkExpr \"20*sqrt(3)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "An observer 1.5 m tall is 28.5 m away from a chimney. The angle of elevation of the top of the chimney from her eyes is 45°. What is the height of the chimney?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A ladder is placed against a wall at an angle of 60° to the horizontal. The foot of the ladder is 2.14 m from the base of the wall. What is the length of the ladder?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A flag is hoisted at the top of a 10 m tall building, and the angle of elevation of the top of the flagstaff from a point P on the ground is 45°. If the angle of elevation of the top of the building from the same point is 30°, what is the length of the flagstaff?",
+      "reason": "options 0 and 3 say the same thing (\"10(√3 - 2) m\" / \"10(√3 + 2) m\"); checkExpr \"10*(sqrt(3)-1)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A slide for children below 5 years is to be installed at a height of 1.5 m, inclined at an angle of 30° to the ground. What is the length of the slide?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A slide for children below 5 years is inclined at an angle of 30° to the ground and has a height of 1.5 m. What is the length of the slide?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "The angle of elevation of the top of a tower from a point 30 m away from the foot of the tower is 30°. What is the height of the tower?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A kite is flying at a height of 60 m above the ground. The string attached to the kite makes an angle of 60° with the ground. What is the length of the string?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A 1.5 m tall boy is standing at some distance from a 30 m tall building. The angle of elevation from his eyes to the top of the building increases from 30° to 60° as he walks towards the building. What is the distance he walked towards the building?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used to describe the angle formed by the line of sight with the horizontal when the object is above the horizontal level?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A tree breaks and the top of the tree touches the ground making an angle of 30° with the ground. The distance between the foot of the tree and the point where the top touches the ground is 8 m. What is the height of the tree?",
+      "reason": "checkExpr \"8*sqrt(3)*2\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A 20 m long rope is tied from the top of a vertical pole to the ground. The rope makes an angle of 30° with the ground. What is the height of the pole?",
+      "reason": "options 0 and 1 are the same (\"10 m\"); options 0 and 3 are the same (\"10 m\"); options 1 and 3 are the same (\"10 m\"); options 0 and 1 are the same number; options 0 and 3 are the same number; options 1 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In Example 4, the angle of elevation to the top of the building is 30° and to the top of the flagstaff is 45°. If the height of the building is 10 m, what is the length of the flagstaff?",
+      "reason": "options are written to different precisions (0 and 2 decimals); distractor 3's reason is not a one-line misconception (\"Takes the total distance from the point P to the building as…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In Example 5, the shadow of the tower is 40 m longer when the Sun's altitude is 30° than when it is 60°. Using trigonometric relationships, what is the height of the tower?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In Example 1, the electrician needs to reach a point 1.3 m below the top of a 5 m tall pole. What is the height from the ground to the point she needs to reach?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In Example 2, an electrician needs to reach a point 1.3 m below the top of a pole of height 5 m. What is the vertical distance from the ground to this point?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A vertical pole is tied to the ground with a 20 m long rope that makes an angle of 30° with the ground. What is the height of the pole?",
+      "reason": "near-duplicate of served question cmvgpuw9b04n1gpfhsik3u4qi (cosine 0.972 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

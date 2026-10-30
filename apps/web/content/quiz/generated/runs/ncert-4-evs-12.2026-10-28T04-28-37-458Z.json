@@ -1,0 +1,389 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:28:37.458Z",
+  "finishedAt": "2026-10-28T04:30:22.180Z",
+  "seconds": 105,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap112.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 12 — Changing Times",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 47616,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 13650,
+      "completionTokens": 3083
+    },
+    "critique": {
+      "calls": 20,
+      "ms": 106283,
+      "in": 16,
+      "out": 10,
+      "rejects": 6,
+      "promptTokens": 8330,
+      "completionTokens": 3552
+    },
+    "solver": {
+      "calls": 80,
+      "ms": 35259,
+      "in": 10,
+      "out": 5,
+      "rejects": 5,
+      "promptTokens": 13535,
+      "completionTokens": 919
+    },
+    "form": {
+      "calls": 2,
+      "ms": 4494,
+      "in": 5,
+      "out": 0,
+      "rejects": 5,
+      "promptTokens": 446,
+      "completionTokens": 133
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 3561,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 184,
+      "completionTokens": 276
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What was the name of the village where Chetandas' family was given land to build their house?",
+      "ms": {
+        "draft": 3355,
+        "critique": 4160
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Chetandas' family use a mixture of mud and cow dung to coat the floor of their house?",
+      "ms": {
+        "draft": 3355,
+        "critique": 4992
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is the most likely reason for the change in house construction materials over time?",
+      "ms": {
+        "draft": 3355,
+        "critique": 5577
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student's house is built with bricks, what can be inferred about the time period in which it was built?",
+      "ms": {
+        "draft": 3355,
+        "critique": 4350,
+        "solver": 9892
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of asking students to visit a construction site?",
+      "ms": {
+        "draft": 3070,
+        "critique": 6366,
+        "solver": 1451
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to know the daily earnings of a construction worker, which question should they ask?",
+      "ms": {
+        "draft": 3070,
+        "critique": 6049
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which activity is suggested for students to learn about construction workers?",
+      "ms": {
+        "draft": 3070,
+        "critique": 6619,
+        "solver": 12611,
+        "form": 2141
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which materials are used for making a building?",
+      "ms": {
+        "draft": 3070,
+        "critique": 6217,
+        "solver": 6319,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to know the cost of one bag of cement, which part of the passage should they refer to?",
+      "ms": {
+        "draft": 2018,
+        "critique": 4630,
+        "solver": 1302,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the chapter in the given passage?",
+      "ms": {
+        "draft": 2018,
+        "critique": 4130,
+        "solver": 1291,
+        "form": 3613
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the purpose of dividing the class into groups to make models of different houses?",
+      "ms": {
+        "draft": 2018,
+        "critique": 6338,
+        "solver": 1588,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main reason Chetandas and his family had to move to a new place?",
+      "ms": {
+        "draft": 3461,
+        "critique": 6287
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main activity suggested for the students in the passage?",
+      "ms": {
+        "draft": 2018,
+        "critique": 5115,
+        "solver": 14234
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main purpose of using mud and cow dung in Chetandas' house?",
+      "ms": {
+        "draft": 3461,
+        "critique": 6147
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child today wants to build a house like Chetandas', which material would they most likely use?",
+      "ms": {
+        "draft": 3461,
+        "critique": 6217,
+        "solver": 745
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the toilet in Chetandas' house?",
+      "ms": {
+        "draft": 3461,
+        "critique": 3647,
+        "solver": 455
+      },
+      "outcome": "solver",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the name of the village where Chetandas' family was given land to build their house?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Chetandas' family use a mixture of mud and cow dung to coat the floor of their house?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is the most likely reason for the change in house construction materials over time?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student's house is built with bricks, what can be inferred about the time period in which it was built?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main purpose of asking students to visit a construction site?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a student wants to know the daily earnings of a construction worker, which question should they ask?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which activity is suggested for students to learn about construction workers?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which materials are used for making a building?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student wants to know the cost of one bag of cement, which part of the passage should they refer to?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the chapter in the given passage?",
+      "reason": "the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Does not read the passage carefully and overlooks the chapte…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the purpose of dividing the class into groups to make models of different houses?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Chooses an option not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"Chooses an option not mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the main reason Chetandas and his family had to move to a new place?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main activity suggested for the students in the passage?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What was the main purpose of using mud and cow dung in Chetandas' house?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a child today wants to build a house like Chetandas', which material would they most likely use?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the toilet in Chetandas' house?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,760 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T23:12:32.212Z",
+  "finishedAt": "2026-10-23T23:23:25.498Z",
+  "seconds": 653,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Physics Part-I",
+    "bookCode": "leph1",
+    "document": "ncert/12/physics/leph108.pdf",
+    "classLevel": 12,
+    "subject": "Physics",
+    "chapter": "Chapter 8 — Electromagnetic",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Physics, sample question paper, 2025-26]\n17. The amplitude of the magnetic field of a plane electromagnetic wave propagating 2\nalong positive X axis in vacuum is 510 nT𝑘̂ and its angular frequency is 60 x 10 6\nrad/sec. Write the expression for the electric field ( → 𝐸 ).",
+      "[CBSE Class XII Physics, sample question paper, 2023-24]\n10. The diagram below shows the electric field (E) and magnetic field (B) components\nof an electromagnetic wave at a certain time and location.\nThe direction of the propagation of the electromagnetic wave is\n(a) perpendicular to E and B and out of plane of the paper\n(b) perpendicular to E and B and into the plane of the paper\n(c) parallel and in the same direction as E\n(d) parallel and in the same direction as B",
+      "[CBSE Class XII Physics, sample question paper, 2022-23]\n8. Which of the following statement is NOT true about the properties 1\nof electromagnetic waves?\n(I) These waves do not require any material medium for their\npropagation\n(ii) Both electric and magnetic field vectors attain the maxima and\nminima at the same time\n(iii) The energy in electromagnetic wave is divided equally between\nelectric and magnetic fields\n(iv) Both electric and magnetic field vectors are parallel to each other",
+      "[CBSE Class XII Physics, sample question paper, 2026-27]\n4. If electric field associated with an electromagnetic wave is given by 1\nE= 30 sin (0.2π × 10 m x −0.6 π × 10 Hz t) -4 -1 4 then the direction of\npropagation of the wave is along,\nA. 𝑖̂\nB. -𝑖̂\nC. 𝑘̂\nD. -𝑘̂"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 184639,
+      "in": 39,
+      "out": 38,
+      "rejects": 2,
+      "promptTokens": 44919,
+      "completionTokens": 10422
+    },
+    "critique": {
+      "calls": 45,
+      "ms": 280703,
+      "in": 38,
+      "out": 33,
+      "rejects": 5,
+      "promptTokens": 20645,
+      "completionTokens": 7883
+    },
+    "solver": {
+      "calls": 211,
+      "ms": 106774,
+      "in": 33,
+      "out": 23,
+      "rejects": 10,
+      "promptTokens": 39791,
+      "completionTokens": 2176
+    },
+    "form": {
+      "calls": 3,
+      "ms": 7112,
+      "in": 23,
+      "out": 13,
+      "rejects": 10,
+      "promptTokens": 773,
+      "completionTokens": 240
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 31,
+      "ms": 6160,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 34,
+      "ms": 329970,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 20009,
+      "completionTokens": 9911
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 4,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In an electromagnetic wave, the electric field and magnetic field vectors are in the same plane. What can be said about the direction of propagation of the wave?",
+      "ms": {
+        "draft": 4522,
+        "critique": 4896,
+        "solver": 1213,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electromagnetic wave is propagating in the positive x-direction. The electric field at a certain point is given by E = E0 sin(kx - ωt) ĵ. What is the direction of the magnetic field at that point?",
+      "ms": {
+        "draft": 4522,
+        "critique": 5893,
+        "solver": 2486
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a key property of electromagnetic waves?",
+      "ms": {
+        "draft": 4522,
+        "critique": 5958
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A plane electromagnetic wave is moving in the negative z-direction. The electric field is in the y-direction. What is the direction of the magnetic field?",
+      "ms": {
+        "draft": 4522,
+        "critique": 6067,
+        "solver": 1280
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A plane electromagnetic wave is propagating along the positive X-axis. If the magnetic field is in the k̂ direction, what is the direction of the electric field?",
+      "ms": {
+        "draft": 4178,
+        "critique": 5711,
+        "solver": 2022
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between the conduction current and the displacement current in a charging capacitor?",
+      "ms": {
+        "draft": 4178,
+        "critique": 5749,
+        "solver": 1252
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electromagnetic wave has an electric field given by E = 30 sin(0.2π × 10^4 x - 0.6π × 10^4 t) V/m. What is the direction of propagation of the wave?",
+      "ms": {
+        "draft": 4178,
+        "critique": 6990,
+        "solver": 1545
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses the symmetry between electric and magnetic fields in electromagnetic waves. Which of the following statements best captures this symmetry?",
+      "ms": {
+        "draft": 4178,
+        "critique": 5646,
+        "solver": 1699,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A plane electromagnetic wave is propagating in a vacuum. If the magnetic field is in the k̂ direction and the electric field is in the î direction, what is the direction of propagation of the wave?",
+      "ms": {
+        "draft": 4178,
+        "critique": 7946,
+        "solver": 1774
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the passage state about the displacement current?",
+      "ms": {
+        "draft": 4178,
+        "critique": 5918,
+        "solver": 1409,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A plane electromagnetic wave is propagating along the positive z-axis. The electric field is along the x-axis and the magnetic field is along the y-axis. What is the direction of propagation of the wave?",
+      "ms": {
+        "draft": 5586,
+        "critique": 5647,
+        "solver": 1599,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is NOT true about electromagnetic waves?",
+      "ms": {
+        "draft": 5586,
+        "critique": 6430,
+        "solver": 14446
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the electromagnetic spectrum is detected by the human eye?",
+      "ms": {
+        "draft": 3667,
+        "critique": 5747
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary source of energy carried by electromagnetic waves?",
+      "ms": {
+        "draft": 3817,
+        "critique": 6641,
+        "solver": 974,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the physical quantity that is the same for X-rays, red light, and radiowaves?",
+      "ms": {
+        "draft": 4036,
+        "critique": 4402
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A plane electromagnetic wave is propagating along the positive X-axis in vacuum. The amplitude of the magnetic field is 510 nT and the angular frequency is 60 × 10^6 rad/sec. What is the direction of the electric field?",
+      "ms": {
+        "draft": 13276,
+        "critique": 7391,
+        "solver": 2694
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An electromagnetic wave has an electric field amplitude of 120 N/C and a frequency of 50.0 MHz. What is the amplitude of the magnetic field?",
+      "ms": {
+        "draft": 13276,
+        "critique": 10787
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The diagram shows the electric field (E) and magnetic field (B) components of an electromagnetic wave at a certain time and location. What is the direction of the propagation of the electromagnetic wave?",
+      "ms": {
+        "draft": 13276,
+        "critique": 7165,
+        "solver": 16517,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an electromagnetic wave is propagating in the positive z-direction, and its electric field is in the x-direction, what is the direction of the magnetic field?",
+      "ms": {
+        "draft": 4671,
+        "critique": 7551,
+        "solver": 1464
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the velocity of electromagnetic waves in free space or vacuum?",
+      "ms": {
+        "draft": 3846,
+        "critique": 9139,
+        "solver": 1214,
+        "form": 2926
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the electric field of an electromagnetic wave is given by E = E0 sin(kz - ωt) and the magnetic field is given by B = B0 sin(kz - ωt), what is the relationship between E0 and B0?",
+      "ms": {
+        "draft": 4671,
+        "critique": 5963,
+        "solver": 16382,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electromagnetic wave is propagating in the positive z-direction. At a certain point in space and time, the electric field is in the x-direction and has a magnitude of 500 N/C. What is the magnitude of the magnetic field at that point and time?",
+      "ms": {
+        "draft": 4671,
+        "critique": 7617,
+        "solver": 14957
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the direction of propagation of an electromagnetic wave if the electric field is along the x-axis and the magnetic field is along the y-axis?",
+      "ms": {
+        "draft": 8383,
+        "critique": 6444
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An electromagnetic wave is propagating along the x-direction, and its electric field is along the y-direction. In which direction is the magnetic field?",
+      "ms": {
+        "draft": 3846,
+        "critique": 6496,
+        "solver": 1460,
+        "form": 3057
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did James Clerk Maxwell conclude about the relationship between electric and magnetic fields?",
+      "ms": {
+        "draft": 4991,
+        "critique": 5110,
+        "solver": 4640,
+        "form": 1129
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A plane electromagnetic wave is moving in a vacuum. The electric field is given by E = E0 sin(kz - ωt) î and the magnetic field is given by B = B0 sin(kz - ωt) ĵ. What is the direction of propagation of the wave?",
+      "ms": {
+        "draft": 4522,
+        "critique": 7197,
+        "solver": 1651,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electromagnetic wave is given by E = 30 sin (0.2π × 10^4 x − 0.6π × 10^6 t) V/m. What is the direction of propagation of the wave?",
+      "ms": {
+        "draft": 5586,
+        "critique": 6930,
+        "solver": 1309,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An electromagnetic wave is propagating in the positive x-direction. The electric field at a point is along the y-direction. In which direction is the magnetic field?",
+      "ms": {
+        "draft": 3817,
+        "critique": 7883,
+        "solver": 1975,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The electric field associated with an electromagnetic wave is given by E = 30 sin(0.2π × 10^4 m^-1 x − 0.6π × 10^4 Hz t). What is the direction of propagation of the wave?",
+      "ms": {
+        "draft": 13276,
+        "critique": 6830,
+        "solver": 1310,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An electromagnetic wave is given by E = 30 sin (0.2π × 10^4 x − 0.6π × 10^6 t) N/C. What is the direction of propagation of the wave?",
+      "ms": {
+        "draft": 8383,
+        "critique": 6935,
+        "solver": 903,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the propagation of electromagnetic waves?",
+      "ms": {
+        "draft": 4671,
+        "critique": 5630,
+        "solver": 1639,
+        "form": 0,
+        "translation": 44690
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the electric and magnetic fields in an electromagnetic wave?",
+      "ms": {
+        "draft": 4671,
+        "critique": 7379,
+        "solver": 1544,
+        "form": 0,
+        "translation": 39919
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements about electromagnetic waves is true?",
+      "ms": {
+        "draft": 5586,
+        "critique": 5937,
+        "solver": 1420,
+        "form": 0,
+        "translation": 45325
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements about electromagnetic waves is correct?",
+      "ms": {
+        "draft": 3817,
+        "critique": 8520,
+        "solver": 1222,
+        "form": 0,
+        "translation": 42004
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An electromagnetic wave is propagating in a vacuum. If the magnetic field vector is in the y-direction and the electric field vector is in the z-direction, what is the direction of propagation of the wave?",
+      "ms": {
+        "draft": 4522,
+        "critique": 5258,
+        "solver": 11683,
+        "form": 0,
+        "translation": 38759
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What physical quantity is the same for X-rays of wavelength 10^-10 m, red light of wavelength 6800 Å, and radiowaves of wavelength 500 m?",
+      "ms": {
+        "draft": 13276,
+        "critique": 7195,
+        "solver": 13416,
+        "form": 0,
+        "translation": 38847
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In an electromagnetic wave, the electric field and magnetic field are perpendicular to each other and to the direction of propagation. What is the relationship between the magnitudes of the electric field and magnetic field?",
+      "ms": {
+        "draft": 5586,
+        "critique": 5171,
+        "solver": 1620,
+        "form": 0,
+        "translation": 34557
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A charged particle oscillates about its mean equilibrium position with a frequency of 10 Hz. What is the frequency of the electromagnetic waves produced by the oscillator?",
+      "ms": {
+        "draft": 13276,
+        "critique": 7304,
+        "solver": 1891,
+        "form": 0,
+        "translation": 118490
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an electromagnetic wave, the electric field and magnetic field vectors are in the same plane. What can be said about the direction of propagation of the wave?",
+      "reason": "options 0 and 1 say the same thing (\"It is perpendicular to the plane of the electric and magnetic fields\" / \"It is parallel to the plane of the electric and magnetic fields\"); options 2 and 3 say the same thing (\"It is in the same direction as the electric field\" / \"It is in the same direction as the magnetic field\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "An electromagnetic wave is propagating in the positive x-direction. The electric field at a certain point is given by E = E0 sin(kx - ωt) ĵ. What is the direction of the magnetic field at that point?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a key property of electromagnetic waves?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A plane electromagnetic wave is moving in the negative z-direction. The electric field is in the y-direction. What is the direction of the magnetic field?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A plane electromagnetic wave is propagating along the positive X-axis. If the magnetic field is in the k̂ direction, what is the direction of the electric field?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between the conduction current and the displacement current in a charging capacitor?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "An electromagnetic wave has an electric field given by E = 30 sin(0.2π × 10^4 x - 0.6π × 10^4 t) V/m. What is the direction of propagation of the wave?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses the symmetry between electric and magnetic fields in electromagnetic waves. Which of the following statements best captures this symmetry?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (96 vs 55 characters); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes the fields are parallel, which contradic…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A plane electromagnetic wave is propagating in a vacuum. If the magnetic field is in the k̂ direction and the electric field is in the î direction, what is the direction of propagation of the wave?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the passage state about the displacement current?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A plane electromagnetic wave is propagating along the positive z-axis. The electric field is along the x-axis and the magnetic field is along the y-axis. What is the direction of propagation of the wave?",
+      "reason": "option 0 repeats the stem's wording (\"Along the x-axis\"); option 1 repeats the stem's wording (\"Along the y-axis\"); option 3 repeats the stem's wording (\"Along the positive z-axis\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is NOT true about electromagnetic waves?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 3 correct, the key is 1"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the electromagnetic spectrum is detected by the human eye?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary source of energy carried by electromagnetic waves?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Confuses the source of energy with the mechanism of energy t…\"); distractor 1 has no reason; distractor 2 has no reason"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the physical quantity that is the same for X-rays, red light, and radiowaves?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If an electromagnetic wave is propagating in the negative x-direction, and its electric field is in the y-direction, what is the direction of the magnetic field?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is the name given to the current that arises due to a ch"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A plane electromagnetic wave is propagating along the positive X-axis in vacuum. The amplitude of the magnetic field is 510 nT and the angular frequency is 60 × 10^6 rad/sec. What is the direction of the electric field?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "An electromagnetic wave has an electric field amplitude of 120 N/C and a frequency of 50.0 MHz. What is the amplitude of the magnetic field?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The diagram shows the electric field (E) and magnetic field (B) components of an electromagnetic wave at a certain time and location. What is the direction of the propagation of the electromagnetic wave?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If an electromagnetic wave is propagating in the positive z-direction, and its electric field is in the x-direction, what is the direction of the magnetic field?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the velocity of electromagnetic waves in free space or vacuum?",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the electric field of an electromagnetic wave is given by E = E0 sin(kz - ωt) and the magnetic field is given by B = B0 sin(kz - ωt), what is the relationship between E0 and B0?",
+      "reason": "checkExpr \"c*B0\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "An electromagnetic wave is propagating in the positive z-direction. At a certain point in space and time, the electric field is in the x-direction and has a magnitude of 500 N/C. What is the magnitude of the magnetic field at that point and time?",
+      "reason": "after redraft: the solver picked option 2 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the direction of propagation of an electromagnetic wave if the electric field is along the x-axis and the magnetic field is along the y-axis?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "An electromagnetic wave is propagating along the x-direction, and its electric field is along the y-direction. In which direction is the magnetic field?",
+      "reason": "option 3 is a catch-all (\"none of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What did James Clerk Maxwell conclude about the relationship between electric and magnetic fields?",
+      "reason": "options 0 and 1 say the same thing (\"Only a changing magnetic field can produce an electric field\" / \"Only a changing electric field can produce a magnetic field\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A plane electromagnetic wave is moving in a vacuum. The electric field is given by E = E0 sin(kz - ωt) î and the magnetic field is given by B = B0 sin(kz - ωt) ĵ. What is the direction of propagation of the wave?",
+      "reason": "near-duplicate of served question cmvi6zrqy0brqgpfhf5awysyj (cosine 0.910 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "An electromagnetic wave is given by E = 30 sin (0.2π × 10^4 x − 0.6π × 10^6 t) V/m. What is the direction of propagation of the wave?",
+      "reason": "near-duplicate of served question cmvi6zrqy0brqgpfhf5awysyj (cosine 0.927 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "An electromagnetic wave is propagating in the positive x-direction. The electric field at a point is along the y-direction. In which direction is the magnetic field?",
+      "reason": "near-duplicate of batch item \"An electromagnetic wave is propagating in a vacuum…\" (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "The electric field associated with an electromagnetic wave is given by E = 30 sin(0.2π × 10^4 m^-1 x − 0.6π × 10^4 Hz t). What is the direction of propagation of the wave?",
+      "reason": "near-duplicate of served question cmvi6zrqy0brqgpfhf5awysyj (cosine 0.944 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "An electromagnetic wave is given by E = 30 sin (0.2π × 10^4 x − 0.6π × 10^6 t) N/C. What is the direction of propagation of the wave?",
+      "reason": "near-duplicate of served question cmvi6zrqy0brqgpfhf5awysyj (cosine 0.927 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+    "topic words not written: the model's answer was not JSON (finish: length): {\n  \"summary\": \"This chapter discusses electromagnetic waves and the contributions of James Clerk Maxwell and Heinrich R"
+  ]
+}

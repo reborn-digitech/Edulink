@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash Part-I",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T04:02:19.140Z",
+  "generatedAt": "2026-10-29T18:16:13.818Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the value of (-2)^4?",
+      "stem": "What is the term used to describe the repeated multiplication of a number by itself?",
       "choices": [
-        "-8",
-        "-16",
-        "8",
-        "16"
+        "Square",
+        "Cube",
+        "Exponent",
+        "Power"
       ],
       "answerIndex": 3,
-      "solution": "The value of (-2) raised to an even power is positive. Since 4 is an even number, (-2)^4 equals 16. The other options are incorrect because (-2) raised to an even power gives a positive result, and the other options represent negative values or incorrect calculations.",
+      "solution": "The term used to describe the repeated multiplication of a number by itself is 'power'. For example, 2 × 2 × 2 can be written as 2³, which means 2 raised to the power of 3. 'Exponent' refers to the number that indicates how many times the base is multiplied, not the entire expression. 'Square' and 'cube' are specific types of powers, but they do not describe the general concept.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "(-2)^4 का मान क्या है?",
+          "stem": "किसी संख्या के स्वयं द्वारा बार-बार गुणन के लिए उपयोग किया जाने वाला शब्द क्या है?",
           "choices": [
-            "-8",
-            "-16",
-            "8",
-            "16"
+            "वर्ग",
+            "घन",
+            "घातांक",
+            "शक्ति"
           ],
-          "solution": "(-2) की सम घात लेने पर परिणाम धनात्मक होता है। चूंकि 4 एक सम संख्या है, इसलिए (-2)^4 का मान 16 होता है। अन्य विकल्प गलत हैं क्योंकि सम घात लेने पर (-2) धनात्मक परिणाम देता है और अन्य विकल्प ऋणात्मक मान या गलत गणना दर्शाते हैं।",
+          "solution": "किसी संख्या के स्वयं द्वारा बार-बार गुणन के लिए उपयोग किया जाने वाला शब्द 'शक्ति' है। उदाहरण के लिए, 2 × 2 × 2 को 2³ के रूप में लिखा जा सकता है, जिसका अर्थ 2 की घात 3 है। 'घातांक' उस संख्या को कहते हैं जो आधार के गुणन की संख्या दर्शाता है, पूरे अभिव्यक्ति को नहीं। 'वर्ग' और 'घन' शक्ति के विशिष्ट प्रकार हैं, लेकिन वे सामान्य अवधारणा का वर्णन नहीं करते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used in a Hindi-medium context.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "(-2)^4 ची किंमत किती आहे?",
+          "stem": "एका संख्येच्या एकाच संख्येने वारंवार गुणाकार करण्यासाठी वापरल्या जाणार्‍या शब्दाचे नाव काय आहे?",
           "choices": [
-            "-8",
-            "-16",
-            "8",
-            "16"
+            "चौरस",
+            "घन",
+            "घातक",
+            "शक्ती"
           ],
-          "solution": "(-2) ची सम घात असताना त्याची किंमत धनात्मक असते. 4 हा सम संख्या आहे, म्हणून (-2)^4 ची किंमत 16 असते. इतर विकल्प अयोग्य आहेत कारण (-2) ची सम घात असताना धनात्मक निकाल मिळतो आणि इतर विकल्प ऋणात्मक मूल्य किंवा अयोग्य गणना दर्शवतात.",
+          "solution": "एका संख्येच्या एकाच संख्येने वारंवार गुणाकार करण्यासाठी वापरल्या जाणार्‍या शब्दाचे नाव 'शक्ती' आहे. उदाहरणार्थ, 2 × 2 × 2 ला 2³ असे लिहिता येते, जे 2 ची 3 वी शक्ती अर्थात 2 ला 3 वेळा गुणाकार करणे अर्थ दर्शवते. 'घातक' हा शब्द बेसला किती वेळा गुणाकार करावे याचे संख्या दर्शवतो, परंतु पूर्ण व्यवस्था दर्शवत नाही. 'चौरस' आणि 'घन' हे शक्तीचे विशिष्ट प्रकार आहेत, परंतु ते सामान्य संकल्पनेचे वर्णन करत नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Marathi-medium textbooks.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology used.",
           "flag": null
         }
       },
@@ -72,9 +72,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the result of an even power with an odd power",
-        "Confuses the result of an even power with an odd power",
-        "Does not understand the meaning of exponents with negative bases, thinking it equals 8 or -8 instead of 16",
+        "Confuses exponent with square",
+        "Confuses exponent with cube",
+        "Uses the term 'exponent' incorrectly",
         null
       ],
       "solverAnswers": [
@@ -85,108 +85,7 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. (-2)^4 = (-2) × (-2) × (-2) × (-2) = 16. The author's reasoning aligns with the correct mathematical understanding.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 21,
-          "pageStart": 29,
-          "pageEnd": 31,
-          "headingPath": [
-            "Chapter 2: Power Play",
-            "SUMMARY",
-            "Tremendous in Ten!"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 22,
-          "pageStart": 31,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 2: Power Play",
-            "SUMMARY",
-            "Tremendous in Ten!"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 23,
-          "pageStart": 34,
-          "pageEnd": 36,
-          "headingPath": [
-            "Chapter 2: Power Play",
-            "SUMMARY",
-            "Tremendous in Ten!"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:02:19.140Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the exponential form of 2 × 2 × 2 × 2?",
-      "choices": [
-        "2^3",
-        "2^4",
-        "2^5",
-        "2^6"
-      ],
-      "answerIndex": 1,
-      "solution": "The expression 2 × 2 × 2 × 2 can be written as 2^4. The other options do not correctly represent the number of times 2 is multiplied. 2^3 is for three 2s, 2^5 is for five 2s, and 2^6 is for six 2s.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "2 × 2 × 2 × 2 का घातीय रूप क्या है?",
-          "choices": [
-            "2^3",
-            "2^4",
-            "2^5",
-            "2^6"
-          ],
-          "solution": "अभिव्यक्ति 2 × 2 × 2 × 2 को 2^4 के रूप में लिखा जा सकता है। अन्य विकल्प सही से 2 के गुणा की संख्या का प्रतिनिधित्व नहीं करते हैं। 2^3 तीन 2 के लिए है, 2^5 पांच 2 के लिए है, और 2^6 छह 2 के लिए है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "2 × 2 × 2 × 2 चे घातांकीय रूप काय आहे?",
-          "choices": [
-            "2^3",
-            "2^4",
-            "2^5",
-            "2^6"
-          ],
-          "solution": "2 × 2 × 2 × 2 चे घातांकीय रूप 2^4 असे लिहिता येईल. इतर विकल्प 2 च्या गुणाकाराच्या संख्येला बरोबर नकारतात. 2^3 च्या तीन 2 चा गुणाकार असतो, 2^5 च्या पाच 2 चा गुणाकार असतो आणि 2^6 च्या छह 2 चा गुणाकार असतो.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question, with appropriate mathematical terminology used in a Marathi-medium context.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Counts the number of 2s incorrectly.",
-        null,
-        "Counts the number of 2s incorrectly.",
-        "Counts the number of 2s incorrectly."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward. The correct answer is 2^4, as there are four 2s being multiplied. The author's reasoning is sound and matches the correct solution.",
+      "critique": "The question is clear and the correct answer is 'Power'. The explanation provided by the author is accurate, and the misconceptions listed for the wrong options are valid.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp102.pdf",
@@ -228,49 +127,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:02:19.140Z",
+      "generatedAt": "2026-10-29T18:16:13.818Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "Which of the following is the same as 3 × 3 × 3 × 3?",
+      "difficulty": 1,
+      "stem": "What is the term used for the traditional practice of walking long distances as part of a religious or spiritual pursuit?",
       "choices": [
-        "3^3",
-        "3^4",
-        "3^2",
-        "3^5"
+        "Pādayātra",
+        "Yatra",
+        "Dargah",
+        "Kānwar"
       ],
-      "answerIndex": 1,
-      "solution": "The expression 3 × 3 × 3 × 3 is equivalent to 3 raised to the power of 4, which is written as 3^4. The other options represent different powers of 3, which do not match the original expression.",
+      "answerIndex": 0,
+      "solution": "Pādayātra is the term used for the traditional practice of walking long distances as part of a religious or spiritual pursuit. Yatra refers to a pilgrimage, Dargah is a shrine, and Kānwar is a type of pilgrimage in specific traditions, none of which describe the general practice of walking for spiritual reasons.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन 3 × 3 × 3 × 3 के बराबर है?",
+          "stem": "धार्मिक या आध्यात्मिक उद्देश्य के लिए लंबी दूरी तक चलने के पारंपरिक अभ्यास के लिए क्या शब्द प्रयोग किया जाता है?",
           "choices": [
-            "3^3",
-            "3^4",
-            "3^2",
-            "3^5"
+            "पादयात्रा",
+            "यात्रा",
+            "दरगाह",
+            "कांवर"
           ],
-          "solution": "अभिव्यक्ति 3 × 3 × 3 × 3, 3 के चौथे घात के बराबर है, जिसे 3^4 लिखा जाता है। अन्य विकल्प 3 के अलग-अलग घात का प्रतिनिधित्व करते हैं, जो मूल अभिव्यक्ति के बराबर नहीं होते।",
+          "solution": "पादयात्रा धार्मिक या आध्यात्मिक उद्देश्य के लिए लंबी दूरी तक चलने के पारंपरिक अभ्यास के लिए शब्द है। यात्रा तीर्थयात्रा के लिए शब्द है, दरगाह एक मंदिर है, और कांवर कुछ विशिष्ट परंपराओं में एक प्रकार की यात्रा है, जो कि आध्यात्मिक कारणों के लिए चलने के सामान्य अभ्यास का वर्णन नहीं करता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
+          "critique": "All terms are standard in Hindi religious context. 'Pādayātra' is correctly translated as 'पादयात्रा', and other options are accurately rendered.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते 3 × 3 × 3 × 3 च्या समान आहे?",
+          "stem": "धार्मिक किंवा आध्यात्मिक उद्देशाने लांब अंतर चालण्याच्या पारंपरिक प्रथेला कोणते शब्द वापरले जाते?",
           "choices": [
-            "3^3",
-            "3^4",
-            "3^2",
-            "3^5"
+            "पायदारा",
+            "यात्रा",
+            "दरगाह",
+            "कांवर"
           ],
-          "solution": "3 × 3 × 3 × 3 चे व्यंजक 3 च्या चौथ्या घाताच्या बरोबर आहे, जे 3^4 असे लिहिले जाते. इतर विकल्प 3 च्या वेगवेगळ्या घातांना दर्शवतात, जे मूळ व्यंजकाशी जुळत नाहीत.",
+          "solution": "पायदारा हा धार्मिक किंवा आध्यात्मिक उद्देशाने लांब अंतर चालण्याच्या पारंपरिक प्रथेला म्हणतात. यात्रा हा तीर्थयात्रेचा शब्द आहे, दरगाह हा एक दर्गा आहे आणि कांवर ही विशिष्ट परंपरांमधील एक प्रकारची यात्रा आहे, ज्यामध्ये कोणत्याही व्यापक आध्यात्मिक कारणासाठी चालण्याची प्रथा वर्णन करत नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the original English question, with appropriate mathematical terminology and structure.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms used for religious concepts.",
           "flag": null
         }
       },
@@ -279,419 +178,225 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the number of multiplications with the exponent",
         null,
-        "Confuses the number of factors with the exponent, thinking 3 × 3 × 3 × 3 is 3 squared instead of 3 to the fourth power.",
-        "Confuses the number of factors with the exponent, thinking that four 3s mean 5 as the exponent"
+        "confuses a specific pilgrimage with the general term",
+        "confuses a specific pilgrimage with the general term",
+        "confuses a place with the general term"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The question is clear and the solution correctly identifies 3^4 as the equivalent expression. The distractors reflect common misconceptions about exponents.",
+      "critique": "The correct answer is 0 (Pādayātra), as it is the general term for the practice of walking long distances for religious or spiritual purposes. The other options are specific places or pilgrimages, not general terms. The author's reasoning aligns with the correct interpretation.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 21,
-          "pageStart": 29,
-          "pageEnd": 31,
+          "ordinal": 11,
+          "pageStart": 16,
+          "pageEnd": 17,
           "headingPath": [
             "Chapter 2: Power Play",
-            "SUMMARY",
-            "Tremendous in Ten!"
+            "2.5 Did You Ever Wonder?"
           ]
         },
         {
           "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 22,
-          "pageStart": 31,
-          "pageEnd": 34,
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 18,
           "headingPath": [
             "Chapter 2: Power Play",
-            "SUMMARY",
-            "Tremendous in Ten!"
+            "2.5 Did You Ever Wonder?"
           ]
         },
         {
           "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 23,
-          "pageStart": 34,
-          "pageEnd": 36,
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 20,
           "headingPath": [
             "Chapter 2: Power Play",
-            "SUMMARY",
-            "Tremendous in Ten!"
+            "2.5 Did You Ever Wonder?"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:02:19.140Z",
+      "generatedAt": "2026-10-29T18:16:13.818Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If a paper is folded 10 times and its thickness increases by 1024 times, what is the factor by which the thickness increases after 20 folds?",
+      "stem": "If the distance from the Sun to Saturn is 1.4335 × 10^12 meters and the distance from the Sun to Earth is 1.496 × 10^11 meters, which is farther?",
       "choices": [
-        "1024",
-        "2048",
-        "1048576",
-        "2097152"
+        "Saturn",
+        "Earth",
+        "Both are the same",
+        "Cannot be determined"
       ],
-      "answerIndex": 2,
-      "solution": "After 10 folds, the thickness increases by 1024 times. After 20 folds, it increases by 1024 × 1024 = 1048576 times. The other options do not correctly calculate the exponential growth over 20 folds. 1024 is the factor for 10 folds, 2048 is double that, and 2097152 is incorrect.",
+      "answerIndex": 0,
+      "solution": "The exponent of 10^12 is higher than 10^11, so the distance to Saturn is greater. The second option incorrectly assumes Earth is farther, the third is wrong because the distances are different, and the fourth is incorrect because the values are given.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक कागज को 10 बार मोड़ा जाता है और इसकी मोटाई 1024 गुना बढ़ जाती है, तो 20 मोड़ों के बाद मोटाई कितने गुना बढ़ जाती है?",
+          "stem": "यदि सूर्य से शनि ग्रह की दूरी 1.4335 × 10^12 मीटर है और सूर्य से पृथ्वी की दूरी 1.496 × 10^11 मीटर है, तो कौन दूर है?",
           "choices": [
-            "1024",
-            "2048",
-            "1048576",
-            "2097152"
+            "शनि",
+            "पृथ्वी",
+            "दोनों समान हैं",
+            "निर्धारित नहीं किया जा सकता"
           ],
-          "solution": "10 मोड़ों के बाद मोटाई 1024 गुना बढ़ जाती है। 20 मोड़ों के बाद यह 1024 × 1024 = 1048576 गुना बढ़ जाती है। अन्य विकल्प सही तरीके से 20 मोड़ों के बाद घातांकीय वृद्धि की गणना नहीं करते। 1024 दस मोड़ों के लिए कारक है, 2048 इसका दोगुना है, और 2097152 गलत है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains in the same position (option 3), and the distractors are still incorrect.",
+          "solution": "10^12 की घात 10^11 से अधिक है, इसलिए शनि ग्रह की दूरी अधिक है। दूसरा विकल्प गलत रूप से पृथ्वी को दूर मानता है, तीसरा गलत है क्योंकि दूरियां अलग हैं और चौथा गलत है क्योंकि मान दिए गए हैं।",
+          "imageAlt": "सूर्य से शनि ग्रह और पृथ्वी की दूरियों को दर्शाने वाली एक संख्या रेखा",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "कागद 10 वेळा वाकून घेतला जातो आणि त्याची मोठेपणा 1024 पट वाढते, तर 20 वेळा वाकून घेतल्यानंतर मोठेपणा किती पट वाढतो?",
+          "stem": "सूर्य ते शनी अंतर 1.4335 × 10^12 मीटर आहे आणि सूर्य ते भूमी अंतर 1.496 × 10^11 मीटर आहे, तर कोण अधिक दूर आहे?",
           "choices": [
-            "1024",
-            "2048",
-            "1048576",
-            "2097152"
+            "शनी",
+            "भूमी",
+            "दोन्ही समान आहेत",
+            "निश्चित करता येत नाही"
           ],
-          "solution": "10 वेळा वाकून घेतल्यानंतर मोठेपणा 1024 पट वाढते. 20 वेळा वाकून घेतल्यानंतर तो 1024 × 1024 = 1048576 पट वाढतो. इतर विकल्प 20 वेळा वाकून घेतल्यानंतर घातांकीय वृद्धीच्या गणनेच्या चुकीच्या आहेत. 1024 हा 10 वेळा वाकून घेतल्याचा घटक आहे, 2048 हा त्याचा दुप्पट आहे आणि 2097152 हा चुकीचा आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
+          "solution": "10^12 चा घात 10^11 पेक्षा जास्त आहे, म्हणून शनी पर्यंत अंतर जास्त आहे. दुसरा विकल्प भूमी जास्त दूर असल्याचा चूक असतो, तिसरा चूक असतो कारण अंतर वेगळे आहेत आणि चौथा चूक असतो कारण मूल्ये दिली गेली आहेत.",
+          "imageAlt": "सूर्य ते शनी आणि भूमी अंतर दर्शविणारा एक संख्या रेषा",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "A number line showing the distances from the Sun to Saturn and Earth",
+      "figure": {
+        "kind": "numberline",
+        "spec": {
+          "min": 1.4,
+          "max": 1.5,
+          "step": 0.01,
+          "points": [
+            {
+              "value": 1.4335,
+              "label": "Saturn",
+              "open": false
+            },
+            {
+              "value": 1.496,
+              "label": "Earth",
+              "open": false
+            }
+          ],
+          "intervals": [],
+          "jumps": []
+        },
+        "labels": {
+          "Saturn": {
+            "en": "Saturn",
+            "hi": "शनि",
+            "mr": "शनी"
+          },
+          "Earth": {
+            "en": "Earth",
+            "hi": "पृथ्वी",
+            "mr": "भूमी"
+          }
+        }
+      },
+      "needsFigure": true,
       "distractorReason": [
-        "Uses the factor for 10 folds instead of 20 folds.",
-        "Incorrectly doubles the factor for 10 folds.",
         null,
-        "Fails to recognize that the factor for 20 folds is the square of the factor for 10 folds."
+        "confuses the exponents",
+        "fails to compare the exponents",
+        "does not consider the exponents"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies that the thickness doubles with each fold, so after 20 folds, the increase is 1024² = 1,048,576. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The solution is correct. Saturn's distance has a higher exponent (10^12 vs. 10^11), making it farther. The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 2: Power Play"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 2: Power Play"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 13,
           "headingPath": [
             "Chapter 2: Power Play",
-            "2.2 Exponential Notation and Operations"
+            "2.4 Powers of 10"
           ]
         },
         {
           "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 6,
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 14,
           "headingPath": [
             "Chapter 2: Power Play",
-            "2.2 Exponential Notation and Operations"
+            "2.4 Powers of 10"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp102.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 2: Power Play",
+            "2.5 Did You Ever Wonder?"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:02:19.140Z",
+      "generatedAt": "2026-10-29T18:16:13.818Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "Which of the following represents 10^18 in the Indian system?",
+      "stem": "Which of the following describes numbers that are both square and cube numbers?",
       "choices": [
-        "Kharab",
-        "Neel",
-        "Padma",
-        "Shankh"
+        "Numbers that are 6th powers",
+        "Numbers that are 4th powers",
+        "Numbers that are 5th powers",
+        "Numbers that are 3rd powers"
       ],
       "answerIndex": 0,
-      "solution": "In the Indian system of numeration, 10^18 is represented as Kharab. Neel represents 10^18, but it is a higher unit than Kharab, as it is 100 times larger. Padma and Shankh represent even larger values, 10^20 and 10^22 respectively, making them incorrect for 10^18.",
+      "solution": "Numbers that are both square and cube numbers must have an exponent that is a multiple of both 2 and 3, which is 6. Therefore, they are 6th powers. Numbers that are 4th, 5th, or 3rd powers do not meet the requirement of being both squares and cubes.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में कौन 10^18 का प्रतिनिधित्व भारतीय प्रणाली में करता है?",
+          "stem": "निम्नलिखित में से कौन-सा संख्याओं का वर्णन करता है जो दोनों वर्ग और घन संख्याएं हैं?",
           "choices": [
-            "खरब",
-            "नील",
-            "पद्मा",
-            "शंख"
+            "संख्याएं जो 6वें घात के होती हैं",
+            "संख्याएं जो 4वें घात के होती हैं",
+            "संख्याएं जो 5वें घात के होती हैं",
+            "संख्याएं जो 3वें घात के होती हैं"
           ],
-          "solution": "भारतीय संख्या प्रणाली में 10^18 खरब के रूप में निरूपित किया जाता है। नील 10^18 का प्रतिनिधित्व करता है, लेकिन यह खरब से बड़ा एक उच्च इकाई है, क्योंकि यह 100 गुना बड़ा है। पद्मा और शंख क्रमशः 10^20 और 10^22 का प्रतिनिधित्व करते हैं, जो 10^18 के लिए असही हैं।",
+          "solution": "जो संख्याएं दोनों वर्ग और घन संख्याएं हैं, उनका घातांक दोनों 2 और 3 का गुणज होना चाहिए, जो 6 है। इसलिए, वे 6वें घात की संख्याएं हैं। 4वें, 5वें या 3वें घात की संख्याएं वर्ग और घन दोनों होने की आवश्यकता को पूरा नहीं करती हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintaining the original meaning, correct answer position, and appropriate terminology used in Indian numeration systems.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses standard Hindi terminology for exponents and powers.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते 10^18 चे प्रतिनिधित्व करते?",
+          "stem": "खालीलपैकी कोणते संख्या ज्या एकाच वेळी वर्ग आणि घन संख्या आहेत त्यांचे वर्णन करते?",
           "choices": [
-            "खराब",
-            "नील",
-            "पद्मा",
-            "शंख"
+            "संख्या ज्या 6व्या घाताच्या आहेत",
+            "संख्या ज्या 4व्या घाताच्या आहेत",
+            "संख्या ज्या 5व्या घाताच्या आहेत",
+            "संख्या ज्या 3व्या घाताच्या आहेत"
           ],
-          "solution": "भारतीय पद्धतीत नाणेनियमात, 10^18 खराब द्वारे प्रतिनिधित्व केले जाते. नील 10^18 ला दर्शवते, परंतु ते खराब पेक्षा जास्त मोठे एकक आहे, कारण ते 100 पट जास्त आहे. पद्मा आणि शंख अनुक्रमे 10^20 आणि 10^22 चे प्रतिनिधित्व करतात, जे 10^18 ला अयोग्य ठरतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Marathi numerical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses Kharab with the next higher power",
-        "Confuses Kharab with the next higher power",
-        "Confuses Kharab with the next higher power"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct, and the reasoning aligns with the Indian numbering system. The correct answer is Kharab (10^18), and the other options are higher powers, which is a valid misconception.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 17,
-          "pageStart": 24,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 2: Power Play",
-            "2.5 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 18,
-          "pageStart": 25,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 2: Power Play",
-            "2.5 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 19,
-          "pageStart": 27,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 2: Power Play",
-            "2.5 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 20,
-          "pageStart": 28,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 2: Power Play",
-            "SUMMARY"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:02:19.140Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If 10^100 is called a googol, what is 10^1000 called?",
-      "choices": [
-        "Googolplex",
-        "Gigaplex",
-        "TeraPLEX",
-        "ZettaPLEX"
-      ],
-      "answerIndex": 0,
-      "solution": "The term for 10^1000 is a googolplex, as it follows the pattern of naming large numbers where a googol is 10^100. Gigaplex, TeraPLEX, and ZettaPLEX are not recognized scientific terms for this value and do not follow the standard naming convention for powers of ten.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 10^100 को गूगोल कहा जाता है, तो 10^1000 क्या कहलाता है?",
-          "choices": [
-            "गूगोलप्लेक्स",
-            "गिगाप्लेक्स",
-            "टेराप्लेक्स",
-            "जेटाप्लेक्स"
-          ],
-          "solution": "10^1000 के लिए शब्द गूगोलप्लेक्स है, क्योंकि बड़ी संख्याओं के नामकरण के पैटर्न के अनुसार गूगोल 10^100 होता है। गिगाप्लेक्स, टेराप्लेक्स और जेटाप्लेक्स इस मान के लिए वैज्ञानिक शब्द नहीं हैं और दस के घातों के मानक नामकरण परंपरा का अनुसरण नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "All terms are correctly translated and follow standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "10^100 ला गूगोल म्हणतात, तर 10^1000 ला काय म्हणतात?",
-          "choices": [
-            "गूगोलप्लेक्स",
-            "गिगाप्लेक्स",
-            "टेराप्लेक्स",
-            "जेटाप्लेक्स"
-          ],
-          "solution": "10^1000 ला गूगोलप्लेक्स म्हणतात, कारण ते मोठ्या संख्यांच्या नावांच्या पॅटर्ननुसार आहे, जेथे गूगोल 10^100 आहे. गिगाप्लेक्स, टेराप्लेक्स आणि जेटाप्लेक्स ही या मूल्यासाठी वैज्ञानिक शब्द नाहीत आणि दशमानाच्या मानक नामकरण पद्धतीचे अनुसरण करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, with appropriate Marathi equivalents for technical terms like 'googolplex' and 'gigaplex'. The structure and meaning match the original English question.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses googolplex with other large numbers",
-        "Confuses googolplex with other large numbers",
-        "Confuses googolplex with other large numbers"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward and the correct answer is clearly 0 (Googolplex). The solution is sound and the reasons for the wrong options are valid as they reflect common misconceptions about large number names.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 17,
-          "pageStart": 24,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 2: Power Play",
-            "2.5 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 18,
-          "pageStart": 25,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 2: Power Play",
-            "2.5 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 19,
-          "pageStart": 27,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 2: Power Play",
-            "2.5 A Pinch of History"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp102.pdf",
-          "ordinal": 20,
-          "pageStart": 28,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 2: Power Play",
-            "SUMMARY"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:02:19.140Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Which of the following is a number that is both a square and a cube?",
-      "choices": [
-        "64",
-        "49",
-        "25",
-        "8"
-      ],
-      "answerIndex": 0,
-      "solution": "A number that is both a square and a cube must be a sixth power because a square is a number raised to the second power and a cube is a number raised to the third power, so their common power is six. 64 is 2^6, which is both 8^2 and 4^3. 49 is 7^2 but not a cube. 25 is 5^2 but not a cube. 8 is 2^3 but not a square.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी एक ऐसी संख्या है जो एक वर्ग और घन दोनों है?",
-          "choices": [
-            "64",
-            "49",
-            "25",
-            "8"
-          ],
-          "solution": "एक ऐसी संख्या जो वर्ग और घन दोनों हो, छठी घात होनी चाहिए क्योंकि वर्ग एक संख्या की दूसरी घात होती है और घन एक संख्या की तीसरी घात होती है, अतः उनकी सामान्य घात छह होती है। 64, 2^6 है, जो 8^2 और 4^3 दोनों है। 49, 7^2 है लेकिन घन नहीं है। 25, 5^2 है लेकिन घन नहीं है। 8, 2^3 है लेकिन वर्ग नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता संख्या एक वर्ग आणि घन दोन्ही असते?",
-          "choices": [
-            "64",
-            "49",
-            "25",
-            "8"
-          ],
-          "solution": "एका संख्येला वर्ग आणि घन दोन्ही असावे लागते तर ती संख्या छक्का शक्ती असावी लागते कारण वर्ग म्हणजे संख्या दुसऱ्या शक्तीवर असते आणि घन म्हणजे संख्या तिसऱ्या शक्तीवर असते, त्यामुळे त्यांची सामायिक शक्ती छक्का असते. 64 ही 2^6 असून ती 8^2 आणि 4^3 देखील असते. 49 ही 7^2 असून घन नाही. 25 ही 5^2 असून घन नाही. 8 ही 2^3 असून वर्ग नाही.",
+          "solution": "एकाच वेळी वर्ग आणि घन संख्या असलेल्या संख्यांचा घात 2 आणि 3 च्या एकसारख्या असावा, जो 6 आहे. म्हणून त्या 6व्या घाताच्या असतात. 4व्या, 5व्या किंवा 3व्या घाताच्या संख्या वर्ग आणि घन असण्याच्या आवश्यकतेला पूर्ण करत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -703,9 +408,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses square numbers with cube numbers",
-        "Confuses square numbers with cube numbers",
-        "Confuses square numbers with cube numbers"
+        "Confuses square and cube exponents",
+        "Misunderstands the relationship between exponents",
+        "Fails to recognize that 6 is the least common multiple of 2 and 3"
       ],
       "solverAnswers": [
         0,
@@ -714,8 +419,297 @@
         0,
         0
       ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that numbers that are both squares and cubes must be 6th powers, as 6 is the least common multiple of 2 and 3. The reasoning and the key are accurate.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp102.pdf",
+          "ordinal": 24,
+          "pageStart": 36,
+          "pageEnd": 37,
+          "headingPath": [
+            "Chapter 2: Power Play",
+            "SUMMARY",
+            "Tremendous in Ten!"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp102.pdf",
+          "ordinal": 25,
+          "pageStart": 38,
+          "pageEnd": 38,
+          "headingPath": [
+            "Chapter 2: Power Play",
+            "SUMMARY",
+            "Tremendous in Ten!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T18:16:13.818Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a person walks 400 km to reach a place and arrives early in the morning, how long ago did they start their journey? Assume they walk at a speed of 5 km/h.",
+      "choices": [
+        "80 hours",
+        "20 hours",
+        "10 hours",
+        "40 hours"
+      ],
+      "answerIndex": 0,
+      "solution": "To find the time, divide the distance by the speed: 400 km ÷ 5 km/h = 80 hours. The other options are incorrect calculations or misunderstandings of the division.",
+      "checkExpr": "400/5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई व्यक्ति एक स्थान तक पहुंचने के लिए 400 किमी चलता है और सुबह जल्दी पहुंच जाता है, तो उसने अपनी यात्रा कब शुरू की? मान लीजिए वह 5 किमी/घंटा की गति से चलता है?",
+          "choices": [
+            "80 घंटे",
+            "20 घंटे",
+            "10 घंटे",
+            "40 घंटे"
+          ],
+          "solution": "समय ज्ञात करने के लिए दूरी को गति से विभाजित करें: 400 किमी ÷ 5 किमी/घंटा = 80 घंटे। अन्य विकल्प गलत गणना या भाग की गलत समझ हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology for time and speed.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक व्यक्ती एका ठिकाणी पोहोचण्यासाठी 400 किमी चालली आणि पहाटे लवकर पोहोचली, तर त्यांनी प्रवास किती वेळा सुरू केला? असे मानले जाते की ते 5 किमी/तास वेगाने चालतात.",
+          "choices": [
+            "80 तास",
+            "20 तास",
+            "10 तास",
+            "40 तास"
+          ],
+          "solution": "वेळ शोधण्यासाठी, अंतराला वेगाने भागा: 400 किमी ÷ 5 किमी/तास = 80 तास. इतर विकल्प चूकीच्या गणना किंवा भागाकाराच्या चुकीच्या समजामुळे असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that 400 km divided by 5 km/h equals 20 hours instead of 80",
+        "divides incorrectly",
+        "multiplies instead of divides"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is mathematically correct, and the reasoning aligns with the correct calculation of time as distance divided by speed. The distractors represent plausible errors students might make.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp102.pdf",
+          "ordinal": 11,
+          "pageStart": 16,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 2: Power Play",
+            "2.5 Did You Ever Wonder?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp102.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 2: Power Play",
+            "2.5 Did You Ever Wonder?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp102.pdf",
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 2: Power Play",
+            "2.5 Did You Ever Wonder?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T18:16:13.818Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a number is written as 5 × 10^6, how many times larger is this number than 5 × 10^3?",
+      "choices": [
+        "1000",
+        "10000",
+        "100000",
+        "1000000"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 1000 because 5 × 10^6 divided by 5 × 10^3 equals 10^(6-3) = 10^3 = 1000. '10000' is 10^4, which is incorrect. '100000' is 10^5, which is also incorrect. '1000000' is 10^6, which is too large.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक संख्या 5 × 10^6 के रूप में लिखी जाती है, तो यह संख्या 5 × 10^3 से कितनी गुना बड़ी है?",
+          "choices": [
+            "1000",
+            "10000",
+            "100000",
+            "1000000"
+          ],
+          "solution": "सही उत्तर 1000 है क्योंकि 5 × 10^6 को 5 × 10^3 से विभाजित करने पर 10^(6-3) = 10^3 = 1000 प्राप्त होता है। '10000' 10^4 है, जो गलत है। '100000' 10^5 है, जो भी गलत है। '1000000' 10^6 है, जो बहुत बड़ा है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक संख्या 5 × 10^6 असे लिहिली गेली असेल, तर ही संख्या 5 × 10^3 पेक्षा किती पट जास्त आहे?",
+          "choices": [
+            "1000",
+            "10000",
+            "100000",
+            "1000000"
+          ],
+          "solution": "बरोबर उत्तर 1000 आहे कारण 5 × 10^6 चे 5 × 10^3 ने भाग दिल्यास 10^(6-3) = 10^3 = 1000 मिळते. '10000' हे 10^4 आहे, जे चूक आहे. '100000' हे 10^5 आहे, जे देखील चूक आहे. '1000000' हे 10^6 आहे, जे खूप मोठे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate use of Marathi numerical terms and mathematical notation.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "misinterprets the exponent difference",
+        "overestimates the power of 10",
+        "underestimates the power of 10"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Dividing 5 × 10^6 by 5 × 10^3 gives 10^(6-3) = 10^3 = 1000, which matches the correct answer. The author's reasoning for the distractors is valid.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp102.pdf",
+          "ordinal": 21,
+          "pageStart": 29,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 2: Power Play",
+            "SUMMARY",
+            "Tremendous in Ten!"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp102.pdf",
+          "ordinal": 22,
+          "pageStart": 31,
+          "pageEnd": 34,
+          "headingPath": [
+            "Chapter 2: Power Play",
+            "SUMMARY",
+            "Tremendous in Ten!"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp102.pdf",
+          "ordinal": 23,
+          "pageStart": 34,
+          "pageEnd": 36,
+          "headingPath": [
+            "Chapter 2: Power Play",
+            "SUMMARY",
+            "Tremendous in Ten!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T18:16:13.818Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a number is both a square and a cube, what must be true about its prime factorization?",
+      "choices": [
+        "All exponents are multiples of 2",
+        "All exponents are multiples of 3",
+        "All exponents are multiples of 6",
+        "All exponents are multiples of 4"
+      ],
+      "answerIndex": 2,
+      "solution": "A number that is both a square and a cube must have all exponents in its prime factorization as multiples of 6. The correct option is 'All exponents are multiples of 6'. The other options are incorrect because they do not satisfy the condition of being both a square and a cube.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई संख्या एक वर्ग और एक घन दोनों है, तो उसके अभाज्य गुणनखंडन के बारे में क्या आवश्यकता होगी?",
+          "choices": [
+            "सभी घातांक 2 के गुणज हैं",
+            "सभी घातांक 3 के गुणज हैं",
+            "सभी घातांक 6 के गुणज हैं",
+            "सभी घातांक 4 के गुणज हैं"
+          ],
+          "solution": "एक संख्या जो एक वर्ग और एक घन दोनों है, उसके अभाज्य गुणनखंडन में सभी घातांक 6 के गुणज होने चाहिए। सही विकल्प 'सभी घातांक 6 के गुणज हैं' है। अन्य विकल्प गलत हैं क्योंकि वे वर्ग और घन दोनों की शर्त को पूरा नहीं करते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक संख्या चौरस आणि घन दोन्ही असेल, तर तिच्या अविभाज्य अपवर्जक विभाजनाबद्दल काय खात्री असावी?",
+          "choices": [
+            "सर्व घातांक 2 चे गुणक असतात",
+            "सर्व घातांक 3 चे गुणक असतात",
+            "सर्व घातांक 6 चे गुणक असतात",
+            "सर्व घातांक 4 चे गुणक असतात"
+          ],
+          "solution": "एक संख्या जी चौरस आणि घन दोन्ही असेल, तिच्या अविभाज्य अपवर्जक विभाजनात सर्व घातांक 6 चे गुणक असतात. योग्य पर्याय 'सर्व घातांक 6 चे गुणक असतात' आहे. इतर पर्याय चौरस आणि घन दोन्ही असण्याच्या अटीला पूर्ण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, technical terms are appropriately used in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "only ensures the number is a square",
+        "only ensures the number is a cube",
+        null,
+        "incorrectly assumes a multiple of 4 is sufficient"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that a number that is both a square and a cube must be a sixth power. 64 is 8² and 4³, making it a valid answer. The other options are either squares or cubes but not both, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The solution is correct. A number that is both a square and a cube must have exponents in its prime factorization that are multiples of 6, since 6 is the least common multiple of 2 and 3.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp102.pdf",
@@ -759,7 +753,108 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:02:19.140Z",
+      "generatedAt": "2026-10-29T18:16:13.818Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If 2^x = 64, what is the value of x?",
+      "choices": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 6 because 2^6 = 64. '5' is 32, which is too small. '7' is 128, which is too large. '8' is 256, which is also too large.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 2^x = 64, तो x का मान क्या है?",
+          "choices": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "solution": "सही उत्तर 6 है क्योंकि 2^6 = 64। '5' 32 है, जो बहुत छोटा है। '7' 128 है, जो बहुत बड़ा है। '8' 256 है, जो भी बहुत बड़ा है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "2^x = 64 असल्यास x ची किंमत काय आहे?",
+          "choices": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "solution": "बरोबर उत्तर 6 आहे कारण 2^6 = 64. '5' 32 आहे, जे खूप लहान आहे. '7' 128 आहे, जे खूप मोठे आहे. '8' 256 आहे, जे खूप मोठे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "underestimates the exponent",
+        null,
+        "overestimates the exponent",
+        "confuses powers of 2"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the key. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp102.pdf",
+          "ordinal": 21,
+          "pageStart": 29,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 2: Power Play",
+            "SUMMARY",
+            "Tremendous in Ten!"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp102.pdf",
+          "ordinal": 22,
+          "pageStart": 31,
+          "pageEnd": 34,
+          "headingPath": [
+            "Chapter 2: Power Play",
+            "SUMMARY",
+            "Tremendous in Ten!"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp102.pdf",
+          "ordinal": 23,
+          "pageStart": 34,
+          "pageEnd": 36,
+          "headingPath": [
+            "Chapter 2: Power Play",
+            "SUMMARY",
+            "Tremendous in Ten!"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T18:16:13.818Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

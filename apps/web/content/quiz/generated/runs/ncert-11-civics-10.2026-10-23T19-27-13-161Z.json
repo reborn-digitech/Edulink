@@ -1,0 +1,896 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T19:27:13.161Z",
+  "finishedAt": "2026-10-23T19:35:23.141Z",
+  "seconds": 490,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "India Constitution at Work",
+    "bookCode": "keps2",
+    "document": "ncert/11/political-science/keps210.pdf",
+    "classLevel": 11,
+    "subject": "Political Science",
+    "chapter": "Chapter 10 — The Philosophy of the Constitution",
+    "edition": "Reprint 2026-27",
+    "chunks": 22,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, sample question paper, 2026-27]\n23. Explain the conflict between the judiciary and the executive that emerged during\nthe early 1970 s in India and became a reason for the constitutional crisis.",
+      "[CBSE Class XII Political Science, marking scheme, 2025-26]\n5. D) 1990s",
+      "[CBSE Class XII Political Science, marking scheme, 2022-23]\n3. Congress",
+      "[CBSE Class XII Political Science, marking scheme, 2022-23]\n1. Demands for Autonomy"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 187012,
+      "in": 45,
+      "out": 45,
+      "rejects": 0,
+      "promptTokens": 38451,
+      "completionTokens": 10858
+    },
+    "critique": {
+      "calls": 60,
+      "ms": 386514,
+      "in": 45,
+      "out": 37,
+      "rejects": 8,
+      "promptTokens": 27470,
+      "completionTokens": 10396
+    },
+    "solver": {
+      "calls": 279,
+      "ms": 136286,
+      "in": 37,
+      "out": 31,
+      "rejects": 6,
+      "promptTokens": 48189,
+      "completionTokens": 2823
+    },
+    "form": {
+      "calls": 10,
+      "ms": 27093,
+      "in": 31,
+      "out": 3,
+      "rejects": 28,
+      "promptTokens": 2688,
+      "completionTokens": 734
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 6,
+      "ms": 1096,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 162315,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 8604,
+      "completionTokens": 5118
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main idea of the philosophy of the Constitution according to the passage?",
+      "ms": {
+        "draft": 3680,
+        "critique": 7027
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the Japanese Constitution?",
+      "ms": {
+        "draft": 3680,
+        "critique": 7461
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a political ideal in the Constitution is interpreted differently by different institutions, what does the passage suggest should be done?",
+      "ms": {
+        "draft": 3680,
+        "critique": 7907
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is it important to study the philosophy of the Constitution?",
+      "ms": {
+        "draft": 3680,
+        "critique": 8641
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How does the passage describe the role of the Constituent Assembly Debates in understanding the Constitution?",
+      "ms": {
+        "draft": 3680,
+        "critique": 7246,
+        "solver": 11819,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest is the purpose of a constitution in a modern state?",
+      "ms": {
+        "draft": 4074,
+        "critique": 6333,
+        "solver": 1829,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what was the main purpose of the Constituent Assembly in India?",
+      "ms": {
+        "draft": 4074,
+        "critique": 6826,
+        "solver": 1379,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the passage suggest about the relevance of the Constituent Assembly's philosophy in modern times?",
+      "ms": {
+        "draft": 4074,
+        "critique": 6615,
+        "solver": 1702,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the passage say about the role of the Constitution in society?",
+      "ms": {
+        "draft": 4074,
+        "critique": 6356,
+        "solver": 1409,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the relationship between laws and moral values?",
+      "ms": {
+        "draft": 3680,
+        "critique": 6731,
+        "solver": 14943,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can we infer about the philosophy of the Indian Constitution?",
+      "ms": {
+        "draft": 4074,
+        "critique": 5700,
+        "solver": 1667,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage imply about the relationship between the Constitution and the people's values?",
+      "ms": {
+        "draft": 4074,
+        "critique": 5781,
+        "solver": 1748,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How does the Indian Constitution ensure that no single community dominates others?",
+      "ms": {
+        "draft": 4381,
+        "critique": 6143,
+        "solver": 1775,
+        "form": 3720
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did the Indian Constitution not adopt the western model of secularism?",
+      "ms": {
+        "draft": 4381,
+        "critique": 6264,
+        "solver": 1676,
+        "form": 2404
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason the Indian Constitution acknowledges the importance of communities?",
+      "ms": {
+        "draft": 4381,
+        "critique": 6620,
+        "solver": 1743,
+        "form": 3112
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the role of the state in relation to religion according to the passage?",
+      "ms": {
+        "draft": 3625,
+        "critique": 6072
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a religious community in India wants to run an educational institution, which of the following is true according to the Indian Constitution?",
+      "ms": {
+        "draft": 4381,
+        "critique": 6979,
+        "solver": 15585,
+        "form": 3846
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the Indian Constitution's approach to federalism?",
+      "ms": {
+        "draft": 3625,
+        "critique": 6971,
+        "solver": 1909,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the significance of universal franchise according to the passage?",
+      "ms": {
+        "draft": 3625,
+        "critique": 7550,
+        "solver": 11205,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the role of compromise in the Indian Constitution?",
+      "ms": {
+        "draft": 4879,
+        "critique": 5748,
+        "solver": 859,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best describes the nature of the Indian Constitution?",
+      "ms": {
+        "draft": 5665,
+        "critique": 4815,
+        "solver": 4364,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements best explains the role of the Constitution in maintaining a long-term vision?",
+      "ms": {
+        "draft": 4849,
+        "critique": 7917
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following situations best illustrates the idea that the Constitution's philosophy is still shared by the people today?",
+      "ms": {
+        "draft": 4849,
+        "critique": 7382,
+        "solver": 13291,
+        "form": 2229
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best explains the idea that the Constitution is 'prepared and adopted by We, the people of India'?",
+      "ms": {
+        "draft": 4849,
+        "critique": 7004,
+        "solver": 12655,
+        "form": 3519
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a political leader argues that the Constitution should be changed to reflect the values of the present day, which of the following would be the best response based on the passage?",
+      "ms": {
+        "draft": 4849,
+        "critique": 8957,
+        "solver": 12138,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main component of representation that the Indian Constitution is considered unrepresentative of?",
+      "ms": {
+        "draft": 12360,
+        "critique": 8684,
+        "solver": 1406
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains the significance of the Constituent Assembly debates in understanding the Constitution today?",
+      "ms": {
+        "draft": 4849,
+        "critique": 5643,
+        "solver": 11764,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 4849,
+        "critique": 7384,
+        "solver": 12054,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the passage imply about the Indian Constitution being an alien document?",
+      "ms": {
+        "draft": 12360,
+        "critique": 5425,
+        "solver": 1082,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the range of opinions in the Constituent Assembly?",
+      "ms": {
+        "draft": 12360,
+        "critique": 6659,
+        "solver": 1689,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the limitations of the Indian Constitution?",
+      "ms": {
+        "draft": 12360,
+        "critique": 5903,
+        "solver": 1705
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the quote from K. Hanumanthaiya suggest about the Indian Constitution?",
+      "ms": {
+        "draft": 12360,
+        "critique": 7644,
+        "solver": 1099
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage imply about the process of drafting the Indian Constitution?",
+      "ms": {
+        "draft": 12360,
+        "critique": 7286,
+        "solver": 1850,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the Indian Constitution's approach to handling different identities within the country?",
+      "ms": {
+        "draft": 4034,
+        "critique": 7366
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what is the main reason the Indian Constitution is considered a 'substantive achievement'?",
+      "ms": {
+        "draft": 4034,
+        "critique": 5684,
+        "solver": 11390,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the significance of the debate over separate electorates based on religious identity in the Indian Constitution?",
+      "ms": {
+        "draft": 4034,
+        "critique": 6510,
+        "solver": 13646
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements best reflects the idea that the Indian Constitution aims to achieve 'true fraternity' as mentioned in the passage?",
+      "ms": {
+        "draft": 4034,
+        "critique": 5715,
+        "solver": 14029,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what was the main objective of the Indian Constitution as stated by Sardar Patel?",
+      "ms": {
+        "draft": 4034,
+        "critique": 6599
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the makers of the Indian Constitution recognize as necessary for equality between individuals?",
+      "ms": {
+        "draft": 4236,
+        "critique": 5552,
+        "solver": 2069
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the Indian Constitution's approach to multiculturalism?",
+      "ms": {
+        "draft": 4236,
+        "critique": 5653,
+        "solver": 1780,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of political deliberation in the Indian Constitution?",
+      "ms": {
+        "draft": 4034,
+        "critique": 6857,
+        "solver": 10570
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the reason given for why the Indian Constitution did not adopt the western model of separation of religion and state?",
+      "ms": {
+        "draft": 4236,
+        "critique": 6999,
+        "solver": 1101,
+        "form": 2298
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a right of religious communities as per the Indian Constitution?",
+      "ms": {
+        "draft": 4381,
+        "critique": 6548,
+        "solver": 1418,
+        "form": 2791,
+        "translation": 52412
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the Indian Constitution ensure for religious communities?",
+      "ms": {
+        "draft": 3625,
+        "critique": 7377,
+        "solver": 10836,
+        "form": 2283,
+        "translation": 46405
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the Indian Constitution's approach to national identity?",
+      "ms": {
+        "draft": 4879,
+        "critique": 6332,
+        "solver": 1181,
+        "form": 3689,
+        "translation": 60379
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main idea of the philosophy of the Constitution according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the Japanese Constitution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a political ideal in the Constitution is interpreted differently by different institutions, what does the passage suggest should be done?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, why is it important to study the philosophy of the Constitution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How does the passage describe the role of the Constituent Assembly Debates in understanding the Constitution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"contradicts the passage's emphasis on the importance of deba…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest is the purpose of a constitution in a modern state?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what was the main purpose of the Constituent Assembly in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the passage suggest about the relevance of the Constituent Assembly's philosophy in modern times?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"overlooks the passage's claim that the philosophy is still r…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the passage say about the role of the Constitution in society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the relationship between laws and moral values?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can we infer about the philosophy of the Indian Constitution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage imply about the relationship between the Constitution and the people's values?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How does the Indian Constitution ensure that no single community dominates others?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's stance on community recognition…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why did the Indian Constitution not adopt the western model of secularism?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's comparison between models of se…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's stance on individual freedom…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the main reason the Indian Constitution acknowledges the importance of communities?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's focus on harmony over economic f…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's view on individual vs. communit…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the role of the state in relation to religion according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a religious community in India wants to run an educational institution, which of the following is true according to the Indian Constitution?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the Indian Constitution's approach to federalism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the significance of universal franchise according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (74 vs 36 characters); distractor 2's reason is not a one-line misconception (\"Contradicts the passage's statement about its importance…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the role of compromise in the Indian Constitution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"misinterprets the passage's view on compromise…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following best describes the nature of the Indian Constitution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements best explains the role of the Constitution in maintaining a long-term vision?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following situations best illustrates the idea that the Constitution's philosophy is still shared by the people today?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best explains the idea that the Constitution is 'prepared and adopted by We, the people of India'?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 1's reason is not a one-line misconception (\"Misunderstands the phrase 'given by a body of great men' as …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a political leader argues that the Constitution should be changed to reflect the values of the present day, which of the following would be the best response based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's message that the Constitution's…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main component of representation that the Indian Constitution is considered unrepresentative of?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains the significance of the Constituent Assembly debates in understanding the Constitution today?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's message that the debates are st…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's message that the Constitution's…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the passage imply about the Indian Constitution being an alien document?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"It is entirely alien\" / \"It is not entirely alien\"); distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's mention of 'not entirely alien' …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the range of opinions in the Constituent Assembly?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 2 say the same thing (\"It was not fully represented\" / \"It was fully represented\"); distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's mention of a 'vast range of issu…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What does the passage say about the limitations of the Indian Constitution?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What does the quote from K. Hanumanthaiya suggest about the Indian Constitution?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage imply about the process of drafting the Indian Constitution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's mention of 'innovative borrowing…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following best describes the Indian Constitution's approach to handling different identities within the country?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what is the main reason the Indian Constitution is considered a 'substantive achievement'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"This option is true but does not capture the specific achiev…\"); distractor 3's reason is not a one-line misconception (\"This option misrepresents the passage by suggesting the Cons…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, what is the significance of the debate over separate electorates based on religious identity in the Indian Constitution?",
+      "reason": "after redraft: the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements best reflects the idea that the Indian Constitution aims to achieve 'true fraternity' as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"This option contradicts the passage by promoting division ba…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "According to the passage, what was the main objective of the Indian Constitution as stated by Sardar Patel?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did the makers of the Indian Constitution recognize as necessary for equality between individuals?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the Indian Constitution's approach to multiculturalism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misunderstands the passage's emphasis on group rights and mu…\"); distractor 3's reason is not a one-line misconception (\"Contradicts the passage, which supports cultural expression …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of political deliberation in the Indian Constitution?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What was the reason given for why the Indian Constitution did not adopt the western model of separation of religion and state?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's explanation about the need for s…\"); distractor 3's reason is not a one-line misconception (\"Contradicts the passage, which states that the state may int…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

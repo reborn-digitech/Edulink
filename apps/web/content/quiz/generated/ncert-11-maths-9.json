@@ -21,257 +21,49 @@
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-23T03:27:54.058Z",
+  "generatedAt": "2026-10-28T08:34:17.724Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the general form of the equation of a straight line?",
+      "stem": "What is the term used to describe the angle made by a line with the positive direction of the x-axis, measured anti-clockwise?",
       "choices": [
-        "Ax + By + C = 0",
-        "Ax + By = 0",
-        "Ax + By + C = 1",
-        "Ax + By = 1"
-      ],
-      "answerIndex": 0,
-      "solution": "The general form of the equation of a straight line is Ax + By + C = 0, which represents all possible straight lines in a plane. This form allows for any real numbers A, B, and C, as long as A and B are not both zero. The other options are specific cases or incorrect forms that do not account for all possible lines.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक सीधी रेखा के समीकरण का सामान्य रूप क्या है?",
-          "choices": [
-            "Ax + By + C = 0",
-            "Ax + By = 0",
-            "Ax + By + C = 1",
-            "Ax + By = 1"
-          ],
-          "solution": "एक सीधी रेखा के समीकरण का सामान्य रूप Ax + By + C = 0 है, जो तल में सभी संभावित सीधी रेखाओं का प्रतिनिधित्व करता है। इस रूप में A, B और C कोई भी वास्तविक संख्या हो सकती हैं, जब तक कि A और B दोनों शून्य न हों। अन्य विकल्प विशिष्ट मामले हैं या गलत रूप हैं जो सभी संभावित रेखाओं की गणना नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology common in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "सरळ रेषेच्या समीकरणाचा सामान्य रूप काय आहे?",
-          "choices": [
-            "Ax + By + C = 0",
-            "Ax + By = 0",
-            "Ax + By + C = 1",
-            "Ax + By = 1"
-          ],
-          "solution": "सरळ रेषेच्या समीकरणाचा सामान्य रूप Ax + By + C = 0 आहे, जो समतलातील अनुक्रमे सरळ रेषा दर्शवतो. ह्या रूपामध्ये A, B आणि C या वास्तविक संख्या असू शकतात, जर ते A आणि B दोन्ही शून्य नसतील. इतर विकल्प सामान्य रूपाचे विशिष्ट उदाहरण आहेत किंवा चुकीचे रूप आहेत जे सर्व संभाव्य रेषांचा विचार करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the general form with a simplified version",
-        "Misunderstands the condition for A and B",
-        "Forgets the constant term C"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as the general form of a straight line is indeed Ax + By + C = 0. The other options are incorrect variations, and the author's reasoning for the distractors aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 12,
-          "pageStart": 21,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 13,
-          "pageStart": 23,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 14,
-          "pageStart": 24,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 15,
-          "pageStart": 25,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:27:54.058Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "If a line makes an angle α with the positive direction of the x-axis, what is the slope of the line?",
-      "choices": [
-        "tan α",
-        "sin α",
-        "cos α",
-        "cot α"
-      ],
-      "answerIndex": 0,
-      "solution": "The slope of a line that makes an angle α with the positive direction of the x-axis is determined by the tangent of that angle, tan α. This is because the slope is defined as the ratio of the vertical change to the horizontal change, which corresponds to the tangent of the angle. The other options, sin α, cos α, and cot α, do not represent this ratio in the context of a line's slope.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई रेखा x-अक्ष की धनात्मक दिशा के साथ कोण α बनाती है, तो रेखा की ढलान क्या है?",
-          "choices": [
-            "tan α",
-            "sin α",
-            "cos α",
-            "cot α"
-          ],
-          "solution": "x-अक्ष की धनात्मक दिशा के साथ कोण α बनाने वाली रेखा की ढलान उस कोण के स्पर्शज्या (tan α) द्वारा निर्धारित की जाती है। यह इसलिए है क्योंकि ढलान को लंबवत परिवर्तन के क्षैतिज परिवर्तन के अनुपात के रूप में परिभाषित किया जाता है, जो कोण के स्पर्शज्या के साथ मेल खाता है। अन्य विकल्प, sin α, cos α और cot α, रेखा की ढलान के संदर्भ में इस अनुपात का प्रतिनिधित्व नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक रेखा x-अक्षाच्या धन दिशेसह एक कोन α बनवते, तर रेखेचा ढाल किती असेल?",
-          "choices": [
-            "tan α",
-            "sin α",
-            "cos α",
-            "cot α"
-          ],
-          "solution": "x-अक्षाच्या धन दिशेसह कोन α बनविणाऱ्या रेखेचा ढाल त्या कोनाच्या स्पर्शज्या (tan α) ने निश्चित केला जातो. हे कारण ढाल हा उर्ध्व बदल आणि अनुदैर्घ्य बदलाचा गुणोत्तर आहे, जो कोनाच्या स्पर्शज्याशी जुळतो. उर्वरित विकल्प, sin α, cos α आणि cot α, रेखेच्या ढालाच्या संदर्भात हा गुणोत्तर दर्शवत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses slope with sine of the angle",
-        "Confuses slope with cosine of the angle",
-        "Confuses slope with cotangent of the angle"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is tan α, as the slope of a line is defined as the tangent of the angle it makes with the positive x-axis. The other options represent common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 12,
-          "pageStart": 21,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 13,
-          "pageStart": 23,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 14,
-          "pageStart": 24,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 15,
-          "pageStart": 25,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:27:54.058Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the condition for two lines to be perpendicular based on their slopes?",
-      "choices": [
-        "The product of their slopes is 1",
-        "The sum of their slopes is 0",
-        "The product of their slopes is -1",
-        "The slopes are equal"
+        "Slope",
+        "Gradient",
+        "Inclination",
+        "Distance"
       ],
       "answerIndex": 2,
-      "solution": "The correct answer is that the product of their slopes is -1. This is because if two lines are perpendicular, the product of their slopes equals -1. The other options are incorrect: the product of slopes being 1 implies parallel lines, the sum being 0 implies negative reciprocals (which is not the condition for perpendicularity), and equal slopes imply parallel lines.",
+      "solution": "The term used to describe the angle made by a line with the positive direction of the x-axis, measured anti-clockwise, is called the inclination of the line. Slope and gradient are related concepts but are not the term for the angle itself. Distance is not related to the angle.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "दो रेखाओं के ढलानों के आधार पर लंबवत होने की शर्त क्या है?",
+          "stem": "x-अक्ष के धनात्मक दिशा के साथ एक रेखा द्वारा बनाए गए कोण, जो विपरीत घड़ी की दिशा में मापा जाता है, के लिए क्या शब्द प्रयोग किया जाता है?",
           "choices": [
-            "ढलानों का गुणनफल 1 है",
-            "ढलानों का योग 0 है",
-            "ढलानों का गुणनफल -1 है",
-            "ढलान समान हैं"
+            "ढाल",
+            "ढालान",
+            "झुकाव",
+            "दूरी"
           ],
-          "solution": "सही उत्तर यह है कि ढलानों का गुणनफल -1 है। इसका कारण यह है कि यदि दो रेखाएं लंबवत हैं, तो उनके ढलानों का गुणनफल -1 के बराबर होता है। अन्य विकल्प गलत हैं: ढलानों का गुणनफल 1 होना समांतर रेखाओं के लिए होता है, योग 0 होना ऋणात्मक व्युत्क्रम के लिए होता है (जो लंबवत होने की शर्त नहीं है), और समान ढलान समांतर रेखाओं के लिए होता है।",
+          "solution": "x-अक्ष के धनात्मक दिशा के साथ एक रेखा द्वारा बनाए गए कोण, जो विपरीत घड़ी की दिशा में मापा जाता है, के लिए शब्द रेखा का झुकाव कहलाता है। ढाल और ढालान संबंधित अवधारणाएं हैं लेकिन ये कोण के लिए शब्द नहीं हैं। दूरी कोण से संबंधित नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "Hindi translation accurately conveys the original meaning with appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "दोन रेषा लंब असतात याची शर्त त्यांच्या ढालांच्या आधारे काय असते?",
+          "stem": "एका रेषेने x-अक्षाच्या धन दिशेसह बनवलेला कोन, वामावर्त दिशेने मोजला गेलेला, याला कोणत्या शब्दाने वर्णन केले जाते?",
           "choices": [
-            "त्यांच्या ढालांचा गुणाकार 1 असतो",
-            "त्यांच्या ढालांचा बेरीज 0 असतो",
-            "त्यांच्या ढालांचा गुणाकार -1 असतो",
-            "ढाल एकसारखे असतात"
+            "ढाल",
+            "ढालांक",
+            "अविलंब",
+            "अंतर"
           ],
-          "solution": "योग्य उत्तर हा गुणाकार -1 असणे आहे. कारण जर दोन रेषा लंब असतील तर त्यांच्या ढालांचा गुणाकार -1 असतो. इतर विकल्प चुकीचे आहेत: ढालांचा गुणाकार 1 असल्यास समांतर रेषा असतात, बेरीज 0 असल्यास ऋण व्युत्क्रम (जे लंब असण्याची शर्त नाही) असतात आणि ढाल समान असल्यास समांतर रेषा असतात.",
+          "solution": "एका रेषेने x-अक्षाच्या धन दिशेसह बनवलेला कोन, वामावर्त दिशेने मोजला गेलेला, याला रेषेचा अविलंब म्हणतात. ढाल आणि ढालांक हे संबंधित संकल्पना आहेत परंतु ते कोनाच्या संदर्भात वापरले जात नाहीत. अंतर कोनाशी संबंधित नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for mathematical concepts.",
           "flag": null
         }
       },
@@ -280,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the condition for parallel lines",
-        "Misunderstands the relationship between slopes of perpendicular lines",
+        "Confuses slope with the term for the angle",
+        "Uses a synonym for slope",
         null,
-        "Incorrectly recalls the condition for perpendicular lines"
+        "Does not understand the definition of the term"
       ],
       "solverAnswers": [
         2,
@@ -293,80 +85,80 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is option 2, as the product of the slopes of two perpendicular lines is -1. The author's solution is accurate and the reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The question is well-posed and the correct answer is clearly 2 (Inclination). The author's reasoning is accurate and aligns with standard mathematical definitions.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 7,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 9: Straight Lines"
           ]
         },
         {
           "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 9,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 9: Straight Lines"
           ]
         },
         {
           "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 5,
-          "pageStart": 9,
-          "pageEnd": 10,
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
           "headingPath": [
             "Chapter 9: Straight Lines"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:27:54.058Z",
+      "generatedAt": "2026-10-28T08:34:17.724Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "What is the equation of a vertical line at a distance b from the y-axis?",
+      "stem": "What is the term used to describe the study of geometry using algebra, as introduced by René Descartes?",
       "choices": [
-        "x = b",
-        "y = b",
-        "x = -b",
-        "y = -b"
+        "Analytical geometry",
+        "Coordinate geometry",
+        "Plane geometry",
+        "Solid geometry"
       ],
       "answerIndex": 0,
-      "solution": "The correct answer is x = b. A vertical line parallel to the y-axis has a constant x-coordinate, and its equation is x = b if it is at a distance b from the y-axis. The other options are incorrect because they describe horizontal lines or lines on the opposite side of the y-axis.",
+      "solution": "Analytical geometry is the term used to describe the study of geometry using algebra, as introduced by René Descartes. Coordinate geometry is a part of analytical geometry, not the full term. Plane geometry and solid geometry are broader branches of geometry, not the specific term used here.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "y-अक्ष से दूरी b पर एक ऊर्ध्वाधर रेखा का समीकरण क्या है?",
+          "stem": "रेने डेकार्टेस द्वारा परिचय दिए गए बीजगणित के उपयोग द्वारा ज्यामिति के अध्ययन के लिए क्या शब्द प्रयोग किया जाता है?",
           "choices": [
-            "x = b",
-            "y = b",
-            "x = -b",
-            "y = -b"
+            "विश्लेषणात्मक ज्यामिति",
+            "निर्देशांक ज्यामिति",
+            "समतल ज्यामिति",
+            "ठोस ज्यामिति"
           ],
-          "solution": "सही उत्तर x = b है। y-अक्ष के समांतर ऊर्ध्वाधर रेखा का नियत x-निर्देशांक होता है और यदि यह y-अक्ष से दूरी b पर हो तो इसका समीकरण x = b होता है। अन्य विकल्प गलत हैं क्योंकि वे क्षैतिज रेखाएं या y-अक्ष के विपरीत ओर की रेखाएं वर्णित करते हैं।",
+          "solution": "विश्लेषणात्मक ज्यामिति रेने डेकार्टेस द्वारा परिचय दिए गए बीजगणित के उपयोग द्वारा ज्यामिति के अध्ययन के लिए शब्द है। निर्देशांक ज्यामिति विश्लेषणात्मक ज्यामिति का एक भाग है, पूर्ण शब्द नहीं। समतल ज्यामिति और ठोस ज्यामिति ज्यामिति की व्यापक शाखाएं हैं, न कि यहां विशिष्ट शब्द।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi technical terms used.",
           "flag": null
         },
         "mr": {
-          "stem": "y-axis पासून अंतर b असलेल्या उर्ध्व सरळ रेषेची समीकरण काय आहे?",
+          "stem": "रेने डेकार्टेस द्वारा पेश केलेल्या बीजगणिताच्या वापराने ज्यामितीच्या अभ्यासासाठी वापरलेला शब्द काय आहे?",
           "choices": [
-            "x = b",
-            "y = b",
-            "x = -b",
-            "y = -b"
+            "विश्लेषक ज्यामिती",
+            "निर्देशक ज्यामिती",
+            "समतल ज्यामिती",
+            "ठोस ज्यामिती"
           ],
-          "solution": "बरोबर उत्तर x = b आहे. y-अक्षाला समांतर असलेल्या उर्ध्व सरळ रेषेचे x-निर्देशक स्थिर असते, आणि जर ती y-अक्षापासून अंतर b असेल तर तिचे समीकरण x = b असते. इतर विकल्प चुकीचे आहेत कारण ते अरुंद सरळ रेषा किंवा y-अक्षाच्या विरुद्ध बाजूला असलेल्या रेषा दर्शवतात.",
+          "solution": "विश्लेषक ज्यामिती हा रेने डेकार्टेस द्वारा पेश केलेल्या बीजगणिताच्या वापराने ज्यामितीच्या अभ्यासासाठी वापरलेला शब्द आहे. निर्देशक ज्यामिती ही विश्लेषक ज्यामितीची एक भाग आहे, पूर्ण शब्द नाही. समतल ज्यामिती आणि ठोस ज्यामिती ही ज्यामितीची व्यापक शाखा आहेत, निश्चित शब्द नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
           "flag": null
         }
       },
@@ -376,9 +168,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Describes a horizontal line",
-        "Describes a line on the opposite side of the y-axis",
-        "Describes a horizontal line"
+        "Confuses coordinate geometry with analytical geometry",
+        "Does not recognize the specific term for the combination of algebra and geometry",
+        "Does not understand the distinction between plane and analytical geometry"
       ],
       "solverAnswers": [
         0,
@@ -388,106 +180,106 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is x = b, as a vertical line at distance b from the y-axis has a constant x-coordinate. The other options describe horizontal lines or lines on the opposite side of the y-axis, which are valid misconceptions.",
+      "critique": "The correct answer is 'Analytical geometry' as it specifically refers to the study of geometry using algebra, as introduced by Descartes. The other options are either subsets (coordinate geometry) or broader branches (plane and solid geometry) of geometry.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 7,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 9: Straight Lines"
           ]
         },
         {
           "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 9,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 9: Straight Lines"
           ]
         },
         {
           "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 5,
-          "pageStart": 9,
-          "pageEnd": 10,
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
           "headingPath": [
             "Chapter 9: Straight Lines"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:27:54.058Z",
+      "generatedAt": "2026-10-28T08:34:17.724Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "What is the equation of the line passing through the points (2, 5) and (5, 11)?",
+      "difficulty": 2,
+      "stem": "What is the equation of a line that makes x-intercept a and y-intercept b?",
       "choices": [
-        "y = 2x + 1",
-        "y = 3x - 1",
-        "y = 2x + 3",
-        "y = 3x + 2"
+        "x/a + y/b = 1",
+        "x/a - y/b = 1",
+        "x/b + y/a = 1",
+        "x/b - y/a = 1"
       ],
       "answerIndex": 0,
-      "solution": "The slope of the line is (11 - 5)/(5 - 2) = 2. Using the point-slope form with the point (2, 5), the equation is y - 5 = 2(x - 2), which simplifies to y = 2x + 1. The other options either have incorrect slopes or incorrect intercepts.",
+      "solution": "The equation of a line that makes x-intercept a and y-intercept b is x/a + y/b = 1. The other options have incorrect signs or reverse the terms.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "बिंदुओं (2, 5) और (5, 11) से गुजरने वाली रेखा का समीकरण क्या है?",
+          "stem": "x-अंतःखंड a और y-अंतःखंड b बनाने वाली रेखा का समीकरण क्या है?",
           "choices": [
-            "y = 2x + 1",
-            "y = 3x - 1",
-            "y = 2x + 3",
-            "y = 3x + 2"
+            "x/a + y/b = 1",
+            "x/a - y/b = 1",
+            "x/b + y/a = 1",
+            "x/b - y/a = 1"
           ],
-          "solution": "रेखा की प्रवणता (11 - 5)/(5 - 2) = 2 है। बिंदु (2, 5) के साथ बिंदु-प्रवणता रूप का उपयोग करके, समीकरण y - 5 = 2(x - 2) है, जो y = 2x + 1 में सरलीकृत हो जाता है। अन्य विकल्प या गलत प्रवणता या गलत अंतःखंड रखते हैं।",
-          "imageAlt": "बिंदुओं (2, 5) और (5, 11) से गुजरने वाली एक रेखा।",
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option (1).",
+          "solution": "x-अंतःखंड a और y-अंतःखंड b बनाने वाली रेखा का समीकरण x/a + y/b = 1 है। अन्य विकल्प गलत चिह्न या शब्दों के उल्टे क्रम के कारण गलत हैं।",
+          "imageAlt": "x-अंतःखंड (-3, 0) और y-अंतःखंड (0, 2) वाली एक रेखा",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "बिंदू (2, 5) आणि (5, 11) मार्गे जाणाऱ्या रेषेची समीकरण काय आहे?",
+          "stem": "x-अवछेद a आणि y-अवछेद b असलेल्या रेषेची समीकरण काय आहे?",
           "choices": [
-            "y = 2x + 1",
-            "y = 3x - 1",
-            "y = 2x + 3",
-            "y = 3x + 2"
+            "x/a + y/b = 1",
+            "x/a - y/b = 1",
+            "x/b + y/a = 1",
+            "x/b - y/a = 1"
           ],
-          "solution": "रेषेचा ढाल (11 - 5)/(5 - 2) = 2 आहे. बिंदू (2, 5) वर बिंदू-ढाल स्वरूपाचा वापर करून, समीकरण y - 5 = 2(x - 2) आहे, जो y = 2x + 1 च्या समायोजनात येतो. इतर विकल्पांमध्ये चुकीचा ढाल किंवा चुकीचा अवखंड असतो.",
-          "imageAlt": "बिंदू (2, 5) आणि (5, 11) मार्गे जाणाऱ्या रेषा.",
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "solution": "x-अवछेद a आणि y-अवछेद b असलेल्या रेषेची समीकरण x/a + y/b = 1 आहे. इतर विकल्पांमध्ये चुकीचे चिन्ह किंवा अदलाबदल केलेले पद आहेत.",
+          "imageAlt": "x-अवछेद (-3, 0) आणि y-अवछेद (0, 2) असलेली रेषा",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses standard Marathi terminology for intercepts and equations.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A line passing through the points (2, 5) and (5, 11).",
+      "imageAlt": "A line with x-intercept at (-3, 0) and y-intercept at (0, 2)",
       "figure": {
         "kind": "geometry",
         "spec": {
           "frame": {
-            "xMin": 0,
-            "xMax": 10,
-            "yMin": 0,
-            "yMax": 20,
+            "xMin": -5,
+            "xMax": 5,
+            "yMin": -5,
+            "yMax": 5,
             "unit": "units"
           },
           "points": [
             {
               "id": "A",
-              "x": 2,
-              "y": 5,
+              "x": -3,
+              "y": 0,
               "label": "A"
             },
             {
               "id": "B",
-              "x": 5,
-              "y": 11,
+              "x": 0,
+              "y": 2,
               "label": "B"
             }
           ],
@@ -496,30 +288,35 @@
               "from": "A",
               "to": "B",
               "kind": "segment",
-              "label": "Line"
+              "dashed": false,
+              "length": {
+                "value": 5,
+                "unit": "units"
+              },
+              "label": "L",
+              "ticks": 0,
+              "arrows": 0
             }
           ]
         },
         "labels": {
           "A": {
-            "en": "Point (2, 5)"
+            "en": "Point A"
           },
           "B": {
-            "en": "Point (5, 11)"
+            "en": "Point B"
           },
-          "Line": {
-            "en": "Line through (2, 5) and (5, 11)",
-            "hi": "बिंदु (2, 5) और (5, 11) से गुजरने वाली रेखा",
-            "mr": "बिंदू (2, 5) आणि (5, 11) मार्गे जाणारी रेषा"
+          "L": {
+            "en": "Line L"
           }
         }
       },
       "needsFigure": true,
       "distractorReason": [
         null,
-        "Confuses the slope with 3 instead of 2",
-        "Uses the wrong slope and intercept",
-        "Uses the wrong slope and intercept"
+        "uses the correct form but incorrect sign for the second term",
+        "reverses the terms in the equation",
+        "uses the correct form but incorrect sign for the second term"
       ],
       "solverAnswers": [
         0,
@@ -529,7 +326,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. The slope is correctly calculated as 2, and the point-slope form leads to the correct equation y = 2x + 1. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The correct answer is option 0, as the intercept form of a line is x/a + y/b = 1. The other options contain either incorrect signs or reversed terms, which are common misconceptions.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh109.pdf",
@@ -560,334 +357,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:27:54.058Z",
+      "generatedAt": "2026-10-28T08:34:17.724Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "What is the slope of a line that makes an angle of 60° with the positive direction of the x-axis?",
+      "difficulty": 3,
+      "stem": "A line has equal intercepts on the x-axis and y-axis and passes through the point (1, 2). What is its equation?",
       "choices": [
-        "√3",
-        "1/√3",
-        "√3/2",
-        "-1/√3"
+        "x + y = 3",
+        "x + y = 2",
+        "x - y = 3",
+        "x - y = 2"
       ],
       "answerIndex": 0,
-      "solution": "The slope of a line is given by the tangent of its angle of inclination. For an angle of 60°, tan(60°) = √3. The option √3 is correct. The option 1/√3 corresponds to tan(30°), which is incorrect. The option 2 is not a valid value for tan(60°). The option -√3 would be for an angle of 120°, which is not the case here.",
+      "solution": "If a line has equal intercepts on the x-axis and y-axis, its equation can be written as x/a + y/a = 1 or x + y = a. Substituting (1, 2), we get a = 3. Thus, the equation is x + y = 3. The other options use incorrect intercept values or signs.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "x-अक्ष के धनात्मक दिशा के साथ 60° का कोण बनाने वाली एक रेखा की ढलान क्या है?",
+          "stem": "एक रेखा x-अक्ष और y-अक्ष पर समान अंतःखंड बनाती है और बिंदु (1, 2) से गुजरती है। इसका समीकरण क्या है?",
           "choices": [
-            "√3",
-            "1/√3",
-            "√3/2",
-            "-1/√3"
+            "x + y = 3",
+            "x + y = 2",
+            "x - y = 3",
+            "x - y = 2"
           ],
-          "solution": "एक रेखा की ढलान उसके झुकाव कोण के स्पर्शज्या के बराबर होती है। 60° के कोण के लिए, tan(60°) = √3। √3 विकल्प सही है। 1/√3 विकल्प tan(30°) के संगत है, जो गलत है। 2 विकल्प tan(60°) के लिए एक वैध मान नहीं है। -√3 विकल्प 120° के कोण के लिए होता है, जो यहां नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "x-अक्षाच्या धन दिशेशी 60° कोन बनविणार्‍या रेषेचा ढाल किती आहे?",
-          "choices": [
-            "√3",
-            "1/√3",
-            "√3/2",
-            "-1/√3"
-          ],
-          "solution": "रेषेचा ढाल त्याच्या उन्नती कोनाच्या स्पर्शज्या (tangent) बरोबर असतो. 60° कोनासाठी, tan(60°) = √3. √3 हा विकल्प बरोबर आहे. 1/√3 हा विकल्प tan(30°) बरोबर असतो, जो चुकीचा आहे. √3/2 हा tan(60°) च्या वैध मूल्याचा असत नाही. -√3 हा 120° कोनासाठी असतो, जो आपल्या परिस्थितीत नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses tan(60°) with tan(30°)",
-        "Confuses the slope with the sine of the angle",
-        "Confuses the slope with the tangent of the supplementary angle"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The slope of a line is indeed the tangent of the angle it makes with the positive x-axis, and tan(60°) = √3. The reasoning for the distractors is also valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:27:54.058Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A line passes through the point (2, 3) and is perpendicular to the line x - 7y + 5 = 0. What is the equation of the line?",
-      "choices": [
-        "7x + y = 17",
-        "7x - y = 17",
-        "x + 7y = 17",
-        "x - 7y = 17"
-      ],
-      "answerIndex": 0,
-      "solution": "The slope of the line x - 7y + 5 = 0 is 1/7. The slope of a line perpendicular to it is -7. Using the point-slope form of a line, y - 3 = -7(x - 2), we get y - 3 = -7x + 14, which simplifies to 7x + y = 17. The other options are incorrect because they use the wrong slope or miscalculate the equation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक रेखा बिंदु (2, 3) से गुजरती है और रेखा x - 7y + 5 = 0 के लंबवत है। रेखा का समीकरण क्या है?",
-          "choices": [
-            "7x + y = 17",
-            "7x - y = 17",
-            "x + 7y = 17",
-            "x - 7y = 17"
-          ],
-          "solution": "रेखा x - 7y + 5 = 0 की ढाल 1/7 है। इसके लंबवत रेखा की ढाल -7 है। बिंदु-ढाल रूप का प्रयोग करके, y - 3 = -7(x - 2), हमें y - 3 = -7x + 14 मिलता है, जो 7x + y = 17 में सरलीकृत हो जाता है। अन्य विकल्प गलत ढाल का उपयोग करते हैं या समीकरण की गणना गलत करते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms match standard Hindi math terminology, and the logic of the solution is preserved.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "रेखा (2, 3) बिंदूतून जाते आणि रेखा x - 7y + 5 = 0 ला लंब असते. रेखेचे समीकरण काय आहे?",
-          "choices": [
-            "7x + y = 17",
-            "7x - y = 17",
-            "x + 7y = 17",
-            "x - 7y = 17"
-          ],
-          "solution": "रेखा x - 7y + 5 = 0 चा ढाल 1/7 आहे. त्याला लंब असलेल्या रेखेचा ढाल -7 आहे. बिंदू-ढाल रूपाने रेखा, y - 3 = -7(x - 2), मिळते y - 3 = -7x + 14, जे 7x + y = 17 वर आले. इतर विकल्प चुकीचा ढाल वापरतात किंवा समीकरण चुकीचे काढतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for slopes and equations.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Uses the slope of the original line instead of the perpendicular slope",
-        "Fails to apply the point-slope form correctly",
-        "Confuses the signs of the coefficients in the final equation"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies the slope of the given line, calculates the negative reciprocal for the perpendicular slope, and applies the point-slope form accurately. The correct answer is 7x + y = 17.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 9,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 10,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 11,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:27:54.058Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If the slope of a line is 1, what is the angle of inclination of the line with the positive direction of the x-axis?",
-      "choices": [
-        "30°",
-        "45°",
-        "60°",
-        "90°"
-      ],
-      "answerIndex": 1,
-      "solution": "The slope of a line is the tangent of its angle of inclination. When the slope is 1, tan(θ) = 1, which occurs at θ = 45°. The option 45° is correct. The option 30° corresponds to tan(30°) = 1/√3, which is incorrect. The option 60° corresponds to tan(60°) = √3, which is incorrect. The option 90° is not valid because the slope of a vertical line is undefined.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि किसी रेखा की प्रवणता 1 है, तो रेखा का धनात्मक x-अक्ष के साथ आवर्तन कोण क्या है?",
-          "choices": [
-            "30°",
-            "45°",
-            "60°",
-            "90°"
-          ],
-          "solution": "किसी रेखा की प्रवणता उसके आवर्तन कोण के स्पर्शज्या के बराबर होती है। जब प्रवणता 1 होती है, तो tan(θ) = 1, जो θ = 45° पर होता है। 45° विकल्प सही है। 30° विकल्प tan(30°) = 1/√3 के संगत होता है, जो गलत है। 60° विकल्प tan(60°) = √3 के संगत होता है, जो गलत है। 90° विकल्प अमान्य है क्योंकि लंबवत रेखा की प्रवणता अपरिभाषित होती है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "रेषेचा ढाल 1 असल्यास, रेषेचा धनात्मक x-अक्षाशी झुकलेला कोन किती असेल?",
-          "choices": [
-            "30°",
-            "45°",
-            "60°",
-            "90°"
-          ],
-          "solution": "रेषेचा ढाल त्या रेषेच्या झुकलेल्या कोनाचा स्पर्शज्या असतो. जेव्हा ढाल 1 असतो तेव्हा tan(θ) = 1, जो θ = 45° वर घडतो. 45° चा विकल्प बरोबर आहे. 30° चा विकल्प tan(30°) = 1/√3 च्या बरोबर असतो, जो चूक आहे. 60° चा विकल्प tan(60°) = √3 च्या बरोबर असतो, जो चूक आहे. 90° चा विकल्प अमान्य आहे कारण उभ्या रेषेचा ढाल अनिश्चित असतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for angles and trigonometric functions.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses tan(30°) with tan(45°)",
-        null,
-        "Confuses the slope with the tangent of 60° instead of 45°",
-        "Confuses slope of 1 with vertical line, which has undefined slope"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the angle of inclination is 45° when the slope is 1, as tan(45°) = 1. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh109.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 9: Straight Lines"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:27:54.058Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "What is the equation of a line that is parallel to the y-axis and passes through the point (a, b)?",
-      "choices": [
-        "x = a",
-        "y = a",
-        "x = b",
-        "y = b"
-      ],
-      "answerIndex": 0,
-      "solution": "A line parallel to the y-axis has a constant x-coordinate. Therefore, the equation of such a line is x = a, where a is the x-coordinate of the point it passes through. The other options represent lines parallel to the x-axis or are incorrect in their form.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "y-अक्ष के समांतर एक रेखा का समीकरण क्या है जो बिंदु (a, b) से गुजरती है?",
-          "choices": [
-            "x = a",
-            "y = a",
-            "x = b",
-            "y = b"
-          ],
-          "solution": "y-अक्ष के समांतर एक रेखा के x-निर्देशांक नियत होते हैं। अतः ऐसी रेखा का समीकरण x = a होता है, जहां a बिंदु के x-निर्देशांक है। अन्य विकल्प x-अक्ष के समांतर रेखाएं या गलत रूप में हैं।",
+          "solution": "यदि एक रेखा x-अक्ष और y-अक्ष पर समान अंतःखंड बनाती है, तो इसका समीकरण x/a + y/a = 1 या x + y = a के रूप में लिखा जा सकता है। (1, 2) को प्रतिस्थापित करने पर, हमें a = 3 प्राप्त होता है। अतः समीकरण x + y = 3 है। अन्य विकल्प गलत अंतःखंड मान या चिह्न का उपयोग करते हैं।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "y-अक्षाला समांतर असणारी आणि (a, b) बिंदूतून जाणारी रेषेची समीकरण काय आहे?",
+          "stem": "एक रेषा x-अक्ष आणि y-अक्ष वर समान छेदन बिंदू ठेवते आणि (1, 2) बिंदूतून जाते. तिचे समीकरण काय आहे?",
           "choices": [
-            "x = a",
-            "y = a",
-            "x = b",
-            "y = b"
+            "x + y = 3",
+            "x + y = 2",
+            "x - y = 3",
+            "x - y = 2"
           ],
-          "solution": "y-अक्षाला समांतर असणारी रेषेची x-निर्देशक स्थिर असते. म्हणून अशा रेषेची समीकरण x = a असते, जेथे a हा बिंदूतून जाणारी रेषेचा x-निर्देशक आहे. इतर विकल्पांमध्ये x-अक्षाला समांतर असणारी रेषा किंवा त्यांची रूपे चुकीची आहेत.",
+          "solution": "जर एक रेषा x-अक्ष आणि y-अक्ष वर समान छेदन बिंदू ठेवत असेल, तर तिचे समीकरण x/a + y/a = 1 किंवा x + y = a असे लिहिता येते. (1, 2) बदलताना, आपणास a = 3 मिळते. त्यामुळे, रेषेचे समीकरण x + y = 3 आहे. इतर विकल्पांमध्ये चुकीचे छेदन बिंदू किंवा चिन्ह वापरले गेले आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for intercepts and equations.",
           "flag": null
         }
       },
@@ -897,9 +409,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the x and y coordinates",
-        "Misunderstands the orientation of the line",
-        "Confuses the equation of a horizontal line with a vertical one"
+        "uses incorrect intercept value",
+        "uses incorrect intercept value",
+        "uses incorrect sign in equation"
       ],
       "solverAnswers": [
         0,
@@ -908,8 +420,8 @@
         0,
         0
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. A line parallel to the y-axis has a constant x-coordinate, so the equation is x = a. The other options represent horizontal lines or mix up coordinates.",
+      "levelFlag": null,
+      "critique": "The solution is correct. The line with equal intercepts has the form x + y = a, and substituting (1, 2) gives a = 3, so the equation is x + y = 3.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh109.pdf",
@@ -949,7 +461,414 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:27:54.058Z",
+      "generatedAt": "2026-10-28T08:34:17.724Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A point (h, k) is equidistant from the lines 3x - 2y = 5 and 3x + 2y = 5. What is the path of this point?",
+      "choices": [
+        "a straight line",
+        "a circle",
+        "a parabola",
+        "a hyperbola"
+      ],
+      "answerIndex": 0,
+      "solution": "The distances from the point to both lines are equal, leading to two equations: 3h - 2k - 5 = 3h + 2k - 5 and -(3h - 2k - 5) = 3h + 2k - 5. Solving these gives k = 0 or h = 5/3, which are straight lines. The other options are incorrect because the equations represent lines, not curves.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बिंदु (h, k) रेखाओं 3x - 2y = 5 और 3x + 2y = 5 से समान दूरी पर है। इस बिंदु का पथ क्या है?",
+          "choices": [
+            "एक सीधी रेखा",
+            "एक वृत्त",
+            "एक परवलय",
+            "एक अतिपरवलय"
+          ],
+          "solution": "बिंदु से दोनों रेखाओं की दूरियां समान हैं, जिससे दो समीकरण प्राप्त होते हैं: 3h - 2k - 5 = 3h + 2k - 5 और -(3h - 2k - 5) = 3h + 2k - 5। इनको हल करने पर k = 0 या h = 5/3 प्राप्त होता है, जो सीधी रेखाएं हैं। अन्य विकल्प गलत हैं क्योंकि समीकरण वक्र नहीं, रेखाएं दर्शाते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains mathematical meaning, with appropriate Hindi terminology for conic sections.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक बिंदू (h, k) रेषा 3x - 2y = 5 आणि 3x + 2y = 5 यांपासून समान अंतरावर आहे. ह्या बिंदूचा मार्ग काय आहे?",
+          "choices": [
+            "एक सरळ रेषा",
+            "एक वृत्त",
+            "एक परवलय",
+            "एक अतिवृत्त"
+          ],
+          "solution": "बिंदूपासून दोन्ही रेषांचे अंतर समान आहे, ज्यामुळे दोन समीकरणे मिळतात: 3h - 2k - 5 = 3h + 2k - 5 आणि -(3h - 2k - 5) = 3h + 2k - 5. ह्या समीकरणांचे उपाय करण्याने k = 0 किंवा h = 5/3 मिळते, जे सरळ रेषा आहेत. इतर विकल्प चुकीचे आहेत कारण समीकरणे वक्रांऐवजी रेषांनी दर्शवली जातात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses standard Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student thinks equidistant points form a circular path instead of a straight line",
+        "students may confuse the locus of points equidistant from two lines with a parabola, thinking it's a curve with a single focus and directrix",
+        "Student incorrectly believes that equidistant points from two lines form a hyperbola instead of a straight line"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly derives the equations for the locus of points equidistant from two lines, resulting in two straight lines. The reasoning for the distractors reflects common misconceptions about loci.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh109.pdf",
+          "ordinal": 12,
+          "pageStart": 21,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 9: Straight Lines"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh109.pdf",
+          "ordinal": 13,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 9: Straight Lines"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh109.pdf",
+          "ordinal": 14,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 9: Straight Lines"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh109.pdf",
+          "ordinal": 15,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 9: Straight Lines"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T08:34:17.724Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the slope of the line joining the points (3, -2) and (7, -2)?",
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "-1"
+      ],
+      "answerIndex": 0,
+      "solution": "The slope of a line joining two points is calculated as (y2 - y1)/(x2 - x1). In this case, the y-coordinates of both points are the same (-2), so the numerator is 0. This means the slope is 0, which indicates a horizontal line. The other options are incorrect because they do not match the calculation of the slope based on the given points.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बिंदुओं (3, -2) और (7, -2) को जोड़ने वाली रेखा की ढलान क्या है?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "-1"
+          ],
+          "solution": "दो बिंदुओं को जोड़ने वाली रेखा की ढलान (y2 - y1)/(x2 - x1) के रूप में गणना की जाती है। इस मामले में दोनों बिंदुओं के y-निर्देशांक समान (-2) हैं, इसलिए अंश 0 है। इसका अर्थ है कि ढलान 0 है, जो क्षैतिज रेखा को इंगित करता है। अन्य विकल्प गलत हैं क्योंकि वे दिए गए बिंदुओं के आधार पर ढलान की गणना के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बिंदू (3, -2) आणि (7, -2) जोडणाऱ्या रेषेचा ढाल किती आहे?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "-1"
+          ],
+          "solution": "दोन बिंदूंना जोडणाऱ्या रेषेचा ढाल (y2 - y1)/(x2 - x1 असा गणला जातो. या बिंदूंमध्ये दोन्ही बिंदूंच्या y निर्देशकांमध्ये फरक नाही (-2), त्यामुळे अंश 0 असतो. ह्यामुळे ढाल 0 असतो, जो अर्थ दाखवतो की रेषा क्षैतिज आहे. इतर विकल्प चुकीचे आहेत कारण ते दिलेल्या बिंदूंवर ढालाच्या गणनेशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for slope (ढाल) and coordinates (निर्देशक).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses slope with y-coordinate",
+        "Thinks slope is always 1",
+        "Assumes slope is the difference in x-coordinates only"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The slope is 0 because the y-coordinates are the same, resulting in a horizontal line. The author's reasons for the distractors are plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh109.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: Straight Lines"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh109.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Straight Lines"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh109.pdf",
+          "ordinal": 5,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: Straight Lines"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T08:34:17.724Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A line passes through the point (2, 3) and makes an angle of 45° with the line x - 2y + 5 = 0. What is the equation of this line?",
+      "choices": [
+        "x - y + 1 = 0",
+        "3x + y - 9 = 0",
+        "x - 3y - 7 = 0",
+        "x + 3y + 11 = 0"
+      ],
+      "answerIndex": 1,
+      "solution": "The angle between two lines is determined using the formula tanθ = |(m2 - m1)/(1 + m1m2)|. The given line has a slope of 1/2, and the required line has a slope of -3. Using point-slope form, the equation is 3x + y - 9 = 0. The other options use incorrect slopes or miscalculations in the formula.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक रेखा बिंदु (2, 3) से गुजरती है और रेखा x - 2y + 5 = 0 के साथ 45° का कोण बनाती है। इस रेखा का समीकरण क्या है?",
+          "choices": [
+            "x - y + 1 = 0",
+            "3x + y - 9 = 0",
+            "x - 3y - 7 = 0",
+            "x + 3y + 11 = 0"
+          ],
+          "solution": "दो रेखाओं के बीच कोण के निर्धारण के लिए सूत्र tanθ = |(m2 - m1)/(1 + m1m2)| का उपयोग किया जाता है। दी गई रेखा की ढाल 1/2 है, और आवश्यक रेखा की ढाल -3 है। बिंदु-ढाल रूप का उपयोग करके, समीकरण 3x + y - 9 = 0 है। अन्य विकल्प गलत ढाल का उपयोग करते हैं या सूत्र में गणना त्रुटि करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option (1) and the explanation aligns with the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक रेखा (2, 3) मध्ये जाते आणि x - 2y + 5 = 0 रेखेसह 45° कोन बनवते. या रेखेचे समीकरण काय आहे?",
+          "choices": [
+            "x - y + 1 = 0",
+            "3x + y - 9 = 0",
+            "x - 3y - 7 = 0",
+            "x + 3y + 11 = 0"
+          ],
+          "solution": "दोन रेखांमधील कोन सूत्र tanθ = |(m2 - m1)/(1 + m1m2)| वापरून निश्चित केला जातो. दिलेल्या रेखेचा ढाल 1/2 आहे, आणि आवश्यक रेखेचा ढाल -3 आहे. बिंदू-ढाल स्वरूपाचा वापर करून, समीकरण 3x + y - 9 = 0 आहे. इतर विकल्प चुकीच्या ढालांचा वापर करतात किंवा सूत्रात गणनाच्या चूका करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for slopes and equations of lines.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the angle condition with a line having the same slope as the given line",
+        null,
+        "Confuses the slope of the original line with its negative reciprocal",
+        "Confuses the sign when using the point-slope form of the line equation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The given line x - 2y + 5 = 0 has slope 1/2. Using the angle formula, the required line has slope -3, and the point-slope form gives 3x + y - 9 = 0. The author's reasoning for the distractors is valid.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh109.pdf",
+          "ordinal": 12,
+          "pageStart": 21,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 9: Straight Lines"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh109.pdf",
+          "ordinal": 13,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 9: Straight Lines"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh109.pdf",
+          "ordinal": 14,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 9: Straight Lines"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh109.pdf",
+          "ordinal": 15,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 9: Straight Lines"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T08:34:17.724Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "The hypotenuse of a right-angled triangle has its ends at the points (1, 3) and (-4, 1). What is the equation of one of the legs of the triangle if it is parallel to the x-axis?",
+      "choices": [
+        "y = 3",
+        "y = 1",
+        "x = 1",
+        "x = -4"
+      ],
+      "answerIndex": 0,
+      "solution": "The legs of the triangle are parallel to the axes, so one of them is horizontal. The y-coordinate of the horizontal leg must be the same as one of the endpoints of the hypotenuse. The correct equation is y = 3. The other options use incorrect coordinates or are vertical lines.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समकोण त्रिभुज के कर्ण के सिरे बिंदुओं (1, 3) और (-4, 1) पर हैं। यदि त्रिभुज के एक पाद (leg) के समांतर x-अक्ष है, तो त्रिभुज के एक पाद का समीकरण क्या है?",
+          "choices": [
+            "y = 3",
+            "y = 1",
+            "x = 1",
+            "x = -4"
+          ],
+          "solution": "त्रिभुज के पाद अक्षों के समांतर हैं, इसलिए एक पाद क्षैतिज है। क्षैतिज पाद के y-निर्देशांक को कर्ण के एंडपॉइंट में से एक के समान होना चाहिए। सही समीकरण y = 3 है। अन्य विकल्प गलत निर्देशांक का उपयोग करते हैं या लंबवत रेखाएं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समकोन त्रिकोणाच्या कर्णाचे अंत बिंदू (1, 3) आणि (-4, 1) वर आहेत. जर त्रिकोणाच्या एका बाजूचे समांतर x-अक्षाशी असेल तर त्या बाजूची समीकरण काय असेल?",
+          "choices": [
+            "y = 3",
+            "y = 1",
+            "x = 1",
+            "x = -4"
+          ],
+          "solution": "त्रिकोणाच्या बाजू अक्षांशी समांतर असतात, म्हणून एका बाजू अर्थात क्षैतिज असेल. क्षैतिज बाजूच्या y-निर्देशकाचे मूल्य हे कर्णाच्या अंत बिंदूंपैकी एकाच्या बरोबर असेल. योग्य समीकरण y = 3 आहे. इतर विकल्पांमध्ये चुकीचे निर्देशक वापरले आहेत किंवा ते उर्ध्वाधर रेषा आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "uses incorrect y-coordinate",
+        "uses incorrect y-coordinate",
+        "uses vertical line equation"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The leg parallel to the x-axis must have a constant y-coordinate, matching one of the endpoints of the hypotenuse. y = 3 is correct, and the other options are invalid for the reasons stated.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh109.pdf",
+          "ordinal": 12,
+          "pageStart": 21,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 9: Straight Lines"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh109.pdf",
+          "ordinal": 13,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 9: Straight Lines"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh109.pdf",
+          "ordinal": 14,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 9: Straight Lines"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh109.pdf",
+          "ordinal": 15,
+          "pageStart": 25,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 9: Straight Lines"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T08:34:17.724Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

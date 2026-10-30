@@ -1,0 +1,630 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T03:42:47.878Z",
+  "finishedAt": "2026-10-26T03:52:25.243Z",
+  "seconds": 577,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo116.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 16 — Roducts and Their",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[INBO 2011 — solutions or answer key]\n56. (2 points)\na. b. c. d.\n√\na. b. c. d. e.\n√\n58. (0.5 x 6 = 3 points)\nGenotype Constitutively Synthesis Synthesis\nformed\nlacI lacO lacZ + + +\nlacI lacO lacZ - + + √\nlacI lacO lacZ + C + √\n- + + +\nlacI lacO lacZ / lacI\nlacI lacO lacZ S + +\nlacI lacO lacZ / lacI S + + +\nETHOLOGY (2)\n59. (2 points)\na. b. c. d.\n√\nECOLOGY (7)\n60. (2 points)\na. b. c. d.\n√\nrepressed Induced\n√\n√\n√\n√\nINBO - 2011\n61. (1 x 2 = 2 points)\na. b. c. d. e.\n√ √\n62. (1 x 3 = 3 points)\nCommunity Dominance Productivity\nindex (high / low)\n(high / low)\nMonoculture high high\ncrop\nRain forest low low\nClimax low low\ncommunity\nBIOSYSTEMATICS (10)\n63. (0.5 x 4 = 2 points)\nI: ___________X\nII: __________Y\nIII: _________Z\nIV: _________Z",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n11. A. Lysozyme, ribonuclease, protease, chilled ethanol 1",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n4. C. Frederick Griffith"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 130135,
+      "in": 34,
+      "out": 33,
+      "rejects": 1,
+      "promptTokens": 32861,
+      "completionTokens": 8059
+    },
+    "critique": {
+      "calls": 40,
+      "ms": 230424,
+      "in": 33,
+      "out": 26,
+      "rejects": 7,
+      "promptTokens": 18420,
+      "completionTokens": 6855
+    },
+    "solver": {
+      "calls": 182,
+      "ms": 88763,
+      "in": 26,
+      "out": 22,
+      "rejects": 4,
+      "promptTokens": 34320,
+      "completionTokens": 2007
+    },
+    "form": {
+      "calls": 14,
+      "ms": 59541,
+      "in": 22,
+      "out": 15,
+      "rejects": 7,
+      "promptTokens": 8950,
+      "completionTokens": 1726
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 59,
+      "ms": 10653,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 61,
+      "ms": 619432,
+      "in": 30,
+      "out": 30,
+      "rejects": 0,
+      "promptTokens": 37138,
+      "completionTokens": 18815
+    }
+  },
+  "kept": 15,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 2,
+    "5": 3,
+    "6": 4
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following statements is true about the excretory system of terrestrial animals?",
+      "ms": {
+        "draft": 3402,
+        "critique": 6687,
+        "solver": 1357
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which part of the nephron does the process of ultrafiltration mainly occur?",
+      "ms": {
+        "draft": 3402,
+        "critique": 5789,
+        "solver": 1519,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a function of the excretory system?",
+      "ms": {
+        "draft": 3402,
+        "critique": 6939,
+        "solver": 14883
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process of reabsorption in the kidneys?",
+      "ms": {
+        "draft": 3814,
+        "critique": 5418
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the nephrons in the kidney?",
+      "ms": {
+        "draft": 3402,
+        "critique": 4904,
+        "solver": 1454,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which part of the nephron is responsible for maintaining the pH of body fluids?",
+      "ms": {
+        "draft": 3814,
+        "critique": 8028,
+        "solver": 1317
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the counter current mechanism in the kidney?",
+      "ms": {
+        "draft": 3814,
+        "critique": 7465,
+        "solver": 13370,
+        "form": 2860
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the major nitrogenous waste excreted by humans?",
+      "ms": {
+        "draft": 3444,
+        "critique": 6107
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which part of the nephron does the majority of reabsorption occur?",
+      "ms": {
+        "draft": 3444,
+        "critique": 7225,
+        "solver": 11005,
+        "form": 2864
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is told that a patient's urine is very concentrated. Based on the passage, which part of the nephron is likely to be functioning efficiently?",
+      "ms": {
+        "draft": 3916,
+        "critique": 5261,
+        "solver": 1960,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person's kidneys fail to reabsorb water effectively, which of the following is most likely to occur?",
+      "ms": {
+        "draft": 3916,
+        "critique": 4829,
+        "solver": 13977,
+        "form": 3297
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which hormone is released by the hypothalamus in response to changes in blood volume, body fluid volume, and ionic concentration?",
+      "ms": {
+        "draft": 17716,
+        "critique": 6619
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the function of the loop of Henle?",
+      "ms": {
+        "draft": 3916,
+        "critique": 5976,
+        "solver": 11329,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of antidiuretic hormone (ADH) in the kidney?",
+      "ms": {
+        "draft": 17716,
+        "critique": 6082
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person loses a large amount of body fluid, what is the most likely effect on the kidneys?",
+      "ms": {
+        "draft": 17716,
+        "critique": 5185
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the release of aldosterone in the Renin-Angiotensin mechanism?",
+      "ms": {
+        "draft": 17716,
+        "critique": 5214
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the nephron is responsible for the reabsorption of nearly all essential nutrients and 70-80% of electrolytes and water?",
+      "ms": {
+        "draft": 5609,
+        "critique": 4405
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process involves the removal of nitrogenous wastes from the body of animals?",
+      "ms": {
+        "draft": 5097,
+        "critique": 3816,
+        "solver": 436
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the major nitrogenous waste excreted by humans?",
+      "ms": {
+        "draft": 3916,
+        "critique": 4209,
+        "solver": 1160,
+        "form": 5270,
+        "translation": 34787
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which process is responsible for the non-selective removal of substances from blood into the Bowman's capsule?",
+      "ms": {
+        "draft": 3916,
+        "critique": 4584,
+        "solver": 1424,
+        "form": 3588,
+        "translation": 32102
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the nephron is responsible for the reabsorption of 70-80% of electrolytes and water?",
+      "ms": {
+        "draft": 3814,
+        "critique": 6098,
+        "solver": 1679,
+        "form": 3897,
+        "translation": 48403
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of antidiuretic hormone (ADH)?",
+      "ms": {
+        "draft": 10887,
+        "critique": 4936,
+        "solver": 1675,
+        "form": 0,
+        "translation": 43392
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person’s glomerular filtration rate (GFR) decreases, what mechanism is activated to restore it?",
+      "ms": {
+        "draft": 3814,
+        "critique": 6002,
+        "solver": 16297,
+        "form": 3764,
+        "translation": 57232
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when the osmoreceptors in the body are activated by an excessive loss of fluid?",
+      "ms": {
+        "draft": 10887,
+        "critique": 5537,
+        "solver": 1385,
+        "form": 0,
+        "translation": 35572
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the counter current mechanism in the kidney?",
+      "ms": {
+        "draft": 3444,
+        "critique": 8141,
+        "solver": 1215,
+        "form": 2486,
+        "translation": 39459
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is true about the Renin-Angiotensin mechanism?",
+      "ms": {
+        "draft": 10887,
+        "critique": 5067,
+        "solver": 1098,
+        "form": 0,
+        "translation": 39513
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person's urine contains a high amount of urea, which of the following is most likely the reason?",
+      "ms": {
+        "draft": 3402,
+        "critique": 7336,
+        "solver": 1625,
+        "form": 0,
+        "translation": 37767
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is true about the glomerular filtration rate (GFR)?",
+      "ms": {
+        "draft": 3444,
+        "critique": 5878,
+        "solver": 1388,
+        "form": 2141,
+        "translation": 40381
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person has a high volume of body fluids, which of the following is most likely to occur?",
+      "ms": {
+        "draft": 10887,
+        "critique": 6531,
+        "solver": 1188,
+        "form": 0,
+        "translation": 32832
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are the kidneys of terrestrial animals more complex than those of aquatic animals?",
+      "ms": {
+        "draft": 3402,
+        "critique": 5377,
+        "solver": 1382,
+        "form": 1,
+        "translation": 48083
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the significance of the ascending limb of the loop of Henle being impermeable to water?",
+      "ms": {
+        "draft": 3444,
+        "critique": 5306,
+        "solver": 962,
+        "form": 1783,
+        "translation": 42818
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the significance of the osmolarity gradient in the medullary interstitium?",
+      "ms": {
+        "draft": 3814,
+        "critique": 5862,
+        "solver": 1683,
+        "form": 3228,
+        "translation": 45824
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "How does hemodialysis help in treating uremia?",
+      "ms": {
+        "draft": 10887,
+        "critique": 6442,
+        "solver": 13998,
+        "form": 0,
+        "translation": 38196
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the primary function of the urine in the urinary bladder?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following statements is true about the excretory system of terrestrial animals?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In which part of the nephron does the process of ultrafiltration mainly occur?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received ' Bowman's capsule'"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a function of the excretory system?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the process of reabsorption in the kidneys?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary function of the nephrons in the kidney?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which part of the nephron is responsible for maintaining the pH of body fluids?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the role of the counter current mechanism in the kidney?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.membrane: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the major nitrogenous waste excreted by humans?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In which part of the nephron does the majority of reabsorption occur?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is told that a patient's urine is very concentrated. Based on the passage, which part of the nephron is likely to be functioning efficiently?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person's kidneys fail to reabsorb water effectively, which of the following is most likely to occur?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which hormone is released by the hypothalamus in response to changes in blood volume, body fluid volume, and ionic concentration?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the function of the loop of Henle?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main function of antidiuretic hormone (ADH) in the kidney?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person loses a large amount of body fluid, what is the most likely effect on the kidneys?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main reason for the release of aldosterone in the Renin-Angiotensin mechanism?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the nephron is responsible for the reabsorption of nearly all essential nutrients and 70-80% of electrolytes and water?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which process involves the removal of nitrogenous wastes from the body of animals?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

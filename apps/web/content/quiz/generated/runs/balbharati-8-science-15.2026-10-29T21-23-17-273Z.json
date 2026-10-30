@@ -1,0 +1,598 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T21:23:17.273Z",
+  "finishedAt": "2026-10-29T21:31:25.797Z",
+  "seconds": 489,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 15 — Sound",
+    "edition": "First Edition 2018",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — question paper]\n20. (6 marks) Smartphones can be used to perform simple experiments related to sound. There are various\napps which record the intensity of an audio signal. An app (WaveEditor TM here) displays the audio signal\nin the form of a wave, whose amplitude is proportional to the loudness of the audio signal.\nTwo students Fatima (F) and Bharat (B) conduct a simple experiment using smartphones. In an open\nfield, both place their smartphones at a distance d from each other as shown in the figure. They stand\nnext to their smartphones, and clap one after another. The audio signals from the claps are digitally\nrecorded by WaveEditor TM and the output produced on their smartphone screens are shown next to ",
+      "[INJSO 2022 — solutions or answer key]\n6. A. frequency of sound waves will not change due to motion of air.",
+      "[INJSO 2022 — question paper]\n6. On a windy day, standing on your balcony, you hear the whistle of a stationary train at a distance. Which\namong the velocity and frequency of the sound is/are affected by the wind?\nA. only velocity B. only frequency\nB. both velocity and frequency D. neither velocity nor frequency",
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 136057,
+      "in": 34,
+      "out": 27,
+      "rejects": 7,
+      "promptTokens": 24206,
+      "completionTokens": 7538
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 215969,
+      "in": 27,
+      "out": 19,
+      "rejects": 8,
+      "promptTokens": 14073,
+      "completionTokens": 5661
+    },
+    "solver": {
+      "calls": 138,
+      "ms": 77038,
+      "in": 19,
+      "out": 17,
+      "rejects": 2,
+      "promptTokens": 25144,
+      "completionTokens": 1477
+    },
+    "form": {
+      "calls": 15,
+      "ms": 43667,
+      "in": 17,
+      "out": 13,
+      "rejects": 4,
+      "promptTokens": 3795,
+      "completionTokens": 1034
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 103,
+      "ms": 17019,
+      "in": 13,
+      "out": 7,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 300216,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16683,
+      "completionTokens": 8711
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main way that sound is produced according to the passage?",
+      "ms": {
+        "draft": 5488,
+        "critique": 5464
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the sound of a ringing bell when the air inside the bell jar is removed?",
+      "ms": {
+        "draft": 5488,
+        "critique": 5495
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the region where air pressure is higher due to vibrations?",
+      "ms": {
+        "draft": 5488,
+        "critique": 5880
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the relationship between the number of vibrations of a tuning fork and the frequency of the sound wave it produces?",
+      "ms": {
+        "draft": 5488,
+        "critique": 6291
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it impossible for two astronauts on the moon to talk to each other directly?",
+      "ms": {
+        "draft": 5488,
+        "critique": 6270
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a tuning fork vibrates 512 times per second, what is the frequency of the sound wave it produces?",
+      "ms": {
+        "draft": 5488,
+        "critique": 6021,
+        "solver": 15655,
+        "form": 2097
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, how does a loudspeaker produce sound?",
+      "ms": {
+        "draft": 3462,
+        "critique": 7715,
+        "solver": 2072,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for different sounds being produced when different glass cups are struck in the Jaltarang experiment?",
+      "ms": {
+        "draft": 3462,
+        "critique": 8589,
+        "solver": 14499,
+        "form": 3525
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What determines the frequency of sound generated when a glass cup is struck in the Jaltarang experiment?",
+      "ms": {
+        "draft": 3879,
+        "critique": 5255,
+        "solver": 3016
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage about sound production?",
+      "ms": {
+        "draft": 17086,
+        "critique": 7678
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a tuning fork is placed in a vacuum, what happens to the sound it produces?",
+      "ms": {
+        "draft": 17086,
+        "critique": 6512
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the frequency of a tuning fork determined by the dimensions of its prongs?",
+      "ms": {
+        "draft": 17086,
+        "critique": 9853
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a tuning fork vibrates 256 times per second, what is the frequency of the sound wave it produces?",
+      "ms": {
+        "draft": 17086,
+        "critique": 6677,
+        "solver": 12687,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the air when the prongs of a tuning fork move apart?",
+      "ms": {
+        "draft": 17086,
+        "critique": 6173,
+        "solver": 12667
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student measures the sound level of a loudspeaker from different distances, what trend would they most likely observe?",
+      "ms": {
+        "draft": 3462,
+        "critique": 7336,
+        "solver": 1440,
+        "form": 2045
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "ms": {
+        "draft": 11261,
+        "critique": 6940,
+        "solver": 1488,
+        "form": 3509
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with lower pressure and density?",
+      "ms": {
+        "draft": 11261,
+        "critique": 6146,
+        "solver": 1669,
+        "form": 2812
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is required for the generation of sound?",
+      "ms": {
+        "draft": 11261,
+        "critique": 5846,
+        "solver": 1329,
+        "form": 1252
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "ms": {
+        "draft": 3000,
+        "critique": 4807,
+        "solver": 1422,
+        "form": 4847
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why is it essential to change the tension on the vocal cords when producing different sound notes?",
+      "ms": {
+        "draft": 3000,
+        "critique": 5229,
+        "solver": 16120,
+        "form": 3268
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the vocal cords in the human larynx?",
+      "ms": {
+        "draft": 3462,
+        "critique": 6277,
+        "solver": 2087,
+        "form": 2332,
+        "translation": 44654
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student uses a flute and opens more holes, what change would they expect in the sound produced?",
+      "ms": {
+        "draft": 3462,
+        "critique": 7616,
+        "solver": 1514,
+        "form": 4710,
+        "translation": 49589
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How does the human larynx produce different sounds?",
+      "ms": {
+        "draft": 3879,
+        "critique": 7386,
+        "solver": 1510,
+        "form": 3484,
+        "translation": 47168
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a loudspeaker, how are sound waves produced?",
+      "ms": {
+        "draft": 3879,
+        "critique": 7402,
+        "solver": 1500,
+        "form": 3119,
+        "translation": 36150
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person claps near a smartphone, and the app records the sound wave, what does the amplitude of the wave indicate?",
+      "ms": {
+        "draft": 3879,
+        "critique": 7356,
+        "solver": 1699,
+        "form": 4382,
+        "translation": 44186
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do different musical instruments produce different notes even if they use similar methods of sound generation?",
+      "ms": {
+        "draft": 3462,
+        "critique": 6187,
+        "solver": 13995,
+        "form": 2706,
+        "translation": 50178
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a flute, how is the frequency of sound changed?",
+      "ms": {
+        "draft": 3879,
+        "critique": 6034,
+        "solver": 1697,
+        "form": 3650,
+        "translation": 24446
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the frequency of a sound wave that produces 1000 compressions and rarefactions per second?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What determines the different sound notes?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What type of energy is converted into sound energy in a loudspeaker?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main way that sound is produced according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What happens to the sound of a ringing bell when the air inside the bell jar is removed?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used to describe the region where air pressure is higher due to vibrations?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the relationship between the number of vibrations of a tuning fork and the frequency of the sound wave it produces?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is it impossible for two astronauts on the moon to talk to each other directly?",
+      "reason": "the critic finds option 0 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a tuning fork vibrates 512 times per second, what is the frequency of the sound wave it produces?",
+      "reason": "checkExpr \"512\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, how does a loudspeaker produce sound?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason for different sounds being produced when different glass cups are struck in the Jaltarang experiment?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with lower pressure and density?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is required for the generation of sound?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the frequency of a sound wave if 1000 compressions and rarefactions are produced per second?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term for the characteristic that differentiates one sound note from another?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What determines the frequency of sound generated when a glass cup is struck in the Jaltarang experiment?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main idea of the passage about sound production?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a tuning fork is placed in a vacuum, what happens to the sound it produces?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the frequency of a tuning fork determined by the dimensions of its prongs?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a tuning fork vibrates 256 times per second, what is the frequency of the sound wave it produces?",
+      "reason": "checkExpr \"256\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What happens to the air when the prongs of a tuning fork move apart?",
+      "reason": "after redraft: the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a student measures the sound level of a loudspeaker from different distances, what trend would they most likely observe?",
+      "reason": "near-duplicate of served question cmvmvlsc102gzgp21zq2ynqrg (cosine 0.901 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "reason": "near-duplicate of served question cmvf42blf032dgod809nefod1 (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with lower pressure and density?",
+      "reason": "near-duplicate of served question cmvf42bln032pgod8dx393ak6 (cosine 0.938 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is required for the generation of sound?",
+      "reason": "near-duplicate of served question cmvf42blk032jgod87gh3woz9 (cosine 0.910 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "reason": "near-duplicate of served question cmvf42blf032dgod809nefod1 (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why is it essential to change the tension on the vocal cords when producing different sound notes?",
+      "reason": "near-duplicate of served question cmvf42bls0331god8a8z38ljf (cosine 0.967 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

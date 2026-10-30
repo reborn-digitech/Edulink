@@ -1,0 +1,771 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T22:31:20.228Z",
+  "finishedAt": "2026-10-29T22:43:32.733Z",
+  "seconds": 733,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu104.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 4 — Electricity: Magnetic and Heating Effects",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n32. (i) State the law that explains the heating effect of current with respect to the measurable 2+1\nproperties in an electrical circuit.\n(ii) List the factors on which the resistance of a conductor depends.",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n13. A complete circuit is left on for several minutes, causing the connecting copper wire to 1\nbecome hot. As the temperature of the wire increases, the electrical resistance of the wire\n(a) decreases.\n(b) remains the same.\n(c) increases.\n(d) increases for some time and then decreases .",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n32. (a) When iron filings are placed in a magnetic field around a bar magnet, they 3\nbehave like tiny magnets. The magnetic force experienced by these tiny magnets\nmake them rotate and align themselves along the direction of field lines. (1 mark)\n(b)The physical property indicated by this arrangement is the magnetic field\nproduced by the bar magnet. (1 mark)\n(c) Magnetic field lines never intersect, magnetic field lines are closed curves.\n(1mark)\nOR\n(a) The deflection in the compass needle increases as Magnetic field of the current\ncarrying conductor is directly proportional to current flowing through it.\n(1.5marks)\n(b) The deflection in the needle decreases as the magnetic field is inversel",
+      "[CBSE Class X Science, marking scheme, 2025-26]\nCurrent through R 2 :\nStep 2: Calculate the Heat Generated in Each Resistor\nUsing Joule’s Law of Heating, H = I Rt: 2\n Heat generate in R 1 :\n Heat generate in R 2 :\n Total Heat Generated H:\nSo, the total heat generated in both resistor is 43200 J.\nStep 3 : Determine if each Resistor is safe\nThe power dissipated by each resistor can be calculated using P = V x I\n Power dissipated by R 1 :\n Power dissipated by R 2 :\nGiven that the power rating of each resistor is 100 W:\n R 1 is operating at 96 W, which is within the 100 W limit. Hence, it is\nsafe.\n R 2 is operating at 48 W, which is also within the 100 W limit. Hence,\nit is safe.\n**********"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 265626,
+      "in": 40,
+      "out": 39,
+      "rejects": 1,
+      "promptTokens": 36571,
+      "completionTokens": 12437
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 357129,
+      "in": 39,
+      "out": 31,
+      "rejects": 8,
+      "promptTokens": 23276,
+      "completionTokens": 8476
+    },
+    "solver": {
+      "calls": 222,
+      "ms": 135590,
+      "in": 31,
+      "out": 27,
+      "rejects": 4,
+      "promptTokens": 41186,
+      "completionTokens": 2317
+    },
+    "form": {
+      "calls": 14,
+      "ms": 142737,
+      "in": 27,
+      "out": 12,
+      "rejects": 15,
+      "promptTokens": 16743,
+      "completionTokens": 2997
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 106,
+      "ms": 18092,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 443097,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 20471,
+      "completionTokens": 11119
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 3,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the experiment described, what is the relationship between electric current and magnetic effects?",
+      "ms": {
+        "draft": 16501,
+        "critique": 7194,
+        "solver": 1269,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the purpose of using an iron nail in an electromagnet experiment?",
+      "ms": {
+        "draft": 16501,
+        "critique": 7142,
+        "solver": 1391,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which of the following situations would an electromagnet be most useful for lifting heavy metal objects?",
+      "ms": {
+        "draft": 7920,
+        "critique": 6323,
+        "solver": 2037,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student made an electromagnet and noticed that when the current was reversed, the poles of the electromagnet also reversed. Why does this happen?",
+      "ms": {
+        "draft": 7920,
+        "critique": 7123,
+        "solver": 2041,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, an electromagnet is made using a coil of 10 turns with a current of 1 A. The same coil is then used with 2 A current. What can be concluded about the magnetic strength of the electromagnet?",
+      "ms": {
+        "draft": 7920,
+        "critique": 7606,
+        "solver": 1847,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name given to a coil of wire that behaves like a magnet when current flows through it?",
+      "ms": {
+        "draft": 7920,
+        "critique": 6796,
+        "solver": 1665
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of the heating effect of electric current?",
+      "ms": {
+        "draft": 8068,
+        "critique": 7687,
+        "solver": 2013,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of a Voltaic cell, which part acts as the positive terminal?",
+      "ms": {
+        "draft": 8068,
+        "critique": 7876
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the heat generated in a wire when the number of cells in a circuit is increased?",
+      "ms": {
+        "draft": 8068,
+        "critique": 9892
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student uses two identical bulbs in a circuit connected to a battery. One bulb is connected in a circuit with a copper wire, and the other with an iron wire. What would be the effect on the heat generated in the bulbs?",
+      "ms": {
+        "draft": 8068,
+        "critique": 8207,
+        "solver": 1755,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a safety measure to prevent overheating in household circuits?",
+      "ms": {
+        "draft": 8068,
+        "critique": 7195,
+        "solver": 3360,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct statement about rechargeable batteries?",
+      "ms": {
+        "draft": 4401,
+        "critique": 8996
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student connects a copper wire to a battery and notices that the wire becomes hot. Which of the following factors would NOT affect the amount of heat generated in the wire?",
+      "ms": {
+        "draft": 8068,
+        "critique": 8285,
+        "solver": 20395
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for the heating effect in a conductor when electric current flows through it?",
+      "ms": {
+        "draft": 4401,
+        "critique": 6976,
+        "solver": 12095,
+        "form": 2680
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, if the compass placed near the coil deflects, what can be inferred?",
+      "ms": {
+        "draft": 4401,
+        "critique": 9019
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about electromagnets?",
+      "ms": {
+        "draft": 4401,
+        "critique": 8437,
+        "solver": 15529,
+        "form": 2730
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a nichrome wire is used in an electric heater, which of the following is the most likely reason?",
+      "ms": {
+        "draft": 4401,
+        "critique": 6308,
+        "solver": 8768
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the magnetic effect of electric current?",
+      "ms": {
+        "draft": 6313,
+        "critique": 8016,
+        "solver": 2194
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, a coil is connected to a battery and a compass is placed near it. What happens when current flows through the coil?",
+      "ms": {
+        "draft": 6313,
+        "critique": 8488,
+        "solver": 12825,
+        "form": 5986
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student uses four coils made of different materials—iron, copper, aluminium, and nichrome—as shown in the figure. If current is passed through these coils, in which cases will the compass needle show deflection?",
+      "ms": {
+        "draft": 6313,
+        "critique": 10305,
+        "solver": 19499,
+        "form": 4366
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the circuit shown in Fig. 4.8b, what is the role of the lemon juice?",
+      "ms": {
+        "draft": 4730,
+        "critique": 7930
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of the heating effect of electric current?",
+      "ms": {
+        "draft": 4730,
+        "critique": 7618,
+        "solver": 17100,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the strength of an electromagnet when the number of turns in the coil is increased?",
+      "ms": {
+        "draft": 8931,
+        "critique": 8363
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a circuit with two resistors in series, the heat generated is calculated using Joule’s Law of Heating. Which of the following factors affects the heat generated in a resistor?",
+      "ms": {
+        "draft": 4730,
+        "critique": 7249,
+        "solver": 12789,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a nichrome wire is used in an electrical circuit and the switch is turned ON for a few seconds, what will happen to the wire?",
+      "ms": {
+        "draft": 8931,
+        "critique": 8183
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens to the compass needle when electric current flows through a wire?",
+      "ms": {
+        "draft": 8290,
+        "critique": 7818
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What determines the polarity of an electromagnet's ends when current is passed through its coil?",
+      "ms": {
+        "draft": 8931,
+        "critique": 7908,
+        "solver": 7970,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the iron paper clips when the electric current stops flowing through the coil in an electromagnet?",
+      "ms": {
+        "draft": 16501,
+        "critique": 7630,
+        "solver": 3078,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the temperature of a copper wire increases while current is flowing through it, what happens to its resistance?",
+      "ms": {
+        "draft": 16501,
+        "critique": 6541,
+        "solver": 2302,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the magnetic strength of an electromagnet when the number of turns in the coil is increased?",
+      "ms": {
+        "draft": 7920,
+        "critique": 6342,
+        "solver": 3987,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A circuit is left on for several minutes, and the copper wire becomes hot. What happens to the resistance of the wire as its temperature increases?",
+      "ms": {
+        "draft": 4730,
+        "critique": 6401,
+        "solver": 1998,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the deflection of a compass needle indicate when current flows through a wire?",
+      "ms": {
+        "draft": 16501,
+        "critique": 7227,
+        "solver": 2294,
+        "form": 0,
+        "translation": 50555
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about rechargeable batteries?",
+      "ms": {
+        "draft": 6313,
+        "critique": 6894,
+        "solver": 1918,
+        "form": 5422,
+        "translation": 63974
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What causes the wire in an electromagnet to become warm when current flows through it?",
+      "ms": {
+        "draft": 7920,
+        "critique": 8045,
+        "solver": 1836,
+        "form": 0,
+        "translation": 67667
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a nichrome wire is used in an electric heater, which property of the wire makes it suitable for this purpose?",
+      "ms": {
+        "draft": 6313,
+        "critique": 7568,
+        "solver": 1738,
+        "form": 5373,
+        "translation": 54885
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "When current is passed through a cylindrical coil, what happens to the magnetic compass needles placed near its ends?",
+      "ms": {
+        "draft": 8931,
+        "critique": 6938,
+        "solver": 13393,
+        "form": 0,
+        "translation": 49217
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the heat generated in a wire if the number of cells in a circuit is increased?",
+      "ms": {
+        "draft": 4730,
+        "critique": 7201,
+        "solver": 1873,
+        "form": 0,
+        "translation": 40661
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a student observes that the magnetic compass needle deflects when current flows through a wire. What can be concluded about the wire?",
+      "ms": {
+        "draft": 16501,
+        "critique": 7132,
+        "solver": 1566,
+        "form": 0,
+        "translation": 51813
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student uses a coil with an iron core to make an electromagnet. If the current is increased, what happens to the strength of the electromagnet?",
+      "ms": {
+        "draft": 6313,
+        "critique": 6903,
+        "solver": 2542,
+        "form": 4370,
+        "translation": 58972
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the experiment described, what is the relationship between electric current and magnetic effects?",
+      "reason": "figure: figure spec refused: spec.parts.2.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'wire'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the purpose of using an iron nail in an electromagnet experiment?",
+      "reason": "figure: figure spec refused: spec.parts: a switchClosed runs along a row or a column"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In which of the following situations would an electromagnet be most useful for lifting heavy metal objects?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'electromagnet'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student made an electromagnet and noticed that when the current was reversed, the poles of the electromagnet also reversed. Why does this happen?",
+      "reason": "options 1 and 3 say the same thing (\"Because the magnetic field is created only when the current is constant\" / \"Because the magnetic field is created only when the current is increasing\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an experiment, an electromagnet is made using a coil of 10 turns with a current of 1 A. The same coil is then used with 2 A current. What can be concluded about the magnetic strength of the electromagnet?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name given to a coil of wire that behaves like a magnet when current flows through it?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of the heating effect of electric current?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Confuses the magnetic effect with the heating effect (magnet…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the diagram of a Voltaic cell, which part acts as the positive terminal?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What happens to the heat generated in a wire when the number of cells in a circuit is increased?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student uses two identical bulbs in a circuit connected to a battery. One bulb is connected in a circuit with a copper wire, and the other with an iron wire. What would be the effect on the heat generated in the bulbs?",
+      "reason": "options 1 and 2 say the same thing (\"The bulb connected with the copper wire will glow more brightly\" / \"The bulb connected with the iron wire will glow more brightly\"); distractor 0's reason is not a one-line misconception (\"Confuses the relationship between resistance and brightness,…\"); distractor 2's reason is not a one-line misconception (\"Confuses the relationship between resistance and brightness,…\"); distractor 3's reason is not a one-line misconception (\"Confuses the relationship between resistance and brightness,…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a safety measure to prevent overheating in household circuits?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer…\"); distractor 2's reason is not a one-line misconception (\"Confuses the effect of wire thickness on resistance, thinkin…\"); distractor 3's reason is not a one-line misconception (\"Confuses the effect of wire thickness on resistance, thinkin…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a correct statement about rechargeable batteries?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student connects a copper wire to a battery and notices that the wire becomes hot. Which of the following factors would NOT affect the amount of heat generated in the wire?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main reason for the heating effect in a conductor when electric current flows through it?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given figure, if the compass placed near the coil deflects, what can be inferred?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about electromagnets?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a nichrome wire is used in an electric heater, which of the following is the most likely reason?",
+      "reason": "distractors 0, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What happens to the magnetic field of an electromagnet when the current is switched OFF?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following best describes the magnetic effect of electric current?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, a coil is connected to a battery and a compass is placed near it. What happens when current flows through the coil?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student uses four coils made of different materials—iron, copper, aluminium, and nichrome—as shown in the figure. If current is passed through these coils, in which cases will the compass needle show deflection?",
+      "reason": "options 0 and 1 say the same thing (\"Only in circuits (a) and (c)\" / \"Only in circuits (a), (c), and (d)\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the circuit shown in Fig. 4.8b, what is the role of the lemon juice?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of the heating effect of electric current?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What happens to the strength of an electromagnet when the number of turns in the coil is increased?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a circuit with two resistors in series, the heat generated is calculated using Joule’s Law of Heating. Which of the following factors affects the heat generated in a resistor?",
+      "reason": "option 3 is a catch-all (\"Both (b) and (c)\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a nichrome wire is used in an electrical circuit and the switch is turned ON for a few seconds, what will happen to the wire?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What happens to the compass needle when electric current flows through a wire?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What determines the polarity of an electromagnet's ends when current is passed through its coil?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens to the iron paper clips when the electric current stops flowing through the coil in an electromagnet?",
+      "reason": "near-duplicate of served question cmv2urt85001ngnmzegstms9t (cosine 0.952 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If the temperature of a copper wire increases while current is flowing through it, what happens to its resistance?",
+      "reason": "near-duplicate of served question cmvf6yvru03gigod8i1hrmehs (cosine 0.958 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What happens to the magnetic strength of an electromagnet when the number of turns in the coil is increased?",
+      "reason": "near-duplicate of served question cmvqxpn0r0ce7gp21incssv2r (cosine 0.974 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A circuit is left on for several minutes, and the copper wire becomes hot. What happens to the resistance of the wire as its temperature increases?",
+      "reason": "near-duplicate of served question cmvf6yvru03gigod8i1hrmehs (cosine 0.911 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

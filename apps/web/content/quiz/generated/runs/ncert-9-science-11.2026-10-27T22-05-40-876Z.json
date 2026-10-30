@@ -1,0 +1,858 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T22:05:40.876Z",
+  "finishedAt": "2026-10-27T22:16:05.245Z",
+  "seconds": 624,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc111.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Reproduction: How Life Continues",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 29,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n18. Assertion: Probability of survival of an organism produced through sexual reproduction is 1\nmore than that of organism produced through asexual mode.\nReason: Variations provide advantages to individuals for survival.",
+      "[INJSO 2014 — question paper]\n7. Which type of reproduction, from the following, gives evidence that the genetic\ninformation needed for the complete development of an individual is contained\nactually in a haploid set of chromosomes?\na) Budding in hydra\nb) Multiple fission in amoeba\nc) Development of male honey bee (Drone) from egg\nd) Binary fission in paramecium"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 241941,
+      "in": 46,
+      "out": 43,
+      "rejects": 3,
+      "promptTokens": 54172,
+      "completionTokens": 12069
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 347659,
+      "in": 43,
+      "out": 33,
+      "rejects": 10,
+      "promptTokens": 22145,
+      "completionTokens": 8372
+    },
+    "solver": {
+      "calls": 205,
+      "ms": 109470,
+      "in": 33,
+      "out": 31,
+      "rejects": 2,
+      "promptTokens": 34201,
+      "completionTokens": 1959
+    },
+    "form": {
+      "calls": 10,
+      "ms": 70103,
+      "in": 31,
+      "out": 8,
+      "rejects": 23,
+      "promptTokens": 11652,
+      "completionTokens": 1618
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 51,
+      "ms": 10033,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 370844,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 17317,
+      "completionTokens": 9021
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 3,
+    "4": 0,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which type of reproduction is described by the process of producing new individuals from the vegetative parts of a plant?",
+      "ms": {
+        "draft": 5137,
+        "critique": 5323
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a farmer wants to produce a large number of identical plants with specific desirable traits, which method of reproduction would they most likely use?",
+      "ms": {
+        "draft": 5137,
+        "critique": 5822
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is asexual reproduction more commonly used in plants like potatoes and ginger compared to sexual reproduction?",
+      "ms": {
+        "draft": 5137,
+        "critique": 8646
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of vegetative propagation?",
+      "ms": {
+        "draft": 5137,
+        "critique": 8489
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the key advantage of using vegetative propagation in agriculture?",
+      "ms": {
+        "draft": 5137,
+        "critique": 6840,
+        "solver": 13994,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, why is the tissue culture method useful for banana farming?",
+      "ms": {
+        "draft": 5137,
+        "critique": 7314
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of asexual reproduction?",
+      "ms": {
+        "draft": 5326,
+        "critique": 7239,
+        "solver": 2140,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of budding in organisms like yeast and hydra?",
+      "ms": {
+        "draft": 5326,
+        "critique": 7912,
+        "solver": 1880,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a flower, the part that receives pollen is called the stigma. Based on the passage, what is the function of the stigma?",
+      "ms": {
+        "draft": 4738,
+        "critique": 6690,
+        "solver": 2034,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage explains that flowers have sepals and petals. If a flower has both sepals and petals, which of the following is true?",
+      "ms": {
+        "draft": 4738,
+        "critique": 6762,
+        "solver": 1528,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that in plants, pollen grains contain male gametes, and the ovule contains the female gamete. If a pollen grain from a plant with 23 chromosomes reaches an ovule, how many chromosomes will the resulting zygote have?",
+      "ms": {
+        "draft": 4738,
+        "critique": 7167,
+        "solver": 1985,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process of transfer of pollen grains from the anther to the stigma of a flower called?",
+      "ms": {
+        "draft": 8228,
+        "critique": 7879
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "The passage states that the ovary contains ovules, and each ovule has an egg cell. What is the function of the ovary?",
+      "ms": {
+        "draft": 4738,
+        "critique": 8216,
+        "solver": 1310,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of self-pollination?",
+      "ms": {
+        "draft": 8228,
+        "critique": 7353
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A farmer plants two varieties of maize side by side, but notices that seeds form only when pollen from one variety reaches the stigma of the other. What type of pollination is this?",
+      "ms": {
+        "draft": 8228,
+        "critique": 8455
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct sequence of events during fertilisation?",
+      "ms": {
+        "draft": 5794,
+        "critique": 10466
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage suggest that producing a large number of pollen grains can still be an effective pollination strategy?",
+      "ms": {
+        "draft": 8228,
+        "critique": 6430,
+        "solver": 17309,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the human reproductive system produces eggs?",
+      "ms": {
+        "draft": 59147,
+        "critique": 6900
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of fertilisation occurs inside the body of the female?",
+      "ms": {
+        "draft": 4963,
+        "critique": 8491,
+        "solver": 12062,
+        "form": 1060
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the correct sequence of stages in sexual reproduction in plants?",
+      "ms": {
+        "draft": 5821,
+        "critique": 5774,
+        "solver": 2370,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which process ensures that pollen from another plant of the same species is used to produce seeds?",
+      "ms": {
+        "draft": 5821,
+        "critique": 5745,
+        "solver": 1218,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why does the zygote attach to the uterus wall after fertilisation?",
+      "ms": {
+        "draft": 5821,
+        "critique": 6216,
+        "solver": 3186,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of breastfeeding according to the passage?",
+      "ms": {
+        "draft": 3681,
+        "critique": 7969,
+        "solver": 2149,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do flowers that bloom at night tend to be white or light in colour?",
+      "ms": {
+        "draft": 5821,
+        "critique": 6294,
+        "solver": 2072,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of reproduction involves the production of sperm in boys and menstrual cycles in girls?",
+      "ms": {
+        "draft": 3681,
+        "critique": 6255,
+        "solver": 11887,
+        "form": 3719
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the role of the placenta after the embryo is implanted in the uterus?",
+      "ms": {
+        "draft": 3681,
+        "critique": 8160,
+        "solver": 1588,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is true about the reproductive process in humans based on the passage?",
+      "ms": {
+        "draft": 3681,
+        "critique": 6129,
+        "solver": 1948,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is it important for adolescents to develop emotional maturity along with physical maturity?",
+      "ms": {
+        "draft": 3681,
+        "critique": 6420,
+        "solver": 1823,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what happens to the inner lining of the uterus if an egg is not fertilised?",
+      "ms": {
+        "draft": 4279,
+        "critique": 6944,
+        "solver": 1677,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of fertilisation is seen in fish and frogs?",
+      "ms": {
+        "draft": 5148,
+        "critique": 8589,
+        "solver": 1595,
+        "form": 5516
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the context of the passage, why is the asymmetry between male and female gametes important for reproduction?",
+      "ms": {
+        "draft": 4279,
+        "critique": 6422,
+        "solver": 18167
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is true about the number of eggs produced by fish?",
+      "ms": {
+        "draft": 5148,
+        "critique": 7164,
+        "solver": 1197
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that in humans, the number of chromosomes is reduced to half during gametogenesis. What is the significance of this reduction?",
+      "ms": {
+        "draft": 4279,
+        "critique": 9991,
+        "solver": 17124,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "During meiosis, how many chromosomes do human gametes have?",
+      "ms": {
+        "draft": 6002,
+        "critique": 6912,
+        "solver": 1009,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the flower is responsible for receiving pollen grains?",
+      "ms": {
+        "draft": 6423,
+        "critique": 6432,
+        "solver": 2262,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the female reproductive system is a bag-like structure where a foetus develops?",
+      "ms": {
+        "draft": 4279,
+        "critique": 6760,
+        "solver": 1586,
+        "form": 3262
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is it important to keep the moist chamber in a warm and dark place during the mould growth experiment?",
+      "ms": {
+        "draft": 5326,
+        "critique": 7364,
+        "solver": 1230,
+        "form": 0,
+        "translation": 61932
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the role of the moist chamber in the mould growth experiment?",
+      "ms": {
+        "draft": 5326,
+        "critique": 7184,
+        "solver": 1559,
+        "form": 0,
+        "translation": 52560
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "During meiosis, the number of chromosomes in a cell is halved. If a human cell has 46 chromosomes, how many chromosomes will each gamete have?",
+      "ms": {
+        "draft": 4738,
+        "critique": 7282,
+        "solver": 1534,
+        "form": 4477,
+        "translation": 52220
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why does asexual reproduction result in offspring that are genetically identical to the parent?",
+      "ms": {
+        "draft": 5821,
+        "critique": 9125,
+        "solver": 2350,
+        "form": 0,
+        "translation": 50490
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why are spores of fungi able to float easily in the air?",
+      "ms": {
+        "draft": 5326,
+        "critique": 7473,
+        "solver": 1392,
+        "form": 0,
+        "translation": 59450
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the advantage of having a long period of dependency for human babies?",
+      "ms": {
+        "draft": 5821,
+        "critique": 7090,
+        "solver": 1346,
+        "form": 0,
+        "translation": 18417
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If an organism reproduces asexually, how does this affect the genetic variation in its population?",
+      "ms": {
+        "draft": 5326,
+        "critique": 6505,
+        "solver": 2353,
+        "form": 0,
+        "translation": 68340
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "The passage describes meiosis as a process that forms gametes. What is the main purpose of meiosis?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of reproduction is described by the process of producing new individuals from the vegetative parts of a plant?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a farmer wants to produce a large number of identical plants with specific desirable traits, which method of reproduction would they most likely use?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is asexual reproduction more commonly used in plants like potatoes and ginger compared to sexual reproduction?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of vegetative propagation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the key advantage of using vegetative propagation in agriculture?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, why is the tissue culture method useful for banana farming?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of asexual reproduction?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of budding in organisms like yeast and hydra?",
+      "reason": "figure: figure spec refused: spec.parts: animalCell has no label \"cell\" (it has membrane, nucleus, cytoplasm, mitochondrion)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a flower, the part that receives pollen is called the stigma. Based on the passage, what is the function of the stigma?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage explains that flowers have sepals and petals. If a flower has both sepals and petals, which of the following is true?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that in plants, pollen grains contain male gametes, and the ovule contains the female gamete. If a pollen grain from a plant with 23 chromosomes reaches an ovule, how many chromosomes will the resulting zygote have?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the process of transfer of pollen grains from the anther to the stigma of a flower called?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "The passage states that the ovary contains ovules, and each ovule has an egg cell. What is the function of the ovary?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of self-pollination?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A farmer plants two varieties of maize side by side, but notices that seeds form only when pollen from one variety reaches the stigma of the other. What type of pollination is this?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the correct sequence of events during fertilisation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage suggest that producing a large number of pollen grains can still be an effective pollination strategy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 are the same (\"Because the pollen grains can travel to many different flowers\"); distractor 3's reason is not a one-line misconception (\"correct answer…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the human reproductive system produces eggs?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which type of fertilisation occurs inside the body of the female?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"incorrectly assumes both types are possible in all animals w…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the process of formation of gametes called?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term for the transfer of pollen grains from the anther to the stigma of a flower?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the correct sequence of stages in sexual reproduction in plants?",
+      "reason": "options 0 and 1 say the same thing (\"Pollination, Pollen germination on stigma, Fertilisation, Formation of zygote\" / \"Pollination, Fertilisation, Pollen germination on stigma, Formation of zygote\"); options 0 and 2 say the same thing (\"Pollination, Pollen germination on stigma, Fertilisation, Formation of zygote\" / \"Pollen germination on stigma, Pollination, Fertilisation, Formation of zygote\"); options 0 and 3 say the same thing (\"Pollination, Pollen germination on stigma, Fertilisation, Formation of zygote\" / \"Fertilisation, Pollen germination on stigma, Pollination, Formation of zygote\"); options 1 and 2 say the same thing (\"Pollination, Fertilisation, Pollen germination on stigma, Formation of zygote\" / \"Pollen germination on stigma, Pollination, Fertilisation, Formation of zygote\"); options 1 and 3 say the same thing (\"Pollination, Fertilisation, Pollen germination on stigma, Formation of zygote\" / \"Fertilisation, Pollen germination on stigma, Pollination, Formation of zygote\"); options 2 and 3 say the same thing (\"Pollen germination on stigma, Pollination, Fertilisation, Formation of zygote\" / \"Fertilisation, Pollen germination on stigma, Pollination, Formation of zygote\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which process ensures that pollen from another plant of the same species is used to produce seeds?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why does the zygote attach to the uterus wall after fertilisation?",
+      "reason": "figure: figure spec refused: spec.parts: plantCell has no label \"zygote\" (it has cellWall, membrane, nucleus, vacuole, chloroplast, cytoplasm)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of breastfeeding according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (66 vs 29 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why do flowers that bloom at night tend to be white or light in colour?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'moth'"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which type of reproduction involves the production of sperm in boys and menstrual cycles in girls?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the role of the placenta after the embryo is implanted in the uterus?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements is true about the reproductive process in humans based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is it important for adolescents to develop emotional maturity along with physical maturity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what happens to the inner lining of the uterus if an egg is not fertilised?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which type of fertilisation is seen in fish and frogs?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the context of the passage, why is the asymmetry between male and female gametes important for reproduction?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is true about the number of eggs produced by fish?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that in humans, the number of chromosomes is reduced to half during gametogenesis. What is the significance of this reduction?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "During meiosis, how many chromosomes do human gametes have?",
+      "reason": "checkExpr \"23\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the flower is responsible for receiving pollen grains?",
+      "reason": "figure: figure spec refused: spec.parts: flower has no label \"stigma\" (it has petal, sepal, stamen, pistil)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which part of the female reproductive system is a bag-like structure where a foetus develops?",
+      "reason": "near-duplicate of served question cmvjr00ks0hiygpfhm8hxrvja (cosine 0.969 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

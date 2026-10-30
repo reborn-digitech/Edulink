@@ -1,0 +1,897 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T20:52:45.569Z",
+  "finishedAt": "2026-10-26T21:05:49.346Z",
+  "seconds": 784,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Introductory Microeconomics",
+    "bookCode": "leec2",
+    "document": "ncert/12/economics/leec202.pdf",
+    "classLevel": 12,
+    "subject": "Economics",
+    "chapter": "Chapter 2 — Theory of Consumer",
+    "edition": "Reprint 2026-27",
+    "chunks": 34,
+    "groups": 10
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Economics, sample question paper, 2024-25]\n14. “Saving curve can be derived from the consumption curve” 4\n(A) Justify the statement, citing valid steps with the help of a well-labelled\ndiagram.\nFor Visually Impaired Candidates:\n“Saving curve can be derived from the consumption curve”\nJustify the statement, citing valid steps.\nOR\n14. For two hypothetical economies A and B, the value of Marginal Propensity to\n(B) Consume (MPC) stands at 0.6 and 0.8 respectively. Assuming for both the\neconomies, Autonomous Consumption (c̅) to be ₹ 40 crore and Investment\nExpenditure (I) to be ₹ 100 crore.\nCalculate:\n(I) Break-even level of income for Economy A 2\n(II) Equilibrium level of income for Economy B 2",
+      "[CBSE Class XII Economics, marking scheme, 2024-25]\n8. D. Autonomous Consumption, Induced Consumption and Autonomous 1\nInvestment",
+      "[CBSE Class XII Economics, sample question paper, 2022-23]\n5. This paper contains 4 Long Answer Questions type questions of 6 marks each to be answered\nin 100 to 150 words.\nQ.NO. SECTION A – MACRO ECONOMICS MARKS\n1 Read the following statements carefully:\nStatement 1: The consumption curve is an upward sloping straight line curve due to the\ndirect relationship between income and consumption and the assumption of constant\nMarginal Propensity to Consume.\nStatement 2: Aggregate Demand curve and Consumption curve are parallel to each other.\nIn the light of the given statements, choose the correct alternative from the following:\na) Statement 1 is true and statement 2 is false\nb) Statement 1 is false and statement 2 is true 1\nc) Both statements 1 and 2 ar",
+      "[CBSE Class XII Economics, marking scheme, 2025-26]\n1. D. Average Propensity to Consume = 1 1\nNote: The following answer is for the Visually Impaired Candidates only,\nin lieu of Ans.1\nD. Average Propensity to Consume = 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Economics in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 294389,
+      "in": 49,
+      "out": 47,
+      "rejects": 2,
+      "promptTokens": 56393,
+      "completionTokens": 13464
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 483762,
+      "in": 47,
+      "out": 34,
+      "rejects": 13,
+      "promptTokens": 26205,
+      "completionTokens": 10007
+    },
+    "solver": {
+      "calls": 228,
+      "ms": 141304,
+      "in": 34,
+      "out": 31,
+      "rejects": 3,
+      "promptTokens": 38760,
+      "completionTokens": 2223
+    },
+    "form": {
+      "calls": 15,
+      "ms": 78952,
+      "in": 31,
+      "out": 14,
+      "rejects": 17,
+      "promptTokens": 7613,
+      "completionTokens": 1674
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 6,
+      "ms": 1269,
+      "in": 14,
+      "out": 11,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 520552,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 26914,
+      "completionTokens": 13607
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 3,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a consumer consumes more units of a commodity, what happens to the marginal utility according to the passage?",
+      "ms": {
+        "draft": 7074,
+        "critique": 6483
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'utility' refer to in the context of consumer behaviour?",
+      "ms": {
+        "draft": 7074,
+        "critique": 8195
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the total utility and marginal utility of a commodity?",
+      "ms": {
+        "draft": 7074,
+        "critique": 6533,
+        "solver": 20969,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is the demand curve for a commodity downward sloping?",
+      "ms": {
+        "draft": 7074,
+        "critique": 8691,
+        "solver": 19761,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a consumer consumes 5 units of a commodity, and the total utility is constant, what can be said about the marginal utility of the 5th unit?",
+      "ms": {
+        "draft": 7074,
+        "critique": 8382,
+        "solver": 19421,
+        "form": 10409
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the shape of an indifference curve when two goods are perfect substitutes?",
+      "ms": {
+        "draft": 14330,
+        "critique": 15663
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a consumer is willing to trade 3 mangoes for 1 banana while remaining on the same indifference curve, what is the marginal rate of substitution (MRS) between mangoes and bananas?",
+      "ms": {
+        "draft": 14330,
+        "critique": 11871
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main factor that determines the consumer's ability to afford a commodity?",
+      "ms": {
+        "draft": 7074,
+        "critique": 13264,
+        "solver": 22351,
+        "form": 4083
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a consumer moves from point A to point B on an indifference curve, and gives up 3 mangoes to gain 1 banana, and then from point B to point C, gives up 2 mangoes to gain 1 banana, what can be concluded about the marginal rate of substitution (MRS)?",
+      "ms": {
+        "draft": 14330,
+        "critique": 12935
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason a demand curve slopes downward according to the passage?",
+      "ms": {
+        "draft": 14330,
+        "critique": 14091,
+        "solver": 1928,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why an indifference curve slopes downward?",
+      "ms": {
+        "draft": 14330,
+        "critique": 12520,
+        "solver": 22596,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A consumer prefers more of a good if it increases their level of satisfaction. Based on this, which of the following statements is true?",
+      "ms": {
+        "draft": 7400,
+        "critique": 9805
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If two indifference curves intersect, what happens according to the passage?",
+      "ms": {
+        "draft": 7400,
+        "critique": 7577,
+        "solver": 14428,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a consumer has an income of ₹ 20 and the prices of both goods are ₹ 5, which of the following is NOT a bundle the consumer can afford?",
+      "ms": {
+        "draft": 7400,
+        "critique": 7897,
+        "solver": 15438
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the budget set?",
+      "ms": {
+        "draft": 7400,
+        "critique": 5381,
+        "solver": 1466,
+        "form": 2123
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the budget line has a slope of -p1/p2, what does this represent?",
+      "ms": {
+        "draft": 7400,
+        "critique": 11333,
+        "solver": 12752
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the slope of the budget line represent?",
+      "ms": {
+        "draft": 11156,
+        "critique": 8026,
+        "solver": 2015,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why must the marginal rate of substitution (MRS) be equal to the price ratio at the consumer's optimum bundle?",
+      "ms": {
+        "draft": 11156,
+        "critique": 9130,
+        "solver": 2119,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the price of bananas increases while the price of mangoes and the consumer's income remain unchanged, what happens to the budget line?",
+      "ms": {
+        "draft": 11156,
+        "critique": 7130,
+        "solver": 3109,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where is the consumer's optimum bundle located according to the passage?",
+      "ms": {
+        "draft": 11757,
+        "critique": 6816
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the consumer's income increases while the prices of both goods remain unchanged, what happens to the budget line?",
+      "ms": {
+        "draft": 11156,
+        "critique": 7484,
+        "solver": 1436,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a complementary good?",
+      "ms": {
+        "draft": 6850,
+        "critique": 6483
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the relation between the quantity of a good chosen by a consumer and the price of the good?",
+      "ms": {
+        "draft": 9886,
+        "critique": 6733,
+        "solver": 963,
+        "form": 1676
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A consumer has a budget of ₹20 and wants to buy two goods priced at ₹4 and ₹5. What is the maximum number of units of the second good she can buy?",
+      "ms": {
+        "draft": 4656,
+        "critique": 6662
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A consumer has monotonic preferences. She is indifferent between the bundles (10, 8) and (8, 6). What can be concluded?",
+      "ms": {
+        "draft": 4656,
+        "critique": 7273,
+        "solver": 1637,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes a horizontal demand curve?",
+      "ms": {
+        "draft": 5246,
+        "critique": 7856,
+        "solver": 1613
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the elasticity of demand at the midpoint of a linear demand curve indicate?",
+      "ms": {
+        "draft": 5246,
+        "critique": 7907,
+        "solver": 1656,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a good has a perfectly elastic demand, what happens to the quantity demanded when the price increases slightly?",
+      "ms": {
+        "draft": 5246,
+        "critique": 7449,
+        "solver": 14805,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a complementary good?",
+      "ms": {
+        "draft": 3921,
+        "critique": 9429
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What happens to the demand curve of a normal good when consumer income increases?",
+      "ms": {
+        "draft": 3921,
+        "critique": 7642
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a market with a perfectly elastic demand curve, what is the effect of a small increase in price on the quantity demanded?",
+      "ms": {
+        "draft": 5246,
+        "critique": 6822,
+        "solver": 11937,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the price of a substitute good decreases, what is the likely effect on the demand for the original good?",
+      "ms": {
+        "draft": 3921,
+        "critique": 7923
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What determines the consumer's optimal bundle according to the passage?",
+      "ms": {
+        "draft": 9827,
+        "critique": 7019
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a consumer has monotonic preferences, which of the following is true?",
+      "ms": {
+        "draft": 14330,
+        "critique": 15010,
+        "solver": 2538,
+        "form": 6937
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes the budget set of a consumer?",
+      "ms": {
+        "draft": 4656,
+        "critique": 8405,
+        "solver": 2271,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the price of a good increases by 10% and the quantity demanded decreases by 10%, what is the effect on total expenditure on the good?",
+      "ms": {
+        "draft": 4535,
+        "critique": 6615,
+        "solver": 1446,
+        "form": 3036
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the relation between the quantity of a good chosen by a consumer and its price?",
+      "ms": {
+        "draft": 3840,
+        "critique": 7836,
+        "solver": 1101,
+        "form": 3790,
+        "translation": 29665
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In the demand curve, which variable is placed along the vertical axis?",
+      "ms": {
+        "draft": 3840,
+        "critique": 6618,
+        "solver": 1779,
+        "form": 2548,
+        "translation": 23343
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary characteristic of a budget line?",
+      "ms": {
+        "draft": 4656,
+        "critique": 8226,
+        "solver": 1386,
+        "form": 0,
+        "translation": 45372
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why is the budget line negatively sloped?",
+      "ms": {
+        "draft": 4656,
+        "critique": 11400,
+        "solver": 1635,
+        "form": 0,
+        "translation": 44146
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A demand curve where price times quantity is constant will have which type of elasticity?",
+      "ms": {
+        "draft": 4535,
+        "critique": 6314,
+        "solver": 1679,
+        "form": 6159,
+        "translation": 59147
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which type of demand curve has an elasticity of 1 at all points?",
+      "ms": {
+        "draft": 4535,
+        "critique": 6476,
+        "solver": 2204,
+        "form": 3814,
+        "translation": 55094
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a consumer's income doubles and the prices of both goods also double, what happens to the budget set?",
+      "ms": {
+        "draft": 4656,
+        "critique": 6800,
+        "solver": 1823,
+        "form": 0,
+        "translation": 42664
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the price of a good increases by 10% and the quantity demanded decreases by 12%, what is the effect on total expenditure on the good?",
+      "ms": {
+        "draft": 4535,
+        "critique": 6232,
+        "solver": 1637,
+        "form": 4252,
+        "translation": 54011
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a consumer's income increases, but the price of a good remains the same, what happens to the demand for the good?",
+      "ms": {
+        "draft": 5246,
+        "critique": 8891,
+        "solver": 1464,
+        "form": 0,
+        "translation": 44011
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A consumer buys a good at a price of ₹ 20 per unit, and the total expenditure on the good is ₹ 200. If the price increases to ₹ 25, what will be the new total expenditure if the demand for the good is unit-elastic?",
+      "ms": {
+        "draft": 4535,
+        "critique": 6925,
+        "solver": 1755,
+        "form": 5086,
+        "translation": 61858
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A rectangular hyperbola demand curve has constant total expenditure. If the price of a good increases, how does the quantity demanded change to maintain this property?",
+      "ms": {
+        "draft": 4535,
+        "critique": 7216,
+        "solver": 1314,
+        "form": 3441,
+        "translation": 56181
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a consumer consumes more units of a commodity, what happens to the marginal utility according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the term 'utility' refer to in the context of consumer behaviour?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the total utility and marginal utility of a commodity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 are the same (\"Marginal utility increases as consumption increases\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is the demand curve for a commodity downward sloping?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believes demand curve is due to increasing marginal utility,…\"); distractor 3's reason is not a one-line misconception (\"Believes demand curve is due to constant marginal utility, w…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a consumer consumes 5 units of a commodity, and the total utility is constant, what can be said about the marginal utility of the 5th unit?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the shape of an indifference curve when two goods are perfect substitutes?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a consumer is willing to trade 3 mangoes for 1 banana while remaining on the same indifference curve, what is the marginal rate of substitution (MRS) between mangoes and bananas?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main factor that determines the consumer's ability to afford a commodity?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a consumer moves from point A to point B on an indifference curve, and gives up 3 mangoes to gain 1 banana, and then from point B to point C, gives up 2 mangoes to gain 1 banana, what can be concluded about the marginal rate of substitution (MRS)?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason a demand curve slopes downward according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"Because of the law of diminishing marginal utility\" / \"Because of the law of marginal utility\"); options 1 and 3 say the same thing (\"Because of the law of increasing marginal utility\" / \"Because of the law of marginal utility\"); options 2 and 3 say the same thing (\"Because of the law of constant marginal utility\" / \"Because of the law of marginal utility\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why an indifference curve slopes downward?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"Because the consumer has diminishing marginal utility for both goods\" / \"Because the consumer has constant marginal utility for both goods\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A consumer prefers more of a good if it increases their level of satisfaction. Based on this, which of the following statements is true?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If two indifference curves intersect, what happens according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"The consumer gets the same level of satisfaction from all points\" / \"3: The consumer gets the same level of satisfaction from all points\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a consumer has an income of ₹ 20 and the prices of both goods are ₹ 5, which of the following is NOT a bundle the consumer can afford?",
+      "reason": "after redrafting distractors 1, 3: the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the budget set?",
+      "reason": "options 0 and 1 say the same thing (\"The set of all bundles the consumer can buy with their income\" / \"The set of all bundles the consumer cannot buy with their income\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the budget line has a slope of -p1/p2, what does this represent?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the slope of the budget line represent?",
+      "reason": "the key is far longer than every distractor (65 vs 32 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why must the marginal rate of substitution (MRS) be equal to the price ratio at the consumer's optimum bundle?",
+      "reason": "the key is far longer than every distractor (125 vs 73 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the price of bananas increases while the price of mangoes and the consumer's income remain unchanged, what happens to the budget line?",
+      "reason": "figure: figure spec refused: spec.parts: planeMirror has no label \"principalAxis\" (it has mirror, incidentRay, reflectedRay, normal)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Where is the consumer's optimum bundle located according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the consumer's income increases while the prices of both goods remain unchanged, what happens to the budget line?",
+      "reason": "figure: figure spec refused: spec.parts: planeMirror has no label \"principalAxis\" (it has mirror, incidentRay, reflectedRay, normal)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a complementary good?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the relation between the quantity of a good chosen by a consumer and the price of the good?",
+      "reason": "options 1 and 2 say the same thing (\"The quantity of the good increases with an increase in its price\" / \"The quantity of the good decreases with an increase in its price\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes the relationship is positive, whereas th…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What does it mean if the price elasticity of demand is equal to 1?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "If the price of a complementary good increases, what is the likely effect on the demand for the original good?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A consumer has a budget of ₹20 and wants to buy two goods priced at ₹4 and ₹5. What is the maximum number of units of the second good she can buy?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A consumer has monotonic preferences. She is indifferent between the bundles (10, 8) and (8, 6). What can be concluded?",
+      "reason": "options 0 and 1 say the same thing (\"Her preferences are not monotonic\" / \"Her preferences are monotonic\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following best describes a horizontal demand curve?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the elasticity of demand at the midpoint of a linear demand curve indicate?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a good has a perfectly elastic demand, what happens to the quantity demanded when the price increases slightly?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a complementary good?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What happens to the demand curve of a normal good when consumer income increases?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a market with a perfectly elastic demand curve, what is the effect of a small increase in price on the quantity demanded?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the price of a substitute good decreases, what is the likely effect on the demand for the original good?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What determines the consumer's optimal bundle according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a consumer has monotonic preferences, which of the following is true?",
+      "reason": "near-duplicate of served question cmvikoxze0dgkgpfh0f6wrphn (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following best describes the budget set of a consumer?",
+      "reason": "near-duplicate of served question cmvikoxt20dfkgpfhjc1asi08 (cosine 0.941 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If the price of a good increases by 10% and the quantity demanded decreases by 10%, what is the effect on total expenditure on the good?",
+      "reason": "near-duplicate of batch item \"If the price of a good increases by 10% and the qu…\" (cosine 0.911 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Economics in the prompt"
+  ]
+}

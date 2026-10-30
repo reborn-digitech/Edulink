@@ -21,49 +21,144 @@
   "board": "NCERT",
   "book": "Chemistry Part-I",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-23T05:59:05.387Z",
+  "generatedAt": "2026-10-28T11:37:13.332Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "Which of the following elements is a metalloid?",
+      "difficulty": 2,
+      "stem": "What is the main reason for classifying elements?",
       "choices": [
-        "Silicon",
-        "Chlorine",
+        "To increase the number of elements",
+        "To make it easier to study their properties",
+        "To create new elements",
+        "To predict their atomic mass"
+      ],
+      "answerIndex": 1,
+      "solution": "The main reason for classifying elements is to make it easier to study their properties. This allows scientists to organize and understand the behavior of different elements systematically. Creating new elements and predicting atomic mass are not primary goals of classification, and increasing the number of elements is not an intended outcome.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "तत्वों के वर्गीकरण का मुख्य कारण क्या है?",
+          "choices": [
+            "तत्वों की संख्या बढ़ाना",
+            "उनके गुणों का अध्ययन करना सरल बनाना",
+            "नए तत्व बनाना",
+            "उनके परमाणु द्रव्यमान का अनुमान लगाना"
+          ],
+          "solution": "तत्वों के वर्गीकरण का मुख्य कारण उनके गुणों का अध्ययन करना सरल बनाना है। यह वैज्ञानिकों को विभिन्न तत्वों के व्यवहार को व्यवस्थित रूप से संगठित और समझने में सक्षम बनाता है। नए तत्व बनाना और परमाणु द्रव्यमान का अनुमान लगाना वर्गीकरण के प्राथमिक उद्देश्य नहीं हैं, और तत्वों की संख्या बढ़ाना एक इच्छित परिणाम नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "घटकांची वर्गीकरण करण्याचा मुख्य कारण काय आहे?",
+          "choices": [
+            "घटकांची संख्या वाढवणे",
+            "त्यांच्या गुणधर्मांचा अभ्यास करणे सोपे करणे",
+            "नवीन घटक तयार करणे",
+            "त्यांच्या परमाणु द्रव्यमानाचा अंदाज लावणे"
+          ],
+          "solution": "घटकांचे वर्गीकरण करण्याचा मुख्य उद्देश त्यांच्या गुणधर्मांचा अभ्यास करणे सोपे करणे आहे. हे वैज्ञानिकांना विविध घटकांच्या वर्तनाचे संगठन आणि समज देण्यास मदत करते. नवीन घटक तयार करणे आणि परमाणु द्रव्यमानाचा अंदाज लावणे वर्गीकरणाचे प्राथमिक उद्देश नाहीत आणि घटकांची संख्या वाढवणे हे इच्छित परिणाम नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "misunderstands the purpose of classification",
+        null,
+        "incorrectly states the main purpose",
+        "confuses classification with creating new elements"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as classification helps organize elements for easier study. The other options reflect common misconceptions about the purpose of classification.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech103.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech103.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech103.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T11:37:13.332Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following elements would exhibit the highest chemical reactivity?",
+      "choices": [
         "Sodium",
-        "Oxygen"
+        "Chlorine",
+        "Argon",
+        "Silicon"
       ],
       "answerIndex": 0,
-      "solution": "Silicon is a metalloid because it has properties between metals and non-metals, such as partial conductivity. Chlorine and oxygen are non-metals, which are poor conductors of electricity, and sodium is a metal, which is a good conductor and typically soft and malleable.",
+      "solution": "Sodium is a highly reactive alkali metal because it has a single electron in its outermost shell, which it readily loses to form a positive ion. Chlorine is also reactive but tends to gain electrons rather than lose them, making it less reactive than sodium. Argon is a noble gas with a full outer shell, so it is chemically inert. Silicon, a metalloid, has intermediate reactivity. Therefore, sodium is the most reactive.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा तत्व धातु वर्गीय है?",
+          "stem": "निम्नलिखित में से कौन-सा तत्व सबसे अधिक रासायनिक अभिक्रियाशीलता दर्शाएगा?",
           "choices": [
-            "सिलिकॉन",
-            "क्लोरीन",
             "सोडियम",
-            "ऑक्सीजन"
+            "क्लोरीन",
+            "आर्गॉन",
+            "सिलिकॉन"
           ],
-          "solution": "सिलिकॉन धातु वर्गीय है क्योंकि यह धातुओं और अधातुओं के बीच के गुण प्रदर्शित करता है, जैसे आंशिक चालकता। क्लोरीन और ऑक्सीजन अधातु हैं, जो विद्युत के खराब चालक होते हैं, और सोडियम एक धातु है, जो अच्छा चालक होता है और आमतौर पर नरम और ढालने योग्य होता है।",
+          "solution": "सोडियम एक अत्यधिक अभिक्रियाशील क्षार धातु है क्योंकि इसके बाह्यतम कोश में एक इलेक्ट्रॉन होता है, जो इसे सकारात्मक आयन बनाने के लिए आसानी से खो देता है। क्लोरीन भी अभिक्रियाशील है लेकिन इसके इलेक्ट्रॉन खोने के बजाय इलेक्ट्रॉन ग्रहण करने की प्रवृत्ति होती है, जिसके कारण यह सोडियम की तुलना में कम अभिक्रियाशील होती है। आर्गॉन एक निष्क्रिय गैस है जिसका बाह्यतम कोश पूर्ण होता है, इसलिए यह रासायनिक रूप से अक्रिय होता है। सिलिकॉन, एक धातु-अधातु, की मध्यम अभिक्रियाशीलता होती है। इसलिए, सोडियम सबसे अधिक अभिक्रियाशील है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता घटक धातूगुण असलेला आहे?",
+          "stem": "खालीलपैकी कोणता घटक सर्वाधिक रासायनिक अभिक्रियाशीलता दाखवेल?",
           "choices": [
-            "सिलिकॉन",
-            "क्लोरीन",
             "सोडियम",
-            "ऑक्सीजन"
+            "क्लोरीन",
+            "आर्गॉन",
+            "सिलिकॉन"
           ],
-          "solution": "सिलिकॉन धातूगुण असलेला आहे कारण त्याच्या गुणधर्म धातू आणि अधातू दरम्यान असतात, उदाहरणार्थ आंशिक विद्युत वाहकता. क्लोरीन आणि ऑक्सीजन अधातू असून, विद्युत वाहकता खराब असते आणि सोडियम धातू असून, विद्युत चांगला वाहक असतो आणि सामान्यतः नरम आणि बदलण्याजोगा असतो.",
+          "solution": "सोडियम हा उच्च अभिक्रियाशील अल्कली धातू आहे कारण त्याच्या बाह्यतम कक्षात एक इलेक्ट्रॉन असतो, जो त्याने धनावेश असलेला आयन बनवण्यासाठी लगेच गमावतो. क्लोरीन देखील अभिक्रियाशील असते परंतु इलेक्ट्रॉन गमावण्याऐवजी ते घेते, ज्यामुळे ते सोडियम पेक्षा कमी अभिक्रियाशील असते. आर्गॉन हा एक निष्क्रिय वायू आहे ज्याच्या बाह्यतम कक्षात पूर्णपणे इलेक्ट्रॉन असतात, म्हणून तो रासायनिकदृष्ट्या निष्क्रिय असतो. सिलिकॉन, एक धातू-अधातू, अभिक्रियाशीलतेच्या मध्यम पातळीवर असतो. म्हणूनच सोडियम सर्वात अभिक्रियाशील असतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for elements and properties.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for chemical elements and concepts.",
           "flag": null
         }
       },
@@ -73,9 +168,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses metalloids with non-metals",
-        "Thinks all elements on the right are non-metals",
-        "Believes all left-side elements are metals"
+        "Confuses the reactivity of sodium with that of chlorine",
+        "Misunderstands that argon is reactive",
+        "Misinterprets the reactivity of silicon as higher than that of sodium"
       ],
       "solverAnswers": [
         0,
@@ -85,509 +180,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is accurate. Silicon is correctly identified as a metalloid, and the reasoning for the other options aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 15,
-          "pageStart": 12,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 16,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 17,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T05:59:05.387Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a characteristic of s-block elements?",
-      "choices": [
-        "They have a (n-1)d ns electronic configuration",
-        "They are all non-metals",
-        "They have a ns electronic configuration",
-        "They show variable oxidation states"
-      ],
-      "answerIndex": 2,
-      "solution": "S-block elements have an ns electronic configuration, which is a defining feature of their position in the periodic table. Transition elements, not s-block elements, have an (n-1)d ns configuration. S-block elements are mostly metals and typically exhibit only one oxidation state, rather than variable oxidation states.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा s-ब्लॉक तत्वों का लक्षण है?",
-          "choices": [
-            "उनका (n-1)d ns इलेक्ट्रॉनिक विन्यास होता है",
-            "वे सभी अधातु होते हैं",
-            "उनका ns इलेक्ट्रॉनिक विन्यास होता है",
-            "वे चर ऑक्सीकरण अवस्थाएं दर्शाते हैं"
-          ],
-          "solution": "s-ब्लॉक तत्वों का ns इलेक्ट्रॉनिक विन्यास होता है, जो उनके आवर्त सारणी में स्थिति की परिभाषा है। संक्रमण तत्व, s-ब्लॉक तत्वों के बजाय, (n-1)d ns विन्यास रखते हैं। s-ब्लॉक तत्व अधिकांशतः धातु होते हैं और आमतौर पर चर ऑक्सीकरण अवस्थाएं नहीं दर्शाते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते s-ब्लॉक घटकांचे लक्षण आहे?",
-          "choices": [
-            "त्यांचे (n-1)d ns इलेक्ट्रॉनिक विन्यास असतो",
-            "ते सर्व अधातू असतात",
-            "त्यांचे ns इलेक्ट्रॉनिक विन्यास असतो",
-            "ते विविध ऑक्सिडेशन स्थिती दाखवतात"
-          ],
-          "solution": "s-ब्लॉक घटकांचे ns इलेक्ट्रॉनिक विन्यास असतो, जे त्यांच्या आवर्त सारणीतील स्थानाचे निर्धारक लक्षण आहे. संक्रमण घटक, s-ब्लॉक घटकांपेक्षा, (n-1)d ns विन्यास असतात. s-ब्लॉक घटक मुख्यतः धातू असतात आणि विविध ऑक्सिडेशन स्थिती दाखवत नाहीत, तर फक्त एक ऑक्सिडेशन स्थिती दाखवतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard science textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses d-block with s-block elements",
-        "Misunderstands the metallic nature of s-block elements",
-        null,
-        "students confuse d-block elements with s-block elements"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 2, as s-block elements have an ns electronic configuration. The author's solution is accurate, and the reasons for the distractors align with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 11,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 12,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 13,
-          "pageStart": 11,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 14,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T05:59:05.387Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What happens to the metallic character of elements as we move from left to right in a period?",
-      "choices": [
-        "Increases",
-        "Decreases",
-        "Remains the same",
-        "Fluctuates"
-      ],
-      "answerIndex": 1,
-      "solution": "As we move from left to right in a period, the atomic radius decreases, and the ability of an atom to lose electrons decreases, leading to a decrease in metallic character. Metallic character is associated with the tendency to lose electrons, which becomes less likely as we move across a period. The other options do not align with this trend in elemental properties.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "आवर्त में बाएं से दाएं जाने पर तत्वों की धात्विक प्रकृति क्या होती है?",
-          "choices": [
-            "बढ़ जाती है",
-            "घट जाती है",
-            "एक समान रहती है",
-            "उतार-चढ़ाव होता है"
-          ],
-          "solution": "आवर्त में बाएं से दाएं जाने पर परमाणु त्रिज्या घटती है और एक परमाणु के इलेक्ट्रॉन खोने की क्षमता घटती है, जिसके परिणामस्वरूप धात्विक प्रकृति घट जाती है। धात्विक प्रकृति इलेक्ट्रॉन खोने की प्रवृत्ति से जुड़ी होती है, जो आवर्त में आगे बढ़ने पर कम हो जाती है। अन्य विकल्प तत्व के गुणों में इस प्रवृत्ति के साथ मेल नहीं खाते।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with standard chemistry textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आयुष्याच्या दिशेने बाजूपासून बाजूला जाताना घटकांचा धातुमय वर्ण काय होतो?",
-          "choices": [
-            "वाढतो",
-            "मान राहतो",
-            "समान राहतो",
-            "तरंगतो"
-          ],
-          "solution": "आयुष्याच्या दिशेने बाजूपासून बाजूला जाताना, परमाणू त्रिज्या घटते आणि परमाणूच्या इलेक्ट्रॉन निर्मुक्त करण्याची क्षमता घटते, ज्यामुळे धातुमय वर्ण घटतो. धातुमय वर्ण हा इलेक्ट्रॉन निर्मुक्त करण्याच्या प्रवृत्तीशी संबंधित असतो, जो परमाणूच्या दिशेने जाताना कमी होतो. इतर विकल्प घटकांच्या गुणधर्मांमध्ये ह्या संदर्भात असमान असतात.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Marathi-medium science textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks metallic character increases with atomic number",
-        null,
-        "Believes metallic character is constant",
-        "Misunderstands the trend from left to right in the periodic table"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1 (Decreases). The reasoning aligns with the periodic trend of metallic character, which decreases from left to right in a period due to increasing effective nuclear charge and decreasing atomic size.",
-      "sources": [
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 15,
-          "pageStart": 12,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 16,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 17,
-          "pageStart": 13,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T05:59:05.387Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which block of elements includes the lanthanoids and actinoids?",
-      "choices": [
-        "s-block",
-        "p-block",
-        "d-block",
-        "f-block"
-      ],
-      "answerIndex": 3,
-      "solution": "The lanthanoids and actinoids are placed in the f-block of the periodic table due to the filling of the f-orbitals. The s-block contains elements with electrons in the s-orbital, the p-block contains elements with electrons in the p-orbital, and the d-block contains elements with electrons in the d-orbital. None of these other blocks accommodate the filling of the f-orbitals.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "लैन्थेनॉइड्स और एक्टिनॉइड्स वाला तत्व ब्लॉक कौन-सा है?",
-          "choices": [
-            "s-ब्लॉक",
-            "p-ब्लॉक",
-            "d-ब्लॉक",
-            "f-ब्लॉक"
-          ],
-          "solution": "लैन्थेनॉइड्स और एक्टिनॉइड्स को आवर्त सारणी के f-ब्लॉक में रखा गया है क्योंकि f-कक्षक के भरे जाने के कारण। s-ब्लॉक में वे तत्व होते हैं जिनमें s-कक्षक में इलेक्ट्रॉन होते हैं, p-ब्लॉक में वे तत्व होते हैं जिनमें p-कक्षक में इलेक्ट्रॉन होते हैं, और d-ब्लॉक में वे तत्व होते हैं जिनमें d-कक्षक में इलेक्ट्रॉन होते हैं। इन अन्य ब्लॉकों में कोई भी f-कक्षक के भरे जाने की जगह नहीं होती।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "लॅन्थेनॉइड्स आणि अॅक्टिनॉइड्स या घटकांचा समावेश कोणत्या ब्लॉकमध्ये होतो?",
-          "choices": [
-            "s-ब्लॉक",
-            "p-ब्लॉक",
-            "d-ब्लॉक",
-            "f-ब्लॉक"
-          ],
-          "solution": "लॅन्थेनॉइड्स आणि अॅक्टिनॉइड्स यांचा आवर्त सारणीच्या f-ब्लॉकमध्ये समावेश होतो, कारण त्यांच्या f-ओर्बिटलमध्ये इलेक्ट्रॉन भरले जातात. s-ब्लॉकमध्ये s-ओर्बिटलमध्ये इलेक्ट्रॉन असतात, p-ब्लॉकमध्ये p-ओर्बिटलमध्ये इलेक्ट्रॉन असतात आणि d-ब्लॉकमध्ये d-ओर्बिटलमध्ये इलेक्ट्रॉन असतात. या इतर ब्लॉकमध्ये f-ओर्बिटलमध्ये इलेक्ट्रॉन भरले जात नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly associates lanthanoids with s-block",
-        "Confuses p-block with the block containing inner transition elements",
-        "Confuses d-block with the block containing inner transition elements",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is f-block, as lanthanoids and actinoids are part of the f-block. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 11,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 12,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 13,
-          "pageStart": 11,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 14,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T05:59:05.387Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following is not considered a transition element?",
-      "choices": [
-        "Zinc",
-        "Copper",
-        "Chromium",
-        "Iron"
-      ],
-      "answerIndex": 0,
-      "solution": "Transition elements are defined as those that have partially filled d-orbitals either in their elemental state or in their common oxidation states. Zinc has a completely filled d-orbital (3d¹⁰) in its elemental form and does not exhibit the typical properties of transition elements. Copper, chromium, and iron all have partially filled d-orbitals in their elemental or common oxidation states.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन सा संक्रमण तत्व माना जाता है नहीं?",
-          "choices": [
-            "जिंक",
-            "तांबा",
-            "क्रोमियम",
-            "लोहा"
-          ],
-          "solution": "संक्रमण तत्व वे होते हैं जो अपने मूल अवस्था या अपने सामान्य ऑक्सीकरण अवस्थाओं में आंशिक रूप से भरे हुए d-कक्षक रखते हैं। जिंक अपने मूल अवस्था में पूरी तरह से भरे हुए d-कक्षक (3d¹⁰) रखता है और संक्रमण तत्वों के सामान्य गुण प्रदर्शित नहीं करता है। तांबा, क्रोमियम और लोहा अपने मूल अवस्था या सामान्य ऑक्सीकरण अवस्थाओं में आंशिक रूप से भरे हुए d-कक्षक रखते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms are correctly used in Hindi, and the logic of the question and solution is preserved.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता अवधिक घटक मानला जात नाही?",
-          "choices": [
-            "जिंक",
-            "तांबे",
-            "क्रोमियम",
-            "लोह"
-          ],
-          "solution": "अवधिक घटक म्हणजे ज्यांच्या घटकाच्या अवस्थेत किंवा त्यांच्या सामान्य ऑक्सिडेशन अवस्थांमध्ये आंतरिक डी-कक्षकांमध्ये अपूर्णपणे भरलेले असते. जिंकच्या घटकाच्या अवस्थेत डी-कक्षक पूर्णपणे भरलेले असते (3d¹⁰) आणि तो अवधिक घटकांच्या वैशिष्ट्यांचा प्रतिनिधित्व करत नाही. तांबे, क्रोमियम आणि लोह यांच्या घटकाच्या किंवा सामान्य ऑक्सिडेशन अवस्थांमध्ये अपूर्णपणे भरलेले डी-कक्षक असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for chemistry.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the definition of transition elements.",
-        "Fails to recognize the electronic configuration of zinc.",
-        "Misunderstands the properties of transition elements."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Zinc is not considered a transition element because it has a completely filled d-orbital in its elemental state, unlike copper, chromium, and iron, which have partially filled d-orbitals.",
-      "sources": [
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 32,
-          "pageStart": 23,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 33,
-          "pageStart": 24,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 34,
-          "pageStart": 25,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 35,
-          "pageStart": 26,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T05:59:05.387Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following correctly represents the trend in atomic radii across a period?",
-      "choices": [
-        "It increases from left to right",
-        "It decreases from left to right",
-        "It increases from left to right and then decreases in the next period",
-        "It first increases and then decreases from left to right"
-      ],
-      "answerIndex": 1,
-      "solution": "Atomic radii generally decrease from left to right across a period due to the increasing nuclear charge, which pulls the electrons closer to the nucleus. This makes the second option correct. The first option is incorrect because the trend is opposite. The third and fourth options incorrectly suggest variations that do not consistently occur across a period.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा परमाणु त्रिज्या के आवर्त में होने वाले परिवर्तन का सही रूप से प्रतिनिधित्व करता है?",
-          "choices": [
-            "यह बाएं से दाएं बढ़ता है",
-            "यह बाएं से दाएं घटता है",
-            "यह बाएं से दाएं बढ़ता है और अगले आवर्त में घटता है",
-            "यह बाएं से दाएं पहले बढ़ता है और फिर घटता है"
-          ],
-          "solution": "आवर्त में परमाणु त्रिज्या सामान्यतः बाएं से दाएं घटती है क्योंकि परमाणु के नाभिक में बढ़ता आवेश इलेक्ट्रॉनों को नाभिक के निकट खींच लेता है। इस कारण दूसरा विकल्प सही है। पहला विकल्प गलत है क्योंकि परिवर्तन विपरीत होता है। तीसरा और चौथा विकल्प गलत हैं क्योंकि वे आवर्त में नियमित रूप से नहीं होने वाले परिवर्तन के बारे में बताते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology consistent with Indian curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते आवर्तात अणुत्रिज्यांच्या संचाराचा योग्य रूपाने प्रतिनिधित्व करते?",
-          "choices": [
-            "ते बाजूपासून उजवीकडे वाढते",
-            "ते बाजूपासून उजवीकडे कमी होते",
-            "ते बाजूपासून उजवीकडे वाढते आणि आगामी आवर्तात कमी होते",
-            "ते बाजूपासून उजवीकडे प्रथम वाढते आणि नंतर कमी होते"
-          ],
-          "solution": "आवर्तात अणुत्रिज्या सामान्यतः बाजूपासून उजवीकडे कमी होतात कारण न्यूक्लियस चार्ज वाढत जातो, जो इलेक्ट्रॉन्स न्यूक्लियस कडे खेचतो. हे दुसरा विकल्प बरोबर बनवते. पहिला विकल्प चूक आहे कारण प्रवृत्ती विरुद्ध आहे. तिसरा आणि चौथा विकल्प चूक आहेत कारण ते आवर्तात संतत रूपात घडत नाहीत अशा विचित्रतांचा अंदाज देतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for chemistry concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Misunderstands the trend in atomic radii",
-        null,
-        "Confuses periodic trends with periodicity across periods and groups",
-        "Misunderstands the trend in atomic radii"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as atomic radii decrease from left to right across a period due to increasing nuclear charge. The author's solution and reasoning are accurate.",
+      "critique": "The solution correctly identifies sodium as the most reactive element based on its position in the periodic table and low ionization enthalpy. The reasoning for the other options reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/11/chemistry/kech103.pdf",
@@ -618,49 +211,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T05:59:05.387Z",
+      "generatedAt": "2026-10-28T11:37:13.332Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Which of the following elements has the highest metallic character?",
+      "difficulty": 3,
+      "stem": "Which of the following elements was predicted by Mendeleev but not known at the time he published his Periodic Table?",
       "choices": [
-        "Boron",
-        "Aluminium",
-        "Magnesium",
-        "Potassium"
+        "Gallium",
+        "Fluorine",
+        "Chlorine",
+        "Iodine"
       ],
-      "answerIndex": 3,
-      "solution": "Metallic character increases down a group and decreases across a period. Among the given elements, potassium is the farthest down the group and has the highest metallic character. Boron is a metalloid, aluminium has lower metallic character than magnesium, and magnesium has lower metallic character than potassium.",
+      "answerIndex": 0,
+      "solution": "Mendeleev predicted the existence of elements that had not yet been discovered, such as gallium, by leaving gaps in his periodic table. Fluorine, chlorine, and iodine were already known and placed in the table when he published it. Gallium was the element he predicted that was later discovered, making it the correct answer. The other options were already recognized elements at the time.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से किस तत्व के पास सबसे अधिक धात्विक प्रकृति है?",
+          "stem": "निम्नलिखित में से कौन-सा तत्व मेंडेलीव द्वारा भविष्यवाणी किया गया था लेकिन उसके आवर्त सारणी प्रकाशित करने के समय ज्ञात नहीं था?",
           "choices": [
-            "बोरॉन",
-            "एल्यूमीनियम",
-            "मैग्नीशियम",
-            "पोटैशियम"
+            "गैलियम",
+            "फ्लोरीन",
+            "क्लोरीन",
+            "आयोडीन"
           ],
-          "solution": "धात्विक प्रकृति एक समूह में नीचे जाने पर बढ़ती है और एक आवर्त में बाएं से दाएं जाने पर घटती है। दिए गए तत्वों में, पोटैशियम समूह में सबसे नीचे है और सबसे अधिक धात्विक प्रकृति रखता है। बोरॉन एक धातु-समान है, एल्यूमीनियम की धात्विक प्रकृति मैग्नीशियम की तुलना में कम है, और मैग्नीशियम की धात्विक प्रकृति पोटैशियम की तुलना में कम है।",
+          "solution": "मेंडेलीव ने अपनी आवर्त सारणी में अंतराल छोड़कर अभी तक खोजे न जाने वाले तत्वों के अस्तित्व की भविष्यवाणी की थी, जैसे गैलियम। फ्लोरीन, क्लोरीन और आयोडीन उस समय पहले से ज्ञात थे और उसके द्वारा उन्हें सारणी में रखा गया था। गैलियम वह तत्व था जिसकी भविष्यवाणी उसके द्वारा की गई थी जो बाद में खोजा गया था, इसलिए यह सही उत्तर है। अन्य विकल्प पहले से ही ज्ञात तत्व थे।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the scientific meaning, with appropriate Hindi terminology used for chemical concepts.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणत्या घटकाचा धात्विक वर्ण उच्चतम आहे?",
+          "stem": "खालीलपैकी कोणता घटक मेंडेलीवच्या आवर्त सारणी प्रकाशित केल्यावर अज्ञात होता पण त्याने भविष्यवाणी केली होती?",
           "choices": [
-            "बोरॉन",
-            "अल्युमिनियम",
-            "मॅग्नेशियम",
-            "पोटॅशियम"
+            "गॅलियम",
+            "फ्लोरिन",
+            "क्लोरिन",
+            "आयोडिन"
           ],
-          "solution": "धात्विक वर्ण एका गटात खाली जाऊन वाढतो आणि एका आवर्तात जाऊन कमी होतो. दिलेल्या घटकांमध्ये पोटॅशियम हा गटात सर्वात खाली आहे आणि त्याचा धात्विक वर्ण उच्चतम आहे. बोरॉन हा धातुमय धातू आहे, अल्युमिनियम च्या धात्विक वर्ण मॅग्नेशियम पेक्षा कमी आहे आणि मॅग्नेशियम च्या धात्विक वर्ण पोटॅशियम पेक्षा कमी आहे.",
+          "solution": "मेंडेलीव आवर्त सारणीत खाली स्थान ठेवून अज्ञात घटकांच्या अस्तित्वाची भविष्यवाणी केली होती, जसे की गॅलियम. फ्लोरिन, क्लोरिन आणि आयोडिन त्याने आवर्त सारणी प्रकाशित केल्यावर ओळखले गेलेले घटक होते. गॅलियम असा घटक होता जो त्याने भविष्यवाणी केलेला होता आणि नंतर शोधला गेला, ज्यामुळे तो बरोबर उत्तर बनला. इतर विकल्प त्यावेळी ओळखलेले घटक होते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for chemistry.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -669,9 +262,113 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Misunderstands the trend of metallic character in the periodic table.",
-        "Confuses the properties of metalloids with metals.",
-        "Fails to recognize the correct position of the elements in the periodic table.",
+        null,
+        "Student believes all halogens were known when Mendeleev created the table",
+        "confuses known elements with predicted ones",
+        "confuses known elements with predicted ones"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is Gallium (option 0), as Mendeleev predicted its existence. Fluorine, chlorine, and iodine were already known at the time. The author's reasoning is accurate and aligns with historical facts.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech103.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech103.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech103.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech103.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T11:37:13.332Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following elements would have the highest ionization enthalpy?",
+      "choices": [
+        "Sodium",
+        "Chlorine",
+        "Fluorine",
+        "Neon"
+      ],
+      "answerIndex": 3,
+      "solution": "Neon has the highest ionization enthalpy because it is a noble gas with a completely filled valence shell, making it very stable and requiring a large amount of energy to remove an electron. Sodium, being a metal, has a much lower ionization enthalpy due to its larger size and lower effective nuclear charge. Chlorine and fluorine, though nonmetals, have lower ionization enthalpies than neon because they are not as stable and can more easily lose or gain electrons. Fluorine, despite being smaller and having a higher effective nuclear charge than chlorine, still does not match neon's stability.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा तत्व सबसे अधिक आयनन एन्थैल्पी रखेगा?",
+          "choices": [
+            "सोडियम",
+            "क्लोरीन",
+            "फ्लुओरीन",
+            "नीयन"
+          ],
+          "solution": "नीयन सबसे अधिक आयनन एन्थैल्पी रखता है क्योंकि यह एक अक्रिय गैस है जिसके बाह्य कोश पूर्ण रूप से भरा होता है, जिसके कारण यह बहुत स्थायी होता है और एक इलेक्ट्रॉन को हटाने के लिए बहुत अधिक ऊर्जा की आवश्यकता होती है। सोडियम, धातु होने के कारण, अपने बड़े आकार और कम प्रभावी नाभिकीय आवेश के कारण बहुत कम आयनन एन्थैल्पी रखता है। क्लोरीन और फ्लुओरीन, यद्यपि अधातु हैं, लेकिन नीयन की तुलना में उनकी आयनन एन्थैल्पी कम होती है क्योंकि वे कम स्थायी होते हैं और इलेक्ट्रॉन आसानी से खो सकते हैं या प्राप्त कर सकते हैं। फ्लुओरीन, यद्यपि छोटा होने के कारण और क्लोरीन की तुलना में अधिक प्रभावी नाभिकीय आवेश रखता है, फिर भी नीयन की स्थायित्व के साथ तुलना नहीं कर सकता।",
+          "imageAlt": null,
+          "critique": "Hindi translation is accurate, maintains original meaning, and uses appropriate terminology as per Indian curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणत्या घटकाचे उत्सर्जन एन्थॅल्पी सर्वाधिक असेल?",
+          "choices": [
+            "सोडियम",
+            "क्लोरीन",
+            "फ्लोरीन",
+            "नियॉन"
+          ],
+          "solution": "नियॉनचे उत्सर्जन एन्थॅल्पी सर्वाधिक असते कारण ते एक निष्क्रिय गॅस आहे आणि त्याचे बाह्य कक्ष पूर्णपणे भरलेले असते, ज्यामुळे ते खूप स्थिर असते आणि इलेक्ट्रॉन दूर करण्यासाठी मोठ्या प्रमाणात ऊर्जा लागते. सोडियम, धातू असल्यामुळे, त्याचे उत्सर्जन एन्थॅल्पी खूप कमी असते कारण त्याचा आकार मोठा असतो आणि प्रभावी नाभिकीय आवेश कमी असतो. क्लोरीन आणि फ्लोरीन, तर अपधातू असल्यामुळे, त्यांचे उत्सर्जन एन्थॅल्पी नियॉनपेक्षा कमी असते कारण ते अशा स्थिरतेने नसतात आणि इलेक्ट्रॉन दूर करण्यासाठी कमी ऊर्जा लागते. फ्लोरीन, तर त्याचा आकार छोटा असल्यामुळे आणि त्याचा प्रभावी नाभिकीय आवेश क्लोरीनपेक्षा जास्त असल्यामुळे, तरीही नियॉनच्या स्थिरतेपेक्षा त्याचे उत्सर्जन एन्थॅल्पी कमी असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for chemistry concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the periodic trend of ionization enthalpy",
+        "Mistakenly assumes fluorine has the highest ionization enthalpy",
+        "Overlooks the effect of a full valence shell on ionization enthalpy",
         null
       ],
       "solverAnswers": [
@@ -681,8 +378,8 @@
         3,
         3
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies potassium as having the highest metallic character due to its position in the periodic table. The reasoning aligns with the periodic trends of metallic character.",
+      "levelFlag": null,
+      "critique": "The solution correctly identifies neon as having the highest ionization enthalpy due to its full valence shell and position in the periodic table. The reasoning aligns with standard periodic trends and the properties of noble gases.",
       "sources": [
         {
           "document": "ncert/11/chemistry/kech103.pdf",
@@ -722,49 +419,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T05:59:05.387Z",
+      "generatedAt": "2026-10-28T11:37:13.332Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "What is the correct IUPAC name and symbol for the element with atomic number 112?",
+      "difficulty": 3,
+      "stem": "What would be the IUPAC name and symbol for the element with atomic number 120?",
       "choices": [
-        "Ununbium, Uub",
         "Unbinilium, Ubn",
-        "Unnilbium, Unb",
-        "Unnilium, Unu"
+        "Unibinilium, Ub",
+        "Unbinilium, Ub",
+        "Unbinilum, Ubn"
       ],
       "answerIndex": 0,
-      "solution": "The IUPAC name for the element with atomic number 112 is 'Ununbium' and the symbol is 'Uub'. The roots for 1, 1, and 2 are 'un', 'un', and 'bi', respectively, which gives 'Ununbium' and the symbol 'Uub'. 'Unbinilium, Ubn' is incorrect because it uses 'bi' instead of 'unb'. 'Unnilbium, Unb' is incorrect because it uses 'nil' instead of 'un'. 'Unnilium, Unu' is incorrect because it uses 'nil' instead of 'unb'.",
+      "solution": "The IUPAC name for element 120 is derived by combining the roots for 1 (un), 2 (bi), and 0 (nil), resulting in 'unbinilium'. The symbol is formed by taking the first letters of each root, giving 'Ubn'. The other options incorrectly combine the roots or use incorrect symbols.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "परमाणु संख्या 112 वाले तत्व का सही IUPAC नाम और प्रतीक क्या है?",
+          "stem": "परमाणु संख्या 120 के तत्व के आईयूपीएसी नाम और प्रतीक क्या होगा?",
           "choices": [
-            "उनुनबियम, यूबी",
-            "उनबिनिलियम, यूबीएन",
-            "उनिलबियम, यूनबी",
-            "उनिलियम, यूनू"
+            "अनबिनिलियम, यूबीन",
+            "अनिबिनिलियम, यूबी",
+            "अनबिनिलियम, यूबी",
+            "अनबिनिलम, यूबीन"
           ],
-          "solution": "परमाणु संख्या 112 वाले तत्व का IUPAC नाम 'उनुनबियम' और प्रतीक 'यूबी' है। 1, 1 और 2 के लिए मूल शब्द क्रमशः 'उन', 'उन' और 'बी' हैं, जिससे 'उनुनबियम' और प्रतीक 'यूबी' प्राप्त होता है। 'उनबिनिलियम, यूबीएन' गलत है क्योंकि इसमें 'बी' के स्थान पर 'बीन' का उपयोग किया गया है। 'उनिलबियम, यूनबी' गलत है क्योंकि इसमें 'निल' के स्थान पर 'उन' का उपयोग किया गया है। 'उनिलियम, यूनू' गलत है क्योंकि इसमें 'निल' के स्थान पर 'उनबी' का उपयोग किया गया है।",
+          "solution": "परमाणु संख्या 120 के तत्व का आईयूपीएसी नाम 1 (अन), 2 (बी) और 0 (निल) के मूल को जोड़कर बनाया जाता है, जिसके परिणामस्वरूप 'अनबिनिलियम' बनता है। प्रतीक इन मूलों के पहले अक्षर लेकर बनाया जाता है, जिसके परिणामस्वरूप 'यूबीन' बनता है। अन्य विकल्प गलत मूलों को जोड़ते हैं या गलत प्रतीक उपयोग करते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the correct answer position, and uses appropriate Hindi technical terms for IUPAC nomenclature.",
+          "critique": "The translation is accurate and maintains the technical terms used in Hindi textbooks. The correct answer (option 3) is in the same position as in the English version.",
           "flag": null
         },
         "mr": {
-          "stem": "112 अणु क्रमांक असलेल्या घटकाचे योग्य IUPAC नाव आणि प्रतीक काय आहे?",
+          "stem": "120 अणुक्रमांक असलेल्या घटकाचे IUPAC नाव आणि प्रतीक काय असेल?",
           "choices": [
-            "उनुनबियम, यूबी",
             "उन्बिनिलियम, यूब्न",
-            "उनिलबियम, यून्ब",
-            "उनिलियम, यूनु"
+            "उनिबिनिलियम, यूब",
+            "उन्बिनिलियम, यूब",
+            "उन्बिनिलम, यूब्न"
           ],
-          "solution": "112 अणु क्रमांक असलेल्या घटकाचे IUPAC नाव 'उनुनबियम' आहे आणि प्रतीक 'यूबी' आहे. 1, 1 आणि 2 चे मूळ 'उन', 'उन' आणि 'बी' अनुक्रमे असतात, जे 'उनुनबियम' आणि प्रतीक 'यूबी' देतात. 'उन्बिनिलियम, यूब्न' अयोग्य आहे कारण ते 'बी' ऐवजी 'बीन' वापरते. 'उनिलबियम, यून्ब' अयोग्य आहे कारण ते 'निल' ऐवजी 'उन' वापरते. 'उनिलियम, यूनु' अयोग्य आहे कारण ते 'निल' ऐवजी 'उनबी' वापरते.",
+          "solution": "120 अणुक्रमांक असलेल्या घटकाचे IUPAC नाव 1 (उन), 2 (बी) आणि 0 (निल) या मूळांच्या संयोजनाने तयार केले जाते, ज्यामुळे 'उन्बिनिलियम' बनते. प्रतीक तयार करताना प्रत्येक मूळाच्या पहिल्या अक्षरांचा वापर केला जातो, ज्यामुळे 'यूब्न' बनते. इतर विकल्पांमध्ये मूळांचे चुकीचे संयोजन किंवा चुकीचे प्रतीक वापरले गेले आहेत.",
           "imageAlt": null,
-          "critique": "The translation accurately reflects the original content with appropriate Marathi terminology for chemical elements.",
+          "critique": "Translation accurately reflects the original content with appropriate Marathi terminology for chemical elements.",
           "flag": null
         }
       },
@@ -774,9 +471,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Uses 'bi' instead of 'unb' for the atomic number 112.",
-        "Uses 'nil' instead of 'unb' for the atomic number 112.",
-        "Uses 'nil' instead of 'unb' for the atomic number 112."
+        "Confuses the order of roots or incorrectly combines them.",
+        "Incorrectly uses a different root or symbol format.",
+        "Uses a non-standard spelling or incorrect abbreviation for the roots."
       ],
       "solverAnswers": [
         0,
@@ -785,8 +482,8 @@
         0,
         0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is Ununbium, Uub. The IUPAC nomenclature for elements with atomic numbers above 100 uses specific numerical roots. For 112, the roots are 'un' (1), 'un' (1), and 'bi' (2), forming 'Ununbium' and the symbol 'Uub'. The other options incorrectly use 'bi' or 'nil' instead of the correct roots.",
+      "levelFlag": null,
+      "critique": "The correct answer is option 0, as the IUPAC name for element 120 is 'unbinilium' and the symbol is 'Ubn'. The other options contain errors in root combination or symbol formatting, which are common misconceptions.",
       "sources": [
         {
           "document": "ncert/11/chemistry/kech103.pdf",
@@ -826,49 +523,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T05:59:05.387Z",
+      "generatedAt": "2026-10-28T11:37:13.332Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "An element has an electronic configuration [Rn]5f^14 6d^1 7s^2. In which block of the periodic table is this element classified?",
+      "difficulty": 4,
+      "stem": "Which of the following pairs of elements would have a more negative electron gain enthalpy?",
       "choices": [
-        "s-block",
-        "p-block",
-        "d-block",
-        "f-block"
+        "Oxygen and Fluorine",
+        "Nitrogen and Phosphorus",
+        "Chlorine and Bromine",
+        "Sulfur and Selenium"
       ],
-      "answerIndex": 3,
-      "solution": "The element's electronic configuration [Rn]5f^14 6d^1 7s^2 shows that the 5f orbitals are completely filled, which is characteristic of f-block elements. The s-block elements have their outermost electrons in s-orbitals, the p-block in p-orbitals, and the d-block in d-orbitals. Since the 5f orbitals are filled, this element is classified in the f-block.",
+      "answerIndex": 0,
+      "solution": "Fluorine has a more negative electron gain enthalpy than oxygen because it is smaller and has a higher effective nuclear charge, which increases the attraction for an additional electron. Nitrogen and phosphorus, chlorine and bromine, and sulfur and selenium do not show as strong a trend in electron gain enthalpy as oxygen and fluorine. The trend in electron gain enthalpy is more pronounced in the second period, making fluorine more negative than oxygen.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक तत्व के इलेक्ट्रॉनिक विन्यास [Rn]5f^14 6d^1 7s^2 है। आवर्त सारणी के किस ब्लॉक में इस तत्व का वर्गीकरण किया जाता है?",
+          "stem": "निम्नलिखित में से कौन-सा तत्व युग्म अधिक ऋणात्मक इलेक्ट्रॉन लाभ एन्थैल्पी के साथ होगा?",
           "choices": [
-            "s-ब्लॉक",
-            "p-ब्लॉक",
-            "d-ब्लॉक",
-            "f-ब्लॉक"
+            "ऑक्सीजन और फ्लुओरिन",
+            "नाइट्रोजन और फॉस्फोरस",
+            "क्लोरीन और ब्रोमीन",
+            "सल्फर और सीलीनियम"
           ],
-          "solution": "तत्व के इलेक्ट्रॉनिक विन्यास [Rn]5f^14 6d^1 7s^2 दर्शाता है कि 5f कक्षक पूर्ण रूप से भरे हुए हैं, जो f-ब्लॉक तत्वों की विशेषता है। s-ब्लॉक तत्वों में बाह्यतम इलेक्ट्रॉन s-कक्षक में होते हैं, p-ब्लॉक में p-कक्षक में और d-ब्लॉक में d-कक्षक में। चूंकि 5f कक्षक भरे हुए हैं, इसलिए इस तत्व का वर्गीकरण f-ब्लॉक में किया जाता है।",
+          "solution": "फ्लुओरिन ऑक्सीजन की तुलना में अधिक ऋणात्मक इलेक्ट्रॉन लाभ एन्थैल्पी रखता है क्योंकि यह छोटा होता है और इसके परमाणु के द्वारा एक अतिरिक्त इलेक्ट्रॉन के प्रति आकर्षण बढ़ जाता है क्योंकि इसका प्रभावी नाभिकीय आवेश अधिक होता है। नाइट्रोजन और फॉस्फोरस, क्लोरीन और ब्रोमीन, और सल्फर और सीलीनियम के बीच इलेक्ट्रॉन लाभ एन्थैल्पी में तेज तरीके से परिवर्तन नहीं होता है जैसा कि ऑक्सीजन और फ्लुओरिन में होता है। इलेक्ट्रॉन लाभ एन्थैल्पी का प्रवृत्ति द्वितीय आवर्त में अधिक स्पष्ट होता है, जिसके कारण फ्लुओरिन ऑक्सीजन की तुलना में अधिक ऋणात्मक होता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as per Hindi-medium science textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एक घटकाचे इलेक्ट्रॉनिक विन्यास [Rn]5f^14 6d^1 7s^2 आहे. या घटकाचा आवर्त सारणीच्या कोणत्या ब्लॉकमध्ये वर्गीकरण केले जाते?",
+          "stem": "खालीलपैकी कोणत्या घटकांच्या जोड्याने अधिक नकारात्मक इलेक्ट्रॉन जॉइन एन्थॅल्पी असेल?",
           "choices": [
-            "s-ब्लॉक",
-            "p-ब्लॉक",
-            "d-ब्लॉक",
-            "f-ब्लॉक"
+            "ऑक्सीजन आणि फ्लोरिन",
+            "नाइट्रोजन आणि फॉस्फरस",
+            "क्लोरिन आणि ब्रोमीन",
+            "सल्फर आणि सेलेनियम"
           ],
-          "solution": "या घटकाचे इलेक्ट्रॉनिक विन्यास [Rn]5f^14 6d^1 7s^2 दर्शवते की 5f ऑर्बिटल पूर्ण भरलेले आहेत, जे f-ब्लॉक घटकांची वैशिष्ट्ये आहेत. s-ब्लॉक घटकांमध्ये त्यांचे बाह्यतम इलेक्ट्रॉन s-ऑर्बिटलमध्ये असतात, p-ब्लॉक घटकांमध्ये p-ऑर्बिटलमध्ये आणि d-ब्लॉक घटकांमध्ये d-ऑर्बिटलमध्ये. 5f ऑर्बिटल पूर्ण भरलेले असल्यामुळे, हा घटक f-ब्लॉकमध्ये वर्गीकृत केला जातो.",
+          "solution": "फ्लोरिन ऑक्सीजनपेक्षा अधिक नकारात्मक इलेक्ट्रॉन जॉइन एन्थॅल्पी असते कारण ते लहान असते आणि त्याचे प्रभावी न्यूक्लियर चार्ज जास्त असते, जे एका अतिरिक्त इलेक्ट्रॉनसाठी आकर्षण वाढवते. नाइट्रोजन आणि फॉस्फरस, क्लोरिन आणि ब्रोमीन, आणि सल्फर आणि सेलेनियम यांच्यात इलेक्ट्रॉन जॉइन एन्थॅल्पीमध्ये ऑक्सीजन आणि फ्लोरिनपेक्षा अधिक स्पष्ट ट्रेंड दिसत नाही. इलेक्ट्रॉन जॉइन एन्थॅल्पीचा ट्रेंड दुसऱ्या आवर्तनात अधिक स्पष्ट असतो, ज्यामुळे फ्लोरिन ऑक्सीजनपेक्षा अधिक नकारात्मक असते.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Marathi terminology for chemical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -877,102 +574,102 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses s-block with the block containing f-orbitals",
-        "Confuses p-block with the block containing f-orbitals",
-        "Confuses d-block with the block containing f-orbitals",
-        null
+        null,
+        "Confuses the periodic trend of electron gain enthalpy",
+        "Mistakenly assumes nitrogen and phosphorus have a more negative electron gain enthalpy",
+        "Overlooks the effect of atomic size on electron gain enthalpy"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 3 (f-block). The electronic configuration [Rn]5f^14 6d^1 7s^2 shows that the 5f orbitals are filled, which is characteristic of the f-block. The author's reasoning is sound and aligns with standard classification rules.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0 (Oxygen and Fluorine). Fluorine has a more negative electron gain enthalpy than oxygen due to its smaller size and higher effective nuclear charge. The author's reasoning is sound, and the misconceptions listed for the wrong options are valid.",
       "sources": [
         {
           "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 11,
-          "pageStart": 9,
-          "pageEnd": 9,
+          "ordinal": 32,
+          "pageStart": 23,
+          "pageEnd": 24,
           "headingPath": [
             "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 12,
-          "pageStart": 9,
-          "pageEnd": 11,
+          "ordinal": 33,
+          "pageStart": 24,
+          "pageEnd": 25,
           "headingPath": [
             "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 13,
-          "pageStart": 11,
-          "pageEnd": 11,
+          "ordinal": 34,
+          "pageStart": 25,
+          "pageEnd": 26,
           "headingPath": [
             "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 14,
-          "pageStart": 11,
-          "pageEnd": 12,
+          "ordinal": 35,
+          "pageStart": 26,
+          "pageEnd": 26,
           "headingPath": [
             "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T05:59:05.387Z",
+      "generatedAt": "2026-10-28T11:37:13.332Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "Which of the following elements has the highest electron gain enthalpy?",
+      "stem": "Which of the following elements would have a similar chemical behavior to scandium (Z = 21)?",
       "choices": [
-        "Oxygen",
-        "Fluorine",
-        "Chlorine",
-        "Bromine"
+        "Titanium (Z = 22)",
+        "Zirconium (Z = 40)",
+        "Hafnium (Z = 72)",
+        "Rutherfordium (Z = 104)"
       ],
       "answerIndex": 1,
-      "solution": "Electron gain enthalpy generally becomes more negative (more exothermic) across a period and less negative down a group. Fluorine has the highest electron gain enthalpy among the given elements due to its small size and high effective nuclear charge. Oxygen has a less negative electron gain enthalpy than fluorine due to electron-electron repulsion. Chlorine and bromine have less negative electron gain enthalpies than fluorine due to their larger sizes.",
+      "solution": "Zirconium (Z = 40) is in the same group as scandium (Z = 21) and exhibits similar chemical behavior due to their similar electron configurations. The other options belong to different groups and have different chemical properties.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से किस तत्व के इलेक्ट्रॉन लीप एन्थैल्पी सबसे अधिक होती है?",
+          "stem": "निम्नलिखित में से कौन-सा तत्व स्कैंडियम (Z = 21) के समान रासायनिक व्यवहार दर्शाएगा?",
           "choices": [
-            "ऑक्सीजन",
-            "फ्लोरीन",
-            "क्लोरीन",
-            "ब्रोमीन"
+            "टाइटेनियम (Z = 22)",
+            "जिरकोनियम (Z = 40)",
+            "हाफ्नियम (Z = 72)",
+            "रदरफोर्डियम (Z = 104)"
           ],
-          "solution": "इलेक्ट्रॉन लीप एन्थैल्पी सामान्य रूप से एक आवर्त में अधिक ऋणात्मक (अधिक उत्सर्जी) हो जाती है और एक समूह में कम ऋणात्मक हो जाती है। दी गई तत्वों में फ्लोरीन के इलेक्ट्रॉन लीप एन्थैल्पी सबसे अधिक होती है क्योंकि इसके छोटे आकार और उच्च प्रभावी नाभिकीय आवेश के कारण। ऑक्सीजन के इलेक्ट्रॉन लीप एन्थैल्पी फ्लोरीन की तुलना में कम ऋणात्मक होती है क्योंकि इलेक्ट्रॉन-इलेक्ट्रॉन प्रतिकर्षण के कारण। क्लोरीन और ब्रोमीन के इलेक्ट्रॉन लीप एन्थैल्पी फ्लोरीन की तुलना में कम ऋणात्मक होती है क्योंकि इनके बड़े आकार के कारण।",
+          "solution": "जिरकोनियम (Z = 40) स्कैंडियम (Z = 21) के समान समूह में है और इसके इलेक्ट्रॉन विन्यास के कारण समान रासायनिक व्यवहार प्रदर्शित करता है। अन्य विकल्प अलग-अलग समूहों से संबंधित हैं और अलग-अलग रासायनिक गुण प्रदर्शित करते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terminology. The correct answer remains option (1) Fluorine, and all distractors remain incorrect as in the original.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terminology. All options are correctly translated and maintain their original positions. The solution correctly identifies option (2) as the correct answer, and the distractors remain incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणत्या घटकाचा इलेक्ट्रॉन जनन एन्थॅल्पी सर्वाधिक असतो?",
+          "stem": "खालीलपैकी कोणता घटक स्कॅंडियम (Z = 21) च्या समान रासायनिक वर्तनाचा दर्शविणार आहे?",
           "choices": [
-            "ऑक्सीजन",
-            "फ्लोरिन",
-            "क्लोरीन",
-            "ब्रोमीन"
+            "टाइटेनियम (Z = 22)",
+            "जिर्कॉनियम (Z = 40)",
+            "हाफ्नियम (Z = 72)",
+            "रदरफोर्डियम (Z = 104)"
           ],
-          "solution": "इलेक्ट्रॉन जनन एन्थॅल्पी सामान्यतः एका आवर्तात जाऊन अधिक ऋणात्मक (अधिक उष्माक्षेपी) होते आणि एका गटात खाली जाऊन कमी ऋणात्मक होते. दिलेल्या घटकांमध्ये फ्लोरिनचा इलेक्ट्रॉन जनन एन्थॅल्पी सर्वाधिक असतो कारण त्याचा लहान आकार आणि उच्च प्रभावी न्यूक्लियर चार्ज असतो. ऑक्सीजनचा इलेक्ट्रॉन जनन एन्थॅल्पी फ्लोरिनपेक्षा कमी ऋणात्मक असतो कारण इलेक्ट्रॉन-इलेक्ट्रॉन प्रतिकर्षण असतो. क्लोरीन आणि ब्रोमीनचा इलेक्ट्रॉन जनन एन्थॅल्पी फ्लोरिनपेक्षा कमी ऋणात्मक असतो कारण त्यांचा आकार मोठा असतो.",
+          "solution": "जिर्कॉनियम (Z = 40) स्कॅंडियम (Z = 21) च्या एकाच गटात असून त्यांच्या समान इलेक्ट्रॉन विन्यासामुळे समान रासायनिक वर्तन दर्शवते. इतर विकल्प वेगवेगळ्या गटात असून त्यांच्या वेगवेगळ्या रासायनिक गुणधर्मांमुळे वेगळे असतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for chemistry concepts.",
+          "critique": "The Marathi translation accurately reflects the English content with appropriate terminology used in Marathi science textbooks.",
           "flag": null
         }
       },
@@ -981,10 +678,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the trend of electron gain enthalpy across the period.",
+        "Titanium is in the same period but a different group.",
         null,
-        "Fails to consider the effect of electron-electron repulsion on electron gain enthalpy.",
-        "Misunderstands the relationship between atomic size and electron gain enthalpy."
+        "Hafnium is in a different group and has a different electron configuration.",
+        "Rutherfordium is a synthetic element with different properties."
       ],
       "solverAnswers": [
         1,
@@ -994,89 +691,89 @@
         1
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies fluorine as having the highest electron gain enthalpy among the given elements. The reasoning aligns with the periodic trends and explains the exceptions due to electron-electron repulsion and atomic size.",
+      "critique": "The correct answer is Zirconium (Z = 40), as it is in the same group as Scandium (Z = 21) and shares similar chemical properties due to similar electron configurations. The other options are in different groups or have different properties, making them incorrect.",
       "sources": [
         {
           "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 32,
-          "pageStart": 23,
-          "pageEnd": 24,
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
           "headingPath": [
             "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 33,
-          "pageStart": 24,
-          "pageEnd": 25,
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
           "headingPath": [
             "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 34,
-          "pageStart": 25,
-          "pageEnd": 26,
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
           "headingPath": [
             "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 35,
-          "pageStart": 26,
-          "pageEnd": 26,
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T05:59:05.387Z",
+      "generatedAt": "2026-10-28T11:37:13.332Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "Which of the following elements has the highest electronegativity?",
+      "stem": "According to the IUPAC nomenclature, what would be the name of an element with atomic number 112?",
       "choices": [
-        "Fluorine",
-        "Oxygen",
-        "Nitrogen",
-        "Carbon"
+        "Ununbium",
+        "Ununnilium",
+        "Ununtrium",
+        "Ununpentium"
       ],
       "answerIndex": 0,
-      "solution": "Electronegativity increases across a period and decreases down a group. Fluorine has the highest electronegativity among the given elements due to its high effective nuclear charge and small atomic size. Oxygen has lower electronegativity than fluorine, nitrogen has lower electronegativity than both, and carbon has the lowest electronegativity among the given elements.",
+      "solution": "The IUPAC name for element 112 is 'Ununbium', derived from the roots for 1, 1, and 2 (un, un, bi). The other options are names for elements with different atomic numbers.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से किस तत्व की विद्युत ऋणात्मकता सबसे अधिक होती है?",
+          "stem": "IUPAC नामकरण के अनुसार, परमाणु संख्या 112 वाले तत्व का नाम क्या होगा?",
           "choices": [
-            "फ्लोरीन",
-            "ऑक्सीजन",
-            "नाइट्रोजन",
-            "कार्बन"
+            "उनुनबियम",
+            "उनुनिलियम",
+            "उनुनट्रियम",
+            "उनुनपेंटियम"
           ],
-          "solution": "विद्युत ऋणात्मकता आवर्त में बढ़ती है और समूह में घटती है। दी गई तत्वों में फ्लोरीन की विद्युत ऋणात्मकता सबसे अधिक होती है, इसके उच्च प्रभावी नाभिकीय आवेश और छोटे परमाणु आकार के कारण। ऑक्सीजन की विद्युत ऋणात्मकता फ्लोरीन से कम होती है, नाइट्रोजन दोनों की तुलना में कम विद्युत ऋणात्मकता रखता है और कार्बन दी गई तत्वों में सबसे कम विद्युत ऋणात्मकता रखता है।",
+          "solution": "परमाणु संख्या 112 वाले तत्व का IUPAC नाम 'उनुनबियम' है, जो 1, 1, और 2 (उन, उन, बि) के मूल से व्युत्पन्न है। अन्य विकल्प विभिन्न परमाणु संख्याओं वाले तत्वों के नाम हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "critique": "The Hindi translation accurately reflects the English content, with appropriate technical terms used in Indian textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणत्या घटकाची विद्युतऋणता सर्वाधिक आहे?",
+          "stem": "आयूपॅक नामकरणानुसार, 112 परमाणु क्रमांक असलेल्या घटकाचे नाव काय असेल?",
           "choices": [
-            "फ्लोरिन",
-            "ऑक्सीजन",
-            "नाइट्रोजन",
-            "कार्बन"
+            "उनुन्बियम",
+            "उनुनिलियम",
+            "उनुन्ट्रियम",
+            "उनुन्पेंटियम"
           ],
-          "solution": "विद्युतऋणता एका आवर्तात वाढते आणि एका गटात घटते. दिलेल्या घटकांमध्ये फ्लोरिनची विद्युतऋणता सर्वाधिक असते कारण त्याचा उच्च प्रभावी न्यूक्लियर चार्ज आणि लहान परमाणु आकार असतो. ऑक्सीजनची विद्युतऋणता फ्लोरिनपेक्षा कमी असते, नाइट्रोजनची विद्युतऋणता दोन्हीपेक्षा कमी असते आणि कार्बनची विद्युतऋणता दिलेल्या घटकांमध्ये सर्वात कमी असते.",
+          "solution": "112 क्रमांक असलेल्या घटकासाठी आयूपॅक नाव 'उनुन्बियम' आहे, जे 1, 1 आणि 2 च्या मूळ (उन, उन, बी) वरून विकसित केले गेले आहे. इतर विकल्पांचे नाव वेगळ्या परमाणु क्रमांक असलेल्या घटकांसाठी आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for chemistry.",
+          "critique": "The Marathi translation accurately preserves the meaning, structure, and technical terms of the original English question. The IUPAC nomenclature terms are correctly transliterated and maintain their scientific accuracy.",
           "flag": null
         }
       },
@@ -1086,9 +783,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the trend of electronegativity across the period.",
-        "Fails to recognize the correct position of the elements in the periodic table.",
-        "Misunderstands the factors affecting electronegativity."
+        "Refers to element 111, which has the name Unununium.",
+        "Refers to element 113, which has the name Ununtrium.",
+        "Refers to element 115, which has the name Ununpentium."
       ],
       "solverAnswers": [
         0,
@@ -1098,89 +795,89 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed. Fluorine is indeed the most electronegative element among the options provided. The solution correctly explains the periodic trend and the factors affecting electronegativity. The reasons for the wrong options are valid misconceptions students might have.",
+      "critique": "The correct answer is Ununbium (option 0), as per IUPAC nomenclature for element 112. The other options correspond to different atomic numbers, and the author's reasoning for the distractors aligns with common misconceptions about the naming of superheavy elements.",
       "sources": [
         {
           "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 32,
-          "pageStart": 23,
-          "pageEnd": 24,
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
           "headingPath": [
             "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 33,
-          "pageStart": 24,
-          "pageEnd": 25,
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
           "headingPath": [
             "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 34,
-          "pageStart": 25,
-          "pageEnd": 26,
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
           "headingPath": [
             "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 35,
-          "pageStart": 26,
-          "pageEnd": 26,
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T05:59:05.387Z",
+      "generatedAt": "2026-10-28T11:37:13.332Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "Why does the atomic radius increase as we move down a group in the periodic table?",
+      "stem": "Why does the electron gain enthalpy become less negative as we move down a group?",
       "choices": [
-        "Due to the addition of a new energy level",
-        "Due to the increase in nuclear charge",
-        "Due to the decrease in electron shielding",
-        "Due to the decrease in effective nuclear charge"
+        "Due to increased atomic size and reduced electron-electron repulsion",
+        "Due to decreased atomic size and increased nuclear charge",
+        "Due to increased nuclear charge and reduced shielding",
+        "Due to decreased nuclear charge and increased shielding"
       ],
       "answerIndex": 0,
-      "solution": "The correct answer is due to the addition of a new energy level. As we move down a group, each subsequent element has an additional energy level, which increases the distance between the nucleus and the outermost electrons, thereby increasing the atomic radius. The other options are incorrect because an increase in nuclear charge and a decrease in electron shielding would actually pull electrons closer, and a decrease in effective nuclear charge would not explain the observed increase in size.",
+      "solution": "As we move down a group, the atomic size increases, and the added electron is placed in a higher energy level, farther from the nucleus. This leads to reduced electron-electron repulsion and less effective attraction from the nucleus, making the electron gain enthalpy less negative. The other options are incorrect because they either reverse the trends or misinterpret the shielding effect.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "पर्यावरण सारणी में एक समूह में नीचे की ओर जाने पर परमाणु त्रिज्या क्यों बढ़ जाती है?",
+          "stem": "एक समूह में नीचे जाने पर इलेक्ट्रॉन ग्रहण एन्थैल्पी क्यों कम ऋणात्मक हो जाती है?",
           "choices": [
-            "एक नए ऊर्जा स्तर के जोड़ के कारण",
-            "नाभिकीय आवेश में वृद्धि के कारण",
-            "इलेक्ट्रॉन शील्डिंग में कमी के कारण",
-            "प्रभावी नाभिकीय आवेश में कमी के कारण"
+            "परमाणु आकार में वृद्धि और इलेक्ट्रॉन-इलेक्ट्रॉन प्रतिकर्षण में कमी के कारण",
+            "परमाणु आकार में कमी और नाभिकीय आवेश में वृद्धि के कारण",
+            "नाभिकीय आवेश में वृद्धि और छायांकन में कमी के कारण",
+            "नाभिकीय आवेश में कमी और छायांकन में वृद्धि के कारण"
           ],
-          "solution": "सही उत्तर एक नए ऊर्जा स्तर के जोड़ के कारण है। जैसे-जैसे हम एक समूह में नीचे की ओर जाते हैं, प्रत्येक अगला तत्व एक अतिरिक्त ऊर्जा स्तर रखता है, जो नाभिक और बाहरी इलेक्ट्रॉनों के बीच की दूरी बढ़ा देता है, जिससे परमाणु त्रिज्या बढ़ जाती है। अन्य विकल्प गलत हैं क्योंकि नाभिकीय आवेश में वृद्धि और इलेक्ट्रॉन शील्डिंग में कमी इलेक्ट्रॉनों को निकट खींच लेती है, और प्रभावी नाभिकीय आवेश में कमी आकार में वृद्धि की दृष्टि से स्पष्टीकरण नहीं दे सकती।",
+          "solution": "जैसे-जैसे हम एक समूह में नीचे जाते हैं, परमाणु आकार बढ़ता है और जोड़ा गया इलेक्ट्रॉन नाभिक से दूर एक उच्च ऊर्जा स्तर में रखा जाता है। इससे इलेक्ट्रॉन-इलेक्ट्रॉन प्रतिकर्षण में कमी होती है और नाभिक से कम प्रभावी आकर्षण होता है, जिसके कारण इलेक्ट्रॉन ग्रहण एन्थैल्पी कम ऋणात्मक हो जाती है। अन्य विकल्प गलत हैं क्योंकि वे या तो तरंग के विपरीत तरंग को दर्शाते हैं या छायांकन प्रभाव की गलत व्याख्या करते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for chemistry.",
+          "critique": "Hindi translation accurately reflects the English original in meaning, technical terms, and structure. The correct answer remains option (1), and all distractors remain incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "पर्यायक्रमात एका गटात खाली जाताना परमाणु त्रिज्या का वाढते?",
+          "stem": "कारण इलेक्ट्रॉन जनन एन्थॅल्पी समूहात खाली जाताना कमी ऋणात्मक होते?",
           "choices": [
-            "नवीन ऊर्जा स्तराच्या जोडणीमुळे",
-            "न्यूक्लियस आवेशाच्या वाढीमुळे",
-            "इलेक्ट्रॉन शील्डिंगच्या घटीमुळे",
-            "प्रभावी न्यूक्लियस आवेशाच्या घटीमुळे"
+            "अणु आकार वाढल्यामुळे आणि इलेक्ट्रॉन-इलेक्ट्रॉन प्रतिकर्षण कमी झाल्यामुळे",
+            "अणु आकार कमी झाल्यामुळे आणि नाभिकीय आवेश वाढल्यामुळे",
+            "नाभिकीय आवेश वाढल्यामुळे आणि शिल्डिंग कमी झाल्यामुळे",
+            "नाभिकीय आवेश कमी झाल्यामुळे आणि शिल्डिंग वाढल्यामुळे"
           ],
-          "solution": "योग्य उत्तर नवीन ऊर्जा स्तराच्या जोडणीमुळे आहे. एका गटात खाली जाताना, प्रत्येक पुढील घटकाला एक अतिरिक्त ऊर्जा स्तर असतो, जो न्यूक्लियस आणि बाह्यतम इलेक्ट्रॉनमधील अंतर वाढवतो, ज्यामुळे परमाणु त्रिज्या वाढते. इतर विकल्प अयोग्य आहेत कारण न्यूक्लियस आवेशाच्या वाढी आणि इलेक्ट्रॉन शील्डिंगच्या घटीमुळे इलेक्ट्रॉन जवळ खेचले जातात, आणि प्रभावी न्यूक्लियस आवेशाच्या घटीमुळे आकारात वाढ स्पष्टीकरणासाठी उपयुक्त नसते.",
+          "solution": "समूहात खाली जाताना अणु आकार वाढतो आणि जोडलेला इलेक्ट्रॉन नाभिकापासून दूर असलेल्या उच्च ऊर्जा स्तरात ठेवला जातो. हे इलेक्ट्रॉन-इलेक्ट्रॉन प्रतिकर्षण कमी करते आणि नाभिकाच्या प्रभावी आकर्षणाला कमी करते, ज्यामुळे इलेक्ट्रॉन जनन एन्थॅल्पी कमी ऋणात्मक होते. इतर विकल्प चुकीचे आहेत कारण ते तंत्राचे उलट करतात किंवा शिल्डिंग प्रभावाचे चुकीचे व्याख्यान करतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The structure and meaning of the question and options are preserved.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for chemistry.",
           "flag": null
         }
       },
@@ -1190,9 +887,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the effect of nuclear charge with atomic size",
-        "Misunderstands the role of electron shielding",
-        "Thinks the effective nuclear charge decreases with increasing atomic number"
+        "Chooses this option due to a misunderstanding of how atomic size and electron-electron repulsion affect electron gain enthalpy",
+        "Chooses this option due to a misunderstanding of how atomic size and nuclear charge influence electron gain enthalpy",
+        "Chooses this option due to a misunderstanding of how nuclear charge and shielding influence electron gain enthalpy"
       ],
       "solverAnswers": [
         0,
@@ -1202,38 +899,151 @@
         0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the atomic radius increases down a group due to the addition of a new energy level. The author's reasoning for the other options aligns with common student misconceptions.",
+      "critique": "The solution correctly identifies that increased atomic size and reduced electron-electron repulsion lead to less negative electron gain enthalpy down a group. The reasoning aligns with the correct option and the author's explanation.",
       "sources": [
         {
           "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 15,
-          "pageStart": 12,
-          "pageEnd": 12,
+          "ordinal": 21,
+          "pageStart": 16,
+          "pageEnd": 17,
           "headingPath": [
             "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 16,
-          "pageStart": 12,
-          "pageEnd": 13,
+          "ordinal": 22,
+          "pageStart": 17,
+          "pageEnd": 17,
           "headingPath": [
             "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech103.pdf",
-          "ordinal": 17,
-          "pageStart": 13,
-          "pageEnd": 13,
+          "ordinal": 23,
+          "pageStart": 17,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech103.pdf",
+          "ordinal": 24,
+          "pageStart": 18,
+          "pageEnd": 18,
           "headingPath": [
             "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T05:59:05.387Z",
+      "generatedAt": "2026-10-28T11:37:13.332Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is the 4th period of the Periodic Table longer than the 3rd period, containing 18 elements instead of 8?",
+      "choices": [
+        "Because the 3d orbitals are filled in the 4th period, adding 10 more elements.",
+        "Because the 4p orbitals are filled in the 4th period, adding 6 more elements.",
+        "Because the 4f orbitals are filled in the 4th period, adding 14 more elements.",
+        "Because the 4s orbitals are filled in the 4th period, adding 2 more elements."
+      ],
+      "answerIndex": 0,
+      "solution": "The 4th period is longer because the 3d orbitals, which can hold 10 electrons, are filled in this period, adding 10 more elements to the 8 from the 4s and 4p orbitals. The other options describe orbitals that are filled in different periods.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "4 अवधि आवर्त सारणी की 3 अवधि की तुलना में क्यों लंबी होती है, जिसमें 8 के बजाय 18 तत्व होते हैं?",
+          "choices": [
+            "क्योंकि 3d कक्षक 4 अवधि में भरे जाते हैं, जिससे 10 अतिरिक्त तत्व जुड़ जाते हैं।",
+            "क्योंकि 4p कक्षक 4 अवधि में भरे जाते हैं, जिससे 6 अतिरिक्त तत्व जुड़ जाते हैं।",
+            "क्योंकि 4f कक्षक 4 अवधि में भरे जाते हैं, जिससे 14 अतिरिक्त तत्व जुड़ जाते हैं।",
+            "क्योंकि 4s कक्षक 4 अवधि में भरे जाते हैं, जिससे 2 अतिरिक्त तत्व जुड़ जाते हैं।"
+          ],
+          "solution": "4 अवधि लंबी होती है क्योंकि 3d कक्षक, जो 10 इलेक्ट्रॉन धारण कर सकते हैं, इस अवधि में भरे जाते हैं, जिससे 4s और 4p कक्षकों से 8 तत्वों में 10 अतिरिक्त तत्व जुड़ जाते हैं। अन्य विकल्प अलग अवधियों में भरे जाने वाले कक्षकों का वर्णन करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for atomic orbitals.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "4 वी आवर्ताची लांबी 3 वी आवर्तापेक्षा जास्त का आहे, ज्यामध्ये 8 घटकांऐवजी 18 घटक असतात?",
+          "choices": [
+            "कारण 3d ऑर्बिटल्स 4 व्या आवर्तामध्ये भरले जातात, ज्यामुळे 10 अतिरिक्त घटक जोडले जातात.",
+            "कारण 4p ऑर्बिटल्स 4 व्या आवर्तामध्ये भरले जातात, ज्यामुळे 6 अतिरिक्त घटक जोडले जातात.",
+            "कारण 4f ऑर्बिटल्स 4 व्या आवर्तामध्ये भरले जातात, ज्यामुळे 14 अतिरिक्त घटक जोडले जातात.",
+            "कारण 4s ऑर्बिटल्स 4 व्या आवर्तामध्ये भरले जातात, ज्यामुळे 2 अतिरिक्त घटक जोडले जातात."
+          ],
+          "solution": "4 वी आवर्त लांब आहे कारण 3d ऑर्बिटल्स, जे 10 इलेक्ट्रॉन धारण करू शकतात, या आवर्तामध्ये भरले जातात, ज्यामुळे 4s आणि 4p ऑर्बिटल्समधून मिळालेल्या 8 घटकांमध्ये 10 अतिरिक्त घटक जोडले जातात. इतर विकल्प वेगळ्या आवर्तांमध्ये भरलेल्या ऑर्बिटल्सचे वर्णन करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology used in Marathi textbooks, and preserves the logical structure of the question and solution.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Describes the filling of 4p orbitals, which only add 6 elements.",
+        "Describes the filling of 4f orbitals, which occur in the 6th period.",
+        "Describes the filling of 4s orbitals, which only add 2 elements."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the 3d orbitals are filled in the 4th period, adding 10 elements. The other options describe orbitals filled in different periods or incorrectly attribute the number of elements added.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech103.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech103.pdf",
+          "ordinal": 8,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech103.pdf",
+          "ordinal": 9,
+          "pageStart": 8,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech103.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 3: Classifi Cation of El Ements and Periodicity in Properties"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T11:37:13.332Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

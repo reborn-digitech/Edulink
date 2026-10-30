@@ -1,0 +1,653 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T14:53:55.927Z",
+  "finishedAt": "2026-10-26T15:03:41.533Z",
+  "seconds": 586,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo108.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 8 — Microbes in Human Welfare",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, sample question paper, 2026-27]\n27. Pathogens are often considered harmful, yet they have been adapted as 3\npowerful tools in genetic engineering. Explain how pathogens have been\nmodified into useful vectors. Describe the role of a similarly modified plant\nvector and animal vector.",
+      "[CBSE Class XII Biology, sample question paper, 2024-25]\n32. Attempt either option A or B. 5\nA. Explain how advent of biotechnology has helped in preventing\ninfestation by nematodes and thereby increasing crop yield.\nOR\nB. In the future, genetic therapies may be used to prevent, treat, or cure\ncertain inherited disorders in humans. Justify the statement with a\nsuitable example.",
+      "[INBO 2015 — question paper]\n31. (2 points) For organisms P, Q, R and S, key features along with their habitats\nand number of genes they possess are given in the table.\nOrganism Key feature Habitat No. of genes\n1 2 3\nP Organotrophic Human genital tract 468\nQ Lithotrophic Hydrothermal vent 1544\nR Aerobic Volcanic region 2620\nS Aerobic heterotrophic Soil 19000\nIndicate whether each of the following statements is true or false by putting tick\nmarks (✔) in the appropriate boxes.\nA. Organism P cannot be a eubacterium owing to its habitat and small number of\ngenes.\nB. Organism S can be either a prokaryote or eukaryote.\nC. Organism R is most likely to be archaebacterium due to feature 2.\nD. Organism Q can only be eubacterium o",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n19. A. Innate immunity/ non-specific type of defense/immunity present at the time 2\nof birth is effected. It provides different types of barriers to the entry of the\nforeign agents into our body/destroys microbes/ prevents microbial growth.\n(1)\nB. Cellular barrier-monocytes is with least count and it can phagocytose and\ndestroy microbes. (1)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 116280,
+      "in": 35,
+      "out": 34,
+      "rejects": 1,
+      "promptTokens": 30627,
+      "completionTokens": 6638
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 220835,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 16398,
+      "completionTokens": 6353
+    },
+    "solver": {
+      "calls": 189,
+      "ms": 86131,
+      "in": 34,
+      "out": 31,
+      "rejects": 3,
+      "promptTokens": 29451,
+      "completionTokens": 1777
+    },
+    "form": {
+      "calls": 15,
+      "ms": 42888,
+      "in": 31,
+      "out": 19,
+      "rejects": 12,
+      "promptTokens": 4019,
+      "completionTokens": 1204
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 19,
+      "out": 19,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 42,
+      "ms": 7560,
+      "in": 19,
+      "out": 17,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 69,
+      "ms": 774415,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 43515,
+      "completionTokens": 23104
+    }
+  },
+  "kept": 17,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 3,
+    "4": 3,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 9,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a type of microbe mentioned in the passage?",
+      "ms": {
+        "draft": 2823,
+        "critique": 6089,
+        "solver": 1912,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a microbe used in the production of an antibiotic?",
+      "ms": {
+        "draft": 2823,
+        "critique": 6843,
+        "solver": 1489,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT an example of a microbe used for the production of bioactive molecules?",
+      "ms": {
+        "draft": 11426,
+        "critique": 8121,
+        "solver": 14126
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that biogas is produced during the anaerobic digestion of sludge. Which of the following is a correct statement about the composition of biogas?",
+      "ms": {
+        "draft": 11426,
+        "critique": 5356,
+        "solver": 1388,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a biogas plant's function as described in the passage?",
+      "ms": {
+        "draft": 3169,
+        "critique": 5700,
+        "solver": 1566,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary purpose of using Bacillus thuringiensis (Bt) in agriculture as described in the passage?",
+      "ms": {
+        "draft": 3169,
+        "critique": 6313,
+        "solver": 1214,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for building more sewage treatment plants in India?",
+      "ms": {
+        "draft": 3169,
+        "critique": 5725,
+        "solver": 1615,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes how biogas is produced from cattle dung. Based on this, which of the following statements is most likely true about the role of bacteria in this process?",
+      "ms": {
+        "draft": 3169,
+        "critique": 5579,
+        "solver": 1422,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A farmer wants to reduce the use of chemical pesticides in his fields. Based on the passage, which of the following methods could he use as a biocontrol agent?",
+      "ms": {
+        "draft": 3169,
+        "critique": 6650,
+        "solver": 1528,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main source of methane production in biogas plants?",
+      "ms": {
+        "draft": 3169,
+        "critique": 6119,
+        "solver": 1610,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that mycorrhizal fungi like Glomus help plants absorb phosphorus. What benefit does the fungus get from this relationship?",
+      "ms": {
+        "draft": 3236,
+        "critique": 5285,
+        "solver": 2043,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes the use of biogas plants and microbial biocontrol agents as sustainable alternatives to chemical-based methods. Which of the following best explains why these methods are considered more sustainable than conventional chemical methods?",
+      "ms": {
+        "draft": 4095,
+        "critique": 6016,
+        "solver": 1547,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following correctly describes the process of secondary treatment of sewage as discussed in the passage?",
+      "ms": {
+        "draft": 4095,
+        "critique": 6065,
+        "solver": 1636,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A farmer is considering implementing a biogas plant in his village, but he is concerned about the availability of a suitable organic substrate. Based on the passage, what is the most suitable organic material for biogas production?",
+      "ms": {
+        "draft": 4095,
+        "critique": 6993,
+        "solver": 14532
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not an example of a bioactive molecule produced by microbes?",
+      "ms": {
+        "draft": 4027,
+        "critique": 6162,
+        "solver": 8941
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a biocontrol agent used in the treatment of plant disease?",
+      "ms": {
+        "draft": 3345,
+        "critique": 6171,
+        "solver": 1156,
+        "form": 3172
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a microbial biocontrol agent used to protect plants from insect pests?",
+      "ms": {
+        "draft": 4095,
+        "critique": 6194,
+        "solver": 1261,
+        "form": 4390
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of biofertiliser?",
+      "ms": {
+        "draft": 3345,
+        "critique": 5609,
+        "solver": 1873,
+        "form": 2666,
+        "translation": 34907
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a function of mycorrhiza?",
+      "ms": {
+        "draft": 3345,
+        "critique": 5480,
+        "solver": 658,
+        "form": 1293,
+        "translation": 43015
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of adding a small amount of curd to fresh milk as an inoculum?",
+      "ms": {
+        "draft": 2823,
+        "critique": 6089,
+        "solver": 966,
+        "form": 3492,
+        "translation": 39873
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a bioactive molecule produced by a fungus?",
+      "ms": {
+        "draft": 11426,
+        "critique": 7165,
+        "solver": 1360,
+        "form": 3399,
+        "translation": 31087
+      },
+      "outcome": "kept",
+      "flag": "level 2 but the solver missed it 2 of 5 times"
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a biocontrol agent used to manage plant pathogens?",
+      "ms": {
+        "draft": 3236,
+        "critique": 6359,
+        "solver": 1638,
+        "form": 0,
+        "translation": 42798
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of biofertilisers?",
+      "ms": {
+        "draft": 3236,
+        "critique": 5900,
+        "solver": 1287,
+        "form": 0,
+        "translation": 40076
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the production of Swiss cheese, what causes the large holes in the cheese?",
+      "ms": {
+        "draft": 2823,
+        "critique": 6352,
+        "solver": 2369,
+        "form": 2137,
+        "translation": 45506
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a sewage treatment plant is not functioning properly, what is the most likely consequence?",
+      "ms": {
+        "draft": 11426,
+        "critique": 6049,
+        "solver": 1504,
+        "form": 4563,
+        "translation": 60325
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is most likely to be a source of an antibiotic?",
+      "ms": {
+        "draft": 3236,
+        "critique": 6542,
+        "solver": 2339,
+        "form": 0,
+        "translation": 35283
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the sewage treatment process, what is the role of flocs?",
+      "ms": {
+        "draft": 11426,
+        "critique": 6132,
+        "solver": 1990,
+        "form": 2972,
+        "translation": 53490
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the context of biogas production, which of the following is a key component of the biogas plant that allows for the collection and storage of the produced gas?",
+      "ms": {
+        "draft": 4095,
+        "critique": 8090,
+        "solver": 1583,
+        "form": 4140,
+        "translation": 78192
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given passage, what is the main reason for using biofertilisers?",
+      "ms": {
+        "draft": 3236,
+        "critique": 6184,
+        "solver": 1171,
+        "form": 3543,
+        "translation": 44423
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following scenarios best describes the role of microbes in the production of alcoholic beverages?",
+      "ms": {
+        "draft": 2823,
+        "critique": 6333,
+        "solver": 1459,
+        "form": 3492,
+        "translation": 57409
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student conducted an experiment with a microbe that produces a bioactive molecule. The student observed that the microbe was able to reduce the BOD of the effluent significantly. Which type of microbe is the student most likely working with?",
+      "ms": {
+        "draft": 11426,
+        "critique": 4903,
+        "solver": 1319,
+        "form": 3594,
+        "translation": 48974
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A farmer is trying to reduce the use of pesticides in his fields. Which of the following would be the best option for him to adopt?",
+      "ms": {
+        "draft": 3236,
+        "critique": 5596,
+        "solver": 1570,
+        "form": 0,
+        "translation": 45313
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the significance of the discovery of Penicillin?",
+      "ms": {
+        "draft": 2823,
+        "critique": 6955,
+        "solver": 1552,
+        "form": 3050,
+        "translation": 59763
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A new method of sewage treatment is developed where the effluent is passed through a bioreactor containing genetically modified microbes that can break down organic matter more efficiently. How would this affect the BOD of the effluent?",
+      "ms": {
+        "draft": 4027,
+        "critique": 5633,
+        "solver": 1606,
+        "form": 3373,
+        "translation": 47768
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is an example of a biocontrol agent?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is NOT a type of microbe mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a microbe used in the production of an antibiotic?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT an example of a microbe used for the production of bioactive molecules?",
+      "reason": "after redrafting distractors 0, 2, 3: the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that biogas is produced during the anaerobic digestion of sludge. Which of the following is a correct statement about the composition of biogas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a biogas plant's function as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the primary purpose of using Bacillus thuringiensis (Bt) in agriculture as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for building more sewage treatment plants in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage describes how biogas is produced from cattle dung. Based on this, which of the following statements is most likely true about the role of bacteria in this process?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A farmer wants to reduce the use of chemical pesticides in his fields. Based on the passage, which of the following methods could he use as a biocontrol agent?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main source of methane production in biogas plants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Chooses a renewable energy source unrelated to the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that mycorrhizal fungi like Glomus help plants absorb phosphorus. What benefit does the fungus get from this relationship?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage describes the use of biogas plants and microbial biocontrol agents as sustainable alternatives to chemical-based methods. Which of the following best explains why these methods are considered more sustainable than conventional chemical methods?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following correctly describes the process of secondary treatment of sewage as discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A farmer is considering implementing a biogas plant in his village, but he is concerned about the availability of a suitable organic substrate. Based on the passage, what is the most suitable organic material for biogas production?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is not an example of a bioactive molecule produced by microbes?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a biocontrol agent used in the treatment of plant disease?",
+      "reason": "near-duplicate of served question cmvlqcmp50np6gpfhtxb20vjb (cosine 0.947 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is an example of a microbial biocontrol agent used to protect plants from insect pests?",
+      "reason": "near-duplicate of served question cmvibzsbn0ccogpfhf7fqlnjb (cosine 0.917 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,49 +21,36 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T22:40:01.112Z",
+  "generatedAt": "2026-10-29T11:16:59.898Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 4,
-      "stem": "Which of the following numbers is the smallest?",
+      "difficulty": 1,
+      "stem": "Which of the following is the highest point above sea level on Earth?",
       "choices": [
-        "-7",
-        "-15",
-        "0",
-        "4"
+        "Mount Everest",
+        "K2",
+        "Annapurna",
+        "Kangchenjunga"
       ],
-      "answerIndex": 1,
-      "solution": "The smallest number is -15 because it is the most negative. -7 is greater than -15 because it is closer to zero. 0 is greater than both -7 and -15. 4 is the greatest number among all.",
+      "answerIndex": 0,
+      "solution": "Mount Everest is the highest point above sea level on Earth due to its elevation of approximately 8,848 meters. Other mountains like K2, Annapurna, and Kangchenjunga are also very tall but do not exceed Mount Everest's height. These peaks are all part of the Himalayan range but are slightly lower in elevation.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी संख्या सबसे छोटी है?",
+          "stem": "निम्नलिखित में से कौन-सा पृथ्वी पर समुद्र तल से सबसे ऊपर का बिंदु है?",
           "choices": [
-            "-7",
-            "-15",
-            "0",
-            "4"
+            "एवरेस्ट पर्वत",
+            "के-2",
+            "अन्नापूर्णा",
+            "कंचनजंघा"
           ],
-          "solution": "सबसे छोटी संख्या -15 है क्योंकि यह सबसे अधिक ऋणात्मक है। -7, -15 की तुलना में बड़ा है क्योंकि यह शून्य के निकट है। 0, -7 और -15 दोनों से बड़ा है। 4 सभी में सबसे बड़ी संख्या है।",
+          "solution": "एवरेस्ट पर्वत पृथ्वी पर समुद्र तल से सबसे ऊपर का बिंदु है क्योंकि इसकी ऊंचाई लगभग 8,848 मीटर है। के-2, अन्नापूर्णा और कंचनजंघा जैसे पहाड़ भी बहुत ऊंचे हैं लेकिन एवरेस्ट की ऊंचाई से अधिक नहीं हैं। इन शिखरों के सभी हिमालय पर्वत श्रृंखला के हिस्से हैं लेकिन ऊंचाई में थोड़ा कम हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणती संख्या सर्वात लहान आहे?",
-          "choices": [
-            "-7",
-            "-15",
-            "0",
-            "4"
-          ],
-          "solution": "सर्वात लहान संख्या -15 आहे कारण ती सर्वात जास्त नकारात्मक आहे. -7 ही -15 पेक्षा मोठी आहे कारण ती शून्याजवळ आहे. 0 ही -7 आणि -15 दोन्ही पेक्षा मोठी आहे. 4 ही सर्वात मोठी संख्या आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses standard geographical terms in Hindi.",
           "flag": null
         }
       },
@@ -72,20 +59,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the order of negative numbers",
         null,
-        "Does not recognize that negative numbers are less than zero",
-        "Thinks zero is the smallest number"
+        "confuses Mount Everest with other high mountains",
+        "confuses K2 with the highest mountain",
+        "confuses Annapurna with the highest mountain"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the key. The reasoning about negative numbers and their order is accurate.",
+      "levelFlag": null,
+      "critique": "The question is straightforward and relies on general knowledge. The correct answer is clearly Mount Everest, and the author's reasoning for the distractors is valid as they reflect common misconceptions about the highest mountains.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
@@ -119,49 +106,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T22:40:01.112Z",
+      "generatedAt": "2026-10-29T11:16:59.898Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "A bank account has a balance of ₹100. A withdrawal of ₹150 is made. What is the new balance?",
+      "difficulty": 1,
+      "stem": "Which of the following is a way to represent a temperature below 0°C?",
       "choices": [
-        "₹50",
-        "₹-50",
-        "₹100",
-        "₹-100"
+        "40°C",
+        "15°C",
+        "0°C",
+        "–5°C"
       ],
-      "answerIndex": 1,
-      "solution": "The correct answer is ₹-50. Starting with ₹100, a withdrawal of ₹150 means subtracting 150 from 100, resulting in -50. The other options are incorrect because they either assume the balance remains positive or misinterpret the subtraction.",
+      "answerIndex": 3,
+      "solution": "The correct answer is –5°C because it is a negative number, which represents a temperature below 0°C. The other options are positive numbers and do not represent temperatures below 0°C.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक बैंक खाते में ₹100 का शेष है। ₹150 की निकासी की जाती है। नया शेष क्या है?",
+          "stem": "निम्न में से कौन-सा 0°C से नीचे के तापमान का प्रतिनिधित्व करने का एक तरीका है?",
           "choices": [
-            "₹50",
-            "₹-50",
-            "₹100",
-            "₹-100"
+            "40°C",
+            "15°C",
+            "0°C",
+            "-5°C"
           ],
-          "solution": "सही उत्तर ₹-50 है। ₹100 के साथ शुरू करते हुए, ₹150 की निकासी का अर्थ 100 में से 150 को घटाना है, जिसके परिणामस्वरूप -50 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे यह मान लेते हैं कि शेष धनात्मक रहता है या घटाव के गलत अर्थ को समझते हैं।",
+          "solution": "सही उत्तर -5°C है क्योंकि यह एक ऋणात्मक संख्या है, जो 0°C से नीचे के तापमान का प्रतिनिधित्व करती है। अन्य विकल्प धनात्मक संख्याएं हैं और 0°C से नीचे के तापमान का प्रतिनिधित्व नहीं करती हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate financial terminology as used in Hindi textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology for temperature and numbers.",
           "flag": null
         },
         "mr": {
-          "stem": "एक बँक खात्यात शिल्लक ₹100 आहे. ₹150 ची काढणी केली जाते. नवीन शिल्लक काय आहे?",
+          "stem": "खालीलपैकी कोणते 0°C पेक्षा खालील तापमानाचे प्रतिनिधित्व करण्याचे एक प्रकार आहे?",
           "choices": [
-            "₹50",
-            "₹-50",
-            "₹100",
-            "₹-100"
+            "40°C",
+            "15°C",
+            "0°C",
+            "-5°C"
           ],
-          "solution": "बरोबर उत्तर ₹-50 आहे. ₹100 पासून ₹150 ची काढणी केल्याने 100 मधून 150 वजा करावे लागते, जे -50 च्या बरोबर होते. इतर उत्तरे चुकीची आहेत कारण ते शिल्लक धनात्मक राहते असे मानतात किंवा वजा करण्याचा चुकीचा अर्थ काढतात.",
+          "solution": "बरोबर उत्तर -5°C आहे कारण ते ऋण संख्या आहे, जी 0°C पेक्षा खालील तापमानाचे प्रतिनिधित्व करते. इतर उत्तरे धनात्मक संख्या आहेत आणि 0°C पेक्षा खालील तापमानाचे प्रतिनिधित्व करत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi financial terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for temperature and numbers.",
           "flag": null
         }
       },
@@ -170,155 +157,54 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Assumes the balance remains positive",
-        null,
-        "Incorrectly calculates the difference",
-        "Fails to consider the negative result"
+        "Confuses positive with negative numbers",
+        "Confuses positive with negative numbers",
+        "Does not understand the meaning of 0°C in temperature measurement",
+        null
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        3,
+        3,
+        3,
+        3,
+        3
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the key. The question tests understanding of negative numbers in the context of banking, and the reasoning for the correct answer is sound.",
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests basic understanding of negative numbers in the context of temperature. The correct answer is clearly –5°C, and the author's reasoning aligns with the correct mathematical understanding.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 22,
-          "pageStart": 50,
-          "pageEnd": 52,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "FracTion Wall",
-            "Notes"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 23,
-          "pageStart": 52,
-          "pageEnd": 55,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "FracTion Wall",
-            "Notes"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 24,
-          "pageStart": 55,
-          "pageEnd": 56,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "FracTion Wall",
-            "Notes"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T22:40:01.112Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A bank account starts at ₹0. A customer deposits ₹200, then withdraws ₹250. What is the final balance?",
-      "choices": [
-        "₹50",
-        "₹-50",
-        "₹200",
-        "₹250"
-      ],
-      "answerIndex": 1,
-      "solution": "The customer deposits ₹200 (a credit) and withdraws ₹250 (a debit). This results in a net change of -₹50. So, the final balance is -₹50. The option ₹50 is wrong because it subtracts in the wrong order. The option ₹200 is wrong because it ignores the withdrawal. The option ₹250 is wrong because it only considers the withdrawal.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक बैंक खाता ₹0 पर शुरू होता है। एक ग्राहक ₹200 जमा करता है, फिर ₹250 निकाल लेता है। अंतिम शेष क्या है?",
-          "choices": [
-            "₹50",
-            "₹-50",
-            "₹200",
-            "₹250"
-          ],
-          "solution": "ग्राहक ₹200 जमा करता है (एक डेबिट) और ₹250 निकाल लेता है (एक क्रेडिट)। इससे -₹50 का शुद्ध परिवर्तन होता है। अतः अंतिम शेष -₹50 है। ₹50 विकल्प गलत है क्योंकि यह घटाने के क्रम को गलत करता है। ₹200 विकल्प गलत है क्योंकि यह निकासी को अनदेखा करता है। ₹250 विकल्प गलत है क्योंकि यह केवल निकासी को ध्यान में रखता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate financial terminology and correct answer positioning.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक बँक खाते ₹0 वरून सुरू होते. एक ग्राहक ₹200 जमा करतो, नंतर ₹250 काढतो. अंतिम शिल्लक काय आहे?",
-          "choices": [
-            "₹50",
-            "₹-50",
-            "₹200",
-            "₹250"
-          ],
-          "solution": "ग्राहक ₹200 जमा करतो (क्रेडिट) आणि ₹250 काढतो (डेबिट). हे -₹50 च्या नेट बदलाचे निर्माण करते. म्हणून, अंतिम शिल्लक -₹50 आहे. ₹50 ची पर्याय चुकीच्या क्रमाने वजाबाकी केल्यामुळे चुकीची आहे. ₹200 ची पर्याय वजाबाकी न लक्षात घेतल्यामुळे चुकीची आहे. ₹250 ची पर्याय वजाबाकीच्या फक्त एका बाजूला लक्ष दिल्यामुळे चुकीची आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi financial terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "subtracts in the wrong order",
-        null,
-        "adds the amounts without considering signs",
-        "ignores the withdrawal amount"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the key. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 9,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.2 The Token Model"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 10,
-          "pageStart": 17,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 10: The Other Side of Zero",
-            "10.2 The Token Model"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp110.pdf",
-          "ordinal": 11,
-          "pageStart": 18,
-          "pageEnd": 19,
+          "ordinal": 12,
+          "pageStart": 20,
+          "pageEnd": 22,
           "headingPath": [
             "Chapter 10: The Other Side of Zero",
             "10.3 Integers in Other Places"
           ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 13,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.4 Explorations with Integers"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp110.pdf",
+          "ordinal": 14,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 10: The Other Side of Zero",
+            "10.4 Explorations with Integers"
+          ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T22:40:01.112Z",
+      "generatedAt": "2026-10-29T11:16:59.898Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

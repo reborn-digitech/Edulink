@@ -1,0 +1,804 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T22:17:48.099Z",
+  "finishedAt": "2026-10-29T22:31:18.538Z",
+  "seconds": 810,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu103.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 3 — Health: The Ultimate Treasure",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2025-26]\n1. C. Cuscuta, ticks, lice, leeches and tapeworm; as all of these are parasites. 1",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n14. A. 10000 KJ 3\nB. No, the loss of energy at each step is so much that very little usable\nenergy will be left.\nC. Large fish, due to biological magnification of pesticide.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n29. We are advised to take iodised salt in our diet by doctors. Justify it's importance in our 3\nbody.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 209687,
+      "in": 42,
+      "out": 40,
+      "rejects": 2,
+      "promptTokens": 40009,
+      "completionTokens": 10583
+    },
+    "critique": {
+      "calls": 56,
+      "ms": 411187,
+      "in": 40,
+      "out": 34,
+      "rejects": 6,
+      "promptTokens": 24337,
+      "completionTokens": 9779
+    },
+    "solver": {
+      "calls": 266,
+      "ms": 156244,
+      "in": 34,
+      "out": 30,
+      "rejects": 4,
+      "promptTokens": 43731,
+      "completionTokens": 2701
+    },
+    "form": {
+      "calls": 11,
+      "ms": 43765,
+      "in": 30,
+      "out": 14,
+      "rejects": 16,
+      "promptTokens": 7928,
+      "completionTokens": 1022
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 105,
+      "ms": 18494,
+      "in": 14,
+      "out": 7,
+      "rejects": 7,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 363201,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16376,
+      "completionTokens": 8647
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a good habit for maintaining good health, as mentioned in the textbook?",
+      "ms": {
+        "draft": 14334,
+        "critique": 7334
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is it important to keep the environment clean, according to the textbook?",
+      "ms": {
+        "draft": 14334,
+        "critique": 7995
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the textbook, what is the definition of health given by the World Health Organization?",
+      "ms": {
+        "draft": 14334,
+        "critique": 8400
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the textbook, which playground is more likely to lead to illness?",
+      "ms": {
+        "draft": 14334,
+        "critique": 8570
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student feels lonely and spends too much time on social media, what might the textbook suggest as a solution?",
+      "ms": {
+        "draft": 14334,
+        "critique": 8677
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why might people in polluted areas be more likely to get sick, according to the textbook?",
+      "ms": {
+        "draft": 14334,
+        "critique": 7232,
+        "solver": 15422
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following diseases is most likely to be prevented by maintaining personal hygiene and clean surroundings?",
+      "ms": {
+        "draft": 4010,
+        "critique": 7305,
+        "solver": 1603
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a non-communicable disease?",
+      "ms": {
+        "draft": 15565,
+        "critique": 7023,
+        "solver": 13870,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the immunity of the body?",
+      "ms": {
+        "draft": 15565,
+        "critique": 7623,
+        "solver": 11521,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the main reason for the increasing prevalence of diabetes in India?",
+      "ms": {
+        "draft": 15565,
+        "critique": 7077,
+        "solver": 1783,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a community-led initiative that improved health?",
+      "ms": {
+        "draft": 15565,
+        "critique": 9981,
+        "solver": 11215,
+        "form": 5574
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of vaccines according to the passage?",
+      "ms": {
+        "draft": 15565,
+        "critique": 6767,
+        "solver": 13302,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct statement about antibiotics?",
+      "ms": {
+        "draft": 19328,
+        "critique": 8244,
+        "solver": 12914,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a cause of non-communicable diseases?",
+      "ms": {
+        "draft": 15565,
+        "critique": 9027,
+        "solver": 14641,
+        "form": 3522
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given passage, what is the main reason for the development of antibiotic resistance?",
+      "ms": {
+        "draft": 19328,
+        "critique": 8227,
+        "solver": 15147,
+        "form": 4804
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following diseases can spread through contaminated drinking water?",
+      "ms": {
+        "draft": 4076,
+        "critique": 7639,
+        "solver": 1940
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a farmer uses antibiotics in animal feed, what is the most likely consequence?",
+      "ms": {
+        "draft": 19328,
+        "critique": 6450,
+        "solver": 13227,
+        "form": 4292
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a non-communicable disease?",
+      "ms": {
+        "draft": 3331,
+        "critique": 6333
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary reason antibiotics are ineffective against viral infections?",
+      "ms": {
+        "draft": 5075,
+        "critique": 7404,
+        "solver": 2119,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A patient is prescribed antibiotics for a bacterial infection. What should they do to prevent the development of antibiotic resistance?",
+      "ms": {
+        "draft": 5075,
+        "critique": 8552,
+        "solver": 1333,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A farmer uses antibiotics in his cattle to prevent infections. What could be a possible consequence of this practice?",
+      "ms": {
+        "draft": 5075,
+        "critique": 6269,
+        "solver": 1606,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the infographic in Fig. 3.5(b), what is one of the key factors that contributes to the development of antibiotic-resistant bacteria?",
+      "ms": {
+        "draft": 5075,
+        "critique": 6875,
+        "solver": 1591,
+        "form": 2171
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a non-communicable disease?",
+      "ms": {
+        "draft": 6105,
+        "critique": 9685,
+        "solver": 15534,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a chronic disease?",
+      "ms": {
+        "draft": 6105,
+        "critique": 7837,
+        "solver": 13450,
+        "form": 4698
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a non-communicable disease?",
+      "ms": {
+        "draft": 4479,
+        "critique": 9809,
+        "solver": 12562,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following is not a factor that affects a person's health?",
+      "ms": {
+        "draft": 63557,
+        "critique": 8750,
+        "solver": 11098
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a communicable disease?",
+      "ms": {
+        "draft": 4010,
+        "critique": 9202,
+        "solver": 1628,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on Table 3.1, which disease is caused by a worm?",
+      "ms": {
+        "draft": 4010,
+        "critique": 7016,
+        "solver": 1808,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a non-communicable disease?",
+      "ms": {
+        "draft": 4010,
+        "critique": 7494,
+        "solver": 1546,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why should we not take antibiotics for a viral infection such as a cold?",
+      "ms": {
+        "draft": 3331,
+        "critique": 7759,
+        "solver": 1680,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to use antibiotics only when prescribed by a doctor?",
+      "ms": {
+        "draft": 5075,
+        "critique": 6703,
+        "solver": 2156,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method to prevent the spread of communicable diseases?",
+      "ms": {
+        "draft": 6105,
+        "critique": 7883,
+        "solver": 16910,
+        "form": 3879
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following diseases is caused by a virus?",
+      "ms": {
+        "draft": 4479,
+        "critique": 8025,
+        "solver": 1788,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the most important step to prevent the spread of dengue in a community?",
+      "ms": {
+        "draft": 3331,
+        "critique": 8664,
+        "solver": 1831,
+        "form": 0,
+        "translation": 39200
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the most effective way to prevent the spread of diseases like typhoid?",
+      "ms": {
+        "draft": 4010,
+        "critique": 9339,
+        "solver": 1754,
+        "form": 0,
+        "translation": 54874
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the spread of flu in a school during an outbreak?",
+      "ms": {
+        "draft": 3331,
+        "critique": 5857,
+        "solver": 2187,
+        "form": 0,
+        "translation": 46137
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What should be the first action taken if someone in the class starts showing symptoms of the flu?",
+      "ms": {
+        "draft": 3331,
+        "critique": 6690,
+        "solver": 15864,
+        "form": 0,
+        "translation": 30734
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person is infected with a virus like the flu, what is the correct approach to treat the infection?",
+      "ms": {
+        "draft": 3331,
+        "critique": 5512,
+        "solver": 1313,
+        "form": 0,
+        "translation": 45368
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the best way to prevent the spread of antibiotic-resistant bacteria?",
+      "ms": {
+        "draft": 19328,
+        "critique": 7352,
+        "solver": 12478,
+        "form": 3192,
+        "translation": 86488
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to avoid sharing personal items like towels and handkerchiefs?",
+      "ms": {
+        "draft": 4010,
+        "critique": 6544,
+        "solver": 1801,
+        "form": 0,
+        "translation": 53738
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a non-communicable disease?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a good habit for maintaining good health, as mentioned in the textbook?",
+      "reason": "option 0 is not wrong; option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Why is it important to keep the environment clean, according to the textbook?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the textbook, what is the definition of health given by the World Health Organization?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the textbook, which playground is more likely to lead to illness?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a student feels lonely and spends too much time on social media, what might the textbook suggest as a solution?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why might people in polluted areas be more likely to get sick, according to the textbook?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following diseases is most likely to be prevented by maintaining personal hygiene and clean surroundings?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a non-communicable disease?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage say about the immunity of the body?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the main reason for the increasing prevalence of diabetes in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a community-led initiative that improved health?",
+      "reason": "the key is far longer than every distractor (49 vs 26 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the purpose of vaccines according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a correct statement about antibiotics?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a cause of non-communicable diseases?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the given passage, what is the main reason for the development of antibiotic resistance?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"misinterprets the passage content…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following diseases can spread through contaminated drinking water?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a farmer uses antibiotics in animal feed, what is the most likely consequence?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"misunderstands the passage content…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is an example of a non-communicable disease?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a non-communicable disease?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary reason antibiotics are ineffective against viral infections?",
+      "reason": "the key is far longer than every distractor (72 vs 36 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A patient is prescribed antibiotics for a bacterial infection. What should they do to prevent the development of antibiotic resistance?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'text'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A farmer uses antibiotics in his cattle to prevent infections. What could be a possible consequence of this practice?",
+      "reason": "the key is far longer than every distractor (58 vs 34 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the infographic in Fig. 3.5(b), what is one of the key factors that contributes to the development of antibiotic-resistant bacteria?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'text'"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a non-communicable disease?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a chronic disease?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a non-communicable disease?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "According to the passage, which of the following is not a factor that affects a person's health?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a communicable disease?",
+      "reason": "near-duplicate of served question cmvga2fud031igpfh3e0lr67j (cosine 0.953 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Based on Table 3.1, which disease is caused by a worm?",
+      "reason": "near-duplicate of served question cmvmxc1rd02r7gp21wqdhvfey (cosine 0.908 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a non-communicable disease?",
+      "reason": "near-duplicate of served question cmvf6icuz03e6god8weqoouyj (cosine 0.964 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why should we not take antibiotics for a viral infection such as a cold?",
+      "reason": "near-duplicate of served question cmvga2fub031cgpfhb02cg0xm (cosine 0.908 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is it important to use antibiotics only when prescribed by a doctor?",
+      "reason": "near-duplicate of served question cmvmxc1tn02rpgp215ar31osk (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a method to prevent the spread of communicable diseases?",
+      "reason": "near-duplicate of served question cmvjbiumh0gdagpfhpbemh3cm (cosine 0.936 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following diseases is caused by a virus?",
+      "reason": "near-duplicate of served question cmvf6icun03digod8ucqudstp (cosine 0.922 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

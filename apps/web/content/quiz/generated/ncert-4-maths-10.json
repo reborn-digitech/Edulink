@@ -21,144 +21,49 @@
   "board": "NCERT",
   "book": "Math-Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T22:33:37.448Z",
+  "generatedAt": "2026-10-28T03:51:44.151Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "If a player reaches the total of 7 and it is your turn, what should you choose to ensure you win the game?",
+      "difficulty": 5,
+      "stem": "In the 'More or Less?' section, the leopard population in Central India and the Eastern Ghats increased by 749 from 2018 to 2022. If the population in 2022 was 8820, what was the population in 2018?",
       "choices": [
-        "Choose 1",
-        "Choose 2",
-        "Choose 1 or 2",
-        "Cannot win"
-      ],
-      "answerIndex": 1,
-      "solution": "If the total is 7 and it is your turn, choosing 2 will make the total 9. Then, no matter what the other player chooses (1 or 2), you will reach 10 on your next turn and win. Choosing 1 would allow the other player to win on their next turn. Choosing 1 or 2 is incorrect because only choosing 2 guarantees a win. The idea that you cannot win is wrong because the game can be won with the right choice.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक खिलाड़ी 7 के कुल योग तक पहुंच जाता है और आपकी बरसात है, तो आपको क्या चुनना चाहिए ताकि आप खेल जीत सकें?",
-          "choices": [
-            "1 चुनें",
-            "2 चुनें",
-            "1 या 2 चुनें",
-            "जीत नहीं सकते"
-          ],
-          "solution": "यदि कुल 7 है और आपकी बरसात है, तो 2 चुनने से कुल 9 हो जाएगा। फिर, कोई भी खिलाड़ी जो अगली बार चुनता है (1 या 2), आप अपनी अगली बार चुनकर 10 तक पहुंच जाएंगे और जीत जाएंगे। 1 चुनने से दूसरे खिलाड़ी को अगली बार जीतने का मौका मिल जाएगा। 1 या 2 चुनना गलत है क्योंकि केवल 2 चुनने से जीत निश्चित होती है। यह विचार कि आप जीत नहीं सकते, गलत है क्योंकि सही चयन के साथ खेल जीता जा सकता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. All options and the solution are correctly translated and maintain the same logical relationships.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर खेळाडू 7 च्या एकूण बेरजेवर पोहोचला आहे आणि तुमचा वर्तमान वर्तमान आहे, तर तुम्हाला काय निवडावे लागेल जेणेकरून तुम्ही खेळ जिंकू शकाल?",
-          "choices": [
-            "1 निवडा",
-            "2 निवडा",
-            "1 किंवा 2 निवडा",
-            "जिंकू शकत नाही"
-          ],
-          "solution": "जर एकूण 7 असेल आणि तुमचा वर्तमान आहे, तर 2 निवडून एकूण 9 होईल. नंतर, जर इतर खेळाडू काय निवडेल (1 किंवा 2), तर तुम्ही आपल्या आगामी वर्तमानात 10 होईल आणि जिंकाल. 1 निवडल्यास इतर खेळाडू आपल्या आगामी वर्तमानात जिंकू शकतील. 1 किंवा 2 निवडणे चुकीचे आहे कारण केवळ 2 निवडल्यास जिंकणे खात्रीचे आहे. जिंकत नाही अशी कल्पना चुकीची आहे कारण योग्य निवड घेऊन खेळ जिंकता येऊ शकतो.",
-          "imageAlt": null,
-          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for game mechanics. The solution explanation is logically consistent in Marathi.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks that choosing 1 is the correct move",
-        null,
-        "Thinks that both choices lead to a win",
-        "Does not understand the winning strategy"
-      ],
-      "solverAnswers": [
-        2,
-        1,
-        1,
-        1,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that choosing 2 leads to a guaranteed win, and the reasoning for why the other options are wrong aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/4/mathematics/demm110.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 10: Elephants, Tigers, and Leopards"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm110.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 10: Elephants, Tigers, and Leopards"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm110.pdf",
-          "ordinal": 2,
-          "pageStart": 7,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 10: Elephants, Tigers, and Leopards"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T22:33:37.448Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Madhya Pradesh has 341 more tigers than Maharashtra. If Maharashtra has 444 tigers, how many tigers does Madhya Pradesh have?",
-      "choices": [
-        "785",
-        "786",
-        "784",
-        "783"
+        "8071",
+        "8075",
+        "8081",
+        "8085"
       ],
       "answerIndex": 0,
-      "solution": "If Maharashtra has 444 tigers and Madhya Pradesh has 341 more, then Madhya Pradesh has 444 + 341 = 785 tigers. The answer 786 is incorrect because it adds 341 + 444 incorrectly. The answer 784 is incorrect because it subtracts instead of adds. The answer 783 is incorrect because it uses a wrong value for one of the numbers.",
-      "checkExpr": "444+341",
+      "solution": "Subtracting 749 from 8820 gives 8071. This is the correct population in 2018. The other options are incorrect due to subtraction errors.",
+      "checkExpr": "8820-749",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "मध्य प्रदेश में महाराष्ट्र के बराबर बाघों के 341 अधिक हैं। यदि महाराष्ट्र में 444 बाघ हैं, तो मध्य प्रदेश में कितने बाघ हैं?",
+          "stem": "अधिक या कम?' के भाग में, केंद्रीय भारत और पूर्वी घाट में चीता की आबादी 2018 से 2022 तक 749 बढ़ गई। यदि 2022 में आबादी 8820 थी, तो 2018 में आबादी क्या थी?",
           "choices": [
-            "785",
-            "786",
-            "784",
-            "783"
+            "8071",
+            "8075",
+            "8081",
+            "8085"
           ],
-          "solution": "यदि महाराष्ट्र में 444 बाघ हैं और मध्य प्रदेश में 341 अधिक हैं, तो मध्य प्रदेश में 444 + 341 = 785 बाघ हैं। उत्तर 786 गलत है क्योंकि यह 341 + 444 को गलत तरीके से जोड़ता है। उत्तर 784 गलत है क्योंकि यह जोड़ने के बजाय घटाता है। उत्तर 783 गलत है क्योंकि यह संख्याओं में से एक के गलत मान का उपयोग करता है।",
+          "solution": "8820 में से 749 घटाने पर 8071 प्राप्त होता है। यह 2018 में सही आबादी है। अन्य विकल्प घटाने की त्रुटि के कारण गलत हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology for mathematical operations and numbers.",
+          "critique": "The translation is accurate, maintains the mathematical logic, and uses appropriate Hindi terminology for population and arithmetic operations.",
           "flag": null
         },
         "mr": {
-          "stem": "मध्य प्रदेशमध्ये महाराष्ट्रापेक्षा 341 वाघ अधिक आहेत. जर महाराष्ट्रात 444 वाघ असतील, तर मध्य प्रदेशात किती वाघ असतील?",
+          "stem": "मोठे किंवा कमी? या विभागात, केंद्रीय भारत आणि पूर्व घाटात विंटर पॉप्युलेशन 2018 ते 2022 पर्यंत 749 ने वाढले. जर 2022 मध्ये पॉप्युलेशन 8820 होते, तर 2018 मध्ये पॉप्युलेशन किती होते?",
           "choices": [
-            "785",
-            "786",
-            "784",
-            "783"
+            "8071",
+            "8075",
+            "8081",
+            "8085"
           ],
-          "solution": "जर महाराष्ट्रात 444 वाघ असतील आणि मध्य प्रदेशमध्ये 341 अधिक असतील, तर मध्य प्रदेशात 444 + 341 = 785 वाघ असतील. 786 हा उत्तर चुकीचा आहे कारण 341 + 444 ची चुकीची गणना केली गेली आहे. 784 हा उत्तर चुकीचा आहे कारण बेरीज करण्याऐवजी बेरीज केली गेली आहे. 783 हा उत्तर चुकीचा आहे कारण एका संख्येचे चुकीचे मूल्य वापरले गेले आहे.",
+          "solution": "8820 मधून 749 वजा करणे देणारे 8071 आहे. हे 2018 मधील योग्य पॉप्युलेशन आहे. इतर विकल्प वजा करण्याच्या चूकीमुळे अयोग्य आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for population and mathematical operations.",
           "flag": null
         }
       },
@@ -168,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Adds the numbers incorrectly",
-        "Subtracts instead of adds",
-        "Uses an incorrect value for one of the numbers"
+        "Subtracts 749 from 8820 but incorrectly subtracts 750 instead of 749",
+        "Subtracts 749 from 8820 but adds 10 instead of subtracting correctly",
+        "Mistakenly adds 749 instead of subtracting it"
       ],
       "solverAnswers": [
         0,
@@ -179,8 +84,8 @@
         0,
         0
       ],
-      "levelFlag": null,
-      "critique": "The solution is correct: 444 + 341 = 785. The reasoning for the distractors is valid and reflects common student misconceptions.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 8071, as 8820 - 749 = 8071. The author's solution is correct, and the reasons for the distractors align with common student errors.",
       "sources": [
         {
           "document": "ncert/4/mathematics/demm110.pdf",
@@ -211,7 +116,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T22:33:37.448Z",
+      "generatedAt": "2026-10-28T03:51:44.151Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

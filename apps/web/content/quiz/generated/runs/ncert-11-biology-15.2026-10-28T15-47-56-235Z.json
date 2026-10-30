@@ -1,0 +1,718 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T15:47:56.235Z",
+  "finishedAt": "2026-10-28T16:05:30.697Z",
+  "seconds": 1054,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo115.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 15 — Body Fluids and Circulation",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2013 — question paper]\n44. (4 points) In some organisms, the cells are in direct contact with the\nsurroundings. However in several multicellular organisms, cells are not in\ndirect contact with surroundings and hence require some medium for the\nexchange of nutrients, metabolic waste and respiratory gases. A few animals\nare listed below. Choose the appropriate medium of circulation and transport\nand fill the number against each animal.\na. Sponge 1\nb. Hydra\nc. Octopus\nd. Planarian\ne. Round worm\nf. Bony fish\ng. Prawn\nh. Earthworm\n1. Water surrounding the body\n2. Body fluids without respiratory pigments\n3. Haemolymph\n4. Blood",
+      "[INBO 2011 — question paper]\n21. (1 point) The three characteristic features of human circulatory system are\ntabulated below. P, Q and R respectively represent:\nP Q R\na. blood pressure, blood volume, blood velocity\nb. blood volume, blood pressure, blood velocity\nc. blood volume, blood velocity, blood pressure\nd. blood velocity, blood pressure, blood volume",
+      "[INBO 2019 — question paper]\n13. (1 point) The squid and octopus are molluscs that are known to be among the most\nactive aquatic invertebrates. The circulatory system of a squid is shown below. It shows\ntwo types of hearts, namely the gill hearts and body heart. The correct path of blood\nthrough this circulatory system is:\na. Body parts and head  gill heart  gills  body heart  Body parts and head\nb. Body parts  body heart  gills  gill heart  Body parts and head\nc. Body parts  body heart  gills  gill heart  body heart  Body parts and head\nd. Body parts and head  gills  gill heart  body heart  Body parts and head",
+      "[INBO 2012 — question paper]\n15. (1 point) The circulatory system shown below represents:\na. a bird.\nb. an amphibian.\nc. a mammal.\nd. a fish."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 271635,
+      "in": 37,
+      "out": 37,
+      "rejects": 1,
+      "promptTokens": 38201,
+      "completionTokens": 10135
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 416933,
+      "in": 37,
+      "out": 31,
+      "rejects": 6,
+      "promptTokens": 20720,
+      "completionTokens": 7487
+    },
+    "solver": {
+      "calls": 200,
+      "ms": 139520,
+      "in": 31,
+      "out": 26,
+      "rejects": 5,
+      "promptTokens": 32333,
+      "completionTokens": 1879
+    },
+    "form": {
+      "calls": 15,
+      "ms": 106649,
+      "in": 26,
+      "out": 14,
+      "rejects": 12,
+      "promptTokens": 9563,
+      "completionTokens": 1829
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 68,
+      "ms": 16512,
+      "in": 14,
+      "out": 12,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 875250,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 31435,
+      "completionTokens": 16334
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 3,
+    "4": 2,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the role of lymph?",
+      "ms": {
+        "draft": 5749,
+        "critique": 10134,
+        "solver": 2190,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the function of the lymphatic system?",
+      "ms": {
+        "draft": 6643,
+        "critique": 12998,
+        "solver": 2348,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a function of leucocytes?",
+      "ms": {
+        "draft": 5749,
+        "critique": 11779,
+        "solver": 26893
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main advantage of a closed circulatory system over an open one?",
+      "ms": {
+        "draft": 6643,
+        "critique": 12540,
+        "solver": 2621
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a human, which chamber of the heart receives oxygenated blood from the lungs?",
+      "ms": {
+        "draft": 6643,
+        "critique": 10560,
+        "solver": 2333,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the tricuspid valve in the heart?",
+      "ms": {
+        "draft": 6643,
+        "critique": 9931,
+        "solver": 2497,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A patient's ECG shows a normal P-wave, QRS complex, and T-wave. What does this indicate about the patient's heart activity?",
+      "ms": {
+        "draft": 10715,
+        "critique": 8824,
+        "solver": 18013,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the human circulatory system, which part is responsible for carrying blood away from the heart to the body's tissues?",
+      "ms": {
+        "draft": 10715,
+        "critique": 9547,
+        "solver": 2336,
+        "form": 4240
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a component of the formed elements in blood?",
+      "ms": {
+        "draft": 6294,
+        "critique": 9618
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which blood group is known as the universal recipient?",
+      "ms": {
+        "draft": 6294,
+        "critique": 10996
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the human heart, which part is responsible for initiating the electrical impulses that regulate the heartbeat?",
+      "ms": {
+        "draft": 10715,
+        "critique": 8989,
+        "solver": 2072,
+        "form": 6628
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the correct order of the path of blood in the circulatory system of a squid?",
+      "ms": {
+        "draft": 6294,
+        "critique": 8773,
+        "solver": 1193
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a characteristic of the human circulatory system?",
+      "ms": {
+        "draft": 6294,
+        "critique": 7739,
+        "solver": 6891,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person with AB blood group can receive blood from which of the following blood groups?",
+      "ms": {
+        "draft": 18045,
+        "critique": 9898
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of lymph in the circulatory system?",
+      "ms": {
+        "draft": 18045,
+        "critique": 10846,
+        "solver": 2098
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the ECG represents the depolarisation of the ventricles?",
+      "ms": {
+        "draft": 6618,
+        "critique": 8325,
+        "solver": 2487,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a person has a blood pressure of 130/85, what does this indicate about their health?",
+      "ms": {
+        "draft": 6618,
+        "critique": 12025
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A patient has a heart rate of 75 beats per minute. How many QRS complexes would be seen in 10 seconds?",
+      "ms": {
+        "draft": 6618,
+        "critique": 9314,
+        "solver": 18356,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the heart is responsible for initiating and maintaining the rhythmic contractile activity of the heart?",
+      "ms": {
+        "draft": 6941,
+        "critique": 10064
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the atrioventricular node (AVN) is damaged, what would be the most immediate effect on the heart's function?",
+      "ms": {
+        "draft": 6941,
+        "critique": 9053,
+        "solver": 2148
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of Rh-positive individuals?",
+      "ms": {
+        "draft": 16924,
+        "critique": 9499,
+        "solver": 3871,
+        "form": 4597
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In which of the following organisms would you expect to find a closed circulatory system?",
+      "ms": {
+        "draft": 16924,
+        "critique": 12229
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main function of blood as described in the passage?",
+      "ms": {
+        "draft": 6089,
+        "critique": 8046,
+        "solver": 1320,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a person has a low count of platelets, what is the most likely consequence?",
+      "ms": {
+        "draft": 5749,
+        "critique": 10760,
+        "solver": 1648,
+        "form": 6275
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person has a heart rate of 72 beats per minute and a stroke volume of 70 mL, what is the cardiac output?",
+      "ms": {
+        "draft": 18045,
+        "critique": 9642,
+        "solver": 2623,
+        "form": 4129
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary function of the semilunar valves in the heart?",
+      "ms": {
+        "draft": 6941,
+        "critique": 10807,
+        "solver": 16292,
+        "form": 3007,
+        "translation": 47820
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of plasma in blood?",
+      "ms": {
+        "draft": 5749,
+        "critique": 10134,
+        "solver": 17847,
+        "form": 0,
+        "translation": 73136
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of red blood cells in the human circulatory system?",
+      "ms": {
+        "draft": 18045,
+        "critique": 7300,
+        "solver": 2214,
+        "form": 4181,
+        "translation": 63076
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of an Rh-ve individual?",
+      "ms": {
+        "draft": 6643,
+        "critique": 8172,
+        "solver": 2149,
+        "form": 0,
+        "translation": 80295
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has blood group AB, which of the following blood groups can they receive?",
+      "ms": {
+        "draft": 5749,
+        "critique": 9389,
+        "solver": 2145,
+        "form": 0,
+        "translation": 68356
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the function of the hepatic portal system in the human circulatory system?",
+      "ms": {
+        "draft": 10715,
+        "critique": 8499,
+        "solver": 2965,
+        "form": 3963,
+        "translation": 70829
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens if an Rh-ve mother carries an Rh+ve foetus in her second pregnancy?",
+      "ms": {
+        "draft": 6643,
+        "critique": 9037,
+        "solver": 3334,
+        "form": 0,
+        "translation": 88751
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the primary function of the systemic circulation?",
+      "ms": {
+        "draft": 6618,
+        "critique": 9686,
+        "solver": 18082,
+        "form": 0,
+        "translation": 63415
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In which part of the circulatory system does the exchange of oxygen and carbon dioxide occur?",
+      "ms": {
+        "draft": 18045,
+        "critique": 7639,
+        "solver": 3452,
+        "form": 5108,
+        "translation": 67311
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a scenario where a person has a blood group O, which of the following is true about their compatibility with other blood groups?",
+      "ms": {
+        "draft": 5749,
+        "critique": 12247,
+        "solver": 2475,
+        "form": 6710,
+        "translation": 91836
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person has a systolic blood pressure of 140 mm Hg and a diastolic blood pressure of 90 mm Hg. What does this indicate about the person's health?",
+      "ms": {
+        "draft": 10715,
+        "critique": 11118,
+        "solver": 2447,
+        "form": 7323,
+        "translation": 90186
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the human heart described as myogenic?",
+      "ms": {
+        "draft": 18045,
+        "critique": 9203,
+        "solver": 2655,
+        "form": 4799,
+        "translation": 64344
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":3,\"stem\":\"Which part of the heart is responsible for initiating and maintaining the rhythmic con"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the role of lymph?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the function of the lymphatic system?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (53 vs 30 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is not a function of leucocytes?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the main advantage of a closed circulatory system over an open one?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a human, which chamber of the heart receives oxygenated blood from the lungs?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'heart'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the function of the tricuspid valve in the heart?",
+      "reason": "options 0 and 1 say the same thing (\"To prevent backflow of blood from the right ventricle to the right atrium\" / \"To prevent backflow of blood from the left ventricle to the left atrium\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A patient's ECG shows a normal P-wave, QRS complex, and T-wave. What does this indicate about the patient's heart activity?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the human circulatory system, which part is responsible for carrying blood away from the heart to the body's tissues?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'heart'"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a component of the formed elements in blood?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which blood group is known as the universal recipient?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the human heart, which part is responsible for initiating the electrical impulses that regulate the heartbeat?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'heart'"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the correct order of the path of blood in the circulatory system of a squid?",
+      "reason": "the solver picked option 2 3 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a characteristic of the human circulatory system?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A person with AB blood group can receive blood from which of the following blood groups?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main function of lymph in the circulatory system?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which part of the ECG represents the depolarisation of the ventricles?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, no reason needed for distractor reasons list…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a person has a blood pressure of 130/85, what does this indicate about their health?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A patient has a heart rate of 75 beats per minute. How many QRS complexes would be seen in 10 seconds?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); ARITHMETIC MISMATCH — checkExpr \"75/6\" = 12.5, but the key says 12"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the heart is responsible for initiating and maintaining the rhythmic contractile activity of the heart?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the atrioventricular node (AVN) is damaged, what would be the most immediate effect on the heart's function?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of Rh-positive individuals?",
+      "reason": "options 0 and 1 say the same thing (\"They have no Rh antigens on their RBCs\" / \"They have Rh antigens on their RBCs\"); distractor 2's reason is not a one-line misconception (\"correct answer…\"); distractor 3's reason is not a one-line misconception (\"misunderstands the mechanism of antibody production in Rh in…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In which of the following organisms would you expect to find a closed circulatory system?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main function of blood as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Focuses on a secondary function of blood not mentioned in th…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a person has a low count of platelets, what is the most likely consequence?",
+      "reason": "near-duplicate of served question cmvhmentw09j2gpfh1hhdj8aw (cosine 0.915 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a person has a heart rate of 72 beats per minute and a stroke volume of 70 mL, what is the cardiac output?",
+      "reason": "near-duplicate of served question cmsmkeeaf00d2y2o5zp3nujeh (cosine 0.901 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

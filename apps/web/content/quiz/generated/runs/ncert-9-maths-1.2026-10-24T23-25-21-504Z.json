@@ -1,0 +1,514 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T23:25:21.504Z",
+  "finishedAt": "2026-10-24T23:30:04.832Z",
+  "seconds": 283,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari PART-II",
+    "bookCode": "iemh2",
+    "document": "ncert/9/mathematics/iemh201.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Propositions and their Converses",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n22. Given:-AB II CD II EF\nTo prove:- ா஽ ஺ா = ஻ி ி஼\nConstruction:- Join BD to\nintersect EF at G.\nProof:- in ∆ ABD\nEG II AB ( EF II AB )\nா஽ ஺ா = ஻ீீ ஽ ( by BPT )___________(1)\nIn ∆𝐷𝐵𝐶\nGF II CD ( EF II CD )\n஻ி ி஼ = ஻ீீ ஽ ( by BPT )___________(2)\n𝑓𝑟𝑜𝑚 (1) & (2)\nா஽ ஺ா = ஻ி ி஼\nGiven AD=6cm, DB=9cm\nAE=8cm, EC=12cm, ∠ADE=48\nTo find:- ∠ABC=?\nProof:\nIn ∆𝐴𝐵𝐶\n஽஻ ஺஽ = = ଺ ଽ ଶ ଷ ……(1)\n஺ா ா஼ = ଵଶ ଼ = ଶ ଷ ……..(2)\nFrom (1) & (2)\n஽஻ ஺஽ = ஺ா ா஼\nDE II BC (Converse of BPT)\n∠ADE=∠ABC (Corresponding angles)\n⇒ ∠ABC=48˚\nOR",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n29. A circle touches all the four sides of quadrilateral ABCD. Prove that AB + CD = AD + BC.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n22. In the figure, altitudes AD and CE of Δ ABC intersect 2\neach other at the point P. Show that:\n(i) ΔABD ~ ΔCBE\n(ii) ΔPDC ~ ΔBEC\n[OR]\nBF BE\nIn the figure, DE || AC and DF || AE. Prove that FE = EC",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n7. (a) ∆𝑃𝑄𝑅~ ∆ 𝐶𝐴𝐵"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 126233,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 17512,
+      "completionTokens": 7751
+    },
+    "critique": {
+      "calls": 28,
+      "ms": 172256,
+      "in": 23,
+      "out": 21,
+      "rejects": 2,
+      "promptTokens": 13992,
+      "completionTokens": 4951
+    },
+    "solver": {
+      "calls": 134,
+      "ms": 57140,
+      "in": 21,
+      "out": 16,
+      "rejects": 5,
+      "promptTokens": 26507,
+      "completionTokens": 1336
+    },
+    "form": {
+      "calls": 5,
+      "ms": 31987,
+      "in": 16,
+      "out": 4,
+      "rejects": 12,
+      "promptTokens": 3249,
+      "completionTokens": 961
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 4102,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 144808,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9736,
+      "completionTokens": 4903
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In the example where a number has an odd number of factors, which of the following is true?",
+      "ms": {
+        "draft": 3830,
+        "critique": 5882,
+        "solver": 1276,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the example of the Baudhāyana–Pythagoras theorem, what can be concluded about the converse of the theorem?",
+      "ms": {
+        "draft": 3830,
+        "critique": 6060,
+        "solver": 1076,
+        "form": 2905
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a counterexample?",
+      "ms": {
+        "draft": 3830,
+        "critique": 6464,
+        "solver": 1275,
+        "form": 2033
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct example of a proposition and its converse where the proposition is true but the converse is false?",
+      "ms": {
+        "draft": 7174,
+        "critique": 7573,
+        "solver": 1534
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a triangle ABC, if AB = AC and the angle bisectors of B and C meet at the incentre I, and are extended to meet the opposite sides at E and F respectively, which of the following is true?",
+      "ms": {
+        "draft": 7174,
+        "critique": 5854,
+        "solver": 1608,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the figure, DE is parallel to AC and DF is parallel to AE. If BF = 8 cm, FE = 4 cm, and EC = 12 cm, what is the length of BD?",
+      "ms": {
+        "draft": 7174,
+        "critique": 7811,
+        "solver": 1237,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is divisible by 8, then it is divisible by both 2 and 4. Is it enough to check if a number is divisible by 2 and 4 to confirm it is divisible by 8? Why or why not?",
+      "ms": {
+        "draft": 7174,
+        "critique": 7232,
+        "solver": 1709,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is a perfect square, then it is positive. Which of the following is a valid counterexample to the converse of this proposition?",
+      "ms": {
+        "draft": 7174,
+        "critique": 6026,
+        "solver": 9471
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a quadrilateral ABCD, if the diagonals are equal, which of the following quadrilaterals must it be?",
+      "ms": {
+        "draft": 7174,
+        "critique": 5925,
+        "solver": 1625,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two lines are parallel, then the corresponding angles formed by a transversal are equal. What can be said about the converse of this proposition?",
+      "ms": {
+        "draft": 4659,
+        "critique": 6454
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If AB = AC, then IE = IF in a triangle ABC, where I is the incentre and E and F are points where the angle bisectors meet the opposite sides. What can be said about the converse of this proposition?",
+      "ms": {
+        "draft": 4659,
+        "critique": 6992,
+        "solver": 1808
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle, if the bisectors of angles at B and C meet at the incentre I, and the bisectors are extended to meet the opposite sides at E and F, then IE = IF if AB = AC. What can be said about the converse if IE = IF?",
+      "ms": {
+        "draft": 4659,
+        "critique": 6888,
+        "solver": 1453
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a quadrilateral is a square, then all its angles are equal. What can be said about the converse of this proposition?",
+      "ms": {
+        "draft": 4659,
+        "critique": 6209,
+        "solver": 10554,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a and b are perfect squares, then ab is a perfect square. What can be said about the converse of this proposition?",
+      "ms": {
+        "draft": 4659,
+        "critique": 7172
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, the example of a proposition and its converse is given as: 'If a number is a multiple of 6, then it is a multiple of 3' and 'If a number is a multiple of 3, then it is a multiple of 6.' Which of these is the converse of the first proposition?",
+      "ms": {
+        "draft": 5376,
+        "critique": 6237,
+        "solver": 1678,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the passage, it is stated that 'If two angles of a triangle are equal, then the sides opposite the equal angles have equal lengths.' Which of the following scenarios would serve as a counterexample to this statement?",
+      "ms": {
+        "draft": 5376,
+        "critique": 6005,
+        "solver": 1628,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two angles of a triangle are equal, then the sides opposite the equal angles have equal lengths. What is this statement called?",
+      "ms": {
+        "draft": 5376,
+        "critique": 6556,
+        "solver": 10023,
+        "form": 4744
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, it is said that a proposition can be true but not its converse. Which of the following examples best illustrates this idea?",
+      "ms": {
+        "draft": 5376,
+        "critique": 8005,
+        "solver": 1193,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, it is stated that a number has an odd number of factors if and only if it is a perfect square. Which of the following statements is logically equivalent to this assertion?",
+      "ms": {
+        "draft": 5376,
+        "critique": 7333,
+        "solver": 8824
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is a proposition?",
+      "ms": {
+        "draft": 3830,
+        "critique": 6329,
+        "solver": 1498,
+        "form": 3868,
+        "translation": 40922
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the example where a number is a multiple of 6, which of the following is true?",
+      "ms": {
+        "draft": 3830,
+        "critique": 6976,
+        "solver": 11009,
+        "form": 0,
+        "translation": 37904
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the example where two triangles have the same area, which of the following is true?",
+      "ms": {
+        "draft": 3830,
+        "critique": 7093,
+        "solver": 1241,
+        "form": 0,
+        "translation": 44154
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If x = y, then a + x = a + y. What can be said about the converse of this proposition?",
+      "ms": {
+        "draft": 4659,
+        "critique": 5793,
+        "solver": 1322,
+        "form": 0,
+        "translation": 18365
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the example where a number has an odd number of factors, which of the following is true?",
+      "reason": "options 0 and 1 say the same thing (\"The number is not a perfect square.\" / \"The number is a perfect square.\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the example of the Baudhāyana–Pythagoras theorem, what can be concluded about the converse of the theorem?",
+      "reason": "options 0 and 1 say the same thing (\"The converse is not always true.\" / \"The converse is always true.\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a counterexample?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the definition of a counterexample in the con…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a correct example of a proposition and its converse where the proposition is true but the converse is false?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a triangle ABC, if AB = AC and the angle bisectors of B and C meet at the incentre I, and are extended to meet the opposite sides at E and F respectively, which of the following is true?",
+      "reason": "options 0 and 1 are the same (\"IE = IF\"); options 0 and 2 are the same (\"IE = IF\"); options 1 and 2 are the same (\"IE > IF\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the figure, DE is parallel to AC and DF is parallel to AE. If BF = 8 cm, FE = 4 cm, and EC = 12 cm, what is the length of BD?",
+      "reason": "checkExpr \"6\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a number is divisible by 8, then it is divisible by both 2 and 4. Is it enough to check if a number is divisible by 2 and 4 to confirm it is divisible by 8? Why or why not?",
+      "reason": "the key is far longer than every distractor (73 vs 45 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a number is a perfect square, then it is positive. Which of the following is a valid counterexample to the converse of this proposition?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a quadrilateral ABCD, if the diagonals are equal, which of the following quadrilaterals must it be?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "In the passage, the Baudhāyana–Pythagoras theorem is stated as: 'If the triangle is right-angled, then the sum of the squares of the two shorter sides is equal to the square of the hypotenuse.' What is the converse of this theorem?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If two lines are parallel, then the corresponding angles formed by a transversal are equal. What can be said about the converse of this proposition?",
+      "reason": "the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If AB = AC, then IE = IF in a triangle ABC, where I is the incentre and E and F are points where the angle bisectors meet the opposite sides. What can be said about the converse of this proposition?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a triangle, if the bisectors of angles at B and C meet at the incentre I, and the bisectors are extended to meet the opposite sides at E and F, then IE = IF if AB = AC. What can be said about the converse if IE = IF?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a quadrilateral is a square, then all its angles are equal. What can be said about the converse of this proposition?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a and b are perfect squares, then ab is a perfect square. What can be said about the converse of this proposition?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, the example of a proposition and its converse is given as: 'If a number is a multiple of 6, then it is a multiple of 3' and 'If a number is a multiple of 3, then it is a multiple of 6.' Which of these is the converse of the first proposition?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"The first proposition is the converse of the second\" / \"The second proposition is the converse of the first\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the passage, it is stated that 'If two angles of a triangle are equal, then the sides opposite the equal angles have equal lengths.' Which of the following scenarios would serve as a counterexample to this statement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"A triangle with two angles equal and two sides of equal length\" / \"A triangle with all angles equal and all sides of equal length\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If two angles of a triangle are equal, then the sides opposite the equal angles have equal lengths. What is this statement called?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the passage, it is said that a proposition can be true but not its converse. Which of the following examples best illustrates this idea?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"If a number is a multiple of 6, then it is a multiple of 3. If a number is a multiple of 3, then it is a multiple of 6.\" / \"If a number is a multiple of 3, then it is a multiple of 6. If a number is a multiple of 6, then it is a multiple of 3.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the passage, it is stated that a number has an odd number of factors if and only if it is a perfect square. Which of the following statements is logically equivalent to this assertion?",
+      "reason": "after redrafting distractors 0, 1, 2: more than one defensible answer, or none; the solution's working is not sound"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

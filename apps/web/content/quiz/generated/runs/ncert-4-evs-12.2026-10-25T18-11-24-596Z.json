@@ -1,0 +1,369 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T18:11:24.596Z",
+  "finishedAt": "2026-10-25T18:14:53.008Z",
+  "seconds": 208,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap112.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 12 — Changing Times",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 55309,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 13650,
+      "completionTokens": 2976
+    },
+    "critique": {
+      "calls": 23,
+      "ms": 152543,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 9287,
+      "completionTokens": 3903
+    },
+    "solver": {
+      "calls": 106,
+      "ms": 62225,
+      "in": 13,
+      "out": 7,
+      "rejects": 6,
+      "promptTokens": 16953,
+      "completionTokens": 1130
+    },
+    "form": {
+      "calls": 6,
+      "ms": 13292,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 1404,
+      "completionTokens": 372
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 3689,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 169804,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10548,
+      "completionTokens": 5144
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What was the name of the village where Chetandas' family was given land to build their house?",
+      "ms": {
+        "draft": 4153,
+        "critique": 7353
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Chetandas' family use mud to coat the floor of their house?",
+      "ms": {
+        "draft": 4153,
+        "critique": 8185
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student's family used cement and iron for their house, which time period is this most likely referring to?",
+      "ms": {
+        "draft": 4153,
+        "critique": 6986,
+        "solver": 1425
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of these materials is NOT used for making a building?",
+      "ms": {
+        "draft": 2814,
+        "critique": 6468,
+        "solver": 9551
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a construction site uses 5 trucks of sand and each truck costs 1000 rupees, what is the total cost of the sand?",
+      "ms": {
+        "draft": 3336,
+        "critique": 7786
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of taking children to a construction site according to the passage?",
+      "ms": {
+        "draft": 3336,
+        "critique": 7393,
+        "solver": 2003
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the name of the village where Chetandas and his family moved after leaving their old house?",
+      "ms": {
+        "draft": 3525,
+        "critique": 7024,
+        "solver": 1970
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main activity suggested for students to understand different building materials?",
+      "ms": {
+        "draft": 3336,
+        "critique": 8248,
+        "solver": 11836
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Chetandas and his family use mud to coat the floor of their house?",
+      "ms": {
+        "draft": 3525,
+        "critique": 7758,
+        "solver": 1521
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main reason for Chetandas and his family to move to Sohna village?",
+      "ms": {
+        "draft": 3525,
+        "critique": 8520,
+        "solver": 2089,
+        "form": 2593
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the chapter in the book?",
+      "ms": {
+        "draft": 3336,
+        "critique": 7060,
+        "solver": 12568,
+        "form": 2272
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the chapter in the book?",
+      "ms": {
+        "draft": 2814,
+        "critique": 6481,
+        "solver": 12734,
+        "form": 3183,
+        "translation": 26004
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What activity is suggested for students to understand construction work?",
+      "ms": {
+        "draft": 2814,
+        "critique": 6254,
+        "solver": 13794,
+        "form": 1706,
+        "translation": 36140
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a family today uses a gas stove to cook instead of a mud chulha, what change does this indicate in their house?",
+      "ms": {
+        "draft": 3525,
+        "critique": 4984,
+        "solver": 612,
+        "form": 1141,
+        "translation": 27846
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child visits a construction site, what might they find?",
+      "ms": {
+        "draft": 2814,
+        "critique": 7209,
+        "solver": 8603,
+        "form": 0,
+        "translation": 24120
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What can be inferred about the changes in Chetandas' house from the time he was a child to when his son got married?",
+      "ms": {
+        "draft": 4153,
+        "critique": 6566,
+        "solver": 17239,
+        "form": 3177,
+        "translation": 51481
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the name of the village where Chetandas' family was given land to build their house?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Chetandas' family use mud to coat the floor of their house?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student's family used cement and iron for their house, which time period is this most likely referring to?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of these materials is NOT used for making a building?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 0 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a construction site uses 5 trucks of sand and each truck costs 1000 rupees, what is the total cost of the sand?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the purpose of taking children to a construction site according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What was the name of the village where Chetandas and his family moved after leaving their old house?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the main activity suggested for students to understand different building materials?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did Chetandas and his family use mud to coat the floor of their house?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What was the main reason for Chetandas and his family to move to Sohna village?",
+      "reason": "the key is far longer than every distractor (48 vs 25 characters)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the chapter in the book?",
+      "reason": "near-duplicate of batch item \"What is the name of the chapter in the book?…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

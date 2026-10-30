@@ -1,0 +1,922 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T00:00:58.242Z",
+  "finishedAt": "2026-10-30T00:13:13.385Z",
+  "seconds": 735,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu111.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Keeping Time with the Skies",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n11. C. Posture and balance.",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n8. D. A is false but R is true.",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n8. (b) II,III"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 266637,
+      "in": 48,
+      "out": 46,
+      "rejects": 3,
+      "promptTokens": 41544,
+      "completionTokens": 13828
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 339838,
+      "in": 46,
+      "out": 41,
+      "rejects": 5,
+      "promptTokens": 23248,
+      "completionTokens": 8493
+    },
+    "solver": {
+      "calls": 223,
+      "ms": 105229,
+      "in": 41,
+      "out": 29,
+      "rejects": 12,
+      "promptTokens": 33784,
+      "completionTokens": 1872
+    },
+    "form": {
+      "calls": 15,
+      "ms": 89843,
+      "in": 29,
+      "out": 7,
+      "rejects": 22,
+      "promptTokens": 14883,
+      "completionTokens": 2206
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 109,
+      "ms": 18306,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 230845,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 12845,
+      "completionTokens": 6631
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a person in Ahmedabad notices the Moon during the day, which of the following is most likely true?",
+      "ms": {
+        "draft": 7883,
+        "critique": 7367,
+        "solver": 2004
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the waxing and waning periods of the Moon?",
+      "ms": {
+        "draft": 7883,
+        "critique": 7887,
+        "solver": 2594,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that the Moon's bright portion increases for about a week and then decreases for another week. What does this imply about the Moon's orbit around Earth?",
+      "ms": {
+        "draft": 7883,
+        "critique": 5769,
+        "solver": 1429,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student observes the Moon at sunrise and finds that it is getting closer to the Sun in the sky, what phase of the Moon is it most likely in?",
+      "ms": {
+        "draft": 7883,
+        "critique": 6913,
+        "solver": 2253
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What causes the Moon's changing shape as observed from Earth?",
+      "ms": {
+        "draft": 7883,
+        "critique": 6816,
+        "solver": 1625,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why is the full Moon visible at night and not during the day?",
+      "ms": {
+        "draft": 7883,
+        "critique": 7736,
+        "solver": 1306,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does the illuminated portion of the Moon seen from Earth decrease when it appears closer to the Sun?",
+      "ms": {
+        "draft": 8242,
+        "critique": 7113,
+        "solver": 2066,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 11.5, which position of the Moon would show the maximum illuminated portion visible from Earth?",
+      "ms": {
+        "draft": 8242,
+        "critique": 8289,
+        "solver": 1501
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student observes the Moon on a day when it appears closer to the Sun, what phase of the Moon would they most likely see?",
+      "ms": {
+        "draft": 8242,
+        "critique": 6728,
+        "solver": 1768,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student observes the Moon on a day when it is not visible at all, which of the following is the most likely explanation?",
+      "ms": {
+        "draft": 8242,
+        "critique": 8037,
+        "solver": 1512,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the Moon appears closer to the Sun in the sky, and the time of moonrise is later each day, what does this suggest about the Moon's movement around the Earth?",
+      "ms": {
+        "draft": 8242,
+        "critique": 7893,
+        "solver": 11778,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What causes the different phases of the Moon?",
+      "ms": {
+        "draft": 8242,
+        "critique": 8437,
+        "solver": 2054,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the time taken by the Sun to go from its highest position in the sky on one day to the highest position in the sky the next day?",
+      "ms": {
+        "draft": 5155,
+        "critique": 7261,
+        "solver": 1330
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student observes the shortest shadow at 12:19 on 24 March 2025, what could be the most likely reason for the variation in the time of the shortest shadow from the previous day?",
+      "ms": {
+        "draft": 5155,
+        "critique": 9059,
+        "solver": 1568
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the Earth rotates once in 24 hours, how long will it take for the Moon to return to the same position in the sky?",
+      "ms": {
+        "draft": 5155,
+        "critique": 6903,
+        "solver": 14801,
+        "form": 4318
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Gregorian calendar based on the tropical year and not on the sidereal year?",
+      "ms": {
+        "draft": 5155,
+        "critique": 7690
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the shortest shadow of a vertical stick is observed at 12:20 on 22 March 2025, when will it be observed again on 23 March 2025?",
+      "ms": {
+        "draft": 5155,
+        "critique": 8404,
+        "solver": 13441,
+        "form": 3729
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of calendar uses both the Moon's phases and the solar year to keep track of time?",
+      "ms": {
+        "draft": 4921,
+        "critique": 6937
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a lunar calendar has 354 days and a solar year has 365 days, how many days would be missing after 3 years?",
+      "ms": {
+        "draft": 4921,
+        "critique": 8331
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the Indian National Calendar?",
+      "ms": {
+        "draft": 4921,
+        "critique": 6469,
+        "solver": 1559
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a luni-solar calendar adds an intercalary month every 2–3 years to account for the difference between the lunar and solar year, how many extra days would be added in 6 years?",
+      "ms": {
+        "draft": 4921,
+        "critique": 7043
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do festivals based on lunar calendars occur on different dates each year in the Gregorian calendar?",
+      "ms": {
+        "draft": 4921,
+        "critique": 6388
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 11.12, which of the following best explains why the crescent Moon always faces the Sun?",
+      "ms": {
+        "draft": 5270,
+        "critique": 5385,
+        "solver": 1523,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct phase of the Moon when it is not visible from Earth?",
+      "ms": {
+        "draft": 5270,
+        "critique": 5646,
+        "solver": 2154,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the Moon is seen in the sky from sunset to sunrise, which phase is it in?",
+      "ms": {
+        "draft": 5270,
+        "critique": 5911,
+        "solver": 3033,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a crescent Moon is rising in the East while the Sun is setting, and a gibbous Moon is seen in the East during the afternoon, which of the two is more likely to be true?",
+      "ms": {
+        "draft": 5270,
+        "critique": 7174,
+        "solver": 1646
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the Moon is getting farther away and its revolution is slowing down, how will this affect the need for an intercalary month in a luni-solar calendar?",
+      "ms": {
+        "draft": 5270,
+        "critique": 6791,
+        "solver": 1950,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of launching artificial satellites?",
+      "ms": {
+        "draft": 5270,
+        "critique": 5904,
+        "solver": 2484,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a festival is based on the lunar phase at sunrise, and the sunrise time is earlier in the east, what might happen in western India?",
+      "ms": {
+        "draft": 3520,
+        "critique": 7369,
+        "solver": 1134
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main purpose of the Rashtriya panchang?",
+      "ms": {
+        "draft": 3520,
+        "critique": 8289,
+        "solver": 2229,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a festival occurs on the new Moon of Kartika in one year, what can be expected about its date in the next year?",
+      "ms": {
+        "draft": 4524,
+        "critique": 7695,
+        "solver": 1828
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main purpose of the Indian National Calendar?",
+      "ms": {
+        "draft": 4524,
+        "critique": 7629,
+        "solver": 1539,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the reason for adding an extra month in some calendars?",
+      "ms": {
+        "draft": 4524,
+        "critique": 8117,
+        "solver": 1657,
+        "form": 4461
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a luni-solar calendar adds an intercalary month every few years, what effect will this have on the dates of festivals based on this calendar?",
+      "ms": {
+        "draft": 4524,
+        "critique": 8038,
+        "solver": 1608
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that the Indian National Calendar is based on the Surya Siddhanta. What does this imply about the calendar?",
+      "ms": {
+        "draft": 4524,
+        "critique": 7594,
+        "solver": 2085
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what causes the Sun to appear to rise in the east and set in the west every day?",
+      "ms": {
+        "draft": 4430,
+        "critique": 9030,
+        "solver": 1549,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If today the Moon is overhead at 12:20 PM, when will it be overhead again, according to the passage?",
+      "ms": {
+        "draft": 4430,
+        "critique": 7471,
+        "solver": 1569
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is the Gregorian calendar more accurate than a lunar calendar in keeping track of seasons?",
+      "ms": {
+        "draft": 4430,
+        "critique": 7446,
+        "solver": 1878,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why does the Moon appear different on different days?",
+      "ms": {
+        "draft": 4421,
+        "critique": 6976,
+        "solver": 921,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a festival is based on the lunar phase at sunrise, what could happen in different regions of India?",
+      "ms": {
+        "draft": 3520,
+        "critique": 5344,
+        "solver": 1232,
+        "form": 4236
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a festival that follows a solar sidereal calendar?",
+      "ms": {
+        "draft": 3520,
+        "critique": 7628,
+        "solver": 2476,
+        "form": 3198
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which figure in the chapter shows the crescent Moon facing towards the Sun?",
+      "ms": {
+        "draft": 65800,
+        "critique": 3540,
+        "solver": 744,
+        "form": 1062,
+        "translation": 44258
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a reason for the Sun rising in different directions during different times of the year?",
+      "ms": {
+        "draft": 4524,
+        "critique": 7171,
+        "solver": 1232,
+        "form": 5440,
+        "translation": 44918
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What causes the dates of festivals based on the sidereal calendar to shift over time?",
+      "ms": {
+        "draft": 3520,
+        "critique": 6412,
+        "solver": 2034,
+        "form": 4569,
+        "translation": 52479
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the Moon is in a position where its illuminated side faces away from the Earth, what phase of the Moon would it be?",
+      "ms": {
+        "draft": 4421,
+        "critique": 6409,
+        "solver": 606,
+        "form": 0,
+        "translation": 35457
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do festivals based on the sidereal calendar gradually move away from the solstices and equinoxes?",
+      "ms": {
+        "draft": 3520,
+        "critique": 7296,
+        "solver": 2881,
+        "form": 2867,
+        "translation": 48983
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following is a reason for the shift in the dates"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person in Ahmedabad notices the Moon during the day, which of the following is most likely true?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the waxing and waning periods of the Moon?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"The waxing period is when the Moon's bright portion decreases\" / \"The waning period is when the Moon's bright portion decreases\"); options 2 and 3 say the same thing (\"The waning period is when the Moon's bright portion increases\" / \"The waning period is when the Moon's bright portion decreases\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that the Moon's bright portion increases for about a week and then decreases for another week. What does this imply about the Moon's orbit around Earth?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a student observes the Moon at sunrise and finds that it is getting closer to the Sun in the sky, what phase of the Moon is it most likely in?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What causes the Moon's changing shape as observed from Earth?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'moon'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why is the full Moon visible at night and not during the day?",
+      "reason": "the key is far longer than every distractor (94 vs 55 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why does the illuminated portion of the Moon seen from Earth decrease when it appears closer to the Sun?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given here (this is the answer …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 11.5, which position of the Moon would show the maximum illuminated portion visible from Earth?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student observes the Moon on a day when it appears closer to the Sun, what phase of the Moon would they most likely see?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels Sun, Earth, Moon, sunEarthMoon"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student observes the Moon on a day when it is not visible at all, which of the following is the most likely explanation?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels Sun, Earth, Moon"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the Moon appears closer to the Sun in the sky, and the time of moonrise is later each day, what does this suggest about the Moon's movement around the Earth?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels Sun, Earth, Moon"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What causes the different phases of the Moon?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the time taken by the Sun to go from its highest position in the sky on one day to the highest position in the sky the next day?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a student observes the shortest shadow at 12:19 on 24 March 2025, what could be the most likely reason for the variation in the time of the shortest shadow from the previous day?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the Earth rotates once in 24 hours, how long will it take for the Moon to return to the same position in the sky?",
+      "reason": "options 1 and 2 are the same (\"24 hours 50 minutes\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the Gregorian calendar based on the tropical year and not on the sidereal year?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the shortest shadow of a vertical stick is observed at 12:20 on 22 March 2025, when will it be observed again on 23 March 2025?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Assumes the solar day is slightly shorter than 24 hours, whi…\"); distractor 3's reason is not a one-line misconception (\"Assumes the solar day is slightly longer than 24 hours, whic…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of calendar uses both the Moon's phases and the solar year to keep track of time?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a lunar calendar has 354 days and a solar year has 365 days, how many days would be missing after 3 years?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the Indian National Calendar?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a luni-solar calendar adds an intercalary month every 2–3 years to account for the difference between the lunar and solar year, how many extra days would be added in 6 years?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why do festivals based on lunar calendars occur on different dates each year in the Gregorian calendar?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the reason for the difference in the length of the solar day and the lunar month?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "If a student observes the shortest shadow of a stick at 12:19 PM on 24 March 2025, and the next day the shortest shadow is at 12:20 PM, what does this suggest about the solar day?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 11.12, which of the following best explains why the crescent Moon always faces the Sun?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes the Moon's rotation being locked to Eart…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the correct phase of the Moon when it is not visible from Earth?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Mistakenly believes the Crescent Moon is not visible in any …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the Moon is seen in the sky from sunset to sunrise, which phase is it in?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Mistakenly believes the Crescent Moon is visible all night, …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a crescent Moon is rising in the East while the Sun is setting, and a gibbous Moon is seen in the East during the afternoon, which of the two is more likely to be true?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the Moon is getting farther away and its revolution is slowing down, how will this affect the need for an intercalary month in a luni-solar calendar?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Believes the need for an intercalary month is unaffected by …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of launching artificial satellites?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the role of satellites in tracking the Sun, w…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a festival is based on the lunar phase at sunrise, and the sunrise time is earlier in the east, what might happen in western India?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main purpose of the Rashtriya panchang?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a festival occurs on the new Moon of Kartika in one year, what can be expected about its date in the next year?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the main purpose of the Indian National Calendar?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the reason for adding an extra month in some calendars?",
+      "reason": "options 0 and 3 say the same thing (\"To match the number of days in the lunar month with the solar year\" / \"To match the number of days in the solar month with the lunar year\"); options 1 and 2 say the same thing (\"To make the lunar month longer than the solar year\" / \"To make the solar year shorter than the lunar month\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a luni-solar calendar adds an intercalary month every few years, what effect will this have on the dates of festivals based on this calendar?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage mentions that the Indian National Calendar is based on the Surya Siddhanta. What does this imply about the calendar?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what causes the Sun to appear to rise in the east and set in the west every day?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Correct answer, but the other options are incorrect…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If today the Moon is overhead at 12:20 PM, when will it be overhead again, according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is the Gregorian calendar more accurate than a lunar calendar in keeping track of seasons?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Why does the Moon appear different on different days?",
+      "reason": "the key is far longer than every distractor (67 vs 38 characters)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a festival is based on the lunar phase at sunrise, what could happen in different regions of India?",
+      "reason": "near-duplicate of served question cmvgczn6503gcgpfhu4towu0z (cosine 0.916 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a festival that follows a solar sidereal calendar?",
+      "reason": "near-duplicate of served question cmvr0m4wj0cnpgp21olwbiuly (cosine 0.912 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

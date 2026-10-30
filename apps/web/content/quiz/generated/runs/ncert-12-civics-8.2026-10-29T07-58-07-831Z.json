@@ -1,0 +1,776 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T07:58:07.831Z",
+  "finishedAt": "2026-10-29T08:15:35.317Z",
+  "seconds": 1047,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Politics in India Since Independence",
+    "bookCode": "leps2",
+    "document": "ncert/12/political-science/leps208.pdf",
+    "classLevel": 12,
+    "subject": "Political Science",
+    "chapter": "Chapter 8 — In this chapter…",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, sample question paper, 2023-24]\nSECTION-D (12 MARKS)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSECTION – B\n(12 Marks)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSECTION – A\n(12 Marks)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSection – D\n(12 Marks)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 229006,
+      "in": 40,
+      "out": 38,
+      "rejects": 4,
+      "promptTokens": 39214,
+      "completionTokens": 10687
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 396434,
+      "in": 38,
+      "out": 30,
+      "rejects": 8,
+      "promptTokens": 23431,
+      "completionTokens": 8271
+    },
+    "solver": {
+      "calls": 218,
+      "ms": 141661,
+      "in": 30,
+      "out": 26,
+      "rejects": 4,
+      "promptTokens": 40640,
+      "completionTokens": 2372
+    },
+    "form": {
+      "calls": 13,
+      "ms": 50915,
+      "in": 26,
+      "out": 7,
+      "rejects": 19,
+      "promptTokens": 3526,
+      "completionTokens": 996
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 3,
+      "ms": 554,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 467247,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 19159,
+      "completionTokens": 10402
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what was the significance of the 1989 elections in Indian politics?",
+      "ms": {
+        "draft": 3971,
+        "critique": 6697,
+        "solver": 21161,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what was the role of the Congress party after the 1989 elections?",
+      "ms": {
+        "draft": 3971,
+        "critique": 8896,
+        "solver": 1740,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the political landscape in India after 1989?",
+      "ms": {
+        "draft": 9758,
+        "critique": 8618,
+        "solver": 1903,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following statements best reflects the role of the Janata Party in Indian politics?",
+      "ms": {
+        "draft": 9758,
+        "critique": 9911
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the role of regional parties in Indian politics since 1989?",
+      "ms": {
+        "draft": 9758,
+        "critique": 8705,
+        "solver": 16127,
+        "form": 3658
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following political developments is highlighted as a long-term trend in the passage?",
+      "ms": {
+        "draft": 9758,
+        "critique": 10739,
+        "solver": 18911,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main ideology of the Bharatiya Janata Party (BJP) when it was formed in 1980?",
+      "ms": {
+        "draft": 15584,
+        "critique": 10155,
+        "solver": 1653
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the term 'Congress system'?",
+      "ms": {
+        "draft": 9758,
+        "critique": 12860,
+        "solver": 19077,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains the role of the 'Other Backward Classes' (OBC) in Indian politics?",
+      "ms": {
+        "draft": 9758,
+        "critique": 9123,
+        "solver": 20604,
+        "form": 4625
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How did the BJP respond to the government's decision to pass the Muslim Women (Protection of Rights on Divorce) Act, 1986?",
+      "ms": {
+        "draft": 15584,
+        "critique": 9538,
+        "solver": 1207,
+        "form": 4159
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what does the Supreme Court's decision on the Ayodhya issue reveal about the Indian Constitution?",
+      "ms": {
+        "draft": 15584,
+        "critique": 8223,
+        "solver": 1647,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage suggest about the role of the judiciary in resolving sensitive issues in India?",
+      "ms": {
+        "draft": 15584,
+        "critique": 7928,
+        "solver": 2002,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which year did the Congress-led UPA government complete its term despite the withdrawal of support from the Left Front?",
+      "ms": {
+        "draft": 8417,
+        "critique": 8566,
+        "solver": 2250
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which party won a clear majority in the 16th Lok Sabha elections?",
+      "ms": {
+        "draft": 8417,
+        "critique": 9914,
+        "solver": 1555,
+        "form": 4706
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason for the shift in focus from ideological differences to power-sharing arrangements in Indian politics?",
+      "ms": {
+        "draft": 8417,
+        "critique": 8053,
+        "solver": 2658,
+        "form": 3250
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which political party emerged as the largest party in the 17th Lok Sabha according to the passage?",
+      "ms": {
+        "draft": 5804,
+        "critique": 5693,
+        "solver": 757,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the current party system in India, according to the passage?",
+      "ms": {
+        "draft": 15006,
+        "critique": 5912
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is one reason why the Congress party continues to influence Indian politics despite its decline?",
+      "ms": {
+        "draft": 15006,
+        "critique": 6338
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main issue discussed in the question about 'coalition politics' in the passage?",
+      "ms": {
+        "draft": 15006,
+        "critique": 8773,
+        "solver": 1872
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main purpose of the chapter on 'Politics in India Since Independence'?",
+      "ms": {
+        "draft": 15006,
+        "critique": 10253
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what does the author mean when they say that political parties must 'articulate and aggregate a variety of interests'?",
+      "ms": {
+        "draft": 15006,
+        "critique": 9275,
+        "solver": 15196,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which year did the Congress-led UPA government complete its term despite the withdrawal of support from the Left Front?",
+      "ms": {
+        "draft": 4695,
+        "critique": 9533
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what was the main reason for the shift in political focus from ideology to pragmatic considerations?",
+      "ms": {
+        "draft": 4695,
+        "critique": 9577
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which party gained a single-party majority in the 2014 Lok Sabha elections?",
+      "ms": {
+        "draft": 4695,
+        "critique": 8259,
+        "solver": 14341,
+        "form": 4754
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following can be inferred about the future of democracy in India?",
+      "ms": {
+        "draft": 4695,
+        "critique": 7470,
+        "solver": 1874,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of state-level parties in Indian politics?",
+      "ms": {
+        "draft": 4695,
+        "critique": 10658,
+        "solver": 16674,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the main reason for the rise of politics based on religious identity in India after the Emergency?",
+      "ms": {
+        "draft": 21582,
+        "critique": 8784
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the outcome of the Ayodhya issue after it was resolved through legal procedures?",
+      "ms": {
+        "draft": 21582,
+        "critique": 8361
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which commission was set up to investigate the conditions of backward classes in India?",
+      "ms": {
+        "draft": 5776,
+        "critique": 6547,
+        "solver": 1409,
+        "form": 4428
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT mentioned as a factor that influenced Indian politics in the 1990s?",
+      "ms": {
+        "draft": 6887,
+        "critique": 9333,
+        "solver": 1166
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what does the resolution of the Ayodhya issue reflect about Indian democracy?",
+      "ms": {
+        "draft": 21582,
+        "critique": 7557,
+        "solver": 11605,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a factor that influenced Indian politics in the 1990s?",
+      "ms": {
+        "draft": 3971,
+        "critique": 6109,
+        "solver": 1515,
+        "form": 7230,
+        "translation": 64015
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a caste-based political party in India?",
+      "ms": {
+        "draft": 15006,
+        "critique": 6733,
+        "solver": 15788,
+        "form": 0,
+        "translation": 35963
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best explains the role of the Mandal Commission in Indian politics?",
+      "ms": {
+        "draft": 3971,
+        "critique": 6360,
+        "solver": 2128,
+        "form": 3777,
+        "translation": 56371
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the significance of the Supreme Court's 2019 verdict on the Ayodhya issue?",
+      "ms": {
+        "draft": 15584,
+        "critique": 8715,
+        "solver": 2392,
+        "form": 4069,
+        "translation": 83357
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the impact of the new economic reforms on Indian politics?",
+      "ms": {
+        "draft": 3971,
+        "critique": 8813,
+        "solver": 2049,
+        "form": 3788,
+        "translation": 62289
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What does the resolution of the Ayodhya issue illustrate about Indian democracy?",
+      "ms": {
+        "draft": 15584,
+        "critique": 7984,
+        "solver": 2174,
+        "form": 5003,
+        "translation": 91677
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following can be inferred about the role of the Ram Janmabhoomi movement in Indian politics?",
+      "ms": {
+        "draft": 3971,
+        "critique": 7918,
+        "solver": 1574,
+        "form": 4146,
+        "translation": 65954
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which group was primarily focused on in the Mandal Commission"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what was the significance of the 1989 elections in Indian politics?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what was the role of the Congress party after the 1989 elections?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the political landscape in India after 1989?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"overlooks the period before 2014 when the BJP did not have a…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Based on the passage, which of the following statements best reflects the role of the Janata Party in Indian politics?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best describes the role of regional parties in Indian politics since 1989?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"contradicts the passage, which states that regional parties …\"); distractor 3's reason is not a one-line misconception (\"overlooks the passage's statement about their role in coalit…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following political developments is highlighted as a long-term trend in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What was the main ideology of the Bharatiya Janata Party (BJP) when it was formed in 1980?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the term 'Congress system'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"contradicts the passage, which states that the 'Congress sys…\"); distractor 3's reason is not a one-line misconception (\"misinterprets the passage, which states that the term is not…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best explains the role of the 'Other Backward Classes' (OBC) in Indian politics?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How did the BJP respond to the government's decision to pass the Muslim Women (Protection of Rights on Divorce) Act, 1986?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Ignores the passage's clear criticism of the government's de…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what does the Supreme Court's decision on the Ayodhya issue reveal about the Indian Constitution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage suggest about the role of the judiciary in resolving sensitive issues in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In which year did the Congress-led UPA government complete its term despite the withdrawal of support from the Left Front?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which party won a clear majority in the 16th Lok Sabha elections?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"correct answer…\"); distractor 3's reason is not a one-line misconception (\"refers to a different party mentioned in the passage but not…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the main reason for the shift in focus from ideological differences to power-sharing arrangements in Indian politics?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"refers to a result of the shift, not the reason for the shif…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which political party emerged as the largest party in the 17th Lok Sabha according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is one of the four elements of the growing consensus among political parties?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What was the main ideology of the BJP when it was first formed in 1980?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which event marked the end of Congress dominance over the Ind"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following best describes the current party system in India, according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "According to the passage, what is one reason why the Congress party continues to influence Indian politics despite its decline?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the main issue discussed in the question about 'coalition politics' in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what is the main purpose of the chapter on 'Politics in India Since Independence'?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what does the author mean when they say that political parties must 'articulate and aggregate a variety of interests'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In which year did the Congress-led UPA government complete its term despite the withdrawal of support from the Left Front?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "According to the passage, what was the main reason for the shift in political focus from ideology to pragmatic considerations?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which party gained a single-party majority in the 2014 Lok Sabha elections?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following can be inferred about the future of democracy in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"contradicts the passage which suggests an ongoing evolution…\"); distractor 2's reason is not a one-line misconception (\"contradicts the passage which describes a competitive and ev…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of state-level parties in Indian politics?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"contradicts the passage which says their role is increasing…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What was the main reason for the rise of politics based on religious identity in India after the Emergency?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What was the outcome of the Ayodhya issue after it was resolved through legal procedures?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which commission was set up to investigate the conditions of backward classes in India?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Confuses the Mandal Commission with other commissions mentio…\"); distractor 2's reason is not a one-line misconception (\"Refers to a commission not mentioned in the passage.…\"); distractor 3's reason is not a one-line misconception (\"Refers to a commission not mentioned in the passage.…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT mentioned as a factor that influenced Indian politics in the 1990s?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what does the resolution of the Ayodhya issue reflect about Indian democracy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misinterprets the passage as valuing religious identity over…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

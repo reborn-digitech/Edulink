@@ -1,0 +1,204 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:18:41.775Z",
+  "finishedAt": "2026-10-28T04:20:08.983Z",
+  "seconds": 87,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap107.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 7 — From the Window",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 18500,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 7628,
+      "completionTokens": 1136
+    },
+    "critique": {
+      "calls": 5,
+      "ms": 18864,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 1931,
+      "completionTokens": 837
+    },
+    "solver": {
+      "calls": 20,
+      "ms": 7641,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 2265,
+      "completionTokens": 160
+    },
+    "form": {
+      "calls": 4,
+      "ms": 6717,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 902,
+      "completionTokens": 246
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 3729,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 118082,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8285,
+      "completionTokens": 3917
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What did Omana see outside the train that was green and covered with trees?",
+      "ms": {
+        "draft": 2181,
+        "critique": 2377
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was written on the board at the platform in Madgaon?",
+      "ms": {
+        "draft": 2444,
+        "critique": 4417,
+        "solver": 1079,
+        "form": 3510,
+        "translation": 31531
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Omana see below the bridge when her train crossed it?",
+      "ms": {
+        "draft": 2444,
+        "critique": 4648,
+        "solver": 1742,
+        "form": 2252,
+        "translation": 36391
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Appa say about the place they were going through?",
+      "ms": {
+        "draft": 2444,
+        "critique": 5024,
+        "solver": 1982,
+        "form": 1659,
+        "translation": 31266
+      },
+      "outcome": "kept",
+      "flag": "level 1 but the solver missed it 2 of 5 times"
+    },
+    {
+      "level": 2,
+      "stem": "Why did Omana feel giddy when she looked down from the bridge?",
+      "ms": {
+        "draft": 2444,
+        "critique": 2399,
+        "solver": 446,
+        "form": 953,
+        "translation": 15660
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What did Omana find difficult to describe?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What was the name of the station where Omana got off the train?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What did Omana's family do at the station in Madgaon?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did Omana see outside the train that was green and covered with trees?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

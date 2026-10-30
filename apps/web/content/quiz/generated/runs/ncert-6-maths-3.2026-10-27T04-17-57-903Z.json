@@ -1,0 +1,844 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T04:17:57.903Z",
+  "finishedAt": "2026-10-27T04:25:48.556Z",
+  "seconds": 471,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp103.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — Number Play",
+    "edition": "Reprint 2026-27",
+    "chunks": 23,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9",
+      "[RMO 2016 — question paper]\n4. How many 6-digit natural numbers containing only the digits 1,2,3 are there\nin which 3 occurs exactly twice and the number is divisible by 9?",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n6. (b) 12",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n1. D) -6,6 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 183401,
+      "in": 47,
+      "out": 41,
+      "rejects": 6,
+      "promptTokens": 52654,
+      "completionTokens": 10283
+    },
+    "critique": {
+      "calls": 60,
+      "ms": 408481,
+      "in": 41,
+      "out": 35,
+      "rejects": 6,
+      "promptTokens": 27008,
+      "completionTokens": 10805
+    },
+    "solver": {
+      "calls": 309,
+      "ms": 192958,
+      "in": 35,
+      "out": 19,
+      "rejects": 16,
+      "promptTokens": 74925,
+      "completionTokens": 3897
+    },
+    "form": {
+      "calls": 3,
+      "ms": 7834,
+      "in": 19,
+      "out": 11,
+      "rejects": 8,
+      "promptTokens": 767,
+      "completionTokens": 223
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 43,
+      "ms": 7966,
+      "in": 11,
+      "out": 5,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 180141,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11406,
+      "completionTokens": 5542
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Five children of different heights stand in a line. Each child says the number of taller children next to them. Can the children rearrange themselves so that the children at the ends say '2'?",
+      "ms": {
+        "draft": 4143,
+        "critique": 6273,
+        "solver": 18755
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Five children of different heights stand in a line. Each child says the number of taller children next to them. For this group of 5 children, is the sequence 1, 1, 1, 1, 1 possible?",
+      "ms": {
+        "draft": 4143,
+        "critique": 8364,
+        "solver": 14323,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Five children of different heights stand in a line. Each child says the number of taller children next to them. Is the sequence 0, 1, 2, 1, 0 possible? Why or why not?",
+      "ms": {
+        "draft": 4143,
+        "critique": 7143,
+        "solver": 17591,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Five children of different heights stand in a line. Each child says the number of taller children next to them. How would you rearrange the five children so that the maximum number of children say '2'?",
+      "ms": {
+        "draft": 4143,
+        "critique": 5511,
+        "solver": 10127
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following numbers is a palindrome?",
+      "ms": {
+        "draft": 2412,
+        "critique": 7232,
+        "solver": 13575,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of numbers that read the same from left to right and from right to left?",
+      "ms": {
+        "draft": 2412,
+        "critique": 5057,
+        "solver": 13864,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you reverse and add the number 89 repeatedly, how many steps will it take to reach a palindrome?",
+      "ms": {
+        "draft": 2412,
+        "critique": 5779
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What rule is applied to form the sequences in the passage?",
+      "ms": {
+        "draft": 3988,
+        "critique": 6589,
+        "solver": 1915,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of the rule mentioned in the passage?",
+      "ms": {
+        "draft": 3988,
+        "critique": 6037,
+        "solver": 1746
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which sequence from the passage follows the rule correctly?",
+      "ms": {
+        "draft": 3988,
+        "critique": 6038,
+        "solver": 1450,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a 5-digit number is a palindrome and the middle digit is 5, what is the possible value of the number?",
+      "ms": {
+        "draft": 2412,
+        "critique": 7171,
+        "solver": 15206
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a sequence starts with 10, what is the 6th number in the sequence?",
+      "ms": {
+        "draft": 3988,
+        "critique": 5935,
+        "solver": 1781
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a sequence starts with 19, which number is the first supercell in the sequence?",
+      "ms": {
+        "draft": 3988,
+        "critique": 6241,
+        "solver": 1535
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Is it possible to fill a table with 9 cells such that there are exactly 4 supercells?",
+      "ms": {
+        "draft": 4615,
+        "critique": 7321
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many times does the digit '7' occur between 1 and 100?",
+      "ms": {
+        "draft": 3833,
+        "critique": 7914,
+        "solver": 983
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the smallest 5-digit number whose digits add up to 14?",
+      "ms": {
+        "draft": 4615,
+        "critique": 6132,
+        "solver": 13585
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Roshan estimates the cost of making fruit custard for 5 people as ₹ 100. He uses 1-1-1 of each of 3 types of fruits and milk. Which of the following statements best explains why his estimate may not be accurate?",
+      "ms": {
+        "draft": 6113,
+        "critique": 5826,
+        "solver": 862
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the Kaprekar constant and how many rounds does it take to reach it for the year 1980?",
+      "ms": {
+        "draft": 3835,
+        "critique": 6389,
+        "solver": 1055
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a number is formed by exchanging the digits 1 and 6 in the number 62,871, how does this affect the number of supercells in the grid?",
+      "ms": {
+        "draft": 3835,
+        "critique": 10616
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Roshan wants to make fruit custard for 5 people and the cost is estimated to be ₹100, what could be the possible quantity and type of fruits he might have used?",
+      "ms": {
+        "draft": 3835,
+        "critique": 6551,
+        "solver": 13895
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a player starts with 0 and alternates adding numbers between 1 and 3, what is the winning strategy to reach 22 first?",
+      "ms": {
+        "draft": 3835,
+        "critique": 6366
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of hours Sheetal has spent in school if she has studied for 8 years with 6 hours per day and 200 working days per year?",
+      "ms": {
+        "draft": 3835,
+        "critique": 9145,
+        "solver": 15770,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the sum of the smallest and largest 5-digit palindromes?",
+      "ms": {
+        "draft": 3543,
+        "critique": 7910,
+        "solver": 1399
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many times does the digit '7' appear in the numbers from 1 to 100?",
+      "ms": {
+        "draft": 3543,
+        "critique": 7060
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the next palindromic time after 10:01?",
+      "ms": {
+        "draft": 3543,
+        "critique": 6919,
+        "solver": 18648
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the smallest 5-digit number that is a palindrome and also an odd number?",
+      "ms": {
+        "draft": 3543,
+        "critique": 10283,
+        "solver": 15491,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers is a supercell in the grid if it is the only number greater than all its neighbors?",
+      "ms": {
+        "draft": 5363,
+        "critique": 8514,
+        "solver": 1383
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the smallest 3-digit palindrome that can be formed using only the digits 1, 2, and 3?",
+      "ms": {
+        "draft": 4358,
+        "critique": 9865,
+        "solver": 12304
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is even, you take half of it; if it is odd, you multiply it by 3 and add 1. Which of the following sequences is correct for the number 17?",
+      "ms": {
+        "draft": 5363,
+        "critique": 7048,
+        "solver": 22877
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a row of 5 children with different heights, what is the maximum number of children who can say '1' (meaning each has exactly one taller neighbour)?",
+      "ms": {
+        "draft": 6223,
+        "critique": 4380
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Five children of different heights stand in a line. Each child says the number of taller children next to them. Can two children standing next to each other say the same number?",
+      "ms": {
+        "draft": 4143,
+        "critique": 7431,
+        "solver": 2412,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the Kaprekar constant?",
+      "ms": {
+        "draft": 2412,
+        "critique": 4953,
+        "solver": 11755,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the sum of the smallest and largest 5-digit palindromes?",
+      "ms": {
+        "draft": 3833,
+        "critique": 7702,
+        "solver": 13338,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the Collatz conjecture correct for all starting numbers in the sequence of powers of 2?",
+      "ms": {
+        "draft": 3835,
+        "critique": 6268,
+        "solver": 1670,
+        "form": 3191
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a 5-digit palindrome?",
+      "ms": {
+        "draft": 3543,
+        "critique": 6404,
+        "solver": 1427,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the game where players take turns adding 1, 2, or 3 to reach 21, what is the winning strategy?",
+      "ms": {
+        "draft": 5363,
+        "critique": 7541,
+        "solver": 16974,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of using numbers to solve a puzzle?",
+      "ms": {
+        "draft": 3193,
+        "critique": 7259,
+        "solver": 1335,
+        "form": 2571,
+        "translation": 26508
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where numbers are used?",
+      "ms": {
+        "draft": 4615,
+        "critique": 5198,
+        "solver": 1245,
+        "form": 2073,
+        "translation": 40921
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a 3-digit palindrome?",
+      "ms": {
+        "draft": 2412,
+        "critique": 8444,
+        "solver": 10165,
+        "form": 0,
+        "translation": 23094
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Five children of different heights stand in a line. Each child says the number of taller children next to them. Can we arrange the children in a line so that all would say only 0s?",
+      "ms": {
+        "draft": 4143,
+        "critique": 7072,
+        "solver": 1301,
+        "form": 0,
+        "translation": 57235
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the difference between the largest and smallest 5-digit palindromes?",
+      "ms": {
+        "draft": 3543,
+        "critique": 7409,
+        "solver": 19815,
+        "form": 0,
+        "translation": 26627
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What is the smallest number greater than 50,000 that can be formed using the digits 1, 0, 6, 3, and 9?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the difference between the smallest and largest 5-digit palindromes?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Five children of different heights stand in a line. Each child says the number of taller children next to them. Can the children rearrange themselves so that the children at the ends say '2'?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Five children of different heights stand in a line. Each child says the number of taller children next to them. For this group of 5 children, is the sequence 1, 1, 1, 1, 1 possible?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Five children of different heights stand in a line. Each child says the number of taller children next to them. Is the sequence 0, 1, 2, 1, 0 possible? Why or why not?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Five children of different heights stand in a line. Each child says the number of taller children next to them. How would you rearrange the five children so that the maximum number of children say '2'?",
+      "reason": "after redraft: the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following numbers is a palindrome?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of numbers that read the same from left to right and from right to left?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If you reverse and add the number 89 repeatedly, how many steps will it take to reach a palindrome?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What rule is applied to form the sequences in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 say the same thing (\"Take half if even, multiply by 3 and add 1 if odd\" / \"Take half if odd, multiply by 3 and add 1 if even\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of the rule mentioned in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which sequence from the passage follows the rule correctly?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a 5-digit number is a palindrome and the middle digit is 5, what is the possible value of the number?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a sequence starts with 10, what is the 6th number in the sequence?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a sequence starts with 19, which number is the first supercell in the sequence?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Is it possible to fill a table with 9 cells such that there are exactly 4 supercells?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many times does the digit '7' occur between 1 and 100?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the smallest 5-digit number whose digits add up to 14?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Roshan estimates the cost of making fruit custard for 5 people as ₹ 100. He uses 1-1-1 of each of 3 types of fruits and milk. Which of the following statements best explains why his estimate may not be accurate?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the smallest 5-digit number whose digit sum is 14?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is NOT a situation where numbers are used, according to the passage?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What is the sum of the largest and smallest 5-digit palindromes?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the Kaprekar constant and how many rounds does it take to reach it for the year 1980?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a number is formed by exchanging the digits 1 and 6 in the number 62,871, how does this affect the number of supercells in the grid?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Roshan wants to make fruit custard for 5 people and the cost is estimated to be ₹100, what could be the possible quantity and type of fruits he might have used?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a player starts with 0 and alternates adding numbers between 1 and 3, what is the winning strategy to reach 22 first?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the total number of hours Sheetal has spent in school if she has studied for 8 years with 6 hours per day and 200 working days per year?",
+      "reason": "options 2 and 3 are the same (\"12800\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the sum of the smallest and largest 5-digit palindromes?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many times does the digit '7' appear in the numbers from 1 to 100?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the next palindromic time after 10:01?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the smallest 5-digit number that is a palindrome and also an odd number?",
+      "reason": "options 0 and 3 are the same (\"10001\"); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following numbers is a supercell in the grid if it is the only number greater than all its neighbors?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the smallest 3-digit palindrome that can be formed using only the digits 1, 2, and 3?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number is even, you take half of it; if it is odd, you multiply it by 3 and add 1. Which of the following sequences is correct for the number 17?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a row of 5 children with different heights, what is the maximum number of children who can say '1' (meaning each has exactly one taller neighbour)?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Five children of different heights stand in a line. Each child says the number of taller children next to them. Can two children standing next to each other say the same number?",
+      "reason": "near-duplicate of batch item \"Five children of different heights stand in a line…\" (cosine 0.905 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the Kaprekar constant?",
+      "reason": "near-duplicate of served question cmvimvsqo0dregpfh9czj8ofa (cosine 0.920 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the sum of the smallest and largest 5-digit palindromes?",
+      "reason": "near-duplicate of served question cmv3kpko00044gnjug78v3fo8 (cosine 0.936 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is the Collatz conjecture correct for all starting numbers in the sequence of powers of 2?",
+      "reason": "near-duplicate of served question cmvef6vr00051gowczxft7nmx (cosine 0.935 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a 5-digit palindrome?",
+      "reason": "near-duplicate of served question cmvfooybb004hgpfh221zdmae (cosine 0.920 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "In the game where players take turns adding 1, 2, or 3 to reach 21, what is the winning strategy?",
+      "reason": "near-duplicate of served question cmv3kpko1004agnju71o3o2sa (cosine 0.903 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

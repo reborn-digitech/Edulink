@@ -1,0 +1,909 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T23:26:58.976Z",
+  "finishedAt": "2026-10-28T23:36:11.373Z",
+  "seconds": 552,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics Part-II",
+    "bookCode": "lemh2",
+    "document": "ncert/12/mathematics/lemh201.pdf",
+    "classLevel": 12,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Integrals",
+    "edition": "Reprint 2026-27",
+    "chunks": 29,
+    "groups": 10
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, sample question paper, 2024-25]\n12. ∫ 𝟏 equals\n𝒙 (𝟏+𝒙 ) 𝟑 𝟒 𝟐\n(A) − 2𝑥 1 2 √1 + 𝑥 + 𝑐 4\n(C) − 4𝑥 1 √1 + 𝑥 + 𝑐 4\n𝟐𝝅 𝟕",
+      "[CBSE Class XII Mathematics, marking scheme, 2022-23]\n28. Let I = ∫ గ ൗ ଷ ௗ௫ = ∫ గ ൗ ଷ\nగ గ\n2 1/2\nൗ ଵା√௧௔௡௫ ൗ √௦௜௡௫ା√௖௢௦௫ √௖௢௦௫ 𝑑𝑥 ..(i)\n଺ ଺\nUsing ∫ 𝒇(𝒙) 𝒅𝒙 = ∫ 𝒇(𝒂 + 𝒃 − 𝒙)𝒅𝒙 𝒂 𝒃 𝒂 𝒃\nగ ൗ ට௖௢௦ቀ ା ି௫ ቁ ഏ ల ഏ య\nI = ∫ గ ൗ ଷ ഏ ഏ ഏ ഏ\n଺ ට௦௜௡ቀ ା ି௫ ቁାට௖௢௦ቀ ା ି௫ ቁ\nల య ల య\nగ ൗ √௦௜௡௫\nI = ∫ గ ൗ଺ √௖௢௦௫ା√௦௜௡௫ ଷ dx ..(ii).\nAdding (i) and (ii), we get\nగ ൗ √௖௢௦௫ గ ൗ\n2I = ∫ గ ൗ ଷ √௦௜௡௫ା√௖௢௦௫ 𝑑𝑥 + ∫ గ ൗ ଷ\n଺ ଺\nగ ൗ\n2I = ∫ గ ൗ ଷ 𝑑𝑥\n଺\nగ\n= [𝑥] గ ଷ = గ ଷ − ଺ గ = గ ଺\n଺\nగ ൗ ௗ௫ గ\nHence, I = ∫ గ ൗ ଷ ଵା√௧௔௡௫ = ଵଶ\n଺\nସ ଵ\n𝑑𝑥\n√௖௢௦௫ା√௦௜௡௫ √௦௜௡௫ dx\nOR\nସ\nන |𝑥 − 1| 𝑑𝑥 = න (1 − 𝑥)𝑑𝑥 + න (𝑥 − 1)𝑑𝑥 1\n଴ ଴ ଵ\n=ൣ 𝑥 − ௫ మ ൧ + ቂ 1 ௫ మ − 𝑥ቃ 4 1\nଶ ଵ 0 ଶ 1 ଵ\n= (1 − ) + (8 − 4) − ( − 1) ଶ ଶ\n= 5 1",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2023-24]\n9. Option (b) ∫ ௫ 𝑑𝑥\nPut log x = t\nDifferentiating 𝑑𝑥 = 𝑑𝑡 ௫ ଵ\nHence, ∫ ௟௢௚௫ ௫ 𝑑𝑥 = ∫ 𝑡𝑑𝑡 = ௧ ଶ మ + 𝐶 = (௟௢௚௫) ଶ మ",
+      "[CBSE Class XII Mathematics, marking scheme, 2024-25]\n12. (A) 𝑑𝑥 𝑑𝑥\n∫ 1 = ∫ 1\n𝑥 (1 + 𝑥 ) 3 4 2 𝑥 (1 + 5 1 ) 2\n𝑥 4\n( Let 1 + 𝑥 −4 = 1 + 𝑥 1 4 = 𝑡, 𝑑𝑡 = −4𝑥\n= − ∫ 1 4 𝑑𝑡 1 = − × 2 × √𝑡 + 𝑐, where 1 4\n𝑡 2\n1 1 1 4\n−5 𝑑𝑥 = − 𝑥 4 5 𝑑𝑥 ⇒ 𝑑𝑥 𝑥 5 = − 𝑑𝑡 ) 1 4\n' 'c denotes any arbitrary constant of integration.\n= − √1 + 2 𝑥 4 + 𝑐 = − 2𝑥 2 √1 + 𝑥 + 𝑐"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 245972,
+      "in": 49,
+      "out": 44,
+      "rejects": 5,
+      "promptTokens": 74635,
+      "completionTokens": 13805
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 325766,
+      "in": 44,
+      "out": 35,
+      "rejects": 9,
+      "promptTokens": 26418,
+      "completionTokens": 9382
+    },
+    "solver": {
+      "calls": 228,
+      "ms": 106583,
+      "in": 35,
+      "out": 22,
+      "rejects": 13,
+      "promptTokens": 43473,
+      "completionTokens": 2303
+    },
+    "form": {
+      "calls": 11,
+      "ms": 39813,
+      "in": 22,
+      "out": 6,
+      "rejects": 16,
+      "promptTokens": 3493,
+      "completionTokens": 1131
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 3181,
+      "in": 6,
+      "out": 1,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 15428,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2532,
+      "completionTokens": 1151
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "If the derivative of a function is known, and the function is to be found, what is the process called?",
+      "ms": {
+        "draft": 4272,
+        "critique": 5745,
+        "solver": 1348,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the term used to describe the entire class of functions that could have produced a given derivative?",
+      "ms": {
+        "draft": 4272,
+        "critique": 6310,
+        "solver": 1276
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the derivative of a function is f'(x), and we are to find the original function f(x), what is the term used for this process?",
+      "ms": {
+        "draft": 4272,
+        "critique": 6216,
+        "solver": 1536,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the symbol used to represent the indefinite integral of a function?",
+      "ms": {
+        "draft": 4272,
+        "critique": 6107,
+        "solver": 1723
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an anti derivative of cos 2x?",
+      "ms": {
+        "draft": 4751,
+        "critique": 5795,
+        "solver": 1214,
+        "form": 4430
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an anti derivative of 3x + 4x?",
+      "ms": {
+        "draft": 4751,
+        "critique": 7414,
+        "solver": 1158
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an anti derivative of e^x?",
+      "ms": {
+        "draft": 4751,
+        "critique": 7550,
+        "solver": 1379,
+        "form": 3644
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The integral of (sin x + cos x) dx is equal to:",
+      "ms": {
+        "draft": 4751,
+        "critique": 5562,
+        "solver": 14846,
+        "form": 3464
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the integral of sec x?",
+      "ms": {
+        "draft": 4612,
+        "critique": 6270,
+        "solver": 1464,
+        "form": 3562
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the integral of cosec x?",
+      "ms": {
+        "draft": 4612,
+        "critique": 6684,
+        "solver": 1428,
+        "form": 3510
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of ∫ 1 dx, where the integrand is 1/(x(1 + x^4)^2)?",
+      "ms": {
+        "draft": 16645,
+        "critique": 7980
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Evaluate ∫ (x + 2) dx / (2x² + 6x + 5).",
+      "ms": {
+        "draft": 16645,
+        "critique": 7752,
+        "solver": 2054
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the integral of sin x cos x?",
+      "ms": {
+        "draft": 4612,
+        "critique": 7472,
+        "solver": 15531,
+        "form": 2801
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Find the integral of ∫ (x + 3) dx / (5 - 4x - x²).",
+      "ms": {
+        "draft": 16645,
+        "critique": 5731,
+        "solver": 12746,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the partial fraction decomposition of (x +1) (x + 2)?",
+      "ms": {
+        "draft": 10042,
+        "critique": 8264,
+        "solver": 1650,
+        "form": 3771
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the value of ∫ x cos x dx?",
+      "ms": {
+        "draft": 5434,
+        "critique": 6989,
+        "solver": 1355
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the form of the partial fraction decomposition for (x + 3x + 2)?",
+      "ms": {
+        "draft": 10042,
+        "critique": 8005,
+        "solver": 1786,
+        "form": 5425
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the correct integral of ∫ e^x (sin x + cos x) dx?",
+      "ms": {
+        "draft": 5434,
+        "critique": 8644,
+        "solver": 1462
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The integral ∫1/(x(1+x^4)) dx is equal to",
+      "ms": {
+        "draft": 29480,
+        "critique": 5758
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The integral ∫(x - 4)√(x^2 - 8x + 7) dx is equal to",
+      "ms": {
+        "draft": 29480,
+        "critique": 5587
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the integral of 1/x with respect to x?",
+      "ms": {
+        "draft": 3053,
+        "critique": 4374,
+        "solver": 1373,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If ∫ f(x) dx = F(x) + C, what is the value of ∫ f(x) dx from a to b?",
+      "ms": {
+        "draft": 3053,
+        "critique": 4392,
+        "solver": 1935,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the value of ∫ (x - 1) dx from 0 to 4?",
+      "ms": {
+        "draft": 3053,
+        "critique": 6550,
+        "solver": 895
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the integral of e^x (f(x) + f'(x)) dx?",
+      "ms": {
+        "draft": 3053,
+        "critique": 7270,
+        "solver": 1610,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If ∫ f(x) dx = F(x) + C, what is ∫ f(a + b - x) dx from a to b?",
+      "ms": {
+        "draft": 3053,
+        "critique": 5163,
+        "solver": 1218
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The value of the integral ∫ (x + x cos x + tan x + 1) dx from 0 to π is",
+      "ms": {
+        "draft": 4720,
+        "critique": 7814
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The value of the integral ∫ log (1 + tan x) dx from 0 to π/4 is",
+      "ms": {
+        "draft": 4720,
+        "critique": 5804,
+        "solver": 1891
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If f(a - x) = f(x), then the value of ∫ f(x) dx from 0 to a is",
+      "ms": {
+        "draft": 4720,
+        "critique": 7791,
+        "solver": 1194,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The integral of x dx divided by (1 + sin x) is equal to",
+      "ms": {
+        "draft": 4720,
+        "critique": 7773,
+        "solver": 1565
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The integral of cos x dx divided by (sin x + cos x) is equal to",
+      "ms": {
+        "draft": 4720,
+        "critique": 6858,
+        "solver": 16706
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of definite integrals?",
+      "ms": {
+        "draft": 4380,
+        "critique": 4741,
+        "solver": 2086
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the integral of 1/(x(1 + x^4)) dx?",
+      "ms": {
+        "draft": 6090,
+        "critique": 5704
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If f(x) is an even function, what is the value of ∫ f(x) dx from -a to a?",
+      "ms": {
+        "draft": 4380,
+        "critique": 9587
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The integral of e^x (1 + x) dx is equal to",
+      "ms": {
+        "draft": 4720,
+        "critique": 5615,
+        "solver": 12113
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Evaluate the definite integral ∫(x + 1)(x + 2) dx from x = 1 to x = 2.",
+      "ms": {
+        "draft": 6090,
+        "critique": 6651
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of the definite integral ∫(x^2 - 8x + 7) dx from x = 1 to x = 4?",
+      "ms": {
+        "draft": 6090,
+        "critique": 8722
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of choosing the first and second functions in integration by parts?",
+      "ms": {
+        "draft": 4061,
+        "critique": 6108
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the form of the partial fraction for a rational function of the form (px + q)/[(x - a)(x - b)] where a ≠ b?",
+      "ms": {
+        "draft": 53015,
+        "critique": 5813,
+        "solver": 679,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the derivative of a function is given, what is the term used to describe the function that could have produced it?",
+      "ms": {
+        "draft": 4272,
+        "critique": 6626,
+        "solver": 10253,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two functions have the same derivative on an interval, what can be said about the functions?",
+      "ms": {
+        "draft": 4272,
+        "critique": 6854,
+        "solver": 10493,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the integral of tan x?",
+      "ms": {
+        "draft": 4612,
+        "critique": 8868,
+        "solver": 1429,
+        "form": 3256
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the integral of cot x?",
+      "ms": {
+        "draft": 4612,
+        "critique": 6026,
+        "solver": 1319,
+        "form": 3567
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a standard integral of tan x?",
+      "ms": {
+        "draft": 3053,
+        "critique": 4125,
+        "solver": 1090,
+        "form": 3939
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following integrals can be solved using the formula ∫e^[f(x) + f'(x)] dx?",
+      "ms": {
+        "draft": 4061,
+        "critique": 5266,
+        "solver": 5885,
+        "form": 0,
+        "translation": 12540
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "The integral of (sin x + cos x) dx is equal to:",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "The integral of 4x - 6 dx, with F(0) = 3, is:",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following is the partial fraction decomposition of (x +1) (x + 1) (x + 3)?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the derivative of a function is known, and the function is to be found, what is the process called?",
+      "reason": "option 3 is a catch-all (\"None of these\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the term used to describe the entire class of functions that could have produced a given derivative?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the derivative of a function is f'(x), and we are to find the original function f(x), what is the term used for this process?",
+      "reason": "option 3 is a catch-all (\"None of these\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the symbol used to represent the indefinite integral of a function?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an anti derivative of cos 2x?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an anti derivative of 3x + 4x?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an anti derivative of e^x?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "The integral of (sin x + cos x) dx is equal to:",
+      "reason": "options 0 and 3 say the same thing (\"cos x + sin x + C\" / \"cos x - sin x + C\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the integral of sec x?",
+      "reason": "options 0 and 1 say the same thing (\"log |sec x + tan x| + C\" / \"log |sec x| + C\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the integral of cosec x?",
+      "reason": "options 1 and 2 say the same thing (\"log |sec x + tan x| + C\" / \"log |sec x| + C\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the value of ∫ 1 dx, where the integrand is 1/(x(1 + x^4)^2)?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Evaluate ∫ (x + 2) dx / (2x² + 6x + 5).",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the integral of sin x cos x?",
+      "reason": "options 2 and 3 say the same thing (\"-1/2 sin x cos x + C\" / \"-1/2 cos x + C\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Find the integral of ∫ (x + 3) dx / (5 - 4x - x²).",
+      "reason": "options 0 and 1 say the same thing (\"−√(5 - 4x - x²) + sin⁻¹((x + 2)/3) + C\" / \"-√(5 - 4x - x²) + sin⁻¹((x + 2)/5) + C\"); options 0 and 2 say the same thing (\"−√(5 - 4x - x²) + sin⁻¹((x + 2)/3) + C\" / \"−√(5 - 4x - x²) + sin⁻¹((x + 3)/3) + C\"); options 0 and 3 say the same thing (\"−√(5 - 4x - x²) + sin⁻¹((x + 2)/3) + C\" / \"√(5 - 4x - x²) + sin⁻¹((x + 3)/3) + C\"); options 2 and 3 say the same thing (\"−√(5 - 4x - x²) + sin⁻¹((x + 3)/3) + C\" / \"√(5 - 4x - x²) + sin⁻¹((x + 3)/3) + C\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is the partial fraction decomposition of (x +1) (x + 2)?",
+      "reason": "options 0 and 1 say the same thing (\"A/(x + 1) + B/(x + 2)\" / \"A/(x + 1) + B/(x + 2)^2\"); options 0 and 2 say the same thing (\"A/(x + 1) + B/(x + 2)\" / \"A/(x + 1) + B/(x + 2) + C/(x + 1)^2\"); options 0 and 3 say the same thing (\"A/(x + 1) + B/(x + 2)\" / \"A/(x + 1) + B/(x + 2) + C/(x + 1)\"); options 1 and 2 say the same thing (\"A/(x + 1) + B/(x + 2)^2\" / \"A/(x + 1) + B/(x + 2) + C/(x + 1)^2\"); options 1 and 3 say the same thing (\"A/(x + 1) + B/(x + 2)^2\" / \"A/(x + 1) + B/(x + 2) + C/(x + 1)\"); options 2 and 3 say the same thing (\"A/(x + 1) + B/(x + 2) + C/(x + 1)^2\" / \"A/(x + 1) + B/(x + 2) + C/(x + 1)\"); distractor 3's reason is not a one-line misconception (\"Adds an unnecessary squared term in the denominator and an e…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the value of ∫ x cos x dx?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the form of the partial fraction decomposition for (x + 3x + 2)?",
+      "reason": "options 0 and 1 say the same thing (\"A/(x + 1) + B/(x + 2)\" / \"A/(x + 1)^2 + B/(x + 2)^2\"); options 0 and 2 say the same thing (\"A/(x + 1) + B/(x + 2)\" / \"A/(x + 1) + B/(x + 2) + C/(x + 1)^2\"); options 0 and 3 say the same thing (\"A/(x + 1) + B/(x + 2)\" / \"A/(x + 1) + B/(x + 2) + C/(x + 1)\"); options 1 and 2 say the same thing (\"A/(x + 1)^2 + B/(x + 2)^2\" / \"A/(x + 1) + B/(x + 2) + C/(x + 1)^2\"); options 1 and 3 say the same thing (\"A/(x + 1)^2 + B/(x + 2)^2\" / \"A/(x + 1) + B/(x + 2) + C/(x + 1)\"); options 2 and 3 say the same thing (\"A/(x + 1) + B/(x + 2) + C/(x + 1)^2\" / \"A/(x + 1) + B/(x + 2) + C/(x + 1)\"); distractor 3's reason is not a one-line misconception (\"Adds an unnecessary squared term in the denominator and an e…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is the correct integral of ∫ e^x (sin x + cos x) dx?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The integral ∫1/(x(1+x^4)) dx is equal to",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The integral ∫(x - 4)√(x^2 - 8x + 7) dx is equal to",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a correct statement about definite integrals?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the value of ∫ f(x) dx if f(x) is an odd function and the limits are from -a to a?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the integral of 1/x with respect to x?",
+      "reason": "options 0 and 1 are the same (\"log |x| + C\"); options 0 and 3 are the same (\"log |x| + C\"); options 1 and 3 are the same (\"log x + C\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If ∫ f(x) dx = F(x) + C, what is the value of ∫ f(x) dx from a to b?",
+      "reason": "options 0 and 1 say the same thing (\"F(b) - F(a)\" / \"F(a) - F(b)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the value of ∫ (x - 1) dx from 0 to 4?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the integral of e^x (f(x) + f'(x)) dx?",
+      "reason": "options 0 and 1 are the same (\"e^x f(x) + C\"); options 0 and 2 are the same (\"e^x f(x) + C\"); options 1 and 2 are the same (\"e^x + f(x) + C\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If ∫ f(x) dx = F(x) + C, what is ∫ f(a + b - x) dx from a to b?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The value of the integral ∫ (x + x cos x + tan x + 1) dx from 0 to π is",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The value of the integral ∫ log (1 + tan x) dx from 0 to π/4 is",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If f(a - x) = f(x), then the value of ∫ f(x) dx from 0 to a is",
+      "reason": "options 1 and 2 say the same thing (\"2 ∫ f(x) dx from 0 to a/2\" / \"∫ f(x) dx from 0 to a/2\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "The integral of x dx divided by (1 + sin x) is equal to",
+      "reason": "the solver picked option 1 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "The integral of cos x dx divided by (sin x + cos x) is equal to",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a property of definite integrals?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the integral of 1/(x(1 + x^4)) dx?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If f(x) is an even function, what is the value of ∫ f(x) dx from -a to a?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The integral of e^x (1 + x) dx is equal to",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Evaluate the definite integral ∫(x + 1)(x + 2) dx from x = 1 to x = 2.",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the value of the definite integral ∫(x^2 - 8x + 7) dx from x = 1 to x = 4?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the purpose of choosing the first and second functions in integration by parts?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the form of the partial fraction for a rational function of the form (px + q)/[(x - a)(x - b)] where a ≠ b?",
+      "reason": "options 0 and 1 say the same thing (\"A/(x - a) + B/(x - b)\" / \"A/(x - a) + B/(x - b)^2\"); options 0 and 2 say the same thing (\"A/(x - a) + B/(x - b)\" / \"A/(x - a)^2 + B/(x - b)\"); options 0 and 3 say the same thing (\"A/(x - a) + B/(x - b)\" / \"A/(x - a) + B/(x - b)^2\"); options 1 and 2 say the same thing (\"A/(x - a) + B/(x - b)^2\" / \"A/(x - a)^2 + B/(x - b)\"); options 1 and 3 are the same (\"A/(x - a) + B/(x - b)^2\"); options 2 and 3 say the same thing (\"A/(x - a)^2 + B/(x - b)\" / \"A/(x - a) + B/(x - b)^2\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the derivative of a function is given, what is the term used to describe the function that could have produced it?",
+      "reason": "near-duplicate of served question cmvhzzw2q0b7ugpfhhpo0n2ul (cosine 0.935 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If two functions have the same derivative on an interval, what can be said about the functions?",
+      "reason": "near-duplicate of served question cmvhzzw2s0b80gpfh3cdbu86d (cosine 0.940 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the integral of tan x?",
+      "reason": "near-duplicate of served question cmv36qkcj000pgnu8vzjn7ox2 (cosine 0.921 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the integral of cot x?",
+      "reason": "near-duplicate of served question cmvhzzw2f0b7cgpfhltcc3q20 (cosine 0.957 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a standard integral of tan x?",
+      "reason": "near-duplicate of served question cmvhzzw2l0b7igpfhwunol67x (cosine 0.944 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

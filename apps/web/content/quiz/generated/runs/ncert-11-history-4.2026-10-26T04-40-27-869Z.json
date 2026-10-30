@@ -1,0 +1,830 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T04:40:27.869Z",
+  "finishedAt": "2026-10-26T04:49:20.105Z",
+  "seconds": 532,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Themes in World History",
+    "bookCode": "kehs1",
+    "document": "ncert/11/history/kehs104.pdf",
+    "classLevel": 11,
+    "subject": "History",
+    "chapter": "Chapter 4 — THE THREE ORDERS",
+    "edition": "Reprint 2026-27",
+    "chunks": 21,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII History, marking scheme, 2022-23]\n9. Find out the correct chronological order of ‘the Chishti Silsila’ from the 1\nfollowing options:\nI. Shaikh Nizamuddin Auliya\nII. Shaikh Fariduddin Ganj – Shakar\nIII. Shaikh Nasiruddin Chiragh-i Delhi\nIV. Shaikh Muinuddin Sijzi\nA. I, II, III & IV\nB. II, III ,IV & I\nC. III,II, I & IV\nD. IV,II,I & III\nANS- D. IV, II, I, III.\nTheme-6 Page 154",
+      "[CBSE Class XII History, sample question paper, 2022-23]\n9. Find out the correct chronological order of ‘the Chishti Silsila’ from the 1\nfollowing options :\nI. Shaikh Nizamuddin Auliya\nII. Shaikh Fariduddin Ganj – Shakar\nIII. Shaikh Nasiruddin Chiragh-i Delhi\nIV. Shaikh Muinuddin Sijzi\nA. I, II, III & IV\nB. II, III ,IV & I\nC. III,II, I & IV\nD. IV,II,I & III",
+      "[CBSE Class XII History, marking scheme, 2026-27]\n3. (C) iii ii i iv",
+      "[CBSE Class XII History, marking scheme, 2023-24]\nelements were considered by historians while examining the text for\nreconstructing the social histories.\nAny other relevant points (Pg- 72)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 145985,
+      "in": 43,
+      "out": 42,
+      "rejects": 2,
+      "promptTokens": 37247,
+      "completionTokens": 9269
+    },
+    "critique": {
+      "calls": 51,
+      "ms": 295625,
+      "in": 42,
+      "out": 34,
+      "rejects": 8,
+      "promptTokens": 23068,
+      "completionTokens": 8832
+    },
+    "solver": {
+      "calls": 235,
+      "ms": 108072,
+      "in": 34,
+      "out": 29,
+      "rejects": 5,
+      "promptTokens": 44025,
+      "completionTokens": 2570
+    },
+    "form": {
+      "calls": 15,
+      "ms": 43034,
+      "in": 29,
+      "out": 8,
+      "rejects": 21,
+      "promptTokens": 3945,
+      "completionTokens": 1185
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 8,
+      "ms": 1372,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 35,
+      "ms": 376242,
+      "in": 16,
+      "out": 16,
+      "rejects": 1,
+      "promptTokens": 22695,
+      "completionTokens": 12229
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what was the role of the Church in medieval European society?",
+      "ms": {
+        "draft": 2800,
+        "critique": 4329,
+        "solver": 1030,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a historian wants to study the social structure of medieval Europe, which of the following would be the most useful source of information according to the passage?",
+      "ms": {
+        "draft": 2800,
+        "critique": 4941,
+        "solver": 2191,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what was the significance of the 'three orders' in shaping European history?",
+      "ms": {
+        "draft": 2800,
+        "critique": 5056,
+        "solver": 1429,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the 'three orders' mentioned in the passage?",
+      "ms": {
+        "draft": 2800,
+        "critique": 4350,
+        "solver": 10103
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the relationship between a lord and his vassal based on?",
+      "ms": {
+        "draft": 2967,
+        "critique": 6011,
+        "solver": 1540,
+        "form": 2557
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the passage, the manor is described as a self-sufficient unit, but it is also mentioned that it could not be completely self-sufficient. What was the reason given for this?",
+      "ms": {
+        "draft": 2967,
+        "critique": 5649,
+        "solver": 1142,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the term ‘vassalage’ refer to?",
+      "ms": {
+        "draft": 2967,
+        "critique": 6002,
+        "solver": 1365,
+        "form": 2710
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains the influence of the feudal system on the Catholic Church?",
+      "ms": {
+        "draft": 2967,
+        "critique": 5216,
+        "solver": 1515
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the role of monasteries in the development of the arts?",
+      "ms": {
+        "draft": 3442,
+        "critique": 6986,
+        "solver": 1260,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what was the primary reason for the growth of monasteries in medieval Europe?",
+      "ms": {
+        "draft": 3442,
+        "critique": 5810,
+        "solver": 1320,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between monasteries and the local economy?",
+      "ms": {
+        "draft": 3442,
+        "critique": 5697,
+        "solver": 1432,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct statement about the monastic life described in the passage?",
+      "ms": {
+        "draft": 3442,
+        "critique": 5778,
+        "solver": 1238,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following changes in agricultural technology helped increase food production in medieval Europe?",
+      "ms": {
+        "draft": 4169,
+        "critique": 6137
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the lords decided to collect rent in cash instead of services, which of the following would most likely happen according to the passage?",
+      "ms": {
+        "draft": 4169,
+        "critique": 8119
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why peasants resisted the feudal system?",
+      "ms": {
+        "draft": 4169,
+        "critique": 7732,
+        "solver": 12578
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the relationship between the lords and the peasants in medieval England?",
+      "ms": {
+        "draft": 4169,
+        "critique": 6395,
+        "solver": 15768,
+        "form": 3939
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what was the basis of economic organisation in medieval European towns?",
+      "ms": {
+        "draft": 3628,
+        "critique": 5188
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains why the switch from the two-field to the three-field system was significant for medieval Europe?",
+      "ms": {
+        "draft": 4169,
+        "critique": 6207,
+        "solver": 10378,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why did knights become a distinct group, and when did they decline?",
+      "ms": {
+        "draft": 3000,
+        "critique": 7050
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the function of medieval monasteries?",
+      "ms": {
+        "draft": 3000,
+        "critique": 8587
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a patron–client relationship in the context of early modern monarchies?",
+      "ms": {
+        "draft": 3000,
+        "critique": 6821
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How did long-term changes in population levels affect economy and society in Europe?",
+      "ms": {
+        "draft": 3000,
+        "critique": 5853,
+        "solver": 15256,
+        "form": 3443
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a feature of early feudal society in France?",
+      "ms": {
+        "draft": 3000,
+        "critique": 6172,
+        "solver": 15659,
+        "form": 3071
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which event led to the death of 20 per cent of Europe's population in the 14th century?",
+      "ms": {
+        "draft": 3431,
+        "critique": 5502
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the impact of the Black Death on the feudal system in Europe?",
+      "ms": {
+        "draft": 3431,
+        "critique": 6374,
+        "solver": 1358,
+        "form": 2426
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What was the main reason for the economic expansion in Europe before the 13th century?",
+      "ms": {
+        "draft": 3431,
+        "critique": 5680,
+        "solver": 1662
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a result of the social changes that occurred in the 12th and 13th centuries?",
+      "ms": {
+        "draft": 3431,
+        "critique": 6048,
+        "solver": 1188,
+        "form": 3950
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what was a feature of medieval European towns?",
+      "ms": {
+        "draft": 3666,
+        "critique": 4939,
+        "solver": 1132,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what was the main reason for the growth of towns in Europe?",
+      "ms": {
+        "draft": 3666,
+        "critique": 5520,
+        "solver": 1613,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following was a result of the growth of towns?",
+      "ms": {
+        "draft": 3666,
+        "critique": 7099,
+        "solver": 1565
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage imply about the role of the Black Death in shaping European society?",
+      "ms": {
+        "draft": 3431,
+        "critique": 5499,
+        "solver": 10586,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what was the significance of the guild in medieval towns?",
+      "ms": {
+        "draft": 3666,
+        "critique": 6095,
+        "solver": 1518,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the primary role of monks and nuns in medieval society?",
+      "ms": {
+        "draft": 4424,
+        "critique": 5221
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what can be inferred about the social structure of medieval Europe?",
+      "ms": {
+        "draft": 4424,
+        "critique": 4674,
+        "solver": 470,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is mentioned as one of the earliest scholars to study feudalism?",
+      "ms": {
+        "draft": 2800,
+        "critique": 6276,
+        "solver": 1172,
+        "form": 3747,
+        "translation": 41800
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was the primary role of the nobility in medieval Europe?",
+      "ms": {
+        "draft": 2967,
+        "critique": 5933,
+        "solver": 1486,
+        "form": 2724,
+        "translation": 48832
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main reason for the decline in the income of lords after the Black Death?",
+      "ms": {
+        "draft": 3431,
+        "critique": 6662,
+        "solver": 13730,
+        "form": 3912,
+        "translation": 32663
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main purpose of monasteries in medieval Europe?",
+      "ms": {
+        "draft": 3442,
+        "critique": 4766,
+        "solver": 1429,
+        "form": 3766,
+        "translation": 54700
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a lord wanted to raise an army, who would he rely on?",
+      "ms": {
+        "draft": 2967,
+        "critique": 5324,
+        "solver": 1321,
+        "form": 2851,
+        "translation": 51287
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a rule followed by Benedictine monks?",
+      "ms": {
+        "draft": 3442,
+        "critique": 4602,
+        "solver": 1346,
+        "form": 2263,
+        "translation": 52187
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a historian finds a document mentioning a dispute over land between a lord and a peasant, which of the following would this most likely indicate?",
+      "ms": {
+        "draft": 2800,
+        "critique": 6135,
+        "solver": 1409,
+        "form": 3110,
+        "translation": 52109
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What was the significance of the Estates-General in French history?",
+      "ms": {
+        "draft": 3000,
+        "critique": 6617,
+        "solver": 10649,
+        "form": 2307,
+        "translation": 37389
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following best describes the role of the lords in the feudal system?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what was the role of the Church in medieval European society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a historian wants to study the social structure of medieval Europe, which of the following would be the most useful source of information according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what was the significance of the 'three orders' in shaping European history?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following best describes the 'three orders' mentioned in the passage?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What was the relationship between a lord and his vassal based on?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Focuses on financial aspects not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the passage, the manor is described as a self-sufficient unit, but it is also mentioned that it could not be completely self-sufficient. What was the reason given for this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's statement about land…\"); distractor 3's reason is not a one-line misconception (\"Overlooks the specific mention of external resources in the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the term ‘vassalage’ refer to?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Relates to religious practices not mentioned in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains the influence of the feudal system on the Catholic Church?",
+      "reason": "the solver picked option 1 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the role of monasteries in the development of the arts?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's statement about artistic contrib…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what was the primary reason for the growth of monasteries in medieval Europe?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between monasteries and the local economy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a correct statement about the monastic life described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following changes in agricultural technology helped increase food production in medieval Europe?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the lords decided to collect rent in cash instead of services, which of the following would most likely happen according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why peasants resisted the feudal system?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the relationship between the lords and the peasants in medieval England?",
+      "reason": "options 1 and 3 say the same thing (\"Peasants were required to pay rent in money, but could not be forced to work on the lord's land.\" / \"3: Peasants were required to pay rent in money, but could not be forced to work on the lord's land.\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what was the basis of economic organisation in medieval European towns?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains why the switch from the two-field to the three-field system was significant for medieval Europe?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":4,\"stem\":\"Which of the following best describes the social system as viewed by members of the fi"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Why did knights become a distinct group, and when did they decline?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What was the function of medieval monasteries?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is an example of a patron–client relationship in the context of early modern monarchies?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "How did long-term changes in population levels affect economy and society in Europe?",
+      "reason": "options 0 and 1 say the same thing (\"They caused a decrease in the power of the monarchy\" / \"They caused a decrease in the power of the aristocracy\"); options 0 and 3 say the same thing (\"They caused a decrease in the power of the monarchy\" / \"They caused a decrease in the power of the church\"); options 1 and 3 say the same thing (\"They caused a decrease in the power of the aristocracy\" / \"They caused a decrease in the power of the church\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following was a feature of early feudal society in France?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which event led to the death of 20 per cent of Europe's population in the 14th century?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What was the impact of the Black Death on the feudal system in Europe?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"contradicts the passage which says the feudal system could n…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What was the main reason for the economic expansion in Europe before the 13th century?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a result of the social changes that occurred in the 12th and 13th centuries?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"contradicts the passage which describes the growth of the mo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what was a feature of medieval European towns?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what was the main reason for the growth of towns in Europe?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "According to the passage, which of the following was a result of the growth of towns?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage imply about the role of the Black Death in shaping European society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what was the significance of the guild in medieval towns?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"misinterprets the passage's description of trade routes…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following best describes the primary role of monks and nuns in medieval society?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what can be inferred about the social structure of medieval Europe?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misinterprets the passage, thinking the peasantry was the do…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

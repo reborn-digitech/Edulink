@@ -1,0 +1,427 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T06:46:48.230Z",
+  "finishedAt": "2026-10-28T06:51:29.814Z",
+  "seconds": 282,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap113.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 13 — A Shelter so High!",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 65626,
+      "in": 21,
+      "out": 20,
+      "rejects": 1,
+      "promptTokens": 21358,
+      "completionTokens": 4041
+    },
+    "critique": {
+      "calls": 25,
+      "ms": 149120,
+      "in": 20,
+      "out": 19,
+      "rejects": 1,
+      "promptTokens": 10496,
+      "completionTokens": 4238
+    },
+    "solver": {
+      "calls": 134,
+      "ms": 66115,
+      "in": 19,
+      "out": 14,
+      "rejects": 5,
+      "promptTokens": 24013,
+      "completionTokens": 1509
+    },
+    "form": {
+      "calls": 12,
+      "ms": 28791,
+      "in": 14,
+      "out": 13,
+      "rejects": 1,
+      "promptTokens": 2758,
+      "completionTokens": 743
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 3798,
+      "in": 13,
+      "out": 10,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 339216,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 22125,
+      "completionTokens": 10831
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 3,
+    "4": 2,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the roof in Tashi's house?",
+      "ms": {
+        "draft": 2531,
+        "critique": 5941,
+        "solver": 1223
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main purpose of the mobile shelters mentioned?",
+      "ms": {
+        "draft": 2901,
+        "critique": 7905,
+        "solver": 1492,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a reason for building houses in different parts of Jammu and Kashmir?",
+      "ms": {
+        "draft": 2901,
+        "critique": 6504,
+        "solver": 14473
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a house in Jammu and Kashmir has a sloping roof, what is the most likely reason?",
+      "ms": {
+        "draft": 2901,
+        "critique": 7417,
+        "solver": 10772
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the Rebo tent used by the Changpas?",
+      "ms": {
+        "draft": 3561,
+        "critique": 5835
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a reason why Gaurav Jani's journey from Mumbai to Leh was challenging?",
+      "ms": {
+        "draft": 3936,
+        "critique": 5543,
+        "solver": 12580
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why do the Changpa tribe move to higher and colder places with their goats?",
+      "ms": {
+        "draft": 3936,
+        "critique": 6322,
+        "solver": 10697
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the tent that the Changpas use?",
+      "ms": {
+        "draft": 3456,
+        "critique": 6347,
+        "solver": 1888,
+        "form": 3012
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason the Changpas build their tents with yak hair?",
+      "ms": {
+        "draft": 3456,
+        "critique": 5572,
+        "solver": 1685,
+        "form": 2367
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do the Changpas need to carry oxygen cylinders?",
+      "ms": {
+        "draft": 3456,
+        "critique": 6194,
+        "solver": 14500,
+        "form": 2257
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which states did Gaurav Jani pass through while travelling from Mumbai to Delhi?",
+      "ms": {
+        "draft": 2531,
+        "critique": 5736,
+        "solver": 1121,
+        "form": 3590,
+        "translation": 33724
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a cold desert?",
+      "ms": {
+        "draft": 2531,
+        "critique": 6252,
+        "solver": 1979,
+        "form": 2047,
+        "translation": 24357
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of different types of houses in Jammu and Kashmir?",
+      "ms": {
+        "draft": 2881,
+        "critique": 6011,
+        "solver": 1095,
+        "form": 4048,
+        "translation": 50382
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Gaurav Jani feel it was difficult to breathe normally in Changthang?",
+      "ms": {
+        "draft": 2531,
+        "critique": 5992,
+        "solver": 1525,
+        "form": 2931,
+        "translation": 27952
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a house that is made for a specific climate?",
+      "ms": {
+        "draft": 2881,
+        "critique": 5738,
+        "solver": 1125,
+        "form": 3249,
+        "translation": 33667
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pashmina shawl is as warm as six sweaters, how many pashmina shawls would be needed to equal the warmth of 36 sweaters?",
+      "ms": {
+        "draft": 3456,
+        "critique": 7891,
+        "solver": 1300,
+        "form": 0,
+        "translation": 26626
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a Changpa’s goat sheds its fur in summer, what is the most likely reason for this?",
+      "ms": {
+        "draft": 3561,
+        "critique": 5979,
+        "solver": 1306,
+        "form": 1983,
+        "translation": 41097
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you live in a place where it rains a lot, what kind of roof would you expect to see on a house?",
+      "ms": {
+        "draft": 2881,
+        "critique": 6012,
+        "solver": 1849,
+        "form": 2251,
+        "translation": 37937
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why do the Changpas use a special mark on their animals?",
+      "ms": {
+        "draft": 3561,
+        "critique": 6063,
+        "solver": 1282,
+        "form": 2118,
+        "translation": 19532
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements best explains why houses in Kashmir are made of stone and mud?",
+      "ms": {
+        "draft": 2881,
+        "critique": 5652,
+        "solver": 1081,
+        "form": 1877,
+        "translation": 39633
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is mentioned as a feature of houses in Kashmir?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main purpose of the roof in Tashi's house?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main purpose of the mobile shelters mentioned?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a reason for building houses in different parts of Jammu and Kashmir?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a house in Jammu and Kashmir has a sloping roof, what is the most likely reason?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of the Rebo tent used by the Changpas?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a reason why Gaurav Jani's journey from Mumbai to Leh was challenging?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Why do the Changpa tribe move to higher and colder places with their goats?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the tent that the Changpas use?",
+      "reason": "near-duplicate of served question cmvh91bhx07ltgpfhgtyvb8n3 (cosine 0.906 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the main reason the Changpas build their tents with yak hair?",
+      "reason": "near-duplicate of served question cmvh91bhz07lzgpfhdh21h1g9 (cosine 0.925 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why do the Changpas need to carry oxygen cylinders?",
+      "reason": "near-duplicate of served question cmvkbk12p0jyegpfhtcpwhej5 (cosine 0.966 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

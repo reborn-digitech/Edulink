@@ -1,0 +1,700 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T16:49:42.854Z",
+  "finishedAt": "2026-10-28T17:03:08.749Z",
+  "seconds": 806,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo119.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 19 — Chemical Coordination and Integration",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEB 2017 — question paper]\n43. Four types of chemical messengers (Black Dots) released from the regulator cell\n(R) to the target cell (T) are depicted in I, II, III and IV.\nI II III IV\nR R R Blood stream R\nBlood stream\nAIR\nT T T T\nMatch I, II, III and IV sequentially with i) Steroid Hormone, ii) Pheromones,\niii) Neurohormone iv) Neurotransmitter and choose the correct option.\na) iv, iii, ii, i\nb) iv, iii, i, ii\nc) i, ii, iii, iv\nd) iii, iv, i, ii",
+      "[CBSE Class XII Biology, sample question paper, 2023-24]\nadrenaline into the blood circulation, both of which raise blood pressure and\nincrease heart rate.\n16 Assertion: PCR is a powerful technique to identify genetic disorders. 1\nReason: PCR can detect mutations in low amounts of DNA.\nSection - B\n17 Explain the process of hormonal regulation of spermatogenesis. 2\n18 The diagram below shows the sequence of amino acids in part of a haemoglobin 2\nmolecule.\na) If the base T* was substituted with A, how would it affect the haemoglobin\nchain?\nb) Name the condition and the effects associated with the above substitution.\n19 The graph given below indicates the administration of the first (L) and second dose 2\n(M) of a vaccine. The corresponding response o",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n3. C. FSH and LH",
+      "[INBO 2013 — solutions or answer key]\n5. Small size of ✔\nfragments\n37. (4 points)\nFeatures\nGlycolysis Kreb’s\ncycle\nEvolution of X ✔\nCO 2\nSynthesis of ✔ ✔\nATP\nUtilization of ✔ X\nATP\nUtilization of X X\nO 2\nFormation of ✔ ✔\nNADH\n✔ V\n✔ III\nIV\nProcesses\nOxidative Photosynthesis\nphosphorylation\nX X\n✔ ✔\nX ✔\n✔ X\nX X\nSource of Source of Expected outcome / interpretation\nfibroblasts LDL\nNormal Normal LDL is internalized by receptor-mediated\nindividual individual endocytosis\nNormal Affected\nindividual individual\nAffected Normal\nindividual individual\nAffected Affected\nindividual individual\nPLANT SCIENCES (7 points)\n39. (4 points)\nIII,IV\nI, II\nV\nFeatures Red algae Green algae Mosses Gymnosperms Angiosperms\nApical X X\nmeristem\nAlternation ✔ ✔"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 192733,
+      "in": 38,
+      "out": 36,
+      "rejects": 2,
+      "promptTokens": 42458,
+      "completionTokens": 7325
+    },
+    "critique": {
+      "calls": 42,
+      "ms": 401521,
+      "in": 36,
+      "out": 26,
+      "rejects": 10,
+      "promptTokens": 18121,
+      "completionTokens": 7286
+    },
+    "solver": {
+      "calls": 170,
+      "ms": 123625,
+      "in": 26,
+      "out": 23,
+      "rejects": 3,
+      "promptTokens": 26253,
+      "completionTokens": 1680
+    },
+    "form": {
+      "calls": 10,
+      "ms": 39191,
+      "in": 23,
+      "out": 15,
+      "rejects": 8,
+      "promptTokens": 2475,
+      "completionTokens": 710
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 70,
+      "ms": 17409,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 685525,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 27738,
+      "completionTokens": 14000
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 3,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main function of the hypothalamus?",
+      "ms": {
+        "draft": 4884,
+        "critique": 7522,
+        "solver": 2074,
+        "form": 7502
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT an endocrine gland?",
+      "ms": {
+        "draft": 4884,
+        "critique": 8026,
+        "solver": 25326
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes a hormone that is produced in the hypothalamus and transported to the pituitary through a portal circulatory system. Which of the following is most likely to be true about this hormone?",
+      "ms": {
+        "draft": 4884,
+        "critique": 10422,
+        "solver": 2441,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person is diagnosed with acromegaly. Which of the following is most likely to be true?",
+      "ms": {
+        "draft": 4884,
+        "critique": 9687,
+        "solver": 23019,
+        "form": 3564
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following hormones is mainly responsible for the reabsorption of sodium and water in the kidneys?",
+      "ms": {
+        "draft": 4757,
+        "critique": 9756
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a deficiency in aldosterone, which of the following symptoms would most likely occur?",
+      "ms": {
+        "draft": 4757,
+        "critique": 11116
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A patient is diagnosed with a condition where the body is unable to regulate blood glucose levels. Which of the following is most likely to be the cause?",
+      "ms": {
+        "draft": 4757,
+        "critique": 10844
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which hormone is secreted by the atrial wall of the heart and helps to decrease blood pressure?",
+      "ms": {
+        "draft": 25924,
+        "critique": 10390
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a function of cortisol?",
+      "ms": {
+        "draft": 4757,
+        "critique": 12617,
+        "solver": 17213,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A patient has a condition where their blood calcium levels are abnormally high. Which hormone might be responsible for this?",
+      "ms": {
+        "draft": 25924,
+        "critique": 10231
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which type of hormone would most likely interact with intracellular receptors?",
+      "ms": {
+        "draft": 25924,
+        "critique": 10955
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a steroid hormone that regulates calcium levels in the blood?",
+      "ms": {
+        "draft": 25924,
+        "critique": 11541,
+        "solver": 16142,
+        "form": 1581
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of insulin?",
+      "ms": {
+        "draft": 5250,
+        "critique": 7449
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person is suffering from a condition where the blood glucose level is consistently high. Which hormone deficiency is likely to be responsible for this?",
+      "ms": {
+        "draft": 5250,
+        "critique": 6797,
+        "solver": 2141,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following hormones is secreted by the adrenal gland and helps in the regulation of blood pressure?",
+      "ms": {
+        "draft": 5250,
+        "critique": 10760,
+        "solver": 2641
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person is experiencing symptoms of high blood pressure and increased heart rate. Which of the following hormones is most likely to be involved?",
+      "ms": {
+        "draft": 5250,
+        "critique": 8386
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of estrogen?",
+      "ms": {
+        "draft": 5250,
+        "critique": 11694
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which hormone is secreted by the atrial wall of the heart?",
+      "ms": {
+        "draft": 4171,
+        "critique": 9198,
+        "solver": 19088,
+        "form": 6192
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following hormones is primarily involved in the regulation of blood pressure and body fluid volume?",
+      "ms": {
+        "draft": 44240,
+        "critique": 9795
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a function of the hormone secreted by the adrenal medulla?",
+      "ms": {
+        "draft": 9424,
+        "critique": 10113,
+        "solver": 1703,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct match between the type of chemical messenger and its mode of transport?",
+      "ms": {
+        "draft": 8555,
+        "critique": 9529,
+        "solver": 929
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which hormone is responsible for the maintenance of pregnancy and mammary gland development?",
+      "ms": {
+        "draft": 4271,
+        "critique": 9803,
+        "solver": 2182,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a function of insulin?",
+      "ms": {
+        "draft": 4271,
+        "critique": 8147,
+        "solver": 1475,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following hormones is responsible for the development of secondary sexual characteristics in males?",
+      "ms": {
+        "draft": 44240,
+        "critique": 10146,
+        "solver": 2412,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a function of progesterone?",
+      "ms": {
+        "draft": 4171,
+        "critique": 8533,
+        "solver": 18976,
+        "form": 3719,
+        "translation": 54274
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which hormone is responsible for the contraction of the uterus during childbirth?",
+      "ms": {
+        "draft": 4573,
+        "critique": 9501,
+        "solver": 3159,
+        "form": 1,
+        "translation": 54177
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of thyroxine in the body?",
+      "ms": {
+        "draft": 4573,
+        "critique": 9245,
+        "solver": 2099,
+        "form": 0,
+        "translation": 52938
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has low secretion of growth hormone, what condition may result?",
+      "ms": {
+        "draft": 4884,
+        "critique": 8320,
+        "solver": 4167,
+        "form": 4582,
+        "translation": 60657
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person suffers from Diabetes Insipidus, which hormone is likely to be deficient?",
+      "ms": {
+        "draft": 4573,
+        "critique": 10414,
+        "solver": 2430,
+        "form": 0,
+        "translation": 57293
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which hormone is responsible for increasing the blood calcium level?",
+      "ms": {
+        "draft": 4573,
+        "critique": 8052,
+        "solver": 2987,
+        "form": 0,
+        "translation": 50099
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following hormones is released by the posterior pituitary?",
+      "ms": {
+        "draft": 4884,
+        "critique": 10073,
+        "solver": 3554,
+        "form": 4789,
+        "translation": 62753
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which hormone is secreted by the pineal gland and helps regulate the sleep-wake cycle?",
+      "ms": {
+        "draft": 4573,
+        "critique": 10567,
+        "solver": 1973,
+        "form": 0,
+        "translation": 48493
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following hormones is a steroid hormone?",
+      "ms": {
+        "draft": 4171,
+        "critique": 11384,
+        "solver": 2421,
+        "form": 3388,
+        "translation": 45694
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person is diagnosed with a condition where the thyroid gland produces too much hormone. Which condition is this most likely to be?",
+      "ms": {
+        "draft": 4573,
+        "critique": 9176,
+        "solver": 1879,
+        "form": 0,
+        "translation": 68364
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A patient has a disorder that causes the secretion of excessive amounts of growth factors. Which of the following is most likely to occur?",
+      "ms": {
+        "draft": 4171,
+        "critique": 8336,
+        "solver": 2610,
+        "form": 2739,
+        "translation": 41040
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why androgens are important for the development of secondary sexual characteristics in males?",
+      "ms": {
+        "draft": 4757,
+        "critique": 10792,
+        "solver": 2527,
+        "form": 3817,
+        "translation": 83416
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main function of insulin in the body?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main function of the hypothalamus?",
+      "reason": "the key is far longer than every distractor (53 vs 29 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT an endocrine gland?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage describes a hormone that is produced in the hypothalamus and transported to the pituitary through a portal circulatory system. Which of the following is most likely to be true about this hormone?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A person is diagnosed with acromegaly. Which of the following is most likely to be true?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following hormones is mainly responsible for the reabsorption of sodium and water in the kidneys?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person has a deficiency in aldosterone, which of the following symptoms would most likely occur?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A patient is diagnosed with a condition where the body is unable to regulate blood glucose levels. Which of the following is most likely to be the cause?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which hormone is secreted by the atrial wall of the heart and helps to decrease blood pressure?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a function of cortisol?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A patient has a condition where their blood calcium levels are abnormally high. Which hormone might be responsible for this?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the passage, which type of hormone would most likely interact with intracellular receptors?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a steroid hormone that regulates calcium levels in the blood?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A person is diagnosed with a deficiency of a hormone that leads to low blood pressure. Which hormone is most likely to be deficient?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a function of insulin?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A person is suffering from a condition where the blood glucose level is consistently high. Which hormone deficiency is likely to be responsible for this?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer, not a distractor…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following hormones is secreted by the adrenal gland and helps in the regulation of blood pressure?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A person is experiencing symptoms of high blood pressure and increased heart rate. Which of the following hormones is most likely to be involved?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a function of estrogen?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which hormone is secreted by the atrial wall of the heart?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following hormones is primarily involved in the regulation of blood pressure and body fluid volume?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a function of the hormone secreted by the adrenal medulla?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct, but the other options are based on other hormones' …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is a correct match between the type of chemical messenger and its mode of transport?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which hormone is responsible for the maintenance of pregnancy and mammary gland development?",
+      "reason": "near-duplicate of served question cmvhnlq3z09s7gpfhjvr3c1q8 (cosine 0.910 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a function of insulin?",
+      "reason": "near-duplicate of served question cmvl0s2d20lmlgpfh88sjsy4q (cosine 0.912 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which of the following hormones is responsible for the development of secondary sexual characteristics in males?",
+      "reason": "near-duplicate of served question cmvhnlq3t09rpgpfhb6ddz03n (cosine 0.906 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

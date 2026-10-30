@@ -1,0 +1,381 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T20:48:14.930Z",
+  "finishedAt": "2026-10-25T20:50:45.831Z",
+  "seconds": 151,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap115.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 15 — Blow Hot, Blow Cold",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 50817,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 14586,
+      "completionTokens": 2920
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 109392,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 7626,
+      "completionTokens": 3060
+    },
+    "solver": {
+      "calls": 80,
+      "ms": 38369,
+      "in": 13,
+      "out": 9,
+      "rejects": 4,
+      "promptTokens": 12759,
+      "completionTokens": 780
+    },
+    "form": {
+      "calls": 3,
+      "ms": 7001,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 668,
+      "completionTokens": 209
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 3406,
+      "in": 7,
+      "out": 3,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 114920,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6747,
+      "completionTokens": 3437
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What did Mian Balishtiye think when the woodcutter blew on the hot potato?",
+      "ms": {
+        "draft": 3537,
+        "critique": 5140
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you blow on a hot plate, what will happen?",
+      "ms": {
+        "draft": 3537,
+        "critique": 5141
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens when you blow on a cold object?",
+      "ms": {
+        "draft": 3537,
+        "critique": 8666
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did the woodcutter blow on his hands?",
+      "ms": {
+        "draft": 3537,
+        "critique": 5140,
+        "solver": 12313,
+        "form": 3113
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the reason the mirror becomes hazy when you blow on it?",
+      "ms": {
+        "draft": 3164,
+        "critique": 7940,
+        "solver": 15901,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to your chest when you take a deep breath in?",
+      "ms": {
+        "draft": 3127,
+        "critique": 6550,
+        "solver": 1715
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if you place the paper snake near a cold object?",
+      "ms": {
+        "draft": 3127,
+        "critique": 6698,
+        "solver": 2369
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the woodcutter do to warm his hands when it was very cold?",
+      "ms": {
+        "draft": 2876,
+        "critique": 6472,
+        "solver": 1734
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Mian Balishtiye think about the woodcutter after seeing him blow on the hot potato?",
+      "ms": {
+        "draft": 2876,
+        "critique": 5880,
+        "solver": 1517
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When you breathe out, what happens to your chest?",
+      "ms": {
+        "draft": 3164,
+        "critique": 7842,
+        "solver": 1672,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the reason the mirror becomes hazy when you blow on it?",
+      "ms": {
+        "draft": 3127,
+        "critique": 6397,
+        "solver": 1082,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why does the paper snake move when placed near a hot object?",
+      "ms": {
+        "draft": 3127,
+        "critique": 6491,
+        "solver": 1407,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did the woodcutter blow on the hot potato?",
+      "ms": {
+        "draft": 2876,
+        "critique": 4475,
+        "solver": 1013,
+        "form": 3587
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you blow on a hot plate, what effect does it have on the plate?",
+      "ms": {
+        "draft": 2876,
+        "critique": 4786,
+        "solver": 699,
+        "form": 1334,
+        "translation": 35017
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main purpose of the paper snake experiment?",
+      "ms": {
+        "draft": 3164,
+        "critique": 6615,
+        "solver": 1109,
+        "form": 0,
+        "translation": 36629
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the paper snake experiment, in which direction will the snake move if the air is moving downwards?",
+      "ms": {
+        "draft": 3164,
+        "critique": 6011,
+        "solver": 783,
+        "form": 0,
+        "translation": 39160
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What did Mian Balishtiye think when the woodcutter blew on the hot potato?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If you blow on a hot plate, what will happen?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What happens when you blow on a cold object?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Why did the woodcutter blow on his hands?",
+      "reason": "options 2 and 3 are the same (\"To make them lighter\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the reason the mirror becomes hazy when you blow on it?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What happens to your chest when you take a deep breath in?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What would happen if you place the paper snake near a cold object?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did the woodcutter do to warm his hands when it was very cold?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What did Mian Balishtiye think about the woodcutter after seeing him blow on the hot potato?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "When you breathe out, what happens to your chest?",
+      "reason": "near-duplicate of served question cmvkbvzyv0jzegpfhazfx4q5g (cosine 0.946 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the reason the mirror becomes hazy when you blow on it?",
+      "reason": "near-duplicate of served question cmvh98qqc07nygpfhowxmhwke (cosine 0.934 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Why does the paper snake move when placed near a hot object?",
+      "reason": "near-duplicate of served question cmvkbvzz20jzqgpfhitz0kxcs (cosine 0.932 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Why did the woodcutter blow on the hot potato?",
+      "reason": "near-duplicate of served question cmvh98qqe07o4gpfh6ccqtf7e (cosine 0.935 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

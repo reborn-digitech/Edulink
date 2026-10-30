@@ -1,0 +1,516 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T05:07:15.240Z",
+  "finishedAt": "2026-10-28T05:13:39.487Z",
+  "seconds": 384,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm102.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Fractions",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[RMO 2015 — question paper]\n3. Find all fractions which can be written simultaneously in the forms\n5k − 3\n6l − 1\nand , for some integers k, l.\n4l − 3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n33. (A) The numerator of a fraction is 3 less than its denominator. If 2 is added to both 5\nof its numerator and denominator then the sum of the new fraction and original\nfraction is 20 . Find the original fraction.\nOR\n(B) A train covers a distance of 300 km at a uniform speed. If the speed of the train 5\nis increased by 5 km/hr, it takes 2 hours less in the journey. Find the original\nspeed of the train.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n4. C Let numerator be x and denominator be y 1\nGiven , x + y = 11\n𝐱 𝟏\n(𝐲+𝟏) = 2\nSolving these equations, we get\nx = 4, y = 7; ∴ Fraction = 𝟒 7\n𝟒\n(C)",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n4. 1\nis increased by 1, the fraction becomes\n2 3\n(A) (B)\n9 8\n, then the fraction is\n4 5\n(C) (D)\n7 6\nIf one root of the quadratic equation 𝑎𝑥 + 𝑏𝑥 + 𝑐 = 0 is the reciprocal of the"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 93070,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 15696,
+      "completionTokens": 5758
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 250642,
+      "in": 24,
+      "out": 19,
+      "rejects": 5,
+      "promptTokens": 17236,
+      "completionTokens": 7137
+    },
+    "solver": {
+      "calls": 201,
+      "ms": 111190,
+      "in": 19,
+      "out": 10,
+      "rejects": 9,
+      "promptTokens": 40754,
+      "completionTokens": 2444
+    },
+    "form": {
+      "calls": 4,
+      "ms": 26923,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 3003,
+      "completionTokens": 714
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 4665,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 153217,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9091,
+      "completionTokens": 4479
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "If Raman ate 7 pieces of paratha, and each paratha is cut into 4 equal parts, how many parathas did he eat?",
+      "ms": {
+        "draft": 4163,
+        "critique": 9346
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a whole is made using two pieces of 1/4 and one piece of 1/2, what is the total fraction of the whole?",
+      "ms": {
+        "draft": 4163,
+        "critique": 7530,
+        "solver": 12902
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Using the number line, which of the following represents 5/2?",
+      "ms": {
+        "draft": 4163,
+        "critique": 6641,
+        "solver": 17640
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following fractions is greater than one?",
+      "ms": {
+        "draft": 11311,
+        "critique": 8172
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a number line is divided into 8 equal parts, which fraction represents the point that is 3 parts away from 0?",
+      "ms": {
+        "draft": 11311,
+        "critique": 6656,
+        "solver": 15510
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the length of an ant is 1/4 cm, what is the total length of 16 such ants walking in a line?",
+      "ms": {
+        "draft": 11311,
+        "critique": 7643,
+        "solver": 11704
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a fraction is less than 1/2, which of the following could be that fraction?",
+      "ms": {
+        "draft": 11311,
+        "critique": 8205,
+        "solver": 11980
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pizza is divided into 8 equal slices and Raman eats 3 slices, what fraction of the pizza does he eat?",
+      "ms": {
+        "draft": 11081,
+        "critique": 4475,
+        "solver": 11006
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following fractions is equal to half?",
+      "ms": {
+        "draft": 11081,
+        "critique": 5145,
+        "solver": 11300
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A train covers 300 km at a uniform speed. If the speed is increased by 5 km/h, it takes 2 hours less. What is the original speed of the train?",
+      "ms": {
+        "draft": 11081,
+        "critique": 5158
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When can we say that 1/2 of something is greater than 1/3 of something else?",
+      "ms": {
+        "draft": 4850,
+        "critique": 9452
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Radhika had 1/2 of a pizza. She was given an additional 1/4 of the pizza. What is the total fraction of pizza Radhika has now?",
+      "ms": {
+        "draft": 11081,
+        "critique": 6790,
+        "solver": 11975,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the length of an ant is 1/4 cm, what is the total length of 16 such ants walking in a line?",
+      "ms": {
+        "draft": 11081,
+        "critique": 5352,
+        "solver": 14803
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 5 pieces of a paratha are equal to 2 and 1/2 parathas, how many pieces would make 3 parathas?",
+      "ms": {
+        "draft": 4850,
+        "critique": 7373
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is true about comparing fractions with the same numerator?",
+      "ms": {
+        "draft": 4850,
+        "critique": 7804,
+        "solver": 12042,
+        "form": 2277
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 2/3 of a whole is equal to 4/6 of the same whole, which of the following is also equal to 2/3?",
+      "ms": {
+        "draft": 4850,
+        "critique": 6776,
+        "solver": 11639
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Raman gave 1 slice of pizza to Radhika. If the pizza is divided into 4 equal slices, what fraction of the pizza does Radhika have?",
+      "ms": {
+        "draft": 11311,
+        "critique": 5195,
+        "solver": 14481,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a fraction greater than one?",
+      "ms": {
+        "draft": 11081,
+        "critique": 4475,
+        "solver": 12994,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of equivalent fractions?",
+      "ms": {
+        "draft": 4850,
+        "critique": 6266,
+        "solver": 1372,
+        "form": 3814
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 1/2 of a chocolate is equal to 2/4 of another chocolate, which of the following statements must be true?",
+      "ms": {
+        "draft": 4850,
+        "critique": 6700,
+        "solver": 1628,
+        "form": 4405
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What must be true for two fractions of different wholes to be compared?",
+      "ms": {
+        "draft": 4163,
+        "critique": 6248,
+        "solver": 935,
+        "form": 0,
+        "translation": 47941
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following fractions is equal to 1?",
+      "ms": {
+        "draft": 11311,
+        "critique": 5965,
+        "solver": 5746,
+        "form": 0,
+        "translation": 20898
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a fraction is equivalent to 2/3, which of the following could also represent the same fraction?",
+      "ms": {
+        "draft": 4163,
+        "critique": 6444,
+        "solver": 13390,
+        "form": 0,
+        "translation": 27410
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 3/4 of a whole is shaded, and the same shaded part can be represented as 6/8, which of the following is true?",
+      "ms": {
+        "draft": 4163,
+        "critique": 8994,
+        "solver": 1353,
+        "form": 0,
+        "translation": 53410
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If Raman ate 7 pieces of paratha, and each paratha is cut into 4 equal parts, how many parathas did he eat?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a whole is made using two pieces of 1/4 and one piece of 1/2, what is the total fraction of the whole?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Using the number line, which of the following represents 5/2?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following fractions is greater than one?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a number line is divided into 8 equal parts, which fraction represents the point that is 3 parts away from 0?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the length of an ant is 1/4 cm, what is the total length of 16 such ants walking in a line?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a fraction is less than 1/2, which of the following could be that fraction?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a pizza is divided into 8 equal slices and Raman eats 3 slices, what fraction of the pizza does he eat?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following fractions is equal to half?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A train covers 300 km at a uniform speed. If the speed is increased by 5 km/h, it takes 2 hours less. What is the original speed of the train?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "When can we say that 1/2 of something is greater than 1/3 of something else?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Radhika had 1/2 of a pizza. She was given an additional 1/4 of the pizza. What is the total fraction of pizza Radhika has now?",
+      "reason": "options 1 and 2 are the same (\"1/4\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the length of an ant is 1/4 cm, what is the total length of 16 such ants walking in a line?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 5 pieces of a paratha are equal to 2 and 1/2 parathas, how many pieces would make 3 parathas?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements is true about comparing fractions with the same numerator?",
+      "reason": "options 0 and 1 say the same thing (\"The fraction with the larger denominator is smaller\" / \"The fraction with the larger denominator is larger\"); options 0 and 2 say the same thing (\"The fraction with the larger denominator is smaller\" / \"The fraction with the smaller denominator is larger\"); options 1 and 2 say the same thing (\"The fraction with the larger denominator is larger\" / \"The fraction with the smaller denominator is larger\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 2/3 of a whole is equal to 4/6 of the same whole, which of the following is also equal to 2/3?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Raman gave 1 slice of pizza to Radhika. If the pizza is divided into 4 equal slices, what fraction of the pizza does Radhika have?",
+      "reason": "near-duplicate of served question cmvk7m7mc0jgwgpfh3a6irq2p (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a fraction greater than one?",
+      "reason": "near-duplicate of served question cmvh5oq3k06yygpfhk8lcj30w (cosine 0.940 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of equivalent fractions?",
+      "reason": "near-duplicate of served question cmvk7m7m80jgegpfhlo5ky1xo (cosine 0.918 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If 1/2 of a chocolate is equal to 2/4 of another chocolate, which of the following statements must be true?",
+      "reason": "near-duplicate of served question cmvo6ywch05irgp21rizamjfe (cosine 0.959 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

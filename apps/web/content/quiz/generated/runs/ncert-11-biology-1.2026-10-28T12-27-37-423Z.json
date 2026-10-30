@@ -1,0 +1,591 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T12:27:37.423Z",
+  "finishedAt": "2026-10-28T12:37:45.541Z",
+  "seconds": 608,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo101.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 1 — NIT",
+    "edition": "Reprint 2026-27",
+    "chunks": 10,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n9. (b) dN/dt = r N 1",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[INBO 2011 — question paper]\nSECTION A\nCELL BIOLOGY (7)",
+      "[INBO 2021 — question paper]\nSECTION A\nCELL BIOLOGY (5 points)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 126614,
+      "in": 29,
+      "out": 29,
+      "rejects": 1,
+      "promptTokens": 20244,
+      "completionTokens": 6462
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 266295,
+      "in": 29,
+      "out": 24,
+      "rejects": 5,
+      "promptTokens": 16486,
+      "completionTokens": 6571
+    },
+    "solver": {
+      "calls": 188,
+      "ms": 110553,
+      "in": 24,
+      "out": 19,
+      "rejects": 5,
+      "promptTokens": 33041,
+      "completionTokens": 2013
+    },
+    "form": {
+      "calls": 11,
+      "ms": 26414,
+      "in": 19,
+      "out": 9,
+      "rejects": 10,
+      "promptTokens": 2755,
+      "completionTokens": 693
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 61,
+      "ms": 12472,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 416249,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 20950,
+      "completionTokens": 10392
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 4,
+    "6": 0
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the primary purpose of scientific names for organisms according to the passage?",
+      "ms": {
+        "draft": 4405,
+        "critique": 5299,
+        "solver": 1260,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct scientific name for mango according to the passage?",
+      "ms": {
+        "draft": 4405,
+        "critique": 6055,
+        "solver": 1833,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the significance of the recognition that all present-day living organisms are related?",
+      "ms": {
+        "draft": 4405,
+        "critique": 8584
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which taxonomic category includes a group of related species with more characters in common?",
+      "ms": {
+        "draft": 4318,
+        "critique": 9343
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the role of scientific names in the study of biodiversity?",
+      "ms": {
+        "draft": 4405,
+        "critique": 6900,
+        "solver": 12090,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which taxonomic category is based on the aggregation of characters and includes related families?",
+      "ms": {
+        "draft": 4318,
+        "critique": 6362,
+        "solver": 1624
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an organism belongs to the family Felidae, which higher taxonomic category would it belong to?",
+      "ms": {
+        "draft": 4318,
+        "critique": 8336,
+        "solver": 1660
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which taxonomic category includes the most diverse group of organisms?",
+      "ms": {
+        "draft": 4318,
+        "critique": 6756,
+        "solver": 1614,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that 'the number of common characteristics goes on decreasing' as we move from species to kingdom. Which of the following best explains this?",
+      "ms": {
+        "draft": 4318,
+        "critique": 8078
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an organism belongs to the genus Panthera, which of the following is it most likely to be?",
+      "ms": {
+        "draft": 13763,
+        "critique": 5158
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which taxonomic category includes a group of related species with more characters in common?",
+      "ms": {
+        "draft": 13763,
+        "critique": 5643
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct sequence of taxonomic categories from lowest to highest?",
+      "ms": {
+        "draft": 13763,
+        "critique": 9811,
+        "solver": 12656,
+        "form": 3518
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If an organism has the scientific name 'Panthera tigris', which taxonomic category does 'tigris' represent?",
+      "ms": {
+        "draft": 13763,
+        "critique": 7743,
+        "solver": 13858
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a key factor in determining the placement of an organism in a taxonomic category?",
+      "ms": {
+        "draft": 5094,
+        "critique": 7402,
+        "solver": 14652,
+        "form": 3743
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are biological names typically in Latin?",
+      "ms": {
+        "draft": 5094,
+        "critique": 7448,
+        "solver": 1356
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, which of the following is a reason for the importance of biodiversity?",
+      "ms": {
+        "draft": 4214,
+        "critique": 6744,
+        "solver": 1380,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest is the reason for the need to standardise the naming of living organisms?",
+      "ms": {
+        "draft": 4214,
+        "critique": 7005,
+        "solver": 1913,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the scientific name of mango according to the passage?",
+      "ms": {
+        "draft": 4214,
+        "critique": 8335,
+        "solver": 2789,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the recognition of similarities among organisms led to cultural movements for conservation?",
+      "ms": {
+        "draft": 4214,
+        "critique": 6533,
+        "solver": 2063,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT mentioned as a reason for the need for a scientific naming system?",
+      "ms": {
+        "draft": 4214,
+        "critique": 6926,
+        "solver": 8367
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary purpose of classification in biology?",
+      "ms": {
+        "draft": 5094,
+        "critique": 6926,
+        "solver": 1694,
+        "form": 3426,
+        "translation": 50952
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes a taxon?",
+      "ms": {
+        "draft": 5094,
+        "critique": 7020,
+        "solver": 1859,
+        "form": 1980,
+        "translation": 44868
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which taxonomic category is the highest in the classification system?",
+      "ms": {
+        "draft": 13763,
+        "critique": 5604,
+        "solver": 17079,
+        "form": 2284,
+        "translation": 39758
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a scientist discovers a new species of plant, what should they do first to assign it a scientific name?",
+      "ms": {
+        "draft": 4405,
+        "critique": 5325,
+        "solver": 1549,
+        "form": 4203,
+        "translation": 85316
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a taxonomic category?",
+      "ms": {
+        "draft": 5094,
+        "critique": 8458,
+        "solver": 14794,
+        "form": 1903,
+        "translation": 18943
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student uses a local name for a plant in a scientific discussion, what problem might arise?",
+      "ms": {
+        "draft": 4405,
+        "critique": 6832,
+        "solver": 16733,
+        "form": 3130,
+        "translation": 52091
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student is given the biological name 'Canis lupus', which part of the name indicates the species?",
+      "ms": {
+        "draft": 5094,
+        "critique": 8230,
+        "solver": 1315,
+        "form": 3312,
+        "translation": 40511
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If an organism is classified under the family Solanaceae, which of the following is most likely to be its genus?",
+      "ms": {
+        "draft": 4318,
+        "critique": 8828,
+        "solver": 8003,
+        "form": 1524,
+        "translation": 42815
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a taxonomic category that includes related orders?",
+      "ms": {
+        "draft": 13763,
+        "critique": 9644,
+        "solver": 13545,
+        "form": 1527,
+        "translation": 37275
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which part of a biological name is written with a capital let"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary purpose of scientific names for organisms according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the correct scientific name for mango according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what is the significance of the recognition that all present-day living organisms are related?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which taxonomic category includes a group of related species with more characters in common?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the role of scientific names in the study of biodiversity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which taxonomic category is based on the aggregation of characters and includes related families?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If an organism belongs to the family Felidae, which higher taxonomic category would it belong to?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which taxonomic category includes the most diverse group of organisms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The passage states that 'the number of common characteristics goes on decreasing' as we move from species to kingdom. Which of the following best explains this?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If an organism belongs to the genus Panthera, which of the following is it most likely to be?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which taxonomic category includes a group of related species with more characters in common?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a correct sequence of taxonomic categories from lowest to highest?",
+      "reason": "options 0 and 1 say the same thing (\"Species, Family, Genus, Order\" / \"Species, Genus, Family, Order\"); options 0 and 2 say the same thing (\"Species, Family, Genus, Order\" / \"Genus, Species, Order, Family\"); options 0 and 3 say the same thing (\"Species, Family, Genus, Order\" / \"Species, Order, Family, Genus\"); options 1 and 2 say the same thing (\"Species, Genus, Family, Order\" / \"Genus, Species, Order, Family\"); options 1 and 3 say the same thing (\"Species, Genus, Family, Order\" / \"Species, Order, Family, Genus\"); options 2 and 3 say the same thing (\"Genus, Species, Order, Family\" / \"Species, Order, Family, Genus\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If an organism has the scientific name 'Panthera tigris', which taxonomic category does 'tigris' represent?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a key factor in determining the placement of an organism in a taxonomic category?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why are biological names typically in Latin?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, which of the following is a reason for the importance of biodiversity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest is the reason for the need to standardise the naming of living organisms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the scientific name of mango according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the recognition of similarities among organisms led to cultural movements for conservation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's message…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT mentioned as a reason for the need for a scientific naming system?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

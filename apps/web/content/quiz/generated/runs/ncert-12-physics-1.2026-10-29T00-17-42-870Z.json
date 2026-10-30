@@ -1,0 +1,829 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T00:17:42.870Z",
+  "finishedAt": "2026-10-29T00:29:35.438Z",
+  "seconds": 713,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Physics Part-II",
+    "bookCode": "leph2",
+    "document": "ncert/12/physics/leph201.pdf",
+    "classLevel": 12,
+    "subject": "Physics",
+    "chapter": "Chapter 1 — Optical Instruments",
+    "edition": "Reprint 2026-27",
+    "chunks": 34,
+    "groups": 10
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Physics, sample question paper, 2022-23]\n34. Case Study :\nRead the following paragraph and answer the questions.\nA number of optical devices and instruments have been\ndesigned and developed such as periscope, binoculars,\nmicroscopes and telescopes utilising the reflecting and refracting\nproperties of mirrors, lenses and prisms. Most of them are in\ncommon use. Our knowledge about the formation of images by\nthe mirrors and lenses is the basic requirement for\nunderstanding the working of these devices.\n(i) Why the image formed at infinity is often considered most\nsuitable for viewing. Explain\n(ii) In modern microscopes multicomponent lenses are used for\nboth the objective and the eyepiece. Why?\n(iii) Write two points of difference bet",
+      "[CBSE Class XII Physics, marking scheme, 2022-23]\nSECTION E\n34(i) When the image is formed at infinity, we can see it with minimum strain 1\nin the ciliary muscles of the eye.\n(ii) The multi-component lenses are used for both objective and the eyepiece 1\nto improve image quality by minimising various optical aberrations in\nlenses.\n(iii) (a)The compound microscope is used to observe minute nearby objects 1\nwhereas the telescope is used to observe distant objects.\n(b) In compound microscope the focal length of the objective is lesser 1\nthan that of the eyepiece whereas in telescope the focal length of the\nobjective is larger than that of the eyepiece.\nOR\n(iii) (a) The image formed by reflecting type telescope is brighter than that 1\nformed by ",
+      "[CBSE Class XII Physics, sample question paper, 2025-26]\n25. A compound microscope consists of an objective lens of focal length 0.82 cm and 3\nan eyepiece lens of focal length 2.9 cm. An object is placed 0.91 cm from the\nobjective lens. The image is formed at the near point (25 cm) from the eye.\n(I) Calculate that the angular magnification of the microscope.\n(II) Draw the ray diagram of compound microscope in normal adjustment.",
+      "[CBSE Class XII Physics, sample question paper, 2024-25]\n33. (I) a) A giant refracting telescope at an observatory has an objective lens of focal length 15 m. If an\neyepiece of focal length 1.0 cm is used, what is angular magnification of the telescope in\nnormal adjustment?\nb) If this telescope is used to view the moon, what is the diameter of the image of the moon formed\nby the objective lens? The diameter of the moon is 3.48 × 10 m, and the radius of lunar orbit 6\nis 3.8 × 10 m. 8\nOR\n(II) A compound microscope consists of an objective lens of focal length 2.0 cm and an eyepiece of\nfocal length 6.25 cm separated by a distance of 15 cm. How far from the objective should an object\nbe placed in order to obtain the final image at\na) the least distanc"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 191967,
+      "in": 45,
+      "out": 42,
+      "rejects": 4,
+      "promptTokens": 51969,
+      "completionTokens": 11482
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 324922,
+      "in": 42,
+      "out": 29,
+      "rejects": 13,
+      "promptTokens": 25162,
+      "completionTokens": 9380
+    },
+    "solver": {
+      "calls": 217,
+      "ms": 100889,
+      "in": 29,
+      "out": 21,
+      "rejects": 8,
+      "promptTokens": 42585,
+      "completionTokens": 2229
+    },
+    "form": {
+      "calls": 11,
+      "ms": 29505,
+      "in": 21,
+      "out": 11,
+      "rejects": 10,
+      "promptTokens": 2936,
+      "completionTokens": 810
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 33,
+      "ms": 6237,
+      "in": 11,
+      "out": 8,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 315290,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19730,
+      "completionTokens": 10066
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following correctly describes the principal axis of a spherical mirror?",
+      "ms": {
+        "draft": 11469,
+        "critique": 6790,
+        "solver": 1686,
+        "form": 2863
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using multi-component lenses in modern microscopes?",
+      "ms": {
+        "draft": 11469,
+        "critique": 6130,
+        "solver": 12084
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a concave mirror forms a real image of an object, where must the object be placed?",
+      "ms": {
+        "draft": 11469,
+        "critique": 6846,
+        "solver": 1107
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A spherical mirror has a radius of curvature of 20 cm. What is the focal length of the mirror?",
+      "ms": {
+        "draft": 11469,
+        "critique": 6158,
+        "solver": 11107,
+        "form": 3078
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the phenomenon called when light changes direction as it enters a different medium?",
+      "ms": {
+        "draft": 5141,
+        "critique": 6070
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A spherical mirror is used in a device where the object is placed very close to the mirror, and the image formed is virtual, erect, and magnified. Which type of mirror is most likely being used?",
+      "ms": {
+        "draft": 11469,
+        "critique": 6609,
+        "solver": 1139,
+        "form": 3945
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Under what condition does the refracted ray bend away from the normal?",
+      "ms": {
+        "draft": 5141,
+        "critique": 6703
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a light ray travels from a denser medium to a rarer medium and the angle of incidence is greater than the critical angle, what happens to the light?",
+      "ms": {
+        "draft": 5141,
+        "critique": 6888
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student measures the apparent depth of a swimming pool and finds it to be 2 meters. If the refractive index of water is 1.33, what is the real depth of the pool?",
+      "ms": {
+        "draft": 5141,
+        "critique": 4524
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, it is stated that the apparent depth of an object in water is less than its real depth. What is the reason for this?",
+      "ms": {
+        "draft": 5141,
+        "critique": 5291,
+        "solver": 1452,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the constant ratio mentioned in Snell's law of refraction?",
+      "ms": {
+        "draft": 5141,
+        "critique": 7248,
+        "solver": 10777,
+        "form": 3481
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which phenomenon is demonstrated when a laser beam is shone through turbid water and its path is seen as bright?",
+      "ms": {
+        "draft": 4206,
+        "critique": 6644
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A compound microscope has an objective lens of focal length 0.82 cm and an eyepiece lens of focal length 2.9 cm. If the image is formed at the near point (25 cm), what is the angular magnification of the microscope?",
+      "ms": {
+        "draft": 4206,
+        "critique": 5352
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an optical fibre, what is the reason for the light signal not losing intensity as it travels through the fibre?",
+      "ms": {
+        "draft": 4206,
+        "critique": 5762
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are multi-component lenses used in modern microscopes for both the objective and the eyepiece?",
+      "ms": {
+        "draft": 4206,
+        "critique": 6526
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A concave lens has a focal length of -25 cm. What is its power in dioptres?",
+      "ms": {
+        "draft": 4103,
+        "critique": 6069,
+        "solver": 1282
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A compound microscope uses an objective lens of focal length 0.82 cm and an eyepiece lens of focal length 2.9 cm. If the object is placed 0.91 cm from the objective lens, and the image is formed at the near point (25 cm) from the eye, what is the approximate angular magnification of the microscope?",
+      "ms": {
+        "draft": 5990,
+        "critique": 6565
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary purpose of a simple microscope?",
+      "ms": {
+        "draft": 55553,
+        "critique": 4863
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a difference between a compound microscope and a telescope?",
+      "ms": {
+        "draft": 3588,
+        "critique": 4487,
+        "solver": 1241,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A compound microscope has an objective lens of focal length 0.82 cm and an eyepiece lens of focal length 2.9 cm. What is the angular magnification of the microscope if the image is formed at the near point (25 cm)?",
+      "ms": {
+        "draft": 3588,
+        "critique": 5226,
+        "solver": 2522,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A convex lens is used to form an image of a small electric bulb on the opposite wall of a room, which is 3 m away. What is the maximum possible focal length of the lens?",
+      "ms": {
+        "draft": 3588,
+        "critique": 6651,
+        "solver": 1158
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A compound microscope has an objective lens of focal length 2.0 cm and an eyepiece of focal length 6.25 cm, separated by 15 cm. At what distance from the objective should an object be placed to obtain the final image at the least distance of distinct vision (25 cm)?",
+      "ms": {
+        "draft": 3588,
+        "critique": 6981,
+        "solver": 1577,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A compound microscope has an objective lens with a focal length of 2.0 cm and an eyepiece with a focal length of 6.25 cm. If the distance between the lenses is 15 cm, where should the object be placed to obtain the final image at the least distance of distinct vision (25 cm)?",
+      "ms": {
+        "draft": 3799,
+        "critique": 6742,
+        "solver": 1570
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A telescope has an objective lens with a focal length of 15 m and an eyepiece with a focal length of 1.0 cm. What is the angular magnification of the telescope in normal adjustment?",
+      "ms": {
+        "draft": 3799,
+        "critique": 7245,
+        "solver": 13133
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A prism is made of glass with a refractive index of 1.55. A parallel beam of light is incident on a face of the prism, and the angle of minimum deviation is measured to be 40°. What is the refractive index of the material of the prism?",
+      "ms": {
+        "draft": 3799,
+        "critique": 7041
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A telescope is used to view the moon. The diameter of the moon is 3.48 × 10^6 m, and the radius of its orbit is 3.8 × 10^8 m. What is the diameter of the image of the moon formed by the objective lens of the telescope?",
+      "ms": {
+        "draft": 3799,
+        "critique": 6934,
+        "solver": 11131
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of a screen in image formation by a convex lens?",
+      "ms": {
+        "draft": 3799,
+        "critique": 5851,
+        "solver": 1442
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A compound microscope has an objective lens of focal length 0.82 cm and an eyepiece of focal length 2.9 cm. What is the approximate angular magnification of the microscope?",
+      "ms": {
+        "draft": 15816,
+        "critique": 10483
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a telescope, what is the relationship between the focal length of the objective and the eyepiece for maximum magnification?",
+      "ms": {
+        "draft": 15816,
+        "critique": 6948,
+        "solver": 10581,
+        "form": 2806
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is true about the image formed by a simple microscope?",
+      "ms": {
+        "draft": 5193,
+        "critique": 6071
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A compound microscope uses a combination of lenses to achieve high magnification. If a microscope has an objective lens with a focal length of 0.82 cm and an eyepiece with a focal length of 2.9 cm, what is the angular magnification of the microscope when the final image is formed at the near point (25 cm) of the eye?",
+      "ms": {
+        "draft": 6895,
+        "critique": 3970,
+        "solver": 680,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A convex lens is used to form an image of an object placed at infinity. Where is the image formed?",
+      "ms": {
+        "draft": 4103,
+        "critique": 6819,
+        "solver": 10601,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the purpose of using multi-component lenses in modern microscopes?",
+      "ms": {
+        "draft": 3588,
+        "critique": 5006,
+        "solver": 14107,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary purpose of using multicomponent lenses in modern microscopes?",
+      "ms": {
+        "draft": 15816,
+        "critique": 5554,
+        "solver": 1420,
+        "form": 2259
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of combining multiple thin lenses in optical instruments?",
+      "ms": {
+        "draft": 5990,
+        "critique": 5413,
+        "solver": 1544,
+        "form": 1827,
+        "translation": 41933
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main advantage of using the Cartesian sign convention in optics?",
+      "ms": {
+        "draft": 11469,
+        "critique": 5770,
+        "solver": 1970,
+        "form": 3212,
+        "translation": 52705
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason a compound microscope uses multi-component lenses for both the objective and the eyepiece?",
+      "ms": {
+        "draft": 3799,
+        "critique": 5639,
+        "solver": 14141,
+        "form": 3104,
+        "translation": 35445
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the purpose of using a prism in optical instruments that bends light by 90° or 180°?",
+      "ms": {
+        "draft": 4206,
+        "critique": 6402,
+        "solver": 1548,
+        "form": 2000,
+        "translation": 39399
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A ray of light is incident on a convex lens parallel to the principal axis. What happens to this ray after refraction?",
+      "ms": {
+        "draft": 4103,
+        "critique": 6969,
+        "solver": 11309,
+        "form": 0,
+        "translation": 42885
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of the outer covering of a light pipe made of a glass fibre with a refractive index of 1.68?",
+      "ms": {
+        "draft": 3588,
+        "critique": 8935,
+        "solver": 12708,
+        "form": 0,
+        "translation": 35780
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A convex lens has a power of +5 D. What is the focal length of the lens in centimeters?",
+      "ms": {
+        "draft": 4103,
+        "critique": 7025,
+        "solver": 1270,
+        "form": 0,
+        "translation": 30861
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are reflecting telescopes preferred over refracting telescopes for large-scale observations?",
+      "ms": {
+        "draft": 15816,
+        "critique": 6302,
+        "solver": 1498,
+        "form": 2284,
+        "translation": 31820
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 3,\n      \"stem\": \"A concave mirror forms a real image of an object placed in fr"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the role of the core in an optical fibre?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A lens is made to disappear in a liquid. What can be inferred about the refractive index of the liquid?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following correctly describes the principal axis of a spherical mirror?",
+      "reason": "options 2 and 3 say the same thing (\"It is the line joining the principal focus and the centre of curvature of the mirror\" / \"It is the line joining the optical centre and the principal focus of the mirror\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main purpose of using multi-component lenses in modern microscopes?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a concave mirror forms a real image of an object, where must the object be placed?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A spherical mirror has a radius of curvature of 20 cm. What is the focal length of the mirror?",
+      "reason": "options 0 and 2 are the same (\"20 cm\"); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the phenomenon called when light changes direction as it enters a different medium?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A spherical mirror is used in a device where the object is placed very close to the mirror, and the image formed is virtual, erect, and magnified. Which type of mirror is most likely being used?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Refers to a type not mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Under what condition does the refracted ray bend away from the normal?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a light ray travels from a denser medium to a rarer medium and the angle of incidence is greater than the critical angle, what happens to the light?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student measures the apparent depth of a swimming pool and finds it to be 2 meters. If the refractive index of water is 1.33, what is the real depth of the pool?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, it is stated that the apparent depth of an object in water is less than its real depth. What is the reason for this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"The light rays from the object bend away from the normal as they exit the water\" / \"The light rays from the object bend towards the normal as they exit the water\"); distractor 1's reason is not a one-line misconception (\"Correct answer…\"); distractor 2's reason is not a one-line misconception (\"Confuses the direction of bending with the effect on apparen…\"); distractor 3's reason is not a one-line misconception (\"Confuses the phenomenon of reflection with refraction, which…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the constant ratio mentioned in Snell's law of refraction?",
+      "reason": "options 0 and 1 say the same thing (\"The ratio of the sine of the angle of incidence to the cosine of the angle of refraction\" / \"The ratio of the cosine of the angle of incidence to the cosine of the angle of refraction\"); options 0 and 2 say the same thing (\"The ratio of the sine of the angle of incidence to the cosine of the angle of refraction\" / \"The ratio of the sine of the angle of incidence to the sine of the angle of refraction\"); options 0 and 3 say the same thing (\"The ratio of the sine of the angle of incidence to the cosine of the angle of refraction\" / \"The ratio of the sine of the angle of incidence to the tangent of the angle of refraction\"); options 2 and 3 say the same thing (\"The ratio of the sine of the angle of incidence to the sine of the angle of refraction\" / \"The ratio of the sine of the angle of incidence to the tangent of the angle of refraction\"); distractor 3's reason is not a one-line misconception (\"Confuses sine with tangent, which is not mentioned in the pa…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which phenomenon is demonstrated when a laser beam is shone through turbid water and its path is seen as bright?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A compound microscope has an objective lens of focal length 0.82 cm and an eyepiece lens of focal length 2.9 cm. If the image is formed at the near point (25 cm), what is the angular magnification of the microscope?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In an optical fibre, what is the reason for the light signal not losing intensity as it travels through the fibre?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why are multi-component lenses used in modern microscopes for both the objective and the eyepiece?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A concave lens has a focal length of -25 cm. What is its power in dioptres?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A compound microscope uses an objective lens of focal length 0.82 cm and an eyepiece lens of focal length 2.9 cm. If the object is placed 0.91 cm from the objective lens, and the image is formed at the near point (25 cm) from the eye, what is the approximate angular magnification of the microscope?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the primary purpose of a simple microscope?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the purpose of using multicomponent lenses in modern microscopes?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a difference between a compound microscope and a telescope?",
+      "reason": "options 1 and 3 say the same thing (\"The focal length of the objective in a compound microscope is greater than that of the eyepiece, while in a telescope it is smaller\" / \"The focal length of the objective in a compound microscope is smaller than that of the eyepiece, while in a telescope it is larger\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A compound microscope has an objective lens of focal length 0.82 cm and an eyepiece lens of focal length 2.9 cm. What is the angular magnification of the microscope if the image is formed at the near point (25 cm)?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(25/2.9)*(15/0.82)\" = 157.69554247266612, but the key says 50"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A convex lens is used to form an image of a small electric bulb on the opposite wall of a room, which is 3 m away. What is the maximum possible focal length of the lens?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A compound microscope has an objective lens of focal length 2.0 cm and an eyepiece of focal length 6.25 cm, separated by 15 cm. At what distance from the objective should an object be placed to obtain the final image at the least distance of distinct vision (25 cm)?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(1/2.0 - 1/25)^-1\" = 2.1739130434782608, but the key says 2.5"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A compound microscope has an objective lens with a focal length of 2.0 cm and an eyepiece with a focal length of 6.25 cm. If the distance between the lenses is 15 cm, where should the object be placed to obtain the final image at the least distance of distinct vision (25 cm)?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A telescope has an objective lens with a focal length of 15 m and an eyepiece with a focal length of 1.0 cm. What is the angular magnification of the telescope in normal adjustment?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A prism is made of glass with a refractive index of 1.55. A parallel beam of light is incident on a face of the prism, and the angle of minimum deviation is measured to be 40°. What is the refractive index of the material of the prism?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A telescope is used to view the moon. The diameter of the moon is 3.48 × 10^6 m, and the radius of its orbit is 3.8 × 10^8 m. What is the diameter of the image of the moon formed by the objective lens of the telescope?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the purpose of a screen in image formation by a convex lens?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A compound microscope has an objective lens of focal length 0.82 cm and an eyepiece of focal length 2.9 cm. What is the approximate angular magnification of the microscope?",
+      "reason": "the critic finds option 1 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a telescope, what is the relationship between the focal length of the objective and the eyepiece for maximum magnification?",
+      "reason": "options 0 and 1 are the same (\"The focal length of the objective is smaller than that of the eyepiece\"); options 0 and 2 say the same thing (\"The focal length of the objective is smaller than that of the eyepiece\" / \"The focal length of the objective is larger than that of the eyepiece\"); options 1 and 2 say the same thing (\"The focal length of the objective is smaller than that of the eyepiece\" / \"The focal length of the objective is larger than that of the eyepiece\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is true about the image formed by a simple microscope?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A compound microscope uses a combination of lenses to achieve high magnification. If a microscope has an objective lens with a focal length of 0.82 cm and an eyepiece with a focal length of 2.9 cm, what is the angular magnification of the microscope when the final image is formed at the near point (25 cm) of the eye?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(1 + 25/2.9)*(0.82/2.9)\" = 2.720332936979786, but the key says 20"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A convex lens is used to form an image of an object placed at infinity. Where is the image formed?",
+      "reason": "near-duplicate of served question cmvliom2e0mzkgpfh1opf3njh (cosine 0.946 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the purpose of using multi-component lenses in modern microscopes?",
+      "reason": "near-duplicate of served question cmvi2t3940bhngpfhv281o2hl (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the primary purpose of using multicomponent lenses in modern microscopes?",
+      "reason": "near-duplicate of served question cmvi2t3940bhngpfhv281o2hl (cosine 0.914 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,773 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T03:17:18.801Z",
+  "finishedAt": "2026-10-30T03:28:14.930Z",
+  "seconds": 656,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc109.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 9 — Atomic Foundations of Matter",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 27,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2009 — question paper]\n37. Which conclusion was a direct result of the gold foil experiment?\n| a) An atom is mostly empty space with a dense, positively charged nucleus.\nb) An atom is composed of at least three types of subatomic particles.\n¢) An electron has a positive charge and is located inside the nucleus.\nd) An electron has properties of both waves and particles.",
+      "[INJSO 2021 — question paper]\nElement Atomic Mass Atomic Number\nH 1.01 1\nC 12.01 6\nN 14.00 7\nO 15.99 8\nF 18.99 9\nNa 22.99 11\nMg 24.30 12\nAl 26.98 13\nS 32.06 16\npH value 0 3\nColour of pH paper Red Orange\nNature of the solution Acidic\nElement Atomic Mass Atomic Number\nCl 35.45 17\nK 39.09 19\nCa 40.07 20\nMn 54.93 25\nFe 55.84 26\nZn 65.38 30\nAg 107.87 47\nI 126.90 53\nBa 137.33 56\n6 7 10 12 14\nYellow Green Blue Violet Indigo\nNeutral Basic",
+      "[INJSO 2020 — solutions or answer key]\n30. (16 marks) The year 2019 was proclaimed by UNESCO as the International Year of the\nPeriodic Table (IYPT 2019), marking the 150 th anniversary of the Mendeleev periodic table,\nwhich is an iconic representation and a vital tool to all who learn and work in science. In\nthis question, some elements have had their symbols replaced by greek letters α, β, γ, etc.,\nbut not in order. All such elements in this question have atomic number of 20 or less. In\naddition, two more elements in the periodic table have been assigned codes X and Q.\nUse the information about their properties, as given below, to assign each element to its\ncorrect greek / roman alphabet code.\n(a) Elements α, β and γ are unreact",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n25. Carbon forms millions of compounds because it has small atomic size, 2\ntherefore, it forms strong and stable C–C bonds, showing extensive\ncatenation. Silicon, being larger in size, forms weaker Si–Si bonds and\ncannot show catenation to the same extent, so it forms fewer compounds."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 188598,
+      "in": 41,
+      "out": 40,
+      "rejects": 1,
+      "promptTokens": 45825,
+      "completionTokens": 9903
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 336899,
+      "in": 40,
+      "out": 34,
+      "rejects": 6,
+      "promptTokens": 21723,
+      "completionTokens": 8323
+    },
+    "solver": {
+      "calls": 220,
+      "ms": 110413,
+      "in": 34,
+      "out": 30,
+      "rejects": 4,
+      "promptTokens": 37522,
+      "completionTokens": 2194
+    },
+    "form": {
+      "calls": 17,
+      "ms": 82187,
+      "in": 30,
+      "out": 15,
+      "rejects": 15,
+      "promptTokens": 9859,
+      "completionTokens": 1979
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 57,
+      "ms": 10323,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 479195,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 27447,
+      "completionTokens": 13416
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 1,
+    "4": 0,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What happens to the mass during a physical change?",
+      "ms": {
+        "draft": 4653,
+        "critique": 5076
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why does the mass remain the same during a chemical change if the gas escapes?",
+      "ms": {
+        "draft": 4653,
+        "critique": 6560
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the conservation of mass in chemical reactions?",
+      "ms": {
+        "draft": 4653,
+        "critique": 7827,
+        "solver": 1904
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which experimental setup is the mass conserved during the reaction?",
+      "ms": {
+        "draft": 4653,
+        "critique": 5402,
+        "solver": 1592,
+        "form": 3807
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student burns 10 g of ethanol in an open beaker, and no residue is left. Does this violate the Law of Conservation of Mass?",
+      "ms": {
+        "draft": 4683,
+        "critique": 7574,
+        "solver": 1412,
+        "form": 3802
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a chemical reaction, 12 g of carbon reacts with 32 g of oxygen. What is the mass of carbon dioxide formed?",
+      "ms": {
+        "draft": 4683,
+        "critique": 8689,
+        "solver": 13519
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the reaction between sodium sulfate and barium chloride, what is observed after mixing the solutions?",
+      "ms": {
+        "draft": 4683,
+        "critique": 7035,
+        "solver": 1602,
+        "form": 4025
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What can be inferred about the formation of a hydrogen molecule based on the passage?",
+      "ms": {
+        "draft": 4622,
+        "critique": 7249,
+        "solver": 1798,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to Dalton's Atomic Theory, how do atoms behave during a chemical reaction?",
+      "ms": {
+        "draft": 4622,
+        "critique": 7070,
+        "solver": 1219,
+        "form": 4385
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is a molecule?",
+      "ms": {
+        "draft": 4622,
+        "critique": 5385,
+        "solver": 1923,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 2 g of hydrogen combines with 16 g of oxygen to form 18 g of water, what does this demonstrate according to the passage?",
+      "ms": {
+        "draft": 4622,
+        "critique": 7021,
+        "solver": 2309,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of bond is formed between hydrogen and chlorine in a hydrogen chloride (HCl) molecule?",
+      "ms": {
+        "draft": 5882,
+        "critique": 8491
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many hydrogen atoms are present in a water molecule?",
+      "ms": {
+        "draft": 5882,
+        "critique": 7552
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why can't elements like helium form molecules?",
+      "ms": {
+        "draft": 4622,
+        "critique": 5427,
+        "solver": 17499,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about the formation of covalent compounds?",
+      "ms": {
+        "draft": 5882,
+        "critique": 9256
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following compounds is named using the prefix 'di-' for the first element?",
+      "ms": {
+        "draft": 5882,
+        "critique": 8701,
+        "solver": 1202,
+        "form": 3961
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the formula unit mass of magnesium hydroxide, Mg(OH)₂? Given: Atomic mass of Mg = 24 u; O = 16 u; H = 1 u.",
+      "ms": {
+        "draft": 13901,
+        "critique": 6683,
+        "solver": 1452
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the formula unit mass of potassium chloride (KCl)? Given: Atomic mass of K = 39 u; Cl = 35.5 u.",
+      "ms": {
+        "draft": 13901,
+        "critique": 8655,
+        "solver": 17457
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following combinations gives the correct number of ions for an ionic compound with a total positive charge of 6+ and a total negative charge of 6–?",
+      "ms": {
+        "draft": 13901,
+        "critique": 8401
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a species has 11 protons, 12 neutrons, and 10 electrons, what is its atomic number and mass number?",
+      "ms": {
+        "draft": 13901,
+        "critique": 11939,
+        "solver": 15218,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, 5.3 g of sodium carbonate reacts with 6.0 g of acetic acid to produce 2.2 g of carbon dioxide, 0.9 g of water, and 8.2 g of sodium acetate. What does this experiment demonstrate?",
+      "ms": {
+        "draft": 13901,
+        "critique": 7181,
+        "solver": 18346,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the solubility of ionic and covalent compounds?",
+      "ms": {
+        "draft": 3219,
+        "critique": 6978,
+        "solver": 1865,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the reason why some covalent compounds do not conduct electricity?",
+      "ms": {
+        "draft": 3219,
+        "critique": 6511,
+        "solver": 1671,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the formula of magnesium chloride, how many chloride ions combine with one magnesium ion?",
+      "ms": {
+        "draft": 21993,
+        "critique": 7592,
+        "solver": 1756,
+        "form": 3177
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following correctly represents the formation of a hydrogen chloride molecule based on the passage?",
+      "ms": {
+        "draft": 4633,
+        "critique": 6766,
+        "solver": 1013,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which scientist proposed the Law of Conservation of Mass?",
+      "ms": {
+        "draft": 4683,
+        "critique": 6196,
+        "solver": 1730,
+        "form": 3143
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the ion formed when chlorine accepts one electron?",
+      "ms": {
+        "draft": 21993,
+        "critique": 6453,
+        "solver": 1706,
+        "form": 3725
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following statements is true about ionic compounds?",
+      "ms": {
+        "draft": 21993,
+        "critique": 8149,
+        "solver": 1537,
+        "form": 4163
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a common property of ionic compounds?",
+      "ms": {
+        "draft": 4138,
+        "critique": 7908,
+        "solver": 1076,
+        "form": 3312,
+        "translation": 51995
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of ionic compounds?",
+      "ms": {
+        "draft": 3219,
+        "critique": 6921,
+        "solver": 1411,
+        "form": 0,
+        "translation": 37512
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of Activity 9.1?",
+      "ms": {
+        "draft": 4653,
+        "critique": 6132,
+        "solver": 1475,
+        "form": 3482,
+        "translation": 39584
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula unit mass of sodium oxide (Na₂O)?",
+      "ms": {
+        "draft": 3219,
+        "critique": 8308,
+        "solver": 1608,
+        "form": 0,
+        "translation": 27641
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the Law of Conservation of Mass state?",
+      "ms": {
+        "draft": 4683,
+        "critique": 7002,
+        "solver": 1004,
+        "form": 3607,
+        "translation": 51852
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the Law of Definite Proportions state about chemical compounds?",
+      "ms": {
+        "draft": 4622,
+        "critique": 6788,
+        "solver": 1842,
+        "form": 3632,
+        "translation": 49495
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following compounds is an example of a covalent compound?",
+      "ms": {
+        "draft": 3219,
+        "critique": 9759,
+        "solver": 1590,
+        "form": 0,
+        "translation": 27398
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the gas produced in a chemical reaction is not contained, what happens to the mass?",
+      "ms": {
+        "draft": 4653,
+        "critique": 7497,
+        "solver": 1528,
+        "form": 2809,
+        "translation": 38498
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is the correct formula for ferric chloride?",
+      "ms": {
+        "draft": 3219,
+        "critique": 7268,
+        "solver": 1540,
+        "form": 0,
+        "translation": 21782
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What type of chemical bond is present in a solid compound that does not conduct electricity in the solid state but conducts electricity when dissolved in water?",
+      "ms": {
+        "draft": 9873,
+        "critique": 7473,
+        "solver": 5512,
+        "form": 0,
+        "translation": 59419
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "An element X has six electrons in its outer shell and forms a diatomic molecule. What kind of bond would it form?",
+      "ms": {
+        "draft": 13901,
+        "critique": 8338,
+        "solver": 15305,
+        "form": 0,
+        "translation": 31877
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a compound has a mass ratio of 40% sulfur and 60% oxygen, how much oxygen is required to combine with 20 g of sulfur?",
+      "ms": {
+        "draft": 4683,
+        "critique": 6518,
+        "solver": 1816,
+        "form": 0,
+        "translation": 38012
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the name of the anion formed by chlorine?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens to the mass during a physical change?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Why does the mass remain the same during a chemical change if the gas escapes?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What does the passage suggest about the conservation of mass in chemical reactions?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In which experimental setup is the mass conserved during the reaction?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'balloon'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student burns 10 g of ethanol in an open beaker, and no residue is left. Does this violate the Law of Conservation of Mass?",
+      "reason": "the key is far longer than every distractor (70 vs 40 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In a chemical reaction, 12 g of carbon reacts with 32 g of oxygen. What is the mass of carbon dioxide formed?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the reaction between sodium sulfate and barium chloride, what is observed after mixing the solutions?",
+      "reason": "figure: figure spec refused: spec.parts.2.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'arrow'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What can be inferred about the formation of a hydrogen molecule based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to Dalton's Atomic Theory, how do atoms behave during a chemical reaction?",
+      "reason": "the key is far longer than every distractor (54 vs 30 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what is a molecule?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 2 g of hydrogen combines with 16 g of oxygen to form 18 g of water, what does this demonstrate according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What type of bond is formed between hydrogen and chlorine in a hydrogen chloride (HCl) molecule?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "How many hydrogen atoms are present in a water molecule?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, why can't elements like helium form molecules?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about the formation of covalent compounds?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following compounds is named using the prefix 'di-' for the first element?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Thinks 'di-' is used for carbon in carbon monoxide, which is…\"); distractor 1's reason is not a one-line misconception (\"Thinks 'di-' is used for carbon in carbon dioxide, which is …\"); distractor 2's reason is not a one-line misconception (\"Thinks 'di-' is used for sulfur in sulfur hexafluoride, whic…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the formula unit mass of magnesium hydroxide, Mg(OH)₂? Given: Atomic mass of Mg = 24 u; O = 16 u; H = 1 u.",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the formula unit mass of potassium chloride (KCl)? Given: Atomic mass of K = 39 u; Cl = 35.5 u.",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following combinations gives the correct number of ions for an ionic compound with a total positive charge of 6+ and a total negative charge of 6–?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a species has 11 protons, 12 neutrons, and 10 electrons, what is its atomic number and mass number?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"11+12\" = 23, but the key says 11"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an experiment, 5.3 g of sodium carbonate reacts with 6.0 g of acetic acid to produce 2.2 g of carbon dioxide, 0.9 g of water, and 8.2 g of sodium acetate. What does this experiment demonstrate?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.liquid: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the solubility of ionic and covalent compounds?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Ionic compounds are insoluble in water and covalent compounds are soluble in water\" / \"Covalent compounds are insoluble in water and ionic compounds are soluble in water\"); options 0 and 2 say the same thing (\"Ionic compounds are insoluble in water and covalent compounds are soluble in water\" / \"Both ionic and covalent compounds are insoluble in water\"); options 0 and 3 say the same thing (\"Ionic compounds are insoluble in water and covalent compounds are soluble in water\" / \"Both ionic and covalent compounds are soluble in water\"); options 1 and 2 say the same thing (\"Covalent compounds are insoluble in water and ionic compounds are soluble in water\" / \"Both ionic and covalent compounds are insoluble in water\"); options 1 and 3 say the same thing (\"Covalent compounds are insoluble in water and ionic compounds are soluble in water\" / \"Both ionic and covalent compounds are soluble in water\"); options 2 and 3 say the same thing (\"Both ionic and covalent compounds are insoluble in water\" / \"Both ionic and covalent compounds are soluble in water\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the reason why some covalent compounds do not conduct electricity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the formula of magnesium chloride, how many chloride ions combine with one magnesium ion?",
+      "reason": "checkExpr \"2\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following correctly represents the formation of a hydrogen chloride molecule based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 are the same (\"H—Cl\"); options 1 and 2 are the same (\"H=Cl\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which scientist proposed the Law of Conservation of Mass?",
+      "reason": "near-duplicate of served question cmvfjoe3a04n6god8xd6fkff2 (cosine 0.957 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the ion formed when chlorine accepts one electron?",
+      "reason": "near-duplicate of served question cmvjq58he0hgagpfh9jb30540 (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following statements is true about ionic compounds?",
+      "reason": "near-duplicate of batch item \"Which of the following is a common property of ion…\" (cosine 0.927 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

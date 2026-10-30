@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Maths Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T21:31:23.414Z",
+  "generatedAt": "2026-10-28T03:00:35.910Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "How many days are there in a week?",
+      "stem": "Which of the following is the name of a day in a week?",
       "choices": [
-        "5 days",
-        "6 days",
-        "7 days",
-        "8 days"
+        "Sunday",
+        "Bike",
+        "Pen",
+        "Table"
       ],
-      "answerIndex": 2,
-      "solution": "There are 7 days in a week because the standard calendar system divides time into seven distinct days: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday. The option '5 days' is incorrect because it omits two days of the week. '6 days' is wrong because it leaves out one day, and '8 days' is incorrect because it adds an extra day that does not exist in the standard week.",
+      "answerIndex": 0,
+      "solution": "The correct answer is Sunday, as it is one of the days of the week. The other options are not days of the week.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक सप्ताह में कितने दिन होते हैं?",
+          "stem": "निम्नलिखित में से कौन एक सप्ताह के दिन का नाम है?",
           "choices": [
-            "5 दिन",
-            "6 दिन",
-            "7 दिन",
-            "8 दिन"
+            "रविवार",
+            "साइकिल",
+            "कलम",
+            "मेज"
           ],
-          "solution": "एक सप्ताह में 7 दिन होते हैं क्योंकि मानक कैलेंडर प्रणाली समय को सात अलग-अलग दिनों में विभाजित करती है: सोमवार, मंगलवार, बुधवार, गुरुवार, शुक्रवार, शनिवार और रविवार। विकल्प '5 दिन' गलत है क्योंकि यह सप्ताह के दो दिन छोड़ देता है। '6 दिन' गलत है क्योंकि यह एक दिन छोड़ देता है, और '8 दिन' गलत है क्योंकि यह एक अतिरिक्त दिन जोड़ देता है जो मानक सप्ताह में नहीं होता है।",
+          "solution": "सही उत्तर रविवार है, क्योंकि यह सप्ताह के दिनों में से एक है। अन्य विकल्प सप्ताह के दिन नहीं हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terms for days of the week.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terms for days of the week and common objects.",
           "flag": null
         },
         "mr": {
-          "stem": "एका आठवड्यात किती दिवस असतात?",
+          "stem": "खालीलपैकी आठवड्यातील दिवसाचे नाव कोणते आहे?",
           "choices": [
-            "5 दिवस",
-            "6 दिवस",
-            "7 दिवस",
-            "8 दिवस"
+            "रविवार",
+            "बाइक",
+            "कलम",
+            "मेज"
           ],
-          "solution": "एका आठवड्यात 7 दिवस असतात कारण मानक कॅलेंडर प्रणाली वेळेला सात वेगवेगळ्या दिवसांमध्ये विभागते: सोमवार, मंगळवार, बुधवार, बुधवार, गुरुवार, शुक्रवार, शनिवार आणि रविवार. '5 दिवस' अयोग्य आहे कारण ते आठवड्यातील दोन दिवस बाजूला ठेवते. '6 दिवस' अयोग्य आहे कारण ते एक दिवस बाजूला ठेवते, आणि '8 दिवस' अयोग्य आहे कारण ते मानक आठवड्यात असलेल्या एका दिवसाच्या जागी एक अतिरिक्त दिवस जोडते.",
+          "solution": "बरोबर उत्तर रविवार आहे, कारण ते आठवड्यातील दिवसांपैकी एक आहे. इतर विकल्प आठवड्यातील दिवस नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses standard Marathi terms for days of the week.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi equivalents for terms like 'day of the week' and 'Sunday'.",
           "flag": null
         }
       },
@@ -72,10 +72,109 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "misses two days of the week",
-        "misses one day of the week",
         null,
-        "adds an extra day"
+        "Confuses days of the week with objects",
+        "Confuses days of the week with objects",
+        "Confuses days of the week with objects"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests basic knowledge of the days of the week. The correct answer is clearly Sunday, and the other options are clearly not days of the week, making the distractors valid and the reasoning sound.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "July"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "Age Fun"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "Age Fun",
+            "Let us Play"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T03:00:35.910Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "Which of the following is the name of a month?",
+      "choices": [
+        "Monday",
+        "Tuesday",
+        "July",
+        "Wednesday"
+      ],
+      "answerIndex": 2,
+      "solution": "July is the name of a month. The other options are days of the week.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा महीने का नाम है?",
+          "choices": [
+            "सोमवार",
+            "मंगलवार",
+            "जुलाई",
+            "बुधवार"
+          ],
+          "solution": "जुलाई महीने का नाम है। अन्य विकल्प सप्ताह के दिन हैं।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately preserves meaning, options, and solution. 'जुलाई' is correctly used for 'July' and 'सप्ताह के दिन' for 'days of the week'.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक महिन्याचे नाव आहे?",
+          "choices": [
+            "सोमवार",
+            "मंगळवार",
+            "जुलै",
+            "बुधवार"
+          ],
+          "solution": "जुलै हे एक महिन्याचे नाव आहे. उरलेल्या विकल्पांमध्ये आठवड्याचे दिवस आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms for days of the week and months.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses months with days of the week",
+        "Confuses months with days of the week",
+        null,
+        "Confuses months with days of the week"
       ],
       "solverAnswers": [
         2,
@@ -85,7 +184,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and tests basic knowledge of the number of days in a week. The correct answer is 7, and the author's reasoning for the incorrect options is valid and reflects common misconceptions.",
+      "critique": "The solution is correct and aligns with the key. July is a month, while the other options are days of the week. The reasons for the wrong options are valid misconceptions.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm113.pdf",
@@ -120,148 +219,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:31:23.414Z",
+      "generatedAt": "2026-10-28T03:00:35.910Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "What is the total number of days in the month of July?",
+      "difficulty": 2,
+      "stem": "Which activity takes about 2-3 months to complete?",
       "choices": [
-        "28 days",
-        "29 days",
-        "30 days",
-        "31 days"
+        "Planting a seed",
+        "Taking a shower",
+        "Eating dinner",
+        "Brushing teeth"
       ],
-      "answerIndex": 3,
-      "solution": "July is one of the months that has 31 days. February has 28 or 29 days depending on the year, and months like April have 30 days. Therefore, the correct answer is 31 days.",
+      "answerIndex": 0,
+      "solution": "Planting a seed takes about 2-3 months because it involves the growth of a plant from a seed to a mature stage, which typically requires that amount of time. Taking a shower, eating dinner, and brushing teeth are all short activities that last only minutes, not months.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "जुलाई माह में कुल कितने दिन होते हैं?",
+          "stem": "कौन सी गतिविधि पूरा होने में लगभग 2-3 महीने लगते हैं?",
           "choices": [
-            "28 दिन",
-            "29 दिन",
-            "30 दिन",
-            "31 दिन"
+            "एक बीज लगाना",
+            "एक नहाना",
+            "रात को खाना",
+            "दांत साफ करना"
           ],
-          "solution": "जुलाई उन महीनों में से एक है जिसमें 31 दिन होते हैं। फरवरी में 28 या 29 दिन होते हैं जो वर्ष पर निर्भर करते हैं, और अप्रैल जैसे महीनों में 30 दिन होते हैं। इसलिए सही उत्तर 31 दिन है।",
+          "solution": "एक बीज लगाना लगभग 2-3 महीने लगते हैं क्योंकि इसमें बीज से पौधे के परिपक्व चरण तक बढ़ने की प्रक्रिया शामिल होती है, जिसके लिए आमतौर पर इतना समय लगता है। नहाना, खाना और दांत साफ करना छोटी गतिविधियां हैं जो केवल मिनटों में पूरा हो जाती हैं, महीनों नहीं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi terms for months and days.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जुलै महिन्यात एकूण किती दिवस असतात?",
+          "stem": "कोणती क्रिया पूर्ण करण्यास जवळपास 2-3 महिने लागतात?",
           "choices": [
-            "28 दिवस",
-            "29 दिवस",
-            "30 दिवस",
-            "31 दिवस"
+            "बियाणे लावणे",
+            "स्नान करणे",
+            "रात्रीचे जेवण खाणे",
+            "दात वाटणे"
           ],
-          "solution": "जुलै हा महिना एक असा महिना आहे ज्यात 31 दिवस असतात. फेब्रुवारी महिन्यात 28 किंवा 30 दिवस असतात, तर एप्रिल महिन्यात 30 दिवस असतात. म्हणून, योग्य उत्तर 31 दिवस आहे.",
+          "solution": "बियाणे लावणे लागतात कारण त्यात बियाणे ते परिपक्व अवस्थेपर्यंत वनस्पतीच्या वाढीचा समावेश आहे, ज्याला सामान्यतः अशा वेळेची आवश्यकता असते. स्नान करणे, रात्रीचे जेवण खाणे आणि दात वाटणे अशा लहान क्रिया आहेत ज्यांना मिनिटे लागतात, महिने नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi terminology for months and days.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "number of days in February",
-        "leap year February",
-        "number of days in April",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward and the correct answer is 31 days. The author's reasoning for the distractors is accurate and reflects common misconceptions about the number of days in different months.",
-      "sources": [
-        {
-          "document": "ncert/3/mathematics/cemm113.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 13: Time G oes O n",
-            "July"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm113.pdf",
-          "ordinal": 1,
-          "pageStart": 4,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 13: Time G oes O n",
-            "Age Fun"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm113.pdf",
-          "ordinal": 2,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 13: Time G oes O n",
-            "Age Fun",
-            "Let us Play"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:31:23.414Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If Hetal is twice as old as her brother and also 10 years older than her brother, how old is her brother?",
-      "choices": [
-        "5 years",
-        "10 years",
-        "15 years",
-        "20 years"
-      ],
-      "answerIndex": 0,
-      "solution": "Let the brother's age be x. Then Hetal's age is 2x. According to the problem, 2x = x + 10, so x = 5. The brother is 5 years old. '10 years' is the difference, not the brother's age. '15 years' and '20 years' are incorrect as they do not satisfy the condition.",
-      "checkExpr": "10/2",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "अगर हेटल अपने भाई से दोगुनी उम्र की है और अपने भाई से 10 साल बड़ी है, तो उसका भाई कितने साल का है?",
-          "choices": [
-            "5 साल",
-            "10 साल",
-            "15 साल",
-            "20 साल"
-          ],
-          "solution": "मान लीजिए भाई की उम्र x है। तो हेटल की उम्र 2x है। समस्या के अनुसार, 2x = x + 10, इसलिए x = 5। भाई 5 साल का है। '10 साल' अंतर है, भाई की उम्र नहीं। '15 साल' और '20 साल' गलत हैं क्योंकि वे स्थिति को संतुष्ट नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology common in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "हेटल आपल्या भाऊपेक्षा दुप्पट वयाची आहे आणि आपल्या भाऊपेक्षा 10 वर्षांनी जास्त वयाची आहे, तर तिचा भाऊ किती वर्षांचा आहे?",
-          "choices": [
-            "5 वर्ष",
-            "10 वर्ष",
-            "15 वर्ष",
-            "20 वर्ष"
-          ],
-          "solution": "मानू तिच्या भाऊचे वय x आहे. तर हेटलचे वय 2x आहे. समस्येनुसार, 2x = x + 10, म्हणून x = 5. भाऊ 5 वर्षांचा आहे. '10 वर्ष' हे फरक आहे, भाऊचे वय नाही. '15 वर्ष' आणि '20 वर्ष' अयोग्य आहेत कारण ते अट पूर्ण करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution and options are correctly translated and retain their original logic.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
           "flag": null
         }
       },
@@ -271,9 +271,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "confuses the age difference with the brother's age",
-        "adds the age difference",
-        "multiplies the age difference"
+        "Thinks taking a shower takes 2-3 months instead of minutes",
+        "Thinks eating dinner takes 2-3 months instead of minutes",
+        "Thinks brushing teeth takes 2-3 months instead of minutes"
       ],
       "solverAnswers": [
         0,
@@ -282,43 +282,304 @@
         0,
         0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is logically sound and correctly solves the equation. The reasoning for the distractors aligns with common misconceptions students might have.",
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as planting a seed (for certain vegetables) takes 2-3 months. The other options are clearly much shorter in duration, and the author's reasoning for the distractors reflects common misconceptions about time duration.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm113.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
+          "ordinal": 3,
+          "pageStart": 9,
+          "pageEnd": 12,
           "headingPath": [
             "Chapter 13: Time G oes O n",
-            "July"
+            "Visit to Nani’s House (Grandma’s House)",
+            "Let us Think"
           ]
         },
         {
           "document": "ncert/3/mathematics/cemm113.pdf",
-          "ordinal": 1,
-          "pageStart": 4,
-          "pageEnd": 6,
+          "ordinal": 4,
+          "pageStart": 12,
+          "pageEnd": 12,
           "headingPath": [
             "Chapter 13: Time G oes O n",
-            "Age Fun"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm113.pdf",
-          "ordinal": 2,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 13: Time G oes O n",
-            "Age Fun",
-            "Let us Play"
+            "Visit to Nani’s House (Grandma’s House)",
+            "Let us Explore"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:31:23.414Z",
+      "generatedAt": "2026-10-28T03:00:35.910Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an activity that takes months?",
+      "choices": [
+        "Changing from summer to winter",
+        "Stitching a shirt",
+        "Taking a shower",
+        "Brushing teeth"
+      ],
+      "answerIndex": 0,
+      "solution": "Changing from summer to winter is an example of an activity that takes months because it involves the gradual shift in seasons due to Earth's orbit and axial tilt. The other options—stitching a shirt, taking a shower, and brushing teeth—are all short-term activities that occur within minutes or less.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी एक गतिविधि है जिसे महीनों लगते हैं?",
+          "choices": [
+            "गर्मी से सर्दी में परिवर्तन",
+            "एक शर्ट सीवना",
+            "एक नहाना",
+            "दांतों की ब्रश करना"
+          ],
+          "solution": "गर्मी से सर्दी में परिवर्तन महीनों लेने वाली गतिविधि का एक उदाहरण है क्योंकि इसमें पृथ्वी के कक्ष और धुरी झुकाव के कारण मौसम में धीरे-धीरे परिवर्तन शामिल होता है। अन्य विकल्प—एक शर्ट सीवना, एक नहाना और दांतों की ब्रश करना—सभी लघु अवधि वाली गतिविधियां हैं जो केवल मिनटों में हो जाती हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects original meaning with appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक अॅक्टिविटी महिन्यांचा वेळ घेते?",
+          "choices": [
+            "उन्हाळा ते हिवाळा बदलणे",
+            "शर्ट सांबाडणे",
+            "स्नान करणे",
+            "दात घासणे"
+          ],
+          "solution": "उन्हाळा ते हिवाळा बदलणे ही महिन्यांचा वेळ घेणारी अॅक्टिविटीचे उदाहरण आहे कारण त्यात पृथ्वीच्या कक्षा आणि अक्षीय झुकाणामुळे विस्तारित ऋतूंचा बदल होतो. इतर विकल्प - शर्ट सांबाडणे, स्नान करणे आणि दात घासणे - ही लहान अॅक्टिविटी आहेत जी मिनिटांमध्ये किंवा त्याहूनही कमी वेळात होतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks stitching a shirt takes months instead of hours",
+        "Thinks taking a shower takes months instead of minutes",
+        "Thinks brushing teeth takes months instead of minutes"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as changing from summer to winter is a seasonal change that takes months. The other options are short-duration activities, and the author's reasoning for the wrong options reflects common misconceptions about time duration.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 3,
+          "pageStart": 9,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "Visit to Nani’s House (Grandma’s House)",
+            "Let us Think"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 4,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "Visit to Nani’s House (Grandma’s House)",
+            "Let us Explore"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T03:00:35.910Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a sand clock takes 10 minutes to complete, which of the following activities can it time?",
+      "choices": [
+        "Brushing teeth",
+        "Taking a shower",
+        "Eating dinner",
+        "Completing a chapter in class"
+      ],
+      "answerIndex": 0,
+      "solution": "A sand clock that takes 10 minutes to complete can time activities that last around that duration. Brushing teeth is typically a short activity that can be completed in about 10 minutes. Taking a shower, eating dinner, and completing a chapter in class usually take longer than 10 minutes, making them unsuitable for timing with this sand clock.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक रेत का घड़ी 10 मिनट में पूरा होता है, तो निम्नलिखित में से कौन-सी गतिविधि इसके द्वारा समय ले सकता है?",
+          "choices": [
+            "दांत ब्रश करना",
+            "स्नान करना",
+            "रात का भोजन करना",
+            "कक्षा में एक अध्याय पूरा करना"
+          ],
+          "solution": "10 मिनट में पूरा होने वाला रेत का घड़ी उन गतिविधियों के समय को माप सकता है जो लगभग इतने समय लेती हैं। दांत ब्रश करना आमतौर पर एक छोटी गतिविधि होती है जो लगभग 10 मिनट में पूरी हो जाती है। स्नान करना, रात का भोजन करना और कक्षा में एक अध्याय पूरा करना आमतौर पर 10 मिनट से अधिक समय लेते हैं, जिसके कारण इनके समय के लिए इस रेत के घड़ी का उपयोग अनुचित होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Hindi-medium education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक रेतीचा घडा 10 मिनिटांत पूर्ण होतो, तर खालीलपैकी कोणती क्रिया त्याने वेळ घेऊ शकेल?",
+          "choices": [
+            "दात घासणे",
+            "स्नान करणे",
+            "रात्रीचा जेवण करणे",
+            "कक्षेत एक अध्याय पूर्ण करणे"
+          ],
+          "solution": "10 मिनिटांत पूर्ण होणारा रेतीचा घडा अशा क्रियांना वेळ घेऊ शकतो ज्या अंदाजे तितक्या वेळेत पूर्ण होतात. दात घासणे ही एक लहान क्रिया आहे जी जवळपास 10 मिनिटांत पूर्ण होऊ शकते. स्नान करणे, रात्रीचा जेवण करणे आणि कक्षेत एक अध्याय पूर्ण करणे ही क्रिया अंदाजे 10 मिनिटांपेक्षा जास्त वेळ घेतात, त्यामुळे या रेतीच्या घड्याने त्यांचा वेळ घेणे अयोग्य आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks taking a shower takes 10 minutes instead of minutes, which is not accurate",
+        "Thinks eating dinner takes 10 minutes instead of minutes, which is not accurate",
+        "Thinks completing a chapter in class takes 10 minutes instead of weeks, which is not accurate"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is sound and matches the correct answer. The reasoning aligns with the assumption that brushing teeth is a short activity that can be timed by a 10-minute sand clock, while the other options are longer.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 3,
+          "pageStart": 9,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "Visit to Nani’s House (Grandma’s House)",
+            "Let us Think"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 4,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "Visit to Nani’s House (Grandma’s House)",
+            "Let us Explore"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T03:00:35.910Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the time taken to complete a task is 1 hour 30 minutes, how many minutes is that?",
+      "choices": [
+        "90 minutes",
+        "100 minutes",
+        "120 minutes",
+        "150 minutes"
+      ],
+      "answerIndex": 0,
+      "solution": "1 hour is 60 minutes, and adding 30 minutes gives a total of 90 minutes. The option 100 minutes is 10 minutes more than the correct amount. 120 minutes is 2 hours, and 150 minutes is 2 hours 30 minutes, both of which are longer than the given time.",
+      "checkExpr": "60+30",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी कार्य को पूरा करने में समय लगता है 1 घंटा 30 मिनट, तो इसके कितने मिनट होते हैं?",
+          "choices": [
+            "90 मिनट",
+            "100 मिनट",
+            "120 मिनट",
+            "150 मिनट"
+          ],
+          "solution": "1 घंटा 60 मिनट होता है और 30 मिनट जोड़ने से कुल 90 मिनट प्राप्त होता है। 100 मिनट सही राशि से 10 मिनट अधिक है। 120 मिनट दो घंटे है और 150 मिनट दो घंटे 30 मिनट है, दोनों ही दिए गए समय से अधिक हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi terminology for time units.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "काम पूर्ण करण्यासाठी लागणारा वेळ 1 तास 30 मिनिटे असेल तर ते किती मिनिटे आहे?",
+          "choices": [
+            "90 मिनिटे",
+            "100 मिनिटे",
+            "120 मिनिटे",
+            "150 मिनिटे"
+          ],
+          "solution": "1 तास 60 मिनिटे असतात आणि 30 मिनिटे मिळवल्याने एकूण 90 मिनिटे होतात. 100 मिनिटे हे खर्ची जास्त 10 मिनिटे आहेत. 120 मिनिटे हे 2 तास असतात आणि 150 मिनिटे हे 2 तास 30 मिनिटे असतात, जे दोन्ही दिलेल्या वेळेपेक्षा जास्त आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for time units.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "adds 60 + 40 instead of 60 + 30",
+        "thinks 1 hour is 100 minutes",
+        "thinks 1 hour is 120 minutes"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward and the correct answer is clearly 90 minutes. The author's solution is accurate, and the reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 3,
+          "pageStart": 9,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "Visit to Nani’s House (Grandma’s House)",
+            "Let us Think"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm113.pdf",
+          "ordinal": 4,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 13: Time G oes O n",
+            "Visit to Nani’s House (Grandma’s House)",
+            "Let us Explore"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T03:00:35.910Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

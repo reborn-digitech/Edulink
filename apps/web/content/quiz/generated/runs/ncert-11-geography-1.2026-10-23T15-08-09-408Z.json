@@ -1,0 +1,656 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T15:08:09.408Z",
+  "finishedAt": "2026-10-23T15:17:46.891Z",
+  "seconds": 577,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Pratical Work in Geography",
+    "bookCode": "kegy3",
+    "document": "ncert/11/geography/kegy301.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 1 — Introduction to Maps",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n7. Section E Question number 29 and 30 are Map based questions.",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\nSECTION E\nQuestion numbers 29 & 30 are Map based questions having 5 sub-parts each.",
+      "[CBSE Class XII Geography, sample question paper, 2022-23]\nSECTION D\nQuestion numbers 29 & 30 are Map based questions having 5\nsub-parts each.",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 178455,
+      "in": 33,
+      "out": 33,
+      "rejects": 0,
+      "promptTokens": 24653,
+      "completionTokens": 6702
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 337266,
+      "in": 33,
+      "out": 28,
+      "rejects": 5,
+      "promptTokens": 15896,
+      "completionTokens": 6329
+    },
+    "solver": {
+      "calls": 171,
+      "ms": 113345,
+      "in": 28,
+      "out": 22,
+      "rejects": 6,
+      "promptTokens": 27903,
+      "completionTokens": 1647
+    },
+    "form": {
+      "calls": 11,
+      "ms": 79706,
+      "in": 22,
+      "out": 11,
+      "rejects": 11,
+      "promptTokens": 4767,
+      "completionTokens": 1329
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 9,
+      "ms": 2004,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 601838,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 21468,
+      "completionTokens": 11126
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a map is to be drawn for a specific purpose, what should the cartographer do first according to the passage?",
+      "ms": {
+        "draft": 9353,
+        "critique": 7036
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes a map according to the passage?",
+      "ms": {
+        "draft": 9353,
+        "critique": 7859
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key factor in determining the information that a map can show?",
+      "ms": {
+        "draft": 9353,
+        "critique": 7902,
+        "solver": 2820,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A map is created to show the distribution of rainfall in a region. According to the passage, which of the following would be the most important consideration for the cartographer?",
+      "ms": {
+        "draft": 9353,
+        "critique": 8274,
+        "solver": 1655,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes a map according to the passage?",
+      "ms": {
+        "draft": 9353,
+        "critique": 9678
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a map is drawn at a scale of 1:25,000, which of the following would it most likely show?",
+      "ms": {
+        "draft": 4892,
+        "critique": 9667,
+        "solver": 2584
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main purpose of a relief map?",
+      "ms": {
+        "draft": 4892,
+        "critique": 11832,
+        "solver": 1712,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of using different map scales?",
+      "ms": {
+        "draft": 4892,
+        "critique": 11559,
+        "solver": 2363,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A map has been drawn for a school project, and it is important to show all the buildings and pathways. Which of the following would a cartographer most likely do to ensure this?",
+      "ms": {
+        "draft": 9353,
+        "critique": 9579,
+        "solver": 19349,
+        "form": 3218
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a map has a scale of 1:4000, which of the following is it most likely to be?",
+      "ms": {
+        "draft": 4008,
+        "critique": 9829,
+        "solver": 2101
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary purpose of a population map?",
+      "ms": {
+        "draft": 4008,
+        "critique": 8149,
+        "solver": 2045,
+        "form": 4595
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is not a type of map mentioned in the chapter?",
+      "ms": {
+        "draft": 4061,
+        "critique": 9439,
+        "solver": 1496
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not an essential element of maps?",
+      "ms": {
+        "draft": 4061,
+        "critique": 6740,
+        "solver": 23005
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the primary function of a map?",
+      "ms": {
+        "draft": 4061,
+        "critique": 10829,
+        "solver": 2542,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of cadastral maps?",
+      "ms": {
+        "draft": 4449,
+        "critique": 10817
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a type of physical map?",
+      "ms": {
+        "draft": 4449,
+        "critique": 7761
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a method to calculate the area of a region on a map?",
+      "ms": {
+        "draft": 4061,
+        "critique": 10853,
+        "solver": 22956
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a map shows the distribution of different types of soils, what type of map is it?",
+      "ms": {
+        "draft": 4449,
+        "critique": 8283,
+        "solver": 2504,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a map that shows the distribution of rainfall in a district. Which type of map is this?",
+      "ms": {
+        "draft": 4449,
+        "critique": 8346,
+        "solver": 1647,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a function of a topographical map?",
+      "ms": {
+        "draft": 4449,
+        "critique": 9594,
+        "solver": 3119,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A map of a city is drawn at a scale of 1:10,000. If the distance between two landmarks on the map is 5 cm, what is the actual distance between them on the ground?",
+      "ms": {
+        "draft": 5473,
+        "critique": 9557,
+        "solver": 1842,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a task of a cartographer?",
+      "ms": {
+        "draft": 5473,
+        "critique": 11401,
+        "solver": 15972
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT an essential element of maps?",
+      "ms": {
+        "draft": 4008,
+        "critique": 10815,
+        "solver": 2192,
+        "form": 4847
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main purpose of a map legend?",
+      "ms": {
+        "draft": 4061,
+        "critique": 7084,
+        "solver": 3997,
+        "form": 4137
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the purpose of a map legend?",
+      "ms": {
+        "draft": 4008,
+        "critique": 9389,
+        "solver": 1820,
+        "form": 3952,
+        "translation": 64113
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a type of map based on scale?",
+      "ms": {
+        "draft": 4892,
+        "critique": 11148,
+        "solver": 2184,
+        "form": 0,
+        "translation": 58474
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of a cadastral map?",
+      "ms": {
+        "draft": 4892,
+        "critique": 9492,
+        "solver": 2645,
+        "form": 4321,
+        "translation": 73447
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of map is used to show the distribution of population in a district?",
+      "ms": {
+        "draft": 4061,
+        "critique": 6373,
+        "solver": 1751,
+        "form": 6181,
+        "translation": 68303
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes a map?",
+      "ms": {
+        "draft": 5473,
+        "critique": 9675,
+        "solver": 2465,
+        "form": 0,
+        "translation": 61258
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is used to measure the area of a feature on a map?",
+      "ms": {
+        "draft": 4008,
+        "critique": 11777,
+        "solver": 2212,
+        "form": 3286,
+        "translation": 61322
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a map is used to show the distribution of different types of soils, which of the following would it be classified as?",
+      "ms": {
+        "draft": 4892,
+        "critique": 10346,
+        "solver": 2770,
+        "form": 4364,
+        "translation": 80173
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A map is drawn using a specific projection. Which of the following is a consequence of this projection?",
+      "ms": {
+        "draft": 5473,
+        "critique": 9923,
+        "solver": 1449,
+        "form": 3426,
+        "translation": 61697
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a map is drawn to show the location of schools, post offices, and other services, what type of map is it most likely to be?",
+      "ms": {
+        "draft": 4449,
+        "critique": 8296,
+        "solver": 1876,
+        "form": 0,
+        "translation": 67424
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a map is to be drawn for a specific purpose, what should the cartographer do first according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes a map according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key factor in determining the information that a map can show?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct factor\",\"Focuses on design rather than content…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A map is created to show the distribution of rainfall in a region. According to the passage, which of the following would be the most important consideration for the cartographer?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Focuses on physical constraints of the map\",\"Focuses on scal…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes a map according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a map is drawn at a scale of 1:25,000, which of the following would it most likely show?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main purpose of a relief map?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of using different map scales?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A map has been drawn for a school project, and it is important to show all the buildings and pathways. Which of the following would a cartographer most likely do to ensure this?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'building'"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a map has a scale of 1:4000, which of the following is it most likely to be?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the primary purpose of a population map?",
+      "reason": "the key is far longer than every distractor (59 vs 34 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is not a type of map mentioned in the chapter?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is not an essential element of maps?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the primary function of a map?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main purpose of cadastral maps?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a type of physical map?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a method to calculate the area of a region on a map?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a map shows the distribution of different types of soils, what type of map is it?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer','Confuses climatic maps with soil maps…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a map that shows the distribution of rainfall in a district. Which type of map is this?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer','Confuses relief maps with climatic maps…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a function of a topographical map?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A map of a city is drawn at a scale of 1:10,000. If the distance between two landmarks on the map is 5 cm, what is the actual distance between them on the ground?",
+      "reason": "options are in more than one unit (m, km); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a task of a cartographer?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is NOT an essential element of maps?",
+      "reason": "near-duplicate of served question cmvhpv0090a2zgpfhm9zvtwd7 (cosine 0.907 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the main purpose of a map legend?",
+      "reason": "near-duplicate of batch item \"What is the purpose of a map legend?…\" (cosine 0.971 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

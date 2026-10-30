@@ -1,0 +1,256 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:52:55.849Z",
+  "finishedAt": "2026-10-28T04:54:03.886Z",
+  "seconds": 68,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap124.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 24 — Home and Abroad",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 23235,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7626,
+      "completionTokens": 1446
+    },
+    "critique": {
+      "calls": 13,
+      "ms": 66958,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 5236,
+      "completionTokens": 2230
+    },
+    "solver": {
+      "calls": 70,
+      "ms": 39168,
+      "in": 7,
+      "out": 3,
+      "rejects": 4,
+      "promptTokens": 14289,
+      "completionTokens": 815
+    },
+    "form": {
+      "calls": 2,
+      "ms": 2149,
+      "in": 3,
+      "out": 0,
+      "rejects": 3,
+      "promptTokens": 414,
+      "completionTokens": 82
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 3080,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 165,
+      "completionTokens": 234
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What is one reason that many trees cannot grow in desert areas according to the passage?",
+      "ms": {
+        "draft": 3332,
+        "critique": 4709,
+        "solver": 12192,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the capital city of the United Arab Emirates where Chittappan worked?",
+      "ms": {
+        "draft": 3332,
+        "critique": 4386,
+        "solver": 11634,
+        "form": 2203
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Shanta and Sashi say they were not tired after their journey?",
+      "ms": {
+        "draft": 3332,
+        "critique": 4679,
+        "solver": 14178
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic of the buildings in Abu Dhabi according to the passage?",
+      "ms": {
+        "draft": 3332,
+        "critique": 3318,
+        "solver": 658
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the capital city of United Arab Emirates mentioned in the passage?",
+      "ms": {
+        "draft": 2477,
+        "critique": 6655
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where did Chittappan work for five years?",
+      "ms": {
+        "draft": 2477,
+        "critique": 7022,
+        "solver": 1979
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the family bring as gifts for everyone?",
+      "ms": {
+        "draft": 2477,
+        "critique": 6432,
+        "solver": 10256
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the currency used in Abu Dhabi?",
+      "ms": {
+        "draft": 2477,
+        "critique": 6526,
+        "solver": 7058,
+        "form": 602
+      },
+      "outcome": "form",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is one reason that many trees cannot grow in desert areas according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the capital city of the United Arab Emirates where Chittappan worked?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the location of the story with the place of origin …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did Shanta and Sashi say they were not tired after their journey?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a characteristic of the buildings in Abu Dhabi according to the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the capital city of United Arab Emirates mentioned in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Where did Chittappan work for five years?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did the family bring as gifts for everyone?",
+      "reason": "after redraft: the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the currency used in Abu Dhabi?",
+      "reason": "options 1 and 3 are the same (\"Dollar\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,893 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T23:25:14.795Z",
+  "finishedAt": "2026-10-25T23:34:00.194Z",
+  "seconds": 525,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Physics Part-II",
+    "bookCode": "keph2",
+    "document": "ncert/11/physics/keph203.pdf",
+    "classLevel": 11,
+    "subject": "Physics",
+    "chapter": "Chapter 3 — Thermal Properties of Matter",
+    "edition": "Reprint 2026-27",
+    "chunks": 35,
+    "groups": 11
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INPhO 2015 — question paper and solutions]\n5. While performing an experiment with a liquid z (specific heat capacity 2.19kJ Kg K ), an -1\nexperimenter starts with 200 ml of the liquid z in a beaker on a hot plate which is attached with scales to\nmeasure mass on it along with time. There is no lid over the beaker and the liquid is kept exposed to the\nsurrounding. The experimenter inserts a thermometer such that it is always in contact with the liquid near\nthe bottom of the beaker. The experimenter turns on the hot plate at t=0 min. and records the liquid\ntemperature as well as the combined mass of the liquid, beaker and thermometer every minute. After 24\nmins. he observes that there is no more liquid in the beaker. The observations ar",
+      "[CBSE Class XII Physics, sample question paper, 2022-23]\n3. The temperature (T) dependence of resistivity of materials A and 1\nmaterial B is represented by fig (i) and fig (ii) respectively.\nIdentify material A and material B.\n(i) material A is copper and material B is germanium\n(ii) material A is germanium and material B is copper\n(iii) material A is nichrome and material B is germanium\n(iv) material A is copper and material B is nichrome",
+      "[CBSE Class XII Physics, sample question paper, 2023-24]\n20. A heating element using nichrome connected to a 230 V supply draws an initial\ncurrent of 3.2 A which settles after a few seconds to a steady value of 2.8 A. What\nis the steady temperature of the heating element if the room temperature is 27.0 °C\nand the temperature coefficient of resistance of nichrome is 1.70 × 10 –4 °C –1 ?",
+      "[INPhO 2015 — question paper and solutions]\n(iii) Give two possible reasons as to why the there is a 1 fluctuation in temperature after 15 mins. (2) 0\nLeast count of instrument is 1C; Statistical fluctuations such as non-uniform heating by 0\nthe hot plate, convective corrections, radiation etc.\nc) Plot m vs. t after t= 15 min. (4)\n(Marking scheme: 0.5 for using the full graph paper; 0.5 for mentioning scaling of x axis; 0.5 for\nmentioning scaling of y axis; 2.0 for drawing a smooth graph and taking an average line; 0.5 points for\nchoosing two far off points to calculate slope)\nAB See\nBo EE Rae\nEons canis\nBa\nHEN EE Te\nsa\nA NE\nWeim DEL\n| ET\n: lL... -\n| eo CL The |\nBe i RN\n| 3 dof gS Sl =\nMLE Eo Bes\nMsciaii nuh anpnn\ngo i - =\n= 3 nc\n£0 N"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 236098,
+      "in": 47,
+      "out": 44,
+      "rejects": 3,
+      "promptTokens": 57458,
+      "completionTokens": 13087
+    },
+    "critique": {
+      "calls": 60,
+      "ms": 397603,
+      "in": 44,
+      "out": 36,
+      "rejects": 8,
+      "promptTokens": 28381,
+      "completionTokens": 10444
+    },
+    "solver": {
+      "calls": 279,
+      "ms": 154427,
+      "in": 36,
+      "out": 22,
+      "rejects": 14,
+      "promptTokens": 56537,
+      "completionTokens": 2997
+    },
+    "form": {
+      "calls": 7,
+      "ms": 24964,
+      "in": 22,
+      "out": 8,
+      "rejects": 14,
+      "promptTokens": 3548,
+      "completionTokens": 728
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 31,
+      "ms": 6008,
+      "in": 8,
+      "out": 2,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 62264,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4214,
+      "completionTokens": 2284
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the SI unit of heat energy?",
+      "ms": {
+        "draft": 4811,
+        "critique": 5164
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A glass of ice-cold water is placed on a table. What happens to the heat in the system after some time?",
+      "ms": {
+        "draft": 4811,
+        "critique": 5402
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the Celsius and Fahrenheit temperature scales?",
+      "ms": {
+        "draft": 4811,
+        "critique": 7401,
+        "solver": 16811
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is the Kelvin scale considered an absolute temperature scale?",
+      "ms": {
+        "draft": 4811,
+        "critique": 7191
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A hot plate is used to heat a liquid in a beaker. The mass of the liquid decreases over time. What is the most likely reason for this?",
+      "ms": {
+        "draft": 4811,
+        "critique": 6516,
+        "solver": 18025,
+        "form": 3338
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the temperature in Kelvin and Celsius scales according to the passage?",
+      "ms": {
+        "draft": 3545,
+        "critique": 7749,
+        "solver": 13322,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is an example of thermal expansion?",
+      "ms": {
+        "draft": 3545,
+        "critique": 8200,
+        "solver": 10640,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the specific heat capacity of a substance indicate?",
+      "ms": {
+        "draft": 4351,
+        "critique": 6318,
+        "solver": 1633,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that water exhibits anomalous behavior, contracting between 0 °C and 4 °C. What is the significance of this property?",
+      "ms": {
+        "draft": 3545,
+        "critique": 8447,
+        "solver": 11965,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A constant-volume gas thermometer measures temperature based on the change in pressure of a gas. If the pressure of the gas increases, what does this indicate about the temperature?",
+      "ms": {
+        "draft": 3545,
+        "critique": 6225,
+        "solver": 12849,
+        "form": 3686
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, how is the coefficient of volume expansion related to the coefficient of linear expansion?",
+      "ms": {
+        "draft": 4351,
+        "critique": 5576,
+        "solver": 1711,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 200 ml of a liquid with specific heat capacity 2.19 kJ/kg·K is heated, and its temperature increases from 27°C to 100°C, what is the amount of heat absorbed by the liquid?",
+      "ms": {
+        "draft": 4351,
+        "critique": 7451,
+        "solver": 1711
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A blacksmith needs to fit an iron ring on a wooden wheel. The ring has a diameter of 5.231 m at 27°C, and the wheel's rim has a diameter of 5.243 m. What is the temperature to which the ring must be heated to fit the rim?",
+      "ms": {
+        "draft": 4351,
+        "critique": 5622,
+        "solver": 1726
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A heating element made of nichrome has a resistance of 100 Ω at 27°C. It is connected to a 230 V supply and draws an initial current of 3.2 A, which settles to 2.8 A. What is the steady temperature of the heating element?",
+      "ms": {
+        "draft": 4351,
+        "critique": 6798,
+        "solver": 1687
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A calorimeter is used to measure heat transfer between substances. Which of the following is a correct statement about a calorimeter?",
+      "ms": {
+        "draft": 4004,
+        "critique": 6396,
+        "solver": 2000
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the temperature and pressure at which all three phases of a substance coexist?",
+      "ms": {
+        "draft": 9952,
+        "critique": 5277
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A sphere of mass 0.047 kg made of aluminium is placed in boiling water, then transferred to a copper calorimeter containing 0.25 kg of water. The temperature of the water rises from 20°C to 23°C. What is the specific heat capacity of aluminium?",
+      "ms": {
+        "draft": 4004,
+        "critique": 7179,
+        "solver": 2196
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which mode of heat transfer involves the actual motion of matter?",
+      "ms": {
+        "draft": 55172,
+        "critique": 6222
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student performs an experiment where a metal sphere is placed in boiling water and then transferred to a calorimeter with water. The student observes that the temperature of the water increases slowly and does not reach a steady state. What could be a possible reason for this observation?",
+      "ms": {
+        "draft": 4004,
+        "critique": 5694,
+        "solver": 13973
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary mechanism of heat transfer through a solid material due to a temperature difference?",
+      "ms": {
+        "draft": 4086,
+        "critique": 7536,
+        "solver": 7767,
+        "form": 1201
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A copper block of mass 2.5 kg is heated in a furnace to a temperature of 500 °C and then placed on a large ice block. What is the maximum amount of ice that can melt?",
+      "ms": {
+        "draft": 4670,
+        "critique": 5342,
+        "solver": 1902
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In an experiment on the specific heat of a metal, a 0.20 kg block of the metal at 150 °C is dropped in a copper calorimeter (of water equivalent 0.025 kg) containing 150 cm³ of water at 27 °C. The final temperature is 40 °C. Compute the specific heat of the metal.",
+      "ms": {
+        "draft": 4670,
+        "critique": 6490,
+        "solver": 2074
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The temperature (T) dependence of resistivity of materials A and B is represented by the graphs. Identify material A and material B.",
+      "ms": {
+        "draft": 4670,
+        "critique": 7974,
+        "solver": 1556,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A child running a temperature of 101°F is given an antipyrin (i.e. a medicine that lowers fever) which causes an increase in the rate of evaporation of sweat from his body. If the fever is brought down to 98 °F in 20 minutes, what is the average rate of extra evaporation caused by the drug?",
+      "ms": {
+        "draft": 4670,
+        "critique": 7625,
+        "solver": 1549
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to Newton’s Law of Cooling, what is the rate of cooling of a body proportional to?",
+      "ms": {
+        "draft": 3873,
+        "critique": 6570
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A steel rod is measured to be 63.0 cm long on a hot day when the temperature is 45.0 °C. If the coefficient of linear expansion of steel is 1.20 × 10^{-5} °C^{-1}, what is the actual length of the steel rod at 27.0 °C?",
+      "ms": {
+        "draft": 3873,
+        "critique": 9582,
+        "solver": 1559
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following relations is correct for the thermal expansion of a material?",
+      "ms": {
+        "draft": 3873,
+        "critique": 9105,
+        "solver": 13014
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A graph is plotted between the temperature of hot water and time, showing its cooling. According to Newton's law of cooling, which of the following statements is correct?",
+      "ms": {
+        "draft": 8590,
+        "critique": 8206,
+        "solver": 1122,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A pan filled with hot food is 50°C above room temperature. It cools from 94°C to 86°C in 2 minutes when the room temperature is 20°C. How long will it take to cool from 71°C to 69°C?",
+      "ms": {
+        "draft": 8590,
+        "critique": 7645,
+        "solver": 2370
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A brass rod and a steel rod of the same length and diameter are joined together. What is the change in length of the combined rod at 250 °C, if the original lengths are at 40.0 °C?",
+      "ms": {
+        "draft": 3873,
+        "critique": 7685,
+        "solver": 13616
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A heating element using nichrome connected to a 230 V supply draws an initial current of 3.2 A which settles after a few seconds to a steady value of 2.8 A. What is the steady temperature of the heating element if the room temperature is 27.0 °C and the temperature coefficient of resistance of nichrome is 1.70 × 10⁻⁴ °C⁻¹?",
+      "ms": {
+        "draft": 8590,
+        "critique": 7991
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which mechanism of heat transfer does not require a medium?",
+      "ms": {
+        "draft": 8325,
+        "critique": 7198,
+        "solver": 1317,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an experiment, hot water is cooled in a calorimeter, and a graph is plotted between the temperature of water and time. The graph shows that the rate of cooling decreases as the temperature of water decreases. What is the reason for this decrease in the rate of cooling?",
+      "ms": {
+        "draft": 8590,
+        "critique": 8447,
+        "solver": 13164,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A body at 3000 K emits radiation. What is the wavelength of maximum energy emitted by this body, given that Wien's constant is 2.9 × 10⁻³ m·K?",
+      "ms": {
+        "draft": 8325,
+        "critique": 7831,
+        "solver": 1530,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary mechanism of heat transfer through a metallic rod when one end is heated?",
+      "ms": {
+        "draft": 4712,
+        "critique": 7870
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the wavelength of maximum energy emitted by a blackbody when its temperature increases?",
+      "ms": {
+        "draft": 8325,
+        "critique": 7740,
+        "solver": 12953,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a metal rod has a coefficient of linear expansion of 10 × 10^-6 K^-1, what will happen to the rod when its temperature increases?",
+      "ms": {
+        "draft": 3545,
+        "critique": 7218,
+        "solver": 12137,
+        "form": 2592
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct formula for the fractional change in length due to thermal expansion?",
+      "ms": {
+        "draft": 3545,
+        "critique": 5753,
+        "solver": 1563,
+        "form": 3287
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a calorimetry experiment, a hot object is placed in a calorimeter containing water. The heat lost by the object is equal to the heat gained by the water and the calorimeter. This principle is based on which of the following?",
+      "ms": {
+        "draft": 4004,
+        "critique": 5013,
+        "solver": 1184,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A 10 kW drilling machine is used to drill a bore in a small aluminium block of mass 8.0 kg. How much is the rise in temperature of the block in 2.5 minutes, assuming 50% of power is used up in heating the machine itself or lost to the surroundings?",
+      "ms": {
+        "draft": 4670,
+        "critique": 4775,
+        "solver": 1378,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A brass boiler has a base area of 0.15 m² and thickness 1.0 cm. It boils water at the rate of 6.0 kg/min when placed on a gas stove. Estimate the temperature of the part of the flame in contact with the boiler.",
+      "ms": {
+        "draft": 4670,
+        "critique": 6543,
+        "solver": 2248,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formula for the specific heat capacity of a substance?",
+      "ms": {
+        "draft": 3873,
+        "critique": 7951,
+        "solver": 14017,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which mode of heat transfer involves the actual motion of matter?",
+      "ms": {
+        "draft": 2360,
+        "critique": 6391,
+        "solver": 10197,
+        "form": 0,
+        "translation": 27327
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes heat?",
+      "ms": {
+        "draft": 4811,
+        "critique": 5815,
+        "solver": 14528,
+        "form": 1871,
+        "translation": 29430
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the SI unit of specific heat capacity?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the process called when a solid changes into a liquid?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the SI unit of heat energy?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A glass of ice-cold water is placed on a table. What happens to the heat in the system after some time?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the Celsius and Fahrenheit temperature scales?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 2 correct, the key is 3"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, why is the Kelvin scale considered an absolute temperature scale?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A hot plate is used to heat a liquid in a beaker. The mass of the liquid decreases over time. What is the most likely reason for this?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the relationship between the temperature in Kelvin and Celsius scales according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is an example of thermal expansion?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the specific heat capacity of a substance indicate?",
+      "reason": "options 2 and 3 say the same thing (\"The amount of heat required to increase the pressure of the substance\" / \"The amount of heat required to increase the volume of the substance\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that water exhibits anomalous behavior, contracting between 0 °C and 4 °C. What is the significance of this property?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A constant-volume gas thermometer measures temperature based on the change in pressure of a gas. If the pressure of the gas increases, what does this indicate about the temperature?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, how is the coefficient of volume expansion related to the coefficient of linear expansion?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 200 ml of a liquid with specific heat capacity 2.19 kJ/kg·K is heated, and its temperature increases from 27°C to 100°C, what is the amount of heat absorbed by the liquid?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A blacksmith needs to fit an iron ring on a wooden wheel. The ring has a diameter of 5.231 m at 27°C, and the wheel's rim has a diameter of 5.243 m. What is the temperature to which the ring must be heated to fit the rim?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A heating element made of nichrome has a resistance of 100 Ω at 27°C. It is connected to a 230 V supply and draws an initial current of 3.2 A, which settles to 2.8 A. What is the steady temperature of the heating element?",
+      "reason": "the solver picked option 2 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A calorimeter is used to measure heat transfer between substances. Which of the following is a correct statement about a calorimeter?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the temperature and pressure at which all three phases of a substance coexist?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A sphere of mass 0.047 kg made of aluminium is placed in boiling water, then transferred to a copper calorimeter containing 0.25 kg of water. The temperature of the water rises from 20°C to 23°C. What is the specific heat capacity of aluminium?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which mode of heat transfer involves the actual motion of matter?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student performs an experiment where a metal sphere is placed in boiling water and then transferred to a calorimeter with water. The student observes that the temperature of the water increases slowly and does not reach a steady state. What could be a possible reason for this observation?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the primary mechanism of heat transfer through a solid material due to a temperature difference?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A graph is plotted between the log of the temperature difference (T - T₀) and time, where T is the temperature of the body and T₀ is the temperature of the surroundings. According to Newton's law of cooling, what is the shape of the graph?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A copper block of mass 2.5 kg is heated in a furnace to a temperature of 500 °C and then placed on a large ice block. What is the maximum amount of ice that can melt?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In an experiment on the specific heat of a metal, a 0.20 kg block of the metal at 150 °C is dropped in a copper calorimeter (of water equivalent 0.025 kg) containing 150 cm³ of water at 27 °C. The final temperature is 40 °C. Compute the specific heat of the metal.",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The temperature (T) dependence of resistivity of materials A and B is represented by the graphs. Identify material A and material B.",
+      "reason": "options 0 and 1 say the same thing (\"A is copper and B is germanium\" / \"A is germanium and B is copper\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A child running a temperature of 101°F is given an antipyrin (i.e. a medicine that lowers fever) which causes an increase in the rate of evaporation of sweat from his body. If the fever is brought down to 98 °F in 20 minutes, what is the average rate of extra evaporation caused by the drug?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to Newton’s Law of Cooling, what is the rate of cooling of a body proportional to?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A steel rod is measured to be 63.0 cm long on a hot day when the temperature is 45.0 °C. If the coefficient of linear expansion of steel is 1.20 × 10^{-5} °C^{-1}, what is the actual length of the steel rod at 27.0 °C?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following relations is correct for the thermal expansion of a material?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A graph is plotted between the temperature of hot water and time, showing its cooling. According to Newton's law of cooling, which of the following statements is correct?",
+      "reason": "options 1 and 2 say the same thing (\"The rate of cooling is inversely proportional to the temperature difference between the body and the surroundings\" / \"The rate of cooling is directly proportional to the temperature difference between the body and the surroundings\"); distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here, so no reason given he…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A pan filled with hot food is 50°C above room temperature. It cools from 94°C to 86°C in 2 minutes when the room temperature is 20°C. How long will it take to cool from 71°C to 69°C?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A brass rod and a steel rod of the same length and diameter are joined together. What is the change in length of the combined rod at 250 °C, if the original lengths are at 40.0 °C?",
+      "reason": "after redraft: the solver picked option 0 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A heating element using nichrome connected to a 230 V supply draws an initial current of 3.2 A which settles after a few seconds to a steady value of 2.8 A. What is the steady temperature of the heating element if the room temperature is 27.0 °C and the temperature coefficient of resistance of nichrome is 1.70 × 10⁻⁴ °C⁻¹?",
+      "reason": "the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which mechanism of heat transfer does not require a medium?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer: radiation does not need a medium to transfer…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In an experiment, hot water is cooled in a calorimeter, and a graph is plotted between the temperature of water and time. The graph shows that the rate of cooling decreases as the temperature of water decreases. What is the reason for this decrease in the rate of cooling?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A body at 3000 K emits radiation. What is the wavelength of maximum energy emitted by this body, given that Wien's constant is 2.9 × 10⁻³ m·K?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer: using Wien's Displacement Law, λ_max = b / T…\"); ARITHMETIC MISMATCH — checkExpr \"(2.9*10^-3)/3000\" = 9.666666666666666e-7, but the key says 9.67"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the primary mechanism of heat transfer through a metallic rod when one end is heated?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the wavelength of maximum energy emitted by a blackbody when its temperature increases?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a metal rod has a coefficient of linear expansion of 10 × 10^-6 K^-1, what will happen to the rod when its temperature increases?",
+      "reason": "near-duplicate of served question cmvhe98jb08dzgpfhd1xdgv36 (cosine 0.984 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is the correct formula for the fractional change in length due to thermal expansion?",
+      "reason": "near-duplicate of served question cmvhe98ja08dtgpfhbrgxgkzo (cosine 0.939 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In a calorimetry experiment, a hot object is placed in a calorimeter containing water. The heat lost by the object is equal to the heat gained by the water and the calorimeter. This principle is based on which of the following?",
+      "reason": "near-duplicate of served question cmvhe98jf08ebgpfh5qlccsi1 (cosine 0.960 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A 10 kW drilling machine is used to drill a bore in a small aluminium block of mass 8.0 kg. How much is the rise in temperature of the block in 2.5 minutes, assuming 50% of power is used up in heating the machine itself or lost to the surroundings?",
+      "reason": "near-duplicate of served question cmvhe98jd08e5gpfhgrtoy1q1 (cosine 0.987 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A brass boiler has a base area of 0.15 m² and thickness 1.0 cm. It boils water at the rate of 6.0 kg/min when placed on a gas stove. Estimate the temperature of the part of the flame in contact with the boiler.",
+      "reason": "near-duplicate of served question cmvhe98jg08ehgpfhgg00hqke (cosine 0.990 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the formula for the specific heat capacity of a substance?",
+      "reason": "near-duplicate of served question cmvkhx9dh0kklgpfhkcnimms3 (cosine 0.911 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

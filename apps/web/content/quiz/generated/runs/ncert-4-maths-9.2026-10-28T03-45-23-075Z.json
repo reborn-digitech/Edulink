@@ -1,0 +1,631 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T03:45:23.075Z",
+  "finishedAt": "2026-10-28T03:51:43.128Z",
+  "seconds": 380,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm109.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — Equal Groups",
+    "edition": "Reprint 2026-27",
+    "chunks": 12,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2023-24]\n26. Number of students in each group subject to the given condition = HCF (60,84,108) ½\nHCF (60,84,108) = 12\n଺଴\nNumber of groups in Music = = 5\nଵଶ\n଼ସ\nNumber of groups in Dance = ଵଶ = 7\nଵ଴଼\nNumber of groups in Handicrafts =\nTotal number of rooms required = 21",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n26. National Art convention got registrations from students from all parts of the country, of 3\nwhich 60 are interested in music, 84 are interested in dance and 108 students are interested\nin handicrafts. For optimum cultural exchange, organisers wish to keep them in minimum\nnumber of groups such that each group consists of students interested in the same artform\nand the number of students in each group is the same. Find the number of students in each\ngroup. Find the number of groups in each art form. How many rooms are required if each\ngroup will be allotted a room?",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n4. (b) Parallel.",
+      "[RMO 2010 — question paper]\nform 8k + 4 among them which is divisible by 4 but not by 8. Hence if we take four even\nconsecutive numbers\n1000a + 100b + 10c + 2, 1000a + 100b + 10c + 4,\n1000a + 100b + 10c + 6, 1000a + 100b + 10c + 8,\nthere is exactly one among these four which is divisible by 4 but not by 8. Now we\ncan divide the set of all 4-digit even numbers with non-zero digits into groups of 4 such\nconsecutive even numbers with a, b, c nonzero. And in each group, there is exactly one\nnumber which is divisible by 4 but not by 8. The number of such groups is precisely\nequal to 9 × 9 × 9 = 729, since we can vary a, b.c in the set {1, 2, 3, 4, 5, 6, 7, 8, 9}."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 125744,
+      "in": 33,
+      "out": 31,
+      "rejects": 2,
+      "promptTokens": 29949,
+      "completionTokens": 7010
+    },
+    "critique": {
+      "calls": 45,
+      "ms": 301026,
+      "in": 31,
+      "out": 28,
+      "rejects": 3,
+      "promptTokens": 20846,
+      "completionTokens": 8177
+    },
+    "solver": {
+      "calls": 243,
+      "ms": 151085,
+      "in": 28,
+      "out": 17,
+      "rejects": 11,
+      "promptTokens": 55226,
+      "completionTokens": 2894
+    },
+    "form": {
+      "calls": 1,
+      "ms": 2323,
+      "in": 17,
+      "out": 16,
+      "rejects": 1,
+      "promptTokens": 316,
+      "completionTokens": 79
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 28,
+      "ms": 5416,
+      "in": 16,
+      "out": 9,
+      "rejects": 7,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 266911,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 18538,
+      "completionTokens": 7806
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which numbers do both the frog and the squirrel touch?",
+      "ms": {
+        "draft": 3575,
+        "critique": 4977
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the smallest 3-digit number on which the rabbit will land?",
+      "ms": {
+        "draft": 3575,
+        "critique": 4539,
+        "solver": 1584
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many times did the kangaroo jump to reach 48?",
+      "ms": {
+        "draft": 3575,
+        "critique": 6209,
+        "solver": 1423
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In row 8 of the multiplication chart, which of the following digits does not appear as the ones digit?",
+      "ms": {
+        "draft": 4070,
+        "critique": 9403
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a common multiple of 2 and 3?",
+      "ms": {
+        "draft": 4070,
+        "critique": 8588,
+        "solver": 15117
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there are 20 tricycles with 3 wheels each, how many wheels are there in total?",
+      "ms": {
+        "draft": 4070,
+        "critique": 7718,
+        "solver": 14732
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A factory has ordered 58 wheels for the small tempos that they make. Each tempo has 3 wheels. How many tempos can they make using the 58 wheels?",
+      "ms": {
+        "draft": 4070,
+        "critique": 6911,
+        "solver": 13257,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 10 cars have 4 wheels each, how many wheels are there in total?",
+      "ms": {
+        "draft": 4070,
+        "critique": 5666,
+        "solver": 15516
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If 5 autorickshaws can carry 8 passengers each, how many passengers can they carry in total?",
+      "ms": {
+        "draft": 3531,
+        "critique": 8614,
+        "solver": 14305
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many kulhads have Kahlu and Rabia made if they packed 174 boxes and each box contains 6 kulhads?",
+      "ms": {
+        "draft": 4161,
+        "critique": 8057,
+        "solver": 18733
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of passengers that can travel in 125 autorickshaws if each can carry 8 passengers?",
+      "ms": {
+        "draft": 4161,
+        "critique": 8461,
+        "solver": 19343
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 108 people are to be ferried in 9 boats and each boat carries the same number of people, how many people should be in each boat?",
+      "ms": {
+        "draft": 4161,
+        "critique": 8630,
+        "solver": 21410
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 9 boats carry 12 people each, how many people are being ferried in total?",
+      "ms": {
+        "draft": 4161,
+        "critique": 9417,
+        "solver": 17343
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the number of wheels in 10 tricycles if each tricycle has 3 wheels?",
+      "ms": {
+        "draft": 3856,
+        "critique": 8210,
+        "solver": 15917
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A frog jumps 3 steps at a time. Which number will it touch first after starting from 0?",
+      "ms": {
+        "draft": 3530,
+        "critique": 6612
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Kahlu and Rabia pack 6 kulhads in a box and have packed 174 boxes. How many kulhads have they made?",
+      "ms": {
+        "draft": 3531,
+        "critique": 6339,
+        "solver": 1607,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A school has 465 students and gives each student 2 pencils. How many pencils does the school need to buy?",
+      "ms": {
+        "draft": 3531,
+        "critique": 5109,
+        "solver": 1021,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 125 autorickshaws carry 8 passengers each, how many passengers can travel in total?",
+      "ms": {
+        "draft": 3531,
+        "critique": 6377,
+        "solver": 11038,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a truck has 6 tyres and Chippi the lizard sees 60 tyres, how many trucks are there?",
+      "ms": {
+        "draft": 4161,
+        "critique": 6198,
+        "solver": 1598,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many cupcakes are there in 18 boxes if each box has 4 cupcakes?",
+      "ms": {
+        "draft": 3856,
+        "critique": 5287,
+        "solver": 1415,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A squirrel jumps 4 steps at a time. How many jumps will it take to reach 60?",
+      "ms": {
+        "draft": 3530,
+        "critique": 7850,
+        "solver": 1906,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The rabbit jumps 6 steps at a time. What is the smallest 3-digit number it will land on?",
+      "ms": {
+        "draft": 3530,
+        "critique": 6661,
+        "solver": 8058,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which numbers do both the rabbit and the kangaroo touch?",
+      "ms": {
+        "draft": 3575,
+        "critique": 4511,
+        "solver": 10421,
+        "form": 2323,
+        "translation": 35666
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the number of wheels in 10 cars if each car has 4 wheels?",
+      "ms": {
+        "draft": 3856,
+        "critique": 7507,
+        "solver": 1520,
+        "form": 0,
+        "translation": 30921
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the number of wheels in 20 tricycles if each tricycle has 3 wheels?",
+      "ms": {
+        "draft": 3856,
+        "critique": 7078,
+        "solver": 1352,
+        "form": 0,
+        "translation": 30281
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many times did the rabbit jump to reach 48?",
+      "ms": {
+        "draft": 3575,
+        "critique": 6392,
+        "solver": 1385,
+        "form": 0,
+        "translation": 24153
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many cupcakes can she make in one attempt if she uses two trays?",
+      "ms": {
+        "draft": 3575,
+        "critique": 6363,
+        "solver": 1354,
+        "form": 0,
+        "translation": 29227
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 20 autorickshaws can carry 8 passengers each, how many passengers can they carry in total?",
+      "ms": {
+        "draft": 3531,
+        "critique": 7060,
+        "solver": 1395,
+        "form": 0,
+        "translation": 26937
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 300 students each contribute ₹5 for a school mela, how much money is collected in total?",
+      "ms": {
+        "draft": 4161,
+        "critique": 6003,
+        "solver": 1664,
+        "form": 0,
+        "translation": 33574
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "The kangaroo jumps 8 steps at a time. How many times will it jump to reach 48?",
+      "ms": {
+        "draft": 3530,
+        "critique": 6540,
+        "solver": 1929,
+        "form": 0,
+        "translation": 21042
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the multiplication chart, which row has all the digits from 0 to 9 as the ones digit?",
+      "ms": {
+        "draft": 4070,
+        "critique": 7202,
+        "solver": 17587,
+        "form": 0,
+        "translation": 31143
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which numbers do both the frog and the squirrel touch?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the smallest 3-digit number on which the rabbit will land?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many times did the kangaroo jump to reach 48?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In row 8 of the multiplication chart, which of the following digits does not appear as the ones digit?",
+      "reason": "option 0 is not wrong; option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a common multiple of 2 and 3?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If there are 20 tricycles with 3 wheels each, how many wheels are there in total?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A factory has ordered 58 wheels for the small tempos that they make. Each tempo has 3 wheels. How many tempos can they make using the 58 wheels?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"58/3\" = 19.333333333333332, but the key says 19"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 10 cars have 4 wheels each, how many wheels are there in total?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "If 5 autorickshaws can carry 8 passengers each, how many passengers can they carry in total?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the number of wheels in 30 cars if each car has 4 wheels?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "How many bamboo rods are needed for 23 carts if each cart needs 8 rods?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many kulhads have Kahlu and Rabia made if they packed 174 boxes and each box contains 6 kulhads?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the total number of passengers that can travel in 125 autorickshaws if each can carry 8 passengers?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 108 people are to be ferried in 9 boats and each boat carries the same number of people, how many people should be in each boat?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If 9 boats carry 12 people each, how many people are being ferried in total?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the number of wheels in 10 tricycles if each tricycle has 3 wheels?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A frog jumps 3 steps at a time. Which number will it touch first after starting from 0?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Kahlu and Rabia pack 6 kulhads in a box and have packed 174 boxes. How many kulhads have they made?",
+      "reason": "near-duplicate of served question cmvh1svz0068lgpfhlwrmke00 (cosine 0.971 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A school has 465 students and gives each student 2 pencils. How many pencils does the school need to buy?",
+      "reason": "near-duplicate of served question cmvo3jl1f053vgp211a0gvwwu (cosine 0.951 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If 125 autorickshaws carry 8 passengers each, how many passengers can travel in total?",
+      "reason": "near-duplicate of served question cmvo3jl19053pgp21yr4hgaol (cosine 0.927 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a truck has 6 tyres and Chippi the lizard sees 60 tyres, how many trucks are there?",
+      "reason": "near-duplicate of served question cmvh1svz2068rgpfhsfrjrhcl (cosine 0.949 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "How many cupcakes are there in 18 boxes if each box has 4 cupcakes?",
+      "reason": "near-duplicate of served question cmvo3jl1k0545gp21rm7rsn77 (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A squirrel jumps 4 steps at a time. How many jumps will it take to reach 60?",
+      "reason": "near-duplicate of served question cmvo3jl1q054tgp21gsd6yqn8 (cosine 0.960 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "The rabbit jumps 6 steps at a time. What is the smallest 3-digit number it will land on?",
+      "reason": "near-duplicate of served question cmvk4azqf0j0kgpfhmy9ys7fg (cosine 0.972 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

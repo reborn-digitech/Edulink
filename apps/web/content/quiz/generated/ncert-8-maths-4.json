@@ -21,147 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash Part-I",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T04:27:17.159Z",
+  "generatedAt": "2026-10-29T18:33:36.833Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is true about a square?",
-      "choices": [
-        "It is not a parallelogram",
-        "It is a parallelogram, but not a rhombus",
-        "It is a parallelogram, a rhombus, and a rectangle",
-        "It is not a rectangle"
-      ],
-      "answerIndex": 2,
-      "solution": "A square is a parallelogram because it has two pairs of parallel sides. It is also a rhombus because all its sides are equal in length, and it is a rectangle because all its angles are right angles. The other options are incorrect because a square is indeed a parallelogram, a rhombus, and a rectangle.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक वर्ग के बारे में सत्य है?",
-          "choices": [
-            "यह एक समांतर चतुर्भुज नहीं है",
-            "यह एक समांतर चतुर्भुज है, लेकिन एक समचतुर्भुज नहीं है",
-            "यह एक समांतर चतुर्भुज, एक समचतुर्भुज और एक आयत है",
-            "यह एक आयत नहीं है"
-          ],
-          "solution": "एक वर्ग एक समांतर चतुर्भुज है क्योंकि इसकी दो जोड़ी समांतर भुजाएं होती हैं। यह एक समचतुर्भुज भी है क्योंकि इसकी सभी भुजाएं समान लंबाई की होती हैं, और एक आयत भी है क्योंकि इसके सभी कोण समकोण होते हैं। अन्य विकल्प गलत हैं क्योंकि एक वर्ग वास्तव में एक समांतर चतुर्भुज, एक समचतुर्भुज और एक आयत है।",
-          "imageAlt": null,
-          "critique": "Translation accurately preserves mathematical terminology and meaning; correct answer remains option 2.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक चौरस बद्दल खरे आहे?",
-          "choices": [
-            "ते समांतर चौकोन नाही आहे",
-            "ते समांतर चौकोन आहे, परंतु विषमबाहू नाही",
-            "ते समांतर चौकोन, विषमबाहू आणि आयत आहे",
-            "ते आयत नाही आहे"
-          ],
-          "solution": "एक चौरस समांतर चौकोन आहे कारण त्याच्या दोन जोड्या समांतर बाजू आहेत. ते विषमबाहू आहे कारण त्याच्या सर्व बाजू समान लांबीच्या आहेत, आणि ते आयत आहे कारण त्याचे सर्व कोन समकोन आहेत. इतर विकल्प चूक आहेत कारण चौरस खरोखर समांतर चौकोन, विषमबाहू आणि आयत आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Does not understand that a square is a parallelogram",
-        "Thinks a square is not a rhombus",
-        null,
-        "Does not understand that a square is a parallelogram, a rhombus, and a rectangle."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 2, as a square is indeed a parallelogram, a rhombus, and a rectangle. The author's reasoning is sound and aligns with standard geometric definitions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 14,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 4: Quadrilaterals",
-            "4.4 Quadrilaterals with Equal Sidelengths"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 15,
-          "pageStart": 22,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 4: Quadrilaterals",
-            "4.5 Playing with Quadrilaterals"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 16,
-          "pageStart": 24,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 4: Quadrilaterals",
-            "4.6 Kite and Trapezium"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:27:17.159Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the name of a quadrilateral in which all the sides have the same length?",
+      "stem": "What is the name of a quadrilateral with two pairs of adjacent sides of equal length?",
       "choices": [
         "Rectangle",
         "Square",
-        "Parallelogram",
-        "Rhombus"
+        "Rhombus",
+        "Kite"
       ],
       "answerIndex": 3,
-      "solution": "A rhombus is a quadrilateral with all sides of equal length. While a square also has equal sides, it is a special type of rhombus with right angles. A rectangle has opposite sides equal but not all sides the same length. A parallelogram has opposite sides equal and parallel, but not necessarily all sides equal.",
+      "solution": "A kite is a quadrilateral with two pairs of adjacent sides that are equal in length. A rectangle and a square have opposite sides that are equal, not adjacent. A rhombus has all four sides equal, not just two adjacent pairs. Therefore, the correct answer is Kite.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक चतुर्भुज का नाम क्या है जिसमें सभी भुजाएँ समान लंबाई की होती हैं?",
+          "stem": "एक चतुर्भुज का नाम क्या है जिसके दो आसन्न भुजाओं के युग्म समान लंबाई के होते हैं?",
           "choices": [
             "आयत",
             "वर्ग",
-            "समांतर चतुर्भुज",
-            "समचतुर्भुज"
+            "समचतुर्भुज",
+            "पतंग"
           ],
-          "solution": "समचतुर्भुज एक चतुर्भुज है जिसकी सभी भुजाएँ समान लंबाई की होती हैं। वर्ग की भी सभी भुजाएँ समान होती हैं, लेकिन यह समचतुर्भुज का एक विशेष प्रकार है जिसमें समकोण होते हैं। आयत में विपरीत भुजाएँ समान होती हैं लेकिन सभी भुजाएँ समान लंबाई की नहीं होतीं। समांतर चतुर्भुज में विपरीत भुजाएँ समान और समांतर होती हैं, लेकिन आवश्यक नहीं कि सभी भुजाएँ समान हों।",
+          "solution": "पतंग एक चतुर्भुज है जिसके दो आसन्न भुजाओं के युग्म समान लंबाई के होते हैं। एक आयत और एक वर्ग में विपरीत भुजाएं समान होती हैं, न कि आसन्न। एक समचतुर्भुज में चारों भुजाएं समान होती हैं, न कि केवल दो आसन्न युग्म। इसलिए सही उत्तर पतंग है।",
           "imageAlt": null,
-          "critique": "All terms are standard Hindi geometry terms used in Indian textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi geometry terms.",
           "flag": null
         },
         "mr": {
-          "stem": "चतुर्भुजाचे नाव काय असते ज्यामध्ये सर्व बाजू समान लांबीच्या असतात?",
+          "stem": "चौकोनाचे नाव काय आहे ज्याच्या दोन जवळच्या बाजू एकसारख्या लांबीच्या असतात?",
           "choices": [
             "आयत",
-            "वर्ग",
-            "समांतर चौकोन",
-            "समभुज चौकोन"
+            "चौरस",
+            "समभुज",
+            "पानखडा"
           ],
-          "solution": "समभुज चौकोन हा एक चौकोन आहे ज्यामध्ये सर्व बाजू समान लांबीच्या असतात. वर्ग देखील समान बाजू असतात परंतु तो समभुज चौकोनाचा विशिष्ट प्रकार आहे ज्यामध्ये समजुती असतात. आयतामध्ये समोरच्या बाजू समान असतात परंतु सर्व बाजू समान लांबीच्या असत नाहीत. समांतर चौकोनामध्ये समोरच्या बाजू समान आणि समांतर असतात, परंतु आवश्यकता नसल्यास सर्व बाजू समान असत नाहीत.",
+          "solution": "पानखडा हा एक चौकोन आहे ज्याच्या दोन जवळच्या बाजू एकसारख्या लांबीच्या असतात. आयत आणि चौरस यांच्या विरुद्ध बाजू एकसारख्या असतात, जवळच्या नाहीत. समभुज चौकोनाच्या चारही बाजू एकसारख्या असतात, फक्त दोन जवळच्या जोड्या नाहीत. म्हणून, योग्य उत्तर पानखडा आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used for geometric shapes.",
           "flag": null
         }
       },
@@ -170,9 +72,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses a rhombus with a rectangle",
-        "Confuses a rhombus with a square",
-        "Thinks all parallelograms have equal sides",
+        "Confuses adjacent sides with opposite sides",
+        "Confuses all sides equal with two adjacent pairs",
+        "Confuses all sides equal with two adjacent pairs",
         null
       ],
       "solverAnswers": [
@@ -183,7 +85,7 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is 'Rhombus' as it is defined as a quadrilateral with all sides equal. The explanation correctly distinguishes between a rhombus, square, rectangle, and parallelogram.",
+      "critique": "The correct answer is Kite, as it is defined by having two pairs of adjacent sides of equal length. The other options have different properties, and the author's reasoning aligns with standard geometric definitions.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp104.pdf",
@@ -218,47 +120,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:27:17.159Z",
+      "generatedAt": "2026-10-29T18:33:36.833Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "If a quadrilateral has three angles of 90°, what can be said about the fourth angle?",
+      "difficulty": 1,
+      "stem": "What is the sum of the angles in a quadrilateral?",
       "choices": [
-        "It is also 90°",
-        "It is less than 90°",
-        "It is greater than 90°",
-        "It cannot be determined"
+        "180°",
+        "270°",
+        "360°",
+        "450°"
       ],
-      "answerIndex": 0,
-      "solution": "The sum of the interior angles of any quadrilateral is always 360°. If three of the angles are 90°, then the fourth must also be 90° to reach a total of 360°. The other options are incorrect because they do not satisfy the geometric rule that the angles in a quadrilateral must add up to 360°.",
+      "answerIndex": 2,
+      "solution": "The sum of the interior angles in any quadrilateral is always 360°, which can be derived by dividing the quadrilateral into two triangles, each with 180°. The other options do not match this geometric principle. 180° is the sum for a triangle, 270° and 450° are not valid angle sums for any quadrilateral.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक चतुर्भुज में तीन कोण 90° के हैं, तो चौथे कोण के बारे में क्या कहा जा सकता है?",
+          "stem": "एक चतुर्भुज के कोणों का योग क्या होता है?",
           "choices": [
-            "यह भी 90° है",
-            "यह 90° से कम है",
-            "यह 90° से अधिक है",
-            "इसे निर्धारित नहीं किया जा सकता"
+            "180°",
+            "270°",
+            "360°",
+            "450°"
           ],
-          "solution": "किसी भी चतुर्भुज के आंतरिक कोणों का योग हमेशा 360° होता है। यदि तीन कोण 90° के हैं, तो चौथा कोण भी 90° होना चाहिए ताकि कुल 360° हो सके। अन्य विकल्प गलत हैं क्योंकि वे चतुर्भुज के कोणों के योग के ज्यामितीय नियम को संतुष्ट नहीं करते जो 360° होना चाहिए।",
+          "solution": "किसी भी चतुर्भुज में आंतरिक कोणों का योग हमेशा 360° होता है, जिसे चतुर्भुज को दो त्रिभुजों में विभाजित करके प्राप्त किया जा सकता है, जहां प्रत्येक त्रिभुज में 180° होता है। अन्य विकल्प इस ज्यामितीय सिद्धांत के अनुरूप नहीं होते। 180° एक त्रिभुज के कोणों का योग होता है, 270° और 450° किसी भी चतुर्भुज के लिए वैध कोण योग नहीं हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "जर चौकोनाचे तीन कोन 90° असतील तर चौथा कोन काय म्हणता येईल?",
+          "stem": "चतुर्भुजाच्या कोनांची बेरीज किती असते?",
           "choices": [
-            "तो देखील 90° असतो",
-            "तो 90° पेक्षा लहान असतो",
-            "तो 90° पेक्षा मोठा असतो",
-            "तो ठरवता येत नाही"
+            "180°",
+            "270°",
+            "360°",
+            "450°"
           ],
-          "solution": "कोणत्याही चौकोनाच्या आंतरिक कोनांची बेरीज नेहमी 360° असते. जर तीन कोन 90° असतील तर चौथा कोन 90° असल्यास एकूण 360° होतो. इतर विकल्प चौकोनातील कोनांची बेरीज 360° असावी या भौमितिक नियमाला अनुसरत नाहीत म्हणून अयोग्य आहेत.",
+          "solution": "कोणत्याही चतुर्भुजाच्या आंतरिक कोनांची बेरीज नेहमी 360° असते, जी चतुर्भुजाला दोन त्रिकोणांमध्ये विभागून मिळते, ज्यांची बेरीज प्रत्येकी 180° असते. इतर विकल्प या भूमितीय नियमाशी जुमानत नाहीत. 180° ही त्रिकोणाची बेरीज असते, 270° आणि 450° ही कोणत्याही चतुर्भुजासाठी वैध कोन बेरीज नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -269,20 +171,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Thinks the angle sum is the same as that of a triangle",
+        "Chooses a value that is 90° more than the correct sum",
         null,
-        "Believes that three right angles can exist without the fourth also being right",
-        "Assumes the fourth angle must be acute",
-        "Assumes the fourth angle must be obtuse"
+        "Chooses a value that is 90° more than 270°"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The solution correctly applies the geometric principle that the sum of the interior angles of a quadrilateral is 360°, and thus the fourth angle must also be 90°.",
+      "critique": "The correct answer is 360°, which is a well-established geometric fact. The distractors reflect common misconceptions, such as confusing quadrilaterals with triangles or adding extra angles.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp104.pdf",
@@ -327,49 +229,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:27:17.159Z",
+      "generatedAt": "2026-10-29T18:33:36.833Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "In a quadrilateral ABCD, AB is parallel to CD and AD is parallel to BC. What type of quadrilateral is it?",
+      "difficulty": 2,
+      "stem": "Which of the following is a property of a square?",
       "choices": [
-        "Square",
-        "Kite",
-        "Trapezium",
-        "Parallelogram"
+        "All sides are equal",
+        "Only opposite sides are equal",
+        "All angles are 60°",
+        "Diagonals are not equal"
       ],
-      "answerIndex": 3,
-      "solution": "A quadrilateral with both pairs of opposite sides parallel is defined as a parallelogram. Since AB is parallel to CD and AD is parallel to BC, the figure meets the definition of a parallelogram. A square is a special case of a parallelogram with equal sides and right angles, but not all parallelograms are squares. A kite has two distinct pairs of adjacent sides that are equal, but it does not have opposite sides parallel. A trapezium has only one pair of parallel sides, which does not match the given conditions.",
+      "answerIndex": 0,
+      "solution": "A square is defined as a quadrilateral with all sides of equal length. This makes 'All sides are equal' the correct option. The other options are incorrect because a square has opposite sides equal but not just 'only' opposite sides, all angles in a square are 90°, not 60°, and the diagonals of a square are equal in length.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक चतुर्भुज ABCD में, AB, CD के समांतर है और AD, BC के समांतर है। यह किस प्रकार का चतुर्भुज है?",
+          "stem": "निम्नलिखित में से कौन-सा एक वर्ग का गुण है?",
           "choices": [
-            "वर्ग",
-            "पतंग",
-            "समलम्ब चतुर्भुज",
-            "समांतर चतुर्भुज"
+            "सभी भुजाएँ समान होती हैं",
+            "केवल विपरीत भुजाएँ समान होती हैं",
+            "सभी कोण 60° होते हैं",
+            "विकर्ण समान नहीं होते"
           ],
-          "solution": "एक चतुर्भुज जिसकी दोनों विपरीत भुजाओं के युग्म समांतर होते हैं, समांतर चतुर्भुज कहलाता है। चूंकि AB, CD के समांतर है और AD, BC के समांतर है, इसलिए आकृति समांतर चतुर्भुज की परिभाषा को पूरा करती है। एक वर्ग एक विशेष प्रकार का समांतर चतुर्भुज होता है जिसमें भुजाएं बराबर और कोण समकोण होते हैं, लेकिन सभी समांतर चतुर्भुज वर्ग नहीं होते। एक पतंग में दो अलग-अलग आसन्न भुजाओं के युग्म बराबर होते हैं, लेकिन इसकी विपरीत भुजाएं समांतर नहीं होती। एक समलम्ब चतुर्भुज में केवल एक युग्म समांतर भुजाएं होती हैं, जो दिए गए शर्तों के अनुरूप नहीं है।",
+          "solution": "एक वर्ग एक चतुर्भुज है जिसकी सभी भुजाएँ समान लंबाई की होती हैं। इस कारण 'सभी भुजाएँ समान होती हैं' सही विकल्प है। अन्य विकल्प गलत हैं क्योंकि एक वर्ग में विपरीत भुजाएँ समान होती हैं लेकिन केवल 'केवल विपरीत भुजाएँ' नहीं, एक वर्ग में सभी कोण 90° होते हैं, 60° नहीं, और एक वर्ग के विकर्ण लंबाई में समान होते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi geometry terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "चतुर्भुज ABCD मध्ये AB आणि CD समांतर आहेत आणि AD आणि BC समांतर आहेत. ते कोणत्या प्रकारचा चतुर्भुज आहे?",
+          "stem": "खालीलपैकी कोणते चौरसाचे गुणधर्म आहे?",
           "choices": [
-            "चौरस",
-            "पानखी",
-            "समलंब",
-            "समांतर चौकोन"
+            "सर्व बाजू बरोबर असतात",
+            "फक्त विरुद्ध बाजू बरोबर असतात",
+            "सर्व कोन 60° असतात",
+            "कर्ण बरोबर नसतात"
           ],
-          "solution": "दोन जोड्या विरुद्ध बाजू ज्या समांतर आहेत असा चतुर्भुज समांतर चौकोन म्हणतात. AB समांतर CD आहे आणि AD समांतर BC आहे, म्हणून आकृती समांतर चौकोनाच्या व्याख्येला अनुरूप आहे. चौरस हा समांतर चौकोनाचा विशिष्ट प्रकार आहे ज्यामध्ये बरोबर बाजू आणि समकोन असतात, परंतु सर्व समांतर चौकोन चौरस नसतात. पानखीमध्ये दोन विशिष्ट जोड्या जवळच्या बाजू बरोबर असतात, परंतु विरुद्ध बाजू समांतर नसतात. समलंबामध्ये केवळ एक जोडी समांतर बाजू असतात, जे दिलेल्या अटींशी जुळत नाही.",
+          "solution": "चौरस म्हणजे सर्व बाजू बरोबर असलेला चौकोन आहे. हे 'सर्व बाजू बरोबर असतात' हा विकल्प बरोबर असतो. इतर विकल्प चुकीचे आहेत कारण चौरसात विरुद्ध बाजू बरोबर असतात परंतु 'फक्त विरुद्ध बाजू' असे नाही, चौरसातील सर्व कोन 90° असतात, 60° नाहीत, आणि चौरसाचे कर्ण बरोबर असतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for geometric shapes.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -378,223 +280,26 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks all parallelograms are squares",
-        "Confuses a kite with a parallelogram",
-        "Thinks trapeziums can have two pairs of parallel sides",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question correctly identifies that a quadrilateral with both pairs of opposite sides parallel is a parallelogram. The explanation and reasoning for the distractors are valid and reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 17,
-          "pageStart": 26,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 4: Quadrilaterals",
-            "4.6 Kite and Trapezium"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 18,
-          "pageStart": 28,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 4: Quadrilaterals",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 19,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 4: Quadrilaterals",
-            "SUMMARY",
-            "Which Quad?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:27:17.159Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In a rectangle, the opposite sides are parallel. Which of the following best explains why this is true?",
-      "choices": [
-        "Because all angles are equal to 90°",
-        "Because the diagonals are equal and bisect each other",
-        "Because the opposite sides are equal in length",
-        "Because the sum of the angles on the same side of the transversal is 180°"
-      ],
-      "answerIndex": 3,
-      "solution": "The correct explanation is that the sum of the angles on the same side of a transversal is 180°, which ensures that the opposite sides are parallel. This is because when two lines are cut by a transversal and the same-side interior angles add up to 180°, the lines are parallel. The other options are incorrect because equal angles alone do not guarantee parallelism, equal diagonals and bisecting diagonals are properties of rectangles but not the reason for parallel sides, and equal side lengths also do not ensure parallelism without the angle condition.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक आयत में, विपरीत भुजाएँ समांतर होती हैं। निम्नलिखित में से कौन-सा सबसे अच्छा इसके कारण की व्याख्या करता है?",
-          "choices": [
-            "क्योंकि सभी कोण 90° के बराबर होते हैं",
-            "क्योंकि विकर्ण बराबर होते हैं और एक दूसरे को द्विभाजित करते हैं",
-            "क्योंकि विपरीत भुजाएँ लंबाई में बराबर होती हैं",
-            "क्योंकि एक तिर्यक रेखा के एक ही ओर के कोणों का योग 180° होता है"
-          ],
-          "solution": "सही व्याख्या यह है कि एक तिर्यक रेखा के एक ही ओर के कोणों का योग 180° होता है, जो विपरीत भुजाओं के समांतर होने की गारंटी देता है। यह इसलिए है क्योंकि जब दो रेखाएँ एक तिर्यक रेखा द्वारा काटी जाती हैं और एक ही ओर के आंतरिक कोणों का योग 180° होता है, तो रेखाएँ समांतर होती हैं। अन्य विकल्प गलत हैं क्योंकि बराबर कोणों के अकेले होने से समांतरता नहीं निश्चित होती है, बराबर विकर्ण और विकर्णों के द्विभाजन आयत के गुण हैं लेकिन भुजाओं के समांतर होने का कारण नहीं है, और भुजाओं की लंबाई बराबर होने से भी कोण की शर्त के बिना समांतरता नहीं होती है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आयतात, विरुद्ध बाजू समांतर असतात. खालीलपैकी कोणते सर्वात चांगले स्पष्टीकरण याच्या खालोखाल असते?",
-          "choices": [
-            "कारण सर्व कोन 90° च्या बरोबर असतात",
-            "कारण विकर्ण समान असतात आणि एकमेकांना दुभागतात",
-            "कारण विरुद्ध बाजू लांबीत समान असतात",
-            "कारण त्रिकोणिका एका बाजूवरील कोनांची बेरीज 180° असते"
-          ],
-          "solution": "सही स्पष्टीकरण हे आहे की, एका त्रिकोणिकेच्या एकाच बाजूवरील कोनांची बेरीज 180° असते, जे विरुद्ध बाजू समांतर असल्याची खात्री देते. हे कारण आहे की, जेव्हा दोन रेषा एका त्रिकोणिकेने कापल्या जातात आणि एकाच बाजूवरील आंतरिक कोनांची बेरीज 180° असते, तेव्हा रेषा समांतर असतात. इतर विकल्प चुकीचे आहेत कारण समान कोनांच्या अस्तित्वामुळे समांतरता खात्री नसते, समान विकर्ण आणि विकर्णांचे दुभागणे हे आयताचे गुणधर्म असतात परंतु समांतर बाजूंचे कारण नसतात आणि समान लांबीच्या बाजूंमुळे समांतरता खात्री नसते कोनाच्या अटी नसल्यास.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geometry.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks that equal angles alone ensure parallelism",
-        "Believes the diagonals are the reason for parallelism",
-        "Fails to recognize that the sum of angles on a transversal determines parallelism",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 3, as the sum of the angles on the same side of a transversal being 180° is the geometric condition that ensures parallelism. The other options are incorrect because they describe properties of rectangles but do not explain why opposite sides are parallel.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 4: Quadrilaterals",
-            "4.1 Rectangles and Squares"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 4: Quadrilaterals",
-            "4.1 Rectangles and Squares"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 4: Quadrilaterals",
-            "4.1 Rectangles and Squares"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:27:17.159Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A quadrilateral has diagonals that are equal and bisect each other. Which of the following must be true?",
-      "choices": [
-        "It is a square",
-        "It is a parallelogram",
-        "It is a rectangle",
-        "It is a rhombus"
-      ],
-      "answerIndex": 2,
-      "solution": "A quadrilateral with equal and bisecting diagonals must be a rectangle because this is a defining property of rectangles. A square is a special type of rectangle, but not all such quadrilaterals are squares. A parallelogram does not always have equal diagonals, and a rhombus has bisecting diagonals but not necessarily equal ones.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक चतुर्भुज के विकर्ण समान हैं और एक दूसरे को समद्विभाजित करते हैं। निम्नलिखित में से कौन-सा आवश्यक रूप से सत्य है?",
-          "choices": [
-            "यह एक वर्ग है",
-            "यह एक समांतर चतुर्भुज है",
-            "यह एक आयत है",
-            "यह एक समचतुर्भुज है"
-          ],
-          "solution": "एक चतुर्भुज जिसके विकर्ण समान होते हैं और एक दूसरे को समद्विभाजित करते हैं, आवश्यक रूप से एक आयत होता है क्योंकि यह आयत की परिभाषा है। एक वर्ग एक विशेष प्रकार का आयत होता है, लेकिन ऐसे सभी चतुर्भुज वर्ग नहीं होते। एक समांतर चतुर्भुज के विकर्ण हमेशा समान नहीं होते हैं, और एक समचतुर्भुज के विकर्ण समद्विभाजित होते हैं लेकिन आवश्यक रूप से समान नहीं होते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi geometry terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक चौकोनाच्या विकर्णांना समान आणि परस्परांना दुभागतात. खालीलपैकी कोणते खात्रीनामा खरे असेल?",
-          "choices": [
-            "ते एक चौरस आहे",
-            "ते एक समांतर चौकोन आहे",
-            "ते एक आयत आहे",
-            "ते एक हरोस आहे"
-          ],
-          "solution": "एक चौकोन ज्याच्या विकर्णांना समान आणि परस्परांना दुभागतात तो आयत असेल कारण हे आयताचे वैशिष्ट्य आहे. चौरस हा आयताचा विशिष्ट प्रकार आहे, परंतु अशा चौकोनांपैकी सर्व चौरस असतील असे नाही. समांतर चौकोनाच्या विकर्णांना समान असतील असे नाही. हरोसच्या विकर्णांना परस्परांना दुभागतात परंतु ते नेहमी समान असतात असे नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning. The term 'हरोस' (rhombus) is correctly used in Marathi.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the definition of a square with that of a rectangle",
-        "Thinks that only parallelograms have bisecting diagonals",
         null,
-        "Misunderstands that rhombuses have equal diagonals"
+        "Chooses a property of a rectangle instead of a square",
+        "Thinks all angles of a square are 60°, which is incorrect",
+        "Mistakenly believes the diagonals of a square are not equal"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. A quadrilateral with equal and bisecting diagonals must be a rectangle. The other options are incorrect for the reasons given.",
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as all sides of a square are indeed equal. The other options represent common misconceptions about squares, such as confusing them with rectangles, thinking all angles are 60°, or believing diagonals are unequal.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 8,
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 13,
           "headingPath": [
             "Chapter 4: Quadrilaterals",
             "4.1 Rectangles and Squares"
@@ -602,9 +307,9 @@
         },
         {
           "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 13,
           "headingPath": [
             "Chapter 4: Quadrilaterals",
             "4.1 Rectangles and Squares"
@@ -612,278 +317,82 @@
         },
         {
           "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 11,
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 14,
           "headingPath": [
             "Chapter 4: Quadrilaterals",
-            "4.1 Rectangles and Squares"
+            "4.2 Angles in a Quadrilateral"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.3 More Quadrilaterals with Parallel Opposite",
+            "Sides"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:27:17.159Z",
+      "generatedAt": "2026-10-29T18:33:36.833Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "In a rectangle, what is the relationship between the diagonals?",
+      "difficulty": 3,
+      "stem": "Which of the following is a property of a rectangle?",
       "choices": [
-        "They are of different lengths",
-        "They bisect each other but are not equal",
-        "They are equal and bisect each other",
-        "They intersect at 60°"
-      ],
-      "answerIndex": 2,
-      "solution": "In a rectangle, the diagonals are equal in length and bisect each other. This is a fundamental geometric property of rectangles. The other options are incorrect because diagonals in a rectangle are always equal, they do bisect each other, and the angle between them varies depending on the rectangle's shape, not being fixed at 60°.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक आयत में, विकर्णों के बीच क्या संबंध होता है?",
-          "choices": [
-            "वे अलग-अलग लंबाई के होते हैं",
-            "वे एक दूसरे को आधा करते हैं लेकिन बराबर नहीं होते",
-            "वे बराबर होते हैं और एक दूसरे को आधा करते हैं",
-            "वे 60° पर काटते हैं"
-          ],
-          "solution": "एक आयत में, विकर्णों की लंबाई बराबर होती है और वे एक दूसरे को आधा करते हैं। यह आयत के एक मूलभूत ज्यामितीय गुण है। अन्य विकल्प गलत हैं क्योंकि आयत में विकर्ण हमेशा बराबर होते हैं, वे एक दूसरे को आधा करते हैं, और उनके बीच कोण आयत के आकार पर निर्भर करता है, 60° पर नहीं होता।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आयतात, विकर्णांमध्ये काय संबंध असतो?",
-          "choices": [
-            "ते वेगवेगळ्या लांबीचे असतात",
-            "ते एकमेकांना दुभागतात पण समान नसतात",
-            "ते समान आणि एकमेकांना दुभागतात",
-            "ते 60° अंशावर छेदतात"
-          ],
-          "solution": "आयतात, विकर्ण समान लांबीचे असतात आणि एकमेकांना दुभागतात. हे आयतांच्या आधारभूत भूमितीय गुणधर्मांपैकी एक आहे. इतर विकल्प अयोग्य आहेत कारण आयतातील विकर्ण नेहमी समान असतात, ते एकमेकांना दुभागतात आणि त्यांच्यातील कोन आयताच्या आकृतीवर अवलंबून असतो, 60° वर नक्की असत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi geometric terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks that diagonals are of different lengths",
-        "Believes diagonals bisect each other but are not equal",
-        null,
-        "Misunderstands the angle between diagonals in rectangles"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the diagonals of a rectangle are equal and bisect each other. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 4: Quadrilaterals",
-            "4.1 Rectangles and Squares"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 4: Quadrilaterals",
-            "4.1 Rectangles and Squares"
-          ]
-        },
-        {
-          "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 4: Quadrilaterals",
-            "4.1 Rectangles and Squares"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:27:17.159Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "In a rhombus, if one angle is 50°, what is the measure of the adjacent angle?",
-      "choices": [
-        "50°",
-        "130°",
-        "65°",
-        "90°"
+        "All sides are equal",
+        "All angles are equal to 90°",
+        "Diagonals are perpendicular",
+        "Diagonals are not equal"
       ],
       "answerIndex": 1,
-      "solution": "In a rhombus, adjacent angles are supplementary, meaning they add up to 180°. If one angle is 50°, the adjacent angle must be 180° – 50° = 130°. The option 50° is incorrect because it represents the opposite angle, 65° is not a valid angle measure in this scenario, and 90° would only be correct if the rhombus were a square, which is not stated.",
-      "checkExpr": "180-50",
+      "solution": "One of the properties of a rectangle is that all angles are equal to 90°. This is a defining characteristic of a rectangle. The first option is incorrect because not all sides are equal in a rectangle. The third and fourth options are incorrect because the diagonals of a rectangle are equal and not perpendicular. The correct answer is that all angles are equal to 90°.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक समचतुर्भुज में, यदि एक कोण 50° है, तो संलग्न कोण का माप क्या है?",
+          "stem": "निम्नलिखित में से कौन एक आयत का गुण है?",
           "choices": [
-            "50°",
-            "130°",
-            "65°",
-            "90°"
+            "सभी भुजाएँ बराबर होती हैं",
+            "सभी कोण 90° के होते हैं",
+            "विकर्ण परस्पर लंब होते हैं",
+            "विकर्ण बराबर नहीं होते"
           ],
-          "solution": "एक समचतुर्भुज में, संलग्न कोण पूरक होते हैं, जिनका योग 180° होता है। यदि एक कोण 50° है, तो संलग्न कोण 180° – 50° = 130° होना चाहिए। 50° विकल्प गलत है क्योंकि यह विपरीत कोण का प्रतिनिधित्व करता है, 65° इस परिस्थिति में एक वैध कोण माप नहीं है और 90° केवल तभी सही होगा जब समचतुर्भुज एक वर्ग हो, जो कि निर्दिष्ट नहीं है।",
-          "imageAlt": "एक समचतुर्भुज जिसके एक कोण को 50° अंकित किया गया है और संलग्न कोण को 130° अंकित किया गया है",
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "solution": "आयत का एक गुण यह है कि सभी कोण 90° के होते हैं। यह आयत की परिभाषात्मक विशेषता है। पहला विकल्प गलत है क्योंकि आयत में सभी भुजाएँ बराबर नहीं होती हैं। तीसरा और चौथा विकल्प गलत हैं क्योंकि आयत के विकर्ण बराबर होते हैं और परस्पर लंब नहीं होते। सही उत्तर यह है कि सभी कोण 90° के होते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका चौकोनात जर एक कोन 50° असेल, तर जवळच्या कोनाचे माप किती असेल?",
+          "stem": "खालीलपैकी कोणते चौकोनाचे गुणधर्म आहे?",
           "choices": [
-            "50°",
-            "130°",
-            "65°",
-            "90°"
+            "सर्व बाजू बरोबर आहेत",
+            "सर्व कोन 90° च्या बरोबर आहेत",
+            "कर्ण लंब आहेत",
+            "कर्ण बरोबर नाहीत"
           ],
-          "solution": "चौकोनात जवळचे कोन अपूर्णांक असतात, म्हणजेच त्यांचे बेरीज 180° असते. जर एक कोन 50° असेल, तर जवळचा कोन 180° – 50° = 130° असेल. 50° हा अपूर्णांक कोन दर्शवितो, 65° हे या परिस्थितीत वैध कोन माप नाही, आणि 90° फक्त जर चौकोन चौरस असेल तर बरोबर असेल, जे नमूद केले गेले नाही.",
-          "imageAlt": "एका चौकोनाचा एक कोन 50° आणि जवळचा कोन 130° असलेला आहे",
-          "critique": "The translation is accurate and maintains the technical terms used in Marathi textbooks.",
+          "solution": "चौकोनाचे एक गुणधर्म म्हणजे सर्व कोन 90° च्या बरोबर असणे. हे चौकोनाचे निर्धारक गुणधर्म आहे. पहिला विकल्प चूक आहे कारण चौकोनात सर्व बाजू बरोबर नाहीत. तिसरा आणि चौथा विकल्प चूक आहेत कारण चौकोनाच्या कर्ण बरोबर आहेत आणि लंब नाहीत. योग्य उत्तर सर्व कोन 90° च्या बरोबर असणे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geometry.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A rhombus with one angle marked as 50° and the adjacent angle marked as 130°",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 10,
-            "yMin": 0,
-            "yMax": 10,
-            "unit": "cm"
-          },
-          "points": [
-            {
-              "id": "A",
-              "x": 2,
-              "y": 2,
-              "label": "A"
-            },
-            {
-              "id": "B",
-              "x": 6,
-              "y": 2,
-              "label": "B"
-            },
-            {
-              "id": "C",
-              "x": 8,
-              "y": 6,
-              "label": "C"
-            },
-            {
-              "id": "D",
-              "x": 4,
-              "y": 6,
-              "label": "D"
-            }
-          ],
-          "segments": [
-            {
-              "from": "A",
-              "to": "B",
-              "label": "AB"
-            },
-            {
-              "from": "B",
-              "to": "C",
-              "label": "BC"
-            },
-            {
-              "from": "C",
-              "to": "D",
-              "label": "CD"
-            },
-            {
-              "from": "D",
-              "to": "A",
-              "label": "DA"
-            }
-          ],
-          "angles": [
-            {
-              "vertex": "A",
-              "from": "D",
-              "to": "B",
-              "measure": 50,
-              "label": "A"
-            },
-            {
-              "vertex": "B",
-              "from": "A",
-              "to": "C",
-              "measure": 130,
-              "label": "B"
-            }
-          ]
-        },
-        "labels": {
-          "A": {
-            "en": "A"
-          },
-          "B": {
-            "en": "B"
-          },
-          "C": {
-            "en": "C"
-          },
-          "D": {
-            "en": "D"
-          },
-          "AB": {
-            "en": "AB",
-            "hi": "AB",
-            "mr": "AB"
-          },
-          "BC": {
-            "en": "BC",
-            "hi": "BC",
-            "mr": "BC"
-          },
-          "CD": {
-            "en": "CD",
-            "hi": "CD",
-            "mr": "CD"
-          },
-          "DA": {
-            "en": "DA",
-            "hi": "DA",
-            "mr": "DA"
-          }
-        }
-      },
-      "needsFigure": true,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
-        "Confuses the measure of the opposite angle with the adjacent angle",
+        "Only true for a square",
         null,
-        "Incorrectly assumes that the adjacent angles are equal instead of supplementary",
-        "Misunderstands the relationship between angles in a rhombus, possibly thinking that the adjacent angle is formed by the diagonal instead of being supplementary to the given angle"
+        "Diagonals are not perpendicular in a rectangle",
+        "Diagonals are equal in a rectangle"
       ],
       "solverAnswers": [
         1,
@@ -892,44 +401,655 @@
         1,
         1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the property that adjacent angles in a rhombus are supplementary. The author's reasoning for the wrong options is valid and reflects common misconceptions.",
+      "levelFlag": null,
+      "critique": "The correct answer is option 1, as all angles in a rectangle are 90°. The other options are incorrect: not all sides are equal (only in a square), diagonals are not perpendicular (they are equal), and diagonals are equal (not unequal). The author's reasoning aligns with standard geometric definitions.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 11,
-          "pageStart": 16,
-          "pageEnd": 17,
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
           "headingPath": [
             "Chapter 4: Quadrilaterals",
-            "4.3 More Quadrilaterals with Parallel Opposite",
-            "Sides"
+            "4.1 Rectangles and Squares"
           ]
         },
         {
           "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 12,
-          "pageStart": 17,
-          "pageEnd": 18,
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 4: Quadrilaterals",
-            "4.3 More Quadrilaterals with Parallel Opposite",
-            "Sides"
+            "4.1 Rectangles and Squares"
           ]
         },
         {
           "document": "ncert/8/mathematics/hegp104.pdf",
-          "ordinal": 13,
-          "pageStart": 18,
-          "pageEnd": 20,
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 11,
           "headingPath": [
             "Chapter 4: Quadrilaterals",
-            "4.4 Quadrilaterals with Equal Sidelengths"
+            "4.1 Rectangles and Squares"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:27:17.159Z",
+      "generatedAt": "2026-10-29T18:33:36.833Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A square has diagonals of 8 cm that bisect each other at right angles. What is the measure of each angle formed by the diagonals?",
+      "choices": [
+        "30°",
+        "45°",
+        "60°",
+        "90°"
+      ],
+      "answerIndex": 3,
+      "solution": "A square's diagonals always intersect at right angles, forming 90° angles. This is a fundamental geometric property of squares. Other options like 30°, 45°, or 60° do not align with the known characteristics of square diagonals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वर्ग के विकर्ण 8 सेमी हैं जो एक दूसरे को समकोण पर काटते हैं। विकर्णों द्वारा बने प्रत्येक कोण का माप क्या है?",
+          "choices": [
+            "30°",
+            "45°",
+            "60°",
+            "90°"
+          ],
+          "solution": "एक वर्ग के विकर्ण हमेशा समकोण पर प्रतिच्छेद करते हैं, जिससे 90° के कोण बनते हैं। यह वर्ग के ज्यामितीय गुणों का एक मूलभूत गुण है। 30°, 45° या 60° जैसे अन्य विकल्प वर्ग के विकर्ण के ज्ञात विशेषताओं के साथ मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard geometric terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका चौरसाच्या विकर्णांची लांबी 8 सेमी आहे आणि ते एकमेकांना समकोनात छेदतात. विकर्णांमुळे तयार होणाऱ्या प्रत्येक कोनाचे माप किती असेल?",
+          "choices": [
+            "30°",
+            "45°",
+            "60°",
+            "90°"
+          ],
+          "solution": "चौरसाच्या विकर्णांनी एकमेकांना समकोनात छेदले जाते, ज्यामुळे 90° कोन तयार होतात. हे चौरसाच्या विकर्णांच्या ज्ञात वैशिष्ट्यांशी सुसंगत आहे. 30°, 45° किंवा 60° अशा इतर विकल्प चौरसाच्या विकर्णांच्या ज्ञात वैशिष्ट्यांशी सुसंगत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes the angle formed by diagonals in a square is related to the 30-60-90 triangle due to confusion with equilateral triangles",
+        "Confuses the angle formed by the diagonals with the angles created by the diagonals bisecting the square's corners",
+        "Believes the angles formed by intersecting diagonals in a square are equilateral triangle angles",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward. The property of a square's diagonals bisecting each other at right angles directly leads to the correct answer of 90°. The author's reasoning for the distractors is plausible and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.1 Rectangles and Squares"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.1 Rectangles and Squares"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.2 Angles in a Quadrilateral"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.3 More Quadrilaterals with Parallel Opposite",
+            "Sides"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T18:33:36.833Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the diagram, a kite is constructed with diagonals of lengths 6 cm and 8 cm. What is the length of the longer diagonal?",
+      "choices": [
+        "6 cm",
+        "8 cm",
+        "4 cm",
+        "3 cm"
+      ],
+      "answerIndex": 1,
+      "solution": "The question explicitly states that the diagonals are of lengths 6 cm and 8 cm. The longer diagonal is 8 cm. The other options are incorrect because they are either the shorter diagonal or half of it, which is a common misconception.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "चित्र में, 6 सेमी और 8 सेमी लंबाई के विकर्णों के साथ एक पतंग बनाई गई है। लंबे विकर्ण की लंबाई क्या है?",
+          "choices": [
+            "6 सेमी",
+            "8 सेमी",
+            "4 सेमी",
+            "3 सेमी"
+          ],
+          "solution": "प्रश्न स्पष्ट रूप से बताता है कि विकर्ण 6 सेमी और 8 सेमी लंबाई के हैं। लंबा विकर्ण 8 सेमी है। अन्य विकल्प गलत हैं क्योंकि वे या तो छोटे विकर्ण हैं या इसके आधा हैं, जो एक सामान्य भ्रम है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer is in the same position as in the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आकृतीत, 6 सेमी आणि 8 सेमी लांबीच्या विकर्णांचा वापर करून एक चक्र तयार केले गेले आहे. लांब विकर्णाची लांबी किती आहे?",
+          "choices": [
+            "6 सेमी",
+            "8 सेमी",
+            "4 सेमी",
+            "3 सेमी"
+          ],
+          "solution": "प्रश्नात स्पष्टपणे सांगितले आहे की विकर्णांच्या लांबी 6 सेमी आणि 8 सेमी आहेत. लांब विकर्ण 8 सेमी आहे. इतर विकल्प चुकीचे आहेत कारण ते कमी लांबीचा विकर्ण किंवा त्याच्या अर्ध्याची लांबी आहेत, जे सामान्य चुकीचे धारणा आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains option (2) and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "the pupil selects the shorter diagonal",
+        null,
+        "the pupil selects half of the longer diagonal",
+        "the pupil selects half of the shorter diagonal"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward. The stem explicitly states the lengths of the diagonals, and the correct answer is clearly 8 cm. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 20,
+          "pageStart": 32,
+          "pageEnd": 35,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "SUMMARY",
+            "Which Quad?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 21,
+          "pageStart": 35,
+          "pageEnd": 38,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "SUMMARY",
+            "Which Quad?"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 22,
+          "pageStart": 38,
+          "pageEnd": 39,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "SUMMARY",
+            "Which Quad?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T18:33:36.833Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a rectangle, which of the following is always true?",
+      "choices": [
+        "Diagonals are perpendicular",
+        "Diagonals are not equal",
+        "Diagonals bisect each other",
+        "Diagonals are not congruent"
+      ],
+      "answerIndex": 2,
+      "solution": "In a rectangle, one of the key properties is that the diagonals bisect each other. This is true for all rectangles. The first option is incorrect because diagonals in a rectangle are not perpendicular unless it is a square. The second and fourth options are incorrect because diagonals in a rectangle are equal in length. The correct answer is that diagonals bisect each other.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आयत में, निम्नलिखित में से कौन सा हमेशा सत्य है?",
+          "choices": [
+            "विकर्ण लंबवत होते हैं",
+            "विकर्ण बराबर नहीं होते",
+            "विकर्ण एक दूसरे को समद्विभाजित करते हैं",
+            "विकर्ण असंगत होते हैं"
+          ],
+          "solution": "एक आयत में, विकर्ण एक दूसरे को समद्विभाजित करते हैं। यह सभी आयतों के लिए सत्य है। पहला विकल्प गलत है क्योंकि आयत में विकर्ण लंबवत नहीं होते, जब तक कि यह एक वर्ग न हो। दूसरा और चौथा विकल्प गलत हैं क्योंकि आयत में विकर्ण लंबाई में बराबर होते हैं। सही उत्तर यह है कि विकर्ण एक दूसरे को समद्विभाजित करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology and correct answer positioning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "आयतात, खालीलपैकी कोणते नेहमी खरे आहे?",
+          "choices": [
+            "कर्ण लंब असतात",
+            "कर्ण समान नसतात",
+            "कर्ण एकमेकांना दुभागतात",
+            "कर्ण संगत नसतात"
+          ],
+          "solution": "आयतात, कर्ण एकमेकांना दुभागतात ही एक मुख्य वैशिष्ट्य आहे. हे सर्व आयतांसाठी खरे आहे. पहिला विकल्प चुकीचा आहे कारण आयतात कर्ण लंब असतात केवळ जेव्हा तो चौरस असतो. दुसरा आणि चौथा विकल्प चुकीचे आहेत कारण आयतात कर्ण समान लांबीचे असतात. योग्य उत्तर हे आहे की कर्ण एकमेकांना दुभागतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Diagonals are not perpendicular in a rectangle",
+        "Diagonals are equal in a rectangle",
+        null,
+        "Diagonals are congruent in a rectangle"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 2, as diagonals in a rectangle always bisect each other. The other options are incorrect because diagonals in a rectangle are equal (not not equal or not congruent) and are not perpendicular unless it's a square.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.1 Rectangles and Squares"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.1 Rectangles and Squares"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.1 Rectangles and Squares"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T18:33:36.833Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a parallelogram, two adjacent angles are in the ratio 1:2. What is the measure of the smaller angle?",
+      "choices": [
+        "60°",
+        "90°",
+        "120°",
+        "180°"
+      ],
+      "answerIndex": 0,
+      "solution": "In a parallelogram, adjacent angles are supplementary. If the ratio is 1:2, the angles are x and 2x. So, x + 2x = 180°, which gives x = 60°. The other options are incorrect because they do not satisfy the condition of supplementary angles in a parallelogram.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समांतर चतुर्भुज में, दो संलग्न कोण 1:2 के अनुपात में हैं। छोटे कोण का माप क्या है?",
+          "choices": [
+            "60°",
+            "90°",
+            "120°",
+            "180°"
+          ],
+          "solution": "एक समांतर चतुर्भुज में संलग्न कोण पूरक होते हैं। यदि अनुपात 1:2 है, तो कोण x और 2x हैं। अतः x + 2x = 180°, जिसके फलस्वरूप x = 60° प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे समांतर चतुर्भुज में पूरक कोण की शर्त को पूरा नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "समांतरभुज चौकोनात, दोन जवळचे कोन 1:2 च्या गुणोत्तरात आहेत. लहान कोनाचे माप किती आहे?",
+          "choices": [
+            "60°",
+            "90°",
+            "120°",
+            "180°"
+          ],
+          "solution": "समांतरभुज चौकोनात, जवळचे कोन पूरक असतात. जर गुणोत्तर 1:2 असेल, तर कोन x आणि 2x असतात. म्हणून, x + 2x = 180°, जे x = 60° देते. इतर विकल्प चूक आहेत कारण ते समांतरभुज चौकोनात पूरक कोनांच्या अटीला पूर्ण करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geometry.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses the angle that would be formed if the ratio were 2:1",
+        "Believes that adjacent angles in a parallelogram are supplementary but incorrectly adds the ratio parts instead of using the sum to find the actual measure.",
+        "Chooses the larger angle in the ratio, not the smaller one"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The key is 0 (60°), as adjacent angles in a parallelogram are supplementary, and the ratio 1:2 leads to x + 2x = 180°, so x = 60°.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.1 Rectangles and Squares"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.1 Rectangles and Squares"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 9,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.2 Angles in a Quadrilateral"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 10,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.3 More Quadrilaterals with Parallel Opposite",
+            "Sides"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T18:33:36.833Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a rhombus, what is the measure of the angle between the diagonals?",
+      "choices": [
+        "30°",
+        "60°",
+        "90°",
+        "120°"
+      ],
+      "answerIndex": 2,
+      "solution": "In a rhombus, the diagonals always intersect at right angles, which means the angle between them is 90°. This is a fundamental geometric property of rhombuses. The other options do not satisfy this property and are therefore incorrect.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समचतुर्भुज में, विकर्णों के बीच कोण का माप क्या है?",
+          "choices": [
+            "30°",
+            "60°",
+            "90°",
+            "120°"
+          ],
+          "solution": "एक समचतुर्भुज में, विकर्ण हमेशा समकोण पर प्रतिच्छेद करते हैं, जिसका अर्थ है कि उनके बीच कोण 90° होता है। यह समचतुर्भुज का एक मूलभूत ज्यामितीय गुण है। अन्य विकल्प इस गुण को संतुष्ट नहीं करते हैं और इसलिए गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate geometric terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका चौरसात, विकर्णांमधील कोनाचे माप किती असते?",
+          "choices": [
+            "30°",
+            "60°",
+            "90°",
+            "120°"
+          ],
+          "solution": "चौरसात, विकर्ण अंगावर लंब असतात, जे त्यांच्यातील कोन 90° असतो. हे चौरसाच्या भूमितीय गुणधर्माचे एक मूलभूत गुणधर्म आहे. इतर विकल्प या गुणधर्माला अनुरूप नसतात आणि म्हणूनच ते चुकीचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi geometry terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Mistakenly assumes a different angle based on a triangle's properties",
+        "Confuses with a square's diagonal angle",
+        null,
+        "Incorrectly assumes a larger angle than the actual 90°"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 90°, as the diagonals of a rhombus always intersect at right angles. The author's reasoning is correct and matches the mathematical property. The distractors reflect plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 14,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.4 Quadrilaterals with Equal Sidelengths"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 15,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.5 Playing with Quadrilaterals"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 16,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.6 Kite and Trapezium"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T18:33:36.833Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a quadrilateral has diagonals that bisect each other at 90°, which of the following must it be?",
+      "choices": [
+        "Parallelogram",
+        "Rectangle",
+        "Rhombus",
+        "Trapezium"
+      ],
+      "answerIndex": 2,
+      "solution": "A rhombus is defined by having diagonals that bisect each other at 90°, which is a unique characteristic. A parallelogram's diagonals bisect each other but do not necessarily intersect at 90°, a rectangle's diagonals are equal and bisect each other but not at 90°, and a trapezium does not have diagonals that bisect each other at 90°. Therefore, the quadrilateral must be a rhombus.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक चतुर्भुज के विकर्ण 90° पर एक दूसरे को समद्विभाजित करते हैं, तो निम्नलिखित में से कौन-सा आवश्यक रूप से होना चाहिए?",
+          "choices": [
+            "समांतर चतुर्भुज",
+            "आयत",
+            "समचतुर्भुज",
+            "समलम्ब चतुर्भुज"
+          ],
+          "solution": "समचतुर्भुज की परिभाषा में विकर्ण एक दूसरे को 90° पर समद्विभाजित करते हैं, जो एक विशिष्ट विशेषता है। समांतर चतुर्भुज के विकर्ण एक दूसरे को समद्विभाजित करते हैं लेकिन आवश्यक रूप से 90° पर नहीं होते हैं, आयत के विकर्ण बराबर होते हैं और एक दूसरे को समद्विभाजित करते हैं लेकिन 90° पर नहीं होते हैं, और समलम्ब चतुर्भुज के विकर्ण 90° पर एक दूसरे को समद्विभाजित नहीं करते हैं। इसलिए, चतुर्भुज आवश्यक रूप से समचतुर्भुज होना चाहिए।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi geometry terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका चौकोनाच्या विकर्ण एकमेकांना 90° वर दुभागतात, तर खालीलपैकी कोणता त्याचा अवश्य असावा?",
+          "choices": [
+            "समांतर चौकोन",
+            "आयत",
+            "समभुज चौकोन",
+            "समलंब चौकोन"
+          ],
+          "solution": "समभुज चौकोन विकर्ण एकमेकांना 90° वर दुभागतात, हे त्याचे विशिष्ट लक्षण आहे. समांतर चौकोनाच्या विकर्ण एकमेकांना दुभागतात परंतु 90° वर अवश्य नसतात, आयताच्या विकर्ण समान असतात आणि एकमेकांना दुभागतात परंतु 90° वर नसतात आणि समलंब चौकोनाच्या विकर्ण एकमेकांना 90° वर दुभागत नाहीत. म्हणून, चौकोन समभुज चौकोन असावा.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi geometry terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the general property of parallelograms",
+        "Thinks the property applies to rectangles",
+        null,
+        "Does not recognize that trapeziums do not have this property"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. A quadrilateral with diagonals that bisect each other at 90° must be a rhombus. The other options are correctly dismissed based on their properties.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 14,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.4 Quadrilaterals with Equal Sidelengths"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 15,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.5 Playing with Quadrilaterals"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp104.pdf",
+          "ordinal": 16,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 4: Quadrilaterals",
+            "4.6 Kite and Trapezium"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T18:33:36.833Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

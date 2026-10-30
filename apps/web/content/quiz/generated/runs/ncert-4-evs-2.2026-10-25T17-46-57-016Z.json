@@ -1,0 +1,191 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T17:46:57.016Z",
+  "finishedAt": "2026-10-25T17:51:01.863Z",
+  "seconds": 245,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap102.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 2 — Ear to Ear",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 1,
+      "ms": 9863,
+      "in": 4,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 3590,
+      "completionTokens": 543
+    },
+    "critique": {
+      "calls": 5,
+      "ms": 33688,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 1904,
+      "completionTokens": 836
+    },
+    "solver": {
+      "calls": 28,
+      "ms": 15839,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4847,
+      "completionTokens": 284
+    },
+    "form": {
+      "calls": 3,
+      "ms": 8542,
+      "in": 4,
+      "out": 2,
+      "rejects": 2,
+      "promptTokens": 613,
+      "completionTokens": 216
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 3695,
+      "in": 2,
+      "out": 1,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 7,
+      "ms": 34282,
+      "in": 2,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 3445,
+      "completionTokens": 2029
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about animals?",
+      "ms": {
+        "draft": 17083,
+        "critique": 5828,
+        "solver": 912,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following animals do not have ears that can be seen?",
+      "ms": {
+        "draft": 17083,
+        "critique": 7454,
+        "solver": 13094,
+        "form": 1301
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which animal has ears that you can see?",
+      "ms": {
+        "draft": 17083,
+        "critique": 7419,
+        "solver": 1060,
+        "form": 4606
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which animal has ears that are on the top of its head?",
+      "ms": {
+        "draft": 17083,
+        "critique": 7788,
+        "solver": 2859,
+        "form": 3979,
+        "translation": 28148
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about animals?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following animals do not have ears that can be seen?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"Which animals have ears that you can see?\",\"options\":[\"Fish and Frog\",\"Crow and Lizard"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which animal has ears that you can see?",
+      "reason": "near-duplicate of served question cmvh2qevv06ffgpfhwcom667t (cosine 0.931 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

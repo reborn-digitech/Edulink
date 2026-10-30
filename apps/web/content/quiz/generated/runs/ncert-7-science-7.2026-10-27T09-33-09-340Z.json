@@ -1,0 +1,751 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T09:33:09.340Z",
+  "finishedAt": "2026-10-27T09:42:48.730Z",
+  "seconds": 579,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu107.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 7 — Heat Transfer in Nature",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — solutions or answer key]\n7. D. Water will lose more amount of energy while first converting to ice and releasing heat equivalent to\nthe latent heat.",
+      "[INJSO 2022 — solutions or answer key]\n5. C. Aluminium being a metal is a good conductor of heat, hence heat flow through conduction cannot be low.\nBecause of highly reflective surface and non-porous nature, heat loss through radiation and convection is low.",
+      "[INJSO 2022 — question paper]\n5. A thin aluminium foil is often placed on a bowl of food to keep the food warm. The foil does this by\npreventing heat flow through\nA. radiation only B. convection only\nC. radiation and convection only D. radiation, conduction, and convection",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 222769,
+      "in": 39,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 36408,
+      "completionTokens": 11396
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 340144,
+      "in": 37,
+      "out": 33,
+      "rejects": 4,
+      "promptTokens": 22230,
+      "completionTokens": 8466
+    },
+    "solver": {
+      "calls": 239,
+      "ms": 132305,
+      "in": 33,
+      "out": 31,
+      "rejects": 2,
+      "promptTokens": 39424,
+      "completionTokens": 2317
+    },
+    "form": {
+      "calls": 16,
+      "ms": 114971,
+      "in": 31,
+      "out": 13,
+      "rejects": 18,
+      "promptTokens": 18452,
+      "completionTokens": 2657
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 43,
+      "ms": 7448,
+      "in": 13,
+      "out": 8,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 395944,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19374,
+      "completionTokens": 10331
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 3,
+    "6": 0
+  },
+  "flagged": 6,
+  "needsFigure": 3,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a good conductor of heat according to the passage?",
+      "ms": {
+        "draft": 5680,
+        "critique": 7959,
+        "solver": 13216,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why are cooking utensils generally made of metals according to the passage?",
+      "ms": {
+        "draft": 5680,
+        "critique": 8916,
+        "solver": 12898,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student uses a copper wire and a glass rod in the activity, which will show the pins falling and why?",
+      "ms": {
+        "draft": 5680,
+        "critique": 5814,
+        "solver": 1351,
+        "form": 4287
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do hollow bricks help keep houses warm in winter and cool in summer?",
+      "ms": {
+        "draft": 5680,
+        "critique": 6270,
+        "solver": 1751,
+        "form": 3571
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a house in the Himalayas is built with two wooden layers filled with cow dung and mud, why is it effective in keeping warm?",
+      "ms": {
+        "draft": 4277,
+        "critique": 10055,
+        "solver": 2026,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which process does heat transfer occur due to the actual movement of particles?",
+      "ms": {
+        "draft": 4227,
+        "critique": 7531,
+        "solver": 1860,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do we feel more comfortable wearing light-coloured clothes in summers?",
+      "ms": {
+        "draft": 4227,
+        "critique": 7208,
+        "solver": 11244,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process of heat transfer does not require a medium?",
+      "ms": {
+        "draft": 4227,
+        "critique": 7268,
+        "solver": 12761,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which process is involved when a hot utensil cools down after being taken away from the flame?",
+      "ms": {
+        "draft": 4227,
+        "critique": 9139,
+        "solver": 1242
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main source of heat for the Earth according to the passage?",
+      "ms": {
+        "draft": 4227,
+        "critique": 7023,
+        "solver": 12915,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a saucepan is made of a good conductor and a poor conductor, which part is likely to be the handle?",
+      "ms": {
+        "draft": 6995,
+        "critique": 7507,
+        "solver": 2085,
+        "form": 3956
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the flow of water through different materials?",
+      "ms": {
+        "draft": 6995,
+        "critique": 8340,
+        "solver": 1632,
+        "form": 3061
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the heat transfer setup shown in the figure, which pins are likely to fall first?",
+      "ms": {
+        "draft": 6995,
+        "critique": 7800,
+        "solver": 13748,
+        "form": 1992
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which thermometer will record a higher temperature when heated by a candle flame as shown in Fig. 7.16?",
+      "ms": {
+        "draft": 4223,
+        "critique": 5509,
+        "solver": 2044
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why does a thin paper strip not burn when wrapped around a metallic rod and rotated continuously?",
+      "ms": {
+        "draft": 4223,
+        "critique": 6303,
+        "solver": 2422,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a metal rod is heated from one end, what happens to the pins attached to it with wax?",
+      "ms": {
+        "draft": 10159,
+        "critique": 8571
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following materials allows heat to pass through it easily?",
+      "ms": {
+        "draft": 10159,
+        "critique": 8498,
+        "solver": 12207,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does a spiral paper rise when suspended above a burning candle?",
+      "ms": {
+        "draft": 4223,
+        "critique": 6750,
+        "solver": 1625,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why does water seep faster through gravel compared to clay?",
+      "ms": {
+        "draft": 10159,
+        "critique": 7645
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process of heat transfer does not require a medium?",
+      "ms": {
+        "draft": 4460,
+        "critique": 7921
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a person is using a thin aluminium foil to keep food warm, which method of heat transfer is the foil primarily preventing?",
+      "ms": {
+        "draft": 10159,
+        "critique": 6687,
+        "solver": 15413,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are dark-colored clothes preferred in winters and light-colored clothes in summers?",
+      "ms": {
+        "draft": 4460,
+        "critique": 6791,
+        "solver": 1420,
+        "form": 4159
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the cup under the candle rise up in Activity 7.2?",
+      "ms": {
+        "draft": 8139,
+        "critique": 6442
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term for the process of surface water seeping through soil and rocks?",
+      "ms": {
+        "draft": 10159,
+        "critique": 5644,
+        "solver": 12672,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a wooden strip was used in the activity instead of a metal strip?",
+      "ms": {
+        "draft": 5680,
+        "critique": 7605,
+        "solver": 12900,
+        "form": 3409
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where do ice cubes get heat from to melt into water?",
+      "ms": {
+        "draft": 4749,
+        "critique": 5622,
+        "solver": 2266,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where do ice cubes get heat to melt into water?",
+      "ms": {
+        "draft": 4223,
+        "critique": 5909,
+        "solver": 2699,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why are hollow bricks used to construct outer walls of houses in hot regions?",
+      "ms": {
+        "draft": 4223,
+        "critique": 6616,
+        "solver": 1758,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In which direction does the smoke from a burning incense stick move when it is pointing downwards?",
+      "ms": {
+        "draft": 4223,
+        "critique": 5214,
+        "solver": 1266,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In which direction would the smoke from a burning incense stick move if it is pointing downwards?",
+      "ms": {
+        "draft": 4749,
+        "critique": 7265,
+        "solver": 1117,
+        "form": 0,
+        "translation": 36896
+      },
+      "outcome": "kept",
+      "flag": "level 1 but the solver missed it 2 of 5 times"
+    },
+    {
+      "level": 2,
+      "stem": "Why does the cup with the candle below it rise up in Activity 7.2?",
+      "ms": {
+        "draft": 4277,
+        "critique": 5918,
+        "solver": 1864,
+        "form": 0,
+        "translation": 40351
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which process is responsible for the movement of the coloured streak in the water during Activity 7.3?",
+      "ms": {
+        "draft": 4277,
+        "critique": 6325,
+        "solver": 1455,
+        "form": 0,
+        "translation": 36536
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the activity, why does the first pin fall first?",
+      "ms": {
+        "draft": 5680,
+        "critique": 6924,
+        "solver": 14266,
+        "form": 3205,
+        "translation": 50052
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Based on Activity 7.4, why does the temperature of soil rise more quickly than that of water when exposed to sunlight?",
+      "ms": {
+        "draft": 4277,
+        "critique": 7471,
+        "solver": 2192,
+        "form": 0,
+        "translation": 54385
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a coastal area, during the day, why does the sea breeze blow from the sea to the land?",
+      "ms": {
+        "draft": 4277,
+        "critique": 7131,
+        "solver": 1545,
+        "form": 0,
+        "translation": 72458
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why does the temperature of the soil drop faster than that of water at night?",
+      "ms": {
+        "draft": 4277,
+        "critique": 6728,
+        "solver": 1975,
+        "form": 1,
+        "translation": 52642
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why is it important to prevent heat loss through conduction, convection, and radiation when keeping food warm?",
+      "ms": {
+        "draft": 4227,
+        "critique": 10597,
+        "solver": 16009,
+        "form": 0,
+        "translation": 46451
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the process called when surface water seeps through soil and rocks?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Why is an ice stupa formed in Ladakh during winter?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a good conductor of heat according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why are cooking utensils generally made of metals according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student uses a copper wire and a glass rod in the activity, which will show the pins falling and why?",
+      "reason": "options 0 and 1 say the same thing (\"Copper wire: pins fall because it is a good conductor; glass rod: no pins fall because it is a poor conductor\" / \"Glass rod: pins fall because it is a good conductor; copper wire: no pins fall because it is a poor conductor\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do hollow bricks help keep houses warm in winter and cool in summer?",
+      "reason": "the key is far longer than every distractor (65 vs 30 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a house in the Himalayas is built with two wooden layers filled with cow dung and mud, why is it effective in keeping warm?",
+      "reason": "options 0 and 1 say the same thing (\"Because wood and mud are good conductors of heat\" / \"Because wood and mud are poor conductors of heat\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In which process does heat transfer occur due to the actual movement of particles?",
+      "reason": "option 3 is a catch-all (\"All of the above\"); distractor 2's reason is not a one-line misconception (\"Correct answer is convection, so this is correct but not the…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why do we feel more comfortable wearing light-coloured clothes in summers?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses reflection with absorption and temperature effect o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which process of heat transfer does not require a medium?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which process is involved when a hot utensil cools down after being taken away from the flame?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main source of heat for the Earth according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a saucepan is made of a good conductor and a poor conductor, which part is likely to be the handle?",
+      "reason": "option 0 repeats the stem's wording (\"The part made of a good conductor\"); option 1 repeats the stem's wording (\"The part made of a poor conductor\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about the flow of water through different materials?",
+      "reason": "figure: figure spec refused: spec.parts.3.x: Number must be less than or equal to 100"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the heat transfer setup shown in the figure, which pins are likely to fall first?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which thermometer will record a higher temperature when heated by a candle flame as shown in Fig. 7.16?",
+      "reason": "the solver picked option 0 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Why does a thin paper strip not burn when wrapped around a metallic rod and rotated continuously?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a metal rod is heated from one end, what happens to the pins attached to it with wax?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following materials allows heat to pass through it easily?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does a spiral paper rise when suspended above a burning candle?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'paper'"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, why does water seep faster through gravel compared to clay?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process of heat transfer does not require a medium?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a person is using a thin aluminium foil to keep food warm, which method of heat transfer is the foil primarily preventing?",
+      "reason": "options 1 and 2 say the same thing (\"Convection and radiation only\" / \"Radiation and convection only\"); distractor 3's reason is not a one-line misconception (\"Assumes the foil prevents all forms of heat transfer, which …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why are dark-colored clothes preferred in winters and light-colored clothes in summers?",
+      "reason": "options 0 and 1 say the same thing (\"Dark clothes absorb more heat, light clothes reflect more heat\" / \"Dark clothes reflect more heat, light clothes absorb more heat\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why does the cup under the candle rise up in Activity 7.2?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the term for the process of surface water seeping through soil and rocks?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'soil'"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What would happen if a wooden strip was used in the activity instead of a metal strip?",
+      "reason": "near-duplicate of served question cmvethxd001m4god8adnr9amv (cosine 0.948 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Where do ice cubes get heat from to melt into water?",
+      "reason": "near-duplicate of served question cmvethxcq01lmgod8t8kqi4gx (cosine 0.947 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Where do ice cubes get heat to melt into water?",
+      "reason": "near-duplicate of served question cmvethxcq01lmgod8t8kqi4gx (cosine 0.941 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Why are hollow bricks used to construct outer walls of houses in hot regions?",
+      "reason": "near-duplicate of served question cmvethxge01mygod8my6911p3 (cosine 0.902 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "In which direction does the smoke from a burning incense stick move when it is pointing downwards?",
+      "reason": "near-duplicate of batch item \"In which direction would the smoke from a burning …\" (cosine 0.992 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

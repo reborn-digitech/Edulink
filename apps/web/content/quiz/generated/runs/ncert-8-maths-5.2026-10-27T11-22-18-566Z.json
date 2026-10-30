@@ -1,0 +1,870 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T11:22:18.566Z",
+  "finishedAt": "2026-10-27T11:37:30.175Z",
+  "seconds": 912,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-I",
+    "bookCode": "hegp1",
+    "document": "ncert/8/mathematics/hegp105.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Number Play",
+    "edition": "Reprint 2026-27",
+    "chunks": 26,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n14. B) 3 8",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n8. (B) ଷଵ\nଷ଺\nProbability of getting sum 8 is ଷ଺ ହ\nProbability of not getting sum 8 is ଷଵ ଷ଺"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 326485,
+      "in": 48,
+      "out": 44,
+      "rejects": 4,
+      "promptTokens": 56559,
+      "completionTokens": 12161
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 555781,
+      "in": 44,
+      "out": 33,
+      "rejects": 11,
+      "promptTokens": 26519,
+      "completionTokens": 9964
+    },
+    "solver": {
+      "calls": 225,
+      "ms": 165220,
+      "in": 33,
+      "out": 21,
+      "rejects": 12,
+      "promptTokens": 41885,
+      "completionTokens": 2299
+    },
+    "form": {
+      "calls": 7,
+      "ms": 43644,
+      "in": 21,
+      "out": 9,
+      "rejects": 12,
+      "promptTokens": 1876,
+      "completionTokens": 753
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 42,
+      "ms": 10260,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 403791,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16820,
+      "completionTokens": 7748
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "If the numbers 3, 4, 5, and 6 are used with '+' and '-' signs in all possible ways, which of the following results will always be even?",
+      "ms": {
+        "draft": 5236,
+        "critique": 11535,
+        "solver": 2066
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the given passage, it is explained that all expressions of the form a ± b ± c ± d have the same parity. What is the reason for this?",
+      "ms": {
+        "draft": 5236,
+        "critique": 10623,
+        "solver": 2406,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage says that the expressions a ± b ± c ± d always have the same parity. What is the reasoning behind this?",
+      "ms": {
+        "draft": 5236,
+        "critique": 10806,
+        "solver": 2333,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If two even numbers are added, when will their sum be a multiple of 4?",
+      "ms": {
+        "draft": 5896,
+        "critique": 12192,
+        "solver": 3076,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following expressions is always even, regardless of the values of the variables?",
+      "ms": {
+        "draft": 5236,
+        "critique": 14341,
+        "solver": 21130
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an algebraic expression that always gives an even number?",
+      "ms": {
+        "draft": 5896,
+        "critique": 12224,
+        "solver": 25414,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is divisible by 7, which of the following must also be true?",
+      "ms": {
+        "draft": 5896,
+        "critique": 14402
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the general form of numbers that leave a remainder of 3 when divided by 5?",
+      "ms": {
+        "draft": 5720,
+        "critique": 8814,
+        "solver": 3696,
+        "form": 6941
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage says that numbers that leave a remainder of 3 when divided by 5 can also be written as 5k - 2. Which of the following is true about the value of k?",
+      "ms": {
+        "draft": 5720,
+        "critique": 13058,
+        "solver": 2015
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following expressions represents a number that leaves a remainder of 3 when divided by 5?",
+      "ms": {
+        "draft": 5896,
+        "critique": 11951,
+        "solver": 21654
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number leaves a remainder of 2 when divided by 3 and a remainder of 2 when divided by 4, what is the smallest such number?",
+      "ms": {
+        "draft": 5720,
+        "critique": 9343,
+        "solver": 2530
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Tathagat claims that the sum of any three numbers that leave a remainder of 2 when divided by 6 will always be a multiple of 6. Is this claim true?",
+      "ms": {
+        "draft": 5720,
+        "critique": 10979
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the remainder when 427 is divided by 9?",
+      "ms": {
+        "draft": 36724,
+        "critique": 12341
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct statement according to the passage?",
+      "ms": {
+        "draft": 36724,
+        "critique": 11653,
+        "solver": 2269,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following numbers is divisible by both 4 and 6 but not by 24?",
+      "ms": {
+        "draft": 10457,
+        "critique": 10502,
+        "solver": 2627
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the rule for a number to be divisible by 9?",
+      "ms": {
+        "draft": 36724,
+        "critique": 8634,
+        "solver": 16390,
+        "form": 5744
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the digital root of the number 489710?",
+      "ms": {
+        "draft": 10457,
+        "critique": 12371,
+        "solver": 2071
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the sum of four consecutive numbers if the total is 34?",
+      "ms": {
+        "draft": 7081,
+        "critique": 9695
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the digital root of the number 9a + 36b + 13?",
+      "ms": {
+        "draft": 10457,
+        "critique": 11687
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is divisible by 9, what will be its digital root?",
+      "ms": {
+        "draft": 8893,
+        "critique": 6592,
+        "solver": 7425,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a 6-digit number is divisible by 15 and its reverse is divisible by 6, which of the following must be true about the last digit of the number?",
+      "ms": {
+        "draft": 6602,
+        "critique": 7403,
+        "solver": 1937
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If p + q = 18, which of the following is not a possible pair of values for p and q?",
+      "ms": {
+        "draft": 6602,
+        "critique": 11442
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the product of three consecutive integers?",
+      "ms": {
+        "draft": 6602,
+        "critique": 7404,
+        "solver": 3021,
+        "form": 6084
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the digital root of a number is 5, what will be the remainder when the number is divided by 9?",
+      "ms": {
+        "draft": 20879,
+        "critique": 14655
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A number has a digital root of 6. What is the digital root of the number obtained by adding 10 to it?",
+      "ms": {
+        "draft": 20879,
+        "critique": 13306
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is divisible by both 11 and 15, what is the smallest possible value of that number?",
+      "ms": {
+        "draft": 6602,
+        "critique": 11248,
+        "solver": 26234
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the digital root of the number 9a + 36b + 13, where a and b are integers?",
+      "ms": {
+        "draft": 20879,
+        "critique": 10602,
+        "solver": 1966
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 31z5 is a multiple of 9, where z is a digit, what is the value of z?",
+      "ms": {
+        "draft": 20879,
+        "critique": 10854,
+        "solver": 18806,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A number leaves a remainder of 2 when divided by 3 and a remainder of 3 when divided by 4. What is the smallest such number?",
+      "ms": {
+        "draft": 7026,
+        "critique": 11182
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following numbers is a multiple of 9 with no odd digits, as described in the passage?",
+      "ms": {
+        "draft": 7026,
+        "critique": 12726
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of divisibility stated in the passage?",
+      "ms": {
+        "draft": 7026,
+        "critique": 10626,
+        "solver": 18684
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the digital root of the number 489710?",
+      "ms": {
+        "draft": 5611,
+        "critique": 9631,
+        "solver": 2560
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What will be the digital root of the number 9a + 36b + 13?",
+      "ms": {
+        "draft": 5611,
+        "critique": 13063
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of digital roots?",
+      "ms": {
+        "draft": 5611,
+        "critique": 10596,
+        "solver": 2189,
+        "form": 4393
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which statement is true according to the passage?",
+      "ms": {
+        "draft": 6961,
+        "critique": 8692,
+        "solver": 1396,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following expressions will always result in an even number, regardless of the values of the variables?",
+      "ms": {
+        "draft": 5236,
+        "critique": 10891,
+        "solver": 1550,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is divisible by both 6 and 4, which of the following must it also be divisible by?",
+      "ms": {
+        "draft": 5896,
+        "critique": 10879,
+        "solver": 20856,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the remainder when a number is divided by 9, if the sum of its digits is 19?",
+      "ms": {
+        "draft": 6961,
+        "critique": 10617,
+        "solver": 1627,
+        "form": 3971,
+        "translation": 38968
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is divisible by 8, which of the following must also be true?",
+      "ms": {
+        "draft": 5896,
+        "critique": 10769,
+        "solver": 2188,
+        "form": 0,
+        "translation": 56410
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements about the product of four consecutive integers is true?",
+      "ms": {
+        "draft": 6602,
+        "critique": 10893,
+        "solver": 2075,
+        "form": 11435,
+        "translation": 86201
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the expression 4m + 2q is always even, what can we say about the expression 2(2m + q)?",
+      "ms": {
+        "draft": 5236,
+        "critique": 9868,
+        "solver": 2243,
+        "form": 0,
+        "translation": 47038
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a number is a multiple of 4 and 9, which of the following numbers must it also be a multiple of?",
+      "ms": {
+        "draft": 6602,
+        "critique": 9609,
+        "solver": 2699,
+        "form": 0,
+        "translation": 48557
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "The sum of four consecutive numbers is 34. What is the smallest number in the sequence?",
+      "ms": {
+        "draft": 7026,
+        "critique": 11018,
+        "solver": 2666,
+        "form": 6170,
+        "translation": 48285
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A number is divisible by 9. What can be said about the sum of its digits?",
+      "ms": {
+        "draft": 20879,
+        "critique": 11036,
+        "solver": 2604,
+        "form": 0,
+        "translation": 73504
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the general form of numbers that leave a remainder of 2 when divided by 5?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If a number leaves a remainder of 3 when divided by 5, what is the general form of the number?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "If p is the greatest of five consecutive numbers, what is the fourth number in terms of p?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the numbers 3, 4, 5, and 6 are used with '+' and '-' signs in all possible ways, which of the following results will always be even?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the given passage, it is explained that all expressions of the form a ± b ± c ± d have the same parity. What is the reason for this?",
+      "reason": "the key is far longer than every distractor (118 vs 46 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage says that the expressions a ± b ± c ± d always have the same parity. What is the reasoning behind this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If two even numbers are added, when will their sum be a multiple of 4?",
+      "reason": "options 1 and 3 say the same thing (\"If both numbers are not multiples of 4\" / \"If both numbers are multiples of 4 or both are not multiples of 4\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following expressions is always even, regardless of the values of the variables?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an algebraic expression that always gives an even number?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a number is divisible by 7, which of the following must also be true?",
+      "reason": "the critic finds option 3 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the general form of numbers that leave a remainder of 3 when divided by 5?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The passage says that numbers that leave a remainder of 3 when divided by 5 can also be written as 5k - 2. Which of the following is true about the value of k?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following expressions represents a number that leaves a remainder of 3 when divided by 5?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number leaves a remainder of 2 when divided by 3 and a remainder of 2 when divided by 4, what is the smallest such number?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Tathagat claims that the sum of any three numbers that leave a remainder of 2 when divided by 6 will always be a multiple of 6. Is this claim true?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the remainder when 427 is divided by 9?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a correct statement according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"If a number is divisible by 9, then the sum of its digits is not divisible by 9\" / \"If a number is not divisible by 9, then the sum of its digits is divisible by 9\"); options 0 and 2 say the same thing (\"If a number is divisible by 9, then the sum of its digits is not divisible by 9\" / \"If the sum of the digits of a number is divisible by 9, then the number is divisible by 9\"); options 0 and 3 say the same thing (\"If a number is divisible by 9, then the sum of its digits is not divisible by 9\" / \"If the sum of the digits of a number is not divisible by 9, then the number is divisible by 9\"); options 1 and 2 say the same thing (\"If a number is not divisible by 9, then the sum of its digits is divisible by 9\" / \"If the sum of the digits of a number is divisible by 9, then the number is divisible by 9\"); options 1 and 3 say the same thing (\"If a number is not divisible by 9, then the sum of its digits is divisible by 9\" / \"If the sum of the digits of a number is not divisible by 9, then the number is divisible by 9\"); options 2 and 3 say the same thing (\"If the sum of the digits of a number is divisible by 9, then the number is divisible by 9\" / \"If the sum of the digits of a number is not divisible by 9, then the number is divisible by 9\"); distractor 0's reason is not a one-line misconception (\"This is the exact opposite of what the passage states. The p…\"); distractor 1's reason is not a one-line misconception (\"This is also the opposite of what the passage states. The pa…\"); distractor 3's reason is not a one-line misconception (\"Correct rule as stated in the passage. The passage clearly s…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following numbers is divisible by both 4 and 6 but not by 24?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the rule for a number to be divisible by 9?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the rule for divisibility by 9 with divisibility by…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the digital root of the number 489710?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the sum of four consecutive numbers if the total is 34?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the digital root of the number 9a + 36b + 13?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a number is divisible by 9, what will be its digital root?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the digital root of 10, if the digital root of a number is 1?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a 6-digit number is divisible by 15 and its reverse is divisible by 6, which of the following must be true about the last digit of the number?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "If p + q = 18, which of the following is not a possible pair of values for p and q?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the product of three consecutive integers?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the properties of consecutive numbers and the…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the digital root of a number is 5, what will be the remainder when the number is divided by 9?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A number has a digital root of 6. What is the digital root of the number obtained by adding 10 to it?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a number is divisible by both 11 and 15, what is the smallest possible value of that number?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the digital root of the number 9a + 36b + 13, where a and b are integers?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 31z5 is a multiple of 9, where z is a digit, what is the value of z?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A number leaves a remainder of 2 when divided by 3 and a remainder of 3 when divided by 4. What is the smallest such number?",
+      "reason": "the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following numbers is a multiple of 9 with no odd digits, as described in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a property of divisibility stated in the passage?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the digital root of the number 489710?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What will be the digital root of the number 9a + 36b + 13?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a property of digital roots?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Does not understand the example given in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which statement is true according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"A number is divisible by 9 if the sum of its digits is divisible by 3.\" / \"A number is divisible by 9 if the sum of its digits is divisible by 9.\"); options 0 and 2 say the same thing (\"A number is divisible by 9 if the sum of its digits is divisible by 3.\" / \"A number is divisible by 9 if the sum of its digits is divisible by 6.\"); options 0 and 3 say the same thing (\"A number is divisible by 9 if the sum of its digits is divisible by 3.\" / \"A number is divisible by 9 if the sum of its digits is divisible by 12.\"); options 1 and 2 say the same thing (\"A number is divisible by 9 if the sum of its digits is divisible by 9.\" / \"A number is divisible by 9 if the sum of its digits is divisible by 6.\"); options 1 and 3 say the same thing (\"A number is divisible by 9 if the sum of its digits is divisible by 9.\" / \"A number is divisible by 9 if the sum of its digits is divisible by 12.\"); options 2 and 3 say the same thing (\"A number is divisible by 9 if the sum of its digits is divisible by 6.\" / \"A number is divisible by 9 if the sum of its digits is divisible by 12.\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following expressions will always result in an even number, regardless of the values of the variables?",
+      "reason": "near-duplicate of served question cmvexa1tq024ogod8rujzi3af (cosine 0.900 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a number is divisible by both 6 and 4, which of the following must it also be divisible by?",
+      "reason": "near-duplicate of served question cmvg35rji01xhgpfh6xl4rltk (cosine 0.968 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,411 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T03:25:50.518Z",
+  "finishedAt": "2026-10-28T03:32:15.625Z",
+  "seconds": 385,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm105.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Sharing and Measuring",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2024-25]\n½\n½\nOR\n27 (B). Let the line 4𝑥 + 𝑦 = 4 intersects AB at 𝑃(𝑥 , 𝑦 ) such that AP: PB=𝑘:1 1 1\n𝑥 = 1 3𝑘−2 and 𝑦 = 1 5𝑘−1 1\n𝑘+1 𝑘+1\n(𝑥 , 𝑦 ) lies on 4𝑥 + 𝑦 = 4 1 1\n3𝑘−2 5𝑘−1 ½\nTherefore, 4( 𝑘+1 )+( 𝑘+1 )=4\n⇒ 𝑘=1 1\nRequired ratio is 1:1 ½\n28. LHS= ( 1 − 𝑠𝑖𝑛𝐴)( 1 − 𝑐𝑜𝑠𝐴)\n𝑠𝑖𝑛𝐴 𝑐𝑜𝑠𝐴\n= 1−𝑠𝑖𝑛 𝐴 𝑠𝑖𝑛𝐴 2 × 1−𝑐𝑜𝑠 𝐴 𝑐𝑜𝑠𝐴 2\n= 𝑐𝑜𝑠 𝐴 𝑠𝑖𝑛𝐴 2 × 𝑠𝑖𝑛 𝐴 𝑐𝑜𝑠𝐴 2\n=𝑐𝑜𝑠𝐴 𝑠𝑖𝑛𝐴\nRHS = 𝑠𝑖𝑛 𝐴+𝑐𝑜𝑠 𝐴 𝑐𝑜𝑠𝐴 𝑠𝑖𝑛𝐴 2 2\n=𝑐𝑜𝑠𝐴 𝑠𝑖𝑛𝐴 = LHS\n29.\n½\n½\nClass x frequency(f) 𝑥 − 25 𝑓𝑢\n0-10 5 6\n10-20 15 10\n20-30 25 15\n30-40 35 9\n40-50 45 10\n∑ 𝑓 =50\n𝑀𝑒𝑎𝑛 = 25 + 10 × ( ) 50 7\n= 26.4\n30 (A).\n(i) 𝛥 𝑂𝐴𝑃 ⩭ 𝛥𝑂𝐵𝑃\n∠𝐴𝑃𝑂 = ∠𝐵𝑃𝑂\nOr OP",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n17. Answer – C 1\nAs, r 1 : r 2 = 3 : 4. So, the ratio of their areas = r 1 2 : r 2 2 = 9 :16",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n14. (c) 16 : 9"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 57719,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 13406,
+      "completionTokens": 3536
+    },
+    "critique": {
+      "calls": 25,
+      "ms": 147509,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 11188,
+      "completionTokens": 4489
+    },
+    "solver": {
+      "calls": 144,
+      "ms": 84616,
+      "in": 18,
+      "out": 11,
+      "rejects": 7,
+      "promptTokens": 30912,
+      "completionTokens": 1771
+    },
+    "form": {
+      "calls": 6,
+      "ms": 22401,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 1500,
+      "completionTokens": 469
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 5162,
+      "in": 11,
+      "out": 7,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 208090,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 14737,
+      "completionTokens": 6784
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "If Sumedha's share of a dhokla is 1/4, and Idha and Vinayak also give their share to her, how much of the dhokla does Sumedha get?",
+      "ms": {
+        "draft": 11051,
+        "critique": 7830,
+        "solver": 14291
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a dosa has 2/5 of Classic potato and 1/5 of Chilly paneer, what fraction of the dosa is left without any topping?",
+      "ms": {
+        "draft": 3448,
+        "critique": 5651,
+        "solver": 16252
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a dosa has 1/2 of Tangy tomato and 1/4 of Spicy onion, what fraction of the dosa is left uncovered?",
+      "ms": {
+        "draft": 3448,
+        "critique": 5929,
+        "solver": 18295
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a dosa has 1/2 of Spicy onion, 1/4 of Classic potato, and 1/8 of Chilly paneer, what fraction of the dosa is left without any topping?",
+      "ms": {
+        "draft": 3448,
+        "critique": 6370,
+        "solver": 10079
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the fraction of the dosa with Spicy onion topping?",
+      "ms": {
+        "draft": 3688,
+        "critique": 5152,
+        "solver": 16556
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Meena has 8 diyas and 2 of them are red, what fraction of the diyas are red?",
+      "ms": {
+        "draft": 3688,
+        "critique": 6112,
+        "solver": 16890
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a box has 16 barfis and 1/4 of them are given to a child, how many barfis does the child get?",
+      "ms": {
+        "draft": 3688,
+        "critique": 7343,
+        "solver": 12623
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a dosa has 1/4 of Spicy onion and 1/4 of Classic potato, what is the total fraction of the dosa covered by these toppings?",
+      "ms": {
+        "draft": 3448,
+        "critique": 4771,
+        "solver": 1176,
+        "form": 3902
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the fraction of the dosa with Classic potato and Chilly paneer toppings combined?",
+      "ms": {
+        "draft": 3688,
+        "critique": 4453,
+        "solver": 1300,
+        "form": 6767
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a ribbon is 20 cm long and Mohan’s ribbon is 1/4 as long as Rohan’s, how long is Mohan’s ribbon?",
+      "ms": {
+        "draft": 3688,
+        "critique": 7643,
+        "solver": 1055,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a paper is folded into three equal parts and then folded in half, what is the fraction of the shaded part?",
+      "ms": {
+        "draft": 3688,
+        "critique": 6548,
+        "solver": 1549,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used when an object is divided into two equal parts?",
+      "ms": {
+        "draft": 11051,
+        "critique": 5216,
+        "solver": 1324,
+        "form": 2864,
+        "translation": 36661
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the fraction of the dosa that has Spicy onion topping?",
+      "ms": {
+        "draft": 3448,
+        "critique": 6568,
+        "solver": 1558,
+        "form": 2029,
+        "translation": 24269
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a dhokla is divided into four equal parts, what is each part called?",
+      "ms": {
+        "draft": 11051,
+        "critique": 4487,
+        "solver": 1274,
+        "form": 3380,
+        "translation": 36013
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a dhokla is shared equally among 5 people, what fraction of the dhokla does each person get?",
+      "ms": {
+        "draft": 11051,
+        "critique": 4487,
+        "solver": 1030,
+        "form": 0,
+        "translation": 29952
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a dosa has 1/3 of Chilly paneer and 1/6 of Classic potato, what is the total fraction covered by these toppings?",
+      "ms": {
+        "draft": 3448,
+        "critique": 5076,
+        "solver": 1146,
+        "form": 6114,
+        "translation": 15988
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a flower garden is divided into 5 equal parts and Rose is planted in 2 parts, what fraction of the garden is planted with Rose?",
+      "ms": {
+        "draft": 11051,
+        "critique": 6511,
+        "solver": 1229,
+        "form": 0,
+        "translation": 31374
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a flower garden is divided into 7 equal parts, and Marigold is planted in 2 parts, what fraction of the garden is planted with Marigold?",
+      "ms": {
+        "draft": 11051,
+        "critique": 6890,
+        "solver": 1856,
+        "form": 0,
+        "translation": 30855
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If Sumedha's share of a dhokla is 1/4, and Idha and Vinayak also give their share to her, how much of the dhokla does Sumedha get?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a dosa has 2/5 of Classic potato and 1/5 of Chilly paneer, what fraction of the dosa is left without any topping?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a dosa has 1/2 of Tangy tomato and 1/4 of Spicy onion, what fraction of the dosa is left uncovered?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a dosa has 1/2 of Spicy onion, 1/4 of Classic potato, and 1/8 of Chilly paneer, what fraction of the dosa is left without any topping?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"What is the term used for each part when an object is divided into two equal parts?\",\""
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the fraction of the dosa with Spicy onion topping?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Meena has 8 diyas and 2 of them are red, what fraction of the diyas are red?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a box has 16 barfis and 1/4 of them are given to a child, how many barfis does the child get?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If a dosa has 1/4 of Spicy onion and 1/4 of Classic potato, what is the total fraction of the dosa covered by these toppings?",
+      "reason": "near-duplicate of served question cmvo2q46q0517gp21gnx36b1t (cosine 0.965 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the fraction of the dosa with Classic potato and Chilly paneer toppings combined?",
+      "reason": "near-duplicate of batch item \"If a dosa has 1/3 of Chilly paneer and 1/6 of Clas…\" (cosine 0.920 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a ribbon is 20 cm long and Mohan’s ribbon is 1/4 as long as Rohan’s, how long is Mohan’s ribbon?",
+      "reason": "near-duplicate of served question cmvh12ag2063vgpfhopge0zq1 (cosine 0.920 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a paper is folded into three equal parts and then folded in half, what is the fraction of the shaded part?",
+      "reason": "near-duplicate of served question cmvh12afx063dgpfhmxm5bb0r (cosine 0.942 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

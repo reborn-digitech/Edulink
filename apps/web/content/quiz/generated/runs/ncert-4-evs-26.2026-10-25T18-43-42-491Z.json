@@ -1,0 +1,254 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T18:43:42.491Z",
+  "finishedAt": "2026-10-25T18:45:05.966Z",
+  "seconds": 83,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap126.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 26 — Defence Officer: Wahida",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 23524,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7826,
+      "completionTokens": 1460
+    },
+    "critique": {
+      "calls": 12,
+      "ms": 51746,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4974,
+      "completionTokens": 2052
+    },
+    "solver": {
+      "calls": 63,
+      "ms": 31128,
+      "in": 8,
+      "out": 5,
+      "rejects": 3,
+      "promptTokens": 12453,
+      "completionTokens": 748
+    },
+    "form": {
+      "calls": 4,
+      "ms": 9084,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 933,
+      "completionTokens": 263
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 3622,
+      "in": 3,
+      "out": 1,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 17736,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2259,
+      "completionTokens": 1276
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What was Wahida's dream when she was a child?",
+      "ms": {
+        "draft": 3365,
+        "critique": 4588,
+        "solver": 1174
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main responsibility of a naval doctor on a ship?",
+      "ms": {
+        "draft": 3365,
+        "critique": 4756,
+        "solver": 1590,
+        "form": 3611
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the first woman to lead a parade in the Indian Navy?",
+      "ms": {
+        "draft": 3365,
+        "critique": 5330,
+        "solver": 9074
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a naval ship goes to sea for three to four months, what is the main responsibility of a naval doctor?",
+      "ms": {
+        "draft": 2516,
+        "critique": 4478,
+        "solver": 10959
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the significance of the name 'Prism' in Wahida's name?",
+      "ms": {
+        "draft": 2516,
+        "critique": 4504,
+        "solver": 6716,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Wahida's father give her the name 'Prism'?",
+      "ms": {
+        "draft": 3365,
+        "critique": 6152,
+        "solver": 5419,
+        "form": 790
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason why Wahida wanted to join the Indian Navy?",
+      "ms": {
+        "draft": 2516,
+        "critique": 4323,
+        "solver": 966,
+        "form": 4243
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a job that people wear uniforms for?",
+      "ms": {
+        "draft": 2516,
+        "critique": 4877,
+        "solver": 2253,
+        "form": 2119,
+        "translation": 14758
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What was Wahida's dream when she was a child?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main responsibility of a naval doctor on a ship?",
+      "reason": "the key is far longer than every distractor (55 vs 33 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the first woman to lead a parade in the Indian Navy?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a naval ship goes to sea for three to four months, what is the main responsibility of a naval doctor?",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the significance of the name 'Prism' in Wahida's name?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Why did Wahida's father give her the name 'Prism'?",
+      "reason": "near-duplicate of served question cmvh58xmz06x6gpfh7rftn0dg (cosine 0.944 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the main reason why Wahida wanted to join the Indian Navy?",
+      "reason": "near-duplicate of served question cmvh58xms06wogpfhnpe71qna (cosine 0.925 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

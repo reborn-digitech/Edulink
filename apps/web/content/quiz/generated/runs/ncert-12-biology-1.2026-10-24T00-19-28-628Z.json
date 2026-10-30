@@ -1,0 +1,783 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T00:19:28.628Z",
+  "finishedAt": "2026-10-24T00:28:39.654Z",
+  "seconds": 551,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo101.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 1 — Sexual Reproduction in Flowering Plants",
+    "edition": "Reprint 2026-27",
+    "chunks": 27,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, sample question paper, 2026-27]\n1. A researcher observes that in a particular flowering plant, the pistil matures 1\nseveral days before the stamens in all flowers of the plant. What is the most\nsignificant consequence of this timing difference?\nA. It guarantees self-pollination\nB. It promotes autogamy\nC. It ensures cross-pollination\nD. It leads to geitonogamy",
+      "[CBSE Class XII Biology, sample question paper, 2025-26]\n13. to 16 consist of two statements – Assertion (A) and Reason (R). Answer\nthese questions selecting the appropriate option given below:\nA. Both A and R are true and R is the correct explanation of A.\nB. Both A and R are true and R is not the correct explanation of A.\nC. A is true but R is false.\nD. A is False but R is true.\n13 Assertion (A): The ability of the pistil to recognise the pollen is the result 1\nof a continuous dialogue between pollen and pistil.\nReason (R): This electrical dialogue allows only compatible pollen to\ngerminate.",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n31. i) During copulation (coitus) semen is released by the penis into the 5\nvagina (insemination).\nii) The motile sperms swim rapidly, pass through the cervix, enter into\nthe uterus and finally reach the ampullary region of the fallopian\ntube.\niii) The ovum released by the ovary is also transported to the ampullary\nregion where fertilization takes place.\niv) Fertilisation can only occur if the ovum and sperms are transported\nsimultaneously to the ampullary region. This is the reason why not\nall copulations lead to fertilisation and pregnancy.\nv) The process of fusion of a sperm with an ovum is called fertilisation.\nvi) During fertilisation, a sperm comes in contact with the zona pellucida\nla",
+      "[INBO 2021 — question paper]\n7. (1 point) „Mostly male‟ hypothesis of Michael and Frohlich states that bisexual flower\norganization derives more from the male structures of ancestral gymnosperms than from\nfemale structures. From which of the following facts is this hypothesis derived?\na. Male cones of certain pteridophytes and gymnosperms resemble primitive flowers like lotus.\nb. Genes for flower development in angiosperms and microsporophyll development in\ngymnosperms are closely related.\nc. Position of flowers resembles that of male cones.\nd. All the above."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 210201,
+      "in": 46,
+      "out": 39,
+      "rejects": 7,
+      "promptTokens": 48177,
+      "completionTokens": 11634
+    },
+    "critique": {
+      "calls": 43,
+      "ms": 284764,
+      "in": 39,
+      "out": 23,
+      "rejects": 16,
+      "promptTokens": 20299,
+      "completionTokens": 7585
+    },
+    "solver": {
+      "calls": 140,
+      "ms": 57859,
+      "in": 23,
+      "out": 21,
+      "rejects": 2,
+      "promptTokens": 21565,
+      "completionTokens": 1289
+    },
+    "form": {
+      "calls": 18,
+      "ms": 57814,
+      "in": 21,
+      "out": 14,
+      "rejects": 7,
+      "promptTokens": 6518,
+      "completionTokens": 1640
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 29,
+      "ms": 5559,
+      "in": 14,
+      "out": 10,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 400802,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 24327,
+      "completionTokens": 12354
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a flower's pistil matures before its stamens, what is the most likely outcome?",
+      "ms": {
+        "draft": 13864,
+        "critique": 6610
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a flower according to the passage?",
+      "ms": {
+        "draft": 13864,
+        "critique": 6911
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Figure 1.1, what are the two most important units of sexual reproduction in a flower?",
+      "ms": {
+        "draft": 13864,
+        "critique": 7370
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A researcher observes that in a particular flowering plant, the pistil matures several days before the stamens in all flowers of the plant. What is the most significant consequence of this timing difference?",
+      "ms": {
+        "draft": 13864,
+        "critique": 7216
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the significance of the timing difference between the maturation of the pistil and stamens in a flower?",
+      "ms": {
+        "draft": 13864,
+        "critique": 7269
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the role of the tapetum in the anther?",
+      "ms": {
+        "draft": 13864,
+        "critique": 7759
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a pollen grain has a hard exine with germ pores, what is the most likely reason for the presence of these structures?",
+      "ms": {
+        "draft": 4391,
+        "critique": 6371,
+        "solver": 1788
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the process of formation of microspores from a pollen mother cell through meiosis?",
+      "ms": {
+        "draft": 4391,
+        "critique": 6792,
+        "solver": 1227,
+        "form": 4858
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage describes the structure of a typical angiosperm ovule. Based on the passage, what is the role of the micropyle in the ovule?",
+      "ms": {
+        "draft": 5493,
+        "critique": 7409
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the female gametophyte in a typical angiosperm ovule?",
+      "ms": {
+        "draft": 5493,
+        "critique": 6600
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about the viability of pollen grains?",
+      "ms": {
+        "draft": 4391,
+        "critique": 7877,
+        "solver": 15113,
+        "form": 2861
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a flower, the stigma becomes receptive before the anthers release pollen. What is the most likely consequence of this timing?",
+      "ms": {
+        "draft": 5493,
+        "critique": 5735
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A botanist observes a flower in which the stamens mature and release pollen before the stigma becomes receptive. Which of the following is most likely to occur in this flower?",
+      "ms": {
+        "draft": 5493,
+        "critique": 6786,
+        "solver": 11895,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the filiform apparatus in the pollen-pistil interaction?",
+      "ms": {
+        "draft": 4978,
+        "critique": 7433,
+        "solver": 1418,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the events that occur after fertilisation, including the development of the endosperm and embryo, maturation of the ovule into a seed, and the ovary into a fruit?",
+      "ms": {
+        "draft": 4214,
+        "critique": 4875,
+        "solver": 560,
+        "form": 1226
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is described as the formation of fruits without fertilisation?",
+      "ms": {
+        "draft": 3328,
+        "critique": 4789
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How does the passage describe the role of the seed coat?",
+      "ms": {
+        "draft": 3328,
+        "critique": 6623
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a flowering plant, if the pistil matures several days before the stamens, what is the likely outcome?",
+      "ms": {
+        "draft": 3328,
+        "critique": 8411
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "After double fertilisation, what is the primary function of the endosperm in a flowering plant?",
+      "ms": {
+        "draft": 6491,
+        "critique": 6946
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the most likely reason that the zygote in a flowering plant divides only after a certain amount of endosperm is formed?",
+      "ms": {
+        "draft": 6491,
+        "critique": 6544
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of apomixis in hybrid seed production?",
+      "ms": {
+        "draft": 3328,
+        "critique": 7074,
+        "solver": 10423
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is NOT a characteristic of a mature seed?",
+      "ms": {
+        "draft": 6491,
+        "critique": 6827
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process called when the pollen grain germinates on the stigma and produces a pollen tube?",
+      "ms": {
+        "draft": 4156,
+        "critique": 6906,
+        "solver": 1482,
+        "form": 3351
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic of wind-pollinated flowers?",
+      "ms": {
+        "draft": 8157,
+        "critique": 8192
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which part of the pistil does the pollen tube enter the ovule?",
+      "ms": {
+        "draft": 4156,
+        "critique": 6511,
+        "solver": 1874,
+        "form": 3916
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A researcher observes that in a particular flowering plant, the pistil matures several days before the stamens in all flowers of the plant. What is the most significant consequence of this timing difference?",
+      "ms": {
+        "draft": 4391,
+        "critique": 6567,
+        "solver": 1599,
+        "form": 4540
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A researcher observes that in a particular flowering plant, the pistil matures several days before the stamens in all flowers of the plant. What is the most significant consequence of this timing difference?",
+      "ms": {
+        "draft": 3631,
+        "critique": 6046,
+        "solver": 1483,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a flowering plant, if the pistil matures several days before the stamens, what is the most likely outcome?",
+      "ms": {
+        "draft": 4978,
+        "critique": 6385,
+        "solver": 1580,
+        "form": 3201
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A researcher observes that in a particular flowering plant, the pistil matures several days before the stamens in all flowers of the plant. What is the most significant consequence of this timing difference?",
+      "ms": {
+        "draft": 6491,
+        "critique": 6535,
+        "solver": 1619,
+        "form": 3225
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of pollination is most common in flowering plants?",
+      "ms": {
+        "draft": 3631,
+        "critique": 6210,
+        "solver": 1589,
+        "form": 3081,
+        "translation": 45582
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of the pollen-pistil interaction in flowering plants?",
+      "ms": {
+        "draft": 4978,
+        "critique": 6327,
+        "solver": 1339,
+        "form": 2646,
+        "translation": 47741
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of wind-pollinated flowers?",
+      "ms": {
+        "draft": 3631,
+        "critique": 6503,
+        "solver": 1627,
+        "form": 1723,
+        "translation": 35696
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of pollination in angiosperms?",
+      "ms": {
+        "draft": 2892,
+        "critique": 5174,
+        "solver": 1050,
+        "form": 3111,
+        "translation": 33288
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of double fertilisation in angiosperms?",
+      "ms": {
+        "draft": 2892,
+        "critique": 5418,
+        "solver": 1673,
+        "form": 3786,
+        "translation": 46685
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the exine in a pollen grain?",
+      "ms": {
+        "draft": 4391,
+        "critique": 6744,
+        "solver": 2000,
+        "form": 2295,
+        "translation": 38563
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a plant, if the stamens mature after the pistil, what is the likely result?",
+      "ms": {
+        "draft": 3631,
+        "critique": 6371,
+        "solver": 1693,
+        "form": 0,
+        "translation": 35201
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main advantage of seeds in angiosperms?",
+      "ms": {
+        "draft": 3328,
+        "critique": 6788,
+        "solver": 10548,
+        "form": 2567,
+        "translation": 34098
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the most significant consequence of the pistil maturing several days before the stamens in a flowering plant?",
+      "ms": {
+        "draft": 4156,
+        "critique": 7337,
+        "solver": 1455,
+        "form": 5302,
+        "translation": 33368
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the significance of the presence of sporopollenin in the exine of a pollen grain?",
+      "ms": {
+        "draft": 4391,
+        "critique": 7875,
+        "solver": 1848,
+        "form": 3421,
+        "translation": 46013
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "A flower has a long stigma that extends beyond the anthers. What is the most likely advantage of this feature?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "In a flower, the anthers dehisce (open) and release pollen, but the stigma remains non-receptive. What is the most likely outcome?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a flower's pistil matures before its stamens, what is the most likely outcome?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of a flower according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the diagram in Figure 1.1, what are the two most important units of sexual reproduction in a flower?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A researcher observes that in a particular flowering plant, the pistil matures several days before the stamens in all flowers of the plant. What is the most significant consequence of this timing difference?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the significance of the timing difference between the maturation of the pistil and stamens in a flower?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, what is the role of the tapetum in the anther?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a pollen grain has a hard exine with germ pores, what is the most likely reason for the presence of these structures?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for the process of formation of microspores from a pollen mother cell through meiosis?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"General term for pollen production, not specific to the proc…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The passage describes the structure of a typical angiosperm ovule. Based on the passage, what is the role of the micropyle in the ovule?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, which of the following is true about the female gametophyte in a typical angiosperm ovule?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is true about the viability of pollen grains?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a flower, the stigma becomes receptive before the anthers release pollen. What is the most likely consequence of this timing?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A botanist observes a flower in which the stamens mature and release pollen before the stigma becomes receptive. Which of the following is most likely to occur in this flower?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Confuses geitonogamy with autogamy, assuming that the pollen…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the filiform apparatus in the pollen-pistil interaction?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for the events that occur after fertilisation, including the development of the endosperm and embryo, maturation of the ovule into a seed, and the ovary into a fruit?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Confuses the term with pre-fertilisation events, which are n…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which part of the flower develops into the fruit after fertilisation?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the term used to describe the phenomenon where a seed is formed without fertilisation?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the function of the tapetum in pollen grain formation?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the term used to describe the development of the female gametophyte from a single megaspore?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the role of the micropyle in a seed?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process is described as the formation of fruits without fertilisation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How does the passage describe the role of the seed coat?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a flowering plant, if the pistil matures several days before the stamens, what is the likely outcome?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "After double fertilisation, what is the primary function of the endosperm in a flowering plant?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the most likely reason that the zygote in a flowering plant divides only after a certain amount of endosperm is formed?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of apomixis in hybrid seed production?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, which of the following is NOT a characteristic of a mature seed?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the process called when the pollen grain germinates on the stigma and produces a pollen tube?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Does not understand the specific terminology used in the pas…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a characteristic of wind-pollinated flowers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In which part of the pistil does the pollen tube enter the ovule?",
+      "reason": "figure: figure spec refused: spec.parts: flower has no label \"micropyle\" (it has petal, sepal, stamen, pistil)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A researcher observes that in a particular flowering plant, the pistil matures several days before the stamens in all flowers of the plant. What is the most significant consequence of this timing difference?",
+      "reason": "near-duplicate of served question cmvi9lvke0c1ugpfho2d4tl8q (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A researcher observes that in a particular flowering plant, the pistil matures several days before the stamens in all flowers of the plant. What is the most significant consequence of this timing difference?",
+      "reason": "near-duplicate of served question cmvi9lvke0c1ugpfho2d4tl8q (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "In a flowering plant, if the pistil matures several days before the stamens, what is the most likely outcome?",
+      "reason": "near-duplicate of batch item \"In a plant, if the stamens mature after the pistil…\" (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A researcher observes that in a particular flowering plant, the pistil matures several days before the stamens in all flowers of the plant. What is the most significant consequence of this timing difference?",
+      "reason": "near-duplicate of served question cmvi9lvke0c1ugpfho2d4tl8q (cosine 0.919 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

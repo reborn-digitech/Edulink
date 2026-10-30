@@ -1,0 +1,246 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T06:18:02.420Z",
+  "finishedAt": "2026-10-28T06:19:59.326Z",
+  "seconds": 117,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap104.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 4 — Mangoes Round the Year",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 24308,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8288,
+      "completionTokens": 1472
+    },
+    "critique": {
+      "calls": 12,
+      "ms": 68244,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4979,
+      "completionTokens": 2085
+    },
+    "solver": {
+      "calls": 69,
+      "ms": 39108,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 13669,
+      "completionTokens": 800
+    },
+    "form": {
+      "calls": 7,
+      "ms": 16129,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 1629,
+      "completionTokens": 421
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 3556,
+      "in": 5,
+      "out": 3,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 104729,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6761,
+      "completionTokens": 3410
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What did Aman notice about Nitu's potato sabzi?",
+      "ms": {
+        "draft": 3109,
+        "critique": 7026,
+        "solver": 10591
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What would have happened if Nitu had eaten the potato sabzi?",
+      "ms": {
+        "draft": 2968,
+        "critique": 6250,
+        "solver": 1215,
+        "form": 4653
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How did Aman know that the potato sabzi had got spoilt?",
+      "ms": {
+        "draft": 2968,
+        "critique": 6870,
+        "solver": 13615,
+        "form": 2505
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Nitu had eaten the spoilt potato sabzi, what could have happened?",
+      "ms": {
+        "draft": 3109,
+        "critique": 6181,
+        "solver": 1712,
+        "form": 2768
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Biji return the bread packet?",
+      "ms": {
+        "draft": 2968,
+        "critique": 6437,
+        "solver": 14864,
+        "form": 1668
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Biji return the bread packet?",
+      "ms": {
+        "draft": 3109,
+        "critique": 6032,
+        "solver": 1016,
+        "form": 3853,
+        "translation": 29942
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you were to go on a two-day journey by train from Pune to Kolkata, what food items would you carry with you?",
+      "ms": {
+        "draft": 2968,
+        "critique": 5782,
+        "solver": 1471,
+        "form": 3668,
+        "translation": 39027
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of sprinkling water on bread in the experiment?",
+      "ms": {
+        "draft": 3109,
+        "critique": 5164,
+        "solver": 6524,
+        "form": 975,
+        "translation": 32110
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did Aman notice about Nitu's potato sabzi?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What would have happened if Nitu had eaten the potato sabzi?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Assumes Nitu would have felt happy, but the passage implies …\"); distractor 2's reason is not a one-line misconception (\"Assumes Nitu would have been hungry, but the passage suggest…\"); distractor 3's reason is not a one-line misconception (\"Assumes Nitu would have liked it, but the passage suggests t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "How did Aman know that the potato sabzi had got spoilt?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Assumes Aman tasted it, but this would be dangerous and not …\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If Nitu had eaten the spoilt potato sabzi, what could have happened?",
+      "reason": "near-duplicate of served question cmvo9i17405uvgp21oeg4lsmt (cosine 0.920 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why did Biji return the bread packet?",
+      "reason": "near-duplicate of batch item \"Why did Biji return the bread packet?…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

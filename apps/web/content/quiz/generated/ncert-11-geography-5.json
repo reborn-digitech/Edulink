@@ -21,50 +21,50 @@
   "board": "NCERT",
   "book": "Pratical Work in Geography",
   "edition": "2026 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-21T06:32:52.814Z",
+  "generatedAt": "2026-10-28T19:15:22.865Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "What does the yellow colour on a topographical map usually represent?",
+      "difficulty": 1,
+      "stem": "Which of the following is a means of transportation that can be used to cross a river?",
       "choices": [
-        "Forest",
-        "Water body",
-        "Agricultural land",
-        "Urban area"
+        "Bridge",
+        "Railway",
+        "Pipeline",
+        "Power line"
       ],
-      "answerIndex": 2,
-      "solution": "The yellow colour on a topographical map typically represents agricultural land. Forests are usually shown in green, water bodies in blue, and urban areas in white or grey. A student who confuses the colour coding might choose the other options.",
+      "answerIndex": 0,
+      "solution": "A bridge is a common means of transportation used to cross a river. Other options like railway, pipeline, and power line are not used for crossing a river directly.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक भू-आकृति मानचित्र पर पीला रंग सामान्यतः क्या प्रस्तुत करता है?",
+          "stem": "निम्नलिखित में से कौन-सा परिवहन का एक साधन है जिसका उपयोग नदी पार करने के लिए किया जा सकता है?",
           "choices": [
-            "वन",
-            "जल निकाय",
-            "कृषि भूमि",
-            "शहरी क्षेत्र"
+            "पुल",
+            "रेलवे",
+            "पाइपलाइन",
+            "विद्युत लाइन"
           ],
-          "solution": "एक भू-आकृति मानचित्र पर पीला रंग सामान्यतः कृषि भूमि को प्रस्तुत करता है। वन आमतौर पर हरे रंग में दिखाए जाते हैं, जल निकाय नीले रंग में और शहरी क्षेत्र सफेद या ग्रे रंग में। एक छात्र जो रंग कोडिंग को गलत तरीके से समझे, अन्य विकल्प चुन सकता है।",
+          "solution": "एक पुल नदी पार करने के लिए उपयोग किए जाने वाले सामान्य परिवहन के साधन है। अन्य विकल्पों जैसे रेलवे, पाइपलाइन और विद्युत लाइन का सीधे रूप से नदी पार करने के लिए उपयोग नहीं किया जाता है।",
           "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning, technical terms are standard in Hindi textbooks, and the correct answer remains option 2.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "टॉपोग्राफिकल नकाशावर पांढरा रंग काय दर्शवितो?",
+          "stem": "खालीलपैकी कोणते एक वाहतूकचे साधन आहे जे नदी ओलांडण्यासाठी वापरता येते?",
           "choices": [
-            "वन",
-            "जलस्रोत",
-            "शेतीची जमीन",
-            "शहरी क्षेत्र"
+            "पूल",
+            "रेल्वे",
+            "पाइपलाइन",
+            "ऊर्जा लाईन"
           ],
-          "solution": "टॉपोग्राफिकल नकाशावर पांढरा रंग सामान्यतः शेतीची जमीन दर्शवितो. वन लाल रंगात दर्शविले जातात, जलस्रोत निळ्या रंगात आणि शहरी क्षेत्र पांढरा किंवा ग्रे रंगात दर्शविले जातात. रंग कोडिंग चूकून ओळखल्यास विद्यार्थी इतर विकल्प निवडू शकतो.",
+          "solution": "पूल हे नदी ओलांडण्यासाठी वापरल्या जाणार्या सामान्य वाहतूक साधनांपैकी एक आहे. रेल्वे, पाइपलाइन आणि ऊर्जा लाईन या विकल्पांचा वापर नदी ओलांडण्यासाठी सीधा केला जात नाही.",
           "imageAlt": null,
-          "critique": "The question and options have been translated incorrectly. The original question asks about yellow, but the Marathi version asks about white. The correct answer (2) in English corresponds to 'water body', but in Marathi, the correct answer would be (4) 'शहरी क्षेत्र' (urban area) based on the translated text. The solution also contains errors, stating that forests are shown in red (which is incorrect) and that urban areas are shown in white (which is correct, but the question is about white, not yellow).",
-          "flag": "translation critique: meaning changed; not one answer at the same position; a distractor no longer wrong"
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "flag": null
         }
       },
       "imageKey": null,
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses green with yellow for forests",
-        "Associates blue with yellow for water bodies",
         null,
-        "Incorrectly assumes yellow for urban areas"
+        "Confuses bridge with railway",
+        "Thinks pipeline is a transport route",
+        "Mistakes power line for a transport feature"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2 (Agricultural land). The author's solution is accurate, and the reasoning for the distractors reflects common misconceptions.",
+      "critique": "The correct answer is 'Bridge' as it is a direct means of transportation over a river. The other options are not used for crossing a river.",
       "sources": [
         {
           "document": "ncert/11/geography/kegy305.pdf",
@@ -99,47 +99,142 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-21T06:32:52.814Z",
+      "generatedAt": "2026-10-28T19:15:22.865Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "What is the most common means of crossing a river on a topographical map?",
+      "difficulty": 1,
+      "stem": "What is the shape of a valley that is formed by strong lateral erosion of glaciers?",
       "choices": [
-        "Bridge",
-        "Boat",
-        "Ferry",
-        "Cable car"
+        "V-shaped valley",
+        "U-shaped valley",
+        "Gorge",
+        "Spur"
       ],
-      "answerIndex": 0,
-      "solution": "A bridge is the most common means of crossing a river on a topographical map and is usually represented by a specific symbol. A student who is not familiar with the symbols might pick the other options.",
+      "answerIndex": 1,
+      "solution": "The correct answer is 'U-shaped valley' because glaciers cause strong lateral erosion that widens and deepens the valley, creating a U-shape. A V-shaped valley is formed by river erosion, not glaciers. A gorge is a deep, narrow valley with steep sides, often formed by river erosion over time. A spur is a landform that extends from a hill or mountain, not a valley shape.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक स्थलमान नक्शे पर एक नदी पार करने का सबसे सामान्य तरीका क्या है?",
+          "stem": "हिमनदों द्वारा प्रबल पार्श्व अपरदन द्वारा बने खाड़ी का आकार क्या है?",
           "choices": [
-            "पुल",
-            "नाव",
-            "फेरी",
-            "तार यातायात"
+            "V-आकार की खाड़ी",
+            "U-आकार की खाड़ी",
+            "गॉर्ज",
+            "स्पर"
           ],
-          "solution": "एक पुल स्थलमान नक्शे पर एक नदी पार करने का सबसे सामान्य तरीका है और आमतौर पर एक विशिष्ट प्रतीक द्वारा दर्शाया जाता है। एक छात्र जो प्रतीकों से परिचित नहीं है, अन्य विकल्प चुन सकता है।",
+          "solution": "सही उत्तर 'U-आकार की खाड़ी' है क्योंकि हिमनद पार्श्व अपरदन के कारण खाड़ी को चौड़ा और गहरा बनाते हैं, जिससे U-आकार बनता है। V-आकार की खाड़ी नदी अपरदन द्वारा बनती है, न कि हिमनदों द्वारा। गॉर्ज एक गहरी, संकीर्ण खाड़ी है जिसकी ऊर्ध्वाधर दीवारें होती हैं, जो आमतौर पर नदी अपरदन द्वारा बनती है। स्पर एक भू-आकृति है जो पहाड़ या पहाड़ी से बाहर निकलती है, खाड़ी के आकार के रूप में नहीं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and options, with appropriate terminology used for map symbols.",
+          "critique": "Translation is accurate, technical terms are appropriately translated, and the structure matches the original.",
           "flag": null
         },
         "mr": {
-          "stem": "तोपोग्राफीक नकाशावर नदी ओलांडण्याचे सर्वात सामान्य प्रकार काय आहे?",
+          "stem": "हिमनदांच्या तीव्र बाजूच्या अपरदनामुळे तयार झालेल्या खड्ड्याचे आकार काय असतो?",
           "choices": [
-            "पूल",
-            "नाविक",
-            "फेरी",
-            "तारांचा वाहक"
+            "V-आकाराचा खड्डा",
+            "U-आकाराचा खड्डा",
+            "गॉर्ज",
+            "स्पर"
           ],
-          "solution": "तोपोग्राफीक नकाशावर नदी ओलांडण्याचे सर्वात सामान्य प्रकार पूल असतो आणि तो सामान्यतः विशिष्ट प्रतीकाने दर्शवला जातो. ज्या विद्यार्थ्याला प्रतीकांची ओळख नसेल तो इतर विकल्प निवडू शकतो.",
+          "solution": "योग्य उत्तर 'U-आकाराचा खड्डा' आहे कारण हिमनदांमुळे बाजूच्या अपरदनामुळे खड्डा विस्तारतो आणि खोल होतो, ज्यामुळे U-आकार तयार होतो. V-आकाराचा खड्डा नदी अपरदनामुळे तयार होतो, हिमनदांमुळे नव्हे. गॉर्ज हा खोल आणि संकरा खड्डा असतो, ज्याच्या बाजू चांगल्या असतात, जो नदी अपरदनामुळे वेळेवर तयार होतो. स्पर हा एक भूआकृती असतो जो एका खोखर्याच्या किंवा पर्वताच्या बाजूला विस्तारतो, खड्ड्याच्या आकाराचा नाही.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Marathi geological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the features of V-shaped and U-shaped valleys",
+        null,
+        "mistakes the definition of a gorge",
+        "does not understand the term 'spur'"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 'U-shaped valley,' which is formed by lateral erosion from glaciers. The distractors are plausible misconceptions: confusing V-shaped with U-shaped valleys, mistaking a gorge for a glacial feature, and misunderstanding the term 'spur.'",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy305.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Topographical Maps"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy305.pdf",
+          "ordinal": 4,
+          "pageStart": 9,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 5: Topographical Maps"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy305.pdf",
+          "ordinal": 5,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 5: Topographical Maps"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-28T19:15:22.865Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the highest point on a topographical map likely to be?",
+      "choices": [
+        "A lake",
+        "A hill",
+        "A valley",
+        "A plain"
+      ],
+      "answerIndex": 1,
+      "solution": "The highest point on a topographical map is usually a hill. Hills are represented by contour lines that form closed loops, indicating elevation. Lakes are low-lying areas, valleys are depressions, and plains are flat areas.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक भू-आकृति मानचित्र पर सबसे ऊंचा बिंदु क्या हो सकता है?",
+          "choices": [
+            "एक झील",
+            "एक पहाड़",
+            "एक घाटी",
+            "एक मैदान"
+          ],
+          "solution": "भू-आकृति मानचित्र पर सबसे ऊंचा बिंदु आमतौर पर एक पहाड़ होता है। पहाड़ को घेरे हुए वृत्ताकार दृश्य रेखाओं द्वारा दर्शाया जाता है, जो ऊंचाई को संकेतित करते हैं। झील निम्न स्थिति वाले क्षेत्र होते हैं, घाटी अवनमन होते हैं और मैदान समतल क्षेत्र होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi geographical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "टॉपोग्राफिकल नकाशावरील सर्वोच्च बिंदू कोणता असू शकतो?",
+          "choices": [
+            "एक तलाव",
+            "एक डोंगर",
+            "एक खोरे",
+            "एक समतल"
+          ],
+          "solution": "टॉपोग्राफिकल नकाशावरील सर्वोच्च बिंदू सामान्यतः डोंगर असतो. डोंगरांना तिरच्छेद रेषा ज्या बंद वर्तुळांच्या रूपात असतात, त्यांच्याद्वारे उंची दर्शविली जाते. तलाव खोल भाग असतात, खोरे खालावर जाणारे भाग असतात आणि समतले सपाट भाग असतात.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for geographical features.",
           "flag": null
@@ -150,183 +245,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Mistakes lake for a high point",
         null,
-        "Assumes a boat is a common symbol for crossing rivers",
-        "Chooses ferry as a possible means of transport",
-        "Mistakenly thinks cable car is used for river crossing"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (Bridge), as bridges are the most common and clearly represented means of crossing rivers on topographical maps. The other options are less likely or not typically depicted with specific symbols.",
-      "sources": [
-        {
-          "document": "ncert/11/geography/kegy305.pdf",
-          "ordinal": 10,
-          "pageStart": 19,
-          "pageEnd": 20,
-          "headingPath": [
-            "Chapter 5: Topographical Maps",
-            "EXERCISE"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-21T06:32:52.814Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "A topographical map shows which of the following features?",
-      "choices": [
-        "Only natural features like rivers and mountains",
-        "Only cultural features like roads and buildings",
-        "Both natural and cultural features",
-        "Only the elevation of the land"
-      ],
-      "answerIndex": 2,
-      "solution": "Topographical maps show both natural and cultural features, such as elevation, rivers, roads, and buildings. They provide a detailed representation of the landscape, including both physical and human-made elements. The other options are incorrect because they limit the map's content to only one type of feature.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक भू-आकृति मानचित्र कौन-सी विशेषता दर्शाता है?",
-          "choices": [
-            "केवल प्राकृतिक विशेषताएं जैसे नदियां और पहाड़",
-            "केवल सांस्कृतिक विशेषताएं जैसे सड़कें और भवन",
-            "दोनों प्राकृतिक और सांस्कृतिक विशेषताएं",
-            "केवल भूमि की ऊंचाई"
-          ],
-          "solution": "भू-आकृति मानचित्र दोनों प्राकृतिक और सांस्कृतिक विशेषताओं को दर्शाते हैं, जैसे ऊंचाई, नदियां, सड़कें और भवन। ये भूमि के विवरण के साथ-साथ मानव-निर्मित तत्वों का विस्तृत प्रतिनिधित्व प्रदान करते हैं। अन्य विकल्प गलत हैं क्योंकि वे मानचित्र के सामग्री को केवल एक प्रकार की विशेषता तक सीमित कर देते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology as found in Hindi-medium geography textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक खालचित्र खालीलपैकी कोणते वैशिष्ट्य दर्शवते?",
-          "choices": [
-            "केवळ प्राकृतिक वैशिष्ट्ये जसे की नद्या आणि पर्वत",
-            "केवळ सांस्कृतिक वैशिष्ट्ये जसे की रस्ते आणि इमारती",
-            "दोन्ही प्राकृतिक आणि सांस्कृतिक वैशिष्ट्ये",
-            "केवळ भूमीची उंची"
-          ],
-          "solution": "खालचित्र दोन्ही प्राकृतिक आणि सांस्कृतिक वैशिष्ट्ये दर्शवतात, जसे की उंची, नद्या, रस्ते आणि इमारती. ते भूपटाच्या विस्तृत प्रतिबिंबाची पुरवणी करतात, ज्यामध्ये भौतिक आणि मानव निर्मित घटक दोन्ही समाविष्ट असतात. इतर विकल्प चुकीचे आहेत कारण ते नकाशाच्या सामग्रीला केवळ एक प्रकारच्या वैशिष्ट्यांवर मर्यादित करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geographical features.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "focuses only on natural features",
-        "focuses only on cultural features",
-        null,
-        "Student thinks topographic maps only show elevation, not other features"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that topographical maps include both natural and cultural features. The reasoning for the distractors aligns with common misconceptions students might have.",
-      "sources": [
-        {
-          "document": "ncert/11/geography/kegy305.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 5: Topographical Maps"
-          ]
-        },
-        {
-          "document": "ncert/11/geography/kegy305.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 5: Topographical Maps"
-          ]
-        },
-        {
-          "document": "ncert/11/geography/kegy305.pdf",
-          "ordinal": 2,
-          "pageStart": 5,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 5: Topographical Maps"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-21T06:32:52.814Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following is the main purpose of conventional signs and symbols on a topographical map?",
-      "choices": [
-        "To make the map visually attractive",
-        "To represent different features of the landscape",
-        "To indicate the scale of the map",
-        "To show the direction of the map"
-      ],
-      "answerIndex": 1,
-      "solution": "The main purpose of conventional signs and symbols on a topographical map is to represent different features of the landscape. These symbols help in identifying various physical and man-made features on the map.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक सामान्य संकेत एवं प्रतीकों का मुख्य उद्देश्य एक भू-ताल नक्शे पर होता है?",
-          "choices": [
-            "नक्शे को दृश्य रूप से सुंदर बनाना",
-            "भू-संरचना के विभिन्न विशेषताओं का प्रतिनिधित्व करना",
-            "नक्शे के पैमाने को दर्शाना",
-            "नक्शे की दिशा को दर्शाना"
-          ],
-          "solution": "भू-ताल नक्शे पर सामान्य संकेत एवं प्रतीकों का मुख्य उद्देश्य भू-संरचना के विभिन्न विशेषताओं का प्रतिनिधित्व करना होता है। इन संकेतों में नक्शे पर विभिन्न भौतिक एवं मानव निर्मित विशेषताओं की पहचान करने में सहायता मिलती है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for geographical concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता एक वर्तमानक चिन्हे आणि प्रतीकांचा मुख्य उद्देश एका भूदृश्य नकाशावर असतो?",
-          "choices": [
-            "नकाशाला दृश्यता देणे",
-            "भूपटाच्या विविध वैशिष्ट्यांचे प्रतिनिधित्व करणे",
-            "नकाशाच्या अनुपाताचे सूचित करणे",
-            "नकाशाच्या दिशेचे सूचित करणे"
-          ],
-          "solution": "एका भूदृश्य नकाशावर वर्तमानक चिन्हे आणि प्रतीकांचा मुख्य उद्देश भूपटाच्या विविध वैशिष्ट्यांचे प्रतिनिधित्व करणे आहे. या प्रतीकांमुळे नकाशावरील विविध भौगोलिक आणि मानव निर्मित वैशिष्ट्यांचे ओळखणे शक्य होते.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for geographical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Believes the purpose is to make the map attractive.",
-        null,
-        "Thinks symbols are used to show the scale.",
-        "Confuses direction with the purpose of symbols."
+        "Confuses valley with high ground",
+        "Thinks plain is elevated"
       ],
       "solverAnswers": [
         1,
@@ -335,8 +257,8 @@
         1,
         1
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as conventional signs and symbols are used to represent landscape features. The other options reflect common misconceptions about the purpose of map symbols.",
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. Hills are indeed the highest points on a topographical map, as they are represented by closed contour lines indicating elevation. The other options are correctly identified as low-lying or flat areas.",
       "sources": [
         {
           "document": "ncert/11/geography/kegy305.pdf",
@@ -350,49 +272,205 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-21T06:32:52.814Z",
+      "generatedAt": "2026-10-28T19:15:22.865Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which quarter of the map does the River Jamtihwa Nadi flow through?",
+      "choices": [
+        "Northwest",
+        "Southeast",
+        "Northeast",
+        "Southwest"
+      ],
+      "answerIndex": 1,
+      "solution": "The River Jamtihwa Nadi flows through the southeast quarter of the map. This can be determined by analyzing the map's orientation and the river's path.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "नक्शे के कौन-से चौथाई में नदी जम्तिहवा नदी बहती है?",
+          "choices": [
+            "उत्तर-पश्चिम",
+            "दक्षिण-पूर्व",
+            "उत्तर-पूर्व",
+            "दक्षिण-पश्चिम"
+          ],
+          "solution": "नदी जम्तिहवा नदी नक्शे के दक्षिण-पूर्व चौथाई में बहती है। इसे नक्शे के अभिमुखीकरण और नदी के मार्ग के विश्लेषण द्वारा निर्धारित किया जा सकता है।",
+          "imageAlt": null,
+          "critique": "All elements match the original. The solution incorrectly states the river flows through the southeast quarter, but the correct answer is northwest (option 1). This is a content error, not a translation error.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "नकाशाच्या कोणत्या दिशेत नदी जम्तिह्वा नदी प्रवाहित होते?",
+          "choices": [
+            "उत्तरपश्चिम",
+            "दक्षिणपूर्व",
+            "उत्तरेकडे",
+            "दक्षिणपश्चिम"
+          ],
+          "solution": "नदी जम्तिह्वा नदी नकाशाच्या दक्षिणपूर्व दिशेत प्रवाहित होते. हे नकाशाच्या दिशांच्या विश्लेषणाने आणि नदीच्या मार्गाने ठरविता येऊ शकते.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terms for directions.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Mistakes direction of river flow",
+        null,
+        "Confuses southeast with northeast",
+        "Guesses based on incorrect assumptions"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        2,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (Southeast). The reasoning provided by the author is sound, and the misconceptions listed for the wrong options are plausible for students learning about map orientation and river flow.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy305.pdf",
+          "ordinal": 10,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 5: Topographical Maps",
+            "EXERCISE"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-28T19:15:22.865Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What does the yellow colour on a topographical map usually indicate?",
+      "choices": [
+        "A forest",
+        "A cultivated area",
+        "A river",
+        "A hill"
+      ],
+      "answerIndex": 1,
+      "solution": "The yellow colour on a topographical map typically represents a cultivated or agricultural area, as this is the standard convention used in map design. Forests are usually shown in green, rivers in blue, and hills in brown or with contour lines. Therefore, the correct answer is a cultivated area.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक भू-आकृति मानचित्र पर पीला रंग सामान्यतः क्या दर्शाता है?",
+          "choices": [
+            "एक वन",
+            "एक कृषि क्षेत्र",
+            "एक नदी",
+            "एक पहाड़"
+          ],
+          "solution": "भू-आकृति मानचित्र पर पीला रंग सामान्यतः कृषि या कृषि क्षेत्र को दर्शाता है, क्योंकि मानचित्र डिजाइन में इसका उपयोग मानक संप्रदाय है। वन आमतौर पर हरे रंग में दर्शाए जाते हैं, नदियाँ नीले रंग में और पहाड़ भूरे रंग या समोच्च रेखाओं के साथ दर्शाए जाते हैं। इसलिए, सही उत्तर एक कृषि क्षेत्र है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with textbook usage.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "टॉपोग्राफिकल नकाशावर पांढरा रंग काय सूचित करतो?",
+          "choices": [
+            "एक जंगल",
+            "एक शेती केलेले क्षेत्र",
+            "एक नदी",
+            "एक खांब"
+          ],
+          "solution": "टॉपोग्राफिकल नकाशावर पांढरा रंग सामान्यतः शेती केलेले किंवा कृषी क्षेत्र दर्शवतो, कारण हा नकाशाच्या डिझाइनमध्ये वापरलेला मानक विनंती आहे. जंगल लाल रंगात दर्शवले जातात, नद्या नीला रंग आणि खांब बॅग रंग किंवा समोरच्या रेषांनी दर्शवले जातात. त्यामुळे, योग्य उत्तर शेती केलेले क्षेत्र आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation contains multiple errors: the stem asks about 'white' instead of 'yellow', the key is incorrect (should be 2, not 1), and the solution contains factual errors (forests in red, rivers in blue, hills in brown). The term 'खांब' (post) is incorrect for 'hill'.",
+          "flag": "translation critique: meaning changed; not one answer at the same position; a distractor no longer wrong; terms not the board's"
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the meaning of yellow with that of green for forests",
+        null,
+        "mistakes a river's representation for a yellow area",
+        "confuses a hill's contour lines with a yellow area"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1 (a cultivated area), as yellow typically represents agricultural land on topographical maps. The author's reasoning aligns with standard map conventions and the misconceptions listed are plausible for students.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy305.pdf",
+          "ordinal": 10,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 5: Topographical Maps",
+            "EXERCISE"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-28T19:15:22.865Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "A topographical map has a V-shaped valley. Which of the following describes the contour lines in the lowermost part of this valley?",
+      "stem": "A map shows a spur with the arms of the V pointing towards the higher ground. What does this indicate about the feature?",
       "choices": [
-        "Very close together",
-        "Very far apart",
-        "No contour lines",
-        "Uniformly spaced"
+        "It is a valley",
+        "It is a plateau",
+        "It is a conical hill",
+        "It is a spur"
       ],
-      "answerIndex": 0,
-      "solution": "In a V-shaped valley, the lowermost part of the valley is shown by the innermost contour line with a very small gap between its two sides. This means the contour lines are very close together in this area. A V-shaped valley is formed by the lateral erosion of rivers in mountainous areas. If the contour lines were very far apart, it would indicate a gentle slope. No contour lines would not make sense on a map. Uniformly spaced contours would indicate a flat or even slope, not a V-shape.",
+      "answerIndex": 3,
+      "solution": "A spur is represented by V-shaped contours with the arms pointing towards the higher ground, indicating a projection of land from higher to lower ground. A valley has V-shaped contours pointing downwards, a plateau has closely spaced contours at the edges, and a conical hill has concentric contours.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक भूदृश्य मानचित्र में एक वी-आकृति की घाटी है। निम्नलिखित में से कौन-सा इस घाटी के निम्नतम भाग में समोच्च रेखाओं का वर्णन करता है?",
+          "stem": "एक मानचित्र एक स्पूर को दर्शाता है जिसके वी के हथियार उच्च भूमि की ओर इशारा करते हैं। इसका अर्थ इस सुविधा के बारे में क्या है?",
           "choices": [
-            "बहुत करीब एक दूसरे से",
-            "बहुत दूर एक दूसरे से",
-            "कोई समोच्च रेखाएं नहीं",
-            "समान अंतराल पर वितरित"
+            "यह एक घाटी है",
+            "यह एक पठार है",
+            "यह एक शंक्वाकार पहाड़ है",
+            "यह एक स्पूर है"
           ],
-          "solution": "वी-आकृति की घाटी में घाटी के निम्नतम भाग को आंतरिकतम समोच्च रेखा द्वारा दर्शाया जाता है जिसके दोनों ओर बहुत कम अंतर होता है। इसका अर्थ है कि इस क्षेत्र में समोच्च रेखाएं बहुत करीब एक दूसरे से होती हैं। वी-आकृति की घाटी पर्वतीय क्षेत्रों में नदियों के पार्श्व अपरदन द्वारा बनती है। यदि समोच्च रेखाएं बहुत दूर एक दूसरे से होती तो इसका अर्थ एक ढलान वाली सतह होता। कोई समोच्च रेखाएं न होना मानचित्र पर असंगत होता। समान अंतराल पर वितरित समोच्च रेखाएं एक समतल या समान ढलान वाली सतह को दर्शाती हैं, वी-आकृति की घाटी के बजाय।",
+          "solution": "एक स्पूर को उच्च भूमि की ओर इशारा करते हुए वी-आकार के चक्रीय रेखाओं द्वारा दर्शाया जाता है, जो उच्च भूमि से निम्न भूमि की ओर भूमि के प्रसार को इंगित करता है। एक घाटी में नीचे की ओर इशारा करते हुए वी-आकार के चक्रीय रेखाएं होती हैं, एक पठार में किनारों पर निकटस्थ चक्रीय रेखाएं होती हैं और एक शंक्वाकार पहाड़ में संकेंद्रित चक्रीय रेखाएं होती हैं।",
           "imageAlt": null,
-          "critique": "Translation accurately conveys the technical meaning and maintains the structure and logic of the original question.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate geographical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एक भूदृश्य नकाशा वी-आकाराचा खडक असल्यास, खडकाच्या खालच्या भागात असलेल्या निर्देशक रेषांचे वर्णन कोणते असेल?",
+          "stem": "एक नकाशा एका बाजूला वीशकृत वरच्या जमिनीकडे जाणारी वी आकृती दर्शवतो. हे कोणत्या सुविधेबद्दल काय सूचित करते?",
           "choices": [
-            "खूप जवळ जवळ",
-            "खूप दूर",
-            "कोणत्याही निर्देशक रेषा नाहीत",
-            "समान अंतरावर विभाजित"
+            "ते एक खडदर आहे",
+            "ते एक पठार आहे",
+            "ते एक शंकू आकृतीचा डोंगर आहे",
+            "ते एक बाजू आहे"
           ],
-          "solution": "वी-आकाराच्या खडकात, खडकाच्या खालच्या भागाला आतील निर्देशक रेषेने दर्शविले जाते आणि त्याच्या दोन बाजूंमध्ये खूप लहान अंतर असते. हे अर्थ असा की या भागात निर्देशक रेषा खूप जवळ जवळ असतात. वी-आकाराचा खडक वाहत्या नद्यांच्या बाजूच्या अपरदनामुळे तयार होतो. जर निर्देशक रेषा खूप दूर असतील तर ते एक ढालाचा ढाल दर्शविल्यासारखे असतील. निर्देशक रेषा नसल्याचे नकाशावर अर्थ नसतो. समान अंतरावर विभाजित निर्देशक रेषा तलाव असलेल्या ढालाचे दर्शवितात, वी-आकाराचे नाहीत.",
+          "solution": "एका बाजूला वीशकृत वरच्या जमिनीकडे जाणारी आहे, जी जमिनीच्या उच्च भागापासून खालच्या भागाकडे जाणारी जमिनीची उत्केंद्रित भागाची दर्शवते. खडदरात वीशकृत खालच्या भागाकडे जातात, पठारात किनार्यावर निकट वीशकृत असतात आणि शंकू आकृतीच्या डोंगरात एकांतर वीशकृत असतात.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer (1) is in the same position as in the English version. All distractors remain incorrect in Marathi.",
+          "critique": "The translation is accurate and maintains the technical terminology used in Marathi geography textbooks.",
           "flag": null
         }
       },
@@ -401,20 +479,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        null,
-        "Thinks that a V-shaped valley would have widely spaced contours",
-        "Believes no contour lines would appear in a valley",
-        "Mistakenly assumes uniform spacing indicates a V-shape"
+        "confuses valley with spur",
+        "thinks plateau is represented by V shape",
+        "thinks conical hill has V-shaped contours",
+        null
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that in a V-shaped valley, the contour lines are very close together in the lowermost part, which matches the correct answer. The reasoning for the distractors also reflects common misconceptions.",
+      "critique": "The solution correctly identifies the feature as a spur based on the V-shaped contours with arms pointing to higher ground. The reasoning for the distractors aligns with common misconceptions about topographic map symbols.",
       "sources": [
         {
           "document": "ncert/11/geography/kegy305.pdf",
@@ -445,49 +523,49 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-21T06:32:52.814Z",
+      "generatedAt": "2026-10-28T19:15:22.865Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "A topographical map shows a plateau with closely spaced contour lines at the margins and a wide gap between the innermost contour lines. Which of the following is the most accurate interpretation of this feature?",
+      "difficulty": 6,
+      "stem": "If a topographical sheet shows a 'dissected plateau', which of the following is the best explanation for this term?",
       "choices": [
-        "A flat highland with steep sides",
-        "A flat highland with gentle sides",
-        "A deep and narrow river valley",
-        "A series of hills"
+        "A flat, elevated area with no water bodies",
+        "A plateau that has been deeply cut by rivers and streams",
+        "A mountain with a flat top",
+        "A plateau that has been eroded by wind and not water"
       ],
-      "answerIndex": 0,
-      "solution": "A plateau is a flat-topped highland with steep sides. The contour lines at the margins are closely spaced, indicating steep slopes, while the innermost contour lines show a wide gap, indicating the flat top. A flat highland with gentle sides would have evenly spaced contours. A deep and narrow river valley would be represented by a gorge, not a plateau. A series of hills would have multiple concentric contours, not a single wide gap.",
+      "answerIndex": 1,
+      "solution": "A 'dissected plateau' refers to a flat, elevated area that has been deeply cut by rivers and streams, creating a network of valleys and ridges. This process of river erosion shapes the landscape into a more rugged and fragmented form. The other options describe different landforms, such as a flat area without water, a mountain with a flat top, or a plateau shaped by wind, none of which match the specific process of river-cutting described by the term.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक भू-आकृति मानचित्र एक पठार को दर्शाता है जिसके किनारों पर निकट स्थित समोच्च रेखाएं हैं और आंतरिक समोच्च रेखाओं के बीच चौड़ा अंतर है। निम्नलिखित में से कौन-सा इस विशेषता की सबसे सटीक व्याख्या है?",
+          "stem": "यदि एक भूतालीय चित्र में 'काटे हुए पठार' दर्शाया गया है, तो निम्नलिखित में से कौन-सा इस शब्द के लिए सबसे अच्छा स्पष्टीकरण है?",
           "choices": [
-            "एक समतल ऊंचाई वाला भू-भाग",
-            "एक समतल ऊंचाई वाला भू-भाग जिसके ढलान हल्के हैं",
-            "एक गहरा और संकरा नदी घाटी",
-            "एक श्रृंखला वाले पहाड़"
+            "कोई जल निकाय बिना एक समतल, उच्च सतह",
+            "एक पठार जिसे नदियों और धाराओं द्वारा गहराई से काट दिया गया है",
+            "एक पहाड़ जिसके शीर्ष पर समतल है",
+            "एक पठार जिसे पानी के स्थान पर हवा द्वारा अपरदित किया गया है"
           ],
-          "solution": "एक पठार एक समतल ऊंचाई वाला भू-भाग होता है जिसके ढलान तीव्र होते हैं। किनारों पर समोच्च रेखाएं निकट स्थित होने से तीव्र ढलान का संकेत मिलता है, जबकि आंतरिक समोच्च रेखाओं के बीच चौड़ा अंतर समतल शीर्ष को दर्शाता है। समतल ऊंचाई वाले भू-भाग जिसके ढलान हल्के हैं, के लिए समोच्च रेखाएं समान अंतर पर होती हैं। गहरा और संकरा नदी घाटी एक गॉर्ज के रूप में दर्शाई जाती है, न कि एक पठार के रूप में। एक श्रृंखला वाले पहाड़ के लिए बहुत सारी संकेंद्रित समोच्च रेखाएं होती हैं, न कि एक चौड़ा अंतर।",
+          "solution": "एक 'काटा हुआ पठार' एक समतल, उच्च सतह होता है जिसे नदियों और धाराओं द्वारा गहराई से काट दिया गया है, जिसके कारण खाड़ियों और ऊंचाइयों का एक जाल बन जाता है। इस नदी अपरदन की प्रक्रिया भू-आकृति को अधिक कठोर और टुकड़े-मुक्त रूप में बना देती है। अन्य विकल्पों में विभिन्न भू-आकृतियां वर्णित हैं, जैसे कि बिना जल निकाय वाला समतल क्षेत्र, एक पहाड़ जिसके शीर्ष पर समतल है, या एक पठार जिसे हवा द्वारा बनाया गया है, जो इस शब्द द्वारा वर्णित नदी-काटने की विशिष्ट प्रक्रिया के साथ मेल नहीं खाते।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard geographical terminology appropriate for a Hindi-medium curriculum.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for geographical features.",
           "flag": null
         },
         "mr": {
-          "stem": "एक खालच्या नकाशावर एक उपराज्य आहे ज्याच्या किनार्यांवर जवळ जवळ अंतर असलेल्या वृत्तरेषा आहेत आणि आतील शेवटच्या वृत्तरेषांमध्ये विस्तृत अंतर आहे. खालीलपैकी कोणता या विशेषतेचा सर्वात अचूक अर्थ आहे?",
+          "stem": "जर एक भूदृश्य चित्र एक 'काटलेला मैदान' दर्शवित असेल, तर खालीलपैकी कोणता शब्द या शब्दाच्या बाबतीत सर्वात चांगला व्याख्या असेल?",
           "choices": [
-            "समतल उंच भूभागाचे खालचे बाजू",
-            "समतल उंच भूभागाचे निराळे बाजू",
-            "एक खोल आणि निराळे नदी खोरे",
-            "एका ढिगाऱ्याची श्रेणी"
+            "जलाशय नसलेले उंच तलाव",
+            "नद्या आणि धरतीच्या ओलांडणाने गहीरपणे कापलेले मैदान",
+            "तलाव असलेला पर्वत",
+            "पाणी नको वाऱ्याने खालावलेले मैदान"
           ],
-          "solution": "एक उपराज्य हा समतल वरच्या भूभागाचा खालच्या बाजू असतो. किनार्यांवरील वृत्तरेषा खूप जवळ जवळ असतात, जे खालच्या बाजू दर्शवितात, आणि आतील शेवटच्या वृत्तरेषांमध्ये विस्तृत अंतर असतो, जे समतल वरच्या भूभागाचे दर्शवितात. समतल उंच भूभागाचे निराळे बाजू असतील तर बरोबर अंतर असलेल्या वृत्तरेषा असतील. खोल आणि निराळे नदी खोरे एका गॉर्ज द्वारे दर्शविले जाईल, नाही की उपराज्य. एका ढिगाऱ्याची श्रेणी असेल तर बरोबर अंतर असलेल्या वृत्तरेषा असतील, नाही की एक विस्तृत अंतर.",
+          "solution": "एक 'काटलेला मैदान' हा शब्द एका तलाव असलेल्या उंच भूभागाच्या बाबतीत वापरला जातो जो नद्या आणि धरतीच्या ओलांडणाने गहीरपणे कापला गेला आहे, ज्यामुळे खांदे आणि खोरे असलेल्या नेटवर्कचा निर्माण होतो. या नदी अपरदनाच्या प्रक्रियेमुळे भूभागाचा आकार अधिक अस्पष्ट आणि विभक्त होतो. इतर विकल्पांमध्ये जलाशय नसलेला तलाव, तलाव असलेला पर्वत, किंवा वाऱ्याने खालावलेले मैदान अशा विविध भूभागांचा वर्णन केला गेला आहे, जे शब्दामध्ये वर्णन केलेल्या नदी-कापणाच्या विशिष्ट प्रक्रियेशी जुळत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geographical features.",
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for geographical features. The correct answer remains option (2), and all distractors are still incorrect.",
           "flag": null
         }
       },
@@ -496,115 +574,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses 'dissected plateau' with a flat, elevated area",
         null,
-        "Thinks that a plateau has gentle sides",
-        "Believes a gorge is represented by this contour pattern",
-        "Mistakenly interprets the contour pattern as a series of hills"
+        "Misunderstands the meaning of 'dissected plateau'",
+        "Confuses water erosion with wind erosion as the main cause of dissected features"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that closely spaced contour lines indicate steep slopes, and widely spaced lines indicate a flat surface. This matches the description of a plateau with steep sides and a flat top.",
-      "sources": [
-        {
-          "document": "ncert/11/geography/kegy305.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 5: Topographical Maps"
-          ]
-        },
-        {
-          "document": "ncert/11/geography/kegy305.pdf",
-          "ordinal": 4,
-          "pageStart": 9,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 5: Topographical Maps"
-          ]
-        },
-        {
-          "document": "ncert/11/geography/kegy305.pdf",
-          "ordinal": 5,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 5: Topographical Maps"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-21T06:32:52.814Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a contour map is superimposed over a land use map, what relationship can be studied?",
-      "choices": [
-        "The relationship between elevation and land use",
-        "The relationship between rivers and settlements",
-        "The relationship between transport routes and land use",
-        "The relationship between climate and vegetation"
-      ],
-      "answerIndex": 0,
-      "solution": "Superimposing a contour map over a land use map allows the study of how elevation influences different types of land use. Contour maps show elevation, while land use maps show how land is utilized, so their combination directly relates to elevation and land use. Other options, like rivers, transport routes, or climate, are not directly represented by contour lines or land use categories.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक कंटूर मानचित्र को भू-उपयोग मानचित्र पर अधिव्याप्त किया जाता है, तो कौन-सा संबंध अध्ययन किया जा सकता है?",
-          "choices": [
-            "ऊंचाई और भू-उपयोग के बीच संबंध",
-            "नदियों और बस्तियों के बीच संबंध",
-            "परिवहन मार्गों और भू-उपयोग के बीच संबंध",
-            "जलवायु और वनस्पति के बीच संबंध"
-          ],
-          "solution": "कंटूर मानचित्र को भू-उपयोग मानचित्र पर अधिव्याप्त करने से ऊंचाई के विभिन्न प्रकार के भू-उपयोग पर प्रभाव का अध्ययन किया जा सकता है। कंटूर मानचित्र ऊंचाई दर्शाते हैं, जबकि भू-उपयोग मानचित्र भूमि के उपयोग को दर्शाते हैं, इसलिए उनके संयोजन का सीधा संबंध ऊंचाई और भू-उपयोग से होता है। अन्य विकल्प, जैसे नदियां, परिवहन मार्ग या जलवायु, कंटूर रेखाओं या भू-उपयोग श्रेणियों द्वारा सीधे प्रतिनिधित्व नहीं की जाती हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for geography.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक निर्धारक नकाशा जमीन वापर नकाशावर आहे, तर कोणता संबंध अभ्यास केला जाऊ शकतो?",
-          "choices": [
-            "उंची आणि जमीन वापर यांचा संबंध",
-            "नद्या आणि वसाहती यांचा संबंध",
-            "परिवहन मार्ग आणि जमीन वापर यांचा संबंध",
-            "जलवायू आणि वनस्पती यांचा संबंध"
-          ],
-          "solution": "निर्धारक नकाशा जमीन वापर नकाशावर आहे, तर उंची विविध जमीन वापर प्रकारांवर कसा प्रभाव टाकते याचा अभ्यास केला जाऊ शकतो. निर्धारक नकाशे उंची दर्शवतात, तर जमीन वापर नकाशे जमीन कशी वापरली जाते याचा अभ्यास करतात, त्यामुळे त्यांच्या संयोजनामुळे उंची आणि जमीन वापर यांचा संबंध सीधा असतो. इतर विकल्प, जसे की नद्या, परिवहन मार्ग किंवा जलवायू, निर्धारक रेषा किंवा जमीन वापर वर्गांमध्ये सीधा प्रतिनिधित्व केले जात नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geography.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses specific features on a map with general land use patterns",
-        "Confuses land use with transport routes as separate but related features",
-        "Believing that maps can show direct climate-vegetation relationships without considering elevation or land use factors"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the question asks about the relationship that can be studied when a contour map is superimposed over a land use map, which directly relates to elevation and land use. The other options involve relationships not directly addressed by the combination of contour and land use maps.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as a 'dissected plateau' refers to a plateau that has been deeply cut by rivers and streams. The other options represent common misconceptions about the term.",
       "sources": [
         {
           "document": "ncert/11/geography/kegy305.pdf",
@@ -645,49 +628,49 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-21T06:32:52.814Z",
+      "generatedAt": "2026-10-28T19:15:22.865Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "What does the presence of white patches in a river on a topographical map indicate?",
+      "stem": "A topographical map is superimposed over a land use map. What is the most likely purpose of this action?",
       "choices": [
-        "Sand",
-        "Rocky area",
-        "Floating vegetation",
-        "Shallow water"
+        "To determine the exact location of a river",
+        "To understand the relationship between land use and slope",
+        "To identify the types of vegetation in the area",
+        "To calculate the elevation of each land use type"
       ],
-      "answerIndex": 3,
-      "solution": "White patches in a river on a topographical map typically indicate shallow water. A student who understands the symbolism might recognize this, while others might confuse it with other features like sand or vegetation.",
+      "answerIndex": 1,
+      "solution": "Superimposing a contour map over a land use map helps to understand how the slope of the land influences its use. For example, steep slopes may not be suitable for agriculture, while flat areas might be used for farming. The other options do not capture the main purpose of this action. Determining the location of a river, identifying settlements, or calculating the contour interval are not the primary objectives of this specific procedure.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक भूताल मानचित्र पर नदी में सफेद धब्बों की उपस्थिति क्या दर्शाती है?",
+          "stem": "एक स्थलाकृति मानचित्र को भूमि उपयोग मानचित्र पर अधिव्याप्त किया गया है। इस कार्रवाई का सबसे संभावित उद्देश्य क्या है?",
           "choices": [
-            "रेत",
-            "चट्टानी क्षेत्र",
-            "तैरता हुआ वनस्पति",
-            "हल्का जल"
+            "एक नदी के ठीक स्थान का निर्धारण करना",
+            "भूमि उपयोग और ढलान के बीच संबंध की समझ प्राप्त करना",
+            "क्षेत्र में वनस्पति के प्रकार की पहचान करना",
+            "प्रत्येक भूमि उपयोग प्रकार की ऊंचाई की गणना करना"
           ],
-          "solution": "भूताल मानचित्र पर नदी में सफेद धब्बे आमतौर पर हल्का जल दर्शाते हैं। एक छात्र जिसे प्रतीकों की समझ हो उसे इसे पहचान सकता है, जबकि अन्य लोग इसे रेत या वनस्पति जैसे अन्य विशेषताओं के साथ भ्रमित कर सकते हैं।",
+          "solution": "एक ढलान मानचित्र को भूमि उपयोग मानचित्र पर अधिव्याप्त करने से भूमि की ढलान के उपयोग पर प्रभाव की समझ प्राप्त होती है। उदाहरण के लिए, ढलान वाले क्षेत्र कृषि के लिए उपयुक्त नहीं हो सकते हैं, जबकि तल क्षेत्र कृषि के लिए उपयोग किए जा सकते हैं। अन्य विकल्प इस कार्रवाई के मुख्य उद्देश्य को नहीं पकड़ते हैं। नदी के स्थान का निर्धारण, बस्तियों की पहचान या ढलान अंतर की गणना इस विशिष्ट प्रक्रिया के प्राथमिक उद्देश्य नहीं हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology for geography.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for geography.",
           "flag": null
         },
         "mr": {
-          "stem": "टॉपोग्राफिकल नकाशावर नदीतील श्वेत थरबर असणे काय सूचित करते?",
+          "stem": "एक भूदृश्य नकाशा जमीन वापराच्या नकाशावर आहे. ह्या कृतीचा सर्वात शक्य उद्देश काय असू शकतो?",
           "choices": [
-            "रेती",
-            "चट्टे भाग",
-            "तरतुदीवर असलेले वनस्पती",
-            "खोल नाही असलेले पाणी"
+            "एका नदीच्या ठिकाणाचे ठरवणे",
+            "जमीन वापर आणि ढाल यांच्यातील संबंध लक्षात घेणे",
+            "क्षेत्रातील वनस्पतींचे प्रकार ओळखणे",
+            "प्रत्येक जमीन वापराच्या प्रकाराची उंची काढणे"
           ],
-          "solution": "टॉपोग्राफिकल नकाशावर नदीतील श्वेत थरबर खोल नाही असलेले पाणी सूचित करतात. चिन्हे ओळखणारा विद्यार्थी याची ओळख करू शकतो, तर इतर विद्यार्थी रेती किंवा वनस्पतीसारख्या इतर वैशिष्ट्यांशी चूक करू शकतात.",
+          "solution": "एका खांब नकाशाचा जमीन वापराच्या नकाशावर आवरण घालणे हे जमीन ढाल आणि तिच्या वापराच्या संबंधाचे समजूत घेण्यास मदत होते. उदाहरणार्थ, ढाल असलेल्या जागांवर शेती अयोग्य असू शकते, तर सपाट जागांवर शेती करता येऊ शकते. इतर विकल्प या कृतीच्या मुख्य उद्देशाचे वर्णन करत नाहीत. नदीच्या ठिकाणाचे निश्चित करणे, गावांचे ओळखणे किंवा खांब अंतराचे गणन करणे हे या विशिष्ट प्रक्रियेचे प्राथमिक उद्देश नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. The technical terms like 'श्वेत थरबर' (white patches) and 'खोल नाही असलेले पाणी' (shallow water) are appropriate for a Marathi-medium geography curriculum.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geographical concepts.",
           "flag": null
         }
       },
@@ -696,26 +679,53 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses white patches with sand",
-        "Assumes white patches represent rocky areas",
-        "Mistakenly thinks white patches are floating vegetation",
-        null
+        "Incorrectly focuses on the location of a river",
+        null,
+        "Student confuses land use with vegetation types, thinking they are the same",
+        "Confuses topographic information with land use data, thinking elevation can be directly derived from land use categories"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with standard topographic map conventions, where white patches in rivers typically indicate shallow water. The distractors reflect common misconceptions.",
+      "critique": "The correct answer is 1, as superimposing a topographical map over a land use map helps understand how slope affects land use. The other options are incorrect because they misinterpret the purpose of the overlay.",
       "sources": [
         {
           "document": "ncert/11/geography/kegy305.pdf",
-          "ordinal": 10,
-          "pageStart": 19,
-          "pageEnd": 20,
+          "ordinal": 6,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 5: Topographical Maps"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy305.pdf",
+          "ordinal": 7,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 5: Topographical Maps"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy305.pdf",
+          "ordinal": 8,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 5: Topographical Maps"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy305.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 19,
           "headingPath": [
             "Chapter 5: Topographical Maps",
             "EXERCISE"
@@ -723,102 +733,7 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-21T06:32:52.814Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "A topographical map shows a feature where the contour lines merge into one another. Which of the following features is this most likely to represent?",
-      "choices": [
-        "A hill",
-        "A river",
-        "A cliff",
-        "A valley"
-      ],
-      "answerIndex": 2,
-      "solution": "A cliff is a very steep or perpendicular face of a landform. On a map, a cliff is identified by contours that run very close to one another, ultimately merging into one. A hill would be represented by concentric contours spaced at regular intervals. A river would be shown by a V-shaped contour pattern. A valley would have a V-shaped or U-shaped contour pattern depending on its type.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक भूदृश्य मानचित्र एक ऐसी विशेषता दर्शाता है जहां निर्देशांक रेखाएं एक दूसरे में मिल जाती हैं। निम्नलिखित में से कौन-सी विशेषता इसके लिए सबसे अधिक संभावित है?",
-          "choices": [
-            "एक पहाड़",
-            "एक नदी",
-            "एक चट्टान",
-            "एक घाटी"
-          ],
-          "solution": "एक चट्टान एक भू-आकृति के बहुत ढालू या लंबवत चेहरे को दर्शाती है। मानचित्र पर एक चट्टान को निर्देशांक रेखाओं द्वारा दर्शाया जाता है जो एक दूसरे के बहुत निकट होती हैं, अंततः एक में मिल जाती हैं। एक पहाड़ को संकेंद्रित निर्देशांक रेखाओं द्वारा दर्शाया जाएगा जो नियमित अंतराल पर होती हैं। एक नदी को V-आकृति वाले निर्देशांक पैटर्न द्वारा दर्शाया जाएगा। एक घाटी को उसके प्रकार के आधार पर V-आकृति या U-आकृति वाले निर्देशांक पैटर्न द्वारा दर्शाया जाएगा।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक वर्णनात्मक नकाशा एका अशा विशेषता दर्शवतो जिथे विस्तार रेषा एकमेकांमध्ये मिळतात. खालीलपैकी कोणती विशेषता ही अत्यंत शक्यता असते?",
-          "choices": [
-            "एक खंदक",
-            "एक नदी",
-            "एक दगडाची दिवाल",
-            "एक खोर"
-          ],
-          "solution": "एक दगडाची दिवाल ही एका भूआकृतीच्या एका खडकाच्या उभ्या किंवा लंबवर्तुळ चेहर्याला संदर्भित करते. नकाशावर, एक दगडाची दिवाल विस्तार रेषांद्वारे ओळखली जाते जी एकमेकांच्या खूप जवळ असतात आणि अंततः एका रेषेमध्ये मिळतात. एक खंदक अंतर्गत विस्तार रेषांद्वारे दर्शवला जाईल जी समान अंतरावर असतात. एक नदी वी-आकाराच्या विस्तार रेषांद्वारे दर्शवली जाईल. एक खोर त्याच्या प्रकारावर अवलंबून वी-आकाराच्या किंवा यू-आकाराच्या विस्तार रेषांद्वारे दर्शवला जाईल.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geographical features.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Thinks that a hill is shown by merging contours",
-        "Believes a river is represented by this contour pattern",
-        null,
-        "Mistakenly assumes a valley would have merging contours"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with standard topographic map interpretation. Cliffs are indeed represented by closely spaced or merged contour lines, while hills, rivers, and valleys have distinct patterns.",
-      "sources": [
-        {
-          "document": "ncert/11/geography/kegy305.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 5: Topographical Maps"
-          ]
-        },
-        {
-          "document": "ncert/11/geography/kegy305.pdf",
-          "ordinal": 4,
-          "pageStart": 9,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 5: Topographical Maps"
-          ]
-        },
-        {
-          "document": "ncert/11/geography/kegy305.pdf",
-          "ordinal": 5,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 5: Topographical Maps"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-21T06:32:52.814Z",
+      "generatedAt": "2026-10-28T19:15:22.865Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

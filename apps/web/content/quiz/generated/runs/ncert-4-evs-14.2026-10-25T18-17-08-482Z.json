@@ -1,0 +1,237 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T18:17:08.482Z",
+  "finishedAt": "2026-10-25T18:19:26.944Z",
+  "seconds": 138,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap114.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 14 — Basva's Farm",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 23672,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 6746,
+      "completionTokens": 1294
+    },
+    "critique": {
+      "calls": 11,
+      "ms": 61922,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 4572,
+      "completionTokens": 1834
+    },
+    "solver": {
+      "calls": 50,
+      "ms": 30632,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 9332,
+      "completionTokens": 552
+    },
+    "form": {
+      "calls": 5,
+      "ms": 10029,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 1170,
+      "completionTokens": 293
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 3797,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 176223,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9164,
+      "completionTokens": 4729
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "How does Basva help his father in the field?",
+      "ms": {
+        "draft": 3254,
+        "critique": 6693,
+        "solver": 969
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does Basva's father use to loosen the soil before sowing the onion seeds?",
+      "ms": {
+        "draft": 2664,
+        "critique": 6964
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the onion plants when weeds are not removed?",
+      "ms": {
+        "draft": 2664,
+        "critique": 7403
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why does Basva's father not let him sprinkle the onion seeds properly?",
+      "ms": {
+        "draft": 2664,
+        "critique": 6665,
+        "solver": 8915,
+        "form": 1674
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the implement used by Basva's father to loosen the soil?",
+      "ms": {
+        "draft": 3254,
+        "critique": 5252,
+        "solver": 1062,
+        "form": 3920,
+        "translation": 33036
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does Basva's father say that it is not easy to drop the right amount of seeds at a regular distance?",
+      "ms": {
+        "draft": 3254,
+        "critique": 5666,
+        "solver": 11630,
+        "form": 1524,
+        "translation": 56828
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if weeds were not removed from the field?",
+      "ms": {
+        "draft": 3254,
+        "critique": 5285,
+        "solver": 2102,
+        "form": 4361,
+        "translation": 50436
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why is it important to take out the onions at the right time?",
+      "ms": {
+        "draft": 2664,
+        "critique": 6080,
+        "solver": 9181,
+        "form": 987,
+        "translation": 31884
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How does Basva help his father in the field?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does Basva's father use to loosen the soil before sowing the onion seeds?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens to the onion plants when weeds are not removed?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why does Basva's father not let him sprinkle the onion seeds properly?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the reason as lack of interest, which is not …\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

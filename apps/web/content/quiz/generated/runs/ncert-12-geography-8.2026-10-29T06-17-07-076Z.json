@@ -1,0 +1,691 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T06:17:07.076Z",
+  "finishedAt": "2026-10-29T06:24:40.503Z",
+  "seconds": 453,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamentals of Human Geography",
+    "bookCode": "legy1",
+    "document": "ncert/12/geography/legy108.pdf",
+    "classLevel": 12,
+    "subject": "Geography",
+    "chapter": "Chapter 8 — International Trade",
+    "edition": "Reprint 2026-27",
+    "chunks": 10,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, sample question paper, 2024-25]\n27. A. The composition of commodities in India’s international trade has been 5\nundergoing a change over the years. Substantiate the statement with suitable\narguments.\nOR\nB.‘Air transport plays an important role in the international trade’. Justify the\nstatement with suitable arguments.",
+      "[CBSE Class XII Geography, sample question paper, 2025-26]\n7. 1\nA. To reduce global trade by limiting international exchanges\nbetween member nations.\nB. To encourage trade between countries with geographical\nproximity and similar or complementary trading items while\nreducing trade restrictions in the developing world.\nC. To replace global organizations and regulate all international\ntrade activities globally.\nD. To enforce trade tariffs between member nations and prevent\nfree trade agreements.\nThe given graph shows the trend of exports and imports (in Rs. Crores)",
+      "[CBSE Class XII Geography, marking scheme, 2025-26]\n7. B. To encourage trade between countries with geographical 1\nproximity and similar or complementary trading items while\nreducing trade restrictions in the developing world.",
+      "[CBSE Class XII Geography, marking scheme, 2024-25]\n5. Ans: B Trade liberalization"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 114961,
+      "in": 35,
+      "out": 34,
+      "rejects": 1,
+      "promptTokens": 24604,
+      "completionTokens": 6655
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 262358,
+      "in": 34,
+      "out": 29,
+      "rejects": 5,
+      "promptTokens": 17311,
+      "completionTokens": 6918
+    },
+    "solver": {
+      "calls": 198,
+      "ms": 97765,
+      "in": 29,
+      "out": 24,
+      "rejects": 5,
+      "promptTokens": 34201,
+      "completionTokens": 2063
+    },
+    "form": {
+      "calls": 9,
+      "ms": 24796,
+      "in": 24,
+      "out": 13,
+      "rejects": 11,
+      "promptTokens": 2237,
+      "completionTokens": 646
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2526,
+      "in": 13,
+      "out": 7,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 402525,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 19528,
+      "completionTokens": 10978
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 1,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of the barter system?",
+      "ms": {
+        "draft": 3741,
+        "critique": 7025,
+        "solver": 1796,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best explains why international trade exists?",
+      "ms": {
+        "draft": 3741,
+        "critique": 6258,
+        "solver": 1809,
+        "form": 3717
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, why did the barter system eventually get replaced?",
+      "ms": {
+        "draft": 3741,
+        "critique": 6872,
+        "solver": 1776,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what was the main reason for the decline in the demand for raw materials after the Industrial Revolution?",
+      "ms": {
+        "draft": 3741,
+        "critique": 6763,
+        "solver": 1408,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the difference between the value of goods and services a country exports and the value of goods and services it imports?",
+      "ms": {
+        "draft": 3582,
+        "critique": 6652
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a type of international trade where two countries agree to trade specific commodities with each other?",
+      "ms": {
+        "draft": 3582,
+        "critique": 6683
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a reason why regional trade blocs have emerged?",
+      "ms": {
+        "draft": 3582,
+        "critique": 7141
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a concern related to free trade?",
+      "ms": {
+        "draft": 3582,
+        "critique": 6814
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Most of the world’s great ports are classified as:",
+      "ms": {
+        "draft": 2850,
+        "critique": 6818
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country imports more goods than it exports, what type of balance of trade does it have?",
+      "ms": {
+        "draft": 3582,
+        "critique": 6093,
+        "solver": 12050,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is it detrimental for a nation to have negative balance of payments?",
+      "ms": {
+        "draft": 2850,
+        "critique": 6783,
+        "solver": 983,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is dumping considered a serious concern among trading nations?",
+      "ms": {
+        "draft": 3582,
+        "critique": 7745,
+        "solver": 13557
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which one of the following continents has the maximum flow of global trade?",
+      "ms": {
+        "draft": 2850,
+        "critique": 8393,
+        "solver": 14919,
+        "form": 1001
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Most of the world’s great ports are classified as:",
+      "ms": {
+        "draft": 3163,
+        "critique": 5068,
+        "solver": 1621
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which type of port is described as handling bulk and general cargo in large volumes?",
+      "ms": {
+        "draft": 3163,
+        "critique": 7809,
+        "solver": 1812
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A country has a negative balance of trade. What does this imply?",
+      "ms": {
+        "draft": 3193,
+        "critique": 5587,
+        "solver": 1737,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of trade according to the passage?",
+      "ms": {
+        "draft": 13914,
+        "critique": 5730,
+        "solver": 1515,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of the barter system as described in the passage?",
+      "ms": {
+        "draft": 13914,
+        "critique": 6439,
+        "solver": 1772
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what can be inferred about the role of international trade in the development of countries?",
+      "ms": {
+        "draft": 13914,
+        "critique": 5500,
+        "solver": 1259,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main reason for the decline in the value of primary goods after the Industrial Revolution?",
+      "ms": {
+        "draft": 13914,
+        "critique": 6898,
+        "solver": 1845,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is NOT a reason for the development of international trade according to the passage?",
+      "ms": {
+        "draft": 13914,
+        "critique": 5552,
+        "solver": 6600
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How are ports helpful for trade?",
+      "ms": {
+        "draft": 2850,
+        "critique": 8111,
+        "solver": 1610,
+        "form": 3397
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which one of the following continents has the maximum flow of global trade?",
+      "ms": {
+        "draft": 3163,
+        "critique": 4635,
+        "solver": 1368,
+        "form": 4476
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why are ports helpful for trade?",
+      "ms": {
+        "draft": 3163,
+        "critique": 5326,
+        "solver": 14149,
+        "form": 3334
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the basic function of the World Trade Organisation?",
+      "ms": {
+        "draft": 3163,
+        "critique": 6576,
+        "solver": 17128,
+        "form": 2405
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it detrimental for a nation to have a negative balance of payments?",
+      "ms": {
+        "draft": 3163,
+        "critique": 7466,
+        "solver": 13642,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a reason for the formation of regional trade blocs?",
+      "ms": {
+        "draft": 3193,
+        "critique": 6180,
+        "solver": 1260,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the 'balance of trade' of a country?",
+      "ms": {
+        "draft": 3193,
+        "critique": 7813,
+        "solver": 1740,
+        "form": 0,
+        "translation": 63890
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary purpose of a bilateral trade agreement?",
+      "ms": {
+        "draft": 3193,
+        "critique": 7265,
+        "solver": 2085,
+        "form": 0,
+        "translation": 28103
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the basic function of the World Trade Organisation?",
+      "ms": {
+        "draft": 2850,
+        "critique": 6077,
+        "solver": 1558,
+        "form": 3419,
+        "translation": 60531
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a reason for the growth of international trade in the 15th century?",
+      "ms": {
+        "draft": 3741,
+        "critique": 7992,
+        "solver": 1657,
+        "form": 3244,
+        "translation": 52339
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best represents the purpose of trade agreements like the General Agreement for Tariffs and Trade (GATT)?",
+      "ms": {
+        "draft": 3741,
+        "critique": 7847,
+        "solver": 1616,
+        "form": 2705,
+        "translation": 78916
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A country is facing issues with dumped goods from another nation. What is the most likely reason for this situation?",
+      "ms": {
+        "draft": 3193,
+        "critique": 5581,
+        "solver": 2034,
+        "form": 0,
+        "translation": 56630
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the World Trade Organisation (WTO) important in international trade?",
+      "ms": {
+        "draft": 3193,
+        "critique": 5976,
+        "solver": 1879,
+        "form": 0,
+        "translation": 57162
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What benefits do nations get by forming trading blocs?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of the barter system?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best explains why international trade exists?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but the one that r…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, why did the barter system eventually get replaced?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, what was the main reason for the decline in the demand for raw materials after the Industrial Revolution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the difference between the value of goods and services a country exports and the value of goods and services it imports?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a type of international trade where two countries agree to trade specific commodities with each other?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a reason why regional trade blocs have emerged?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is a concern related to free trade?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Most of the world’s great ports are classified as:",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a country imports more goods than it exports, what type of balance of trade does it have?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why is it detrimental for a nation to have negative balance of payments?",
+      "reason": "options 0 and 1 say the same thing (\"It indicates the country is not exporting enough goods\" / \"It indicates the country is not importing enough goods\"); distractor 3's reason is not a one-line misconception (\"correct answer is based on understanding of balance of payme…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is dumping considered a serious concern among trading nations?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which one of the following continents has the maximum flow of global trade?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Believes Africa is the largest trading continent due to focu…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Most of the world’s great ports are classified as:",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which type of port is described as handling bulk and general cargo in large volumes?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A country has a negative balance of trade. What does this imply?",
+      "reason": "options 0 and 1 say the same thing (\"The country is exporting more than it is importing\" / \"The country is importing more than it is exporting\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of trade according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of the barter system as described in the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, what can be inferred about the role of international trade in the development of countries?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the main reason for the decline in the value of primary goods after the Industrial Revolution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (76 vs 39 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is NOT a reason for the development of international trade according to the passage?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "How are ports helpful for trade?",
+      "reason": "near-duplicate of served question cmviguyor0d7cgpfhudk0pju4 (cosine 0.918 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which one of the following continents has the maximum flow of global trade?",
+      "reason": "near-duplicate of served question cmviguyos0d7igpfhlzrr13gl (cosine 0.949 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Why are ports helpful for trade?",
+      "reason": "near-duplicate of served question cmviguyor0d7cgpfhudk0pju4 (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "What is the basic function of the World Trade Organisation?",
+      "reason": "near-duplicate of batch item \"What is the basic function of the World Trade Orga…\" (cosine 1.000 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is it detrimental for a nation to have a negative balance of payments?",
+      "reason": "near-duplicate of served question cmviguyov0d7ugpfh50sd5vnn (cosine 0.942 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following is a reason for the formation of regional trade blocs?",
+      "reason": "near-duplicate of served question cmvpmcb2s09y7gp21s62kofov (cosine 0.903 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

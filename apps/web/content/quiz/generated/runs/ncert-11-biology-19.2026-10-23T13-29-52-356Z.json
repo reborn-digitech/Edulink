@@ -1,0 +1,758 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T13:29:52.356Z",
+  "finishedAt": "2026-10-23T13:42:40.691Z",
+  "seconds": 768,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo119.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 19 — Chemical Coordination and Integration",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEB 2017 — question paper]\n43. Four types of chemical messengers (Black Dots) released from the regulator cell\n(R) to the target cell (T) are depicted in I, II, III and IV.\nI II III IV\nR R R Blood stream R\nBlood stream\nAIR\nT T T T\nMatch I, II, III and IV sequentially with i) Steroid Hormone, ii) Pheromones,\niii) Neurohormone iv) Neurotransmitter and choose the correct option.\na) iv, iii, ii, i\nb) iv, iii, i, ii\nc) i, ii, iii, iv\nd) iii, iv, i, ii",
+      "[CBSE Class XII Biology, sample question paper, 2023-24]\nadrenaline into the blood circulation, both of which raise blood pressure and\nincrease heart rate.\n16 Assertion: PCR is a powerful technique to identify genetic disorders. 1\nReason: PCR can detect mutations in low amounts of DNA.\nSection - B\n17 Explain the process of hormonal regulation of spermatogenesis. 2\n18 The diagram below shows the sequence of amino acids in part of a haemoglobin 2\nmolecule.\na) If the base T* was substituted with A, how would it affect the haemoglobin\nchain?\nb) Name the condition and the effects associated with the above substitution.\n19 The graph given below indicates the administration of the first (L) and second dose 2\n(M) of a vaccine. The corresponding response o",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n3. C. FSH and LH",
+      "[INBO 2013 — solutions or answer key]\n5. Small size of ✔\nfragments\n37. (4 points)\nFeatures\nGlycolysis Kreb’s\ncycle\nEvolution of X ✔\nCO 2\nSynthesis of ✔ ✔\nATP\nUtilization of ✔ X\nATP\nUtilization of X X\nO 2\nFormation of ✔ ✔\nNADH\n✔ V\n✔ III\nIV\nProcesses\nOxidative Photosynthesis\nphosphorylation\nX X\n✔ ✔\nX ✔\n✔ X\nX X\nSource of Source of Expected outcome / interpretation\nfibroblasts LDL\nNormal Normal LDL is internalized by receptor-mediated\nindividual individual endocytosis\nNormal Affected\nindividual individual\nAffected Normal\nindividual individual\nAffected Affected\nindividual individual\nPLANT SCIENCES (7 points)\n39. (4 points)\nIII,IV\nI, II\nV\nFeatures Red algae Green algae Mosses Gymnosperms Angiosperms\nApical X X\nmeristem\nAlternation ✔ ✔"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 198352,
+      "in": 42,
+      "out": 40,
+      "rejects": 2,
+      "promptTokens": 41245,
+      "completionTokens": 9877
+    },
+    "critique": {
+      "calls": 51,
+      "ms": 398465,
+      "in": 40,
+      "out": 28,
+      "rejects": 12,
+      "promptTokens": 23661,
+      "completionTokens": 8927
+    },
+    "solver": {
+      "calls": 210,
+      "ms": 125774,
+      "in": 28,
+      "out": 25,
+      "rejects": 3,
+      "promptTokens": 35648,
+      "completionTokens": 2061
+    },
+    "form": {
+      "calls": 11,
+      "ms": 41900,
+      "in": 25,
+      "out": 14,
+      "rejects": 11,
+      "promptTokens": 2744,
+      "completionTokens": 805
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 52,
+      "ms": 11350,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 743094,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 32269,
+      "completionTokens": 16353
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 1,
+    "2": 4,
+    "3": 1,
+    "4": 3,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "What is the role of the hypothalamus in the regulation of the pituitary gland?",
+      "ms": {
+        "draft": 15532,
+        "critique": 9079
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following hormones is secreted by the posterior pituitary gland?",
+      "ms": {
+        "draft": 15532,
+        "critique": 8271,
+        "solver": 1363,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a diagram that shows the pathway of a hormone from the hypothalamus to the pituitary gland. Which of the following best describes this pathway?",
+      "ms": {
+        "draft": 15532,
+        "critique": 8618,
+        "solver": 14426,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the function of hormones?",
+      "ms": {
+        "draft": 15532,
+        "critique": 8921,
+        "solver": 13654
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a person has a defect in the hypothalamus that prevents the release of releasing hormones, which of the following would most likely occur?",
+      "ms": {
+        "draft": 15532,
+        "critique": 9856,
+        "solver": 14619,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which hormone is responsible for the regulation of the 24-hour rhythm of the body, such as the sleep-wake cycle and body temperature?",
+      "ms": {
+        "draft": 4218,
+        "critique": 8238
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following hormones is responsible for regulating the growth of the mammary glands and the formation of milk?",
+      "ms": {
+        "draft": 15532,
+        "critique": 6098,
+        "solver": 15350,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person develops a condition where the adrenal cortex is underactive, which of the following is most likely to occur?",
+      "ms": {
+        "draft": 4218,
+        "critique": 7207
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the adrenal gland, which part of the gland is responsible for secreting adrenaline and noradrenaline?",
+      "ms": {
+        "draft": 4218,
+        "critique": 6688
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a scenario where a patient has high levels of thyroid hormones, leading to symptoms like weight loss, increased heart rate, and protruding eyes. Which condition is the patient most likely suffering from?",
+      "ms": {
+        "draft": 4218,
+        "critique": 7170
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the adrenal cortex?",
+      "ms": {
+        "draft": 3191,
+        "critique": 6647,
+        "solver": 1796,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the primary function of glucocorticoids?",
+      "ms": {
+        "draft": 3191,
+        "critique": 7989,
+        "solver": 1676,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which hormone is secreted by the atrial wall of the heart and helps decrease blood pressure?",
+      "ms": {
+        "draft": 4863,
+        "critique": 8266
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which hormone is secreted by the juxtaglomerular cells of the kidney and stimulates the formation of red blood cells?",
+      "ms": {
+        "draft": 4863,
+        "critique": 7531
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which hormone regulates the basal metabolic rate and plays a role in the development of the central neural system?",
+      "ms": {
+        "draft": 4863,
+        "critique": 6661
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which hormone is responsible for lowering blood pressure?",
+      "ms": {
+        "draft": 31168,
+        "critique": 4863
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person has a disorder where the parathyroid hormone is not functioning properly, leading to low blood calcium levels. Which of the following would most likely happen?",
+      "ms": {
+        "draft": 4863,
+        "critique": 6275,
+        "solver": 1043
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a deficiency of insulin, which of the following conditions may occur?",
+      "ms": {
+        "draft": 5759,
+        "critique": 7673,
+        "solver": 1962,
+        "form": 5787
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a hormone is secreted directly into the bloodstream and acts on a distant target, which type of chemical messenger is it most likely to be?",
+      "ms": {
+        "draft": 5759,
+        "critique": 9672,
+        "solver": 16551,
+        "form": 3956
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A hormone that regulates the metabolism of carbohydrates, proteins, and fats is secreted by which organ?",
+      "ms": {
+        "draft": 5300,
+        "critique": 7878,
+        "solver": 1785
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a function of the hormone estrogen?",
+      "ms": {
+        "draft": 5759,
+        "critique": 10247,
+        "solver": 15819,
+        "form": 4558
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which hormone is primarily responsible for increasing blood glucose levels?",
+      "ms": {
+        "draft": 4230,
+        "critique": 10050
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person has a condition where their body cannot properly regulate blood pressure. Which hormone is likely to be affected?",
+      "ms": {
+        "draft": 4230,
+        "critique": 8330
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the role of parathyroid hormone (PTH)?",
+      "ms": {
+        "draft": 4709,
+        "critique": 7908,
+        "solver": 1999,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student was asked to explain how the adrenal cortex and pancreas work together to maintain glucose levels in the blood. Which of the following statements is correct?",
+      "ms": {
+        "draft": 4230,
+        "critique": 8794,
+        "solver": 2702,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the brain regulates a wide spectrum of body functions and contains neurosecretory cells that produce hormones?",
+      "ms": {
+        "draft": 5424,
+        "critique": 4698
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which hormone is responsible for the regulation of the sleep-wake cycle in the human body?",
+      "ms": {
+        "draft": 4709,
+        "critique": 7908,
+        "solver": 1036,
+        "form": 4014,
+        "translation": 47511
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of insulin?",
+      "ms": {
+        "draft": 5759,
+        "critique": 8799,
+        "solver": 16835,
+        "form": 0,
+        "translation": 45406
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the parathyroid hormone (PTH)?",
+      "ms": {
+        "draft": 4218,
+        "critique": 8235,
+        "solver": 11860,
+        "form": 3451,
+        "translation": 65965
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following hormones is primarily involved in maintaining blood pressure and electrolyte balance in the body?",
+      "ms": {
+        "draft": 3191,
+        "critique": 7057,
+        "solver": 1740,
+        "form": 0,
+        "translation": 54861
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following hormones is responsible for stimulating the breakdown of glycogen in the liver?",
+      "ms": {
+        "draft": 3191,
+        "critique": 9905,
+        "solver": 2302,
+        "form": 0,
+        "translation": 48310
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a deficiency in aldosterone, which of the following would most likely occur?",
+      "ms": {
+        "draft": 3191,
+        "critique": 7766,
+        "solver": 1575,
+        "form": 0,
+        "translation": 52335
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following hormones is involved in the regulation of blood pressure?",
+      "ms": {
+        "draft": 5759,
+        "critique": 9079,
+        "solver": 15527,
+        "form": 4505,
+        "translation": 49278
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following hormones is secreted by the adrenal cortex and helps maintain blood pressure?",
+      "ms": {
+        "draft": 4230,
+        "critique": 8259,
+        "solver": 2066,
+        "form": 0,
+        "translation": 46100
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A hormone that stimulates the formation of red blood cells is secreted by which part of the kidney?",
+      "ms": {
+        "draft": 5300,
+        "critique": 8946,
+        "solver": 1674,
+        "form": 4276,
+        "translation": 49834
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person has a condition where their blood glucose levels are consistently high despite normal insulin levels. What could be the most likely cause?",
+      "ms": {
+        "draft": 5759,
+        "critique": 10642,
+        "solver": 14249,
+        "form": 6094,
+        "translation": 74473
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A patient is diagnosed with a condition where their blood pressure is very low and they are losing excessive amounts of sodium in their urine. Which of the following hormones is most likely to be deficient in this patient?",
+      "ms": {
+        "draft": 3191,
+        "critique": 6736,
+        "solver": 18201,
+        "form": 0,
+        "translation": 53231
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A hormone that causes dilation of blood vessels and reduces blood pressure is secreted by which part of the heart?",
+      "ms": {
+        "draft": 5300,
+        "critique": 7870,
+        "solver": 1707,
+        "form": 5379,
+        "translation": 47993
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A researcher observes that a patient has low levels of melatonin, which is causing sleep disturbances. Which gland is most likely affected in this case?",
+      "ms": {
+        "draft": 4218,
+        "critique": 7103,
+        "solver": 1932,
+        "form": 2376,
+        "translation": 50808
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A hormone that acts on the nucleus of the target cell and regulates gene expression is likely to be which type of hormone?",
+      "ms": {
+        "draft": 5300,
+        "critique": 7941,
+        "solver": 2139,
+        "form": 3168,
+        "translation": 52037
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following hormones is secreted by the ovary?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the role of the hypothalamus in the regulation of the pituitary gland?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following hormones is secreted by the posterior pituitary gland?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here, but the question is a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a diagram that shows the pathway of a hormone from the hypothalamus to the pituitary gland. Which of the following best describes this pathway?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the role of the nervous system in hormone transport…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following best describes the function of hormones?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a person has a defect in the hypothalamus that prevents the release of releasing hormones, which of the following would most likely occur?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Confuses the role of the hypothalamus with that of other end…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which hormone is responsible for the regulation of the 24-hour rhythm of the body, such as the sleep-wake cycle and body temperature?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following hormones is responsible for regulating the growth of the mammary glands and the formation of milk?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Misunderstands the function of thyroid stimulating hormone, …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person develops a condition where the adrenal cortex is underactive, which of the following is most likely to occur?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the diagram of the adrenal gland, which part of the gland is responsible for secreting adrenaline and noradrenaline?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student is given a scenario where a patient has high levels of thyroid hormones, leading to symptoms like weight loss, increased heart rate, and protruding eyes. Which condition is the patient most likely suffering from?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the adrenal cortex?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the primary function of glucocorticoids?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which hormone is secreted by the atrial wall of the heart and helps decrease blood pressure?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which hormone is secreted by the juxtaglomerular cells of the kidney and stimulates the formation of red blood cells?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which hormone regulates the basal metabolic rate and plays a role in the development of the central neural system?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which hormone is responsible for lowering blood pressure?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A person has a disorder where the parathyroid hormone is not functioning properly, leading to low blood calcium levels. Which of the following would most likely happen?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which hormone is responsible for the regulation of the basal metabolic rate?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person has a deficiency of insulin, which of the following conditions may occur?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"correct option, no misconception here, but not the stem word…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a hormone is secreted directly into the bloodstream and acts on a distant target, which type of chemical messenger is it most likely to be?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A hormone that regulates the metabolism of carbohydrates, proteins, and fats is secreted by which organ?",
+      "reason": "the solver picked option 1 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a function of the hormone estrogen?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which hormone is primarily responsible for increasing blood glucose levels?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A person has a condition where their body cannot properly regulate blood pressure. Which hormone is likely to be affected?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the role of parathyroid hormone (PTH)?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student was asked to explain how the adrenal cortex and pancreas work together to maintain glucose levels in the blood. Which of the following statements is correct?",
+      "reason": "options 0 and 2 say the same thing (\"The adrenal cortex releases insulin and the pancreas releases glucagon.\" / \"The adrenal cortex releases glucagon and the pancreas releases insulin.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the brain regulates a wide spectrum of body functions and contains neurosecretory cells that produce hormones?",
+      "reason": "option 3 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

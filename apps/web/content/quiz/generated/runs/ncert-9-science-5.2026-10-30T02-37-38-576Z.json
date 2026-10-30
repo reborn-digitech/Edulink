@@ -1,0 +1,599 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T02:37:38.576Z",
+  "finishedAt": "2026-10-30T02:47:55.709Z",
+  "seconds": 617,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc105.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 5 — Exploring Mixtures and their Separation",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 27,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2023 — question paper]\n31. (4 marks) As a part of an experiment to study Tyndall effect, Aamir adds sugar to aqueous dispersion of gold nanoparticles of size 100 nm. Once the experiment is completed, he plans HBCSE property of shikimic acid leads to this difference in amount in the two recipes. 15\nto recover gold nanoparticles and use them in another experiment. As he tries to separate\ngold nanoparticles and sugar, by mistake, he adds the mixture to a tube containing calcium\ncarbonate. This results in a mixture containing gold nanoparticles, sugar, water, and calcium\ncarbonate.\nHe separates the constituents in three steps by using set of apparatus available in the lab.\nInstruments and materials available in the la",
+      "[INJSO 2023 — solutions or answer key]\n31. (4 marks) As a part of an experiment to study Tyndall effect, Aamir adds sugar to aqueous\ndispersion of gold nanoparticles of size 100 nm. Once the experiment is completed, he plans\nto recover gold nanoparticles and use them in another experiment. As he tries to separate\ngold nanoparticles and sugar, by mistake, he adds the mixture to a tube containing calcium\ncarbonate. This results in a mixture containing gold nanoparticles, sugar, water, and calcium\ncarbonate.\nHe separates the constituents in three steps by using set of apparatus available in the lab.\nInstruments and materials available in the lab: Heater, sublimation set up, beaker, filter\npaper, funnel, centrifuge, centrifuge tubes,",
+      "[INJSO 2021 — question paper]\nSumit and Rekha were separately preparing tincture iodine using the above procedure. Sumit was\nworking hurriedly, as he wanted to join a birthday party. By mistake, he added carbon tetrachloride\nin the flask instead of alcohol. At the end of the procedure, two immiscible liquid layers appeared in\nhis flask. Sumit shook the flask vigorously and kept it for some time. The two layers remained\nseparate. He observed that the lower layer was strongly colored, while the upper layer had a faint\ncolour different from the lower layer. Rekha followed the protocol perfectly and got a homogenous\nmixture.\nIdentify the compositions of the top and the bottom layers in Sumit’s flask.",
+      "[NSEJS 2016 — question paper]\n67. A chemist mixes two ideal liquids A and B to form a homogeneous mixture. The densities of the liquids are 2.0\ng/mL for A and 3 g/mL for B. When she drops a small object into the mixture, she finds that the object becomes\nsuspended in the liquid; that is, it neither sinks to the bottom nor does it float on the surface. If the mixture is\nmade of 40% A and 60% B, by volume, what is the density of the object?\na) 2.60 g/mL\nb) 2.50 g/mL\nc) 2.40 g/mL\nd) 1.50 g/mL\nJS530"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 172771,
+      "in": 33,
+      "out": 30,
+      "rejects": 3,
+      "promptTokens": 45047,
+      "completionTokens": 8640
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 271003,
+      "in": 30,
+      "out": 26,
+      "rejects": 4,
+      "promptTokens": 18127,
+      "completionTokens": 6749
+    },
+    "solver": {
+      "calls": 189,
+      "ms": 106734,
+      "in": 26,
+      "out": 22,
+      "rejects": 4,
+      "promptTokens": 34711,
+      "completionTokens": 1966
+    },
+    "form": {
+      "calls": 3,
+      "ms": 18681,
+      "in": 22,
+      "out": 19,
+      "rejects": 3,
+      "promptTokens": 2495,
+      "completionTokens": 465
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 19,
+      "out": 19,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 56,
+      "ms": 10277,
+      "in": 19,
+      "out": 14,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 672436,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 33739,
+      "completionTokens": 16718
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 3,
+    "4": 1,
+    "5": 4,
+    "6": 3
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following mixtures will show the Tyndall effect?",
+      "ms": {
+        "draft": 4214,
+        "critique": 9743,
+        "solver": 3253,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on Fig. 5.6, which compound has a solubility that increases more with temperature: compound A or compound B?",
+      "ms": {
+        "draft": 14213,
+        "critique": 7726,
+        "solver": 1966,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does a 0.9% m/v saline solution mean?",
+      "ms": {
+        "draft": 14213,
+        "critique": 6790,
+        "solver": 15710,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following methods is used to separate the components of a mixture based on their different interactions with a solvent and the paper?",
+      "ms": {
+        "draft": 7080,
+        "critique": 5663
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a mixture of immiscible liquids, which of the following determines the position of the layers?",
+      "ms": {
+        "draft": 7080,
+        "critique": 8689,
+        "solver": 13730
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is used to separate a mixture of camphor and sand?",
+      "ms": {
+        "draft": 4563,
+        "critique": 7411
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the mass percentage of sugar in a solution made by dissolving 20 g of sugar in 80 g of water?",
+      "ms": {
+        "draft": 6274,
+        "critique": 7182
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following mixtures can be separated by the technique shown in Fig. 5.26?",
+      "ms": {
+        "draft": 6274,
+        "critique": 5806,
+        "solver": 2020
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What type of mixture is blood based on the passage?",
+      "ms": {
+        "draft": 10501,
+        "critique": 8074
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which among the following mixtures show the Tyndall effect?",
+      "ms": {
+        "draft": 5420,
+        "critique": 9318,
+        "solver": 1436
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following mixtures are correctly classified as homogeneous (Hm) and heterogeneous (Ht)?",
+      "ms": {
+        "draft": 5420,
+        "critique": 8352,
+        "solver": 7279
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A solution contains 5 g of solute in 100 mL of solution. What is the mass by volume percentage of the solute in the solution?",
+      "ms": {
+        "draft": 14213,
+        "critique": 9576,
+        "solver": 1364,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A solution is prepared by dissolving 20 g of salt in 80 g of water. What is the mass by mass percentage of the solution?",
+      "ms": {
+        "draft": 4214,
+        "critique": 7588,
+        "solver": 14412,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a colloid?",
+      "ms": {
+        "draft": 3717,
+        "critique": 7028,
+        "solver": 1569,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following mixtures are correctly classified as homogeneous (Hm) and heterogeneous (Ht)?",
+      "ms": {
+        "draft": 7360,
+        "critique": 6855,
+        "solver": 1209,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the mass percentage of sugar in a solution prepared by dissolving 20 g of sugar in 80 g of water?",
+      "ms": {
+        "draft": 6193,
+        "critique": 7093,
+        "solver": 596,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a homogeneous mixture?",
+      "ms": {
+        "draft": 4214,
+        "critique": 5567,
+        "solver": 1865,
+        "form": 0,
+        "translation": 44285
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to suspended particles in muddy water over time?",
+      "ms": {
+        "draft": 4214,
+        "critique": 5054,
+        "solver": 1520,
+        "form": 0,
+        "translation": 44284
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the solubility of salts when the temperature increases?",
+      "ms": {
+        "draft": 6274,
+        "critique": 5336,
+        "solver": 1366,
+        "form": 0,
+        "translation": 36675
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a mixture of sugar and water is left undisturbed, what will happen?",
+      "ms": {
+        "draft": 4214,
+        "critique": 5801,
+        "solver": 2659,
+        "form": 0,
+        "translation": 46271
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 1 mL of pesticide is mixed with 99 mL of water, what is the volume by volume percentage of the pesticide in the solution?",
+      "ms": {
+        "draft": 14213,
+        "critique": 7363,
+        "solver": 15465,
+        "form": 0,
+        "translation": 40223
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student wants to recover copper sulfate crystals from its saturated solution. Which method should they use?",
+      "ms": {
+        "draft": 4070,
+        "critique": 8537,
+        "solver": 1650,
+        "form": 0,
+        "translation": 50569
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student prepares a saturated solution of copper sulfate and allows it to cool slowly. What happens to the size of the crystals formed?",
+      "ms": {
+        "draft": 4070,
+        "critique": 5884,
+        "solver": 1469,
+        "form": 0,
+        "translation": 59309
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student prepared a mixture of salt, sugar, and water. After some time, the mixture was left undisturbed. Which of the following will happen?",
+      "ms": {
+        "draft": 4214,
+        "critique": 8382,
+        "solver": 1337,
+        "form": 0,
+        "translation": 47117
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student attempted to separate a mixture of sand and iron filings. He used a magnet but found that not all the iron filings were collected. Which of the following could explain this?",
+      "ms": {
+        "draft": 7080,
+        "critique": 8494,
+        "solver": 13658,
+        "form": 1880,
+        "translation": 53500
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student prepares a solution by dissolving 2 g of a solute in 50 mL of water. If the student then adds another 2 g of the same solute, what will be the new concentration in mass by volume percentage?",
+      "ms": {
+        "draft": 14213,
+        "critique": 8079,
+        "solver": 12312,
+        "form": 0,
+        "translation": 47490
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student accidentally mixes acetone and water, two miscible liquids. Which method can be used to separate them?",
+      "ms": {
+        "draft": 4070,
+        "critique": 6621,
+        "solver": 1552,
+        "form": 0,
+        "translation": 53286
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A mixture contains a solid that dissolves in water and a solid that does not. Which of the following methods would best separate the two?",
+      "ms": {
+        "draft": 7080,
+        "critique": 6722,
+        "solver": 12014,
+        "form": 2499,
+        "translation": 46090
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A saturated solution of compound B at 60°C contains 287 g of solute in 100 g of water. If the solution is cooled to 40°C, how much solute will crystallize out?",
+      "ms": {
+        "draft": 14213,
+        "critique": 8355,
+        "solver": 1942,
+        "form": 0,
+        "translation": 42070
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student wants to recover a solute from a solution by evaporating the solvent. What is the main disadvantage of this method compared to crystallization?",
+      "ms": {
+        "draft": 4070,
+        "critique": 7096,
+        "solver": 18099,
+        "form": 0,
+        "translation": 55598
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a correct step in the crystallization process?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is an example of a naturally occurring crystal?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about distillation?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following mixtures will show the Tyndall effect?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on Fig. 5.6, which compound has a solubility that increases more with temperature: compound A or compound B?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does a 0.9% m/v saline solution mean?",
+      "reason": "options 0 and 1 are the same (\"0.9 g of salt in 100 g of solution\"); options 0 and 2 say the same thing (\"0.9 g of salt in 100 g of solution\" / \"0.9 g of salt in 100 mL of solution\"); options 0 and 3 say the same thing (\"0.9 g of salt in 100 g of solution\" / \"0.9 mL of salt in 100 g of solution\"); options 1 and 2 say the same thing (\"0.9 g of salt in 100 g of solution\" / \"0.9 g of salt in 100 mL of solution\"); options 1 and 3 say the same thing (\"0.9 g of salt in 100 g of solution\" / \"0.9 mL of salt in 100 g of solution\"); options 2 and 3 say the same thing (\"0.9 g of salt in 100 mL of solution\" / \"0.9 mL of salt in 100 g of solution\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following methods is used to separate the components of a mixture based on their different interactions with a solvent and the paper?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a mixture of immiscible liquids, which of the following determines the position of the layers?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process is used to separate a mixture of camphor and sand?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the mass percentage of sugar in a solution made by dissolving 20 g of sugar in 80 g of water?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following mixtures can be separated by the technique shown in Fig. 5.26?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What type of mixture is blood based on the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which among the following mixtures show the Tyndall effect?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following mixtures are correctly classified as homogeneous (Hm) and heterogeneous (Ht)?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A solution contains 5 g of solute in 100 mL of solution. What is the mass by volume percentage of the solute in the solution?",
+      "reason": "near-duplicate of served question cmvfh6wdt04gagod8ur1i7vy3 (cosine 0.963 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A solution is prepared by dissolving 20 g of salt in 80 g of water. What is the mass by mass percentage of the solution?",
+      "reason": "near-duplicate of served question cmvgj0def043mgpfh35phpdus (cosine 0.926 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of a colloid?",
+      "reason": "near-duplicate of served question cmvgj0de7042sgpfhf41uidum (cosine 0.944 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following mixtures are correctly classified as homogeneous (Hm) and heterogeneous (Ht)?",
+      "reason": "near-duplicate of served question cmvgj0de8042ygpfhqj68gl7a (cosine 0.929 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the mass percentage of sugar in a solution prepared by dissolving 20 g of sugar in 80 g of water?",
+      "reason": "near-duplicate of served question cmvgj0def043mgpfh35phpdus (cosine 0.904 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

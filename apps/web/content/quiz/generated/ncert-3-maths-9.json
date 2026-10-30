@@ -21,47 +21,281 @@
   "board": "NCERT",
   "book": "Maths Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T21:16:43.079Z",
+  "generatedAt": "2026-10-28T02:48:44.374Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "Which of the following numbers lies between 600 and 700?",
+      "stem": "Which of these is an example of a number with twin digits?",
       "choices": [
-        "595",
-        "610",
-        "695",
-        "800"
+        "12",
+        "33",
+        "45",
+        "67"
       ],
       "answerIndex": 1,
-      "solution": "The number 610 is greater than 600 and less than 700, so it lies between them. 595 is less than 600, 695 is close to 700 but still less than it, and 800 is greater than 700.",
+      "solution": "A number with twin digits has the same digit repeated twice. 33 is an example because both digits are the same. The other options have different digits in each place.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी संख्या 600 और 700 के बीच में है?",
+          "stem": "इनमें से कौन-सा दोहरे अंक वाली संख्या का उदाहरण है?",
           "choices": [
-            "595",
-            "610",
-            "695",
-            "800"
+            "12",
+            "33",
+            "45",
+            "67"
           ],
-          "solution": "संख्या 610, 600 से अधिक और 700 से कम है, अतः यह उनके बीच में है। 595, 600 से कम है, 695, 700 के करीब है लेकिन अभी भी इससे कम है और 800, 700 से अधिक है।",
+          "solution": "दोहरे अंक वाली संख्या में दोनों अंक एक ही होते हैं। 33 एक उदाहरण है क्योंकि दोनों अंक समान हैं। अन्य विकल्पों में प्रत्येक स्थान पर अलग-अलग अंक हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi numerical terms.",
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate terminology and correct answer placement.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता संख्या 600 आणि 700 दरम्यान आहे?",
+          "stem": "हे कोणते एक संख्या आहे ज्यामध्ये जुळ्या अंकांचा उदाहरण आहे?",
           "choices": [
-            "595",
-            "610",
-            "695",
-            "800"
+            "12",
+            "33",
+            "45",
+            "67"
           ],
-          "solution": "संख्या 610 ही 600 पेक्षा मोठी आणि 700 पेक्षा लहान आहे, म्हणून ती त्यांच्यामध्ये आहे. 595 ही 600 पेक्षा लहान आहे, 695 ही 700 जवळ आहे परंतु अजूनही तिच्यापेक्षा लहान आहे आणि 800 ही 700 पेक्षा मोठी आहे.",
+          "solution": "जुळ्या अंकांची संख्या दोन्ही अंक एकसारखे असतात. 33 हे एक उदाहरण आहे कारण दोन्ही अंक एकसारखे आहेत. इतर विकल्पांमध्ये प्रत्येक जागेवर वेगळे अंक असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for 'twin digits' (जुळ्या अंकां) and correct mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a number with different digits",
+        null,
+        "Chooses a number with a different pattern",
+        "Chooses a number that is not a twin digit"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies 33 as the only number with twin (repeating) digits, as per the passage. The reasoning for the wrong options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: House of Hundreds - I I"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm109.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: House of Hundreds - I I",
+            "Let us Think"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm109.pdf",
+          "ordinal": 2,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: House of Hundreds - I I",
+            "Let us Think"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm109.pdf",
+          "ordinal": 3,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: House of Hundreds - I I",
+            "Let us Think"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm109.pdf",
+          "ordinal": 4,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: House of Hundreds - I I",
+            "Let us Think"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:48:44.374Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following numbers has zero tens and zero ones?",
+      "choices": [
+        "200",
+        "305",
+        "150",
+        "980"
+      ],
+      "answerIndex": 0,
+      "solution": "The number 200 has zero tens and zero ones. 305 has 0 tens but 5 ones. 150 has 5 tens and 0 ones. 980 has 8 tens and 0 ones.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी संख्या में शून्य दहाई और शून्य इकाई है?",
+          "choices": [
+            "200",
+            "305",
+            "150",
+            "980"
+          ],
+          "solution": "संख्या 200 में शून्य दहाई और शून्य इकाई है। 305 में 0 दहाई है लेकिन 5 इकाई है। 150 में 5 दहाई और 0 इकाई है। 980 में 8 दहाई और 0 इकाई है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate use of terms like 'दहाई' (tens) and 'इकाई' (ones) as used in Indian math textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणत्या संख्येचे दहाचे स्थान शून्य आणि एककांचे स्थान शून्य आहे?",
+          "choices": [
+            "200",
+            "305",
+            "150",
+            "980"
+          ],
+          "solution": "संख्या 200 चे दहाचे स्थान शून्य आणि एककांचे स्थान शून्य आहे. 305 चे दहाचे स्थान शून्य आहे परंतु एककांचे स्थान 5 आहे. 150 चे दहाचे स्थान 5 आहे आणि एककांचे स्थान शून्य आहे. 980 चे दहाचे स्थान 8 आहे आणि एककांचे स्थान शून्य आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for place values.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the place value of tens and ones, thinking that 305 has zero tens and zero ones",
+        "Confuses tens and ones place",
+        "Confuses tens and ones place"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the key. The question tests understanding of place value, and the correct answer is 200, which has 0 tens and 0 ones. The distractors are all incorrect due to common misconceptions about place value.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: House of Hundreds - I I"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm109.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: House of Hundreds - I I",
+            "Let us Think"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm109.pdf",
+          "ordinal": 2,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: House of Hundreds - I I",
+            "Let us Think"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm109.pdf",
+          "ordinal": 3,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: House of Hundreds - I I",
+            "Let us Think"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm109.pdf",
+          "ordinal": 4,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: House of Hundreds - I I",
+            "Let us Think"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:48:44.374Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the smallest number that can be made using the digits 3 and 8, allowing repetition?",
+      "choices": [
+        "33",
+        "38",
+        "83",
+        "88"
+      ],
+      "answerIndex": 0,
+      "solution": "The smallest number is 33 because using the smaller digit, 3, in both places creates the smallest possible value. 38 and 83 are larger because 8 is greater than 3, and 88 is the largest possible number with those digits.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अंक 3 और 8 का प्रयोग करके बनाई जा सकने वाली सबसे छोटी संख्या क्या है, जब अंकों के पुनरावर्तन की अनुमति हो?",
+          "choices": [
+            "33",
+            "38",
+            "83",
+            "88"
+          ],
+          "solution": "सबसे छोटी संख्या 33 है क्योंकि छोटे अंक 3 को दोनों स्थानों पर रखने से सबसे छोटा संभव मान बनता है। 38 और 83 बड़े हैं क्योंकि 8, 3 से बड़ा है, और 88 उन अंकों के साथ बनने वाली सबसे बड़ी संख्या है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3 आणि 8 अंकांचा वापर करून तयार केलेला सर्वांत लहान संख्या कोणती असेल? पुनरावृत्ती अनुमत आहे.",
+          "choices": [
+            "33",
+            "38",
+            "83",
+            "88"
+          ],
+          "solution": "सर्वांत लहान संख्या 33 आहे कारण लहान अंक 3 चा दोन्ही जागी वापर केल्याने सर्वांत लहान मूल्य तयार होते. 38 आणि 83 लहान नाहीत कारण 8, 3 पेक्षा मोठा आहे आणि 88 ही त्या अंकांनी तयार करता येणारी सर्वांत मोठी संख्या आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -72,20 +306,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Chooses a number just below the range",
         null,
-        "Student thinks numbers just below 700 are still in the 600s",
-        "Chooses a number just above the range and beyond the range"
+        "Chooses the next smallest number",
+        "Chooses the largest number",
+        "Chooses a number that is not valid"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 610, as it is the only number between 600 and 700. The author's reasoning is sound, and the misconceptions described for the distractors are plausible for students at this level.",
+      "critique": "The question is clear and the solution is correct. The smallest number using digits 3 and 8 with repetition is 33. The other options are either larger or invalid.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm109.pdf",
@@ -138,13 +372,13 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:16:43.079Z",
+      "generatedAt": "2026-10-28T02:48:44.374Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "If you take 300 + 60 + 8, what number do you get?",
+      "difficulty": 6,
+      "stem": "Which of the following numbers can be formed by adding 300 + 60 + 8?",
       "choices": [
         "368",
         "386",
@@ -152,35 +386,35 @@
         "863"
       ],
       "answerIndex": 0,
-      "solution": "Adding 300, 60, and 8 together results in 368. The correct option is 368 because it is the sum of these three numbers. The other options are incorrect as they do not match the total when these values are added.",
+      "solution": "Adding 300 + 60 + 8 results in 368 because 300 + 60 is 360, and 360 + 8 is 368. The other options do not match this sum: 386 would require adding 300 + 80 + 6, 638 would require adding 600 + 30 + 8, and 863 would require adding 800 + 60 + 3.",
       "checkExpr": "300+60+8",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि आप 300 + 60 + 8 लेते हैं, तो आपको कौन-सी संख्या मिलती है?",
+          "stem": "निम्नलिखित में से कौन-सी संख्या 300 + 60 + 8 के जोड़ से बन सकती है?",
           "choices": [
             "368",
             "386",
             "638",
             "863"
           ],
-          "solution": "300, 60 और 8 को एक साथ जोड़ने से 368 प्राप्त होता है। सही विकल्प 368 है क्योंकि यह इन तीन संख्याओं का योग है। अन्य विकल्प गलत हैं क्योंकि जब इन मानों को जोड़ा जाता है तो वे कुल योग के साथ मेल नहीं खाते।",
+          "solution": "300 + 60 + 8 के जोड़ से 368 प्राप्त होता है क्योंकि 300 + 60 = 360 और 360 + 8 = 368। अन्य विकल्प इस योग के बराबर नहीं हैं: 386 के लिए 300 + 80 + 6 की आवश्यकता होती है, 638 के लिए 600 + 30 + 8 की आवश्यकता होती है, और 863 के लिए 800 + 60 + 3 की आवश्यकता होती है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate numerical terms as found in Hindi textbooks.",
+          "critique": "The Hindi version is an accurate and natural translation of the English question, with no issues in meaning, option order, or terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "300 + 60 + 8 घेतल्यास कोणता संख्या मिळेल?",
+          "stem": "खालीलपैकी कोणता संख्या 300 + 60 + 8 जोडल्याने तयार होईल?",
           "choices": [
             "368",
             "386",
             "638",
             "863"
           ],
-          "solution": "300, 60 आणि 8 जोडल्यास 368 मिळतो. योग्य विकल्प 368 आहे कारण ही तीन संख्या जोडल्यानंतर तयार होणारी संख्या आहे. इतर विकल्प चुकीचे आहेत कारण ते या मूल्यांच्या एकूण बेरजेशी जुळत नाहीत.",
+          "solution": "300 + 60 + 8 जोडल्याने 368 मिळतो कारण 300 + 60 हे 360 आहे आणि 360 + 8 हे 368 आहे. इतर विकल्प या बेरजेसोबत मेळ नाहीत: 386 हा 300 + 80 + 6 जोडल्याने मिळेल, 638 हा 600 + 30 + 8 जोडल्याने मिळेल आणि 863 हा 800 + 60 + 3 जोडल्याने मिळेल.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate numerical terms as used in Marathi textbooks.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi numerical terms and structure.",
           "flag": null
         }
       },
@@ -190,360 +424,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Places the digits in the wrong order",
-        "Places the digits in the wrong order",
-        "Places the digits in the wrong order"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 368, as 300 + 60 + 8 = 368. The distractors represent common place value errors where digits are misplaced.",
-      "sources": [
-        {
-          "document": "ncert/3/mathematics/cemm109.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 9: House of Hundreds - I I"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm109.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 9: House of Hundreds - I I",
-            "Let us Think"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm109.pdf",
-          "ordinal": 2,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 9: House of Hundreds - I I",
-            "Let us Think"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm109.pdf",
-          "ordinal": 3,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 9: House of Hundreds - I I",
-            "Let us Think"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm109.pdf",
-          "ordinal": 4,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 9: House of Hundreds - I I",
-            "Let us Think"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:16:43.079Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a number is 6 less than 625, what is the number?",
-      "choices": [
-        "619",
-        "621",
-        "620",
-        "622"
-      ],
-      "answerIndex": 0,
-      "solution": "A number that is 6 less than 625 is found by subtracting 6 from 625, which gives 619. The other options are incorrect because they do not result from subtracting 6 from 625.",
-      "checkExpr": "625-6",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई संख्या 625 से 6 कम है, तो संख्या क्या है?",
-          "choices": [
-            "619",
-            "621",
-            "620",
-            "622"
-          ],
-          "solution": "625 से 6 कम वाली संख्या को 625 में से 6 घटाकर ज्ञात की जाती है, जिससे 619 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे 625 में से 6 घटाने पर प्राप्त नहीं होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक संख्या 625 पेक्षा 6 ने कमी असेल, तर ती संख्या काय असेल?",
-          "choices": [
-            "619",
-            "621",
-            "620",
-            "622"
-          ],
-          "solution": "625 पेक्षा 6 ने कमी असलेली संख्या 625 मधून 6 वजा करून मिळते, जे 619 असते. इतर विकल्प चुकीचे आहेत कारण ते 625 मधून 6 वजा करून मिळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi numerical terms and structure.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Subtracts 5 instead of 6",
-        "Adds 5 instead of subtracting",
-        "Adds 6 instead of subtracting"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 619, as 625 - 6 = 619. The author's solution is correct, and the reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/3/mathematics/cemm109.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 9: House of Hundreds - I I"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm109.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 9: House of Hundreds - I I",
-            "Let us Think"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm109.pdf",
-          "ordinal": 2,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 9: House of Hundreds - I I",
-            "Let us Think"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm109.pdf",
-          "ordinal": 3,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 9: House of Hundreds - I I",
-            "Let us Think"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm109.pdf",
-          "ordinal": 4,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 9: House of Hundreds - I I",
-            "Let us Think"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:16:43.079Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a number is 68 more than 300, which of the following is that number?",
-      "choices": [
-        "368",
-        "338",
-        "388",
-        "398"
-      ],
-      "answerIndex": 0,
-      "solution": "The number 300 + 68 = 368. The other options are incorrect additions.",
-      "checkExpr": "300+68",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई संख्या 300 से 68 अधिक है, तो निम्नलिखित में से कौन-सी संख्या वह है?",
-          "choices": [
-            "368",
-            "338",
-            "388",
-            "398"
-          ],
-          "solution": "संख्या 300 + 68 = 368। अन्य विकल्प गलत जोड़ हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक संख्या 300 पेक्षा 68 अधिक आहे, तर खालीलपैकी कोणती संख्या ती आहे?",
-          "choices": [
-            "368",
-            "338",
-            "388",
-            "398"
-          ],
-          "solution": "संख्या 300 + 68 = 368. इतर विकल्प चुकीच्या बेरजा आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Adding 60 instead of 68 to 300",
-        "This would be the answer if the addition was 78.",
-        "This would be the answer if the addition was 88.', "
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 368, as 300 + 68 = 368. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/3/mathematics/cemm109.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 9: House of Hundreds - I I"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm109.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 9: House of Hundreds - I I",
-            "Let us Think"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm109.pdf",
-          "ordinal": 2,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 9: House of Hundreds - I I",
-            "Let us Think"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm109.pdf",
-          "ordinal": 3,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 9: House of Hundreds - I I",
-            "Let us Think"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm109.pdf",
-          "ordinal": 4,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 9: House of Hundreds - I I",
-            "Let us Think"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:16:43.079Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "What is the largest number that can be made using six slips of paper, each with 100 written on it?",
-      "choices": [
-        "600",
-        "100",
-        "60",
-        "1000"
-      ],
-      "answerIndex": 0,
-      "solution": "The largest number that can be made using six slips of paper, each with 100 written on it, is 600, which is calculated by adding 100 six times. The other options are incorrect because 100 is too small, 60 is not achievable with six 100s, and 1000 would require more than six slips.",
-      "checkExpr": "100*6",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "छह कागज के टुकड़ों के साथ सबसे बड़ी संख्या क्या हो सकती है, जिनमें से प्रत्येक पर 100 लिखा हुआ है?",
-          "choices": [
-            "600",
-            "100",
-            "60",
-            "1000"
-          ],
-          "solution": "छह कागज के टुकड़ों के साथ सबसे बड़ी संख्या जो बनाई जा सकती है, जिनमें से प्रत्येक पर 100 लिखा हुआ है, 600 है, जो 100 को छह बार जोड़कर गणना की जाती है। अन्य विकल्प गलत हैं क्योंकि 100 बहुत छोटा है, 60 छह 100 के साथ प्राप्त नहीं किया जा सकता है और 1000 के लिए छह से अधिक टुकड़ों की आवश्यकता होती है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "सहा कागदी पट्ट्या, ज्यांवर प्रत्येकी 100 लिहिले आहे, वापरून बनवता येणारा सर्वात मोठा नंबर काय आहे?",
-          "choices": [
-            "600",
-            "100",
-            "60",
-            "1000"
-          ],
-          "solution": "सहा कागदी पट्ट्या, ज्यांवर प्रत्येकी 100 लिहिले आहे, वापरून बनवता येणारा सर्वात मोठा नंबर 600 आहे, जो 100 च्या सहा पटी जोडून मिळतो. इतर विकल्प चुकीचे आहेत कारण 100 खूप लहान आहे, 60 च्या सहा 100 ने प्राप्त करता येत नाही आणि 1000 पेक्षा जास्त पट्ट्या आवश्यक असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Chooses the value on a single slip",
-        "Chooses a number that is not possible with the given slips",
-        "Chooses a number that is not possible with the given slips"
+        "Chooses a number with the same digits in different order",
+        "Chooses a number with higher hundreds",
+        "Chooses a number with lower hundreds"
       ],
       "solverAnswers": [
         0,
@@ -553,7 +436,7 @@
         0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward. Using six slips of 100, the largest number is 6 × 100 = 600. The other options are either smaller or not achievable with the given slips.",
+      "critique": "The correct answer is 368, as 300 + 60 + 8 = 368. The distractors represent common misconceptions such as digit rearrangement, incorrect hundreds place, and incorrect tens or units place.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm109.pdf",
@@ -606,7 +489,124 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:16:43.079Z",
+      "generatedAt": "2026-10-28T02:48:44.374Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Teji says that numbers like 111, 222, and 333 have the same beat. What is the common characteristic of these numbers?",
+      "choices": [
+        "They are all odd",
+        "They are all even",
+        "They have repeating digits",
+        "3: They are all divisible by 3"
+      ],
+      "answerIndex": 2,
+      "solution": "Numbers like 111, 222, and 333 have repeating digits. They are not all odd or even, and they are not prime numbers. The common characteristic is that all their digits are the same.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "टेजी कहती है कि 111, 222 और 333 जैसी संख्याओं का एक ही रित्म होता है। इन संख्याओं की सामान्य विशेषता क्या है?",
+          "choices": [
+            "वे सभी विषम हैं",
+            "वे सभी सम हैं",
+            "उनके अंक दोहराए गए हैं",
+            "वे सभी 3 से विभाज्य हैं"
+          ],
+          "solution": "111, 222 और 333 जैसी संख्याओं में दोहराए गए अंक होते हैं। वे सभी विषम या सम नहीं होते हैं, और वे अभाज्य संख्याएं नहीं होती हैं। सामान्य विशेषता यह है कि उनके सभी अंक एक ही होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for mathematical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तेजी म्हणते की 111, 222 आणि 333 अशा संख्यांचा समान टप्पा आहे. या संख्यांची सामान्य वैशिष्ट्ये काय आहे?",
+          "choices": [
+            "त्या सर्व विषम आहेत",
+            "त्या सर्व सम आहेत",
+            "त्यांचे पुनरावृत्ती अंक आहेत",
+            "त्या सर्व 3 ने भाग जातात"
+          ],
+          "solution": "111, 222 आणि 333 अशा संख्यांमध्ये पुनरावृत्ती अंक आहेत. त्या सर्व विषम किंवा सम नाहीत, आणि त्या अभाज्य संख्या नाहीत. सामान्य वैशिष्ट्य हे आहे की त्यांचे सर्व अंक समान आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses odd and even numbers",
+        "Confuses odd and even numbers",
+        null,
+        "A student might think that numbers with repeating digits are divisible by 3 due to a common misconception about divisibility rules"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2 (they have repeating digits). The other options are incorrect: 111, 222, and 333 are not all even, and 111 and 333 are odd. While 111, 222, and 333 are divisible by 3, that is not the common characteristic they share. The author's reasoning is sound.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm109.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 9: House of Hundreds - I I"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm109.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 9: House of Hundreds - I I",
+            "Let us Think"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm109.pdf",
+          "ordinal": 2,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: House of Hundreds - I I",
+            "Let us Think"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm109.pdf",
+          "ordinal": 3,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: House of Hundreds - I I",
+            "Let us Think"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm109.pdf",
+          "ordinal": 4,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: House of Hundreds - I I",
+            "Let us Think"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:48:44.374Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

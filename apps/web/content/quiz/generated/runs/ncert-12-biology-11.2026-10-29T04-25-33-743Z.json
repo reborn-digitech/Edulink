@@ -1,0 +1,689 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T04:25:33.743Z",
+  "finishedAt": "2026-10-29T04:35:20.459Z",
+  "seconds": 587,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo111.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 11 — Organisms and Populations",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2024-25]\n10. D. Rapid divergence of traits among populations inhabiting a given 1\ngeographical area.",
+      "[CBSE Class XII Biology, sample question paper, 2022-23]\n9. Swathi was growing a bacterial colony in a culture flask under ideal laboratory 1\nconditions where the resources are replenished. Which of the following equations will\nrepresent the growth in this case?\n(Where population size is N, birth rate is b, death rate is d, unit time period is t, and\ncarrying capacity is K).\n(a) dN/dt = KN\n(b) dN/dt = r N\n(c) dN/dt = r N(K-N/K)\n(d) dN/dt = r N(K+N/K)",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[CBSE Class XII Biology, marking scheme, 2024-25]\nextinct, all those parasites exclusively dependent on it, will also\nbecome extinct\nOR\nB.\n(i)\n(2)\n(ii) A stable community should not show too much variation in productivity\nfrom year to year; it must be either resistant or resilient to occasional\ndisturbances (natural or man-made), and it must also be resistant to\ninvasions by alien species. (3)\n***********"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 145538,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 32481,
+      "completionTokens": 8271
+    },
+    "critique": {
+      "calls": 43,
+      "ms": 273872,
+      "in": 36,
+      "out": 34,
+      "rejects": 2,
+      "promptTokens": 18813,
+      "completionTokens": 7341
+    },
+    "solver": {
+      "calls": 218,
+      "ms": 104466,
+      "in": 34,
+      "out": 31,
+      "rejects": 3,
+      "promptTokens": 35498,
+      "completionTokens": 2132
+    },
+    "form": {
+      "calls": 14,
+      "ms": 54440,
+      "in": 31,
+      "out": 16,
+      "rejects": 15,
+      "promptTokens": 9011,
+      "completionTokens": 1409
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 53,
+      "ms": 10014,
+      "in": 16,
+      "out": 15,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 63,
+      "ms": 650863,
+      "in": 30,
+      "out": 30,
+      "rejects": 1,
+      "promptTokens": 37013,
+      "completionTokens": 18706
+    }
+  },
+  "kept": 15,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 3,
+    "4": 2,
+    "5": 4,
+    "6": 2
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of a population?",
+      "ms": {
+        "draft": 2787,
+        "critique": 6732,
+        "solver": 1540,
+        "form": 3474
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the role of population in evolution?",
+      "ms": {
+        "draft": 2787,
+        "critique": 6459,
+        "solver": 1447,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a population of 100 fruitflies had 10 deaths in a week, what is the death rate?",
+      "ms": {
+        "draft": 2787,
+        "critique": 7453,
+        "solver": 15204,
+        "form": 2614
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the factors that influence population density?",
+      "ms": {
+        "draft": 12543,
+        "critique": 9879,
+        "solver": 11042,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a better measure of population density when the population is too large to count directly?",
+      "ms": {
+        "draft": 12543,
+        "critique": 6132,
+        "solver": 1902,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the term for the number of births during a given period in the population?",
+      "ms": {
+        "draft": 12543,
+        "critique": 6456,
+        "solver": 1842,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the growth of the Paramecium population mentioned in the passage?",
+      "ms": {
+        "draft": 3287,
+        "critique": 4530,
+        "solver": 1326
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage explains that the intrinsic rate of natural increase (r) is an important parameter for assessing population growth. What does this parameter represent?",
+      "ms": {
+        "draft": 12543,
+        "critique": 6944,
+        "solver": 13731,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage about the king and the minister?",
+      "ms": {
+        "draft": 3287,
+        "critique": 5696,
+        "solver": 2460,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the carrying capacity of an environment?",
+      "ms": {
+        "draft": 3287,
+        "critique": 6294,
+        "solver": 1193,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between population size and environmental resources?",
+      "ms": {
+        "draft": 3287,
+        "critique": 5086,
+        "solver": 2390,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a mutualistic relationship between two species?",
+      "ms": {
+        "draft": 4078,
+        "critique": 7090
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an attribute of a population but not of an individual organism?",
+      "ms": {
+        "draft": 4127,
+        "critique": 5594,
+        "solver": 1911,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a bee's colour pattern changes slightly during evolution, what must happen for pollination to continue successfully?",
+      "ms": {
+        "draft": 4127,
+        "critique": 6675,
+        "solver": 1875
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a population doubles in size in 3 years, what is the intrinsic rate of increase (r) of the population?",
+      "ms": {
+        "draft": 4127,
+        "critique": 5110,
+        "solver": 17168
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a mutualistic relationship?",
+      "ms": {
+        "draft": 6793,
+        "critique": 8071
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a wasp species can only pollinate one type of fig tree, what does this indicate about their relationship?",
+      "ms": {
+        "draft": 6793,
+        "critique": 6049,
+        "solver": 1505,
+        "form": 2562
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of endoparasites?",
+      "ms": {
+        "draft": 6793,
+        "critique": 7762,
+        "solver": 1498,
+        "form": 4237
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason why natural selection did not lead to totally harmless parasites?",
+      "ms": {
+        "draft": 6793,
+        "critique": 7776,
+        "solver": 12212,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the case of the fig tree and the wasp, why is the relationship considered co-evolution?",
+      "ms": {
+        "draft": 6793,
+        "critique": 5910,
+        "solver": 1483,
+        "form": 2323
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains the ecological principle behind the biological control method of managing pest insects?",
+      "ms": {
+        "draft": 4127,
+        "critique": 7884,
+        "solver": 1119,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the proportion of males and females in a population?",
+      "ms": {
+        "draft": 2787,
+        "critique": 6464,
+        "solver": 1210,
+        "form": 3740,
+        "translation": 35657
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct example of a population?",
+      "ms": {
+        "draft": 2787,
+        "critique": 7214,
+        "solver": 1650,
+        "form": 3222,
+        "translation": 38528
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of the term 'age pyramid' in the context of a population?",
+      "ms": {
+        "draft": 2787,
+        "critique": 6886,
+        "solver": 14398,
+        "form": 1944,
+        "translation": 35303
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which interaction involves one species benefiting and the other being harmed?",
+      "ms": {
+        "draft": 3987,
+        "critique": 6060,
+        "solver": 1479,
+        "form": 0,
+        "translation": 28063
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An orchid plant is growing on the branch of a mango tree. What is the interaction between the orchid and the mango tree called?",
+      "ms": {
+        "draft": 4127,
+        "critique": 4798,
+        "solver": 1156,
+        "form": 0,
+        "translation": 29253
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a population has a high birth rate and low death rate, what will happen to its density?",
+      "ms": {
+        "draft": 12543,
+        "critique": 6037,
+        "solver": 15604,
+        "form": 2818,
+        "translation": 42627
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a rocky intertidal community, the starfish Pisaster is an important predator. What would happen if all the starfish were removed from the area?",
+      "ms": {
+        "draft": 3664,
+        "critique": 7285,
+        "solver": 1534,
+        "form": 0,
+        "translation": 90144
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a shallow lake, flamingoes and fishes compete for zooplankton. What type of competition is this?",
+      "ms": {
+        "draft": 3664,
+        "critique": 6726,
+        "solver": 1529,
+        "form": 0,
+        "translation": 47733
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a rocky intertidal area, if all starfish are removed, what is the most likely outcome?",
+      "ms": {
+        "draft": 3987,
+        "critique": 6235,
+        "solver": 1788,
+        "form": 0,
+        "translation": 28774
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a mutualistic relationship, how do the two species involved benefit?",
+      "ms": {
+        "draft": 4078,
+        "critique": 5677,
+        "solver": 789,
+        "form": 0,
+        "translation": 38780
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A scientist is studying a population of fish in a lake and notices that the number of fish caught per trap is increasing over time. What does this suggest about the population density?",
+      "ms": {
+        "draft": 12543,
+        "critique": 6306,
+        "solver": 1489,
+        "form": 2548,
+        "translation": 46444
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a population grows in a habitat with limited resources, which of the following growth patterns would it most likely exhibit?",
+      "ms": {
+        "draft": 3287,
+        "critique": 5707,
+        "solver": 1700,
+        "form": 3106,
+        "translation": 50127
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A bacterial colony is grown in a culture flask with replenished resources. Which equation best describes this growth?",
+      "ms": {
+        "draft": 3664,
+        "critique": 7389,
+        "solver": 1383,
+        "form": 0,
+        "translation": 41491
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do some plants use 'sexual deceit' to attract pollinators?",
+      "ms": {
+        "draft": 4078,
+        "critique": 3380,
+        "solver": 499,
+        "form": 0,
+        "translation": 51258
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the rocky intertidal community, the starfish Pisaster helps maintain species diversity by controlling prey populations. What is the primary reason for this?",
+      "ms": {
+        "draft": 3664,
+        "critique": 6869,
+        "solver": 1636,
+        "form": 0,
+        "translation": 42386
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of a population?",
+      "reason": "the key is far longer than every distractor (65 vs 31 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the role of population in evolution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a population of 100 fruitflies had 10 deaths in a week, what is the death rate?",
+      "reason": "options are in more than one unit (per fruitfly per week, per week)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the factors that influence population density?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a better measure of population density when the population is too large to count directly?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the term for the number of births during a given period in the population?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following best describes the growth of the Paramecium population mentioned in the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage explains that the intrinsic rate of natural increase (r) is an important parameter for assessing population growth. What does this parameter represent?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main idea of the passage about the king and the minister?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"The king won the chess game and got a lot of wheat\" / \"The minister won the chess game and got a lot of wheat\"); options 2 and 3 say the same thing (\"The king and the minister played a game of chess and the minister won\" / \"The king and the minister played a game of chess and the minister lost\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the carrying capacity of an environment?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between population size and environmental resources?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is an example of a mutualistic relationship between two species?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an attribute of a population but not of an individual organism?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a bee's colour pattern changes slightly during evolution, what must happen for pollination to continue successfully?",
+      "reason": "the solver picked option 0 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If a population doubles in size in 3 years, what is the intrinsic rate of increase (r) of the population?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a mutualistic relationship?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a wasp species can only pollinate one type of fig tree, what does this indicate about their relationship?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'wasp'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of endoparasites?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'parasite'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason why natural selection did not lead to totally harmless parasites?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the case of the fig tree and the wasp, why is the relationship considered co-evolution?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'wasp'"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following best explains the ecological principle behind the biological control method of managing pest insects?",
+      "reason": "near-duplicate of served question cmvicz7kq0ck0gpfhljqr8g7c (cosine 0.923 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

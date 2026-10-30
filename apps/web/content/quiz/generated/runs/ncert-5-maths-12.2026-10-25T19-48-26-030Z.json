@@ -1,0 +1,316 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T19:48:26.030Z",
+  "finishedAt": "2026-10-25T19:50:29.613Z",
+  "seconds": 124,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm112.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 12 — Racing Seconds",
+    "edition": "Reprint 2026-27",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n2. What is the greatest possible speed at which a man can walk 52 km and 91 km in an exact 1\nnumber of hours?\n(a) 17 km/hours (b) 7 km/hours\n(c) 13 km/hours (d) 26 km/hours",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2023-24]\n24. A man rows 15km upstream and 25km downstream each in 5 hours. Find he speed of the stream.\nOR\n‘A’ can run 40 meters while ‘B’ runs 50 meters in the same time. In a 1000 m race, find by how\nmuch distance ‘B’ beats ‘A’.",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2026-27]\n4. In a car race, car A beats car B by 45 km, car B beats car C by 50 km, and car 1\nA beats car C by 90 km then the length of the race course is\n(A) 400 km (B) 450 km (C) 500 km (D) 550 km",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n24. A boatman takes half as much time in rowing his boat for a certain distance downstream than\nupstream. What is the ratio between his speed of rowing the boat in still water and speed of\ncurrent? 2\nOR\nIn a 200-metre race, Anuj can beat Param by 5 metre or 3 seconds. How much time did Anuj take\nto complete the race?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 36674,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 9700,
+      "completionTokens": 2153
+    },
+    "critique": {
+      "calls": 15,
+      "ms": 78343,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 6570,
+      "completionTokens": 2520
+    },
+    "solver": {
+      "calls": 74,
+      "ms": 35772,
+      "in": 10,
+      "out": 6,
+      "rejects": 4,
+      "promptTokens": 16853,
+      "completionTokens": 912
+    },
+    "form": {
+      "calls": 4,
+      "ms": 10214,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 943,
+      "completionTokens": 278
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 4472,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 89262,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6219,
+      "completionTokens": 2668
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "If a race starts at 06:15 PM and lasts for 1 hour 45 minutes, what time will it end?",
+      "ms": {
+        "draft": 3177,
+        "critique": 6237
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If Raghu took 20 seconds to read a sentence in his book, and Ritu took 40 seconds to wash a plate, how many seconds did they take in total?",
+      "ms": {
+        "draft": 3177,
+        "critique": 5683,
+        "solver": 8869
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which unit is used to measure small differences in time taken by participants in a race?",
+      "ms": {
+        "draft": 2935,
+        "critique": 4382
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How long did Raghav take to move from his room to the kitchen?",
+      "ms": {
+        "draft": 2935,
+        "critique": 4822,
+        "solver": 1130
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A group of children left for a picnic at 08:30 AM and returned after 4 hours and 10 minutes. What time did they return?",
+      "ms": {
+        "draft": 2935,
+        "critique": 8031,
+        "solver": 1658
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Raghu left his house at 08:00 hours and arrived at his Nana ji’s house at 09:05 hours. How long did he take to reach his house?",
+      "ms": {
+        "draft": 2935,
+        "critique": 4235,
+        "solver": 6919
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Rani took 30 seconds to color a rectangle, and Raghav took 60 seconds to move from his room to the kitchen, how much more time did Raghav take than Rani?",
+      "ms": {
+        "draft": 3177,
+        "critique": 6133,
+        "solver": 2054,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which unit is used to measure small differences in time taken by participants in a race?",
+      "ms": {
+        "draft": 3177,
+        "critique": 5786,
+        "solver": 1652,
+        "form": 2827
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many seconds are there in 1 minute?",
+      "ms": {
+        "draft": 3177,
+        "critique": 5610,
+        "solver": 951,
+        "form": 4277
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct conversion of time?",
+      "ms": {
+        "draft": 2935,
+        "critique": 5014,
+        "solver": 13304,
+        "form": 1416,
+        "translation": 29611
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many minutes are there in 3 hours 15 minutes?",
+      "ms": {
+        "draft": 2935,
+        "critique": 7080,
+        "solver": 1279,
+        "form": 3289,
+        "translation": 28043
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a race starts at 08:30 AM and lasts for 1 hour 45 minutes, what time will it end?",
+      "ms": {
+        "draft": 3177,
+        "critique": 6074,
+        "solver": 1771,
+        "form": 0,
+        "translation": 28318
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a race starts at 06:15 PM and lasts for 1 hour 45 minutes, what time will it end?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If Raghu took 20 seconds to read a sentence in his book, and Ritu took 40 seconds to wash a plate, how many seconds did they take in total?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which unit is used to measure small differences in time taken by participants in a race?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How long did Raghav take to move from his room to the kitchen?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A group of children left for a picnic at 08:30 AM and returned after 4 hours and 10 minutes. What time did they return?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Raghu left his house at 08:00 hours and arrived at his Nana ji’s house at 09:05 hours. How long did he take to reach his house?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If Rani took 30 seconds to color a rectangle, and Raghav took 60 seconds to move from his room to the kitchen, how much more time did Raghav take than Rani?",
+      "reason": "near-duplicate of served question cmvk9e19t0jq8gpfhlon8kpsq (cosine 0.987 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which unit is used to measure small differences in time taken by participants in a race?",
+      "reason": "near-duplicate of served question cmvk9e19q0jq2gpfhua66kjzq (cosine 0.963 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "How many seconds are there in 1 minute?",
+      "reason": "near-duplicate of served question cmvh7ck8v07c1gpfhr7r53pjx (cosine 0.941 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

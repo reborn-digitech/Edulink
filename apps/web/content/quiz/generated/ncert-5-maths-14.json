@@ -14,56 +14,56 @@
       "summary": "इस अध्याय में नक्शे और स्थान को समझना सीखा जाता है।"
     },
     "mr": {
-      "name": "अध्याय 14 - नकाशे आणि स्थाने",
-      "summary": "हा अध्याय नकाशे आणि स्थाने वाचण्याचे आणि समजूत घेण्याचे शिकवतो."
+      "name": "अध्याय 14 - नकाशे आणि स्थान",
+      "summary": "हा अध्याय नकाशे आणि स्थान वाचण्याचे शिकवतो."
     }
   },
   "board": "NCERT",
   "book": "Math-Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-23T00:59:05.752Z",
+  "generatedAt": "2026-10-28T06:02:02.622Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 4,
-      "stem": "If the bus starts from the parking area and goes north, then takes a right turn, which direction is it driving in after the turn?",
+      "difficulty": 3,
+      "stem": "In the map of the room, the window is to the north of the girl. What direction is the bed if it is to the south of the window?",
       "choices": [
-        "East",
-        "West",
         "North",
-        "South"
+        "South",
+        "East",
+        "West"
       ],
-      "answerIndex": 0,
-      "solution": "If the bus is going north and takes a right turn, it will be driving east. A pupil who confuses the direction of the turn might pick West, North, or South.",
+      "answerIndex": 1,
+      "solution": "If the window is to the north of the girl and the bed is to the south of the window, then the bed is to the south of the girl. A student might think the bed is to the north, or confuse the direction and choose east or west.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "अगर बस पार्किंग क्षेत्र से चलना शुरू करती है और उत्तर की ओर जाती है, फिर एक दाहिना मोड़ लेती है, मोड़ के बाद यह किस दिशा में चल रही है?",
+          "stem": "कमरे के मानचित्र में, खिड़की लड़की के उत्तर में है। यदि बिस्तर खिड़की के दक्षिण में है, तो बिस्तर किस दिशा में है?",
           "choices": [
-            "पूर्व",
-            "पश्चिम",
             "उत्तर",
-            "दक्षिण"
-          ],
-          "solution": "अगर बस उत्तर की ओर जा रही है और दाहिना मोड़ लेती है, तो यह पूर्व की ओर चल रही होगी। एक छात्र जो मोड़ की दिशा को गलत ढंग से समझता है, वह पश्चिम, उत्तर या दक्षिण चुन सकता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses standard Hindi directional terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर बस पार्किंग क्षेत्रापासून उत्तर दिशेने जाऊन उजवी बाजूला मोडत असेल, तर मोडल्यानंतर ती कोणत्या दिशेने जात आहे?",
-          "choices": [
+            "दक्षिण",
             "पूर्व",
-            "पश्चिम",
+            "पश्चिम"
+          ],
+          "solution": "यदि खिड़की लड़की के उत्तर में है और बिस्तर खिड़की के दक्षिण में है, तो बिस्तर लड़की के दक्षिण में है। एक छात्र यह सोच सकता है कि बिस्तर उत्तर में है, या दिशा को गलत तरीके से समझकर पूर्व या पश्चिम चुन सकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate directional terms used in a standard Hindi textbook context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मुलीच्या उत्तरेस खिडकी आहे. जर बिछाना खिडकीच्या दक्षिणेस असेल तर तो कोणत्या दिशेत असेल?",
+          "choices": [
             "उत्तर",
-            "दक्षिण"
+            "दक्षिण",
+            "पूर्व",
+            "पश्चिम"
           ],
-          "solution": "जर बस उत्तर दिशेने जात असेल आणि उजवी बाजूला मोडत असेल, तर ती पूर्व दिशेने जाईल. एका विद्यार्थ्याला वळणाची दिशा चुकून घेऊन पश्चिम, उत्तर किंवा दक्षिण निवडू शकतो.",
+          "solution": "जर खिडकी मुलीच्या उत्तरेस असेल आणि बिछाना खिडकीच्या दक्षिणेस असेल तर बिछाना मुलीच्या दक्षिणेस असेल. एका विद्यार्थ्याला बिछाना उत्तरेस असेल असे वाटू शकते, किंवा दिशा चुकून पूर्व किंवा पश्चिम निवडू शकतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi directional terms used.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi directional terms as taught in Marathi-medium schools.",
           "flag": null
         }
       },
@@ -72,200 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "confuses the direction of the bed",
         null,
-        "Confuses the direction of the turn",
-        "Confuses the direction of the turn",
-        "Confuses the direction of the turn"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. A right turn from north leads to east, and the author's reasoning about the misconception is valid.",
-      "sources": [
-        {
-          "document": "ncert/5/mathematics/eemm114.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 14: Maps And Locations"
-          ]
-        },
-        {
-          "document": "ncert/5/mathematics/eemm114.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 14: Maps And Locations"
-          ]
-        },
-        {
-          "document": "ncert/5/mathematics/eemm114.pdf",
-          "ordinal": 2,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 14: Maps And Locations"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T00:59:05.752Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the ant has to crawl 2 cm towards the east to reach the laddoos, and then 3 cm towards the north to reach the apple, what is the total distance it has to crawl?",
-      "choices": [
-        "2 cm",
-        "3 cm",
-        "5 cm",
-        "6 cm"
-      ],
-      "answerIndex": 2,
-      "solution": "The ant crawls 2 cm east and then 3 cm north. The total distance is 2 cm + 3 cm = 5 cm. 2 cm and 3 cm are only parts of the total. 6 cm is an incorrect addition. 5 cm is the correct answer.",
-      "checkExpr": "2+3",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कीट को लड्डूओं तक पहुंचने के लिए पूर्व की ओर 2 सेमी चलना है और फिर सेब तक पहुंचने के लिए उत्तर की ओर 3 सेमी चलना है, तो इसे कुल कितनी दूरी चलनी होगी?",
-          "choices": [
-            "2 सेमी",
-            "3 सेमी",
-            "5 सेमी",
-            "6 सेमी"
-          ],
-          "solution": "कीट पूर्व की ओर 2 सेमी और फिर उत्तर की ओर 3 सेमी चलता है। कुल दूरी 2 सेमी + 3 सेमी = 5 सेमी है। 2 सेमी और 3 सेमी केवल कुल के भाग हैं। 6 सेमी गलत जोड़ है। 5 सेमी सही उत्तर है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated and maintain the same logical relationships.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर चिंच केंद्राकडे जाण्यासाठी 2 सेंमी पूर्वेकडे चालावा आणि त्यानंतर आंबा खाण्यासाठी 3 सेंमी उत्तरेकडे चालावा, तर त्याने एकूण किती अंतर चालावे लागेल?",
-          "choices": [
-            "2 सेंमी",
-            "3 सेंमी",
-            "5 सेंमी",
-            "6 सेंमी"
-          ],
-          "solution": "चिंच 2 सेंमी पूर्वेकडे आणि त्यानंतर 3 सेंमी उत्तरेकडे चालते. एकूण अंतर 2 सेंमी + 3 सेंमी = 5 सेंमी आहे. 2 सेंमी आणि 3 सेंमी हे केवळ एकूण अंतराच्या भागांचे आहेत. 6 सेंमी अयोग्य जोडणार आहे. 5 सेंमी हा योग्य उत्तर आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terms for directions (पूर्वेकडे, उत्तरेकडे) and units (सेंमी).",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses only the first part of the journey",
-        "Chooses only the second part of the journey",
-        null,
-        "Chooses a different operation"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question asks for the total distance crawled, which is the sum of 2 cm and 3 cm. The correct answer is 5 cm, and the author's reasoning is sound. The distractors reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/5/mathematics/eemm114.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 14: Maps And Locations"
-          ]
-        },
-        {
-          "document": "ncert/5/mathematics/eemm114.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 14: Maps And Locations"
-          ]
-        },
-        {
-          "document": "ncert/5/mathematics/eemm114.pdf",
-          "ordinal": 2,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 14: Maps And Locations"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T00:59:05.752Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the map is scaled so that each unit represents 2 km, what is the distance between (1,1) and (1,4)?",
-      "choices": [
-        "3 km",
-        "6 km",
-        "9 km",
-        "12 km"
-      ],
-      "answerIndex": 1,
-      "solution": "The vertical distance between (1,1) and (1,4) is 3 units. Since each unit represents 2 km, the distance is 3 × 2 = 6 km. 3 km is the unit distance, 9 km and 12 km are incorrect calculations.",
-      "checkExpr": "3*2",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि मानचित्र को इस प्रकार अनुपातित किया गया है कि प्रत्येक इकाई 2 किमी के बराबर है, तो (1,1) और (1,4) के बीच की दूरी क्या है?",
-          "choices": [
-            "3 किमी",
-            "6 किमी",
-            "9 किमी",
-            "12 किमी"
-          ],
-          "solution": "(1,1) और (1,4) के बीच लंबवत दूरी 3 इकाई है। चूंकि प्रत्येक इकाई 2 किमी के बराबर है, दूरी 3 × 2 = 6 किमी है। 3 किमी इकाई की दूरी है, 9 किमी और 12 किमी गलत गणना है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर नकाशा असा असेल की प्रत्येक एकक 2 किमी दर्शवतो, तर (1,1) आणि (1,4) यांच्यातील अंतर किती असेल?",
-          "choices": [
-            "3 किमी",
-            "6 किमी",
-            "9 किमी",
-            "12 किमी"
-          ],
-          "solution": "(1,1) आणि (1,4) यांच्यातील उभी अंतर 3 एकक आहे. प्रत्येक एकक 2 किमी दर्शवत असल्याने, अंतर 3 × 2 = 6 किमी आहे. 3 किमी हे एकक अंतर आहे, 9 किमी आणि 12 किमी चुकीचे गणना आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Takes the unit distance as the total distance",
-        null,
-        "Multiplies by 3 instead of 2",
-        "Multiplies by 4 instead of 2"
+        "mixes up the relative positions",
+        "confuses north and south"
       ],
       "solverAnswers": [
         1,
@@ -274,13 +84,31 @@
         1,
         1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The vertical distance is 3 units, and with each unit representing 2 km, the total distance is 6 km. The author's reasoning for the distractors is valid and reflects common misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution is correct. If the window is north of the girl, and the bed is south of the window, then the bed is south of the girl. The reasoning matches the correct answer.",
       "sources": [
         {
           "document": "ncert/5/mathematics/eemm114.pdf",
-          "ordinal": 3,
-          "pageStart": 8,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 14: Maps And Locations"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm114.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 14: Maps And Locations"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm114.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
           "pageEnd": 8,
           "headingPath": [
             "Chapter 14: Maps And Locations"
@@ -288,7 +116,197 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T00:59:05.752Z",
+      "generatedAt": "2026-10-28T06:02:02.622Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "On the metro map, the Qutb Minar station is on the Yellow Line and the Supreme Court station is on the Blue Line. If Lali suggests taking the Yellow Line to Hauz Khas and then the Magenta Line, which line would the children be on after changing at Hauz Khas?",
+      "choices": [
+        "Yellow Line",
+        "Blue Line",
+        "Magenta Line",
+        "Green Line"
+      ],
+      "answerIndex": 2,
+      "solution": "After taking the Yellow Line to Hauz Khas and changing to the Magenta Line, the children would be on the Magenta Line. A student might think they remain on the Yellow Line, or choose the Blue Line by mistake, or pick the Green Line, which is not mentioned.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मेट्रो मानचित्र पर, कुतुब मीनार स्टेशन पीली लाइन पर है और सुप्रीम कोर्ट स्टेशन नीली लाइन पर है। यदि लाली पीली लाइन पर हौज कास जाने के लिए सुझाव देती है और फिर मैजेंटा लाइन लेती है, तो हौज कास पर बदलने के बाद बच्चे किस लाइन पर होंगे?",
+          "choices": [
+            "पीली लाइन",
+            "नीली लाइन",
+            "मैजेंटा लाइन",
+            "हरी लाइन"
+          ],
+          "solution": "पीली लाइन पर हौज कास जाकर मैजेंटा लाइन में बदलने के बाद, बच्चे मैजेंटा लाइन पर होंगे। एक छात्र मान सकता है कि वे पीली लाइन पर ही रहेंगे, या गलती से नीली लाइन चुन सकता है, या हरी लाइन चुन सकता है जो उल्लेख नहीं की गई है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terms for metro lines.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मेट्रोच्या नकाशावर, कुतुब मीनार स्टेशन हा पिवळा लाईनवर आहे आणि सुप्रीम कोर्ट स्टेशन हा नीला लाईनवर आहे. जर लालीने पिवळा लाईन घेऊन हौज कस स्टेशनपर्यंत जाण्याची शिफारस केली आणि नंतर मॅजेंटा लाईन घेण्याची शिफारस केली, तर हौज कस स्टेशनवर बदलल्यानंतर मुलांना कोणत्या लाईनवर असावे लागेल?",
+          "choices": [
+            "पिवळा लाईन",
+            "नीला लाईन",
+            "मॅजेंटा लाईन",
+            "हिरवा लाईन"
+          ],
+          "solution": "पिवळा लाईन घेऊन हौज कस स्टेशनपर्यंत जाऊन मॅजेंटा लाईन घेतल्यानंतर, मुलांना मॅजेंटा लाईनवर असावे लागेल. एका विद्यार्थ्याला असे वाटू शकते की ते पिवळा लाईनवर असतील, किंवा चूकीने नीला लाईन निवडतील, किंवा हिरवा लाईन निवडतील, जो उल्लेखित नसेल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for metro lines.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "does not understand the change of lines",
+        "confuses the line at Hauz Khas",
+        null,
+        "does not know the line names"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the reasoning. The correct answer is the Magenta Line, as the children change lines at Hauz Khas. The distractors reflect common misconceptions about line changes and line names.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm114.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 14: Maps And Locations"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm114.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 14: Maps And Locations"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm114.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 14: Maps And Locations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T06:02:02.622Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "On the zoo map, each vertical line is a column and each horizontal line is a row. To reach the panda, you start at zero, move 1 step east, then 1 step north. If you start at zero and move 2 steps east, then 3 steps north, where would you be located?",
+      "choices": [
+        "(2,3)",
+        "(3,2)",
+        "(1,1)",
+        "(2,2)"
+      ],
+      "answerIndex": 0,
+      "solution": "Starting at (0,0), moving 2 steps east (x-axis) and 3 steps north (y-axis) would place you at (2,3). A student might mix up the order of the coordinates and choose (3,2), or think the movement is only 1 step in each direction and choose (1,1), or think the movement is 2 steps in each direction and choose (2,2).",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जू नक्शे पर, प्रत्येक ऊर्ध्वाधर रेखा एक स्तंभ है और प्रत्येक क्षैतिज रेखा एक पंक्ति है। पांडा तक पहुंचने के लिए, आप शून्य से शुरू करते हैं, 1 कदम पूर्व की ओर जाते हैं, फिर 1 कदम उत्तर की ओर जाते हैं। यदि आप शून्य से शुरू करते हैं और 2 कदम पूर्व की ओर जाते हैं, फिर 3 कदम उत्तर की ओर जाते हैं, तो आप कहां स्थित होंगे?",
+          "choices": [
+            "(2,3)",
+            "(3,2)",
+            "(1,1)",
+            "(2,2)"
+          ],
+          "solution": "शुरू में (0,0) पर, 2 कदम पूर्व (x-अक्ष) और 3 कदम उत्तर (y-अक्ष) जाने से आप (2,3) पर होंगे। एक छात्र (3,2) चुन सकता है क्योंकि वह निर्देशांक के क्रम को गलत कर सकता है, या वह गलती से सोच सकता है कि गति केवल 1 कदम प्रत्येक दिशा में है और (1,1) चुन सकता है, या वह गलती से सोच सकता है कि गति 2 कदम प्रत्येक दिशा में है और (2,2) चुन सकता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for coordinate geometry.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सांस्कृतिक उद्यानाच्या नकाशावर, प्रत्येक उर्ध्वाधर रेषा एक खांब आहे आणि प्रत्येक अक्षांश रेषा एक ओळ आहे. पांडा येण्यासाठी, तुम्ही शून्यापासून सुरुवात करून 1 चक्कर पूर्वेकडे जाता, नंतर 1 चक्कर उत्तरेकडे जाता. जर तुम्ही शून्यापासून सुरुवात करून 2 चक्कर पूर्वेकडे जाता, नंतर 3 चक्कर उत्तरेकडे जाता, तर तुम्ही कुठे असाल?",
+          "choices": [
+            "(2,3)",
+            "(3,2)",
+            "(1,1)",
+            "(2,2)"
+          ],
+          "solution": "शून्यावरून (0,0) सुरुवात करून, 2 चक्कर पूर्वेकडे (x-अक्ष) आणि 3 चक्कर उत्तरेकडे (y-अक्ष) जाणे तुम्हाला (2,3) वर ठेवेल. एक विद्यार्थी समन्वयांच्या क्रमाची चूक करून (3,2) निवडू शकतो, किंवा चाल केवळ 1 चक्कर प्रत्येक दिशेने असेल असे समजून (1,1) निवडू शकतो, किंवा चाल 2 चक्कर प्रत्येक दिशेने असेल असे समजून (2,2) निवडू शकतो.",
+          "imageAlt": null,
+          "critique": "The translation maintains the original meaning, with appropriate Marathi terms for coordinates and directions. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the order of coordinates",
+        "assumes the movement is only 1 step in each direction",
+        "assumes the movement is 2 steps in each direction"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Moving 2 steps east (x-axis) and 3 steps north (y-axis) from (0,0) leads to (2,3). The distractors reflect common misconceptions about coordinate order and movement.",
+      "sources": [
+        {
+          "document": "ncert/5/mathematics/eemm114.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 14: Maps And Locations"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm114.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 14: Maps And Locations"
+          ]
+        },
+        {
+          "document": "ncert/5/mathematics/eemm114.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 14: Maps And Locations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T06:02:02.622Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

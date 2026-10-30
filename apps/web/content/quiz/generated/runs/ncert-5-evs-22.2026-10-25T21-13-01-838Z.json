@@ -1,0 +1,233 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T21:13:01.838Z",
+  "finishedAt": "2026-10-25T21:15:17.642Z",
+  "seconds": 136,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap122.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 22 — 22. On the Move Again",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 21327,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8082,
+      "completionTokens": 1243
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 50141,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 3705,
+      "completionTokens": 1606
+    },
+    "solver": {
+      "calls": 43,
+      "ms": 22014,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 7047,
+      "completionTokens": 424
+    },
+    "form": {
+      "calls": 5,
+      "ms": 13525,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 1132,
+      "completionTokens": 361
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 3502,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 191009,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11609,
+      "completionTokens": 6001
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What happens to children like Dhanu when their families leave the village for work?",
+      "ms": {
+        "draft": 2734,
+        "critique": 4979,
+        "solver": 951
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What do you think would happen in Dhanu’s village if no one left for work?",
+      "ms": {
+        "draft": 2734,
+        "critique": 9459
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason Dhanu’s family borrows money from the mukadam?",
+      "ms": {
+        "draft": 2734,
+        "critique": 5480,
+        "solver": 11494
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the agent who lends money to the villagers?",
+      "ms": {
+        "draft": 2598,
+        "critique": 6629,
+        "solver": 1677,
+        "form": 2337,
+        "translation": 25951
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do the villagers have to leave their village for six months?",
+      "ms": {
+        "draft": 2598,
+        "critique": 6941,
+        "solver": 2128,
+        "form": 2892,
+        "translation": 46149
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do families like Dhanu’s leave their village for six months?",
+      "ms": {
+        "draft": 2734,
+        "critique": 5118,
+        "solver": 1579,
+        "form": 5344,
+        "translation": 29844
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen to the village school if children like Dhanu are not present for six months?",
+      "ms": {
+        "draft": 2598,
+        "critique": 6402,
+        "solver": 1020,
+        "form": 3951,
+        "translation": 44465
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason that families like Dhanu’s have to borrow money from the mukadam?",
+      "ms": {
+        "draft": 2598,
+        "critique": 2958,
+        "solver": 645,
+        "form": 1105,
+        "translation": 40265
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What happens to children like Dhanu when their families leave the village for work?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What do you think would happen in Dhanu’s village if no one left for work?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main reason Dhanu’s family borrows money from the mukadam?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,784 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T02:05:33.094Z",
+  "finishedAt": "2026-10-28T02:12:33.111Z",
+  "seconds": 420,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc112.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 12 — Magnetic Effects of Electric Current",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n32. (i) State the law that explains the heating effect of current with respect to the measurable 2+1\nproperties in an electrical circuit.\n(ii) List the factors on which the resistance of a conductor depends.",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n32. (a) When iron filings are placed in a magnetic field around a bar magnet, they 3\nbehave like tiny magnets. The magnetic force experienced by these tiny magnets\nmake them rotate and align themselves along the direction of field lines. (1 mark)\n(b)The physical property indicated by this arrangement is the magnetic field\nproduced by the bar magnet. (1 mark)\n(c) Magnetic field lines never intersect, magnetic field lines are closed curves.\n(1mark)\nOR\n(a) The deflection in the compass needle increases as Magnetic field of the current\ncarrying conductor is directly proportional to current flowing through it.\n(1.5marks)\n(b) The deflection in the needle decreases as the magnetic field is inversel",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n19. Assertion : A compass needle is placed near a current carrying wire. The deflection of the 1\ncompass needle decreases when the magnitude of the current in the wire is increased.\nReason : The strength of a magnetic field at a point near the conductor increases on\nincreasing the current.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n33. A. Magnetic field strength is inversely proportional to the distance from the 3\ncurrent carrying wire. Hence when Mona moved the compass away from\nthe current carrying wire, the magnetic effect was less on it and hence the\ndeflection was less. (1)\nB. Magnetic field strength is directly proportional to the current in the wire. So,\nMona could increase the current in the circuit to observe a greater\ndeflection in the compass needle. (1)\nC. The battery suggests that the current is going from top of the plane to the\nbottom of the plane. Using the right hand thumb rule we can say that the\nmagnetic field will be clockwise. (1)\n- - - - - - - - - - - -\nFor visually impaired students\nA. Magnetic f"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 149124,
+      "in": 41,
+      "out": 39,
+      "rejects": 2,
+      "promptTokens": 41359,
+      "completionTokens": 8983
+    },
+    "critique": {
+      "calls": 45,
+      "ms": 271784,
+      "in": 39,
+      "out": 33,
+      "rejects": 6,
+      "promptTokens": 20343,
+      "completionTokens": 7734
+    },
+    "solver": {
+      "calls": 206,
+      "ms": 86501,
+      "in": 33,
+      "out": 27,
+      "rejects": 6,
+      "promptTokens": 33355,
+      "completionTokens": 1960
+    },
+    "form": {
+      "calls": 13,
+      "ms": 77374,
+      "in": 27,
+      "out": 14,
+      "rejects": 13,
+      "promptTokens": 12314,
+      "completionTokens": 2130
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 47,
+      "ms": 7658,
+      "in": 14,
+      "out": 7,
+      "rejects": 7,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 305426,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 17281,
+      "completionTokens": 9519
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "What does the pattern of iron filings around a bar magnet demonstrate?",
+      "ms": {
+        "draft": 3677,
+        "critique": 7000,
+        "solver": 12331,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the direction of the magnetic field at a point near a current-carrying wire according to the right-hand rule?",
+      "ms": {
+        "draft": 3677,
+        "critique": 6896,
+        "solver": 1655,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the deflection of a compass needle placed near a current-carrying wire when the current in the wire is increased?",
+      "ms": {
+        "draft": 4094,
+        "critique": 6140,
+        "solver": 11209,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A current-carrying wire is placed horizontally, and a compass is placed below it. If the current flows from east to west, what is the direction of the compass needle's deflection?",
+      "ms": {
+        "draft": 4094,
+        "critique": 7076,
+        "solver": 1409
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Choose the correct option. The magnetic field inside a long straight solenoid-carrying current",
+      "ms": {
+        "draft": 4070,
+        "critique": 6523,
+        "solver": 1319
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following property of a proton can change while it moves freely in a magnetic field?",
+      "ms": {
+        "draft": 4070,
+        "critique": 6188,
+        "solver": 1416
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the magnetic field produced by the human body?",
+      "ms": {
+        "draft": 4070,
+        "critique": 5311,
+        "solver": 1178,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is a solenoid?",
+      "ms": {
+        "draft": 4070,
+        "critique": 6648,
+        "solver": 1769,
+        "form": 3386
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which wire in a domestic electric circuit is usually insulated with red colour?",
+      "ms": {
+        "draft": 2624,
+        "critique": 7409
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the potential difference between the live and neutral wires in a domestic electric circuit in India?",
+      "ms": {
+        "draft": 2624,
+        "critique": 7294
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A current-carrying rod, AB, experiences a force perpendicular to its length and the magnetic field. What determines the direction of this force?",
+      "ms": {
+        "draft": 4070,
+        "critique": 6224,
+        "solver": 1888,
+        "form": 3004
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which wire in a domestic electric circuit is used as a safety measure for appliances with a metallic body?",
+      "ms": {
+        "draft": 2624,
+        "critique": 6321
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the magnetic field of a current-carrying wire if the current in the wire is increased?",
+      "ms": {
+        "draft": 2624,
+        "critique": 5137
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that the deflection of a compass needle placed near a current-carrying wire increases when the current in the wire is increased. What can be inferred about the relationship between the current and the magnetic field strength?",
+      "ms": {
+        "draft": 5821,
+        "critique": 4797,
+        "solver": 985,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student places a compass needle at various points around a current-carrying wire and notes the direction of the needle at each point. She finds that the needle aligns itself tangentially to a circle centered on the wire. What does this observation suggest about the shape of the magnetic field lines around the wire?",
+      "ms": {
+        "draft": 5821,
+        "critique": 5052,
+        "solver": 687,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Is the statement 'The field at the centre of a long circular coil carrying current will be parallel straight lines' true or false?",
+      "ms": {
+        "draft": 2987,
+        "critique": 5689
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the colour of the earth wire in a domestic electric circuit?",
+      "ms": {
+        "draft": 2503,
+        "critique": 6292,
+        "solver": 1207,
+        "form": 3805
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a positively-charged particle projected towards west is deflected towards north, what is the direction of the magnetic field?",
+      "ms": {
+        "draft": 2503,
+        "critique": 4874,
+        "solver": 1244
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "An electron beam is moving horizontally from the back wall to the front wall and is deflected to the right. What is the direction of the magnetic field?",
+      "ms": {
+        "draft": 2987,
+        "critique": 7013,
+        "solver": 1526,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a domestic electric circuit, why are appliances connected in parallel?",
+      "ms": {
+        "draft": 2503,
+        "critique": 5153,
+        "solver": 1589,
+        "form": 2403
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the direction of the force acting on a current-carrying rod placed in a magnetic field when the direction of current is reversed?",
+      "ms": {
+        "draft": 3239,
+        "critique": 6439
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A proton moves freely in a magnetic field. Which of the following properties can change?",
+      "ms": {
+        "draft": 3239,
+        "critique": 6712,
+        "solver": 1559
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes the magnetic field inside a long straight solenoid carrying current?",
+      "ms": {
+        "draft": 3239,
+        "critique": 7564,
+        "solver": 14814,
+        "form": 2827
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An electron enters a magnetic field at right angles to it. What is the direction of the force acting on the electron?",
+      "ms": {
+        "draft": 3239,
+        "critique": 8460,
+        "solver": 14665
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which rule helps determine the direction of the magnetic field around a straight current-carrying conductor?",
+      "ms": {
+        "draft": 5189,
+        "critique": 6393,
+        "solver": 11516,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the deflection of a compass needle near a current-carrying wire indicate?",
+      "ms": {
+        "draft": 3677,
+        "critique": 5912,
+        "solver": 925,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the deflection of a compass needle when the current in a nearby wire is increased?",
+      "ms": {
+        "draft": 3677,
+        "critique": 5939,
+        "solver": 1890,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a compass needle is placed near a current-carrying wire and the current is increased, what will happen to the deflection of the needle?",
+      "ms": {
+        "draft": 3677,
+        "critique": 6774,
+        "solver": 1467,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the current in a circuit during a short circuit?",
+      "ms": {
+        "draft": 2987,
+        "critique": 4304,
+        "solver": 982,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A current-carrying straight wire produces a magnetic field. Which of the following describes the shape of this field?",
+      "ms": {
+        "draft": 2987,
+        "critique": 4603,
+        "solver": 1659,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the deflection of a compass needle when the current in a nearby wire is increased?",
+      "ms": {
+        "draft": 2503,
+        "critique": 6217,
+        "solver": 1943,
+        "form": 2839
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A compass needle is placed near a current-carrying wire. When the current in the wire is increased, what happens to the deflection of the compass needle?",
+      "ms": {
+        "draft": 5189,
+        "critique": 5780,
+        "solver": 1453,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Hans Christian Oersted discover in 1820?",
+      "ms": {
+        "draft": 4676,
+        "critique": 5542,
+        "solver": 838,
+        "form": 1824,
+        "translation": 20497
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of magnetic field lines?",
+      "ms": {
+        "draft": 4094,
+        "critique": 5989,
+        "solver": 1235,
+        "form": 0,
+        "translation": 48618
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the purpose of an electromagnet?",
+      "ms": {
+        "draft": 4070,
+        "critique": 5989,
+        "solver": 1522,
+        "form": 3109,
+        "translation": 41002
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A straight copper wire is placed vertically through a cardboard with iron filings. What pattern do the iron filings form?",
+      "ms": {
+        "draft": 4094,
+        "critique": 6502,
+        "solver": 2833,
+        "form": 0,
+        "translation": 42191
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the right-hand thumb rule help determine?",
+      "ms": {
+        "draft": 4094,
+        "critique": 5397,
+        "solver": 1035,
+        "form": 0,
+        "translation": 54619
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do magnetic field lines not intersect each other?",
+      "ms": {
+        "draft": 3677,
+        "critique": 6851,
+        "solver": 9898,
+        "form": 0,
+        "translation": 46392
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Two identical straight wires carry the same current but are placed at different distances from a compass. What happens to the deflection of the compass needle in each case?",
+      "ms": {
+        "draft": 4094,
+        "critique": 6053,
+        "solver": 1142,
+        "form": 0,
+        "translation": 47214
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the pattern of iron filings around a bar magnet demonstrate?",
+      "reason": "options 0 and 1 say the same thing (\"The magnet is a conductor\" / \"1: The magnet is a conductor\"); the key is far longer than every distractor (50 vs 28 characters); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the direction of the magnetic field at a point near a current-carrying wire according to the right-hand rule?",
+      "reason": "options 0 and 1 say the same thing (\"From north to south\" / \"From south to north\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the deflection of a compass needle placed near a current-carrying wire when the current in the wire is increased?",
+      "reason": "options 0 and 1 are the same (\"It decreases\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A current-carrying wire is placed horizontally, and a compass is placed below it. If the current flows from east to west, what is the direction of the compass needle's deflection?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Choose the correct option. The magnetic field inside a long straight solenoid-carrying current",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following property of a proton can change while it moves freely in a magnetic field?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the magnetic field produced by the human body?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is a solenoid?",
+      "reason": "the key is far longer than every distractor (98 vs 40 characters); option lengths are unalike (18 to 98 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which wire in a domestic electric circuit is usually insulated with red colour?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the potential difference between the live and neutral wires in a domestic electric circuit in India?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A current-carrying rod, AB, experiences a force perpendicular to its length and the magnetic field. What determines the direction of this force?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which wire in a domestic electric circuit is used as a safety measure for appliances with a metallic body?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What happens to the magnetic field of a current-carrying wire if the current in the wire is increased?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observes that the deflection of a compass needle placed near a current-carrying wire increases when the current in the wire is increased. What can be inferred about the relationship between the current and the magnetic field strength?",
+      "reason": "options 0 and 1 say the same thing (\"Magnetic field strength is directly proportional to the current\" / \"Magnetic field strength is inversely proportional to the current\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student places a compass needle at various points around a current-carrying wire and notes the direction of the needle at each point. She finds that the needle aligns itself tangentially to a circle centered on the wire. What does this observation suggest about the shape of the magnetic field lines around the wire?",
+      "reason": "options 1 and 3 say the same thing (\"The magnetic field lines are straight lines perpendicular to the wire\" / \"The magnetic field lines are straight lines parallel to the wire\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What are two methods of producing magnetic fields?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "When is the force experienced by a current-carrying conductor placed in a magnetic field the largest?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Is the statement 'The field at the centre of a long circular coil carrying current will be parallel straight lines' true or false?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the colour of the earth wire in a domestic electric circuit?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is green, but the pupil might think it is blu…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a positively-charged particle projected towards west is deflected towards north, what is the direction of the magnetic field?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "An electron beam is moving horizontally from the back wall to the front wall and is deflected to the right. What is the direction of the magnetic field?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels forward, right, electronBeam"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a domestic electric circuit, why are appliances connected in parallel?",
+      "reason": "the key is far longer than every distractor (58 vs 36 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What happens to the direction of the force acting on a current-carrying rod placed in a magnetic field when the direction of current is reversed?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A proton moves freely in a magnetic field. Which of the following properties can change?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following best describes the magnetic field inside a long straight solenoid carrying current?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "An electron enters a magnetic field at right angles to it. What is the direction of the force acting on the electron?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which rule helps determine the direction of the magnetic field around a straight current-carrying conductor?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What does the deflection of a compass needle near a current-carrying wire indicate?",
+      "reason": "near-duplicate of served question cmvnw7wc804mvgp217udooiw6 (cosine 0.947 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens to the deflection of a compass needle when the current in a nearby wire is increased?",
+      "reason": "near-duplicate of served question cmvgxyr7w05f0gpfhz7vnavyz (cosine 0.942 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a compass needle is placed near a current-carrying wire and the current is increased, what will happen to the deflection of the needle?",
+      "reason": "near-duplicate of served question cmvgxyr7w05f0gpfhz7vnavyz (cosine 0.972 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens to the current in a circuit during a short circuit?",
+      "reason": "near-duplicate of served question cmvgxyr5u05e0gpfhj2vltub9 (cosine 0.916 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A current-carrying straight wire produces a magnetic field. Which of the following describes the shape of this field?",
+      "reason": "near-duplicate of served question cmvnw7wc304mpgp21sz513lkj (cosine 0.905 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What happens to the deflection of a compass needle when the current in a nearby wire is increased?",
+      "reason": "near-duplicate of served question cmvgxyr7w05f0gpfhz7vnavyz (cosine 0.942 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A compass needle is placed near a current-carrying wire. When the current in the wire is increased, what happens to the deflection of the compass needle?",
+      "reason": "near-duplicate of served question cmvgxyr7w05f0gpfhz7vnavyz (cosine 0.969 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,486 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T16:18:01.092Z",
+  "finishedAt": "2026-10-23T16:25:28.507Z",
+  "seconds": 447,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy207.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 7 — NIT LIMATE",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2024-25]\n16. Ans: D- Nigeria 1\nFor Visually Challenged students\nAns: B - The arrangement or spread of people across a given area.",
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\nSection E\n29 A- Northern part of Eurasia 1X5\nB- Vancouver\nC- Kolkata\nD- Jeddah\nE- Darwin\nF- Panama Canal\nG- St. Lawrence waterway\nFor Visually Impaired Candidates only\n29 A- Arabian peninsula /Mongolia/Central China\n29 B- Vancouver\n29 C- Kolkata\n29 D- Johannesburg\n29 E- Darwin\n29 F- Suez Canal\n29 G- St. Lawrence waterway\n30 Locate and label any five of the following geographical features on the 1x5\nPolitical Outline map of India with appropriate symbols:\nA. Arunachal Pradesh\nB. Paradwip\nC. Neyveli\nD. Bailadila iron-ore mines, Chattisgarh\nE. Jamnagar\nF. Uttar Pradesh\nG. Thiruvananthapuram\nFor visually impaired students\nAttempt any five.\nA. Arunachal Pradesh\nB. Paradwip\nC. Neyveli\nD. Chhatisga",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n9. a. Hugli, Salem, Bhilai",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 130691,
+      "in": 23,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 15347,
+      "completionTokens": 5557
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 249381,
+      "in": 22,
+      "out": 18,
+      "rejects": 4,
+      "promptTokens": 13205,
+      "completionTokens": 4993
+    },
+    "solver": {
+      "calls": 133,
+      "ms": 90643,
+      "in": 18,
+      "out": 12,
+      "rejects": 6,
+      "promptTokens": 20952,
+      "completionTokens": 1283
+    },
+    "form": {
+      "calls": 9,
+      "ms": 35347,
+      "in": 12,
+      "out": 7,
+      "rejects": 5,
+      "promptTokens": 4076,
+      "completionTokens": 857
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 2441,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 267458,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 12363,
+      "completionTokens": 6484
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which layer of the atmosphere contains the ozone layer?",
+      "ms": {
+        "draft": 7237,
+        "critique": 9179,
+        "solver": 17769
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which gas is responsible for the greenhouse effect in the atmosphere?",
+      "ms": {
+        "draft": 7237,
+        "critique": 10429,
+        "solver": 18154
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary reason for the increase in carbon dioxide in the atmosphere according to the passage?",
+      "ms": {
+        "draft": 7237,
+        "critique": 10981,
+        "solver": 19484,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a function of water vapour in the atmosphere according to the passage?",
+      "ms": {
+        "draft": 7237,
+        "critique": 10573,
+        "solver": 2003
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the composition of the atmosphere according to the passage?",
+      "ms": {
+        "draft": 7237,
+        "critique": 10062,
+        "solver": 2423
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what would happen if the ozone layer was absent from the atmosphere?",
+      "ms": {
+        "draft": 7237,
+        "critique": 9948,
+        "solver": 15161,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following gases makes up the majority of the Earth's atmosphere?",
+      "ms": {
+        "draft": 16428,
+        "critique": 10665,
+        "solver": 15967
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which layer of the atmosphere is most important for biological activity?",
+      "ms": {
+        "draft": 16428,
+        "critique": 9878,
+        "solver": 16733,
+        "form": 4758
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which gas constitutes the major portion of the atmosphere?",
+      "ms": {
+        "draft": 4178,
+        "critique": 6127
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are sea salt, pollen, ash, smoke, and soot associated with?",
+      "ms": {
+        "draft": 4178,
+        "critique": 6741
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which atmospheric layer is important for human beings?",
+      "ms": {
+        "draft": 4178,
+        "critique": 8315
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "At which height is oxygen gas in negligible quantity?",
+      "ms": {
+        "draft": 4178,
+        "critique": 9898
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the presence of the ozone layer in the stratosphere?",
+      "ms": {
+        "draft": 6960,
+        "critique": 7949,
+        "solver": 2503,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student observes that the amount of dust particles in the atmosphere is higher in subtropical and temperate regions compared to equatorial and polar regions. What is the most likely explanation for this?",
+      "ms": {
+        "draft": 6960,
+        "critique": 7251,
+        "solver": 1356
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a map of the atmosphere with different layers and is told that the mesosphere is the layer where temperature decreases with height and reaches -100°C at 80 km. Which layer is this?",
+      "ms": {
+        "draft": 6960,
+        "critique": 8043,
+        "solver": 920,
+        "form": 2415
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic of the tropopause?",
+      "ms": {
+        "draft": 16428,
+        "critique": 7950,
+        "solver": 2079,
+        "form": 4699
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why is the troposphere the most important layer for all biological activity?",
+      "ms": {
+        "draft": 4178,
+        "critique": 8122,
+        "solver": 2383,
+        "form": 5414
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of water vapour in the atmosphere?",
+      "ms": {
+        "draft": 6960,
+        "critique": 8676,
+        "solver": 14395,
+        "form": 0,
+        "translation": 50297
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the amount of carbon dioxide in the atmosphere increases, what is the most likely effect?",
+      "ms": {
+        "draft": 6960,
+        "critique": 9659,
+        "solver": 2363,
+        "form": 4707,
+        "translation": 48664
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which atmospheric layer is known for having a nearly constant temperature?",
+      "ms": {
+        "draft": 16428,
+        "critique": 7831,
+        "solver": 1503,
+        "form": 4527,
+        "translation": 44607
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the atmosphere?",
+      "ms": {
+        "draft": 16428,
+        "critique": 7514,
+        "solver": 2249,
+        "form": 4029,
+        "translation": 62952
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the troposphere considered the most important layer for life on Earth?",
+      "ms": {
+        "draft": 16428,
+        "critique": 7788,
+        "solver": 1942,
+        "form": 2415,
+        "translation": 56328
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which layer of the atmosphere contains the ozone layer?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which gas is responsible for the greenhouse effect in the atmosphere?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the primary reason for the increase in carbon dioxide in the atmosphere according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a function of water vapour in the atmosphere according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the composition of the atmosphere according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what would happen if the ozone layer was absent from the atmosphere?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following gases makes up the majority of the Earth's atmosphere?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which layer of the atmosphere is most important for biological activity?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which gas is transparent to incoming solar radiation and opaque to outgoing terrestrial radiation?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which gas constitutes the major portion of the atmosphere?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What are sea salt, pollen, ash, smoke, and soot associated with?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which atmospheric layer is important for human beings?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "At which height is oxygen gas in negligible quantity?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the presence of the ozone layer in the stratosphere?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student observes that the amount of dust particles in the atmosphere is higher in subtropical and temperate regions compared to equatorial and polar regions. What is the most likely explanation for this?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a map of the atmosphere with different layers and is told that the mesosphere is the layer where temperature decreases with height and reaches -100°C at 80 km. Which layer is this?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'diagram'"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following is a characteristic of the tropopause?",
+      "reason": "near-duplicate of batch item \"Which atmospheric layer is known for having a near…\" (cosine 0.907 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why is the troposphere the most important layer for all biological activity?",
+      "reason": "near-duplicate of batch item \"Why is the troposphere considered the most importa…\" (cosine 0.924 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

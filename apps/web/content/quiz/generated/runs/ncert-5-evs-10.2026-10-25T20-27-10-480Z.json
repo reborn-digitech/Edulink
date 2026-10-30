@@ -1,0 +1,320 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T20:27:10.480Z",
+  "finishedAt": "2026-10-25T20:31:20.647Z",
+  "seconds": 250,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap110.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 10 — Walls Tell Stories",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 39102,
+      "in": 12,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 12026,
+      "completionTokens": 2258
+    },
+    "critique": {
+      "calls": 12,
+      "ms": 66355,
+      "in": 12,
+      "out": 5,
+      "rejects": 7,
+      "promptTokens": 4891,
+      "completionTokens": 2013
+    },
+    "solver": {
+      "calls": 25,
+      "ms": 9611,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 2970,
+      "completionTokens": 200
+    },
+    "form": {
+      "calls": 1,
+      "ms": 2253,
+      "in": 4,
+      "out": 1,
+      "rejects": 3,
+      "promptTokens": 250,
+      "completionTokens": 69
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 3295,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 20453,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2305,
+      "completionTokens": 1350
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the thick walls and bastions in the fort?",
+      "ms": {
+        "draft": 3980,
+        "critique": 4894
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the structure that is higher than the wall and helps in seeing things at a distance?",
+      "ms": {
+        "draft": 3980,
+        "critique": 5332
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the map, how many gates can you see on the outer walls of the fort?",
+      "ms": {
+        "draft": 3980,
+        "critique": 6569
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what material was the big gun that Shreedhar saw made of?",
+      "ms": {
+        "draft": 16723,
+        "critique": 6108,
+        "solver": 1229,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the purpose of the bullocks in the old painting?",
+      "ms": {
+        "draft": 16723,
+        "critique": 6877,
+        "solver": 1517,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student visits a museum and sees an old bronze plate, what can they infer about the past based on the passage?",
+      "ms": {
+        "draft": 16723,
+        "critique": 7009,
+        "solver": 1122,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can we conclude about the function of the 'garland of pots' described in the text?",
+      "ms": {
+        "draft": 16723,
+        "critique": 6467,
+        "solver": 961
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What material was the big gun that Shreedhar saw made of?",
+      "ms": {
+        "draft": 2474,
+        "critique": 4981
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the passage, what is the purpose of the pictures of bronze and brass vessels?",
+      "ms": {
+        "draft": 2474,
+        "critique": 5275
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the reason given in the passage for keeping old things in a museum?",
+      "ms": {
+        "draft": 2474,
+        "critique": 5569
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you are visiting a fort and see clay pipes in the walls, what could they have been used for?",
+      "ms": {
+        "draft": 2474,
+        "critique": 2729
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a soldier is standing at the bastion, in which direction would they be able to see the most area?",
+      "ms": {
+        "draft": 3980,
+        "critique": 5357,
+        "solver": 1967,
+        "form": 2253,
+        "translation": 15626
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of the thick walls and bastions in the fort?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the structure that is higher than the wall and helps in seeing things at a distance?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the map, how many gates can you see on the outer walls of the fort?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what material was the big gun that Shreedhar saw made of?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the purpose of the bullocks in the old painting?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student visits a museum and sees an old bronze plate, what can they infer about the past based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what can we conclude about the function of the 'garland of pots' described in the text?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is the name of the structure that is higher than the wal"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What material was the big gun that Shreedhar saw made of?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "In the passage, what is the purpose of the pictures of bronze and brass vessels?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the reason given in the passage for keeping old things in a museum?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If you are visiting a fort and see clay pipes in the walls, what could they have been used for?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T21:38:08.895Z",
+  "generatedAt": "2026-10-29T10:04:11.463Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the term used for facts, numbers, measures, observations, and other descriptions of things that convey information?",
+      "stem": "Which of the following is the first step in drawing a bar graph?",
       "choices": [
-        "Data",
-        "Information",
-        "Graph",
-        "Chart"
+        "Draw bars of different widths with varying gaps between them.",
+        "Mark the 'items' along the horizontal line with equal spacing.",
+        "Choose a suitable scale along the vertical line.",
+        "Write the corresponding values on the horizontal line."
       ],
-      "answerIndex": 0,
-      "solution": "Data refers to facts, numbers, measures, observations, and other descriptions that convey information. Information is the interpretation or meaning derived from data. A graph and a chart are visual representations of data, not the data itself.",
+      "answerIndex": 1,
+      "solution": "The first step in drawing a bar graph is to mark the 'items' along the horizontal line with equal spacing. The other options describe later steps or incorrect practices.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "किस शब्द का उपयोग तथ्यों, संख्याओं, माप, अवलोकन और अन्य विवरणों के लिए किया जाता है जो जानकारी प्रसारित करते हैं?",
+          "stem": "निम्नलिखित में से कौन-सा बार ग्राफ बनाने का पहला चरण है?",
           "choices": [
-            "डेटा",
-            "जानकारी",
-            "ग्राफ",
-            "चार्ट"
+            "अलग-अलग चौड़ाई के बार बनाएं और उनके बीच असमान अंतर रखें।",
+            "क्षैतिज रेखा के साथ 'आइटम' को समान अंतराल पर चिह्नित करें।",
+            "ऊर्ध्वाधर रेखा के साथ उपयुक्त पैमाना चुनें।",
+            "क्षैतिज रेखा पर संगत मान लिखें।"
           ],
-          "solution": "डेटा तथ्यों, संख्याओं, माप, अवलोकन और अन्य विवरणों के लिए शब्द है जो जानकारी प्रसारित करते हैं। जानकारी डेटा से प्राप्त अर्थ या व्याख्या है। एक ग्राफ और एक चार्ट डेटा के दृश्य प्रस्तुतीकरण हैं, न कि डेटा स्वयं।",
+          "solution": "बार ग्राफ बनाने का पहला चरण क्षैतिज रेखा के साथ 'आइटम' को समान अंतराल पर चिह्नित करना होता है। अन्य विकल्प बाद के चरणों या गलत विधियों का वर्णन करते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium educational context.",
+          "critique": "The Hindi translation accurately reflects the original English question and maintains the correct answer and distractors.",
           "flag": null
         },
         "mr": {
-          "stem": "माहिती देणारी गोष्टी, संख्या, मोजमाप, अवलोकने आणि इतर वर्णने यासाठी वापरलेला शब्द काय आहे?",
+          "stem": "खालीलपैकी कोणते बार ग्राफ काढण्याचे पहिले पाऊल आहे?",
           "choices": [
-            "डेटा",
-            "माहिती",
-            "ग्राफ",
-            "चार्ट"
+            "विविध रुंदी आणि असमान अंतरावर बार आखून घ्या.",
+            "क्षैतिज रेखेवर 'वस्तू' बरोबर अंतरावर निशान करा.",
+            "उभयनिष्ठ अंकमाप उभयनिष्ठ रेखेवर निवडा.",
+            "क्षैतिज रेखेवर अनुरूप मूल्ये लिहा."
           ],
-          "solution": "डेटा हा गोष्टी, संख्या, मोजमाप, अवलोकने आणि इतर वर्णनांसाठी वापरलेला शब्द आहे जे माहिती देतात. माहिती ही डेटावरून मिळवलेली अर्थात्मक व्याख्या आहे. ग्राफ आणि चार्ट हे डेटाचे दृश्य प्रतिनिधित्व आहेत, डेटा नाहीत.",
+          "solution": "बार ग्राफ काढण्याचे पहिले पाऊल क्षैतिज रेखेवर 'वस्तू' बरोबर अंतरावर निशान करणे आहे. इतर विकल्प नंतरच्या पाऊलांचे वर्णन करतात किंवा चुकीच्या प्रथा आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
           "flag": null
         }
       },
@@ -72,57 +72,54 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses the order of steps in drawing a bar graph.",
         null,
-        "Confuses data with information",
-        "Confuses data with graph",
-        "Confuses data with chart"
+        "Chooses an incorrect first step.",
+        "Misunderstands the purpose of the vertical axis."
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear and unambiguous correct answer. The distractors represent common misconceptions, and the author's reasoning aligns with the actual misunderstandings students might have.",
+      "critique": "The correct answer is 1, as marking the 'items' along the horizontal line with equal spacing is indeed the first step in drawing a bar graph. The other options describe later steps or misunderstandings.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 17,
-          "pageStart": 31,
-          "pageEnd": 32,
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 21,
           "headingPath": [
             "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "Infographics"
+            "4.4 Drawing a Bar Graph"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 18,
-          "pageStart": 32,
-          "pageEnd": 34,
+          "ordinal": 11,
+          "pageStart": 21,
+          "pageEnd": 23,
           "headingPath": [
             "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
+            "4.4 Drawing a Bar Graph"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 19,
-          "pageStart": 34,
-          "pageEnd": 36,
+          "ordinal": 12,
+          "pageStart": 23,
+          "pageEnd": 25,
           "headingPath": [
             "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
+            "4.4 Drawing a Bar Graph"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:38:08.895Z",
+      "generatedAt": "2026-10-29T10:04:11.463Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
@@ -130,13 +127,13 @@
       "difficulty": 2,
       "stem": "Which of the following is an example of a pictograph?",
       "choices": [
-        "A bar graph with uniform width bars",
-        "A table with tally marks",
-        "A graph with pictures representing data",
-        "A pie chart"
+        "A bar graph showing the number of cars",
+        "A table listing the number of tickets sold",
+        "A diagram of a plant's structure",
+        "A symbol representing 100 kites"
       ],
-      "answerIndex": 2,
-      "solution": "A pictograph is a type of graph that uses pictures to represent data. The correct option describes this definition accurately. A bar graph uses bars, a table with tally marks is a way to count data, and a pie chart uses slices to show proportions, none of which involve pictures to represent data.",
+      "answerIndex": 3,
+      "solution": "A pictograph uses symbols to represent data, and a symbol representing 100 kites is a clear example of this. A bar graph and a table are different types of data displays that do not use symbols to represent quantities. A diagram of a plant's structure is unrelated to data representation.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
@@ -144,27 +141,27 @@
         "hi": {
           "stem": "निम्नलिखित में से कौन एक पिक्टोग्राफ का उदाहरण है?",
           "choices": [
-            "समान चौड़ाई वाले बार ग्राफ",
-            "टैली मार्क्स वाली टेबल",
-            "आंकड़ों का प्रतिनिधित्व करने वाले चित्रों वाला ग्राफ",
-            "एक पाई चार्ट"
+            "कारों की संख्या दर्शाने वाला बार ग्राफ",
+            "बिक्री के टिकटों की संख्या सूचीबद्ध करने वाला तालिका",
+            "पौधे की संरचना का चित्र",
+            "100 बैलून का प्रतिनिधित्व करने वाला प्रतीक"
           ],
-          "solution": "एक पिक्टोग्राफ एक प्रकार का ग्राफ होता है जो आंकड़ों का प्रतिनिधित्व चित्रों के माध्यम से करता है। सही विकल्प इस परिभाषा को सटीक रूप से व्यक्त करता है। एक बार ग्राफ बार का उपयोग करता है, टैली मार्क्स वाली टेबल आंकड़ों की गणना का एक तरीका है, और एक पाई चार्ट अनुपात दिखाने के लिए टुकड़ों का उपयोग करता है, जिसमें कोई चित्रों का उपयोग आंकड़ों के प्रतिनिधित्व के लिए नहीं किया जाता है।",
+          "solution": "एक पिक्टोग्राफ में डेटा का प्रतिनिधित्व संकेतों के द्वारा किया जाता है, और 100 बैलून का प्रतिनिधित्व करने वाला प्रतीक इसका स्पष्ट उदाहरण है। बार ग्राफ और तालिका विभिन्न प्रकार के डेटा प्रदर्शन हैं जो मात्राओं का प्रतिनिधित्व करने के लिए संकेतों का उपयोग नहीं करते हैं। पौधे की संरचना का चित्र डेटा प्रस्तुतीकरण से संबंधित नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English version in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer (option 2) maintaining its position and validity.",
+          "critique": "Hindi translation accurately reflects the original English question, with appropriate terminology and correct answer position.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते एक चित्रसूचक उदाहरण आहे?",
+          "stem": "खालीलपैकी कोणते एक चित्रालेखाचे उदाहरण आहे?",
           "choices": [
-            "समान रुंदीच्या बार वापरणारा बार ग्राफ",
-            "ताली मार्क्स असलेला टेबल",
-            "माहिती दर्शविणारी चित्रे वापरणारा ग्राफ",
-            "पाय चार्ट"
+            "कारच्या संख्येचे बार ग्राफ",
+            "विकल्या गेलेल्या टिकिटच्या संख्येची तालिका",
+            "वनस्पतीच्या रचनेचे आकृती",
+            "100 पतंगांचे प्रतिनिधित्व करणारा प्रतिक"
           ],
-          "solution": "चित्रसूचक माहिती दर्शविणारी चित्रे वापरणारा ग्राफ आहे. योग्य विकल्प या व्याख्येचे योग्यरित्या वर्णन करतो. बार ग्राफ बार वापरतो, ताली मार्क्स असलेला टेबल माहिती गणण्याचा एक प्रकार आहे, आणि पाय चार्ट अंश दर्शविण्यासाठी तुकडे वापरतो, ज्यामध्ये कोणतीही चित्रे माहिती दर्शविण्यासाठी वापरली जात नाहीत.",
+          "solution": "एका चित्रालेखात संख्यांचे प्रतिनिधित्व प्रतिकांच्या माध्यमातून केले जाते, आणि 100 पतंगांचे प्रतिनिधित्व करणारा प्रतिक हे याचे स्पष्ट उदाहरण आहे. बार ग्राफ आणि तालिका ही वेगवेगळ्या प्रकारच्या डेटा दर्शविणार्‍या विधी आहेत ज्यांमध्ये संख्यांचे प्रतिनिधित्व प्रतिकांच्या माध्यमातून केले जात नाही. वनस्पतीच्या रचनेचे आकृती डेटा दर्शविण्याशी संबंधित नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for data representation concepts.",
           "flag": null
         }
       },
@@ -173,211 +170,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Describes a bar graph",
-        "Describes a tally table",
-        null,
-        "Describes a pie chart"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 2, as a pictograph is defined by using pictures to represent data. The other options are valid graph/table types but not pictographs. The author's reasoning for the wrong options is accurate and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 17,
-          "pageStart": 31,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "Infographics"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 18,
-          "pageStart": 32,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 19,
-          "pageStart": 34,
-          "pageEnd": 36,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:38:08.895Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If 10 students chose hockey as their favorite game, and 8 students chose cricket, which game is more popular?",
-      "choices": [
-        "Hockey",
-        "Cricket",
-        "Both equally",
-        "Cannot be determined"
-      ],
-      "answerIndex": 0,
-      "solution": "Hockey is more popular because it was chosen by more students (10) compared to cricket (8). Cricket is less popular since it has a lower number of choices. Both cannot be equally popular because the numbers differ, and there is enough information to determine the more popular game.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 10 छात्रों ने हॉकी अपने पसंदीदा खेल के रूप में चुना, और 8 छात्रों ने क्रिकेट चुना, तो कौन सा खेल अधिक प्रसिद्ध है?",
-          "choices": [
-            "हॉकी",
-            "क्रिकेट",
-            "दोनों समान रूप से",
-            "निर्धारित नहीं किया जा सकता"
-          ],
-          "solution": "हॉकी अधिक प्रसिद्ध है क्योंकि इसे अधिक छात्रों द्वारा चुना गया (10) क्रिकेट के मुकाबले (8)। क्रिकेट कम प्रसिद्ध है क्योंकि इसके चयन की संख्या कम है। दोनों समान रूप से प्रसिद्ध नहीं हो सकते क्योंकि संख्याएं अलग हैं, और अधिक प्रसिद्ध खेल को निर्धारित करने के लिए पर्याप्त जानकारी है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for mathematical concepts.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "10 विद्यार्थी हॉकी ला आवडते असल्याचे आणि 8 विद्यार्थी क्रिकेट ला आवडते असल्याचे असेल, तर कोणता खेळ जास्त लोकप्रिय आहे?",
-          "choices": [
-            "हॉकी",
-            "क्रिकेट",
-            "दोन्ही समान प्रमाणात",
-            "निश्चित करता येत नाही"
-          ],
-          "solution": "हॉकी जास्त लोकप्रिय आहे कारण त्याला जास्त विद्यार्थी (10) ने निवडले आहे तर क्रिकेट (8) ला नाही. क्रिकेट कमी लोकप्रिय आहे कारण त्याला निवडलेल्या विद्यार्थी संख्या कमी आहे. दोन्ही समान प्रमाणात लोकप्रिय असू शकत नाहीत कारण संख्या वेगवेगळ्या आहेत आणि जास्त लोकप्रिय खेळ निश्चित करण्यासाठी पुरेसे माहिती आहे.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for games and concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Chooses the game with lower frequency",
-        "Chooses both equally",
-        "Cannot determine based on frequency"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward, with a clear correct answer based on comparing frequencies. The solution is correct, and the reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 17,
-          "pageStart": 31,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "Infographics"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 18,
-          "pageStart": 32,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 19,
-          "pageStart": 34,
-          "pageEnd": 36,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:38:08.895Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a bar graph uses a scale where 1 unit length represents 4 tickets, how many tickets does a bar of 6 unit lengths represent?",
-      "choices": [
-        "12 tickets",
-        "16 tickets",
-        "20 tickets",
-        "24 tickets"
-      ],
-      "answerIndex": 3,
-      "solution": "If 1 unit length represents 4 tickets, then 6 unit lengths represent 6 x 4 = 24 tickets. The other options do not match the multiplication. The correct answer is '24 tickets'.",
-      "checkExpr": "6*4",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक बार ग्राफ में 1 इकाई लंबाई 4 टिकटों का प्रतिनिधित्व करती है, तो 6 इकाई लंबाई का बार कितने टिकटों का प्रतिनिधित्व करता है?",
-          "choices": [
-            "12 टिकट",
-            "16 टिकट",
-            "20 टिकट",
-            "24 टिकट"
-          ],
-          "solution": "यदि 1 इकाई लंबाई 4 टिकटों का प्रतिनिधित्व करती है, तो 6 इकाई लंबाई 6 × 4 = 24 टिकटों का प्रतिनिधित्व करती है। अन्य विकल्प गुणन के साथ मेल नहीं खाते। सही उत्तर '24 टिकट' है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर बार ग्राफमध्ये 1 युनिट लांबी 4 टिकिट्स दर्शवत असेल तर 6 युनिट लांबीचा बार किती टिकिट्स दर्शवतो?",
-          "choices": [
-            "12 टिकिट्स",
-            "16 टिकिट्स",
-            "20 टिकिट्स",
-            "24 टिकिट्स"
-          ],
-          "solution": "जर 1 युनिट लांबी 4 टिकिट्स दर्शवत असेल तर 6 युनिट लांबी 6 x 4 = 24 टिकिट्स दर्शवते. इतर विकल्प गुणाकाराशी जुळत नाहीत. योग्य उत्तर '24 टिकिट्स' आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Adds 6 and 4",
-        "Multiplies 6 by 2",
-        "Multiplies 6 by 3",
+        "confuses a pictograph with a bar graph",
+        "confuses a pictograph with a table",
+        "refers to a diagram, not a pictograph",
         null
       ],
       "solverAnswers": [
@@ -388,7 +183,7 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward, and the correct answer is 24 tickets. The solution is correct, and the reasons for the wrong options are plausible misconceptions.",
+      "critique": "The correct answer is 3, as a pictograph uses symbols to represent data. The other options are different data representations, and the author's reasoning aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
@@ -425,49 +220,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:38:08.895Z",
+      "generatedAt": "2026-10-29T10:04:11.463Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "The number of saplings planted on Monday is 10, and on Tuesday it is 15. If the total number of saplings planted on Wednesday and Thursday is 40, what is the total number of saplings planted in the first four days?",
+      "difficulty": 4,
+      "stem": "In the given passage, why is it important to be careful when making or reading infographics?",
       "choices": [
-        "55",
-        "65",
-        "75",
-        "85"
+        "Because they are always incorrect",
+        "Because they may mislead the reader",
+        "Because they are difficult to make",
+        "Because they are only used for art"
       ],
       "answerIndex": 1,
-      "solution": "The total number of saplings planted on Monday and Tuesday is 10 + 15 = 25. Adding the total on Wednesday and Thursday (40) gives 25 + 40 = 65. The other options do not match the correct calculation.",
-      "checkExpr": "10+15+40",
+      "solution": "It is important to be careful when making or reading infographics because they may mislead the reader. Visual elements can be manipulated to create a false impression, even if the data is accurate. The other options are incorrect because they do not address the actual risk of misinterpretation or distortion.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "सोमवार को 10 बीजारोपण किए गए और मंगलवार को 15 बीजारोपण किए गए। यदि बुधवार और गुरुवार को कुल बीजारोपण 40 हैं, तो पहले चार दिनों में कुल बीजारोपण कितने हैं?",
+          "stem": "दिए गए पाठ में, जब कोई इनफोग्राफिक्स बना रहा हो या उसे पढ़ रहा हो तो ध्यान रखना क्यों महत्वपूर्ण है?",
           "choices": [
-            "55",
-            "65",
-            "75",
-            "85"
+            "क्योंकि वे हमेशा गलत होते हैं",
+            "क्योंकि वे पाठक को भ्रमित कर सकते हैं",
+            "क्योंकि वे बनाने में कठिन होते हैं",
+            "क्योंकि वे केवल कला के लिए उपयोग किए जाते हैं"
           ],
-          "solution": "सोमवार और मंगलवार को कुल बीजारोपण 10 + 15 = 25 है। बुधवार और गुरुवार के कुल बीजारोपण (40) को जोड़ने से 25 + 40 = 65 प्राप्त होता है। अन्य विकल्प सही गणना के बराबर नहीं हैं।",
+          "solution": "इनफोग्राफिक्स बनाने या पढ़ने में सावधान रहना महत्वपूर्ण है क्योंकि वे पाठक को भ्रमित कर सकते हैं। दृश्य तत्वों को धोखा देने के लिए बदला जा सकता है, भले ही डेटा सही हो। अन्य विकल्प गलत हैं क्योंकि वे वास्तविक गलत व्याख्या या विकृति के जोखिम को नहीं बताते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains in the same position, and the distractors are still incorrect. Technical terms like 'इनफोग्राफिक्स' (infographics) are used appropriately.",
           "flag": null
         },
         "mr": {
-          "stem": "सोमवारी 10 वृक्ष लागवड केले, आणि मंगळवारी 15 वृक्ष लागवड केले. जर बुधवारी आणि गुरुवारी लागवड केलेल्या वृक्षांची एकूण संख्या 40 असेल, तर पहिल्या चार दिवसांत लागवड केलेल्या वृक्षांची एकूण संख्या किती असेल?",
+          "stem": "दिलेल्या पाठात, आकृतिमाहिती तयार करताना किंवा वाचताना सावधगिरी बाळगणे का महत्वपूर्ण आहे?",
           "choices": [
-            "55",
-            "65",
-            "75",
-            "85"
+            "कारण ते नेहमी अचूक असतात",
+            "कारण ते वाचकाला चुकीचे धोरण देऊ शकतात",
+            "कारण ते तयार करणे कठीण असते",
+            "कारण ते केवळ कलासाठी वापरले जातात"
           ],
-          "solution": "सोमवारी आणि मंगळवारी लागवड केलेल्या वृक्षांची एकूण संख्या 10 + 15 = 25 आहे. बुधवारी आणि गुरुवारी लागवड केलेल्या वृक्षांची संख्या (40) जोडल्यास 25 + 40 = 65 मिळते. इतर विकल्प योग्य गणनेशी मेळ बसत नाहीत.",
+          "solution": "आकृतिमाहिती तयार करताना किंवा वाचताना सावधगिरी बाळगणे महत्वपूर्ण आहे कारण ते वाचकाला चुकीचे धोरण देऊ शकतात. व्हिज्युअल घटकांचा वापर खरी माहिती असली तरी चुकीचा अंदाज तयार करण्यासाठी केला जाऊ शकतो. इतर विकल्प चुकीचे आहेत कारण ते खरोखर अमान्य अर्थाच्या धोक्याला उत्तर देत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for infographics and related concepts.",
           "flag": null
         }
       },
@@ -476,10 +271,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Adds only Monday and Tuesday saplings, not including Wednesday and Thursday",
+        "students may think all infographics are inaccurate due to a misunderstanding of their purpose",
         null,
-        "Adds incorrectly, perhaps by adding 10 + 15 + 40 = 65 and then adding an extra 10",
-        "Adds 10 + 15 + 40 = 65 and then adds an extra 20"
+        "Focuses on the difficulty of making infographics",
+        "Misunderstands the purpose of infographics"
       ],
       "solverAnswers": [
         1,
@@ -488,94 +283,87 @@
         1,
         1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The total is 10 + 15 + 40 = 65. The author's reasoning for the distractors is plausible and reflects common student errors.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the passage emphasizes the potential for infographics to mislead. The other options reflect common misconceptions or misunderstandings about infographics.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 13,
-          "pageStart": 25,
-          "pageEnd": 27,
+          "ordinal": 17,
+          "pageStart": 31,
+          "pageEnd": 32,
           "headingPath": [
             "Chapter 4: Data Handling and Presentation",
-            "4.4 Drawing a Bar Graph"
+            "4.5 Artistic and Aesthetic Considerations",
+            "Infographics"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 14,
-          "pageStart": 27,
-          "pageEnd": 27,
+          "ordinal": 18,
+          "pageStart": 32,
+          "pageEnd": 34,
           "headingPath": [
             "Chapter 4: Data Handling and Presentation",
-            "4.4 Drawing a Bar Graph"
+            "4.5 Artistic and Aesthetic Considerations",
+            "S u m m a r y"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 15,
-          "pageStart": 28,
-          "pageEnd": 29,
+          "ordinal": 19,
+          "pageStart": 34,
+          "pageEnd": 36,
           "headingPath": [
             "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 16,
-          "pageStart": 29,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations"
+            "4.5 Artistic and Aesthetic Considerations",
+            "S u m m a r y"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:38:08.895Z",
+      "generatedAt": "2026-10-29T10:04:11.463Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If the cost of education is Rs. 800 and the cost of food is Rs. 3400, is the cost of education less than one-fourth the cost of food?",
+      "difficulty": 4,
+      "stem": "The total number of saplings planted on Wednesday and Thursday is given as 70. If the number of saplings planted on Wednesday was 30, how many were planted on Thursday?",
       "choices": [
-        "Yes",
-        "No",
-        "Cannot be determined",
-        "Only if the cost of food is doubled"
+        "30",
+        "40",
+        "50",
+        "60"
       ],
-      "answerIndex": 0,
-      "solution": "To determine if the cost of education is less than one-fourth the cost of food, calculate one-fourth of Rs. 3400, which is Rs. 850. Since Rs. 800 is less than Rs. 850, the answer is 'Yes'. The option 'No' is incorrect because Rs. 800 is indeed less than one-fourth of Rs. 3400. 'Cannot be determined' and 'Only if the cost of food is doubled' are not supported by the given numbers.",
-      "checkExpr": null,
+      "answerIndex": 1,
+      "solution": "If the total number of saplings planted on Wednesday and Thursday is 70 and Wednesday had 30, then Thursday must have had 70 - 30 = 40. The other options are incorrect because they do not subtract 30 from 70 correctly.",
+      "checkExpr": "70-30",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि शिक्षा की लागत 800 रुपये है और भोजन की लागत 3400 रुपये है, तो शिक्षा की लागत भोजन की लागत के एक-चौथाई से कम है क्या?",
+          "stem": "बुधवार और गुरुवार को लगाए गए पौधों की कुल संख्या 70 दी गई है। यदि बुधवार को 30 पौधे लगाए गए थे, तो गुरुवार को कितने पौधे लगाए गए?",
           "choices": [
-            "हाँ",
-            "नहीं",
-            "निर्धारित नहीं किया जा सकता",
-            "केवल यदि भोजन की लागत दोगुनी हो जाए"
+            "30",
+            "40",
+            "50",
+            "60"
           ],
-          "solution": "शिक्षा की लागत भोजन की लागत के एक-चौथाई से कम है क्या यह निर्धारित करने के लिए, 3400 रुपये के एक-चौथाई की गणना करें, जो 850 रुपये है। 800 रुपये 850 रुपये से कम है, इसलिए उत्तर 'हाँ' है। 'नहीं' गलत है क्योंकि 800 रुपये वास्तव में 3400 रुपये के एक-चौथाई से कम है। 'निर्धारित नहीं किया जा सकता' और 'केवल यदि भोजन की लागत दोगुनी हो जाए' दिए गए संख्याओं द्वारा समर्थित नहीं हैं।",
+          "solution": "यदि बुधवार और गुरुवार को लगाए गए पौधों की कुल संख्या 70 है और बुधवार में 30 थे, तो गुरुवार में 70 - 30 = 40 होने चाहिए। अन्य विकल्प गलत हैं क्योंकि वे 70 में से 30 को सही तरह से घटाने में असमर्थ हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains option (2) and the distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "शिक्षणाचा खर्च 800 रुपये आहे आणि खाद्याचा खर्च 3400 रुपये आहे, तर शिक्षणाचा खर्च खाद्याच्या चौथाईपेक्षा कमी आहे का?",
+          "stem": "बुधवार आणि गुरुवार रोज लागवड केलेल्या झाडांची एकूण संख्या 70 असल्याचे दिले आहे. जर बुधवार रोज 30 झाडे लागवड केली असतील, तर गुरुवार रोज किती झाडे लागवड केली असतील?",
           "choices": [
-            "होय",
-            "नाही",
-            "निश्चित करता येत नाही",
-            "जर खाद्याचा खर्च दुप्पट झाला तर"
+            "30",
+            "40",
+            "50",
+            "60"
           ],
-          "solution": "शिक्षणाचा खर्च खाद्याच्या चौथाईपेक्षा कमी आहे की नाही हे ठरवण्यासाठी 3400 रुपयांच्या चौथाईची गणना करा, जी 850 रुपये आहे. 800 रुपये 850 रुपयांपेक्षा कमी आहे, म्हणून उत्तर 'होय' आहे. 'नाही' अयोग्य आहे कारण 800 रुपये खाद्याच्या चौथाईपेक्षा खरोखर कमी आहे. 'निश्चित करता येत नाही' आणि 'जर खाद्याचा खर्च दुप्पट झाला तर' हे दिलेल्या संख्यांमधून समर्थित नाहीत.",
+          "solution": "जर बुधवार आणि गुरुवार रोज लागवड केलेल्या झाडांची एकूण संख्या 70 असेल आणि बुधवार रोज 30 झाडे लागवड केली असतील, तर गुरुवार रोज 70 - 30 = 40 झाडे लागवड केली असतील. इतर विकल्प चुकीचे आहेत कारण ते 70 मधून 30 वजा करत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "critique": "The translation is accurate, maintains the mathematical logic, and uses appropriate Marathi terms for 'saplings' and 'planted'.",
           "flag": null
         }
       },
@@ -584,26 +372,26 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Chooses the number of saplings planted on Wednesday",
         null,
-        "Misinterprets the relationship",
-        "Incorrectly assumes a different condition",
-        "Lacks understanding of fractions"
+        "Chooses the total number of saplings",
+        "Chooses the number of saplings by adding 30 to 70"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Rs. 800 is indeed less than one-fourth of Rs. 3400 (which is Rs. 850). The correct answer is 'Yes'. The author's reasoning aligns with the math and the options provided.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and straightforward. The correct answer is 40, and the author's reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 20,
-          "pageStart": 36,
-          "pageEnd": 39,
+          "ordinal": 23,
+          "pageStart": 42,
+          "pageEnd": 43,
           "headingPath": [
             "Chapter 4: Data Handling and Presentation",
             "4.5 Artistic and Aesthetic Considerations",
@@ -612,20 +400,9 @@
         },
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 21,
-          "pageStart": 39,
-          "pageEnd": 41,
-          "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 22,
-          "pageStart": 41,
-          "pageEnd": 42,
+          "ordinal": 24,
+          "pageStart": 43,
+          "pageEnd": 44,
           "headingPath": [
             "Chapter 4: Data Handling and Presentation",
             "4.5 Artistic and Aesthetic Considerations",
@@ -634,49 +411,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:38:08.895Z",
+      "generatedAt": "2026-10-29T10:04:11.463Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "In the frequency distribution table of wickets taken by Jaspreet Bumrah, how can the total number of wickets be correctly calculated?",
+      "stem": "If the data on the number of students who like different games is presented in a table, what is the advantage of using such a representation?",
       "choices": [
-        "By adding the numbers 0, 1, 2, 3, ..., 7",
-        "By multiplying the number of matches by the number of wickets",
-        "By adding the products of the number of matches and wickets",
-        "By counting the number of matches"
+        "It makes the data more complex",
+        "It helps in visualizing the data",
+        "It hides the information",
+        "It increases the number of students"
       ],
-      "answerIndex": 2,
-      "solution": "The correct method involves adding the products of the number of matches and wickets for each category, as this accounts for the total wickets across all matches. Multiplying the number of matches by the number of wickets does not consider varying wicket counts per match. Adding the numbers 0 through 7 or counting the number of matches does not provide the total wickets taken.",
+      "answerIndex": 1,
+      "solution": "Using a table helps in visualizing the data by organizing it in a structured format that makes patterns and comparisons easier to understand. The other options are incorrect because they either misrepresent the purpose of a table or are not supported by the nature of data representation.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "जसप्रीत बुमराह द्वारा लिए गए विकेट के बारंबारता वितरण सारणी में, लिए गए कुल विकेट कैसे सही तरीके से गणना की जा सकती है?",
+          "stem": "अगर विभिन्न खेल पसंद करने वाले छात्रों की संख्या के आंकड़े एक तालिका में प्रस्तुत किए जाते हैं, तो ऐसे प्रतिनिधित्व का फायदा क्या है?",
           "choices": [
-            "संख्याओं 0, 1, 2, 3, ..., 7 को जोड़कर",
-            "मैचों की संख्या को विकेटों की संख्या से गुणा करके",
-            "मैचों और विकेटों के गुणनफल को जोड़कर",
-            "मैचों की संख्या की गिनती करके"
+            "यह आंकड़े अधिक जटिल बना देता है",
+            "यह आंकड़ों के दृश्यीकरण में सहायता करता है",
+            "यह जानकारी छिपा देता है",
+            "यह छात्रों की संख्या बढ़ा देता है"
           ],
-          "solution": "सही विधि में प्रत्येक श्रेणी के मैचों और विकेटों के गुणनफल को जोड़ा जाता है, क्योंकि यह सभी मैचों में कुल विकेटों की गणना करता है। मैचों की संख्या को विकेटों की संख्या से गुणा करना विभिन्न मैचों में विकेटों की अलग-अलग संख्या को ध्यान में रखता नहीं है। 0 से 7 तक की संख्याओं को जोड़ना या मैचों की संख्या की गिनती करना कुल विकेटों की गणना नहीं देता।",
+          "solution": "तालिका का उपयोग आंकड़ों के दृश्यीकरण में सहायता करता है क्योंकि यह उन्हें एक संरचित रूप में व्यवस्थित करता है जो पैटर्न और तुलना को समझने में आसान बना देता है। अन्य विकल्प गलत हैं क्योंकि वे तालिका के उद्देश्य को गलत तरीके से प्रस्तुत करते हैं या आंकड़ा प्रस्तुतीकरण की प्रकृति के समर्थन में नहीं हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for statistical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for data representation.",
           "flag": null
         },
         "mr": {
-          "stem": "जसप्रीत बुमराह द्वारा लीले लिंग बनवलेल्या वितरण टेबलमध्ये, एकूण विकेट कशी योग्यरित्या गणना करता येईल?",
+          "stem": "विविध खेळ आवडतात अशा विद्यार्थ्यांच्या संख्येच्या डेटाचे तालिकेत दर्शविल्यास काय फायदा असतो?",
           "choices": [
-            "0, 1, 2, 3, ..., 7 या संख्या जोडून",
-            "मॅचेसच्या संख्येला विकेटच्या संख्येने गुणून",
-            "मॅचेस आणि विकेटच्या गुणाकाराच्या बेरजेने",
-            "मॅचेसच्या संख्येचे गणन करून"
+            "डेटा अधिक जटिल करतो",
+            "डेटा दृश्यमान करतो",
+            "माहिती लपवतो",
+            "विद्यार्थ्यांची संख्या वाढवतो"
           ],
-          "solution": "योग्य पद्धतीमध्ये प्रत्येक श्रेणीसाठी मॅचेस आणि विकेटच्या गुणाकाराच्या बेरजा जोडल्या जातात, कारण हे सर्व मॅचेसमध्ये एकूण विकेट गणना करते. मॅचेसच्या संख्येला विकेटच्या संख्येने गुणून एकूण विकेट गणना करता येत नाही. 0 ते 7 या संख्या जोडून किंवा मॅचेसच्या संख्येचे गणन करून एकूण विकेट मिळत नाही.",
+          "solution": "तालिकेचा वापर डेटा दृश्यमान करण्यास मदत करतो, कारण तो डेटाचे संरचित रूपात दर्शवतो ज्यामुळे पॅटर्न आणि तुलना समजून घेणे सोपे होते. इतर विकल्प चुकीचे आहेत कारण ते तालिकेच्या उद्देशाचे अपुर्णपणे वर्णन करतात किंवा डेटा प्रतिनिधित्वाच्या प्रकृतीशी संबंधित नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for statistical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for data representation.",
           "flag": null
         }
       },
@@ -685,57 +462,63 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Misunderstands the calculation method",
-        "Incorrectly assumes a direct sum",
+        "Misunderstands the purpose of tables",
         null,
-        "Does not consider the frequency distribution"
+        "Thinks tables make data more complex",
+        "Does not recognize the value of data representation"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct method is to add the products of the number of matches and wickets for each class, which matches option 2. The author's solution is correct, and the reasoning for the distractors reflects common misconceptions.",
+      "critique": "The correct answer is 1, as tables help in organizing and visualizing data. The other options are clearly incorrect and represent common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 20,
-          "pageStart": 36,
-          "pageEnd": 39,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
           "headingPath": [
-            "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
+            "Chapter 4: Data Handling and Presentation"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 21,
-          "pageStart": 39,
-          "pageEnd": 41,
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
+            "4.1 Collecting and Organising Data"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp104.pdf",
-          "ordinal": 22,
-          "pageStart": 41,
-          "pageEnd": 42,
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 5,
           "headingPath": [
             "Chapter 4: Data Handling and Presentation",
-            "4.5 Artistic and Aesthetic Considerations",
-            "S u m m a r y"
+            "4.1 Collecting and Organising Data"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp104.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 4: Data Handling and Presentation",
+            "4.1 Collecting and Organising Data"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T21:38:08.895Z",
+      "generatedAt": "2026-10-29T10:04:11.463Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

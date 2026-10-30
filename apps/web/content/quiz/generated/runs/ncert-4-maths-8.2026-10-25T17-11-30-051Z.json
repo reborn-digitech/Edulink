@@ -1,0 +1,522 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T17:11:30.051Z",
+  "finishedAt": "2026-10-25T17:15:57.159Z",
+  "seconds": 267,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm108.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Weigh It, Pour It",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n15. In what ratio shall I add water to the liquid detergent costing ₹ 480 per litre to get resulting\nmixture worth ₹ 300 per litre?\na) 5:3 b) 3:8 c) 3:5 d) 5:8 1",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2026-27]\n2. Vessel A contains milk and water in the ratio 4 : 5. Vessel B contains milk and 1\nwater in the ratio 5 : 1. In what ratio should quantities be taken from both vessels\nto form a mixture in which milk and water are in the ratio 5 : 4?\n(A) 5 : 2 (B) 5 : 3 (C) 4 : 1 (D) 1 : 4",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2026-27]\n2. (A) 𝟓: 𝟐\n Vessel A (Milk fraction): 4+5 =\n Vessel B (Milk fraction): 5+1 =\n Target Mixture (Milk fraction):\n5 5\n6 − 9 5 1\nRequired ratio = 5 4 = 18 ∶ 9\n9 − 9",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2024-25]\n21. (a) In what ratio water must be added in milk costing ₹ 60 per litre, so that the resulting\nmixture would be of worth ₹ 50 per litre?\nOR\nQ.21. (b) A pump can fill a tank with water in 2 hours. Because of leakage, it took 3 hrs to fill the\ntank. How much time will it take for the leakage to drain all the water in the full tank?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 98347,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 16672,
+      "completionTokens": 5335
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 220932,
+      "in": 24,
+      "out": 17,
+      "rejects": 7,
+      "promptTokens": 14437,
+      "completionTokens": 6052
+    },
+    "solver": {
+      "calls": 147,
+      "ms": 87553,
+      "in": 17,
+      "out": 13,
+      "rejects": 4,
+      "promptTokens": 32127,
+      "completionTokens": 1864
+    },
+    "form": {
+      "calls": 8,
+      "ms": 26682,
+      "in": 13,
+      "out": 7,
+      "rejects": 6,
+      "promptTokens": 2038,
+      "completionTokens": 655
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 4575,
+      "in": 7,
+      "out": 3,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 98939,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6275,
+      "completionTokens": 2783
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is equal to 1000 grams?",
+      "ms": {
+        "draft": 3908,
+        "critique": 5365,
+        "solver": 1382,
+        "form": 5194
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 10 packets of 100 grams each are used, what is the total weight?",
+      "ms": {
+        "draft": 3908,
+        "critique": 5612,
+        "solver": 1919,
+        "form": 5322
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a 500 g packet of daal is to be balanced using 250 g packets, how many 250 g packets are needed?",
+      "ms": {
+        "draft": 3908,
+        "critique": 6531,
+        "solver": 16082
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a 100 ml dosing cup is used to fill a 500 ml vessel, how many cups are needed?",
+      "ms": {
+        "draft": 3908,
+        "critique": 9120
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which container is used to measure 500 ml of liquid?",
+      "ms": {
+        "draft": 3364,
+        "critique": 6774,
+        "solver": 1445
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a 100 g soap bar weighs the same as 4 erasers, how many erasers would weigh the same as 250 g sugar?",
+      "ms": {
+        "draft": 3908,
+        "critique": 7383,
+        "solver": 14673
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a unit of capacity?",
+      "ms": {
+        "draft": 3364,
+        "critique": 8932
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a container holds 200 ml of water, how many such containers are needed to measure 1 litre?",
+      "ms": {
+        "draft": 3364,
+        "critique": 8412
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A tap leaks 50 ml of water in one hour. How much water is lost in a day?",
+      "ms": {
+        "draft": 3364,
+        "critique": 7223
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A jug holds 1000 ml of water. How many 250 ml bottles can be filled from it?",
+      "ms": {
+        "draft": 3364,
+        "critique": 6318
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A container can hold 500 ml. If it is filled to 3/4 of its capacity, how much water is in it?",
+      "ms": {
+        "draft": 3364,
+        "critique": 6112,
+        "solver": 7732
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a container is found to lose 50 ml of water in one hour, how much water would be lost in a week?",
+      "ms": {
+        "draft": 4389,
+        "critique": 6762
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an activity that uses a large amount of water?",
+      "ms": {
+        "draft": 4389,
+        "critique": 5717,
+        "solver": 13059,
+        "form": 2667
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a crow drinks 100 ml of water at a time, how many times would it need to drink to consume 500 ml?",
+      "ms": {
+        "draft": 4389,
+        "critique": 6096,
+        "solver": 16248,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a container loses 50 ml of water in an hour, how much water would be wasted in 10 days?",
+      "ms": {
+        "draft": 4389,
+        "critique": 7700
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Rita and Shabnam saw a vegetable seller weighing vegetables. What is the weight of the half pumpkin if a full pumpkin weighs 2 kg?",
+      "ms": {
+        "draft": 4730,
+        "critique": 8619,
+        "solver": 17009,
+        "form": 3584
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many 250 ml bottles will fill a 1 litre bottle?",
+      "ms": {
+        "draft": 4730,
+        "critique": 4206,
+        "solver": 7231,
+        "form": 1235
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A water tank is filled in 2 hours without any leakage. But due to a leak, it takes 3 hours to fill. How long would it take the leak to drain the full tank?",
+      "ms": {
+        "draft": 4389,
+        "critique": 8031,
+        "solver": 1933,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 10 packets of 100 grams each make 1 kg, how many 50 g packets will make 1 kg?",
+      "ms": {
+        "draft": 4730,
+        "critique": 9977,
+        "solver": 12602,
+        "form": 4881
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A sweet shop owner needs to pack 1 kg Kaju-katli in boxes of different weights. How many 50 g boxes are needed for 1 kg?",
+      "ms": {
+        "draft": 4730,
+        "critique": 9459,
+        "solver": 15715,
+        "form": 3578
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A pump can fill a tank in 2 hours, but due to a leak, it took 3 hours to fill. How long will the leak take to drain the full tank?",
+      "ms": {
+        "draft": 4730,
+        "critique": 5915,
+        "solver": 2464,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a unit of capacity?",
+      "ms": {
+        "draft": 4389,
+        "critique": 7338,
+        "solver": 1545,
+        "form": 0,
+        "translation": 24580
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a 500 g packet of daal can be filled using 2 packets of 250 g each, how many 100 g packets would be needed to fill a 1 kg packet?",
+      "ms": {
+        "draft": 3908,
+        "critique": 5148,
+        "solver": 1642,
+        "form": 0,
+        "translation": 35013
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 250 g of daal costs ₹ 20, what is the cost of 1 kg of daal?",
+      "ms": {
+        "draft": 4730,
+        "critique": 5559,
+        "solver": 1331,
+        "form": 3271,
+        "translation": 36373
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is equal to 1000 grams?",
+      "reason": "options are in more than one unit (grams, kilogram, kilograms)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 10 packets of 100 grams each are used, what is the total weight?",
+      "reason": "options are in more than one unit (grams, kilogram, kilograms)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a 500 g packet of daal is to be balanced using 250 g packets, how many 250 g packets are needed?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a 100 ml dosing cup is used to fill a 500 ml vessel, how many cups are needed?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which container is used to measure 500 ml of liquid?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a 100 g soap bar weighs the same as 4 erasers, how many erasers would weigh the same as 250 g sugar?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not a unit of capacity?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a container holds 200 ml of water, how many such containers are needed to measure 1 litre?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A tap leaks 50 ml of water in one hour. How much water is lost in a day?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A jug holds 1000 ml of water. How many 250 ml bottles can be filled from it?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A container can hold 500 ml. If it is filled to 3/4 of its capacity, how much water is in it?",
+      "reason": "after redrafting distractors 0, 1, 3: the critic finds option 1 correct, the key is 2; option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a container is found to lose 50 ml of water in one hour, how much water would be lost in a week?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an activity that uses a large amount of water?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a crow drinks 100 ml of water at a time, how many times would it need to drink to consume 500 ml?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a container loses 50 ml of water in an hour, how much water would be wasted in 10 days?",
+      "reason": "the critic finds option 3 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Rita and Shabnam saw a vegetable seller weighing vegetables. What is the weight of the half pumpkin if a full pumpkin weighs 2 kg?",
+      "reason": "options 0 and 3 are the same (\"1 kg\"); options are written to different precisions (0 and 1 decimals); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How many 250 ml bottles will fill a 1 litre bottle?",
+      "reason": "options 0 and 3 are the same (\"4\"); options 0 and 3 are the same number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A water tank is filled in 2 hours without any leakage. But due to a leak, it takes 3 hours to fill. How long would it take the leak to drain the full tank?",
+      "reason": "near-duplicate of served question cmvk418hi0iz8gpfh2gote0ow (cosine 0.917 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If 10 packets of 100 grams each make 1 kg, how many 50 g packets will make 1 kg?",
+      "reason": "near-duplicate of served question cmvk418hg0iz2gpfhtakyi5mf (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A sweet shop owner needs to pack 1 kg Kaju-katli in boxes of different weights. How many 50 g boxes are needed for 1 kg?",
+      "reason": "near-duplicate of served question cmvh1kz1b067agpfh0tc7g55p (cosine 0.942 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A pump can fill a tank in 2 hours, but due to a leak, it took 3 hours to fill. How long will the leak take to drain the full tank?",
+      "reason": "near-duplicate of served question cmvk418hi0iz8gpfh2gote0ow (cosine 0.934 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

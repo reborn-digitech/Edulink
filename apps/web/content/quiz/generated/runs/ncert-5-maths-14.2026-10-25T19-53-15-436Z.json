@@ -1,0 +1,505 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T19:53:15.436Z",
+  "finishedAt": "2026-10-25T19:56:09.673Z",
+  "seconds": 174,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm114.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — Maps And Locations",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n6. (c) 5 Unit",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n5. (c) (2,-1)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 68042,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 14333,
+      "completionTokens": 4122
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 185194,
+      "in": 23,
+      "out": 14,
+      "rejects": 9,
+      "promptTokens": 12850,
+      "completionTokens": 5354
+    },
+    "solver": {
+      "calls": 120,
+      "ms": 53964,
+      "in": 14,
+      "out": 5,
+      "rejects": 9,
+      "promptTokens": 19061,
+      "completionTokens": 1212
+    },
+    "form": {
+      "calls": 2,
+      "ms": 4973,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 443,
+      "completionTokens": 130
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 4574,
+      "in": 4,
+      "out": 1,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 15312,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2217,
+      "completionTokens": 1064
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "If Manu is facing the rising sun, which direction is his left hand pointing?",
+      "ms": {
+        "draft": 2981,
+        "critique": 4262,
+        "solver": 1160
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the tent to the west of the road is blue, what colour is the tent to the east of the road?",
+      "ms": {
+        "draft": 2981,
+        "critique": 5754
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the location of the tortoise according to the passage?",
+      "ms": {
+        "draft": 3134,
+        "critique": 6890
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the map of the room, the window is in the north direction. What direction is the cupboard if it is to the west of the window?",
+      "ms": {
+        "draft": 2981,
+        "critique": 6532,
+        "solver": 16804
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "On the metro map, the Qutb Minar station is on the Yellow Line, and the Supreme Court station is on the Blue Line. If Lali suggests taking the Yellow Line to Hauz Khas and then the Magenta Line, which station should the children get off at to reach the Supreme Court?",
+      "ms": {
+        "draft": 2981,
+        "critique": 7935,
+        "solver": 10647,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the map, which animal is located at (2,6)?",
+      "ms": {
+        "draft": 3134,
+        "critique": 6545
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student moves 2 steps towards east and then 5 steps towards north, and then 1 step towards west and 3 steps towards south, what is the final position?",
+      "ms": {
+        "draft": 3134,
+        "critique": 5070,
+        "solver": 1030
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If you move 5 steps towards east and 7 steps towards north, which position will you reach?",
+      "ms": {
+        "draft": 3134,
+        "critique": 6727,
+        "solver": 7022
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the location of the tortoise?",
+      "ms": {
+        "draft": 2815,
+        "critique": 6926
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the position of the crocodile as per the passage?",
+      "ms": {
+        "draft": 2815,
+        "critique": 6622,
+        "solver": 1382
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the position of the lion as per the passage?",
+      "ms": {
+        "draft": 2815,
+        "critique": 6896,
+        "solver": 1929
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which animal is located at (6,4) according to the passage?",
+      "ms": {
+        "draft": 2815,
+        "critique": 9049
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the tortoise is at (4,1), which direction must one move to reach it from (1,1)?",
+      "ms": {
+        "draft": 2815,
+        "critique": 7463,
+        "solver": 2019
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When Manu is facing the rising Sun, which direction is he facing?",
+      "ms": {
+        "draft": 2894,
+        "critique": 6419
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a tent is to the west of the road, which direction is it in relation to the road?",
+      "ms": {
+        "draft": 2894,
+        "critique": 6508
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the elephant is at (2,6), then how many steps must one move horizontally to reach the elephant from the origin?",
+      "ms": {
+        "draft": 2815,
+        "critique": 7658,
+        "solver": 10915
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the map of the room, if the window is to the east of the girl, which direction is the bed in relation to the girl?",
+      "ms": {
+        "draft": 2894,
+        "critique": 6216
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the bus takes a right turn onto Market Road, in which direction is it driving?",
+      "ms": {
+        "draft": 2894,
+        "critique": 4608
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the ant moves 2 cm towards the east and then 1 cm towards the north, what is the total distance it travels?",
+      "ms": {
+        "draft": 2894,
+        "critique": 3904,
+        "solver": 4229
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the bus goes north and then takes a right turn onto a road, which direction is it driving after the turn?",
+      "ms": {
+        "draft": 2981,
+        "critique": 5960,
+        "solver": 1007,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which direction is Manu facing if he is facing the rising sun?",
+      "ms": {
+        "draft": 2981,
+        "critique": 4585,
+        "solver": 10250,
+        "form": 1785
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you move 3 steps towards east and 2 steps towards north, which position will you reach?",
+      "ms": {
+        "draft": 3134,
+        "critique": 6994,
+        "solver": 9816,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is written at the meeting point of the first row and the first column?",
+      "ms": {
+        "draft": 3134,
+        "critique": 6962,
+        "solver": 10532,
+        "form": 3188,
+        "translation": 12750
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If Manu is facing the rising sun, which direction is his left hand pointing?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the tent to the west of the road is blue, what colour is the tent to the east of the road?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the location of the tortoise according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the map of the room, the window is in the north direction. What direction is the cupboard if it is to the west of the window?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "On the metro map, the Qutb Minar station is on the Yellow Line, and the Supreme Court station is on the Blue Line. If Lali suggests taking the Yellow Line to Hauz Khas and then the Magenta Line, which station should the children get off at to reach the Supreme Court?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the map, which animal is located at (2,6)?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a student moves 2 steps towards east and then 5 steps towards north, and then 1 step towards west and 3 steps towards south, what is the final position?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If you move 5 steps towards east and 7 steps towards north, which position will you reach?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what is the location of the tortoise?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the position of the crocodile as per the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the position of the lion as per the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which animal is located at (6,4) according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the tortoise is at (4,1), which direction must one move to reach it from (1,1)?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "When Manu is facing the rising Sun, which direction is he facing?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a tent is to the west of the road, which direction is it in relation to the road?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the elephant is at (2,6), then how many steps must one move horizontally to reach the elephant from the origin?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the map of the room, if the window is to the east of the girl, which direction is the bed in relation to the girl?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the bus takes a right turn onto Market Road, in which direction is it driving?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the ant moves 2 cm towards the east and then 1 cm towards the north, what is the total distance it travels?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If the bus goes north and then takes a right turn onto a road, which direction is it driving after the turn?",
+      "reason": "near-duplicate of served question cmvk9mcml0jqwgpfh3ho7r0g8 (cosine 0.910 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which direction is Manu facing if he is facing the rising sun?",
+      "reason": "near-duplicate of served question cmvh7jq9207dhgpfh5zdtozhm (cosine 0.954 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If you move 3 steps towards east and 2 steps towards north, which position will you reach?",
+      "reason": "near-duplicate of served question cmvh7jq9607dngpfhwjgpabqk (cosine 0.955 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

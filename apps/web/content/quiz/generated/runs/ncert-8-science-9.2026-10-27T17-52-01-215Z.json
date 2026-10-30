@@ -1,0 +1,754 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T17:52:01.215Z",
+  "finishedAt": "2026-10-27T18:03:27.594Z",
+  "seconds": 686,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu109.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 9 — The Amazing World of Solutes, Solvents, and Solutions",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2020 — question paper]\n8. A U-shaped tube with a semipermeable membrane is filled with 2 L of water as shown in\nfigure I. When 0.1 mol of compound X is completely dissolved in the right arm of the tube,\nthe level of X (aq) solution rises as shown in the figure II. Assume that the rise in the solution\nlevel is proportional to the number of solute particles in an aqueous solution.\nI 0.1 mol of X II\nh\nH O 2 (l) H O 2 (l) H O 2 (l) X (aq)\nSemipermeable membrane Semipermeable membrane\nThe height h would be the highest when X is\nA. MgCl 2 B. CH COOH 3 C. NH NO 4 3 D. Cane Sugar",
+      "[INJSO 2022 — question paper]\n2. A student took a sandy soil sample from a desert area, put it in a bucket and poured tap water on it. After\nsome time, the soil settled down in the bucket. She wanted to know if the sample had any soluble\nsubstances in it. Comparison of which of these properties between supernatant bucket water and the\noriginal tap water will most likely answer her question definitively.\nA. pH B. density C. temperature D. light scattering in identical containers",
+      "[INJSO 2022 — solutions or answer key]\n2. B. If some soluble components from soil dissolve in water, then density of water is most likely to change. Other\nparameters may or may not change significantly.",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n27. Give reason for the following : 3\nA. A solution of sports electrolyte drink conducts electricity, but coconut oil does\nnot.\nB. Milkiness disappears when excess of carbon dioxide is passed through lime\nwater.\nC. An iron bridge near the sea rusts much faster than an iron bridge located in a\ndry hilly region."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 185990,
+      "in": 39,
+      "out": 39,
+      "rejects": 0,
+      "promptTokens": 43488,
+      "completionTokens": 11075
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 285257,
+      "in": 39,
+      "out": 27,
+      "rejects": 12,
+      "promptTokens": 21158,
+      "completionTokens": 7943
+    },
+    "solver": {
+      "calls": 176,
+      "ms": 74982,
+      "in": 27,
+      "out": 20,
+      "rejects": 7,
+      "promptTokens": 30257,
+      "completionTokens": 1703
+    },
+    "form": {
+      "calls": 16,
+      "ms": 74337,
+      "in": 20,
+      "out": 10,
+      "rejects": 10,
+      "promptTokens": 12762,
+      "completionTokens": 1857
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 94,
+      "ms": 15208,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 380244,
+      "in": 16,
+      "out": 16,
+      "rejects": 1,
+      "promptTokens": 20421,
+      "completionTokens": 11213
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 4,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What happens to a solution when more solute can still be dissolved at a given temperature?",
+      "ms": {
+        "draft": 15346,
+        "critique": 4385
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a uniform mixture formed when a solid dissolves in a liquid?",
+      "ms": {
+        "draft": 15346,
+        "critique": 4771
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student adds 2 spoons of salt to 100 mL of water and another student adds 4 spoons of salt to 50 mL of water, which solution is more concentrated?",
+      "ms": {
+        "draft": 15346,
+        "critique": 6073,
+        "solver": 1650,
+        "form": 2146
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student heats a beaker of water and adds baking soda while stirring. At 50°C, some baking soda remains undissolved. What can be inferred from this observation?",
+      "ms": {
+        "draft": 3449,
+        "critique": 6410,
+        "solver": 1495
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what determines whether an object floats or sinks in a liquid?",
+      "ms": {
+        "draft": 3449,
+        "critique": 6085,
+        "solver": 1198,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a measuring cylinder as described in the passage?",
+      "ms": {
+        "draft": 11572,
+        "critique": 5616
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what happens to the solubility of gases in water when the temperature increases?",
+      "ms": {
+        "draft": 3449,
+        "critique": 5374,
+        "solver": 1435,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, how is the relative density of a substance calculated?",
+      "ms": {
+        "draft": 3449,
+        "critique": 6441,
+        "solver": 13701,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why is the meniscus formed when water is poured into a measuring cylinder?",
+      "ms": {
+        "draft": 11572,
+        "critique": 4995,
+        "solver": 1033,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student used a measuring cylinder to measure 200 mL of a liquid. The smallest division on the measuring cylinder is 1 mL. What is the minimum number of divisions the student must read to get an accurate measurement?",
+      "ms": {
+        "draft": 11572,
+        "critique": 9422,
+        "solver": 1173
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to measure 70 mL of water accurately, which measuring cylinder should they use according to the passage?",
+      "ms": {
+        "draft": 11572,
+        "critique": 5790,
+        "solver": 12287,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student measures the mass of a solid object using a digital balance. After placing the object on the balance, the reading is 16.400 g. What does this reading represent?",
+      "ms": {
+        "draft": 11572,
+        "critique": 6194,
+        "solver": 11548
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit of volume mentioned in the passage?",
+      "ms": {
+        "draft": 11572,
+        "critique": 6781,
+        "solver": 10494,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student wants to determine if a sandy soil sample contains soluble substances. Which property of the soil sample and water should be compared to find this out?",
+      "ms": {
+        "draft": 6456,
+        "critique": 6587,
+        "solver": 1295
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct statement about solutions?",
+      "ms": {
+        "draft": 4648,
+        "critique": 4553
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a saturated solution?",
+      "ms": {
+        "draft": 3933,
+        "critique": 7424
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about solutions?",
+      "ms": {
+        "draft": 3933,
+        "critique": 8025
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the component of a solution that is present in less quantity?",
+      "ms": {
+        "draft": 3933,
+        "critique": 6794,
+        "solver": 1508,
+        "form": 3445
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the density of a substance when its temperature increases?",
+      "ms": {
+        "draft": 3933,
+        "critique": 7085
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct statement about the solubility of gases in water?",
+      "ms": {
+        "draft": 3933,
+        "critique": 7420
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why are measuring cylinders designed to be narrow and tall instead of wider and short?",
+      "ms": {
+        "draft": 14562,
+        "critique": 7609
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the volume of a solid when it is submerged in water in a measuring cylinder?",
+      "ms": {
+        "draft": 14562,
+        "critique": 6223,
+        "solver": 1719
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student wants to test if a soil sample has soluble substances, which property of the water should she compare?",
+      "ms": {
+        "draft": 14562,
+        "critique": 5894
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does ice float on water?",
+      "ms": {
+        "draft": 14562,
+        "critique": 6484
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the formula used to calculate the volume of a cuboid?",
+      "ms": {
+        "draft": 14562,
+        "critique": 6400
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is a 100 mL measuring cylinder the best choice for measuring 70 mL of water?",
+      "ms": {
+        "draft": 6682,
+        "critique": 6405,
+        "solver": 1439
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a measuring cylinder can measure up to 100 mL and has 10 divisions between 10 mL and 20 mL, what is the smallest volume it can measure?",
+      "ms": {
+        "draft": 6682,
+        "critique": 6867,
+        "solver": 1548,
+        "form": 3869
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of volume for liquids as mentioned in the chapter?",
+      "ms": {
+        "draft": 6682,
+        "critique": 6556,
+        "solver": 11810
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main factor that affects the solubility of most substances in water?",
+      "ms": {
+        "draft": 56441,
+        "critique": 6801,
+        "solver": 1027,
+        "form": 2053
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why are measuring cylinders designed to be narrow and tall instead of wider and short like a beaker?",
+      "ms": {
+        "draft": 6456,
+        "critique": 5893,
+        "solver": 992,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the maximum amount of solute that can be dissolved in a fixed quantity of solvent at a particular temperature?",
+      "ms": {
+        "draft": 3933,
+        "critique": 8206,
+        "solver": 13644,
+        "form": 2513
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for a uniform mixture formed when a solid dissolves in a liquid?",
+      "ms": {
+        "draft": 4010,
+        "critique": 5451,
+        "solver": 967,
+        "form": 1099,
+        "translation": 34922
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What type of mixture is formed when salt is completely dissolved in water?",
+      "ms": {
+        "draft": 3449,
+        "critique": 6050,
+        "solver": 1430,
+        "form": 2740,
+        "translation": 35504
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a solution is formed by mixing two liquids, which one is considered the solute?",
+      "ms": {
+        "draft": 15346,
+        "critique": 5771,
+        "solver": 1571,
+        "form": 3584,
+        "translation": 45935
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the volume of an object if the initial water level in a measuring cylinder is 50 mL and the final water level is 55 mL after the object is submerged?",
+      "ms": {
+        "draft": 6456,
+        "critique": 6963,
+        "solver": 10617,
+        "form": 0,
+        "translation": 46111
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student adds sugar to a solution and observes that no more sugar can dissolve, which type of solution has been formed?",
+      "ms": {
+        "draft": 15346,
+        "critique": 4870,
+        "solver": 1248,
+        "form": 2948,
+        "translation": 77644
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student adds a certain amount of a solute to water at 20°C and observes that some solid remains undissolved. If the same solute is added to water at 50°C, what will happen?",
+      "ms": {
+        "draft": 3449,
+        "critique": 6364,
+        "solver": 1337,
+        "form": 4492,
+        "translation": 48719
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is water considered a good solvent?",
+      "ms": {
+        "draft": 15346,
+        "critique": 4902,
+        "solver": 1371,
+        "form": 2196,
+        "translation": 46308
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does ice float on water, even though it is a solid?",
+      "ms": {
+        "draft": 6456,
+        "critique": 5026,
+        "solver": 927,
+        "form": 1,
+        "translation": 39637
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens to a solution when more solute can still be dissolved at a given temperature?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for a uniform mixture formed when a solid dissolves in a liquid?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student adds 2 spoons of salt to 100 mL of water and another student adds 4 spoons of salt to 50 mL of water, which solution is more concentrated?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A student heats a beaker of water and adds baking soda while stirring. At 50°C, some baking soda remains undissolved. What can be inferred from this observation?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what determines whether an object floats or sinks in a liquid?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of a measuring cylinder as described in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what happens to the solubility of gases in water when the temperature increases?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, how is the relative density of a substance calculated?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"By dividing its mass by its volume\" / \"By dividing its volume by its mass\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, why is the meniscus formed when water is poured into a measuring cylinder?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student used a measuring cylinder to measure 200 mL of a liquid. The smallest division on the measuring cylinder is 1 mL. What is the minimum number of divisions the student must read to get an accurate measurement?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student wants to measure 70 mL of water accurately, which measuring cylinder should they use according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student measures the mass of a solid object using a digital balance. After placing the object on the balance, the reading is 16.400 g. What does this reading represent?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the SI unit of volume mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student wants to determine if a sandy soil sample contains soluble substances. Which property of the soil sample and water should be compared to find this out?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a correct statement about solutions?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of a saturated solution?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about solutions?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the term used for the component of a solution that is present in less quantity?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); distractor 1's reason is not a one-line misconception (\"correct definition…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the density of a substance when its temperature increases?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a correct statement about the solubility of gases in water?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Why are measuring cylinders designed to be narrow and tall instead of wider and short?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What happens to the volume of a solid when it is submerged in water in a measuring cylinder?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a student wants to test if a soil sample has soluble substances, which property of the water should she compare?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why does ice float on water?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the formula used to calculate the volume of a cuboid?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is a 100 mL measuring cylinder the best choice for measuring 70 mL of water?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a measuring cylinder can measure up to 100 mL and has 10 divisions between 10 mL and 20 mL, what is the smallest volume it can measure?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the unit of volume for liquids as mentioned in the chapter?",
+      "reason": "after redrafting distractor 0: the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main factor that affects the solubility of most substances in water?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks volume affects solubility directly, not indirectly th…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Why are measuring cylinders designed to be narrow and tall instead of wider and short like a beaker?",
+      "reason": "near-duplicate of served question cmvf9fy2y03nvgod8qcwyf3d8 (cosine 0.946 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term used for the maximum amount of solute that can be dissolved in a fixed quantity of solvent at a particular temperature?",
+      "reason": "near-duplicate of served question cmvmzk3zq02ydgp21h94o91zn (cosine 0.950 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,47 +21,795 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T02:04:24.373Z",
+  "generatedAt": "2026-10-29T15:45:06.634Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following substances turns red litmus blue?",
+      "stem": "Which substance changes colour in acidic and basic solutions?",
       "choices": [
-        "Lime water",
+        "Litmus",
+        "Turmeric",
         "Baking soda",
-        "Vinegar",
-        "Common salt solution"
+        "Phenolphthalein"
       ],
       "answerIndex": 0,
-      "solution": "The correct answer is lime water because it is a basic solution. Baking soda is also basic, but the question asks for the solution that would reverse the change, which implies a stronger base. Vinegar is acidic and common salt solution is neutral, so they do not turn red litmus blue.",
+      "solution": "Litmus is a natural indicator that changes colour in acidic and basic solutions. Turmeric changes colour in basic solutions, not acidic. Baking soda is a base, not an indicator. Phenolphthalein is a synthetic indicator that only changes colour in basic solutions.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा पदार्थ लाल लिटमस को नीला कर देता है?",
+          "stem": "कौन सा पदार्थ अम्लीय और क्षारीय घोल में रंग बदल जाता है?",
           "choices": [
-            "चूने का पानी",
+            "लिटमस",
+            "हल्दी",
             "बेकिंग सोडा",
-            "सिरका",
-            "साधारण नमक का विलयन"
+            "फीनॉल्फथेलीन"
           ],
-          "solution": "सही उत्तर चूने का पानी है क्योंकि यह एक क्षारीय विलयन है। बेकिंग सोडा भी क्षारीय है, लेकिन प्रश्न ऐसे विलयन के बारे में पूछ रहा है जो बदलाव को उलट दे, जिसका अर्थ है एक मजबूत क्षार। सिरका अम्लीय है और साधारण नमक का विलयन उदासीन है, इसलिए वे लाल लिटमस को नीला नहीं करते।",
+          "solution": "लिटमस एक प्राकृतिक संकेतक है जो अम्लीय और क्षारीय घोल में रंग बदल जाता है। हल्दी क्षारीय घोल में रंग बदलती है, अम्लीय घोल में नहीं। बेकिंग सोडा एक क्षार है, संकेतक नहीं। फीनॉल्फथेलीन एक संश्लेषित संकेतक है जो क्षारीय घोल में ही रंग बदलता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi scientific terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard scientific terminology as found in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता पदार्थ लाल लिटमसला नील करतो?",
+          "stem": "कोणता पदार्थ अम्लीय आणि क्षारीय द्रावणांमध्ये रंग बदलतो?",
           "choices": [
-            "लाइम पाणी",
+            "लिटमस",
+            "हिंग",
             "बेकिंग सोडा",
-            "सिरका",
-            "सामान्य लवणाचे द्रावण"
+            "फीनॉल्थॅलिन"
           ],
-          "solution": "बरोबर उत्तर लाइम पाणी आहे कारण ते एक आधारीय द्रावण आहे. बेकिंग सोडा देखील आधारीय आहे, परंतु प्रश्नामध्ये बदल उलटविणारे द्रावण विचारले आहे, जे एक जास्त शक्तिशाली आधार असावा. सिरका अम्लीय आहे आणि सामान्य लवणाचे द्रावण उदासीन आहे, त्यामुळे ते लाल लिटमसला नील करत नाहीत.",
+          "solution": "लिटमस हा प्राकृतिक सूचक अम्लीय आणि क्षारीय द्रावणांमध्ये रंग बदलतो. हिंग क्षारीय द्रावणांमध्ये रंग बदलतो, अम्लीय द्रावणांमध्ये नाही. बेकिंग सोडा एक क्षार आहे, सूचक नाही. फीनॉल्थॅलिन हा संश्लेषित सूचक आहे जो क्षारीय द्रावणांमध्ये रंग बदलतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses litmus with turmeric",
+        "Confuses litmus with baking soda",
+        "Confuses litmus with phenolphthalein"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution is accurate. Litmus is a correct answer as it changes color in both acidic and basic solutions. The other options are correctly identified as incorrect, and the reasons provided align with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.1 Nature — Our Science Laboratory",
+            "2.1.3 Turmeric as an indicator"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.2 What Happens When Acidic Substances",
+            "Mix with Basic Substances?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.3 Neutralisation in Daily Life"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:45:06.634Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Manya is blindfolded. She is given two unknown solutions to test and determine whether they are acidic or basic. Which indicator should Manya use to test the solutions and why?",
+      "choices": [
+        "Red litmus, because it changes colour in acidic and basic solutions",
+        "Turmeric, because it changes colour in basic solutions only",
+        "Red rose extract, because it changes colour in acidic solutions only",
+        "Blue litmus, because it changes colour in basic solutions only"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is red litmus, because it changes colour in acidic and basic solutions. Red litmus turns blue in basic solutions and remains red in acidic solutions. Turmeric changes colour only in basic solutions. Red rose extract changes colour in acidic and basic solutions. Blue litmus turns red in acidic solutions and remains blue in basic solutions. Manya needs an indicator that changes in both acidic and basic solutions to determine the nature of the unknown solutions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मन्या को बांधकर बंद कर दिया गया है। उसे दो अज्ञात घोल दिए जाते हैं जिनकी जांच करनी है और निर्धारित करनी है कि वे अम्लीय हैं या क्षारीय। मन्या को घोलों की जांच करने के लिए कौन सा संकेतक उपयोग करना चाहिए और क्यों?",
+          "choices": [
+            "लाल लिटमस, क्योंकि यह अम्लीय और क्षारीय घोलों में रंग बदल जाता है",
+            "हल्दी, क्योंकि यह क्षारीय घोलों में ही रंग बदल जाता है",
+            "लाल गुलाब का निकाय, क्योंकि यह केवल अम्लीय घोलों में रंग बदल जाता है",
+            "नीला लिटमस, क्योंकि यह क्षारीय घोलों में ही रंग बदल जाता है"
+          ],
+          "solution": "सही उत्तर लाल लिटमस है, क्योंकि यह अम्लीय और क्षारीय घोलों में रंग बदल जाता है। लाल लिटमस क्षारीय घोलों में नीला हो जाता है और अम्लीय घोलों में लाल रहता है। हल्दी केवल क्षारीय घोलों में रंग बदल जाता है। लाल गुलाब के निकाय में अम्लीय और क्षारीय घोलों में रंग बदल जाता है। नीला लिटमस अम्लीय घोलों में लाल हो जाता है और क्षारीय घोलों में नीला रहता है। मन्या को एक संकेतक की आवश्यकता होती है जो अम्लीय और क्षारीय घोलों में रंग बदल जाए ताकि अज्ञात घोलों की प्रकृति का निर्धारण किया जा सके।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मन्या ब्लाइंडफोल्ड केली गेली. तिला दोन अज्ञात द्रावणे देण्यात आली आहेत आणि त्यांच्या अम्लीय किंवा क्षारीय प्रकृती ओळखण्यासाठी तपासायचे आहे. मन्याने द्रावणांचा तपास करण्यासाठी कोणता सूचक वापरावा आणि का?",
+          "choices": [
+            "लाल लिटमस, कारण तो अम्लीय आणि क्षारीय द्रावणांमध्ये रंग बदलतो",
+            "हळद, कारण ती क्षारीय द्रावणांमध्ये रंग बदलते केवळ",
+            "लाल गुलाबाचा एक्स्ट्रॅक्ट, कारण तो अम्लीय द्रावणांमध्ये रंग बदलते केवळ",
+            "नील लिटमस, कारण तो क्षारीय द्रावणांमध्ये रंग बदलते केवळ"
+          ],
+          "solution": "बरोबर उत्तर लाल लिटमस आहे, कारण तो अम्लीय आणि क्षारीय द्रावणांमध्ये रंग बदलतो. लाल लिटमस क्षारीय द्रावणांमध्ये नील होतो आणि अम्लीय द्रावणांमध्ये लाल राहतो. हळद केवळ क्षारीय द्रावणांमध्ये रंग बदलते. लाल गुलाबाचा एक्स्ट्रॅक्ट अम्लीय आणि क्षारीय द्रावणांमध्ये रंग बदलतो. नील लिटमस अम्लीय द्रावणांमध्ये लाल होतो आणि क्षारीय द्रावणांमध्ये नील राहतो. मन्याला अम्लीय आणि क्षारीय द्रावणांमध्ये रंग बदलणारा सूचक आवश्यक आहे कारण तिला अज्ञात द्रावणांच्या प्रकृतीचा निर्धार करायचा आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the colour change of turmeric in acidic solutions",
+        "Confuses the colour change of red rose extract in acidic solutions",
+        "Confuses the colour change of blue litmus in basic solutions"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is sound and correctly identifies red litmus as the appropriate indicator. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.3 Neutralisation in Daily Life",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 11,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.3 Neutralisation in Daily Life",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.3 Neutralisation in Daily Life",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:45:06.634Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A liquid sample from the laboratory was tested using various indicators. Based on the tests, identify the acidic or basic nature of the liquid and justify your answer.",
+      "choices": [
+        "Acidic, because blue litmus turned red",
+        "Basic, because red litmus turned blue",
+        "Neutral, because no change in litmus",
+        "Acidic, because turmeric turned red"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is acidic, because blue litmus turned red. Blue litmus turns red in acidic solutions, indicating that the liquid is acidic. Basic solutions would turn red litmus blue. Neutral solutions would not change the colour of either litmus. Turmeric turns red in basic solutions, so this is not the correct indicator to identify an acidic solution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रयोगशाला से एक द्रव नमूना का विभिन्न सूचकों के साथ परीक्षण किया गया। परीक्षण के आधार पर, द्रव की अम्लीय या क्षारीय प्रकृति की पहचान करें और अपने उत्तर की पुष्टि करें।",
+          "choices": [
+            "अम्लीय, क्योंकि नीला लिटमस लाल हो गया",
+            "क्षारीय, क्योंकि लाल लिटमस नीला हो गया",
+            "उदासीन, क्योंकि लिटमस में कोई परिवर्तन नहीं हुआ",
+            "अम्लीय, क्योंकि अदरक लाल हो गया"
+          ],
+          "solution": "सही उत्तर अम्लीय, क्योंकि नीला लिटमस लाल हो गया। अम्लीय विलयन में नीला लिटमस लाल हो जाता है, जिसका अर्थ है कि द्रव अम्लीय है। क्षारीय विलयन लाल लिटमस को नीला कर देते हैं। उदासीन विलयन दोनों लिटमस के रंग में परिवर्तन नहीं करते। अदरक क्षारीय विलयन में लाल हो जाता है, इसलिए यह अम्लीय विलयन की पहचान के लिए सही सूचक नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्रयोगशाळेतून आलेल्या द्रव नमुन्याचे विविध संकेतस्थळांच्या वापराने चाचणी करण्यात आली. चाचण्यांच्या आधारे द्रवाची अम्लीय किंवा क्षारीय प्रकृती ओळखा आणि आपला उत्तर व्याख्यान करा.",
+          "choices": [
+            "अम्लीय, कारण नील लिटमस लाल झाला",
+            "क्षारीय, कारण लाल लिटमस नील झाला",
+            "उदासीन, कारण लिटमसमध्ये कोणताही बदल झाला नाही",
+            "अम्लीय, कारण तुरमेरी लाल झाली"
+          ],
+          "solution": "सही उत्तर अम्लीय, कारण नील लिटमस लाल झाला. अम्लीय द्रवामध्ये नील लिटमस लाल होतो, जे दर्शवतो की द्रव अम्लीय आहे. क्षारीय द्रवामध्ये लाल लिटमस नील होतो. उदासीन द्रवामध्ये कोणताही लिटमसचा रंग बदलत नाही. तुरमेरी क्षारीय द्रवामध्ये लाल होते, म्हणून हे अम्लीय द्रव ओळखण्यासाठी सही संकेतस्थळ नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for chemical indicators.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the colour change of red litmus in basic solutions",
+        "Confuses the colour change of blue litmus in acidic solutions",
+        "Confuses the colour change of litmus in neutral solutions"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as blue litmus turning red is a definitive indicator of an acidic solution. The author's solution is accurate and aligns with standard acid-base indicator behavior.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 10,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.3 Neutralisation in Daily Life",
+            "In a Nutshell"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 11,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.3 Neutralisation in Daily Life",
+            "Let Us Enhance Our Learning"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 12,
+          "pageStart": 16,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.3 Neutralisation in Daily Life",
+            "Exploratory Projects"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:45:06.634Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens when an acid is mixed with a base in sufficient quantity?",
+      "choices": [
+        "It becomes more acidic",
+        "It becomes more basic",
+        "It becomes neutral",
+        "It evaporates"
+      ],
+      "answerIndex": 2,
+      "solution": "When an acid is mixed with a base in sufficient quantity, the resulting solution becomes neutral. This is called a neutralisation reaction. The solution does not become more acidic or basic, and it does not evaporate.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एसिड के साथ बेस के पर्याप्त मात्रा में मिश्रण होने पर क्या होता है?",
+          "choices": [
+            "यह अधिक अम्लीय हो जाता है",
+            "यह अधिक क्षारीय हो जाता है",
+            "यह उदासीन हो जाता है",
+            "यह वाष्पित हो जाता है"
+          ],
+          "solution": "जब एसिड के साथ बेस के पर्याप्त मात्रा में मिश्रण होता है, तो परिणामी विलयन उदासीन हो जाता है। इसे उदासीनीकरण अभिक्रिया कहते हैं। विलयन अधिक अम्लीय या क्षारीय नहीं होता है, और यह वाष्पित नहीं होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms match standard Hindi textbook usage, and the question structure is preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका अम्लाचा आणि क्षाराचा पुरेसा प्रमाणात मिश्रण केल्यास काय होते?",
+          "choices": [
+            "तो अधिक अम्लीय होतो",
+            "तो अधिक क्षारीय होतो",
+            "तो उदासीन होतो",
+            "तो वाष्पीभूत होतो"
+          ],
+          "solution": "एका अम्लाचा आणि क्षाराचा पुरेसा प्रमाणात मिश्रण केल्यास, निर्माण झालेला द्रव उदासीन होतो. हे उदासीनीकरण अभिक्रिया म्हणतात. द्रव अधिक अम्लीय किंवा क्षारीय होत नाही आणि तो वाष्पीभूत होत नाही.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Marathi-medium science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrectly assumes acids become more acidic when mixed with bases",
+        "Incorrectly assumes acids become more basic when mixed with bases",
+        null,
+        "Confuses neutralisation with evaporation"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed and the solution correctly identifies the neutralisation reaction. The distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.1 Nature — Our Science Laboratory",
+            "2.1.3 Turmeric as an indicator"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.2 What Happens When Acidic Substances",
+            "Mix with Basic Substances?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.3 Neutralisation in Daily Life"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:45:06.634Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the experiment described, what caused the colour change from red to blue?",
+      "choices": [
+        "Addition of lemon juice",
+        "Addition of blue litmus",
+        "Addition of lime water",
+        "Addition of water"
+      ],
+      "answerIndex": 2,
+      "solution": "The colour change from red to blue occurred due to the addition of lime water, which is a base. Lime water neutralised the acid (lemon juice), making the solution basic. Lemon juice is an acid, so it turns blue litmus red, and water does not cause a colour change.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "विवरण में वर्णित प्रयोग में लाल रंग से नीले रंग में रंग परिवर्तन किसके कारण हुआ?",
+          "choices": [
+            "नींबू के रस के जोड़ने से",
+            "नीले लिटमस के जोड़ने से",
+            "चूने के पानी के जोड़ने से",
+            "पानी के जोड़ने से"
+          ],
+          "solution": "लाल से नीले रंग में रंग परिवर्तन चूने के पानी के कारण हुआ, जो कि एक क्षार है। चूने के पानी अम्ल (नींबू के रस) को उदासीन कर देता है, जिससे विलयन क्षारीय हो जाता है। नींबू का रस एक अम्ल है, इसलिए यह नीले लिटमस को लाल कर देता है, और पानी के कारण कोई रंग परिवर्तन नहीं होता।",
+          "imageAlt": "एक बीकर में नींबू के रस और नीले लिटमस है, जिसमें चूने के पानी जोड़ा जा रहा है।",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, with correct technical terms (e.g., 'चूने के पानी' for 'lime water', 'लिटमस' for 'litmus') and maintains the same answer position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्रयोगात वर्ण बदल लाल ते नीला कोणत्या कारणामुळे झाला?",
+          "choices": [
+            "लिंबू रस जोडणे",
+            "नील लिटमस जोडणे",
+            "लाइम जल जोडणे",
+            "पाणी जोडणे"
+          ],
+          "solution": "लाल ते नील रंग बदल लाइम जल जोडल्यामुळे झाला, जो की क्षार आहे. लाइम जल आम्ल (लिंबू रस) ने तटस्थ केला, ज्यामुळे द्रावण क्षारीय बनले. लिंबू रस आम्ल आहे, त्यामुळे तो नील लिटमस लाल करतो, आणि पाणी रंग बदल करत नाही.",
+          "imageAlt": "एक बेकर मध्ये लिंबू रस आणि नील लिटमस असून, त्यात लाइम जल जोडले जात आहे.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A beaker containing lemon juice and blue litmus, with lime water being added to it.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "beaker",
+              "x": 50,
+              "y": 30,
+              "size": 30,
+              "labels": [
+                "liquid"
+              ],
+              "text": {
+                "liquid": "lemon_juice_blue_litmus"
+              }
+            }
+          ],
+          "arrows": [
+            {
+              "from": [
+                50,
+                30
+              ],
+              "to": [
+                50,
+                10
+              ],
+              "label": "lime_water",
+              "curved": true
+            }
+          ]
+        },
+        "labels": {
+          "lemon_juice_blue_litmus": {
+            "en": "lemon juice + blue litmus",
+            "hi": "नींबू के रस + नीला लिटमस",
+            "mr": "लिंबू रस + नील लिटमस"
+          },
+          "lime_water": {
+            "en": "lime water",
+            "hi": "चूने का पानी",
+            "mr": "लाइम जल"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses the role of lemon juice as an acid",
+        "Confuses the role of blue litmus as an indicator",
+        null,
+        "Misunderstands the neutralisation process"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that lime water (a base) caused the colour change by neutralizing the acid in lemon juice. The reasoning aligns with the expected understanding of acid-base reactions and litmus indicators.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.1 Nature — Our Science Laboratory",
+            "2.1.3 Turmeric as an indicator"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 8,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.2 What Happens When Acidic Substances",
+            "Mix with Basic Substances?"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 9,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.3 Neutralisation in Daily Life"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:45:06.634Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student tests an unknown solution with both red rose extract and turmeric paper. The rose extract turns green, and the turmeric paper does not change colour. What can the student conclude about the solution?",
+      "choices": [
+        "It is a strong acid",
+        "It is a base",
+        "It is neutral",
+        "It is a weak acid"
+      ],
+      "answerIndex": 1,
+      "solution": "The red rose extract turns green in basic solutions, and the turmeric paper does not change colour in acidic or neutral solutions. Therefore, the solution must be a base. The correct option states that it is a base. The other options are incorrect because a strong acid would not turn the extract green, a neutral solution would not change the extract, and a weak acid would not cause the turmeric paper to change colour.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र अज्ञात घोल का लाल गुलाब के निकाय और जीरा के कागज से परीक्षण करता है। गुलाब का निकाय हरा हो जाता है, और जीरा के कागज का रंग नहीं बदलता। छात्र घोल के बारे में क्या निष्कर्ष निकाल सकता है?",
+          "choices": [
+            "यह एक मजबूत अम्ल है",
+            "यह एक क्षार है",
+            "यह उदासीन है",
+            "यह एक कमजोर अम्ल है"
+          ],
+          "solution": "लाल गुलाब के निकाय के हरा हो जाना क्षारीय घोल में होता है, और जीरा के कागज का रंग अम्लीय या उदासीन घोल में नहीं बदलता। इसलिए घोल एक क्षार होना चाहिए। सही विकल्प यह बताता है कि यह एक क्षार है। अन्य विकल्प गलत हैं क्योंकि मजबूत अम्ल निकाय के हरा हो जाने का कारण नहीं होता, उदासीन घोल निकाय के रंग को नहीं बदलता, और कमजोर अम्ल जीरा के कागज के रंग को बदल नहीं सकता।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीनीने अज्ञात द्रावणाचा लाल गुलाबाच्या रसाने आणि तुरमेरी कागदाने चाचणी घेतली. गुलाबाचा रस हिरवा होतो, आणि तुरमेरी कागदाचा रंग बदलत नाही. विद्यार्थीनी द्रावणाबद्दल काय निष्कर्ष काढू शकते?",
+          "choices": [
+            "ते एक तीव्र अम्ल आहे",
+            "ते एक अम्ल आहे",
+            "ते उदासीन आहे",
+            "ते एक कमी तीव्रता अम्ल आहे"
+          ],
+          "solution": "लाल गुलाबाचा रस आम्लीय द्रावणात हिरवा होतो, आणि तुरमेरी कागद अम्लीय किंवा उदासीन द्रावणात रंग बदलत नाही. त्यामुळे, द्रावण हे आम्ल असल्याचा निष्कर्ष निश्चितपणे काढता येतो. योग्य विकल्प असा आहे की ते एक आम्ल आहे. इतर विकल्प अयोग्य आहेत कारण तीव्र अम्ल रसाला हिरवा करणार नाही, उदासीन द्रावण रसाला बदलणार नाही, आणि कमी तीव्रता अम्ल तुरमेरी कागदाचा रंग बदलणार नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes a strong acid would cause the extract to turn green, which is incorrect as the extract turns green only in a base",
+        null,
+        "Assumes the solution is neutral, but the extract turning green indicates it is a base",
+        "Thinks the solution is a weak acid, but the turmeric paper does not change colour in a weak acid, and the extract turning green indicates a base."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is logically sound. The red rose extract turning green indicates a basic solution, and the turmeric paper not changing color indicates it is not acidic. This confirms the solution is a base, making option 1 correct.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.1 Nature — Our Science Laboratory",
+            "2.1.2 Red rose as an indicator"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.1 Nature — Our Science Laboratory",
+            "2.1.2 Red rose as an indicator"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.1 Nature — Our Science Laboratory",
+            "2.1.3 Turmeric as an indicator"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:45:06.634Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In an experiment, a student adds a few drops of lemon juice to red rose extract and observes a colour change. What is the likely nature of lemon juice based on this observation?",
+      "choices": [
+        "Basic",
+        "Neutral",
+        "Acidic",
+        "Cannot be determined"
+      ],
+      "answerIndex": 2,
+      "solution": "Lemon juice is likely acidic because red rose extract changes color in acidic conditions, and the observed change suggests the presence of an acid. Basic or neutral substances would not cause the same color shift. The color change provides enough evidence to determine the nature of lemon juice.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रयोग में, एक छात्र लीमन जूस के कुछ बूंदों को लाल गुलाब के निकाय में मिलाता है और रंग परिवर्तन का अवलोकन करता है। इस अवलोकन के आधार पर लीमन जूस की संभावित प्रकृति क्या है?",
+          "choices": [
+            "क्षारीय",
+            "उदासीन",
+            "अम्लीय",
+            "निर्धारित नहीं किया जा सकता"
+          ],
+          "solution": "लीमन जूस अम्लीय होने की संभावना है क्योंकि लाल गुलाब के निकाय अम्लीय परिस्थितियों में रंग बदल जाता है, और अवलोकित परिवर्तन अम्ल की उपस्थिति को सूचित करता है। क्षारीय या उदासीन पदार्थ इसी तरह के रंग परिवर्तन नहीं करेंगे। रंग परिवर्तन लीमन जूस की प्रकृति के निर्धारण के लिए पर्याप्त साक्ष्य प्रदान करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका प्रयोगात, एका विद्यार्थ्याने लिंबूच्या रसाच्या काही थेंबा लाल गुलाबाच्या रसात घातले आणि रंग बदल नोंदवला. या निरीक्षणावरून लिंबूच्या रसाची अपेक्षित प्रकृती काय असू शकते?",
+          "choices": [
+            "क्षारीय",
+            "उदासीन",
+            "अम्लीय",
+            "निश्चित करता येत नाही"
+          ],
+          "solution": "लिंबूच्या रसाची अम्लीय प्रकृती असावी कारण लाल गुलाबाचा रस अम्लीय परिस्थितीत रंग बदलतो, आणि नोंदवलेला बदल अम्लाच्या उपस्थितीचा संकेत देतो. क्षारीय किंवा उदासीन पदार्थ असे रंग बदल करू शकत नाहीत. रंग बदलामुळे लिंबूच्या रसाची प्रकृती निश्चित करण्यासाठी पुरेसा पुरावा उपलब्ध आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the reaction of a basic substance",
+        "Ignores the indicator's response to acids",
+        null,
+        "Fails to link the colour change to acidity"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Lemon juice is acidic, and the red rose extract turning red indicates an acidic environment. The key is accurate, and the reasoning aligns with the expected understanding of acid-base indicators.",
+      "sources": [
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.1 Nature — Our Science Laboratory",
+            "2.1.2 Red rose as an indicator"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.1 Nature — Our Science Laboratory",
+            "2.1.2 Red rose as an indicator"
+          ]
+        },
+        {
+          "document": "ncert/7/science/gecu102.pdf",
+          "ordinal": 6,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
+            "2.1 Nature — Our Science Laboratory",
+            "2.1.3 Turmeric as an indicator"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T15:45:06.634Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is an example of a neutralisation reaction?",
+      "choices": [
+        "Acid + Base → Salt + Water",
+        "Acid + Water → Salt + Gas",
+        "Base + Water → Salt + Gas",
+        "Acid + Base → Salt + Gas"
+      ],
+      "answerIndex": 0,
+      "solution": "A neutralisation reaction occurs when an acid reacts with a base to produce salt and water, often releasing heat. This matches the correct option, as it describes the formation of salt and water. The other options involve reactions that do not align with the typical products of a neutralisation reaction, such as gas or incorrect combinations.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन उदासीनीकरण अभिक्रिया का उदाहरण है?",
+          "choices": [
+            "अम्ल + क्षार → लवण + जल",
+            "अम्ल + जल → लवण + गैस",
+            "क्षार + जल → लवण + गैस",
+            "अम्ल + क्षार → लवण + गैस"
+          ],
+          "solution": "एक उदासीनीकरण अभिक्रिया तब होती है जब अम्ल क्षार के साथ अभिक्रिया करके लवण और जल बनाता है, आमतौर पर ऊष्मा के उत्सर्जन के साथ। यह सही विकल्प के साथ मेल खाता है, क्योंकि यह लवण और जल के बनने का वर्णन करता है। अन्य विकल्पों में गैस या गलत संयोजन शामिल होते हैं, जो उदासीनीकरण अभिक्रिया के सामान्य उत्पादों से मेल नहीं खाते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते उदाहरण उदासीनीकरण अभिक्रिया आहे?",
+          "choices": [
+            "अम्ल + क्षार → लवण + पाणी",
+            "अम्ल + पाणी → लवण + वायू",
+            "क्षार + पाणी → लवण + वायू",
+            "अम्ल + क्षार → लवण + वायू"
+          ],
+          "solution": "उदासीनीकरण अभिक्रिया ही अम्ल आणि क्षार यांच्या परस्पर क्रियाशीलतेमुळे होते ज्यामुळे लवण आणि पाणी तयार होते, जे उष्णता देखील देते. हे योग्य पर्यायाशी जुळते, कारण ते लवण आणि पाण्याच्या निर्मितीचे वर्णन करते. इतर पर्यायांमध्ये उदासीनीकरण अभिक्रियेच्या सामान्य उत्पादनांशी जुळत नसलेल्या अभिक्रिया आहेत, जसे की वायू किंवा चुकीच्या संयोजनांमध्ये.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
           "flag": null
@@ -73,9 +821,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Student thinks baking soda is acidic because it is used in cooking and can react with acids.",
-        "Misunderstands the effect of neutral solutions",
-        "Fails to recognize acidic substances as not turning litmus blue"
+        "Confuses neutralisation with acid + water",
+        "Confuses neutralisation with base + water",
+        "Confuses neutralisation with acid + base producing gas"
       ],
       "solverAnswers": [
         0,
@@ -83,312 +831,9 @@
         0,
         0,
         0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is sound, as lime water is a basic solution and will turn red litmus blue. The reasoning for the other options is also valid, as they reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 10,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.3 Neutralisation in Daily Life",
-            "In a Nutshell"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 11,
-          "pageStart": 14,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.3 Neutralisation in Daily Life",
-            "Let Us Enhance Our Learning"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.3 Neutralisation in Daily Life",
-            "Exploratory Projects"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:04:24.373Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What happens when an acid reacts with a base?",
-      "choices": [
-        "It forms a salt and water",
-        "It forms a salt and oxygen",
-        "It forms a base and water",
-        "It forms an acid and salt"
-      ],
-      "answerIndex": 0,
-      "solution": "When an acid reacts with a base, it undergoes a neutralization reaction, producing a salt and water. This is a fundamental chemical reaction where the hydrogen ions from the acid combine with hydroxide ions from the base to form water, while the remaining ions form a salt. The other options are incorrect because they do not accurately represent the products of an acid-base reaction.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एसिड और बेस के साथ अभिक्रिया के बाद क्या होता है?",
-          "choices": [
-            "यह लवण और पानी बनाता है",
-            "यह लवण और ऑक्सीजन बनाता है",
-            "यह बेस और पानी बनाता है",
-            "यह एसिड और लवण बनाता है"
-          ],
-          "solution": "जब एक एसिड बेस के साथ अभिक्रिया करता है, तो यह उदासीनीकरण अभिक्रिया के माध्यम से लवण और पानी बनाता है। यह एक मूलभूत रासायनिक अभिक्रिया है जिसमें एसिड के हाइड्रोजन आयन बेस के हाइड्रॉक्साइड आयनों के साथ जुड़कर पानी बनाते हैं, जबकि शेष आयन लवण बनाते हैं। अन्य विकल्प गलत हैं क्योंकि वे एसिड-बेस अभिक्रिया के उत्पादों का सही प्रतिनिधित्व नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms match standard Hindi textbook usage, and the question structure is preserved.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका अम्लाचा आधानाशी अभिक्रिया करताना काय होते?",
-          "choices": [
-            "ते लवण आणि पाणी तयार करते",
-            "ते लवण आणि ऑक्सीजन तयार करते",
-            "ते आधान आणि पाणी तयार करते",
-            "ते अम्ल आणि लवण तयार करते"
-          ],
-          "solution": "एका अम्लाचा आधानाशी अभिक्रिया करताना ते उदासीनीकरण अभिक्रिया करते, ज्यामुळे लवण आणि पाणी तयार होते. ही एक मूलभूत रासायनिक अभिक्रिया आहे, जेथे अम्लाचे हायड्रोजन आयॉन्स आधानाच्या हायड्रॉक्साइड आयॉन्ससह जोडून पाणी तयार करतात, तर उरलेले आयॉन्स लवण तयार करतात. इतर विकल्प अम्ल-आधान अभिक्रियेच्या उत्पादनांचे अचूक प्रतिनिधित्व करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the products of neutralisation",
-        "Mixes up the reaction products",
-        "Misunderstands the process of neutralisation"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as acids and bases neutralize each other to form a salt and water. The other options represent common misconceptions about the products of neutralization reactions.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 10,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.3 Neutralisation in Daily Life",
-            "In a Nutshell"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 11,
-          "pageStart": 14,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.3 Neutralisation in Daily Life",
-            "Let Us Enhance Our Learning"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.3 Neutralisation in Daily Life",
-            "Exploratory Projects"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:04:24.373Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In Activity 2.3, what is the purpose of crushing the red rose petals and immersing them in hot water?",
-      "choices": [
-        "To extract the colour from the petals",
-        "To prepare a solution for drinking",
-        "To create a new type of flower",
-        "To make the petals more fragrant"
-      ],
-      "answerIndex": 0,
-      "solution": "Crushing the red rose petals and immersing them in hot water allows the pigments in the petals to dissolve into the water, which is how the color is extracted. This process is used to create a solution that can change color in response to acids or bases. The other options do not align with the scientific purpose of this step.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "क्रियाकलाप 2.3 में, लाल गुलाब के पुष्पों के टुकड़े करके उन्हें गर्म पानी में डुबोने का उद्देश्य क्या है?",
-          "choices": [
-            "पुष्पों से रंग निकालना",
-            "पीने के लिए एक घोल तैयार करना",
-            "एक नई प्रकार के फूल का निर्माण करना",
-            "पुष्पों को अधिक सुगंधित बनाना"
-          ],
-          "solution": "लाल गुलाब के पुष्पों को कुचलकर उन्हें गर्म पानी में डुबोने से पुष्पों में मौजूद वर्णक पानी में घुल जाते हैं, जिससे रंग निकल जाता है। इस प्रक्रिया का उपयोग अम्ल या क्षार के प्रति रंग बदलने वाले घोल के निर्माण में किया जाता है। अन्य विकल्प इस चरण के वैज्ञानिक उद्देश्य के साथ मेल नहीं खाते।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains scientific terminology, and preserves the logical structure of the question and answer.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "क्रियाकलाप 2.3 मध्ये, लाल गुलाबाचे पाने चिरून त्यांना उबदार पाण्यात बुडवण्याचा उद्देश काय आहे?",
-          "choices": [
-            "पानांमधून रंग बाहेर काढणे",
-            "पिण्यासाठी एका द्रावणाची तयारी करणे",
-            "एक प्रकारचा फुल तयार करणे",
-            "पानांना अधिक गंधयुक्त करणे"
-          ],
-          "solution": "लाल गुलाबाचे पाने चिरून त्यांना उबदार पाण्यात बुडवल्यामुळे पानांमधील रंगद्रव्य पाण्यात विरघळतात, ज्यामुळे रंग बाहेर काढला जातो. हा प्रक्रिया एखाद्या द्रावणाची तयारी करण्यासाठी वापरली जाते, जो अम्ल किंवा क्षारांच्या प्रतिक्रियेमुळे रंग बदलतो. इतर विकल्प या टप्प्याच्या वैज्ञानिक उद्देशाशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the scientific context, and uses appropriate Marathi terminology for a textbook.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Thinks the process is for consumption",
-        "Believes it is a horticultural process",
-        "Assumes it is for scent"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies the purpose of the procedure as extracting color, and the reasons for the wrong options align with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.1 Nature — Our Science Laboratory",
-            "2.1.2 Red rose as an indicator"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.1 Nature — Our Science Laboratory",
-            "2.1.2 Red rose as an indicator"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 6,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.1 Nature — Our Science Laboratory",
-            "2.1.3 Turmeric as an indicator"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:04:24.373Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a solution turns phenolphthalein pink, which of the following must be true?",
-      "choices": [
-        "The solution is acidic",
-        "The solution is basic",
-        "The solution is neutral",
-        "The solution is a salt"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'The solution is basic' because phenolphthalein turns pink in basic solutions. The other options are incorrect because they describe solutions that do not match the colour change of phenolphthalein.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोई विलयन फीनॉल्फथेलीन को गुलाबी बना दे, तो निम्नलिखित में से कौन-सा आवश्यक रूप से सत्य होना चाहिए?",
-          "choices": [
-            "विलयन अम्लीय है",
-            "विलयन क्षारीय है",
-            "विलयन उदासीन है",
-            "विलयन लवण है"
-          ],
-          "solution": "सही उत्तर 'विलयन क्षारीय है' है क्योंकि फीनॉल्फथेलीन क्षारीय विलयन में गुलाबी हो जाता है। अन्य विकल्प गलत हैं क्योंकि वे विलयनों का वर्णन करते हैं जो फीनॉल्फथेलीन के रंग परिवर्तन के अनुरूप नहीं होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All technical terms (e.g., 'क्षारीय', 'अम्लीय', 'उदासीन', 'लवण') are standard Hindi equivalents used in textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका द्रावणाने फिनॉल्फथेलिनला गुलाबी रंग दिला, तर खालीलपैकी कोणते खात्रीने खरे असेल?",
-          "choices": [
-            "द्रावण अम्लीय आहे",
-            "द्रावण क्षारीय आहे",
-            "द्रावण उदासीन आहे",
-            "द्रावण लवण आहे"
-          ],
-          "solution": "हे बरोबर उत्तर आहे 'द्रावण क्षारीय आहे' कारण फिनॉल्फथेलिन क्षारीय द्रावणात गुलाबी रंग देते. इतर विकल्प चुकीचे आहेत कारण ते फिनॉल्फथेलिनच्या रंग बदलाशी मेळ नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the effect of phenolphthalein in acidic solutions",
-        null,
-        "Confuses the effect of phenolphthalein in neutral solutions",
-        "Confuses the effect of phenolphthalein in salt solutions"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Phenolphthalein turns pink in basic solutions and remains colorless in acidic and neutral solutions. Salt solutions can be neutral, acidic, or basic depending on the ions, but phenolphthalein does not specifically indicate salts.",
+      "critique": "The correct answer is 0, as a neutralisation reaction is indeed the reaction between an acid and a base to form salt and water. The other options are incorrect and represent common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/science/gecu102.pdf",
@@ -424,308 +869,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:04:24.373Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Which of the following statements is true about the reaction between an acid and a base?",
-      "choices": [
-        "It produces a salt and water only",
-        "It produces a salt, water, and heat",
-        "It produces a base and an acid",
-        "It produces no new substances"
-      ],
-      "answerIndex": 1,
-      "solution": "When an acid and a base react, they produce a salt, water, and heat. The correct answer is 'It produces a salt, water, and heat'. The other options describe incorrect outcomes of the reaction.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा कथन अम्ल और क्षार के अभिक्रिया के बारे में सही है?",
-          "choices": [
-            "यह केवल लवण और जल उत्पन्न करता है",
-            "यह लवण, जल और ऊष्मा उत्पन्न करता है",
-            "यह क्षार और अम्ल उत्पन्न करता है",
-            "यह कोई नए पदार्थ उत्पन्न नहीं करता"
-          ],
-          "solution": "जब एक अम्ल और क्षार अभिक्रिया करते हैं, तो वे लवण, जल और ऊष्मा उत्पन्न करते हैं। सही उत्तर 'यह लवण, जल और ऊष्मा उत्पन्न करता है' है। अन्य विकल्प अभिक्रिया के गलत परिणामों का वर्णन करते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता विधान अम्ल आणि बेसमधील प्रतिक्रियेबद्दल खरे आहे?",
-          "choices": [
-            "ते केवळ लवण आणि पाणी तयार करते",
-            "ते लवण, पाणी आणि उष्णता तयार करते",
-            "ते बेस आणि अम्ल तयार करते",
-            "ते कोणतेही नवीन पदार्थ तयार करत नाही"
-          ],
-          "solution": "जेव्हा अम्ल आणि बेस प्रतिक्रिया करतात, तेव्हा ते लवण, पाणी आणि उष्णता तयार करतात. योग्य उत्तर 'ते लवण, पाणी आणि उष्णता तयार करते' आहे. इतर विकल्प प्रतिक्रियेच्या चुकीच्या निकालांचे वर्णन करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "This would be true if the reaction produced only a salt and water, but heat is also released.",
-        null,
-        "Confusion between neutralization and reverse reactions, thinking that acid and base can be produced from each other",
-        "Student believes that neutralization does not result in any chemical change"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as acid-base reactions (neutralization) produce a salt, water, and heat. The reasoning for the other options aligns with common misconceptions among students.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.1 Nature — Our Science Laboratory",
-            "2.1.3 Turmeric as an indicator"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.2 What Happens When Acidic Substances",
-            "Mix with Basic Substances?"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.3 Neutralisation in Daily Life"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:04:24.373Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If a student tested a sample with red rose extract and it turned green, and also tested it with turmeric paper and it did not change colour, what can be concluded about the sample?",
-      "choices": [
-        "It is basic",
-        "It is acidic",
-        "It is a weak base",
-        "It is a weak acid"
-      ],
-      "answerIndex": 0,
-      "solution": "Red rose extract turns green in basic solutions, indicating the sample is basic. Turmeric paper does not change color in basic solutions, which matches the observation. If the sample were acidic, the rose extract would turn red, and if it were neutral, neither would change.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक छात्र ने लाल गुलाब के निकाय के साथ एक नमूना का परीक्षण किया और यह हरा हो गया, और उसी नमूने के साथ अदरक के कागज का परीक्षण किया और यह रंग नहीं बदला, तो नमूने के बारे में क्या निष्कर्ष निकाला जा सकता है?",
-          "choices": [
-            "यह क्षारीय है",
-            "यह अम्लीय है",
-            "यह एक कमजोर क्षार है",
-            "यह एक कमजोर अम्ल है"
-          ],
-          "solution": "लाल गुलाब के निकाय के साथ क्षारीय विलयन में हरा हो जाता है, जो नमूना के क्षारीय होने का संकेत देता है। अदरक के कागज के साथ क्षारीय विलयन में रंग नहीं बदलता है, जो अवलोकन के साथ मेल खाता है। यदि नमूना अम्लीय होता तो गुलाब के निकाय का रंग लाल हो जाता और यदि नमूना उदासीन होता तो कोई भी रंग परिवर्तन नहीं होता।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the scientific terminology, and preserves the logical structure of the question and solution.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थीने लाल गुलाबाच्या अतिरिक्ताने नमुना परीक्षित केला आणि तो हिरवा झाला, आणि त्याच नमुन्याचा चवकागदाने परीक्षण केले आणि तो रंग बदलला नाही, तर नमुन्याबद्दल काय निष्कर्ष काढता येईल?",
-          "choices": [
-            "तो आधानी आहे",
-            "तो अम्लीय आहे",
-            "तो कमी आधानी आहे",
-            "तो कमी अम्लीय आहे"
-          ],
-          "solution": "लाल गुलाबाच्या अतिरिक्ताने आधानी द्रावणांमध्ये हिरवा रंग होतो, जे नमुना आधानी असल्याचे सूचित करतो. चवकागदाने आधानी द्रावणांमध्ये रंग बदलत नाही, जे अवलोकनाशी जुळते. जर नमुना अम्लीय असता तर गुलाबाच्या अतिरिक्ताचा रंग लाल होत असता आणि जर तो उदासीन असता तर दोन्ही बदलत नसते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Student thinks red rose extract turns green in acidic solutions, confusing it with other indicators like phenolphthalein.",
-        "A student might confuse the color change of red rose extract with that of a different indicator, thinking green indicates a weak base rather than a strong base.",
-        "Student thinks that any color change implies acidity, not considering the specific color response of the indicator"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly interprets the color changes of the indicators. Red rose extract turning green indicates a basic solution, and turmeric paper not changing color also supports this. The reasoning aligns with standard acid-base indicator behavior.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.1 Nature — Our Science Laboratory",
-            "2.1.2 Red rose as an indicator"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.1 Nature — Our Science Laboratory",
-            "2.1.2 Red rose as an indicator"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 6,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.1 Nature — Our Science Laboratory",
-            "2.1.3 Turmeric as an indicator"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:04:24.373Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "A student tested a solution with litmus paper and found that it turned red. What can be concluded about the solution?",
-      "choices": [
-        "It is a base",
-        "It is an acid",
-        "It is neutral",
-        "It is a salt"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'It is an acid' because red litmus paper indicates the presence of an acid. The other options are incorrect as they do not match the observed colour change.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र ने लिटमस पेपर के साथ एक घोल का परीक्षण किया और पाया कि यह लाल हो गया। घोल के बारे में क्या निष्कर्ष निकाला जा सकता है?",
-          "choices": [
-            "यह एक क्षार है",
-            "यह एक अम्ल है",
-            "यह उदासीन है",
-            "यह एक लवण है"
-          ],
-          "solution": "सही उत्तर 'यह एक अम्ल है' है क्योंकि लाल लिटमस पेपर अम्ल की उपस्थिति को इंगित करता है। अन्य विकल्प गलत हैं क्योंकि वे प्रेक्षित रंग परिवर्तन के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थ्याने लिटमस कागदाशी एका द्रावणाचा परीक्षण केला आणि त्याने लाल होऊन गेले. द्रावणाबद्दल काय निष्कर्ष काढता येईल?",
-          "choices": [
-            "ते एक क्षार आहे",
-            "ते एक अम्ल आहे",
-            "ते उदासीन आहे",
-            "ते लवण आहे"
-          ],
-          "solution": "योग्य उत्तर 'ते एक अम्ल आहे' आहे कारण लाल लिटमस कागद अम्लाच्या उपस्थितीला सूचित करतो. इतर विकल्प अपयशी आहेत कारण ते नोंदवलेल्या रंग बदलाशी जुमानत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the effect of an acid with that of a base",
-        null,
-        "Confuses the effect of an acid with that of a neutral solution",
-        "Confuses the effect of an acid with that of a salt"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Red litmus paper indicates an acidic solution, so option 1 is correct. The other options represent common misconceptions about the behavior of litmus paper with different types of solutions.",
-      "sources": [
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.1 Nature — Our Science Laboratory",
-            "2.1.3 Turmeric as an indicator"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.2 What Happens When Acidic Substances",
-            "Mix with Basic Substances?"
-          ]
-        },
-        {
-          "document": "ncert/7/science/gecu102.pdf",
-          "ordinal": 9,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 2: Exploring Substances: Acidic, Basic, and Neutral",
-            "2.3 Neutralisation in Daily Life"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T02:04:24.373Z",
+      "generatedAt": "2026-10-29T15:45:06.634Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

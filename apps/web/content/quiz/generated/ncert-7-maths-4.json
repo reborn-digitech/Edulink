@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T01:03:26.366Z",
+  "generatedAt": "2026-10-29T14:24:41.542Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "Simplify the expression: 2y + (3y – 6).",
+      "difficulty": 5,
+      "stem": "A shop sells notebooks for ₹15 each and pens for ₹10 each. If a customer buys x notebooks and y pens, what is the total cost in rupees?",
       "choices": [
-        "5y – 6",
-        "5y + 6",
-        "–5y – 6",
-        "–5y + 6"
+        "15x + 10y",
+        "15x - 10y",
+        "10x + 15y",
+        "15x + 10y + xy"
       ],
       "answerIndex": 0,
-      "solution": "The expression 2y + (3y – 6) simplifies to 5y – 6. The terms 2y + 3y give 5y, and –6 remains. The option 5y + 6 incorrectly adds 6 instead of subtracting it. The option –5y – 6 incorrectly changes the sign of both terms. The option –5y + 6 incorrectly changes the sign of the y term but not the constant.",
+      "solution": "The correct answer is '15x + 10y'. The cost of x notebooks is 15x and the cost of y pens is 10y. The option '15x - 10y' incorrectly uses subtraction. The option '10x + 15y' reverses the coefficients. The option '15x + 10y + xy' incorrectly adds an extra term for the product of x and y.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "अभिव्यक्ति को सरल करें: 2y + (3y – 6)।",
+          "stem": "एक दुकान में नोटबुक ₹15 प्रत्येक और पेन ₹10 प्रत्येक बेचती है। यदि एक ग्राहक x नोटबुक और y पेन खरीदता है, तो रुपयों में कुल लागत क्या है?",
           "choices": [
-            "5y – 6",
-            "5y + 6",
-            "–5y – 6",
-            "–5y + 6"
+            "15x + 10y",
+            "15x - 10y",
+            "10x + 15y",
+            "15x + 10y + xy"
           ],
-          "solution": "अभिव्यक्ति 2y + (3y – 6) सरल होकर 5y – 6 बन जाती है। 2y + 3y से 5y प्राप्त होता है, और –6 बच जाता है। विकल्प 5y + 6 गलत रूप से 6 को जोड़ देता है बजाय घटाने के। विकल्प –5y – 6 गलत रूप से दोनों पदों के चिह्न को बदल देता है। विकल्प –5y + 6 गलत रूप से y पद के चिह्न को बदल देता है लेकिन अचर के चिह्न को नहीं।",
+          "solution": "सही उत्तर '15x + 10y' है। x नोटबुक की कीमत 15x है और y पेन की कीमत 10y है। विकल्प '15x - 10y' गलत रूप से घटाव का उपयोग करता है। विकल्प '10x + 15y' गुणांकों को उलट देता है। विकल्प '15x + 10y + xy' x और y के गुणन के लिए अतिरिक्त पद जोड़ देता है।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "अभिव्यक्ती सोपी करा: 2y + (3y – 6).",
+          "stem": "एका दुकानात नोटबुक्स ₹15 प्रत्येक आणि कलमे ₹10 प्रत्येक आहेत. जर एका ग्राहकाने x नोटबुक्स आणि y कलमे खरेदी केली तर रुपयांमध्ये एकूण खर्च किती असेल?",
           "choices": [
-            "5y – 6",
-            "5y + 6",
-            "–5y – 6",
-            "–5y + 6"
+            "15x + 10y",
+            "15x - 10y",
+            "10x + 15y",
+            "15x + 10y + xy"
           ],
-          "solution": "अभिव्यक्ती 2y + (3y – 6) सोपी करून 5y – 6 मिळते. 2y + 3y चे योग 5y असते आणि –6 असतो. 5y + 6 ची निवड चुकीची आहे कारण 6 चे बरोबरीत बेरीज केली जाते. –5y – 6 ची निवड चुकीची आहे कारण दोन्ही अंकांचे चिन्ह बदलले जाते. –5y + 6 ची निवड चुकीची आहे कारण y अंकाचे चिन्ह बदलले जाते परंतु स्थिरांक बदलला जात नाही.",
+          "solution": "बरोबर उत्तर '15x + 10y' आहे. x नोटबुक्सचा खर्च 15x आहे आणि y कलमांचा खर्च 10y आहे. '15x - 10y' उत्तरात चुकीचे वजाबाकी वापरली गेली आहे. '10x + 15y' उत्तरात गुणक उलटले गेले आहेत. '15x + 10y + xy' उत्तरात x आणि y च्या गुणाकाराचा अतिरिक्त पद जोडला गेला आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, structure, and technical terms. The solution explanation is correctly aligned with the options.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical expressions.",
           "flag": null
         }
       },
@@ -73,484 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "adds 6 instead of subtracting it",
-        "changes the sign of both terms",
-        "changes the sign of the y term but not the constant"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. The expression simplifies to 5y – 6 by combining like terms (2y + 3y = 5y) and keeping the constant term –6. The author's reasoning for the distractors is accurate and reflects common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 19,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 20,
-          "pageStart": 32,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 21,
-          "pageStart": 34,
-          "pageEnd": 36,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships",
-            "SUMMARY"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:03:26.366Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If the bottom middle cell of a 2 × 3 grid in a calendar has the date 'w', what expression represents the date in the cell above it?",
-      "choices": [
-        "w + 1",
-        "w - 1",
-        "w + 6",
-        "w - 7"
-      ],
-      "answerIndex": 3,
-      "solution": "In a 2 × 3 calendar grid, the date in the cell above 'w' would be 7 days earlier. So the expression is 'w - 7'. 'w + 7' would be the date below it, 'w + 1' would be the next day in the same row, and 'w - 1' would be the previous day in the same row.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कैलेंडर में 2 × 3 ग्रिड के निचले मध्य कोष्ठक में तारीख 'w' है, तो ऊपर के कोष्ठक में तारीख के लिए कौन-सा व्यंजक प्रतिनिधित्व करता है?",
-          "choices": [
-            "w + 1",
-            "w - 1",
-            "w + 6",
-            "w - 7"
-          ],
-          "solution": "2 × 3 कैलेंडर ग्रिड में 'w' के ऊपर के कोष्ठक में तारीख 7 दिन पहले होगी। इसलिए व्यंजक 'w - 7' है। 'w + 7' नीचे के कोष्ठक में तारीख होगी, 'w + 1' समान पंक्ति में अगला दिन होगा और 'w - 1' समान पंक्ति में पिछला दिन होगा।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the mathematical meaning, with appropriate Hindi terminology for calendar grid.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर कॅलेंडरमधील 2 × 3 ग्रिडच्या खालच्या मध्यमधील सेलमध्ये तारीख 'w' असेल, तर त्याच्या वरच्या सेलमधील तारीख कोणत्या अभिव्यक्तीने दर्शविली जाईल?",
-          "choices": [
-            "w + 1",
-            "w - 1",
-            "w + 6",
-            "w - 7"
-          ],
-          "solution": "2 × 3 कॅलेंडर ग्रिडमध्ये, 'w' च्या वरच्या सेलमधील तारीख 7 दिवस आधीची असेल. म्हणून अभिव्यक्ती 'w - 7' असेल. 'w + 7' ही खालच्या सेलमधील तारीख असेल, 'w + 1' ही त्या एकाच ओळीतील आगामी दिवसाची तारीख असेल आणि 'w - 1' ही त्या एकाच ओळीतील पूर्वीच्या दिवसाची तारीख असेल.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for calendar grids.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the direction of the calendar grid, thinking the cell above is the next day instead of the previous week",
-        "Confuses the direction of movement in the calendar grid, thinking the cell above is the previous day instead of the same day of the week.",
-        "Confuses the number of days in a week with 6 instead of 7",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. In a 2×3 calendar grid, the cell above 'w' is exactly 7 days earlier, so the correct expression is 'w - 7'. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.1 The Notion of Letter-Numbers"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.3 Omission of the Multiplication Symbol in",
-            "Algebraic Expressions"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.4 Simplification of Algebraic Expressions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:03:26.366Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the perimeter of a square with a side length of 7 cm?",
-      "choices": [
-        "7 cm",
-        "14 cm",
-        "21 cm",
-        "28 cm"
-      ],
-      "answerIndex": 3,
-      "solution": "The perimeter of a square is calculated by multiplying the length of one side by four. For a side length of 7 cm, 4 × 7 equals 28 cm. The other options do not result from this correct calculation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक वर्ग की परिमाप क्या है जिसकी भुजा की लंबाई 7 सेमी है?",
-          "choices": [
-            "7 सेमी",
-            "14 सेमी",
-            "21 सेमी",
-            "28 सेमी"
-          ],
-          "solution": "एक वर्ग की परिमाप एक भुजा की लंबाई को चार से गुणा करके निकाला जाता है। 7 सेमी की भुजा के लिए, 4 × 7 बराबर 28 सेमी होता है। अन्य विकल्प इस सही गणना से प्राप्त नहीं होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका चौरसाचा परिमाण किती असेल ज्याच्या बाजूची लांबी 7 सेमी आहे?",
-          "choices": [
-            "7 सेमी",
-            "14 सेमी",
-            "21 सेमी",
-            "28 सेमी"
-          ],
-          "solution": "एका चौरसाचा परिमाण एका बाजूच्या लांबीला चारने गुणून काढला जातो. 7 सेमी बाजूच्या लांबीसाठी, 4 × 7 चे मूल्य 28 सेमी असते. इतर विकल्पांमधून ही योग्य गणना मिळत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "uses side length instead of perimeter",
-        "multiplies by 2 instead of 4",
-        "multiplies by 3 instead of 4",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward and the solution is correct. The perimeter of a square is 4 times the side length, so 4 × 7 = 28 cm. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.1 The Notion of Letter-Numbers"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.1 The Notion of Letter-Numbers"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.1 The Notion of Letter-Numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:03:26.366Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In a 3×3 grid, the sum of the numbers is 5a, where a is the center number. What is the sum of the numbers in the grid if the center number is 10?",
-      "choices": [
-        "50",
-        "25",
-        "10",
-        "20"
-      ],
-      "answerIndex": 0,
-      "solution": "The sum of the numbers in the grid is 5a, where a is the center number. If a is 10, the sum is 5 × 10 = 50. The option 25 incorrectly divides the value by 2. The option 10 incorrectly uses the center number directly. The option 20 incorrectly multiplies by 2 instead of 5.",
-      "checkExpr": "5*10",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "3×3 ग्रिड में संख्याओं का योग 5a है, जहां a केंद्रीय संख्या है। यदि केंद्रीय संख्या 10 है तो ग्रिड में संख्याओं का योग क्या है?",
-          "choices": [
-            "50",
-            "25",
-            "10",
-            "20"
-          ],
-          "solution": "ग्रिड में संख्याओं का योग 5a है, जहां a केंद्रीय संख्या है। यदि a 10 है, तो योग 5 × 10 = 50 है। विकल्प 25 गलती से मान को 2 से विभाजित कर देता है। विकल्प 10 गलती से केंद्रीय संख्या का सीधे उपयोग कर देता है। विकल्प 20 गलती से 5 के बजाय 2 से गुणा कर देता है।",
-          "imageAlt": "3x3 ग्रिड जिसमें केंद्रीय संख्या 'a' अंकित है।",
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology common in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "3×3 चौकटीत संख्यांची बेरीज 5a आहे, जेथे a केंद्रीय संख्या आहे. केंद्रीय संख्या 10 असल्यास चौकटीतील संख्यांची बेरीज किती असेल?",
-          "choices": [
-            "50",
-            "25",
-            "10",
-            "20"
-          ],
-          "solution": "चौकटीतील संख्यांची बेरीज 5a आहे, जेथे a केंद्रीय संख्या आहे. जर a 10 असेल तर बेरीज 5 × 10 = 50 असेल. विकल्प 25 चूकीने मूल्याला 2 ने भागले आहे. विकल्प 10 चूकीने केंद्रीय संख्या वापरली आहे. विकल्प 20 चूकीने 2 ने गुणले आहे आणि 5 ने गुणले जाणार नाही.",
-          "imageAlt": "3x3 चौकटीत केंद्रीय संख्या 'a' ने चिन्हांकित केलेली आहे.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A 3x3 grid with the center number labeled as 'a'.",
-      "figure": {
-        "kind": "geometry",
-        "spec": {
-          "frame": {
-            "xMin": 0,
-            "xMax": 3,
-            "yMin": 0,
-            "yMax": 3,
-            "unit": "units"
-          },
-          "points": [
-            {
-              "id": "A",
-              "x": 1,
-              "y": 1,
-              "label": "a"
-            },
-            {
-              "id": "B",
-              "x": 2,
-              "y": 1
-            },
-            {
-              "id": "C",
-              "x": 1,
-              "y": 2
-            },
-            {
-              "id": "D",
-              "x": 2,
-              "y": 2
-            }
-          ],
-          "segments": [
-            {
-              "from": "A",
-              "to": "B",
-              "kind": "segment"
-            },
-            {
-              "from": "A",
-              "to": "C",
-              "kind": "segment"
-            },
-            {
-              "from": "B",
-              "to": "D",
-              "kind": "segment"
-            },
-            {
-              "from": "C",
-              "to": "D",
-              "kind": "segment"
-            }
-          ],
-          "polygons": [
-            {
-              "vertices": [
-                "A",
-                "B",
-                "D",
-                "C"
-              ],
-              "shade": false
-            }
-          ],
-          "circles": [],
-          "arcs": [],
-          "angles": [],
-          "texts": []
-        },
-        "labels": {
-          "a": {
-            "en": "center number"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        null,
-        "divides the value by 2",
-        "uses the center number directly",
-        "multiplies by 2 instead of 5"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward. The sum of the grid is given as 5a, and with a = 10, the sum is 5 × 10 = 50. The author's solution and reasoning for the distractors are accurate and reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 19,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 20,
-          "pageStart": 32,
-          "pageEnd": 34,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 21,
-          "pageStart": 34,
-          "pageEnd": 36,
-          "headingPath": [
-            "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships",
-            "SUMMARY"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:03:26.366Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the total amount paid by the shopkeeper for renting chairs and tables is 40x + 75y and the amount returned is 6x + 10y, what is the simplified expression for the total amount paid?",
-      "choices": [
-        "34x + 65y",
-        "34x + 75y",
-        "40x + 65y",
-        "34x - 65y"
-      ],
-      "answerIndex": 0,
-      "solution": "The total amount paid is (40x + 75y) – (6x + 10y). Simplifying this, we get 40x – 6x = 34x and 75y – 10y = 65y. So the simplified form is 34x + 65y. The other options incorrectly simplify the expression.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि दुकानदार द्वारा कुर्सियों और मेजों के किराए के लिए कुल भुगतान की गई राशि 40x + 75y है और वापस की गई राशि 6x + 10y है, तो कुल भुगतान के लिए सरलीकृत अभिव्यक्ति क्या है?",
-          "choices": [
-            "34x + 65y",
-            "34x + 75y",
-            "40x + 65y",
-            "34x - 65y"
-          ],
-          "solution": "कुल भुगतान (40x + 75y) – (6x + 10y) है। इसको सरल करने पर, हमें 40x – 6x = 34x और 75y – 10y = 65y प्राप्त होता है। अतः सरल रूप 34x + 65y है। अन्य विकल्प अभिव्यक्ति को गलत तरीके से सरल करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दुकानदाराने कुर्सी आणि मेज घेतल्यासाठी भरलेला एकूण रक्कम 40x + 75y आहे आणि त्यापैकी 6x + 10y रक्कम परत करण्यात आली आहे, तर एकूण रक्कम सोपीकरणाचे समीकरण काय आहे?",
-          "choices": [
-            "34x + 65y",
-            "34x + 75y",
-            "40x + 65y",
-            "34x - 65y"
-          ],
-          "solution": "एकूण रक्कम ही (40x + 75y) – (6x + 10y) आहे. याचे सोपीकरण करून, आपणास 40x – 6x = 34x आणि 75y – 10y = 65y मिळते. म्हणून सोपे रूप 34x + 65y आहे. इतर विकल्प चुकीचे समीकरण सोपे करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for algebraic expressions.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "incorrectly subtracts 6x but adds 10y",
-        "adds 10y instead of subtracting",
-        "adds 6x instead of subtracting"
+        "incorrectly uses subtraction",
+        "reverses the coefficients",
+        "incorrectly adds an extra term"
       ],
       "solverAnswers": [
         0,
@@ -560,7 +85,108 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The total amount paid is obtained by subtracting the returned amount from the total paid, resulting in 34x + 65y. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
+      "critique": "The correct answer is 15x + 10y, as it correctly represents the cost of x notebooks at ₹15 each and y pens at ₹10 each. The other options contain common misconceptions such as using subtraction, reversing coefficients, or adding an unnecessary term.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 19,
+          "pageStart": 30,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 20,
+          "pageStart": 32,
+          "pageEnd": 34,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp104.pdf",
+          "ordinal": 21,
+          "pageStart": 34,
+          "pageEnd": 36,
+          "headingPath": [
+            "Chapter 4: Expressions Using Letter-Numbers",
+            "4.5 Pick Patterns and Reveal Relationships",
+            "SUMMARY"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T14:24:41.542Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If 5c + 3c + 10c is simplified, what is the result?",
+      "choices": [
+        "18c",
+        "15c",
+        "10c",
+        "5c"
+      ],
+      "answerIndex": 0,
+      "solution": "The expression 5c + 3c + 10c combines like terms by adding the coefficients of c. 5 + 3 + 10 equals 18, so the simplified form is 18c. The other options incorrectly add or omit some coefficients.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 5c + 3c + 10c को सरल किया जाए, तो परिणाम क्या होगा?",
+          "choices": [
+            "18c",
+            "15c",
+            "10c",
+            "5c"
+          ],
+          "solution": "अभिव्यक्ति 5c + 3c + 10c में c के गुणांकों को जोड़कर समान पदों को संयोजित किया जाता है। 5 + 3 + 10 का योग 18 होता है, अतः सरल रूप 18c होता है। अन्य विकल्प गलती से कुछ गुणांकों को जोड़ते या छोड़ देते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "5c + 3c + 10c सोपा केल्यास, निकाल काय असेल?",
+          "choices": [
+            "18c",
+            "15c",
+            "10c",
+            "5c"
+          ],
+          "solution": "5c + 3c + 10c या व्यंजकामध्ये c च्या गुणकांची बेरीज करून समान पद जोडले जातात. 5 + 3 + 10 ची बेरीज 18 असते, त्यामुळे सोपे केलेले रूप 18c असते. इतर विकल्पांमध्ये गुणकांची बेरीज किंवा नकार केला जातो.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "adds 5 + 3 + 10 incorrectly as 15",
+        "ignores the 10 and adds only 5 + 3",
+        "takes the value of the smallest term, 10c, as the result instead of summing all terms"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The coefficients 5, 3, and 10 are correctly added to give 18, resulting in 18c. The author's explanations for the distractors are valid misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp104.pdf",
@@ -594,61 +220,80 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:03:26.366Z",
+      "generatedAt": "2026-10-29T14:24:41.542Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "In a sequence, the number of matchsticks placed horizontally at the yth step is y, and the number of matchsticks placed diagonally is y + 1. If the total number of matchsticks is 2y + 1, what is the total number of matchsticks at the 10th step?",
+      "stem": "If the number of matchsticks in Step y is given by 2y + 1, how many matchsticks are there in Step 33?",
       "choices": [
-        "21",
-        "20",
-        "19",
-        "22"
+        "67",
+        "65",
+        "63",
+        "61"
       ],
       "answerIndex": 0,
-      "solution": "At the 10th step, the horizontal matchsticks are 10, and the diagonal matchsticks are 11. The total is 10 + 11 = 21. The option 20 incorrectly adds 10 and 10. The option 19 incorrectly subtracts 1. The option 22 incorrectly adds 10 and 12.",
-      "checkExpr": "10+11",
+      "solution": "The correct answer is 67. Substituting y = 33 into the expression 2y + 1 gives 2 × 33 + 1 = 66 + 1 = 67. The option 65 incorrectly subtracts 1 instead of adding. The option 63 incorrectly multiplies 33 by 2 and subtracts 3. The option 61 incorrectly multiplies 33 by 2 and subtracts 5.",
+      "checkExpr": "2*33+1",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक अनुक्रम में, y वें चरण में रखे गए मैच की छड़ों की संख्या क्षैतिज रूप से y है, और विकर्ण में रखे गए मैच की छड़ों की संख्या y + 1 है। यदि मैच की छड़ों की कुल संख्या 2y + 1 है, तो 10 वें चरण पर मैच की छड़ों की कुल संख्या क्या है?",
+          "stem": "यदि चरण y में मैचस्टिक की संख्या 2y + 1 द्वारा दी गई है, तो चरण 33 में कितनी मैचस्टिक हैं?",
           "choices": [
-            "21",
-            "20",
-            "19",
-            "22"
+            "67",
+            "65",
+            "63",
+            "61"
           ],
-          "solution": "10 वें चरण पर क्षैतिज मैच की छड़ें 10 हैं, और विकर्ण मैच की छड़ें 11 हैं। कुल संख्या 10 + 11 = 21 है। विकल्प 20 गलती से 10 और 10 को जोड़ता है। विकल्प 19 गलती से 1 घटाता है। विकल्प 22 गलती से 10 और 12 को जोड़ता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for mathematical concepts.",
+          "solution": "सही उत्तर 67 है। व्यंजक 2y + 1 में y = 33 की जगह रखने पर 2 × 33 + 1 = 66 + 1 = 67 प्राप्त होता है। विकल्प 65 में गलती से 1 घटाया गया है। विकल्प 63 में गलती से 33 को 2 से गुणा करके 3 घटा दिया गया है। विकल्प 61 में गलती से 33 को 2 से गुणा करके 5 घटा दिया गया है।",
+          "imageAlt": "एक संख्या रेखा जो 67 के मान को दर्शाती है।",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for mathematical expressions.",
           "flag": null
         },
         "mr": {
-          "stem": "अनुक्रमात, y व्या टप्प्यावर ठेवलेल बाजूस ठेवलेल तासांची संख्या y आहे आणि तिरकस ठेवलेल तासांची संख्या y + 1 आहे. जर एकूण तासांची संख्या 2y + 1 असेल, तर 10 व्या टप्प्यावर एकूण तासांची संख्या किती असेल?",
+          "stem": "जर y च्या टप्प्यात तासे च्या संख्या 2y + 1 ने दाखवली गेली असेल, तर टप्पा 33 मध्ये किती तासे असतील?",
           "choices": [
-            "21",
-            "20",
-            "19",
-            "22"
+            "67",
+            "65",
+            "63",
+            "61"
           ],
-          "solution": "10 व्या टप्प्यावर, बाजूस ठेवलेल तास 10 असतात आणि तिरकस ठेवलेल तास 11 असतात. एकूण 10 + 11 = 21 असतो. 20 ची चूक असे आहे की 10 आणि 10 जोडले जातात. 19 ची चूक असे आहे की 1 वजा केला जातो. 22 ची चूक असे आहे की 10 आणि 12 जोडले जातात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "solution": "बरोबर उत्तर 67 आहे. 2y + 1 च्या अभिव्यक्तीमध्ये y = 33 ची बदली करण्याने 2 × 33 + 1 = 66 + 1 = 67 मिळते. 65 चे उत्तर चुकीचे असते कारण 1 जोडल्याऐवजी 1 वजा केला गेला आहे. 63 चे उत्तर चुकीचे असते कारण 33 ला 2 ने गुणल्यानंतर 3 वजा केला गेला आहे. 61 चे उत्तर चुकीचे असते कारण 33 ला 2 ने गुणल्यानंतर 5 वजा केला गेला आहे.",
+          "imageAlt": "संख्या रेषेवर 67 ची किंमत दाखवली गेली आहे.",
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for matchsticks ('तासे') and mathematical operations.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "imageAlt": "A number line showing the value 67.",
+      "figure": {
+        "kind": "numberline",
+        "spec": {
+          "min": 0,
+          "max": 100,
+          "step": 10,
+          "points": [
+            {
+              "value": 67,
+              "label": "67",
+              "open": false
+            }
+          ]
+        },
+        "labels": {
+          "67": {
+            "en": "67"
+          }
+        }
+      },
+      "needsFigure": true,
       "distractorReason": [
         null,
-        "adds 10 and 10 instead of 10 and 11",
-        "subtracts 1 from the correct total",
-        "adds 10 and 12 instead of 10 and 11"
+        "subtracts 1 instead of adding",
+        "multiplies 33 by 2 and subtracts 3",
+        "multiplies 33 by 2 and subtracts 5"
       ],
       "solverAnswers": [
         0,
@@ -658,86 +303,83 @@
         0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward. The total number of matchsticks is given as 2y + 1, and at the 10th step, this evaluates to 21. The author's solution and reasoning are accurate.",
+      "critique": "The solution is correct. Substituting y = 33 into 2y + 1 gives 67. The author's reasoning for the distractors is plausible and reflects common student errors.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 19,
-          "pageStart": 30,
-          "pageEnd": 32,
+          "ordinal": 12,
+          "pageStart": 18,
+          "pageEnd": 20,
           "headingPath": [
             "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships",
-            "SUMMARY"
+            "4.5 Pick Patterns and Reveal Relationships"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 20,
-          "pageStart": 32,
-          "pageEnd": 34,
+          "ordinal": 13,
+          "pageStart": 20,
+          "pageEnd": 21,
           "headingPath": [
             "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships",
-            "SUMMARY"
+            "4.5 Pick Patterns and Reveal Relationships"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 21,
-          "pageStart": 34,
-          "pageEnd": 36,
+          "ordinal": 14,
+          "pageStart": 21,
+          "pageEnd": 22,
           "headingPath": [
             "Chapter 4: Expressions Using Letter-Numbers",
-            "4.5 Pick Patterns and Reveal Relationships",
-            "SUMMARY"
+            "4.5 Pick Patterns and Reveal Relationships"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:03:26.366Z",
+      "generatedAt": "2026-10-29T14:24:41.542Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "What is the value of the expression 5m + 3 when m = 2?",
+      "stem": "Which of the following expressions cannot be simplified further?",
       "choices": [
-        "13",
-        "10",
-        "15",
-        "11"
+        "18c + 11d",
+        "5c + 3c + 10c = 18",
+        "4v + 3v = 7",
+        "12n – 4n = 8"
       ],
       "answerIndex": 0,
-      "solution": "When m = 2, substitute into the expression: 5m + 3 = 5 × 2 + 3 = 10 + 3 = 13. '10' is 5m without adding 3, '15' adds 5 instead of multiplying, and '11' adds 1 instead of 3.",
-      "checkExpr": "5*2+3",
+      "solution": "The expression 18c + 11d has unlike terms, so it cannot be simplified further. The other options have like terms that can be combined. Option 2 simplifies to 18c, option 3 to 7v, and option 4 to 8n.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "अभिव्यक्ति 5m + 3 का मान क्या है जब m = 2?",
+          "stem": "निम्नलिखित में से कौन-सा व्यंजक आगे सरल नहीं किया जा सकता?",
           "choices": [
-            "13",
-            "10",
-            "15",
-            "11"
+            "18c + 11d",
+            "5c + 3c + 10c = 18",
+            "4v + 3v = 7",
+            "12n – 4n = 8"
           ],
-          "solution": "जब m = 2 होता है, तो अभिव्यक्ति में प्रतिस्थापित करें: 5m + 3 = 5 × 2 + 3 = 10 + 3 = 13। '10' 5m के बिना 3 जोड़े जाने के कारण है, '15' गुणा के बजाय 5 जोड़े जाने के कारण है, और '11' 3 के बजाय 1 जोड़े जाने के कारण है।",
+          "solution": "व्यंजक 18c + 11d में असमान पद हैं, इसलिए इसे आगे सरल नहीं किया जा सकता। अन्य विकल्पों में समान पद हैं जिन्हें संयोजित किया जा सकता है। विकल्प 2 को 18c में सरल किया जा सकता है, विकल्प 3 को 7v में और विकल्प 4 को 8n में।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "5m + 3 व्यंजकाची किंमत किती आहे जेव्हा m = 2?",
+          "stem": "खालीलपैकी कोणता व्यंजक आणखी सोपा करता येणार नाही?",
           "choices": [
-            "13",
-            "10",
-            "15",
-            "11"
+            "18c + 11d",
+            "5c + 3c + 10c = 18",
+            "4v + 3v = 7",
+            "12n – 4n = 8"
           ],
-          "solution": "जेव्हा m = 2, व्यंजकात बदल करा: 5m + 3 = 5 × 2 + 3 = 10 + 3 = 13. '10' ही 5m ची किंमत आहे जेव्हा 3 मिळवलेला नाही, '15' ही 5 ने गुणले जाऊ शकत नाही आणि 3 मिळवला जातो, आणि '11' ही 3 ऐवजी 1 मिळवला जातो.",
+          "solution": "18c + 11d व्यंजकामध्ये विषम पद आहेत, म्हणून तो आणखी सोपा करता येणार नाही. इतर विकल्पांमध्ये सम पद आहेत जे जोडता येतात. विकल्प 2 चे सोपे करून 18c मिळते, विकल्प 3 चे 7v आणि विकल्प 4 चे 8n मिळते.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -747,9 +389,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "omits the constant term",
-        "adds instead of multiplies",
-        "adds an incorrect constant"
+        "Student incorrectly simplifies the expression by adding coefficients but forgets to include the variable.",
+        "Student incorrectly combines variables and constants, thinking that 4v + 3v equals 7 instead of 7v.",
+        "Student incorrectly simplifies 12n - 4n as 8 instead of 8n"
       ],
       "solverAnswers": [
         0,
@@ -759,34 +401,33 @@
         0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the key. The reasoning for the distractors aligns with common student misconceptions.",
+      "critique": "The correct answer is 0 (18c + 11d) because it contains unlike terms and cannot be simplified. The other options have like terms that can be combined, but they are incorrectly simplified in the options (e.g., 5c + 3c + 10c = 18 instead of 18c). The author's reasoning for the wrong options aligns with common student misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 6,
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 10,
           "headingPath": [
             "Chapter 4: Expressions Using Letter-Numbers",
-            "4.1 The Notion of Letter-Numbers"
+            "4.4 Simplification of Algebraic Expressions"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 7,
+          "ordinal": 7,
+          "pageStart": 10,
+          "pageEnd": 11,
           "headingPath": [
             "Chapter 4: Expressions Using Letter-Numbers",
-            "4.3 Omission of the Multiplication Symbol in",
-            "Algebraic Expressions"
+            "4.4 Simplification of Algebraic Expressions"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp104.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 8,
+          "ordinal": 8,
+          "pageStart": 12,
+          "pageEnd": 13,
           "headingPath": [
             "Chapter 4: Expressions Using Letter-Numbers",
             "4.4 Simplification of Algebraic Expressions"
@@ -794,7 +435,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:03:26.366Z",
+      "generatedAt": "2026-10-29T14:24:41.542Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

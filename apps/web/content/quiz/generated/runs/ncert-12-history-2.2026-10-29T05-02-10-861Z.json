@@ -1,0 +1,797 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T05:02:10.861Z",
+  "finishedAt": "2026-10-29T05:10:32.465Z",
+  "seconds": 502,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Themes in Indian History-I",
+    "bookCode": "lehs1",
+    "document": "ncert/12/history/lehs102.pdf",
+    "classLevel": 12,
+    "subject": "History",
+    "chapter": "Chapter 2 — Kings, Farmers and Towns",
+    "edition": "Reprint 2026-27",
+    "chunks": 30,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII History, sample question paper, 2025-26]\n16. The __________ were most powerful in North Bengal, although rich peasants and 1\nvillage headmen were emerging as commanding figures in the countryside in other\nparts of Bengal as well.\nA. Zamindars\nB. Jotedars\nC. Taluqdars\nD. Ryots",
+      "[CBSE Class XII History, sample question paper, 2025-26]\n25. What was the condition of an average peasant of North India during the seventeenth 3\ncentury?",
+      "[CBSE Class XII History, sample question paper, 2026-27]\n28. A Explain how land grants provide some insight into the relationship between cultivators 8\nand the state.\nOR\n28. B How has the study of coins helped the Numismatists to reconstruct possible\ncommercial networks?",
+      "[CBSE Class XII History, sample question paper, 2022-23]\n26. “The power of the Jotedars was more effective than that of the zamindars. 3\nJustify the statement with suitable arguments."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 177810,
+      "in": 42,
+      "out": 41,
+      "rejects": 1,
+      "promptTokens": 40608,
+      "completionTokens": 10066
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 296063,
+      "in": 41,
+      "out": 28,
+      "rejects": 13,
+      "promptTokens": 22296,
+      "completionTokens": 8466
+    },
+    "solver": {
+      "calls": 203,
+      "ms": 110335,
+      "in": 28,
+      "out": 24,
+      "rejects": 4,
+      "promptTokens": 42273,
+      "completionTokens": 2355
+    },
+    "form": {
+      "calls": 14,
+      "ms": 56890,
+      "in": 24,
+      "out": 9,
+      "rejects": 15,
+      "promptTokens": 9047,
+      "completionTokens": 1358
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 7,
+      "ms": 1292,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 432718,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 22051,
+      "completionTokens": 12372
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the mahajanapadas?",
+      "ms": {
+        "draft": 5901,
+        "critique": 4547,
+        "solver": 1140,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a historian finds an inscription in Prakrit that mentions a king named Asoka, which of the following can they infer?",
+      "ms": {
+        "draft": 5901,
+        "critique": 4951,
+        "solver": 1483,
+        "form": 3019
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that some mahajanapadas were ruled by oligarchies. Which of the following best explains why this might be a significant finding for historians?",
+      "ms": {
+        "draft": 5901,
+        "critique": 9400,
+        "solver": 1491,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a historian finds an inscription that mentions a king who was a Kshatriya, which of the following would be the most logical conclusion?",
+      "ms": {
+        "draft": 5901,
+        "critique": 9218,
+        "solver": 1282,
+        "form": 3612
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main reason given by modern historians for the rise of Magadha?",
+      "ms": {
+        "draft": 4509,
+        "critique": 6801
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary purpose of the passage?",
+      "ms": {
+        "draft": 5901,
+        "critique": 6518,
+        "solver": 1449,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a new area in South India was found to have a large number of Asokan inscriptions, what could be inferred about that area?",
+      "ms": {
+        "draft": 4509,
+        "critique": 6413
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why was the lion capital of Ashoka considered important?",
+      "ms": {
+        "draft": 4509,
+        "critique": 5704,
+        "solver": 18824,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what was the main reason for the Mauryan Empire not encompassing the entire subcontinent?",
+      "ms": {
+        "draft": 3564,
+        "critique": 6984,
+        "solver": 1515,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, how did the Mauryan Empire attempt to ensure the well-being of its people?",
+      "ms": {
+        "draft": 3564,
+        "critique": 6743,
+        "solver": 1815,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which group is described in the passage as having claimed divine status?",
+      "ms": {
+        "draft": 3822,
+        "critique": 5580
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why did people bring gifts to the king according to the passage?",
+      "ms": {
+        "draft": 3822,
+        "critique": 5827,
+        "solver": 1277,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between kings and their subjects?",
+      "ms": {
+        "draft": 3822,
+        "critique": 5749,
+        "solver": 1560,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage imply about the role of samantas in the Gupta Empire?",
+      "ms": {
+        "draft": 3822,
+        "critique": 5993,
+        "solver": 1072,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the purpose of the Jataka stories?",
+      "ms": {
+        "draft": 3822,
+        "critique": 5948,
+        "solver": 1660,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of agriculture was suited for hilly tracts in the north and central parts of the subcontinent?",
+      "ms": {
+        "draft": 13238,
+        "critique": 6119
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, which of the following was a product that was exported from the subcontinent?",
+      "ms": {
+        "draft": 4909,
+        "critique": 4295
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what can be concluded about the relationship between cultivators and the state?",
+      "ms": {
+        "draft": 3308,
+        "critique": 5142,
+        "solver": 1677,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a common feature between the coins discussed in the passage and the currency notes in circulation today?",
+      "ms": {
+        "draft": 3308,
+        "critique": 5571,
+        "solver": 1932,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what was the significance of the Asokan inscriptions?",
+      "ms": {
+        "draft": 3308,
+        "critique": 6115,
+        "solver": 1685
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the king whose anguish is mentioned in the passage?",
+      "ms": {
+        "draft": 3447,
+        "critique": 7065
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about inscriptions and their ability to reveal history?",
+      "ms": {
+        "draft": 3447,
+        "critique": 6594
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following would be a valid conclusion based on the passage?",
+      "ms": {
+        "draft": 3447,
+        "critique": 6641
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the study of inscriptions and the perspective of the people who commissioned them?",
+      "ms": {
+        "draft": 3447,
+        "critique": 5729
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is mentioned in the passage as a source for further reading?",
+      "ms": {
+        "draft": 3308,
+        "critique": 6716,
+        "solver": 14395
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what is one reason why historians may question old and new evidence?",
+      "ms": {
+        "draft": 3447,
+        "critique": 4975
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage imply about the limitations of using inscriptions to understand the past?",
+      "ms": {
+        "draft": 3447,
+        "critique": 5063
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following was NOT a reason for historians to study coins?",
+      "ms": {
+        "draft": 2899,
+        "critique": 6348
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the decline in gold coin finds from the sixth century onwards?",
+      "ms": {
+        "draft": 2899,
+        "critique": 6476
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why might some historians think that the decline in gold coin finds indicates an economic crisis?",
+      "ms": {
+        "draft": 2899,
+        "critique": 5574,
+        "solver": 1385
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which script was used in most Asokan inscriptions?",
+      "ms": {
+        "draft": 2899,
+        "critique": 5358,
+        "solver": 11589,
+        "form": 3017
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following was NOT a benefit granted to the village in the charter?",
+      "ms": {
+        "draft": 4588,
+        "critique": 5617,
+        "solver": 7534
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the Greek accounts about the Mauryan ruler's standing army of 600,000 were true, what kinds of resources would the Mauryan ruler have needed to maintain such a large army?",
+      "ms": {
+        "draft": 3564,
+        "critique": 6645,
+        "solver": 1608,
+        "form": 4384
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the capital of Magadha that was later shifted to Pataliputra?",
+      "ms": {
+        "draft": 4509,
+        "critique": 7428,
+        "solver": 14701,
+        "form": 3566,
+        "translation": 32635
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a reason why historians study inscriptions?",
+      "ms": {
+        "draft": 5901,
+        "critique": 5365,
+        "solver": 15197,
+        "form": 0,
+        "translation": 67020
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following was NOT a responsibility of the subcommittee that managed transport and provisions in the Mauryan Empire?",
+      "ms": {
+        "draft": 3564,
+        "critique": 6596,
+        "solver": 1759,
+        "form": 2630,
+        "translation": 50281
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be inferred about the role of inscriptions in understanding ancient Indian history?",
+      "ms": {
+        "draft": 3308,
+        "critique": 4865,
+        "solver": 1212,
+        "form": 4177,
+        "translation": 55182
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of the Mauryan Empire's administrative efforts?",
+      "ms": {
+        "draft": 3564,
+        "critique": 6121,
+        "solver": 1642,
+        "form": 2295,
+        "translation": 50103
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a new set of inscriptions were discovered in a region not mentioned in the Asokan inscriptions, what might be the most likely reason for this?",
+      "ms": {
+        "draft": 4509,
+        "critique": 6417,
+        "solver": 18527,
+        "form": 3368,
+        "translation": 64636
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why epigraphists consider inscriptions to be a valuable source of historical information?",
+      "ms": {
+        "draft": 3308,
+        "critique": 6254,
+        "solver": 1261,
+        "form": 4707,
+        "translation": 48503
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why did historians believe that administrative control was strongest near the capital and provincial centers?",
+      "ms": {
+        "draft": 4509,
+        "critique": 8244,
+        "solver": 15024,
+        "form": 2894,
+        "translation": 58995
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What was the role of the dhamma mahamatta in the Mauryan Empire?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the mahajanapadas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Mistakenly assumes that all were oligarchies, whereas the pa…\"); distractor 3's reason is not a one-line misconception (\"Believes the mahajanapadas did not last long, but the passag…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a historian finds an inscription in Prakrit that mentions a king named Asoka, which of the following can they infer?",
+      "reason": "figure: figure spec refused: spec.parts: beaker has no label \"Asoka\" (it has beaker, liquid)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that some mahajanapadas were ruled by oligarchies. Which of the following best explains why this might be a significant finding for historians?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Believes that oligarchies suggest a lack of independence, wh…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a historian finds an inscription that mentions a king who was a Kshatriya, which of the following would be the most logical conclusion?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'text'"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What was the main reason given by modern historians for the rise of Magadha?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary purpose of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Confuses the passage's content with religious history…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes the passage is about script deciphering…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a new area in South India was found to have a large number of Asokan inscriptions, what could be inferred about that area?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, why was the lion capital of Ashoka considered important?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what was the main reason for the Mauryan Empire not encompassing the entire subcontinent?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misinterpreting the passage's statement about uniform contro…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, how did the Mauryan Empire attempt to ensure the well-being of its people?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which group is described in the passage as having claimed divine status?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why did people bring gifts to the king according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the purpose of gifts as payment of taxes, whic…\"); distractor 2's reason is not a one-line misconception (\"Confuses the purpose of gifts with requesting land, which is…\"); distractor 3's reason is not a one-line misconception (\"Confuses the purpose of gifts with seeking protection, which…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between kings and their subjects?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Incorrectly assumes that the relationship was always peacefu…\"); distractor 2's reason is not a one-line misconception (\"Misunderstands the relationship as based on mutual respect, …\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the relationship as being controlled by the sa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage imply about the role of samantas in the Gupta Empire?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the role of samantas as the main rulers, which…\"); distractor 2's reason is not a one-line misconception (\"Confuses the role of samantas with being responsible for irr…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that samantas were the main source of ta…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the purpose of the Jataka stories?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the purpose of Jataka stories as recording the…\"); distractor 2's reason is not a one-line misconception (\"Confuses the purpose of Jataka stories with describing the l…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the purpose of Jataka stories as promoting re…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What type of agriculture was suited for hilly tracts in the north and central parts of the subcontinent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, which of the following was a product that was exported from the subcontinent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, what can be concluded about the relationship between cultivators and the state?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a common feature between the coins discussed in the passage and the currency notes in circulation today?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, what was the significance of the Asokan inscriptions?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the king whose anguish is mentioned in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage suggest about inscriptions and their ability to reveal history?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following would be a valid conclusion based on the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage say about the study of inscriptions and the perspective of the people who commissioned them?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is mentioned in the passage as a source for further reading?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Based on the passage, what is one reason why historians may question old and new evidence?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What does the passage imply about the limitations of using inscriptions to understand the past?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following was NOT a reason for historians to study coins?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the decline in gold coin finds from the sixth century onwards?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why might some historians think that the decline in gold coin finds indicates an economic crisis?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which script was used in most Asokan inscriptions?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which of the following was NOT a benefit granted to the village in the charter?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If the Greek accounts about the Mauryan ruler's standing army of 600,000 were true, what kinds of resources would the Mauryan ruler have needed to maintain such a large army?",
+      "reason": "near-duplicate of served question cmvieb5zl0crsgpfho1g1a2y1 (cosine 0.922 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

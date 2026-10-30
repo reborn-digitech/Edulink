@@ -1,0 +1,735 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T14:52:51.105Z",
+  "finishedAt": "2026-10-24T15:02:24.378Z",
+  "seconds": 573,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu102.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 2 — Exploring Substances: Acidic, Basic, and Neutral",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2022-23]\n6. Anita added a drop each of diluted acetic acid and diluted hydrochloric acid on pH paper 1\nand compared the colors. Which of the following is the correct conclusion?\n(a) pH of acetic acid is more than that of hydrochloric acid.\n(b) pH of acetic acid is less than that of hydrochloric acid.\n(c) Acetic acid dissociates completely in aqueous solution.\n(d) Acetic acid is a strong acid",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n4. An aqueous solution ‘A’ turns the phenolphthalein solution pink. On addition of\nan aqueous solution ‘B’ to ‘A’, the pink colour disappears. Which of the following 1\nstatement is true for the solutions ‘A’ and ‘B’.\nA. A is strongly basic and B is a weak base.\nB. A is strongly acidic and B is a weak acid.\nC. A has a pH greater than 7 and B has a pH less than 7.\nD. A has a pH less than 7 and B has a pH greater than 7.",
+      "[INJSO 2016 — question paper]\n21. Anand wanted to prepare a salt solution of pH 1.0. For that he used solutions of a\nstrong monovalent base and acid. He tried different combinations to obtain the\nrequired solution. Can you help him to decide which one is the most correct\ncombination of statements given below?\nI. 100ml of (M/10) acid and 100ml of (M/10) alkali.\nII. 55ml of (M/10) acid and 45ml of (M/10) alkali.\nIII. 10ml of (M/10) acid and 90ml of (M/10) alkali.\nIV. 75ml of (M/5) acid and 25ml of (M/5) alkali\na) I and III b) II and IV\nc) Only II d) Only IV",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n21. Which of the following substances when dissolved in equal volume of water,\nwill have the highest pH value? 1\nA. Sulphuric acid\nB. Acetic acid\nC. Magnesium hydroxide\nD. Sodium hydroxide"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 187314,
+      "in": 39,
+      "out": 36,
+      "rejects": 3,
+      "promptTokens": 34916,
+      "completionTokens": 9664
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 329740,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 21498,
+      "completionTokens": 8070
+    },
+    "solver": {
+      "calls": 251,
+      "ms": 140380,
+      "in": 36,
+      "out": 27,
+      "rejects": 9,
+      "promptTokens": 43618,
+      "completionTokens": 2548
+    },
+    "form": {
+      "calls": 10,
+      "ms": 54227,
+      "in": 27,
+      "out": 14,
+      "rejects": 13,
+      "promptTokens": 9796,
+      "completionTokens": 1375
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 34,
+      "ms": 6149,
+      "in": 14,
+      "out": 9,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 369603,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 20593,
+      "completionTokens": 10592
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 4,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of the natural substance obtained from lichens that acts as an acid-base indicator?",
+      "ms": {
+        "draft": 3403,
+        "critique": 6038,
+        "solver": 1518,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is an example of a neutral substance?",
+      "ms": {
+        "draft": 3403,
+        "critique": 8989,
+        "solver": 1921,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following substances would turn red litmus paper blue?",
+      "ms": {
+        "draft": 3403,
+        "critique": 7174,
+        "solver": 12446,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following groups contains only basic substances?",
+      "ms": {
+        "draft": 3403,
+        "critique": 6537,
+        "solver": 16976
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is true about the substances in Group C of Table 2.2?",
+      "ms": {
+        "draft": 3403,
+        "critique": 8033,
+        "solver": 2198
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is the correct sequence of colour changes when the red rose extract is added to lemon juice, soap solution, and a neutral solution?",
+      "ms": {
+        "draft": 3865,
+        "critique": 5613,
+        "solver": 1747
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student tested three substances with red rose extract and observed the following: Substance X turned the extract red, Substance Y turned it green, and Substance Z did not change its colour. What is the most likely nature of these substances?",
+      "ms": {
+        "draft": 3865,
+        "critique": 6924,
+        "solver": 1917,
+        "form": 3143
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a substance turns the red rose extract green, which of the following is most likely to be true about the substance?",
+      "ms": {
+        "draft": 3865,
+        "critique": 6625,
+        "solver": 12969,
+        "form": 2743
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a new substance is found to turn the red rose extract green, which of the following is the most likely explanation for this observation?",
+      "ms": {
+        "draft": 3865,
+        "critique": 7289,
+        "solver": 13067
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the neutralisation reaction between an acid and a base, what is formed along with water?",
+      "ms": {
+        "draft": 3894,
+        "critique": 7107,
+        "solver": 1498,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A solution turns red litmus paper blue. A few drops of an indicator are added to the solution, and it turns green. What can be concluded about the solution?",
+      "ms": {
+        "draft": 7128,
+        "critique": 7446,
+        "solver": 13505,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A solution turns blue litmus paper red. Which of the following is most likely to be the solution?",
+      "ms": {
+        "draft": 7128,
+        "critique": 8451,
+        "solver": 14529,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A solution turns red litmus paper blue. A few drops of a red rose extract are added, and the solution turns green. If an acidic solution is added, the green colour changes to red. What is the reason for this change?",
+      "ms": {
+        "draft": 7128,
+        "critique": 7221,
+        "solver": 964,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct observation about the effect of acids and bases on litmus paper?",
+      "ms": {
+        "draft": 6589,
+        "critique": 5436,
+        "solver": 1476,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the indicators given, which of the following is the correct sequence for the nature of solutions A, B, and C?",
+      "ms": {
+        "draft": 6589,
+        "critique": 5819,
+        "solver": 2771
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an olfactory indicator?",
+      "ms": {
+        "draft": 3118,
+        "critique": 6766,
+        "solver": 1515
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a solution turns the red rose extract green, what will happen when excess of amla juice is added to the solution?",
+      "ms": {
+        "draft": 6589,
+        "critique": 8241,
+        "solver": 18711
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the purpose of using turmeric in the activity?",
+      "ms": {
+        "draft": 3118,
+        "critique": 6769,
+        "solver": 18893
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an acid-base indicator mentioned in the passage?",
+      "ms": {
+        "draft": 25946,
+        "critique": 8633,
+        "solver": 1696
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a basic substance according to the passage?",
+      "ms": {
+        "draft": 9482,
+        "critique": 7896,
+        "solver": 1529,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the observations in Table 2.3, which of the following substances is likely to be basic?",
+      "ms": {
+        "draft": 25946,
+        "critique": 7558,
+        "solver": 1774,
+        "form": 3350
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a neutral substance according to the passage?",
+      "ms": {
+        "draft": 9482,
+        "critique": 3545,
+        "solver": 896,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following substances when dissolved in water would produce the highest pH value?",
+      "ms": {
+        "draft": 3403,
+        "critique": 6686,
+        "solver": 1345,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an olfactory indicator?",
+      "ms": {
+        "draft": 3894,
+        "critique": 7202,
+        "solver": 1860,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the colour of blue litmus solution when it is added to lemon juice?",
+      "ms": {
+        "draft": 3894,
+        "critique": 6512,
+        "solver": 1774,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when an acidic solution is mixed with a basic solution?",
+      "ms": {
+        "draft": 3118,
+        "critique": 9422,
+        "solver": 1958,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a substance turns the red rose extract green, what can be concluded about the substance?",
+      "ms": {
+        "draft": 25946,
+        "critique": 7576,
+        "solver": 1458,
+        "form": 4199
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is correct about the red rose extract as an acid-base indicator?",
+      "ms": {
+        "draft": 3865,
+        "critique": 7647,
+        "solver": 12563,
+        "form": 4593,
+        "translation": 48643
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using the red rose extract in the activity?",
+      "ms": {
+        "draft": 3865,
+        "critique": 7292,
+        "solver": 2483,
+        "form": 3397,
+        "translation": 40921
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A solution turns red litmus paper to blue. Which solution, when added in excess, would reverse this change?",
+      "ms": {
+        "draft": 6589,
+        "critique": 5784,
+        "solver": 1874,
+        "form": 0,
+        "translation": 30708
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A solution turns red litmus paper blue. On adding a few drops of a different indicator, the solution turns green. If another solution is added, the green colour disappears and the solution becomes red. What can be concluded about the second solution?",
+      "ms": {
+        "draft": 7128,
+        "critique": 8316,
+        "solver": 12041,
+        "form": 0,
+        "translation": 60522
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A liquid sample was tested using various indicators. Red litmus showed no change, blue litmus turned red, and turmeric showed no change in colour. What is the nature of the liquid?",
+      "ms": {
+        "draft": 6589,
+        "critique": 9578,
+        "solver": 14206,
+        "form": 0,
+        "translation": 42738
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student added a few drops of a solution to a blue litmus paper and found that the colour remained blue. What can be concluded about the solution?",
+      "ms": {
+        "draft": 3894,
+        "critique": 6314,
+        "solver": 1783,
+        "form": 1,
+        "translation": 38856
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student added a drop of a solution on turmeric paper and observed a colour change. What can be inferred about the solution?",
+      "ms": {
+        "draft": 3118,
+        "critique": 9481,
+        "solver": 1727,
+        "form": 1,
+        "translation": 32579
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student performed an experiment to neutralise an acidic solution using a base. The final solution turned red when blue litmus was added. What could be the reason?",
+      "ms": {
+        "draft": 3894,
+        "critique": 6110,
+        "solver": 1715,
+        "form": 0,
+        "translation": 44697
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the activity with blue litmus solution and lemon juice, what was the role of lime water?",
+      "ms": {
+        "draft": 3118,
+        "critique": 8850,
+        "solver": 1327,
+        "form": 0,
+        "translation": 24299
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is used to neutralise the effect of an acidic ant bite?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "A student tested a solution with red litmus paper, and it turned blue. The student then tested the solution with turmeric paper, which remained yellow. What can be concluded about the solution?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the natural substance obtained from lichens that acts as an acid-base indicator?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed for this distractor (as per…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is an example of a neutral substance?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following substances would turn red litmus paper blue?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following groups contains only basic substances?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following statements is true about the substances in Group C of Table 2.2?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is the correct sequence of colour changes when the red rose extract is added to lemon juice, soap solution, and a neutral solution?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student tested three substances with red rose extract and observed the following: Substance X turned the extract red, Substance Y turned it green, and Substance Z did not change its colour. What is the most likely nature of these substances?",
+      "reason": "options 0 and 1 say the same thing (\"X is acidic, Y is basic, Z is neutral\" / \"X is basic, Y is acidic, Z is neutral\"); options 0 and 2 say the same thing (\"X is acidic, Y is basic, Z is neutral\" / \"X is neutral, Y is basic, Z is acidic\"); options 0 and 3 say the same thing (\"X is acidic, Y is basic, Z is neutral\" / \"X is acidic, Y is neutral, Z is basic\"); options 1 and 2 say the same thing (\"X is basic, Y is acidic, Z is neutral\" / \"X is neutral, Y is basic, Z is acidic\"); options 1 and 3 say the same thing (\"X is basic, Y is acidic, Z is neutral\" / \"X is acidic, Y is neutral, Z is basic\"); options 2 and 3 say the same thing (\"X is neutral, Y is basic, Z is acidic\" / \"X is acidic, Y is neutral, Z is basic\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a substance turns the red rose extract green, which of the following is most likely to be true about the substance?",
+      "reason": "options 2 and 3 say the same thing (\"2: It is a salt\" / \"It is a salt\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a new substance is found to turn the red rose extract green, which of the following is the most likely explanation for this observation?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the neutralisation reaction between an acid and a base, what is formed along with water?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label neutralisation"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A solution turns red litmus paper blue. A few drops of an indicator are added to the solution, and it turns green. What can be concluded about the solution?",
+      "reason": "options 2 and 3 say the same thing (\"2: It is a salt solution\" / \"It is a salt solution\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A solution turns blue litmus paper red. Which of the following is most likely to be the solution?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A solution turns red litmus paper blue. A few drops of a red rose extract are added, and the solution turns green. If an acidic solution is added, the green colour changes to red. What is the reason for this change?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'redRoseExtract'"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the correct sequence of the nature of solutions A, B, and C based on the given observations?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct observation about the effect of acids and bases on litmus paper?",
+      "reason": "options 0 and 2 say the same thing (\"Acids turn red litmus paper to blue\" / \"Acids turn blue litmus paper to red\"); options 1 and 3 say the same thing (\"Bases turn blue litmus paper to red\" / \"Bases turn red litmus paper to red\"); distractor 3's reason is not a one-line misconception (\"Correct answer is 'Acids turn blue litmus paper to red.' Thi…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the indicators given, which of the following is the correct sequence for the nature of solutions A, B, and C?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of an olfactory indicator?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a solution turns the red rose extract green, what will happen when excess of amla juice is added to the solution?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what is the purpose of using turmeric in the activity?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of an acid-base indicator mentioned in the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a basic substance according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer is baking soda solution which is basic, not a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the observations in Table 2.3, which of the following substances is likely to be basic?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); distractor 2's reason is not a one-line misconception (\"Chooses a substance that is not tested in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a neutral substance according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which of the following substances when dissolved in water would produce the highest pH value?",
+      "reason": "near-duplicate of served question cmvers97m01clgod8h9f6wcf2 (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of an olfactory indicator?",
+      "reason": "near-duplicate of served question cmvers97a01b9god8vr36emfw (cosine 0.930 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens to the colour of blue litmus solution when it is added to lemon juice?",
+      "reason": "near-duplicate of served question cmvers97i01c3god8trx3b8ip (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens when an acidic solution is mixed with a basic solution?",
+      "reason": "near-duplicate of served question cmvers97b01bfgod8brnosle6 (cosine 0.930 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a substance turns the red rose extract green, what can be concluded about the substance?",
+      "reason": "near-duplicate of served question cmvfxvi4t019zgpfhzadmrfbf (cosine 0.913 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

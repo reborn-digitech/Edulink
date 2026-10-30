@@ -1,0 +1,913 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T21:52:36.253Z",
+  "finishedAt": "2026-10-24T22:01:36.443Z",
+  "seconds": 540,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu105.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 5 — Exploring Forces",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — solutions or answer key]\n8. D. Gravitational force is an attractive force and the Coulomb force, which is responsible for the\nscattering of alpha particles, is repulsive .",
+      "[INJSO 2014 — question paper]\n45. A ball falls from rest through air and eventually reaches a constant velocity. For\nthis fall, force X and Y vary with time as shown.\nWhich of the following should be force X and Force Y?\nForce X Force Y\na) Air Resistance Resultant Force\nb) Air Resistance Weight\nc) Up thrust Resultant Force\nd) Up thrust Weight",
+      "[INJSO 2011 — question paper]\n25. Had Newton and Einstein shaken their hands, which fundamental force they would have exerted\non each other (During shaking their hands)?\na) Frictional b) Electromagnetic c) Gravitational d) Mechanical",
+      "[NSEJS 2016 — question paper]\n17. Velocity of a particle moving along a straight line varies with time as shown\nin the adjacent figure. Net forces acting on the particle are , , ,\nand in the intervals OA, AB, BC, CD and DE respectively. Indentify the\ncorrect statement\na) increases with time.\nb) is initially positive and then becomes negative\nc) and are in opposite directions\nd) is negative."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 214258,
+      "in": 48,
+      "out": 47,
+      "rejects": 1,
+      "promptTokens": 41419,
+      "completionTokens": 12158
+    },
+    "critique": {
+      "calls": 60,
+      "ms": 405479,
+      "in": 47,
+      "out": 28,
+      "rejects": 19,
+      "promptTokens": 27154,
+      "completionTokens": 10345
+    },
+    "solver": {
+      "calls": 224,
+      "ms": 121975,
+      "in": 28,
+      "out": 24,
+      "rejects": 4,
+      "promptTokens": 40403,
+      "completionTokens": 2322
+    },
+    "form": {
+      "calls": 17,
+      "ms": 77760,
+      "in": 24,
+      "out": 7,
+      "rejects": 17,
+      "promptTokens": 10046,
+      "completionTokens": 1956
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 79,
+      "ms": 12584,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 135676,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8956,
+      "completionTokens": 4329
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason that a bicycle slows down and stops when you stop pedalling on a flat road?",
+      "ms": {
+        "draft": 4911,
+        "critique": 7429,
+        "solver": 15278,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a force that is applied through direct physical contact?",
+      "ms": {
+        "draft": 4911,
+        "critique": 7900,
+        "solver": 13820,
+        "form": 2882
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A ball rolling on a flat ground comes to a stop after some time. Which force is most likely responsible for this?",
+      "ms": {
+        "draft": 4911,
+        "critique": 7158,
+        "solver": 17925,
+        "form": 3010
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage says that when two objects interact, each experiences a force. Which of the following scenarios best illustrates this idea?",
+      "ms": {
+        "draft": 4911,
+        "critique": 7998
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the force that opposes the motion of an object sliding over another surface?",
+      "ms": {
+        "draft": 6062,
+        "critique": 7134
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Sonali and Ragini were cycling on a rough road and found it harder to pedal. What is the most likely reason for this?",
+      "ms": {
+        "draft": 4911,
+        "critique": 7225,
+        "solver": 13012
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which force is responsible for the attraction between a charged plastic scale and small pieces of paper?",
+      "ms": {
+        "draft": 6062,
+        "critique": 5986
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "When you push a table, your hand feels a force. What is the reason for this?",
+      "ms": {
+        "draft": 4911,
+        "critique": 6451,
+        "solver": 11870,
+        "form": 2766
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an object is placed on a rough surface, how does the force of friction compare to that on a smooth surface?",
+      "ms": {
+        "draft": 6062,
+        "critique": 7680
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a non-contact force?",
+      "ms": {
+        "draft": 6062,
+        "critique": 7660
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student pushes a box on a rough surface, and the box comes to rest after moving a short distance. What force is responsible for the box coming to rest?",
+      "ms": {
+        "draft": 6062,
+        "critique": 6435
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a scenario where two objects are moving through a fluid, what force opposes their motion?",
+      "ms": {
+        "draft": 6062,
+        "critique": 7878
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the force with which the Earth pulls an object towards itself called?",
+      "ms": {
+        "draft": 3336,
+        "critique": 6415
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What can be inferred from the fact that similarly charged balloons repel each other?",
+      "ms": {
+        "draft": 3336,
+        "critique": 6872
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a ball is thrown vertically upwards, what happens to its speed while it is moving upwards?",
+      "ms": {
+        "draft": 3336,
+        "critique": 7116
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the stretch of a spring when an object is hung from it indicate?",
+      "ms": {
+        "draft": 3336,
+        "critique": 7197
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a ball is dropped from a height and falls vertically downwards, what type of motion is it undergoing?",
+      "ms": {
+        "draft": 3336,
+        "critique": 6602
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the Earth exert a different force on different objects?",
+      "ms": {
+        "draft": 3336,
+        "critique": 7109
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the force applied by a liquid on an object in the upward direction called?",
+      "ms": {
+        "draft": 6533,
+        "critique": 6856
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an object is placed in a liquid and the buoyant force is greater than the object's weight, what will happen?",
+      "ms": {
+        "draft": 6533,
+        "critique": 7661
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true according to the passage about measuring mass and weight?",
+      "ms": {
+        "draft": 6533,
+        "critique": 7523,
+        "solver": 1440,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is it incorrect to say that the weight of a wheat bag is 10 kg?",
+      "ms": {
+        "draft": 6533,
+        "critique": 7662
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the weight of an object on different planets?",
+      "ms": {
+        "draft": 6533,
+        "critique": 7592,
+        "solver": 11930,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which force is exerted by a magnet on another magnet or a magnetic material?",
+      "ms": {
+        "draft": 6736,
+        "critique": 5992
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a non-contact force?",
+      "ms": {
+        "draft": 3528,
+        "critique": 4636,
+        "solver": 1902
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which force is responsible for the Earth pulling objects towards itself?",
+      "ms": {
+        "draft": 3528,
+        "critique": 4751,
+        "solver": 12049,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Fig. 5.16, a ball is released from point P and moves along an inclined plane and then along a horizontal surface. What force causes the ball to eventually stop?",
+      "ms": {
+        "draft": 3528,
+        "critique": 7240,
+        "solver": 14556
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A spring balance is used to measure the weight of an object. If the smallest division on the scale reads 0.2 N, what is the weight indicated by one small division?",
+      "ms": {
+        "draft": 12931,
+        "critique": 7472,
+        "solver": 1596,
+        "form": 3214
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A spring balance is used to measure the weight of an object. The object is suspended from the hook, and the spring stretches. What is the main force acting on the object in the downward direction?",
+      "ms": {
+        "draft": 12931,
+        "critique": 7703,
+        "solver": 1621,
+        "form": 2942
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A spring balance is used to measure the weight of an object. When the object is placed in water, it feels lighter. Why does this happen?",
+      "ms": {
+        "draft": 12931,
+        "critique": 7686,
+        "solver": 13304,
+        "form": 3338
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An object is placed in a liquid, and the buoyant force acting on it is equal to the weight of the displaced liquid. What can be concluded about the object?",
+      "ms": {
+        "draft": 12931,
+        "critique": 9746,
+        "solver": 1649,
+        "form": 3712
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A spring balance is used to measure the weight of an object. What is the first step in using the spring balance?",
+      "ms": {
+        "draft": 12931,
+        "critique": 6064,
+        "solver": 1368
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following diagrams best represents the motion of an object thrown vertically upwards?",
+      "ms": {
+        "draft": 3050,
+        "critique": 6530,
+        "solver": 1812,
+        "form": 2668
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a situation where an object falls through air and reaches a constant velocity, what can be said about the forces acting on the object?",
+      "ms": {
+        "draft": 3050,
+        "critique": 6073,
+        "solver": 1795,
+        "form": 4728
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the SI unit of weight?",
+      "ms": {
+        "draft": 3050,
+        "critique": 7900,
+        "solver": 1452,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the force that brings a sliding object to rest when it is pushed on a table?",
+      "ms": {
+        "draft": 4081,
+        "critique": 6841
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Newton and Einstein had shaken hands, which fundamental force would have been responsible for the contact between their hands?",
+      "ms": {
+        "draft": 3050,
+        "critique": 6882,
+        "solver": 13914,
+        "form": 5011
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student pushes a wooden block on different surfaces and observes that it stops at different distances. What can be concluded about the force of friction?",
+      "ms": {
+        "draft": 4081,
+        "critique": 7911
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the force of friction?",
+      "ms": {
+        "draft": 4081,
+        "critique": 7919,
+        "solver": 12666,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A ball is dropped from a height and falls through air. It eventually reaches a constant velocity. What can be said about the forces acting on the ball?",
+      "ms": {
+        "draft": 4081,
+        "critique": 6215,
+        "solver": 5903,
+        "form": 1248
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ball falls from rest through air and reaches a constant velocity. What forces are acting on the ball?",
+      "ms": {
+        "draft": 3528,
+        "critique": 8223,
+        "solver": 1161,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a non-contact force?",
+      "ms": {
+        "draft": 3050,
+        "critique": 6377,
+        "solver": 1230,
+        "form": 3025
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an object is thrown vertically upwards, what happens to its speed as it moves upwards?",
+      "ms": {
+        "draft": 3050,
+        "critique": 6261,
+        "solver": 1998,
+        "form": 2575
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a push or pull?",
+      "ms": {
+        "draft": 4040,
+        "critique": 5560,
+        "solver": 2276,
+        "form": 0,
+        "translation": 21308
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between mass and weight?",
+      "ms": {
+        "draft": 12931,
+        "critique": 8039,
+        "solver": 1556,
+        "form": 2621,
+        "translation": 45927
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A ball is thrown upwards and comes back down. What force is responsible for the ball coming back down?",
+      "ms": {
+        "draft": 3528,
+        "critique": 4606,
+        "solver": 11154,
+        "form": 0,
+        "translation": 31786
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a ball is thrown upwards, it slows down and then falls back down. What is the reason for this?",
+      "ms": {
+        "draft": 3528,
+        "critique": 5974,
+        "solver": 1662,
+        "form": 0,
+        "translation": 33446
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason that a bicycle slows down and stops when you stop pedalling on a flat road?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a force that is applied through direct physical contact?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A ball rolling on a flat ground comes to a stop after some time. Which force is most likely responsible for this?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The passage says that when two objects interact, each experiences a force. Which of the following scenarios best illustrates this idea?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the force that opposes the motion of an object sliding over another surface?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Sonali and Ragini were cycling on a rough road and found it harder to pedal. What is the most likely reason for this?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which force is responsible for the attraction between a charged plastic scale and small pieces of paper?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "When you push a table, your hand feels a force. What is the reason for this?",
+      "reason": "options 0 and 1 are the same (\"The table applies a force on your hand\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If an object is placed on a rough surface, how does the force of friction compare to that on a smooth surface?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a non-contact force?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student pushes a box on a rough surface, and the box comes to rest after moving a short distance. What force is responsible for the box coming to rest?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a scenario where two objects are moving through a fluid, what force opposes their motion?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the force with which the Earth pulls an object towards itself called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What can be inferred from the fact that similarly charged balloons repel each other?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a ball is thrown vertically upwards, what happens to its speed while it is moving upwards?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the stretch of a spring when an object is hung from it indicate?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a ball is dropped from a height and falls vertically downwards, what type of motion is it undergoing?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why does the Earth exert a different force on different objects?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the force applied by a liquid on an object in the upward direction called?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If an object is placed in a liquid and the buoyant force is greater than the object's weight, what will happen?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is true according to the passage about measuring mass and weight?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Confuses mass and weight measurements, thinking they are don…\"); distractor 2's reason is not a one-line misconception (\"Confuses the unit of weight with mass, which is a common mis…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the definition of mass and its dependence on …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, why is it incorrect to say that the weight of a wheat bag is 10 kg?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the weight of an object on different planets?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the concept of weight as always being zero, w…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which force is exerted by a magnet on another magnet or a magnetic material?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What type of force is exerted by a magnet on another magnet without physical contact?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of a non-contact force?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which force is responsible for the Earth pulling objects towards itself?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In Fig. 5.16, a ball is released from point P and moves along an inclined plane and then along a horizontal surface. What force causes the ball to eventually stop?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A spring balance is used to measure the weight of an object. If the smallest division on the scale reads 0.2 N, what is the weight indicated by one small division?",
+      "reason": "checkExpr \"0.2\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A spring balance is used to measure the weight of an object. The object is suspended from the hook, and the spring stretches. What is the main force acting on the object in the downward direction?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'springBalance'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A spring balance is used to measure the weight of an object. When the object is placed in water, it feels lighter. Why does this happen?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'water'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "An object is placed in a liquid, and the buoyant force acting on it is equal to the weight of the displaced liquid. What can be concluded about the object?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A spring balance is used to measure the weight of an object. What is the first step in using the spring balance?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following diagrams best represents the motion of an object thrown vertically upwards?",
+      "reason": "the key is far longer than every distractor (38 vs 17 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a situation where an object falls through air and reaches a constant velocity, what can be said about the forces acting on the object?",
+      "reason": "options 0 and 1 say the same thing (\"The gravitational force is greater than the air resistance\" / \"The air resistance is greater than the gravitational force\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the SI unit of weight?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the force that brings a sliding object to rest when it is pushed on a table?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If Newton and Einstein had shaken hands, which fundamental force would have been responsible for the contact between their hands?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student pushes a wooden block on different surfaces and observes that it stops at different distances. What can be concluded about the force of friction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the force of friction?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A ball is dropped from a height and falls through air. It eventually reaches a constant velocity. What can be said about the forces acting on the ball?",
+      "reason": "options 2 and 3 say the same thing (\"Air resistance is greater than gravitational force\" / \"Gravitational force is greater than air resistance\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A ball falls from rest through air and reaches a constant velocity. What forces are acting on the ball?",
+      "reason": "near-duplicate of served question cmvf7etjj03ingod8o9a94ubq (cosine 0.921 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a non-contact force?",
+      "reason": "near-duplicate of served question cmvf0cf2p02kegod8kpe6gxg2 (cosine 0.925 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If an object is thrown vertically upwards, what happens to its speed as it moves upwards?",
+      "reason": "near-duplicate of served question cmvf7etjd03hzgod8xaapc6ec (cosine 0.917 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

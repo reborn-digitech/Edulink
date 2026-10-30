@@ -1,0 +1,838 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T14:23:46.437Z",
+  "finishedAt": "2026-10-26T14:35:21.278Z",
+  "seconds": 695,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo105.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 5 — Molecular Basis of Inheritance",
+    "edition": "Reprint 2026-27",
+    "chunks": 35,
+    "groups": 11
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, sample question paper, 2026-27]\n25. How can a single gene defect caused by the mutation result in Phenylketonuria 3\n(PKU)? Explain the molecular mechanism underlying pleiotropy.",
+      "[CBSE Class XII Biology, sample question paper, 2022-23]\n29. and 30 are case based questions. Each question has subparts with internal choice in one\nsubpart.\n29 Study the Pedigree chart given below and answer the questions that follow: 4\n(a) On the basis of the inheritance pattern exhibited in this pedigree chart, what\nconclusion can you draw about the pattern of inheritance?\n(b) If the female is homozygous for the affected trait in this pedigree chart, then\nwhat percentage of her sons will be affected ?\n(c) Give the genotype of offsprings 1,2,3 and 4 in III generation.\nOR\n(c) In this type of inheritance pattern, out of male and female children which one\nhas less probability of receiving the trait from the parents. Give a reason.",
+      "[NSEB 2015 — question paper]\n52. Study the following pedigree. The transmission of the trait indicates:\na) X-linked inheritance.\nb) Autosomal dominance.\nc) Autosomal recessive type.\nd) Mitochondrial inheritance.",
+      "[INBO 2012 — question paper]\n1. (1 point) According to the current concept of Central Dogma of molecular\nbiology, information transfer from proteins to nucleic acids does not occur.\nWhich of the following could be considered a violation of the Central Dogma?\nI. Synthesis of DNA on an RNA template by reverse transcriptase.\nII. Gene transcription being activated by a protein binding to regulatory\nsequences.\nIII. Editing of RNA transcripts by the insertion and deletion of\nribonucleotides.\nIV. A polynucleotide polymerase specifically synthesizing a gene\nencoding itself from free deoxyribonucleotides.\na. I\nb. IV\nc. II and III\nd. None of the above"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 211185,
+      "in": 46,
+      "out": 42,
+      "rejects": 4,
+      "promptTokens": 52180,
+      "completionTokens": 12096
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 321284,
+      "in": 42,
+      "out": 33,
+      "rejects": 9,
+      "promptTokens": 24859,
+      "completionTokens": 8974
+    },
+    "solver": {
+      "calls": 233,
+      "ms": 120215,
+      "in": 33,
+      "out": 31,
+      "rejects": 2,
+      "promptTokens": 42019,
+      "completionTokens": 2475
+    },
+    "form": {
+      "calls": 12,
+      "ms": 51086,
+      "in": 31,
+      "out": 11,
+      "rejects": 20,
+      "promptTokens": 8644,
+      "completionTokens": 1297
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 39,
+      "ms": 7338,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 424632,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 23155,
+      "completionTokens": 11888
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key feature of the DNA structure that allows it to serve as a genetic material?",
+      "ms": {
+        "draft": 3735,
+        "critique": 5009,
+        "solver": 2607,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a gene is altered by a mutation, what is the most likely outcome according to the passage?",
+      "ms": {
+        "draft": 3735,
+        "critique": 6496,
+        "solver": 1585,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, how does the complementary base pairing in DNA contribute to its function as a genetic material?",
+      "ms": {
+        "draft": 3735,
+        "critique": 5507,
+        "solver": 1487,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of RNA according to the passage?",
+      "ms": {
+        "draft": 3735,
+        "critique": 5523,
+        "solver": 1591,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a nucleosome contains 200 base pairs of DNA, how many nucleosomes would be present in a mammalian cell with 6.6 × 10^9 base pairs of DNA?",
+      "ms": {
+        "draft": 4357,
+        "critique": 7390
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about chromatin is correct?",
+      "ms": {
+        "draft": 4357,
+        "critique": 5408,
+        "solver": 1605,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is the distance between the two polynucleotide chains in DNA almost constant?",
+      "ms": {
+        "draft": 4357,
+        "critique": 6079,
+        "solver": 1174,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the structure of a nucleosome?",
+      "ms": {
+        "draft": 4357,
+        "critique": 6659,
+        "solver": 1433,
+        "form": 3656
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a key feature of the DNA double helix structure as described in the passage?",
+      "ms": {
+        "draft": 4357,
+        "critique": 6870,
+        "solver": 1655,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which experiment provided the first unequivocal proof that DNA is the genetic material?",
+      "ms": {
+        "draft": 5376,
+        "critique": 6926,
+        "solver": 13154,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property that makes DNA a better genetic material than RNA?",
+      "ms": {
+        "draft": 5376,
+        "critique": 7563,
+        "solver": 15155,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a virus contains radioactive DNA, what would happen when it infects a bacterium?",
+      "ms": {
+        "draft": 5376,
+        "critique": 8822,
+        "solver": 12549,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the Hershey-Chase experiment, which component of the virus was found to be the genetic material?",
+      "ms": {
+        "draft": 5376,
+        "critique": 7881,
+        "solver": 12241,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that a virus's RNA genome was able to evolve faster than DNA. Which of the following explains this phenomenon?",
+      "ms": {
+        "draft": 5376,
+        "critique": 7299,
+        "solver": 16246
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a DNA molecule has a sequence of 5' ATGC 3', what is the sequence of the complementary strand?",
+      "ms": {
+        "draft": 6929,
+        "critique": 6772,
+        "solver": 3208,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a DNA molecule replicates semiconservatively, what will be the composition of DNA molecules after two generations in a medium with normal nitrogen?",
+      "ms": {
+        "draft": 6929,
+        "critique": 6405,
+        "solver": 1786,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a pedigree chart, a trait is observed in a male and his daughters but not in his sons. What is the most likely pattern of inheritance?",
+      "ms": {
+        "draft": 6929,
+        "critique": 7191,
+        "solver": 1319,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the process of copying genetic information from one strand of DNA into RNA?",
+      "ms": {
+        "draft": 55079,
+        "critique": 6045
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sequence of one strand of DNA is 5 -ATGCATGCATGCATGCATGCATGCATGC-3, what is the sequence of the complementary strand in the 5 →3 direction?",
+      "ms": {
+        "draft": 5007,
+        "critique": 5580,
+        "solver": 19173,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a DNA molecule, if the percentage of adenine is 30%, what is the percentage of cytosine?",
+      "ms": {
+        "draft": 5007,
+        "critique": 5879,
+        "solver": 14837
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary reason that mutations in noncoding DNA sequences are more likely to result in DNA polymorphism?",
+      "ms": {
+        "draft": 3869,
+        "critique": 5960
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the role of tRNA in the process of protein synthesis?",
+      "ms": {
+        "draft": 3869,
+        "critique": 5970
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a mutation occurs in a germ cell and does not significantly affect an organism's ability to reproduce, what is the most likely outcome?",
+      "ms": {
+        "draft": 3869,
+        "critique": 6321
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is DNA considered a more stable genetic material compared to RNA?",
+      "ms": {
+        "draft": 3869,
+        "critique": 6542
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the evolution of life?",
+      "ms": {
+        "draft": 3869,
+        "critique": 5838
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements best describes the role of repetitive DNA sequences in the human genome?",
+      "ms": {
+        "draft": 14170,
+        "critique": 6207
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of polymorphism in repetitive DNA sequences?",
+      "ms": {
+        "draft": 14170,
+        "critique": 6020,
+        "solver": 1455,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person has a genetic disorder caused by a single gene defect, how might this defect lead to multiple effects in the body, as seen in Phenylketonuria (PKU)?",
+      "ms": {
+        "draft": 14170,
+        "critique": 5573,
+        "solver": 1668,
+        "form": 3185
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the process of splicing in eukaryotic cells?",
+      "ms": {
+        "draft": 5060,
+        "critique": 7380
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for mutations caused by the insertion or deletion of one or two bases?",
+      "ms": {
+        "draft": 4492,
+        "critique": 6224,
+        "solver": 1544,
+        "form": 3941
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of the i gene in the lac operon?",
+      "ms": {
+        "draft": 4809,
+        "critique": 7563,
+        "solver": 7230,
+        "form": 1366
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a double stranded DNA has 20 per cent of cytosine, what is the percentage of adenine in the DNA?",
+      "ms": {
+        "draft": 5007,
+        "critique": 4714,
+        "solver": 1656,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sequence of the coding strand in a transcription unit is 5 -ATGCATGCATGCATGCATGCATGCATGC-3, what is the sequence of the mRNA?",
+      "ms": {
+        "draft": 5007,
+        "critique": 5914,
+        "solver": 2112,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a stop codon in the genetic code?",
+      "ms": {
+        "draft": 55754,
+        "critique": 5501,
+        "solver": 911,
+        "form": 0,
+        "translation": 28841
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the molecule that reads the genetic code and binds to specific amino acids?",
+      "ms": {
+        "draft": 4207,
+        "critique": 4983,
+        "solver": 4220,
+        "form": 0,
+        "translation": 27543
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a group of genes that are regulated together in bacteria?",
+      "ms": {
+        "draft": 4809,
+        "critique": 5511,
+        "solver": 1910,
+        "form": 2654,
+        "translation": 43568
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements best describes the role of DNA as the genetic material?",
+      "ms": {
+        "draft": 3735,
+        "critique": 4612,
+        "solver": 1366,
+        "form": 4037,
+        "translation": 46889
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a DNA strand has a sequence of bases, what can be said about the complementary strand?",
+      "ms": {
+        "draft": 3735,
+        "critique": 5008,
+        "solver": 1535,
+        "form": 4335,
+        "translation": 43488
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which property of the DNA double helix led Watson and Crick to hypothesise the semi-conservative mode of DNA replication?",
+      "ms": {
+        "draft": 5007,
+        "critique": 7768,
+        "solver": 1817,
+        "form": 0,
+        "translation": 58303
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the experiment conducted by Frederick Griffith, what was the result when heat-killed S strain bacteria were mixed with live R strain bacteria and injected into mice?",
+      "ms": {
+        "draft": 4357,
+        "critique": 7093,
+        "solver": 2227,
+        "form": 3368,
+        "translation": 57427
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the sequence of a DNA strand is 5' ATGCATGCATGCATGCATGCATGCATGC 3', and the complementary strand is 3' TACGTACGTACGTACGTACGTACGTACG 5', which of the following statements is true about the DNA molecule?",
+      "ms": {
+        "draft": 5007,
+        "critique": 6482,
+        "solver": 1102,
+        "form": 4800,
+        "translation": 56148
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it believed that RNA was the first genetic material, and DNA evolved from it?",
+      "ms": {
+        "draft": 5376,
+        "critique": 8394,
+        "solver": 11965,
+        "form": 0,
+        "translation": 57504
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "In a DNA replication experiment, a culture of E. coli was shifted from a medium with heavy nitrogen to one with normal nitrogen. After one generation, all DNA was hybrid. After two generations, what would be the proportion of light DNA?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key feature of the DNA structure that allows it to serve as a genetic material?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believes that DNA is single-stranded, which is not the case …\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that all DNA structures are identical, w…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a gene is altered by a mutation, what is the most likely outcome according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believes that mutations have no effect, which is not support…\"); distractor 2's reason is not a one-line misconception (\"Thinks that all mutations result in disorders, which is not …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, how does the complementary base pairing in DNA contribute to its function as a genetic material?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Incorrectly thinks that base pairing prevents DNA damage, wh…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main function of RNA according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believes that RNA is the primary genetic material, which is …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a nucleosome contains 200 base pairs of DNA, how many nucleosomes would be present in a mammalian cell with 6.6 × 10^9 base pairs of DNA?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about chromatin is correct?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is the distance between the two polynucleotide chains in DNA almost constant?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the structure of a nucleosome?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.histone octamer: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a key feature of the DNA double helix structure as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which experiment provided the first unequivocal proof that DNA is the genetic material?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property that makes DNA a better genetic material than RNA?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a virus contains radioactive DNA, what would happen when it infects a bacterium?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the Hershey-Chase experiment, which component of the virus was found to be the genetic material?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student observed that a virus's RNA genome was able to evolve faster than DNA. Which of the following explains this phenomenon?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a DNA molecule has a sequence of 5' ATGC 3', what is the sequence of the complementary strand?",
+      "reason": "options 1 and 2 say the same thing (\"5' GCAT 3'\" / \"3' GCAT 5'\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a DNA molecule replicates semiconservatively, what will be the composition of DNA molecules after two generations in a medium with normal nitrogen?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label replication"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a pedigree chart, a trait is observed in a male and his daughters but not in his sons. What is the most likely pattern of inheritance?",
+      "reason": "figure: figure spec refused: spec.parts: plant has no label \"maleAffected\" (it has root, stem, leaf, flower)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the process of copying genetic information from one strand of DNA into RNA?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following is true about the human genome according to the passage?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "How does the human genome project contribute to the study of biological systems?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which molecule acts as an adapter to link the genetic code to specific amino acids?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the sequence of one strand of DNA is 5 -ATGCATGCATGCATGCATGCATGCATGC-3, what is the sequence of the complementary strand in the 5 →3 direction?",
+      "reason": "options 1 and 3 are the same (\"5 -GCATGCATGCATGCATGCATGCATGCA-3\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a DNA molecule, if the percentage of adenine is 30%, what is the percentage of cytosine?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the primary reason that mutations in noncoding DNA sequences are more likely to result in DNA polymorphism?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the role of tRNA in the process of protein synthesis?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a mutation occurs in a germ cell and does not significantly affect an organism's ability to reproduce, what is the most likely outcome?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, why is DNA considered a more stable genetic material compared to RNA?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage suggest about the evolution of life?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following statements best describes the role of repetitive DNA sequences in the human genome?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of polymorphism in repetitive DNA sequences?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a person has a genetic disorder caused by a single gene defect, how might this defect lead to multiple effects in the body, as seen in Phenylketonuria (PKU)?",
+      "reason": "the key is far longer than every distractor (111 vs 62 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main function of the process of splicing in eukaryotic cells?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for mutations caused by the insertion or deletion of one or two bases?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the role of the i gene in the lac operon?",
+      "reason": "options 2 and 3 are the same (\"Codes for the inducer molecule\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a double stranded DNA has 20 per cent of cytosine, what is the percentage of adenine in the DNA?",
+      "reason": "near-duplicate of served question cmsqpwlqg01lgy2n4weua4nlj (cosine 0.923 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the sequence of the coding strand in a transcription unit is 5 -ATGCATGCATGCATGCATGCATGCATGC-3, what is the sequence of the mRNA?",
+      "reason": "near-duplicate of served question cmvib09ia0c7cgpfhwqfly4d2 (cosine 0.966 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

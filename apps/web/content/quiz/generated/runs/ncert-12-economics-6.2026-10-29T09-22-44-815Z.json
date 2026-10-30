@@ -1,0 +1,665 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T09:22:44.815Z",
+  "finishedAt": "2026-10-29T09:34:44.851Z",
+  "seconds": 720,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Introductory Macroeconomics",
+    "bookCode": "leec1",
+    "document": "ncert/12/economics/leec106.pdf",
+    "classLevel": 12,
+    "subject": "Economics",
+    "chapter": "Chapter 6 — Open Economy Macroeconomics",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Economics, marking scheme, 2022-23]\nMARKING SCHEME - SAMPLE QUESTION PAPER (2022-23)\nECONOMICS (030) CLASS 12\nQ.NO. SECTION A – MACRO ECONOMICS MARKS\n1 c) Both statements 1 and 2 are true\n2 d) Outflow of US Dollars from India will rise.\n3 a) Commercial Banks\n4 c) Both statements 1 and 2 are true\n5 d) Both statements 1 and 2 are false\nOR\nc) Output, Disposition\n6 a) C=30+0.75 Y\nOR\nd) Equal to zero\n7 a) 1,2 and 3 are correct\n8 a) Improvement in balance of trade\nOR\nb) surplus,5\n9 d) Assertion (A) is false but Reason (R) is true.\n10 b) Both Assertion (A) and Reason (R) are true and Reason (R) is not the correct explanation of Assertion (A) 1\n11 Value of Output (in ₹) Intermediate Consumption (in ₹) Value Addition (in ₹)\nA 2,000 (to",
+      "[CBSE Class XII Economics, sample question paper, 2022-23]\nSection A – Macro Economics",
+      "[CBSE Class XII Economics, sample question paper, 2024-25]\nSection A – Macro Economics",
+      "[CBSE Class XII Economics, sample question paper, 2023-24]\nSection A – Macro Economics"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Economics in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 178552,
+      "in": 36,
+      "out": 35,
+      "rejects": 1,
+      "promptTokens": 36608,
+      "completionTokens": 7900
+    },
+    "critique": {
+      "calls": 38,
+      "ms": 304146,
+      "in": 35,
+      "out": 30,
+      "rejects": 5,
+      "promptTokens": 17215,
+      "completionTokens": 6390
+    },
+    "solver": {
+      "calls": 170,
+      "ms": 89533,
+      "in": 30,
+      "out": 26,
+      "rejects": 4,
+      "promptTokens": 24195,
+      "completionTokens": 1511
+    },
+    "form": {
+      "calls": 9,
+      "ms": 45799,
+      "in": 26,
+      "out": 17,
+      "rejects": 9,
+      "promptTokens": 4235,
+      "completionTokens": 970
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 2536,
+      "in": 17,
+      "out": 16,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 65,
+      "ms": 861359,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 37810,
+      "completionTokens": 19184
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 4,
+    "2": 3,
+    "3": 3,
+    "4": 2,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a component of the current account?",
+      "ms": {
+        "draft": 5327,
+        "critique": 6669
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country imports more goods than it exports, what does this indicate about its balance of trade?",
+      "ms": {
+        "draft": 5327,
+        "critique": 6382,
+        "solver": 1885,
+        "form": 4780
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that the balance of payments has been reclassified into three accounts as per IMF standards. What might this reclassification imply for the understanding of a country's economic interactions?",
+      "ms": {
+        "draft": 5327,
+        "critique": 9615,
+        "solver": 2349,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an Indian consumer wants to buy a product priced at $10 in the US, she needs to know the exchange rate between the rupee and the dollar. What does this situation illustrate?",
+      "ms": {
+        "draft": 5327,
+        "critique": 7343,
+        "solver": 14165
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country has a trade surplus, what does it indicate about its exports and imports?",
+      "ms": {
+        "draft": 5327,
+        "critique": 7832,
+        "solver": 2220,
+        "form": 3669
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the Balance of Payments, what are 'errors and omissions' primarily used for?",
+      "ms": {
+        "draft": 4251,
+        "critique": 8745,
+        "solver": 1786
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a factor that can affect exchange rates in the short run?",
+      "ms": {
+        "draft": 3674,
+        "critique": 8891,
+        "solver": 1911
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a flexible exchange rate system, what happens to the exchange rate if the demand for imports increases?",
+      "ms": {
+        "draft": 18078,
+        "critique": 9994,
+        "solver": 2364,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'official reserve transactions' refer to in the context of the balance of payments?",
+      "ms": {
+        "draft": 6042,
+        "critique": 8323
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a flexible exchange rate system?",
+      "ms": {
+        "draft": 6042,
+        "critique": 9344,
+        "solver": 15816,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the price level in India is 1.2 and the price level in Japan is 3, and it takes 1.25 yen to buy 1 rupee, what is the real exchange rate between India and Japan?",
+      "ms": {
+        "draft": 6042,
+        "critique": 9382,
+        "solver": 16435,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the effect of an increase in foreign income on exports?",
+      "ms": {
+        "draft": 4883,
+        "critique": 8433,
+        "solver": 1971,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is the open economy multiplier smaller than the closed economy multiplier?",
+      "ms": {
+        "draft": 4883,
+        "critique": 8104,
+        "solver": 2303,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country has a fixed exchange rate system and there is a deficit in the balance of payments, what action is the government most likely to take?",
+      "ms": {
+        "draft": 5747,
+        "critique": 10142
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main advantage of a flexible exchange rate system compared to a fixed exchange rate system?",
+      "ms": {
+        "draft": 5747,
+        "critique": 9558
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If inflation is higher in Country A than in Country B and the exchange rate between the two countries is fixed, what is likely to happen to the trade balance between them?",
+      "ms": {
+        "draft": 5747,
+        "critique": 8665
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the difference between the value of a country's exports and imports?",
+      "ms": {
+        "draft": 5747,
+        "critique": 7955,
+        "solver": 1103
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the Indian rupee is expected to depreciate against the US dollar in the near future, what is the likely effect on the demand for US dollars in the foreign exchange market?",
+      "ms": {
+        "draft": 6460,
+        "critique": 7624,
+        "solver": 1048,
+        "form": 1467
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the marginal propensity to consume is 0.8 and the marginal propensity to import is 0.3, what is the value of the open economy multiplier?",
+      "ms": {
+        "draft": 4883,
+        "critique": 9939,
+        "solver": 2261,
+        "form": 6141
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the term NX represent in the context of an open economy?",
+      "ms": {
+        "draft": 4592,
+        "critique": 9005,
+        "solver": 2186,
+        "form": 0,
+        "translation": 45504
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the difference between exports and imports in an open economy?",
+      "ms": {
+        "draft": 4883,
+        "critique": 6106,
+        "solver": 1438,
+        "form": 6057,
+        "translation": 55222
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used when a government makes its currency cheaper in a fixed exchange rate system?",
+      "ms": {
+        "draft": 3674,
+        "critique": 8951,
+        "solver": 2106,
+        "form": 0,
+        "translation": 45837
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used when a government sets the exchange rate at a particular level?",
+      "ms": {
+        "draft": 3674,
+        "critique": 6980,
+        "solver": 2445,
+        "form": 0,
+        "translation": 47456
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the balance of trade?",
+      "ms": {
+        "draft": 5327,
+        "critique": 7378,
+        "solver": 2003,
+        "form": 2613,
+        "translation": 42892
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How does an increase in domestic income affect imports in an open economy?",
+      "ms": {
+        "draft": 4592,
+        "critique": 6038,
+        "solver": 1240,
+        "form": 0,
+        "translation": 46783
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an autonomous component in the open economy multiplier formula?",
+      "ms": {
+        "draft": 4883,
+        "critique": 6788,
+        "solver": 2836,
+        "form": 4424,
+        "translation": 33940
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the marginal propensity to import increases, what happens to the open economy multiplier?",
+      "ms": {
+        "draft": 4883,
+        "critique": 6331,
+        "solver": 2097,
+        "form": 4107,
+        "translation": 47471
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an Indian company sells shares to a foreign investor, how does this transaction appear in the capital account of the Balance of Payments?",
+      "ms": {
+        "draft": 4251,
+        "critique": 8966,
+        "solver": 2172,
+        "form": 0,
+        "translation": 59735
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the Balance of Payments if a country has a current account deficit but a capital account surplus?",
+      "ms": {
+        "draft": 4251,
+        "critique": 8479,
+        "solver": 1828,
+        "form": 1,
+        "translation": 119010
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the foreign exchange market, if the demand for foreign currency increases, what happens to the value of the domestic currency?",
+      "ms": {
+        "draft": 18078,
+        "critique": 7808,
+        "solver": 1383,
+        "form": 0,
+        "translation": 56571
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a reason for the supply of foreign exchange to increase?",
+      "ms": {
+        "draft": 18078,
+        "critique": 8141,
+        "solver": 1452,
+        "form": 0,
+        "translation": 53875
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the current account of a country shows a deficit, what must be true about the capital account?",
+      "ms": {
+        "draft": 4251,
+        "critique": 7540,
+        "solver": 1860,
+        "form": 0,
+        "translation": 50283
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a country experiences a current account deficit, what is the role of the central bank in maintaining Balance of Payments equilibrium?",
+      "ms": {
+        "draft": 4251,
+        "critique": 9225,
+        "solver": 2442,
+        "form": 0,
+        "translation": 77514
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the exchange rate changes from Rs 50 per dollar to Rs 70 per dollar, what has happened to the value of the Indian rupee?",
+      "ms": {
+        "draft": 18078,
+        "critique": 8285,
+        "solver": 2389,
+        "form": 0,
+        "translation": 58276
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the significance of the distinction between autonomous and accommodating transactions in the Balance of Payments?",
+      "ms": {
+        "draft": 4251,
+        "critique": 8319,
+        "solver": 1761,
+        "form": 0,
+        "translation": 71854
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "If the exchange rate rises, what does it indicate about the domestic currency?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a component of the current account?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a country imports more goods than it exports, what does this indicate about its balance of trade?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Implies the country is earning more from exports than spendi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage states that the balance of payments has been reclassified into three accounts as per IMF standards. What might this reclassification imply for the understanding of a country's economic interactions?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the purpose of the reclassification as simplif…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that the reclassification reduces the ro…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If an Indian consumer wants to buy a product priced at $10 in the US, she needs to know the exchange rate between the rupee and the dollar. What does this situation illustrate?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a country has a trade surplus, what does it indicate about its exports and imports?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly suggests that a trade surplus means no exports, …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the Balance of Payments, what are 'errors and omissions' primarily used for?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a factor that can affect exchange rates in the short run?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a flexible exchange rate system, what happens to the exchange rate if the demand for imports increases?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the term 'official reserve transactions' refer to in the context of the balance of payments?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a flexible exchange rate system?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the price level in India is 1.2 and the price level in Japan is 3, and it takes 1.25 yen to buy 1 rupee, what is the real exchange rate between India and Japan?",
+      "reason": "options mix numbers and words (3 of 4 are numbers); ARITHMETIC MISMATCH — checkExpr \"(1/1.25 * 3)/1.2\" = 2.0000000000000004, but the key says 2.08"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the effect of an increase in foreign income on exports?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is the open economy multiplier smaller than the closed economy multiplier?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a country has a fixed exchange rate system and there is a deficit in the balance of payments, what action is the government most likely to take?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main advantage of a flexible exchange rate system compared to a fixed exchange rate system?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If inflation is higher in Country A than in Country B and the exchange rate between the two countries is fixed, what is likely to happen to the trade balance between them?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the term used to describe the difference between the value of a country's exports and imports?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the Indian rupee is expected to depreciate against the US dollar in the near future, what is the likely effect on the demand for US dollars in the foreign exchange market?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the passage’s explanation of exchange rate exp…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If the marginal propensity to consume is 0.8 and the marginal propensity to import is 0.3, what is the value of the open economy multiplier?",
+      "reason": "near-duplicate of served question cmvim3hed0dnsgpfhvpxydiwg (cosine 0.957 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Economics in the prompt"
+  ]
+}

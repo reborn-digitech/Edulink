@@ -1,0 +1,321 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T15:51:22.602Z",
+  "finishedAt": "2026-10-25T15:56:35.166Z",
+  "seconds": 313,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm109.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 9 — House of Hundreds - I I",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n37. CASE STUDY 2\nAlia and Shagun are friends living on the same street in Patel Nagar. Shagun’s house is at the\nintersection of one street with another street on which there is a library. They both study in\nthe same school and that is not far from Shagun's house. Suppose the school is situated at\nthe point O, i.e., the origin, Alia's house is at A. Shagun’s house is at B and library is at C.\nBased on the above information, answer the following questions.\n(i) How far is Alia's house from Shagun’s house?\n(ii) How far is the library from Shagun’s house?\n(iii) Show that for Shagun, school is farther compared to Alia’s house and library.\nOR\nShow that Alia’s house, shagun’s house and library for a",
+      "[PRMO 2019 — question paper]\n30. Let E denote the set of all natural numbers n such that 3 < n < 100 and the set\n{1, 2, 3, . . . , n} can be partitioned in to 3 subsets with equal sums. Find the number of elements\nof E.\nSPACE FOR ROUGH WORK\n27. हम कहӒगे ўक ўकसी शͫद के अ̯रӖ के बमचय मӒ कोई िःथर अ̯र नहҰं है अगर, जब हम बमचय को\nशͫद के ठұक नीचे ѠलखӒ, तो ўकसी भी ःतंभ मӒ एक हҰ अ̯र ऊपर नीचे दोनӖ जगह नहҰं होगा। जैसे ўक\nशͫद B H A R A T के बमचय H B R A T A मӒ कोई िःथर अ̯र नहҰं है। B H A R A\nT के अलग-अलग ऐसे ўकतने बमचय हӔ िजनमӒ कोई िःथर अ̯र नहҰं है? (यहाँ मानӒगे ўक दोनӖ A मӒ\nकोई भेद नहҰं है।)\n28. मान लो ўक ABC एक िऽभुज है िजसकҴ भुजाओं का मान 51, 52, 53 है। मान लो ўक Ω िऽभुज\n△ABC का अंतःवृа है। Ω के वह ःपश˨क बनाओ जो ўक ABC कҴ भुजाओं ",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n27. HCF (36,60,84) =12 1 ½\nଷ଺ ଺଴ ସ଼\nRequired number of rooms= ଵଶ ଵଶ ଵଶ + + 1\n=3+5+7\n=15 ½",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n18. 3\nD)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 99703,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 10630,
+      "completionTokens": 2977
+    },
+    "critique": {
+      "calls": 14,
+      "ms": 180224,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 6130,
+      "completionTokens": 2457
+    },
+    "solver": {
+      "calls": 75,
+      "ms": 81235,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 14129,
+      "completionTokens": 753
+    },
+    "form": {
+      "calls": 5,
+      "ms": 34651,
+      "in": 9,
+      "out": 6,
+      "rejects": 3,
+      "promptTokens": 1187,
+      "completionTokens": 412
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 7471,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 15,
+      "ms": 223627,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7265,
+      "completionTokens": 3394
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the total number of rice sacks if 832 rice sacks are drawn using tiles?",
+      "ms": {
+        "draft": 6585,
+        "critique": 14939,
+        "solver": 36012
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child has 700 rice sacks, how many more rice sacks does he need to make 800?",
+      "ms": {
+        "draft": 10033,
+        "critique": 9704,
+        "solver": 2462,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the number 620 represent in terms of hundreds, tens, and ones?",
+      "ms": {
+        "draft": 10033,
+        "critique": 10102,
+        "solver": 4943,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of rice sacks shown in the passage for the number 832?",
+      "ms": {
+        "draft": 10033,
+        "critique": 12699,
+        "solver": 4474,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the largest number that can be made using 6 slips, where each slip can have 100, 10, or 1 written on it?",
+      "ms": {
+        "draft": 10033,
+        "critique": 13604,
+        "solver": 2253
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which number is between 703 and 721 on the number line?",
+      "ms": {
+        "draft": 10033,
+        "critique": 16438,
+        "solver": 17613
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a number has 3 hundreds, 6 tens, and 8 ones, what is the number?",
+      "ms": {
+        "draft": 6585,
+        "critique": 14620,
+        "solver": 3468,
+        "form": 9075
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a child has six slips, each with 100 written on it, what is the largest number that can be made?",
+      "ms": {
+        "draft": 6585,
+        "critique": 14628,
+        "solver": 2822,
+        "form": 10749
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number has 2 zeroes as digits and is close to 99, what is the number?",
+      "ms": {
+        "draft": 6585,
+        "critique": 9075,
+        "solver": 1330,
+        "form": 2176
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which number lies between 700 and 800?",
+      "ms": {
+        "draft": 6585,
+        "critique": 16209,
+        "solver": 5944,
+        "form": 8380,
+        "translation": 60137
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a crane needs to take 650 steps to reach the worm, and each step is 10 units, how many jumps will the crane make?",
+      "ms": {
+        "draft": 6585,
+        "critique": 14864,
+        "solver": 2009,
+        "form": 10601,
+        "translation": 67862
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a child has 6 slips with 100 written on them, what is the total number of rice sacks he can make?",
+      "ms": {
+        "draft": 10033,
+        "critique": 15977,
+        "solver": 3650,
+        "form": 0,
+        "translation": 86787
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the total number of rice sacks if 832 rice sacks are drawn using tiles?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a child has 700 rice sacks, how many more rice sacks does he need to make 800?",
+      "reason": "checkExpr \"100\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the number 620 represent in terms of hundreds, tens, and ones?",
+      "reason": "options 0 and 1 say the same thing (\"6 hundreds, 2 tens, 0 ones\" / \"6 hundreds, 0 tens, 2 ones\"); options 0 and 2 say the same thing (\"6 hundreds, 2 tens, 0 ones\" / \"2 hundreds, 6 tens, 0 ones\"); options 0 and 3 say the same thing (\"6 hundreds, 2 tens, 0 ones\" / \"0 hundreds, 6 tens, 2 ones\"); options 1 and 2 say the same thing (\"6 hundreds, 0 tens, 2 ones\" / \"2 hundreds, 6 tens, 0 ones\"); options 1 and 3 say the same thing (\"6 hundreds, 0 tens, 2 ones\" / \"0 hundreds, 6 tens, 2 ones\"); options 2 and 3 say the same thing (\"2 hundreds, 6 tens, 0 ones\" / \"0 hundreds, 6 tens, 2 ones\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the total number of rice sacks shown in the passage for the number 832?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; checkExpr \"8\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the largest number that can be made using 6 slips, where each slip can have 100, 10, or 1 written on it?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which number is between 703 and 721 on the number line?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If a number has 3 hundreds, 6 tens, and 8 ones, what is the number?",
+      "reason": "near-duplicate of served question cmvgzgnzw05rlgpfhaqfdu8rf (cosine 0.907 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a child has six slips, each with 100 written on it, what is the largest number that can be made?",
+      "reason": "near-duplicate of served question cmvk1ojhp0ir2gpfhxp6rh0f5 (cosine 0.926 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a number has 2 zeroes as digits and is close to 99, what is the number?",
+      "reason": "near-duplicate of served question cmvgzgo3505slgpfh0baa3yag (cosine 0.954 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,487 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T17:23:23.406Z",
+  "finishedAt": "2026-10-25T17:28:36.249Z",
+  "seconds": 313,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm110.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Elephants, Tigers, and Leopards",
+    "edition": "Reprint 2026-27",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n5. (c) k = 4",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n7. In Section E, Questions no. 36-38 are case study based questions carrying 4 marks each with\nsub parts of the values of 1, 1 and 2 marks each respectively.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n7. In Section E, Questions no. 36-38 are case study based questions carrying 4 marks each with\nsub parts of the values of 1, 1 and 2 marks each respectively."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 94398,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 16212,
+      "completionTokens": 5364
+    },
+    "critique": {
+      "calls": 30,
+      "ms": 207821,
+      "in": 23,
+      "out": 19,
+      "rejects": 4,
+      "promptTokens": 13789,
+      "completionTokens": 5544
+    },
+    "solver": {
+      "calls": 142,
+      "ms": 78482,
+      "in": 19,
+      "out": 11,
+      "rejects": 8,
+      "promptTokens": 27017,
+      "completionTokens": 1570
+    },
+    "form": {
+      "calls": 4,
+      "ms": 22217,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 2929,
+      "completionTokens": 840
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 4754,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 269564,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 17281,
+      "completionTokens": 7584
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 3,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If the other player has reached a total of 8 and it is your turn, can you win the game?",
+      "ms": {
+        "draft": 3366,
+        "critique": 5970,
+        "solver": 1845
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the smallest 3-digit sum that can be obtained by adding a 2-digit number to its reverse?",
+      "ms": {
+        "draft": 3366,
+        "critique": 12176
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which number is obtained when a 2-digit number is added to its reverse?",
+      "ms": {
+        "draft": 3366,
+        "critique": 8909,
+        "solver": 18229
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the population of leopards increased by 749 from 2018 to 2022, and the population in 2022 was 8820, what was the population in 2018?",
+      "ms": {
+        "draft": 3366,
+        "critique": 7681,
+        "solver": 1617
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the difference between the largest and the smallest amount deposited by Raju, Rani, and Roja?",
+      "ms": {
+        "draft": 3068,
+        "critique": 7100,
+        "solver": 1532
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the result of 5010 + 95?",
+      "ms": {
+        "draft": 3068,
+        "critique": 6535,
+        "solver": 10292
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the result of 3999 + 290?",
+      "ms": {
+        "draft": 3068,
+        "critique": 3938,
+        "solver": 4987
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Raju deposits ₹2045 using notes of ₹500, ₹100, and ₹50. He uses 3 notes of ₹500, 4 notes of ₹100, and 1 note of ₹50. What is the total amount he has deposited?",
+      "ms": {
+        "draft": 3990,
+        "critique": 11039
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Raju has ₹2045 to deposit. He uses 2 notes of ₹500 and 1 note of ₹500. How much more money does he need to deposit to reach the total amount?",
+      "ms": {
+        "draft": 3990,
+        "critique": 6819,
+        "solver": 14835,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Rani has ₹3578 to deposit. She uses 3 notes of ₹1000. How many more notes of ₹100 does she need to deposit the full amount?",
+      "ms": {
+        "draft": 3990,
+        "critique": 5912,
+        "solver": 16816,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Raju, Rani, and Roja together have ₹2045, ₹3578, and ₹1240 respectively. They decide to pool their money and split it equally. How much money will each of them get?",
+      "ms": {
+        "draft": 3990,
+        "critique": 7166,
+        "solver": 1501
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the target number is 10 and it is your turn with the total at 8, what should you choose to ensure you win?",
+      "ms": {
+        "draft": 5310,
+        "critique": 7361
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the addition chart, how many times does the number 9 appear?",
+      "ms": {
+        "draft": 5310,
+        "critique": 7246,
+        "solver": 1693
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a 2-digit number is reversed and added to its original number, what is the smallest 3-digit sum possible?",
+      "ms": {
+        "draft": 5310,
+        "critique": 9486
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 139 + 175 = 314, what is 314 – 175?",
+      "ms": {
+        "draft": 3068,
+        "critique": 6653,
+        "solver": 1162,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total amount deposited by Raju, Rani, and Roja together?",
+      "ms": {
+        "draft": 3068,
+        "critique": 7977,
+        "solver": 1213,
+        "form": 0,
+        "translation": 30113
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of 8787 – 99?",
+      "ms": {
+        "draft": 3068,
+        "critique": 7540,
+        "solver": 12280,
+        "form": 0,
+        "translation": 23801
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Roja has ₹1240 to deposit. She uses 1 note of ₹1000 and 2 notes of ₹100. How many notes of ₹20 does she need to complete the amount?",
+      "ms": {
+        "draft": 3990,
+        "critique": 6346,
+        "solver": 1960,
+        "form": 0,
+        "translation": 40266
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the total number of leopards in Gujarat, Karnataka, and Madhya Pradesh?",
+      "ms": {
+        "draft": 3366,
+        "critique": 7667,
+        "solver": 16193,
+        "form": 2185,
+        "translation": 34202
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the table with the red window frame, what pattern do the sums of the numbers in the diagonals show?",
+      "ms": {
+        "draft": 5310,
+        "critique": 6683,
+        "solver": 1438,
+        "form": 0,
+        "translation": 24954
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If the number of leopards in 2018 was 8071, and it increased by 749 to reach 8820 in 2022, how many leopards were there in 2018?",
+      "ms": {
+        "draft": 5310,
+        "critique": 6834,
+        "solver": 1124,
+        "form": 3034,
+        "translation": 36119
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the number of buses is 253 more than the number of jeeps, and the number of jeeps is 6304, what is the number of buses?",
+      "ms": {
+        "draft": 3366,
+        "critique": 6406,
+        "solver": 1817,
+        "form": 3043,
+        "translation": 31933
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Raju has ₹2045, Rani has ₹3578, and Roja has ₹1240. They decide to pool their money and buy a gift for their teacher. If the gift costs ₹6000, how much more money do they need to collect to buy the gift?",
+      "ms": {
+        "draft": 3990,
+        "critique": 7181,
+        "solver": 1854,
+        "form": 0,
+        "translation": 43818
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the other player has reached a total of 8 and it is your turn, can you win the game?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the smallest 3-digit sum that can be obtained by adding a 2-digit number to its reverse?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which number is obtained when a 2-digit number is added to its reverse?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the population of leopards increased by 749 from 2018 to 2022, and the population in 2022 was 8820, what was the population in 2018?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the difference between the largest and the smallest amount deposited by Raju, Rani, and Roja?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the result of 5010 + 95?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the result of 3999 + 290?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If the total number of elephants in Karnataka and Kerala is 9103, and Kerala has 3054 elephants, how many elephants are in Karnataka?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Raju deposits ₹2045 using notes of ₹500, ₹100, and ₹50. He uses 3 notes of ₹500, 4 notes of ₹100, and 1 note of ₹50. What is the total amount he has deposited?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Raju has ₹2045 to deposit. He uses 2 notes of ₹500 and 1 note of ₹500. How much more money does he need to deposit to reach the total amount?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct calculation but subtracts incorrectly…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Rani has ₹3578 to deposit. She uses 3 notes of ₹1000. How many more notes of ₹100 does she need to deposit the full amount?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Raju, Rani, and Roja together have ₹2045, ₹3578, and ₹1240 respectively. They decide to pool their money and split it equally. How much money will each of them get?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the target number is 10 and it is your turn with the total at 8, what should you choose to ensure you win?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "In the addition chart, how many times does the number 9 appear?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a 2-digit number is reversed and added to its original number, what is the smallest 3-digit sum possible?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If 139 + 175 = 314, what is 314 – 175?",
+      "reason": "near-duplicate of served question cmvh1xsa3069wgpfh5ooytv9k (cosine 0.980 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

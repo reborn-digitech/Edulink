@@ -1,0 +1,628 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T16:29:49.578Z",
+  "finishedAt": "2026-10-25T16:43:04.461Z",
+  "seconds": 795,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm101.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Shapes Around Us",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 345152,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 22943,
+      "completionTokens": 9652
+    },
+    "critique": {
+      "calls": 38,
+      "ms": 516615,
+      "in": 32,
+      "out": 21,
+      "rejects": 11,
+      "promptTokens": 17529,
+      "completionTokens": 6717
+    },
+    "solver": {
+      "calls": 145,
+      "ms": 140556,
+      "in": 21,
+      "out": 17,
+      "rejects": 4,
+      "promptTokens": 21049,
+      "completionTokens": 1483
+    },
+    "form": {
+      "calls": 7,
+      "ms": 48255,
+      "in": 17,
+      "out": 12,
+      "rejects": 5,
+      "promptTokens": 1793,
+      "completionTokens": 543
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 7139,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 571331,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 17302,
+      "completionTokens": 7875
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 2,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 3,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a 3D shape with 5 faces and 5 corners?",
+      "ms": {
+        "draft": 7498,
+        "critique": 13653,
+        "solver": 31723
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of angle is formed when a piece of paper is folded to make a right angle?",
+      "ms": {
+        "draft": 12537,
+        "critique": 14430
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given dot grid, if a shape has four right angles and all sides are equal, what is the name of the shape?",
+      "ms": {
+        "draft": 12537,
+        "critique": 16179
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a triangle is made using straws of different sizes, what happens when one of its sides is gently pushed?",
+      "ms": {
+        "draft": 12537,
+        "critique": 16150,
+        "solver": 24160,
+        "form": 5626
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a pentagon is made with straws of equal length and one side is pushed gently, what happens to the angles of the pentagon?",
+      "ms": {
+        "draft": 12537,
+        "critique": 13948,
+        "solver": 4458,
+        "form": 6175
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a circle is folded in half twice and the length of the crease is measured, what is the relationship between the diameter and the radius?",
+      "ms": {
+        "draft": 12537,
+        "critique": 14907,
+        "solver": 24012,
+        "form": 5891
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a triangle is made with straws of different lengths and one side is pushed, what is the effect on the shape?",
+      "ms": {
+        "draft": 12537,
+        "critique": 16261
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many right angles are there in the given figure?",
+      "ms": {
+        "draft": 15172,
+        "critique": 11811
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which shape has the same number of sides and angles?",
+      "ms": {
+        "draft": 15172,
+        "critique": 14242,
+        "solver": 31491
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relation between the number of sides and the number of angles in a polygon?",
+      "ms": {
+        "draft": 7254,
+        "critique": 13636
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which shape has exactly 4 angles?",
+      "ms": {
+        "draft": 7254,
+        "critique": 15210
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which shape has only right angles?",
+      "ms": {
+        "draft": 7254,
+        "critique": 15168
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which shape has 2 right angles, 1 acute, and 1 obtuse angle?",
+      "ms": {
+        "draft": 7254,
+        "critique": 15423
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Draw a 2D shape with more than 4 angles.",
+      "ms": {
+        "draft": 7254,
+        "critique": 14566,
+        "solver": 25520,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a right angle?",
+      "ms": {
+        "draft": 14393,
+        "critique": 13646,
+        "solver": 3044,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which shape has 2 obtuse angles and 2 acute angles?",
+      "ms": {
+        "draft": 7254,
+        "critique": 17281,
+        "solver": 3497
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following objects is likely to have an acute angle?",
+      "ms": {
+        "draft": 14393,
+        "critique": 15400
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a triangle is formed using straws of equal length, what type of triangle is it?",
+      "ms": {
+        "draft": 14393,
+        "critique": 11632
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the figure below, which angles are right angles?",
+      "ms": {
+        "draft": 14393,
+        "critique": 16175,
+        "solver": 3190
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What happens to the angles of a shape if you push one of its sides?",
+      "ms": {
+        "draft": 14393,
+        "critique": 12878
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the shape of the face common to all prisms?",
+      "ms": {
+        "draft": 7498,
+        "critique": 10331,
+        "solver": 4339,
+        "form": 11733
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which shape has exactly 2 right angles, 1 acute angle, and 1 obtuse angle?",
+      "ms": {
+        "draft": 15172,
+        "critique": 13471,
+        "solver": 3008,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a 3D shape with all faces the same?",
+      "ms": {
+        "draft": 6142,
+        "critique": 12019,
+        "solver": 3738,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the shape of the face common to all pyramids?",
+      "ms": {
+        "draft": 7498,
+        "critique": 9130,
+        "solver": 3155,
+        "form": 9694,
+        "translation": 68045
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following shapes has exactly 3 angles?",
+      "ms": {
+        "draft": 15172,
+        "critique": 12795,
+        "solver": 3951,
+        "form": 0,
+        "translation": 56532
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a shape has 6 faces, 12 edges, and 8 corners, what is it called?",
+      "ms": {
+        "draft": 7498,
+        "critique": 13061,
+        "solver": 3960,
+        "form": 8568,
+        "translation": 85050
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following shapes has more than 4 angles?",
+      "ms": {
+        "draft": 15172,
+        "critique": 13726,
+        "solver": 3658,
+        "form": 0,
+        "translation": 59255
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following shapes has 2 flat faces and 1 curved face?",
+      "ms": {
+        "draft": 7498,
+        "critique": 11946,
+        "solver": 2700,
+        "form": 4842,
+        "translation": 71582
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "How many edges does a cube have?",
+      "ms": {
+        "draft": 6142,
+        "critique": 11367,
+        "solver": 2216,
+        "form": 0,
+        "translation": 40775
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A net is made up of 5 triangles and 1 pentagon. Which shape can it form?",
+      "ms": {
+        "draft": 7498,
+        "critique": 14433,
+        "solver": 2867,
+        "form": 0,
+        "translation": 91967
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a solid has 5 faces, 5 corners, and 8 edges, which shape is it?",
+      "ms": {
+        "draft": 6142,
+        "critique": 11941,
+        "solver": 1374,
+        "form": 0,
+        "translation": 34952
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following shapes has 4 right angles but is not a square?",
+      "ms": {
+        "draft": 15172,
+        "critique": 15693,
+        "solver": 14115,
+        "form": 0,
+        "translation": 56689
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a 3D shape with 5 faces and 5 corners?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of angle is formed when a piece of paper is folded to make a right angle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given dot grid, if a shape has four right angles and all sides are equal, what is the name of the shape?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a triangle is made using straws of different sizes, what happens when one of its sides is gently pushed?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks pushing a triangle would make it a circle, which is n…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a pentagon is made with straws of equal length and one side is pushed gently, what happens to the angles of the pentagon?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Thinks pushing a pentagon would keep all angles right angles…\"); distractor 1's reason is not a one-line misconception (\"Thinks pushing a pentagon would keep all angles equal, but t…\"); distractor 2's reason is not a one-line misconception (\"Thinks pushing a pentagon would make all angles acute, which…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a circle is folded in half twice and the length of the crease is measured, what is the relationship between the diameter and the radius?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Confuses diameter with equal to radius, which is not true as…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a triangle is made with straws of different lengths and one side is pushed, what is the effect on the shape?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many right angles are there in the given figure?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which shape has the same number of sides and angles?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the relation between the number of sides and the number of angles in a polygon?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which shape has exactly 4 angles?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which shape has only right angles?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which shape has 2 right angles, 1 acute, and 1 obtuse angle?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Draw a 2D shape with more than 4 angles.",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a right angle?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Confuses right angle with obtuse angle (which is more than 9…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which shape has 2 obtuse angles and 2 acute angles?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following objects is likely to have an acute angle?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a triangle is formed using straws of equal length, what type of triangle is it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the figure below, which angles are right angles?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What happens to the angles of a shape if you push one of its sides?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the shape of the face common to all prisms?",
+      "reason": "near-duplicate of served question cmvk2omsj0itkgpfhlo84aaee (cosine 0.939 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which shape has exactly 2 right angles, 1 acute angle, and 1 obtuse angle?",
+      "reason": "near-duplicate of served question cmvh0hgpx05yngpfh07xqdot1 (cosine 0.952 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a 3D shape with all faces the same?",
+      "reason": "near-duplicate of served question cmvk2oms90iswgpfhjjusmyas (cosine 0.957 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,913 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T01:46:50.002Z",
+  "finishedAt": "2026-10-30T01:59:26.515Z",
+  "seconds": 757,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari",
+    "bookCode": "iemh1",
+    "document": "ncert/9/mathematics/iemh108.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Predicting What Comes Next: Exploring Sequences and Progressions",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n6. C 𝑎 10 = 𝑎 + (10 − 1)𝑑 = 𝑝 + 9𝑞\n(C) 𝒑 + 𝟗𝒒",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n19. Assertion(A): The sequence −1, −1 − 1, . . . , −1 is an AP. 1\nReason(R): In an AP, 𝑎 − 𝑎 𝑛 𝑛−1 is constant where 𝑛 ≥ 2 and 𝑛 ∈ 𝑁",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n36. In a class, the teacher asks every student to write an example of A.P. Two boys\nAryan and Roshan writes the progression as −5, −2,1,4, …… and 187, 184, 181, ….\nrespectively. Now the teacher asks his various students the following questions on\nprogression.\nHelp the students to find answers for the following:\ni. Find the sum of the common difference of two progressions. 1\nii. Find the 34 term of progression written by Roshan. th 1\niii. (A) Find the sum of first 10 terms of the progression written by Aryan. 2\nOR\n(B) Which term of the progressions will have the same value? 2",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n6. 1\n(A) 𝑞 + 10𝑝 (B) 𝑝 − 9𝑞 (C) 𝑝 + 9𝑞 (D) 𝑝 + 10q\nWhich term of the AP: 21, 42, 63, 84 ... is 210?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 324966,
+      "in": 49,
+      "out": 45,
+      "rejects": 5,
+      "promptTokens": 52944,
+      "completionTokens": 17351
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 415630,
+      "in": 45,
+      "out": 27,
+      "rejects": 18,
+      "promptTokens": 29087,
+      "completionTokens": 10400
+    },
+    "solver": {
+      "calls": 219,
+      "ms": 121993,
+      "in": 27,
+      "out": 18,
+      "rejects": 9,
+      "promptTokens": 50129,
+      "completionTokens": 2467
+    },
+    "form": {
+      "calls": 7,
+      "ms": 31506,
+      "in": 18,
+      "out": 1,
+      "rejects": 17,
+      "promptTokens": 5229,
+      "completionTokens": 759
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 31,
+      "ms": 6316,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 15767,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2021,
+      "completionTokens": 1028
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a sequence where each term is the sum of the natural numbers up to that term?",
+      "ms": {
+        "draft": 14724,
+        "critique": 5976
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage describes a sequence where each term is the sum of the odd numbers up to that term. If the 4th term of the sequence is 16, what is the 5th term?",
+      "ms": {
+        "draft": 14724,
+        "critique": 6159,
+        "solver": 13060,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the nth term of a sequence is given by the formula t = 3n + 1, what is the 7th term of the sequence?",
+      "ms": {
+        "draft": 14724,
+        "critique": 5635,
+        "solver": 20039
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is NOT a term of the sequence defined by the rule t = 5n - 2?",
+      "ms": {
+        "draft": 14724,
+        "critique": 8056
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A sequence is defined by the rule t = 2n - 1. If a term in the sequence is 137, what is its position in the sequence?",
+      "ms": {
+        "draft": 14724,
+        "critique": 10284,
+        "solver": 19223
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the nth term of a sequence is given by t = 5n - 3, what is the 10th term?",
+      "ms": {
+        "draft": 7118,
+        "critique": 7219
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the explicit formula for the nth term of the sequence 1, 4, 7, 10, 13, ...?",
+      "ms": {
+        "draft": 7118,
+        "critique": 7180,
+        "solver": 1792,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage says that a sequence can be defined by an explicit rule. Which of the following sequences is defined by the explicit rule u = 5n - 2?",
+      "ms": {
+        "draft": 14724,
+        "critique": 9016,
+        "solver": 16847
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The nth term of a sequence is given by t = 3n + 1. What is the 15th term?",
+      "ms": {
+        "draft": 7118,
+        "critique": 6668
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The nth term of a sequence is given by t = 4n - 3. What is the 12th term?",
+      "ms": {
+        "draft": 7118,
+        "critique": 5325,
+        "solver": 1722,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The nth term of an arithmetic progression is given by t = 5n + 2. Which of the following is the 8th term?",
+      "ms": {
+        "draft": 7118,
+        "critique": 6461
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the nth term of an AP is given by t = 200 + 40n, what is the first term of the AP?",
+      "ms": {
+        "draft": 5066,
+        "critique": 6606
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the recursive rule for the sequence 1, 4, 7, 10, 13, ...?",
+      "ms": {
+        "draft": 7118,
+        "critique": 6521,
+        "solver": 1451,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the nth term of an AP is given by t = 240 + 40(n - 1), what is the common difference of the AP?",
+      "ms": {
+        "draft": 5066,
+        "critique": 6188,
+        "solver": 1758,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The sequence of fare charges for a taxi is an AP with the first term as 240 and the common difference as 40. What is the total fare after traveling 10 km?",
+      "ms": {
+        "draft": 5066,
+        "critique": 8197
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a geometric progression?",
+      "ms": {
+        "draft": 18519,
+        "critique": 6159,
+        "solver": 1681,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The number of black triangles in the Sierpiński triangle at each stage is 1, 3, 9, 27, … What is the formula for the number of black triangles at stage n?",
+      "ms": {
+        "draft": 18519,
+        "critique": 7653,
+        "solver": 1525,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the first term of a geometric progression is 3 and the common ratio is 2, what is the 5th term?",
+      "ms": {
+        "draft": 18519,
+        "critique": 7547,
+        "solver": 1531,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the number of black triangles in the Sierpiński triangle at stage n is 3^n, and the area of the black region at stage 0 is 1 square unit, what is the area of the black region at stage n?",
+      "ms": {
+        "draft": 18519,
+        "critique": 8628,
+        "solver": 1965,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the common ratio of the geometric progression 5, 10, 20, 40, 80?",
+      "ms": {
+        "draft": 18519,
+        "critique": 6125,
+        "solver": 12478,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of progression is formed by the sequence of heights attained by a ball after each bounce, as described in the passage?",
+      "ms": {
+        "draft": 6551,
+        "critique": 5514,
+        "solver": 1118,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the Sierpiński square carpet, if the area of the square in Stage 0 is 1 square unit, what is the area of the red region in Stage 3?",
+      "ms": {
+        "draft": 6551,
+        "critique": 5410
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for an ordered list of numbers?",
+      "ms": {
+        "draft": 3585,
+        "critique": 6215
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the first term of an AP is 5 and the common difference is 3, what is the 7th term?",
+      "ms": {
+        "draft": 3585,
+        "critique": 8616
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the 5th term of an AP is 17 and the 10th term is 37, what is the first term?",
+      "ms": {
+        "draft": 3585,
+        "critique": 7526
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which formula is used to calculate the nth term of an arithmetic progression?",
+      "ms": {
+        "draft": 3585,
+        "critique": 8379,
+        "solver": 11281,
+        "form": 2588
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the 7th term of an AP is 25 and the 12th term is 45, what is the 15th term?",
+      "ms": {
+        "draft": 3585,
+        "critique": 7427
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a geometric progression?",
+      "ms": {
+        "draft": 6519,
+        "critique": 7705
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the 6th term of the geometric progression 2, 6, 18, 54, ...?",
+      "ms": {
+        "draft": 6519,
+        "critique": 8277
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ball is dropped from a height of 24 feet and bounces back to 75% of its previous height. After how many bounces does it first fall below 10 feet?",
+      "ms": {
+        "draft": 6519,
+        "critique": 8658,
+        "solver": 2125
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a geometric progression, the 3rd term is 12 and the 5th term is 48. What is the common ratio?",
+      "ms": {
+        "draft": 6519,
+        "critique": 8527,
+        "solver": 1558,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following sequences is a geometric progression?",
+      "ms": {
+        "draft": 6519,
+        "critique": 7854
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The number of red squares in the Sierpiński square carpet at each stage forms a geometric progression. If Stage 0 has 1 square, and Stage 1 has 8 squares, what is the common ratio?",
+      "ms": {
+        "draft": 6519,
+        "critique": 7382,
+        "solver": 15491
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following describes the pattern of green squares in Fig. 8.6?",
+      "ms": {
+        "draft": 9062,
+        "critique": 6721,
+        "solver": 1494
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the pattern of green squares in Fig. 8.6 continues, what is the number of green squares in Stage 5?",
+      "ms": {
+        "draft": 9062,
+        "critique": 7095,
+        "solver": 1860
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the Sierpiński triangle, the area of the black region decreases by a factor of 3/4 at each stage. If the area of the black region in Stage 0 is 1 square unit, what is the area of the black region in Stage 3?",
+      "ms": {
+        "draft": 9062,
+        "critique": 7155,
+        "solver": 1190
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the common ratio of the geometric progression in the sequence 3, 6, 12, 24, ...?",
+      "ms": {
+        "draft": 9062,
+        "critique": 7507,
+        "solver": 13585,
+        "form": 3716
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the Sierpiński triangle pattern, the number of black triangles at each stage follows a geometric progression. If the number of black triangles in Stage 0 is 1, what is the number of black triangles in Stage 5?",
+      "ms": {
+        "draft": 9062,
+        "critique": 9770,
+        "solver": 20032,
+        "form": 4249
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the pattern of black triangles in the Sierpiński triangle continues, what is the number of black triangles in Stage 4?",
+      "ms": {
+        "draft": 9062,
+        "critique": 10759,
+        "solver": 16775
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the sum of the first 10 natural numbers?",
+      "ms": {
+        "draft": 9325,
+        "critique": 7059
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the sum of the first 100 natural numbers according to the method described in the passage?",
+      "ms": {
+        "draft": 9325,
+        "critique": 7389
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the formula for the n^{th} term of an arithmetic progression?",
+      "ms": {
+        "draft": 9325,
+        "critique": 9336,
+        "solver": 13095,
+        "form": 3717
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general formula for the nth term of an arithmetic progression?",
+      "ms": {
+        "draft": 9981,
+        "critique": 8422
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the sequence where each term is the sum of the natural numbers up to that term?",
+      "ms": {
+        "draft": 6974,
+        "critique": 4625,
+        "solver": 4818,
+        "form": 1403
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of an arithmetic progression?",
+      "ms": {
+        "draft": 3585,
+        "critique": 8012,
+        "solver": 1488,
+        "form": 0,
+        "translation": 9870
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the 10th term of the AP: 2, 5, 8, 11, ...?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the 34th term of the AP: 187, 184, 181, ...?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the sum of the first 10 natural numbers?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 5, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following is a sequence?\",\n      \"options\": [\"A "
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a sequence where each term is the sum of the natural numbers up to that term?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage describes a sequence where each term is the sum of the odd numbers up to that term. If the 4th term of the sequence is 16, what is the 5th term?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the nth term of a sequence is given by the formula t = 3n + 1, what is the 7th term of the sequence?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is NOT a term of the sequence defined by the rule t = 5n - 2?",
+      "reason": "option 0 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A sequence is defined by the rule t = 2n - 1. If a term in the sequence is 137, what is its position in the sequence?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the nth term of a sequence is given by t = 5n - 3, what is the 10th term?",
+      "reason": "the critic finds option 1 correct, the key is 0"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the explicit formula for the nth term of the sequence 1, 4, 7, 10, 13, ...?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage says that a sequence can be defined by an explicit rule. Which of the following sequences is defined by the explicit rule u = 5n - 2?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The nth term of a sequence is given by t = 3n + 1. What is the 15th term?",
+      "reason": "the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The nth term of a sequence is given by t = 4n - 3. What is the 12th term?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The nth term of an arithmetic progression is given by t = 5n + 2. Which of the following is the 8th term?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the nth term of an AP is given by t = 200 + 40n, what is the first term of the AP?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the recursive rule for the sequence 1, 4, 7, 10, 13, ...?",
+      "reason": "options 0 and 1 say the same thing (\"t = 1, t = t + 3 for n ≥ 2\" / \"t = 1, t = t + 2 for n ≥ 2\"); options 1 and 2 say the same thing (\"t = 1, t = t + 2 for n ≥ 2\" / \"t = 1, t = t + 4 for n ≥ 2\"); options 1 and 3 say the same thing (\"t = 1, t = t + 2 for n ≥ 2\" / \"t = 1, t = t + 5 for n ≥ 2\"); figure is set without imageAlt"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the nth term of an AP is given by t = 240 + 40(n - 1), what is the common difference of the AP?",
+      "reason": "checkExpr \"40\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The sequence of fare charges for a taxi is an AP with the first term as 240 and the common difference as 40. What is the total fare after traveling 10 km?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a geometric progression?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"identifies a sequence of squares as a geometric progression,…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The number of black triangles in the Sierpiński triangle at each stage is 1, 3, 9, 27, … What is the formula for the number of black triangles at stage n?",
+      "reason": "options 1 and 3 are the same (\"n^3\"); options mix numbers and words (2 of 4 are numbers); ARITHMETIC MISMATCH — checkExpr \"3^5\" = 243, but the key says 3"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the first term of a geometric progression is 3 and the common ratio is 2, what is the 5th term?",
+      "reason": "figure: figure spec refused: spec.yLabel: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the number of black triangles in the Sierpiński triangle at stage n is 3^n, and the area of the black region at stage 0 is 1 square unit, what is the area of the black region at stage n?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); ARITHMETIC MISMATCH — checkExpr \"(3/4)^5\" = 0.2373046875, but the key says 0.75"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the common ratio of the geometric progression 5, 10, 20, 40, 80?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels ar, ar2, ar3, ar4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What type of progression is formed by the sequence of heights attained by a ball after each bounce, as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the Sierpiński square carpet, if the area of the square in Stage 0 is 1 square unit, what is the area of the red region in Stage 3?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is the correct recursive rule for an arithmetic progression?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term for an ordered list of numbers?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the first term of an AP is 5 and the common difference is 3, what is the 7th term?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the 5th term of an AP is 17 and the 10th term is 37, what is the first term?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which formula is used to calculate the nth term of an arithmetic progression?",
+      "reason": "options 0 and 1 say the same thing (\"t = a + (n + 1)d\" / \"t = a + (n - 1)d\"); options 0 and 2 say the same thing (\"t = a + (n + 1)d\" / \"t = a + n d\"); options 0 and 3 are the same (\"t = a + (n + 1)d\"); options 1 and 3 say the same thing (\"t = a + (n - 1)d\" / \"t = a * (n + 1)d\"); options 2 and 3 say the same thing (\"t = a + n d\" / \"t = a * (n + 1)d\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the 7th term of an AP is 25 and the 12th term is 45, what is the 15th term?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a geometric progression?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the 6th term of the geometric progression 2, 6, 18, 54, ...?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A ball is dropped from a height of 24 feet and bounces back to 75% of its previous height. After how many bounces does it first fall below 10 feet?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a geometric progression, the 3rd term is 12 and the 5th term is 48. What is the common ratio?",
+      "reason": "checkExpr \"sqrt(48/12)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following sequences is a geometric progression?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The number of red squares in the Sierpiński square carpet at each stage forms a geometric progression. If Stage 0 has 1 square, and Stage 1 has 8 squares, what is the common ratio?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following describes the pattern of green squares in Fig. 8.6?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the pattern of green squares in Fig. 8.6 continues, what is the number of green squares in Stage 5?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the Sierpiński triangle, the area of the black region decreases by a factor of 3/4 at each stage. If the area of the black region in Stage 0 is 1 square unit, what is the area of the black region in Stage 3?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the common ratio of the geometric progression in the sequence 3, 6, 12, 24, ...?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the second term with the common ratio and misunders…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the Sierpiński triangle pattern, the number of black triangles at each stage follows a geometric progression. If the number of black triangles in Stage 0 is 1, what is the number of black triangles in Stage 5?",
+      "reason": "options 1 and 2 are the same (\"243\"); options 1 and 3 are the same (\"243\"); options 2 and 3 are the same (\"243\"); options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the pattern of black triangles in the Sierpiński triangle continues, what is the number of black triangles in Stage 4?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the sum of the first 10 natural numbers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the sum of the first 100 natural numbers according to the method described in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the formula for the n^{th} term of an arithmetic progression?",
+      "reason": "options 0 and 1 say the same thing (\"t = a + n × d\" / \"t = a + (n + 1) × d\"); options 0 and 3 say the same thing (\"t = a + n × d\" / \"t = a + (n + 1) × d\"); options 1 and 2 say the same thing (\"t = a + (n + 1) × d\" / \"t = a + (n – 1) × d\"); options 1 and 3 are the same (\"t = a + (n + 1) × d\"); options 2 and 3 say the same thing (\"t = a + (n – 1) × d\" / \"t = a + (n + 1) × d\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the general formula for the nth term of an arithmetic progression?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the sequence where each term is the sum of the natural numbers up to that term?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

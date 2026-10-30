@@ -1,0 +1,836 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T09:32:34.784Z",
+  "finishedAt": "2026-10-25T12:43:11.762Z",
+  "seconds": 11437,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc105.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 5 — Life Processes",
+    "edition": "Reprint 2026-27",
+    "chunks": 30,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2022-23]\n29. No photosynthesis will occur so no glucose will be made. Also no respiration will 3\ntake place as no Oxygen will be taken in. (1)\nNo transpiration will occur so there would be no upward movement of water or\nminerals from the soil as there will be no transpirational pull.(1)\nTemperature regulation of leaf surface will be affected. (1)\nOR\nLymph carries digested and absorbed fat from the intestine (1) and drains excess\nfluid from extracellular space back into the blood (1). Blockage of lymphatic\nsystem will lead to water retention and poor fat absorption in the body\n(1- any one)",
+      "[CBSE Class X Science, marking scheme, 2023-24]\nMarking Scheme (2023-24)\nClass-X\nScience (Subject Code – 086) b\nQ. No. Answer Marks\nSection–A\n1 b) Barium sulphate\n2 b) Colourless\n3 d) NaHCO 3\n4 a) Sodium\n6 d) 11 (2,8,1)\n7 c) 14\n8 b) Mushroom\n9 a) tongue\n10 c) Vegetative propagation\n11 c) Growth hormones under the influence of the enzymes coded by a gene. 1\n12 c) lack of oxygen and formation of lactic acid. 1\n13 d) behind the mirror and its position varies according to the object distance. 1\n14 c) scattering of light.\n15 c) CFCs, Ozone\n16 a) Broken down by biological processes\n17 d) Assertion is false but Reason is true\n18 a) Both A and R are true and R is the correct explanation of A. 1\n19 d) Assertion is false but Reason is true 1\n20 c) ",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 166477,
+      "in": 41,
+      "out": 39,
+      "rejects": 8,
+      "promptTokens": 45743,
+      "completionTokens": 10272
+    },
+    "critique": {
+      "calls": 36,
+      "ms": 200009,
+      "in": 39,
+      "out": 29,
+      "rejects": 10,
+      "promptTokens": 16335,
+      "completionTokens": 6193
+    },
+    "solver": {
+      "calls": 172,
+      "ms": 95492,
+      "in": 29,
+      "out": 23,
+      "rejects": 6,
+      "promptTokens": 29182,
+      "completionTokens": 1737
+    },
+    "form": {
+      "calls": 14,
+      "ms": 61640,
+      "in": 23,
+      "out": 13,
+      "rejects": 10,
+      "promptTokens": 8960,
+      "completionTokens": 1616
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 36,
+      "ms": 4899,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 31,
+      "ms": 836332,
+      "in": 24,
+      "out": 15,
+      "rejects": 9,
+      "promptTokens": 18048,
+      "completionTokens": 9482
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an essential requirement for photosynthesis?",
+      "ms": {
+        "draft": 4579
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the starch produced by plants during photosynthesis?",
+      "ms": {
+        "draft": 4579
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment to demonstrate that carbon dioxide is essential for photosynthesis, what is the role of potassium hydroxide?",
+      "ms": {
+        "draft": 4579
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment to demonstrate that carbon dioxide is essential for photosynthesis, what is the role of potassium hydroxide?",
+      "ms": {
+        "draft": 4579,
+        "critique": 5490,
+        "solver": 938,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant is kept in a dark room for three days, what happens to the starch in its leaves?",
+      "ms": {
+        "draft": 4579,
+        "critique": 5950,
+        "solver": 12722,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student conducted an experiment where they added yeast to a sugar solution and observed the production of bubbles. What could be the reason for this observation?",
+      "ms": {
+        "draft": 4603,
+        "critique": 5573,
+        "solver": 825,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the surface area of the respiratory organs important for gas exchange in animals?",
+      "ms": {
+        "draft": 4603,
+        "critique": 5389,
+        "solver": 719698
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of digestive enzymes?",
+      "ms": {
+        "draft": 4603,
+        "critique": 4595,
+        "solver": 719998
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the primary function of the xylem in plants?",
+      "ms": {
+        "draft": 2833
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what would happen if the stomata in the leaves were closed?",
+      "ms": {
+        "draft": 2833,
+        "critique": 5048,
+        "solver": 771,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A plant with no root pressure but high transpiration would most likely have which of the following?",
+      "ms": {
+        "draft": 2833,
+        "critique": 5439,
+        "solver": 1450
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process helps in the removal of nitrogenous waste from the body of humans?",
+      "ms": {
+        "draft": 3257,
+        "critique": 6325
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary function of the kidneys in the human body?",
+      "ms": {
+        "draft": 3257,
+        "critique": 5587
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do plants have a slower transport system compared to animals?",
+      "ms": {
+        "draft": 2833,
+        "critique": 6374,
+        "solver": 1198,
+        "form": 1631
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why is it necessary to separate oxygenated and deoxygenated blood in mammals and birds?",
+      "ms": {
+        "draft": 3257,
+        "critique": 6191,
+        "solver": 893
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person's blood pressure is recorded as 120/80 mm Hg, what does this indicate?",
+      "ms": {
+        "draft": 2868,
+        "critique": 2976,
+        "solver": 4139,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant's stomata are closed, what would be the effect on the transport of water and minerals in the xylem?",
+      "ms": {
+        "draft": 2868
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the lymphatic system?",
+      "ms": {
+        "draft": 2868,
+        "critique": 5647,
+        "solver": 729443
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the xylem and phloem in plants?",
+      "ms": {
+        "draft": 2868,
+        "critique": 6148,
+        "solver": 728944
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the balloon-like structures in the lungs where gas exchange takes place?",
+      "ms": {
+        "draft": 6315,
+        "critique": 4809,
+        "solver": 1055,
+        "form": 4957
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main function of the heart's different chambers?",
+      "ms": {
+        "draft": 6315,
+        "critique": 3215,
+        "solver": 2048,
+        "form": 2283
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the alimentary canal is responsible for the complete digestion of carbohydrates, proteins, and fats?",
+      "ms": {
+        "draft": 3646
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the function of the mucus secreted by the stomach lining?",
+      "ms": {
+        "draft": 3646,
+        "critique": 11045,
+        "solver": 4714,
+        "form": 931398
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person's small intestine is shorter than normal, which type of food would be most difficult to digest?",
+      "ms": {
+        "draft": 3646,
+        "critique": 5670
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best describes the reason why viruses are considered to be on the borderline of being alive?",
+      "ms": {
+        "draft": 6012,
+        "critique": 6799
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a raw material used by plants for photosynthesis?",
+      "ms": {
+        "draft": 2664,
+        "critique": 4815,
+        "solver": 8028,
+        "form": 719
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the plant is responsible for transporting water and minerals from the roots to the leaves?",
+      "ms": {
+        "draft": 4959,
+        "critique": 6013,
+        "solver": 529,
+        "form": 1409
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which system in humans is responsible for removing excretory products from the body?",
+      "ms": {
+        "draft": 4959,
+        "critique": 5659,
+        "solver": 963,
+        "form": 1418,
+        "translation": 1139166
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about cellular respiration?",
+      "ms": {
+        "draft": 4603,
+        "critique": 7031,
+        "solver": 908,
+        "form": 0,
+        "translation": 1283517
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do terrestrial organisms have an advantage over aquatic organisms in obtaining oxygen for respiration?",
+      "ms": {
+        "draft": 6315,
+        "critique": 7345,
+        "solver": 913,
+        "form": 2730,
+        "translation": 35200
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the valves in veins?",
+      "ms": {
+        "draft": 2868,
+        "critique": 4354,
+        "solver": 890,
+        "form": 0,
+        "translation": 24877
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person's muscle cells lack oxygen during physical activity, what would happen to the pyruvate molecule?",
+      "ms": {
+        "draft": 4603,
+        "critique": 6065,
+        "solver": 917,
+        "form": 0,
+        "translation": 1283517
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant has very tall structures, which of the following would be the most important for water transport?",
+      "ms": {
+        "draft": 2833,
+        "critique": 5180,
+        "solver": 1182,
+        "form": 2307,
+        "translation": 1140181
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the starch produced by plants during photosynthesis?",
+      "ms": {
+        "draft": 4579,
+        "critique": 4933,
+        "solver": 826,
+        "form": 0,
+        "translation": 1283516
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of ATP in cellular processes?",
+      "ms": {
+        "draft": 4603,
+        "critique": 6150,
+        "solver": 1048,
+        "form": 0,
+        "translation": 1143232
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person has a lower than normal haemoglobin level, what is the most likely effect on their body?",
+      "ms": {
+        "draft": 6315,
+        "critique": 5371,
+        "solver": 1026,
+        "form": 1820,
+        "translation": 30114
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the separation of oxygenated and deoxygenated blood important in mammals?",
+      "ms": {
+        "draft": 6315,
+        "critique": 6803,
+        "solver": 3498,
+        "form": 4724,
+        "translation": 26691
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the transportation of food in plants considered to be an active process, unlike the transportation of water in the xylem?",
+      "ms": {
+        "draft": 2868,
+        "critique": 5353,
+        "solver": 12276,
+        "form": 0,
+        "translation": 35528
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the purpose of the villi in the small intestine?",
+      "ms": {
+        "draft": 3646,
+        "critique": 5122,
+        "solver": 1395,
+        "form": 3634,
+        "translation": 25553
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main reason for the upward movement of water in the xylem?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an essential requirement for photosynthesis?",
+      "reason": "call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What happens to the starch produced by plants during photosynthesis?",
+      "reason": "call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the experiment to demonstrate that carbon dioxide is essential for photosynthesis, what is the role of potassium hydroxide?",
+      "reason": "call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment to demonstrate that carbon dioxide is essential for photosynthesis, what is the role of potassium hydroxide?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a plant is kept in a dark room for three days, what happens to the starch in its leaves?",
+      "reason": "figure is set without imageAlt"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student conducted an experiment where they added yeast to a sugar solution and observed the production of bubbles. What could be the reason for this observation?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'yeast'"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is the surface area of the respiratory organs important for gas exchange in animals?",
+      "reason": "call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a function of digestive enzymes?",
+      "reason": "call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the primary function of the xylem in plants?",
+      "reason": "call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what would happen if the stomata in the leaves were closed?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Thinks photosynthesis would be affected, but the passage doe…\"); distractor 3's reason is not a one-line misconception (\"Assumes root pressure would increase, which is not supported…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A plant with no root pressure but high transpiration would most likely have which of the following?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process helps in the removal of nitrogenous waste from the body of humans?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the primary function of the kidneys in the human body?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do plants have a slower transport system compared to animals?",
+      "reason": "the key is far longer than every distractor (56 vs 32 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Why is it necessary to separate oxygenated and deoxygenated blood in mammals and birds?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 2)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "Which of the following is not a product of photosynthesis?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person's blood pressure is recorded as 120/80 mm Hg, what does this indicate?",
+      "reason": "options 0 and 1 say the same thing (\"The systolic pressure is 80 mm Hg and the diastolic pressure is 120 mm Hg\" / \"The systolic pressure is 120 mm Hg and the diastolic pressure is 80 mm Hg\"); options 2 and 3 say the same thing (\"The blood pressure is too high and needs immediate treatment\" / \"The blood pressure is too low and needs immediate treatment\"); distractor 2's reason is not a one-line misconception (\"Correct understanding of the numbers is not present…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a plant's stomata are closed, what would be the effect on the transport of water and minerals in the xylem?",
+      "reason": "call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a function of the lymphatic system?",
+      "reason": "call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the xylem and phloem in plants?",
+      "reason": "call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the balloon-like structures in the lungs where gas exchange takes place?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'airway'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main function of the heart's different chambers?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'heart'; repair call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which part of the alimentary canal is responsible for the complete digestion of carbohydrates, proteins, and fats?",
+      "reason": "call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the function of the mucus secreted by the stomach lining?",
+      "reason": "the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person's small intestine is shorter than normal, which type of food would be most difficult to digest?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following best describes the reason why viruses are considered to be on the borderline of being alive?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a raw material used by plants for photosynthesis?",
+      "reason": "option 3 is a catch-all (\"All of the above\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which part of the plant is responsible for transporting water and minerals from the roots to the leaves?",
+      "reason": "near-duplicate of served question cmvjy5ptj0i56gpfhnw6xf8sa (cosine 0.931 ≥ 0.9)"
+    },
+    {
+      "stage": "translation",
+      "level": 3,
+      "stem": "What happens to the starch produced by plants during photosynthesis?",
+      "reason": "hi: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about cellular respiration?",
+      "reason": "hi: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 3,
+      "stem": "If a person's muscle cells lack oxygen during physical activity, what would happen to the pyruvate molecule?",
+      "reason": "hi: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 3,
+      "stem": "What happens to the starch produced by plants during photosynthesis?",
+      "reason": "mr: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about cellular respiration?",
+      "reason": "mr: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 3,
+      "stem": "If a person's muscle cells lack oxygen during physical activity, what would happen to the pyruvate molecule?",
+      "reason": "mr: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 4,
+      "stem": "What is the role of ATP in cellular processes?",
+      "reason": "hi: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 3,
+      "stem": "If a plant has very tall structures, which of the following would be the most important for water transport?",
+      "reason": "hi: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 1,
+      "stem": "Which system in humans is responsible for removing excretory products from the body?",
+      "reason": "hi: The operation was aborted due to timeout"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "solution rewrite failed for \"What is the function of the mucus secret…\": The operation was aborted due to timeout",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

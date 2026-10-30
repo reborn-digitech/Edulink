@@ -1,0 +1,761 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T16:15:46.804Z",
+  "finishedAt": "2026-10-27T16:30:57.957Z",
+  "seconds": 911,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu102.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 2 — The Invisible Living World: Beyond Our Naked Eye",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2026-27]\n2. C. R 1\nFor visually impaired students\nB. The leaf kept in darkness will show the presence of starch",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n1. C. Cuscuta, ticks, lice, leeches and tapeworm; as all of these are parasites. 1",
+      "[INJSO 2017 — question paper]\n13. A group of biology students on excursion to Goa beaches collected the following animal samples.\nWhile they were putting the animals in the jar with sea water, they noticed that one of the animal’s\n1/3 body part was missing. The injured animal (with only 2/3 of its body) was brought to the lab and rd rd\nwas allowed to grow in the laboratory in appropriate condition. To their surprise the lost body part of\nthe animal had regenerated. Which of the above animal would have been collected?\na) Planaria b) Hermit crab c) Sepia d) Sea anemone",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 250824,
+      "in": 40,
+      "out": 39,
+      "rejects": 1,
+      "promptTokens": 44723,
+      "completionTokens": 10095
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 395113,
+      "in": 39,
+      "out": 29,
+      "rejects": 10,
+      "promptTokens": 19917,
+      "completionTokens": 7558
+    },
+    "solver": {
+      "calls": 176,
+      "ms": 102733,
+      "in": 29,
+      "out": 29,
+      "rejects": 0,
+      "promptTokens": 25191,
+      "completionTokens": 1594
+    },
+    "form": {
+      "calls": 24,
+      "ms": 129649,
+      "in": 29,
+      "out": 12,
+      "rejects": 17,
+      "promptTokens": 11712,
+      "completionTokens": 2388
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 91,
+      "ms": 19503,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 43,
+      "ms": 571868,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 24764,
+      "completionTokens": 12594
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 3,
+    "4": 0,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of the book written by Robert Hooke that showed detailed drawings of tiny things?",
+      "ms": {
+        "draft": 10328,
+        "critique": 6569,
+        "solver": 1824,
+        "form": 4506
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using glycerin while preparing a slide of onion peel?",
+      "ms": {
+        "draft": 10328,
+        "critique": 7370,
+        "solver": 2445,
+        "form": 4628
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the structure of an onion peel under the microscope?",
+      "ms": {
+        "draft": 10328,
+        "critique": 10870,
+        "solver": 2352,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student observes a structure under a microscope that looks like a honeycomb, which scientist's work is this likely related to?",
+      "ms": {
+        "draft": 10328,
+        "critique": 8756,
+        "solver": 2489,
+        "form": 4296
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student wants to understand the concept of 'cells' as described in the chapter, which of the following would be the best approach?",
+      "ms": {
+        "draft": 10328,
+        "critique": 11118,
+        "solver": 2492,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student uses a magnifying glass to look at an onion peel, which of the following would they most likely see?",
+      "ms": {
+        "draft": 10328,
+        "critique": 11290,
+        "solver": 2133,
+        "form": 3886
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main function of the cell membrane in a cell?",
+      "ms": {
+        "draft": 4780,
+        "critique": 7984,
+        "solver": 1823,
+        "form": 5125
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a basic part of all cells?",
+      "ms": {
+        "draft": 4780,
+        "critique": 9403,
+        "solver": 19976,
+        "form": 4164
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the basic unit of life according to the passage?",
+      "ms": {
+        "draft": 4780,
+        "critique": 8688,
+        "solver": 2720,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the function of a microscope when studying microorganisms?",
+      "ms": {
+        "draft": 4852,
+        "critique": 7993,
+        "solver": 1837,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is described in the passage as the breakdown of complex substances in dead plants and animals into simpler nutrients?",
+      "ms": {
+        "draft": 5357,
+        "critique": 10295,
+        "solver": 2043,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is mentioned in the passage as an example of microorganisms helping to clean the environment?",
+      "ms": {
+        "draft": 5357,
+        "critique": 8549,
+        "solver": 2389,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the description in the passage, what is the role of yeast in making bread?",
+      "ms": {
+        "draft": 5357,
+        "critique": 9039,
+        "solver": 1992,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If microorganisms did not exist on Earth, what would be the most likely outcome according to the passage?",
+      "ms": {
+        "draft": 5357,
+        "critique": 7737,
+        "solver": 2365,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of microorganism is shown in Fig. 2.12 of the chapter?",
+      "ms": {
+        "draft": 78927,
+        "critique": 9316
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a microorganism that is used in the process of making bread, cakes, and pastries?",
+      "ms": {
+        "draft": 6069,
+        "critique": 6949
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experimental set-up shown in the figure, what is the role of lime water?",
+      "ms": {
+        "draft": 6069,
+        "critique": 6951
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student adds yeast to a sugar solution and observes that the balloon attached to the test tube gets inflated. What is the most likely explanation for this observation?",
+      "ms": {
+        "draft": 6069,
+        "critique": 8230
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student collected some animal samples and noticed that one of them had only 2/3 of its body. After placing it in the lab, the lost body part regenerated. Which of the following animals is most likely to have this ability?",
+      "ms": {
+        "draft": 6069,
+        "critique": 8109
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A farmer grows bean crops without adding nitrogen fertiliser, while another farmer adds nitrogen fertiliser to his wheat field. What is the reason for this difference in practice?",
+      "ms": {
+        "draft": 6069,
+        "critique": 7840,
+        "solver": 17831,
+        "form": 3841
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a microorganism that lives in the roots of pulse crops and provides nutrients to the plants?",
+      "ms": {
+        "draft": 6069,
+        "critique": 9322,
+        "solver": 18432,
+        "form": 5951
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the curdling of milk in bowl A?",
+      "ms": {
+        "draft": 24553,
+        "critique": 8256
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which microorganism is responsible for converting milk into curd?",
+      "ms": {
+        "draft": 24553,
+        "critique": 12343,
+        "solver": 16935,
+        "form": 4204
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of Rhizobium in root nodules of legumes?",
+      "ms": {
+        "draft": 24553,
+        "critique": 9254
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are microalgae like Spirulina considered a superfood?",
+      "ms": {
+        "draft": 24553,
+        "critique": 8473
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the cell is responsible for regulating all activities within the cell?",
+      "ms": {
+        "draft": 6224,
+        "critique": 10640
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main purpose of using a magnifying glass when observing small organisms like ants?",
+      "ms": {
+        "draft": 6388,
+        "critique": 8499
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do different cells in the body have different shapes and structures?",
+      "ms": {
+        "draft": 4780,
+        "critique": 8566,
+        "solver": 1591,
+        "form": 4655
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process called when microorganisms break down complex substances into simpler, nutrient-rich substances?",
+      "ms": {
+        "draft": 41270,
+        "critique": 7438,
+        "solver": 2000,
+        "form": 3464
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of microorganism is used in making bread, cakes, and other baked goods?",
+      "ms": {
+        "draft": 41270,
+        "critique": 7262,
+        "solver": 2455,
+        "form": 4114,
+        "translation": 53291
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for living organisms that are so small they cannot be seen with the naked eye?",
+      "ms": {
+        "draft": 7567,
+        "critique": 8194,
+        "solver": 1828,
+        "form": 4035,
+        "translation": 34979
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason microorganisms are called 'microscopic'?",
+      "ms": {
+        "draft": 4852,
+        "critique": 9582,
+        "solver": 2303,
+        "form": 3588,
+        "translation": 61717
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following cells has a shape that helps it carry messages quickly in the body?",
+      "ms": {
+        "draft": 4780,
+        "critique": 8963,
+        "solver": 3251,
+        "form": 3442,
+        "translation": 56924
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a microorganism that can be found in both water and soil?",
+      "ms": {
+        "draft": 4852,
+        "critique": 8851,
+        "solver": 2499,
+        "form": 5341,
+        "translation": 51959
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a way to observe microorganisms in the soil?",
+      "ms": {
+        "draft": 4852,
+        "critique": 9658,
+        "solver": 2210,
+        "form": 3944,
+        "translation": 58105
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is most likely to be an example of a microorganism that can help in the formation of biogas?",
+      "ms": {
+        "draft": 5357,
+        "critique": 8044,
+        "solver": 2237,
+        "form": 3879,
+        "translation": 53557
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following organisms is food digested outside the body?",
+      "ms": {
+        "draft": 4780,
+        "critique": 9974,
+        "solver": 2284,
+        "form": 3286,
+        "translation": 71397
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student finds a spherical, green microorganism in a sample of pond water, which type of microorganism is it most likely to be?",
+      "ms": {
+        "draft": 4852,
+        "critique": 11312,
+        "solver": 1928,
+        "form": 3702,
+        "translation": 52526
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why microorganisms are important in the environment?",
+      "ms": {
+        "draft": 4852,
+        "critique": 9656,
+        "solver": 17841,
+        "form": 4804,
+        "translation": 70607
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the book written by Robert Hooke that showed detailed drawings of tiny things?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Mentions a term that is not in the passage.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of using glycerin while preparing a slide of onion peel?",
+      "reason": "the key is far longer than every distractor (52 vs 29 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the structure of an onion peel under the microscope?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student observes a structure under a microscope that looks like a honeycomb, which scientist's work is this likely related to?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'honeycomb'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student wants to understand the concept of 'cells' as described in the chapter, which of the following would be the best approach?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student uses a magnifying glass to look at an onion peel, which of the following would they most likely see?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cellWall: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main function of the cell membrane in a cell?",
+      "reason": "the key is far longer than every distractor (59 vs 29 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a basic part of all cells?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the basic unit of life according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the function of a microscope when studying microorganisms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which process is described in the passage as the breakdown of complex substances in dead plants and animals into simpler nutrients?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, so this is not the…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is mentioned in the passage as an example of microorganisms helping to clean the environment?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the description in the passage, what is the role of yeast in making bread?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If microorganisms did not exist on Earth, what would be the most likely outcome according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of microorganism is shown in Fig. 2.12 of the chapter?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main reason microorganisms can be found in various places like water, soil, and air?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a microorganism that is used in the process of making bread, cakes, and pastries?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the experimental set-up shown in the figure, what is the role of lime water?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A student adds yeast to a sugar solution and observes that the balloon attached to the test tube gets inflated. What is the most likely explanation for this observation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student collected some animal samples and noticed that one of them had only 2/3 of its body. After placing it in the lab, the lost body part regenerated. Which of the following animals is most likely to have this ability?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A farmer grows bean crops without adding nitrogen fertiliser, while another farmer adds nitrogen fertiliser to his wheat field. What is the reason for this difference in practice?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a microorganism that lives in the roots of pulse crops and provides nutrients to the plants?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason for the curdling of milk in bowl A?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which microorganism is responsible for converting milk into curd?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Associates Rhizobium with nitrogen fixation in plants, not m…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the role of Rhizobium in root nodules of legumes?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why are microalgae like Spirulina considered a superfood?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which part of the cell is responsible for regulating all activities within the cell?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main purpose of using a magnifying glass when observing small organisms like ants?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why do different cells in the body have different shapes and structures?",
+      "reason": "near-duplicate of served question cmvjb1az30gcggpfhl9yxiek1 (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the process called when microorganisms break down complex substances into simpler, nutrient-rich substances?",
+      "reason": "near-duplicate of served question cmvjb1awu0gacgpfhjv5t7eux (cosine 0.945 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

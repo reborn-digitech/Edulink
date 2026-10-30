@@ -1,0 +1,760 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T11:48:23.630Z",
+  "finishedAt": "2026-10-29T12:00:18.075Z",
+  "seconds": 714,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "fecu1",
+    "document": "ncert/6/science/fecu103.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 3 — Mindful Eating: A Pathto a Healthy Body",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n29. We are advised to take iodised salt in our diet by doctors. Justify it's importance in our 3\nbody.",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n23. Patients whose gallbladder are removed are recommended to eat less oily food. 2\nWhy?",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n7. B. Cooking of food",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 212823,
+      "in": 42,
+      "out": 38,
+      "rejects": 4,
+      "promptTokens": 40523,
+      "completionTokens": 8376
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 480974,
+      "in": 38,
+      "out": 30,
+      "rejects": 8,
+      "promptTokens": 21843,
+      "completionTokens": 9031
+    },
+    "solver": {
+      "calls": 245,
+      "ms": 193939,
+      "in": 30,
+      "out": 25,
+      "rejects": 5,
+      "promptTokens": 47382,
+      "completionTokens": 2833
+    },
+    "form": {
+      "calls": 8,
+      "ms": 29410,
+      "in": 25,
+      "out": 13,
+      "rejects": 12,
+      "promptTokens": 1892,
+      "completionTokens": 560
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 49,
+      "ms": 9904,
+      "in": 13,
+      "out": 10,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 484321,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 21887,
+      "completionTokens": 11104
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a food item that provides energy?",
+      "ms": {
+        "draft": 6491,
+        "critique": 10679,
+        "solver": 18426,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a reason for the diversity in traditional food across different states of India?",
+      "ms": {
+        "draft": 6491,
+        "critique": 9552,
+        "solver": 18150,
+        "form": 5746
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following best explains why traditional food items are based on locally grown crops?",
+      "ms": {
+        "draft": 6491,
+        "critique": 9103,
+        "solver": 1901,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage say that 'food gives life to living beings'?",
+      "ms": {
+        "draft": 6491,
+        "critique": 9795,
+        "solver": 3070,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a source of protein?",
+      "ms": {
+        "draft": 3968,
+        "critique": 12135
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student from Manipur visits a school in Punjab. Which of the following food items would they most likely find unfamiliar?",
+      "ms": {
+        "draft": 6491,
+        "critique": 9033,
+        "solver": 23091
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a source of vitamin D?",
+      "ms": {
+        "draft": 3968,
+        "critique": 8541,
+        "solver": 2616,
+        "form": 4561
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a protective nutrient?",
+      "ms": {
+        "draft": 3968,
+        "critique": 9852,
+        "solver": 2041,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not a source of roughage?",
+      "ms": {
+        "draft": 4183,
+        "critique": 11254,
+        "solver": 26280
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the test for starch shown in Fig. 3.7, what change in colour indicates the presence of starch?",
+      "ms": {
+        "draft": 4183,
+        "critique": 11282,
+        "solver": 20764,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a nutrient-rich food that is also called a nutri-cereal?",
+      "ms": {
+        "draft": 21221,
+        "critique": 12482,
+        "solver": 23523
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a primary energy source in our food?",
+      "ms": {
+        "draft": 4885,
+        "critique": 9816
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which nutrient is responsible for body growth and repair?",
+      "ms": {
+        "draft": 4885,
+        "critique": 8134
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a deficiency disease?",
+      "ms": {
+        "draft": 4885,
+        "critique": 5760
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a nutrient that helps in body growth and repair?",
+      "ms": {
+        "draft": 4341,
+        "critique": 8113,
+        "solver": 1457,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person eats only white bread, biscuits, and noodles, which health problem might they face?",
+      "ms": {
+        "draft": 4341,
+        "critique": 9866,
+        "solver": 21018,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a balanced diet?",
+      "ms": {
+        "draft": 5019,
+        "critique": 9759
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a fortified food?",
+      "ms": {
+        "draft": 5019,
+        "critique": 11003
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are millets considered nutri-cereals according to the passage?",
+      "ms": {
+        "draft": 5019,
+        "critique": 7303
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the nutritional information provided for potato wafers and roasted chana, which food item is considered a junk food?",
+      "ms": {
+        "draft": 5019,
+        "critique": 8830,
+        "solver": 12565
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not a nutrient that can be detected using simple tests according to the passage?",
+      "ms": {
+        "draft": 4326,
+        "critique": 7483,
+        "solver": 1629,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which food item contains both proteins and fats?",
+      "ms": {
+        "draft": 4326,
+        "critique": 9088,
+        "solver": 1978,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the Sanskrit saying 'annena jātāni jivanti' mean?",
+      "ms": {
+        "draft": 5884,
+        "critique": 9609
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a reason for reducing food miles?",
+      "ms": {
+        "draft": 5019,
+        "critique": 9929,
+        "solver": 17089
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of Vitamin C?",
+      "ms": {
+        "draft": 8526,
+        "critique": 10449,
+        "solver": 8700,
+        "form": 1313
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person lives in a region where rice is the main crop, which of the following food items would they most likely consume?",
+      "ms": {
+        "draft": 6491,
+        "critique": 10031,
+        "solver": 20195,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a source of vitamin C?",
+      "ms": {
+        "draft": 3968,
+        "critique": 8308,
+        "solver": 2532,
+        "form": 2424
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following food items contains both proteins and fats?",
+      "ms": {
+        "draft": 4183,
+        "critique": 10401,
+        "solver": 1969,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary function of carbohydrates in our diet?",
+      "ms": {
+        "draft": 4341,
+        "critique": 9539,
+        "solver": 2255,
+        "form": 0,
+        "translation": 35955
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of dietary fibres in our body?",
+      "ms": {
+        "draft": 4183,
+        "critique": 9314,
+        "solver": 2662,
+        "form": 0,
+        "translation": 40800
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person consumes a diet that is high in fat and sugar but low in other nutrients, what type of food is this?",
+      "ms": {
+        "draft": 5019,
+        "critique": 8786,
+        "solver": 17388,
+        "form": 4486,
+        "translation": 36474
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the nutritional information provided, which food item would be considered a junk food?",
+      "ms": {
+        "draft": 21221,
+        "critique": 12989,
+        "solver": 2382,
+        "form": 5571,
+        "translation": 65979
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Reshma has trouble seeing in dim light. What deficiency disease could she be suffering from?",
+      "ms": {
+        "draft": 4341,
+        "critique": 8156,
+        "solver": 2801,
+        "form": 0,
+        "translation": 31186
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person's diet is lacking in certain nutrients, what should they do to improve their health?",
+      "ms": {
+        "draft": 21221,
+        "critique": 7877,
+        "solver": 1834,
+        "form": 4655,
+        "translation": 49036
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student notices that a food item labeled as 'junk food' contains high levels of sugar and fats but also has some vitamins and minerals. What is the most accurate statement about this food?",
+      "ms": {
+        "draft": 4341,
+        "critique": 10433,
+        "solver": 2257,
+        "form": 0,
+        "translation": 66385
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are millets like sanwa considered important for a balanced diet?",
+      "ms": {
+        "draft": 21221,
+        "critique": 8751,
+        "solver": 1674,
+        "form": 4647,
+        "translation": 58832
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student eats a balanced diet but still experiences fatigue. What could be a possible reason?",
+      "ms": {
+        "draft": 4341,
+        "critique": 10844,
+        "solver": 18198,
+        "form": 0,
+        "translation": 44911
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to eat food that is locally grown and plant-based?",
+      "ms": {
+        "draft": 4183,
+        "critique": 10220,
+        "solver": 24571,
+        "form": 0,
+        "translation": 47264
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a source of iodine?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a source of iron?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the main reason for food wastage according to the passage?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which food item is considered a nutri-cereal?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a food item that provides energy?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a reason for the diversity in traditional food across different states of India?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following best explains why traditional food items are based on locally grown crops?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer (no reason for this distractor as it is the c…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage say that 'food gives life to living beings'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer (no reason for this distractor as it is the c…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a source of protein?",
+      "reason": "the critic finds option 2 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student from Manipur visits a school in Punjab. Which of the following food items would they most likely find unfamiliar?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a source of vitamin D?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a protective nutrient?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is not a source of roughage?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the test for starch shown in Fig. 3.7, what change in colour indicates the presence of starch?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a nutrient-rich food that is also called a nutri-cereal?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a primary energy source in our food?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which nutrient is responsible for body growth and repair?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a deficiency disease?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a nutrient that helps in body growth and repair?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not a body-building nutrient but a protect…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person eats only white bread, biscuits, and noodles, which health problem might they face?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a balanced diet?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is an example of a fortified food?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why are millets considered nutri-cereals according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the nutritional information provided for potato wafers and roasted chana, which food item is considered a junk food?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is not a nutrient that can be detected using simple tests according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which food item contains both proteins and fats?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does the Sanskrit saying 'annena jātāni jivanti' mean?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a reason for reducing food miles?",
+      "reason": "after redrafting distractors 0, 1: option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a source of Vitamin C?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Believes mushrooms are a good source of Vitamin C due to the…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a person lives in a region where rice is the main crop, which of the following food items would they most likely consume?",
+      "reason": "near-duplicate of served question cmvq9us670ah3gp210ftptce8 (cosine 0.931 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is a source of vitamin C?",
+      "reason": "near-duplicate of served question cmvfrr6vz00gxgpfh5b9n8ha6 (cosine 0.908 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which of the following food items contains both proteins and fats?",
+      "reason": "near-duplicate of served question cmv48eco4004agnbawsi8mqwo (cosine 0.925 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

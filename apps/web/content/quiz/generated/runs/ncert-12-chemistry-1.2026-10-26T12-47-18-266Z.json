@@ -1,0 +1,786 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T12:47:18.266Z",
+  "finishedAt": "2026-10-26T12:59:15.904Z",
+  "seconds": 718,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry-I",
+    "bookCode": "lech1",
+    "document": "ncert/12/chemistry/lech101.pdf",
+    "classLevel": 12,
+    "subject": "Chemistry",
+    "chapter": "Chapter 1 — Unit Objectives Solutions",
+    "edition": "Reprint 2026-27",
+    "chunks": 33,
+    "groups": 11
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Chemistry, sample question paper, 2025-26]\n7. All questions are compulsory.",
+      "[CBSE Class XII Chemistry, sample question paper, 2026-27]\n7. All questions are compulsory.",
+      "[CBSE Class XII Chemistry, marking scheme, 2024-25]\nSECTION B",
+      "[CBSE Class XII Chemistry, marking scheme, 2024-25]\nMARKING SCHEME\nSAMPLE PAPER (2024 -25)\nCHEMISTRY THEORY\n(043)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 261141,
+      "in": 41,
+      "out": 41,
+      "rejects": 0,
+      "promptTokens": 42201,
+      "completionTokens": 11740
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 416821,
+      "in": 41,
+      "out": 25,
+      "rejects": 16,
+      "promptTokens": 23510,
+      "completionTokens": 8495
+    },
+    "solver": {
+      "calls": 171,
+      "ms": 110427,
+      "in": 25,
+      "out": 22,
+      "rejects": 3,
+      "promptTokens": 32461,
+      "completionTokens": 1758
+    },
+    "form": {
+      "calls": 15,
+      "ms": 70541,
+      "in": 22,
+      "out": 9,
+      "rejects": 13,
+      "promptTokens": 5971,
+      "completionTokens": 1448
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 5634,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 35,
+      "ms": 510292,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 21814,
+      "completionTokens": 11093
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 4,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a way to describe the concentration of a solution quantitatively?",
+      "ms": {
+        "draft": 4205,
+        "critique": 8392,
+        "solver": 1966,
+        "form": 3643
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the mole fraction of a component in a solution?",
+      "ms": {
+        "draft": 4205,
+        "critique": 8745,
+        "solver": 2733,
+        "form": 3170
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the mass percentage of a component in a solution?",
+      "ms": {
+        "draft": 4205,
+        "critique": 8046,
+        "solver": 1456,
+        "form": 5365
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 20 g of ethylene glycol is dissolved in 80 g of water, what is the mole fraction of ethylene glycol in the solution?",
+      "ms": {
+        "draft": 4205,
+        "critique": 7923,
+        "solver": 2172,
+        "form": 7519
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the molality of a solution containing 2.5 g of ethanoic acid (CH₃COOH) in 75 g of benzene?",
+      "ms": {
+        "draft": 5454,
+        "critique": 10998,
+        "solver": 1853
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the molarity of a solution containing 5 g of NaOH in 450 mL solution?",
+      "ms": {
+        "draft": 5454,
+        "critique": 8583,
+        "solver": 18473,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the Henry’s law constant for N₂ at 293 K is 76.48 kbar, and the partial pressure of N₂ is 0.987 bar, what is the mole fraction of N₂ in the solution?",
+      "ms": {
+        "draft": 7640,
+        "critique": 10713
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to Henry's law, the solubility of a gas in a liquid is directly proportional to which of the following?",
+      "ms": {
+        "draft": 7640,
+        "critique": 8645,
+        "solver": 14194,
+        "form": 3094
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does Raoult's law state about the partial vapour pressure of a component in a solution?",
+      "ms": {
+        "draft": 9128,
+        "critique": 11265
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the context of Henry’s law, what is the significance of the slope of the graph between the partial pressure of the gas and the mole fraction of the gas in the solution?",
+      "ms": {
+        "draft": 7640,
+        "critique": 6644,
+        "solver": 1570,
+        "form": 4357
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a non-volatile solute is added to a solvent, what happens to the vapour pressure of the solution?",
+      "ms": {
+        "draft": 9128,
+        "critique": 10186
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the vapour phase become richer in the more volatile component?",
+      "ms": {
+        "draft": 9128,
+        "critique": 10039
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which law states that the vapour pressure of a solvent in a solution is directly proportional to its mole fraction?",
+      "ms": {
+        "draft": 5652,
+        "critique": 8178
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a solution where the vapour pressure is higher than predicted by Raoult’s law, what type of deviation is observed?",
+      "ms": {
+        "draft": 5652,
+        "critique": 8297
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a solution of two volatile liquids, how is the total vapour pressure calculated?",
+      "ms": {
+        "draft": 9128,
+        "critique": 8645,
+        "solver": 19116,
+        "form": 4164
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a solution shows a large positive deviation from Raoult’s law, what type of mixture is formed?",
+      "ms": {
+        "draft": 5652,
+        "critique": 7941
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do some solutions show negative deviations from Raoult’s law?",
+      "ms": {
+        "draft": 5652,
+        "critique": 5813
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the density of lake water is 1.25 g/mL and it contains 92 g of Na+ ions per kg of water, what is the molarity of Na+ ions in the lake?",
+      "ms": {
+        "draft": 7735,
+        "critique": 8074
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the osmotic pressure of a solution is 1.52 bars at 300 K, what would be its concentration if 36 g of glucose in a litre of solution has an osmotic pressure of 4.98 bars?",
+      "ms": {
+        "draft": 7735,
+        "critique": 9137,
+        "solver": 1454
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is a solution?",
+      "ms": {
+        "draft": 5415,
+        "critique": 9127
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a solution contains 10% w/w glucose, what is the mass of glucose in 200 g of solution?",
+      "ms": {
+        "draft": 5415,
+        "critique": 12632
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the mass percentage of aspirin (C9H8O4) in acetonitrile (CH3CN) when 6.5 g of aspirin is dissolved in 450 g of acetonitrile?",
+      "ms": {
+        "draft": 7735,
+        "critique": 11353,
+        "solver": 17371,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the van’t Hoff factor and dissociation constant of fluoroacetic acid if 19.5 g of CH2FCOOH is dissolved in 500 g of water and the depression in freezing point is 1.0°C? (Kf = 1.86 K kg/mol)",
+      "ms": {
+        "draft": 7735,
+        "critique": 10375,
+        "solver": 24018,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the effect of a non-volatile solute on the vapour pressure of a solvent?",
+      "ms": {
+        "draft": 5415,
+        "critique": 9338
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A 68% nitric acid solution has a density of 1.504 g mL⁻¹. What is the molarity of this solution?",
+      "ms": {
+        "draft": 5415,
+        "critique": 8141
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens to the experimentally determined molar mass when there is dissociation of solute into ions?",
+      "ms": {
+        "draft": 6825,
+        "critique": 6718
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A solution of 2% non-volatile solute exerts a pressure of 1.004 bar at the normal boiling point of the solvent. What is the molar mass of the solute?",
+      "ms": {
+        "draft": 5415,
+        "critique": 8298
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the case of association of molecules, what is the value of the van't Hoff factor (i)?",
+      "ms": {
+        "draft": 6825,
+        "critique": 7702,
+        "solver": 2264,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main advantage of using osmotic pressure to determine molar mass of solutes?",
+      "ms": {
+        "draft": 5094,
+        "critique": 7714,
+        "solver": 2930
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the freezing point depression of a solution is 1.62 K and the molal depression constant of benzene is 4.9 K kg mol⁻¹, what is the van't Hoff factor (i) for benzoic acid in benzene?",
+      "ms": {
+        "draft": 6825,
+        "critique": 7843,
+        "solver": 15451,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A solution containing 1.26 g of protein in 200 cm³ of water has an osmotic pressure of 2.57 × 10⁻³ bar at 300 K. What is the molar mass of the protein?",
+      "ms": {
+        "draft": 5094,
+        "critique": 8281,
+        "solver": 2505,
+        "form": 4796
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the lowering of the freezing point of a solvent when a non-volatile solute is added?",
+      "ms": {
+        "draft": 79155,
+        "critique": 5793
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the solubility of gases in liquids decrease with an increase in temperature?",
+      "ms": {
+        "draft": 7640,
+        "critique": 8327,
+        "solver": 2007,
+        "form": 7647
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a liquid solution?",
+      "ms": {
+        "draft": 4205,
+        "critique": 8135,
+        "solver": 1371,
+        "form": 5447,
+        "translation": 57152
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of molarity?",
+      "ms": {
+        "draft": 5454,
+        "critique": 8168,
+        "solver": 2032,
+        "form": 0,
+        "translation": 67292
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of molality?",
+      "ms": {
+        "draft": 5454,
+        "critique": 9626,
+        "solver": 2005,
+        "form": 0,
+        "translation": 111876
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the key factor that determines whether a solute dissolves in a solvent?",
+      "ms": {
+        "draft": 5454,
+        "critique": 8441,
+        "solver": 2327,
+        "form": 5224,
+        "translation": 67700
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the dissolution of a solid is endothermic, how does the solubility change with an increase in temperature?",
+      "ms": {
+        "draft": 5454,
+        "critique": 9287,
+        "solver": 1895,
+        "form": 4169,
+        "translation": 60045
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of applying excess pressure on the solution side in reverse osmosis?",
+      "ms": {
+        "draft": 5094,
+        "critique": 10715,
+        "solver": 11966,
+        "form": 1427,
+        "translation": 45374
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Based on solute-solvent interactions, which of the following is the most soluble in n-octane?",
+      "ms": {
+        "draft": 7735,
+        "critique": 9624,
+        "solver": 2578,
+        "form": 1,
+        "translation": 45913
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a colligative property of a solution?",
+      "ms": {
+        "draft": 4205,
+        "critique": 8550,
+        "solver": 3066,
+        "form": 3301,
+        "translation": 46718
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a way to describe the concentration of a solution quantitatively?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the mole fraction of a component in a solution?",
+      "reason": "options 0 and 3 say the same thing (\"The mass of the component divided by the total mass of the solution\" / \"The mass of the component divided by the total volume of the solution\"); options 2 and 3 say the same thing (\"The volume of the component divided by the total volume of the solution\" / \"The mass of the component divided by the total volume of the solution\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the mass percentage of a component in a solution?",
+      "reason": "options 0 and 3 say the same thing (\"Mass of the component divided by total mass of the solution\" / \"Mass of the component divided by total volume of the solution\"); options 1 and 3 say the same thing (\"Volume of the component divided by total volume of the solution\" / \"Mass of the component divided by total volume of the solution\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 20 g of ethylene glycol is dissolved in 80 g of water, what is the mole fraction of ethylene glycol in the solution?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"0.322/(0.322+4.444)\" = 0.06756189676877886, but the key says 0.068"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the molality of a solution containing 2.5 g of ethanoic acid (CH₃COOH) in 75 g of benzene?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the molarity of a solution containing 5 g of NaOH in 450 mL solution?",
+      "reason": "options 2 and 3 are the same (\"0.556 M\"); options 2 and 3 are the same number; distractor 3's reason is not a one-line misconception (\"Confuses molarity with molality, using the same numerical va…\"); ARITHMETIC MISMATCH — checkExpr \"0.125*1000/450\" = 0.2777777777777778, but the key says 0.278"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the Henry’s law constant for N₂ at 293 K is 76.48 kbar, and the partial pressure of N₂ is 0.987 bar, what is the mole fraction of N₂ in the solution?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to Henry's law, the solubility of a gas in a liquid is directly proportional to which of the following?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does Raoult's law state about the partial vapour pressure of a component in a solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the context of Henry’s law, what is the significance of the slope of the graph between the partial pressure of the gas and the mole fraction of the gas in the solution?",
+      "reason": "figure: figure spec refused: spec.curves.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a non-volatile solute is added to a solvent, what happens to the vapour pressure of the solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why does the vapour phase become richer in the more volatile component?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which law states that the vapour pressure of a solvent in a solution is directly proportional to its mole fraction?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a solution where the vapour pressure is higher than predicted by Raoult’s law, what type of deviation is observed?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a solution of two volatile liquids, how is the total vapour pressure calculated?",
+      "reason": "options 0 and 3 say the same thing (\"It is the sum of the partial vapour pressures of the two components\" / \"It is the average of the partial vapour pressures of the two components\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a solution shows a large positive deviation from Raoult’s law, what type of mixture is formed?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why do some solutions show negative deviations from Raoult’s law?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the density of lake water is 1.25 g/mL and it contains 92 g of Na+ ions per kg of water, what is the molarity of Na+ ions in the lake?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the osmotic pressure of a solution is 1.52 bars at 300 K, what would be its concentration if 36 g of glucose in a litre of solution has an osmotic pressure of 4.98 bars?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is a solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a solution contains 10% w/w glucose, what is the mass of glucose in 200 g of solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the mass percentage of aspirin (C9H8O4) in acetonitrile (CH3CN) when 6.5 g of aspirin is dissolved in 450 g of acetonitrile?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(6.5/(6.5+450))*100\" = 1.4238773274917853, but the key says 1.42"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the van’t Hoff factor and dissociation constant of fluoroacetic acid if 19.5 g of CH2FCOOH is dissolved in 500 g of water and the depression in freezing point is 1.0°C? (Kf = 1.86 K kg/mol)",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"1.0/(1.86*0.5)\" = 1.075268817204301, but the key says 1.1"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the effect of a non-volatile solute on the vapour pressure of a solvent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A 68% nitric acid solution has a density of 1.504 g mL⁻¹. What is the molarity of this solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What happens to the experimentally determined molar mass when there is dissociation of solute into ions?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A solution of 2% non-volatile solute exerts a pressure of 1.004 bar at the normal boiling point of the solvent. What is the molar mass of the solute?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the case of association of molecules, what is the value of the van't Hoff factor (i)?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer, 'Less than 1' is the right choice for associ…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main advantage of using osmotic pressure to determine molar mass of solutes?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the freezing point depression of a solution is 1.62 K and the molal depression constant of benzene is 4.9 K kg mol⁻¹, what is the van't Hoff factor (i) for benzoic acid in benzene?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"incorrectly assumes partial dissociation or no effect of ass…\"); checkExpr \"0.5\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A solution containing 1.26 g of protein in 200 cm³ of water has an osmotic pressure of 2.57 × 10⁻³ bar at 300 K. What is the molar mass of the protein?",
+      "reason": "options are in more than one unit (g/mol, g, mol, g/mol²); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number; checkExpr \"61022\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the lowering of the freezing point of a solvent when a non-volatile solute is added?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why does the solubility of gases in liquids decrease with an increase in temperature?",
+      "reason": "near-duplicate of served question cmvi7le1s0btpgpfhh75dp4ac (cosine 0.909 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T18:03:49.322Z",
+  "finishedAt": "2026-10-25T18:05:38.856Z",
+  "seconds": 110,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap108.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 8 — Reaching Grandmother’s House",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 25078,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7572,
+      "completionTokens": 1308
+    },
+    "critique": {
+      "calls": 11,
+      "ms": 82391,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4603,
+      "completionTokens": 2027
+    },
+    "solver": {
+      "calls": 61,
+      "ms": 37716,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 11050,
+      "completionTokens": 643
+    },
+    "form": {
+      "calls": 3,
+      "ms": 7720,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 666,
+      "completionTokens": 188
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 3700,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 61484,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4303,
+      "completionTokens": 2269
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the name of the place where Omana's journey ended?",
+      "ms": {
+        "draft": 3474,
+        "critique": 5936,
+        "solver": 1585
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the railway time-table, how many minutes did the train stop at Ahmedabad station?",
+      "ms": {
+        "draft": 3474,
+        "critique": 12126,
+        "solver": 1697,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the train reached Kottayam at 03:05 and the journey from Kozhikode to Kottayam took 3 hours, at what time did the train leave Kozhikode?",
+      "ms": {
+        "draft": 3474,
+        "critique": 6745,
+        "solver": 15929
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a means of transport used by Omana in her journey?",
+      "ms": {
+        "draft": 3474,
+        "critique": 6378,
+        "solver": 17230
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the time-table provided, how long did the train stop at Ahmedabad station?",
+      "ms": {
+        "draft": 2796,
+        "critique": 5742,
+        "solver": 929
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a vehicle that people use to cross water?",
+      "ms": {
+        "draft": 2796,
+        "critique": 8270,
+        "solver": 1509,
+        "form": 4133
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What kind of transport did Omana use after getting down from the train?",
+      "ms": {
+        "draft": 2796,
+        "critique": 7452,
+        "solver": 1663,
+        "form": 4432,
+        "translation": 26275
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Omana had to travel from one place to another and the route was blocked, which vehicle would be the best alternative?",
+      "ms": {
+        "draft": 2796,
+        "critique": 8708,
+        "solver": 12041,
+        "form": 1187,
+        "translation": 30163
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the place where Omana's journey ended?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the railway time-table, how many minutes did the train stop at Ahmedabad station?",
+      "reason": "checkExpr \"14:03-11:50\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the train reached Kottayam at 03:05 and the journey from Kozhikode to Kottayam took 3 hours, at what time did the train leave Kozhikode?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is not a means of transport used by Omana in her journey?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the time-table provided, how long did the train stop at Ahmedabad station?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a vehicle that people use to cross water?",
+      "reason": "near-duplicate of served question cmvh37xad06k1gpfhsb2f6soh (cosine 0.933 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

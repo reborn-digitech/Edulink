@@ -1,0 +1,699 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T19:54:44.108Z",
+  "finishedAt": "2026-10-29T20:01:55.313Z",
+  "seconds": 431,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 3 — Force and Pressure",
+    "edition": "First Edition 2018",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEJS 2020 — answer key]\n2. External pressure will increase with depth:\nF = PA = hρg A\nHence, h = F/ρ g A = 2.5 / (9.8 X 1.05 X10 X 3.14 X (0.5 X 10 ) ) = 3.09 m ~ 3m 3 -2 2",
+      "[INJSO 2013 — question paper]\n62. The atmospheric pressure on the earth’s surface is P N/m . A table of area 2 m is a 2 2\ntilted at 45 to the horizontal. The force on the top surface of the table due to the 0\natmosphere is (in newtons):\nA. 2 P √ a\nB. √ 2P a\nC. 2 2P √ a\nD. P / 2 a",
+      "[INJSO 2013 — solutions or answer key]\n62. The atmospheric pressure on the earth’s surface is P N/m . A table of area 2 m is a 2 2\ntilted at 45 to the horizontal. The force on the top surface of the table due to the 0\natmosphere is (in newtons):\nA. 2 P √ a\nB. √ 2P a\nC. 2 2P √ a\nD. P / 2 a",
+      "[INJSO 2010 — question paper]\n59. A man of mass 100 kg stands on a wood plank of area 4 m . What is the pressure 2\nexerted on the floor? Assume the area of a human foot to be 200 cm . 2\na) 500 N b) 25 N c) 50000 N d) 250 N"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 128022,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 35200,
+      "completionTokens": 7250
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 271119,
+      "in": 36,
+      "out": 30,
+      "rejects": 6,
+      "promptTokens": 20393,
+      "completionTokens": 8012
+    },
+    "solver": {
+      "calls": 218,
+      "ms": 99740,
+      "in": 30,
+      "out": 25,
+      "rejects": 5,
+      "promptTokens": 36329,
+      "completionTokens": 2140
+    },
+    "form": {
+      "calls": 10,
+      "ms": 29088,
+      "in": 25,
+      "out": 17,
+      "rejects": 8,
+      "promptTokens": 2498,
+      "completionTokens": 664
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 98,
+      "ms": 15218,
+      "in": 17,
+      "out": 11,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 414769,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 26284,
+      "completionTokens": 13020
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 3,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a non-contact force?",
+      "ms": {
+        "draft": 3049,
+        "critique": 5772,
+        "solver": 10011,
+        "form": 3158
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an object is moving and no force is acting on it, what will happen?",
+      "ms": {
+        "draft": 3049,
+        "critique": 4638,
+        "solver": 1377,
+        "form": 3868
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does a sharp knife cut vegetables more easily than a blunt one?",
+      "ms": {
+        "draft": 3867,
+        "critique": 6171
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of pressure?",
+      "ms": {
+        "draft": 3867,
+        "critique": 6553,
+        "solver": 1040
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the force acting on an object in a fluid in the upward direction called?",
+      "ms": {
+        "draft": 3181,
+        "critique": 5879
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, why does a ship made of iron float on water?",
+      "ms": {
+        "draft": 3181,
+        "critique": 6072,
+        "solver": 1034,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A force of 100 N is applied on an area of 5 m². What is the pressure exerted?",
+      "ms": {
+        "draft": 3867,
+        "critique": 6642,
+        "solver": 11994
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plastic bottle is filled with water and placed in water, what will happen?",
+      "ms": {
+        "draft": 3181,
+        "critique": 5963,
+        "solver": 1613
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A metal block has a weight of 98 N. If it is placed on a surface with an area of 0.02 m², what is the pressure exerted?",
+      "ms": {
+        "draft": 3231,
+        "critique": 6194
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What determines whether an object will sink, float on the surface, or float inside a liquid?",
+      "ms": {
+        "draft": 3181,
+        "critique": 6972,
+        "solver": 10314,
+        "form": 4350
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A plastic cube is released in water. Will it sink or float?",
+      "ms": {
+        "draft": 3231,
+        "critique": 6505,
+        "solver": 1498,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A ship dips deeper in fresh water than in marine water. Why does this happen?",
+      "ms": {
+        "draft": 3231,
+        "critique": 6191,
+        "solver": 8056
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of pressure?",
+      "ms": {
+        "draft": 2974,
+        "critique": 7130
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to pressure when the area of contact increases?",
+      "ms": {
+        "draft": 2974,
+        "critique": 6501,
+        "solver": 11787,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A plastic cube is released in water. Will it sink or float?",
+      "ms": {
+        "draft": 2974,
+        "critique": 7112
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What determines whether an object floats, sinks, or floats inside a liquid?",
+      "ms": {
+        "draft": 4092,
+        "critique": 6287,
+        "solver": 1702,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A plastic bottle filled with water floats inside water. Why does this happen?",
+      "ms": {
+        "draft": 4092,
+        "critique": 6048,
+        "solver": 1642,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the SI unit of pressure?",
+      "ms": {
+        "draft": 5494,
+        "critique": 5378
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A wooden block of mass 5 kg is placed on a horizontal surface. The area of contact is 0.25 m². What is the pressure exerted by the block on the surface?",
+      "ms": {
+        "draft": 5494,
+        "critique": 4555,
+        "solver": 5591
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of force?",
+      "ms": {
+        "draft": 3049,
+        "critique": 5071,
+        "solver": 1456,
+        "form": 2560
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a contact force?",
+      "ms": {
+        "draft": 3049,
+        "critique": 4720,
+        "solver": 1053,
+        "form": 3829
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person is standing on a platform with an area of 2 m². If the atmospheric pressure is 100,000 Pa, what is the force exerted on the platform?",
+      "ms": {
+        "draft": 3867,
+        "critique": 6536,
+        "solver": 11340,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A metal block of mass 10 kg is placed on a surface. If the surface area of contact is 0.02 m², what is the pressure exerted on the surface?",
+      "ms": {
+        "draft": 3231,
+        "critique": 5887,
+        "solver": 9544,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of force?",
+      "ms": {
+        "draft": 2974,
+        "critique": 6186,
+        "solver": 10984,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A metal block with weight 98 N is placed on a surface with area 0.02 m. What is the pressure exerted by the block?",
+      "ms": {
+        "draft": 2974,
+        "critique": 8018,
+        "solver": 14789,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit of pressure?",
+      "ms": {
+        "draft": 3231,
+        "critique": 6180,
+        "solver": 885,
+        "form": 0,
+        "translation": 20723
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A camel has broad feet. What is the purpose of this adaptation?",
+      "ms": {
+        "draft": 3867,
+        "critique": 6342,
+        "solver": 12316,
+        "form": 3798,
+        "translation": 38489
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the unit of relative density?",
+      "ms": {
+        "draft": 4092,
+        "critique": 5421,
+        "solver": 1218,
+        "form": 0,
+        "translation": 30136
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A box is being pulled by two people in the same direction. What is the net force acting on the box?",
+      "ms": {
+        "draft": 3049,
+        "critique": 5082,
+        "solver": 1651,
+        "form": 3018,
+        "translation": 42865
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a container filled with water, how does the pressure at a point depend on the depth?",
+      "ms": {
+        "draft": 3867,
+        "critique": 4997,
+        "solver": 1196,
+        "form": 4619,
+        "translation": 42109
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A stone is suspended from a rubber band in air, and its length is measured. When the stone is immersed in water, the length of the rubber band decreases. What explains this observation?",
+      "ms": {
+        "draft": 4092,
+        "critique": 6028,
+        "solver": 1695,
+        "form": 1,
+        "translation": 53706
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A car is moving on a smooth road and the engine is switched off. Why does it eventually stop?",
+      "ms": {
+        "draft": 3049,
+        "critique": 6212,
+        "solver": 1165,
+        "form": 2367,
+        "translation": 35709
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A solid object weighs 100 N in air and 70 N when fully submerged in water. What is the buoyant force acting on the object?",
+      "ms": {
+        "draft": 3181,
+        "critique": 5170,
+        "solver": 1456,
+        "form": 3255,
+        "translation": 27446
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A force is applied on an object, and the object changes its state of motion. What can be said about the forces acting on the object?",
+      "ms": {
+        "draft": 4971,
+        "critique": 3848,
+        "solver": 1585,
+        "form": 0,
+        "translation": 24852
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "An object weighs 200 N in air and 150 N in a liquid. If the density of the liquid is twice that of water, what will be the buoyant force in the liquid compared to water?",
+      "ms": {
+        "draft": 3181,
+        "critique": 6860,
+        "solver": 1740,
+        "form": 0,
+        "translation": 38466
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A ship made of iron floats on water while an iron nail sinks. How does Archimedes' principle explain this?",
+      "ms": {
+        "draft": 4092,
+        "critique": 6168,
+        "solver": 1489,
+        "form": 0,
+        "translation": 56287
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a non-contact force?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If an object is moving and no force is acting on it, what will happen?",
+      "reason": "the key is far longer than every distractor (56 vs 24 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why does a sharp knife cut vegetables more easily than a blunt one?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the SI unit of pressure?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the force acting on an object in a fluid in the upward direction called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, why does a ship made of iron float on water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A force of 100 N is applied on an area of 5 m². What is the pressure exerted?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a plastic bottle is filled with water and placed in water, what will happen?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A metal block has a weight of 98 N. If it is placed on a surface with an area of 0.02 m², what is the pressure exerted?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What determines whether an object will sink, float on the surface, or float inside a liquid?",
+      "reason": "options 0 and 1 are the same (\"The weight of the object\"); the key is far longer than every distractor (54 vs 24 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A plastic cube is released in water. Will it sink or float?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A ship dips deeper in fresh water than in marine water. Why does this happen?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the SI unit of pressure?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to pressure when the area of contact increases?",
+      "reason": "options 0 and 1 are the same (\"Pressure increases\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A plastic cube is released in water. Will it sink or float?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What determines whether an object floats, sinks, or floats inside a liquid?",
+      "reason": "the key is far longer than every distractor (59 vs 30 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A plastic bottle filled with water floats inside water. Why does this happen?",
+      "reason": "options 0 and 1 say the same thing (\"Because the weight of the bottle is greater than the buoyant force\" / \"Because the buoyant force is greater than the weight of the bottle\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the SI unit of pressure?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A wooden block of mass 5 kg is placed on a horizontal surface. The area of contact is 0.25 m². What is the pressure exerted by the block on the surface?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the unit of force?",
+      "reason": "near-duplicate of served question cmv2urt7q000cgnmzgeplmmvd (cosine 0.902 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a contact force?",
+      "reason": "near-duplicate of served question cmvj5yeq50fn6gpfh3sac84xz (cosine 0.920 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A person is standing on a platform with an area of 2 m². If the atmospheric pressure is 100,000 Pa, what is the force exerted on the platform?",
+      "reason": "near-duplicate of served question cmvf7vhqx03kagod88vkk98mw (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A metal block of mass 10 kg is placed on a surface. If the surface area of contact is 0.02 m², what is the pressure exerted on the surface?",
+      "reason": "near-duplicate of served question cmvf0cf3902lkgod87zpa5o2g (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the SI unit of force?",
+      "reason": "near-duplicate of served question cmv2urt7q000cgnmzgeplmmvd (cosine 0.932 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A metal block with weight 98 N is placed on a surface with area 0.02 m. What is the pressure exerted by the block?",
+      "reason": "near-duplicate of served question cmvf0cf3902lkgod87zpa5o2g (cosine 0.943 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

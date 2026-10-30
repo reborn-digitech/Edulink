@@ -1,0 +1,325 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T07:10:25.955Z",
+  "finishedAt": "2026-10-28T07:13:43.991Z",
+  "seconds": 198,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap120.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 20 — Whose Forests?",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 44164,
+      "in": 14,
+      "out": 13,
+      "rejects": 1,
+      "promptTokens": 15972,
+      "completionTokens": 2582
+    },
+    "critique": {
+      "calls": 15,
+      "ms": 85047,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 6469,
+      "completionTokens": 2448
+    },
+    "solver": {
+      "calls": 76,
+      "ms": 37242,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 13865,
+      "completionTokens": 810
+    },
+    "form": {
+      "calls": 9,
+      "ms": 24497,
+      "in": 11,
+      "out": 7,
+      "rejects": 4,
+      "promptTokens": 2218,
+      "completionTokens": 667
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 4369,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 273291,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14961,
+      "completionTokens": 7711
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 3,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main purpose of Suryamani's 'Torang' centre?",
+      "ms": {
+        "draft": 2757,
+        "critique": 5678,
+        "solver": 1506,
+        "form": 3656
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Suryamani’s father move to the town in search of work?",
+      "ms": {
+        "draft": 2974,
+        "critique": 5777,
+        "solver": 15625,
+        "form": 2461
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the map described in the passage, which state has very thick forests?",
+      "ms": {
+        "draft": 3453,
+        "critique": 6208
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a family in Mizoram is unable to farm their land, what is the likely outcome?",
+      "ms": {
+        "draft": 3453,
+        "critique": 5768,
+        "solver": 928
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why does Suryamani say that it is important to read the forest as much as books?",
+      "ms": {
+        "draft": 3715,
+        "critique": 6321,
+        "solver": 1278,
+        "form": 2034
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main activity of Suryamani and the children in the forest?",
+      "ms": {
+        "draft": 3715,
+        "critique": 6305,
+        "solver": 7761,
+        "form": 1056
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does Suryamani mean when she says, 'To learn to read the forest is as important as reading books'?",
+      "ms": {
+        "draft": 2974,
+        "critique": 6517,
+        "solver": 2172,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does Suryamani mean when she says, 'We are forest people (adivasis). Our lives are linked to the forests'?",
+      "ms": {
+        "draft": 2974,
+        "critique": 6276,
+        "solver": 1727,
+        "form": 0,
+        "translation": 34226
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the Right to Forest Act 2007 say about people living in forests?",
+      "ms": {
+        "draft": 2757,
+        "critique": 6569,
+        "solver": 1397,
+        "form": 3809,
+        "translation": 53388
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of Suryamani’s ‘Torang’ centre?",
+      "ms": {
+        "draft": 3453,
+        "critique": 5797,
+        "solver": 1779,
+        "form": 3707,
+        "translation": 51847
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why would Suryamani’s father not want her to take the direct road to school?",
+      "ms": {
+        "draft": 2974,
+        "critique": 6255,
+        "solver": 868,
+        "form": 4127,
+        "translation": 40736
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How does jhoom farming help keep the soil fertile?",
+      "ms": {
+        "draft": 2757,
+        "critique": 5873,
+        "solver": 1810,
+        "form": 2501,
+        "translation": 38031
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be inferred about the people of Mizoram from the story?",
+      "ms": {
+        "draft": 2757,
+        "critique": 5702,
+        "solver": 1163,
+        "form": 3596,
+        "translation": 51373
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of Suryamani's 'Torang' centre?",
+      "reason": "the key is far longer than every distractor (70 vs 38 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why did Suryamani’s father move to the town in search of work?",
+      "reason": "options 0 and 1 are the same (\"Because he wanted to learn to read the forest\"); options 0 and 2 are the same (\"Because he wanted to learn to read the forest\"); options 1 and 2 are the same (\"Because he wanted to learn to read the forest\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "According to the passage, what is the Right to Forest Act 2007?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the map described in the passage, which state has very thick forests?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a family in Mizoram is unable to farm their land, what is the likely outcome?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Why does Suryamani say that it is important to read the forest as much as books?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This is a general statement but not the reason given by Sury…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main activity of Suryamani and the children in the forest?",
+      "reason": "options 2 and 3 are the same (\"They collect leaves and herbs for selling\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What does Suryamani mean when she says, 'To learn to read the forest is as important as reading books'?",
+      "reason": "near-duplicate of served question cmvh9tl3907s0gpfhup86dzh4 (cosine 0.928 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

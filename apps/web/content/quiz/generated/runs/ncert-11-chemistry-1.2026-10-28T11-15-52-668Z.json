@@ -1,0 +1,843 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T11:15:52.668Z",
+  "finishedAt": "2026-10-28T11:27:40.080Z",
+  "seconds": 707,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry Part-I",
+    "bookCode": "kech1",
+    "document": "ncert/11/chemistry/kech101.pdf",
+    "classLevel": 11,
+    "subject": "Chemistry",
+    "chapter": "Chapter 1 — Some Basic Concepts of Chemistry",
+    "edition": "Reprint 2026-27",
+    "chunks": 39,
+    "groups": 13
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Chemistry, marking scheme, 2025-26]\ni  0.7 2   1\n= 1.4 + 1 = 2.4\n𝑃 − 𝑃 𝐴 𝑜 𝑠\n𝑜 = 𝑖\n𝑃 𝐴 𝐴\n23.8 Ps 1\n 2.4\n23.8 56.5\n 2.4 \n23.8 1    Ps\n 56.5 \n22.9mm of Hg Ps\n23 I. 𝐸 = 𝐸 𝑜 – 2.303 𝑅𝑇 log\n𝑐𝑒𝑙𝑙 𝑐𝑒𝑙𝑙 2𝐹\n½\n½\n½\n𝑛 𝐵\n𝑛 + 𝑛 𝐵 ½\n½\n½\n[𝑁𝑖 2+ ] 1\n[ 𝐶𝑢 2+ ]\nII. 𝐸 𝑐𝑒𝑙𝑙 = 𝐸 𝑐𝑒𝑙𝑙 𝑜 – 2.303 𝑅𝑇 6𝐹 log\nIII. 𝐸 𝑐𝑒𝑙𝑙 = 𝐸 𝑐𝑒𝑙𝑙 𝑜 – 2.303 𝑅𝑇 2𝐹 log\n3+ 2\n[𝐴𝑙 ]\n[ 𝐹𝑒 2+ 3 ]\n[𝑀𝑔 2+ ]\n[ 𝐴𝑔 ] + 2 1\n24 I. Cl 2 in presence of sunlight forms free radical as an intermediate and 1\nhence toluene undergoes free radical substitution of the alky group\nto form benzyl alcohol whereas Cl 2 in dark forms Cl , an electrophile +\nas an intermediate, making toluene undergo electrophilic substi",
+      "[CBSE Class XII Chemistry, marking scheme, 2024-25]\n1. (c) reacts with Benzenesulphonyl chloride to form a product that is 1\ninsoluble in alkali",
+      "[CBSE Class XII Chemistry, marking scheme, 2025-26]\n9. C. both lanthanoids and actinoids\n10 C. Either 1 or 3\n𝑜 𝑜 𝑜\nΛ 𝑚 CH 3 COOH = Λ HCl + Λ 𝑚 𝑚 CH 3 COOK - Λ KCl 𝑜 𝑚\nΛ 𝑜 𝑚 CH 3 COOH = 1/2 Λ H 𝑜 𝑚 2 SO 4 + Λ 𝑜 𝑚 CH 3 COONa – 1/2 Λ Na 𝑜 𝑚 2 SO 4",
+      "[CBSE Class XII Chemistry, marking scheme, 2023-24]\n18. π 1 = π 2\niC 1 RT = C 2 RT\n( ½)\n(1)\n(1/2)\n(1/2)\n35  2\n322 M (1/2)\nM  2322\n3 5 (1/2)\nM = 42.9 g"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 208693,
+      "in": 47,
+      "out": 43,
+      "rejects": 4,
+      "promptTokens": 56624,
+      "completionTokens": 9582
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 387774,
+      "in": 43,
+      "out": 34,
+      "rejects": 9,
+      "promptTokens": 21819,
+      "completionTokens": 8680
+    },
+    "solver": {
+      "calls": 222,
+      "ms": 129354,
+      "in": 34,
+      "out": 29,
+      "rejects": 5,
+      "promptTokens": 38402,
+      "completionTokens": 2189
+    },
+    "form": {
+      "calls": 9,
+      "ms": 31967,
+      "in": 29,
+      "out": 13,
+      "rejects": 16,
+      "promptTokens": 2424,
+      "completionTokens": 687
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 28,
+      "ms": 5633,
+      "in": 13,
+      "out": 11,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 472743,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 26047,
+      "completionTokens": 11794
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a chemical change mentioned in the passage?",
+      "ms": {
+        "draft": 3601,
+        "critique": 5732,
+        "solver": 970,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of an alchemical tradition mentioned in the passage?",
+      "ms": {
+        "draft": 3601,
+        "critique": 9596,
+        "solver": 1686,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following best describes the role of chemistry in different spheres of life?",
+      "ms": {
+        "draft": 3601,
+        "critique": 7207,
+        "solver": 2350,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the importance of the passage in understanding the development of chemistry?",
+      "ms": {
+        "draft": 3601,
+        "critique": 7956,
+        "solver": 1566,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which ancient Indian text describes the treatment of diseases using bhasmas of metals?",
+      "ms": {
+        "draft": 14605,
+        "critique": 8582
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage state about the concept of matter?",
+      "ms": {
+        "draft": 14605,
+        "critique": 9523
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 14605,
+        "critique": 10048,
+        "solver": 1596
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the significance of the term 'Paramãnu' as mentioned in the passage?",
+      "ms": {
+        "draft": 14605,
+        "critique": 9974
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, which of the following is NOT a use of chemistry?",
+      "ms": {
+        "draft": 14605,
+        "critique": 7394,
+        "solver": 17306
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of gases?",
+      "ms": {
+        "draft": 4535,
+        "critique": 6181,
+        "solver": 2888,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a homogeneous mixture?",
+      "ms": {
+        "draft": 4535,
+        "critique": 9794,
+        "solver": 1468,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a pure substance?",
+      "ms": {
+        "draft": 4535,
+        "critique": 7425,
+        "solver": 2075,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage mention the concept of 'Paramãnu'?",
+      "ms": {
+        "draft": 14605,
+        "critique": 7780,
+        "solver": 14379,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following can be separated by physical methods?",
+      "ms": {
+        "draft": 4535,
+        "critique": 8761,
+        "solver": 1678,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an element?",
+      "ms": {
+        "draft": 4535,
+        "critique": 6920,
+        "solver": 1754,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is true about the particles of a compound?",
+      "ms": {
+        "draft": 4535,
+        "critique": 8671,
+        "solver": 2569,
+        "form": 3887
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a physical property of a substance?",
+      "ms": {
+        "draft": 3959,
+        "critique": 8971,
+        "solver": 1295,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of luminous intensity?",
+      "ms": {
+        "draft": 4285,
+        "critique": 11359
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is not a fundamental quantity in the SI system?",
+      "ms": {
+        "draft": 3959,
+        "critique": 9268,
+        "solver": 12623
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A solution contains 0.2 moles of NaOH in 200 mL. After dilution, the volume becomes 1000 mL. What is the molarity of NaOH in the diluted solution?",
+      "ms": {
+        "draft": 4626,
+        "critique": 7337,
+        "solver": 1806
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A solution has a molality of 2.79 m. What is the molarity of the solution if the density of the solution is 1.25 g/mL?",
+      "ms": {
+        "draft": 4626,
+        "critique": 9012
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a balanced chemical equation?",
+      "ms": {
+        "draft": 5276,
+        "critique": 7819
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many moles of water are produced from 1 mole of methane in the balanced equation for its combustion?",
+      "ms": {
+        "draft": 5276,
+        "critique": 8367
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 22 g of CO2 are produced from the combustion of methane, how many moles of methane are required?",
+      "ms": {
+        "draft": 5276,
+        "critique": 7858
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the molar mass of water according to the passage?",
+      "ms": {
+        "draft": 19325,
+        "critique": 8671,
+        "solver": 2458,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the mass percentage of hydrogen in water according to the passage?",
+      "ms": {
+        "draft": 19325,
+        "critique": 8997,
+        "solver": 1825,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the empirical formula of a compound that contains 4.07% hydrogen, 24.27% carbon, and 71.65% chlorine?",
+      "ms": {
+        "draft": 19325,
+        "critique": 8171,
+        "solver": 2195
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the molecular mass of water (H₂O) in unified mass (u)?",
+      "ms": {
+        "draft": 6447,
+        "critique": 10062
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the ratio of the volumes of hydrogen to oxygen that combine to form water vapour?",
+      "ms": {
+        "draft": 6036,
+        "critique": 7134,
+        "solver": 1355,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student measured the length of a metal piece as 3 inches. Using dimensional analysis, what is the length of the metal in centimeters? (Given: 1 inch = 2.54 cm)",
+      "ms": {
+        "draft": 7385,
+        "critique": 7051,
+        "solver": 829,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit of mass?",
+      "ms": {
+        "draft": 4091,
+        "critique": 5561,
+        "solver": 1485,
+        "form": 3116
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit of pressure?",
+      "ms": {
+        "draft": 4091,
+        "critique": 9840,
+        "solver": 15963,
+        "form": 2730
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the main focus of the study of chemistry?",
+      "ms": {
+        "draft": 3601,
+        "critique": 5733,
+        "solver": 1902,
+        "form": 3597,
+        "translation": 56332
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the correct order of the prefixes micro, deca, mega, giga, and femto with their multiples?",
+      "ms": {
+        "draft": 4091,
+        "critique": 5589,
+        "solver": 2364,
+        "form": 7436,
+        "translation": 60344
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'significant figures' mean?",
+      "ms": {
+        "draft": 4091,
+        "critique": 9138,
+        "solver": 2005,
+        "form": 2407,
+        "translation": 38760
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a contribution of ancient India to the development of chemistry?",
+      "ms": {
+        "draft": 3601,
+        "critique": 5915,
+        "solver": 2532,
+        "form": 3814,
+        "translation": 54691
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the SI unit of electric current?",
+      "ms": {
+        "draft": 3959,
+        "critique": 8441,
+        "solver": 2405,
+        "form": 2411,
+        "translation": 91193
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A solution of NaCl has a density of 1.25 g/mL and a molarity of 3 mol/L. What is the molality of the solution?",
+      "ms": {
+        "draft": 4626,
+        "critique": 8611,
+        "solver": 2794,
+        "form": 0,
+        "translation": 41074
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct statement about the SI system of units?",
+      "ms": {
+        "draft": 3959,
+        "critique": 7428,
+        "solver": 1821,
+        "form": 3876,
+        "translation": 43784
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A solution contains 4 g of NaOH in 250 mL of solution. What is the molarity of the solution?",
+      "ms": {
+        "draft": 4626,
+        "critique": 7145,
+        "solver": 19719,
+        "form": 0,
+        "translation": 35322
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student measures the length of a room as 6 m, what does the 'm' stand for?",
+      "ms": {
+        "draft": 3959,
+        "critique": 8413,
+        "solver": 16085,
+        "form": 0,
+        "translation": 26195
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the reaction N2(g) + 3H2(g) → 2NH3(g), if 50.0 kg of N2 and 10.0 kg of H2 are mixed, which is the limiting reagent?",
+      "ms": {
+        "draft": 5276,
+        "critique": 7935,
+        "solver": 13442,
+        "form": 0,
+        "translation": 34686
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "The molarity of a solution is 3 mol/L, and its density is 1.25 g/mL. What is the molality of the solution?",
+      "ms": {
+        "draft": 4626,
+        "critique": 9076,
+        "solver": 2173,
+        "form": 0,
+        "translation": 45218
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a chemical change mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of an alchemical tradition mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, which of the following best describes the role of chemistry in different spheres of life?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains the importance of the passage in understanding the development of chemistry?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which ancient Indian text describes the treatment of diseases using bhasmas of metals?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage state about the concept of matter?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the significance of the term 'Paramãnu' as mentioned in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "According to the passage, which of the following is NOT a use of chemistry?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of gases?",
+      "reason": "options 1 and 3 say the same thing (\"They have a definite volume but not a definite shape\" / \"They have a definite shape but not a definite volume\"); distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, it is the one that…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a homogeneous mixture?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, it is the one that…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a pure substance?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, it is the one that…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage mention the concept of 'Paramãnu'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following can be separated by physical methods?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, it is the one that…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an element?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, it is the one that…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is true about the particles of a compound?",
+      "reason": "options 1 and 2 say the same thing (\"They are made of different types of atoms in a fixed ratio\" / \"They are made of different types of atoms in a variable ratio\"); distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, it is the one that…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a physical property of a substance?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer: Density is a physical property that can be m…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the SI unit of luminous intensity?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is not a fundamental quantity in the SI system?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "How many significant figures are present in the number 0.02856?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the mass of one carbon atom in grams?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the molecular formula of the compound if its molar mass is 98.96 g and the empirical formula is CHCl?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What is the average atomic mass of carbon, given the data for its isotopes?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A solution contains 0.2 moles of NaOH in 200 mL. After dilution, the volume becomes 1000 mL. What is the molarity of NaOH in the diluted solution?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A solution has a molality of 2.79 m. What is the molarity of the solution if the density of the solution is 1.25 g/mL?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a balanced chemical equation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many moles of water are produced from 1 mole of methane in the balanced equation for its combustion?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 22 g of CO2 are produced from the combustion of methane, how many moles of methane are required?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the molar mass of water according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options are written to different precisions (2 and 3 decimals); checkExpr \"18.02\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the mass percentage of hydrogen in water according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; checkExpr \"11.18\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the empirical formula of a compound that contains 4.07% hydrogen, 24.27% carbon, and 71.65% chlorine?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the molecular mass of water (H₂O) in unified mass (u)?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the ratio of the volumes of hydrogen to oxygen that combine to form water vapour?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Selects 1:1, which is not mentioned in the passage.…\"); distractor 3's reason is not a one-line misconception (\"Chooses 3:2, which is an arbitrary number not supported by t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student measured the length of a metal piece as 3 inches. Using dimensional analysis, what is the length of the metal in centimeters? (Given: 1 inch = 2.54 cm)",
+      "reason": "options are written to different precisions (1 and 2 decimals)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the SI unit of mass?",
+      "reason": "near-duplicate of served question cmvoibsmu06jhgp21xrptqwkg (cosine 0.901 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the SI unit of pressure?",
+      "reason": "near-duplicate of served question cmvoibsmt06jbgp21bmoml84f (cosine 0.932 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,698 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T07:52:04.354Z",
+  "finishedAt": "2026-10-28T08:03:27.460Z",
+  "seconds": 683,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh105.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Linear Inequalities",
+    "edition": "Reprint 2026-27",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, marking scheme, 2023-24]\n11. (c) We observe,  0,0  does not satisfy the inequality x  y  1\nSo, the half plane represented by the above inequality will not contain origin\ntherefore, it will not contain the shaded feasible region.",
+      "[CBSE Class XII Mathematics, marking scheme, 2022-23]\n7. (b) The strict inequality represents an open half plane and it\ncontains the origin as (0, 0) satisfies it.",
+      "[CBSE Class XII Mathematics, sample question paper, 2022-23]\n7. The solution set of the inequality 3x + 5y < 4 is\n(a) an open half-plane not containing the origin.\n(b) an open half-plane containing the origin.\n(c) the whole XY-plane not containing the line 3x + 5y = 4.\n(d) a closed half plane containing the origin.",
+      "[CBSE Class XII Mathematics, sample question paper, 2023-24]\n11. The feasible region corresponding to the linear constraints of a Linear Programming Problem is given\nbelow.\nWhich of the following is not a constraint to the given Linear Programming Problem?\n(a) x  y  2 (b) x  2y  10 (c) x  y  1 (d) x  y  1\n       "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 235665,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 27730,
+      "completionTokens": 8718
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 555656,
+      "in": 34,
+      "out": 30,
+      "rejects": 4,
+      "promptTokens": 26973,
+      "completionTokens": 9836
+    },
+    "solver": {
+      "calls": 283,
+      "ms": 257548,
+      "in": 30,
+      "out": 16,
+      "rejects": 14,
+      "promptTokens": 74353,
+      "completionTokens": 3387
+    },
+    "form": {
+      "calls": 4,
+      "ms": 20307,
+      "in": 16,
+      "out": 7,
+      "rejects": 9,
+      "promptTokens": 1071,
+      "completionTokens": 321
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 33,
+      "ms": 9685,
+      "in": 7,
+      "out": 3,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 174582,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7307,
+      "completionTokens": 3594
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In the given inequality 30x < 200, what is the maximum number of packets of rice Ravi can buy?",
+      "ms": {
+        "draft": 6205,
+        "critique": 8063,
+        "solver": 2555,
+        "form": 11067
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If x represents the number of packets of rice Ravi can buy with ₹200, and the price of one packet is ₹30, which inequality represents the total amount spent by Ravi?",
+      "ms": {
+        "draft": 6205,
+        "critique": 7401,
+        "solver": 20924
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What type of inequality is represented by the statement '3 < 5 < 7'?",
+      "ms": {
+        "draft": 6205,
+        "critique": 8419,
+        "solver": 24616,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between a strict inequality and a slack inequality?",
+      "ms": {
+        "draft": 6205,
+        "critique": 13583,
+        "solver": 1980,
+        "form": 4037
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The feasible region for a linear programming problem is described as not containing the origin. Which of the following inequalities could represent this region?",
+      "ms": {
+        "draft": 6205,
+        "critique": 11019,
+        "solver": 26800
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the inequality 3x + 5y < 4 represents a region that does not include the origin, which of the following options is correct?",
+      "ms": {
+        "draft": 6205,
+        "critique": 13905,
+        "solver": 21975,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a rule for solving an inequality as stated in the passage?",
+      "ms": {
+        "draft": 21523,
+        "critique": 10586,
+        "solver": 21863
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Solve the inequality 5x – 3 < 3x + 1 and find the solution when x is an integer.",
+      "ms": {
+        "draft": 21523,
+        "critique": 11834,
+        "solver": 21355
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about the solution set of the inequality 3x + 5y < 4?",
+      "ms": {
+        "draft": 21523,
+        "critique": 16555,
+        "solver": 24278,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student solved the inequality 4x + 3 < 6x + 7 and got x > –2. Which of the following is the correct interpretation of the solution?",
+      "ms": {
+        "draft": 21523,
+        "critique": 10975,
+        "solver": 19778
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the correct way to represent the solution set of the inequality 3x − 4 < x + 1?",
+      "ms": {
+        "draft": 21523,
+        "critique": 12058,
+        "solver": 24600
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a rule for solving an inequality as stated in the passage?",
+      "ms": {
+        "draft": 21523,
+        "critique": 13157,
+        "solver": 17605,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number x satisfies the inequality 2 ≤ 3x – 4 ≤ 5, what is the range of x?",
+      "ms": {
+        "draft": 10069,
+        "critique": 8867,
+        "solver": 23384
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a 12% acid solution is to be mixed with a 30% acid solution so that the resulting mixture has more than 15% acid, how many litres of the 30% solution must be added to 600 litres of the 12% solution?",
+      "ms": {
+        "draft": 10069,
+        "critique": 10472,
+        "solver": 2998,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A solution must be kept between 68°F and 77°F. What is the range in Celsius?",
+      "ms": {
+        "draft": 10069,
+        "critique": 10856,
+        "solver": 11257
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The solution set of the inequality 3x + 5y < 4 is represented as an open half-plane. Which of the following is correct?",
+      "ms": {
+        "draft": 6752,
+        "critique": 9921
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A solution is to be kept between 30° and 35° Celsius. What is the range of temperature in degree Fahrenheit if the conversion formula is given by C = (F – 32)?",
+      "ms": {
+        "draft": 6752,
+        "critique": 8608,
+        "solver": 21459,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents the solution of the inequality 2 ≤ 3x – 4 ≤ 5?",
+      "ms": {
+        "draft": 6752,
+        "critique": 8271,
+        "solver": 22512
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A solution of 8% boric acid is to be diluted by adding a 2% boric acid solution. The resulting mixture is to be more than 4% but less than 6% boric acid. If we have 640 liters of the 8% solution, how many liters of the 2% solution will have to be added?",
+      "ms": {
+        "draft": 6752,
+        "critique": 10820,
+        "solver": 29009
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the solution set of the inequality 5x – 3 < 3x + 1 when x is an integer?",
+      "ms": {
+        "draft": 5681,
+        "critique": 10818,
+        "solver": 2966
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Solve the inequality 3x + 5 < 4 and select the correct statement about its solution set.",
+      "ms": {
+        "draft": 5681,
+        "critique": 10403,
+        "solver": 2069
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the graph of the inequality 7x + 3 < 5x + 9, which is shown in the passage, which of the following represents the solution set?",
+      "ms": {
+        "draft": 5681,
+        "critique": 7068,
+        "solver": 2098,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the solution set of the inequality 30x < 200 when x is a natural number?",
+      "ms": {
+        "draft": 5681,
+        "critique": 12229,
+        "solver": 20008
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a literal inequality?",
+      "ms": {
+        "draft": 5151,
+        "critique": 9838
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If x denotes the number of packets of rice Ravi buys, and 30x < 200, which of the following can be the value of x?",
+      "ms": {
+        "draft": 5151,
+        "critique": 9770
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The inequality 40x + 20y ≤ 120 represents the total amount spent by Reshma on registers and pens. Which of the following could be the total amount spent?",
+      "ms": {
+        "draft": 5151,
+        "critique": 9383,
+        "solver": 2734
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If an inequality is reversed when both sides are multiplied by a negative number, what happens to the inequality 3x + 5y < 4 when both sides are multiplied by -1?",
+      "ms": {
+        "draft": 5151,
+        "critique": 8721
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A solution must be kept between 30°C and 35°C. What is the range of temperature in Fahrenheit?",
+      "ms": {
+        "draft": 10069,
+        "critique": 9950,
+        "solver": 1853,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many liters of water will have to be added to 1125 liters of the 45% solution of acid so that the resulting mixture will contain more than 25% but less than 30% acid content?",
+      "ms": {
+        "draft": 6752,
+        "critique": 11621,
+        "solver": 21296,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens to the sign of an inequality when both sides are multiplied or divided by a negative number?",
+      "ms": {
+        "draft": 5681,
+        "critique": 8961,
+        "solver": 2447,
+        "form": 3232
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a strict inequality?",
+      "ms": {
+        "draft": 5151,
+        "critique": 7333,
+        "solver": 6892,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which rule is used to solve an inequality when equal numbers are added to or subtracted from both sides?",
+      "ms": {
+        "draft": 5681,
+        "critique": 14968,
+        "solver": 2029,
+        "form": 3639,
+        "translation": 53810
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a solution must be kept between 68°F and 77°F, what is the range in Celsius?",
+      "ms": {
+        "draft": 10069,
+        "critique": 11083,
+        "solver": 20805,
+        "form": 0,
+        "translation": 52689
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A manufacturer has 600 liters of a 12% solution of acid. How many liters of a 30% acid solution must be added to it so that the acid content in the resulting mixture is more than 15% but less than 18%?",
+      "ms": {
+        "draft": 6752,
+        "critique": 13065,
+        "solver": 20619,
+        "form": 0,
+        "translation": 60880
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given inequality 30x < 200, what is the maximum number of packets of rice Ravi can buy?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, and it is the only…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If x represents the number of packets of rice Ravi can buy with ₹200, and the price of one packet is ₹30, which inequality represents the total amount spent by Ravi?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What type of inequality is represented by the statement '3 < 5 < 7'?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main difference between a strict inequality and a slack inequality?",
+      "reason": "options 0 and 1 are the same (\"A strict inequality uses '≤' or '≥', while a slack inequality uses '<' or '>'\"); options 0 and 2 are the same (\"A strict inequality uses '≤' or '≥', while a slack inequality uses '<' or '>'\"); options 0 and 3 are the same (\"A strict inequality uses '≤' or '≥', while a slack inequality uses '<' or '>'\"); options 1 and 2 are the same (\"A strict inequality uses '≤' or '≥', while a slack inequality uses '≥' or '<'\"); options 1 and 3 are the same (\"A strict inequality uses '≤' or '≥', while a slack inequality uses '≥' or '<'\"); options 2 and 3 are the same (\"A strict inequality uses '<' or '>', while a slack inequality uses '≤' or '≥'\"); distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, and it matches the…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The feasible region for a linear programming problem is described as not containing the origin. Which of the following inequalities could represent this region?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the inequality 3x + 5y < 4 represents a region that does not include the origin, which of the following options is correct?",
+      "reason": "options 0 and 1 say the same thing (\"The solution set is an open half-plane not containing the origin.\" / \"The solution set is an open half-plane containing the origin.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a rule for solving an inequality as stated in the passage?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Solve the inequality 5x – 3 < 3x + 1 and find the solution when x is an integer.",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about the solution set of the inequality 3x + 5y < 4?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"It is an open half-plane not containing the origin.\" / \"It is an open half-plane containing the origin.\"); distractor 3's reason is not a one-line misconception (\"This is incorrect because the solution set is not closed, as…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student solved the inequality 4x + 3 < 6x + 7 and got x > –2. Which of the following is the correct interpretation of the solution?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the correct way to represent the solution set of the inequality 3x − 4 < x + 1?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a rule for solving an inequality as stated in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"The passage clearly states that multiplying by a negative nu…\"); distractor 2's reason is not a one-line misconception (\"The passage says adding equal numbers does not reverse the s…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a number x satisfies the inequality 2 ≤ 3x – 4 ≤ 5, what is the range of x?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a 12% acid solution is to be mixed with a 30% acid solution so that the resulting mixture has more than 15% acid, how many litres of the 30% solution must be added to 600 litres of the 12% solution?",
+      "reason": "checkExpr \"120\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A solution must be kept between 68°F and 77°F. What is the range in Celsius?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The solution set of the inequality 3x + 5y < 4 is represented as an open half-plane. Which of the following is correct?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A solution is to be kept between 30° and 35° Celsius. What is the range of temperature in degree Fahrenheit if the conversion formula is given by C = (F – 32)?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is 86° F to 95° F, not 90° F to 100° F…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following represents the solution of the inequality 2 ≤ 3x – 4 ≤ 5?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A solution of 8% boric acid is to be diluted by adding a 2% boric acid solution. The resulting mixture is to be more than 4% but less than 6% boric acid. If we have 640 liters of the 8% solution, how many liters of the 2% solution will have to be added?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the solution set of the inequality 5x – 3 < 3x + 1 when x is an integer?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Solve the inequality 3x + 5 < 4 and select the correct statement about its solution set.",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the graph of the inequality 7x + 3 < 5x + 9, which is shown in the passage, which of the following represents the solution set?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 are the same (\"x > 3\"); options 0 and 2 are the same (\"x > 3\"); options 0 and 3 are the same (\"x > 3\"); options 1 and 2 are the same (\"x < 3\"); options 1 and 3 are the same (\"x < 3\"); options 2 and 3 are the same (\"x ≥ 3\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the solution set of the inequality 30x < 200 when x is a natural number?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a literal inequality?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If x denotes the number of packets of rice Ravi buys, and 30x < 200, which of the following can be the value of x?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The inequality 40x + 20y ≤ 120 represents the total amount spent by Reshma on registers and pens. Which of the following could be the total amount spent?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If an inequality is reversed when both sides are multiplied by a negative number, what happens to the inequality 3x + 5y < 4 when both sides are multiplied by -1?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A solution must be kept between 30°C and 35°C. What is the range of temperature in Fahrenheit?",
+      "reason": "near-duplicate of served question cmvocv2ld0657gp219oa2j6y6 (cosine 0.907 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "How many liters of water will have to be added to 1125 liters of the 45% solution of acid so that the resulting mixture will contain more than 25% but less than 30% acid content?",
+      "reason": "near-duplicate of served question cmvkdzvfr0k67gpfhthnl3l0q (cosine 0.980 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What happens to the sign of an inequality when both sides are multiplied or divided by a negative number?",
+      "reason": "near-duplicate of served question cmvkdzvfn0k5vgpfhvskszjgo (cosine 0.913 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following is a strict inequality?",
+      "reason": "near-duplicate of served question cmvkdzvfe0k57gpfhdx2b9gpq (cosine 0.916 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

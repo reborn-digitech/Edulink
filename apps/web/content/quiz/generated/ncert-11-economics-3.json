@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Indian Economic Development",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T09:34:31.553Z",
+  "generatedAt": "2026-10-28T22:34:42.847Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the main topic of Chapter 3 in the textbook?",
+      "stem": "Which of the following is an example of a mutual fund?",
       "choices": [
-        "Liberalisation, Privatisation and Globalisation",
-        "Industrialisation and Urbanisation",
-        "Agricultural Reforms",
-        "Social Welfare Policies"
+        "SBI Mutual Fund",
+        "ICICI Bank",
+        "HDFC Bank",
+        "Axis Bank"
       ],
       "answerIndex": 0,
-      "solution": "The main topic is Liberalisation, Privatisation and Globalisation because this is the central theme explored in depth through various economic policies and their impacts. The other options, while related to broader societal changes, are not the primary focus of the discussion on economic reforms.",
+      "solution": "The correct answer is SBI Mutual Fund because it is a type of investment vehicle that pools money from multiple investors to purchase a diversified portfolio of assets. ICICI Bank, HDFC Bank, and Axis Bank are commercial banks that primarily engage in deposit and lending activities, not in managing investment funds.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "अध्याय 3 का मुख्य विषय पाठ्यपुस्तक में क्या है?",
+          "stem": "निम्नलिखित में से कौन एक साझा निधि का उदाहरण है?",
           "choices": [
-            "लिबरलीकरण, निजीकरण एवं वैश्वीकरण",
-            "औद्योगिकीकरण एवं शहरीकरण",
-            "कृषि सुधार",
-            "सामाजिक कल्याण नीतियां"
+            "SBI साझा निधि",
+            "ICICI बैंक",
+            "HDFC बैंक",
+            "Axis बैंक"
           ],
-          "solution": "मुख्य विषय लिबरलीकरण, निजीकरण एवं वैश्वीकरण है क्योंकि यह विभिन्न आर्थिक नीतियों एवं उनके प्रभावों के गहराई से अध्ययन का केंद्रीय विषय है। अन्य विकल्प, जबकि सामाजिक परिवर्तनों से संबंधित हैं, आर्थिक सुधारों पर चर्चा के प्राथमिक ध्यान के रूप में नहीं हैं।",
+          "solution": "सही उत्तर SBI साझा निधि है क्योंकि यह एक निवेश वाहन है जो विविध संपत्ति पोर्टफोलियो खरीदने के लिए कई निवेशकों के पैसे के एकत्रीकरण करता है। ICICI बैंक, HDFC बैंक और Axis बैंक व्यावसायिक बैंक हैं जो मुख्य रूप से जमा और लोन गतिविधियों में लगे रहते हैं, निवेश निधि प्रबंधन में नहीं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with Indian educational context.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi financial terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "अध्याय 3 चा मुख्य विषय काय आहे?",
+          "stem": "खालीलपैकी कोणते एक संयुक्त निधीचे उदाहरण आहे?",
           "choices": [
-            "स्वातंत्र्य, निजीकरण आणि जागतिकरण",
-            "औद्योगिकरण आणि शहरीकरण",
-            "कृषी सुधारणा",
-            "सामाजिक लाभ नीती"
+            "SBI संयुक्त निधी",
+            "ICICI बँक",
+            "HDFC बँक",
+            "Axis बँक"
           ],
-          "solution": "मुख्य विषय स्वातंत्र्य, निजीकरण आणि जागतिकरण आहे कारण हा अर्थशास्त्रीय नीती आणि त्यांच्या परिणामांच्या खालोखाल अभ्यासाचा मुख्य विषय आहे. इतर विषय, जे समाजातील विस्ताराशी संबंधित आहेत, ते अर्थशास्त्रीय सुधारणांच्या चर्चेचा मुख्य लक्ष नाहीत.",
+          "solution": "सही उत्तर SBI संयुक्त निधी आहे कारण ते बहुतेक गुंतवणूकदारांच्या पैशांच्या एकत्रित वापराने विविध वित्तीय पावल्यांचा एक विविधीकृत पोर्टफोलिओ खरेदी करण्यासाठी एक प्रकारचा गुंतवणूक वाहन आहे. ICICI बँक, HDFC बँक आणि Axis बँक व्यावसायिक बँक आहेत जी खाते आणि देयता क्रियाकलापांमध्ये व्यस्त असतात, गुंतवणूक निधी व्यवस्थापन करण्याच्या कामात नाहीत.",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Marathi terminology for economic concepts.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate use of Marathi financial terminology.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "confuses the chapter's focus with another topic",
-        "refers to a different aspect of economic development",
-        "refers to a different area of policy focus"
+        "Confuses banks with mutual funds",
+        "Confuses banks with mutual funds",
+        "Confuses banks with mutual funds"
       ],
       "solverAnswers": [
         0,
@@ -85,95 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and directly asks for the main topic of the chapter. The title is given, making option 0 clearly correct. The other options are plausible but not the main focus, and the author's reasoning aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 20,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
-            "LOBALISATION PPRAISAL"
-          ]
-        },
-        {
-          "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 21,
-          "pageStart": 21,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
-            "LOBALISATION PPRAISAL"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T09:34:31.553Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of an industrial sector reform introduced in the 1991 economic reforms?",
-      "choices": [
-        "Abolition of industrial licensing",
-        "Introduction of Goods and Services Tax",
-        "Removal of quantitative restrictions on imports",
-        "Introduction of the Green Revolution"
-      ],
-      "answerIndex": 0,
-      "solution": "The abolition of industrial licensing is an example of an industrial sector reform because it reduced government control over industries, allowing more freedom in production and operations. The introduction of Goods and Services Tax and removal of quantitative restrictions on imports are related to trade and taxation policies, not directly to industrial sector reforms. The Green Revolution is an agricultural initiative, not an industrial reform.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा 1991 के आर्थिक सुधारों में लाए गए औद्योगिक क्षेत्र के सुधार का उदाहरण है?",
-          "choices": [
-            "औद्योगिक लाइसेंस के उन्मूलन",
-            "माल एवं सेवा कर के परिचय",
-            "आयात पर मात्रात्मक सीमाओं के उन्मूलन",
-            "हरित क्रांति के परिचय"
-          ],
-          "solution": "औद्योगिक लाइसेंस के उन्मूलन औद्योगिक क्षेत्र के सुधार का एक उदाहरण है क्योंकि इसने उद्योगों पर सरकारी नियंत्रण कम कर दिया, उत्पादन एवं कार्यक्रम में अधिक स्वतंत्रता प्रदान की। माल एवं सेवा कर के परिचय एवं आयात पर मात्रात्मक सीमाओं के उन्मूलन व्यापार एवं कराधान नीतियों से संबंधित हैं, औद्योगिक क्षेत्र के सीधे सुधारों से नहीं। हरित क्रांति कृषि पहल है, औद्योगिक सुधार नहीं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with Indian textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता 1991 च्या आर्थिक सुधारणांमध्ये दाखल करण्यात आलेल्या औद्योगिक क्षेत्राच्या सुधारणेचा उदाहरण आहे?",
-          "choices": [
-            "औद्योगिक परवानगीचा रद्द करणे",
-            "मालांच्या आणि सेवांच्या कराची विधान करणे",
-            "आयातावरील परिमाण निर्बंधांचा रद्द करणे",
-            "हिरवा क्रांतीची विधान करणे"
-          ],
-          "solution": "औद्योगिक परवानगीचा रद्द करणे हा औद्योगिक क्षेत्राच्या सुधारणेचा उदाहरण आहे कारण त्यामुळे उद्योगांवर सरकारचा नियंत्रण कमी झाला आणि उत्पादन आणि कार्यक्षमतेमध्ये अधिक स्वातंत्र्य दिले गेले. मालांच्या आणि सेवांच्या कराची विधान करणे आणि आयातावरील परिमाण निर्बंधांचा रद्द करणे ही व्यापार आणि कर धोरणाशी संबंधित आहेत, औद्योगिक क्षेत्राच्या सुधारणांशी सीधा संबंध नाही. हिरवा क्रांती ही कृषी कार्यक्रम आहे, औद्योगिक सुधारणा नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for economic reforms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believing that GST was introduced during the 1991 reforms rather than in 2017",
-        "Believing that import restrictions were removed in 1991, not realizing that this was part of liberalization but not an industrial sector reform",
-        "Confusing economic reforms with agricultural policies"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0 (Abolition of industrial licensing), as it directly relates to industrial sector reforms. The other options are either unrelated or pertain to different types of reforms.",
+      "critique": "The question is well-constructed, with a clear correct answer (SBI Mutual Fund) and plausible distractors (all banks). The reasoning for the distractors is accurate, as it reflects a common misconception of confusing banks with mutual funds.",
       "sources": [
         {
           "document": "ncert/11/economics/keec103.pdf",
@@ -217,49 +129,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T09:34:31.553Z",
+      "generatedAt": "2026-10-28T22:34:42.847Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "What was the main aim of the New Economic Policy (NEP) introduced in 1991?",
+      "difficulty": 1,
+      "stem": "What is the process of selling part of the ownership equity of public sector enterprises called?",
       "choices": [
-        "To increase government control over the economy",
-        "To restrict private sector participation",
-        "To create a more competitive environment in the economy",
-        "To reduce exports and increase imports"
+        "Privatisation",
+        "Globalisation",
+        "Disinvestment",
+        "Liberalisation"
       ],
       "answerIndex": 2,
-      "solution": "The New Economic Policy (NEP) aimed to create a more competitive environment in the economy by reducing restrictions and encouraging business growth. Increasing government control or restricting the private sector would have limited competition, which is the opposite of what the policy intended. Reducing exports and increasing imports would not have promoted economic competitiveness either.",
+      "solution": "Disinvestment refers to the process of selling part of the ownership equity of public sector enterprises, which is a specific action within the broader concept of privatisation. Privatisation involves transferring ownership to the private sector, but not necessarily through the sale of equity. Globalisation relates to the integration of economies, and liberalisation refers to reducing government restrictions, neither of which specifically involve selling equity in public enterprises.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "1991 में लागू किए गए नए आर्थिक नीति (NEP) का मुख्य उद्देश्य क्या था?",
+          "stem": "सार्वजनिक क्षेत्र उद्यमों के स्वामित्व भाग के बिक्री की प्रक्रिया क्या कहलाती है?",
           "choices": [
-            "आर्थिक पर शासकीय नियंत्रण बढ़ाना",
-            "निजी क्षेत्र के प्रतिभाग को सीमित करना",
-            "आर्थिक प्रतिस्पर्धा के वातावरण का निर्माण करना",
-            "निर्यात कम करना और आयात बढ़ाना"
+            "निजीकरण",
+            "वैश्वीकरण",
+            "अवकाशन",
+            "स्वतंत्रीकरण"
           ],
-          "solution": "नए आर्थिक नीति (NEP) का उद्देश्य आर्थिक प्रतिस्पर्धा के वातावरण का निर्माण करना था, जिससे सीमा बढ़ाई गई और व्यापार के विकास को प्रोत्साहित किया गया। शासकीय नियंत्रण बढ़ाना या निजी क्षेत्र के प्रतिभाग को सीमित करना प्रतिस्पर्धा को सीमित कर देता, जो नीति के उद्देश्य के विपरीत था। निर्यात कम करना और आयात बढ़ाना आर्थिक प्रतिस्पर्धा को बढ़ाने के लिए भी उपयुक्त नहीं रहा।",
+          "solution": "अवकाशन सार्वजनिक क्षेत्र उद्यमों के स्वामित्व भाग के बिक्री की प्रक्रिया कहलाती है, जो निजीकरण की व्यापक अवधारणा के भीतर एक विशिष्ट क्रियान्वयन है। निजीकरण निजी क्षेत्र में स्वामित्व के स्थानांतरण को संदर्भित करता है, लेकिन आवश्यक नहीं कि इसके माध्यम से स्वामित्व भाग की बिक्री हो। वैश्वीकरण अर्थव्यवस्थाओं के एकीकरण से संबंधित है और स्वतंत्रीकरण सरकारी प्रतिबंधों के कम करने को संदर्भित करता है, जिनमें से कोई भी विशिष्ट रूप से सार्वजनिक उद्यमों में स्वामित्व भाग की बिक्री नहीं करता।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options are correctly translated, and the correct answer remains option (3) 'अवकाशन' as in the English version. The solution also correctly explains the distinction between the terms.",
           "flag": null
         },
         "mr": {
-          "stem": "1991 मध्ये प्रस्तावित नवीन आर्थिक धोरणाचा मुख्य उद्देश काय होता?",
+          "stem": "सार्वजनिक क्षेत्रातील उद्योगांच्या मालकीच्या स्वत्वाच्या भागाच्या विक्रीच्या प्रक्रियेला काय म्हणतात?",
           "choices": [
-            "आर्थिक व्यवस्थेवर सरकारी नियंत्रण वाढवणे",
-            "खाजगी क्षेत्राच्या भागीदारी वर बंधन घालणे",
-            "आर्थिक व्यवस्थेत अधिक स्पर्धात्मक वातावरण तयार करणे",
-            "निर्यात कमी करून आयात वाढवणे"
+            "खाजगीकरण",
+            "जागतिकीकरण",
+            "विक्रय",
+            "मुक्तीकरण"
           ],
-          "solution": "नवीन आर्थिक धोरणाचा उद्देश आर्थिक व्यवस्थेत अधिक स्पर्धात्मक वातावरण तयार करणे होता, ज्यामुळे निर्बंध कमी करून व्यवसायाच्या विकासाला प्रोत्साहन दिले जाईल. सरकारी नियंत्रण वाढवणे किंवा खाजगी क्षेत्राच्या भागीदारी वर बंधन घालणे स्पर्धेला मर्यादित करेल, जे धोरणाच्या उद्देशाच्या विरुद्ध आहे. निर्यात कमी करून आयात वाढवणे आर्थिक स्पर्धेला प्रोत्साहन देणार नाही.",
+          "solution": "विक्रय हा सार्वजनिक क्षेत्रातील उद्योगांच्या मालकीच्या स्वत्वाच्या भागाच्या विक्रीच्या प्रक्रियेला म्हणतात, जो खाजगीकरणाच्या व्यापक अर्थात एक विशिष्ट कृती आहे. खाजगीकरण हा निजी क्षेत्रात मालकी हस्तांतरित करण्याचा प्रकार आहे, परंतु त्याचा अर्थ नक्की विक्रयाच्या स्वत्वाचा असेल असे नाही. जागतिकीकरण हा अर्थव्यवस्थांच्या एकत्रित करण्याशी संबंधित आहे आणि मुक्तीकरण हा सरकारी बंधनांच्या कमी करण्याशी संबंधित आहे, ज्यापैकी कोणाचाही विशिष्ट रूपाने सार्वजनिक उद्योगांमधील स्वत्वाच्या विक्रीशी संबंध नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi economic terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for economic concepts.",
           "flag": null
         }
       },
@@ -268,10 +180,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Misunderstands the purpose of the NEP as increasing government control",
-        "Believes the policy aimed to restrict the private sector",
+        "confuses the term 'privatisation' with 'disinvestment'",
+        "refers to the broader concept of global integration",
         null,
-        "Thinks the policy aimed to reduce exports and increase imports"
+        "refers to the process of reducing government control on the economy"
       ],
       "solverAnswers": [
         2,
@@ -281,13 +193,13 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2, as the NEP aimed to create a more competitive environment by liberalizing and opening up the economy. The other options are incorrect and represent common misconceptions about the policy.",
+      "critique": "The solution correctly identifies 'disinvestment' as the process of selling part of the ownership equity of public sector enterprises. The reasoning for the other options aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 4,
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
             "LOBALISATION PPRAISAL"
@@ -295,9 +207,9 @@
         },
         {
           "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 1,
-          "pageStart": 4,
-          "pageEnd": 4,
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
             "LOBALISATION PPRAISAL"
@@ -305,19 +217,9 @@
         },
         {
           "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 2,
-          "pageStart": 5,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
-            "LOBALISATION PPRAISAL"
-          ]
-        },
-        {
-          "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 5,
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 10,
           "headingPath": [
             "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
             "LOBALISATION PPRAISAL"
@@ -325,49 +227,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T09:34:31.553Z",
+      "generatedAt": "2026-10-28T22:34:42.847Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "Which of the following is an example of a financial sector reform introduced in the 1991 economic reforms?",
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a direct tax in India?",
       "choices": [
-        "Abolition of industrial licensing",
-        "Introduction of Goods and Services Tax",
-        "Removal of quantitative restrictions on imports",
-        "Establishment of private sector banks"
+        "Goods and Services Tax (GST)",
+        "Service Tax",
+        "Income Tax",
+        "Excise Duty"
       ],
-      "answerIndex": 3,
-      "solution": "The correct option is the establishment of private sector banks, as this directly relates to reforms in the financial sector by increasing competition and reducing the monopoly of public sector banks. The abolition of industrial licensing and removal of quantitative restrictions on imports are part of industrial and trade reforms, respectively. The introduction of Goods and Services Tax is a tax reform, not specifically a financial sector reform.",
+      "answerIndex": 2,
+      "solution": "The correct answer is Income Tax because it is levied directly on the income of individuals and businesses. Goods and Services Tax (GST) and Service Tax are collected from consumers at the point of sale, making them indirect taxes. Excise Duty is also an indirect tax, imposed on goods produced within the country.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा 1991 के आर्थिक सुधारों में पेश किए गए वित्तीय क्षेत्र के सुधार का उदाहरण है?",
+          "stem": "निम्नलिखित में से कौन भारत में एक प्रत्यक्ष कर का उदाहरण है?",
           "choices": [
-            "औद्योगिक लाइसेंस के उन्मूलन",
-            "माल एवं सेवा कर के परिचय",
-            "आयात पर परिमाणात्मक प्रतिबंधों के उन्मूलन",
-            "निजी क्षेत्र के बैंकों की स्थापना"
+            "माल एवं सेवा कर (GST)",
+            "सेवा कर",
+            "आय कर",
+            "उत्पाद शुल्क"
           ],
-          "solution": "सही विकल्प निजी क्षेत्र के बैंकों की स्थापना है, क्योंकि यह वित्तीय क्षेत्र में प्रतिस्पर्धा बढ़ाकर सार्वजनिक क्षेत्र के बैंकों के एकाधिकार को कम करने के सीधे रूप से संबंधित है। औद्योगिक लाइसेंस के उन्मूलन और आयात पर परिमाणात्मक प्रतिबंधों के उन्मूलन क्रमशः औद्योगिक एवं व्यापार सुधारों के हिस्से हैं। माल एवं सेवा कर के परिचय एक कर सुधार है, वित्तीय क्षेत्र के सुधार के रूप में नहीं।",
+          "solution": "सही उत्तर आय कर है क्योंकि यह व्यक्तियों एवं व्यवसायों की आय पर सीधे लगाया जाता है। माल एवं सेवा कर (GST) एवं सेवा कर उपभोक्ताओं से बिक्री के समय वसूल किए जाते हैं, इसलिए ये अप्रत्यक्ष कर हैं। उत्पाद शुल्क भी एक अप्रत्यक्ष कर है, जो देश में उत्पादित वस्तुओं पर लगाया जाता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology consistent with Indian educational materials.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for tax types.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता 1991 च्या आर्थिक सुधारणांमध्ये परिचालित झालेल्या वित्तीय क्षेत्राच्या सुधारणेचा उदाहरण आहे?",
+          "stem": "भारतातील प्रत्यक्ष कराचे उदाहरण खालीलपैकी कोणते आहे?",
           "choices": [
-            "उद्योग लायसन्सचे रद्दीकरण",
-            "मालांच्या आणि सेवांच्या कराची विधान करणे",
-            "आयातावरील परिमाणात्मक बंधनांचे रद्दीकरण",
-            "खाजगी क्षेत्राच्या बँकांची स्थापना"
+            "माल आणि सेवा कर (GST)",
+            "सेवा कर",
+            "उत्पन्न कर",
+            "उत्पादन कर"
           ],
-          "solution": "खाजगी क्षेत्राच्या बँकांची स्थापना ही योग्य विकल्प आहे, कारण ही वित्तीय क्षेत्रातील सुधारणांमध्ये एक थेट संबंध आहे ज्यामुळे प्रतिस्पर्धा वाढते आणि सार्वजनिक क्षेत्राच्या बँकांचा एकाधिकार कमी होतो. उद्योग लायसन्सचे रद्दीकरण आणि आयातावरील परिमाणात्मक बंधनांचे रद्दीकरण अनुक्रमे उद्योग आणि व्यापार सुधारणांचे आहेत. मालांच्या आणि सेवांच्या कराची विधान करणे ही कर सुधारणा आहे, वित्तीय क्षेत्राच्या सुधारणेची विशिष्ट नाही.",
+          "solution": "उत्पन्न कर हा व्यक्ती आणि व्यवसायांच्या उत्पन्नावर लावला जाणारा प्रत्यक्ष कर आहे. माल आणि सेवा कर (GST) आणि सेवा कर हे उपभोक्तांकडून विक्रीच्या बिंदूवर एकत्रित केले जातात, ज्यामुळे ते अप्रत्यक्ष कर बनतात. उत्पादन कर देखील अप्रत्यक्ष कर आहे, जो देशात उत्पादित मालावर लावला जातो.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for economic reforms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi terminology for tax types.",
           "flag": null
         }
       },
@@ -376,9 +278,117 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "This refers to industrial sector reform, not financial sector.",
-        "This is a tax reform, not a financial sector reform.",
-        "This is a trade policy reform, not a financial sector reform.",
+        "Confuses indirect taxes with direct taxes",
+        "Confuses indirect taxes with direct taxes",
+        null,
+        "Confuses direct tax with indirect tax, thinking excise duty is paid directly by individuals"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. Income Tax is a direct tax, while GST, Service Tax, and Excise Duty are all indirect taxes. The reasoning aligns with standard economic definitions.",
+      "sources": [
+        {
+          "document": "ncert/11/economics/keec103.pdf",
+          "ordinal": 4,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
+            "LOBALISATION PPRAISAL"
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec103.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
+            "LOBALISATION PPRAISAL"
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec103.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
+            "LOBALISATION PPRAISAL"
+          ]
+        },
+        {
+          "document": "ncert/11/economics/keec103.pdf",
+          "ordinal": 7,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
+            "LOBALISATION PPRAISAL"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T22:34:42.847Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an indirect tax in India?",
+      "choices": [
+        "Income Tax",
+        "Corporate Tax",
+        "Wealth Tax",
+        "Goods and Services Tax (GST)"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is Goods and Services Tax (GST), as it is imposed on the consumption of goods and services rather than on income or wealth. Income Tax, Corporate Tax, and Wealth Tax are levied directly on individuals and entities, making them direct taxes. GST is collected at each stage of the supply chain, which is a characteristic of indirect taxation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन भारत में अप्रत्यक्ष कर का उदाहरण है?",
+          "choices": [
+            "आय कर",
+            "कॉर्पोरेट कर",
+            "संपत्ति कर",
+            "माल एवं सेवा कर (जीएसटी)"
+          ],
+          "solution": "सही उत्तर माल एवं सेवा कर (जीएसटी) है, क्योंकि यह वस्तुओं एवं सेवाओं के उपभोग पर लगाया जाता है, आय या संपत्ति पर नहीं। आय कर, कॉर्पोरेट कर एवं संपत्ति कर व्यक्तियों एवं संस्थाओं पर सीधे लगाए जाते हैं, जिससे ये प्रत्यक्ष कर होते हैं। जीएसटी प्राकृतिक आपूर्ति श्रृंखला के प्रत्येक चरण पर वस्तुओं एवं सेवाओं पर वस्तुओं एवं सेवाओं पर लगाया जाता है, जो अप्रत्यक्ष कर की विशेषता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology for tax types.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते भारतातील अप्रत्यक्ष कराचे उदाहरण आहे?",
+          "choices": [
+            "उत्पन्न कर",
+            "कॉर्पोरेट कर",
+            "मालमत्ता कर",
+            "माल आणि सेवा कर (जीएसटी)"
+          ],
+          "solution": "सही उत्तर माल आणि सेवा कर (जीएसटी) आहे, कारण तो माल आणि सेवांच्या उपभोगावर लावला जातो, उत्पन्न किंवा मालमत्तेवर नाही. उत्पन्न कर, कॉर्पोरेट कर आणि मालमत्ता कर व्यक्ती आणि संस्थांवर लावले जातात, ज्यामुळे ते प्रत्यक्ष कर बनतात. जीएसटी वितरण श्रृंखलेतील प्रत्येक टप्प्यावर एकत्रित केला जातो, जे अप्रत्यक्ष कराचे वैशिष्ट्य आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for tax types.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses direct taxes with indirect taxes",
+        "Confuses direct taxes with indirect taxes",
+        "Confuses direct taxes with indirect taxes",
         null
       ],
       "solverAnswers": [
@@ -389,7 +399,7 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 3 (Establishment of private sector banks), as it directly relates to financial sector reforms. The other options are correctly identified as industrial, tax, and trade reforms, respectively.",
+      "critique": "The solution correctly identifies GST as an indirect tax, and the other options are direct taxes. The reasoning aligns with standard economic classifications.",
       "sources": [
         {
           "document": "ncert/11/economics/keec103.pdf",
@@ -433,49 +443,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T09:34:31.553Z",
+      "generatedAt": "2026-10-28T22:34:42.847Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "What was the main purpose of removing quantitative restrictions on imports as part of the 1991 economic reforms?",
+      "difficulty": 2,
+      "stem": "What does the term 'disinvestment' refer to in the context of public sector enterprises?",
       "choices": [
-        "To increase the number of domestic industries",
-        "To protect domestic industries from foreign competition",
-        "To improve the competitiveness of Indian goods in international markets",
-        "To reduce the number of foreign investments in India"
+        "Selling of government assets to the private sector",
+        "Increasing government control over enterprises",
+        "Increasing the number of public sector enterprises",
+        "Reducing the role of the public sector"
       ],
-      "answerIndex": 2,
-      "solution": "The main purpose of removing quantitative restrictions on imports was to enhance the competitiveness of Indian goods by allowing them to face international market challenges, which would encourage improvement and efficiency. Protecting domestic industries would have involved maintaining restrictions, not removing them. Increasing domestic industries or reducing foreign investments are not directly related to the goal of improving international competitiveness.",
+      "answerIndex": 0,
+      "solution": "Disinvestment refers to the process of selling government-owned assets to the private sector, which reduces the government's stake in public sector enterprises. This option aligns with the general understanding of disinvestment as a means to transfer ownership. The other options describe actions that are contrary to the concept of disinvestment, such as increasing government control or expanding the public sector.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "1991 के आर्थिक सुधारों के हिस्से के रूप में आयात पर अंकीय प्रतिबंध हटाने का मुख्य उद्देश्य क्या था?",
+          "stem": "सार्वजनिक क्षेत्र उद्यमों के संदर्भ में 'अवकाश निवेश' शब्द क्या संदर्भित करता है?",
           "choices": [
-            "स्थानीय उद्योगों की संख्या बढ़ाना",
-            "स्थानीय उद्योगों को विदेशी प्रतिस्पर्धा से सुरक्षित करना",
-            "अंतरराष्ट्रीय बाजार में भारतीय वस्तुओं की प्रतिस्पर्धी क्षमता में सुधार करना",
-            "भारत में विदेशी निवेश की संख्या कम करना"
+            "सार्वजनिक क्षेत्र उद्यमों में सरकार के हिस्सेदारी को कम करना",
+            "उद्यमों पर सरकार के नियंत्रण को बढ़ाना",
+            "सार्वजनिक क्षेत्र उद्यमों की संख्या बढ़ाना",
+            "सार्वजनिक क्षेत्र की भूमिका कम करना"
           ],
-          "solution": "आयात पर अंकीय प्रतिबंध हटाने का मुख्य उद्देश्य अंतरराष्ट्रीय बाजार के चुनौतियों के सामना करने के लिए भारतीय वस्तुओं की प्रतिस्पर्धी क्षमता में सुधार करना था, जो सुधार और दक्षता को बढ़ावा देगा। स्थानीय उद्योगों की सुरक्षा के लिए प्रतिबंध बनाए रखना आवश्यक था, न कि हटाना। स्थानीय उद्योगों की संख्या बढ़ाना या विदेशी निवेश कम करना अंतरराष्ट्रीय प्रतिस्पर्धी क्षमता में सुधार के लक्ष्य से सीधे संबंधित नहीं हैं।",
+          "solution": "अवकाश निवेश सार्वजनिक क्षेत्र उद्यमों में सरकार के स्वामित्व वाली संपत्ति के निजी क्षेत्र को बेचने की प्रक्रिया को संदर्भित करता है, जो सार्वजनिक क्षेत्र उद्यमों में सरकार के हिस्सेदारी को कम करता है। यह अवकाश निवेश के सामान्य अर्थ के साथ मेल खाता है जो स्वामित्व के हस्तांतरण के रूप में होता है। अन्य विकल्प अवकाश निवेश की अवधारणा के विपरीत कार्रवाई के रूप में बताए जाते हैं, जैसे कि सरकारी नियंत्रण बढ़ाना या सार्वजनिक क्षेत्र का विस्तार करना।",
           "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option 2.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for public sector and disinvestment concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "1991 च्या आर्थिक सुधारणांमध्ये आयातावरील परिमाण नियंत्रण काढून टाकण्याचा मुख्य उद्देश काय होता?",
+          "stem": "सार्वजनिक क्षेत्रातील उद्योगांच्या संदर्भात 'अवमूल्यन' शब्दाचा अर्थ काय आहे?",
           "choices": [
-            "घरेलू उद्योगांची संख्या वाढवणे",
-            "घरेलू उद्योगांना विदेशी स्पर्धेपासून बचाव करणे",
-            "भारतीय वस्तूंची आंतरराष्ट्रीय बाजारात प्रतिस्पर्धिता सुधारणे",
-            "भारतात विदेशी गुंतवणुकीची संख्या कमी करणे"
+            "सरकारी परिसंपत्ती खाजगी क्षेत्राला विकणे",
+            "उद्योगांवर सरकारचा नियंत्रण वाढवणे",
+            "सार्वजनिक क्षेत्रातील उद्योगांची संख्या वाढवणे",
+            "सार्वजनिक क्षेत्राची भूमिका कमी करणे"
           ],
-          "solution": "आयातावरील परिमाण नियंत्रण काढून टाकण्याचा मुख्य उद्देश भारतीय वस्तूंची आंतरराष्ट्रीय बाजारात प्रतिस्पर्धिता सुधारणे होता, ज्यामुळे त्यांच्या सुधारणेस आणि कार्यक्षमतेस प्रोत्साहन मिळेल. घरेलू उद्योगांचा बचाव करण्यासाठी नियंत्रण ठेवावे लागले असते, नाहीतर ते काढून टाकले जाऊ शकत नसते. घरेलू उद्योगांची संख्या वाढवणे किंवा विदेशी गुंतवणुकीची संख्या कमी करणे आंतरराष्ट्रीय प्रतिस्पर्धितेच्या उद्देशाशी सीध्या संबंधित नाहीत.",
+          "solution": "अवमूल्यन म्हणजे सरकारी मालमत्ता खाजगी क्षेत्राला विकण्याची प्रक्रिया आहे, जी सार्वजनिक क्षेत्रातील उद्योगांवर सरकारचा हिस्सा कमी करते. हा विकल्प सामान्य अवमूल्यन अर्थाच्या अनुरूप आहे, जो मालकी विस्तारित करण्याचा उपाय आहे. इतर विकल्पांमध्ये अवमूल्यनाच्या संकल्पनेच्या विरुद्ध असलेल्या कृतींचा वर्णन आहे, जसे की सरकारचा नियंत्रण वाढवणे किंवा सार्वजनिक क्षेत्राचा विस्तार करणे.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate economic terminology commonly found in Marathi textbooks.",
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. The term 'अवमूल्यन' is correctly used as the Marathi equivalent of 'disinvestment' and aligns with standard textbook usage.",
           "flag": null
         }
       },
@@ -484,26 +494,26 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Belief that removing import restrictions automatically leads to more domestic production, without considering competition and market forces",
-        "This is the opposite of the stated aim.",
         null,
-        "This is an effect of the reform, not the main purpose."
+        "Confusing disinvestment with privatization, thinking it means more government involvement",
+        "Confusing disinvestment with expansion of public sector enterprises",
+        "Confusing disinvestment with reducing public sector involvement instead of transferring ownership to private entities"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies option 2 as the correct answer, aligning with the historical context of the 1991 economic reforms, which aimed to make Indian goods more competitive globally by reducing trade barriers.",
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as disinvestment refers to the sale of government assets to the private sector. The other options represent common misconceptions about the term.",
       "sources": [
         {
           "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 6,
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
             "LOBALISATION PPRAISAL"
@@ -511,9 +521,9 @@
         },
         {
           "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 6,
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
             "LOBALISATION PPRAISAL"
@@ -521,19 +531,9 @@
         },
         {
           "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
-            "LOBALISATION PPRAISAL"
-          ]
-        },
-        {
-          "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 7,
-          "pageStart": 7,
-          "pageEnd": 8,
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 10,
           "headingPath": [
             "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
             "LOBALISATION PPRAISAL"
@@ -541,49 +541,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T09:34:31.553Z",
+      "generatedAt": "2026-10-28T22:34:42.847Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "Which of the following best explains the impact of the economic reforms of 1991?",
+      "stem": "Which of the following statements best reflects the author's view on the impact of outsourcing on the Indian economy?",
       "choices": [
-        "It led to a decrease in foreign exchange reserves",
-        "It resulted in higher unemployment and poverty",
-        "It increased the role of the government in the economy",
-        "It created a more competitive environment and boosted exports"
+        "Outsourcing is a negative phenomenon that harms the Indian economy",
+        "Outsourcing is a positive phenomenon that benefits the Indian economy",
+        "Outsourcing has no significant impact on the Indian economy",
+        "Outsourcing is a complex phenomenon that has both positive and negative impacts"
       ],
       "answerIndex": 3,
-      "solution": "The economic reforms of 1991 aimed to foster a more competitive environment by reducing restrictions on businesses, which encouraged innovation and productivity, leading to increased exports. The other options are incorrect because the reforms were designed to improve economic efficiency, not to increase unemployment or poverty, nor to expand the government's role in the economy.",
+      "solution": "The correct answer reflects that outsourcing has both positive and negative effects, as it is a complex phenomenon influenced by globalisation and technological development. Other options are too simplistic and fail to capture the nuanced perspective. The complexity of outsourcing's impact is supported by its role in both economic growth and challenges.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा 1991 के आर्थिक सुधारों के प्रभाव की सबसे अच्छी तरह से व्याख्या करता है?",
+          "stem": "निम्नलिखित में से कौन-सा कथन बाहरी ठेके के भारतीय अर्थव्यवस्था पर प्रभाव के बारे में लेखक के दृष्टिकोण को सबसे अच्छा दर्शाता है?",
           "choices": [
-            "इसके कारण विदेशी मुद्रा भंडार में कमी हुई",
-            "इसके परिणामस्वरूप बेरोजगारी और गरीबी में वृद्धि हुई",
-            "इसके कारण अर्थव्यवस्था में सरकार की भूमिका बढ़ गई",
-            "इसके कारण अधिक प्रतिस्पर्धी वातावरण बना और निर्यात बढ़े"
+            "बाहरी ठेका एक नकारात्मक घटना है जो भारतीय अर्थव्यवस्था को हानि पहुंचाती है",
+            "बाहरी ठेका एक सकारात्मक घटना है जो भारतीय अर्थव्यवस्था को लाभ पहुंचाती है",
+            "बाहरी ठेका भारतीय अर्थव्यवस्था पर कोई महत्वपूर्ण प्रभाव नहीं डालता है",
+            "बाहरी ठेका एक जटिल घटना है जिसके सकारात्मक और नकारात्मक प्रभाव होते हैं"
           ],
-          "solution": "1991 के आर्थिक सुधार व्यापारिक कम्पनियों पर नियंत्रण कम करके अधिक प्रतिस्पर्धी वातावरण के विकास के लिए अपनाए गए थे, जिससे नवाचार और उत्पादकता में वृद्धि हुई और निर्यात बढ़े। अन्य विकल्प गलत हैं क्योंकि सुधार आर्थिक कार्यकुशलता में सुधार के लिए डिज़ाइन किए गए थे, न कि बेरोजगारी या गरीबी में वृद्धि के लिए, न ही अर्थव्यवस्था में सरकार की भूमिका बढ़ाने के लिए।",
+          "solution": "सही उत्तर यह दर्शाता है कि बाहरी ठेके के सकारात्मक और नकारात्मक प्रभाव होते हैं, क्योंकि यह वैश्वीकरण और प्रौद्योगिक विकास द्वारा प्रभावित एक जटिल घटना है। अन्य विकल्प बहुत सरल हैं और इसके प्रभाव के जटिल दृष्टिकोण को नहीं दर्शाते हैं। बाहरी ठेके के प्रभाव की जटिलता इसके आर्थिक विकास और चुनौतियों में भूमिका द्वारा समर्थित है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in the context of Indian economic reforms.",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते 1991 च्या आर्थिक सुधारणांच्या परिणामाचे सर्वात चांगले स्पष्टीकरण देते?",
+          "stem": "खालीलपैकी कोणता विधान भारतीय अर्थव्यवस्थेवर बाजारभावनेच्या परिणामाबद्दल लेखकाच्या दृष्टीकोनाचे सर्वात चांगले प्रतिनिधित्व करते?",
           "choices": [
-            "त्यामुळे विदेशी विनिमय निधीत घट झाली",
-            "त्यामुळे अधिक बेरोजगारी आणि गरीबी झाली",
-            "त्यामुळे अर्थव्यवस्थेत सरकारची भूमिका वाढली",
-            "त्यामुळे अधिक स्पर्धात्मक वातावरण निर्माण झाले आणि निर्यात वाढली"
+            "बाजारभावना हा भारतीय अर्थव्यवस्थेला हानी पोहोचविणारा नकारात्मक परिघटना आहे",
+            "बाजारभावना हा भारतीय अर्थव्यवस्थेला फायदा करणारा सकारात्मक परिघटना आहे",
+            "बाजारभावनेचा भारतीय अर्थव्यवस्थेवर कोणताही महत्त्वाचा परिणाम नाही",
+            "बाजारभावना ही एक जटिल परिघटना आहे जी दोन्ही सकारात्मक आणि नकारात्मक परिणाम असतात"
           ],
-          "solution": "1991 च्या आर्थिक सुधारणांचा उद्देश व्यवसायांवरील निर्बंध कमी करून अधिक स्पर्धात्मक वातावरण तयार करणे होता, जे नवीनता आणि उत्पादकता उत्तेजित करते आणि निर्यात वाढवते. इतर विकल्प चुकीचे आहेत कारण सुधारणा बेरोजगारी किंवा गरीबी वाढवण्यासाठी डिझाइन केलेल्या नव्हत्या, निर्देश अर्थव्यवस्थेत सरकारची भूमिका वाढवण्यासाठी नव्हत्या.",
+          "solution": "बरोबर उत्तर बाजारभावनेच्या दोन्ही सकारात्मक आणि नकारात्मक परिणामांचे प्रतिनिधित्व करते, कारण ती विश्वव्यापीकरण आणि तंत्रज्ञानाच्या विकासाच्या प्रभावाखाली एक जटिल परिघटना आहे. इतर विकल्प खूप सोपे आहेत आणि संकुचित दृष्टिकोनाचे प्रतिनिधित्व करत नाहीत. बाजारभावनेच्या परिणामांची जटिलता तिच्या आर्थिक विकासातील भूमिका आणि आव्हानांमध्ये समर्थित आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for economic concepts.",
+          "critique": "The translation accurately reflects the original meaning, with appropriate Marathi terminology for economic concepts. The correct answer (option 4) is in the same position as in the English version, and the distractors remain incorrect.",
           "flag": null
         }
       },
@@ -592,9 +592,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Misinterprets the effect of the reforms on foreign exchange reserves",
-        "Believes the reforms worsened social conditions",
-        "Thinks the policy aimed to increase government involvement",
+        "overlooks the complexity of outsourcing",
+        "fails to recognize the positive aspects of outsourcing",
+        "ignores the author's balanced view",
         null
       ],
       "solverAnswers": [
@@ -605,13 +605,13 @@
         3
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 3, as the 1991 economic reforms aimed to liberalize, privatize, and globalize the Indian economy, which led to a more competitive environment and boosted exports. The other options are incorrect as they contradict the actual outcomes of the reforms.",
+      "critique": "The correct answer (3) reflects the balanced view presented in the passage. The other options are too simplistic and fail to capture the nuanced perspective of the author.",
       "sources": [
         {
           "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 4,
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
             "LOBALISATION PPRAISAL"
@@ -619,9 +619,9 @@
         },
         {
           "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 1,
-          "pageStart": 4,
-          "pageEnd": 4,
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
             "LOBALISATION PPRAISAL"
@@ -629,19 +629,9 @@
         },
         {
           "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 2,
-          "pageStart": 5,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
-            "LOBALISATION PPRAISAL"
-          ]
-        },
-        {
-          "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 5,
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 10,
           "headingPath": [
             "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
             "LOBALISATION PPRAISAL"
@@ -649,49 +639,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T09:34:31.553Z",
+      "generatedAt": "2026-10-28T22:34:42.847Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "Why did the government face difficulties in managing the economic crisis in 1991?",
+      "stem": "Why might some scholars criticize the disinvestment policy of the Indian government?",
       "choices": [
-        "Because it had enough foreign exchange reserves to meet its needs",
-        "Because it was able to generate sufficient revenue from taxation",
-        "Because it was spending more than its income and had insufficient foreign exchange reserves",
-        "Because it was able to pay all its foreign debts"
+        "Because it led to an increase in public sector employment",
+        "Because it reduced the government's financial burden",
+        "Because it may have allowed private interests to take over public assets",
+        "Because it improved the efficiency of public sector enterprises"
       ],
       "answerIndex": 2,
-      "solution": "The correct option explains that the government was spending more than it earned and lacked sufficient foreign exchange reserves, which would lead to economic difficulties. The other options suggest financial stability, which would not cause a crisis. Insufficient reserves and overspending directly contribute to economic instability.",
+      "solution": "The disinvestment policy might be criticized because it could have allowed private entities to gain control over public assets, which can lead to reduced public oversight and potential exploitation. The other options describe positive outcomes or effects not directly related to the criticism of the policy.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "1991 में आर्थिक संकट के प्रबंधन में सरकार को क्यों कठिनाइयाँ उत्पन्न हुईं?",
+          "stem": "भारत सरकार की निजीकरण नीति के लिए कुछ विद्वान क्यों आलोचना कर सकते हैं?",
           "choices": [
-            "क्योंकि इसके पास अपनी आवश्यकताओं के लिए पर्याप्त विदेशी विनिमय भंडार थे",
-            "क्योंकि इसने राजस्व के पर्याप्त स्रोत उत्पन्न किए",
-            "क्योंकि इसने अपनी आय से अधिक खर्च किया और पर्याप्त विदेशी विनिमय भंडार नहीं थे",
-            "क्योंकि इसने सभी विदेशी ऋण चुका दिए"
+            "क्योंकि इसने सार्वजनिक क्षेत्र के रोजगार में वृद्धि की",
+            "क्योंकि इसने सरकार के वित्तीय भार को कम किया",
+            "क्योंकि इससे सार्वजनिक संपत्ति पर निजी हितों का अधिकार हो सकता है",
+            "क्योंकि इसने सार्वजनिक क्षेत्र के उद्यमों की दक्षता में सुधार किया"
           ],
-          "solution": "सही विकल्प यह स्पष्ट करता है कि सरकार अपनी आय से अधिक खर्च कर रही थी और पर्याप्त विदेशी विनिमय भंडार नहीं थे, जो आर्थिक कठिनाइयों के कारण बन सकता है। अन्य विकल्प आर्थिक स्थिरता के संकेत देते हैं, जो संकट के कारण नहीं हो सकते। अपर्याप्त भंडार और अतिरिक्त खर्च सीधे आर्थिक अस्थिरता के कारण बन सकते हैं।",
+          "solution": "निजीकरण नीति की आलोचना इसलिए की जा सकती है क्योंकि इससे निजी एजेंसियों के लिए सार्वजनिक संपत्ति पर नियंत्रण प्राप्त करने की संभावना हो सकती है, जो सार्वजनिक नियंत्रण और संभावित शोषण में कमी ला सकती है। अन्य विकल्प नीति की आलोचना के सीधे संबंध नहीं रखते हैं बल्कि धनात्मक परिणामों या प्रभावों का वर्णन करते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and options, with appropriate terminology and logical structure. The correct answer remains option (2), and the distractors are still incorrect.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution align correctly, with the correct answer remaining in the same position. The technical terms used are appropriate for a Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "1991 मध्ये आर्थिक संकटाच्या व्यवस्थापनात सरकारला काय तक्रार आली?",
+          "stem": "भारत सरकारच्या विक्रय धोरणाच्या टीका का करू शकतात काही शास्त्रज्ञ?",
           "choices": [
-            "कारण त्याला आपल्या गरजा पूर्ण करण्यासाठी पुरेसे विदेशी विनिमय निधी होता",
-            "कारण त्याला आयकरातून पुरेसे रक्कम उत्पन्न करता आली",
-            "कारण त्याने आपल्या उत्पन्नापेक्षा जास्त खर्च केला आणि पुरेसे विदेशी विनिमय निधी नव्हता",
-            "कारण त्याने सर्व विदेशी देयके भरली"
+            "कारण त्यामुळे सार्वजनिक क्षेत्रातील रोजगारात वाढ झाली",
+            "कारण त्यामुळे सरकारच्या आर्थिक बोजा कमी झाला",
+            "कारण त्यामुळे खाजगी हिताची सार्वजनिक परिसंपत्ती वर नियंत्रण मिळू शकतो",
+            "कारण त्यामुळे सार्वजनिक क्षेत्रातील उद्योगांची कार्यक्षमता सुधारली"
           ],
-          "solution": "सही विकल्प सांगतो की सरकारने आपल्या उत्पन्नापेक्षा जास्त खर्च केला आणि पुरेसे विदेशी विनिमय निधी नव्हता, जे आर्थिक कठीणता निर्माण करेल. इतर विकल्प सांगतात की आर्थिक स्थिरता होती, जी संकट निर्माण करू शकत नाही. अपुरे निधी आणि अतिरिक्त खर्च आर्थिक अस्थिरतेला जबाबदार आहेत.",
+          "solution": "विक्रय धोरणाची टीका करण्याचे कारण असे असू शकते की त्यामुळे खाजगी संस्थांना सार्वजनिक परिसंपत्ती वर नियंत्रण मिळू शकतो, जे सार्वजनिक नियंत्रण आणि शक्य अत्याचाराच्या आधी घटना घडू शकते. इतर विकल्पांमध्ये धन्यवाद विधान किंवा धोरणाच्या टीकेशी संबंधित नसलेल्या परिणामांचे वर्णन केले आहे.",
           "imageAlt": null,
-          "critique": "The translation accurately reflects the original meaning, maintains the correct answer position, and uses appropriate Marathi terminology for economic concepts.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for policy-related concepts.",
           "flag": null
         }
       },
@@ -700,10 +690,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Assumes the government had enough financial resources",
-        "Misinterprets the role of taxation in the crisis",
+        "Believes disinvestment increases employment rather than reduces it",
+        "describes a benefit of disinvestment",
         null,
-        "Thinks the government was able to meet all its financial obligations"
+        "supports the government's rationale"
       ],
       "solverAnswers": [
         2,
@@ -713,13 +703,13 @@
         2
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as it accurately reflects the government's financial situation during the 1991 crisis. The other options contradict the passage and represent common misconceptions.",
+      "critique": "The correct answer is 2, as it reflects the criticism that disinvestment may have allowed private interests to take over public assets. The other options either describe positive outcomes or are not supported by the passage.",
       "sources": [
         {
           "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 4,
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
             "LOBALISATION PPRAISAL"
@@ -727,9 +717,9 @@
         },
         {
           "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 1,
-          "pageStart": 4,
-          "pageEnd": 4,
+          "ordinal": 9,
+          "pageStart": 9,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
             "LOBALISATION PPRAISAL"
@@ -737,19 +727,9 @@
         },
         {
           "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 2,
-          "pageStart": 5,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
-            "LOBALISATION PPRAISAL"
-          ]
-        },
-        {
-          "document": "ncert/11/economics/keec103.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 5,
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 10,
           "headingPath": [
             "Chapter 3: Liberalisation, Privatisation and Globalisation: an Appraisal",
             "LOBALISATION PPRAISAL"
@@ -757,7 +737,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T09:34:31.553Z",
+      "generatedAt": "2026-10-28T22:34:42.847Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

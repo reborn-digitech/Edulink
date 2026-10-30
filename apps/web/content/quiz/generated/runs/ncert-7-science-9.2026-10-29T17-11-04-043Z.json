@@ -1,0 +1,808 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T17:11:04.043Z",
+  "finishedAt": "2026-10-29T17:27:12.316Z",
+  "seconds": 968,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu109.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 9 — Life Processes in Animals",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2017 — question paper]\n13. A group of biology students on excursion to Goa beaches collected the following animal samples.\nWhile they were putting the animals in the jar with sea water, they noticed that one of the animal’s\n1/3 body part was missing. The injured animal (with only 2/3 of its body) was brought to the lab and rd rd\nwas allowed to grow in the laboratory in appropriate condition. To their surprise the lost body part of\nthe animal had regenerated. Which of the above animal would have been collected?\na) Planaria b) Hermit crab c) Sepia d) Sea anemone",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n10. Unlike animals, plants do not have any excretory products as they do not eat 2\nfood. Comment upon the statement with justification.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice",
+      "[NSEJS 2015 — question paper]\n72. Regeneration in animal kingdom is observed in which of the following animals?\na) Frog b) Planaria (C) Birds (D) Snakes"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 266449,
+      "in": 42,
+      "out": 41,
+      "rejects": 2,
+      "promptTokens": 34055,
+      "completionTokens": 11310
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 419631,
+      "in": 41,
+      "out": 36,
+      "rejects": 5,
+      "promptTokens": 22458,
+      "completionTokens": 8668
+    },
+    "solver": {
+      "calls": 238,
+      "ms": 151607,
+      "in": 36,
+      "out": 31,
+      "rejects": 5,
+      "promptTokens": 37890,
+      "completionTokens": 2274
+    },
+    "form": {
+      "calls": 30,
+      "ms": 218830,
+      "in": 31,
+      "out": 13,
+      "rejects": 18,
+      "promptTokens": 24071,
+      "completionTokens": 4056
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 48,
+      "ms": 9428,
+      "in": 13,
+      "out": 10,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 43,
+      "ms": 580191,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 24034,
+      "completionTokens": 11842
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 2,
+    "4": 1,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "If a student repeats the experiment with a longer chewing time, what is the most likely outcome?",
+      "ms": {
+        "draft": 7444,
+        "critique": 6725
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of the human body is responsible for the initial breakdown of food into smaller pieces?",
+      "ms": {
+        "draft": 7444,
+        "critique": 7258,
+        "solver": 16257,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment described in the passage, what was the purpose of adding iodine solution to the test tubes?",
+      "ms": {
+        "draft": 7444,
+        "critique": 8735,
+        "solver": 16069,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which part of the digestive system is responsible for moving food from the mouth to the stomach?",
+      "ms": {
+        "draft": 7444,
+        "critique": 8753
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Where does the process of digestion begin in the human body?",
+      "ms": {
+        "draft": 7444,
+        "critique": 9652,
+        "solver": 15120,
+        "form": 3457
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is the large intestine called 'large' despite being shorter than the small intestine?",
+      "ms": {
+        "draft": 4726,
+        "critique": 7153,
+        "solver": 1620,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the primary function of the finger-like projections in the small intestine?",
+      "ms": {
+        "draft": 4726,
+        "critique": 12792,
+        "solver": 20174,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary function of the diaphragm during breathing?",
+      "ms": {
+        "draft": 8615,
+        "critique": 8285,
+        "solver": 3530,
+        "form": 4718
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an animal that uses a gizzard to break down food?",
+      "ms": {
+        "draft": 8615,
+        "critique": 8928,
+        "solver": 2380,
+        "form": 4210
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is described as the partial digestion of food in the stomach of ruminants?",
+      "ms": {
+        "draft": 8615,
+        "critique": 10357,
+        "solver": 1495,
+        "form": 6209
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the model described in the passage, what do the balloons in the model represent?",
+      "ms": {
+        "draft": 8615,
+        "critique": 8392,
+        "solver": 2208,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a diagram of a digestive system with a large chamber and a gizzard. Which animal is this most likely to represent?",
+      "ms": {
+        "draft": 8615,
+        "critique": 8391,
+        "solver": 16574,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student observes a model where pulling the rubber sheet down causes the balloons to inflate, what does this illustrate about the respiratory system?",
+      "ms": {
+        "draft": 8615,
+        "critique": 8813,
+        "solver": 2352,
+        "form": 5447
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not a part of the alimentary canal?",
+      "ms": {
+        "draft": 6170,
+        "critique": 7820,
+        "solver": 16323
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which process involves the exchange of oxygen and carbon dioxide in the lungs?",
+      "ms": {
+        "draft": 6170,
+        "critique": 8927,
+        "solver": 1842
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do ruminants like cows and goats chew their food twice?",
+      "ms": {
+        "draft": 6170,
+        "critique": 7044,
+        "solver": 1452
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student added iodine solution to three different test tubes. Test tube A had pieces of chapati, test tube B had chewed chapati, and test tube C had boiled and mashed potato. What would be the expected result in each test tube?",
+      "ms": {
+        "draft": 6170,
+        "critique": 8926,
+        "solver": 9403
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a life process?",
+      "ms": {
+        "draft": 5923,
+        "critique": 6137,
+        "solver": 1463,
+        "form": 6183
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment shown in Fig. 9.15, what would happen if test tube A had no saliva added?",
+      "ms": {
+        "draft": 5923,
+        "critique": 10586,
+        "solver": 2287,
+        "form": 2884
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a physical process that brings oxygen into the body?",
+      "ms": {
+        "draft": 6515,
+        "critique": 11458,
+        "solver": 13906,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the lime water in test tube B when air is blown into it using a straw?",
+      "ms": {
+        "draft": 6515,
+        "critique": 10053,
+        "solver": 1888,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the figure, what is the main function of the alveoli in the lungs?",
+      "ms": {
+        "draft": 6515,
+        "critique": 8648,
+        "solver": 2349,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the exchange of gases in the alveoli important for the body?",
+      "ms": {
+        "draft": 6515,
+        "critique": 8741,
+        "solver": 2415
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is described as the partial digestion of food in the stomach of a cow before it is chewed again?",
+      "ms": {
+        "draft": 6141,
+        "critique": 10444
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of the respiratory system is responsible for filtering out dust and dirt from the inhaled air?",
+      "ms": {
+        "draft": 6141,
+        "critique": 8121
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the model described in the passage, what does the rubber sheet represent?",
+      "ms": {
+        "draft": 6141,
+        "critique": 7122
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following animals is most likely to have a digestive system that allows for the breakdown of tough plant material without the use of teeth?",
+      "ms": {
+        "draft": 6141,
+        "critique": 6826,
+        "solver": 1735,
+        "form": 4125
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following processes is directly related to the exchange of gases in the lungs?",
+      "ms": {
+        "draft": 6141,
+        "critique": 7242,
+        "solver": 2299,
+        "form": 4266
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main function of mucus in the stomach?",
+      "ms": {
+        "draft": 4726,
+        "critique": 8714,
+        "solver": 1881,
+        "form": 3484
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the alimentary canal is responsible for the partial digestion of food and transformation into a semi-liquid mass?",
+      "ms": {
+        "draft": 27166,
+        "critique": 9733,
+        "solver": 2305,
+        "form": 2953
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the small intestine called 'small' even though it is the longest part of the alimentary canal?",
+      "ms": {
+        "draft": 27166,
+        "critique": 8823,
+        "solver": 1732,
+        "form": 2843
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of saliva in the digestive process?",
+      "ms": {
+        "draft": 7444,
+        "critique": 12479,
+        "solver": 17744,
+        "form": 3319,
+        "translation": 52521
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the digestive system absorbs most of the water from the undigested food?",
+      "ms": {
+        "draft": 5923,
+        "critique": 6322,
+        "solver": 2291,
+        "form": 4225,
+        "translation": 51555
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the alimentary canal is responsible for the partial digestion of food and the mixing of food with digestive secretions?",
+      "ms": {
+        "draft": 4726,
+        "critique": 9814,
+        "solver": 1962,
+        "form": 3973,
+        "translation": 46401
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person eats a chapati and then chews it thoroughly, what would happen to the starch in the chapati?",
+      "ms": {
+        "draft": 5923,
+        "critique": 6738,
+        "solver": 3333,
+        "form": 3233,
+        "translation": 59995
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "After the small intestine, where does the semi-liquid mass of food go next?",
+      "ms": {
+        "draft": 4726,
+        "critique": 8532,
+        "solver": 1376,
+        "form": 6308,
+        "translation": 48838
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the mucus secreted in the stomach?",
+      "ms": {
+        "draft": 27166,
+        "critique": 9095,
+        "solver": 2346,
+        "form": 2072,
+        "translation": 36983
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a physical process that occurs during respiration?",
+      "ms": {
+        "draft": 6515,
+        "critique": 7571,
+        "solver": 2455,
+        "form": 0,
+        "translation": 64305
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student inhales air rich in carbon dioxide, what would happen to their breathing rate?",
+      "ms": {
+        "draft": 5923,
+        "critique": 8370,
+        "solver": 1751,
+        "form": 6689,
+        "translation": 67559
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a diagram of the digestive system and is asked to identify the organ that produces bile. Which organ is most likely to be the correct answer?",
+      "ms": {
+        "draft": 4726,
+        "critique": 8950,
+        "solver": 2485,
+        "form": 3893,
+        "translation": 81417
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the diaphragm important in the process of breathing?",
+      "ms": {
+        "draft": 5923,
+        "critique": 8593,
+        "solver": 2390,
+        "form": 5872,
+        "translation": 62886
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is the main purpose of breathing according to the passag"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a student repeats the experiment with a longer chewing time, what is the most likely outcome?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which part of the human body is responsible for the initial breakdown of food into smaller pieces?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment described in the passage, what was the purpose of adding iodine solution to the test tubes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which part of the digestive system is responsible for moving food from the mouth to the stomach?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Where does the process of digestion begin in the human body?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'mouth'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is the large intestine called 'large' despite being shorter than the small intestine?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the primary function of the finger-like projections in the small intestine?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the primary function of the diaphragm during breathing?",
+      "reason": "the key is far longer than every distractor (42 vs 17 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an animal that uses a gizzard to break down food?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'oesophagus'"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which process is described as the partial digestion of food in the stomach of ruminants?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels food, rumen"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the model described in the passage, what do the balloons in the model represent?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a diagram of a digestive system with a large chamber and a gizzard. Which animal is this most likely to represent?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student observes a model where pulling the rubber sheet down causes the balloons to inflate, what does this illustrate about the respiratory system?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'balloons'"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is not a part of the alimentary canal?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which process involves the exchange of oxygen and carbon dioxide in the lungs?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why do ruminants like cows and goats chew their food twice?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student added iodine solution to three different test tubes. Test tube A had pieces of chapati, test tube B had chewed chapati, and test tube C had boiled and mashed potato. What would be the expected result in each test tube?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main component of the air that we inhale?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a life process?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment shown in Fig. 9.15, what would happen if test tube A had no saliva added?",
+      "reason": "figure: figure spec refused: spec.parts: beaker has no label \"A\" (it has beaker, liquid)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a physical process that brings oxygen into the body?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to the lime water in test tube B when air is blown into it using a straw?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.liquid: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the figure, what is the main function of the alveoli in the lungs?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'blood vessel'"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is the exchange of gases in the alveoli important for the body?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process is described as the partial digestion of food in the stomach of a cow before it is chewed again?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which part of the respiratory system is responsible for filtering out dust and dirt from the inhaled air?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the model described in the passage, what does the rubber sheet represent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following animals is most likely to have a digestive system that allows for the breakdown of tough plant material without the use of teeth?",
+      "reason": "figure: figure spec refused: spec.parts: digestiveTract has no label \"digestiveTract\" (it has mouth, oesophagus, stomach, liver, smallIntestine, largeIntestine)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following processes is directly related to the exchange of gases in the lungs?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label lungs"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the main function of mucus in the stomach?",
+      "reason": "near-duplicate of served question cmveu6vcg01okgod84wlychv9 (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which part of the alimentary canal is responsible for the partial digestion of food and transformation into a semi-liquid mass?",
+      "reason": "near-duplicate of served question cmvg0fd2h01kzgpfhwffkyabd (cosine 0.903 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is the small intestine called 'small' even though it is the longest part of the alimentary canal?",
+      "reason": "near-duplicate of served question cmvg0fd2m01lngpfhiwmacafy (cosine 0.962 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

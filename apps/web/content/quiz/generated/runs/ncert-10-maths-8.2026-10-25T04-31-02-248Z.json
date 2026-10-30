@@ -1,0 +1,703 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T04:31:02.248Z",
+  "finishedAt": "2026-10-25T04:43:04.031Z",
+  "seconds": 722,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh108.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Introduction to Trigonometry",
+    "edition": "Reprint 2026-27",
+    "chunks": 12,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n29. If 𝑠𝑖𝑛𝛳 + 𝑐𝑜𝑠𝛳 = √3 ,then prove that 𝑡𝑎𝑛𝛳 + 𝑐𝑜𝑡𝛳 = 1 3\nOR\nProve that 𝑐𝑜𝑠𝐴−𝑠𝑖𝑛𝐴+1 𝑐𝑜𝑠𝐴+𝑠𝑖𝑛𝐴−1 =cosecA + cotA",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n13. 1−𝑡𝑎𝑛 30 2 ∘ is equal to\n1+𝑡𝑎𝑛 30 2 ∘\n(A) cos 60 ∘ (B) sin 60 ∘",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n30. Prove that 3\ntan θ cot θ\n+ = 1 + sec θ cosec θ\n1 − cot θ 1 − tan θ\n[OR]\nIf sin θ + cos θ = √3, then prove that tan θ + cot θ = 1",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2026-27]\n17. (C) 48 m\ntan θ = 5\n⸫ sin θ = 13\nh 12\n⇒ = ⇒ h = 48 m\n52 13"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 183392,
+      "in": 35,
+      "out": 35,
+      "rejects": 1,
+      "promptTokens": 33789,
+      "completionTokens": 9287
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 358134,
+      "in": 35,
+      "out": 30,
+      "rejects": 5,
+      "promptTokens": 23066,
+      "completionTokens": 8640
+    },
+    "solver": {
+      "calls": 247,
+      "ms": 177056,
+      "in": 30,
+      "out": 24,
+      "rejects": 6,
+      "promptTokens": 62432,
+      "completionTokens": 3047
+    },
+    "form": {
+      "calls": 9,
+      "ms": 41230,
+      "in": 24,
+      "out": 11,
+      "rejects": 13,
+      "promptTokens": 2432,
+      "completionTokens": 853
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 5441,
+      "in": 11,
+      "out": 8,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 296442,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 16956,
+      "completionTokens": 7387
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the meaning of the word 'trigonometry'?",
+      "ms": {
+        "draft": 14047,
+        "critique": 7833,
+        "solver": 1734,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the definition of the sine of an angle in a right triangle?",
+      "ms": {
+        "draft": 14047,
+        "critique": 8010,
+        "solver": 2778,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If sin θ + cos θ = √2, what is the value of sin θ cos θ?",
+      "ms": {
+        "draft": 14047,
+        "critique": 5572,
+        "solver": 1453,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of tan 45° according to the passage?",
+      "ms": {
+        "draft": 5710,
+        "critique": 8150,
+        "solver": 1999,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a right triangle, if the side adjacent to an angle is 4 units and the hypotenuse is 5 units, what is the value of the cosine of that angle?",
+      "ms": {
+        "draft": 14047,
+        "critique": 9707,
+        "solver": 17814
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a right-angled triangle, if the angle opposite to a side is 30°, what is the ratio of the length of that side to the hypotenuse?",
+      "ms": {
+        "draft": 5710,
+        "critique": 8533,
+        "solver": 20044,
+        "form": 6294
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If sin θ = 3/5, what is the value of cot θ?",
+      "ms": {
+        "draft": 5710,
+        "critique": 7501
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If tan θ = 5/12, what is the value of sin θ?",
+      "ms": {
+        "draft": 5710,
+        "critique": 9337,
+        "solver": 13152,
+        "form": 6442
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If in a right-angled triangle, the side opposite to angle A is 5 cm and the hypotenuse is 10 cm, what is the measure of angle A?",
+      "ms": {
+        "draft": 5710,
+        "critique": 11175,
+        "solver": 20802,
+        "form": 5229
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of sin 0° according to the passage?",
+      "ms": {
+        "draft": 5710,
+        "critique": 6547,
+        "solver": 19623,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the definition of cot A?",
+      "ms": {
+        "draft": 5508,
+        "critique": 7656,
+        "solver": 1309,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If sin θ + cos θ = √3, what is the value of tan θ + cot θ?",
+      "ms": {
+        "draft": 5508,
+        "critique": 6793,
+        "solver": 18036
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If cot A + 1 = cosec A, what is the value of cot A?",
+      "ms": {
+        "draft": 5508,
+        "critique": 4463,
+        "solver": 629,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a trigonometric identity?",
+      "ms": {
+        "draft": 13108,
+        "critique": 6191
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If tan A = 1/2, what is the value of cot A?",
+      "ms": {
+        "draft": 13108,
+        "critique": 5555,
+        "solver": 1447,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If sin θ + cos θ = √2, what is the value of tan θ + cot θ?",
+      "ms": {
+        "draft": 13108,
+        "critique": 9073
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If sin θ + cos θ = √3, which of the following is the correct value of tan θ + cot θ?",
+      "ms": {
+        "draft": 13108,
+        "critique": 10288
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a right-angled triangle, if the length of the opposite side is 3 units and the hypotenuse is 5 units, what is the value of sin A?",
+      "ms": {
+        "draft": 13108,
+        "critique": 5955,
+        "solver": 16209
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If sin θ + cos θ = √3, what is the value of tan θ + cot θ?",
+      "ms": {
+        "draft": 3289,
+        "critique": 7022
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the value of sin 45°?",
+      "ms": {
+        "draft": 3289,
+        "critique": 9526,
+        "solver": 17507
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of tan 60° according to the passage?",
+      "ms": {
+        "draft": 3289,
+        "critique": 6318,
+        "solver": 1798,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct abbreviation for the sine of angle A?",
+      "ms": {
+        "draft": 10533,
+        "critique": 8278,
+        "solver": 13072,
+        "form": 4667
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the meaning of the word 'trigonometry' based on its origin from Greek words?",
+      "ms": {
+        "draft": 6382,
+        "critique": 6344,
+        "solver": 1109
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a right triangle ABC, right-angled at B, if tan A = 1, which of the following is true?",
+      "ms": {
+        "draft": 10533,
+        "critique": 6105,
+        "solver": 15898
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If sin θ = 3/5, what is the value of tan θ?",
+      "ms": {
+        "draft": 14047,
+        "critique": 7310,
+        "solver": 2269,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a right triangle ABC, right-angled at B, if the length of the side opposite to angle A is 3 units and the hypotenuse is 5 units, what is the value of sin A?",
+      "ms": {
+        "draft": 5508,
+        "critique": 8009,
+        "solver": 3660,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a right-angled triangle, if the angle opposite to the side of length 5 cm is 30°, what is the length of the hypotenuse?",
+      "ms": {
+        "draft": 3289,
+        "critique": 8721,
+        "solver": 2199,
+        "form": 2974
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the reciprocal of tan A?",
+      "ms": {
+        "draft": 13108,
+        "critique": 6949,
+        "solver": 1518,
+        "form": 0,
+        "translation": 30896
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a right triangle, if the side opposite to an angle is 3 units and the hypotenuse is 5 units, what is the value of the sine of that angle?",
+      "ms": {
+        "draft": 14047,
+        "critique": 7118,
+        "solver": 1597,
+        "form": 0,
+        "translation": 34858
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If tan A = 1/√3, what is the value of cot A?",
+      "ms": {
+        "draft": 5508,
+        "critique": 7847,
+        "solver": 17512,
+        "form": 0,
+        "translation": 31008
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a right triangle ABC, if the lengths of BC and AC are in the ratio 1:3, what is the value of sin A?",
+      "ms": {
+        "draft": 10533,
+        "critique": 9230,
+        "solver": 21640,
+        "form": 4182,
+        "translation": 39139
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If tan A = 1, what is the value of A?",
+      "ms": {
+        "draft": 3289,
+        "critique": 9355,
+        "solver": 1358,
+        "form": 3901,
+        "translation": 29020
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If tan A = 4/3, what is the value of sec A?",
+      "ms": {
+        "draft": 10533,
+        "critique": 7587,
+        "solver": 17712,
+        "form": 6149,
+        "translation": 41375
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If sin A = cos A, what is the value of A?",
+      "ms": {
+        "draft": 3289,
+        "critique": 6359,
+        "solver": 1897,
+        "form": 3063,
+        "translation": 36089
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If sec A (1 – sin A)(sec A + tan A) = 1, which of the following is true?",
+      "ms": {
+        "draft": 5508,
+        "critique": 9111,
+        "solver": 1710,
+        "form": 0,
+        "translation": 49525
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"If the value of sin A is 1/3, what can be said about the rati"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the meaning of the word 'trigonometry'?",
+      "reason": "options 0 and 3 say the same thing (\"Three angles and sides\" / \"Three sides and angles\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the definition of the sine of an angle in a right triangle?",
+      "reason": "options 0 and 2 say the same thing (\"Hypotenuse divided by the side opposite to the angle\" / \"Side opposite to the angle divided by the hypotenuse\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If sin θ + cos θ = √2, what is the value of sin θ cos θ?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the value of tan 45° according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"√2\"); options mix numbers and words (3 of 4 are numbers); distractor 2's reason is not a one-line misconception (\"correct…\"); distractor 3's reason is not a one-line misconception (\"confuses tan 45° with sin 45° or cos 45° which is √2/2 but g…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a right triangle, if the side adjacent to an angle is 4 units and the hypotenuse is 5 units, what is the value of the cosine of that angle?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a right-angled triangle, if the angle opposite to a side is 30°, what is the ratio of the length of that side to the hypotenuse?",
+      "reason": "options 1 and 3 are the same (\"1:√3\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If sin θ = 3/5, what is the value of cot θ?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If tan θ = 5/12, what is the value of sin θ?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"confuses tan θ with sin θ, which is incorrect because tan θ …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If in a right-angled triangle, the side opposite to angle A is 5 cm and the hypotenuse is 10 cm, what is the measure of angle A?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the value of sin 0° according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the definition of cot A?",
+      "reason": "options 0 and 1 say the same thing (\"sin A / cos A\" / \"cos A / sin A\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If sin θ + cos θ = √3, what is the value of tan θ + cot θ?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If cot A + 1 = cosec A, what is the value of cot A?",
+      "reason": "options 0 and 3 say the same thing (\"cosec A - 1\" / \"1 - cosec A\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a trigonometric identity?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If tan A = 1/2, what is the value of cot A?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If sin θ + cos θ = √2, what is the value of tan θ + cot θ?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If sin θ + cos θ = √3, which of the following is the correct value of tan θ + cot θ?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a right-angled triangle, if the length of the opposite side is 3 units and the hypotenuse is 5 units, what is the value of sin A?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If sin θ + cos θ = √3, what is the value of tan θ + cot θ?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is the value of sin 45°?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the value of tan 60° according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the correct abbreviation for the sine of angle A?",
+      "reason": "options 1 and 2 say the same thing (\"sin A is the abbreviation for 'sine of the angle A'\" / \"sin A is the abbreviation for 'sine of the side opposite angle A'\"); options 1 and 3 say the same thing (\"sin A is the abbreviation for 'sine of the angle A'\" / \"sin A is the abbreviation for 'sine of the triangle A'\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the meaning of the word 'trigonometry' based on its origin from Greek words?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a right triangle ABC, right-angled at B, if tan A = 1, which of the following is true?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If sin θ = 3/5, what is the value of tan θ?",
+      "reason": "near-duplicate of served question cmvjvecu30hwigpfh002vwnpi (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In a right triangle ABC, right-angled at B, if the length of the side opposite to angle A is 3 units and the hypotenuse is 5 units, what is the value of sin A?",
+      "reason": "near-duplicate of batch item \"In a right triangle, if the side opposite to an an…\" (cosine 0.933 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "In a right-angled triangle, if the angle opposite to the side of length 5 cm is 30°, what is the length of the hypotenuse?",
+      "reason": "near-duplicate of served question cmvjvecok0hw0gpfhu6w7jfuj (cosine 0.964 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

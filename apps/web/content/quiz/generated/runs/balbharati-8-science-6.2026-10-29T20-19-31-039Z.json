@@ -1,0 +1,754 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T20:19:31.039Z",
+  "finishedAt": "2026-10-29T20:30:48.558Z",
+  "seconds": 678,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 6 — Composition of matter",
+    "edition": "First Edition 2018",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\n25. Carbon forms millions of compounds whereas silicon, which is just below it in 2\nthe Periodic Table, forms a few compounds. Explain the reason for the\ndifference in their ability to form compounds.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n37. to 39 are case-based/data -based questions.\n37 4\nA. Derive the names of A, Y, Z, M, P & R\nAttempt either subpart B or C.\nB. Improvise an activity to test Z.\nOR\nC. Name the process in which compounds X, Y & Z are formed from A.\nJustify your response.\n- - - - - - - - - - - - - -\nFor visually impaired students\nA. Distinguish between ethanol and ethanoic acid experimentally.\nAttempt either subpart B or C.\nB. Give the IUPAC name of the first member of Alkene which is formed by\naddition of conc. sulphuric acid to it. Illustrate the change with the help\nof a chemical equation.\nOR\nC. “All combustion reactions are oxidation but all oxidation reactions are\nnot combustion.” Justify.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n20. Assertion: Biodegradable substances result in the formation of compost and natural 1\nreplenishment.\nReason: It is due to breakdown of complex inorganic substances into simple organic\nsubstances.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 139725,
+      "in": 38,
+      "out": 38,
+      "rejects": 1,
+      "promptTokens": 30346,
+      "completionTokens": 7934
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 319057,
+      "in": 38,
+      "out": 36,
+      "rejects": 2,
+      "promptTokens": 21772,
+      "completionTokens": 8308
+    },
+    "solver": {
+      "calls": 249,
+      "ms": 114819,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 37800,
+      "completionTokens": 2434
+    },
+    "form": {
+      "calls": 11,
+      "ms": 33803,
+      "in": 36,
+      "out": 13,
+      "rejects": 23,
+      "promptTokens": 2727,
+      "completionTokens": 806
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 99,
+      "ms": 15992,
+      "in": 13,
+      "out": 11,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 407559,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 24882,
+      "completionTokens": 11792
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 4,
+    "3": 1,
+    "4": 0,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct classification of matter based on the passage?",
+      "ms": {
+        "draft": 3491,
+        "critique": 6521,
+        "solver": 917,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the passage, which of the following is an example of a compound?",
+      "ms": {
+        "draft": 3491,
+        "critique": 7086,
+        "solver": 2123,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main criterion for classifying matter into elements, compounds, and mixtures?",
+      "ms": {
+        "draft": 3491,
+        "critique": 6544,
+        "solver": 1674,
+        "form": 3716
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following correctly describes the movement of particles in a gas?",
+      "ms": {
+        "draft": 3491,
+        "critique": 7256,
+        "solver": 1123,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage state that the properties of a compound are different from those of its constituent elements?",
+      "ms": {
+        "draft": 3491,
+        "critique": 6513,
+        "solver": 1339,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is true about the constituent substances of an element?",
+      "ms": {
+        "draft": 3472,
+        "critique": 7128,
+        "solver": 1725,
+        "form": 3411
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student observes that a substance has no definite shape and can be compressed, which state of matter is it most likely in?",
+      "ms": {
+        "draft": 3491,
+        "critique": 5828,
+        "solver": 11379,
+        "form": 4303
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main difference between a compound and a mixture?",
+      "ms": {
+        "draft": 3472,
+        "critique": 5871,
+        "solver": 1955,
+        "form": 3557
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the activity described in the passage, which of the following is a homogeneous mixture?",
+      "ms": {
+        "draft": 3472,
+        "critique": 5560,
+        "solver": 1210,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a compound is heated strongly and leaves behind a residue, what type of compound is it likely to be?",
+      "ms": {
+        "draft": 3472,
+        "critique": 6414,
+        "solver": 1792,
+        "form": 2664
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the activity where compounds were heated, camphor, sugar, glucose, and urea left no residue, while others did. What can be inferred about these substances?",
+      "ms": {
+        "draft": 3472,
+        "critique": 7919
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following can be classified as a heterogeneous mixture?",
+      "ms": {
+        "draft": 3472,
+        "critique": 6171,
+        "solver": 12450,
+        "form": 1899
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a homogeneous mixture?",
+      "ms": {
+        "draft": 3955,
+        "critique": 5995,
+        "solver": 1440,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a mixture is translucent and light is scattered, what type of mixture is it?",
+      "ms": {
+        "draft": 3955,
+        "critique": 7440,
+        "solver": 1425,
+        "form": 3431
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term for the component of a solution that is present in the largest proportion?",
+      "ms": {
+        "draft": 3955,
+        "critique": 7185,
+        "solver": 12450,
+        "form": 2578
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following cannot be separated by filtration?",
+      "ms": {
+        "draft": 3955,
+        "critique": 7609,
+        "solver": 11482,
+        "form": 3828
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the method of cross multiplication used for in writing molecular formulae?",
+      "ms": {
+        "draft": 11922,
+        "critique": 6071,
+        "solver": 1253,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the basis for deducing the valency of elements from the molecular formula of a compound?",
+      "ms": {
+        "draft": 11922,
+        "critique": 7123,
+        "solver": 13753,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, a student mixed iron filings and sulphur and then heated the mixture. What happened to the properties of iron after heating?",
+      "ms": {
+        "draft": 3542,
+        "critique": 7920
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following can be separated by filtration?",
+      "ms": {
+        "draft": 3542,
+        "critique": 7196,
+        "solver": 11372,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a compound?",
+      "ms": {
+        "draft": 18387,
+        "critique": 6778,
+        "solver": 1408,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that after mixing iron filings and sulphur and heating them, the resulting compound could not be separated by a magnet. Why is this so?",
+      "ms": {
+        "draft": 3542,
+        "critique": 5802,
+        "solver": 13663,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student mixes two substances and observes that the resulting mixture has a uniform composition and cannot be separated by filtration, which type of mixture is it likely to be?",
+      "ms": {
+        "draft": 3542,
+        "critique": 6222,
+        "solver": 10943,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main difference between a compound and a mixture?",
+      "ms": {
+        "draft": 18387,
+        "critique": 7563,
+        "solver": 1469,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a homogeneous mixture?",
+      "ms": {
+        "draft": 18387,
+        "critique": 7071,
+        "solver": 1020,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct molecular formula for a compound formed between hydrogen (valency 1) and oxygen (valency 2)?",
+      "ms": {
+        "draft": 3878,
+        "critique": 6844,
+        "solver": 1944,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the correct molecular formula for a compound formed between nitrogen (valency 3) and hydrogen (valency 1)?",
+      "ms": {
+        "draft": 3878,
+        "critique": 7255,
+        "solver": 1736,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct statement about the valency of elements?",
+      "ms": {
+        "draft": 11922,
+        "critique": 6275,
+        "solver": 1822,
+        "form": 0,
+        "translation": 36794
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a solution?",
+      "ms": {
+        "draft": 3542,
+        "critique": 6959,
+        "solver": 11889,
+        "form": 0,
+        "translation": 34402
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the formula H₂O, what is the valency of oxygen?",
+      "ms": {
+        "draft": 11922,
+        "critique": 8867,
+        "solver": 1336,
+        "form": 0,
+        "translation": 30528
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the correct molecular formula for a compound formed by hydrogen (valency 1) and sulfur (valency 2)?",
+      "ms": {
+        "draft": 11922,
+        "critique": 8685,
+        "solver": 11659,
+        "form": 0,
+        "translation": 31870
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about mixtures?",
+      "ms": {
+        "draft": 11922,
+        "critique": 7565,
+        "solver": 1402,
+        "form": 0,
+        "translation": 35924
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the correct molecular formula for a compound formed between carbon (valency 4) and chlorine (valency 1)?",
+      "ms": {
+        "draft": 3878,
+        "critique": 7660,
+        "solver": 1776,
+        "form": 0,
+        "translation": 37217
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, iron filings and sulphur were mixed and tested with a magnet. The magnet attracted some particles but not all. What can be concluded about the mixture?",
+      "ms": {
+        "draft": 3955,
+        "critique": 6894,
+        "solver": 1419,
+        "form": 4007,
+        "translation": 45171
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a compound is formed between an element X (valency 2) and hydrogen (valency 1), what would be the correct molecular formula of the compound?",
+      "ms": {
+        "draft": 3878,
+        "critique": 5671,
+        "solver": 1381,
+        "form": 0,
+        "translation": 37411
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do some compounds leave a residue when heated strongly while others do not?",
+      "ms": {
+        "draft": 18387,
+        "critique": 6517,
+        "solver": 6930,
+        "form": 0,
+        "translation": 29412
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student observed that after heating a mixture of iron filings and sulphur, the resulting substance did not react with a magnet and lost the yellow color of sulphur. What type of change took place?",
+      "ms": {
+        "draft": 3955,
+        "critique": 6955,
+        "solver": 1494,
+        "form": 3849,
+        "translation": 46409
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A compound is formed between an element Y (valency 2) and an element Z (valency 3). What would be the correct molecular formula of the compound?",
+      "ms": {
+        "draft": 3878,
+        "critique": 5718,
+        "solver": 1028,
+        "form": 0,
+        "translation": 38931
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a correct classification of matter based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Includes terms not used in the passage's classification meth…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Based on the passage, which of the following is an example of a compound?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main criterion for classifying matter into elements, compounds, and mixtures?",
+      "reason": "the key is far longer than every distractor (55 vs 34 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following correctly describes the movement of particles in a gas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage state that the properties of a compound are different from those of its constituent elements?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is true about the constituent substances of an element?",
+      "reason": "options 1 and 3 say the same thing (\"It is made up of two or more elements\" / \"It is made up of two or more molecules\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes elements have multiple components like c…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student observes that a substance has no definite shape and can be compressed, which state of matter is it most likely in?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main difference between a compound and a mixture?",
+      "reason": "options 0 and 1 say the same thing (\"A compound has a variable composition, while a mixture has a constant composition\" / \"A mixture has a constant composition, while a compound has a variable composition\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes a compound is made of only one type of a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the activity described in the passage, which of the following is a homogeneous mixture?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that oil and water form a homogeneous mi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a compound is heated strongly and leaves behind a residue, what type of compound is it likely to be?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that all compounds leave a residue, whic…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the activity where compounds were heated, camphor, sugar, glucose, and urea left no residue, while others did. What can be inferred about these substances?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following can be classified as a heterogeneous mixture?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a homogeneous mixture?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option is the only homogeneous mixture among the cho…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a mixture is translucent and light is scattered, what type of mixture is it?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option is the only one that matches the description …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the term for the component of a solution that is present in the largest proportion?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following cannot be separated by filtration?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 2's reason is not a one-line misconception (\"Correct option is the only one that cannot be separated by f…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 4,\n      \"stem\": \"Based on the passage, which of the following best describes t"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the method of cross multiplication used for in writing molecular formulae?",
+      "reason": "the key is far longer than every distractor (79 vs 44 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the basis for deducing the valency of elements from the molecular formula of a compound?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In an experiment, a student mixed iron filings and sulphur and then heated the mixture. What happened to the properties of iron after heating?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following can be separated by filtration?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a compound?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer: carbon dioxide is a compound with a fixed co…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observed that after mixing iron filings and sulphur and heating them, the resulting compound could not be separated by a magnet. Why is this so?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student mixes two substances and observes that the resulting mixture has a uniform composition and cannot be separated by filtration, which type of mixture is it likely to be?",
+      "reason": "option 3 is a catch-all (\"3: None of the above\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main difference between a compound and a mixture?",
+      "reason": "options 0 and 1 say the same thing (\"A compound has variable composition, a mixture has fixed composition\" / \"A compound has fixed composition, a mixture has variable composition\"); distractor 2's reason is not a one-line misconception (\"Correct answer: a compound has fixed composition, meaning th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a homogeneous mixture?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer: blue vitriol and water form a homogeneous mi…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is the correct molecular formula for a compound formed between hydrogen (valency 1) and oxygen (valency 2)?",
+      "reason": "near-duplicate of served question cmvmtpwx20255gp2112agz5s8 (cosine 0.963 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following is the correct molecular formula for a compound formed between nitrogen (valency 3) and hydrogen (valency 1)?",
+      "reason": "near-duplicate of served question cmvmtpwx9025lgp21n2bq2g3u (cosine 0.963 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

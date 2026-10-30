@@ -21,241 +21,49 @@
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T18:53:43.086Z",
+  "generatedAt": "2026-10-30T06:21:25.404Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
-    {
-      "difficulty": 2,
-      "stem": "A box contains 5 red marbles, 8 white marbles and 4 green marbles. One marble is taken out of the box at random. What is the probability that the marble taken out will be white?",
-      "choices": [
-        "8/17",
-        "5/17",
-        "4/17",
-        "1/17"
-      ],
-      "answerIndex": 0,
-      "solution": "The total number of marbles is 5 + 8 + 4 = 17. The number of white marbles is 8. So the probability of picking a white marble is 8/17. The other options represent the probabilities of picking red, green, or a single marble, which do not match the question.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक बॉक्स में 5 लाल मार्बल, 8 सफेद मार्बल और 4 हरे मार्बल हैं। बॉक्स से एक मार्बल बिना देखे निकाला जाता है। इसकी संभावना क्या है कि निकाला गया मार्बल सफेद हो?",
-          "choices": [
-            "8/17",
-            "5/17",
-            "4/17",
-            "1/17"
-          ],
-          "solution": "कुल मार्बल की संख्या 5 + 8 + 4 = 17 है। सफेद मार्बल की संख्या 8 है। अतः सफेद मार्बल निकालने की संभावना 8/17 है। अन्य विकल्प लाल, हरे या एक मार्बल निकालने की संभावनाओं के अनुरूप हैं, जो प्रश्न के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका बॉक्समध्ये 5 लाल रत्न, 8 श्वेत रत्न आणि 4 हरित रत्न आहेत. बॉक्समधून एक रत्न अचानक बाहेर काढले जाते. बाहेर काढलेल्या रत्नाच्या श्वेत असण्याची शक्यता किती आहे?",
-          "choices": [
-            "8/17",
-            "5/17",
-            "4/17",
-            "1/17"
-          ],
-          "solution": "रत्नांची एकूण संख्या 5 + 8 + 4 = 17 आहे. श्वेत रत्नांची संख्या 8 आहे. म्हणून श्वेत रत्न घेण्याची शक्यता 8/17 आहे. इतर विकल्प लाल, हरित किंवा एक रत्न घेण्याच्या शक्यता दर्शवतात, जे प्रश्नाशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terms for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the number of red marbles with white marbles",
-        "Confuses the number of green marbles with white marbles",
-        "Thinks the total number of marbles is 17 but counts only one marble"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and matches the key. The probability of picking a white marble is correctly calculated as 8/17.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh114.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh114.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh114.pdf",
-          "ordinal": 11,
-          "pageStart": 16,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 14: Probability",
-            "A NOTE TO THE READER"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:53:43.086Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "A piggy bank contains hundred 50p coins, fifty ` 1 coins, twenty ` 2 coins and ten ` 5 coins. What is the probability that a coin taken out at random will be a 50p coin?",
-      "choices": [
-        "100/180",
-        "50/180",
-        "20/180",
-        "10/180"
-      ],
-      "answerIndex": 0,
-      "solution": "The total number of coins is 100 + 50 + 20 + 10 = 180. The number of 50p coins is 100. So the probability of picking a 50p coin is 100/180. The other options represent the probabilities of picking ` 1, ` 2, or ` 5 coins, which do not match the question.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक गेंदा में 100 50 पैसे के सिक्के, 50 रुपए के सिक्के, 20 रुपए के सिक्के और 10 रुपए के सिक्के हैं। यादृच्छिक रूप से निकाले गए एक सिक्के के 50 पैसे के सिक्के होने की प्रायिकता क्या है?",
-          "choices": [
-            "100/180",
-            "50/180",
-            "20/180",
-            "10/180"
-          ],
-          "solution": "कुल सिक्कों की संख्या 100 + 50 + 20 + 10 = 180 है। 50 पैसे के सिक्कों की संख्या 100 है। अतः 50 पैसे के सिक्के निकाले जाने की प्रायिकता 100/180 है। अन्य विकल्पों में रुपए 1, रुपए 2 या रुपए 5 के सिक्के निकाले जाने की प्रायिकता होती है, जो प्रश्न के अनुरूप नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate Indian currency terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका गांठीत शेकडा 50 पैसे चे नाणी, पन्नास 1 रुपये चे नाणी, वीस 2 रुपये चे नाणी आणि दहा 5 रुपये चे नाणी आहेत. जर यापैकी एक नाणे यादृच्छिकपणे काढले गेले तर 50 पैसे चे नाणे असण्याची शक्यता किती असेल?",
-          "choices": [
-            "100/180",
-            "50/180",
-            "20/180",
-            "10/180"
-          ],
-          "solution": "एकूण नाणीची संख्या 100 + 50 + 20 + 10 = 180 आहे. 50 पैसे च्या नाणीची संख्या 100 आहे. म्हणून 50 पैसे चे नाणे घेण्याची शक्यता 100/180 आहे. इतर विकल्पांमध्ये 1 रुपये, 2 रुपये किंवा 5 रुपये च्या नाणी घेण्याची शक्यता दर्शविली गेली आहे, जी प्रश्नाशी जुळत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the number of ` 1 coins with 50p coins",
-        "Confuses the number of ` 2 coins with 50p coins",
-        "Confuses the number of ` 5 coins with 50p coins"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and matches the key. The total number of coins is properly calculated as 180, and the number of 50p coins is correctly identified as 100, leading to the probability 100/180.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh114.pdf",
-          "ordinal": 9,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh114.pdf",
-          "ordinal": 10,
-          "pageStart": 14,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh114.pdf",
-          "ordinal": 11,
-          "pageStart": 16,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 14: Probability",
-            "A NOTE TO THE READER"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:53:43.086Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
     {
       "difficulty": 2,
       "stem": "What is the probability of an event?",
       "choices": [
         "Between 0 and 1",
         "Less than 0",
-        "More than 1",
-        "Equal to 1"
+        "Greater than 1",
+        "Negative value"
       ],
       "answerIndex": 0,
-      "solution": "The probability of an event is always between 0 and 1. An event that is impossible has a probability of 0, and an event that is certain has a probability of 1. Therefore, the correct answer is 'Between 0 and 1'. The other options are incorrect because probabilities cannot be less than 0 or more than 1, and not all events are certain.",
+      "solution": "The probability of an event is a number between 0 and 1. This is because the probability of a sure event is 1, and the probability of an impossible event is 0. A probability cannot be less than 0 or greater than 1. A negative value is not possible as probability is always non-negative.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "किसी घटना की संभावना क्या है?",
+          "stem": "किसी घटना की प्रायिकता क्या है?",
           "choices": [
             "0 और 1 के बीच",
             "0 से कम",
             "1 से अधिक",
-            "1 के बराबर"
+            "ऋणात्मक मान"
           ],
-          "solution": "किसी घटना की संभावना हमेशा 0 और 1 के बीच होती है। एक असंभव घटना की संभावना 0 होती है, और एक निश्चित घटना की संभावना 1 होती है। इसलिए, सही उत्तर '0 और 1 के बीच' है। अन्य विकल्प गलत हैं क्योंकि संभावनाएं 0 से कम या 1 से अधिक नहीं हो सकतीं, और सभी घटनाएं निश्चित नहीं होती हैं।",
+          "solution": "किसी घटना की प्रायिकता 0 और 1 के बीच एक संख्या है। इसका कारण यह है कि एक निश्चित घटना की प्रायिकता 1 होती है, और एक असंभव घटना की प्रायिकता 0 होती है। प्रायिकता 0 से कम या 1 से अधिक नहीं हो सकती। प्रायिकता हमेशा ऋणात्मक नहीं हो सकती क्योंकि यह हमेशा अऋणात्मक होती है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with no ambiguity or distortion.",
           "flag": null
         },
         "mr": {
-          "stem": "कोणत्याही घटनेची असंभाव्यता किती असते?",
+          "stem": "एखाद्या घटनेची संभाव्यता किती असते?",
           "choices": [
             "0 आणि 1 दरम्यान",
             "0 पेक्षा कमी",
             "1 पेक्षा जास्त",
-            "1 बरोबर"
+            "ऋण मूल्य"
           ],
-          "solution": "कोणत्याही घटनेची असंभाव्यता नेहमी 0 आणि 1 दरम्यान असते. अशक्य घटनेची असंभाव्यता 0 असते आणि खात्रीपूर्वक घटनेची असंभाव्यता 1 असते. म्हणूनच योग्य उत्तर '0 आणि 1 दरम्यान' आहे. इतर विकल्प असंभाव्यता 0 पेक्षा कमी किंवा 1 पेक्षा जास्त असू शकत नाहीत आणि सर्व घटना खात्रीपूर्वक नसतात.",
+          "solution": "एखाद्या घटनेची संभाव्यता 0 आणि 1 दरम्यान असते. हे कारण एखाद्या खात्रीच्या घटनेची संभाव्यता 1 असते आणि अशक्य घटनेची संभाव्यता 0 असते. संभाव्यता 0 पेक्षा कमी किंवा 1 पेक्षा जास्त असू शकत नाही. संभाव्यता ऋण मूल्य असू शकत नाही कारण संभाव्यता नेहमी अऋण असते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability concepts.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for probability concepts.",
           "flag": null
         }
       },
@@ -265,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses probability with other numerical measures",
+        "Confuses probability with other numerical values",
         "Thinks probability can be negative",
-        "Thinks probability can exceed 100% or 1 in decimal form"
+        "Thinks probability can exceed 1"
       ],
       "solverAnswers": [
         0,
@@ -277,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions for the distractors. The solution is accurate and aligns with standard probability theory.",
+      "critique": "The correct answer is 0, as probability is always between 0 and 1 inclusive. The author's solution and reasoning are accurate and align with standard probability theory.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh114.pdf",
@@ -309,144 +117,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:53:43.086Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If the probability of an event occurring is 0.38, what is the probability of the event not occurring?",
-      "choices": [
-        "0.62",
-        "0.38",
-        "0.25",
-        "0.75"
-      ],
-      "answerIndex": 0,
-      "solution": "The probability of an event not occurring is 1 minus the probability of the event occurring. If the probability of the event occurring is 0.38, then the probability of it not occurring is 1 - 0.38 = 0.62. The other options are either the same as the given probability or incorrect calculations.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि किसी घटना के घटित होने की प्रायिकता 0.38 है, तो घटना के घटित न होने की प्रायिकता क्या है?",
-          "choices": [
-            "0.62",
-            "0.38",
-            "0.25",
-            "0.75"
-          ],
-          "solution": "किसी घटना के घटित न होने की प्रायिकता घटना के घटित होने की प्रायिकता के 1 में से घटाने से प्राप्त होती है। यदि किसी घटना के घटित होने की प्रायिकता 0.38 है, तो इसके घटित न होने की प्रायिकता 1 - 0.38 = 0.62 होगी। अन्य विकल्प या तो दी गई प्रायिकता के समान हैं या गलत गणना हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology and correct answer positioning.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एका घटनेच्या घडण्याची शक्यता 0.38 आहे, तर घटनेच्या घडण्याची शक्यता काय आहे?",
-          "choices": [
-            "0.62",
-            "0.38",
-            "0.25",
-            "0.75"
-          ],
-          "solution": "एका घटनेच्या घडण्याची शक्यता नसल्याची शक्यता ही 1 च्या घटनेच्या घडण्याच्या शक्यतेच्या वजाबादीत असते. जर घटनेच्या घडण्याची शक्यता 0.38 असेल, तर त्याच्या घडण्याची शक्यता नसल्याची शक्यता 1 - 0.38 = 0.62 असते. इतर विकल्प दिलेल्या शक्यतेसारखे असतात किंवा चूकलेल्या गणिताचे असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for probability concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Uses the given probability instead of the complement",
-        "Confuses the values of the event and its complement",
-        "Fails to apply the concept of complementary events correctly"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly applies the complement rule of probability, and the reasoning for the distractors aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh114.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh114.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh114.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 14: Probability"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:53:43.086Z",
+      "generatedAt": "2026-10-30T06:21:25.404Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "A box contains 3 blue, 2 white, and 4 red marbles. What is the probability of drawing a white marble?",
+      "stem": "A card is drawn from a well-shuffled deck of 52 cards. What is the probability that it is not an ace?",
       "choices": [
-        "2/9",
-        "2/4",
-        "2/3",
-        "1/2"
+        "4/52",
+        "48/52",
+        "52/48",
+        "1/4"
       ],
-      "answerIndex": 0,
-      "solution": "The probability of drawing a white marble is calculated by dividing the number of white marbles (2) by the total number of marbles (3 + 2 + 4 = 9). This gives 2/9. The other options either miscount the total number of marbles or the number of white marbles.",
+      "answerIndex": 1,
+      "solution": "A standard deck has 4 aces, so the number of cards that are not aces is 52 - 4 = 48. The probability of drawing a card that is not an ace is therefore 48/52. The option 4/52 represents the probability of drawing an ace, 52/48 is not a valid probability since it exceeds 1, and 1/4 is incorrect because it does not account for all the non-ace cards.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक बॉक्स में 3 नीले, 2 सफेद और 4 लाल गेंदें हैं। सफेद गेंद निकालने की प्रायिकता क्या है?",
+          "stem": "एक अच्छी तरह से शफल किए गए 52 कार्ड के डेक से एक कार्ड निकाला जाता है। इसके एक एस न होने की प्रायिकता क्या है?",
           "choices": [
-            "2/9",
-            "2/4",
-            "2/3",
-            "1/2"
+            "4/52",
+            "48/52",
+            "52/48",
+            "1/4"
           ],
-          "solution": "सफेद गेंद निकालने की प्रायिकता 2 (सफेद गेंदों की संख्या) को 3 + 2 + 4 = 9 (कुल गेंदों की संख्या) से भाग देकर निकाली जाती है। इससे 2/9 प्राप्त होता है। अन्य विकल्प या तो कुल गेंदों की संख्या गलत गिनती लेते हैं या सफेद गेंदों की संख्या गलत गिनती लेते हैं।",
+          "solution": "एक मानक डेक में 4 एस होते हैं, इसलिए एस न होने वाले कार्डों की संख्या 52 - 4 = 48 है। इसलिए एक एस न होने वाले कार्ड के निकाले जाने की प्रायिकता 48/52 है। विकल्प 4/52 एक एस निकाले जाने की प्रायिकता को दर्शाता है, 52/48 एक वैध प्रायिकता नहीं है क्योंकि यह 1 से अधिक है और 1/4 गलत है क्योंकि यह सभी गैर-एस कार्डों को ध्यान में नहीं रखता।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology for a Hindi-medium math curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "एका बॉक्समध्ये 3 नील, 2 सफेद आणि 4 लाल मार्बल आहेत. सफेद मार्बल घेण्याची शक्यता किती आहे?",
+          "stem": "52 कार्डच्या चांगल्या शेफल केलेल्या डेकमधून एक कार्ड खालवला जातो. त्याची असे असण्याची शक्यता किती आहे की तो एक एस नसेल?",
           "choices": [
-            "2/9",
-            "2/4",
-            "2/3",
-            "1/2"
+            "4/52",
+            "48/52",
+            "52/48",
+            "1/4"
           ],
-          "solution": "सफेद मार्बल घेण्याची शक्यता सफेद मार्बलच्या संख्या (2) ला एकूण मार्बलच्या संख्या (3 + 2 + 4 = 9) ने भागल्याने मिळते. हे 2/9 देते. इतर विकल्प एकूण मार्बलच्या संख्या किंवा सफेद मार्बलच्या संख्या च्या चुकीच्या गणनेमुळे असतात.",
+          "solution": "मानक डेकमध्ये 4 एस असतात, म्हणून एस नसलेल्या कार्डची संख्या 52 - 4 = 48 आहे. एस नसलेला कार्ड खालवल्याची शक्यता तर 48/52 आहे. 4/52 एस खालवल्याची शक्यता दर्शवते, 52/48 ही शक्यता अमान्य आहे कारण ती 1 पेक्षा जास्त आहे आणि 1/4 चूक आहे कारण ती सर्व एस नसलेल्या कार्डचा विचार करत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability and marbles.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for probability and cards.",
           "flag": null
         }
       },
@@ -455,20 +168,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses the number of aces with the total number of cards",
         null,
-        "Confuses the number of white marbles with the total number of non-blue marbles",
-        "Confuses the number of white marbles with the total number of non-white marbles",
-        "student assumes the total number of marbles is 4 (ignoring blue and red)"
+        "Confuses the number of non-ace cards with the total number of cards",
+        "Confuses the probability of drawing an ace with the probability of not drawing an ace"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct, and the reasoning aligns with common misconceptions. The correct answer is 2/9, and the distractors reflect plausible errors students might make.",
+      "critique": "The correct answer is 48/52, as there are 4 aces in a deck of 52 cards, so 52 - 4 = 48 non-ace cards. The author's solution is correct and the reasoning for the wrong options aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh114.pdf",
@@ -499,47 +212,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:53:43.086Z",
+      "generatedAt": "2026-10-30T06:21:25.404Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "A bag contains 3 red balls and 5 black balls. A ball is drawn at random from the bag. What is the probability that the ball drawn is red?",
+      "difficulty": 6,
+      "stem": "A bag contains 5 white balls and 3 black balls. What is the probability of drawing a black ball?",
       "choices": [
-        "3/8",
+        "3/5",
         "5/8",
-        "1/2",
-        "3/5"
+        "3/8",
+        "3: 5/3"
       ],
-      "answerIndex": 0,
-      "solution": "The total number of balls is 3 red + 5 black = 8. The probability of drawing a red ball is the number of red balls divided by the total number of balls. So, the probability is 3/8. The option 5/8 is incorrect because it counts the black balls instead of the red ones. The option 1/2 is incorrect because it assumes equal numbers of red and black balls. The option 3/5 is incorrect because it incorrectly divides the number of red balls by the number of black balls.",
+      "answerIndex": 2,
+      "solution": "The bag contains 8 balls in total, with 3 black balls. The probability of drawing a black ball is 3/8. The first option incorrectly assumes 5 as the total number of balls, the second option reverses the numerator and denominator, and the fourth option is a distractor based on incorrect reasoning.",
       "checkExpr": "3/8",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक बैग में 3 लाल गेंदें और 5 काली गेंदें हैं। बैग से एक गेंद यादृच्छिक रूप से निकाली जाती है। निकाली गई गेंद के लाल होने की प्रायिकता क्या है?",
+          "stem": "एक बैग में 5 सफेद गेंदें और 3 काली गेंदें हैं। एक काली गेंद निकालने की प्रायिकता क्या है?",
           "choices": [
-            "3/8",
+            "3/5",
             "5/8",
-            "1/2",
-            "3/5"
+            "3/8",
+            "5/3"
           ],
-          "solution": "कुल गेंदों की संख्या 3 लाल + 5 काली = 8 है। लाल गेंद निकालने की प्रायिकता लाल गेंदों की संख्या को कुल गेंदों की संख्या से विभाजित करके प्राप्त की जाती है। इसलिए, प्रायिकता 3/8 है। 5/8 विकल्प गलत है क्योंकि यह काली गेंदों की संख्या को गिनता है। 1/2 विकल्प गलत है क्योंकि यह लाल और काली गेंदों की संख्या समान मानता है। 3/5 विकल्प गलत है क्योंकि यह लाल गेंदों की संख्या को काली गेंदों की संख्या से गलत तरीके से विभाजित करता है।",
+          "solution": "बैग में कुल 8 गेंदें हैं, जिनमें 3 काली गेंदें हैं। एक काली गेंद निकालने की प्रायिकता 3/8 है। पहला विकल्प 5 को कुल गेंदों की संख्या मान लेता है, दूसरा विकल्प अंश और हर को उलट देता है, और चौथा विकल्प गलत तर्क पर आधारित एक भ्रामक विकल्प है।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका बॅगेमध्ये 3 लाल गोले आणि 5 काळे गोले आहेत. बॅगमधून यादृच्छिकपणे एक गोला काढला जातो. गोला लाल असण्याची संभाव्यता किती?",
+          "stem": "एका बॅगमध्ये 5 बारीक गोले आणि 3 काळे गोले आहेत. काळा गोला घेण्याची शक्यता किती आहे?",
           "choices": [
-            "3/8",
+            "3/5",
             "5/8",
-            "1/2",
-            "3/5"
+            "3/8",
+            "5/3"
           ],
-          "solution": "एकूण गोल्यांची संख्या 3 लाल + 5 काळे = 8 आहे. लाल गोला काढण्याची संभाव्यता लाल गोल्यांच्या संख्येची एकूण गोल्यांच्या संख्येने भाग असते. म्हणून, संभाव्यता 3/8 आहे. 5/8 अयोग्य आहे कारण ते काळ्या गोल्यांची गणना करते. 1/2 अयोग्य आहे कारण ते लाल आणि काळ्या गोल्यांची संख्या समान मानते. 3/5 अयोग्य आहे कारण ते लाल गोल्यांची संख्या काळ्या गोल्यांच्या संख्येने भागते.",
+          "solution": "बॅगमध्ये एकूण 8 गोले आहेत, ज्यामध्ये 3 काळे गोले आहेत. काळा गोला घेण्याची शक्यता 3/8 आहे. पहिली विकल्प 5 गोले एकूण मानतो, दुसरा विकल्प अंश आणि छेद उलट करतो, आणि चौथा विकल्प चूकीच्या तर्कावर आधारित असतो.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -550,51 +263,51 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Misinterprets the total number of balls as 5",
+        "Confuses the numerator and denominator",
         null,
-        "counts the number of black balls instead of red balls",
-        "assumes equal numbers of red and black balls",
-        "incorrectly divides the number of red balls by the number of black balls"
+        "Confuses the numerator and denominator, thinking probability can be greater than 1"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the key. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3/8, as there are 3 black balls out of 8 total. The author's solution is correct, and the reasons for the distractors align with common misconceptions.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh114.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 10,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 14: Probability"
           ]
         },
         {
           "document": "ncert/10/mathematics/jemh114.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 11,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 14: Probability"
           ]
         },
         {
           "document": "ncert/10/mathematics/jemh114.pdf",
-          "ordinal": 8,
-          "pageStart": 12,
-          "pageEnd": 13,
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
           "headingPath": [
             "Chapter 14: Probability"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:53:43.086Z",
+      "generatedAt": "2026-10-30T06:21:25.404Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

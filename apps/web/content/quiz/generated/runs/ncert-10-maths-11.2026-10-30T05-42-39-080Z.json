@@ -1,0 +1,502 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T05:42:39.080Z",
+  "finishedAt": "2026-10-30T05:47:02.725Z",
+  "seconds": 264,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh111.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — REAS ELATED TO IRCLES",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n10. Take π =22/7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n10. Take π =22/7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n11. A) Irrational and distinct",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n10. B) isosceles and similar"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 158120,
+      "in": 23,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 15677,
+      "completionTokens": 7192
+    },
+    "critique": {
+      "calls": 23,
+      "ms": 178353,
+      "in": 22,
+      "out": 14,
+      "rejects": 8,
+      "promptTokens": 11339,
+      "completionTokens": 4408
+    },
+    "solver": {
+      "calls": 78,
+      "ms": 42751,
+      "in": 14,
+      "out": 7,
+      "rejects": 7,
+      "promptTokens": 12848,
+      "completionTokens": 715
+    },
+    "form": {
+      "calls": 5,
+      "ms": 39398,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 3327,
+      "completionTokens": 902
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 32,
+      "ms": 8239,
+      "in": 5,
+      "out": 0,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 4514,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 154,
+      "completionTokens": 251
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What is the area of a sector of a circle with radius 6 cm and an angle of 60°?",
+      "ms": {
+        "draft": 6575,
+        "critique": 7437
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the area of the segment of a circle with radius 21 cm and an angle of 120°?",
+      "ms": {
+        "draft": 6575,
+        "critique": 6272,
+        "solver": 2130
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A horse is tied to a corner of a square field with a 5 m rope. What is the area the horse can graze?",
+      "ms": {
+        "draft": 6575,
+        "critique": 10364
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A circle is divided into 10 equal sectors by 5 diameters. What is the angle of each sector?",
+      "ms": {
+        "draft": 6575,
+        "critique": 8519,
+        "solver": 2174,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a sector of a circle has an angle of 60° and radius 14 cm, what is the area of the sector?",
+      "ms": {
+        "draft": 6152,
+        "critique": 7417,
+        "solver": 2486
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A car has two wipers which do not overlap. Each wiper blade of length 25 cm sweeps through an angle of 115°. What is the total area cleaned by both wipers in one sweep?",
+      "ms": {
+        "draft": 6152,
+        "critique": 9105,
+        "solver": 2090
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A lighthouse spreads red light over a sector of 80° to a distance of 16.5 km. What is the area of the sea over which the ships are warned? (Use π = 3.14)",
+      "ms": {
+        "draft": 6152,
+        "critique": 7381,
+        "solver": 2445
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An umbrella has 8 ribs equally spaced. If the radius of the umbrella is 45 cm, what is the area between two consecutive ribs?",
+      "ms": {
+        "draft": 6152,
+        "critique": 7865,
+        "solver": 12351,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the radius of a circle is 7 cm and the angle of a sector is 60°, what is the area of the sector?",
+      "ms": {
+        "draft": 5796,
+        "critique": 8333,
+        "solver": 1432
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An umbrella has 8 ribs equally spaced. If the radius of the umbrella is 45 cm, what is the area between two consecutive ribs?",
+      "ms": {
+        "draft": 5796,
+        "critique": 10637
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A round table cover has six equal designs. If the radius of the cover is 28 cm, what is the area of one design?",
+      "ms": {
+        "draft": 5796,
+        "critique": 9707
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A lighthouse spreads light over a sector of 80° to a distance of 16.5 km. If the cost of making designs is ₹0.35 per cm², what is the cost of making the designs on a table cover of radius 28 cm?",
+      "ms": {
+        "draft": 5796,
+        "critique": 8879
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the portion of a circular region enclosed by two radii and the corresponding arc?",
+      "ms": {
+        "draft": 9397,
+        "critique": 6759
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a circle with radius 21 cm, an arc subtends an angle of 60° at the centre. What is the area of the segment formed by the arc?",
+      "ms": {
+        "draft": 9397,
+        "critique": 9550
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the radius of a circle is 6 cm and the angle of the sector is 60°, what is the area of the sector?",
+      "ms": {
+        "draft": 9397,
+        "critique": 7454,
+        "solver": 2554
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A horse is tied to a peg at one corner of a square grass field with a 5 m long rope. What is the area of the field that the horse can graze?",
+      "ms": {
+        "draft": 9397,
+        "critique": 8316,
+        "solver": 1502
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A brooch is made with a silver wire in the form of a circle with diameter 35 mm. The wire is also used to make 5 diameters which divide the circle into 10 equal sectors. What is the length of the wire used?",
+      "ms": {
+        "draft": 9397,
+        "critique": 5918
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term for the part of a circle enclosed between a chord and the corresponding arc?",
+      "ms": {
+        "draft": 6575,
+        "critique": 6110,
+        "solver": 1960,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the area of a sector of a circle with radius r and angle q in degrees?",
+      "ms": {
+        "draft": 6575,
+        "critique": 8457,
+        "solver": 1890,
+        "form": 3678
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the length of an arc of a sector of a circle with radius r and angle θ (in degrees)?",
+      "ms": {
+        "draft": 6152,
+        "critique": 8870,
+        "solver": 2337,
+        "form": 4660
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the area of a sector of a circle with radius r and angle θ (in degrees)?",
+      "ms": {
+        "draft": 6152,
+        "critique": 7909,
+        "solver": 1652,
+        "form": 3610
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the length of an arc of a sector of a circle with radius r and angle θ (in degrees)?",
+      "ms": {
+        "draft": 5796,
+        "critique": 6128,
+        "solver": 2248,
+        "form": 6798
+      },
+      "outcome": "dedupe",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the area of a sector of a circle with radius 6 cm and an angle of 60°?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the area of the segment of a circle with radius 21 cm and an angle of 120°?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A horse is tied to a corner of a square field with a 5 m rope. What is the area the horse can graze?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A circle is divided into 10 equal sectors by 5 diameters. What is the angle of each sector?",
+      "reason": "figure: figure spec refused: spec.segments: segments names point A, which is not defined"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If a sector of a circle has an angle of 60° and radius 14 cm, what is the area of the sector?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A car has two wipers which do not overlap. Each wiper blade of length 25 cm sweeps through an angle of 115°. What is the total area cleaned by both wipers in one sweep?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A lighthouse spreads red light over a sector of 80° to a distance of 16.5 km. What is the area of the sea over which the ships are warned? (Use π = 3.14)",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "An umbrella has 8 ribs equally spaced. If the radius of the umbrella is 45 cm, what is the area between two consecutive ribs?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals); ARITHMETIC MISMATCH — checkExpr \"(45/360)*(22/7)*(45*45)\" = 795.5357142857142, but the key says 843.75"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the formula for the area of a sector of a circle with radius r and angle θ (in degrees)?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the radius of a circle is 7 cm and the angle of a sector is 60°, what is the area of the sector?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "An umbrella has 8 ribs equally spaced. If the radius of the umbrella is 45 cm, what is the area between two consecutive ribs?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A round table cover has six equal designs. If the radius of the cover is 28 cm, what is the area of one design?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A lighthouse spreads light over a sector of 80° to a distance of 16.5 km. If the cost of making designs is ₹0.35 per cm², what is the cost of making the designs on a table cover of radius 28 cm?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used for the portion of a circular region enclosed by two radii and the corresponding arc?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a circle with radius 21 cm, an arc subtends an angle of 60° at the centre. What is the area of the segment formed by the arc?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the radius of a circle is 6 cm and the angle of the sector is 60°, what is the area of the sector?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A horse is tied to a peg at one corner of a square grass field with a 5 m long rope. What is the area of the field that the horse can graze?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A brooch is made with a silver wire in the form of a circle with diameter 35 mm. The wire is also used to make 5 diameters which divide the circle into 10 equal sectors. What is the length of the wire used?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term for the part of a circle enclosed between a chord and the corresponding arc?",
+      "reason": "near-duplicate of served question cmvjvy22e0hxigpfhkpnv1jzt (cosine 0.906 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the formula for the area of a sector of a circle with radius r and angle q in degrees?",
+      "reason": "near-duplicate of served question cmvgq757e04o6gpfh7wxmwy3a (cosine 0.953 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the formula for the length of an arc of a sector of a circle with radius r and angle θ (in degrees)?",
+      "reason": "near-duplicate of served question cmvgq757f04ocgpfhiqhqvaf2 (cosine 0.991 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the formula for the area of a sector of a circle with radius r and angle θ (in degrees)?",
+      "reason": "near-duplicate of served question cmvgq757e04o6gpfh7wxmwy3a (cosine 0.989 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the formula for the length of an arc of a sector of a circle with radius r and angle θ (in degrees)?",
+      "reason": "near-duplicate of served question cmvgq757f04ocgpfhiqhqvaf2 (cosine 0.989 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

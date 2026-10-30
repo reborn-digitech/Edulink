@@ -21,47 +21,144 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T01:24:40.587Z",
+  "generatedAt": "2026-10-29T14:55:19.814Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "What is the parity of the number 27 × 13?",
+      "stem": "What is the parity of the sum of 5 even numbers?",
       "choices": [
-        "odd",
-        "even",
-        "both",
-        "neither"
+        "Even",
+        "Odd",
+        "Zero",
+        "One"
       ],
       "answerIndex": 0,
-      "solution": "The parity of a product depends on the parity of the numbers multiplied. Since 27 is odd and 13 is odd, their product is odd. Therefore, the correct answer is odd. Even numbers are divisible by 2, but odd numbers are not, so the product of two odd numbers is always odd. The other options are incorrect because the product cannot be even or both, and it cannot be neither as it is always either odd or even.",
+      "solution": "The sum of even numbers is always even because each even number is divisible by 2, and the sum of numbers divisible by 2 is also divisible by 2. Adding five even numbers will still result in a number divisible by 2, making the sum even. Odd, zero, and one are incorrect because they do not align with the properties of even numbers under addition.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "संख्या 27 × 13 की समगुणिता क्या है?",
+          "stem": "5 सम संख्याओं के योग की समगुणिता क्या है?",
           "choices": [
-            "विषम",
             "सम",
-            "दोनों",
-            "कोई नहीं"
+            "विषम",
+            "शून्य",
+            "एक"
           ],
-          "solution": "एक गुणनफल की समगुणिता गुणन के संख्याओं की समगुणिता पर निर्भर करती है। चूंकि 27 विषम है और 13 विषम है, इसलिए उनका गुणनफल विषम होता है। इसलिए सही उत्तर विषम है। सम संख्याएं 2 से विभाज्य होती हैं, लेकिन विषम संख्याएं नहीं, इसलिए दो विषम संख्याओं का गुणनफल हमेशा विषम होता है। अन्य विकल्प गलत हैं क्योंकि गुणनफल सम नहीं हो सकता या दोनों हो सकता है, और यह कोई नहीं नहीं हो सकता क्योंकि यह हमेशा या तो विषम या सम होता है।",
+          "solution": "सम संख्याओं का योग हमेशा सम होता है क्योंकि प्रत्येक सम संख्या 2 से विभाज्य होती है, और 2 से विभाज्य संख्याओं का योग भी 2 से विभाज्य होता है। पांच सम संख्याओं को जोड़ने से भी 2 से विभाज्य एक संख्या प्राप्त होती है, जिसके कारण योग सम होता है। विषम, शून्य और एक गलत हैं क्योंकि वे सम संख्याओं के जोड़ के गुणों के साथ मेल नहीं खाते।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All technical terms like 'समगुणिता' (parity), 'विषम' (odd), and 'सम' (even) are standard in Hindi mathematics textbooks.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "संख्या 27 × 13 ची सम अथवा असम परिपक्वता काय आहे?",
+          "stem": "5 सम अंकांच्या बेरजेची समानता काय आहे?",
           "choices": [
-            "असम",
             "सम",
-            "दोन्ही",
-            "कोणतेही नाही"
+            "असम",
+            "शून्य",
+            "एक"
           ],
-          "solution": "गुणाकाराची परिपक्वता गुणाकार करणार्‍या संख्यांच्या परिपक्वतेवर अवलंबून असते. 27 ही असम आहे आणि 13 ही असम आहे, म्हणून त्यांचा गुणाकार असम असतो. म्हणून, योग्य उत्तर असम आहे. सम संख्या 2 ने भागल्या जातात, परंतु असम संख्या नाहीत, म्हणून दोन असम संख्यांचा गुणाकार हमेशा असम असतो. इतर विकल्प अयोग्य आहेत कारण गुणाकार सम असू शकत नाही किंवा दोन्ही असू शकत नाहीत, आणि तो कोणतेही नाही असू शकत नाही कारण तो हमेशा सम किंवा असम असतो.",
+          "solution": "सम अंकांची बेरजा हमेशा सम असते कारण प्रत्येक सम अंक 2 ने भागला जातो, आणि 2 ने भागल्या जाणार्या संख्यांची बेरजा देखील 2 ने भागली जाते. पाच सम अंकांची बेरजा देखील 2 ने भागल्या जाणारी संख्या असते, ज्यामुळे बेरजा सम असते. असम, शून्य आणि एक अयोग्य आहेत कारण ते सम अंकांच्या बेरजेच्या गुणधर्मांशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 1). All distractors are still incorrect in Marathi.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Thinks the sum of 5 even numbers is odd",
+        "Thinks the sum of 5 even numbers is zero",
+        "Thinks the sum of 5 even numbers is one"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-posed and the solution is correct. The sum of any number of even numbers is always even, so option 0 is correct. The distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Number Play"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.2 Picking Parity"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.2 Picking Parity"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T14:55:19.814Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the parity of the sum of numbers from 1 to 100?",
+      "choices": [
+        "Even",
+        "Odd",
+        "Zero",
+        "Both odd and even"
+      ],
+      "answerIndex": 0,
+      "solution": "The sum of numbers from 1 to 100 is even. There are 50 odd numbers and 50 even numbers. The sum of an even number of odd numbers is even, and the sum of even numbers is also even, so the total sum is even. Odd numbers alone would make the sum odd, and zero is not a valid parity for this sum.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "1 से 100 तक की संख्याओं के योग की समता क्या है?",
+          "choices": [
+            "सम",
+            "विषम",
+            "शून्य",
+            "विषम और सम दोनों"
+          ],
+          "solution": "1 से 100 तक की संख्याओं का योग सम है। 50 विषम संख्याएं और 50 सम संख्याएं हैं। विषम संख्याओं की सम संख्या का योग सम होता है, और सम संख्याओं का योग भी सम होता है, इसलिए कुल योग सम होता है। विषम संख्याओं के अकेले योग विषम होता है, और शून्य इस योग के लिए एक वैध समता नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1 ते 100 पर्यंतच्या संख्यांच्या बेरजेची सम विषमता काय आहे?",
+          "choices": [
+            "सम",
+            "विषम",
+            "शून्य",
+            "विषम आणि सम दोन्ही"
+          ],
+          "solution": "1 ते 100 पर्यंतच्या संख्यांची बेरीज सम आहे. 50 विषम संख्या आणि 50 सम संख्या आहेत. विषम संख्यांच्या सम संख्या बेरजा सम असते, आणि सम संख्यांची बेरजा देखील सम असते, म्हणून एकूण बेरजा सम असते. विषम संख्यांची बेरजा विषम असते, आणि शून्य ही बेरजेसाठी वैध परिमाण नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -73,9 +170,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the rule for multiplying even and odd numbers",
-        "Thinks that the product of two odd numbers can be even",
-        "Does not understand the concept of parity in multiplication"
+        "Does not recognize that the sum of 50 odd numbers is even",
+        "Confuses the parity of a single number with the sum",
+        "Thinks zero is a possible answer for parity in this case, which it is not"
       ],
       "solverAnswers": [
         0,
@@ -85,83 +182,83 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies that the product of two odd numbers is odd, and the reasoning aligns with standard mathematical principles. The distractors reflect common misconceptions about parity.",
+      "critique": "The solution is correct. The sum of numbers from 1 to 100 is indeed even, as there are 50 odd numbers (which sum to an even number) and 50 even numbers (which also sum to an even number). The total is therefore even.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 3,
-          "pageStart": 6,
-          "pageEnd": 7,
+          "ordinal": 13,
+          "pageStart": 18,
+          "pageEnd": 18,
           "headingPath": [
             "Chapter 6: Number Play",
-            "6.2 Picking Parity"
+            "6.5 Digits in Disguise"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 8,
+          "ordinal": 14,
+          "pageStart": 19,
+          "pageEnd": 21,
           "headingPath": [
             "Chapter 6: Number Play",
-            "6.3 Some Explorations in Grids"
+            "SUMMARY"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 5,
-          "pageStart": 8,
-          "pageEnd": 10,
+          "ordinal": 15,
+          "pageStart": 21,
+          "pageEnd": 24,
           "headingPath": [
             "Chapter 6: Number Play",
-            "6.3 Some Explorations in Grids"
+            "SUMMARY"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:24:40.587Z",
+      "generatedAt": "2026-10-29T14:55:19.814Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "What is the parity of the number 42 × 78?",
+      "stem": "Which of the following expressions can have either odd or even parity?",
       "choices": [
-        "odd",
-        "even",
-        "both",
-        "neither"
+        "3n + 4",
+        "100p + 1",
+        "48w - 1",
+        "2n - 1"
       ],
-      "answerIndex": 1,
-      "solution": "The parity of a product depends on the parity of the numbers multiplied. Since 42 is even and 78 is even, their product is even. Therefore, the correct answer is even. Even numbers are divisible by 2, and the product of two even numbers is always even. The other options are incorrect because the product cannot be odd or both, and it cannot be neither as it is always either odd or even.",
+      "answerIndex": 0,
+      "solution": "The correct answer is 3n + 4. This expression can have either odd or even parity depending on the value of n. The other options are incorrect: 100p and 48w - 2 always produce even numbers, and 2n - 1 always produces odd numbers.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "संख्या 42 × 78 की समगुणिता क्या है?",
+          "stem": "निम्नलिखित में से कौन-सा व्यंजक या तो विषम या सम युग्मता हो सकता है?",
           "choices": [
-            "विषम",
-            "सम",
-            "दोनों",
-            "कोई नहीं"
+            "3n + 4",
+            "100p + 1",
+            "48w - 1",
+            "2n - 1"
           ],
-          "solution": "एक गुणनफल की समगुणिता गुणन करने वाली संख्याओं की समगुणिता पर निर्भर करती है। चूंकि 42 सम और 78 सम है, इसलिए उनका गुणनफल सम होता है। अतः सही उत्तर सम है। सम संख्याएं 2 से विभाज्य होती हैं, और दो सम संख्याओं का गुणनफल हमेशा सम होता है। अन्य विकल्प गलत हैं क्योंकि गुणनफल विषम नहीं हो सकता या दोनों हो सकता है, और यह कोई नहीं नहीं हो सकता क्योंकि यह हमेशा या तो विषम या सम होता है।",
+          "solution": "सही उत्तर 3n + 4 है। इस व्यंजक की युग्मता n के मान पर निर्भर करती है। अन्य विकल्प गलत हैं: 100p और 48w - 2 हमेशा सम संख्या उत्पन्न करते हैं, और 2n - 1 हमेशा विषम संख्या उत्पन्न करता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used in Hindi.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "संख्या 42 × 78 ची सम अथवा विषम प्रकृती काय आहे?",
+          "stem": "खालीलपैकी कोणत्या व्यंजकाला विषम किंवा सम समाप्ती असू शकते?",
           "choices": [
-            "विषम",
-            "सम",
-            "दोन्ही",
-            "कोणतेही नाही"
+            "3n + 4",
+            "100p + 1",
+            "48w - 1",
+            "2n - 1"
           ],
-          "solution": "एका गुणाकाराची प्रकृती गुणाकार करणाऱ्या संख्यांच्या प्रकृतीवर अवलंबून असते. 42 ही सम आहे आणि 78 ही सम आहे, म्हणून त्यांचा गुणाकार सम असतो. त्यामुळे योग्य उत्तर सम आहे. सम संख्या 2 ने भागली जाऊ शकते आणि दोन सम संख्यांचा गुणाकार हमेशा सम असतो. इतर विकल्प अयोग्य आहेत कारण गुणाकार विषम असू शकत नाही किंवा दोन्ही असू शकत नाही आणि तो कोणतेही नाही असू शकत नाही कारण तो हमेशा सम किंवा विषम असतो.",
+          "solution": "सही उत्तर 3n + 4 आहे. हा व्यंजक n च्या किंमतीवर अवलंबून विषम किंवा सम समाप्ती असू शकतो. इतर विकल्प चुकीचे आहेत: 100p आणि 48w - 2 नेहमी सम संख्या तयार करतात, आणि 2n - 1 नेहमी विषम संख्या तयार करतो.",
           "imageAlt": null,
-          "critique": "The translation accurately preserves the mathematical meaning, with appropriate Marathi terms for 'even' and 'odd' (सम/विषम) and correct logical structure.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -170,20 +267,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the rule for multiplying even and odd numbers",
         null,
-        "Thinks that the product of two even numbers can be odd",
-        "Does not understand the concept of parity in multiplication"
+        "Student thinks adding 1 to an even expression makes it odd, but doesn't consider that 100p is always even, so 100p + 1 is always odd",
+        "Student mistakes the constant term's parity when determining the overall expression's parity.",
+        "Chooses an expression that always produces odd numbers"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. The product of two even numbers is always even, so the correct answer is even (option 1). The reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The correct answer is 3n + 4, as it can be either odd or even depending on n. The other options are always even or odd, as explained. The reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp106.pdf",
@@ -217,268 +314,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:24:40.587Z",
+      "generatedAt": "2026-10-29T14:55:19.814Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "If the number of rhythms for 5 beats is 8 and for 6 beats is 13, how many rhythms are there for 8 beats?",
+      "difficulty": 4,
+      "stem": "If a magic square is created using the numbers 2 – 10, what strategy would you use?",
       "choices": [
-        "13",
-        "21",
-        "34",
-        "55"
+        "Start by placing 1 in the centre",
+        "Start by placing 2 in the middle of the top row",
+        "Start by placing 5 in the corners",
+        "Start by placing 6 in the middle of the bottom row"
       ],
-      "answerIndex": 2,
-      "solution": "The number of rhythms for 8 beats follows the Virahāṅka sequence, which is formed by adding the two previous numbers. Since the number for 6 beats is 13 and for 7 beats is 21, the number for 8 beats is 13 + 21 = 34. The option 13 is the number for 6 beats, 21 is for 7 beats, and 55 is for 10 beats.",
-      "checkExpr": "13+21",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 5 लयों की संख्या 8 है और 6 लयों की संख्या 13 है, तो 8 लयों की संख्या कितनी होगी?",
-          "choices": [
-            "13",
-            "21",
-            "34",
-            "55"
-          ],
-          "solution": "8 लयों की संख्या विरहांका अनुक्रम के अनुसार होती है, जो पिछली दो संख्याओं के योग से बनता है। चूंकि 6 लयों की संख्या 13 है और 7 लयों की संख्या 21 है, तो 8 लयों की संख्या 13 + 21 = 34 होगी। विकल्प 13 छह लयों की संख्या है, 21 सात लयों की संख्या है, और 55 दस लयों की संख्या है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical logic, and uses appropriate terminology from Hindi-medium mathematics textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "5 बीट्ससाठी रिथमची संख्या 8 आहे आणि 6 बीट्ससाठी 13 आहे, तर 8 बीट्ससाठी किती रिथम असतील?",
-          "choices": [
-            "13",
-            "21",
-            "34",
-            "55"
-          ],
-          "solution": "8 बीट्ससाठी रिथमची संख्या विरहांका अनुक्रमाप्रमाणे असते, जो दोन आधीच्या संख्यांच्या बेरजेने बनतो. 6 बीट्ससाठी संख्या 13 आहे आणि 7 बीट्ससाठी 21 आहे, म्हणून 8 बीट्ससाठी संख्या 13 + 21 = 34 असते. 13 ही 6 बीट्ससाठी असलेली संख्या आहे, 21 ही 7 बीट्ससाठी असलेली संख्या आहे आणि 55 ही 10 बीट्ससाठी असलेली संख्या आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses the number for 6 beats",
-        "Chooses the number for 7 beats",
-        null,
-        "Chooses the number for 10 beats"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        1,
-        2,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question correctly identifies the pattern as the Virahāṅka sequence (Fibonacci), and the solution is sound. The correct answer is 34, and the distractors are plausible based on common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 9,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 6: Number Play",
-            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
-            "Fibonacci Numbers!"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: Number Play",
-            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
-            "Fibonacci Numbers!"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 11,
-          "pageStart": 16,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: Number Play",
-            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
-            "Fibonacci Numbers!"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 6: Number Play",
-            "6.5 Digits in Disguise"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:24:40.587Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the magic sum of a magic square is 60, what is the value of the number in the center?",
-      "choices": [
-        "20",
-        "15",
-        "10",
-        "5"
-      ],
-      "answerIndex": 0,
-      "solution": "In a magic square, the sum of any row, column, or diagonal is three times the number in the center. If the magic sum is 60, then the center number is 60 divided by 3, which equals 20. The other options do not result in a magic sum of 60 when multiplied by 3.",
-      "checkExpr": "60/3",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक जादुई वर्ग का जादुई योग 60 है, तो केंद्र में संख्या का मान क्या है?",
-          "choices": [
-            "20",
-            "15",
-            "10",
-            "5"
-          ],
-          "solution": "जादुई वर्ग में किसी भी पंक्ति, स्तंभ या विकर्ण का योग केंद्र में संख्या के तीन गुना होता है। यदि जादुई योग 60 है, तो केंद्र में संख्या 60 को 3 से विभाजित करने पर प्राप्त होती है, जो 20 के बराबर है। अन्य विकल्प तीन से गुणा करने पर 60 के जादुई योग के बराबर नहीं होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology for a Hindi-medium math curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर जादूच्या चौरसाचा जादूचा बेरीज 60 असेल, तर केंद्रातील संख्येची किंमत किती असेल?",
-          "choices": [
-            "20",
-            "15",
-            "10",
-            "5"
-          ],
-          "solution": "जादूच्या चौरसात, कोणत्याही ओळ, स्तंभ किंवा विकर्णाची बेरीज केंद्रातील संख्येच्या तीन पट असते. जर जादूचा बेरीज 60 असेल, तर केंद्रातील संख्या 60 ला 3 ने भागल्यास 20 होते. इतर विकल्प 3 ने गुणल्यास 60 चा जादूचा बेरीज मिळत नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology for a Marathi-medium curriculum.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Chooses the magic sum directly without dividing by 3",
-        "Chooses a smaller value by dividing the magic sum by 4",
-        "Chooses a smaller value by dividing the magic sum by 12"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the property that the magic sum of a 3x3 magic square is three times the center number. The reasoning is sound and matches the key.",
-      "sources": [
-        {
-          "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 16,
-          "pageStart": 24,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 6: Number Play",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 17,
-          "pageStart": 27,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 6: Number Play",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 18,
-          "pageStart": 30,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 6: Number Play",
-            "SUMMARY"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 19,
-          "pageStart": 32,
-          "pageEnd": 32,
-          "headingPath": [
-            "Chapter 6: Number Play",
-            "SUMMARY"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:24:40.587Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "What is the parity (odd or even) of the 10th number in the Virahāṅka sequence?",
-      "choices": [
-        "Odd",
-        "Even",
-        "Both",
-        "Neither"
-      ],
-      "answerIndex": 0,
-      "solution": "The Virahāṅka sequence follows a pattern of parities: odd, even, odd, odd, even, odd, odd, even, odd, odd. The 10th number is odd. The option Even is incorrect as the 10th number is odd, Both is incorrect because the numbers alternate between odd and even, and Neither is incorrect as the numbers are either odd or even.",
+      "answerIndex": 1,
+      "solution": "The correct strategy is to start by placing 2 in the middle of the top row, as this follows the pattern used for magic squares with consecutive numbers. Placing 1 in the center is incorrect because 1 is not in the range 2–10. Placing 5 in the corners is incorrect because there is no scientific basis for this in the construction of magic squares. Placing 6 in the middle of the bottom row is also incorrect as it does not align with the standard method for creating such squares.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "विरहाङ्क अनुक्रम में 10वां संख्या की समता (सम या विषम) क्या है?",
+          "stem": "यदि 2 – 10 संख्याओं का उपयोग करके एक जादुई वर्ग बनाया जाता है, तो आप कौन सी रणनीति का उपयोग करेंगे?",
           "choices": [
-            "विषम",
-            "सम",
-            "दोनों",
-            "कोई नहीं"
+            "केंद्र में 1 रखना शुरू करें",
+            "ऊपरी पंक्ति के मध्य में 2 रखना शुरू करें",
+            "कोनों में 5 रखना शुरू करें",
+            "निचली पंक्ति के मध्य में 6 रखना शुरू करें"
           ],
-          "solution": "विरहाङ्क अनुक्रम में समता का एक पैटर्न अनुसरण करता है: विषम, सम, विषम, विषम, सम, विषम, विषम, सम, विषम, विषम। 10वीं संख्या विषम है। विकल्प सम गलत है क्योंकि 10वीं संख्या विषम है, दोनों गलत है क्योंकि संख्याएं विषम और सम के बीच बदलती रहती हैं, और कोई नहीं गलत है क्योंकि संख्याएं या तो विषम होती हैं या सम।",
+          "solution": "सही रणनीति ऊपरी पंक्ति के मध्य में 2 रखना है, क्योंकि यह लगातार संख्याओं के साथ जादुई वर्गों के लिए उपयोग किए जाने वाले पैटर्न के अनुरूप है। केंद्र में 1 रखना गलत है क्योंकि 1 संख्या 2–10 की सीमा में नहीं है। कोनों में 5 रखना गलत है क्योंकि जादुई वर्गों के निर्माण में इसके लिए कोई वैज्ञानिक आधार नहीं है। निचली पंक्ति के मध्य में 6 रखना भी गलत है क्योंकि ऐसे वर्ग बनाने के मानक तरीके से यह मेल नहीं खाता।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English content with appropriate terminology and maintains the correct answer position.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "विरहांक क्रमांकाच्या 10व्या संख्येची सम विषमता (सम वा विषम) काय आहे?",
+          "stem": "जर 2-10 अंकांचा वापर करून जादूचा चौरस तयार केला जात असेल, तर तुम्ही कोणता विचार वापराल?",
           "choices": [
-            "विषम",
-            "सम",
-            "दोन्ही",
-            "कोणतेही नाही"
+            "मध्यात 1 ठेवणे सुरू करा",
+            "उच्च ओळीच्या मध्यात 2 ठेवणे सुरू करा",
+            "कोनात 5 ठेवणे सुरू करा",
+            "खालच्या ओळीच्या मध्यात 6 ठेवणे सुरू करा"
           ],
-          "solution": "विरहांक क्रमांकाच्या परिमाणाचा फॉर्म: विषम, सम, विषम, विषम, सम, विषम, विषम, सम, विषम, विषम. 10वी संख्या विषम आहे. विषम नसल्यामुळे सम अयोग्य आहे, दोन्ही अयोग्य आहे कारण संख्या विषम आणि सम असतात आणि कोणतेही नाही अयोग्य आहे कारण संख्या विषम किंवा सम असतात.",
+          "solution": "योग्य विचार म्हणजे उच्च ओळीच्या मध्यात 2 ठेवणे, कारण हे अविच्छिन्न संख्यांसह जादूच्या चौरसांच्या निर्मितीसाठी वापरलेल्या पॅटर्नच्या अनुसरणाने आहे. मध्यात 1 ठेवणे चुकीचे आहे कारण 1 हा 2-10 च्या परिसराबाहेर आहे. कोनात 5 ठेवणे चुकीचे आहे कारण जादूच्या चौरसांच्या निर्मितीमध्ये याची वैज्ञानिक आधार नाही. खालच्या ओळीच्या मध्यात 6 ठेवणे देखील चुकीचे आहे कारण हे अशा चौरसांच्या निर्मितीसाठी मानक पद्धतीशी जुळत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for magic squares.",
           "flag": null
         }
       },
@@ -487,67 +365,153 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "uses the strategy for numbers 1 – 9",
         null,
-        "Confuses the Fibonacci sequence with the Virahāṅka sequence and assumes even numbers alternate regularly",
-        "Student believes the 10th Virahāṅka number can be both odd and even due to confusion between sequence properties and parity rules",
-        "Confuses the concept of parity with an undefined or non-numeric result"
+        "does not understand the strategy for creating magic squares with different number sets",
+        "does not understand the strategy for creating magic squares with different number sets"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies the 10th number in the Virahāṅka sequence as odd, based on the given parity pattern. The reasoning for the incorrect options aligns with common misconceptions about sequence patterns and parity.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the strategy for numbers 2–10 follows the same logic as for 1–9, with 2 placed in the middle of the top row. The other options reflect misunderstandings of the strategy for different number sets.",
       "sources": [
         {
           "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 9,
-          "pageStart": 14,
-          "pageEnd": 15,
+          "ordinal": 6,
+          "pageStart": 10,
+          "pageEnd": 11,
           "headingPath": [
             "Chapter 6: Number Play",
-            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
-            "Fibonacci Numbers!"
+            "6.3 Some Explorations in Grids"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 10,
-          "pageStart": 15,
-          "pageEnd": 16,
+          "ordinal": 7,
+          "pageStart": 11,
+          "pageEnd": 13,
           "headingPath": [
             "Chapter 6: Number Play",
-            "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
-            "Fibonacci Numbers!"
+            "6.3 Some Explorations in Grids"
           ]
         },
         {
           "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 11,
-          "pageStart": 16,
-          "pageEnd": 16,
+          "ordinal": 8,
+          "pageStart": 13,
+          "pageEnd": 14,
           "headingPath": [
             "Chapter 6: Number Play",
             "6.4 Nature’s Favourite Sequence: The Virahāṅka–",
             "Fibonacci Numbers!"
-          ]
-        },
-        {
-          "document": "ncert/7/mathematics/gegp106.pdf",
-          "ordinal": 12,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 6: Number Play",
-            "6.5 Digits in Disguise"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T01:24:40.587Z",
+      "generatedAt": "2026-10-29T14:55:19.814Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If the sum of all the numbers in a magic square is 45, what is the magic sum?",
+      "choices": [
+        "12",
+        "15",
+        "18",
+        "21"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is 15. The total sum of the numbers in the magic square is 45, and since there are 3 rows (or 3 columns) with the same sum, the magic sum is 45 ÷ 3 = 15. The other options are incorrect: 12, 18, and 21 are not divisible by 3 or do not match the total sum of 45.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक मैजिक वर्ग में सभी संख्याओं का योग 45 है, तो मैजिक योग क्या है?",
+          "choices": [
+            "12",
+            "15",
+            "18",
+            "21"
+          ],
+          "solution": "सही उत्तर 15 है। मैजिक वर्ग में संख्याओं का कुल योग 45 है, और चूंकि 3 पंक्तियां (या 3 स्तंभ) हैं जिनका समान योग है, मैजिक योग 45 ÷ 3 = 15 है। अन्य विकल्प गलत हैं: 12, 18 और 21 में से कोई भी 3 से विभाज्य नहीं है या 45 के कुल योग के बराबर नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The structure and logic of the question and solution are preserved.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका जादूच्या चौरसातील सर्व संख्यांचा बेरीज 45 असेल, तर जादूचा बेरीज किती असेल?",
+          "choices": [
+            "12",
+            "15",
+            "18",
+            "21"
+          ],
+          "solution": "बरोबर उत्तर 15 आहे. जादूच्या चौरसातील संख्यांची एकूण बेरीज 45 आहे, आणि 3 ओळी (किंवा 3 स्तंभ) असल्यामुळे जादूची बेरीज 45 ÷ 3 = 15 असेल. इतर उत्तरे चूक आहेत: 12, 18 आणि 21 ही 3 ने भागली जात नाहीत किंवा 45 च्या एकूण बेरीजशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for 'magic square' and 'magic sum'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses a number that is not divisible by 3",
+        null,
+        "Chooses a number that is higher than the total sum of numbers 1 to 9",
+        "Chooses a number that is not based on dividing the total sum by 3"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. A magic square of order 3 has 3 rows, and the magic sum is the total sum divided by 3. 45 ÷ 3 = 15, so option 1 is correct.",
+      "sources": [
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.2 Picking Parity"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        },
+        {
+          "document": "ncert/7/mathematics/gegp106.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 6: Number Play",
+            "6.3 Some Explorations in Grids"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T14:55:19.814Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

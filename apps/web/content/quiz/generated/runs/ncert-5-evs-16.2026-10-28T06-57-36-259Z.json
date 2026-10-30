@@ -1,0 +1,396 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T06:57:36.259Z",
+  "finishedAt": "2026-10-28T06:59:32.057Z",
+  "seconds": 116,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap116.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 16 — Who will do this Work?",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 51588,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 13664,
+      "completionTokens": 3118
+    },
+    "critique": {
+      "calls": 19,
+      "ms": 105175,
+      "in": 16,
+      "out": 12,
+      "rejects": 4,
+      "promptTokens": 8082,
+      "completionTokens": 3188
+    },
+    "solver": {
+      "calls": 82,
+      "ms": 39550,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 14603,
+      "completionTokens": 862
+    },
+    "form": {
+      "calls": 3,
+      "ms": 4156,
+      "in": 10,
+      "out": 1,
+      "rejects": 9,
+      "promptTokens": 707,
+      "completionTokens": 168
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 3862,
+      "in": 1,
+      "out": 0,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 4540,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 200,
+      "completionTokens": 340
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "According to the passage, what kind of work do people from a particular community usually do?",
+      "ms": {
+        "draft": 3122,
+        "critique": 4540,
+        "solver": 1085,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the reason why people from a particular community continue to do cleaning work?",
+      "ms": {
+        "draft": 3122,
+        "critique": 4764,
+        "solver": 1414,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If nobody cleared the garbage for one week, what would happen according to the passage?",
+      "ms": {
+        "draft": 3122,
+        "critique": 4986,
+        "solver": 2217,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the barber refuse to cut Bhim's hair?",
+      "ms": {
+        "draft": 3018,
+        "critique": 6523
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Gandhiji and his team start doing the job of cleaning according to the passage?",
+      "ms": {
+        "draft": 3122,
+        "critique": 7736,
+        "solver": 1445,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the man returning from the toilet do with Mahadevbhai?",
+      "ms": {
+        "draft": 3018,
+        "critique": 7903,
+        "solver": 1764
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the story of Bhim Rao Ambedkar show?",
+      "ms": {
+        "draft": 3018,
+        "critique": 5010
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If all children helped clean the school, what would be the result?",
+      "ms": {
+        "draft": 3018,
+        "critique": 4815,
+        "solver": 826,
+        "form": 1008
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, why do some children have to clean the school?",
+      "ms": {
+        "draft": 3454,
+        "critique": 6142,
+        "solver": 1183
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Who is the person who fought for justice for people like him and became very famous across the world?",
+      "ms": {
+        "draft": 3454,
+        "critique": 6905,
+        "solver": 1596,
+        "form": 2303
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the responsibility of people to keep the place clean?",
+      "ms": {
+        "draft": 3303,
+        "critique": 5247
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you were to choose a job that others do not want to do, what might be a good reason to choose it?",
+      "ms": {
+        "draft": 3303,
+        "critique": 7398
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the way people look at different kinds of work?",
+      "ms": {
+        "draft": 3454,
+        "critique": 6716,
+        "solver": 12242,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is one of the main reasons people continue to do cleaning work?",
+      "ms": {
+        "draft": 3303,
+        "critique": 6784,
+        "solver": 13159,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the story about Gandhiji and the village illustrate?",
+      "ms": {
+        "draft": 3303,
+        "critique": 4908,
+        "solver": 6228,
+        "form": 845
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If everyone followed Gandhiji's idea that every person should do every kind of work, what would happen in a house?",
+      "ms": {
+        "draft": 3454,
+        "critique": 6357,
+        "solver": 1562,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what kind of work do people from a particular community usually do?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Thinks the passage refers to other types of jobs.…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the passage to mean that teaching is done by a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the reason why people from a particular community continue to do cleaning work?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Thinks the passage suggests people are paid more for this wo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If nobody cleared the garbage for one week, what would happen according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did the barber refuse to cut Bhim's hair?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why did Gandhiji and his team start doing the job of cleaning according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (43 vs 17 characters); distractor 2's reason is not a one-line misconception (\"Believes the passage suggests that Gandhiji avoided the work…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did the man returning from the toilet do with Mahadevbhai?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the story of Bhim Rao Ambedkar show?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If all children helped clean the school, what would be the result?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"This suggests an unintended consequence, which is not discus…\"); distractor 3's reason is not a one-line misconception (\"This is correct, as the passage implies that equal participa…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, why do some children have to clean the school?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Who is the person who fought for justice for people like him and became very famous across the world?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"refers to a person mentioned in the passage but not the one …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage suggest about the responsibility of people to keep the place clean?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If you were to choose a job that others do not want to do, what might be a good reason to choose it?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the way people look at different kinds of work?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believes all work is valued the same, ignoring social hierar…\"); distractor 2's reason is not a one-line misconception (\"focuses on gender bias, which is not the main point of the p…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is one of the main reasons people continue to do cleaning work?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the story about Gandhiji and the village illustrate?",
+      "reason": "options 1 and 3 are the same (\"That people should not be allowed to choose their own work\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If everyone followed Gandhiji's idea that every person should do every kind of work, what would happen in a house?",
+      "reason": "near-duplicate of served question cmvkc0icw0jzwgpfh0evitfdu (cosine 0.902 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

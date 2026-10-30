@@ -1,0 +1,257 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:08:39.399Z",
+  "finishedAt": "2026-10-28T04:09:41.025Z",
+  "seconds": 62,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap101.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 1 — Going to School",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 8,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 21748,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7808,
+      "completionTokens": 1419
+    },
+    "critique": {
+      "calls": 11,
+      "ms": 52279,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 4711,
+      "completionTokens": 1880
+    },
+    "solver": {
+      "calls": 53,
+      "ms": 31463,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 11528,
+      "completionTokens": 673
+    },
+    "form": {
+      "calls": 2,
+      "ms": 4861,
+      "in": 4,
+      "out": 1,
+      "rejects": 3,
+      "promptTokens": 470,
+      "completionTokens": 137
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 3522,
+      "in": 1,
+      "out": 0,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 3980,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 201,
+      "completionTokens": 314
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If the bridge in the passage is made of cement, bricks, and iron rods, how many people do you think can cross it at one time?",
+      "ms": {
+        "draft": 2725,
+        "critique": 4818
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is used by children in Assam to cross the river?",
+      "ms": {
+        "draft": 2725,
+        "critique": 4267,
+        "solver": 917
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a bridge according to the passage?",
+      "ms": {
+        "draft": 2725,
+        "critique": 4289,
+        "solver": 1494,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, how do children in Ladakh cross the river?",
+      "ms": {
+        "draft": 2725,
+        "critique": 2940,
+        "solver": 431,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the iron rope in Ladakh?",
+      "ms": {
+        "draft": 2712,
+        "critique": 4310,
+        "solver": 1049
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bridge is made of cement, bricks, and iron rods, which of the following would be the most likely reason for using these materials?",
+      "ms": {
+        "draft": 2712,
+        "critique": 4512,
+        "solver": 14225,
+        "form": 2777
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the Northern Hills, why do children have to walk carefully on snow?",
+      "ms": {
+        "draft": 2712,
+        "critique": 8072,
+        "solver": 10754
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a way that children in Assam cross the river to reach school?",
+      "ms": {
+        "draft": 2712,
+        "critique": 4493,
+        "solver": 15230,
+        "form": 2745
+      },
+      "outcome": "dedupe",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the bridge in the passage is made of cement, bricks, and iron rods, how many people do you think can cross it at one time?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is used by children in Assam to cross the river?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of a bridge according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, how do children in Ladakh cross the river?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main purpose of the iron rope in Ladakh?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a bridge is made of cement, bricks, and iron rods, which of the following would be the most likely reason for using these materials?",
+      "reason": "options 1 and 3 are the same (\"They are light and flexible\"); distractor 1's reason is not a one-line misconception (\"The passage implies that these materials are used for streng…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the Northern Hills, why do children have to walk carefully on snow?",
+      "reason": "after redrafting distractors 0, 1, 3: the critic finds option 1 correct, the key is 2"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a way that children in Assam cross the river to reach school?",
+      "reason": "near-duplicate of served question cmvh2ns8z06esgpfh1cp327sf (cosine 0.912 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

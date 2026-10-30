@@ -1,0 +1,733 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T22:01:29.139Z",
+  "finishedAt": "2026-10-25T22:11:37.836Z",
+  "seconds": 609,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh108.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Sequences and Series",
+    "edition": "Reprint 2026-27",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n19. Assertion(A): The sequence −1, −1 − 1, . . . , −1 is an AP. 1\nReason(R): In an AP, 𝑎 − 𝑎 𝑛 𝑛−1 is constant where 𝑛 ≥ 2 and 𝑛 ∈ 𝑁",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n21. (A) The A.P 8, 10, 12,……. has 60 terms. Find the sum of last 10 terms. 2\nOR\n(B) Find the middle term of A.P 6,13, 20, ……., 230",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n6. C 𝑎 10 = 𝑎 + (10 − 1)𝑑 = 𝑝 + 9𝑞\n(C) 𝒑 + 𝟗𝒒",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n21. n =60, a =8 and d=2\n(A) 𝑡 = 8 + 59(2) =126 ଺଴\n𝑡 = 108 ହଵ\nଵ଴\n½\n½\nHence 𝑡 ହଵ + 𝑡 +……..+ 𝑡 = ହଶ ଺଴ ଶ (108 +126) =1170\nOR\n(B) 230 = 6 + (n -1)7 gives n=33\n⸫ Middle Term = 𝑡 = 6 + (16)(7) = 118 ଵ଻"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 172965,
+      "in": 38,
+      "out": 37,
+      "rejects": 1,
+      "promptTokens": 37772,
+      "completionTokens": 9735
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 327661,
+      "in": 37,
+      "out": 33,
+      "rejects": 4,
+      "promptTokens": 24069,
+      "completionTokens": 8694
+    },
+    "solver": {
+      "calls": 237,
+      "ms": 136761,
+      "in": 33,
+      "out": 19,
+      "rejects": 14,
+      "promptTokens": 51416,
+      "completionTokens": 2733
+    },
+    "form": {
+      "calls": 1,
+      "ms": 2684,
+      "in": 19,
+      "out": 10,
+      "rejects": 9,
+      "promptTokens": 301,
+      "completionTokens": 82
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 29,
+      "ms": 5635,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 307033,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19942,
+      "completionTokens": 8833
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a sequence?",
+      "ms": {
+        "draft": 5899,
+        "critique": 6344,
+        "solver": 1698,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the 20th term of the sequence defined by a = (n – 1)(2 – n)(3 + n)?",
+      "ms": {
+        "draft": 5899,
+        "critique": 6546,
+        "solver": 18613
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the nth term of a sequence is given by a = 2n + 5, what are the first three terms of the sequence?",
+      "ms": {
+        "draft": 5899,
+        "critique": 5843,
+        "solver": 19657
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The A.P. 8, 10, 12, ... has 60 terms. Find the sum of the last 10 terms.",
+      "ms": {
+        "draft": 5899,
+        "critique": 8236,
+        "solver": 15422
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the 10th term of the geometric progression 5, 25, 125,...?",
+      "ms": {
+        "draft": 4548,
+        "critique": 5973
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The sum of the first three terms of a G.P. is 12 and their product is -1. What is the common ratio of the G.P.?",
+      "ms": {
+        "draft": 4548,
+        "critique": 8362,
+        "solver": 1904
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the arithmetic mean (A) and geometric mean (G) of two positive real numbers?",
+      "ms": {
+        "draft": 4595,
+        "critique": 6871,
+        "solver": 1762
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a geometric progression (G.P.), the 8th term is 192 and the common ratio is 2. What is the 12th term?",
+      "ms": {
+        "draft": 4595,
+        "critique": 6833,
+        "solver": 1415
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person has 2 parents, 4 grandparents, 8 great grandparents, and so on. How many ancestors does the person have in the 10th generation?",
+      "ms": {
+        "draft": 4548,
+        "critique": 8958,
+        "solver": 1955
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the 5th, 8th, and 11th terms of a G.P. are p, q, and s, respectively, what is the relationship between q and p, s?",
+      "ms": {
+        "draft": 4595,
+        "critique": 6334,
+        "solver": 1362,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the pth, qth, and rth terms of a G.P. are a, b, and c, respectively, what is the value of a^(q - r) * b^(r - p) * c^(p - q)?",
+      "ms": {
+        "draft": 4595,
+        "critique": 5841,
+        "solver": 1743,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of a sequence in mathematics?",
+      "ms": {
+        "draft": 4062,
+        "critique": 7346,
+        "solver": 1426,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the sum of the first n terms of a geometric progression if the common ratio is not equal to 1?",
+      "ms": {
+        "draft": 4062,
+        "critique": 6801,
+        "solver": 1557,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the ratio of the arithmetic mean (A.M.) and geometric mean (G.M.) of two positive numbers a and b is m : n, what is the ratio of a to b?",
+      "ms": {
+        "draft": 4062,
+        "critique": 7121,
+        "solver": 1117,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the sum of the first n terms of a geometric progression when the common ratio is 1?",
+      "ms": {
+        "draft": 12086,
+        "critique": 7100,
+        "solver": 1893,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the 20th term of the series 2 × 4 + 4 × 6 + 6 × 8 + ...?",
+      "ms": {
+        "draft": 12086,
+        "critique": 8336,
+        "solver": 1992
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person writes a letter to four of his friends. He asks each one of them to copy the letter and mail to four different persons with instruction that they move the chain similarly. Assuming that the chain is not broken and that it costs 50 paise to mail one letter. What is the total amount spent on the postage when 8 sets of letters are mailed?",
+      "ms": {
+        "draft": 12086,
+        "critique": 6077,
+        "solver": 1195
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A manufacturer reckons that the value of a machine, which costs him Rs. 15625, will depreciate each year by 20%. What is the estimated value at the end of 5 years?",
+      "ms": {
+        "draft": 12086,
+        "critique": 6636,
+        "solver": 15174,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the ratio of the arithmetic mean (A.M.) and geometric mean (G.M.) of two positive numbers a and b is m:n, what is the ratio of a:b?",
+      "ms": {
+        "draft": 12086,
+        "critique": 7382,
+        "solver": 20059,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the sum of the first 10 terms of the geometric progression 3, 6, 12, 24, ...?",
+      "ms": {
+        "draft": 15711,
+        "critique": 8863,
+        "solver": 1393
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the sum of the first n terms of a geometric progression is 120 and the common ratio is 3, what is the value of the first term?",
+      "ms": {
+        "draft": 15711,
+        "critique": 8506
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the first term of a geometric progression is 3 and the common ratio is 2, how many terms are required to make the sum 315?",
+      "ms": {
+        "draft": 15711,
+        "critique": 14503
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the 5th, 8th, and 11th terms of a geometric progression are p, q, and s respectively, what is the relationship between p, q, and s?",
+      "ms": {
+        "draft": 15711,
+        "critique": 7141,
+        "solver": 16396
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which term of the geometric progression 2, 8, 32, ... is 131072?",
+      "ms": {
+        "draft": 17303,
+        "critique": 7116,
+        "solver": 1830
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the numbers in a sequence?",
+      "ms": {
+        "draft": 4718,
+        "critique": 6836
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the 10th term of the geometric progression 5, 25, 125, ...?",
+      "ms": {
+        "draft": 17303,
+        "critique": 6864,
+        "solver": 16124
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the sum of the first n terms of the geometric series 1 + 1/3 + 1/9 + ...?",
+      "ms": {
+        "draft": 17303,
+        "critique": 8586,
+        "solver": 9331
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a finite sequence?",
+      "ms": {
+        "draft": 12086,
+        "critique": 6596,
+        "solver": 1323,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general term of a geometric progression (G.P.)?",
+      "ms": {
+        "draft": 17303,
+        "critique": 6673,
+        "solver": 1385,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the middle number in an arithmetic progression when the number of terms is odd?",
+      "ms": {
+        "draft": 15711,
+        "critique": 9145,
+        "solver": 1806,
+        "form": 0,
+        "translation": 24367
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a finite sequence?",
+      "ms": {
+        "draft": 5899,
+        "critique": 5286,
+        "solver": 2007,
+        "form": 3331,
+        "translation": 46512
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a geometric progression?",
+      "ms": {
+        "draft": 4548,
+        "critique": 7463,
+        "solver": 11783,
+        "form": 0,
+        "translation": 28771
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the general term of a geometric progression (G.P.)?",
+      "ms": {
+        "draft": 4062,
+        "critique": 8414,
+        "solver": 9308,
+        "form": 0,
+        "translation": 27187
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the 3rd term of a G.P. is 24 and the 6th term is 192, what is the 10th term?",
+      "ms": {
+        "draft": 4548,
+        "critique": 6185,
+        "solver": 1339,
+        "form": 0,
+        "translation": 33679
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the 4th, 10th, and 16th terms of a G.P. are x, y, and z, respectively, which of the following is true?",
+      "ms": {
+        "draft": 4595,
+        "critique": 5541,
+        "solver": 1696,
+        "form": 0,
+        "translation": 47351
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the nth term of a sequence is defined by a = a + 2 for n ≥ 2, and a = 1, what are the first five terms of the sequence?",
+      "ms": {
+        "draft": 5899,
+        "critique": 6811,
+        "solver": 1816,
+        "form": 0,
+        "translation": 57415
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "The sum of the first n terms of a geometric series is 1023 and the common ratio is 1/2. What is the value of n?",
+      "ms": {
+        "draft": 4548,
+        "critique": 6713,
+        "solver": 1763,
+        "form": 0,
+        "translation": 38077
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the sum of the first 20 terms of the geometric progression 0.15, 0.015, 0.0015, ...?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a sequence?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks a sequence cannot be infinite but must have an end, w…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the 20th term of the sequence defined by a = (n – 1)(2 – n)(3 + n)?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the nth term of a sequence is given by a = 2n + 5, what are the first three terms of the sequence?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The A.P. 8, 10, 12, ... has 60 terms. Find the sum of the last 10 terms.",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the 10th term of the geometric progression 5, 25, 125,...?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The sum of the first three terms of a G.P. is 12 and their product is -1. What is the common ratio of the G.P.?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the relationship between the arithmetic mean (A) and geometric mean (G) of two positive real numbers?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In a geometric progression (G.P.), the 8th term is 192 and the common ratio is 2. What is the 12th term?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A person has 2 parents, 4 grandparents, 8 great grandparents, and so on. How many ancestors does the person have in the 10th generation?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the 5th, 8th, and 11th terms of a G.P. are p, q, and s, respectively, what is the relationship between q and p, s?",
+      "reason": "options 2 and 3 are the same (\"q = ps\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the pth, qth, and rth terms of a G.P. are a, b, and c, respectively, what is the value of a^(q - r) * b^(r - p) * c^(p - q)?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of a sequence in mathematics?",
+      "reason": "the key is far longer than every distractor (96 vs 46 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the sum of the first n terms of a geometric progression if the common ratio is not equal to 1?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); options 0 and 1 say the same thing (\"a(1 - r^n)/(1 - r)\" / \"a(r^n - 1)/(r - 1)\"); the key is far longer than every distractor (46 vs 18 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the ratio of the arithmetic mean (A.M.) and geometric mean (G.M.) of two positive numbers a and b is m : n, what is the ratio of a to b?",
+      "reason": "options 0 and 1 say the same thing (\"(m + √(m^2 - n^2)) : (m - √(m^2 - n^2))\" / \"(m + √(m^2 - n^2)) : (m + √(m^2 - n^2))\"); options 0 and 2 say the same thing (\"(m + √(m^2 - n^2)) : (m - √(m^2 - n^2))\" / \"(m - √(m^2 - n^2)) : (m + √(m^2 - n^2))\"); options 0 and 3 say the same thing (\"(m + √(m^2 - n^2)) : (m - √(m^2 - n^2))\" / \"(m - √(m^2 - n^2)) : (m - √(m^2 - n^2))\"); options 1 and 2 say the same thing (\"(m + √(m^2 - n^2)) : (m + √(m^2 - n^2))\" / \"(m - √(m^2 - n^2)) : (m + √(m^2 - n^2))\"); options 1 and 3 say the same thing (\"(m + √(m^2 - n^2)) : (m + √(m^2 - n^2))\" / \"(m - √(m^2 - n^2)) : (m - √(m^2 - n^2))\"); options 2 and 3 say the same thing (\"(m - √(m^2 - n^2)) : (m + √(m^2 - n^2))\" / \"(m - √(m^2 - n^2)) : (m - √(m^2 - n^2))\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the sum of the first n terms of a geometric progression when the common ratio is 1?",
+      "reason": "options 1 and 2 say the same thing (\"a(1 - r^n)/(1 - r)\" / \"a(r^n - 1)/(r - 1)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the 20th term of the series 2 × 4 + 4 × 6 + 6 × 8 + ...?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A person writes a letter to four of his friends. He asks each one of them to copy the letter and mail to four different persons with instruction that they move the chain similarly. Assuming that the chain is not broken and that it costs 50 paise to mail one letter. What is the total amount spent on the postage when 8 sets of letters are mailed?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A manufacturer reckons that the value of a machine, which costs him Rs. 15625, will depreciate each year by 20%. What is the estimated value at the end of 5 years?",
+      "reason": "checkExpr \"15625 * (0.8)**5\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the ratio of the arithmetic mean (A.M.) and geometric mean (G.M.) of two positive numbers a and b is m:n, what is the ratio of a:b?",
+      "reason": "options 0 and 3 say the same thing (\"(m + √(m² - n²)):(m - √(m² - n²))\" / \"(m - √(m² - n²)):(m + √(m² - n²))\"); options 1 and 2 are the same (\"(m + √(m² - n)):(m - √(m² - n))\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the sum of the first 10 terms of the geometric progression 3, 6, 12, 24, ...?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the sum of the first n terms of a geometric progression is 120 and the common ratio is 3, what is the value of the first term?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the first term of a geometric progression is 3 and the common ratio is 2, how many terms are required to make the sum 315?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If the 5th, 8th, and 11th terms of a geometric progression are p, q, and s respectively, what is the relationship between p, q, and s?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which term of the geometric progression 2, 8, 32, ... is 131072?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the numbers in a sequence?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the 10th term of the geometric progression 5, 25, 125, ...?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the sum of the first n terms of the geometric series 1 + 1/3 + 1/9 + ...?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a finite sequence?",
+      "reason": "near-duplicate of served question cmvhbe4uv07yzgpfhlcz4jim3 (cosine 0.900 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the general term of a geometric progression (G.P.)?",
+      "reason": "near-duplicate of batch item \"What is the general term of a geometric progressio…\" (cosine 1.000 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

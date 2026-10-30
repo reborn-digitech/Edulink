@@ -1,0 +1,812 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T23:06:44.854Z",
+  "finishedAt": "2026-10-25T23:13:42.724Z",
+  "seconds": 418,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Physics Part-II",
+    "bookCode": "keph2",
+    "document": "ncert/11/physics/keph201.pdf",
+    "classLevel": 11,
+    "subject": "Physics",
+    "chapter": "Chapter 1 — Mechanical Properties of Solids",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEP 2016 — question paper]\n64. A metallic wire of length l is held between two supports under some tension. The wire is cooled\nthrough θ . Let Y be the Young’s modulus, ρ the density and α the thermal coefficient of linear o\nexpansion of the material of the wire. Therefore, the frequency of oscillations of the wire varies as\n(a) (b) (c) (d)",
+      "[CBSE Class XII Physics, sample question paper, 2022-23]\n3. The temperature (T) dependence of resistivity of materials A and 1\nmaterial B is represented by fig (i) and fig (ii) respectively.\nIdentify material A and material B.\n(i) material A is copper and material B is germanium\n(ii) material A is germanium and material B is copper\n(iii) material A is nichrome and material B is germanium\n(iv) material A is copper and material B is nichrome",
+      "[CBSE Class XII Physics, sample question paper, 2022-23]\n6. If the magnetizing field on a ferromagnetic material is increased, 1\nits permeability\n(i) decreases\n(ii) increases\n(iii) remains unchanged\n(iv) first decreases and then increases",
+      "[CBSE Class XII Physics, sample question paper, 2023-24]\n6. The relative magnetic permeability of a substance X is slightly less than unity and\nthat of substance Y is slightly more than unity, then\n(a) X is paramagnetic and Y is ferromagnetic\n(b) X is diamagnetic and Y is ferromagnetic\n(c) X and Y both are paramagnetic\n(d) X is diamagnetic and Y is paramagnetic"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 188252,
+      "in": 42,
+      "out": 38,
+      "rejects": 4,
+      "promptTokens": 47325,
+      "completionTokens": 10549
+    },
+    "critique": {
+      "calls": 46,
+      "ms": 290883,
+      "in": 38,
+      "out": 35,
+      "rejects": 3,
+      "promptTokens": 20821,
+      "completionTokens": 7830
+    },
+    "solver": {
+      "calls": 224,
+      "ms": 108730,
+      "in": 35,
+      "out": 27,
+      "rejects": 8,
+      "promptTokens": 40864,
+      "completionTokens": 2180
+    },
+    "form": {
+      "calls": 7,
+      "ms": 51022,
+      "in": 27,
+      "out": 14,
+      "rejects": 13,
+      "promptTokens": 5442,
+      "completionTokens": 1362
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 31,
+      "ms": 6005,
+      "in": 14,
+      "out": 1,
+      "rejects": 13,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 20958,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2415,
+      "completionTokens": 1403
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the term used for the property of a body that allows it to regain its original shape and size after an external force is removed?",
+      "ms": {
+        "draft": 3303,
+        "critique": 5301
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A substance X has a relative magnetic permeability slightly less than unity, and a substance Y has a relative magnetic permeability slightly more than unity. What can be inferred about X and Y?",
+      "ms": {
+        "draft": 3303,
+        "critique": 7567,
+        "solver": 17892,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the Young’s modulus of a material is higher, what does it indicate about the material?",
+      "ms": {
+        "draft": 14849,
+        "critique": 7662,
+        "solver": 1430
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the stress-strain curve shown in the passage, which material is likely to have a large elastic region but no well-defined plastic region?",
+      "ms": {
+        "draft": 14849,
+        "critique": 6558,
+        "solver": 1743
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A wire of length 2 m is stretched by 0.5 cm under a certain tension. If the wire is cooled by 10°C, and the Young’s modulus of the wire is 2 × 10^11 Pa, what is the change in length due to thermal contraction? (Given: α = 1 × 10^-5 /°C)",
+      "ms": {
+        "draft": 14849,
+        "critique": 6399,
+        "solver": 1523
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the stress-strain curve represents the region where Hooke’s law is obeyed?",
+      "ms": {
+        "draft": 14849,
+        "critique": 7163,
+        "solver": 1891,
+        "form": 2742
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A copper wire and a steel wire are connected end to end and stretched by a load. The elongation of the copper wire is 5.0 mm and the elongation of the steel wire is 2.0 mm. The length of the copper wire is 2.2 m and the length of the steel wire is 1.6 m. What is the ratio of the Young's modulus of steel to that of copper?",
+      "ms": {
+        "draft": 5438,
+        "critique": 6437,
+        "solver": 1483
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A human pyramid in a circus is supported by the legs of a performer lying on his back. The total mass of the performers and equipment is 280 kg, and the performer's mass is 60 kg. Each thighbone of the performer has a length of 0.5 m and an effective radius of 2.0 cm. What is the compression of each thighbone under the extra load?",
+      "ms": {
+        "draft": 5438,
+        "critique": 8978,
+        "solver": 1980
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a material has a stress-strain curve with a very small elastic region and a large plastic region, what can be said about its ductility?",
+      "ms": {
+        "draft": 14849,
+        "critique": 5880,
+        "solver": 1908,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A square lead slab of side 50 cm and thickness 10 cm is subject to a shearing force of 9.0 × 10⁴ N on its narrow face. The lower edge is riveted to the floor. What is the displacement of the upper edge?",
+      "ms": {
+        "draft": 5438,
+        "critique": 7124,
+        "solver": 1381
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The temperature (T) dependence of resistivity of materials A and B is represented by fig (i) and fig (ii) respectively. Identify material A and material B.",
+      "ms": {
+        "draft": 5438,
+        "critique": 6746,
+        "solver": 1913,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct formula for Young's modulus?",
+      "ms": {
+        "draft": 3185,
+        "critique": 5449,
+        "solver": 1231,
+        "form": 3676
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which material has a higher Young's modulus based on the stress-strain graphs shown in the passage?",
+      "ms": {
+        "draft": 6346,
+        "critique": 6858,
+        "solver": 1640,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the elastic potential energy per unit volume of a wire?",
+      "ms": {
+        "draft": 3185,
+        "critique": 7398,
+        "solver": 15729,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements correctly describes the relationship between the stress-strain graphs of materials A and B as shown in the passage?",
+      "ms": {
+        "draft": 3332,
+        "critique": 4952,
+        "solver": 1276,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which material is considered stronger between A and B?",
+      "ms": {
+        "draft": 3332,
+        "critique": 5759,
+        "solver": 1980
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what does the Young’s modulus of a material indicate?",
+      "ms": {
+        "draft": 3332,
+        "critique": 6735,
+        "solver": 1485,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The temperature dependence of resistivity for two materials is shown in the passage. Which of the following correctly identifies the materials if material A has a resistivity that decreases with temperature and material B has a resistivity that increases with temperature?",
+      "ms": {
+        "draft": 3332,
+        "critique": 6995,
+        "solver": 1584,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a wire is stretched under a load, what is the stress experienced by the wire?",
+      "ms": {
+        "draft": 3155,
+        "critique": 8933
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a type of stress?",
+      "ms": {
+        "draft": 3155,
+        "critique": 6164,
+        "solver": 13331
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main reason a mountain cannot be taller than about 10 km?",
+      "ms": {
+        "draft": 3155,
+        "critique": 6194
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A steel wire and a copper wire are subjected to the same load. The steel wire has a smaller cross-sectional area but a longer length. What can be said about the Young’s modulus of the two wires?",
+      "ms": {
+        "draft": 3155,
+        "critique": 6646,
+        "solver": 1408,
+        "form": 4022
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A copper wire and a steel wire are connected end to end and stretched by a load. The elongation of the copper wire is 5.0 mm and the elongation of the steel wire is 2.0 mm. The Young's modulus of copper is 1.1 × 10¹¹ N/m² and the Young's modulus of steel is 2.0 × 10¹¹ N/m². What is the ratio of the length of the copper wire to the length of the steel wire?",
+      "ms": {
+        "draft": 10261,
+        "critique": 7594,
+        "solver": 1522,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A material's stress-strain curve shows a linear region between O and A, followed by a non-linear region. What does this indicate about the material's behavior?",
+      "ms": {
+        "draft": 8658,
+        "critique": 4490,
+        "solver": 719,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A cylindrical body is stretched by two equal and opposite forces applied normal to its cross-sectional area. What type of stress is this?",
+      "ms": {
+        "draft": 3303,
+        "critique": 4680,
+        "solver": 1136,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A solid sphere is placed in a fluid under high pressure and is compressed uniformly on all sides. What is the term for the type of stress experienced by the sphere?",
+      "ms": {
+        "draft": 3303,
+        "critique": 5158,
+        "solver": 1745,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A metallic wire of length L is held between two supports under some tension. The wire is cooled through a temperature θ. What is the effect on the frequency of oscillations of the wire?",
+      "ms": {
+        "draft": 3303,
+        "critique": 7576,
+        "solver": 1408,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What type of strain is produced when a body is subjected to a tangential force that causes a relative displacement between opposite faces?",
+      "ms": {
+        "draft": 3303,
+        "critique": 6667,
+        "solver": 2616,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the law that states that stress and strain are proportional for small deformations?",
+      "ms": {
+        "draft": 14849,
+        "critique": 8655,
+        "solver": 1144,
+        "form": 2991
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A metallic wire of length l is held between two supports under some tension. The wire is cooled through θ. Let Y be the Young’s modulus, ρ the density, and α the thermal coefficient of linear expansion of the material of the wire. What is the frequency of oscillations of the wire?",
+      "ms": {
+        "draft": 5438,
+        "critique": 6655,
+        "solver": 11141,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of Young's modulus?",
+      "ms": {
+        "draft": 3185,
+        "critique": 6206,
+        "solver": 10977,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two wires of the same diameter are made of different materials. One is steel and the other is brass. If the same load is applied to both wires, which wire will experience more elongation?",
+      "ms": {
+        "draft": 6346,
+        "critique": 5612,
+        "solver": 822,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the restoring force per unit area called?",
+      "ms": {
+        "draft": 3008,
+        "critique": 7889,
+        "solver": 9736,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A wire of length 1.5 m is made of steel and is under tension. If the wire is cooled by a temperature θ, how will the frequency of oscillations of the wire change?",
+      "ms": {
+        "draft": 3332,
+        "critique": 5866,
+        "solver": 1807,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the Young’s modulus of a material is higher, what can be inferred about its ability to resist deformation under stress?",
+      "ms": {
+        "draft": 3332,
+        "critique": 5265,
+        "solver": 11159,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the restoring force per unit area in a material?",
+      "ms": {
+        "draft": 3155,
+        "critique": 6905,
+        "solver": 12626,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A wire is stretched under a force, and its elongation is calculated using the formula F = YA × (l/L). What does Y represent in this formula?",
+      "ms": {
+        "draft": 4306,
+        "critique": 6203,
+        "solver": 1845,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason solids are less compressible than gases?",
+      "ms": {
+        "draft": 3185,
+        "critique": 6526,
+        "solver": 1493,
+        "form": 2663,
+        "translation": 16781
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A copper wire of length 2.2 m and a steel wire of length 1.6 m, both of diameter 3.0 mm, are connected end to end. The total elongation is 0.70 mm. What is the load applied to the wires?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the fractional change in dimension called?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is not a type of stress?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used for the property of a body that allows it to regain its original shape and size after an external force is removed?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A substance X has a relative magnetic permeability slightly less than unity, and a substance Y has a relative magnetic permeability slightly more than unity. What can be inferred about X and Y?",
+      "reason": "options 0 and 3 say the same thing (\"0: X is paramagnetic and Y is diamagnetic\" / \"X is diamagnetic and Y is paramagnetic\"); options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the Young’s modulus of a material is higher, what does it indicate about the material?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the stress-strain curve shown in the passage, which material is likely to have a large elastic region but no well-defined plastic region?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A wire of length 2 m is stretched by 0.5 cm under a certain tension. If the wire is cooled by 10°C, and the Young’s modulus of the wire is 2 × 10^11 Pa, what is the change in length due to thermal contraction? (Given: α = 1 × 10^-5 /°C)",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which part of the stress-strain curve represents the region where Hooke’s law is obeyed?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels OA, AB, BD, DE"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A copper wire and a steel wire are connected end to end and stretched by a load. The elongation of the copper wire is 5.0 mm and the elongation of the steel wire is 2.0 mm. The length of the copper wire is 2.2 m and the length of the steel wire is 1.6 m. What is the ratio of the Young's modulus of steel to that of copper?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A human pyramid in a circus is supported by the legs of a performer lying on his back. The total mass of the performers and equipment is 280 kg, and the performer's mass is 60 kg. Each thighbone of the performer has a length of 0.5 m and an effective radius of 2.0 cm. What is the compression of each thighbone under the extra load?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a material has a stress-strain curve with a very small elastic region and a large plastic region, what can be said about its ductility?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels OA, AB, BD, DE"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A square lead slab of side 50 cm and thickness 10 cm is subject to a shearing force of 9.0 × 10⁴ N on its narrow face. The lower edge is riveted to the floor. What is the displacement of the upper edge?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The temperature (T) dependence of resistivity of materials A and B is represented by fig (i) and fig (ii) respectively. Identify material A and material B.",
+      "reason": "options 0 and 1 say the same thing (\"A is copper and B is germanium\" / \"A is germanium and B is copper\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the correct formula for Young's modulus?",
+      "reason": "options 0 and 1 are the same (\"Y = (F×L)/(A×∆L)\"); options 0 and 2 are the same (\"Y = (F×L)/(A×∆L)\"); options 1 and 2 are the same (\"Y = (F×L)/(A×l)\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which material has a higher Young's modulus based on the stress-strain graphs shown in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the elastic potential energy per unit volume of a wire?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 are the same (\"σ × ε × area\")"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following materials is the least compressible?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following statements correctly describes the relationship between the stress-strain graphs of materials A and B as shown in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Material A has a higher Young’s modulus than material B\" / \"Material B has a higher Young’s modulus than material A\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which material is considered stronger between A and B?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what does the Young’s modulus of a material indicate?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The temperature dependence of resistivity for two materials is shown in the passage. Which of the following correctly identifies the materials if material A has a resistivity that decreases with temperature and material B has a resistivity that increases with temperature?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Material A is copper, material B is germanium\" / \"Material A is germanium, material B is copper\"); options 2 and 3 say the same thing (\"Material A is nichrome, material B is copper\" / \"Material A is copper, material B is nichrome\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a wire is stretched under a load, what is the stress experienced by the wire?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is not a type of stress?",
+      "reason": "after redrafting distractors 0, 1, 3: the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what is the main reason a mountain cannot be taller than about 10 km?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A steel wire and a copper wire are subjected to the same load. The steel wire has a smaller cross-sectional area but a longer length. What can be said about the Young’s modulus of the two wires?",
+      "reason": "options 0 and 1 say the same thing (\"The Young’s modulus of steel is greater than that of copper\" / \"The Young’s modulus of copper is greater than that of steel\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A copper wire and a steel wire are connected end to end and stretched by a load. The elongation of the copper wire is 5.0 mm and the elongation of the steel wire is 2.0 mm. The Young's modulus of copper is 1.1 × 10¹¹ N/m² and the Young's modulus of steel is 2.0 × 10¹¹ N/m². What is the ratio of the length of the copper wire to the length of the steel wire?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the formula for elongation and uses only the e…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A material's stress-strain curve shows a linear region between O and A, followed by a non-linear region. What does this indicate about the material's behavior?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed for distractors…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A cylindrical body is stretched by two equal and opposite forces applied normal to its cross-sectional area. What type of stress is this?",
+      "reason": "near-duplicate of served question cmvhdlmv408azgpfhuzqs4603 (cosine 0.951 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A solid sphere is placed in a fluid under high pressure and is compressed uniformly on all sides. What is the term for the type of stress experienced by the sphere?",
+      "reason": "near-duplicate of served question cmvhdlmva08bngpfh9w9n99aw (cosine 0.930 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A metallic wire of length L is held between two supports under some tension. The wire is cooled through a temperature θ. What is the effect on the frequency of oscillations of the wire?",
+      "reason": "near-duplicate of served question cmvhdlmve08c5gpfhl48yv5wx (cosine 0.989 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What type of strain is produced when a body is subjected to a tangential force that causes a relative displacement between opposite faces?",
+      "reason": "near-duplicate of served question cmvhdlmv608b5gpfhr373a4b1 (cosine 0.928 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the law that states that stress and strain are proportional for small deformations?",
+      "reason": "near-duplicate of served question cmvhdlmuw08a5gpfhci1jnl2f (cosine 0.965 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A metallic wire of length l is held between two supports under some tension. The wire is cooled through θ. Let Y be the Young’s modulus, ρ the density, and α the thermal coefficient of linear expansion of the material of the wire. What is the frequency of oscillations of the wire?",
+      "reason": "near-duplicate of served question cmvkh6p4g0kk3gpfhymhhn1qs (cosine 0.991 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the SI unit of Young's modulus?",
+      "reason": "near-duplicate of served question cmvhdlmuy08abgpfhnqk10r70 (cosine 0.924 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Two wires of the same diameter are made of different materials. One is steel and the other is brass. If the same load is applied to both wires, which wire will experience more elongation?",
+      "reason": "near-duplicate of served question cmvhdlmvf08cbgpfh8u2um41f (cosine 0.991 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the restoring force per unit area called?",
+      "reason": "near-duplicate of served question cmvhdlmuq089zgpfhiyem1l4p (cosine 0.923 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A wire of length 1.5 m is made of steel and is under tension. If the wire is cooled by a temperature θ, how will the frequency of oscillations of the wire change?",
+      "reason": "near-duplicate of served question cmvhdlmve08c5gpfhl48yv5wx (cosine 0.926 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the Young’s modulus of a material is higher, what can be inferred about its ability to resist deformation under stress?",
+      "reason": "near-duplicate of served question cmvhdlmv808bhgpfhidedvin7 (cosine 0.966 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term used for the restoring force per unit area in a material?",
+      "reason": "near-duplicate of served question cmvkh6p460kjngpfhf4gywbcp (cosine 0.940 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A wire is stretched under a force, and its elongation is calculated using the formula F = YA × (l/L). What does Y represent in this formula?",
+      "reason": "near-duplicate of served question cmvkh6p4e0kjxgpfhmle7w1xs (cosine 0.957 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,920 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T18:12:45.961Z",
+  "finishedAt": "2026-10-23T18:25:20.660Z",
+  "seconds": 755,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Political Theory",
+    "bookCode": "keps1",
+    "document": "ncert/11/political-science/keps104.pdf",
+    "classLevel": 11,
+    "subject": "Political Science",
+    "chapter": "Chapter 4 — Social Justice",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, marking scheme, 2025-26]\n5. D) 1990s",
+      "[CBSE Class XII Political Science, marking scheme, 2025-26]\n11. C) Ghulam Mohammed Sadiq",
+      "[CBSE Class XII Political Science, sample question paper, 2023-24]\n22. ‘The culture of the politically & economically dominant society leaves 4\nits imprint on a less powerful society.’ Analyse the statement. (CB)\nOR\nAnalyse the economic effects of globalization on developing nations.",
+      "[CBSE Class XII Political Science, sample question paper, 2025-26]\n18. Explain the meaning of global poverty. 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 255882,
+      "in": 46,
+      "out": 45,
+      "rejects": 2,
+      "promptTokens": 33814,
+      "completionTokens": 10624
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 444528,
+      "in": 45,
+      "out": 40,
+      "rejects": 5,
+      "promptTokens": 23377,
+      "completionTokens": 8980
+    },
+    "solver": {
+      "calls": 251,
+      "ms": 159536,
+      "in": 40,
+      "out": 35,
+      "rejects": 5,
+      "promptTokens": 40045,
+      "completionTokens": 2351
+    },
+    "form": {
+      "calls": 7,
+      "ms": 26395,
+      "in": 35,
+      "out": 2,
+      "rejects": 33,
+      "promptTokens": 1799,
+      "completionTokens": 536
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 983,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 114275,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5640,
+      "completionTokens": 3241
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of a just ruler or government?",
+      "ms": {
+        "draft": 5833,
+        "critique": 6092,
+        "solver": 1680,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a government follows the principle of treating equals equally, what would it do?",
+      "ms": {
+        "draft": 5833,
+        "critique": 6573,
+        "solver": 2577,
+        "form": 4761
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the role of justice in society?",
+      "ms": {
+        "draft": 5833,
+        "critique": 11092,
+        "solver": 2433,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a principle of justice discussed in the passage?",
+      "ms": {
+        "draft": 5833,
+        "critique": 7128,
+        "solver": 16401,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a society follows the principle of justice as described in the passage, what would it prioritize?",
+      "ms": {
+        "draft": 5833,
+        "critique": 8662,
+        "solver": 2159,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the importance of justice in political life?",
+      "ms": {
+        "draft": 5833,
+        "critique": 8072,
+        "solver": 2366,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 4831,
+        "critique": 9626,
+        "solver": 2387
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why does the passage mention the statue of justice being blindfolded?",
+      "ms": {
+        "draft": 4831,
+        "critique": 8903,
+        "solver": 2905,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the 'veil of ignorance' suggest about how people would make decisions about a just society?",
+      "ms": {
+        "draft": 4831,
+        "critique": 10501,
+        "solver": 2685,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say is necessary to achieve social justice?",
+      "ms": {
+        "draft": 4831,
+        "critique": 9342,
+        "solver": 2352,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what does the 'veil of ignorance' encourage people to do?",
+      "ms": {
+        "draft": 5429,
+        "critique": 8279
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, why might proposals to reserve seats in educational institutions provoke anger and violence?",
+      "ms": {
+        "draft": 4831,
+        "critique": 11005,
+        "solver": 17076,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a society has a large number of poor people, what does the passage suggest about the government's responsibility?",
+      "ms": {
+        "draft": 5429,
+        "critique": 8365
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage imply about the role of the market in ensuring social justice?",
+      "ms": {
+        "draft": 5429,
+        "critique": 7538
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a society where the rich and poor live in 'different worlds,' what does the passage suggest about social justice?",
+      "ms": {
+        "draft": 5429,
+        "critique": 8475
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the role of morality in Rawls' theory of justice?",
+      "ms": {
+        "draft": 5429,
+        "critique": 7952
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best explains why the state might need to intervene in a free market economy?",
+      "ms": {
+        "draft": 5558,
+        "critique": 9562,
+        "solver": 2069,
+        "form": 4544
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the main reason for advocating a fair system of laws and policies?",
+      "ms": {
+        "draft": 5429,
+        "critique": 8626,
+        "solver": 15251,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following arguments is most aligned with the idea of ensuring equality of opportunity in a free market?",
+      "ms": {
+        "draft": 5558,
+        "critique": 11688,
+        "solver": 1964,
+        "form": 4160
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How does the passage suggest that a free market can be both fair and unjust?",
+      "ms": {
+        "draft": 5558,
+        "critique": 7128,
+        "solver": 1015
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of how the free market may fail to provide equal opportunities?",
+      "ms": {
+        "draft": 5558,
+        "critique": 6714,
+        "solver": 11319,
+        "form": 1336
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following best explains why the state should provide a basic minimum standard of living to all?",
+      "ms": {
+        "draft": 6175,
+        "critique": 6535,
+        "solver": 1922,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a government decides to provide free education to all citizens, which principle of justice from the passage would this action best support?",
+      "ms": {
+        "draft": 6175,
+        "critique": 7200,
+        "solver": 2207,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following arguments best supports the idea that the state should ensure a minimum standard of living for all?",
+      "ms": {
+        "draft": 6175,
+        "critique": 7801,
+        "solver": 2411,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, which of the following is a basic minimum requirement for a healthy and productive life?",
+      "ms": {
+        "draft": 6175,
+        "critique": 8384,
+        "solver": 2121,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage argues that a free market may work in the interest of the privileged. Based on this, which of the following would be a logical conclusion?",
+      "ms": {
+        "draft": 6175,
+        "critique": 10252,
+        "solver": 2035,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a government wants to improve the quality of education in rural areas, which of the following approaches would be most in line with the ideas in the passage?",
+      "ms": {
+        "draft": 6175,
+        "critique": 11434,
+        "solver": 3363,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is the main idea behind the 'veil of ignorance' concept?",
+      "ms": {
+        "draft": 5504,
+        "critique": 11105,
+        "solver": 2159,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes a just society according to the passage?",
+      "ms": {
+        "draft": 5504,
+        "critique": 11122,
+        "solver": 2020,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a society has a large number of poor people, what challenge does the passage suggest the government may face?",
+      "ms": {
+        "draft": 5504,
+        "critique": 9917,
+        "solver": 3321,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the main difference between a just society and a society with deep divisions between the rich and the poor?",
+      "ms": {
+        "draft": 5504,
+        "critique": 9270,
+        "solver": 1669,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the role of morality in achieving fairness and justice?",
+      "ms": {
+        "draft": 5504,
+        "critique": 8711,
+        "solver": 2884
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of social justice according to the passage?",
+      "ms": {
+        "draft": 19624,
+        "critique": 10192,
+        "solver": 1787,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what does the 'veil of ignorance' refer to?",
+      "ms": {
+        "draft": 19624,
+        "critique": 9482,
+        "solver": 2501,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is the purpose of the 'veil of ignorance' in creating a system of fair laws and policies?",
+      "ms": {
+        "draft": 5504,
+        "critique": 8640,
+        "solver": 16642,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage argue that the 'veil of ignorance' is necessary for a just society?",
+      "ms": {
+        "draft": 19624,
+        "critique": 9607,
+        "solver": 1774,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the impact of social inequalities on society?",
+      "ms": {
+        "draft": 19624,
+        "critique": 9007,
+        "solver": 17182,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a society is organized without the 'veil of ignorance', what is most likely to happen?",
+      "ms": {
+        "draft": 19624,
+        "critique": 8447,
+        "solver": 18209
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage states that the Constitution allows for reservations for Scheduled Castes and Tribes. Which principle of justice does this relate to?",
+      "ms": {
+        "draft": 5669,
+        "critique": 8659,
+        "solver": 1648,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which principle of justice would be used to justify giving grace marks to weaker students?",
+      "ms": {
+        "draft": 5669,
+        "critique": 10910,
+        "solver": 2830
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a society only followed the principle of equal treatment, what could be a potential consequence?",
+      "ms": {
+        "draft": 5669,
+        "critique": 9099,
+        "solver": 2364,
+        "form": 3782
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important for a government to harmonize different principles of justice?",
+      "ms": {
+        "draft": 5669,
+        "critique": 8966,
+        "solver": 1842,
+        "form": 4580
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say about the understanding of justice?",
+      "ms": {
+        "draft": 7383,
+        "critique": 8457,
+        "solver": 9295,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which principle of justice suggests that people should be treated differently based on their special needs?",
+      "ms": {
+        "draft": 5669,
+        "critique": 8664,
+        "solver": 2022,
+        "form": 5930,
+        "translation": 57704
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How does John Rawls suggest we should decide on the rules of a just society?",
+      "ms": {
+        "draft": 4831,
+        "critique": 7758,
+        "solver": 1500,
+        "form": 0,
+        "translation": 51181
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"According to the passage, what is the principle of justice th"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "According to the passage, which of the following is a responsibility of the government in a free market economy?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of a just ruler or government?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"contradicts the passage's focus on fairness…\"); distractor 3's reason is not a one-line misconception (\"fails to understand the passage's emphasis on people's well-…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a government follows the principle of treating equals equally, what would it do?",
+      "reason": "the key is far longer than every distractor (78 vs 37 characters); distractor 2's reason is not a one-line misconception (\"contradicts the passage's emphasis on fairness and equal tre…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the role of justice in society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (66 vs 41 characters); distractor 2's reason is not a one-line misconception (\"fails to understand the passage's emphasis on fairness and e…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a principle of justice discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"contradicts the passage's emphasis on fairness…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a society follows the principle of justice as described in the passage, what would it prioritize?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"contradicts the passage's emphasis on fairness and equality…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the importance of justice in political life?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"contradicts the passage's emphasis on justice being central…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why does the passage mention the statue of justice being blindfolded?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This is a common misconception but not the reason given in t…\"); distractor 2's reason is not a one-line misconception (\"This suggests justice is not concerned with people's needs, …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the 'veil of ignorance' suggest about how people would make decisions about a just society?",
+      "reason": "options 0 and 2 say the same thing (\"They would choose a society that benefits only the privileged\" / \"They would choose a society that benefits only the disadvantaged\"); distractor 2's reason is not a one-line misconception (\"This is not what the passage states about the 'veil of ignor…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage say is necessary to achieve social justice?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This is a part of the passage but not the full idea.…\"); distractor 1's reason is not a one-line misconception (\"This is mentioned but not the main focus of the passage.…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what does the 'veil of ignorance' encourage people to do?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, why might proposals to reserve seats in educational institutions provoke anger and violence?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"This is not the reason given in the passage.…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a society has a large number of poor people, what does the passage suggest about the government's responsibility?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage imply about the role of the market in ensuring social justice?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a society where the rich and poor live in 'different worlds,' what does the passage suggest about social justice?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage say about the role of morality in Rawls' theory of justice?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best explains why the state might need to intervene in a free market economy?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"misunderstands the passage's argument about private enterpri…\"); distractor 3's reason is not a one-line misconception (\"introduces an irrelevant moral judgment not discussed in the…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the main reason for advocating a fair system of laws and policies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (81 vs 46 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following arguments is most aligned with the idea of ensuring equality of opportunity in a free market?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"focuses on charity, which the passage does not support…\"); distractor 2's reason is not a one-line misconception (\"introduces a moral judgment not discussed in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "How does the passage suggest that a free market can be both fair and unjust?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of how the free market may fail to provide equal opportunities?",
+      "reason": "options 0 and 3 are the same (\"Private schools in urban areas offer high-quality education.\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following best explains why the state should provide a basic minimum standard of living to all?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"misinterprets the passage's focus on equality…\"); distractor 3's reason is not a one-line misconception (\"misunderstands the passage's stance on privilege and opportu…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a government decides to provide free education to all citizens, which principle of justice from the passage would this action best support?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following arguments best supports the idea that the state should ensure a minimum standard of living for all?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"misinterprets the passage as supporting charity…\"); distractor 3's reason is not a one-line misconception (\"misrepresents the passage's view on private profit…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, which of the following is a basic minimum requirement for a healthy and productive life?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"misinterprets the passage's focus on accessibility…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage argues that a free market may work in the interest of the privileged. Based on this, which of the following would be a logical conclusion?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"overstates the passage's position on government control…\"); distractor 1's reason is not a one-line misconception (\"misinterprets the passage's stance on market existence…\"); distractor 3's reason is not a one-line misconception (\"misunderstands the passage's view on market involvement…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a government wants to improve the quality of education in rural areas, which of the following approaches would be most in line with the ideas in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"misinterprets the passage's stance on quality…\"); distractor 3's reason is not a one-line misconception (\"misunderstands the passage's view on market control…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what is the main idea behind the 'veil of ignorance' concept?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes a just society according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This option suggests absolute equality, which the passage ex…\"); distractor 1's reason is not a one-line misconception (\"This option overstates the role of the government, as the pa…\"); distractor 3's reason is not a one-line misconception (\"This option focuses only on the rich and powerful, which is …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a society has a large number of poor people, what challenge does the passage suggest the government may face?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This option focuses on absolute equality, which the passage …\"); distractor 2's reason is not a one-line misconception (\"This option is a general statement about resource distributi…\"); distractor 3's reason is not a one-line misconception (\"This option focuses on maintaining a free market, which is n…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the main difference between a just society and a society with deep divisions between the rich and the poor?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This option suggests complete equality, which the passage ex…\"); distractor 1's reason is not a one-line misconception (\"This option focuses on the ability to improve through hard w…\"); distractor 2's reason is not a one-line misconception (\"This option incorrectly suggests that a just society focuses…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage say about the role of morality in achieving fairness and justice?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of social justice according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"repeats a part of the passage but misses the key point about…\"); distractor 3's reason is not a one-line misconception (\"mentions an example from the passage but not the overall pur…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what does the 'veil of ignorance' refer to?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"contradicts the concept described in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what is the purpose of the 'veil of ignorance' in creating a system of fair laws and policies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"This option suggests absolute equality, which the passage sa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage argue that the 'veil of ignorance' is necessary for a just society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"contradicts the passage which states that people act in thei…\"); distractor 1's reason is not a one-line misconception (\"is not the reason given in the passage for the 'veil of igno…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the impact of social inequalities on society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"is a positive outcome, which the passage does not suggest…\"); distractor 3's reason is not a one-line misconception (\"is the opposite of what the passage states…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a society is organized without the 'veil of ignorance', what is most likely to happen?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage states that the Constitution allows for reservations for Scheduled Castes and Tribes. Which principle of justice does this relate to?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, which principle of justice would be used to justify giving grace marks to weaker students?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a society only followed the principle of equal treatment, what could be a potential consequence?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"misinterprets the passage's discussion of merit and proporti…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is it important for a government to harmonize different principles of justice?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"focuses solely on rewarding merit, which is not the main poi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage say about the understanding of justice?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

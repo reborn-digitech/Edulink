@@ -1,0 +1,785 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T22:06:37.171Z",
+  "finishedAt": "2026-10-29T22:17:45.761Z",
+  "seconds": 669,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu102.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 2 — The Invisible Living World: Beyond Our Naked Eye",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2026-27]\n2. C. R 1\nFor visually impaired students\nB. The leaf kept in darkness will show the presence of starch",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n1. C. Cuscuta, ticks, lice, leeches and tapeworm; as all of these are parasites. 1",
+      "[INJSO 2017 — question paper]\n13. A group of biology students on excursion to Goa beaches collected the following animal samples.\nWhile they were putting the animals in the jar with sea water, they noticed that one of the animal’s\n1/3 body part was missing. The injured animal (with only 2/3 of its body) was brought to the lab and rd rd\nwas allowed to grow in the laboratory in appropriate condition. To their surprise the lost body part of\nthe animal had regenerated. Which of the above animal would have been collected?\na) Planaria b) Hermit crab c) Sepia d) Sea anemone",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 217311,
+      "in": 41,
+      "out": 40,
+      "rejects": 1,
+      "promptTokens": 41388,
+      "completionTokens": 10841
+    },
+    "critique": {
+      "calls": 45,
+      "ms": 338004,
+      "in": 40,
+      "out": 29,
+      "rejects": 11,
+      "promptTokens": 21263,
+      "completionTokens": 7747
+    },
+    "solver": {
+      "calls": 177,
+      "ms": 96805,
+      "in": 29,
+      "out": 27,
+      "rejects": 2,
+      "promptTokens": 26956,
+      "completionTokens": 1646
+    },
+    "form": {
+      "calls": 22,
+      "ms": 82066,
+      "in": 27,
+      "out": 9,
+      "rejects": 18,
+      "promptTokens": 8949,
+      "completionTokens": 1827
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 105,
+      "ms": 17388,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 372696,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19630,
+      "completionTokens": 10292
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the diagram in the passage, which part of the onion peel is placed on the glass slide?",
+      "ms": {
+        "draft": 13308,
+        "critique": 7064,
+        "solver": 1397,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why did Robert Hooke call the small spaces in cork 'cells'?",
+      "ms": {
+        "draft": 13308,
+        "critique": 7306,
+        "solver": 2519
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the function of the nucleus?",
+      "ms": {
+        "draft": 5903,
+        "critique": 9106,
+        "solver": 1734,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a difference between plant and animal cells?",
+      "ms": {
+        "draft": 5903,
+        "critique": 7950,
+        "solver": 15117,
+        "form": 5016
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do different cells have different shapes and structures?",
+      "ms": {
+        "draft": 5903,
+        "critique": 6667,
+        "solver": 1725,
+        "form": 3499
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a multicellular organism?",
+      "ms": {
+        "draft": 5903,
+        "critique": 8606,
+        "solver": 13989,
+        "form": 4858
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a function of the cytoplasm?",
+      "ms": {
+        "draft": 5903,
+        "critique": 7312,
+        "solver": 1827,
+        "form": 4141
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of microorganisms?",
+      "ms": {
+        "draft": 8399,
+        "critique": 7791,
+        "solver": 2154,
+        "form": 2921
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a microorganism?",
+      "ms": {
+        "draft": 8399,
+        "critique": 7581,
+        "solver": 1407,
+        "form": 3598
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is observing a sample under a microscope and sees a single cell with a green pigment, what type of microorganism is it most likely to be?",
+      "ms": {
+        "draft": 8399,
+        "critique": 7299,
+        "solver": 2810,
+        "form": 2698
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is the best way to observe microorganisms?",
+      "ms": {
+        "draft": 8399,
+        "critique": 8052,
+        "solver": 1871,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed a microorganism in a sample and noted that it has a branched filament without chlorophyll. Based on the information in the passage, which microorganism is it most likely to be?",
+      "ms": {
+        "draft": 8399,
+        "critique": 8205,
+        "solver": 1511,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that microorganisms can be found in extreme conditions. Based on this, which of the following statements is most likely true?",
+      "ms": {
+        "draft": 8399,
+        "critique": 7862,
+        "solver": 2475,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process helps in the recycling of nutrients in the soil?",
+      "ms": {
+        "draft": 15229,
+        "critique": 7977
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 2.10, what is the main function of microorganisms in the environment?",
+      "ms": {
+        "draft": 15229,
+        "critique": 6932,
+        "solver": 1826,
+        "form": 2464
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which microorganism is responsible for converting milk into curd?",
+      "ms": {
+        "draft": 5111,
+        "critique": 6259
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a beneficial microorganism according to the passage?",
+      "ms": {
+        "draft": 5578,
+        "critique": 7417
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What would happen if no yeast was added to the test tube with sugar solution?",
+      "ms": {
+        "draft": 5578,
+        "critique": 7443
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What would happen if the same type of waste was placed in a dry pit and a wet pit?",
+      "ms": {
+        "draft": 5578,
+        "critique": 6697
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Snehal placed fruit and vegetable peels with dried leaves in one pit and the same waste without leaves in another. What is she most likely testing?",
+      "ms": {
+        "draft": 5578,
+        "critique": 7002
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for the formation of curd in bowl A?",
+      "ms": {
+        "draft": 4013,
+        "critique": 6754
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of microorganisms in the soil according to the passage?",
+      "ms": {
+        "draft": 5578,
+        "critique": 7439
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a test tube with sugar solution and yeast is kept in a warm place, what would happen after a few hours?",
+      "ms": {
+        "draft": 5578,
+        "critique": 7999,
+        "solver": 11755,
+        "form": 2840
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a characteristic of bacterial cells?",
+      "ms": {
+        "draft": 4013,
+        "critique": 7311
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following microorganisms is responsible for the formation of root nodules in legumes?",
+      "ms": {
+        "draft": 4013,
+        "critique": 8623
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a microorganism that can be used as a health supplement?",
+      "ms": {
+        "draft": 4013,
+        "critique": 7741
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main purpose of adding yeast to the dough in the experiment?",
+      "ms": {
+        "draft": 4723,
+        "critique": 6609,
+        "solver": 1882,
+        "form": 4104
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a reason why microalgae are important for the environment?",
+      "ms": {
+        "draft": 4013,
+        "critique": 7650,
+        "solver": 20880
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of microorganisms?",
+      "ms": {
+        "draft": 6529,
+        "critique": 7103,
+        "solver": 1988,
+        "form": 2944
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why did the dough in bowl A rise and become fluffy, but not the dough in bowl B?",
+      "ms": {
+        "draft": 4723,
+        "critique": 9123,
+        "solver": 1678,
+        "form": 3238
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "ms": {
+        "draft": 5948,
+        "critique": 7596,
+        "solver": 1477,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a microorganism that helps in making manure?",
+      "ms": {
+        "draft": 4723,
+        "critique": 7512,
+        "solver": 1841,
+        "form": 3495
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the basic unit of life?",
+      "ms": {
+        "draft": 13308,
+        "critique": 7443,
+        "solver": 2066,
+        "form": 3855,
+        "translation": 42833
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Robert Hooke call the small, empty spaces he saw in a slice of cork?",
+      "ms": {
+        "draft": 13308,
+        "critique": 7609,
+        "solver": 2900,
+        "form": 2472,
+        "translation": 40491
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the peels of fruits and vegetables after some time in a container?",
+      "ms": {
+        "draft": 15229,
+        "critique": 7438,
+        "solver": 1777,
+        "form": 3854,
+        "translation": 38279
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you look at an onion peel under a microscope, what shape do the cells appear to be?",
+      "ms": {
+        "draft": 13308,
+        "critique": 7201,
+        "solver": 1330,
+        "form": 4194,
+        "translation": 46687
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "ms": {
+        "draft": 5903,
+        "critique": 10299,
+        "solver": 17035,
+        "form": 0,
+        "translation": 53159
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student wants to observe the cells of a plant, which of the following tools would be most helpful?",
+      "ms": {
+        "draft": 13308,
+        "critique": 7339,
+        "solver": 1909,
+        "form": 3514,
+        "translation": 43082
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a student placed a bowl of flour with yeast in a warm place and another bowl without yeast in a cool place. After some time, the dough in the warm bowl rose while the other did not. Why?",
+      "ms": {
+        "draft": 15229,
+        "critique": 6923,
+        "solver": 1950,
+        "form": 2728,
+        "translation": 54397
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If microorganisms did not exist, what would happen to the nutrients in dead plants and animals?",
+      "ms": {
+        "draft": 15229,
+        "critique": 6402,
+        "solver": 999,
+        "form": 1429,
+        "translation": 48413
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram in the passage, which part of the onion peel is placed on the glass slide?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the passage, why did Robert Hooke call the small spaces in cork 'cells'?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the function of the nucleus?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Confuses the function of the vacuole and cytoplasm (the pass…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a difference between plant and animal cells?",
+      "reason": "options 0 and 2 say the same thing (\"Plant cells have a cell membrane, while animal cells do not\" / \"Plant cells have a cell wall, while animal cells do not\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do different cells have different shapes and structures?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrect assumption about cell function (the passage does n…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a multicellular organism?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a function of the cytoplasm?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Confuses the function of the vacuole (the passage states tha…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of microorganisms?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's statement about presence in the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a microorganism?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that a rock is a microorganism, but a ro…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student is observing a sample under a microscope and sees a single cell with a green pigment, what type of microorganism is it most likely to be?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that a protozoan has a green pigment, bu…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is the best way to observe microorganisms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Incorrectly assumes that microorganisms are visible without …\"); distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's instruction to avoid touching so…\"); distractor 3's reason is not a one-line misconception (\"Confuses the method of observing microorganisms with the met…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observed a microorganism in a sample and noted that it has a branched filament without chlorophyll. Based on the information in the passage, which microorganism is it most likely to be?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Incorrectly assumes that a branched filament without chlorop…\"); distractor 3's reason is not a one-line misconception (\"Confuses the characteristics of bacteria with bread mould, b…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that microorganisms can be found in extreme conditions. Based on this, which of the following statements is most likely true?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Incorrectly assumes that all microorganisms can survive in a…\"); distractor 1's reason is not a one-line misconception (\"Incorrectly assumes that microorganisms are only found in te…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that microorganisms are not affected by …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process helps in the recycling of nutrients in the soil?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 2.10, what is the main function of microorganisms in the environment?",
+      "reason": "the key is far longer than every distractor (41 vs 17 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which microorganism is responsible for converting milk into curd?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main purpose of using a microscope when observing microorganisms?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a beneficial microorganism according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What would happen if no yeast was added to the test tube with sugar solution?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What would happen if the same type of waste was placed in a dry pit and a wet pit?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Snehal placed fruit and vegetable peels with dried leaves in one pit and the same waste without leaves in another. What is she most likely testing?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main reason for the formation of curd in bowl A?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main function of microorganisms in the soil according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a test tube with sugar solution and yeast is kept in a warm place, what would happen after a few hours?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a characteristic of bacterial cells?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following microorganisms is responsible for the formation of root nodules in legumes?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is an example of a microorganism that can be used as a health supplement?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main purpose of adding yeast to the dough in the experiment?",
+      "reason": "figure: figure spec refused: spec.parts.1.text.liquid: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is a reason why microalgae are important for the environment?",
+      "reason": "after redraft: the solver picked option 0 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of microorganisms?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct option, not a distractor…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why did the dough in bowl A rise and become fluffy, but not the dough in bowl B?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.content: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, not a distractor, so no reason needed for it…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a microorganism that helps in making manure?",
+      "reason": "near-duplicate of served question cmvg9oqqe02xwgpfhkts5isk7 (cosine 0.930 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

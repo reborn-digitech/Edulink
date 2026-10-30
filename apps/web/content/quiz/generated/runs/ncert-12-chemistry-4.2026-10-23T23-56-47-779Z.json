@@ -1,0 +1,760 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T23:56:47.779Z",
+  "finishedAt": "2026-10-24T00:07:38.472Z",
+  "seconds": 651,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry-I",
+    "bookCode": "lech1",
+    "document": "ncert/12/chemistry/lech104.pdf",
+    "classLevel": 12,
+    "subject": "Chemistry",
+    "chapter": "Chapter 4 — The d- and f- Block Elements",
+    "edition": "Reprint 2026-27",
+    "chunks": 34,
+    "groups": 11
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[NSEC 2025 — solutions]\n5. Pale lilac colour is characteristic of f-block elements not of p block. Also, f block elements do not have\nsignificant crystal fields effects, so the trihalides may have same colour. Also, AsF 3 would be a gas.\nTherefore, central atom is Nd. Nd +3 is a hard weak acid owing to which its fluoride will be insoluble, but\nits other halides are expected to be soluble. Dark greenish black colour in D is due to the charge transfer\nfrom I . Therefore, halides are F , Cl , Br , I respectively. - - - - -\nAns: d",
+      "[INChO 2011 — question paper]\nd) it is a complex anion with −2 charge.\n(1 mark)\nii) Draw a simple labeled crystal field splitting diagram for [IrCl 6 ] showing 2−\ndistribution of electrons in the split d-orbitals.\n(1 mark)\nThe f-block elements, lanthanides and actinides, are characterized by gradual filling of\nthe 4f and 5f sub-shell respectively.\n5.7 The most common oxidation state of lanthanides is 3+. This oxidation state of\nlanthanide ions arises due to the loss of two 6s electrons and one 5d electron in 4f/5d\norbital. Besides 3+, some lanthanides like Ce, Sm and Eu also show other oxidation\nstates.\nGive the chemical equations for the general reactions of lanthanides (Ln) with i) water\nand ii) acid, and of cerium (Ce",
+      "[CBSE Class XII Chemistry, marking scheme, 2022-23]\n17. b Both A and R are true but R is not the correct explanation of A.\nThe magnetic moment is less as the 5f electrons of actinides are less\neffectively shielded which results in quenching of orbital contributions , they\nare strongly paramagnetic due to presence of unpaired electrons",
+      "[CBSE Class XII Chemistry, sample question paper, 2025-26]\n9. The name inner transition metals is often used to refer to the 1\nA. lanthanoids\nB. actinoids\nC. both lanthanoids and actinoids\nD. d block elements\n10 Λ 𝑜 𝑚 CH 3 COOH can be calculated if the values of the following are 1\ngiven:\n1. Λ HCl, Λ KCl and Λ 𝑜 𝑚 𝑜 𝑚 𝑜 𝑚 CH 3\n2. Λ NaCl, Λ KCl and Λ 𝑜 𝑚 𝑜 𝑚 𝑜 𝑚 CH\n3. Λ H 𝑜 𝑚 2 SO 4 , Λ Na 𝑜 𝑚 2 SO 4 and Λ\nA. Only 1\nB. Either 1 or 2\nC. Either 1 or 3\nD. Either 2 or 3\nCOOK\n3 COONa\n𝑜 𝑚 CH 3 COONa\nWhich of the following will give a yellow or orange ppt. with 2,4 1\nDNP?\n(i) Porpanal (ii) Propanone (iii) Propanoic acid\nA. (i) and (ii)\nB. (ii) and (iii)\nC. (i) and (iii)\nD. (i), (ii) and (iii)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 171670,
+      "in": 41,
+      "out": 40,
+      "rejects": 2,
+      "promptTokens": 42185,
+      "completionTokens": 8880
+    },
+    "critique": {
+      "calls": 45,
+      "ms": 308771,
+      "in": 40,
+      "out": 22,
+      "rejects": 18,
+      "promptTokens": 20393,
+      "completionTokens": 8157
+    },
+    "solver": {
+      "calls": 146,
+      "ms": 70201,
+      "in": 22,
+      "out": 18,
+      "rejects": 4,
+      "promptTokens": 25156,
+      "completionTokens": 1513
+    },
+    "form": {
+      "calls": 12,
+      "ms": 37418,
+      "in": 18,
+      "out": 12,
+      "rejects": 6,
+      "promptTokens": 3103,
+      "completionTokens": 996
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 4771,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 440547,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 26474,
+      "completionTokens": 13043
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following elements are not considered transition elements?",
+      "ms": {
+        "draft": 3471,
+        "critique": 7193
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following elements are placed in the f-block of the periodic table?",
+      "ms": {
+        "draft": 3471,
+        "critique": 7008,
+        "solver": 1283,
+        "form": 4482
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following elements shows the lowest ionisation enthalpy in the 3d series?",
+      "ms": {
+        "draft": 4123,
+        "critique": 9429
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why does the ionisation enthalpy of transition elements increase gradually along the 3d series?",
+      "ms": {
+        "draft": 4123,
+        "critique": 8728
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an exception to the general electronic configuration of transition elements?",
+      "ms": {
+        "draft": 3471,
+        "critique": 7050,
+        "solver": 15246
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following correctly explains the stability of the +2 oxidation state in transition elements?",
+      "ms": {
+        "draft": 4123,
+        "critique": 7791,
+        "solver": 1825,
+        "form": 3007
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the third ionisation enthalpy of Fe show a lower value than that of Mn?",
+      "ms": {
+        "draft": 4123,
+        "critique": 7997,
+        "solver": 1758,
+        "form": 2737
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which transition element does not exhibit variable oxidation states?",
+      "ms": {
+        "draft": 4698,
+        "critique": 6461
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a reason for the positive standard electrode potential of copper?",
+      "ms": {
+        "draft": 4698,
+        "critique": 8718
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a property of interstitial compounds?",
+      "ms": {
+        "draft": 3764,
+        "critique": 6451
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the magnetic moment of a divalent ion with atomic number 25 in aqueous solution?",
+      "ms": {
+        "draft": 3764,
+        "critique": 7577
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do f-block elements show less orbital contribution to magnetic moments compared to d-block elements?",
+      "ms": {
+        "draft": 3764,
+        "critique": 7287
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is the correct order of magnetic moments for the ions Fe²⁺, Co²⁺, and Ni²⁺?",
+      "ms": {
+        "draft": 3764,
+        "critique": 9424
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a property of alloys of transition metals?",
+      "ms": {
+        "draft": 4534,
+        "critique": 6930,
+        "solver": 1728
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the oxides of transition metals?",
+      "ms": {
+        "draft": 4534,
+        "critique": 6513,
+        "solver": 1565
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a transition metal alloy?",
+      "ms": {
+        "draft": 4534,
+        "critique": 6083,
+        "solver": 8108,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic property of f-block elements?",
+      "ms": {
+        "draft": 4242,
+        "critique": 5317
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the most common oxidation state of lanthanides?",
+      "ms": {
+        "draft": 4242,
+        "critique": 6093
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following would be a correct chemical equation for the reaction of a lanthanide with water?",
+      "ms": {
+        "draft": 4242,
+        "critique": 6933
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do the 5f electrons in actinides provide poor shielding from element to element in the series?",
+      "ms": {
+        "draft": 4242,
+        "critique": 5965
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What can be inferred about the magnetic moment of actinides from the passage?",
+      "ms": {
+        "draft": 4242,
+        "critique": 6228,
+        "solver": 1871,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is the correct order of the magnetic moment values for the given complex species?",
+      "ms": {
+        "draft": 4242,
+        "critique": 8334
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of transition elements?",
+      "ms": {
+        "draft": 3085,
+        "critique": 7708
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a consequence of lanthanoid contraction?",
+      "ms": {
+        "draft": 3085,
+        "critique": 7683
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following transition metals has the maximum number of unpaired electrons in its ground state?",
+      "ms": {
+        "draft": 3085,
+        "critique": 7210
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a characteristic of the actinoids, as mentioned in the passage?",
+      "ms": {
+        "draft": 20350,
+        "critique": 7768
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains why the actinoid contraction is greater than the lanthanoid contraction?",
+      "ms": {
+        "draft": 20350,
+        "critique": 6315,
+        "solver": 1518
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why are the chemical properties of elements after the actinoids less well known?",
+      "ms": {
+        "draft": 20350,
+        "critique": 6279,
+        "solver": 848,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a common oxidation state of lanthanides?",
+      "ms": {
+        "draft": 20350,
+        "critique": 6533,
+        "solver": 12194,
+        "form": 1889
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the general electronic configuration of transition elements?",
+      "ms": {
+        "draft": 3471,
+        "critique": 7353,
+        "solver": 2024,
+        "form": 3755,
+        "translation": 36217
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct definition of transition elements according to IUPAC?",
+      "ms": {
+        "draft": 3471,
+        "critique": 7433,
+        "solver": 1848,
+        "form": 3189,
+        "translation": 51142
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following elements are part of the 3d series?",
+      "ms": {
+        "draft": 3471,
+        "critique": 6273,
+        "solver": 1363,
+        "form": 4931,
+        "translation": 32964
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a common property of all lanthanoid metals?",
+      "ms": {
+        "draft": 5608,
+        "critique": 5485,
+        "solver": 5211,
+        "form": 1054,
+        "translation": 29441
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why does the E value for Mn have a comparatively high value?",
+      "ms": {
+        "draft": 4698,
+        "critique": 6833,
+        "solver": 1463,
+        "form": 3846,
+        "translation": 47370
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Based on the electronic configuration, which of the following is likely to be more stable in the +3 oxidation state?",
+      "ms": {
+        "draft": 3085,
+        "critique": 8696,
+        "solver": 2227,
+        "form": 0,
+        "translation": 26848
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a possible reason for the instability of CuI in aqueous solution?",
+      "ms": {
+        "draft": 4698,
+        "critique": 6970,
+        "solver": 1620,
+        "form": 2375,
+        "translation": 34665
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the chemistry of actinoids?",
+      "ms": {
+        "draft": 3085,
+        "critique": 6644,
+        "solver": 1319,
+        "form": 0,
+        "translation": 38088
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following elements is most likely to exhibit a variety of oxidation states?",
+      "ms": {
+        "draft": 4123,
+        "critique": 7671,
+        "solver": 1402,
+        "form": 4059,
+        "translation": 47387
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do the E values of Mn, Ni, and Zn deviate from the general trend in the first transition series?",
+      "ms": {
+        "draft": 4698,
+        "critique": 7061,
+        "solver": 17183,
+        "form": 4803,
+        "translation": 52085
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the permanganate ion (MnO4^-) diamagnetic?",
+      "ms": {
+        "draft": 4534,
+        "critique": 6759,
+        "solver": 1032,
+        "form": 0,
+        "translation": 40243
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"Which of the following is a characteristic of transition elements?\",\"options\":[\"They h"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following elements are not considered transition elements?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following elements are placed in the f-block of the periodic table?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception needed here (but in the que…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following elements shows the lowest ionisation enthalpy in the 3d series?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Why does the ionisation enthalpy of transition elements increase gradually along the 3d series?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an exception to the general electronic configuration of transition elements?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following correctly explains the stability of the +2 oxidation state in transition elements?",
+      "reason": "options 0 and 1 say the same thing (\"It is due to the loss of 3d electrons\" / \"It is due to the loss of 4s electrons\"); options 0 and 2 say the same thing (\"It is due to the loss of 3d electrons\" / \"It is due to the gain of 3d electrons\"); options 1 and 3 say the same thing (\"It is due to the loss of 4s electrons\" / \"It is due to the gain of 4s electrons\"); options 2 and 3 say the same thing (\"It is due to the gain of 3d electrons\" / \"It is due to the gain of 4s electrons\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the third ionisation enthalpy of Fe show a lower value than that of Mn?",
+      "reason": "options 0 and 3 say the same thing (\"Due to the higher number of d electrons in Fe\" / \"Due to the higher number of 4s electrons in Fe\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which transition element does not exhibit variable oxidation states?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a reason for the positive standard electrode potential of copper?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT a property of interstitial compounds?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the magnetic moment of a divalent ion with atomic number 25 in aqueous solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why do f-block elements show less orbital contribution to magnetic moments compared to d-block elements?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is the correct order of magnetic moments for the ions Fe²⁺, Co²⁺, and Ni²⁺?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a property of alloys of transition metals?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the oxides of transition metals?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a transition metal alloy?",
+      "reason": "option 3 is a catch-all (\"All of the above\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a common oxidation state of lanthanides?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a characteristic property of f-block elements?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the most common oxidation state of lanthanides?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following would be a correct chemical equation for the reaction of a lanthanide with water?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why do the 5f electrons in actinides provide poor shielding from element to element in the series?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What can be inferred about the magnetic moment of actinides from the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is the correct order of the magnetic moment values for the given complex species?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of transition elements?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a consequence of lanthanoid contraction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following transition metals has the maximum number of unpaired electrons in its ground state?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a characteristic of the actinoids, as mentioned in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following best explains why the actinoid contraction is greater than the lanthanoid contraction?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, why are the chemical properties of elements after the actinoids less well known?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the reactivity of actinoids, believing they a…\"); distractor 2's reason is not a one-line misconception (\"Confuses the magnitude of actinoid contraction with the reas…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a common oxidation state of lanthanides?",
+      "reason": "near-duplicate of served question cmvi8veew0bwigpfh4typ7i67 (cosine 0.935 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

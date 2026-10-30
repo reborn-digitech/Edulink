@@ -1,0 +1,582 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T19:17:03.801Z",
+  "finishedAt": "2026-10-25T19:24:25.055Z",
+  "seconds": 441,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm106.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — The Dairy Farm",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n5. (c) k = 4",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n5. (d) 0,8",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\nSection D consists of 4 questions of 5 marks each",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n4. Hence, modal agriculture holdings of the village is 6.17 hectare (approx.)\nOR\n27 (B).\nClass interval f i\n0-20 7\n20-40 p\n40-60 10\n60-80 9\n80-100 13\nTotal 39 + p\nx i\n(Mid- d i = 𝒙 𝒊 −𝟑𝟎 𝒉 f i d i\nvalue)\n10 − 1 − 7\n30 0 0\n50 1 10\n70 2 18\n90 3 39\nAssumed mean(A) = 30, Width of the interval (h) = 20\nMean = 30 + 60 × 20 = 54 ⟹ 50 = 39 + p ⟹ p = 11 1\n39+p\n28.\nTangents drawn to a circle from an external point are equal.\nSo, AP = AS, PB = BQ, 1½\nCR = CQ, DR = DS\nOn adding the above equations,\n(AP + PB) + (CR + RD) = (AS + BQ) + (CQ + DS)\n⟹ AB + CD = AD + BC\nAB + CD\n⟹ AD + BC = 1 ½\nQuestion given for Visually Impaired candidates\nParallelogram ABCD circumscribes a circle as shown in figure.\nTan"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 128045,
+      "in": 34,
+      "out": 28,
+      "rejects": 6,
+      "promptTokens": 31365,
+      "completionTokens": 7668
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 230132,
+      "in": 28,
+      "out": 25,
+      "rejects": 3,
+      "promptTokens": 16935,
+      "completionTokens": 6636
+    },
+    "solver": {
+      "calls": 186,
+      "ms": 106084,
+      "in": 25,
+      "out": 15,
+      "rejects": 10,
+      "promptTokens": 44548,
+      "completionTokens": 2233
+    },
+    "form": {
+      "calls": 3,
+      "ms": 8876,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 784,
+      "completionTokens": 237
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 4180,
+      "in": 15,
+      "out": 13,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 379541,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 28568,
+      "completionTokens": 11730
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 3,
+    "2": 3,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct multiplication fact as discussed in the chapter?",
+      "ms": {
+        "draft": 3591,
+        "critique": 5828
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a dairy has 40 × 10 butter packets, how many packets are there in total?",
+      "ms": {
+        "draft": 3591,
+        "critique": 7076
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of the commutative property of multiplication as discussed in the chapter?",
+      "ms": {
+        "draft": 3591,
+        "critique": 6796,
+        "solver": 17854
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of the halving and doubling strategy mentioned in the chapter?",
+      "ms": {
+        "draft": 3591,
+        "critique": 7852,
+        "solver": 15817
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a school has 35 rows with 42 seats in each row, how many people can sit in the auditorium?",
+      "ms": {
+        "draft": 3591,
+        "critique": 8775,
+        "solver": 14703
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a dairy cooperative gets milk from 268 villagers and each has at least 4 cows, what is the minimum number of cows?",
+      "ms": {
+        "draft": 4236,
+        "critique": 5851,
+        "solver": 1580
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a family produces 35 kg of kitchen waste monthly and saves ₹24 per kg of compost, how much money do they save in a year?",
+      "ms": {
+        "draft": 4236,
+        "critique": 6853
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of the distributive property of multiplication over addition?",
+      "ms": {
+        "draft": 3734,
+        "critique": 6696,
+        "solver": 14171
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 17 × 23 = 391, what is 17 × 24?",
+      "ms": {
+        "draft": 3734,
+        "critique": 7308,
+        "solver": 17507
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given pattern, 15 × 15 = 225 and 25 × 25 = 625. What is 35 × 35?",
+      "ms": {
+        "draft": 3734,
+        "critique": 8151,
+        "solver": 19008
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Mala bought 18 books for ₹150 for 3 books. She had ₹20 left. How much money did she have at the beginning?",
+      "ms": {
+        "draft": 3734,
+        "critique": 6979,
+        "solver": 1675
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many litres of milk does the dairy cooperative receive from Gir cows every day?",
+      "ms": {
+        "draft": 3232,
+        "critique": 4970,
+        "solver": 1533
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How much money does the dairy cooperative earn by selling 125 kg of ghee in a month?",
+      "ms": {
+        "draft": 3232,
+        "critique": 6013,
+        "solver": 1691
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A dairy cooperative sells 125 kg of ghee in a month at ₹574 per kg. How much money does the cooperative earn?",
+      "ms": {
+        "draft": 4236,
+        "critique": 6611,
+        "solver": 1316,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How much kitchen waste does a family of 4 produce in a year?",
+      "ms": {
+        "draft": 3232,
+        "critique": 5972,
+        "solver": 1782,
+        "form": 3186
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the quantity of kitchen waste produced by a family in a year if they produce 35 kg in one month?",
+      "ms": {
+        "draft": 4236,
+        "critique": 6023,
+        "solver": 1591,
+        "form": 0,
+        "translation": 28927
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the product of 123 × 84?",
+      "ms": {
+        "draft": 11946,
+        "critique": 5515,
+        "solver": 943,
+        "form": 0,
+        "translation": 25166
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the product of 368 × 32?",
+      "ms": {
+        "draft": 11946,
+        "critique": 4564,
+        "solver": 3987,
+        "form": 0,
+        "translation": 25798
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How much money does a family save in a year if they produce 150 kg of compost and each kg is sold at ₹24?",
+      "ms": {
+        "draft": 4236,
+        "critique": 7453,
+        "solver": 1631,
+        "form": 0,
+        "translation": 29433
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How much money does the family save by making their own compost in a year?",
+      "ms": {
+        "draft": 3232,
+        "critique": 7486,
+        "solver": 1655,
+        "form": 2803,
+        "translation": 29283
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of the commutative property of multiplication?",
+      "ms": {
+        "draft": 3734,
+        "critique": 7293,
+        "solver": 1375,
+        "form": 0,
+        "translation": 28265
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A dairy has packed 60 butter milk pouches in 3 rows. How many pouches are in each row?",
+      "ms": {
+        "draft": 4428,
+        "critique": 5355,
+        "solver": 2185,
+        "form": 0,
+        "translation": 34845
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The dairy arranges butter packets in 10 groups of 8. If the number of groups is changed to 8, how many packets will be in each group?",
+      "ms": {
+        "draft": 4428,
+        "critique": 4960,
+        "solver": 1181,
+        "form": 0,
+        "translation": 35718
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If 453 Gir cows each give 13 litres of milk daily, how many litres of milk does the cooperative receive in a day?",
+      "ms": {
+        "draft": 4236,
+        "critique": 6609,
+        "solver": 1603,
+        "form": 0,
+        "translation": 27251
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A dairy has 45 cows, each producing 12 litres of milk. If 5 cows are removed, how many total litres of milk will be produced by the remaining cows?",
+      "ms": {
+        "draft": 4428,
+        "critique": 4571,
+        "solver": 1102,
+        "form": 0,
+        "translation": 37408
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 16 metres of cloth is used to make 4 kurtas, how much cloth is needed to make 8 kurtas?",
+      "ms": {
+        "draft": 3591,
+        "critique": 5483,
+        "solver": 11056,
+        "form": 2887,
+        "translation": 33374
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 30 × 2 = 60 and 15 × 4 = 60, what can you say about the relationship between the numbers in the two products?",
+      "ms": {
+        "draft": 4428,
+        "critique": 4589,
+        "solver": 757,
+        "form": 0,
+        "translation": 20219
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 12 × 32 = 384, what is 6 × 16?",
+      "ms": {
+        "draft": 3734,
+        "critique": 6889,
+        "solver": 16098,
+        "form": 0,
+        "translation": 20768
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the product of 159 × 324?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the product of 239 × 401?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the product of 592 × 5?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the product of 101 × 22?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a correct multiplication fact as discussed in the chapter?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a dairy has 40 × 10 butter packets, how many packets are there in total?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of the commutative property of multiplication as discussed in the chapter?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is an example of the halving and doubling strategy mentioned in the chapter?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a school has 35 rows with 42 seats in each row, how many people can sit in the auditorium?",
+      "reason": "after redrafting distractors 1, 2, 3: option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a dairy cooperative gets milk from 268 villagers and each has at least 4 cows, what is the minimum number of cows?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a family produces 35 kg of kitchen waste monthly and saves ₹24 per kg of compost, how much money do they save in a year?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the cost of 1 kg of compost in the market?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the minimum number of cows that the dairy cooperative gets milk from?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of the distributive property of multiplication over addition?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 17 × 23 = 391, what is 17 × 24?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given pattern, 15 × 15 = 225 and 25 × 25 = 625. What is 35 × 35?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Mala bought 18 books for ₹150 for 3 books. She had ₹20 left. How much money did she have at the beginning?",
+      "reason": "the solver picked option 2 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many litres of milk does the dairy cooperative receive from Gir cows every day?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How much money does the dairy cooperative earn by selling 125 kg of ghee in a month?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A dairy cooperative sells 125 kg of ghee in a month at ₹574 per kg. How much money does the cooperative earn?",
+      "reason": "near-duplicate of served question cmvh6e5a40756gpfhez87tqsw (cosine 0.936 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "How much kitchen waste does a family of 4 produce in a year?",
+      "reason": "near-duplicate of served question cmvh6e59x074igpfhpvh3ooz9 (cosine 0.923 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

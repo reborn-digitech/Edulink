@@ -21,265 +21,49 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T22:08:19.820Z",
+  "generatedAt": "2026-10-29T10:39:26.171Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What are fractions called when they represent the same share or part of a whole?",
-      "choices": [
-        "Like fractions",
-        "Unlike fractions",
-        "Equivalent fractions",
-        "Mixed fractions"
-      ],
-      "answerIndex": 2,
-      "solution": "Equivalent fractions are fractions that represent the same share or part of a whole. Like fractions have the same denominator, unlike fractions have different denominators, and mixed fractions are a combination of a whole number and a fraction. The concept of equivalent fractions directly relates to representing the same portion of a whole, making it the correct answer.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कौन-से भिन्न कहलाते हैं जो पूर्ण के समान हिस्सा या भाग का प्रतिनिधित्व करते हैं?",
-          "choices": [
-            "समान भिन्न",
-            "असमान भिन्न",
-            "समतुल्य भिन्न",
-            "मिश्रित भिन्न"
-          ],
-          "solution": "समतुल्य भिन्न वे भिन्न होते हैं जो पूर्ण के समान हिस्सा या भाग का प्रतिनिधित्व करते हैं। समान भिन्नों में समान हर होता है, असमान भिन्नों में अलग-अलग हर होता है और मिश्रित भिन्न एक पूर्ण संख्या और भिन्न के संयोजन होते हैं। समतुल्य भिन्न की अवधारणा सीधे एक पूर्ण के समान भाग के प्रतिनिधित्व से संबंधित होती है, इसलिए यह सही उत्तर है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एकूण भागाच्या समान भागाचे अथवा भागाचे प्रतिनिधित्व करणारी अपूर्णांक काय म्हणतात?",
-          "choices": [
-            "सम अपूर्णांक",
-            "विसंगत अपूर्णांक",
-            "समतुल्य अपूर्णांक",
-            "मिश्र अपूर्णांक"
-          ],
-          "solution": "समतुल्य अपूर्णांक हे एकूण भागाच्या समान भागाचे प्रतिनिधित्व करतात. सम अपूर्णांकांचा समान छेद असतो, विसंगत अपूर्णांकांचा वेगळा छेद असतो आणि मिश्र अपूर्णांक हे पूर्ण संख्या आणि अपूर्णांकाचा संयोजन असतो. समतुल्य अपूर्णांकाचा अवधारणा एकूण भागाच्या समान भागाच्या प्रतिनिधित्वाशी सीधा संबंध असतो, ज्यामुळे ते योग्य उत्तर ठरते.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate mathematical terminology used in Marathi medium education.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses like fractions with equivalent fractions",
-        "Confuses unlike fractions with equivalent fractions",
-        null,
-        "Confuses equivalent fractions with mixed numbers, thinking they are the same type of fraction"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, and the solution correctly identifies 'equivalent fractions' as the correct answer. The author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 7,
-          "pageStart": 16,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 8,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 9,
-          "pageStart": 21,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 10,
-          "pageStart": 23,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T22:08:19.820Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the simplest form of a fraction?",
-      "choices": [
-        "A fraction where the numerator is greater than the denominator",
-        "A fraction where the numerator and denominator have no common factor other than 1",
-        "A fraction where the numerator is 0",
-        "A fraction where the denominator is 0"
-      ],
-      "answerIndex": 1,
-      "solution": "The simplest form of a fraction is when the numerator and denominator have no common factor other than 1, meaning they are relatively prime. A fraction where the numerator is greater than the denominator is an improper fraction, not necessarily in simplest form. A fraction with a numerator of 0 is equal to 0, and a fraction with a denominator of 0 is undefined.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक भिन्न का सबसे सरल रूप क्या है?",
-          "choices": [
-            "एक भिन्न जहां अंश भाजक से बड़ा है",
-            "एक भिन्न जहां अंश और भाजक के अलावा 1 के अन्य कोई सामान्य गुणनखंड नहीं है",
-            "एक भिन्न जहां अंश 0 है",
-            "एक भिन्न जहां भाजक 0 है"
-          ],
-          "solution": "एक भिन्न का सबसे सरल रूप तब होता है जब अंश और भाजक के अलावा 1 के अन्य कोई सामान्य गुणनखंड नहीं होता है, जिसका अर्थ है कि वे सह-अभाज्य होते हैं। एक भिन्न जहां अंश भाजक से बड़ा है, असंपूर्ण भिन्न होती है, जो आवश्यक रूप से सरलतम रूप में नहीं होती है। एक भिन्न जहां अंश 0 है, 0 के बराबर होती है, और एक भिन्न जहां भाजक 0 है, अपरिभाषित होती है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका अपूर्णांकाचा सरळ रूप काय आहे?",
-          "choices": [
-            "अपूर्णांक ज्यात अंश छेदापेक्षा मोठा आहे",
-            "अपूर्णांक ज्यात अंश आणि छेद एकापेक्षा इतर कोणताही सामान्य अपवर्तक नाही",
-            "अपूर्णांक ज्यात अंश 0 आहे",
-            "अपूर्णांक ज्यात छेद 0 आहे"
-          ],
-          "solution": "अपूर्णांकाचा सरळ रूप हा असा अपूर्णांक आहे ज्यात अंश आणि छेद एकापेक्षा इतर कोणताही सामान्य अपवर्तक नसतो, जे त्यांना सापेक्ष अभाज्य म्हणतात. अंश छेदापेक्षा मोठा असलेला अपूर्णांक अपूर्ण अपूर्णांक असतो, जो आवश्यकता नसतानाही सरळ रूपात नसतो. अंश 0 असलेला अपूर्णांक 0 च्या बरोबर असतो, आणि छेद 0 असलेला अपूर्णांक अअनिश्चित असतो.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and maintains the correct answer and distractors. Technical terms like 'सामान्य अपवर्तक' (common factor) and 'सापेक्ष अभाज्य' (relatively prime) are appropriate for Marathi-medium curriculum.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses improper fraction with simplest form",
-        null,
-        "Confuses invalid fractions with simplest form",
-        "Incorrectly assumes 0 is allowed in numerator or denominator"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the correct answer is clearly 1. The author's reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 7,
-          "pageStart": 16,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 8,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 9,
-          "pageStart": 21,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 10,
-          "pageStart": 23,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T22:08:19.820Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "If one roti is divided equally between 2 children, how much roti will each child get?",
+      "stem": "Which of the following is the correct way to write the fraction 'one half'?",
       "choices": [
         "1/2",
+        "2/1",
         "1/3",
-        "1/4",
-        "1/5"
+        "3/1"
       ],
       "answerIndex": 0,
-      "solution": "The correct answer is 1/2. When one roti is divided equally between 2 children, each child gets half of the roti. This is represented as 1/2. The other options represent smaller shares, which would be the case if more children shared the roti.",
+      "solution": "The correct way to write 'one half' is 1/2 because the numerator represents the part and the denominator represents the whole. 2/1 represents two wholes, 1/3 represents one part of three, and 3/1 represents three wholes.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक रोटी को 2 बच्चों के बीच समान रूप से बांटा जाए, तो प्रत्येक बच्चे को कितनी रोटी मिलेगी?",
+          "stem": "निम्नलिखित में से कौन-सा 'एक आधा' लिखने का सही तरीका है?",
           "choices": [
             "1/2",
+            "2/1",
             "1/3",
-            "1/4",
-            "1/5"
+            "3/1"
           ],
-          "solution": "सही उत्तर 1/2 है। जब एक रोटी को 2 बच्चों के बीच समान रूप से बांटा जाता है, तो प्रत्येक बच्चे को रोटी का आधा हिस्सा मिलता है। इसे 1/2 के रूप में दर्शाया जाता है। अन्य विकल्प छोटे हिस्से दर्शाते हैं, जो तब होते हैं जब अधिक बच्चे रोटी को साझा करते हैं।",
+          "solution": "एक आधा लिखने का सही तरीका 1/2 है क्योंकि अंश भाग को दर्शाता है और हर पूर्ण को दर्शाता है। 2/1 दो पूर्ण को दर्शाता है, 1/3 तीन में से एक भाग को दर्शाता है और 3/1 तीन पूर्ण को दर्शाता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology common in Hindi textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एक रोटी 2 मुलांमध्ये समान वाटली गेली तर प्रत्येक मुलाला किती रोटी मिळेल?",
+          "stem": "खालीलपैकी कोणता 'एक अर्धा' लिहिण्याचा बरोबर मार्ग आहे?",
           "choices": [
             "1/2",
+            "2/1",
             "1/3",
-            "1/4",
-            "1/5"
+            "3/1"
           ],
-          "solution": "बरोबर उत्तर 1/2 आहे. जेव्हा एक रोटी 2 मुलांमध्ये समान वाटली जाते तेव्हा प्रत्येक मुलाला रोटीच्या अर्ध्या भागाची मिळते. हे 1/2 ने दर्शविले जाते. इतर विकल्पांमध्ये लहान भाग दर्शविले गेले आहेत, जे रोटी जास्त मुलांमध्ये वाटली गेली असती तर असते.",
+          "solution": "एक अर्धा लिहिण्याचा बरोबर मार्ग 1/2 आहे कारण अंश भाग दर्शवतो आणि हर्ता पूर्ण दर्शवतो. 2/1 दोन पूर्ण दर्शवतो, 1/3 तीन भागांपैकी एक भाग दर्शवतो आणि 3/1 तीन पूर्ण दर्शवतो.",
           "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology and logical structure.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -289,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Chooses a smaller fraction",
-        "Chooses a smaller fraction",
-        "Chooses a smaller fraction"
+        "confuses the numerator and denominator",
+        "reads the fraction as two instead of one half",
+        "mistakes one half for one third"
       ],
       "solverAnswers": [
         0,
@@ -301,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is straightforward and the solution is correct. The correct answer is 1/2, and the reasoning for the other options is valid as they represent smaller fractions than the correct one.",
+      "critique": "The question is straightforward and tests basic understanding of fraction notation. The correct answer is clearly 1/2, and the author's reasoning for the other options aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp107.pdf",
@@ -344,47 +128,145 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T22:08:19.820Z",
+      "generatedAt": "2026-10-29T10:39:26.171Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "If 2 cakes are divided among 5 children, how many cakes will each child get?",
+      "difficulty": 1,
+      "stem": "What is the term for the bottom number in a fraction?",
       "choices": [
-        "2/5",
-        "2/2",
-        "2/4",
-        "5/2"
+        "Numerator",
+        "Denominator",
+        "Fractional unit",
+        "Whole number"
       ],
-      "answerIndex": 0,
-      "solution": "Dividing 2 cakes among 5 children means each child receives 2 divided by 5, which is 2/5. The option 2/2 equals 1, which would mean each child gets a whole cake, which is not possible. The option 2/4 simplifies to 1/2, which would mean each child gets half a cake, but that would only happen if 2 cakes were divided among 4 children. The option 5/2 is the reciprocal and would mean each child gets more than a whole cake, which is not possible.",
+      "answerIndex": 1,
+      "solution": "The bottom number in a fraction is called the denominator. The numerator is the top number, a fractional unit refers to a single part of a whole, and a whole number is not related to the structure of a fraction.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि 2 केक 5 बच्चों में बांटे जाएं, तो प्रत्येक बच्चे को कितने केक मिलेंगे?",
+          "stem": "एक भिन्न में नीचे की संख्या के लिए क्या शब्द है?",
           "choices": [
-            "2/5",
-            "2/2",
-            "2/4",
-            "5/2"
+            "अंश",
+            "हर",
+            "भिन्न इकाई",
+            "पूर्ण संख्या"
           ],
-          "solution": "2 केकों को 5 बच्चों में बांटना अर्थात प्रत्येक बच्चा 2 को 5 से भाग देता है, जो 2/5 होता है। विकल्प 2/2 के बराबर 1 होता है, जो अर्थात प्रत्येक बच्चे को एक पूरा केक मिलता है, जो संभव नहीं है। विकल्प 2/4 सरलीकृत करने पर 1/2 होता है, जो अर्थात प्रत्येक बच्चे को आधा केक मिलता है, लेकिन ऐसा केवल तभी होगा जब 2 केक 4 बच्चों में बांटे जाएं। विकल्प 5/2 व्युत्क्रम है और अर्थात प्रत्येक बच्चे को एक से अधिक केक मिलता है, जो संभव नहीं है।",
+          "solution": "भिन्न में नीचे की संख्या को हर कहा जाता है। अंश ऊपर की संख्या होती है, भिन्न इकाई का अर्थ होता है पूर्ण के एक भाग को और पूर्ण संख्या भिन्न की संरचना से संबंधित नहीं होती।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terms.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and the solution are correctly translated and maintain the same logical relationships.",
           "flag": null
         },
         "mr": {
-          "stem": "जर 2 केक 5 मुलांमध्ये वाटले जात असतील, तर प्रत्येक मुलाला किती केक मिळेल?",
+          "stem": "एका अपूर्णांकातील खालचा संख्या कोणत्या नावाने ओळखली जाते?",
           "choices": [
-            "2/5",
-            "2/2",
-            "2/4",
-            "5/2"
+            "अंश",
+            "छेद",
+            "अपूर्णांक एकक",
+            "पूर्ण संख्या"
           ],
-          "solution": "2 केक 5 मुलांमध्ये वाटले जात असतील तर प्रत्येक मुलाला 2 भागले 5 असे मिळते, जे 2/5 आहे. पर्याय 2/2 चे मूल्य 1 असते, जे प्रत्येक मुलाला एक पूर्ण केक मिळत असल्याचे दर्शवते, जे शक्य नाही. पर्याय 2/4 चे सरलीकरण 1/2 असते, जे प्रत्येक मुलाला अर्धा केक मिळत असल्याचे दर्शवते, परंतु ते 2 केक 4 मुलांमध्ये वाटले जात असतील तर घडते. पर्याय 5/2 हा व्यस्त आहे आणि प्रत्येक मुलाला एकापेक्षा जास्त केक मिळत असल्याचे दर्शवते, जे शक्य नाही.",
+          "solution": "अपूर्णांकातील खालची संख्या छेद म्हणतात. अंश ही वरची संख्या असते, अपूर्णांक एकक ही पूर्णांकाच्या एका भागाला संबोधतात आणि पूर्ण संख्या अपूर्णांकाच्या संरचनेशी संबंधित नसते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used in Marathi medium education.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses denominator with numerator",
+        null,
+        "Confuses the term for a part of a whole with the term for the bottom number in a fraction",
+        "Confuses the term for the bottom number with the term for a number without a fractional part"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and tests recall of basic fraction terminology. The correct answer is 'Denominator' and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 18,
+          "pageStart": 35,
+          "pageEnd": 37,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.9 A Pinch of History"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 19,
+          "pageStart": 37,
+          "pageEnd": 40,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.9 A Pinch of History"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 20,
+          "pageStart": 40,
+          "pageEnd": 43,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.9 A Pinch of History"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T10:39:26.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of a mixed fraction?",
+      "choices": [
+        "1/2",
+        "3/4",
+        "2 1/2",
+        "5/5"
+      ],
+      "answerIndex": 2,
+      "solution": "A mixed fraction consists of a whole number and a proper fraction. The option 2 1/2 includes both a whole number and a fraction, making it a mixed fraction. The other options are either proper fractions or an improper fraction, which do not have a whole number component.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन एक मिश्रित भिन्न का उदाहरण है?",
+          "choices": [
+            "1/2",
+            "3/4",
+            "2 1/2",
+            "5/5"
+          ],
+          "solution": "एक मिश्रित भिन्न में एक पूर्ण संख्या और एक उचित भिन्न होता है। विकल्प 2 1/2 में एक पूर्ण संख्या और एक भिन्न दोनों होते हैं, जिससे यह एक मिश्रित भिन्न बन जाता है। अन्य विकल्प या तो उचित भिन्न हैं या अनुचित भिन्न, जिनमें पूर्ण संख्या का घटक नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक मिश्र अपूर्णांकाचे उदाहरण आहे?",
+          "choices": [
+            "1/2",
+            "3/4",
+            "2 1/2",
+            "5/5"
+          ],
+          "solution": "मिश्र अपूर्णांकमध्ये पूर्ण संख्या आणि एक छोटा अपूर्णांक असतो. ऑप्शन 2 1/2 मध्ये पूर्ण संख्या आणि अपूर्णांक दोन्ही असतात, ज्यामुळे तो मिश्र अपूर्णांक बनतो. इतर ऑप्शन पूर्ण अपूर्णांक किंवा अपूर्ण अपूर्णांक असतात, ज्यांना पूर्ण संख्या घटक नसतो.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -395,106 +277,96 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "A proper fraction has no whole number part",
+        "A proper fraction has no whole number part",
         null,
-        "Believes dividing 2 cakes among 5 children means giving each child 2/2 of a cake",
-        "Student divides the number of cakes by the number of children but incorrectly uses the same number of cakes as the numerator and a different denominator.",
-        "Confuses the numerator and denominator, thinking the number of children is the numerator and the number of cakes is the denominator"
+        "An improper fraction has a numerator equal to or greater than the denominator"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The question is clear and the correct answer is 2/5. The author's solution and reasoning for the distractors are accurate and reflect common misconceptions.",
+      "critique": "The question correctly identifies 2 1/2 as the mixed fraction. The solution and reasoning are accurate, and the distractors are properly explained as proper or improper fractions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 7,
-          "pageStart": 16,
-          "pageEnd": 19,
+          "ordinal": 18,
+          "pageStart": 35,
+          "pageEnd": 37,
           "headingPath": [
             "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
+            "7.9 A Pinch of History"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 8,
-          "pageStart": 19,
-          "pageEnd": 21,
+          "ordinal": 19,
+          "pageStart": 37,
+          "pageEnd": 40,
           "headingPath": [
             "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
+            "7.9 A Pinch of History"
           ]
         },
         {
           "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 9,
-          "pageStart": 21,
-          "pageEnd": 23,
+          "ordinal": 20,
+          "pageStart": 40,
+          "pageEnd": 43,
           "headingPath": [
             "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 10,
-          "pageStart": 23,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
+            "7.9 A Pinch of History"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T22:08:19.820Z",
+      "generatedAt": "2026-10-29T10:39:26.171Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Jaya walks 2/3 km to reach her school and then walks another 1/2 km. How much total distance does she walk?",
+      "difficulty": 3,
+      "stem": "If 3 rotis are shared equally by 4 children, what fraction of a roti does each child get?",
       "choices": [
-        "7/6 km",
-        "5/5 km",
-        "1/2 km",
-        "2/3 km"
+        "1/4",
+        "1/2",
+        "3/4",
+        "2/3"
       ],
-      "answerIndex": 0,
-      "solution": "To find the total distance Jaya walks, we add 2/3 and 1/2. The least common denominator is 6, so 2/3 becomes 4/6 and 1/2 becomes 3/6. Adding 4/6 and 3/6 gives 7/6 km. The other options are incorrect calculations or values not matching the question.",
-      "checkExpr": "(2*2 + 1*3)/6",
+      "answerIndex": 2,
+      "solution": "If 3 rotis are shared equally among 4 children, each child gets 3/4 of a roti. This is because dividing 3 items by 4 people means each person receives 3 divided by 4. The option 1/4 is too small, 1/2 is less than 3/4, and 2/3 is not the result of dividing 3 by 4.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "जया अपने स्कूल जाने के लिए 2/3 किमी चलती है और फिर और 1/2 किमी चलती है। वह कुल कितनी दूरी तय करती है?",
+          "stem": "यदि 3 रोटियां 4 बच्चों द्वारा समान रूप से बांटी जाएं, तो प्रत्येक बच्चे को रोटी का कौन-सा भाग मिलता है?",
           "choices": [
-            "7/6 किमी",
-            "5/5 किमी",
-            "1/2 किमी",
-            "2/3 किमी"
+            "1/4",
+            "1/2",
+            "3/4",
+            "2/3"
           ],
-          "solution": "जया द्वारा तय की गई कुल दूरी ज्ञात करने के लिए हम 2/3 और 1/2 को जोड़ते हैं। सबसे छोटा सामान्य हर 6 है, इसलिए 2/3 को 4/6 और 1/2 को 3/6 में बदल दिया जाता है। 4/6 और 3/6 को जोड़ने पर 7/6 किमी प्राप्त होता है। अन्य विकल्प गलत गणना हैं या प्रश्न के अनुरूप मान नहीं हैं।",
+          "solution": "यदि 3 रोटियां 4 बच्चों में समान रूप से बांटी जाएं, तो प्रत्येक बच्चे को 3/4 रोटी मिलती है। इसका कारण यह है कि 3 वस्तुओं को 4 लोगों में बांटने से प्रत्येक व्यक्ति को 3 को 4 से विभाजित करके प्राप्त होता है। विकल्प 1/4 बहुत छोटा है, 1/2, 3/4 से कम है, और 2/3, 3 को 4 से विभाजित करने का परिणाम नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology common in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "जया आपल्या शाळेसाठी 2/3 किमी चालते आणि नंतर आणखी 1/2 किमी चालते. तिने किती एकूण अंतर चालले?",
+          "stem": "जर 3 रोटी 4 मुलांमध्ये समान रीतीने वाटल्या गेल्या, तर प्रत्येक मुलाला रोटीचा किती भाग मिळेल?",
           "choices": [
-            "7/6 किमी",
-            "5/5 किमी",
-            "1/2 किमी",
-            "2/3 किमी"
+            "1/4",
+            "1/2",
+            "3/4",
+            "2/3"
           ],
-          "solution": "जयाचे एकूण अंतर शोधण्यासाठी आम्ही 2/3 आणि 1/2 जोडतो. सर्वात लहान सामान्य छेद 6 आहे, म्हणून 2/3 हे 4/6 आणि 1/2 हे 3/6 मध्ये बदलले जाते. 4/6 आणि 3/6 जोडल्यास 7/6 किमी मिळतो. इतर विकल्प चुकीचे गणना किंवा प्रश्नाशी जुळत नसलेल्या मूल्यांचे आहेत.",
+          "solution": "जर 3 रोटी 4 मुलांमध्ये समान रीतीने वाटल्या गेल्या, तर प्रत्येक मुलाला 3/4 रोटी मिळेल. हे कारण तीन वस्तू चार लोकांमध्ये वाटल्यास प्रत्येक व्यक्तीला 3 भागला 4 ने भाग दिल्यास मिळते. 1/4 खूप लहान आहे, 1/2 3/4 पेक्षा कमी आहे आणि 2/3 3 ला 4 ने भाग दिल्याचा परिणाम नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terms for fractions and denominators.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains in the same position (option 2), and the distractors are still incorrect.",
           "flag": null
         }
       },
@@ -503,20 +375,530 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Incorrectly assumes one part is 1/4 of the total",
+        "Incorrectly assumes the division results in halves",
         null,
-        "Adding numerators and denominators separately (2+1)/(3+2) = 3/5, but miswriting as 5/5",
-        "Adds the numerators without finding a common denominator",
-        "Chooses one of the given distances without adding"
+        "Incorrectly assumes the division results in 2/3 of the total"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3/4, as 3 rotis divided among 4 children means each gets 3/4 of a roti. The author's reasoning is sound and the distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 18,
+          "pageStart": 35,
+          "pageEnd": 37,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.9 A Pinch of History"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 19,
+          "pageStart": 37,
+          "pageEnd": 40,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.9 A Pinch of History"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 20,
+          "pageStart": 40,
+          "pageEnd": 43,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.9 A Pinch of History"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T10:39:26.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If 7 rotis are divided among 5 children, how many rotis would 14 children get if the same amount is distributed?",
+      "choices": [
+        "14",
+        "10",
+        "7",
+        "5"
+      ],
+      "answerIndex": 1,
+      "solution": "If 7 rotis are divided among 5 children, each child gets 7/5 of a roti. To maintain the same amount per child, 14 children would need 14 × (7/5) = 9.8, which rounds to 10 rotis. 14 is too high because it doesn't account for the increased number of children. 7 and 5 do not maintain the proportional distribution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 7 रोटी 5 बच्चों के बीच बांटी जाएं, तो यही मात्रा बांटी जाए तो 14 बच्चों को कितनी रोटी मिलेंगी?",
+          "choices": [
+            "14",
+            "10",
+            "7",
+            "5"
+          ],
+          "solution": "यदि 7 रोटी 5 बच्चों के बीच बांटी जाएं, तो प्रत्येक बच्चे को 7/5 रोटी मिलती है। बराबर मात्रा बरकरार रखने के लिए, 14 बच्चों को 14 × (7/5) = 9.8 रोटी की आवश्यकता होगी, जो 10 रोटी में गोल कर दी जाती है। 14 बहुत अधिक है क्योंकि यह बच्चों की संख्या में वृद्धि को ध्यान में नहीं रखता। 7 और 5 अनुपातिक वितरण बरकरार नहीं रखते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution and options are correctly aligned with the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "7 रोटी 5 मुलांमध्ये वाटल्या गेल्या, तर जर तेच प्रमाण वाटले गेले तर 14 मुलांना किती रोटी मिळतील?",
+          "choices": [
+            "14",
+            "10",
+            "7",
+            "5"
+          ],
+          "solution": "जर 7 रोटी 5 मुलांमध्ये वाटल्या गेल्या, तर प्रत्येक मुलाला 7/5 रोटी मिळते. एकाच प्रमाणात वाटण्यासाठी 14 मुलांना 14 × (7/5) = 9.8, जे 10 रोटी वर फेरफटका देते. 14 जास्त आहे कारण मुलांच्या संख्येचा विचार केला गेलेला नाही. 7 आणि 5 अनुपाती वितरण ठेवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terms for 'roti' and 'children'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "uses the same number of rotis as children",
+        null,
+        "uses the original number of children",
+        "uses the original number of rotis"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 10, as the ratio of rotis to children (7:5) must be maintained. The solution is sound and matches the key.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 21,
+          "pageStart": 43,
+          "pageEnd": 45,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.9 A Pinch of History"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 22,
+          "pageStart": 45,
+          "pageEnd": 50,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.9 A Pinch of History"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T10:39:26.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the sum of 3/5 and 2/5?",
+      "choices": [
+        "5/10",
+        "6/10",
+        "5/5",
+        "1/5"
+      ],
+      "answerIndex": 2,
+      "solution": "The fractions have the same denominator, so we add the numerators directly. 3 + 2 = 5, and the denominator remains 5, so the sum is 5/5. The option '5/10' incorrectly adds denominators. The option '6/10' incorrectly adds numerators and denominators. The option '1/5' subtracts instead of adding.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "3/5 और 2/5 का योग क्या है?",
+          "choices": [
+            "5/10",
+            "6/10",
+            "5/5",
+            "1/5"
+          ],
+          "solution": "भिन्नों में समान हर है, इसलिए हम सीधे अंशों को जोड़ते हैं। 3 + 2 = 5, और हर 5 रहता है, इसलिए योग 5/5 है। विकल्प '5/10' गलत तरीके से हर को जोड़ता है। विकल्प '6/10' गलत तरीके से अंश और हर को जोड़ता है। विकल्प '1/5' जोड़ने के बजाय घटाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3/5 आणि 2/5 ची बेरीज किती आहे?",
+          "choices": [
+            "5/10",
+            "6/10",
+            "5/5",
+            "1/5"
+          ],
+          "solution": "अपूर्णांकांचे समान छेद असल्यामुळे आपण लगेच अंश बेरीज करू शकतो. 3 + 2 = 5, आणि छेद 5 चालू राहतो, म्हणून बेरीज 5/5 आहे. विकल्प '5/10' छेद बेरीज करतो. विकल्प '6/10' अंश आणि छेद बेरीज करतो. विकल्प '1/5' बेरीजऐवजी बरोबरी करतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "adds denominators",
+        "adds numerators and denominators",
+        null,
+        "subtracts instead of adds"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the author's key. The correct answer is 7/6 km, and the distractors reflect common misconceptions such as adding numerators and denominators separately, adding numerators without a common denominator, and selecting one of the given distances without adding.",
+      "critique": "The solution is correct. The correct answer is 5/5, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 11,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.7 Comparing Fractions"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 12,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.8 Addition and Subtraction of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 13,
+          "pageStart": 27,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.8 Addition and Subtraction of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 14,
+          "pageStart": 29,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.8 Addition and Subtraction of Fractions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T10:39:26.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the sum of 1/3 and 1/6?",
+      "choices": [
+        "2/9",
+        "1/2",
+        "3/6",
+        "2/3"
+      ],
+      "answerIndex": 1,
+      "solution": "To add 1/3 and 1/6, we find a common denominator. The least common denominator is 6. Converting 1/3 to 2/6, we get 2/6 + 1/6 = 3/6, which simplifies to 1/2. The option '2/9' incorrectly adds denominators. The option '3/6' is not in lowest terms. The option '2/3' incorrectly adds numerators without finding a common denominator.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "1/3 और 1/6 का योग क्या है?",
+          "choices": [
+            "2/9",
+            "1/2",
+            "3/6",
+            "2/3"
+          ],
+          "solution": "1/3 और 1/6 को जोड़ने के लिए हम एक सामान्य हर खोजते हैं। सबसे छोटा सामान्य हर 6 है। 1/3 को 2/6 में बदलकर हमें 2/6 + 1/6 = 3/6 मिलता है, जो 1/2 में सरलीकृत हो जाता है। विकल्प '2/9' हरों को गलती से जोड़ देता है। विकल्प '3/6' सबसे कम रूप में नहीं है। विकल्प '2/3' एक सामान्य हर के बिना अंशों को गलती से जोड़ देता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1/3 आणि 1/6 ची बेरीज किती आहे?",
+          "choices": [
+            "2/9",
+            "1/2",
+            "3/6",
+            "2/3"
+          ],
+          "solution": "1/3 आणि 1/6 जोडण्यासाठी, आम्ही सामान्य छेद शोधतो. लहानतम सामान्य छेद 6 आहे. 1/3 ला 2/6 मध्ये बदलल्यास, आम्ही 2/6 + 1/6 = 3/6 मिळतो, जो 1/2 मध्ये सोपे केला जातो. विकल्प '2/9' छेद जोडून चूक करतो. विकल्प '3/6' सर्वात लहान रूपात नाही. विकल्प '2/3' छेद शोधण्याशिवाय अंश जोडून चूक करतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "adds denominators",
+        null,
+        "does not simplify",
+        "adds numerators without common denominators"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The reasoning for the distractors reflects common misconceptions among students.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 11,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.7 Comparing Fractions"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 12,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.8 Addition and Subtraction of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 13,
+          "pageStart": 27,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.8 Addition and Subtraction of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 14,
+          "pageStart": 29,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.8 Addition and Subtraction of Fractions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T10:39:26.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the sum of 3/4 and 1/8?",
+      "choices": [
+        "1/2",
+        "5/8",
+        "7/8",
+        "3/4"
+      ],
+      "answerIndex": 2,
+      "solution": "To add 3/4 and 1/8, we need to find a common denominator. The least common denominator of 4 and 8 is 8. So, 3/4 becomes 6/8. Adding 6/8 and 1/8 gives 7/8. The other options are incorrect because 1/2 is too small, 5/8 is less than the correct answer, and 3/4 is the original fraction, not the sum.",
+      "checkExpr": "6/8 + 1/8",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "3/4 और 1/8 का योग क्या है?",
+          "choices": [
+            "1/2",
+            "5/8",
+            "7/8",
+            "3/4"
+          ],
+          "solution": "3/4 और 1/8 को जोड़ने के लिए हमें एक सामान्य हर खोजना होता है। 4 और 8 का लघुत्तम सामान्य हर 8 है। इसलिए 3/4 को 6/8 में बदल दिया जाता है। 6/8 और 1/8 को जोड़ने पर 7/8 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि 1/2 बहुत छोटा है, 5/8 सही उत्तर से कम है, और 3/4 मूल भिन्न है, न कि योग।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3/4 आणि 1/8 ची बेरीज किती आहे?",
+          "choices": [
+            "1/2",
+            "5/8",
+            "7/8",
+            "3/4"
+          ],
+          "solution": "3/4 आणि 1/8 जोडण्यासाठी, आम्हाला एक सामान्य छेद शोधणे आवश्यक आहे. 4 आणि 8 चा लहानतम सामान्य छेद 8 आहे. म्हणून, 3/4 हे 6/8 असते. 6/8 आणि 1/8 जोडल्यास 7/8 मिळते. इतर विकल्प चुकीचे आहेत कारण 1/2 खूप लहान आहे, 5/8 चुकीच्या उत्तरापेक्षा कमी आहे आणि 3/4 मूळ अपूर्णांक आहे, बेरीज नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the mathematical meaning, with appropriate Marathi terminology for fractions and denominators.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses adding numerators without common denominators",
+        "adds the numerators and denominators separately",
+        null,
+        "chooses the original fraction without adding"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and clearly explains the process of finding a common denominator and adding the fractions. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 11,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.7 Comparing Fractions"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 12,
+          "pageStart": 25,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.8 Addition and Subtraction of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 13,
+          "pageStart": 27,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.8 Addition and Subtraction of Fractions"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 14,
+          "pageStart": 29,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.8 Addition and Subtraction of Fractions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T10:39:26.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Jaya walks a total of 3/4 km to reach her school. She takes an auto for 1/2 km. How much distance does she walk?",
+      "choices": [
+        "1/2 km",
+        "1/4 km",
+        "3/4 km",
+        "1/3 km"
+      ],
+      "answerIndex": 1,
+      "solution": "The total distance Jaya walks is 3/4 km. She takes an auto for 1/2 km, so the remaining distance she walks is 3/4 - 1/2. Converting to a common denominator, this becomes 3/4 - 2/4 = 1/4 km. The correct answer is 1/4 km. Adding the denominators (4 + 2 = 6) would give 1/6, which is incorrect. Subtracting numerators directly (3 - 1 = 2) would give 2/4, which simplifies to 1/2, but that is not the correct method. Choosing 3/4 is incorrect because that is the total distance, not the remaining distance after the auto ride.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जया अपने स्कूल जाने के लिए कुल 3/4 किमी चलती है। वह 1/2 किमी के लिए एक ऑटो लेती है। वह कितनी दूरी चलती है?",
+          "choices": [
+            "1/2 किमी",
+            "1/4 किमी",
+            "3/4 किमी",
+            "1/3 किमी"
+          ],
+          "solution": "जया द्वारा चली गई कुल दूरी 3/4 किमी है। वह 1/2 किमी के लिए एक ऑटो लेती है, अतः शेष दूरी जो वह चलती है, 3/4 - 1/2 है। सामान्य हर में बदलकर, यह 3/4 - 2/4 = 1/4 किमी बन जाता है। सही उत्तर 1/4 किमी है। हरों को जोड़ना (4 + 2 = 6) देगा 1/6, जो गलत है। सीधे अंशों को घटाना (3 - 1 = 2) देगा 2/4, जो सरलीकृत होकर 1/2 बन जाता है, लेकिन यह सही विधि नहीं है। 3/4 चुनना गलत है क्योंकि यह कुल दूरी है, ऑटो यात्रा के बाद शेष दूरी नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जया शाळेत जाण्यासाठी एकूण 3/4 किमी चालते. तिने 1/2 किमी अटोमध्ये जाते. तिने किती अंतर चालावे लागते?",
+          "choices": [
+            "1/2 किमी",
+            "1/4 किमी",
+            "3/4 किमी",
+            "1/3 किमी"
+          ],
+          "solution": "जयाचे एकूण अंतर चालत जाण्याचे 3/4 किमी आहे. तिने 1/2 किमी अटोमध्ये जाते, म्हणून उरलेले अंतर तिने चालावे लागते ते 3/4 - 1/2 आहे. सामान्य छेदाचे रूपांतर करून, हे 3/4 - 2/4 = 1/4 किमी असते. योग्य उत्तर 1/4 किमी आहे. छेदांची बेरीज करून (4 + 2 = 6) 1/6 मिळते, जो चुकीचा आहे. अंशांची बेरीज करून (3 - 1 = 2) 2/4 मिळते, जो 1/2 मध्ये सोपवला जातो, परंतु हा योग्य पद्धत नाही. 3/4 निवडणे चुकीचे आहे कारण ते अटो राहिल्यानंतर उरलेले अंतर नाही, तर एकूण अंतर आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology common in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses subtraction with addition",
+        null,
+        "subtracts numerators directly without common denominator",
+        "chooses the total distance instead of the remaining distance"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the author's key. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp107.pdf",
@@ -550,155 +932,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T22:08:19.820Z",
+      "generatedAt": "2026-10-29T10:39:26.171Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If 5 glasses of juice are shared equally among 4 friends, how many glasses will each friend get?",
+      "stem": "If 12 glasses of juice are divided among 8 friends, and 7 glasses of juice are divided among 10 friends, which group gets a larger share per person?",
       "choices": [
-        "5/4",
-        "4/5",
-        "1/4",
-        "1/5"
+        "12/8",
+        "7/10",
+        "both same",
+        "not possible to say"
       ],
       "answerIndex": 0,
-      "solution": "If 5 glasses of juice are shared among 4 friends, each friend gets 5/4 glasses. The correct answer is '5/4'. '4/5' is the reciprocal, '1/4' and '1/5' are incorrect interpretations of the division.",
+      "solution": "The group with 12 glasses divided among 8 friends gets a larger share per person because 12 divided by 8 equals 1.5, which is more than 7 divided by 10, which equals 0.7. The option 7/10 is smaller, so it does not represent a larger share. Both same and not possible to say are incorrect because the division results are clearly different.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि 5 ग्लास रस 4 दोस्तों में बराबर-बराबर बांटे जाएं, तो प्रत्येक दोस्त को कितने ग्लास मिलेंगे?",
+          "stem": "यदि 12 ग्लास रस 8 दोस्तों में बांटे जाएं और 7 ग्लास रस 10 दोस्तों में बांटे जाएं, तो कौन-सा समूह प्रति व्यक्ति अधिक भाग प्राप्त करता है?",
           "choices": [
-            "5/4",
-            "4/5",
-            "1/4",
-            "1/5"
+            "12/8",
+            "7/10",
+            "दोनों समान",
+            "कहना संभव नहीं है"
           ],
-          "solution": "यदि 5 ग्लास रस 4 दोस्तों में बांटे जाएं, तो प्रत्येक दोस्त को 5/4 ग्लास मिलेगा। सही उत्तर '5/4' है। '4/5' व्युत्क्रम है, '1/4' और '1/5' भाग के गलत अर्थ हैं।",
+          "solution": "12 ग्लास रस 8 दोस्तों में बांटे जाने वाले समूह को प्रति व्यक्ति अधिक भाग मिलता है क्योंकि 12 का 8 से भाग देने पर 1.5 प्राप्त होता है, जो 7 के 10 से भाग देने पर प्राप्त 0.7 से अधिक है। विकल्प 7/10 छोटा है, इसलिए यह अधिक भाग का प्रतिनिधित्व नहीं करता है। दोनों समान और कहना संभव नहीं है गलत हैं क्योंकि भाग के परिणाम स्पष्ट रूप से अलग हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology and logical structure.",
           "flag": null
         },
         "mr": {
-          "stem": "5 ग्लास रस चार मित्रांमध्ये समान रीतीने वाटले जातात, तर प्रत्येक मित्राला किती ग्लास मिळेल?",
+          "stem": "12 ग्लास रस एकूण 8 मित्रांमध्ये वाटले जातात, आणि 7 ग्लास रस 10 मित्रांमध्ये वाटले जातात, तर कोणत्या गटाला प्रति व्यक्ती जास्त भाग मिळतो?",
           "choices": [
-            "5/4",
-            "4/5",
-            "1/4",
-            "1/5"
+            "12/8",
+            "7/10",
+            "दोन्ही समान",
+            "असंभव आहे म्हणून सांगता येणार नाही"
           ],
-          "solution": "5 ग्लास रस चार मित्रांमध्ये वाटले जातात, तर प्रत्येक मित्राला 5/4 ग्लास मिळतात. योग्य उत्तर '5/4' आहे. '4/5' हे व्यस्त आहे, '1/4' आणि '1/5' विभाजनाचे चुकीचे अर्थ आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Believes the number of friends is the numerator and the number of glasses is the denominator",
-        "confuses numerator and denominator",
-        "incorrectly assumes each friend gets a quarter"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is clear and the solution correctly identifies 5/4 as the answer. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 7,
-          "pageStart": 16,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 8,
-          "pageStart": 19,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 9,
-          "pageStart": 21,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp107.pdf",
-          "ordinal": 10,
-          "pageStart": 23,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 7: Fractions",
-            "7.6 Equivalent Fractions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T22:08:19.820Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If one roti is divided among 5 children, each child gets 1/5 of the roti. If one roti is divided among 9 children, each child gets 1/9 of the roti. Which of these fractions is greater?",
-      "choices": [
-        "1/5",
-        "1/9",
-        "Both are equal",
-        "Cannot be determined"
-      ],
-      "answerIndex": 0,
-      "solution": "The fraction 1/5 is greater than 1/9 because when the same quantity (one roti) is divided among fewer people (5 children), each person gets a larger share. The fraction 1/9 represents a smaller share because it is divided among more people. The other options are incorrect because 1/9 is not greater than 1/5, and they are not equal.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक रोटी 5 बच्चों में बांटी जाती है, तो प्रत्येक बच्चे को रोटी का 1/5 मिलता है। यदि एक रोटी 9 बच्चों में बांटी जाती है, तो प्रत्येक बच्चे को रोटी का 1/9 मिलता है। इनमें से कौन-सा भिन्न बड़ा है?",
-          "choices": [
-            "1/5",
-            "1/9",
-            "दोनों बराबर हैं",
-            "निर्धारित नहीं किया जा सकता"
-          ],
-          "solution": "भिन्न 1/5, 1/9 से बड़ा है क्योंकि जब समान मात्रा (एक रोटी) कम लोगों (5 बच्चे) में बांटी जाती है, तो प्रत्येक व्यक्ति को बड़ा हिस्सा मिलता है। भिन्न 1/9 छोटा हिस्सा दर्शाता है क्योंकि यह अधिक लोगों में बांटी जाती है। अन्य विकल्प गलत हैं क्योंकि 1/9, 1/5 से बड़ा नहीं है, और वे बराबर नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक रोटी 5 मुलांमध्ये वाटली गेली, तर प्रत्येक मुलाला रोटीचा 1/5 भाग मिळतो. जर एक रोटी 9 मुलांमध्ये वाटली गेली, तर प्रत्येक मुलाला रोटीचा 1/9 भाग मिळतो. खालीलपैकी कोणता अपूर्णांक जास्त आहे?",
-          "choices": [
-            "1/5",
-            "1/9",
-            "दोन्ही समान आहेत",
-            "निश्चित करता येत नाही"
-          ],
-          "solution": "1/5 अपूर्णांक 1/9 पेक्षा जास्त आहे कारण जेव्हा एकाच परिमाणाची (एक रोटी) विभाजन कमी लोकांमध्ये (5 मुलांमध्ये) केले जाते, तेव्हा प्रत्येकाला जास्त भाग मिळतो. 1/9 अपूर्णांक लहान भाग दर्शवतो कारण तो जास्त लोकांमध्ये विभाजित केला जातो. इतर विकल्प चुकीचे आहेत कारण 1/9, 1/5 पेक्षा जास्त नाही आणि ते समान नाहीत.",
+          "solution": "12 ग्लास रस 8 मित्रांमध्ये वाटले जातात असे गटाला प्रति व्यक्ती जास्त भाग मिळतो कारण 12 भाग 8 ने भाग जातो ते 1.5 येते, जे 7 भाग 10 ने भाग जातो ते 0.7 येतो च्या तुलनेत जास्त आहे. 7/10 हा विकल्प लहान आहे, म्हणून तो जास्त भाग दर्शवत नाही. दोन्ही समान आणि असंभव आहे म्हणून सांगता येणार नाही हे चूक आहे कारण भागाचे निकाल स्पष्ट वेगळे आहेत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -710,9 +984,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the size of the denominator with the value of the fraction",
-        "Fails to understand that a larger denominator means a smaller share",
-        "Misunderstands the concept of equal division among more people"
+        "confuses the fractions",
+        "thinks both fractions are the same",
+        "does not know how to compare fractions"
       ],
       "solverAnswers": [
         0,
@@ -721,8 +995,96 @@
         0,
         0
       ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0 (12/8), as 12/8 = 1.5 and 7/10 = 0.7, so the first group gets a larger share. The author's reasoning is sound, and the misconceptions listed for the wrong options are plausible.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 21,
+          "pageStart": 43,
+          "pageEnd": 45,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.9 A Pinch of History"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 22,
+          "pageStart": 45,
+          "pageEnd": 50,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.9 A Pinch of History"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T10:39:26.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a strip of paper is folded into 2 equal parts and then folded again into 2 equal parts, how many equal parts does the strip have?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "answerIndex": 2,
+      "solution": "Each fold doubles the number of parts. After the first fold, there are 2 parts, and after the second fold, each of those parts is divided again, resulting in 4 equal parts. Options 2 and 3 do not account for the doubling effect of each fold.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक कागज के पट्टे को 2 समान भागों में मोड़ा जाता है और फिर दोबारा 2 समान भागों में मोड़ा जाता है, तो पट्टा के कितने समान भाग होते हैं?",
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "solution": "प्रत्येक मोड़ भागों की संख्या को दुगुना कर देता है। पहले मोड़ के बाद 2 भाग होते हैं, और दूसरे मोड़ के बाद प्रत्येक भाग फिर से विभाजित हो जाता है, जिससे 4 समान भाग प्राप्त होते हैं। विकल्प 2 और 3 प्रत्येक मोड़ के द्विगुणन प्रभाव को ध्यान में नहीं रखते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर कागदाचा एक टुकडा 2 समान भागांमध्ये मोडला जातो आणि नंतर पुन्हा 2 समान भागांमध्ये मोडला जातो, तर कागदाचा टुकडा किती समान भागांमध्ये असेल?",
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "solution": "प्रत्येक फोल्ड भागांची संख्या दुप्पट करतो. पहिल्या फोल्ड नंतर 2 भाग असतात, आणि दुसऱ्या फोल्ड नंतर प्रत्येक भाग पुन्हा विभागला जातो, जे 4 समान भागांमध्ये नेतो. विकल्प 2 आणि 3 फोल्डच्या दुप्पट प्रभावाचा विचार करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for folding and parts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "thinks the strip is folded into 2 parts only",
+        "thinks the strip is folded into 3 parts",
+        null,
+        "thinks the strip is folded into 6 parts"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that 1/5 is greater than 1/9 because dividing a whole among fewer people results in larger shares. The reasoning is sound and matches the correct answer.",
+      "critique": "The correct answer is 4, not 2. The author's key is incorrect. Folding a strip into 2 parts and then again into 2 parts results in 4 equal parts. The author's solution and key are wrong.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp107.pdf",
@@ -765,7 +1127,105 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T22:08:19.820Z",
+      "generatedAt": "2026-10-29T10:39:26.171Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A fraction is said to be in its simplest form if its numerator and denominator have no common factor other than 1. Which of the following fractions is in its simplest form?",
+      "choices": [
+        "3/9",
+        "4/12",
+        "5/15",
+        "7/10"
+      ],
+      "answerIndex": 3,
+      "solution": "The fraction 7/10 is in its simplest form because 7 and 10 have no common factors other than 1. 3/9 can be simplified to 1/3, 4/12 can be simplified to 1/3, and 5/15 can be simplified to 1/3.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक भिन्न को सरलतम रूप में कहा जाता है यदि इसके अंश और हर में 1 के अलावा कोई सामान्य गुणनखंड न हो। निम्नलिखित में से कौन-सी भिन्न सरलतम रूप में है?",
+          "choices": [
+            "3/9",
+            "4/12",
+            "5/15",
+            "7/10"
+          ],
+          "solution": "भिन्न 7/10 सरलतम रूप में है क्योंकि 7 और 10 के कोई सामान्य गुणनखंड 1 के अलावा नहीं हैं। 3/9 को 1/3 में सरल किया जा सकता है, 4/12 को 1/3 में सरल किया जा सकता है, और 5/15 को 1/3 में सरल किया जा सकता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक अपूर्णांक त्याच्या सर्वात सोप्या रूपात असतो जर त्याच्या अंश आणि हरमध्ये 1 शिवाय इतर कोणताही सामायिक अपवर्तक नसेल. खालीलपैकी कोणता अपूर्णांक सर्वात सोप्या रूपात आहे?",
+          "choices": [
+            "3/9",
+            "4/12",
+            "5/15",
+            "7/10"
+          ],
+          "solution": "अपूर्णांक 7/10 सर्वात सोप्या रूपात आहे कारण 7 आणि 10 ला 1 शिवाय इतर कोणताही सामायिक अपवर्तक नाही. 3/9 ला 1/3 मध्ये सोपे केले जाऊ शकते, 4/12 ला 1/3 मध्ये सोपे केले जाऊ शकते आणि 5/15 ला 1/3 मध्ये सोपे केले जाऊ शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses simplification with the original form",
+        "Confuses simplification with the original form",
+        "Confuses simplification with the original form",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 7/10, as 7 and 10 have no common factors other than 1. The other options can all be simplified, and the author's reasoning for the wrong options is valid, as they reflect a common misconception of confusing the original form with the simplified form.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 18,
+          "pageStart": 35,
+          "pageEnd": 37,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.9 A Pinch of History"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 19,
+          "pageStart": 37,
+          "pageEnd": 40,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.9 A Pinch of History"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp107.pdf",
+          "ordinal": 20,
+          "pageStart": 40,
+          "pageEnd": 43,
+          "headingPath": [
+            "Chapter 7: Fractions",
+            "7.9 A Pinch of History"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T10:39:26.171Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

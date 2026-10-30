@@ -1,0 +1,465 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T19:14:45.689Z",
+  "finishedAt": "2026-10-24T19:19:34.823Z",
+  "seconds": 289,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 1 — Living World and Classification of Microbes",
+    "edition": "First Edition 2018",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2025-26]\n1. C. Cuscuta, ticks, lice, leeches and tapeworm; as all of these are parasites. 1",
+      "[INJSO 2023 — question paper]\n3. Some microbes produce diffusible\nmetabolites that can be used by\nother microbes for their growth.\nThree such microorganisms were\ntested for their nutritional growth\nrequirements (under +/- light,\nscheme below) either on minimal\nsalt media (lacking any organic\nsources of carbon and nitrogen)\nOR on complete or rich media con-\ntaining salts with organic carbon\nand nitrogen.\nBased on the growth patterns\nshown after 24hrs, pick the correct\noption:\nA. P - Autotrophs, Q - Heterotroph, R - Heterotroph\nB. P – Photoautotroph, Q – Chemoheterotroph, R - Chemoautotroph\nC. P - Chemoautotrophs, Q - Chemoautotrophs, R – Heterotroph\nD. P - Photoautotroph, Q - Chemoheterotroph, R - Saprophyte",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n1. Select the group in which all organisms have the same mode of nutrition. 1\nA. Cuscuta, yeast, legumes, leeches and tapeworm\nB. Cactus, ticks, lice, leeches and cow\nC. Cuscuta, ticks, lice, leeches and tapeworm\nD. Cactus, grass, lice, lion and tapeworm",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n10. D. Longer small intestine."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 85532,
+      "in": 21,
+      "out": 21,
+      "rejects": 0,
+      "promptTokens": 16859,
+      "completionTokens": 5122
+    },
+    "critique": {
+      "calls": 26,
+      "ms": 148713,
+      "in": 21,
+      "out": 21,
+      "rejects": 0,
+      "promptTokens": 12165,
+      "completionTokens": 4559
+    },
+    "solver": {
+      "calls": 135,
+      "ms": 61965,
+      "in": 21,
+      "out": 20,
+      "rejects": 1,
+      "promptTokens": 19890,
+      "completionTokens": 1225
+    },
+    "form": {
+      "calls": 11,
+      "ms": 31869,
+      "in": 20,
+      "out": 8,
+      "rejects": 12,
+      "promptTokens": 2810,
+      "completionTokens": 916
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 68,
+      "ms": 10443,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 277862,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16820,
+      "completionTokens": 8546
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about viruses?",
+      "ms": {
+        "draft": 5775,
+        "critique": 5063,
+        "solver": 1531,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of fungi?",
+      "ms": {
+        "draft": 5775,
+        "critique": 6984,
+        "solver": 1676,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a parasitic microorganism?",
+      "ms": {
+        "draft": 5775,
+        "critique": 5038,
+        "solver": 1332,
+        "form": 3745
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is true about the classification of microorganisms?",
+      "ms": {
+        "draft": 5775,
+        "critique": 4057,
+        "solver": 822,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is true about the size of microorganisms according to the passage?",
+      "ms": {
+        "draft": 5775,
+        "critique": 5044,
+        "solver": 5045,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about viruses is correct?",
+      "ms": {
+        "draft": 3171,
+        "critique": 7091,
+        "solver": 11923,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of fungi according to the passage?",
+      "ms": {
+        "draft": 3171,
+        "critique": 6682,
+        "solver": 13005,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a parasitic microbe according to the passage?",
+      "ms": {
+        "draft": 3171,
+        "critique": 6872,
+        "solver": 13491,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of organisms in Kingdom Monera?",
+      "ms": {
+        "draft": 4579,
+        "critique": 5315,
+        "solver": 1450,
+        "form": 3511
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a microorganism is found to be unicellular, lacks a nucleus, and can perform photosynthesis, which kingdom would it most likely belong to?",
+      "ms": {
+        "draft": 4579,
+        "critique": 9033,
+        "solver": 1369
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the classification of bacteria according to the passage?",
+      "ms": {
+        "draft": 4579,
+        "critique": 6914,
+        "solver": 2299,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A new microorganism is discovered that is unicellular, lacks a nucleus, and is heterotrophic. It is found to be capable of forming a protective structure under harsh conditions. Which kingdom would this organism most likely belong to, and why?",
+      "ms": {
+        "draft": 4579,
+        "critique": 5947,
+        "solver": 856,
+        "form": 2367
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A microorganism is found in a pond and is observed to move using flagella. It contains a nucleus and can perform photosynthesis. Which kingdom is it most likely to belong to?",
+      "ms": {
+        "draft": 4579,
+        "critique": 6175,
+        "solver": 8863,
+        "form": 941
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of organisms in Kingdom Monera?",
+      "ms": {
+        "draft": 2985,
+        "critique": 5030,
+        "solver": 2015,
+        "form": 2658
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a mode of nutrition of fungi?",
+      "ms": {
+        "draft": 2985,
+        "critique": 4453,
+        "solver": 1618,
+        "form": 3142,
+        "translation": 36084
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a feature of organisms in Kingdom Protista?",
+      "ms": {
+        "draft": 2985,
+        "critique": 4453,
+        "solver": 997,
+        "form": 4230,
+        "translation": 49754
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a mode of reproduction in bacteria?",
+      "ms": {
+        "draft": 2985,
+        "critique": 6832,
+        "solver": 1656,
+        "form": 4079,
+        "translation": 45282
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct characteristic of bacteria?",
+      "ms": {
+        "draft": 2985,
+        "critique": 6087,
+        "solver": 1168,
+        "form": 4451,
+        "translation": 39648
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of protozoa?",
+      "ms": {
+        "draft": 2985,
+        "critique": 6619,
+        "solver": 2067,
+        "form": 4092,
+        "translation": 46599
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a microbe requires organic sources of carbon and nitrogen for growth, which of the following types of nutrition does it exhibit?",
+      "ms": {
+        "draft": 3171,
+        "critique": 5990,
+        "solver": 1433,
+        "form": 0,
+        "translation": 34934
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of an organism that is considered to be at the edge of living and nonliving?",
+      "ms": {
+        "draft": 3171,
+        "critique": 6236,
+        "solver": 2021,
+        "form": 3142,
+        "translation": 21789
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about viruses?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct statement, but not the reason for the answer. The pa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of fungi?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct statement, but not the reason for the answer…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the habitat of fungi, thinking they live in d…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a parasitic microorganism?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct statement, but not the reason for the answer. The pa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is true about the classification of microorganisms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct statement, but not the reason for the answer. The pa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements is true about the size of microorganisms according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 say the same thing (\"Viruses are larger than fungi\" / \"Fungi are larger than viruses\"); distractor 3's reason is not a one-line misconception (\"Correct statement, but not the reason for the answer. The pa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about viruses is correct?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of fungi according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a parasitic microbe according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Believes fungi can be parasitic because they are mentioned i…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of organisms in Kingdom Monera?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given for this option (it is th…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a microorganism is found to be unicellular, lacks a nucleus, and can perform photosynthesis, which kingdom would it most likely belong to?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the classification of bacteria according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Correct answer, so no reason given for this option (it is th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A new microorganism is discovered that is unicellular, lacks a nucleus, and is heterotrophic. It is found to be capable of forming a protective structure under harsh conditions. Which kingdom would this organism most likely belong to, and why?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given for this option (it is th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A microorganism is found in a pond and is observed to move using flagella. It contains a nucleus and can perform photosynthesis. Which kingdom is it most likely to belong to?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of organisms in Kingdom Monera?",
+      "reason": "near-duplicate of served question cmvg59ofi027rgpfh48f6vtg3 (cosine 0.902 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,860 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T03:28:16.129Z",
+  "finishedAt": "2026-10-30T03:39:55.353Z",
+  "seconds": 699,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc110.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 10 — Sound Waves: Characteristics and Applications",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 30,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — question paper]\n20. (6 marks) Smartphones can be used to perform simple experiments related to sound. There are various\napps which record the intensity of an audio signal. An app (WaveEditor TM here) displays the audio signal\nin the form of a wave, whose amplitude is proportional to the loudness of the audio signal.\nTwo students Fatima (F) and Bharat (B) conduct a simple experiment using smartphones. In an open\nfield, both place their smartphones at a distance d from each other as shown in the figure. They stand\nnext to their smartphones, and clap one after another. The audio signals from the claps are digitally\nrecorded by WaveEditor TM and the output produced on their smartphone screens are shown next to ",
+      "[INJSO 2022 — solutions or answer key]\n6. A. frequency of sound waves will not change due to motion of air.",
+      "[INJSO 2023 — question paper]\n22. A pulse of sound is generated at the centre of a room of rectangular cross section having\ndimensions 20 m × 20 m × 30 m. Speed of sound is 350 m/s. Consider all possibilities of\nhearing echoes of this pulse. Some of the instances of time when echoes can be detected at the location of the source are … A. 81 ms HBCSE B. 86 ms C. 96 ms D. 103 ms 7",
+      "[INJSO 2017 — question paper]\n16. A sound wave of fixed frequency is going through a medium in the X direction. Ignore the velocities of\nthe particles due to thermal motion and assume that the layers of the medium perform simple\nharmonic motions about their mean positions. Graph in the figure represents displacements of the\nparticles from their mean positions (plotted on Y axis) at a particular instant of time. Some of the\nparticles are labeled by alphabets a – s. Velocity of the particle G is directed negative at that instant.\nPoints C, I and O correspond to maximum displacement at that instant.\nI) The sound wave is travelling along the\nnegative X direction.\nII) The sound wave is travelling along the\npositive X directio"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 242954,
+      "in": 46,
+      "out": 44,
+      "rejects": 3,
+      "promptTokens": 55691,
+      "completionTokens": 12416
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 379245,
+      "in": 44,
+      "out": 31,
+      "rejects": 13,
+      "promptTokens": 24674,
+      "completionTokens": 9379
+    },
+    "solver": {
+      "calls": 208,
+      "ms": 113797,
+      "in": 31,
+      "out": 24,
+      "rejects": 7,
+      "promptTokens": 37370,
+      "completionTokens": 2056
+    },
+    "form": {
+      "calls": 17,
+      "ms": 124692,
+      "in": 24,
+      "out": 10,
+      "rejects": 14,
+      "promptTokens": 20420,
+      "completionTokens": 2889
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 58,
+      "ms": 10228,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 325593,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19507,
+      "completionTokens": 9794
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What happens to the sound produced by a vibrating rubber band when the vibrations stop?",
+      "ms": {
+        "draft": 3009,
+        "critique": 6376
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason sound is produced?",
+      "ms": {
+        "draft": 3009,
+        "critique": 8797
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given passage, which of the following can be concluded about sound propagation?",
+      "ms": {
+        "draft": 3009,
+        "critique": 8115
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a tuning fork is struck and placed near a water surface. What is the most likely observation?",
+      "ms": {
+        "draft": 3009,
+        "critique": 8480
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a vibrating object that produces sound?",
+      "ms": {
+        "draft": 3009,
+        "critique": 7829,
+        "solver": 14270
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a tuning fork is struck and then placed in a vacuum, what will happen?",
+      "ms": {
+        "draft": 3009,
+        "critique": 8536
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best explains why sound cannot travel in a vacuum?",
+      "ms": {
+        "draft": 6426,
+        "critique": 7525,
+        "solver": 1561,
+        "form": 2860
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the movement of sound through a medium?",
+      "ms": {
+        "draft": 6426,
+        "critique": 7085,
+        "solver": 2011,
+        "form": 5568
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the sound of a bell if most of the air is removed from a jar containing it?",
+      "ms": {
+        "draft": 6426,
+        "critique": 7649,
+        "solver": 1331,
+        "form": 3798
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the slinky experiment, what is the role of the mark on the slinky?",
+      "ms": {
+        "draft": 6426,
+        "critique": 7407,
+        "solver": 1356
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A sound wave is produced in a room with dimensions 20 m × 20 m × 30 m. The speed of sound is 350 m/s. At what minimum time can an echo be detected at the source?",
+      "ms": {
+        "draft": 4678,
+        "critique": 8101,
+        "solver": 1552,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, grains are placed on a stretched sheet, and a loud sound is produced near the sheet. The grains move, showing that the sheet vibrates. What does this experiment demonstrate?",
+      "ms": {
+        "draft": 4678,
+        "critique": 5671,
+        "solver": 2553,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A sound wave is produced by a source and travels through a medium. What happens to the particles of the medium as the wave moves?",
+      "ms": {
+        "draft": 4678,
+        "critique": 6829,
+        "solver": 13315,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does a sound wave transfer from one place to another?",
+      "ms": {
+        "draft": 3403,
+        "critique": 6905
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A sound wave is produced in a medium and travels in the positive X direction. At a particular instant, the displacement of the particles is shown in a graph. Which of the following correctly describes the motion of the particles?",
+      "ms": {
+        "draft": 4678,
+        "critique": 6883,
+        "solver": 1591,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a graphical representation of a sound wave, what do the highest and lowest points represent?",
+      "ms": {
+        "draft": 3403,
+        "critique": 7459
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A sound wave is shown in a graph where the density of the medium varies with time. If the time period of the wave is 0.2 seconds, what is the frequency of the wave?",
+      "ms": {
+        "draft": 3403,
+        "critique": 7022
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a sound wave, the distance between two consecutive crests is 2 meters. What is the wavelength of the wave?",
+      "ms": {
+        "draft": 3403,
+        "critique": 6619
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the amplitude of a sound wave represent?",
+      "ms": {
+        "draft": 9171,
+        "critique": 7226,
+        "solver": 2338,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a physical property of sound that can be measured?",
+      "ms": {
+        "draft": 5104,
+        "critique": 6117,
+        "solver": 10361
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person claps in a large empty hall and hears an echo after 0.4 s. What is the minimum distance of the reflecting surface from the person, if the speed of sound is 340 m/s?",
+      "ms": {
+        "draft": 5323,
+        "critique": 5844,
+        "solver": 1904
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A sound wave is emitted from a source and reflects off a surface. The time between the emission and the echo is 0.3 s. If the speed of sound is 340 m/s, what is the minimum distance of the reflecting surface from the source, and why is this distance important?",
+      "ms": {
+        "draft": 5323,
+        "critique": 10838,
+        "solver": 1655,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A bat emits ultrasonic waves and receives the echo after 0.02 s. If the speed of sound is 340 m/s, what is the distance of the object from the bat?",
+      "ms": {
+        "draft": 5323,
+        "critique": 6098,
+        "solver": 16398
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person hears two sounds from a source at the same time, with a time difference of 0.15 seconds. What is the minimum distance between the source and the reflecting surface if the speed of sound is 340 m/s?",
+      "ms": {
+        "draft": 6342,
+        "critique": 7112,
+        "solver": 3212
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person hears two sounds from the same source with a time difference of 0.2 seconds, what is the minimum distance between the source and the reflecting surface?",
+      "ms": {
+        "draft": 6342,
+        "critique": 8418
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A sound wave has a frequency of 1000 Hz and travels at a speed of 340 m/s. What is its wavelength?",
+      "ms": {
+        "draft": 6342,
+        "critique": 6968,
+        "solver": 13172,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a room with dimensions 20 m × 20 m × 30 m, a sound pulse is generated at the center. How long will it take for an echo to be heard from the farthest wall?",
+      "ms": {
+        "draft": 6342,
+        "critique": 13515
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A sound wave with a frequency of 20 Hz is produced in air. What is the wavelength of this wave if the speed of sound in air is 344 m/s?",
+      "ms": {
+        "draft": 7897,
+        "critique": 7759,
+        "solver": 13039
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a medium, a sound wave travels 5000 m/s. If the wavelength of the wave is 50 m, what is the frequency of the wave?",
+      "ms": {
+        "draft": 7897,
+        "critique": 7088,
+        "solver": 2723,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the intensity of a sound wave as it travels away from its source?",
+      "ms": {
+        "draft": 7897,
+        "critique": 6819,
+        "solver": 1828,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is transferred when a sound wave travels through a medium?",
+      "ms": {
+        "draft": 4929,
+        "critique": 5620
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a sound wave has a frequency of 1000 Hz, how many density oscillations occur in 0.5 seconds?",
+      "ms": {
+        "draft": 4929,
+        "critique": 6353
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the speed of sound in different mediums?",
+      "ms": {
+        "draft": 7897,
+        "critique": 6954,
+        "solver": 1458,
+        "form": 3498
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an experiment, grains on a stretched sheet vibrate when a loud sound is produced. What is the main reason for the grains vibrating?",
+      "ms": {
+        "draft": 6056,
+        "critique": 5847,
+        "solver": 2335,
+        "form": 4235
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person shouts in a large empty room and hears an echo after 0.6 s. What is the minimum distance of the reflecting surface from the person, if the speed of sound is 340 m/s?",
+      "ms": {
+        "draft": 5323,
+        "critique": 8855,
+        "solver": 1393,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A sonar device sends a signal into water and receives the echo after 3 s. If the speed of sound in water is 1500 m/s, what is the depth of the water at that location?",
+      "ms": {
+        "draft": 5323,
+        "critique": 7908,
+        "solver": 14926,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the minimum distance required for an echo to be heard clearly, assuming the speed of sound is 340 m/s?",
+      "ms": {
+        "draft": 5474,
+        "critique": 7056,
+        "solver": 2062,
+        "form": 0,
+        "translation": 48444
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the vacuum bell jar experiment demonstrate?",
+      "ms": {
+        "draft": 4305,
+        "critique": 6938,
+        "solver": 867,
+        "form": 0,
+        "translation": 28640
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of wave is a sound wave?",
+      "ms": {
+        "draft": 6056,
+        "critique": 6604,
+        "solver": 11094,
+        "form": 1255,
+        "translation": 26188
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the quality of sound that allows us to distinguish between two musical instruments playing the same note?",
+      "ms": {
+        "draft": 6342,
+        "critique": 8045,
+        "solver": 1747,
+        "form": 0,
+        "translation": 36585
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason sound waves cannot travel through a vacuum?",
+      "ms": {
+        "draft": 4678,
+        "critique": 6462,
+        "solver": 1894,
+        "form": 0,
+        "translation": 38759
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A sonar device sends a signal into water and receives the echo after 1.2 s. If the speed of sound in water is 1500 m/s, what is the depth of the water at that location?",
+      "ms": {
+        "draft": 5323,
+        "critique": 5499,
+        "solver": 15953,
+        "form": 0,
+        "translation": 40133
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student hears a sound coming from a room that is completely sealed and has no windows. What can be concluded about the medium in the room?",
+      "ms": {
+        "draft": 6426,
+        "critique": 7664,
+        "solver": 1515,
+        "form": 3581,
+        "translation": 51630
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a vacuum, can sound waves be produced by vibrating objects?",
+      "ms": {
+        "draft": 6426,
+        "critique": 6680,
+        "solver": 2112,
+        "form": 3485,
+        "translation": 48052
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A loud sound is produced in an open field, and the sound spreads out in all directions. What type of waves are these?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the SI unit of frequency of a sound wave?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What happens to the sound produced by a vibrating rubber band when the vibrations stop?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason sound is produced?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the given passage, which of the following can be concluded about sound propagation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In an experiment, a tuning fork is struck and placed near a water surface. What is the most likely observation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of a vibrating object that produces sound?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a tuning fork is struck and then placed in a vacuum, what will happen?",
+      "reason": "the critic finds option 1 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best explains why sound cannot travel in a vacuum?",
+      "reason": "figure: figure spec refused: spec.parts.2.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'vacuumPump'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the movement of sound through a medium?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'person'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to the sound of a bell if most of the air is removed from a jar containing it?",
+      "reason": "figure: figure spec refused: spec.parts.2.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'vacuumPump'"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In the slinky experiment, what is the role of the mark on the slinky?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A sound wave is produced in a room with dimensions 20 m × 20 m × 30 m. The speed of sound is 350 m/s. At what minimum time can an echo be detected at the source?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(2*30)/350\" = 0.17142857142857143, but the key says 0.17"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In an experiment, grains are placed on a stretched sheet, and a loud sound is produced near the sheet. The grains move, showing that the sheet vibrates. What does this experiment demonstrate?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.mirror: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A sound wave is produced by a source and travels through a medium. What happens to the particles of the medium as the wave moves?",
+      "reason": "options 1 and 2 say the same thing (\"They vibrate in a direction perpendicular to the wave's motion\" / \"They vibrate in a direction parallel to the wave's motion\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does a sound wave transfer from one place to another?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A sound wave is produced in a medium and travels in the positive X direction. At a particular instant, the displacement of the particles is shown in a graph. Which of the following correctly describes the motion of the particles?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a graphical representation of a sound wave, what do the highest and lowest points represent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A sound wave is shown in a graph where the density of the medium varies with time. If the time period of the wave is 0.2 seconds, what is the frequency of the wave?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In a sound wave, the distance between two consecutive crests is 2 meters. What is the wavelength of the wave?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the amplitude of a sound wave represent?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.incidentRay: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a physical property of sound that can be measured?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"Which of the following is a characteristic of a sound wave?\",\"options\":[\"It travels in"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A person claps in a large empty hall and hears an echo after 0.4 s. What is the minimum distance of the reflecting surface from the person, if the speed of sound is 340 m/s?",
+      "reason": "the solver picked option 2 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A sound wave is emitted from a source and reflects off a surface. The time between the emission and the echo is 0.3 s. If the speed of sound is 340 m/s, what is the minimum distance of the reflecting surface from the source, and why is this distance important?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A bat emits ultrasonic waves and receives the echo after 0.02 s. If the speed of sound is 340 m/s, what is the distance of the object from the bat?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A person hears two sounds from a source at the same time, with a time difference of 0.15 seconds. What is the minimum distance between the source and the reflecting surface if the speed of sound is 340 m/s?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person hears two sounds from the same source with a time difference of 0.2 seconds, what is the minimum distance between the source and the reflecting surface?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A sound wave has a frequency of 1000 Hz and travels at a speed of 340 m/s. What is its wavelength?",
+      "reason": "options 1 and 2 are the same (\"34 m\"); options are written to different precisions (0 and 2 decimals); options 1 and 2 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a room with dimensions 20 m × 20 m × 30 m, a sound pulse is generated at the center. How long will it take for an echo to be heard from the farthest wall?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A sound wave with a frequency of 20 Hz is produced in air. What is the wavelength of this wave if the speed of sound in air is 344 m/s?",
+      "reason": "after redrafting distractor 0: the critic finds option 0 correct, the key is 1"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a medium, a sound wave travels 5000 m/s. If the wavelength of the wave is 50 m, what is the frequency of the wave?",
+      "reason": "figure: figure spec refused: spec.frame.unit: Invalid enum value. Expected 'cm' | 'units', received 'm'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the intensity of a sound wave as it travels away from its source?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'pointSource'"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is transferred when a sound wave travels through a medium?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a sound wave has a frequency of 1000 Hz, how many density oscillations occur in 0.5 seconds?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about the speed of sound in different mediums?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels Air, Water, Steel, Speed"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In an experiment, grains on a stretched sheet vibrate when a loud sound is produced. What is the main reason for the grains vibrating?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer. The passage states that sound waves transfer…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A person shouts in a large empty room and hears an echo after 0.6 s. What is the minimum distance of the reflecting surface from the person, if the speed of sound is 340 m/s?",
+      "reason": "near-duplicate of served question cmvgld5r3048agpfh1w4xkn3i (cosine 0.906 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A sonar device sends a signal into water and receives the echo after 3 s. If the speed of sound in water is 1500 m/s, what is the depth of the water at that location?",
+      "reason": "near-duplicate of batch item \"A sonar device sends a signal into water and recei…\" (cosine 0.983 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

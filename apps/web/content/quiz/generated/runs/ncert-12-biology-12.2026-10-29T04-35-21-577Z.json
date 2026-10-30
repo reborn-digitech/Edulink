@@ -1,0 +1,752 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T04:35:21.577Z",
+  "finishedAt": "2026-10-29T04:44:48.216Z",
+  "seconds": 567,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo112.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 12 — Ecosystem",
+    "edition": "Reprint 2026-27",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n21. A. 2\n(i) The first (upright) pyramid of biomass corresponds to a terrestrial\necosystem. Producers have maximum biomass, decreasing with\nherbivores (primary consumer), secondary consumer and tertiary\nconsumer. Second (inverted) pyramid refers to a small standing crop of\nphytoplankton supporting a large standing crop of zooplankton/aquatic\necosystem. (1)\n(ii)\n(1)\n- - - - - - - - - - - - - - - - - - -\nFor Visually impaired students\n(Answer same as (i) and (ii) above)\nOR\nB.\n(i) 3000+1300+427+427+378= 5532 (1)\n(ii)\n(a) Animals are mobile and can migrate to escape harsh conditions or\nexplore new areas.\n(b) Animals have adapted to changing environments, developing complex\nnervous systems and re",
+      "[NSEB 2016 — question paper]\n62. Following are the biotic components of an ecosystem:\n(i) Primary producers (ii) Primary consumers (iii) Secondary consumers\n(iv) Tertiary consumers (v) Decomposers\nThe component/s without which an ecosystem cannot exist is/are:\na) i, ii, iii, iv and v b) i & v only c) i & ii only d) i only",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n28. Impacts of loss of biodiversity on the ecosystem: 3\n(a)\n(i) Decline in plant production\n(ii) Lowered resistance to environmental perturbations such as\ndrought\n(iii) Increased variability in certain ecosystems – processes such as\nplant productivity, water use, pest and disease cycles.\n(½ x 3 = 1 ½ marks)\n(b)\n(i) Habitat loss and fragmentation\n(ii) Over-exploitation\n(iii) Alien invasive species\n(iv) Co-extinctions. (Any three - ½ x 3 = 1½)",
+      "[NSEB 2020 — question paper]\n16. For an ecosystem comprising of a tree, birds and parasites, the biomass pyramid will take the shape\nof:\na. b\nc. d"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 165167,
+      "in": 41,
+      "out": 39,
+      "rejects": 2,
+      "promptTokens": 32994,
+      "completionTokens": 9553
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 337716,
+      "in": 39,
+      "out": 31,
+      "rejects": 8,
+      "promptTokens": 23875,
+      "completionTokens": 9180
+    },
+    "solver": {
+      "calls": 240,
+      "ms": 129277,
+      "in": 31,
+      "out": 22,
+      "rejects": 9,
+      "promptTokens": 45571,
+      "completionTokens": 2705
+    },
+    "form": {
+      "calls": 14,
+      "ms": 69419,
+      "in": 22,
+      "out": 13,
+      "rejects": 9,
+      "promptTokens": 8923,
+      "completionTokens": 1720
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 54,
+      "ms": 10118,
+      "in": 13,
+      "out": 12,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 51,
+      "ms": 589090,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 33201,
+      "completionTokens": 18036
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 0,
+    "6": 4
+  },
+  "flagged": 5,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a function of an ecosystem as described in the passage?",
+      "ms": {
+        "draft": 3747,
+        "critique": 6148
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which type of ecosystem would you expect to find a large number of decomposers like fungi and bacteria?",
+      "ms": {
+        "draft": 3747,
+        "critique": 7392,
+        "solver": 1926
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the low productivity of the oceans as mentioned in the passage?",
+      "ms": {
+        "draft": 3747,
+        "critique": 7457
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an ecosystem has a high rate of decomposition, what can be inferred about the ecosystem?",
+      "ms": {
+        "draft": 3747,
+        "critique": 7695,
+        "solver": 1653
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is defined as the amount of biomass or organic matter produced per unit area over a time period by plants during photosynthesis?",
+      "ms": {
+        "draft": 3747,
+        "critique": 6168,
+        "solver": 11425,
+        "form": 3658
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct example of a detritus food chain in a terrestrial ecosystem?",
+      "ms": {
+        "draft": 3067,
+        "critique": 8127
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an ecosystem, which of the following is true about the role of decomposers?",
+      "ms": {
+        "draft": 3067,
+        "critique": 8110
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following organisms is most likely to be a primary consumer in a terrestrial ecosystem?",
+      "ms": {
+        "draft": 3067,
+        "critique": 8174
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the biomass pyramid in a terrestrial ecosystem is usually upright?",
+      "ms": {
+        "draft": 3747,
+        "critique": 7043,
+        "solver": 16032,
+        "form": 3195
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the first law of thermodynamics in the context of energy flow in ecosystems?",
+      "ms": {
+        "draft": 3067,
+        "critique": 6101,
+        "solver": 1382,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a terrestrial ecosystem, the biomass pyramid is usually upright, but in an aquatic ecosystem, it can be inverted. What is the main reason for this difference?",
+      "ms": {
+        "draft": 3067,
+        "critique": 7255,
+        "solver": 12904
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a grassland ecosystem, what would the pyramid of numbers look like if there are a large number of insects feeding on a single tree?",
+      "ms": {
+        "draft": 4857,
+        "critique": 8369
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are the organisms called that fix carbon dioxide in an ecosystem?",
+      "ms": {
+        "draft": 3259,
+        "critique": 5453
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the limiting factor for productivity in aquatic ecosystems?",
+      "ms": {
+        "draft": 3259,
+        "critique": 4748
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In an ecosystem dominated by trees, what type of pyramid is formed by numbers?",
+      "ms": {
+        "draft": 3259,
+        "critique": 5853,
+        "solver": 500
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In an ecosystem dominated by trees, what type of pyramid of numbers is typically observed?",
+      "ms": {
+        "draft": 3189,
+        "critique": 5886,
+        "solver": 2244
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a component of an ecosystem?",
+      "ms": {
+        "draft": 3189,
+        "critique": 5305,
+        "solver": 1100
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which organisms are responsible for fixing carbon dioxide in an ecosystem?",
+      "ms": {
+        "draft": 3189,
+        "critique": 4528,
+        "solver": 10968,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an ecosystem has a small standing crop of phytoplankton supporting a large standing crop of zooplankton, what type of biomass pyramid does it represent?",
+      "ms": {
+        "draft": 3189,
+        "critique": 4813,
+        "solver": 11652,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a food chain, which of the following has the largest population?",
+      "ms": {
+        "draft": 3189,
+        "critique": 6225,
+        "solver": 16847,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage mentions that the pyramid of energy is always upright and cannot be inverted. Why is this the case?",
+      "ms": {
+        "draft": 6299,
+        "critique": 7302,
+        "solver": 13060,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a sea ecosystem, the pyramid of biomass is generally inverted. What is the most likely explanation for this?",
+      "ms": {
+        "draft": 6299,
+        "critique": 7228,
+        "solver": 16327
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage explains that the pyramid of energy is always upright. Which of the following best explains this?",
+      "ms": {
+        "draft": 6299,
+        "critique": 7337,
+        "solver": 12049,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a step in the process of decomposition?",
+      "ms": {
+        "draft": 3103,
+        "critique": 5504,
+        "solver": 14995
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of an ecosystem?",
+      "ms": {
+        "draft": 4255,
+        "critique": 5858,
+        "solver": 13907
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an ecosystem, the biomass pyramid is inverted in which of the following cases?",
+      "ms": {
+        "draft": 4255,
+        "critique": 6081,
+        "solver": 889,
+        "form": 2135
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an ecosystem, if the biomass of phytoplankton is less than that of zooplankton, what type of pyramid would this represent?",
+      "ms": {
+        "draft": 4857,
+        "critique": 6623,
+        "solver": 1506,
+        "form": 3536
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the primary source of energy for all ecosystems on Earth?",
+      "ms": {
+        "draft": 3103,
+        "critique": 8300,
+        "solver": 1666,
+        "form": 3034,
+        "translation": 39315
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for organisms that break down complex organic matter into inorganic substances?",
+      "ms": {
+        "draft": 3103,
+        "critique": 6233,
+        "solver": 1125,
+        "form": 4578,
+        "translation": 39019
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the standing crop in an ecosystem?",
+      "ms": {
+        "draft": 4857,
+        "critique": 7707,
+        "solver": 1618,
+        "form": 5292,
+        "translation": 49291
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the biomass of a species?",
+      "ms": {
+        "draft": 4857,
+        "critique": 5849,
+        "solver": 1667,
+        "form": 2430,
+        "translation": 42735
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the role of decomposers in an ecosystem?",
+      "ms": {
+        "draft": 4255,
+        "critique": 6507,
+        "solver": 1182,
+        "form": 3278,
+        "translation": 30975
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In an ecosystem, the standing crop is measured as the mass of living organisms or the number in a unit area. Which of the following best describes the standing crop?",
+      "ms": {
+        "draft": 6299,
+        "critique": 6142,
+        "solver": 16160,
+        "form": 0,
+        "translation": 58376
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In an ecosystem, the energy flow is unidirectional. What does this mean?",
+      "ms": {
+        "draft": 6299,
+        "critique": 7124,
+        "solver": 2056,
+        "form": 0,
+        "translation": 50182
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of trophic levels in an ecosystem, which of the following is true about the transfer of energy?",
+      "ms": {
+        "draft": 4857,
+        "critique": 5926,
+        "solver": 1524,
+        "form": 3627,
+        "translation": 57877
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the biomass pyramid in aquatic ecosystems often inverted?",
+      "ms": {
+        "draft": 3189,
+        "critique": 6844,
+        "solver": 12847,
+        "form": 0,
+        "translation": 43086
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the decomposition of organic matter in a forest more efficient in warm and moist conditions compared to cold and dry conditions?",
+      "ms": {
+        "draft": 3067,
+        "critique": 6361,
+        "solver": 1611,
+        "form": 0,
+        "translation": 40513
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the reason that the pyramid of energy is always upright?",
+      "ms": {
+        "draft": 4857,
+        "critique": 6404,
+        "solver": 1351,
+        "form": 3624,
+        "translation": 61267
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In an ecosystem, a single organism can occupy more than one trophic level. Which of the following scenarios best illustrates this concept?",
+      "ms": {
+        "draft": 6299,
+        "critique": 6312,
+        "solver": 2276,
+        "form": 0,
+        "translation": 72562
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which organisms are common detritivores in an ecosystem?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a function of an ecosystem as described in the passage?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In which type of ecosystem would you expect to find a large number of decomposers like fungi and bacteria?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main reason for the low productivity of the oceans as mentioned in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If an ecosystem has a high rate of decomposition, what can be inferred about the ecosystem?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is defined as the amount of biomass or organic matter produced per unit area over a time period by plants during photosynthesis?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a correct example of a detritus food chain in a terrestrial ecosystem?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In an ecosystem, which of the following is true about the role of decomposers?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following organisms is most likely to be a primary consumer in a terrestrial ecosystem?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why the biomass pyramid in a terrestrial ecosystem is usually upright?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the role of the first law of thermodynamics in the context of energy flow in ecosystems?",
+      "reason": "options 0 and 3 say the same thing (\"It states that energy can be created or destroyed\" / \"It states that energy cannot be created or destroyed\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a terrestrial ecosystem, the biomass pyramid is usually upright, but in an aquatic ecosystem, it can be inverted. What is the main reason for this difference?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a grassland ecosystem, what would the pyramid of numbers look like if there are a large number of insects feeding on a single tree?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What are the organisms called that fix carbon dioxide in an ecosystem?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the limiting factor for productivity in aquatic ecosystems?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "In an ecosystem dominated by trees, what type of pyramid is formed by numbers?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is NOT a trophic level in an ecosystem?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "In an ecosystem dominated by trees, what type of pyramid of numbers is typically observed?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a component of an ecosystem?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which organisms are responsible for fixing carbon dioxide in an ecosystem?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If an ecosystem has a small standing crop of phytoplankton supporting a large standing crop of zooplankton, what type of biomass pyramid does it represent?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a food chain, which of the following has the largest population?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage mentions that the pyramid of energy is always upright and cannot be inverted. Why is this the case?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Ignores the role of decomposers in energy flow but is not th…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a sea ecosystem, the pyramid of biomass is generally inverted. What is the most likely explanation for this?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage explains that the pyramid of energy is always upright. Which of the following best explains this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Ignores the role of decomposers in energy flow but is not th…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT a step in the process of decomposition?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of an ecosystem?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 0 correct, the key is 3"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an ecosystem, the biomass pyramid is inverted in which of the following cases?",
+      "reason": "options 0 and 1 say the same thing (\"When the biomass of producers is greater than that of consumers\" / \"When the biomass of consumers is greater than that of producers\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In an ecosystem, if the biomass of phytoplankton is less than that of zooplankton, what type of pyramid would this represent?",
+      "reason": "near-duplicate of served question cmvpfjqj109lpgp21ry8wp5sd (cosine 0.928 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

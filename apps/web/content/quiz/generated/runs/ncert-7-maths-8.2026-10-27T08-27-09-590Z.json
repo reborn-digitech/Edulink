@@ -1,0 +1,820 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T08:27:09.590Z",
+  "finishedAt": "2026-10-27T08:37:28.486Z",
+  "seconds": 619,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "gegp1",
+    "document": "ncert/7/mathematics/gegp108.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Working with Fractions",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n4. C Let numerator be x and denominator be y 1\nGiven , x + y = 11\n𝐱 𝟏\n(𝐲+𝟏) = 2\nSolving these equations, we get\nx = 4, y = 7; ∴ Fraction = 𝟒 7\n𝟒\n(C)",
+      "[RMO 2015 — question paper]\n3. Find all fractions which can be written simultaneously in the forms\n5k − 3\n6l − 1\nand , for some integers k, l.\n4l − 3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n4. 1\nis increased by 1, the fraction becomes\n2 3\n(A) (B)\n9 8\n, then the fraction is\n4 5\n(C) (D)\n7 6\nIf one root of the quadratic equation 𝑎𝑥 + 𝑏𝑥 + 𝑐 = 0 is the reciprocal of the",
+      "[RMO 2015 — solutions or answer key]\n3. Find all fractions which can be written simultaneously in the forms and , for\n5k − 3 4l − 3\nsome integers k, l.\n7k − 5 6l − 1\nSolution: If a fraction is simultaneously in the forms and , we must have\n5k − 3 4l − 3\n7k − 5 6l − 1\n= .\n5k − 3 4l − 3\nThis simplifies to kl + 8k + l − 6 = 0. We can write this in the form\n(k + 1)(l + 8) = 14.\nNow 14 can be factored in 8 ways: 1 × 14, 2 × 7, 7 × 2, 14 × 1, (−1) × (−14), (−2) × (−7),\n(−7) × (−2) and (−14) × (−1). Thus we get 8 pairs:\n(k, l) = (13, −7), (6, −6), (1, −1), (0, 6), (−15, −9), (−8, −10), (−3, −15), (−2, −22).\nThese lead respectively to 8 fractions:\n43 31 55\n, , 1,\n31 27 39\n5 61 19 13\n, , , , .\n3 43 13 9"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 232484,
+      "in": 45,
+      "out": 43,
+      "rejects": 2,
+      "promptTokens": 51530,
+      "completionTokens": 11836
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 332097,
+      "in": 43,
+      "out": 37,
+      "rejects": 6,
+      "promptTokens": 23785,
+      "completionTokens": 8670
+    },
+    "solver": {
+      "calls": 230,
+      "ms": 114035,
+      "in": 37,
+      "out": 30,
+      "rejects": 7,
+      "promptTokens": 37280,
+      "completionTokens": 2152
+    },
+    "form": {
+      "calls": 13,
+      "ms": 78347,
+      "in": 30,
+      "out": 18,
+      "rejects": 12,
+      "promptTokens": 10548,
+      "completionTokens": 2255
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 35,
+      "ms": 6886,
+      "in": 18,
+      "out": 14,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 542274,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 32030,
+      "completionTokens": 14659
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 3,
+    "2": 4,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the distance covered by Aaron in 5 hours if he walks 3 km in 1 hour?",
+      "ms": {
+        "draft": 6793,
+        "critique": 6352,
+        "solver": 15171
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How far can Aaron walk in 2/5 of an hour if he walks 3 km in 1 hour?",
+      "ms": {
+        "draft": 6793,
+        "critique": 6374,
+        "solver": 16465
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How is the distance covered by the tortoise in 3 hours calculated, if it walks 1/5 km in 1 hour?",
+      "ms": {
+        "draft": 6793,
+        "critique": 5650,
+        "solver": 19138,
+        "form": 3502
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a fraction is increased by 1 and becomes 2/3, what was the original fraction?",
+      "ms": {
+        "draft": 6793,
+        "critique": 7633
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a fraction can be written in the form (5k - 3)/(7k - 5) and also in the form (4l - 3)/(6l - 1), what is the value of k and l?",
+      "ms": {
+        "draft": 6793,
+        "critique": 8104
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general rule for multiplying two fractions?",
+      "ms": {
+        "draft": 4004,
+        "critique": 7053,
+        "solver": 1433,
+        "form": 2410
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the product of and ?",
+      "ms": {
+        "draft": 4004,
+        "critique": 6965
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the distance covered by the tortoise in 3/4 of an hour if it walks 1/5 km in 1 hour?",
+      "ms": {
+        "draft": 6793,
+        "critique": 8651,
+        "solver": 13274,
+        "form": 4742
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When a fraction is multiplied by a whole number, what is the correct method?",
+      "ms": {
+        "draft": 4004,
+        "critique": 7325,
+        "solver": 1581,
+        "form": 3196
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If of a tank is filled in 1 hour, how much of the tank is filled in hour?",
+      "ms": {
+        "draft": 4004,
+        "critique": 6038,
+        "solver": 1421
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, it is explained that the quotient can be greater than the dividend. In which of the following cases would this happen?",
+      "ms": {
+        "draft": 4483,
+        "critique": 8331,
+        "solver": 1216,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the reciprocal of a fraction is multiplied by the same fraction, what is the product?",
+      "ms": {
+        "draft": 4483,
+        "critique": 8116,
+        "solver": 1500,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 1/2 is divided by 1/4, what is the result?",
+      "ms": {
+        "draft": 4483,
+        "critique": 6368,
+        "solver": 11609,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of 1 cowrie shell in terms of copper panas?",
+      "ms": {
+        "draft": 5825,
+        "critique": 7050,
+        "solver": 1518
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following statements about fractions is correct?",
+      "ms": {
+        "draft": 5825,
+        "critique": 6017,
+        "solver": 1931,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 1 gold dinar = 12 silver drammas, 1 silver dramma = 4 copper panas, 1 copper pana = 6 mashakas, and 1 pana = 30 cowrie shells, what is the value of 1 gold dinar in terms of cowrie shells?",
+      "ms": {
+        "draft": 5825,
+        "critique": 6543,
+        "solver": 1599
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the numerator of a fraction is increased by 2 and the denominator is decreased by 1, the fraction becomes 3/4. If the original fraction is 5/7, what is the value of the numerator after the change?",
+      "ms": {
+        "draft": 5423,
+        "critique": 7067
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the shaded region in Fig. 8.5 occupies 1/4 of the area of the red square, and the red square occupies 1/2 of the area of the whole square, what fraction of the whole square is the shaded region?",
+      "ms": {
+        "draft": 4483,
+        "critique": 7636,
+        "solver": 1825,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 1/3 of a cake is shared equally among 2 people, how much of the cake does each person get?",
+      "ms": {
+        "draft": 6986,
+        "critique": 5131,
+        "solver": 6123,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a fraction is the same as both (5k - 3)/(7k - 5) and (4l - 3)/(6l - 1), what is the value of the fraction?",
+      "ms": {
+        "draft": 4795,
+        "critique": 5416,
+        "solver": 1756
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a farmer gives 1/4 of his land to his daughter and 1/3 of the remaining to his son, what fraction of the original land does he keep?",
+      "ms": {
+        "draft": 3736,
+        "critique": 7698
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What fraction of the original ant group reached each food source if they split equally at each point as shown in Fig. 8.7?",
+      "ms": {
+        "draft": 7105,
+        "critique": 6538,
+        "solver": 1356
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of 1 cowrie shell in terms of gold dinar?",
+      "ms": {
+        "draft": 7105,
+        "critique": 7414,
+        "solver": 1564,
+        "form": 6291
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the result of dividing 3 by 1/2?",
+      "ms": {
+        "draft": 5302,
+        "critique": 6651,
+        "solver": 2064,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a fraction is increased by 1, the fraction becomes 2/3. What is the original fraction?",
+      "ms": {
+        "draft": 5302,
+        "critique": 7423
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A baker needs 1/2 kg of flour to make one loaf of bread. He has 5 kg of flour. How many loaves can he make?",
+      "ms": {
+        "draft": 4795,
+        "critique": 7361,
+        "solver": 2676,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 3/4 kg of flour is used to make 12 rotis, how much flour is used to make 6 rotis?",
+      "ms": {
+        "draft": 4795,
+        "critique": 7046,
+        "solver": 1243,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens when a fraction is multiplied by 1?",
+      "ms": {
+        "draft": 3736,
+        "critique": 6056,
+        "solver": 1304,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a fraction is multiplied by 1, what happens to the product?",
+      "ms": {
+        "draft": 5633,
+        "critique": 4578,
+        "solver": 953,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for a fraction that, when multiplied by another fraction, gives 1?",
+      "ms": {
+        "draft": 3736,
+        "critique": 7544,
+        "solver": 1791,
+        "form": 3681,
+        "translation": 40456
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of 8 divided by 1/2?",
+      "ms": {
+        "draft": 4795,
+        "critique": 6949,
+        "solver": 2042,
+        "form": 0,
+        "translation": 33975
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the area of a rectangle formed with sides as fractions?",
+      "ms": {
+        "draft": 4004,
+        "critique": 8611,
+        "solver": 14413,
+        "form": 2416,
+        "translation": 42417
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of multiplying two fractions where one is between 0 and 1 and the other is greater than 1?",
+      "ms": {
+        "draft": 3736,
+        "critique": 5535,
+        "solver": 2549,
+        "form": 0,
+        "translation": 41655
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 1/4 of a ribbon is used to make 8 badges, what is the length of ribbon used for each badge?",
+      "ms": {
+        "draft": 4795,
+        "critique": 6917,
+        "solver": 1083,
+        "form": 0,
+        "translation": 41200
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a fraction is multiplied by 1, what happens to the product?",
+      "ms": {
+        "draft": 4004,
+        "critique": 7702,
+        "solver": 1689,
+        "form": 2459,
+        "translation": 40832
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to divide two fractions?",
+      "ms": {
+        "draft": 4483,
+        "critique": 5774,
+        "solver": 2001,
+        "form": 3809,
+        "translation": 51305
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a tap fills 1/5 of a tank in 1 hour, how much of the tank is filled in 3 hours?",
+      "ms": {
+        "draft": 3736,
+        "critique": 7553,
+        "solver": 1515,
+        "form": 0,
+        "translation": 31421
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 1 ÷ 2 is rewritten as a multiplication problem, what should be multiplied by 2 to get 1?",
+      "ms": {
+        "draft": 4483,
+        "critique": 5806,
+        "solver": 2093,
+        "form": 0,
+        "translation": 40100
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the result of dividing 1 by 2/3?",
+      "ms": {
+        "draft": 5302,
+        "critique": 5278,
+        "solver": 1298,
+        "form": 0,
+        "translation": 27279
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a car runs 16 km using 1 litre of petrol, how far will it go using 2.75 litres of petrol?",
+      "ms": {
+        "draft": 4795,
+        "critique": 7825,
+        "solver": 1686,
+        "form": 0,
+        "translation": 38821
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the area of a rectangle with sides 1/2 unit and 1/3 unit?",
+      "ms": {
+        "draft": 5633,
+        "critique": 5938,
+        "solver": 1308,
+        "form": 0,
+        "translation": 30635
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a fraction is written as 1/2 + 1/3, what is its simplified form?",
+      "ms": {
+        "draft": 7105,
+        "critique": 6100,
+        "solver": 2215,
+        "form": 0,
+        "translation": 31250
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A fraction is such that when 3 is added to the numerator and 2 is subtracted from the denominator, the result is 2. If the original fraction is 1/3, what is the new fraction after the change?",
+      "ms": {
+        "draft": 5423,
+        "critique": 6600,
+        "solver": 1660,
+        "form": 0,
+        "translation": 46203
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the value of 1 cowrie shell in terms of gold dinar?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the distance covered by Aaron in 5 hours if he walks 3 km in 1 hour?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How far can Aaron walk in 2/5 of an hour if he walks 3 km in 1 hour?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "How is the distance covered by the tortoise in 3 hours calculated, if it walks 1/5 km in 1 hour?",
+      "reason": "options 0 and 1 are the same (\"3 × 1/5 km\"); options 0 and 3 say the same thing (\"3 × 1/5 km\" / \"1/5 × 3 km\"); options 1 and 3 say the same thing (\"3 + 1/5 km\" / \"1/5 × 3 km\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a fraction is increased by 1 and becomes 2/3, what was the original fraction?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a fraction can be written in the form (5k - 3)/(7k - 5) and also in the form (4l - 3)/(6l - 1), what is the value of k and l?",
+      "reason": "option 0 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the general rule for multiplying two fractions?",
+      "reason": "options 2 and 3 say the same thing (\"Multiply numerators and add denominators\" / \"Add numerators and multiply denominators\"); distractor 1's reason is not a one-line misconception (\"Correct answer is not the longest option, but the correct on…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the product of and ?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the distance covered by the tortoise in 3/4 of an hour if it walks 1/5 km in 1 hour?",
+      "reason": "figure: figure spec refused: spec.frame.unit: Invalid enum value. Expected 'cm' | 'units', received 'km'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "When a fraction is multiplied by a whole number, what is the correct method?",
+      "reason": "the key is far longer than every distractor (70 vs 37 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If of a tank is filled in 1 hour, how much of the tank is filled in hour?",
+      "reason": "the solver picked option 0 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, it is explained that the quotient can be greater than the dividend. In which of the following cases would this happen?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"Dividing a whole number by a fraction less than 1\" / \"Dividing a whole number by a fraction greater than 1\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the reciprocal of a fraction is multiplied by the same fraction, what is the product?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 1/2 is divided by 1/4, what is the result?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the value of 1 cowrie shell in terms of copper panas?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following statements about fractions is correct?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Ignores the mention of ancient Indian use of fractions in th…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If 1 gold dinar = 12 silver drammas, 1 silver dramma = 4 copper panas, 1 copper pana = 6 mashakas, and 1 pana = 30 cowrie shells, what is the value of 1 gold dinar in terms of cowrie shells?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the numerator of a fraction is increased by 2 and the denominator is decreased by 1, the fraction becomes 3/4. If the original fraction is 5/7, what is the value of the numerator after the change?",
+      "reason": "the critic finds option 1 correct, the key is 0"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If the shaded region in Fig. 8.5 occupies 1/4 of the area of the red square, and the red square occupies 1/2 of the area of the whole square, what fraction of the whole square is the shaded region?",
+      "reason": "figure: figure spec refused: spec.circles: circles names point O, which is not defined"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If 1/3 of a cake is shared equally among 2 people, how much of the cake does each person get?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'cake'"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "If a fraction is divided by a number greater than 1, what happens to the quotient?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a fraction is the same as both (5k - 3)/(7k - 5) and (4l - 3)/(6l - 1), what is the value of the fraction?",
+      "reason": "the solver picked option 2 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a farmer gives 1/4 of his land to his daughter and 1/3 of the remaining to his son, what fraction of the original land does he keep?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What fraction of the original ant group reached each food source if they split equally at each point as shown in Fig. 8.7?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the value of 1 cowrie shell in terms of gold dinar?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"1/(12*4*6*30)\" = 0.00011574074074074075, but the key says 0.0006944444444444445"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the result of dividing 3 by 1/2?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a fraction is increased by 1, the fraction becomes 2/3. What is the original fraction?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A baker needs 1/2 kg of flour to make one loaf of bread. He has 5 kg of flour. How many loaves can he make?",
+      "reason": "near-duplicate of served question cmvfxg8o5017tgpfhqp4en4th (cosine 0.973 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If 3/4 kg of flour is used to make 12 rotis, how much flour is used to make 6 rotis?",
+      "reason": "near-duplicate of served question cmver9t8m01a4god889ory5hx (cosine 0.933 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What happens when a fraction is multiplied by 1?",
+      "reason": "near-duplicate of batch item \"If a fraction is multiplied by 1, what happens to …\" (cosine 0.945 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a fraction is multiplied by 1, what happens to the product?",
+      "reason": "near-duplicate of batch item \"If a fraction is multiplied by 1, what happens to …\" (cosine 0.991 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,721 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T23:51:20.313Z",
+  "finishedAt": "2026-10-25T00:02:28.816Z",
+  "seconds": 669,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari PART-II",
+    "bookCode": "iemh2",
+    "document": "ncert/9/mathematics/iemh204.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Quadrilaterals",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 25,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n16. The points A(9,0), B(9, -6) ,C(-9,0) and D(-9,6) are the vertices of a 1\n(A) Square (B) Rectangle (C) Parallelogram (D) Trapezium",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n29. A circle touches all the four sides of quadrilateral ABCD. Prove that AB + CD = AD + BC.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n28. A quadrilateral ABCD is drawn to circumscribe a circle, as shown in the given 3\nAB + CD\nfigure. Show that = 1\nAD + BC\nFor visually Impaired students only\nShow that parallelogram circumscribing a circle is a rhombus.\n*Please note that the assessment scheme of the Academic Session 2024-25 will continue in the current session i.e. 2025-26",
+      "[INMO 2004 — question paper]\n1. Consider a convex quadrilateral ABCD, in which K, L, M, N are the midpoints of the sides AB,\nBC, CD, DA respectively. Suppose\n(a) BD bisects KM at Q;\n(b) QA =QB=QC =QD; and\n(¢) LK/LM = CD/CB.\nProve that ABCD is a square.\nSolution:\nD 14 c\n4 K B\nFig. 1.\nObserve that KLMN is a paralellogram, @ is the midpoint of MK and hence NL also passes\nthrough Q. Let T be the point of intersection of AC and BD; and let S be the point of intersection\nof BD and MN.\nConsider the triangle MNK. Note that SQ is parallel to NK and Q is the midpoint of MK.\nHence S is the mid-point of MN. Since MN is parallel to AC, it follows that 7\" is the mid-point\nof AC. Now Q is the circumcentre of AABC and the median BT pas"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 173149,
+      "in": 39,
+      "out": 36,
+      "rejects": 4,
+      "promptTokens": 49407,
+      "completionTokens": 10130
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 301853,
+      "in": 36,
+      "out": 34,
+      "rejects": 2,
+      "promptTokens": 24468,
+      "completionTokens": 8850
+    },
+    "solver": {
+      "calls": 255,
+      "ms": 124980,
+      "in": 34,
+      "out": 29,
+      "rejects": 5,
+      "promptTokens": 50815,
+      "completionTokens": 2827
+    },
+    "form": {
+      "calls": 8,
+      "ms": 44277,
+      "in": 29,
+      "out": 21,
+      "rejects": 8,
+      "promptTokens": 4083,
+      "completionTokens": 1313
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 21,
+      "out": 21,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 4502,
+      "in": 21,
+      "out": 13,
+      "rejects": 8,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 501893,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 33458,
+      "completionTokens": 16614
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 3,
+    "4": 0,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "A quadrilateral is made by joining four non-collinear points in a plane. Which of the following is NOT a requirement for a figure to be a quadrilateral?",
+      "ms": {
+        "draft": 4491,
+        "critique": 6446,
+        "solver": 1714,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a property of a parallelogram?",
+      "ms": {
+        "draft": 4491,
+        "critique": 6748,
+        "solver": 15394
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a quadrilateral ABCD, if the diagonals AC and BD intersect at point E such that AE = EC and BE = ED, which of the following is true?",
+      "ms": {
+        "draft": 5869,
+        "critique": 6154,
+        "solver": 1686,
+        "form": 3134
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given diagram, ABCD is a parallelogram with AB ≠ BC. The pairwise intersection points of the four angle bisectors form the vertices of a rectangle. Why was the condition AB ≠ BC included in the question?",
+      "ms": {
+        "draft": 5869,
+        "critique": 8751
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The points A(9,0), B(9,-6), C(-9,0), and D(-9,6) are the vertices of a quadrilateral. What type of quadrilateral is it?",
+      "ms": {
+        "draft": 5869,
+        "critique": 5900,
+        "solver": 1575
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a triangle ABC, P is the midpoint of AB and the line through P parallel to BC meets AC at Q. Which of the following is true?",
+      "ms": {
+        "draft": 3474,
+        "critique": 6695
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a parallelogram ABCD, the diagonal AC bisects ∠A. Show that it also bisects ∠C and that ABCD is a rhombus. Which of the following must be true for this to hold?",
+      "ms": {
+        "draft": 5869,
+        "critique": 5817,
+        "solver": 13467
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a triangle ABC, the medians AR, BQ, and CP intersect at a point M. What is the ratio of CM to MP?",
+      "ms": {
+        "draft": 3474,
+        "critique": 6479,
+        "solver": 9810,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the midpoints of the sides of a quadrilateral form a square, what type of quadrilateral could the original be?",
+      "ms": {
+        "draft": 3474,
+        "critique": 7156,
+        "solver": 11349,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a parallelogram?",
+      "ms": {
+        "draft": 5834,
+        "critique": 9747,
+        "solver": 9513,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a parallelogram ABCD, two points P and Q are taken on diagonal BD such that DP = BQ. What can be concluded about APCQ?",
+      "ms": {
+        "draft": 7076,
+        "critique": 7273,
+        "solver": 1734,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a condition for a quadrilateral to be a parallelogram?",
+      "ms": {
+        "draft": 5834,
+        "critique": 5146,
+        "solver": 8706
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is not a property of a parallelogram?",
+      "ms": {
+        "draft": 3466,
+        "critique": 4805,
+        "solver": 12669
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a line through the intersection point of diagonals of a parallelogram meets AB and CD at P and Q, what is the relationship between OP and OQ?",
+      "ms": {
+        "draft": 3231,
+        "critique": 5799,
+        "solver": 12924,
+        "form": 3953
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a condition for a quadrilateral to be a parallelogram according to the passage?",
+      "ms": {
+        "draft": 50895,
+        "critique": 4857,
+        "solver": 457,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a quadrilateral, if the diagonals are equal and bisect each other, what type of quadrilateral is it?",
+      "ms": {
+        "draft": 4491,
+        "critique": 8088,
+        "solver": 1002,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a quadrilateral ABCD, AB is parallel to DC and AB is not equal to DC. G and H are the midpoints of AC and BD respectively. What is the relationship between GH and AB?",
+      "ms": {
+        "draft": 3474,
+        "critique": 6016,
+        "solver": 10767,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the diagonals of a quadrilateral are equal and bisect each other, what type of quadrilateral is it?",
+      "ms": {
+        "draft": 3506,
+        "critique": 6552,
+        "solver": 1499,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a quadrilateral, if the diagonals bisect each other, what type of quadrilateral is it?",
+      "ms": {
+        "draft": 3466,
+        "critique": 4982,
+        "solver": 2158,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the diagonals of a quadrilateral are equal and bisect each other, what type of quadrilateral is it?",
+      "ms": {
+        "draft": 3466,
+        "critique": 7690,
+        "solver": 1160,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a quadrilateral ABCD, if AB = CD, BC = DA, and the diagonals AC and BD intersect at O such that AO = OC and BO = OD, which of the following must be true?",
+      "ms": {
+        "draft": 3466,
+        "critique": 6450,
+        "solver": 1718,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a quadrilateral, if the opposite angles are equal, what type of quadrilateral is it?",
+      "ms": {
+        "draft": 3466,
+        "critique": 5389,
+        "solver": 940,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the parallelogram formed by joining the midpoints of the sides of a quadrilateral?",
+      "ms": {
+        "draft": 6027,
+        "critique": 6333,
+        "solver": 11913,
+        "form": 2638
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is true about the midpoints of the sides of any quadrilateral?",
+      "ms": {
+        "draft": 3506,
+        "critique": 5650,
+        "solver": 1526,
+        "form": 0,
+        "translation": 32524
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which property of a parallelogram is used to show that the sum of the angles of a quadrilateral is 360°?",
+      "ms": {
+        "draft": 7076,
+        "critique": 6790,
+        "solver": 16086,
+        "form": 0,
+        "translation": 52515
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the sum of the interior angles of a quadrilateral?",
+      "ms": {
+        "draft": 3231,
+        "critique": 4625,
+        "solver": 11901,
+        "form": 2041,
+        "translation": 21772
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a triangle, if a line is drawn through the midpoint of one side and is parallel to another side, what does this line do to the third side?",
+      "ms": {
+        "draft": 4921,
+        "critique": 6337,
+        "solver": 1364,
+        "form": 1,
+        "translation": 32155
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a parallelogram, what is the relationship between the opposite angles?",
+      "ms": {
+        "draft": 3231,
+        "critique": 6095,
+        "solver": 10885,
+        "form": 2438,
+        "translation": 31343
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following statements is true about a convex quadrilateral?",
+      "ms": {
+        "draft": 4491,
+        "critique": 6188,
+        "solver": 1070,
+        "form": 0,
+        "translation": 47378
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a parallelogram ABCD, if diagonal BD is intersected by points P and Q such that DP = BQ, what shape is APCQ?",
+      "ms": {
+        "draft": 3231,
+        "critique": 7930,
+        "solver": 1303,
+        "form": 4323,
+        "translation": 47750
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a quadrilateral, if one pair of opposite sides is both equal and parallel, what type of quadrilateral is it?",
+      "ms": {
+        "draft": 3466,
+        "critique": 4520,
+        "solver": 982,
+        "form": 0,
+        "translation": 39346
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the diagonals of a quadrilateral intersect at right angles and one of them is bisected by the other, what type of quadrilateral is it?",
+      "ms": {
+        "draft": 4491,
+        "critique": 7448,
+        "solver": 1582,
+        "form": 0,
+        "translation": 44213
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "The midpoints of the sides of a quadrilateral ABCD are P, Q, R, and S. What type of quadrilateral is PQRS?",
+      "ms": {
+        "draft": 3474,
+        "critique": 6026,
+        "solver": 12392,
+        "form": 0,
+        "translation": 31158
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a quadrilateral, the diagonals are not equal but they bisect each other at right angles. What type of quadrilateral is it?",
+      "ms": {
+        "draft": 4491,
+        "critique": 6493,
+        "solver": 1273,
+        "form": 0,
+        "translation": 42351
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a quadrilateral is inscribed in a circle, what can be said about its opposite angles?",
+      "ms": {
+        "draft": 3506,
+        "critique": 4703,
+        "solver": 1424,
+        "form": 0,
+        "translation": 31119
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a quadrilateral ABCD with parallel sides AD and BC, if E is the midpoint of AD and a line through E intersects BC at F, what must be true if EF is parallel to AB?",
+      "ms": {
+        "draft": 3231,
+        "critique": 5661,
+        "solver": 2121,
+        "form": 3680,
+        "translation": 42617
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following is a property of a parallelogram accor"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "In a quadrilateral ABCD, if AB is parallel to DC and AB is equal to DC, which of the following is true?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "In a quadrilateral ABCD, if the diagonals AC and BD intersect at point E such that AE = EC and BE = ED, which of the following is true?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A quadrilateral is made by joining four non-collinear points in a plane. Which of the following is NOT a requirement for a figure to be a quadrilateral?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly applies the side condition for a quadrilateral, …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is NOT a property of a parallelogram?",
+      "reason": "after redraft: the solver picked option 0 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a quadrilateral ABCD, if the diagonals AC and BD intersect at point E such that AE = EC and BE = ED, which of the following is true?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option is not the longest and is directly supported …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given diagram, ABCD is a parallelogram with AB ≠ BC. The pairwise intersection points of the four angle bisectors form the vertices of a rectangle. Why was the condition AB ≠ BC included in the question?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The points A(9,0), B(9,-6), C(-9,0), and D(-9,6) are the vertices of a quadrilateral. What type of quadrilateral is it?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a triangle ABC, P is the midpoint of AB and the line through P parallel to BC meets AC at Q. Which of the following is true?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a parallelogram ABCD, the diagonal AC bisects ∠A. Show that it also bisects ∠C and that ABCD is a rhombus. Which of the following must be true for this to hold?",
+      "reason": "after redrafting distractors 1, 2, 3: the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a triangle ABC, the medians AR, BQ, and CP intersect at a point M. What is the ratio of CM to MP?",
+      "reason": "options 0 and 2 are the same (\"1:2\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the midpoints of the sides of a quadrilateral form a square, what type of quadrilateral could the original be?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a property of a parallelogram?",
+      "reason": "the key is far longer than every distractor (75 vs 46 characters); distractor 3's reason is not a one-line misconception (\"thinks one right angle is enough for a parallelogram to be f…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In a parallelogram ABCD, two points P and Q are taken on diagonal BD such that DP = BQ. What can be concluded about APCQ?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a condition for a quadrilateral to be a parallelogram?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main purpose of the Varignon parallelogram in the context of tiling?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is not a property of a parallelogram?",
+      "reason": "after redrafting distractors 0, 1, 3: the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a line through the intersection point of diagonals of a parallelogram meets AB and CD at P and Q, what is the relationship between OP and OQ?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a condition for a quadrilateral to be a parallelogram according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Does not consider the specific condition mentioned in the pa…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In a quadrilateral, if the diagonals are equal and bisect each other, what type of quadrilateral is it?",
+      "reason": "near-duplicate of served question cmvgexqok03pkgpfhreez5ey0 (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In a quadrilateral ABCD, AB is parallel to DC and AB is not equal to DC. G and H are the midpoints of AC and BD respectively. What is the relationship between GH and AB?",
+      "reason": "near-duplicate of served question cmvjj106o0gxsgpfh19f4qemn (cosine 0.954 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If the diagonals of a quadrilateral are equal and bisect each other, what type of quadrilateral is it?",
+      "reason": "near-duplicate of served question cmvgexqok03pkgpfhreez5ey0 (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In a quadrilateral, if the diagonals bisect each other, what type of quadrilateral is it?",
+      "reason": "near-duplicate of served question cmvgexqok03pkgpfhreez5ey0 (cosine 0.923 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If the diagonals of a quadrilateral are equal and bisect each other, what type of quadrilateral is it?",
+      "reason": "near-duplicate of served question cmvgexqok03pkgpfhreez5ey0 (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "In a quadrilateral ABCD, if AB = CD, BC = DA, and the diagonals AC and BD intersect at O such that AO = OC and BO = OD, which of the following must be true?",
+      "reason": "near-duplicate of served question cmvjj106r0gy4gpfhdcgpozr3 (cosine 0.902 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In a quadrilateral, if the opposite angles are equal, what type of quadrilateral is it?",
+      "reason": "near-duplicate of served question cmvjj106m0gxmgpfhpe0jg3vv (cosine 0.900 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the parallelogram formed by joining the midpoints of the sides of a quadrilateral?",
+      "reason": "near-duplicate of served question cmvfd70340415god812nqfx62 (cosine 0.957 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

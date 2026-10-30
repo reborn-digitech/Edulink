@@ -1,0 +1,877 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T00:37:48.913Z",
+  "finishedAt": "2026-10-25T00:49:01.439Z",
+  "seconds": 673,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari",
+    "bookCode": "iemh1",
+    "document": "ncert/9/mathematics/iemh108.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Predicting What Comes Next: Exploring Sequences and Progressions",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n6. C 𝑎 10 = 𝑎 + (10 − 1)𝑑 = 𝑝 + 9𝑞\n(C) 𝒑 + 𝟗𝒒",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n19. Assertion(A): The sequence −1, −1 − 1, . . . , −1 is an AP. 1\nReason(R): In an AP, 𝑎 − 𝑎 𝑛 𝑛−1 is constant where 𝑛 ≥ 2 and 𝑛 ∈ 𝑁",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n36. In a class, the teacher asks every student to write an example of A.P. Two boys\nAryan and Roshan writes the progression as −5, −2,1,4, …… and 187, 184, 181, ….\nrespectively. Now the teacher asks his various students the following questions on\nprogression.\nHelp the students to find answers for the following:\ni. Find the sum of the common difference of two progressions. 1\nii. Find the 34 term of progression written by Roshan. th 1\niii. (A) Find the sum of first 10 terms of the progression written by Aryan. 2\nOR\n(B) Which term of the progressions will have the same value? 2",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n6. 1\n(A) 𝑞 + 10𝑝 (B) 𝑝 − 9𝑞 (C) 𝑝 + 9𝑞 (D) 𝑝 + 10q\nWhich term of the AP: 21, 42, 63, 84 ... is 210?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 269671,
+      "in": 48,
+      "out": 45,
+      "rejects": 3,
+      "promptTokens": 56754,
+      "completionTokens": 14286
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 397115,
+      "in": 45,
+      "out": 34,
+      "rejects": 11,
+      "promptTokens": 29092,
+      "completionTokens": 10262
+    },
+    "solver": {
+      "calls": 247,
+      "ms": 130002,
+      "in": 34,
+      "out": 22,
+      "rejects": 12,
+      "promptTokens": 47553,
+      "completionTokens": 2654
+    },
+    "form": {
+      "calls": 5,
+      "ms": 39255,
+      "in": 22,
+      "out": 9,
+      "rejects": 13,
+      "promptTokens": 5282,
+      "completionTokens": 991
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 4904,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 250579,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 17993,
+      "completionTokens": 7491
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What is the next term in the sequence 1, 4, 7, 10, 13, ...?",
+      "ms": {
+        "draft": 3709,
+        "critique": 6659,
+        "solver": 1575
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the sequence defined by the formula u = 2n – 1, what is the 53rd term?",
+      "ms": {
+        "draft": 3709,
+        "critique": 7119,
+        "solver": 1539
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 3709,
+        "critique": 6153,
+        "solver": 16535,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the sequence defined by the formula s = 5n – 2, is 471 a term of the sequence?",
+      "ms": {
+        "draft": 3709,
+        "critique": 8850,
+        "solver": 1828
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the sequence of square numbers, what is the sum of the first five terms?",
+      "ms": {
+        "draft": 3709,
+        "critique": 9253,
+        "solver": 18647
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the general formula for the n th term of an arithmetic progression?",
+      "ms": {
+        "draft": 6158,
+        "critique": 8180,
+        "solver": 1484,
+        "form": 4386
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the first term of an arithmetic progression is 2 and the common difference is 5, what is the 7 th term?",
+      "ms": {
+        "draft": 6158,
+        "critique": 6289,
+        "solver": 1992
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The first term of a sequence is 1, and each subsequent term is obtained by adding 4. What is the 10 th term of this sequence?",
+      "ms": {
+        "draft": 6158,
+        "critique": 6201,
+        "solver": 2493
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an arithmetic progression, the 3 rd term is 11 and the 6 th term is 20. What is the first term?",
+      "ms": {
+        "draft": 6158,
+        "critique": 9088
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The sequence 1, 5, 13, 29, ... is defined by the recursive rule t = 1, t = 2t + 3 for n ≥ 2. Which term of this sequence is 301?",
+      "ms": {
+        "draft": 6158,
+        "critique": 9953
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the formula for the nth term of an arithmetic progression?",
+      "ms": {
+        "draft": 4970,
+        "critique": 7673
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A sequence is defined recursively by t1 = 5 and tn = tn-1 + 3 for n ≥ 2. What is the 5th term of this sequence?",
+      "ms": {
+        "draft": 4970,
+        "critique": 8722
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the sum of the first 10 natural numbers using the method described in the passage?",
+      "ms": {
+        "draft": 4970,
+        "critique": 7822,
+        "solver": 22408
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of a sequence where each term is obtained by multiplying the previous term by a constant?",
+      "ms": {
+        "draft": 5925,
+        "critique": 8793
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an arithmetic progression, the 10th term is p and the common difference is q. What is the 1st term?",
+      "ms": {
+        "draft": 4970,
+        "critique": 8031,
+        "solver": 17164,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the 6th term of the geometric progression 3, 6, 12, 24, ...?",
+      "ms": {
+        "draft": 5925,
+        "critique": 6304
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of progression is described by the sequence 2, 6, 18, 54, ...?",
+      "ms": {
+        "draft": 4959,
+        "critique": 5857,
+        "solver": 2024,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the common ratio of the sequence 3, 6, 12, 24, ...?",
+      "ms": {
+        "draft": 5925,
+        "critique": 7146,
+        "solver": 10978,
+        "form": 2581
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If the 10th term of a GP is 1024 and the common ratio is 2, what is the first term?",
+      "ms": {
+        "draft": 4959,
+        "critique": 6788,
+        "solver": 1793
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the 10th term of the geometric progression 3, 6, 12, 24, ...?",
+      "ms": {
+        "draft": 5925,
+        "critique": 6724,
+        "solver": 12557,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The nth term of an arithmetic progression is given by t = a + (n – 1) d. If the 10th term is p and the common difference is q, what is the value of the 10th term?",
+      "ms": {
+        "draft": 6198,
+        "critique": 5561,
+        "solver": 628
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the nth term of an arithmetic progression?",
+      "ms": {
+        "draft": 4753,
+        "critique": 5155,
+        "solver": 1751,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a sequence, the first term is 10, and the common difference is -3. What is the 12th term?",
+      "ms": {
+        "draft": 4753,
+        "critique": 7985
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The sum of the first 10 terms of an AP is 150, and the sum of the first 20 terms is 400. What is the first term of the AP?",
+      "ms": {
+        "draft": 4753,
+        "critique": 6548
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A geometric progression has a common ratio of 2. The 8th term is 128. What is the 12th term of this GP?",
+      "ms": {
+        "draft": 6745,
+        "critique": 5403,
+        "solver": 1727
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, the sequence of squares grows in a pattern. What is the total number of squares in the 5th figure?",
+      "ms": {
+        "draft": 4753,
+        "critique": 7445,
+        "solver": 13687
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A geometric progression has a 3rd term of 12 and a 6th term of 96. What is the 10th term?",
+      "ms": {
+        "draft": 6745,
+        "critique": 6294,
+        "solver": 1412
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a geometric progression, the 2nd term is 6 and the 5th term is 48. What is the 7th term?",
+      "ms": {
+        "draft": 6745,
+        "critique": 6233
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the nth term of an arithmetic progression?",
+      "ms": {
+        "draft": 23498,
+        "critique": 9350,
+        "solver": 1610,
+        "form": 2623
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the Sierpiński triangle pattern, the number of black triangles at each stage forms a geometric progression. What is the common ratio of this progression?",
+      "ms": {
+        "draft": 6364,
+        "critique": 5744,
+        "solver": 1193,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the Sierpiński triangle, if the area of the black region in Stage 0 is 1 square unit, what is the area of the black region in Stage 3?",
+      "ms": {
+        "draft": 6364,
+        "critique": 7409,
+        "solver": 1874,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the general formula for the n term of an arithmetic progression?",
+      "ms": {
+        "draft": 37892,
+        "critique": 8680,
+        "solver": 1684,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the first term of an AP is 240 and the common difference is 40, what is the 10th term of the AP?",
+      "ms": {
+        "draft": 23498,
+        "critique": 6769,
+        "solver": 11258,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A person travels in a taxi that charges a fixed fee of `200 and `40 per km. What is the total fare for a journey of 10 km?",
+      "ms": {
+        "draft": 23498,
+        "critique": 6829,
+        "solver": 12091,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the sequence given by the recursive rule u = 1, u = 2u + 3 for n ≥ 2, what is the 5th term?",
+      "ms": {
+        "draft": 37892,
+        "critique": 7181
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of a sequence according to the passage?",
+      "ms": {
+        "draft": 10540,
+        "critique": 6583
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an arithmetic progression?",
+      "ms": {
+        "draft": 4753,
+        "critique": 4805,
+        "solver": 1136,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the common ratio of the geometric progression 3, 6, 12, 24, …?",
+      "ms": {
+        "draft": 6364,
+        "critique": 5418,
+        "solver": 1660,
+        "form": 0,
+        "translation": 30195
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the 5th term of the geometric progression 3, 6, 12, 24, …?",
+      "ms": {
+        "draft": 6364,
+        "critique": 5811,
+        "solver": 1493,
+        "form": 0,
+        "translation": 20067
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the common difference of the sequence 11, 7, 3, –1, –5, ...?",
+      "ms": {
+        "draft": 6158,
+        "critique": 5822,
+        "solver": 13858,
+        "form": 0,
+        "translation": 23654
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the next term in the sequence of triangular numbers: 1, 3, 6, 10, 15, ...?",
+      "ms": {
+        "draft": 3709,
+        "critique": 7150,
+        "solver": 2575,
+        "form": 1,
+        "translation": 25402
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Find the 10th term of the AP: 5, 8, 11, 14, ...",
+      "ms": {
+        "draft": 4753,
+        "critique": 6209,
+        "solver": 11401,
+        "form": 0,
+        "translation": 25267
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the first term of an arithmetic progression is 3 and the common difference is 5, what is the 6th term?",
+      "ms": {
+        "draft": 4970,
+        "critique": 6811,
+        "solver": 12670,
+        "form": 0,
+        "translation": 28880
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a geometric progression, the 5th term is 32 and the 8th term is 256. What is the common ratio?",
+      "ms": {
+        "draft": 6745,
+        "critique": 6512,
+        "solver": 1724,
+        "form": 0,
+        "translation": 39238
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A geometric progression has the 6th term as 243 and the 9th term as 19683. What is the 11th term?",
+      "ms": {
+        "draft": 6745,
+        "critique": 5737,
+        "solver": 1755,
+        "form": 0,
+        "translation": 52323
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the sum of the first n natural numbers according to the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the next term in the sequence 1, 4, 7, 10, 13, ...?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the sequence defined by the formula u = 2n – 1, what is the 53rd term?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the sequence defined by the formula s = 5n – 2, is 471 a term of the sequence?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the sequence of square numbers, what is the sum of the first five terms?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the general formula for the n th term of an arithmetic progression?",
+      "reason": "options 0 and 1 say the same thing (\"t = a + n × d\" / \"t = a + (n + 1) × d\"); options 1 and 2 say the same thing (\"t = a + (n + 1) × d\" / \"t = a + (n – 1) × d\"); distractor 3's reason is not a one-line misconception (\"correct option (no reason needed for distractor reason list,…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the first term of an arithmetic progression is 2 and the common difference is 5, what is the 7 th term?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The first term of a sequence is 1, and each subsequent term is obtained by adding 4. What is the 10 th term of this sequence?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In an arithmetic progression, the 3 rd term is 11 and the 6 th term is 20. What is the first term?",
+      "reason": "the critic finds option 3 correct, the key is 2"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The sequence 1, 5, 13, 29, ... is defined by the recursive rule t = 1, t = 2t + 3 for n ≥ 2. Which term of this sequence is 301?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is the formula for the nth term of an arithmetic progression?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A sequence is defined recursively by t1 = 5 and tn = tn-1 + 3 for n ≥ 2. What is the 5th term of this sequence?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the sum of the first 10 natural numbers using the method described in the passage?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of a sequence where each term is obtained by multiplying the previous term by a constant?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an arithmetic progression, the 10th term is p and the common difference is q. What is the 1st term?",
+      "reason": "checkExpr \"p-9*q\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the 6th term of the geometric progression 3, 6, 12, 24, ...?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What type of progression is described by the sequence 2, 6, 18, 54, ...?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the common ratio of the sequence 3, 6, 12, 24, ...?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the common ratio with the third term in the sequenc…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "If the 10th term of a GP is 1024 and the common ratio is 2, what is the first term?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the 10th term of the geometric progression 3, 6, 12, 24, ...?",
+      "reason": "options 0 and 1 are the same (\"1536\"); options 0 and 1 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The nth term of an arithmetic progression is given by t = a + (n – 1) d. If the 10th term is p and the common difference is q, what is the value of the 10th term?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "In a geometric progression, the 4th term is 16 and the 6th term is 64. What is the 5th term?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the n-th term of the geometric progression 3, 6, 12, 24, …?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the nth term of an arithmetic progression?",
+      "reason": "options 0 and 1 say the same thing (\"t = a + (n - 1)d\" / \"t = a + n - 1\"); options 0 and 2 are the same (\"t = a + (n - 1)d\"); options 0 and 3 say the same thing (\"t = a + (n - 1)d\" / \"t = a + (n + 1)d\"); options 1 and 2 say the same thing (\"t = a + n - 1\" / \"t = a * (n - 1)d\"); options 2 and 3 say the same thing (\"t = a * (n - 1)d\" / \"t = a + (n + 1)d\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a sequence, the first term is 10, and the common difference is -3. What is the 12th term?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The sum of the first 10 terms of an AP is 150, and the sum of the first 20 terms is 400. What is the first term of the AP?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A geometric progression has a common ratio of 2. The 8th term is 128. What is the 12th term of this GP?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given figure, the sequence of squares grows in a pattern. What is the total number of squares in the 5th figure?",
+      "reason": "after redrafting distractors 0, 1, 3: the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A geometric progression has a 3rd term of 12 and a 6th term of 96. What is the 10th term?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In a geometric progression, the 2nd term is 6 and the 5th term is 48. What is the 7th term?",
+      "reason": "the critic finds option 1 correct, the key is 2"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the nth term of an arithmetic progression?",
+      "reason": "options 0 and 1 are the same (\"t = a + (n - 1) × d\"); options 2 and 3 are the same (\"t = a + n × d\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the Sierpiński triangle pattern, the number of black triangles at each stage forms a geometric progression. What is the common ratio of this progression?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the Sierpiński triangle, if the area of the black region in Stage 0 is 1 square unit, what is the area of the black region in Stage 3?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the general formula for the n term of an arithmetic progression?",
+      "reason": "options 0 and 1 say the same thing (\"t = a + n × d\" / \"t = a + (n + 1) × d\"); options 1 and 2 say the same thing (\"t = a + (n + 1) × d\" / \"t = a + (n – 1) × d\"); options 1 and 3 say the same thing (\"t = a + (n + 1) × d\" / \"t = a + n × (d – 1)\"); options 2 and 3 say the same thing (\"t = a + (n – 1) × d\" / \"t = a + n × (d – 1)\"); distractor 3's reason is not a one-line misconception (\"Correct option, no reason here (this is the correct answer).…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the first term of an AP is 240 and the common difference is 40, what is the 10th term of the AP?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"240 + (10 - 1) * 40\" = 600, but the key says 640"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A person travels in a taxi that charges a fixed fee of `200 and `40 per km. What is the total fare for a journey of 10 km?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"200 + 40 * 10\" = 600, but the key says 640"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the sequence given by the recursive rule u = 1, u = 2u + 3 for n ≥ 2, what is the 5th term?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the definition of a sequence according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an arithmetic progression?",
+      "reason": "near-duplicate of served question cmvfesq35048fgod87twrb6kk (cosine 0.903 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,161 +21,49 @@
   "board": "NCERT",
   "book": "Chemistry-I",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T14:30:09.048Z",
+  "generatedAt": "2026-10-29T01:54:43.178Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is a primary battery?",
+      "stem": "Which of the following is an example of a galvanic cell?",
       "choices": [
-        "Lead storage battery",
-        "Nickel-cadmium cell",
-        "Mercury cell",
-        "Dry cell"
-      ],
-      "answerIndex": 3,
-      "solution": "A primary battery is one that cannot be recharged once its chemical energy is depleted. Dry cells are designed for single-use and cannot be recharged, making them primary batteries. Mercury cells are also primary batteries, but the question asks for the correct option listed. Lead storage batteries and nickel-cadmium cells are secondary batteries, meaning they can be recharged.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक प्राथमिक बैटरी है?",
-          "choices": [
-            "लीड स्टोरेज बैटरी",
-            "निकल-कैडमियम सेल",
-            "मर्करी सेल",
-            "शुष्क सेल"
-          ],
-          "solution": "एक प्राथमिक बैटरी वह होती है जिसे इसकी रासायनिक ऊर्जा समाप्त हो जाने के बाद पुनः चार्ज नहीं किया जा सकता। शुष्क सेल एकल उपयोग के लिए डिज़ाइन किए गए हैं और उन्हें पुनः चार्ज नहीं किया जा सकता, जिसके कारण वे प्राथमिक बैटरी होते हैं। मर्करी सेल भी प्राथमिक बैटरी होते हैं, लेकिन प्रश्न में सही विकल्प के लिए पूछा गया है। लीड स्टोरेज बैटरी और निकल-कैडमियम सेल द्वितीयक बैटरी होते हैं, जिन्हें पुनः चार्ज किया जा सकता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English content with appropriate technical terms used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक प्राथमिक सेल आहे?",
-          "choices": [
-            "लेड स्टोरेज सेल",
-            "निकेल-कॅडमियम सेल",
-            "मर्क्युरी सेल",
-            "सूखा सेल"
-          ],
-          "solution": "प्राथमिक सेल म्हणजे त्याचे रासायनिक ऊर्जा खर्च झाल्यानंतर पुन्हा चार्ज करता येणार नसलेले सेल आहे. सूखा सेल एकावेळी वापरासाठी डिझाइन केलेले असून त्यांना पुन्हा चार्ज करता येत नाही, ज्यामुळे ते प्राथमिक सेल मानले जातात. मर्क्युरी सेल देखील प्राथमिक सेल आहेत, परंतु प्रश्नामध्ये योग्य विकल्प विचारला गेला आहे. लेड स्टोरेज सेल आणि निकेल-कॅडमियम सेल हे द्वितीयक सेल आहेत, जे पुन्हा चार्ज करता येतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for battery types.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses primary and secondary batteries",
-        "Confuses primary and secondary batteries",
-        "Confuses primary and secondary batteries",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 'Dry cell' (option 3), as it is a primary battery that cannot be recharged. The author's solution is accurate, and the reasoning for the distractors is valid, as all are secondary batteries.",
-      "sources": [
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 21,
-          "pageStart": 23,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.3 Nernst",
-            "2.5 Electrolytic2.5Electrolytic",
-            "Solution"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 22,
-          "pageStart": 23,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.3 Nernst",
-            "2.5 Electrolytic2.5Electrolytic",
-            "Intext Questions"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 23,
-          "pageStart": 24,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.6 Batteries"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 24,
-          "pageStart": 25,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.6 Batteries"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:30:09.048Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the main component of the anode in a mercury cell?",
-      "choices": [
-        "Zinc-mercury amalgam",
-        "Graphite rod",
-        "Lead dioxide",
-        "Copper wire"
+        "A battery",
+        "A resistor",
+        "A switch",
+        "A capacitor"
       ],
       "answerIndex": 0,
-      "solution": "The anode in a mercury cell is composed of zinc-mercury amalgam, which undergoes oxidation during the cell's operation. A graphite rod serves as the cathode, lead dioxide is used in lead-acid batteries, and copper wire is not involved in the electrochemical reactions of a mercury cell. The correct answer is 'Zinc-mercury amalgam'.",
+      "solution": "A galvanic cell converts chemical energy into electrical energy. A battery is a galvanic cell that provides electrical energy through spontaneous redox reactions. A resistor, switch, and capacitor do not involve chemical reactions to produce electricity.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "मर्करी सेल में एनोड का मुख्य घटक क्या है?",
+          "stem": "निम्नलिखित में से कौन गैल्वेनिक सेल का उदाहरण है?",
           "choices": [
-            "जिंक-मर्करी अमलगम",
-            "ग्रेफाइट छड़",
-            "लीड डाइऑक्साइड",
-            "तांबे का तार"
+            "एक बैटरी",
+            "एक प्रतिरोधक",
+            "एक स्विच",
+            "एक संधारित्र"
           ],
-          "solution": "मर्करी सेल में एनोड जिंक-मर्करी अमलगम से बना होता है, जो सेल के संचालन के दौरान ऑक्सीकरण के अधीन होता है। ग्रेफाइट छड़ कैथोड के रूप में कार्य करती है, लीड डाइऑक्साइड लीड-एसिड बैटरी में उपयोग किया जाता है, और तांबे का तार मर्करी सेल की विद्युत रासायनिक अभिक्रियाओं में शामिल नहीं होता है। सही उत्तर 'जिंक-मर्करी अमलगम' है।",
+          "solution": "एक गैल्वेनिक सेल रासायनिक ऊर्जा को विद्युत ऊर्जा में बदलता है। एक बैटरी एक गैल्वेनिक सेल होती है जो स्वतः घटित ऑक्सीकरण-अपचयन अभिक्रियाओं द्वारा विद्युत ऊर्जा प्रदान करती है। प्रतिरोधक, स्विच और संधारित्र विद्युत को उत्पन्न करने के लिए रासायनिक अभिक्रियाओं का उपयोग नहीं करते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the technical terms used in Indian textbooks, and preserves the meaning, options, and correct answer from the original English text.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "मरकरी सेलमधील एनोडचा मुख्य घटक कोणता आहे?",
+          "stem": "खालीलपैकी कोणते गॅल्वॅनिक सेलचे उदाहरण आहे?",
           "choices": [
-            "जिंक-मरकरी अमलगम",
-            "ग्रेफाइट छडी",
-            "लेड डायऑक्साइड",
-            "तांब्याचा तार"
+            "एक बॅटरी",
+            "एक प्रतिरोधक",
+            "एक स्विच",
+            "एक कॅपॅसिटर"
           ],
-          "solution": "मरकरी सेलमधील एनोड जिंक-मरकरी अमलगम द्वारे बनलेला असतो, जो सेलच्या कार्यादरम्यान ऑक्सिडेशन झालेला असतो. ग्रेफाइट छडी ही कॅथोड म्हणून कार्य करते, लेड डायऑक्साइड लेड-अॅसिड बॅटरीमध्ये वापरले जाते आणि तांब्याचा तार मरकरी सेलच्या विद्युतरासायनिक प्रतिक्रियांमध्ये समाविष्ट नसतो. योग्य उत्तर 'जिंक-मरकरी अमलगम' आहे.",
+          "solution": "एक गॅल्वॅनिक सेल रासायनिक ऊर्जेला विद्युत ऊर्जेमध्ये रूपांतरित करते. बॅटरी हा एक गॅल्वॅनिक सेल आहे जो अस्पंदित रेडॉक्स प्रतिक्रियांद्वारे विद्युत ऊर्जा पुरवतो. प्रतिरोधक, स्विच आणि कॅपॅसिटर विद्युत उत्पादनासाठी रासायनिक प्रतिक्रिया वापरत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the technical terminology used in Marathi science textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
@@ -185,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses anode material with cathode",
-        "Confuses anode material with cathode",
-        "Confuses anode material with lead storage battery"
+        "Confuses galvanic cell with a component that resists current flow",
+        "A student might think a switch is a type of electrochemical cell because it is part of an electrical circuit.",
+        "Student thinks a capacitor stores electrical energy like a battery, not recognizing it is an energy storage device, not a galvanic cell."
       ],
       "solverAnswers": [
         0,
@@ -197,119 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 'Zinc-mercury amalgam' as it is the anode material in a mercury cell. The other options are either cathode materials or unrelated, and the author's reasoning for the wrong options aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 21,
-          "pageStart": 23,
-          "pageEnd": 23,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.3 Nernst",
-            "2.5 Electrolytic2.5Electrolytic",
-            "Solution"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 22,
-          "pageStart": 23,
-          "pageEnd": 24,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.3 Nernst",
-            "2.5 Electrolytic2.5Electrolytic",
-            "Intext Questions"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 23,
-          "pageStart": 24,
-          "pageEnd": 25,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.6 Batteries"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 24,
-          "pageStart": 25,
-          "pageEnd": 26,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.6 Batteries"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:30:09.048Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the main purpose of an electrolyte in an electrochemical cell?",
-      "choices": [
-        "To provide a path for the flow of electrons",
-        "To allow the movement of ions between electrodes",
-        "To act as a catalyst for the reaction",
-        "To store electrical energy"
-      ],
-      "answerIndex": 1,
-      "solution": "The main purpose of an electrolyte in an electrochemical cell is to allow the movement of ions between electrodes. Electrolytes are ionic conductors that facilitate the flow of electric current through the solution by allowing ions to move. The other options describe roles that are not central to the function of an electrolyte.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक विद्युत रासायनिक सेल में एक विद्युत अपघट्य का मुख्य उद्देश्य क्या है?",
-          "choices": [
-            "इलेक्ट्रॉनों के प्रवाह के लिए एक मार्ग प्रदान करना",
-            "इलेक्ट्रोड के बीच आयनों के गति की अनुमति देना",
-            "अभिक्रिया के लिए एक उत्प्रेरक के रूप में कार्य करना",
-            "विद्युत ऊर्जा को संग्रहीत करना"
-          ],
-          "solution": "विद्युत रासायनिक सेल में विद्युत अपघट्य का मुख्य उद्देश्य इलेक्ट्रोड के बीच आयनों के गति की अनुमति देना होता है। विद्युत अपघट्य आयनिक चालक होते हैं जो आयनों के गति के माध्यम से विद्युत धारा के प्रवाह को सुविधाजनक बनाते हैं। अन्य विकल्प विद्युत अपघट्य के कार्य के केंद्रीय भूमिका का वर्णन नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एलेक्ट्रोकेमिकल सेलमध्ये एलेक्ट्रोलाइटचा मुख्य उद्देश काय आहे?",
-          "choices": [
-            "इलेक्ट्रॉनच्या प्रवाहाचा मार्ग पुरविणे",
-            "इलेक्ट्रोडमध्ये आयनांच्या गतीसाठी परवानगी देणे",
-            "प्रतिक्रियेसाठी एक उत्प्रेरक म्हणून कार्य करणे",
-            "विद्युत ऊर्जा जमा करणे"
-          ],
-          "solution": "एलेक्ट्रोकेमिकल सेलमध्ये एलेक्ट्रोलाइटचा मुख्य उद्देश इलेक्ट्रोडमध्ये आयनांच्या गतीसाठी परवानगी देणे आहे. एलेक्ट्रोलाइट हे आयनिक वाहक आहेत जे आयनांच्या गतीमुळे द्रावणातून विद्युत प्रवाहाची प्रवृत्ती अनुमत करतात. इतर विकल्पांमध्ये एलेक्ट्रोलाइटच्या कार्यासंबंधी मुख्य भूमिका नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the role of the electrolyte with that of a conductor",
-        null,
-        "Misunderstands the function of the electrolyte as a catalyst",
-        "Incorrectly assumes the electrolyte stores energy like a battery"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as the electrolyte's main role is to allow ion movement between electrodes. The other options represent common misconceptions about the function of electrolytes.",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions for the other options. The solution correctly identifies the battery as a galvanic cell and explains the other options accurately.",
       "sources": [
         {
           "document": "ncert/12/chemistry/lech102.pdf",
@@ -354,49 +130,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:30:09.048Z",
+      "generatedAt": "2026-10-29T01:54:43.178Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "What is the relationship between the standard Gibbs energy change (ΔG) and the standard electrode potential (E) of a reaction?",
+      "difficulty": 1,
+      "stem": "What is the standard electrode potential of the hydrogen electrode?",
       "choices": [
-        "ΔG = nFE",
-        "ΔG = -nFE",
-        "ΔG = nF/E",
-        "ΔG = E/nF"
+        "0 V",
+        "1 V",
+        "-1 V",
+        "2 V"
       ],
-      "answerIndex": 1,
-      "solution": "The correct relationship is ΔG = -nFE, where n is the number of moles of electrons transferred, F is the Faraday constant, and E is the standard electrode potential. The other options incorrectly represent the relationship between these quantities. For example, adding the signs or reversing the formula would lead to incorrect conclusions about the spontaneity of the reaction.",
+      "answerIndex": 0,
+      "solution": "The standard electrode potential of the hydrogen electrode is defined as 0 V. This serves as a reference point for measuring other electrode potentials. The other values are incorrect.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "मानक गिब्स ऊर्जा परिवर्तन (ΔG) और अभिक्रिया के मानक विद्युत विभव (E) के बीच संबंध क्या है?",
+          "stem": "हाइड्रोजन इलेक्ट्रोड का मानक इलेक्ट्रोड विभव क्या है?",
           "choices": [
-            "ΔG = nFE",
-            "ΔG = -nFE",
-            "ΔG = nF/E",
-            "ΔG = E/nF"
+            "0 वी",
+            "1 वी",
+            "-1 वी",
+            "2 वी"
           ],
-          "solution": "सही संबंध ΔG = -nFE है, जहां n एकत्रित इलेक्ट्रॉनों के मोलों की संख्या है, F फैराडे स्थिरांक है, और E मानक विद्युत विभव है। अन्य विकल्प इन मात्राओं के बीच संबंध को गलत तरीके से प्रस्तुत करते हैं। उदाहरण के लिए, चिह्न जोड़ना या सूत्र को उलट देना अभिक्रिया की स्वतः प्रवृत्ति के बारे में गलत निष्कर्ष पर ले जाएगा।",
+          "solution": "हाइड्रोजन इलेक्ट्रोड का मानक इलेक्ट्रोड विभव 0 वी के रूप में परिभाषित किया जाता है। यह अन्य इलेक्ट्रोड विभवों के मापन के लिए एक संदर्भ बिंदु है। अन्य मान गलत हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the correct answer position, and uses appropriate technical terminology as found in Hindi-medium science textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology for electrochemical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "मूलभूत जिब्स ऊर्जा बदल (ΔG) आणि प्रतिक्रियेच्या मूलभूत इलेक्ट्रोड पोटेन्शियल (E) दरम्यानचा संबंध काय आहे?",
+          "stem": "हायड्रोजन इलेक्ट्रोडचे मानक इलेक्ट्रोड विद्युत विभव किती आहे?",
           "choices": [
-            "ΔG = nFE",
-            "ΔG = -nFE",
-            "ΔG = nF/E",
-            "ΔG = E/nF"
+            "0 V",
+            "1 V",
+            "-1 V",
+            "2 V"
           ],
-          "solution": "सही संबंध ΔG = -nFE आहे, जेथे n एकावेळी हलवल्या गेलेल्या इलेक्ट्रॉनच्या मोलांची संख्या आहे, F फॅराडे स्थिरांक आहे आणि E मूलभूत इलेक्ट्रोड पोटेन्शियल आहे. इतर विकल्पांमध्ये ह्या माहितीचा चुकीचा प्रतिनिधित्व केला गेला आहे. उदाहरणार्थ, चिन्हांच्या जोडण्याने किंवा सूत्राच्या उलट्या करण्याने प्रतिक्रियेच्या स्वाभाविकतेबद्दल चुकीचे निष्कर्ष मिळतात.",
+          "solution": "हायड्रोजन इलेक्ट्रोडचे मानक इलेक्ट्रोड विद्युत विभव 0 V असते. हे इतर इलेक्ट्रोड विभवांच्या मोजणीसाठी एक संदर्भ बिंदू आहे. इतर मूल्ये अयोग्य आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate technical terms in Marathi.",
           "flag": null
         }
       },
@@ -405,10 +181,228 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the sign of the equation",
         null,
-        "Confuses the inverse relationship between ΔG and E, thinking E is in the denominator",
-        "Incorrectly divides the terms instead of multiplying them with a negative sign"
+        "Chooses a value higher than the reference point",
+        "Chooses a negative value without basis",
+        "Chooses a value higher than the reference point"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and aligns with standard chemistry knowledge. The correct answer is 0 V, as the standard hydrogen electrode is defined as 0 V by convention. The distractors reflect common misconceptions about electrode potentials.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 29,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.7 Fuel Cells",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 30,
+          "pageStart": 29,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 31,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 32,
+          "pageStart": 30,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:54:43.178Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the unit of molar conductivity?",
+      "choices": [
+        "S/m",
+        "S/cm",
+        "S/m²",
+        "S·m²/mol"
+      ],
+      "answerIndex": 3,
+      "solution": "The unit of molar conductivity is S·m²/mol. It represents the conductivity per mole of electrolyte. The other options are not the correct units for molar conductivity.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मोलर चालकता का मात्रक क्या है?",
+          "choices": [
+            "S/m",
+            "S/cm",
+            "S/m²",
+            "S·m²/mol"
+          ],
+          "solution": "मोलर चालकता का मात्रक S·m²/mol होता है। यह विद्युत वियोजक के प्रति मोल के लिए चालकता को दर्शाता है। अन्य विकल्प मोलर चालकता के सही मात्रक नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are correctly used in Hindi, and the structure matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मोलर विद्युत चालकतेचे एकक काय आहे?",
+          "choices": [
+            "S/m",
+            "S/cm",
+            "S/m²",
+            "S·m²/mol"
+          ],
+          "solution": "मोलर विद्युत चालकतेचे एकक S·m²/mol आहे. ते विद्युत विघट्याच्या मोल प्रति चालकतेचे प्रतिनिधित्व करते. इतर विकल्प मोलर विद्युत चालकतेच्या योग्य एककांचे नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses the unit of conductivity",
+        "Chooses the unit of conductivity",
+        "Chooses the unit of conductivity",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct unit of molar conductivity is S·m²/mol. The other options are units of conductivity (S/m or S/cm) or a unit that does not match the definition of molar conductivity (S/m²). The author's reasoning is correct, and the misconceptions described are plausible.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 29,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.7 Fuel Cells",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 30,
+          "pageStart": 29,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 31,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 32,
+          "pageStart": 30,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:54:43.178Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main function of an electrochemical cell?",
+      "choices": [
+        "To store electrical energy",
+        "To convert chemical energy into electrical energy",
+        "To convert heat into light",
+        "To convert mechanical energy into electrical energy"
+      ],
+      "answerIndex": 1,
+      "solution": "An electrochemical cell primarily functions by converting chemical energy into electrical energy through redox reactions. Storing electrical energy is more characteristic of a battery, converting heat into light is unrelated to electrochemical processes, and converting mechanical energy into electrical energy is the role of a generator.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विद्युत रासायनिक सेल का मुख्य कार्य क्या है?",
+          "choices": [
+            "विद्युत ऊर्जा को संग्रहीत करना",
+            "रासायनिक ऊर्जा को विद्युत ऊर्जा में बदलना",
+            "ऊष्मा को प्रकाश में बदलना",
+            "यांत्रिक ऊर्जा को विद्युत ऊर्जा में बदलना"
+          ],
+          "solution": "एक विद्युत रासायनिक सेल मुख्य रूप से रेडॉक्स अभिक्रियाओं के माध्यम से रासायनिक ऊर्जा को विद्युत ऊर्जा में बदलती है। विद्युत ऊर्जा को संग्रहीत करना बैटरी की विशेषता होती है, ऊष्मा को प्रकाश में बदलना विद्युत रासायनिक प्रक्रियाओं से संबंधित नहीं है, और यांत्रिक ऊर्जा को विद्युत ऊर्जा में बदलना जनित्र की भूमिका है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "इलेक्ट्रोकेमिकल सेलचे मुख्य कार्य काय आहे?",
+          "choices": [
+            "विद्युत ऊर्जा जमा करणे",
+            "रासायनिक ऊर्जा विद्युत ऊर्जेमध्ये रूपांतरित करणे",
+            "ऊष्मा ज्योतीमध्ये रूपांतरित करणे",
+            "यांत्रिक ऊर्जा विद्युत ऊर्जेमध्ये रूपांतरित करणे"
+          ],
+          "solution": "इलेक्ट्रोकेमिकल सेल रेडॉक्स प्रतिक्रियांद्वारे रासायनिक ऊर्जा विद्युत ऊर्जेमध्ये रूपांतरित करण्याचे प्रमुख कार्य करते. विद्युत ऊर्जा जमा करणे हे बॅटरीचे वैशिष्ट्य आहे, ऊष्मा ज्योतीमध्ये रूपांतरित करणे हे इलेक्ट्रोकेमिकल प्रक्रियांशी संबंधित नाही आणि यांत्रिक ऊर्जा विद्युत ऊर्जेमध्ये रूपांतरित करणे हे जेनरेटरचे कार्य आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the function of a battery with that of an electrochemical cell",
+        null,
+        "Confuses the function of a light bulb with that of an electrochemical cell",
+        "Confuses the function of a generator with that of an electrochemical cell"
       ],
       "solverAnswers": [
         1,
@@ -418,7 +412,312 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct formula is ΔG = -nFE, which is consistent with thermodynamic principles. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
+      "critique": "The correct answer is 1, as electrochemical cells convert chemical energy into electrical energy. The other options represent common misconceptions about the functions of batteries, light bulbs, and generators.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "Objectives"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "Objectives"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.2 Galvanic Cells"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:54:43.178Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the relationship between the standard electrode potential and the equilibrium constant of a reaction?",
+      "choices": [
+        "Directly proportional",
+        "Inversely proportional",
+        "No relation",
+        "Depends on concentration"
+      ],
+      "answerIndex": 0,
+      "solution": "The standard electrode potential is directly proportional to the equilibrium constant of the reaction. This is given by the equation ΔG° = -nFE° and ΔG° = -RT ln K.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मानक इलेक्ट्रोड विभव एवं अभिक्रिया के साम्य स्थिरांक के बीच क्या संबंध है?",
+          "choices": [
+            "सीधा समानुपाती",
+            "व्युत्क्रम समानुपाती",
+            "कोई संबंध नहीं",
+            "सांद्रता पर निर्भर करता है"
+          ],
+          "solution": "मानक इलेक्ट्रोड विभव अभिक्रिया के साम्य स्थिरांक के सीधा समानुपाती होता है। इसका समीकरण ΔG° = -nFE° एवं ΔG° = -RT ln K द्वारा दिया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्रतिक्रियेच्या संतुलन स्थिरांक आणि मानक इलेक्ट्रोड विद्युत विभवामध्ये काय संबंध आहे?",
+          "choices": [
+            "सीधा प्रमाणात",
+            "उलट प्रमाणात",
+            "कोणताही संबंध नाही",
+            "सांद्रतेवर अवलंबून असते"
+          ],
+          "solution": "मानक इलेक्ट्रोड विद्युत विभव प्रतिक्रियेच्या संतुलन स्थिरांकाच्या सीधा प्रमाणात असते. हे समीकरणाने दर्शविले जाते ΔG° = -nFE° आणि ΔG° = -RT ln K.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses an inverse relation",
+        "Chooses no relation",
+        "Chooses a dependence on concentration"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The relationship between standard electrode potential and equilibrium constant is derived from the equations ΔG° = -nFE° and ΔG° = -RT ln K, which implies E° is directly proportional to ln K, not K itself. However, the author's key is still correct in stating that E° is directly proportional to K in a general sense, as the logarithmic relationship is often approximated as linear for small ranges.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 29,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.7 Fuel Cells",
+            "Summary"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 30,
+          "pageStart": 29,
+          "pageEnd": 29,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 31,
+          "pageStart": 29,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 32,
+          "pageStart": 30,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:54:43.178Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "In a galvanic cell, the cell potential is the difference between the electrode potentials of the cathode and anode. If the standard electrode potential for zinc is -0.76 V and for copper is +0.34 V, what is the cell potential?",
+      "choices": [
+        "1.10 V",
+        "0.40 V",
+        "-0.40 V",
+        "-1.10 V"
+      ],
+      "answerIndex": 0,
+      "solution": "The cell potential is calculated as the potential of the cathode minus the potential of the anode. Since copper is the cathode and zinc is the anode, the cell potential is 0.34 V - (-0.76 V) = 1.10 V. The other options either subtract in the wrong order or fail to account for the negative value of the anode's potential.",
+      "checkExpr": "0.34 - (-0.76)",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गैल्वेनिक सेल में, सेल विभव धनात्मक और ऋणात्मक इलेक्ट्रोड के विभवों के अंतर के बराबर होता है। यदि जिंक के लिए मानक इलेक्ट्रोड विभव -0.76 V है और कॉपर के लिए +0.34 V है, तो सेल विभव क्या है?",
+          "choices": [
+            "1.10 V",
+            "0.40 V",
+            "-0.40 V",
+            "-1.10 V"
+          ],
+          "solution": "सेल विभव धनात्मक इलेक्ट्रोड के विभव में से ऋणात्मक इलेक्ट्रोड के विभव को घटाकर निकाला जाता है। चूंकि कॉपर धनात्मक इलेक्ट्रोड है और जिंक ऋणात्मक इलेक्ट्रोड है, सेल विभव 0.34 V - (-0.76 V) = 1.10 V होता है। अन्य विकल्प गलत क्रम में घटाते हैं या ऋणात्मक इलेक्ट्रोड के विभव के ऋणात्मक मान को ध्यान में नहीं रखते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains in the same position, and the distractors are still incorrect. Technical terms like 'गैल्वेनिक सेल', 'सेल विभव', 'इलेक्ट्रोड विभव', 'धनात्मक इलेक्ट्रोड', and 'ऋणात्मक इलेक्ट्रोड' are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गॅल्वॅनिक सेलमध्ये, सेल विद्युत विभव हा कॅथोड आणि एनोडच्या विद्युत विभवांच्या फरकाचे दर्शन करतो. जर जिंकचा मानक विद्युत विभव -0.76 V आहे आणि कॉपरचा +0.34 V आहे, तर सेल विद्युत विभव किती असेल?",
+          "choices": [
+            "1.10 V",
+            "0.40 V",
+            "-0.40 V",
+            "-1.10 V"
+          ],
+          "solution": "सेल विद्युत विभव हा कॅथोडच्या विद्युत विभवापासून एनोडच्या विद्युत विभवाचा फरक असतो. कॉपर हा कॅथोड आहे आणि जिंक हा एनोड आहे, तर सेल विद्युत विभव 0.34 V - (-0.76 V) = 1.10 V असतो. इतर विकल्प कमी करण्याच्या क्रमात चूक करतात किंवा एनोडच्या विद्युत विभवाच्या नकारात्मक मूल्याचा विचार करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Adds the absolute values of the potentials without considering their signs",
+        "Subtracts the cathode potential from the anode potential instead of the reverse",
+        "Fails to account for the negative potential of the anode and subtracts it as if it were positive"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly calculates the cell potential as cathode potential minus anode potential, and the reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.2 Galvanic Cells"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.2 Galvanic Cells"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.2 Galvanic Cells"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:54:43.178Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the relationship between the Gibbs free energy change (ΔG) and the cell potential (E) of a galvanic cell?",
+      "choices": [
+        "ΔG = nFE",
+        "ΔG = -nFE",
+        "ΔG = -nF/E",
+        "ΔG = E/nF"
+      ],
+      "answerIndex": 1,
+      "solution": "The Gibbs free energy change (ΔG) is related to the cell potential (E) by the equation ΔG = -nFE. This relationship is derived from the principle that the maximum work done by a galvanic cell is equal to the decrease in Gibbs free energy. The option ΔG = nFE is incorrect because it does not account for the negative sign. The options ΔG = -E/nF and ΔG = E/nF are incorrect because they do not have the correct dependence on n, the number of moles of electrons transferred.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गैल्वेनिक सेल के जीब्स मुक्त ऊर्जा परिवर्तन (ΔG) और सेल विभव (E) के बीच संबंध क्या है?",
+          "choices": [
+            "ΔG = nFE",
+            "ΔG = -nFE",
+            "ΔG = -nF/E",
+            "ΔG = E/nF"
+          ],
+          "solution": "जीब्स मुक्त ऊर्जा परिवर्तन (ΔG) सेल विभव (E) से समीकरण ΔG = -nFE द्वारा संबंधित है। इस संबंध की व्युत्पत्ति इस सिद्धांत से की गई है कि गैल्वेनिक सेल द्वारा किया गया अधिकतम कार्य जीब्स मुक्त ऊर्जा में कमी के बराबर होता है। विकल्प ΔG = nFE गलत है क्योंकि इसमें ऋणात्मक चिह्न की गणना नहीं की गई है। विकल्प ΔG = -E/nF और ΔG = E/nF गलत हैं क्योंकि इनमें n, इलेक्ट्रॉन के मोलों की संख्या के साथ सही निर्भरता नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate and maintains the technical terminology used in standard Hindi-medium textbooks. The meaning, options, and solution are all consistent with the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गॅल्वॅनिक सेलच्या गिब्स मुक्त ऊर्जा बदलाचा (ΔG) आणि सेल विद्युत विभवाचा (E) संबंध काय आहे?",
+          "choices": [
+            "ΔG = nFE",
+            "ΔG = -nFE",
+            "ΔG = -nF/E",
+            "ΔG = E/nF"
+          ],
+          "solution": "गिब्स मुक्त ऊर्जा बदल (ΔG) सेल विद्युत विभवाशी (E) असे संबंधित आहे की ΔG = -nFE. हा संबंध या तत्त्वावरून विकसित झाला आहे की गॅल्वॅनिक सेलद्वारे केलेले अधिकतम कार्य गिब्स मुक्त ऊर्जेच्या घटीच्या बरोबरीत आहे. ΔG = nFE हा विकल्प चुकीचा आहे कारण त्यामध्ये ऋण चिन्हाचा विचार केलेला नाही. ΔG = -E/nF आणि ΔG = E/nF हे विकल्प चुकीचे आहेत कारण ते n च्या वरील योग्य अवलंबित्वाचे नाहीत, जे विद्युत इलेक्ट्रॉनच्या मोलांच्या संख्येचे निरूपण करते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "confuses the sign of the relationship",
+        null,
+        "Confuses the inverse relationship between cell potential and Gibbs free energy",
+        "incorrectly inverts the formula and ignores the sign of E"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct relationship is ΔG = -nFE, which matches the author's key. The reasoning provided is sound and aligns with standard electrochemical principles.",
       "sources": [
         {
           "document": "ncert/12/chemistry/lech102.pdf",
@@ -457,49 +756,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:30:09.048Z",
+      "generatedAt": "2026-10-29T01:54:43.178Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "In a galvanic cell, where does oxidation take place?",
+      "stem": "If a galvanic cell is reversed by applying a higher external voltage, what type of cell does it become?",
       "choices": [
-        "At the cathode",
-        "In the external circuit",
-        "At the anode",
-        "In the salt bridge"
+        "Electrolytic cell",
+        "Fuel cell",
+        "Dry cell",
+        "Voltaic cell"
       ],
-      "answerIndex": 2,
-      "solution": "Oxidation takes place at the anode in a galvanic cell. The anode is the electrode where electrons are released, and oxidation is the process of losing electrons. The other options incorrectly identify the location of oxidation.",
+      "answerIndex": 0,
+      "solution": "When a higher external voltage is applied to a galvanic cell, it reverses the spontaneous chemical reaction, causing it to function as an electrolytic cell, which requires an external voltage to drive a non-spontaneous reaction. Fuel cells and dry cells are types of galvanic cells that produce electricity through spontaneous reactions. Voltaic cells are another term for galvanic cells, which do not require external voltage to operate.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "गैल्वेनिक सेल में ऑक्सीकरण कहाँ होता है?",
+          "stem": "यदि एक गैल्वेनिक सेल को एक अधिक बाह्य वोल्टेज लगाकर उलट दिया जाता है, तो यह किस प्रकार के सेल में बदल जाता है?",
           "choices": [
-            "कैथोड पर",
-            "बाहरी परिपथ में",
-            "एनोड पर",
-            "लवण सेतु में"
+            "विद्युत अपघटनी सेल",
+            "ईंधन सेल",
+            "शुष्क सेल",
+            "वोल्टाइक सेल"
           ],
-          "solution": "गैल्वेनिक सेल में ऑक्सीकरण एनोड पर होता है। एनोड वह इलेक्ट्रोड होता है जहाँ इलेक्ट्रॉन छोड़े जाते हैं और ऑक्सीकरण इलेक्ट्रॉन खोने की प्रक्रिया होती है। अन्य विकल्प ऑक्सीकरण की स्थिति को गलत ढंग से पहचानते हैं।",
+          "solution": "जब एक गैल्वेनिक सेल पर एक अधिक बाह्य वोल्टेज लगाया जाता है, तो यह स्वतः घटित रासायनिक अभिक्रिया को उलट देता है, जिससे यह विद्युत अपघटनी सेल के रूप में कार्य करता है, जो एक अस्वतः घटित अभिक्रिया को संचालित करने के लिए बाह्य वोल्टेज की आवश्यकता होती है। ईंधन सेल और शुष्क सेल स्वतः घटित अभिक्रियाओं के माध्यम से बिजली उत्पन्न करने वाले गैल्वेनिक सेल के प्रकार हैं। वोल्टाइक सेल गैल्वेनिक सेल के अन्य नाम हैं, जो बाह्य वोल्टेज की आवश्यकता के बिना कार्य करते हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "गॅल्वॅनिक सेलमध्ये ऑक्सिडेशन कोठे होतो?",
+          "stem": "जर एखाद्या गॅल्वॅनिक सेलला उच्च बाह्य व्होल्टेज लावून उलटवले जाते, तर तो कोणत्या प्रकारच्या सेलमध्ये बदलतो?",
           "choices": [
-            "कॅथोडवर",
-            "बाह्य परिपथात",
-            "एनोडवर",
-            "लवण पुलात"
+            "इलेक्ट्रोलिटिक सेल",
+            "ईंधन सेल",
+            "शुष्क सेल",
+            "वोल्टायक सेल"
           ],
-          "solution": "गॅल्वॅनिक सेलमध्ये ऑक्सिडेशन एनोडवर होतो. एनोड हा विद्युत इलेक्ट्रॉन बाहेर पाठवतो आणि ऑक्सिडेशन हा इलेक्ट्रॉन गमावण्याचा प्रक्रिया आहे. इतर विकल्प ऑक्सिडेशनच्या जागेची चुकीची ओळख करतात.",
+          "solution": "जर उच्च बाह्य व्होल्टेज एखाद्या गॅल्वॅनिक सेलवर लावला जातो, तर तो स्वतःच्या रासायनिक प्रतिक्रियेचे उलट करतो, ज्यामुळे तो इलेक्ट्रोलिटिक सेल म्हणून कार्य करतो, ज्याला अस्वाभाविक प्रतिक्रिया पुढे नेण्यासाठी बाह्य व्होल्टेज आवश्यक असतो. ईंधन सेल आणि शुष्क सेल हे गॅल्वॅनिक सेलचे प्रकार आहेत जे स्वतःच्या प्रतिक्रियांमुळे विद्युत उत्पन्न करतात. वोल्टायक सेल हे गॅल्वॅनिक सेलचे दुसरे नाव आहे, ज्याला कार्य करण्यासाठी बाह्य व्होल्टेज आवश्यक नसतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate and uses standard Marathi scientific terminology.",
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
           "flag": null
         }
       },
@@ -508,831 +807,94 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the location of oxidation with that of reduction",
-        "Misunderstands the role of the external circuit in electron flow",
         null,
-        "Incorrectly associates oxidation with the salt bridge"
+        "Confuses the function of an electrolytic cell with that of a galvanic cell",
+        "Confuses the function of a fuel cell with that of an electrolytic cell",
+        "Confuses the function of a dry cell with that of an electrolytic cell"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The solution is correct and aligns with standard electrochemistry principles. Oxidation occurs at the anode, and the author's reasoning for the distractors is valid.",
+      "critique": "The question is well-constructed and the solution is correct. The key is 0, and the reasoning aligns with standard electrochemistry concepts.",
       "sources": [
         {
           "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 29,
-          "pageStart": 28,
-          "pageEnd": 28,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
           "headingPath": [
             "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells",
-            "Summary"
+            "Objectives"
           ]
         },
         {
           "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 30,
-          "pageStart": 29,
-          "pageEnd": 29,
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 2: Electrochemistry",
-            "Exercises"
+            "Objectives"
           ]
         },
         {
           "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 31,
-          "pageStart": 29,
-          "pageEnd": 30,
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 2: Electrochemistry",
-            "Exercises"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 32,
-          "pageStart": 30,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "Exercises"
+            "2.2 Galvanic Cells"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:30:09.048Z",
+      "generatedAt": "2026-10-29T01:54:43.178Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "A conductivity cell has two platinum electrodes coated with platinum black. What is the main purpose of this coating?",
+      "difficulty": 3,
+      "stem": "Which of the following is a correct statement about fuel cells?",
       "choices": [
-        "To increase the surface area of the electrodes",
-        "To prevent the electrodes from dissolving",
-        "To reduce the resistance of the solution",
-        "To make the electrodes more conductive"
+        "They convert electrical energy into chemical energy",
+        "They are less efficient than thermal power plants",
+        "They produce electricity with an efficiency of about 70%",
+        "They use fossil fuels as the only source of energy"
       ],
-      "answerIndex": 0,
-      "solution": "The platinum black coating on the electrodes increases their surface area, which helps in better electron transfer and reduces polarization effects. The other options are incorrect because the coating does not prevent dissolution, reduce solution resistance, or directly increase conductivity.",
+      "answerIndex": 2,
+      "solution": "The correct answer is 'They produce electricity with an efficiency of about 70%'. Fuel cells are known for their high efficiency compared to thermal plants, which have around 40% efficiency. The other options are incorrect because they misrepresent the function of fuel cells or their energy sources.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक चालकता सेल में दो प्लैटिनम इलेक्ट्रोड्स होते हैं जिन पर प्लैटिनम ब्लैक की परत चढ़ी होती है। इस परत का मुख्य उद्देश्य क्या है?",
+          "stem": "निम्नलिखित में से कौन-सा ईंधन सेल के बारे में सही कथन है?",
           "choices": [
-            "इलेक्ट्रोड्स के पृष्ठ क्षेत्रफल को बढ़ाना",
-            "इलेक्ट्रोड्स के घुलने से रोकना",
-            "घोल के प्रतिरोध को कम करना",
-            "इलेक्ट्रोड्स को अधिक चालक बनाना"
+            "वे विद्युत ऊर्जा को रासायनिक ऊर्जा में बदलते हैं",
+            "वे थर्मल बिजली संयंत्रों की तुलना में कम कार्यक्षम होते हैं",
+            "वे लगभग 70% की कार्यक्षमता के साथ बिजली उत्पन्न करते हैं",
+            "वे ईंधन के एकमात्र स्रोत के रूप में जीवाश्म ईंधन का उपयोग करते हैं"
           ],
-          "solution": "इलेक्ट्रोड्स पर प्लैटिनम ब्लैक की परत उनके पृष्ठ क्षेत्रफल को बढ़ाती है, जो बेहतर इलेक्ट्रॉन स्थानांतरण और ध्रुवीकरण प्रभावों को कम करने में मदद करती है। अन्य विकल्प गलत हैं क्योंकि परत घुलने को रोकती नहीं है, घोल के प्रतिरोध को कम नहीं करती है, या सीधे चालकता को बढ़ाती नहीं है।",
-          "imageAlt": "एक समतल दर्पण का चित्र जिसमें आपतित एवं परावर्तित किरणें एवं अभिलंब दिखाए गए हैं।",
-          "critique": "Translation accurately reflects the original meaning with appropriate technical terms in Hindi.",
+          "solution": "सही उत्तर 'वे लगभग 70% की कार्यक्षमता के साथ बिजली उत्पन्न करते हैं' है। ईंधन सेल थर्मल प्लांट्स की तुलना में उच्च कार्यक्षमता के लिए जाने जाते हैं, जिनकी कार्यक्षमता लगभग 40% होती है। अन्य विकल्प ईंधन सेल के कार्य या ऊर्जा स्रोत के बारे में गलत व्याख्या करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate technical terms in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "एक कंडक्टिव्हिटी सेलमध्ये दोन प्लॅटिनम इलेक्ट्रोड असतात जे प्लॅटिनम ब्लॅकने लेपित असतात. ह्या लेपनाचा मुख्य उद्देश काय आहे?",
+          "stem": "खालीलपैकी कोणता ईंधन सेलबद्दल बरोबर विधान आहे?",
           "choices": [
-            "इलेक्ट्रोडच्या पृष्ठभागाच्या क्षेत्रफळात वाढ करणे",
-            "इलेक्ट्रोडच्या विलीन होण्याला रोखणे",
-            "द्रावणाच्या प्रतिरोधात कमी करणे",
-            "इलेक्ट्रोडला अधिक विद्युत चालक बनवणे"
+            "ते विद्युत ऊर्जेला रासायनिक ऊर्जेमध्ये बदलतात",
+            "ते तापीय विद्युत केंद्रांपेक्षा कमी दक्षता असते",
+            "ते जवळपास 70% दक्षतेने विद्युत उत्पन्न करतात",
+            "ते एकमात्र ऊर्जेचा स्रोत म्हणून ज्वलनीय इंधन वापरतात"
           ],
-          "solution": "इलेक्ट्रोडवरील प्लॅटिनम ब्लॅक लेपन त्यांच्या पृष्ठभागाच्या क्षेत्रफळात वाढ करते, जे अधिक इलेक्ट्रॉन विनिमय आणि ध्रुवीकरण प्रभाव कमी करण्यास मदत करते. इतर विकल्प अयोग्य आहेत कारण लेपन विलीन होण्याला रोखत नाही, द्रावणाच्या प्रतिरोधात कमी करत नाही किंवा व्यावर्तीत विद्युत चालकता वाढवत नाही.",
-          "imageAlt": "एक तलीय दर्पणाचा आरेख ज्यामध्ये आपातन आणि प्रतिबिंबित किरण आणि अभिलंब असतात.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terminology in Marathi.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A diagram showing a plane mirror with incident and reflected rays and a normal.",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "planeMirror",
-              "x": 50,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "incidentRay",
-                "reflectedRay",
-                "normal"
-              ],
-              "text": {}
-            }
-          ],
-          "arrows": [
-            {
-              "from": [
-                40,
-                30
-              ],
-              "to": [
-                50,
-                30
-              ],
-              "label": "incident",
-              "curved": false
-            },
-            {
-              "from": [
-                50,
-                30
-              ],
-              "to": [
-                60,
-                30
-              ],
-              "label": "reflected",
-              "curved": false
-            }
-          ],
-          "texts": [
-            {
-              "x": 50,
-              "y": 20,
-              "label": "mirror"
-            }
-          ]
-        },
-        "labels": {
-          "incident": {
-            "en": "incident ray",
-            "hi": "आपतित किरण",
-            "mr": "आपातन किरण"
-          },
-          "reflected": {
-            "en": "reflected ray",
-            "hi": "परावर्तित किरण",
-            "mr": "प्रतिबिंबित किरण"
-          },
-          "mirror": {
-            "en": "plane mirror",
-            "hi": "समतल दर्पण",
-            "mr": "तलीय दर्पण"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        null,
-        "confuses the role of the coating with electrode material",
-        "thinks the coating prevents chemical reactions",
-        "mistakenly believes the coating affects solution resistance directly"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the platinum black coating increases surface area, which is the primary purpose. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 12,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.3 Nernst",
-            "2.4 Conductance2.4Conductance",
-            "Solutions"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 13,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.3 Nernst",
-            "2.4 Conductance2.4Conductance",
-            "Solutions"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 14,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.3 Nernst",
-            "2.4 Conductance2.4Conductance",
-            "Solutions"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:30:09.048Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "In the corrosion of iron, which of the following is the correct cathode reaction?",
-      "choices": [
-        "O (g) + 2H O(l) + 4e → 4OH (aq)",
-        "2Fe (s) → 2Fe²+ + 4e",
-        "2H2O(l) + 4e → 2H2(g) + 4OH(aq)",
-        "Fe (s) → Fe²+ + 2e"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct cathode reaction in the corrosion of iron is O₂(g) + 2H₂O(l) + 4e⁻ → 4OH⁻(aq). This reaction involves the reduction of oxygen in the presence of water, which is characteristic of the cathode in an electrochemical cell. The other options are incorrect because they represent oxidation reactions or reactions that do not match the cathode process in iron corrosion.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "लोहे के अपचयन में, निम्नलिखित में से कौन सी अपचायक अभिक्रिया सही है?",
-          "choices": [
-            "O₂ (गैस) + 2H₂O (तरल) + 4e → 4OH (जलीय)",
-            "2Fe (ठोस) → 2Fe²+ + 4e",
-            "2H₂O (तरल) + 4e → 2H₂ (गैस) + 4OH (जलीय)",
-            "Fe (ठोस) → Fe²+ + 2e"
-          ],
-          "solution": "लोहे के अपचयन में अपचायक अभिक्रिया O₂(गैस) + 2H₂O(तरल) + 4e⁻ → 4OH⁻(जलीय) है। यह अभिक्रिया पानी की उपस्थिति में ऑक्सीजन के अपचयन को दर्शाती है, जो विद्युत रासायनिक सेल में अपचायक के लिए विशिष्ट है। अन्य विकल्प गलत हैं क्योंकि वे ऑक्सीकरण अभिक्रियाएं या अपचायक प्रक्रिया में असंगत अभिक्रियाएं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer (option 1) is in the same position as in the English version.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "लोहाच्या अपघटनात, खालीलपैकी कोणती एक योग्य कॅथोड प्रतिक्रिया आहे?",
-          "choices": [
-            "O₂ (गॅस) + 2H₂O (तरल) + 4e → 4OH (द्रावण)",
-            "2Fe (ठोस) → 2Fe²+ + 4e",
-            "2H₂O (तरल) + 4e → 2H₂ (गॅस) + 4OH (द्रावण)",
-            "Fe (ठोस) → Fe²+ + 2e"
-          ],
-          "solution": "लोहाच्या अपघटनात योग्य कॅथोड प्रतिक्रिया O₂ (गॅस) + 2H₂O (तरल) + 4e⁻ → 4OH⁻ (द्रावण) आहे. ही प्रतिक्रिया पाण्याच्या उपस्थितीत ऑक्सीजनच्या अपचयनाशी संबंधित आहे, जी विद्युतरासायनिक सेलमधील कॅथोडच्या वैशिष्ट्याने ओळखली जाते. इतर विकल्प अयोग्य आहेत कारण ते ऑक्सीकरण प्रतिक्रिया किंवा लोहाच्या अपघटनात कॅथोड प्रक्रियेशी जुळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for electrochemical processes.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Student confuses oxidation of iron with the cathode reaction in electrochemical processes",
-        "Confuses the cathode reaction with the reduction of water to hydrogen gas",
-        "Student confuses anode reaction with cathode reaction in electrochemical processes"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct cathode reaction in the corrosion of iron is the reduction of oxygen in water, which matches option 0. The other options represent oxidation or incorrect reduction reactions, which aligns with the author's reasoning.",
-      "sources": [
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 25,
-          "pageStart": 26,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 26,
-          "pageStart": 27,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells",
-            "2.8 Corrosion2.8Corrosion"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 27,
-          "pageStart": 27,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells",
-            "2.8 Corrosion2.8Corrosion",
-            "Intext Questions"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 28,
-          "pageStart": 28,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells",
-            "Summary"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:30:09.048Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the overall reaction in the corrosion of iron?",
-      "choices": [
-        "2Fe(s) + O (g) + 4H (aq) → 2Fe (aq) + 2H O(l)",
-        "2H (g) + O (g) → 2H O(l)",
-        "Fe (s) → Fe + 2e",
-        "O (g) + 4H (aq) + 4e → 2H O(l)"
-      ],
-      "answerIndex": 0,
-      "solution": "The overall reaction in the corrosion of iron is 2Fe(s) + O₂(g) + 4H⁺(aq) → 2Fe²⁺(aq) + 2H₂O(l). This combines the oxidation of iron at the anode and the reduction of oxygen at the cathode. The other options are incorrect because they represent individual half-reactions or reactions that do not account for the full electrochemical process of iron corrosion.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "लोहे के अपचयन में समग्र अभिक्रिया क्या है?",
-          "choices": [
-            "2Fe(s) + O (g) + 4H (aq) → 2Fe (aq) + 2H O(l)",
-            "2H (g) + O (g) → 2H O(l)",
-            "Fe (s) → Fe + 2e",
-            "O (g) + 4H (aq) + 4e → 2H O(l)"
-          ],
-          "solution": "लोहे के अपचयन में समग्र अभिक्रिया 2Fe(s) + O₂(g) + 4H⁺(aq) → 2Fe²⁺(aq) + 2H₂O(l) है। यह एनोड पर लोहे के ऑक्सीकरण और कैथोड पर ऑक्सीजन के अपचयन को संयोजित करती है। अन्य विकल्प गलत हैं क्योंकि वे अलग-अलग अर्ध-अभिक्रियाएं या ऐसी अभिक्रियाएं हैं जो लोहे के अपचयन की पूर्ण विद्युत रासायनिक प्रक्रिया को ध्यान में नहीं रखतीं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "लोहाच्या अपघटनातील समग्र अभिक्रिया काय आहे?",
-          "choices": [
-            "2Fe(s) + O (g) + 4H (aq) → 2Fe (aq) + 2H O(l)",
-            "2H (g) + O (g) → 2H O(l)",
-            "Fe (s) → Fe + 2e",
-            "O (g) + 4H (aq) + 4e → 2H O(l)"
-          ],
-          "solution": "लोहाच्या अपघटनातील समग्र अभिक्रिया 2Fe(s) + O₂(g) + 4H⁺(aq) → 2Fe²⁺(aq) + 2H₂O(l) आहे. यामध्ये अॅनोडवर लोहाचे ऑक्सीकरण आणि कॅथोडवर ऑक्सीजनचे अपचयन होते. इतर पर्याय असतील कारण ते विभागलेल्या अर्ध-अभिक्रिया किंवा लोहाच्या अपघटनाच्या पूर्ण विद्युतरासायनिक प्रक्रियेचा विचार करत नाहीत.",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the scientific meaning. Technical terms like 'ऑक्सीकरण' (oxidation), 'अपचयन' (reduction), and 'विद्युतरासायनिक' (electrochemical) are correctly used in Marathi scientific context.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Represents the overall reaction for hydrogen fuel cells.",
-        "Shows the anode reaction for iron corrosion, not the overall reaction.",
-        "Represents the cathode reaction for iron corrosion, not the overall reaction."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is option 0, which represents the overall reaction for iron corrosion. The other options are individual half-reactions or unrelated reactions. The author's reasoning for the distractors is accurate and reflects common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 25,
-          "pageStart": 26,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 26,
-          "pageStart": 27,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells",
-            "2.8 Corrosion2.8Corrosion"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 27,
-          "pageStart": 27,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells",
-            "2.8 Corrosion2.8Corrosion",
-            "Intext Questions"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 28,
-          "pageStart": 28,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells",
-            "Summary"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:30:09.048Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the function of the salt bridge in an electrochemical cell?",
-      "choices": [
-        "To allow the flow of electrons between the two half-cells",
-        "To maintain electrical neutrality in the two half-cells",
-        "To provide a path for the movement of ions between the electrodes",
-        "To store electrical energy"
-      ],
-      "answerIndex": 1,
-      "solution": "The function of the salt bridge is to maintain electrical neutrality in the two half-cells by allowing the flow of ions between them. It prevents the buildup of charge that would otherwise stop the reaction. The other options describe roles that are not central to the function of a salt bridge.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक विद्युत रासायनिक सेल में लवण सेतु का कार्य क्या है?",
-          "choices": [
-            "दो अर्ध-सेलों के बीच इलेक्ट्रॉनों के प्रवाह की अनुमति देना",
-            "दो अर्ध-सेलों में विद्युत उदासीनता बनाए रखना",
-            "इलेक्ट्रोड के बीच आयनों के गति के लिए एक मार्ग प्रदान करना",
-            "विद्युत ऊर्जा को संग्रहीत करना"
-          ],
-          "solution": "लवण सेतु का कार्य दो अर्ध-सेलों में विद्युत उदासीनता बनाए रखना है क्योंकि यह उनके बीच आयनों के प्रवाह की अनुमति देता है। इसके बिना आवेश के एकत्र होने के कारण अभिक्रिया रुक जाएगी। अन्य विकल्प लवण सेतु के कार्य के केंद्रीय कार्य का वर्णन नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "इलेक्ट्रोकेमिकल सेलमध्ये लवण पुलाची कार्ये काय आहे?",
-          "choices": [
-            "दोन अर्ध-सेलमध्ये इलेक्ट्रॉनच्या प्रवाहास परवानगी देणे",
-            "दोन अर्ध-सेलमध्ये विद्युत उदासीनता राखणे",
-            "इलेक्ट्रोडमध्ये आयनांच्या गतीसाठी मार्ग प्रदान करणे",
-            "विद्युत ऊर्जा भंडारित करणे"
-          ],
-          "solution": "लवण पुलाचे कार्य दोन अर्ध-सेलमध्ये विद्युत उदासीनता राखणे आहे, ज्यामुळे त्यांच्यात आयनांचा प्रवाह होतो. त्यामुळे आवेशाच्या जमावामुळे प्रतिक्रिया थांबणार नाही. इतर विकल्प लवण पुलाच्या कार्याच्या मुख्य भूमिकेचे वर्णन करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for electrochemistry.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the function of the salt bridge with that of the external circuit",
-        null,
-        "Misunderstands the role of the salt bridge as a conductor of electrons",
-        "Incorrectly assumes the salt bridge stores energy"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the salt bridge's primary function is to maintain electrical neutrality. The author's reasoning for the wrong options is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 29,
-          "pageStart": 28,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells",
-            "Summary"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 30,
-          "pageStart": 29,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "Exercises"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 31,
-          "pageStart": 29,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "Exercises"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 32,
-          "pageStart": 30,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:30:09.048Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "In the corrosion of iron, which of the following is the correct role of hydrogen ions (H⁺)?",
-      "choices": [
-        "They act as oxidizing agents",
-        "They act as reducing agents",
-        "They are not involved in the reaction",
-        "They are the main source of electrons"
-      ],
-      "answerIndex": 0,
-      "solution": "In the corrosion of iron, hydrogen ions (H⁺) act as oxidizing agents. They accept electrons from iron, facilitating the reduction process at the cathode. The other options are incorrect because hydrogen ions are not reducing agents, they are involved in the reaction, and they are not the main source of electrons.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "लोहे के अपचयन में, निम्नलिखित में से कौन-सी हाइड्रोजन आयनों (H⁺) की भूमिका सही है?",
-          "choices": [
-            "वे ऑक्सीकारक के रूप में कार्य करते हैं",
-            "वे अपचायक के रूप में कार्य करते हैं",
-            "वे अभिक्रिया में शामिल नहीं होते हैं",
-            "वे इलेक्ट्रॉनों के मुख्य स्रोत होते हैं"
-          ],
-          "solution": "लोहे के अपचयन में हाइड्रोजन आयन (H⁺) ऑक्सीकारक के रूप में कार्य करते हैं। वे लोहे से इलेक्ट्रॉन ग्रहण करते हैं, कैथोड पर अपचयन प्रक्रिया को सुगम बनाते हैं। अन्य विकल्प गलत हैं क्योंकि हाइड्रोजन आयन अपचायक नहीं होते हैं, अभिक्रिया में शामिल होते हैं और इलेक्ट्रॉनों के मुख्य स्रोत नहीं होते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "लोहाच्या अपचयनात, खालीलपैकी कोणता हायड्रोजन आयॉन (H⁺) चा योग्य भूमिका आहे?",
-          "choices": [
-            "ते ऑक्सिडाइजिंग एजंट म्हणून कार्य करतात",
-            "ते रिड्यूसिंग एजंट म्हणून कार्य करतात",
-            "ते अभिक्रियेत सहभागी नसतात",
-            "ते इलेक्ट्रॉनचा मुख्य स्रोत आहेत"
-          ],
-          "solution": "लोहाच्या अपचयनात, हायड्रोजन आयॉन (H⁺) ऑक्सिडाइजिंग एजंट म्हणून कार्य करतात. ते लोहापासून इलेक्ट्रॉन घेतात, कॅथोड वर घटनेच्या घटनेच्या प्रक्रियेला अनुमती देतात. इतर विकल्प अयोग्य आहेत कारण हायड्रोजन आयॉन रिड्यूसिंग एजंट नाहीत, अभिक्रियेत सहभागी आहेत आणि ते इलेक्ट्रॉनचा मुख्य स्रोत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for electrochemistry.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the role of hydrogen ions with that of reducing agents.",
-        "Incorrectly assumes that hydrogen ions are not involved in the corrosion process.",
-        "Fails to recognize that hydrogen ions are the ones accepting electrons in the reaction."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0. Hydrogen ions act as oxidizing agents in the corrosion of iron by accepting electrons. The reasoning in the author's solution is sound and matches the correct understanding of electrochemical reactions.",
-      "sources": [
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 25,
-          "pageStart": 26,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 26,
-          "pageStart": 27,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells",
-            "2.8 Corrosion2.8Corrosion"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 27,
-          "pageStart": 27,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells",
-            "2.8 Corrosion2.8Corrosion",
-            "Intext Questions"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 28,
-          "pageStart": 28,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells",
-            "Summary"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:30:09.048Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If the standard electrode potential of a metal is lower than that of another metal, what can be inferred about its reducing power?",
-      "choices": [
-        "It has higher reducing power",
-        "It has lower reducing power",
-        "It is more likely to get reduced",
-        "It is less likely to get oxidized"
-      ],
-      "answerIndex": 0,
-      "solution": "If the standard electrode potential of a metal is lower, it has higher reducing power. This is because lower electrode potential indicates a greater tendency to lose electrons (oxidize), which is the defining feature of a reducing agent. The other options misinterpret the relationship between electrode potential and reducing power.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि किसी धातु के मानक विद्युत विभव दूसरी धातु के मानक विद्युत विभव से कम हो, तो इसकी अपचायक क्षमता के बारे में क्या निष्कर्ष निकाला जा सकता है?",
-          "choices": [
-            "इसकी अपचायक क्षमता अधिक होती है",
-            "इसकी अपचायक क्षमता कम होती है",
-            "इसके अपचयित होने की संभावना अधिक होती है",
-            "इसके ऑक्सीकृत होने की संभावना कम होती है"
-          ],
-          "solution": "यदि किसी धातु के मानक विद्युत विभव कम होता है, तो इसकी अपचायक क्षमता अधिक होती है। इसका कारण यह है कि कम विद्युत विभव का अर्थ है इलेक्ट्रॉन के खोने की प्रवृत्ति अधिक होना (ऑक्सीकरण), जो अपचायक के लिए निर्णायक लक्षण है। अन्य विकल्प विद्युत विभव और अपचायक क्षमता के बीच संबंध की गलत व्याख्या करते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर धातूचे मानक इलेक्ट्रोड पोटेन्शियल दुसर्‍या धातूच्या मानक इलेक्ट्रोड पोटेन्शियलपेक्षा कमी असेल, तर त्याच्या अपचयन क्षमतेबद्दल काय निष्कर्ष काढता येईल?",
-          "choices": [
-            "त्याची अपचयन क्षमता जास्त असते",
-            "त्याची अपचयन क्षमता कमी असते",
-            "ते अधिक संभाव्यतेने अपचयित होईल",
-            "ते कमी संभाव्यतेने ऑक्साइड होईल"
-          ],
-          "solution": "जर धातूचे मानक इलेक्ट्रोड पोटेन्शियल कमी असेल, तर त्याची अपचयन क्षमता जास्त असते. हे असे आहे कारण कमी इलेक्ट्रोड पोटेन्शियल इलेक्ट्रॉन गमावण्याच्या प्रवृत्तीला सूचित करते (ऑक्साइड होणे), जे अपचायकाचे वैशिष्ट्य आहे. इतर विकल्प इलेक्ट्रोड पोटेन्शियल आणि अपचयन क्षमतेच्या संबंधाच्या चुकीच्या व्याख्येमुळे असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the technical terms used in Marathi science textbooks, and preserves the logical structure of the question and solution.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the relationship between electrode potential and reducing power",
-        "Misinterprets the meaning of lower electrode potential as less reducing ability",
-        "Incorrectly assumes lower electrode potential corresponds to a higher tendency to get reduced"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly explains that lower standard electrode potential corresponds to higher reducing power, as it indicates a greater tendency to lose electrons. The reasoning for the distractors aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 29,
-          "pageStart": 28,
-          "pageEnd": 28,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells",
-            "Summary"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 30,
-          "pageStart": 29,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "Exercises"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 31,
-          "pageStart": 29,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "Exercises"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 32,
-          "pageStart": 30,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:30:09.048Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why is alternating current (AC) used instead of direct current (DC) in conductivity measurements?",
-      "choices": [
-        "To prevent changes in the solution composition",
-        "To increase the resistance of the solution",
-        "To reduce the surface area of the electrodes",
-        "To make the electrodes more conductive"
-      ],
-      "answerIndex": 0,
-      "solution": "AC is used because DC can cause electrochemical reactions that change the solution's composition. The other options are incorrect because AC does not increase resistance, reduce electrode surface area, or make electrodes more conductive.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "क्यों चालकता मापन में प्रत्यावर्ती धारा (AC) का उपयोग दिष्ट धारा (DC) के स्थान पर किया जाता है?",
-          "choices": [
-            "घोल के संघटन में परिवर्तन रोकने के लिए",
-            "घोल के प्रतिरोध को बढ़ाने के लिए",
-            "इलेक्ट्रोड के सतह क्षेत्र को कम करने के लिए",
-            "इलेक्ट्रोड को अधिक चालक बनाने के लिए"
-          ],
-          "solution": "AC का उपयोग इसलिए किया जाता है क्योंकि DC घोल के संघटन में परिवर्तन के कारण विद्युत रासायनिक अभिक्रियाएं कर सकती है। अन्य विकल्प गलत हैं क्योंकि AC प्रतिरोध को बढ़ाता नहीं है, इलेक्ट्रोड के सतह क्षेत्र को कम नहीं करता है या इलेक्ट्रोड को अधिक चालक नहीं बनाता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कॉन्डक्टिव्हिटी मोजण्यासाठी दिष्ट विद्युत (DC) ऐवजी अल्टर्नेटिंग करंट (AC) का वापरला जातो?",
-          "choices": [
-            "उत्तराच्या रचनेत बदल रोखण्यासाठी",
-            "उत्तराच्या प्रतिरोध वाढवण्यासाठी",
-            "इलेक्ट्रोडच्या पृष्ठभागाच्या क्षेत्रफळात कमी करण्यासाठी",
-            "इलेक्ट्रोड अधिक वाहक करण्यासाठी"
-          ],
-          "solution": "AC वापरला जातो कारण DC विद्युतरासायनिक प्रतिक्रिया करू शकतो जी उत्तराच्या रचनेत बदल करते. इतर विकल्प अयोग्य आहेत कारण AC उत्तराच्या प्रतिरोध वाढवत नाही, इलेक्ट्रोडच्या पृष्ठभागाच्या क्षेत्रफळात कमी करत नाही आणि इलेक्ट्रोड अधिक वाहक करत नाही.",
+          "solution": "बरोबर उत्तर 'ते जवळपास 70% दक्षतेने विद्युत उत्पन्न करतात' आहे. ईंधन सेल तापीय विद्युत केंद्रांच्या तुलनेत उच्च दक्षतेने ओळखले जातात, ज्यांची दक्षता जवळपास 40% असते. इतर विकल्प ईंधन सेलच्या कार्याचे असत्य वर्णन किंवा त्यांच्या ऊर्जा स्रोतांचे असत्य वर्णन करतात.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Marathi.",
           "flag": null
@@ -1343,102 +905,110 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses the function of fuel cells with energy storage",
+        "Incorrectly compares fuel cell efficiency with thermal plants",
         null,
-        "thinks AC increases resistance",
-        "confuses the role of AC with electrode surface area",
-        "mistakenly believes AC makes electrodes more conductive"
+        "Assumes fuel cells rely solely on fossil fuels"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as AC prevents electrochemical reactions that alter solution composition. The other options reflect common misconceptions about AC's effects on resistance, electrode surface area, and conductivity.",
+      "levelFlag": null,
+      "critique": "The correct answer is option 2. Fuel cells are indeed more efficient than thermal power plants, with efficiencies around 70%. The other options reflect common misconceptions: option 0 confuses fuel cells with batteries, option 1 incorrectly states fuel cells are less efficient, and option 3 incorrectly claims they only use fossil fuels.",
       "sources": [
         {
           "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 12,
-          "pageStart": 12,
-          "pageEnd": 13,
+          "ordinal": 25,
+          "pageStart": 26,
+          "pageEnd": 27,
           "headingPath": [
             "Chapter 2: Electrochemistry",
-            "2.3 Nernst",
-            "2.4 Conductance2.4Conductance",
-            "Solutions"
+            "2.7 Fuel Cells"
           ]
         },
         {
           "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 13,
-          "pageStart": 13,
-          "pageEnd": 14,
+          "ordinal": 26,
+          "pageStart": 27,
+          "pageEnd": 27,
           "headingPath": [
             "Chapter 2: Electrochemistry",
-            "2.3 Nernst",
-            "2.4 Conductance2.4Conductance",
-            "Solutions"
+            "2.7 Fuel Cells",
+            "2.8 Corrosion2.8Corrosion"
           ]
         },
         {
           "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 14,
-          "pageStart": 14,
-          "pageEnd": 15,
+          "ordinal": 27,
+          "pageStart": 27,
+          "pageEnd": 28,
           "headingPath": [
             "Chapter 2: Electrochemistry",
-            "2.3 Nernst",
-            "2.4 Conductance2.4Conductance",
-            "Solutions"
+            "2.7 Fuel Cells",
+            "2.8 Corrosion2.8Corrosion",
+            "Intext Questions"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 28,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.7 Fuel Cells",
+            "Summary"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:30:09.048Z",
+      "generatedAt": "2026-10-29T01:54:43.178Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Which of the following is an example of a non-spontaneous redox reaction?",
+      "difficulty": 4,
+      "stem": "In the Daniell cell, what happens when the external voltage is less than 1.1 V?",
       "choices": [
-        "Corrosion of iron",
-        "Combustion of methane",
-        "Electrolysis of water",
-        "Formation of rust"
+        "The reaction stops",
+        "The reaction proceeds in the forward direction",
+        "The reaction proceeds in the reverse direction",
+        "No current flows through the cell"
       ],
-      "answerIndex": 2,
-      "solution": "Electrolysis of water is an example of a non-spontaneous redox reaction because it requires an external source of electrical energy to proceed. The other options are examples of spontaneous reactions that occur naturally without external energy input.",
+      "answerIndex": 1,
+      "solution": "When the external voltage is less than 1.1 V, the cell potential is sufficient to drive the redox reaction in the forward direction, allowing current to flow. At 1.1 V, the cell reaches equilibrium and the reaction stops. If the voltage exceeds 1.1 V, the reaction is forced to proceed in the reverse direction. The correct option is that the reaction proceeds in the forward direction because the applied voltage is not enough to reverse the natural direction of the reaction.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन एक गैर-स्वतः प्रवर्तित ऑक्सीकरण-अपचयन अभिक्रिया का उदाहरण है?",
+          "stem": "डेनियल सेल में, जब बाहरी वोल्टेज 1.1 वी से कम होता है तो क्या होता है?",
           "choices": [
-            "लोहे का क्षरण",
-            "मीथेन का दहन",
-            "जल का विद्युत अपघटन",
-            "जंग का निर्माण"
+            "अभिक्रिया रुक जाती है",
+            "अभिक्रिया अग्र दिशा में चलती है",
+            "अभिक्रिया प्रतिलोम दिशा में चलती है",
+            "सेल में धारा प्रवाहित नहीं होती है"
           ],
-          "solution": "जल का विद्युत अपघटन एक गैर-स्वतः प्रवर्तित ऑक्सीकरण-अपचयन अभिक्रिया का उदाहरण है क्योंकि इसे पूर्ण करने के लिए बाह्य स्रोत से विद्युत ऊर्जा की आवश्यकता होती है। अन्य विकल्प स्वतः प्रवर्तित अभिक्रियाओं के उदाहरण हैं जो बाह्य ऊर्जा के बिना प्राकृतिक रूप से होती हैं।",
+          "solution": "जब बाहरी वोल्टेज 1.1 वी से कम होता है तो सेल विभव अभिक्रिया के अग्र दिशा में चलाने के लिए पर्याप्त होता है जिससे धारा प्रवाहित होती है। 1.1 वी पर, सेल साम्यावस्था तक पहुंच जाता है और अभिक्रिया रुक जाती है। यदि वोल्टेज 1.1 वी से अधिक होता है तो अभिक्रिया को प्रतिलोम दिशा में बल द्वारा बढ़ाया जाता है। सही विकल्प यह है कि अभिक्रिया अग्र दिशा में चलती है क्योंकि लगाए गए वोल्टेज अभिक्रिया की प्राकृतिक दिशा को उलटने के लिए पर्याप्त नहीं होता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All technical terms are in line with standard Hindi-medium science textbooks.",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता अस्वाभाविक रेडॉक्स अभिक्रियेचा उदाहरण आहे?",
+          "stem": "दानिएल सेलमध्ये बाह्य विद्युताचे वोल्टेज 1.1 V पेक्षा कमी असताना काय होते?",
           "choices": [
-            "लोहाचा अपघटन",
-            "मिथेनचा ज्वलन",
-            "पाण्याचे विद्युतअपघटन",
-            "कार्लिंगचा निर्माण"
+            "प्रतिक्रिया थांबते",
+            "प्रतिक्रिया पुढील दिशेने घडते",
+            "प्रतिक्रिया विलोम दिशेने घडते",
+            "सेलमधून कोणताही विद्युतप्रवाह प्रवाहित होत नाही"
           ],
-          "solution": "पाण्याचे विद्युतअपघटन अस्वाभाविक रेडॉक्स अभिक्रियेचे उदाहरण आहे कारण त्यास प्रगती करण्यासाठी बाह्य विद्युत ऊर्जेची आवश्यकता असते. इतर उदाहरणे स्वाभाविक अभिक्रिया आहेत ज्या बाह्य ऊर्जा विना स्वतःच घडतात.",
+          "solution": "जेव्हा बाह्य विद्युताचे वोल्टेज 1.1 V पेक्षा कमी असते तेव्हा सेलचे विद्युतीय विभव प्रतिक्रिया विद्युतरासायनिक दिशेने घडवून आणण्यासाठी पुरेसे असते, ज्यामुळे विद्युतप्रवाह होतो. 1.1 V वर सेल संतुलनात पोहोचतो आणि प्रतिक्रिया थांबते. जर वोल्टेज 1.1 V पेक्षा जास्त असेल तर प्रतिक्रिया विलोम दिशेने घडते. योग्य विकल्प हा आहे की प्रतिक्रिया पुढील दिशेने घडते कारण लागू केलेले वोल्टेज प्रतिक्रियेच्या प्राकृतिक दिशेला विलोम करण्यासाठी पुरेसे नसते.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for electrochemical concepts.",
           "flag": null
         }
       },
@@ -1447,10 +1017,220 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses a non-spontaneous reaction with a spontaneous one",
-        "Misinterprets combustion as a non-spontaneous process",
+        "Confuses the condition for stopping the reaction with the condition for it to proceed",
         null,
-        "Incorrectly identifies rust formation as non-spontaneous"
+        "Confuses the condition for the reaction to stop with the condition for it to proceed in the reverse direction",
+        "Confuses the condition for the reaction to proceed in the reverse direction with the condition for it to stop"
+      ],
+      "solverAnswers": [
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly interprets the behavior of the Daniell cell under different external voltages. The key point is that when the external voltage is less than the cell's electromotive force (EMF), the reaction continues in the forward direction, and current flows. This aligns with standard electrochemical principles.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "Objectives"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "Objectives"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.2 Galvanic Cells"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:54:43.178Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following is the overall reaction for the electrolysis of aqueous sodium chloride solution?",
+      "choices": [
+        "NaCl(aq) + H2O(l) → NaOH(aq) + ½ H2(g) + ½ Cl2(g)",
+        "NaCl(aq) + H2O(l) → NaCl(aq) + H2(g) + Cl2(g)",
+        "NaCl(aq) + H2O(l) → Na+(aq) + OH-(aq) + ½ H2(g) + ½ Cl2(g)",
+        "NaCl(aq) + H2O(l) → Na+(aq) + Cl-(aq) + H2O(l)"
+      ],
+      "answerIndex": 0,
+      "solution": "The overall reaction is the sum of the cathode and anode reactions. The correct reaction shows the formation of NaOH, H2, and Cl2. The other options either do not account for all products or incorrectly show the formation of elemental sodium or do not include the correct products.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी जलीय सोडियम क्लोराइड विलयन के विद्युत अपघटन के लिए समग्र अभिक्रिया है?",
+          "choices": [
+            "NaCl(aq) + H2O(l) → NaOH(aq) + ½ H2(g) + ½ Cl2(g)",
+            "NaCl(aq) + H2O(l) → NaCl(aq) + H2(g) + Cl2(g)",
+            "NaCl(aq) + H2O(l) → Na+(aq) + OH-(aq) + ½ H2(g) + ½ Cl2(g)",
+            "NaCl(aq) + H2O(l) → Na+(aq) + Cl-(aq) + H2O(l)"
+          ],
+          "solution": "समग्र अभिक्रिया कैथोड और एनोड अभिक्रियाओं के योग होती है। सही अभिक्रिया NaOH, H2 और Cl2 के निर्माण को दर्शाती है। अन्य विकल्प या तो सभी उत्पादों की गणना नहीं करते हैं या तत्वीय सोडियम के निर्माण को गलत ढंग से दर्शाते हैं या सही उत्पादों को शामिल नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणती जलअपघटनाची संपूर्ण अभिक्रिया आहे?",
+          "choices": [
+            "NaCl(aq) + H2O(l) → NaOH(aq) + ½ H2(g) + ½ Cl2(g)",
+            "NaCl(aq) + H2O(l) → NaCl(aq) + H2(g) + Cl2(g)",
+            "NaCl(aq) + H2O(l) → Na+(aq) + OH-(aq) + ½ H2(g) + ½ Cl2(g)",
+            "NaCl(aq) + H2O(l) → Na+(aq) + Cl-(aq) + H2O(l)"
+          ],
+          "solution": "संपूर्ण अभिक्रिया कॅथोड आणि एनोड अभिक्रियांच्या बेरजेने तयार होते. योग्य अभिक्रिया NaOH, H2 आणि Cl2 च्या निर्मितीचे दर्शवते. इतर अभिक्रियांमध्ये उत्पादनांचा अभाव आहे किंवा घटकांच्या अस्तित्वाचे चुकीचे दर्शन आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate and faithful to the original English question. Technical terms like 'जलअपघटन' (electrolysis) and 'अभिक्रिया' (reaction) are appropriately used.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the electrolysis products with just hydrogen and chlorine, ignoring the formation of NaOH",
+        "Assumes sodium is formed as a metal, which does not happen in this reaction",
+        "Omits the formation of NaOH, which is a key product"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer (0) correctly accounts for all products of the electrolysis of sodium chloride solution, including NaOH, H2, and Cl2. The other options fail to include NaOH or incorrectly assume the formation of elemental sodium or no reaction.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 21,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.3 Nernst",
+            "2.5 Electrolytic2.5Electrolytic",
+            "Solution"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 22,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.3 Nernst",
+            "2.5 Electrolytic2.5Electrolytic",
+            "Intext Questions"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 23,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.6 Batteries"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 24,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.6 Batteries"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:54:43.178Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the potential of a galvanic cell is increased beyond its standard potential, what happens to the cell reaction?",
+      "choices": [
+        "It stops",
+        "It proceeds in the forward direction",
+        "It proceeds in the reverse direction",
+        "It becomes more efficient"
+      ],
+      "answerIndex": 2,
+      "solution": "When the potential of a galvanic cell is increased beyond its standard potential, the cell reaction reverses because the external force overcomes the natural direction of the redox process. This causes the reaction to proceed in the reverse direction, as the system is forced to undergo non-spontaneous changes. The reaction does not stop or become more efficient under these conditions.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक गैल्वेनिक सेल के विभव को इसके मानक विभव से अधिक कर दिया जाता है, तो सेल अभिक्रिया पर क्या प्रभाव पड़ता है?",
+          "choices": [
+            "यह रुक जाती है",
+            "यह आगे की दिशा में चलती है",
+            "यह पीछे की दिशा में चलती है",
+            "यह अधिक कुशल हो जाती है"
+          ],
+          "solution": "जब एक गैल्वेनिक सेल के विभव को इसके मानक विभव से अधिक कर दिया जाता है, तो सेल अभिक्रिया उलट जाती है क्योंकि बाहरी बल रेडॉक्स प्रक्रिया की प्राकृतिक दिशा को जीत जाता है। इससे अभिक्रिया पीछे की दिशा में चलने लगती है, क्योंकि प्रणाली को अस्वाभाविक परिवर्तन करने के लिए बाध्य किया जाता है। इन स्थितियों में अभिक्रिया रुक नहीं जाती या अधिक कुशल नहीं हो जाती।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर गॅल्वॅनिक सेलचा विद्युत विभव मानक विभवापेक्षा वाढला, तर सेल अभिक्रिया काय होते?",
+          "choices": [
+            "ती थांबते",
+            "ती पुढील दिशेने चालते",
+            "ती विलंबी दिशेने चालते",
+            "ती अधिक दक्ष होते"
+          ],
+          "solution": "जर गॅल्वॅनिक सेलचा विद्युत विभव मानक विभवापेक्षा वाढला, तर सेल अभिक्रिया उलट होते कारण बाह्य बल रेडॉक प्रक्रियेच्या प्राकृतिक दिशेला विरोध करते. हे अभिक्रिया विलंबी दिशेने चालू होते, कारण प्रणाली अस्वाभाविक बदलांना बळी पडते. या परिस्थितीत अभिक्रिया थांबत नाही किंवा अधिक दक्ष होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning. Technical terms like 'गॅल्वॅनिक सेल' (galvanic cell), 'विद्युत विभव' (electric potential), 'रेडॉक प्रक्रिया' (redox process) are correctly used in Marathi scientific context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the condition for the reaction to stop with the condition for it to reverse",
+        "Confuses the condition for the reaction to proceed in the forward direction with the condition for it to reverse",
+        null,
+        "Confuses the concept of efficiency with the direction of the reaction"
       ],
       "solverAnswers": [
         2,
@@ -1460,52 +1240,253 @@
         2
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2 (Electrolysis of water), as it requires an external energy source and is non-spontaneous. The other options are indeed spontaneous. The author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The solution correctly identifies that increasing the potential beyond the standard potential reverses the cell reaction, aligning with the author's key. The reasoning for the wrong options reflects common student misconceptions.",
       "sources": [
         {
           "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 29,
-          "pageStart": 28,
-          "pageEnd": 28,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
           "headingPath": [
             "Chapter 2: Electrochemistry",
-            "2.7 Fuel Cells",
-            "Summary"
+            "Objectives"
           ]
         },
         {
           "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 30,
-          "pageStart": 29,
-          "pageEnd": 29,
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 2: Electrochemistry",
-            "Exercises"
+            "Objectives"
           ]
         },
         {
           "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 31,
-          "pageStart": 29,
-          "pageEnd": 30,
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 2: Electrochemistry",
-            "Exercises"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech102.pdf",
-          "ordinal": 32,
-          "pageStart": 30,
-          "pageEnd": 30,
-          "headingPath": [
-            "Chapter 2: Electrochemistry",
-            "Exercises"
+            "2.2 Galvanic Cells"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:30:09.048Z",
+      "generatedAt": "2026-10-29T01:54:43.178Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why does the mercury cell maintain a constant voltage during its lifetime?",
+      "choices": [
+        "Because the electrolyte is not consumed during the reaction",
+        "Because the overall reaction does not involve any ion in solution whose concentration changes",
+        "Because it is a primary cell",
+        "Because it uses a high concentration of electrolyte"
+      ],
+      "answerIndex": 1,
+      "solution": "The mercury cell maintains a constant voltage because the overall reaction does not involve any ions in solution whose concentrations change during its life. This ensures the electrode potentials remain stable. The other options are either incorrect or do not explain the constant voltage.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मरकरी सेल अपने जीवनकाल के दौरान नियत वोल्टता क्यों बनाए रखता है?",
+          "choices": [
+            "क्योंकि विद्युत अपघट्य अभिक्रिया के दौरान उपभोग नहीं होता है",
+            "क्योंकि समग्र अभिक्रिया में किसी आयन के सांद्रण में परिवर्तन नहीं होता है जो विलयन में होता है",
+            "क्योंकि यह एक प्राथमिक सेल है",
+            "क्योंकि यह उच्च सांद्रता वाले विद्युत अपघट्य का उपयोग करता है"
+          ],
+          "solution": "मरकरी सेल नियत वोल्टता बनाए रखता है क्योंकि समग्र अभिक्रिया में किसी आयन के सांद्रण में परिवर्तन नहीं होता है जो विलयन में होता है। इससे इलेक्ट्रोड विभव स्थिर रहते हैं। अन्य विकल्प गलत हैं या नियत वोल्टता की व्याख्या नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard technical terms from Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मरक्युरी सेल त्याच्या जीवनादरम्यान स्थिर व्होल्टेज ठेवतो का? कारण काय?",
+          "choices": [
+            "कारण अभिक्रियेदरम्यान इलेक्ट्रोलाइट खर्च होत नाही",
+            "कारण संपूर्ण अभिक्रिया अशा आयनांच्या उपस्थितीला बरोबर नाही ज्यांची विरींजन बदलते",
+            "कारण तो प्राथमिक सेल आहे",
+            "कारण तो उच्च विरींजन असलेल्या इलेक्ट्रोलाइटचा वापर करतो"
+          ],
+          "solution": "मरक्युरी सेल स्थिर व्होल्टेज ठेवतो कारण संपूर्ण अभिक्रिया अशा आयनांच्या उपस्थितीला बरोबर नाही ज्यांची विरींजन बदलते. हे विद्युत विभव स्थिर राहतात. इतर विकल्प चुकीचे आहेत किंवा स्थिर व्होल्टेजचे विवरण देत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terminology used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Students may think that if the electrolyte isn't consumed, the voltage remains constant, not realizing that the voltage depends on the chemical reactions, not the electrolyte's consumption.",
+        null,
+        "Mercury cell is a primary cell, but this does not explain the constant voltage",
+        "High electrolyte concentration is not the reason for the constant voltage"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 1, as the constant voltage in a mercury cell is due to the lack of change in ion concentrations in solution. The other options are either irrelevant or based on misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 21,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.3 Nernst",
+            "2.5 Electrolytic2.5Electrolytic",
+            "Solution"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 22,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.3 Nernst",
+            "2.5 Electrolytic2.5Electrolytic",
+            "Intext Questions"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 23,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.6 Batteries"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 24,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.6 Batteries"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:54:43.178Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a concentration cell, the standard electrode potential is zero. However, the actual cell potential is non-zero. What explains this phenomenon?",
+      "choices": [
+        "The concentrations of the anode and cathode are different",
+        "The temperature of the solution is different",
+        "The cell contains a different type of electrode",
+        "The cell is not properly connected"
+      ],
+      "answerIndex": 0,
+      "solution": "In a concentration cell, the standard electrode potential is zero because the same species are involved in both half-cells. However, the actual cell potential is non-zero due to differences in the concentrations of the ions in the two half-cells. The other options are incorrect because they do not explain the fundamental principle behind concentration cells.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक सांद्रता सेल में मानक इलेक्ट्रोड विभव शून्य होता है। हालांकि, वास्तविक सेल विभव शून्य नहीं होता। इस घटना की व्याख्या क्या करती है?",
+          "choices": [
+            "एनोड और कैथोड की सांद्रताएं अलग होती हैं",
+            "घोल का तापमान अलग होता है",
+            "सेल में अलग प्रकार का इलेक्ट्रोड होता है",
+            "सेल सही तरह से जुड़ा नहीं होता"
+          ],
+          "solution": "एक सांद्रता सेल में मानक इलेक्ट्रोड विभव शून्य होता है क्योंकि दोनों अर्ध सेलों में एक ही प्रजाति शामिल होती है। हालांकि, वास्तविक सेल विभव दोनों अर्ध सेलों में आयनों की सांद्रता में अंतर के कारण शून्य नहीं होता। अन्य विकल्प गलत हैं क्योंकि वे सांद्रता सेल के मूल सिद्धांत की व्याख्या नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation accurately conveys the scientific concept with appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका सांद्रता सेलमध्ये, मानक इलेक्ट्रोड पोटेन्शियल शून्य असतो. मात्र, वास्तविक सेल पोटेन्शियल शून्य नसतो. हे घटना कशामुळे होते?",
+          "choices": [
+            "अॅनोड आणि कॅथोडच्या एकाच विद्रावाच्या सांद्रता वेगळ्या असतात",
+            "द्रावणाची तापमान वेगळी असते",
+            "सेलमध्ये वेगळ्या प्रकारचे इलेक्ट्रोड असतात",
+            "सेल योग्यरित्या जोडलेला नसतो"
+          ],
+          "solution": "एका सांद्रता सेलमध्ये, मानक इलेक्ट्रोड पोटेन्शियल शून्य असतो कारण दोन्ही अर्धसेलमध्ये एकाच प्रकारचे पदार्थ वापरले जातात. मात्र, वास्तविक सेल पोटेन्शियल शून्य नसतो कारण दोन्ही अर्धसेलमध्ये आयनांच्या सांद्रतेत फरक असतो. इतर विकल्प अचूक नाहीत कारण ते सांद्रता सेलच्या मूलभूत तत्वाचे व्याख्यान करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Incorrectly assumes that the difference in temperature is the reason for the non-zero potential, which is not a factor in concentration cells",
+        "Confuses the concept of concentration cells with other types of cells that use different electrodes",
+        "Misunderstands the role of proper connections in a cell, which is not the main reason for the non-zero potential in a concentration cell"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the non-zero cell potential in a concentration cell is due to differing ion concentrations. The other options represent common misconceptions about the factors affecting cell potential.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.2 Galvanic Cells"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.3 Nernst",
+            "Equation"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech102.pdf",
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 2: Electrochemistry",
+            "2.3 Nernst",
+            "Equation"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:54:43.178Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

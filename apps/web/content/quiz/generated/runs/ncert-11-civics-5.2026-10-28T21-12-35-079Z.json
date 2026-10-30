@@ -1,0 +1,917 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T21:12:35.079Z",
+  "finishedAt": "2026-10-28T21:20:24.551Z",
+  "seconds": 469,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Political Theory",
+    "bookCode": "keps1",
+    "document": "ncert/11/political-science/keps105.pdf",
+    "classLevel": 11,
+    "subject": "Political Science",
+    "chapter": "Chapter 5 — Rights",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, marking scheme, 2022-23]\n1. Demands for Autonomy",
+      "[CBSE Class XII Political Science, marking scheme, 2024-25]\n12. B) Sixth Schedule",
+      "[CBSE Class XII Political Science, marking scheme, 2025-26]\n7. C) National security and economic development 1",
+      "[CBSE Class XII Political Science, marking scheme, 2025-26]\n5. D) 1990s"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 213818,
+      "in": 46,
+      "out": 46,
+      "rejects": 0,
+      "promptTokens": 30422,
+      "completionTokens": 11637
+    },
+    "critique": {
+      "calls": 58,
+      "ms": 402515,
+      "in": 46,
+      "out": 39,
+      "rejects": 7,
+      "promptTokens": 27249,
+      "completionTokens": 10094
+    },
+    "solver": {
+      "calls": 274,
+      "ms": 146940,
+      "in": 39,
+      "out": 34,
+      "rejects": 5,
+      "promptTokens": 51214,
+      "completionTokens": 2932
+    },
+    "form": {
+      "calls": 7,
+      "ms": 19984,
+      "in": 34,
+      "out": 4,
+      "rejects": 30,
+      "promptTokens": 1787,
+      "completionTokens": 511
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 9,
+      "ms": 1801,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 149408,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 8564,
+      "completionTokens": 4911
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason why rights are important?",
+      "ms": {
+        "draft": 4286,
+        "critique": 5785
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person wants to smoke tobacco, which of the following statements is correct according to the passage?",
+      "ms": {
+        "draft": 4286,
+        "critique": 5453,
+        "solver": 1393,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A group of people in a region is demanding greater autonomy. According to the passage, what is the most likely reason for their demand?",
+      "ms": {
+        "draft": 4286,
+        "critique": 8559,
+        "solver": 1399
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses the idea that rights are not given by nature or God but are instead claims made by humans. Which of the following best explains this idea?",
+      "ms": {
+        "draft": 4286,
+        "critique": 8415,
+        "solver": 1797,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of a right according to the passage?",
+      "ms": {
+        "draft": 4286,
+        "critique": 6210,
+        "solver": 14423
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main reason for the expansion of human rights over time?",
+      "ms": {
+        "draft": 3510,
+        "critique": 7176,
+        "solver": 1866,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes the concept of 'dignity' as explained by Immanuel Kant?",
+      "ms": {
+        "draft": 3510,
+        "critique": 5219,
+        "solver": 13217,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person claims their right to education, who is primarily responsible for fulfilling this right according to the passage?",
+      "ms": {
+        "draft": 3510,
+        "critique": 6102
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between what we want and what we consider to be a right?",
+      "ms": {
+        "draft": 4286,
+        "critique": 7154,
+        "solver": 16278,
+        "form": 2379
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a situation where a government denies a group the right to education, which of the following would be the most appropriate response according to the passage?",
+      "ms": {
+        "draft": 3510,
+        "critique": 6601,
+        "solver": 1538,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason why legal recognition of rights is important?",
+      "ms": {
+        "draft": 3510,
+        "critique": 7690,
+        "solver": 1361,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a society believes that the right to life includes the right to a good quality of life, what does this imply about the state's role according to the passage?",
+      "ms": {
+        "draft": 3510,
+        "critique": 7172,
+        "solver": 1828,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the relationship between political rights and basic needs?",
+      "ms": {
+        "draft": 5556,
+        "critique": 7169,
+        "solver": 1330,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a right that ensures the well-being of the individual?",
+      "ms": {
+        "draft": 5556,
+        "critique": 7942,
+        "solver": 1785
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is mentioned as a political right in the passage?",
+      "ms": {
+        "draft": 5556,
+        "critique": 8379,
+        "solver": 11686,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person cannot afford to meet their basic needs, what does the passage suggest about their political rights?",
+      "ms": {
+        "draft": 5556,
+        "critique": 6987,
+        "solver": 11398,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A government is considering restricting the right to express views freely in the name of national security. According to the passage, which of the following should be a concern?",
+      "ms": {
+        "draft": 5556,
+        "critique": 6738,
+        "solver": 1626
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that 'One man's rights end where the other man's nose begins.' Which of the following best explains this idea?",
+      "ms": {
+        "draft": 5556,
+        "critique": 6326,
+        "solver": 1538,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the purpose of the Universal Declaration of Human Rights?",
+      "ms": {
+        "draft": 3706,
+        "critique": 7714,
+        "solver": 1514,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a state ignores human rights, what might be the consequence according to the passage?",
+      "ms": {
+        "draft": 3706,
+        "critique": 7005,
+        "solver": 1106,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the basis for universal rights according to the passage?",
+      "ms": {
+        "draft": 3706,
+        "critique": 6599,
+        "solver": 1994,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A citizen claims that the state should not interfere in their personal life. Which part of the passage supports this claim?",
+      "ms": {
+        "draft": 3706,
+        "critique": 6313,
+        "solver": 1102,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage emphasize the importance of teaching and education in promoting human rights?",
+      "ms": {
+        "draft": 3706,
+        "critique": 5847,
+        "solver": 739,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which document is described as a common standard of achievement for all peoples and all nations?",
+      "ms": {
+        "draft": 3655,
+        "critique": 5192,
+        "solver": 1252,
+        "form": 6334
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the purpose of promoting respect for human rights through education?",
+      "ms": {
+        "draft": 3655,
+        "critique": 5963,
+        "solver": 13887,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the relationship between rights and the state?",
+      "ms": {
+        "draft": 3655,
+        "critique": 7881,
+        "solver": 1741,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is denied the right to freedom of speech, which part of the passage would best support the claim that this is a violation of human rights?",
+      "ms": {
+        "draft": 3655,
+        "critique": 5559,
+        "solver": 17953,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is struggling to meet their basic needs like food and shelter, which of the following is most likely to be true?",
+      "ms": {
+        "draft": 3502,
+        "critique": 8302,
+        "solver": 1895,
+        "form": 2397
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the context of the passage, which of the following scenarios best illustrates the idea that rights are universal?",
+      "ms": {
+        "draft": 3655,
+        "critique": 7867,
+        "solver": 18940
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a government claims that certain rights should not apply to a particular group, which principle from the passage would best counter this claim?",
+      "ms": {
+        "draft": 3655,
+        "critique": 8504,
+        "solver": 16868,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A government is considering restricting civil liberties for national security. According to the passage, which of the following is the most important factor in deciding whether such restrictions are justified?",
+      "ms": {
+        "draft": 3502,
+        "critique": 8104,
+        "solver": 1855,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage says, 'One man's rights end where the other man's nose begins.' What does this mean in the context of the passage?",
+      "ms": {
+        "draft": 3502,
+        "critique": 7258,
+        "solver": 2233,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea behind the moral conception of rights according to Immanuel Kant?",
+      "ms": {
+        "draft": 8781,
+        "critique": 8070
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of the state in relation to rights?",
+      "ms": {
+        "draft": 8781,
+        "critique": 7466,
+        "solver": 1847,
+        "form": 2834
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following is a key reason why the legal recognition of rights is important?",
+      "ms": {
+        "draft": 8781,
+        "critique": 7164,
+        "solver": 2205,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is the significance of a Bill of Rights?",
+      "ms": {
+        "draft": 8781,
+        "critique": 9625,
+        "solver": 13272,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why rights are not solely dependent on legal recognition?",
+      "ms": {
+        "draft": 8781,
+        "critique": 7439,
+        "solver": 1570,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following can be inferred about the relationship between rights and the state?",
+      "ms": {
+        "draft": 8781,
+        "critique": 9904,
+        "solver": 14835,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is a right according to the passage?",
+      "ms": {
+        "draft": 3912,
+        "critique": 7146
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, which of the following is NOT considered a right?",
+      "ms": {
+        "draft": 3912,
+        "critique": 7007
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains the basis of natural rights as discussed in the passage?",
+      "ms": {
+        "draft": 3912,
+        "critique": 6770
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements best reflects the passage's view on the universality of rights?",
+      "ms": {
+        "draft": 3912,
+        "critique": 6261
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a political right?",
+      "ms": {
+        "draft": 3502,
+        "critique": 7421,
+        "solver": 2074,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a cultural right?",
+      "ms": {
+        "draft": 3502,
+        "critique": 8055,
+        "solver": 1668,
+        "form": 2677,
+        "translation": 39961
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains the idea that 'rights place obligations upon each of us'?",
+      "ms": {
+        "draft": 3502,
+        "critique": 8747,
+        "solver": 1398,
+        "form": 4733,
+        "translation": 51204
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following scenarios best aligns with the idea that rights are necessary for well-being?",
+      "ms": {
+        "draft": 3912,
+        "critique": 7038,
+        "solver": 5933,
+        "form": 1421,
+        "translation": 54167
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason why rights are important?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person wants to smoke tobacco, which of the following statements is correct according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A group of people in a region is demanding greater autonomy. According to the passage, what is the most likely reason for their demand?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses the idea that rights are not given by nature or God but are instead claims made by humans. Which of the following best explains this idea?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"The pupil might think that rights are derived from natural l…\"); distractor 2's reason is not a one-line misconception (\"The pupil might think that rights are given by the state, as…\"); distractor 3's reason is not a one-line misconception (\"The pupil might think that rights are based on the idea of e…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of a right according to the passage?",
+      "reason": "after redrafting distractors 0, 1, 3: the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main reason for the expansion of human rights over time?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer reflects the idea that rights evolve to meet …\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following best describes the concept of 'dignity' as explained by Immanuel Kant?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person claims their right to education, who is primarily responsible for fulfilling this right according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main difference between what we want and what we consider to be a right?",
+      "reason": "options 0 and 2 are the same (\"What we want is always a claim that must be upheld by society\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a situation where a government denies a group the right to education, which of the following would be the most appropriate response according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Correct answer reflects the idea that the state must be held…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason why legal recognition of rights is important?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer aligns with the passage's explanation of the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a society believes that the right to life includes the right to a good quality of life, what does this imply about the state's role according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer reflects the state's obligation to ensure a h…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the relationship between political rights and basic needs?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"Political rights are more important than basic needs\" / \"Basic needs are more important than political rights\"); distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's emphasis on basic needs…\"); distractor 1's reason is not a one-line misconception (\"Ignores the passage's argument about the importance of basic…\"); distractor 3's reason is not a one-line misconception (\"Correct answer is not listed here (it is the third option in…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a right that ensures the well-being of the individual?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is mentioned as a political right in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person cannot afford to meet their basic needs, what does the passage suggest about their political rights?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's argument about the value of pol…\"); distractor 1's reason is not a one-line misconception (\"Contradicts the passage's statement about the limited value …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A government is considering restricting the right to express views freely in the name of national security. According to the passage, which of the following should be a concern?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage states that 'One man's rights end where the other man's nose begins.' Which of the following best explains this idea?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Contradicts the passage's argument that rights are not absol…\"); distractor 3's reason is not a one-line misconception (\"Correct answer is not listed here (it is the third option in…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the purpose of the Universal Declaration of Human Rights?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Confuses the purpose with a specific right mentioned in the …\"); distractor 2's reason is not a one-line misconception (\"Misinterprets the role of the rule of law in the passage's c…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a state ignores human rights, what might be the consequence according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the basis for universal rights according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A citizen claims that the state should not interfere in their personal life. Which part of the passage supports this claim?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's focus on social progress…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes the passage focuses on environmental pro…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage emphasize the importance of teaching and education in promoting human rights?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misunderstands the passage's emphasis on collective responsi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which document is described as a common standard of achievement for all peoples and all nations?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Refers to the Indian Constitution, which is not mentioned in…\"); distractor 3's reason is not a one-line misconception (\"Mentions the International Covenant on Human Rights, which i…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the purpose of promoting respect for human rights through education?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Incorrectly assumes the passage supports limiting rights…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the relationship between rights and the state?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person is denied the right to freedom of speech, which part of the passage would best support the claim that this is a violation of human rights?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person is struggling to meet their basic needs like food and shelter, which of the following is most likely to be true?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's statement about rights and basic…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the context of the passage, which of the following scenarios best illustrates the idea that rights are universal?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a government claims that certain rights should not apply to a particular group, which principle from the passage would best counter this claim?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A government is considering restricting civil liberties for national security. According to the passage, which of the following is the most important factor in deciding whether such restrictions are justified?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's focus on threat assessment…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage says, 'One man's rights end where the other man's nose begins.' What does this mean in the context of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main idea behind the moral conception of rights according to Immanuel Kant?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the role of the state in relation to rights?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Contradicts the passage which states that the state has a re…\"); distractor 1's reason is not a one-line misconception (\"Misrepresents the passage which emphasizes that rights are n…\"); distractor 3's reason is not a one-line misconception (\"Correct answer according to the passage's explanation of the…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, which of the following is a key reason why the legal recognition of rights is important?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misrepresents the passage which states that legal recognitio…\"); distractor 2's reason is not a one-line misconception (\"Correct answer according to the passage, which explains that…\"); distractor 3's reason is not a one-line misconception (\"Misrepresents the passage which states that new rights can s…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what is the significance of a Bill of Rights?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misrepresents the passage which states that a Bill of Rights…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why rights are not solely dependent on legal recognition?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misrepresents the passage which states that the basis of rig…\"); distractor 1's reason is not a one-line misconception (\"Correct answer according to the passage, which explains that…\"); distractor 3's reason is not a one-line misconception (\"Misrepresents the passage which states that rights are based…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following can be inferred about the relationship between rights and the state?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 1's reason is not a one-line misconception (\"Misrepresents the passage which states that rights place con…\"); distractor 3's reason is not a one-line misconception (\"Believes the state is irrelevant to human dignity, ignoring …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is a right according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "According to the passage, which of the following is NOT considered a right?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following best explains the basis of natural rights as discussed in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following statements best reflects the passage's view on the universality of rights?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a political right?",
+      "reason": "near-duplicate of served question cmvoys6eh085hgp21x5gwzpw5 (cosine 0.914 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,835 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T11:09:40.331Z",
+  "finishedAt": "2026-10-27T11:22:17.093Z",
+  "seconds": 757,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash Part-I",
+    "bookCode": "hegp1",
+    "document": "ncert/8/mathematics/hegp104.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Quadrilaterals",
+    "edition": "Reprint 2026-27",
+    "chunks": 23,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n16. The points A(9,0), B(9, -6) ,C(-9,0) and D(-9,6) are the vertices of a 1\n(A) Square (B) Rectangle (C) Parallelogram (D) Trapezium",
+      "[INMO 2004 — question paper]\n1. Consider a convex quadrilateral ABCD, in which K, L, M, N are the midpoints of the sides AB,\nBC, CD, DA respectively. Suppose\n(a) BD bisects KM at Q;\n(b) QA =QB=QC =QD; and\n(¢) LK/LM = CD/CB.\nProve that ABCD is a square.\nSolution:\nD 14 c\n4 K B\nFig. 1.\nObserve that KLMN is a paralellogram, @ is the midpoint of MK and hence NL also passes\nthrough Q. Let T be the point of intersection of AC and BD; and let S be the point of intersection\nof BD and MN.\nConsider the triangle MNK. Note that SQ is parallel to NK and Q is the midpoint of MK.\nHence S is the mid-point of MN. Since MN is parallel to AC, it follows that 7\" is the mid-point\nof AC. Now Q is the circumcentre of AABC and the median BT pas",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n28. A quadrilateral ABCD is drawn to circumscribe a circle, as shown in the given 3\nAB + CD\nfigure. Show that = 1\nAD + BC\nFor visually Impaired students only\nShow that parallelogram circumscribing a circle is a rhombus.\n*Please note that the assessment scheme of the Academic Session 2024-25 will continue in the current session i.e. 2025-26",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n29. A circle touches all the four sides of quadrilateral ABCD. Prove that AB + CD = AD + BC."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 311554,
+      "in": 45,
+      "out": 40,
+      "rejects": 5,
+      "promptTokens": 49814,
+      "completionTokens": 12900
+    },
+    "critique": {
+      "calls": 60,
+      "ms": 532945,
+      "in": 40,
+      "out": 37,
+      "rejects": 3,
+      "promptTokens": 31097,
+      "completionTokens": 10628
+    },
+    "solver": {
+      "calls": 312,
+      "ms": 238762,
+      "in": 37,
+      "out": 35,
+      "rejects": 2,
+      "promptTokens": 60155,
+      "completionTokens": 3402
+    },
+    "form": {
+      "calls": 22,
+      "ms": 163076,
+      "in": 35,
+      "out": 14,
+      "rejects": 21,
+      "promptTokens": 11751,
+      "completionTokens": 3512
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 42,
+      "ms": 10458,
+      "in": 14,
+      "out": 6,
+      "rejects": 8,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 284481,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 13911,
+      "completionTokens": 6610
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "A quadrilateral ABCD has diagonals that are equal and intersect at their midpoints. If one diagonal is 10 cm, what is the length of the other diagonal?",
+      "ms": {
+        "draft": 7824,
+        "critique": 7200,
+        "solver": 2330,
+        "form": 4815
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A carpenter wants to make a rectangle by joining two wooden strips. One strip is 8 cm long. What must be the length of the other strip and where should they be joined?",
+      "ms": {
+        "draft": 7824,
+        "critique": 7838,
+        "solver": 3024,
+        "form": 7236
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a rectangle, which of the following is true?",
+      "ms": {
+        "draft": 10045,
+        "critique": 10122,
+        "solver": 1554,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, it is mentioned that a square is a special type of rectangle. Which of the following best explains this?",
+      "ms": {
+        "draft": 10045,
+        "critique": 9072,
+        "solver": 14301,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a quadrilateral with all angles equal to 90°, which of the following must be true?",
+      "ms": {
+        "draft": 10045,
+        "critique": 9962,
+        "solver": 2369,
+        "form": 4918
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the diagonals of a quadrilateral intersect at their midpoints and form angles of 60°, what can be said about the angles of the quadrilateral?",
+      "ms": {
+        "draft": 7824,
+        "critique": 9022,
+        "solver": 1603,
+        "form": 9227
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the passage, it is stated that a square is a quadrilateral with all angles equal to 90° and all sides equal. What is the main reason why this definition is valid?",
+      "ms": {
+        "draft": 10045,
+        "critique": 11312,
+        "solver": 1860,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, it is stated that a square is a quadrilateral with all angles equal to 90° and all sides equal. Which of the following is a consequence of this definition?",
+      "ms": {
+        "draft": 10045,
+        "critique": 8750,
+        "solver": 14977,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the passage, it is discussed how a square is a special type of rectangle. What is the main difference between a square and a rectangle?",
+      "ms": {
+        "draft": 10045,
+        "critique": 11123,
+        "solver": 15409,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a square?",
+      "ms": {
+        "draft": 5874,
+        "critique": 10106
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a quadrilateral, if three angles are 90°, what can be said about the fourth angle?",
+      "ms": {
+        "draft": 5874,
+        "critique": 9536,
+        "solver": 21323
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the sum of adjacent angles in a parallelogram?",
+      "ms": {
+        "draft": 4963,
+        "critique": 8455,
+        "solver": 18569,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a parallelogram?",
+      "ms": {
+        "draft": 4963,
+        "critique": 8570,
+        "solver": 18879,
+        "form": 3971
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a rhombus?",
+      "ms": {
+        "draft": 6469,
+        "critique": 9203,
+        "solver": 16850,
+        "form": 3560
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a rhombus, what is the relationship between the diagonals?",
+      "ms": {
+        "draft": 6469,
+        "critique": 9479,
+        "solver": 18091,
+        "form": 5452
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a quadrilateral with two non-overlapping adjacent pairs of sides having the same length?",
+      "ms": {
+        "draft": 5594,
+        "critique": 12865,
+        "solver": 19658,
+        "form": 1678
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a quadrilateral, the diagonals intersect at 90° and bisect each other. What type of quadrilateral is it?",
+      "ms": {
+        "draft": 5876,
+        "critique": 11055,
+        "solver": 20716,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a parallelogram?",
+      "ms": {
+        "draft": 5876,
+        "critique": 11532,
+        "solver": 21497,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a square?",
+      "ms": {
+        "draft": 5190,
+        "critique": 10519
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a quadrilateral has all sides equal and one of its angles is 50°, what is the measure of the opposite angle?",
+      "ms": {
+        "draft": 8362,
+        "critique": 8857,
+        "solver": 19413,
+        "form": 5005
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which property of a parallelogram is stated in the passage?",
+      "ms": {
+        "draft": 4826,
+        "critique": 10178,
+        "solver": 1975,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the correct reason for the congruence of triangles ABD and CDB in a parallelogram?",
+      "ms": {
+        "draft": 4826,
+        "critique": 9057
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given diagram, what is the measure of angle ∠GOE in the rhombus GAME?",
+      "ms": {
+        "draft": 8362,
+        "critique": 7177,
+        "solver": 22976,
+        "form": 4523
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a parallelogram, if one angle is 30°, what is the measure of its opposite angle?",
+      "ms": {
+        "draft": 4826,
+        "critique": 8984,
+        "solver": 14699
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, a square is constructed using diagonals that bisect each other at 90°. What is the length of the side of the square if the diagonal is 8 cm?",
+      "ms": {
+        "draft": 8942,
+        "critique": 6755,
+        "solver": 2297,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a parallelogram, one angle is 30°. What is the measure of the angle adjacent to this angle?",
+      "ms": {
+        "draft": 8942,
+        "critique": 5235,
+        "solver": 7339,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the diagonals of a quadrilateral are equal and bisect each other, what type of quadrilateral is it?",
+      "ms": {
+        "draft": 7824,
+        "critique": 6974,
+        "solver": 1669,
+        "form": 6828
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the sum of all angles in any quadrilateral?",
+      "ms": {
+        "draft": 5874,
+        "critique": 9525,
+        "solver": 16639,
+        "form": 3405
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given parallelogram, if one angle is 30°, what is the measure of the adjacent angle?",
+      "ms": {
+        "draft": 5874,
+        "critique": 8276,
+        "solver": 15393,
+        "form": 4687
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a parallelogram, if one angle is 50°, what is the measure of the opposite angle?",
+      "ms": {
+        "draft": 4963,
+        "critique": 9636,
+        "solver": 2011,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a parallelogram, if one angle is 120°, what is the measure of the opposite angle?",
+      "ms": {
+        "draft": 5876,
+        "critique": 11495,
+        "solver": 23100,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the diagonals of a quadrilateral are of equal length and bisect each other, what type of quadrilateral is it?",
+      "ms": {
+        "draft": 5876,
+        "critique": 9226,
+        "solver": 1947,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a rhombus?",
+      "ms": {
+        "draft": 8362,
+        "critique": 9996,
+        "solver": 17747,
+        "form": 3745
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the sum of the angles of any quadrilateral?",
+      "ms": {
+        "draft": 8942,
+        "critique": 9694,
+        "solver": 2380,
+        "form": 5516
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a quadrilateral in which all the angles are equal?",
+      "ms": {
+        "draft": 5594,
+        "critique": 9107,
+        "solver": 1378,
+        "form": 2996,
+        "translation": 47034
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a rectangle, what is the measure of each angle?",
+      "ms": {
+        "draft": 7824,
+        "critique": 9504,
+        "solver": 1818,
+        "form": 4312,
+        "translation": 36189
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a quadrilateral has opposite sides that are parallel, what is it called?",
+      "ms": {
+        "draft": 5874,
+        "critique": 7866,
+        "solver": 16185,
+        "form": 4211,
+        "translation": 44345
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a property of a rectangle?",
+      "ms": {
+        "draft": 7824,
+        "critique": 8322,
+        "solver": 2386,
+        "form": 5918,
+        "translation": 62455
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a necessary condition for a quadrilateral to be a square?",
+      "ms": {
+        "draft": 8362,
+        "critique": 9683,
+        "solver": 2478,
+        "form": 0,
+        "translation": 42241
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a quadrilateral has two pairs of adjacent sides equal and one angle of 90°, what type of quadrilateral is it?",
+      "ms": {
+        "draft": 5876,
+        "critique": 9637,
+        "solver": 1637,
+        "form": 0,
+        "translation": 46345
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A quadrilateral ABCD has diagonals that are equal and intersect at their midpoints. If one diagonal is 10 cm, what is the length of the other diagonal?",
+      "reason": "checkExpr \"10\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A carpenter wants to make a rectangle by joining two wooden strips. One strip is 8 cm long. What must be the length of the other strip and where should they be joined?",
+      "reason": "options are in more than one unit (cm at one end, cm at the midpoint); options 0 and 1 are the same number; distractor 3's reason is not a one-line misconception (\"Confuses the length requirement with a different value and m…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a rectangle, which of the following is true?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct property but not the only one…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the properties of diagonals in a rectangle, t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, it is mentioned that a square is a special type of rectangle. Which of the following best explains this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"All squares are rectangles, but not all rectangles are squares\" / \"All rectangles are squares, but not all squares are rectangles\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that squares and rectangles are unrelate…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a quadrilateral with all angles equal to 90°, which of the following must be true?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the properties of diagonals in a rectangle, t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the diagonals of a quadrilateral intersect at their midpoints and form angles of 60°, what can be said about the angles of the quadrilateral?",
+      "reason": "figure: figure spec refused: spec.angles.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the passage, it is stated that a square is a quadrilateral with all angles equal to 90° and all sides equal. What is the main reason why this definition is valid?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Correct understanding of the definition of a square, but not…\"); distractor 2's reason is not a one-line misconception (\"Focuses on the additional property of a square (all sides eq…\"); distractor 3's reason is not a one-line misconception (\"Focuses on the property of all angles being 90°, which is co…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the passage, it is stated that a square is a quadrilateral with all angles equal to 90° and all sides equal. Which of the following is a consequence of this definition?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the properties of diagonals in a square, thin…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the passage, it is discussed how a square is a special type of rectangle. What is the main difference between a square and a rectangle?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misunderstands the properties of diagonals in a square, thin…\"); distractor 3's reason is not a one-line misconception (\"Confuses the properties of squares with those of other quadr…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a property of a square?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a quadrilateral, if three angles are 90°, what can be said about the fourth angle?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the sum of adjacent angles in a parallelogram?",
+      "reason": "options 1 and 3 are the same (\"150°\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of a parallelogram?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a property of a rhombus?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In a rhombus, what is the relationship between the diagonals?",
+      "reason": "options 0 and 1 say the same thing (\"The diagonals are equal in length and do not intersect at right angles\" / \"The diagonals are not equal in length and do not intersect at right angles\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a quadrilateral with two non-overlapping adjacent pairs of sides having the same length?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If a quadrilateral has opposite angles equal, what type of quadrilateral is it?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a property of a rectangle?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a property of a rhombus?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a property of a parallelogram?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a property of a kite?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a quadrilateral, the diagonals intersect at 90° and bisect each other. What type of quadrilateral is it?",
+      "reason": "options 1 and 3 are the same (\"Rectangle\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of a parallelogram?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a property of a square?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a quadrilateral has all sides equal and one of its angles is 50°, what is the measure of the opposite angle?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Chooses a value that might be the angle in a square or recta…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which property of a parallelogram is stated in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the correct reason for the congruence of triangles ABD and CDB in a parallelogram?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given diagram, what is the measure of angle ∠GOE in the rhombus GAME?",
+      "reason": "figure: figure cannot be drawn in en: no bundled font draws \"∠\" (U+2220)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a parallelogram, if one angle is 30°, what is the measure of its opposite angle?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the given figure, a square is constructed using diagonals that bisect each other at 90°. What is the length of the side of the square if the diagonal is 8 cm?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); checkExpr \"8/\\sqrt{2}\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a parallelogram, one angle is 30°. What is the measure of the angle adjacent to this angle?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels AB, BC, CD, DA"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the diagonals of a quadrilateral are equal and bisect each other, what type of quadrilateral is it?",
+      "reason": "near-duplicate of served question cmvewu7ox0227god86hiw8mfi (cosine 0.964 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the sum of all angles in any quadrilateral?",
+      "reason": "near-duplicate of served question cmvewu7ow0221god8sfpsbfem (cosine 0.901 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In the given parallelogram, if one angle is 30°, what is the measure of the adjacent angle?",
+      "reason": "near-duplicate of served question cmvg2vnou01vtgpfhfixkq1c5 (cosine 0.965 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "In a parallelogram, if one angle is 50°, what is the measure of the opposite angle?",
+      "reason": "near-duplicate of served question cmvewu7ou021vgod84zrfyu2f (cosine 0.932 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "In a parallelogram, if one angle is 120°, what is the measure of the opposite angle?",
+      "reason": "near-duplicate of served question cmvewu7ou021vgod84zrfyu2f (cosine 0.940 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If the diagonals of a quadrilateral are of equal length and bisect each other, what type of quadrilateral is it?",
+      "reason": "near-duplicate of served question cmvewu7ox0227god86hiw8mfi (cosine 0.951 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a property of a rhombus?",
+      "reason": "near-duplicate of served question cmvewu7or021jgod8vjurzv4i (cosine 0.905 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the sum of the angles of any quadrilateral?",
+      "reason": "near-duplicate of served question cmvewu7ow0221god8sfpsbfem (cosine 0.911 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

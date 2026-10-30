@@ -1,0 +1,251 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T20:02:07.401Z",
+  "finishedAt": "2026-10-25T20:03:23.454Z",
+  "seconds": 76,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap102.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 2 — A Snake Charmer’s Story",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 22442,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8010,
+      "completionTokens": 1326
+    },
+    "critique": {
+      "calls": 9,
+      "ms": 51946,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 3744,
+      "completionTokens": 1597
+    },
+    "solver": {
+      "calls": 48,
+      "ms": 22863,
+      "in": 8,
+      "out": 2,
+      "rejects": 6,
+      "promptTokens": 7382,
+      "completionTokens": 463
+    },
+    "form": {
+      "calls": 1,
+      "ms": 1198,
+      "in": 2,
+      "out": 1,
+      "rejects": 1,
+      "promptTokens": 230,
+      "completionTokens": 80
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 2964,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 20908,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2685,
+      "completionTokens": 1450
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which group of people are known as snake-charmers in the passage?",
+      "ms": {
+        "draft": 3557,
+        "critique": 7546,
+        "solver": 1662
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is bitten by a snake, what can be done according to the passage?",
+      "ms": {
+        "draft": 3557,
+        "critique": 7994,
+        "solver": 2435
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between snake-charmers and snakes?",
+      "ms": {
+        "draft": 3557,
+        "critique": 5838,
+        "solver": 983
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the snake-charmers in the passage?",
+      "ms": {
+        "draft": 3557,
+        "critique": 6459,
+        "solver": 10861,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the special instrument that Aryanath can play?",
+      "ms": {
+        "draft": 2054,
+        "critique": 5871,
+        "solver": 1075
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the snake-charmers move from village to village?",
+      "ms": {
+        "draft": 2054,
+        "critique": 6429,
+        "solver": 1307
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the community that Aryanath belongs to?",
+      "ms": {
+        "draft": 2054,
+        "critique": 6430,
+        "solver": 2120
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a person was bitten by a poisonous snake and the snake-charmer could not reach them in time?",
+      "ms": {
+        "draft": 2054,
+        "critique": 3642,
+        "solver": 633,
+        "form": 1198,
+        "translation": 18590
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which group of people are known as snake-charmers in the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person is bitten by a snake, what can be done according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between snake-charmers and snakes?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of the snake-charmers in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 are the same (\"To catch snakes for sale\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the special instrument that Aryanath can play?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did the snake-charmers move from village to village?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the community that Aryanath belongs to?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

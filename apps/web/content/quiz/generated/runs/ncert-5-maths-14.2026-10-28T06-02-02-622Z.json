@@ -1,0 +1,500 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T06:02:02.622Z",
+  "finishedAt": "2026-10-28T06:05:37.853Z",
+  "seconds": 215,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm114.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — Maps And Locations",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n6. (c) 5 Unit",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n5. (c) (2,-1)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 86382,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 14358,
+      "completionTokens": 5472
+    },
+    "critique": {
+      "calls": 27,
+      "ms": 163993,
+      "in": 23,
+      "out": 12,
+      "rejects": 11,
+      "promptTokens": 12126,
+      "completionTokens": 4882
+    },
+    "solver": {
+      "calls": 89,
+      "ms": 38648,
+      "in": 12,
+      "out": 6,
+      "rejects": 6,
+      "promptTokens": 15117,
+      "completionTokens": 949
+    },
+    "form": {
+      "calls": 4,
+      "ms": 13640,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 2714,
+      "completionTokens": 369
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 29,
+      "ms": 5103,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 115397,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7582,
+      "completionTokens": 3779
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a tent is to the west of the road and another tent is north of the green tent, what is the direction of the green tent relative to the west tent?",
+      "ms": {
+        "draft": 3241,
+        "critique": 6670
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When Manu is facing the rising sun, which direction is his left hand pointing?",
+      "ms": {
+        "draft": 3241,
+        "critique": 6891
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The ant in the zoo needs to crawl 2 cm east to reach the laddoos. To reach the apple, it has to crawl 3 cm north, then 2 cm west, and finally 1 cm south. What is the total distance the ant crawls?",
+      "ms": {
+        "draft": 3241,
+        "critique": 6474
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The position (3,10) is marked on the map. Which animal is located there?",
+      "ms": {
+        "draft": 2835,
+        "critique": 5976
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is located at the position (1,4)?",
+      "ms": {
+        "draft": 2835,
+        "critique": 6969
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The location of the tortoise is (4,1). To reach the tortoise, how many steps should be taken towards the east?",
+      "ms": {
+        "draft": 2835,
+        "critique": 8065
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The position (6,4) is marked on the map. Which animal is located there?",
+      "ms": {
+        "draft": 2835,
+        "critique": 5498
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "On the map, the position (2,9) is marked with a green dot. Which animal is located at this position?",
+      "ms": {
+        "draft": 2835,
+        "critique": 4867,
+        "solver": 805
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which animal is located at (6,4)?",
+      "ms": {
+        "draft": 5233,
+        "critique": 5457
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which direction should you move to reach the tortoise from the point (1,1)?",
+      "ms": {
+        "draft": 5233,
+        "critique": 7047,
+        "solver": 932
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is not a correct position for an animal?",
+      "ms": {
+        "draft": 5233,
+        "critique": 6291,
+        "solver": 1636
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student marks a dot at (2,9) with green color, which animal is it closest to?",
+      "ms": {
+        "draft": 5233,
+        "critique": 7024,
+        "solver": 1987
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the location of the animal at (1,4)?",
+      "ms": {
+        "draft": 5233,
+        "critique": 4779,
+        "solver": 11052,
+        "form": 2940
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If Manu is facing the rising Sun, which direction is his left hand pointing?",
+      "ms": {
+        "draft": 3087,
+        "critique": 6534
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many steps should you move towards the east to reach the tortoise from (1,1)?",
+      "ms": {
+        "draft": 5233,
+        "critique": 8396,
+        "solver": 14930
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the tent to the west of the road is blue, what colour is the tent to the east of the road?",
+      "ms": {
+        "draft": 3087,
+        "critique": 7514
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "From the zoo map, if the panda is located at the intersection of the first row and first column, which direction is it located from the starting position?",
+      "ms": {
+        "draft": 3087,
+        "critique": 7066
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the ant has to crawl 2 cm towards the east to reach the laddoos, and 3 cm towards the north to reach the sugar, which direction is the sugar located relative to the laddoos?",
+      "ms": {
+        "draft": 3087,
+        "critique": 7212,
+        "solver": 804
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "On the metro map, if the children take the Yellow Line and change to the Magenta Line at Hauz Khas, which station should they change again to reach the Supreme Court?",
+      "ms": {
+        "draft": 3087,
+        "critique": 4652,
+        "solver": 5592,
+        "form": 1022
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When Manu is facing the rising Sun, which direction is he facing?",
+      "ms": {
+        "draft": 3087,
+        "critique": 7081,
+        "solver": 9841,
+        "form": 2466
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the map of the room, the window is to the north of the girl. What direction is the bed if it is to the south of the window?",
+      "ms": {
+        "draft": 3241,
+        "critique": 4709,
+        "solver": 1205,
+        "form": 0,
+        "translation": 31179
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "On the metro map, the Qutb Minar station is on the Yellow Line and the Supreme Court station is on the Blue Line. If Lali suggests taking the Yellow Line to Hauz Khas and then the Magenta Line, which line would the children be on after changing at Hauz Khas?",
+      "ms": {
+        "draft": 3241,
+        "critique": 6132,
+        "solver": 1395,
+        "form": 0,
+        "translation": 38688
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "On the zoo map, each vertical line is a column and each horizontal line is a row. To reach the panda, you start at zero, move 1 step east, then 1 step north. If you start at zero and move 2 steps east, then 3 steps north, where would you be located?",
+      "ms": {
+        "draft": 3241,
+        "critique": 5740,
+        "solver": 1802,
+        "form": 0,
+        "translation": 43034
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the position of the Tortoise?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a tent is to the west of the road and another tent is north of the green tent, what is the direction of the green tent relative to the west tent?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "When Manu is facing the rising sun, which direction is his left hand pointing?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The ant in the zoo needs to crawl 2 cm east to reach the laddoos. To reach the apple, it has to crawl 3 cm north, then 2 cm west, and finally 1 cm south. What is the total distance the ant crawls?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The position (3,10) is marked on the map. Which animal is located there?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is located at the position (1,4)?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "The location of the tortoise is (4,1). To reach the tortoise, how many steps should be taken towards the east?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The position (6,4) is marked on the map. Which animal is located there?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "On the map, the position (2,9) is marked with a green dot. Which animal is located at this position?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which animal is located at (6,4)?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which direction should you move to reach the tortoise from the point (1,1)?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is not a correct position for an animal?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a student marks a dot at (2,9) with green color, which animal is it closest to?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the location of the animal at (1,4)?",
+      "reason": "figure: figure spec refused: spec.parts: animalCell has no label \"cell\" (it has membrane, nucleus, cytoplasm, mitochondrion)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If Manu is facing the rising Sun, which direction is his left hand pointing?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many steps should you move towards the east to reach the tortoise from (1,1)?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the tent to the west of the road is blue, what colour is the tent to the east of the road?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "From the zoo map, if the panda is located at the intersection of the first row and first column, which direction is it located from the starting position?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the ant has to crawl 2 cm towards the east to reach the laddoos, and 3 cm towards the north to reach the sugar, which direction is the sugar located relative to the laddoos?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "On the metro map, if the children take the Yellow Line and change to the Magenta Line at Hauz Khas, which station should they change again to reach the Supreme Court?",
+      "reason": "options 0 and 1 are the same (\"Chandni Chowk\"); options 0 and 2 are the same (\"Chandni Chowk\"); options 0 and 3 are the same (\"Chandni Chowk\"); options 1 and 2 are the same (\"Chandni Chowk\"); options 1 and 3 are the same (\"Chandni Chowk\"); options 2 and 3 are the same (\"Chandni Chowk\"); distractor 1's reason is not a one-line misconception (\"Confuses the correct transfer station with a commonly mentio…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "When Manu is facing the rising Sun, which direction is he facing?",
+      "reason": "near-duplicate of served question cmvh7jq9207dhgpfh5zdtozhm (cosine 0.992 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

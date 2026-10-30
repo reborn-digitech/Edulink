@@ -1,0 +1,675 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T12:10:25.900Z",
+  "finishedAt": "2026-10-23T12:25:31.088Z",
+  "seconds": 905,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo113.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 13 — Plant Growth and Development",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2024 — question paper]\n44. (3 points) Auxins play an important role in the growth of plants. The distribution of auxin\nand the resulting changes in the shoot growth were being observed in the plant kept near a\nwindow (plant 1) and the shoot of a fallen potted plant exhibiting negative gravitropism\n(plant 2). Complete the table by putting tick marks in the appropriate boxes for the two\nplants.",
+      "[INBO 2016 — question paper]\n58. (2 points) A classification of plant kingdom based on evolution of various characters is\nshown below.\norsetail ycad\nAlgae ornwort Liverwort Moss Club mossH C Angiosperm\nH\nU\nT\nS\nR\nQ\nP\nA few of these characters (I to IV) are listed below. For each of these characters, choose a\nsingle appropriate alphabet from the cladogram and fill in the blanks.\nI. Wood: ______\nII. Seed development: ______\nIII. Cuticle, protected embryo: ______\nIV. Independent sporophyte: ______\n********* END OF SECTION B *********",
+      "[NSEB 2016 — question paper]\n59. When a plant cell undergoes expansive growth, the increase in volume is caused\nmostly by:\na) uptake of minerals b) uptake of water c)synthesis of cellulose d)synthesis of proteins.",
+      "[INBO 2011 — question paper]\n30. (1 point) Which of the following best depicts the evolutionary sequence of\nplant characters?\n1. Transition to land habitat\n2. Evolution of seeds\n3. Evolution of fruits\n4. Evolution of vascular structures\na. 1 – 4 – 2 – 3\nb. 4 – 1 – 2 – 3\nc. 1 – 4 – 3 – 2\nd. 4 – 1 – 3 – 2\nETHOLOGY (3)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 215344,
+      "in": 36,
+      "out": 35,
+      "rejects": 1,
+      "promptTokens": 33328,
+      "completionTokens": 8121
+    },
+    "critique": {
+      "calls": 40,
+      "ms": 390789,
+      "in": 35,
+      "out": 30,
+      "rejects": 5,
+      "promptTokens": 17678,
+      "completionTokens": 6828
+    },
+    "solver": {
+      "calls": 184,
+      "ms": 124734,
+      "in": 30,
+      "out": 26,
+      "rejects": 4,
+      "promptTokens": 28816,
+      "completionTokens": 1702
+    },
+    "form": {
+      "calls": 16,
+      "ms": 88766,
+      "in": 26,
+      "out": 17,
+      "rejects": 9,
+      "promptTokens": 7483,
+      "completionTokens": 1459
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 49,
+      "ms": 12099,
+      "in": 17,
+      "out": 14,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 863275,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 31803,
+      "completionTokens": 16138
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 3,
+    "4": 1,
+    "5": 4,
+    "6": 1
+  },
+  "flagged": 6,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "A plant's growth is measured by parameters such as increase in fresh weight, dry weight, length, area, volume and cell number. Which of the following best describes the growth of a watermelon?",
+      "ms": {
+        "draft": 6042,
+        "critique": 7815,
+        "solver": 2720
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage describes the three phases of plant growth: meristematic, elongation and maturation. Which phase is responsible for increased vacuolation, cell enlargement and new cell wall deposition?",
+      "ms": {
+        "draft": 6042,
+        "critique": 8609,
+        "solver": 3193,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage explains that plant growth is an open form, meaning that new cells are always being added by the activity of the meristem. Which of the following is an example of a plant that exhibits open form growth?",
+      "ms": {
+        "draft": 6042,
+        "critique": 9930,
+        "solver": 1748,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "The passage defines growth as an irreversible permanent increase in size. Which of the following is an example of growth in a plant?",
+      "ms": {
+        "draft": 6042,
+        "critique": 9029,
+        "solver": 2833,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "The passage mentions that the cells of the meristem have the capacity to divide and self-perpetuate. What is this process called?",
+      "ms": {
+        "draft": 6042,
+        "critique": 9894,
+        "solver": 2626,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given diagram, which part represents the exponential phase of growth?",
+      "ms": {
+        "draft": 20048,
+        "critique": 9624,
+        "solver": 3680,
+        "form": 4844
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, what is the term used to describe the phenomenon where differentiated cells regain the ability to divide under certain conditions?",
+      "ms": {
+        "draft": 20048,
+        "critique": 9885,
+        "solver": 2475,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the correct sequence of plant evolution based on the given characters: transition to land habitat, vascular structures, seeds, and fruits?",
+      "ms": {
+        "draft": 20048,
+        "critique": 12642
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of plasticity in plants?",
+      "ms": {
+        "draft": 4894,
+        "critique": 11257,
+        "solver": 2887
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A plant kept near a window shows shoot growth towards the light, while a fallen plant shows negative gravitropism. What is the role of auxins in these two cases?",
+      "ms": {
+        "draft": 4894,
+        "critique": 10980,
+        "solver": 2259,
+        "form": 6235
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of gibberellins in sugarcane plants?",
+      "ms": {
+        "draft": 6259,
+        "critique": 10402,
+        "solver": 19378
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a plant growth regulator that promotes cell division?",
+      "ms": {
+        "draft": 17675,
+        "critique": 8941
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A plant showing negative gravitropism indicates that the shoot is growing in which direction?",
+      "ms": {
+        "draft": 17675,
+        "critique": 9454,
+        "solver": 1929
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which plant growth regulator is known to cause an increase in the length of grapes stalks?",
+      "ms": {
+        "draft": 6168,
+        "critique": 8628
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which plant growth regulator helps in the delay of leaf senescence and promotes nutrient mobilisation?",
+      "ms": {
+        "draft": 6168,
+        "critique": 8109
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which plant growth regulator is responsible for promoting fruit ripening and enhancing the respiration rate during ripening?",
+      "ms": {
+        "draft": 6168,
+        "critique": 9900
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why might removing the shoot tip of a plant result in the growth of lateral buds?",
+      "ms": {
+        "draft": 7388,
+        "critique": 8761,
+        "solver": 1870,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of plasticity in plants as described in the passage?",
+      "ms": {
+        "draft": 7388,
+        "critique": 9418,
+        "solver": 2548,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant cell undergoes expansive growth, what is the primary cause of the increase in volume?",
+      "ms": {
+        "draft": 20048,
+        "critique": 11257,
+        "solver": 21258,
+        "form": 4106
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A plant cell undergoes expansive growth. What is the main reason for the increase in volume?",
+      "ms": {
+        "draft": 4894,
+        "critique": 11200,
+        "solver": 1918,
+        "form": 3036
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A plant cell undergoes expansive growth. What is the primary reason for the increase in volume during this process?",
+      "ms": {
+        "draft": 17675,
+        "critique": 9841,
+        "solver": 1636,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of plant growth that shows a constant rate of increase?",
+      "ms": {
+        "draft": 6041,
+        "critique": 9053,
+        "solver": 1977,
+        "form": 0,
+        "translation": 60784
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe all changes an organism undergoes during its life cycle from germination to senescence?",
+      "ms": {
+        "draft": 7388,
+        "critique": 8501,
+        "solver": 3093,
+        "form": 4240,
+        "translation": 52392
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a plant's growth that is considered 'determinate'?",
+      "ms": {
+        "draft": 17675,
+        "critique": 9027,
+        "solver": 2706,
+        "form": 0,
+        "translation": 52951
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What type of growth is represented by a linear curve when the length of an organ is plotted against time?",
+      "ms": {
+        "draft": 20048,
+        "critique": 10363,
+        "solver": 2301,
+        "form": 4429,
+        "translation": 81003
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'development' refer to in plants?",
+      "ms": {
+        "draft": 4894,
+        "critique": 10067,
+        "solver": 1795,
+        "form": 5085,
+        "translation": 64751
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which plant growth regulator is used to increase the length of grape stalks?",
+      "ms": {
+        "draft": 6259,
+        "critique": 13958,
+        "solver": 20986,
+        "form": 3505,
+        "translation": 52704
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant is kept near a window, which of the following growth patterns is most likely to occur?",
+      "ms": {
+        "draft": 17675,
+        "critique": 9747,
+        "solver": 3169,
+        "form": 0,
+        "translation": 52609
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant's apical bud is removed, what is likely to happen?",
+      "ms": {
+        "draft": 4894,
+        "critique": 9547,
+        "solver": 2254,
+        "form": 3123,
+        "translation": 56561
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a plant growth regulator that promotes cell division?",
+      "ms": {
+        "draft": 4894,
+        "critique": 9780,
+        "solver": 2364,
+        "form": 4204,
+        "translation": 57239
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a plant, the cells of the meristem are responsible for growth. What would happen if the meristem ceased to divide?",
+      "ms": {
+        "draft": 6042,
+        "critique": 7086,
+        "solver": 1972,
+        "form": 7357,
+        "translation": 86046
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A researcher wants to increase the production of female flowers in cucumber plants. Which plant growth regulator should they use?",
+      "ms": {
+        "draft": 6259,
+        "critique": 10736,
+        "solver": 21908,
+        "form": 4029,
+        "translation": 55296
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a plant is exposed to a prolonged period of drought, which plant growth regulator would be expected to increase in concentration?",
+      "ms": {
+        "draft": 17675,
+        "critique": 8912,
+        "solver": 2739,
+        "form": 0,
+        "translation": 55047
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A plant in a pot is placed near a window, and its shoot is observed to grow towards the window. What is the most likely reason for this growth pattern?",
+      "ms": {
+        "draft": 20048,
+        "critique": 10494,
+        "solver": 22248,
+        "form": 4804,
+        "translation": 139608
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following plant growth regulators is primarily involved in the regulation of seed dormancy and abscission?",
+      "ms": {
+        "draft": 6259,
+        "critique": 9211,
+        "solver": 2015,
+        "form": 2308,
+        "translation": 62332
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which plant growth regulator is used to speed up the malting process in the brewing industry?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A plant's growth is measured by parameters such as increase in fresh weight, dry weight, length, area, volume and cell number. Which of the following best describes the growth of a watermelon?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage describes the three phases of plant growth: meristematic, elongation and maturation. Which phase is responsible for increased vacuolation, cell enlargement and new cell wall deposition?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage explains that plant growth is an open form, meaning that new cells are always being added by the activity of the meristem. Which of the following is an example of a plant that exhibits open form growth?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "The passage defines growth as an irreversible permanent increase in size. Which of the following is an example of growth in a plant?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "The passage mentions that the cells of the meristem have the capacity to divide and self-perpetuate. What is this process called?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given diagram, which part represents the exponential phase of growth?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels Time, Growth"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the passage, what is the term used to describe the phenomenon where differentiated cells regain the ability to divide under certain conditions?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the correct sequence of plant evolution based on the given characters: transition to land habitat, vascular structures, seeds, and fruits?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of plasticity in plants?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A plant kept near a window shows shoot growth towards the light, while a fallen plant shows negative gravitropism. What is the role of auxins in these two cases?",
+      "reason": "the key is far longer than every distractor (65 vs 35 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the role of gibberellins in sugarcane plants?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a plant growth regulator that promotes cell division?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A plant showing negative gravitropism indicates that the shoot is growing in which direction?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which plant growth regulator is known to cause an increase in the length of grapes stalks?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which plant growth regulator helps in the delay of leaf senescence and promotes nutrient mobilisation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which plant growth regulator is responsible for promoting fruit ripening and enhancing the respiration rate during ripening?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, why might removing the shoot tip of a plant result in the growth of lateral buds?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of plasticity in plants as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a plant cell undergoes expansive growth, what is the primary cause of the increase in volume?",
+      "reason": "near-duplicate of served question cmvhls58209hqgpfh7vhwwbkj (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A plant cell undergoes expansive growth. What is the main reason for the increase in volume?",
+      "reason": "near-duplicate of served question cmvhls58209hqgpfh7vhwwbkj (cosine 0.950 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A plant cell undergoes expansive growth. What is the primary reason for the increase in volume during this process?",
+      "reason": "near-duplicate of served question cmvhls58209hqgpfh7vhwwbkj (cosine 0.915 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

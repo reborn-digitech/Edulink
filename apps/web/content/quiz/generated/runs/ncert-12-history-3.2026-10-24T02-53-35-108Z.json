@@ -1,0 +1,937 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T02:53:35.108Z",
+  "finishedAt": "2026-10-24T03:00:38.259Z",
+  "seconds": 423,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Themes in Indian History-I",
+    "bookCode": "lehs1",
+    "document": "ncert/12/history/lehs103.pdf",
+    "classLevel": 12,
+    "subject": "History",
+    "chapter": "Chapter 3 — Kinship, Caste and Class",
+    "edition": "Reprint 2026-27",
+    "chunks": 27,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII History, marking scheme, 2024-25]\n9. ANS- B. Andal was a woman Nayanar, she incorporated the prevailing caste 1\nsystem in the society.",
+      "[CBSE Class XII History, sample question paper, 2022-23]\n28. Describe the familial relationship observed during Mahabharat era. 8\nOR\nDescribe the Social implications of access to Resources during\nMahabharat period",
+      "[CBSE Class XII History, marking scheme, 2022-23]\n4. Nageshwar d. Water reservoirs found.\nA. 1 - b, 2- c, 3 -d , 4- a\nB. 1 - a, 2- d, 3 -c , 4- b\nC. 1 - c, 2- b, 3 -d , 4- a\nD. 1 - d, 2- a, 3 -b , 4- c\nANS- A- 1 - b, 2- c, 3 -d , 4- a\nTheme - 1 page2-12\n4 Which one of the following statements is the correct explanation of 1\n‘Endogamy’?\nA. Marriage outside a kin group.\nB. Marriage within a kin group.\nC. A woman having several husbands.\nD.A man having several wives.\nANS- B. Marriage within a kin group.\nTheme -3 page 57",
+      "[CBSE Class XII History, marking scheme, 2024-25]\n25. i. There was individual ownership of assets and deep inequities based on caste 3\nand gender distinctions.\nii. A group of powerful individuals decided the affairs of the village, exploited the\nweaker sections and had the authority to dispense justice.\niii. More importantly, a cash nexus had already developed through trade between\nvillages and towns.\niv. In the Mughal heartland too, revenue was assessed and collected in cash.\nArtisans producing for the export market (for example, weavers) received their\nadvances or wages in cash, as did producers of commercial products like\ncotton, silk or indigo.\nv. Any other relevant point\nAny three points to be explained."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 181016,
+      "in": 47,
+      "out": 47,
+      "rejects": 0,
+      "promptTokens": 51358,
+      "completionTokens": 10023
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 361120,
+      "in": 47,
+      "out": 38,
+      "rejects": 9,
+      "promptTokens": 24780,
+      "completionTokens": 9465
+    },
+    "solver": {
+      "calls": 237,
+      "ms": 105936,
+      "in": 38,
+      "out": 29,
+      "rejects": 9,
+      "promptTokens": 41175,
+      "completionTokens": 2294
+    },
+    "form": {
+      "calls": 1,
+      "ms": 1933,
+      "in": 29,
+      "out": 1,
+      "rejects": 28,
+      "promptTokens": 290,
+      "completionTokens": 77
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 4,
+      "ms": 733,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 30621,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 3302,
+      "completionTokens": 2130
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the transmission of the Mahabharata across different regions?",
+      "ms": {
+        "draft": 4336,
+        "critique": 6316,
+        "solver": 1429,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the term 'kinship' as used in the passage?",
+      "ms": {
+        "draft": 4336,
+        "critique": 6894,
+        "solver": 1965,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage discusses the idea that texts like the Mahabharata may not always reflect actual social practices. What does this suggest about the role of texts in understanding social history?",
+      "ms": {
+        "draft": 4336,
+        "critique": 7016,
+        "solver": 1407,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How did the Mahabharata contribute to the understanding of kinship in early Indian society?",
+      "ms": {
+        "draft": 4336,
+        "critique": 8074,
+        "solver": 11041
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage suggests that the Mahabharata's influence on kinship practices may have been both a reflection of and a driver for social change. What does this imply about the relationship between texts and social practices?",
+      "ms": {
+        "draft": 4336,
+        "critique": 7682,
+        "solver": 15434,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'patriliny' refer to in the context of the passage?",
+      "ms": {
+        "draft": 4336,
+        "critique": 8030,
+        "solver": 14977,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the Mahabharata excerpt, why did Duryodhana feel jealous of the Pandavas?",
+      "ms": {
+        "draft": 11958,
+        "critique": 7727,
+        "solver": 1433
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what does the Rigveda mantra suggest about the expectations of a bride in a marriage?",
+      "ms": {
+        "draft": 11958,
+        "critique": 7716,
+        "solver": 16819,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of exogamy?",
+      "ms": {
+        "draft": 11958,
+        "critique": 6520,
+        "solver": 1380,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what can be inferred about the role of Brahmanas in shaping social norms?",
+      "ms": {
+        "draft": 11958,
+        "critique": 6572,
+        "solver": 1598,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between social norms and actual social practices?",
+      "ms": {
+        "draft": 11958,
+        "critique": 6857,
+        "solver": 1685,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the definition of endogamy?",
+      "ms": {
+        "draft": 11958,
+        "critique": 6872,
+        "solver": 1467,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what does the term 'endogamy' refer to?",
+      "ms": {
+        "draft": 3782,
+        "critique": 8018
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage provides information about the Satavahana rulers and their naming conventions. How many 'Gotami-putas' and 'Vasithi-putas' are mentioned in the text?",
+      "ms": {
+        "draft": 3782,
+        "critique": 6992,
+        "solver": 1718
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following best explains why the Satavahana rulers' wives often retained their gotra names?",
+      "ms": {
+        "draft": 3782,
+        "critique": 7564
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what does the mention of metronymics in the naming of Satavahana rulers suggest about the status of mothers in early Indian societies?",
+      "ms": {
+        "draft": 3782,
+        "critique": 6639,
+        "solver": 1440,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The passage discusses the naming conventions of Satavahana rulers. Which of the following is an example of a metronymic name?",
+      "ms": {
+        "draft": 3782,
+        "critique": 7042
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage provides details about the social order in early Indian societies. According to the passage, which of the following is NOT a function of the Shudras?",
+      "ms": {
+        "draft": 3782,
+        "critique": 7088
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the passage, what does the story of Ekalavya and Drona suggest about the social structure during the Mahabharata period?",
+      "ms": {
+        "draft": 4198,
+        "critique": 6357,
+        "solver": 2043,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses the complex relationship between the Satavahana dynasty and the caste system. Based on this, what can be inferred about the integration of non-Kshatriya rulers into the caste framework?",
+      "ms": {
+        "draft": 4198,
+        "critique": 7324,
+        "solver": 1505,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, which of the following best describes the concept of 'endogamy' as mentioned in the context of the Satavahana dynasty?",
+      "ms": {
+        "draft": 4198,
+        "critique": 8153,
+        "solver": 12446,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following describes the social status of chandalas according to the passage?",
+      "ms": {
+        "draft": 5511,
+        "critique": 6589
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what were the seven means of acquiring wealth for men as stated in the Manusmriti?",
+      "ms": {
+        "draft": 6056,
+        "critique": 5783,
+        "solver": 1083,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the impact of the Mahabharata on later literature and historical interpretation?",
+      "ms": {
+        "draft": 3367,
+        "critique": 6306,
+        "solver": 1126,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the passage, what does the story of Kunti and the nishada woman suggest about the values of the time?",
+      "ms": {
+        "draft": 3367,
+        "critique": 6603,
+        "solver": 1104
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following best explains the role of the nishada woman in the story of the Mahabharata?",
+      "ms": {
+        "draft": 3367,
+        "critique": 6634,
+        "solver": 1990,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage highlights how the Mahabharata reflects social hierarchies. Which of the following is an example of this?",
+      "ms": {
+        "draft": 3367,
+        "critique": 7051,
+        "solver": 1236
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the role of the Mahabharata in Indian history?",
+      "ms": {
+        "draft": 3367,
+        "critique": 7188,
+        "solver": 1457,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what does the term 'endogamy' mean?",
+      "ms": {
+        "draft": 3367,
+        "critique": 6911,
+        "solver": 1734,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main reason for the Pandavas marrying Draupadi together?",
+      "ms": {
+        "draft": 3721,
+        "critique": 7066,
+        "solver": 1385
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the author(s) of the Mahabharata?",
+      "ms": {
+        "draft": 3721,
+        "critique": 6014,
+        "solver": 1540
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the passage suggest about the practice of polyandry in the Mahabharata era?",
+      "ms": {
+        "draft": 3721,
+        "critique": 7301,
+        "solver": 1920,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the excavation at Hastinapura?",
+      "ms": {
+        "draft": 3721,
+        "critique": 4609,
+        "solver": 1178
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between the Mahabharata and historical reality?",
+      "ms": {
+        "draft": 3721,
+        "critique": 5382,
+        "solver": 2012,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage imply about the purpose of the different explanations given for Draupadi's marriage?",
+      "ms": {
+        "draft": 3721,
+        "critique": 7208,
+        "solver": 1481,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of a chief in the context of the text?",
+      "ms": {
+        "draft": 3347,
+        "critique": 7150
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the text suggest about the role of kings in society?",
+      "ms": {
+        "draft": 3347,
+        "critique": 6827,
+        "solver": 1167
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the Mahabharata according to the passage?",
+      "ms": {
+        "draft": 3347,
+        "critique": 6659,
+        "solver": 1591,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following best explains the concept of 'itihasa'?",
+      "ms": {
+        "draft": 3347,
+        "critique": 7260
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the text imply about the development of the Mahabharata over time?",
+      "ms": {
+        "draft": 3347,
+        "critique": 6766,
+        "solver": 1284,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, which of the following is a means of acquiring wealth for women as per the Manusmriti?",
+      "ms": {
+        "draft": 4000,
+        "critique": 6453,
+        "solver": 1329,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Based on the passage, which of the following best explains why the story of Avantiputta and Kachchana is significant?",
+      "ms": {
+        "draft": 4000,
+        "critique": 6562,
+        "solver": 1655,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred from the passage about the role of wealth in defining social hierarchies?",
+      "ms": {
+        "draft": 4000,
+        "critique": 6604,
+        "solver": 1427,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a non-Brahmanical practice mentioned in the passage?",
+      "ms": {
+        "draft": 5426,
+        "critique": 7417
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which social group was described as 'forest-dwellers' in the passage?",
+      "ms": {
+        "draft": 4419,
+        "critique": 6332
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the context of the passage, which of the following best explains why access to resources was a key factor in social differences?",
+      "ms": {
+        "draft": 4000,
+        "critique": 7889,
+        "solver": 8221,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a ruler from a non-Kshatriya background, like the Mauryas, was able to gain power, what does this suggest about the social and political structure of the time?",
+      "ms": {
+        "draft": 4198,
+        "critique": 7788,
+        "solver": 13719,
+        "form": 1933,
+        "translation": 24277
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the transmission of the Mahabharata across different regions?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This contradicts the passage, which emphasizes the regional …\"); distractor 2's reason is not a one-line misconception (\"This is incorrect because the passage mentions that the text…\"); distractor 3's reason is not a one-line misconception (\"This is incorrect because the passage clearly states that th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the term 'kinship' as used in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed, but it is the only option …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage discusses the idea that texts like the Mahabharata may not always reflect actual social practices. What does this suggest about the role of texts in understanding social history?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This contradicts the passage, which cautions against taking …\"); distractor 1's reason is not a one-line misconception (\"This is incorrect because the passage highlights the need fo…\"); distractor 3's reason is not a one-line misconception (\"This is incorrect because the passage emphasizes the importa…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How did the Mahabharata contribute to the understanding of kinship in early Indian society?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage suggests that the Mahabharata's influence on kinship practices may have been both a reflection of and a driver for social change. What does this imply about the relationship between texts and social practices?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"Texts only influence social practices and do not reflect them\" / \"Texts only reflect social practices and do not influence them\"); distractor 3's reason is not a one-line misconception (\"This is incorrect because the passage clearly states that te…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the term 'patriliny' refer to in the context of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"A system of social hierarchy based on wealth\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In the Mahabharata excerpt, why did Duryodhana feel jealous of the Pandavas?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what does the Rigveda mantra suggest about the expectations of a bride in a marriage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of exogamy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what can be inferred about the role of Brahmanas in shaping social norms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's statement about Brahmanas' influ…\"); distractor 3's reason is not a one-line misconception (\"Underestimates the complexity of social relations as describ…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between social norms and actual social practices?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the definition of endogamy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what does the term 'endogamy' refer to?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The passage provides information about the Satavahana rulers and their naming conventions. How many 'Gotami-putas' and 'Vasithi-putas' are mentioned in the text?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Based on the passage, which of the following best explains why the Satavahana rulers' wives often retained their gotra names?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what does the mention of metronymics in the naming of Satavahana rulers suggest about the status of mothers in early Indian societies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"denies the importance of mothers based on a superficial read…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "The passage discusses the naming conventions of Satavahana rulers. Which of the following is an example of a metronymic name?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The passage provides details about the social order in early Indian societies. According to the passage, which of the following is NOT a function of the Shudras?",
+      "reason": "option 0 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Based on the passage, what does the story of Ekalavya and Drona suggest about the social structure during the Mahabharata period?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses the complex relationship between the Satavahana dynasty and the caste system. Based on this, what can be inferred about the integration of non-Kshatriya rulers into the caste framework?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, which of the following best describes the concept of 'endogamy' as mentioned in the context of the Satavahana dynasty?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following describes the social status of chandalas according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what were the seven means of acquiring wealth for men as stated in the Manusmriti?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"includes an irrelevant method not mentioned in the text…\"); distractor 3's reason is not a one-line misconception (\"includes a method that is not listed in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the impact of the Mahabharata on later literature and historical interpretation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Based on the passage, what does the story of Kunti and the nishada woman suggest about the values of the time?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following best explains the role of the nishada woman in the story of the Mahabharata?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The passage highlights how the Mahabharata reflects social hierarchies. Which of the following is an example of this?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the role of the Mahabharata in Indian history?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what does the term 'endogamy' mean?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What was the main reason for the Pandavas marrying Draupadi together?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What does the passage suggest about the author(s) of the Mahabharata?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the passage suggest about the practice of polyandry in the Mahabharata era?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's suggestion that polyandry was no…\"); distractor 2's reason is not a one-line misconception (\"Assumes the passage supports a specific social class's pract…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's mention of crisis as a direct c…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage say about the excavation at Hastinapura?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between the Mahabharata and historical reality?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believes the passage supports a direct historical record…\"); distractor 1's reason is not a one-line misconception (\"Thinks the passage focuses on social norms…\"); distractor 2's reason is not a one-line misconception (\"Misinterprets the passage as purely fictional…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage imply about the purpose of the different explanations given for Draupadi's marriage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believes the passage focuses on storytelling…\"); distractor 1's reason is not a one-line misconception (\"Thinks the passage is about religious diversity…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's intent as cultural explanation…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of a chief in the context of the text?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What does the text suggest about the role of kings in society?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the significance of the Mahabharata according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the nature of the text as purely fictional…\"); distractor 1's reason is not a one-line misconception (\"Incorrectly assumes the text is a historical account…\"); distractor 3's reason is not a one-line misconception (\"Overlooks the text's moral and social elements…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "According to the passage, which of the following best explains the concept of 'itihasa'?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the text imply about the development of the Mahabharata over time?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Assumes the text was not modified…\"); distractor 3's reason is not a one-line misconception (\"Overlooks the text's evolving nature…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, which of the following is a means of acquiring wealth for women as per the Manusmriti?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (35 vs 11 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Based on the passage, which of the following best explains why the story of Avantiputta and Kachchana is significant?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What can be inferred from the passage about the role of wealth in defining social hierarchies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a non-Brahmanical practice mentioned in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which social group was described as 'forest-dwellers' in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the context of the passage, which of the following best explains why access to resources was a key factor in social differences?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

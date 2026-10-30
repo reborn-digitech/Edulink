@@ -1,0 +1,769 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T19:41:26.368Z",
+  "finishedAt": "2026-10-24T19:50:42.991Z",
+  "seconds": 557,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 5 — Inside the Atom",
+    "edition": "First Edition 2018",
+    "chunks": 13,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2009 — question paper]\n37. Which conclusion was a direct result of the gold foil experiment?\n| a) An atom is mostly empty space with a dense, positively charged nucleus.\nb) An atom is composed of at least three types of subatomic particles.\n¢) An electron has a positive charge and is located inside the nucleus.\nd) An electron has properties of both waves and particles.",
+      "[INJSO 2013 — question paper]\n63. The ratio of the size of the atom to the size of the nucleus is typically:\nA. 10\nB. 10 2\nC. 10 4\nD. 10 8",
+      "[INJSO 2013 — solutions or answer key]\n63. The ratio of the size of the atom to the size of the nucleus is typically:\nA. 10\nB. 10 2\nC. 10 4\nD. 10 8",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n7. An element ‘M' has 50% of the electrons filled in the 3 rd shell as in the 2nd shell. The 1\natomic number of ‘M’ is:\na) 10\nb) 12\nc) 14\nd) 18"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 185153,
+      "in": 39,
+      "out": 39,
+      "rejects": 0,
+      "promptTokens": 40580,
+      "completionTokens": 10518
+    },
+    "critique": {
+      "calls": 56,
+      "ms": 365410,
+      "in": 39,
+      "out": 32,
+      "rejects": 7,
+      "promptTokens": 27604,
+      "completionTokens": 9954
+    },
+    "solver": {
+      "calls": 268,
+      "ms": 144145,
+      "in": 32,
+      "out": 25,
+      "rejects": 7,
+      "promptTokens": 48186,
+      "completionTokens": 2809
+    },
+    "form": {
+      "calls": 14,
+      "ms": 65527,
+      "in": 25,
+      "out": 9,
+      "rejects": 16,
+      "promptTokens": 9275,
+      "completionTokens": 1742
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 70,
+      "ms": 10758,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 296746,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 17862,
+      "completionTokens": 9088
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "If an atom has a nucleus with a charge of +3e and the atom is electrically neutral, how many electrons must it have?",
+      "ms": {
+        "draft": 3638,
+        "critique": 7974
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main reason the plum pudding model was replaced by Rutherford's nuclear model?",
+      "ms": {
+        "draft": 3638,
+        "critique": 7032,
+        "solver": 2371,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a key feature of Rutherford’s atomic model?",
+      "ms": {
+        "draft": 5654,
+        "critique": 8035,
+        "solver": 1797,
+        "form": 4244
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the stability of an atom according to Rutherford’s model?",
+      "ms": {
+        "draft": 5654,
+        "critique": 6945,
+        "solver": 1768,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main difference between Dalton's atomic model and Rutherford's nuclear model?",
+      "ms": {
+        "draft": 3638,
+        "critique": 7671,
+        "solver": 15591
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an atom has 12 protons and 12 neutrons, what is the mass number of the atom?",
+      "ms": {
+        "draft": 5654,
+        "critique": 6943,
+        "solver": 1544
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an atom, the total number of electrons is equal to the number of protons. What does this imply about the atom?",
+      "ms": {
+        "draft": 5654,
+        "critique": 5513,
+        "solver": 1704,
+        "form": 3128
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the mass of an electron compared to a proton?",
+      "ms": {
+        "draft": 5654,
+        "critique": 7707,
+        "solver": 1255,
+        "form": 3834
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an atom has 8 protons and 8 neutrons, what is its atomic number?",
+      "ms": {
+        "draft": 5654,
+        "critique": 7358,
+        "solver": 11209,
+        "form": 2880
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an atom has an electronic configuration of 2, 8, 8, what is the total number of electrons in the atom?",
+      "ms": {
+        "draft": 3446,
+        "critique": 5781,
+        "solver": 1785
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If an element has 6 electrons in its outermost shell, what is its valency?",
+      "ms": {
+        "draft": 4378,
+        "critique": 9400,
+        "solver": 1236
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If an element has an electronic configuration of 2, 8, 7, what is the valency of the element?",
+      "ms": {
+        "draft": 3446,
+        "critique": 6297,
+        "solver": 15143
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the charge of an electron?",
+      "ms": {
+        "draft": 2878,
+        "critique": 6125
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a nuclear reactor, what is the purpose of a moderator?",
+      "ms": {
+        "draft": 4378,
+        "critique": 7840,
+        "solver": 1478,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the charge of a neutron?",
+      "ms": {
+        "draft": 2878,
+        "critique": 4614
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the fundamental particle that carries a negative charge in an atom?",
+      "ms": {
+        "draft": 2777,
+        "critique": 5188,
+        "solver": 12617,
+        "form": 2046
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the number of protons in an atom?",
+      "ms": {
+        "draft": 2777,
+        "critique": 5332,
+        "solver": 11915,
+        "form": 3039
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which subatomic particle is responsible for the chemical properties of an element?",
+      "ms": {
+        "draft": 2777,
+        "critique": 4534,
+        "solver": 11936,
+        "form": 4328
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a neutral particle found in the nucleus of an atom?",
+      "ms": {
+        "draft": 2777,
+        "critique": 6646,
+        "solver": 12185,
+        "form": 3711
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an element has an atomic number of 12, what is the number of electrons in its valence shell?",
+      "ms": {
+        "draft": 2777,
+        "critique": 7232,
+        "solver": 12105,
+        "form": 3186
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of the term 'atomic number' of an element?",
+      "ms": {
+        "draft": 6366,
+        "critique": 6888,
+        "solver": 13132,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an element has 16 protons and 16 neutrons, what is its atomic number and mass number?",
+      "ms": {
+        "draft": 6366,
+        "critique": 7531,
+        "solver": 15674
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an element has 12 electrons, what is its atomic number and how many valence electrons does it have?",
+      "ms": {
+        "draft": 6366,
+        "critique": 10122,
+        "solver": 13268
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a nuclear reactor, what is the role of a moderator?",
+      "ms": {
+        "draft": 6366,
+        "critique": 7701,
+        "solver": 14732,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the maximum number of electrons that can be accommodated in the L shell of an atom?",
+      "ms": {
+        "draft": 10284,
+        "critique": 6885
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An element has 12 electrons. What is its electronic configuration?",
+      "ms": {
+        "draft": 10284,
+        "critique": 6850
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the main difference between Rutherford's atomic model and Dalton's atomic model?",
+      "ms": {
+        "draft": 29953,
+        "critique": 5999
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the main reason why Rutherford's atomic model was considered unstable?",
+      "ms": {
+        "draft": 29953,
+        "critique": 6406
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to Rutherford's nuclear model of the atom, what does the large number of alpha particles passing straight through the gold foil indicate?",
+      "ms": {
+        "draft": 6515,
+        "critique": 5140,
+        "solver": 985,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An atom has a valency of 1. What can be inferred about its electronic configuration?",
+      "ms": {
+        "draft": 10284,
+        "critique": 6445,
+        "solver": 9721,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the maximum number of electrons that can be accommodated in the K shell?",
+      "ms": {
+        "draft": 3446,
+        "critique": 6397,
+        "solver": 1702,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the nuclear reactor, what is the function of a moderator?",
+      "ms": {
+        "draft": 2777,
+        "critique": 6752,
+        "solver": 12821,
+        "form": 3218
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the atomic number (Z) of an element?",
+      "ms": {
+        "draft": 4378,
+        "critique": 4782,
+        "solver": 1281,
+        "form": 0,
+        "translation": 34024
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following elements has an electronic configuration of 2, 8, 1?",
+      "ms": {
+        "draft": 3446,
+        "critique": 5496,
+        "solver": 1250,
+        "form": 0,
+        "translation": 32153
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the structure of an atom according to Rutherford's nuclear model?",
+      "ms": {
+        "draft": 3638,
+        "critique": 6824,
+        "solver": 13171,
+        "form": 0,
+        "translation": 68896
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Rutherford's experiment, why did most alpha particles pass through the gold foil without deflection?",
+      "ms": {
+        "draft": 3638,
+        "critique": 7133,
+        "solver": 11217,
+        "form": 0,
+        "translation": 47728
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the electronic configuration of an element, which shell is considered the valence shell?",
+      "ms": {
+        "draft": 3446,
+        "critique": 5077,
+        "solver": 1988,
+        "form": 0,
+        "translation": 28902
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What conclusion can be drawn from the observation that a few alpha particles were deflected at large angles during Rutherford's experiment?",
+      "ms": {
+        "draft": 3638,
+        "critique": 7599,
+        "solver": 1764,
+        "form": 0,
+        "translation": 48796
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "An element has 17 electrons. What is its atomic number and how many valence electrons does it have?",
+      "ms": {
+        "draft": 6366,
+        "critique": 7902,
+        "solver": 10792,
+        "form": 5312,
+        "translation": 33512
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If an atom has a nucleus with a charge of +3e and the atom is electrically neutral, how many electrons must it have?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the main reason the plum pudding model was replaced by Rutherford's nuclear model?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a key feature of Rutherford’s atomic model?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks electrons are uniformly distributed, as in Thomson’s …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the stability of an atom according to Rutherford’s model?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misunderstands the passage’s explanation of the instability …\"); distractor 3's reason is not a one-line misconception (\"Thinks the presence of neutrons stabilizes the nucleus, whic…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the main difference between Dalton's atomic model and Rutherford's nuclear model?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If an atom has 12 protons and 12 neutrons, what is the mass number of the atom?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In an atom, the total number of electrons is equal to the number of protons. What does this imply about the atom?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Assumes that the atom is radioactive simply because it is ne…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the mass of an electron compared to a proton?",
+      "reason": "options 1 and 2 say the same thing (\"It is 1800 times greater than the mass of a proton\" / \"It is 1800 times smaller than the mass of a proton\"); options 2 and 3 say the same thing (\"It is 1800 times smaller than the mass of a proton\" / \"It is 100 times smaller than the mass of a proton\"); distractor 1's reason is not a one-line misconception (\"Thinks the mass of an electron is greater than that of a pro…\"); distractor 3's reason is not a one-line misconception (\"Thinks the mass of an electron is 100 times smaller than tha…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If an atom has 8 protons and 8 neutrons, what is its atomic number?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks the atomic number is three times the number of proton…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If an atom has an electronic configuration of 2, 8, 8, what is the total number of electrons in the atom?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If an element has 6 electrons in its outermost shell, what is its valency?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If an element has an electronic configuration of 2, 8, 7, what is the valency of the element?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the charge of an electron?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a nuclear reactor, what is the purpose of a moderator?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the charge of a neutron?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the fundamental particle that carries a negative charge in an atom?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used to describe the number of protons in an atom?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which subatomic particle is responsible for the chemical properties of an element?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a neutral particle found in the nucleus of an atom?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If an element has an atomic number of 12, what is the number of electrons in its valence shell?",
+      "reason": "checkExpr \"2\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the meaning of the term 'atomic number' of an element?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If an element has 16 protons and 16 neutrons, what is its atomic number and mass number?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If an element has 12 electrons, what is its atomic number and how many valence electrons does it have?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a nuclear reactor, what is the role of a moderator?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'neutron'"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the maximum number of electrons that can be accommodated in the L shell of an atom?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "An element has 12 electrons. What is its electronic configuration?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following best describes the main difference between Rutherford's atomic model and Dalton's atomic model?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the main reason why Rutherford's atomic model was considered unstable?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to Rutherford's nuclear model of the atom, what does the large number of alpha particles passing straight through the gold foil indicate?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the model as focusing on negative particles, n…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "An atom has a valency of 1. What can be inferred about its electronic configuration?",
+      "reason": "options 0 and 1 say the same thing (\"It has a complete octet in the outermost shell\" / \"It has a complete duplet in the outermost shell\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the maximum number of electrons that can be accommodated in the K shell?",
+      "reason": "near-duplicate of served question cmvg69ei302drgpfh12hig6lr (cosine 0.983 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In the nuclear reactor, what is the function of a moderator?",
+      "reason": "near-duplicate of served question cmvj6n0le0fqigpfhevpp65zm (cosine 0.914 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,479 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T07:44:06.998Z",
+  "finishedAt": "2026-10-28T07:52:01.024Z",
+  "seconds": 474,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh104.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Complex Numbers and Quadratic Equations",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n16. The roots of quadratic equation 3𝑥 − 4√3𝑥 + 4 = 0 are 2 1\n(A) not real (B) real and equal\n(C) rational and distinct (D) irrational and distinct",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n4. The nature of roots of the quadratic equation 9x – 6x – 2 = 0 is: 2 1\n(a) No real roots (b) 2 equal real roots\n(c) 2 distinct real roots (d) More than 2 real roots",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n24. Find the nature of roots of the quadratic equation 𝒙 + 4𝒙 − 3√2 = 0. 2 2",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n11. The roots of the quadratic equation 𝑥 +x-1 = 0 are 2 1\nA) Irrational and distinct\nC ) rational and distinct"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 128280,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 21076,
+      "completionTokens": 4503
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 300188,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 13628,
+      "completionTokens": 5232
+    },
+    "solver": {
+      "calls": 155,
+      "ms": 140652,
+      "in": 20,
+      "out": 18,
+      "rejects": 2,
+      "promptTokens": 31931,
+      "completionTokens": 1675
+    },
+    "form": {
+      "calls": 5,
+      "ms": 29600,
+      "in": 18,
+      "out": 12,
+      "rejects": 6,
+      "promptTokens": 1229,
+      "completionTokens": 374
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 33,
+      "ms": 8657,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 464029,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 21244,
+      "completionTokens": 9398
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following represents the real part of the complex number 2 + i5?",
+      "ms": {
+        "draft": 6318,
+        "critique": 10113,
+        "solver": 19682,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the complex numbers 3 + i4 and a + ib are equal, what is the value of a and b?",
+      "ms": {
+        "draft": 6318,
+        "critique": 10797,
+        "solver": 24908,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the value of i^3?",
+      "ms": {
+        "draft": 6318,
+        "critique": 10056,
+        "solver": 1980
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the modulus of a complex number z = a + ib?",
+      "ms": {
+        "draft": 4815,
+        "critique": 10173,
+        "solver": 2114,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the conjugate of a complex number z = a + ib?",
+      "ms": {
+        "draft": 4815,
+        "critique": 8710,
+        "solver": 2722,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If z = 3 + 4i, what is the modulus of z?",
+      "ms": {
+        "draft": 4815,
+        "critique": 9054,
+        "solver": 2863,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the multiplicative inverse of a non-zero complex number z = a + ib?",
+      "ms": {
+        "draft": 4835,
+        "critique": 9682,
+        "solver": 1973,
+        "form": 6069
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the nature of the roots of the quadratic equation 3x² - 4√3x + 4 = 0?",
+      "ms": {
+        "draft": 4835,
+        "critique": 7806,
+        "solver": 30742
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the quadratic equation 2x² + 4x + k = 0 has equal roots, what is the value of k?",
+      "ms": {
+        "draft": 6496,
+        "critique": 11004
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the complex number z = 3 + 4i is multiplied by i, what is the result?",
+      "ms": {
+        "draft": 6496,
+        "critique": 12270
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the roots of the quadratic equation x² - 2x + 2 = 0 are α and β, what is the value of α² + β²?",
+      "ms": {
+        "draft": 6496,
+        "critique": 11874
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If z = 2 - 3i, what is the multiplicative inverse of z?",
+      "ms": {
+        "draft": 4815,
+        "critique": 10013,
+        "solver": 2080,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the conjugate of the complex number z = a + ib?",
+      "ms": {
+        "draft": 4835,
+        "critique": 10092,
+        "solver": 2601,
+        "form": 5394
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the standard form of a complex number?",
+      "ms": {
+        "draft": 4815,
+        "critique": 12686,
+        "solver": 3128,
+        "form": 0,
+        "translation": 32600
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of a complex number?",
+      "ms": {
+        "draft": 6318,
+        "critique": 11996,
+        "solver": 22187,
+        "form": 0,
+        "translation": 56961
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the modulus of a complex number z = a + ib?",
+      "ms": {
+        "draft": 4835,
+        "critique": 10456,
+        "solver": 3423,
+        "form": 5070,
+        "translation": 54161
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the equation x² + 2x + 5 = 0 is solved, the nature of the roots will be:",
+      "ms": {
+        "draft": 6496,
+        "critique": 11029,
+        "solver": 3310,
+        "form": 0,
+        "translation": 54575
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the equation x² + 4x + 4 = 0 is solved, the nature of the roots will be:",
+      "ms": {
+        "draft": 6496,
+        "critique": 4935,
+        "solver": 6352,
+        "form": 1,
+        "translation": 42214
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the sum of the complex numbers 2 + i3 and –6 + i5?",
+      "ms": {
+        "draft": 6318,
+        "critique": 12982,
+        "solver": 24196,
+        "form": 0,
+        "translation": 37711
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the conjugate of the complex number 3 + 4i?",
+      "ms": {
+        "draft": 4815,
+        "critique": 6444,
+        "solver": 1238,
+        "form": 0,
+        "translation": 31233
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the equation 4x + i(3x – y) = 3 + i(–6) is satisfied, what is the value of x?",
+      "ms": {
+        "draft": 6318,
+        "critique": 9638,
+        "solver": 22185,
+        "form": 0,
+        "translation": 37098
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the discriminant of a quadratic equation is negative, what is the nature of its roots?",
+      "ms": {
+        "draft": 4835,
+        "critique": 8111,
+        "solver": 23353,
+        "form": 5918,
+        "translation": 51819
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the roots of a quadratic equation are complex, what is the nature of the discriminant?",
+      "ms": {
+        "draft": 4835,
+        "critique": 7941,
+        "solver": 3018,
+        "form": 10012,
+        "translation": 60096
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following represents the real part of the complex number 2 + i5?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the complex numbers 3 + i4 and a + ib are equal, what is the value of a and b?",
+      "reason": "options 0 and 3 say the same thing (\"a = 3, b = 4\" / \"a = 4, b = 3\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the value of i^3?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the modulus of a complex number z = a + ib?",
+      "reason": "options 2 and 3 are the same (\"√(a² + b²)\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the conjugate of a complex number z = a + ib?",
+      "reason": "options 2 and 3 are the same (\"√(a² + b²)\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If z = 3 + 4i, what is the modulus of z?",
+      "reason": "checkExpr \"sqrt(3^2 + 4^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the multiplicative inverse of a non-zero complex number z = a + ib?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the nature of the roots of the quadratic equation 3x² - 4√3x + 4 = 0?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the quadratic equation 2x² + 4x + k = 0 has equal roots, what is the value of k?",
+      "reason": "the critic finds option 3 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If the complex number z = 3 + 4i is multiplied by i, what is the result?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the roots of the quadratic equation x² - 2x + 2 = 0 are α and β, what is the value of α² + β²?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If z = 2 - 3i, what is the multiplicative inverse of z?",
+      "reason": "near-duplicate of served question cmvhalyem07v5gpfhggezu2ln (cosine 0.917 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the conjugate of the complex number z = a + ib?",
+      "reason": "near-duplicate of served question cmvhalyej07utgpfh88gtvwja (cosine 0.910 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

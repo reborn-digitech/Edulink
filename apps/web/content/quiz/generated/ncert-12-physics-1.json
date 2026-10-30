@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Physics Part-II",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T12:05:00.677Z",
+  "generatedAt": "2026-10-29T00:17:42.870Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the formula for the effective focal length of a combination of thin lenses in contact?",
+      "stem": "What is the main purpose of combining multiple thin lenses in optical instruments?",
       "choices": [
-        "1/f = 1/f1 + 1/f2 + 1/f3 + ...",
-        "f = f1 + f2 + f3 + ...",
-        "1/f = f1 + f2 + f3 + ...",
-        "f = 1/f1 + 1/f2 + 1/f3 + ..."
+        "To increase the weight of the instrument",
+        "To reduce the cost of the instrument",
+        "To improve image quality by minimising optical aberrations",
+        "To make the instrument more attractive in appearance"
       ],
-      "answerIndex": 0,
-      "solution": "The correct formula for the effective focal length of a combination of thin lenses in contact is 1/f = 1/f1 + 1/f2 + 1/f3 + ... because the reciprocal of the effective focal length is the sum of the reciprocals of the individual focal lengths. The other options are incorrect because they do not correctly represent the relationship between the focal lengths of the lenses and the combined system.",
+      "answerIndex": 2,
+      "solution": "The main purpose of combining multiple thin lenses is to improve image quality by minimising optical aberrations. This occurs because different lenses can correct each other's imperfections, leading to a clearer and more accurate image. The other options do not relate to the fundamental function of lenses in optical systems.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "संयुक्त पतले लेंसों के संयोजन के प्रभावी फोकस दूरी का सूत्र क्या है?",
+          "stem": "ऑप्टिकल उपकरणों में कई पतले लेंसों के संयोजन का मुख्य उद्देश्य क्या है?",
           "choices": [
-            "1/f = 1/f1 + 1/f2 + 1/f3 + ...",
-            "f = f1 + f2 + f3 + ...",
-            "1/f = f1 + f2 + f3 + ...",
-            "f = 1/f1 + 1/f2 + 1/f3 + ..."
+            "उपकरण के वजन को बढ़ाना",
+            "उपकरण की लागत कम करना",
+            "ऑप्टिकल असमानताओं को कम करके छवि की गुणवत्ता में सुधार करना",
+            "उपकरण के आकर्षक दिखाई देने के लिए"
           ],
-          "solution": "संयुक्त पतले लेंसों के संयोजन के प्रभावी फोकस दूरी का सही सूत्र 1/f = 1/f1 + 1/f2 + 1/f3 + ... है क्योंकि प्रभावी फोकस दूरी का व्युत्क्रम व्यक्तिगत फोकस दूरियों के व्युत्क्रमों के योग के बराबर होता है। अन्य विकल्प गलत हैं क्योंकि वे लेंसों की फोकस दूरियों और संयुक्त प्रणाली के बीच संबंध को सही तरीके से प्रस्तुत नहीं करते।",
+          "solution": "कई पतले लेंसों के संयोजन का मुख्य उद्देश्य ऑप्टिकल असमानताओं को कम करके छवि की गुणवत्ता में सुधार करना होता है। ऐसा इसलिए होता है क्योंकि अलग-अलग लेंस एक दूसरे की असमानताओं को सुधार सकते हैं, जिससे एक स्पष्ट और सटीक छवि प्राप्त होती है। अन्य विकल्प लेंसों के ऑप्टिकल प्रणालियों में मूल कार्य से संबंधित नहीं हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium physics textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "सूक्ष्म लेंसांच्या संयोजनाच्या प्रभावी फोकस अंतराचे सूत्र काय आहे?",
+          "stem": "ऑप्टिकल उपकरणांमध्ये अनेक पातळ लेंसांचा एकत्रितपणे वापर करण्याचा मुख्य उद्देश काय आहे?",
           "choices": [
-            "1/f = 1/f1 + 1/f2 + 1/f3 + ...",
-            "f = f1 + f2 + f3 + ...",
-            "1/f = f1 + f2 + f3 + ...",
-            "f = 1/f1 + 1/f2 + 1/f3 + ..."
+            "उपकरणाचा वजन वाढवणे",
+            "उपकरणाचा खर्च कमी करणे",
+            "ऑप्टिकल अव्यवस्था कमी करून चित्राची गुणवत्ता सुधारणे",
+            "उपकरणाचे बाह्य दिसावे आकर्षक करणे"
           ],
-          "solution": "सूक्ष्म लेंसांच्या संयोजनाच्या प्रभावी फोकस अंतराचे योग्य सूत्र 1/f = 1/f1 + 1/f2 + 1/f3 + ... आहे कारण प्रभावी फोकस अंतराचा व्युत्क्रम हा विभिन्न फोकस अंतरांच्या व्युत्क्रमांच्या बेरजेसारखा असतो. इतर पर्याय अयोग्य आहेत कारण ते लेंसांच्या फोकस अंतरांचा आणि संयोजनाच्या प्रणालीचा संबंध योग्यरित्या दर्शवत नाहीत.",
+          "solution": "अनेक पातळ लेंसांचा एकत्रितपणे वापर करण्याचा मुख्य उद्देश ऑप्टिकल अव्यवस्था कमी करून चित्राची गुणवत्ता सुधारणे आहे. हे त्यामुळे होते की वेगवेगळ्या लेंसांमार्फत एकमेकांच्या अयोग्यतांचा दुरुस्ती केली जाऊ शकते, ज्यामुळे स्पष्ट आणि अचूक चित्र मिळते. इतर विकल्प लेंसांच्या ऑप्टिकल प्रणालीमधील मूलभूत कार्याशी संबंधित नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the technical terms used in Marathi textbooks, and preserves the meaning and structure of the original question.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The correct answer remains in the same position (option 2), and the distractors are still incorrect in Marathi.",
           "flag": null
         }
       },
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses the purpose of combining lenses with physical characteristics like weight or cost",
+        "Ignores the technical benefit of lens combination",
         null,
-        "confuses reciprocal relationship with direct addition",
-        "incorrectly assumes focal lengths add directly",
-        "incorrectly uses reciprocal for total focal length instead of individual lenses"
+        "Does not understand the role of optical aberrations in image quality"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct formula for the effective focal length of thin lenses in contact is 1/f = 1/f1 + 1/f2 + ..., which matches the author's key. The other options represent common misconceptions about how focal lengths combine.",
+      "critique": "The correct answer is clearly supported by the reasoning provided. The other options represent common misconceptions about the purpose of combining lenses in optical instruments.",
       "sources": [
         {
           "document": "ncert/12/physics/leph201.pdf",
@@ -129,49 +129,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T12:05:00.677Z",
+      "generatedAt": "2026-10-29T00:17:42.870Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "What is the purpose of using multi-component lenses in modern microscopes?",
+      "stem": "What is the main advantage of using the Cartesian sign convention in optics?",
       "choices": [
-        "To increase the weight of the microscope",
-        "To reduce the size of the microscope",
-        "To improve image quality by minimising optical aberrations",
-        "To focus light more precisely on a single point"
+        "It simplifies the calculation of image size",
+        "It provides a consistent method to measure distances",
+        "It allows the use of only positive values",
+        "It ensures that all measurements are in meters"
       ],
-      "answerIndex": 2,
-      "solution": "Multi-component lenses are used to improve image quality by minimising optical aberrations, which are distortions that occur when light passes through a single lens. This results in clearer and more accurate images. The other options do not address the fundamental role of lens design in correcting light distortion.",
+      "answerIndex": 1,
+      "solution": "The correct option is that it provides a consistent method to measure distances, which is essential for applying optical formulas accurately. Using a consistent sign convention ensures that all measurements are interpreted correctly in relation to the direction of light. The other options are incorrect because image size calculation depends on other factors, not the sign convention, and not all values are positive, nor are all measurements restricted to meters.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "आधुनिक सूक्ष्मदर्शी में बहु-घटक लेंस का उपयोग करने का उद्देश्य क्या है?",
+          "stem": "ऑप्टिक्स में कार्टेशियन चिह्न परम्परा के उपयोग का मुख्य लाभ क्या है?",
           "choices": [
-            "सूक्ष्मदर्शी के वजन को बढ़ाना",
-            "सूक्ष्मदर्शी के आकार को कम करना",
-            "अपवर्तन दोषों के न्यूनतम करके छवि गुणवत्ता में सुधार करना",
-            "एक बिंदु पर प्रकाश को अधिक सटीक रूप से फोकस करना"
+            "इसके द्वारा प्रतिबिम्ब के आकार की गणना सरल हो जाती है",
+            "इसके द्वारा दूरियों के मापन के लिए एक संगत विधि प्रदान की जाती है",
+            "इसके द्वारा केवल धनात्मक मानों का उपयोग करना संभव हो जाता है",
+            "इसके द्वारा सभी मापन केवल मीटर में होते हैं"
           ],
-          "solution": "बहु-घटक लेंसों का उपयोग अपवर्तन दोषों के न्यूनतम करके छवि गुणवत्ता में सुधार करने के लिए किया जाता है, जो प्रकाश के एकल लेंस से गुजरते समय होते हैं। इससे स्पष्ट और अधिक सटीक छवियां प्राप्त होती हैं। अन्य विकल्प लेंस डिज़ाइन के मूल भूमिका के अनुरूप नहीं हैं जो प्रकाश विक्षेपण को सुधारता है।",
+          "solution": "सही विकल्प यह है कि यह दूरियों के मापन के लिए एक संगत विधि प्रदान करता है, जो प्रकाशिक सूत्रों के सही अनुप्रयोग के लिए आवश्यक है। संगत चिह्न परम्परा के उपयोग से आकाश में प्रकाश की दिशा के संबंध में सभी मापन को सही तरीके से अर्थपूर्ण किया जाता है। अन्य विकल्प गलत हैं क्योंकि प्रतिबिम्ब के आकार की गणना चिह्न परम्परा के बजाय अन्य कारकों पर निर्भर करती है, और सभी मान धनात्मक नहीं होते, और सभी मापन मीटर तक सीमित नहीं होते।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate technical terms in Hindi.",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi technical terms.",
           "flag": null
         },
         "mr": {
-          "stem": "आधुनिक मायक्रोस्कोपमध्ये बहु-घटक लेन्स वापरण्याचा उद्देश काय आहे?",
+          "stem": "ऑप्टिक्समध्ये कार्टेशियन चिन्ह परंपरा वापरण्याचा मुख्य फायदा काय आहे?",
           "choices": [
-            "मायक्रोस्कोपचा वजन वाढवणे",
-            "मायक्रोस्कोपचा आकार कमी करणे",
-            "प्रकाशाच्या विकृती निघाल्याने चित्राची गुणवत्ता सुधारणे",
-            "एका बिंदूवर प्रकाश अधिक शुद्धतेने फोकस करणे"
+            "त्याने छायाचित्राच्या आकाराची गणना सोपी करते",
+            "त्याने अंतरांच्या मोजणीसाठी एक संस्थापित पद्धत प्रदान करते",
+            "त्याने केवळ धनात्मक मूल्यांचा वापर करण्याची परवानगी देते",
+            "त्याने सर्व मोजण्या मीटरमध्ये असल्याची खात्री देते"
           ],
-          "solution": "बहु-घटक लेन्स वापरून प्रकाशाच्या विकृती निघाल्याने चित्राची गुणवत्ता सुधारली जाते, जी जेव्हा प्रकाश एका लेन्समार्फत जातो तेव्हा होते. हे स्पष्ट आणि अचूक चित्र बनवते. इतर विकल्प प्रकाश विकृती दूर करण्याच्या लेन्स डिझाइनच्या मूलभूत भूमिकेला नकारतात.",
+          "solution": "योग्य पर्याय हा आहे की त्याने अंतरांच्या मोजणीसाठी एक संस्थापित पद्धत प्रदान करते, जे प्रकाशीय सूत्रांच्या अचूक अनुसरणासाठी आवश्यक आहे. एक संस्थापित चिन्ह परंपरा वापरून सर्व मोजण्यांचे आकाराचे व्याख्यान ज्या दिशेने प्रकाश जातो याशी संबंधित असते. इतर पर्याय चूक आहेत कारण छायाचित्राच्या आकाराची गणना चिन्ह परंपरेवर अवलंबून नसते, आणि सर्व मूल्य धनात्मक असत नाहीत, आणि सर्व मोजण्या मीटरमध्ये मर्यादित नसतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for optical components.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terminology as used in Marathi-medium science textbooks.",
           "flag": null
         }
       },
@@ -180,10 +180,108 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses the purpose of design with weight",
-        "incorrectly assumes size reduction is the goal",
+        "Focuses on image size rather than distance measurement",
         null,
-        "Confuses the purpose of lenses with that of mirrors or lenses in focusing light"
+        "Confuses sign convention with only positive values",
+        "Limits measurement to one unit"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the Cartesian sign convention's main advantage is providing a consistent method for measuring distances. The other options reflect common misconceptions about the purpose of the sign convention.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "RAY OPTICS"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.2"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.2"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T00:17:42.870Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason a compound microscope uses multi-component lenses for both the objective and the eyepiece?",
+      "choices": [
+        "To increase the magnifying power of the microscope",
+        "To reduce the size of the microscope",
+        "To improve image quality by minimising optical aberrations",
+        "To make the microscope easier to use for beginners"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct option is to improve image quality by minimising optical aberrations. Multi-component lenses correct distortions and imperfections in the light path, leading to clearer and more accurate images. Other options, such as increasing magnification or reducing size, are not the primary reasons for using these lenses.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक यौगिक सूक्ष्मदर्शी के लिए निर्माण में ऑब्जेक्टिव और आइपीस के लिए बहु-घटक लेंस का उपयोग मुख्य कारण क्या है?",
+          "choices": [
+            "सूक्ष्मदर्शी की आवर्धन क्षमता बढ़ाने के लिए",
+            "सूक्ष्मदर्शी के आकार को कम करने के लिए",
+            "आप्टिकल विकृतियों को कम करके छवि की गुणवत्ता में सुधार करने के लिए",
+            "शुरुआती उपयोगकर्ताओं के लिए सूक्ष्मदर्शी को आसान बनाने के लिए"
+          ],
+          "solution": "सही विकल्प आप्टिकल विकृतियों को कम करके छवि की गुणवत्ता में सुधार करने के लिए है। बहु-घटक लेंस प्रकाश मार्ग में विकृतियों और अपूर्णताओं को सुधारते हैं, जिससे स्पष्ट और अधिक सटीक छवि प्राप्त होती है। अन्य विकल्प, जैसे आवर्धन बढ़ाना या आकार कम करना, इन लेंसों के उपयोग का मुख्य कारण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning with appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका संयुक्त सूक्ष्मदर्शकाने ऑब्जेक्टिव्ह आणि आयपीस दोन्हीसाठी बहु-घटक लेन्स वापरण्याचा मुख्य कारण काय आहे?",
+          "choices": [
+            "सूक्ष्मदर्शकाच्या आवर्धन क्षमतेमध्ये वाढ करणे",
+            "सूक्ष्मदर्शकाच्या आकारामध्ये कमी करणे",
+            "ऑप्टिकल अवकलन घटवून चित्राच्या गुणवत्तेत सुधारणा करणे",
+            "सुक्ष्मदर्शकाचा सुलभपणे वापर करणे"
+          ],
+          "solution": "योग्य पर्याय ऑप्टिकल अवकलन घटवून चित्राच्या गुणवत्तेत सुधारणा करणे आहे. बहु-घटक लेन्स प्रकाश मार्गातील विकृती आणि अयोग्यता दूर करतात, ज्यामुळे स्पष्ट आणि अचूक चित्र मिळते. इतर पर्याय, जसे की आवर्धन वाढवणे किंवा आकार कमी करणे, हे लेन्स वापरण्याचे प्रमुख कारण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Students often confuse the purpose of multiple lenses with simply increasing magnification, not understanding that they are used to correct optical flaws",
+        "Believes that using multiple lenses makes the microscope physically smaller",
+        null,
+        "Belief that complex instruments are designed primarily for simplicity rather than performance"
       ],
       "solverAnswers": [
         2,
@@ -193,83 +291,95 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2, as multi-component lenses are used to reduce optical aberrations and improve image quality. The other options represent common misconceptions about the purpose of lens design in microscopes.",
+      "critique": "The correct answer is 2, as multi-component lenses are used to reduce optical aberrations. The author's reasoning for the other options aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/12/physics/leph201.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
+          "ordinal": 26,
+          "pageStart": 27,
+          "pageEnd": 28,
           "headingPath": [
             "Chapter 1: Optical Instruments",
-            "9.2"
+            "9.7"
           ]
         },
         {
           "document": "ncert/12/physics/leph201.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
+          "ordinal": 27,
+          "pageStart": 28,
+          "pageEnd": 29,
           "headingPath": [
             "Chapter 1: Optical Instruments",
-            "9.2"
+            "9.7"
           ]
         },
         {
           "document": "ncert/12/physics/leph201.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
+          "ordinal": 28,
+          "pageStart": 29,
+          "pageEnd": 29,
           "headingPath": [
             "Chapter 1: Optical Instruments",
-            "9.2"
+            "9.7",
+            "EXERCISES"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 29,
+          "pageStart": 30,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.7",
+            "EXERCISES"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T12:05:00.677Z",
+      "generatedAt": "2026-10-29T00:17:42.870Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Why is the image formed at infinity considered most suitable for viewing in optical instruments?",
+      "difficulty": 3,
+      "stem": "What is the purpose of using a prism in optical instruments that bends light by 90° or 180°?",
       "choices": [
-        "Because it is the only possible image",
-        "Because it requires maximum eye strain",
-        "Because it requires minimum eye strain",
-        "Because it is the brightest image"
+        "To increase the intensity of light",
+        "To decrease the speed of light",
+        "To use total internal reflection",
+        "To change the color of light"
       ],
       "answerIndex": 2,
-      "solution": "The image formed at infinity is considered most suitable for viewing because it requires minimum eye strain, allowing the ciliary muscles to remain relaxed. Other options are incorrect as they suggest maximum strain, impossibility, or brightness, which are not supported by the principles of eye physiology and optics.",
+      "solution": "A prism used to bend light by 90° or 180° relies on total internal reflection, which occurs when light reflects completely within the prism instead of passing through. Increasing light intensity, decreasing the speed of light, or changing its color are not effects achieved by the bending of light through a prism.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "ऑप्टिकल उपकरणों में दृष्टि के लिए अनंत पर बने प्रतिबिंब को सबसे उपयुक्त क्यों माना जाता है?",
+          "stem": "प्रकाशिक उपकरणों में प्रिज्म का उपयोग प्रकाश को 90° या 180° झुकाने के लिए क्यों किया जाता है?",
           "choices": [
-            "क्योंकि यह एकमात्र संभव प्रतिबिंब है",
-            "क्योंकि यह अधिकतम आंख की तनाव की आवश्यकता होती है",
-            "क्योंकि यह न्यूनतम आंख की तनाव की आवश्यकता होती है",
-            "क्योंकि यह सबसे चमकदार प्रतिबिंब है"
+            "प्रकाश की तीव्रता बढ़ाने के लिए",
+            "प्रकाश की गति कम करने के लिए",
+            "पूर्ण आंतरिक परावर्तन का उपयोग करने के लिए",
+            "प्रकाश के रंग को बदलने के लिए"
           ],
-          "solution": "अनंत पर बने प्रतिबिंब को देखने के लिए सबसे उपयुक्त माना जाता है क्योंकि यह न्यूनतम आंख की तनाव की आवश्यकता होती है, जिससे कि कैलियरी मांसपेशियां आराम में रहती हैं। अन्य विकल्प गलत हैं क्योंकि वे अधिकतम तनाव, असंभवता या चमक का सुझाव देते हैं, जो आंख के शारीरिक एवं ऑप्टिक्स के सिद्धांतों द्वारा समर्थित नहीं हैं।",
+          "solution": "90° या 180° झुकाव वाले प्रकाशिक उपकरणों में प्रिज्म का उपयोग पूर्ण आंतरिक परावर्तन के कारण किया जाता है, जो तब होता है जब प्रकाश अपने अंदर बिल्कुल परावर्तित हो जाता है। प्रकाश की तीव्रता बढ़ाना, गति कम करना या इसका रंग बदलना प्रिज्म के माध्यम से प्रकाश के झुकाव द्वारा प्राप्त नहीं किए जा सकते।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (2). The distractors remain incorrect, and the technical terms used are standard in Hindi science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "ऑप्टिकल उपकरणांमध्ये दृश्य बनवण्यासाठी अनंतावर बनलेले छायाचित्र का सर्वात योग्य मानले जाते?",
+          "stem": "प्रकाशाच्या बेंडिंगसाठी 90° किंवा 180° वापरल्या जाणाऱ्या प्रिझमचा उद्देश काय आहे?",
           "choices": [
-            "कारण ते एकमात्र संभाव्य छायाचित्र आहे",
-            "कारण ते अधिकतम डोळ्याची ताण आवश्यकता असते",
-            "कारण ते कमतरता डोळ्याची ताण आवश्यकता असते",
-            "कारण ते सर्वात जास्त उजळ छायाचित्र आहे"
+            "प्रकाशाची तीव्रता वाढवणे",
+            "प्रकाशाच्या वेगाची घट करणे",
+            "पूर्ण आंतरिक प्रतिबिंबाचा वापर करणे",
+            "प्रकाशाचा रंग बदलणे"
           ],
-          "solution": "अनंतावर बनलेले छायाचित्र दृश्य बनवण्यासाठी सर्वात योग्य मानले जाते कारण ते कमतरता डोळ्याची ताण आवश्यकता असते, ज्यामुळे सिलियरी मासल्स शांत राहतात. इतर विकल्प चुकीचे आहेत कारण ते अधिकतम ताण, अशक्यता किंवा उजळता दर्शवतात, जे डोळ्याच्या शारीरशास्त्र आणि ऑप्टिक्सच्या तत्वांना अनुरूप नाहीत.",
+          "solution": "90° किंवा 180° वापरल्या जाणाऱ्या प्रिझममध्ये पूर्ण आंतरिक प्रतिबिंबाचा वापर केला जातो, जो प्रकाशाचे पूर्णपणे प्रिझममध्ये परावर्तन होण्याचा विषय आहे. प्रकाशाची तीव्रता वाढवणे, वेग घटवणे किंवा रंग बदलणे हे प्रिझममधून प्रकाशाच्या बेंडिंगमुळे प्राप्त होणारे परिणाम नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for optical instruments and eye physiology.",
+          "critique": "The translation is accurate and maintains the technical terminology used in Marathi science textbooks.",
           "flag": null
         }
       },
@@ -278,10 +388,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "incorrectly assumes that only one image is possible",
-        "Student believes that more strain means better focus",
+        "Misunderstands the function of prisms",
+        "Misunderstands the function of prisms",
         null,
-        "confuses brightness with eye strain"
+        "Confuses the purpose of prisms with other optical devices"
       ],
       "solverAnswers": [
         2,
@@ -290,42 +400,458 @@
         2,
         2
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as the image at infinity reduces eye strain. The author's reasoning aligns with standard physics principles about how the eye focuses on distant objects. The distractors reflect common misconceptions about image formation and eye strain.",
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as prisms are used for total internal reflection to bend light. The other options are incorrect and reflect common misconceptions about prism functions.",
       "sources": [
         {
           "document": "ncert/12/physics/leph201.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 11,
           "headingPath": [
             "Chapter 1: Optical Instruments",
-            "9.2"
+            "9.4"
           ]
         },
         {
           "document": "ncert/12/physics/leph201.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
+          "ordinal": 10,
+          "pageStart": 11,
+          "pageEnd": 11,
           "headingPath": [
             "Chapter 1: Optical Instruments",
-            "9.2"
+            "9.4"
           ]
         },
         {
           "document": "ncert/12/physics/leph201.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
+          "ordinal": 11,
+          "pageStart": 12,
+          "pageEnd": 12,
           "headingPath": [
             "Chapter 1: Optical Instruments",
-            "9.2"
+            "9.4"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 12,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.5"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T12:05:00.677Z",
+      "generatedAt": "2026-10-29T00:17:42.870Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A ray of light is incident on a convex lens parallel to the principal axis. What happens to this ray after refraction?",
+      "choices": [
+        "It passes through the optical centre",
+        "It diverges from the first focal point",
+        "It converges to the second focal point",
+        "It continues parallel to the principal axis"
+      ],
+      "answerIndex": 2,
+      "solution": "When a ray of light is incident on a convex lens parallel to the principal axis, it converges to the second focal point after refraction. The optical centre does not affect the path of the ray. A ray diverging from the first focal point is not the case for a parallel incident ray. A 90-degree bend is not a characteristic of refraction through a convex lens.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रकाश की किरण उत्तल लेंस पर मुख्य अक्ष के समांतर आपतित होती है। अपवर्तन के बाद इस किरण के साथ क्या होता है?",
+          "choices": [
+            "यह ऑप्टिकल केंद्र से गुजरती है",
+            "यह पहले फोकस बिंदु से फैल जाती है",
+            "यह दूसरे फोकस बिंदु पर अभिसरित हो जाती है",
+            "यह मुख्य अक्ष के समांतर रहती है"
+          ],
+          "solution": "जब प्रकाश की एक किरण उत्तल लेंस पर मुख्य अक्ष के समांतर आपतित होती है, तो अपवर्तन के बाद यह दूसरे फोकस बिंदु पर अभिसरित हो जाती है। ऑप्टिकल केंद्र किरण के पथ पर कोई प्रभाव नहीं डालता है। पहले फोकस बिंदु से फैलने वाली किरण एक समांतर आपतित किरण के लिए सही नहीं है। उत्तल लेंस के माध्यम से अपवर्तन के लिए 90 डिग्री का मोड़ विशेषता नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains the scientific meaning, and uses standard Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक किरण उत्तल लेन्सवर मुख्य अक्षाला समांतर आहे. अपवर्तनानंतर हा किरण काय होतो?",
+          "choices": [
+            "तो ऑप्टिकल केंद्रमधून जातो",
+            "तो पहिल्या फोकस बिंदूपासून विस्तारतो",
+            "तो दुसऱ्या फोकस बिंदूत एकत्रित होतो",
+            "तो मुख्य अक्षाला समांतर राहतो"
+          ],
+          "solution": "जेव्हा एक किरण उत्तल लेन्सवर मुख्य अक्षाला समांतर आहे, अपवर्तनानंतर तो दुसऱ्या फोकस बिंदूत एकत्रित होतो. ऑप्टिकल केंद्र किरणाच्या मार्गावर प्रभाव टाकत नाही. पहिल्या फोकस बिंदूपासून विस्तारणारा किरण हा समांतर आपतित किरणासाठी नाही. 90 अंशाचा वळा उत्तल लेन्समधून अपवर्तनाची वैशिष्ट्य नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for optics.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the optical centre with the path of the ray",
+        "Confuses the first focal point with the path of the ray",
+        null,
+        "Confuses the behavior of light through a convex lens with that of a plane glass slab"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. A ray parallel to the principal axis through a convex lens converges to the second focal point. The reasons for the wrong options are valid misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 13,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.5"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 14,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.5"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 15,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.5"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T00:17:42.870Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the purpose of the outer covering of a light pipe made of a glass fibre with a refractive index of 1.68?",
+      "choices": [
+        "To prevent the pipe from breaking when bent",
+        "To increase the weight of the pipe",
+        "To allow total internal reflection to occur",
+        "To make the pipe more transparent"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'To allow total internal reflection to occur.' The outer covering of the light pipe has a lower refractive index, which ensures that light is reflected within the glass fibre. The other options are incorrect because they do not relate to the function of the outer covering.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रकाश नली के बाहरी कवर का उद्देश्य क्या है जो कांच के रेशे के बना हुआ है जिसका अपवर्तनांक 1.68 है?",
+          "choices": [
+            "पाइप को मोड़े जाने पर टूटने से रोकना",
+            "पाइप के वजन में वृद्धि करना",
+            "कुल आंतरिक परावर्तन होने की अनुमति देना",
+            "पाइप को अधिक पारदर्शी बनाना"
+          ],
+          "solution": "सही उत्तर 'कुल आंतरिक परावर्तन होने की अनुमति देना' है। प्रकाश नली के बाहरी कवर का अपवर्तनांक कम होता है, जो प्रकाश के कांच के रेशे में रहने की अनुमति देता है। अन्य विकल्प गलत हैं क्योंकि वे बाहरी कवर के कार्य से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a manner consistent with Hindi-medium science education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका शिळा तारेच्या एका प्रकाश नळीच्या बाह्य आवरणाचा उद्देश काय आहे ज्याचा अपवर्तनांक 1.68 आहे?",
+          "choices": [
+            "नळी वाकल्यास ती फुटू नये यासाठी",
+            "नळीचा वजन वाढविण्यासाठी",
+            "एकूण आंतरिक परावर्तन होऊ देण्यासाठी",
+            "नळी अधिक पारदर्शक करण्यासाठी"
+          ],
+          "solution": "सही उत्तर 'एकूण आंतरिक परावर्तन होऊ देण्यासाठी' आहे. प्रकाश नळीच्या बाह्य आवरणाचा अपवर्तनांक कमी असतो, ज्यामुळे प्रकाश शिळा तारेमध्ये फक्त आंतरिक परावर्तनाने रहातो. इतर विकल्प चुकीचे आहेत कारण ते बाह्य आवरणाच्या कार्याशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terminology used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Students may think the outer covering strengthens the fiber physically rather than optically",
+        "A student might think adding a covering increases the pipe's weight for stability",
+        null,
+        "Believes the covering affects transparency directly"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the outer covering (cladding) of a fiber optic cable has a lower refractive index than the core, enabling total internal reflection. The other options are incorrect and represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 30,
+          "pageStart": 30,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.7",
+            "EXERCISES"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 31,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.7",
+            "EXERCISES"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 32,
+          "pageStart": 32,
+          "pageEnd": 32,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.7",
+            "EXERCISES"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 33,
+          "pageStart": 33,
+          "pageEnd": 33,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.7",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T00:17:42.870Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A convex lens has a power of +5 D. What is the focal length of the lens in centimeters?",
+      "choices": [
+        "10 cm",
+        "20 cm",
+        "50 cm",
+        "100 cm"
+      ],
+      "answerIndex": 1,
+      "solution": "The power of a lens is the reciprocal of the focal length in meters. A power of +5 D means the focal length is 1/5 meters, which is 20 cm. 10 cm is incorrect as it would correspond to a power of 10 D. 50 cm and 100 cm are also incorrect as they would give lower power values.",
+      "checkExpr": "100/5",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक उत्तल लेंस की शक्ति +5 D है। लेंस की फोकस दूरी सेंटीमीटर में क्या है?",
+          "choices": [
+            "10 सेमी",
+            "20 सेमी",
+            "50 सेमी",
+            "100 सेमी"
+          ],
+          "solution": "लेंस की शक्ति फोकस दूरी के व्युत्क्रम के बराबर होती है। +5 D शक्ति का अर्थ है कि फोकस दूरी 1/5 मीटर है, जो 20 सेमी है। 10 सेमी गलत है क्योंकि इसका अर्थ शक्ति 10 D होगी। 50 सेमी और 100 सेमी भी गलत हैं क्योंकि इनका अर्थ निम्न शक्ति मान होगा।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक उत्तल लेन्स चे शक्ती +5 D आहे. लेन्स चे फोकस अंतर सेंटीमीटर मध्ये किती आहे?",
+          "choices": [
+            "10 cm",
+            "20 cm",
+            "50 cm",
+            "100 cm"
+          ],
+          "solution": "लेन्स ची शक्ती ही मीटर मध्ये फोकस अंतर च्या व्यस्त असते. +5 D ची शक्ती म्हणजे फोकस अंतर 1/5 मीटर असते, जे 20 सेंटीमीटर आहे. 10 सेंटीमीटर चूक आहे कारण त्याची शक्ती 10 D असते. 50 सेंटीमीटर आणि 100 सेंटीमीटर देखील चूक आहेत कारण त्यांची शक्ती कमी असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms for optics.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses 1/10 m with the focal length",
+        null,
+        "Incorrectly calculates the focal length as 1/50 m",
+        "Incorrectly calculates the focal length as 1/100 m"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly applies the formula for power of a lens (P = 1/f in meters) and converts to centimeters. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 13,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.5"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 14,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.5"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 15,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.5"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T00:17:42.870Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why are reflecting telescopes preferred over refracting telescopes for large-scale observations?",
+      "choices": [
+        "They are lighter and easier to manufacture",
+        "They have a larger magnification",
+        "They produce brighter images",
+        "They are less expensive"
+      ],
+      "answerIndex": 0,
+      "solution": "Reflecting telescopes are preferred because they are lighter and easier to manufacture, as mirrors can be made larger and with less material than equivalent lenses. This makes them more practical for large-scale observations. The other options are incorrect because magnification, brightness, and cost are not the primary reasons for their preference in large-scale use.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बड़े पैमाने पर अवलोकन के लिए परावर्तक दूरबीन को अपवर्तक दूरबीन के बजाय क्यों प्राथमिकता दी जाती है?",
+          "choices": [
+            "वे हल्के और बनाने में आसान होते हैं",
+            "वे बड़े आवर्धन के साथ होते हैं",
+            "वे चमकदार छवि उत्पन्न करते हैं",
+            "वे कम लागत वाले होते हैं"
+          ],
+          "solution": "परावर्तक दूरबीन को प्राथमिकता दी जाती है क्योंकि वे हल्के और बनाने में आसान होते हैं, क्योंकि दर्पणों को बड़ा बनाया जा सकता है और बराबर लेंस की तुलना में कम सामग्री के साथ। इससे वे बड़े पैमाने पर अवलोकन के लिए अधिक व्यावहारिक होते हैं। अन्य विकल्प गलत हैं क्योंकि आवर्धन, चमक और लागत बड़े पैमाने पर उपयोग में उनकी प्राथमिकता के मुख्य कारण नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms and correct answer positioning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "मोठ्या पातळीवर अवलोकनासाठी प्रतिबिंबी दूरदर्शकांचा वापर अपवर्तक दूरदर्शकांच्या तुलनेत का केला जातो?",
+          "choices": [
+            "ते हलके आहेत आणि तयार करणे सोपे आहे",
+            "त्यांचे अधिक वर्धक आहेत",
+            "ते जास्त उजळ छायाचित्र तयार करतात",
+            "ते कमी खर्चिक आहेत"
+          ],
+          "solution": "प्रतिबिंबी दूरदर्शकांचा वापर मोठ्या पातळीवर अवलोकनासाठी केला जातो कारण ते हलके आहेत आणि तयार करणे सोपे आहे, कारण दुसरीकडे लेंसांच्या तुलनेत दर्शकांची लांबी जास्त आणि त्यांच्या तयारीसाठी कमी सामग्री लागते. हे मोठ्या पातळीवर अवलोकनासाठी अधिक उपयुक्त बनवते. इतर विकल्प चुकीचे आहेत कारण वर्धक, उजळता आणि खर्च हे मोठ्या पातळीवर अवलोकनासाठी त्यांच्या प्राधान्याचे मुख्य कारण नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for astronomical instruments.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the advantages of refracting telescopes",
+        "Misunderstands the relationship between magnification and telescope type",
+        "Incorrectly assumes brightness is the main advantage"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as the reasoning aligns with the physical principles of telescope design. The author's explanations for the distractors are valid misconceptions that students might hold.",
+      "sources": [
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 23,
+          "pageStart": 24,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.7"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 24,
+          "pageStart": 25,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.7"
+          ]
+        },
+        {
+          "document": "ncert/12/physics/leph201.pdf",
+          "ordinal": 25,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 1: Optical Instruments",
+            "9.7"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T00:17:42.870Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

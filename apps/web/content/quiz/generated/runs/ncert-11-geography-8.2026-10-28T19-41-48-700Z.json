@@ -1,0 +1,743 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T19:41:48.700Z",
+  "finishedAt": "2026-10-28T19:50:53.248Z",
+  "seconds": 545,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy208.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 8 — Solar Radiation, Heat Balance and Temperature",
+    "edition": "Reprint 2026-27",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, sample question paper, 2022-23]\n11. Arrange the following in correct sequence: 1\nFollowing is the sequence of generating geothermal :\n(i) It is so hot that when it rises to the earth's surface, it turns into\nsteam.\n(ii) Groundwater in such areas (where the geothermal gradient is\nhigh) absorbs heat from the rocks and becomes hot.\n(iii) This steam is used to drive turbines and generate electricity.\n(iv) Geothermal energy exists, because the earth grows\nprogressively hotter with increasing depth.\na. (iv) - (ii) - (i) - (iii)\nb. (ii) - (i) - (iv) - (iii)\nc. (i) - (iv) - (iii) - (ii)\nd. (iii) - (ii) - (iv) - (i)",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n11. Given below are the steps to generate geothermal energy. Arrange\nthe following in correct sequence: 1\ni. It is so hot that when it rises to the earth's surface, it turns into steam.\nii. Groundwater in such areas (where the geothermal gradient is high)\nabsorbs heat from the rocks and becomes hot.\niii. This steam is used to drive turbines and generate electricity.\niv. Geothermal energy exists because the earth grows progressively\nhotter with increasing depth.\nA. (iv) - (ii) - (i) - (iii)\nB. (ii) - (i) - (iv) - (iii)\nC. (i) - (iv) - (iii) - (ii)\nD. (iii) - (ii) - (iv) - (i)",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n24. \"There is low yield per acre but high yield per person in the interior\nparts of semi-arid lands of the mid-latitudes in the world.\" Support the 5\nstatement with suitable examples from different parts of the world."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 203121,
+      "in": 39,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 32594,
+      "completionTokens": 11440
+    },
+    "critique": {
+      "calls": 45,
+      "ms": 289207,
+      "in": 37,
+      "out": 28,
+      "rejects": 9,
+      "promptTokens": 20728,
+      "completionTokens": 7942
+    },
+    "solver": {
+      "calls": 195,
+      "ms": 99486,
+      "in": 28,
+      "out": 23,
+      "rejects": 5,
+      "promptTokens": 37065,
+      "completionTokens": 2031
+    },
+    "form": {
+      "calls": 15,
+      "ms": 71189,
+      "in": 23,
+      "out": 8,
+      "rejects": 15,
+      "promptTokens": 12838,
+      "completionTokens": 1862
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 4052,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 31,
+      "ms": 328757,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 19215,
+      "completionTokens": 10098
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 0,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason for the difference in insolation between the equator and the poles?",
+      "ms": {
+        "draft": 4450,
+        "critique": 8477,
+        "solver": 12012
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the Earth's ability to reflect sunlight back into space?",
+      "ms": {
+        "draft": 6778,
+        "critique": 5885,
+        "solver": 1479,
+        "form": 3331
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a reason for the variation in temperature at different altitudes?",
+      "ms": {
+        "draft": 6778,
+        "critique": 7871,
+        "solver": 1502,
+        "form": 3715
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the Earth's atmosphere absorbed all the solar radiation and reflected none, what would happen to the Earth's heat budget?",
+      "ms": {
+        "draft": 6778,
+        "critique": 6789,
+        "solver": 1679,
+        "form": 2572
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following factors affects the temperature distribution on Earth?",
+      "ms": {
+        "draft": 6778,
+        "critique": 7566,
+        "solver": 14356,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what would happen to the Earth's temperature if the atmosphere stopped absorbing terrestrial radiation?",
+      "ms": {
+        "draft": 6778,
+        "critique": 5778,
+        "solver": 1832,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which of the following regions is the range of temperature between January and July the highest?",
+      "ms": {
+        "draft": 6081,
+        "critique": 6659
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason that the earth experiences highest temperatures in the subtropics in the northern hemisphere rather than at the equator?",
+      "ms": {
+        "draft": 6081,
+        "critique": 6476,
+        "solver": 14225
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the day temperature in India is maximum in May and not after the summer solstice?",
+      "ms": {
+        "draft": 6081,
+        "critique": 6549,
+        "solver": 1451,
+        "form": 3579
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is true about the isotherms in January over the northern hemisphere?",
+      "ms": {
+        "draft": 6081,
+        "critique": 8140,
+        "solver": 10716,
+        "form": 2595
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary source of heat for the Earth's atmosphere?",
+      "ms": {
+        "draft": 6778,
+        "critique": 6144,
+        "solver": 15320,
+        "form": 3353
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the main source of heat for the atmosphere?",
+      "ms": {
+        "draft": 6081,
+        "critique": 6447
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is defined as the difference between the mean temperature of the warmest and the coldest months?",
+      "ms": {
+        "draft": 3914,
+        "critique": 6580
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following terms refers to the lines joining the places of equal temperature?",
+      "ms": {
+        "draft": 3914,
+        "critique": 7029
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the annual range of temperature for the given observatory?",
+      "ms": {
+        "draft": 3914,
+        "critique": 6499,
+        "solver": 996
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a place has a high annual range of temperature, which of the following is most likely to be true about its location?",
+      "ms": {
+        "draft": 3914,
+        "critique": 4980
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following factors is NOT mentioned in the passage as a determinant of temperature in a place?",
+      "ms": {
+        "draft": 3394,
+        "critique": 6699
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the annual range of temperature in New Delhi (Safdarjung)?",
+      "ms": {
+        "draft": 3394,
+        "critique": 5862,
+        "solver": 1940
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, how is the annual range of temperature calculated?",
+      "ms": {
+        "draft": 3394,
+        "critique": 5837,
+        "solver": 1919,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the effect of the ocean on temperature distribution?",
+      "ms": {
+        "draft": 13018,
+        "critique": 7115
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a region experiences a temperature inversion, what is the most likely effect on the atmosphere?",
+      "ms": {
+        "draft": 13018,
+        "critique": 5713,
+        "solver": 1406,
+        "form": 4176
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that the annual range of temperature is highest in the north-eastern part of the Eurasian continent. What is the primary factor contributing to this phenomenon?",
+      "ms": {
+        "draft": 13018,
+        "critique": 7450,
+        "solver": 1798,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that in a particular region, the isotherms bend sharply towards the north in January. Which of the following is the most likely explanation for this phenomenon?",
+      "ms": {
+        "draft": 13018,
+        "critique": 9252,
+        "solver": 1637,
+        "form": 3750
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following best explains why the isotherms in the southern hemisphere are more parallel to the latitude than in the northern hemisphere?",
+      "ms": {
+        "draft": 13018,
+        "critique": 5792,
+        "solver": 16669,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following factors is most likely to cause a place to have a higher temperature than another place at the same latitude?",
+      "ms": {
+        "draft": 7240,
+        "critique": 5378
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains why the Earth's temperature remains relatively constant?",
+      "ms": {
+        "draft": 7240,
+        "critique": 5450,
+        "solver": 1375,
+        "form": 2160
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which factor determines the amount of insolation received at different latitudes?",
+      "ms": {
+        "draft": 4949,
+        "critique": 8197
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the primary source of heat for the Earth's atmosphere?",
+      "ms": {
+        "draft": 7240,
+        "critique": 5525,
+        "solver": 1492,
+        "form": 1985
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a place has a high insolation but a low temperature, what could be the most likely explanation?",
+      "ms": {
+        "draft": 7240,
+        "critique": 7371,
+        "solver": 9103
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a region experiences a higher angle of the sun’s rays, what can be expected about its insolation?",
+      "ms": {
+        "draft": 4450,
+        "critique": 6791,
+        "solver": 1908,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a factor that affects the amount of insolation received at a place?",
+      "ms": {
+        "draft": 4450,
+        "critique": 6257,
+        "solver": 1308,
+        "form": 0,
+        "translation": 43026
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the earth's atmosphere?",
+      "ms": {
+        "draft": 4450,
+        "critique": 6711,
+        "solver": 2000,
+        "form": 0,
+        "translation": 34017
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following terms refers to the difference between the highest and lowest temperatures recorded in a year?",
+      "ms": {
+        "draft": 3394,
+        "critique": 5862,
+        "solver": 1065,
+        "form": 0,
+        "translation": 48315
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following graphs would best represent the daily mean maximum, daily mean minimum, and mean temperature for a place?",
+      "ms": {
+        "draft": 3394,
+        "critique": 5281,
+        "solver": 2312,
+        "form": 0,
+        "translation": 34769
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student claims that the earth receives more insolation in January than in July. What is the correct explanation for this?",
+      "ms": {
+        "draft": 4450,
+        "critique": 9672,
+        "solver": 11674,
+        "form": 0,
+        "translation": 69288
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a place has a high annual range of temperature, which of the following is most likely to be true?",
+      "ms": {
+        "draft": 3394,
+        "critique": 5648,
+        "solver": 1531,
+        "form": 1,
+        "translation": 51539
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the insolation received at the equator less than expected based on the angle of the sun's rays?",
+      "ms": {
+        "draft": 4450,
+        "critique": 7986,
+        "solver": 1329,
+        "form": 0,
+        "translation": 43047
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason for the difference in insolation between the equator and the poles?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the term used to describe the Earth's ability to reflect sunlight back into space?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label Albedo"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a reason for the variation in temperature at different altitudes?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the Earth's atmosphere absorbed all the solar radiation and reflected none, what would happen to the Earth's heat budget?",
+      "reason": "options 1 and 2 say the same thing (\"It would become unbalanced with more heat received than lost\" / \"It would become unbalanced with more heat lost than received\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following factors affects the temperature distribution on Earth?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what would happen to the Earth's temperature if the atmosphere stopped absorbing terrestrial radiation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In which of the following regions is the range of temperature between January and July the highest?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the main reason that the earth experiences highest temperatures in the subtropics in the northern hemisphere rather than at the equator?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why the day temperature in India is maximum in May and not after the summer solstice?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"introduces a concept not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements is true about the isotherms in January over the northern hemisphere?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.continent: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary source of heat for the Earth's atmosphere?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'earth'"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is the main source of heat for the atmosphere?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is defined as the difference between the mean temperature of the warmest and the coldest months?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following terms refers to the lines joining the places of equal temperature?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what is the annual range of temperature for the given observatory?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a place has a high annual range of temperature, which of the following is most likely to be true about its location?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is true about the distribution of surface air temperature in the month of January?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the main reason for the variation in temperature between different latitudes?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following factors is NOT mentioned in the passage as a determinant of temperature in a place?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what is the annual range of temperature in New Delhi (Safdarjung)?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, how is the annual range of temperature calculated?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"By finding the difference between the highest and lowest temperatures in a day\" / \"By finding the difference between the highest and lowest temperatures in a month\"); options 0 and 2 say the same thing (\"By finding the difference between the highest and lowest temperatures in a day\" / \"By finding the difference between the highest and lowest temperatures in a year\"); options 0 and 3 say the same thing (\"By finding the difference between the highest and lowest temperatures in a day\" / \"By finding the difference between the highest and lowest temperatures in a season\"); options 1 and 2 say the same thing (\"By finding the difference between the highest and lowest temperatures in a month\" / \"By finding the difference between the highest and lowest temperatures in a year\"); options 1 and 3 say the same thing (\"By finding the difference between the highest and lowest temperatures in a month\" / \"By finding the difference between the highest and lowest temperatures in a season\"); options 2 and 3 say the same thing (\"By finding the difference between the highest and lowest temperatures in a year\" / \"By finding the difference between the highest and lowest temperatures in a season\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the effect of the ocean on temperature distribution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a region experiences a temperature inversion, what is the most likely effect on the atmosphere?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer: During temperature inversion, the temperatur…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that the annual range of temperature is highest in the north-eastern part of the Eurasian continent. What is the primary factor contributing to this phenomenon?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Incorrectly assumes that high altitude is the main cause, wh…\"); distractor 2's reason is not a one-line misconception (\"Correct answer: The passage explicitly states that the high …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observes that in a particular region, the isotherms bend sharply towards the north in January. Which of the following is the most likely explanation for this phenomenon?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer: The passage explains that in January, isothe…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following best explains why the isotherms in the southern hemisphere are more parallel to the latitude than in the northern hemisphere?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following factors is most likely to cause a place to have a higher temperature than another place at the same latitude?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best explains why the Earth's temperature remains relatively constant?",
+      "reason": "options 0 and 1 say the same thing (\"The Earth reflects more solar energy than it absorbs\" / \"The Earth absorbs more solar energy than it reflects\"); distractor 3's reason is not a one-line misconception (\"incorrectly assumes the atmosphere is transparent to solar r…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which factor determines the amount of insolation received at different latitudes?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is the primary source of heat for the Earth's atmosphere?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'earth'"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a place has a high insolation but a low temperature, what could be the most likely explanation?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a region experiences a higher angle of the sun’s rays, what can be expected about its insolation?",
+      "reason": "near-duplicate of served question cmvhrkv440admgpfhf4k93jto (cosine 0.955 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

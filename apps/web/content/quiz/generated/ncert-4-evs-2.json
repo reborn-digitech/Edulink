@@ -21,285 +21,49 @@
   "board": "NCERT",
   "book": "Looking Around(EVS)",
   "edition": "2024 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-22T22:55:04.859Z",
+  "generatedAt": "2026-10-28T04:09:41.948Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which animals have ears that you can see?",
+      "stem": "Which animal has ears like leaves?",
       "choices": [
-        "Frog and Crow",
-        "Deer and Dog",
-        "Fish and Lizard",
-        "Giraffe and Duck"
-      ],
-      "answerIndex": 1,
-      "solution": "Deer and dog have external ears that are visible, which is why they are the correct answer. Frogs, fish, and ducks do not have external ears that can be seen. Lizards have small ear openings but not visible ears like deer and dogs.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कौन-से जानवरों के कान दिखाई देते हैं?",
-          "choices": [
-            "मेंढक और कौआ",
-            "हिरण और कुत्ता",
-            "मछली और सांप",
-            "जिराफ और बतख"
-          ],
-          "solution": "हिरण और कुत्ते के बाहरी कान दिखाई देते हैं, इसलिए वे सही उत्तर हैं। मेंढक, मछली और बतख के बाहरी कान नहीं होते हैं जो दिखाई दें। सांप के छोटे कान के छिद्र होते हैं लेकिन हिरण और कुत्ते के जैसे दिखाई देने वाले कान नहीं होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate terminology used in Hindi science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कोणत्या प्राण्यांचे कान तुम्हाला दिसतात?",
-          "choices": [
-            "मेंढक आणि कावळा",
-            "माकड आणि कुत्रा",
-            "मासे आणि साप",
-            "जिराफ आणि बत्ती मासे"
-          ],
-          "solution": "माकड आणि कुत्र्यांचे बाह्य कान दिसतात, म्हणून ते बरोबर उत्तर आहे. मेंढक, मासे आणि बत्ती मासे बाह्य कान नाहीत. सापांचे लहान कानाचे उघडणे असते परंतु ते दिसणारे कान नसतात जेवढे माकड आणि कुत्र्यांचे असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms used for animals and anatomical features.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses animals with visible ears with others",
-        null,
-        "Student thinks all reptiles and fish have hidden ears like birds",
-        "Confuses animals with invisible ears with others"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 'Deer and Dog' as they have visible external ears. The other options include animals like frogs, fish, and ducks, which do not have external ears that are visible. The author's reasoning aligns with the biological facts and the misconceptions students might have.",
-      "sources": [
-        {
-          "document": "ncert/4/environmental-studies/deap102.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 2: Ear to Ear",
-            "Who has got my ears?"
-          ]
-        },
-        {
-          "document": "ncert/4/environmental-studies/deap102.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 2: Ear to Ear",
-            "Read and Write"
-          ]
-        },
-        {
-          "document": "ncert/4/environmental-studies/deap102.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 2: Ear to Ear",
-            "Whose Skin"
-          ]
-        },
-        {
-          "document": "ncert/4/environmental-studies/deap102.pdf",
-          "ordinal": 3,
-          "pageStart": 7,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 2: Ear to Ear",
-            "Whose Skin"
-          ]
-        },
-        {
-          "document": "ncert/4/environmental-studies/deap102.pdf",
-          "ordinal": 4,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 2: Ear to Ear",
-            "Make Your Own Bird"
-          ]
-        }
-      ],
-      "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T22:55:04.859Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which animals do not have visible ears?",
-      "choices": [
-        "Fish, Frog, Lizard",
-        "Deer, Tiger, Pig",
-        "Crow, Cat, Camel",
-        "Sparrow, Peacock, Lizard"
-      ],
-      "answerIndex": 0,
-      "solution": "Fish, frog, and lizard do not have visible ears because their ear structures are not externally apparent. Other options include animals that have distinct external ear structures, such as deer, tiger, pig, crow, cat, camel, and sparrow, which are visible to the naked eye.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कौन-से जानवरों के बाहरी कान दिखाई नहीं देते?",
-          "choices": [
-            "मछली, मेंढक, सांप",
-            "हिरण, बाघ, सूअर",
-            "कौआ, बिल्ली, ऊंट",
-            "गौरैया, मुर्गा, सांप"
-          ],
-          "solution": "मछली, मेंढक और सांप के बाहरी कान दिखाई नहीं देते क्योंकि इनकी कान की संरचना बाहर से दिखाई नहीं देती। अन्य विकल्पों में जानवर होते हैं जिनकी कान की संरचना बाहर से स्पष्ट रूप से दिखाई देती है, जैसे हिरण, बाघ, सूअर, कौआ, बिल्ली, ऊंट और गौरैया जो नंगी आंख से दिखाई देते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology for animal anatomy.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कोणत्या प्राण्यांचे दृश्य कान नसतात?",
-          "choices": [
-            "मासे, मेंढक, साप",
-            "मांजर, बावळा, शेळी",
-            "कॉक, बिड, अंजीर",
-            "माळी, फुलवाला, साप"
-          ],
-          "solution": "मासे, मेंढक आणि साप यांचे दृश्य कान नसतात कारण त्यांची कानाची रचना बाह्यरूपाने दिसत नाही. इतर विकल्पांमध्ये असे प्राणी असतात ज्यांची बाह्य कानाची रचना नग्न नेत्राने दिसते, जसे की मांजर, बावळा, शेळी, कॉक, बिड आणि माळी.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate terminology used for animal names and anatomical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Student thinks all mammals have visible ears",
-        "Confuses animals with visible ears with those without",
-        "Misunderstands which animals have visible ears based on other features like feathers or scales"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as fish, frog, and lizard do not have visible ears. The author's solution is accurate, and the reasons for the wrong options reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/4/environmental-studies/deap102.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 2: Ear to Ear",
-            "Who has got my ears?"
-          ]
-        },
-        {
-          "document": "ncert/4/environmental-studies/deap102.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 2: Ear to Ear",
-            "Read and Write"
-          ]
-        },
-        {
-          "document": "ncert/4/environmental-studies/deap102.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 2: Ear to Ear",
-            "Whose Skin"
-          ]
-        },
-        {
-          "document": "ncert/4/environmental-studies/deap102.pdf",
-          "ordinal": 3,
-          "pageStart": 7,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 2: Ear to Ear",
-            "Whose Skin"
-          ]
-        },
-        {
-          "document": "ncert/4/environmental-studies/deap102.pdf",
-          "ordinal": 4,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 2: Ear to Ear",
-            "Make Your Own Bird"
-          ]
-        }
-      ],
-      "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T22:55:04.859Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of these animals have hair on their skin?",
-      "choices": [
-        "Crow, Cat, Camel",
-        "Sparrow, Peacock, Lizard",
-        "Fish, Frog, Lizard",
-        "Deer, Tiger, Pig"
+        "Cat",
+        "Frog",
+        "Cow",
+        "Rabbit"
       ],
       "answerIndex": 3,
-      "solution": "Deer, tiger, and pig are mammals, which are characterized by having hair on their skin. Crows, sparrows, and lizards are birds and reptiles, respectively, and do not have hair. Fish and frogs are also not mammals and lack hair. Therefore, the correct option is Deer, Tiger, Pig.",
+      "solution": "Rabbits have ears that are long and shaped somewhat like leaves, which helps them detect sounds and stay alert. Cats have shorter, more rounded ears, frogs have no external ears, and cows have large, floppy ears that are not leaf-like in shape.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "इनमें से कौन-से जानवरों के त्वचा पर बाल होते हैं?",
+          "stem": "कौन-सा जानवर अपने कान पत्तियों के समान होते हैं?",
           "choices": [
-            "कौआ, बिल्ली, ऊंट",
-            "चिड़िया, मुर्गा, सांप",
-            "मछली, मेंढक, सांप",
-            "हिरण, बाघ, सूअर"
+            "बिल्ली",
+            "मेंढक",
+            "गाय",
+            "खरगोश"
           ],
-          "solution": "हिरण, बाघ और सूअर स्तनधारी हैं, जिनकी त्वचा पर बाल होते हैं। कौआ, चिड़िया और सांप क्रमशः पक्षी और सरीसृप हैं और उनकी त्वचा पर बाल नहीं होते। मछली और मेंढक भी स्तनधारी नहीं हैं और बाल नहीं रखते। इसलिए सही विकल्प हिरण, बाघ, सूअर है।",
+          "solution": "खरगोश के कान लंबे और पत्तियों के समान आकार के होते हैं, जो उन्हें ध्वनि का पता लगाने और चौकस रहने में मदद करते हैं। बिल्लियों के कान छोटे और गोल होते हैं, मेंढकों के बाहरी कान नहीं होते हैं, और गायों के बड़े, लटके हुए कान होते हैं जो पत्तियों के आकार के नहीं होते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological classifications.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "हे प्राणी त्यांच्या त्वचेवर रोंग असतात?",
+          "stem": "कोणत्या प्राण्याचे कान पानासारखे असतात?",
           "choices": [
-            "कॉर, बिड, ऊंट",
-            "स्पॅरॉ, पेकॉक, लिझर्ड",
-            "मासे, मेंढक, लिझर्ड",
-            "हरिण, बावल, शेपर्ड"
+            "मांजर",
+            "मेंढक",
+            "गाय",
+            "खरगोश"
           ],
-          "solution": "हरिण, बावल आणि शेपर्ड हे स्तनधारी आहेत, ज्यांच्या त्वचेवर रोंग असतात. कॉर, स्पॅरॉ आणि लिझर्ड अनुक्रमे पक्षी आणि सरीसृप आहेत आणि त्यांच्या त्वचेवर रोंग नसतात. मासे आणि मेंढक सुद्धा स्तनधारी नसतात आणि रोंग नसतात. म्हणून, योग्य पर्याय हरिण, बावल, शेपर्ड आहे.",
+          "solution": "खरगोशांचे कान लांब आणि पानासारख्या आकाराचे असतात, जे त्यांना आवाज ओळखण्यास आणि जागरूक राहण्यास मदत करते. मांजरांचे कान लहान आणि गोल असतात, मेंढकांचे बाह्य कान नसतात, आणि गायींचे मोठे, बाजूला झुलणारे कान असतात जे पानासारखे नसतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "critique": "The Marathi translation accurately reflects the original English question and solution, with appropriate terminology used in Marathi education context.",
           "flag": null
         }
       },
@@ -308,9 +72,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses animals with hair with those without",
-        "Confuses animals with feathers with those with hair",
-        "Misunderstands which animals have hair based on other features like scales",
+        "confuses the description of ears",
+        "thinks the cat has small ears",
+        "thinks the cow has large ears like leaves', ",
         null
       ],
       "solverAnswers": [
@@ -321,7 +85,7 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 3 (Deer, Tiger, Pig) as these animals have hair. The other options include birds (feathers) and reptiles (scales), which do not have hair. The author's reasoning aligns with the correct classification of animals by their skin coverings.",
+      "critique": "The correct answer is 3 (Rabbit), as the question states that the rabbit has ears like leaves. The other options are incorrectly associated with leaf-like ears, which aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/4/environmental-studies/deap102.pdf",
@@ -375,7 +139,7 @@
         }
       ],
       "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T22:55:04.859Z",
+      "generatedAt": "2026-10-28T04:09:41.948Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

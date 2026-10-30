@@ -21,47 +21,237 @@
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T18:44:53.475Z",
+  "generatedAt": "2026-10-30T05:55:41.665Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the formula used in the step-deviation method to find the mean?",
+      "stem": "Which method is used to calculate the mean when the class size is large and the values of x and f are numerically large?",
       "choices": [
-        "x = a + h u",
-        "x = a + d",
-        "x = a + f",
-        "x = a + f d"
+        "Direct method",
+        "Assumed mean method",
+        "Step-deviation method",
+        "Frequency polygon"
       ],
-      "answerIndex": 0,
-      "solution": "The formula used in the step-deviation method to find the mean is x = a + h u. The other formulas are not used in the step-deviation method. The formula x = a + d is used in the assumed mean method. The formula x = a + f is not a valid formula for finding the mean. The formula x = a + f d is also not a valid formula for finding the mean.",
+      "answerIndex": 2,
+      "solution": "The step-deviation method is used when the class size is large and the values of x and f are numerically large. This method simplifies the calculations by reducing the size of the numbers involved. The direct method is used for small numbers, the assumed mean method is simpler but not as efficient for large data, and a frequency polygon is not a method for calculating the mean.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "माध्य ज्ञात करने के लिए चर-विचलन विधि में कौन-सा सूत्र प्रयोग किया जाता है?",
+          "stem": "जब वर्ग आकार बड़ा हो और x और f के मान संख्यात्मक रूप से बड़े हों तो माध्य की गणना के लिए किस विधि का उपयोग किया जाता है?",
           "choices": [
-            "x = a + h u",
-            "x = a + d",
-            "x = a + f",
-            "x = a + f d"
+            "प्रत्यक्ष विधि",
+            "अनुमानित माध्य विधि",
+            "चरण-विचलन विधि",
+            "बारंबारता बहुभुज"
           ],
-          "solution": "माध्य ज्ञात करने के लिए चर-विचलन विधि में प्रयोग किया जाने वाला सूत्र x = a + h u है। अन्य सूत्र चर-विचलन विधि में प्रयोग नहीं किए जाते हैं। सूत्र x = a + d अनुमानित माध्य विधि में प्रयोग किया जाता है। सूत्र x = a + f माध्य ज्ञात करने के लिए वैध सूत्र नहीं है। सूत्र x = a + f d भी माध्य ज्ञात करने के लिए वैध सूत्र नहीं है।",
+          "solution": "जब वर्ग आकार बड़ा हो और x और f के मान संख्यात्मक रूप से बड़े हों तो चरण-विचलन विधि का उपयोग किया जाता है। इस विधि में संख्याओं के आकार को कम करके गणना को सरल बनाया जाता है। प्रत्यक्ष विधि छोटी संख्याओं के लिए उपयोग की जाती है, अनुमानित माध्य विधि सरल है लेकिन बड़े आंकड़ों के लिए इतनी कुशल नहीं है, और एक बारंबारता बहुभुज माध्य की गणना के लिए एक विधि नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "मध्य शोधण्यासाठी चरण-विचलन पद्धतीत वापरल्या जाणार्‍या सूत्राचे नाव काय आहे?",
+          "stem": "मोठ्या वर्ग आकाराच्या आणि x आणि f च्या मूल्यांच्या गणनेसाठी कोणता पद्धत वापरला जातो?",
           "choices": [
-            "x = a + h u",
-            "x = a + d",
-            "x = a + f",
-            "x = a + f d"
+            "सीधा पद्धत",
+            "अंदाजित माध्य पद्धत",
+            "कदम-विचलन पद्धत",
+            "बार आलेख"
           ],
-          "solution": "मध्य शोधण्यासाठी चरण-विचलन पद्धतीत वापरल्या जाणार्‍या सूत्राचे नाव x = a + h u आहे. इतर सूत्रे चरण-विचलन पद्धतीत वापरली जात नाहीत. x = a + d सूत्र अनुमानी मध्य पद्धतीत वापरले जाते. x = a + f सूत्र मध्य शोधण्यासाठी वैध सूत्र नाही. x = a + f d सूत्र देखील मध्य शोधण्यासाठी वैध सूत्र नाही.",
+          "solution": "जेव्हा वर्ग आकार मोठा असतो आणि x आणि f च्या मूल्यांची गणना करावी लागते तेव्हा कदम-विचलन पद्धत वापरली जाते. ही पद्धत संख्यांच्या आकाराची घट करून गणना सोपी करते. सीधा पद्धत लहान संख्यांसाठी वापरली जाते, अंदाजित माध्य पद्धत सोपी असते परंतु मोठ्या डेटासाठी इतकी अचूक नसते आणि बार आलेख माध्य गणनेसाठी पद्धत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for statistical methods.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the direct method with the step-deviation method",
+        "Thinks the assumed mean method is best for large data",
+        null,
+        "Does not understand the purpose of the step-deviation method"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is the step-deviation method, which is designed to simplify calculations when dealing with large class sizes and large values of x and f. The author's reasoning aligns with standard statistical methods.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T05:55:41.665Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What does the median of a data set represent?",
+      "choices": [
+        "The most frequently occurring value",
+        "The difference between the highest and lowest values",
+        "The average of all the values",
+        "The middle value when the data is ordered"
+      ],
+      "answerIndex": 3,
+      "solution": "The median represents the middle value when the data is arranged in ascending or descending order. It is not the average, the most frequent value, or the range. The correct option is the one that describes the middle value after ordering.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी डेटा सेट का माध्यक क्या प्रतिनिधित्व करता है?",
+          "choices": [
+            "सबसे अधिक बार आने वाला मान",
+            "उच्चतम और निम्नतम मान के बीच का अंतर",
+            "सभी मानों का औसत",
+            "डेटा के क्रमबद्ध होने पर मध्य मान"
+          ],
+          "solution": "माध्यक डेटा के आरोही या अवरोही क्रम में व्यवस्थित होने पर मध्य मान का प्रतिनिधित्व करता है। यह औसत, सबसे अधिक बार आने वाला मान या श्रेणी नहीं होता है। सही विकल्प वह है जो क्रमबद्ध होने के बाद मध्य मान का वर्णन करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology for statistical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "डेटा सेटचा मध्यमान काय प्रतिनिधित्व करतो?",
+          "choices": [
+            "सर्वात जास्त वारंवार घडणारे मूल्य",
+            "उच्चतम आणि निम्नतम मूल्यांमधील फरक",
+            "सर्व मूल्यांचा सरासरी",
+            "डेटा व्यवस्थित केल्यानंतर मध्य मूल्य"
+          ],
+          "solution": "मध्यमान म्हणजे डेटा वाढत्या किंवा घटत्या क्रमाने व्यवस्थित केल्यानंतर मध्य मूल्य आहे. तो सरासरी, सर्वात जास्त वारंवार घडणारे मूल्य किंवा श्रेणी नाही. बरोबर विकल्प म्हणजे व्यवस्थित केल्यानंतर मध्य मूल्याचे वर्णन करणारा विकल्प आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses median with mode",
+        "Confuses median with range",
+        "Confuses median with mean",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is well-justified. The distractors correctly reflect common misconceptions about the median.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 10,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 11,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T05:55:41.665Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A frequency distribution is given as less than type. Which of the following is the correct way to find the median?",
+      "choices": [
+        "Calculate the mean and then find the median",
+        "Convert the distribution to a more than type distribution",
+        "Find the class with the maximum frequency and take its midpoint",
+        "Convert the distribution to a continuous class distribution and use the median formula"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct way to find the median for a less than type distribution is to convert it to a continuous class distribution and apply the median formula. The other options are incorrect because they do not account for the specific method required for grouped data. Calculating the mean does not help in finding the median, converting to a more than type distribution is not necessary, and taking the midpoint of the class with the maximum frequency gives the mode, not the median.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बारंबारता बंटन को कम से कम प्रकार के रूप में दिया गया है। निम्नलिखित में से कौन-सा माध्यक ज्ञात करने का सही तरीका है?",
+          "choices": [
+            "माध्य की गणना करें और फिर माध्यक ज्ञात करें",
+            "बंटन को अधिकतम प्रकार के बंटन में बदलें",
+            "अधिकतम बारंबारता वाले वर्ग को ढूंढें और इसके मध्य बिंदु को लें",
+            "बंटन को एक निरंतर वर्ग बंटन में बदलें और माध्यक सूत्र का उपयोग करें"
+          ],
+          "solution": "कम से कम प्रकार के बंटन के लिए माध्यक ज्ञात करने का सही तरीका इसे एक निरंतर वर्ग बंटन में बदलकर माध्यक सूत्र का उपयोग करना है। अन्य विकल्प गलत हैं क्योंकि वे समूहित डेटा के लिए आवश्यक विशिष्ट विधि के ध्यान में नहीं रखते। माध्य की गणना माध्यक ज्ञात करने में सहायता नहीं करती, अधिकतम प्रकार के बंटन में बदलना आवश्यक नहीं है, और अधिकतम बारंबारता वाले वर्ग के मध्य बिंदु को लेना मोड देता है, न कि माध्यक।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for statistical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "काही वारंवारता वितरण खालील प्रकारचे दिले आहे. तर निम्नलिखित पैकी कोणता माध्य मिळविण्याचा योग्य प्रकार आहे?",
+          "choices": [
+            "माध्य काढा आणि नंतर मध्यमान शोधा",
+            "वितरणला अधिक तुलनेचे वितरण म्हणून बदला",
+            "सर्वात जास्त वारंवारता असलेली वर्ग शोधा आणि त्याच्या मध्यबिंदूला घ्या",
+            "वितरणला सतत वर्ग वितरण म्हणून बदला आणि माध्य मिळविण्याचा सूत्र वापरा"
+          ],
+          "solution": "खालील प्रकारच्या वितरणासाठी माध्य मिळविण्याचा योग्य मार्ग म्हणजे त्याला सतत वर्ग वितरण म्हणून बदलून माध्य मिळविण्याचा सूत्र वापरणे आहे. इतर विकल्प चुकीचे आहेत कारण ते गटबद्ध डेटासाठी आवश्यक विशिष्ट पद्धतीचा विचार करत नाहीत. माध्य काढणे माध्य मिळविण्यास मदत करत नाही, अधिक तुलनेचे वितरण म्हणून बदलणे आवश्यक नाही आणि सर्वात जास्त वारंवारता असलेल्या वर्गाच्या मध्यबिंदूला घेणे माध्य मिळविण्याऐवजी बहुलक मिळविते.",
           "imageAlt": null,
           "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate terminology used in a Marathi-medium educational context.",
           "flag": null
@@ -72,210 +262,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        null,
-        "Confuses step-deviation formula with assumed mean formula",
-        "Confuses step-deviation formula with incorrect formula",
-        "Confuses step-deviation formula with incorrect formula"
+        "Confuses the method for finding the mean",
+        "Incorrectly assumes a different type of distribution is needed",
+        "Incorrectly identifies the mode instead of the median",
+        null
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": null,
-      "critique": "The correct formula for the step-deviation method is x = a + h u. The other options are incorrect, and the author's reasoning aligns with common misconceptions students might have.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 4,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 5,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:44:53.475Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the purpose of using class marks in grouped data?",
-      "choices": [
-        "To represent the entire class interval",
-        "To find the total number of observations",
-        "To calculate the range of data",
-        "To determine the mode of data"
-      ],
-      "answerIndex": 0,
-      "solution": "Class marks are used to represent the entire class interval in grouped data. They serve as a central value for each class, making it easier to calculate measures like the mean. The other options are incorrect because they describe different statistical concepts.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "समूहीकृत डेटा में वर्ग चिह्नों का उपयोग करने का उद्देश्य क्या है?",
-          "choices": [
-            "पूरे वर्ग अंतराल का प्रतिनिधित्व करना",
-            "अवलोकनों की कुल संख्या ज्ञात करना",
-            "डेटा की श्रेणी की गणना करना",
-            "डेटा के बहुलक का निर्धारण करना"
-          ],
-          "solution": "समूहीकृत डेटा में वर्ग चिह्नों का उपयोग पूरे वर्ग अंतराल का प्रतिनिधित्व करने के लिए किया जाता है। वे प्रत्येक वर्ग के लिए केंद्रीय मान के रूप में कार्य करते हैं, जिससे औसत जैसे माप की गणना करना आसान हो जाता है। अन्य विकल्प गलत हैं क्योंकि वे अलग-अलग सांख्यिकीय अवधारणाओं का वर्णन करते हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "गटबद्ध डेटामध्ये क्लास मार्क्स वापरण्याचा उद्देश काय आहे?",
-          "choices": [
-            "पूर्ण क्लास अंतर दर्शविण्यासाठी",
-            "अवलोकनांची एकूण संख्या शोधण्यासाठी",
-            "डेटाचा रेंज काढण्यासाठी",
-            "डेटाचा मोड ठरवण्यासाठी"
-          ],
-          "solution": "गटबद्ध डेटामध्ये क्लास मार्क्स वापरले जातात कारण ते पूर्ण क्लास अंतर दर्शवितात. त्यांचा उपयोग प्रत्येक क्लाससाठी केंद्रीय मूल्य म्हणून केला जातो, ज्यामुळे माध्यासारख्या मापदंडांची गणना करणे सोपे होते. इतर विकल्प चुकीचे आहेत कारण ते वेगळ्या सांख्यिकीय संकल्पनांचे वर्णन करतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi statistical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the purpose of class marks with another statistical concept.",
-        "Misunderstands the role of class marks in data analysis.",
-        "Misinterprets the function of class marks in statistical calculations."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as class marks are used to represent the entire class interval. The reasoning provided by the author is sound and aligns with statistical principles.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:44:53.475Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the term used for the sum of the frequencies of all the classes preceding the median class?",
-      "choices": [
-        "Cumulative frequency",
-        "Class frequency",
-        "Frequency density",
-        "Relative frequency"
-      ],
-      "answerIndex": 0,
-      "solution": "The term used for the sum of the frequencies of all the classes preceding the median class is 'cumulative frequency' because it represents the total frequency up to a certain point. Class frequency refers to the number of observations in a single class, frequency density is the frequency divided by the class width, and relative frequency is the proportion of the total number of observations.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "माध्यिका वर्ग के पूर्व में आने वाले सभी वर्गों की बारम्बारताओं के योग के लिए किस शब्द का उपयोग किया जाता है?",
-          "choices": [
-            "संचयी बारम्बारता",
-            "वर्ग बारम्बारता",
-            "बारम्बारता घनत्व",
-            "सापेक्ष बारम्बारता"
-          ],
-          "solution": "माध्यिका वर्ग के पूर्व में आने वाले सभी वर्गों की बारम्बारताओं के योग के लिए 'संचयी बारम्बारता' शब्द का उपयोग किया जाता है क्योंकि यह एक निश्चित बिंदु तक कुल बारम्बारता का प्रतिनिधित्व करता है। वर्ग बारम्बारता एक विशेष वर्ग में अवलोकनों की संख्या को संदर्भित करती है, बारम्बारता घनत्व बारम्बारता को वर्ग चौड़ाई से विभाजित करना है और सापेक्ष बारम्बारता कुल अवलोकनों की संख्या के अनुपात को संदर्भित करती है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology as found in textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "मध्य वर्गापूर्वीच्या सर्व वर्गांच्या बारमासींच्या बेरजेला कशाने ओळखले जाते?",
-          "choices": [
-            "संचयी बारमासी",
-            "वर्ग बारमासी",
-            "बारमासी घनता",
-            "सापेक्ष बारमासी"
-          ],
-          "solution": "मध्य वर्गापूर्वीच्या सर्व वर्गांच्या बारमासींच्या बेरजेला 'संचयी बारमासी' म्हणतात कारण ते एखाद्या निश्चित बिंदूपर्यंत एकूण बारमासी दर्शवते. वर्ग बारमासी हा एका वर्गातील निरीक्षणांची संख्या दर्शवतो, बारमासी घनता ही बारमासी वर्ग रुंदीने भागलेली असते आणि सापेक्ष बारमासी ही एकूण निरीक्षणांच्या प्रमाणात असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi statistical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Student confuses cumulative frequency with the frequency of a single class",
-        "Confuses cumulative frequency with frequency density, thinking it's a measure of frequency per class width",
-        "Student confuses cumulative frequency with relative frequency, thinking it refers to the proportion of the total rather than the sum of previous frequencies"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 'Cumulative frequency' as it refers to the sum of frequencies up to a certain point. The other options are correctly identified as misconceptions.",
+      "critique": "The correct method for finding the median from a less than type cumulative frequency distribution is to convert it into a continuous frequency distribution and then apply the median formula. The other options are incorrect: calculating the mean does not yield the median, converting to more than type is unnecessary, and taking the midpoint of the modal class gives the mode, not the median.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh113.pdf",
@@ -316,239 +316,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:44:53.475Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a measure of central tendency?",
-      "choices": [
-        "Mean",
-        "Range",
-        "Standard deviation",
-        "Variance"
-      ],
-      "answerIndex": 0,
-      "solution": "The mean is a measure of central tendency, which represents the average of a data set. Range, standard deviation, and variance are measures of dispersion, not central tendency.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा केंद्रीय प्रवृत्ति का माप है?",
-          "choices": [
-            "माध्य",
-            "परास",
-            "मानक विचलन",
-            "परिक्षेपण"
-          ],
-          "solution": "माध्य केंद्रीय प्रवृत्ति का एक माप है, जो डेटा सेट के औसत का प्रतिनिधित्व करता है। परास, मानक विचलन और परिक्षेपण केंद्रीय प्रवृत्ति के स्थान पर विस्तार के माप हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and the solution are correctly translated, with the correct answer (1) being the same position as in the English version. The technical terms used are standard in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक केंद्रीय प्रवृत्तीचे माप आहे?",
-          "choices": [
-            "मध्यमान",
-            "श्रेणी",
-            "मानक विचलन",
-            "विचलन"
-          ],
-          "solution": "मध्यमान हे केंद्रीय प्रवृत्तीचे माप आहे, जे डेटा सेटच्या सरासरीला दर्शवते. श्रेणी, मानक विचलन आणि विचलन हे विस्ताराचे माप आहेत, केंद्रीय प्रवृत्ती नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and uses standard Marathi statistical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses measures of central tendency with measures of dispersion",
-        "confuses measures of central tendency with measures of dispersion",
-        "confuses measures of central tendency with measures of dispersion"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies mean as a measure of central tendency and correctly classifies the other options as measures of dispersion. The reasoning aligns with standard statistical definitions.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 6,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 7,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 8,
-          "pageStart": 15,
-          "pageEnd": 17,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:44:53.475Z",
+      "generatedAt": "2026-10-30T05:55:41.665Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "In the formula for the mean of grouped data, what does the symbol Σ represent?",
+      "stem": "A data set has 50 observations. Which class interval will contain the median?",
       "choices": [
-        "Summation",
-        "Difference",
-        "Product",
-        "Quotient"
-      ],
-      "answerIndex": 0,
-      "solution": "In the formula for the mean of grouped data, the symbol Σ represents 'summation' because it is a mathematical notation used to indicate the sum of a series of numbers. The other options—difference, product, and quotient—refer to subtraction, multiplication, and division, which are not related to the function of Σ.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "समूहीकृत डेटा के माध्य के सूत्र में, प्रतीक Σ क्या प्रस्तुत करता है?",
-          "choices": [
-            "योग",
-            "अंतर",
-            "गुणनफल",
-            "भागफल"
-          ],
-          "solution": "समूहीकृत डेटा के माध्य के सूत्र में, प्रतीक Σ 'योग' को प्रस्तुत करता है क्योंकि यह एक गणितीय प्रतीक है जिसका उपयोग एक श्रृंखला के संख्याओं के योग को दर्शाने के लिए किया जाता है। अन्य विकल्पों- अंतर, गुणनफल और भागफल- का संबंध प्रतीक Σ के कार्य से नहीं होता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard mathematical terminology as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "गुंफलेल्या डेटाच्या माध्याच्या सूत्रात, Σ संकेताचा अर्थ काय आहे?",
-          "choices": [
-            "बेरीज",
-            "फरक",
-            "गुणाकार",
-            "भागाकार"
-          ],
-          "solution": "गुंफलेल्या डेटाच्या माध्याच्या सूत्रात, Σ संकेताचा अर्थ 'बेरीज' असतो कारण तो एक गणितीय नोटेशन आहे जे क्रमानुसार अनेक संख्यांच्या बेरीजचा दाखला देतो. इतर विकल्प - फरक, गुणाकार आणि भागाकार - वजाबाद, गुणाकार आणि भागाकराच्या संदर्भात आहेत, जे Σ च्या कार्याशी संबंधित नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses summation with difference",
-        "confuses summation with product",
-        "confuses summation with quotient"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the correct answer is unambiguous. The explanation provided by the author is accurate and matches the standard mathematical meaning of the symbol Σ.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:44:53.475Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following measures of central tendency is best suited for situations where extreme values are present?",
-      "choices": [
-        "Mean",
-        "Median",
-        "Mode",
-        "Range"
+        "The class with the 25th observation",
+        "The class with the 26th observation",
+        "The class with the 50th observation",
+        "The class with the 51st observation"
       ],
       "answerIndex": 1,
-      "solution": "The median is best suited for situations where extreme values are present, as it is less affected by outliers. The mean is influenced by extreme values, while mode and range are not measures of central tendency.",
+      "solution": "For a data set with 50 observations, the median is the average of the 25th and 26th observations. Therefore, the class containing the 26th observation will contain the median. The other options do not correctly identify the position of the median in a data set of even size.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा केंद्रीय प्रवृत्ति का माप चरम मानों की उपस्थिति में स्थितियों के लिए सबसे उपयुक्त है?",
+          "stem": "एक डेटा सेट में 50 अवलोकन हैं। कौन सा वर्ग अंतराल माध्यिका को रखेगा?",
           "choices": [
-            "माध्य",
-            "माध्यिका",
-            "बहुलक",
-            "परास"
+            "25वें अवलोकन वाला वर्ग",
+            "26वें अवलोकन वाला वर्ग",
+            "50वें अवलोकन वाला वर्ग",
+            "51वें अवलोकन वाला वर्ग"
           ],
-          "solution": "चरम मानों की उपस्थिति में स्थितियों के लिए माध्यिका सबसे उपयुक्त है, क्योंकि यह बाहरी बिंदुओं से कम प्रभावित होती है। माध्य चरम मानों द्वारा प्रभावित होता है, जबकि बहुलक और परास केंद्रीय प्रवृत्ति के माप नहीं हैं।",
+          "solution": "50 अवलोकन वाले डेटा सेट के लिए माध्यिका 25वें और 26वें अवलोकन के औसत होती है। इसलिए 26वें अवलोकन वाला वर्ग माध्यिका को रखेगा। अन्य विकल्प एक सम संख्या वाले डेटा सेट में माध्यिका के स्थान को सही ढंग से पहचानते नहीं हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for statistical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for statistical concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता केंद्रीय प्रवृत्तीचा मापदंड चरम मूल्ये असलेल्या स्थितींसाठी योग्य आहे?",
+          "stem": "एका डेटा सेटमध्ये 50 अवलोकने आहेत. मध्यमान अंतराल कोणते अंतराल आहे?",
           "choices": [
-            "माध्य",
-            "मध्यमान",
-            "बहुलक",
-            "परिसर"
+            "25व्या अवलोकनाचे अंतराल",
+            "26व्या अवलोकनाचे अंतराल",
+            "50व्या अवलोकनाचे अंतराल",
+            "51व्या अवलोकनाचे अंतराल"
           ],
-          "solution": "चरम मूल्ये असलेल्या स्थितींसाठी मध्यमान योग्य आहे, कारण ते बाह्य मूल्यांपासून कमी प्रभावित होते. माध्य चरम मूल्यांपासून प्रभावित होतो, तर बहुलक आणि परिसर केंद्रीय प्रवृत्तीचे मापदंड नाहीत.",
+          "solution": "50 अवलोकनांच्या डेटा सेटमध्ये मध्यमान 25व्या आणि 26व्या अवलोकनांच्या औसत असतो. म्हणून, 26व्या अवलोकनाचे अंतराल मध्यमान बरोबर असेल. इतर विकल्पांमध्ये समान संख्येच्या डेटा सेटमध्ये मध्यमानाच्या स्थानाची चुकीची ओळख आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for statistical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for statistical concepts.",
           "flag": null
         }
       },
@@ -557,10 +367,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Chooses the mean, which is affected by extreme values",
+        "Fails to account for the even number of observations",
         null,
-        "Chooses the mode, which is not a measure of central tendency in this context",
-        "Chooses the range, which is a measure of spread, not central tendency"
+        "Confuses the position of the median",
+        "Incorrectly assumes the median is the last observation"
       ],
       "solverAnswers": [
         1,
@@ -570,7 +380,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. The median is indeed less affected by extreme values, making it the best measure of central tendency in such cases. The explanation correctly identifies that mean is affected by outliers, mode is not always a good measure of central tendency, and range is a measure of spread, not central tendency.",
+      "critique": "The solution correctly identifies that for an even number of observations, the median is the average of the two middle values, which are the 25th and 26th observations. The class containing the 26th observation is the correct choice.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh113.pdf",
@@ -611,49 +421,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:44:53.475Z",
+      "generatedAt": "2026-10-30T05:55:41.665Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "A grouped frequency distribution table is used to find the mean of a data set. The assumed mean is 50, the class size is 10, the sum of f u is -3 with a total frequency of 15. What is the mean of the data?",
+      "difficulty": 3,
+      "stem": "If the number of observations in a data set is even, how is the median calculated?",
       "choices": [
-        "48.00",
-        "50.00",
-        "47.00",
-        "53.00"
+        "Take the smallest value",
+        "Take the largest value",
+        "Take the average of the two middle values",
+        "Take the value that appears most frequently"
       ],
-      "answerIndex": 0,
-      "solution": "The formula for the mean using the step-deviation method is x = a + h * (Σf u / Σf). Substituting the given values (a = 50, h = 10, Σf u = -3, Σf = 15), we calculate 50 + 10 * (-3 / 15) = 50 - 2 = 48.00. The option 50.00 is incorrect because it assumes no adjustment. The option 47.00 is incorrect because it subtracts 3 instead of 2. The option 53.00 is incorrect because it adds 3 instead of subtracting 2.",
-      "checkExpr": "50+10*(-3/15)",
+      "answerIndex": 2,
+      "solution": "When the number of observations is even, the median is calculated as the average of the two middle values after arranging the data in order. The other options describe the minimum, maximum, and mode respectively.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक समूहित बारंबारता वितरण तालिका का उपयोग डेटा सेट के माध्य को ज्ञात करने के लिए किया जाता है। अपना माध्य 50 है, वर्ग आकार 10 है, f u का योग -3 है और कुल बारंबारता 15 है। डेटा का माध्य क्या है?",
+          "stem": "यदि डेटा सेट में अवलोकनों की संख्या सम है, तो माध्यक की गणना कैसे की जाती है?",
           "choices": [
-            "48.00",
-            "50.00",
-            "47.00",
-            "53.00"
+            "सबसे छोटा मान लें",
+            "सबसे बड़ा मान लें",
+            "दो मध्य मानों का औसत लें",
+            "सबसे अधिक बार आने वाला मान लें"
           ],
-          "solution": "स्टेप-डेविएशन विधि के लिए माध्य का सूत्र x = a + h * (Σf u / Σf) है। दिए गए मानों (a = 50, h = 10, Σf u = -3, Σf = 15) को प्रतिस्थापित करने पर हम गणना करते हैं 50 + 10 * (-3 / 15) = 50 - 2 = 48.00। विकल्प 50.00 गलत है क्योंकि इसमें कोई समायोजन नहीं माना गया है। विकल्प 47.00 गलत है क्योंकि इसमें 3 के बजाय 2 को घटाया गया है। विकल्प 53.00 गलत है क्योंकि इसमें 2 के बजाय 3 को जोड़ा गया है।",
+          "solution": "जब अवलोकनों की संख्या सम होती है, तो डेटा के क्रम में व्यवस्थित करने के बाद दो मध्य मानों के औसत के रूप में माध्यक की गणना की जाती है। अन्य विकल्प क्रमशः न्यूनतम, अधिकतम और बहुलक को दर्शाते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi terminology for statistical concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "एका गटलेल्या बारंबारता वितरण टेबलचा वापर डेटा सेटच्या माध्याच्या शोधण्यासाठी केला जातो. अंदाजित माध्य 50 आहे, वर्ग आकार 10 आहे, f u ची बेरीज -3 आहे आणि एकूण बारंबारता 15 आहे. डेटाचा माध्य किती आहे?",
+          "stem": "डेटा सेट मध्ये ऑब्झर्वेशनची संख्या सम असल्यास मध्यक गणक कशा प्रकारे केला जातो?",
           "choices": [
-            "48.00",
-            "50.00",
-            "47.00",
-            "53.00"
+            "सर्वात लहान मूल्य घ्या",
+            "सर्वात मोठे मूल्य घ्या",
+            "दोन मध्यम मूल्यांचा आवर्ती घ्या",
+            "सर्वात जास्त वेळा आलेले मूल्य घ्या"
           ],
-          "solution": "स्टेप-डेव्हिएशन पद्धतीने माध्याचा सूत्र x = a + h * (Σf u / Σf) आहे. दिलेल्या मूल्यांचा (a = 50, h = 10, Σf u = -3, Σf = 15) वापर करून, आम्ही 50 + 10 * (-3 / 15) = 50 - 2 = 48.00 गणना करतो. 50.00 चा विकल्प अयोग्य आहे कारण तो अभिकल्पना करतो की कोणताही सुधारणा नाही. 47.00 चा विकल्प अयोग्य आहे कारण तो 3 वजा करतो जेव्हा 2 वजा करावा लागतो. 53.00 चा विकल्प अयोग्य आहे कारण तो 3 जोडतो जेव्हा 2 वजा करावा लागतो.",
+          "solution": "ऑब्झर्वेशनची संख्या सम असल्यास, मध्यक गणक करताना डेटा विनंतीत ठेवून दोन मध्यम मूल्यांचा आवर्ती घेतला जातो. इतर विकल्पांमध्ये न्यूनतम, अधिकतम आणि बहुलक विवरण दिले आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
+          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate terminology used in Marathi education context.",
           "flag": null
         }
       },
@@ -662,93 +472,93 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses median with minimum",
+        "Confuses median with maximum",
         null,
-        "assumes no adjustment",
-        "subtracts 3 instead of 2",
-        "adds 3 instead of subtracting 2"
+        "Confusing median with mode"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the step-deviation method for calculating the mean. The correct answer is 48.00, and the author's reasoning for the incorrect options aligns with common misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that when the number of observations is even, the median is the average of the two middle values. The author's reasoning for the distractors is accurate and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 8,
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 20,
           "headingPath": [
             "Chapter 13: Statistics"
           ]
         },
         {
           "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 4,
-          "pageStart": 8,
-          "pageEnd": 10,
+          "ordinal": 10,
+          "pageStart": 20,
+          "pageEnd": 22,
           "headingPath": [
             "Chapter 13: Statistics"
           ]
         },
         {
           "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 5,
-          "pageStart": 10,
-          "pageEnd": 12,
+          "ordinal": 11,
+          "pageStart": 22,
+          "pageEnd": 24,
           "headingPath": [
             "Chapter 13: Statistics"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:44:53.475Z",
+      "generatedAt": "2026-10-30T05:55:41.665Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "The following frequency distribution gives the concentration of SO2 in the air (in ppm) for 30 localities. What is the modal class?",
+      "stem": "Which of the following is a method to find the mean of grouped data?",
       "choices": [
-        "127 - 135",
-        "136 - 144",
-        "145 - 153",
-        "154 - 162"
+        "Direct Method",
+        "Median Method",
+        "Mode Method",
+        "Range Method"
       ],
       "answerIndex": 0,
-      "solution": "The modal class is the class with the highest frequency. In the given data, the class 127 - 135 has the highest frequency, so it is the modal class.",
+      "solution": "The Direct Method is a recognized statistical technique used to calculate the mean of grouped data by multiplying class marks with their respective frequencies and summing them up. The Median Method, Mode Method, and Range Method are not standard approaches for finding the mean, as they are used for different statistical measures.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित बारंबारता वितरण वायु में SO2 के सांद्रण (ppm में) को दर्शाता है जो 30 स्थानों के लिए है। मोड क्लास क्या है?",
+          "stem": "निम्नलिखित में से कौन-सी विधि समूहीकृत डेटा के माध्य को ज्ञात करने के लिए प्रयोग की जाती है?",
           "choices": [
-            "127 - 135",
-            "136 - 144",
-            "145 - 153",
-            "154 - 162"
+            "सीधी विधि",
+            "माध्यिका विधि",
+            "बहुलक विधि",
+            "परास विधि"
           ],
-          "solution": "मोड क्लास वह क्लास होती है जिसकी सबसे अधिक बारंबारता होती है। दिए गए आंकड़ों में, 127 - 135 क्लास की सबसे अधिक बारंबारता है, इसलिए यह मोड क्लास है।",
+          "solution": "सीधी विधि एक स्वीकृत सांख्यिकीय तकनीक है जिसका उपयोग समूहीकृत डेटा के माध्य की गणना करने के लिए किया जाता है, जिसमें वर्ग चिह्नों को उनकी संगत बारम्बारताओं से गुणा करके योग कर दिया जाता है। माध्यिका विधि, बहुलक विधि और परास विधि माध्य के लिए मानक दृष्टिकोण नहीं हैं, क्योंकि वे अलग-अलग सांख्यिकीय मापदंडों के लिए उपयोग की जाती हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for statistical concepts.",
+          "critique": "All terms are standard Hindi statistical terminology used in textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालील बारंबारता वितरणामध्ये वायूमध्ये SO2 ची एकाग्रता (ppm मध्ये) 30 ठिकाणांसाठी दर्शवली आहे. त्याचा मोड वर्ग कोणता आहे?",
+          "stem": "खालीलपैकी कोणता गटबद्ध डेटाचा माध्य शोधण्याचा पद्धत आहे?",
           "choices": [
-            "127 - 135",
-            "136 - 144",
-            "145 - 153",
-            "154 - 162"
+            "सीधा पद्धत",
+            "मध्यम पद्धत",
+            "बहुलक पद्धत",
+            "श्रेणी पद्धत"
           ],
-          "solution": "मोड वर्ग हा उच्चतम बारंबारतेचा वर्ग असतो. दिलेल्या माहितीमध्ये 127 - 135 वर्गाची उच्चतम बारंबारता आहे, म्हणून तो मोड वर्ग आहे.",
+          "solution": "सीधा पद्धत हा सांख्यिकीय तंत्र आहे जो गटबद्ध डेटाचा माध्य गणना करण्यासाठी वापरला जातो, जेथे वर्ग मार्क आणि त्यांच्या संबंधित बारमासी गुणाकार करून त्यांची बेरीज केली जाते. मध्यम पद्धत, बहुलक पद्धत आणि श्रेणी पद्धत ही माध्य शोधण्यासाठी मान्यताप्राप्त पद्धती नाहीत, कारण त्यांचा वापर वेगळ्या सांख्यिकीय मापदंडांसाठी केला जातो.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi statistical terminology.",
           "flag": null
         }
       },
@@ -758,9 +568,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the modal class with the class containing the middle value of the data range",
-        "Confuses the modal class with the class having the highest lower limit",
-        "chooses a class that is not listed in the data"
+        "Confuses mean with median as a measure of central tendency",
+        "Confuses mean with mode as a measure of central tendency",
+        "Confuses mean with range, thinking it's a measure of central tendency"
       ],
       "solverAnswers": [
         0,
@@ -770,7 +580,397 @@
         0
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is valid and the solution is correct. The modal class is indeed the one with the highest frequency, and the author's reasoning aligns with standard statistical definitions.",
+      "critique": "The correct answer is the Direct Method, as it is a standard method for calculating the mean of grouped data. The other options are measures of central tendency (median, mode) or a measure of dispersion (range), not methods for calculating the mean.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T05:55:41.665Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A distribution is given in the less than form. The median is calculated as 149.03 cm. What does this value represent?",
+      "choices": [
+        "The average height of all girls",
+        "The height below which 50% of the girls fall",
+        "The height above which 50% of the girls fall",
+        "The most frequent height among the girls"
+      ],
+      "answerIndex": 1,
+      "solution": "The median represents the value below which 50% of the observations fall. It is not the average, which is the mean, nor the most frequent value, which is the mode. The correct interpretation is that 50% of the girls have a height less than 149.03 cm, and 50% have a height greater than 149.03 cm.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बंटन कम से कम रूप में दिया गया है। माध्यिका की गणना 149.03 सेमी के रूप में की गई है। इस मान का क्या अर्थ है?",
+          "choices": [
+            "सभी लड़कियों की औसत ऊंचाई",
+            "उस ऊंचाई जिसके नीचे 50% लड़कियां आती हैं",
+            "उस ऊंचाई जिसके ऊपर 50% लड़कियां आती हैं",
+            "लड़कियों में सबसे अधिक बार आने वाली ऊंचाई"
+          ],
+          "solution": "माध्यिका वह मान है जिसके नीचे 50% अवलोकन आते हैं। यह औसत नहीं है, जो माध्य है, न ही सबसे अधिक बार आने वाला मान, जो बहुलक है। सही व्याख्या यह है कि 50% लड़कियां 149.03 सेमी से कम ऊंचाई के हैं और 50% लड़कियां 149.03 सेमी से अधिक ऊंचाई के हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate statistical terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वितरणाचे ओळखले जाते कमीत कमी रूपात. मध्यका 149.03 सें.मी. असे गणितले जाते. हा मूल्य काय प्रतिनिधित्व करतो?",
+          "choices": [
+            "सर्व मुलींचे सरासरी उंची",
+            "50% मुलींची उंची खाली असलेली उंची",
+            "50% मुलींची उंची वर असलेली उंची",
+            "मुलींमध्ये सर्वात जास्त वेळा आढळणारी उंची"
+          ],
+          "solution": "मध्यका हा मूल्य असा आहे ज्याखाली 50% अवलोकने असतात. हे सरासरी नाही, जो माध्य आहे, नाहीतर सर्वात जास्त वेळा आढळणारी मूल्य, जो बहुलक आहे. योग्य अर्थ असा आहे की 50% मुलींची उंची 149.03 सें.मी. खाली असते आणि 50% मुलींची उंची 149.03 सें.मी. वर असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for statistical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the definition of mean",
+        null,
+        "Confuses the median with the upper quartile or the 50th percentile from the top",
+        "Misunderstands the meaning of median"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the median as the value below which 50% of the data falls. The reasoning matches the standard definition of median and the author's key.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 12,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 13,
+          "pageStart": 26,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 14,
+          "pageStart": 28,
+          "pageEnd": 30,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 15,
+          "pageStart": 31,
+          "pageEnd": 31,
+          "headingPath": [
+            "Chapter 13: Statistics",
+            "A NOTE TO THE READER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T05:55:41.665Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a grouped data set, which class interval contains the median?",
+      "choices": [
+        "The class with the highest frequency",
+        "The class with the lowest frequency",
+        "The class where the cumulative frequency first exceeds n/2",
+        "The class where the cumulative frequency is exactly n/2"
+      ],
+      "answerIndex": 2,
+      "solution": "The median class is identified by finding the class where the cumulative frequency first exceeds half of the total number of observations (n/2). The other options are incorrect because the median is not determined by the highest or lowest frequency or by an exact match of n/2.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समूहित डेटा सेट में, माध्यिका किस वर्ग अंतराल में होती है?",
+          "choices": [
+            "सबसे अधिक बारंबारता वाला वर्ग",
+            "सबसे कम बारंबारता वाला वर्ग",
+            "जहां संचयी बारंबारता पहली बार n/2 के अतिक्रमण करती है",
+            "जहां संचयी बारंबारता ठीक n/2 होती है"
+          ],
+          "solution": "माध्यिका वर्ग की पहचान उस वर्ग द्वारा की जाती है जहां संचयी बारंबारता पहली बार कुल अवलोकनों के आधे (n/2) के अतिक्रमण करती है। अन्य विकल्प गलत हैं क्योंकि माध्यिका सबसे अधिक या सबसे कम बारंबारता द्वारा निर्धारित नहीं की जाती है या n/2 के एक ठीक मिलान द्वारा नहीं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate statistical terminology as used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गटबद्ध डेटासेटमध्ये, मध्यमान कोणत्या वर्ग अंतरालात आहे?",
+          "choices": [
+            "सर्वात जास्त फ्रीक्वेंसी असलेला वर्ग",
+            "सर्वात कमी फ्रीक्वेंसी असलेला वर्ग",
+            "ज्या वर्गाची संचयी फ्रीक्वेंसी पहिल्यांदा n/2 च्या अर्ध्यापेक्षा जास्त होते तो वर्ग",
+            "ज्या वर्गाची संचयी फ्रीक्वेंसी तपशीलाने n/2 च्या बरोबर होते तो वर्ग"
+          ],
+          "solution": "मध्यमानाचा वर्ग त्या वर्गाच्या शोधण्याद्वारे ओळखला जातो ज्या वर्गाची संचयी फ्रीक्वेंसी पहिल्यांदा एकूण नोंदीच्या अर्ध्यापेक्षा जास्त होते (n/2). इतर विकल्प अयोग्य आहेत कारण मध्यमान सर्वात जास्त किंवा सर्वात कमी फ्रीक्वेंसी किंवा n/2 च्या तपशीलाने मिळणारा असतो असे ठरवले जात नाही.",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses median with mode",
+        "Confuses median with mode",
+        null,
+        "Misunderstands the process of finding the median class"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2, as the median class is the one where the cumulative frequency first exceeds n/2. The author's reasoning aligns with standard statistical methods.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 10,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 11,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T05:55:41.665Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In the given data set, the cumulative frequency of the class 60 - 70 is 29. What does this indicate?",
+      "choices": [
+        "29 students scored less than 60",
+        "29 students scored between 60 and 70",
+        "29 students scored more than 70",
+        "29 students scored less than 70"
+      ],
+      "answerIndex": 3,
+      "solution": "The cumulative frequency of a class represents the total number of observations that are less than or equal to the upper limit of that class. In this case, it indicates that 29 students scored less than 70. The other options misinterpret the cumulative frequency.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दिए गए डेटा सेट में, वर्ग 60 - 70 की संचयी बारंबारता 29 है। इसका क्या अर्थ है?",
+          "choices": [
+            "29 छात्रों ने 60 से कम अंक प्राप्त किए",
+            "29 छात्रों ने 60 और 70 के बीच अंक प्राप्त किए",
+            "29 छात्रों ने 70 से अधिक अंक प्राप्त किए",
+            "29 छात्रों ने 70 से कम अंक प्राप्त किए"
+          ],
+          "solution": "किसी वर्ग की संचयी बारंबारता उस वर्ग की ऊपरी सीमा के बराबर या उससे कम अवलोकनों की कुल संख्या को दर्शाती है। इस मामले में, यह दर्शाता है कि 29 छात्रों ने 70 से कम अंक प्राप्त किए। अन्य विकल्प संचयी बारंबारता के गलत अर्थ को दर्शाते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दिलेल्या डेटा सेटमध्ये, 60 - 70 च्या वर्गाची संचयी बारमासी 29 आहे. हे काय सूचित करते?",
+          "choices": [
+            "29 विद्यार्थी 60 पेक्षा कमी गुण मिळाले",
+            "29 विद्यार्थी 60 आणि 70 दरम्यान गुण मिळाले",
+            "29 विद्यार्थी 70 पेक्षा जास्त गुण मिळाले",
+            "29 विद्यार्थी 70 पेक्षा कमी गुण मिळाले"
+          ],
+          "solution": "एका वर्गाची संचयी बारमासी हा त्या वर्गाच्या वरच्या सीमेपेक्षा कमी किंवा बरोबर असलेल्या नोंदींची एकूण संख्या दर्शवते. या प्रकरणात, हे सूचित करते की 29 विद्यार्थी 70 पेक्षा कमी गुण मिळाले. इतर विकल्प संचयी बारमासीच्या चुकीच्या व्याख्येमुळे असलेल्या गोंधळामुळे चुकीचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses cumulative frequency with frequency below the class",
+        "Confuses cumulative frequency with frequency within the class",
+        "Confuses cumulative frequency with frequency above the class",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution correctly identifies that cumulative frequency refers to the total number of observations less than or equal to the upper limit of the class. The author's reasoning for the distractors is accurate and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 9,
+          "pageStart": 17,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 10,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh113.pdf",
+          "ordinal": 11,
+          "pageStart": 22,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 13: Statistics"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T05:55:41.665Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a grouped frequency distribution, the mode is calculated using the formula: Mode = l + (f1 - f0)/(2f1 - f0 - f2) × h. What does 'l' represent in this formula?",
+      "choices": [
+        "Upper limit of the modal class",
+        "Lower limit of the modal class",
+        "Class size",
+        "Frequency of the modal class"
+      ],
+      "answerIndex": 1,
+      "solution": "In the formula, 'l' represents the lower limit of the modal class. The modal class is the class with the highest frequency, and 'l' is its starting value. The other options correspond to different parts of the formula.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समूहीकृत बारंबारता वितरण में, मोड की गणना सूत्र: मोड = l + (f1 - f0)/(2f1 - f0 - f2) × h के उपयोग से की जाती है। इस सूत्र में 'l' क्या प्रस्तुत करता है?",
+          "choices": [
+            "मोडल वर्ग की ऊपरी सीमा",
+            "मोडल वर्ग की निचली सीमा",
+            "वर्ग आकार",
+            "मोडल वर्ग की बारंबारता"
+          ],
+          "solution": "सूत्र में 'l' मोडल वर्ग की निचली सीमा को प्रस्तुत करता है। मोडल वर्ग वह वर्ग होता है जिसकी उच्चतम बारंबारता होती है, और 'l' इसका प्रारंभिक मान होता है। अन्य विकल्प सूत्र के अन्य भागों के संगत होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for statistical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "गटबद्ध बारंबारता वितरणात, बहुलक गणना करण्यासाठी सूत्र वापरले जाते: बहुलक = l + (f1 - f0)/(2f1 - f0 - f2) × h. या सूत्रात 'l' काय प्रतिनिधित्व करतो?",
+          "choices": [
+            "बहुलक वर्गाचा वरचा सीमा",
+            "बहुलक वर्गाचा खालचा सीमा",
+            "वर्ग आकार",
+            "बहुलक वर्गाची बारंबारता"
+          ],
+          "solution": "सूत्रात 'l' हा बहुलक वर्गाचा खालचा सीमा प्रतिनिधित्व करतो. बहुलक वर्ग हा सर्वाधिक बारंबारता असलेला वर्ग असतो आणि 'l' हा त्याचा सुरुवातीचा मूल्य असतो. इतर विकल्पांमध्ये सूत्राच्या इतर भागांचे वर्णन असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, with appropriate Marathi terminology for statistical concepts like 'modal class' and 'lower limit'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses upper limit with lower limit",
+        null,
+        "Misinterprets the formula and selects class size",
+        "Chooses the frequency instead of the lower limit"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. 'l' in the mode formula refers to the lower limit of the modal class, which is the class with the highest frequency. The other options are common misconceptions.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh113.pdf",
@@ -801,292 +1001,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:44:53.475Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "In the step deviation method, what is the purpose of choosing an assumed mean?",
-      "choices": [
-        "To simplify calculations",
-        "To increase accuracy",
-        "To reduce the number of classes",
-        "To eliminate the need for frequencies"
-      ],
-      "answerIndex": 0,
-      "solution": "The purpose of choosing an assumed mean in the step deviation method is to simplify calculations. This approach reduces the complexity of working with large numbers by using deviations from a central value. The other options do not accurately describe the primary function of an assumed mean in this method.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "चरण विचलन विधि में, एक अनुमानित माध्य चुनने का उद्देश्य क्या है?",
-          "choices": [
-            "गणना को सरल बनाना",
-            "सटीकता बढ़ाना",
-            "कक्षाओं की संख्या कम करना",
-            "आवृत्तियों के बिना काम करने की आवश्यकता खत्म करना"
-          ],
-          "solution": "चरण विचलन विधि में एक अनुमानित माध्य चुनने का उद्देश्य गणना को सरल बनाना है। इस प्रक्रिया में बड़ी संख्याओं के साथ काम करने की जटिलता कम करने के लिए एक केंद्रीय मान से विचलन का उपयोग किया जाता है। अन्य विकल्प इस विधि में एक अनुमानित माध्य के मुख्य कार्य का सही वर्णन नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "पद्धतीनुसार विचलन पद्धतीत, अंदाजित माध्य निवडण्याचा उद्देश काय आहे?",
-          "choices": [
-            "गणना सोपी करणे",
-            "अचूकता वाढवणे",
-            "वर्गांची संख्या कमी करणे",
-            "बारमासींच्या आवश्यकतेचा निराकरण करणे"
-          ],
-          "solution": "पद्धतीनुसार विचलन पद्धतीत अंदाजित माध्य निवडण्याचा उद्देश गणना सोपी करणे आहे. ही पद्धती मोठ्या संख्यांशी काम करण्याच्या जटिलतेला कमी करते आणि एका मध्यम मूल्यापासून विचलनांचा वापर करते. इतर विकल्प या पद्धतीत अंदाजित माध्यच्या प्राथमिक कार्याचे योग्य वर्णन करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for statistical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses simplification with accuracy",
-        "confuses simplification with reducing classes",
-        "confuses simplification with eliminating frequencies"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the assumed mean is used to simplify calculations. The other options reflect common misconceptions about the purpose of the assumed mean.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:44:53.475Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why is the mean calculated using the direct method considered more accurate than the mean calculated using the assumed mean method?",
-      "choices": [
-        "Because it uses actual values",
-        "Because it uses frequencies",
-        "Because it uses class marks",
-        "Because it uses assumed mean"
-      ],
-      "answerIndex": 0,
-      "solution": "The mean calculated using the direct method is considered more accurate because it uses actual values rather than approximations. The assumed mean method relies on a guessed value, which can introduce errors. Frequencies and class marks are used in both methods and do not affect the accuracy.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "माध्य की गणना सीधे विधि के द्वारा क्यों अधिक सटीक माना जाता है, जबकि अंदाजी माध्य विधि के द्वारा किया जाता है?",
-          "choices": [
-            "क्योंकि यह वास्तविक मानों का उपयोग करता है",
-            "क्योंकि यह बारम्बारताओं का उपयोग करता है",
-            "क्योंकि यह वर्ग चिन्हों का उपयोग करता है",
-            "क्योंकि यह अंदाजी माध्य का उपयोग करता है"
-          ],
-          "solution": "सीधे विधि के द्वारा गणना किया गया माध्य अधिक सटीक माना जाता है क्योंकि यह अनुमानों के बजाय वास्तविक मानों का उपयोग करता है। अंदाजी माध्य विधि एक अनुमानित मान पर निर्भर करती है, जो त्रुटियों को ला सकती है। बारम्बारताएं और वर्ग चिन्ह दोनों विधियों में उपयोग किए जाते हैं और ये सटीकता को प्रभावित नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "मध्यमान गणना करण्यासाठी दृश्य पद्धती वापरल्यास अधिक अचूक मानली जाते कारण काय?",
-          "choices": [
-            "कारण ती खर्या मूल्यांचा वापर करते",
-            "कारण ती बारंबारतांचा वापर करते",
-            "कारण ती वर्ग चिन्हांचा वापर करते",
-            "कारण ती अनुमानित माध्याचा वापर करते"
-          ],
-          "solution": "दृश्य पद्धती वापरून माध्यमान गणना अधिक अचूक मानली जाते कारण ती अंदाजांऐवजी खर्या मूल्यांचा वापर करते. अनुमानित माध्य पद्धती अनुमानित मूल्यांवर अवलंबून असते, जे चूका निर्माण करू शकतात. बारंबारता आणि वर्ग चिन्हे दोन्ही पद्धतींमध्ये वापरली जातात आणि अचूकतेवर परिणाम करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for statistical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses accuracy with using actual values",
-        "confuses accuracy with using frequencies",
-        "confuses accuracy with using class marks"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the direct method uses actual values, making it more accurate. The other options are incorrect because they confuse different aspects of the methods.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:44:53.475Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "In a data set, the mean was calculated using the step-deviation method. The assumed mean is 30, the class size is 10, and the sum of f u is -5 with a total frequency of 50. What is the mean of the data?",
-      "choices": [
-        "29.00",
-        "30.00",
-        "25.00",
-        "35.00"
-      ],
-      "answerIndex": 0,
-      "solution": "The formula for the mean using the step-deviation method is x = a + h * (Σf u / Σf). Substituting the given values (a = 30, h = 10, Σf u = -5, Σf = 50), we calculate 30 + 10 * (-5 / 50) = 30 - 1 = 29.00. The option 30.00 is incorrect because it assumes no adjustment. The option 25.00 is incorrect because it subtracts 5 instead of 1. The option 35.00 is incorrect because it adds 5 instead of subtracting 1.",
-      "checkExpr": "30+10*(-5/50)",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक डेटा सेट में, माध्य की गणना चर-विचलन विधि के द्वारा की गई थी। अनुमानित माध्य 30 है, वर्ग आकार 10 है, और f u के योग -5 है तथा कुल बारंबारता 50 है। डेटा का माध्य क्या है?",
-          "choices": [
-            "29.00",
-            "30.00",
-            "25.00",
-            "35.00"
-          ],
-          "solution": "चर-विचलन विधि के द्वारा माध्य का सूत्र x = a + h * (Σf u / Σf) है। दिए गए मानों (a = 30, h = 10, Σf u = -5, Σf = 50) को प्रतिस्थापित करने पर, हम गणना करते हैं 30 + 10 * (-5 / 50) = 30 - 1 = 29.00। विकल्प 30.00 गलत है क्योंकि इसमें कोई समायोजन नहीं माना गया। विकल्प 25.00 गलत है क्योंकि इसमें 5 को घटाया बजाय 1 को घटाया गया। विकल्प 35.00 गलत है क्योंकि इसमें 5 जोड़ा बजाय 1 को घटाया गया।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate statistical terminology as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "माहितीच्या सेटमध्ये माध्य चरण-विचलन पद्धतीने काढला गेला. अंदाजित माध्य 30 आहे, वर्ग आकार 10 आहे, आणि f u ची बेरीज -5 आहे आणि एकूण बारमासी 50 आहे. माहितीचा माध्य किती आहे?",
-          "choices": [
-            "29.00",
-            "30.00",
-            "25.00",
-            "35.00"
-          ],
-          "solution": "चरण-विचलन पद्धतीने माध्याचा सूत्र x = a + h * (Σf u / Σf) आहे. दिलेल्या मूल्यां (a = 30, h = 10, Σf u = -5, Σf = 50) चा वापर करून, आम्ही 30 + 10 * (-5 / 50) = 30 - 1 = 29.00 गणना करतो. 30.00 चा विकल्प चुकीचा आहे कारण तो अभिकल्पित माध्याच्या समायोजनाचा अंदाज घेत नाही. 25.00 चा विकल्प चुकीचा आहे कारण तो 5 कमी करतो तर 1 कमी करावा. 35.00 चा विकल्प चुकीचा आहे कारण तो 5 जोडतो तर 1 कमी करावा.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi statistical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "assumes no adjustment",
-        "subtracts 5 instead of 1",
-        "adds 5 instead of subtracting 1"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the step-deviation formula and arrives at the correct answer. The reasoning for the distractors reflects common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 3,
-          "pageStart": 5,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 4,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh113.pdf",
-          "ordinal": 5,
-          "pageStart": 10,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 13: Statistics"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T18:44:53.475Z",
+      "generatedAt": "2026-10-30T05:55:41.665Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,879 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T21:53:35.628Z",
+  "finishedAt": "2026-10-27T22:05:38.556Z",
+  "seconds": 723,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc110.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 10 — Sound Waves: Characteristics and Applications",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 30,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — question paper]\n20. (6 marks) Smartphones can be used to perform simple experiments related to sound. There are various\napps which record the intensity of an audio signal. An app (WaveEditor TM here) displays the audio signal\nin the form of a wave, whose amplitude is proportional to the loudness of the audio signal.\nTwo students Fatima (F) and Bharat (B) conduct a simple experiment using smartphones. In an open\nfield, both place their smartphones at a distance d from each other as shown in the figure. They stand\nnext to their smartphones, and clap one after another. The audio signals from the claps are digitally\nrecorded by WaveEditor TM and the output produced on their smartphone screens are shown next to ",
+      "[INJSO 2022 — solutions or answer key]\n6. A. frequency of sound waves will not change due to motion of air.",
+      "[INJSO 2023 — question paper]\n22. A pulse of sound is generated at the centre of a room of rectangular cross section having\ndimensions 20 m × 20 m × 30 m. Speed of sound is 350 m/s. Consider all possibilities of\nhearing echoes of this pulse. Some of the instances of time when echoes can be detected at the location of the source are … A. 81 ms HBCSE B. 86 ms C. 96 ms D. 103 ms 7",
+      "[INJSO 2017 — question paper]\n16. A sound wave of fixed frequency is going through a medium in the X direction. Ignore the velocities of\nthe particles due to thermal motion and assume that the layers of the medium perform simple\nharmonic motions about their mean positions. Graph in the figure represents displacements of the\nparticles from their mean positions (plotted on Y axis) at a particular instant of time. Some of the\nparticles are labeled by alphabets a – s. Velocity of the particle G is directed negative at that instant.\nPoints C, I and O correspond to maximum displacement at that instant.\nI) The sound wave is travelling along the\nnegative X direction.\nII) The sound wave is travelling along the\npositive X directio"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 276394,
+      "in": 46,
+      "out": 44,
+      "rejects": 2,
+      "promptTokens": 48684,
+      "completionTokens": 13188
+    },
+    "critique": {
+      "calls": 62,
+      "ms": 485956,
+      "in": 44,
+      "out": 38,
+      "rejects": 6,
+      "promptTokens": 29854,
+      "completionTokens": 10879
+    },
+    "solver": {
+      "calls": 304,
+      "ms": 174858,
+      "in": 38,
+      "out": 32,
+      "rejects": 6,
+      "promptTokens": 57894,
+      "completionTokens": 3125
+    },
+    "form": {
+      "calls": 24,
+      "ms": 123437,
+      "in": 32,
+      "out": 7,
+      "rejects": 25,
+      "promptTokens": 15339,
+      "completionTokens": 2724
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 51,
+      "ms": 9728,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 294479,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14744,
+      "completionTokens": 7708
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What happens to the sound when the vibrations of an object stop?",
+      "ms": {
+        "draft": 14476,
+        "critique": 7579,
+        "solver": 1220,
+        "form": 4606
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main conclusion from Activity 10.1?",
+      "ms": {
+        "draft": 14476,
+        "critique": 8167,
+        "solver": 2430,
+        "form": 3193
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the experiment with the tuning fork, what observation confirms that the prongs are vibrating?",
+      "ms": {
+        "draft": 14476,
+        "critique": 7815,
+        "solver": 1716,
+        "form": 4647
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which medium allows sound to travel according to the experiments described in the passage?",
+      "ms": {
+        "draft": 14476,
+        "critique": 7382,
+        "solver": 1960,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two tuning forks are struck simultaneously, and one is placed in a vacuum while the other is in air, which one will produce sound that can be heard?",
+      "ms": {
+        "draft": 14476,
+        "critique": 7777,
+        "solver": 1840,
+        "form": 4487
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about how sound travels through a medium?",
+      "ms": {
+        "draft": 6886,
+        "critique": 9616,
+        "solver": 1608,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the role of a medium in the propagation of sound?",
+      "ms": {
+        "draft": 6886,
+        "critique": 8562,
+        "solver": 1895
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a tuning fork is struck and then placed in a vacuum, what would happen to the sound it produces?",
+      "ms": {
+        "draft": 14476,
+        "critique": 8428,
+        "solver": 15089,
+        "form": 4153
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage describes a situation where a piston in a tube is moved back and forth. What is the result of this movement?",
+      "ms": {
+        "draft": 6886,
+        "critique": 8000,
+        "solver": 2061,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the slinky experiment, what does the movement of the disturbance in the slinky represent?",
+      "ms": {
+        "draft": 6886,
+        "critique": 8101,
+        "solver": 1678,
+        "form": 3459
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage compares the motion of a slinky to the propagation of sound. Which of the following is true about this analogy?",
+      "ms": {
+        "draft": 6886,
+        "critique": 10251,
+        "solver": 15242,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, a student observes that when a loud sound is produced near a container with grains on a stretched sheet, the grains start to move. What does this observation demonstrate?",
+      "ms": {
+        "draft": 5570,
+        "critique": 11183,
+        "solver": 1856
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A sound wave is produced by a source and travels through a medium. Which of the following best describes the motion of the particles in the medium?",
+      "ms": {
+        "draft": 5570,
+        "critique": 8662,
+        "solver": 14840,
+        "form": 2731
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A sound wave is produced in a medium and travels through it. If the medium is removed, what will happen to the wave?",
+      "ms": {
+        "draft": 5570,
+        "critique": 7086,
+        "solver": 1746,
+        "form": 5260
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is transferred when a sound wave propagates through a medium?",
+      "ms": {
+        "draft": 6181,
+        "critique": 7237
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A sound wave travels through a medium, and the particles of the medium vibrate in the same direction as the wave. If the speed of the wave increases, what will happen to the frequency of the wave?",
+      "ms": {
+        "draft": 5570,
+        "critique": 9138,
+        "solver": 14177,
+        "form": 3505
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a sound wave has a frequency of 100 Hz, what is the time period of the wave?",
+      "ms": {
+        "draft": 6181,
+        "critique": 8758,
+        "solver": 11709,
+        "form": 2825
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the relationship between the amplitude of a sound wave and the energy it carries?",
+      "ms": {
+        "draft": 7953,
+        "critique": 7977,
+        "solver": 1805,
+        "form": 3468
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A sound wave has a frequency of 20 Hz. How many oscillations does it complete in 1 minute?",
+      "ms": {
+        "draft": 7953,
+        "critique": 7600,
+        "solver": 15121
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the speed of sound in a medium is 5000 m/s and the wavelength is 50 m, what is the frequency of the sound wave?",
+      "ms": {
+        "draft": 7953,
+        "critique": 7391,
+        "solver": 12779
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 20 compressions pass a point in 4 seconds, what is the frequency of the sound wave?",
+      "ms": {
+        "draft": 6432,
+        "critique": 6468
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A sound wave is propagating in a medium. If the frequency of the wave is increased, what will happen?",
+      "ms": {
+        "draft": 6432,
+        "critique": 5933,
+        "solver": 3051,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A vehicle is fitted with an ultrasonic distance sensor which emits a 40 kHz wave. If the warning beep starts sounding at a distance of 1.2 m from the obstacle, how much time is taken by the ultrasonic wave to travel to the obstacle and come back?",
+      "ms": {
+        "draft": 6432,
+        "critique": 9705,
+        "solver": 1709
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a room, the reflected sound reaches the ear 0.05 s after its production. Will it produce an echo or reverberation?",
+      "ms": {
+        "draft": 6432,
+        "critique": 5933,
+        "solver": 14947,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person claps in front of a wall and hears an echo after 0.4 s. If the speed of sound is 340 m/s, what is the distance from the person to the wall?",
+      "ms": {
+        "draft": 5774,
+        "critique": 10364
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A source produces a sound wave of wavelength 3.44 m. If the wave travels with a speed of 344 m/s, what is its time period?",
+      "ms": {
+        "draft": 6432,
+        "critique": 7850,
+        "solver": 19548,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Two students, A and B, are standing 50 m apart in an open field. A claps once and B hears the sound after 0.15 s. If the speed of sound is 340 m/s, what is the time delay between A's clap and B's hearing it?",
+      "ms": {
+        "draft": 5774,
+        "critique": 9844,
+        "solver": 2010,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A submarine is detected by sonar. If the echo is received after 0.6 s and the speed of sound in water is 1530 m/s, what is the distance to the submarine?",
+      "ms": {
+        "draft": 5774,
+        "critique": 7887,
+        "solver": 1856,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two identical sound sources are placed at A and B — one in air and one submerged in water. Both produce sounds at the same time, which travel horizontally to the vertical side of the cliff and come back. If the time taken by the sound to return to A is 4.5 times than that of B, what is the ratio between the speeds of sound in air and water?",
+      "ms": {
+        "draft": 6432,
+        "critique": 10045,
+        "solver": 11927,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe how humans perceive the frequency of a sound?",
+      "ms": {
+        "draft": 5090,
+        "critique": 5851,
+        "solver": 11635,
+        "form": 4595
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which property of a sound wave determines how loud it is perceived to be?",
+      "ms": {
+        "draft": 5090,
+        "critique": 8841
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the audible range of human hearing in terms of frequency?",
+      "ms": {
+        "draft": 5090,
+        "critique": 10240,
+        "solver": 14617,
+        "form": 5594
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, a student records a sound wave and observes that the amplitude of the wave is large. What can be inferred about the sound?",
+      "ms": {
+        "draft": 5090,
+        "critique": 8914,
+        "solver": 14732
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the frequency of a sound wave is 20 Hz, how many oscillations does the source complete in one minute?",
+      "ms": {
+        "draft": 6607,
+        "critique": 8200
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following actually reaches your ear when sound travels from a tuning fork?",
+      "ms": {
+        "draft": 6615,
+        "critique": 7261
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the relationship between the amplitude of a sound wave and the energy it carries?",
+      "ms": {
+        "draft": 6607,
+        "critique": 9739,
+        "solver": 14046,
+        "form": 3771
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A sound wave of frequency 20 Hz is produced in air, and its wavelength is 17.2 m. If the same wave travels through water, what will happen to its frequency and wavelength?",
+      "ms": {
+        "draft": 6607,
+        "critique": 7109,
+        "solver": 7155,
+        "form": 1353
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A sonar system is used to detect an object submerged in water. If the speed of sound in water is 1500 m/s and the echo is received after 1.2 s, what is the distance to the object?",
+      "ms": {
+        "draft": 5774,
+        "critique": 7962,
+        "solver": 1846,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe how humans perceive the frequency of a sound?",
+      "ms": {
+        "draft": 7553,
+        "critique": 8245,
+        "solver": 5024,
+        "form": 0,
+        "translation": 36288
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between a longitudinal wave and a transverse wave?",
+      "ms": {
+        "draft": 5570,
+        "critique": 7823,
+        "solver": 15347,
+        "form": 3829,
+        "translation": 49555
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student performs an experiment where a bell is placed in a jar and air is gradually removed. What will the student observe?",
+      "ms": {
+        "draft": 6886,
+        "critique": 8526,
+        "solver": 1730,
+        "form": 3235,
+        "translation": 54428
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A sonar device sends a signal into water and receives it back after 0.8 s. If the speed of sound in water is 1530 m/s, what is the distance to the object?",
+      "ms": {
+        "draft": 5774,
+        "critique": 7999,
+        "solver": 2557,
+        "form": 0,
+        "translation": 44806
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student claps in an open field and records the sound using a smartphone app. The app displays the sound wave as a graph. What does the amplitude of the wave on the graph represent?",
+      "ms": {
+        "draft": 5090,
+        "critique": 8793,
+        "solver": 14167,
+        "form": 3093,
+        "translation": 45922
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the density of a medium increases at a point, what does it indicate about the wave passing through that point?",
+      "ms": {
+        "draft": 6181,
+        "critique": 10233,
+        "solver": 1951,
+        "form": 2842,
+        "translation": 55911
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "When a sound wave travels through a medium, what is the main way in which energy is transferred?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the sound when the vibrations of an object stop?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Incorrectly assumes that sound continues to be heard after t…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main conclusion from Activity 10.1?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Focuses on one method of producing sound (stretching strings…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the experiment with the tuning fork, what observation confirms that the prongs are vibrating?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly describes the motion of the prongs as circular, …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which medium allows sound to travel according to the experiments described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Incorrectly assumes that sound only travels through liquids,…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If two tuning forks are struck simultaneously, and one is placed in a vacuum while the other is in air, which one will produce sound that can be heard?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that neither tuning fork can produce sou…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about how sound travels through a medium?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"correct answer, no reason needed here as it's the correct on…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, what is the role of a medium in the propagation of sound?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a tuning fork is struck and then placed in a vacuum, what would happen to the sound it produces?",
+      "reason": "options 1 and 2 are the same (\"It would still be heard\"); distractor 2's reason is not a one-line misconception (\"Incorrectly assumes that sound can be heard even in the abse…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage describes a situation where a piston in a tube is moved back and forth. What is the result of this movement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the slinky experiment, what does the movement of the disturbance in the slinky represent?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'slinky'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage compares the motion of a slinky to the propagation of sound. Which of the following is true about this analogy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In an experiment, a student observes that when a loud sound is produced near a container with grains on a stretched sheet, the grains start to move. What does this observation demonstrate?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A sound wave is produced by a source and travels through a medium. Which of the following best describes the motion of the particles in the medium?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A sound wave is produced in a medium and travels through it. If the medium is removed, what will happen to the wave?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"None (correct option) - the motion is correctly described by…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is transferred when a sound wave propagates through a medium?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A sound wave travels through a medium, and the particles of the medium vibrate in the same direction as the wave. If the speed of the wave increases, what will happen to the frequency of the wave?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"This would be the case if the wavelength changed, but the pa…\"); distractor 1's reason is not a one-line misconception (\"This would be the case if the speed decreased, but the passa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a sound wave has a frequency of 100 Hz, what is the time period of the wave?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the relationship between the amplitude of a sound wave and the energy it carries?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A sound wave has a frequency of 20 Hz. How many oscillations does it complete in 1 minute?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the speed of sound in a medium is 5000 m/s and the wavelength is 50 m, what is the frequency of the sound wave?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A student hears an echo 0.3 s after making a sound. What is the minimum distance to the reflecting surface if the speed of sound is 340 m/s?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 20 compressions pass a point in 4 seconds, what is the frequency of the sound wave?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A sound wave is propagating in a medium. If the frequency of the wave is increased, what will happen?",
+      "reason": "the key is far longer than every distractor (51 vs 29 characters); distractor 3's reason is not a one-line misconception (\"Correct answer is the only one that aligns with the definiti…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A vehicle is fitted with an ultrasonic distance sensor which emits a 40 kHz wave. If the warning beep starts sounding at a distance of 1.2 m from the obstacle, how much time is taken by the ultrasonic wave to travel to the obstacle and come back?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a room, the reflected sound reaches the ear 0.05 s after its production. Will it produce an echo or reverberation?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A person claps in front of a wall and hears an echo after 0.4 s. If the speed of sound is 340 m/s, what is the distance from the person to the wall?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A source produces a sound wave of wavelength 3.44 m. If the wave travels with a speed of 344 m/s, what is its time period?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Two students, A and B, are standing 50 m apart in an open field. A claps once and B hears the sound after 0.15 s. If the speed of sound is 340 m/s, what is the time delay between A's clap and B's hearing it?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"50/340\" = 0.14705882352941177, but the key says 0.15"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A submarine is detected by sonar. If the echo is received after 0.6 s and the speed of sound in water is 1530 m/s, what is the distance to the submarine?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Two identical sound sources are placed at A and B — one in air and one submerged in water. Both produce sounds at the same time, which travel horizontally to the vertical side of the cliff and come back. If the time taken by the sound to return to A is 4.5 times than that of B, what is the ratio between the speeds of sound in air and water?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used to describe how humans perceive the frequency of a sound?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which property of a sound wave determines how loud it is perceived to be?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the audible range of human hearing in terms of frequency?",
+      "reason": "options 1 and 3 say the same thing (\"20 Hz to 20,000 Hz\" / \"2,000 Hz to 20,000 Hz\"); distractor 3's reason is not a one-line misconception (\"Too narrow a range, excludes high frequencies (20,000 Hz) - …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In an experiment, a student records a sound wave and observes that the amplitude of the wave is large. What can be inferred about the sound?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If the frequency of a sound wave is 20 Hz, how many oscillations does the source complete in one minute?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following actually reaches your ear when sound travels from a tuning fork?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the relationship between the amplitude of a sound wave and the energy it carries?",
+      "reason": "options 1 and 2 say the same thing (\"The energy carried by the wave decreases as the amplitude increases.\" / \"The energy carried by the wave increases as the amplitude increases.\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A sound wave of frequency 20 Hz is produced in air, and its wavelength is 17.2 m. If the same wave travels through water, what will happen to its frequency and wavelength?",
+      "reason": "options 0 and 1 say the same thing (\"Frequency decreases, wavelength increases.\" / \"Frequency increases, wavelength decreases.\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A sonar system is used to detect an object submerged in water. If the speed of sound in water is 1500 m/s and the echo is received after 1.2 s, what is the distance to the object?",
+      "reason": "near-duplicate of batch item \"A sonar device sends a signal into water and recei…\" (cosine 0.903 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

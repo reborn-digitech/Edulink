@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Looking Around(EVS)",
   "edition": "2024 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-22T23:26:38.071Z",
+  "generatedAt": "2026-10-28T04:35:47.242Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What do cows use their large and flat teeth for?",
+      "difficulty": 2,
+      "stem": "Which bird makes its nest by stitching together two leaves on a bush ?",
       "choices": [
-        "To cut vegetables",
-        "To chew grass",
-        "To bite fruits",
-        "To tear meat"
+        "Weaverbird",
+        "Tailor bird",
+        "Barbet",
+        "Sunbird"
       ],
       "answerIndex": 1,
-      "solution": "Cows have large and flat teeth that are adapted for grinding and chewing tough plant material like grass. These teeth are not designed for cutting or tearing, which is why the correct answer is 'To chew grass'. The other options are incorrect because cows do not use their teeth to cut vegetables, bite fruits, or tear meat.",
+      "solution": "The tailor bird is known for using its beak to sew leaves together to form a nest. Other birds, like the weaverbird, build intricate nests from grass, while the barbet and sunbird construct nests in different ways, not by stitching leaves.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "गायें अपने बड़े और चपटे दांतों का उपयोग क्यों करती हैं?",
+          "stem": "कौन-सा पक्षी एक झाड़ी पर दो पत्तियों को जोड़कर अपना घोंसला बनाता है ?",
           "choices": [
-            "सब्जियां काटने के लिए",
-            "घास काटने के लिए",
-            "फल काटने के लिए",
-            "मांस फाड़ने के लिए"
+            "बुनकर पक्षी",
+            "सिलाई पक्षी",
+            "बर्बेट",
+            "सूर्यपक्षी"
           ],
-          "solution": "गायों के बड़े और चपटे दांत होते हैं जो कठोर पौधों के सामग्री जैसे घास के चबाने और चबाने के लिए अनुकूलित होते हैं। इन दांतों का उपयोग काटने या फाड़ने के लिए नहीं किया जाता है, इसलिए सही उत्तर 'घास काटने' है। अन्य विकल्प गलत हैं क्योंकि गायें अपने दांतों का उपयोग सब्जियां काटने, फल काटने या मांस फाड़ने के लिए नहीं करती हैं।",
+          "solution": "सिलाई पक्षी अपने क्ल्व से पत्तियों को जोड़कर घोंसला बनाने के लिए जाना जाता है। अन्य पक्षी, जैसे बुनकर पक्षी, घास से जटिल घोंसले बनाते हैं, जबकि बर्बेट और सूर्यपक्षी अलग-अलग तरीकों से घोंसले बनाते हैं, पत्तियों को जोड़कर नहीं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "गायी त्यांच्या मोठ्या आणि सपाट दातांचा वापर कशासाठी करतात?",
+          "stem": "कोणता पक्षी एका झाडावर दोन पाने एकत्र करून आपले घर बनवतो ?",
           "choices": [
-            "शाकूंचे कापणे",
-            "घास चावणे",
-            "फळांचे कावरणे",
-            "मांस फाडणे"
+            "वेवर बर्ड",
+            "टेलर बर्ड",
+            "बर्बेट",
+            "सनबर्ड"
           ],
-          "solution": "गायीला मोठे आणि सपाट दात असतात जे कठीण वनस्पती पदार्थ, जसे की घास, चावण्यासाठी अनुकूलित असतात. या दातांचा वापर कापण्यासाठी किंवा फाडण्यासाठी केला जात नाही, ज्यामुळे योग्य उत्तर 'घास चावणे' आहे. इतर विकल्प अयोग्य आहेत कारण गायी त्यांच्या दातांचा वापर शाकूंचे कापणे, फळांचे कावरणे किंवा मांस फाडणे यासाठी करत नाहीत.",
+          "solution": "टेलर बर्ड आपल्या डोक्याने पाने एकत्र करून घर बनवतो. वेवर बर्ड घासापासून जटिल घरे बनवतो, तर बर्बेट आणि सनबर्ड वेगवेगळ्या पद्धतीने घरे बनवतात, पाने एकत्र करून नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms for bird species.",
           "flag": null
         }
       },
@@ -72,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses cow teeth with other animals' teeth",
+        "Confuses the description with the Weaverbird",
         null,
-        "Incorrectly assumes the purpose of cow teeth",
-        "Incorrectly assumes the purpose of cow teeth"
+        "Confuses the description with the Barbet",
+        "Confuses the description with the Sunbird"
       ],
       "solverAnswers": [
         1,
@@ -85,73 +85,89 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as cows use their large and flat teeth for chewing grass. The other options are incorrect, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The correct answer is 1 (Tailor bird), as the solution correctly identifies the description of the tailor bird stitching leaves. The author's reasoning for the wrong options is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/4/environmental-studies/deap116.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 9,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
-            "Chapter 16: A Busy Month",
-            "Animal Teeth"
+            "Chapter 16: A Busy Month"
           ]
         },
         {
           "document": "ncert/4/environmental-studies/deap116.pdf",
-          "ordinal": 5,
-          "pageStart": 9,
-          "pageEnd": 10,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 4,
           "headingPath": [
-            "Chapter 16: A Busy Month",
-            "Find out about Your Own Teeth and Write."
+            "Chapter 16: A Busy Month"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap116.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 16: A Busy Month"
+          ]
+        },
+        {
+          "document": "ncert/4/environmental-studies/deap116.pdf",
+          "ordinal": 3,
+          "pageStart": 7,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 16: A Busy Month"
           ]
         }
       ],
       "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T23:26:38.071Z",
+      "generatedAt": "2026-10-28T04:35:47.242Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "Which of the following animals uses its teeth to break and crush seeds?",
+      "stem": "What is the main purpose of the large flat teeth in cows?",
       "choices": [
-        "Cows",
-        "Cats",
-        "Snakes",
-        "Squirrels"
+        "To cut grass",
+        "To tear meat",
+        "To chew grass",
+        "To swallow food whole"
       ],
-      "answerIndex": 3,
-      "solution": "Squirrels have strong, flat molars that are adapted for breaking and crushing hard seeds. Cows have teeth designed for grinding grass, cats have sharp teeth for tearing meat, and snakes typically swallow their food whole without chewing.",
+      "answerIndex": 2,
+      "solution": "Cows have large flat teeth specifically adapted for grinding and chewing grass, which is their primary food source. These teeth are not designed for cutting or tearing, as cows do not consume meat, and they do not swallow food whole. The structure of their teeth allows for efficient breakdown of tough plant material.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा जानवर अपने दांतों का उपयोग बीजों को तोड़ने और चबाने के लिए करता है?",
+          "stem": "गायों में बड़े तथा चपटे दांतों का मुख्य उद्देश्य क्या है?",
           "choices": [
-            "गाय",
-            "बिल्लियाँ",
-            "सांप",
-            "चूहे"
+            "घास काटना",
+            "मांस फाड़ना",
+            "घास कुचलना",
+            "खाद्य पदार्थ को पूरा निगल लेना"
           ],
-          "solution": "चूहे के मुंह में मजबूत और चपटे दांत होते हैं जो कठोर बीजों को तोड़ने और चबाने के लिए अनुकूलित होते हैं। गाय के दांत घास को चबाने के लिए डिज़ाइन किए गए होते हैं, बिल्लियों के तीखे दांत मांस को फाड़ने के लिए होते हैं, और सांप आमतौर पर अपना भोजन पूरा निगल लेते हैं बिना चबाए।",
+          "solution": "गायों में बड़े चपटे दांत घास के चबाने तथा कुचलने के लिए विशेष रूप से अनुकूलित होते हैं, जो उनके मुख्य भोजन के स्रोत हैं। ये दांत काटने या फाड़ने के लिए नहीं बने होते हैं, क्योंकि गायें मांस नहीं खाती हैं, और वे खाद्य पदार्थ को पूरा निगल लेती हैं। उनके दांतों की संरचना कठोर पौधों के पदार्थ के प्रभावी अपघटन की अनुमति देती है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology common in Hindi textbooks.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with the correct answer remaining option (2).",
           "flag": null
         },
         "mr": {
-          "stem": "खालील प्राण्यांपैकी कोणता प्राणी बियां फोडण्यासाठी आणि चिरडण्यासाठी त्वचा वापरतो?",
+          "stem": "गायींमधील मोठ्या सपाट दातांचा मुख्य उद्देश काय आहे?",
           "choices": [
-            "गाया",
-            "बिबटे",
-            "साप",
-            "गुरुल"
+            "गवत कापणे",
+            "मांस फाडणे",
+            "गवत चावणे",
+            "गोळा घेऊन खाणे"
           ],
-          "solution": "गुरुल बियां फोडण्यासाठी आणि चिरडण्यासाठी शक्तिशाली, सपाट मोलर असतात. गायांच्या दातांची रचना घास चिरडण्यासाठी असते, बिबट्यांच्या दातांची रचना मांस फाडण्यासाठी असते आणि सापांना चावल्याशिवाय आपले खाद्य पचवतात.",
+          "solution": "गायींमध्ये मोठे सपाट दात गवताचे चावणे आणि चावणे यासाठी विशेषतः अनुकूलित केले गेले आहेत, जे त्यांचे प्राथमिक खाद्य स्रोत आहे. या दातांचे रचना कापणे किंवा फाडणे यासाठी डिझाइन केलेले नाहीत, कारण गायी मांस खात नाहीत आणि ते खाद्य पदार्थ गोळा घेऊन खात नाहीत. त्यांच्या दातांची रचना जटिल वनस्पती पदार्थांचे प्रभावी विघटन करण्यासाठी आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for teeth (दात) and seed-crushing (बियां फोडण्यासाठी आणि चिरडण्यासाठी).",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
           "flag": null
         }
       },
@@ -160,20 +176,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses cow's teeth with squirrel's teeth",
-        "Confuses cat's teeth with squirrel's teeth",
-        "Confuses snake's teeth with squirrel's teeth",
-        null
+        "confuses the function of front teeth with the flat teeth",
+        "confuses the function of cats' teeth with cows' teeth",
+        null,
+        "Believes that animals with large teeth can swallow food without chewing"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 3 (Squirrels), as they use their teeth to break and crush seeds. The author's reasoning is sound and matches the biological facts. The distractors are based on plausible misconceptions about the functions of different animals' teeth.",
+      "critique": "The solution correctly identifies that the large flat teeth are for chewing, as stated in the passage. The reasoning for the distractors aligns with common misconceptions about animal teeth.",
       "sources": [
         {
           "document": "ncert/4/environmental-studies/deap116.pdf",
@@ -197,49 +213,49 @@
         }
       ],
       "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T23:26:38.071Z",
+      "generatedAt": "2026-10-28T04:35:47.242Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If you had no front teeth, how would you eat a guava?",
+      "stem": "If a person has no back teeth, which of the following foods would be difficult to eat?",
       "choices": [
-        "You would eat it like a cat",
-        "You would eat it by chewing it thoroughly",
-        "You would eat it by biting it and then chewing",
-        "You would eat it by swallowing it whole"
+        "Guava",
+        "Roti",
+        "Nectar",
+        "Seeds"
       ],
-      "answerIndex": 3,
-      "solution": "Swallowing a guava whole would be necessary without front teeth, as they are used for biting and initiating the chewing process. Chewing or biting requires front teeth, which are absent in this scenario. The other options assume the ability to chew or bite, which would not be possible without front teeth.",
+      "answerIndex": 1,
+      "solution": "Back teeth are responsible for grinding and chewing tough foods. Roti is a hard, dense food that requires significant grinding, making it difficult to eat without back teeth. Guava and nectar are softer, and seeds can be crushed with front teeth, so they are easier to consume without back teeth.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "अगर आपके सामने के दांत नहीं हैं, तो आप अमरूद कैसे खाएंगे?",
+          "stem": "यदि किसी व्यक्ति के पीछे के दांत नहीं हैं, तो निम्नलिखित भोजनों में से कौन-सा खाना खाने में कठिन होगा?",
           "choices": [
-            "आप इसे बिल्ली की तरह खाएंगे",
-            "आप इसे ठीक से काटकर खाएंगे",
-            "आप इसे काटकर फिर काटेंगे",
-            "आप इसे पूरा निगल जाएंगे"
+            "अमरूद",
+            "रोटी",
+            "रस",
+            "बीज"
           ],
-          "solution": "सामने के दांत न होने पर अमरूद को पूरा निगल लेना आवश्यक होगा, क्योंकि वे काटने और काम करने की प्रक्रिया शुरू करने के लिए उपयोग किए जाते हैं। काटने या काटने के लिए आगे के दांत की आवश्यकता होती है, जो इस स्थिति में अनुपस्थित हैं। अन्य विकल्प चबाने या काटने की क्षमता की धारणा करते हैं, जो आगे के दांत के अभाव में संभव नहीं है।",
+          "solution": "पीछे के दांत कठोर भोजन को चबाने और चूर्ण करने के लिए उत्तरदायी होते हैं। रोटी एक कठोर और घन भोजन है जिसके लिए महत्वपूर्ण चूर्णन की आवश्यकता होती है, जिसे पीछे के दांत बिना खाना कठिन हो जाता है। अमरूद और रस नरम होते हैं, और बीज के साथ सामना करने के लिए सामने के दांत पर्याप्त होते हैं, इसलिए उन्हें पीछे के दांत बिना खाना आसान होता है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology for teeth and eating methods.",
+          "critique": "Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "जर तुम्हाला आगडीचे दात नसतील तर तुम्ही अमेर खाणार कशा प्रकारे खालील?",
+          "stem": "जर एखाद्या व्यक्तीला पाठीमागील दात नसतील, तर खालीलपैकी कोणते खाद्य पदार्थ खाणे कठीण होईल?",
           "choices": [
-            "तुम्ही ते बिलाडीसारखे खालील",
-            "तुम्ही ते चांगले चावून खालील",
-            "तुम्ही ते चावून खालील",
-            "तुम्ही ते पूर्णपणे निकामले खालील"
+            "अमरंद",
+            "रोटी",
+            "रस",
+            "बिया"
           ],
-          "solution": "आगडीचे दात नसल्यास अमेर पूर्णपणे निकामले खाणे आवश्यक असते, कारण ते चावण्यासाठी आणि चावण्याची प्रक्रिया सुरू करण्यासाठी वापरले जातात. चावणे किंवा चावणे आवश्यक असते, जे या परिस्थितीत अस्तित्वात नसते. इतर विकल्पांमध्ये चावणे किंवा चावणे शक्यता असते, जी आगडीचे दात नसल्यास शक्य नसते.",
+          "solution": "पाठीमागील दात खालच्या खाद्य पदार्थांचे चावणे आणि चावणे जबाबदार असतात. रोटी हा एक कठीण, घन खाद्य पदार्थ आहे ज्याचे चावणे खूप मोठ्या प्रमाणात आवश्यक असते, ज्यामुळे पाठीमागील दात नसल्यास खाणे कठीण होईल. अमरंद आणि रस नरम असतात, आणि बिया आग्रही दातांनी चावून टाकता येतात, त्यामुळे ते पाठीमागील दात नसल्यास खाणे सोपे असते.",
           "imageAlt": null,
-          "critique": "The translation is accurate and natural in Marathi, with appropriate terminology used for dental anatomy.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for dental anatomy and food items.",
           "flag": null
         }
       },
@@ -248,20 +264,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Incorrectly assumes front teeth are not needed for eating",
-        "Incorrectly assumes chewing is possible without front teeth",
-        "Incorrectly assumes biting is possible without front teeth",
-        null
+        "Thinks guava can only be eaten with back teeth",
+        null,
+        "Confuses the function of front and back teeth",
+        "Mistakenly believes seeds can only be eaten with back teeth"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The solution is sound and aligns with the reasoning provided. The correct answer is 3, as swallowing whole is the only viable option without front teeth, and the author's reasoning about the other options is valid.",
+      "critique": "The solution is sound and aligns with the correct answer. The reasoning about back teeth being used for grinding and chewing is accurate, and roti being difficult to eat without them is reasonable. The distractors reflect common misconceptions about tooth function.",
       "sources": [
         {
           "document": "ncert/4/environmental-studies/deap116.pdf",
@@ -285,7 +301,7 @@
         }
       ],
       "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T23:26:38.071Z",
+      "generatedAt": "2026-10-28T04:35:47.242Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

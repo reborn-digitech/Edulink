@@ -1,0 +1,701 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T00:15:43.533Z",
+  "finishedAt": "2026-10-28T00:22:32.511Z",
+  "seconds": 409,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh114.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — Probability",
+    "edition": "Reprint 2026-27",
+    "chunks": 12,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2023-24]\n20. Assertion (A) : The probability of getting 6 heads when a unbiased coin is tossed 10 times is\nଵ ଵ଴\n𝐶(10,6) ቀ ቁ ଶ\nReason (R) In a Binomial distribution the probability is given by\nP(X= r) = C (n, r)(𝑝) (𝑞) ௥ ௡ି௥",
+      "[CBSE Class XII Applied Mathematics, sample question paper, 2022-23]\n19. Assertion (A) : Kuhu and Beena are two equally capable badminton players. Probability that Beena\nwill beat Kuhu in 3 games out of 4 is 25%\nReason (R) : The probability of 𝑟 successes in 𝑛 trials, denoted by P(X = 𝑟) is given by\nP(X = 𝑟) = C n r 𝑝 𝑞 𝑟 𝑛−𝑟 , 𝑟 = 0, 1, . . . , 𝑛 where 𝑝 denotes success and 𝑞 denotes failure in each trial. 1\na) (i) b) (ii) c) (iii) d) (iv)",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n15. Which of the following cannot be the probability of an event? 1\n(A) 0.4 (B) 4% (C) 0.04% (D) 4",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n18. Answer – A 1\nSince, the event is most unlikely to happen. Therefore, its probability is 0.0001"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 140623,
+      "in": 38,
+      "out": 33,
+      "rejects": 5,
+      "promptTokens": 37257,
+      "completionTokens": 8281
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 261564,
+      "in": 33,
+      "out": 30,
+      "rejects": 3,
+      "promptTokens": 20444,
+      "completionTokens": 7798
+    },
+    "solver": {
+      "calls": 228,
+      "ms": 114751,
+      "in": 30,
+      "out": 25,
+      "rejects": 5,
+      "promptTokens": 43949,
+      "completionTokens": 2547
+    },
+    "form": {
+      "calls": 6,
+      "ms": 15479,
+      "in": 25,
+      "out": 12,
+      "rejects": 13,
+      "promptTokens": 1481,
+      "completionTokens": 439
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 30,
+      "ms": 5711,
+      "in": 12,
+      "out": 7,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 200935,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16167,
+      "completionTokens": 7061
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 3,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "If a fair coin is tossed 10 times, what is the probability of getting exactly 6 heads?",
+      "ms": {
+        "draft": 12046,
+        "critique": 8197,
+        "solver": 1656,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A bag contains a red ball, a blue ball, and a yellow ball, all of the same size. What is the probability of drawing a yellow ball?",
+      "ms": {
+        "draft": 12046,
+        "critique": 6555,
+        "solver": 11715,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the probability of getting a head when a coin is tossed once?",
+      "ms": {
+        "draft": 12046,
+        "critique": 7043,
+        "solver": 15286,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A bag contains 4 red balls and 1 blue ball. What is the probability of drawing a red ball?",
+      "ms": {
+        "draft": 12046,
+        "critique": 7506,
+        "solver": 1771,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the probability of an event that is impossible to occur?",
+      "ms": {
+        "draft": 3313,
+        "critique": 7147
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the probability of an event that is certain to occur?",
+      "ms": {
+        "draft": 3313,
+        "critique": 6427,
+        "solver": 1275,
+        "form": 2588
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the probability of getting a tail when a coin is tossed once?",
+      "ms": {
+        "draft": 12046,
+        "critique": 6149,
+        "solver": 14482,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the probability of getting a head when a fair coin is tossed?",
+      "ms": {
+        "draft": 3671,
+        "critique": 6474,
+        "solver": 1537,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A card is drawn from a deck of 52 cards. What is the probability that the card is not an ace?",
+      "ms": {
+        "draft": 3313,
+        "critique": 7223,
+        "solver": 14174,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the probability of an event that is impossible?",
+      "ms": {
+        "draft": 4707,
+        "critique": 6103,
+        "solver": 1315,
+        "form": 3142
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A bag contains 5 red balls, 4 blue balls, and 3 green balls. One ball is drawn at random. What is the probability that the ball is not blue?",
+      "ms": {
+        "draft": 3671,
+        "critique": 6527,
+        "solver": 12641
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A piggy bank contains 100 50p coins, 50 ₹1 coins, 20 ₹2 coins and 10 ₹5 coins. What is the probability that a coin that falls out is a ₹5 coin?",
+      "ms": {
+        "draft": 3097,
+        "critique": 5097,
+        "solver": 15657
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a game, an arrow points at numbers 1 to 8. What is the probability that the arrow points at a number greater than 2?",
+      "ms": {
+        "draft": 3097,
+        "critique": 6709
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the probability of an impossible event?",
+      "ms": {
+        "draft": 3097,
+        "critique": 4364,
+        "solver": 1305,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the probability of an event that is impossible to occur?",
+      "ms": {
+        "draft": 2953,
+        "critique": 7920
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A die is thrown once. What is the probability of getting a prime number?",
+      "ms": {
+        "draft": 3097,
+        "critique": 6313,
+        "solver": 11777
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the probability of an event that is certain to occur?",
+      "ms": {
+        "draft": 2953,
+        "critique": 5937,
+        "solver": 1475,
+        "form": 1522
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A fair die is rolled. What is the probability of getting a number less than 5?",
+      "ms": {
+        "draft": 4389,
+        "critique": 6972,
+        "solver": 14986
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the probability of getting a head when a coin is tossed once?",
+      "ms": {
+        "draft": 4046,
+        "critique": 5330,
+        "solver": 1600,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the probability of getting a number 8 in a single throw of a die?",
+      "ms": {
+        "draft": 2953,
+        "critique": 6272,
+        "solver": 1332,
+        "form": 2340
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the probability of getting a number greater than 4 when a die is thrown once?",
+      "ms": {
+        "draft": 4046,
+        "critique": 5054,
+        "solver": 4651
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the probability of getting a number greater than 4 when a die is thrown once?",
+      "ms": {
+        "draft": 12046,
+        "critique": 6526,
+        "solver": 985,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the probability of an event E is 0.6, what is the probability of the event not E?",
+      "ms": {
+        "draft": 3313,
+        "critique": 5443,
+        "solver": 1624,
+        "form": 3475
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A fair die is rolled. What is the probability of getting a number greater than 4?",
+      "ms": {
+        "draft": 3671,
+        "critique": 6873,
+        "solver": 1650,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A piggy bank contains 100 50p coins, 50 ₹1 coins, 20 ₹2 coins and 10 ₹5 coins. What is the probability that a randomly selected coin is not a ₹5 coin?",
+      "ms": {
+        "draft": 4707,
+        "critique": 3718,
+        "solver": 504,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the probability of getting a number less than or equal to 4 in a single throw of a die?",
+      "ms": {
+        "draft": 2953,
+        "critique": 5857,
+        "solver": 1603,
+        "form": 3621
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the probability of getting a number less than or equal to 4 when a die is rolled?",
+      "ms": {
+        "draft": 3313,
+        "critique": 6204,
+        "solver": 1417,
+        "form": 0,
+        "translation": 31201
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the probability of an event?",
+      "ms": {
+        "draft": 3097,
+        "critique": 4528,
+        "solver": 15188,
+        "form": 0,
+        "translation": 17126
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A bag contains 5 red balls and 3 blue balls. What is the probability of drawing a blue ball?",
+      "ms": {
+        "draft": 3313,
+        "critique": 5435,
+        "solver": 1224,
+        "form": 0,
+        "translation": 27206
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A box contains 5 red marbles, 8 white marbles and 4 green marbles. What is the probability of drawing a red marble?",
+      "ms": {
+        "draft": 3097,
+        "critique": 4694,
+        "solver": 12851,
+        "form": 0,
+        "translation": 25337
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A card is drawn at random from a well-shuffled deck of 52 cards. What is the probability of drawing a red card?",
+      "ms": {
+        "draft": 3671,
+        "critique": 5203,
+        "solver": 1387,
+        "form": 0,
+        "translation": 37443
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A die is rolled once. What is the probability of getting a prime number?",
+      "ms": {
+        "draft": 3671,
+        "critique": 8369,
+        "solver": 1342,
+        "form": 0,
+        "translation": 32237
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A box contains 5 red marbles, 8 white marbles and 4 green marbles. What is the probability that a randomly taken marble is not green?",
+      "ms": {
+        "draft": 4707,
+        "critique": 4418,
+        "solver": 864,
+        "form": 0,
+        "translation": 28028
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "A game of chance consists of spinning an arrow which comes to rest pointing at one of the numbers 1, 2, 3, 4, 5, 6, 7, 8. What is the probability that the arrow points at a number greater than 2?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a fair coin is tossed 10 times, what is the probability of getting exactly 6 heads?",
+      "reason": "options 0 and 1 say the same thing (\"C(10,6) × (1/2)^6\" / \"C(10,6) × (1/2)^10\"); options 0 and 2 say the same thing (\"C(10,6) × (1/2)^6\" / \"C(10,6) × (1/2)^6 × (1/2)^4\"); options 0 and 3 say the same thing (\"C(10,6) × (1/2)^6\" / \"C(10,6) × (1/2)\"); options 1 and 2 say the same thing (\"C(10,6) × (1/2)^10\" / \"C(10,6) × (1/2)^6 × (1/2)^4\"); options 1 and 3 say the same thing (\"C(10,6) × (1/2)^10\" / \"C(10,6) × (1/2)\"); options 2 and 3 say the same thing (\"C(10,6) × (1/2)^6 × (1/2)^4\" / \"C(10,6) × (1/2)\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A bag contains a red ball, a blue ball, and a yellow ball, all of the same size. What is the probability of drawing a yellow ball?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the probability of getting a head when a coin is tossed once?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A bag contains 4 red balls and 1 blue ball. What is the probability of drawing a red ball?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the probability of an event that is impossible to occur?",
+      "reason": "the critic finds option 3 correct, the key is 2"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the probability of an event that is certain to occur?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the probability of getting a tail when a coin is tossed once?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the probability of getting a head when a fair coin is tossed?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A card is drawn from a deck of 52 cards. What is the probability that the card is not an ace?",
+      "reason": "options 0 and 2 are the same (\"4/52\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the probability of an event that is impossible?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A bag contains 5 red balls, 4 blue balls, and 3 green balls. One ball is drawn at random. What is the probability that the ball is not blue?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "A card is drawn at random from a standard deck of 52 cards. What is the probability of drawing a red card?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "A bag contains 4 red balls, 3 blue balls, and 5 green balls. A ball is drawn at random. What is the probability that it is not blue?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "A fair coin is tossed 3 times. What is the probability of getting at least one head?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "A number is chosen at random from the numbers 1 to 30. What is the probability that it is a prime number?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A piggy bank contains 100 50p coins, 50 ₹1 coins, 20 ₹2 coins and 10 ₹5 coins. What is the probability that a coin that falls out is a ₹5 coin?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a game, an arrow points at numbers 1 to 8. What is the probability that the arrow points at a number greater than 2?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the probability of an impossible event?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the probability of an event that is impossible to occur?",
+      "reason": "the critic finds option 3 correct, the key is 2"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A die is thrown once. What is the probability of getting a prime number?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the probability of an event that is certain to occur?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A fair die is rolled. What is the probability of getting a number less than 5?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the probability of getting a head when a coin is tossed once?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the probability of getting a number 8 in a single throw of a die?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the probability of getting a number greater than 4 when a die is thrown once?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the probability of getting a number greater than 4 when a die is thrown once?",
+      "reason": "near-duplicate of served question cmvgr1slv04q6gpfh01lfrrlm (cosine 0.923 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If the probability of an event E is 0.6, what is the probability of the event not E?",
+      "reason": "near-duplicate of served question cmvndtfpx047hgp210l4p3fq2 (cosine 0.920 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A fair die is rolled. What is the probability of getting a number greater than 4?",
+      "reason": "near-duplicate of served question cmvgr1slv04q6gpfh01lfrrlm (cosine 0.933 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A piggy bank contains 100 50p coins, 50 ₹1 coins, 20 ₹2 coins and 10 ₹5 coins. What is the probability that a randomly selected coin is not a ₹5 coin?",
+      "reason": "near-duplicate of served question cmvjwpa7p0i00gpfhgrk5do5n (cosine 0.925 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the probability of getting a number less than or equal to 4 in a single throw of a die?",
+      "reason": "near-duplicate of batch item \"What is the probability of getting a number less t…\" (cosine 0.964 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

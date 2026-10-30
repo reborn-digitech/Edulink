@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-22T07:54:38.184Z",
+  "generatedAt": "2026-10-29T21:15:52.683Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the unit of heat in the SI system?",
+      "difficulty": 2,
+      "stem": "What is the main purpose of a thermometer?",
       "choices": [
-        "Calorie",
-        "Joule",
-        "Celsius",
-        "Fahrenheit"
+        "To measure the mass of an object",
+        "To measure the temperature of an object",
+        "To measure the volume of an object",
+        "To measure the density of an object"
       ],
       "answerIndex": 1,
-      "solution": "Joule is the correct unit of heat in the SI system because it is the standard unit used to measure energy, including heat. Calorie is a unit of energy but not the SI unit. Celsius and Fahrenheit are units of temperature, not heat.",
+      "solution": "The correct answer is 'To measure the temperature of an object' because a thermometer is designed for this specific purpose. The other options describe different physical properties that are not measured by a thermometer.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "सी. आई. प्रणाली में ऊष्मा का मात्रक क्या है?",
+          "stem": "थर्मामीटर का मुख्य उद्देश्य क्या है?",
           "choices": [
-            "कैलोरी",
-            "जूल",
-            "सेल्सियस",
-            "फारेनहाइट"
+            "किसी वस्तु के द्रव्यमान को मापना",
+            "किसी वस्तु के तापमान को मापना",
+            "किसी वस्तु के आयतन को मापना",
+            "किसी वस्तु के घनत्व को मापना"
           ],
-          "solution": "जूल सी. आई. प्रणाली में ऊष्मा का सही मात्रक है क्योंकि यह ऊर्जा को मापने के लिए उपयोग किया जाने वाला मानक मात्रक है, जिसमें ऊष्मा भी शामिल है। कैलोरी ऊर्जा का एक मात्रक है लेकिन सी. आई. मात्रक नहीं है। सेल्सियस और फारेनहाइट तापमान के मात्रक हैं, ऊष्मा के नहीं।",
+          "solution": "सही उत्तर 'किसी वस्तु के तापमान को मापना' है क्योंकि थर्मामीटर इस विशिष्ट उद्देश्य के लिए डिज़ाइन किया गया है। अन्य विकल्प किसी अन्य भौतिक गुण को दर्शाते हैं जिन्हें थर्मामीटर द्वारा मापा नहीं जाता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard scientific terminology appropriate for a Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "हीटचे एसआय प्रणालीत एकक काय आहे?",
+          "stem": "तापमापकाचा मुख्य उद्देश काय आहे?",
           "choices": [
-            "कॅलरी",
-            "जूल",
-            "सेल्सियस",
-            "फॅरेनहाइट"
+            "एका वस्तूचा द्रव्यमान मोजणे",
+            "एका वस्तूचा तापमान मोजणे",
+            "एका वस्तूचा आयतन मोजणे",
+            "एका वस्तूचा घनत्व मोजणे"
           ],
-          "solution": "जूल हे एसआय प्रणालीत हीटचे योग्य एकक आहे कारण ते ऊर्जा मोजण्यासाठी वापरले जाणारे मानक एकक आहे, ज्यामध्ये हीट समाविष्ट आहे. कॅलरी ऊर्जेचे एकक आहे परंतु एसआय एकक नाही. सेल्सियस आणि फॅरेनहाइट तापमानाचे एकक आहेत, हीटचे नाहीत.",
+          "solution": "सही उत्तर 'एका वस्तूचा तापमान मोजणे' आहे कारण तापमापक या विशिष्ट उद्देशासाठी डिझाइन केलेला आहे. इतर विकल्पांमध्ये तापमापकाद्वारे मोजले जाणारे विशिष्ट भौतिक गुणधर्म नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terms used.",
           "flag": null
         }
       },
@@ -72,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses calorie with SI unit",
+        "confuses the function of a thermometer",
         null,
-        "Thinks Celsius is a unit of heat",
-        "Thinks Fahrenheit is a unit of heat"
+        "describes the function of other instruments",
+        "describes the function of other instruments"
       ],
       "solverAnswers": [
         1,
@@ -85,99 +85,103 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is Joule, as it is the SI unit of heat. The other options are common non-SI units or temperature scales, and the author's reasoning for the distractors aligns with typical student misconceptions.",
+      "critique": "The question is clear and the correct answer is unambiguous. The distractors are plausible for students who confuse the functions of different measuring instruments.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 119,
-          "pageStart": 104,
-          "pageEnd": 105,
-          "headingPath": [
-            "14. Measurement and Effects of Heat"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 120,
-          "pageStart": 105,
-          "pageEnd": 106,
-          "headingPath": [
-            "14. Measurement and Effects of Heat"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 121,
-          "pageStart": 106,
-          "pageEnd": 107,
-          "headingPath": [
-            "14. Measurement and Effects of Heat"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 122,
+          "ordinal": 124,
           "pageStart": 107,
-          "pageEnd": 107,
-          "headingPath": [
-            "14. Measurement and Effects of Heat"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 123,
-          "pageStart": 107,
-          "pageEnd": 107,
+          "pageEnd": 108,
           "headingPath": [
             "14. Measurement and Effects of Heat",
-            "K = C + 273.15"
+            "C = 5 x"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 125,
+          "pageStart": 108,
+          "pageEnd": 108,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "or,"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 126,
+          "pageStart": 108,
+          "pageEnd": 109,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "or,"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 127,
+          "pageStart": 109,
+          "pageEnd": 110,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "or,"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 128,
+          "pageStart": 110,
+          "pageEnd": 110,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "DT = T – T Q = m C , DT = T – T"
           ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:54:38.184Z",
+      "generatedAt": "2026-10-29T21:15:52.683Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "If 300 cal of heat is given to water and its temperature changes by 10°C, what is the mass of the water?",
+      "difficulty": 2,
+      "stem": "What is the primary effect of heat on a solid when it is heated?",
       "choices": [
-        "300 gm",
-        "30 gm",
-        "45 gm",
-        "50 gm"
+        "It changes shape",
+        "It expands",
+        "It changes state",
+        "It contracts"
       ],
       "answerIndex": 1,
-      "solution": "The formula used is heat (cal) = mass (gm) × temperature change (°C). Plugging in the values, 300 cal = mass × 10°C, so mass = 300 / 10 = 30 gm. The other options are incorrect because they do not follow the formula correctly.",
-      "checkExpr": "300/10",
+      "solution": "When a solid is heated, it expands. This is a direct effect of heat on solids. The correct answer is 'It expands'. The other options are incorrect because they do not describe the primary effect of heat on solids.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि पानी को 300 कैलोरी ऊष्मा दी जाती है और इसके तापमान में 10°C का परिवर्तन होता है, तो पानी का द्रव्यमान क्या है?",
+          "stem": "ठोस के ऊष्मा का प्रमुख प्रभाव क्या होता है जब इसे गर्म किया जाता है?",
           "choices": [
-            "300 ग्राम",
-            "30 ग्राम",
-            "45 ग्राम",
-            "50 ग्राम"
+            "यह आकृति बदल जाती है",
+            "यह फैल जाता है",
+            "यह अवस्था बदल जाता है",
+            "यह सिकुड़ जाता है"
           ],
-          "solution": "उपयोग किया गया सूत्र है ऊष्मा (कैलोरी) = द्रव्यमान (ग्राम) × तापमान परिवर्तन (°C)। मानों को प्रतिस्थापित करने पर, 300 कैलोरी = द्रव्यमान × 10°C, अतः द्रव्यमान = 300 / 10 = 30 ग्राम। अन्य विकल्प गलत हैं क्योंकि वे सूत्र का सही अनुसरण नहीं करते।",
+          "solution": "जब एक ठोस को गर्म किया जाता है, तो यह फैल जाता है। यह ठोस पर ऊष्मा का सीधा प्रभाव है। सही उत्तर 'यह फैल जाता है' है। अन्य विकल्प गलत हैं क्योंकि वे ठोस पर ऊष्मा के प्रमुख प्रभाव का वर्णन नहीं करते हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, technical terms are standard in Hindi textbooks, and the logic of the solution matches the original.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "जर 300 कॅलोरी ऊष्मा पाण्याला दिली जात असेल आणि त्याचे तापमान 10°C ने बदलत असेल, तर पाण्याचा द्रव्यमान किती असेल?",
+          "stem": "ठोस वर उष्णता लागल्यास त्याचा प्राथमिक परिणाम काय असतो?",
           "choices": [
-            "300 ग्रॅम",
-            "30 ग्रॅम",
-            "45 ग्रॅम",
-            "50 ग्रॅम"
+            "ते आकृती बदलते",
+            "ते विस्तारते",
+            "ते अवस्था बदलते",
+            "ते अस्ताव्यस्त होते"
           ],
-          "solution": "उष्मा (कॅलोरी) = द्रव्यमान (ग्रॅम) × तापमान बदल (°C). मूल्ये ठेवल्यास, 300 कॅलोरी = द्रव्यमान × 10°C, म्हणून द्रव्यमान = 300 / 10 = 30 ग्रॅम. इतर विकल्प अचूक नाहीत कारण ते सूत्राचे योग्य पालन करत नाहीत.",
+          "solution": "ठोस उष्णता लागल्यास ते विस्तारते. हा ठोसावर उष्णतेचा सीधा परिणाम आहे. योग्य उत्तर 'ते विस्तारते' आहे. इतर विकल्प चुकीचे आहेत कारण ते ठोसावर उष्णतेच्या प्राथमिक परिणामाचे वर्णन करत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi technical terms.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
           "flag": null
         }
       },
@@ -186,10 +190,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses heat (calories) with mass, assuming 1 cal = 1 gm",
+        "confuses the effect of heat on solids with that on liquids",
         null,
-        "Confuses the heat required with the mass, using 300 cal / 10°C = 30, but adds 15 to it as a common mistake",
-        "Confuses the formula with mass = heat / temperature change, but incorrectly uses 10 instead of 1 calorie per gram."
+        "refers to the change of state, which is not the primary effect",
+        "incorrectly states that heat causes contraction"
       ],
       "solverAnswers": [
         1,
@@ -199,121 +203,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The solution is correct and follows the formula Q = m × ΔT. The correct answer is 30 gm, and the author's reasoning for the distractors aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 119,
-          "pageStart": 104,
-          "pageEnd": 105,
-          "headingPath": [
-            "14. Measurement and Effects of Heat"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 120,
-          "pageStart": 105,
-          "pageEnd": 106,
-          "headingPath": [
-            "14. Measurement and Effects of Heat"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 121,
-          "pageStart": 106,
-          "pageEnd": 107,
-          "headingPath": [
-            "14. Measurement and Effects of Heat"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 122,
-          "pageStart": 107,
-          "pageEnd": 107,
-          "headingPath": [
-            "14. Measurement and Effects of Heat"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 123,
-          "pageStart": 107,
-          "pageEnd": 107,
-          "headingPath": [
-            "14. Measurement and Effects of Heat",
-            "K = C + 273.15"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:54:38.184Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "A copper rod and an iron rod, both of the same length, are heated by the same temperature. If the coefficient of linear expansion of copper is 0.000017 (1/C) and that of iron is 0.000012 (1/C), which rod will expand more?",
-      "choices": [
-        "Copper rod",
-        "Iron rod",
-        "Both expand equally",
-        "Cannot be determined"
-      ],
-      "answerIndex": 0,
-      "solution": "The copper rod will expand more because it has a higher coefficient of linear expansion. The option 'Iron rod' is incorrect because it has a lower expansion coefficient. The option 'Both expand equally' is incorrect because the coefficients are different. The option 'Cannot be determined' is incorrect because the expansion depends on the given coefficients.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक तांबे की छड़ और एक लोहे की छड़, दोनों समान लंबाई की हैं, को समान तापमान बढ़ाया जाता है। यदि तांबे के रैखिक प्रसार गुणांक 0.000017 (1/°C) है और लोहे का 0.000012 (1/°C) है, तो कौन सी छड़ अधिक फैलेगी?",
-          "choices": [
-            "तांबे की छड़",
-            "लोहे की छड़",
-            "दोनों समान रूप से फैलते हैं",
-            "निर्धारित नहीं किया जा सकता"
-          ],
-          "solution": "तांबे की छड़ अधिक फैलेगी क्योंकि इसका रैखिक प्रसार गुणांक अधिक है। विकल्प 'लोहे की छड़' गलत है क्योंकि इसका प्रसार गुणांक कम है। विकल्प 'दोनों समान रूप से फैलते हैं' गलत है क्योंकि गुणांक अलग-अलग हैं। विकल्प 'निर्धारित नहीं किया जा सकता' गलत है क्योंकि प्रसार दिए गए गुणांक पर निर्भर करता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "तांब्याचा छडा आणि लोखंडाचा छडा, दोन्ही समान लांबीचे, एकसारख्या तापमानाने गरम केले जातात. जर तांब्याचा रेखीय विस्ताराचा गुणांक 0.000017 (1/C) आणि लोखंडाचा 0.000012 (1/C) असेल, तर कोणता छडा अधिक विस्तार करेल?",
-          "choices": [
-            "तांब्याचा छडा",
-            "लोखंडाचा छडा",
-            "दोन्ही एकसारखे विस्तार करतात",
-            "निश्चित करता येत नाही"
-          ],
-          "solution": "तांब्याचा छडा अधिक विस्तार करेल कारण त्याचा रेखीय विस्ताराचा गुणांक जास्त आहे. 'लोखंडाचा छडा' विकल्प चूक आहे कारण त्याचा विस्ताराचा गुणांक कमी आहे. 'दोन्ही एकसारखे विस्तार करतात' विकल्प चूक आहे कारण गुणांक वेगळे आहेत. 'निश्चित करता येत नाही' विकल्प चूक आहे कारण विस्तार दिलेल्या गुणांकावर अवलंबून आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses the expansion coefficients of copper and iron",
-        "assumes equal expansion without considering coefficients",
-        "ignores the effect of the expansion coefficient"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and logically follows from the given coefficients. The copper rod has a higher coefficient of linear expansion, so it will expand more when heated by the same temperature.",
+      "critique": "The question is well-constructed. The correct answer is 'It expands,' which is the primary effect of heat on solids. The other options represent common misconceptions or secondary effects.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -357,7 +247,351 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:54:38.184Z",
+      "generatedAt": "2026-10-29T21:15:52.683Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens to the kinetic energy of atoms in a hot object when it is placed in contact with a cold object?",
+      "choices": [
+        "It decreases",
+        "It increases",
+        "It remains the same",
+        "It becomes zero"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is 'It decreases' because when a hot object is placed in contact with a cold object, heat is transferred from the hot object to the cold object. This causes the kinetic energy of the atoms in the hot object to decrease. The option 'It increases' is incorrect because it describes the kinetic energy of the cold object, not the hot one. 'It remains the same' and 'It becomes zero' are incorrect as the transfer of heat always affects the kinetic energy of the atoms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गर्म वस्तु में परमाणुओं की गतिज ऊर्जा पर क्या प्रभाव पड़ता है जब इसे ठंडी वस्तु के संपर्क में रखा जाता है?",
+          "choices": [
+            "यह कम हो जाती है",
+            "यह बढ़ जाती है",
+            "यह एक ही रहती है",
+            "यह शून्य हो जाती है"
+          ],
+          "solution": "सही उत्तर 'यह कम हो जाती है' है क्योंकि जब एक गर्म वस्तु को ठंडी वस्तु के संपर्क में रखा जाता है, तो गर्म वस्तु से ठंडी वस्तु में ऊष्मा का संचरण होता है। इससे गर्म वस्तु के परमाणुओं की गतिज ऊर्जा कम हो जाती है। 'यह बढ़ जाती है' विकल्प गलत है क्योंकि यह ठंडी वस्तु की गतिज ऊर्जा का वर्णन करता है, न कि गर्म वस्तु की। 'यह एक ही रहती है' और 'यह शून्य हो जाती है' गलत हैं क्योंकि ऊष्मा के संचरण के कारण परमाणुओं की गतिज ऊर्जा हमेशा प्रभावित होती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology commonly found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "उष्ण वस्तूमधील अणूंच्या गतिज ऊर्जेवर काय परिणाम होतो जेव्हा ती थंड वस्तूशी संपर्कात असते?",
+          "choices": [
+            "ती कमी होते",
+            "ती वाढते",
+            "ती अचल राहते",
+            "ती शून्य होते"
+          ],
+          "solution": "बरोबर उत्तर 'ती कमी होते' आहे कारण जेव्हा उष्ण वस्तू थंड वस्तूशी संपर्कात असते तेव्हा उष्णता उष्ण वस्तूपासून थंड वस्तूकडे पसरते. ह्यामुळे उष्ण वस्तूमधील अणूंच्या गतिज ऊर्जेमध्ये कमी होते. 'ती वाढते' हे उत्तर चूक आहे कारण ते थंड वस्तूच्या गतिज ऊर्जेचे वर्णन करते, नाही की उष्ण वस्तूचे. 'ती अचल राहते' आणि 'ती शून्य होते' हे उत्तर चूक आहेत कारण उष्णतेचा हस्तांतर अणूंच्या गतिज ऊर्जेवर नेहमी परिणाम करतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "describes the effect on the cold object",
+        "ignores the process of heat transfer",
+        "misunderstands the concept of energy transfer"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that heat transfer causes the kinetic energy of the hot object to decrease. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 124,
+          "pageStart": 107,
+          "pageEnd": 108,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "C = 5 x"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 125,
+          "pageStart": 108,
+          "pageEnd": 108,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "or,"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 126,
+          "pageStart": 108,
+          "pageEnd": 109,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "or,"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 127,
+          "pageStart": 109,
+          "pageEnd": 110,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "or,"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 128,
+          "pageStart": 110,
+          "pageEnd": 110,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "DT = T – T Q = m C , DT = T – T"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:15:52.683Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "A solid expands when heated. The expansion of a solid can be described in terms of linear, areal, and volumetric expansion. Which of these is the expansion of the area of a solid?",
+      "choices": [
+        "Linear expansion",
+        "Areal expansion",
+        "Volumetric expansion",
+        "Thermal expansion"
+      ],
+      "answerIndex": 1,
+      "solution": "Areal expansion refers to the increase in the area of a solid when heated. The correct answer is 'Areal expansion'. The other options are incorrect because they refer to different types of expansion.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ठोस गर्म होने पर फैलता है। एक ठोस के फैलाव का वर्णन रैखिक, क्षेत्रीय और आयतन में फैलाव के रूप में किया जा सकता है। इनमें से कौन-सा ठोस के क्षेत्र के फैलाव का वर्णन करता है?",
+          "choices": [
+            "रैखिक फैलाव",
+            "क्षेत्रीय फैलाव",
+            "आयतन फैलाव",
+            "ऊष्मीय फैलाव"
+          ],
+          "solution": "क्षेत्रीय फैलाव गर्म होने पर एक ठोस के क्षेत्र में वृद्धि को संदर्भित करता है। सही उत्तर 'क्षेत्रीय फैलाव' है। अन्य विकल्प गलत हैं क्योंकि वे अलग-अलग प्रकार के फैलाव को संदर्भित करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका घनाचा उष्णतेने विस्तार होतो. घनाचा विस्तार रेखीय, क्षेत्रफळीय आणि आयतनीय विस्ताराच्या शब्दांमध्ये वर्णन केला जाऊ शकतो. घनाच्या क्षेत्रफळाचा विस्तार कोणता आहे?",
+          "choices": [
+            "रेखीय विस्तार",
+            "क्षेत्रफळीय विस्तार",
+            "आयतनीय विस्तार",
+            "तापमानीय विस्तार"
+          ],
+          "solution": "क्षेत्रफळीय विस्तार हा उष्णतेने घनाच्या क्षेत्रफळात वाढ होण्याला म्हणतात. योग्य उत्तर 'क्षेत्रफळीय विस्तार' आहे. इतर पर्याय अयोग्य आहेत कारण ते वेगवेगळ्या विस्तारांचा संदर्भ देतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terms used in Marathi science textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "refers to the linear expansion, which is the increase in length",
+        null,
+        "refers to the volumetric expansion, which is the increase in volume",
+        "uses a general term instead of the specific type"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the correct answer is 'Areal expansion'. The author's reasoning is accurate and matches the correct understanding of thermal expansion.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 129,
+          "pageStart": 110,
+          "pageEnd": 110,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "DT = T – T = DT"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 130,
+          "pageStart": 111,
+          "pageEnd": 111,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "DT = T – T = DT"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 131,
+          "pageStart": 111,
+          "pageEnd": 112,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "DT = T – T = DT"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 132,
+          "pageStart": 112,
+          "pageEnd": 113,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "DT = T – T = DT"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:15:52.683Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the temperature in Celsius and Fahrenheit that is the same?",
+      "choices": [
+        "-40 °C",
+        "-20 °C",
+        "0 °C",
+        "40 °C"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is -40 °C because the formula shows that at -40, the Celsius and Fahrenheit scales are equal. The other options do not satisfy the condition where Celsius and Fahrenheit are the same. This requires understanding the relationship between the two scales, which is a deeper insight than just recalling the formula.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सेल्सियस और फारेनहाइट में कौन सा तापमान एक समान होता है?",
+          "choices": [
+            "-40 °C",
+            "-20 °C",
+            "0 °C",
+            "40 °C"
+          ],
+          "solution": "सही उत्तर -40 °C है क्योंकि सूत्र दर्शाता है कि -40 पर सेल्सियस और फारेनहाइट पैमाने समान होते हैं। अन्य विकल्प तब संतुष्ट नहीं होते जब सेल्सियस और फारेनहाइट समान होते हैं। इसके लिए दोनों पैमानों के बीच संबंध की समझ आवश्यक होती है, जो कि सूत्र को याद रखने से गहरा अंतर्दृष्टि है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer (-40 °C) is in the same position as in the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "सेल्सियस आणि फॅरेनहाइटमध्ये समान असलेले तापमान किती आहे?",
+          "choices": [
+            "-40 °C",
+            "-20 °C",
+            "0 °C",
+            "40 °C"
+          ],
+          "solution": "हा योग्य उत्तर -40 °C आहे कारण सूत्राने दाखवल्याप्रमाणे -40 वर सेल्सियस आणि फॅरेनहाइट मापन पद्धती समान असतात. इतर विकल्पांमध्ये सेल्सियस आणि फॅरेनहाइट समान असत नाहीत. हे दोन मापन पद्धतींमधील संबंधाच्या अधिक गहन बुद्धीच्या आवश्यकतेसह येते, जे सूत्राच्या आठवणीपेक्षा अधिक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi terms for temperature scales.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student confuses the formula for converting Celsius to Fahrenheit and incorrectly solves the equation.",
+        "Student confuses the point where Celsius and Fahrenheit are equal with the freezing point of water",
+        "Student confuses the temperature where Celsius and Fahrenheit are equal with the temperature where they have the same numerical value but opposite signs."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is -40 °C, as it is the only temperature where Celsius and Fahrenheit are numerically equal. The author's reasoning is sound, and the misconceptions listed for the distractors are plausible.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 124,
+          "pageStart": 107,
+          "pageEnd": 108,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "C = 5 x"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 125,
+          "pageStart": 108,
+          "pageEnd": 108,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "or,"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 126,
+          "pageStart": 108,
+          "pageEnd": 109,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "or,"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 127,
+          "pageStart": 109,
+          "pageEnd": 110,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "or,"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 128,
+          "pageStart": 110,
+          "pageEnd": 110,
+          "headingPath": [
+            "14. Measurement and Effects of Heat",
+            "DT = T – T Q = m C , DT = T – T"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T21:15:52.683Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

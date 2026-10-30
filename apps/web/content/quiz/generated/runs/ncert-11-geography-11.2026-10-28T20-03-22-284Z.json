@@ -1,0 +1,765 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T20:03:22.284Z",
+  "finishedAt": "2026-10-28T20:12:23.278Z",
+  "seconds": 541,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy211.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 11 — World Climate and Climate Change",
+    "edition": "Reprint 2026-27",
+    "chunks": 12,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)",
+      "[CBSE Class XII Geography, marking scheme, 2025-26]\n18. i. Griffith Taylor 1+1+1=3\nii. Human beings can conquer nature by obeying it. They have\nto respond to the red signals and can proceed in their\npursuits of development when nature permits the\nmodifications. It means that possibilities can be created\nwithin the limits which do not damage the environment and\nthere is no free run without accidents. The neo-determinism\nconceptually attempts to bring a balance nullifying the\n‘either’ ‘or’ dichotomy.\niii. The free run which the developed economies attempted to\ntake has already resulted in the greenhouse effect, ozone\nlayer depletion, global warming, receding glaciers and\ndegrading lands.",
+      "[CBSE Class XII Geography, marking scheme, 2023-24]\n With social and cultural Development, humans develop better and more\nefficient technology.\n They move from a state of Necessity to a state of freedom.\n They create Possibilities with the resources obtained from the\nenvironment.\n Human has modified their surroundings according to their needs.\n Imprints of human may be seen everywhere on the earth.\nOR\nAns. The three dualism in geography which started wide-ranging debates in\nthe discipline of geography are:\na. Whether geography as a discipline should be a law making/ the orising\n(nomothetic) or descriptive (idiographic).\nb. Whether the approach of the study should be regional or systematic?\nc. Whether geographical phenomena can be interpr",
+      "[CBSE Class XII Geography, marking scheme, 2024-25]\n7. Ans: C Phase III 1951-1981"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 151329,
+      "in": 41,
+      "out": 39,
+      "rejects": 2,
+      "promptTokens": 33816,
+      "completionTokens": 8487
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 333911,
+      "in": 39,
+      "out": 36,
+      "rejects": 3,
+      "promptTokens": 22983,
+      "completionTokens": 8900
+    },
+    "solver": {
+      "calls": 272,
+      "ms": 152639,
+      "in": 36,
+      "out": 30,
+      "rejects": 6,
+      "promptTokens": 52598,
+      "completionTokens": 3120
+    },
+    "form": {
+      "calls": 16,
+      "ms": 50223,
+      "in": 30,
+      "out": 12,
+      "rejects": 18,
+      "promptTokens": 4021,
+      "completionTokens": 1292
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 4362,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 568106,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 31455,
+      "completionTokens": 16911
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is a correct sequence of climatic groups in Koeppen's classification?",
+      "ms": {
+        "draft": 3367,
+        "critique": 6976,
+        "solver": 2561,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following best describes the relationship between vegetation and climate?",
+      "ms": {
+        "draft": 3367,
+        "critique": 6419,
+        "solver": 1715,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following can be inferred from the passage about the classification of climate by Koeppen?",
+      "ms": {
+        "draft": 3367,
+        "critique": 6927,
+        "solver": 1471,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following climates is characterised by a winter dry season?",
+      "ms": {
+        "draft": 3367,
+        "critique": 6747,
+        "solver": 15488,
+        "form": 3276
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of the Mediterranean climate?",
+      "ms": {
+        "draft": 3664,
+        "critique": 7277,
+        "solver": 1204,
+        "form": 1911
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which climate type is described as having a short growing season and low-growing vegetation?",
+      "ms": {
+        "draft": 3664,
+        "critique": 7010,
+        "solver": 1707,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the marine west coast climate?",
+      "ms": {
+        "draft": 3664,
+        "critique": 7993,
+        "solver": 1770
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which gas is the primary greenhouse gas in the atmosphere?",
+      "ms": {
+        "draft": 3406,
+        "critique": 6227
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following is a key difference between the subtropical steppe and the subtropical desert climates?",
+      "ms": {
+        "draft": 3664,
+        "critique": 6767,
+        "solver": 16147,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an astronomical cause of climate change?",
+      "ms": {
+        "draft": 3406,
+        "critique": 6193
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the number of sunspots increases, what is the likely effect on the climate?",
+      "ms": {
+        "draft": 3406,
+        "critique": 6374,
+        "solver": 1763
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the 10,000-year inter-glacial period mentioned in the passage?",
+      "ms": {
+        "draft": 3406,
+        "critique": 7001,
+        "solver": 14217,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a characteristic of the 'A' type of climate in Koeppen's classification?",
+      "ms": {
+        "draft": 4678,
+        "critique": 7302,
+        "solver": 12727
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following factors determines the effectiveness of a greenhouse gas?",
+      "ms": {
+        "draft": 4678,
+        "critique": 5822,
+        "solver": 11457,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage states that the warming of the 20th century occurred in two periods. Which of the following years is supposed to have recorded the warmest temperature the world over?",
+      "ms": {
+        "draft": 4678,
+        "critique": 6354,
+        "solver": 12770
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses the concept of global warming and its effects. Which of the following best describes the 'genetic' system of climate classification compared to the 'empirical' system?",
+      "ms": {
+        "draft": 4678,
+        "critique": 6731,
+        "solver": 7695
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a greenhouse gas?",
+      "ms": {
+        "draft": 4124,
+        "critique": 5186,
+        "solver": 2323,
+        "form": 2782
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the greenhouse effect?",
+      "ms": {
+        "draft": 4124,
+        "critique": 4995,
+        "solver": 1708,
+        "form": 5017
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a humid climate according to Koeppen's classification?",
+      "ms": {
+        "draft": 4124,
+        "critique": 6939,
+        "solver": 1250
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a natural cause of climate change mentioned in the passage?",
+      "ms": {
+        "draft": 2955,
+        "critique": 6781,
+        "solver": 1595,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the term 'neodeterminism' as mentioned in the passage?",
+      "ms": {
+        "draft": 4124,
+        "critique": 5266,
+        "solver": 16994,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the relationship between human activities and climate change?",
+      "ms": {
+        "draft": 2955,
+        "critique": 8372,
+        "solver": 15250,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what does the term 'greenhouse effect' refer to?",
+      "ms": {
+        "draft": 2955,
+        "critique": 6526,
+        "solver": 1623,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage suggest about the role of human beings in the context of climate change?",
+      "ms": {
+        "draft": 2955,
+        "critique": 6326,
+        "solver": 12118,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the significance of the 'Little Ice Age' in understanding climate change?",
+      "ms": {
+        "draft": 2955,
+        "critique": 7236,
+        "solver": 16166,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a natural climate fluctuation mentioned in the passage?",
+      "ms": {
+        "draft": 2955,
+        "critique": 7190,
+        "solver": 1084,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which climate type is found in the interior of continents and is characterised by a lack of maritime influence?",
+      "ms": {
+        "draft": 3336,
+        "critique": 8308
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the capital letter 'A' denote in Koeppen's classification of climates?",
+      "ms": {
+        "draft": 3367,
+        "critique": 6458,
+        "solver": 1970,
+        "form": 2828,
+        "translation": 37083
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which climatic group, according to Koeppen, is characterised by an average temperature of the coldest month being 18°C or higher?",
+      "ms": {
+        "draft": 4753,
+        "critique": 6677,
+        "solver": 1229,
+        "form": 1873,
+        "translation": 41357
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of climate is described as having a dry winter and a hot, dry summer?",
+      "ms": {
+        "draft": 3336,
+        "critique": 6419,
+        "solver": 1802,
+        "form": 3091,
+        "translation": 46554
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of the tropical humid climate?",
+      "ms": {
+        "draft": 3367,
+        "critique": 6275,
+        "solver": 1211,
+        "form": 5378,
+        "translation": 44677
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following regions is most likely to have a humid subtropical climate?",
+      "ms": {
+        "draft": 3664,
+        "critique": 6866,
+        "solver": 1687,
+        "form": 3105,
+        "translation": 49155
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a consequence of global warming?",
+      "ms": {
+        "draft": 4124,
+        "critique": 4767,
+        "solver": 1275,
+        "form": 4033,
+        "translation": 40461
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which climate type is associated with the presence of permafrost and low-growing vegetation?",
+      "ms": {
+        "draft": 3336,
+        "critique": 7229,
+        "solver": 1283,
+        "form": 3550,
+        "translation": 42745
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In which region would you expect to find a climate that is influenced by cold currents and has mild winters?",
+      "ms": {
+        "draft": 3336,
+        "critique": 6602,
+        "solver": 1623,
+        "form": 2642,
+        "translation": 39110
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the impact of volcanic eruptions on the climate?",
+      "ms": {
+        "draft": 3406,
+        "critique": 7341,
+        "solver": 11375,
+        "form": 4651,
+        "translation": 58239
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the influence of the subtropical high on the Mediterranean climate?",
+      "ms": {
+        "draft": 3664,
+        "critique": 7680,
+        "solver": 1507,
+        "form": 3576,
+        "translation": 55119
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the time taken for atmospheric CO2 to adjust to changes in sources to sinks important in the context of climate change?",
+      "ms": {
+        "draft": 3406,
+        "critique": 7908,
+        "solver": 16798,
+        "form": 3373,
+        "translation": 49045
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the impact of greenhouse gases on the Earth's temperature?",
+      "ms": {
+        "draft": 4124,
+        "critique": 5587,
+        "solver": 1903,
+        "form": 4055,
+        "translation": 60557
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following groups of four climates represents humid climates according to Koeppen's system?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is a correct sequence of climatic groups in Koeppen's classification?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"A, B, C, D, E\" / \"B, C, D, A, E\"); options 0 and 2 say the same thing (\"A, B, C, D, E\" / \"C, D, E, A, B\"); options 0 and 3 say the same thing (\"A, B, C, D, E\" / \"E, D, C, B, A\"); options 1 and 2 say the same thing (\"B, C, D, A, E\" / \"C, D, E, A, B\"); options 1 and 3 say the same thing (\"B, C, D, A, E\" / \"E, D, C, B, A\"); options 2 and 3 say the same thing (\"C, D, E, A, B\" / \"E, D, C, B, A\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, which of the following best describes the relationship between vegetation and climate?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following can be inferred from the passage about the classification of climate by Koeppen?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following climates is characterised by a winter dry season?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of the Mediterranean climate?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the characteristics of the marine west coast …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which climate type is described as having a short growing season and low-growing vegetation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is true about the marine west coast climate?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which gas is the primary greenhouse gas in the atmosphere?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, which of the following is a key difference between the subtropical steppe and the subtropical desert climates?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of an astronomical cause of climate change?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the number of sunspots increases, what is the likely effect on the climate?",
+      "reason": "the solver picked option 1 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the significance of the 10,000-year inter-glacial period mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a characteristic of the 'A' type of climate in Koeppen's classification?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following factors determines the effectiveness of a greenhouse gas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (52 vs 29 characters); distractor 3's reason is not a one-line misconception (\"A completely incorrect and irrelevant factor, not mentioned …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The passage states that the warming of the 20th century occurred in two periods. Which of the following years is supposed to have recorded the warmest temperature the world over?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage discusses the concept of global warming and its effects. Which of the following best describes the 'genetic' system of climate classification compared to the 'empirical' system?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "According to Koeppen's classification, which climatic group is defined by a dry season and is indicated by the small letter 'w'?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a greenhouse gas?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not a distractor here, it is the correct o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the greenhouse effect?",
+      "reason": "options 0 and 1 say the same thing (\"A process where the Earth's atmosphere traps heat\" / \"A process where the Earth's atmosphere releases heat\"); options 2 and 3 say the same thing (\"A process where the Earth's atmosphere reflects sunlight\" / \"A process where the Earth's atmosphere blocks sunlight\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is an example of a humid climate according to Koeppen's classification?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a natural cause of climate change mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best describes the term 'neodeterminism' as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the relationship between human activities and climate change?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what does the term 'greenhouse effect' refer to?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage suggest about the role of human beings in the context of climate change?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the significance of the 'Little Ice Age' in understanding climate change?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a natural climate fluctuation mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which climate type is found in the interior of continents and is characterised by a lack of maritime influence?",
+      "reason": "the solution's working is not sound"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

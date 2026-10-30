@@ -1,0 +1,699 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T16:18:55.738Z",
+  "finishedAt": "2026-10-28T16:35:25.929Z",
+  "seconds": 990,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo117.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 17 — Locomotion and Movement",
+    "edition": "Reprint 2026-27",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2013 — question paper]\n45. (2.5 points) A few types of locomotory actions are listed in column A. Choose\nfrom the options and fill in the table with the number of the appropriate animal.\nNo. A B\n1. Ciliary locomotion\n2. Looping movements\n3. Alternate movements of multiple limbs\n4. Alternate contraction circular and longitudinal muscles in the body\nI. Earthworm\nII. Nereis\nIII. Crab\nIV. Planarian\nV. Amoeba\nVI. Leech\nGENETICS & EVOLUTION (11.5 points)",
+      "[NSEB 2017 — question paper]\n44. Which of the following assist in the locomotion of earthworm?\ni. Muscles in the body wall\nii. Coelomic fluid\niii. Septa\niv. Setae\na) i, ii, iii and iv\nb) Only i, ii and iv\nc) Only ii, iii and iv\nd) Only i and iv\nB221",
+      "[INBO 2015 — question paper]\n45. (2 points) The chart shows different types of limb modifications (A, B, C and\nD) found in mammals. Limb\nLong\nA B\nPrehensile Non-prehensile\ndigits end with digits modified\nclaws and fused.\nShort\nC D\nPresence of Complete\ncompact strong modification, reduction\nbones, paws and compression of\nwith claws component bones\nAssign these modifications (A to D) to the animals with the following lifestyles.\n1. Animal prefers to run on ground. ________\n2. Animals swim in aquatic habitat. _________\n3. Animals live a subterranean life. _________\n4. Climbing animals living in and moving through trees. _________\nGENETICS & EVOLUTION (16.5 points)",
+      "[CBSE Class XII Biology, sample question paper, 2026-27]\n18. The movement of landmasses over geological time changed the distribution 2\nand evolution of animals. Explain this idea using two examples from different\nregions of the world."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 269733,
+      "in": 39,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 35162,
+      "completionTokens": 9459
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 535674,
+      "in": 37,
+      "out": 33,
+      "rejects": 4,
+      "promptTokens": 22620,
+      "completionTokens": 8694
+    },
+    "solver": {
+      "calls": 247,
+      "ms": 196591,
+      "in": 33,
+      "out": 29,
+      "rejects": 4,
+      "promptTokens": 41797,
+      "completionTokens": 2481
+    },
+    "form": {
+      "calls": 14,
+      "ms": 73275,
+      "in": 29,
+      "out": 18,
+      "rejects": 11,
+      "promptTokens": 5219,
+      "completionTokens": 1188
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 70,
+      "ms": 18044,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 73,
+      "ms": 1245170,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 41994,
+      "completionTokens": 21305
+    }
+  },
+  "kept": 18,
+  "keptByLevel": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 2,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 6,
+  "needsFigure": 3,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Figure 17.2, which structure is responsible for the contraction of a muscle fibre?",
+      "ms": {
+        "draft": 5172,
+        "critique": 11591,
+        "solver": 2936,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why skeletal muscles are called voluntary muscles?",
+      "ms": {
+        "draft": 5172,
+        "critique": 8453,
+        "solver": 2270,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a key feature of the sliding filament theory of muscle contraction?",
+      "ms": {
+        "draft": 6278,
+        "critique": 12210
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a student observes that a certain organism moves by using its cilia to create water currents. Which of the following is most likely to be the organism?",
+      "ms": {
+        "draft": 5172,
+        "critique": 13023,
+        "solver": 19708
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the sarcomere in Figure 17.5, which part of the sarcomere remains the same length during muscle contraction?",
+      "ms": {
+        "draft": 6278,
+        "critique": 9761
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a muscle fibre, if the number of mitochondria decreases significantly, which type of muscle fibre is most likely to be affected?",
+      "ms": {
+        "draft": 6278,
+        "critique": 11025,
+        "solver": 20857,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a muscle fibre is exposed to a substance that prevents ATP hydrolysis, which step of the muscle contraction cycle would be directly affected?",
+      "ms": {
+        "draft": 6278,
+        "critique": 11226,
+        "solver": 18609
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the neuromuscular junction in muscle contraction?",
+      "ms": {
+        "draft": 6278,
+        "critique": 10488,
+        "solver": 3631,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a condition that causes the joints to become inflamed, which of the following is the most likely diagnosis?",
+      "ms": {
+        "draft": 7360,
+        "critique": 10583
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following joints allows limited movement?",
+      "ms": {
+        "draft": 7360,
+        "critique": 11914,
+        "solver": 17031,
+        "form": 8810
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a feature of synovial joints?",
+      "ms": {
+        "draft": 7360,
+        "critique": 14636,
+        "solver": 20208,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person has a disorder that causes the muscles to weaken and become paralyzed, which of the following could be the cause?",
+      "ms": {
+        "draft": 7360,
+        "critique": 13754,
+        "solver": 20321,
+        "form": 6160
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the rib cage is damaged, which of the following functions would be most directly affected?",
+      "ms": {
+        "draft": 7360,
+        "critique": 12706,
+        "solver": 19347,
+        "form": 5581
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following is a reason for muscle fatigue?",
+      "ms": {
+        "draft": 4884,
+        "critique": 9572,
+        "solver": 2617
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the sarcomere?",
+      "ms": {
+        "draft": 4884,
+        "critique": 10706,
+        "solver": 25490,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a cause of osteoporosis as mentioned in the passage?",
+      "ms": {
+        "draft": 5694,
+        "critique": 10066,
+        "solver": 2393,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do red fibres have a higher capacity for sustained activity compared to white fibres?",
+      "ms": {
+        "draft": 15050,
+        "critique": 11172,
+        "solver": 2529
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the muscle fibre is responsible for the resting state of the muscle?",
+      "ms": {
+        "draft": 8342,
+        "critique": 10354
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a movement that is not a locomotion but is used for movement of substances?",
+      "ms": {
+        "draft": 8342,
+        "critique": 11972,
+        "solver": 10564,
+        "form": 1673
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for movement of animals in search of food, shelter, mate, or better climate?",
+      "ms": {
+        "draft": 4028,
+        "critique": 13096,
+        "solver": 2430,
+        "form": 5908,
+        "translation": 64347
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of muscle is present in the inner walls of visceral organs?",
+      "ms": {
+        "draft": 4028,
+        "critique": 10473,
+        "solver": 1303,
+        "form": 3097,
+        "translation": 62860
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the functional unit of a muscle fibre?",
+      "ms": {
+        "draft": 4028,
+        "critique": 8411,
+        "solver": 1486,
+        "form": 1877,
+        "translation": 50553
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a part of the rib cage?",
+      "ms": {
+        "draft": 7360,
+        "critique": 14371,
+        "solver": 18846,
+        "form": 0,
+        "translation": 57807
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of cilia in the human body?",
+      "ms": {
+        "draft": 5172,
+        "critique": 11248,
+        "solver": 1913,
+        "form": 0,
+        "translation": 57464
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of movement is shown by cells like macrophages and leucocytes in the blood?",
+      "ms": {
+        "draft": 8342,
+        "critique": 11194,
+        "solver": 1966,
+        "form": 6969,
+        "translation": 82075
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the muscle fibre contains the active sites for myosin?",
+      "ms": {
+        "draft": 15050,
+        "critique": 11546,
+        "solver": 2916,
+        "form": 0,
+        "translation": 92191
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the vertebral column?",
+      "ms": {
+        "draft": 5694,
+        "critique": 10829,
+        "solver": 2481,
+        "form": 6988,
+        "translation": 73165
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a type of movement exhibited by human cells?",
+      "ms": {
+        "draft": 5172,
+        "critique": 11828,
+        "solver": 4292,
+        "form": 0,
+        "translation": 51197
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a function of the sarcoplasmic reticulum in a muscle fibre?",
+      "ms": {
+        "draft": 5172,
+        "critique": 10991,
+        "solver": 2239,
+        "form": 0,
+        "translation": 50014
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a characteristic of skeletal muscles?",
+      "ms": {
+        "draft": 4884,
+        "critique": 11205,
+        "solver": 21564,
+        "form": 0,
+        "translation": 60964
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a muscle fibre is unable to release calcium ions into the sarcoplasm, what would happen during muscle contraction?",
+      "ms": {
+        "draft": 6278,
+        "critique": 10026,
+        "solver": 19184,
+        "form": 0,
+        "translation": 80350
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is responsible for the shortening of the sarcomere during muscle contraction?",
+      "ms": {
+        "draft": 15050,
+        "critique": 11939,
+        "solver": 2691,
+        "form": 0,
+        "translation": 82329
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the limited movement in the joints between the vertebrae?",
+      "ms": {
+        "draft": 5694,
+        "critique": 11261,
+        "solver": 1865,
+        "form": 6711,
+        "translation": 78954
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a movement that is not a locomotion?",
+      "ms": {
+        "draft": 8342,
+        "critique": 10723,
+        "solver": 2447,
+        "form": 3501,
+        "translation": 56461
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a muscle fibre is deprived of ATP, what will happen to the cross bridges formed between actin and myosin?",
+      "ms": {
+        "draft": 15050,
+        "critique": 11054,
+        "solver": 1916,
+        "form": 0,
+        "translation": 88448
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a synovial joint?",
+      "ms": {
+        "draft": 5694,
+        "critique": 12225,
+        "solver": 18898,
+        "form": 6677,
+        "translation": 83325
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a muscle fibre lacks troponin, what would be the most likely outcome?",
+      "ms": {
+        "draft": 4884,
+        "critique": 15203,
+        "solver": 2486,
+        "form": 4565,
+        "translation": 66924
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the role of troponin in muscle contraction?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram in Figure 17.2, which structure is responsible for the contraction of a muscle fibre?",
+      "reason": "figure: figure spec refused: spec.parts: animalCell has no label \"myofibrils\" (it has membrane, nucleus, cytoplasm, mitochondrion)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why skeletal muscles are called voluntary muscles?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a key feature of the sliding filament theory of muscle contraction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In an experiment, a student observes that a certain organism moves by using its cilia to create water currents. Which of the following is most likely to be the organism?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the diagram of the sarcomere in Figure 17.5, which part of the sarcomere remains the same length during muscle contraction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a muscle fibre, if the number of mitochondria decreases significantly, which type of muscle fibre is most likely to be affected?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a muscle fibre is exposed to a substance that prevents ATP hydrolysis, which step of the muscle contraction cycle would be directly affected?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the function of the neuromuscular junction in muscle contraction?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the role of the neuromuscular junction as str…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person has a condition that causes the joints to become inflamed, which of the following is the most likely diagnosis?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following joints allows limited movement?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a feature of synovial joints?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a person has a disorder that causes the muscles to weaken and become paralyzed, which of the following could be the cause?",
+      "reason": "the key is far longer than every distractor (49 vs 26 characters); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the rib cage is damaged, which of the following functions would be most directly affected?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a feature of synovial joints?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "According to the passage, which of the following is a reason for muscle fatigue?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the sarcomere?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a cause of osteoporosis as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why do red fibres have a higher capacity for sustained activity compared to white fibres?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which part of the muscle fibre is responsible for the resting state of the muscle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is an example of a movement that is not a locomotion but is used for movement of substances?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

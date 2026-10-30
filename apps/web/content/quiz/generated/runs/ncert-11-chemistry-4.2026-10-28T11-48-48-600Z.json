@@ -1,0 +1,854 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T11:48:48.600Z",
+  "finishedAt": "2026-10-28T12:04:20.496Z",
+  "seconds": 932,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry Part-I",
+    "bookCode": "kech1",
+    "document": "ncert/11/chemistry/kech104.pdf",
+    "classLevel": 11,
+    "subject": "Chemistry",
+    "chapter": "Chapter 4 — Chemical Bonding and Molecular Structure",
+    "edition": "Reprint 2026-27",
+    "chunks": 43,
+    "groups": 14
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Chemistry, marking scheme, 2023-24]\n5. (b) The carbon-magnesium bond is covalent and non-polar in nature .",
+      "[CBSE Class XII Chemistry, sample question paper, 2026-27]\n14. Assertion (A): Permanganate and manganate ions have tetrahedral 1\nstructure\nReason (R): In permanganate and manganate ions, pi bonding takes\nplace which is due to overlap of p orbitals of oxygen with p orbitals of\nmanganese.\nSelect the most appropriate answer from the options given below:\nA. Both A and R are true, and R is the correct explanation of A.\nB. Both A and R are true, and R is not the correct explanation of A.\nC. A is true but R is false.\nD. A is false but R is true.",
+      "[INChO 2017 — solutions or answer key]\n3. In writing structures of molecules, valency of various atoms not being satisfied.\nProblem 1\nBarbiturates in our lives\n1.1\nA B\n1.2\nD\n1.3\n1.4\nG\n17 Marks\n(1 mark)\nE\n(2.5 marks)\nOr any equivalent\nresonance structure\n(2 marks)\nF\n(1.5 marks)\n1.5 a) < 4.01 b) > 4.01 X\n1.6\nH I\n1.7\nL\n1.8 a)\nM N\nb)\nK\nc) = 4.01 (0.5 mark)\nJ (2 marks)\n(2 marks)\nO\n(2.5 marks)\n(2 marks)\n1.9\nP\nQ\n(1 mark)\nProblem No. 2 25 Marks\nChemistry of Iron\n[The total marks for this question are 25 marks instead of 26 marks – This is due to deletion\nof subpart 2.9.]",
+      "[NSEC 2015 — question paper]\n(C) 6, 11.2 dm 3\n(48) The structure of a molecule of N(SiMe 3 ) 3\n(A) Pyramidal with angle close to 110 o\n(B) T-shaped with angle 90 o\n(C) Bent T-shaped with angle close to 89\n(B) 5, 11.2 dm 3\n(D) 4, 22.4 dm 3\nis\no\n(D) Trigonal planar with bond angle close to 120 o\n(49) For an electron whose x-positional uncertainty is 1.0 × 10 −10 m, the uncertainty in the x-\ncomponent of the velocity in m s −1 will be of the order of\n(A) 10 6\n(C) 10 12\n(B) 10 9\n(D) 10 15\nC 230\n(50) The order of pπ-dπ interaction in the compounds containing bond between Si/P/S/Cl and\noxygen is in the order\n(A) P > Si > Cl > S (B) Si < P < S < Cl\n(C) S < Cl < P < Si (D) Si > P > S > Cl\n(51) The solubility products (K sp ) of"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 209137,
+      "in": 45,
+      "out": 43,
+      "rejects": 3,
+      "promptTokens": 52624,
+      "completionTokens": 10197
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 382183,
+      "in": 43,
+      "out": 35,
+      "rejects": 8,
+      "promptTokens": 24412,
+      "completionTokens": 9356
+    },
+    "solver": {
+      "calls": 249,
+      "ms": 139040,
+      "in": 35,
+      "out": 30,
+      "rejects": 5,
+      "promptTokens": 46925,
+      "completionTokens": 2577
+    },
+    "form": {
+      "calls": 13,
+      "ms": 51168,
+      "in": 30,
+      "out": 9,
+      "rejects": 21,
+      "promptTokens": 3580,
+      "completionTokens": 1088
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 30,
+      "ms": 5713,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 386432,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19143,
+      "completionTokens": 9697
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "According to the passage, why do atoms combine to form molecules?",
+      "ms": {
+        "draft": 14143,
+        "critique": 7690,
+        "solver": 13801,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the Lewis approach to chemical bonding?",
+      "ms": {
+        "draft": 14143,
+        "critique": 7662,
+        "solver": 14547
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the attractive force that holds atoms together in a molecule?",
+      "ms": {
+        "draft": 14143,
+        "critique": 7277,
+        "solver": 13253,
+        "form": 5830
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is correct according to the passage?",
+      "ms": {
+        "draft": 14143,
+        "critique": 7812,
+        "solver": 1264
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the formation of a chemical bond?",
+      "ms": {
+        "draft": 14143,
+        "critique": 8962,
+        "solver": 13114,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains the formation of a covalent bond?",
+      "ms": {
+        "draft": 14143,
+        "critique": 9500,
+        "solver": 16351,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main requirement for a bonded atom in a molecule?",
+      "ms": {
+        "draft": 3817,
+        "critique": 7886,
+        "solver": 1635,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about the Lewis structures is true according to the passage?",
+      "ms": {
+        "draft": 3817,
+        "critique": 6498,
+        "solver": 2277,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the bonding in a carbon-magnesium compound?",
+      "ms": {
+        "draft": 5390,
+        "critique": 7488,
+        "solver": 1563
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the formation of a molecule, what is the correct order of steps to write the Lewis dot structures?",
+      "ms": {
+        "draft": 3817,
+        "critique": 6854,
+        "solver": 1531,
+        "form": 3842
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the formal charge on the nitrogen atom in the nitrite ion (NO2-)?",
+      "ms": {
+        "draft": 5390,
+        "critique": 5936,
+        "solver": 1292
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the nitrite ion (NO2-), how many total valence electrons are there?",
+      "ms": {
+        "draft": 5390,
+        "critique": 8719,
+        "solver": 15950
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the most stable Lewis structure for the nitrite ion (NO2-)?",
+      "ms": {
+        "draft": 5390,
+        "critique": 6593,
+        "solver": 2144,
+        "form": 5144
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary factor that determines the stability of an ionic compound?",
+      "ms": {
+        "draft": 18910,
+        "critique": 6733
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between bond length and covalent radii?",
+      "ms": {
+        "draft": 18910,
+        "critique": 6565,
+        "solver": 1784,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the context of bond enthalpy, what does the passage suggest about the energy required to break bonds in polyatomic molecules?",
+      "ms": {
+        "draft": 18910,
+        "critique": 6007,
+        "solver": 1779,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the role of lattice enthalpy in the formation of ionic compounds?",
+      "ms": {
+        "draft": 18910,
+        "critique": 7648,
+        "solver": 1525,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit used to measure the magnitude of a dipole moment?",
+      "ms": {
+        "draft": 5517,
+        "critique": 5702
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of bond order according to the passage?",
+      "ms": {
+        "draft": 5403,
+        "critique": 7477,
+        "solver": 6854,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the combination of atomic orbitals to form molecular orbitals that are associated with the molecule as a whole?",
+      "ms": {
+        "draft": 4422,
+        "critique": 5148
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens to the electron density in bonding molecular orbitals compared to the individual atomic orbitals?",
+      "ms": {
+        "draft": 4422,
+        "critique": 5811
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which principle is used to fill electrons in molecular orbitals, similar to the way it is done for atoms?",
+      "ms": {
+        "draft": 4422,
+        "critique": 6600
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Under what condition is a molecule considered stable according to the passage?",
+      "ms": {
+        "draft": 4422,
+        "critique": 6108
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a type of bond that can be formed due to the overlap of p orbitals of oxygen with p orbitals of manganese?",
+      "ms": {
+        "draft": 4422,
+        "critique": 6326
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the correct Lewis structure for the acetate ion (CH₃COO⁻)?",
+      "ms": {
+        "draft": 4422,
+        "critique": 6049
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the stability of a molecule?",
+      "ms": {
+        "draft": 13783,
+        "critique": 6516,
+        "solver": 2606,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what can be concluded about the magnetic nature of the oxygen molecule (O₂)?",
+      "ms": {
+        "draft": 13783,
+        "critique": 7385,
+        "solver": 1623,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the electronic configuration of O₂?",
+      "ms": {
+        "draft": 13783,
+        "critique": 6519,
+        "solver": 1953,
+        "form": 3795
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about molecular orbitals?",
+      "ms": {
+        "draft": 13783,
+        "critique": 6467,
+        "solver": 14931,
+        "form": 5346
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what determines the stability of a molecule?",
+      "ms": {
+        "draft": 4902,
+        "critique": 6618,
+        "solver": 1790,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of molecular orbital mentioned in the passage?",
+      "ms": {
+        "draft": 4902,
+        "critique": 8252,
+        "solver": 14361,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the bond angle in a molecule with sp³ hybridisation?",
+      "ms": {
+        "draft": 33122,
+        "critique": 9202,
+        "solver": 1113,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements correctly describes the bonding in the ethyne molecule?",
+      "ms": {
+        "draft": 7487,
+        "critique": 8199,
+        "solver": 17947,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following hybridisation types is associated with a molecule that has a trigonal bipyramidal geometry?",
+      "ms": {
+        "draft": 7487,
+        "critique": 8343,
+        "solver": 14331,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the bond order of the hydrogen molecule (H₂)?",
+      "ms": {
+        "draft": 13783,
+        "critique": 5285,
+        "solver": 1347,
+        "form": 5930
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the basis for the Lewis dot structures?",
+      "ms": {
+        "draft": 3817,
+        "critique": 11622,
+        "solver": 2165,
+        "form": 2525,
+        "translation": 46861
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea behind the formation of a covalent bond?",
+      "ms": {
+        "draft": 3817,
+        "critique": 9313,
+        "solver": 2045,
+        "form": 4674,
+        "translation": 53623
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a molecule where two atoms share two pairs of electrons, what type of bond is formed?",
+      "ms": {
+        "draft": 3817,
+        "critique": 6978,
+        "solver": 1286,
+        "form": 2993,
+        "translation": 43662
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a molecule has an odd number of electrons, which of the following is true?",
+      "ms": {
+        "draft": 5390,
+        "critique": 7639,
+        "solver": 1603,
+        "form": 5659,
+        "translation": 62466
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a molecule with an expanded octet?",
+      "ms": {
+        "draft": 5390,
+        "critique": 8542,
+        "solver": 1396,
+        "form": 5092,
+        "translation": 40937
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the shape of a molecule with sp hybridisation?",
+      "ms": {
+        "draft": 33122,
+        "critique": 7345,
+        "solver": 1295,
+        "form": 0,
+        "translation": 41046
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is true about the formation of a bonding molecular orbital?",
+      "ms": {
+        "draft": 4902,
+        "critique": 7062,
+        "solver": 1597,
+        "form": 3472,
+        "translation": 101827
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do 2p orbitals not combine with 2p orbitals of different symmetry?",
+      "ms": {
+        "draft": 4902,
+        "critique": 8819,
+        "solver": 1629,
+        "form": 2978,
+        "translation": 50836
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the bond angle in a water molecule according to the passage?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, why do atoms combine to form molecules?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following best describes the Lewis approach to chemical bonding?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used to describe the attractive force that holds atoms together in a molecule?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following statements is correct according to the passage?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the formation of a chemical bond?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains the formation of a covalent bond?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the main requirement for a bonded atom in a molecule?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements about the Lewis structures is true according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following best describes the bonding in a carbon-magnesium compound?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the formation of a molecule, what is the correct order of steps to write the Lewis dot structures?",
+      "reason": "options 0 and 1 say the same thing (\"Determine the number of valence electrons, draw the skeletal structure, distribute the remaining electrons, and form multiple bonds if needed\" / \"Determine the number of valence electrons, form multiple bonds, distribute the remaining electrons, and draw the skeletal structure\"); options 0 and 2 say the same thing (\"Determine the number of valence electrons, draw the skeletal structure, distribute the remaining electrons, and form multiple bonds if needed\" / \"Draw the skeletal structure, determine the number of valence electrons, form multiple bonds, and distribute the remaining electrons\"); options 0 and 3 say the same thing (\"Determine the number of valence electrons, draw the skeletal structure, distribute the remaining electrons, and form multiple bonds if needed\" / \"Distribute the remaining electrons, determine the number of valence electrons, draw the skeletal structure, and form multiple bonds\"); options 1 and 2 say the same thing (\"Determine the number of valence electrons, form multiple bonds, distribute the remaining electrons, and draw the skeletal structure\" / \"Draw the skeletal structure, determine the number of valence electrons, form multiple bonds, and distribute the remaining electrons\"); options 1 and 3 say the same thing (\"Determine the number of valence electrons, form multiple bonds, distribute the remaining electrons, and draw the skeletal structure\" / \"Distribute the remaining electrons, determine the number of valence electrons, draw the skeletal structure, and form multiple bonds\"); options 2 and 3 say the same thing (\"Draw the skeletal structure, determine the number of valence electrons, form multiple bonds, and distribute the remaining electrons\" / \"Distribute the remaining electrons, determine the number of valence electrons, draw the skeletal structure, and form multiple bonds\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the formal charge on the nitrogen atom in the nitrite ion (NO2-)?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the nitrite ion (NO2-), how many total valence electrons are there?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is the most stable Lewis structure for the nitrite ion (NO2-)?",
+      "reason": "the key is far longer than every distractor (73 vs 44 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the primary factor that determines the stability of an ionic compound?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between bond length and covalent radii?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the context of bond enthalpy, what does the passage suggest about the energy required to break bonds in polyatomic molecules?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the role of lattice enthalpy in the formation of ionic compounds?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the unit used to measure the magnitude of a dipole moment?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the definition of bond order according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following elements can form a hydrogen bond?\",\n "
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the bond order of the lithium molecule (Li₂)?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the combination of atomic orbitals to form molecular orbitals that are associated with the molecule as a whole?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What happens to the electron density in bonding molecular orbitals compared to the individual atomic orbitals?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which principle is used to fill electrons in molecular orbitals, similar to the way it is done for atoms?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Under what condition is a molecule considered stable according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a type of bond that can be formed due to the overlap of p orbitals of oxygen with p orbitals of manganese?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the correct Lewis structure for the acetate ion (CH₃COO⁻)?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the stability of a molecule?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"A molecule is stable if the number of electrons in bonding orbitals is greater than in antibonding orbitals.\" / \"A molecule is stable if the number of electrons in antibonding orbitals is greater than in bonding orbitals.\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what can be concluded about the magnetic nature of the oxygen molecule (O₂)?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the electronic configuration of O₂?",
+      "reason": "options 0 and 1 say the same thing (\"It has a bond order of 2 and is diamagnetic.\" / \"It has a bond order of 2 and is paramagnetic.\"); options 0 and 2 say the same thing (\"It has a bond order of 2 and is diamagnetic.\" / \"It has a bond order of 1 and is diamagnetic.\"); options 1 and 3 say the same thing (\"It has a bond order of 2 and is paramagnetic.\" / \"It has a bond order of 1 and is paramagnetic.\"); options 2 and 3 say the same thing (\"It has a bond order of 1 and is diamagnetic.\" / \"It has a bond order of 1 and is paramagnetic.\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about molecular orbitals?",
+      "reason": "options 0 and 1 say the same thing (\"The energy of a molecular orbital is always lower than that of the atomic orbitals from which it is formed.\" / \"The energy of a molecular orbital is always higher than that of the atomic orbitals from which it is formed.\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what determines the stability of a molecule?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of molecular orbital mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the bond angle in a molecule with sp³ hybridisation?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements correctly describes the bonding in the ethyne molecule?",
+      "reason": "options 0 and 1 say the same thing (\"One sigma bond and one pi bond are formed between the two carbon atoms\" / \"Two sigma bonds and one pi bond are formed between the two carbon atoms\"); options 0 and 2 say the same thing (\"One sigma bond and one pi bond are formed between the two carbon atoms\" / \"One sigma bond and two pi bonds are formed between the two carbon atoms\"); options 1 and 2 say the same thing (\"Two sigma bonds and one pi bond are formed between the two carbon atoms\" / \"One sigma bond and two pi bonds are formed between the two carbon atoms\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following hybridisation types is associated with a molecule that has a trigonal bipyramidal geometry?",
+      "reason": "options 1 and 2 are the same (\"sp³\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What is the bond order of the hydrogen molecule (H₂)?",
+      "reason": "near-duplicate of served question cmvojfz2606o5gp21n2x3oa0f (cosine 0.949 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

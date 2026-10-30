@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Math-Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T21:48:14.633Z",
+  "generatedAt": "2026-10-28T03:16:14.114Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 6,
-      "stem": "Why are the drawings of the same brick by Mini, Bholu, and Rani different?",
+      "difficulty": 5,
+      "stem": "How many steps does Mini take to reach the object if she moves 2 steps to the left and 1 step upwards?",
       "choices": [
-        "They used different colors",
-        "They have different views of the brick",
-        "They used different materials",
-        "They drew it in different sizes"
+        "2",
+        "3",
+        "4",
+        "5"
       ],
       "answerIndex": 1,
-      "solution": "The correct answer is that they have different views of the brick, which means each child saw the brick from a unique angle, leading to variations in their drawings. Other options like color, materials, or size are not related to the fundamental reason for differences in how the brick is represented visually.",
-      "checkExpr": null,
+      "solution": "Mini moves 2 steps to the left and 1 step upwards, which are separate movements in different directions. Adding these together gives a total of 3 steps. The other options do not correctly account for the sum of the steps taken.",
+      "checkExpr": "2+1",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "मिनी, भोलू और रानी द्वारा एक ही ईंट के चित्र क्यों अलग-अलग हैं?",
+          "stem": "मिनी को वस्तु तक पहुंचने में कितने चरण लगते हैं यदि वह 2 चरण बाएं और 1 चरण ऊपर की ओर जाती है?",
           "choices": [
-            "उन्होंने अलग-अलग रंग का उपयोग किया",
-            "उनके पास ईंट के अलग-अलग दृश्य हैं",
-            "उन्होंने अलग-अलग सामग्री का उपयोग किया",
-            "उन्होंने अलग-अलग आकार में बनाया"
+            "2",
+            "3",
+            "4",
+            "5"
           ],
-          "solution": "सही उत्तर यह है कि उनके पास ईंट के अलग-अलग दृश्य हैं, जिसका अर्थ है प्रत्येक बच्चा ईंट को एक अद्वितीय कोण से देखा, जिसके कारण उनके चित्रों में अंतर आया। अन्य विकल्प जैसे रंग, सामग्री या आकार, ईंट के दृश्य रूप में अंतर के मूल कारण से संबंधित नहीं हैं।",
+          "solution": "मिनी 2 चरण बाएं और 1 चरण ऊपर की ओर जाती है, जो अलग-अलग दिशाओं में गतियां हैं। इन्हें जोड़ने से कुल 3 चरण प्राप्त होते हैं। अन्य विकल्प सही तरीके से चरणों के योग को ध्यान में नहीं रखते।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately preserves the meaning, structure, and technical terms of the original English question. The correct answer remains option (2), and all distractors remain incorrect.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terms for mathematical concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "मिनी, भोलू आणि राणी यांच्या एकाच इंग्लाच्या चित्रांमध्ये का फरक आहे?",
+          "stem": "मिनीला वस्तू पाहिल्यास किती टप्पे घ्यावे लागतील जर ती 2 टप्पे डावीकडे आणि 1 टप्पा वर जाईल?",
           "choices": [
-            "त्यांनी वेगवेगळे रंग वापरले",
-            "त्यांनी इंग्लाच्या वेगवेगळ्या दृष्टिकोनातून बघितले",
-            "त्यांनी वेगवेगळे सामग्री वापरल्या",
-            "त्यांनी वेगवेगळ्या आकारात चित्र काढले"
+            "2",
+            "3",
+            "4",
+            "5"
           ],
-          "solution": "हे बरोबर उत्तर असे की त्यांनी इंग्लाच्या वेगवेगळ्या दृष्टिकोनातून बघितले, ज्यामुळे त्यांच्या चित्रांमध्ये फरक आला. रंग, सामग्री किंवा आकार या इतर विकल्पांमध्ये चित्राच्या दिसण्याच्या मूळ कारणाशी संबंध नाही.",
+          "solution": "मिनी 2 टप्पे डावीकडे आणि 1 टप्पा वर जाते, जे वेगळ्या दिशेत घेतलेले टप्पे आहेत. यांची बेरीज करून एकूण 3 टप्पे मिळतात. इतर विकल्प टप्पे घेतलेल्या बेरजेच्या योग्य गणनेचा अंदाज देत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Marathi-medium education.",
           "flag": null
         }
       },
@@ -72,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks the difference is in color.",
+        "Counts only the left steps",
         null,
-        "Assumes the materials used affected the drawings.",
-        "Believes the size variation caused the difference."
+        "Counts only the upward steps",
+        "Adds incorrectly"
       ],
       "solverAnswers": [
         1,
@@ -84,8 +84,8 @@
         1,
         1
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the question implies that the drawings differ due to perspective, not color, materials, or size. The reasoning aligns with the concept of views, as stated in the author's solution.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward, and the solution correctly adds 2 steps left and 1 step up to get 3 steps total. The distractors reflect common misconceptions: counting only one direction or adding incorrectly.",
       "sources": [
         {
           "document": "ncert/4/mathematics/demm102.pdf",
@@ -148,7 +148,134 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:48:14.633Z",
+      "generatedAt": "2026-10-28T03:16:14.114Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which route from the Grade 4 classroom to the stage is the shortest?",
+      "choices": [
+        "Through the entrance and main road",
+        "Through the library and hall",
+        "Through the service lane and classrooms",
+        "Through the library and main road"
+      ],
+      "answerIndex": 1,
+      "solution": "The route through the library and hall is the shortest because it involves fewer turns and a more direct path between the Grade 4 classroom and the stage. The other options involve longer detours through areas like the entrance, service lane, or main road, which add unnecessary distance.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कक्षा 4 कक्षा से स्टेज तक कौन सा रास्ता सबसे छोटा है?",
+          "choices": [
+            "प्रवेश द्वार और मुख्य सड़क से",
+            "प per और हॉल से",
+            "सेवा लेन और कक्षाओं से",
+            "पुस्तकालय और मुख्य सड़क से"
+          ],
+          "solution": "पुस्तकालय और हॉल से रास्ता सबसे छोटा है क्योंकि इसमें कम घुमाव और कक्षा 4 और स्टेज के बीच एक अधिक सीधा मार्ग शामिल है। अन्य विकल्पों में प्रवेश द्वार, सेवा लेन या मुख्य सड़क जैसे क्षेत्रों में लंबे चक्कर शामिल होते हैं, जो अनावश्यक दूरी जोड़ते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer remains option 1, and all distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कक्षा 4 च्या खोलीपासून स्टेजपर्यंत जाणारा मार्ग कोणता सर्वात लहान आहे?",
+          "choices": [
+            "प्रवेशद्वार आणि मुख्य मार्गाने",
+            "पुस्तकालय आणि हॉलमार्गे",
+            "सेवा रस्ता आणि कक्षांमार्गे",
+            "पुस्तकालय आणि मुख्य मार्गाने"
+          ],
+          "solution": "पुस्तकालय आणि हॉलमार्गे जाणारा मार्ग सर्वात लहान आहे कारण त्यामध्ये कमी फिरणे आणि कक्षा 4 च्या खोलीपासून स्टेजपर्यंत एक सीधा मार्ग असतो. इतर विकल्पांमध्ये प्रवेशद्वार, सेवा रस्ता किंवा मुख्य मार्गातून लांब फिरणे असते, जे अवांछित अंतर जोडते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for locations like 'library' (पुस्तकालय) and 'main road' (मुख्य मार्ग).",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the shortest path with a more direct route, ignoring the actual layout of the school",
+        null,
+        "Confuses the service lane with a shortcut, not realizing it's a detour",
+        "Confuses the correct path with a similar-sounding alternative"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the route through the library and hall is the shortest based on the layout. The author's reasoning for the distractors aligns with common misconceptions students might have about spatial reasoning.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm102.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 2: Hide and Seek"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm102.pdf",
+          "ordinal": 1,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 2: Hide and Seek",
+            "Boxy Buldings"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm102.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 2: Hide and Seek",
+            "Cat Finds Jagat"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm102.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 2: Hide and Seek",
+            "Grid Game"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm102.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Hide and Seek",
+            "Times-10Grid Game — Treasure Hunt"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm102.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 2: Hide and Seek",
+            "Drone Around the School"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T03:16:14.114Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

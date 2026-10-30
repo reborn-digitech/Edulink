@@ -1,0 +1,963 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T05:22:59.723Z",
+  "finishedAt": "2026-10-27T05:32:25.944Z",
+  "seconds": 566,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp110.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — The Other Side of Zero",
+    "edition": "Reprint 2026-27",
+    "chunks": 25,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n1. D) -6,6 1",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n23. Since, 3 is a zero of 𝑝(𝑥) = 2𝑥 − 3𝑥 + 𝑝 ⇒ p(3) = 0 ⇒ 2(3) – 3(3) + 𝑝 = 0 2 2 ½\n⇒ 𝑝 = – 9 ½\n− (−𝟑)\nLet another zero be β, 3 + β = 𝟐 ( sum of zeroes) ½\n⇒ β = − 𝟐 𝟑 ½",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n27. Find the zeroes of the quadratic polynomial 6x – 3 – 7x and verify the relationship 2 3\nbetween the zeroes and the coefficients.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 182110,
+      "in": 49,
+      "out": 48,
+      "rejects": 1,
+      "promptTokens": 50456,
+      "completionTokens": 9185
+    },
+    "critique": {
+      "calls": 64,
+      "ms": 481077,
+      "in": 48,
+      "out": 43,
+      "rejects": 5,
+      "promptTokens": 28306,
+      "completionTokens": 11123
+    },
+    "solver": {
+      "calls": 327,
+      "ms": 193043,
+      "in": 43,
+      "out": 28,
+      "rejects": 15,
+      "promptTokens": 62554,
+      "completionTokens": 3465
+    },
+    "form": {
+      "calls": 9,
+      "ms": 28062,
+      "in": 28,
+      "out": 3,
+      "rejects": 25,
+      "promptTokens": 3965,
+      "completionTokens": 751
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 45,
+      "ms": 8656,
+      "in": 3,
+      "out": 1,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 17919,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2250,
+      "completionTokens": 1161
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a negative number as used in the passage?",
+      "ms": {
+        "draft": 12814,
+        "critique": 7723,
+        "solver": 1139,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person starts at the Food Court (Floor +1) and presses the '+' button 4 times, which floor will they reach?",
+      "ms": {
+        "draft": 12814,
+        "critique": 8013,
+        "solver": 22450
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the 'Building of Fun', the ground floor is called Floor 0. If a person starts at Floor +2 and presses the '-' button 3 times, which floor will they reach?",
+      "ms": {
+        "draft": 12814,
+        "critique": 7761,
+        "solver": 23996
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Gurmit was in the Toy Store (Floor -1) and pressed the '+' button 2 times by mistake. He then pressed the '-' button 3 times. Where will he end up?",
+      "ms": {
+        "draft": 12814,
+        "critique": 12310,
+        "solver": 21406
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the inverse of +4?",
+      "ms": {
+        "draft": 2718,
+        "critique": 11529
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements is true according to the passage?",
+      "ms": {
+        "draft": 12814,
+        "critique": 10787,
+        "solver": 16801,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person starts at Floor +4 and presses the '-' button 3 times, which floor will they reach?",
+      "ms": {
+        "draft": 12814,
+        "critique": 12068,
+        "solver": 18748
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of (+1) – (+4)?",
+      "ms": {
+        "draft": 2718,
+        "critique": 8870
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the starting floor is +2 and the target floor is –1, what is the movement needed?",
+      "ms": {
+        "draft": 2718,
+        "critique": 8785
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is less than 0?",
+      "ms": {
+        "draft": 2718,
+        "critique": 7570,
+        "solver": 14970,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of (–200)–(–40)?",
+      "ms": {
+        "draft": 13905,
+        "critique": 9287,
+        "solver": 1909
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the starting floor is +3 and the target floor is –2, what is the movement needed?",
+      "ms": {
+        "draft": 2718,
+        "critique": 6997,
+        "solver": 15843,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the starting floor is –3 and the target floor is +4, what is the movement needed?",
+      "ms": {
+        "draft": 2718,
+        "critique": 7266,
+        "solver": 14938
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of (+200)–(+40)?",
+      "ms": {
+        "draft": 13905,
+        "critique": 5952,
+        "solver": 1985,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of –99+(+200)?",
+      "ms": {
+        "draft": 13905,
+        "critique": 7840,
+        "solver": 2028,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of –99–(–200)?",
+      "ms": {
+        "draft": 13905,
+        "critique": 8354,
+        "solver": 1409,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the result of (–200)–(+40)?",
+      "ms": {
+        "draft": 13905,
+        "critique": 6991,
+        "solver": 16344
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the result of +105–(–55)?",
+      "ms": {
+        "draft": 13905,
+        "critique": 6645,
+        "solver": 1765,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a lift attendant starts on the ground floor (Floor 0) and has 5 positive tokens and 3 negative tokens in his pocket, on which floor is he now?",
+      "ms": {
+        "draft": 4096,
+        "critique": 8319,
+        "solver": 1505
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A lift attendant has 6 positive tokens and 8 negative tokens in his pocket. What is the final floor he is on?",
+      "ms": {
+        "draft": 4096,
+        "critique": 6820,
+        "solver": 1798
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student starts with `100 in a bank account. They then deposit `60 and pay `30. What is their bank balance now?",
+      "ms": {
+        "draft": 4096,
+        "critique": 9844,
+        "solver": 1525
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following numbers is the smallest?",
+      "ms": {
+        "draft": 3852,
+        "critique": 7315
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the sum of the numbers in the first row of the given grid?",
+      "ms": {
+        "draft": 3852,
+        "critique": 6233,
+        "solver": 1132,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to Brahmagupta's rules for addition, what is the result of adding a negative number and a positive number if the positive number is larger in magnitude?",
+      "ms": {
+        "draft": 9347,
+        "critique": 7695,
+        "solver": 6950,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of (-8) - (-4)?",
+      "ms": {
+        "draft": 3001,
+        "critique": 6705,
+        "solver": 1270,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following represents a negative integer?",
+      "ms": {
+        "draft": 3001,
+        "critique": 7145,
+        "solver": 3230,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given geographical cross-section, which point has the lowest height?",
+      "ms": {
+        "draft": 3001,
+        "critique": 8951,
+        "solver": 1701
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number line shows the integers between 0 and -7 in increasing order, which of the following is correct?",
+      "ms": {
+        "draft": 3001,
+        "critique": 7817,
+        "solver": 1466
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bank account starts with ₹0 and has credits of ₹30, ₹40, and ₹50, and debits of ₹40, ₹50, and ₹60, what is the final balance?",
+      "ms": {
+        "draft": 3001,
+        "critique": 7111,
+        "solver": 16427
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the result of (-2) - (-6)?",
+      "ms": {
+        "draft": 3001,
+        "critique": 6783,
+        "solver": 1075,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the inverse of -4?",
+      "ms": {
+        "draft": 3443,
+        "critique": 7366,
+        "solver": 1148,
+        "form": 3064
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a player is on Floor -2 and needs to reach Floor -5, what movement should they make?",
+      "ms": {
+        "draft": 3443,
+        "critique": 7987,
+        "solver": 1608,
+        "form": 3135
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the value of the expression (– 10) – (– 5)?",
+      "ms": {
+        "draft": 3443,
+        "critique": 7636,
+        "solver": 1766,
+        "form": 2753
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is subtracted from itself, what is the result according to the passage?",
+      "ms": {
+        "draft": 3325,
+        "critique": 7387,
+        "solver": 1454,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the meaning of the statement 'The sum of a number and its inverse is zero' in simple terms?",
+      "ms": {
+        "draft": 3325,
+        "critique": 7519,
+        "solver": 11916,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the main idea behind Brahmagupta’s rules for addition and subtraction?",
+      "ms": {
+        "draft": 3325,
+        "critique": 7906,
+        "solver": 1554,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Using Brahmagupta’s rules for addition, what is the result of (–2) + (–3)?",
+      "ms": {
+        "draft": 3325,
+        "critique": 7606,
+        "solver": 15180,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is added to its additive inverse, what is the result?",
+      "ms": {
+        "draft": 3325,
+        "critique": 7773,
+        "solver": 11747,
+        "form": 2321
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the additive inverse of a number?",
+      "ms": {
+        "draft": 3325,
+        "critique": 6211,
+        "solver": 1615,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a negative number as mentioned in the passage?",
+      "ms": {
+        "draft": 5096,
+        "critique": 6653,
+        "solver": 1765,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the sum of the numbers in the top row of the first grid mentioned in the passage?",
+      "ms": {
+        "draft": 5096,
+        "critique": 7280,
+        "solver": 2423
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the sum of the numbers in the second grid mentioned in the passage?",
+      "ms": {
+        "draft": 5096,
+        "critique": 8710
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a temperature in Leh is –5°C, what is the temperature in Celsius?",
+      "ms": {
+        "draft": 5096,
+        "critique": 6096,
+        "solver": 13778
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following represents the correct result of (+5) – (+6)?",
+      "ms": {
+        "draft": 5058,
+        "critique": 7187,
+        "solver": 1681,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a temperature in Leh is –10°C and it increases by 15°C, what is the final temperature?",
+      "ms": {
+        "draft": 5096,
+        "critique": 6963,
+        "solver": 7700,
+        "form": 1571
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a player starts at Floor +2 and presses -3, where will they reach?",
+      "ms": {
+        "draft": 3443,
+        "critique": 6138,
+        "solver": 1697,
+        "form": 2749
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct expression for moving from Floor +4 to Floor -3?",
+      "ms": {
+        "draft": 3443,
+        "critique": 7348,
+        "solver": 1669,
+        "form": 2899
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does a positive result in the game mean?",
+      "ms": {
+        "draft": 3443,
+        "critique": 5753,
+        "solver": 1665,
+        "form": 2575,
+        "translation": 13865
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following numbers is the largest?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a negative number as used in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Correct choice is not the longest option, but is the only on…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person starts at the Food Court (Floor +1) and presses the '+' button 4 times, which floor will they reach?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the 'Building of Fun', the ground floor is called Floor 0. If a person starts at Floor +2 and presses the '-' button 3 times, which floor will they reach?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Gurmit was in the Toy Store (Floor -1) and pressed the '+' button 2 times by mistake. He then pressed the '-' button 3 times. Where will he end up?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the inverse of +4?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements is true according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person starts at Floor +4 and presses the '-' button 3 times, which floor will they reach?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the result of (+1) – (+4)?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If the starting floor is +2 and the target floor is –1, what is the movement needed?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is less than 0?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the result of (–200)–(–40)?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the starting floor is +3 and the target floor is –2, what is the movement needed?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the starting floor is –3 and the target floor is +4, what is the movement needed?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the result of (+200)–(+40)?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the result of –99+(+200)?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the result of –99–(–200)?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the result of (–200)–(+40)?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the result of +105–(–55)?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If a lift attendant starts on the ground floor (Floor 0) and has 5 positive tokens and 3 negative tokens in his pocket, on which floor is he now?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A lift attendant has 6 positive tokens and 8 negative tokens in his pocket. What is the final floor he is on?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student starts with `100 in a bank account. They then deposit `60 and pay `30. What is their bank balance now?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following numbers is the smallest?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the sum of the numbers in the first row of the given grid?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'text'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to Brahmagupta's rules for addition, what is the result of adding a negative number and a positive number if the positive number is larger in magnitude?",
+      "reason": "option 3 repeats the stem's wording (\"The result is the negative of the positive number\"); options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"thinks the result is always zero when adding a positive and …\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the result of (-8) - (-4)?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following represents a negative integer?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the given geographical cross-section, which point has the lowest height?",
+      "reason": "the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number line shows the integers between 0 and -7 in increasing order, which of the following is correct?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a bank account starts with ₹0 and has credits of ₹30, ₹40, and ₹50, and debits of ₹40, ₹50, and ₹60, what is the final balance?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the result of (-2) - (-6)?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the inverse of -4?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a player is on Floor -2 and needs to reach Floor -5, what movement should they make?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the value of the expression (– 10) – (– 5)?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a number is subtracted from itself, what is the result according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the meaning of the statement 'The sum of a number and its inverse is zero' in simple terms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the main idea behind Brahmagupta’s rules for addition and subtraction?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (74 vs 36 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Using Brahmagupta’s rules for addition, what is the result of (–2) + (–3)?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a number is added to its additive inverse, what is the result?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the additive inverse of a number?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (57 vs 35 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a negative number as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed for distractor reasoning (b…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the sum of the numbers in the top row of the first grid mentioned in the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the sum of the numbers in the second grid mentioned in the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a temperature in Leh is –5°C, what is the temperature in Celsius?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following represents the correct result of (+5) – (+6)?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a temperature in Leh is –10°C and it increases by 15°C, what is the final temperature?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the direction of the temperature change and subtrac…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If a player starts at Floor +2 and presses -3, where will they reach?",
+      "reason": "near-duplicate of served question cmvfqxo9a00ergpfh8ly9o8oc (cosine 0.936 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following is a correct expression for moving from Floor +4 to Floor -3?",
+      "reason": "near-duplicate of served question cmvmal24b009xgp217sf9i86f (cosine 0.910 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

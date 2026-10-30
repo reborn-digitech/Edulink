@@ -1,0 +1,422 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T19:42:26.886Z",
+  "finishedAt": "2026-10-29T19:47:44.140Z",
+  "seconds": 317,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 1 — Living World and Classification of Microbes",
+    "edition": "First Edition 2018",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2025-26]\n1. C. Cuscuta, ticks, lice, leeches and tapeworm; as all of these are parasites. 1",
+      "[INJSO 2023 — question paper]\n3. Some microbes produce diffusible\nmetabolites that can be used by\nother microbes for their growth.\nThree such microorganisms were\ntested for their nutritional growth\nrequirements (under +/- light,\nscheme below) either on minimal\nsalt media (lacking any organic\nsources of carbon and nitrogen)\nOR on complete or rich media con-\ntaining salts with organic carbon\nand nitrogen.\nBased on the growth patterns\nshown after 24hrs, pick the correct\noption:\nA. P - Autotrophs, Q - Heterotroph, R - Heterotroph\nB. P – Photoautotroph, Q – Chemoheterotroph, R - Chemoautotroph\nC. P - Chemoautotrophs, Q - Chemoautotrophs, R – Heterotroph\nD. P - Photoautotroph, Q - Chemoheterotroph, R - Saprophyte",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n1. Select the group in which all organisms have the same mode of nutrition. 1\nA. Cuscuta, yeast, legumes, leeches and tapeworm\nB. Cactus, ticks, lice, leeches and cow\nC. Cuscuta, ticks, lice, leeches and tapeworm\nD. Cactus, grass, lice, lion and tapeworm",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n10. D. Longer small intestine."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 57378,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 12971,
+      "completionTokens": 3458
+    },
+    "critique": {
+      "calls": 20,
+      "ms": 111709,
+      "in": 18,
+      "out": 16,
+      "rejects": 2,
+      "promptTokens": 8566,
+      "completionTokens": 3442
+    },
+    "solver": {
+      "calls": 94,
+      "ms": 38632,
+      "in": 16,
+      "out": 14,
+      "rejects": 2,
+      "promptTokens": 13408,
+      "completionTokens": 870
+    },
+    "form": {
+      "calls": 12,
+      "ms": 34609,
+      "in": 14,
+      "out": 9,
+      "rejects": 5,
+      "promptTokens": 2949,
+      "completionTokens": 933
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 97,
+      "ms": 15038,
+      "in": 9,
+      "out": 5,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 23,
+      "ms": 219356,
+      "in": 10,
+      "out": 10,
+      "rejects": 1,
+      "promptTokens": 12645,
+      "completionTokens": 6422
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a microorganism is found in a pond and moves with pseudopodia, which kingdom does it belong to?",
+      "ms": {
+        "draft": 3062,
+        "critique": 6136
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not a characteristic of organisms in the kingdom Monera?",
+      "ms": {
+        "draft": 3062,
+        "critique": 7612
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct characteristic of fungi?",
+      "ms": {
+        "draft": 3062,
+        "critique": 6795,
+        "solver": 1472,
+        "form": 2438
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct classification of bacteria?",
+      "ms": {
+        "draft": 3062,
+        "critique": 6004,
+        "solver": 1290,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed a microorganism that is unicellular, has a cell wall, and is heterotrophic. Which kingdom could it belong to?",
+      "ms": {
+        "draft": 3062,
+        "critique": 6398,
+        "solver": 1265,
+        "form": 4175
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following correctly lists the order of size from smallest to largest?",
+      "ms": {
+        "draft": 3496,
+        "critique": 6080,
+        "solver": 1335
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following organisms can be said to be at the edge of living and non-living?",
+      "ms": {
+        "draft": 3496,
+        "critique": 4780,
+        "solver": 8235
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a heterotrophic organism?",
+      "ms": {
+        "draft": 3005,
+        "critique": 6977,
+        "solver": 10695,
+        "form": 3418
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the mode of nutrition of fungi?",
+      "ms": {
+        "draft": 3005,
+        "critique": 2525,
+        "solver": 708,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a free-living microbe?",
+      "ms": {
+        "draft": 3496,
+        "critique": 6020,
+        "solver": 1035,
+        "form": 2747
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a saprotrophic organism?",
+      "ms": {
+        "draft": 3496,
+        "critique": 5511,
+        "solver": 1718,
+        "form": 3144
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of organisms in Kingdom Monera?",
+      "ms": {
+        "draft": 3005,
+        "critique": 5942,
+        "solver": 1585,
+        "form": 4591
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of protozoa?",
+      "ms": {
+        "draft": 3005,
+        "critique": 5307,
+        "solver": 1547,
+        "form": 2775
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a feature of fungi?",
+      "ms": {
+        "draft": 3005,
+        "critique": 7245,
+        "solver": 2293,
+        "form": 2367,
+        "translation": 34692
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of fungi?",
+      "ms": {
+        "draft": 3496,
+        "critique": 6204,
+        "solver": 985,
+        "form": 3295,
+        "translation": 64772
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a microorganism is unicellular, has a nucleus, and moves using flagella, which kingdom does it belong to?",
+      "ms": {
+        "draft": 3005,
+        "critique": 5095,
+        "solver": 978,
+        "form": 2921,
+        "translation": 31281
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following organisms can be classified as both a protist and a parasite?",
+      "ms": {
+        "draft": 3496,
+        "critique": 5089,
+        "solver": 634,
+        "form": 3748,
+        "translation": 43559
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A microorganism is found to be a saprophyte and has a cell wall made of chitin. Which kingdom does it belong to?",
+      "ms": {
+        "draft": 3062,
+        "critique": 5513,
+        "solver": 1609,
+        "form": 2629,
+        "translation": 41547
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a microorganism is found in a pond and moves with pseudopodia, which kingdom does it belong to?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is not a characteristic of organisms in the kingdom Monera?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct characteristic of fungi?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct classification of bacteria?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observed a microorganism that is unicellular, has a cell wall, and is heterotrophic. Which kingdom could it belong to?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following correctly lists the order of size from smallest to largest?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following organisms can be said to be at the edge of living and non-living?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"Which of the following is an example of a saprotrophic organism?\",\"options\":[\"Amoeba\","
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a heterotrophic organism?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the mode of nutrition of fungi?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of a free-living microbe?",
+      "reason": "near-duplicate of served question cmvezt4k002glgod8xqywq3z5 (cosine 0.948 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is a saprotrophic organism?",
+      "reason": "near-duplicate of served question cmvg59ofp028lgpfh4f689c2a (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of organisms in Kingdom Monera?",
+      "reason": "near-duplicate of served question cmvg59ofi027rgpfh48f6vtg3 (cosine 0.902 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a feature of protozoa?",
+      "reason": "near-duplicate of served question cmvms96nk020bgp215eaydrs5 (cosine 0.913 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

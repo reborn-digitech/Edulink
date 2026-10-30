@@ -1,0 +1,428 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T17:31:32.106Z",
+  "finishedAt": "2026-10-28T17:39:24.453Z",
+  "seconds": 472,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Themes in World History",
+    "bookCode": "kehs1",
+    "document": "ncert/11/history/kehs103.pdf",
+    "classLevel": 11,
+    "subject": "History",
+    "chapter": "Chapter 3 — CHANGING TRADITIONS",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII History, sample question paper, 2026-27]\n10. The terms ‘Great and Little traditions’ were coined by a sociologist named ________. 1\n(A) John Marshall\n(B) Robert Redfield\n(C) Cyril Radcliffe\n(D) Francis Buchanan",
+      "[CBSE Class XII History, marking scheme, 2024-25]\nx. Worshippers entered through the eastern gateway and walked around the\nmound in a clockwise direction keeping the mound on the right, imitating the\nsun’s course through the sky.\nxi. Sanchi, Amaravati, and Shahji-ki-Dheri\nxii. Any other relevant point\nAny eight points to be explained.",
+      "[CBSE Class XII History, marking scheme, 2024-25]\n13. ANS- B-By providing information on administrative and cultural traditions. 1",
+      "[CBSE Class XII History, marking scheme, 2025-26]\n11. D. Sangama dynasty 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 117333,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 12802,
+      "completionTokens": 4581
+    },
+    "critique": {
+      "calls": 20,
+      "ms": 190677,
+      "in": 18,
+      "out": 8,
+      "rejects": 10,
+      "promptTokens": 10159,
+      "completionTokens": 3575
+    },
+    "solver": {
+      "calls": 54,
+      "ms": 44700,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9721,
+      "completionTokens": 570
+    },
+    "form": {
+      "calls": 1,
+      "ms": 2067,
+      "in": 8,
+      "out": 1,
+      "rejects": 7,
+      "promptTokens": 253,
+      "completionTokens": 54
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 10,
+      "ms": 2432,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 37673,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2848,
+      "completionTokens": 1713
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the Roman Empire in the west?",
+      "ms": {
+        "draft": 5744,
+        "critique": 7221,
+        "solver": 1729,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is mentioned in the passage as a reason for the growth of empires?",
+      "ms": {
+        "draft": 5744,
+        "critique": 7221,
+        "solver": 2814,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the feudal system as outlined in the passage?",
+      "ms": {
+        "draft": 5744,
+        "critique": 8167,
+        "solver": 3698,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the influence of the Church in medieval Europe?",
+      "ms": {
+        "draft": 5744,
+        "critique": 10412,
+        "solver": 2263,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what was one reason for the growth of trade in Europe during the medieval period?",
+      "ms": {
+        "draft": 5744,
+        "critique": 10119,
+        "solver": 2918,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage imply about the relationship between cultural encounters and the development of empires?",
+      "ms": {
+        "draft": 5744,
+        "critique": 8836,
+        "solver": 3787,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Who coined the terms ‘Great and Little traditions’?",
+      "ms": {
+        "draft": 21746,
+        "critique": 10469
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the European attitude towards non-Europeans as per the passage?",
+      "ms": {
+        "draft": 21746,
+        "critique": 10306
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason for the transformation of lives of people during the period under consideration?",
+      "ms": {
+        "draft": 21746,
+        "critique": 11773
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the most likely reason for the Japanese to have begun large-scale production of muskets by the late sixteenth century?",
+      "ms": {
+        "draft": 21746,
+        "critique": 11312
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following is an example of cultural exchange between Europe and Asia?",
+      "ms": {
+        "draft": 21746,
+        "critique": 14141,
+        "solver": 12954,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "The passage mentions an Aztec woman who interpreted and negotiated for the Spanish conqueror Cortes. What was her name?",
+      "ms": {
+        "draft": 5190,
+        "critique": 9380
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what was one way in which Europeans impacted the Americas?",
+      "ms": {
+        "draft": 5190,
+        "critique": 10625
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The passage mentions that the Japanese began large-scale production of muskets by the late sixteenth century. What does this suggest about the Japanese?",
+      "ms": {
+        "draft": 5190,
+        "critique": 11114
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage discusses the impact of European encounters with other cultures. Based on the passage, what was one reason for the European interest in the Islamic lands, India, and China?",
+      "ms": {
+        "draft": 5190,
+        "critique": 10578
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage mentions that the Portuguese attempted to establish trade monopolies in the Indian Ocean after Vasco da Gama’s arrival in Calicut in 1498. Which of the following best explains why the Portuguese might have done this?",
+      "ms": {
+        "draft": 5190,
+        "critique": 9862
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that the Catholic Church encouraged both the study of other cultures and attacks on people it saw as 'un-Christian'. Which of the following best explains why the Church might have done this?",
+      "ms": {
+        "draft": 5190,
+        "critique": 9905
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a non-European group using Europeans to challenge their own power?",
+      "ms": {
+        "draft": 21746,
+        "critique": 8460,
+        "solver": 22865,
+        "form": 2068,
+        "translation": 32556
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the Roman Empire in the west?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's statement that the Roman Empire …\"); distractor 2's reason is not a one-line misconception (\"Misunderstands the passage's mention of the Church's role in…\"); distractor 3's reason is not a one-line misconception (\"Overlooks the passage's statement that the Roman Empire was …\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is mentioned in the passage as a reason for the growth of empires?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Confuses the passage's point about long-term changes with th…\"); distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's mention of long-term changes as …\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's focus on cultural encounters an…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best describes the feudal system as outlined in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's description of feudalism as a s…\"); distractor 2's reason is not a one-line misconception (\"Confuses the passage's mention of the Church's role with the…\"); distractor 3's reason is not a one-line misconception (\"Overlooks the passage's focus on lords and peasants in the f…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the influence of the Church in medieval Europe?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's mention of the Church's support …\"); distractor 2's reason is not a one-line misconception (\"Misunderstands the passage's description of the Church's int…\"); distractor 3's reason is not a one-line misconception (\"Overlooks the passage's statement about the Church's involve…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, what was one reason for the growth of trade in Europe during the medieval period?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Confuses the passage's mention of scientific knowledge with …\"); distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's statement about the Roman Empire…\"); distractor 2's reason is not a one-line misconception (\"Overlooks the passage's focus on exploration and discovery a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage imply about the relationship between cultural encounters and the development of empires?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's statement about cultural encount…\"); distractor 1's reason is not a one-line misconception (\"Confuses the passage's mention of cultural encounters with t…\"); distractor 3's reason is not a one-line misconception (\"Overlooks the passage's general statement about the importan…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Who coined the terms ‘Great and Little traditions’?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the European attitude towards non-Europeans as per the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason for the transformation of lives of people during the period under consideration?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is the most likely reason for the Japanese to have begun large-scale production of muskets by the late sixteenth century?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, which of the following is an example of cultural exchange between Europe and Asia?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Mentions a factor but not an example of cultural exchange. T…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly attributes the exchange to a different region. T…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following is NOT a feature of the feudal system "
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "The passage mentions an Aztec woman who interpreted and negotiated for the Spanish conqueror Cortes. What was her name?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what was one way in which Europeans impacted the Americas?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "The passage mentions that the Japanese began large-scale production of muskets by the late sixteenth century. What does this suggest about the Japanese?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The passage discusses the impact of European encounters with other cultures. Based on the passage, what was one reason for the European interest in the Islamic lands, India, and China?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The passage mentions that the Portuguese attempted to establish trade monopolies in the Indian Ocean after Vasco da Gama’s arrival in Calicut in 1498. Which of the following best explains why the Portuguese might have done this?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The passage states that the Catholic Church encouraged both the study of other cultures and attacks on people it saw as 'un-Christian'. Which of the following best explains why the Church might have done this?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

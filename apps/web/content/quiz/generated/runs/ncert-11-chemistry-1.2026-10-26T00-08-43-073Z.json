@@ -1,0 +1,747 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T00:08:43.073Z",
+  "finishedAt": "2026-10-26T00:17:13.230Z",
+  "seconds": 510,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry Part-I",
+    "bookCode": "kech1",
+    "document": "ncert/11/chemistry/kech101.pdf",
+    "classLevel": 11,
+    "subject": "Chemistry",
+    "chapter": "Chapter 1 — Some Basic Concepts of Chemistry",
+    "edition": "Reprint 2026-27",
+    "chunks": 39,
+    "groups": 13
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Chemistry, marking scheme, 2025-26]\ni  0.7 2   1\n= 1.4 + 1 = 2.4\n𝑃 − 𝑃 𝐴 𝑜 𝑠\n𝑜 = 𝑖\n𝑃 𝐴 𝐴\n23.8 Ps 1\n 2.4\n23.8 56.5\n 2.4 \n23.8 1    Ps\n 56.5 \n22.9mm of Hg Ps\n23 I. 𝐸 = 𝐸 𝑜 – 2.303 𝑅𝑇 log\n𝑐𝑒𝑙𝑙 𝑐𝑒𝑙𝑙 2𝐹\n½\n½\n½\n𝑛 𝐵\n𝑛 + 𝑛 𝐵 ½\n½\n½\n[𝑁𝑖 2+ ] 1\n[ 𝐶𝑢 2+ ]\nII. 𝐸 𝑐𝑒𝑙𝑙 = 𝐸 𝑐𝑒𝑙𝑙 𝑜 – 2.303 𝑅𝑇 6𝐹 log\nIII. 𝐸 𝑐𝑒𝑙𝑙 = 𝐸 𝑐𝑒𝑙𝑙 𝑜 – 2.303 𝑅𝑇 2𝐹 log\n3+ 2\n[𝐴𝑙 ]\n[ 𝐹𝑒 2+ 3 ]\n[𝑀𝑔 2+ ]\n[ 𝐴𝑔 ] + 2 1\n24 I. Cl 2 in presence of sunlight forms free radical as an intermediate and 1\nhence toluene undergoes free radical substitution of the alky group\nto form benzyl alcohol whereas Cl 2 in dark forms Cl , an electrophile +\nas an intermediate, making toluene undergo electrophilic substi",
+      "[CBSE Class XII Chemistry, marking scheme, 2024-25]\n1. (c) reacts with Benzenesulphonyl chloride to form a product that is 1\ninsoluble in alkali",
+      "[CBSE Class XII Chemistry, marking scheme, 2025-26]\n9. C. both lanthanoids and actinoids\n10 C. Either 1 or 3\n𝑜 𝑜 𝑜\nΛ 𝑚 CH 3 COOH = Λ HCl + Λ 𝑚 𝑚 CH 3 COOK - Λ KCl 𝑜 𝑚\nΛ 𝑜 𝑚 CH 3 COOH = 1/2 Λ H 𝑜 𝑚 2 SO 4 + Λ 𝑜 𝑚 CH 3 COONa – 1/2 Λ Na 𝑜 𝑚 2 SO 4",
+      "[CBSE Class XII Chemistry, marking scheme, 2023-24]\n18. π 1 = π 2\niC 1 RT = C 2 RT\n( ½)\n(1)\n(1/2)\n(1/2)\n35  2\n322 M (1/2)\nM  2322\n3 5 (1/2)\nM = 42.9 g"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 155770,
+      "in": 41,
+      "out": 39,
+      "rejects": 2,
+      "promptTokens": 46821,
+      "completionTokens": 8737
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 303913,
+      "in": 39,
+      "out": 35,
+      "rejects": 4,
+      "promptTokens": 22348,
+      "completionTokens": 8726
+    },
+    "solver": {
+      "calls": 255,
+      "ms": 118022,
+      "in": 35,
+      "out": 28,
+      "rejects": 7,
+      "promptTokens": 48791,
+      "completionTokens": 2779
+    },
+    "form": {
+      "calls": 8,
+      "ms": 28510,
+      "in": 28,
+      "out": 15,
+      "rejects": 13,
+      "promptTokens": 3799,
+      "completionTokens": 808
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 4494,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 65,
+      "ms": 557353,
+      "in": 30,
+      "out": 30,
+      "rejects": 1,
+      "promptTokens": 35396,
+      "completionTokens": 16318
+    }
+  },
+  "kept": 15,
+  "keptByLevel": {
+    "1": 4,
+    "2": 3,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is the primary focus of the branch of science called chemistry?",
+      "ms": {
+        "draft": 2861,
+        "critique": 6161,
+        "solver": 1300,
+        "form": 3620
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main characteristic of chemistry as a science?",
+      "ms": {
+        "draft": 2861,
+        "critique": 5250,
+        "solver": 1507,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT mentioned as a contribution of ancient India to chemistry?",
+      "ms": {
+        "draft": 2861,
+        "critique": 6161,
+        "solver": 13907
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following can be inferred from the passage about the role of chemistry in different spheres of life?",
+      "ms": {
+        "draft": 2861,
+        "critique": 6416,
+        "solver": 1582,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is described in the passage as an example of early chemical processes in ancient India?",
+      "ms": {
+        "draft": 2861,
+        "critique": 5787,
+        "solver": 11192,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which ancient Indian text describes the treatment of diseases using bhasma of metals?",
+      "ms": {
+        "draft": 2763,
+        "critique": 6547,
+        "solver": 1267,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a modern application of chemistry as mentioned in the passage?",
+      "ms": {
+        "draft": 2763,
+        "critique": 6725,
+        "solver": 1767,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for the decline of indigenous traditional techniques in India according to the passage?",
+      "ms": {
+        "draft": 2763,
+        "critique": 5620,
+        "solver": 14952,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of solids?",
+      "ms": {
+        "draft": 2999,
+        "critique": 5433,
+        "solver": 1337,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is the significance of chemistry in the context of environmental problems?",
+      "ms": {
+        "draft": 2763,
+        "critique": 6802,
+        "solver": 16294
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what is the main purpose of studying the basic concepts of chemistry?",
+      "ms": {
+        "draft": 2763,
+        "critique": 6542,
+        "solver": 14440,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the arrangement of particles in gases?",
+      "ms": {
+        "draft": 2999,
+        "critique": 5102,
+        "solver": 1756,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the SI unit of mass?",
+      "ms": {
+        "draft": 4336,
+        "critique": 6232
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student measures the mass of an object using a platform balance and gets 9.4 g. When using an analytical balance, the mass is 9.4213 g. What does this difference indicate?",
+      "ms": {
+        "draft": 6506,
+        "critique": 6070,
+        "solver": 1290,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student measures 2.5 × 10^3 mL of a solution using a graduated cylinder. If they then add 4.8 × 10^2 mL of another solution, what is the total volume in scientific notation?",
+      "ms": {
+        "draft": 6506,
+        "critique": 5889,
+        "solver": 755
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 20 g of sugar (C12H22O11) is dissolved in 2 L of water, what is the concentration of sugar in mol L^-1?",
+      "ms": {
+        "draft": 3575,
+        "critique": 8160
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the density of methanol is 0.793 kg L^-1, what is the volume of methanol needed to make 2.5 L of its 0.25 M solution?",
+      "ms": {
+        "draft": 3575,
+        "critique": 5424,
+        "solver": 1720
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the molarity of a solution?",
+      "ms": {
+        "draft": 5310,
+        "critique": 5553,
+        "solver": 1509,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 4 g of NaOH is dissolved in 250 mL of solution, what is the molarity of the solution?",
+      "ms": {
+        "draft": 5310,
+        "critique": 9209
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The density of a 10% (w/v) NaCl solution is 1.1 g/mL. What is the molarity of the solution?",
+      "ms": {
+        "draft": 5310,
+        "critique": 5956
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the mass of one carbon atom in grams?",
+      "ms": {
+        "draft": 3575,
+        "critique": 9133,
+        "solver": 16374
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A 3 M NaCl solution has a density of 1.25 g/mL. What is the molality of the solution?",
+      "ms": {
+        "draft": 5310,
+        "critique": 8433,
+        "solver": 9864,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A solution of NaOH has a density of 1.2 g/mL and is 10% (w/w). What is the molarity of the solution?",
+      "ms": {
+        "draft": 5310,
+        "critique": 5594,
+        "solver": 1678
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the balanced equation for the combustion of propane, C3H8, how many molecules of oxygen are required?",
+      "ms": {
+        "draft": 5397,
+        "critique": 6927,
+        "solver": 1346
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main reason for the development of chemistry in ancient times?",
+      "ms": {
+        "draft": 2861,
+        "critique": 6923,
+        "solver": 1529,
+        "form": 2961,
+        "translation": 37912
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name given to the smallest indivisible particle of matter in ancient Indian philosophy?",
+      "ms": {
+        "draft": 2763,
+        "critique": 5380,
+        "solver": 1256,
+        "form": 2671,
+        "translation": 71510
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of pressure?",
+      "ms": {
+        "draft": 3575,
+        "critique": 6158,
+        "solver": 11653,
+        "form": 1978,
+        "translation": 25894
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of mass?",
+      "ms": {
+        "draft": 3575,
+        "critique": 7119,
+        "solver": 12639,
+        "form": 2779,
+        "translation": 26480
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the mass percent of hydrogen in water if the molar mass of water is 18.02 g?",
+      "ms": {
+        "draft": 4521,
+        "critique": 4902,
+        "solver": 7416,
+        "form": 1629,
+        "translation": 38997
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a balanced chemical equation?",
+      "ms": {
+        "draft": 5397,
+        "critique": 5815,
+        "solver": 1680,
+        "form": 0,
+        "translation": 55039
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following prefixes matches with 'micro'?",
+      "ms": {
+        "draft": 3575,
+        "critique": 5859,
+        "solver": 970,
+        "form": 5599,
+        "translation": 29420
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a homogeneous mixture?",
+      "ms": {
+        "draft": 2999,
+        "critique": 5392,
+        "solver": 1529,
+        "form": 0,
+        "translation": 25609
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observes that a substance has a unique melting point and is combustible. What type of properties is the student observing?",
+      "ms": {
+        "draft": 3077,
+        "critique": 5396,
+        "solver": 1554,
+        "form": 0,
+        "translation": 40938
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student measures the mass of a substance using a balance. Which SI unit is most likely used for this measurement?",
+      "ms": {
+        "draft": 3077,
+        "critique": 4824,
+        "solver": 1608,
+        "form": 0,
+        "translation": 28380
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a mixture has a uniform composition throughout, what type of mixture is it?",
+      "ms": {
+        "draft": 2999,
+        "critique": 5583,
+        "solver": 1310,
+        "form": 0,
+        "translation": 26385
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student measures the volume of a liquid using a graduated cylinder. If the cylinder is marked in millilitres, what is the SI unit for volume?",
+      "ms": {
+        "draft": 3077,
+        "critique": 5522,
+        "solver": 10554,
+        "form": 0,
+        "translation": 30396
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 16 g of methane (CH4) is combusted, how many grams of water (H2O) are produced?",
+      "ms": {
+        "draft": 5397,
+        "critique": 6199,
+        "solver": 1032,
+        "form": 0,
+        "translation": 48181
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct statement about pure substances?",
+      "ms": {
+        "draft": 2999,
+        "critique": 5782,
+        "solver": 1671,
+        "form": 0,
+        "translation": 28918
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student measures the amount of a substance and finds it to be 1 mole. What does this mean?",
+      "ms": {
+        "draft": 3077,
+        "critique": 5558,
+        "solver": 2099,
+        "form": 0,
+        "translation": 38368
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the relationship between the Kelvin and Celsius temperature scales?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the SI unit of density?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the primary focus of the branch of science called chemistry?",
+      "reason": "the key is far longer than every distractor (80 vs 30 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main characteristic of chemistry as a science?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT mentioned as a contribution of ancient India to chemistry?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following can be inferred from the passage about the role of chemistry in different spheres of life?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is described in the passage as an example of early chemical processes in ancient India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (55 vs 33 characters); distractor 3's reason is not a one-line misconception (\"Misunderstands the content of the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which ancient Indian text describes the treatment of diseases using bhasma of metals?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of a modern application of chemistry as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main reason for the decline of indigenous traditional techniques in India according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of solids?",
+      "reason": "options 2 and 3 say the same thing (\"They have a definite shape but no definite volume\" / \"They have a definite volume but no definite shape\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "According to the passage, what is the significance of chemistry in the context of environmental problems?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what is the main purpose of studying the basic concepts of chemistry?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"To understand the history of ancient texts\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the arrangement of particles in gases?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is the SI unit of mass?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student measures the mass of an object using a platform balance and gets 9.4 g. When using an analytical balance, the mass is 9.4213 g. What does this difference indicate?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Incorrectly assumes that fewer digits mean more precision in…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student measures 2.5 × 10^3 mL of a solution using a graduated cylinder. If they then add 4.8 × 10^2 mL of another solution, what is the total volume in scientific notation?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 20 g of sugar (C12H22O11) is dissolved in 2 L of water, what is the concentration of sugar in mol L^-1?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the density of methanol is 0.793 kg L^-1, what is the volume of methanol needed to make 2.5 L of its 0.25 M solution?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the molarity of a solution?",
+      "reason": "options 0 and 2 say the same thing (\"It is the number of moles of solute per litre of solution\" / \"It is the number of moles of solute per litre of solvent\"); options 0 and 3 say the same thing (\"It is the number of moles of solute per litre of solution\" / \"It is the number of grams of solute per litre of solution\"); options 1 and 2 say the same thing (\"It is the number of moles of solute per kilogram of solvent\" / \"It is the number of moles of solute per litre of solvent\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 4 g of NaOH is dissolved in 250 mL of solution, what is the molarity of the solution?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The density of a 10% (w/v) NaCl solution is 1.1 g/mL. What is the molarity of the solution?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the mass of one carbon atom in grams?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A 3 M NaCl solution has a density of 1.25 g/mL. What is the molality of the solution?",
+      "reason": "options 1 and 2 are the same (\"3.25 m\"); options 1 and 2 are the same number; ARITHMETIC MISMATCH — checkExpr \"3/(1000*1.25 - 3*58.5)/1000\" = 0.000002791996277338297, but the key says 2.79"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A solution of NaOH has a density of 1.2 g/mL and is 10% (w/w). What is the molarity of the solution?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the balanced equation for the combustion of propane, C3H8, how many molecules of oxygen are required?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

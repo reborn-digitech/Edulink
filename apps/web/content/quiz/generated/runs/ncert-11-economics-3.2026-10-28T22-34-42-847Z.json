@@ -1,0 +1,863 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T22:34:42.847Z",
+  "finishedAt": "2026-10-28T22:46:20.826Z",
+  "seconds": 698,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Indian Economic Development",
+    "bookCode": "keec1",
+    "document": "ncert/11/economics/keec103.pdf",
+    "classLevel": 11,
+    "subject": "Economics",
+    "chapter": "Chapter 3 — Liberalisation, Privatisation and Globalisation: an Appraisal",
+    "edition": "Reprint 2026-27",
+    "chunks": 22,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Economics, marking scheme, 2024-25]\n28. Disinvestment aimed to boost financial discipline and modernisation. The\n(A) government exceeded its mobilisation target but assets of Public Sector 3\nEnterprises (PSEs) had been undervalued, resulting in significant losses to\nthe government. Moreover, the proceeds were primarily used to cover\nshortfalls of government revenue instead of investing in social infrastructure\nor the development of PSE.\nOR\n28. Globalisation is indeed an essential outcome of liberalisation of an\n(B) economy. The removal or reduction of restrictions in the industrial sector, 3\nfinancial sector, trade and investment policy etc. opened the doors of the\nIndian economy to the rest of the world.\nHence, liberalisation",
+      "[CBSE Class XII Economics, sample question paper, 2024-25]\n28. Critically appraise the disinvestment policy initiated by the government during 3\n(A) the reforms of 1991.\nOR\n28. ‘Globalisation is an essential outcome of liberalisation of an economy’.\n(B) Justify the given statement with a valid explanation. 3",
+      "[CBSE Class XII Economics, sample question paper, 2025-26]\n31 (I) “India has been a part of many regional and global economic groupings such 3\nas G20, SAARC, BRICS etc.”\nIn the light of the given statement, briefly explain the importance of regional and\nglobal economic groupings.\n(II) Define ‘Special Economic Zone’. 1\n32 Refer to the given image carefully:\nPanel A Panel B\nAnswer the following questions on the basis of the given image:\n(I) Identify the type of farming in Panel A and Panel B. 1\n(II) Explain any one advantage and disadvantage of the type of farming in 3\nPanel B over Panel A.\nNote: The following question is for the Visually Impaired Candidates\nonly, in lieu of Q.32\nExplain any one advantage and disadvantage of a whole system of farming ",
+      "[CBSE Class XII Economics, marking scheme, 2025-26]\n33. The industries were classified under three heads as per Industrial Policy\n(A) Resolution 1956:\n(I) • The first category, comprised industries which would be exclusively 1\nowned by the government.\n• The second category, private sector could supplement the efforts of 1\nthe public sector, with the government taking the sole responsibility for\nstarting new units.\n• The third category consisted of the remaining industries which were 1\nleft in the hands of private sector.\n(II) Yes. A few former Zamindars, used legislative loopholes to continue to own\nlarge areas of land. Tenants were evicted and the landowners claimed to be\nself-cultivators. The big landlords delayed its implementation; by cha"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Economics in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 180607,
+      "in": 47,
+      "out": 43,
+      "rejects": 5,
+      "promptTokens": 52858,
+      "completionTokens": 10901
+    },
+    "critique": {
+      "calls": 55,
+      "ms": 318529,
+      "in": 43,
+      "out": 30,
+      "rejects": 13,
+      "promptTokens": 25817,
+      "completionTokens": 9487
+    },
+    "solver": {
+      "calls": 225,
+      "ms": 110221,
+      "in": 30,
+      "out": 27,
+      "rejects": 3,
+      "promptTokens": 44828,
+      "completionTokens": 2559
+    },
+    "form": {
+      "calls": 13,
+      "ms": 32905,
+      "in": 27,
+      "out": 7,
+      "rejects": 20,
+      "promptTokens": 3470,
+      "completionTokens": 964
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 15,
+      "ms": 2599,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 35,
+      "ms": 310322,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 21232,
+      "completionTokens": 11332
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements best describes the impact of the economic reforms of 1991 on the Indian economy?",
+      "ms": {
+        "draft": 5749,
+        "critique": 4923,
+        "solver": 1289,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a reason for the economic crisis in India in 1991?",
+      "ms": {
+        "draft": 5749,
+        "critique": 5393,
+        "solver": 2281,
+        "form": 2016
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the main goal of the stabilisation measures introduced in the 1991 economic reforms?",
+      "ms": {
+        "draft": 5749,
+        "critique": 5245,
+        "solver": 1609,
+        "form": 3417
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the statement that 'economic development is not all and the GDP is not necessarily a measure of progress of a society'?",
+      "ms": {
+        "draft": 5749,
+        "critique": 6187,
+        "solver": 918,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains the government's decision to approach the World Bank and IMF in 1991?",
+      "ms": {
+        "draft": 5749,
+        "critique": 7216,
+        "solver": 1615,
+        "form": 3761
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the impact of the government's expenditure exceeding its revenue in the late 1980s?",
+      "ms": {
+        "draft": 5749,
+        "critique": 5950,
+        "solver": 1601,
+        "form": 2583
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a nationalised bank in India?",
+      "ms": {
+        "draft": 3059,
+        "critique": 6925
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a private foreign bank operating in India?",
+      "ms": {
+        "draft": 3059,
+        "critique": 5366
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a Foreign Institutional Investor (FII)?",
+      "ms": {
+        "draft": 3059,
+        "critique": 6091,
+        "solver": 9691,
+        "form": 2683
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the main purpose of disinvestment in public sector enterprises according to the passage?",
+      "ms": {
+        "draft": 13074,
+        "critique": 6196,
+        "solver": 1289,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is a key factor that determines the success of public sector enterprises in a liberalised economy?",
+      "ms": {
+        "draft": 13074,
+        "critique": 7294,
+        "solver": 1244,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is NOT a reason for granting status to public sector enterprises?",
+      "ms": {
+        "draft": 13074,
+        "critique": 5445,
+        "solver": 13665
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of the World Trade Organisation (WTO)?",
+      "ms": {
+        "draft": 15707,
+        "critique": 6702,
+        "solver": 1579,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a company that has expanded its operations globally due to liberalisation and globalisation?",
+      "ms": {
+        "draft": 15707,
+        "critique": 7688,
+        "solver": 11251
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what is the main reason for the growth of the service sector in India post-1991?",
+      "ms": {
+        "draft": 15707,
+        "critique": 6237,
+        "solver": 1578,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the impact of globalisation on employment in India?",
+      "ms": {
+        "draft": 15707,
+        "critique": 5612,
+        "solver": 1380,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was one of the main reasons for the financial crisis in India in 1991?",
+      "ms": {
+        "draft": 4255,
+        "critique": 8186
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why the IT industry is highlighted as a major contributor to India's exports in the passage?",
+      "ms": {
+        "draft": 4744,
+        "critique": 5070,
+        "solver": 12434,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the impact of globalisation on Indian farmers?",
+      "ms": {
+        "draft": 4744,
+        "critique": 5549,
+        "solver": 10942,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the chapter, which sector has shown the most growth during the reform period?",
+      "ms": {
+        "draft": 3754,
+        "critique": 5725
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What could be a possible reason for the suicide of powerloom workers in Siricilla?",
+      "ms": {
+        "draft": 3754,
+        "critique": 6130
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of outsourcing as mentioned in the chapter?",
+      "ms": {
+        "draft": 3754,
+        "critique": 6849
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the chapter, which of the following is a criticism of globalisation?",
+      "ms": {
+        "draft": 3754,
+        "critique": 5746
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for the decline in public investment in agriculture?",
+      "ms": {
+        "draft": 3754,
+        "critique": 6826
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which sector is highlighted in the passage as a major contributor to India’s exports?",
+      "ms": {
+        "draft": 2973,
+        "critique": 6276,
+        "solver": 1210
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what was the impact of reducing subsidies on agricultural inputs like seeds and fertilisers?",
+      "ms": {
+        "draft": 2973,
+        "critique": 6563,
+        "solver": 11971,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is one reason given in the passage for the slowdown in industrial growth?",
+      "ms": {
+        "draft": 2973,
+        "critique": 5618,
+        "solver": 14559,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following is a consequence of globalisation for Indian farmers?",
+      "ms": {
+        "draft": 2973,
+        "critique": 6892,
+        "solver": 12486,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the disinvestment of public sector enterprises?",
+      "ms": {
+        "draft": 2973,
+        "critique": 5660
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of globalisation as described in the passage?",
+      "ms": {
+        "draft": 13182,
+        "critique": 6015
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what might be a reason for the decline in the growth of agriculture after 1991?",
+      "ms": {
+        "draft": 13182,
+        "critique": 5896
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the impact of globalisation on employment in India?",
+      "ms": {
+        "draft": 13182,
+        "critique": 6438
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a consequence of liberalisation in India?",
+      "ms": {
+        "draft": 13182,
+        "critique": 4862,
+        "solver": 10526,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason for the government granting special status to some public sector enterprises?",
+      "ms": {
+        "draft": 3892,
+        "critique": 5620,
+        "solver": 1609,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the Indian government had to approach the World Bank and IMF in 1991?",
+      "ms": {
+        "draft": 5698,
+        "critique": 6435
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a key objective of financial sector reforms in India?",
+      "ms": {
+        "draft": 4081,
+        "critique": 6076,
+        "solver": 988,
+        "form": 2205
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a mutual fund?",
+      "ms": {
+        "draft": 3059,
+        "critique": 5047,
+        "solver": 1570,
+        "form": 1900,
+        "translation": 28995
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process of selling part of the ownership equity of public sector enterprises called?",
+      "ms": {
+        "draft": 3892,
+        "critique": 4705,
+        "solver": 1602,
+        "form": 3782,
+        "translation": 41046
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a direct tax in India?",
+      "ms": {
+        "draft": 3059,
+        "critique": 5463,
+        "solver": 9266,
+        "form": 2994,
+        "translation": 44580
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an indirect tax in India?",
+      "ms": {
+        "draft": 3059,
+        "critique": 5904,
+        "solver": 1268,
+        "form": 2443,
+        "translation": 33122
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'disinvestment' refer to in the context of public sector enterprises?",
+      "ms": {
+        "draft": 13074,
+        "critique": 6579,
+        "solver": 13922,
+        "form": 3031,
+        "translation": 77151
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements best reflects the author's view on the impact of outsourcing on the Indian economy?",
+      "ms": {
+        "draft": 13074,
+        "critique": 4591,
+        "solver": 1287,
+        "form": 3572,
+        "translation": 49423
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why might some scholars criticize the disinvestment policy of the Indian government?",
+      "ms": {
+        "draft": 3892,
+        "critique": 6239,
+        "solver": 7567,
+        "form": 868,
+        "translation": 31657
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What was one of the key criticisms of the disinvestment policy of Public Sector Enterprises (PSEs) mentioned in the passage?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements best describes the impact of the economic reforms of 1991 on the Indian economy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Assumes the reforms had immediate effects, which the passage…\"); distractor 1's reason is not a one-line misconception (\"Misinterprets the impact of the reforms as leading to a surp…\"); distractor 2's reason is not a one-line misconception (\"Confuses the focus of the reforms as being on reducing the g…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a reason for the economic crisis in India in 1991?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Believes the government had a surplus to export, which is no…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What was the main goal of the stabilisation measures introduced in the 1991 economic reforms?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Believes structural reforms were the main goal of stabilisat…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the statement that 'economic development is not all and the GDP is not necessarily a measure of progress of a society'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Believes the passage suggests that economic development shou…\"); distractor 3's reason is not a one-line misconception (\"Assumes the passage suggests that the government should not …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best explains the government's decision to approach the World Bank and IMF in 1991?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Believes the primary goal was long-term partnerships, which …\"); distractor 2's reason is not a one-line misconception (\"Misunderstands the government's intent as being to increase …\"); distractor 3's reason is not a one-line misconception (\"Assumes the government was trying to attract foreign investm…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What was the impact of the government's expenditure exceeding its revenue in the late 1980s?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Assumes the government had sufficient reserves, which is not…\"); distractor 2's reason is not a one-line misconception (\"Believes the government generated enough revenue from taxati…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the situation as the government being able to…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a nationalised bank in India?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a private foreign bank operating in India?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a Foreign Institutional Investor (FII)?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What was the main purpose of disinvestment in public sector enterprises according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is a key factor that determines the success of public sector enterprises in a liberalised economy?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which of the following is NOT a reason for granting status to public sector enterprises?",
+      "reason": "after redrafting distractors 0, 1, 3: the critic finds option 3 correct, the key is 2"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of the World Trade Organisation (WTO)?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of a company that has expanded its operations globally due to liberalisation and globalisation?",
+      "reason": "after redrafting distractor 3: the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, what is the main reason for the growth of the service sector in India post-1991?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Fails to connect the passage's details with the service sect…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's emphasis on outsourcing and IT s…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the impact of globalisation on employment in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What was one of the main reasons for the financial crisis in India in 1991?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best explains why the IT industry is highlighted as a major contributor to India's exports in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the impact of globalisation on Indian farmers?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following is a reason for introducing economic r"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "According to the chapter, what is the main objective of globalisation?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What does the passage suggest about the role of the WTO in global trade?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What was the main purpose of industrial sector reforms in India?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the information in the chapter, which sector has shown the most growth during the reform period?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What could be a possible reason for the suicide of powerloom workers in Siricilla?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of outsourcing as mentioned in the chapter?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "According to the chapter, which of the following is a criticism of globalisation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the main reason for the decline in public investment in agriculture?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which sector is highlighted in the passage as a major contributor to India’s exports?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what was the impact of reducing subsidies on agricultural inputs like seeds and fertilisers?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage’s message about subsidies and cost…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is one reason given in the passage for the slowdown in industrial growth?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, which of the following is a consequence of globalisation for Indian farmers?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What does the passage suggest about the disinvestment of public sector enterprises?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of globalisation as described in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Based on the passage, what might be a reason for the decline in the growth of agriculture after 1991?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What does the passage suggest about the impact of globalisation on employment in India?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a consequence of liberalisation in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a reason for the government granting special status to some public sector enterprises?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following best explains why the Indian government had to approach the World Bank and IMF in 1991?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following was a key objective of financial sector reforms in India?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed for distractor in this cont…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Economics in the prompt"
+  ]
+}

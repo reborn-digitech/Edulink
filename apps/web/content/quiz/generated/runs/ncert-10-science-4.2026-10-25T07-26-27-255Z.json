@@ -1,0 +1,769 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T07:26:27.255Z",
+  "finishedAt": "2026-10-25T09:32:33.416Z",
+  "seconds": 7566,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc104.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 4 — Carbon and its Compounds",
+    "edition": "Reprint 2026-27",
+    "chunks": 27,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\n25. Carbon forms millions of compounds whereas silicon, which is just below it in 2\nthe Periodic Table, forms a few compounds. Explain the reason for the\ndifference in their ability to form compounds.",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n25. Carbon forms millions of compounds because it has small atomic size, 2\ntherefore, it forms strong and stable C–C bonds, showing extensive\ncatenation. Silicon, being larger in size, forms weaker Si–Si bonds and\ncannot show catenation to the same extent, so it forms fewer compounds.",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n1. A. Carbon dioxide gains hydrogen, while water loses electrons. 1",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 109341,
+      "in": 38,
+      "out": 35,
+      "rejects": 8,
+      "promptTokens": 29872,
+      "completionTokens": 7287
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 190176,
+      "in": 35,
+      "out": 28,
+      "rejects": 7,
+      "promptTokens": 16454,
+      "completionTokens": 6989
+    },
+    "solver": {
+      "calls": 186,
+      "ms": 77245,
+      "in": 28,
+      "out": 22,
+      "rejects": 6,
+      "promptTokens": 29819,
+      "completionTokens": 1837
+    },
+    "form": {
+      "calls": 11,
+      "ms": 24352,
+      "in": 22,
+      "out": 12,
+      "rejects": 10,
+      "promptTokens": 2693,
+      "completionTokens": 911
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 35,
+      "ms": 4861,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 194947,
+      "in": 18,
+      "out": 12,
+      "rejects": 6,
+      "promptTokens": 13255,
+      "completionTokens": 6431
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 0,
+    "4": 2,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the reason for the large number of carbon compounds?",
+      "ms": {
+        "draft": 2472,
+        "critique": 4042,
+        "solver": 1493,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage say that carbon forms more compounds than any other element?",
+      "ms": {
+        "draft": 2472,
+        "critique": 6174,
+        "solver": 902,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is true about the physical properties of diamond and graphite?",
+      "ms": {
+        "draft": 2472,
+        "critique": 5807,
+        "solver": 813,
+        "form": 1810
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many single bonds are present in the ethane molecule?",
+      "ms": {
+        "draft": 3278,
+        "critique": 6112,
+        "solver": 1994
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following compounds has a molecular formula that differs from the others by a –CH₂– group?",
+      "ms": {
+        "draft": 3278,
+        "critique": 5907,
+        "solver": 1942
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a structural isomer of butane?",
+      "ms": {
+        "draft": 3278,
+        "critique": 5223,
+        "solver": 11331
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of carboxylic acids according to the passage?",
+      "ms": {
+        "draft": 3123,
+        "critique": 5494
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the molecular mass of methane is 16 u, what is the molecular mass of ethane?",
+      "ms": {
+        "draft": 3278,
+        "critique": 4786,
+        "solver": 13198,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why does the passage say that soap helps in cleaning oily dirt?",
+      "ms": {
+        "draft": 3123,
+        "critique": 4972,
+        "solver": 842,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do carboxylic acids form micelles in water, and what is the significance of this property?",
+      "ms": {
+        "draft": 3123
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when ethanoic acid reacts with sodium hydroxide?",
+      "ms": {
+        "draft": 3123,
+        "critique": 6351,
+        "solver": 559394
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What happens when the bottom of a vessel gets blackened during cooking?",
+      "ms": {
+        "draft": 2229,
+        "critique": 4739,
+        "solver": 1253,
+        "form": 2093
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an advantage of using detergents over soaps in hard water?",
+      "ms": {
+        "draft": 3411
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do carboxylic acids like ethanoic acid not form esters without an acid catalyst?",
+      "ms": {
+        "draft": 3411
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct observation when ethanoic acid reacts with sodium carbonate?",
+      "ms": {
+        "draft": 3411,
+        "critique": 5501,
+        "solver": 949364
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following compounds will give a yellow flame with soot when burned?",
+      "ms": {
+        "draft": 2963,
+        "critique": 6637
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the name of a three-carbon chain with a ketone group?",
+      "ms": {
+        "draft": 2963,
+        "critique": 4509,
+        "solver": 9915,
+        "form": 1915
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a suffix used for alcohols in the nomenclature of organic compounds?",
+      "ms": {
+        "draft": 2963,
+        "critique": 4044,
+        "solver": 9657,
+        "form": 2805
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct explanation for why carbon forms more compounds than silicon?",
+      "ms": {
+        "draft": 2963,
+        "critique": 3848,
+        "solver": 10053
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a carbon compound has the formula C3H6O, which functional group is it most likely to belong to?",
+      "ms": {
+        "draft": 2963,
+        "critique": 7097
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a saturated hydrocarbon?",
+      "ms": {
+        "draft": 2716,
+        "critique": 4434,
+        "solver": 8793,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A hydrocarbon has the molecular formula C5H12. What is its possible structure?",
+      "ms": {
+        "draft": 2716,
+        "critique": 5055,
+        "solver": 1802,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following compounds is not a structural isomer of pentane?",
+      "ms": {
+        "draft": 2716,
+        "critique": 4225
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a molecule of nitrogen has a triple bond between the two nitrogen atoms, how many shared pairs of electrons are involved?",
+      "ms": {
+        "draft": 2472,
+        "critique": 3663,
+        "solver": 849,
+        "form": 2251
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the common name for ethanoic acid?",
+      "ms": {
+        "draft": 3123,
+        "critique": 4532,
+        "solver": 5687,
+        "form": 519
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when ethanoic acid reacts with sodium hydroxide?",
+      "ms": {
+        "draft": 3411,
+        "critique": 6571,
+        "solver": 1374,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which property of carbon allows it to form a large number of compounds?",
+      "ms": {
+        "draft": 2229,
+        "critique": 4923,
+        "solver": 1546,
+        "form": 2970,
+        "translation": 1001570
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the functional group in butanone?",
+      "ms": {
+        "draft": 2229,
+        "critique": 4722,
+        "solver": 628,
+        "form": 3391,
+        "translation": 976533
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name given to the ability of carbon to form bonds with other carbon atoms?",
+      "ms": {
+        "draft": 2472,
+        "critique": 3954,
+        "solver": 1064,
+        "form": 3043,
+        "translation": 988121
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic property of carboxylic acids?",
+      "ms": {
+        "draft": 3411,
+        "critique": 5099,
+        "solver": 1098,
+        "form": 0,
+        "translation": 29555
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of bond is formed between two oxygen atoms in an oxygen molecule?",
+      "ms": {
+        "draft": 2472,
+        "critique": 3876,
+        "solver": 1127,
+        "form": 4473,
+        "translation": 989560
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of an unsaturated hydrocarbon?",
+      "ms": {
+        "draft": 3278,
+        "critique": 5750,
+        "solver": 883,
+        "form": 0,
+        "translation": 18595
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the general formula for alkanes?",
+      "ms": {
+        "draft": 2716,
+        "critique": 5433,
+        "solver": 809,
+        "form": 0,
+        "translation": 22985
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student observes that a solution of a carboxylic acid turns blue litmus paper red, what can they conclude?",
+      "ms": {
+        "draft": 3123,
+        "critique": 4523,
+        "solver": 560222,
+        "form": 1951,
+        "translation": 977048
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a functional group that contains oxygen?",
+      "ms": {
+        "draft": 3278,
+        "critique": 5134,
+        "solver": 1399,
+        "form": 0,
+        "translation": 970040
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 6, round 1)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the reason for the large number of carbon compounds?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage say that carbon forms more compounds than any other element?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is true about the physical properties of diamond and graphite?",
+      "reason": "options 2 and 3 say the same thing (\"Diamond is hard and graphite is slippery\" / \"Diamond is slippery and graphite is hard\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many single bonds are present in the ethane molecule?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following compounds has a molecular formula that differs from the others by a –CH₂– group?",
+      "reason": "the solver picked option 2 3 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a structural isomer of butane?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a property of carboxylic acids according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the molecular mass of methane is 16 u, what is the molecular mass of ethane?",
+      "reason": "options 1 and 3 are the same (\"30 u\"); options 1 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why does the passage say that soap helps in cleaning oily dirt?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why do carboxylic acids form micelles in water, and what is the significance of this property?",
+      "reason": "call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What happens when ethanoic acid reacts with sodium hydroxide?",
+      "reason": "call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the basis of the cleaning action of soaps and detergents?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the molecular formula of ethane?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the definition of a homologous series?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 2)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What happens when the bottom of a vessel gets blackened during cooking?",
+      "reason": "options 1 and 3 say the same thing (\"The fuel is not burning completely\" / \"The fuel is burning completely\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is an advantage of using detergents over soaps in hard water?",
+      "reason": "call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why do carboxylic acids like ethanoic acid not form esters without an acid catalyst?",
+      "reason": "call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a correct observation when ethanoic acid reacts with sodium carbonate?",
+      "reason": "call failed: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following compounds will give a yellow flame with soot when burned?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the name of a three-carbon chain with a ketone group?",
+      "reason": "options 1 and 3 are the same (\"Propanal\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a suffix used for alcohols in the nomenclature of organic compounds?",
+      "reason": "options 1 and 3 are the same (\"-one\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is a correct explanation for why carbon forms more compounds than silicon?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a carbon compound has the formula C3H6O, which functional group is it most likely to belong to?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a saturated hydrocarbon?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A hydrocarbon has the molecular formula C5H12. What is its possible structure?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following compounds is not a structural isomer of pentane?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a molecule of nitrogen has a triple bond between the two nitrogen atoms, how many shared pairs of electrons are involved?",
+      "reason": "near-duplicate of served question cmvguseyt04zcgpfhj1li1iwe (cosine 0.978 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the common name for ethanoic acid?",
+      "reason": "near-duplicate of served question cmvguseyc04y0gpfhfwnn9wp9 (cosine 0.955 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens when ethanoic acid reacts with sodium hydroxide?",
+      "reason": "near-duplicate of served question cmvjxuzyc0i46gpfhy1sr8fbf (cosine 0.943 ≥ 0.9)"
+    },
+    {
+      "stage": "translation",
+      "level": 2,
+      "stem": "Which type of bond is formed between two oxygen atoms in an oxygen molecule?",
+      "reason": "hi: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 1,
+      "stem": "What is the name given to the ability of carbon to form bonds with other carbon atoms?",
+      "reason": "hi: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 6,
+      "stem": "Which of the following is a functional group that contains oxygen?",
+      "reason": "mr: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 1,
+      "stem": "Which property of carbon allows it to form a large number of compounds?",
+      "reason": "hi: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 1,
+      "stem": "What is the functional group in butanone?",
+      "reason": "mr: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 5,
+      "stem": "If a student observes that a solution of a carboxylic acid turns blue litmus paper red, what can they conclude?",
+      "reason": "mr: The operation was aborted due to timeout"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

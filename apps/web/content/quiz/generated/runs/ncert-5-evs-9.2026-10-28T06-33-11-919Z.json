@@ -1,0 +1,514 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T06:33:11.919Z",
+  "finishedAt": "2026-10-28T06:36:49.767Z",
+  "seconds": 218,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap109.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 9 — 9. Up You Go!",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 86816,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 21498,
+      "completionTokens": 5459
+    },
+    "critique": {
+      "calls": 28,
+      "ms": 181638,
+      "in": 24,
+      "out": 8,
+      "rejects": 16,
+      "promptTokens": 12155,
+      "completionTokens": 4931
+    },
+    "solver": {
+      "calls": 68,
+      "ms": 35264,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 13683,
+      "completionTokens": 787
+    },
+    "form": {
+      "calls": 3,
+      "ms": 6592,
+      "in": 4,
+      "out": 0,
+      "rejects": 4,
+      "promptTokens": 746,
+      "completionTokens": 239
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 0,
+      "ms": 0,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 3761,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 152,
+      "completionTokens": 276
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is one of the responsibilities of a group leader mentioned in the passage?",
+      "ms": {
+        "draft": 3673,
+        "critique": 6279
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the narrator do after hearing the Brigadier's voice?",
+      "ms": {
+        "draft": 3673,
+        "critique": 6307
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why was the narrator feeling nervous while crossing the river?",
+      "ms": {
+        "draft": 3673,
+        "critique": 6848
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the height of Tekla village?",
+      "ms": {
+        "draft": 3240,
+        "critique": 6302
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the narrator realize about being a group leader after the river crossing?",
+      "ms": {
+        "draft": 3673,
+        "critique": 7125
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the author slip while climbing?",
+      "ms": {
+        "draft": 3240,
+        "critique": 7059
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did Bachhendri Pal climb Mount Everest?",
+      "ms": {
+        "draft": 3209,
+        "critique": 6274
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did the group use double-layered plastic sheets for the tent?",
+      "ms": {
+        "draft": 3240,
+        "critique": 7089,
+        "solver": 1621
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Bachhendri Pal do after reaching the peak of Mount Everest?",
+      "ms": {
+        "draft": 3209,
+        "critique": 7296
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you were to climb a mountain, what should you take with you?",
+      "ms": {
+        "draft": 3209,
+        "critique": 6443
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why was it dangerous for Bachhendri Pal and her team mate to stand on the peak of Mount Everest?",
+      "ms": {
+        "draft": 3209,
+        "critique": 4658
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if the group did not notice the author and Khondonbi were missing?",
+      "ms": {
+        "draft": 3240,
+        "critique": 6632,
+        "solver": 13744
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why did Bachhendri Pal put up the Indian flag on the peak of Mount Everest?",
+      "ms": {
+        "draft": 4654,
+        "critique": 6711
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you were to climb a mountain, what should you take with you based on the story of Bachhendri Pal?",
+      "ms": {
+        "draft": 4654,
+        "critique": 7848
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What can be inferred about the team's preparation for climbing Mount Everest from the passage?",
+      "ms": {
+        "draft": 4654,
+        "critique": 7706
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the height of Tekla village according to the passage?",
+      "ms": {
+        "draft": 3153,
+        "critique": 7513
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why was a drain dug around the tent according to the passage?",
+      "ms": {
+        "draft": 3153,
+        "critique": 6397
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did the narrator do when they lost their way in the mountains?",
+      "ms": {
+        "draft": 3153,
+        "critique": 6181
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the story of Bachhendri Pal show about climbing a mountain?",
+      "ms": {
+        "draft": 4654,
+        "critique": 6966,
+        "solver": 11581,
+        "form": 3291
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did the narrator feel scared while climbing the rock?",
+      "ms": {
+        "draft": 3153,
+        "critique": 6155,
+        "solver": 1447
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of a group leader in the mountains?",
+      "ms": {
+        "draft": 15913,
+        "critique": 5761,
+        "solver": 1542,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a group member lost their balance while crossing the river in the mountains?",
+      "ms": {
+        "draft": 15913,
+        "critique": 7327,
+        "solver": 1137
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main reason the narrator was excited on the first day of the mountaineering camp?",
+      "ms": {
+        "draft": 15913,
+        "critique": 6734,
+        "solver": 13374,
+        "form": 2111
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What can be inferred about the importance of discipline in the mountaineering camp?",
+      "ms": {
+        "draft": 15913,
+        "critique": 6987,
+        "solver": 8416,
+        "form": 1190
+      },
+      "outcome": "form",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is one of the responsibilities of a group leader mentioned in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did the narrator do after hearing the Brigadier's voice?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Why was the narrator feeling nervous while crossing the river?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the height of Tekla village?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the narrator realize about being a group leader after the river crossing?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did the author slip while climbing?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Why did Bachhendri Pal climb Mount Everest?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Why did the group use double-layered plastic sheets for the tent?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What did Bachhendri Pal do after reaching the peak of Mount Everest?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If you were to climb a mountain, what should you take with you?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Why was it dangerous for Bachhendri Pal and her team mate to stand on the peak of Mount Everest?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What would happen if the group did not notice the author and Khondonbi were missing?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Why did Bachhendri Pal put up the Indian flag on the peak of Mount Everest?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If you were to climb a mountain, what should you take with you based on the story of Bachhendri Pal?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What can be inferred about the team's preparation for climbing Mount Everest from the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the height of Tekla village according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why was a drain dug around the tent according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What did the narrator do when they lost their way in the mountains?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the story of Bachhendri Pal show about climbing a mountain?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"correct answer…\"); distractor 3's reason is not a one-line misconception (\"thinks it is only for men, which is not supported by the pas…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Why did the narrator feel scared while climbing the rock?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of a group leader in the mountains?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"The passage says a group leader should let the group go ahea…\"); distractor 2's reason is not a one-line misconception (\"This is a general statement but not the main point from the …\"); distractor 3's reason is not a one-line misconception (\"The passage does not say the leader must avoid carrying bags…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What would happen if a group member lost their balance while crossing the river in the mountains?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What was the main reason the narrator was excited on the first day of the mountaineering camp?",
+      "reason": "the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 are the same (\"She was going to lead a group\"); options 0 and 3 are the same (\"She was going to lead a group\"); options 1 and 3 are the same (\"She was going to lead a group\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What can be inferred about the importance of discipline in the mountaineering camp?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"The passage mentions discipline for everyone in the camp, no…\"); distractor 3's reason is not a one-line misconception (\"The passage mentions discipline for everyone in the camp, no…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

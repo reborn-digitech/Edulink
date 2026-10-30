@@ -1,0 +1,137 @@
+{
+  "subject": "MATHS",
+  "classLevel": 10,
+  "chapter": "Chapter 9 — Some Applications of Trigonometry",
+  "name": "Some Applications of Trigonometry",
+  "slug": "maths-10-applications-trigonometry",
+  "summary": "This chapter explains how trigonometry is used in real-life situations like measuring heights and distances.",
+  "position": 9,
+  "source": "generated against NCERT Mathematics, Class 10, chapter 9 (Reprint 2026-27)",
+  "licence": "Original questions written for Shalaghar · CC BY-SA 4.0",
+  "translations": {
+    "hi": {
+      "name": "अध्याय 9 — त्रिकोणमिति के कुछ अनुप्रयोग",
+      "summary": "इस अध्याय में त्रिकोणमिति के वास्तविक जीवन में उपयोग जैसे ऊंचाई और दूरी के मापन के बारे में समझाया गया है।"
+    },
+    "mr": {
+      "name": "अध्याय 9 - त्रिकोणमितीचे काही अनुप्रयोग",
+      "summary": "हे अध्याय त्रिकोणमितीचा वास्तविक जीवनातील उपयोग जसे उंची आणि अंतराचे मोजणे याबद्दल समजावून सांगते."
+    }
+  },
+  "board": "NCERT",
+  "book": "Mathematics",
+  "edition": "Reprint 2026-27",
+  "generatedAt": "2026-10-30T05:29:17.747Z",
+  "model": "qwen3-30b-a3b",
+  "topicIsNew": false,
+  "questions": [
+    {
+      "difficulty": 3,
+      "stem": "A tree breaks during a storm, and the broken part touches the ground making an angle of 30° with the ground. If the distance from the foot of the tree to the point where the top touches the ground is 8 m, what is the total height of the tree before it broke?",
+      "choices": [
+        "16 m",
+        "12 m",
+        "8 m",
+        "24 m"
+      ],
+      "answerIndex": 0,
+      "solution": "The broken part of the tree forms the hypotenuse of a right triangle, with the base being 8 m and the angle being 30°. Using trigonometry, the hypotenuse is twice the base (since sin(30°) = 1/2). So, the broken part is 16 m. Since the broken part was the top of the tree, the total height of the tree is 16 m. The other options incorrectly use different ratios or misinterpret the problem.",
+      "checkExpr": "8*2",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बादल बरसात में टूट जाता है और टूटा हुआ हिस्सा जमीन को छूता है जमीन के साथ 30° का कोण बनाता है। यदि वृक्ष के पाद के बिंदु से ऊपर के हिस्से के बिंदु जहां वह जमीन को छूता है, की दूरी 8 मीटर है, तो टूटने से पहले वृक्ष की कुल ऊंचाई क्या है?",
+          "choices": [
+            "16 मीटर",
+            "12 मीटर",
+            "8 मीटर",
+            "24 मीटर"
+          ],
+          "solution": "टूटे हुए हिस्से ने समकोण त्रिभुज के कर्ण का निर्माण किया, जिसका आधार 8 मीटर है और कोण 30° है। त्रिकोणमिति का उपयोग करके, कर्ण आधार के दोगुना होता है (क्योंकि sin(30°) = 1/2)। इसलिए, टूटा हुआ हिस्सा 16 मीटर है। चूंकि टूटा हुआ हिस्सा वृक्ष के शीर्ष का हिस्सा था, वृक्ष की कुल ऊंचाई 16 मीटर है। अन्य विकल्प गलत अनुपात का उपयोग करते हैं या समस्या की गलत व्याख्या करते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms and correct answer positioning.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका वादळात झाड तुटते आणि तुटलेला भाग जमिनीवर जाऊन जमिनीशी 30° कोन बनवतो. जर झाडाच्या पायापासून टोकाच्या जागेपर्यंतचा अंतर 8 मी असेल, तर झाडाची एकूण उंची तुटण्यापूर्वी किती होती?",
+          "choices": [
+            "16 मी",
+            "12 मी",
+            "8 मी",
+            "24 मी"
+          ],
+          "solution": "तुटलेला भाग एका समकोन त्रिकोणाच्या कर्णाचा भाग बनतो, ज्याच्या आधाराची लांबी 8 मी आणि कोन 30° आहे. त्रिकोणमितीचा वापर करून, कर्ण आधाराच्या दुप्पट असतो (कारण sin(30°) = 1/2). म्हणून, तुटलेला भाग 16 मी आहे. कारण तुटलेला भाग झाडाच्या टोकाचा भाग होता, तर झाडाची एकूण उंची 16 मी आहे. इतर विकल्प वेगळ्या गुणोत्तरांचा चुकीचा वापर करतात किंवा समस्येचे चुकीचे अर्थ काढतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the hypotenuse with the adjacent side in a 30-60-90 triangle, using 8 * sqrt(3) ≈ 13.85 but rounds down to 12",
+        "Confuses the triangle sides",
+        "Fails to double the base length"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the broken tree as the hypotenuse of a 30-60-90 triangle, and uses the property that the hypotenuse is twice the shorter leg (opposite 30°). The correct answer is 16 m.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh109.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 9: Some Applications of Trigonometry",
+            "OME"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh109.pdf",
+          "ordinal": 4,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 9: Some Applications of Trigonometry",
+            "OME"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh109.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 9: Some Applications of Trigonometry",
+            "OME"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh109.pdf",
+          "ordinal": 6,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 9: Some Applications of Trigonometry",
+            "OME"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T05:29:17.747Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    }
+  ]
+}

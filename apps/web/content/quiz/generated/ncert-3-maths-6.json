@@ -21,245 +21,49 @@
   "board": "NCERT",
   "book": "Maths Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T21:06:35.193Z",
+  "generatedAt": "2026-10-28T02:35:48.847Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "Which number has 2 in the tens place?",
+      "difficulty": 2,
+      "stem": "What is the number that is 15 less than 250?",
       "choices": [
-        "25",
-        "125",
-        "215",
-        "250"
-      ],
-      "answerIndex": 1,
-      "solution": "The number 125 has 2 in the tens place. The other options have 2 in different places, such as the hundreds or units place.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कौन सी संख्या में दहाई के स्थान पर 2 है?",
-          "choices": [
-            "25",
-            "125",
-            "215",
-            "250"
-          ],
-          "solution": "संख्या 125 में दहाई के स्थान पर 2 है। अन्य विकल्पों में 2 अलग-अलग स्थान पर है, जैसे सैकड़ा या इकाई के स्थान पर।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi numerical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कोणत्या संख्येत दहांच्या स्थानी 2 आहे?",
-          "choices": [
-            "25",
-            "125",
-            "215",
-            "250"
-          ],
-          "solution": "125 या संख्येत दहांच्या स्थानी 2 आहे. इतर विकल्पांमध्ये 2 वेगवेगळ्या स्थानी असतो, जसे की शेकडा किंवा एककांच्या स्थानी.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for place values.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "2 is in the tens place in 125, not in this option",
-        null,
-        "Confuses the tens place with the hundreds place",
-        "Confuses the hundreds place with the tens place"
-      ],
-      "solverAnswers": [
-        0,
-        1,
-        1,
-        1,
-        0
-      ],
-      "levelFlag": "level 1 but the solver missed it 2 of 5 times",
-      "critique": "The correct answer is 125, as it has 2 in the tens place. The author's reasoning for the distractors is valid, as they reflect common misconceptions about place value.",
-      "sources": [
-        {
-          "document": "ncert/3/mathematics/cemm106.pdf",
-          "ordinal": 5,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 6: House of Hundreds - I",
-            "Let us Do"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm106.pdf",
-          "ordinal": 6,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: House of Hundreds - I",
-            "Let us Play"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm106.pdf",
-          "ordinal": 7,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 6: House of Hundreds - I",
-            "Let us Do"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:06:35.193Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a number has 4 in the hundreds place, 8 in the tens place, and 7 in the units place, what is the number?",
-      "choices": [
-        "478",
-        "487",
-        "847",
-        "874"
-      ],
-      "answerIndex": 1,
-      "solution": "The number with 4 in the hundreds place, 8 in the tens place, and 7 in the units place is 487. The other options have the digits in different orders.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि किसी संख्या के सैकड़ों स्थान पर 4, दहाई स्थान पर 8 और इकाई स्थान पर 7 है, तो संख्या क्या है?",
-          "choices": [
-            "478",
-            "487",
-            "847",
-            "874"
-          ],
-          "solution": "सैकड़ों स्थान पर 4, दहाई स्थान पर 8 और इकाई स्थान पर 7 वाली संख्या 487 है। अन्य विकल्पों में अंक अलग क्रम में हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately preserves the meaning, structure, and terminology of the original English question.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका संख्येच्या शेजारीच्या जागेवर 4, दशकाच्या जागेवर 8 आणि एककाच्या जागेवर 7 असल्यास, संख्या कोणती असेल?",
-          "choices": [
-            "478",
-            "487",
-            "847",
-            "874"
-          ],
-          "solution": "शेजारीच्या जागेवर 4, दशकाच्या जागेवर 8 आणि एककाच्या जागेवर 7 असलेली संख्या 487 आहे. इतर विकल्पांमध्ये अंक वेगळ्या क्रमाने असतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms for place values.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the order of digits",
-        null,
-        "Confuses the place values of hundreds and tens digits",
-        "Confuses the order of digits"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the correct answer is 487. The author's reasoning for the distractors is accurate and reflects common misconceptions about place value.",
-      "sources": [
-        {
-          "document": "ncert/3/mathematics/cemm106.pdf",
-          "ordinal": 5,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 6: House of Hundreds - I",
-            "Let us Do"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm106.pdf",
-          "ordinal": 6,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: House of Hundreds - I",
-            "Let us Play"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm106.pdf",
-          "ordinal": 7,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 6: House of Hundreds - I",
-            "Let us Do"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:06:35.193Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following numbers is the smallest when using the digits 3, 2, and 4 without repeating any digit?",
-      "choices": [
-        "234",
-        "243",
-        "324",
-        "342"
+        "235",
+        "245",
+        "255",
+        "265"
       ],
       "answerIndex": 0,
-      "solution": "234 is the smallest number. 243, 324, and 342 are all greater than 234.",
+      "solution": "To find the number that is 15 less than 250, subtract 15 from 250, which gives 235. The correct answer is 235 because it is the result of this subtraction. The other options are incorrect because they do not represent 250 minus 15.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्न में से कौन-सी संख्या अंक 3, 2 और 4 का प्रयोग करके सबसे छोटी होगी बिना किसी अंक के दोहराए?",
+          "stem": "250 से 15 कम कौन सी संख्या है?",
           "choices": [
-            "234",
-            "243",
-            "324",
-            "342"
+            "235",
+            "245",
+            "255",
+            "265"
           ],
-          "solution": "234 सबसे छोटी संख्या है। 243, 324 और 342 सभी 234 से बड़े हैं।",
+          "solution": "250 से 15 कम करने के लिए, 250 में से 15 घटाएं, जिससे 235 प्राप्त होता है। सही उत्तर 235 है क्योंकि यह इस घटाव के परिणाम है। अन्य विकल्प गलत हैं क्योंकि वे 250 में से 15 के बराबर नहीं हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi numerical terms and structure.",
+          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता संख्या अंक 3, 2 आणि 4 चा वापर करून एकाच अंकाचा पुनरावर्तन न करता सर्वात लहान असेल?",
+          "stem": "250 पेक्षा 15 ने कमी असलेला संख्या कोणती आहे?",
           "choices": [
-            "234",
-            "243",
-            "324",
-            "342"
+            "235",
+            "245",
+            "255",
+            "265"
           ],
-          "solution": "234 ही सर्वात लहान संख्या आहे. 243, 324 आणि 342 ही 234 पेक्षा मोठ्या आहेत.",
+          "solution": "250 पेक्षा 15 ने कमी असलेली संख्या शोधण्यासाठी, 250 मधून 15 वजा करा, जे 235 देते. योग्य उत्तर 235 आहे कारण हे वजा करण्याचे परिणाम आहे. इतर विकल्प चुकीचे आहेत कारण ते 250 वजा 15 चे प्रतिनिधित्व करत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terms for numbers and digits.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -269,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the order of digits, placing the largest remaining digit in the tens place instead of the ones",
-        "confuses place values",
-        "confuses place values"
+        "Chooses the number 200 and 35 more",
+        "Adds 15 to 250 instead of subtracting",
+        "Adds 15 to 250 and gets 265"
       ],
       "solverAnswers": [
         0,
@@ -281,105 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 234, as it is the smallest number formed by the digits 3, 2, and 4 without repetition. The author's reasoning is sound and the misconceptions described for the wrong options are plausible for students.",
-      "sources": [
-        {
-          "document": "ncert/3/mathematics/cemm106.pdf",
-          "ordinal": 5,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 6: House of Hundreds - I",
-            "Let us Do"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm106.pdf",
-          "ordinal": 6,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: House of Hundreds - I",
-            "Let us Play"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm106.pdf",
-          "ordinal": 7,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 6: House of Hundreds - I",
-            "Let us Do"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:06:35.193Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "If the number 285 is increased by 1, what is the new number?",
-      "choices": [
-        "284",
-        "285",
-        "286",
-        "287"
-      ],
-      "answerIndex": 2,
-      "solution": "Adding 1 to 285 results in 286. The correct answer is 286 because it is the immediate successor of 285 in the number sequence. The other options are either less than or greater than the correct result of the operation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि संख्या 285 में 1 जोड़ दिया जाए, तो नई संख्या क्या होगी?",
-          "choices": [
-            "284",
-            "285",
-            "286",
-            "287"
-          ],
-          "solution": "285 में 1 जोड़ने पर 286 प्राप्त होता है। सही उत्तर 286 है क्योंकि यह संख्या अनुक्रम में 285 का तुरंत अगला संख्या है। अन्य विकल्प या तो 285 से कम हैं या ऑपरेशन के सही परिणाम से बड़े हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "285 संख्या 1 ने वाढवली गेली असता नवीन संख्या काय असेल?",
-          "choices": [
-            "284",
-            "285",
-            "286",
-            "287"
-          ],
-          "solution": "285 मध्ये 1 जोडल्यास 286 मिळतो. योग्य उत्तर 286 आहे कारण ते संख्या अनुक्रमात 285 चा तात्काळ पुढील संख्या आहे. इतर विकल्प 285 च्या क्रियाकलापाच्या योग्य निकालापेक्षा कमी किंवा जास्त आहेत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Subtracts 1 instead of adding",
-        "Chooses the original number",
-        null,
-        "Adds 2 instead of 1 mistakenly"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is straightforward and the solution is correct. The correct answer is 286, and the distractors are reasonable based on common misconceptions.",
+      "critique": "The correct answer is 235, as 250 - 15 = 235. The other options represent common errors: adding 15 instead of subtracting, or misinterpreting the passage.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm106.pdf",
@@ -432,49 +138,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:06:35.193Z",
+      "generatedAt": "2026-10-28T02:35:48.847Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "Which of the following numbers is the greatest when using the digits 3, 2, and 4 without repeating any digit?",
+      "difficulty": 2,
+      "stem": "Which of the following numbers is more than 235?",
       "choices": [
-        "324",
-        "342",
-        "423",
-        "432"
+        "233",
+        "225",
+        "253",
+        "230"
       ],
-      "answerIndex": 3,
-      "solution": "432 is the greatest number. 324, 342, and 423 are smaller than 432.",
+      "answerIndex": 2,
+      "solution": "The correct answer is 253. When comparing numbers, we start by looking at the hundreds place. 253 has 2 hundreds, while the others have 2 hundreds. Then we look at the tens place. 253 has 5 tens, while the others have 3 or 2 tens. So 253 is more than 235. 233 has 3 tens, 225 has 2 tens, and 230 has 3 tens.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी संख्या अंक 3, 2 और 4 का प्रयोग करके सबसे बड़ी होगी जब कोई भी अंक दोहराया नहीं जाता है?",
+          "stem": "निम्नलिखित में से कौन-सी संख्या 235 से अधिक है?",
           "choices": [
-            "324",
-            "342",
-            "423",
-            "432"
+            "233",
+            "225",
+            "253",
+            "230"
           ],
-          "solution": "432 सबसे बड़ी संख्या है। 324, 342 और 423, 432 से छोटी हैं।",
+          "solution": "सही उत्तर 253 है। संख्याओं की तुलना करते समय हम सबसे पहले सैकड़ों के स्थान पर देखते हैं। 253 में 2 सैकड़े हैं, जबकि अन्य सभी में 2 सैकड़े हैं। फिर हम दहाई के स्थान पर देखते हैं। 253 में 5 दहाई हैं, जबकि अन्य सभी में 3 या 2 दहाई हैं। इसलिए 253, 235 से अधिक है। 233 में 3 दहाई हैं, 225 में 2 दहाई हैं और 230 में 3 दहाई हैं।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता संख्या अंक 3, 2 आणि 4 वापरून एकाच अंकाचा पुनरावर्तन न करता सर्वात मोठा असेल?",
+          "stem": "खालीलपैकी कोणता संख्या 235 पेक्षा जास्त आहे?",
           "choices": [
-            "324",
-            "342",
-            "423",
-            "432"
+            "233",
+            "225",
+            "253",
+            "230"
           ],
-          "solution": "432 सर्वात मोठी संख्या आहे. 324, 342 आणि 423, 432 पेक्षा लहान आहेत.",
+          "solution": "बरोबर उत्तर 253 आहे. संख्या तुलना करताना, आम्ही सर्वात प्रथम शतकाच्या जागेचा विचार करतो. 253 मध्ये 2 शतक आहेत, तर इतरांमध्ये 2 शतक आहेत. नंतर आम्ही दहाच्या जागेचा विचार करतो. 253 मध्ये 5 दहाच्या आहेत, तर इतरांमध्ये 3 किंवा 2 दहाच्या आहेत. म्हणून 253, 235 पेक्षा जास्त आहे. 233 मध्ये 3 दहाच्या आहेत, 225 मध्ये 2 दहाच्या आहेत आणि 230 मध्ये 3 दहाच्या आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for numbers and digits.",
+          "critique": "The translation is accurate and maintains the original meaning, structure, and technical terms. The solution correctly identifies option 3 as the answer, and the explanation is logically consistent in Marathi.",
           "flag": null
         }
       },
@@ -483,20 +189,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses place values",
-        "confuses place values",
-        "confuses place values",
-        null
+        "confuses the tens place",
+        "confuses the tens place",
+        null,
+        "Confuses the place value of tens and ones, thinking that 230 is larger because it has a 3 in the tens place"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 432, which is the largest number formed by the digits 3, 2, and 4 without repetition. The author's reasoning is sound, and the explanation that the other options confuse place values is a valid misconception for students.",
+      "levelFlag": null,
+      "critique": "The solution is correct and matches the reasoning. The correct answer is 253, which is greater than 235 because it has more tens.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm106.pdf",
@@ -530,7 +236,750 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:06:35.193Z",
+      "generatedAt": "2026-10-28T02:35:48.847Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is true about the numbers 321 and 231?",
+      "choices": [
+        "321 has more hundreds than 231",
+        "321 has more tens than 231",
+        "2: 321 has more ones than 231",
+        "3: 321 has fewer hundreds than 231"
+      ],
+      "answerIndex": 0,
+      "solution": "321 has more hundreds than 231 because 3 hundreds (300) are greater than 2 hundreds (200). The other options are incorrect because 321 does not have more tens or ones than 231, and it does not have fewer hundreds.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा 321 और 231 संख्याओं के बारे में सत्य है?",
+          "choices": [
+            "321 में 231 की तुलना में अधिक सैकड़े हैं",
+            "321 में 231 की तुलना में अधिक दहाई हैं",
+            "321 में 231 की तुलना में अधिक इकाई हैं",
+            "321 में 231 की तुलना में कम सैकड़े हैं"
+          ],
+          "solution": "321 में 231 की तुलना में अधिक सैकड़े हैं क्योंकि 3 सैकड़े (300) 2 सैकड़े (200) से अधिक हैं। अन्य विकल्प गलत हैं क्योंकि 321 में 231 की तुलना में अधिक दहाई या इकाई नहीं हैं, और यह 231 की तुलना में कम सैकड़े नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते संख्या 321 आणि 231 बद्दल खरे आहे?",
+          "choices": [
+            "321 ला 231 पेक्षा जास्त शेकडे आहेत",
+            "321 ला 231 पेक्षा जास्त दशक आहेत",
+            "321 ला 231 पेक्षा जास्त एकक आहेत",
+            "321 ला 231 पेक्षा कमी शेकडे आहेत"
+          ],
+          "solution": "321 ला 231 पेक्षा जास्त शेकडे आहेत कारण 3 शेकडे (300) 2 शेकडे (200) पेक्षा जास्त आहेत. इतर विकल्प चुकीचे आहेत कारण 321 ला 231 पेक्षा जास्त दशक किंवा एकक नाहीत, आणि त्याला 231 पेक्षा कमी शेकडे नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation accurately conveys the mathematical concepts using standard Marathi terms for place value (शेकडे, दशक, एकक). The structure and meaning of the question and options match the original English version.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the place value of tens with the overall value of the number",
+        "Confuses the place value of digits, thinking the rightmost digit is the most significant",
+        "Confuses the place value of digits, thinking that the second digit represents hundreds"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as 321 has more hundreds (3) than 231 (2). The other options reflect common misconceptions about place value.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 5,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 6,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 7,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:35:48.847Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following numbers has 5 as a digit?",
+      "choices": [
+        "245",
+        "230",
+        "222",
+        "211"
+      ],
+      "answerIndex": 0,
+      "solution": "The number 245 has 5 as a digit because the middle digit is 5. The other options—230, 222, and 211—do not contain the digit 5 in any position.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी संख्या में 5 अंक है?",
+          "choices": [
+            "245",
+            "230",
+            "222",
+            "211"
+          ],
+          "solution": "संख्या 245 में 5 अंक है क्योंकि मध्य अंक 5 है। अन्य विकल्पों-230, 222 और 211 में किसी भी स्थान पर 5 अंक नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणत्या संख्येत अंक 5 आहे?",
+          "choices": [
+            "245",
+            "230",
+            "222",
+            "211"
+          ],
+          "solution": "संख्या 245 मध्ये अंक 5 आहे कारण मध्यम अंक 5 आहे. इतर विकल्प—230, 222 आणि 211—मध्ये कोणत्याही स्थानी अंक 5 नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology for digits and numbers.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Chooses a number that does not contain 5",
+        "Chooses a number that does not contain 5",
+        "Chooses a number that does not contain 5"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 245, which contains the digit 5. The other options do not. The reasoning is sound and matches the correct answer.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 5,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 6,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 7,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:35:48.847Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If Jojo has 2 toffees in his hand and there are 298 toffees in the boxes, how many toffees are there altogether?",
+      "choices": [
+        "300",
+        "298",
+        "299",
+        "301"
+      ],
+      "answerIndex": 0,
+      "solution": "Adding 2 to 298 gives 300, which is the total number of toffees. 298 is only the number in the boxes, not including the 2 in Jojo's hand. 299 would be if only 1 was added, and 301 is more than the correct total.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर जॉजो के हाथ में 2 टॉफियाँ हैं और बॉक्स में 298 टॉफियाँ हैं, तो कुल मिलाकर कितनी टॉफियाँ हैं?",
+          "choices": [
+            "300",
+            "298",
+            "299",
+            "301"
+          ],
+          "solution": "2 को 298 में जोड़ने पर 300 प्राप्त होता है, जो कुल टॉफियों की संख्या है। 298 केवल बॉक्स में टॉफियों की संख्या है, जिसमें जॉजो के हाथ में 2 शामिल नहीं है। 299 तब होता अगर केवल 1 जोड़ा गया होता और 301 सही कुल संख्या से अधिक होता।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जोजो च्या हातात 2 टॉफी असून बॉक्स मध्ये 298 टॉफी असतील, तर एकूण किती टॉफी असतील?",
+          "choices": [
+            "300",
+            "298",
+            "299",
+            "301"
+          ],
+          "solution": "2 ची 298 मध्ये बेरीज करताना 300 मिळतो, हे टॉफी ची एकूण संख्या आहे. 298 ही बॉक्स मधील संख्या आहे, जोजो च्या हातातील 2 चा समावेश नाही. 299 ही 1 ची बेरीज केल्यास मिळते आणि 301 ही योग्य एकूण संख्येपेक्षा जास्त आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology for a Marathi-medium textbook.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "The pupil might take the number of toffees in the boxes as the answer.",
+        "The pupil might add 1 instead of 2.",
+        "The pupil might add 3 instead of 2."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 300, as 298 + 2 = 300. The author's reasoning is sound, and the distractors are based on plausible student errors.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 3,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 4,
+          "pageStart": 10,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:35:48.847Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If Arvind Dada packs sweets in boxes of 100, how many boxes of 10 can fit in one box of 100?",
+      "choices": [
+        "10",
+        "50",
+        "100",
+        "15"
+      ],
+      "answerIndex": 0,
+      "solution": "A box of 100 contains 100 units. Since each smaller box holds 10 units, dividing 100 by 10 gives 10. The correct answer is 10. 50 is too large, 100 would mean no division, and 15 is not a multiple of 10.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अरविंद दादा 100 के बक्सों में मिठाइयां भरते हैं, तो 10 के बक्सों में 100 के एक बक्से में कितने बक्से फिट हो सकते हैं?",
+          "choices": [
+            "10",
+            "50",
+            "100",
+            "15"
+          ],
+          "solution": "100 के एक बक्से में 100 इकाई होती हैं। चूंकि प्रत्येक छोटा बक्सा 10 इकाई रख सकता है, 100 को 10 से विभाजित करने पर 10 प्राप्त होता है। सही उत्तर 10 है। 50 बहुत बड़ा है, 100 का अर्थ है कोई विभाजन नहीं और 15 दस का गुणज नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अर्विंद दादा चॉकलेट बॉक्समध्ये 100 चॉकलेट भरतात, तर 100 चॉकलेट असलेल्या बॉक्समध्ये 10 चॉकलेट असलेले किती बॉक्स बसतील?",
+          "choices": [
+            "10",
+            "50",
+            "100",
+            "15"
+          ],
+          "solution": "100 चॉकलेट असलेल्या बॉक्समध्ये 100 एकके असतात. प्रत्येक लहान बॉक्स 10 एकके घेतो, म्हणून 100 ला 10 ने भागल्यास 10 मिळतो. बरोबर उत्तर 10 आहे. 50 जास्त आहे, 100 हा भागाकार न करता असलेला उत्तर आहे, आणि 15 हा 10 चा गुणित नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "The pupil might think it is 50 instead of 10.",
+        "The pupil might think it is 100 instead of 10.",
+        "The pupil might make a random guess."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is clear and the solution is correct. The correct answer is 10, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 3,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 4,
+          "pageStart": 10,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:35:48.847Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following numbers is the greatest among 329 and 392?",
+      "choices": [
+        "329",
+        "392",
+        "309",
+        "332"
+      ],
+      "answerIndex": 1,
+      "solution": "The number 392 is greater than 329 because both have three hundreds, but 392 has 9 tens compared to 329's 2 tens. The other options, 329, 309, and 332, all have fewer tens or hundreds than 392. 309 has fewer hundreds, and 332 has fewer tens than 392.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सी संख्या 329 और 392 में से सबसे बड़ी है?",
+          "choices": [
+            "329",
+            "392",
+            "309",
+            "332"
+          ],
+          "solution": "संख्या 392, 329 से बड़ी है क्योंकि दोनों में तीन सौ हैं, लेकिन 392 में 9 दहाई हैं जबकि 329 में 2 दहाई हैं। अन्य विकल्प, 329, 309 और 332, 392 की तुलना में कम दहाई या सौ हैं। 309 में कम सौ हैं और 332 में 392 की तुलना में कम दहाई हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate numerical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता संख्या 329 आणि 392 मध्ये सर्वात मोठा आहे?",
+          "choices": [
+            "329",
+            "392",
+            "309",
+            "332"
+          ],
+          "solution": "392 ही 329 पेकी मोठी आहे कारण दोन्हीमध्ये तीन शेकडा आहेत, परंतु 392 मध्ये 9 दहाचे आहेत जे 329 च्या 2 दहाच्यापेकी जास्त आहेत. इतर विकल्प, 329, 309 आणि 332, यांच्याकडे 392 पेकी कमी दहाचे किंवा शेकडे आहेत. 309 मध्ये कमी शेकडे आहेत, आणि 332 मध्ये 392 पेकी कमी दहाचे आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses the number with fewer tens",
+        null,
+        "Confuses the tens and ones place, thinking 309 is larger because it has a 0 in the tens place",
+        "Chooses a number with fewer tens"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the reasoning that 392 is greater than 329 because it has more tens. The explanations for the distractors are plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 5,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 6,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 7,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:35:48.847Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a tray contains 100 pieces of mysore pak and there are 3 trays, how many pieces of mysore pak are there in total?",
+      "choices": [
+        "100",
+        "200",
+        "300",
+        "400"
+      ],
+      "answerIndex": 2,
+      "solution": "If each tray contains 100 pieces of mysore pak and there are 3 trays, then multiplying 100 by 3 gives the total number of pieces, which is 300. The other options do not result from this simple multiplication. 100 is the number in one tray, 200 is double that, and 400 is four times that, none of which match the total for three trays.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक ट्रे में 100 मस्कर पक के टुकड़े हैं और 3 ट्रे हैं, तो कुल में कितने मस्कर पक के टुकड़े हैं?",
+          "choices": [
+            "100",
+            "200",
+            "300",
+            "400"
+          ],
+          "solution": "यदि प्रत्येक ट्रे में 100 मस्कर पक के टुकड़े हैं और 3 ट्रे हैं, तो 100 को 3 से गुणा करने पर कुल टुकड़ों की संख्या प्राप्त होती है, जो 300 है। अन्य विकल्प इस सरल गुणन से प्राप्त नहीं होते। 100 एक ट्रे में संख्या है, 200 इसका दोगुना है, और 400 चार गुना है, जो कि तीन ट्रे के लिए कुल संख्या के बराबर नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate terminology and correct answer placement.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका ट्रे मध्ये 100 मुसोर पाक असेल आणि तिथे 3 ट्रे असतील, तर एकूण किती मुसोर पाक असतील?",
+          "choices": [
+            "100",
+            "200",
+            "300",
+            "400"
+          ],
+          "solution": "जर प्रत्येक ट्री मध्ये 100 मुसोर पाक असेल आणि 3 ट्री असतील, तर 100 ला 3 ने गुणल्यास एकूण संख्या मिळते, जी 300 आहे. इतर विकल्प ह्या सोप्या गुणाकारापासून मिळत नाहीत. 100 ही एका ट्री मधील संख्या आहे, 200 ही तिच्या दुप्पट आहे आणि 400 ही चार पट आहे, जे तीन ट्री मधील एकूण संख्येसाठी योग्य नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terms for the context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses the number of pieces in one tray",
+        "Chooses the number of pieces in two trays",
+        null,
+        "Chooses the next higher number after 300"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is straightforward arithmetic: 3 trays × 100 pieces per tray = 300. The correct answer is 2 (300). The distractors are reasonable and reflect common misconceptions (choosing 1 tray, 2 trays, or the next number after 300).",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 3,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 4,
+          "pageStart": 10,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:35:48.847Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If you have to create a 3-digit number using 3, 2, and 4 without repeating any digit, which number would be the greatest?",
+      "choices": [
+        "342",
+        "432",
+        "423",
+        "234"
+      ],
+      "answerIndex": 1,
+      "solution": "The greatest 3-digit number using the digits 3, 2, and 4 without repetition is 432. This is because 4 is the largest digit and placing it in the hundreds place gives the highest value. Numbers like 342 and 423 are smaller because they do not have the largest digit in the highest place value.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि आपको 3, 2 और 4 का उपयोग करके 3 अंकों की संख्या बनानी हो बिना किसी भी अंक के दोहराए, तो सबसे बड़ी संख्या कौन सी होगी?",
+          "choices": [
+            "342",
+            "432",
+            "423",
+            "234"
+          ],
+          "solution": "3, 2 और 4 के अंकों का उपयोग करके बिना दोहराए 3 अंकों की सबसे बड़ी संख्या 432 होगी। इसका कारण यह है कि 4 सबसे बड़ा अंक है और इसे सैकड़ों के स्थान पर रखने से सबसे अधिक मान प्राप्त होता है। 342 और 423 जैसी संख्याएं छोटी होती हैं क्योंकि वे सबसे बड़ा अंक सबसे बड़े स्थान पर नहीं होता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "तुम्हाला 3, 2 आणि 4 अशा तीन अंकांचा वापर करून 3 अंकी संख्या तयार करायची आहे, जिथे कोणताही अंक पुनरावृत्त करू नये. तर तुम्हाला कोणती संख्या सर्वात मोठी येईल?",
+          "choices": [
+            "342",
+            "432",
+            "423",
+            "234"
+          ],
+          "solution": "3, 2 आणि 4 अंकांचा वापर करून पुनरावृत्ती न करता सर्वात मोठी 3 अंकी संख्या 432 असेल. कारण 4 हा सर्वात मोठा अंक आहे आणि तो शतकांच्या जागेवर ठेवल्याने सर्वात जास्त मूल्य मिळते. 342 आणि 423 अशा संख्या लहान असतात कारण त्यांमध्ये सर्वात मोठा अंक सर्वात मोठ्या स्थानावर नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the order of digits, placing the largest available digit in the tens place instead of the hundreds",
+        null,
+        "Confuses the order of digits, thinking the tens place is more important than the hundreds place",
+        "Chooses a number with a smaller hundreds digit"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 432, as it places the largest digit (4) in the hundreds place, followed by the next largest (3) in the tens, and the smallest (2) in the ones. The author's reasoning is sound and the distractors reflect common misconceptions about place value.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 5,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 6,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Play"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm106.pdf",
+          "ordinal": 7,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: House of Hundreds - I",
+            "Let us Do"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:35:48.847Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

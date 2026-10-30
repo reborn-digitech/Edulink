@@ -1,0 +1,514 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T20:39:31.550Z",
+  "finishedAt": "2026-10-25T20:43:55.192Z",
+  "seconds": 264,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap113.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 13 — A Shelter so High!",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 79859,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 21438,
+      "completionTokens": 4583
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 213902,
+      "in": 24,
+      "out": 19,
+      "rejects": 5,
+      "promptTokens": 13900,
+      "completionTokens": 5725
+    },
+    "solver": {
+      "calls": 162,
+      "ms": 115116,
+      "in": 19,
+      "out": 13,
+      "rejects": 6,
+      "promptTokens": 33777,
+      "completionTokens": 2064
+    },
+    "form": {
+      "calls": 10,
+      "ms": 28304,
+      "in": 13,
+      "out": 7,
+      "rejects": 6,
+      "promptTokens": 2339,
+      "completionTokens": 662
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 3346,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 132967,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9403,
+      "completionTokens": 4809
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If Gaurav Jani had to travel from Mumbai to Leh, which of the following states would he most likely NOT pass through?",
+      "ms": {
+        "draft": 3295,
+        "critique": 7047,
+        "solver": 16971
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of house described in the passage?",
+      "ms": {
+        "draft": 3295,
+        "critique": 7071,
+        "solver": 17551,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a reason why Gaurav Jani decided to travel from Mumbai?",
+      "ms": {
+        "draft": 3295,
+        "critique": 6874,
+        "solver": 18779
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the tent used by the Changpas?",
+      "ms": {
+        "draft": 3413,
+        "critique": 7786,
+        "solver": 1678
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why do the Changpas live at high altitudes?",
+      "ms": {
+        "draft": 3295,
+        "critique": 8837,
+        "solver": 1832,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bus were to travel at 70 km/h, how far would it go in one hour?",
+      "ms": {
+        "draft": 3413,
+        "critique": 6508,
+        "solver": 2312,
+        "form": 4355
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT mentioned as a reason for different types of houses?",
+      "ms": {
+        "draft": 3413,
+        "critique": 5420,
+        "solver": 15788
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of the houses in different parts of Jammu and Kashmir?",
+      "ms": {
+        "draft": 3315,
+        "critique": 6290,
+        "solver": 16274,
+        "form": 3915
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why do some people in Kashmir buy roties from bakeries instead of cooking them at home?",
+      "ms": {
+        "draft": 3315,
+        "critique": 8489
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the difference between the houses of the Bakarwal people and the Changpas?",
+      "ms": {
+        "draft": 3315,
+        "critique": 5068
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one special feature of a house that can be found in some places?",
+      "ms": {
+        "draft": 3315,
+        "critique": 8053,
+        "solver": 12874
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a type of house mentioned in the passage?",
+      "ms": {
+        "draft": 3280,
+        "critique": 6851,
+        "solver": 16049
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason for the different types of houses in Jammu and Kashmir?",
+      "ms": {
+        "draft": 3280,
+        "critique": 6646,
+        "solver": 14142,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What type of houses did Gaurav Jani hope to see in his journey?",
+      "ms": {
+        "draft": 3281,
+        "critique": 7236
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bus is moving at 70 km/h, how far would it travel in one hour?",
+      "ms": {
+        "draft": 3382,
+        "critique": 7950,
+        "solver": 1295,
+        "form": 3625
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Gaurav Jani feel it was difficult to breathe normally at Changthang?",
+      "ms": {
+        "draft": 3281,
+        "critique": 6062
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason the Changpa tribe lives at high altitudes?",
+      "ms": {
+        "draft": 3281,
+        "critique": 5403
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do the Changpas use yak hair to make their tents?",
+      "ms": {
+        "draft": 3413,
+        "critique": 6398,
+        "solver": 1258,
+        "form": 3273
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the tent used by the Changpas?",
+      "ms": {
+        "draft": 3382,
+        "critique": 7751,
+        "solver": 1529,
+        "form": 2754
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do the Changpas carry oxygen cylinders when they travel to high altitudes?",
+      "ms": {
+        "draft": 3382,
+        "critique": 5602,
+        "solver": 1626,
+        "form": 2329
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why do some houses in Kashmir have sloping roofs?",
+      "ms": {
+        "draft": 3280,
+        "critique": 6393,
+        "solver": 17577,
+        "form": 3033,
+        "translation": 35240
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did Tashi's family use the ground floor of their house for?",
+      "ms": {
+        "draft": 3281,
+        "critique": 5289,
+        "solver": 778,
+        "form": 1247,
+        "translation": 19191
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a family lives in a place where it rains heavily, what kind of roof would they most likely have?",
+      "ms": {
+        "draft": 3280,
+        "critique": 6152,
+        "solver": 1328,
+        "form": 4845,
+        "translation": 35824
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why are pashmina shawls so warm?",
+      "ms": {
+        "draft": 3382,
+        "critique": 6681,
+        "solver": 1598,
+        "form": 3284,
+        "translation": 38195
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If Gaurav Jani had to travel from Mumbai to Leh, which of the following states would he most likely NOT pass through?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a type of house described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\"); distractor 0's reason is not a one-line misconception (\"Confuses the description in the passage with common modern h…\"); distractor 1's reason is not a one-line misconception (\"Student thinks all modern houses have flat roofs, ignoring t…\"); distractor 2's reason is not a one-line misconception (\"Confuses a description of a house in the passage with a comm…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a reason why Gaurav Jani decided to travel from Mumbai?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the name of the tent used by the Changpas?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, why do the Changpas live at high altitudes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a bus were to travel at 70 km/h, how far would it go in one hour?",
+      "reason": "checkExpr \"70\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT mentioned as a reason for different types of houses?",
+      "reason": "after redrafting distractors 0, 1, 2: option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of the houses in different parts of Jammu and Kashmir?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"students might think that houses in Jammu and Kashmir are mo…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Why do some people in Kashmir buy roties from bakeries instead of cooking them at home?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the difference between the houses of the Bakarwal people and the Changpas?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is one special feature of a house that can be found in some places?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a type of house mentioned in the passage?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a reason for the different types of houses in Jammu and Kashmir?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What type of houses did Gaurav Jani hope to see in his journey?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a bus is moving at 70 km/h, how far would it travel in one hour?",
+      "reason": "checkExpr \"70\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Gaurav Jani feel it was difficult to breathe normally at Changthang?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main reason the Changpa tribe lives at high altitudes?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why do the Changpas use yak hair to make their tents?",
+      "reason": "near-duplicate of served question cmvh91bhz07lzgpfhdh21h1g9 (cosine 0.973 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the tent used by the Changpas?",
+      "reason": "near-duplicate of served question cmvh91bhx07ltgpfhgtyvb8n3 (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why do the Changpas carry oxygen cylinders when they travel to high altitudes?",
+      "reason": "near-duplicate of served question cmvkbk12p0jyegpfhtcpwhej5 (cosine 0.968 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

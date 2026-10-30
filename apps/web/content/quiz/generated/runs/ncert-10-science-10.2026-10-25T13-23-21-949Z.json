@@ -1,0 +1,809 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T13:23:21.949Z",
+  "finishedAt": "2026-10-25T13:36:46.886Z",
+  "seconds": 805,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc110.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 10 — The Human Eye and the Colourful World",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\n39. Attempt either option A or B. 5\nA.\nI. What is meant by accommodation of the human eye?\nII. What is the near point of a normal eye and what does it signify?\nIII. Name which type of lens is used to correct the defect in which a person\ncannot see distant objects clearly.\nIV. Draw a diagram to show how the choice of your lens in (d) helps to see\ndistant objects clearly?\nOR\nB.\nI. What is dispersion of light?\nII. Which colour of light deviates the least during dispersion through a\nprism?\nIII. State why the sky appears dark to an astronaut in outer space.\nIV. Draw a simple labelled diagram to show how white light splits into\ndifferent colours while passing through a glass prism.\n- - - - - - - -",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n31. A. As sunlight passes through the atmosphere, Rayleigh scattering causes 1\nshorter wavelengths, such as blue and violet, to scatter more than other\ncolors, but our eyes are more sensitive to blue than violet.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n14.\nChoose the correct option for the colour of rays for A and B.\nColour of Ray A Colour of Ray B\nA. Blue\nB. Green\nC. Red\nD. Violet",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n39. Students to attempt either option A or B. 5\nA.\nI. Accommodation: Ability of the eye lens to change its focal length to\nfocus objects at different distances on the retina. (1)\nII. Near point: The nearest point (about 25 cm for a normal eye) at\nwhich an object can be seen distinctly; it signifies the closest\ncomfortable focus. (1)\nIII. Lens for defect (cannot see distant objects): A diverging (concave)\nlens is used to correct myopia (short-sightedness). (1)\nIV. Diagram:\n(2)\nB.\nI. Dispersion: Splitting of white light into its component colours due to\nwavelength-dependent refraction. (1)\nII. Colour deviating least in prism: Red deviates least (longest\nwavelength). (1)\nIII. Sky dark in space:"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 223264,
+      "in": 43,
+      "out": 40,
+      "rejects": 3,
+      "promptTokens": 35507,
+      "completionTokens": 10320
+    },
+    "critique": {
+      "calls": 56,
+      "ms": 437221,
+      "in": 40,
+      "out": 31,
+      "rejects": 9,
+      "promptTokens": 25770,
+      "completionTokens": 9536
+    },
+    "solver": {
+      "calls": 263,
+      "ms": 182390,
+      "in": 31,
+      "out": 27,
+      "rejects": 4,
+      "promptTokens": 52474,
+      "completionTokens": 2891
+    },
+    "form": {
+      "calls": 18,
+      "ms": 113205,
+      "in": 27,
+      "out": 9,
+      "rejects": 18,
+      "promptTokens": 13517,
+      "completionTokens": 2441
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 39,
+      "ms": 7333,
+      "in": 9,
+      "out": 6,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 357857,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 15178,
+      "completionTokens": 8044
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "What does the diagram in Fig. 10.1 show about the structure of the human eye?",
+      "ms": {
+        "draft": 14859,
+        "critique": 6221
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the crystalline lens in the human eye?",
+      "ms": {
+        "draft": 14859,
+        "critique": 6526
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person can see nearby objects clearly but not distant objects. Which type of lens is used to correct this condition?",
+      "ms": {
+        "draft": 14859,
+        "critique": 5874,
+        "solver": 1731,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the role of the ciliary muscles in the human eye?",
+      "ms": {
+        "draft": 14859,
+        "critique": 6049
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person's far point is at 10 meters, which vision defect might they have?",
+      "ms": {
+        "draft": 14859,
+        "critique": 9115,
+        "solver": 19915,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of lens is used to correct myopia?",
+      "ms": {
+        "draft": 8178,
+        "critique": 9772,
+        "solver": 15229,
+        "form": 3421
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student has difficulty reading the blackboard while sitting in the last row. What could be the defect the child is suffering from?",
+      "ms": {
+        "draft": 8178,
+        "critique": 9158,
+        "solver": 2046,
+        "form": 4657
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the angle of deviation in the refraction of light through a glass prism?",
+      "ms": {
+        "draft": 8178,
+        "critique": 9697
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person with a myopic eye cannot see objects beyond 1.2 m distinctly. What should be the type of the corrective lens used to restore proper vision?",
+      "ms": {
+        "draft": 8178,
+        "critique": 7052,
+        "solver": 1538
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of 'power of accommodation of the eye'?",
+      "ms": {
+        "draft": 8178,
+        "critique": 8610,
+        "solver": 16639,
+        "form": 4760
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the sky appear dark to an astronaut in outer space?",
+      "ms": {
+        "draft": 8178,
+        "critique": 6800,
+        "solver": 2493,
+        "form": 3760
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student uses a prism to split white light into its component colours. Which colour bends the most as it passes through the prism?",
+      "ms": {
+        "draft": 5843,
+        "critique": 7533,
+        "solver": 2072,
+        "form": 3997
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes a rainbow after a rain shower. According to the passage, which of the following best explains the formation of a rainbow?",
+      "ms": {
+        "draft": 5843,
+        "critique": 10266,
+        "solver": 1967,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the ability of the eye to focus on both near and distant objects called?",
+      "ms": {
+        "draft": 16777,
+        "critique": 9132
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the least distance of distinct vision for a young adult with normal vision?",
+      "ms": {
+        "draft": 16777,
+        "critique": 9546
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student observes that the sky appears dark to an astronaut in outer space. According to the passage, what is the reason for this phenomenon?",
+      "ms": {
+        "draft": 5843,
+        "critique": 9149,
+        "solver": 17322
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the focal length of a lens with a power of -5.5 dioptres?",
+      "ms": {
+        "draft": 16777,
+        "critique": 6083,
+        "solver": 6212
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the least distance of distinct vision for a young adult with normal vision?",
+      "ms": {
+        "draft": 13551,
+        "critique": 5840
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the ability of the eye to focus on both near and distant objects by adjusting its focal length called?",
+      "ms": {
+        "draft": 13551,
+        "critique": 6331
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the splitting of white light into its component colours?",
+      "ms": {
+        "draft": 4231,
+        "critique": 7698
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The far point of a myopic person is 80 cm in front of the eye. What is the power of the lens required to correct the problem?",
+      "ms": {
+        "draft": 13551,
+        "critique": 9510,
+        "solver": 14175,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person needs a lens of power -5.5 dioptres for correcting distant vision and +1.5 dioptre for near vision. What is the focal length of the lens required for correcting distant vision?",
+      "ms": {
+        "draft": 13551,
+        "critique": 8919,
+        "solver": 16514,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which colour of light bends the most when it passes through a prism?",
+      "ms": {
+        "draft": 4231,
+        "critique": 8581,
+        "solver": 14533,
+        "form": 5437
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why does the sky appear dark to an astronaut in space?",
+      "ms": {
+        "draft": 4231,
+        "critique": 8482,
+        "solver": 3616,
+        "form": 4439
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the spectrum of light when it passes through a second prism placed in an inverted position?",
+      "ms": {
+        "draft": 4231,
+        "critique": 9418,
+        "solver": 19799,
+        "form": 4685
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student has difficulty reading the blackboard while sitting in the last row. What could be the defect the child is suffering from, and how can it be corrected?",
+      "ms": {
+        "draft": 6159,
+        "critique": 11541,
+        "solver": 2364
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following correctly describes the phenomenon of dispersion of light?",
+      "ms": {
+        "draft": 6159,
+        "critique": 9443,
+        "solver": 13570,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which part of the eye controls the amount of light entering the eye?",
+      "ms": {
+        "draft": 6482,
+        "critique": 8335,
+        "solver": 1874,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the angle of deviation in the refraction of light through a glass prism?",
+      "ms": {
+        "draft": 6159,
+        "critique": 9648,
+        "solver": 19469,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a person's near point is more than 25 cm, which of the following conditions might they be suffering from?",
+      "ms": {
+        "draft": 6482,
+        "critique": 8476,
+        "solver": 1127,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person can see nearby objects clearly but has difficulty seeing distant objects. Which of the following lenses should be used to correct this condition?",
+      "ms": {
+        "draft": 6482,
+        "critique": 7797,
+        "solver": 11321,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the sky appear blue to us on a clear day?",
+      "ms": {
+        "draft": 14859,
+        "critique": 8380,
+        "solver": 17132,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where does the human eye form the image of an object?",
+      "ms": {
+        "draft": 16777,
+        "critique": 9446,
+        "solver": 1802,
+        "form": 4024
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where does the human eye form the image of an object?",
+      "ms": {
+        "draft": 13551,
+        "critique": 5399,
+        "solver": 1775,
+        "form": 2677
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the ability of the eye lens to adjust its focal length to focus objects at different distances on the retina?",
+      "ms": {
+        "draft": 6482,
+        "critique": 7864,
+        "solver": 2467,
+        "form": 0,
+        "translation": 51014
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the power of accommodation of the eye?",
+      "ms": {
+        "draft": 6159,
+        "critique": 8343,
+        "solver": 15821,
+        "form": 0,
+        "translation": 60122
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the splitting of white light into its component colours?",
+      "ms": {
+        "draft": 5843,
+        "critique": 6330,
+        "solver": 2202,
+        "form": 3274,
+        "translation": 53513
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A person with a myopic eye cannot see objects beyond 1.2 m distinctly. What type of corrective lens should be used to restore proper vision?",
+      "ms": {
+        "draft": 6159,
+        "critique": 7214,
+        "solver": 13701,
+        "form": 0,
+        "translation": 60980
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A diagram shows white light entering a prism and forming a spectrum. The diagram also shows the light passing through a second prism placed in an inverted position. What is the purpose of the second prism?",
+      "ms": {
+        "draft": 5843,
+        "critique": 7753,
+        "solver": 3839,
+        "form": 2620,
+        "translation": 72268
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do planets not twinkle like stars?",
+      "ms": {
+        "draft": 4231,
+        "critique": 9290,
+        "solver": 19346,
+        "form": 3399,
+        "translation": 55237
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What causes the apparent random wavering or flickering of objects seen through hot air above a fire?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What causes the change in focal length of the eye lens?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the diagram in Fig. 10.1 show about the structure of the human eye?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the function of the crystalline lens in the human eye?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A person can see nearby objects clearly but not distant objects. Which type of lens is used to correct this condition?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the role of the ciliary muscles in the human eye?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a person's far point is at 10 meters, which vision defect might they have?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which type of lens is used to correct myopia?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Confuses cylindrical lens with concave lens for myopia corre…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student has difficulty reading the blackboard while sitting in the last row. What could be the defect the child is suffering from?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer…\"); distractor 3's reason is not a one-line misconception (\"Confuses myopia with hypermetropia, which is a common mistak…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the angle of deviation in the refraction of light through a glass prism?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A person with a myopic eye cannot see objects beyond 1.2 m distinctly. What should be the type of the corrective lens used to restore proper vision?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the meaning of 'power of accommodation of the eye'?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, but the stem avoids the wording of the answe…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the sky appear dark to an astronaut in outer space?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the adaptation of the eyes with the actual reason f…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student uses a prism to split white light into its component colours. Which colour bends the most as it passes through the prism?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observes a rainbow after a rain shower. According to the passage, which of the following best explains the formation of a rainbow?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the ability of the eye to focus on both near and distant objects called?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the least distance of distinct vision for a young adult with normal vision?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student observes that the sky appears dark to an astronaut in outer space. According to the passage, what is the reason for this phenomenon?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the focal length of a lens with a power of -5.5 dioptres?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What causes the change in focal length of the eye lens?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the least distance of distinct vision for a young adult with normal vision?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the ability of the eye to focus on both near and distant objects by adjusting its focal length called?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the term used to describe the splitting of white light into its component colours?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "The far point of a myopic person is 80 cm in front of the eye. What is the power of the lens required to correct the problem?",
+      "reason": "options are in more than one unit (d, m); options are written to different precisions (0 and 1 and 2 decimals); options 0 and 2 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A person needs a lens of power -5.5 dioptres for correcting distant vision and +1.5 dioptre for near vision. What is the focal length of the lens required for correcting distant vision?",
+      "reason": "options are in more than one unit (cm, m); options are written to different precisions (1 and 2 and 3 decimals); options 0 and 1 are the same number; ARITHMETIC MISMATCH — checkExpr \"1/(-5.5)\" = -0.18181818181818182, but the key says -18.18"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which colour of light bends the most when it passes through a prism?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Why does the sky appear dark to an astronaut in space?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Chooses a reason unrelated to the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What happens to the spectrum of light when it passes through a second prism placed in an inverted position?",
+      "reason": "options 1 and 3 are the same (\"It splits into more colours\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student has difficulty reading the blackboard while sitting in the last row. What could be the defect the child is suffering from, and how can it be corrected?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following correctly describes the phenomenon of dispersion of light?",
+      "reason": "options 0 and 1 say the same thing (\"Splitting of light into different colours due to reflection\" / \"Splitting of light into different colours due to refraction\"); options 0 and 2 say the same thing (\"Splitting of light into different colours due to reflection\" / \"Splitting of light into different colours due to interference\"); options 0 and 3 say the same thing (\"Splitting of light into different colours due to reflection\" / \"Splitting of light into different colours due to scattering\"); options 1 and 2 say the same thing (\"Splitting of light into different colours due to refraction\" / \"Splitting of light into different colours due to interference\"); options 1 and 3 say the same thing (\"Splitting of light into different colours due to refraction\" / \"Splitting of light into different colours due to scattering\"); options 2 and 3 say the same thing (\"Splitting of light into different colours due to interference\" / \"Splitting of light into different colours due to scattering\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which part of the eye controls the amount of light entering the eye?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the angle of deviation in the refraction of light through a glass prism?",
+      "reason": "figure: figure spec refused: spec.parts: prism has no label \"incidentRay\" (it has prism, whiteLight, spectrum, red, violet)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a person's near point is more than 25 cm, which of the following conditions might they be suffering from?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A person can see nearby objects clearly but has difficulty seeing distant objects. Which of the following lenses should be used to correct this condition?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why does the sky appear blue to us on a clear day?",
+      "reason": "near-duplicate of served question cmvgx7agg05bogpfh00s4ljdo (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Where does the human eye form the image of an object?",
+      "reason": "near-duplicate of served question cmvjzuc0o0iesgpfhk4ettnhk (cosine 0.926 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Where does the human eye form the image of an object?",
+      "reason": "near-duplicate of served question cmvjzuc0o0iesgpfhk4ettnhk (cosine 0.924 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

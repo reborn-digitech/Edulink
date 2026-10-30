@@ -21,352 +21,49 @@
   "board": "NCERT",
   "book": "Science",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T20:16:24.449Z",
+  "generatedAt": "2026-10-28T01:43:08.749Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the ability of the eye to focus on both near and distant objects by adjusting its focal length called?",
-      "choices": [
-        "Presbyopia",
-        "Accommodation",
-        "Myopia",
-        "Hypermetropia"
-      ],
-      "answerIndex": 1,
-      "solution": "Accommodation is the process by which the eye changes its focal length to focus on objects at different distances. Presbyopia refers to the gradual loss of this ability as a person ages, myopia is the condition where distant objects appear blurry, and hypermetropia is where close objects appear blurry. Therefore, the correct answer is accommodation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "आंख की ऐसी क्षमता क्या कहलाती है जिससे यह अपने फोकस लंबाई को समायोजित करके निकट और दूर की वस्तुओं पर फोकस कर सकती है?",
-          "choices": [
-            "प्रेस्बिया",
-            "अनुकूलन",
-            "मायोपिया",
-            "हाइपरमेट्रोपिया"
-          ],
-          "solution": "अनुकूलन वह प्रक्रिया है जिसमें आंख अपनी फोकस लंबाई को बदलकर अलग-अलग दूरी वाली वस्तुओं पर फोकस करती है। प्रेस्बिया उम्र बढ़ने के साथ इस क्षमता के क्रमिक ह्रास को कहते हैं, मायोपिया वह स्थिति है जिसमें दूर की वस्तुएं अस्पष्ट दिखाई देती हैं, और हाइपरमेट्रोपिया वह स्थिति है जिसमें निकट की वस्तुएं अस्पष्ट दिखाई देती हैं। अतः सही उत्तर अनुकूलन है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Hindi medical terminology used.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आंखींच्या निकट आणि दूर वस्तूंवर लक्ष ठेवण्याची क्षमता आपल्या फोकस लांबी बदलून काय म्हणतात?",
-          "choices": [
-            "प्रेस्बियोपिया",
-            "अॅकॉमोडेशन",
-            "मायोपिया",
-            "हायपरमेट्रोपिया"
-          ],
-          "solution": "अॅकॉमोडेशन हा एक प्रक्रिया आहे ज्यामुळे आंखींची फोकस लांबी बदलून विविध अंतरावरील वस्तूंवर लक्ष ठेवता येते. प्रेस्बियोपिया हा वयाच्या वाढीमुळे ही क्षमता गमावण्याचा अवस्था आहे, मायोपिया हा अवस्था आहे जेथे दूर वस्तूंचे दृश्य अस्पष्ट दिसते आणि हायपरमेट्रोपिया हा अवस्था आहे जेथे जवळच्या वस्तूंचे दृश्य अस्पष्ट दिसते. त्यामुळे योग्य उत्तर अॅकॉमोडेशन आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for medical conditions.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses accommodation with presbyopia, which is the loss of accommodation with age.",
-        null,
-        "Confuses the term with myopia, a refractive error, not the ability to adjust focal length.",
-        "Confuses the term with hypermetropia, another refractive error, not the ability to adjust focal length."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions. The solution correctly identifies the term 'accommodation' and explains the other options accurately.",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 12,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "10.6.2 Why is the colour of the clear Sky Blue?"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 13,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "What you have learnt"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 14,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "What you have learnt"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T20:16:24.449Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Where does the human eye form the image of an object?",
-      "choices": [
-        "Cornea",
-        "Iris",
-        "Pupil",
-        "Retina"
-      ],
-      "answerIndex": 3,
-      "solution": "The human eye forms the image of an object on the retina, which is the light-sensitive layer at the back of the eye. The cornea and iris help focus light, while the pupil controls the amount of light entering the eye. Therefore, the correct answer is retina.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "मनुष्य नेत्र में वस्तु का प्रतिबिंब कहाँ बनता है?",
-          "choices": [
-            "कॉर्निया",
-            "आइरिस",
-            "पुतली",
-            "रेटिना"
-          ],
-          "solution": "मनुष्य नेत्र में वस्तु का प्रतिबिंब रेटिना पर बनता है, जो आंख के पीछे की ओर प्रकाश-संवेदनशील परत होती है। कॉर्निया और आइरिस प्रकाश को फोकस करने में सहायता करते हैं, जबकि पुतली प्रकाश की मात्रा को नियंत्रित करती है। इसलिए सही उत्तर रेटिना है।",
-          "imageAlt": null,
-          "critique": "All terms are standard Hindi equivalents used in Indian school textbooks. 'पुतली' for 'pupil' and 'रेटिना' for 'retina' are correct and widely recognized.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "माणसाच्या डोळ्यात वस्तूचे छायाचित्र कुठे तयार होते?",
-          "choices": [
-            "कॉर्निया",
-            "आयरिस",
-            "पुतळा",
-            "रेटिना"
-          ],
-          "solution": "माणसाच्या डोळ्यात वस्तूचे छायाचित्र रेटिनावर तयार होते, जी डोळ्याच्या मागील बाजूला असलेली प्रकाश-संवेदनशील थर आहे. कॉर्निया आणि आयरिस प्रकाश फोकस करतात, तर पुतळा प्रकाशाच्या प्रमाणाचे नियंत्रण करतो. म्हणूनच योग्य उत्तर रेटिना आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the function of the cornea, which is to refract light, not form an image.",
-        "Confuses the function of the iris, which controls the size of the pupil, not forming an image.",
-        "Confuses the function of the pupil, which is to control the amount of light entering the eye, not forming an image.",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution correctly identifies the retina as the location where the image is formed. The distractors are common misconceptions about the roles of the cornea, iris, and pupil.",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 12,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "10.6.2 Why is the colour of the clear Sky Blue?"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 13,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "What you have learnt"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 14,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "What you have learnt"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T20:16:24.449Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What causes the change in focal length of the eye lens?",
-      "choices": [
-        "Pupil",
-        "Retina",
-        "Ciliary muscles",
-        "Iris"
-      ],
-      "answerIndex": 2,
-      "solution": "The ciliary muscles are responsible for changing the shape of the eye lens, which adjusts the focal length to focus on objects at different distances. The pupil and iris control the amount of light entering the eye, while the retina receives and processes the light to form an image. Therefore, the correct answer is ciliary muscles.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "आंख के लेंस की फोकस लंबाई में परिवर्तन किसके कारण होता है?",
-          "choices": [
-            "पुतली",
-            "रेटिना",
-            "कैलियरी मांसपेशियां",
-            "आइरिस"
-          ],
-          "solution": "कैलियरी मांसपेशियां आंख के लेंस के आकार को बदलती हैं, जो विभिन्न दूरियों पर स्थित वस्तुओं पर ध्यान केंद्रित करने के लिए फोकस लंबाई को समायोजित करती हैं। पुतली और आइरिस आंख में प्रवेश करने वाले प्रकाश की मात्रा को नियंत्रित करते हैं, जबकि रेटिना प्रकाश को प्राप्त करती है और छवि बनाने के लिए प्रक्रिया करती है। इसलिए, सही उत्तर कैलियरी मांसपेशियां है।",
-          "imageAlt": null,
-          "critique": "All terms are standard Hindi medical terminology used in Indian textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आंखीच्या लेंसाच्या फोकस अंतरात कशामुळे बदल होतो?",
-          "choices": [
-            "कॉर्निया",
-            "रेटिना",
-            "किलियरी मासल्स",
-            "आइरिस"
-          ],
-          "solution": "किलियरी मासल्स आंखीच्या लेंसाच्या आकाराचे बदल करतात, जे विविध अंतरावरील वस्तूंवर लक्ष ठेवण्यासाठी फोकस अंतर बदलते. कॉर्निया आणि आइरिस आंखीत जाणाऱ्या प्रकाशाच्या प्रमाणाचे नियंत्रण करतात, तर रेटिना प्रकाशाचे ग्रहण करून छायाचित्र तयार करते. त्यामुळे योग्य उत्तर किलियरी मासल्स आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate terminology used for biological structures.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the function of the pupil, which controls light entry, not focal length adjustment.",
-        "Confuses the function of the retina, which forms the image, not adjusts focal length.",
-        null,
-        "Confuses the function of the iris, which controls the size of the pupil, not focal length adjustment."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies the ciliary muscles as the cause of focal length change, and the reasons for the other options are valid misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 12,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "10.6.2 Why is the colour of the clear Sky Blue?"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 13,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "What you have learnt"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 14,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "What you have learnt"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T20:16:24.449Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
       "difficulty": 2,
-      "stem": "What is the least distance of distinct vision for a normal eye?",
+      "stem": "What is the function of the cornea in the human eye?",
       "choices": [
-        "10 cm",
-        "25 cm",
-        "50 cm",
-        "75 cm"
+        "It focuses light onto the retina",
+        "It controls the amount of light entering the eye",
+        "It protects the eye from dust and dirt",
+        "It adjusts the shape of the eye lens"
       ],
-      "answerIndex": 1,
-      "solution": "The least distance of distinct vision for a normal eye is the closest distance at which the eye can focus clearly without strain. For a young adult with normal vision, this distance is approximately 25 cm. Options like 10 cm are too close and cause strain, while 50 cm and 75 cm are farther than the typical range for clear vision.",
+      "answerIndex": 0,
+      "solution": "The cornea is the transparent front part of the eye that allows light to enter. It is responsible for focusing light onto the retina. The pupil controls the amount of light entering the eye, and the ciliary muscles adjust the shape of the eye lens. The cornea does not protect the eye from dust and dirt, as that is the role of the eyelids and tears.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक सामान्य आंख के लिए अंतर्विरोधी दृष्टि की कम से कम दूरी क्या है?",
+          "stem": "मानव आंख में कॉर्निया का कार्य क्या है?",
           "choices": [
-            "10 सेमी",
-            "25 सेमी",
-            "50 सेमी",
-            "75 सेमी"
+            "यह रेटिना पर प्रकाश को केंद्रित करता है",
+            "यह आंख में प्रवेश करने वाले प्रकाश की मात्रा को नियंत्रित करता है",
+            "यह आंख को धूल और गंदगी से सुरक्षित रखता है",
+            "यह आंख के लेंस के आकार को समायोजित करता है"
           ],
-          "solution": "एक सामान्य आंख के लिए अंतर्विरोधी दृष्टि की कम से कम दूरी वह निकटतम दूरी है जिस पर आंख स्पष्ट रूप से केंद्रित कर सकती है बिना किसी तनाव के। एक युवा वयस्क के लिए जिसकी दृष्टि सामान्य होती है, यह दूरी लगभग 25 सेमी होती है। 10 सेमी जैसे विकल्प बहुत निकट होते हैं और तनाव पैदा करते हैं, जबकि 50 सेमी और 75 सेमी आमतौर पर स्पष्ट दृष्टि की सीमा से दूर होते हैं।",
+          "solution": "कॉर्निया आंख का पारदर्शी सामने वाला हिस्सा होता है जो प्रकाश के प्रवेश की अनुमति देता है। यह रेटिना पर प्रकाश को केंद्रित करने के लिए जिम्मेदार होता है। पुतली आंख में प्रवेश करने वाले प्रकाश की मात्रा को नियंत्रित करती है, और किलियरी मांसपेशियां आंख के लेंस के आकार को समायोजित करती हैं। कॉर्निया धूल और गंदगी से आंख की रक्षा नहीं करता है, क्योंकि यह आंख के लिए आंख के पलकों और आंसू का कार्य होता है।",
           "imageAlt": null,
-          "critique": "Translation is accurate, technical terms are appropriate for Hindi curriculum, and the structure matches the original.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi medical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "सामान्य डोळ्यासाठी विशद दृष्टीचे लहानतम अंतर किती आहे?",
+          "stem": "मानव डोळ्यातील कॉर्नियाचे कार्य काय आहे?",
           "choices": [
-            "10 सेमी",
-            "25 सेमी",
-            "50 सेमी",
-            "75 सेमी"
+            "ते पार्श्वदर्शकावर प्रकाश फोकस करते",
+            "ते डोळ्यात प्रवेश करणाऱ्या प्रकाशाच्या प्रमाणाचे नियंत्रण करते",
+            "ते डोळ्याला धूल आणि धूकापासून बचाव करते",
+            "ते डोळ्याच्या लेन्सच्या आकाराचे नियंत्रण करते"
           ],
-          "solution": "सामान्य डोळ्यासाठी विशद दृष्टीचे लहानतम अंतर हे असे अंतर आहे ज्यावर डोळ्याला ताण न लावता स्पष्ट दृष्टी ठेवता येते. एका तरुण वयाच्या व्यक्तीला ज्याची दृष्टी सामान्य आहे, त्याच्या बाबतीत हे अंतर अंदाजे 25 सेमी असते. 10 सेमी अशा प्रकारचे अंतर खूप जवळ असते आणि ताण निर्माण करते, तर 50 सेमी आणि 75 सेमी हे स्पष्ट दृष्टीच्या सामान्य अंतरापेक्षा दूर असते.",
+          "solution": "कॉर्निया हा डोळ्याचा पारदर्शक आग्नेय भाग आहे जो प्रकाश प्रवेश करू देतो. तो पार्श्वदर्शकावर प्रकाश फोकस करण्याची जबाबदारी घेतो. पुतळा डोळ्यात प्रवेश करणाऱ्या प्रकाशाच्या प्रमाणाचे नियंत्रण करतो, आणि सिलियरी मासल्स डोळ्याच्या लेन्सच्या आकाराचे नियंत्रण करतात. कॉर्निया धूल आणि धूकापासून डोळ्याचा बचाव करत नाही, जे डोळ्याच्या झिल्ली आणि अश्रूच्या भूमिकेत आहे.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for anatomical parts.",
           "flag": null
         }
       },
@@ -375,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Chooses a shorter distance than the actual value",
         null,
-        "Chooses a longer distance than the actual value",
-        "Chooses an even longer distance than the actual value"
+        "Confuses the role of the cornea with that of the pupil",
+        "Confuses the role of the cornea with that of the pupil",
+        "Misunderstands the function of the cornea as protection rather than light entry and focus"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 25 cm, which is the standard least distance of distinct vision for a normal eye. The reasoning provided by the author is accurate and aligns with scientific understanding.",
+      "critique": "The solution correctly identifies the cornea's role in focusing light onto the retina. The distractors reflect common misconceptions, such as confusing the cornea with the pupil or misunderstanding its protective role.",
       "sources": [
         {
           "document": "ncert/10/science/jesc110.pdf",
@@ -421,148 +118,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T20:16:24.449Z",
+      "generatedAt": "2026-10-28T01:43:08.749Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "What is the nature and power of the lens required to correct a myopic person whose far point is 80 cm in front of the eye?",
+      "stem": "What is the main reason for presbyopia in humans?",
       "choices": [
-        "Concave lens of power -1.25 D",
-        "Convex lens of power +1.25 D",
-        "Concave lens of power -1.25 m",
-        "Convex lens of power +1.25 m"
+        "Decreased flexibility of the ciliary muscles and eye lens",
+        "Increased sensitivity of the retina to light",
+        "Excessive production of tears",
+        "Improper alignment of the eye muscles"
       ],
       "answerIndex": 0,
-      "solution": "A myopic person cannot see distant objects clearly, and the far point is 80 cm. A concave lens is used to correct myopia. The power of the lens is calculated as 1 / -0.8 = -1.25 D. Hence, the correct answer is a concave lens of power -1.25 D.",
-      "checkExpr": "1/-0.8",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "मायोपिक व्यक्ति के लिए आवश्यक लेंस की प्रकृति और शक्ति क्या है जिसका दूर बिंदु आंख के सामने 80 सेमी है?",
-          "choices": [
-            "अवतल लेंस की शक्ति -1.25 डी",
-            "उत्तल लेंस की शक्ति +1.25 डी",
-            "अवतल लेंस की शक्ति -1.25 मी",
-            "उत्तल लेंस की शक्ति +1.25 मी"
-          ],
-          "solution": "एक मायोपिक व्यक्ति दूर के वस्तुओं को स्पष्ट रूप से नहीं देख सकता है और उसका दूर बिंदु 80 सेमी है। मायोपिया को सुधारने के लिए एक अवतल लेंस का उपयोग किया जाता है। लेंस की शक्ति की गणना 1 / -0.8 = -1.25 डी के रूप में की जाती है। अतः सही उत्तर अवतल लेंस की शक्ति -1.25 डी है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the technical terms used in Hindi textbooks, and preserves the logical structure of the question and solution.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आंखीतील दूरदृष्टीचा त्रास असलेल्या व्यक्तीच्या दृष्टीच्या अंतराचे अंतर 80 सेंमी असल्यास, त्याच्या आंखीत दूरदृष्टी दुरुस्त करण्यासाठी लागणार्‍या लेंसच्या प्रकृती आणि शक्तीचे निर्धारण करा?",
-          "choices": [
-            "अवतल लेंसाची शक्ती -1.25 D",
-            "उत्तल लेंसाची शक्ती +1.25 D",
-            "अवतल लेंसाची शक्ती -1.25 मी",
-            "उत्तल लेंसाची शक्ती +1.25 मी"
-          ],
-          "solution": "एका दूरदृष्टीचा त्रास असलेल्या व्यक्तीला दूरच्या वस्तू चांगल्या प्रकारे दिसत नाहीत आणि त्याच्या दृष्टीच्या अंतराचे अंतर 80 सेंमी आहे. दूरदृष्टी दुरुस्त करण्यासाठी अवतल लेंस वापरले जाते. लेंसची शक्ती 1 / -0.8 = -1.25 D असे गणित केले जाते. म्हणूनच, योग्य उत्तर अवतल लेंसाची शक्ती -1.25 D आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Marathi-medium textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the type of lens, as convex lenses are used for hypermetropia, not myopia.",
-        "Confuses the unit, as power is measured in dioptres, not meters.",
-        "Confuses the unit, as power is measured in dioptres, not meters."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies the concave lens and calculates the power as -1.25 D. The reasoning for the distractors is accurate, as they reflect common misconceptions about lens types and units.",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 12,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "10.6.2 Why is the colour of the clear Sky Blue?"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 13,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "What you have learnt"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 14,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "What you have learnt"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T20:16:24.449Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the purpose of an eye bank?",
-      "choices": [
-        "To provide glasses to the blind",
-        "To store and distribute donated eyes",
-        "To cure eye diseases",
-        "To perform eye surgeries"
-      ],
-      "answerIndex": 1,
-      "solution": "An eye bank's primary role is to collect, preserve, and provide donated eyes for transplantation. This makes the option stating that it stores and distributes donated eyes correct. Providing glasses, curing diseases, and performing surgeries are not functions of an eye bank.",
+      "solution": "Presbyopia occurs because the ciliary muscles and lens lose flexibility, making it hard to focus on close objects. Increased sensitivity of the retina, excessive tear production, and improper eye muscle alignment do not directly affect the eye's ability to focus on nearby objects.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "आई बैंक का उद्देश्य क्या है?",
+          "stem": "मनुष्यों में प्रेस्बियोपिया के मुख्य कारण क्या है?",
           "choices": [
-            "अंधे लोगों को चश्मा प्रदान करना",
-            "दान किए गए आंखों को संग्रहित और वितरित करना",
-            "आंख के रोगों का उपचार करना",
-            "आंखों के ऑपरेशन करना"
+            "कैलियरी मांसपेशियों और आंख के लेंस की लचीलापन में कमी",
+            "रेटिना की प्रकाश के प्रति बढ़ी हुई संवेदनशीलता",
+            "अत्यधिक आंसू के उत्पादन",
+            "आंख की मांसपेशियों के अनुचित संरेखण"
           ],
-          "solution": "आई बैंक की प्राथमिक भूमिका दान किए गए आंखों को एकत्र करना, संरक्षित करना और प्रसारित करना है। इस कारण दान किए गए आंखों को संग्रहित और वितरित करने वाले विकल्प सही है। चश्मा प्रदान करना, रोगों का उपचार करना और ऑपरेशन करना आई बैंक के कार्य नहीं हैं।",
+          "solution": "प्रेस्बियोपिया तब होती है जब कैलियरी मांसपेशियां और लेंस लचीलेपन खो देते हैं, जिसके कारण निकट की वस्तुओं पर ध्यान केंद्रित करना कठिन हो जाता है। रेटिना की बढ़ी हुई संवेदनशीलता, अत्यधिक आंसू के उत्पादन और आंख की मांसपेशियों के अनुचित संरेखण आंख के निकट की वस्तुओं पर ध्यान केंद्रित करने में सीधे रूप से प्रभावित नहीं करते हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains in the same position.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate medical terminology commonly found in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "आय बँकचा उद्देश काय आहे?",
+          "stem": "माणसांमध्ये प्रेस्बायोपिया होण्याचे मुख्य कारण काय आहे?",
           "choices": [
-            "अंध लोकांना चश्मा पुरविणे",
-            "दान केलेले डोळे जमा करणे आणि वितरित करणे",
-            "डोळे आजार उपचार करणे",
-            "डोळे शस्त्रक्रिया करणे"
+            "किलियरी मासल्स आणि डोळ्याच्या लेन्सची लचकटपणा घटलेली आहे",
+            "रेटिनाची प्रकाशाच्या संवेदनशीलता वाढलेली आहे",
+            "अतिरिक्त अश्रू उत्पादन",
+            "डोळ्याच्या मासल्सची अयोग्य अभिमुखता"
           ],
-          "solution": "आय बँकचा मुख्य कार्य दान केलेले डोळे एकत्रित करणे, त्यांचे उपयोग करणे आणि पुरविणे आहे. हे डोळे जमा करणे आणि वितरित करणे असलेल्या विकल्पाला बरोबर ठरवते. चश्मा पुरविणे, आजार उपचार करणे आणि शस्त्रक्रिया करणे आय बँकचे कार्य नाहीत.",
+          "solution": "प्रेस्बायोपिया होतो कारण किलियरी मासल्स आणि लेन्स लचकटपणा गमावतात, ज्यामुळे निकट वस्तूंवर लक्ष ठेवणे कठीण होते. रेटिनाची प्रकाशाच्या संवेदनशीलता वाढलेली, अतिरिक्त अश्रू उत्पादन आणि डोळ्याच्या मासल्सची अयोग्य अभिमुखता डोळ्याच्या निकट वस्तूंवर लक्ष ठेवण्याच्या क्षमतेवर सीधा परिणाम करत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
           "flag": null
@@ -573,20 +169,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks eye banks provide glasses",
         null,
-        "Believes eye banks directly treat eye conditions rather than providing tissue for transplants",
-        "Thinks eye banks cure diseases"
+        "Confuses presbyopia with other eye conditions",
+        "Mistakenly attributes presbyopia to light sensitivity",
+        "Believes tears affect vision in this way\",\"Misunderstands the role of eye muscles in presbyopia\"]},{"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The question is clear and the correct answer is well-supported. The distractors reflect common misconceptions about the role of eye banks.",
+      "critique": "The correct answer is 0, as presbyopia is caused by the loss of flexibility in the lens and weakening of ciliary muscles. The other options represent common misconceptions about eye conditions.",
       "sources": [
         {
           "document": "ncert/10/science/jesc110.pdf",
@@ -630,49 +226,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T20:16:24.449Z",
+      "generatedAt": "2026-10-28T01:43:08.749Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "A person cannot see objects beyond 1.2 m. What type of lens is required to correct this defect?",
+      "stem": "A person with myopia cannot see distant objects clearly. What type of lens is used to correct this defect?",
       "choices": [
         "Convex lens",
         "Concave lens",
-        "Bifocal lens",
+        "Cylindrical lens",
         "Plano-convex lens"
       ],
       "answerIndex": 1,
-      "solution": "A person who cannot see objects beyond 1.2 m has myopia, which is corrected by a concave lens that diverges light rays before they enter the eye. A convex lens converges light and is used for hypermetropia, not myopia. Bifocal lenses are used for presbyopia, not myopia, and plano-convex lenses are not specifically used for correcting this type of vision defect.",
+      "solution": "A person with myopia, or short-sightedness, cannot see distant objects clearly. This defect is corrected using a concave lens. A concave lens diverges the light rays before they enter the eye, allowing the eye to focus the image properly on the retina. The correct answer is a concave lens.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक व्यक्ति 1.2 मीटर से अधिक की दूरी पर स्थित वस्तुएं नहीं देख सकता। इस दोष को सुधारने के लिए किस प्रकार के लेंस की आवश्यकता होती है?",
+          "stem": "मायोपिया वाला व्यक्ति दूर के वस्तुओं को स्पष्ट रूप से नहीं देख सकता है। इस दोष को सुधारने के लिए किस प्रकार के लेंस का उपयोग किया जाता है?",
           "choices": [
             "उत्तल लेंस",
             "अवतल लेंस",
-            "द्विकेंद्रीय लेंस",
+            "बेलनाकार लेंस",
             "समतल-उत्तल लेंस"
           ],
-          "solution": "एक व्यक्ति जो 1.2 मीटर से अधिक की दूरी पर स्थित वस्तुएं नहीं देख सकता, उसके निकट दृष्टि दोष होता है, जिसे अवतल लेंस द्वारा सुधारा जाता है जो प्रकाश किरणों को आंख में प्रवेश करने से पहले बिखेर देता है। उत्तल लेंस प्रकाश किरणों को अभिसारित करता है और दीर्घ दृष्टि दोष के लिए प्रयोग किया जाता है, निकट दृष्टि दोष के लिए नहीं। द्विकेंद्रीय लेंस प्रेस्बियोपिया के लिए प्रयोग किया जाता है, निकट दृष्टि दोष के लिए नहीं, और समतल-उत्तल लेंस इस प्रकार के दृष्टि दोष के निवारण के लिए विशिष्ट रूप से प्रयोग नहीं किया जाता है।",
+          "solution": "मायोपिया, या निकट दृष्टि, वाला व्यक्ति दूर की वस्तुओं को स्पष्ट रूप से नहीं देख सकता है। इस दोष को एक अवतल लेंस के उपयोग से सुधारा जाता है। एक अवतल लेंस प्रकाश की किरणों को आंख में प्रवेश करने से पहले बिखेर देता है, जिससे आंख में पितल पर छवि सही ढंग से फोकस हो जाती है। सही उत्तर एक अवतल लेंस है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in Hindi.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard technical terms as found in Hindi-medium science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका व्यक्तीला 1.2 मीटरपेकर वस्तू दिसत नाहीत. हा दोष दुरुस्त करण्यासाठी कोणत्या लेन्सची आवश्यकता असते?",
+          "stem": "मायोपिया असलेला व्यक्ती दूरच्या वस्तू श्यामतेने पाहू शकत नाही. हा दोष दुरुस्त करण्यासाठी कोणत्या लेन्सचा वापर केला जातो?",
           "choices": [
             "उत्तल लेन्स",
             "अवतल लेन्स",
-            "बायफोकल लेन्स",
-            "प्लॅनो-उत्तल लेन्स"
+            "बेलनाकार लेन्स",
+            "समतल-उत्तल लेन्स"
           ],
-          "solution": "एका व्यक्तीला 1.2 मीटरपेकर वस्तू दिसत नाहीत तर तिला मायोपिया असतो, जो अवतल लेन्स वापरून दुरुस्त केला जातो, जो प्रकाशाच्या रशी आयामात विस्तार करतो. उत्तल लेन्स प्रकाशाच्या रशी एकत्रित करतो आणि हायपरमेट्रोपियासाठी वापरला जातो, मायोपियासाठी नाही. बायफोकल लेन्स प्रेस्बिओपियासाठी वापरले जातात, मायोपियासाठी नाही, आणि प्लॅनो-उत्तल लेन्स ह्या प्रकारच्या दृष्टी दोषाच्या दुरुस्तीसाठी विशिष्टपणे वापरले जात नाहीत.",
+          "solution": "मायोपिया, किंवा निकट दृष्टी असलेल्या व्यक्तीला दूरच्या वस्तू श्यामतेने पाहता येत नाहीत. हा दोष अवतल लेन्स वापरून दुरुस्त केला जातो. अवतल लेन्स प्रकाशाच्या किरणांना त्यापूर्वी विचलित करते, जेणेकरून डोळ्याला पातळीवर छाया तयार करण्यास मदत होते. योग्य उत्तर अवतल लेन्स आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for optical lenses and vision defects.",
+          "critique": "The translation is accurate, maintains the correct answer position, and uses appropriate Marathi technical terms for optical lenses.",
           "flag": null
         }
       },
@@ -681,10 +277,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses myopia with hypermetropia",
+        "Confuses myopia with hypermetropia, which is corrected with a convex lens",
         null,
-        "Student confuses presbyopia with myopia and thinks bifocals are needed for nearsightedness",
-        "Thinks convex lenses are used for myopia"
+        "Confuses myopia correction with astigmatism treatment",
+        "Plano-convex lens is a type of convex lens, not used for myopia"
       ],
       "solverAnswers": [
         1,
@@ -694,7 +290,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The question correctly identifies myopia (nearsightedness) and the appropriate correction with a concave lens. The author's solution and reasoning are accurate and align with standard optics principles.",
+      "critique": "The question is clear and the solution is correct. The author's reasoning for the distractors aligns with common misconceptions students might have.",
       "sources": [
         {
           "document": "ncert/10/science/jesc110.pdf",
@@ -738,918 +334,266 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T20:16:24.449Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "A beam of white light passes through a glass prism. Which colour of light bends the most?",
-      "choices": [
-        "Red",
-        "Green",
-        "Blue",
-        "Violet"
-      ],
-      "answerIndex": 3,
-      "solution": "Violet light bends the most because it has the shortest wavelength, and shorter wavelengths are refracted more when passing through a medium like glass. Red light, with the longest wavelength, bends the least. Green and blue fall in between, with blue bending more than green but less than violet.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "सफेद प्रकाश की एक किरण कांच के प्रिज्म से गुजरती है। कौन-से रंग की किरण सबसे अधिक विचलित होती है?",
-          "choices": [
-            "लाल",
-            "हरा",
-            "नीला",
-            "बैंगनी"
-          ],
-          "solution": "बैंगनी प्रकाश सबसे अधिक विचलित होता है क्योंकि इसकी तरंगदैर्ध्य सबसे कम होती है, और कांच जैसे माध्यम से गुजरते समय छोटी तरंगदैर्ध्य को अधिक अपवर्तित किया जाता है। लाल प्रकाश, जिसकी सबसे लंबी तरंगदैर्ध्य होती है, सबसे कम विचलित होता है। हरा और नीला इसके बीच में होते हैं, जिसमें नीला हरे की तुलना में अधिक विचलित होता है लेकिन बैंगनी की तुलना में कम।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "सफेद प्रकाशाचा किरण ग्लास प्रिझममधून जातो. कोणत्या रंगाचा प्रकाश सर्वात जास्त वाकवला जातो?",
-          "choices": [
-            "लाल",
-            "हिरवा",
-            "निळा",
-            "बैगनी"
-          ],
-          "solution": "बैगनी प्रकाश सर्वात जास्त वाकवला जातो कारण त्याचा सर्वात लहान तरंगलांबी असतो, आणि लहान तरंगलांबी असलेल्या प्रकाशाला काच अशा माध्यमातून जाताना जास्त वाकवले जाते. लाल प्रकाशाची सर्वात मोठी तरंगलांबी असल्यामुळे तो सर्वात कमी वाकवला जातो. हिरवा आणि निळा यांच्यामध्ये निळा हिरव्यापेक्षा जास्त वाकवला जातो पण बैगनीपेक्षा कमी.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the scientific terminology used in Marathi textbooks, and preserves the logical structure of the question and solution.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses red with the most bent colour",
-        "Confuses green with the most bent colour",
-        "Confuses blue with the most bent colour",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies violet as the color that bends the most due to its shortest wavelength. The reasoning aligns with the physical principle of dispersion in prisms.",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 7,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.4 DISPERSION OF WHITE LIGHT BY A GL10.4 DISPERSION OF WHITE LIGHT BY A GLASS PRISM10.4 DISPERSION OF WHITE LIGHT BY A GLASS PRISM",
-            "Activity 10.2"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 8,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.5 ATMOSPHERIC REFRACTION"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 9,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.5 ATMOSPHERIC REFRACTION"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 10,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 11,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "10.6.1 Tyndall Effect"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T20:16:24.449Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which part of the eye controls the amount of light entering the eye?",
-      "choices": [
-        "Cornea",
-        "Retina",
-        "Pupil",
-        "Iris"
-      ],
-      "answerIndex": 3,
-      "solution": "The iris is a dark muscular diaphragm that controls the size of the pupil, which in turn regulates the amount of light entering the eye. The cornea allows light to enter but does not control it. The retina is where the image is formed, and the pupil is the opening through which light enters, but it is the iris that controls it. The pupil's size changes based on the amount of light, which is controlled by the iris.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "आंख का कौन-सा भाग आंख में प्रवेश करने वाले प्रकाश की मात्रा को नियंत्रित करता है?",
-          "choices": [
-            "कॉर्निया",
-            "रेटिना",
-            "पुतली",
-            "काला भाग"
-          ],
-          "solution": "काला भाग एक गहरा मांसल डायफ्राम होता है जो पुतली के आकार को नियंत्रित करता है, जो आंख में प्रवेश करने वाले प्रकाश की मात्रा को नियंत्रित करता है। कॉर्निया प्रकाश के प्रवेश की अनुमति देती है लेकिन इसका नियंत्रण नहीं करती। रेटिना वह स्थान होता है जहां छवि बनती है, और पुतली प्रकाश के प्रवेश के लिए छिद्र होती है, लेकिन इसका नियंत्रण काला भाग करता है। पुतली का आकार प्रकाश की मात्रा पर निर्भर करता है, जो काला भाग द्वारा नियंत्रित होता है।",
-          "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the English content with appropriate biological terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आंखीचा कोणता भाग आंखीत प्रवेश करणाऱ्या प्रकाशाच्या प्रमाणाचे नियंत्रण करतो?",
-          "choices": [
-            "कॉर्निया",
-            "रेटिना",
-            "कॉर्निया",
-            "आयरिस"
-          ],
-          "solution": "आयरिस हा गांभीर्यपूर्ण मांसल डायफ्राम असून तो पुपिलच्या आकाराचे नियंत्रण करतो, जे आंखीत प्रवेश करणाऱ्या प्रकाशाच्या प्रमाणाचे नियंत्रण करते. कॉर्निया प्रकाश प्रवेश करते परंतु तो नियंत्रित करत नाही. रेटिना हे छायाचित्र तयार होते. पुपिल हा प्रकाश प्रवेश करणारा छिद्र असून तो आयरिस द्वारे नियंत्रित केला जातो. पुपिलचा आकार प्रकाशाच्या प्रमाणावर अवलंबून असतो, जो आयरिस द्वारे नियंत्रित केला जातो.",
-          "imageAlt": null,
-          "critique": "Options 1 and 3 are identical (कॉर्निया), which is a critical error. This makes the question invalid as it creates confusion between options.",
-          "flag": "translation critique: not one answer at the same position; a distractor no longer wrong"
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the cornea with the part that controls light",
-        "Mistakenly thinks the retina controls light entry",
-        "Thinks the pupil itself controls light entry instead of the iris",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies the iris as the structure that controls the amount of light entering the eye by regulating the size of the pupil. The reasoning aligns with standard biology knowledge.",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.1.1 Power of Accommodation"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 2,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.2 DEFECTS OF VISION AND THEIR CORRECTION"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T20:16:24.449Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the main reason for the twinkling of stars?",
-      "choices": [
-        "The stars are very far away",
-        "The stars are moving in space",
-        "Atmospheric refraction causes fluctuations in the light",
-        "The stars have a varying brightness"
-      ],
-      "answerIndex": 2,
-      "solution": "The main reason for the twinkling of stars is that atmospheric refraction causes fluctuations in the light. As starlight travels through the Earth's atmosphere, it passes through layers of air with varying refractive indices. This causes the light to bend and the apparent position of the star to shift slightly, leading to the twinkling effect. Stars are not moving in space, nor do they have varying brightness, and their distance from Earth is not the direct cause of twinkling.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "तारों के टिमटिमाने का मुख्य कारण क्या है?",
-          "choices": [
-            "तारे बहुत दूर हैं",
-            "तारे अंतरिक्ष में गतिमान हैं",
-            "वातावरणीय अपवर्तन प्रकाश में उतार-चढ़ाव के कारण होता है",
-            "तारों की चमक बदलती रहती है"
-          ],
-          "solution": "तारों के टिमटिमाने का मुख्य कारण वातावरणीय अपवर्तन के कारण प्रकाश में उतार-चढ़ाव है। जब तारे के प्रकाश पृथ्वी के वातावरण से गुजरता है, तो यह अलग-अलग अपवर्तन के सूचकांक वाली हवा की परतों से गुजरता है। इससे प्रकाश विचलित हो जाता है और तारे की दिखाई देने वाली स्थिति थोड़ी बदल जाती है, जिसके कारण टिमटिमाने की घटना होती है। तारे अंतरिक्ष में गतिमान नहीं हैं, न ही उनकी चमक बदलती रहती है, और पृथ्वी से उनकी दूरी टिमटिमाने का सीधा कारण नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "तारांच्या झिरोकण्याचे मुख्य कारण काय आहे?",
-          "choices": [
-            "तारा खूप दूर आहेत",
-            "तारे अंतरिक्षात गतिमान आहेत",
-            "वातावरणीय अपवर्तनामुळे प्रकाशात उतार-आवर्तन होते",
-            "तारांची चमक बदलत रहते"
-          ],
-          "solution": "तारांच्या झिरोकण्याचे मुख्य कारण वातावरणीय अपवर्तनामुळे प्रकाशात उतार-आवर्तन होणे आहे. ताराप्रकाश भूमीच्या वातावरणातून जाताना विविध अपवर्तक विधी असलेल्या हवेच्या थरांतून जातो. ह्यामुळे प्रकाश वाकतो आणि ताराच्या असलेल्या स्थानात थोडाफार बदल होतो, ज्यामुळे झिरोकण्याचा परिणाम होतो. तारा अंतरिक्षात गतिमान नाहीत, आणि त्यांची चमक बदलत नाही, आणि त्यांची भूमीपासून अंतर झिरोकण्याचे थेट कारण नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "The student might think the distance of the stars causes their twinkling.",
-        "The student might believe that stars move in space.",
-        null,
-        "The student might think stars have varying brightness."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies atmospheric refraction as the cause of star twinkling, and the reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 7,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.4 DISPERSION OF WHITE LIGHT BY A GL10.4 DISPERSION OF WHITE LIGHT BY A GLASS PRISM10.4 DISPERSION OF WHITE LIGHT BY A GLASS PRISM",
-            "Activity 10.2"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 8,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.5 ATMOSPHERIC REFRACTION"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 9,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.5 ATMOSPHERIC REFRACTION"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 10,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 11,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "10.6.1 Tyndall Effect"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T20:16:24.449Z",
+      "generatedAt": "2026-10-28T01:43:08.749Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "A student observes a star at night and notices that it appears to flicker. What is the most likely reason for this phenomenon?",
+      "stem": "A person can see nearby objects clearly but not distant objects. What is the most likely cause of this condition?",
       "choices": [
-        "The star is moving away from Earth",
-        "The star is emitting light of varying intensity",
-        "Atmospheric refraction causes the starlight to bend",
-        "The star is actually a planet"
-      ],
-      "answerIndex": 2,
-      "solution": "The most likely reason for the flickering of a star is that atmospheric refraction causes the starlight to bend. As the starlight passes through the Earth's atmosphere, it undergoes continuous refraction due to the varying refractive index of air. This causes the apparent position of the star to fluctuate, making it appear to flicker. Stars are not moving away from Earth or emitting varying intensity of light, and the student would not confuse a star with a planet in this context.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र रात में एक तारा को देखता है और ध्यान देता है कि वह झिलमिलाता हुआ दिखाई देता है। इस घटना के लिए सबसे संभावित कारण क्या है?",
-          "choices": [
-            "तारा पृथ्वी से दूर जा रहा है",
-            "तारा असमान तीव्रता के प्रकाश उत्सर्जित कर रहा है",
-            "वातावरणीय अपवर्तन तारा प्रकाश के विचलन के कारण होता है",
-            "तारा वास्तव में एक ग्रह है"
-          ],
-          "solution": "तारे के झिलमिलाने के लिए सबसे संभावित कारण वातावरणीय अपवर्तन के कारण तारा प्रकाश के विचलन होता है। जब तारा प्रकाश पृथ्वी के वातावरण से गुजरता है, तो वायु के असमान अपवर्तनांक के कारण लगातार अपवर्तन होता है। इससे तारे की दृष्टि स्थिति बदलती रहती है, जिसके कारण वह झिलमिलाता हुआ दिखाई देता है। तारे पृथ्वी से दूर नहीं जा रहे हैं या असमान तीव्रता के प्रकाश उत्सर्जित नहीं कर रहे हैं, और इस संदर्भ में छात्र एक तारे को ग्रह से भ्रमित नहीं कर सकता।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English content, with appropriate scientific terminology used in a way that aligns with Indian curriculum standards.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थीने रात्री एका ताराचे निरीक्षण केले आणि तिच्या ताराचे झपाटा असल्याचे लक्षात आले. हा घटना होण्याचे सर्वात शक्य कारण काय आहे?",
-          "choices": [
-            "तारा पृथ्वीपासून दूर जात आहे",
-            "तारा विविध तीव्रतेचे प्रकाश उत्सर्जित करत आहे",
-            "वातावरणीय अपवर्तन ताराप्रकाशाला वाकवते",
-            "तारा खरोखर ग्रह आहे"
-          ],
-          "solution": "ताराच्या झपाट्याचे सर्वात शक्य कारण वातावरणीय अपवर्तन आहे जे ताराप्रकाशाला वाकवते. जेव्हा ताराप्रकाश पृथ्वीच्या वातावरणातून जातो तेव्हा वायूच्या विविध अपवर्तक गुणांमुळे त्याचे अपवर्तन सतत होत असते. हे ताराच्या अंदाजित स्थानात फेरफार करते, ज्यामुळे ती झपाटा असल्याचे दिसते. तारा पृथ्वीपासून दूर जात नसतात किंवा विविध तीव्रतेचे प्रकाश उत्सर्जित करत नसतात, आणि या संदर्भात विद्यार्थी ताराला ग्रहाशी चुकून ओळखू शकत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "The student might believe that the flickering is due to the star's movement.",
-        "The student might think the star's light intensity varies.",
-        null,
-        "The student might not understand the difference between stars and planets."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies atmospheric refraction as the cause of stellar flicker. The reasoning for the other options aligns with common misconceptions about stars and light.",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 7,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.4 DISPERSION OF WHITE LIGHT BY A GL10.4 DISPERSION OF WHITE LIGHT BY A GLASS PRISM10.4 DISPERSION OF WHITE LIGHT BY A GLASS PRISM",
-            "Activity 10.2"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 8,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.5 ATMOSPHERIC REFRACTION"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 9,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.5 ATMOSPHERIC REFRACTION"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 10,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 11,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "10.6.1 Tyndall Effect"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T20:16:24.449Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A student observes that the sky appears dark to an astronaut in space. Which of the following best explains this phenomenon?",
-      "choices": [
-        "The astronaut is in a vacuum",
-        "There is no atmosphere to scatter the light",
-        "The astronaut is not looking at the Sun",
-        "The astronaut is in the shadow of the Earth"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct explanation is that there is no atmosphere to scatter the light. Without an atmosphere, sunlight does not get scattered in space, so the sky appears dark. A vacuum alone does not explain the darkness, as it is the lack of scattering that matters. Not looking at the Sun or being in Earth's shadow may affect visibility but do not explain the overall darkness of the sky.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र देखता है कि अंतरिक्ष में एक अंतरिक्ष यात्री के लिए आकाश अंधेरा दिखाई देता है। निम्नलिखित में से कौन-सा इस घटना की बेस्ट व्याख्या करता है?",
-          "choices": [
-            "अंतरिक्ष यात्री एक निर्वात में है",
-            "कोई वातावरण नहीं है जो प्रकाश के फैलाव के लिए जिम्मेदार है",
-            "अंतरिक्ष यात्री सूर्य की ओर नहीं देख रहा है",
-            "अंतरिक्ष यात्री पृथ्वी के छाया में है"
-          ],
-          "solution": "सही व्याख्या यह है कि कोई वातावरण नहीं है जो प्रकाश के फैलाव के लिए जिम्मेदार है। बिना वातावरण के, अंतरिक्ष में सूर्य के प्रकाश का फैलाव नहीं होता, इसलिए आकाश अंधेरा दिखाई देता है। निर्वात अकेला अंधेरे की व्याख्या नहीं करता, क्योंकि महत्वपूर्ण बात फैलाव की कमी है। सूर्य की ओर न देखना या पृथ्वी की छाया में होना दृश्यता को प्रभावित कर सकता है लेकिन आकाश के समग्र अंधेरे की व्याख्या नहीं कर सकता।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थ्याने अंतरिक्षात असलेल्या अंतरिक्ष यात्रीला आकाश गडद दिसत असल्याचे निरीक्षण केले. खालीलपैकी कोणते सर्वात चांगले या घटनेचे विवरण देते?",
-          "choices": [
-            "अंतरिक्ष यात्री एका निर्वातात आहे",
-            "प्रकाश पसरविण्यासाठी कोणताही वातावरण नाही",
-            "अंतरिक्ष यात्री सूर्याकडे पाहत नाही",
-            "अंतरिक्ष यात्री पृथ्वीच्या छायेत आहे"
-          ],
-          "solution": "योग्य स्पष्टीकरण म्हणजे प्रकाश पसरविण्यासाठी कोणताही वातावरण नाही. अंतरिक्षात वातावरण नसल्यामुळे सूर्याचा प्रकाश अंतरिक्षात पसरत नाही, त्यामुळे आकाश गडद दिसतो. निर्वात एकटा गडदपणाचे स्पष्टीकरण नाही, कारण महत्वाचे असे की प्रकाश पसरत नाही. सूर्याकडे पाहणे नाही किंवा पृथ्वीच्या छायेत असणे दृश्यतेवर परिणाम करू शकते, परंतु आकाशाच्या एकूण गडदपणाचे विवरण देत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Belief that a vacuum blocks all light, rather than understanding that light can travel through a vacuum but lacks atmosphere to scatter it",
-        null,
-        "Confuses the reason for the dark sky",
-        "Misinterprets the position of the astronaut"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the absence of an atmosphere in space means there is no scattering of light, leading to a dark sky. The other options represent common misconceptions about the role of atmosphere, light direction, and position in space.",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 7,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.4 DISPERSION OF WHITE LIGHT BY A GL10.4 DISPERSION OF WHITE LIGHT BY A GLASS PRISM10.4 DISPERSION OF WHITE LIGHT BY A GLASS PRISM",
-            "Activity 10.2"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 8,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.5 ATMOSPHERIC REFRACTION"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 9,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.5 ATMOSPHERIC REFRACTION"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 10,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 11,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "10.6.1 Tyndall Effect"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T20:16:24.449Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why does the sky appear blue to us?",
-      "choices": [
-        "Blue light is absorbed by the atmosphere",
-        "Blue light is scattered more by the atmosphere",
-        "Blue light is reflected by the atmosphere",
-        "Blue light is emitted by the atmosphere"
-      ],
-      "answerIndex": 1,
-      "solution": "The sky appears blue because shorter wavelengths of light, such as blue and violet, are scattered more by the atmosphere. While violet is scattered even more than blue, the human eye is more sensitive to blue light. This is why the sky appears blue rather than violet. The other options are incorrect because blue light is not absorbed, reflected, or emitted by the atmosphere in this context.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "आकाश हमें नीला क्यों दिखाई देता है?",
-          "choices": [
-            "वातावरण द्वारा नीला प्रकाश अवशोषित कर लिया जाता है",
-            "वातावरण द्वारा नीला प्रकाश अधिक बिखर जाता है",
-            "वातावरण द्वारा नीला प्रकाश परावर्तित कर दिया जाता है",
-            "वातावरण द्वारा नीला प्रकाश उत्सर्जित कर दिया जाता है"
-          ],
-          "solution": "आकाश नीला दिखाई देता है क्योंकि वातावरण द्वारा छोटी तरंगदैर्घ्य वाले प्रकाश, जैसे कि नीला और बैंगनी, अधिक बिखर जाते हैं। बैंगनी प्रकाश की तुलना में नीले प्रकाश के बिखराव के अधिक होने के बावजूद मनुष्य की आंख नीले प्रकाश के प्रति अधिक संवेदनशील होती है। इसी कारण आकाश बैंगनी के बजाय नीला दिखाई देता है। अन्य विकल्प गलत हैं क्योंकि इस संदर्भ में नीला प्रकाश वातावरण द्वारा अवशोषित, परावर्तित या उत्सर्जित नहीं किया जाता है।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आकाश आम्हाला निळा का दिसतो?",
-          "choices": [
-            "वातावरणाद्वारे निळे प्रकाश शोषला जातो",
-            "वातावरणाद्वारे निळे प्रकाश जास्त बिखेरला जातो",
-            "वातावरणाद्वारे निळे प्रकाश परावर्तित केला जातो",
-            "वातावरणाद्वारे निळे प्रकाश उत्सर्जित केला जातो"
-          ],
-          "solution": "आकाश निळा दिसतो कारण लहान तरंगलांबीचा प्रकाश, निळा आणि बैंगनी, वातावरणाद्वारे जास्त बिखेरला जातो. बैंगनी निळ्यापेक्षा जास्त बिखेरला जातो, परंतु मानवी डोळ्यांची निळ्या प्रकाशाच्या प्रतिसादाची अधिक असते. त्यामुळे आकाश बैंगनीऐवजी निळा दिसतो. इतर विकल्प अयोग्य आहेत कारण वातावरणाद्वारे निळा प्रकाश शोषला, परावर्तित केला किंवा उत्सर्जित केला जात नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Mistakenly believes that blue light is absorbed by the atmosphere",
-        null,
-        "Thinks blue light is reflected rather than scattered",
-        "Incorrectly assumes that the atmosphere emits blue light"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that Rayleigh scattering causes blue light to be scattered more by the atmosphere, and the reasoning aligns with the scientific explanation. The distractors represent common misconceptions about absorption, reflection, and emission of light.",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.1.1 Power of Accommodation"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 2,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.2 DEFECTS OF VISION AND THEIR CORRECTION"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T20:16:24.449Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "What is the primary function of the ciliary muscles in the eye?",
-      "choices": [
-        "To control the amount of light entering the eye",
-        "To change the shape of the lens",
-        "To focus light on the retina",
-        "To maintain the shape of the eye"
-      ],
-      "answerIndex": 1,
-      "solution": "The ciliary muscles adjust the shape of the lens to allow the eye to focus on objects at varying distances, making the second option correct. The amount of light entering the eye is controlled by the pupil, not the ciliary muscles, so the first option is incorrect. Focusing light on the retina is the role of the lens, not the ciliary muscles, making the third option incorrect. The shape of the eye is maintained by other structures, such as the sclera, so the fourth option is also incorrect.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "आंख में लेंस के आकार को बदलने के लिए किसका उपयोग किया जाता है?",
-          "choices": [
-            "आंख में प्रवेश करने वाले प्रकाश की मात्रा को नियंत्रित करना",
-            "लेंस के आकार को बदलना",
-            "रेटिना पर प्रकाश को फोकस करना",
-            "आंख के आकार को बनाए रखना"
-          ],
-          "solution": "किरणी पेशियां लेंस के आकार को समायोजित करती हैं ताकि आंख विभिन्न दूरियों पर वस्तुओं पर ध्यान केंद्रित कर सके, जिससे दूसरा विकल्प सही हो जाता है। आंख में प्रवेश करने वाले प्रकाश की मात्रा आंख के छिद्र द्वारा नियंत्रित की जाती है, न कि किरणी पेशियों द्वारा, जिससे पहला विकल्प गलत हो जाता है। रेटिना पर प्रकाश को फोकस करना लेंस की भूमिका है, न कि किरणी पेशियों द्वारा, जिससे तीसरा विकल्प गलत हो जाता है। आंख के आकार को बनाए रखने के लिए अन्य संरचनाएं, जैसे कि स्क्लेरा, उत्तरदायी होती हैं, जिससे चौथा विकल्प भी गलत हो जाता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in a Hindi-medium biology context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "आंखीतील किलियरी मासल्सचे प्राथमिक कार्य काय आहे?",
-          "choices": [
-            "आंखीत प्रवेश करणाऱ्या प्रकाशाचे प्रमाण नियंत्रित करणे",
-            "लेंसाचे आकार बदलणे",
-            "पार्श्वदृष्टीवर प्रकाश फोकस करणे",
-            "आंखीचा आकार ठेवणे"
-          ],
-          "solution": "किलियरी मासल्स लेंसाचा आकार बदलतात जेणेकरून आंखी विविध अंतरांवर वस्तूंवर लक्ष ठेवू शकेल, ज्यामुळे दुसरा विकल्प बरोबर ठरतो. प्रकाशाचे प्रमाण नियंत्रित करणे हे पुतळ्याचे कार्य आहे, न की किलियरी मासल्स, ज्यामुळे पहिला विकल्प चुकीचा ठरतो. पार्श्वदृष्टीवर प्रकाश फोकस करणे हे लेंसाचे कार्य आहे, न की किलियरी मासल्स, ज्यामुळे तिसरा विकल्प चुकीचा ठरतो. आंखीचा आकार ठेवणे हे इतर संरचनां, जसे की स्क्लेरा, द्वारे केले जाते, ज्यामुळे चौथा विकल्प देखील चुकीचा ठरतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for eye anatomy.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the function of the ciliary muscles with the pupil",
-        null,
-        "Believes ciliary muscles directly focus light rather than adjusting the lens shape",
-        "Thinks the ciliary muscles focus light on the retina, but the lens is responsible for that."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that ciliary muscles adjust the lens shape for accommodation, and the reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 3,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.2 DEFECTS OF VISION AND THEIR CORRECTION"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 4,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.2 DEFECTS OF VISION AND THEIR CORRECTION"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 5,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.3 REFRACTION OF LIGHT THROUGH A PRISM"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 6,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.4 DISPERSION OF WHITE LIGHT BY A GL10.4 DISPERSION OF WHITE LIGHT BY A GLASS PRISM10.4 DISPERSION OF WHITE LIGHT BY A GLASS PRISM"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T20:16:24.449Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "A beam of white light is split into its component colours by a prism. A second prism is placed in an inverted position. What happens to the beam of light after it passes through both prisms?",
-      "choices": [
-        "It becomes a beam of white light again",
-        "It splits into more colours",
-        "It disappears",
-        "It remains as a spectrum"
+        "Myopia",
+        "Hypermetropia",
+        "Cataract",
+        "Presbyopia"
       ],
       "answerIndex": 0,
-      "solution": "The second prism reverses the dispersion caused by the first prism, recombining the separated colors back into white light. This occurs because each color is bent back to its original path, canceling out the effect of the first prism. Other options are incorrect because the light does not split further, vanish, or stay as a spectrum.",
+      "solution": "Myopia, or near-sightedness, is the condition where a person can see nearby objects clearly but cannot see distant objects distinctly. This occurs because the image of a distant object is formed in front of the retina instead of on it. Hypermetropia is the opposite, where distant objects are clear but nearby objects are not. Cataract and presbyopia are different conditions related to aging and lens clouding. Hence, the correct answer is Myopia.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक सफेद प्रकाश की किरण एक प्रिज्म द्वारा अपने घटक रंगों में विभक्त हो जाती है। दूसरा प्रिज्म उल्टे स्थान पर रखा जाता है। जब प्रकाश की किरण दोनों प्रिज्मों से गुजरती है तो इसके साथ क्या होता है?",
+          "stem": "एक व्यक्ति निकट के वस्तुओं को स्पष्ट रूप से देख सकता है लेकिन दूर की वस्तुओं को नहीं देख सकता। इस स्थिति के लिए सबसे संभावित कारण क्या है?",
           "choices": [
-            "यह एक सफेद प्रकाश की किरण बन जाती है",
-            "यह अधिक रंगों में विभक्त हो जाती है",
-            "यह लुप्त हो जाती है",
-            "यह एक स्पेक्ट्रम के रूप में रह जाती है"
+            "मायोपिया",
+            "हाइपरमेट्रोपिया",
+            "कैटरैक्ट",
+            "प्रेसबायोपिया"
           ],
-          "solution": "दूसरा प्रिज्म पहले प्रिज्म द्वारा हुए विक्षेपण को वापस कर देता है, अलग-अलग रंगों को फिर से सफेद प्रकाश में जोड़ देता है। ऐसा इसलिए होता है क्योंकि प्रत्येक रंग अपने मूल मार्ग पर वापस झुक जाता है, पहले प्रिज्म के प्रभाव को रद्द कर देता है। अन्य विकल्प गलत हैं क्योंकि प्रकाश आगे विभक्त नहीं होता, लुप्त नहीं होता या स्पेक्ट्रम के रूप में नहीं रहता।",
-          "imageAlt": "दो प्रिज्म एक के बाद एक रखे गए हैं, दूसरा प्रिज्म उल्टा है। पहला प्रिज्म सफेद प्रकाश को एक स्पेक्ट्रम में विभक्त कर देता है, और दूसरा प्रिज्म स्पेक्ट्रम को फिर से सफेद प्रकाश में जोड़ देता है।",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "solution": "मायोपिया, या निकट दृष्टि, वह स्थिति है जिसमें एक व्यक्ति निकट की वस्तुएं स्पष्ट रूप से देख सकता है लेकिन दूर की वस्तुओं को स्पष्ट रूप से नहीं देख सकता। इसके कारण दूर की वस्तु की छाया रेटिना के पहले बन जाती है। हाइपरमेट्रोपिया विपरीत है, जिसमें दूर की वस्तुएं स्पष्ट होती हैं लेकिन निकट की वस्तुएं नहीं। कैटरैक्ट और प्रेसबायोपिया आयु से संबंधित अलग-अलग स्थितियां हैं। इसलिए, सही उत्तर मायोपिया है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi medical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एक श्वेत प्रकाशाच्या किरणाचा एका प्रिझममुळे त्याचे घटक रंगांमध्ये विभाजन होते. दुसरा प्रिझम उलट ठेवला जातो. प्रकाशाचा किरण दोन्ही प्रिझममधून जाताना काय होते?",
+          "stem": "एका व्यक्तीला जवळच्या वस्तू चांगल्या प्रकारे दिसतात पण दूरच्या वस्तू दिसत नाहीत. ह्या स्थितीचे सर्वात शक्य कारण काय आहे?",
           "choices": [
-            "तो श्वेत प्रकाशाचा किरण बनतो",
-            "तो अधिक रंगांमध्ये विभाजित होतो",
-            "तो अदृश्य होतो",
-            "तो स्पेक्ट्रम रूपात राहतो"
+            "मायोपिया",
+            "हायपरमेट्रोपिया",
+            "कॅटॅरॅक्ट",
+            "प्रेस्बिओपिया"
           ],
-          "solution": "दुसरा प्रिझम पहिल्या प्रिझममुळे झालेल्या विच्छेदनाचा पुनर्मुख करतो, विभक्त रंगांना पुन्हा श्वेत प्रकाशात जोडतो. हे होते कारण प्रत्येक रंग मूळ मार्गावर परत वळतो, पहिल्या प्रिझमच्या परिणामाचे निरसन होते. इतर विकल्प अयोग्य आहेत कारण प्रकाश अधिक विभाजित होत नाही, अदृश्य होत नाही, किंवा स्पेक्ट्रम रूपात राहत नाही.",
-          "imageAlt": "दोन प्रिझम अनुक्रमाने ठेवले गेले आहेत, ज्यापैकी दुसरा प्रिझम उलट आहे. पहिल्या प्रिझममुळे श्वेत प्रकाशाचा स्पेक्ट्रम होतो, आणि दुसर्या प्रिझममुळे स्पेक्ट्रम पुन्हा श्वेत प्रकाशात जोडला जातो.",
-          "critique": "The translation is accurate, maintains the scientific terminology used in Marathi textbooks, and preserves the logical structure of the question and solution.",
+          "solution": "मायोपिया, किंवा निकट दृष्टीची अवस्था, ही अशी अवस्था आहे जेथे एका व्यक्तीला जवळच्या वस्तू चांगल्या प्रकारे दिसतात पण दूरच्या वस्तू निश्चितपणे दिसत नाहीत. हे त्यामुळे होते कारण दूरच्या वस्तूचे चित्र रेटिनावर नसून तिच्या आधी तयार होते. हायपरमेट्रोपिया हे उलट आहे, जेथे दूरच्या वस्तू चांगल्या प्रकारे दिसतात पण जवळच्या वस्तू नाहीत. कॅटॅरॅक्ट आणि प्रेस्बिओपिया हे वयाच्या अवस्थेशी आणि लेंसाच्या घामट्याशी संबंधित वेगळ्या अवस्था आहेत. म्हणूनच योग्य उत्तर मायोपिया आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "Two prisms are placed in sequence, with the second prism inverted. The first prism splits white light into a spectrum, and the second prism recombines the spectrum back into white light.",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "prism",
-              "x": 40,
-              "y": 30,
-              "size": 30,
-              "labels": [
-                "whiteLight",
-                "spectrum"
-              ]
-            },
-            {
-              "part": "prism",
-              "x": 70,
-              "y": 30,
-              "size": 30,
-              "labels": [
-                "spectrum",
-                "whiteLight"
-              ],
-              "flip": true
-            }
-          ],
-          "arrows": [
-            {
-              "from": [
-                40,
-                30
-              ],
-              "to": [
-                50,
-                30
-              ],
-              "label": "spectrum"
-            },
-            {
-              "from": [
-                70,
-                30
-              ],
-              "to": [
-                80,
-                30
-              ],
-              "label": "whiteLight"
-            }
-          ],
-          "texts": [
-            {
-              "x": 55,
-              "y": 10,
-              "label": "prisms"
-            }
-          ]
-        },
-        "labels": {
-          "whiteLight": {
-            "en": "white light",
-            "hi": "सफेद प्रकाश",
-            "mr": "श्वेत प्रकाश"
-          },
-          "spectrum": {
-            "en": "spectrum",
-            "hi": "स्पेक्ट्रम",
-            "mr": "स्पेक्ट्रम"
-          },
-          "prisms": {
-            "en": "prisms",
-            "hi": "प्रिज्म",
-            "mr": "प्रिझम"
-          }
-        }
-      },
-      "needsFigure": true,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
         null,
-        "Believes the light will split into more colours",
-        "Misunderstands the concept of recombination",
-        "Confuses the effect of the second prism"
+        "confuses hypermetropia with the condition described",
+        "confuses cataract with the condition described",
+        "confuses presbyopia with the condition described"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is accurate and aligns with the correct answer. The reasoning correctly identifies myopia as the condition where distant objects are not seen clearly, while nearby objects are. The distractors are all plausible misconceptions that students might have.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc110.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: The Human Eye and the Colourful World"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc110.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: The Human Eye and the Colourful World",
+            "10.1.1 Power of Accommodation"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc110.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 10: The Human Eye and the Colourful World",
+            "10.2 DEFECTS OF VISION AND THEIR CORRECTION"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T01:43:08.749Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student is unable to see objects clearly beyond a distance of 1.2 m. What type of lens should be used to correct this defect?",
+      "choices": [
+        "Convex lens",
+        "Concave lens",
+        "Cylindrical lens",
+        "Bifocal lens"
+      ],
+      "answerIndex": 1,
+      "solution": "A concave lens is used to correct myopia, a condition where distant objects appear blurry. This lens diverges light rays before they enter the eye, allowing the image to focus correctly on the retina. A convex lens is used for hyperopia, a cylindrical lens for astigmatism, and a bifocal lens for multiple vision needs.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र अपने 1.2 मीटर से अधिक की दूरी पर वस्तुओं को स्पष्ट रूप से देख नहीं पाता है। इस दोष को सुधारने के लिए किस प्रकार के लेंस का उपयोग किया जाना चाहिए?",
+          "choices": [
+            "उत्तल लेंस",
+            "अवतल लेंस",
+            "बेलनाकार लेंस",
+            "द्विकेंद्रीय लेंस"
+          ],
+          "solution": "मायोपिया के दोष को सुधारने के लिए अवतल लेंस का उपयोग किया जाता है, जिसमें दूर की वस्तुएं अस्पष्ट दिखाई देती हैं। इस लेंस द्वारा प्रकाश किरणों को आंख में प्रवेश करने से पहले बिखेर दिया जाता है, जिससे छवि रेटिना पर सही तरह से फोकस हो जाती है। उत्तल लेंस हाइपरोपिया के लिए, बेलनाकार लेंस एस्टिगमेटिज्म के लिए और द्विकेंद्रीय लेंस बहु-दृष्टि आवश्यकताओं के लिए उपयोग किया जाता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याला 1.2 मीटरपेक्षा जास्त अंतरावरच्या वस्तू चांगल्या प्रकारे दिसत नाहीत. हा दोष दुरुस्त करण्यासाठी कोणत्या लेन्सचा वापर केला पाहिजे?",
+          "choices": [
+            "उत्तल लेन्स",
+            "अवतल लेन्स",
+            "बेलनाकार लेन्स",
+            "द्विकेंद्रीय लेन्स"
+          ],
+          "solution": "मायोपियाच्या अवस्थेत दूरच्या वस्तू अस्पष्ट दिसतात. हा दोष दुरुस्त करण्यासाठी अवतल लेन्स वापरला जातो. हा लेन्स आंखात प्रवेश करण्यापूर्वी प्रकाशाच्या किरणांना विवर्तित करतो, जेणेकरून छाया रेटिनावर योग्यरित्या बनते. हायपरोपियासाठी उत्तल लेन्स वापरला जातो, अस्टिगमाटिझमसाठी बेलनाकार लेन्स आणि बहुदृष्टी आवश्यकतांसाठी द्विकेंद्रीय लेन्स वापरला जातो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses the lens for hypermetropia",
+        null,
+        "Chooses a lens for astigmatism",
+        "Chooses a lens for presbyopia"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly identifies myopia (nearsightedness) and correctly states that a concave lens is used to correct it. The reasoning for the other options aligns with common misconceptions about other vision defects.",
+      "sources": [
+        {
+          "document": "ncert/10/science/jesc110.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 10: The Human Eye and the Colourful World",
+            "10.2 DEFECTS OF VISION AND THEIR CORRECTION"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc110.pdf",
+          "ordinal": 4,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 10: The Human Eye and the Colourful World",
+            "10.2 DEFECTS OF VISION AND THEIR CORRECTION"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc110.pdf",
+          "ordinal": 5,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 10: The Human Eye and the Colourful World",
+            "10.3 REFRACTION OF LIGHT THROUGH A PRISM"
+          ]
+        },
+        {
+          "document": "ncert/10/science/jesc110.pdf",
+          "ordinal": 6,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 10: The Human Eye and the Colourful World",
+            "10.4 DISPERSION OF WHITE LIGHT BY A GL10.4 DISPERSION OF WHITE LIGHT BY A GLASS PRISM10.4 DISPERSION OF WHITE LIGHT BY A GLASS PRISM"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T01:43:08.749Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why does the sky appear blue to an observer on Earth but dark to an astronaut in space?",
+      "choices": [
+        "Blue light scatters more in the atmosphere",
+        "Blue light is absorbed by the atmosphere",
+        "Blue light is reflected by the atmosphere",
+        "Blue light is blocked by the atmosphere"
+      ],
+      "answerIndex": 0,
+      "solution": "The blue colour of the sky is due to Rayleigh scattering, where shorter wavelengths of light (like blue) scatter more in the atmosphere. In space, there is no atmosphere to scatter the light, so the sky appears dark. The other options incorrectly describe the role of the atmosphere. Hence, the correct answer is 'Blue light scatters more in the atmosphere'.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पृथ्वी पर एक अवलोकक के लिए आकाश नीला दिखाई देता है लेकिन अंतरिक्ष में एक अंतरिक्ष यात्री के लिए अंधेरा क्यों दिखाई देता है?",
+          "choices": [
+            "नीला प्रकाश वातावरण में अधिक बिखरता है",
+            "नीला प्रकाश वातावरण द्वारा अवशोषित कर लिया जाता है",
+            "नीला प्रकाश वातावरण द्वारा परावर्तित कर दिया जाता है",
+            "नीला प्रकाश वातावरण द्वारा अवरुद्ध कर दिया जाता है"
+          ],
+          "solution": "आकाश का नीला रंग रे ले बी सैटरिंग के कारण होता है, जहां हल्के तरंग दैर्ध्य के प्रकाश (जैसे नीला) वातावरण में अधिक बिखरता है। अंतरिक्ष में कोई वातावरण नहीं होता है जो प्रकाश को बिखराए, इसलिए आकाश अंधेरा दिखाई देता है। अन्य विकल्प वातावरण की भूमिका को गलत तरीके से वर्णित करते हैं। इसलिए सही उत्तर 'नीला प्रकाश वातावरण में अधिक बिखरता है' है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "भूमीवरील निरीक्षकाला आकाश नील दिसतो, परंतु अंतरिक्षातील अंतरिक्ष यात्रीला काळा दिसतो का?",
+          "choices": [
+            "नील प्रकाश वातावरणात अधिक बिक्षिप्त होतो",
+            "नील प्रकाश वातावरणाद्वारे शोषला जातो",
+            "नील प्रकाश वातावरणाद्वारे परावर्तित होतो",
+            "नील प्रकाश वातावरणाद्वारे अडवला जातो"
+          ],
+          "solution": "आकाशाचा नील रंग रे ले बी बिक्षिप्तीमुळे होतो, जेथे लहान तरंगलांबीचा प्रकाश (नील) वातावरणात अधिक बिक्षिप्त होतो. अंतरिक्षात वातावरण नसल्यामुळे प्रकाश बिक्षिप्त होत नाही, त्यामुळे आकाश काळा दिसतो. इतर विकल्प वातावरणाच्या भूमिकेचे चुकीचे वर्णन करतात. म्हणूनच योग्य उत्तर 'नील प्रकाश वातावरणात अधिक बिक्षिप्त होतो' आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "incorrectly states that blue light is absorbed",
+        "incorrectly states that blue light is reflected",
+        "incorrectly states that blue light is blocked"
       ],
       "solverAnswers": [
         0,
@@ -1659,63 +603,40 @@
         0
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly explains that the second inverted prism recombines the spectrum into white light, matching the correct answer. All distractors reflect common misconceptions about light dispersion and recombination.",
+      "critique": "The solution correctly identifies Rayleigh scattering as the reason for the blue sky and correctly dismisses the other options. The reasoning aligns with scientific understanding.",
       "sources": [
         {
           "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 7,
-          "pageStart": 7,
-          "pageEnd": 7,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.4 DISPERSION OF WHITE LIGHT BY A GL10.4 DISPERSION OF WHITE LIGHT BY A GLASS PRISM10.4 DISPERSION OF WHITE LIGHT BY A GLASS PRISM",
-            "Activity 10.2"
+            "Chapter 10: The Human Eye and the Colourful World"
           ]
         },
         {
           "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 8,
-          "pageStart": 7,
-          "pageEnd": 8,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 10: The Human Eye and the Colourful World",
-            "10.5 ATMOSPHERIC REFRACTION"
+            "10.1.1 Power of Accommodation"
           ]
         },
         {
           "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 9,
-          "pageStart": 8,
-          "pageEnd": 8,
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 10: The Human Eye and the Colourful World",
-            "10.5 ATMOSPHERIC REFRACTION"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 10,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT"
-          ]
-        },
-        {
-          "document": "ncert/10/science/jesc110.pdf",
-          "ordinal": 11,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 10: The Human Eye and the Colourful World",
-            "10.6 SCATTERING OF LIGHT",
-            "10.6.1 Tyndall Effect"
+            "10.2 DEFECTS OF VISION AND THEIR CORRECTION"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T20:16:24.449Z",
+      "generatedAt": "2026-10-28T01:43:08.749Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

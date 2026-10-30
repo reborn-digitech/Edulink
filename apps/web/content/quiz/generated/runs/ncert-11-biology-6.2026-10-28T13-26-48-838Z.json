@@ -1,0 +1,604 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T13:26:48.838Z",
+  "finishedAt": "2026-10-28T13:36:54.247Z",
+  "seconds": 605,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo106.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 6 — Anatomy of Flowering Plants",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2021 — question paper]\n7. (1 point) „Mostly male‟ hypothesis of Michael and Frohlich states that bisexual flower\norganization derives more from the male structures of ancestral gymnosperms than from\nfemale structures. From which of the following facts is this hypothesis derived?\na. Male cones of certain pteridophytes and gymnosperms resemble primitive flowers like lotus.\nb. Genes for flower development in angiosperms and microsporophyll development in\ngymnosperms are closely related.\nc. Position of flowers resembles that of male cones.\nd. All the above.",
+      "[CBSE Class XII Biology, sample question paper, 2026-27]\n1. A researcher observes that in a particular flowering plant, the pistil matures 1\nseveral days before the stamens in all flowers of the plant. What is the most\nsignificant consequence of this timing difference?\nA. It guarantees self-pollination\nB. It promotes autogamy\nC. It ensures cross-pollination\nD. It leads to geitonogamy",
+      "[INBO 2011 — question paper]\n48. (2 points) Floral diagrams are used to graphically represent a flower. Given\nbelow is a floral diagram of a flower:\nWhich of the following properties does it convey?\n1. Presence of three sepals\n2. Having a tricarpellary syncarpous ovary\n3. Presence of three fertile stamens\n4. Presence of a bract\na. Only 1, 3 and 4\nb. Only 1, 2 and 4\nc. Only 2 and 3\nd. Only 2\nChoose from the options and put a tick mark (√) in the appropriate box.\na. b. c. d.",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n23. (a) Corn: Wind. Numerous flowers are packed in an inflorescence; the 3\ntassels seen in the corn cob are the stigma and style which wave in the\nwind to trap pollen grains.\n(b) Water hyacinth: Insects or wind. In water hyacinth the flowers emerge\nabove the level of water and are pollinated by insects or wind as in\nmost of the land plants.\n(c) Vallisneria: Water, In Vallisneria - the female flower reaches the surface\nof water by the long stalk and the male flowers or pollen grains are\nreleased onto the surface of water. They are carried passively by water\ncurrents; some of them eventually reach the female flowers and the\nstigma.\n(½ x 6 =3 Marks)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 200701,
+      "in": 30,
+      "out": 29,
+      "rejects": 1,
+      "promptTokens": 25342,
+      "completionTokens": 7255
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 346523,
+      "in": 29,
+      "out": 29,
+      "rejects": 0,
+      "promptTokens": 16561,
+      "completionTokens": 6263
+    },
+    "solver": {
+      "calls": 198,
+      "ms": 149437,
+      "in": 29,
+      "out": 27,
+      "rejects": 2,
+      "promptTokens": 33118,
+      "completionTokens": 1964
+    },
+    "form": {
+      "calls": 5,
+      "ms": 51436,
+      "in": 27,
+      "out": 17,
+      "rejects": 10,
+      "promptTokens": 8293,
+      "completionTokens": 941
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 65,
+      "ms": 16453,
+      "in": 17,
+      "out": 9,
+      "rejects": 8,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 549763,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 20825,
+      "completionTokens": 10356
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 3,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "In a plant, the epidermis is absent in which part?",
+      "ms": {
+        "draft": 7680,
+        "critique": 11438,
+        "solver": 18004,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about guard cells in stomata?",
+      "ms": {
+        "draft": 7680,
+        "critique": 8001,
+        "solver": 19561,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given information, which of the following is a characteristic of the vascular tissue system?",
+      "ms": {
+        "draft": 7680,
+        "critique": 10933,
+        "solver": 19336,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main difference between the mesophyll of a dicot leaf and a monocot leaf?",
+      "ms": {
+        "draft": 6078,
+        "critique": 14364,
+        "solver": 2055,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A plant shows a unique adaptation where its stomata are surrounded by dumb-bell shaped guard cells. Which of the following is most likely to be true about this plant?",
+      "ms": {
+        "draft": 7680,
+        "critique": 12043,
+        "solver": 25785
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A plant has a floral diagram showing three sepals, three fertile stamens, and a tricarpellary syncarpous ovary. Which of the following is true about the flower?",
+      "ms": {
+        "draft": 5465,
+        "critique": 7721,
+        "solver": 9664,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of a monocot stem as seen in a transverse section?",
+      "ms": {
+        "draft": 7910,
+        "critique": 8091,
+        "solver": 4181,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A transverse section of a plant stem shows vascular bundles that are conjoint and surrounded by a sclerenchymatous bundle sheath. What type of stem is this most likely to be?",
+      "ms": {
+        "draft": 7910,
+        "critique": 7572,
+        "solver": 1585,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a floral diagram, the presence of three sepals, a tricarpellary syncarpous ovary, and three fertile stamens is indicated. Which of the following is the correct interpretation of these features?",
+      "ms": {
+        "draft": 7910,
+        "critique": 10273,
+        "solver": 2200
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a transverse section of a plant stem, the phloem parenchyma is absent, and the vascular bundles are scattered. What type of stem is this?",
+      "ms": {
+        "draft": 7910,
+        "critique": 12735,
+        "solver": 17871,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what is the main function of the pericycle in a dicotyledonous root?",
+      "ms": {
+        "draft": 5968,
+        "critique": 10159,
+        "solver": 3097,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the shape of the guard cells in stomata of grasses?",
+      "ms": {
+        "draft": 6767,
+        "critique": 8029,
+        "solver": 2003,
+        "form": 1455
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the plant is responsible for providing mechanical strength to the young stem?",
+      "ms": {
+        "draft": 6078,
+        "critique": 10683,
+        "solver": 1799,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a monocot stem, where are the vascular bundles located?",
+      "ms": {
+        "draft": 6078,
+        "critique": 10001,
+        "solver": 2650,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main function of the vascular bundles in a plant stem?",
+      "ms": {
+        "draft": 5465,
+        "critique": 10308,
+        "solver": 1597,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A researcher observes that in a plant, the pistil matures several days before the stamens. What is the most likely outcome of this phenomenon?",
+      "ms": {
+        "draft": 5465,
+        "critique": 10225,
+        "solver": 2150,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main function of vascular bundles in a plant stem?",
+      "ms": {
+        "draft": 7910,
+        "critique": 7573,
+        "solver": 3196,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A researcher observes that in a particular flowering plant, the pistil matures several days before the stamens in all flowers of the plant. What is the most significant consequence of this timing difference?",
+      "ms": {
+        "draft": 7910,
+        "critique": 9335,
+        "solver": 2141,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the anatomy of a dicotyledonous root, which layer is responsible for the initiation of lateral roots and vascular cambium during secondary growth?",
+      "ms": {
+        "draft": 5968,
+        "critique": 8420,
+        "solver": 3037,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A researcher observes that in a flowering plant, the pistil matures several days before the stamens in all flowers of the plant. What is the most significant consequence of this timing difference?",
+      "ms": {
+        "draft": 5968,
+        "critique": 10989,
+        "solver": 1935,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary function of the epidermis in plants?",
+      "ms": {
+        "draft": 6767,
+        "critique": 9463,
+        "solver": 1445,
+        "form": 0,
+        "translation": 55747
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the cuticle on the epidermis of plant leaves?",
+      "ms": {
+        "draft": 7680,
+        "critique": 7461,
+        "solver": 18937,
+        "form": 0,
+        "translation": 58612
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of trichomes in the epidermis of stems?",
+      "ms": {
+        "draft": 7680,
+        "critique": 7738,
+        "solver": 17446,
+        "form": 1,
+        "translation": 46099
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a transverse section of a plant stem shows vascular bundles that are scattered and surrounded by sclerenchymatous tissue, what type of stem is it likely to be?",
+      "ms": {
+        "draft": 5465,
+        "critique": 10571,
+        "solver": 2666,
+        "form": 0,
+        "translation": 61890
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a transverse section of a monocot stem, how are the vascular bundles arranged compared to a dicot stem?",
+      "ms": {
+        "draft": 5968,
+        "critique": 10304,
+        "solver": 2223,
+        "form": 0,
+        "translation": 68778
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In a dorsiventral leaf, which part of the mesophyll consists of elongated cells arranged vertically and parallel to each other?",
+      "ms": {
+        "draft": 5968,
+        "critique": 10961,
+        "solver": 2254,
+        "form": 0,
+        "translation": 65349
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A student observes a transverse section of a plant stem and finds that the vascular bundles are conjoint and arranged in a ring. What conclusion can the student draw about the stem?",
+      "ms": {
+        "draft": 5465,
+        "critique": 12100,
+        "solver": 2218,
+        "form": 0,
+        "translation": 64392
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A researcher observes that in a flowering plant, the stamens mature before the pistil. What is the most likely effect of this timing difference?",
+      "ms": {
+        "draft": 6078,
+        "critique": 11932,
+        "solver": 2172,
+        "form": 0,
+        "translation": 68774
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a monocot root, what is the function of the pericycle?",
+      "ms": {
+        "draft": 6078,
+        "critique": 11264,
+        "solver": 2549,
+        "form": 0,
+        "translation": 54679
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the function of the endodermis in the root?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a plant, the epidermis is absent in which part?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about guard cells in stomata?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.guard_cells: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the given information, which of the following is a characteristic of the vascular tissue system?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main difference between the mesophyll of a dicot leaf and a monocot leaf?",
+      "reason": "the key is far longer than every distractor (85 vs 52 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A plant shows a unique adaptation where its stomata are surrounded by dumb-bell shaped guard cells. Which of the following is most likely to be true about this plant?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A plant has a floral diagram showing three sepals, three fertile stamens, and a tricarpellary syncarpous ovary. Which of the following is true about the flower?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a feature of a monocot stem as seen in a transverse section?",
+      "reason": "figure: figure spec refused: spec: Unrecognized key(s) in object: 'labels'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A transverse section of a plant stem shows vascular bundles that are conjoint and surrounded by a sclerenchymatous bundle sheath. What type of stem is this most likely to be?",
+      "reason": "figure: figure spec refused: spec.parts: plant has no label \"vascular bundles\" (it has root, stem, leaf, flower)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In a floral diagram, the presence of three sepals, a tricarpellary syncarpous ovary, and three fertile stamens is indicated. Which of the following is the correct interpretation of these features?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a transverse section of a plant stem, the phloem parenchyma is absent, and the vascular bundles are scattered. What type of stem is this?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what is the main function of the pericycle in a dicotyledonous root?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the shape of the guard cells in stomata of grasses?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.shape: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which part of the plant is responsible for providing mechanical strength to the young stem?",
+      "reason": "near-duplicate of served question cmvhjdztr094lgpfh6crk9epi (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "In a monocot stem, where are the vascular bundles located?",
+      "reason": "near-duplicate of served question cmvhjdztt094rgpfhmnr8tvv3 (cosine 0.962 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the main function of the vascular bundles in a plant stem?",
+      "reason": "near-duplicate of served question cmvkorqu80l2fgpfhv6tqrod2 (cosine 0.933 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A researcher observes that in a plant, the pistil matures several days before the stamens. What is the most likely outcome of this phenomenon?",
+      "reason": "near-duplicate of served question cmvkorqur0l3fgpfhti553c1r (cosine 0.903 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the main function of vascular bundles in a plant stem?",
+      "reason": "near-duplicate of served question cmvkorqu80l2fgpfhv6tqrod2 (cosine 0.934 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A researcher observes that in a particular flowering plant, the pistil matures several days before the stamens in all flowers of the plant. What is the most significant consequence of this timing difference?",
+      "reason": "near-duplicate of batch item \"A researcher observes that in a flowering plant, t…\" (cosine 0.958 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "In the anatomy of a dicotyledonous root, which layer is responsible for the initiation of lateral roots and vascular cambium during secondary growth?",
+      "reason": "near-duplicate of served question cmvkorquj0l2xgpfhcnma5t50 (cosine 0.917 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A researcher observes that in a flowering plant, the pistil matures several days before the stamens in all flowers of the plant. What is the most significant consequence of this timing difference?",
+      "reason": "near-duplicate of batch item \"A researcher observes that in a flowering plant, t…\" (cosine 0.961 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

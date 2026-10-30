@@ -1,0 +1,520 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T05:34:14.551Z",
+  "finishedAt": "2026-10-28T05:39:17.929Z",
+  "seconds": 303,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm107.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Shapes and Patterns",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n9. Draw neat and clean figures wherever required.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n36. A tiling or tessellation of a flat surface is the covering of a plane using one or more geometric\nshapes, called tiles, with no overlaps and no gaps. Historically, tessellations were used in\nancient Rome and in Islamic art. You may find tessellation patterns on floors, walls, paintings\netc. Shown below is a tiled floor in the archaeological Museum of Seville, made using\nsquares, triangles and hexagons.\nA craftsman thought of making a floor pattern after being inspired by the above design. To\nensure accuracy in his work, he made the pattern on the Cartesian plane. He used regular\noctagons, squares and triangles for his floor tessellation pattern\nUse the above figure to answer the question",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n2. This Question Paper is divided into 5 Sections A, B, C, D and E."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 82551,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17168,
+      "completionTokens": 5014
+    },
+    "critique": {
+      "calls": 32,
+      "ms": 203363,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 14334,
+      "completionTokens": 5704
+    },
+    "solver": {
+      "calls": 158,
+      "ms": 79885,
+      "in": 21,
+      "out": 12,
+      "rejects": 9,
+      "promptTokens": 28315,
+      "completionTokens": 1686
+    },
+    "form": {
+      "calls": 3,
+      "ms": 9377,
+      "in": 12,
+      "out": 5,
+      "rejects": 7,
+      "promptTokens": 696,
+      "completionTokens": 295
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 4998,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 159537,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9711,
+      "completionTokens": 5139
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the passage?",
+      "ms": {
+        "draft": 2666,
+        "critique": 4976,
+        "solver": 1815
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student wants to create a tessellation using only one shape, which shape from the passage would be the best choice?",
+      "ms": {
+        "draft": 2666,
+        "critique": 6976,
+        "solver": 1126
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can you conclude about regular pentagons?",
+      "ms": {
+        "draft": 2666,
+        "critique": 5578,
+        "solver": 12701,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a special type of parallelogram with all angles equal?",
+      "ms": {
+        "draft": 4316,
+        "critique": 7222,
+        "solver": 1411,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student uses regular hexagons to create a tiling pattern, how many hexagons can fit together at a point without gaps or overlaps?",
+      "ms": {
+        "draft": 2666,
+        "critique": 7373,
+        "solver": 16050,
+        "form": 3758
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a quadrilateral with opposite sides equal?",
+      "ms": {
+        "draft": 4316,
+        "critique": 9274,
+        "solver": 12836,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a kite has sides 1 and 2 equal, and sides 3 and 4 equal, which of the following is correct?",
+      "ms": {
+        "draft": 4316,
+        "critique": 5494,
+        "solver": 1920
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Using the figure of a circle with two diameters, which of the following shapes is formed by joining the endpoints of the diameters?",
+      "ms": {
+        "draft": 4316,
+        "critique": 8650,
+        "solver": 1400,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Tanu arranged 7 shapes in a line. Which of the following is the correct sequence if the square is between the circle and the rectangle?",
+      "ms": {
+        "draft": 4316,
+        "critique": 7117,
+        "solver": 890
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a cube is made of 27 small cubes and painted on all sides, how many small cubes have exactly two faces painted?",
+      "ms": {
+        "draft": 4316,
+        "critique": 6287,
+        "solver": 4971
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which shape has all its sides equal but not all its angles?",
+      "ms": {
+        "draft": 3552,
+        "critique": 6933,
+        "solver": 11689,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which shape has opposite sides equal and all angles equal?",
+      "ms": {
+        "draft": 3552,
+        "critique": 7065,
+        "solver": 13082,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a craftsman uses regular octagons, squares, and triangles for a floor tessellation, which shape could be formed by joining them without gaps or overlaps?",
+      "ms": {
+        "draft": 3552,
+        "critique": 6730
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the tangram set, which shape has 5 sides?",
+      "ms": {
+        "draft": 3552,
+        "critique": 8847
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a cube is made of 27 small cubes and painted red on the outside, how many small cubes have exactly one face painted?",
+      "ms": {
+        "draft": 3552,
+        "critique": 6457,
+        "solver": 1439
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is weaving a mat and follows the pattern: Row 1—1 under, 1 over, 1 under, 1 over, ... and Row 2—1 over, 1 under, 1 over, 1 under, ... What will be the pattern in Row 3?",
+      "ms": {
+        "draft": 11648,
+        "critique": 7544,
+        "solver": 1630
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A tiling pattern uses squares and equilateral triangles. At each point where shapes meet, one square and two triangles come together. If there are 10 such points, how many total shapes are used?",
+      "ms": {
+        "draft": 11648,
+        "critique": 7811
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a tessellation, a regular pentagon is placed around a point. Can another regular pentagon fit into the empty space without leaving gaps?",
+      "ms": {
+        "draft": 11648,
+        "critique": 7305,
+        "solver": 1614
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student notices that in a pattern, 3 equilateral triangles meet at a point. How many such points are needed to complete a full circle around a single point?",
+      "ms": {
+        "draft": 11648,
+        "critique": 7378,
+        "solver": 8505
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you join the endpoints of two diameters of a circle, what shape is formed?",
+      "ms": {
+        "draft": 3552,
+        "critique": 6397,
+        "solver": 12943,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the pattern created by weaving paper strips in an alternating under and over manner?",
+      "ms": {
+        "draft": 2666,
+        "critique": 4566,
+        "solver": 1603,
+        "form": 3627,
+        "translation": 46490
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a regular shape?",
+      "ms": {
+        "draft": 11648,
+        "critique": 7338,
+        "solver": 2118,
+        "form": 0,
+        "translation": 18679
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student follows the instructions to weave the pattern, what will they create?",
+      "ms": {
+        "draft": 2666,
+        "critique": 4310,
+        "solver": 1148,
+        "form": 4072,
+        "translation": 51261
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student draws a tiling pattern with regular hexagons. What will happen at each point where the hexagons meet?",
+      "ms": {
+        "draft": 11648,
+        "critique": 5920,
+        "solver": 1222,
+        "form": 0,
+        "translation": 38734
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main purpose of the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a student wants to create a tessellation using only one shape, which shape from the passage would be the best choice?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can you conclude about regular pentagons?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Students may think that any polygon can be used to make a ma…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a special type of parallelogram with all angles equal?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not understand that a rectangle is a special type of pa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student uses regular hexagons to create a tiling pattern, how many hexagons can fit together at a point without gaps or overlaps?",
+      "reason": "options mix numbers and words (3 of 4 are numbers); checkExpr \"3\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a quadrilateral with opposite sides equal?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a kite has sides 1 and 2 equal, and sides 3 and 4 equal, which of the following is correct?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Using the figure of a circle with two diameters, which of the following shapes is formed by joining the endpoints of the diameters?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Does not understand that joining the endpoints of two diamet…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Tanu arranged 7 shapes in a line. Which of the following is the correct sequence if the square is between the circle and the rectangle?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a cube is made of 27 small cubes and painted on all sides, how many small cubes have exactly two faces painted?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which shape has all its sides equal but not all its angles?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which shape has opposite sides equal and all angles equal?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a craftsman uses regular octagons, squares, and triangles for a floor tessellation, which shape could be formed by joining them without gaps or overlaps?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the tangram set, which shape has 5 sides?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a cube is made of 27 small cubes and painted red on the outside, how many small cubes have exactly one face painted?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A student is weaving a mat and follows the pattern: Row 1—1 under, 1 over, 1 under, 1 over, ... and Row 2—1 over, 1 under, 1 over, 1 under, ... What will be the pattern in Row 3?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A tiling pattern uses squares and equilateral triangles. At each point where shapes meet, one square and two triangles come together. If there are 10 such points, how many total shapes are used?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a tessellation, a regular pentagon is placed around a point. Can another regular pentagon fit into the empty space without leaving gaps?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student notices that in a pattern, 3 equilateral triangles meet at a point. How many such points are needed to complete a full circle around a single point?",
+      "reason": "after redraft: the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If you join the endpoints of two diameters of a circle, what shape is formed?",
+      "reason": "near-duplicate of served question cmvo820eu05npgp21bjjr9zmc (cosine 0.908 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

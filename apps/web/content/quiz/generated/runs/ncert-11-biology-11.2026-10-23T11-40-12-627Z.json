@@ -1,0 +1,800 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T11:40:12.627Z",
+  "finishedAt": "2026-10-23T11:55:49.583Z",
+  "seconds": 937,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo111.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 11 — NIT",
+    "edition": "Reprint 2026-27",
+    "chunks": 23,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n9. (b) dN/dt = r N 1",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[INBO 2011 — question paper]\nSECTION A\nCELL BIOLOGY (7)",
+      "[INBO 2021 — question paper]\nSECTION A\nCELL BIOLOGY (5 points)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 316904,
+      "in": 43,
+      "out": 41,
+      "rejects": 2,
+      "promptTokens": 44412,
+      "completionTokens": 13728
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 428419,
+      "in": 41,
+      "out": 31,
+      "rejects": 10,
+      "promptTokens": 22174,
+      "completionTokens": 8271
+    },
+    "solver": {
+      "calls": 201,
+      "ms": 130182,
+      "in": 31,
+      "out": 28,
+      "rejects": 3,
+      "promptTokens": 34839,
+      "completionTokens": 1978
+    },
+    "form": {
+      "calls": 21,
+      "ms": 177884,
+      "in": 28,
+      "out": 10,
+      "rejects": 18,
+      "promptTokens": 23257,
+      "completionTokens": 3354
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 47,
+      "ms": 10834,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 588686,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 25664,
+      "completionTokens": 13586
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the primary role of chlorophyll in photosynthesis?",
+      "ms": {
+        "draft": 4297,
+        "critique": 8442,
+        "solver": 1927,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the importance of photosynthesis?",
+      "ms": {
+        "draft": 4297,
+        "critique": 8359,
+        "solver": 2397,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant is kept in a dark room for a long time, what will happen to the starch stored in its leaves?",
+      "ms": {
+        "draft": 7894,
+        "critique": 8472
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the plant is responsible for the synthesis of carbohydrates during photosynthesis?",
+      "ms": {
+        "draft": 7894,
+        "critique": 10105
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the equation for photosynthesis written as 6CO2 + 12H2O → C6H12O6 + 6H2O + 6O2 instead of the simpler form?",
+      "ms": {
+        "draft": 7894,
+        "critique": 7609
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the absorption spectrum of chlorophyll a?",
+      "ms": {
+        "draft": 7894,
+        "critique": 8457,
+        "solver": 13987,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is not a function of chlorophyll in photosynthesis?",
+      "ms": {
+        "draft": 7894,
+        "critique": 9514,
+        "solver": 2256
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a process that occurs during the light-dependent reactions of photosynthesis?",
+      "ms": {
+        "draft": 10964,
+        "critique": 8604
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A scientist found that a plant releases oxygen when exposed to red light but not when exposed to green light. What can be inferred from this observation?",
+      "ms": {
+        "draft": 7894,
+        "critique": 8826,
+        "solver": 16176,
+        "form": 3820
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the presence of accessory pigments in photosynthesis?",
+      "ms": {
+        "draft": 10964,
+        "critique": 8362,
+        "solver": 18480,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant is exposed to light of wavelength 680 nm, which of the following processes is most likely to be activated?",
+      "ms": {
+        "draft": 10964,
+        "critique": 9420,
+        "solver": 1976,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the chemiosmotic hypothesis important in explaining ATP synthesis in chloroplasts?",
+      "ms": {
+        "draft": 10964,
+        "critique": 11378,
+        "solver": 2454,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the first product identified in the Calvin cycle?",
+      "ms": {
+        "draft": 21285,
+        "critique": 9424
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which molecule is the primary acceptor of CO₂ in the Calvin cycle?",
+      "ms": {
+        "draft": 5056,
+        "critique": 8821
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many molecules of ATP and NADPH are required to produce one molecule of glucose through the Calvin cycle?",
+      "ms": {
+        "draft": 5056,
+        "critique": 11130
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the proton gradient across the thylakoid membrane is disrupted, which of the following will occur?",
+      "ms": {
+        "draft": 21285,
+        "critique": 8928,
+        "solver": 16225,
+        "form": 3858
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the primary carbon dioxide acceptor in C4 plants?",
+      "ms": {
+        "draft": 6008,
+        "critique": 8240
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a limiting factor for photosynthesis according to the passage?",
+      "ms": {
+        "draft": 4669,
+        "critique": 8327,
+        "solver": 1902,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on Figure 11.10, what does point D on the curve represent?",
+      "ms": {
+        "draft": 4669,
+        "critique": 11027
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what happens to the rate of photosynthesis when light intensity increases beyond a certain point?",
+      "ms": {
+        "draft": 4669,
+        "critique": 8587,
+        "solver": 3221
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant shows a high rate of photorespiration, which of the following is most likely true about the plant?",
+      "ms": {
+        "draft": 11423,
+        "critique": 8469,
+        "solver": 1417,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the occurrence of photorespiration in C3 plants?",
+      "ms": {
+        "draft": 11423,
+        "critique": 9396,
+        "solver": 22564,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do C4 plants have a higher productivity and yield compared to C3 plants under high light conditions?",
+      "ms": {
+        "draft": 11423,
+        "critique": 9726,
+        "solver": 2363,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary acceptor of carbon dioxide in the Calvin cycle?",
+      "ms": {
+        "draft": 9450,
+        "critique": 10235,
+        "solver": 2007,
+        "form": 4635
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary CO acceptor in C4 plants?",
+      "ms": {
+        "draft": 11423,
+        "critique": 8657,
+        "solver": 2363,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many molecules of ATP and NADPH are required to produce one molecule of glucose through the Calvin cycle?",
+      "ms": {
+        "draft": 9450,
+        "critique": 7745,
+        "solver": 2043,
+        "form": 4520
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where are protons or hydrogen ions produced during the light reaction of photosynthesis?",
+      "ms": {
+        "draft": 8545,
+        "critique": 9641
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a stage in the Calvin cycle?",
+      "ms": {
+        "draft": 9450,
+        "critique": 9141,
+        "solver": 21220
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do C4 plants have a special leaf anatomy called 'Kranz' anatomy?",
+      "ms": {
+        "draft": 9450,
+        "critique": 10383,
+        "solver": 1937,
+        "form": 5523
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the proton gradient in ATP synthesis during photosynthesis?",
+      "ms": {
+        "draft": 8545,
+        "critique": 9618,
+        "solver": 2057,
+        "form": 3389
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which pigment in the chloroplast has an absorption peak at 700 nm?",
+      "ms": {
+        "draft": 82874,
+        "critique": 9552,
+        "solver": 2122,
+        "form": 3382
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Where is the NADP reductase enzyme located in the chloroplast?",
+      "ms": {
+        "draft": 21285,
+        "critique": 7993,
+        "solver": 2210,
+        "form": 4989,
+        "translation": 55494
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the proton gradient across the thylakoid membrane?",
+      "ms": {
+        "draft": 21285,
+        "critique": 8153,
+        "solver": 1904,
+        "form": 3718,
+        "translation": 62984
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the regeneration phase in the Calvin cycle?",
+      "ms": {
+        "draft": 5056,
+        "critique": 10312,
+        "solver": 13964,
+        "form": 0,
+        "translation": 52456
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct conclusion from Priestley's experiment?",
+      "ms": {
+        "draft": 4297,
+        "critique": 9424,
+        "solver": 2085,
+        "form": 0,
+        "translation": 65277
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following processes is directly responsible for the release of oxygen into the atmosphere?",
+      "ms": {
+        "draft": 4297,
+        "critique": 9219,
+        "solver": 1554,
+        "form": 0,
+        "translation": 52724
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains the role of the Kranz anatomy in C4 plants?",
+      "ms": {
+        "draft": 11423,
+        "critique": 9382,
+        "solver": 2696,
+        "form": 0,
+        "translation": 40165
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a leaf is covered with black paper on one side and exposed to light on the other. After some time, both sides are tested for starch. What would be the most likely result?",
+      "ms": {
+        "draft": 4297,
+        "critique": 8441,
+        "solver": 1547,
+        "form": 0,
+        "translation": 70928
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a plant is exposed to higher CO₂ levels, what is the likely effect on its productivity?",
+      "ms": {
+        "draft": 4669,
+        "critique": 9967,
+        "solver": 1813,
+        "form": 6444,
+        "translation": 51921
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a plant is placed in a sealed container with a candle and left in the dark, what will happen to the candle and why?",
+      "ms": {
+        "draft": 4297,
+        "critique": 10085,
+        "solver": 3468,
+        "form": 0,
+        "translation": 76050
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do C plants show a higher rate of photosynthesis under high light intensity compared to C plants?",
+      "ms": {
+        "draft": 4669,
+        "critique": 9763,
+        "solver": 2654,
+        "form": 5378,
+        "translation": 55150
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the role of the electron transport chain in the light-dependent reactions of photosynthesis?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the primary role of chlorophyll in photosynthesis?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the importance of photosynthesis?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"Both A and B\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a plant is kept in a dark room for a long time, what will happen to the starch stored in its leaves?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which part of the plant is responsible for the synthesis of carbohydrates during photosynthesis?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is the equation for photosynthesis written as 6CO2 + 12H2O → C6H12O6 + 6H2O + 6O2 instead of the simpler form?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the absorption spectrum of chlorophyll a?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is not a function of chlorophyll in photosynthesis?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a process that occurs during the light-dependent reactions of photosynthesis?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A scientist found that a plant releases oxygen when exposed to red light but not when exposed to green light. What can be inferred from this observation?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the presence of accessory pigments in photosynthesis?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (68 vs 41 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a plant is exposed to light of wavelength 680 nm, which of the following processes is most likely to be activated?",
+      "reason": "figure: figure spec refused: spec.parts.2.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'electronTransport'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the chemiosmotic hypothesis important in explaining ATP synthesis in chloroplasts?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'chloroplast'"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the first product identified in the Calvin cycle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which molecule is the primary acceptor of CO₂ in the Calvin cycle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How many molecules of ATP and NADPH are required to produce one molecule of glucose through the Calvin cycle?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the proton gradient across the thylakoid membrane is disrupted, which of the following will occur?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the effect of the gradient on the Calvin cycl…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the primary carbon dioxide acceptor in C4 plants?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the role of RuBisCO in the Calvin cycle?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a limiting factor for photosynthesis according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on Figure 11.10, what does point D on the curve represent?",
+      "reason": "the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "According to the passage, what happens to the rate of photosynthesis when light intensity increases beyond a certain point?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a plant shows a high rate of photorespiration, which of the following is most likely true about the plant?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason for the occurrence of photorespiration in C3 plants?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do C4 plants have a higher productivity and yield compared to C3 plants under high light conditions?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label KranzAnatomy"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the primary acceptor of carbon dioxide in the Calvin cycle?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the primary CO acceptor in C4 plants?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "How many molecules of ATP and NADPH are required to produce one molecule of glucose through the Calvin cycle?",
+      "reason": "options 0 and 1 say the same thing (\"18 ATP, 12 NADPH\" / \"12 ATP, 18 NADPH\"); checkExpr \"18*1, 12*1\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Where are protons or hydrogen ions produced during the light reaction of photosynthesis?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a stage in the Calvin cycle?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do C4 plants have a special leaf anatomy called 'Kranz' anatomy?",
+      "reason": "figure: figure spec refused: spec.parts: leaf has no label \"vascularBundle\" (it has lamina, midrib, vein, petiole)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the role of the proton gradient in ATP synthesis during photosynthesis?",
+      "reason": "figure: figure spec refused: spec.parts: plantCell has no label \"cellMembrane\" (it has cellWall, membrane, nucleus, vacuole, chloroplast, cytoplasm)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which pigment in the chloroplast has an absorption peak at 700 nm?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.incidentRay: label key: letters, digits, _ and ', or a number"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

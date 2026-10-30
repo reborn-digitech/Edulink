@@ -21,47 +21,47 @@
   "board": "NCERT",
   "book": "Fundamental of Physical Geography",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T07:09:45.690Z",
+  "generatedAt": "2026-10-28T19:57:28.419Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "What is the term used to describe the amount of water vapour present in the atmosphere?",
+      "difficulty": 2,
+      "stem": "What is the term used to describe the actual amount of water vapour present in the atmosphere?",
       "choices": [
-        "Absolute humidity",
         "Relative humidity",
         "Dew point",
+        "Absolute humidity",
         "Saturation point"
       ],
-      "answerIndex": 0,
-      "solution": "Absolute humidity refers to the actual amount of water vapour present in the atmosphere. Relative humidity is the percentage of moisture compared to the air's full capacity. Dew point is the temperature at which saturation occurs, and saturation point is the maximum amount of moisture the air can hold.",
+      "answerIndex": 2,
+      "solution": "Absolute humidity is the term used to describe the actual amount of water vapour present in the atmosphere. Relative humidity measures the percentage of moisture in the air compared to the maximum it can hold at a given temperature. Dew point is the temperature at which air becomes saturated, and saturation point refers to when air is fully saturated with moisture.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "वातावरण में उपस्थित जल वाष्प की मात्रा के लिए उपयोग किए जाने वाले शब्द क्या है?",
+          "stem": "वातावरण में उपस्थित जल वाष्प की वास्तविक मात्रा के लिए प्रयुक्त शब्द क्या है?",
           "choices": [
-            "परम आर्द्रता",
             "सापेक्ष आर्द्रता",
             "कुंडली बिंदु",
+            "परम आर्द्रता",
             "संतृप्ति बिंदु"
           ],
-          "solution": "परम आर्द्रता वातावरण में वास्तविक जल वाष्प की मात्रा को संदर्भित करती है। सापेक्ष आर्द्रता वायु की पूर्ण क्षमता के सापेक्ष आर्द्रता के प्रतिशत को संदर्भित करती है। कुंडली बिंदु वह तापमान है जिस पर संतृप्ति होती है और संतृप्ति बिंदु वायु द्वारा धारण की जा सकने वाली अधिकतम आर्द्रता के बराबर होता है।",
+          "solution": "परम आर्द्रता वातावरण में उपस्थित जल वाष्प की वास्तविक मात्रा के लिए प्रयुक्त शब्द है। सापेक्ष आर्द्रता वायु में नमी के प्रतिशत को मापता है जो दिए गए तापमान पर वायु द्वारा धारण की जा सकने वाली अधिकतम मात्रा के सापेक्ष होता है। कुंडली बिंदु वह तापमान है जिस पर वायु संतृप्त हो जाती है और संतृप्ति बिंदु वह बिंदु है जहां वायु पूरी तरह से नमी से संतृप्त हो जाती है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terminology from textbooks.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms are correctly translated according to standard Hindi science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "वातावरणात उपस्थित असलेल्या जल वाफेच्या प्रमाणाला कोणते नाव दिले जाते?",
+          "stem": "वातावरणात उपस्थित असलेल्या खर्या पाण्याच्या वाफेच्या प्रमाणाला कोणते नाव दिले जाते?",
           "choices": [
-            "निरपेक्ष आर्द्रता",
             "सापेक्ष आर्द्रता",
             "कडक बिंदू",
-            "संतृप्तता मर्यादा"
+            "निरपेक्ष आर्द्रता",
+            "संतृप्तता बिंदू"
           ],
-          "solution": "निरपेक्ष आर्द्रता हा वातावरणात उपस्थित असलेल्या खर्या जल वाफेच्या प्रमाणाला संबोधित करते. सापेक्ष आर्द्रता हा वायूच्या पूर्ण क्षमतेशी तुलना करून आर्द्रतेचा प्रतिशत दर्शवते. कडक बिंदू हा तापमान आहे जेथे संतृप्तता घडते आणि संतृप्तता मर्यादा हा वायूने धारण करू शकणारा जल वाफेचा महामार्ग आहे.",
+          "solution": "निरपेक्ष आर्द्रता हे वातावरणात उपस्थित असलेल्या खर्या पाण्याच्या वाफेच्या प्रमाणाला म्हणतात. सापेक्ष आर्द्रता हे वातावरणातील आर्द्रतेचे टक्के प्रमाण आहे जे दिलेल्या तापमानावर वातावरण किती आर्द्रता धारण करू शकते याच्या तुलनेत असते. कडक बिंदू हे तापमान आहे ज्यावर वातावरण संतृप्त होते आणि संतृप्तता बिंदू हे वातावरणाच्या आर्द्रतेने पूर्णपणे संतृप्त असलेल्या स्थितीला म्हणतात.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the technical terminology used in Marathi science textbooks.",
           "flag": null
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        null,
         "Confuses absolute humidity with relative humidity",
         "Confuses absolute humidity with dew point",
+        null,
         "Confuses absolute humidity with saturation point"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies absolute humidity as the term for the actual amount of water vapor in the atmosphere. The reasoning for the other options aligns with common misconceptions.",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors that reflect common misconceptions. The solution is accurate and aligns with the correct answer.",
       "sources": [
         {
           "document": "ncert/11/geography/kegy210.pdf",
@@ -119,50 +119,50 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T07:09:45.690Z",
+      "generatedAt": "2026-10-28T19:57:28.419Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 1,
-      "stem": "What is the process of releasing moisture from clouds called?",
+      "difficulty": 2,
+      "stem": "Which of the following is a type of precipitation that falls as small pellets of ice?",
       "choices": [
-        "Evaporation",
-        "Condensation",
-        "Precipitation",
-        "Transpiration"
+        "Rain",
+        "Snow",
+        "Sleet",
+        "Hail"
       ],
       "answerIndex": 2,
-      "solution": "Precipitation is the process where moisture is released from clouds in the form of rain, snow, or other forms. Evaporation is the change of liquid water into vapor, condensation is the formation of clouds, and transpiration is the release of water from plants into the air.",
+      "solution": "Sleet is frozen raindrops or refrozen melted snow-water that fall as small pellets of ice. Rain is liquid, snow is in the form of flakes, and hail consists of multiple layers of ice. Hence, the correct answer is sleet.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "बादलों से नमी के उत्सर्जन की प्रक्रिया क्या कहलाती है?",
+          "stem": "निम्नलिखित में से कौन-सा वर्षा का एक प्रकार है जो बर्फ के छोटे गोले के रूप में गिरता है?",
           "choices": [
-            "वाष्पीकरण",
-            "संघनन",
-            "अपक्षेपण",
-            "वाष्पोत्सर्जन"
+            "वर्षा",
+            "हिम",
+            "हिमपात",
+            "बर्फ"
           ],
-          "solution": "अपक्षेपण वह प्रक्रिया है जिसमें बादलों से नमी बरसात, हिम या अन्य रूपों में उत्सर्जित होती है। वाष्पीकरण द्रव जल के वाष्प में बदलने की प्रक्रिया है, संघनन बादलों के बनने की प्रक्रिया है और वाष्पोत्सर्जन पौधों द्वारा हवा में जल के उत्सर्जन की प्रक्रिया है।",
+          "solution": "हिमपात जमे हुए वर्षा के बूंद या पिघले हुए हिम-जल के पुनर्जमन के कारण बर्फ के छोटे गोले के रूप में गिरता है। वर्षा तरल होती है, हिम फ्लेक्स के रूप में होता है, और हिमानी में बर्फ की कई परतें होती हैं। इसलिए सही उत्तर हिमपात है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure.",
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "मेघांमधून निर्मुक्त होणाऱ्या निर्गमनाच्या प्रक्रियेला काय म्हणतात?",
+          "stem": "खालीलपैकी कोणते वर्षाच्या प्रकाराचे लहान बर्फाचे टुकरे रूपात पडते?",
           "choices": [
-            "वाष्पीभवन",
-            "घनीभवन",
-            "वृष्टिपात",
-            "वाष्पीभवन"
+            "वर्षा",
+            "हिम",
+            "हिमरित",
+            "हिमसर"
           ],
-          "solution": "वृष्टिपात म्हणजे मेघांमधून पाऊस, हिम, किंवा इतर रूपांमध्ये निर्मुक्त होणारे निर्गमन आहे. वाष्पीभवन ही द्रव पाणी वाफेमध्ये बदलण्याची प्रक्रिया आहे, घनीभवन ही मेघांच्या निर्माणाची प्रक्रिया आहे, आणि वाष्पीभवन ही वनस्पतींमधून हवेत जाणारे पाणी आहे.",
+          "solution": "हिमरित हे जमलेल्या वर्षाच्या थेंब किंवा पुन्हा जमलेल्या हिमपाताच्या पाण्याचे लहान बर्फाचे टुकरे असतात. वर्षा द्रव असते, हिम चिकणटी रूपात असतो आणि हिमसर बर्फाच्या काही थरांनी बनलेले असतात. म्हणूनच योग्य उत्तर हिमरित आहे.",
           "imageAlt": null,
-          "critique": "The Marathi translation has a critical error: option (1) and (4) are both 'वाष्पीभवन' (evaporation), making two options identical. This violates the 'oneAnswer' and 'distractorsStillWrong' criteria. The correct answer should be (2) 'घनीभवन' (condensation), but the duplicate option (1) and (4) make it impossible to determine the correct answer.",
-          "flag": "translation critique: not one answer at the same position; a distractor no longer wrong"
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for weather phenomena.",
+          "flag": null
         }
       },
       "imageKey": null,
@@ -170,10 +170,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses precipitation with evaporation, the process of transforming liquid into vapour",
-        "Confuses precipitation with condensation, the process of forming clouds",
+        "Confuses rain with other forms of precipitation",
+        "Identifies snow as a solid form but not as pellets",
         null,
-        "Confuses precipitation with transpiration, the release of water from plants"
+        "Student confuses sleet with hail, thinking both are small ice pellets but fails to recognize that hail forms in thunderstorms with strong updrafts"
       ],
       "solverAnswers": [
         2,
@@ -183,7 +183,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed with a clear correct answer (precipitation) and plausible distractors based on common misconceptions. The solution correctly identifies the process of releasing moisture from clouds as precipitation.",
+      "critique": "The solution correctly identifies sleet as the correct answer, and the reasoning aligns with standard meteorological definitions. The distractors are all plausible misconceptions.",
       "sources": [
         {
           "document": "ncert/11/geography/kegy210.pdf",
@@ -227,49 +227,157 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T07:09:45.690Z",
+      "generatedAt": "2026-10-28T19:57:28.419Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the term used to describe the amount of moisture in the air when it is at maximum capacity?",
+      "choices": [
+        "Relative humidity",
+        "Specific humidity",
+        "Absolute humidity",
+        "Saturated air"
+      ],
+      "answerIndex": 3,
+      "solution": "Saturated air refers to air that contains moisture to its full capacity. The other options refer to different measures of humidity but do not describe the condition of maximum moisture content.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हवा में नमी की मात्रा के लिए उपयोग किए जाने वाला शब्द क्या है जब यह अपनी अधिकतम क्षमता पर होती है?",
+          "choices": [
+            "सापेक्ष आर्द्रता",
+            "विशिष्ट आर्द्रता",
+            "निरपेक्ष आर्द्रता",
+            "संतृप्त हवा"
+          ],
+          "solution": "संतृप्त हवा का अर्थ हवा होती है जो अपनी पूर्ण क्षमता तक नमी रखती है। अन्य विकल्प आर्द्रता के अलग-अलग मापदंडों को संदर्भित करते हैं लेकिन अधिकतम नमी सामग्री की स्थिति का वर्णन नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English question and options, with appropriate technical terms used in Hindi education context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हवेतील आर्द्रतेच्या मात्रेच्या विषयी वापरलेला शब्द कोणता आहे जेव्हा हवा तिच्या अधिकतम क्षमतेत असते?",
+          "choices": [
+            "सापेक्ष आर्द्रता",
+            "विशिष्ट आर्द्रता",
+            "निरपेक्ष आर्द्रता",
+            "संतृप्त हवा"
+          ],
+          "solution": "संतृप्त हवा ही हवेची अवस्था आहे जेव्हा ती आर्द्रतेने तिच्या अधिकतम क्षमतेपर्यंत भरलेली असते. इतर विकल्पांमध्ये आर्द्रतेच्या वेगवेगळ्या मापदंडांचा उल्लेख असतो परंतु ते अधिकतम आर्द्रता सामग्रीच्या अवस्थेचे वर्णन करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi terminology for humidity-related concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Refers to the ratio of moisture to capacity, not the full capacity",
+        "Refers to the actual amount of moisture, not the capacity",
+        "Refers to the ratio of moisture to capacity, not the full capacity",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'Saturated air' as it refers to air at maximum moisture capacity. The other options are measures of humidity but do not describe the condition of being fully saturated. The author's reasoning for the distractors is accurate and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy210.pdf",
+          "ordinal": 3,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 10: Water in the Atmosphere",
+            "ATER IN THE TMOSPHERE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy210.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 10: Water in the Atmosphere",
+            "ATER IN THE TMOSPHERE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy210.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 10: Water in the Atmosphere",
+            "ATER IN THE TMOSPHERE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy210.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 10: Water in the Atmosphere",
+            "ATER IN THE TMOSPHERE"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T19:57:28.419Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "What happens to air when it rises and expands in the atmosphere?",
+      "stem": "If a region experiences heavy rainfall on the windward side of a mountain but very little on the leeward side, what is this phenomenon called?",
       "choices": [
-        "It warms and becomes more moist",
-        "It cools and loses moisture",
-        "It becomes denser and heavier",
-        "It becomes lighter and drier"
+        "Orographic rainfall",
+        "Cyclonic rainfall",
+        "Convectional rainfall",
+        "Frontal rainfall"
       ],
-      "answerIndex": 1,
-      "solution": "As air rises, it expands due to lower pressure, which causes it to cool. Cooling reduces the air's capacity to hold moisture, leading to the loss of moisture. The other options incorrectly describe the relationship between rising air, temperature, and moisture content.",
+      "answerIndex": 0,
+      "solution": "Orographic rainfall occurs when moist air is forced to rise over a mountain, leading to heavy rainfall on the windward side. The leeward side receives less rain due to the rain shadow effect. The other options do not describe this specific phenomenon.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "हवा वातावरण में ऊपर उठती है और फैलती है तो क्या होता है?",
+          "stem": "यदि कोई क्षेत्र पर्वत के वायु-प्रवाह तरफ भारी बरसात का अनुभव करता है लेकिन दूसरी तरफ बहुत कम बरसात होती है, तो इस घटना को क्या कहा जाता है?",
           "choices": [
-            "यह गर्म हो जाती है और अधिक नम हो जाती है",
-            "यह ठंडी हो जाती है और नमी खो देती है",
-            "यह घनी और भारी हो जाती है",
-            "यह हल्की और शुष्क हो जाती है"
+            "ओरोग्राफिक बरसात",
+            "चक्रवाती बरसात",
+            "संवहनी बरसात",
+            "सीमा बरसात"
           ],
-          "solution": "जब हवा ऊपर उठती है, तो कम दबाव के कारण यह फैल जाती है, जिसके कारण यह ठंडी हो जाती है। ठंड होने से हवा की नमी को धारण करने की क्षमता कम हो जाती है, जिसके कारण नमी का नुकसान होता है। अन्य विकल्प ऊपर उठती हवा, तापमान और नमी के बीच संबंध के गलत वर्णन करते हैं।",
+          "solution": "ओरोग्राफिक बरसात तब होती है जब नम हवा पर्वत के ऊपर उठने के लिए बाध्य होती है, जिसके कारण वायु-प्रवाह तरफ भारी बरसात होती है। दूसरी तरफ बरसात की छाया प्रभाव के कारण कम बरसात होती है। अन्य विकल्प इस विशिष्ट घटना का वर्णन नहीं करते हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the scientific meaning, with appropriate Hindi terminology used.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "वातावरणात वायू उतरतो आणि विस्तारतो तेव्हा काय होते?",
+          "stem": "जर एखाद्या पर्वताच्या वाऱ्याच्या बाजूला भारी पाऊस पडतो परंतु वाऱ्याच्या दुसऱ्या बाजूला खूप कमी पाऊस पडतो, तर ही घटना कोणत्या नावाने ओळखली जाते?",
           "choices": [
-            "तो उबलतो आणि अधिक नम बनतो",
-            "तो थंड होतो आणि नमी गमावतो",
-            "तो घन आणि भारी बनतो",
-            "तो हलका आणि शुष्क बनतो"
+            "ओरोग्राफिक पाऊस",
+            "चक्रीवादळ पाऊस",
+            "उष्णता पाऊस",
+            "सीमा पाऊस"
           ],
-          "solution": "जेव्हा वायू उतरतो, तेव्हा तो कमी दाबामुळे विस्तारतो, ज्यामुळे तो थंड होतो. थंड होणे वायूच्या नमी धारण करण्याच्या क्षमतेला कमी करते, ज्यामुळे नमी गमावली जाते. इतर विकल्प उतरत वायू, तापमान आणि नमीच्या संबंधांच्या चुकीच्या वर्णनाचा अंदाज देतात.",
+          "solution": "ओरोग्राफिक पाऊस हा तेजस्वी हवा ज्यामुळे पर्वतावर उंचावते, त्यामुळे वाऱ्याच्या बाजूला भारी पाऊस पडतो. वाऱ्याच्या दुसऱ्या बाजूला वर्षाव छाया प्रभावामुळे थोडा पाऊस पडतो. इतर विकल्प या विशिष्ट घटनेचे वर्णन करत नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English content, with appropriate technical terms used in a Marathi-medium context.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Marathi terminology for geographical concepts.",
           "flag": null
         }
       },
@@ -278,20 +386,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Incorrectly assumes that rising air warms and becomes more moist",
         null,
-        "Confuses the effect of expansion with increased density, thinking that rising air becomes more compact and heavy",
-        "Confuses the process with the air becoming denser and heavier"
+        "Confuses orographic with cyclonic rainfall",
+        "Refers to rainfall from weather systems, not mountains",
+        "Refers to rainfall from heating, not topography"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as rising air expands and cools, leading to loss of moisture. The other options reflect common misconceptions about air behavior in the atmosphere.",
+      "critique": "The question is well-constructed and the correct answer is clearly supported by the explanation. The distractors reflect common misconceptions about different types of rainfall.",
       "sources": [
         {
           "document": "ncert/11/geography/kegy210.pdf",
@@ -335,49 +443,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T07:09:45.690Z",
+      "generatedAt": "2026-10-28T19:57:28.419Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If a region experiences heavy rainfall in the summer and is located in the interior of a continent, what type of rainfall is it most likely to be?",
+      "stem": "In which of the following scenarios is the process of condensation most likely to occur?",
       "choices": [
-        "Convectional",
-        "Orographic",
-        "Cyclonic",
-        "Frontal"
+        "When warm air rises and cools",
+        "When cold air is heated",
+        "When air is dry and moving fast",
+        "When humidity is very low"
       ],
       "answerIndex": 0,
-      "solution": "Convectional rainfall occurs when the sun heats the ground, causing warm air to rise and cool, leading to rain. This is common in summer and in inland areas where the ground heats up quickly. Orographic rainfall requires mountains, and cyclonic or frontal rainfall involves weather systems, which are not mentioned here. The correct answer is convectional.",
+      "solution": "Condensation occurs when warm air rises and cools, reaching the dew point where water vapor turns into liquid. When cold air is heated, it becomes less likely to condense because warming reduces the relative humidity. Dry air and low humidity also prevent condensation because there is not enough moisture in the air. Fast-moving air does not directly cause condensation unless it cools sufficiently.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई क्षेत्र गर्मियों में भारी बारिश का अनुभव करता है और महाद्वीप के आंतरिक भाग में स्थित है, तो यह बारिश किस प्रकार की हो सकती है?",
+          "stem": "निम्नलिखित में से किस परिस्थिति में द्रवीकरण की प्रक्रिया सबसे अधिक संभावना है?",
           "choices": [
-            "संवहनीय",
-            "पर्वतीय",
-            "चक्रवातीय",
-            "सीमांत"
+            "जब गर्म हवा ऊपर उठती है और ठंडी हो जाती है",
+            "जब ठंडी हवा गर्म हो जाती है",
+            "जब हवा शुष्क होती है और तेजी से चलती है",
+            "जब आर्द्रता बहुत कम होती है"
           ],
-          "solution": "संवहनीय बारिश तब होती है जब सूर्य भूमि को गर्म करता है, जिससे गर्म हवा ऊपर उठती है और ठंडी हो जाती है, जिसके कारण बारिश होती है। यह गर्मियों में और आंतरिक क्षेत्रों में सामान्य होती है जहां भूमि तेजी से गर्म हो जाती है। पर्वतीय बारिश के लिए पर्वतों की आवश्यकता होती है, और चक्रवातीय या सीमांत बारिश में जलवायु प्रणालियां शामिल होती हैं, जो यहां उल्लेख नहीं की गई हैं। सही उत्तर संवहनीय है।",
+          "solution": "द्रवीकरण तब होता है जब गर्म हवा ऊपर उठती है और ठंडी हो जाती है, जिससे जल वाष्प द्रव में बदल जाता है। जब ठंडी हवा गर्म हो जाती है, तो द्रवीकरण की संभावना कम हो जाती है क्योंकि गर्म करने से सापेक्ष आर्द्रता कम हो जाती है। शुष्क हवा और कम आर्द्रता भी द्रवीकरण को रोकती है क्योंकि हवा में पर्याप्त नमी नहीं होती है। तेजी से चलने वाली हवा द्रवीकरण का कारण नहीं होती है बशर्ते यह पर्याप्त ठंडी न हो।",
           "imageAlt": null,
-          "critique": "Translation is accurate, technical terms are standard in Hindi geography textbooks, and the logic of the solution matches the original.",
+          "critique": "Translation is accurate and maintains the scientific meaning, with appropriate Hindi terminology used for weather processes.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एखाद्या प्रदेशात उन्हाळ्यात जोरदार पाऊस पडतो आणि तो एखाद्या खंडाच्या आंतर्भागात आहे, तर त्या प्रदेशातील पाऊस कोणत्या प्रकारचा असेल?",
+          "stem": "खालील परिस्थितींपैकी कोणत्या ठिकाणी घनीभवन प्रक्रिया अधिक शक्यतो घडू शकते?",
           "choices": [
-            "कॉन्वेक्शनल",
-            "ओरोग्राफिक",
-            "क्यूलोनिक",
-            "फ्रंटल"
+            "जेव्हा उष्ण हवा वर जाते आणि थंड होते",
+            "जेव्हा थंड हवा गरम होते",
+            "जेव्हा हवा शुष्क आणि वेगाने चालते",
+            "जेव्हा आर्द्रता खूप कमी असते"
           ],
-          "solution": "कॉन्वेक्शनल पाऊस तेव्हा होतो जेव्हा सूर्य पृथ्वीच्या पृष्ठभागाला गरम करतो, जेणेकरून उष्ण हवा वर उठते आणि थंड होते, ज्यामुळे पाऊस होतो. हा प्रकार उन्हाळ्यात आणि खंडाच्या आंतर्भागात जेथे पृष्ठभाग जलद गरम होतो तेथे सामान्य असतो. ओरोग्राफिक पाऊस तिर्यक दिशेने पर्वतांच्या आधारावर होतो, आणि क्यूलोनिक किंवा फ्रंटल पाऊस वातावरणीय प्रणालींशी संबंधित असतात, जे येथे उल्लेखिले नाहीत. योग्य उत्तर कॉन्वेक्शनल असेल.",
+          "solution": "घनीभवन होतो जेव्हा उष्ण हवा वर जाते आणि थंड होते, जेथे पाण्याचा वाफ द्रव बनतो. जेव्हा थंड हवा गरम होते, तेव्हा घनीभवन होण्याची शक्यता कमी होते कारण गरमीमुळे सापेक्ष आर्द्रता कमी होते. शुष्क हवा आणि कमी आर्द्रता घनीभवन रोखतात कारण हवेत पाण्याचा वाफ नसतो. वेगाने चालणारी हवा घनीभवन निर्माण करत नाही जेव्हा ती पुरेशी थंड होत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for geographical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for weather processes.",
           "flag": null
         }
       },
@@ -387,9 +495,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses convectional rainfall with orographic, which is caused by mountains",
-        "Confuses convectional rainfall with cyclonic, which is caused by weather systems",
-        "Confuses convectional rainfall with frontal, which is a type of cyclonic rain"
+        "Thinks heating air leads to condensation",
+        "Thinks dry air leads to condensation",
+        "Thinks low humidity leads to condensation"
       ],
       "solverAnswers": [
         0,
@@ -399,7 +507,105 @@
         0
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. Convectional rainfall is indeed common in summer and in interior continental regions due to heating of the land surface causing air to rise and form clouds. The reasoning for the distractors is also valid, as they represent common misconceptions about the causes of different types of rainfall.",
+      "critique": "The correct answer is 0, as condensation occurs when warm air rises and cools to the dew point. The other options represent common misconceptions about condensation.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy210.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 10: Water in the Atmosphere",
+            "ATER IN THE TMOSPHERE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy210.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: Water in the Atmosphere",
+            "ATER IN THE TMOSPHERE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy210.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: Water in the Atmosphere",
+            "ATER IN THE TMOSPHERE"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T19:57:28.419Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A region experiences heavy rainfall in the summer months and very little in the winter. What type of rainfall does this represent?",
+      "choices": [
+        "Orographic",
+        "Cyclonic",
+        "Convectional",
+        "Seasonal"
+      ],
+      "answerIndex": 3,
+      "solution": "Seasonal rainfall occurs when there is a distinct pattern of rain during certain times of the year. This question describes a region with heavy summer rain and little winter rain, which matches the definition of seasonal rainfall. Orographic, cyclonic, and convectional rainfall are caused by specific atmospheric processes, not by seasonal changes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक क्षेत्र में गर्मियों के महीनों में भारी बारिश होती है और सर्दियों में बहुत कम बारिश होती है। यह किस प्रकार की बारिश के अनुरूप है?",
+          "choices": [
+            "ओरोग्राफिक",
+            "चक्रवातीय",
+            "संवहनीय",
+            "musafir"
+          ],
+          "solution": "मौसमी बारिश तब होती है जब वर्ष के निश्चित समय में बारिश का एक अलग पैटर्न होता है। इस प्रश्न में एक क्षेत्र का वर्णन किया गया है जिसमें गर्मियों में भारी बारिश होती है और सर्दियों में बहुत कम बारिश होती है, जो मौसमी बारिश के परिभाषा के अनुरूप है। ओरोग्राफिक, चक्रवातीय और संवहनीय बारिश के विशिष्ट वातावरणीय प्रक्रियाओं के कारण होती है, न कि मौसमी परिवर्तनों के कारण।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms. 'Musafir' is an incorrect translation for 'seasonal' and should be 'मौसमी' (seasonal).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका प्रदेशात उन्हाळ्यात जास्त पाऊस पडतो आणि उन्हाळ्यात थोडा पाऊस पडतो. हे कोणत्या प्रकारच्या पाऊसाचे उदाहरण आहे?",
+          "choices": [
+            "ओरोग्राफिक",
+            "चक्रीवादळीय",
+            "उष्णताविषयक",
+            "मौसमी"
+          ],
+          "solution": "मौसमी पाऊस हा वर्षातील विशिष्ट काळात पाऊस असलेल्या अस्पष्ट वर्षाच्या पॅटर्नमध्ये होतो. हे प्रश्न एका प्रदेशाचे वर्णन करतो जेथे उन्हाळ्यात जास्त पाऊस पडतो आणि उन्हाळ्यात थोडा पाऊस पडतो, जे मौसमी पाऊसच्या व्याख्येशी जुळते. ओरोग्राफिक, चक्रीवादळीय आणि उष्णताविषयक पाऊस हे विशिष्ट वातावरणीय प्रक्रियांमुळे होतात, मौसमी बदलांमुळे नव्हे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for meteorological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Refers to rainfall caused by topography, not seasonality",
+        "Refers to rainfall associated with weather systems, not seasons",
+        "Refers to rainfall from heating, not seasonality",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is ambiguous. While 'seasonal' is technically correct as a general descriptor, the question is more accurately answered by 'convectional' or 'cyclonic' depending on the mechanism. However, the author's key and reasoning are consistent with the provided options.",
       "sources": [
         {
           "document": "ncert/11/geography/kegy210.pdf",
@@ -443,7 +649,105 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T07:09:45.690Z",
+      "generatedAt": "2026-10-28T19:57:28.419Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the primary factor that determines the ability of air to hold water vapour?",
+      "choices": [
+        "Pressure",
+        "Temperature",
+        "Humidity",
+        "Wind speed"
+      ],
+      "answerIndex": 1,
+      "solution": "Temperature is the primary factor because warmer air has a higher capacity to hold water vapour due to the increased kinetic energy of air molecules. Pressure, humidity, and wind speed do not directly determine how much water vapour the air can hold. Humidity refers to the amount of water vapour already present, not the capacity.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "हवा में जल वाष्प को धारण करने की क्षमता को निर्धारित करने वाला प्राथमिक कारक क्या है?",
+          "choices": [
+            "दाब",
+            "तापमान",
+            "आर्द्रता",
+            "हवा की गति"
+          ],
+          "solution": "तापमान प्राथमिक कारक है क्योंकि गर्म हवा में जल वाष्प को धारण करने की अधिक क्षमता होती है क्योंकि हवा के अणुओं की गतिज ऊर्जा बढ़ जाती है। दाब, आर्द्रता और हवा की गति हवा में जल वाष्प की मात्रा को सीधे निर्धारित नहीं करते हैं। आर्द्रता जल वाष्प की उपस्थिति की मात्रा को दर्शाती है, न कि क्षमता को।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, technical terms are appropriately used in Hindi, and the logic of the solution matches the original.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हवेमध्ये जल वाफ धारण करण्याची क्षमता ठरविणारा प्राथमिक घटक कोणता आहे?",
+          "choices": [
+            "दाब",
+            "तापमान",
+            "आर्द्रता",
+            "वाऱ्याची वेग"
+          ],
+          "solution": "तापमान हा प्राथमिक घटक आहे कारण उबदार हवेमध्ये जल वाफ धारण करण्याची जास्त क्षमता असते कारण हवेच्या अणूंची गतिज ऊर्जा वाढते. दाब, आर्द्रता आणि वाऱ्याचा वेग हवेमध्ये किती जल वाफ धारण करता येईल याला थेट निर्धारित करत नाहीत. आर्द्रता ही जल वाफ आता असलेल्या परिमाणाचे वर्णन करते, नाही क्षमतेचे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses temperature with pressure",
+        null,
+        "Confuses temperature with humidity",
+        "Confuses temperature with wind speed"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies temperature as the primary factor, as stated in the passage. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/geography/kegy210.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 10: Water in the Atmosphere",
+            "ATER IN THE TMOSPHERE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy210.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: Water in the Atmosphere",
+            "ATER IN THE TMOSPHERE"
+          ]
+        },
+        {
+          "document": "ncert/11/geography/kegy210.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 10: Water in the Atmosphere",
+            "ATER IN THE TMOSPHERE"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T19:57:28.419Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

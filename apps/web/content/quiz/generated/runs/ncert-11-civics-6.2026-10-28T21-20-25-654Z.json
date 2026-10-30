@@ -1,0 +1,910 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T21:20:25.654Z",
+  "finishedAt": "2026-10-28T21:33:19.645Z",
+  "seconds": 774,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Political Theory",
+    "bookCode": "keps1",
+    "document": "ncert/11/political-science/keps106.pdf",
+    "classLevel": 11,
+    "subject": "Political Science",
+    "chapter": "Chapter 6 — Citizenship",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, marking scheme, 2025-26]\n5. Every aspirant gets a chance to be a member of the Parliament.",
+      "[CBSE Class XII Political Science, marking scheme, 2022-23]\n1. Demands for Autonomy",
+      "[CBSE Class XII Political Science, marking scheme, 2025-26]\n5. D) 1990s",
+      "[CBSE Class XII Political Science, marking scheme, 2024-25]\n11. B) Assam"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 191857,
+      "in": 48,
+      "out": 46,
+      "rejects": 3,
+      "promptTokens": 36678,
+      "completionTokens": 10573
+    },
+    "critique": {
+      "calls": 65,
+      "ms": 453890,
+      "in": 46,
+      "out": 37,
+      "rejects": 9,
+      "promptTokens": 27764,
+      "completionTokens": 11297
+    },
+    "solver": {
+      "calls": 311,
+      "ms": 176393,
+      "in": 37,
+      "out": 31,
+      "rejects": 6,
+      "promptTokens": 56956,
+      "completionTokens": 3390
+    },
+    "form": {
+      "calls": 15,
+      "ms": 41530,
+      "in": 31,
+      "out": 7,
+      "rejects": 24,
+      "promptTokens": 3684,
+      "completionTokens": 1000
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 9,
+      "ms": 1858,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 346060,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 18747,
+      "completionTokens": 10391
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 3,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What does the passage say citizenship implies?",
+      "ms": {
+        "draft": 3765,
+        "critique": 5838,
+        "solver": 1367,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is a refugee, what does the passage suggest about their status?",
+      "ms": {
+        "draft": 3765,
+        "critique": 6801,
+        "solver": 12515,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a group in a country demands equal rights, what does the passage suggest about their struggle?",
+      "ms": {
+        "draft": 3765,
+        "critique": 6579,
+        "solver": 2157,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what might be a reason for a person to be stateless?",
+      "ms": {
+        "draft": 3765,
+        "critique": 6498,
+        "solver": 1295
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what was one of Martin Luther King Jr.'s main arguments against segregation laws?",
+      "ms": {
+        "draft": 4464,
+        "critique": 5728,
+        "solver": 1882,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the relationship between citizens and the nation?",
+      "ms": {
+        "draft": 3765,
+        "critique": 9229,
+        "solver": 12406,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a political party in a state supports job quotas for local residents, which of the following would best support their claim according to the passage?",
+      "ms": {
+        "draft": 4464,
+        "critique": 7383,
+        "solver": 2822
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, how might the principle of 'full and equal membership' help resolve disputes between local and non-local workers?",
+      "ms": {
+        "draft": 4464,
+        "critique": 7038,
+        "solver": 1539,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the relationship between citizenship and the right to basic services?",
+      "ms": {
+        "draft": 4464,
+        "critique": 7933,
+        "solver": 13853
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a state government wants to restrict certain jobs to local residents, what principle of citizenship might this action challenge?",
+      "ms": {
+        "draft": 4464,
+        "critique": 9088,
+        "solver": 12545,
+        "form": 3305
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to T. H. Marshall, what does citizenship ensure despite the existence of social class inequality?",
+      "ms": {
+        "draft": 4730,
+        "critique": 7276
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason given in the passage for opposing segregation laws?",
+      "ms": {
+        "draft": 4464,
+        "critique": 7494,
+        "solver": 15240,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would be the most appropriate response for a government that wants to ensure equal rights for slum-dwellers as per the ideas of citizenship discussed in the passage?",
+      "ms": {
+        "draft": 4730,
+        "critique": 7342,
+        "solver": 12896,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains how the idea of citizenship contributes to a harmonious community?",
+      "ms": {
+        "draft": 4730,
+        "critique": 9403,
+        "solver": 13384,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a feature of a nation state according to the passage?",
+      "ms": {
+        "draft": 3942,
+        "critique": 8476,
+        "solver": 1811,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the case of the slum-dwellers in Bombay, what does the Supreme Court’s decision suggest about the relationship between citizenship and the right to livelihood?",
+      "ms": {
+        "draft": 4730,
+        "critique": 7124,
+        "solver": 14410
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the discussion of land ownership in Zimbabwe, which idea from the concept of citizenship would best support the claim of black Zimbabweans to land?",
+      "ms": {
+        "draft": 4730,
+        "critique": 8666,
+        "solver": 14802,
+        "form": 2691
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about citizenship in India is correct?",
+      "ms": {
+        "draft": 3942,
+        "critique": 6791,
+        "solver": 1468,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a country tries to define its national identity in a way that makes it easier for some citizens to identify with the state, what might be the effect?",
+      "ms": {
+        "draft": 3942,
+        "critique": 6377,
+        "solver": 1824,
+        "form": 2576
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the context of the passage, which of the following scenarios might lead to a controversy over national identity?",
+      "ms": {
+        "draft": 3942,
+        "critique": 7127,
+        "solver": 1658
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is the concept of citizenship in India described as a 'project'?",
+      "ms": {
+        "draft": 3942,
+        "critique": 6742,
+        "solver": 1121,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a key aspect of citizenship according to the passage?",
+      "ms": {
+        "draft": 3727,
+        "critique": 7205
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 12092,
+        "critique": 4925,
+        "solver": 1309,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is not able to exercise their rights equally, what could be the reason?",
+      "ms": {
+        "draft": 12092,
+        "critique": 5505,
+        "solver": 13081,
+        "form": 3947
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a reason why states fix criteria for the grant of citizenship?",
+      "ms": {
+        "draft": 13256,
+        "critique": 6551
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is one issue raised regarding citizenship in India today?",
+      "ms": {
+        "draft": 12092,
+        "critique": 8308,
+        "solver": 14560,
+        "form": 4021
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of the United Nations in relation to refugees?",
+      "ms": {
+        "draft": 13256,
+        "critique": 8714
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the concept of global citizenship beneficial for refugees?",
+      "ms": {
+        "draft": 12092,
+        "critique": 6697,
+        "solver": 14062,
+        "form": 2975
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a country allows people to enter for refuge but restricts their ability to work or own property, what does this suggest about the country's approach to citizenship?",
+      "ms": {
+        "draft": 13256,
+        "critique": 7804
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the concept of global citizenship?",
+      "ms": {
+        "draft": 13256,
+        "critique": 7494,
+        "solver": 12901
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what might be the most important challenge in achieving democratic citizenship?",
+      "ms": {
+        "draft": 13256,
+        "critique": 7352
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a feature of a democratic state's national identity?",
+      "ms": {
+        "draft": 4102,
+        "critique": 7158
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which of the following scenarios would a citizen's right to religious expression be most likely to face restrictions?",
+      "ms": {
+        "draft": 4102,
+        "critique": 8106
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main challenge in defining a national identity in a diverse society?",
+      "ms": {
+        "draft": 4102,
+        "critique": 8850
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, which of the following best describes the main idea of T.H. Marshall's definition of citizenship?",
+      "ms": {
+        "draft": 3925,
+        "critique": 8035,
+        "solver": 1599,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the Indian Constitution's approach to citizenship indicate about the nature of democratic citizenship?",
+      "ms": {
+        "draft": 4102,
+        "critique": 7093,
+        "solver": 13320,
+        "form": 2917
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the challenges of ensuring equal rights for all citizens?",
+      "ms": {
+        "draft": 3925,
+        "critique": 6794,
+        "solver": 1442,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements best reflects the idea of citizenship as a means to counter social class inequality?",
+      "ms": {
+        "draft": 3925,
+        "critique": 7209,
+        "solver": 2395,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes the main argument of Martin Luther King Jr. against segregation laws?",
+      "ms": {
+        "draft": 5004,
+        "critique": 8040,
+        "solver": 9204,
+        "form": 1642
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a right that citizens may expect to enjoy in most democratic states today?",
+      "ms": {
+        "draft": 12092,
+        "critique": 5182,
+        "solver": 1978,
+        "form": 4202,
+        "translation": 53741
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best explains the meaning of 'full and equal membership'?",
+      "ms": {
+        "draft": 3765,
+        "critique": 6246,
+        "solver": 1768,
+        "form": 3565,
+        "translation": 51765
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the Indian Constitution's approach to citizenship?",
+      "ms": {
+        "draft": 4102,
+        "critique": 5892,
+        "solver": 14976,
+        "form": 3325,
+        "translation": 47911
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is forced to leave their country due to war, which of the following is most likely to be true about them?",
+      "ms": {
+        "draft": 13256,
+        "critique": 6916,
+        "solver": 13482,
+        "form": 3695,
+        "translation": 64510
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following could be a contribution of migrants to a local economy?",
+      "ms": {
+        "draft": 12092,
+        "critique": 6391,
+        "solver": 1904,
+        "form": 2305,
+        "translation": 42341
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following scenarios best illustrates the challenge of ensuring equal rights for slum-dwellers?",
+      "ms": {
+        "draft": 3925,
+        "critique": 7111,
+        "solver": 13189,
+        "form": 2747,
+        "translation": 31731
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a democratic country, which of the following is most likely to lead to a struggle for full citizenship rights?",
+      "ms": {
+        "draft": 4102,
+        "critique": 7123,
+        "solver": 18490,
+        "form": 2305,
+        "translation": 50371
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does the passage suggest about the rights of slum-dwellers in terms of their ability to vote?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"According to the passage, what is the main reason why people "
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage say citizenship implies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person is a refugee, what does the passage suggest about their status?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 2 are the same (\"They are considered citizens of all countries\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a group in a country demands equal rights, what does the passage suggest about their struggle?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "According to the passage, what might be a reason for a person to be stateless?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what was one of Martin Luther King Jr.'s main arguments against segregation laws?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given here for a wrong option (…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage say about the relationship between citizens and the nation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (59 vs 35 characters); distractor 1's reason is not a one-line misconception (\"misunderstanding of the passage's mention of 'help and prote…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a political party in a state supports job quotas for local residents, which of the following would best support their claim according to the passage?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, how might the principle of 'full and equal membership' help resolve disputes between local and non-local workers?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Correct answer, so no reason given here for a wrong option (…\"); distractor 3's reason is not a one-line misconception (\"This limits the rights of non-local workers, which the passa…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the relationship between citizenship and the right to basic services?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a state government wants to restrict certain jobs to local residents, what principle of citizenship might this action challenge?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"This is not directly related to the issue of job restriction…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to T. H. Marshall, what does citizenship ensure despite the existence of social class inequality?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason given in the passage for opposing segregation laws?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 are the same (\"They create separate areas for different races.\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What would be the most appropriate response for a government that wants to ensure equal rights for slum-dwellers as per the ideas of citizenship discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"This is the correct answer, so it is not a distractor. This …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains how the idea of citizenship contributes to a harmonious community?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"This is the correct answer, so it is not a distractor. This …\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a feature of a nation state according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's mention of cultural diversity as…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's discussion of inclusive identit…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the case of the slum-dwellers in Bombay, what does the Supreme Court’s decision suggest about the relationship between citizenship and the right to livelihood?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the discussion of land ownership in Zimbabwe, which idea from the concept of citizenship would best support the claim of black Zimbabweans to land?",
+      "reason": "options 2 and 3 are the same (\"The idea that land should be owned only by those who have lived in the country for generations\"); distractor 3's reason is not a one-line misconception (\"This misrepresents the principles of citizenship and exclude…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements about citizenship in India is correct?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's discussion on inclusive citizen…\"); distractor 2's reason is not a one-line misconception (\"Confuses the passage's mention of inclusive citizenship with…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a country tries to define its national identity in a way that makes it easier for some citizens to identify with the state, what might be the effect?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Misunderstands the passage's discussion on citizenship exclu…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's mention of diversity as a reduct…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the context of the passage, which of the following scenarios might lead to a controversy over national identity?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is the concept of citizenship in India described as a 'project'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misunderstands the passage's idea of citizenship as a static…\"); distractor 3's reason is not a one-line misconception (\"Confuses the passage's inclusive citizenship with religious-…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a key aspect of citizenship according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What does the passage suggest about the role of the government in ensuring equal rights for all citizens?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Too absolute and not supported by the passage…\"); distractor 3's reason is not a one-line misconception (\"Contradicts the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person is not able to exercise their rights equally, what could be the reason?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrect as the passage says rights are granted…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a reason why states fix criteria for the grant of citizenship?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is one issue raised regarding citizenship in India today?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Too absolute and not supported by the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of the United Nations in relation to refugees?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the concept of global citizenship beneficial for refugees?",
+      "reason": "options 0 and 2 are the same (\"It allows them to be treated as equal in every country\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a country allows people to enter for refuge but restricts their ability to work or own property, what does this suggest about the country's approach to citizenship?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What does the passage say about the concept of global citizenship?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the passage, what might be the most important challenge in achieving democratic citizenship?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a feature of a democratic state's national identity?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In which of the following scenarios would a citizen's right to religious expression be most likely to face restrictions?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what is the main challenge in defining a national identity in a diverse society?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, which of the following best describes the main idea of T.H. Marshall's definition of citizenship?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the Indian Constitution's approach to citizenship indicate about the nature of democratic citizenship?",
+      "reason": "options 0 and 2 are the same (\"It is based on a single cultural identity\"); distractor 2's reason is not a one-line misconception (\"the passage emphasizes diversity and inclusivity, not a sing…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the challenges of ensuring equal rights for all citizens?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements best reflects the idea of citizenship as a means to counter social class inequality?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following best describes the main argument of Martin Luther King Jr. against segregation laws?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,841 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T01:02:05.451Z",
+  "finishedAt": "2026-10-29T01:10:29.099Z",
+  "seconds": 504,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Physics Part-II",
+    "bookCode": "leph2",
+    "document": "ncert/12/physics/leph205.pdf",
+    "classLevel": 12,
+    "subject": "Physics",
+    "chapter": "Chapter 5 — Nuclei",
+    "edition": "Reprint 2026-27",
+    "chunks": 22,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Physics, sample question paper, 2025-26]\n24. A fast-moving neutron collides with the nucleus of Plutonium (Pu), thereby 3\nproducing Xenon (Xe) and Zirconium (Zr) along with neutrons.\n(I) Write the nuclear fission reaction.\n(II) Find the energy released in the above nuclear reaction.\nGiven atomic masses:\nm ( 239 94 𝑃𝑢) = 239.052157u,\nm ( 103 40 𝑍𝑟) = 102.926597u,\nm ( 134 54 𝑋𝑒) = 133.905040u &\nm ( 𝑛) 1 0 = 1.00866u.",
+      "[CBSE Class XII Physics, sample question paper, 2024-25]\n15. Assertion (A): Nuclei having mass number about 60 are least stable..\nReason (R): When two or more light nuclei are combined into a heavier nucleus then the binding\nenergy per nucleon will decrease.",
+      "[CBSE Class XII Physics, marking scheme, 2025-26]\n24. A fast-moving neutron collides with the nucleus of Plutonium (Pu),\nthereby producing Xenon (Xe) and Zirconium (Zr) along with neutrons.\n(I) Nuclear fission reaction.\n239 94 𝑃𝑢 + 𝑛 → 1 0 134 54 𝑋𝑒 + 103 40 𝑍𝑟 + 3 𝑛 1 0 1\n(II) ∆ 𝑚 = [m ( 239 94 𝑃𝑢) + m ( 𝑛)] - [m ( 1 0 134 54 𝑋𝑒) + m ( 103 40 𝑍𝑟) +\n3 m ( 𝑛) ] 1 0\n= [239.052157 + 1.00866] - [ 133.905040 + 102.926597 +\n3 𝑋 1.00866 ] 1\n= 240.060817 – 239.857617\n= 0.2032 amu\nQ value = ∆ 𝑚c 2 1\n= 0.2032 x 931.5 MeV\n= 189.2808 MeV",
+      "[CBSE Class XII Physics, sample question paper, 2023-24]\n22. A given coin has a mass of 3.0 g. Calculate the nuclear energy that would be required\nto separate all the neutrons and protons from each other. For simplicity assume that\nthe coin is entirely made of 63 29 𝐶𝑢 atoms (of mass 62.92960 u).\nGiven m p = 1.007825u and m n = 1.008665u."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 160111,
+      "in": 42,
+      "out": 42,
+      "rejects": 0,
+      "promptTokens": 51678,
+      "completionTokens": 9781
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 276100,
+      "in": 42,
+      "out": 35,
+      "rejects": 7,
+      "promptTokens": 21722,
+      "completionTokens": 8361
+    },
+    "solver": {
+      "calls": 214,
+      "ms": 90845,
+      "in": 35,
+      "out": 26,
+      "rejects": 9,
+      "promptTokens": 38749,
+      "completionTokens": 2066
+    },
+    "form": {
+      "calls": 18,
+      "ms": 57015,
+      "in": 26,
+      "out": 12,
+      "rejects": 14,
+      "promptTokens": 6540,
+      "completionTokens": 1644
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 34,
+      "ms": 6384,
+      "in": 12,
+      "out": 3,
+      "rejects": 9,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 132530,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 8582,
+      "completionTokens": 4801
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "A nucleus has a mass number of 23 and an atomic number of 11. How many neutrons does this nucleus contain?",
+      "ms": {
+        "draft": 11632,
+        "critique": 4670
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The atomic mass of a carbon atom is 12 u. The mass of a proton is 1.00727 u and the mass of a neutron is 1.00866 u. What is the mass defect of the carbon nucleus, assuming it contains 6 protons and 6 neutrons?",
+      "ms": {
+        "draft": 11632,
+        "critique": 8929,
+        "solver": 1667
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following particles is not found inside the nucleus of an atom?",
+      "ms": {
+        "draft": 11632,
+        "critique": 4355,
+        "solver": 13184
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the relationship between the radius of a nucleus and its mass number according to the passage?",
+      "ms": {
+        "draft": 3359,
+        "critique": 5514,
+        "solver": 1620,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A nucleus has a mass number of 56 and an atomic number of 26. What is the number of neutrons in this nucleus?",
+      "ms": {
+        "draft": 11632,
+        "critique": 5649,
+        "solver": 14720
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a nucleus has a mass number of 56 and a mass of 55.85u, what is the nuclear density?",
+      "ms": {
+        "draft": 3359,
+        "critique": 6549,
+        "solver": 1211,
+        "form": 3180
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of an isobar according to the passage?",
+      "ms": {
+        "draft": 3359,
+        "critique": 5413,
+        "solver": 1011,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the mass-energy equivalence relation in nuclear reactions?",
+      "ms": {
+        "draft": 3359,
+        "critique": 6480,
+        "solver": 1575,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the difference between the mass of a nucleus and the sum of the masses of its individual nucleons?",
+      "ms": {
+        "draft": 4374,
+        "critique": 5701,
+        "solver": 1579,
+        "form": 3062
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a nucleus with a mass number of 240 splits into two nuclei with a mass number of 120, what can be inferred about the energy released?",
+      "ms": {
+        "draft": 4374,
+        "critique": 5957,
+        "solver": 1647,
+        "form": 2976
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the energy required to separate a nucleus into its individual nucleons called?",
+      "ms": {
+        "draft": 4374,
+        "critique": 6189,
+        "solver": 1259,
+        "form": 2950
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main conclusion drawn from the observation that the binding energy per nucleon is practically constant for nuclei with mass numbers between 30 and 170?",
+      "ms": {
+        "draft": 4374,
+        "critique": 6568,
+        "solver": 990,
+        "form": 3400
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the mass of a nucleus is found to be less than the sum of the masses of its individual nucleons, what does this imply about the energy of the nucleus?",
+      "ms": {
+        "draft": 4374,
+        "critique": 6270,
+        "solver": 1385,
+        "form": 3545
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which force is responsible for binding protons and neutrons in the nucleus?",
+      "ms": {
+        "draft": 4044,
+        "critique": 5279
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what happens to the binding energy per nucleon when a heavy nucleus undergoes fission?",
+      "ms": {
+        "draft": 4044,
+        "critique": 6190,
+        "solver": 1234,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main source of energy in the interior of stars?",
+      "ms": {
+        "draft": 4502,
+        "critique": 6111
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a nucleus has a binding energy per nucleon of 8 MeV and a mass defect of 0.2 amu, what is the approximate total binding energy of the nucleus? (Note: 1 amu = 931.5 MeV)",
+      "ms": {
+        "draft": 4044,
+        "critique": 10198
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which particle is present in the nucleus and is neutral?",
+      "ms": {
+        "draft": 3734,
+        "critique": 5928,
+        "solver": 4123,
+        "form": 857
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A nuclear reaction is given as: H + H → H + H. Based on the given atomic masses, what is the Q-value of this reaction, and is it exothermic or endothermic?",
+      "ms": {
+        "draft": 11972,
+        "critique": 4481,
+        "solver": 1392
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The binding energy of a nucleus is calculated using the mass defect. If the mass of a nitrogen nucleus is 14.00307 u, and the mass of its constituent protons and neutrons is 14.1133 u, what is the binding energy in MeV?",
+      "ms": {
+        "draft": 11972,
+        "critique": 5491,
+        "solver": 1325
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A nuclear reaction involves a neutron colliding with a Plutonium-239 nucleus, producing Xenon-134, Zirconium-103, and three neutrons. What is the mass defect in this reaction?",
+      "ms": {
+        "draft": 11972,
+        "critique": 6162,
+        "solver": 1742
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A neutron collides with a Plutonium-239 nucleus, producing Xenon-134, Zirconium-103, and three neutrons. What is the total number of neutrons in the products of the reaction?",
+      "ms": {
+        "draft": 11972,
+        "critique": 6965,
+        "solver": 1150
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A nuclear reaction is given as: C + C → Ne + He. If the masses of the reactants and products are known, what is the Q-value of the reaction, and is it exothermic or endothermic?",
+      "ms": {
+        "draft": 11972,
+        "critique": 6162,
+        "solver": 1782,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The nuclear radius is given by R = R0 * A^(1/3), where R0 is a constant and A is the mass number. If the radius of a gold isotope is 7.2 fm, what would be the radius of a silver isotope with a mass number of 107?",
+      "ms": {
+        "draft": 11972,
+        "critique": 6859,
+        "solver": 15253,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between the nuclear radius and the mass number?",
+      "ms": {
+        "draft": 3460,
+        "critique": 7338
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A nucleus has a mass number of 238 and an atomic number of 92. What is the number of neutrons in the nucleus?",
+      "ms": {
+        "draft": 3460,
+        "critique": 5956,
+        "solver": 10299
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main fuel in the sun according to the passage?",
+      "ms": {
+        "draft": 3533,
+        "critique": 5002,
+        "solver": 1522,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary force responsible for holding the nucleus together?",
+      "ms": {
+        "draft": 51171,
+        "critique": 5257
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the sun’s core temperature is 1.5 × 10^7 K, which of the following is most likely true about the fusion of protons?",
+      "ms": {
+        "draft": 3533,
+        "critique": 5774,
+        "solver": 1135
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a proton or a neutron in the nucleus?",
+      "ms": {
+        "draft": 4430,
+        "critique": 4233
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A nucleus of a certain element contains 8 protons and 8 neutrons. What is the mass number of this nucleus?",
+      "ms": {
+        "draft": 11632,
+        "critique": 4811,
+        "solver": 14348,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The mass of a nucleus of an element is less than the sum of the masses of its individual protons and neutrons. What is the reason for this difference?",
+      "ms": {
+        "draft": 11632,
+        "critique": 4763,
+        "solver": 1618,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for a proton or a neutron in the context of a nucleus?",
+      "ms": {
+        "draft": 3359,
+        "critique": 5461,
+        "solver": 1258,
+        "form": 4063
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a nucleus has 79 protons and 118 neutrons, what is its mass number?",
+      "ms": {
+        "draft": 3359,
+        "critique": 6388,
+        "solver": 1265,
+        "form": 2652
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the binding energy per nucleon higher for medium-mass nuclei compared to light or heavy nuclei?",
+      "ms": {
+        "draft": 4374,
+        "critique": 5393,
+        "solver": 1072,
+        "form": 2628
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary reason for the constancy of binding energy per nucleon in medium-sized nuclei?",
+      "ms": {
+        "draft": 4044,
+        "critique": 4829,
+        "solver": 1357,
+        "form": 2987
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the mass number of a nucleus if it contains 92 protons and 146 neutrons?",
+      "ms": {
+        "draft": 3460,
+        "critique": 7301,
+        "solver": 931,
+        "form": 3182
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a source of energy in the interior of stars?",
+      "ms": {
+        "draft": 3533,
+        "critique": 5196,
+        "solver": 1323,
+        "form": 3455
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the difference between the mass of a nucleus and the sum of the masses of its individual nucleons?",
+      "ms": {
+        "draft": 4048,
+        "critique": 5129,
+        "solver": 509,
+        "form": 929
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements about the nucleus of an atom is correct?",
+      "ms": {
+        "draft": 3460,
+        "critique": 8462,
+        "solver": 1581,
+        "form": 3770,
+        "translation": 43647
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct statement about the fusion process in the sun?",
+      "ms": {
+        "draft": 3533,
+        "critique": 6104,
+        "solver": 1212,
+        "form": 3487,
+        "translation": 44180
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the mass of a nucleus is less than the total mass of its individual protons and neutrons, what does this imply?",
+      "ms": {
+        "draft": 3460,
+        "critique": 5510,
+        "solver": 2152,
+        "form": 3071,
+        "translation": 40568
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A nucleus has a mass number of 23 and an atomic number of 11. How many neutrons does this nucleus contain?",
+      "reason": "the critic finds option 1 correct, the key is 2"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The atomic mass of a carbon atom is 12 u. The mass of a proton is 1.00727 u and the mass of a neutron is 1.00866 u. What is the mass defect of the carbon nucleus, assuming it contains 6 protons and 6 neutrons?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following particles is not found inside the nucleus of an atom?",
+      "reason": "after redrafting distractors 0, 1, 3: option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the relationship between the radius of a nucleus and its mass number according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"Radius is directly proportional to the cube root of mass number\" / \"Radius is inversely proportional to the cube root of mass number\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A nucleus has a mass number of 56 and an atomic number of 26. What is the number of neutrons in this nucleus?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a nucleus has a mass number of 56 and a mass of 55.85u, what is the nuclear density?",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the definition of an isobar according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the mass-energy equivalence relation in nuclear reactions?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"It shows that mass cannot be converted to energy\" / \"It proves that energy cannot be converted to mass\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used to describe the difference between the mass of a nucleus and the sum of the masses of its individual nucleons?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Incorrect term for a concept not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a nucleus with a mass number of 240 splits into two nuclei with a mass number of 120, what can be inferred about the energy released?",
+      "reason": "options 0 and 1 say the same thing (\"Energy is released because the binding energy per nucleon increases\" / \"Energy is absorbed because the binding energy per nucleon increases\"); options 0 and 3 say the same thing (\"Energy is released because the binding energy per nucleon increases\" / \"Energy is released because the binding energy per nucleon decreases\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the energy required to separate a nucleus into its individual nucleons called?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Incorrect term not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main conclusion drawn from the observation that the binding energy per nucleon is practically constant for nuclei with mass numbers between 30 and 170?",
+      "reason": "figure: figure spec refused: spec.y.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the mass of a nucleus is found to be less than the sum of the masses of its individual nucleons, what does this imply about the energy of the nucleus?",
+      "reason": "options 0 and 1 say the same thing (\"The energy of the nucleus is less than the sum of the energies of its constituents\" / \"The energy of the nucleus is greater than the sum of the energies of its constituents\"); distractor 2's reason is not a one-line misconception (\"Incorrectly assumes the opposite of what the passage states…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which force is responsible for binding protons and neutrons in the nucleus?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what happens to the binding energy per nucleon when a heavy nucleus undergoes fission?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main source of energy in the interior of stars?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a nucleus has a binding energy per nucleon of 8 MeV and a mass defect of 0.2 amu, what is the approximate total binding energy of the nucleus? (Note: 1 amu = 931.5 MeV)",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which particle is present in the nucleus and is neutral?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A nuclear reaction is given as: H + H → H + H. Based on the given atomic masses, what is the Q-value of this reaction, and is it exothermic or endothermic?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The binding energy of a nucleus is calculated using the mass defect. If the mass of a nitrogen nucleus is 14.00307 u, and the mass of its constituent protons and neutrons is 14.1133 u, what is the binding energy in MeV?",
+      "reason": "the solver picked option 1 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A nuclear reaction involves a neutron colliding with a Plutonium-239 nucleus, producing Xenon-134, Zirconium-103, and three neutrons. What is the mass defect in this reaction?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A neutron collides with a Plutonium-239 nucleus, producing Xenon-134, Zirconium-103, and three neutrons. What is the total number of neutrons in the products of the reaction?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A nuclear reaction is given as: C + C → Ne + He. If the masses of the reactants and products are known, what is the Q-value of the reaction, and is it exothermic or endothermic?",
+      "reason": "options are in more than one unit (mev endothermic, mev exothermic, mev neither); options are written to different precisions (0 and 1 decimals); ARITHMETIC MISMATCH — checkExpr \"(2 * 12.000000) - (19.992439 + 4.002603)\" = 0.004957999999998464, but the key says 1.5"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The nuclear radius is given by R = R0 * A^(1/3), where R0 is a constant and A is the mass number. If the radius of a gold isotope is 7.2 fm, what would be the radius of a silver isotope with a mass number of 107?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"7.2 * (107 / 197)^(1/3)\" = 5.874510444309222, but the key says 6"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what is the relationship between the nuclear radius and the mass number?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A nucleus has a mass number of 238 and an atomic number of 92. What is the number of neutrons in the nucleus?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main fuel in the sun according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the primary force responsible for holding the nucleus together?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the sun’s core temperature is 1.5 × 10^7 K, which of the following is most likely true about the fusion of protons?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for a proton or a neutron in the nucleus?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A nucleus of a certain element contains 8 protons and 8 neutrons. What is the mass number of this nucleus?",
+      "reason": "near-duplicate of served question cmvlkbtio0n1cgpfhtjb0ufj8 (cosine 0.983 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "The mass of a nucleus of an element is less than the sum of the masses of its individual protons and neutrons. What is the reason for this difference?",
+      "reason": "near-duplicate of served question cmvi4vakr0bmmgpfhnz5wpqdb (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term used for a proton or a neutron in the context of a nucleus?",
+      "reason": "near-duplicate of served question cmvi4vaki0blsgpfhaay3pytz (cosine 0.938 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a nucleus has 79 protons and 118 neutrons, what is its mass number?",
+      "reason": "near-duplicate of served question cmvi4vakm0bm4gpfh58pfbgq9 (cosine 0.988 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is the binding energy per nucleon higher for medium-mass nuclei compared to light or heavy nuclei?",
+      "reason": "near-duplicate of served question cmvi4vakt0bmsgpfhnw8taa7l (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the primary reason for the constancy of binding energy per nucleon in medium-sized nuclei?",
+      "reason": "near-duplicate of served question cmvi4vakc0blggpfhcnjji492 (cosine 0.918 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the mass number of a nucleus if it contains 92 protons and 146 neutrons?",
+      "reason": "near-duplicate of served question cmvlkbtis0n1mgpfhi4zm3b9h (cosine 0.970 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a source of energy in the interior of stars?",
+      "reason": "near-duplicate of served question cmvi4vak60blagpfhxtg7qajt (cosine 0.946 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term used to describe the difference between the mass of a nucleus and the sum of the masses of its individual nucleons?",
+      "reason": "near-duplicate of served question cmvlkbtif0n10gpfha4uc8sjd (cosine 0.921 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

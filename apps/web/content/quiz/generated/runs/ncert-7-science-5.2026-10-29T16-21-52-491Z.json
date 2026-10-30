@@ -1,0 +1,753 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T16:21:52.491Z",
+  "finishedAt": "2026-10-29T16:35:01.152Z",
+  "seconds": 789,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu105.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 5 — Changes Around Us: Physical and Chemical",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2026-27]\n17. C. physical change because the space between crystals is adjusted. 1\nNo new substance is formed in this process, only the spacing between\ncrystals changes that alters the wavelength of light reflected.",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n17. Chameleons contain crystals that reflect light and produce colour. Adjusting the\nspacing between these crystals, they can alter the wavelengths of light reflected, 1\nthus changing their skin colour. Based on the above information, we can infer\nthat the change in colour by chameleons is a:\nA. chemical change because change in colour takes place.\nB. chemical change because wavelength of reflected light changes.\nC. physical change because the space between crystals is adjusted.\nD. physical change because light is reflected by crystals.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n21. to 26 are very short answer questions\n21 Dil. HCl is added to Zn granules.” How will you prove that chemical change has taken place 2\nhere? Support your response with two arguments.",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n7. (c) Addition of hydrogen in presence of catalyst changes A to C 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 243406,
+      "in": 41,
+      "out": 38,
+      "rejects": 3,
+      "promptTokens": 33206,
+      "completionTokens": 10364
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 463070,
+      "in": 38,
+      "out": 27,
+      "rejects": 11,
+      "promptTokens": 23153,
+      "completionTokens": 9256
+    },
+    "solver": {
+      "calls": 225,
+      "ms": 164596,
+      "in": 27,
+      "out": 22,
+      "rejects": 5,
+      "promptTokens": 41396,
+      "completionTokens": 2360
+    },
+    "form": {
+      "calls": 1,
+      "ms": 2940,
+      "in": 22,
+      "out": 10,
+      "rejects": 12,
+      "promptTokens": 322,
+      "completionTokens": 75
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 46,
+      "ms": 8962,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 493403,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 21438,
+      "completionTokens": 10869
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 3,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following changes is similar to the process of melting ice?",
+      "ms": {
+        "draft": 6854,
+        "critique": 9356
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a physical change?",
+      "ms": {
+        "draft": 6854,
+        "critique": 10487
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main characteristic of a chemical change?",
+      "ms": {
+        "draft": 6854,
+        "critique": 8608,
+        "solver": 2226,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the description of the lime water turning milky when carbon dioxide is added, which of the following is a chemical change?",
+      "ms": {
+        "draft": 6854,
+        "critique": 9295
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a chemical change?",
+      "ms": {
+        "draft": 19784,
+        "critique": 11127,
+        "solver": 18326
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that a piece of paper caught fire when sunlight was focused on it with a magnifying glass. What can be concluded about this process?",
+      "ms": {
+        "draft": 19784,
+        "critique": 10268
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the minimum temperature at which a substance catches fire called?",
+      "ms": {
+        "draft": 19784,
+        "critique": 10002,
+        "solver": 16477,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what can be inferred about the burning of a candle?",
+      "ms": {
+        "draft": 19784,
+        "critique": 9746,
+        "solver": 17633,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage says that the burning of a magnesium ribbon is a chemical change. Which of the following best explains why?",
+      "ms": {
+        "draft": 19784,
+        "critique": 8790,
+        "solver": 14994,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a physical change?",
+      "ms": {
+        "draft": 19784,
+        "critique": 8259,
+        "solver": 16851,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main difference between a physical and a chemical change?",
+      "ms": {
+        "draft": 4819,
+        "critique": 9907,
+        "solver": 2073,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that weathering of rocks leads to the formation of soil. What is the primary reason for this?",
+      "ms": {
+        "draft": 4819,
+        "critique": 9399,
+        "solver": 2728,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A chameleon changes its skin colour by adjusting the spacing between crystals in its skin. Based on this, what type of change is this?",
+      "ms": {
+        "draft": 6231,
+        "critique": 11065
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the story about Prithvi, which of the following is an example of a chemical change?",
+      "ms": {
+        "draft": 6231,
+        "critique": 10281
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a student observed that when a solution of vinegar and baking soda was added to lime water, the lime water turned milky. What is the most likely reason for this observation?",
+      "ms": {
+        "draft": 6231,
+        "critique": 9131,
+        "solver": 1099,
+        "form": 2940
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student claims that the change in a chameleon's skin colour is a physical change because it involves the reflection of light. Is this a valid argument?",
+      "ms": {
+        "draft": 6231,
+        "critique": 6057,
+        "solver": 862
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a physical change?",
+      "ms": {
+        "draft": 6296,
+        "critique": 7847
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the experiment where a message is written with lemon juice and made visible with heat, what type of change occurs?",
+      "ms": {
+        "draft": 6296,
+        "critique": 12285,
+        "solver": 1950
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment with lime water and vinegar, what causes the lime water to turn milky?",
+      "ms": {
+        "draft": 6296,
+        "critique": 7436,
+        "solver": 17575
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A chameleon changes its skin colour to match its surroundings. What type of change is this?",
+      "ms": {
+        "draft": 6296,
+        "critique": 6866,
+        "solver": 19661,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following changes is both physical and chemical?",
+      "ms": {
+        "draft": 6296,
+        "critique": 9532
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a physical change?",
+      "ms": {
+        "draft": 15795,
+        "critique": 9194,
+        "solver": 15978,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a chemical change?",
+      "ms": {
+        "draft": 5960,
+        "critique": 12398
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following changes is an example of both physical and chemical change?",
+      "ms": {
+        "draft": 15795,
+        "critique": 10189,
+        "solver": 22040,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when a candle is covered with a glass tumbler?",
+      "ms": {
+        "draft": 5960,
+        "critique": 8716
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the minimum temperature at which a substance catches fire called?",
+      "ms": {
+        "draft": 5960,
+        "critique": 8267
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a chemical change that can be reversed?",
+      "ms": {
+        "draft": 15795,
+        "critique": 14827,
+        "solver": 20666
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student observes that a paper catches fire when sunrays are focused on it using a magnifying glass. What can be concluded about this change?",
+      "ms": {
+        "draft": 5960,
+        "critique": 9318,
+        "solver": 9238,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a physical change?",
+      "ms": {
+        "draft": 5143,
+        "critique": 8199,
+        "solver": 1762,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main characteristic of a chemical change?",
+      "ms": {
+        "draft": 5143,
+        "critique": 9100,
+        "solver": 1156,
+        "form": 1,
+        "translation": 41452
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between a physical and a chemical change?",
+      "ms": {
+        "draft": 6296,
+        "critique": 11161,
+        "solver": 16841,
+        "form": 0,
+        "translation": 54104
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a physical change?",
+      "ms": {
+        "draft": 4819,
+        "critique": 7729,
+        "solver": 2587,
+        "form": 0,
+        "translation": 52686
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following changes is a physical change?",
+      "ms": {
+        "draft": 4819,
+        "critique": 8322,
+        "solver": 2656,
+        "form": 0,
+        "translation": 47246
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following changes can be reversed?",
+      "ms": {
+        "draft": 15795,
+        "critique": 10954,
+        "solver": 1855,
+        "form": 0,
+        "translation": 52707
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that when she added a drop of red ink to a glass of water, the water turned red. What kind of change did she observe?",
+      "ms": {
+        "draft": 6854,
+        "critique": 7712,
+        "solver": 14918,
+        "form": 0,
+        "translation": 53507
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A rock changes from black to red due to exposure to water and air. Based on this, what type of change is this?",
+      "ms": {
+        "draft": 4819,
+        "critique": 9718,
+        "solver": 2203,
+        "form": 1,
+        "translation": 64126
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the case of a chameleon, when it changes its skin colour by adjusting the spacing between crystals, what type of change is this?",
+      "ms": {
+        "draft": 15795,
+        "critique": 9736,
+        "solver": 1994,
+        "form": 0,
+        "translation": 54297
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student conducted an experiment where she mixed two substances, and the mixture started to fizz and release a gas. She then passed the gas through lime water, and it turned milky. What can she conclude about the reaction?",
+      "ms": {
+        "draft": 6854,
+        "critique": 7861,
+        "solver": 16151,
+        "form": 0,
+        "translation": 67299
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of a physical change?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following is a physical change that can be reversed?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following changes is similar to the process of melting ice?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of a physical change?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main characteristic of a chemical change?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"confuses the reversibility of changes with the formation of …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the description of the lime water turning milky when carbon dioxide is added, which of the following is a chemical change?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a chemical change?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student observed that a piece of paper caught fire when sunlight was focused on it with a magnifying glass. What can be concluded about this process?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the minimum temperature at which a substance catches fire called?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, what can be inferred about the burning of a candle?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"It involves only a physical change\" / \"3: It involves only a physical change\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage says that the burning of a magnesium ribbon is a chemical change. Which of the following best explains why?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (52 vs 25 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a physical change?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main difference between a physical and a chemical change?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage states that weathering of rocks leads to the formation of soil. What is the primary reason for this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Thinks that the main process is a chemical change, which is …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A chameleon changes its skin colour by adjusting the spacing between crystals in its skin. Based on this, what type of change is this?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the story about Prithvi, which of the following is an example of a chemical change?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In an experiment, a student observed that when a solution of vinegar and baking soda was added to lime water, the lime water turned milky. What is the most likely reason for this observation?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the nature of the change, thinking it is pure…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student claims that the change in a chameleon's skin colour is a physical change because it involves the reflection of light. Is this a valid argument?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a chemical change?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a physical change?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the experiment where a message is written with lemon juice and made visible with heat, what type of change occurs?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the experiment with lime water and vinegar, what causes the lime water to turn milky?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A chameleon changes its skin colour to match its surroundings. What type of change is this?",
+      "reason": "option 3 is a catch-all (\"3: None of the above\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following changes is both physical and chemical?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a physical change?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a chemical change?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following changes is an example of both physical and chemical change?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What happens when a candle is covered with a glass tumbler?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the minimum temperature at which a substance catches fire called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is an example of a chemical change that can be reversed?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student observes that a paper catches fire when sunrays are focused on it using a magnifying glass. What can be concluded about this change?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of a physical change?",
+      "reason": "near-duplicate of batch item \"Which of the following changes is a physical chang…\" (cosine 0.937 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

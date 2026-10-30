@@ -1,0 +1,922 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T20:43:43.683Z",
+  "finishedAt": "2026-10-28T20:52:44.780Z",
+  "seconds": 541,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Political Theory",
+    "bookCode": "keps1",
+    "document": "ncert/11/political-science/keps102.pdf",
+    "classLevel": 11,
+    "subject": "Political Science",
+    "chapter": "Chapter 2 — Freedom",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, marking scheme, 2022-23]\n1. Demands for Autonomy",
+      "[CBSE Class XII Political Science, marking scheme, 2023-24]\n11. For the early realization of freedom of which country did 1\nIndia make an earnest effort by convening an international Politics in India\nconference to support the freedom struggle. Since\na. Malaysia Independence\nb. Vietnam Pg. No: 58\nc. Thailand\nd. Indonesia\nAns. d. Indonesia",
+      "[CBSE Class XII Political Science, sample question paper, 2023-24]\n11. For the early realization of freedom of which country did India make an 1\nearnest effort by convening an international conference to support\nthe freedom struggle.\na. Malaysia\nb. Vietnam\nc. Thailand\nd. Indonesia",
+      "[CBSE Class XII Political Science, marking scheme, 2025-26]\n7. C) National security and economic development 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 202626,
+      "in": 47,
+      "out": 46,
+      "rejects": 1,
+      "promptTokens": 39459,
+      "completionTokens": 11284
+    },
+    "critique": {
+      "calls": 61,
+      "ms": 415235,
+      "in": 46,
+      "out": 41,
+      "rejects": 5,
+      "promptTokens": 27212,
+      "completionTokens": 10320
+    },
+    "solver": {
+      "calls": 317,
+      "ms": 185897,
+      "in": 41,
+      "out": 36,
+      "rejects": 5,
+      "promptTokens": 62145,
+      "completionTokens": 3591
+    },
+    "form": {
+      "calls": 6,
+      "ms": 16133,
+      "in": 36,
+      "out": 5,
+      "rejects": 31,
+      "promptTokens": 1506,
+      "completionTokens": 400
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 9,
+      "ms": 1828,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 183499,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 10110,
+      "completionTokens": 5516
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does the passage suggest is the core relationship that discussions on freedom should examine?",
+      "ms": {
+        "draft": 4811,
+        "critique": 6794,
+        "solver": 1249,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is one of the key reasons why constraints on individual freedom may be considered acceptable?",
+      "ms": {
+        "draft": 4811,
+        "critique": 6978,
+        "solver": 16417
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is not allowed to move freely within their country, which aspect of freedom does this primarily restrict?",
+      "ms": {
+        "draft": 4811,
+        "critique": 8022,
+        "solver": 16088,
+        "form": 2773
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person is not allowed to speak freely about their beliefs, which of the following is most directly affected according to the passage?",
+      "ms": {
+        "draft": 4811,
+        "critique": 9378,
+        "solver": 15478,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what does the term 'Swaraj' mean?",
+      "ms": {
+        "draft": 3923,
+        "critique": 6846,
+        "solver": 1625,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage imply about the significance of freedom in the context of social constraints?",
+      "ms": {
+        "draft": 4811,
+        "critique": 7257,
+        "solver": 10142,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best represents the idea of a 'free society'?",
+      "ms": {
+        "draft": 4811,
+        "critique": 6877,
+        "solver": 15085,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best explains the positive dimension of freedom according to the passage?",
+      "ms": {
+        "draft": 3923,
+        "critique": 6394,
+        "solver": 1799,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a necessary constraint?",
+      "ms": {
+        "draft": 3923,
+        "critique": 6098,
+        "solver": 1799,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a society wants to ensure that people can live freely while respecting differences, what should it prioritize?",
+      "ms": {
+        "draft": 3923,
+        "critique": 6658,
+        "solver": 1264,
+        "form": 2986
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a country wants to ensure that its citizens can fully develop their creativity and capabilities, what should it focus on?",
+      "ms": {
+        "draft": 3923,
+        "critique": 5978,
+        "solver": 1717,
+        "form": 1622
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason the passage emphasizes the importance of understanding the 'Self' in the context of Swaraj?",
+      "ms": {
+        "draft": 3923,
+        "critique": 6417,
+        "solver": 1804,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main idea behind the 'harm principle'?",
+      "ms": {
+        "draft": 4443,
+        "critique": 5966,
+        "solver": 996,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the context of the passage, when can the state impose restrictions on an individual's freedom?",
+      "ms": {
+        "draft": 4443,
+        "critique": 6702,
+        "solver": 1427,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the context of the passage, which of the following is a reasonable restriction on freedom?",
+      "ms": {
+        "draft": 4443,
+        "critique": 6747,
+        "solver": 1011,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following scenarios best illustrates the application of the 'harm principle'?",
+      "ms": {
+        "draft": 4443,
+        "critique": 7840,
+        "solver": 1722
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best reflects the liberal perspective on the role of the state in society, based on the passage?",
+      "ms": {
+        "draft": 4443,
+        "critique": 6795,
+        "solver": 1523
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the main focus of modern liberalism?",
+      "ms": {
+        "draft": 4443,
+        "critique": 7035,
+        "solver": 1367
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are the two dimensions of freedom discussed in the passage?",
+      "ms": {
+        "draft": 4123,
+        "critique": 6387,
+        "solver": 1956,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best represents the idea of positive liberty?",
+      "ms": {
+        "draft": 4123,
+        "critique": 6762,
+        "solver": 1852
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is it important to protect freedom of expression?",
+      "ms": {
+        "draft": 4123,
+        "critique": 7789,
+        "solver": 920,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to John Stuart Mill, why should there be freedom of expression for ideas that may seem false?",
+      "ms": {
+        "draft": 4185,
+        "critique": 5342
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, why does John Stuart Mill believe that even false ideas should be allowed to be expressed?",
+      "ms": {
+        "draft": 12155,
+        "critique": 5303,
+        "solver": 1825,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a society suppresses all ideas that are not acceptable today, what risk does it run according to the passage?",
+      "ms": {
+        "draft": 12155,
+        "critique": 4971,
+        "solver": 16817,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is necessary for enjoying freedom?",
+      "ms": {
+        "draft": 12155,
+        "critique": 5563,
+        "solver": 16975,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the context of the passage, which of the following would be a reasonable restriction on freedom of expression?",
+      "ms": {
+        "draft": 12155,
+        "critique": 9155,
+        "solver": 17611,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between freedom and responsibility?",
+      "ms": {
+        "draft": 12155,
+        "critique": 7964,
+        "solver": 16563,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what does freedom mean in terms of making choices?",
+      "ms": {
+        "draft": 12155,
+        "critique": 7682,
+        "solver": 19223,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are the two dimensions of freedom discussed in the passage?",
+      "ms": {
+        "draft": 4437,
+        "critique": 8078,
+        "solver": 17857,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements best captures the difference between negative and positive liberty?",
+      "ms": {
+        "draft": 4437,
+        "critique": 6227,
+        "solver": 1234,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements is most in line with the idea that 'one can be free only in society'?",
+      "ms": {
+        "draft": 4437,
+        "critique": 5180,
+        "solver": 1946,
+        "form": 3444
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main principle that liberalism is based on?",
+      "ms": {
+        "draft": 4914,
+        "critique": 7588,
+        "solver": 1411,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following scenarios best illustrates the 'harm principle' as explained in the passage?",
+      "ms": {
+        "draft": 4914,
+        "critique": 8179,
+        "solver": 1900,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the case of loud music in an apartment building, what does the passage suggest should happen?",
+      "ms": {
+        "draft": 4914,
+        "critique": 6041,
+        "solver": 13558,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the 'reasonable restrictions' in the Indian Constitution?",
+      "ms": {
+        "draft": 4914,
+        "critique": 7088,
+        "solver": 12056,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what does the term 'Swaraj' mean?",
+      "ms": {
+        "draft": 4112,
+        "critique": 9065
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say about the role of democratic government in protecting freedom?",
+      "ms": {
+        "draft": 4112,
+        "critique": 9206
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage states that some constraints are necessary for maintaining social order. Which of the following best reflects this idea?",
+      "ms": {
+        "draft": 4112,
+        "critique": 7192
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a community bans certain types of dress to prevent potential harm, what does the passage suggest about such a ban?",
+      "ms": {
+        "draft": 4914,
+        "critique": 6924,
+        "solver": 17333,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what was the main reason Nelson Mandela spent 27 years in jail?",
+      "ms": {
+        "draft": 5951,
+        "critique": 7135
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main idea behind the concept of freedom as a positive dimension?",
+      "ms": {
+        "draft": 4112,
+        "critique": 7893,
+        "solver": 10672,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the concept of 'negative liberty' primarily focus on?",
+      "ms": {
+        "draft": 4437,
+        "critique": 7861,
+        "solver": 1583,
+        "form": 3445
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does negative liberty primarily focus on?",
+      "ms": {
+        "draft": 4123,
+        "critique": 7060,
+        "solver": 1496,
+        "form": 0,
+        "translation": 41922
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a school rules that students cannot wear certain clothes, which dimension of freedom is being restricted?",
+      "ms": {
+        "draft": 4123,
+        "critique": 7584,
+        "solver": 1174,
+        "form": 4053,
+        "translation": 53717
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a school rule states that students must wear uniforms, what would a negative liberty advocate say about this rule?",
+      "ms": {
+        "draft": 4437,
+        "critique": 7725,
+        "solver": 1588,
+        "form": 0,
+        "translation": 54531
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following scenarios best illustrates the use of 'positive liberty'?",
+      "ms": {
+        "draft": 4437,
+        "critique": 6484,
+        "solver": 2460,
+        "form": 0,
+        "translation": 29019
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest is the core relationship that discussions on freedom should examine?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Confuses the focus of the passage with economic factors…\"); distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's emphasis on individual and socie…\"); distractor 3's reason is not a one-line misconception (\"Focuses on government instead of society as a whole as the c…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, what is one of the key reasons why constraints on individual freedom may be considered acceptable?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person is not allowed to move freely within their country, which aspect of freedom does this primarily restrict?",
+      "reason": "options 2 and 3 are the same (\"The economic dimension of freedom\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a person is not allowed to speak freely about their beliefs, which of the following is most directly affected according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what does the term 'Swaraj' mean?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Too broad and not specific to the passage's explanation…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage imply about the significance of freedom in the context of social constraints?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Implies that freedom is only possible when there are no cons…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best represents the idea of a 'free society'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Implies that no constraints are necessary, but the passage a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best explains the positive dimension of freedom according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of a necessary constraint?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Contradicts the passage's rejection of harmful systems…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly suggests a society with no rules, which the pass…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a society wants to ensure that people can live freely while respecting differences, what should it prioritize?",
+      "reason": "the key is far longer than every distractor (59 vs 36 characters); distractor 2's reason is not a one-line misconception (\"Incorrectly suggests eliminating government, which the passa…\"); distractor 3's reason is not a one-line misconception (\"Contradicts the passage’s emphasis on peaceful coexistence…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a country wants to ensure that its citizens can fully develop their creativity and capabilities, what should it focus on?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Incorrectly suggests more control, which the passage opposes…\"); distractor 3's reason is not a one-line misconception (\"Contradicts the passage’s emphasis on personal development…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the main reason the passage emphasizes the importance of understanding the 'Self' in the context of Swaraj?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Contradicts the passage’s focus on collective development…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main idea behind the 'harm principle'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for this option (answerInde…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the context of the passage, when can the state impose restrictions on an individual's freedom?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (63 vs 38 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the context of the passage, which of the following is a reasonable restriction on freedom?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following scenarios best illustrates the application of the 'harm principle'?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following best reflects the liberal perspective on the role of the state in society, based on the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, what is the main focus of modern liberalism?",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What are the two dimensions of freedom discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"confuses the definitions of freedom as mentioned in the pass…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following best represents the idea of positive liberty?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is it important to protect freedom of expression?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to John Stuart Mill, why should there be freedom of expression for ideas that may seem false?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of the state in relation to individual freedom?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, why does John Stuart Mill believe that even false ideas should be allowed to be expressed?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a society suppresses all ideas that are not acceptable today, what risk does it run according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (59 vs 28 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is necessary for enjoying freedom?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the context of the passage, which of the following would be a reasonable restriction on freedom of expression?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between freedom and responsibility?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what does freedom mean in terms of making choices?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believing that freedom means no limits, ignoring the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What are the two dimensions of freedom discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements best captures the difference between negative and positive liberty?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements is most in line with the idea that 'one can be free only in society'?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Contradicts the passage's view that freedom is possible only…\"); distractor 3's reason is not a one-line misconception (\"Suggests a complete absence of constraints, which the passag…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main principle that liberalism is based on?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's focus on individual liberty…\"); distractor 3's reason is not a one-line misconception (\"Correct answer based on the harm principle explanation in th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following scenarios best illustrates the 'harm principle' as explained in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Correct answer because the passage mentions that loud music …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the case of loud music in an apartment building, what does the passage suggest should happen?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Overestimates the severity of the situation as per the passa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage say about the 'reasonable restrictions' in the Indian Constitution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the concept of restrictions as being entirely …\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the purpose of reasonable restrictions as bei…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what does the term 'Swaraj' mean?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does the passage say about the role of democratic government in protecting freedom?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The passage states that some constraints are necessary for maintaining social order. Which of the following best reflects this idea?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a community bans certain types of dress to prevent potential harm, what does the passage suggest about such a ban?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, what was the main reason Nelson Mandela spent 27 years in jail?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the main idea behind the concept of freedom as a positive dimension?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What does the concept of 'negative liberty' primarily focus on?",
+      "reason": "near-duplicate of batch item \"What does negative liberty primarily focus on?…\" (cosine 0.917 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

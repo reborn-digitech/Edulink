@@ -1,0 +1,772 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T09:42:52.694Z",
+  "finishedAt": "2026-10-29T09:54:43.705Z",
+  "seconds": 711,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "fegp1",
+    "document": "ncert/6/mathematics/fegp102.pdf",
+    "classLevel": 6,
+    "subject": "Mathematics",
+    "chapter": "Chapter 2 — Lines and angLes",
+    "edition": "Reprint 2026-27",
+    "chunks": 27,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, sample question paper, 2022-23]\n20. Assertion (A): The acute angle between the line 𝑟̅ = 𝚤̂ + 𝚥̂ + 2𝑘 ෠ + 𝜆(𝚤̂ − 𝚥̂) and the x-axis\nగ\nis ସ\nReason(R): The acute angle 𝜃 between the lines\n𝑟̅ = 𝑥 𝚤̂ + 𝑦 𝚥̂ + 𝑧 𝑘 ଵ ଵ ଵ ෠ + 𝜆൫𝑎 ଵ 𝚤̂ + 𝑏 𝚥̂ + 𝑐 𝑘 and ଵ ଵ ෠൯\n𝑟̅ = 𝑥 𝚤̂ + 𝑦 𝚥̂ + 𝑧 𝑘 ଶ ଶ ଶ ෠ + 𝜇൫𝑎 ଶ 𝚤̂ + 𝑏 𝚥̂ + 𝑐 𝑘 is given by 𝑐𝑜𝑠𝜃 = ଶ ଶ ෠൯ |௔ ௔ ା௕ ௕ ା௖ ௖ | భ మ భ మ భ మ\nට௔ భ మ ା௕ భ మ ା௖ భ మ ට௔ మ మ ା௕ మ మ ା௖ మ మ",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n11. If two tangents inclined at an angle of 60ᵒ are drawn to a circle of radius 3cm, then the 1\nlength of each tangent is equal to\n3√3 (b) 3cm (c) 6cm (d) 3√3cm\n(a) 2 cm",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n3. The lines representing the given pair of linear equations are non-intersecting. Which of the 1\nfollowing statements is true?\n௔ଵ ௕ଵ ௖ଵ\n(a) ௔ଶ = ௕ଶ = ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(b) ௔ଶ = ௕ଶ ≠ ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(c) ௔ଶ ≠ ௕ଶ = ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(d) ௔ଶ ≠ ௕ଶ ≠ ௖ଶ",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n4. Graphically, the pair of equations given by\n6x – 3y + 10 = 0\n2x – y + 9 = 0\nrepresents two lines which are\n(a) intersecting at exactly one point.\n(c) coincident.\n(c) 5 (d) –5\n(b) parallel.\n(d) intersecting at exactly two points."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 245973,
+      "in": 43,
+      "out": 39,
+      "rejects": 4,
+      "promptTokens": 49627,
+      "completionTokens": 10129
+    },
+    "critique": {
+      "calls": 45,
+      "ms": 377414,
+      "in": 39,
+      "out": 26,
+      "rejects": 13,
+      "promptTokens": 19943,
+      "completionTokens": 7929
+    },
+    "solver": {
+      "calls": 171,
+      "ms": 109437,
+      "in": 26,
+      "out": 25,
+      "rejects": 1,
+      "promptTokens": 30195,
+      "completionTokens": 1669
+    },
+    "form": {
+      "calls": 16,
+      "ms": 120021,
+      "in": 25,
+      "out": 15,
+      "rejects": 10,
+      "promptTokens": 12875,
+      "completionTokens": 2265
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 45,
+      "ms": 9735,
+      "in": 15,
+      "out": 10,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 505152,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 22338,
+      "completionTokens": 10805
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a ray starts at point A and passes through point B, how can it be named?",
+      "ms": {
+        "draft": 5479,
+        "critique": 6516,
+        "solver": 2492,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If two rays form an angle of 60 degrees, and one of the rays is rotated further by 30 degrees, what is the new angle between the two rays?",
+      "ms": {
+        "draft": 5479,
+        "critique": 7781,
+        "solver": 3319,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the diagram, ray AB is rotated 45 degrees around point B to form a new ray BC. Which of the following must be true about the angle formed at B?",
+      "ms": {
+        "draft": 5479,
+        "critique": 7274,
+        "solver": 2280,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which scenario would a rotating arm not pass through a slit?",
+      "ms": {
+        "draft": 3748,
+        "critique": 8840,
+        "solver": 1973,
+        "form": 3193
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the measure of a right angle in degrees?",
+      "ms": {
+        "draft": 4993,
+        "critique": 9510
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two angles are superimposed and their arms do not overlap, what can be concluded?",
+      "ms": {
+        "draft": 3748,
+        "critique": 8445,
+        "solver": 1430,
+        "form": 4398
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the measure of a straight angle?",
+      "ms": {
+        "draft": 4993,
+        "critique": 9694
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct classification of angles?",
+      "ms": {
+        "draft": 4993,
+        "critique": 12053
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a protractor is used to measure an angle, and the two arms of the angle pass through the numbers 40 and 110 on the outer scale, what is the measure of the angle?",
+      "ms": {
+        "draft": 4993,
+        "critique": 9275
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of degrees in a full circle?",
+      "ms": {
+        "draft": 4708,
+        "critique": 8411
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a circle is folded into four equal parts, what is the measure of each part?",
+      "ms": {
+        "draft": 4708,
+        "critique": 9739
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the passage states that a full turn is 360°, and a straight angle is half of a full turn, what is the measure of a straight angle?",
+      "ms": {
+        "draft": 4993,
+        "critique": 8554,
+        "solver": 19871,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student measured an angle and found it to be 45°. If the angle is folded in half, what will be the measure of each new angle?",
+      "ms": {
+        "draft": 4708,
+        "critique": 7217,
+        "solver": 2349,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a semicircle is folded into two equal parts, what is the measure of each part?",
+      "ms": {
+        "draft": 4708,
+        "critique": 11983
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a full circle is divided into 8 equal parts, what is the measure of each part?",
+      "ms": {
+        "draft": 4708,
+        "critique": 5558
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, the angle ∠AOB is equal to ∠BOC, and so on, up to ∠GOH. If the total angle is 180°, how many equal parts is it divided into?",
+      "ms": {
+        "draft": 7551,
+        "critique": 7654,
+        "solver": 23200
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A toy has slanting slabs attached to its sides. The angle between the vertical arm and the visible arm of the slab is 60°. What is the angle between the visible arm and the horizontal arm?",
+      "ms": {
+        "draft": 7551,
+        "critique": 12424,
+        "solver": 1602,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following can be used to measure the size of an angle?",
+      "ms": {
+        "draft": 5788,
+        "critique": 8201
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, which of the following points lies on exactly one line segment?",
+      "ms": {
+        "draft": 5788,
+        "critique": 9274
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If two rays start from the same point, what is the name of the angle they form?",
+      "ms": {
+        "draft": 5788,
+        "critique": 8600
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following angles is formed when a full rotation is divided into four equal parts?",
+      "ms": {
+        "draft": 5788,
+        "critique": 8422
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the measure of a right angle?",
+      "ms": {
+        "draft": 7963,
+        "critique": 7253,
+        "solver": 2224,
+        "form": 3909
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many right angles are formed when a straight line is divided into two equal parts by a perpendicular line?",
+      "ms": {
+        "draft": 79073,
+        "critique": 8005
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements is true about comparing angles?",
+      "ms": {
+        "draft": 7891,
+        "critique": 6410,
+        "solver": 738,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a straight angle is divided into two equal parts, what is each part called?",
+      "ms": {
+        "draft": 3748,
+        "critique": 9631,
+        "solver": 2244,
+        "form": 4532
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a circle is divided into 360 equal parts, what is the measure of each part?",
+      "ms": {
+        "draft": 4993,
+        "critique": 9613,
+        "solver": 15700,
+        "form": 4481
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the measure of half a circle?",
+      "ms": {
+        "draft": 4708,
+        "critique": 9606,
+        "solver": 16678,
+        "form": 2768
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the measure of an angle that is exactly one-fourth of a complete angle?",
+      "ms": {
+        "draft": 7551,
+        "critique": 6334,
+        "solver": 1882,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the angle between two successive numbers on a clock is 30°, what will be the angle between the hands of the clock at 4 o'clock?",
+      "ms": {
+        "draft": 7551,
+        "critique": 7025,
+        "solver": 2286,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the common starting point of two rays that form an angle?",
+      "ms": {
+        "draft": 5479,
+        "critique": 6136,
+        "solver": 1447,
+        "form": 0,
+        "translation": 43602
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for a line segment extended indefinitely on both sides?",
+      "ms": {
+        "draft": 5788,
+        "critique": 9744,
+        "solver": 12701,
+        "form": 3497,
+        "translation": 46610
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for an angle formed by a straight line?",
+      "ms": {
+        "draft": 3748,
+        "critique": 8158,
+        "solver": 2182,
+        "form": 5522,
+        "translation": 45526
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes a line segment?",
+      "ms": {
+        "draft": 5479,
+        "critique": 7839,
+        "solver": 3979,
+        "form": 0,
+        "translation": 51234
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How can two angles be compared?",
+      "ms": {
+        "draft": 3748,
+        "critique": 8708,
+        "solver": 12814,
+        "form": 3818,
+        "translation": 52591
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If one angle is placed over another and their arms overlap, what does this indicate?",
+      "ms": {
+        "draft": 3748,
+        "critique": 8223,
+        "solver": 2363,
+        "form": 3715,
+        "translation": 55409
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements about angles is true?",
+      "ms": {
+        "draft": 5479,
+        "critique": 9698,
+        "solver": 2551,
+        "form": 0,
+        "translation": 72646
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the angle ∠TIN, which point is the vertex?",
+      "ms": {
+        "draft": 7963,
+        "critique": 7449,
+        "solver": 2059,
+        "form": 0,
+        "translation": 35582
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the measure of a quarter of a full turn?",
+      "ms": {
+        "draft": 4813,
+        "critique": 7589,
+        "solver": 2213,
+        "form": 3903,
+        "translation": 19360
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A puzzle states: 'I am an acute angle. If you double my measure, you get an acute angle. If you triple my measure, you get an acute angle again. If you quadruple my measure, you get an acute angle yet again. But if you multiply my measure by 5, you get an obtuse angle.' What could be the measure of this angle?",
+      "ms": {
+        "draft": 7551,
+        "critique": 11786,
+        "solver": 2673,
+        "form": 0,
+        "translation": 75715
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a ray starts at point A and passes through point B, how can it be named?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label AB"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If two rays form an angle of 60 degrees, and one of the rays is rotated further by 30 degrees, what is the new angle between the two rays?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label angle"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the diagram, ray AB is rotated 45 degrees around point B to form a new ray BC. Which of the following must be true about the angle formed at B?",
+      "reason": "figure: figure spec refused: spec.angles.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In which scenario would a rotating arm not pass through a slit?",
+      "reason": "options 0 and 2 say the same thing (\"When the angle of the arm is smaller than the slit\" / \"When the angle of the arm is larger than the slit\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the measure of a right angle in degrees?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If two angles are superimposed and their arms do not overlap, what can be concluded?",
+      "reason": "options 0 and 1 say the same thing (\"They are equal in size\" / \"They are not equal in size\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what is the measure of a straight angle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct classification of angles?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a protractor is used to measure an angle, and the two arms of the angle pass through the numbers 40 and 110 on the outer scale, what is the measure of the angle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the total number of degrees in a full circle?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a circle is folded into four equal parts, what is the measure of each part?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the passage states that a full turn is 360°, and a straight angle is half of a full turn, what is the measure of a straight angle?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student measured an angle and found it to be 45°. If the angle is folded in half, what will be the measure of each new angle?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a semicircle is folded into two equal parts, what is the measure of each part?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a full circle is divided into 8 equal parts, what is the measure of each part?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "In a clock, what is the angle between the hands at 1 o'clock?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the measure of a straight angle?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the name of the angle shown in the diagram below?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What is the measure of half of a half turn?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given figure, the angle ∠AOB is equal to ∠BOC, and so on, up to ∠GOH. If the total angle is 180°, how many equal parts is it divided into?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A toy has slanting slabs attached to its sides. The angle between the vertical arm and the visible arm of the slab is 60°. What is the angle between the visible arm and the horizontal arm?",
+      "reason": "figure: figure spec refused: spec.parts: lever has no label \"vertical\" (it has fulcrum, effort, load)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following can be used to measure the size of an angle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given figure, which of the following points lies on exactly one line segment?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If two rays start from the same point, what is the name of the angle they form?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following angles is formed when a full rotation is divided into four equal parts?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the measure of a right angle?",
+      "reason": "checkExpr \"90\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How many right angles are formed when a straight line is divided into two equal parts by a perpendicular line?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements is true about comparing angles?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct reason, no misconception here, so no reason is given…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a straight angle is divided into two equal parts, what is each part called?",
+      "reason": "near-duplicate of served question cmveex2fo0041gowcxuw1kqm5 (cosine 0.935 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a circle is divided into 360 equal parts, what is the measure of each part?",
+      "reason": "near-duplicate of served question cmv3k5ssg001tgnjudausav5v (cosine 0.946 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the measure of half a circle?",
+      "reason": "near-duplicate of served question cmvimm75s0dpmgpfhugnxxudz (cosine 0.932 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the measure of an angle that is exactly one-fourth of a complete angle?",
+      "reason": "near-duplicate of served question cmv3k5ss80015gnjuwr3ff9lz (cosine 0.948 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the angle between two successive numbers on a clock is 30°, what will be the angle between the hands of the clock at 4 o'clock?",
+      "reason": "near-duplicate of served question cmvm6wdyd000pgp21tzs4wrpq (cosine 0.940 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

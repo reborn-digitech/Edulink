@@ -1,0 +1,611 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T06:50:08.947Z",
+  "finishedAt": "2026-10-26T06:57:43.844Z",
+  "seconds": 455,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy212.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 12 — Water (oceans)",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2025-26]\n29. 5\nA Hamburg\nB Capetown\nC Panama Canal\nD Amazon Basin\nE Santiago\nF Vladivostok\nG Downs\nFor Visually impaired students.\nA Hamburg/London/North Cape\nB Capetown\nC Rhine waterway\nD Amazon Basin\nE Santiago/ Buenos Airies\nF Vladivostok/ St. Petersburg\nG Downs",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n6. c. It is situated at the head of Gulf of Kachchh",
+      "[CBSE Class XII Geography, sample question paper, 2024-25]\n21. Study the map of Suez Canal and answer the following questions: 1+1+1\n=3\n(I) Name the two seas connected by the Suez Canal.\n(II) Why do we consider this as Europe’s gateway to the Indian Ocean?\n(III) Write one characteristic of the Suez Canal.\n21.1 The following questions are for Visually Impaired Candidates only in lieu of 1+1+1=\nQ.21 3\n(I) Name the two oceans connected by the Panama Canal.\n(II) Write one unique feature of the Panama Canal.\n(III) Why is this canal vital for the economies of Latin America?\n7 Geography SQP Class-XII 2024-25",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 129093,
+      "in": 33,
+      "out": 29,
+      "rejects": 4,
+      "promptTokens": 25781,
+      "completionTokens": 6258
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 258940,
+      "in": 29,
+      "out": 28,
+      "rejects": 1,
+      "promptTokens": 14235,
+      "completionTokens": 5657
+    },
+    "solver": {
+      "calls": 169,
+      "ms": 92062,
+      "in": 28,
+      "out": 22,
+      "rejects": 6,
+      "promptTokens": 26468,
+      "completionTokens": 1605
+    },
+    "form": {
+      "calls": 15,
+      "ms": 81652,
+      "in": 22,
+      "out": 14,
+      "rejects": 8,
+      "promptTokens": 9027,
+      "completionTokens": 1630
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 3873,
+      "in": 14,
+      "out": 10,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 496158,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 23112,
+      "completionTokens": 11888
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 3,
+    "2": 2,
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a person is standing on the continental shelf, what is the maximum depth they could expect to find the ocean floor?",
+      "ms": {
+        "draft": 3146,
+        "critique": 5941,
+        "solver": 2173
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a major division of the ocean floor?",
+      "ms": {
+        "draft": 3146,
+        "critique": 8802,
+        "solver": 1647,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of oceanic trenches?",
+      "ms": {
+        "draft": 3146,
+        "critique": 8753,
+        "solver": 1332,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of the ocean floor that is volcanic in origin?",
+      "ms": {
+        "draft": 4356,
+        "critique": 8815,
+        "solver": 1971
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a reason for the water crisis on Earth?",
+      "ms": {
+        "draft": 3146,
+        "critique": 8484,
+        "solver": 13916,
+        "form": 3811
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the thermocline?",
+      "ms": {
+        "draft": 4356,
+        "critique": 6846,
+        "solver": 2102,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following explains why the temperature of the ocean decreases rapidly with depth up to 200 meters?",
+      "ms": {
+        "draft": 4356,
+        "critique": 8444,
+        "solver": 1688,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following factors does NOT influence the salinity of ocean water?",
+      "ms": {
+        "draft": 4135,
+        "critique": 10391
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following statements about salinity in the Indian Ocean is correct?",
+      "ms": {
+        "draft": 4135,
+        "critique": 9984,
+        "solver": 1347,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the salinity in the North Sea remain higher than expected for its latitude?",
+      "ms": {
+        "draft": 4135,
+        "critique": 8514,
+        "solver": 857
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a factor that affects the salinity of an ocean?",
+      "ms": {
+        "draft": 3550,
+        "critique": 8966,
+        "solver": 16614
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on Figure 12.5, which of the following regions has the highest salinity?",
+      "ms": {
+        "draft": 3550,
+        "critique": 7729,
+        "solver": 1620,
+        "form": 4233
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements best explains why the North Sea has higher salinity than expected for its latitude?",
+      "ms": {
+        "draft": 3550,
+        "critique": 8503,
+        "solver": 1724
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why do enclosed seas in low latitudes have higher temperatures than open seas?",
+      "ms": {
+        "draft": 4644,
+        "critique": 8382,
+        "solver": 2009
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the temperature of the deep ocean nearly constant at around 0°C?",
+      "ms": {
+        "draft": 4644,
+        "critique": 8145,
+        "solver": 2604,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which cycle describes the movement of water on, in, and above the Earth?",
+      "ms": {
+        "draft": 3146,
+        "critique": 5547,
+        "solver": 1345,
+        "form": 6355
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is most likely to be the reason for the higher temperature of enclosed seas in low latitudes compared to open seas?",
+      "ms": {
+        "draft": 4356,
+        "critique": 7356,
+        "solver": 1425,
+        "form": 3650
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a region experiences high evaporation and low precipitation, what would be the likely effect on the salinity of the ocean in that region?",
+      "ms": {
+        "draft": 3550,
+        "critique": 7181,
+        "solver": 2037,
+        "form": 3927
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary source of heat for ocean waters?",
+      "ms": {
+        "draft": 4644,
+        "critique": 9958,
+        "solver": 1796,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a part of the hydrological cycle?",
+      "ms": {
+        "draft": 3372,
+        "critique": 5560,
+        "solver": 730,
+        "form": 0,
+        "translation": 30192
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a factor that influences the salinity of ocean water?",
+      "ms": {
+        "draft": 3550,
+        "critique": 6865,
+        "solver": 1761,
+        "form": 5295,
+        "translation": 47776
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the average salinity of the Indian Ocean?",
+      "ms": {
+        "draft": 3550,
+        "critique": 7864,
+        "solver": 1904,
+        "form": 5219,
+        "translation": 40186
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the Earth due to its abundant supply of water?",
+      "ms": {
+        "draft": 3146,
+        "critique": 6651,
+        "solver": 15370,
+        "form": 5296,
+        "translation": 46482
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary source of heat for the ocean water?",
+      "ms": {
+        "draft": 4356,
+        "critique": 9820,
+        "solver": 1727,
+        "form": 3318,
+        "translation": 48770
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a submarine canyon is found cutting across the continental shelf and slope, which of the following is likely to be its origin?",
+      "ms": {
+        "draft": 4356,
+        "critique": 6118,
+        "solver": 1974,
+        "form": 4271,
+        "translation": 56949
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a submerged mountain in the ocean?",
+      "ms": {
+        "draft": 4644,
+        "critique": 8332,
+        "solver": 1369,
+        "form": 0,
+        "translation": 47502
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a region experiences high evaporation and low precipitation, what effect would this have on the salinity of the surrounding ocean water?",
+      "ms": {
+        "draft": 4135,
+        "critique": 9167,
+        "solver": 17167,
+        "form": 3158,
+        "translation": 60314
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the rapid decrease in ocean temperature between 100-400 meters depth?",
+      "ms": {
+        "draft": 4644,
+        "critique": 8365,
+        "solver": 1289,
+        "form": 0,
+        "translation": 59414
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that the salinity in a particular ocean region is lower than average. Which of the following could best explain this observation?",
+      "ms": {
+        "draft": 4135,
+        "critique": 9952,
+        "solver": 2170,
+        "form": 3010,
+        "translation": 53390
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the temperature of ocean water?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a person is standing on the continental shelf, what is the maximum depth they could expect to find the ocean floor?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a major division of the ocean floor?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of oceanic trenches?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a feature of the ocean floor that is volcanic in origin?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a reason for the water crisis on Earth?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"States the opposite of what is mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the thermocline?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following explains why the temperature of the ocean decreases rapidly with depth up to 200 meters?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following factors does NOT influence the salinity of ocean water?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following statements about salinity in the Indian Ocean is correct?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why does the salinity in the North Sea remain higher than expected for its latitude?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a flat-topped seamount?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is the largest ocean?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What percentage of the Earth's water is found in the oceans?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a factor that affects the salinity of an ocean?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on Figure 12.5, which of the following regions has the highest salinity?",
+      "reason": "figure: figure spec refused: spec.title: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following statements best explains why the North Sea has higher salinity than expected for its latitude?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Why do enclosed seas in low latitudes have higher temperatures than open seas?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the temperature of the deep ocean nearly constant at around 0°C?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.surface: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which cycle describes the movement of water on, in, and above the Earth?",
+      "reason": "near-duplicate of served question cmvl8husd0mblgpfh7kyilcfx (cosine 0.925 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which of the following is most likely to be the reason for the higher temperature of enclosed seas in low latitudes compared to open seas?",
+      "reason": "near-duplicate of served question cmvl8husw0md3gpfhbul03baf (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a region experiences high evaporation and low precipitation, what would be the likely effect on the salinity of the ocean in that region?",
+      "reason": "near-duplicate of batch item \"If a region experiences high evaporation and low p…\" (cosine 0.976 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the primary source of heat for ocean waters?",
+      "reason": "near-duplicate of batch item \"What is the primary source of heat for the ocean w…\" (cosine 0.949 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

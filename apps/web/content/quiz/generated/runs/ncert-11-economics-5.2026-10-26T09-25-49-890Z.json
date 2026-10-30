@@ -1,0 +1,885 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T09:25:49.890Z",
+  "finishedAt": "2026-10-26T09:33:08.633Z",
+  "seconds": 439,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Indian Economic Development",
+    "bookCode": "keec1",
+    "document": "ncert/11/economics/keec105.pdf",
+    "classLevel": 11,
+    "subject": "Economics",
+    "chapter": "Chapter 5 — Rural Development",
+    "edition": "Reprint 2026-27",
+    "chunks": 21,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Economics, sample question paper, 2022-23]\n29. Defend or refute the following statement with valid explanation: 3\n‘Disguised unemployment is a common form of unemployment in rural India’\nOr\nCritically evaluate the role of rural banking system in the process of rural development in 3\nIndia.",
+      "[CBSE Class XII Economics, sample question paper, 2022-23]\n32. State whether the following statements are true/false, with valid arguments:\na) Human Capital and Human Development are one and the same thing 2\nb) India has a poor stock of technical manpower. 2\n33 a) Define agricultural marketing. 2\nb) Discuss briefly the importance of micro-credit programmes in rural development. 2\nc) Enlist any two problems faced by farmers in the initial years of organic farming. 2\nOR\na) “India has failed to implement the recommendations of Education Commission of\n1964 -66.” Give valid arguments in support of the given statement. 3\nb) ‘Casual wage work is the major source of employment in rural India ‘. Defend or\nrefute the given statement with valid reason. 3",
+      "[CBSE Class XII Economics, sample question paper, 2023-24]\n24. Micro credit programmes play a vital role in ensuring an overall development of the rural\neconomy as they____________.(Choose the correct alternative to fill up the blank)\n(i) provide financial support\n(ii) lead to women empowerment\n(iii) enhance the reach of formal credit system\nAlternatives:\na) (i) and (ii) b) (ii) and (iii) 1\nc) (i) and (iii) d) (i), (ii) and (iii)\n25 _______may be defined as the measure of the extent of demographic participation in the\nsocial and political decision making.\n(Choose the correct alternative to fill up the blank)\na) Economic indicator b) Liberty indicator\nc) Health indicator d) Demographic indicator 1",
+      "[CBSE Class XII Economics, sample question paper, 2025-26]\n26 _______ is the measure being taken to create orderly and transparent 1\nmarketing conditions. (Choose the correct option to fill up the blank)\nA. Cooperative marketing\nB. Assurance of Minimum Support Price (MSP)\nC. Provision of infrastructural development\nD. Regulation of markets\n27 Read the following statements carefully: 1\nStatement 1: Great Leap Forward (GLF) campaign met with many problems\nlike severe drought, conflict with Russia etc.\nStatement 2: Under agricultural reforms, commune lands were allocated to\nindividual households for ownership, who were allowed to keep all post-tax\nincome.\nIn light of the given statements, choose the correct option from the following:\nA. Statement 1 is "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Economics in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 173969,
+      "in": 47,
+      "out": 44,
+      "rejects": 3,
+      "promptTokens": 46733,
+      "completionTokens": 9805
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 313745,
+      "in": 44,
+      "out": 38,
+      "rejects": 6,
+      "promptTokens": 22607,
+      "completionTokens": 8829
+    },
+    "solver": {
+      "calls": 249,
+      "ms": 115373,
+      "in": 38,
+      "out": 32,
+      "rejects": 6,
+      "promptTokens": 42404,
+      "completionTokens": 2562
+    },
+    "form": {
+      "calls": 11,
+      "ms": 36448,
+      "in": 32,
+      "out": 7,
+      "rejects": 25,
+      "promptTokens": 6261,
+      "completionTokens": 961
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 12,
+      "ms": 2319,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 281161,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 14945,
+      "completionTokens": 7866
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main source of livelihood in the rural sector according to the passage?",
+      "ms": {
+        "draft": 2921,
+        "critique": 6336
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest is the reason for the need to develop rural areas?",
+      "ms": {
+        "draft": 2921,
+        "critique": 5966,
+        "solver": 1077,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is a major challenge facing India?",
+      "ms": {
+        "draft": 2921,
+        "critique": 7622
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT mentioned as a factor impeding rural development?",
+      "ms": {
+        "draft": 2921,
+        "critique": 6448
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage suggest about the growth rate of the agriculture sector in recent years?",
+      "ms": {
+        "draft": 2921,
+        "critique": 5210,
+        "solver": 1403
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of formal credit systems in rural areas?",
+      "ms": {
+        "draft": 3450,
+        "critique": 5590,
+        "solver": 1063,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a farmer takes a loan for self-employment but uses it for personal purposes, what might be the reason?",
+      "ms": {
+        "draft": 3450,
+        "critique": 6087,
+        "solver": 1626
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is a major issue with the rural banking system?",
+      "ms": {
+        "draft": 3450,
+        "critique": 5453,
+        "solver": 1625,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of regulated market yards according to the passage?",
+      "ms": {
+        "draft": 4056,
+        "critique": 5370,
+        "solver": 995,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why might farmers be reluctant to use loans for productive purposes?",
+      "ms": {
+        "draft": 3450,
+        "critique": 6371,
+        "solver": 1778
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a farmer wants to sell their produce at a better price, which of the following would be the best option according to the passage?",
+      "ms": {
+        "draft": 4056,
+        "critique": 6492,
+        "solver": 1717,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a government initiative mentioned in the passage to support rural development?",
+      "ms": {
+        "draft": 4056,
+        "critique": 6423,
+        "solver": 1386,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a government initiative mentioned in the passage to support rural development?",
+      "ms": {
+        "draft": 4056,
+        "critique": 6581,
+        "solver": 1591,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an allied activity to farming, as shown in the passage?",
+      "ms": {
+        "draft": 3305,
+        "critique": 7886,
+        "solver": 1390,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a key factor in improving agricultural marketing?",
+      "ms": {
+        "draft": 4056,
+        "critique": 8275,
+        "solver": 14304,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is one reason why diversification is necessary for rural development?",
+      "ms": {
+        "draft": 3305,
+        "critique": 6314,
+        "solver": 1399,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the government should support initiatives like the TANWA project?",
+      "ms": {
+        "draft": 3305,
+        "critique": 5824,
+        "solver": 1795,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a key issue in rural development according to the passage?",
+      "ms": {
+        "draft": 4695,
+        "critique": 8322,
+        "solver": 1411,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is mentioned as an important income-augmenting activity in rural areas?",
+      "ms": {
+        "draft": 4581,
+        "critique": 5752,
+        "solver": 1194,
+        "form": 3789
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is mentioned as the largest share of total livestock in India?",
+      "ms": {
+        "draft": 4581,
+        "critique": 6141,
+        "solver": 1874,
+        "form": 2593
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rural area introduces organic farming, what is a likely challenge they might face?",
+      "ms": {
+        "draft": 4156,
+        "critique": 4999
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key factor in improving agricultural marketing?",
+      "ms": {
+        "draft": 4156,
+        "critique": 5518
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is organic farming considered a sustainable method of agriculture?",
+      "ms": {
+        "draft": 4156,
+        "critique": 7108
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an allied activity in rural areas?",
+      "ms": {
+        "draft": 4156,
+        "critique": 4701,
+        "solver": 10892,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a non-farm employment activity in rural areas?",
+      "ms": {
+        "draft": 4156,
+        "critique": 8250,
+        "solver": 2063
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a key issue in rural development according to the passage?",
+      "ms": {
+        "draft": 3022,
+        "critique": 5039,
+        "solver": 15212,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the significance of organic farming?",
+      "ms": {
+        "draft": 3022,
+        "critique": 7451,
+        "solver": 13630,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements best reflects the idea that rural development is a comprehensive term?",
+      "ms": {
+        "draft": 3022,
+        "critique": 5604,
+        "solver": 1573,
+        "form": 3866
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is most likely to be a challenge for small and marginal farmers adopting organic farming?",
+      "ms": {
+        "draft": 3022,
+        "critique": 6516,
+        "solver": 1784
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an important income-augmenting activity in rural areas according to the passage?",
+      "ms": {
+        "draft": 4566,
+        "critique": 5277,
+        "solver": 1194,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary role of micro-credit programmes in rural development according to the passage?",
+      "ms": {
+        "draft": 4566,
+        "critique": 5931,
+        "solver": 1348
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a key factor in improving the productivity of horticulture in India?",
+      "ms": {
+        "draft": 4566,
+        "critique": 7231,
+        "solver": 1998,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements best explains why organic farming is considered an attractive proposition for India?",
+      "ms": {
+        "draft": 4566,
+        "critique": 6155,
+        "solver": 1114,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main purpose of diversification as discussed in the passage?",
+      "ms": {
+        "draft": 3568,
+        "critique": 6450,
+        "solver": 1736,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the role of micro-credit programmes in rural development as indicated in the passage?",
+      "ms": {
+        "draft": 3568,
+        "critique": 6934,
+        "solver": 1165,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an allied activity to farming?",
+      "ms": {
+        "draft": 3568,
+        "critique": 7102,
+        "solver": 1115,
+        "form": 2877
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is one of the main objectives of regulated market yards as mentioned in the passage?",
+      "ms": {
+        "draft": 4428,
+        "critique": 3860,
+        "solver": 6209,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main objective of Self-Help Groups (SHGs) in rural areas?",
+      "ms": {
+        "draft": 3450,
+        "critique": 6875,
+        "solver": 1446,
+        "form": 2978
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a women-oriented community-based poverty reduction programme?",
+      "ms": {
+        "draft": 3450,
+        "critique": 7009,
+        "solver": 1237,
+        "form": 3461,
+        "translation": 49108
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a farmer shifts from agriculture to an activity like making jaggery, what is this change called?",
+      "ms": {
+        "draft": 3305,
+        "critique": 6313,
+        "solver": 1435,
+        "form": 2781,
+        "translation": 35984
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main purpose of diversification into non-agricultural activities in rural areas?",
+      "ms": {
+        "draft": 3022,
+        "critique": 8119,
+        "solver": 15359,
+        "form": 2872,
+        "translation": 48029
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the main aim of the Saansad Adarsh Gram Yojana?",
+      "ms": {
+        "draft": 4566,
+        "critique": 5897,
+        "solver": 1150,
+        "form": 3324,
+        "translation": 40718
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains the role of micro-credit programmes in rural development?",
+      "ms": {
+        "draft": 4156,
+        "critique": 6784,
+        "solver": 9796,
+        "form": 0,
+        "translation": 46460
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the main idea behind the statement 'Only the tillers of the soil live by the right. The rest form their train and eat only the bread of dependence' in the context of rural development?",
+      "ms": {
+        "draft": 2921,
+        "critique": 5509,
+        "solver": 15729,
+        "form": 0,
+        "translation": 56483
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "Which of the following is an example of a government initiative mentioned in the passage to support rural development?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a major source of income for many rural women, as mentioned in the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main source of livelihood in the rural sector according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest is the reason for the need to develop rural areas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "According to the passage, what is a major challenge facing India?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT mentioned as a factor impeding rural development?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What does the passage suggest about the growth rate of the agriculture sector in recent years?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of formal credit systems in rural areas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's critique of the formal credit sy…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a farmer takes a loan for self-employment but uses it for personal purposes, what might be the reason?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, what is a major issue with the rural banking system?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of regulated market yards according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the role of private traders in the passage\",\"M…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why might farmers be reluctant to use loans for productive purposes?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a farmer wants to sell their produce at a better price, which of the following would be the best option according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Incorrectly identifies the best option based on the passage…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the role of moneylenders in the passage\",\"Does…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a government initiative mentioned in the passage to support rural development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's stance on informal trading…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a government initiative mentioned in the passage to support rural development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's stance on informal trading…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an allied activity to farming, as shown in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a key factor in improving agricultural marketing?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is one reason why diversification is necessary for rural development?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why the government should support initiatives like the TANWA project?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a key issue in rural development according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is mentioned as an important income-augmenting activity in rural areas?",
+      "reason": "figure: figure spec refused: spec.parts: plant has no label \"plant\" (it has root, stem, leaf, flower)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is mentioned as the largest share of total livestock in India?",
+      "reason": "figure: figure spec refused: spec.parts: animalCell has no label \"animal\" (it has membrane, nucleus, cytoplasm, mitochondrion)"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of micro-credit in rural development?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a rural area introduces organic farming, what is a likely challenge they might face?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key factor in improving agricultural marketing?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is organic farming considered a sustainable method of agriculture?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an allied activity in rural areas?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a non-farm employment activity in rural areas?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a key issue in rural development according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the significance of organic farming?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"The passage states that organic farming is more profitable f…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements best reflects the idea that rural development is a comprehensive term?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"The passage includes non-agricultural activities in rural de…\"); distractor 1's reason is not a one-line misconception (\"The passage includes environmental aspects but does not limi…\"); distractor 3's reason is not a one-line misconception (\"The passage discusses rural areas, not urban markets.…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is most likely to be a challenge for small and marginal farmers adopting organic farming?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an important income-augmenting activity in rural areas according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the primary role of micro-credit programmes in rural development according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a key factor in improving the productivity of horticulture in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following statements best explains why organic farming is considered an attractive proposition for India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main purpose of diversification as discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (69 vs 36 characters); distractor 0's reason is not a one-line misconception (\"Misinterprets the passage as focusing on the number of farme…\"); distractor 3's reason is not a one-line misconception (\"Does not understand the overall purpose of diversification a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the role of micro-credit programmes in rural development as indicated in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of an allied activity to farming?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Does not understand the context of the passage and picks an …\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is one of the main objectives of regulated market yards as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the main objective of Self-Help Groups (SHGs) in rural areas?",
+      "reason": "near-duplicate of served question cmvlf8j8s0mtqgpfhq0kkesq7 (cosine 0.921 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Economics in the prompt"
+  ]
+}

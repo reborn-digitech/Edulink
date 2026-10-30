@@ -1,0 +1,725 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T21:50:19.149Z",
+  "finishedAt": "2026-10-29T22:01:39.902Z",
+  "seconds": 681,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 19 — Life Cycle of Stars",
+    "edition": "First Edition 2018",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2023-24]\nMarking Scheme (2023-24)\nClass-X\nScience (Subject Code – 086) b\nQ. No. Answer Marks\nSection–A\n1 b) Barium sulphate\n2 b) Colourless\n3 d) NaHCO 3\n4 a) Sodium\n6 d) 11 (2,8,1)\n7 c) 14\n8 b) Mushroom\n9 a) tongue\n10 c) Vegetative propagation\n11 c) Growth hormones under the influence of the enzymes coded by a gene. 1\n12 c) lack of oxygen and formation of lactic acid. 1\n13 d) behind the mirror and its position varies according to the object distance. 1\n14 c) scattering of light.\n15 c) CFCs, Ozone\n16 a) Broken down by biological processes\n17 d) Assertion is false but Reason is true\n18 a) Both A and R are true and R is the correct explanation of A. 1\n19 d) Assertion is false but Reason is true 1\n20 c) ",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[INJSO 2013 — solutions or answer key]\n11. The life cycle of plants shows two distinct phases: a diploid (sporophytic) phase\nand haploid (gametophytic) phase which alternate with each other. The generalized\npattern can be represented as in the following diagram:\nAfreen studied the life cycles of 3 different plants: I, II, III, and made the following\nobservations.\nPlant I: Shows dominant gametophyte, sporophyte semi-parasitic on parent gameto-\nphyte.\nPlant II: Shows reduced gametophyte, dominant sporophyte. Both phases are inde-\npendent.\nPlant III: Shows reduced gametophyte, dominant sporophyte. Gametophyte is pro-\nduced within the sporophyte and not as separate generation.\nBased on the information provided, which of the following"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 169923,
+      "in": 40,
+      "out": 38,
+      "rejects": 2,
+      "promptTokens": 35480,
+      "completionTokens": 8163
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 360565,
+      "in": 38,
+      "out": 33,
+      "rejects": 5,
+      "promptTokens": 21981,
+      "completionTokens": 8727
+    },
+    "solver": {
+      "calls": 244,
+      "ms": 144806,
+      "in": 33,
+      "out": 29,
+      "rejects": 4,
+      "promptTokens": 41802,
+      "completionTokens": 2574
+    },
+    "form": {
+      "calls": 12,
+      "ms": 45863,
+      "in": 29,
+      "out": 16,
+      "rejects": 13,
+      "promptTokens": 3208,
+      "completionTokens": 998
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 104,
+      "ms": 17792,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 65,
+      "ms": 695034,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 36565,
+      "completionTokens": 18132
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 4,
+    "2": 1,
+    "3": 3,
+    "4": 2,
+    "5": 2,
+    "6": 4
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the nearest star to Earth?",
+      "ms": {
+        "draft": 2955,
+        "critique": 5892
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a star's gravitational force is greater than the gas pressure, what will happen?",
+      "ms": {
+        "draft": 2955,
+        "critique": 8982
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a star's core temperature and pressure increase, what would happen?",
+      "ms": {
+        "draft": 2955,
+        "critique": 8642
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main source of energy in stars?",
+      "ms": {
+        "draft": 2955,
+        "critique": 6619,
+        "solver": 14008,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What causes a star to remain stable according to the passage?",
+      "ms": {
+        "draft": 4355,
+        "critique": 7033,
+        "solver": 12756,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what determines the number of fuels a star can use?",
+      "ms": {
+        "draft": 4355,
+        "critique": 7382,
+        "solver": 1562,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is true about the end stages of a star based on the passage?",
+      "ms": {
+        "draft": 4355,
+        "critique": 6012,
+        "solver": 1799,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the role of electron pressure in the end stage of a star?",
+      "ms": {
+        "draft": 4355,
+        "critique": 5704,
+        "solver": 1757,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the evolution of stars according to the passage?",
+      "ms": {
+        "draft": 4355,
+        "critique": 6783,
+        "solver": 1486
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the end stages of stars based on their mass?",
+      "ms": {
+        "draft": 3814,
+        "critique": 7045
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a star with a mass greater than 25 times the Sun explodes in a supernova, what will happen to the remaining core?",
+      "ms": {
+        "draft": 3814,
+        "critique": 6433
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following best explains why a star's end stage depends on its mass?",
+      "ms": {
+        "draft": 3814,
+        "critique": 5863,
+        "solver": 1613
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a stage in the life cycle of a star?",
+      "ms": {
+        "draft": 3021,
+        "critique": 10254,
+        "solver": 17456,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct sequence of a star's life cycle?",
+      "ms": {
+        "draft": 3021,
+        "critique": 4445,
+        "solver": 774,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a star has a mass greater than the Sun, which of the following will it become after the red giant phase?",
+      "ms": {
+        "draft": 4224,
+        "critique": 10683,
+        "solver": 2233
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct sequence of the life cycle of a star?",
+      "ms": {
+        "draft": 4224,
+        "critique": 7817,
+        "solver": 18018,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the life cycle of stars, which of the following is true?",
+      "ms": {
+        "draft": 4224,
+        "critique": 9772,
+        "solver": 13118,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the Earth when the Sun becomes a red giant?",
+      "ms": {
+        "draft": 7025,
+        "critique": 8931,
+        "solver": 2045,
+        "form": 3849
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A star with a mass much greater than the Sun will end its life in a massive explosion called a supernova. Which of the following is not a possible result of this explosion?",
+      "ms": {
+        "draft": 4224,
+        "critique": 7334,
+        "solver": 17289
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main difference between a white dwarf and a neutron star?",
+      "ms": {
+        "draft": 7025,
+        "critique": 8083,
+        "solver": 1943,
+        "form": 4609
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a star with a mass of 30 times that of the Sun explodes, what will be the end stage of the star?",
+      "ms": {
+        "draft": 7025,
+        "critique": 6119,
+        "solver": 1523,
+        "form": 5100
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What causes a star to remain stable?",
+      "ms": {
+        "draft": 19912,
+        "critique": 7136,
+        "solver": 14349,
+        "form": 3851
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of stars?",
+      "ms": {
+        "draft": 2955,
+        "critique": 6215,
+        "solver": 12701,
+        "form": 0,
+        "translation": 37530
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main source of energy in a star?",
+      "ms": {
+        "draft": 3021,
+        "critique": 7155,
+        "solver": 2166,
+        "form": 0,
+        "translation": 27320
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the first stage in the life cycle of a star?",
+      "ms": {
+        "draft": 4224,
+        "critique": 6963,
+        "solver": 1317,
+        "form": 0,
+        "translation": 32077
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the last stage in the life cycle of a small star?",
+      "ms": {
+        "draft": 4224,
+        "critique": 7279,
+        "solver": 1887,
+        "form": 0,
+        "translation": 35638
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason stars remain stable?",
+      "ms": {
+        "draft": 2955,
+        "critique": 5579,
+        "solver": 12356,
+        "form": 1,
+        "translation": 36240
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to a star if it runs out of fuel in its core?",
+      "ms": {
+        "draft": 4355,
+        "critique": 8416,
+        "solver": 1535,
+        "form": 3769,
+        "translation": 53025
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason a star ends its life as a neutron star?",
+      "ms": {
+        "draft": 7025,
+        "critique": 8287,
+        "solver": 14272,
+        "form": 4527,
+        "translation": 62888
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a star is more massive than the sun, what will happen to it after the red giant phase?",
+      "ms": {
+        "draft": 3021,
+        "critique": 9024,
+        "solver": 2057,
+        "form": 0,
+        "translation": 38534
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the process of star formation?",
+      "ms": {
+        "draft": 4654,
+        "critique": 7336,
+        "solver": 2220,
+        "form": 0,
+        "translation": 50062
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What happens to a star when the fuel in its centre is exhausted?",
+      "ms": {
+        "draft": 19912,
+        "critique": 6839,
+        "solver": 2933,
+        "form": 3795,
+        "translation": 45132
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the main reason for a star to evolve through different stages?",
+      "ms": {
+        "draft": 19912,
+        "critique": 6845,
+        "solver": 1636,
+        "form": 4378,
+        "translation": 43813
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A star is observed to be very bright during the day, and the explosion occurred 6500 years ago. If the star is 6500 light years away, when was the explosion actually seen on Earth?",
+      "ms": {
+        "draft": 3814,
+        "critique": 8247,
+        "solver": 18497,
+        "form": 5185,
+        "translation": 56877
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a star's gravitational force is stronger than the gas pressure, what will happen to the star?",
+      "ms": {
+        "draft": 4654,
+        "critique": 6213,
+        "solver": 2070,
+        "form": 0,
+        "translation": 42598
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What determines the number of fuels a star can use during its evolution?",
+      "ms": {
+        "draft": 19912,
+        "critique": 6773,
+        "solver": 1926,
+        "form": 3068,
+        "translation": 31280
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a star's core collapses and its density becomes so high that even light cannot escape, what is this object called?",
+      "ms": {
+        "draft": 3814,
+        "critique": 5218,
+        "solver": 1856,
+        "form": 3544,
+        "translation": 47841
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is a black hole not visible even though it is the end stage of a massive star?",
+      "ms": {
+        "draft": 7025,
+        "critique": 7331,
+        "solver": 19707,
+        "form": 2953,
+        "translation": 50550
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a property of a white dwarf?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What happens when a star runs out of hydrogen fuel?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the nearest star to Earth?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a star's gravitational force is greater than the gas pressure, what will happen?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a star's core temperature and pressure increase, what would happen?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main source of energy in stars?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What causes a star to remain stable according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what determines the number of fuels a star can use?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements is true about the end stages of a star based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the role of electron pressure in the end stage of a star?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main reason for the evolution of stars according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is true about the end stages of stars based on their mass?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a star with a mass greater than 25 times the Sun explodes in a supernova, what will happen to the remaining core?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which of the following best explains why a star's end stage depends on its mass?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a stage in the life cycle of a star?",
+      "reason": "options 2 and 3 are the same (\"Rocket\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a correct sequence of a star's life cycle?",
+      "reason": "options 0 and 1 say the same thing (\"Nebula, main sequence, red giant, white dwarf\" / \"Nebula, red giant, main sequence, white dwarf\"); options 0 and 2 say the same thing (\"Nebula, main sequence, red giant, white dwarf\" / \"Main sequence, nebula, red giant, white dwarf\"); options 0 and 3 say the same thing (\"Nebula, main sequence, red giant, white dwarf\" / \"Nebula, white dwarf, main sequence, red giant\"); options 1 and 2 say the same thing (\"Nebula, red giant, main sequence, white dwarf\" / \"Main sequence, nebula, red giant, white dwarf\"); options 1 and 3 say the same thing (\"Nebula, red giant, main sequence, white dwarf\" / \"Nebula, white dwarf, main sequence, red giant\"); options 2 and 3 say the same thing (\"Main sequence, nebula, red giant, white dwarf\" / \"Nebula, white dwarf, main sequence, red giant\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a star has a mass greater than the Sun, which of the following will it become after the red giant phase?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct sequence of the life cycle of a star?",
+      "reason": "options 0 and 1 say the same thing (\"Nebula, main sequence star, red giant, white dwarf\" / \"Nebula, main sequence star, white dwarf, red giant\"); options 0 and 2 say the same thing (\"Nebula, main sequence star, red giant, white dwarf\" / \"Main sequence star, red giant, white dwarf, nebula\"); options 0 and 3 say the same thing (\"Nebula, main sequence star, red giant, white dwarf\" / \"Nebula, red giant, main sequence star, white dwarf\"); options 1 and 2 say the same thing (\"Nebula, main sequence star, white dwarf, red giant\" / \"Main sequence star, red giant, white dwarf, nebula\"); options 1 and 3 say the same thing (\"Nebula, main sequence star, white dwarf, red giant\" / \"Nebula, red giant, main sequence star, white dwarf\"); options 2 and 3 say the same thing (\"Main sequence star, red giant, white dwarf, nebula\" / \"Nebula, red giant, main sequence star, white dwarf\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the life cycle of stars, which of the following is true?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the Earth when the Sun becomes a red giant?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (index 2 is correct, s…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A star with a mass much greater than the Sun will end its life in a massive explosion called a supernova. Which of the following is not a possible result of this explosion?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main difference between a white dwarf and a neutron star?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (index 2 is correct, s…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a star with a mass of 30 times that of the Sun explodes, what will be the end stage of the star?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (index 2 is correct, s…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What causes a star to remain stable?",
+      "reason": "options 0 and 1 say the same thing (\"Gravitational force being greater than gas pressure\" / \"Gas pressure being greater than gravitational force\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

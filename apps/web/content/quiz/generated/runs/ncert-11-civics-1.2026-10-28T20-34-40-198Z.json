@@ -1,0 +1,835 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T20:34:40.198Z",
+  "finishedAt": "2026-10-28T20:43:42.670Z",
+  "seconds": 542,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Political Theory",
+    "bookCode": "keps1",
+    "document": "ncert/11/political-science/keps101.pdf",
+    "classLevel": 11,
+    "subject": "Political Science",
+    "chapter": "Chapter 1 — Equality",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\n17. Evaluate balance of power as a significant component of traditional security 1+1=2\npolicy.",
+      "[CBSE Class XII Political Science, marking scheme, 2025-26]\n11. C) Ghulam Mohammed Sadiq",
+      "[CBSE Class XII Political Science, marking scheme, 2024-25]\n11. B) Assam",
+      "[CBSE Class XII Political Science, marking scheme, 2022-23]\n1. Demands for Autonomy"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 142577,
+      "in": 41,
+      "out": 40,
+      "rejects": 2,
+      "promptTokens": 28302,
+      "completionTokens": 8513
+    },
+    "critique": {
+      "calls": 51,
+      "ms": 321771,
+      "in": 40,
+      "out": 40,
+      "rejects": 0,
+      "promptTokens": 21758,
+      "completionTokens": 8676
+    },
+    "solver": {
+      "calls": 277,
+      "ms": 137930,
+      "in": 40,
+      "out": 30,
+      "rejects": 10,
+      "promptTokens": 51345,
+      "completionTokens": 2937
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 30,
+      "out": 2,
+      "rejects": 28,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 9,
+      "ms": 1669,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 72108,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4939,
+      "completionTokens": 2799
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what would a political theorist most likely do when evaluating current government policies?",
+      "ms": {
+        "draft": 4150,
+        "critique": 4639,
+        "solver": 1215,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student is trying to understand why people disagree on the best form of government, which concept from the passage should they focus on?",
+      "ms": {
+        "draft": 4150,
+        "critique": 4944,
+        "solver": 1661,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is one of the main purposes of political theory?",
+      "ms": {
+        "draft": 4150,
+        "critique": 5261,
+        "solver": 2241,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A citizen is concerned about corruption in government and wants to understand how political theory can help address this issue. What would the passage suggest as the best course of action?",
+      "ms": {
+        "draft": 4150,
+        "critique": 6278,
+        "solver": 1360,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the role of political theory in society?",
+      "ms": {
+        "draft": 4150,
+        "critique": 5213,
+        "solver": 2736,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of political theory as explained in the passage?",
+      "ms": {
+        "draft": 3310,
+        "critique": 6388,
+        "solver": 1166,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student reads the passage and argues that politics is not just about government but also about people’s daily lives. Which part of the passage best supports this argument?",
+      "ms": {
+        "draft": 4150,
+        "critique": 5939,
+        "solver": 16873
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the context of the passage, which of the following is an example of a principle that is continually being reinterpreted?",
+      "ms": {
+        "draft": 3310,
+        "critique": 7973,
+        "solver": 1658
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the relevance of political theory in today's world?",
+      "ms": {
+        "draft": 3310,
+        "critique": 5432,
+        "solver": 1178,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a value that has inspired people and guided policies according to the passage?",
+      "ms": {
+        "draft": 3310,
+        "critique": 8593,
+        "solver": 14646
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what does the example of people jumping the queue in shops or government offices illustrate?",
+      "ms": {
+        "draft": 12806,
+        "critique": 6383,
+        "solver": 1151
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, how do political theorists help in understanding freedom and equality?",
+      "ms": {
+        "draft": 3310,
+        "critique": 7271,
+        "solver": 1967,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following statements best reflects the idea of 'freedom' as it is interpreted in modern times?",
+      "ms": {
+        "draft": 3310,
+        "critique": 5927,
+        "solver": 10888,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a poor person cannot afford to pay for medical treatment, according to the passage, what does this suggest about the concept of equality?",
+      "ms": {
+        "draft": 12806,
+        "critique": 6020,
+        "solver": 1522,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what does the dialogue between Socrates and Cephalus reveal about the concept of justice?",
+      "ms": {
+        "draft": 12806,
+        "critique": 5734,
+        "solver": 1570,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the context of the passage, which of the following best explains why the government might provide midday meals to poor children in schools?",
+      "ms": {
+        "draft": 12806,
+        "critique": 6691,
+        "solver": 1438,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is it important for political theorists to examine the diverse meanings of political ideas like equality?",
+      "ms": {
+        "draft": 12806,
+        "critique": 7387,
+        "solver": 1417,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, why is political theory relevant for high school students?",
+      "ms": {
+        "draft": 3667,
+        "critique": 7209,
+        "solver": 1407,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following statements best explains why political theory is useful for citizens?",
+      "ms": {
+        "draft": 3667,
+        "critique": 7228,
+        "solver": 1594,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a concept discussed in the chapter?",
+      "ms": {
+        "draft": 3667,
+        "critique": 7694,
+        "solver": 16751
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the role of political theory in shaping individual opinions?",
+      "ms": {
+        "draft": 3667,
+        "critique": 5423,
+        "solver": 768,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a reason given in the passage for studying political theory?",
+      "ms": {
+        "draft": 3667,
+        "critique": 8742,
+        "solver": 12267
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is one reason why high school students should study political theory?",
+      "ms": {
+        "draft": 2665,
+        "critique": 4613,
+        "solver": 1187,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to participate effectively in a local decision-making process, what should they do according to the passage?",
+      "ms": {
+        "draft": 2665,
+        "critique": 5251,
+        "solver": 1889,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student argues that political theory is irrelevant for them, what would the passage most likely suggest?",
+      "ms": {
+        "draft": 2665,
+        "critique": 6846,
+        "solver": 1435,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT discussed in the passage as a concept in political theory?",
+      "ms": {
+        "draft": 2665,
+        "critique": 4969,
+        "solver": 14556
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best captures the main idea of the passage?",
+      "ms": {
+        "draft": 2665,
+        "critique": 7822,
+        "solver": 1429,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say is the main focus of political theory?",
+      "ms": {
+        "draft": 11853,
+        "critique": 6145,
+        "solver": 1734,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a function of political theory?",
+      "ms": {
+        "draft": 2665,
+        "critique": 8910,
+        "solver": 14359
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest is the first step in understanding political ideas?",
+      "ms": {
+        "draft": 11853,
+        "critique": 6313,
+        "solver": 1412,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest is the reason for the many definitions of equality?",
+      "ms": {
+        "draft": 11853,
+        "critique": 7122,
+        "solver": 1793,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the nature of justice based on Socrates' dialogue?",
+      "ms": {
+        "draft": 11853,
+        "critique": 7377,
+        "solver": 1311,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is an example of a situation where people may feel cheated?",
+      "ms": {
+        "draft": 11853,
+        "critique": 6187,
+        "solver": 16225,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following is a practical issue that political theorists address?",
+      "ms": {
+        "draft": 11853,
+        "critique": 7799,
+        "solver": 14722
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage argue that political theory is still relevant today?",
+      "ms": {
+        "draft": 2972,
+        "critique": 6888,
+        "solver": 1762,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason why the idea of equality remains relevant in India?",
+      "ms": {
+        "draft": 2972,
+        "critique": 6421,
+        "solver": 11156,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a challenge to the principle of equality in the context of modern technology?",
+      "ms": {
+        "draft": 2972,
+        "critique": 5515,
+        "solver": 12140
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of political theory, according to the passage?",
+      "ms": {
+        "draft": 2972,
+        "critique": 5174,
+        "solver": 1303,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is an example of equality as a value in the Indian Constitution?",
+      "ms": {
+        "draft": 2972,
+        "critique": 5875,
+        "solver": 1463,
+        "form": 0,
+        "translation": 33408
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following scenarios best illustrates the idea of equality in the social sphere?",
+      "ms": {
+        "draft": 2972,
+        "critique": 6520,
+        "solver": 1688,
+        "form": 0,
+        "translation": 34848
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does the passage suggest about the meaning of equality when people have different needs, such as the elderly or disabled?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what would a political theorist most likely do when evaluating current government policies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"limits the focus to only economic aspects, which is not what…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student is trying to understand why people disagree on the best form of government, which concept from the passage should they focus on?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is one of the main purposes of political theory?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A citizen is concerned about corruption in government and wants to understand how political theory can help address this issue. What would the passage suggest as the best course of action?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"contradicts the passage’s advice to engage with politics…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the role of political theory in society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"contradicts the passage's emphasis on the relevance of polit…\"); distractor 3's reason is not a one-line misconception (\"suggests that political theory is a way to avoid problems, w…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the role of political theory as explained in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A student reads the passage and argues that politics is not just about government but also about people’s daily lives. Which part of the passage best supports this argument?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In the context of the passage, which of the following is an example of a principle that is continually being reinterpreted?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the relevance of political theory in today's world?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is an example of a value that has inspired people and guided policies according to the passage?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, what does the example of people jumping the queue in shops or government offices illustrate?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, how do political theorists help in understanding freedom and equality?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, which of the following statements best reflects the idea of 'freedom' as it is interpreted in modern times?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a poor person cannot afford to pay for medical treatment, according to the passage, what does this suggest about the concept of equality?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Incorrectly assumes that the passage suggests equality is no…\"); distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's message about equality as being …\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's emphasis on fairness and proact…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what does the dialogue between Socrates and Cephalus reveal about the concept of justice?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's discussion of justice as a simpl…\"); distractor 1's reason is not a one-line misconception (\"Misunderstands the passage's message by focusing on the idea…\"); distractor 3's reason is not a one-line misconception (\"Believes that the passage suggests justice is the same for a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the context of the passage, which of the following best explains why the government might provide midday meals to poor children in schools?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the passage's focus on fairness and access to…\"); distractor 1's reason is not a one-line misconception (\"Misinterprets the example as being about the disabled, which…\"); distractor 3's reason is not a one-line misconception (\"Believes that the purpose of midday meals is to reward good …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is it important for political theorists to examine the diverse meanings of political ideas like equality?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (105 vs 61 characters); distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's message as focusing on finding o…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's purpose, thinking that it is to…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, why is political theory relevant for high school students?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Incorrectly assumes the passage suggests students will becom…\"); distractor 3's reason is not a one-line misconception (\"Contradicts the passage which states students are citizens…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, which of the following statements best explains why political theory is useful for citizens?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Includes a statement that is not supported by the passage…\"); distractor 3's reason is not a one-line misconception (\"Includes a statement that is not supported by the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT a concept discussed in the chapter?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the role of political theory in shaping individual opinions?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Includes a statement that is not supported by the passage…\"); distractor 3's reason is not a one-line misconception (\"Includes a statement that is not supported by the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT a reason given in the passage for studying political theory?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 3, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"According to the passage, what is the main focus of political"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is one reason why high school students should study political theory?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student wants to participate effectively in a local decision-making process, what should they do according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student argues that political theory is irrelevant for them, what would the passage most likely suggest?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT discussed in the passage as a concept in political theory?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best captures the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage say is the main focus of political theory?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (57 vs 32 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a function of political theory?",
+      "reason": "after redraft: the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest is the first step in understanding political ideas?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"misinterprets the passage as suggesting memorisation…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest is the reason for the many definitions of equality?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the nature of justice based on Socrates' dialogue?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what is an example of a situation where people may feel cheated?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "According to the passage, which of the following is a practical issue that political theorists address?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage argue that political theory is still relevant today?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason why the idea of equality remains relevant in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is a challenge to the principle of equality in the context of modern technology?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of political theory, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,691 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T23:57:32.247Z",
+  "finishedAt": "2026-10-28T00:05:07.650Z",
+  "seconds": 455,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh112.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 12 — Surface Areas and Volumes",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n14.\n(C) 10 cm (D)8 cm\n(C) 1 (D) 𝑡𝑎𝑛 60 2 ∘\nThe total surface area of solid hemisphere of radius 𝑟 is 1\n(A) 𝜋𝑟 2 (B) 2𝜋𝑟 2 (C) 3𝜋𝑟 2 (D) 4𝜋𝑟 2",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n18.\ntotal surface area of the resulting cuboid is\n(A) 128 cm 2 (B) 160 cm 2\n(C) 176 cm 2 (D) 192 cm 2\nAssertion-Reason Based Questions\nDirections: Questions number 19 and 20 are Assertion and Reason based\nquestions carrying 1 mark each. Two statements are given, one labelled\nAssertion (A) and the other labelled Reason (R).\nSelect the correct answer from the options (A), (B), (C) and (D) as given\nbelow:\n(A) Both Assertion (A) and Reason (R) are true and (R) is the correct\nexplanation of Assertion (A).\n(B) Both Assertion (A) and Reason (R) are true but (R) is not the correct\nexplanation of Assertion (A).\n(C) Assertion (A) is true but Reason (R) is false.\n(D) Assertion (A) is false but Reason (",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2026-27]\n11. Two cubes each of volume 64 cm are joined end to end to form a solid. The surface 3 1\narea of the resultant cuboid is:\n(A) 192 cm 2 (B) 160 cm 2 (C) 96 cm 2 (D) 80 cm 2",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n13. 396\nThe volume of a solid hemisphere is\nhemisphere (in sq.cm) is\n396 594\nA) B)\n7 7\nB) not real\nD) real and equal\nC ) (D) not defined\n√3\n3 1\n𝑐𝑚 .The total surface area of the solid\n549 604\nC) D)\n7 7"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 190694,
+      "in": 35,
+      "out": 35,
+      "rejects": 0,
+      "promptTokens": 27646,
+      "completionTokens": 11149
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 248961,
+      "in": 35,
+      "out": 18,
+      "rejects": 17,
+      "promptTokens": 20382,
+      "completionTokens": 7094
+    },
+    "solver": {
+      "calls": 102,
+      "ms": 44670,
+      "in": 18,
+      "out": 15,
+      "rejects": 3,
+      "promptTokens": 15720,
+      "completionTokens": 871
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 6,
+      "rejects": 9,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 29,
+      "ms": 5886,
+      "in": 6,
+      "out": 5,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 248268,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 15587,
+      "completionTokens": 7702
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "A toy is made by joining a cone and a hemisphere. If the radius of the cone and hemisphere is 3 cm, what is the total surface area of the toy?",
+      "ms": {
+        "draft": 4947,
+        "critique": 7039
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A decorative block consists of a cube with edge 5 cm and a hemisphere fixed on the top with a diameter of 4.2 cm. What is the total surface area of the block?",
+      "ms": {
+        "draft": 4947,
+        "critique": 6622,
+        "solver": 1403,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A wooden toy rocket is in the shape of a cone mounted on a cylinder. The height of the entire rocket is 26 cm, and the height of the conical part is 6 cm. The base of the conical portion has a diameter of 5 cm, while the base diameter of the cylindrical portion is 3 cm. What is the total area to be painted yellow?",
+      "ms": {
+        "draft": 4947,
+        "critique": 7850
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the total surface area of a solid hemisphere?",
+      "ms": {
+        "draft": 4947,
+        "critique": 5620,
+        "solver": 11309,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the total surface area of a solid hemisphere of radius r?",
+      "ms": {
+        "draft": 6032,
+        "critique": 6193
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A bird-bath is made by joining a cylinder with a hemispherical depression at one end. The height of the cylinder is 1.45 m, and the radius is 30 cm. What is the total surface area of the bird-bath?",
+      "ms": {
+        "draft": 4947,
+        "critique": 7432
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Two cubes each of volume 64 cm³ are joined end to end. What is the surface area of the resulting cuboid?",
+      "ms": {
+        "draft": 6032,
+        "critique": 7931
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A medicine capsule is in the shape of a cylinder with two hemispheres stuck to each of its ends. The length of the entire capsule is 14 mm and the diameter of the capsule is 5 mm. What is the surface area of the capsule?",
+      "ms": {
+        "draft": 6032,
+        "critique": 5591,
+        "solver": 1707,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A wooden article is made by scooping out a hemisphere from each end of a solid cylinder. The height of the cylinder is 10 cm, and its base has a radius of 3.5 cm. What is the total surface area of the article?",
+      "ms": {
+        "draft": 6032,
+        "critique": 6755
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A vessel is in the form of a hollow hemisphere mounted by a hollow cylinder. The diameter of the hemisphere is 14 cm, and the total height of the vessel is 13 cm. What is the inner surface area of the vessel?",
+      "ms": {
+        "draft": 6032,
+        "critique": 7456,
+        "solver": 1747,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A solid is formed by joining a cylinder of height 220 cm and base diameter 24 cm with another cylinder of height 60 cm and radius 8 cm. What is the total volume of the solid?",
+      "ms": {
+        "draft": 13554,
+        "critique": 6572
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total surface area of a solid hemisphere of radius r?",
+      "ms": {
+        "draft": 13554,
+        "critique": 7040,
+        "solver": 1425,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Two cubes each of volume 64 cm³ are joined end to end to form a cuboid. What is the surface area of the resulting cuboid?",
+      "ms": {
+        "draft": 13554,
+        "critique": 6597,
+        "solver": 1292
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A solid iron pole consists of a cylinder of height 220 cm and base diameter 24 cm, which is surmounted by another cylinder of height 60 cm and radius 8 cm. What is the mass of the pole, given that 1 cm³ of iron has approximately 8 g mass?",
+      "ms": {
+        "draft": 13554,
+        "critique": 7151
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A solid consisting of a right circular cone of height 120 cm and radius 60 cm standing on a hemisphere of radius 60 cm is placed upright in a right circular cylinder full of water such that it touches the bottom. What is the volume of water left in the cylinder, if the radius of the cylinder is 60 cm and its height is 180 cm?",
+      "ms": {
+        "draft": 13554,
+        "critique": 7282
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A vessel is in the form of an inverted cone. Its height is 8 cm and the radius of its top, which is open, is 5 cm. It is filled with water up to the brim. When lead shots, each of which is a sphere of radius 0.5 cm are dropped into the vessel, one-fourth of the water flows out. How many lead shots were dropped into the vessel?",
+      "ms": {
+        "draft": 13554,
+        "critique": 8401
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A solid iron pole consists of a cylinder of height 220 cm and base diameter 24 cm, which is surmounted by another cylinder of height 60 cm and radius 8 cm. What is the total volume of the pole?",
+      "ms": {
+        "draft": 4941,
+        "critique": 7869
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total surface area of a solid hemisphere of radius r?",
+      "ms": {
+        "draft": 4941,
+        "critique": 7326,
+        "solver": 1876,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A solid consisting of a right circular cone of height 120 cm and radius 60 cm standing on a hemisphere of radius 60 cm is placed upright in a right circular cylinder full of water such that it touches the bottom. What is the volume of water left in the cylinder, if the radius of the cylinder is 60 cm and its height is 180 cm?",
+      "ms": {
+        "draft": 4941,
+        "critique": 8222
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A vessel is in the form of an inverted cone. Its height is 8 cm and the radius of its top, which is open, is 5 cm. It is filled with water up to the brim. When lead shots, each of which is a sphere of radius 0.5 cm are dropped into the vessel, one-fourth of the water flows out. How many lead shots are dropped into the vessel?",
+      "ms": {
+        "draft": 4941,
+        "critique": 9108
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A spherical glass vessel has a cylindrical neck 8 cm long, 2 cm in diameter; the diameter of the spherical part is 8.5 cm. A child finds its volume to be 345 cm³. Is the child correct?",
+      "ms": {
+        "draft": 4941,
+        "critique": 7588,
+        "solver": 1313,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If two cubes of volume 64 cm³ are joined end to end, what is the surface area of the resulting cuboid?",
+      "ms": {
+        "draft": 5039,
+        "critique": 7637
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the total surface area of a solid hemisphere of radius r?",
+      "ms": {
+        "draft": 5039,
+        "critique": 7585,
+        "solver": 1646,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A tent is in the shape of a cylinder surmounted by a conical top. The height and diameter of the cylindrical part are 2.1 m and 4 m, respectively, and the slant height of the top is 2.8 m. What is the area of the canvas used for making the tent?",
+      "ms": {
+        "draft": 5039,
+        "critique": 6742
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A wooden article is made by scooping out a hemisphere from each end of a solid cylinder. The height of the cylinder is 10 cm and its base is of radius 3.5 cm. What is the total surface area of the article?",
+      "ms": {
+        "draft": 5039,
+        "critique": 5743
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A medicine capsule is in the shape of a cylinder with two hemispheres stuck to each of its ends. The length of the entire capsule is 14 mm and the diameter of the capsule is 5 mm. What is the surface area of the capsule?",
+      "ms": {
+        "draft": 5039,
+        "critique": 6808,
+        "solver": 1822
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A toy is made by joining a cone and a hemisphere. The radius of the cone and hemisphere is 3 cm. The height of the cone is 4 cm. What is the total surface area of the toy?",
+      "ms": {
+        "draft": 6570,
+        "critique": 7064
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the total surface area of a solid hemisphere?",
+      "ms": {
+        "draft": 6570,
+        "critique": 6071,
+        "solver": 2011,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A decorative block is made of a cube with edge 5 cm and a hemisphere fixed on the top. The diameter of the hemisphere is 4.2 cm. What is the total surface area of the block?",
+      "ms": {
+        "draft": 6570,
+        "critique": 6310,
+        "solver": 6833
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Two cubes each of volume 64 cm³ are joined end to end to form a solid. What is the surface area of the resulting cuboid?",
+      "ms": {
+        "draft": 4941,
+        "critique": 6746,
+        "solver": 1456,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When calculating the surface area of a solid made by combining a cylinder and two hemispheres, what part of the hemispheres is considered?",
+      "ms": {
+        "draft": 4947,
+        "critique": 5280,
+        "solver": 1201,
+        "form": 0,
+        "translation": 53326
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total surface area of a solid hemisphere?",
+      "ms": {
+        "draft": 6032,
+        "critique": 6125,
+        "solver": 1498,
+        "form": 0,
+        "translation": 43291
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A solid is formed by joining a cone and a hemisphere. The radius of the cone and hemisphere is 2 cm. The height of the cone is 3 cm. What is the total surface area of the solid?",
+      "ms": {
+        "draft": 6570,
+        "critique": 7200,
+        "solver": 1885,
+        "form": 0,
+        "translation": 44553
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A vessel is in the form of a hollow hemisphere mounted by a hollow cylinder. The diameter of the hemisphere is 14 cm and the total height of the vessel is 13 cm. What is the inner surface area of the vessel?",
+      "ms": {
+        "draft": 5039,
+        "critique": 6685,
+        "solver": 2113,
+        "form": 0,
+        "translation": 55216
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A wooden toy is in the shape of a cone mounted on a cylinder. The height of the entire toy is 26 cm, and the height of the cone is 6 cm. The diameter of the cone is 5 cm, and the diameter of the cylinder is 3 cm. What is the area of the toy that is painted orange?",
+      "ms": {
+        "draft": 6570,
+        "critique": 9390,
+        "solver": 1128,
+        "form": 0,
+        "translation": 47659
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A toy is made by joining a cone and a hemisphere. If the radius of the cone and hemisphere is 3 cm, what is the total surface area of the toy?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A decorative block consists of a cube with edge 5 cm and a hemisphere fixed on the top with a diameter of 4.2 cm. What is the total surface area of the block?",
+      "reason": "options are written to different precisions (0 and 2 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A wooden toy rocket is in the shape of a cone mounted on a cylinder. The height of the entire rocket is 26 cm, and the height of the conical part is 6 cm. The base of the conical portion has a diameter of 5 cm, while the base diameter of the cylindrical portion is 3 cm. What is the total area to be painted yellow?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the total surface area of a solid hemisphere?",
+      "reason": "options 2 and 3 are the same (\"3πr²\"); options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the formula for the total surface area of a solid hemisphere of radius r?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A bird-bath is made by joining a cylinder with a hemispherical depression at one end. The height of the cylinder is 1.45 m, and the radius is 30 cm. What is the total surface area of the bird-bath?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Two cubes each of volume 64 cm³ are joined end to end. What is the surface area of the resulting cuboid?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A medicine capsule is in the shape of a cylinder with two hemispheres stuck to each of its ends. The length of the entire capsule is 14 mm and the diameter of the capsule is 5 mm. What is the surface area of the capsule?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"70*3.14\" = 219.8, but the key says 154"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A wooden article is made by scooping out a hemisphere from each end of a solid cylinder. The height of the cylinder is 10 cm, and its base has a radius of 3.5 cm. What is the total surface area of the article?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A vessel is in the form of a hollow hemisphere mounted by a hollow cylinder. The diameter of the hemisphere is 14 cm, and the total height of the vessel is 13 cm. What is the inner surface area of the vessel?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"182*3.14\" = 571.48, but the key says 264"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A solid is formed by joining a cylinder of height 220 cm and base diameter 24 cm with another cylinder of height 60 cm and radius 8 cm. What is the total volume of the solid?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total surface area of a solid hemisphere of radius r?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Two cubes each of volume 64 cm³ are joined end to end to form a cuboid. What is the surface area of the resulting cuboid?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A solid iron pole consists of a cylinder of height 220 cm and base diameter 24 cm, which is surmounted by another cylinder of height 60 cm and radius 8 cm. What is the mass of the pole, given that 1 cm³ of iron has approximately 8 g mass?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A solid consisting of a right circular cone of height 120 cm and radius 60 cm standing on a hemisphere of radius 60 cm is placed upright in a right circular cylinder full of water such that it touches the bottom. What is the volume of water left in the cylinder, if the radius of the cylinder is 60 cm and its height is 180 cm?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A vessel is in the form of an inverted cone. Its height is 8 cm and the radius of its top, which is open, is 5 cm. It is filled with water up to the brim. When lead shots, each of which is a sphere of radius 0.5 cm are dropped into the vessel, one-fourth of the water flows out. How many lead shots were dropped into the vessel?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A solid iron pole consists of a cylinder of height 220 cm and base diameter 24 cm, which is surmounted by another cylinder of height 60 cm and radius 8 cm. What is the total volume of the pole?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total surface area of a solid hemisphere of radius r?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A solid consisting of a right circular cone of height 120 cm and radius 60 cm standing on a hemisphere of radius 60 cm is placed upright in a right circular cylinder full of water such that it touches the bottom. What is the volume of water left in the cylinder, if the radius of the cylinder is 60 cm and its height is 180 cm?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A vessel is in the form of an inverted cone. Its height is 8 cm and the radius of its top, which is open, is 5 cm. It is filled with water up to the brim. When lead shots, each of which is a sphere of radius 0.5 cm are dropped into the vessel, one-fourth of the water flows out. How many lead shots are dropped into the vessel?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A spherical glass vessel has a cylindrical neck 8 cm long, 2 cm in diameter; the diameter of the spherical part is 8.5 cm. A child finds its volume to be 345 cm³. Is the child correct?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If two cubes of volume 64 cm³ are joined end to end, what is the surface area of the resulting cuboid?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the total surface area of a solid hemisphere of radius r?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A tent is in the shape of a cylinder surmounted by a conical top. The height and diameter of the cylindrical part are 2.1 m and 4 m, respectively, and the slant height of the top is 2.8 m. What is the area of the canvas used for making the tent?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A wooden article is made by scooping out a hemisphere from each end of a solid cylinder. The height of the cylinder is 10 cm and its base is of radius 3.5 cm. What is the total surface area of the article?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "A medicine capsule is in the shape of a cylinder with two hemispheres stuck to each of its ends. The length of the entire capsule is 14 mm and the diameter of the capsule is 5 mm. What is the surface area of the capsule?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A toy is made by joining a cone and a hemisphere. The radius of the cone and hemisphere is 3 cm. The height of the cone is 4 cm. What is the total surface area of the toy?",
+      "reason": "the critic finds option 3 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the total surface area of a solid hemisphere?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A decorative block is made of a cube with edge 5 cm and a hemisphere fixed on the top. The diameter of the hemisphere is 4.2 cm. What is the total surface area of the block?",
+      "reason": "after redraft: the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Two cubes each of volume 64 cm³ are joined end to end to form a solid. What is the surface area of the resulting cuboid?",
+      "reason": "near-duplicate of served question cmskzqcqq065cy26637c2d12c (cosine 0.984 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

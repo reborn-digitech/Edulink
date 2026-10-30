@@ -1,0 +1,914 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T14:51:50.094Z",
+  "finishedAt": "2026-10-23T15:08:06.347Z",
+  "seconds": 976,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Themes in World History",
+    "bookCode": "kehs1",
+    "document": "ncert/11/history/kehs107.pdf",
+    "classLevel": 11,
+    "subject": "History",
+    "chapter": "Chapter 7 — Paths to Modernisation",
+    "edition": "Reprint 2026-27",
+    "chunks": 39,
+    "groups": 12
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII History, sample question paper, 2023-24]\n30. “The Quit India Movement genuinely a mass movement”. Justify the 8\nstatement.\nOR\nExamine the different kinds of sources from which the political career\nof Gandhiji and the history of the National movement could be\nreconstructed.",
+      "[CBSE Class XII History, marking scheme, 2025-26]\n20. C. Pandit Jawaharlal Nehru",
+      "[CBSE Class XII History, sample question paper, 2024-25]\n21. Which of the following were the key ideals associated with the social struggles 1\nin India since the nineteenth century?\nA. Autonomy, hierarchy, and traditionalism\nB. Democracy, equality, and justice\nC. Imperialism, colonialism, and bureaucracy\nD. Monarchy, privilege, and conservatism",
+      "[CBSE Class XII History, marking scheme, 2024-25]\n12. ANS-B- The opening of the new world through voyages. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 269431,
+      "in": 47,
+      "out": 47,
+      "rejects": 1,
+      "promptTokens": 51891,
+      "completionTokens": 11456
+    },
+    "critique": {
+      "calls": 59,
+      "ms": 523213,
+      "in": 47,
+      "out": 31,
+      "rejects": 16,
+      "promptTokens": 27902,
+      "completionTokens": 10314
+    },
+    "solver": {
+      "calls": 240,
+      "ms": 176673,
+      "in": 31,
+      "out": 27,
+      "rejects": 4,
+      "promptTokens": 46578,
+      "completionTokens": 2762
+    },
+    "form": {
+      "calls": 12,
+      "ms": 54883,
+      "in": 27,
+      "out": 5,
+      "rejects": 22,
+      "promptTokens": 3286,
+      "completionTokens": 1036
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 7,
+      "ms": 1622,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 403696,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 14767,
+      "completionTokens": 8327
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of history in East Asian societies?",
+      "ms": {
+        "draft": 17262,
+        "critique": 6678,
+        "solver": 2453,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How did Japan manage to become an advanced industrial nation and a major economic power?",
+      "ms": {
+        "draft": 17262,
+        "critique": 6415,
+        "solver": 1591,
+        "form": 6419
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between tradition and modernisation in Japan and China?",
+      "ms": {
+        "draft": 17262,
+        "critique": 10904,
+        "solver": 1977,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what was one of the key factors that helped Japan succeed in modernisation?",
+      "ms": {
+        "draft": 17262,
+        "critique": 9097,
+        "solver": 2338,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main reason for the growth of a commercial economy in Japan during the Edo period?",
+      "ms": {
+        "draft": 4439,
+        "critique": 11388
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is mentioned as a reason for Japan's economic strain in the passage?",
+      "ms": {
+        "draft": 4439,
+        "critique": 10192,
+        "solver": 1889,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the significance of the Tale of the Genji according to the passage?",
+      "ms": {
+        "draft": 4439,
+        "critique": 9259,
+        "solver": 2037,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a merchant in Edo wanted to earn a living by writing, what would they need to do according to the passage?",
+      "ms": {
+        "draft": 4439,
+        "critique": 9150,
+        "solver": 1933,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which country was the dominant power in East Asia at the beginning of the nineteenth century?",
+      "ms": {
+        "draft": 17262,
+        "critique": 9703,
+        "solver": 20957,
+        "form": 4454
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the role of the emperor during the Edo period?",
+      "ms": {
+        "draft": 4439,
+        "critique": 9046,
+        "solver": 1773,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Japan had not developed the silk industry in Nishijin, what might have happened according to the passage?",
+      "ms": {
+        "draft": 4439,
+        "critique": 8812,
+        "solver": 2219,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, which of the following best describes the Japanese government's approach to modernisation in the 19th century?",
+      "ms": {
+        "draft": 7992,
+        "critique": 9961,
+        "solver": 16633,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the significance of the 'Imperial Rescript on Education' of 1890 according to the passage?",
+      "ms": {
+        "draft": 7992,
+        "critique": 9150,
+        "solver": 17194,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following can be inferred about Japan’s relationship with the West during the Meiji period?",
+      "ms": {
+        "draft": 7992,
+        "critique": 11592,
+        "solver": 16140
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the purpose of the new school system introduced in Japan in the 1870s?",
+      "ms": {
+        "draft": 7992,
+        "critique": 8198,
+        "solver": 3370,
+        "form": 4763
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the Japanese government emphasized the creation of a sense of nationhood during the Meiji period?",
+      "ms": {
+        "draft": 7992,
+        "critique": 8873,
+        "solver": 17392
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a key part of the Meiji reforms?",
+      "ms": {
+        "draft": 7421,
+        "critique": 9338,
+        "solver": 1890,
+        "form": 5813
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What was the main reason for the increase in the number of factories employing more than 100 workers in Japan between 1909 and 1940?",
+      "ms": {
+        "draft": 7421,
+        "critique": 7716,
+        "solver": 1822,
+        "form": 4328
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of women in Japan's industrial workforce during the Meiji period?",
+      "ms": {
+        "draft": 7421,
+        "critique": 7444,
+        "solver": 2099,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the main reason for the changes in the household system in Japan during the early 20th century?",
+      "ms": {
+        "draft": 5672,
+        "critique": 8008,
+        "solver": 1864
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why did some Japanese intellectuals, like Miyake Setsurei, advocate for a focus on indigenous values during the Meiji period?",
+      "ms": {
+        "draft": 7421,
+        "critique": 9002,
+        "solver": 2164,
+        "form": 5898
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about Japan's modernisation in the 20th century?",
+      "ms": {
+        "draft": 5672,
+        "critique": 6593,
+        "solver": 1329,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which event led to the weakening of the Qing dynasty and increased demands for reform in China?",
+      "ms": {
+        "draft": 6316,
+        "critique": 5467,
+        "solver": 765,
+        "form": 1290
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the main idea of the passage?",
+      "ms": {
+        "draft": 5930,
+        "critique": 7255
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a historian uses a primary source, what is the most likely outcome?",
+      "ms": {
+        "draft": 5930,
+        "critique": 7597
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a factor that contributed to the rise of European power?",
+      "ms": {
+        "draft": 5930,
+        "critique": 9699
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best supports the idea that history is shaped by the historian's reasoning?",
+      "ms": {
+        "draft": 5930,
+        "critique": 8055
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the role of interlinkages in the study of history?",
+      "ms": {
+        "draft": 5930,
+        "critique": 8677
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is mentioned as a key factor in the development of early empires?",
+      "ms": {
+        "draft": 5930,
+        "critique": 7904
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of citizens in the development of democracy in South Korea, according to the passage?",
+      "ms": {
+        "draft": 4528,
+        "critique": 8505
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How did Japan's modernisation differ from China's, according to the passage?",
+      "ms": {
+        "draft": 4528,
+        "critique": 9167
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what was one key factor that enabled Japan to modernise rapidly?",
+      "ms": {
+        "draft": 4528,
+        "critique": 7838,
+        "solver": 2677
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between tradition and modernisation in East Asian countries?",
+      "ms": {
+        "draft": 4528,
+        "critique": 8082
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main objective of the Meiji school system, according to the passage?",
+      "ms": {
+        "draft": 4528,
+        "critique": 9980
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following is most likely to be a result of China's market reforms?",
+      "ms": {
+        "draft": 4528,
+        "critique": 8228,
+        "solver": 21838,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What was the impact of the June Democracy Movement on Korean politics?",
+      "ms": {
+        "draft": 4944,
+        "critique": 8135
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How did the June Democracy Movement contribute to the development of democracy in South Korea?",
+      "ms": {
+        "draft": 4944,
+        "critique": 10911
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the outcome of the 1987 direct election in South Korea?",
+      "ms": {
+        "draft": 4944,
+        "critique": 10700
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What event is described as a 6,000-mile journey taken by the Communists in 1934-35?",
+      "ms": {
+        "draft": 74056,
+        "critique": 14590
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is mentioned in the passage as a reason for the division of the Korean Peninsula after World War II?",
+      "ms": {
+        "draft": 4766,
+        "critique": 8887,
+        "solver": 24502,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What was the new concept of domesticity in Japan during the 1920s?",
+      "ms": {
+        "draft": 8686,
+        "critique": 10986
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what was the role of women in society as encouraged by the Guomindang?",
+      "ms": {
+        "draft": 6070,
+        "critique": 10404,
+        "solver": 11604,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the main reason for the end of the Park administration in 1979?",
+      "ms": {
+        "draft": 4944,
+        "critique": 9825,
+        "solver": 19466,
+        "form": 3888,
+        "translation": 64810
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the main purpose of the Saemaul Movement introduced in 1970?",
+      "ms": {
+        "draft": 4766,
+        "critique": 7788,
+        "solver": 2170,
+        "form": 6011,
+        "translation": 68070
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following events led to the beginning of a new chapter of Korean democracy?",
+      "ms": {
+        "draft": 4944,
+        "critique": 10920,
+        "solver": 18118,
+        "form": 5822,
+        "translation": 89418
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What can be inferred about the role of Chinese and Japanese scholars in the development of modern historical scholarship?",
+      "ms": {
+        "draft": 17262,
+        "critique": 6921,
+        "solver": 22759,
+        "form": 3924,
+        "translation": 112268
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the success of South Korea's economic growth during the 1960s?",
+      "ms": {
+        "draft": 4766,
+        "critique": 10502,
+        "solver": 24033,
+        "form": 5757,
+        "translation": 60998
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of history in East Asian societies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misrepresents the passage's statement on the importance of h…\"); distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's emphasis on history as a guide f…\"); distractor 3's reason is not a one-line misconception (\"Overlooks the passage's explanation that history was used by…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How did Japan manage to become an advanced industrial nation and a major economic power?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's emphasis on capitalism…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands Japan's historical approach to foreign relati…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between tradition and modernisation in Japan and China?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Contradicts the passage, which highlights the role of tradit…\"); distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's discussion of tradition and mode…\"); distractor 3's reason is not a one-line misconception (\"Overlooks the passage's emphasis on the role of tradition in…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what was one of the key factors that helped Japan succeed in modernisation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's emphasis on Japan's adaptability…\"); distractor 3's reason is not a one-line misconception (\"Overlooks the passage's discussion of Japan's ability to lea…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What was the main reason for the growth of a commercial economy in Japan during the Edo period?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is mentioned as a reason for Japan's economic strain in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the significance of the Tale of the Genji according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a merchant in Edo wanted to earn a living by writing, what would they need to do according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which country was the dominant power in East Asia at the beginning of the nineteenth century?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the role of the emperor during the Edo period?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If Japan had not developed the silk industry in Nishijin, what might have happened according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, which of the following best describes the Japanese government's approach to modernisation in the 19th century?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"misunderstands the passage as rejecting all foreign influenc…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What was the significance of the 'Imperial Rescript on Education' of 1890 according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"overstates the impact of the rescript by suggesting it aboli…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Based on the passage, which of the following can be inferred about Japan’s relationship with the West during the Meiji period?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What was the purpose of the new school system introduced in Japan in the 1870s?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"misrepresents the purpose of the school system as being sole…\"); distractor 3's reason is not a one-line misconception (\"correct answer, no misconception needed to explain it away a…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following best explains why the Japanese government emphasized the creation of a sense of nationhood during the Meiji period?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following was a key part of the Meiji reforms?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks the Meiji reforms were influenced by communism instea…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What was the main reason for the increase in the number of factories employing more than 100 workers in Japan between 1909 and 1940?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Believes the increase in factory size was due to unemploymen…\"); distractor 2's reason is not a one-line misconception (\"Assumes that traditional crafts were being replaced, which i…\"); distractor 3's reason is not a one-line misconception (\"Thinks the main reason for the increase in factory size was …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of women in Japan's industrial workforce during the Meiji period?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believes that women were not allowed to work in factories, w…\"); distractor 2's reason is not a one-line misconception (\"Assumes that women were primarily involved in traditional cr…\"); distractor 3's reason is not a one-line misconception (\"Thinks women were mainly employed in the military industry, …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What was the main reason for the changes in the household system in Japan during the early 20th century?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why did some Japanese intellectuals, like Miyake Setsurei, advocate for a focus on indigenous values during the Meiji period?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Believes that some intellectuals wanted to completely reject…\"); distractor 2's reason is not a one-line misconception (\"Assumes that the focus was on aligning with Western politica…\"); distractor 3's reason is not a one-line misconception (\"Thinks the main reason for the focus on indigenous values wa…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about Japan's modernisation in the 20th century?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This option ignores the mention of traditional values and in…\"); distractor 1's reason is not a one-line misconception (\"This option is too extreme and not supported by the passage'…\"); distractor 3's reason is not a one-line misconception (\"This option focuses only on economic reforms, while the pass…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which event led to the weakening of the Qing dynasty and increased demands for reform in China?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"refers to a different conflict that is not related to the Qi…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 6, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What was the main reason Chinese reformers like Kang Youwei a"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the main idea of the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a historian uses a primary source, what is the most likely outcome?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is NOT a factor that contributed to the rise of European power?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following best supports the idea that history is shaped by the historian's reasoning?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What does the passage suggest about the role of interlinkages in the study of history?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is mentioned as a key factor in the development of early empires?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the role of citizens in the development of democracy in South Korea, according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How did Japan's modernisation differ from China's, according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, what was one key factor that enabled Japan to modernise rapidly?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between tradition and modernisation in East Asian countries?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What was the main objective of the Meiji school system, according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, which of the following is most likely to be a result of China's market reforms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What was the impact of the June Democracy Movement on Korean politics?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How did the June Democracy Movement contribute to the development of democracy in South Korea?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What was the outcome of the 1987 direct election in South Korea?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What event is described as a 6,000-mile journey taken by the Communists in 1934-35?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is mentioned in the passage as a reason for the division of the Korean Peninsula after World War II?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the new concept of domesticity in Japan during the 1920s?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what was the role of women in society as encouraged by the Guomindang?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believing that the Guomindang promoted women in industrial r…\"); distractor 2's reason is not a one-line misconception (\"Believes women were in leadership roles in industry despite …\"); distractor 3's reason is not a one-line misconception (\"Believes the Guomindang supported women's rights more than t…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

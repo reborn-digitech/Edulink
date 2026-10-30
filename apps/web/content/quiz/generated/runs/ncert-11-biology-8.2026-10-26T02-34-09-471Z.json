@@ -1,0 +1,685 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T02:34:09.471Z",
+  "finishedAt": "2026-10-26T02:42:39.862Z",
+  "seconds": 510,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo108.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 8 — Nit of",
+    "edition": "Reprint 2026-27",
+    "chunks": 18,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2013 — question paper]\n26. (1 point) Which of the following correctly depicts a reaction involved in the\nnitrogen cycle?\na. N 2 + H + e + ATP + - NH 3 + ADP + Pi\nb. N 2 + H + e + ADP + Pi + - NH 3\nc. NO + e + ADP + Pi 2 - NH 3 +\nd. NO 3 - + H + e + ADP + Pi + - NH\n+ ATP\n+ ATP\n+\n3 + NO 2 + ATP",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n9. (b) dN/dt = r N 1",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[CBSE Class XII Biology, marking scheme, 2024-25]\n26. The main sources of biofertilizers are bacteria, fungi and cyanobacteria. 3\n- The nodules on the roots of leguminous plants are formed by the\nsymbiotic association of Rhizobium. These bacteria fix atmospheric\nnitrogen into organic forms, which is used by the plant as a nutrient.\nOther bacteria can fix atmospheric nitrogen while free-living in the soil\n(examples Azospirillum and Azotobacter), thus enriching the nitrogen\ncontent of the soil. (1)\n- Fungi are also known to form symbiotic associations with plants\n(mycorrhiza). Many members of the genus Glomus form mycorrhiza.\nThe fungal symbiont in these associations absorbs phosphorus from\nsoil and passes it to the plant. Plants having such "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 141095,
+      "in": 37,
+      "out": 37,
+      "rejects": 0,
+      "promptTokens": 38381,
+      "completionTokens": 8753
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 255806,
+      "in": 37,
+      "out": 29,
+      "rejects": 8,
+      "promptTokens": 20583,
+      "completionTokens": 8100
+    },
+    "solver": {
+      "calls": 209,
+      "ms": 90827,
+      "in": 29,
+      "out": 26,
+      "rejects": 3,
+      "promptTokens": 38534,
+      "completionTokens": 2242
+    },
+    "form": {
+      "calls": 18,
+      "ms": 65224,
+      "in": 26,
+      "out": 17,
+      "rejects": 9,
+      "promptTokens": 11692,
+      "completionTokens": 2158
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 57,
+      "ms": 10060,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 69,
+      "ms": 594315,
+      "in": 34,
+      "out": 34,
+      "rejects": 0,
+      "promptTokens": 40967,
+      "completionTokens": 20815
+    }
+  },
+  "kept": 17,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 2,
+    "4": 2,
+    "5": 3,
+    "6": 4
+  },
+  "flagged": 9,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is the basic unit of life according to the passage?",
+      "ms": {
+        "draft": 3124,
+        "critique": 4232
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Who modified the cell theory to include the idea that all cells arise from pre-existing cells?",
+      "ms": {
+        "draft": 3124,
+        "critique": 4509
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which scientist proposed that all living organisms are composed of cells and products of cells?",
+      "ms": {
+        "draft": 3124,
+        "critique": 5094
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is a key feature of the physico-chemical approach to studying biology?",
+      "ms": {
+        "draft": 3124,
+        "critique": 5096
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a scientist is studying the molecular basis of physiological processes in a cell, which approach is he most likely using?",
+      "ms": {
+        "draft": 3124,
+        "critique": 5735
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of prokaryotic cells?",
+      "ms": {
+        "draft": 4449,
+        "critique": 7124,
+        "solver": 1317,
+        "form": 3569
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a component of the cell theory?",
+      "ms": {
+        "draft": 3124,
+        "critique": 4507,
+        "solver": 12675
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the genetic material in prokaryotic cells?",
+      "ms": {
+        "draft": 4449,
+        "critique": 6421,
+        "solver": 9348
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell has a cell wall, plasma membrane, and cytoplasm, but no nucleus, what type of cell is it likely to be?",
+      "ms": {
+        "draft": 4449,
+        "critique": 5415
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of a bacterial cell, which structure is responsible for respiration and increasing the surface area of the plasma membrane?",
+      "ms": {
+        "draft": 4449,
+        "critique": 4503,
+        "solver": 9727,
+        "form": 2222
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the fluid mosaic model of the cell membrane describe?",
+      "ms": {
+        "draft": 3500,
+        "critique": 5609,
+        "solver": 1233,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT part of the endomembrane system?",
+      "ms": {
+        "draft": 4414,
+        "critique": 6103,
+        "solver": 12767
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following structures would you find the 9+2 arrangement of microtubules?",
+      "ms": {
+        "draft": 3892,
+        "critique": 7192,
+        "solver": 1166,
+        "form": 2089
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not correct?",
+      "ms": {
+        "draft": 3523,
+        "critique": 3813
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "New cells generate from",
+      "ms": {
+        "draft": 3523,
+        "critique": 4502,
+        "solver": 8946,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed a cell with multiple nuclei. Which of the following could this cell be?",
+      "ms": {
+        "draft": 3158,
+        "critique": 5300
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Figure 8.10, what is the structure that provides the core of a cilium or flagellum?",
+      "ms": {
+        "draft": 3158,
+        "critique": 4798,
+        "solver": 912,
+        "form": 3777
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main function of the Golgi apparatus?",
+      "ms": {
+        "draft": 3555,
+        "critique": 4902,
+        "solver": 1494,
+        "form": 2337
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT part of the endomembrane system?",
+      "ms": {
+        "draft": 3555,
+        "critique": 5494,
+        "solver": 12737,
+        "form": 3500
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the fluid mosaic model of the plasma membrane, what allows proteins to move within the membrane?",
+      "ms": {
+        "draft": 8315,
+        "critique": 5827,
+        "solver": 7361,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a structure found in both mitochondria and chloroplasts?",
+      "ms": {
+        "draft": 3158,
+        "critique": 7686,
+        "solver": 899,
+        "form": 2897,
+        "translation": 35759
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is correct?",
+      "ms": {
+        "draft": 3523,
+        "critique": 5942,
+        "solver": 1556,
+        "form": 3763,
+        "translation": 42601
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the nuclear pores?",
+      "ms": {
+        "draft": 3158,
+        "critique": 5382,
+        "solver": 1464,
+        "form": 2591,
+        "translation": 33171
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Match the following:",
+      "ms": {
+        "draft": 3523,
+        "critique": 4170,
+        "solver": 886,
+        "form": 0,
+        "translation": 66993
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is a mesosome in a prokaryotic cell? Mention the functions that it performs.",
+      "ms": {
+        "draft": 3523,
+        "critique": 7812,
+        "solver": 14119,
+        "form": 0,
+        "translation": 31644
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of ribosomes in a cell?",
+      "ms": {
+        "draft": 3500,
+        "critique": 4621,
+        "solver": 1554,
+        "form": 0,
+        "translation": 26583
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell has a high rate of protein synthesis, which structure would you expect to find in large numbers?",
+      "ms": {
+        "draft": 3158,
+        "critique": 6258,
+        "solver": 1447,
+        "form": 1921,
+        "translation": 35117
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a characteristic feature of prokaryotic cells?",
+      "ms": {
+        "draft": 3500,
+        "critique": 5363,
+        "solver": 1560,
+        "form": 0,
+        "translation": 36591
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct statement about the structure of a ribosome?",
+      "ms": {
+        "draft": 3892,
+        "critique": 6602,
+        "solver": 1437,
+        "form": 2461,
+        "translation": 31250
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the primary function of the Golgi apparatus?",
+      "ms": {
+        "draft": 4414,
+        "critique": 6616,
+        "solver": 1384,
+        "form": 0,
+        "translation": 33138
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a lab experiment, a student observes a cell that has a cell wall, plasma membrane, and no nucleus. Which of the following could be the identity of the cell?",
+      "ms": {
+        "draft": 4449,
+        "critique": 6108,
+        "solver": 1268,
+        "form": 3616,
+        "translation": 40842
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following processes requires the use of ATP?",
+      "ms": {
+        "draft": 3500,
+        "critique": 5556,
+        "solver": 1272,
+        "form": 0,
+        "translation": 26775
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A cell is observed to have a high number of ribosomes on its endoplasmic reticulum. What can be inferred about the cell?",
+      "ms": {
+        "draft": 4414,
+        "critique": 5387,
+        "solver": 1503,
+        "form": 0,
+        "translation": 43125
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the most likely reason for the presence of 70S ribosomes in chloroplasts?",
+      "ms": {
+        "draft": 3892,
+        "critique": 4658,
+        "solver": 614,
+        "form": 1266,
+        "translation": 42279
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a bacterium has a plasmid, what is the most likely effect on the cell?",
+      "ms": {
+        "draft": 4449,
+        "critique": 6608,
+        "solver": 9411,
+        "form": 2796,
+        "translation": 31806
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are gas vacuoles found in blue-green and purple and green photosynthetic bacteria?",
+      "ms": {
+        "draft": 3500,
+        "critique": 5472,
+        "solver": 1582,
+        "form": 0,
+        "translation": 29843
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A researcher is studying a cell that shows extensive folding of the inner mitochondrial membrane. What is the likely significance of this feature?",
+      "ms": {
+        "draft": 4414,
+        "critique": 5297,
+        "solver": 13168,
+        "form": 0,
+        "translation": 43637
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the basic unit of life according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Who modified the cell theory to include the idea that all cells arise from pre-existing cells?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which scientist proposed that all living organisms are composed of cells and products of cells?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, which of the following is a key feature of the physico-chemical approach to studying biology?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a scientist is studying the molecular basis of physiological processes in a cell, which approach is he most likely using?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of prokaryotic cells?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Describes eukaryotic cells and the nuclear membrane is not p…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT mentioned as a component of the cell theory?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 0 correct, the key is 3; the solution's working is not sound; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the genetic material in prokaryotic cells?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a cell has a cell wall, plasma membrane, and cytoplasm, but no nucleus, what type of cell is it likely to be?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of a bacterial cell, which structure is responsible for respiration and increasing the surface area of the plasma membrane?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the fluid mosaic model of the cell membrane describe?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.membrane: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is NOT part of the endomembrane system?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In which of the following structures would you find the 9+2 arrangement of microtubules?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Mistakenly thinks chloroplasts have this structure due to th…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is not correct?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "New cells generate from",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student observed a cell with multiple nuclei. Which of the following could this cell be?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram in Figure 8.10, what is the structure that provides the core of a cilium or flagellum?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'cilium'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main function of the Golgi apparatus?",
+      "reason": "the key is far longer than every distractor (39 vs 17 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is NOT part of the endomembrane system?",
+      "reason": "options 1 and 2 are the same (\"1: Ribosomes\"); options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the fluid mosaic model of the plasma membrane, what allows proteins to move within the membrane?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'plasma membrane'"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

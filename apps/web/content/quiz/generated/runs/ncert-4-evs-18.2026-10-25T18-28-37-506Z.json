@@ -1,0 +1,373 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T18:28:37.506Z",
+  "finishedAt": "2026-10-25T18:31:57.859Z",
+  "seconds": 200,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap118.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 18 — Too Much Water, Too Little Water",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 8,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 51466,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15314,
+      "completionTokens": 2722
+    },
+    "critique": {
+      "calls": 19,
+      "ms": 122909,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 7948,
+      "completionTokens": 3263
+    },
+    "solver": {
+      "calls": 86,
+      "ms": 47839,
+      "in": 13,
+      "out": 11,
+      "rejects": 2,
+      "promptTokens": 14209,
+      "completionTokens": 883
+    },
+    "form": {
+      "calls": 8,
+      "ms": 18632,
+      "in": 11,
+      "out": 7,
+      "rejects": 4,
+      "promptTokens": 1865,
+      "completionTokens": 490
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 3898,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 184226,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 10562,
+      "completionTokens": 5129
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What did Suguna's family offer the guest when he came to their house?",
+      "ms": {
+        "draft": 3463,
+        "critique": 6313,
+        "solver": 2172
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what was the main reason for the water shortage in Holgundi village?",
+      "ms": {
+        "draft": 3265,
+        "critique": 8333,
+        "solver": 1723,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a school has 100 children and only 2 taps, which problem might occur according to the passage?",
+      "ms": {
+        "draft": 3265,
+        "critique": 7184,
+        "solver": 12456,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a way to make water safe for drinking, according to the passage?",
+      "ms": {
+        "draft": 3265,
+        "critique": 6422,
+        "solver": 15668
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is one way that unclean or dirty water can harm our body?",
+      "ms": {
+        "draft": 3092,
+        "critique": 7136
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the importance of the Bhima Sangh?",
+      "ms": {
+        "draft": 3047,
+        "critique": 7082,
+        "solver": 1652,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What could happen if people drink water that is mixed with gutter water?",
+      "ms": {
+        "draft": 3092,
+        "critique": 8918
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you face a shortage of water at home, what should you do?",
+      "ms": {
+        "draft": 3092,
+        "critique": 9717
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the guest refuse to take a cold drink when he came to Suguna's house?",
+      "ms": {
+        "draft": 3092,
+        "critique": 7378,
+        "solver": 12018,
+        "form": 1009
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What problem did the people in Bazaar Gaon face?",
+      "ms": {
+        "draft": 3463,
+        "critique": 6709,
+        "solver": 1539,
+        "form": 2846
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one way to keep the drinking water places clean?",
+      "ms": {
+        "draft": 3047,
+        "critique": 5400,
+        "solver": 1810,
+        "form": 3269
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the children's group that worked to solve the water problem in Holgundi?",
+      "ms": {
+        "draft": 3265,
+        "critique": 4422,
+        "solver": 808,
+        "form": 1259,
+        "translation": 40319
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the guest refuse to take a cold drink?",
+      "ms": {
+        "draft": 3463,
+        "critique": 5394,
+        "solver": 2218,
+        "form": 3246,
+        "translation": 39077
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an arrangement for drinking water in a school?",
+      "ms": {
+        "draft": 3047,
+        "critique": 4922,
+        "solver": 1238,
+        "form": 3490,
+        "translation": 29266
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should be done with the water that was filled the previous day according to Raziya?",
+      "ms": {
+        "draft": 3463,
+        "critique": 5193,
+        "solver": 1146,
+        "form": 4290,
+        "translation": 37682
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there are 200 children in a school and only 10 taps, what problem might arise?",
+      "ms": {
+        "draft": 3047,
+        "critique": 6616,
+        "solver": 1845,
+        "form": 3039,
+        "translation": 31610
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did Suguna's family offer the guest when he came to their house?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what was the main reason for the water shortage in Holgundi village?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a school has 100 children and only 2 taps, which problem might occur according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a way to make water safe for drinking, according to the passage?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is one way that unclean or dirty water can harm our body?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the importance of the Bhima Sangh?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What could happen if people drink water that is mixed with gutter water?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If you face a shortage of water at home, what should you do?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did the guest refuse to take a cold drink when he came to Suguna's house?",
+      "reason": "options 0 and 1 are the same (\"He thought the cold drink was not clean\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What problem did the people in Bazaar Gaon face?",
+      "reason": "near-duplicate of served question cmvk6nc1e0jb8gpfhy858ufs3 (cosine 0.902 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is one way to keep the drinking water places clean?",
+      "reason": "near-duplicate of served question cmvk6nc1k0jbegpfhfg5529lm (cosine 0.903 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T20:15:58.647Z",
+  "finishedAt": "2026-10-25T20:20:52.616Z",
+  "seconds": 294,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap107.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 7 — Experiments with Water",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 4,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 34378,
+      "in": 11,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 10793,
+      "completionTokens": 1895
+    },
+    "critique": {
+      "calls": 12,
+      "ms": 72336,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 4865,
+      "completionTokens": 2045
+    },
+    "solver": {
+      "calls": 59,
+      "ms": 31617,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 9705,
+      "completionTokens": 578
+    },
+    "form": {
+      "calls": 2,
+      "ms": 4534,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 480,
+      "completionTokens": 136
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 3309,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 19,
+      "ms": 144634,
+      "in": 8,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 10046,
+      "completionTokens": 4961
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 4,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of something that floats on water?",
+      "ms": {
+        "draft": 3611,
+        "critique": 7069
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a piece of ice is placed in a bowl of water, what will happen?",
+      "ms": {
+        "draft": 3611,
+        "critique": 6855,
+        "solver": 10171,
+        "form": 1985
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about the experiment with salt and water?",
+      "ms": {
+        "draft": 3611,
+        "critique": 6511,
+        "solver": 9461
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what happened to the soap when Ayesha put it in the soap case?",
+      "ms": {
+        "draft": 3201,
+        "critique": 5594,
+        "solver": 1400
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what happened when Ayesha put a steel plate on water?",
+      "ms": {
+        "draft": 3201,
+        "critique": 6582,
+        "solver": 1894,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the reason that an iron ship floats on water while a needle sinks?",
+      "ms": {
+        "draft": 3201,
+        "critique": 5779,
+        "solver": 1872,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did the soap cake float when placed in a plastic plate?",
+      "ms": {
+        "draft": 3611,
+        "critique": 7290,
+        "solver": 2277,
+        "form": 2549,
+        "translation": 44371
+      },
+      "outcome": "kept",
+      "flag": "level 2 but the solver missed it 3 of 5 times"
+    },
+    {
+      "level": 2,
+      "stem": "Why did Ayesha's mother find very little water left in the pan after boiling?",
+      "ms": {
+        "draft": 15410,
+        "critique": 6830,
+        "solver": 925,
+        "form": 0,
+        "translation": 37025
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for keeping mango jelly in the sun?",
+      "ms": {
+        "draft": 15410,
+        "critique": 6831,
+        "solver": 1717,
+        "form": 0,
+        "translation": 30784
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to sea water when it is left in shallow beds in the sun to make salt?",
+      "ms": {
+        "draft": 15410,
+        "critique": 7118,
+        "solver": 2063,
+        "form": 0,
+        "translation": 29302
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What happened to the water in the pan when Ayesha's mother fo"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of something that floats on water?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a piece of ice is placed in a bowl of water, what will happen?",
+      "reason": "options 0 and 2 are the same (\"It will sink to the bottom\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is true about the experiment with salt and water?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main purpose of the Dandi March?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, what happened to the soap when Ayesha put it in the soap case?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what happened when Ayesha put a steel plate on water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the reason that an iron ship floats on water while a needle sinks?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"The shape of the object determines whether it floats or sinks\" / \"The material of the object determines whether it floats or sinks\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

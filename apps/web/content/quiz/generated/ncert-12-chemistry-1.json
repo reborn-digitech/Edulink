@@ -21,108 +21,165 @@
   "board": "NCERT",
   "book": "Chemistry-I",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T14:13:20.467Z",
+  "generatedAt": "2026-10-29T01:41:45.823Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the name of the law that relates the partial pressure of a gas to its mole fraction in a solution?",
+      "stem": "What is the primary advantage of using osmotic pressure to determine the molar mass of solutes?",
       "choices": [
-        "Dalton's Law",
-        "Boyle's Law",
-        "Henry's Law",
-        "Charles's Law"
+        "It is more accurate than other methods",
+        "It is less time-consuming",
+        "It is conducted at high temperatures",
+        "It uses pressure measurement at room temperature"
       ],
-      "answerIndex": 2,
-      "solution": "Henry's law is the law that relates the partial pressure of a gas to its mole fraction in a solution. Dalton's law is about the total pressure of a gas mixture. Boyle's law relates pressure and volume of a gas. Charles's law relates volume and temperature of a gas.",
+      "answerIndex": 3,
+      "solution": "Osmotic pressure measurements are conducted at room temperature, which avoids the potential degradation of sensitive solutes that could occur at higher temperatures. This makes it a more suitable method for determining molar mass in such cases. Other options, like accuracy or time consumption, are not directly related to the primary advantage of this method.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "किस नियम का नाम है जो एक गैस के आंशिक दबाव के बारे में घोल में इसके मोल अंश से संबंधित है?",
+          "stem": "ओस्मोटिक दाब के उपयोग से विलेय पदार्थों के मोलर द्रव्यमान का निर्धारण करने का प्राथमिक लाभ क्या है?",
           "choices": [
-            "डाल्टन का नियम",
-            "बॉयल का नियम",
-            "हेनरी का नियम",
-            "चार्ल्स का नियम"
+            "इसे अन्य विधियों की तुलना में अधिक सटीक माना जाता है",
+            "इसमें कम समय लगता है",
+            "इसे उच्च तापमान पर किया जाता है",
+            "इसमें कमरे के तापमान पर दाब मापन का उपयोग किया जाता है"
           ],
-          "solution": "हेनरी का नियम एक गैस के आंशिक दबाव के बारे में घोल में इसके मोल अंश से संबंधित है। डाल्टन का नियम गैस मिश्रण के कुल दबाव के बारे में है। बॉयल का नियम गैस के दबाव और आयतन के बीच संबंध बताता है। चार्ल्स का नियम गैस के आयतन और तापमान के बीच संबंध बताता है।",
-          "imageAlt": "एक छड़ चुंबक जिसके चुंबकीय क्षेत्र रेखाएं उत्तर ध्रुव से दक्षिण ध्रुव की दिशा में दिखाई दे रही हैं।",
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard terminology as found in Hindi-medium science textbooks.",
+          "solution": "ओस्मोटिक दाब के मापन को कमरे के तापमान पर किया जाता है, जो उच्च तापमान पर हो सकने वाले संवेदनशील विलेय पदार्थों के विघटन के संभावित जोखिम को बचाता है। इस कारण इसे ऐसे मामलों में मोलर द्रव्यमान निर्धारित करने के लिए अधिक उपयुक्त विधि माना जाता है। अन्य विकल्प, जैसे सटीकता या समय की बचत, इस विधि के प्राथमिक लाभ से सीधे संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका वायूच्या अणुप्रमाणाशी त्याच्या आंशिक दाबाचा संबंध असलेल्या कायद्याचे नाव काय आहे?",
+          "stem": "ओस्मोटिक दाबाचा वापर करून विलेयांच्या मोलर द्रव्यमानाचे निर्धारण करण्याचा प्राथमिक फायदा काय आहे?",
           "choices": [
-            "डॅल्टनचा कायदा",
-            "बॉयलचा कायदा",
-            "हेन्रीचा कायदा",
-            "चार्ल्सचा कायदा"
+            "ते इतर पद्धतींपेक्षा अधिक अचूक आहे",
+            "ते कमी वेळ घेते",
+            "ते उच्च तापमानावर घेतले जाते",
+            "ते कमर्शील तापमानावर दाब मोजण्यासाठी वापरले जाते"
           ],
-          "solution": "हेन्रीचा कायदा हा वायूच्या आंशिक दाबाचा त्याच्या अणुप्रमाणाशी संबंध दर्शवितो. डॅल्टनचा कायदा वायू मिश्रणाच्या एकूण दाबाबद्दल आहे. बॉयलचा कायदा वायूच्या दाब आणि आयतनाच्या संबंधाबद्दल आहे. चार्ल्सचा कायदा वायूच्या आयतन आणि तापमानाच्या संबंधाबद्दल आहे.",
-          "imageAlt": "एका चुंबकाचे चुंबकीय क्षेत्र रेषा उत्तर ते दक्षिण ध्रुवाकडे दिशा दर्शवित आहेत.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi scientific terminology.",
+          "solution": "ओस्मोटिक दाबाच्या मोजणी ला कमर्शील तापमानावर केले जाते, जे उच्च तापमानावर घडू शकणाऱ्या संवेदनशील विलेयांच्या विघटनाच्या शक्यतेला टाळते. हे अशा अवस्थांमध्ये मोलर द्रव्यमान निर्धारित करण्यासाठी अधिक उपयुक्त पद्धत बनवते. इतर विकल्प, जसे अचूकता किंवा वेळ खर्च, ह्या पद्धतीच्या प्राथमिक फायद्याशी सीधा संबंध नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A bar magnet with magnetic field lines showing direction from north to south pole.",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "barMagnet",
-              "x": 50,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "north",
-                "south"
-              ]
-            }
-          ],
-          "arrows": [
-            {
-              "from": [
-                40,
-                30
-              ],
-              "to": [
-                60,
-                30
-              ],
-              "label": "magnetic_field",
-              "curved": false
-            }
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the method with other techniques",
+        "Students may think that pressure measurements take less time than other methods like boiling point elevation or freezing point depression.",
+        "Incorrectly assumes high temperature is used in the method",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        0,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 3, as the question refers to the advantage of using osmotic pressure at room temperature. The author's reasoning for the other options is valid, with option 1 being a plausible misconception and option 2 being an incorrect assumption about temperature.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 22,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "1.3 Solubility",
+            "1.6 Colligative1.6Colligative",
+            "of Molar Mass"
           ]
         },
-        "labels": {
-          "north": {
-            "en": "North pole",
-            "hi": "उत्तर ध्रुव",
-            "mr": "उत्तर ध्रुव"
-          },
-          "south": {
-            "en": "South pole",
-            "hi": "दक्षिण ध्रुव",
-            "mr": "दक्षिण ध्रुव"
-          },
-          "magnetic_field": {
-            "en": "Magnetic field direction",
-            "hi": "चुंबकीय क्षेत्र की दिशा",
-            "mr": "चुंबकीय क्षेत्र दिशा"
-          }
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 23,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "1.3 Solubility",
+            "1.6 Colligative1.6Colligative",
+            "of Molar Mass"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 24,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "1.3 Solubility",
+            "1.6 Colligative1.6Colligative",
+            "Intext Questions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:41:45.823Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the term used for a homogeneous mixture of two or more substances?",
+      "choices": [
+        "Compound",
+        "Element",
+        "Solution",
+        "Mixture"
+      ],
+      "answerIndex": 2,
+      "solution": "A solution is a homogeneous mixture of two or more substances, meaning the components are evenly distributed throughout. A compound is formed when substances chemically combine, an element is a pure substance made of only one type of atom, and a mixture refers to any combination of substances that are not chemically bonded.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "दो या दो से अधिक पदार्थों के समांगी मिश्रण के लिए उपयोग किया जाने वाला शब्द क्या है?",
+          "choices": [
+            "यौगिक",
+            "तत्व",
+            "विलयन",
+            "मिश्रण"
+          ],
+          "solution": "विलयन दो या दो से अधिक पदार्थों का समांगी मिश्रण होता है, जिसका अर्थ है कि घटक पूरे में बराबर रूप से वितरित होते हैं। एक यौगिक तब बनता है जब पदार्थ रासायनिक रूप से जुड़ जाते हैं, एक तत्व एक शुद्ध पदार्थ होता है जो केवल एक प्रकार के परमाणु से बना होता है, और मिश्रण किसी भी असंयोजक रूप से जुड़े पदार्थों के संयोजन को कहते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately conveys the meaning of the original English question and solution, with appropriate scientific terminology used in a way consistent with Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "दोन किंवा अधिक पदार्थांचा समान वितरण असलेला मिश्रण म्हणून वापरल्या जाणार्‍या शब्दाचे नाव काय आहे?",
+          "choices": [
+            "यौगिक",
+            "अवयव",
+            "द्रावण",
+            "मिश्रण"
+          ],
+          "solution": "द्रावण हा दोन किंवा अधिक पदार्थांचा समान वितरण असलेला मिश्रण आहे, ज्यामध्ये घटक समान रीतीने वितरित असतात. यौगिक हा रासायनिकरीत्या जोडल्या गेलेल्या पदार्थांमधून तयार होतो, अवयव हा केवळ एक प्रकारच्या परमाणूंनी बनलेला शुद्ध पदार्थ असतो आणि मिश्रण हा रासायनिकरीत्या जोडले गेलेल्या पदार्थांचा संयोजन असतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "flag": null
         }
       },
-      "needsFigure": true,
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
-        "Confuses Henry's law with Dalton's law",
-        "Confuses Henry's law with Boyle's law",
+        "Confuses solution with compound",
+        "Confuses solution with element",
         null,
-        "Confuses Henry's law with Charles's law"
+        "Student confuses solution with general mixture, not recognizing the specific definition of a homogeneous mixture"
       ],
       "solverAnswers": [
         2,
@@ -132,105 +189,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The question is about Henry's Law, which correctly relates the partial pressure of a gas to its mole fraction in a solution. The author's solution and reasoning are accurate.",
-      "sources": [
-        {
-          "document": "ncert/12/chemistry/lech101.pdf",
-          "ordinal": 7,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 1: Unit Objectives Solutions",
-            "1.3 Solubility"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech101.pdf",
-          "ordinal": 8,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 1: Unit Objectives Solutions",
-            "1.3 Solubility"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech101.pdf",
-          "ordinal": 9,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 1: Unit Objectives Solutions",
-            "1.3 Solubility"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:13:20.467Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the term for the concentration of a solution expressed as the ratio of moles of solute to the total moles of solution?",
-      "choices": [
-        "Molarity",
-        "Molality",
-        "Mass percentage",
-        "Mole fraction"
-      ],
-      "answerIndex": 3,
-      "solution": "The term for the concentration of a solution expressed as the ratio of moles of solute to the total moles of solution is mole fraction. Molarity is moles of solute per litre of solution, molality is moles of solute per kilogram of solvent, and mass percentage is the mass of solute divided by the mass of solution, multiplied by 100.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक विलयन के सांद्रता के लिए शब्द क्या है जिसे विलेय के मोलों के अनुपात के रूप में विलयन के कुल मोलों से व्यक्त किया जाता है?",
-          "choices": [
-            "मोलरता",
-            "मोललता",
-            "द्रव्यमान प्रतिशत",
-            "मोल प्रतिभाग"
-          ],
-          "solution": "एक विलयन के सांद्रता के लिए शब्द जिसे विलेय के मोलों के अनुपात के रूप में विलयन के कुल मोलों से व्यक्त किया जाता है, मोल प्रतिभाग है। मोलरता विलेय के मोलों के लीटर विलयन में होते हैं, मोललता विलेय के मोलों के किलोग्राम विलायक में होते हैं, और द्रव्यमान प्रतिशत विलेय के द्रव्यमान के अनुपात के रूप में विलयन के द्रव्यमान से होते हैं, 100 से गुणा करके।",
-          "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in Indian school curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका द्रावणाच्या सांद्रतेचा शब्द काय आहे जो द्रावकाच्या मोलांच्या गुणोत्तराने द्रावणाच्या एकूण मोलांच्या गुणोत्तराने व्यक्त केला जातो?",
-          "choices": [
-            "मोलरिटी",
-            "मोललिटी",
-            "द्रव्यमान टक्का",
-            "मोल अंश"
-          ],
-          "solution": "एका द्रावणाच्या सांद्रतेचा शब्द जो द्रावकाच्या मोलांच्या गुणोत्तराने द्रावणाच्या एकूण मोलांच्या गुणोत्तराने व्यक्त केला जातो, तो मोल अंश आहे. मोलरिटी हा द्रावणाच्या लिटरमध्ये द्रावकाच्या मोलांचा अंदाज आहे, मोललिटी हा द्रावकाच्या किलोग्रॅममध्ये द्रावकाच्या मोलांचा अंदाज आहे, आणि द्रव्यमान टक्का हा द्रावकाच्या द्रव्यमानाच्या द्रावणाच्या द्रव्यमानाच्या गुणोत्तराने 100 ने गुणिले जाते.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate technical terms used in Marathi medium education.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses molarity with mole fraction",
-        "Confuses molality with mole fraction",
-        "Confuses mass percentage with mole fraction",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is mole fraction, and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "critique": "The question is well-constructed, with a clear correct answer and plausible misconceptions for the distractors. The solution correctly identifies the definition of a solution as a homogeneous mixture.",
       "sources": [
         {
           "document": "ncert/12/chemistry/lech101.pdf",
@@ -264,49 +223,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:13:20.467Z",
+      "generatedAt": "2026-10-29T01:41:45.823Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 2,
-      "stem": "What is the definition of molarity?",
+      "difficulty": 1,
+      "stem": "What is the unit of molarity?",
       "choices": [
-        "Moles of solute per litre of solution",
-        "Moles of solute per kilogram of solvent",
-        "Moles of solute per mole of solution",
-        "Moles of solute per mole of solvent"
+        "mol L",
+        "mol kg",
+        "mol dm",
+        "mol g"
       ],
       "answerIndex": 0,
-      "solution": "Molarity is defined as the number of moles of solute per litre of solution. This is a fundamental concept in chemistry that measures concentration based on volume. The other options describe different concentration units, such as molality, which uses mass, and mole fraction, which uses moles of both solute and solvent.",
+      "solution": "Molarity is defined as the number of moles of solute per litre of solution. The unit of molarity is therefore 'mol L'. The other options represent different concentration units such as molality (mol kg) or not a valid unit at all.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "मोलरता की परिभाषा क्या है?",
+          "stem": "मोलरता की इकाई क्या है?",
           "choices": [
-            "विलेय के मोल प्रति लीटर विलयन",
-            "विलेय के मोल प्रति किलोग्राम विलायक",
-            "विलेय के मोल प्रति विलयन के मोल",
-            "विलेय के मोल प्रति विलायक के मोल"
+            "मोल लीटर",
+            "मोल किग्रा",
+            "मोल डीएम",
+            "मोल ग्राम"
           ],
-          "solution": "मोलरता विलेय के मोल प्रति लीटर विलयन के रूप में परिभाषित की जाती है। यह रसायन विज्ञान में सांद्रता के आधारभूत अवधारणा है। अन्य विकल्प विभिन्न सांद्रता इकाइयों का वर्णन करते हैं, जैसे कि मोललता, जो द्रव्यमान का उपयोग करती है, और मोल अंश, जो विलेय और विलायक दोनों के मोल का उपयोग करती है।",
+          "solution": "मोलरता की परिभाषा विलयन के लीटर में विलेय के मोलों की संख्या है। अतः मोलरता की इकाई 'मोल लीटर' है। अन्य विकल्प विभिन्न सांद्रता इकाइयाँ जैसे मोललता (मोल किग्रा) को दर्शाते हैं या वैध इकाई नहीं हैं।",
           "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Hindi chemical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "मोलरिटीची व्याख्या काय आहे?",
+          "stem": "मोलरिटीची एकक कोणती आहे?",
           "choices": [
-            "द्रावकाच्या लिटरातील द्राव्याचे मोल",
-            "द्रावकाच्या किलोग्रॅमातील द्राव्याचे मोल",
-            "द्रावणाच्या मोलातील द्राव्याचे मोल",
-            "द्रावकाच्या मोलातील द्राव्याचे मोल"
+            "मोल एल",
+            "मोल किग्रा",
+            "मोल डीएम",
+            "मोल ग्रॅम"
           ],
-          "solution": "मोलरिटी म्हणजे द्रावणाच्या लिटरातील द्राव्याचे मोल असे व्याख्याकरण केले जाते. हे रसायनशास्त्रातील एक मूलभूत संकल्पना आहे जी आकर्षणाचे मापन करते. इतर विकल्पांमध्ये विविध आकर्षण एककांचे वर्णन केले गेले आहे, जसे की मोललिटी, जी द्रव्यमानाचा वापर करते आणि मोल अंश, जी द्राव्य आणि द्रावक दोन्हीच्या मोलांचा वापर करते.",
+          "solution": "मोलरिटी म्हणजे द्रावणाच्या लिटरमध्ये द्रावकाच्या मोलांची संख्या आहे. म्हणून मोलरिटीची एकक 'मोल एल' आहे. इतर पर्याय मोललिटी (मोल किग्रा) असलेल्या विशिष्ट सांद्रता एककांचे आहेत किंवा खालीलपैकी कोणतेही वैध एकक नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "critique": "The translation is accurate and maintains the technical terms used in Marathi science textbooks.",
           "flag": null
         }
       },
@@ -316,9 +275,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses molality with molarity",
-        "Refers to mole fraction",
-        "Refers to another concentration measure"
+        "confuses molarity with molality",
+        "incorrect unit for molarity",
+        "incorrect unit for molarity"
       ],
       "solverAnswers": [
         0,
@@ -328,7 +287,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the correct answer is clearly supported by the definition of molarity. The distractors correctly represent common misconceptions about related concentration units.",
+      "critique": "The solution is correct and aligns with the key. Molarity is indeed measured in mol L, and the other options represent different concentration units or invalid units.",
       "sources": [
         {
           "document": "ncert/12/chemistry/lech101.pdf",
@@ -363,49 +322,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:13:20.467Z",
+      "generatedAt": "2026-10-29T01:41:45.823Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "What is the definition of molality?",
+      "stem": "Which of the following statements best describes a homogeneous mixture?",
       "choices": [
-        "Moles of solute per kilogram of solvent",
-        "Moles of solute per litre of solution",
-        "Moles of solute per mole of solution",
-        "Moles of solute per mole of solvent"
+        "It has a non-uniform composition throughout",
+        "It has a uniform composition and properties throughout",
+        "It contains only one type of substance",
+        "It changes its composition when stirred"
       ],
-      "answerIndex": 0,
-      "solution": "Molality is defined as the number of moles of solute divided by the mass of the solvent in kilograms. This distinguishes it from molarity, which uses volume of solution, and from mole fraction, which uses moles of solvent. The other options incorrectly relate moles of solute to volume or total moles rather than mass of solvent.",
+      "answerIndex": 1,
+      "solution": "A homogeneous mixture has a uniform composition and properties throughout. This means that the components are evenly distributed and cannot be distinguished from each other. The other options are incorrect because a non-uniform composition describes a heterogeneous mixture, a single substance is a pure substance, and stirring does not change the composition of a homogeneous mixture.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "मोललता की परिभाषा क्या है?",
+          "stem": "निम्नलिखित में से कौन-सा कथन एक समांगी मिश्रण का सबसे अच्छा वर्णन करता है?",
           "choices": [
-            "विलेय के मोल प्रति किलोग्राम विलायक",
-            "विलेय के मोल प्रति लीटर विलयन",
-            "विलेय के मोल प्रति विलयन के मोल",
-            "विलेय के मोल प्रति विलायक के मोल"
+            "इसका संघटन एकसमान नहीं होता है",
+            "इसका संघटन एवं गुण पूरे भाग में एकसमान होता है",
+            "इसमें केवल एक प्रकार का पदार्थ होता है",
+            "इसका संघटन चलाने पर बदल जाता है"
           ],
-          "solution": "मोललता विलेय के मोलों की संख्या के विलायक के द्रव्यमान (किलोग्राम में) से भाग देने पर प्राप्त होती है। यह मोलरता से भिन्न होती है, जो विलयन के आयतन का उपयोग करती है, और मोल प्रतिशत से भी भिन्न होती है, जो विलायक के मोलों का उपयोग करती है। अन्य विकल्प गलत रूप से विलेय के मोलों का आयतन या कुल मोलों के साथ संबंध बताते हैं बजाय विलायक के द्रव्यमान के।",
+          "solution": "एक समांगी मिश्रण का संघटन एवं गुण पूरे भाग में एकसमान होता है। इसका अर्थ है कि घटक समान रूप से वितरित होते हैं और एक दूसरे से अलग नहीं किए जा सकते। अन्य विकल्प गलत हैं क्योंकि असमान संघटन असमांगी मिश्रण का वर्णन करता है, एक ही प्रकार का पदार्थ शुद्ध पदार्थ है, और हलाने से समांगी मिश्रण का संघटन नहीं बदलता।",
           "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options are correctly translated and maintain their original correctness/wrongness. The term 'मोललता' is the standard Hindi term used in textbooks.",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "मोललिटीची व्याख्या काय आहे?",
+          "stem": "खालीलपैकी कोणता विधान एकारूप मिश्रणाचे चांगले वर्णन करते?",
           "choices": [
-            "विरीनकारकाचे मोल प्रति किलोग्रॅम विरीनकारक",
-            "विरीनकारकाचे मोल प्रति लिटर विरीण",
-            "विरीनकारकाचे मोल प्रति विरीणाचे मोल",
-            "विरीनकारकाचे मोल प्रति विरीनकारकाचे मोल"
+            "त्याचा विस्तृत भागात असमान घटक असतात",
+            "त्याचा घटक आणि गुणधर्म विस्तृत भागात समान असतात",
+            "त्यामध्ये केवळ एक प्रकारचे पदार्थ असतो",
+            "हलवल्यास त्याचा घटक बदलतो"
           ],
-          "solution": "मोललिटी म्हणजे विरीनकारकाच्या मोलांची संख्या विरीनकारकाच्या वजनाच्या किलोग्रॅममध्ये भाग दिल्याने मिळते. हे मोलरिटीपासून वेगळे असते, ज्यामध्ये विरीणाच्या आयतनाचा वापर केला जातो, आणि मोल अंशापासून वेगळे असते, ज्यामध्ये विरीनकारकाच्या मोलांचा वापर केला जातो. इतर विकल्पांमध्ये विरीनकारकाचे मोल आयतन किंवा कुल मोलांशी अशा प्रकारे जोडले गेले आहेत जे चुकीचे आहेत.",
+          "solution": "एकारूप मिश्रणाचा घटक आणि गुणधर्म विस्तृत भागात समान असतात. हे अर्थ असा की घटक समान रीतीने वितरित असतात आणि एकमेकांपासून भिन्न दिसत नाहीत. इतर विधाने अयोग्य आहेत कारण असमान घटक हे असमान मिश्रणाचे वर्णन करतात, एक प्रकारचा पदार्थ हा शुद्ध पदार्थ आहे आणि हलवल्यास एकारूप मिश्रणाचा घटक बदलत नाही.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi-medium science textbooks.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -414,119 +373,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses homogeneous with heterogeneous",
         null,
-        "Confuses molarity with molality",
-        "Refers to molarity",
-        "Refers to another concentration measure"
+        "Confuses homogeneous mixtures with pure substances",
+        "Student thinks that mixing changes the composition of a homogeneous mixture"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is clearly defined as moles of solute per kilogram of solvent. The other options correspond to molarity, mole fraction, and another concentration measure, which are common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/12/chemistry/lech101.pdf",
-          "ordinal": 4,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 1: Unit Objectives Solutions",
-            "1.2 Expressing",
-            "Concentration"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech101.pdf",
-          "ordinal": 5,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 1: Unit Objectives Solutions",
-            "1.3 Solubility"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech101.pdf",
-          "ordinal": 6,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 1: Unit Objectives Solutions",
-            "1.3 Solubility"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:13:20.467Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "What is the mole fraction of ethylene glycol in a solution containing 20% of ethylene glycol by mass?",
-      "choices": [
-        "0.068",
-        "0.136",
-        "0.200",
-        "0.932"
-      ],
-      "answerIndex": 0,
-      "solution": "To find the mole fraction of ethylene glycol, calculate the moles of ethylene glycol (20 g / 62.07 g/mol ≈ 0.322 mol) and the moles of water (80 g / 18.02 g/mol ≈ 4.444 mol). The mole fraction is 0.322 / (0.322 + 4.444) ≈ 0.068. The other options are incorrect because they either use the wrong mass ratio or fail to account for the total moles in the solution.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "20% एथिलीन ग्लाइकॉल द्वारा द्रव्यमान द्वारा घोल में एथिलीन ग्लाइकॉल का मोल प्रभाज क्या है?",
-          "choices": [
-            "0.068",
-            "0.136",
-            "0.200",
-            "0.932"
-          ],
-          "solution": "एथिलीन ग्लाइकॉल के मोल की गणना करने के लिए, एथिलीन ग्लाइकॉल (20 ग्राम / 62.07 ग्राम/मोल ≈ 0.322 मोल) और पानी के मोल (80 ग्राम / 18.02 ग्राम/मोल ≈ 4.444 मोल) की गणना करें। मोल प्रभाज 0.322 / (0.322 + 4.444) ≈ 0.068 है। अन्य विकल्प गलत हैं क्योंकि वे या तो गलत द्रव्यमान अनुपात का उपयोग करते हैं या घोल में कुल मोल को ध्यान में नहीं रखते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एथिलीन ग्लायकॉलची मोल अंश किती असेल जर एथिलीन ग्लायकॉल द्वारे वजनानुसार 20% असलेल्या द्रावणात?",
-          "choices": [
-            "0.068",
-            "0.136",
-            "0.200",
-            "0.932"
-          ],
-          "solution": "एथिलीन ग्लायकॉलचा मोल अंश शोधण्यासाठी, एथिलीन ग्लायकॉलचे मोल (20 ग्रॅम / 62.07 ग्रॅम/मोल ≈ 0.322 मोल) आणि पाण्याचे मोल (80 ग्रॅम / 18.02 ग्रॅम/मोल ≈ 4.444 मोल) गणना करा. मोल अंश 0.322 / (0.322 + 4.444) ≈ 0.068 असेल. इतर विकल्प चुकीचे असतात कारण ते वजन अनुपात चुकीचा वापर करतात किंवा द्रावणातील एकूण मोल लक्षात ठेवत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for chemistry.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the mole fraction of ethylene glycol with that of water",
-        "Adds the moles incorrectly",
-        "Fails to divide by the total moles correctly"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0.068, calculated by dividing the moles of ethylene glycol (0.322 mol) by the total moles (0.322 + 4.444 = 4.766). The other options reflect common misconceptions such as confusing mole fractions, incorrect addition of moles, or failing to divide by the total moles.",
+      "critique": "The correct answer is 1, as a homogeneous mixture has a uniform composition and properties throughout. The other options reflect common misconceptions: confusing with heterogeneous mixtures, confusing with pure substances, and thinking that stirring changes composition.",
       "sources": [
         {
           "document": "ncert/12/chemistry/lech101.pdf",
@@ -571,49 +431,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:13:20.467Z",
+      "generatedAt": "2026-10-29T01:41:45.823Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Which of the following pairs shows the most significant intermolecular interaction due to solute-solvent interactions?",
+      "difficulty": 2,
+      "stem": "Which law states that the solubility of a gas in a liquid is directly proportional to the partial pressure of the gas?",
       "choices": [
-        "n-hexane and n-octane",
-        "I and CCl4",
-        "NaClO and water",
-        "methanol and acetone"
+        "Dalton's law",
+        "Raoult's law",
+        "Henry's law",
+        "Graham's law"
       ],
       "answerIndex": 2,
-      "solution": "NaClO is an ionic compound, and water is polar, so ion-dipole interactions are the strongest. The other options involve nonpolar or similar polar molecules with weaker interactions.",
+      "solution": "Henry's law describes the relationship where the solubility of a gas in a liquid increases proportionally with the partial pressure of the gas. Dalton's law deals with the total pressure of a gas mixture, Raoult's law concerns the vapor pressure of solutions, and Graham's law relates to the rate of gas diffusion.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा युग्म विलेय-विलायक अंतःक्रियाओं के कारण सबसे महत्वपूर्ण अंतरआण्विक अंतःक्रिया दर्शाता है?",
+          "stem": "कौन सा नियम बताता है कि गैस की द्रव में विलेयता गैस के आंशिक दबाव के सीधे आनुपातिक होती है?",
           "choices": [
-            "n-हेक्सेन और n-ओक्टेन",
-            "I और CCl4",
-            "NaClO और पानी",
-            "मेथनॉल और एसीटोन"
+            "डाल्टन का नियम",
+            "राउल्ट का नियम",
+            "हेनरी का नियम",
+            "ग्राहम का नियम"
           ],
-          "solution": "NaClO एक आयनिक यौगिक है और पानी ध्रुवीय है, इसलिए आयन-डाइपोल अंतःक्रियाएं सबसे मजबूत हैं। अन्य विकल्पों में अपोलर या समान ध्रुवीय अणु शामिल हैं जिनमें कमजोर अंतःक्रियाएं होती हैं।",
+          "solution": "हेनरी का नियम वह संबंध बताता है जहां द्रव में गैस की विलेयता गैस के आंशिक दबाव के सीधे आनुपातिक रूप से बढ़ती है। डाल्टन का नियम गैस मिश्रण के कुल दबाव से संबंधित है, राउल्ट का नियम विलयन के वाष्प दबाव से संबंधित है, और ग्राहम का नियम गैस प्रसार की दर से संबंधित है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता जोडा अत्यंत महत्वाच्या अंतरआणविक अंतःक्रिया दर्शवतो जी विलेय-विलायक अंतःक्रियांमुळे होते?",
+          "stem": "कोणत्या कायद्याने द्रावकात वायूची विलेयता वायूच्या आंशिक दाबाशी थेट अनुलोमी असते?",
           "choices": [
-            "n-हेक्सेन आणि n-ओक्टेन",
-            "I आणि CCl4",
-            "NaClO आणि पाणी",
-            "मेथेनॉल आणि एसिटोन"
+            "डॅल्टनचा कायदा",
+            "रॉउल्टचा कायदा",
+            "हेनरीचा कायदा",
+            "ग्राहमचा कायदा"
           ],
-          "solution": "NaClO एक आयनिक यौगिक आहे आणि पाणी ध्रुवीय आहे, म्हणून आयन-डायपोल अंतःक्रिया सर्वात मजबूत आहे. इतर विकल्पांमध्ये अधिक नॉनपोलर किंवा समान ध्रुवीय अणू असतात ज्यामुळे कमकुवत अंतःक्रिया होते.",
+          "solution": "हेनरीचा कायदा वायूच्या द्रावकात विलेयतेच्या संबंधाचे वर्णन करतो ज्यामध्ये वायूची विलेयता वायूच्या आंशिक दाबाशी थेट अनुलोमी असते. डॅल्टनचा कायदा वायू मिश्रणाच्या एकूण दाबाशी संबंधित असतो, रॉउल्टचा कायदा द्रावणाच्या वाफ दाबाशी संबंधित असतो आणि ग्राहमचा कायदा वायूच्या प्रसरणाच्या दराशी संबंधित असतो.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the meaning, structure, and technical terms appropriate for a Marathi-medium curriculum.",
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
           "flag": null
         }
       },
@@ -622,10 +482,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "nonpolar molecules have weak interactions",
-        "confuses ionic with covalent interactions",
+        "Confuses Henry's law with Dalton's law",
+        "Confuses Henry's law with Raoult's law",
         null,
-        "incorrectly assumes dipole-dipole interactions"
+        "Confuses Henry's law with Graham's law"
       ],
       "solverAnswers": [
         2,
@@ -634,8 +494,106 @@
         2,
         2
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2 (NaClO and water) because ion-dipole interactions are stronger than the other types of intermolecular forces. The reasoning in the solution is sound and matches the expected understanding of intermolecular forces.",
+      "levelFlag": null,
+      "critique": "The question is well-constructed, and the solution correctly identifies Henry's law as the correct answer. The author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 28,
+          "pageStart": 27,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 29,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 30,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:41:45.823Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is the most important type of intermolecular attractive interaction between NaClO and water?",
+      "choices": [
+        "Hydrogen bonding",
+        "Dipole-dipole interactions",
+        "London dispersion forces",
+        "Ion-dipole interactions"
+      ],
+      "answerIndex": 3,
+      "solution": "NaClO is an ionic compound, and water is a polar molecule. The interaction between them is ion-dipole, where the ions of NaClO are attracted to the polar water molecules. Hydrogen bonding is not significant here because NaClO does not have hydrogen atoms bonded to highly electronegative atoms. Dipole-dipole and London dispersion forces are not as strong as ion-dipole in this context.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा NaClO और पानी के बीच अंतरआणविक आकर्षण अंतःक्रिया का सबसे महत्वपूर्ण प्रकार है?",
+          "choices": [
+            "हाइड्रोजन बंधन",
+            "द्विध्रुव-द्विध्रुव अंतःक्रिया",
+            "लॉन्डन विस्पर्श बल",
+            "आयन-द्विध्रुव अंतःक्रिया"
+          ],
+          "solution": "NaClO एक आयनिक यौगिक है और पानी एक ध्रुवीय अणु है। इनके बीच अंतःक्रिया आयन-द्विध्रुव होती है, जहाँ NaClO के आयन ध्रुवीय पानी अणुओं से आकर्षित होते हैं। हाइड्रोजन बंधन यहाँ महत्वपूर्ण नहीं है क्योंकि NaClO में उच्च विद्युतऋणात्मक तत्वों से बंधे हाइड्रोजन परमाणु नहीं होते। द्विध्रुव-द्विध्रुव और लॉन्डन विस्पर्श बल इस संदर्भ में आयन-द्विध्रुव के मुकाबले कम मजबूत होते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता अणुमध्ये असलेल्या आकर्षक परस्पर क्रियांचा सर्वात महत्वाचा प्रकार NaClO आणि पाण्यामध्ये असतो?",
+          "choices": [
+            "हायड्रोजन बंध",
+            "द्विध्रुव-द्विध्रुव अंतःक्रिया",
+            "लॉन्डन विसर्जन बल",
+            "आयन-द्विध्रुव अंतःक्रिया"
+          ],
+          "solution": "NaClO एक आयनिक यौगिक आहे आणि पाणी एक ध्रुवीय अणू आहे. त्यांच्यातील अंतःक्रिया आयन-द्विध्रुव आहे, जेथे NaClO च्या आयनांना ध्रुवीय पाणी अणूंनी आकर्षित केले जाते. हायड्रोजन बंध येथे अस्पष्ट आहे कारण NaClO मध्ये हायड्रोजन परमाणू उच्च विद्युतऋणता असलेल्या परमाणूंशी जोडलेले नाहीत. द्विध्रुव-द्विध्रुव आणि लॉन्डन विसर्जन बल या या संदर्भात आयन-द्विध्रुव इतके शक्तिशाली नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes the presence of hydrogen bonding",
+        "Confuses polar and ionic interactions",
+        "Neglects the ionic nature of NaClO",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that NaClO is ionic and water is polar, leading to ion-dipole interactions. The reasoning for the other options aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/12/chemistry/lech101.pdf",
@@ -659,49 +617,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:13:20.467Z",
+      "generatedAt": "2026-10-29T01:41:45.823Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If a solution contains 3.62 mass percentage of sodium hypochlorite, what is the mass of sodium hypochlorite in 500 g of the solution?",
+      "difficulty": 3,
+      "stem": "If a blood cell is placed in a solution with less than 0.9% (mass/volume) sodium chloride, what will happen to the cell?",
       "choices": [
-        "18.1 g",
-        "36.2 g",
-        "50.0 g",
-        "181.0 g"
+        "It will shrink",
+        "It will burst",
+        "It will remain the same",
+        "It will divide"
       ],
-      "answerIndex": 0,
-      "solution": "A 3.62 mass percentage means 3.62 grams of sodium hypochlorite per 100 grams of solution. For 500 grams of solution, this is 3.62 g × 5 = 18.1 g. The other options incorrectly calculate the amount by not properly scaling the percentage to the total mass of the solution.",
-      "checkExpr": "3.62*5",
+      "answerIndex": 1,
+      "solution": "If a blood cell is placed in a solution with less than 0.9% sodium chloride, the solution is hypotonic, meaning it has a lower concentration of solutes than the cell's interior. Water will move into the cell to balance the concentration, causing it to swell and eventually burst. The other options do not align with the principles of osmosis.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक विलयन में सोडियम हाइपोक्लोराइट का द्रव्यमान प्रतिशत 3.62 है, तो 500 ग्राम विलयन में सोडियम हाइपोक्लोराइट का द्रव्यमान क्या होगा?",
+          "stem": "यदि एक रक्त कोशिका को 0.9% (द्रव्यमान/आयतन) सोडियम क्लोराइड से कम वाले विलयन में रखा जाए, तो कोशिका पर क्या प्रभाव पड़ेगा?",
           "choices": [
-            "18.1 ग्राम",
-            "36.2 ग्राम",
-            "50.0 ग्राम",
-            "181.0 ग्राम"
+            "यह सिकुड़ जाएगी",
+            "यह फट जाएगी",
+            "यह एक ही रहेगी",
+            "यह विभाजित हो जाएगी"
           ],
-          "solution": "3.62 द्रव्यमान प्रतिशत का अर्थ है 100 ग्राम विलयन में 3.62 ग्राम सोडियम हाइपोक्लोराइट। 500 ग्राम विलयन में यह 3.62 ग्राम × 5 = 18.1 ग्राम होगा। अन्य विकल्प गलत तरीके से विलयन के कुल द्रव्यमान के अनुपात में प्रतिशत की गणना करते हैं।",
+          "solution": "यदि एक रक्त कोशिका को 0.9% सोडियम क्लोराइड से कम वाले विलयन में रखा जाए, तो विलयन हाइपोटोनिक होगा, जिसका अर्थ है कि इसके अंदर विलेय की सांद्रता कोशिका के आंतरिक भाग की तुलना में कम होगी। पानी कोशिका में प्रवेश करेगा ताकि सांद्रता संतुलित हो सके, जिससे कोशिका फूल जाएगी और अंततः फट जाएगी। अन्य विकल्प ऑस्मोसिस के सिद्धांत के साथ मेल नहीं खाते।",
           "imageAlt": null,
-          "critique": "Translation accurately conveys the original meaning with appropriate Hindi scientific terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate biological terminology as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एका द्रावणामध्ये 3.62 द्रव्यमान टक्का सोडियम हायपोक्लोराइट असेल, तर 500 ग्रॅम द्रावणामध्ये सोडियम हायपोक्लोराइटचे द्रव्यमान किती असेल?",
+          "stem": "रक्ताच्या कोशिकेला 0.9% (द्रव्यमान/आयतन) पेक्षा कमी सोडियम क्लोराइड असलेल्या द्रावणात ठेवल्यास कोशिकेवर काय परिणाम होईल?",
           "choices": [
-            "18.1 ग्रॅम",
-            "36.2 ग्रॅम",
-            "50.0 ग्रॅम",
-            "181.0 ग्रॅम"
+            "ती खुंटेल",
+            "ती फुगेल",
+            "ती बरोबर राहील",
+            "ती विभाजित होईल"
           ],
-          "solution": "3.62 द्रव्यमान टक्का म्हणजे 100 ग्रॅम द्रावणामध्ये 3.62 ग्रॅम सोडियम हायपोक्लोराइट असते. 500 ग्रॅम द्रावणासाठी हे 3.62 ग्रॅम × 5 = 18.1 ग्रॅम असते. इतर विकल्प द्रावणाच्या एकूण द्रव्यमानानुसार टक्क्याचे योग्य प्रमाण गणना करत नाहीत.",
+          "solution": "रक्ताच्या कोशिकेला 0.9% पेक्षा कमी सोडियम क्लोराइड असलेल्या द्रावणात ठेवल्यास द्रावण हे हायपोटोनिक असते, जे दर्शवते की त्यात द्राव्याची एकाग्रता कोशिकेच्या आंतरिक भागापेक्षा कमी आहे. पाणी कोशिकेतून बाहेर जाऊन एकाग्रता संतुलित करेल, ज्यामुळे कोशिका फुगेल आणि अखेर फुटेल. इतर विकल्प ऑस्मोसिसच्या तत्वांशी जुळत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the technical terms used in Marathi textbooks.",
+          "critique": "The translation is accurate, maintains the scientific terminology, and preserves the logical structure of the question and solution.",
           "flag": null
         }
       },
@@ -710,20 +668,427 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Incorrectly assumes the solution is hypertonic",
         null,
-        "Multiplies incorrectly by 10 instead of 5",
-        "Adds the percentage to the total mass",
-        "Confuses the percentage with the total mass"
+        "Misunderstands the effect of a hypotonic solution",
+        "Lacks understanding of cell behavior in different solutions"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 1, as a hypotonic solution causes water to enter the cell, leading to swelling and eventual bursting. The distractors reflect common misconceptions about osmosis and cell behavior.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 22,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "1.3 Solubility",
+            "1.6 Colligative1.6Colligative",
+            "of Molar Mass"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 23,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "1.3 Solubility",
+            "1.6 Colligative1.6Colligative",
+            "of Molar Mass"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 24,
+          "pageStart": 23,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "1.3 Solubility",
+            "1.6 Colligative1.6Colligative",
+            "Intext Questions"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:41:45.823Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "The molar mass of a solute is found to be higher than the expected value. What could be the reason?",
+      "choices": [
+        "The solute dissociates completely",
+        "The solute undergoes association",
+        "The solute is non-volatile",
+        "The solute is volatile"
+      ],
+      "answerIndex": 1,
+      "solution": "If the molar mass is higher than expected, it means that the number of particles in solution is less than expected, which occurs during association. For example, acetic acid may form dimers in benzene. The other options do not explain a higher molar mass.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विलेय के मोलर द्रव्यमान को अपेक्षित मान से अधिक पाया गया। कारण क्या हो सकता है?",
+          "choices": [
+            "विलेय पूर्ण रूप से वियोजित हो जाता है",
+            "विलेय संयोजन के अधीन होता है",
+            "विलेय अवाष्पशील होता है",
+            "विलेय वाष्पशील होता है"
+          ],
+          "solution": "यदि मोलर द्रव्यमान अपेक्षित मान से अधिक है, तो इसका अर्थ है कि विलयन में कणों की संख्या अपेक्षित से कम है, जो संयोजन के समय होता है। उदाहरण के लिए, एसिटिक अम्ल बेंजीन में डाइमर बना सकता है। अन्य विकल्प मोलर द्रव्यमान के अधिक होने की व्याख्या नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका द्रावकाचे मोलर द्रव्यमान अपेक्षित मूल्यापेक्षा जास्त आढळून आले आहे. त्याचे कारण काय असू शकते?",
+          "choices": [
+            "द्रावक पूर्णपणे विघटित होते",
+            "द्रावक एकत्रित होते",
+            "द्रावक अवाष्पीकृत आहे",
+            "द्रावक वाष्पीकृत आहे"
+          ],
+          "solution": "जर मोलर द्रव्यमान अपेक्षित मूल्यापेक्षा जास्त असेल तर त्याचा अर्थ असा होतो की द्रावणामध्ये कणांची संख्या अपेक्षित पेक्षा कमी आहे, जे एकत्रित होण्यामुळे होते. उदाहरणार्थ, एसिटिक ऍसिड बेन्झीनमध्ये द्विकणांमध्ये बदलते. इतर विकल्प मोलर द्रव्यमानाच्या जास्तीचे व्याख्यान करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning. The term 'एकत्रित होते' correctly conveys 'associates' in a chemical context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "dissociation would lead to lower molar mass",
+        null,
+        "incorrectly assumes no effect on molar mass",
+        "volatility is not related to molar mass in this context"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that association reduces the number of particles, leading to a higher molar mass. The reasoning for the other options is also valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 25,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "1.7 Abnormal",
+            "Masses"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 26,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "1.7 Abnormal",
+            "Masses"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 27,
+          "pageStart": 26,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "1.7 Abnormal",
+            "Masses"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:41:45.823Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a solution, the observed freezing point depression is less than the calculated value. What is the most likely cause?",
+      "choices": [
+        "The solute completely dissociates",
+        "The solute is non-volatile",
+        "The solute associates",
+        "The solute is volatile"
+      ],
+      "answerIndex": 2,
+      "solution": "If the observed freezing point depression is less than calculated, it suggests that the number of particles in the solution is less than expected, which happens when the solute associates. The other options do not explain a lower depression.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विलयन में, अवलोकित हिमांक अवनमन गणितीय मान से कम है। संभावित कारण क्या है?",
+          "choices": [
+            "विलेय पूर्णतः वियोजित होता है",
+            "विलेय अवाष्पशील है",
+            "विलेय संयोजित होता है",
+            "विलेय वाष्पशील है"
+          ],
+          "solution": "अगर अवलोकित हिमांक अवनमन गणितीय मान से कम है, तो इसका अर्थ है कि विलयन में कणों की संख्या अपेक्षित से कम है, जो तब होता है जब विलेय संयोजित होता है। अन्य विकल्प एक कम अवनमन की व्याख्या नहीं कर सकते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका द्रावणात, अवलोकित बर्फाचा बिंदू उतरतो लेखी मूल्यापेक्षा कमी आहे. त्याचे सर्वात शक्य कारण काय आहे?",
+          "choices": [
+            "विलेय पूर्णपणे विभाजित होतो",
+            "विलेय अवाष्पीय आहे",
+            "विलेय जमतो",
+            "विलेय वाष्पीय आहे"
+          ],
+          "solution": "जर अवलोकित बर्फाचा बिंदू लेखी मूल्यापेक्षा कमी असेल तर त्याचा अर्थ असा होतो की द्रावणात अणूंची संख्या अपेक्षित पेक्षा कमी आहे, जे विलेय जमल्यामुळे होते. इतर विकल्प निम्न उतरतो व्याख्यात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "complete dissociation would lead to a higher depression",
+        "non-volatility is not directly related to freezing point depression",
+        null,
+        "volatility would not cause a lower depression"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that solute association reduces the number of particles, leading to a smaller freezing point depression. The reasoning for the other options is accurate and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 25,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "1.7 Abnormal",
+            "Masses"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 26,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "1.7 Abnormal",
+            "Masses"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 27,
+          "pageStart": 26,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "1.7 Abnormal",
+            "Masses"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:41:45.823Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A solution of acetic acid in water shows a van't Hoff factor of 1.04. What does this suggest about the dissociation of acetic acid?",
+      "choices": [
+        "It is completely dissociated",
+        "It is not dissociated",
+        "It is slightly dissociated",
+        "It is highly dissociated"
+      ],
+      "answerIndex": 2,
+      "solution": "A van't Hoff factor slightly greater than 1 indicates that the solute is only slightly dissociated. Acetic acid is a weak acid, so it only partially dissociates in water. The other options do not match the value of 1.04.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एसिटिक अम्ल के जल में विलयन का वैन्ट हॉफ गुणांक 1.04 होता है। इसका अर्थ क्या होता है कि एसिटिक अम्ल के वियोजन के बारे में?",
+          "choices": [
+            "यह पूर्ण रूप से वियोजित हो गया है",
+            "यह वियोजित नहीं होता है",
+            "यह थोड़ा वियोजित हो गया है",
+            "यह अत्यधिक वियोजित हो गया है"
+          ],
+          "solution": "वैन्ट हॉफ गुणांक 1 से थोड़ा अधिक होना दर्शाता है कि विलेय केवल थोड़ा वियोजित होता है। एसिटिक अम्ल एक कमजोर अम्ल है, इसलिए यह पानी में केवल आंशिक रूप से वियोजित होता है। अन्य विकल्प 1.04 के मान के अनुरूप नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एसिटिक अॅसिडच्या पाण्यातील द्रावणामुळे वॅन्ट हॉफ गुणांक 1.04 असतो. हे एसिटिक अॅसिडच्या विघटनाबद्दल काय सूचित करते?",
+          "choices": [
+            "ते पूर्णपणे विघटित झालेले आहे",
+            "ते विघटित झालेले नाही",
+            "ते थोडक्यात विघटित झालेले आहे",
+            "ते उच्च प्रमाणात विघटित झालेले आहे"
+          ],
+          "solution": "1.04 पेक्षा थोडक्यात जास्त वॅन्ट हॉफ गुणांक दर्शवतो की विद्रावक थोडक्यात विघटित झालेला आहे. एसिटिक अॅसिड एक दुर्बल अॅसिड आहे, त्यामुळे पाण्यात ते थोडक्यात विघटित होते. इतर पर्याय 1.04 च्या मूल्याशी जुळत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology, and preserves the logical structure of the question and solution.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "complete dissociation would lead to i = 2",
+        "no dissociation would mean i = 1",
+        null,
+        "high dissociation would lead to a much higher i value"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the key. The calculation is straightforward: 3.62% of 500 g is 18.1 g. The distractors reflect common misconceptions about percentage calculations.",
+      "critique": "The solution is sound and correctly identifies that a van't Hoff factor slightly above 1 indicates slight dissociation, consistent with acetic acid being a weak acid.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 25,
+          "pageStart": 23,
+          "pageEnd": 24,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "1.7 Abnormal",
+            "Masses"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 26,
+          "pageStart": 24,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "1.7 Abnormal",
+            "Masses"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 27,
+          "pageStart": 26,
+          "pageEnd": 26,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "1.7 Abnormal",
+            "Masses"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:41:45.823Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is an example of a solid solution?",
+      "choices": [
+        "Oxygen dissolved in water",
+        "Ethanol dissolved in water",
+        "Glucose dissolved in water",
+        "Copper dissolved in gold"
+      ],
+      "answerIndex": 3,
+      "solution": "Copper dissolved in gold is an example of a solid solution, where one solid is dissolved in another. The other options are liquid solutions: oxygen and ethanol in water, and glucose in water are all examples of liquid solutions. A solid solution involves two solids, which is not the case in the other options.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा ठोस विलयन का उदाहरण है?",
+          "choices": [
+            "पानी में ऑक्सीजन घुला हुआ",
+            "पानी में एथेनॉल घुला हुआ",
+            "पानी में ग्लूकोज घुला हुआ",
+            "सोने में तांबा घुला हुआ"
+          ],
+          "solution": "सोने में तांबा घुला हुआ ठोस विलयन का उदाहरण है, जहां एक ठोस दूसरे ठोस में घुला हुआ है। अन्य विकल्प द्रव विलयन हैं: पानी में ऑक्सीजन और एथेनॉल, और पानी में ग्लूकोज सभी द्रव विलयन के उदाहरण हैं। एक ठोस विलयन में दो ठोस होते हैं, जो अन्य विकल्पों में नहीं है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains option 3, and all distractors remain incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते ठोस द्रावणाचे उदाहरण आहे?",
+          "choices": [
+            "पाण्यात विरघळलेले ऑक्सीजन",
+            "पाण्यात विरघळलेले इथेनॉल",
+            "पाण्यात विरघळलेले ग्लूकोज",
+            "सोन्यात विरघळलेले तांबे"
+          ],
+          "solution": "सोन्यात विरघळलेले तांबे हे ठोस द्रावणाचे उदाहरण आहे, जेथे एक ठोस दुसऱ्या ठोसात विरघळतो. उर्वरित विकल्प द्रव द्रावण आहेत: पाण्यात ऑक्सीजन आणि इथेनॉल, आणि पाण्यात ग्लूकोज हे द्रव द्रावणाचे उदाहरण आहेत. ठोस द्रावणात दोन ठोस असतात, जे उर्वरित विकल्पांमध्ये नसतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The correct answer remains option 3, and the distractors are still incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Example of a liquid solution",
+        "Example of a liquid solution",
+        "Example of a liquid solution",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is correctly framed and the solution is accurate. Copper dissolved in gold is indeed a solid solution, while the other options are liquid solutions. The reasoning for the distractors is valid and reflects common student misconceptions.",
       "sources": [
         {
           "document": "ncert/12/chemistry/lech101.pdf",
@@ -768,49 +1133,147 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:13:20.467Z",
+      "generatedAt": "2026-10-29T01:41:45.823Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If the solubility of a solid increases with temperature, what can be said about the dissolution process?",
+      "difficulty": 6,
+      "stem": "In a solution of alcohol and water, what role do molecular interactions play?",
       "choices": [
-        "It is endothermic",
-        "It is exothermic",
-        "It is neither endothermic nor exothermic",
-        "It depends on the solvent"
+        "They increase the vapour pressure of the solution",
+        "They decrease the vapour pressure of the solution",
+        "They cause the solution to deviate from Raoult's law",
+        "They have no effect on the solution"
       ],
-      "answerIndex": 0,
-      "solution": "If the solubility of a solid increases with temperature, the dissolution process must be endothermic. This is because an increase in temperature favors the absorption of heat, which is characteristic of endothermic processes. Exothermic processes would see decreased solubility with increasing temperature, and there is no evidence to suggest the process is neither endothermic nor exothermic. The effect of the solvent is not the determining factor in this case.",
+      "answerIndex": 2,
+      "solution": "Molecular interactions in a solution of alcohol and water can lead to deviations from Raoult's law because the strength of interactions between alcohol and water molecules differs from those in pure substances. This results in either higher or lower vapor pressure than predicted by Raoult's law. The other options are incorrect because vapor pressure changes are a consequence of these deviations, not the direct role of molecular interactions.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि किसी ठोस की विलेयता तापमान के साथ बढ़ती है, तो विलयन प्रक्रिया के बारे में क्या कहा जा सकता है?",
+          "stem": "एल्कोहॉल और पानी के घोल में अणु अंतःक्रियाएँ क्या भूमिका निभाती हैं?",
           "choices": [
-            "यह अवकेंद्रित है",
-            "यह उत्केंद्रित है",
-            "यह न तो अवकेंद्रित है न उत्केंद्रित है",
-            "यह विलायक पर निर्भर करता है"
+            "वाष्प दाब को बढ़ाती हैं",
+            "वाष्प दाब को कम करती हैं",
+            "घोल राउल्ट के नियम से विचलित हो जाता है",
+            "घोल पर कोई प्रभाव नहीं डालती हैं"
           ],
-          "solution": "यदि किसी ठोस की विलेयता तापमान के साथ बढ़ती है, तो विलयन प्रक्रिया अवकेंद्रित होनी चाहिए। यह इसलिए है क्योंकि तापमान में वृद्धि ऊष्मा के अवशोषण के अनुकूल होती है, जो अवकेंद्रित प्रक्रियाओं की विशेषता है। उत्केंद्रित प्रक्रियाओं में तापमान में वृद्धि के साथ विलेयता कम हो जाती है, और कोई साक्ष्य नहीं है जो इस प्रक्रिया के न तो अवकेंद्रित न उत्केंद्रित होने के बारे में बताता है। इस मामले में विलायक के प्रभाव को निर्धारित करने वाला कारक नहीं माना जाता है।",
+          "solution": "एल्कोहॉल और पानी के घोल में अणु अंतःक्रियाएँ राउल्ट के नियम से विचलन पैदा कर सकती हैं क्योंकि एल्कोहॉल और पानी के अणुओं के बीच अंतःक्रियाओं की ताकत शुद्ध पदार्थों में अंतःक्रियाओं से भिन्न होती है। इससे राउल्ट के नियम द्वारा भविष्यवाणी के अनुसार वाष्प दाब या तो अधिक या कम हो जाता है। अन्य विकल्प गलत हैं क्योंकि वाष्प दाब में परिवर्तन इन विचलनों के परिणाम हैं, न कि अणु अंतःक्रियाओं की सीधी भूमिका।",
           "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning, technical terms are appropriately used in Hindi, and the correct answer remains in the same position.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology as used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एखाद्या घन पदार्थाची द्राव्यता तापमानासह वाढत असेल, तर द्रावण प्रक्रियेबद्दल काय म्हणायचे?",
+          "stem": "आल्कोहॉल आणि पाणी च्या द्रावणात, अणू अंतःक्रियांची भूमिका काय असते?",
           "choices": [
-            "ती अंतर्गत ऊष्मागतिक आहे",
-            "ती बाह्य ऊष्मागतिक आहे",
-            "ती अंतर्गत ऊष्मागतिक नाही आणि बाह्य ऊष्मागतिक नाही",
-            "ती विलायकावर अवलंबून असते"
+            "त्या द्रावणाच्या वाफ दाबाची वाढ करतात",
+            "त्या द्रावणाच्या वाफ दाबाची घट करतात",
+            "त्या द्रावणाला राउल्टच्या कायद्यापासून विचलन करतात",
+            "त्या द्रावणावर कोणताही प्रभाव नाही"
           ],
-          "solution": "जर एखाद्या घन पदार्थाची द्राव्यता तापमानासह वाढत असेल, तर द्रावण प्रक्रिया अंतर्गत ऊष्मागतिक असावी. हे तापमानाच्या वाढीमुळे ऊष्मा शोषणाच्या प्रोत्साहनामुळे असते, जे अंतर्गत ऊष्मागतिक प्रक्रियांचे वैशिष्ट्य आहे. बाह्य ऊष्मागतिक प्रक्रियांमध्ये तापमान वाढल्यास द्राव्यता कमी होते, आणि अशा प्रकारची प्रक्रिया नसल्याचे कोणतेही पुरावे नाहीत. विलायकाचा परिणाम हा या प्रकरणात निर्णायक घटक नाही.",
+          "solution": "आल्कोहॉल आणि पाणी च्या द्रावणातील अणू अंतःक्रियांमुळे राउल्टच्या कायद्यापासून विचलन होऊ शकते कारण आल्कोहॉल आणि पाणी अणूंमधील अंतःक्रियांची तीव्रता शुद्ध पदार्थांमधील अंतःक्रियांपेक्षा वेगळी असते. हे राउल्टच्या कायद्याने भागवलेल्या वाफ दाबापेक्षा जास्त किंवा कमी असू शकते. इतर विकल्प चुकीचे आहेत कारण वाफ दाबातील बदल हे अंतःक्रियांच्या विचलनाचे परिणाम आहेत, निर्दिष्ट अंतःक्रियांचे नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific meaning, with appropriate Marathi terminology for thermodynamic processes.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrect understanding of vapour pressure changes",
+        "Incorrect understanding of Raoult's law",
+        null,
+        "Incorrect assumption of no effect"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question correctly identifies that molecular interactions in an alcohol-water solution cause deviations from Raoult's law. The other options are incorrect, and the author's reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 28,
+          "pageStart": 27,
+          "pageEnd": 27,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 29,
+          "pageStart": 27,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "Exercises"
+          ]
+        },
+        {
+          "document": "ncert/12/chemistry/lech101.pdf",
+          "ordinal": 30,
+          "pageStart": 28,
+          "pageEnd": 28,
+          "headingPath": [
+            "Chapter 1: Unit Objectives Solutions",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T01:41:45.823Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why does pressure have no significant effect on the solubility of solids in liquids?",
+      "choices": [
+        "Because solids and liquids are incompressible",
+        "Because pressure only affects the volume of solids",
+        "Because pressure only affects the solubility of gases",
+        "Because solids and liquids have no pressure"
+      ],
+      "answerIndex": 0,
+      "solution": "Solids and liquids are highly incompressible, meaning their volume does not change significantly with pressure. Therefore, pressure has no significant effect on their solubility. The other options are incorrect as they either contradict the properties of solids and liquids or misrepresent the effect of pressure.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "ठोसों के द्रवों में विलेयता पर दाब का क्यों कोई महत्वपूर्ण प्रभाव नहीं होता?",
+          "choices": [
+            "क्योंकि ठोस और द्रव असंपीड्य होते हैं",
+            "क्योंकि दाब केवल ठोसों के आयतन पर प्रभाव डालता है",
+            "क्योंकि दाब केवल गैसों की विलेयता पर प्रभाव डालता है",
+            "क्योंकि ठोस और द्रव के पास कोई दाब नहीं होता"
+          ],
+          "solution": "ठोस और द्रव अत्यधिक असंपीड्य होते हैं, जिसका अर्थ है कि उनका आयतन दाब के साथ बहुत कम परिवर्तित होता है। इसलिए उनकी विलेयता पर दाब का कोई महत्वपूर्ण प्रभाव नहीं होता। अन्य विकल्प ठोसों और द्रवों के गुणों के विरोधाभास हैं या दाब के प्रभाव को गलत तरीके से दर्शाते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "ठोसांच्या द्रावकांमधील द्राव्यतेवर दाबाचा काहीही महत्वाचा परिणाम का होत नाही?",
+          "choices": [
+            "कारण ठोस आणि द्रावक दाबाखाली बदलत नाहीत",
+            "कारण दाब फक्त ठोसांच्या आयतनावर परिणाम करतो",
+            "कारण दाब फक्त वायूंच्या द्राव्यतेवर परिणाम करतो",
+            "कारण ठोस आणि द्रावकांमध्ये दाब नसतो"
+          ],
+          "solution": "ठोस आणि द्रावक खूप अदाबी असतात, ज्यामुळे दाबाच्या बदलामुळे त्यांचा आयतन जास्तीत जास्त बदलत नाही. म्हणूनच दाबाचा त्यांच्या द्राव्यतेवर काहीही महत्वाचा परिणाम होत नाही. इतर विकल्प ठोस आणि द्रावकांच्या गुणधर्मांच्या विरोधात आहेत किंवा दाबाच्या परिणामाचे खोटे चित्रण करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -820,9 +1283,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses exothermic with endothermic processes",
-        "Incorrectly assumes the process is not affected by temperature",
-        "Incorrectly assumes the solvent affects the process"
+        "Student thinks pressure affects the volume of solids, not realizing they are incompressible",
+        "Confuses the effect of pressure on gas solubility with the lack of effect on solid solubility",
+        "Student thinks pressure does not apply to solids and liquids"
       ],
       "solverAnswers": [
         0,
@@ -831,8 +1294,8 @@
         0,
         0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies Le Chatelier's principle to conclude that an endothermic dissolution process leads to increased solubility with temperature. The reasoning aligns with standard chemistry principles.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as solids and liquids are incompressible, so pressure does not significantly affect their solubility. The other options reflect common misconceptions about the effects of pressure on solids, liquids, and gases.",
       "sources": [
         {
           "document": "ncert/12/chemistry/lech101.pdf",
@@ -867,233 +1330,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:13:20.467Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "A solution contains 10 g of ethanol in 100 mL of solution. What is the volume percentage of ethanol in the solution?",
-      "choices": [
-        "5%",
-        "10%",
-        "20%",
-        "50%"
-      ],
-      "answerIndex": 1,
-      "solution": "Volume percentage is calculated by dividing the volume of the solute by the total volume of the solution and multiplying by 100. Since the solution contains 10 g of ethanol, and assuming the volume of ethanol is approximately 10 mL (as ethanol's density is close to 1 g/mL), the volume percentage is 10 mL divided by 100 mL, which equals 10%. Other options are incorrect because they do not match this calculation based on the given volumes.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक घोल में 100 मिलीलीटर घोल में 10 ग्राम एथेनॉल है। घोल में एथेनॉल का आयतन प्रतिशत क्या है?",
-          "choices": [
-            "5%",
-            "10%",
-            "20%",
-            "50%"
-          ],
-          "solution": "आयतन प्रतिशत की गणना विलेय के आयतन को घोल के कुल आयतन से विभाजित करके और 100 से गुणा करके की जाती है। चूंकि घोल में 10 ग्राम एथेनॉल है, और एथेनॉल के आयतन के रूप में लगभग 10 मिलीलीटर माना जाता है (क्योंकि एथेनॉल के घनत्व लगभग 1 ग्राम/मिलीलीटर होता है), आयतन प्रतिशत 10 मिलीलीटर को 100 मिलीलीटर से विभाजित करके ज्ञात किया जाता है, जो 10% के बराबर होता है। अन्य विकल्प गलत हैं क्योंकि वे दिए गए आयतनों पर आधारित इस गणना के अनुरूप नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका द्रावणात 10 ग्रॅम इथेनॉल 100 मिली द्रावणात असतो. द्रावणात इथेनॉलचे आयतन टक्का किती आहे?",
-          "choices": [
-            "5%",
-            "10%",
-            "20%",
-            "50%"
-          ],
-          "solution": "आयतन टक्का विलेयाच्या आयतनाला द्रावणाच्या एकूण आयतनाने भागून 100 ने गुणून मिळतो. जर द्रावणात 10 ग्रॅम इथेनॉल असेल आणि इथेनॉलचा आयतन जवळपास 10 मिली असेल (कारण इथेनॉलची घनता 1 ग्रॅम/मिली जवळ असते), तर आयतन टक्का 10 मिली भागिले 100 मिली, जे 10% आहे. इतर विकल्प चुकीचे आहेत कारण ते दिलेल्या आयतनांवर आधारित या गणनेशी मेळ नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the volume of ethanol with the total volume",
-        null,
-        "Adds the volumes incorrectly",
-        "Fails to recognize that the total volume is 100 mL"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-posed, and the solution is correct. The author's key and reasoning align with the proper calculation of volume percentage. The distractors reflect plausible misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/12/chemistry/lech101.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
-          "headingPath": [
-            "Chapter 1: Unit Objectives Solutions"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech101.pdf",
-          "ordinal": 1,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 1: Unit Objectives Solutions",
-            "1.1 Types of"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech101.pdf",
-          "ordinal": 2,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 1: Unit Objectives Solutions",
-            "1.2 Expressing",
-            "Concentration"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech101.pdf",
-          "ordinal": 3,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 1: Unit Objectives Solutions",
-            "1.2 Expressing",
-            "Concentration"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:13:20.467Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why does the solubility of gases in liquids decrease with an increase in temperature?",
-      "choices": [
-        "Because the dissolution process is exothermic",
-        "Because the dissolution process is endothermic",
-        "Because the pressure decreases with increasing temperature",
-        "Because the volume of the liquid increases with increasing temperature"
-      ],
-      "answerIndex": 0,
-      "solution": "The dissolution process is exothermic, so increasing temperature decreases solubility according to Le Chatelier's principle. The process is not endothermic, and pressure and volume changes are not the main reasons.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "गैसों की द्रवों में विलेयता में तापमान में वृद्धि के साथ कमी क्यों आती है?",
-          "choices": [
-            "क्योंकि विलयन प्रक्रिया एक उष्माक्षेपी है",
-            "क्योंकि विलयन प्रक्रिया एक ऊष्माशोषी है",
-            "क्योंकि तापमान बढ़ने पर दाब घट जाता है",
-            "क्योंकि द्रव का आयतन तापमान बढ़ने पर बढ़ जाता है"
-          ],
-          "solution": "विलयन प्रक्रिया उष्माक्षेपी होती है, अतः ली चैटेलियर के स principio के अनुसार तापमान बढ़ाने से विलेयता कम हो जाती है। प्रक्रिया ऊष्माशोषी नहीं है, और दाब और आयतन में परिवर्तन मुख्य कारण नहीं हैं।",
-          "imageAlt": "एक संख्या रेखा जो तापमान के पैमाने को दर्शाती है।",
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "तापमानात वाढ झाल्यास द्रावकात वायूंची द्राव्यता का कमी होते?",
-          "choices": [
-            "कारण द्रावण प्रक्रिया उष्माक्षेपी आहे",
-            "कारण द्रावण प्रक्रिया उष्माशोषी आहे",
-            "कारण तापमान वाढत जाताना दाब कमी होतो",
-            "कारण द्रावकाचा आयतन वाढत जातो"
-          ],
-          "solution": "द्रावण प्रक्रिया उष्माक्षेपी आहे, म्हणून ले चॅटेलियरच्या तत्त्वानुसार तापमान वाढल्यास द्राव्यता कमी होते. प्रक्रिया उष्माशोषी नाही, आणि दाब आणि आयतनाच्या बदलांमुळे होणारे कारण नाहीत.",
-          "imageAlt": "तापमान मापन दर्शविणारी संख्या रेषा.",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "A number line showing the temperature scale.",
-      "figure": {
-        "kind": "numberline",
-        "spec": {
-          "min": 0,
-          "max": 10,
-          "step": 1,
-          "points": [
-            {
-              "value": 5,
-              "label": "T",
-              "open": false
-            }
-          ]
-        },
-        "labels": {
-          "T": {
-            "en": "Temperature"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        null,
-        "Confuses the nature of the dissolution process",
-        "Confuses the nature of the dissolution process",
-        "Misinterprets the role of pressure and volume"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 0, as the dissolution of gases in liquids is typically exothermic, and increasing temperature shifts the equilibrium to reduce solubility. The other options reflect common misconceptions about the dissolution process, pressure, and volume.",
-      "sources": [
-        {
-          "document": "ncert/12/chemistry/lech101.pdf",
-          "ordinal": 7,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 1: Unit Objectives Solutions",
-            "1.3 Solubility"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech101.pdf",
-          "ordinal": 8,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 1: Unit Objectives Solutions",
-            "1.3 Solubility"
-          ]
-        },
-        {
-          "document": "ncert/12/chemistry/lech101.pdf",
-          "ordinal": 9,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 1: Unit Objectives Solutions",
-            "1.3 Solubility"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T14:13:20.467Z",
+      "generatedAt": "2026-10-29T01:41:45.823Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

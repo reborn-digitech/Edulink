@@ -1,0 +1,791 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T13:36:48.169Z",
+  "finishedAt": "2026-10-25T13:48:17.497Z",
+  "seconds": 689,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc111.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Electricity",
+    "edition": "Reprint 2026-27",
+    "chunks": 22,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n32. (i) State the law that explains the heating effect of current with respect to the measurable 2+1\nproperties in an electrical circuit.\n(ii) List the factors on which the resistance of a conductor depends.",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n31. An electrical appliance rated 1000 W is operated at 250 V. What current does it 1\ndraw?\nA. 0.25 A\nB. 2.5 A\nC. 4.0 A\nD. 10 A\nThe following one question consists of two statements – Assertion (A) and Reason (R).\nAnswer these questions by selecting the appropriate option given below:\nA. Both A and R are true, and R is the correct explanation of A.\nB. Both A and R are true, and R is not the correct explanation of A.\nC. A is true but R is false.\nD. A is false but R is true.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n36. Attempt either option A or B. 5\nA.\nThe above circuit is a part of an electrical device. Use the information\ngiven in the question to calculate the following.\n(i) Potential Difference across R 2 .\n(ii) Value of the resistance R 2 .\n(iii) Value of resistance R 1\nOR\nB.\nAs shown in the figure above A and B are two lamps. Lamp A is rated at 12 V,\n24W. Lamp B is rated at 6.0 V. When lamp B operates at its rated voltage, the\ncurrent in it is 3.0 A. The values of R 1 and R 2 are chosen so that both lamps\noperate at their rated voltages.\nBased on the information given, answer the following.\n(i) Calculate the current in Lamp A.\n(ii) State and give reason for the reading of the Voltmeter.\n(iii) Cal",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n16. (d) The field consists of concentric circles centred around the wire. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 219475,
+      "in": 42,
+      "out": 41,
+      "rejects": 1,
+      "promptTokens": 45250,
+      "completionTokens": 10110
+    },
+    "critique": {
+      "calls": 55,
+      "ms": 455552,
+      "in": 41,
+      "out": 33,
+      "rejects": 8,
+      "promptTokens": 25620,
+      "completionTokens": 9719
+    },
+    "solver": {
+      "calls": 259,
+      "ms": 163674,
+      "in": 33,
+      "out": 23,
+      "rejects": 10,
+      "promptTokens": 50506,
+      "completionTokens": 2766
+    },
+    "form": {
+      "calls": 7,
+      "ms": 25488,
+      "in": 23,
+      "out": 13,
+      "rejects": 10,
+      "promptTokens": 3498,
+      "completionTokens": 537
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 39,
+      "ms": 7605,
+      "in": 13,
+      "out": 10,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 472733,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 22862,
+      "completionTokens": 10884
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "A current of 0.5 A is drawn by a filament of an electric bulb for 10 minutes. What is the amount of electric charge that flows through the circuit?",
+      "ms": {
+        "draft": 5211,
+        "critique": 6204
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electrical appliance rated 1000 W is operated at 250 V. What current does it draw?",
+      "ms": {
+        "draft": 5211,
+        "critique": 10566
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the potential difference between two points if 24 J of work is done to move 2 C of charge between them?",
+      "ms": {
+        "draft": 5211,
+        "critique": 6756,
+        "solver": 15120,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a current of 2 A flows through a conductor for 10 seconds, how many electrons pass through a cross-section of the conductor?",
+      "ms": {
+        "draft": 5211,
+        "critique": 8898
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does Ohm's law state about the relationship between potential difference and current in a conductor?",
+      "ms": {
+        "draft": 15198,
+        "critique": 8226
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electric kettle is rated at 1000 W and operates at 250 V. What is the current drawn by the kettle?",
+      "ms": {
+        "draft": 15198,
+        "critique": 9949
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a resistor has a resistance of 5 Ω and a potential difference of 10 V is applied across it, what is the current flowing through it?",
+      "ms": {
+        "draft": 15198,
+        "critique": 8269,
+        "solver": 13350
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a circuit, the resistance of a wire is found to be 10 Ω. If the wire is cut into two equal parts and connected in parallel, what will be the total resistance?",
+      "ms": {
+        "draft": 15198,
+        "critique": 7354,
+        "solver": 2057,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which factor does the passage say affects the resistance of a conductor?",
+      "ms": {
+        "draft": 5185,
+        "critique": 8546,
+        "solver": 22844
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An electric bulb has a resistance of 1200 Ω and is connected to a 220 V source. What is the current drawn by the bulb?",
+      "ms": {
+        "draft": 5185,
+        "critique": 8261,
+        "solver": 20622
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An electric heater has a resistance of 100 Ω and is connected to a 220 V source. What is the current drawn by the heater?",
+      "ms": {
+        "draft": 5185,
+        "critique": 12619,
+        "solver": 17587
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A wire of length 1 m has a resistance of 26 Ω at 20°C. What is the resistivity of the wire if the diameter is 0.3 mm?",
+      "ms": {
+        "draft": 5185,
+        "critique": 9791,
+        "solver": 1281,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the relationship between the current in a series circuit and the current through each resistor?",
+      "ms": {
+        "draft": 5395,
+        "critique": 7850,
+        "solver": 2115,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a parallel circuit, what is the relationship between the total current and the current through each resistor?",
+      "ms": {
+        "draft": 5395,
+        "critique": 7767,
+        "solver": 1640,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electrical appliance is rated at 1000 W and 250 V. What is the current it draws?",
+      "ms": {
+        "draft": 5395,
+        "critique": 9790,
+        "solver": 1745,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of electric power?",
+      "ms": {
+        "draft": 6051,
+        "critique": 7789,
+        "solver": 1149,
+        "form": 2198
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electric appliance is rated at 1000 W and operates at 250 V. What is the current drawn by the appliance?",
+      "ms": {
+        "draft": 5539,
+        "critique": 9165,
+        "solver": 11097,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A copper wire has a diameter of 0.5 mm and a resistivity of 1.6 × 10⁻⁸ Ω m. What length of the wire is required to make its resistance 10 Ω?",
+      "ms": {
+        "draft": 4551,
+        "critique": 11577,
+        "solver": 2214,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Two conducting wires of the same material and of equal lengths and equal diameters are first connected in series and then in parallel in a circuit across the same potential difference. What is the ratio of heat produced in the series and parallel combinations?",
+      "ms": {
+        "draft": 4551,
+        "critique": 7386,
+        "solver": 15605
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the current drawn by an electrical appliance rated 1000 W when operated at 250 V?",
+      "ms": {
+        "draft": 4551,
+        "critique": 7066,
+        "solver": 18502
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many 176 Ω resistors (in parallel) are required to carry 5 A on a 220 V line?",
+      "ms": {
+        "draft": 4551,
+        "critique": 9048,
+        "solver": 2076
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An electric bulb rated 100 W is operated at 250 V. What current does it draw?",
+      "ms": {
+        "draft": 5602,
+        "critique": 11417
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a 1000 W electrical appliance is operated at 250 V, what is the current drawn by the appliance?",
+      "ms": {
+        "draft": 5602,
+        "critique": 9510,
+        "solver": 15622
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A 1000 W electrical appliance is operated at 250 V. What is the resistance of the appliance?",
+      "ms": {
+        "draft": 5602,
+        "critique": 9136,
+        "solver": 14563,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for calculating the heat produced in a resistor when current flows through it?",
+      "ms": {
+        "draft": 5991,
+        "critique": 9784
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Three resistors of 2 Ω, 3 Ω, and 6 Ω are connected in a combination of series and parallel. What is the total resistance if the 2 Ω and 3 Ω resistors are in parallel and the 6 Ω resistor is in series with them?",
+      "ms": {
+        "draft": 5991,
+        "critique": 8538
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electric lamp with a resistance of 20 Ω is connected in series with a conductor of 4 Ω resistance to a 6 V battery. What is the current through the circuit?",
+      "ms": {
+        "draft": 5825,
+        "critique": 11015,
+        "solver": 1837
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An electric bulb is rated at 100 W, 220 V. What is the current drawn by the bulb?",
+      "ms": {
+        "draft": 5991,
+        "critique": 8774,
+        "solver": 20140
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a circuit, a nichrome wire is replaced with a copper wire of the same length and thickness. What is the expected change in current?",
+      "ms": {
+        "draft": 15198,
+        "critique": 8738,
+        "solver": 1854,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of resistance?",
+      "ms": {
+        "draft": 15198,
+        "critique": 7594,
+        "solver": 1666,
+        "form": 2917
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A wire with length l and area of cross-section A has a resistance of 4 Ω. What is the resistance of another wire of the same material with length l/2 and area of cross-section 2A?",
+      "ms": {
+        "draft": 5185,
+        "critique": 9115,
+        "solver": 2102,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the relationship between the total resistance of resistors in series and their individual resistances?",
+      "ms": {
+        "draft": 5825,
+        "critique": 6476,
+        "solver": 2650,
+        "form": 3678,
+        "translation": 62293
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which law is used to calculate the current through a resistor when the potential difference across it is known?",
+      "ms": {
+        "draft": 5539,
+        "critique": 7279,
+        "solver": 2192,
+        "form": 0,
+        "translation": 51885
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit of electric current?",
+      "ms": {
+        "draft": 5211,
+        "critique": 5737,
+        "solver": 13707,
+        "form": 2690,
+        "translation": 33079
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit of electric charge?",
+      "ms": {
+        "draft": 5211,
+        "critique": 7680,
+        "solver": 1837,
+        "form": 2544,
+        "translation": 33522
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following terms represents electrical power in a circuit?",
+      "ms": {
+        "draft": 5602,
+        "critique": 9302,
+        "solver": 14717,
+        "form": 0,
+        "translation": 51072
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a unit of electric power?",
+      "ms": {
+        "draft": 5602,
+        "critique": 8952,
+        "solver": 12882,
+        "form": 0,
+        "translation": 37164
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given circuit, the potential difference across a resistor is measured using a voltmeter. What is the correct way to connect a voltmeter in the circuit?",
+      "ms": {
+        "draft": 4551,
+        "critique": 6438,
+        "solver": 1618,
+        "form": 0,
+        "translation": 58896
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "An electric heater of resistance 44 Ω draws 5 A from the service mains for 2 hours. What is the rate at which heat is developed in the heater?",
+      "ms": {
+        "draft": 4551,
+        "critique": 9010,
+        "solver": 1669,
+        "form": 0,
+        "translation": 44631
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a parallel combination of resistors, what is the relationship between the total current and the individual currents through each resistor?",
+      "ms": {
+        "draft": 5825,
+        "critique": 7594,
+        "solver": 1340,
+        "form": 2778,
+        "translation": 41482
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A 12 V battery is connected to a circuit with resistors of 10 Ω, 40 Ω, 30 Ω, 20 Ω, and 60 Ω. What is the total resistance of the circuit?",
+      "ms": {
+        "draft": 5539,
+        "critique": 6918,
+        "solver": 2041,
+        "form": 0,
+        "translation": 50861
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "According to the passage, which material is mentioned as a good conductor of electricity?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A current of 0.5 A is drawn by a filament of an electric bulb for 10 minutes. What is the amount of electric charge that flows through the circuit?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "An electrical appliance rated 1000 W is operated at 250 V. What current does it draw?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the potential difference between two points if 24 J of work is done to move 2 C of charge between them?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a current of 2 A flows through a conductor for 10 seconds, how many electrons pass through a cross-section of the conductor?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does Ohm's law state about the relationship between potential difference and current in a conductor?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "An electric kettle is rated at 1000 W and operates at 250 V. What is the current drawn by the kettle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a resistor has a resistance of 5 Ω and a potential difference of 10 V is applied across it, what is the current flowing through it?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a circuit, the resistance of a wire is found to be 10 Ω. If the wire is cut into two equal parts and connected in parallel, what will be the total resistance?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which factor does the passage say affects the resistance of a conductor?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "An electric bulb has a resistance of 1200 Ω and is connected to a 220 V source. What is the current drawn by the bulb?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "An electric heater has a resistance of 100 Ω and is connected to a 220 V source. What is the current drawn by the heater?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A wire of length 1 m has a resistance of 26 Ω at 20°C. What is the resistivity of the wire if the diameter is 0.3 mm?",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number; checkExpr \"(26 * 3.14 * (0.3e-3)^2)/(4 * 1)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the relationship between the current in a series circuit and the current through each resistor?",
+      "reason": "options 2 and 3 say the same thing (\"The current increases as it passes through each resistor.\" / \"The current decreases as it passes through each resistor.\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a parallel circuit, what is the relationship between the total current and the current through each resistor?",
+      "reason": "options 0 and 1 say the same thing (\"The total current is the sum of the currents through each resistor.\" / \"The total current is the product of the currents through each resistor.\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "An electrical appliance is rated at 1000 W and 250 V. What is the current it draws?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the SI unit of electric power?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct option is not the longest, but the middle one in len…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "An electric appliance is rated at 1000 W and operates at 250 V. What is the current drawn by the appliance?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A copper wire has a diameter of 0.5 mm and a resistivity of 1.6 × 10⁻⁸ Ω m. What length of the wire is required to make its resistance 10 Ω?",
+      "reason": "options are written to different precisions (0 and 1 and 2 decimals)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Two conducting wires of the same material and of equal lengths and equal diameters are first connected in series and then in parallel in a circuit across the same potential difference. What is the ratio of heat produced in the series and parallel combinations?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the current drawn by an electrical appliance rated 1000 W when operated at 250 V?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many 176 Ω resistors (in parallel) are required to carry 5 A on a 220 V line?",
+      "reason": "the solver picked option 3 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "An electric bulb rated 100 W is operated at 250 V. What current does it draw?",
+      "reason": "the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a 1000 W electrical appliance is operated at 250 V, what is the current drawn by the appliance?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A 1000 W electrical appliance is operated at 250 V. What is the resistance of the appliance?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the formula for calculating the heat produced in a resistor when current flows through it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Three resistors of 2 Ω, 3 Ω, and 6 Ω are connected in a combination of series and parallel. What is the total resistance if the 2 Ω and 3 Ω resistors are in parallel and the 6 Ω resistor is in series with them?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "An electric lamp with a resistance of 20 Ω is connected in series with a conductor of 4 Ω resistance to a 6 V battery. What is the current through the circuit?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "An electric bulb is rated at 100 W, 220 V. What is the current drawn by the bulb?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In a circuit, a nichrome wire is replaced with a copper wire of the same length and thickness. What is the expected change in current?",
+      "reason": "near-duplicate of served question cmvk08kqs0ihsgpfhjz1rjsuf (cosine 0.963 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the SI unit of resistance?",
+      "reason": "near-duplicate of served question cmvk08kqr0ihmgpfhpb8ek8jr (cosine 0.927 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "A wire with length l and area of cross-section A has a resistance of 4 Ω. What is the resistance of another wire of the same material with length l/2 and area of cross-section 2A?",
+      "reason": "near-duplicate of served question cmvk08kqw0iiagpfh2599vbwm (cosine 0.914 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

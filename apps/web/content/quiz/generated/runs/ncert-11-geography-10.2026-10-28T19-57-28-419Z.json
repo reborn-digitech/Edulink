@@ -1,0 +1,460 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T19:57:28.419Z",
+  "finishedAt": "2026-10-28T20:03:21.121Z",
+  "seconds": 353,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy210.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 10 — Water in the Atmosphere",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\n14. C. Implementing rainwater harvesting, recycling and reusing 1\nwastewater.",
+      "[CBSE Class XII Geography, marking scheme, 2025-26]\n29. 5\nA Hamburg\nB Capetown\nC Panama Canal\nD Amazon Basin\nE Santiago\nF Vladivostok\nG Downs\nFor Visually impaired students.\nA Hamburg/London/North Cape\nB Capetown\nC Rhine waterway\nD Amazon Basin\nE Santiago/ Buenos Airies\nF Vladivostok/ St. Petersburg\nG Downs",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n15. (b) Watershed development",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 105031,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 17094,
+      "completionTokens": 6095
+    },
+    "critique": {
+      "calls": 24,
+      "ms": 138548,
+      "in": 20,
+      "out": 18,
+      "rejects": 2,
+      "promptTokens": 10667,
+      "completionTokens": 4116
+    },
+    "solver": {
+      "calls": 118,
+      "ms": 52218,
+      "in": 18,
+      "out": 16,
+      "rejects": 2,
+      "promptTokens": 18226,
+      "completionTokens": 1164
+    },
+    "form": {
+      "calls": 12,
+      "ms": 68212,
+      "in": 16,
+      "out": 9,
+      "rejects": 7,
+      "promptTokens": 6885,
+      "completionTokens": 1710
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 4187,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 259308,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 15489,
+      "completionTokens": 7660
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 1,
+    "4": 0,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "What is the primary factor affecting the ability of air to hold water vapour?",
+      "ms": {
+        "draft": 7006,
+        "critique": 6486
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following processes is responsible for the transformation of liquid water into water vapour?",
+      "ms": {
+        "draft": 7006,
+        "critique": 6262,
+        "solver": 10635,
+        "form": 4469
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a form of condensation?",
+      "ms": {
+        "draft": 7006,
+        "critique": 7952,
+        "solver": 15738
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the temperature of an air mass suddenly drops and the air becomes saturated, what is the most likely form of condensation that will occur?",
+      "ms": {
+        "draft": 7006,
+        "critique": 6495,
+        "solver": 1542,
+        "form": 5104
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do mists often form over mountains?",
+      "ms": {
+        "draft": 7006,
+        "critique": 5916,
+        "solver": 2051,
+        "form": 3494
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the formation of hailstones?",
+      "ms": {
+        "draft": 12234,
+        "critique": 7163,
+        "solver": 1155,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a form of condensation that forms on the surface of objects during the night?",
+      "ms": {
+        "draft": 12234,
+        "critique": 5404,
+        "solver": 6088,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the most important constituent of the atmosphere for human beings?",
+      "ms": {
+        "draft": 4638,
+        "critique": 5066
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of rainfall is caused by air being forced to rise over a mountain?",
+      "ms": {
+        "draft": 4638,
+        "critique": 4590,
+        "solver": 1287,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of solid precipitation?",
+      "ms": {
+        "draft": 4638,
+        "critique": 6608,
+        "solver": 1403
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the capacity of air to hold water vapour when the temperature increases?",
+      "ms": {
+        "draft": 2877,
+        "critique": 6215,
+        "solver": 1844,
+        "form": 2012
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the amount of water vapour present in the atmosphere?",
+      "ms": {
+        "draft": 2877,
+        "critique": 6710,
+        "solver": 1159,
+        "form": 4262
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following forms of condensation is described as occurring when the dew point is below the freezing point?",
+      "ms": {
+        "draft": 2877,
+        "critique": 6295,
+        "solver": 1405,
+        "form": 2249
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the actual amount of water vapour present in the atmosphere?",
+      "ms": {
+        "draft": 7006,
+        "critique": 4901,
+        "solver": 1822,
+        "form": 4078,
+        "translation": 42665
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a type of precipitation that falls as small pellets of ice?",
+      "ms": {
+        "draft": 12234,
+        "critique": 7129,
+        "solver": 11728,
+        "form": 0,
+        "translation": 30813
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the amount of moisture in the air when it is at maximum capacity?",
+      "ms": {
+        "draft": 12234,
+        "critique": 6408,
+        "solver": 1747,
+        "form": 0,
+        "translation": 32417
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a region experiences heavy rainfall on the windward side of a mountain but very little on the leeward side, what is this phenomenon called?",
+      "ms": {
+        "draft": 12234,
+        "critique": 6136,
+        "solver": 1662,
+        "form": 0,
+        "translation": 37598
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following scenarios is the process of condensation most likely to occur?",
+      "ms": {
+        "draft": 2877,
+        "critique": 4362,
+        "solver": 1130,
+        "form": 2390,
+        "translation": 31110
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A region experiences heavy rainfall in the summer months and very little in the winter. What type of rainfall does this represent?",
+      "ms": {
+        "draft": 12234,
+        "critique": 6156,
+        "solver": 947,
+        "form": 2145,
+        "translation": 44803
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the primary factor that determines the ability of air to hold water vapour?",
+      "ms": {
+        "draft": 2877,
+        "critique": 4050,
+        "solver": 846,
+        "form": 1664,
+        "translation": 36058
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the primary factor affecting the ability of air to hold water vapour?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following processes is responsible for the transformation of liquid water into water vapour?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is NOT a form of condensation?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the temperature of an air mass suddenly drops and the air becomes saturated, what is the most likely form of condensation that will occur?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'cloud'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do mists often form over mountains?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'mountain'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the formation of hailstones?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a form of condensation that forms on the surface of objects during the night?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is the main source of water vapour in the atmosphere?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which type of cloud is associated with heavy rain and thunderstorms?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a form of precipitation?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the most important constituent of the atmosphere for human beings?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which type of rainfall is caused by air being forced to rise over a mountain?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is the third option, so this is not a distrac…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of solid precipitation?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What happens to the capacity of air to hold water vapour when the temperature increases?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the passage as stating a constant capacity…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term used for the amount of water vapour present in the atmosphere?",
+      "reason": "near-duplicate of batch item \"What is the term used to describe the actual amoun…\" (cosine 0.983 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following forms of condensation is described as occurring when the dew point is below the freezing point?",
+      "reason": "near-duplicate of served question cmvl7ncbo0m93gpfhslsxu993 (cosine 0.976 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

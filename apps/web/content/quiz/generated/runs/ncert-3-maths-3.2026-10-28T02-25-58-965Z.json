@@ -1,0 +1,329 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T02:25:58.965Z",
+  "finishedAt": "2026-10-28T02:27:45.062Z",
+  "seconds": 106,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm103.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — Double Century",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n31. The sum of a two-digit number and the number obtained by reversing the order 3\nof its digits is 99. If ten’s digit is 3 more than the unit’s digit, then find the number.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 44038,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 9170,
+      "completionTokens": 2576
+    },
+    "critique": {
+      "calls": 16,
+      "ms": 107527,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 6702,
+      "completionTokens": 2945
+    },
+    "solver": {
+      "calls": 72,
+      "ms": 36648,
+      "in": 9,
+      "out": 5,
+      "rejects": 4,
+      "promptTokens": 13972,
+      "completionTokens": 785
+    },
+    "form": {
+      "calls": 3,
+      "ms": 12818,
+      "in": 5,
+      "out": 1,
+      "rejects": 4,
+      "promptTokens": 745,
+      "completionTokens": 284
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 1,
+      "out": 1,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 4042,
+      "in": 1,
+      "out": 0,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 3236,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 177,
+      "completionTokens": 245
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following represents 100 using matchstick bundles?",
+      "ms": {
+        "draft": 3596,
+        "critique": 6489
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is 100 and 25 more, what is the number?",
+      "ms": {
+        "draft": 3596,
+        "critique": 7321
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a number line has a jump of 20 starting from 140, what number will be next?",
+      "ms": {
+        "draft": 3596,
+        "critique": 7820
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is made by 30 more than 70, what is the number?",
+      "ms": {
+        "draft": 3596,
+        "critique": 8659,
+        "solver": 809
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is 100 and 55 more, what is the number?",
+      "ms": {
+        "draft": 3596,
+        "critique": 8215,
+        "solver": 11175
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is 10 more than 90, what is the number?",
+      "ms": {
+        "draft": 3744,
+        "critique": 7405,
+        "solver": 1221,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the number that comes just after 99?",
+      "ms": {
+        "draft": 3744,
+        "critique": 6263,
+        "solver": 1424,
+        "form": 4658
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is 25 more than 75, what is the number?",
+      "ms": {
+        "draft": 3744,
+        "critique": 6291,
+        "solver": 1641,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents 100 in terms of bundles of sticks?",
+      "ms": {
+        "draft": 3744,
+        "critique": 8341,
+        "solver": 12912,
+        "form": 5022
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the significance of the number 0 in the numeral system?",
+      "ms": {
+        "draft": 3744,
+        "critique": 7575,
+        "solver": 11499
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a number that can be represented using 10 bundles of 10 sticks?",
+      "ms": {
+        "draft": 3744,
+        "critique": 7137,
+        "solver": 655
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the number that comes after 99?",
+      "ms": {
+        "draft": 3596,
+        "critique": 6203,
+        "solver": 10274,
+        "form": 4376
+      },
+      "outcome": "dedupe",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following represents 100 using matchstick bundles?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a number is 100 and 25 more, what is the number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a number line has a jump of 20 starting from 140, what number will be next?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a number is made by 30 more than 70, what is the number?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number is 100 and 55 more, what is the number?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a number is 10 more than 90, what is the number?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer is 100, which is 10 more than 90, not 110 whi…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the number that comes just after 99?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer is 100, which is the number after 99, not 101…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a number is 25 more than 75, what is the number?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"correct answer is 100, not 95 which is 20 more than 75…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following represents 100 in terms of bundles of sticks?",
+      "reason": "options 0 and 1 say the same thing (\"5 bundles of 10 sticks\" / \"10 bundles of 10 sticks\"); distractor 2's reason is not a one-line misconception (\"correct answer is 10 bundles of 10 sticks…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what is the significance of the number 0 in the numeral system?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is an example of a number that can be represented using 10 bundles of 10 sticks?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the number that comes after 99?",
+      "reason": "near-duplicate of served question cmvgyk22205jxgpfhp85929ic (cosine 0.924 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

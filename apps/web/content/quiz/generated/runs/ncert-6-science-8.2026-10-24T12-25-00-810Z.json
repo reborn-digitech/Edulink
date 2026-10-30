@@ -1,0 +1,697 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T12:25:00.810Z",
+  "finishedAt": "2026-10-24T12:35:47.387Z",
+  "seconds": 647,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "fecu1",
+    "document": "ncert/6/science/fecu108.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 8 — A Journey through States of Water",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — solutions or answer key]\n9. B. In liquid phase, water molecules have hydrogen bonding between H of one molecule and O of\nanother molecule. In gas phase, the hydrogen bonds don’t exist, but the molecules remain intact.",
+      "[INJSO 2021 — solutions or answer key]\n7. D. Water will lose more amount of energy while first converting to ice and releasing heat equivalent to\nthe latent heat.",
+      "[INJSO 2021 — question paper]\n7. Consider the following two statements:\nStatement S1: If you put 100 g ice at 0°C and 100 g water at 0°C into a freezer, which is maintained\nat –10°C, the ice will eventually lose the larger amount of heat.\nStatement S2: At 0°C, water is denser than ice.\nChoose the correct statement among the following.\nA. Both S1 and S2 are true and S2 is the correct explanation of S1.\nB. Both S1 and S2 are true but S2 is not the correct explanation of S1.\nC. S1 is true but S2 is false.\nD. S1 is false but S2 is true.",
+      "[INJSO 2022 — solutions or answer key]\n2. B. If some soluble components from soil dissolve in water, then density of water is most likely to change. Other\nparameters may or may not change significantly."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 213682,
+      "in": 37,
+      "out": 35,
+      "rejects": 2,
+      "promptTokens": 40617,
+      "completionTokens": 8613
+    },
+    "critique": {
+      "calls": 40,
+      "ms": 357501,
+      "in": 35,
+      "out": 34,
+      "rejects": 1,
+      "promptTokens": 18304,
+      "completionTokens": 6853
+    },
+    "solver": {
+      "calls": 204,
+      "ms": 130359,
+      "in": 34,
+      "out": 28,
+      "rejects": 6,
+      "promptTokens": 32568,
+      "completionTokens": 1961
+    },
+    "form": {
+      "calls": 8,
+      "ms": 53603,
+      "in": 28,
+      "out": 17,
+      "rejects": 11,
+      "promptTokens": 3953,
+      "completionTokens": 1039
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 41,
+      "ms": 8139,
+      "in": 17,
+      "out": 12,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 698766,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 29366,
+      "completionTokens": 14607
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 4,
+    "4": 3,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the state of water that is hard to touch and can be held in our hands?",
+      "ms": {
+        "draft": 4060,
+        "critique": 9194,
+        "solver": 3093
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a glass tumbler is placed in a freezer at –10°C. The tumbler contains 100 g of water at 0°C and 100 g of ice at 0°C. Which of the following statements is correct regarding the heat released during the freezing process?",
+      "ms": {
+        "draft": 5946,
+        "critique": 10205,
+        "solver": 2123
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is used to change ice into water?",
+      "ms": {
+        "draft": 6391,
+        "critique": 10152
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of evaporation?",
+      "ms": {
+        "draft": 6391,
+        "critique": 9290,
+        "solver": 2058,
+        "form": 3411
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 8.5, which of the following correctly fills the blank marked A?",
+      "ms": {
+        "draft": 6391,
+        "critique": 10169,
+        "solver": 2629
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If you want to dry your clothes faster on a rainy day, which of the following would help?",
+      "ms": {
+        "draft": 6391,
+        "critique": 10312,
+        "solver": 2120,
+        "form": 5749
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the water in the surahi stay cold even on a hot day?",
+      "ms": {
+        "draft": 8230,
+        "critique": 8746,
+        "solver": 3024,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of condensation?",
+      "ms": {
+        "draft": 8754,
+        "critique": 9274,
+        "solver": 2069,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following situations is evaporation the main factor in the cooling effect?",
+      "ms": {
+        "draft": 8754,
+        "critique": 8204,
+        "solver": 2508
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the area around natural grass feel cooler than the area around plastic grass?",
+      "ms": {
+        "draft": 8754,
+        "critique": 7873,
+        "solver": 1311,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the pot-in-pot cooler model, what is the purpose of the sand between the two pots?",
+      "ms": {
+        "draft": 8230,
+        "critique": 8354,
+        "solver": 2399,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes condensation?",
+      "ms": {
+        "draft": 3383,
+        "critique": 6807,
+        "solver": 1806,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In which of the following processes is evaporation very important?",
+      "ms": {
+        "draft": 3383,
+        "critique": 8094,
+        "solver": 24207,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of cooling due to evaporation?",
+      "ms": {
+        "draft": 4285,
+        "critique": 11478,
+        "solver": 22752,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following processes involves the release of heat?",
+      "ms": {
+        "draft": 4455,
+        "critique": 8288,
+        "solver": 2718
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the main reason for the formation of water droplets on the outer surface of a glass tumbler containing ice cubes?",
+      "ms": {
+        "draft": 6457,
+        "critique": 7645,
+        "solver": 16546,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Aavi and Thirav observed water droplets forming on the outer surface of a glass tumbler filled with cold water and ice. What is the most likely explanation for the formation of these droplets?",
+      "ms": {
+        "draft": 14864,
+        "critique": 9781,
+        "solver": 2943,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the mass of the glass tumbler increase during the condensation experiment?",
+      "ms": {
+        "draft": 6457,
+        "critique": 12371,
+        "solver": 10896
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process of conversion of water into its vapour state called?",
+      "ms": {
+        "draft": 4060,
+        "critique": 8486,
+        "solver": 1703,
+        "form": 5353
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student conducts an experiment by placing a glass tumbler with water and ice in it on a digital balance. After some time, water droplets are observed on the outer surface of the tumbler, and the mass on the balance increases. What can be concluded about the process occurring in the tumbler?",
+      "ms": {
+        "draft": 5946,
+        "critique": 10262,
+        "solver": 2408,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of condensation?",
+      "ms": {
+        "draft": 5946,
+        "critique": 8963,
+        "solver": 1899,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process of converting a liquid into a solid called?",
+      "ms": {
+        "draft": 6391,
+        "critique": 8824,
+        "solver": 2344,
+        "form": 3832
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is responsible for water turning into vapour?",
+      "ms": {
+        "draft": 4285,
+        "critique": 11673,
+        "solver": 1695,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to water when it is left in a freezer?",
+      "ms": {
+        "draft": 4060,
+        "critique": 8826,
+        "solver": 2173,
+        "form": 5857,
+        "translation": 64458
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the reason for water disappearing from puddles?",
+      "ms": {
+        "draft": 4060,
+        "critique": 8616,
+        "solver": 2015,
+        "form": 4616,
+        "translation": 58116
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to water when it is sprinkled on a hot pan?",
+      "ms": {
+        "draft": 4060,
+        "critique": 8832,
+        "solver": 2024,
+        "form": 5455,
+        "translation": 51763
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the purpose of Activity 8.1?",
+      "ms": {
+        "draft": 4060,
+        "critique": 8583,
+        "solver": 1898,
+        "form": 0,
+        "translation": 56089
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student conducts an experiment by placing a glass tumbler with ice cubes in it on a digital weighing balance. After 30 minutes, the student notices water droplets on the outer surface of the tumbler. What is the most likely reason for this observation?",
+      "ms": {
+        "draft": 5946,
+        "critique": 8490,
+        "solver": 3173,
+        "form": 0,
+        "translation": 73878
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In an experiment, a glass tumbler is filled with water and a steel plate is placed on top of it. After a while, water droplets are observed on the inner side of the steel plate. What is the reason for this phenomenon?",
+      "ms": {
+        "draft": 5946,
+        "critique": 8036,
+        "solver": 1905,
+        "form": 0,
+        "translation": 65890
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which process is responsible for the cooling effect observed in an earthen pot?",
+      "ms": {
+        "draft": 8230,
+        "critique": 8609,
+        "solver": 1578,
+        "form": 0,
+        "translation": 59074
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "How does using a fan help in drying wet clothes?",
+      "ms": {
+        "draft": 3383,
+        "critique": 7124,
+        "solver": 2291,
+        "form": 0,
+        "translation": 47513
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In Table 8.2, the mass of the water in the glass tumbler is recorded at different intervals. The mass increases over time. What does this indicate about the process happening in the experiment?",
+      "ms": {
+        "draft": 5946,
+        "critique": 10553,
+        "solver": 2054,
+        "form": 0,
+        "translation": 67084
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why does the water in the earthen pot feel colder than in a stainless steel pot?",
+      "ms": {
+        "draft": 4285,
+        "critique": 11687,
+        "solver": 2304,
+        "form": 1,
+        "translation": 52477
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What happens to the water vapour when it rises in the atmosphere?",
+      "ms": {
+        "draft": 4285,
+        "critique": 10715,
+        "solver": 16877,
+        "form": 0,
+        "translation": 47168
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why clothes dry faster on a windy day?",
+      "ms": {
+        "draft": 4455,
+        "critique": 9209,
+        "solver": 2482,
+        "form": 0,
+        "translation": 49099
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the state of water that is hard to touch and can be held in our hands?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In an experiment, a glass tumbler is placed in a freezer at –10°C. The tumbler contains 100 g of water at 0°C and 100 g of ice at 0°C. Which of the following statements is correct regarding the heat released during the freezing process?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process is used to change ice into water?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of evaporation?",
+      "reason": "options 0 and 1 say the same thing (\"Ice turning into water\" / \"Water turning into ice\"); options 2 and 3 say the same thing (\"Water turning into water vapour\" / \"Water vapour turning into water\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the diagram in Fig. 8.5, which of the following correctly fills the blank marked A?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If you want to dry your clothes faster on a rainy day, which of the following would help?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Putting clothes in direct sunlight might help, but it is not…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the water in the surahi stay cold even on a hot day?",
+      "reason": "the key is far longer than every distractor (65 vs 36 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of condensation?",
+      "reason": "the key is far longer than every distractor (59 vs 28 characters); distractor 3's reason is not a one-line misconception (\"Misunderstands melting as a form of condensation in a differ…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In which of the following situations is evaporation the main factor in the cooling effect?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the area around natural grass feel cooler than the area around plastic grass?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Believes reflectivity is the main reason, not evaporation fr…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the pot-in-pot cooler model, what is the purpose of the sand between the two pots?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.largePot: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Why does the space around natural grass feel cooler than the space around plastic grass?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of a liquid that evaporates?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following best describes condensation?",
+      "reason": "options 0 and 3 say the same thing (\"The conversion of water into its vapour state.\" / \"The conversion of water vapour into its liquid state.\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In which of the following processes is evaporation very important?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of cooling due to evaporation?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following processes involves the release of heat?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What is the main reason for the formation of water droplets on the outer surface of a glass tumbler containing ice cubes?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Aavi and Thirav observed water droplets forming on the outer surface of a glass tumbler filled with cold water and ice. What is the most likely explanation for the formation of these droplets?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Believes the glass material is porous or permeable to water …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why does the mass of the glass tumbler increase during the condensation experiment?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the process of conversion of water into its vapour state called?",
+      "reason": "near-duplicate of served question cmv4bxk5g00bngnbawb91f2f0 (cosine 0.903 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A student conducts an experiment by placing a glass tumbler with water and ice in it on a digital balance. After some time, water droplets are observed on the outer surface of the tumbler, and the mass on the balance increases. What can be concluded about the process occurring in the tumbler?",
+      "reason": "near-duplicate of batch item \"A student conducts an experiment by placing a glas…\" (cosine 0.924 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of condensation?",
+      "reason": "near-duplicate of served question cmvis204t0e68gpfh3il9fhjz (cosine 0.903 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the process of converting a liquid into a solid called?",
+      "reason": "near-duplicate of served question cmv4bxk5o00c5gnbard1p6v6a (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which process is responsible for water turning into vapour?",
+      "reason": "near-duplicate of served question cmv4bxk5g00bngnbawb91f2f0 (cosine 0.922 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

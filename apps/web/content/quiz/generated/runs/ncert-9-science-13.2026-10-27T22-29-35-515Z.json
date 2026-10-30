@@ -1,0 +1,884 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T22:29:35.515Z",
+  "finishedAt": "2026-10-27T22:39:23.762Z",
+  "seconds": 588,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc113.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 13 — Earth as a System: Energy, Matter, and Life",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 29,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\n9. Assertion (A): In an ecosystem, 1% of energy is available for transfer from one 1\ntrophic level to the next.\nReason (R): An average of 10% of the food eaten by organisms is available for\nflow in the form of chemical energy.",
+      "[INJSO 2015 — question paper]\n25. Study the following ray diagram in which: ‘A’ represents atmosphere, ‘B’ represents\ngreen plants, ‘C’ represents decomposers and ‘D’ represents animals.\nB C\nA D\nThe above ray diagram represents\na) Energy flow through the given ecosystem.\nb) Interconnections among different food chains in the given ecosystem.\nc) Movement of carbon among A, B, C and D.\nd) Movement of nitrogen among A, B, C and D",
+      "[INJSO 2019 — question paper]\n33. (9 MARKS) Consider a self-sustaining ecosystem consisting of three components X, Y\nand Z set up in a laboratory for several weeks. During a 26-day observation period, it was\ndisturbed by human intervention on a particular day. The population size of the three\ncomponents during this period is tabulated below.\nDay Population size\nComponent X Component Y Component Z\n1 10\n4 11\n7 15\n10 14\n13 14\n17 0\n20 0\n23 0\n26 0\n40 200\n42 220\n54 210\n53 190\n43 220\n120 100\n130 30\n30 30\n15 150\n(A) Assign the correct component alphabet to each of the following:\ni. Primary producer _____\nii. Herbivore _____\niii. Carnivore _____\n(1.5 MARKS)\n(1.5 MARKS)\n(1.5 MARKS)\n(B) The average biomass of a producer is 0.0060 g",
+      "[INJSO 2020 — question paper]\n24. An ecological pyramid is a diagrammatic representation of the relationship between various\norganisms in an ecosystem. These pyramids can be drawn to represent the organic material\n(biomass), or number, or energy at each trophic level.\nWe list here four different ecosystems (i to iv) and five different ecological pyramids (P to T).\nMatch the ecosystems with the correct pyramids.\nEcosystems:\ni. Number pyramid of an ecosystem consisting of grasses, snails and mice.\nii. Number pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niii. Biomass pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niv. Number pyramid of an ecosystem consisting of a rose bush, aph"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 211319,
+      "in": 48,
+      "out": 45,
+      "rejects": 3,
+      "promptTokens": 57085,
+      "completionTokens": 11349
+    },
+    "critique": {
+      "calls": 56,
+      "ms": 359337,
+      "in": 45,
+      "out": 34,
+      "rejects": 11,
+      "promptTokens": 26093,
+      "completionTokens": 9566
+    },
+    "solver": {
+      "calls": 238,
+      "ms": 119602,
+      "in": 34,
+      "out": 29,
+      "rejects": 5,
+      "promptTokens": 40926,
+      "completionTokens": 2301
+    },
+    "form": {
+      "calls": 10,
+      "ms": 56710,
+      "in": 29,
+      "out": 8,
+      "rejects": 21,
+      "promptTokens": 8402,
+      "completionTokens": 1584
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 53,
+      "ms": 9248,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 371178,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 20457,
+      "completionTokens": 10753
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 3,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "If the cryosphere melts due to global warming, which of the following is most likely to happen?",
+      "ms": {
+        "draft": 2872,
+        "critique": 6177
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of the cryosphere?",
+      "ms": {
+        "draft": 2872,
+        "critique": 6629
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what happens when there is less snowfall during winters?",
+      "ms": {
+        "draft": 2872,
+        "critique": 7969
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for the uneven heating of the Earth's surface?",
+      "ms": {
+        "draft": 2872,
+        "critique": 6411
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a function of the atmosphere?",
+      "ms": {
+        "draft": 2872,
+        "critique": 6670
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a consequence of the Earth's spherical shape, as mentioned in the passage?",
+      "ms": {
+        "draft": 5182,
+        "critique": 6646,
+        "solver": 1777,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following surfaces would absorb the most solar radiation?",
+      "ms": {
+        "draft": 5182,
+        "critique": 6773,
+        "solver": 2012,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be inferred about the Earth's energy balance from the passage?",
+      "ms": {
+        "draft": 5182,
+        "critique": 6660,
+        "solver": 2005,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the insolation on the Earth’s surface is 1 kWm, what is the energy received by a 1 m² area in one hour?",
+      "ms": {
+        "draft": 5182,
+        "critique": 5513,
+        "solver": 1896,
+        "form": 6054
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If India's solar energy potential is to be fully harnessed, how much of the country's area would need to be covered with solar panels, according to the passage?",
+      "ms": {
+        "draft": 5182,
+        "critique": 6256,
+        "solver": 14089,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a city replaces its concrete roads with more green spaces, what effect would this most likely have on the local climate?",
+      "ms": {
+        "draft": 5001,
+        "critique": 7439,
+        "solver": 1551,
+        "form": 2823
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why the temperature in the stratosphere increases with height?",
+      "ms": {
+        "draft": 5001,
+        "critique": 6380,
+        "solver": 1431,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the main reason cities are warmer than rural areas?",
+      "ms": {
+        "draft": 5001,
+        "critique": 6938,
+        "solver": 12827,
+        "form": 3101
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a role of the atmosphere as described in the passage?",
+      "ms": {
+        "draft": 5001,
+        "critique": 7996
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage explains that the urban heat island effect is caused by the absorption and retention of heat by built-up materials in cities. Which of the following scenarios would most effectively reduce this effect?",
+      "ms": {
+        "draft": 5001,
+        "critique": 7564,
+        "solver": 11673,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage describes how human activities have contributed to the greenhouse effect. If a city decides to increase the use of renewable energy sources, what would be the most likely impact on the local climate?",
+      "ms": {
+        "draft": 5001,
+        "critique": 7367,
+        "solver": 13214,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is true about the formation of sub-polar low pressure belts?",
+      "ms": {
+        "draft": 5326,
+        "critique": 7469
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How do ocean currents help in regulating the Earth's climate?",
+      "ms": {
+        "draft": 5326,
+        "critique": 5957,
+        "solver": 1285,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is responsible for restoring oxygen in the atmosphere?",
+      "ms": {
+        "draft": 3487,
+        "critique": 7359
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the significance of the Indian Institute of Tropical Meteorology (IITM), Pune, in the context of the Earth's systems?",
+      "ms": {
+        "draft": 5326,
+        "critique": 5436,
+        "solver": 12539
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes the role of biogeochemical cycles in an ecosystem?",
+      "ms": {
+        "draft": 56591,
+        "critique": 7522
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of the Earth's energy system in action?",
+      "ms": {
+        "draft": 3744,
+        "critique": 6553,
+        "solver": 1219
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the figure showing a valley breeze, which of the following best explains the movement of air?",
+      "ms": {
+        "draft": 3744,
+        "critique": 6554,
+        "solver": 2246,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a self-sustaining ecosystem experiences a disturbance that eliminates all herbivores, what will happen to the energy transfer in the ecosystem?",
+      "ms": {
+        "draft": 3744,
+        "critique": 6120,
+        "solver": 2025
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best represents the Earth's energy system?",
+      "ms": {
+        "draft": 3744,
+        "critique": 6322,
+        "solver": 1992,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that the temperature of a mountain covered with grass is different from that of a mountain covered with barren rocks. Based on the passage, what is the most likely reason for this difference?",
+      "ms": {
+        "draft": 4511,
+        "critique": 7163,
+        "solver": 1855,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The figure shows a valley breeze. Based on the diagram, what is the primary cause of a valley breeze?",
+      "ms": {
+        "draft": 4511,
+        "critique": 5523,
+        "solver": 1843,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main reason for the Earth functioning as an interconnected system?",
+      "ms": {
+        "draft": 4511,
+        "critique": 7517,
+        "solver": 1701,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main process that restores oxygen to the atmosphere according to the passage?",
+      "ms": {
+        "draft": 3361,
+        "critique": 5799
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses how human activities increase the concentration of greenhouse gases in the atmosphere. Based on this, what would be the most effective individual action to reduce greenhouse gas emissions?",
+      "ms": {
+        "draft": 4511,
+        "critique": 7500,
+        "solver": 13323,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main cause of eutrophication in water bodies?",
+      "ms": {
+        "draft": 3361,
+        "critique": 6546
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the main impact of increased atmospheric CO2 levels on the environment?",
+      "ms": {
+        "draft": 5458,
+        "critique": 7287,
+        "solver": 1100
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How does the water cycle affect agriculture?",
+      "ms": {
+        "draft": 5458,
+        "critique": 6948,
+        "solver": 11915
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a part of the water cycle?",
+      "ms": {
+        "draft": 5458,
+        "critique": 7689,
+        "solver": 13509,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the carbon cycle, which process is responsible for converting atmospheric carbon into a form that can be used by plants?",
+      "ms": {
+        "draft": 5458,
+        "critique": 6311,
+        "solver": 1608,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, how do ocean currents help in regulating the Earth's climate?",
+      "ms": {
+        "draft": 4274,
+        "critique": 6728,
+        "solver": 9329,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which layer of the atmosphere is responsible for trapping outgoing heat and preventing it from escaping into space?",
+      "ms": {
+        "draft": 5826,
+        "critique": 4972,
+        "solver": 775,
+        "form": 1010
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a result of uneven heating of the Earth between the equator and the poles?",
+      "ms": {
+        "draft": 4274,
+        "critique": 7279,
+        "solver": 1746,
+        "form": 3655,
+        "translation": 41406
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a process in the water cycle where water turns into vapor?",
+      "ms": {
+        "draft": 6478,
+        "critique": 5755,
+        "solver": 10754,
+        "form": 0,
+        "translation": 34897
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of biogeochemical cycles in an ecosystem?",
+      "ms": {
+        "draft": 4511,
+        "critique": 6720,
+        "solver": 2161,
+        "form": 0,
+        "translation": 50621
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is primarily responsible for the warming of the Earth?",
+      "ms": {
+        "draft": 4511,
+        "critique": 5548,
+        "solver": 1406,
+        "form": 0,
+        "translation": 65192
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How does the urban heat island effect impact the Earth's energy balance?",
+      "ms": {
+        "draft": 3744,
+        "critique": 6003,
+        "solver": 1187,
+        "form": 0,
+        "translation": 51975
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a solar panel receives 1 kWm of insolation, how much energy will it receive in one hour over an area of 1 m²?",
+      "ms": {
+        "draft": 5182,
+        "critique": 8630,
+        "solver": 1056,
+        "form": 5606,
+        "translation": 36171
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an ecosystem, if a primary producer is removed, what is the most likely impact on the energy flow?",
+      "ms": {
+        "draft": 3744,
+        "critique": 6193,
+        "solver": 1389,
+        "form": 0,
+        "translation": 41033
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best describes the role of solar radiation in Earth's systems?",
+      "ms": {
+        "draft": 2872,
+        "critique": 7613,
+        "solver": 11128,
+        "form": 2806,
+        "translation": 44238
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the cryosphere melts due to global warming, which of the following is most likely to happen?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of the cryosphere?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what happens when there is less snowfall during winters?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main reason for the uneven heating of the Earth's surface?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a function of the atmosphere?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a consequence of the Earth's spherical shape, as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following surfaces would absorb the most solar radiation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What can be inferred about the Earth's energy balance from the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the insolation on the Earth’s surface is 1 kWm, what is the energy received by a 1 m² area in one hour?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"1000*3600\" = 3600000, but the key says 3.6"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If India's solar energy potential is to be fully harnessed, how much of the country's area would need to be covered with solar panels, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's reference to the Thar desert…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a city replaces its concrete roads with more green spaces, what effect would this most likely have on the local climate?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This would be the case if green spaces had no impact on temp…\"); distractor 3's reason is not a one-line misconception (\"This is an overstatement of the effect; the passage does not…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why the temperature in the stratosphere increases with height?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This would be true for the troposphere, not the stratosphere…\"); distractor 2's reason is not a one-line misconception (\"This is a general description of heat transfer, but the pass…\"); distractor 3's reason is not a one-line misconception (\"This is a process that occurs in the troposphere, not the st…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the main reason cities are warmer than rural areas?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a role of the atmosphere as described in the passage?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage explains that the urban heat island effect is caused by the absorption and retention of heat by built-up materials in cities. Which of the following scenarios would most effectively reduce this effect?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage describes how human activities have contributed to the greenhouse effect. If a city decides to increase the use of renewable energy sources, what would be the most likely impact on the local climate?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"This is an overstatement of the effect; the passage does not…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is true about the formation of sub-polar low pressure belts?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "How do ocean currents help in regulating the Earth's climate?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct reason…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process is responsible for restoring oxygen in the atmosphere?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the significance of the Indian Institute of Tropical Meteorology (IITM), Pune, in the context of the Earth's systems?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following best describes the role of biogeochemical cycles in an ecosystem?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the main function of biogeochemical cycles according to the passage?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the main consequence of deforestation as described in the passage?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the primary source of energy on Earth according to the passage?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of the Earth's energy system in action?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the figure showing a valley breeze, which of the following best explains the movement of air?",
+      "reason": "options 1 and 3 say the same thing (\"Air moves from the valley to the mountains at night\" / \"Air moves from the mountains to the valley at night\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a self-sustaining ecosystem experiences a disturbance that eliminates all herbivores, what will happen to the energy transfer in the ecosystem?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best represents the Earth's energy system?",
+      "reason": "the key is far longer than every distractor (54 vs 16 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observes that the temperature of a mountain covered with grass is different from that of a mountain covered with barren rocks. Based on the passage, what is the most likely reason for this difference?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The figure shows a valley breeze. Based on the diagram, what is the primary cause of a valley breeze?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'mountain'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main reason for the Earth functioning as an interconnected system?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (71 vs 44 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the main process that restores oxygen to the atmosphere according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses how human activities increase the concentration of greenhouse gases in the atmosphere. Based on this, what would be the most effective individual action to reduce greenhouse gas emissions?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what is the main cause of eutrophication in water bodies?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the main impact of increased atmospheric CO2 levels on the environment?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How does the water cycle affect agriculture?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a part of the water cycle?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the carbon cycle, which process is responsible for converting atmospheric carbon into a form that can be used by plants?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'sun'"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, how do ocean currents help in regulating the Earth's climate?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which layer of the atmosphere is responsible for trapping outgoing heat and preventing it from escaping into space?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Overlooks the role of the troposphere and assumes the mesosp…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,516 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T15:26:27.166Z",
+  "finishedAt": "2026-10-25T15:31:21.134Z",
+  "seconds": 294,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm106.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — House of Hundreds - I",
+    "edition": "Reprint 2026-27",
+    "chunks": 8,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[PRMO 2019 — question paper]\n30. Let E denote the set of all natural numbers n such that 3 < n < 100 and the set\n{1, 2, 3, . . . , n} can be partitioned in to 3 subsets with equal sums. Find the number of elements\nof E.\nSPACE FOR ROUGH WORK\n27. हम कहӒगे ўक ўकसी शͫद के अ̯रӖ के बमचय मӒ कोई िःथर अ̯र नहҰं है अगर, जब हम बमचय को\nशͫद के ठұक नीचे ѠलखӒ, तो ўकसी भी ःतंभ मӒ एक हҰ अ̯र ऊपर नीचे दोनӖ जगह नहҰं होगा। जैसे ўक\nशͫद B H A R A T के बमचय H B R A T A मӒ कोई िःथर अ̯र नहҰं है। B H A R A\nT के अलग-अलग ऐसे ўकतने बमचय हӔ िजनमӒ कोई िःथर अ̯र नहҰं है? (यहाँ मानӒगे ўक दोनӖ A मӒ\nकोई भेद नहҰं है।)\n28. मान लो ўक ABC एक िऽभुज है िजसकҴ भुजाओं का मान 51, 52, 53 है। मान लो ўक Ω िऽभुज\n△ABC का अंतःवृа है। Ω के वह ःपश˨क बनाओ जो ўक ABC कҴ भुजाओं ",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n27. HCF (36,60,84) =12 1 ½\nଷ଺ ଺଴ ସ଼\nRequired number of rooms= ଵଶ ଵଶ ଵଶ + + 1\n=3+5+7\n=15 ½",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n37. CASE STUDY 2\nAlia and Shagun are friends living on the same street in Patel Nagar. Shagun’s house is at the\nintersection of one street with another street on which there is a library. They both study in\nthe same school and that is not far from Shagun's house. Suppose the school is situated at\nthe point O, i.e., the origin, Alia's house is at A. Shagun’s house is at B and library is at C.\nBased on the above information, answer the following questions.\n(i) How far is Alia's house from Shagun’s house?\n(ii) How far is the library from Shagun’s house?\n(iii) Show that for Shagun, school is farther compared to Alia’s house and library.\nOR\nShow that Alia’s house, shagun’s house and library for a",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n18. 3\nD)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 70885,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 19692,
+      "completionTokens": 4409
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 188853,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 13758,
+      "completionTokens": 5621
+    },
+    "solver": {
+      "calls": 160,
+      "ms": 79712,
+      "in": 23,
+      "out": 11,
+      "rejects": 12,
+      "promptTokens": 29762,
+      "completionTokens": 1616
+    },
+    "form": {
+      "calls": 2,
+      "ms": 6645,
+      "in": 11,
+      "out": 5,
+      "rejects": 6,
+      "promptTokens": 481,
+      "completionTokens": 137
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 5478,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 294585,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11254,
+      "completionTokens": 5167
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "How many triangles are there in a line of triangular toran?",
+      "ms": {
+        "draft": 2636,
+        "critique": 5775,
+        "solver": 1046
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many more triangles are needed to make 300?",
+      "ms": {
+        "draft": 2636,
+        "critique": 6045,
+        "solver": 1433
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of bangles counted by Teji?",
+      "ms": {
+        "draft": 2636,
+        "critique": 6376,
+        "solver": 1393
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which is more: bangles or triangles?",
+      "ms": {
+        "draft": 2636,
+        "critique": 5426,
+        "solver": 1607
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number has 3 hundreds, 2 tens, and 5 ones, what is the number?",
+      "ms": {
+        "draft": 2780,
+        "critique": 5619
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct way to compare two numbers?",
+      "ms": {
+        "draft": 2780,
+        "critique": 6581,
+        "solver": 1016,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Arvind Dada packs sweets in boxes of 100 (H), 10 (T) and as packets of loose sweets (O), how many boxes of 10 can he fit in a box of 100?",
+      "ms": {
+        "draft": 2636,
+        "critique": 4409,
+        "solver": 14908
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If you have to arrange the numbers 329, 392, 235, and 523 from smallest to largest, which of the following is the correct order?",
+      "ms": {
+        "draft": 2780,
+        "critique": 7449,
+        "solver": 15656
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the greatest number that can be formed using the digits 3, 2, and 4 without repeating any digit?",
+      "ms": {
+        "draft": 2780,
+        "critique": 9238,
+        "solver": 10379
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the digit 2 represent in the number 325?",
+      "ms": {
+        "draft": 2780,
+        "critique": 3903,
+        "solver": 5208
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the number 209, how does the value of 9 compare to the value of 9 in 290?",
+      "ms": {
+        "draft": 3199,
+        "critique": 4314,
+        "solver": 1169,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 321 is more than 231, which of the following is also true?",
+      "ms": {
+        "draft": 3199,
+        "critique": 4586,
+        "solver": 1787,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number has 3 hundreds, 2 tens, and 4 ones, what is the value of the tens digit?",
+      "ms": {
+        "draft": 3199,
+        "critique": 7132,
+        "solver": 1472
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the correct way to compare two numbers?",
+      "ms": {
+        "draft": 3199,
+        "critique": 7420,
+        "solver": 1098,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many triangles are there in a line of triangular toran?",
+      "ms": {
+        "draft": 3200,
+        "critique": 5939,
+        "solver": 2031
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of bangles according to the passage?",
+      "ms": {
+        "draft": 3200,
+        "critique": 5803,
+        "solver": 1742,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the number line, which number lies between 200 and 250?",
+      "ms": {
+        "draft": 3200,
+        "critique": 7332,
+        "solver": 1436
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is more than the guess, which direction will the flag point?",
+      "ms": {
+        "draft": 3200,
+        "critique": 5609,
+        "solver": 2631,
+        "form": 3778
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number has 9 ones, is less than 200, and has digits 9, 1, and 5, which number am I?",
+      "ms": {
+        "draft": 3200,
+        "critique": 10268,
+        "solver": 7775
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the 'H' in the Dienes block represent?",
+      "ms": {
+        "draft": 3199,
+        "critique": 6359,
+        "solver": 1187,
+        "form": 0,
+        "translation": 36648
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about comparing numbers?",
+      "ms": {
+        "draft": 3199,
+        "critique": 5511,
+        "solver": 11574,
+        "form": 0,
+        "translation": 88994
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Jojo has 2 toffees in his hand and the total toffees are 298, how many more toffees are needed to make 300?",
+      "ms": {
+        "draft": 3200,
+        "critique": 9143,
+        "solver": 3307,
+        "form": 3385,
+        "translation": 27175
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true when comparing 209 and 290?",
+      "ms": {
+        "draft": 2780,
+        "critique": 9292,
+        "solver": 15631,
+        "form": 0,
+        "translation": 79365
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "I have digits 9, 1 and 5. I am less than 200. I have 9 ones. Which number am I?",
+      "ms": {
+        "draft": 2636,
+        "critique": 4704,
+        "solver": 2370,
+        "form": 0,
+        "translation": 54683
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "How many triangles are there in a line of triangular toran?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many more triangles are needed to make 300?",
+      "reason": "the solver picked option 2 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the total number of bangles counted by Teji?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which is more: bangles or triangles?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a number has 3 hundreds, 2 tens, and 5 ones, what is the number?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct way to compare two numbers?",
+      "reason": "options 0 and 2 say the same thing (\"Compare the tens first, then the hundreds\" / \"Compare the hundreds first, then the tens\"); options 1 and 3 say the same thing (\"Compare the ones first, then the hundreds\" / \"Compare the hundreds first, then the ones\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If Arvind Dada packs sweets in boxes of 100 (H), 10 (T) and as packets of loose sweets (O), how many boxes of 10 can he fit in a box of 100?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If you have to arrange the numbers 329, 392, 235, and 523 from smallest to largest, which of the following is the correct order?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is the greatest number that can be formed using the digits 3, 2, and 4 without repeating any digit?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the digit 2 represent in the number 325?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the number 209, how does the value of 9 compare to the value of 9 in 290?",
+      "reason": "options 0 and 1 say the same thing (\"The value of 9 in 209 is greater than in 290\" / \"The value of 9 in 209 is less than in 290\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If 321 is more than 231, which of the following is also true?",
+      "reason": "options 0 and 2 say the same thing (\"321 is less than 231\" / \"231 is less than 321\"); option 1 repeats the stem's wording (\"231 is more than 321\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number has 3 hundreds, 2 tens, and 4 ones, what is the value of the tens digit?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is the correct way to compare two numbers?",
+      "reason": "options 0 and 1 say the same thing (\"Compare the hundreds first, then the tens, then the ones\" / \"Compare the ones first, then the tens, then the hundreds\"); options 0 and 2 say the same thing (\"Compare the hundreds first, then the tens, then the ones\" / \"Compare the tens first, then the hundreds, then the ones\"); options 0 and 3 say the same thing (\"Compare the hundreds first, then the tens, then the ones\" / \"Compare the ones first, then the hundreds, then the tens\"); options 1 and 2 say the same thing (\"Compare the ones first, then the tens, then the hundreds\" / \"Compare the tens first, then the hundreds, then the ones\"); options 1 and 3 say the same thing (\"Compare the ones first, then the tens, then the hundreds\" / \"Compare the ones first, then the hundreds, then the tens\"); options 2 and 3 say the same thing (\"Compare the tens first, then the hundreds, then the ones\" / \"Compare the ones first, then the hundreds, then the tens\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many triangles are there in a line of triangular toran?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total number of bangles according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the number line, which number lies between 200 and 250?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a number is more than the guess, which direction will the flag point?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Chooses a direction that is not mentioned in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a number has 9 ones, is less than 200, and has digits 9, 1, and 5, which number am I?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

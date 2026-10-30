@@ -1,0 +1,823 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T15:57:39.084Z",
+  "finishedAt": "2026-10-26T16:05:54.748Z",
+  "seconds": 496,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Themes in Indian History-I",
+    "bookCode": "lehs1",
+    "document": "ncert/12/history/lehs101.pdf",
+    "classLevel": 12,
+    "subject": "History",
+    "chapter": "Chapter 1 — Bricks, Beads and Bones The Harappan Civilisation",
+    "edition": "Reprint 2026-27",
+    "chunks": 27,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII History, marking scheme, 2026-27]\n22. A Harappan town planning has many features like modern town planning. Followings 3\nare some of them:\n1) The most distinctive feature of the Harappan Civilisation was the development of\nurban centres. Mohenjodaro is the most famous site of Harappan Civilisation.\n2) The settlement was divided into two sections i.e. Citadel and the Lower Town.\nCitadel was smaller but higher. It was walled part of the city which was separated\nfrom the lower town. Here the buildings were constructed with mud and bricks\nplatform.\n3) The second part of the city was called the Lower Town. The lower town was also\nwalled. Several buildings were built on platforms, which served as foundations\n4) Mohenjodaro had a w",
+      "[CBSE Class XII History, sample question paper, 2025-26]\n22. A “The archaeological records provide no immediate answer of the existence of centre 3\nof power”. Give suitable examples to prove the statement in the context of Harappa.\nOR\n22.B Prove that Harappans had access to different parts of the world.",
+      "[CBSE Class XII History, sample question paper, 2026-27]\n22. A Compare Harappan town planning with modern town planning. Which features of 3\nHarappan towns reflect their advanced nature? Support your answer with reasons.\nOR\n22. B “Exchanges were regulated by a precise system of weights in the Harappan\ncivilisation.” Analyse this statement and support your answer with evidence.",
+      "[CBSE Class XII History, marking scheme, 2023-24]\n8. Identify the craft centres related to the Harapan civilization with the 1\nhelp of the given information.\n Located near the coast.\n They were specialized for making shell objects.\nOptions.\na. Chanhudaro and Mahenjadaro\nb. Nageshwar and Balakot\nc. Harappa and Lothal.\nd. Bharuch and Dholavira\nAns- b. Nageshwar and Balakot (Pg 11)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 157707,
+      "in": 43,
+      "out": 42,
+      "rejects": 1,
+      "promptTokens": 46691,
+      "completionTokens": 8302
+    },
+    "critique": {
+      "calls": 56,
+      "ms": 374056,
+      "in": 42,
+      "out": 35,
+      "rejects": 7,
+      "promptTokens": 24735,
+      "completionTokens": 9648
+    },
+    "solver": {
+      "calls": 279,
+      "ms": 172746,
+      "in": 35,
+      "out": 27,
+      "rejects": 8,
+      "promptTokens": 58834,
+      "completionTokens": 3297
+    },
+    "form": {
+      "calls": 12,
+      "ms": 32290,
+      "in": 27,
+      "out": 9,
+      "rejects": 18,
+      "promptTokens": 2935,
+      "completionTokens": 822
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 5,
+      "ms": 1013,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 357584,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19051,
+      "completionTokens": 9765
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 2
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What was the main reason for the decline of the Harappan Civilisation?",
+      "ms": {
+        "draft": 2940,
+        "critique": 5500,
+        "solver": 1591
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the Harappan diet?",
+      "ms": {
+        "draft": 2940,
+        "critique": 6167,
+        "solver": 2595,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the Harappan script?",
+      "ms": {
+        "draft": 2940,
+        "critique": 6529,
+        "solver": 2283,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the layout of Mohenjodaro according to the passage?",
+      "ms": {
+        "draft": 3350,
+        "critique": 7732,
+        "solver": 1461,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is NOT mentioned as a feature of Harappan town planning?",
+      "ms": {
+        "draft": 2940,
+        "critique": 7375,
+        "solver": 17359
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following features of Mohenjodaro most clearly indicates its advanced planning?",
+      "ms": {
+        "draft": 3350,
+        "critique": 7615,
+        "solver": 17507,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the Harappan approach to urban planning, based on the construction of platforms for buildings?",
+      "ms": {
+        "draft": 3350,
+        "critique": 8502,
+        "solver": 13383
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following statements about Harappan drainage systems is supported by the passage?",
+      "ms": {
+        "draft": 3350,
+        "critique": 7897,
+        "solver": 18215,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the use of querns in the Harappan civilisation?",
+      "ms": {
+        "draft": 3350,
+        "critique": 7958,
+        "solver": 17891,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following is a key feature of the Harappan town planning that is similar to modern town planning?",
+      "ms": {
+        "draft": 3350,
+        "critique": 8307,
+        "solver": 16278
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following would indicate that a Harappan settlement had advanced planning?",
+      "ms": {
+        "draft": 3191,
+        "critique": 6693,
+        "solver": 1844,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A Harappan site is discovered where the dead were buried with copper mirrors and ornaments, and there are differences in how the burial pits were made. Which of the following inferences is best supported by the passage?",
+      "ms": {
+        "draft": 3191,
+        "critique": 6835,
+        "solver": 1886,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that the Harappans did not believe in burying precious things with the dead, but some graves contain gold jewellery. Which of the following best explains this apparent contradiction?",
+      "ms": {
+        "draft": 3191,
+        "critique": 7150,
+        "solver": 1828
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following was a specialised centre for making shell objects in the Harappan Civilisation?",
+      "ms": {
+        "draft": 3247,
+        "critique": 9488
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the presence of waste material at a site suggest about the Harappan Civilisation?",
+      "ms": {
+        "draft": 3247,
+        "critique": 6427
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a Harappan settlement had both a Citadel and a Lower Town, what does this indicate about its planning?",
+      "ms": {
+        "draft": 3247,
+        "critique": 5643
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best supports the idea that the Harappans had contact with distant lands?",
+      "ms": {
+        "draft": 3247,
+        "critique": 5660,
+        "solver": 1747,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the likely direction in which the Harappan script was written?",
+      "ms": {
+        "draft": 4770,
+        "critique": 6006
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which feature of Harappan towns shows that they were planned?",
+      "ms": {
+        "draft": 4300,
+        "critique": 6691
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what does the division of a Harappan city into two parts indicate?",
+      "ms": {
+        "draft": 4300,
+        "critique": 7613
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a Harappan city had a drainage system, what does this suggest about the people?",
+      "ms": {
+        "draft": 4300,
+        "critique": 6397,
+        "solver": 11774,
+        "form": 3353
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which site is known for the presence of a walled city in the Harappan civilization?",
+      "ms": {
+        "draft": 4300,
+        "critique": 6540
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a Harappan site has a large number of beads, what might this suggest about the people?",
+      "ms": {
+        "draft": 4300,
+        "critique": 7760,
+        "solver": 13314,
+        "form": 2354
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a Harappan artefact that archaeologists classified based on its resemblance to present-day things?",
+      "ms": {
+        "draft": 3605,
+        "critique": 6614,
+        "solver": 1772
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage suggest about the classification of the",
+      "ms": {
+        "draft": 3605,
+        "critique": 6708,
+        "solver": 1621,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage imply about the reconstruction of Harappan religious practices?",
+      "ms": {
+        "draft": 3605,
+        "critique": 6075,
+        "solver": 1313,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of an artefact that was classified based on the context in which it was found?",
+      "ms": {
+        "draft": 3605,
+        "critique": 6365,
+        "solver": 1818
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage suggest about the significance of the",
+      "ms": {
+        "draft": 3605,
+        "critique": 6842,
+        "solver": 1279,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage suggest about the use of the small conical objects found at Harappan sites?",
+      "ms": {
+        "draft": 3605,
+        "critique": 6227,
+        "solver": 1876
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the significance of the Harappan Civilisation as discussed in the passage?",
+      "ms": {
+        "draft": 3819,
+        "critique": 7704,
+        "solver": 18222,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a new Harappan site is discovered with seals similar to those found at Mohenjodaro, what can be inferred about this site?",
+      "ms": {
+        "draft": 3819,
+        "critique": 6326,
+        "solver": 17476,
+        "form": 3619
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the genetic continuity of the Harappan people?",
+      "ms": {
+        "draft": 6169,
+        "critique": 7148,
+        "solver": 1191,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the stratigraphy of a Harappan mound?",
+      "ms": {
+        "draft": 3819,
+        "critique": 7551,
+        "solver": 10682,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of Harappan town planning that is also found in modern town planning?",
+      "ms": {
+        "draft": 3191,
+        "critique": 7374,
+        "solver": 1574,
+        "form": 5262
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the other name for the Harappan Civilisation?",
+      "ms": {
+        "draft": 2940,
+        "critique": 4664,
+        "solver": 1578,
+        "form": 3322,
+        "translation": 31680
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the study of DNA of ancient civilisations called?",
+      "ms": {
+        "draft": 4530,
+        "critique": 4094,
+        "solver": 507,
+        "form": 1073,
+        "translation": 41420
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is mentioned as a feature of Harappan town planning?",
+      "ms": {
+        "draft": 3819,
+        "critique": 6475,
+        "solver": 18904,
+        "form": 5452,
+        "translation": 50586
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a luxury item found in Harappan settlements?",
+      "ms": {
+        "draft": 3191,
+        "critique": 6839,
+        "solver": 1466,
+        "form": 2243,
+        "translation": 38236
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a Harappan craft centre?",
+      "ms": {
+        "draft": 2940,
+        "critique": 5636,
+        "solver": 2327,
+        "form": 2774,
+        "translation": 37851
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student finds a Harappan settlement with a well in a room and a large rectangular tank with steps leading into it. Which of the following structures is the student most likely describing?",
+      "ms": {
+        "draft": 3191,
+        "critique": 7668,
+        "solver": 1166,
+        "form": 3490,
+        "translation": 49645
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following most strongly suggests that the Harappan civilisation had a system of regulation in trade and exchange?",
+      "ms": {
+        "draft": 5842,
+        "critique": 7101,
+        "solver": 10746,
+        "form": 1188,
+        "translation": 47842
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why might the presence of a drainage system in Harappan cities be considered evidence of a centralized authority?",
+      "ms": {
+        "draft": 4300,
+        "critique": 6257,
+        "solver": 15997,
+        "form": 2327,
+        "translation": 49142
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What was the main reason for the decline of the Harappan Civilisation?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the Harappan diet?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the Harappan script?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the layout of Mohenjodaro according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This ignores the mention of two sections in the passage…\"); distractor 2's reason is not a one-line misconception (\"This adds a third section not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"This contradicts the passage's description of two sections…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is NOT mentioned as a feature of Harappan town planning?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, which of the following features of Mohenjodaro most clearly indicates its advanced planning?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What does the passage suggest about the Harappan approach to urban planning, based on the construction of platforms for buildings?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following statements about Harappan drainage systems is supported by the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the use of querns in the Harappan civilisation?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Confuses the passage's mention of 'grain' and 'herbs and spi…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "According to the passage, which of the following is a key feature of the Harappan town planning that is similar to modern town planning?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following would indicate that a Harappan settlement had advanced planning?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A Harappan site is discovered where the dead were buried with copper mirrors and ornaments, and there are differences in how the burial pits were made. Which of the following inferences is best supported by the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misinterprets the passage's statement about not burying prec…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage states that the Harappans did not believe in burying precious things with the dead, but some graves contain gold jewellery. Which of the following best explains this apparent contradiction?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following was a specialised centre for making shell objects in the Harappan Civilisation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the presence of waste material at a site suggest about the Harappan Civilisation?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a Harappan settlement had both a Citadel and a Lower Town, what does this indicate about its planning?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best supports the idea that the Harappans had contact with distant lands?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the likely direction in which the Harappan script was written?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is mentioned as a feature of the Harappan Civilisation?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which feature of Harappan towns shows that they were planned?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what does the division of a Harappan city into two parts indicate?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a Harappan city had a drainage system, what does this suggest about the people?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"This is the opposite of what the passage suggests.…\"); distractor 1's reason is not a one-line misconception (\"This is incorrect as the passage shows they had knowledge of…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which site is known for the presence of a walled city in the Harappan civilization?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a Harappan site has a large number of beads, what might this suggest about the people?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"This is incorrect as the passage suggests they were skilled.…\"); distractor 1's reason is not a one-line misconception (\"This is not supported by the evidence in the passage.…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is an example of a Harappan artefact that archaeologists classified based on its resemblance to present-day things?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage suggest about the classification of the",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage imply about the reconstruction of Harappan religious practices?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is an example of an artefact that was classified based on the context in which it was found?",
+      "reason": "the solver picked option 1 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage suggest about the significance of the",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What does the passage suggest about the use of the small conical objects found at Harappan sites?",
+      "reason": "the solver picked option 0 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the significance of the Harappan Civilisation as discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a new Harappan site is discovered with seals similar to those found at Mohenjodaro, what can be inferred about this site?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the genetic continuity of the Harappan people?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's statement about genetic continui…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the stratigraphy of a Harappan mound?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"The passage states that the lowest layers are the oldest…\"); distractor 3's reason is not a one-line misconception (\"The passage states that stratigraphy helps understand the si…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a feature of Harappan town planning that is also found in modern town planning?",
+      "reason": "near-duplicate of served question cmvlsnyo60nxygpfhgec6iug7 (cosine 0.918 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

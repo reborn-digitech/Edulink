@@ -1,0 +1,513 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T18:47:41.728Z",
+  "finishedAt": "2026-10-24T18:51:32.269Z",
+  "seconds": 231,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "hemh1",
+    "document": "ncert/8/mathematics/hemh110.pdf",
+    "classLevel": 8,
+    "subject": "Mathematics",
+    "chapter": "Chapter 10 — Exponents and Powers",
+    "edition": "Reprint 2024-25",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n8. B) 8𝑥 - 20 2",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n1. Answer – D 1\nAs, 2025 = 3 × 5 4 4\nSo, the exponent of 3 in the prime factorization of 2025 is 4",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n1. The exponent of 3 in the prime factorization of 2025 is\nA) 1\nB) 2\nC) 3\nD) 4",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n8. (d) RHS"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 94177,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 19825,
+      "completionTokens": 5263
+    },
+    "critique": {
+      "calls": 33,
+      "ms": 215516,
+      "in": 23,
+      "out": 19,
+      "rejects": 4,
+      "promptTokens": 15129,
+      "completionTokens": 5892
+    },
+    "solver": {
+      "calls": 159,
+      "ms": 85711,
+      "in": 19,
+      "out": 13,
+      "rejects": 6,
+      "promptTokens": 37837,
+      "completionTokens": 1762
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 4,
+      "rejects": 9,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 39,
+      "ms": 7255,
+      "in": 4,
+      "out": 2,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 49121,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4900,
+      "completionTokens": 2125
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the value of 10 raised to the power of -3?",
+      "ms": {
+        "draft": 4285,
+        "critique": 6118,
+        "solver": 1201,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct representation of 0.000007 in standard form?",
+      "ms": {
+        "draft": 4285,
+        "critique": 6309,
+        "solver": 1643,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of (–3)^2 × (–3)^–3?",
+      "ms": {
+        "draft": 4285,
+        "critique": 7761
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 5^m × 5^3 = 5^7, what is the value of m?",
+      "ms": {
+        "draft": 4285,
+        "critique": 7536
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Simplify 2^3 × 2^4 and express the result in exponential form.",
+      "ms": {
+        "draft": 4285,
+        "critique": 6866,
+        "solver": 10921
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Simplify (2^–1 × 3^–1) ÷ (2^–2 × 3^–2) and express the result in exponential form.",
+      "ms": {
+        "draft": 4285,
+        "critique": 5724,
+        "solver": 1460,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the standard form of 0.000035?",
+      "ms": {
+        "draft": 4331,
+        "critique": 5919,
+        "solver": 1535,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the total mass of the Earth and the Moon if the mass of the Earth is 5.97 × 10^24 kg and the mass of the Moon is 7.35 × 10^22 kg?",
+      "ms": {
+        "draft": 4331,
+        "critique": 6621
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the diameter of the Sun is 1.4 × 10^9 meters and the diameter of the Earth is 1.2756 × 10^7 meters, how many times larger is the diameter of the Sun compared to the Earth?",
+      "ms": {
+        "draft": 4331,
+        "critique": 6215,
+        "solver": 1407
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The distance between the Sun and Earth is 1.496 × 10^8 meters, and the distance between the Earth and Moon is 3.84 × 10^8 meters. What is the distance between the Sun and the Moon during a solar eclipse?",
+      "ms": {
+        "draft": 4331,
+        "critique": 6057,
+        "solver": 1023
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the standard form of 0.000007?",
+      "ms": {
+        "draft": 3204,
+        "critique": 5085
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the standard form of 0.00001275?",
+      "ms": {
+        "draft": 3204,
+        "critique": 6205,
+        "solver": 14736,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the usual form of 3.52 × 10⁵?",
+      "ms": {
+        "draft": 3204,
+        "critique": 7615,
+        "solver": 1328,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the standard form of 4.05 × 10⁶?",
+      "ms": {
+        "draft": 3204,
+        "critique": 8123,
+        "solver": 16738
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the usual form of 7.54 × 10⁻⁴?",
+      "ms": {
+        "draft": 3204,
+        "critique": 6704,
+        "solver": 12283,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents the multiplicative inverse of 3?",
+      "ms": {
+        "draft": 4652,
+        "critique": 7141,
+        "solver": 11480,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Simplify 2^3 × 2^4 and express the result in exponential form.",
+      "ms": {
+        "draft": 4652,
+        "critique": 7036,
+        "solver": 12562,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the value of 5^0 × (5^2 × 5^3)?",
+      "ms": {
+        "draft": 4652,
+        "critique": 6723,
+        "solver": 19673
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 2^m = 32, what is the value of m?",
+      "ms": {
+        "draft": 4652,
+        "critique": 8103,
+        "solver": 10256
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the usual form of 3.52 × 10^5?",
+      "ms": {
+        "draft": 4331,
+        "critique": 5958,
+        "solver": 1668,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The prime factorization of 2025 is 3^4 × 5^2. What is the exponent of 3 in this factorization?",
+      "ms": {
+        "draft": 4331,
+        "critique": 4199,
+        "solver": 516,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the standard form of 5.97 × 10²⁴ kg?",
+      "ms": {
+        "draft": 3204,
+        "critique": 5342,
+        "solver": 13118,
+        "form": 0,
+        "translation": 22196
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The mass of the Earth is 5.97 × 10^24 kg. How is this number written in standard form?",
+      "ms": {
+        "draft": 4652,
+        "critique": 8352,
+        "solver": 12674,
+        "form": 0,
+        "translation": 22742
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the value of 10 raised to the power of -3?",
+      "reason": "options are written to different precisions (0 and 1 and 2 and 3 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct representation of 0.000007 in standard form?",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the value of (–3)^2 × (–3)^–3?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 5^m × 5^3 = 5^7, what is the value of m?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Simplify 2^3 × 2^4 and express the result in exponential form.",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Simplify (2^–1 × 3^–1) ÷ (2^–2 × 3^–2) and express the result in exponential form.",
+      "reason": "options 2 and 3 say the same thing (\"2^1 × 3^–1\" / \"2^–1 × 3^1\"); option 1 repeats the stem's wording (\"2^–1 × 3^–1\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the standard form of 0.000035?",
+      "reason": "options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the total mass of the Earth and the Moon if the mass of the Earth is 5.97 × 10^24 kg and the mass of the Moon is 7.35 × 10^22 kg?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the diameter of the Sun is 1.4 × 10^9 meters and the diameter of the Earth is 1.2756 × 10^7 meters, how many times larger is the diameter of the Sun compared to the Earth?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The distance between the Sun and Earth is 1.496 × 10^8 meters, and the distance between the Earth and Moon is 3.84 × 10^8 meters. What is the distance between the Sun and the Moon during a solar eclipse?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the standard form of 0.000007?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the standard form of 0.00001275?",
+      "reason": "options 1 and 2 are the same (\"1.275 × 10⁻⁴\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the usual form of 3.52 × 10⁵?",
+      "reason": "options are written to different precisions (0 and 5 and 7 decimals); distractor 3's reason is not a one-line misconception (\"Correct, but the number is written with fewer zeros than req…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the standard form of 4.05 × 10⁶?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the usual form of 7.54 × 10⁻⁴?",
+      "reason": "options are written to different precisions (4 and 5 and 6 and 7 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following represents the multiplicative inverse of 3?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Simplify 2^3 × 2^4 and express the result in exponential form.",
+      "reason": "options 0 and 2 are the same (\"2^12\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the value of 5^0 × (5^2 × 5^3)?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 2^m = 32, what is the value of m?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the usual form of 3.52 × 10^5?",
+      "reason": "near-duplicate of served question cmveyrhiu02cjgod8wofoeapg (cosine 0.940 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "The prime factorization of 2025 is 3^4 × 5^2. What is the exponent of 3 in this factorization?",
+      "reason": "near-duplicate of served question cmvg4d6xb0229gpfhiy7hbfp1 (cosine 0.916 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

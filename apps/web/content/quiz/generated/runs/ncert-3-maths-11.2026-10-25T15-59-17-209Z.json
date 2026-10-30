@@ -1,0 +1,501 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T15:59:17.209Z",
+  "finishedAt": "2026-10-25T16:11:26.657Z",
+  "seconds": 729,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm111.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Filling and L ifting",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½",
+      "[CBSE Class XII Mathematics, marking scheme, 2023-24]\n18. (d) 2 2 2  1  2  1  2  1 2  1  2\nWe know, l  m  n  1           1  3    1  c   3 .\n c   c   c   c "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 145057,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 15670,
+      "completionTokens": 4304
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 369076,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 13103,
+      "completionTokens": 5343
+    },
+    "solver": {
+      "calls": 157,
+      "ms": 158780,
+      "in": 21,
+      "out": 18,
+      "rejects": 3,
+      "promptTokens": 29801,
+      "completionTokens": 1706
+    },
+    "form": {
+      "calls": 4,
+      "ms": 16642,
+      "in": 18,
+      "out": 11,
+      "rejects": 7,
+      "promptTokens": 1035,
+      "completionTokens": 296
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 8101,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 782036,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 20887,
+      "completionTokens": 10020
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 3,
+    "6": 0
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a jug holds 3 litres of lemonade, how many glasses can be filled if each glass holds 1 litre?",
+      "ms": {
+        "draft": 22261,
+        "critique": 9776
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of these shows that a glass holds less than 1 litre?",
+      "ms": {
+        "draft": 22261,
+        "critique": 7996,
+        "solver": 2211,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which activity helps children understand that bigger glasses hold less milk?",
+      "ms": {
+        "draft": 22261,
+        "critique": 8716,
+        "solver": 3837,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a bottle holds 1 litre and a glass holds half a litre, how many glasses can be filled from the bottle?",
+      "ms": {
+        "draft": 22261,
+        "critique": 11097,
+        "solver": 30252
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which unit of measurement is mentioned in the passage?",
+      "ms": {
+        "draft": 4901,
+        "critique": 13816,
+        "solver": 2411
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of these objects is most likely to weigh less than 1 kilogram?",
+      "ms": {
+        "draft": 4901,
+        "critique": 10511,
+        "solver": 2354
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which object is measured in the passage as being heavier than a pencil?",
+      "ms": {
+        "draft": 4901,
+        "critique": 14331,
+        "solver": 29323,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a red ball, an orange ball, and a green ball are compared using a balance, and the red ball is heavier than the orange ball, and the green ball is lighter than the orange ball, which ball is the heaviest?",
+      "ms": {
+        "draft": 4901,
+        "critique": 10296,
+        "solver": 13475,
+        "form": 3378
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a glass holds 250 ml, how many such glasses will fill a 1 litre bottle?",
+      "ms": {
+        "draft": 8897,
+        "critique": 16603
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a jug holds 3 litres, and a glass holds 500 ml, how many glasses can be filled from the jug?",
+      "ms": {
+        "draft": 8897,
+        "critique": 11568,
+        "solver": 4006,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a jug holds exactly 1 litre, and a glass holds half a litre, how many glasses can be filled from the jug?",
+      "ms": {
+        "draft": 8897,
+        "critique": 15171,
+        "solver": 2353,
+        "form": 6797
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 4 glasses of 250 ml each fill a 1 litre bottle, how many 500 ml glasses will fill the same bottle?",
+      "ms": {
+        "draft": 8897,
+        "critique": 15240
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a jug holds 2 litres, and a glass holds 250 ml, how many glasses can be filled from the jug?",
+      "ms": {
+        "draft": 8897,
+        "critique": 10519,
+        "solver": 15060,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a unit used to measure weight?",
+      "ms": {
+        "draft": 5411,
+        "critique": 15598,
+        "solver": 5020,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a pan-balance is used to compare two objects, and one side goes down, what does it indicate?",
+      "ms": {
+        "draft": 5411,
+        "critique": 13518,
+        "solver": 2165,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If one takes a bigger glass, how does it affect the number of glasses one can drink?",
+      "ms": {
+        "draft": 8897,
+        "critique": 16666,
+        "solver": 2285,
+        "form": 3114,
+        "translation": 126785
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the correct way to measure weight?",
+      "ms": {
+        "draft": 5411,
+        "critique": 14384,
+        "solver": 2610,
+        "form": 0,
+        "translation": 64289
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 4 marbles balance with a pencil, and a pencil box balances with 6 marbles, how many marbles would balance with a pencil box?",
+      "ms": {
+        "draft": 4901,
+        "critique": 10564,
+        "solver": 2394,
+        "form": 0,
+        "translation": 73230
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bag is heavier than another bag, what could be the reason?",
+      "ms": {
+        "draft": 5411,
+        "critique": 14883,
+        "solver": 3813,
+        "form": 0,
+        "translation": 85109
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a bucket holds more than 1 litre and a mug holds less than half a litre, which holds more?",
+      "ms": {
+        "draft": 22261,
+        "critique": 12992,
+        "solver": 21764,
+        "form": 0,
+        "translation": 78319
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "If 4 marbles balance with a pencil, and 2 marbles balance with a pen, which is heavier, the pencil or the pen?",
+      "ms": {
+        "draft": 5411,
+        "critique": 17809,
+        "solver": 29624,
+        "form": 0,
+        "translation": 81286
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 4 quarter litre glasses equal 1 litre, how many quarter litre glasses are needed to fill 2 litres?",
+      "ms": {
+        "draft": 22261,
+        "critique": 12516,
+        "solver": 1672,
+        "form": 0,
+        "translation": 61518
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If 3 balls are compared using a pan-balance and the balance is used only once, what is the minimum number of times you need to weigh to identify the heaviest ball?",
+      "ms": {
+        "draft": 4901,
+        "critique": 9487,
+        "solver": 3114,
+        "form": 3354,
+        "translation": 94646
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a bag has 5 books and another bag has 7 books, and both weigh the same, what could explain this?",
+      "ms": {
+        "draft": 5411,
+        "critique": 18022,
+        "solver": 26065,
+        "form": 0,
+        "translation": 109504
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a jug holds 3 litres of lemonade, how many glasses can be filled if each glass holds 1 litre?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of these shows that a glass holds less than 1 litre?",
+      "reason": "option 2 repeats the stem's wording (\"The glass holds less than 1 litre\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which activity helps children understand that bigger glasses hold less milk?",
+      "reason": "the key is far longer than every distractor (59 vs 34 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a bottle holds 1 litre and a glass holds half a litre, how many glasses can be filled from the bottle?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which unit of measurement is mentioned in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, which of these objects is most likely to weigh less than 1 kilogram?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which object is measured in the passage as being heavier than a pencil?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a red ball, an orange ball, and a green ball are compared using a balance, and the red ball is heavier than the orange ball, and the green ball is lighter than the orange ball, which ball is the heaviest?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a glass holds 250 ml, how many such glasses will fill a 1 litre bottle?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If a jug holds 3 litres, and a glass holds 500 ml, how many glasses can be filled from the jug?",
+      "reason": "checkExpr \"6\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a jug holds exactly 1 litre, and a glass holds half a litre, how many glasses can be filled from the jug?",
+      "reason": "options are in more than one unit (glass, glasses); checkExpr \"2\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 4 glasses of 250 ml each fill a 1 litre bottle, how many 500 ml glasses will fill the same bottle?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a jug holds 2 litres, and a glass holds 250 ml, how many glasses can be filled from the jug?",
+      "reason": "options mix numbers and words (3 of 4 are numbers); checkExpr \"8\" is a bare literal"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a unit used to measure weight?",
+      "reason": "near-duplicate of served question cmvk1x61t0ir8gpfh447fa8nj (cosine 0.923 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a pan-balance is used to compare two objects, and one side goes down, what does it indicate?",
+      "reason": "near-duplicate of served question cmvgzpq9y05t8gpfhn8oo7oby (cosine 0.935 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

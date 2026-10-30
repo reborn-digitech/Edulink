@@ -1,0 +1,621 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T22:39:25.492Z",
+  "finishedAt": "2026-10-27T22:47:02.627Z",
+  "seconds": 457,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh101.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Real Numbers",
+    "edition": "Reprint 2026-27",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n20. Assertion(A): (2 + √3)√3 is an irrational number. 1\nReason(R): Product of two irrational numbers is always irrational.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n11. A) Irrational and distinct",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n26. Prove that √3 is an irrational number.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n11. The roots of the quadratic equation 𝑥 +x-1 = 0 are 2 1\nA) Irrational and distinct\nC ) rational and distinct"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 106672,
+      "in": 30,
+      "out": 30,
+      "rejects": 1,
+      "promptTokens": 21821,
+      "completionTokens": 6231
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 323871,
+      "in": 30,
+      "out": 28,
+      "rejects": 2,
+      "promptTokens": 21362,
+      "completionTokens": 8524
+    },
+    "solver": {
+      "calls": 262,
+      "ms": 144616,
+      "in": 28,
+      "out": 19,
+      "rejects": 9,
+      "promptTokens": 60399,
+      "completionTokens": 2996
+    },
+    "form": {
+      "calls": 3,
+      "ms": 6910,
+      "in": 19,
+      "out": 9,
+      "rejects": 10,
+      "promptTokens": 790,
+      "completionTokens": 223
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 5213,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 211208,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 15187,
+      "completionTokens": 7123
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "A composite number is factorised into primes as 2 × 3 × 3 × 5. What is the prime factorisation in the standard form?",
+      "ms": {
+        "draft": 4317,
+        "critique": 6733,
+        "solver": 1661,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the meaning of the phrase 'unique way' in the context of the Fundamental Theorem of Arithmetic?",
+      "ms": {
+        "draft": 4317,
+        "critique": 7029,
+        "solver": 2583
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage says that the Fundamental Theorem of Arithmetic states that every composite number can be expressed as a product of primes. Which of the following numbers is an example of a composite number that can be expressed as a product of primes?",
+      "ms": {
+        "draft": 4317,
+        "critique": 5985,
+        "solver": 1598,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage says that the Fundamental Theorem of Arithmetic was first recorded in Euclid's Elements, but the first correct proof was given by Gauss. Which of the following best explains why this is important?",
+      "ms": {
+        "draft": 4317,
+        "critique": 8272,
+        "solver": 1314,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the prime factorisation of 6?",
+      "ms": {
+        "draft": 3365,
+        "critique": 7205,
+        "solver": 1342,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage says that the Fundamental Theorem of Arithmetic was first recorded by Euclid. Which of the following is the correct source of this information?",
+      "ms": {
+        "draft": 4317,
+        "critique": 6655,
+        "solver": 17501,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If the HCF of 6 and 20 is 2, what is their LCM?",
+      "ms": {
+        "draft": 3365,
+        "critique": 6929,
+        "solver": 16461
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the HCF of two numbers is 4, and their product is 384, what is their LCM?",
+      "ms": {
+        "draft": 3365,
+        "critique": 8001,
+        "solver": 12466
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The prime factorisation of 96 is 2⁵ × 3, and that of 404 is 2² × 101. What is their HCF?",
+      "ms": {
+        "draft": 3365,
+        "critique": 8285,
+        "solver": 14900
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an irrational number?",
+      "ms": {
+        "draft": 2517,
+        "critique": 7454,
+        "solver": 10800,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a and b are coprime integers, and a/b = √3, which of the following must be true?",
+      "ms": {
+        "draft": 2517,
+        "critique": 9054,
+        "solver": 13474,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a and b are coprime integers, and a/b = 5 - √3, which of the following is true?",
+      "ms": {
+        "draft": 2517,
+        "critique": 6574,
+        "solver": 2353
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the HCF of 6 and 20 is 2, what is the LCM of 6 and 20?",
+      "ms": {
+        "draft": 3456,
+        "critique": 6563,
+        "solver": 14823
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a prime factor of 6?",
+      "ms": {
+        "draft": 3456,
+        "critique": 6872,
+        "solver": 15047
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the name of the theorem that states every composite number can be expressed as a product of primes?",
+      "ms": {
+        "draft": 4125,
+        "critique": 7567
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the HCF of 306 and 657 is 9, what is the LCM of 306 and 657?",
+      "ms": {
+        "draft": 3456,
+        "critique": 6507,
+        "solver": 17786,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is not a prime factor of 120?",
+      "ms": {
+        "draft": 3456,
+        "critique": 8541,
+        "solver": 13988
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage states that the prime factorisation of a number is unique, except for the order of the factors. Based on this, which of the following is true?",
+      "ms": {
+        "draft": 4125,
+        "critique": 5403
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the Fundamental Theorem of Arithmetic?",
+      "ms": {
+        "draft": 4125,
+        "critique": 8838,
+        "solver": 11919,
+        "form": 2336
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is factorised into prime factors as 2^3 × 3^2 × 5, what is the original number?",
+      "ms": {
+        "draft": 4125,
+        "critique": 4762,
+        "solver": 12016,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is expressed as a product of primes, and one of the prime factors is 2, which of the following must be true about the number?",
+      "ms": {
+        "draft": 4125,
+        "critique": 7030,
+        "solver": 7118
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the theorem that states that every composite number can be expressed as a product of primes in a unique way?",
+      "ms": {
+        "draft": 4317,
+        "critique": 6499,
+        "solver": 12040,
+        "form": 3222
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the Fundamental Theorem of Arithmetic state?",
+      "ms": {
+        "draft": 3456,
+        "critique": 6058,
+        "solver": 1278,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an irrational number?",
+      "ms": {
+        "draft": 2517,
+        "critique": 6044,
+        "solver": 1613,
+        "form": 0,
+        "translation": 20348
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If the prime factorisation of 96 is 2^5 × 3 and of 404 is 2^2 × 101, what is the HCF of 96 and 404?",
+      "ms": {
+        "draft": 3456,
+        "critique": 9200,
+        "solver": 1435,
+        "form": 0,
+        "translation": 32757
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the proof that √3 is irrational, what contradiction arises?",
+      "ms": {
+        "draft": 2517,
+        "critique": 6984,
+        "solver": 11175,
+        "form": 0,
+        "translation": 28164
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is true about the prime factorisation of a number?",
+      "ms": {
+        "draft": 4125,
+        "critique": 7552,
+        "solver": 9164,
+        "form": 1687,
+        "translation": 32376
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the HCF of 6, 72, and 120 is 6, what is their LCM?",
+      "ms": {
+        "draft": 3365,
+        "critique": 7716,
+        "solver": 15534,
+        "form": 0,
+        "translation": 28291
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Prove that 5 is an irrational number.",
+      "ms": {
+        "draft": 3365,
+        "critique": 6303,
+        "solver": 1161,
+        "form": 0,
+        "translation": 34348
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a and b are coprime integers and a/b = √3 + 2, which of the following is true?",
+      "ms": {
+        "draft": 2517,
+        "critique": 9506,
+        "solver": 5240,
+        "form": 1,
+        "translation": 29832
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A composite number is factorised into primes as 2 × 3 × 3 × 5. What is the prime factorisation in the standard form?",
+      "reason": "options 0 and 1 say the same thing (\"2 × 3 × 5\" / \"2 × 3^2 × 5\"); options 0 and 2 say the same thing (\"2 × 3 × 5\" / \"2^2 × 3 × 5\"); options 0 and 3 say the same thing (\"2 × 3 × 5\" / \"2 × 3 × 5^2\"); options 1 and 2 say the same thing (\"2 × 3^2 × 5\" / \"2^2 × 3 × 5\"); options 1 and 3 say the same thing (\"2 × 3^2 × 5\" / \"2 × 3 × 5^2\"); options 2 and 3 say the same thing (\"2^2 × 3 × 5\" / \"2 × 3 × 5^2\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, what is the meaning of the phrase 'unique way' in the context of the Fundamental Theorem of Arithmetic?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage says that the Fundamental Theorem of Arithmetic states that every composite number can be expressed as a product of primes. Which of the following numbers is an example of a composite number that can be expressed as a product of primes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage says that the Fundamental Theorem of Arithmetic was first recorded in Euclid's Elements, but the first correct proof was given by Gauss. Which of the following best explains why this is important?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage as suggesting Euclid discovered th…\"); distractor 2's reason is not a one-line misconception (\"Misinterprets the passage as suggesting Gauss was the only o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the prime factorisation of 6?",
+      "reason": "options 1 and 2 say the same thing (\"2 × 2 × 3\" / \"2 × 3 × 3\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage says that the Fundamental Theorem of Arithmetic was first recorded by Euclid. Which of the following is the correct source of this information?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 are the same (\"In the section 'Euclid’s Division Algorithm'\"); options 0 and 2 are the same (\"In the section 'Euclid’s Division Algorithm'\"); options 1 and 2 are the same (\"In the section 'Euclid’s Division Algorithm'\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "If the HCF of 6 and 20 is 2, what is their LCM?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the HCF of two numbers is 4, and their product is 384, what is their LCM?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The prime factorisation of 96 is 2⁵ × 3, and that of 404 is 2² × 101. What is their HCF?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of an irrational number?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a and b are coprime integers, and a/b = √3, which of the following must be true?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a and b are coprime integers, and a/b = 5 - √3, which of the following is true?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"Which of the following is an example of an irrational number?\",\"options\":[\"1/2\",\"3.5\","
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the HCF of 6 and 20 is 2, what is the LCM of 6 and 20?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a prime factor of 6?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what is the name of the theorem that states every composite number can be expressed as a product of primes?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the HCF of 306 and 657 is 9, what is the LCM of 306 and 657?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(306*657)/9\" = 22338, but the key says 21486"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is not a prime factor of 120?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The passage states that the prime factorisation of a number is unique, except for the order of the factors. Based on this, which of the following is true?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the Fundamental Theorem of Arithmetic?",
+      "reason": "options 1 and 2 say the same thing (\"It states that any natural number can be written as a product of its prime factors.\" / \"It states that any natural number can be written as a sum of its prime factors.\"); distractor 0's reason is not a one-line misconception (\"This refers to Euclid's division algorithm mentioned in the …\"); distractor 3's reason is not a one-line misconception (\"This is an application of the theorem, not the definition it…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a number is factorised into prime factors as 2^3 × 3^2 × 5, what is the original number?",
+      "reason": "options 2 and 3 are the same (\"360\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a number is expressed as a product of primes, and one of the prime factors is 2, which of the following must be true about the number?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the theorem that states that every composite number can be expressed as a product of primes in a unique way?",
+      "reason": "near-duplicate of served question cmvfm3ntq04xhgod8g0bklvol (cosine 0.973 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What does the Fundamental Theorem of Arithmetic state?",
+      "reason": "near-duplicate of served question cmvfm3nu404ybgod8mnb4lexy (cosine 0.907 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,687 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T16:43:53.022Z",
+  "finishedAt": "2026-10-24T16:56:40.991Z",
+  "seconds": 768,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "gecu1",
+    "document": "ncert/7/science/gecu111.pdf",
+    "classLevel": 7,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Light: Shadows and Reflections",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2023-24]\n14. When light enters the atmosphere it strikes on extremely fine particles, which deflect the 1\nrays of light in all possible directions, This is due to -\na) reflection of light\nb) atmospheric refraction\nc) scattering of light\nd) dispersion of light",
+      "[INJSO 2021 — solutions or answer key]\n5. D. Her field of view will be determined by drawing rays from each of the toys to the right and left edges\nof the plane mirror. She can see the image if she is within the range of these reflected rays.",
+      "[INJSO 2012 — question paper]\n34. White light is incident on one of the refracting faces of a prism. Inside the prism,\ni. at normal incidence, the blue light slows down more than red light\nii. at normal incidence, blue light refracts same as red light\niii. for oblique incidence, blue light bends more than red light\niv. for oblique incidence, blue light slows down more than the red light\nWhich of the above statements are correct?\na) i & iv\nb) i, iii & iv\nc) ii, iii & iv\nd) i, ii, iii & iv",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n30. B. Hold the lens above a sheet of paper and adjust until the smallest, 1\nbrightest spot is formed."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 220991,
+      "in": 35,
+      "out": 35,
+      "rejects": 0,
+      "promptTokens": 34652,
+      "completionTokens": 8187
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 452393,
+      "in": 35,
+      "out": 33,
+      "rejects": 2,
+      "promptTokens": 21712,
+      "completionTokens": 8174
+    },
+    "solver": {
+      "calls": 249,
+      "ms": 189619,
+      "in": 33,
+      "out": 31,
+      "rejects": 2,
+      "promptTokens": 45677,
+      "completionTokens": 2509
+    },
+    "form": {
+      "calls": 22,
+      "ms": 136365,
+      "in": 31,
+      "out": 15,
+      "rejects": 16,
+      "promptTokens": 13541,
+      "completionTokens": 2753
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 39,
+      "ms": 8819,
+      "in": 15,
+      "out": 12,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 51,
+      "ms": 719738,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 28793,
+      "completionTokens": 14555
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a student places a transparent object between a torch and a screen, what would they observe?",
+      "ms": {
+        "draft": 4519,
+        "critique": 7168,
+        "solver": 3463
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which activity best demonstrates that light travels in a straight line?",
+      "ms": {
+        "draft": 4519,
+        "critique": 8063,
+        "solver": 17466,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student uses a transparent object in an experiment to observe shadows, what kind of shadow will they most likely see?",
+      "ms": {
+        "draft": 5973,
+        "critique": 7945,
+        "solver": 3295
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a plane mirror is placed at an angle to a light beam, what happens to the path of the light?",
+      "ms": {
+        "draft": 5973,
+        "critique": 9650,
+        "solver": 2208,
+        "form": 4487
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observes that when a pen is placed in front of a plane mirror, the image formed in the mirror is the same size as the pen. What can be concluded about the image formed by a plane mirror?",
+      "ms": {
+        "draft": 6559,
+        "critique": 11252,
+        "solver": 15111,
+        "form": 5633
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student creates a pinhole camera and observes an inverted image of a tree on the screen. What is the reason for this inversion?",
+      "ms": {
+        "draft": 6559,
+        "critique": 10368
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student places a screen behind a plane mirror and tries to capture the image of an object in front of the mirror. What will happen?",
+      "ms": {
+        "draft": 6559,
+        "critique": 10135,
+        "solver": 17867,
+        "form": 3160
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student stands in front of a plane mirror and raises their left hand. What will the image in the mirror show?",
+      "ms": {
+        "draft": 6559,
+        "critique": 12104,
+        "solver": 1854,
+        "form": 5532
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student observes that when a lighted candle is placed in front of a pinhole camera, the image formed on the screen is upside down. What is the reason for this?",
+      "ms": {
+        "draft": 6559,
+        "critique": 8662,
+        "solver": 21866,
+        "form": 4977
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student observes that when they move closer to a plane mirror, their image also appears closer to the mirror. What is the relationship between the distance of the object from the mirror and the distance of the image from the mirror?",
+      "ms": {
+        "draft": 6559,
+        "critique": 8918,
+        "solver": 25797,
+        "form": 4568
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a periscope, how does the light travel from the top to the bottom?",
+      "ms": {
+        "draft": 6405,
+        "critique": 8260,
+        "solver": 885,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a torch is placed close to a ball, how does the size of the shadow change compared to when the torch is far away?",
+      "ms": {
+        "draft": 8320,
+        "critique": 9133
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a luminous object?",
+      "ms": {
+        "draft": 8320,
+        "critique": 10032,
+        "solver": 17906,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of a periscope in Fig. 11.14, how many plane mirrors are used to form the image?",
+      "ms": {
+        "draft": 8320,
+        "critique": 10314,
+        "solver": 19864,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student observes that the image in a plane mirror is laterally inverted. Which of the following explains this phenomenon?",
+      "ms": {
+        "draft": 8320,
+        "critique": 12222,
+        "solver": 3249,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is trying to see the image of a tree in a plane mirror, but the mirror is too small. Which of the following is true?",
+      "ms": {
+        "draft": 8320,
+        "critique": 13495,
+        "solver": 22305,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student places an object in front of a plane mirror. They observe that the image of the object is the same size as the object. What can be concluded about the image formed by the plane mirror?",
+      "ms": {
+        "draft": 6191,
+        "critique": 9609,
+        "solver": 2239,
+        "form": 5331
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student uses a pinhole camera to view an image of a tree. What is the nature of the image seen on the screen?",
+      "ms": {
+        "draft": 6191,
+        "critique": 10263,
+        "solver": 2953,
+        "form": 9097
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the light when a shiny surface like a mirror is placed in its path?",
+      "ms": {
+        "draft": 7028,
+        "critique": 10240,
+        "solver": 2416,
+        "form": 4252
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a luminous object?",
+      "ms": {
+        "draft": 5832,
+        "critique": 5946,
+        "solver": 11382,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a non-luminous object?",
+      "ms": {
+        "draft": 4519,
+        "critique": 6735,
+        "solver": 2341,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a dark room, a student shines a torch at a screen and places a transparent object in the path of the light. What will happen to the light on the screen?",
+      "ms": {
+        "draft": 4519,
+        "critique": 11932,
+        "solver": 1716,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the size of a shadow when an object is moved closer to the screen, keeping the torch and screen fixed?",
+      "ms": {
+        "draft": 5973,
+        "critique": 9737,
+        "solver": 2474,
+        "form": 6166
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a luminous object?",
+      "ms": {
+        "draft": 6405,
+        "critique": 7815,
+        "solver": 1661,
+        "form": 0,
+        "translation": 40761
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is formed when an opaque object blocks the path of light?",
+      "ms": {
+        "draft": 7028,
+        "critique": 9807,
+        "solver": 2437,
+        "form": 5641,
+        "translation": 66887
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a source of artificial light?",
+      "ms": {
+        "draft": 4519,
+        "critique": 10759,
+        "solver": 2148,
+        "form": 0,
+        "translation": 51448
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the image formed by a plane mirror?",
+      "ms": {
+        "draft": 6405,
+        "critique": 13938,
+        "solver": 16957,
+        "form": 0,
+        "translation": 50093
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason a dark patch is formed on the wall when an opaque object is placed in the path of light?",
+      "ms": {
+        "draft": 5973,
+        "critique": 10310,
+        "solver": 2308,
+        "form": 5199,
+        "translation": 60998
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student looks into a plane mirror and sees an image of themselves. What is the nature of the image formed by the plane mirror?",
+      "ms": {
+        "draft": 6191,
+        "critique": 9500,
+        "solver": 19737,
+        "form": 4707,
+        "translation": 68504
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Activity 11.5, what happens when a shiny plate or mirror is tilted in different directions?",
+      "ms": {
+        "draft": 5973,
+        "critique": 11128,
+        "solver": 2415,
+        "form": 5299,
+        "translation": 67686
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What happens to the shadow when the torch is switched off in an experiment?",
+      "ms": {
+        "draft": 5973,
+        "critique": 8333,
+        "solver": 2466,
+        "form": 3614,
+        "translation": 49492
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person stands in front of a plane mirror. They raise their left hand. What happens to the image of their hand in the mirror?",
+      "ms": {
+        "draft": 6191,
+        "critique": 9026,
+        "solver": 2372,
+        "form": 5511,
+        "translation": 71198
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does the Moon not appear to emit its own light?",
+      "ms": {
+        "draft": 4519,
+        "critique": 10753,
+        "solver": 2659,
+        "form": 0,
+        "translation": 48999
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a person is standing between a light source and a wall, and a mirror is placed between the person and the wall, what will happen to the light from the source?",
+      "ms": {
+        "draft": 7028,
+        "critique": 8917,
+        "solver": 10209,
+        "form": 1707,
+        "translation": 67929
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student places a candle in front of a plane mirror and observes the image. They then move the candle closer to the mirror. How does the distance of the image from the mirror change?",
+      "ms": {
+        "draft": 6191,
+        "critique": 10346,
+        "solver": 22431,
+        "form": 7118,
+        "translation": 67300
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student places a transparent object between a torch and a screen, what would they observe?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which activity best demonstrates that light travels in a straight line?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a student uses a transparent object in an experiment to observe shadows, what kind of shadow will they most likely see?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a plane mirror is placed at an angle to a light beam, what happens to the path of the light?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'lightRay'"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student observes that when a pen is placed in front of a plane mirror, the image formed in the mirror is the same size as the pen. What can be concluded about the image formed by a plane mirror?",
+      "reason": "options 0 and 3 say the same thing (\"It is always inverted\" / \"It is always laterally inverted\"); distractor 1's reason is not a one-line misconception (\"Assumes the image is always smaller, which is not mentioned …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A student creates a pinhole camera and observes an inverted image of a tree on the screen. What is the reason for this inversion?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student places a screen behind a plane mirror and tries to capture the image of an object in front of the mirror. What will happen?",
+      "reason": "options 0 and 2 say the same thing (\"The image will be formed on the screen\" / \"The image will not be formed on the screen\"); options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"Believes that the image can be captured on a screen, which i…\"); distractor 1's reason is not a one-line misconception (\"Assumes the image will be larger, which is not mentioned in …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student stands in front of a plane mirror and raises their left hand. What will the image in the mirror show?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, no reason needed for this distractor (not se…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student observes that when a lighted candle is placed in front of a pinhole camera, the image formed on the screen is upside down. What is the reason for this?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student observes that when they move closer to a plane mirror, their image also appears closer to the mirror. What is the relationship between the distance of the object from the mirror and the distance of the image from the mirror?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a periscope, how does the light travel from the top to the bottom?",
+      "reason": "figure: figure spec refused: spec.parts.2.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'line'"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a torch is placed close to a ball, how does the size of the shadow change compared to when the torch is far away?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a luminous object?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of a periscope in Fig. 11.14, how many plane mirrors are used to form the image?",
+      "reason": "options 1 and 2 are the same (\"Two\"); distractor 2's reason is not a one-line misconception (\"Believes the periscope uses the same number of mirrors as th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student observes that the image in a plane mirror is laterally inverted. Which of the following explains this phenomenon?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is trying to see the image of a tree in a plane mirror, but the mirror is too small. Which of the following is true?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student places an object in front of a plane mirror. They observe that the image of the object is the same size as the object. What can be concluded about the image formed by the plane mirror?",
+      "reason": "option 3 repeats the stem's wording (\"The image is the same size as the object\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student uses a pinhole camera to view an image of a tree. What is the nature of the image seen on the screen?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'box'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What happens to the light when a shiny surface like a mirror is placed in its path?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Believes the mirror blocks light, but the passage says light…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a luminous object?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a non-luminous object?",
+      "reason": "near-duplicate of served question cmvev3cco01sogod871z10bdr (cosine 0.915 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In a dark room, a student shines a torch at a screen and places a transparent object in the path of the light. What will happen to the light on the screen?",
+      "reason": "near-duplicate of served question cmvizvda10f20gpfhqkejwopk (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens to the size of a shadow when an object is moved closer to the screen, keeping the torch and screen fixed?",
+      "reason": "near-duplicate of served question cmvg137ik01o5gpfhhhxsaz7x (cosine 0.926 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

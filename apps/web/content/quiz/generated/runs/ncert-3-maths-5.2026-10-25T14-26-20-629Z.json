@@ -1,0 +1,371 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T14:26:20.629Z",
+  "finishedAt": "2026-10-25T15:26:25.572Z",
+  "seconds": 3605,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm105.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Fun with Shapes",
+    "edition": "Reprint 2026-27",
+    "chunks": 8,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated.",
+      "[PRMO 2018 — question paper]\n24. If N is the number of triangles of different shapes (i.e., not similar) whose angles are all\nintegers (in degrees), what is N/100?",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 152499,
+      "in": 16,
+      "out": 16,
+      "rejects": 1,
+      "promptTokens": 11837,
+      "completionTokens": 2920
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 253888,
+      "in": 16,
+      "out": 14,
+      "rejects": 2,
+      "promptTokens": 6974,
+      "completionTokens": 3156
+    },
+    "solver": {
+      "calls": 84,
+      "ms": 100567,
+      "in": 14,
+      "out": 12,
+      "rejects": 2,
+      "promptTokens": 11255,
+      "completionTokens": 775
+    },
+    "form": {
+      "calls": 8,
+      "ms": 40417,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 3381,
+      "completionTokens": 609
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 21935,
+      "in": 12,
+      "out": 8,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 265966,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 14988,
+      "completionTokens": 6786
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If you have 5 matchsticks and you want to make 2 triangles, how many matchsticks do you need to move?",
+      "ms": {
+        "draft": 10470,
+        "critique": 17001
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a circle is folded in half twice, how many lines of symmetry does it have?",
+      "ms": {
+        "draft": 10470,
+        "critique": 12190
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a property of a rectangle?",
+      "ms": {
+        "draft": 14476,
+        "critique": 12224,
+        "solver": 37852
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of a shape with four equal sides and four square corners?",
+      "ms": {
+        "draft": 14476,
+        "critique": 14083,
+        "solver": 40967
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the shape that has four equal sides?",
+      "ms": {
+        "draft": 4629,
+        "critique": 9657,
+        "solver": 2495,
+        "form": 6894
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the activity where children use cut outs of shapes to make designs?",
+      "ms": {
+        "draft": 4629,
+        "critique": 10767,
+        "solver": 5221,
+        "form": 4552
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the shape that has four sides, but not all sides are equal?",
+      "ms": {
+        "draft": 4629,
+        "critique": 10092,
+        "solver": 4162,
+        "form": 6794
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many sides does a triangle have?",
+      "ms": {
+        "draft": 10470,
+        "critique": 12437,
+        "solver": 3095,
+        "form": 4352
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a shape that has only square corners?",
+      "ms": {
+        "draft": 4629,
+        "critique": 11918,
+        "solver": 3204,
+        "form": 8094,
+        "translation": 55546
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of corners in a rectangle?",
+      "ms": {
+        "draft": 4629,
+        "critique": 11812,
+        "solver": 3415,
+        "form": 4916,
+        "translation": 48234
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of sides in a square?",
+      "ms": {
+        "draft": 4629,
+        "critique": 11850,
+        "solver": 4583,
+        "form": 3785,
+        "translation": 50099
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many rectangles can you make by joining 2 squares?",
+      "ms": {
+        "draft": 14476,
+        "critique": 12933,
+        "solver": 4804,
+        "form": 36,
+        "translation": 22913
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many triangles can be made using the dots on the circle shown in the figure?",
+      "ms": {
+        "draft": 10470,
+        "critique": 20320,
+        "solver": 3548,
+        "form": 0,
+        "translation": 22280
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If you fold a square sheet, it becomes a rectangle. How many square corners does a rectangle have?",
+      "ms": {
+        "draft": 14476,
+        "critique": 22871,
+        "solver": 4287,
+        "form": 0,
+        "translation": 19238
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following can be used to make a square?",
+      "ms": {
+        "draft": 14476,
+        "critique": 14044,
+        "solver": 2872,
+        "form": 0,
+        "translation": 20512
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a square is folded in half and then folded again, how many equal parts are formed?",
+      "ms": {
+        "draft": 10470,
+        "critique": 10686,
+        "solver": 1493,
+        "form": 0,
+        "translation": 23653
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If you have 5 matchsticks and you want to make 2 triangles, how many matchsticks do you need to move?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a circle is folded in half twice, how many lines of symmetry does it have?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "The operation was aborted due to timeout"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT a property of a rectangle?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the name of a shape with four equal sides and four square corners?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the shape that has four equal sides?",
+      "reason": "near-duplicate of served question cmvk1725e0inegpfhvu3l6co5 (cosine 0.968 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the activity where children use cut outs of shapes to make designs?",
+      "reason": "near-duplicate of served question cmvk1725c0in8gpfhdsoa2fxx (cosine 0.902 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the shape that has four sides, but not all sides are equal?",
+      "reason": "near-duplicate of served question cmvk1725g0inkgpfhlzakg2s0 (cosine 0.952 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "How many sides does a triangle have?",
+      "reason": "near-duplicate of served question cmsjsuwiq00may2kqv8v0pa7a (cosine 0.949 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

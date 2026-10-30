@@ -1,0 +1,816 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T23:16:17.381Z",
+  "finishedAt": "2026-10-27T23:27:52.062Z",
+  "seconds": 695,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh106.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — Triangles",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n10. B) isosceles and similar",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n37.\nA\nD\nP Q\nB C\nE F\nTriangle is a very popular shape used in interior designing. The picture given above\nshows a cabinet designed by a famous interior designer.\nHere the largest triangle is represented by △ ABC and smallest one with shelf is\nrepresented by △ DEF. PQ is parallel to EF.\n(i) Show that △ DPQ ∼ △ DEF.\n𝑃𝑄\n(ii) If DP= 50 cm and PE = 70 cm then find .\n𝐸𝐹 1\n𝑝𝑒𝑟𝑖𝑚𝑒𝑡𝑒𝑟 𝑜𝑓 △𝐴𝐵𝐶\n(iii) (A) If 2AB = 5DE and △ ABC ∼ △ DEF then show that 𝑝𝑒𝑟𝑖𝑚𝑒𝑡𝑒𝑟 𝑜𝑓 △𝐷𝐸𝐹 is constant.\nOR 2\n(iii) (B) If AM and DN are medians of triangles ABC and DEF respectively then prove\nthat △ ABM ∼ △ DEN.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n33. Prove that If a line is drawn parallel to one side of a triangle to intersect the other two\nsides in distinct points, the other two sides are divided in the same ratio.\nIn ΔPQR, S and T are points on PQ and PR respectively. ௌொ ௉ௌ = ௉்் ோ and ∠PST = ∠PRQ. Prove that\nPQR is an isosceles triangle.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n33. If a line is drawn parallel to one side of a triangle to intersect the other two sides 5\nin distinct points, then prove that the other two sides are divided in the same\nratio."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 188129,
+      "in": 42,
+      "out": 39,
+      "rejects": 4,
+      "promptTokens": 41761,
+      "completionTokens": 10821
+    },
+    "critique": {
+      "calls": 58,
+      "ms": 347842,
+      "in": 39,
+      "out": 32,
+      "rejects": 7,
+      "promptTokens": 26326,
+      "completionTokens": 9972
+    },
+    "solver": {
+      "calls": 279,
+      "ms": 132712,
+      "in": 32,
+      "out": 28,
+      "rejects": 4,
+      "promptTokens": 51818,
+      "completionTokens": 2966
+    },
+    "form": {
+      "calls": 13,
+      "ms": 80526,
+      "in": 28,
+      "out": 8,
+      "rejects": 20,
+      "promptTokens": 7103,
+      "completionTokens": 2156
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 28,
+      "ms": 5571,
+      "in": 8,
+      "out": 3,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 117222,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6884,
+      "completionTokens": 3505
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a condition for two polygons to be similar?",
+      "ms": {
+        "draft": 6140,
+        "critique": 6449,
+        "solver": 1734,
+        "form": 3693
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the diagram, PQ is parallel to EF. If DP = 50 cm and PE = 70 cm, what is the ratio of DP to PE?",
+      "ms": {
+        "draft": 6140,
+        "critique": 6459,
+        "solver": 1664,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the diagram, PQ is parallel to EF. If DP = 50 cm and PE = 70 cm, what is the ratio of the perimeters of △ABC and △DEF?",
+      "ms": {
+        "draft": 6140,
+        "critique": 8096
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the diagram, line segment PQ is parallel to EF. If △ DPQ ∼ △ DEF, what can we say about the sides DP and DE?",
+      "ms": {
+        "draft": 6140,
+        "critique": 6034,
+        "solver": 15611,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a condition for two triangles to be similar?",
+      "ms": {
+        "draft": 13652,
+        "critique": 6354,
+        "solver": 2980,
+        "form": 2875
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If two triangles are equiangular, what can be said about their corresponding sides?",
+      "ms": {
+        "draft": 13652,
+        "critique": 8046,
+        "solver": 9221,
+        "form": 4154
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A line is drawn parallel to one side of a triangle, intersecting the other two sides. What can be said about the division of these sides?",
+      "ms": {
+        "draft": 13652,
+        "critique": 5834,
+        "solver": 12143,
+        "form": 3197
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If AM and DN are medians of triangles ABC and DEF respectively, and △ABC ∼ △DEF, what can be said about △ABM and △DEN?",
+      "ms": {
+        "draft": 6140,
+        "critique": 6532,
+        "solver": 1065,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given diagram, a line is drawn parallel to one side of a triangle, intersecting the other two sides. What can be concluded about the relationship between the triangles formed?",
+      "ms": {
+        "draft": 13652,
+        "critique": 7061,
+        "solver": 1146,
+        "form": 3945
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which similarity criterion is used when one angle of a triangle is equal to one angle of another triangle and the sides including these angles are proportional?",
+      "ms": {
+        "draft": 4781,
+        "critique": 5665
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a triangle, a line divides two sides in the same ratio. What can be concluded about the line?",
+      "ms": {
+        "draft": 13652,
+        "critique": 6195,
+        "solver": 2108,
+        "form": 3388
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given diagram, a line is drawn parallel to one side of a triangle, dividing the other two sides in the same ratio. What can be concluded about the line?",
+      "ms": {
+        "draft": 13652,
+        "critique": 6663,
+        "solver": 11278,
+        "form": 3817
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, if PQ is parallel to RS, then which of the following is true?",
+      "ms": {
+        "draft": 4781,
+        "critique": 5927,
+        "solver": 1665
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If in two triangles, the sides including an equal angle are in the same ratio, which of the following statements is true?",
+      "ms": {
+        "draft": 4781,
+        "critique": 6136,
+        "solver": 11713,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a condition for two triangles to be similar?",
+      "ms": {
+        "draft": 4781,
+        "critique": 7883
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the given figure, if △ABC ~ △PQR, which of the following is true?",
+      "ms": {
+        "draft": 4781,
+        "critique": 7453,
+        "solver": 10107,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a condition for two triangles to be similar according to the chapter?",
+      "ms": {
+        "draft": 3548,
+        "critique": 5022
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In two triangles, if the hypotenuse and one side of one triangle are proportional to the hypotenuse and one side of another triangle, what can be concluded?",
+      "ms": {
+        "draft": 3548,
+        "critique": 5363
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Two triangles have corresponding sides in the same ratio. What can be concluded about their angles?",
+      "ms": {
+        "draft": 3548,
+        "critique": 5571,
+        "solver": 11893,
+        "form": 2450
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In two triangles, the sides are in the same ratio. Which of the following is true?",
+      "ms": {
+        "draft": 3548,
+        "critique": 6609,
+        "solver": 11530
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two triangles have one angle equal and the sides including this angle are in the same ratio, what can be concluded?",
+      "ms": {
+        "draft": 3548,
+        "critique": 6712,
+        "solver": 10114,
+        "form": 3186
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, it is stated that if a line is drawn parallel to one side of a triangle to intersect the other two sides, then the other two sides are divided in the same ratio. What is this theorem called?",
+      "ms": {
+        "draft": 14539,
+        "critique": 6509,
+        "solver": 1222,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In two triangles, if corresponding sides are in the same ratio, what is the relationship between the triangles?",
+      "ms": {
+        "draft": 3548,
+        "critique": 6328,
+        "solver": 11405
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which similarity criterion states that if corresponding angles of two triangles are equal, then their corresponding sides are in the same ratio?",
+      "ms": {
+        "draft": 16454,
+        "critique": 6585
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the symbol '~' represent in the context of triangles?",
+      "ms": {
+        "draft": 16454,
+        "critique": 4924
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the passage, it is stated that the Basic Proportionality Theorem is used when a line is drawn parallel to one side of a triangle to intersect the other two sides. If in a triangle, a line is drawn parallel to one side and divides the other two sides into segments of lengths 3 cm and 6 cm respectively, what is the ratio of the segments?",
+      "ms": {
+        "draft": 14539,
+        "critique": 6772,
+        "solver": 9810,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the passage, which criterion is used to prove that if a line is drawn parallel to one side of a triangle, it divides the other two sides proportionally?",
+      "ms": {
+        "draft": 16454,
+        "critique": 5712,
+        "solver": 1564,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct statement about similar triangles?",
+      "ms": {
+        "draft": 4110,
+        "critique": 5074,
+        "solver": 2043,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle, if a line is drawn parallel to one side, and it divides the other two sides in the ratio 2:3, what will be the ratio of the areas of the resulting smaller triangle to the original triangle?",
+      "ms": {
+        "draft": 16454,
+        "critique": 6062,
+        "solver": 13020,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a condition for two polygons to be similar?",
+      "ms": {
+        "draft": 4110,
+        "critique": 5495,
+        "solver": 15932,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If two triangles are similar, which of the following must be true?",
+      "ms": {
+        "draft": 5094,
+        "critique": 4270,
+        "solver": 4424
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If two triangles are similar, what is the relationship between their corresponding angles?",
+      "ms": {
+        "draft": 6140,
+        "critique": 5643,
+        "solver": 1247,
+        "form": 4618
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two triangles are similar, what can be said about their corresponding angles?",
+      "ms": {
+        "draft": 3624,
+        "critique": 6574,
+        "solver": 9128,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle, a line is drawn parallel to one side, intersecting the other two sides. What can be said about the segments formed on those sides?",
+      "ms": {
+        "draft": 3624,
+        "critique": 5687,
+        "solver": 924,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In two right triangles, if the hypotenuse and one side of one triangle are proportional to the hypotenuse and one side of the other triangle, what can be said about the triangles?",
+      "ms": {
+        "draft": 3624,
+        "critique": 5612,
+        "solver": 10755,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a triangle, if a line is drawn parallel to one side, intersecting the other two sides, what can be said about the division of those sides?",
+      "ms": {
+        "draft": 4110,
+        "critique": 8262,
+        "solver": 1881,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In two triangles, if the sides including an equal angle are proportional, what can be said about the triangles?",
+      "ms": {
+        "draft": 4781,
+        "critique": 6700,
+        "solver": 11242,
+        "form": 1,
+        "translation": 39716
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given passage, the SAS similarity criterion is described. What does SAS stand for in this context?",
+      "ms": {
+        "draft": 14539,
+        "critique": 6078,
+        "solver": 10890,
+        "form": 3686,
+        "translation": 36956
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the corresponding sides of two triangles are in the same ratio, what can be said about their corresponding angles?",
+      "ms": {
+        "draft": 3624,
+        "critique": 5399,
+        "solver": 6150,
+        "form": 0,
+        "translation": 37175
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"Which of the following is the correct symbol to denote that two triangles are similar?"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "If one angle of a triangle is equal to one angle of another triangle and the sides including these angles are in the same ratio, what can be said about the triangles?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a condition for two polygons to be similar?",
+      "reason": "the key is far longer than every distractor (96 vs 52 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the diagram, PQ is parallel to EF. If DP = 50 cm and PE = 70 cm, what is the ratio of DP to PE?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"50/70\" = 0.7142857142857143, but the key says 5"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the diagram, PQ is parallel to EF. If DP = 50 cm and PE = 70 cm, what is the ratio of the perimeters of △ABC and △DEF?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the diagram, line segment PQ is parallel to EF. If △ DPQ ∼ △ DEF, what can we say about the sides DP and DE?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a condition for two triangles to be similar?",
+      "reason": "options 0 and 3 say the same thing (\"Their corresponding sides are in the same ratio\" / \"Their corresponding sides are not in the same ratio\"); the key is far longer than every distractor (88 vs 51 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If two triangles are equiangular, what can be said about their corresponding sides?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This option incorrectly assumes the sides are equal in lengt…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A line is drawn parallel to one side of a triangle, intersecting the other two sides. What can be said about the division of these sides?",
+      "reason": "options 1 and 2 say the same thing (\"They are divided in the ratio of 1:1\" / \"They are divided in the ratio of 1:2\"); options 1 and 3 say the same thing (\"They are divided in the ratio of 1:1\" / \"They are divided in the ratio of 2:1\"); options 2 and 3 say the same thing (\"They are divided in the ratio of 1:2\" / \"They are divided in the ratio of 2:1\"); distractor 2's reason is not a one-line misconception (\"This option assumes a fixed ratio of 1:2, which is not suppo…\"); distractor 3's reason is not a one-line misconception (\"This option assumes a fixed ratio of 2:1, which is not suppo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If AM and DN are medians of triangles ABC and DEF respectively, and △ABC ∼ △DEF, what can be said about △ABM and △DEN?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels AB, BC, CA, DE, EF, FD, AM, DN"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given diagram, a line is drawn parallel to one side of a triangle, intersecting the other two sides. What can be concluded about the relationship between the triangles formed?",
+      "reason": "options 1 and 2 say the same thing (\"The triangles are not similar\" / \"The triangles are similar\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which similarity criterion is used when one angle of a triangle is equal to one angle of another triangle and the sides including these angles are proportional?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a triangle, a line divides two sides in the same ratio. What can be concluded about the line?",
+      "reason": "options 1 and 2 say the same thing (\"It is not parallel to the third side\" / \"It is parallel to the third side\"); distractor 1's reason is not a one-line misconception (\"This option is incorrect because the line is parallel to the…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the given diagram, a line is drawn parallel to one side of a triangle, dividing the other two sides in the same ratio. What can be concluded about the line?",
+      "reason": "options 1 and 2 say the same thing (\"It is not parallel to the third side\" / \"It is parallel to the third side\"); distractor 1's reason is not a one-line misconception (\"This option is incorrect because the line is parallel to the…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the given figure, if PQ is parallel to RS, then which of the following is true?",
+      "reason": "the solver picked option 1 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If in two triangles, the sides including an equal angle are in the same ratio, which of the following statements is true?",
+      "reason": "options 0 and 2 say the same thing (\"The triangles are congruent\" / \"2: The triangles are congruent\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a condition for two triangles to be similar?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the given figure, if △ABC ~ △PQR, which of the following is true?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels AB, BC, CA, PQ, QR, RP"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In the passage, it is stated that if the corresponding angles of two triangles are equal, then their corresponding sides are in the same ratio and hence the two triangles are similar. What is this criterion called?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In the passage, it is mentioned that in two triangles, if two angles of one triangle are respectively equal to the two angles of the other triangle, then the two triangles are similar. What is this criterion called?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a condition for two triangles to be similar according to the chapter?",
+      "reason": "the critic finds option 0 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In two triangles, if the hypotenuse and one side of one triangle are proportional to the hypotenuse and one side of another triangle, what can be concluded?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Two triangles have corresponding sides in the same ratio. What can be concluded about their angles?",
+      "reason": "options 0 and 1 say the same thing (\"The angles are not equal\" / \"The angles are equal\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In two triangles, the sides are in the same ratio. Which of the following is true?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If two triangles have one angle equal and the sides including this angle are in the same ratio, what can be concluded?",
+      "reason": "options 0 and 1 say the same thing (\"The triangles are not similar\" / \"The triangles are similar\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, it is stated that if a line is drawn parallel to one side of a triangle to intersect the other two sides, then the other two sides are divided in the same ratio. What is this theorem called?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Correct term, but not the one used in the passage…\"); distractor 3's reason is not a one-line misconception (\"Confuses the theorem with the Pythagoras theorem, which is n…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In two triangles, if corresponding sides are in the same ratio, what is the relationship between the triangles?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which similarity criterion states that if corresponding angles of two triangles are equal, then their corresponding sides are in the same ratio?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does the symbol '~' represent in the context of triangles?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the passage, it is stated that the Basic Proportionality Theorem is used when a line is drawn parallel to one side of a triangle to intersect the other two sides. If in a triangle, a line is drawn parallel to one side and divides the other two sides into segments of lengths 3 cm and 6 cm respectively, what is the ratio of the segments?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; ARITHMETIC MISMATCH — checkExpr \"3/6\" = 0.5, but the key says 1"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In the passage, which criterion is used to prove that if a line is drawn parallel to one side of a triangle, it divides the other two sides proportionally?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a correct statement about similar triangles?",
+      "reason": "options 0 and 1 say the same thing (\"All similar triangles are congruent\" / \"All congruent triangles are similar\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a triangle, if a line is drawn parallel to one side, and it divides the other two sides in the ratio 2:3, what will be the ratio of the areas of the resulting smaller triangle to the original triangle?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"2^2/3^2\" = 0.4444444444444444, but the key says 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a condition for two polygons to be similar?",
+      "reason": "options 0 and 1 say the same thing (\"Their corresponding angles are equal and their corresponding sides are in the same ratio\" / \"Their corresponding angles are equal and their corresponding sides are not in the same ratio\"); options 0 and 3 say the same thing (\"Their corresponding angles are equal and their corresponding sides are in the same ratio\" / \"Their corresponding angles are not equal and their corresponding sides are in the same ratio\"); options 1 and 2 say the same thing (\"Their corresponding angles are equal and their corresponding sides are not in the same ratio\" / \"Their corresponding angles are not equal but their corresponding sides are in the same ratio\"); options 1 and 3 say the same thing (\"Their corresponding angles are equal and their corresponding sides are not in the same ratio\" / \"Their corresponding angles are not equal and their corresponding sides are in the same ratio\"); options 2 and 3 say the same thing (\"Their corresponding angles are not equal but their corresponding sides are in the same ratio\" / \"Their corresponding angles are not equal and their corresponding sides are in the same ratio\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If two triangles are similar, which of the following must be true?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If two triangles are similar, what is the relationship between their corresponding angles?",
+      "reason": "near-duplicate of served question cmvnbpld5043bgp21o87x1mbl (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If two triangles are similar, what can be said about their corresponding angles?",
+      "reason": "near-duplicate of served question cmvnbpld5043bgp21o87x1mbl (cosine 0.926 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In a triangle, a line is drawn parallel to one side, intersecting the other two sides. What can be said about the segments formed on those sides?",
+      "reason": "near-duplicate of served question cmvgp4y8u04kvgpfhqqwfcdca (cosine 0.948 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In two right triangles, if the hypotenuse and one side of one triangle are proportional to the hypotenuse and one side of the other triangle, what can be said about the triangles?",
+      "reason": "near-duplicate of batch item \"In two triangles, if the sides including an equal …\" (cosine 0.923 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "In a triangle, if a line is drawn parallel to one side, intersecting the other two sides, what can be said about the division of those sides?",
+      "reason": "near-duplicate of served question cmvgp4y8s04kpgpfh9fa0pl3y (cosine 0.923 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

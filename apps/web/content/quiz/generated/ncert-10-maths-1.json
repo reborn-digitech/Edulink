@@ -21,239 +21,49 @@
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T16:49:01.310Z",
+  "generatedAt": "2026-10-30T04:17:42.613Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "Which of the following is a correct statement about the Fundamental Theorem of Arithmetic?",
-      "choices": [
-        "It states that every integer can be divided by another integer without remainder",
-        "It states that every composite number can be factorised as a product of primes in a unique way",
-        "It states that the product of two irrational numbers is always irrational",
-        "It states that the decimal expansion of a rational number is always terminating"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct statement is that every composite number can be factorised as a product of primes in a unique way, which is a fundamental property of integers. The other options are incorrect because dividing integers doesn't always result in no remainder, the product of two irrationals can sometimes be rational, and not all rational numbers have terminating decimals.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा अंकगणित की आधारभूत प्रमेय के बारे में सही कथन है?",
-          "choices": [
-            "यह कहता है कि कोई भी पूर्णांक दूसरे पूर्णांक द्वारा शेष बिना विभाजित किया जा सकता है",
-            "यह कहता है कि प्रत्येक भाज्य संख्या को अभाज्य संख्याओं के गुणनफल के रूप में अद्वितीय रूप से गुणनखंडित किया जा सकता है",
-            "यह कहता है कि दो अपरिमेय संख्याओं का गुणनफल हमेशा अपरिमेय होता है",
-            "यह कहता है कि एक परिमेय संख्या का दशमलव प्रसार हमेशा सांत होता है"
-          ],
-          "solution": "सही कथन यह है कि प्रत्येक भाज्य संख्या को अभाज्य संख्याओं के गुणनफल के रूप में अद्वितीय रूप से गुणनखंडित किया जा सकता है, जो पूर्णांकों का एक मूलभूत गुण है। अन्य विकल्प गलत हैं क्योंकि पूर्णांकों के विभाजन से हमेशा शेष नहीं रहता है, दो अपरिमेय संख्याओं का गुणनफल कभी-कभी परिमेय हो सकता है, और सभी परिमेय संख्याओं के दशमलव प्रसार सांत नहीं होते हैं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता विधान अंकगणिताच्या मूलभूत सिद्धांताबद्दल बरोबर आहे?",
-          "choices": [
-            "ते सांगते की प्रत्येक पूर्णांक दुसऱ्या पूर्णांकाने भागला जाऊ शकतो आणि शिल्लक नसते",
-            "ते सांगते की प्रत्येक भाज्य संख्या अविभाज्य संख्यांच्या गुणाकाराच्या रूपात अद्वितीय पद्धतीने अपघटित करता येते",
-            "ते सांगते की दोन अपरिमेय संख्यांचा गुणाकार सदैव अपरिमेय असतो",
-            "ते सांगते की एका परिमेय संख्येचा दशांश विस्तार सदैव अंतिम असतो"
-          ],
-          "solution": "बरोबर विधान म्हणजे प्रत्येक भाज्य संख्या अविभाज्य संख्यांच्या गुणाकाराच्या रूपात अद्वितीय पद्धतीने अपघटित करता येते, हे पूर्णांकांचे मूलभूत गुणधर्म आहे. इतर विधाने चुकीची आहेत कारण पूर्णांकांचा भागाकार हमखास शिल्लक नसतो, अपरिमेय संख्यांचा गुणाकार वेळोवेळी परिमेय असू शकतो आणि सर्व परिमेय संख्यांचा दशांश विस्तार अंतिम असेल असे नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Refers to Euclid's division algorithm, not the Fundamental Theorem of Arithmetic",
-        null,
-        "Refers to a misconception about the theorem's content",
-        "Refers to a different mathematical concept about irrational numbers"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 1, which accurately reflects the Fundamental Theorem of Arithmetic. The other options are either incorrect or refer to different mathematical concepts.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
-          "headingPath": [
-            "Chapter 1: Real Numbers"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 1: Real Numbers"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 1: Real Numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T16:49:01.310Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the HCF of 6 and 20?",
+      "stem": "What is the HCF of 6 and 20 using the prime factorisation method?",
       "choices": [
         "2",
-        "3",
         "4",
-        "5"
-      ],
-      "answerIndex": 0,
-      "solution": "The HCF is the product of the smallest power of each common prime factor in the numbers. The prime factorization of 6 is 2 × 3, and of 20 is 2 × 2 × 5. The only common prime factor is 2. So, HCF is 2. The correct answer is 2. The option 3 is a prime factor of 6 but not of 20. The option 4 is not a factor of 6. The option 5 is a prime factor of 20 but not of 6.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "6 और 20 का एचसीएफ क्या है?",
-          "choices": [
-            "2",
-            "3",
-            "4",
-            "5"
-          ],
-          "solution": "एचसीएफ संख्याओं में सामान्य अभाज्य गुणनखंडों की सबसे छोटी घात के गुणनफल होता है। 6 का अभाज्य गुणनखंडन 2 × 3 है, और 20 का 2 × 2 × 5 है। केवल एक सामान्य अभाज्य गुणनखंड 2 है। इसलिए, एचसीएफ 2 है। सही उत्तर 2 है। विकल्प 3, 6 का अभाज्य गुणनखंड है लेकिन 20 का नहीं। विकल्प 4, 6 का गुणनखंड नहीं है। विकल्प 5, 20 का अभाज्य गुणनखंड है लेकिन 6 का नहीं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "6 आणि 20 चा एचसीएफ किती आहे?",
-          "choices": [
-            "2",
-            "3",
-            "4",
-            "5"
-          ],
-          "solution": "एचसीएफ हा संख्यांमधील सर्वात लहान घातांच्या सामायिक अविभाज्य घटकांचा गुणाकार असतो. 6 चे अविभाज्य घटकीकरण 2 × 3 आहे, आणि 20 चे 2 × 2 × 5 आहे. सामायिक अविभाज्य घटक केवळ 2 आहे. म्हणून, एचसीएफ हा 2 आहे. योग्य उत्तर 2 आहे. विकल्प 3 हा 6 चा अविभाज्य घटक आहे परंतु 20 चा नाही. विकल्प 4 हा 6 चा घटक नाही. विकल्प 5 हा 20 चा अविभाज्य घटक आहे परंतु 6 चा नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses a prime factor of one number with the HCF",
-        "confuses a prime factor of one number with the HCF",
-        "confuses a non-factor with the HCF"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. The HCF of 6 and 20 is indeed 2, and the reasoning for the distractors is valid.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 1: Real Numbers"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 1: Real Numbers"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 1: Real Numbers"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T16:49:01.310Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the LCM of 6 and 20?",
-      "choices": [
-        "60",
-        "30",
-        "12",
+        "6",
         "10"
       ],
       "answerIndex": 0,
-      "solution": "The LCM is the product of the greatest power of each prime factor involved in the numbers. The prime factorization of 6 is 2 × 3, and of 20 is 2 × 2 × 5. The LCM is 2 × 2 × 3 × 5 = 60. The correct answer is 60. The option 30 is half of 60, but it is not the LCM. The option 12 is not a multiple of 20. The option 10 is not a multiple of 6.",
+      "solution": "The HCF is the product of the smallest powers of the common prime factors. The prime factorisation of 6 is 2 × 3, and of 20 is 2 × 5. The common prime factor is 2, so HCF = 2. The other options are incorrect because they do not match the prime factorisation method.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "6 और 20 का ल.स.प. क्या है?",
+          "stem": "6 और 20 का HCF अभाज्य गुणनखंड विधि द्वारा क्या है?",
           "choices": [
-            "60",
-            "30",
-            "12",
+            "2",
+            "4",
+            "6",
             "10"
           ],
-          "solution": "ल.स.प. सभी अभाज्य गुणनखंडों के सबसे बड़े घात के गुणनफल होता है। 6 का अभाज्य गुणनखंडन 2 × 3 है और 20 का 2 × 2 × 5 है। ल.स.प. 2 × 2 × 3 × 5 = 60 है। सही उत्तर 60 है। विकल्प 30, 60 का आधा है, लेकिन यह ल.स.प. नहीं है। विकल्प 12, 20 का गुणज नहीं है। विकल्प 10, 6 का गुणज नहीं है।",
+          "solution": "HCF सामान्य अभाज्य गुणनखंडों की सबसे छोटी घात के गुणनफल होता है। 6 का अभाज्य गुणनखंड 2 × 3 है और 20 का अभाज्य गुणनखंड 2 × 5 है। सामान्य अभाज्य गुणनखंड 2 है, इसलिए HCF = 2। अन्य विकल्प गलत हैं क्योंकि वे अभाज्य गुणनखंड विधि के अनुरूप नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology common in Hindi textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "6 आणि 20 चा ल.सा.अ. किती आहे?",
+          "stem": "6 आणि 20 चा HCF प्राथमिक अपघटन पद्धतीने काय आहे?",
           "choices": [
-            "60",
-            "30",
-            "12",
+            "2",
+            "4",
+            "6",
             "10"
           ],
-          "solution": "ल.सा.अ. हा प्रत्येक अविभाज्य अपवर्तकाच्या सर्वात मोठ्या घाताचा गुणाकार असतो. 6 चे अविभाज्य अपवर्तक विश्लेषण 2 × 3 असून 20 चे 2 × 2 × 5 असते. ल.सा.अ. हा 2 × 2 × 3 × 5 = 60 असतो. योग्य उत्तर 60 आहे. 30 हे 60 च्या अर्ध्या आहे, परंतु ल.सा.अ. नाही. 12 हा 20 चा गुणक नाही. 10 हा 6 चा गुणक नाही.",
+          "solution": "HCF हा सामान्य प्राथमिक अवयवांच्या लहानतम घातांचा गुणाकार आहे. 6 चे प्राथमिक अपघटन 2 × 3 आहे, आणि 20 चे प्राथमिक अपघटन 2 × 5 आहे. सामान्य प्राथमिक अवयव 2 आहे, म्हणून HCF = 2. इतर विकल्प चुकीचे आहेत कारण ते प्राथमिक अपघटन पद्धतीशी जुमानत नाहीत.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate and maintains the original meaning, technical terms, and structure. The solution is correctly aligned with the Marathi version.",
           "flag": null
         }
       },
@@ -263,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "confuses the LCM with half of the correct value",
-        "confuses LCM with a number that is not a multiple of both numbers",
-        "confuses LCM with a number that is not a multiple of both numbers"
+        "Choosing the next even number instead of the common factor",
+        "Multiplying the prime factors instead of taking the smallest power",
+        "Selecting the larger number as the HCF"
       ],
       "solverAnswers": [
         0,
@@ -275,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The solution correctly calculates the LCM by taking the highest powers of all prime factors involved. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The solution correctly identifies the HCF as 2 by taking the common prime factor with the smallest power. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh101.pdf",
@@ -306,47 +116,134 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T16:49:01.310Z",
+      "generatedAt": "2026-10-30T04:17:42.613Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "If a number is factorised into primes as 2 × 3 × 5 × 7, what is the name of the process used to achieve this?",
+      "difficulty": 2,
+      "stem": "Which of the following is an example of the property that the sum of a rational and an irrational number is irrational?",
       "choices": [
-        "Euclid's Division Algorithm",
-        "Prime Factorisation",
-        "Decimal Expansion",
-        "HCF Calculation"
+        "2 + √2",
+        "√3 × √3",
+        "3 × √2",
+        "√9 × 2"
       ],
-      "answerIndex": 1,
-      "solution": "The process of breaking down a number into its prime components, such as 2 × 3 × 5 × 7, is called prime factorisation. Euclid's Division Algorithm is used for finding the greatest common divisor, decimal expansion refers to expressing numbers in base 10, and HCF Calculation is for determining the highest common factor, none of which describe the process of breaking a number into prime factors.",
+      "answerIndex": 0,
+      "solution": "The correct answer is 2 + √2 because it shows the sum of a rational number (2) and an irrational number (√2). √3 × √3 is rational. 3 × √2 is a product, not a sum. √9 × 2 is rational.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि किसी संख्या को अभाज्य गुणनखंडों में अपघटित किया जाता है जैसे 2 × 3 × 5 × 7, इसे प्राप्त करने के लिए उपयोग किए गए प्रक्रिया का नाम क्या है?",
+          "stem": "निम्नलिखित में से कौन-सा गुण का उदाहरण है जिसके अनुसार एक परिमेय और एक अपरिमेय संख्या का योग अपरिमेय होता है?",
           "choices": [
-            "यूक्लिड का विभाजन एल्गोरिथ्म",
-            "अभाज्य गुणनखंडन",
-            "दशमलव विस्तार",
-            "महत्तम समापवर्तक की गणना"
+            "2 + √2",
+            "√3 × √3",
+            "3 × √2",
+            "√9 × 2"
           ],
-          "solution": "किसी संख्या को उसके अभाज्य घटकों में अपघटित करने की प्रक्रिया को अभाज्य गुणनखंडन कहा जाता है, जैसे 2 × 3 × 5 × 7। यूक्लिड का विभाजन एल्गोरिथ्म महत्तम समापवर्तक ज्ञात करने के लिए उपयोग किया जाता है, दशमलव विस्तार आधार 10 में संख्याओं को व्यक्त करने के लिए होता है, और महत्तम समापवर्तक की गणना उच्चतम समापवर्तक निर्धारित करने के लिए होती है, जिसमें से कोई भी प्रक्रिया संख्या के अभाज्य गुणनखंडों में अपघटन को नहीं दर्शाती है।",
+          "solution": "सही उत्तर 2 + √2 है क्योंकि यह एक परिमेय संख्या (2) और एक अपरिमेय संख्या (√2) के योग का उदाहरण दर्शाता है। √3 × √3 परिमेय है। 3 × √2 गुणन है, योग नहीं। √9 × 2 परिमेय है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "एका संख्येचे अविभाज्य घटकांमध्ये अपघटन केल्यास 2 × 3 × 5 × 7 होते, या प्रक्रियेचे नाव काय आहे?",
+          "stem": "खालीलपैकी कोणते अपरिमेय संख्येच्या आणि परिमेय संख्येच्या बेरजेच्या गुणधर्माचे उदाहरण आहे?",
           "choices": [
-            "युक्लिडचा विभाजन अल्गोरिथम",
-            "अविभाज्य अपघटन",
-            "दशांश विस्तार",
-            "एचसीएफ गणना"
+            "2 + √2",
+            "√3 × √3",
+            "3 × √2",
+            "√9 × 2"
           ],
-          "solution": "एका संख्येचे अविभाज्य घटकांमध्ये अपघटन करण्याची प्रक्रिया अविभाज्य अपघटन म्हणतात, जसे 2 × 3 × 5 × 7 हे. युक्लिडचा विभाजन अल्गोरिथम महत्तम सामायिक भाजक शोधण्यासाठी वापरला जातो, दशांश विस्तार हा आधार 10 मध्ये संख्या व्यक्त करण्याचा विषय आहे आणि एचसीएफ गणना ही महत्तम सामायिक घटक शोधण्यासाठी वापरली जाते, ज्यापैकी कोणतीही प्रक्रिया एका संख्येचे अविभाज्य घटकांमध्ये अपघटन करण्याचे वर्णन करत नाही.",
+          "solution": "बरोबर उत्तर 2 + √2 आहे कारण ते परिमेय संख्या (2) आणि अपरिमेय संख्या (√2) च्या बेरजेचे दर्शवते. √3 × √3 परिमेय आहे. 3 × √2 गुणाकार आहे, बेरजा नाही. √9 × 2 परिमेय आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student thinks that multiplying two irrational numbers can result in a rational number, but doesn't realize that √3 × √3 = 3, which is rational.",
+        "Student incorrectly believes that multiplying a rational by an irrational can result in a rational number",
+        "Believes that √9 is irrational because it contains a square root"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0 (2 + √2), as it is the sum of a rational (2) and an irrational (√2). The other options are either products or rational numbers. The author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 7,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 1: Real Numbers",
+            "A NOTE TO THE READER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T04:17:42.613Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "A number is factorised as 2 × 3 × 5 × 7. Which of the following statements is correct about this factorisation?",
+      "choices": [
+        "0: It is not a valid prime factorisation because it doesn't include all the prime numbers up to 7",
+        "It is a valid prime factorisation but not unique",
+        "It is a valid prime factorisation and is unique",
+        "It is a valid prime factorisation but the order matters"
+      ],
+      "answerIndex": 2,
+      "solution": "The factorisation 2 × 3 × 5 × 7 is valid as all the numbers are prime. According to the Fundamental Theorem of Arithmetic, the factorisation is unique except for the order of the primes. The other options either deny the validity of the factorisation or incorrectly state the uniqueness or the importance of the order.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक संख्या को 2 × 3 × 5 × 7 के रूप में अभाज्य गुणनखंडित किया गया है। इस गुणनखंडन के बारे में निम्नलिखित में से कौन-सा कथन सही है?",
+          "choices": [
+            "यह एक वैध अभाज्य गुणनखंडन नहीं है क्योंकि यह 7 तक सभी अभाज्य संख्याएं शामिल नहीं करता है",
+            "यह एक वैध अभाज्य गुणनखंडन है लेकिन अद्वितीय नहीं है",
+            "यह एक वैध अभाज्य गुणनखंडन है और अद्वितीय है",
+            "यह एक वैध अभाज्य गुणनखंडन है लेकिन क्रम महत्वपूर्ण है"
+          ],
+          "solution": "गुणनखंडन 2 × 3 × 5 × 7 वैध है क्योंकि सभी संख्याएं अभाज्य हैं। अंकगणित की मूलभूत प्रमेय के अनुसार, गुणनखंडन क्रम के अतिरिक्त अद्वितीय है। अन्य विकल्प गुणनखंडन की वैधता को अस्वीकार करते हैं या अद्वितीयता या क्रम के महत्व के बारे में गलत बताते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question, with appropriate mathematical terminology used in a way that aligns with standard Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक संख्या 2 × 3 × 5 × 7 अशा प्रकारे अवयवीकृत केली गेली आहे. खालीलपैकी कोणता विधान या अवयवीकरणाबद्दल बरोबर आहे?",
+          "choices": [
+            "ते वैध अवयवीकरण नाही कारण ते 7 पर्यंत सर्व अवयवी संख्या समाविष्ट करत नाही",
+            "ते वैध अवयवीकरण आहे परंतु अद्वितीय नाही",
+            "ते वैध अवयवीकरण आहे आणि अद्वितीय आहे",
+            "ते वैध अवयवीकरण आहे परंतु क्रम महत्वाचा आहे"
+          ],
+          "solution": "अवयवीकरण 2 × 3 × 5 × 7 वैध आहे कारण सर्व संख्या अवयवी आहेत. अंकगणिताच्या मूलभूत प्रमेयानुसार, अवयवीकरण अद्वितीय आहे जर अवयवींच्या क्रमाची नोंद न करता. इतर विकल्प अवयवीकरणाच्या वैधतेचा अस्वीकार करतात किंवा अद्वितीयतेचा असत्य दावा करतात किंवा क्रमाच्या महत्वाच्या निर्णयाचा असत्य दावा करतात.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -357,20 +254,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Refers to a method for finding the highest common factor",
+        "Student believes prime factorization must include all primes up to the largest prime in the factorization",
+        "incorrectly assumes the factorisation is not unique",
         null,
-        "Refers to a misconception about the process",
-        "Refers to a different mathematical concept"
+        "believes the order of the primes is important"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": null,
-      "critique": "The question is clear and the correct answer is 'Prime Factorisation'. The other options are correctly identified as incorrect, and the reasons provided align with common misconceptions.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 2. The factorisation is valid and unique according to the Fundamental Theorem of Arithmetic, which states that every integer greater than 1 has a unique prime factorisation, up to the order of the factors. The other options reflect common misconceptions about prime factorisation.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh101.pdf",
@@ -401,50 +298,50 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T16:49:01.310Z",
+      "generatedAt": "2026-10-30T04:17:42.613Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "If a and b are two rational numbers, what can be said about their sum?",
+      "difficulty": 4,
+      "stem": "What is the LCM of 6, 72 and 120 using the prime factorisation method?",
       "choices": [
-        "It is always irrational",
-        "It is always rational",
-        "It can be either rational or irrational",
-        "It is always undefined"
+        "120",
+        "360",
+        "720",
+        "180"
       ],
       "answerIndex": 1,
-      "solution": "The sum of two rational numbers is always rational because the sum of two fractions is also a fraction. The other options are incorrect because they contradict the properties of rational numbers.",
+      "solution": "The LCM is calculated by taking the highest powers of all prime factors involved. The prime factorisation of 6 is 2 × 3, of 72 is 2 × 3, and of 120 is 2 × 3 × 5. The highest powers are 2, 3, and 5. Multiplying these gives 2 × 3 × 5 = 360. The other options are incorrect because they do not include all necessary prime factors or use incorrect powers.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि a और b दो परिमेय संख्याएँ हैं, तो उनके योग के बारे में क्या कहा जा सकता है?",
+          "stem": "6, 72 और 120 का लघुत्तम समापवर्त्य क्या है प्राकृतिक गुणनखंड विधि द्वारा?",
           "choices": [
-            "यह हमेशा अपरिमेय होता है",
-            "यह हमेशा परिमेय होता है",
-            "यह परिमेय या अपरिमेय दोनों हो सकता है",
-            "यह हमेशा अपरिभाषित होता है"
+            "120",
+            "360",
+            "720",
+            "180"
           ],
-          "solution": "दो परिमेय संख्याओं का योग हमेशा परिमेय होता है क्योंकि दो भिन्नों का योग भी एक भिन्न होता है। अन्य विकल्प गलत हैं क्योंकि वे परिमेय संख्याओं के गुणधर्मों के विरोधी हैं।",
+          "solution": "लघुत्तम समापवर्त्य की गणना सभी अभाज्य गुणनखंडों की उच्चतम घातों के गुणनफल द्वारा की जाती है। 6 का अभाज्य गुणनखंड 2 × 3 है, 72 का 2 × 3 है, और 120 का 2 × 3 × 5 है। उच्चतम घातें 2, 3 और 5 हैं। इनके गुणनफल से 2 × 3 × 5 = 360 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे सभी आवश्यक अभाज्य गुणनखंड नहीं लेते हैं या गलत घातों का उपयोग करते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "critique": "Translation is accurate and maintains mathematical meaning, terminology, and structure of the original question.",
           "flag": null
         },
         "mr": {
-          "stem": "a आणि b दोन अपरिमेय संख्या असतील, तर त्यांच्या बेरजेबद्दल काय म्हणायला शकता?",
+          "stem": "6, 72 आणि 120 चा ल.सा.अ. किती आहे? अविभाज्य अपघटन पद्धतीने.",
           "choices": [
-            "ती नेहमी अपरिमेय असते",
-            "ती नेहमी परिमेय असते",
-            "ती परिमेय असू शकते किंवा अपरिमेय असू शकते",
-            "ती नेहमी अनिश्चित असते"
+            "120",
+            "360",
+            "720",
+            "180"
           ],
-          "solution": "दोन परिमेय संख्यांची बेरीज नेहमी परिमेय असते कारण दोन अपरिमेय संख्यांची बेरीज देखील अपरिमेय असते. इतर विकल्प चुकीचे आहेत कारण ते परिमेय संख्यांच्या गुणधर्मांचा खंड करतात.",
+          "solution": "ल.सा.अ. हा अविभाज्य घटकांच्या उच्चतम घातांच्या गुणाकाराने काढला जातो. 6 चा अविभाज्य अपघटन 2 × 3 आहे, 72 चा 2 × 3 आहे, आणि 120 चा 2 × 3 × 5 आहे. उच्चतम घात 2, 3 आणि 5 आहेत. यांचा गुणाकार करून 2 × 3 × 5 = 360 मिळतो. इतर विकल्प अयोग्य आहेत कारण ते सर्व आवश्यक अविभाज्य घटकांचा समावेश करत नाहीत किंवा चुकीच्या घातांचा वापर करतात.",
           "imageAlt": null,
-          "critique": "The Marathi translation contains multiple errors: the stem incorrectly says 'a and b are irrational' instead of 'rational', the key is wrong (should be 2, not 1), and the solution contradicts itself by saying 'sum of two rational numbers is always rational' but then says 'sum of two irrational numbers is also irrational'.",
-          "flag": "translation critique: meaning changed; not one answer at the same position; a distractor no longer wrong; terms not the board's"
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
         }
       },
       "imageKey": null,
@@ -452,10 +349,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Believes that the sum of any two numbers must be irrational if one is irrational",
+        "Choosing the highest number among the three without calculating LCM",
         null,
-        "Misconception that the sum of two rational numbers can sometimes be irrational",
-        "Student thinks that the sum of two numbers is undefined if they are not both integers"
+        "Selecting a number that is a multiple of 6 and 120 but not 72",
+        "Using the product of the numbers instead of the LCM"
       ],
       "solverAnswers": [
         1,
@@ -464,95 +361,8 @@
         1,
         1
       ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is 1, and the reasoning is sound. The distractors are based on common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 1: Real Numbers"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 1: Real Numbers",
-            "A NOTE TO THE READER"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T16:49:01.310Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "The HCF of two numbers is 6, and their LCM is 36. What is the product of these two numbers?",
-      "choices": [
-        "216",
-        "18",
-        "36",
-        "6"
-      ],
-      "answerIndex": 0,
-      "solution": "The product of two numbers is equal to the product of their HCF and LCM. So, product = HCF × LCM = 6 × 36 = 216. The correct answer is 216. The option 18 is the HCF itself, not the product. The option 36 is the LCM itself, not the product. The option 6 is the HCF itself, not the product.",
-      "checkExpr": "6*36",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "दो संख्याओं का महत्तम समापवर्तक 6 है, और उनका लघुत्तम समापवर्तक 36 है। इन दोनों संख्याओं का गुणनफल क्या है?",
-          "choices": [
-            "216",
-            "18",
-            "36",
-            "6"
-          ],
-          "solution": "दो संख्याओं का गुणनफल उनके महत्तम समापवर्तक और लघुत्तम समापवर्तक के गुणनफल के बराबर होता है। अतः गुणनफल = महत्तम समापवर्तक × लघुत्तम समापवर्तक = 6 × 36 = 216। सही उत्तर 216 है। विकल्प 18 महत्तम समापवर्तक ही है, गुणनफल नहीं। विकल्प 36 लघुत्तम समापवर्तक ही है, गुणनफल नहीं। विकल्प 6 महत्तम समापवर्तक ही है, गुणनफल नहीं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, uses standard mathematical terminology, and the correct answer remains option (1).",
-          "flag": null
-        },
-        "mr": {
-          "stem": "दोन संख्यांचा महत्तम सामाईक अपवर्तक 6 आहे, आणि त्यांचा लघुत्तम सामाईक अपवर्त्य 36 आहे. या दोन संख्यांचा गुणाकार किती आहे?",
-          "choices": [
-            "216",
-            "18",
-            "36",
-            "6"
-          ],
-          "solution": "दोन संख्यांचा गुणाकार त्यांच्या महत्तम सामाईक अपवर्तक आणि लघुत्तम सामाईक अपवर्त्यच्या गुणाकार बरोबर असतो. म्हणून, गुणाकार = महत्तम सामाईक अपवर्तक × लघुत्तम सामाईक अपवर्त्य = 6 × 36 = 216. योग्य उत्तर 216 आहे. उत्तर 18 हे महत्तम सामाईक अपवर्तक आहे, गुणाकार नाही. उत्तर 36 हे लघुत्तम सामाईक अपवर्त्य आहे, गुणाकार नाही. उत्तर 6 हे महत्तम सामाईक अपवर्तक आहे, गुणाकार नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology as used in Marathi-medium textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses HCF with product",
-        "confuses LCM with product",
-        "confuses LCM with product"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the mathematical relationship between HCF, LCM, and the product of two numbers. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "critique": "The solution is correct. The prime factorizations are correct, and the LCM is properly calculated as 360. The author's reasoning for the distractors is also valid.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh101.pdf",
@@ -583,136 +393,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T16:49:01.310Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "If 3 is irrational and 5 is rational, what can be said about the value of 5 - 3?",
-      "choices": [
-        "It is rational",
-        "It is irrational",
-        "It is zero",
-        "It is undefined"
-      ],
-      "answerIndex": 1,
-      "solution": "The difference between a rational number and an irrational number is always irrational. Since 5 is rational and 3 is irrational, subtracting them results in an irrational number. A rational number minus an irrational number cannot be rational or zero, and the operation is defined, so the result is not undefined.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 3 अपरिमेय है और 5 परिमेय है, तो 5 - 3 के मान के बारे में क्या कहा जा सकता है?",
-          "choices": [
-            "यह परिमेय है",
-            "यह अपरिमेय है",
-            "यह शून्य है",
-            "यह अपरिभाषित है"
-          ],
-          "solution": "एक परिमेय संख्या और अपरिमेय संख्या के अंतर हमेशा अपरिमेय होता है। क्योंकि 5 परिमेय है और 3 अपरिमेय है, इसलिए उनको घटाने पर एक अपरिमेय संख्या प्राप्त होती है। एक परिमेय संख्या में से एक अपरिमेय संख्या घटाने पर परिमेय या शून्य नहीं हो सकता, और क्रिया परिभाषित है, इसलिए परिणाम अपरिभाषित नहीं होता।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the logical structure, and uses standard mathematical terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर 3 अपरिमेय आणि 5 परिमेय असेल, 5 - 3 ची किंमत काय म्हणता येईल?",
-          "choices": [
-            "ते परिमेय आहे",
-            "ते अपरिमेय आहे",
-            "ते शून्य आहे",
-            "ते अस्पष्ट आहे"
-          ],
-          "solution": "परिमेय संख्या आणि अपरिमेय संख्या च्या फरकाचे निश्चितपणे अपरिमेय असते. जर 5 परिमेय आणि 3 अपरिमेय असेल तर त्यांच्यातील फरक अपरिमेय असतो. परिमेय संख्या वजा अपरिमेय संख्या अपरिमेय असू शकत नाही किंवा शून्य नसते आणि क्रियाकलाप निश्चित असतो, म्हणून फलिताचे निश्चितपणे अस्पष्ट नसते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the properties of rational and irrational numbers",
-        null,
-        "Does not understand that the difference of a rational and an irrational number is always irrational",
-        "Thinks that irrational numbers cannot be subtracted from rational numbers"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed and the solution is logically sound. The key is correct, and the reasoning for the distractors reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 1: Real Numbers"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh101.pdf",
-          "ordinal": 7,
-          "pageStart": 9,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 1: Real Numbers",
-            "A NOTE TO THE READER"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T16:49:01.310Z",
+      "generatedAt": "2026-10-30T04:17:42.613Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "Which of the following statements is correct about the product of two irrational numbers?",
+      "stem": "A number x is factorised as 2 × 2 × 3 × 3. Which of the following statements is true?",
       "choices": [
-        "It is always irrational",
-        "It is always rational",
-        "It can be either rational or irrational",
-        "It is always an integer"
+        "The prime factorisation of x is not unique",
+        "The prime factorisation of x is unique but not in ascending order",
+        "The prime factorisation of x is unique and in ascending order",
+        "The prime factorisation of x is not valid"
       ],
       "answerIndex": 2,
-      "solution": "The product of two irrational numbers can be either rational or irrational, depending on the specific numbers involved. For example, √2 × √2 = 2, which is rational, while √2 × √3 = √6, which is irrational. Therefore, the statement that it can be either rational or irrational is correct. The other options are incorrect because the product is not always irrational, always rational, or always an integer.",
+      "solution": "The factorisation 2 × 2 × 3 × 3 is valid and unique, as the theorem states that the prime factorisation is unique except for the order of the factors. If the factors are arranged in ascending order, it becomes 2 × 2 × 3 × 3, which is still unique. The other options misinterpret the uniqueness or validity of the factorisation.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा कथन दो अपरिमेय संख्याओं के गुणनफल के बारे में सही है?",
+          "stem": "एक संख्या x को 2 × 2 × 3 × 3 के रूप में गुणनखंडित किया गया है। निम्नलिखित में से कौन-सा कथन सत्य है?",
           "choices": [
-            "यह हमेशा अपरिमेय होता है",
-            "यह हमेशा परिमेय होता है",
-            "यह या तो परिमेय हो सकता है या अपरिमेय हो सकता है",
-            "यह हमेशा एक पूर्णांक होता है"
+            "x का अभाज्य गुणनखंडन अद्वितीय नहीं है",
+            "x का अभाज्य गुणनखंडन अद्वितीय है लेकिन आरोही क्रम में नहीं है",
+            "x का अभाज्य गुणनखंडन अद्वितीय है और आरोही क्रम में है",
+            "x का अभाज्य गुणनखंडन अवैध है"
           ],
-          "solution": "दो अपरिमेय संख्याओं का गुणनफल या तो परिमेय हो सकता है या अपरिमेय हो सकता है, जो संख्याओं के विशिष्ट मान पर निर्भर करता है। उदाहरण के लिए, √2 × √2 = 2, जो परिमेय है, जबकि √2 × √3 = √6, जो अपरिमेय है। इसलिए, यह कहना सही है कि यह या तो परिमेय हो सकता है या अपरिमेय हो सकता है। अन्य विकल्प गलत हैं क्योंकि गुणनफल हमेशा अपरिमेय नहीं होता, हमेशा परिमेय नहीं होता और हमेशा एक पूर्णांक नहीं होता।",
+          "solution": "गुणनखंडन 2 × 2 × 3 × 3 वैध और अद्वितीय है, क्योंकि अनुप्रमेय के अनुसार अभाज्य गुणनखंडन अद्वितीय होता है, केवल गुणकों के क्रम के अतिरिक्त। यदि गुणकों को आरोही क्रम में व्यवस्थित किया जाए, तो यह 2 × 2 × 3 × 3 हो जाता है, जो अभी भी अद्वितीय है। अन्य विकल्प गुणनखंडन की अद्वितीयता या वैधता की गलत व्याख्या करते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology and logical structure preserved.",
+          "critique": "The Hindi translation accurately reflects the meaning, structure, and technical terms of the original English question. The correct answer remains option 2, and all distractors are still incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता विधान दोन अपरिमेय संख्यांच्या गुणाकारबद्दल बरोबर आहे?",
+          "stem": "एका संख्या x चे अपघटन 2 × 2 × 3 × 3 असे केले गेले आहे. खालीलपैकी कोणता विधान खरा आहे?",
           "choices": [
-            "तो नेहमी अपरिमेय असतो",
-            "तो नेहमी परिमेय असतो",
-            "तो नेहमी परिमेय किंवा अपरिमेय असू शकतो",
-            "तो नेहमी एक पूर्णांक असतो"
+            "x चे अभाज्य अपघटन अद्वितीय नाही",
+            "x चे अभाज्य अपघटन अद्वितीय आहे परंतु वर्णक्रमानुसार नाही",
+            "x चे अभाज्य अपघटन अद्वितीय आहे आणि वर्णक्रमानुसार आहे",
+            "x चे अभाज्य अपघटन अवैध आहे"
           ],
-          "solution": "दोन अपरिमेय संख्यांचा गुणाकार परिमेय किंवा अपरिमेय असू शकतो, जे विशिष्ट संख्यांवर अवलंबून असतो. उदाहरणार्थ, √2 × √2 = 2, जो परिमेय आहे, तर √2 × √3 = √6, जो अपरिमेय आहे. म्हणूनच, तो परिमेय किंवा अपरिमेय असू शकतो असे विधान बरोबर आहे. इतर विधाने चुकीची आहेत कारण गुणाकार नेहमी अपरिमेय नाही, नेहमी परिमेय नाही, किंवा नेहमी पूर्णांक नाही.",
+          "solution": "2 × 2 × 3 × 3 अपघटन वैध आणि अद्वितीय आहे, कारण थ्योरम म्हणतो की अभाज्य अपघटन अद्वितीय असते, फक्त घटकांच्या क्रमानुसार बदलते. जर घटकांना वर्णक्रमानुसार ठेवले गेले तर ते 2 × 2 × 3 × 3 असते, जे अद्वितीयच राहते. इतर विधाने अपघटनाच्या अद्वितीयतेच्या किंवा वैधतेच्या चुकीच्या व्याख्येमुळे असतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -721,10 +444,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Refers to a misconception about irrational numbers",
-        "Refers to a false generalisation",
+        "mistakenly claims the factorisation is not unique",
+        "incorrectly assumes the order is not ascending",
         null,
-        "Refers to a misunderstanding of the nature of irrational numbers"
+        "believes the factorisation is invalid"
       ],
       "solverAnswers": [
         2,
@@ -734,7 +457,7 @@
         2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the product of two irrational numbers can be either rational or irrational, and the reasoning aligns with mathematical facts. The distractors reflect common misconceptions about irrational numbers.",
+      "critique": "The solution correctly applies the Fundamental Theorem of Arithmetic, which states that every integer greater than 1 has a unique prime factorization, up to the order of the factors. The factorization 2 × 2 × 3 × 3 is valid and unique, and while it is not in strictly ascending order (as 2, 2, 3, 3 is), it is still considered valid and unique.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh101.pdf",
@@ -765,7 +488,197 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T16:49:01.310Z",
+      "generatedAt": "2026-10-30T04:17:42.613Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a number is factorised into primes, and the same prime appears multiple times, what does this indicate?",
+      "choices": [
+        "The number is not a composite number",
+        "The number is a prime number",
+        "The number is a perfect square",
+        "The number is a product of powers of primes"
+      ],
+      "answerIndex": 3,
+      "solution": "If the same prime appears multiple times in the factorisation, it indicates that the number is a product of powers of primes. For example, 2 × 2 × 3 is equivalent to 2² × 3. This is consistent with the Fundamental Theorem of Arithmetic, which allows for repeated primes in the factorisation. The other options contradict the theorem by misinterpreting the factorisation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि किसी संख्या को अभाज्य गुणनखंडों में गुणा किया जाता है और एक ही अभाज्य संख्या कई बार आती है, तो यह क्या दर्शाता है?",
+          "choices": [
+            "संख्या एक भाज्य संख्या नहीं है",
+            "संख्या एक अभाज्य संख्या है",
+            "संख्या एक पूर्ण वर्ग है",
+            "संख्या अभाज्यों के घातों के गुणनफल है"
+          ],
+          "solution": "यदि गुणनखंडन में एक ही अभाज्य संख्या कई बार आती है, तो यह दर्शाता है कि संख्या अभाज्यों के घातों के गुणनफल है। उदाहरण के लिए, 2 × 2 × 3, 2² × 3 के बराबर है। यह मूल अभाज्य प्रमेय के साथ संगत है, जो गुणनखंडन में दोहराए गए अभाज्यों की अनुमति देता है। अन्य विकल्प गुणनखंडन के गलत अर्थ के कारण प्रमेय के विरोधी हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका संख्येचे अविभाज्य अपघटन केल्यास, जर एकाच अविभाज्य संख्या अनेकदा दिसत असेल, तर हे काय सूचित करते?",
+          "choices": [
+            "संख्या अविभाज्य नसते",
+            "संख्या अविभाज्य असते",
+            "संख्या एक पूर्ण वर्ग असते",
+            "संख्या अविभाज्यांच्या घातांच्या गुणाकाराच्या रूपात असते"
+          ],
+          "solution": "जर अविभाज्य अपघटनात एकाच अविभाज्य संख्या अनेकदा दिसत असेल तर ते सूचित करते की संख्या अविभाज्यांच्या घातांच्या गुणाकाराच्या रूपात असते. उदाहरणार्थ, 2 × 2 × 3 हे 2² × 3 च्या बरोबरीचे आहे. हे अविभाज्य प्रमेयाशी अनुरूप आहे, जे अपघटनात पुनरावृत्त अविभाज्यांच्या अस्तित्वाची परवानगी देते. इतर विकल्प अपघटनाच्या चुकीच्या व्याख्येमुळे प्रमेयाच्या विरोधात आहेत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "mistakenly believes the number is not composite",
+        "assumes the number is a prime",
+        "incorrectly identifies the number as a perfect square",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as repeated primes in a prime factorization indicate that the number is a product of powers of primes. The other options are incorrect because they misinterpret the implications of repeated primes in factorization.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T04:17:42.613Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Prove that 3 is irrational using the method of contradiction. Which of the following is the correct assumption to start the proof?",
+      "choices": [
+        "Assume 3 is rational",
+        "Assume 3 is a whole number",
+        "Assume 3 is a natural number",
+        "Assume 3 is an integer"
+      ],
+      "answerIndex": 0,
+      "solution": "The proof by contradiction starts by assuming that 3 is rational, meaning it can be expressed as a fraction of two integers. The other options are incorrect because they do not form the basis of the proof by contradiction.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "सिद्ध करें कि 3 अपरिमेय है विरोधाभास की विधि का उपयोग करके। निम्नलिखित में से कौन सा सही अनुमान साबित करने की शुरुआत करता है?",
+          "choices": [
+            "मान लें कि 3 परिमेय है",
+            "मान लें कि 3 एक पूर्ण संख्या है",
+            "मान लें कि 3 एक प्राकृत संख्या है",
+            "मान लें कि 3 एक पूर्णांक है"
+          ],
+          "solution": "विरोधाभास द्वारा सिद्ध करना शुरू करने के लिए मान लिया जाता है कि 3 परिमेय है, जिसका अर्थ है कि इसे दो पूर्णांकों के अनुपात के रूप में व्यक्त किया जा सकता है। अन्य विकल्प गलत हैं क्योंकि वे विरोधाभास द्वारा सिद्ध के आधार के रूप में कार्य नहीं करते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (1). The technical terms like 'परिमेय' (rational), 'पूर्णांक' (integer), 'प्राकृत संख्या' (natural number), and 'पूर्ण संख्या' (whole number) are standard in Hindi mathematics textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "3 हा अपरिमेय आहे असे सिद्ध करा विरोधाभासाच्या पद्धतीने. खालीलपैकी कोणता अंदाज पुराव्याच्या सुरुवातीस योग्य आहे?",
+          "choices": [
+            "3 हा अपरिमेय आहे असे माना",
+            "3 हा पूर्ण संख्या आहे असे माना",
+            "3 हा प्राकृतिक संख्या आहे असे माना",
+            "3 हा पूर्णांक आहे असे माना"
+          ],
+          "solution": "विरोधाभासाच्या पुराव्याची सुरुवात 3 हा अपरिमेय आहे असे मानून केली जाते, जे दोन पूर्णांकांच्या अंशात व्यक्त केला जाऊ शकतो. इतर विकल्प चुकीचे आहेत कारण ते विरोधाभासाच्या पुराव्याच्या आधारावर नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the logical structure, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confusing the requirement for the proof by contradiction",
+        "Assuming 3 is a whole number instead of a rational number",
+        "Assuming 3 is a natural number instead of a rational number"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is correctly formulated. The correct assumption for a proof by contradiction that 3 is irrational is to assume it is rational. The other options are not sufficient for the proof structure.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh101.pdf",
+          "ordinal": 5,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 1: Real Numbers"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T04:17:42.613Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

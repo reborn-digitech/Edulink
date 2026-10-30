@@ -1,0 +1,727 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T04:02:35.095Z",
+  "finishedAt": "2026-10-30T04:17:41.275Z",
+  "seconds": 906,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Exploration",
+    "bookCode": "iesc1",
+    "document": "ncert/9/science/iesc113.pdf",
+    "classLevel": 9,
+    "subject": "Science",
+    "chapter": "Chapter 13 — Earth as a System: Energy, Matter, and Life",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 29,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\n9. Assertion (A): In an ecosystem, 1% of energy is available for transfer from one 1\ntrophic level to the next.\nReason (R): An average of 10% of the food eaten by organisms is available for\nflow in the form of chemical energy.",
+      "[INJSO 2015 — question paper]\n25. Study the following ray diagram in which: ‘A’ represents atmosphere, ‘B’ represents\ngreen plants, ‘C’ represents decomposers and ‘D’ represents animals.\nB C\nA D\nThe above ray diagram represents\na) Energy flow through the given ecosystem.\nb) Interconnections among different food chains in the given ecosystem.\nc) Movement of carbon among A, B, C and D.\nd) Movement of nitrogen among A, B, C and D",
+      "[INJSO 2019 — question paper]\n33. (9 MARKS) Consider a self-sustaining ecosystem consisting of three components X, Y\nand Z set up in a laboratory for several weeks. During a 26-day observation period, it was\ndisturbed by human intervention on a particular day. The population size of the three\ncomponents during this period is tabulated below.\nDay Population size\nComponent X Component Y Component Z\n1 10\n4 11\n7 15\n10 14\n13 14\n17 0\n20 0\n23 0\n26 0\n40 200\n42 220\n54 210\n53 190\n43 220\n120 100\n130 30\n30 30\n15 150\n(A) Assign the correct component alphabet to each of the following:\ni. Primary producer _____\nii. Herbivore _____\niii. Carnivore _____\n(1.5 MARKS)\n(1.5 MARKS)\n(1.5 MARKS)\n(B) The average biomass of a producer is 0.0060 g",
+      "[INJSO 2020 — question paper]\n24. An ecological pyramid is a diagrammatic representation of the relationship between various\norganisms in an ecosystem. These pyramids can be drawn to represent the organic material\n(biomass), or number, or energy at each trophic level.\nWe list here four different ecosystems (i to iv) and five different ecological pyramids (P to T).\nMatch the ecosystems with the correct pyramids.\nEcosystems:\ni. Number pyramid of an ecosystem consisting of grasses, snails and mice.\nii. Number pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niii. Biomass pyramid of an ecosystem consisting of a tree, caterpillars and mynas.\niv. Number pyramid of an ecosystem consisting of a rose bush, aph"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 213895,
+      "in": 39,
+      "out": 37,
+      "rejects": 4,
+      "promptTokens": 50167,
+      "completionTokens": 10855
+    },
+    "critique": {
+      "calls": 44,
+      "ms": 309751,
+      "in": 37,
+      "out": 31,
+      "rejects": 6,
+      "promptTokens": 21198,
+      "completionTokens": 7540
+    },
+    "solver": {
+      "calls": 201,
+      "ms": 106227,
+      "in": 31,
+      "out": 27,
+      "rejects": 4,
+      "promptTokens": 34153,
+      "completionTokens": 2003
+    },
+    "form": {
+      "calls": 12,
+      "ms": 45619,
+      "in": 27,
+      "out": 14,
+      "rejects": 13,
+      "promptTokens": 6726,
+      "completionTokens": 1129
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 60,
+      "ms": 11122,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 708116,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 35291,
+      "completionTokens": 18373
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 2,
+    "2": 4,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following correctly describes the role of the atmosphere?",
+      "ms": {
+        "draft": 3520,
+        "critique": 5386,
+        "solver": 1311,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of the hydrosphere?",
+      "ms": {
+        "draft": 3520,
+        "critique": 5806,
+        "solver": 2624,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, how does solar radiation contribute to the Earth's systems?",
+      "ms": {
+        "draft": 3520,
+        "critique": 6219,
+        "solver": 1832,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of the cryosphere?",
+      "ms": {
+        "draft": 3520,
+        "critique": 6710,
+        "solver": 15176
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The albedo of a surface determines how much solar radiation it reflects. Which of the following surfaces would have the highest albedo?",
+      "ms": {
+        "draft": 4447,
+        "critique": 7222,
+        "solver": 2323,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A solar panel in a desert area receives an insolation of 1 kWm. What is the total energy received by a 2 m² solar panel in 3 hours?",
+      "ms": {
+        "draft": 4447,
+        "critique": 7674,
+        "solver": 19105
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the solar constant?",
+      "ms": {
+        "draft": 4447,
+        "critique": 7433,
+        "solver": 1605,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which atmospheric layer is responsible for trapping heat and preventing it from escaping into space?",
+      "ms": {
+        "draft": 4475,
+        "critique": 7767,
+        "solver": 1517,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage discusses how the ozone layer protects life on Earth. Which of the following would be a direct consequence of a thinning ozone layer?",
+      "ms": {
+        "draft": 4475,
+        "critique": 7378,
+        "solver": 1959,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why the temperature in the stratosphere increases with height?",
+      "ms": {
+        "draft": 4475,
+        "critique": 7538,
+        "solver": 1496,
+        "form": 2670
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the role of the Indian Institute of Tropical Meteorology (IITM) in understanding the Earth's systems?",
+      "ms": {
+        "draft": 4739,
+        "critique": 7289,
+        "solver": 1709,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is responsible for water changing from a liquid to a gas in the water cycle?",
+      "ms": {
+        "draft": 66469,
+        "critique": 6234
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is responsible for restoring oxygen in the atmosphere?",
+      "ms": {
+        "draft": 10446,
+        "critique": 6013
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Consider a self-sustaining ecosystem consisting of three components X, Y, and Z. Based on the data provided, which of the following is most likely to be the primary producer?",
+      "ms": {
+        "draft": 7216,
+        "critique": 8033,
+        "solver": 2368,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the figure showing the Earth's surface features, which of the following best explains how the Earth functions as an interconnected system?",
+      "ms": {
+        "draft": 7216,
+        "critique": 6463,
+        "solver": 16173
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Suppose there is a rise in atmospheric temperature on Earth. How would this affect the cryosphere, hydrosphere, and biosphere?",
+      "ms": {
+        "draft": 7216,
+        "critique": 8050,
+        "solver": 14396,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is responsible for restoring oxygen in the atmosphere?",
+      "ms": {
+        "draft": 4827,
+        "critique": 8549
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the Earth were a flat disc instead of a sphere, how would the patterns of solar radiation and temperature be different?",
+      "ms": {
+        "draft": 7216,
+        "critique": 7474,
+        "solver": 21046
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process involves the conversion of water from liquid to gas?",
+      "ms": {
+        "draft": 5810,
+        "critique": 6760
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main cause of eutrophication in water bodies?",
+      "ms": {
+        "draft": 4827,
+        "critique": 9167,
+        "solver": 13362,
+        "form": 3723
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the water cycle if the atmosphere becomes warmer?",
+      "ms": {
+        "draft": 5810,
+        "critique": 6744
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains why the sub-tropical high pressure belts form?",
+      "ms": {
+        "draft": 9657,
+        "critique": 7359
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains why cities are warmer than surrounding rural areas?",
+      "ms": {
+        "draft": 9535,
+        "critique": 5823,
+        "solver": 648,
+        "form": 1196
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What causes the formation of sub-tropical high pressure belts?",
+      "ms": {
+        "draft": 4739,
+        "critique": 7230,
+        "solver": 1928,
+        "form": 3553,
+        "translation": 59907
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a physical change?",
+      "ms": {
+        "draft": 4235,
+        "critique": 3447,
+        "solver": 647,
+        "form": 0,
+        "translation": 32351
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main source of energy for life on Earth?",
+      "ms": {
+        "draft": 3520,
+        "critique": 5624,
+        "solver": 1850,
+        "form": 3991,
+        "translation": 41264
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of ocean currents in regulating the Earth's climate?",
+      "ms": {
+        "draft": 4739,
+        "critique": 7061,
+        "solver": 1533,
+        "form": 3051,
+        "translation": 53327
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of biogeochemical cycles in an ecosystem?",
+      "ms": {
+        "draft": 7216,
+        "critique": 5595,
+        "solver": 1329,
+        "form": 0,
+        "translation": 51470
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the amount of solar radiation reflected by a surface?",
+      "ms": {
+        "draft": 4447,
+        "critique": 7760,
+        "solver": 1508,
+        "form": 1,
+        "translation": 31824
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is primarily responsible for the warming of the Earth?",
+      "ms": {
+        "draft": 7216,
+        "critique": 6025,
+        "solver": 1958,
+        "form": 1,
+        "translation": 56197
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is most likely to be the reason for cities being warmer than rural areas?",
+      "ms": {
+        "draft": 4475,
+        "critique": 7301,
+        "solver": 2088,
+        "form": 2353,
+        "translation": 64910
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How does the Haber-Bosch process impact the nitrogen cycle?",
+      "ms": {
+        "draft": 4827,
+        "critique": 9728,
+        "solver": 11962,
+        "form": 0,
+        "translation": 45427
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a large forest is cleared, how might it affect the flow of a river in that area?",
+      "ms": {
+        "draft": 3520,
+        "critique": 7919,
+        "solver": 1188,
+        "form": 4186,
+        "translation": 51657
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an ecosystem, solar radiation is absorbed and re-radiated by different surfaces. If a concrete house is found to be hotter at night, what could be the reason?",
+      "ms": {
+        "draft": 4447,
+        "critique": 7355,
+        "solver": 1338,
+        "form": 0,
+        "translation": 59435
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the Earth's rotation were to stop, what would be the most likely impact on planetary winds?",
+      "ms": {
+        "draft": 4739,
+        "critique": 6909,
+        "solver": 1899,
+        "form": 2810,
+        "translation": 46916
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "India's solar energy potential is influenced by its geographical location and the albedo of its surfaces. If a region has a high albedo, what effect would it have on the local climate?",
+      "ms": {
+        "draft": 4447,
+        "critique": 7296,
+        "solver": 1724,
+        "form": 0,
+        "translation": 49725
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a city were to replace all its concrete and asphalt roads with vegetation, what would most likely happen to its temperature compared to a city with traditional roads?",
+      "ms": {
+        "draft": 4475,
+        "critique": 7816,
+        "solver": 1145,
+        "form": 3458,
+        "translation": 57287
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the main cause of the urban heat island effect according to the passage?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 6, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following best describes the role of biogeochemi"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following correctly describes the role of the atmosphere?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of the hydrosphere?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, but the correct on…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, how does solar radiation contribute to the Earth's systems?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of the cryosphere?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The albedo of a surface determines how much solar radiation it reflects. Which of the following surfaces would have the highest albedo?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'snow'"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A solar panel in a desert area receives an insolation of 1 kWm. What is the total energy received by a 2 m² solar panel in 3 hours?",
+      "reason": "distractors 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the solar constant?",
+      "reason": "the key is far longer than every distractor (100 vs 52 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which atmospheric layer is responsible for trapping heat and preventing it from escaping into space?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage discusses how the ozone layer protects life on Earth. Which of the following would be a direct consequence of a thinning ozone layer?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best explains why the temperature in the stratosphere increases with height?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the role of the Indian Institute of Tropical Meteorology (IITM) in understanding the Earth's systems?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process is responsible for water changing from a liquid to a gas in the water cycle?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process is responsible for restoring oxygen in the atmosphere?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"Which of the following best describes the process of osmosis?"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which term refers to the movement of water from the surface into the ground?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Consider a self-sustaining ecosystem consisting of three components X, Y, and Z. Based on the data provided, which of the following is most likely to be the primary producer?",
+      "reason": "option lengths are unalike (1 to 44 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the figure showing the Earth's surface features, which of the following best explains how the Earth functions as an interconnected system?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Suppose there is a rise in atmospheric temperature on Earth. How would this affect the cryosphere, hydrosphere, and biosphere?",
+      "reason": "options 0 and 1 say the same thing (\"It would increase the size of glaciers, increase water levels, and increase biodiversity.\" / \"It would increase the size of glaciers, decrease water levels, and reduce biodiversity.\"); options 0 and 2 say the same thing (\"It would increase the size of glaciers, increase water levels, and increase biodiversity.\" / \"It would decrease the size of glaciers, increase water levels, and reduce biodiversity.\"); options 0 and 3 say the same thing (\"It would increase the size of glaciers, increase water levels, and increase biodiversity.\" / \"It would decrease the size of glaciers, decrease water levels, and increase biodiversity.\"); options 1 and 2 say the same thing (\"It would increase the size of glaciers, decrease water levels, and reduce biodiversity.\" / \"It would decrease the size of glaciers, increase water levels, and reduce biodiversity.\"); options 1 and 3 say the same thing (\"It would increase the size of glaciers, decrease water levels, and reduce biodiversity.\" / \"It would decrease the size of glaciers, decrease water levels, and increase biodiversity.\"); options 2 and 3 say the same thing (\"It would decrease the size of glaciers, increase water levels, and reduce biodiversity.\" / \"It would decrease the size of glaciers, decrease water levels, and increase biodiversity.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process is responsible for restoring oxygen in the atmosphere?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the Earth were a flat disc instead of a sphere, how would the patterns of solar radiation and temperature be different?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which process involves the conversion of water from liquid to gas?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main cause of eutrophication in water bodies?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What happens to the water cycle if the atmosphere becomes warmer?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following best explains why the sub-tropical high pressure belts form?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best explains why cities are warmer than surrounding rural areas?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"This misrepresents the role of vegetation in cooling urban a…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

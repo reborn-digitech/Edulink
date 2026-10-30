@@ -1,0 +1,821 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T08:35:21.559Z",
+  "finishedAt": "2026-10-23T11:30:57.151Z",
+  "seconds": 10536,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo109.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 9 — Biomolecules",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2009 — question paper]\n34. (3 points) Following is the list of biomolecules that can diffuse through a\nsynthetic lipid bilayer to a varying extent. Arrange them in the decreasing\norder of this ability and fill your answers in the answer sheet.\n1. Ethanol\n2. Water\n3. O2\n4. K +\n5. DNA\n6. Glucose\n__> __ > __ > __ >__ > __",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n11. A. Lysozyme, ribonuclease, protease, chilled ethanol 1",
+      "[NSEB 2016 — question paper]\n43. Arrange the following biomolecules in an increasing order of rate of passing through plasma\nmembrane:\ni) Triglycerides ii) Fructose iii) Na + iv) Urea\na) ii < iv < i < iii b)iii < ii < iv < i c)i < ii < iv < iii d)ii < iii < iv < i",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 261333,
+      "in": 42,
+      "out": 41,
+      "rejects": 2,
+      "promptTokens": 36613,
+      "completionTokens": 10051
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 495203,
+      "in": 41,
+      "out": 29,
+      "rejects": 12,
+      "promptTokens": 21414,
+      "completionTokens": 8567
+    },
+    "solver": {
+      "calls": 204,
+      "ms": 146125,
+      "in": 29,
+      "out": 23,
+      "rejects": 6,
+      "promptTokens": 36658,
+      "completionTokens": 2169
+    },
+    "form": {
+      "calls": 10,
+      "ms": 45725,
+      "in": 23,
+      "out": 10,
+      "rejects": 13,
+      "promptTokens": 4265,
+      "completionTokens": 936
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 46,
+      "ms": 15122,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 28,
+      "ms": 622499,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 15526,
+      "completionTokens": 8349
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 3,
+    "2": 0,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following is a secondary metabolite?",
+      "ms": {
+        "draft": 5281,
+        "critique": 5693
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is likely to have the highest molecular weight?",
+      "ms": {
+        "draft": 5281,
+        "critique": 9145,
+        "solver": 2002
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a primary metabolite?",
+      "ms": {
+        "draft": 5281,
+        "critique": 5977,
+        "solver": 14885,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is most likely to pass through a cell membrane?",
+      "ms": {
+        "draft": 5281,
+        "critique": 6405,
+        "solver": 17251,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are lipids considered macromolecules even though their molecular weight is less than 800 Da?",
+      "ms": {
+        "draft": 5281,
+        "critique": 8563,
+        "solver": 2054
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct description of the primary structure of a protein?",
+      "ms": {
+        "draft": 6795,
+        "critique": 8875
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A protein has a quaternary structure. What does this imply about the protein?",
+      "ms": {
+        "draft": 6795,
+        "critique": 9054
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a nucleotide?",
+      "ms": {
+        "draft": 5281,
+        "critique": 7435,
+        "solver": 1652,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a protein has a quaternary structure, what can be said about its function?",
+      "ms": {
+        "draft": 6795,
+        "critique": 9157
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is given a protein sample and is told that it contains essential amino acids. Which of the following can be inferred about the protein?",
+      "ms": {
+        "draft": 6795,
+        "critique": 9263,
+        "solver": 17734,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of proteins such as insulin and antibodies?",
+      "ms": {
+        "draft": 6795,
+        "critique": 7988
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following biomolecules would most likely pass through a synthetic lipid bilayer?",
+      "ms": {
+        "draft": 6795,
+        "critique": 8470,
+        "solver": 13321,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main difference between inorganic catalysts and enzymes?",
+      "ms": {
+        "draft": 5179,
+        "critique": 8481,
+        "solver": 1809
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following biomolecules would most likely pass through a plasma membrane with the highest rate?",
+      "ms": {
+        "draft": 5179,
+        "critique": 8881
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do enzymes from thermophilic organisms remain stable at high temperatures?",
+      "ms": {
+        "draft": 5179,
+        "critique": 7152,
+        "solver": 1972
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are co-enzymes important for certain enzymes according to the passage?",
+      "ms": {
+        "draft": 4141,
+        "critique": 7820,
+        "solver": 990,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a macromolecule?",
+      "ms": {
+        "draft": 64939,
+        "critique": 4645,
+        "solver": 7566
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the most abundant chemical in living organisms?",
+      "ms": {
+        "draft": 3644,
+        "critique": 9662
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of enzymes according to the passage?",
+      "ms": {
+        "draft": 3644,
+        "critique": 10833,
+        "solver": 3158,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a function of proteins?",
+      "ms": {
+        "draft": 3644,
+        "critique": 16810,
+        "solver": 3510,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a biomolecule is found to be a heteropolymer, which of the following is it most likely composed of?",
+      "ms": {
+        "draft": 3644,
+        "critique": 12115
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of an enzyme in a biochemical reaction?",
+      "ms": {
+        "draft": 22448,
+        "critique": 10551
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student wants to build models of biomolecules, which of the following can be used?",
+      "ms": {
+        "draft": 3644,
+        "critique": 12377,
+        "solver": 29175,
+        "form": 4545
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an enzyme is exposed to a temperature higher than its optimum, what is the most likely outcome?",
+      "ms": {
+        "draft": 22448,
+        "critique": 11263
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a sample of an enzyme and is told that it is inhibited by a substance that closely resembles the substrate. Which type of inhibitor is most likely responsible for this effect?",
+      "ms": {
+        "draft": 22448,
+        "critique": 10917
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a characteristic of competitive inhibitors?",
+      "ms": {
+        "draft": 22448,
+        "critique": 13142,
+        "solver": 3467,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why co-enzymes are essential for some enzymes?",
+      "ms": {
+        "draft": 22448,
+        "critique": 12833,
+        "solver": 4117,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of enzymes?",
+      "ms": {
+        "draft": 35846,
+        "critique": 15298
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a hydrolase enzyme?",
+      "ms": {
+        "draft": 22448,
+        "critique": 16796,
+        "solver": 31467,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the activation energy of a reaction lowered by enzymes?",
+      "ms": {
+        "draft": 35846,
+        "critique": 11223,
+        "solver": 3171
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the role of the 'active site' in an enzyme?",
+      "ms": {
+        "draft": 35846,
+        "critique": 18189,
+        "solver": 24275,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following biomolecules is most likely to pass through a plasma membrane by simple diffusion?",
+      "ms": {
+        "draft": 35846,
+        "critique": 16970,
+        "solver": 2918,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following biomolecules would pass through a plasma membrane most easily?",
+      "ms": {
+        "draft": 8152,
+        "critique": 11546,
+        "solver": 1874,
+        "form": 2417
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the pocket in an enzyme where the substrate fits?",
+      "ms": {
+        "draft": 5179,
+        "critique": 7891,
+        "solver": 1998,
+        "form": 3532,
+        "translation": 91990
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the part of the enzyme that binds to the substrate?",
+      "ms": {
+        "draft": 4141,
+        "critique": 6715,
+        "solver": 1794,
+        "form": 3535,
+        "translation": 81093
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a function of proteins?",
+      "ms": {
+        "draft": 8152,
+        "critique": 12043,
+        "solver": 1642,
+        "form": 5083,
+        "translation": 83623
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a physical change?",
+      "ms": {
+        "draft": 5179,
+        "critique": 8549,
+        "solver": 14599,
+        "form": 3136,
+        "translation": 68113
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If an enzyme's optimal pH is 7, what would happen to its activity if the pH is increased to 10?",
+      "ms": {
+        "draft": 4141,
+        "critique": 7379,
+        "solver": 2045,
+        "form": 3313,
+        "translation": 9461741
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "An enzyme's activity was observed to increase with the concentration of substrate up to a point, after which it remained constant. What is the most likely reason for this?",
+      "ms": {
+        "draft": 4141,
+        "critique": 7425,
+        "solver": 1267,
+        "form": 3965,
+        "translation": 9450574
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that a certain enzyme's activity decreased when a specific chemical was added. What is the most likely reason for this?",
+      "ms": {
+        "draft": 4141,
+        "critique": 7573,
+        "solver": 1611,
+        "form": 3711,
+        "translation": 9450382
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following biomolecules would most likely diffuse through a synthetic lipid bilayer?",
+      "ms": {
+        "draft": 3644,
+        "critique": 16684,
+        "solver": 3502,
+        "form": 0,
+        "translation": 72228
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following is an example of a primary metabolite?"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a secondary metabolite?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is likely to have the highest molecular weight?",
+      "reason": "the solver picked option 0 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a primary metabolite?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is most likely to pass through a cell membrane?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why are lipids considered macromolecules even though their molecular weight is less than 800 Da?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a correct description of the primary structure of a protein?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A protein has a quaternary structure. What does this imply about the protein?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a nucleotide?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a protein has a quaternary structure, what can be said about its function?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student is given a protein sample and is told that it contains essential amino acids. Which of the following can be inferred about the protein?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the primary function of proteins such as insulin and antibodies?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following biomolecules would most likely pass through a synthetic lipid bilayer?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, what is the main difference between inorganic catalysts and enzymes?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following biomolecules would most likely pass through a plasma membrane with the highest rate?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why do enzymes from thermophilic organisms remain stable at high temperatures?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why are co-enzymes important for certain enzymes according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT a macromolecule?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 0 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following is an example of a metabolic pathway?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the most abundant chemical in living organisms?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of enzymes according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Contradicts the passage which says enzymes are denatured at …\"); distractor 2's reason is not a one-line misconception (\"Contradicts the passage which states enzymes have substrate …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a function of proteins?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a biomolecule is found to be a heteropolymer, which of the following is it most likely composed of?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the role of an enzyme in a biochemical reaction?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student wants to build models of biomolecules, which of the following can be used?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If an enzyme is exposed to a temperature higher than its optimum, what is the most likely outcome?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student is given a sample of an enzyme and is told that it is inhibited by a substance that closely resembles the substrate. Which type of inhibitor is most likely responsible for this effect?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a characteristic of competitive inhibitors?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given here (the third option is…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why co-enzymes are essential for some enzymes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, so no reason given here (the second option i…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of enzymes?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a hydrolase enzyme?",
+      "reason": "option 3 is a catch-all (\"All of the above\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is the activation energy of a reaction lowered by enzymes?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best describes the role of the 'active site' in an enzyme?",
+      "reason": "options 0 and 1 say the same thing (\"It is the part of the enzyme that binds to the product\" / \"It is the part of the enzyme that binds to the substrate\"); options 0 and 2 are the same (\"It is the part of the enzyme that binds to the product\"); options 1 and 2 say the same thing (\"It is the part of the enzyme that binds to the substrate\" / \"It is the part of the enzyme that binds to the product\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which of the following biomolecules is most likely to pass through a plasma membrane by simple diffusion?",
+      "reason": "near-duplicate of served question cmvhk9v9p09ckgpfhvdrwd1a9 (cosine 0.918 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which of the following biomolecules would pass through a plasma membrane most easily?",
+      "reason": "near-duplicate of served question cmvhk9v9p09ckgpfhvdrwd1a9 (cosine 0.920 ≥ 0.9)"
+    },
+    {
+      "stage": "translation",
+      "level": 4,
+      "stem": "An enzyme's activity was observed to increase with the concentration of substrate up to a point, after which it remained constant. What is the most likely reason for this?",
+      "reason": "hi: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 5,
+      "stem": "A student observed that a certain enzyme's activity decreased when a specific chemical was added. What is the most likely reason for this?",
+      "reason": "hi: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "translation",
+      "level": 3,
+      "stem": "If an enzyme's optimal pH is 7, what would happen to its activity if the pH is increased to 10?",
+      "reason": "hi: The operation was aborted due to timeout"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

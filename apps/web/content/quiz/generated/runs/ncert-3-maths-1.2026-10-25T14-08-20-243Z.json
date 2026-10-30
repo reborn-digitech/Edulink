@@ -1,0 +1,224 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T14:08:20.243Z",
+  "finishedAt": "2026-10-25T14:12:35.321Z",
+  "seconds": 255,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm101.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — What’s in a Name?",
+    "edition": "Reprint 2026-27",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n3. (B) option\nn = 34 ⇒ 𝑣 = 34 − 1 = 33",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n12. 3\nC)\n√3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 1,
+      "ms": 18467,
+      "in": 6,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 4086,
+      "completionTokens": 874
+    },
+    "critique": {
+      "calls": 11,
+      "ms": 93001,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 4509,
+      "completionTokens": 1881
+    },
+    "solver": {
+      "calls": 68,
+      "ms": 66680,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 16314,
+      "completionTokens": 931
+    },
+    "form": {
+      "calls": 2,
+      "ms": 5389,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 484,
+      "completionTokens": 126
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 19,
+      "ms": 4235,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 75639,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4717,
+      "completionTokens": 2507
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What was the purpose of making marks on the wall?",
+      "ms": {
+        "draft": 3078,
+        "critique": 8978,
+        "solver": 17891,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two marks were left on the wall but no cows were seen outside, how many cows had reached home?",
+      "ms": {
+        "draft": 3078,
+        "critique": 9014,
+        "solver": 22498
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which number between 1 and 99 has the longest name?",
+      "ms": {
+        "draft": 3078,
+        "critique": 11751,
+        "solver": 2336
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number name has 8 letters, which of the following could be the number?",
+      "ms": {
+        "draft": 3078,
+        "critique": 7670,
+        "solver": 18080
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How did Deba and Deep know that they had not lost any cows?",
+      "ms": {
+        "draft": 3078,
+        "critique": 8576,
+        "solver": 21524,
+        "form": 3949,
+        "translation": 36648
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How did Deba and Deep help Hemant keep track of his animals?",
+      "ms": {
+        "draft": 3078,
+        "critique": 9421,
+        "solver": 18912,
+        "form": 2397,
+        "translation": 34521
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What method did Deba and Deep use to check if all the cows ha"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What was the purpose of making marks on the wall?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"This is not mentioned in the passage as a purpose…\"); distractor 3's reason is not a one-line misconception (\"This is not related to the story's context and is not mentio…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If two marks were left on the wall but no cows were seen outside, how many cows had reached home?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which number between 1 and 99 has the longest name?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number name has 8 letters, which of the following could be the number?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

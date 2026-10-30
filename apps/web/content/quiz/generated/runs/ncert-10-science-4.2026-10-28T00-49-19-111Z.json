@@ -1,0 +1,848 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T00:49:19.111Z",
+  "finishedAt": "2026-10-28T01:00:00.672Z",
+  "seconds": 642,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc104.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 4 — Carbon and its Compounds",
+    "edition": "Reprint 2026-27",
+    "chunks": 27,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\n25. Carbon forms millions of compounds whereas silicon, which is just below it in 2\nthe Periodic Table, forms a few compounds. Explain the reason for the\ndifference in their ability to form compounds.",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n25. Carbon forms millions of compounds because it has small atomic size, 2\ntherefore, it forms strong and stable C–C bonds, showing extensive\ncatenation. Silicon, being larger in size, forms weaker Si–Si bonds and\ncannot show catenation to the same extent, so it forms fewer compounds.",
+      "[CBSE Class X Science, marking scheme, 2026-27]\n1. A. Carbon dioxide gains hydrogen, while water loses electrons. 1",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 171192,
+      "in": 46,
+      "out": 43,
+      "rejects": 3,
+      "promptTokens": 48379,
+      "completionTokens": 9956
+    },
+    "critique": {
+      "calls": 60,
+      "ms": 371107,
+      "in": 43,
+      "out": 40,
+      "rejects": 3,
+      "promptTokens": 27519,
+      "completionTokens": 10638
+    },
+    "solver": {
+      "calls": 299,
+      "ms": 154245,
+      "in": 40,
+      "out": 34,
+      "rejects": 6,
+      "promptTokens": 54090,
+      "completionTokens": 3121
+    },
+    "form": {
+      "calls": 22,
+      "ms": 65248,
+      "in": 34,
+      "out": 14,
+      "rejects": 20,
+      "promptTokens": 5517,
+      "completionTokens": 1642
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 42,
+      "ms": 7035,
+      "in": 14,
+      "out": 11,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 436623,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 25534,
+      "completionTokens": 12770
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 3,
+    "4": 2,
+    "5": 3,
+    "6": 0
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the property of carbon compounds that makes them poor conductors of electricity?",
+      "ms": {
+        "draft": 3987,
+        "critique": 6462,
+        "solver": 1687,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage explains that carbon forms a large number of compounds due to its ability to form strong and stable bonds with other atoms. Which of the following properties of carbon is most directly responsible for this?",
+      "ms": {
+        "draft": 3987,
+        "critique": 6855,
+        "solver": 2194,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is a property of carbon compounds?",
+      "ms": {
+        "draft": 3987,
+        "critique": 5279,
+        "solver": 1440,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many shared electron pairs are present in a nitrogen molecule?",
+      "ms": {
+        "draft": 2824,
+        "critique": 6216
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of bond is formed between two oxygen atoms in an oxygen molecule?",
+      "ms": {
+        "draft": 2824,
+        "critique": 7987
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses how carbon forms bonds by sharing electrons. Which of the following statements best explains why this method of bonding allows carbon to form a large number of compounds?",
+      "ms": {
+        "draft": 3987,
+        "critique": 5709,
+        "solver": 11864
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is carbon able to form a greater number of compounds compared to silicon?",
+      "ms": {
+        "draft": 2824,
+        "critique": 6274,
+        "solver": 1554
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is not a property of carbon compounds?",
+      "ms": {
+        "draft": 2824,
+        "critique": 6610,
+        "solver": 13454
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about the structure of ethane?",
+      "ms": {
+        "draft": 5495,
+        "critique": 6630,
+        "solver": 13596,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following statements is true about the homologous series of alkanes?",
+      "ms": {
+        "draft": 5495,
+        "critique": 6203
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student draws the structure of cyclohexane and finds that the molecular formula is C6H12. Based on the passage, what is the reason for this formula?",
+      "ms": {
+        "draft": 5495,
+        "critique": 7426,
+        "solver": 12215
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes that carbon forms a vast number of compounds due to its ability to form strong and stable C–C bonds. Based on this, which of the following best explains why silicon, which is in the same group, forms fewer compounds?",
+      "ms": {
+        "draft": 5495,
+        "critique": 6339,
+        "solver": 15033
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is the correct way to draw the structure of ethene?",
+      "ms": {
+        "draft": 5495,
+        "critique": 6800,
+        "solver": 12103
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A compound has the formula C₃H₇OH. What is the name of this compound according to the nomenclature rules in the passage?",
+      "ms": {
+        "draft": 3174,
+        "critique": 7200,
+        "solver": 11465,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is given two compounds: C₄H₉OH and C₅H₁₁OH. What can be said about their relationship based on the passage?",
+      "ms": {
+        "draft": 3174,
+        "critique": 7563,
+        "solver": 2641,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an oxidising agent mentioned in the passage?",
+      "ms": {
+        "draft": 52467,
+        "critique": 8489,
+        "solver": 10978,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of carboxylic acids?",
+      "ms": {
+        "draft": 4380,
+        "critique": 7468,
+        "solver": 1482,
+        "form": 3052
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements best explains why carbon forms a large number of compounds?",
+      "ms": {
+        "draft": 3174,
+        "critique": 7116,
+        "solver": 15604,
+        "form": 3074
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of carbon that allows it to form a large number of compounds?",
+      "ms": {
+        "draft": 5256,
+        "critique": 3608,
+        "solver": 6171,
+        "form": 1476
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which acid is commonly called acetic acid?",
+      "ms": {
+        "draft": 13878,
+        "critique": 6039,
+        "solver": 12291,
+        "form": 2587
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an oxidising agent mentioned in the passage?",
+      "ms": {
+        "draft": 2839,
+        "critique": 5177,
+        "solver": 1289,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a reason that detergents are more effective in hard water than soaps?",
+      "ms": {
+        "draft": 13878,
+        "critique": 5640,
+        "solver": 1934,
+        "form": 3120
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why are animal fats considered harmful compared to vegetable oils?",
+      "ms": {
+        "draft": 2839,
+        "critique": 5974,
+        "solver": 1432,
+        "form": 3453
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a suffix for alcohols in the nomenclature of organic compounds?",
+      "ms": {
+        "draft": 3905,
+        "critique": 5727,
+        "solver": 11155,
+        "form": 2737
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the correct method to name a compound with a ketone group?",
+      "ms": {
+        "draft": 3905,
+        "critique": 5636,
+        "solver": 1414,
+        "form": 3978
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the molecular formula of propanone?",
+      "ms": {
+        "draft": 3905,
+        "critique": 6035,
+        "solver": 11579,
+        "form": 2876
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a compound with the formula C4H8O. Based on the passage, what is the possible name of this compound?",
+      "ms": {
+        "draft": 3905,
+        "critique": 8906,
+        "solver": 1883,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do saturated hydrocarbons generally give a clean flame while unsaturated hydrocarbons give a yellow flame with soot?",
+      "ms": {
+        "draft": 3905,
+        "critique": 6519,
+        "solver": 1412,
+        "form": 4483
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why carbon forms a vast number of compounds, while silicon, which is in the same group, forms only a few?",
+      "ms": {
+        "draft": 8405,
+        "critique": 6240,
+        "solver": 8237,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a suffix used for alcohols in the nomenclature of organic compounds?",
+      "ms": {
+        "draft": 3174,
+        "critique": 5345,
+        "solver": 11488,
+        "form": 3650
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which property of carbon allows it to form a large number of compounds?",
+      "ms": {
+        "draft": 2859,
+        "critique": 6537,
+        "solver": 10587,
+        "form": 4245
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the conversion of ethanol to ethanoic acid considered an oxidation reaction?",
+      "ms": {
+        "draft": 2839,
+        "critique": 6009,
+        "solver": 1619,
+        "form": 3501
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a functional group present in carbon compounds?",
+      "ms": {
+        "draft": 2859,
+        "critique": 7083,
+        "solver": 2454,
+        "form": 2699,
+        "translation": 36955
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason carbon compounds are used as fuels?",
+      "ms": {
+        "draft": 2859,
+        "critique": 6566,
+        "solver": 1660,
+        "form": 3601,
+        "translation": 40057
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the electron dot structure of methane?",
+      "ms": {
+        "draft": 2824,
+        "critique": 6765,
+        "solver": 1332,
+        "form": 3766,
+        "translation": 39255
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student burns a compound containing carbon and observes that the product is a gas that turns lime water milky. What is the most likely identity of this gas?",
+      "ms": {
+        "draft": 3987,
+        "critique": 6056,
+        "solver": 1269,
+        "form": 0,
+        "translation": 40808
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when ethanol is heated with excess concentrated sulphuric acid?",
+      "ms": {
+        "draft": 2839,
+        "critique": 7025,
+        "solver": 1421,
+        "form": 3132,
+        "translation": 31742
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main use of a 5-8% solution of acetic acid in water?",
+      "ms": {
+        "draft": 13878,
+        "critique": 6471,
+        "solver": 10478,
+        "form": 3800,
+        "translation": 43015
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens when an ester is treated with sodium hydroxide?",
+      "ms": {
+        "draft": 13878,
+        "critique": 5200,
+        "solver": 1633,
+        "form": 3535,
+        "translation": 36703
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the main reason for carbon's ability to form a large number of compounds?",
+      "ms": {
+        "draft": 2824,
+        "critique": 6711,
+        "solver": 1008,
+        "form": 4852,
+        "translation": 47111
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a compound that is known to contain carbon. The student burns the compound and observes that the product is a gas that turns lime water milky. What can the student conclude about the compound?",
+      "ms": {
+        "draft": 3987,
+        "critique": 7031,
+        "solver": 2819,
+        "form": 0,
+        "translation": 56820
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a reason for using a mixture of oxygen and ethyne for welding?",
+      "ms": {
+        "draft": 2839,
+        "critique": 6148,
+        "solver": 1443,
+        "form": 2154,
+        "translation": 21919
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why does ethanoic acid not completely ionise in water?",
+      "ms": {
+        "draft": 13878,
+        "critique": 5271,
+        "solver": 1716,
+        "form": 4066,
+        "translation": 36121
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the property of carbon compounds that makes them poor conductors of electricity?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Believes that the formation of ions is necessary for conduct…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The passage explains that carbon forms a large number of compounds due to its ability to form strong and stable bonds with other atoms. Which of the following properties of carbon is most directly responsible for this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is a property of carbon compounds?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How many shared electron pairs are present in a nitrogen molecule?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of bond is formed between two oxygen atoms in an oxygen molecule?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage discusses how carbon forms bonds by sharing electrons. Which of the following statements best explains why this method of bonding allows carbon to form a large number of compounds?",
+      "reason": "after redrafting distractor 1: the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why is carbon able to form a greater number of compounds compared to silicon?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is not a property of carbon compounds?",
+      "reason": "after redrafting distractors 0, 1: the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is true about the structure of ethane?",
+      "reason": "options 0 and 1 say the same thing (\"It contains a triple bond between the two carbon atoms\" / \"It contains a double bond between the two carbon atoms\"); options 2 and 3 say the same thing (\"It contains single bonds between the two carbon atoms and between each carbon and hydrogen\" / \"3: It contains single bonds between the two carbon atoms and double bonds between each carbon and hydrogen\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following statements is true about the homologous series of alkanes?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student draws the structure of cyclohexane and finds that the molecular formula is C6H12. Based on the passage, what is the reason for this formula?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage describes that carbon forms a vast number of compounds due to its ability to form strong and stable C–C bonds. Based on this, which of the following best explains why silicon, which is in the same group, forms fewer compounds?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which of the following is the correct way to draw the structure of ethene?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A compound has the formula C₃H₇OH. What is the name of this compound according to the nomenclature rules in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student is given two compounds: C₄H₉OH and C₅H₁₁OH. What can be said about their relationship based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Correct relationship is homologous series…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of an oxidising agent mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of carboxylic acids?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, no misconception here, so no reason needed f…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements best explains why carbon forms a large number of compounds?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a property of carbon that allows it to form a large number of compounds?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is not a property of covalent bonds?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What happens when soap is added to hard water?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of a homologous series?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which acid is commonly called acetic acid?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an oxidising agent mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (31 vs 8 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a reason that detergents are more effective in hard water than soaps?",
+      "reason": "the key is far longer than every distractor (59 vs 36 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why are animal fats considered harmful compared to vegetable oils?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Focuses on physical properties not discussed in the passage…\"); distractor 3's reason is not a one-line misconception (\"Is misled by irrelevant details in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a suffix for alcohols in the nomenclature of organic compounds?",
+      "reason": "options 0 and 3 are the same (\"-one\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is the correct method to name a compound with a ketone group?",
+      "reason": "options 0 and 1 say the same thing (\"Add '-one' to the end of the carbon chain name\" / \"Add '-ol' to the end of the carbon chain name\"); options 0 and 2 say the same thing (\"Add '-one' to the end of the carbon chain name\" / \"Add '-al' to the end of the carbon chain name\"); options 1 and 2 say the same thing (\"Add '-ol' to the end of the carbon chain name\" / \"Add '-al' to the end of the carbon chain name\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the molecular formula of propanone?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"3*12+6*1+16\" = 58, but the key says 3"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a compound with the formula C4H8O. Based on the passage, what is the possible name of this compound?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; checkExpr is set but the key \"Butanone\" states no number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do saturated hydrocarbons generally give a clean flame while unsaturated hydrocarbons give a yellow flame with soot?",
+      "reason": "the key is far longer than every distractor (87 vs 50 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why carbon forms a vast number of compounds, while silicon, which is in the same group, forms only a few?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes electronegativity is the main factor in …\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a suffix used for alcohols in the nomenclature of organic compounds?",
+      "reason": "near-duplicate of served question cmvjxuzxm0i2ogpfhtqjufgjo (cosine 0.920 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which property of carbon allows it to form a large number of compounds?",
+      "reason": "near-duplicate of served question cmvnmq49704b1gp21qtea1s1g (cosine 0.938 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is the conversion of ethanol to ethanoic acid considered an oxidation reaction?",
+      "reason": "near-duplicate of served question cmvjxuzyh0i4ogpfhpj5o3iga (cosine 0.949 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

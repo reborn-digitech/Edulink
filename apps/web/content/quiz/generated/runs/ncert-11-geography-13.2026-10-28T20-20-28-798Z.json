@@ -1,0 +1,653 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T20:20:28.798Z",
+  "finishedAt": "2026-10-28T20:27:54.074Z",
+  "seconds": 445,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy213.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 13 — Movements of Ocean Water",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2025-26]\n29. 5\nA Hamburg\nB Capetown\nC Panama Canal\nD Amazon Basin\nE Santiago\nF Vladivostok\nG Downs\nFor Visually impaired students.\nA Hamburg/London/North Cape\nB Capetown\nC Rhine waterway\nD Amazon Basin\nE Santiago/ Buenos Airies\nF Vladivostok/ St. Petersburg\nG Downs",
+      "[CBSE Class XII Geography, marking scheme, 2023-24]\nWater provides a smooth surface for very cheap transport provided there is\nno turbulence.\nWaterways are the cheapest means of transport for heavy and bulky goods\nand it is more favored for international trading.\nIndented coastline is suitable for ports.\nOpening of Suez Canal also promotes encouraged seaports along the west\ncoast\nOR\nPorts as gateways of international trade-The chief gateways of the world of\ninternational trade are the harbours and ports.\nThe ports act as suction points of the resources from their hinterlands. The\nextension of railways and roadways towards the interior facilitates the linking\nof the local markets to regional markets, regional markets to national markets\nand na",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n6. c. It is situated at the head of Gulf of Kachchh",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n15. (b) Watershed development"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 173108,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 24835,
+      "completionTokens": 9853
+    },
+    "critique": {
+      "calls": 43,
+      "ms": 272176,
+      "in": 32,
+      "out": 27,
+      "rejects": 5,
+      "promptTokens": 21250,
+      "completionTokens": 7542
+    },
+    "solver": {
+      "calls": 211,
+      "ms": 110966,
+      "in": 27,
+      "out": 26,
+      "rejects": 1,
+      "promptTokens": 39275,
+      "completionTokens": 2338
+    },
+    "form": {
+      "calls": 23,
+      "ms": 76687,
+      "in": 26,
+      "out": 9,
+      "rejects": 17,
+      "promptTokens": 9412,
+      "completionTokens": 2050
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 4720,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 272355,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16426,
+      "completionTokens": 8204
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Why do tidal bulges form on both sides of the Earth?",
+      "ms": {
+        "draft": 5766,
+        "critique": 6598,
+        "solver": 1307,
+        "form": 4879
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of ocean waves?",
+      "ms": {
+        "draft": 5766,
+        "critique": 7008,
+        "solver": 12623,
+        "form": 4738
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A coastal town experiences high tides when the moon is directly overhead. What could be the reason?",
+      "ms": {
+        "draft": 5766,
+        "critique": 6014,
+        "solver": 1822,
+        "form": 2848
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the tides in the Bay of Fundy, Canada?",
+      "ms": {
+        "draft": 3432,
+        "critique": 6710
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do waves lose energy as they approach the shore?",
+      "ms": {
+        "draft": 5766,
+        "critique": 6676,
+        "solver": 1835,
+        "form": 3567
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a port is located in an area with a shallow bar at the entrance, how will tides affect the movement of ships into the port?",
+      "ms": {
+        "draft": 3432,
+        "critique": 6390
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the movement of deep water currents?",
+      "ms": {
+        "draft": 3432,
+        "critique": 5787,
+        "solver": 1307,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A coastal town experiences unusually high tides during a particular time of the year. What could be the reason for this?",
+      "ms": {
+        "draft": 3432,
+        "critique": 5746,
+        "solver": 1812,
+        "form": 3410
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the Earth were to move closer to the sun, how would this affect the tides?",
+      "ms": {
+        "draft": 3432,
+        "critique": 6547,
+        "solver": 16628,
+        "form": 2226
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the primary factor that influences the movement of ocean currents?",
+      "ms": {
+        "draft": 5174,
+        "critique": 6785
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which direction do warm ocean currents generally flow?",
+      "ms": {
+        "draft": 5174,
+        "critique": 7011,
+        "solver": 14777,
+        "form": 2363
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a direct influence of ocean currents on human activities?",
+      "ms": {
+        "draft": 5940,
+        "critique": 6219
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the main reason for the movement of ocean currents?",
+      "ms": {
+        "draft": 5940,
+        "critique": 5341,
+        "solver": 1383,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which of the following regions are cold ocean currents generally found?",
+      "ms": {
+        "draft": 5940,
+        "critique": 5835,
+        "solver": 1825,
+        "form": 2498
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following is a key factor in determining the temperature of a coastal area?",
+      "ms": {
+        "draft": 5940,
+        "critique": 5671,
+        "solver": 1531,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the impact of ocean currents on the climate of coastal areas?",
+      "ms": {
+        "draft": 5940,
+        "critique": 6913,
+        "solver": 1460,
+        "form": 3117
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a direct effect of the mixing of warm and cold ocean currents?",
+      "ms": {
+        "draft": 5940,
+        "critique": 7025,
+        "solver": 1405,
+        "form": 2616
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the reason for the formation of ocean currents according to the passage?",
+      "ms": {
+        "draft": 3895,
+        "critique": 6276,
+        "solver": 1583,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a surface current?",
+      "ms": {
+        "draft": 3895,
+        "critique": 6275,
+        "solver": 2555
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a port is located in an area with a shallow 'bar' at the entrance, what might be the consequence?",
+      "ms": {
+        "draft": 3895,
+        "critique": 6552,
+        "solver": 17058,
+        "form": 2574
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a wave is steep, what can be inferred about its origin?",
+      "ms": {
+        "draft": 9234,
+        "critique": 8775
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of ocean waves?",
+      "ms": {
+        "draft": 9234,
+        "critique": 7983,
+        "solver": 12044,
+        "form": 2603
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do tidal bulges occur on both sides of the Earth according to the passage?",
+      "ms": {
+        "draft": 9234,
+        "critique": 6649,
+        "solver": 9119,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a type of tide based on its frequency of occurrence?",
+      "ms": {
+        "draft": 3895,
+        "critique": 6865,
+        "solver": 1270,
+        "form": 2716
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are cold-water ocean currents usually found on the west coast of continents in the low and middle latitudes?",
+      "ms": {
+        "draft": 3895,
+        "critique": 6821,
+        "solver": 16846,
+        "form": 3911
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term for the horizontal motion of ocean water?",
+      "ms": {
+        "draft": 5766,
+        "critique": 6670,
+        "solver": 1555,
+        "form": 3601,
+        "translation": 38958
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main factor that causes ocean currents to move in circular patterns known as gyres?",
+      "ms": {
+        "draft": 3432,
+        "critique": 8415,
+        "solver": 1754,
+        "form": 2648,
+        "translation": 46795
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a wave travels a distance of 100 km in 2 hours, what is its speed?",
+      "ms": {
+        "draft": 5766,
+        "critique": 8125,
+        "solver": 10423,
+        "form": 3133,
+        "translation": 28905
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the motion of water particles in a wave?",
+      "ms": {
+        "draft": 9234,
+        "critique": 6344,
+        "solver": 7730,
+        "form": 1249,
+        "translation": 22944
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic of ocean currents?",
+      "ms": {
+        "draft": 5174,
+        "critique": 7534,
+        "solver": 11313,
+        "form": 3604,
+        "translation": 48418
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of how ocean currents affect human activities?",
+      "ms": {
+        "draft": 5174,
+        "critique": 7944,
+        "solver": 1778,
+        "form": 1974,
+        "translation": 40638
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do cold currents cause a distinct marine climate?",
+      "ms": {
+        "draft": 5174,
+        "critique": 5267,
+        "solver": 5725,
+        "form": 1115,
+        "translation": 41803
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why do tidal bulges form on both sides of the Earth?",
+      "reason": "the key is far longer than every distractor (63 vs 34 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of ocean waves?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A coastal town experiences high tides when the moon is directly overhead. What could be the reason?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'moon'"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is true about the tides in the Bay of Fundy, Canada?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do waves lose energy as they approach the shore?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'wave'"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a port is located in an area with a shallow bar at the entrance, how will tides affect the movement of ships into the port?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for the movement of deep water currents?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A coastal town experiences unusually high tides during a particular time of the year. What could be the reason for this?",
+      "reason": "options 0 and 1 say the same thing (\"The sun is at its farthest point from the Earth\" / \"The moon is at its farthest point from the Earth\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the Earth were to move closer to the sun, how would this affect the tides?",
+      "reason": "options 0 and 1 are the same (\"Tides would become more extreme\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the primary factor that influences the movement of ocean currents?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In which direction do warm ocean currents generally flow?",
+      "reason": "options 0 and 1 say the same thing (\"From the equator towards the poles\" / \"From the poles towards the equator\"); options 0 and 2 say the same thing (\"From the equator towards the poles\" / \"From the poles towards the equator\"); options 1 and 2 are the same (\"From the poles towards the equator\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a direct influence of ocean currents on human activities?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the main reason for the movement of ocean currents?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Incorrectly identifies the temperature of water as the main …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In which of the following regions are cold ocean currents generally found?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the effect of currents on coastal climates, as…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following is a key factor in determining the temperature of a coastal area?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Confuses the role of wind direction with temperature, which …\"); distractor 1's reason is not a one-line misconception (\"Misattributes the temperature of a coastal area to the prese…\"); distractor 2's reason is not a one-line misconception (\"Misunderstands the effect of ocean depth on temperature, ass…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the impact of ocean currents on the climate of coastal areas?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misunderstands the effect of warm currents on coastal temper…\"); distractor 1's reason is not a one-line misconception (\"Confuses the effect of cold currents with warming, which con…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the effect of cold currents on rainfall, assum…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a direct effect of the mixing of warm and cold ocean currents?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Misunderstands the role of currents in salinity, assuming th…\"); distractor 3's reason is not a one-line misconception (\"Misinterprets the effect of current mixing on wind direction…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the reason for the formation of ocean currents according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a surface current?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a port is located in an area with a shallow 'bar' at the entrance, what might be the consequence?",
+      "reason": "options 0 and 3 are the same (\"Tides may prevent ships from entering\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a wave is steep, what can be inferred about its origin?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of ocean waves?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do tidal bulges occur on both sides of the Earth according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is a type of tide based on its frequency of occurrence?",
+      "reason": "near-duplicate of served question cmvhsshh90akngpfhqo1ban80 (cosine 0.956 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why are cold-water ocean currents usually found on the west coast of continents in the low and middle latitudes?",
+      "reason": "near-duplicate of served question cmvox01ba082vgp21kzhkpnq0 (cosine 0.953 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

@@ -1,0 +1,858 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T11:27:41.109Z",
+  "finishedAt": "2026-10-28T11:37:12.222Z",
+  "seconds": 571,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry Part-I",
+    "bookCode": "kech1",
+    "document": "ncert/11/chemistry/kech102.pdf",
+    "classLevel": 11,
+    "subject": "Chemistry",
+    "chapter": "Chapter 2 — strUctUre of atom",
+    "edition": "Reprint 2026-27",
+    "chunks": 65,
+    "groups": 21
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Chemistry, marking scheme, 2023-24]\n12. (b) atomic radii\nfor visually challenged learners\n12. (d) Zinc",
+      "[INChO 2017 — solutions or answer key]\n3. In writing structures of molecules, valency of various atoms not being satisfied.\nProblem 1\nBarbiturates in our lives\n1.1\nA B\n1.2\nD\n1.3\n1.4\nG\n17 Marks\n(1 mark)\nE\n(2.5 marks)\nOr any equivalent\nresonance structure\n(2 marks)\nF\n(1.5 marks)\n1.5 a) < 4.01 b) > 4.01 X\n1.6\nH I\n1.7\nL\n1.8 a)\nM N\nb)\nK\nc) = 4.01 (0.5 mark)\nJ (2 marks)\n(2 marks)\nO\n(2.5 marks)\n(2 marks)\n1.9\nP\nQ\n(1 mark)\nProblem No. 2 25 Marks\nChemistry of Iron\n[The total marks for this question are 25 marks instead of 26 marks – This is due to deletion\nof subpart 2.9.]",
+      "[INChO 2015 — question paper]\n10. 811 12.011 14.007 15.999 18.998 20.180\n13 14 15 16 17 18\n10 11 IB IIB 12 Aluminum Al Silicon Si Phosphorus P Sulfur S Chlorine Cl Ar Argon\n1B 2B 26.982 28.086 30.974 32.066 35.453 39.948\n28 29 30 31 32 33 34 35 36\nNickel Ni Cu Copper Zn Zinc Ga Gallium Germanium Ge As Arsenic Selenium Se Bromine Br Krypton Kr\n58.693 63.546 65.39 69.732 72.61 74.922 78.09 79.904 84.80\n46 47 48 49 50 51 52 53 54\nPalladium Pd Ag Silver Cadmium Cd Indium In Sn Tin Antimony Sb Tellurium Te Iodine I Xe Xenon\n106.42 107.868 112.411 114.818 118.71 121.760 127.6 126.904 131.29\n78 79 80 81 82 83 84 85 86\nPlatinum Pt Au Gold Hg Mercury Thallium Tl Pb Lead Bismuth Bi Polonium Po Astatine At Rn Radon\n195.08 196.967 2",
+      "[CBSE Class XII Chemistry, marking scheme, 2023-24]\n6. (a) (i) (r) , (ii) (q), (iii) (p)\nZinc has no unpaired electrons in 3d or 4s orbitals, so enthalpy of atomization is low\nMn = 3d 4s shows +2,+3,+4,+5,+6 and+7 oxidation state , maximum number in 3d series 5 2"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 215579,
+      "in": 45,
+      "out": 44,
+      "rejects": 1,
+      "promptTokens": 48717,
+      "completionTokens": 10014
+    },
+    "critique": {
+      "calls": 54,
+      "ms": 440215,
+      "in": 44,
+      "out": 34,
+      "rejects": 10,
+      "promptTokens": 25056,
+      "completionTokens": 9825
+    },
+    "solver": {
+      "calls": 240,
+      "ms": 148012,
+      "in": 34,
+      "out": 26,
+      "rejects": 8,
+      "promptTokens": 44757,
+      "completionTokens": 2562
+    },
+    "form": {
+      "calls": 11,
+      "ms": 37576,
+      "in": 26,
+      "out": 8,
+      "rejects": 18,
+      "promptTokens": 2915,
+      "completionTokens": 915
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 29,
+      "ms": 5714,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 354240,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 17963,
+      "completionTokens": 9438
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Based on the passage, what can be inferred about the properties of cathode rays",
+      "ms": {
+        "draft": 3790,
+        "critique": 6184,
+        "solver": 1716,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the meaning of the word 'atom' derived from the Greek word 'a-tomio'",
+      "ms": {
+        "draft": 3790,
+        "critique": 6791,
+        "solver": 2930
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what evidence supports the idea that cathode rays consist of negatively charged particles",
+      "ms": {
+        "draft": 3790,
+        "critique": 8708,
+        "solver": 1463,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main conclusion drawn from the deflection of electrons in a cathode ray tube?",
+      "ms": {
+        "draft": 3956,
+        "critique": 9326,
+        "solver": 1772
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what can be concluded about the nature of cathode rays if they are not affected by an external magnetic field",
+      "ms": {
+        "draft": 3790,
+        "critique": 9199,
+        "solver": 15550,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the charge on an electron according to the passage?",
+      "ms": {
+        "draft": 3956,
+        "critique": 10075,
+        "solver": 15043
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, how did R.A. Millikan determine the charge on an electron?",
+      "ms": {
+        "draft": 3956,
+        "critique": 9648,
+        "solver": 1823,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main property of canal rays as described in the passage?",
+      "ms": {
+        "draft": 3956,
+        "critique": 8979,
+        "solver": 12766,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If an oil drop in Millikan's experiment has a charge of 4.8 × 10^-19 C, what is the value of 'n' in the equation q = n × e, where e is the elementary charge?",
+      "ms": {
+        "draft": 3956,
+        "critique": 7540
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the e/m ratio of electrons?",
+      "ms": {
+        "draft": 3956,
+        "critique": 7232,
+        "solver": 1383,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements is correct about the Thomson model of the atom?",
+      "ms": {
+        "draft": 4627,
+        "critique": 6784,
+        "solver": 2466,
+        "form": 3679
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the reason for the deflection of α–particles in Rutherford’s experiment?",
+      "ms": {
+        "draft": 4627,
+        "critique": 8963,
+        "solver": 1257,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the atomic number of an element?",
+      "ms": {
+        "draft": 7708,
+        "critique": 7482
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a radioactive element emits α–particles, what can be inferred about the element’s atomic structure?",
+      "ms": {
+        "draft": 4627,
+        "critique": 8111,
+        "solver": 1770,
+        "form": 3715
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct statement about isotopes?",
+      "ms": {
+        "draft": 4627,
+        "critique": 8169,
+        "solver": 2027,
+        "form": 3104
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If an atom has 16 protons and 16 neutrons, what is the atomic mass number of the atom?",
+      "ms": {
+        "draft": 7708,
+        "critique": 8916
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the Rutherford model of the atom fail to explain the stability of an atom?",
+      "ms": {
+        "draft": 7708,
+        "critique": 7769,
+        "solver": 1955,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a species has 18 electrons, 16 protons, and 16 neutrons, what is the charge on the species?",
+      "ms": {
+        "draft": 7708,
+        "critique": 9824
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "An element has an atomic number of 16 and an atomic mass number of 32. What is the number of neutrons in the atom?",
+      "ms": {
+        "draft": 7708,
+        "critique": 8009,
+        "solver": 17586
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the smallest quantity of energy that can be emitted or absorbed in the form of electromagnetic radiation?",
+      "ms": {
+        "draft": 6517,
+        "critique": 7135,
+        "solver": 1542,
+        "form": 1210
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following electrons experiences the lowest effective nuclear charge?",
+      "ms": {
+        "draft": 4950,
+        "critique": 8454,
+        "solver": 1615
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An electron is moving with a velocity of 1.6 × 10^6 m/s. What is the de Broglie wavelength associated with this electron? (Planck's constant = 6.626 × 10^-34 J·s, mass of electron = 9.1 × 10^-31 kg)",
+      "ms": {
+        "draft": 4950,
+        "critique": 11238
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the number of unpaired electrons in Cr?",
+      "ms": {
+        "draft": 4950,
+        "critique": 7916,
+        "solver": 2125
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following orbitals will experience a higher effective nuclear charge: 2s or 3s?",
+      "ms": {
+        "draft": 4950,
+        "critique": 8282,
+        "solver": 15935,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following combinations of quantum numbers has the highest energy?",
+      "ms": {
+        "draft": 4950,
+        "critique": 7432,
+        "solver": 19852,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the diameter of a carbon atom is 0.15 nm, how many carbon atoms can be placed side by side in a 20 cm long scale?",
+      "ms": {
+        "draft": 4089,
+        "critique": 10127
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the energy associated with the fifth orbit of a hydrogen atom?",
+      "ms": {
+        "draft": 4089,
+        "critique": 11572,
+        "solver": 2575,
+        "form": 5372
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the ionization energy for the H atom in the ground state is 2.18 × 10^-18 J, what is the energy required to ionize He+?",
+      "ms": {
+        "draft": 4089,
+        "critique": 10035,
+        "solver": 1641,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which principle states that no two electrons in an atom can have the same set of four quantum numbers?",
+      "ms": {
+        "draft": 3961,
+        "critique": 8782
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a valid symbol for bromine?",
+      "ms": {
+        "draft": 4089,
+        "critique": 8516,
+        "solver": 19892
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a hydrogen atom has an electron in the n = 4 energy level, how many emission lines are possible when the electron transitions to the ground state?",
+      "ms": {
+        "draft": 3961,
+        "critique": 8851
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the basis of the electronic structure of atoms according to the passage?",
+      "ms": {
+        "draft": 3961,
+        "critique": 9313,
+        "solver": 15281,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the lowest value of n that allows g orbitals to exist?",
+      "ms": {
+        "draft": 3961,
+        "critique": 8850
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why exchange energy is maximum in a completely filled or half-filled subshell?",
+      "ms": {
+        "draft": 5444,
+        "critique": 7911,
+        "solver": 2117,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which principle explains why the third electron of lithium does not start filling the p, d, or f orbitals?",
+      "ms": {
+        "draft": 6878,
+        "critique": 8615
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a reason for the stability of completely filled and half-filled subshells?",
+      "ms": {
+        "draft": 5444,
+        "critique": 8877,
+        "solver": 12347
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of frequency of electromagnetic radiation?",
+      "ms": {
+        "draft": 4478,
+        "critique": 7621,
+        "solver": 1680,
+        "form": 3024
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the atomic theory proposed by John Dalton",
+      "ms": {
+        "draft": 3790,
+        "critique": 6538,
+        "solver": 2046,
+        "form": 5373,
+        "translation": 74973
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to Hund’s rule of maximum multiplicity, when do electrons start pairing in orbitals of the same subshell?",
+      "ms": {
+        "draft": 3961,
+        "critique": 10294,
+        "solver": 19227,
+        "form": 3062,
+        "translation": 27598
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a noble gas?",
+      "ms": {
+        "draft": 4089,
+        "critique": 10211,
+        "solver": 1581,
+        "form": 4149,
+        "translation": 39095
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did Rutherford's experiment reveal about the structure of the atom?",
+      "ms": {
+        "draft": 4627,
+        "critique": 7440,
+        "solver": 2066,
+        "form": 3820,
+        "translation": 53002
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many electrons in an atom can have the quantum numbers n = 3, l = 0?",
+      "ms": {
+        "draft": 4089,
+        "critique": 8752,
+        "solver": 1600,
+        "form": 0,
+        "translation": 29557
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a cathode ray tube is coated with a material that glows when struck by cathode rays, what would happen if the material is replaced with one that does not glow",
+      "ms": {
+        "draft": 3790,
+        "critique": 7088,
+        "solver": 2402,
+        "form": 3096,
+        "translation": 66240
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the momentum of an electron is given as h/4π × 0.05 nm, is there a problem in defining this value?",
+      "ms": {
+        "draft": 4950,
+        "critique": 7511,
+        "solver": 1806,
+        "form": 0,
+        "translation": 58861
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main difference between α–particles and γ–rays?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Based on the passage, what can be inferred about the properties of cathode rays",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's statement about their behavior…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the meaning of the word 'atom' derived from the Greek word 'a-tomio'",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what evidence supports the idea that cathode rays consist of negatively charged particles",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main conclusion drawn from the deflection of electrons in a cathode ray tube?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, what can be concluded about the nature of cathode rays if they are not affected by an external magnetic field",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"A student might think that if cathode rays aren't affected b…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the charge on an electron according to the passage?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, how did R.A. Millikan determine the charge on an electron?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main property of canal rays as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If an oil drop in Millikan's experiment has a charge of 4.8 × 10^-19 C, what is the value of 'n' in the equation q = n × e, where e is the elementary charge?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the e/m ratio of electrons?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following statements is correct about the Thomson model of the atom?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is the only one that matches the passage dire…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the reason for the deflection of α–particles in Rutherford’s experiment?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the atomic number of an element?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a radioactive element emits α–particles, what can be inferred about the element’s atomic structure?",
+      "reason": "options 1 and 2 say the same thing (\"It has a higher number of neutrons than protons\" / \"It has a lower number of protons than neutrons\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is a correct statement about isotopes?",
+      "reason": "options 0 and 1 say the same thing (\"They have the same mass number but different atomic numbers\" / \"They have the same atomic number but different mass numbers\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If an atom has 16 protons and 16 neutrons, what is the atomic mass number of the atom?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the Rutherford model of the atom fail to explain the stability of an atom?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misconception that electrons are stationary (which is not th…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a species has 18 electrons, 16 protons, and 16 neutrons, what is the charge on the species?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "An element has an atomic number of 16 and an atomic mass number of 32. What is the number of neutrons in the atom?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for the smallest quantity of energy that can be emitted or absorbed in the form of electromagnetic radiation?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses the term with a subatomic particle like an electron…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following electrons experiences the lowest effective nuclear charge?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "An electron is moving with a velocity of 1.6 × 10^6 m/s. What is the de Broglie wavelength associated with this electron? (Planck's constant = 6.626 × 10^-34 J·s, mass of electron = 9.1 × 10^-31 kg)",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the number of unpaired electrons in Cr?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following orbitals will experience a higher effective nuclear charge: 2s or 3s?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following combinations of quantum numbers has the highest energy?",
+      "reason": "options 0 and 2 say the same thing (\"n = 3, l = 2, m = 0\" / \"2: n = 3, l = 1, m = 0\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the diameter of a carbon atom is 0.15 nm, how many carbon atoms can be placed side by side in a 20 cm long scale?",
+      "reason": "the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the energy associated with the fifth orbit of a hydrogen atom?",
+      "reason": "options are written to different precisions (1 and 2 decimals); ARITHMETIC MISMATCH — checkExpr \"(2.18*10^-18)/25\" = 8.720000000000002e-20, but the key says 1.36"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If the ionization energy for the H atom in the ground state is 2.18 × 10^-18 J, what is the energy required to ionize He+?",
+      "reason": "option 0 repeats the stem's wording (\"2.18 × 10^-18 J\"); ARITHMETIC MISMATCH — checkExpr \"4*2.18*10^-18\" = 8.720000000000001e-18, but the key says 8.72"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which principle states that no two electrons in an atom can have the same set of four quantum numbers?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is not a valid symbol for bromine?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a hydrogen atom has an electron in the n = 4 energy level, how many emission lines are possible when the electron transitions to the ground state?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the basis of the electronic structure of atoms according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (82 vs 37 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the lowest value of n that allows g orbitals to exist?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best explains why exchange energy is maximum in a completely filled or half-filled subshell?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (90 vs 51 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which principle explains why the third electron of lithium does not start filling the p, d, or f orbitals?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is NOT a reason for the stability of completely filled and half-filled subshells?",
+      "reason": "distractors 0, 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the SI unit of frequency of electromagnetic radiation?",
+      "reason": "near-duplicate of served question cmvhg4a9y08nngpfhzs925vly (cosine 0.906 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

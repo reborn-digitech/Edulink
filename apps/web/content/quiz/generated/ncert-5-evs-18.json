@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Looking Around",
   "edition": "2024 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-23T02:14:06.875Z",
+  "generatedAt": "2026-10-28T07:03:35.206Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 3,
-      "stem": "What kind of work did Sidya do in the city?",
+      "difficulty": 1,
+      "stem": "Where did Jatrya's family come from?",
       "choices": [
-        "He helped in a school",
-        "He cleaned and sorted fish",
-        "He sold vegetables",
-        "He repaired fishing nets"
+        "Mumbai",
+        "Sinduri village",
+        "Khedi village",
+        "The city"
       ],
       "answerIndex": 1,
-      "solution": "Sidya's work involved cleaning and sorting fish, as this is the specific task described in the context. The other options, such as helping in a school, selling vegetables, or repairing fishing nets, are not supported by the information provided. There is no evidence to suggest these were part of his responsibilities.",
+      "solution": "Jatrya's family came from Sinduri village, as this is the only location directly associated with their origin in the context provided. Mumbai, Khedi village, and the city are not supported by the information given, making them incorrect choices.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "सिड्या शहर में किस प्रकार का काम करता था?",
+          "stem": "जत्र्या के परिवार कहाँ से आए?",
           "choices": [
-            "उसने एक स्कूल में मदद की",
-            "उसने मछली की सफाई और वर्गीकरण की",
-            "उसने सब्जियां बेचीं",
-            "उसने मछली पकड़ने के जाल मरम्मत की"
+            "मुंबई",
+            "सिंदूरी गाँव",
+            "खेड़ी गाँव",
+            "शहर"
           ],
-          "solution": "सिड्या के काम में मछली की सफाई और वर्गीकरण शामिल था, क्योंकि यह संदर्भ में विशिष्ट कार्य है। अन्य विकल्प, जैसे स्कूल में मदद करना, सब्जियां बेचना या मछली पकड़ने के जाल मरम्मत करना, जानकारी के द्वारा समर्थित नहीं हैं। इसके लिए कोई प्रमाण नहीं है कि ये उसकी जिम्मेदारियों का हिस्सा रहे।",
+          "solution": "जत्र्या के परिवार सिंदूरी गाँव से आए, क्योंकि यह एकमात्र स्थान है जो संदर्भ में उनकी उत्पत्ति से सीधे जुड़ा हुआ है। मुंबई, खेड़ी गाँव और शहर दी गई जानकारी द्वारा समर्थित नहीं हैं, इसलिए ये गलत विकल्प हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Hindi-medium textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate regional terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "सिद्याने शहरात कोणत्या प्रकारचे काम केले?",
+          "stem": "जत्र्याच्या कुटुंबाचे उगम कोठून आहे?",
           "choices": [
-            "त्याने शाळेत मदत केली",
-            "त्याने मासे शुद्ध केल्या आणि विभागल्या",
-            "त्याने भाजी विकल्या",
-            "त्याने मत्स्य जाल दुरुस्त केले"
+            "मुंबई",
+            "सिंदूरी गाव",
+            "खेडी गाव",
+            "शहर"
           ],
-          "solution": "सिद्याचे काम मासे शुद्ध करणे आणि विभागणे हे होते, कारण हे विशिष्ट काम संदर्भात वर्णन केले गेले आहे. इतर विकल्प, शाळेत मदत करणे, भाजी विकणे किंवा मत्स्य जाल दुरुस्त करणे, यांचे समर्थन माहिती उपलब्ध नाही. यांच्या जबाबदाऱ्यांमध्ये हे असल्याचे पुरावा नाही.",
+          "solution": "जत्र्याच्या कुटुंबाचे उगम सिंदूरी गावापासून आहे, कारण हे एकमेव वस्तुस्थितीत त्यांच्या उगमाशी संबंधित असलेले स्थान आहे. मुंबई, खेडी गाव आणि शहर दिलेल्या माहितीशी समर्थित नाहीत, त्यामुळे ते चुकीचे निवडी आहेत.",
           "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains in the same position (option 1), and the distractors are still incorrect. Technical terms like 'मत्स्य जाल' (fishing net) are appropriate for a Marathi-medium curriculum.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate local terms like 'सिंदूरी गाव' and 'खेडी गाव' which are standard in Marathi textbooks.",
           "flag": null
         }
       },
@@ -72,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "refers to a different family member's work",
+        "The pupil might confuse the place where they currently live with their original home.",
         null,
-        "confuses the work with something else mentioned",
-        "mentions a task done by Jatrya, not Sidya"
+        "The pupil might think that the village they are currently in is their original home.",
+        "The pupil might think that the village is the same as the city they are in now."
       ],
       "solverAnswers": [
         1,
@@ -85,7 +85,7 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as the passage explicitly states that Sidya cleaned and sorted fish. The other options are either attributed to other characters or not mentioned at all.",
+      "critique": "The correct answer is 1 (Sinduri village), as stated in the passage. The author's reasoning for the distractors aligns with plausible student misconceptions.",
       "sources": [
         {
           "document": "ncert/5/environmental-studies/eeap118.pdf",
@@ -116,49 +116,144 @@
         }
       ],
       "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-23T02:14:06.875Z",
+      "generatedAt": "2026-10-28T07:03:35.206Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "What would happen if a dam is built in a village?",
+      "difficulty": 2,
+      "stem": "What did Jatrya and his friends do in the forest?",
       "choices": [
-        "People may have to move to a new place",
-        "The village may have more pollution",
-        "The village may have more trees",
-        "The village may have better access to water"
+        "They played football.",
+        "They collected fruits, roots, and plants for medicines.",
+        "They collected fruits, roots, and plants for sale.",
+        "They built a house."
       ],
-      "answerIndex": 0,
-      "solution": "Building a dam often leads to the flooding of the surrounding area, which can force people to relocate to higher ground. The other options do not align with the typical environmental and social impacts of dam construction.",
+      "answerIndex": 1,
+      "solution": "The correct answer is that they collected fruits, roots, and plants for medicines, as this activity aligns with the purpose of gathering natural resources for healing. Playing football and building a house are unrelated to the typical purpose of a forest visit for medicinal use. Collecting for sale implies an economic motive not supported by the scientific or practical context of the activity.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक गाँव में बाँध बनाने पर क्या होगा?",
+          "stem": "जटर्या और उसके दोस्तों ने जंगल में क्या किया?",
           "choices": [
-            "लोगों को एक नए स्थान पर जाना पड़ सकता है",
-            "गाँव में अधिक प्रदूषण हो सकता है",
-            "गाँव में अधिक पेड़ हो सकते हैं",
-            "गाँव के पानी तक बेहतर पहुँच हो सकती है"
+            "वे फुटबॉल खेले।",
+            "वे दवाओं के लिए फल, जड़ें और पौधे एकत्र करते रहे।",
+            "वे बिक्री के लिए फल, जड़ें और पौधे एकत्र करते रहे।",
+            "वे एक घर बनाते रहे।"
           ],
-          "solution": "बाँध बनाने से आसपास के क्षेत्र में जल भराव हो सकता है, जिसके कारण लोगों को ऊँचे स्थान पर बस्ती बनानी पड़ सकती है। अन्य विकल्प बाँध निर्माण के सामान्य पर्यावरणीय और सामाजिक प्रभावों के अनुरूप नहीं हैं।",
+          "solution": "सही उत्तर यह है कि वे दवाओं के लिए फल, जड़ें और पौधे एकत्र करते रहे, क्योंकि यह गतिविधि उपचार के लिए प्राकृतिक संसाधनों के एकत्रीकरण के उद्देश्य के साथ मेल खाती है। फुटबॉल खेलना और घर बनाना जंगल के दौरे के सामान्य उद्देश्य के लिए चिकित्सीय उपयोग से असंबंधित हैं। बिक्री के लिए एकत्रीकरण के लिए आर्थिक उद्देश्य होता है जो गतिविधि के वैज्ञानिक या व्यावहारिक संदर्भ में समर्थित नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Hindi-medium education.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology consistent with Indian textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "गावात बांध बांधल्यास काय होईल?",
+          "stem": "जत्र्याने आणि त्याच्या मित्रांनी जंगलात काय केले?",
           "choices": [
-            "लोकांना नवीन जागेवर जावे लागू शकते",
-            "गावात अधिक दूषण होईल",
-            "गावात अधिक झाडे असतील",
-            "गावाला पाण्यापासून चांगला प्रवेश असेल"
+            "त्यांनी फुटबॉल खेळला.",
+            "त्यांनी औषधांसाठी फळे, मूळे आणि वनस्पती एकत्र केली.",
+            "त्यांनी विकण्यासाठी फळे, मूळे आणि वनस्पती एकत्र केली.",
+            "त्यांनी एक घर बांधले."
           ],
-          "solution": "बांध बांधणे अकस्मात जवळच्या भागाच्या बाजूला पाणी भरून टाकते, ज्यामुळे लोकांना उंच जागेवर जाण्याची आवश्यकता असू शकते. इतर विकल्प बांध बांधण्याच्या सामान्य पर्यावरणीय आणि सामाजिक परिणामांशी जुळत नाहीत.",
+          "solution": "बरोबर उत्तर हे असे आहे की त्यांनी औषधांसाठी फळे, मूळे आणि वनस्पती एकत्र केली, कारण ही क्रिया नैसर्गिक संसाधनांच्या उपयोगासाठी जंगलाच्या भेटीच्या उद्देशाशी जुळते. फुटबॉल खेळणे आणि घर बांधणे ही औषधी उपयोगासाठी जंगलात जाण्याच्या सामान्य उद्देशाशी निगडीत नाहीत. विकण्यासाठी एकत्र करणे हा आर्थिक उद्देश औषधी उपयोगाच्या वैज्ञानिक आणि व्यावहारिक संदर्भाशी समर्थित नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for 'dam' and related concepts.",
+          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains in the same position, and the distractors are still incorrect. Technical terms like 'औषधांसाठी' (for medicines) are appropriate for a Marathi-medium textbook.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "The pupil might think that the main activity in the forest was playing games.",
+        null,
+        "Believes the purpose was to sell rather than for personal use or medicine",
+        "The pupil might think that they were watching animals for fun."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the passage explicitly states that Jatrya and his friends collected fruits, roots, and plants for medicines. The other options are not supported by the text and represent plausible misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-28T07:03:35.206Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What did Jatrya do after he moved to Mumbai?",
+      "choices": [
+        "He started a new life with his family",
+        "He returned to Khedi",
+        "He bought a big house",
+        "He opened a school"
+      ],
+      "answerIndex": 0,
+      "solution": "Jatrya started a new life with his family in Mumbai, which aligns with the information provided. There is no evidence to suggest he returned to Khedi, bought a big house, or opened a school, as these actions are not supported by the given details.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जत्रेया मुंबई जाकर क्या कर गया?",
+          "choices": [
+            "उसने अपने परिवार के साथ एक नई जिंदगी शुरू की",
+            "उसने खेड़ी वापस लौट गया",
+            "उसने एक बड़ा घर खरीद लिया",
+            "उसने एक स्कूल खोल दिया"
+          ],
+          "solution": "जत्रेया मुंबई में अपने परिवार के साथ एक नई जिंदगी शुरू कर गया, जो दी गई जानकारी के अनुरूप है। कोई सबूत नहीं है कि वह खेड़ी वापस लौट गया, एक बड़ा घर खरीद लिया या एक स्कूल खोल दिया, क्योंकि ये कार्य दी गई विवरणों द्वारा समर्थित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जत्र्याने मुंबईत जाऊन काय केले?",
+          "choices": [
+            "त्याने आपल्या कुटुंबासह नवीन जीवन सुरू केले",
+            "त्याने खेडीला परत जाऊन केले",
+            "त्याने एक मोठे घर खरेदी केले",
+            "त्याने एक शाळा उघडली"
+          ],
+          "solution": "जत्र्याने मुंबईत आपल्या कुटुंबासह नवीन जीवन सुरू केले, जे दिलेल्या माहितीशी जुळते. खेडीला परत जाण्याचे कोणतेही पुरावे नाहीत, मोठे घर खरेदी केल्याचे किंवा शाळा उघडल्याचे कोणतेही विवरण दिलेल्या माहितीत नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer remains option (1) and the distractors are still incorrect.",
           "flag": null
         }
       },
@@ -168,9 +263,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "students might think building a dam leads to more pollution from construction and waste",
-        "Believes building a dam will lead to reforestation without understanding the environmental impact",
-        "students might think dams always provide water resources without considering displacement or environmental impact"
+        "confuses the idea of starting a new life with returning to the old village",
+        "incorrectly assumes he bought a big house",
+        "incorrectly assumes he opened a school"
       ],
       "solverAnswers": [
         0,
@@ -180,7 +275,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0, as the passage explicitly states that people had to move when a dam was built. The other options represent common misconceptions about dams, which the author correctly identifies.",
+      "critique": "The correct answer is 0, as the passage explicitly states that Jatrya started a new life with his family in Mumbai. The other options are not supported by the text and represent common misconceptions.",
       "sources": [
         {
           "document": "ncert/5/environmental-studies/eeap118.pdf",
@@ -211,49 +306,49 @@
         }
       ],
       "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-23T02:14:06.875Z",
+      "generatedAt": "2026-10-28T07:03:35.206Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Why did the people of Khedi not want to move from their village?",
+      "difficulty": 3,
+      "stem": "What would Jatrya do in the morning?",
       "choices": [
-        "Because they had no place to go",
-        "Because they were afraid of the new environment",
-        "Because they had lived there for generations",
-        "Because they were used to the village life"
+        "He would go to school.",
+        "He would clean and sort fish.",
+        "He would help a lady carry bags.",
+        "He would sell empty bottles."
       ],
-      "answerIndex": 2,
-      "solution": "The people of Khedi had lived in their village for many generations, which made it difficult for them to leave. The other options suggest fears or lack of alternatives, but the main reason given is their deep-rooted connection to their ancestral home.",
+      "answerIndex": 1,
+      "solution": "Jatrya's morning routine involves working at a fish factory, where he cleans and sorts fish. This activity is specifically described as happening from four to seven in the morning. The other options involve tasks that occur at different times or are not related to his morning work.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "खेड़ी के लोग अपने गाँव से जाना क्यों नहीं चाहते थे?",
+          "stem": "जटर्या सुबह में क्या करता है?",
           "choices": [
-            "क्योंकि उनके पास जाने के लिए कोई जगह नहीं थी",
-            "क्योंकि वे नए वातावरण से डरते थे",
-            "क्योंकि वे वहाँ पीढ़ियों से रहे थे",
-            "क्योंकि वे गाँव के जीवन के आदी थे"
+            "वह स्कूल जाएगा।",
+            "वह मछली को साफ करेगा और छाँटेगा।",
+            "वह एक महिला के बैग ले जाने में मदद करेगा।",
+            "वह खाली बोतलों को बेचेगा।"
           ],
-          "solution": "खेड़ी के लोग अपने गाँव में कई पीढ़ियों से रहे थे, जिसके कारण उन्हें जाना मुश्किल लगा। अन्य विकल्प डर या विकल्प की कमी के संकेत देते हैं, लेकिन मुख्य कारण उनका अपने पूर्वजों के घर के साथ गहरा संबंध था।",
+          "solution": "जटर्या की सुबह की गतिविधि एक मछली कारखाने में काम करना है, जहां वह मछली को साफ करता है और छाँटता है। यह गतिविधि विशेष रूप से सुबह चार से सात बजे तक होती है। अन्य विकल्पों में ऐसे कार्य शामिल हैं जो अलग समय पर होते हैं या उसके सुबह के काम से संबंधित नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Hindi-medium textbooks.",
+          "critique": "Translation accurately reflects original meaning with appropriate Hindi terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खेडीच्या लोकांनी आपल्या गावातून जाण्याची इच्छा का नाही केली?",
+          "stem": "जत्र्याच्या सकाळी काय करायचे?",
           "choices": [
-            "कारण त्यांना जायचे ठिकाण नव्हते",
-            "कारण ते नवीन वातावरणाच्या भीतीखाली होते",
-            "कारण ते तिथे पिढी-पिढी राहिले होते",
-            "कारण ते गावाच्या जीवनाला अनुरूप होते"
+            "तो शाळेत जाईल.",
+            "तो मासे साफ करणे आणि विभागणे करील.",
+            "तो एका स्त्रीला बॅगा घेण्यास मदत करील.",
+            "तो खाली जाऊन रिकाम्या बाटल्या विकेल."
           ],
-          "solution": "खेडीच्या लोकांनी आपल्या गावात अनेक पिढी राहिल्यामुळे त्यांना जाण्याची इच्छा नव्हती. इतर विकल्पांमध्ये भीती किंवा विकल्पांचा अभाव सुचवला आहे, परंतु मुख्य कारण त्यांचा आपल्या पूर्वजांच्या घराशी गहन संबंध होता.",
+          "solution": "जत्र्याच्या सकाळीच्या व्यवसायात मासे साफ करणे आणि विभागणे याचा समावेश आहे. हा कार्यक्रम सकाळी चार ते सात वाजेपर्यंत चालतो. इतर विकल्पांमध्ये वेगवेगळ्या वेळी होणारे काम किंवा त्याच्या सकाळीच्या कामाशी संबंधित नसलेले काम आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for the tasks described.",
           "flag": null
         }
       },
@@ -262,20 +357,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Students might think the villagers didn't want to move because they had nowhere else to live, not realizing the emotional connection to their home.",
-        "students may confuse fear of change with fear of authority or specific threats",
+        "The pupil might confuse the time of the day when he goes to school.",
         null,
-        "students often confuse emotional attachment with practical reasons for staying in a place"
+        "The pupil might think that this is what he does in the evening.",
+        "The pupil might think that he does this in the evening, not in the morning."
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as the passage explicitly states that the people of Khedi had lived there for generations. The other options are plausible but not supported by the text. The author's reasoning for the distractors reflects common student misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the passage's statement about Jatrya's morning activity. The reasoning for the wrong options aligns with plausible student misconceptions about time of day.",
       "sources": [
         {
           "document": "ncert/5/environmental-studies/eeap118.pdf",
@@ -306,7 +401,197 @@
         }
       ],
       "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-23T02:14:06.875Z",
+      "generatedAt": "2026-10-28T07:03:35.206Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Why did Jatrya feel scared and worried in Mumbai?",
+      "choices": [
+        "He had no money",
+        "He feared he might have to move again",
+        "He missed his family",
+        "He did not like the city"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct option is 'He feared he might have to move again' because the situation described suggests uncertainty about future stability. The other options are not supported by the context, as there is no indication he lacked money, missed his family, or disliked the city.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जाट्रिया मुंबई में डरा और चिंतित क्यों महसूस करता था?",
+          "choices": [
+            "उसके पास कोई पैसा नहीं था",
+            "उसे डर था कि वह फिर से शिफ्ट करना पड़ सकता है",
+            "उसे अपने परिवार की याद आ रही थी",
+            "उसे शहर पसंद नहीं था"
+          ],
+          "solution": "सही विकल्प 'उसे डर था कि वह फिर से शिफ्ट करना पड़ सकता है' है क्योंकि वर्णित स्थिति भविष्य के स्थिरता के अनिश्चितता की ओर इशारा करती है। अन्य विकल्प संदर्भ द्वारा समर्थित नहीं हैं, क्योंकि पैसे की कमी, परिवार की याद या शहर से अप्रियता के बारे में कोई संकेत नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects original meaning, with appropriate Hindi terms used for clarity and correctness.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जत्र्याला मुंबईत घाबरलेले आणि चिंतेत का वाटले?",
+          "choices": [
+            "त्याला पैसा नव्हता",
+            "त्याला घाबरलेले वाटले की त्याला पुन्हा जावे लागू शकते",
+            "त्याला त्याच्या कुटुंबाची आठवण झाली",
+            "त्याला शहराचा आवड नव्हता"
+          ],
+          "solution": "सही विकल्प 'त्याला घाबरलेले वाटले की त्याला पुन्हा जावे लागू शकते' आहे कारण वर्णन केलेल्या स्थितीमुळे भविष्यातील स्थिरतेची अनिश्चितता सूचित केली जाते. इतर विकल्प अंतर्निहित वातावरणाने समर्थित नाहीत, कारण पैसा नसल्याचे, कुटुंबाची आठवण झाली असल्याचे किंवा शहराचा आवड नसल्याचे कोणतेही संकेत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology and structure.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "incorrectly assumes he had no money",
+        null,
+        "confuses the fear of moving with missing family",
+        "incorrectly assumes he disliked the city"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the passage explicitly states Jatrya's fear of moving again. The other options are not supported by the text and represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-28T07:03:35.206Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "What did Jatrya think about the situation of displaced people like him?",
+      "choices": [
+        "They should be forced to forget their old lives and start fresh",
+        "They should be treated as temporary visitors who must leave as soon as possible",
+        "They should have the right to live in a place where their dreams can come true",
+        "They should be given land to farm and live on without any restrictions"
+      ],
+      "answerIndex": 2,
+      "solution": "Jatrya believed that displaced people should have the opportunity to live in a place where they can achieve their goals and dreams. This aligns with the option stating they should have the right to live in a place where their dreams can come true. The other options suggest forced assimilation, temporary status, or unrestricted land use, which are not reflected in Jatrya's perspective.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "जटर्या अपने जैसे विस्थापित लोगों की स्थिति के बारे में क्या सोचता था?",
+          "choices": [
+            "उन्हें अपने पुराने जीवन को भूलने और नए से शुरू करने के लिए मजबूर किया जाना चाहिए",
+            "उन्हें अस्थायी यात्री के रूप में व्यवहार किया जाना चाहिए जो जल्द से जल्द छोड़ देना चाहिए",
+            "उन्हें एक ऐसे स्थान में रहने का अधिकार होना चाहिए जहां उनके सपने पूरे हो सकें",
+            "उन्हें बिना किसी सीमा के खेती के लिए जमीन दी जानी चाहिए और रहने के लिए"
+          ],
+          "solution": "जटर्या मानता था कि विस्थापित लोगों को अपने लक्ष्यों और सपनों को पूरा करने का अवसर होना चाहिए। यह वह विकल्प है जो कहता है कि उन्हें एक ऐसे स्थान में रहने का अधिकार होना चाहिए जहां उनके सपने पूरे हो सकें। अन्य विकल्प बाध्यकारी समावेशन, अस्थायी स्थिति या बिना किसी सीमा के जमीन के उपयोग के बारे में कहते हैं, जो जटर्या के दृष्टिकोण में दर्ज नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and maintains the same meaning, correct answer, and logical structure. Technical terms like 'विस्थापित लोग' (displaced people) and 'सपने पूरे हो सकें' (dreams can come true) are appropriately used in a Hindi educational context.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जत्र्याला बरखास्त केलेल्या लोकांच्या स्थितीबद्दल काय वाटले?",
+          "choices": [
+            "त्यांना आपल्या जुन्या जीवनाचे विसर पडू द्यावे आणि नवीन सुरुवात करावी",
+            "त्यांना असे वागवावे की ते लवकरात लवकर जावे असे असलेले अस्थायी भेट देणारे मानावे",
+            "त्यांना एखाद्या जागेत राहण्याचा अधिकार असावा जिथे त्यांचे स्वप्न पूर्ण होऊ शकते",
+            "त्यांना खेड्यात वस्ती करण्यासाठी आणि राहण्यासाठी जमीन द्यावी आणि कोणतीही अडचण नसावी"
+          ],
+          "solution": "जत्र्याला विस्थापित लोकांना आपल्या लक्ष्यांचे स्वप्न पूर्ण करण्याची संधी असावी असे वाटले. हे त्या विकल्पाशी जुळते ज्यामध्ये त्यांना एखाद्या जागेत राहण्याचा अधिकार असावा जिथे त्यांचे स्वप्न पूर्ण होऊ शकते. इतर विकल्पांमध्ये बलवत्तर एकत्रित करणे, अस्थायी स्थिती आणि अनियंत्रित जमीन वापराचा उल्लेख आहे, जे जत्र्याच्या दृष्टिकोनाचे प्रतिबिंबित नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology. The correct answer (option 2) is in the same position as in the English version, and the distractors remain incorrect.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes displaced people should completely abandon their past and adapt without any connection to their former home",
+        "Believes displaced people are only temporary and should not stay in new locations long-term",
+        null,
+        "Believes displaced people should be given land without considering the challenges of starting over"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is supported by the passage, which directly quotes Jatrya's belief that displaced people should have a place where their dreams can come true. The other options are not supported and reflect misconceptions about the text.",
+      "sources": [
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 3,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 4,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        },
+        {
+          "document": "ncert/5/environmental-studies/eeap118.pdf",
+          "ordinal": 5,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 18: No Place for Us?"
+          ]
+        }
+      ],
+      "edition": "2024 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-28T07:03:35.206Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

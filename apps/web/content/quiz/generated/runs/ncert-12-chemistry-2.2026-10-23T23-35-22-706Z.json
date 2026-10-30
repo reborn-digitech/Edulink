@@ -1,0 +1,815 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T23:35:22.706Z",
+  "finishedAt": "2026-10-23T23:46:15.733Z",
+  "seconds": 653,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry-I",
+    "bookCode": "lech1",
+    "document": "ncert/12/chemistry/lech102.pdf",
+    "classLevel": 12,
+    "subject": "Chemistry",
+    "chapter": "Chapter 2 — Electrochemistry",
+    "edition": "Reprint 2026-27",
+    "chunks": 33,
+    "groups": 10
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Chemistry, marking scheme, 2022-23]\n23. Anode: Zn (s)  Zn 2+ (aq) + 2 e-\n– –\n(1/2+1/2)\n(1/2)\n(1/2)\n(1/2)\nCathode: O 2 (g) + 2H 2 O(l) + 4e → 4OH (aq). (1/2)\nOverall: 2 Zn (s) + O 2 (g) + 2H 2 O(l)  2 Zn 2+ (aq) + 4OH (aq) –\n2 Zn (s) + O 2 (g) + 2H 2 O(l)  2 Zn(OH) 2 (ppt) (1)",
+      "[CBSE Class XII Chemistry, sample question paper, 2022-23]\n23. Corrosion is an electrochemical phenomenon. The oxygen in moist air reacts as\nfollows:\nO 2 (g) + 2H 2 O(l) + 4e → 4OH (aq). – –\nWrite down the possible reactions for corrosion of zinc occurring at anode, cathode, and\noverall reaction to form a white layer of zinc hydroxide.",
+      "[CBSE Class XII Chemistry, sample question paper, 2022-23]\n33. a. Why does the cell voltage of a mercury cell remain constant during its\nlifetime?\nb. Write the reaction occurring at anode and cathode and the products of\nelectrolysis of aq KCl.\nc. What is the pH of HCl solution when the hydrogen gas electrode shows\na potential of -0.59 V at standard temperature and pressure?\nOR\na. Molar conductivity of substance “A” is 5.9×10 S/m and “B” is 1 x 10 3 -16\nS/m. Which of the two is most likely to be copper metal and why?\nb. What is the quantity of electricity in Coulombs required to produce 4.8 g of\nMg from molten MgCl 2 ? How much Ca will be produced if the same\namount of electricity was passed through molten CaCl 2 ? (Atomic mass of\nMg = 24 u, atomic m",
+      "[CBSE Class XII Chemistry, marking scheme, 2023-24]\n16. (d) A is false but R is true.\nCu will deposit at cathode"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 204166,
+      "in": 45,
+      "out": 42,
+      "rejects": 3,
+      "promptTokens": 49666,
+      "completionTokens": 11306
+    },
+    "critique": {
+      "calls": 50,
+      "ms": 320906,
+      "in": 42,
+      "out": 32,
+      "rejects": 10,
+      "promptTokens": 23134,
+      "completionTokens": 8766
+    },
+    "solver": {
+      "calls": 213,
+      "ms": 101395,
+      "in": 32,
+      "out": 25,
+      "rejects": 7,
+      "promptTokens": 38845,
+      "completionTokens": 2084
+    },
+    "form": {
+      "calls": 12,
+      "ms": 33230,
+      "in": 25,
+      "out": 11,
+      "rejects": 14,
+      "promptTokens": 3296,
+      "completionTokens": 843
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 4449,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 499025,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 27784,
+      "completionTokens": 14052
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 3,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the primary purpose of studying electrochemistry according to the passage?",
+      "ms": {
+        "draft": 3753,
+        "critique": 6028,
+        "solver": 2343
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a galvanic cell, what happens when the external potential is increased beyond the cell potential?",
+      "ms": {
+        "draft": 3753,
+        "critique": 5396,
+        "solver": 14782
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the overall reaction in a Daniell cell?",
+      "ms": {
+        "draft": 3753,
+        "critique": 6894,
+        "solver": 1492,
+        "form": 4481
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the electrode where oxidation takes place in a galvanic cell?",
+      "ms": {
+        "draft": 4342,
+        "critique": 6693
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the cell voltage of a mercury cell remain constant during its lifetime?",
+      "ms": {
+        "draft": 3753,
+        "critique": 7098,
+        "solver": 1559,
+        "form": 1823
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following represents the correct convention for representing a galvanic cell?",
+      "ms": {
+        "draft": 4342,
+        "critique": 7103
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the reaction Zn(s) + Cu²+ (aq) → Zn²+ (aq) + Cu(s), which substance is oxidized?",
+      "ms": {
+        "draft": 3753,
+        "critique": 7015,
+        "solver": 14594,
+        "form": 3652
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the emf of a galvanic cell is positive, what can be inferred about the cell reaction?",
+      "ms": {
+        "draft": 4342,
+        "critique": 6939
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the purpose of a salt bridge in a galvanic cell?",
+      "ms": {
+        "draft": 4342,
+        "critique": 5568,
+        "solver": 1842,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What can be concluded about a metal if its standard electrode potential is negative?",
+      "ms": {
+        "draft": 4342,
+        "critique": 6948,
+        "solver": 1526
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student wants to calculate the cell potential of a Daniell cell at non-standard conditions. Which equation should they use?",
+      "ms": {
+        "draft": 5401,
+        "critique": 7062,
+        "solver": 1778,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Given the standard electrode potentials, which of the following reactions is spontaneous under standard conditions?",
+      "ms": {
+        "draft": 5401,
+        "critique": 6615,
+        "solver": 1909,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A cell is made using Mg and Ag with concentrations of 0.130 M and 0.0001 M respectively. What is the cell potential if E° is 3.17 V?",
+      "ms": {
+        "draft": 5401,
+        "critique": 6528,
+        "solver": 1794,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student observes that the cell voltage of a mercury cell remains constant over its lifetime. What is the most likely reason for this?",
+      "ms": {
+        "draft": 5401,
+        "critique": 8703
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the standard electrode potential for the reaction: ½ Br₂(aq) + e⁻ → Br⁻(aq)?",
+      "ms": {
+        "draft": 5401,
+        "critique": 6307,
+        "solver": 1755
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "The standard electrode potential for a Daniell cell is 1.1 V. What is the standard Gibbs energy change (ΔG) for the reaction Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s)?",
+      "ms": {
+        "draft": 12801,
+        "critique": 7203,
+        "solver": 1815,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for using alternating current (AC) when measuring the resistance of an ionic solution?",
+      "ms": {
+        "draft": 9578,
+        "critique": 6074
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a galvanic cell, the reaction Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s) has a standard Gibbs energy change (ΔG) of -212.27 kJ mol⁻¹. What is the equilibrium constant (K) for this reaction?",
+      "ms": {
+        "draft": 12801,
+        "critique": 8389,
+        "solver": 6726,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the effect of dilution on the molar conductivity of an electrolyte?",
+      "ms": {
+        "draft": 3741,
+        "critique": 7473
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the primary reason for the constant voltage in a mercury cell?",
+      "ms": {
+        "draft": 3741,
+        "critique": 5404,
+        "solver": 1689
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the standard electrode potential of the hydrogen electrode?",
+      "ms": {
+        "draft": 3741,
+        "critique": 5846,
+        "solver": 2037,
+        "form": 1583
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a galvanic cell has a standard cell potential of 1.1 V, what is the value of the standard Gibbs free energy change?",
+      "ms": {
+        "draft": 3741,
+        "critique": 7131,
+        "solver": 10518,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the overall reaction in a fuel cell that uses hydrogen and oxygen?",
+      "ms": {
+        "draft": 12020,
+        "critique": 6546,
+        "solver": 1963,
+        "form": 2787
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the given passage, which of the following is a correct statement about fuel cells?",
+      "ms": {
+        "draft": 12020,
+        "critique": 6790,
+        "solver": 1728,
+        "form": 2319
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a fuel cell, if hydrogen gas is used as fuel, which of the following is the correct reaction at the anode?",
+      "ms": {
+        "draft": 12020,
+        "critique": 5917,
+        "solver": 1808
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "During the electrolysis of aqueous sodium chloride solution, what is the main product formed at the cathode?",
+      "ms": {
+        "draft": 4817,
+        "critique": 7395
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the context of the passage, what is the main advantage of fuel cells over thermal plants?",
+      "ms": {
+        "draft": 12020,
+        "critique": 6233,
+        "solver": 10771,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the potential of a hydrogen gas electrode is -0.59 V at standard temperature and pressure, what is the pH of the solution?",
+      "ms": {
+        "draft": 4817,
+        "critique": 8463
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the value of the dissociation constant of acetic acid calculated in the passage?",
+      "ms": {
+        "draft": 5386,
+        "critique": 6582
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for using alternating current (AC) when measuring the resistance of an ionic solution?",
+      "ms": {
+        "draft": 14758,
+        "critique": 8830
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of molar conductivity?",
+      "ms": {
+        "draft": 4639,
+        "critique": 9087,
+        "solver": 10067
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes a galvanic cell?",
+      "ms": {
+        "draft": 3753,
+        "critique": 5169,
+        "solver": 1244,
+        "form": 4562,
+        "translation": 57297
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about an electrochemical cell?",
+      "ms": {
+        "draft": 3741,
+        "critique": 6310,
+        "solver": 2071,
+        "form": 2303,
+        "translation": 49870
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the standard electrode potential?",
+      "ms": {
+        "draft": 5401,
+        "critique": 6711,
+        "solver": 1740,
+        "form": 0,
+        "translation": 48438
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the corrosion of iron, what happens at the cathode?",
+      "ms": {
+        "draft": 12020,
+        "critique": 5916,
+        "solver": 1428,
+        "form": 2192,
+        "translation": 39180
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a galvanic cell, what happens to the chemical energy of a redox reaction?",
+      "ms": {
+        "draft": 3741,
+        "critique": 6122,
+        "solver": 1182,
+        "form": 3898,
+        "translation": 54424
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a galvanic cell, the Gibbs energy change (ΔG) is related to the cell potential (E) by the equation ΔG = -nFE. What happens to the Gibbs energy change when the number of electrons (n) involved in the reaction doubles?",
+      "ms": {
+        "draft": 12801,
+        "critique": 5670,
+        "solver": 1608,
+        "form": 1,
+        "translation": 46736
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the overall reaction in a mercury cell during its operation?",
+      "ms": {
+        "draft": 4817,
+        "critique": 6924,
+        "solver": 1730,
+        "form": 2904,
+        "translation": 34178
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A student measures the resistance of a wire and finds it to be 10 Ω. If the length of the wire is doubled and the area of cross-section is halved, what will be the new resistance?",
+      "ms": {
+        "draft": 12801,
+        "critique": 6987,
+        "solver": 1820,
+        "form": 0,
+        "translation": 41521
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a galvanic cell, the anode is represented on the left and the cathode on the right. What would be the emf of a cell if the standard electrode potential of the anode is -0.76 V and that of the cathode is 0.34 V?",
+      "ms": {
+        "draft": 4342,
+        "critique": 5845,
+        "solver": 11583,
+        "form": 0,
+        "translation": 40754
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does the voltage of a mercury cell remain constant during its lifetime?",
+      "ms": {
+        "draft": 4817,
+        "critique": 7439,
+        "solver": 11792,
+        "form": 2382,
+        "translation": 32265
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A conducting polymer, such as polyacetylene, is known to have metallic conductivity when doped. What is the primary reason for this property?",
+      "ms": {
+        "draft": 12801,
+        "critique": 6592,
+        "solver": 1387,
+        "form": 0,
+        "translation": 49632
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the SI unit of conductance?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the primary purpose of studying electrochemistry according to the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "In a galvanic cell, what happens when the external potential is increased beyond the cell potential?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the overall reaction in a Daniell cell?",
+      "reason": "options 0 and 1 say the same thing (\"Zn(s) + Cu²+ (aq) → Zn²+ (aq) + Cu(s)\" / \"Zn²+ (aq) + Cu(s) → Zn(s) + Cu²+ (aq)\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used for the electrode where oxidation takes place in a galvanic cell?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the cell voltage of a mercury cell remain constant during its lifetime?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Implies a different principle not supported by the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following represents the correct convention for representing a galvanic cell?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the reaction Zn(s) + Cu²+ (aq) → Zn²+ (aq) + Cu(s), which substance is oxidized?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the emf of a galvanic cell is positive, what can be inferred about the cell reaction?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the purpose of a salt bridge in a galvanic cell?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"difficulty\":5,\"stem\": \"In a galvanic cell, the anode is repr…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What can be concluded about a metal if its standard electrode potential is negative?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student wants to calculate the cell potential of a Daniell cell at non-standard conditions. Which equation should they use?",
+      "reason": "options 0 and 2 say the same thing (\"E = E° - (RT/nF) ln(Q)\" / \"E = E° × (RT/nF) ln(Q)\"); options 1 and 3 say the same thing (\"E = E° + (nF/RT) ln(Q)\" / \"E = E° - (nF/RT) ln(Q)\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Given the standard electrode potentials, which of the following reactions is spontaneous under standard conditions?",
+      "reason": "options 0 and 1 say the same thing (\"Cu + Zn²+ → Cu²+ + Zn\" / \"Zn + Cu²+ → Zn²+ + Cu\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A cell is made using Mg and Ag with concentrations of 0.130 M and 0.0001 M respectively. What is the cell potential if E° is 3.17 V?",
+      "reason": "checkExpr \"3.17 - (0.0591/2)*log(0.130/(0.0001)^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A student observes that the cell voltage of a mercury cell remains constant over its lifetime. What is the most likely reason for this?",
+      "reason": "the critic finds option 0 correct, the key is 3; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the standard electrode potential for the reaction: ½ Br₂(aq) + e⁻ → Br⁻(aq)?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "The standard electrode potential for a Daniell cell is 1.1 V. What is the standard Gibbs energy change (ΔG) for the reaction Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s)?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); ARITHMETIC MISMATCH — checkExpr \"-2*1.1*96487\" = -212271.40000000002, but the key says -212.27"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main reason for using alternating current (AC) when measuring the resistance of an ionic solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a galvanic cell, the reaction Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s) has a standard Gibbs energy change (ΔG) of -212.27 kJ mol⁻¹. What is the equilibrium constant (K) for this reaction?",
+      "reason": "checkExpr \"exp(212270/(8.314*298))\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the primary purpose of a sacrificial electrode in preventing corrosion?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the main function of the anode in a galvanic cell?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the effect of dilution on the molar conductivity of an electrolyte?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the primary reason for the constant voltage in a mercury cell?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the standard electrode potential of the hydrogen electrode?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a galvanic cell has a standard cell potential of 1.1 V, what is the value of the standard Gibbs free energy change?",
+      "reason": "options are written to different precisions (1 and 2 decimals); ARITHMETIC MISMATCH — checkExpr \"-2*96500*1.1\" = -212300.00000000003, but the key says -212.3"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the overall reaction in a fuel cell that uses hydrogen and oxygen?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the given passage, which of the following is a correct statement about fuel cells?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"contradicts the passage's statement about efficiency…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a fuel cell, if hydrogen gas is used as fuel, which of the following is the correct reaction at the anode?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "During the electrolysis of aqueous sodium chloride solution, what is the main product formed at the cathode?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the context of the passage, what is the main advantage of fuel cells over thermal plants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the potential of a hydrogen gas electrode is -0.59 V at standard temperature and pressure, what is the pH of the solution?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the value of the dissociation constant of acetic acid calculated in the passage?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main reason for using alternating current (AC) when measuring the resistance of an ionic solution?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the unit of molar conductivity?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,683 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T13:36:56.579Z",
+  "finishedAt": "2026-10-28T13:47:10.134Z",
+  "seconds": 614,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo107.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 7 — Structural Organisation in Animals",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2019 — question paper]\n56. (2 points) Given is a sketch of an organism that an archaeologist found.\nFigure 2: Internal Structures\nAntenna\nBq Brain\n=\nVif- | Leg\nHie Tarsal claw\nK | Ed Ventral Nerve\nHIRES. Cord\nStomach —¢ [EER\nintestine 3 JE i Patpheral\n§ 4 ¥ §— Seminal Vesicle\nA: ’ Sperm duct\n3 Rectum\nAnus\nThe interpretation of its morphological and anatomical features is provided in the table\nbelow.\nWorm- | Organ External Vertebral\nlike differentiation | body column\nbody segmentation\n[Nematoda | ves | | [| | | |\n[Annelida | Ves | Ves | Yes [Vewa | | | |\n[Arthropoda | | Yes | [Vewa | Ves | Open | |\n[Reel | | Ve | [Dosa | ve | Ged | ve |\nThis organism is likely to be a link between:\n(Fill in the blanks with the corr",
+      "[INBO 2013 — question paper]\n56. (3.5 points) A cladogram of various animal groups is shown below. The boxes\nin the cladogram indicate the development of specific structures in the course\nof evolution. Fill these boxes with numbers indicating the correct structures.\nChoose from the options given.\nBirds\nRats and\nRabbits\nFrogs and\nSalamander\nRays and Herrings &\nSkates Tuna\nSSkates\nLampre y\nAncestral Vertebrate\n1. Paired appendages\n2. Bony endoskeleton\n3. Jaws\n4. Three-chambered heart\n5. Clawed digits\n6. Cartilaginous endoskeleton\n7. Four-chambered heart\n8. Operculum\n********* END OF SECTION B ***********",
+      "[NSEB 2015 — question paper]\n48. The support staff in a Zoology lab mixed up the description charts of the following\norganisms:\nX: Rotifer Y: Sea anemone Z: Spider\nDescription charts:\nI: Coelomate with segmented body.\nII: Pseudocoelomate with alimentary canal and head having ciliated crown.\nIII: Diploblastic with gastrovascular cavity.\nDescription charts that match X, Y and Z respectively are:\na) I, II and III\nb) II, III and I\nc) III, I and II\nd) I, III and II",
+      "[INBO 2020 — question paper]\n18. (1 point) The internal structures of a marine life form, Pseudoceros bifurcus are shown in the\nfigure. Mark the correct interpretation.\nPseudoceros bifurcus\nThe animal is most likely is:\na. a cnidarian as it shows tissue level organization with bilateral symmetry.\nb. a free-living platyhelminth as it shows bilateral symmetry and has an acoelomate body plan.\nc. a free-living platyhelminth as it shows non-segmented body plan and absence of circulatory\nsystem.\nd. a parasitic platyhelminth as it shows suckers, hermaphrodity and absence of sense organs."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 215879,
+      "in": 35,
+      "out": 34,
+      "rejects": 1,
+      "promptTokens": 26245,
+      "completionTokens": 7879
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 365051,
+      "in": 34,
+      "out": 31,
+      "rejects": 3,
+      "promptTokens": 16195,
+      "completionTokens": 6271
+    },
+    "solver": {
+      "calls": 174,
+      "ms": 110838,
+      "in": 31,
+      "out": 24,
+      "rejects": 7,
+      "promptTokens": 24805,
+      "completionTokens": 1502
+    },
+    "form": {
+      "calls": 20,
+      "ms": 134391,
+      "in": 24,
+      "out": 10,
+      "rejects": 14,
+      "promptTokens": 12328,
+      "completionTokens": 2237
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 65,
+      "ms": 15584,
+      "in": 10,
+      "out": 9,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 39,
+      "ms": 492532,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 20203,
+      "completionTokens": 9821
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 3,
+    "6": 0
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of an evolutionary trend mentioned in the passage?",
+      "ms": {
+        "draft": 4856,
+        "critique": 10049,
+        "solver": 3032,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the lymphatic system in frogs?",
+      "ms": {
+        "draft": 6783,
+        "critique": 8933
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of sexual dimorphism in frogs?",
+      "ms": {
+        "draft": 4856,
+        "critique": 10271,
+        "solver": 2701,
+        "form": 5142
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the context of the frog's excretory system, what is the function of the urinary bladder?",
+      "ms": {
+        "draft": 6783,
+        "critique": 11190
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the frog's body is responsible for the absorption of digested food?",
+      "ms": {
+        "draft": 6783,
+        "critique": 9276,
+        "solver": 16646,
+        "form": 4054
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best describes the circulatory system of a frog?",
+      "ms": {
+        "draft": 6783,
+        "critique": 10858,
+        "solver": 2337,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the mucous glands in the skin of a frog?",
+      "ms": {
+        "draft": 6646,
+        "critique": 10218,
+        "solver": 2756,
+        "form": 4425
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a frog is found to have a single circulation system, which of the following is most likely true about its heart?",
+      "ms": {
+        "draft": 6646,
+        "critique": 10967,
+        "solver": 2429
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the male reproductive system of a frog, which structure is responsible for transporting sperm from the testes to the cloaca?",
+      "ms": {
+        "draft": 6783,
+        "critique": 11458,
+        "solver": 2538,
+        "form": 3694
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the reproductive system of a frog?",
+      "ms": {
+        "draft": 6646,
+        "critique": 12170,
+        "solver": 1746,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that the circulatory system of a frog is closed with single circulation. Which of the following statements best explains this?",
+      "ms": {
+        "draft": 6646,
+        "critique": 10599,
+        "solver": 2665
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a diagram of the digestive system of a frog and asked to identify the organ that secretes enzymes for digestion. Which of the following is the most likely correct answer?",
+      "ms": {
+        "draft": 6646,
+        "critique": 10837,
+        "solver": 2656,
+        "form": 4589
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the frog's body is used to capture prey?",
+      "ms": {
+        "draft": 5226,
+        "critique": 9802,
+        "solver": 16131,
+        "form": 4560
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the frog have a single circulation system?",
+      "ms": {
+        "draft": 5226,
+        "critique": 9200,
+        "solver": 2505
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the description of the frog's excretory system, which of the following is a correct comparison between the male and female reproductive systems?",
+      "ms": {
+        "draft": 6930,
+        "critique": 10661,
+        "solver": 2345
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a frog's urinary bladder were removed, how would it affect the excretion of waste?",
+      "ms": {
+        "draft": 6930,
+        "critique": 10685,
+        "solver": 2585
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is true about the structure of the frog's heart?",
+      "ms": {
+        "draft": 6930,
+        "critique": 11074,
+        "solver": 2253
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following correctly identifies the structure shown in Figure 7.3?",
+      "ms": {
+        "draft": 6930,
+        "critique": 9986,
+        "solver": 2370,
+        "form": 6400
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic of the frog's nervous system as described in the passage?",
+      "ms": {
+        "draft": 6930,
+        "critique": 10575,
+        "solver": 1608
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the term 'tissue' as defined in the passage?",
+      "ms": {
+        "draft": 6648,
+        "critique": 10827,
+        "solver": 2745,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a frog is found in a dry environment, which of the following is most likely to happen?",
+      "ms": {
+        "draft": 6648,
+        "critique": 11337
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the description in the passage and Figure 7.1, which of the following is a characteristic feature of a frog's hind limbs?",
+      "ms": {
+        "draft": 6648,
+        "critique": 11607,
+        "solver": 2188,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main function of the cloaca in frogs?",
+      "ms": {
+        "draft": 6930,
+        "critique": 10023,
+        "solver": 22043,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student is asked to identify a new organism based on the features described in the passage and the style of the INBO 2019 question, which of the following would be the most appropriate approach?",
+      "ms": {
+        "draft": 6648,
+        "critique": 5140,
+        "solver": 914,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the function of the mucous glands in the skin of a frog?",
+      "ms": {
+        "draft": 5226,
+        "critique": 9329,
+        "solver": 2727,
+        "form": 5550
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the organisation of similar cells performing a specific function?",
+      "ms": {
+        "draft": 4856,
+        "critique": 8938,
+        "solver": 1749,
+        "form": 5466,
+        "translation": 46335
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a function of the nervous system in a frog?",
+      "ms": {
+        "draft": 6646,
+        "critique": 11030,
+        "solver": 1488,
+        "form": 2907,
+        "translation": 67533
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of the skin of a frog?",
+      "ms": {
+        "draft": 4856,
+        "critique": 9302,
+        "solver": 2457,
+        "form": 5531,
+        "translation": 51679
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which of the following systems does the stomach function?",
+      "ms": {
+        "draft": 4856,
+        "critique": 9302,
+        "solver": 3375,
+        "form": 3509,
+        "translation": 50352
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which part of the frog's body does the process of digestion begin?",
+      "ms": {
+        "draft": 5226,
+        "critique": 8880,
+        "solver": 1684,
+        "form": 7044,
+        "translation": 49594
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the primary function of the cloaca in a frog?",
+      "ms": {
+        "draft": 5226,
+        "critique": 9326,
+        "solver": 2113,
+        "form": 4413,
+        "translation": 46723
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is true about the body temperature of frogs?",
+      "ms": {
+        "draft": 4856,
+        "critique": 9553,
+        "solver": 2157,
+        "form": 6898,
+        "translation": 57154
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a frog's cloaca is damaged, what would be the most immediate effect on its excretory system?",
+      "ms": {
+        "draft": 6783,
+        "critique": 10608,
+        "solver": 2647,
+        "form": 0,
+        "translation": 55403
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a frog's testes were removed, what would be the immediate effect?",
+      "ms": {
+        "draft": 5226,
+        "critique": 7574,
+        "solver": 2033,
+        "form": 5496,
+        "translation": 59285
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is an example of an evolutionary trend mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main function of the lymphatic system in frogs?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of sexual dimorphism in frogs?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels Membrane, Nucleus, Cytoplasm"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In the context of the frog's excretory system, what is the function of the urinary bladder?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the frog's body is responsible for the absorption of digested food?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best describes the circulatory system of a frog?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a function of the mucous glands in the skin of a frog?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option and is directly sup…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a frog is found to have a single circulation system, which of the following is most likely true about its heart?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of the male reproductive system of a frog, which structure is responsible for transporting sperm from the testes to the cloaca?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'testis'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the reproductive system of a frog?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage mentions that the circulatory system of a frog is closed with single circulation. Which of the following statements best explains this?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a diagram of the digestive system of a frog and asked to identify the organ that secretes enzymes for digestion. Which of the following is the most likely correct answer?",
+      "reason": "figure: figure spec refused: spec.parts: digestiveTract has no label \"pancreas\" (it has mouth, oesophagus, stomach, liver, smallIntestine, largeIntestine)"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "According to the passage and Figure 7.2, which of the following is true about the digestive system of a frog?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which part of the frog's body is used to capture prey?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Why does the frog have a single circulation system?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Based on the description of the frog's excretory system, which of the following is a correct comparison between the male and female reproductive systems?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a frog's urinary bladder were removed, how would it affect the excretion of waste?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is true about the structure of the frog's heart?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following correctly identifies the structure shown in Figure 7.3?",
+      "reason": "figure: figure spec refused: spec.parts: plantCell has no label \"cell\" (it has cellWall, membrane, nucleus, vacuole, chloroplast, cytoplasm)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a characteristic of the frog's nervous system as described in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the term 'tissue' as defined in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a frog is found in a dry environment, which of the following is most likely to happen?",
+      "reason": "the critic finds option 2 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the description in the passage and Figure 7.1, which of the following is a characteristic feature of a frog's hind limbs?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"They end in four digits and are larger and muscular\" / \"They end in five digits and are larger and muscular\"); options 2 and 3 say the same thing (\"They end in four digits and are smaller and less muscular\" / \"They end in five digits and are smaller and less muscular\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main function of the cloaca in frogs?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student is asked to identify a new organism based on the features described in the passage and the style of the INBO 2019 question, which of the following would be the most appropriate approach?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the function of the mucous glands in the skin of a frog?",
+      "reason": "near-duplicate of served question cmvhjnkgv096xgpfhhclulpsy (cosine 0.920 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

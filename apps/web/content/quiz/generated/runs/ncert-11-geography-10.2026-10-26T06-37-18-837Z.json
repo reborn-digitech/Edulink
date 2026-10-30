@@ -1,0 +1,498 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T06:37:18.837Z",
+  "finishedAt": "2026-10-26T06:42:50.775Z",
+  "seconds": 332,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy210.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 10 — Water in the Atmosphere",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\n14. C. Implementing rainwater harvesting, recycling and reusing 1\nwastewater.",
+      "[CBSE Class XII Geography, marking scheme, 2025-26]\n29. 5\nA Hamburg\nB Capetown\nC Panama Canal\nD Amazon Basin\nE Santiago\nF Vladivostok\nG Downs\nFor Visually impaired students.\nA Hamburg/London/North Cape\nB Capetown\nC Rhine waterway\nD Amazon Basin\nE Santiago/ Buenos Airies\nF Vladivostok/ St. Petersburg\nG Downs",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n15. (b) Watershed development",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 100589,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17124,
+      "completionTokens": 5002
+    },
+    "critique": {
+      "calls": 30,
+      "ms": 210435,
+      "in": 24,
+      "out": 17,
+      "rejects": 7,
+      "promptTokens": 13127,
+      "completionTokens": 5161
+    },
+    "solver": {
+      "calls": 123,
+      "ms": 69800,
+      "in": 17,
+      "out": 14,
+      "rejects": 3,
+      "promptTokens": 18009,
+      "completionTokens": 1207
+    },
+    "form": {
+      "calls": 4,
+      "ms": 10792,
+      "in": 14,
+      "out": 9,
+      "rejects": 5,
+      "promptTokens": 1016,
+      "completionTokens": 322
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 20,
+      "ms": 3721,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 340130,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 18873,
+      "completionTokens": 9047
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the process by which water is transformed from liquid to gaseous state?",
+      "ms": {
+        "draft": 5362,
+        "critique": 7290,
+        "solver": 1808,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary cause of evaporation?",
+      "ms": {
+        "draft": 5362,
+        "critique": 8560,
+        "solver": 13961
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the term used to describe the amount of water vapour present in the atmosphere as compared to its full capacity at a given temperature?",
+      "ms": {
+        "draft": 5362,
+        "critique": 8268,
+        "solver": 16052
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason for the formation of dew on grass blades during clear nights?",
+      "ms": {
+        "draft": 5362,
+        "critique": 8252,
+        "solver": 1569,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is the most favorable condition for condensation?",
+      "ms": {
+        "draft": 5362,
+        "critique": 12477,
+        "solver": 13431,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of rain occurs when air is forced to rise over a mountain?",
+      "ms": {
+        "draft": 4053,
+        "critique": 7110
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a region is on the leeward side of a mountain, what kind of rainfall is it likely to receive?",
+      "ms": {
+        "draft": 4053,
+        "critique": 6137
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for the amount of water vapour in the atmosphere expressed in grams per cubic metre?",
+      "ms": {
+        "draft": 5362,
+        "critique": 7188,
+        "solver": 12303,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a form of precipitation?",
+      "ms": {
+        "draft": 4053,
+        "critique": 6177
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the process of transforming liquid into vapour called?",
+      "ms": {
+        "draft": 4053,
+        "critique": 6744
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is not a type of cloud mentioned in the passage?",
+      "ms": {
+        "draft": 4053,
+        "critique": 7745
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which region receives the highest annual rainfall?",
+      "ms": {
+        "draft": 4053,
+        "critique": 6629,
+        "solver": 10094,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the most important constituent of the atmosphere for human beings?",
+      "ms": {
+        "draft": 3430,
+        "critique": 7282,
+        "solver": 1573
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the process by which water is transformed from a liquid to a gaseous state?",
+      "ms": {
+        "draft": 3921,
+        "critique": 7396
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a form of condensation mentioned in the passage?",
+      "ms": {
+        "draft": 3921,
+        "critique": 9393
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the amount of water vapour present in the atmosphere?",
+      "ms": {
+        "draft": 3921,
+        "critique": 7208,
+        "solver": 13235,
+        "form": 3468
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the process of transforming liquid into vapour?",
+      "ms": {
+        "draft": 3430,
+        "critique": 5123,
+        "solver": 1479,
+        "form": 0,
+        "translation": 54969
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the highest cloud in the sky?",
+      "ms": {
+        "draft": 3430,
+        "critique": 5793,
+        "solver": 1972,
+        "form": 0,
+        "translation": 29987
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the temperature of an air mass falls suddenly and condensation occurs, what is this condition known as?",
+      "ms": {
+        "draft": 3921,
+        "critique": 5803,
+        "solver": 2585,
+        "form": 2926,
+        "translation": 41938
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a saturated air mass encounters a mountain, which of the following types of rainfall is most likely to occur?",
+      "ms": {
+        "draft": 3430,
+        "critique": 8257,
+        "solver": 2026,
+        "form": 0,
+        "translation": 40086
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the term for the air that contains moisture to its full capacity?",
+      "ms": {
+        "draft": 3430,
+        "critique": 8674,
+        "solver": 2249,
+        "form": 0,
+        "translation": 62827
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the primary reason for the decrease in water vapour with altitude?",
+      "ms": {
+        "draft": 3430,
+        "critique": 7246,
+        "solver": 1607,
+        "form": 0,
+        "translation": 36400
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of condensation that occurs when moist air comes in contact with a colder object?",
+      "ms": {
+        "draft": 3921,
+        "critique": 7037,
+        "solver": 1335,
+        "form": 3949,
+        "translation": 44606
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following factors is most important in determining the capacity of air to hold moisture?",
+      "ms": {
+        "draft": 3921,
+        "critique": 6574,
+        "solver": 1274,
+        "form": 1190,
+        "translation": 24809
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the process by which water is transformed from liquid to gaseous state?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed (by rule) - skipped in dist…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the primary cause of evaporation?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the term used to describe the amount of water vapour present in the atmosphere as compared to its full capacity at a given temperature?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the main reason for the formation of dew on grass blades during clear nights?",
+      "reason": "options 0 and 1 say the same thing (\"High humidity and high temperature\" / \"Low humidity and high temperature\"); options 0 and 2 say the same thing (\"High humidity and high temperature\" / \"High humidity and low temperature\"); options 1 and 2 say the same thing (\"Low humidity and high temperature\" / \"High humidity and low temperature\"); options 1 and 3 say the same thing (\"Low humidity and high temperature\" / \"Low humidity and low temperature\"); options 2 and 3 say the same thing (\"High humidity and low temperature\" / \"Low humidity and low temperature\"); distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed (by rule) - skipped in dist…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is the most favorable condition for condensation?",
+      "reason": "options 0 and 1 say the same thing (\"High temperature and high humidity\" / \"Low temperature and high humidity\"); options 0 and 2 say the same thing (\"High temperature and high humidity\" / \"High temperature and low humidity\"); options 1 and 2 say the same thing (\"Low temperature and high humidity\" / \"High temperature and low humidity\"); options 1 and 3 say the same thing (\"Low temperature and high humidity\" / \"Low temperature and low humidity\"); options 2 and 3 say the same thing (\"High temperature and low humidity\" / \"Low temperature and low humidity\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of rain occurs when air is forced to rise over a mountain?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a region is on the leeward side of a mountain, what kind of rainfall is it likely to receive?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the term used for the amount of water vapour in the atmosphere expressed in grams per cubic metre?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a form of precipitation?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the process of transforming liquid into vapour called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is not a type of cloud mentioned in the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which region receives the highest annual rainfall?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the most important constituent of the atmosphere for human beings?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the process by which water is transformed from a liquid to a gaseous state?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT a form of condensation mentioned in the passage?",
+      "reason": "the solution's working is not sound; option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term used to describe the amount of water vapour present in the atmosphere?",
+      "reason": "near-duplicate of served question cmvhs0an30ah2gpfh4vni5yu1 (cosine 0.923 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

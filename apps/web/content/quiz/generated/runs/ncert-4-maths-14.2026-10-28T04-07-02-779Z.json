@@ -1,0 +1,315 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:07:02.779Z",
+  "finishedAt": "2026-10-28T04:08:38.441Z",
+  "seconds": 96,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm114.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 14 — Data Handling",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n31. The length of 40 leaves of a plant are measured correct to nearest millimetre, and the data 3\nobtained is represented in the following table.\nLength [in mm]\n118 – 126\n127 – 135\nNumber of leaves\n172 – 180\nFind the mean length of the leaves.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2024-25]\n16. Which of the following gives the middle most observation of the data? 1\nA) Median B) Mean C) Range D) Mode",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2023-24]\n35.\nMarks obtained Number of Cumulative\n20 – 30\n30 – 40\n40 – 50\n50 – 60\n60 – 70\n70 – 80\n80 - 90\np + q + 78 = 90\np + q = 12\n೙ మ ି௖\nMedian = (𝑙) + ௙ . h\nସହି (௣ାସ଴)\n50 = 50 + . 10\nଶ଴\nସହି (௣ାସ଴)\n. 10 = 0\nଶ଴\n45 − (𝑝 + 40) = 0\nP = 5\n5 + q = 12\nq = 7\n௙ଵି ௙଴\nMode = 𝑙 + ଶ௙ଵି ௙଴ି ௙ଶ . h\nstudents frequency\np p\n15 p + 15\n25 p + 40 1\n20 p + 60\nq p + q + 60\n8 p + q + 68 ½\n10 p + q + 78 ½\n½\n½\n½\n½\nଶହି ଵହ\n= 40 + . 10\nଶ(ଶହ)ି ଵହି ଶ଴\nଵ଴଴\n= 40 + ଵହ = 40 + 6.67 = 46.67",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n4. A) 7"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 30939,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 9674,
+      "completionTokens": 1958
+    },
+    "critique": {
+      "calls": 12,
+      "ms": 59142,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 4929,
+      "completionTokens": 2001
+    },
+    "solver": {
+      "calls": 55,
+      "ms": 20035,
+      "in": 11,
+      "out": 4,
+      "rejects": 7,
+      "promptTokens": 5930,
+      "completionTokens": 440
+    },
+    "form": {
+      "calls": 2,
+      "ms": 4222,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 452,
+      "completionTokens": 134
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 30,
+      "ms": 5221,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 74024,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 5842,
+      "completionTokens": 2844
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "How many children like Mathematics the most according to the recorded responses?",
+      "ms": {
+        "draft": 2683,
+        "critique": 4455,
+        "solver": 933
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the most appropriate question to find the 'most liked subject' among students?",
+      "ms": {
+        "draft": 2683,
+        "critique": 4841,
+        "solver": 2152
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 10 more children who like Physical Education are added to the data, what will be the new count for Physical Education?",
+      "ms": {
+        "draft": 2683,
+        "critique": 5622,
+        "solver": 614
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the data, which subject is liked the least?",
+      "ms": {
+        "draft": 2683,
+        "critique": 4974,
+        "solver": 1326
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many children like Mathematics the most according to the list of responses?",
+      "ms": {
+        "draft": 2474,
+        "critique": 5778,
+        "solver": 1447
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of children in the class according to the passage?",
+      "ms": {
+        "draft": 2474,
+        "critique": 5935,
+        "solver": 1968
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 5 more children like The World Around Us, what will be the new total for that subject?",
+      "ms": {
+        "draft": 2474,
+        "critique": 5165
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the number of children who like Physical Education doubles, what will be the new total?",
+      "ms": {
+        "draft": 2474,
+        "critique": 4252,
+        "solver": 889
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which subject is the most common favourite among the children according to the table?",
+      "ms": {
+        "draft": 2474,
+        "critique": 5713,
+        "solver": 871,
+        "form": 1634
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is used to record the responses to a question?",
+      "ms": {
+        "draft": 2474,
+        "critique": 5636,
+        "solver": 937,
+        "form": 3559,
+        "translation": 27063
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the most common favourite subject among the children?",
+      "ms": {
+        "draft": 2683,
+        "critique": 4580,
+        "solver": 1457,
+        "form": 0,
+        "translation": 20393
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the number of children who like The World Around Us is doubled, what will be the new count?",
+      "ms": {
+        "draft": 2683,
+        "critique": 4365,
+        "solver": 1512,
+        "form": 0,
+        "translation": 22443
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many children like Mathematics the most according to the recorded responses?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is the most appropriate question to find the 'most liked subject' among students?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 10 more children who like Physical Education are added to the data, what will be the new count for Physical Education?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the data, which subject is liked the least?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many children like Mathematics the most according to the list of responses?",
+      "reason": "the solver picked option 0 2 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the total number of children in the class according to the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 5 more children like The World Around Us, what will be the new total for that subject?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the number of children who like Physical Education doubles, what will be the new total?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which subject is the most common favourite among the children according to the table?",
+      "reason": "near-duplicate of batch item \"What is the most common favourite subject among th…\" (cosine 0.950 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

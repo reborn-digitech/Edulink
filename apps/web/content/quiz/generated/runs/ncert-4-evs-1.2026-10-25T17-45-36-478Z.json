@@ -1,0 +1,225 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T17:45:36.478Z",
+  "finishedAt": "2026-10-25T17:46:55.991Z",
+  "seconds": 80,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap101.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 1 — Going to School",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 8,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 22276,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 7808,
+      "completionTokens": 1138
+    },
+    "critique": {
+      "calls": 6,
+      "ms": 36604,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 2347,
+      "completionTokens": 1040
+    },
+    "solver": {
+      "calls": 30,
+      "ms": 12583,
+      "in": 6,
+      "out": 3,
+      "rejects": 3,
+      "promptTokens": 3045,
+      "completionTokens": 240
+    },
+    "form": {
+      "calls": 3,
+      "ms": 4204,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 650,
+      "completionTokens": 204
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 22,
+      "ms": 3576,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 58350,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4315,
+      "completionTokens": 2197
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What do children in Assam use to cross the river?",
+      "ms": {
+        "draft": 3132,
+        "critique": 6645,
+        "solver": 1641
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What do children in Ladakh use to cross the river?",
+      "ms": {
+        "draft": 3132,
+        "critique": 8526,
+        "solver": 2037
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What do children in Ladakh use to cross the river?",
+      "ms": {
+        "draft": 2438,
+        "critique": 5171,
+        "solver": 890
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What do children in Assam use to cross the river?",
+      "ms": {
+        "draft": 2438,
+        "critique": 4390,
+        "solver": 1149,
+        "form": 1527
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In Kerala, what do children use to reach school?",
+      "ms": {
+        "draft": 3132,
+        "critique": 7515,
+        "solver": 1905,
+        "form": 2798,
+        "translation": 26607
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What do children in Rajasthan use to reach school?",
+      "ms": {
+        "draft": 3132,
+        "critique": 4897,
+        "solver": 588,
+        "form": 1078,
+        "translation": 26682
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What do children in Assam use to cross the river?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What do children in Ladakh use to cross the river?",
+      "reason": "the solver picked option 1 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What do children in Kerala use to reach school?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What do children in Rajasthan use to reach school?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What do children in Ladakh use to cross the river?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What do children in Assam use to cross the river?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Mentions a bridge not discussed in the passage…\"); distractor 3's reason is not a one-line misconception (\"Mentions a bridge not discussed in the passage…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

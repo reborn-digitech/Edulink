@@ -1,0 +1,258 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:11:43.339Z",
+  "finishedAt": "2026-10-28T04:12:46.019Z",
+  "seconds": 63,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap104.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 4 — The Story of Amrita",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 23662,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7114,
+      "completionTokens": 1538
+    },
+    "critique": {
+      "calls": 10,
+      "ms": 42690,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 4456,
+      "completionTokens": 1673
+    },
+    "solver": {
+      "calls": 44,
+      "ms": 20744,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 8526,
+      "completionTokens": 493
+    },
+    "form": {
+      "calls": 6,
+      "ms": 11618,
+      "in": 6,
+      "out": 2,
+      "rejects": 4,
+      "promptTokens": 1433,
+      "completionTokens": 390
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 3556,
+      "in": 2,
+      "out": 0,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 1,
+      "ms": 3679,
+      "in": 0,
+      "out": 0,
+      "rejects": 0,
+      "promptTokens": 170,
+      "completionTokens": 293
+    }
+  },
+  "kept": 0,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why did the people of Khejadli village take care of plants, trees and animals?",
+      "ms": {
+        "draft": 2822,
+        "critique": 4033,
+        "solver": 1151,
+        "form": 3854
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did Amrita and the villagers hug the trees when the King's men came to cut them?",
+      "ms": {
+        "draft": 2822,
+        "critique": 2487,
+        "solver": 595,
+        "form": 799
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the village where Amrita lived?",
+      "ms": {
+        "draft": 3094,
+        "critique": 4555
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Amrita hug the tree when the King’s men came to cut it?",
+      "ms": {
+        "draft": 3094,
+        "critique": 5457
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the people of Khejadli village believe about plants and animals?",
+      "ms": {
+        "draft": 3094,
+        "critique": 4907,
+        "solver": 8254,
+        "form": 2371
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did the King learn when he visited Khejadli village?",
+      "ms": {
+        "draft": 3094,
+        "critique": 5177,
+        "solver": 8549,
+        "form": 1071
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the village where Amrita lived?",
+      "ms": {
+        "draft": 2822,
+        "critique": 4387,
+        "solver": 1500,
+        "form": 2662
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did Amrita do every morning?",
+      "ms": {
+        "draft": 2822,
+        "critique": 4758,
+        "solver": 1669,
+        "form": 2470
+      },
+      "outcome": "dedupe",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Why did the people of Khejadli village take care of plants, trees and animals?",
+      "reason": "the key is far longer than every distractor (103 vs 55 characters); distractor 3's reason is not a one-line misconception (\"Thinks that the reason is to protect them from the King's me…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why did Amrita and the villagers hug the trees when the King's men came to cut them?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Thinks that hugging the trees was to make them feel happy, w…\"); distractor 3's reason is not a one-line misconception (\"Thinks that hugging the trees was to stop the King from visi…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the village where Amrita lived?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why did Amrita hug the tree when the King’s men came to cut it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What did the people of Khejadli village believe about plants and animals?",
+      "reason": "options 0 and 1 say the same thing (\"Plants and animals can survive without us, but we can not survive without them.\" / \"Plants and animals can survive with us, but we can not survive with them.\"); options 0 and 2 say the same thing (\"Plants and animals can survive without us, but we can not survive without them.\" / \"Plants and animals can survive without us, but we can not survive with them.\"); options 0 and 3 say the same thing (\"Plants and animals can survive without us, but we can not survive without them.\" / \"Plants and animals can not survive without us, but we can survive without them.\"); options 1 and 2 say the same thing (\"Plants and animals can survive with us, but we can not survive with them.\" / \"Plants and animals can survive without us, but we can not survive with them.\"); options 1 and 3 say the same thing (\"Plants and animals can survive with us, but we can not survive with them.\" / \"Plants and animals can not survive without us, but we can survive without them.\"); options 2 and 3 say the same thing (\"Plants and animals can survive without us, but we can not survive with them.\" / \"Plants and animals can not survive without us, but we can survive without them.\"); distractor 3's reason is not a one-line misconception (\"mixes up the words 'with' and 'without' in the second part o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What did the King learn when he visited Khejadli village?",
+      "reason": "options 2 and 3 are the same (\"The villagers had a strong respect for the King and followed his orders without question.\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the village where Amrita lived?",
+      "reason": "near-duplicate of served question cmvh2wk0706grgpfh27vnqk2w (cosine 0.902 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What did Amrita do every morning?",
+      "reason": "near-duplicate of served question cmvk5aj3g0j62gpfh7pkj9o8c (cosine 0.928 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

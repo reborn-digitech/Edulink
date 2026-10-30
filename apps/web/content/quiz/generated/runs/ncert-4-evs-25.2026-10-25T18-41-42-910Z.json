@@ -1,0 +1,240 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T18:41:42.910Z",
+  "finishedAt": "2026-10-25T18:43:41.501Z",
+  "seconds": 119,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap125.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 25 — Spicy Riddles",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 23984,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 6694,
+      "completionTokens": 1511
+    },
+    "critique": {
+      "calls": 11,
+      "ms": 52280,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4807,
+      "completionTokens": 1908
+    },
+    "solver": {
+      "calls": 61,
+      "ms": 29168,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 10914,
+      "completionTokens": 633
+    },
+    "form": {
+      "calls": 6,
+      "ms": 11889,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 1497,
+      "completionTokens": 427
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 3610,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 122536,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8608,
+      "completionTokens": 4221
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a spice is added to both sweet and salty dishes, which spice could it be?",
+      "ms": {
+        "draft": 3308,
+        "critique": 6257,
+        "solver": 1384
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which spice is described as looking like a nail, having a chocolate brown colour, and soothing toothache?",
+      "ms": {
+        "draft": 3308,
+        "critique": 6454,
+        "solver": 7173,
+        "form": 1214
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which spice is described as being used in both sweet and salty foods?",
+      "ms": {
+        "draft": 2688,
+        "critique": 4526,
+        "solver": 1216
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you add too much of a certain spice to food, it can make you gasp and your eyes and nose begin to water. Which spice is this?",
+      "ms": {
+        "draft": 2688,
+        "critique": 5072,
+        "solver": 5948,
+        "form": 1154
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which spice is described as looking like a pearl, being black when whole, and having a sharp and spicy taste?",
+      "ms": {
+        "draft": 3308,
+        "critique": 6786,
+        "solver": 9429,
+        "form": 2195,
+        "translation": 33286
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which spice is described as looking like a nail but a bud is it, with a chocolate brown colour and a strong smell?",
+      "ms": {
+        "draft": 2688,
+        "critique": 5224,
+        "solver": 2019,
+        "form": 1946,
+        "translation": 17526
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which spice is described as being used to make food look yellow and is mixed in oil to heal wounds?",
+      "ms": {
+        "draft": 3308,
+        "critique": 5755,
+        "solver": 1357,
+        "form": 4381,
+        "translation": 38652
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which spice is described as being ground and powdered to make food look yellow?",
+      "ms": {
+        "draft": 2688,
+        "critique": 4717,
+        "solver": 1720,
+        "form": 2556,
+        "translation": 29310
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a spice is added to both sweet and salty dishes, which spice could it be?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which spice is described as looking like a nail, having a chocolate brown colour, and soothing toothache?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which spice is described as being used in both sweet and salty foods?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If you add too much of a certain spice to food, it can make you gasp and your eyes and nose begin to water. Which spice is this?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

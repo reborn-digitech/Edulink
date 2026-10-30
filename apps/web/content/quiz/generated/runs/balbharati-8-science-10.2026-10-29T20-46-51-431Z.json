@@ -1,0 +1,536 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T20:46:51.431Z",
+  "finishedAt": "2026-10-29T20:54:53.382Z",
+  "seconds": 482,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 10 — Cell and Cell Organelles",
+    "edition": "First Edition 2018",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2023-24]\nMarking Scheme (2023-24)\nClass-X\nScience (Subject Code – 086) b\nQ. No. Answer Marks\nSection–A\n1 b) Barium sulphate\n2 b) Colourless\n3 d) NaHCO 3\n4 a) Sodium\n6 d) 11 (2,8,1)\n7 c) 14\n8 b) Mushroom\n9 a) tongue\n10 c) Vegetative propagation\n11 c) Growth hormones under the influence of the enzymes coded by a gene. 1\n12 c) lack of oxygen and formation of lactic acid. 1\n13 d) behind the mirror and its position varies according to the object distance. 1\n14 c) scattering of light.\n15 c) CFCs, Ozone\n16 a) Broken down by biological processes\n17 d) Assertion is false but Reason is true\n18 a) Both A and R are true and R is the correct explanation of A. 1\n19 d) Assertion is false but Reason is true 1\n20 c) ",
+      "[INJSO 2020 — question paper]\n14. Chromophores are commonly used as biological stains to view cell organelles better. When\nan epithelial cell (e.g. skin cell) is stained with a basic dye like methylene blue and observed\nunder a light microscope (total magnification of 100X), the visible cell organelle(s) will be\nA. Blue nucleus and blue mitochondria.\nB. Blue nucleus and blue endosomes.\nC. Blue nucleus and pink mitochondria.\nD. Blue nucleus.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[INJSO 2021 — question paper]\n3. Descriptions of four biological samples (I - IV) are given below.\nI: Can be viewed using a light microscope with a total magnification of 1000X; possesses cell wall\nand does not possess mitochondria.\nII: Can be seen using a light microscope with a total magnification of 100X; possesses cell wall and\nhas a nucleus.\nIII: Needs electron microscope for viewing; can be found attached to the membrane system in the\ncytoplasm.\nIV: Needs electron microscope for viewing; cannot replicate on its own, needs other specific cells\nfor replication.\nI, II, III, and IV respectively represent:\nA. virus; plant cell; ribosome; bacteria. B. plant cell; bacteria; vacuole; virus.\nC. bacteria; plant cell; ribosom"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 110081,
+      "in": 29,
+      "out": 27,
+      "rejects": 2,
+      "promptTokens": 25976,
+      "completionTokens": 6049
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 244338,
+      "in": 27,
+      "out": 25,
+      "rejects": 2,
+      "promptTokens": 16738,
+      "completionTokens": 6398
+    },
+    "solver": {
+      "calls": 192,
+      "ms": 97020,
+      "in": 25,
+      "out": 24,
+      "rejects": 1,
+      "promptTokens": 33479,
+      "completionTokens": 2044
+    },
+    "form": {
+      "calls": 4,
+      "ms": 11202,
+      "in": 24,
+      "out": 22,
+      "rejects": 2,
+      "promptTokens": 913,
+      "completionTokens": 318
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 102,
+      "ms": 16360,
+      "in": 22,
+      "out": 16,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 65,
+      "ms": 671233,
+      "in": 32,
+      "out": 32,
+      "rejects": 0,
+      "promptTokens": 37879,
+      "completionTokens": 19167
+    }
+  },
+  "kept": 16,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 3,
+    "4": 3,
+    "5": 4,
+    "6": 2
+  },
+  "flagged": 9,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a plant cell is placed in a hypertonic solution, what will happen to the cell?",
+      "ms": {
+        "draft": 3410,
+        "critique": 5747
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a function of the plasma membrane?",
+      "ms": {
+        "draft": 3410,
+        "critique": 9049,
+        "solver": 1286
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the cell is responsible for controlling all metabolic activities and cell division?",
+      "ms": {
+        "draft": 3410,
+        "critique": 5945,
+        "solver": 12387,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of lysosomes in a cell?",
+      "ms": {
+        "draft": 5001,
+        "critique": 7293,
+        "solver": 12095,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a cell organelle that is not membrane-bound?",
+      "ms": {
+        "draft": 3538,
+        "critique": 8399
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a cell is placed in a solution where the water concentration outside is the same as inside, what will happen to the cell?",
+      "ms": {
+        "draft": 3410,
+        "critique": 6317,
+        "solver": 1690,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell has very few mitochondria, what might be the consequence?",
+      "ms": {
+        "draft": 5001,
+        "critique": 7157,
+        "solver": 18495,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the ATP producing factory of the cell?",
+      "ms": {
+        "draft": 3096,
+        "critique": 6429,
+        "solver": 1443,
+        "form": 2349
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is responsible for maintaining the cellular osmotic pressure?",
+      "ms": {
+        "draft": 3096,
+        "critique": 6437,
+        "solver": 1721,
+        "form": 3763
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which cell organelle is described as the 'ATP producing factory'?",
+      "ms": {
+        "draft": 3538,
+        "critique": 6188,
+        "solver": 1002,
+        "form": 4761
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a function of the Golgi complex?",
+      "ms": {
+        "draft": 4009,
+        "critique": 6806,
+        "solver": 11193,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is described as a chemical factory of the cell?",
+      "ms": {
+        "draft": 3096,
+        "critique": 7421,
+        "solver": 1189,
+        "form": 1066,
+        "translation": 37988
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of the cell wall in plant cells?",
+      "ms": {
+        "draft": 3410,
+        "critique": 4997,
+        "solver": 12144,
+        "form": 0,
+        "translation": 36396
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the Golgi complex?",
+      "ms": {
+        "draft": 5001,
+        "critique": 6144,
+        "solver": 13313,
+        "form": 0,
+        "translation": 64029
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of mitochondria in a cell?",
+      "ms": {
+        "draft": 5001,
+        "critique": 8051,
+        "solver": 16054,
+        "form": 0,
+        "translation": 48264
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main function of vacuoles in plant cells?",
+      "ms": {
+        "draft": 5001,
+        "critique": 9762,
+        "solver": 15000,
+        "form": 0,
+        "translation": 40960
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if red blood cells had mitochondria?",
+      "ms": {
+        "draft": 3096,
+        "critique": 6563,
+        "solver": 1184,
+        "form": 0,
+        "translation": 43226
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant cell lacked chloroplasts, which of the following would be affected?",
+      "ms": {
+        "draft": 3538,
+        "critique": 6562,
+        "solver": 1807,
+        "form": 0,
+        "translation": 32379
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "ms": {
+        "draft": 3627,
+        "critique": 7479,
+        "solver": 10649,
+        "form": 0,
+        "translation": 49184
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a characteristic of plastids?",
+      "ms": {
+        "draft": 5001,
+        "critique": 6947,
+        "solver": 1583,
+        "form": 0,
+        "translation": 47453
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a characteristic of eukaryotic cells?",
+      "ms": {
+        "draft": 3538,
+        "critique": 6729,
+        "solver": 1753,
+        "form": 0,
+        "translation": 37443
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a student observed that the cells in a solution swelled up and became turgid. What can be inferred about the solution?",
+      "ms": {
+        "draft": 3410,
+        "critique": 6458,
+        "solver": 1547,
+        "form": 0,
+        "translation": 43479
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best describes the role of the endoplasmic reticulum?",
+      "ms": {
+        "draft": 3627,
+        "critique": 7615,
+        "solver": 7951,
+        "form": 0,
+        "translation": 32747
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the main purpose of the folds in the inner membrane of mitochondria?",
+      "ms": {
+        "draft": 4009,
+        "critique": 5372,
+        "solver": 1163,
+        "form": 0,
+        "translation": 35658
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following would be most affected if the plasma membrane were not selectively permeable?",
+      "ms": {
+        "draft": 3538,
+        "critique": 6173,
+        "solver": 1224,
+        "form": 0,
+        "translation": 34136
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are plastids important for plants?",
+      "ms": {
+        "draft": 4009,
+        "critique": 6732,
+        "solver": 1666,
+        "form": 0,
+        "translation": 47506
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is most likely to be found in a prokaryotic cell but not in a eukaryotic cell?",
+      "ms": {
+        "draft": 3538,
+        "critique": 6435,
+        "solver": 1675,
+        "form": 0,
+        "translation": 37015
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is responsible for the green color of leaves?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a plant cell is placed in a hypertonic solution, what will happen to the cell?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT a function of the plasma membrane?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the cell is responsible for controlling all metabolic activities and cell division?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main function of lysosomes in a cell?",
+      "reason": "the key is far longer than every distractor (60 vs 29 characters)"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What happens to a plant cell when it is placed in a hypertonic solution?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a cell organelle that is not membrane-bound?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a cell is placed in a solution where the water concentration outside is the same as inside, what will happen to the cell?",
+      "reason": "near-duplicate of served question cmvg79ibk02jfgpfhzl0b1j0j (cosine 0.913 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a cell has very few mitochondria, what might be the consequence?",
+      "reason": "near-duplicate of served question cmvf2bsut02upgod86dnpaq85 (cosine 0.927 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is the ATP producing factory of the cell?",
+      "reason": "near-duplicate of served question cmvg79ib402i3gpfhbkk6ii3d (cosine 0.910 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is responsible for maintaining the cellular osmotic pressure?",
+      "reason": "near-duplicate of served question cmvg79ibc02ilgpfhu6vfauvv (cosine 0.956 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which cell organelle is described as the 'ATP producing factory'?",
+      "reason": "near-duplicate of served question cmvg79ib402i3gpfhbkk6ii3d (cosine 0.971 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following is a function of the Golgi complex?",
+      "reason": "near-duplicate of batch item \"Which of the following is a function of the Golgi …\" (cosine 0.963 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

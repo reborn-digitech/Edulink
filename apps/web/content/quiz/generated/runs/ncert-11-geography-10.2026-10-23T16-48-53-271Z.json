@@ -1,0 +1,433 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T16:48:53.271Z",
+  "finishedAt": "2026-10-23T16:54:57.359Z",
+  "seconds": 364,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamental of Physical Geography",
+    "bookCode": "kegy2",
+    "document": "ncert/11/geography/kegy210.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 10 — Water in the Atmosphere",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\n14. C. Implementing rainwater harvesting, recycling and reusing 1\nwastewater.",
+      "[CBSE Class XII Geography, marking scheme, 2025-26]\n29. 5\nA Hamburg\nB Capetown\nC Panama Canal\nD Amazon Basin\nE Santiago\nF Vladivostok\nG Downs\nFor Visually impaired students.\nA Hamburg/London/North Cape\nB Capetown\nC Rhine waterway\nD Amazon Basin\nE Santiago/ Buenos Airies\nF Vladivostok/ St. Petersburg\nG Downs",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n15. (b) Watershed development",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 99654,
+      "in": 23,
+      "out": 19,
+      "rejects": 4,
+      "promptTokens": 17094,
+      "completionTokens": 4086
+    },
+    "critique": {
+      "calls": 20,
+      "ms": 162022,
+      "in": 19,
+      "out": 13,
+      "rejects": 6,
+      "promptTokens": 8248,
+      "completionTokens": 3326
+    },
+    "solver": {
+      "calls": 73,
+      "ms": 46722,
+      "in": 13,
+      "out": 9,
+      "rejects": 4,
+      "promptTokens": 10181,
+      "completionTokens": 662
+    },
+    "form": {
+      "calls": 6,
+      "ms": 21196,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 1499,
+      "completionTokens": 476
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 13,
+      "ms": 2805,
+      "in": 9,
+      "out": 8,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 35,
+      "ms": 476096,
+      "in": 16,
+      "out": 16,
+      "rejects": 1,
+      "promptTokens": 19853,
+      "completionTokens": 10118
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following factors influence condensation?",
+      "ms": {
+        "draft": 4303,
+        "critique": 9676,
+        "solver": 20784
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of rainfall occurs when moist air is forced to rise over a mountain?",
+      "ms": {
+        "draft": 4752,
+        "critique": 8640
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a region experiences heavy rainfall on the windward side of a mountain but very little on the leeward side, what is this phenomenon called?",
+      "ms": {
+        "draft": 4752,
+        "critique": 8704,
+        "solver": 2315
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a form of precipitation?",
+      "ms": {
+        "draft": 4752,
+        "critique": 8140,
+        "solver": 1958
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which type of cloud is described as a 'shapeless mass of thick vapour'?",
+      "ms": {
+        "draft": 4752,
+        "critique": 8011
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to raindrops when they pass through a layer of subfreezing air before reaching the ground?",
+      "ms": {
+        "draft": 4752,
+        "critique": 6914
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a region is located in the rain shadow of a mountain, what can be expected about its rainfall?",
+      "ms": {
+        "draft": 4091,
+        "critique": 5803
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a form of precipitation?",
+      "ms": {
+        "draft": 4091,
+        "critique": 6366
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of rainfall occurs when air is forced to rise over a mountain?",
+      "ms": {
+        "draft": 4091,
+        "critique": 7012
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is NOT a factor that influences the process of condensation?",
+      "ms": {
+        "draft": 4156,
+        "critique": 6406,
+        "solver": 1667
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the amount of water vapour present in the atmosphere?",
+      "ms": {
+        "draft": 4156,
+        "critique": 7371,
+        "solver": 2060,
+        "form": 5125
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a form of condensation?",
+      "ms": {
+        "draft": 4303,
+        "critique": 8729,
+        "solver": 1848,
+        "form": 0,
+        "translation": 39600
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the actual amount of water vapour in the atmosphere?",
+      "ms": {
+        "draft": 4303,
+        "critique": 7449,
+        "solver": 2312,
+        "form": 4521,
+        "translation": 69450
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the temperature of the air decreases to the dew point, what is most likely to happen?",
+      "ms": {
+        "draft": 4303,
+        "critique": 9379,
+        "solver": 2265,
+        "form": 0,
+        "translation": 49614
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary reason for the difference in humidity levels between oceans and continents?",
+      "ms": {
+        "draft": 4156,
+        "critique": 8040,
+        "solver": 3261,
+        "form": 3559,
+        "translation": 67264
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following forms of condensation is described as occurring when the dew point is below the freezing point?",
+      "ms": {
+        "draft": 4156,
+        "critique": 7356,
+        "solver": 2202,
+        "form": 4656,
+        "translation": 71562
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that the air is very humid, and the temperature is decreasing. What can they conclude about the likelihood of condensation?",
+      "ms": {
+        "draft": 4303,
+        "critique": 12826,
+        "solver": 2587,
+        "form": 0,
+        "translation": 57928
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the dew point of an air mass is 10°C and the temperature is 5°C, what will happen to the water vapour in the air?",
+      "ms": {
+        "draft": 4156,
+        "critique": 8518,
+        "solver": 1072,
+        "form": 2145,
+        "translation": 50707
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does condensation occur more frequently over the oceans than over continents?",
+      "ms": {
+        "draft": 4303,
+        "critique": 11426,
+        "solver": 1558,
+        "form": 4586,
+        "translation": 64143
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a form of condensation?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which of the following factors influence condensation?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of rainfall occurs when moist air is forced to rise over a mountain?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a region experiences heavy rainfall on the windward side of a mountain but very little on the leeward side, what is this phenomenon called?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a form of precipitation?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which type of cloud is described as a 'shapeless mass of thick vapour'?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What happens to raindrops when they pass through a layer of subfreezing air before reaching the ground?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which type of cloud is associated with heavy rainfall and thunderstorms?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is the most important constituent of the atmosphere for human beings?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is the highest cloud in the sky?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a region is located in the rain shadow of a mountain, what can be expected about its rainfall?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not a form of precipitation?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which type of rainfall occurs when air is forced to rise over a mountain?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is NOT a factor that influences the process of condensation?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term used for the amount of water vapour present in the atmosphere?",
+      "reason": "near-duplicate of batch item \"What is the term used to describe the actual amoun…\" (cosine 0.977 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

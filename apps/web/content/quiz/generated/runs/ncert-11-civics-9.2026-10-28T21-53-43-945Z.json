@@ -1,0 +1,877 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T21:53:43.945Z",
+  "finishedAt": "2026-10-28T22:04:55.350Z",
+  "seconds": 671,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "India Constitution at Work",
+    "bookCode": "keps2",
+    "document": "ncert/11/political-science/keps209.pdf",
+    "classLevel": 11,
+    "subject": "Political Science",
+    "chapter": "Chapter 9 — Constitution as a Living Document",
+    "edition": "Reprint 2026-27",
+    "chunks": 21,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, sample question paper, 2024-25]\n12. Which of the following Schedules of the Constitution allows complete autonomy to 1\ndifferent tribes to preserve their practices and customary laws?\nA) Fourth Schedule\nB) Sixth Schedule\nC) Seventh Schedule\nD) Eighth Schedule",
+      "[CBSE Class XII Political Science, marking scheme, 2025-26]\n5. Every aspirant gets a chance to be a member of the Parliament.",
+      "[CBSE Class XII Political Science, marking scheme, 2022-23]\n3. Congress",
+      "[CBSE Class XII Political Science, marking scheme, 2023-24]\n10. In the following question, a statement of Assertion (A) is 1\nfollowed by a statement of Reason (R). Choose the\nappropriate option:\nAssertion (A): The Sixth Schedule of the Constitution allows\ndifferent tribes complete autonomy of preserving their practices\nand customary laws. Politics in India\nReason (R): These provisions proved crucial in resolving Since\ncomplex political problems in the Northeast. Independence\na. Both the Assertion and the Reason are correct, and the\nReason is the correct explanation of the Assertion. Pg. No: 132\nb. Both the Assertion and the Reason are correct, but the\nReason is not the correct explanation of the Assertion.\nc. The Assertion is incorrect, but the Reaso"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 13,
+      "ms": 207638,
+      "in": 47,
+      "out": 43,
+      "rejects": 4,
+      "promptTokens": 50617,
+      "completionTokens": 11333
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 377512,
+      "in": 43,
+      "out": 39,
+      "rejects": 4,
+      "promptTokens": 26061,
+      "completionTokens": 9741
+    },
+    "solver": {
+      "calls": 289,
+      "ms": 154613,
+      "in": 39,
+      "out": 33,
+      "rejects": 6,
+      "promptTokens": 53933,
+      "completionTokens": 3046
+    },
+    "form": {
+      "calls": 7,
+      "ms": 20926,
+      "in": 33,
+      "out": 7,
+      "rejects": 26,
+      "promptTokens": 1854,
+      "completionTokens": 509
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 10,
+      "ms": 1943,
+      "in": 7,
+      "out": 6,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 291294,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 15647,
+      "completionTokens": 8621
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 2,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is most likely to be a reason for the Constitution being called a 'living document'?",
+      "ms": {
+        "draft": 13255,
+        "critique": 6759,
+        "solver": 1885,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a new law is passed that contradicts the basic structure of the Constitution, what would be the most likely outcome according to the passage?",
+      "ms": {
+        "draft": 13255,
+        "critique": 6783,
+        "solver": 2668,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses how the Indian Constitution is both sacred and can be amended. How does this duality affect the way it is treated in practice?",
+      "ms": {
+        "draft": 13255,
+        "critique": 6246,
+        "solver": 1350,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student argues that the Constitution should never be amended because it was created by the best people. What is the most accurate response to this argument based on the passage?",
+      "ms": {
+        "draft": 13255,
+        "critique": 7250,
+        "solver": 2296,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a political party wants to amend a part of the Constitution that requires a special majority in both Houses of Parliament, what is the minimum number of members that must support the amendment bill in the Lok Sabha, which has 545 members?",
+      "ms": {
+        "draft": 4321,
+        "critique": 7419,
+        "solver": 1363,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a flexible part of the Indian Constitution?",
+      "ms": {
+        "draft": 4321,
+        "critique": 6451,
+        "solver": 1961
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is true about the Indian Constitution?",
+      "ms": {
+        "draft": 13255,
+        "critique": 8069,
+        "solver": 10861,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a new state is to be admitted into the Union of India, which of the following procedures is followed?",
+      "ms": {
+        "draft": 4321,
+        "critique": 6211,
+        "solver": 2107
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage mentions that the Constitution was amended 106 times in 74 years. Which of the following could explain the high number of amendments?",
+      "ms": {
+        "draft": 4841,
+        "critique": 10088,
+        "solver": 2030
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, which of the following is a principle of amending the Constitution in most modern countries?",
+      "ms": {
+        "draft": 4841,
+        "critique": 7388,
+        "solver": 16581,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses the amendment process in the context of political history. Which of the following best explains why the Constitution was amended frequently during periods of coalition politics?",
+      "ms": {
+        "draft": 4841,
+        "critique": 6851,
+        "solver": 1548,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is NOT required for amending the Constitution of India?",
+      "ms": {
+        "draft": 4841,
+        "critique": 8335,
+        "solver": 16062
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, which group of amendments includes changes that make no substantial difference to the original provisions of the Constitution?",
+      "ms": {
+        "draft": 4759,
+        "critique": 8128,
+        "solver": 1604,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main reason for requiring ratification by half the State legislatures for certain amendments?",
+      "ms": {
+        "draft": 4841,
+        "critique": 7621,
+        "solver": 17476,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a new amendment is made to increase the retirement age of High Court judges, which category of amendments would this fall into?",
+      "ms": {
+        "draft": 4759,
+        "critique": 7899,
+        "solver": 14090,
+        "form": 2918
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why might the passage suggest that the Constitution is a 'living document'?",
+      "ms": {
+        "draft": 4759,
+        "critique": 6785,
+        "solver": 1856
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why the passage says that the number of amendments may not indicate that the Constitution is too flexible?",
+      "ms": {
+        "draft": 4759,
+        "critique": 8184,
+        "solver": 13202,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "ms": {
+        "draft": 4592,
+        "critique": 5936,
+        "solver": 1563,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Choose the correct statement from the following.",
+      "ms": {
+        "draft": 5424,
+        "critique": 5859,
+        "solver": 4559,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a correct statement about the amendment process of the Indian Constitution?",
+      "ms": {
+        "draft": 4683,
+        "critique": 7894
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the Indian Constitution?",
+      "ms": {
+        "draft": 4683,
+        "critique": 8289,
+        "solver": 10965,
+        "form": 3319
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best explains the role of the judiciary in the Indian Constitution?",
+      "ms": {
+        "draft": 4683,
+        "critique": 7028,
+        "solver": 13284,
+        "form": 2828
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following best explains the role of the Judiciary in the Kesavananda ruling?",
+      "ms": {
+        "draft": 4724,
+        "critique": 7322,
+        "solver": 1601,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the idea of the Constitution as a 'living document' according to the passage?",
+      "ms": {
+        "draft": 4724,
+        "critique": 7004,
+        "solver": 12859,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains why the 42nd Amendment was controversial?",
+      "ms": {
+        "draft": 4683,
+        "critique": 7232,
+        "solver": 16644,
+        "form": 3011
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The passage mentions that the basic structure theory was not explicitly mentioned in the Constitution. Which of the following best explains why this theory is still accepted by all institutions?",
+      "ms": {
+        "draft": 4724,
+        "critique": 6876,
+        "solver": 1587,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes the Constitution as a living document that adapts to societal changes. Which of the following scenarios best reflects the idea of a 'living document' as explained in the passage?",
+      "ms": {
+        "draft": 4724,
+        "critique": 6303,
+        "solver": 1978,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a constitutional amendment that was later revoked due to political backlash?",
+      "ms": {
+        "draft": 14317,
+        "critique": 6452
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The passage states that the Constitution is durable because of its ability to be dynamic and responsive to societal changes. Which of the following best supports this statement?",
+      "ms": {
+        "draft": 4724,
+        "critique": 6859,
+        "solver": 2080,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the original Constitution of India?",
+      "ms": {
+        "draft": 3959,
+        "critique": 7717,
+        "solver": 1732,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, which type of amendment is described as 'only a technical amendment'?",
+      "ms": {
+        "draft": 3959,
+        "critique": 7277,
+        "solver": 2515
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which principle of constitutional amendment ensures that the views of the general public are considered?",
+      "ms": {
+        "draft": 4663,
+        "critique": 5949
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage imply about the relationship between the judiciary and the Parliament in the context of constitutional amendments?",
+      "ms": {
+        "draft": 3959,
+        "critique": 7218,
+        "solver": 2022,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not a reason for making amendments to the Indian Constitution according to the passage?",
+      "ms": {
+        "draft": 3959,
+        "critique": 7980,
+        "solver": 13943,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a requirement for amending articles related to the distribution of powers between the States and the central government?",
+      "ms": {
+        "draft": 4663,
+        "critique": 5727
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the primary principle behind the amendment procedure of the Indian Constitution?",
+      "ms": {
+        "draft": 6265,
+        "critique": 4323,
+        "solver": 4871,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which amendment extended the duration of the Lok Sabha from five to six years?",
+      "ms": {
+        "draft": 56929,
+        "critique": 6106,
+        "solver": 1735,
+        "form": 2274
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the role of the judiciary in relation to the Indian Constitution?",
+      "ms": {
+        "draft": 13255,
+        "critique": 6511,
+        "solver": 1347,
+        "form": 3962,
+        "translation": 53246
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of a flexible constitution?",
+      "ms": {
+        "draft": 4321,
+        "critique": 7586,
+        "solver": 1470,
+        "form": 0,
+        "translation": 36335
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains the significance of the 'basic structure' theory in the Indian Constitution?",
+      "ms": {
+        "draft": 4683,
+        "critique": 7957,
+        "solver": 12793,
+        "form": 4362,
+        "translation": 50988
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "The Constitution has provisions that are both flexible and rigid. Which of the following best explains why some parts of the Constitution are made rigid?",
+      "ms": {
+        "draft": 4321,
+        "critique": 6786,
+        "solver": 1350,
+        "form": 0,
+        "translation": 56893
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What does the theory of the basic structure of the Constitution imply about the power of Parliament to amend the Constitution?",
+      "ms": {
+        "draft": 14317,
+        "critique": 4825,
+        "solver": 1397,
+        "form": 0,
+        "translation": 43058
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "The Indian Constitution allows for amendments but makes the process complex. What is the underlying principle behind this design?",
+      "ms": {
+        "draft": 4321,
+        "critique": 7841,
+        "solver": 1504,
+        "form": 1,
+        "translation": 46388
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is most likely to be a reason for the Constitution being called a 'living document'?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a new law is passed that contradicts the basic structure of the Constitution, what would be the most likely outcome according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses how the Indian Constitution is both sacred and can be amended. How does this duality affect the way it is treated in practice?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student argues that the Constitution should never be amended because it was created by the best people. What is the most accurate response to this argument based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 0 repeats the stem's wording (\"The Constitution should never be amended because it was created by the best people\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a political party wants to amend a part of the Constitution that requires a special majority in both Houses of Parliament, what is the minimum number of members that must support the amendment bill in the Lok Sabha, which has 545 members?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"545/2\" = 272.5, but the key says 273"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a flexible part of the Indian Constitution?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is true about the Indian Constitution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a new state is to be admitted into the Union of India, which of the following procedures is followed?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The passage mentions that the Constitution was amended 106 times in 74 years. Which of the following could explain the high number of amendments?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, which of the following is a principle of amending the Constitution in most modern countries?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses the amendment process in the context of political history. Which of the following best explains why the Constitution was amended frequently during periods of coalition politics?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Is incorrect because the passage states that coalition polit…\"); distractor 1's reason is not a one-line misconception (\"Is incorrect because the passage highlights the flexibility …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following is NOT required for amending the Constitution of India?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, which group of amendments includes changes that make no substantial difference to the original provisions of the Constitution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Refers to amendments made through political consensus, which…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the main reason for requiring ratification by half the State legislatures for certain amendments?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 are the same (\"To ensure that the central government has full control\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a new amendment is made to increase the retirement age of High Court judges, which category of amendments would this fall into?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the passage, why might the passage suggest that the Constitution is a 'living document'?",
+      "reason": "the solver picked option 0 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best explains why the passage says that the number of amendments may not indicate that the Constitution is too flexible?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main idea of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Choose the correct statement from the following.",
+      "reason": "the key is far longer than every distractor (132 vs 73 characters); distractor 3's reason is not a one-line misconception (\"Implies that a constitution should be rewritten by each gene…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is true about the amendment process in the Indian Constitution?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "What was the purpose of the commission appointed in 2000 to review the working of the Constitution?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "According to the passage, what is the role of the Judiciary in the evolution of the Constitution?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "Which of the following statements about the 42nd Amendment is correct?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is not a correct statement about the amendment process of the Indian Constitution?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the Indian Constitution?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best explains the role of the judiciary in the Indian Constitution?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following best explains the role of the Judiciary in the Kesavananda ruling?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Thinks that the Judiciary supports parliamentary supremacy o…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that the Judiciary supports frequent ame…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following best describes the idea of the Constitution as a 'living document' according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best explains why the 42nd Amendment was controversial?",
+      "reason": "options 0 and 1 say the same thing (\"It was made without the support of a simple majority\" / \"It was made without the support of a special majority\"); options 0 and 2 say the same thing (\"It was made without the support of a simple majority\" / \"It was made with the support of a simple majority\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The passage mentions that the basic structure theory was not explicitly mentioned in the Constitution. Which of the following best explains why this theory is still accepted by all institutions?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believes that the theory was added through a constitutional …\"); distractor 1's reason is not a one-line misconception (\"Thinks that the theory was introduced by a political leader,…\"); distractor 3's reason is not a one-line misconception (\"Assumes that the theory was accepted because of popular supp…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage describes the Constitution as a living document that adapts to societal changes. Which of the following scenarios best reflects the idea of a 'living document' as explained in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Thinks that a living document must be changed frequently, wh…\"); distractor 1's reason is not a one-line misconception (\"Believes that a living document should not be changed at all…\"); distractor 3's reason is not a one-line misconception (\"Assumes that a living document is only interpreted based on …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is an example of a constitutional amendment that was later revoked due to political backlash?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "The passage states that the Constitution is durable because of its ability to be dynamic and responsive to societal changes. Which of the following best supports this statement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Believes that there are no restrictions on amendments, which…\"); distractor 2's reason is not a one-line misconception (\"Thinks that the Constitution is not changed at all, which is…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the original Constitution of India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's tone about the Constitution…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's statement about flexibility…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "According to the passage, which type of amendment is described as 'only a technical amendment'?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which principle of constitutional amendment ensures that the views of the general public are considered?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage imply about the relationship between the judiciary and the Parliament in the context of constitutional amendments?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's discussion of parliamentary acti…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is not a reason for making amendments to the Indian Constitution according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a requirement for amending articles related to the distribution of powers between the States and the central government?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the primary principle behind the amendment procedure of the Indian Constitution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which amendment extended the duration of the Lok Sabha from five to six years?",
+      "reason": "near-duplicate of served question cmvld34ju0mkwgpfhzedw7l5e (cosine 0.972 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

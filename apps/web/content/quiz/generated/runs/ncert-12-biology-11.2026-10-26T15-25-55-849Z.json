@@ -1,0 +1,659 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T15:25:55.849Z",
+  "finishedAt": "2026-10-26T15:36:59.992Z",
+  "seconds": 664,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo111.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 11 — Organisms and Populations",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2024-25]\n10. D. Rapid divergence of traits among populations inhabiting a given 1\ngeographical area.",
+      "[CBSE Class XII Biology, sample question paper, 2022-23]\n9. Swathi was growing a bacterial colony in a culture flask under ideal laboratory 1\nconditions where the resources are replenished. Which of the following equations will\nrepresent the growth in this case?\n(Where population size is N, birth rate is b, death rate is d, unit time period is t, and\ncarrying capacity is K).\n(a) dN/dt = KN\n(b) dN/dt = r N\n(c) dN/dt = r N(K-N/K)\n(d) dN/dt = r N(K+N/K)",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n11. (c) Detritus; Grazing food chain respectively 1",
+      "[CBSE Class XII Biology, marking scheme, 2024-25]\nextinct, all those parasites exclusively dependent on it, will also\nbecome extinct\nOR\nB.\n(i)\n(2)\n(ii) A stable community should not show too much variation in productivity\nfrom year to year; it must be either resistant or resilient to occasional\ndisturbances (natural or man-made), and it must also be resistant to\ninvasions by alien species. (3)\n***********"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 144841,
+      "in": 36,
+      "out": 32,
+      "rejects": 5,
+      "promptTokens": 35986,
+      "completionTokens": 8014
+    },
+    "critique": {
+      "calls": 38,
+      "ms": 243737,
+      "in": 32,
+      "out": 31,
+      "rejects": 1,
+      "promptTokens": 16386,
+      "completionTokens": 6425
+    },
+    "solver": {
+      "calls": 194,
+      "ms": 94893,
+      "in": 31,
+      "out": 27,
+      "rejects": 4,
+      "promptTokens": 30509,
+      "completionTokens": 1829
+    },
+    "form": {
+      "calls": 21,
+      "ms": 92523,
+      "in": 27,
+      "out": 19,
+      "rejects": 8,
+      "promptTokens": 10811,
+      "completionTokens": 2123
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 19,
+      "out": 19,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 44,
+      "ms": 8421,
+      "in": 19,
+      "out": 14,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 55,
+      "ms": 622608,
+      "in": 28,
+      "out": 27,
+      "rejects": 1,
+      "promptTokens": 33773,
+      "completionTokens": 17773
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 1,
+    "2": 4,
+    "3": 3,
+    "4": 2,
+    "5": 1,
+    "6": 3
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a population has 40 fruitflies and 4 die in a week, what is the death rate?",
+      "ms": {
+        "draft": 2914,
+        "critique": 5509,
+        "solver": 14546
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which scenario would the total number of individuals not be the best measure of population density?",
+      "ms": {
+        "draft": 3736,
+        "critique": 7803,
+        "solver": 13090
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A population of bacteria is growing in a petri dish under ideal conditions where resources are replenished. Which of the following equations would best represent its growth?",
+      "ms": {
+        "draft": 3736,
+        "critique": 7963,
+        "solver": 1814,
+        "form": 3084
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the long-term outcome of competition between two closely related species for the same limited resource?",
+      "ms": {
+        "draft": 3325,
+        "critique": 5310,
+        "solver": 1755,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a mutualistic relationship?",
+      "ms": {
+        "draft": 6781,
+        "critique": 6665
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the starfish Pisaster in the rocky intertidal communities of the American Pacific Coast?",
+      "ms": {
+        "draft": 3325,
+        "critique": 6759,
+        "solver": 1188
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do some parasites not harm their hosts even though they depend on them for survival?",
+      "ms": {
+        "draft": 6781,
+        "critique": 7650,
+        "solver": 2168,
+        "form": 2763
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that a certain orchid species only gets pollinated by a specific bee species. What is the most likely explanation for this phenomenon?",
+      "ms": {
+        "draft": 6781,
+        "critique": 7282,
+        "solver": 12039,
+        "form": 1640
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a population doubles in size in 3 years, what is the intrinsic rate of increase (r) of the population?",
+      "ms": {
+        "draft": 4393,
+        "critique": 5008,
+        "solver": 2538,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An orchid and a bee have a relationship where the bee is attracted to the orchid's flower, which mimics the appearance of a female bee. What is the ecological principle behind this interaction?",
+      "ms": {
+        "draft": 4393,
+        "critique": 7185,
+        "solver": 2170,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given scenario, an orchid is growing on the branch of a mango tree. How would you describe this interaction?",
+      "ms": {
+        "draft": 4393,
+        "critique": 7821,
+        "solver": 1529,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed a plant that grows on the surface of a mango tree and gets nutrients from it. Which of the following terms best describes this relationship?",
+      "ms": {
+        "draft": 3847,
+        "critique": 5868,
+        "solver": 1733
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a predator-prey relationship as described in the passage?",
+      "ms": {
+        "draft": 3658,
+        "critique": 6010,
+        "solver": 1055,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a controlled experiment, a population of bacteria is growing under ideal conditions where resources are constantly replenished. Which equation best describes this type of growth?",
+      "ms": {
+        "draft": 3325,
+        "critique": 6066,
+        "solver": 1624,
+        "form": 3661
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an attribute of a population but not of an individual organism?",
+      "ms": {
+        "draft": 3876,
+        "critique": 6669,
+        "solver": 1310,
+        "form": 3603
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an attribute of a population but not of an individual organism?",
+      "ms": {
+        "draft": 4393,
+        "critique": 4847,
+        "solver": 1784,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an ideal environment where resources are constantly replenished, which equation represents the growth of a bacterial population?",
+      "ms": {
+        "draft": 4393,
+        "critique": 7860,
+        "solver": 1340,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of mutualism?",
+      "ms": {
+        "draft": 3847,
+        "critique": 8918,
+        "solver": 1987,
+        "form": 2695
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the study of interactions among organisms and between organisms and their physical environment called?",
+      "ms": {
+        "draft": 2914,
+        "critique": 6103,
+        "solver": 11852,
+        "form": 2562,
+        "translation": 125716
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a population?",
+      "ms": {
+        "draft": 2914,
+        "critique": 5768,
+        "solver": 1977,
+        "form": 4874,
+        "translation": 48608
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the shape of an age pyramid indicate about a population?",
+      "ms": {
+        "draft": 4393,
+        "critique": 4636,
+        "solver": 1242,
+        "form": 0,
+        "translation": 28524
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'population density' refer to?",
+      "ms": {
+        "draft": 3736,
+        "critique": 6536,
+        "solver": 1573,
+        "form": 2867,
+        "translation": 51718
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of using relative density to estimate population size?",
+      "ms": {
+        "draft": 3736,
+        "critique": 5695,
+        "solver": 1491,
+        "form": 4721,
+        "translation": 48649
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a population has more births and immigrants than deaths and emigrants, what will happen to its size?",
+      "ms": {
+        "draft": 3736,
+        "critique": 6477,
+        "solver": 1545,
+        "form": 3299,
+        "translation": 49825
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a rocky intertidal community, the starfish Pisaster is an important predator. What is the main ecological role of such a predator?",
+      "ms": {
+        "draft": 3325,
+        "critique": 6229,
+        "solver": 14655,
+        "form": 3263,
+        "translation": 50849
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How do plants defend themselves against herbivores?",
+      "ms": {
+        "draft": 3325,
+        "critique": 5612,
+        "solver": 1730,
+        "form": 3905,
+        "translation": 48842
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the age distribution of a population, what is the term for the structure that shows the proportion of individuals in different age groups?",
+      "ms": {
+        "draft": 2914,
+        "critique": 6365,
+        "solver": 2056,
+        "form": 3510,
+        "translation": 47192
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the case of the Abingdon tortoise in Galapagos Islands, what was the main reason for its extinction?",
+      "ms": {
+        "draft": 3325,
+        "critique": 5709,
+        "solver": 1383,
+        "form": 4796,
+        "translation": 51061
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a controlled laboratory environment where resources are replenished, which equation best represents population growth?",
+      "ms": {
+        "draft": 2914,
+        "critique": 8301,
+        "solver": 2203,
+        "form": 2781,
+        "translation": 42895
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a species becomes extinct, what is the likely effect on other organisms that depend on it?",
+      "ms": {
+        "draft": 2914,
+        "critique": 7639,
+        "solver": 12079,
+        "form": 4108,
+        "translation": 50114
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the 'intrinsic rate of natural increase' (r) important in population studies?",
+      "ms": {
+        "draft": 3736,
+        "critique": 7262,
+        "solver": 1026,
+        "form": 3907,
+        "translation": 51812
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A population of organisms in a habitat with limited resources grows in a pattern described by the equation dN/dt = rN(K - N)/K. What does this growth pattern indicate about the population?",
+      "ms": {
+        "draft": 4938,
+        "critique": 6516,
+        "solver": 588,
+        "form": 0,
+        "translation": 29197
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which type of population growth is described by the equation "
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of commensalism?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a population has 40 fruitflies and 4 die in a week, what is the death rate?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In which scenario would the total number of individuals not be the best measure of population density?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A population of bacteria is growing in a petri dish under ideal conditions where resources are replenished. Which of the following equations would best represent its growth?",
+      "reason": "options 1 and 3 say the same thing (\"dN/dt = rN(K - N/K)\" / \"dN/dt = rN(K + N/K)\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the long-term outcome of competition between two closely related species for the same limited resource?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a mutualistic relationship?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the significance of the starfish Pisaster in the rocky intertidal communities of the American Pacific Coast?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why do some parasites not harm their hosts even though they depend on them for survival?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observed that a certain orchid species only gets pollinated by a specific bee species. What is the most likely explanation for this phenomenon?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main reason for the evolution of mutualism between plants and animals?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "In the case of brood parasitism, why do the eggs of the parasitic bird resemble the host's eggs?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "According to the passage, what happens when a predator is too efficient and overexploits its prey?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a population doubles in size in 3 years, what is the intrinsic rate of increase (r) of the population?",
+      "reason": "checkExpr \"ln(2)/3\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "An orchid and a bee have a relationship where the bee is attracted to the orchid's flower, which mimics the appearance of a female bee. What is the ecological principle behind this interaction?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.petal: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given scenario, an orchid is growing on the branch of a mango tree. How would you describe this interaction?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student observed a plant that grows on the surface of a mango tree and gets nutrients from it. Which of the following terms best describes this relationship?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is an example of a predator-prey relationship as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In a controlled experiment, a population of bacteria is growing under ideal conditions where resources are constantly replenished. Which equation best describes this type of growth?",
+      "reason": "near-duplicate of batch item \"In a controlled laboratory environment where resou…\" (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an attribute of a population but not of an individual organism?",
+      "reason": "near-duplicate of served question cmvicz7kk0cjigpfhh3wda3ay (cosine 0.915 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an attribute of a population but not of an individual organism?",
+      "reason": "near-duplicate of served question cmvicz7kk0cjigpfhh3wda3ay (cosine 0.915 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In an ideal environment where resources are constantly replenished, which equation represents the growth of a bacterial population?",
+      "reason": "near-duplicate of batch item \"In a controlled laboratory environment where resou…\" (cosine 0.901 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of mutualism?",
+      "reason": "near-duplicate of served question cmvicz7ko0cjugpfh4i9s0u09 (cosine 0.915 ≥ 0.9)"
+    },
+    {
+      "stage": "translation",
+      "level": 1,
+      "stem": "What is the study of interactions among organisms and between organisms and their physical environment called?",
+      "reason": "hi: the model's answer was not JSON (finish: length): {\n  \"stem\": \"जीवों के बीच अंतःक्रियाओं और जीवों एवं उनके भौतिक वातावरण के बीच अंतःक्रियाओं के अध्ययन को क्या कहते हैं?\","
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

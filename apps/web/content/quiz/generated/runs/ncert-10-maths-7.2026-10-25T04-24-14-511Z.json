@@ -1,0 +1,626 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T04:24:14.511Z",
+  "finishedAt": "2026-10-25T04:31:01.162Z",
+  "seconds": 407,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh107.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Coordinate Geometry",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n2. Coordinate of Kota (K) is ( 3 x 5 + 2 x 0 3 x 7 + 2 x 10 3 + 2 ,\n= ( 15+0 5 , 21+20 5 )= (3, 41 5 )",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n7. (A) 9 th (B) 10 th (C) 11 th (D) 12 th 1\nIf the point P (5, 2) divides the line segment joining A( 8, 5) and B( 4, 𝒚) in the",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2026-27]\n30. In what ratio does the x–axis divide the line segment joining the points (– 4, – 6) 3\nand (–1, 7)? Also, find the coordinates of the point of division.\n31(A). During a math class, Ms. Isha wrote the expression given below on the board and 3\nasked the students to simplify it.\ncos θ\n+\n1 − sin θ\nJyoti solved it in her note book as follows:\n1−sin θ cos θ + 1−sin θ cos θ\ncos θ+(1−sinθ) 2 2\n=\n(1−sin θ)×cosθ\ncos θ+cos θ 2 2\n=\n(1−sin θ)×cosθ\n2cos θ 2\n=\n(1−sin θ)×cosθ\n2cosθ\n=\n(1−sin θ)\n1 − sin θ\ncos θ\n…. (step 1)\n…. (step 2)\n…. (step 3)\n…. (step 4)\nIdentify the step in which Jyoti has made error(s), if any. Rectify the same and find\nthe correct answer.\nOR\n31(B). 1 cosec 𝑥\nIf sin 𝑥 − cos 𝑥 = √2",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\nSection B consists of 5 questions of 2 marks each.\n21 (A). 𝑃(𝑥, 𝑦) is a point equidistant from the points 𝐴(4,3) and 𝐵(3,4). Prove that 𝑥 − 2\n𝑦 = 0.\nOR\n21 (B). In the given figure, 𝛥𝐴𝐵𝐶 is an equilateral triangle. Coordinates of vertices A\nand B are (0,3) and (0, −3) respectively. Find the coordinates of points C."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 156910,
+      "in": 34,
+      "out": 28,
+      "rejects": 6,
+      "promptTokens": 32192,
+      "completionTokens": 7724
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 272493,
+      "in": 28,
+      "out": 27,
+      "rejects": 1,
+      "promptTokens": 17204,
+      "completionTokens": 6336
+    },
+    "solver": {
+      "calls": 195,
+      "ms": 113351,
+      "in": 27,
+      "out": 17,
+      "rejects": 10,
+      "promptTokens": 39232,
+      "completionTokens": 1956
+    },
+    "form": {
+      "calls": 1,
+      "ms": 2421,
+      "in": 17,
+      "out": 10,
+      "rejects": 7,
+      "promptTokens": 251,
+      "completionTokens": 68
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 5440,
+      "in": 10,
+      "out": 5,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 160365,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 9918,
+      "completionTokens": 4378
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which formula is used to find the distance between two points on a plane?",
+      "ms": {
+        "draft": 4431,
+        "critique": 7773
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the distance between the points (2, 3) and (5, 7)?",
+      "ms": {
+        "draft": 4431,
+        "critique": 7553,
+        "solver": 13389,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the x-coordinate of a point on a plane?",
+      "ms": {
+        "draft": 4431,
+        "critique": 7773,
+        "solver": 15218,
+        "form": 2421
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the condition for three points to be collinear according to the passage?",
+      "ms": {
+        "draft": 12334,
+        "critique": 7572,
+        "solver": 1610,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the ratio in which the point (– 4, 6) divides the line segment joining A(– 6, 10) and B(3, – 8)?",
+      "ms": {
+        "draft": 12334,
+        "critique": 6253,
+        "solver": 1772
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the equation of the perpendicular bisector of the line segment joining A(7, 1) and B(3, 5)?",
+      "ms": {
+        "draft": 12334,
+        "critique": 7594,
+        "solver": 2243
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a point P divides the line segment joining A(8, 5) and B(4, y) in the ratio 3:1, and P has coordinates (5, 2), what is the value of y?",
+      "ms": {
+        "draft": 12334,
+        "critique": 5661,
+        "solver": 17437,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A line segment joining (5, -6) and (-1, -4) is divided by the y-axis. What is the ratio of division?",
+      "ms": {
+        "draft": 4139,
+        "critique": 7196,
+        "solver": 1709
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a parallelogram, the diagonals bisect each other. If the vertices are A(6, 1), B(8, 2), C(9, 4), and D(p, 3), what is the value of p?",
+      "ms": {
+        "draft": 4139,
+        "critique": 7060,
+        "solver": 2002
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A point P divides the line segment joining A(8, 5) and B(4, y) in the ratio 2:1. If the coordinates of P are (5, 2), what is the value of y?",
+      "ms": {
+        "draft": 4139,
+        "critique": 7088,
+        "solver": 1239
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A line segment AB is divided internally in the ratio m:n. What is the relationship between the coordinates of the point P and the coordinates of A and B?",
+      "ms": {
+        "draft": 4139,
+        "critique": 6606,
+        "solver": 922
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to find the distance between two points (x1, y1) and (x2, y2)?",
+      "ms": {
+        "draft": 4552,
+        "critique": 7728,
+        "solver": 1878,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In what ratio does the point (-4, 6) divide the line segment joining A(-6, 10) and B(3, -8)?",
+      "ms": {
+        "draft": 4552,
+        "critique": 6801,
+        "solver": 2650
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the distance between the points (4, 6) and (6, 8) in the example in the passage?",
+      "ms": {
+        "draft": 6631,
+        "critique": 7059,
+        "solver": 1970,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the distance between the points (3, 2) and (–2, –3) as calculated in Example 1?",
+      "ms": {
+        "draft": 6631,
+        "critique": 9896,
+        "solver": 14024,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a point P(x, y) is equidistant from the points (3, 6) and (-3, 4), what is the relation between x and y?",
+      "ms": {
+        "draft": 4552,
+        "critique": 9778,
+        "solver": 19055
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the point (3, 2) divides the line segment joining A(4, 3) and B(3, 4) in the ratio m:n, what is the ratio m:n?",
+      "ms": {
+        "draft": 6631,
+        "critique": 6643,
+        "solver": 1158
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the point P(5, 2) divides the line segment joining A(8, 5) and B(4, y) in the ratio 2:1, what is the value of y?",
+      "ms": {
+        "draft": 6631,
+        "critique": 11341,
+        "solver": 11480
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the ratio in which the point (2, 4) divides the line segment joining (1, 3) and (3, 5)?",
+      "ms": {
+        "draft": 4431,
+        "critique": 9833,
+        "solver": 14887,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In what ratio does the point (4, 2) divide the line segment joining (2, 1) and (6, 3)?",
+      "ms": {
+        "draft": 4431,
+        "critique": 8378,
+        "solver": 14588,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A line segment is divided in the ratio 1:2. What are the coordinates of the point that divides the segment joining A(2, -2) and B(-7, 4) in this ratio?",
+      "ms": {
+        "draft": 4139,
+        "critique": 6109,
+        "solver": 1935,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What are the coordinates of the point that divides the line segment joining A(2, -2) and B(-7, 4) in the ratio 1:2?",
+      "ms": {
+        "draft": 3989,
+        "critique": 7176,
+        "solver": 1588,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What are the coordinates of the point that divides the line segment joining A(2, -2) and B(-7, 4) in the ratio 2:1?",
+      "ms": {
+        "draft": 3989,
+        "critique": 7970,
+        "solver": 2577,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which formula is used to find the distance between two points in coordinate geometry?",
+      "ms": {
+        "draft": 12334,
+        "critique": 8706,
+        "solver": 1824,
+        "form": 0,
+        "translation": 38725
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a point P(x, y) is equidistant from two points A(7, 1) and B(3, 5), what relation between x and y is obtained?",
+      "ms": {
+        "draft": 4552,
+        "critique": 8103,
+        "solver": 1672,
+        "form": 0,
+        "translation": 27059
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the x-coordinate of a point on the y-axis that is equidistant from (6, 5) and (– 4, 3)?",
+      "ms": {
+        "draft": 12334,
+        "critique": 6859,
+        "solver": 1627,
+        "form": 0,
+        "translation": 29391
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What are the coordinates of the point that divides the line segment joining the points (4, -3) and (8, 5) in the ratio 3:1 internally?",
+      "ms": {
+        "draft": 4552,
+        "critique": 7723,
+        "solver": 1554,
+        "form": 0,
+        "translation": 23754
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the point (3, 4) divides the segment joining (1, 2) and (5, 6), what is the ratio?",
+      "ms": {
+        "draft": 4431,
+        "critique": 9156,
+        "solver": 12413,
+        "form": 0,
+        "translation": 37302
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "The coordinates of the midpoint of a line segment joining (6, 1) and (8, 2) are?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which formula is used to find the distance between two points on a plane?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the distance between the points (2, 3) and (5, 7)?",
+      "reason": "checkExpr \"sqrt(3^2 + 4^2)\" is not arithmetic the bank can evaluate"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the term used for the x-coordinate of a point on a plane?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the condition for three points to be collinear according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"The sum of the distances between two pairs of points equals the distance between the third pair\" / \"The product of the distances between two pairs of points equals the distance between the third pair\"); options 0 and 2 say the same thing (\"The sum of the distances between two pairs of points equals the distance between the third pair\" / \"The difference of the distances between two pairs of points equals the distance between the third pair\"); options 0 and 3 say the same thing (\"The sum of the distances between two pairs of points equals the distance between the third pair\" / \"The ratio of the distances between two pairs of points equals the distance between the third pair\"); options 1 and 2 say the same thing (\"The product of the distances between two pairs of points equals the distance between the third pair\" / \"The difference of the distances between two pairs of points equals the distance between the third pair\"); options 1 and 3 say the same thing (\"The product of the distances between two pairs of points equals the distance between the third pair\" / \"The ratio of the distances between two pairs of points equals the distance between the third pair\"); options 2 and 3 say the same thing (\"The difference of the distances between two pairs of points equals the distance between the third pair\" / \"The ratio of the distances between two pairs of points equals the distance between the third pair\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the ratio in which the point (– 4, 6) divides the line segment joining A(– 6, 10) and B(3, – 8)?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the equation of the perpendicular bisector of the line segment joining A(7, 1) and B(3, 5)?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a point P divides the line segment joining A(8, 5) and B(4, y) in the ratio 3:1, and P has coordinates (5, 2), what is the value of y?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); ARITHMETIC MISMATCH — checkExpr \"(3*-2 + 5)/4\" = -0.25, but the key says -2"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A line segment joining (5, -6) and (-1, -4) is divided by the y-axis. What is the ratio of division?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In a parallelogram, the diagonals bisect each other. If the vertices are A(6, 1), B(8, 2), C(9, 4), and D(p, 3), what is the value of p?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A point P divides the line segment joining A(8, 5) and B(4, y) in the ratio 2:1. If the coordinates of P are (5, 2), what is the value of y?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A line segment AB is divided internally in the ratio m:n. What is the relationship between the coordinates of the point P and the coordinates of A and B?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If the point P(x, y) divides the line segment joining A(8, 5) and B(4, y) in the ratio 2:1, what is the value of y?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the ratio in which the y-axis divides the line segment joining the points (5, -6) and (-1, -4)?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If the diagonals of a parallelogram bisect each other, what is the value of p if the vertices of the parallelogram are A(6, 1), B(8, 2), C(9, 4), and D(p, 3)?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What are the coordinates of the point that divides the line segment joining (–1, 7) and (4, –3) in the ratio 2:3?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is the distance between the points (–5, –3) and (6, 4) in the example in the passage?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to find the distance between two points (x1, y1) and (x2, y2)?",
+      "reason": "options 0 and 2 say the same thing (\"√[(x1 - x2) + (y1 - y2)]\" / \"√[(x1 - x2)² + (y1 - y2)²]\"); options 0 and 3 say the same thing (\"√[(x1 - x2) + (y1 - y2)]\" / \"√[(x1 - x2)² - (y1 - y2)²]\"); options 1 and 2 say the same thing (\"√[(x1 + x2)² + (y1 + y2)²]\" / \"√[(x1 - x2)² + (y1 - y2)²]\"); options 1 and 3 say the same thing (\"√[(x1 + x2)² + (y1 + y2)²]\" / \"√[(x1 - x2)² - (y1 - y2)²]\"); options 2 and 3 say the same thing (\"√[(x1 - x2)² + (y1 - y2)²]\" / \"√[(x1 - x2)² - (y1 - y2)²]\"); distractor 3's reason is not a one-line misconception (\"Correct option is not the longest in length, it is the third…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In what ratio does the point (-4, 6) divide the line segment joining A(-6, 10) and B(3, -8)?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the distance between the points (4, 6) and (6, 8) in the example in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 1 and 3 are the same (\"8 units\"); options mix numbers and words (2 of 4 are numbers); checkExpr \"sqrt(8)\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the distance between the points (3, 2) and (–2, –3) as calculated in Example 1?",
+      "reason": "options are written to different precisions (0 and 2 decimals); checkExpr \"sqrt(50)\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a point P(x, y) is equidistant from the points (3, 6) and (-3, 4), what is the relation between x and y?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the point (3, 2) divides the line segment joining A(4, 3) and B(3, 4) in the ratio m:n, what is the ratio m:n?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the point P(5, 2) divides the line segment joining A(8, 5) and B(4, y) in the ratio 2:1, what is the value of y?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the ratio in which the point (2, 4) divides the line segment joining (1, 3) and (3, 5)?",
+      "reason": "near-duplicate of served question cmvgpdctq04ljgpfhwyooml06 (cosine 0.949 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "In what ratio does the point (4, 2) divide the line segment joining (2, 1) and (6, 3)?",
+      "reason": "near-duplicate of served question cmvgpdctq04ljgpfhwyooml06 (cosine 0.950 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A line segment is divided in the ratio 1:2. What are the coordinates of the point that divides the segment joining A(2, -2) and B(-7, 4) in this ratio?",
+      "reason": "near-duplicate of served question cmvgpdcto04ldgpfhfudwip97 (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What are the coordinates of the point that divides the line segment joining A(2, -2) and B(-7, 4) in the ratio 1:2?",
+      "reason": "near-duplicate of served question cmvgpdcto04ldgpfhfudwip97 (cosine 0.941 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What are the coordinates of the point that divides the line segment joining A(2, -2) and B(-7, 4) in the ratio 2:1?",
+      "reason": "near-duplicate of served question cmvgpdcto04ldgpfhfudwip97 (cosine 0.935 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

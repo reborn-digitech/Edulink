@@ -1,0 +1,534 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T03:07:48.557Z",
+  "finishedAt": "2026-10-28T03:16:13.079Z",
+  "seconds": 505,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "demm1",
+    "document": "ncert/4/mathematics/demm101.pdf",
+    "classLevel": 4,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Shapes Around Us",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated.\n______________________________________________________________________________________________________________",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not\nstated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n8. Draw neat figures wherever required. Take π =22/7 wherever required if not stated."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 5,
+      "ms": 83468,
+      "in": 28,
+      "out": 25,
+      "rejects": 4,
+      "promptTokens": 20079,
+      "completionTokens": 5248
+    },
+    "critique": {
+      "calls": 28,
+      "ms": 159772,
+      "in": 25,
+      "out": 19,
+      "rejects": 6,
+      "promptTokens": 11593,
+      "completionTokens": 4742
+    },
+    "solver": {
+      "calls": 113,
+      "ms": 41794,
+      "in": 19,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 13516,
+      "completionTokens": 986
+    },
+    "form": {
+      "calls": 7,
+      "ms": 16865,
+      "in": 18,
+      "out": 15,
+      "rejects": 3,
+      "promptTokens": 1733,
+      "completionTokens": 534
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 26,
+      "ms": 4820,
+      "in": 15,
+      "out": 10,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 295006,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 21084,
+      "completionTokens": 9744
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 0,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 6,
+      "stem": "Which of the following 3D shapes can be considered both a prism and a pyramid?",
+      "ms": {
+        "draft": 3707,
+        "critique": 6232
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student makes a model of a building using 3 rectangular prisms and 2 triangular pyramids, how many faces does the model have in total?",
+      "ms": {
+        "draft": 3707,
+        "critique": 6950
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the relationship between the number of faces (F), edges (E), and corners (V) in a cube?",
+      "ms": {
+        "draft": 3707,
+        "critique": 6500,
+        "solver": 1347,
+        "form": 2818
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which type of angle is less than a right angle?",
+      "ms": {
+        "draft": 10732,
+        "critique": 5330,
+        "solver": 10344,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which shape has the same number of sides as angles?",
+      "ms": {
+        "draft": 10448,
+        "critique": 5918
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following shapes has exactly 3 angles?",
+      "ms": {
+        "draft": 10448,
+        "critique": 6554
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Draw a 2D shape with more than 5 angles.",
+      "ms": {
+        "draft": 10448,
+        "critique": 6726
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which shape has 2 obtuse and 2 acute angles?",
+      "ms": {
+        "draft": 10448,
+        "critique": 6409
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which shape has 4 right angles?",
+      "ms": {
+        "draft": 10448,
+        "critique": 6819,
+        "solver": 1124,
+        "form": 3163
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, which angles are marked in green?",
+      "ms": {
+        "draft": 11304,
+        "critique": 6286,
+        "solver": 1393
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which shape is used to represent the base of a building in a model?",
+      "ms": {
+        "draft": 3707,
+        "critique": 4412,
+        "solver": 844,
+        "form": 3352
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following shapes has all right angles?",
+      "ms": {
+        "draft": 10732,
+        "critique": 6225,
+        "solver": 1270,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which shape has 2 right angles, 1 acute, and 1 obtuse angle?",
+      "ms": {
+        "draft": 10448,
+        "critique": 6524,
+        "solver": 9990,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the line from the center of a circle to its edge?",
+      "ms": {
+        "draft": 11304,
+        "critique": 5462,
+        "solver": 1617,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the shape of the face common to all prisms?",
+      "ms": {
+        "draft": 2707,
+        "critique": 4864,
+        "solver": 419,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which 3D shape has 6 faces, 12 edges, and 8 corners?",
+      "ms": {
+        "draft": 2707,
+        "critique": 6224,
+        "solver": 1549,
+        "form": 0,
+        "translation": 24433
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which building is described as the tallest made up of bricks?",
+      "ms": {
+        "draft": 3707,
+        "critique": 4956,
+        "solver": 1666,
+        "form": 1735,
+        "translation": 28654
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the line from the center of a circle to its border?",
+      "ms": {
+        "draft": 10732,
+        "critique": 4336,
+        "solver": 591,
+        "form": 0,
+        "translation": 27704
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student builds a model of a building using straws and plasticine, what shape would they most likely use for the roof?",
+      "ms": {
+        "draft": 3707,
+        "critique": 4413,
+        "solver": 1370,
+        "form": 3521,
+        "translation": 40305
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you push one side of a rectangle, what type of angles are formed?",
+      "ms": {
+        "draft": 10732,
+        "critique": 5635,
+        "solver": 2071,
+        "form": 0,
+        "translation": 32383
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which shape is formed when you push one side of a rectangle?",
+      "ms": {
+        "draft": 11304,
+        "critique": 7418,
+        "solver": 1316,
+        "form": 0,
+        "translation": 30472
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the diameter of a circle is 14 cm, what is the radius?",
+      "ms": {
+        "draft": 10732,
+        "critique": 5780,
+        "solver": 1292,
+        "form": 0,
+        "translation": 26658
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a circle has a radius of 7 cm, what is the length of its diameter?",
+      "ms": {
+        "draft": 11304,
+        "critique": 7147,
+        "solver": 8018,
+        "form": 0,
+        "translation": 16543
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A triangle is made using three straws of different lengths. If you push one side, will the shape of the triangle change?",
+      "ms": {
+        "draft": 10732,
+        "critique": 5691,
+        "solver": 781,
+        "form": 1573,
+        "translation": 36101
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following shapes is the most rigid when pushed?",
+      "ms": {
+        "draft": 11304,
+        "critique": 5220,
+        "solver": 1254,
+        "form": 3092,
+        "translation": 27804
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"Which of the following shapes has exactly 3 angles?\",\n      \""
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following 3D shapes can be considered both a prism and a pyramid?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a student makes a model of a building using 3 rectangular prisms and 2 triangular pyramids, how many faces does the model have in total?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the relationship between the number of faces (F), edges (E), and corners (V) in a cube?",
+      "reason": "options 0 and 1 say the same thing (\"F + V = E\" / \"F + E = V\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which type of angle is less than a right angle?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How many right angles are there in a rectangle?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the shape of the face common to all pyramids?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the name of the shape that has 5 faces and 5 corners?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which shape has the same number of sides as angles?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following shapes has exactly 3 angles?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Draw a 2D shape with more than 5 angles.",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which shape has 2 obtuse and 2 acute angles?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which shape has 4 right angles?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer', 'A rhombus may have no right angles…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given figure, which angles are marked in green?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which shape is used to represent the base of a building in a model?",
+      "reason": "near-duplicate of served question cmvh0hgni05x5gpfhrpswvlfx (cosine 0.926 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following shapes has all right angles?",
+      "reason": "near-duplicate of served question cmvh0hgns05xzgpfhkxaodivt (cosine 0.949 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which shape has 2 right angles, 1 acute, and 1 obtuse angle?",
+      "reason": "near-duplicate of served question cmvh0hgpx05yngpfh07xqdot1 (cosine 0.957 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the name of the line from the center of a circle to its edge?",
+      "reason": "near-duplicate of batch item \"What is the name of the line from the center of a …\" (cosine 0.957 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the shape of the face common to all prisms?",
+      "reason": "near-duplicate of served question cmvk2omsj0itkgpfhlo84aaee (cosine 0.939 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

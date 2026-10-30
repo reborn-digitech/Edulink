@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-23T03:04:54.823Z",
+  "generatedAt": "2026-10-28T08:03:30.947Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "How many ways can 3 flags be arranged from 5 different flags, one below the other?",
+      "difficulty": 1,
+      "stem": "What is the total number of ways to choose a pant and a shirt if there are 3 pants and 2 shirts available?",
       "choices": [
-        "15",
-        "30",
-        "60",
-        "120"
+        "3",
+        "5",
+        "6",
+        "2"
       ],
       "answerIndex": 2,
-      "solution": "To determine how many ways 3 flags can be arranged from 5 different flags, consider that for the first position, there are 5 choices, for the second position, 4 choices remain, and for the third, 3 choices. This gives 5 × 4 × 3 = 60. The option '60' is correct. '15' is incorrect because it uses 5 × 3, which doesn't account for all permutations. '30' is incorrect as it suggests 5 × 6, which is not valid. '120' is incorrect because it represents the total permutations of 5 flags, not 3.",
-      "checkExpr": null,
+      "solution": "The problem is solved using the fundamental principle of counting. There are 3 ways to choose a pant and 2 ways to choose a shirt. Multiplying these gives 3 × 2 = 6. The option '3' is the number of pants, '5' is the sum of pants and shirts, and '2' is the number of shirts.",
+      "checkExpr": "3*2",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "5 अलग-अलग झंडों में से 3 झंडों को एक के नीचे एक कितने तरीकों से व्यवस्थित किया जा सकता है?",
+          "stem": "3 पैंट और 2 कमीज के उपलब्ध होने पर एक पैंट और एक कमीज चुनने के तरीकों की कुल संख्या क्या है?",
           "choices": [
-            "15",
-            "30",
-            "60",
-            "120"
+            "3",
+            "5",
+            "6",
+            "2"
           ],
-          "solution": "3 झंडों के 5 अलग-अलग झंडों से व्यवस्थित करने के तरीकों का निर्धारण करने के लिए, पहले स्थान के लिए 5 विकल्प हैं, दूसरे स्थान के लिए 4 विकल्प बचते हैं, और तीसरे स्थान के लिए 3 विकल्प बचते हैं। इससे 5 × 4 × 3 = 60 प्राप्त होता है। '60' विकल्प सही है। '15' गलत है क्योंकि यह 5 × 3 का उपयोग करता है, जो सभी व्यवस्थाओं को ध्यान में नहीं रखता। '30' गलत है क्योंकि यह 5 × 6 के संकेत के रूप में दिखता है, जो वैध नहीं है। '120' गलत है क्योंकि यह 5 झंडों के कुल व्यवस्थित करने के तरीकों को दर्शाता है, न कि 3 झंडों के।",
+          "solution": "समस्या मूलभूत गणना के सिद्धांत का उपयोग करके हल की जाती है। 3 तरीकों से एक पैंट चुना जा सकता है और 2 तरीकों से एक कमीज चुनी जा सकती है। इनको गुणा करने पर 3 × 2 = 6 प्राप्त होता है। विकल्प '3' पैंट की संख्या है, '5' पैंट और कमीज की संख्या का योग है, और '2' कमीज की संख्या है।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains mathematical meaning, and uses standard Hindi terminology for permutations.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The structure and logic of the question and solution are preserved.",
           "flag": null
         },
         "mr": {
-          "stem": "5 वेगवेगळ्या झंड्या पासून 3 झंड्या एकाच खालच्या बाजूला किती प्रकारे ठेवता येतील?",
+          "stem": "3 पॅंट आणि 2 शर्ट उपलब्ध असल्यास पॅंट आणि शर्ट निवडण्याच्या एकूण पद्धती किती आहेत?",
           "choices": [
-            "15",
-            "30",
-            "60",
-            "120"
+            "3",
+            "5",
+            "6",
+            "2"
           ],
-          "solution": "3 झंड्या 5 वेगवेगळ्या झंड्यांपासून ठेवण्याच्या पद्धती शोधण्यासाठी, पहिल्या जागेसाठी 5 विकल्प आहेत, दुसऱ्या जागेसाठी 4 विकल्प उरतात आणि तिसऱ्या जागेसाठी 3 विकल्प असतात. हे 5 × 4 × 3 = 60 देते. '60' योग्य विकल्प आहे. '15' अयोग्य आहे कारण ते 5 × 3 वापरते, जे सर्व संभाव्य क्रमपरिवर्तनांचा विचार करत नाही. '30' अयोग्य आहे कारण ते 5 × 6 चा अंदाज देते, जो वैध नाही. '120' अयोग्य आहे कारण ते 5 झंड्यांच्या सर्व संभाव्य क्रमपरिवर्तनांचे प्रतिनिधित्व करते, नाही की 3 झंड्यांचे.",
+          "solution": "समस्या मूलभूत गणना तत्वाच्या वापराने सोडवली जाते. पॅंट निवडण्याच्या 3 पद्धती आहेत आणि शर्ट निवडण्याच्या 2 पद्धती आहेत. यांच्या गुणाकाराने 3 × 2 = 6 मिळते. '3' पॅंट ची संख्या आहे, '5' पॅंट आणि शर्ट ची बेरीज आहे आणि '2' शर्ट ची संख्या आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for permutations and combinations.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
           "flag": null
         }
       },
@@ -72,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "assumes 5 × 3",
-        "assumes 5 × 6",
+        "Confuses multiplication with addition, thinking you just add the number of pants and shirts instead of multiplying them.",
+        "adds the number of pants and shirts",
         null,
-        "Confuses permutations with combinations or incorrectly applies factorial without considering the selection process"
+        "confuses the number of shirts with the total"
       ],
       "solverAnswers": [
         2,
@@ -85,7 +85,197 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The question asks for the number of ways to arrange 3 flags from 5, which is a permutation problem. The correct calculation is 5 × 4 × 3 = 60. The author's solution is correct and the reasoning for the distractors aligns with common misconceptions.",
+      "critique": "The correct answer is 6, calculated by multiplying the number of pants (3) by the number of shirts (2). The author's key is correct, and the reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Permutations and Combinations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh106.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 6: Permutations and Combinations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh106.pdf",
+          "ordinal": 2,
+          "pageStart": 4,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 6: Permutations and Combinations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T08:03:30.947Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "If C = C, what can be said about the values of r and n?",
+      "choices": [
+        "r = n",
+        "r = 0",
+        "r = n - 1",
+        "r = 1"
+      ],
+      "answerIndex": 0,
+      "solution": "If C = C, it implies that the values of r and n must be equal because the equation is a tautology, meaning it holds true regardless of the values, but in this context, the only consistent solution is r = n. The other options do not maintain the equality in all cases.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि C = C, तो r और n के मानों के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "r = n",
+            "r = 0",
+            "r = n - 1",
+            "r = 1"
+          ],
+          "solution": "यदि C = C, तो यह संकेत देता है कि r और n के मान बराबर होने चाहिए क्योंकि समीकरण एक तार्किक सत्य है, जो किसी भी मान के लिए सत्य रहता है, लेकिन इस संदर्भ में, एकमात्र संगत हल r = n है। अन्य विकल्प सभी मामलों में समानता बनाए नहीं रखते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर C = C, तर r आणि n च्या मूल्यांबद्दल काय म्हणता येईल?",
+          "choices": [
+            "r = n",
+            "r = 0",
+            "r = n - 1",
+            "r = 1"
+          ],
+          "solution": "जर C = C, तर r आणि n च्या मूल्यांनी एकसारखे असणे आवश्यक आहे, कारण समीकरण एक तार्किक सत्य आहे, जे कोणत्याही मूल्यांसाठी खरे असते, परंतु या संदर्भात, एकसारखे समाधान r = n असते. इतर विकल्प सर्व परिस्थितीत समानता बनवू शकत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the logical structure, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "incorrectly assumes r is less than n",
+        "chooses r = 0, which is not a general solution",
+        "chooses r = 1, which is not a valid case for the given equality"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The equation C(n, r) = C(n, r) is always true, but the question likely refers to C(n, r) = C(n, k), which implies r = k or r = n - k. The correct answer is r = n, and the other options are invalid.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh106.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 6: Permutations and Combinations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh106.pdf",
+          "ordinal": 13,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 6: Permutations and Combinations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh106.pdf",
+          "ordinal": 14,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 6: Permutations and Combinations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T08:03:30.947Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the value of 7! - 5!?",
+      "choices": [
+        "4920",
+        "5040",
+        "120",
+        "720"
+      ],
+      "answerIndex": 0,
+      "solution": "The value of 7! is 5040 and the value of 5! is 120. Therefore, 7! - 5! = 5040 - 120 = 4920. The other options are incorrect because they do not correctly subtract the values of the factorials.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "7! - 5! का मान क्या है?",
+          "choices": [
+            "4920",
+            "5040",
+            "120",
+            "720"
+          ],
+          "solution": "7! का मान 5040 है और 5! का मान 120 है। अतः 7! - 5! = 5040 - 120 = 4920। अन्य विकल्प गलत हैं क्योंकि वे क्रमशः क्रमचयों के मानों को सही तरह से घटाने में विफल रहते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "7! - 5! ची किंमत काय आहे?",
+          "choices": [
+            "4920",
+            "5040",
+            "120",
+            "720"
+          ],
+          "solution": "7! ची किंमत 5040 आहे आणि 5! ची किंमत 120 आहे. म्हणून, 7! - 5! = 5040 - 120 = 4920. इतर विकल्प अचूकपणे क्रमांकांची बेरीज करत नाहीत म्हणून चुकीचे आहेत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Incorrectly calculates 7! as 720",
+        "Fails to subtract the factorials correctly",
+        "Mistakenly assumes 5! is 720"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly calculates 7! as 5040 and 5! as 120, and subtracts them to get 4920. The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh106.pdf",
@@ -116,49 +306,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:04:54.823Z",
+      "generatedAt": "2026-10-28T08:03:30.947Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If Sabnam has 2 school bags, 3 tiffin boxes, and 2 water bottles, in how many ways can she carry these items, choosing one of each?",
+      "stem": "How many ways can 3 books be selected from a shelf of 5 books?",
       "choices": [
-        "6",
-        "12",
-        "3",
-        "2"
+        "5",
+        "10",
+        "15",
+        "30"
       ],
       "answerIndex": 1,
-      "solution": "Sabnam needs to choose one school bag, one tiffin box, and one water bottle. There are 2 school bags, 3 tiffin boxes, and 2 water bottles, so the total number of combinations is 2 × 3 × 2 = 12. The option '12' is correct because it accounts for all three items. The option '6' is wrong because it only multiplies the number of school bags and tiffin boxes. The option '3' and '2' are incorrect because they only consider one type of item.",
+      "solution": "The number of ways to choose 3 books from 5 is given by the combination formula C(5,3), which is 5! / (3! * (5-3)!) = 10. Hence, the correct answer is 10. Choosing 5 (option 0) would mean selecting all 5 books, which is not the case. Choosing 15 (option 2) is incorrect because it suggests permutations instead of combinations. Choosing 30 (option 3) is also incorrect as it would be for arranging all 5 books, not selecting 3.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि सबनम के पास 2 स्कूल बैग, 3 टिफिन बॉक्स और 2 पानी के बोतल हैं, तो इन वस्तुओं को एक एक करके कितने तरीकों से वह ले जा सकती है?",
+          "stem": "5 पुस्तकों के एक झुके हुए शील्ड से 3 पुस्तकों के चयन के कितने तरीके हैं?",
           "choices": [
-            "6",
-            "12",
-            "3",
-            "2"
+            "5",
+            "10",
+            "15",
+            "30"
           ],
-          "solution": "सबनम एक स्कूल बैग, एक टिफिन बॉक्स और एक पानी की बोतल चुनने की आवश्यकता है। वहां 2 स्कूल बैग, 3 टिफिन बॉक्स और 2 पानी की बोतल हैं, इसलिए कम्बिनेशन की कुल संख्या 2 × 3 × 2 = 12 है। विकल्प '12' सही है क्योंकि यह तीनों वस्तुओं को ध्यान में रखता है। विकल्प '6' गलत है क्योंकि यह केवल स्कूल बैग और टिफिन बॉक्स की संख्या के गुणनफल को ध्यान में रखता है। विकल्प '3' और '2' गलत हैं क्योंकि ये केवल एक प्रकार की वस्तु को ध्यान में रखते हैं।",
+          "solution": "5 पुस्तकों में से 3 पुस्तकों के चयन की संख्या संयोजन सूत्र C(5,3) द्वारा दी जाती है, जो 5! / (3! * (5-3)!) = 10 है। अतः सही उत्तर 10 है। 5 (विकल्प 0) चुनना अर्थात सभी 5 पुस्तकों का चयन करना होता है, जो इस मामले में नहीं है। 15 (विकल्प 2) का चयन गलत है क्योंकि यह संयोजन के बजाय व्यवस्थित करने के तरीकों के बराबर होता है। 30 (विकल्प 3) का चयन भी गलत है क्योंकि यह सभी 5 पुस्तकों के व्यवस्थित करने के तरीकों के बराबर होता है, 3 पुस्तकों के चयन के लिए नहीं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in a Hindi-medium educational context.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "सबनमला 2 शाळेचे बॅग, 3 टिफिन बॉक्स आणि 2 पाणी बाटल्या असल्यास, तिने या वस्तू एका प्रत्येकाचा निवड करून किती प्रकारे घेण्याचा प्रयत्न करू शकते?",
+          "stem": "5 पुस्तकांच्या एका शेल्फमधून 3 पुस्तके किती प्रकारे निवडता येतील?",
           "choices": [
-            "6",
-            "12",
-            "3",
-            "2"
+            "5",
+            "10",
+            "15",
+            "30"
           ],
-          "solution": "सबनमला एक शाळेचे बॅग, एक टिफिन बॉक्स आणि एक पाणी बाटली निवडावी लागते. तिला 2 शाळेचे बॅग, 3 टिफिन बॉक्स आणि 2 पाणी बाटल्या असल्यामुळे एकूण बेरजा 2 × 3 × 2 = 12 असेल. विकल्प '12' बरोबर आहे कारण तो तीनही वस्तूंचा विचार करतो. विकल्प '6' चूक आहे कारण तो शाळेचे बॅग आणि टिफिन बॉक्स च्या संख्येचा गुणाकार करतो. विकल्प '3' आणि '2' चूक आहेत कारण ते केवळ एक प्रकारच्या वस्तूंचा विचार करतात.",
+          "solution": "5 पुस्तकांपासून 3 पुस्तके निवडण्याच्या पद्धतींची संख्या कॉम्बिनेशन सूत्र C(5,3) द्वारे दिली जाते, जी 5! / (3! * (5-3)!) = 10 आहे. म्हणून, योग्य उत्तर 10 आहे. 5 (पर्याय 0) निवडणे हे सर्व 5 पुस्तके निवडण्याचा अर्थ असतो, जे स्थितीचे नाही. 15 (पर्याय 2) चुकीचे आहे कारण ते व्यवस्थितींऐवजी कॉम्बिनेशनच्या जागी विचार करते. 30 (पर्याय 3) देखील चुकीचे आहे कारण ते सर्व 5 पुस्तकांची व्यवस्थिती करण्यासाठी असते, 3 पुस्तकांच्या निवडीसाठी नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -167,10 +357,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "multiplies only the number of school bags and tiffin boxes",
+        "chooses the total number of books instead of the combination",
         null,
-        "considers only the number of tiffin boxes",
-        "considers only the number of school bags"
+        "confuses combinations with permutations",
+        "confuses permutations with combinations"
       ],
       "solverAnswers": [
         1,
@@ -180,78 +370,173 @@
         1
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. The total number of ways is 2 × 3 × 2 = 12, and the reasoning for the wrong options is valid and reflects common misconceptions.",
+      "critique": "The question asks for the number of ways to select 3 books from 5, which is a combination problem. The correct answer is 10, calculated using the combination formula C(5,3). The author's solution and reasoning are accurate.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 19,
           "headingPath": [
             "Chapter 6: Permutations and Combinations"
           ]
         },
         {
           "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
+          "ordinal": 13,
+          "pageStart": 19,
+          "pageEnd": 20,
           "headingPath": [
             "Chapter 6: Permutations and Combinations"
           ]
         },
         {
           "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 4,
+          "ordinal": 14,
+          "pageStart": 20,
+          "pageEnd": 22,
           "headingPath": [
             "Chapter 6: Permutations and Combinations"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:04:54.823Z",
+      "generatedAt": "2026-10-28T08:03:30.947Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 3,
-      "stem": "If there are 4 flags of different colours, how many different signals can be generated using 2 flags one below the other?",
+      "difficulty": 6,
+      "stem": "How many ways can 6 people be seated around a circular table if 2 of them must sit together?",
       "choices": [
-        "8",
-        "12",
-        "4",
-        "2"
+        "24",
+        "48",
+        "120",
+        "240"
       ],
       "answerIndex": 1,
-      "solution": "To determine the number of different signals, consider that the first flag can be any of the 4 colors, and the second flag must be a different color, leaving 3 choices. This results in 4 × 3 = 12 possible signals. The option '12' is correct because it accounts for all possible arrangements. The option '8' is incorrect because it adds the choices instead of multiplying them. The option '4' is wrong because it only considers the first flag's choices. The option '2' is incorrect because it only considers the second flag's choices.",
+      "solution": "If 2 people must sit together, we can treat them as a single unit, giving us 5 units to arrange around the table. For circular arrangements, the number of ways is (5-1)! = 24. Since the 2 people can be arranged among themselves in 2 ways, the total is 24 * 2 = 48. Choosing 24 (option 0) is incorrect as it ignores the internal arrangement of the 2 people. Choosing 120 (option 2) is incorrect as it suggests 5! instead of 4!. Choosing 240 (option 3) is incorrect as it suggests 5! * 2 instead of 4! * 2.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि 4 अलग-अलग रंग के झंडे हैं, तो 2 झंडों के उपयोग से कितने अलग-अलग संकेत बनाए जा सकते हैं जिनमें एक झंडा दूसरे के नीचे हो?",
+          "stem": "एक वृत्ताकार मेज पर 6 लोग कितने तरीकों से बैठ सकते हैं यदि 2 लोग एक साथ बैठना चाहते हैं?",
           "choices": [
-            "8",
-            "12",
-            "4",
-            "2"
+            "24",
+            "48",
+            "120",
+            "240"
           ],
-          "solution": "अलग-अलग संकेतों की संख्या निर्धारित करने के लिए, मान लें कि पहला झंडा 4 रंगों में से कोई भी हो सकता है, और दूसरा झंडा अलग रंग का होना चाहिए, जिसके लिए 3 विकल्प बचते हैं। इससे 4 × 3 = 12 संभावित संकेत प्राप्त होते हैं। विकल्प '12' सही है क्योंकि यह सभी संभावित व्यवस्थाओं को ध्यान में रखता है। विकल्प '8' गलत है क्योंकि इसमें विकल्पों को जोड़ा जाता है बजाय गुणा के। विकल्प '4' गलत है क्योंकि इसमें केवल पहले झंडे के विकल्पों को ध्यान में रखा जाता है। विकल्प '2' गलत है क्योंकि इसमें केवल दूसरे झंडे के विकल्पों को ध्यान में रखा जाता है।",
+          "solution": "यदि 2 लोग एक साथ बैठते हैं, तो हम उन्हें एक इकाई मान सकते हैं, जिससे हमें मेज के चारों ओर व्यवस्थित करने के लिए 5 इकाइयां मिलती हैं। वृत्ताकार व्यवस्थाओं के लिए, तरीकों की संख्या (5-1)! = 24 होती है। चूंकि 2 लोग एक दूसरे के साथ 2 तरीकों से व्यवस्थित किए जा सकते हैं, कुल तरीके 24 * 2 = 48 होते हैं। 24 (विकल्प 0) का चयन गलत है क्योंकि यह 2 लोगों के आंतरिक व्यवस्थित करने को अनदेखा करता है। 120 (विकल्प 2) का चयन गलत है क्योंकि यह 5! के बजाय 4! के संकेत देता है। 240 (विकल्प 3) का चयन गलत है क्योंकि यह 5! * 2 के बजाय 4! * 2 के संकेत देता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology. The correct answer remains option (2) and all distractors are still incorrect.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for permutations and circular arrangements.",
           "flag": null
         },
         "mr": {
-          "stem": "जर 4 वेगवेगळ्या रंगाचे झंडे असतील, तर 2 झंडे एकावर एक वापरून किती वेगवेगळे संकेत तयार करता येतील?",
+          "stem": "6 लोक कोणत्याही वर्तुळाकार मेजावर किती प्रकारे बसू शकतात जर त्यापैकी 2 लोक एकत्र बसले पाहिजेत?",
           "choices": [
-            "8",
-            "12",
-            "4",
-            "2"
+            "24",
+            "48",
+            "120",
+            "240"
           ],
-          "solution": "वेगवेगळ्या संकेतांची संख्या ठरवण्यासाठी, पहिला झंडा 4 रंगांपैकी कोणताही असू शकतो, आणि दुसरा झंडा वेगळा रंग असावा लागेल, ज्यामुळे 3 निवडा उपलब्ध असतात. ह्यामुळे 4 × 3 = 12 वेगवेगळे संकेत तयार होतात. निवड '12' बरोबर आहे कारण ते सर्व संभाव्य व्यवस्थितींचा विचार करते. निवड '8' चुकीची आहे कारण त्याने निवडा जोडल्या जातात आणि गुणाकार केल्या जात नाहीत. निवड '4' चुकीची आहे कारण त्याने केवळ पहिल्या झंड्याच्या निवडा विचार केल्या जातात. निवड '2' चुकीची आहे कारण त्याने केवळ दुसर्‍या झंड्याच्या निवडा विचार केल्या जातात.",
+          "solution": "जर 2 लोक एकत्र बसले पाहिजेत, तर आपण त्यांना एका एकक मानू शकतो, ज्यामुळे आपल्याकडे मेजावर व्यवस्थित करण्यासाठी 5 एकक असतात. वर्तुळाकार व्यवस्थित करण्यासाठी, विधींची संख्या (5-1)! = 24 आहे. 2 लोकांना एकमेकांमध्ये 2 प्रकारांनी व्यवस्थित करता येऊ शकते, त्यामुळे एकूण 24 * 2 = 48 आहे. 24 (पर्याय 0) ची निवड अयोग्य आहे कारण ती 2 लोकांच्या आंतरिक व्यवस्थित करण्याचा विचार करत नाही. 120 (पर्याय 2) ची निवड अयोग्य आहे कारण ती 5! ऐवजी 4! चा विचार करत नाही. 240 (पर्याय 3) ची निवड अयोग्य आहे कारण ती 5! * 2 ऐवजी 4! * 2 चा विचार करत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology for circular arrangements and factorial notation.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "ignores the internal arrangement of the two people",
+        null,
+        "calculates 5! instead of 4!",
+        "calculates 5! * 2 instead of 4! * 2"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly treats the two people as a single unit, leading to 4! arrangements for the circular table, and multiplies by 2 for the internal arrangement of the two people. This results in 48, which matches the key.",
+      "sources": [
+        {
+          "document": "ncert/11/mathematics/kemh106.pdf",
+          "ordinal": 12,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 6: Permutations and Combinations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh106.pdf",
+          "ordinal": 13,
+          "pageStart": 19,
+          "pageEnd": 20,
+          "headingPath": [
+            "Chapter 6: Permutations and Combinations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh106.pdf",
+          "ordinal": 14,
+          "pageStart": 20,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 6: Permutations and Combinations"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T08:03:30.947Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In how many ways can the letters of the word 'ASSASSINATION' be arranged so that all the S’s are together?",
+      "choices": [
+        "12600",
+        "14400",
+        "151200",
+        "1814400"
+      ],
+      "answerIndex": 2,
+      "solution": "Treat all the S’s as a single unit, reducing the problem to arranging 10 units (the S-group and the remaining 9 letters). The total number of arrangements is 10! / (3! × 2! × 2!) = 151200. The other options are incorrect due to miscalculations in the factorial values or the repetition of letters.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "शब्द 'ASSASSINATION' के अक्षरों को कितने तरीकों से व्यवस्थित किया जा सकता है ताकि सभी S एक साथ रहें?",
+          "choices": [
+            "12600",
+            "14400",
+            "151200",
+            "1814400"
+          ],
+          "solution": "सभी S को एक इकाई के रूप में लें, जिससे समस्या 10 इकाइयों (S-समूह और शेष 9 अक्षर) की व्यवस्था में घट जाती है। कुल व्यवस्थाएँ 10! / (3! × 2! × 2!) = 151200 हैं। अन्य विकल्प गलत गणना या अक्षरों की दोहराव के कारण गलत हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "शब्द 'ASSASSINATION' मधील अक्षरांची व्यवस्थापन किती प्रकारे केली जाऊ शकते की सर्व S एकत्र राहतील?",
+          "choices": [
+            "12600",
+            "14400",
+            "151200",
+            "1814400"
+          ],
+          "solution": "सर्व S ला एक एकक मानून, समस्या 10 एककांच्या व्यवस्थापनापर्यंत कमी करते (S गट आणि उरलेल्या 9 अक्षरांसह). एकूण व्यवस्थापनांची संख्या 10! / (3! × 2! × 2!) = 151200 आहे. इतर विकल्प फॅक्टोरियल मूल्यांमधील चूक किंवा अक्षरांच्या पुनरावृत्तीमुळे अयोग्य आहेत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
           "flag": null
@@ -262,91 +547,91 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "adds the number of choices instead of multiplying them",
+        "Fails to consider the repetition of other letters",
+        "Incorrectly calculates the factorial of 10",
         null,
-        "considers only the number of choices for the first flag",
-        "considers only the number of choices for the second flag"
+        "Miscalculates the total number of arrangements by using 10! instead of 10! divided by the repeated letters"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": null,
-      "critique": "The solution is correct. The problem involves permutations of 4 flags taken 2 at a time, which is 4 × 3 = 12. The reasoning for the incorrect options aligns with common misconceptions.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Treating all S's as a single unit reduces the problem to arranging 10 units, with repeated letters (A, I, N). The calculation 10! / (3! × 2! × 2!) = 151200 is accurate.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
+          "ordinal": 15,
+          "pageStart": 22,
+          "pageEnd": 23,
           "headingPath": [
             "Chapter 6: Permutations and Combinations"
           ]
         },
         {
           "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
+          "ordinal": 16,
+          "pageStart": 23,
+          "pageEnd": 24,
           "headingPath": [
             "Chapter 6: Permutations and Combinations"
           ]
         },
         {
           "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 4,
+          "ordinal": 17,
+          "pageStart": 24,
+          "pageEnd": 25,
           "headingPath": [
             "Chapter 6: Permutations and Combinations"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:04:54.823Z",
+      "generatedAt": "2026-10-28T08:03:30.947Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "How many 4-letter words, with or without meaning, can be formed from the letters of the word ROSE, if the repetition of the letters is not allowed?",
+      "difficulty": 6,
+      "stem": "In how many ways can a committee of 8 persons choose a chairman and a vice chairman if one person cannot hold more than one position?",
       "choices": [
-        "24",
-        "16",
-        "8",
-        "4"
+        "56",
+        "64",
+        "48",
+        "72"
       ],
       "answerIndex": 0,
-      "solution": "To find the number of 4-letter words that can be formed from the letters of the word ROSE without repetition, we calculate the number of permutations of 4 distinct letters. This is done by multiplying the number of choices for each position: 4 × 3 × 2 × 1 = 24. The option '24' is correct because it represents the total number of unique arrangements. The option '16' is incorrect because it suggests repetition is allowed, which it is not. The option '8' is wrong because it results from adding the numbers instead of multiplying them. The option '4' is incorrect because it only counts the number of letters, not the possible arrangements.",
-      "checkExpr": null,
+      "solution": "To select a chairman and a vice chairman from 8 people, we choose 2 different people, and the order matters (chairman and vice chairman are distinct roles). This is a permutation of 8 people taken 2 at a time, which is 8 × 7 = 56. The option 64 is 8², which assumes repetition is allowed. 48 is 8 × 6, which is incorrect. 72 is 9 × 8, which assumes 9 people instead of 8.",
+      "checkExpr": "8*7",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "रोज शब्द के अक्षरों से 4 अक्षर के शब्द, अर्थहीन या अर्थपूर्ण, कितने बनाए जा सकते हैं, यदि अक्षरों की पुनरावृत्ति की अनुमति नहीं है?",
+          "stem": "8 व्यक्तियों की एक समिति में एक अध्यक्ष और एक उपाध्यक्ष कितने तरीकों से चुना जा सकता है यदि एक व्यक्ति एक से अधिक पद नहीं रख सकता?",
           "choices": [
-            "24",
-            "16",
-            "8",
-            "4"
+            "56",
+            "64",
+            "48",
+            "72"
           ],
-          "solution": "रोज शब्द के अक्षरों से 4 अक्षर के शब्दों की संख्या ज्ञात करने के लिए, हम 4 विभिन्न अक्षरों के क्रमचय की गणना करते हैं। इसे प्रत्येक स्थिति के विकल्पों की संख्या के गुणनफल द्वारा किया जाता है: 4 × 3 × 2 × 1 = 24। विकल्प '24' सही है क्योंकि यह अद्वितीय व्यवस्थाओं की कुल संख्या का प्रतिनिधित्व करता है। विकल्प '16' गलत है क्योंकि यह अक्षरों की पुनरावृत्ति की अनुमति होने के संकेत देता है, जो नहीं है। विकल्प '8' गलत है क्योंकि यह जोड़ने के बजाय गुणा करने पर परिणाम होता है। विकल्प '4' गलत है क्योंकि यह केवल अक्षरों की संख्या गिनता है, न कि संभावित व्यवस्थाओं की।",
+          "solution": "8 लोगों में से एक अध्यक्ष और एक उपाध्यक्ष का चयन करने के लिए, हम 2 अलग-अलग लोगों का चयन करते हैं, और क्रम महत्वपूर्ण होता है (अध्यक्ष और उपाध्यक्ष अलग-अलग कार्य हैं)। यह 8 लोगों में से 2 के संयोजन के रूप में होता है, जो 8 × 7 = 56 है। 64 विकल्प 8² है, जो दोहराव की अनुमति देता है। 48 विकल्प 8 × 6 है, जो गलत है। 72 विकल्प 9 × 8 है, जो 8 के बजाय 9 लोगों की अनुमति देता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for permutations and combinations.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "ROSE शब्दाच्या अक्षरांपासून 4 अक्षरांचे शब्द, अर्थ नसलेले असले तरी, अक्षरांच्या पुनरावृत्ती न करता किती तयार करता येतील?",
+          "stem": "8 व्यक्तींच्या समितीने एक अध्यक्ष आणि एक उपाध्यक्ष कशी निवडू शकते, जर एक व्यक्ती एकापेक्षा जास्त पद धारण करू शकत नाही?",
           "choices": [
-            "24",
-            "16",
-            "8",
-            "4"
+            "56",
+            "64",
+            "48",
+            "72"
           ],
-          "solution": "ROSE शब्दाच्या अक्षरांपासून 4 अक्षरांचे शब्द तयार करण्यासाठी, आम्ही 4 वेगवेगळ्या अक्षरांच्या व्यवस्थेची संख्या गणना करतो. हे आम्ही प्रत्येक स्थानासाठी निवडींची संख्या गुणून करतो: 4 × 3 × 2 × 1 = 24. '24' विकल्प बरोबर आहे कारण तो एकूण अद्वितीय व्यवस्थांची संख्या दर्शवतो. '16' विकल्प चुकीचा आहे कारण तो अक्षरांच्या पुनरावृत्ती अनुमत करतो, जे नाही. '8' विकल्प चुकीचा आहे कारण तो गुणाकाराऐवजी संख्यांच्या बेरजेमुळे येतो. '4' विकल्प चुकीचा आहे कारण तो अक्षरांची संख्या गणतो, नकार व्यवस्थांची नाही.",
+          "solution": "8 लोकांमधून अध्यक्ष आणि उपाध्यक्ष निवडण्यासाठी, आम्ही 2 वेगवेगळ्या लोकांची निवड करतो, आणि क्रम महत्वाचा आहे (अध्यक्ष आणि उपाध्यक्ष वेगळी भूमिका आहेत). हे 8 लोकांचे 2 एकाच वेळी घेतलेले विन्यास आहे, जे 8 × 7 = 56 आहे. 64 हे 8² आहे, जे पुनरावृत्ती अनुमत असल्याचा अंदाज घेते. 48 हे 8 × 6 आहे, जे चूकीचे आहे. 72 हे 9 × 8 आहे, जे 8 लोकांऐवजी 9 लोकांचा अंदाज घेते.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for permutations and combinations.",
           "flag": null
@@ -359,8 +644,8 @@
       "distractorReason": [
         null,
         "assumes repetition is allowed",
-        "adds the number of choices instead of multiplying them",
-        "considers only the number of letters"
+        "incorrect multiplication",
+        "incorrect total number of people"
       ],
       "solverAnswers": [
         0,
@@ -368,402 +653,40 @@
         0,
         0,
         0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The question asks for permutations of 4 distinct letters, which is 4! = 24. The reasoning for the wrong options is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 6: Permutations and Combinations"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 6: Permutations and Combinations"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 6: Permutations and Combinations"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:04:54.823Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "How many 2-digit even numbers can be formed from the digits 1, 2, 3, 4, 5 if the digits can be repeated?",
-      "choices": [
-        "10",
-        "5",
-        "20",
-        "15"
-      ],
-      "answerIndex": 0,
-      "solution": "To form a 2-digit even number, the unit's place must be an even digit, which can be 2 or 4, giving 2 choices. The ten's place can be any of the 5 digits. Multiplying these gives 2 × 5 = 10. The option '10' is correct. The option '5' is wrong because it only accounts for the unit's place. The option '20' is incorrect as it assumes no repetition and uses 5 × 4. The option '15' is wrong because it adds the choices instead of multiplying them.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "अंक 1, 2, 3, 4, 5 से दो अंकों की कितनी सम संख्याएँ बनाई जा सकती हैं यदि अंकों की दोहराव की अनुमति है?",
-          "choices": [
-            "10",
-            "5",
-            "20",
-            "15"
-          ],
-          "solution": "दो अंकों की सम संख्या बनाने के लिए इकाई के स्थान पर एक सम अंक होना चाहिए, जो 2 या 4 हो सकता है, जिससे 2 विकल्प होते हैं। दहाई के स्थान पर कोई भी 5 अंक हो सकता है। इनको गुणा करने पर 2 × 5 = 10 प्राप्त होता है। विकल्प '10' सही है। विकल्प '5' गलत है क्योंकि यह केवल इकाई के स्थान को ध्यान में रखता है। विकल्प '20' गलत है क्योंकि यह बिना दोहराव के 5 × 4 का उपयोग करता है। विकल्प '15' गलत है क्योंकि यह विकल्पों को जोड़ के बजाय गुणा करता है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "1, 2, 3, 4, 5 या अंकांपासून 2 अंकांची सम संख्या किती तयार करता येईल जर अंक पुनरावृत्ती करता येत असतील?",
-          "choices": [
-            "10",
-            "5",
-            "20",
-            "15"
-          ],
-          "solution": "2 अंकांची सम संख्या तयार करण्यासाठी एकक स्थानावर सम अंक असावा, जो 2 किंवा 4 असू शकतो, ज्यामुळे 2 विकल्प मिळतात. दशक स्थानावर कोणताही 5 अंक असू शकतो. यांच्या गुणाकाराने 2 × 5 = 10 मिळते. विकल्प '10' बरोबर आहे. विकल्प '5' चुकीचा आहे कारण तो केवळ एकक स्थानाच्या विकल्पांचा विचार करतो. विकल्प '20' चुकीचा आहे कारण तो पुनरावृत्ती न करता 5 × 4 चा वापर करतो. विकल्प '15' चुकीचा आहे कारण तो विकल्पांची बेरीज करतो आणि गुणाकार करत नाही.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "considers only the number of choices for the unit's place",
-        "multiplies 5 × 4 instead of 2 × 5",
-        "adds the number of choices instead of multiplying them"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 10, as the unit's place must be even (2 or 4) and the ten's place can be any of the 5 digits. The solution is sound and the reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 6: Permutations and Combinations"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 6: Permutations and Combinations"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 2,
-          "pageStart": 4,
-          "pageEnd": 4,
-          "headingPath": [
-            "Chapter 6: Permutations and Combinations"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:04:54.823Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "In how many ways can 2 people be chosen as a Chairman and a Vice-Chairman from a group of 12, if no person can hold both positions?",
-      "choices": [
-        "66",
-        "132",
-        "144",
-        "156"
-      ],
-      "answerIndex": 1,
-      "solution": "The number of ways to choose a Chairman and a Vice-Chairman from 12 people is calculated as 12 × 11 = 132. This is the permutation of 12 people taken 2 at a time. '66' is incorrect as it assumes 12 choose 2 (combinations), '144' is incorrect as it assumes 12 × 12, and '156' is incorrect as it assumes 13 × 12.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "12 लोगों के एक समूह में, कितने तरीकों से दो लोगों को अध्यक्ष और उपाध्यक्ष के रूप में चुना जा सकता है, यदि कोई भी व्यक्ति दोनों पद नहीं धारण कर सकता है?",
-          "choices": [
-            "66",
-            "132",
-            "144",
-            "156"
-          ],
-          "solution": "12 लोगों में से एक अध्यक्ष और एक उपाध्यक्ष के चयन की संख्या 12 × 11 = 132 के रूप में गणना की जाती है। यह 12 लोगों में से 2 के समय विन्यास है। '66' गलत है क्योंकि यह 12 चुन 2 (संयोजन) की मान्यता रखता है, '144' गलत है क्योंकि यह 12 × 12 की मान्यता रखता है, और '156' गलत है क्योंकि यह 13 × 12 की मान्यता रखता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "12 लोकांच्या एका गटातून एका विधानकर्ता आणि एका उपविधानकर्त्याची निवड किती प्रकारे केली जाऊ शकते, जर कोणताही व्यक्ती दोन्ही पदांचा अंगीकार करू शकत नाही?",
-          "choices": [
-            "66",
-            "132",
-            "144",
-            "156"
-          ],
-          "solution": "12 लोकांमधून एका विधानकर्ता आणि एका उपविधानकर्त्याची निवड करण्याच्या पद्धतींची संख्या 12 × 11 = 132 असते. हे 12 लोकांचे 2 एकाच वेळी घेणारे विन्यास आहे. '66' चुकीचे आहे कारण ते 12 चुना 2 (संयोजन) मानते, '144' चुकीचे आहे कारण ते 12 × 12 मानते, आणि '156' चुकीचे आहे कारण ते 13 × 12 मानते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for mathematical concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "assumes combinations instead of permutations",
-        null,
-        "assumes 12 × 12",
-        "assumes 13 × 12 instead of 12 × 11"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies the problem as a permutation (order matters) and calculates 12 × 11 = 132. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 6: Permutations and Combinations"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 6: Permutations and Combinations"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 6: Permutations and Combinations"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:04:54.823Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "How many ways can 4 red, 3 yellow, and 2 green discs be arranged in a row if the discs of the same color are indistinguishable?",
-      "choices": [
-        "1260",
-        "15120",
-        "10080",
-        "120"
-      ],
-      "answerIndex": 0,
-      "solution": "The total number of discs is 9. The number of distinct arrangements is given by 9! divided by the product of the factorials of the counts of each color. Thus, the correct answer is 9! / (4! 3! 2!) = 1260. Other options are incorrect because they do not account for the indistinguishability of the discs or use incorrect factorials.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "4 लाल, 3 पीले और 2 हरे डिस्क के एक पंक्ति में कितने तरीके से व्यवस्थित किया जा सकता है यदि एक ही रंग के डिस्क अभेद्य हैं?",
-          "choices": [
-            "1260",
-            "15120",
-            "10080",
-            "120"
-          ],
-          "solution": "कुल डिस्क की संख्या 9 है। अलग-अलग व्यवस्थाओं की संख्या 9! के विभाजन द्वारा दी जाती है जो प्रत्येक रंग के गणना के फैक्टोरियल के गुणनफल द्वारा दी जाती है। अतः सही उत्तर 9! / (4! 3! 2!) = 1260 है। अन्य विकल्प गलत हैं क्योंकि वे डिस्क के अभेद्यता को ध्यान में नहीं रखते हैं या गलत फैक्टोरियल का उपयोग करते हैं।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original question and solution with appropriate mathematical terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "4 लाल, 3 पांढरा आणि 2 हिरवा चक्र एका ओळीत किती प्रकारे ठेवता येतील जर एकाच रंगाचे चक्र अभेद्य असतील?",
-          "choices": [
-            "1260",
-            "15120",
-            "10080",
-            "120"
-          ],
-          "solution": "एकूण चक्रांची संख्या 9 आहे. विविध व्यवस्थांची संख्या 9! च्या विभाजनाने दिली जाते ज्यामध्ये प्रत्येक रंगाच्या गणना फॅक्टोरियलच्या गुणाकाराने विभाजित केले जाते. म्हणून, योग्य उत्तर 9! / (4! 3! 2!) = 1260 आहे. इतर उत्तरे चक्रांच्या अभेद्यतेचा विचार करत नाहीत किंवा चुकीच्या फॅक्टोरियल वापरतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for factorials and permutations.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Thinking that all discs are distinct and calculating 9! instead of accounting for identical colors",
-        "Believes that the total number of arrangements is calculated by multiplying the factorials of the counts of each color instead of dividing.",
-        "Student divides 12! by only one factorial instead of multiple factorials for repeated elements"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the key. The reasoning for the distractors is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 6: Permutations and Combinations"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 7,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 6: Permutations and Combinations"
-          ]
-        },
-        {
-          "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 8,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 6: Permutations and Combinations"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:04:54.823Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "How many ways can one choose 60 unit squares from an 11x11 chessboard such that no two chosen squares share a side?",
-      "choices": [
-        "11",
-        "121",
-        "60",
-        "0"
-      ],
-      "answerIndex": 3,
-      "solution": "The correct answer is 0 because it is impossible to select 60 squares on an 11x11 chessboard without having at least two squares sharing a side. This is due to the limited number of non-adjacent squares available on the board. Choosing 60 squares would require more non-adjacent squares than exist. The option 11 is incorrect because it is the number of rows, not the answer. The option 121 is incorrect because it is the total number of squares on the board. The option 60 is incorrect because it is the number of squares to be chosen, not the number of ways to choose them.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "11x11 शतरंज के बोर्ड से 60 इकाई वर्गों के चयन के कितने तरीके हैं जिनमें कोई दो चयनित वर्ग एक किनारा साझा नहीं करते?",
-          "choices": [
-            "11",
-            "121",
-            "60",
-            "0"
-          ],
-          "solution": "सही उत्तर 0 है क्योंकि 11x11 शतरंज के बोर्ड पर 60 वर्ग इस प्रकार चुनना असंभव है कि कोई भी दो चयनित वर्ग एक किनारा साझा न करें। इसका कारण बोर्ड पर उपलब्ध असंलग्न वर्गों की सीमित संख्या है। 60 वर्ग चुनने के लिए आवश्यक असंलग्न वर्गों की संख्या बोर्ड पर उपलब्ध नहीं है। विकल्प 11 गलत है क्योंकि यह पंक्तियों की संख्या है, न कि उत्तर। विकल्प 121 गलत है क्योंकि यह बोर्ड पर कुल वर्गों की संख्या है। विकल्प 60 गलत है क्योंकि यह चुने जाने वाले वर्गों की संख्या है, न कि उनके चयन के तरीकों की संख्या।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology for a Hindi-medium math context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "11x11 चेसबोर्डमधून 60 एकक चौरस निवडण्याच्या पद्धतींची संख्या किती असेल जेणेकरून निवडलेले दोन चौरस एका बाजूला नसतील?",
-          "choices": [
-            "11",
-            "121",
-            "60",
-            "0"
-          ],
-          "solution": "बरोबर उत्तर 0 आहे कारण 11x11 चेसबोर्डवर 60 चौरस निवडणे अशक्य आहे जेणेकरून कमीत कमी दोन चौरस बाजूला नसतील. हे चेसबोर्डवर उपलब्ध नॉन-आसन्न चौरसांच्या संख्येच्या मर्यादेमुळे आहे. 60 चौरस निवडण्यासाठी आवश्यक असलेल्या नॉन-आसन्न चौरसांची संख्या उपलब्ध नाही. ऑप्शन 11 चूक आहे कारण हे ओळींची संख्या आहे, नाही की उत्तर. ऑप्शन 121 चूक आहे कारण हे चेसबोर्डवरील एकूण चौरसांची संख्या आहे. ऑप्शन 60 चूक आहे कारण हे निवडायच्या चौरसांची संख्या आहे, नाही की त्यांच्या पद्धतींची संख्या.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate technical terms. The structure and logic of the question and solution are preserved.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "confuses the number of rows with the answer",
-        "mistakenly assumes all squares can be chosen",
-        "mistakenly assumes the number of squares to choose is the answer",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. On an 11x11 chessboard, the maximum number of non-adjacent squares that can be selected is 61 (by choosing all squares of one color in a checkerboard pattern). Since 60 is less than 61, it is possible to choose 60 non-adjacent squares, but the author's answer of 0 is incorrect. However, the question is about the number of ways to choose 60 non-adjacent squares, and the correct answer is not 0. The author's reasoning is flawed.",
+      "critique": "The correct answer is 56, as it is a permutation of 8 people taken 2 at a time. The author's reasoning is sound and matches the actual misconceptions students might have.",
       "sources": [
         {
           "document": "ncert/11/mathematics/kemh106.pdf",
-          "ordinal": 18,
-          "pageStart": 25,
-          "pageEnd": 26,
+          "ordinal": 9,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 6: Permutations and Combinations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh106.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 6: Permutations and Combinations"
+          ]
+        },
+        {
+          "document": "ncert/11/mathematics/kemh106.pdf",
+          "ordinal": 11,
+          "pageStart": 16,
+          "pageEnd": 17,
           "headingPath": [
             "Chapter 6: Permutations and Combinations"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T03:04:54.823Z",
+      "generatedAt": "2026-10-28T08:03:30.947Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,719 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T23:41:44.753Z",
+  "finishedAt": "2026-10-24T23:51:19.248Z",
+  "seconds": 574,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari PART-II",
+    "bookCode": "iemh2",
+    "document": "ncert/9/mathematics/iemh203.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 3 — The World of Algorithms",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 14,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n9. C) 30",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n9. (C) option",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n11. Use of calculators is not allowed.",
+      "[IOQM 2020 — question paper]\n3. If 2 2 = 0.9999 then determine the value of N.\nk=1 (k + k)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 155292,
+      "in": 35,
+      "out": 35,
+      "rejects": 2,
+      "promptTokens": 26529,
+      "completionTokens": 9498
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 286881,
+      "in": 35,
+      "out": 20,
+      "rejects": 15,
+      "promptTokens": 22410,
+      "completionTokens": 8384
+    },
+    "solver": {
+      "calls": 185,
+      "ms": 109492,
+      "in": 20,
+      "out": 14,
+      "rejects": 6,
+      "promptTokens": 46215,
+      "completionTokens": 2265
+    },
+    "form": {
+      "calls": 3,
+      "ms": 8440,
+      "in": 14,
+      "out": 2,
+      "rejects": 12,
+      "promptTokens": 806,
+      "completionTokens": 248
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 4225,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 52404,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4894,
+      "completionTokens": 2542
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If we want to find the gcd of 54000 and 81000, which of the following is the most efficient method according to the passage?",
+      "ms": {
+        "draft": 12241,
+        "critique": 5404
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the purpose of using lists to store divisors during the gcd algorithm?",
+      "ms": {
+        "draft": 12241,
+        "critique": 4705,
+        "solver": 1665,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct order of steps to find the greatest common divisor (gcd) of two numbers?",
+      "ms": {
+        "draft": 12241,
+        "critique": 4543,
+        "solver": 1241,
+        "form": 3087
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main advantage of using a list to store the divisors of a number?",
+      "ms": {
+        "draft": 12241,
+        "critique": 5629,
+        "solver": 1809
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the purpose of the 'most-recent-common-divisor' variable in the algorithm described?",
+      "ms": {
+        "draft": 4606,
+        "critique": 7607
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the algorithm to find the gcd of two numbers is executed for 375 and 825, which of the following is the correct gcd?",
+      "ms": {
+        "draft": 12241,
+        "critique": 6635,
+        "solver": 16978
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If we use the algorithm described in the passage to find the gcd of 24 and 36, what will be the final value of 'most-recent-common-divisor'?",
+      "ms": {
+        "draft": 4606,
+        "critique": 6837
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number has divisors listed as [1, 2, 3, 6, 9, 18], which of the following numbers could it be?",
+      "ms": {
+        "draft": 12241,
+        "critique": 6096,
+        "solver": 15996,
+        "form": 5132
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is the main advantage of Euclid's algorithm over the algorithm that scans all numbers from 1 to min(m, n)?",
+      "ms": {
+        "draft": 4606,
+        "critique": 6177
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, what is the reason that Euclid's algorithm might not be more efficient for certain inputs, such as gcd(99, 2)?",
+      "ms": {
+        "draft": 4606,
+        "critique": 6698
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If we use the algorithm that scans from 1 to min(m, n), what is the first common divisor that will be considered for the numbers 18 and 24?",
+      "ms": {
+        "draft": 4606,
+        "critique": 7432
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the improved method for finding the GCD of two numbers?",
+      "ms": {
+        "draft": 3531,
+        "critique": 5409
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about the efficiency of the algorithm that scans numbers from 1 to min(m, n)?",
+      "ms": {
+        "draft": 4606,
+        "critique": 6908,
+        "solver": 12930
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for using the improved algorithm for GCD according to the passage?",
+      "ms": {
+        "draft": 3531,
+        "critique": 5289
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If we use the improved algorithm to find the GCD of 17 and 5, what will be the next step after computing 17 mod 5?",
+      "ms": {
+        "draft": 3531,
+        "critique": 5701,
+        "solver": 13206,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about the improved algorithm for GCD?",
+      "ms": {
+        "draft": 3531,
+        "critique": 6401,
+        "solver": 13537,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the relationship between the GCD of two numbers and their prime factorizations?",
+      "ms": {
+        "draft": 3531,
+        "critique": 5939
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Using the improved version of Euclid’s algorithm, what is the value of gcd(17, 5)?",
+      "ms": {
+        "draft": 4313,
+        "critique": 5324
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about Āryabhaṭa’s algorithm?",
+      "ms": {
+        "draft": 4313,
+        "critique": 4730,
+        "solver": 11989,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to compute gcd(99, 2) using Āryabhaṭa’s improved algorithm?",
+      "ms": {
+        "draft": 4313,
+        "critique": 5017,
+        "solver": 13187,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following is a key advantage of Āryabhaṭa’s algorithm over the original Euclid’s algorithm?",
+      "ms": {
+        "draft": 4313,
+        "critique": 6095
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number n is divided by 10 and leaves a remainder of 3, what is the value of n mod 10?",
+      "ms": {
+        "draft": 4313,
+        "critique": 9020,
+        "solver": 12385
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If m = 12 and n = 18, what is the greatest common divisor (gcd) of m and n using the algorithm that checks numbers from 1 to min(m, n) and updates the most-recent-common-divisor when a common divisor is found?",
+      "ms": {
+        "draft": 5010,
+        "critique": 7196
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Euclid’s subtraction algorithm, if we are to find gcd(105, 45), which of the following steps would be the next step after gcd(45, 60)?",
+      "ms": {
+        "draft": 5010,
+        "critique": 6449,
+        "solver": 1444
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If we apply the improved algorithm to find gcd(60, 16), what is the next step after gcd(16, 12)?",
+      "ms": {
+        "draft": 4313,
+        "critique": 6004,
+        "solver": 11357,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If we use Euclid’s subtraction algorithm to find gcd(100, 99), how many steps would it take to reach the final result?",
+      "ms": {
+        "draft": 5010,
+        "critique": 6434,
+        "solver": 1517
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, how does Euclid’s algorithm compare to the algorithm that checks all numbers from 1 to min(m, n)?",
+      "ms": {
+        "draft": 5010,
+        "critique": 6271,
+        "solver": 1538,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is the correct sequence of steps in Euclid’s algorithm for finding gcd(60, 36)?",
+      "ms": {
+        "draft": 5010,
+        "critique": 6235,
+        "solver": 1622,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If you add 473 + 695 using the algorithm described in the passage, what is the value of the carry after adding the leftmost digits?",
+      "ms": {
+        "draft": 5721,
+        "critique": 6930
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to align the digits from right to left in the algorithm described in the passage?",
+      "ms": {
+        "draft": 5721,
+        "critique": 7137
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main advantage of using an algorithm to add numbers?",
+      "ms": {
+        "draft": 5721,
+        "critique": 7558,
+        "solver": 14152,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If you were to add a 5-digit number to a 3-digit number using the algorithm described in the passage, what would happen?",
+      "ms": {
+        "draft": 5721,
+        "critique": 7169,
+        "solver": 15025,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the basic assumption made in the addition algorithm?",
+      "ms": {
+        "draft": 5721,
+        "critique": 5050
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Using the algorithm that keeps track of the most-recent-common-divisor, what is the gcd of 15 and 25?",
+      "ms": {
+        "draft": 5010,
+        "critique": 5329,
+        "solver": 995,
+        "form": 0,
+        "translation": 25512
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the GCD of two numbers is 1, what can be said about the two numbers?",
+      "ms": {
+        "draft": 3531,
+        "critique": 6591,
+        "solver": 13407,
+        "form": 1338,
+        "translation": 23084
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 0, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 1,\n      \"stem\": \"What is an algorithm?\",\n      \"options\": [\"A way to count dot"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If we want to find the gcd of 54000 and 81000, which of the following is the most efficient method according to the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the purpose of using lists to store divisors during the gcd algorithm?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct order of steps to find the greatest common divisor (gcd) of two numbers?",
+      "reason": "options 0 and 1 say the same thing (\"Compute divisors of m, compute divisors of n, find common divisors\" / \"Find common divisors, compute divisors of m, compute divisors of n\"); options 0 and 2 say the same thing (\"Compute divisors of m, compute divisors of n, find common divisors\" / \"Compute divisors of n, find common divisors, compute divisors of m\"); options 0 and 3 say the same thing (\"Compute divisors of m, compute divisors of n, find common divisors\" / \"Find common divisors, compute divisors of n, compute divisors of m\"); options 1 and 2 say the same thing (\"Find common divisors, compute divisors of m, compute divisors of n\" / \"Compute divisors of n, find common divisors, compute divisors of m\"); options 1 and 3 say the same thing (\"Find common divisors, compute divisors of m, compute divisors of n\" / \"Find common divisors, compute divisors of n, compute divisors of m\"); options 2 and 3 say the same thing (\"Compute divisors of n, find common divisors, compute divisors of m\" / \"Find common divisors, compute divisors of n, compute divisors of m\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, what is the main advantage of using a list to store the divisors of a number?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the purpose of the 'most-recent-common-divisor' variable in the algorithm described?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the algorithm to find the gcd of two numbers is executed for 375 and 825, which of the following is the correct gcd?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If we use the algorithm described in the passage to find the gcd of 24 and 36, what will be the final value of 'most-recent-common-divisor'?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a number has divisors listed as [1, 2, 3, 6, 9, 18], which of the following numbers could it be?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "According to the passage, what is the main advantage of Euclid's algorithm over the algorithm that scans all numbers from 1 to min(m, n)?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Based on the passage, what is the reason that Euclid's algorithm might not be more efficient for certain inputs, such as gcd(99, 2)?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If we use the algorithm that scans from 1 to min(m, n), what is the first common divisor that will be considered for the numbers 18 and 24?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "According to the passage, what is the improved method for finding the GCD of two numbers?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about the efficiency of the algorithm that scans numbers from 1 to min(m, n)?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason for using the improved algorithm for GCD according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If we use the improved algorithm to find the GCD of 17 and 5, what will be the next step after computing 17 mod 5?",
+      "reason": "options 0 and 3 say the same thing (\"Compute GCD(5, 2)\" / \"Compute GCD(2, 5)\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about the improved algorithm for GCD?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 are the same (\"It is based on repeated subtraction\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, what is the relationship between the GCD of two numbers and their prime factorizations?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 2, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\n  \"items\": [\n    {\n      \"difficulty\": 2,\n      \"stem\": \"What is the basic step that the algorithm assumes?\",\n      \"o"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Using the improved version of Euclid’s algorithm, what is the value of gcd(17, 5)?",
+      "reason": "the critic finds option 3 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about Āryabhaṭa’s algorithm?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct way to compute gcd(99, 2) using Āryabhaṭa’s improved algorithm?",
+      "reason": "options 0 and 3 say the same thing (\"Compute gcd(2, 99)\" / \"Compute gcd(99, 2)\"); option 0 repeats the stem's wording (\"Compute gcd(2, 99)\"); option 3 repeats the stem's wording (\"Compute gcd(99, 2)\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, which of the following is a key advantage of Āryabhaṭa’s algorithm over the original Euclid’s algorithm?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number n is divided by 10 and leaves a remainder of 3, what is the value of n mod 10?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If m = 12 and n = 18, what is the greatest common divisor (gcd) of m and n using the algorithm that checks numbers from 1 to min(m, n) and updates the most-recent-common-divisor when a common divisor is found?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In Euclid’s subtraction algorithm, if we are to find gcd(105, 45), which of the following steps would be the next step after gcd(45, 60)?",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If we apply the improved algorithm to find gcd(60, 16), what is the next step after gcd(16, 12)?",
+      "reason": "options 0 and 3 say the same thing (\"gcd(12, 4)\" / \"gcd(4, 12)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If we use Euclid’s subtraction algorithm to find gcd(100, 99), how many steps would it take to reach the final result?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, how does Euclid’s algorithm compare to the algorithm that checks all numbers from 1 to min(m, n)?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is the correct sequence of steps in Euclid’s algorithm for finding gcd(60, 36)?",
+      "reason": "options 0 and 1 say the same thing (\"gcd(60, 36), gcd(36, 24), gcd(24, 12), gcd(12, 0)\" / \"gcd(60, 36), gcd(36, 60), gcd(60, 24), gcd(24, 12)\"); options 0 and 2 say the same thing (\"gcd(60, 36), gcd(36, 24), gcd(24, 12), gcd(12, 0)\" / \"gcd(60, 36), gcd(36, 24), gcd(24, 12), gcd(12, 12)\"); options 0 and 3 say the same thing (\"gcd(60, 36), gcd(36, 24), gcd(24, 12), gcd(12, 0)\" / \"gcd(60, 36), gcd(36, 24), gcd(24, 12), gcd(12, 24)\"); options 1 and 2 say the same thing (\"gcd(60, 36), gcd(36, 60), gcd(60, 24), gcd(24, 12)\" / \"gcd(60, 36), gcd(36, 24), gcd(24, 12), gcd(12, 12)\"); options 1 and 3 say the same thing (\"gcd(60, 36), gcd(36, 60), gcd(60, 24), gcd(24, 12)\" / \"gcd(60, 36), gcd(36, 24), gcd(24, 12), gcd(12, 24)\"); options 2 and 3 say the same thing (\"gcd(60, 36), gcd(36, 24), gcd(24, 12), gcd(12, 12)\" / \"gcd(60, 36), gcd(36, 24), gcd(24, 12), gcd(12, 24)\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If you add 473 + 695 using the algorithm described in the passage, what is the value of the carry after adding the leftmost digits?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is it important to align the digits from right to left in the algorithm described in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main advantage of using an algorithm to add numbers?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If you were to add a 5-digit number to a 3-digit number using the algorithm described in the passage, what would happen?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what is the basic assumption made in the addition algorithm?",
+      "reason": "option 2 is not wrong"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

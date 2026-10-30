@@ -1,0 +1,388 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T21:09:20.185Z",
+  "finishedAt": "2026-10-25T21:13:00.844Z",
+  "seconds": 221,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap121.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 21 — Like Father, Like Daughter",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 55074,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 14618,
+      "completionTokens": 3171
+    },
+    "critique": {
+      "calls": 24,
+      "ms": 148587,
+      "in": 16,
+      "out": 15,
+      "rejects": 1,
+      "promptTokens": 10400,
+      "completionTokens": 4161
+    },
+    "solver": {
+      "calls": 120,
+      "ms": 63838,
+      "in": 15,
+      "out": 9,
+      "rejects": 6,
+      "promptTokens": 21121,
+      "completionTokens": 1265
+    },
+    "form": {
+      "calls": 3,
+      "ms": 9248,
+      "in": 9,
+      "out": 2,
+      "rejects": 7,
+      "promptTokens": 687,
+      "completionTokens": 182
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 3523,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 54266,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4355,
+      "completionTokens": 2406
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "According to the passage, who does Ashima's sneeze resemble?",
+      "ms": {
+        "draft": 3527,
+        "critique": 6929,
+        "solver": 12478
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about Nilima's hair?",
+      "ms": {
+        "draft": 3527,
+        "critique": 7363,
+        "solver": 12962
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is one way the passage suggests we can identify twins?",
+      "ms": {
+        "draft": 3527,
+        "critique": 4813,
+        "solver": 16340
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about traits that are inherited from family?",
+      "ms": {
+        "draft": 16852,
+        "critique": 7401,
+        "solver": 11798,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a trait that is not inherited from their parents, where could it have come from?",
+      "ms": {
+        "draft": 16852,
+        "critique": 6389
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Gregor Mendel discover about pea plants?",
+      "ms": {
+        "draft": 16852,
+        "critique": 8666,
+        "solver": 12895,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can we say about the causes of polio?",
+      "ms": {
+        "draft": 16852,
+        "critique": 3419,
+        "solver": 694,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has polio, will their child definitely have polio?",
+      "ms": {
+        "draft": 2729,
+        "critique": 6042,
+        "solver": 980,
+        "form": 4107
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the traits of pea plants?",
+      "ms": {
+        "draft": 2729,
+        "critique": 7430,
+        "solver": 10476
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can we conclude about traits that are inherited?",
+      "ms": {
+        "draft": 2729,
+        "critique": 6429,
+        "solver": 1811,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, who is Kiran in relation to Nilima?",
+      "ms": {
+        "draft": 3596,
+        "critique": 5849,
+        "solver": 1506
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, how does Ashima's sneeze compare to someone in her family?",
+      "ms": {
+        "draft": 3596,
+        "critique": 7997,
+        "solver": 1543
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main reason why Saroja and Suvasini look alike?",
+      "ms": {
+        "draft": 3596,
+        "critique": 7182,
+        "solver": 767,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what does Nilima's nani say about the similarity of hair in their family?",
+      "ms": {
+        "draft": 3596,
+        "critique": 4173,
+        "solver": 4878,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the scientist who did experiments on pea plants?",
+      "ms": {
+        "draft": 2729,
+        "critique": 6400,
+        "solver": 11924,
+        "form": 2962,
+        "translation": 23358
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child looks like a distant relative, what might this indicate?",
+      "ms": {
+        "draft": 3527,
+        "critique": 6769,
+        "solver": 1192,
+        "form": 4599,
+        "translation": 25756
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, who does Ashima's sneeze resemble?",
+      "reason": "after redraft: the solver picked option 0 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage say about Nilima's hair?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is one way the passage suggests we can identify twins?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about traits that are inherited from family?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person has a trait that is not inherited from their parents, where could it have come from?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What did Gregor Mendel discover about pea plants?",
+      "reason": "options 0 and 3 are the same (\"The seeds can have a mixed colour between green and yellow\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can we say about the causes of polio?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"It is caused by a virus and is not inherited\" / \"It is caused by a virus and is inherited\"); options 0 and 2 say the same thing (\"It is caused by a virus and is not inherited\" / \"It is not caused by a virus and is not inherited\"); options 0 and 3 say the same thing (\"It is caused by a virus and is not inherited\" / \"It is not caused by a virus and is inherited\"); options 1 and 2 say the same thing (\"It is caused by a virus and is inherited\" / \"It is not caused by a virus and is not inherited\"); options 1 and 3 say the same thing (\"It is caused by a virus and is inherited\" / \"It is not caused by a virus and is inherited\"); options 2 and 3 say the same thing (\"It is not caused by a virus and is not inherited\" / \"It is not caused by a virus and is inherited\"); distractor 3's reason is not a one-line misconception (\"Confuses the cause of polio with other diseases like leprosy…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person has polio, will their child definitely have polio?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Confuses the passage's message about inheritance…\"); distractor 3's reason is not a one-line misconception (\"Focuses only on one parent, which is not supported by the pa…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage say about the traits of pea plants?",
+      "reason": "after redrafting distractor 2: option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can we conclude about traits that are inherited?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, who is Kiran in relation to Nilima?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, how does Ashima's sneeze compare to someone in her family?",
+      "reason": "the solver picked option 1 1 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main reason why Saroja and Suvasini look alike?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what does Nilima's nani say about the similarity of hair in their family?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"The hair is not similar in the first generation but similar in the second\" / \"The hair is similar in the first generation but not in the second\"); options 0 and 2 say the same thing (\"The hair is not similar in the first generation but similar in the second\" / \"The hair is similar in the second generation but not in the first\"); options 1 and 2 say the same thing (\"The hair is similar in the first generation but not in the second\" / \"The hair is similar in the second generation but not in the first\"); distractor 0's reason is not a one-line misconception (\"Confuses the generational pattern of hair similarity based o…\")"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

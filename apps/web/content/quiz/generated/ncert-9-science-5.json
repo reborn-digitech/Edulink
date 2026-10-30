@@ -21,111 +21,10 @@
   "board": "NCERT",
   "book": "Exploration",
   "edition": "2026 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-22T14:35:16.788Z",
+  "generatedAt": "2026-10-30T02:37:38.576Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
-    {
-      "difficulty": 1,
-      "stem": "Which process is used to separate a mixture of camphor and sand?",
-      "choices": [
-        "Filtration",
-        "Distillation",
-        "Sublimation",
-        "Decantation"
-      ],
-      "answerIndex": 2,
-      "solution": "Sublimation is the correct process because camphor changes directly from a solid to a vapor when heated and then back to a solid, leaving the sand behind. Filtration would not work because both camphor and sand are solids, and distillation is used for separating liquids based on boiling points. Decantation is for separating immiscible liquids or solids from liquids, which does not apply here.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "कैम्फर और रेत के मिश्रण को अलग करने के लिए कौन-सी प्रक्रिया का उपयोग किया जाता है?",
-          "choices": [
-            "चिरण",
-            "आसवन",
-            "उत्केशन",
-            "अपकेंद्रण"
-          ],
-          "solution": "उत्केशन सही प्रक्रिया है क्योंकि कैम्फर के गर्म करने पर ठोस से वाष्प में बदल जाता है और फिर ठोस में वापस आ जाता है, जिससे रेत बच जाती है। चिरण काम नहीं करेगा क्योंकि कैम्फर और रेत दोनों ठोस हैं, और आसवन का उपयोग उबलने बिंदु के आधार पर तरल पदार्थों को अलग करने के लिए किया जाता है। अपकेंद्रण का उपयोग अमिश्रणीय तरल पदार्थों या तरल पदार्थों से ठोस को अलग करने के लिए किया जाता है, जो यहां लागू नहीं होता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, technical terms match standard Hindi science terminology, and the logic of the solution aligns with the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "कॅम्फॉर आणि रेतीच्या मिश्रणाला वेगळे करण्यासाठी कोणती प्रक्रिया वापरली जाते?",
-          "choices": [
-            "विलगीकरण",
-            "उत्तपन",
-            "उद्भासन",
-            "उत्तमिती"
-          ],
-          "solution": "उद्भासन ही योग्य प्रक्रिया आहे कारण कॅम्फॉर उकळताना थर्मल ऊर्जेच्या प्रभावामुळे घनापासून वाफेत बदलतो आणि पुन्हा घनात बदलतो, जेणेकरून रेती शिल्लक रहाते. विलगीकरण काम करणार नाही कारण कॅम्फॉर आणि रेती दोन्ही घन आहेत, आणि उत्तपन हा उबास बिंदूंवर आधारित द्रव वेगळे करण्यासाठी वापरला जातो. उत्तमिती ही अमिश्रित द्रव अथवा द्रवांमधून घन वेगळे करण्यासाठी वापरली जाते, जे येथे लागू होत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses sublimation with filtration, which is used for solids in liquids",
-        "Thinks distillation is used for solid mixtures, which it is not",
-        null,
-        "Student thinks sublimation can be replaced by pouring off the top layer"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies sublimation as the method to separate camphor and sand, as camphor sublimes while sand does not. The reasoning for the incorrect options aligns with common misconceptions about the processes.",
-      "sources": [
-        {
-          "document": "ncert/9/science/iesc105.pdf",
-          "ordinal": 16,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 5: Exploring Mixtures and their Separation",
-            "5.4 How Can We Separate the Components of",
-            "5.4.2 Sublimation"
-          ]
-        },
-        {
-          "document": "ncert/9/science/iesc105.pdf",
-          "ordinal": 17,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 5: Exploring Mixtures and their Separation",
-            "5.4 How Can We Separate the Components of",
-            "5.4.3 Suspensions"
-          ]
-        },
-        {
-          "document": "ncert/9/science/iesc105.pdf",
-          "ordinal": 18,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 5: Exploring Mixtures and their Separation",
-            "5.4 How Can We Separate the Components of",
-            "5.4.3 Suspensions"
-          ]
-        }
-      ],
-      "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T14:35:16.788Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
     {
       "difficulty": 2,
       "stem": "Which of the following is an example of a homogeneous mixture?",
@@ -133,10 +32,10 @@
         "A mixture of sand and water",
         "A mixture of oil and water",
         "A mixture of chalk powder and water",
-        "A mixture of salt and water"
+        "A solution of sugar and water"
       ],
       "answerIndex": 3,
-      "solution": "A homogeneous mixture has a uniform composition throughout. Salt dissolving in water creates a uniform solution where the salt is evenly distributed. Sand, oil, and chalk do not dissolve and remain visibly separate, making their mixtures heterogeneous.",
+      "solution": "A homogeneous mixture has a uniform composition throughout. A solution of sugar and water is a homogeneous mixture because the sugar is completely dissolved in water, making the mixture uniform. A mixture of sand and water, oil and water, or chalk powder and water are heterogeneous because the components are not uniformly mixed.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
@@ -147,24 +46,24 @@
             "रेत और पानी का मिश्रण",
             "तेल और पानी का मिश्रण",
             "चूना पाउडर और पानी का मिश्रण",
-            "नमक और पानी का मिश्रण"
+            "चीनी और पानी का घोल"
           ],
-          "solution": "एक समांगी मिश्रण का संघटन पूरे भाग में समान होता है। नमक के पानी में घुल जाने से एक समान विलयन बनता है जहां नमक समान रूप से फैला रहता है। रेत, तेल और चूना पाउडर घुल नहीं जाते और दृश्य रूप से अलग रहते हैं, जिसके कारण उनके मिश्रण असमांगी होते हैं।",
+          "solution": "एक समांगी मिश्रण का संघटन पूरे भाग में समान होता है। चीनी और पानी का घोल एक समांगी मिश्रण है क्योंकि चीनी पूरी तरह से पानी में घुल जाती है, जिससे मिश्रण समान हो जाता है। रेत और पानी, तेल और पानी, या चूना पाउडर और पानी का मिश्रण असमांगी होते हैं क्योंकि घटक एक समान रूप से मिश्रित नहीं होते।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All technical terms (e.g., 'समांगी मिश्रण', 'असमांगी मिश्रण') are standard in Hindi science textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for scientific concepts.",
           "flag": null
         },
         "mr": {
           "stem": "खालीलपैकी कोणते एक समजातीय मिश्रणाचे उदाहरण आहे?",
           "choices": [
-            "रेणू आणि पाणी चे मिश्रण",
-            "तेल आणि पाणी चे मिश्रण",
-            "चूर्ण आणि पाणी चे मिश्रण",
-            "खारा आणि पाणी चे मिश्रण"
+            "काचेच्या चूर्ण आणि पाण्याचे मिश्रण",
+            "तेल आणि पाण्याचे मिश्रण",
+            "रेणू आणि पाण्याचे मिश्रण",
+            "शर्करा आणि पाण्याचे विरोध"
           ],
-          "solution": "एक समजातीय मिश्रण एक असे मिश्रण आहे ज्याचा वितरण समान आहे. खारा पाण्यात विरघळून एक समान द्रावण तयार करतो जेथे खारा समान रीतीने वितरित असतो. रेणू, तेल आणि चूर्ण विरघळत नाहीत आणि दृश्यमानपणे वेगळे रहातात, ज्यामुळे त्यांचे मिश्रण असमजातीय असते.",
+          "solution": "समजातीय मिश्रणाची एकसारखी रचना असते. शर्करा आणि पाण्याचे विरोध एक समजातीय मिश्रण आहे कारण शर्करा पूर्णपणे पाण्यात विरघळते आणि मिश्रण एकसारखे बनते. काचेच्या चूर्ण आणि पाण्याचे मिश्रण, तेल आणि पाण्याचे मिश्रण किंवा रेणू आणि पाण्याचे मिश्रण हे असमजातीय आहेत कारण घटक एकसारखे मिसळलेले नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "critique": "Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
           "flag": null
         }
       },
@@ -173,9 +72,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses heterogeneous with homogeneous",
-        "Thinks oil and water form a uniform mixture",
-        "Believes chalk powder dissolves in water to form a uniform mixture",
+        "Confuses heterogeneous with homogeneous mixtures",
+        "Thinks oil and water can form a homogeneous mixture",
+        "Believes chalk powder dissolves completely in water and forms a homogeneous mixture",
         null
       ],
       "solverAnswers": [
@@ -186,7 +85,7 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies that a homogeneous mixture has a uniform composition, and salt dissolved in water is a classic example. The distractors reflect common misconceptions about immiscible liquids and insoluble solids.",
+      "critique": "The solution correctly identifies that a homogeneous mixture has a uniform composition, and the correct answer is a sugar-water solution. The distractors reflect common misconceptions about mixtures.",
       "sources": [
         {
           "document": "ncert/9/science/iesc105.pdf",
@@ -241,49 +140,49 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T14:35:16.788Z",
+      "generatedAt": "2026-10-30T02:37:38.576Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "What is the main difference between a homogeneous and a heterogeneous mixture?",
+      "stem": "What happens to suspended particles in muddy water over time?",
       "choices": [
-        "Homogeneous mixtures are always liquids, while heterogeneous mixtures are always solids",
-        "Homogeneous mixtures have visible particles, while heterogeneous mixtures do not",
-        "Homogeneous mixtures have uniform composition, while heterogeneous mixtures do not",
-        "Homogeneous mixtures are made of only one substance, while heterogeneous mixtures are made of more than one"
+        "They dissolve completely in water",
+        "They remain suspended indefinitely",
+        "They settle down at the bottom",
+        "They float on the surface"
       ],
       "answerIndex": 2,
-      "solution": "The correct answer is that homogeneous mixtures have uniform composition, while heterogeneous mixtures do not. This is because a homogeneous mixture, like salt dissolved in water, has its components evenly distributed throughout. The other options are incorrect because they misrepresent the nature of mixtures; for example, mixtures can be in any state of matter, and visibility of particles is not a defining characteristic.",
+      "solution": "Suspended particles in muddy water settle down at the bottom over time due to gravity. This is a characteristic of a heterogeneous mixture, where the particles are not uniformly distributed and eventually settle. Dissolving completely, remaining suspended indefinitely, or floating on the surface are not correct observations for muddy water.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक समांगी और असमांगी मिश्रण के बीच मुख्य अंतर क्या है?",
+          "stem": "मिट्टी वाले पानी में लटके हुए कणों पर समय के साथ क्या होता है?",
           "choices": [
-            "समांगी मिश्रण हमेशा द्रव होते हैं, जबकि असमांगी मिश्रण हमेशा ठोस होते हैं",
-            "समांगी मिश्रण में दृश्य कण होते हैं, जबकि असमांगी मिश्रण में नहीं होते",
-            "समांगी मिश्रण में समान संरचना होती है, जबकि असमांगी मिश्रण में नहीं होती",
-            "समांगी मिश्रण केवल एक पदार्थ से बने होते हैं, जबकि असमांगी मिश्रण एक से अधिक पदार्थों से बने होते हैं"
+            "वे पानी में पूरी तरह घुल जाते हैं",
+            "वे अनंतकाल तक लटके रहते हैं",
+            "वे तल पर बैठ जाते हैं",
+            "वे सतह पर तैरते रहते हैं"
           ],
-          "solution": "सही उत्तर यह है कि समांगी मिश्रण में समान संरचना होती है, जबकि असमांगी मिश्रण में नहीं होती। इसका कारण यह है कि एक समांगी मिश्रण, जैसे कि जल में नमक घुला हुआ है, अपने घटकों को पूरे भाग में समान रूप से फैलाता है। अन्य विकल्प गलत हैं क्योंकि वे मिश्रण की प्रकृति को गलत ढंग से प्रस्तुत करते हैं; उदाहरण के लिए, मिश्रण किसी भी अवस्था में हो सकते हैं, और कणों की दृश्यता एक परिभाषात्मक विशेषता नहीं है।",
+          "solution": "मिट्टी वाले पानी में लटके हुए कण समय के साथ गुरुत्वाकर्षण के कारण तल पर बैठ जाते हैं। यह एक असमांग मिश्रण की विशेषता है, जहां कण समान रूप से वितरित नहीं होते और अंततः बैठ जाते हैं। पूरी तरह घुल जाना, अनंतकाल तक लटके रहना या सतह पर तैरना मिट्टी वाले पानी के लिए सही अवलोकन नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately conveys the meaning of the original English question. Technical terms like 'समांगी' (homogeneous) and 'असमांगी' (heterogeneous) are correctly used as per standard Hindi science terminology. The structure and logic of the question and options are preserved, and the solution aligns with the correct answer.",
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका समजावू आणि असमजावू मिश्रण दरम्यान मुख्य फरक काय आहे?",
+          "stem": "मातीच्या पाण्यात झोंकलेले कण वेळेनुसार काय होतात?",
           "choices": [
-            "समजावू मिश्रण सदैव द्रव असतात, जरी असमजावू मिश्रण सदैव घन असतात",
-            "समजावू मिश्रणात दृश्य कण असतात, जरी असमजावू मिश्रणात नसतात",
-            "समजावू मिश्रणाचा एकसारखा घटक असतो, जरी असमजावू मिश्रणाचा नसतो",
-            "समजावू मिश्रण केवळ एका पदार्थापासून बनलेले असतात, जरी असमजावू मिश्रणात एकापेक्षा जास्त पदार्थ असतात"
+            "ते पाण्यात पूर्णपणे विरघळतात",
+            "ते अनंतकाळ झोंकलेले राहतात",
+            "ते तलावर बसतात",
+            "ते पृष्ठभागावर तरंगतात"
           ],
-          "solution": "समजावू मिश्रणाचा एकसारखा घटक असतो, जरी असमजावू मिश्रणाचा नसतो. हे कारण आहे की समजावू मिश्रण, जसे की पाण्यात घाललेले खारट पाणी, त्याच्या घटकांना एकसारख्या प्रमाणात वितरित केले जाते. इतर विकल्प चुकीचे आहेत कारण ते मिश्रणाच्या प्रकृतीचे अपुरे वर्णन करतात; उदाहरणार्थ, मिश्रण कोणत्याही पातळीत असू शकतात आणि कणांची दृश्यता एक निर्धारक लक्षण नाही.",
+          "solution": "मातीच्या पाण्यात झोंकलेले कण गुरुत्वाकर्षणामुळे वेळेनुसार तलावर बसतात. हे असमांगी मिश्रणाचे वैशिष्ट्य आहे, जेथे कण समान रीतीने वितरित नसतात आणि अखेर बसतात. पूर्णपणे विरघळणे, अनंतकाळ झोंकलेले राहणे किंवा पृष्ठभागावर तरंगणे हे मातीच्या पाण्यासाठी योग्य नोंद नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for scientific concepts.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
           "flag": null
         }
       },
@@ -292,10 +191,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Incorrectly assumes physical state determines the type of mixture",
-        "Confuses visibility of particles with the type of mixture",
+        "Thinks suspended particles dissolve in water",
+        "Believes particles remain suspended indefinitely",
         null,
-        "Thinks a homogeneous mixture is made of only one substance"
+        "Confuses the behavior of particles in a solution with those in a suspension"
       ],
       "solverAnswers": [
         2,
@@ -305,7 +204,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is option 2, which accurately reflects the definition of homogeneous and heterogeneous mixtures. The other options contain common misconceptions about mixtures.",
+      "critique": "The solution is correct and aligns with the key. The reasoning reflects common misconceptions about suspensions versus solutions.",
       "sources": [
         {
           "document": "ncert/9/science/iesc105.pdf",
@@ -360,49 +259,258 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T14:35:16.788Z",
+      "generatedAt": "2026-10-30T02:37:38.576Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "What is the mass by volume percentage of a solution if 5 g of glucose is dissolved in 100 mL of water?",
+      "stem": "What happens to the solubility of salts when the temperature increases?",
       "choices": [
-        "5% m/v",
-        "10% m/v",
-        "15% m/v",
-        "20% m/v"
+        "It decreases",
+        "It increases",
+        "It remains constant",
+        "It varies unpredictably"
       ],
-      "answerIndex": 0,
-      "solution": "The mass by volume percentage is calculated by dividing the mass of the solute (5 g) by the volume of the solution (100 mL) and multiplying by 100. This gives 5% m/v. The other options incorrectly use higher values for the percentage.",
-      "checkExpr": "5*100/100",
+      "answerIndex": 1,
+      "solution": "The solubility of most salts increases with an increase in temperature. This is evident from the data in Table 5.4, which shows that salts like potassium nitrate and ammonium chloride have higher solubility at higher temperatures. The other options are incorrect because they contradict the general trend observed in the table.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि 5 ग्राम ग्लूकोज 100 मिलीलीटर पानी में घुला हुआ है तो विलयन का द्रव्यमान-आयतन प्रतिशत क्या है?",
+          "stem": "तापमान बढ़ने पर लवणों की विलेयता क्या होती है?",
           "choices": [
-            "5% m/v",
-            "10% m/v",
-            "15% m/v",
-            "20% m/v"
+            "यह कम हो जाती है",
+            "यह बढ़ जाती है",
+            "यह अपरिवर्तित रहती है",
+            "यह अनियमित रूप से बदल जाती है"
           ],
-          "solution": "द्रव्यमान-आयतन प्रतिशत की गणना विलेय के द्रव्यमान (5 ग्राम) को विलयन के आयतन (100 मिलीलीटर) से विभाजित करके और 100 से गुणा करके की जाती है। इससे 5% m/v प्राप्त होता है। अन्य विकल्प गलत रूप से प्रतिशत के उच्च मान का उपयोग करते हैं।",
+          "solution": "अधिकांश लवणों की विलेयता तापमान में वृद्धि के साथ बढ़ जाती है। यह तालिका 5.4 में दिए गए डेटा से स्पष्ट है, जो दर्शाता है कि नाइट्रेट और अमोनियम क्लोराइड जैसे लवण उच्च तापमान पर अधिक विलेय होते हैं। अन्य विकल्प गलत हैं क्योंकि वे तालिका में देखे गए सामान्य प्रवृत्ति के विपरीत हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard scientific terminology appropriate for a Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "जर 5 ग्रॅम ग्लूकोज 100 मिली पाण्यात विरघळला असेल तर तयार झालेल्या द्रावणाचा द्रव्यमान-आयतन टक्का किती असेल?",
+          "stem": "तापमान वाढत असताना लवणांची विलेयता काय होते?",
           "choices": [
-            "5% m/v",
-            "10% m/v",
-            "15% m/v",
-            "20% m/v"
+            "ती कमी होते",
+            "ती वाढते",
+            "ती अचल रहते",
+            "ती अनिश्चितपणे बदलते"
           ],
-          "solution": "द्रव्यमान-आयतन टक्का विरघळलेल्या पदार्थाच्या द्रव्यमानाला (5 ग्रॅम) द्रावणाच्या आयतनाने (100 मिली) भागून 100 ने गुणून मिळतो. हे 5% m/v देते. इतर विकल्प टक्क्याच्या उच्च मूल्याचा चुकीचा वापर करतात.",
+          "solution": "अधिकांश लवणांची विलेयता तापमान वाढत असताना वाढते. त्याचे पुष्टीकरण तालिका 5.4 मधील डेटाद्वारे होते, जी दर्शवते की पोटॅशियम नाइट्रेट आणि अमोनियम क्लोराइड यासारख्या लवणांची उच्च तापमानावर उच्च विलेयता असते. इतर विकल्प चुकीचे आहेत कारण ते तालिकेमध्ये नोंदवलेल्या सामान्य प्रवृत्तीला विरोध करतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi scientific terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for a textbook context.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "mistakenly believes solubility decreases with temperature",
+        null,
+        "assumes solubility does not depend on temperature",
+        "thinks solubility changes randomly"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the scientific understanding that the solubility of most salts increases with temperature. The reasoning for the distractors is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 25,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.5 Tyndall Effect",
+            "Revise, Reflect, Refine"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 26,
+          "pageStart": 22,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.5 Tyndall Effect",
+            "The Journey Beyond"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T02:37:38.576Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a mixture of sugar and water is left undisturbed, what will happen?",
+      "choices": [
+        "It will become a heterogeneous mixture",
+        "It will form layers",
+        "It will remain a homogeneous mixture",
+        "It will evaporate completely"
+      ],
+      "answerIndex": 2,
+      "solution": "A mixture of sugar and water is a homogeneous mixture. When left undisturbed, it will continue to remain a homogeneous mixture because the sugar is completely dissolved in water. It will not form layers or evaporate completely unless heat is applied. It will not become a heterogeneous mixture because the components are uniformly mixed.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि चीनी और पानी के मिश्रण को अस्थिर छोड़ दिया जाए, तो क्या होगा?",
+          "choices": [
+            "यह एक असमांग मिश्रण बन जाएगा",
+            "यह परतें बना लेगा",
+            "यह एक समांग मिश्रण रहेगा",
+            "यह पूरी तरह वाष्पित हो जाएगा"
+          ],
+          "solution": "चीनी और पानी का मिश्रण एक समांग मिश्रण है। अस्थिर छोड़ दिए जाने पर, यह समांग मिश्रण रहेगा क्योंकि चीनी पानी में पूरी तरह घुल जाती है। इसमें परतें नहीं बनेंगी या पूरी तरह वाष्पित नहीं होगा जब तक कि गर्मी लगाई न जाए। यह असमांग मिश्रण नहीं बनेगा क्योंकि घटक समान रूप से मिश्रित हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms like 'समांग मिश्रण' and 'असमांग मिश्रण' which are standard in Hindi science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "साखर आणि पाणी यांचा मिश्रण अचंबित ठेवला गेला तर काय होईल?",
+          "choices": [
+            "तो असमान मिश्रण होईल",
+            "तो पर्ती बनवील",
+            "तो समान मिश्रण राहील",
+            "तो पूर्णपणे वायुमान होईल"
+          ],
+          "solution": "साखर आणि पाणी यांचा मिश्रण समान मिश्रण आहे. जेव्हा तो अचंबित ठेवला जातो तेव्हा तो समान मिश्रण राहतो कारण साखर पाण्यात पूर्णपणे विरघळते. त्याने पर्ती बनवू नये किंवा पूर्णपणे वायुमान होऊ नये जेव्हा उष्णता लावली जाते. तो असमान मिश्रण बनू शकत नाही कारण घटक समानरूपे मिसळलेले असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning. Technical terms like 'समान मिश्रण' (homogeneous mixture) and 'असमान मिश्रण' (heterogeneous mixture) are correctly used as per Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks a homogeneous mixture becomes heterogeneous over time",
+        "Believes a homogeneous mixture will form layers",
+        null,
+        "Confuses evaporation with the behavior of a homogeneous mixture"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, and the solution correctly identifies that a sugar-water mixture is homogeneous and remains so unless disturbed or heated. The distractors reflect common misconceptions about mixtures.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.1 How Can We Classify Mixtures?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.2 Solutions"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.2 Solutions",
+            "5.2.1 Concentration of a solution"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.2 Solutions",
+            "5.2.2 How do we express concentration?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T02:37:38.576Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If 1 mL of pesticide is mixed with 99 mL of water, what is the volume by volume percentage of the pesticide in the solution?",
+      "choices": [
+        "1%",
+        "2%",
+        "5%",
+        "10%"
+      ],
+      "answerIndex": 0,
+      "solution": "The volume by volume percentage is calculated as (1 mL / 100 mL) × 100 = 1%. A pupil might think the total volume is 100 mL but forget to include the solute in the total, or incorrectly divide by 99 mL instead of 100 mL, leading to answers like 1.01% or 1.02% which are not given here.",
+      "checkExpr": "1*100/100",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि 1 मिलीलीटर कीटनाशक को 99 मिलीलीटर पानी में मिलाया जाता है, तो विलयन में कीटनाशक का आयतन-आयतन प्रतिशत क्या है?",
+          "choices": [
+            "1%",
+            "2%",
+            "5%",
+            "10%"
+          ],
+          "solution": "आयतन-आयतन प्रतिशत की गणना (1 मिलीलीटर / 100 मिलीलीटर) × 100 = 1% के रूप में की जाती है। एक छात्र यह सोच सकता है कि कुल आयतन 100 मिलीलीटर है लेकिन अपने द्वारा विलेय को शामिल करना भूल जाता है, या 100 मिलीलीटर के बजाय 99 मिलीलीटर से विभाजित कर देता है, जिससे 1.01% या 1.02% जैसे उत्तर प्राप्त होते हैं जो यहां दिए गए नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "1 मिली कीटकनाशक 99 मिली पाण्यात मिसळला असता, द्रव-द्रव शेकडा किती असेल?",
+          "choices": [
+            "1%",
+            "2%",
+            "5%",
+            "10%"
+          ],
+          "solution": "द्रव-द्रव शेकडा (1 मिली / 100 मिली) × 100 = 1% असतो. एखादा विद्यार्थी एकूण आयता 100 मिली असल्याचे विचार करू शकतो परंतु घोलक जोडल्याचे विसरू शकतो, किंवा 100 मिलीऐवजी 99 मिलीने भाग देऊ शकतो, ज्यामुळे 1.01% किंवा 1.02% अशा उत्तरांची अपेक्षा असते जे येथे दिलेले नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the technical terms used in Marathi textbooks.",
           "flag": null
         }
       },
@@ -412,9 +520,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "doubles the value",
-        "triples the value",
-        "quadruples the value"
+        "thinks the total volume is 99 mL",
+        "Student assumes the percentage is based on the sum of the volumes rather than the ratio of solute to total solution.",
+        "Confuses the total volume with the volume of the solute, thinking 1 mL is 10% of 100 mL instead of 1%"
       ],
       "solverAnswers": [
         0,
@@ -424,7 +532,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The calculation is correct: 5 g / 100 mL * 100 = 5%. The distractors suggest incorrect scaling of the value, which is a plausible misconception.",
+      "critique": "The solution is correct. The volume by volume percentage is calculated as (1 mL / 100 mL) × 100 = 1%, which matches the correct answer. The author's reasoning for the distractors reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/9/science/iesc105.pdf",
@@ -472,49 +580,49 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T14:35:16.788Z",
+      "generatedAt": "2026-10-30T02:37:38.576Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "Which of the following is a common method to separate a mixture of two miscible liquids?",
+      "stem": "A student wants to recover copper sulfate crystals from its saturated solution. Which method should they use?",
       "choices": [
-        "Filtration",
+        "Evaporation",
+        "Chromatography",
         "Distillation",
-        "Crystallization",
-        "Sublimation"
+        "Crystallization"
       ],
-      "answerIndex": 1,
-      "solution": "Distillation is a common method to separate a mixture of two miscible liquids because it uses differences in boiling points to separate the components. Filtration is used for separating solids from liquids, crystallization is used to form solid crystals from a solution, and sublimation is used for substances that transition directly from solid to gas.",
+      "answerIndex": 3,
+      "solution": "Crystallization is the process used to recover pure crystals from a saturated solution. Evaporation would remove the solvent but not form well-defined crystals. Chromatography is for separating mixtures based on solubility. Distillation is for separating miscible liquids. The correct answer is crystallization.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी एक सामान्य विधि दो मिश्रणीय द्रवों के मिश्रण को अलग करने के लिए प्रयोग की जाती है?",
+          "stem": "एक छात्र कॉपर सल्फेट के क्रिस्टल को इसके संतृप्त विलयन से बरामद करना चाहता है। उन्हें कौन सी विधि का उपयोग करना चाहिए?",
           "choices": [
-            "पर्याप्त छानना",
+            "वाष्पीकरण",
+            "क्रोमैटोग्राफी",
             "आसवन",
-            "क्रिस्टलीकरण",
-            "उत्केंद्रण"
+            "क्रिस्टलीकरण"
           ],
-          "solution": "आसवन दो मिश्रणीय द्रवों के मिश्रण को अलग करने के लिए एक सामान्य विधि है क्योंकि यह क्वथनांक में अंतर का उपयोग घटकों को अलग करने के लिए करता है। छानना ठोसों को द्रवों से अलग करने के लिए प्रयोग किया जाता है, क्रिस्टलीकरण एक विलयन से ठोस क्रिस्टल बनाने के लिए प्रयोग किया जाता है, और उत्केंद्रण ठोस से गैस में सीधे अंतरण करने वाले पदार्थों के लिए प्रयोग किया जाता है।",
+          "solution": "क्रिस्टलीकरण वह प्रक्रिया है जिसका उपयोग संतृप्त विलयन से शुद्ध क्रिस्टल बरामद करने के लिए किया जाता है। वाष्पीकरण विलायक को हटा देगा लेकिन अच्छी तरह से परिभाषित क्रिस्टल नहीं बनाएगा। क्रोमैटोग्राफी का उपयोग विलेयता के आधार पर मिश्रण को अलग करने के लिए किया जाता है। आसवन का उपयोग अमिश्रणीय द्रवों को अलग करने के लिए किया जाता है। सही उत्तर क्रिस्टलीकरण है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi scientific terminology.",
+          "critique": "Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता एक दोन अमिश्रित द्रावणांच्या मिश्रणाचे विलगीकरण करण्याचा सामान्य पद्धत आहे?",
+          "stem": "एका विद्यार्थ्याला त्याच्या संतृप्त द्रावणापासून कॉपर सल्फेटच्या घन पदार्थाच्या घन पदार्थाची वस्तु मिळवायची आहे. त्यांनी कोणता प्रकार वापरायला हवा?",
           "choices": [
-            "विलगीकरण",
-            "आस्थापन",
-            "क्रिस्टलीकरण",
-            "उत्तेजन"
+            "वाष्पीकरण",
+            "क्रोमॅटोग्राफी",
+            "आसवण",
+            "घनीकरण"
           ],
-          "solution": "आस्थापन ही दोन अमिश्रित द्रावणांच्या मिश्रणाचे विलगीकरण करण्याची सामान्य पद्धत आहे कारण ती उबक बिंदूंमधील फरकांचा उपयोग करते. विलगीकरण हा घन पदार्थांच्या द्रावणांपासून विलगीकरणासाठी वापरला जातो, क्रिस्टलीकरण हा द्रावणापासून घन क्रिस्टल तयार करण्यासाठी वापरला जातो आणि उत्तेजन हा घन पदार्थांपासून सीधा वाफेत बदलणाऱ्या पदार्थांसाठी वापरला जातो.",
+          "solution": "घनीकरण हा प्रक्रिया संतृप्त द्रावणापासून शुद्ध घन पदार्थ मिळवण्यासाठी वापरला जातो. वाष्पीकरण द्रावक दूर करेल परंतु चांगले निर्मित घन पदार्थ तयार होणार नाही. क्रोमॅटोग्राफी हा विलेयता आधारित मिश्रणाचे अलग करण्यासाठी वापरला जातो. आसवण हा अमिश्रित द्रवांचे अलग करण्यासाठी वापरला जातो. योग्य उत्तर घनीकरण आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -523,20 +631,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the use of filtration",
-        null,
-        "Student thinks crystallization can separate miscible liquids, not realizing it's for separating a solute from a solution",
-        "Confuses the use of crystallization and sublimation"
+        "Confuses crystallization with evaporation, which only removes the solvent",
+        "Misunderstands the purpose of chromatography, which is for separating components based on their movement through a medium",
+        "Confuses distillation with the process of recovering crystals from a solution",
+        null
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": null,
-      "critique": "The solution correctly identifies distillation as the method for separating miscible liquids and explains why the other options are incorrect. The reasoning aligns with standard scientific principles.",
+      "critique": "The solution correctly identifies crystallization as the method for recovering crystals from a saturated solution. The reasoning for the other options reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/9/science/iesc105.pdf",
@@ -573,101 +681,61 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T14:35:16.788Z",
+      "generatedAt": "2026-10-30T02:37:38.576Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "In paper chromatography, what is the purpose of the solvent?",
+      "stem": "A student prepares a saturated solution of copper sulfate and allows it to cool slowly. What happens to the size of the crystals formed?",
       "choices": [
-        "To dissolve the paper",
-        "To carry the substances up the paper",
-        "To increase the boiling point",
-        "To reduce the colour intensity"
+        "They become smaller and less well-formed",
+        "They become larger and more well-formed",
+        "They dissolve completely",
+        "They do not form"
       ],
       "answerIndex": 1,
-      "solution": "The solvent in paper chromatography carries the substances up the paper, allowing them to separate based on their solubility and interaction with the paper. The other options are incorrect because the solvent does not dissolve the paper, does not influence boiling points, and does not alter the color intensity of the substances.",
+      "solution": "When a saturated solution is cooled slowly, the particles have time to arrange themselves properly, resulting in larger and more well-formed crystals. Rapid cooling would lead to smaller crystals. Dissolving completely or not forming at all are not possible in a saturated solution. The correct answer is that the crystals become larger and more well-formed.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "कागज क्रोमैटोग्राफी में विलायक का उद्देश्य क्या होता है?",
+          "stem": "एक छात्र कॉपर सल्फेट के संतृप्त विलयन की तैयारी करता है और इसे धीरे-धीरे ठंडा होने देता है। बने हुए क्रिस्टल के आकार में क्या परिवर्तन होता है?",
           "choices": [
-            "कागज को घोलना",
-            "पदार्थों को कागज के ऊपर ले जाना",
-            "क्वथनांक को बढ़ाना",
-            "रंग की तीव्रता को कम करना"
+            "वे छोटे और कम अच्छी तरह से आकारित हो जाते हैं",
+            "वे बड़े और अधिक अच्छी तरह से आकारित हो जाते हैं",
+            "वे पूरी तरह से घुल जाते हैं",
+            "वे नहीं बनते"
           ],
-          "solution": "कागज क्रोमैटोग्राफी में विलायक पदार्थों को कागज के ऊपर ले जाता है, जिससे उनकी घुलाव के साथ-साथ कागज के साथ उनके अन्योन्यक्रिया के आधार पर उनका अलग होना संभव होता है। अन्य विकल्प गलत हैं क्योंकि विलायक कागज को नहीं घोलता है, इसका क्वथनांक पर कोई प्रभाव नहीं होता है और इसके द्वारा पदार्थों की रंग तीव्रता को बदला नहीं जाता है।",
-          "imageAlt": "एक आर्द्रता लैंप और एक समतल दर्पण का चित्र, जिसमें दर्पण के ऊपर 'विलायक' शब्द है, जो कागज क्रोमैटोग्राफी का प्रतिनिधित्व करता है।",
-          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and option structure. The correct answer remains in the same position, and all distractors remain incorrect.",
+          "solution": "जब एक संतृप्त विलयन को धीरे-धीरे ठंडा किया जाता है, तो कणों के सही ढंग से व्यवस्थित होने का समय होता है, जिसके परिणामस्वरूप बड़े और अधिक अच्छी तरह से आकारित क्रिस्टल बनते हैं। तेजी से ठंडा करने से छोटे क्रिस्टल बनते हैं। संतृप्त विलयन में पूरी तरह से घुल जाना या क्रिस्टल न बनना संभव नहीं है। सही उत्तर यह है कि क्रिस्टल बड़े और अधिक अच्छी तरह से आकारित हो जाते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Hindi-medium curriculum.",
           "flag": null
         },
         "mr": {
-          "stem": "कागद विसरणात, विलायकाचा उद्देश काय असतो?",
+          "stem": "एका विद्यार्थ्याने कॉपर सल्फेटचे संतृप्त द्रावण तयार केले आणि त्याला धीम्या गतीने थंड होण्यास सोडले. तयार झालेल्या घटकांच्या आकारावर काय परिणाम होतो?",
           "choices": [
-            "कागद विरघळविणे",
-            "द्रव्यांना कागदावर वर वाहून नेणे",
-            "क्वथनांक वाढविणे",
-            "रंगाची तीव्रता कमी करणे"
+            "ते लहान होतात आणि कमी चांगल्या प्रकारे तयार होतात",
+            "ते मोठे होतात आणि जास्त चांगल्या प्रकारे तयार होतात",
+            "ते पूर्णपणे विरघळतात",
+            "ते तयार होत नाहीत"
           ],
-          "solution": "कागद विसरणात विलायक द्रव्यांना कागदावर वर वाहून नेतो, जेणेकरून त्यांच्या विलेयता आणि कागदाशी असलेल्या अनुक्रियेनुसार ते विभक्त होतात. इतर विकल्प अयोग्य असतात कारण विलायक कागद विरघळवत नाही, क्वथनांकावर प्रभाव टाकत नाही आणि द्रव्यांच्या रंगाची तीव्रता बदलत नाही.",
-          "imageAlt": "एक चित्र ज्यात एक आतडा आणि एक समतल दर्पण आहे, दर्पणावर 'विलायक' असे लिहिले आहे, जे कागद विसरणाचे प्रतिनिधित्व करते.",
+          "solution": "जेव्हा संतृप्त द्रावण धीम्या गतीने थंड होते, तेव्हा कणांना योग्यरित्या व्यवस्थित करण्याचा वेळ मिळतो, ज्यामुळे मोठे आणि जास्त चांगल्या प्रकारे तयार झालेले घटक तयार होतात. झपाट्याने थंड केल्यास लहान घटक तयार होतात. संतृप्त द्रावणात पूर्णपणे विरघळणे किंवा घटक तयार होणे अशक्य आहे. योग्य उत्तर म्हणजे घटक मोठे आणि जास्त चांगल्या प्रकारे तयार होतात.",
+          "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "A diagram showing a spirit lamp and a plane mirror, with the word 'solvent' above the mirror, representing paper chromatography.",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "planeMirror",
-              "x": 30,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "mirror"
-              ]
-            },
-            {
-              "part": "spiritLamp",
-              "x": 30,
-              "y": 20,
-              "size": 10,
-              "labels": [
-                "lamp",
-                "wick",
-                "flame"
-              ]
-            }
-          ],
-          "texts": [
-            {
-              "x": 30,
-              "y": 20,
-              "label": "solvent"
-            }
-          ]
-        },
-        "labels": {
-          "solvent": {
-            "en": "solvent",
-            "hi": "विलायक",
-            "mr": "विलायक"
-          }
-        }
-      },
-      "needsFigure": true,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
-        "thinks solvent dissolves the paper",
+        "Thinks that slow cooling leads to small crystals, which is incorrect",
         null,
-        "mistakenly believes it affects boiling points",
-        "confuses the purpose of the solvent"
+        "Believes that crystals dissolve in a saturated solution, which is not true",
+        "Does not understand that a saturated solution can form crystals"
       ],
       "solverAnswers": [
         1,
@@ -677,7 +745,227 @@
         1
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed. The correct answer is 1, and the distractors reflect common misconceptions. The solution is accurate and aligns with the key.",
+      "critique": "The solution is correct and aligns with the key. The reasoning about crystal formation during slow cooling is accurate. The distractors reflect common misconceptions about solubility and crystal growth.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.3 Methods of Separation of Homogeneous Mixtures",
+            "5.3.1 Crystallization"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.3 Methods of Separation of Homogeneous Mixtures",
+            "5.3.1 Crystallization"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 11,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.3 Methods of Separation of Homogeneous Mixtures",
+            "5.3.2 Distillation"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T02:37:38.576Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student prepared a mixture of salt, sugar, and water. After some time, the mixture was left undisturbed. Which of the following will happen?",
+      "choices": [
+        "Salt and sugar will settle at the bottom",
+        "Only sugar will settle at the bottom",
+        "Only salt will settle at the bottom",
+        "Nothing will settle at the bottom"
+      ],
+      "answerIndex": 3,
+      "solution": "Salt and sugar are both soluble in water, so they will remain dissolved in the solution and will not settle at the bottom. When a mixture of salt, sugar, and water is left undisturbed, nothing will settle because both components are completely dissolved. Salt and sugar do not settle because they form a homogeneous solution.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने नमक, चीनी और पानी के मिश्रण को तैयार किया। कुछ समय बाद, मिश्रण को अकेला छोड़ दिया गया। निम्नलिखित में से क्या होगा?",
+          "choices": [
+            "नमक और चीनी तल पर बैठ जाएंगे",
+            "केवल चीनी तल पर बैठ जाएगी",
+            "केवल नमक तल पर बैठ जाएगा",
+            "कुछ भी तल पर बैठ नहीं जाएगा"
+          ],
+          "solution": "नमक और चीनी दोनों पानी में विलेय हैं, इसलिए वे विलयन में रहेंगे और तल पर बैठ नहीं जाएंगे। जब नमक, चीनी और पानी के मिश्रण को अकेला छोड़ दिया जाता है, तो कुछ भी तल पर बैठ नहीं जाता क्योंकि दोनों घटक पूरी तरह से घुल जाते हैं। नमक और चीनी तल पर बैठ नहीं जाते क्योंकि वे एक समांगी विलयन बनाते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific meaning, with appropriate Hindi terminology used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने लवंग, चारा आणि पाणी यांचे मिश्रण तयार केले. काही वेळानंतर, मिश्रण अचूक ठेवले गेले. खालीलपैकी काय होईल?",
+          "choices": [
+            "लवंग आणि चारा तळाशी बसतील",
+            "मात्र चारा तळाशी बसेल",
+            "मात्र लवंग तळाशी बसेल",
+            "तळाशी काहीही बसणार नाही"
+          ],
+          "solution": "लवंग आणि चारा दोन्ही पाण्यात विरघळतात, म्हणून ते दोन्ही घोलणार राहतील आणि तळाशी बसणार नाहीत. लवंग, चारा आणि पाणी यांचे मिश्रण अचूक ठेवल्यास काहीही तळाशी बसणार नाही कारण दोन्ही घटक पूर्णपणे विरघळलेले असतात. लवंग आणि चारा तळाशी बसत नाहीत कारण ते एकसारखे घोलणार तयार करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks salt and sugar are not soluble in water",
+        "Believes only one of the substances will settle",
+        "Confuses the behavior of a solution with that of a suspension",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that both salt and sugar are soluble in water, forming a homogeneous solution. None of the components will settle, making option 3 the correct answer. The distractors reflect common misconceptions about solubility and the nature of solutions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.1 How Can We Classify Mixtures?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.2 Solutions"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.2 Solutions",
+            "5.2.1 Concentration of a solution"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 4,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.2 Solutions",
+            "5.2.2 How do we express concentration?"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T02:37:38.576Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student attempted to separate a mixture of sand and iron filings. He used a magnet but found that not all the iron filings were collected. Which of the following could explain this?",
+      "choices": [
+        "The magnet was not strong enough",
+        "The iron filings were not attracted to the magnet",
+        "The mixture contained only sand",
+        "The magnet was used after the mixture was stirred"
+      ],
+      "answerIndex": 0,
+      "solution": "If the magnet was not strong enough, it might not have attracted all the iron filings. Iron filings are typically attracted to magnets, so the other options are unlikely. The magnet's strength directly affects how much material it can collect.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने रेत और लोहे के चूरे के मिश्रण को अलग करने की कोशिश की। उसने एक चुंबक का उपयोग किया लेकिन पाया कि सभी लोहे के चूरे एकत्र नहीं हुए। निम्नलिखित में से कौन-सा इसकी व्याख्या कर सकता है?",
+          "choices": [
+            "चुंबक पर्याप्त शक्तिशाली नहीं था",
+            "लोहे के चूरे चुंबक से आकर्षित नहीं हुए",
+            "मिश्रण में केवल रेत था",
+            "मिश्रण के बाद चुंबक का उपयोग किया गया था"
+          ],
+          "solution": "अगर चुंबक पर्याप्त शक्तिशाली नहीं था, तो शायद वह सभी लोहे के चूरे आकर्षित नहीं कर पाया। लोहे के चूरे आमतौर पर चुंबक से आकर्षित होते हैं, इसलिए अन्य विकल्प असंभावित हैं। चुंबक की शक्ति सीधे उसके द्वारा एकत्र किए गए सामग्री की मात्रा पर निर्भर करती है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने रेणू आणि लोखंडी दांडींच्या मिश्रणाचे विलगीकरण केले. त्याने चुंबक वापरला पण लोखंडी दांडींचे सर्व भाग एकत्र केले नाहीत. खालीलपैकी कोणते याचे विवरण देऊ शकते?",
+          "choices": [
+            "चुंबक अपुरा शक्तिशाली होता",
+            "लोखंडी दांडी चुंबकला आकर्षित करीत नव्हत्या",
+            "मिश्रणात फक्त रेणू होते",
+            "मिश्रणाचे चालविल्यानंतर चुंबक वापरले गेले"
+          ],
+          "solution": "जर चुंबक अपुरा शक्तिशाली असेल तर ते लोखंडी दांडींचे सर्व भाग आकर्षित करू शकत नाही. लोखंडी दांडी चुंबकाला आकर्षित करतात, म्हणून इतर विकल्प असंभाव्य आहेत. चुंबकाची शक्ती त्याच्या कलेक्शनमध्ये प्रत्यक्ष प्रभाव टाकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Student believes that magnets only attract certain metals, not iron",
+        "Incorrect, as iron filings are magnetic",
+        "Student thinks stirring affects magnetic attraction, not realizing it should be done before mixing"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as a weak magnet would not attract all iron filings. The reasoning for the other options is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/9/science/iesc105.pdf",
@@ -725,47 +1013,47 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T14:35:16.788Z",
+      "generatedAt": "2026-10-30T02:37:38.576Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "In the crystallization process, why is it important to cool the solution slowly?",
+      "difficulty": 5,
+      "stem": "A student prepares a solution by dissolving 2 g of a solute in 50 mL of water. If the student then adds another 2 g of the same solute, what will be the new concentration in mass by volume percentage?",
       "choices": [
-        "To increase the amount of impurities",
-        "To form smaller and less well-shaped crystals",
-        "To allow the formation of larger, well-shaped crystals",
-        "To prevent the solution from evaporating"
+        "4%",
+        "6%",
+        "8%",
+        "10%"
       ],
       "answerIndex": 2,
-      "solution": "Cooling the solution slowly allows the particles in the solution to arrange themselves properly, forming larger, well-shaped crystals. Rapid cooling disrupts this process, leading to smaller and less structured crystals. The other options are incorrect because they do not align with how crystal growth occurs during cooling.",
-      "checkExpr": null,
+      "solution": "Initially, the concentration is 2 g/50 mL = 4%. After adding another 2 g, the total mass of solute is 4 g and the volume of solution remains 50 mL, resulting in 8%. A pupil might incorrectly add the mass and volume instead of recalculating the concentration, or think the volume increases with the addition of solute, leading to lower percentages.",
+      "checkExpr": "(2+2)*100/50",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "क्रिस्टलीकरण प्रक्रिया में, विलयन को धीरे-धीरे ठंडा करना क्यों महत्वपूर्ण है?",
+          "stem": "एक छात्र 50 मिलीलीटर पानी में 2 ग्राम विलेय के घोल की तैयारी करता है। यदि छात्र अगले 2 ग्राम समान विलेय को मिलाता है, तो द्रव्यमान द्वारा आयतन प्रतिशत में नया सांद्रता क्या होगी?",
           "choices": [
-            "अशुद्धियों की मात्रा बढ़ाने के लिए",
-            "छोटे और कम आकार के क्रिस्टल बनाने के लिए",
-            "बड़े, अच्छी तरह से आकृति वाले क्रिस्टल बनाने के लिए",
-            "विलयन के वाष्पीकरण को रोकने के लिए"
+            "4%",
+            "6%",
+            "8%",
+            "10%"
           ],
-          "solution": "विलयन को धीरे-धीरे ठंडा करने से विलयन में कणों के सही ढंग से व्यवस्थित होने की अनुमति मिलती है, जिससे बड़े, अच्छी तरह से आकृति वाले क्रिस्टल बनते हैं। तेजी से ठंडा करने से इस प्रक्रिया में बाधा उत्पन्न होती है, जिसके कारण छोटे और कम संरचित क्रिस्टल बनते हैं। अन्य विकल्प गलत हैं क्योंकि वे ठंडा होने के दौरान क्रिस्टल वृद्धि के तरीके के साथ संगत नहीं हैं।",
+          "solution": "प्रारंभ में, सांद्रता 2 ग्राम/50 मिलीलीटर = 4% है। 2 ग्राम और मिलाने पर, विलेय का कुल द्रव्यमान 4 ग्राम हो जाता है और घोल का आयतन 50 मिलीलीटर रहता है, जिसके परिणामस्वरूप 8% होता है। एक छात्र द्रव्यमान और आयतन को जोड़कर गलती से सांद्रता की गणना कर सकता है या विलेय के मिलाने से आयतन बढ़ जाएगा, जिसके कारण कम प्रतिशत प्राप्त हो सकता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium science textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "क्रिस्टलीकरण प्रक्रियेत, द्रावणाला धीम्या गतीने थंड करणे का महत्वाचे आहे?",
+          "stem": "एका विद्यार्थ्याने 50 मिली पाणी मध्ये 2 ग्रॅम विरल विरघळवून एका द्रावणाची तयारी केली. जर विद्यार्थी अतिरिक्त 2 ग्रॅम विरल जोडला, तर नवीन घनता वजन-आयतन टक्क्यात काय असेल?",
           "choices": [
-            "अविशुद्धतांची राशी वाढविणे",
-            "लहान आणि कमी आकाराचे क्रिस्टल बनविणे",
-            "मोठे, चांगल्या आकाराचे क्रिस्टल बनविणे",
-            "द्रावणाला बाष्पीभवन होऊ देणे"
+            "4%",
+            "6%",
+            "8%",
+            "10%"
           ],
-          "solution": "द्रावणाला धीम्या गतीने थंड करणे द्रावणातील कणांना योग्यरित्या व्यवस्थित करण्याची परवानगी देते, ज्यामुळे मोठे, चांगल्या आकाराचे क्रिस्टल बनतात. झटकन थंड करणे हा प्रक्रियेला बिघडवते, ज्यामुळे लहान आणि कमी संरचनात्मक क्रिस्टल बनतात. इतर विकल्प चुकीचे आहेत कारण ते थंड होण्याच्या क्रियेत क्रिस्टल वाढ होण्याशी संबंधित नाहीत.",
+          "solution": "सुरुवातीला, घनता 2 ग्रॅम/50 मिली = 4% होती. अतिरिक्त 2 ग्रॅम जोडल्यानंतर, विरलाचा एकूण वजन 4 ग्रॅम असेल आणि द्रावणाचा आयतन 50 मिली राहील, ज्यामुळे 8% घनता मिळेल. एखाद्या विद्यार्थ्याला वजन आणि आयतन जोडून घनता गणना करण्याचा चूक वाटू शकतो, किंवा विरल जोडल्यानंतर आयतन वाढतो असे वाटू शकते, ज्यामुळे टक्केवारी कमी होते.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -776,10 +1064,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the effect of slow cooling on impurities",
-        "Confuses the effect of rapid cooling on crystal size",
+        "Believes that adding 2g twice results in 4g total, but divides by the initial volume (50mL) instead of the final volume (100mL)",
+        "thinks the volume increases with the addition of solute",
         null,
-        "Student believes slow cooling prevents evaporation rather than allowing crystal growth"
+        "mistakenly calculates the percentage as 10%"
       ],
       "solverAnswers": [
         2,
@@ -788,8 +1076,120 @@
         2,
         2
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 2, as slow cooling allows for the formation of larger, well-shaped crystals. The author's reasoning is sound and aligns with the scientific principle of crystal growth. The distractors reflect common misconceptions about the effects of cooling rate on impurities, crystal size, and evaporation.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly calculates the initial concentration as 4% and the final concentration as 8% after adding 2g of solute to 50mL of solution. The author's reasoning for the distractors reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.2 Solutions",
+            "5.2.2 How do we express concentration?"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.2 Solutions",
+            "5.2.3 Solubility of substances"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.2 Solutions",
+            "5.2.3 Solubility of substances"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.3 Methods of Separation of Homogeneous Mixtures",
+            "5.3.1 Crystallization"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T02:37:38.576Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student accidentally mixes acetone and water, two miscible liquids. Which method can be used to separate them?",
+      "choices": [
+        "Distillation",
+        "Filtration",
+        "Crystallization",
+        "Chromatography"
+      ],
+      "answerIndex": 0,
+      "solution": "Distillation can be used to separate miscible liquids with different boiling points. Acetone has a much lower boiling point than water, so it will vaporize first and can be collected separately. Filtration is for solids and liquids, crystallization is for recovering crystals, and chromatography is for separating mixtures based on solubility. The correct answer is distillation.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र ने अकस्मातः एसीटोन और पानी के मिश्रण को मिला दिया, जो दो अमिश्रणीय द्रव हैं। उन्हें अलग करने के लिए कौन सी विधि का उपयोग किया जा सकता है?",
+          "choices": [
+            "आसवन",
+            "चिरण",
+            "क्रिस्टलीकरण",
+            "क्रोमैटोग्राफी"
+          ],
+          "solution": "आसवन का उपयोग अमिश्रणीय द्रवों को अलग करने के लिए किया जा सकता है जिनके वाष्पन बिंदु अलग-अलग होते हैं। एसीटोन का वाष्पन बिंदु पानी की तुलना में बहुत कम होता है, इसलिए यह पहले वाष्पित हो जाएगा और अलग से एकत्र किया जा सकता है। चिरण ठोस और द्रव के लिए होता है, क्रिस्टलीकरण क्रिस्टल प्राप्त करने के लिए होता है, और क्रोमैटोग्राफी विलेयता के आधार पर मिश्रणों को अलग करने के लिए होता है। सही उत्तर आसवन है।",
+          "imageAlt": null,
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in Indian curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने असेटॉन आणि पाणी, दोन अमिश्रित द्रव, अयोग्यपणे मिसळले. त्यांना वेगळे करण्यासाठी कोणती पद्धत वापरता येईल?",
+          "choices": [
+            "आस्थापन",
+            "विसरण",
+            "क्रिस्टलीकरण",
+            "क्रोमॅटोग्राफी"
+          ],
+          "solution": "अमिश्रित द्रवांना वेगळे करण्यासाठी आस्थापन वापरता येते ज्यांचे वाष्पीभवन बिंदू वेगळे असतात. असेटॉनचे वाष्पीभवन बिंदू पाण्यापेक्षा खूप कमी असल्याने ते सर्वात पहिले वाष्पीभूत होईल आणि वेगळे एकत्र केले जाऊ शकते. विसरण हे घन पदार्थ आणि द्रवांसाठी आहे, क्रिस्टलीकरण हे क्रिस्टल वेगळे करण्यासाठी आहे आणि क्रोमॅटोग्राफी हे विलेयता आधारे मिश्रण वेगळे करण्यासाठी आहे. योग्य उत्तर आस्थापन आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses distillation with other separation techniques",
+        "Thinks filtration works for miscible liquids, which it does not",
+        "Believes crystallization can separate liquids, which it cannot"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the scientific principle that distillation is used to separate miscible liquids with different boiling points. The reasoning for the distractors is also valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/9/science/iesc105.pdf",
@@ -826,47 +1226,159 @@
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T14:35:16.788Z",
+      "generatedAt": "2026-10-30T02:37:38.576Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "A mixture shows the Tyndall effect but appears homogeneous. What can be concluded about this mixture?",
+      "stem": "A mixture contains a solid that dissolves in water and a solid that does not. Which of the following methods would best separate the two?",
       "choices": [
-        "It is a solution",
-        "It is a suspension",
-        "It is a colloid",
-        "It is a pure substance"
+        "Filtration followed by evaporation",
+        "Distillation followed by filtration",
+        "Decantation",
+        "Sublimation"
       ],
-      "answerIndex": 2,
-      "solution": "The Tyndall effect is seen in colloids and suspensions. However, the mixture appears homogeneous, which rules out a suspension. Hence, it must be a colloid. A solution does not show the Tyndall effect, and a pure substance is not a mixture.",
+      "answerIndex": 0,
+      "solution": "Filtration would separate the solid that does not dissolve in water, leaving the dissolved solid in the liquid. Evaporation would then be used to recover the dissolved solid by removing the water. Distillation is used for separating liquids, decantation is for separating liquids from settled solids, and sublimation is for separating solids that turn directly into gas.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक मिश्रण टिंडॉल प्रभाव दर्शाता है लेकिन समांगी दिखाई देता है। इस मिश्रण के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "stem": "एक मिश्रण में एक ठोस है जो पानी में घुल जाता है और एक ठोस है जो नहीं घुलता। निम्नलिखित में से कौन-सी विधि दोनों को अलग करने के लिए सबसे अच्छी होगी?",
           "choices": [
-            "यह एक विलयन है",
-            "यह एक निलंबन है",
-            "यह एक कोलॉइड है",
-            "यह एक शुद्ध पदार्थ है"
+            "अपोहन के बाद वाष्पीकरण",
+            "आसवन के बाद अपोहन",
+            "निस्यंदन",
+            "उत्केशन"
           ],
-          "solution": "टिंडॉल प्रभाव कोलॉइड और निलंबन में देखा जाता है। हालांकि, मिश्रण समांगी दिखाई देता है, जो निलंबन को असंभव बना देता है। इसलिए, यह निश्चित रूप से कोलॉइड होना चाहिए। एक विलयन टिंडॉल प्रभाव नहीं दर्शाता है, और एक शुद्ध पदार्थ एक मिश्रण नहीं होता है।",
+          "solution": "अपोहन उस ठोस को अलग कर देगा जो पानी में घुल जाता है, जबकि घुले हुए ठोस को तरल पदार्थ में छोड़ दिया जाएगा। बाद में वाष्पीकरण का उपयोग पानी को हटाकर घुले हुए ठोस को बरकरार रखने के लिए किया जाएगा। आसवन का उपयोग द्रवों के अलग करने के लिए किया जाता है, निस्यंदन का उपयोग बैठे हुए ठोसों से द्रवों के अलग करने के लिए किया जाता है, और उत्केशन का उपयोग ऐसे ठोसों के अलग करने के लिए किया जाता है जो सीधे गैस में बदल जाते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate scientific terminology as taught in Hindi-medium textbooks.",
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi curriculum, and the correct answer remains option (1).",
           "flag": null
         },
         "mr": {
-          "stem": "एका मिश्रणाने टिंडॉल प्रभाव दर्शवते परंतु ते समजूतदार दिसते. या मिश्रणाबद्दल काय निष्कर्ष काढता येईल?",
+          "stem": "एका मिश्रणामध्ये पाण्यात विरघळणारा घटक आणि पाण्यात विरघळणार नसलेला घटक असतो. खालीलपैकी कोणती विधी दोन्ही घटकांना वेगळे करण्यास उत्तम ठरेल?",
           "choices": [
-            "ते एका द्रावणाचे असेल",
-            "ते एका अवक्षेपणाचे असेल",
-            "ते एका कोलॉइडचे असेल",
-            "ते एका शुद्ध पदार्थाचे असेल"
+            "विलयनानंतर वाष्पीकरण",
+            "आस्थापनानंतर विलयन",
+            "तळावर बसणे",
+            "उत्केशन"
           ],
-          "solution": "टिंडॉल प्रभाव कोलॉइड आणि अवक्षेपणात दिसतो. परंतु मिश्रण समजूतदार दिसत असल्याने अवक्षेपणाचे निराकरण होते. म्हणून ते नक्की कोलॉइड असेल. द्रावण टिंडॉल प्रभाव दर्शवत नाही, आणि शुद्ध पदार्थ मिश्रण नाही.",
+          "solution": "विलयनाने पाण्यात विरघळणार नसलेला घटक वेगळा होईल आणि विरघळलेला घटक पाण्यामध्ये राहील. नंतर वाष्पीकरणाने पाणी दूर करून विरघळलेला घटक मिळविता येईल. आस्थापना द्रव पदार्थांना वेगळे करण्यासाठी वापरली जाते, तळावर बसणे तळावर बसलेल्या घटकांना द्रवापासून वेगळे करण्यासाठी वापरली जाते आणि उत्केशन घटकांना वाफेत बदलण्यासाठी वापरली जाते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the order of separation methods, thinking distillation can separate solids from liquids",
+        "Distillation is used for separating liquids with different boiling points",
+        "Decantation is used for immiscible liquids, not for solids in a solution"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is sound and correctly identifies filtration followed by evaporation as the best method. The reasoning for the wrong options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 12,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.3 Methods of Separation of Homogeneous Mixtures",
+            "5.3.2 Distillation"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 13,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.3 Methods of Separation of Homogeneous Mixtures",
+            "5.3.3 Paper Chromatography"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 14,
+          "pageStart": 11,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.3 Methods of Separation of Homogeneous Mixtures",
+            "5.3.3 Paper Chromatography"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 15,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.4 How Can We Separate the Components of",
+            "5.4.1 Separation of two immiscible liquids"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T02:37:38.576Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A saturated solution of compound B at 60°C contains 287 g of solute in 100 g of water. If the solution is cooled to 40°C, how much solute will crystallize out?",
+      "choices": [
+        "287 g",
+        "241 g",
+        "46 g",
+        "50 g"
+      ],
+      "answerIndex": 2,
+      "solution": "At 40°C, the solubility of compound B is 241 g per 100 g of water. Therefore, 287 g - 241 g = 46 g of solute will crystallize. A pupil might think that all the solute remains dissolved, or confuse the solubility values at different temperatures, leading to incorrect answers.",
+      "checkExpr": "287-241",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "60°C पर यौगिक B के संतृप्त विलयन में 100 ग्राम पानी में 287 ग्राम विलेय होता है। यदि विलयन को 40°C तक ठंडा कर दिया जाए, तो कितना विलेय क्रिस्टलित हो जाएगा?",
+          "choices": [
+            "287 ग्राम",
+            "241 ग्राम",
+            "46 ग्राम",
+            "50 ग्राम"
+          ],
+          "solution": "40°C पर यौगिक B की विलेयता 241 ग्राम प्रति 100 ग्राम पानी होती है। अतः 287 ग्राम - 241 ग्राम = 46 ग्राम विलेय क्रिस्टलित हो जाएगा। एक छात्र यह सोच सकता है कि सभी विलेय घुले रहेंगे, या विभिन्न तापमानों पर विलेयता के मानों को गलती से बदल देंगे, जिसके कारण गलत उत्तर हो सकते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "60°C वर योगिक B चा संतृप्त द्रावणामध्ये 100 ग्रॅम पाण्यामध्ये 287 ग्रॅम द्राव्य असते. जर द्रावणाला 40°C वर थंड केले जाते, तर किती द्राव्य घनीभूत होईल?",
+          "choices": [
+            "287 ग्रॅम",
+            "241 ग्रॅम",
+            "46 ग्रॅम",
+            "50 ग्रॅम"
+          ],
+          "solution": "40°C वर, योगिक B ची द्राव्यता 100 ग्रॅम पाण्यामध्ये 241 ग्रॅम असते. म्हणून, 287 ग्रॅम - 241 ग्रॅम = 46 ग्रॅम द्राव्य घनीभूत होईल. एका विद्यार्थीला असे वाटू शकते की सर्व द्राव्य द्रावित राहील, किंवा विविध तापमानांवरील द्राव्यता मूल्यांचा गैरसमज होऊ शकतो, ज्यामुळे चुकीचे उत्तर मिळू शकते.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -877,10 +1389,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Does not understand the Tyndall effect in solutions",
-        "Confuses suspension with colloid",
+        "thinks all the solute remains dissolved",
+        "confuses the solubility at 60°C with that at 40°C",
         null,
-        "Student believes that the Tyndall effect only occurs in pure substances"
+        "mistakenly calculates the difference as 50 g"
       ],
       "solverAnswers": [
         2,
@@ -890,42 +1402,156 @@
         2
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the Tyndall effect is seen in colloids and suspensions, but the homogeneous appearance rules out a suspension, leaving a colloid as the correct answer. The reasoning for the wrong options aligns with common misconceptions.",
+      "critique": "The solution is correct. The solubility at 40°C is 241 g, so the amount that crystallizes is 287 g - 241 g = 46 g. The reasoning for the distractors aligns with common student misconceptions.",
       "sources": [
         {
           "document": "ncert/9/science/iesc105.pdf",
-          "ordinal": 19,
-          "pageStart": 15,
-          "pageEnd": 16,
+          "ordinal": 5,
+          "pageStart": 4,
+          "pageEnd": 5,
           "headingPath": [
             "Chapter 5: Exploring Mixtures and their Separation",
-            "5.4 How Can We Separate the Components of",
-            "5.4.4 Colloids"
+            "5.2 Solutions",
+            "5.2.2 How do we express concentration?"
           ]
         },
         {
           "document": "ncert/9/science/iesc105.pdf",
-          "ordinal": 20,
-          "pageStart": 16,
-          "pageEnd": 17,
+          "ordinal": 6,
+          "pageStart": 5,
+          "pageEnd": 6,
           "headingPath": [
             "Chapter 5: Exploring Mixtures and their Separation",
-            "5.5 Tyndall Effect"
+            "5.2 Solutions",
+            "5.2.3 Solubility of substances"
           ]
         },
         {
           "document": "ncert/9/science/iesc105.pdf",
-          "ordinal": 21,
-          "pageStart": 17,
-          "pageEnd": 17,
+          "ordinal": 7,
+          "pageStart": 6,
+          "pageEnd": 6,
           "headingPath": [
             "Chapter 5: Exploring Mixtures and their Separation",
-            "5.5 Tyndall Effect"
+            "5.2 Solutions",
+            "5.2.3 Solubility of substances"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 8,
+          "pageStart": 6,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.3 Methods of Separation of Homogeneous Mixtures",
+            "5.3.1 Crystallization"
           ]
         }
       ],
       "edition": "2026 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-22T14:35:16.788Z",
+      "generatedAt": "2026-10-30T02:37:38.576Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student wants to recover a solute from a solution by evaporating the solvent. What is the main disadvantage of this method compared to crystallization?",
+      "choices": [
+        "It requires the use of a magnetic stirrer",
+        "It requires more time to complete",
+        "It does not produce well-defined crystals",
+        "It is more expensive"
+      ],
+      "answerIndex": 2,
+      "solution": "Evaporation may not produce well-defined crystals, as the solute may not have enough time to arrange properly. Crystallization allows for the formation of larger, pure crystals. The other options are not the main disadvantages of evaporation. The correct answer is that it does not produce well-defined crystals.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र विलायक के वाष्पीकरण द्वारा विलयन से विलेय को पुनः प्राप्त करना चाहता है। इस विधि का क्रिस्टलीकरण की तुलना में मुख्य दोष क्या है?",
+          "choices": [
+            "इसमें चुंबकीय हिलाने वाले की आवश्यकता होती है",
+            "पूरा करने में अधिक समय लगता है",
+            "इससे अच्छी तरह से परिभाषित क्रिस्टल नहीं बनते",
+            "यह अधिक महंगा होता है"
+          ],
+          "solution": "वाष्पीकरण अच्छी तरह से परिभाषित क्रिस्टल नहीं बना सकता क्योंकि विलेय के पास पर्याप्त समय नहीं होता है। क्रिस्टलीकरण बड़े और शुद्ध क्रिस्टल के निर्माण की अनुमति देता है। अन्य विकल्प वाष्पीकरण के मुख्य दोष नहीं हैं। सही उत्तर यह है कि यह अच्छी तरह से परिभाषित क्रिस्टल नहीं बनाता।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थीने विलायक उत्तरोत्तर करून एका विलयनातून विलेय फिरून मिळवण्याचा प्रयत्न करत आहे. ह्या पद्धतीचा मुख्य अवांतर विलेयन तुलनेत क्रिस्टलीकरणापेक्षा काय आहे?",
+          "choices": [
+            "त्याला चुंबकीय हलन यंत्राची आवश्यकता असते",
+            "पूर्ण करण्यास जास्त वेळ लागते",
+            "त्यामुळे चांगले परिभाषित क्रिस्टल तयार होत नाहीत",
+            "हे खर्चिक असते"
+          ],
+          "solution": "उत्तरोत्तरण चांगले परिभाषित क्रिस्टल तयार करू शकत नाही, कारण विलेय योग्यरित्या व्यवस्थित करण्यासाठी पुरेसा वेळ नसतो. क्रिस्टलीकरणामुळे मोठे आणि शुद्ध क्रिस्टल तयार होतात. इतर विकल्प ह्या पद्धतीचे मुख्य अवांतर नाहीत. योग्य उत्तर हे आहे की त्यामुळे चांगले परिभाषित क्रिस्टल तयार होत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Students may think evaporation always requires special equipment like a stirrer, not realizing it can be done simply with heat.",
+        "students may think evaporation takes longer than crystallization because they associate it with slow processes",
+        null,
+        "Student assumes that heating requires more energy and is therefore more costly"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the main disadvantage of evaporation compared to crystallization is that it does not produce well-defined crystals. The reasoning aligns with the scientific understanding of the processes.",
+      "sources": [
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 9,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.3 Methods of Separation of Homogeneous Mixtures",
+            "5.3.1 Crystallization"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 10,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.3 Methods of Separation of Homogeneous Mixtures",
+            "5.3.1 Crystallization"
+          ]
+        },
+        {
+          "document": "ncert/9/science/iesc105.pdf",
+          "ordinal": 11,
+          "pageStart": 9,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 5: Exploring Mixtures and their Separation",
+            "5.3 Methods of Separation of Homogeneous Mixtures",
+            "5.3.2 Distillation"
+          ]
+        }
+      ],
+      "edition": "2026 edition (the site's Last-Modified)",
+      "generatedAt": "2026-10-30T02:37:38.576Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,385 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T18:34:42.656Z",
+  "finishedAt": "2026-10-25T18:37:23.664Z",
+  "seconds": 161,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap120.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 20 — Eating Together",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 50845,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 14034,
+      "completionTokens": 3099
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 130420,
+      "in": 16,
+      "out": 12,
+      "rejects": 4,
+      "promptTokens": 8945,
+      "completionTokens": 3700
+    },
+    "solver": {
+      "calls": 102,
+      "ms": 55182,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 19906,
+      "completionTokens": 1168
+    },
+    "form": {
+      "calls": 4,
+      "ms": 10467,
+      "in": 9,
+      "out": 2,
+      "rejects": 7,
+      "promptTokens": 954,
+      "completionTokens": 325
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 3558,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 69987,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5274,
+      "completionTokens": 2874
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What did Aarti say she enjoyed the most at her uncle's wedding?",
+      "ms": {
+        "draft": 3332,
+        "critique": 4882
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Rehana suggest about having a party in the class?",
+      "ms": {
+        "draft": 3332,
+        "critique": 5390
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did the village do to prepare for the Bihu festival?",
+      "ms": {
+        "draft": 3332,
+        "critique": 7213
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the purpose of the class party according to the passage?",
+      "ms": {
+        "draft": 3332,
+        "critique": 4522,
+        "solver": 10832,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the children sing before starting to eat?",
+      "ms": {
+        "draft": 3222,
+        "critique": 6706,
+        "solver": 1792,
+        "form": 2504
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why did the parents decide to help after Didi Moni explained the situation?",
+      "ms": {
+        "draft": 3222,
+        "critique": 7019,
+        "solver": 12000,
+        "form": 3085
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest is the reason some children in India do not get enough food?",
+      "ms": {
+        "draft": 3142,
+        "critique": 5544,
+        "solver": 1426
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the main activity that students do before they start eating their meal?",
+      "ms": {
+        "draft": 3142,
+        "critique": 6182,
+        "solver": 1477
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage indicate about the importance of the mid-day meal?",
+      "ms": {
+        "draft": 3142,
+        "critique": 8037,
+        "solver": 1140,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did the children in the passage plan to do to have fun together?",
+      "ms": {
+        "draft": 3017,
+        "critique": 7505,
+        "solver": 1825
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student in the school described in the passage finds the food not enough, what should they do according to the passage?",
+      "ms": {
+        "draft": 3142,
+        "critique": 6434,
+        "solver": 13956,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did the children in the passage do to prepare for their class party?",
+      "ms": {
+        "draft": 3017,
+        "critique": 5661
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the Bhela Ghar in the village feast described in the passage?",
+      "ms": {
+        "draft": 3017,
+        "critique": 5059,
+        "solver": 982,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the class party described in the passage?",
+      "ms": {
+        "draft": 3017,
+        "critique": 6277,
+        "solver": 6115,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the mid-day meal in schools?",
+      "ms": {
+        "draft": 3222,
+        "critique": 6381,
+        "solver": 15827,
+        "form": 3952,
+        "translation": 34455
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if a child does not get a mid-day meal in school?",
+      "ms": {
+        "draft": 3222,
+        "critique": 6468,
+        "solver": 15752,
+        "form": 1634,
+        "translation": 31131
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did Aarti say she enjoyed the most at her uncle's wedding?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What did Rehana suggest about having a party in the class?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What did the village do to prepare for the Bihu festival?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What was the purpose of the class party according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What did the children sing before starting to eat?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"invents a new song not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"refers to a different activity not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why did the parents decide to help after Didi Moni explained the situation?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"invents a new reason not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"refers to a different action not mentioned in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage suggest is the reason some children in India do not get enough food?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, what is the main activity that students do before they start eating their meal?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage indicate about the importance of the mid-day meal?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What did the children in the passage plan to do to have fun together?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student in the school described in the passage finds the food not enough, what should they do according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What did the children in the passage do to prepare for their class party?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the significance of the Bhela Ghar in the village feast described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of the class party described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

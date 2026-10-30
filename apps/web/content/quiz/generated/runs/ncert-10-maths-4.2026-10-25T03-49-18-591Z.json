@@ -1,0 +1,651 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T03:49:18.591Z",
+  "finishedAt": "2026-10-25T03:57:27.665Z",
+  "seconds": 489,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh104.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 4 — Quadratic Equations",
+    "edition": "Reprint 2026-27",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n4. The nature of roots of the quadratic equation 9x – 6x – 2 = 0 is: 2 1\n(a) No real roots (b) 2 equal real roots\n(c) 2 distinct real roots (d) More than 2 real roots",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n24. Find the nature of roots of the quadratic equation 𝒙 + 4𝒙 − 3√2 = 0. 2 2",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n16. The roots of quadratic equation 3𝑥 − 4√3𝑥 + 4 = 0 are 2 1\n(A) not real (B) real and equal\n(C) rational and distinct (D) irrational and distinct",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n4. Which of the following is not a quadratic equation?\nA) (𝒙 + 2) = 2(𝒙 + 3) 2\nB) 𝒙 + 3𝒙 = (−1)(1 − 3𝒙 ) 2 2\nC) (𝒙 + 2)(𝒙 − 1) = 𝒙 − 𝟐𝒙 − 3 2\nD) 𝒙 − 𝒙 + 2𝒙 + 1 = (𝒙 + 1) 3 2 3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 185169,
+      "in": 33,
+      "out": 31,
+      "rejects": 2,
+      "promptTokens": 28373,
+      "completionTokens": 7532
+    },
+    "critique": {
+      "calls": 36,
+      "ms": 331330,
+      "in": 31,
+      "out": 23,
+      "rejects": 8,
+      "promptTokens": 16952,
+      "completionTokens": 6284
+    },
+    "solver": {
+      "calls": 147,
+      "ms": 98876,
+      "in": 23,
+      "out": 17,
+      "rejects": 6,
+      "promptTokens": 25929,
+      "completionTokens": 1417
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 11,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 5974,
+      "in": 11,
+      "out": 4,
+      "rejects": 7,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 176272,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9150,
+      "completionTokens": 3990
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "A rectangular plot has an area of 528 m². Its length is one more than twice its breadth. What is the quadratic equation representing this situation?",
+      "ms": {
+        "draft": 5246,
+        "critique": 9212,
+        "solver": 1923,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a quadratic equation?",
+      "ms": {
+        "draft": 5246,
+        "critique": 9958,
+        "solver": 2531,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following equations is not a quadratic equation?",
+      "ms": {
+        "draft": 5246,
+        "critique": 11135,
+        "solver": 2801
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a quadratic equation?",
+      "ms": {
+        "draft": 5246,
+        "critique": 8835,
+        "solver": 2453
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a quadratic equation?",
+      "ms": {
+        "draft": 17671,
+        "critique": 9402,
+        "solver": 1458
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The product of two consecutive positive integers is 306. What is the smaller integer?",
+      "ms": {
+        "draft": 17671,
+        "critique": 7764,
+        "solver": 3035
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following equations is a quadratic equation?",
+      "ms": {
+        "draft": 17671,
+        "critique": 9462,
+        "solver": 4050
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The roots of the quadratic equation 3x² - 4√3x + 4 = 0 are:",
+      "ms": {
+        "draft": 17671,
+        "critique": 10795,
+        "solver": 18942,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a quadratic equation has roots α and β, and α + β = 5, and αβ = 6, what is the equation?",
+      "ms": {
+        "draft": 17671,
+        "critique": 8209,
+        "solver": 26573,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A quadratic equation is given as 2x^2 - 4x + k = 0. For what value of k will the equation have equal real roots?",
+      "ms": {
+        "draft": 6754,
+        "critique": 8715
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the condition for a quadratic equation to have two equal real roots?",
+      "ms": {
+        "draft": 4590,
+        "critique": 8957
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the nature of the roots of the quadratic equation x^2 - 6x + 9 = 0?",
+      "ms": {
+        "draft": 4590,
+        "critique": 8991
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The sum of the ages of two friends is 20 years. Four years ago, the product of their ages was 48. Is this situation possible?",
+      "ms": {
+        "draft": 4590,
+        "critique": 8180,
+        "solver": 1902
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is not a quadratic equation?",
+      "ms": {
+        "draft": 4590,
+        "critique": 10053
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the discriminant of a quadratic equation is 289, what is the nature of its roots?",
+      "ms": {
+        "draft": 4590,
+        "critique": 8963
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A rectangular park has a perimeter of 80 meters and an area of 400 square meters. What is the length and breadth of the park?",
+      "ms": {
+        "draft": 4590,
+        "critique": 13817
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the nature of the roots of the quadratic equation 2x² - 5x + 3 = 0?",
+      "ms": {
+        "draft": 6139,
+        "critique": 8952,
+        "solver": 18084,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a quadratic equation?",
+      "ms": {
+        "draft": 5894,
+        "critique": 9987
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the standard form of a quadratic equation?",
+      "ms": {
+        "draft": 5894,
+        "critique": 8027
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a quadratic equation?",
+      "ms": {
+        "draft": 5894,
+        "critique": 5844,
+        "solver": 892,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The roots of the quadratic equation 3x² – 4√3x + 4 = 0 are:",
+      "ms": {
+        "draft": 5246,
+        "critique": 9683,
+        "solver": 1812,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the discriminant of a quadratic equation is zero, what can be said about its roots?",
+      "ms": {
+        "draft": 17671,
+        "critique": 8153,
+        "solver": 2273,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the nature of the roots of the quadratic equation x^2 + 7x - 60 = 0?",
+      "ms": {
+        "draft": 6754,
+        "critique": 9359,
+        "solver": 2651,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A quadratic equation has roots that are real and equal. Which of the following must be true about its discriminant?",
+      "ms": {
+        "draft": 6754,
+        "critique": 9640,
+        "solver": 1637,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The quadratic equation 3x^2 - 4x + 1 = 0 has two real roots. What is the sum of these roots?",
+      "ms": {
+        "draft": 6754,
+        "critique": 8461,
+        "solver": 2701,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The quadratic equation x^2 - 5x + 6 = 0 has roots that are real and distinct. What is the product of the roots?",
+      "ms": {
+        "draft": 6754,
+        "critique": 6322,
+        "solver": 1100,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The equation x² + 2x + 1 = 0 is given. What can be said about the roots of this equation?",
+      "ms": {
+        "draft": 6139,
+        "critique": 8752,
+        "solver": 2139,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a quadratic equation?",
+      "ms": {
+        "draft": 6139,
+        "critique": 12532,
+        "solver": 18146,
+        "form": 0,
+        "translation": 44009
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The equation 2x² - 5x + 3 = 0 is solved by factorisation. Which of the following is a factor of the quadratic polynomial 2x² - 5x + 3?",
+      "ms": {
+        "draft": 6139,
+        "critique": 12181,
+        "solver": 17415,
+        "form": 0,
+        "translation": 49550
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "The nature of the roots of the quadratic equation 2x² + x – 300 = 0 is:",
+      "ms": {
+        "draft": 5246,
+        "critique": 8905,
+        "solver": 2088,
+        "form": 0,
+        "translation": 51304
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "The quadratic equation 100x² - 20x + 1 = 0 has roots that are:",
+      "ms": {
+        "draft": 6139,
+        "critique": 8967,
+        "solver": 2003,
+        "form": 0,
+        "translation": 25849
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a quadratic equation?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A rectangular plot has an area of 528 m². Its length is one more than twice its breadth. What is the quadratic equation representing this situation?",
+      "reason": "options 1 and 2 say the same thing (\"2x + x + 528 = 0\" / \"2x + x – 528 = 0\"); options 1 and 3 are the same (\"2x + x + 528 = 0\"); options 2 and 3 say the same thing (\"2x + x – 528 = 0\" / \"2x + x + 528 = 0\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a quadratic equation?",
+      "reason": "options 0 and 2 are the same (\"x + 3 = 0\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following equations is not a quadratic equation?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is not a quadratic equation?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a quadratic equation?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The product of two consecutive positive integers is 306. What is the smaller integer?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following equations is a quadratic equation?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The roots of the quadratic equation 3x² - 4√3x + 4 = 0 are:",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a quadratic equation has roots α and β, and α + β = 5, and αβ = 6, what is the equation?",
+      "reason": "options 0 and 1 say the same thing (\"x² - 5x + 6 = 0\" / \"x² + 5x - 6 = 0\"); options 0 and 2 say the same thing (\"x² - 5x + 6 = 0\" / \"x² - 5x - 6 = 0\"); options 0 and 3 say the same thing (\"x² - 5x + 6 = 0\" / \"x² + 5x + 6 = 0\"); options 1 and 2 say the same thing (\"x² + 5x - 6 = 0\" / \"x² - 5x - 6 = 0\"); options 1 and 3 say the same thing (\"x² + 5x - 6 = 0\" / \"x² + 5x + 6 = 0\"); options 2 and 3 say the same thing (\"x² - 5x - 6 = 0\" / \"x² + 5x + 6 = 0\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A quadratic equation is given as 2x^2 - 4x + k = 0. For what value of k will the equation have equal real roots?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is not a quadratic equation?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the condition for a quadratic equation to have two equal real roots?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the nature of the roots of the quadratic equation x^2 - 6x + 9 = 0?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "The sum of the ages of two friends is 20 years. Four years ago, the product of their ages was 48. Is this situation possible?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is not a quadratic equation?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the discriminant of a quadratic equation is 289, what is the nature of its roots?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A rectangular park has a perimeter of 80 meters and an area of 400 square meters. What is the length and breadth of the park?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the nature of the roots of the quadratic equation 2x² - 5x + 3 = 0?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a quadratic equation?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the standard form of a quadratic equation?",
+      "reason": "the critic finds option 3 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound; option 0 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a quadratic equation?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is the third option, which is a quadratic equ…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "The roots of the quadratic equation 3x² – 4√3x + 4 = 0 are:",
+      "reason": "near-duplicate of served question cmvgoabuu04jdgpfhtnt82d7a (cosine 0.922 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If the discriminant of a quadratic equation is zero, what can be said about its roots?",
+      "reason": "near-duplicate of served question cmvgoabui04ijgpfhw2u9dmmv (cosine 0.917 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the nature of the roots of the quadratic equation x^2 + 7x - 60 = 0?",
+      "reason": "near-duplicate of served question cmvgoabub04idgpfh8wi5q7n6 (cosine 0.923 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A quadratic equation has roots that are real and equal. Which of the following must be true about its discriminant?",
+      "reason": "near-duplicate of served question cmvgoabuk04ipgpfh3c01r1ff (cosine 0.970 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "The quadratic equation 3x^2 - 4x + 1 = 0 has two real roots. What is the sum of these roots?",
+      "reason": "near-duplicate of served question cmvgoabun04ivgpfh1zr92hs3 (cosine 0.965 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "The quadratic equation x^2 - 5x + 6 = 0 has roots that are real and distinct. What is the product of the roots?",
+      "reason": "near-duplicate of served question cmvgoabux04jjgpfhs673i0a4 (cosine 0.977 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "The equation x² + 2x + 1 = 0 is given. What can be said about the roots of this equation?",
+      "reason": "near-duplicate of batch item \"The quadratic equation 100x² - 20x + 1 = 0 has roo…\" (cosine 0.905 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

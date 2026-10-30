@@ -1,0 +1,705 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T23:38:04.472Z",
+  "finishedAt": "2026-10-29T23:49:45.161Z",
+  "seconds": 701,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu109.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 9 — The Amazing World of Solutes, Solvents, and Solutions",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2020 — question paper]\n8. A U-shaped tube with a semipermeable membrane is filled with 2 L of water as shown in\nfigure I. When 0.1 mol of compound X is completely dissolved in the right arm of the tube,\nthe level of X (aq) solution rises as shown in the figure II. Assume that the rise in the solution\nlevel is proportional to the number of solute particles in an aqueous solution.\nI 0.1 mol of X II\nh\nH O 2 (l) H O 2 (l) H O 2 (l) X (aq)\nSemipermeable membrane Semipermeable membrane\nThe height h would be the highest when X is\nA. MgCl 2 B. CH COOH 3 C. NH NO 4 3 D. Cane Sugar",
+      "[INJSO 2022 — question paper]\n2. A student took a sandy soil sample from a desert area, put it in a bucket and poured tap water on it. After\nsome time, the soil settled down in the bucket. She wanted to know if the sample had any soluble\nsubstances in it. Comparison of which of these properties between supernatant bucket water and the\noriginal tap water will most likely answer her question definitively.\nA. pH B. density C. temperature D. light scattering in identical containers",
+      "[INJSO 2022 — solutions or answer key]\n2. B. If some soluble components from soil dissolve in water, then density of water is most likely to change. Other\nparameters may or may not change significantly.",
+      "[CBSE Class X Science, sample question paper, 2026-27]\n27. Give reason for the following : 3\nA. A solution of sports electrolyte drink conducts electricity, but coconut oil does\nnot.\nB. Milkiness disappears when excess of carbon dioxide is passed through lime\nwater.\nC. An iron bridge near the sea rusts much faster than an iron bridge located in a\ndry hilly region."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 179620,
+      "in": 37,
+      "out": 35,
+      "rejects": 3,
+      "promptTokens": 36470,
+      "completionTokens": 8153
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 351778,
+      "in": 35,
+      "out": 31,
+      "rejects": 4,
+      "promptTokens": 21761,
+      "completionTokens": 8316
+    },
+    "solver": {
+      "calls": 234,
+      "ms": 146047,
+      "in": 31,
+      "out": 28,
+      "rejects": 3,
+      "promptTokens": 43619,
+      "completionTokens": 2426
+    },
+    "form": {
+      "calls": 12,
+      "ms": 61380,
+      "in": 28,
+      "out": 14,
+      "rejects": 14,
+      "promptTokens": 10283,
+      "completionTokens": 1380
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 108,
+      "ms": 18306,
+      "in": 14,
+      "out": 11,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 516557,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 26141,
+      "completionTokens": 13192
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 3,
+    "2": 3,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In a solution, the component that dissolves is called the solute, and the component that does the dissolving is called the solvent. Which of the following is the solute in a cup of tea with sugar?",
+      "ms": {
+        "draft": 3711,
+        "critique": 7628,
+        "solver": 14555,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student adds salt to water and stirs until the salt dissolves. Then, they continue adding salt until some remains undissolved. Which of the following best describes the final solution?",
+      "ms": {
+        "draft": 3711,
+        "critique": 8230,
+        "solver": 15108,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student adds salt to water until no more salt dissolves and some remains at the bottom. What type of solution has been formed?",
+      "ms": {
+        "draft": 3711,
+        "critique": 8529,
+        "solver": 15796,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student prepares a saltwater solution and observes that after adding a certain amount of salt, no more dissolves. If the student heats the solution, what will happen to the solubility of salt?",
+      "ms": {
+        "draft": 3711,
+        "critique": 10178
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a solution, the solute is evenly distributed throughout the solvent. Which of the following best describes this property?",
+      "ms": {
+        "draft": 3711,
+        "critique": 8171,
+        "solver": 14519,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a solution?",
+      "ms": {
+        "draft": 3711,
+        "critique": 8989,
+        "solver": 16291,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student uses a 50 mL measuring cylinder to measure 70 mL of water, what will happen?",
+      "ms": {
+        "draft": 4624,
+        "critique": 9499,
+        "solver": 2002
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student uses a digital weighing balance to measure the mass of a solid object. After placing the watch glass on the pan, they press the tare button. What is the purpose of pressing the tare button?",
+      "ms": {
+        "draft": 4624,
+        "critique": 6717,
+        "solver": 1890,
+        "form": 4411
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a unit of mass?",
+      "ms": {
+        "draft": 4624,
+        "critique": 10314,
+        "solver": 18047,
+        "form": 2686
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why are measuring cylinders designed to be narrow and tall instead of wider and short?",
+      "ms": {
+        "draft": 6078,
+        "critique": 10196
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student measures the mass of a solid using a digital balance. They first place the watch glass on the pan and press the tare button. Then, they place the solid on the watch glass and record the mass as 16.400 g. What is the mass of the solid alone?",
+      "ms": {
+        "draft": 4624,
+        "critique": 7445,
+        "solver": 19528,
+        "form": 5364
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student places a piece of modeling clay into a container of water and notices that it sinks. She then reshapes the clay into a boat-like structure and places it back in the water, where it floats. What is the reason for this change?",
+      "ms": {
+        "draft": 4874,
+        "critique": 8435,
+        "solver": 1652,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student wants to measure 50 mL of water. Which measuring device should they use?",
+      "ms": {
+        "draft": 5042,
+        "critique": 7539,
+        "solver": 1828,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can you infer about the density of ice compared to water?",
+      "ms": {
+        "draft": 4874,
+        "critique": 6988,
+        "solver": 16932
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student measures the volume of a stone using a measuring cylinder. The initial volume of water is 50 mL and the final volume is 55 mL. What is the volume of the stone?",
+      "ms": {
+        "draft": 5042,
+        "critique": 7240,
+        "solver": 1658,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student wants to find out if a soil sample contains soluble substances. Which property should they compare between the soil and water?",
+      "ms": {
+        "draft": 5042,
+        "critique": 6322,
+        "solver": 1746
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct unit for measuring the volume of a liquid?",
+      "ms": {
+        "draft": 5143,
+        "critique": 8021,
+        "solver": 1864,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does ice float on water?",
+      "ms": {
+        "draft": 5042,
+        "critique": 6573,
+        "solver": 1694,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student uses a 100 mL measuring cylinder to measure 70 mL of water. What is the reason for this choice?",
+      "ms": {
+        "draft": 5143,
+        "critique": 8376
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student uses a 50 mL measuring cylinder to measure 70 mL of water, what will be the main problem?",
+      "ms": {
+        "draft": 5143,
+        "critique": 7893
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main purpose of using a measuring cylinder in a science lab?",
+      "ms": {
+        "draft": 5143,
+        "critique": 8070,
+        "solver": 9677,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student wants to determine whether a soil sample contains soluble substances. Which property should they compare between the supernatant water and the original tap water?",
+      "ms": {
+        "draft": 4624,
+        "critique": 7921,
+        "solver": 1563,
+        "form": 1951
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student uses a measuring cylinder to find the volume of a stone. The initial volume of water is 50 mL and the final volume is 55 mL. What is the volume of the stone?",
+      "ms": {
+        "draft": 6078,
+        "critique": 6657,
+        "solver": 15227,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the maximum amount of solute that can be dissolved in 100 mL of solvent at a particular temperature?",
+      "ms": {
+        "draft": 3842,
+        "critique": 6161,
+        "solver": 1625,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of a solution?",
+      "ms": {
+        "draft": 3842,
+        "critique": 6954,
+        "solver": 2530,
+        "form": 0,
+        "translation": 38368
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following statements is true about the density of a substance?",
+      "ms": {
+        "draft": 3842,
+        "critique": 5941,
+        "solver": 1019,
+        "form": 0,
+        "translation": 38796
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct definition of solubility?",
+      "ms": {
+        "draft": 4874,
+        "critique": 6345,
+        "solver": 2102,
+        "form": 4181,
+        "translation": 60755
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for measuring the volume of a solid object using a measuring cylinder?",
+      "ms": {
+        "draft": 6078,
+        "critique": 8120,
+        "solver": 1341,
+        "form": 0,
+        "translation": 45155
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a saturated solution?",
+      "ms": {
+        "draft": 4874,
+        "critique": 6812,
+        "solver": 13540,
+        "form": 6212,
+        "translation": 57425
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the SI unit of volume?",
+      "ms": {
+        "draft": 4624,
+        "critique": 8943,
+        "solver": 2059,
+        "form": 3583,
+        "translation": 34310
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is measuring the volume of a regular-shaped object. Which formula should they use?",
+      "ms": {
+        "draft": 5042,
+        "critique": 6800,
+        "solver": 1673,
+        "form": 0,
+        "translation": 40657
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student adds 50 g of salt to 100 mL of water at room temperature, and all the salt dissolves. What type of solution is this?",
+      "ms": {
+        "draft": 4874,
+        "critique": 5894,
+        "solver": 1358,
+        "form": 5933,
+        "translation": 54936
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student measures the volume of a solid object using the displacement method. If the initial volume of water is 40 mL and the final volume is 65 mL, what is the volume of the object?",
+      "ms": {
+        "draft": 6078,
+        "critique": 7740,
+        "solver": 12101,
+        "form": 0,
+        "translation": 49864
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student dissolves 10 g of a substance in 100 mL of water at 25°C. The solution is not saturated. What can be concluded about the solubility of the substance at 25°C?",
+      "ms": {
+        "draft": 4874,
+        "critique": 6801,
+        "solver": 2878,
+        "form": 0,
+        "translation": 51484
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student dissolves 10 g of a substance in 100 mL of water at 20 °C. The solution is saturated. If the temperature is increased to 50 °C, what will happen?",
+      "ms": {
+        "draft": 6586,
+        "critique": 6424,
+        "solver": 5115,
+        "form": 0,
+        "translation": 38483
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"Which of the following is an example of a uniform mixture?\",\"options\":[\"A. Sand and wa"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Why does a bamboo raft float on water?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What happens to the density of a substance when it is heated?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a solution, the component that dissolves is called the solute, and the component that does the dissolving is called the solvent. Which of the following is the solute in a cup of tea with sugar?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student adds salt to water and stirs until the salt dissolves. Then, they continue adding salt until some remains undissolved. Which of the following best describes the final solution?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student adds salt to water until no more salt dissolves and some remains at the bottom. What type of solution has been formed?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A student prepares a saltwater solution and observes that after adding a certain amount of salt, no more dissolves. If the student heats the solution, what will happen to the solubility of salt?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a solution, the solute is evenly distributed throughout the solvent. Which of the following best describes this property?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a solution?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a student uses a 50 mL measuring cylinder to measure 70 mL of water, what will happen?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student uses a digital weighing balance to measure the mass of a solid object. After placing the watch glass on the pan, they press the tare button. What is the purpose of pressing the tare button?",
+      "reason": "option 0 repeats the stem's wording (\"To measure the mass of the watch glass\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is NOT a unit of mass?",
+      "reason": "options 0 and 1 are the same (\"Kilogram per cubic metre\"); options 0 and 3 are the same (\"Kilogram per cubic metre\"); options 1 and 3 are the same (\"Kilogram per cubic metre\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Why are measuring cylinders designed to be narrow and tall instead of wider and short?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student measures the mass of a solid using a digital balance. They first place the watch glass on the pan and press the tare button. Then, they place the solid on the watch glass and record the mass as 16.400 g. What is the mass of the solid alone?",
+      "reason": "options 0 and 2 are the same (\"16.400 g\"); options are written to different precisions (1 and 2 and 3 decimals); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student places a piece of modeling clay into a container of water and notices that it sinks. She then reshapes the clay into a boat-like structure and places it back in the water, where it floats. What is the reason for this change?",
+      "reason": "options 0 and 1 say the same thing (\"The density of the clay changes when it is reshaped\" / \"The mass of the clay changes when it is reshaped\"); options 0 and 2 say the same thing (\"The density of the clay changes when it is reshaped\" / \"The volume of the clay changes when it is reshaped\"); options 1 and 2 say the same thing (\"The mass of the clay changes when it is reshaped\" / \"The volume of the clay changes when it is reshaped\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A student wants to measure 50 mL of water. Which measuring device should they use?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the use of test tubes for measuring volumes, …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what can you infer about the density of ice compared to water?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A student measures the volume of a stone using a measuring cylinder. The initial volume of water is 50 mL and the final volume is 55 mL. What is the volume of the stone?",
+      "reason": "checkExpr \"5\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student wants to find out if a soil sample contains soluble substances. Which property should they compare between the soil and water?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct unit for measuring the volume of a liquid?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, no misconception here, just a factual recall…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does ice float on water?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'ice'"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student uses a 100 mL measuring cylinder to measure 70 mL of water. What is the reason for this choice?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a student uses a 50 mL measuring cylinder to measure 70 mL of water, what will be the main problem?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main purpose of using a measuring cylinder in a science lab?",
+      "reason": "options 1 and 3 are the same (\"To measure the weight of an object\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A student wants to determine whether a soil sample contains soluble substances. Which property should they compare between the supernatant water and the original tap water?",
+      "reason": "near-duplicate of served question cmvf9fy3e03p7god8f2js3vl4 (cosine 0.935 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A student uses a measuring cylinder to find the volume of a stone. The initial volume of water is 50 mL and the final volume is 55 mL. What is the volume of the stone?",
+      "reason": "near-duplicate of served question cmvgcb2s303d0gpfhy568bu7p (cosine 0.923 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for the maximum amount of solute that can be dissolved in 100 mL of solvent at a particular temperature?",
+      "reason": "near-duplicate of served question cmvmzk3zq02ydgp21h94o91zn (cosine 0.928 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

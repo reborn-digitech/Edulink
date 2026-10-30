@@ -1,0 +1,778 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T19:07:35.390Z",
+  "finishedAt": "2026-10-28T19:15:21.817Z",
+  "seconds": 466,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Pratical Work in Geography",
+    "bookCode": "kegy3",
+    "document": "ncert/11/geography/kegy304.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 4 — Map Projections",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 11,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)",
+      "[CBSE Class XII Geography, sample question paper, 2024-25]\nSection E\nQuestion numbers 29 & 30 are Map based questions having 5 sub-parts each. 2X5=10\n29 On the given political map of the World, seven geographical features have been 5\nmarked as A, B, C, D, E, F and G. Identify any five with the help of the following\ninformation and write their correct names on the lines drawn near each feature.\nA. A major seaport.\nB. An international airport.\nC. An important Seaway.\nD. An area of subsistence gathering in South America.\nE. An important seaport of Asia.\nF. An area of Nomadic Herding.\nG. Region of extensive commercial grain agriculture.\nThe following questions are for Visually Impaired Candidates only in lieu of",
+      "[CBSE Class XII Geography, marking scheme, 2024-25]\n29. Map World 2X5=1\nOn the given political map of the world, the following seven features 5 are 0\nshown. Identify any five of these features and write their correct names on the\nlines marked near each feature.\nA. Cape town\nB. Rome\nC. St. Lawrence sea way\nD. Amazon\nE. Shanghai\nF. Tropical Africa/ North Africa\nG. Canterbury Grasslands/Plains\nThe following questions are for Visually Impaired Candidates only in lieu of\nQuestion No.29.\n29 A. Cape town\n29 B. Rome\n29 C. St. Lawrence sea way\n29 D. Amazon\n29 E. Shanghai\n29 F. Tropical Africa/ North Africa\n29 G. Canterbury Grasslands/Plains\n30 Locate and label any five of the following geographical features on the 5\nPolitical Outline map of India with",
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n7. Section E Question number 29 and 30 are Map based questions."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 190273,
+      "in": 40,
+      "out": 39,
+      "rejects": 1,
+      "promptTokens": 33431,
+      "completionTokens": 10536
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 315312,
+      "in": 39,
+      "out": 27,
+      "rejects": 12,
+      "promptTokens": 21997,
+      "completionTokens": 8528
+    },
+    "solver": {
+      "calls": 204,
+      "ms": 114422,
+      "in": 27,
+      "out": 23,
+      "rejects": 4,
+      "promptTokens": 38002,
+      "completionTokens": 2223
+    },
+    "form": {
+      "calls": 25,
+      "ms": 99639,
+      "in": 23,
+      "out": 9,
+      "rejects": 14,
+      "promptTokens": 12008,
+      "completionTokens": 2526
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 9,
+      "out": 9,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 3892,
+      "in": 9,
+      "out": 5,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 231812,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 12600,
+      "completionTokens": 6745
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which of the following is a feature of a conical projection?",
+      "ms": {
+        "draft": 5016,
+        "critique": 6872,
+        "solver": 1357,
+        "form": 4358
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct statement about map projections?",
+      "ms": {
+        "draft": 5016,
+        "critique": 7340,
+        "solver": 13345,
+        "form": 4322
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a characteristic of a Mercator projection?",
+      "ms": {
+        "draft": 5016,
+        "critique": 8636,
+        "solver": 2238,
+        "form": 2840
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a property that a map projection aims to preserve?",
+      "ms": {
+        "draft": 5016,
+        "critique": 6341
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a conical projection, if the standard parallel is 40°N, where will the meridians converge?",
+      "ms": {
+        "draft": 4972,
+        "critique": 6540
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a conical projection?",
+      "ms": {
+        "draft": 4972,
+        "critique": 8338
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements about conical projections is true?",
+      "ms": {
+        "draft": 4972,
+        "critique": 5899,
+        "solver": 1474
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of a 'reduced earth' in the context of map projections?",
+      "ms": {
+        "draft": 5016,
+        "critique": 6344,
+        "solver": 14079,
+        "form": 3405
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a conical projection is drawn with a standard parallel of 40°N, which of the following will be true?",
+      "ms": {
+        "draft": 4972,
+        "critique": 6422,
+        "solver": 1899
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the purpose of the standard parallel in a conical projection?",
+      "ms": {
+        "draft": 4972,
+        "critique": 9183
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why conical projections are preferred for mid-latitude regions?",
+      "ms": {
+        "draft": 4972,
+        "critique": 8646,
+        "solver": 2631,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a property of the Simple Conical Projection with one standard parallel?",
+      "ms": {
+        "draft": 4148,
+        "critique": 7103,
+        "solver": 12291,
+        "form": 3403
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct use of the Mercator’s Projection?",
+      "ms": {
+        "draft": 4148,
+        "critique": 7491
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is a limitation of the Cylindrical Equal Area Projection?",
+      "ms": {
+        "draft": 4148,
+        "critique": 7630,
+        "solver": 13422,
+        "form": 3188
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which map projection is least suitable for a world map?",
+      "ms": {
+        "draft": 3490,
+        "critique": 5876,
+        "solver": 1631
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a map uses a Mercator’s Projection, which of the following would be true?",
+      "ms": {
+        "draft": 4148,
+        "critique": 7072,
+        "solver": 11842,
+        "form": 2756
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is not a property of map projections?",
+      "ms": {
+        "draft": 3490,
+        "critique": 6289,
+        "solver": 10721,
+        "form": 1215
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following map projections is least suitable for a world map?",
+      "ms": {
+        "draft": 3812,
+        "critique": 6274,
+        "solver": 1729
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements about the Simple Conical Projection is correct?",
+      "ms": {
+        "draft": 4062,
+        "critique": 6050,
+        "solver": 1760,
+        "form": 3340
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following features is most likely to be accurately represented using the Simple Conical Projection?",
+      "ms": {
+        "draft": 4062,
+        "critique": 7069,
+        "solver": 1445,
+        "form": 3875
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a key feature of the Cylindrical Equal Area Projection?",
+      "ms": {
+        "draft": 4062,
+        "critique": 7157,
+        "solver": 1495,
+        "form": 3246
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is the main reason the Mercator’s Projection is not suitable for showing the polar regions?",
+      "ms": {
+        "draft": 4062,
+        "critique": 5860,
+        "solver": 1134,
+        "form": 3870
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a limitation of the Simple Conical Projection?",
+      "ms": {
+        "draft": 4062,
+        "critique": 5686,
+        "solver": 1773,
+        "form": 3302
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a developable surface?",
+      "ms": {
+        "draft": 7855,
+        "critique": 5609
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plane surface is placed to touch the globe at the equator, what type of projection is it called?",
+      "ms": {
+        "draft": 7855,
+        "critique": 5438
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is asked to draw a projection where the direction of all points from the center is correctly represented. Which type of projection should they use?",
+      "ms": {
+        "draft": 7855,
+        "critique": 5641
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A map projection is created by projecting the graticule onto a cone that touches the globe at 40°N. What is the most likely classification of this projection?",
+      "ms": {
+        "draft": 7855,
+        "critique": 5878
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a conical projection?",
+      "ms": {
+        "draft": 7855,
+        "critique": 5832
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following best describes the purpose of a map projection?",
+      "ms": {
+        "draft": 4566,
+        "critique": 5754
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student is trying to draw a map of a small region. Which type of map projection should they use to preserve the shape of the region?",
+      "ms": {
+        "draft": 4566,
+        "critique": 3956
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which map projection has correct direction and shape but exaggerates area polewards?",
+      "ms": {
+        "draft": 3490,
+        "critique": 6572,
+        "solver": 1440,
+        "form": 2895
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of a projection where the source of light is at the center of the globe?",
+      "ms": {
+        "draft": 3490,
+        "critique": 6593,
+        "solver": 10860,
+        "form": 2699
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which map projection is most suitable for navigation?",
+      "ms": {
+        "draft": 3812,
+        "critique": 6924,
+        "solver": 2105,
+        "form": 2211
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a map projection is neither equal area nor correct in shape, and directions are also incorrect, which projection is it most likely to be?",
+      "ms": {
+        "draft": 3812,
+        "critique": 6693,
+        "solver": 17036,
+        "form": 3716
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the source of light in a Gnomonic projection?",
+      "ms": {
+        "draft": 3812,
+        "critique": 6606,
+        "solver": 17275,
+        "form": 2605,
+        "translation": 37046
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which type of projection shows correct shape and direction but exaggerates area near the poles?",
+      "ms": {
+        "draft": 3812,
+        "critique": 6244,
+        "solver": 1130,
+        "form": 3893,
+        "translation": 46975
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is most likely to be shown using the Mercator’s Projection?",
+      "ms": {
+        "draft": 4062,
+        "critique": 6090,
+        "solver": 1728,
+        "form": 3107,
+        "translation": 38607
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements best explains why map projections are necessary?",
+      "ms": {
+        "draft": 5016,
+        "critique": 6345,
+        "solver": 1763,
+        "form": 3941,
+        "translation": 65946
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it impossible for a single map projection to represent the globe truly?",
+      "ms": {
+        "draft": 3812,
+        "critique": 6162,
+        "solver": 16681,
+        "form": 2817,
+        "translation": 38862
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What is a key feature of the Mercator’s Projection?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a feature of a conical projection?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.standardParallel: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a correct statement about map projections?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a characteristic of a Mercator projection?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.principalAxis: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is a property that a map projection aims to preserve?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "In a conical projection, if the standard parallel is 40°N, where will the meridians converge?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a conical projection?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following statements about conical projections is true?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the definition of a 'reduced earth' in the context of map projections?",
+      "reason": "options 0 and 2 say the same thing (\"A model of the earth that is larger than the actual earth\" / \"A model of the earth that is smaller than the actual earth\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a conical projection is drawn with a standard parallel of 40°N, which of the following will be true?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the purpose of the standard parallel in a conical projection?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why conical projections are preferred for mid-latitude regions?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'globe'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a property of the Simple Conical Projection with one standard parallel?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following is a correct use of the Mercator’s Projection?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is a limitation of the Cylindrical Equal Area Projection?",
+      "reason": "options 1 and 3 are the same (\"It maintains correct shape at higher latitudes\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which map projection is least suitable for a world map?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a map uses a Mercator’s Projection, which of the following would be true?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is not a property of map projections?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following map projections is least suitable for a world map?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following statements about the Simple Conical Projection is correct?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Believes the projection is suitable for the entire world, bu…\"); distractor 2's reason is not a one-line misconception (\"Thinks the shape is preserved, but the passage says the proj…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following features is most likely to be accurately represented using the Simple Conical Projection?",
+      "reason": "the key is far longer than every distractor (64 vs 38 characters); distractor 2's reason is not a one-line misconception (\"Thinks the projection works for regions with high latitude v…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a key feature of the Cylindrical Equal Area Projection?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Believes the shape is preserved, but the passage states it i…\"); distractor 3's reason is not a one-line misconception (\"Thinks it is orthomorphic, but the passage states it is not.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is the main reason the Mercator’s Projection is not suitable for showing the polar regions?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Thinks the shape is preserved, but the passage states it is …\"); distractor 2's reason is not a one-line misconception (\"Confuses the projection with a non-orthomorphic one, but the…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a limitation of the Simple Conical Projection?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Thinks it is not suitable for mid-latitudes, but the passage…\"); distractor 2's reason is not a one-line misconception (\"Believes it is not suitable for international boundaries, bu…\"); distractor 3's reason is not a one-line misconception (\"Confuses it with a projection not suitable for narrow river …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a property of a developable surface?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a plane surface is placed to touch the globe at the equator, what type of projection is it called?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student is asked to draw a projection where the direction of all points from the center is correctly represented. Which type of projection should they use?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "A map projection is created by projecting the graticule onto a cone that touches the globe at 40°N. What is the most likely classification of this projection?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of a conical projection?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following best describes the purpose of a map projection?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A student is trying to draw a map of a small region. Which type of map projection should they use to preserve the shape of the region?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which map projection has correct direction and shape but exaggerates area polewards?",
+      "reason": "near-duplicate of served question cmvhqjm740a5qgpfhicc7naab (cosine 0.981 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of a projection where the source of light is at the center of the globe?",
+      "reason": "near-duplicate of served question cmvhqjm780a5wgpfhhrpi8u7y (cosine 0.905 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which map projection is most suitable for navigation?",
+      "reason": "near-duplicate of served question cmvhqjm7c0a68gpfhpgajjzcx (cosine 0.939 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a map projection is neither equal area nor correct in shape, and directions are also incorrect, which projection is it most likely to be?",
+      "reason": "near-duplicate of served question cmvoue9lf07rbgp21pggpgy44 (cosine 0.963 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

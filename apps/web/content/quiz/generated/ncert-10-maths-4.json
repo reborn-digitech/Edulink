@@ -21,201 +21,10 @@
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T17:18:59.248Z",
+  "generatedAt": "2026-10-30T04:45:00.151Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": true,
   "questions": [
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is a quadratic equation?",
-      "choices": [
-        "x + 2 = 3",
-        "x + 3x = 2x + 1",
-        "x + 2x + 1 = 0",
-        "x + 2 = 3x"
-      ],
-      "answerIndex": 2,
-      "solution": "The correct answer is x + 2x + 1 = 0. A quadratic equation is an equation of the form ax² + bx + c = 0, where a, b, and c are constants and a ≠ 0. The equation x + 2x + 1 = 0 fits this form. The other options are either linear equations or not in the standard quadratic form.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक द्विघात समीकरण है?",
-          "choices": [
-            "x + 2 = 3",
-            "x + 3x = 2x + 1",
-            "x + 2x + 1 = 0",
-            "x + 2 = 3x"
-          ],
-          "solution": "सही उत्तर x + 2x + 1 = 0 है। एक द्विघात समीकरण रूप ax² + bx + c = 0 के रूप में होता है, जहां a, b और c अचर होते हैं और a ≠ 0। समीकरण x + 2x + 1 = 0 इस रूप में फिट बैठता है। अन्य विकल्प या तो रैखिक समीकरण हैं या मानक द्विघात रूप में नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते वर्गसमीकरण आहे?",
-          "choices": [
-            "x + 2 = 3",
-            "x + 3x = 2x + 1",
-            "x + 2x + 1 = 0",
-            "x + 2 = 3x"
-          ],
-          "solution": "बरोबर उत्तर x + 2x + 1 = 0 आहे. वर्गसमीकरण हे रूपात ax² + bx + c = 0 असलेले समीकरण आहे, जेथे a, b आणि c स्थिरांक असतात आणि a ≠ 0. समीकरण x + 2x + 1 = 0 हे या रूपात बरोबर आहे. इतर विकल्प रेषीय समीकरण आहेत किंवा मानक वर्गसमीकरण रूपात नाहीत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate and maintains the original meaning, with appropriate terminology used for quadratic equations.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses linear equations with quadratic equations",
-        "Fails to recognize the quadratic form",
-        null,
-        "Confuses linear equations with quadratic equations by including a variable on both sides."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 2, which simplifies to 3x + 1 = 0, a linear equation, not a quadratic one. However, the author's reasoning is flawed because the equation x + 2x + 1 = 0 is not quadratic. A quadratic equation must have a term with x². The author incorrectly labeled a linear equation as quadratic.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh104.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 4: Quadratic Equations"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh104.pdf",
-          "ordinal": 4,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 4: Quadratic Equations"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh104.pdf",
-          "ordinal": 5,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 4: Quadratic Equations"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T17:18:59.248Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the nature of the roots of the quadratic equation x^2 - 6x + 9 = 0?",
-      "choices": [
-        "No real roots",
-        "Two equal real roots",
-        "Two distinct real roots",
-        "More than two real roots"
-      ],
-      "answerIndex": 1,
-      "solution": "The quadratic equation x^2 - 6x + 9 = 0 has a discriminant of (-6)^2 - 4*1*9 = 36 - 36 = 0. When the discriminant is 0, the equation has two equal real roots. If the discriminant is positive, the equation has two distinct real roots. If the discriminant is negative, the equation has no real roots.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "द्विघात समीकरण x^2 - 6x + 9 = 0 के मूलों की प्रकृति क्या है?",
-          "choices": [
-            "कोई वास्तविक मूल नहीं",
-            "दो समान वास्तविक मूल",
-            "दो अलग-अलग वास्तविक मूल",
-            "दो से अधिक वास्तविक मूल"
-          ],
-          "solution": "द्विघात समीकरण x^2 - 6x + 9 = 0 का विवेचक (-6)^2 - 4*1*9 = 36 - 36 = 0 है। जब विवेचक 0 होता है, तो समीकरण के दो समान वास्तविक मूल होते हैं। यदि विवेचक धनात्मक होता है, तो समीकरण के दो अलग-अलग वास्तविक मूल होते हैं। यदि विवेचक ऋणात्मक होता है, तो समीकरण के कोई वास्तविक मूल नहीं होते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "x^2 - 6x + 9 = 0 या द्विघात समीकरणाच्या मूळांची प्रकृती काय आहे?",
-          "choices": [
-            "खरी मूळे नाहीत",
-            "दोन समान खरी मूळे",
-            "दोन वेगळी खरी मूळे",
-            "दोनपेक्षा जास्त खरी मूळे"
-          ],
-          "solution": "x^2 - 6x + 9 = 0 या द्विघात समीकरणाचा विच्छेदक (-6)^2 - 4*1*9 = 36 - 36 = 0 आहे. जेव्हा विच्छेदक 0 असतो तेव्हा समीकरणाला दोन समान खरी मूळे असतात. जेव्हा विच्छेदक धन असतो तेव्हा समीकरणाला दोन वेगळी खरी मूळे असतात. जेव्हा विच्छेदक ऋण असतो तेव्हा समीकरणाला खरी मूळे नसतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the condition for no real roots",
-        null,
-        "Confuses discriminant value with having two distinct roots instead of equal roots",
-        "Confuses the condition for distinct real roots"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly calculates the discriminant and identifies that a discriminant of 0 corresponds to two equal real roots. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh104.pdf",
-          "ordinal": 6,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 4: Quadratic Equations"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh104.pdf",
-          "ordinal": 7,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 4: Quadratic Equations"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh104.pdf",
-          "ordinal": 8,
-          "pageStart": 11,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 4: Quadratic Equations",
-            "OTE"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T17:18:59.248Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
     {
       "difficulty": 5,
       "stem": "The nature of the roots of the quadratic equation 2x² + x – 300 = 0 is:",
@@ -241,11 +50,11 @@
           ],
           "solution": "सही विकल्प 'अलग-अलग वास्तविक मूल' है क्योंकि विवेचक (b² – 4ac) धनात्मक है। इस समीकरण के लिए विवेचक 1² – 4(2)(–300) = 1 + 2400 = 2401 है, जो शून्य से अधिक है। इसका अर्थ है दो अलग-अलग वास्तविक मूल। अन्य विकल्प गलत हैं क्योंकि विवेचक शून्य या ऋणात्मक नहीं है।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "द्विघात समीकरण 2x² + x – 300 = 0 च्या मूळांची प्रकृती आहे:",
+          "stem": "वर्गसमीकरण 2x² + x – 300 = 0 च्या मूळांची प्रकृती कशी आहे?",
           "choices": [
             "खरे मूळ नाहीत",
             "समान खरे मूळ",
@@ -307,7 +116,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T17:18:59.248Z",
+      "generatedAt": "2026-10-30T04:45:00.151Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
@@ -336,18 +145,18 @@
           ],
           "solution": "सही उत्तर वास्तविक एवं समान है। द्विघात समीकरण 100x² - 20x + 1 = 0 का विवेचक (-20)² - 4(100)(1) = 400 - 400 = 0 है। विवेचक 0 होने का अर्थ है कि समीकरण के दो वास्तविक एवं समान मूल हैं। अन्य विकल्प गलत हैं क्योंकि विवेचक 0 से कम नहीं है (अतः वास्तविक मूल हैं) और न ही 0 से अधिक है (अतः मूल असमान नहीं हैं)।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the mathematical meaning, terminology, and structure of the original question.",
+          "critique": "Translation accurately preserves mathematical meaning and terminology. Options and solution align perfectly with the original English text.",
           "flag": null
         },
         "mr": {
           "stem": "100x² - 20x + 1 = 0 हा द्विघात समीकरणाचे मूळ असतात:",
           "choices": [
             "वास्तविक आणि समान",
-            "वास्तविक आणि विविध",
+            "वास्तविक आणि भिन्न",
             "कोणतेही वास्तविक मूळ नाही",
-            "अपरिमेय आणि विविध"
+            "अपरिमेय आणि भिन्न"
           ],
-          "solution": "योग्य उत्तर वास्तविक आणि समान आहे. 100x² - 20x + 1 = 0 चा विवेचक (-20)² - 4(100)(1) = 400 - 400 = 0 आहे. 0 चा विवेचक असल्यास समीकरणाला दोन वास्तविक आणि समान मूळ असतात. इतर विकल्प अयोग्य आहेत कारण विवेचक 0 पेक्षा कमी नाही (म्हणजे वास्तविक मूळ आहेत) आणि 0 पेक्षा जास्त नाही (म्हणजे मूळ विविध नाहीत).",
+          "solution": "योग्य उत्तर वास्तविक आणि समान आहे. 100x² - 20x + 1 = 0 चा विवेचक (-20)² - 4(100)(1) = 400 - 400 = 0 आहे. 0 चा विवेचक असल्यास समीकरणाला दोन वास्तविक आणि समान मूळ असतात. इतर विकल्प अयोग्य आहेत कारण विवेचक 0 पेक्षा कमी नाही (म्हणजे वास्तविक मूळ आहेत) आणि 0 पेक्षा जास्त नाही (म्हणजे मूळ भिन्न नाहीत).",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -402,7 +211,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T17:18:59.248Z",
+      "generatedAt": "2026-10-30T04:45:00.151Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

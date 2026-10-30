@@ -1,0 +1,877 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T21:41:20.530Z",
+  "finishedAt": "2026-10-23T21:51:08.031Z",
+  "seconds": 588,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics Part-II",
+    "bookCode": "lemh2",
+    "document": "ncert/12/mathematics/lemh207.pdf",
+    "classLevel": 12,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Probability",
+    "edition": "Reprint 2026-27",
+    "chunks": 24,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Mathematics, marking scheme, 2026-27]\n= 𝑃(𝐸 1 )𝑃(𝐴|𝐸 1 )+𝑃(𝐸 2 )𝑃(𝐴|𝐸 2 )+𝑃(𝐸 3 )𝑃(𝐴|𝐸 3 )+𝑃(𝐸 4 )𝑃(𝐴|𝐸 4 )\n0.3×0.02 0.006 6\n= 0.019 = 0.019 = 19 1 ½",
+      "[CBSE Class XII Mathematics, marking scheme, 2026-27]\n18. (A) Probability of occurrence of any one of them is 1 1\n⇒ 𝑃(𝐴 ∩ 𝐵) + 𝑃(𝐴 ∩ 𝐵 ) = ′ ′ 1 3 ⇒ 𝑃(𝐴 )𝑃(𝐵) + 𝑃(𝐴)𝑃(𝐵 ) = ′ ′ 1 3\n⇒ (1 − ) 𝑘 + (1 − 𝑘) = 1 6 1 6 1 3 ⇒ 𝑘 ( − ) = 5 6 1 6 1 3 − 1 6 ⇒ 𝑘 = 1 6 × 6 4 = 1 4",
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2023-24]\n6. Option (d)\n𝑥 ௜ Sample Event\n0 TT\n1 HT,TH\n2 HH\nMathematical Expectation E(X) = ∑ 𝑝 𝑥 = 1 ௜ ௜\nଵ ଶ\nଶ\n1 Mark\nP(𝑥 ) = 𝑝 ௜ ௜ 𝑥 𝑝 ௜ ௜\n1 0\n1 1\n2 2\n1 1\n4 2\n1 Mark",
+      "[CBSE Class XII Mathematics, marking scheme, 2022-23]\n27. P(not obtaining an odd person in a single round) = P(All three of\nthem throw tails or All three of them throw heads)\n= × × × 2 = ଵ ଵ ଵ ଵ 1+1/2\nଶ ଶ ଶ ସ\nP(obtaining an odd person in a single round)\n= 1 − P(not obtaining an odd person in a single round) = ଷ ସ ½\nThe required probability\n= P(‘In first round there is no odd person’ and ‘In second round\nthere is no odd person’ and ‘In third round there is an odd person’)\n= × × ଵ ଵ ଷ = ଷ 1\nସ ସ ସ ଺ସ\nOR\nLet X denote the Random Variable defined by the number of\ndefective items.\nସ ଷ ଶ\nP(X=0) = ଺ × = ହ ହ\nଶ ସ ଼\nP(X=1) = 2 × ቀ × ቁ = ଺ ହ ଵହ\nP(X=2) = × ଶ ଺ ଵ ହ = ଵହ ଵ\n𝑥 ௜ 0 1\n𝑝 ௜ 2 8\n5 15\n𝑝 𝑥 ௜ ௜ 0 8\nMean = ∑ 𝑝 𝑥 = ௜ ௜ ଵ଴ ଵହ = ଶ ଷ"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 15,
+      "ms": 277056,
+      "in": 51,
+      "out": 40,
+      "rejects": 11,
+      "promptTokens": 78241,
+      "completionTokens": 14181
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 361409,
+      "in": 40,
+      "out": 31,
+      "rejects": 9,
+      "promptTokens": 26127,
+      "completionTokens": 9174
+    },
+    "solver": {
+      "calls": 235,
+      "ms": 133162,
+      "in": 31,
+      "out": 22,
+      "rejects": 9,
+      "promptTokens": 51097,
+      "completionTokens": 2622
+    },
+    "form": {
+      "calls": 7,
+      "ms": 21608,
+      "in": 22,
+      "out": 10,
+      "rejects": 12,
+      "promptTokens": 1990,
+      "completionTokens": 533
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 18,
+      "ms": 3501,
+      "in": 10,
+      "out": 1,
+      "rejects": 9,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 21041,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2534,
+      "completionTokens": 1375
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "A die is rolled. What is the probability of getting a number greater than 4, given that the number obtained is even?",
+      "ms": {
+        "draft": 4332,
+        "critique": 5275,
+        "solver": 14255
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A card is drawn from a standard deck of 52 cards. What is the probability that the card is a king, given that it is a face card?",
+      "ms": {
+        "draft": 4332,
+        "critique": 5794,
+        "solver": 16588
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the multiplication theorem on probability, what is the formula for the probability of the intersection of two events E and F?",
+      "ms": {
+        "draft": 4549,
+        "critique": 7068,
+        "solver": 12743,
+        "form": 2555
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In the multiplication rule of probability, what does P(E|F) represent?",
+      "ms": {
+        "draft": 4549,
+        "critique": 6944,
+        "solver": 12531,
+        "form": 2607
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the example where two balls are drawn from an urn without replacement, what is the probability of drawing a black ball on the second draw, given that the first ball drawn was black?",
+      "ms": {
+        "draft": 4549,
+        "critique": 7409,
+        "solver": 12168
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If two events A and B are independent, which of the following must be true?",
+      "ms": {
+        "draft": 13953,
+        "critique": 7503
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the sample space of tossing three coins, what is the probability of getting exactly one head?",
+      "ms": {
+        "draft": 13953,
+        "critique": 6798
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If two events E and F are independent, what is the relationship between P(E ∩ F) and P(E) and P(F)?",
+      "ms": {
+        "draft": 4549,
+        "critique": 6902,
+        "solver": 12777,
+        "form": 3212
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A box contains 15 oranges, 12 of which are good and 3 are bad. Three oranges are drawn at random without replacement. What is the probability that all three oranges are good?",
+      "ms": {
+        "draft": 13953,
+        "critique": 7200,
+        "solver": 1503
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the case of three events A, B, and C, what is the condition for them to be mutually independent?",
+      "ms": {
+        "draft": 4549,
+        "critique": 7871,
+        "solver": 12185,
+        "form": 3489
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If A and B are independent events, and P(A) = 0.3, P(B) = 0.4, what is the probability of at least one of the events occurring?",
+      "ms": {
+        "draft": 13953,
+        "critique": 6453
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If two events A and B are such that P(A ∩ B) = P(A) × P(B), what can be said about the events?",
+      "ms": {
+        "draft": 13953,
+        "critique": 7434
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the probability of an event A using the theorem of total probability?",
+      "ms": {
+        "draft": 4834,
+        "critique": 7897,
+        "solver": 1869,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A bag contains 3 red and 4 black balls. Another bag contains 5 red and 6 black balls. A ball is drawn at random from one of the bags and it is found to be red. What is the probability that it was drawn from the second bag?",
+      "ms": {
+        "draft": 4834,
+        "critique": 7487,
+        "solver": 1117
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A machine produces 90% acceptable items when correctly set up and 40% when incorrectly set up. Past experience shows that 80% of setups are correct. After a setup, the machine produces 2 acceptable items. What is the probability that the machine is correctly set up?",
+      "ms": {
+        "draft": 7789,
+        "critique": 9368,
+        "solver": 1353
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If E and E' form a partition of the sample space, what is P(E) + P(E')?",
+      "ms": {
+        "draft": 4834,
+        "critique": 8927,
+        "solver": 13900,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A patient has a 40% chance of having a heart attack. A meditation and yoga course reduces the risk by 30%, and a drug reduces it by 25%. The patient chooses one of the two options with equal probability. If the patient suffers a heart attack, what is the probability that they chose the meditation and yoga course?",
+      "ms": {
+        "draft": 4701,
+        "critique": 9435
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If each element of a second-order determinant is either zero or one, what is the probability that the value of the determinant is positive?",
+      "ms": {
+        "draft": 4701,
+        "critique": 8945,
+        "solver": 1711
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A factory has two machines A and B. Machine A produces 60% of the items and machine B produces 40% of the items. 2% of items from A and 1% from B are defective. A defective item is chosen at random. What is the probability that it was produced by machine B?",
+      "ms": {
+        "draft": 10361,
+        "critique": 7599
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A girl throws a die. If she gets a 5 or 6, she tosses a coin three times and notes the number of heads. If she gets 1, 2, 3 or 4, she tosses a coin once and notes whether a head or tail is obtained. If she obtained exactly one head, what is the probability that she threw 1, 2, 3 or 4 with the die?",
+      "ms": {
+        "draft": 10361,
+        "critique": 5720
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "An insurance company insured 2000 scooter drivers, 4000 car drivers, and 6000 truck drivers. The probability of an accident is 0.01, 0.03, and 0.15 respectively. One of the insured persons meets with an accident. What is the probability that he is a scooter driver?",
+      "ms": {
+        "draft": 10361,
+        "critique": 8491
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A card from a pack of 52 cards is lost. From the remaining cards of the pack, two cards are drawn and are found to be both diamonds. What is the probability of the lost card being a diamond?",
+      "ms": {
+        "draft": 10361,
+        "critique": 5899,
+        "solver": 1395,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a machine is correctly set up, it produces 90% acceptable items. If it is incorrectly set up, it produces 40% acceptable items. Past experience shows that 80% of the set ups are correctly done. If after a certain set up, the machine produces 2 acceptable items, find the probability that the machine is correctly setup.",
+      "ms": {
+        "draft": 10361,
+        "critique": 5277,
+        "solver": 2143
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A doctor is known to be late with certain probabilities based on his mode of transport. If he is late, what is the probability that he came by train?",
+      "ms": {
+        "draft": 24003,
+        "critique": 6270,
+        "solver": 1764
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula used to calculate the probability of an event given prior knowledge of conditions related to the event?",
+      "ms": {
+        "draft": 24003,
+        "critique": 8540,
+        "solver": 22098,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In a scenario where a student either knows the answer or guesses, what is the probability that the student knows the answer given that he answered correctly?",
+      "ms": {
+        "draft": 24003,
+        "critique": 9680,
+        "solver": 22700,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the theorem of total probability?",
+      "ms": {
+        "draft": 4372,
+        "critique": 6483,
+        "solver": 979,
+        "form": 3307
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about a partition of a sample space?",
+      "ms": {
+        "draft": 4372,
+        "critique": 8474,
+        "solver": 18313,
+        "form": 2762
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If two events A and B are independent, which of the following is true?",
+      "ms": {
+        "draft": 4424,
+        "critique": 7837
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Two events E and F are independent if",
+      "ms": {
+        "draft": 5757,
+        "critique": 5396,
+        "solver": 6198,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a class of 30 students, 12 play cricket, 10 play football, and 5 play both. What is the probability that a student plays cricket, given that they play football?",
+      "ms": {
+        "draft": 4332,
+        "critique": 4884,
+        "solver": 1191,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A bag contains 4 red balls and 6 blue balls. Two balls are drawn without replacement. What is the probability that the second ball is blue, given that the first ball was red?",
+      "ms": {
+        "draft": 4332,
+        "critique": 9507,
+        "solver": 1520,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A bag contains 5 white balls and 3 black balls. Two balls are drawn at random without replacement. What is the probability that both are white, given that at least one is white?",
+      "ms": {
+        "draft": 4332,
+        "critique": 6540,
+        "solver": 1806,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A die is thrown three times. What is the probability of getting a 4 on the third throw given that 6 is on the first and 5 is on the second?",
+      "ms": {
+        "draft": 5817,
+        "critique": 6178,
+        "solver": 1841,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for a set of events to form a partition of a sample space?",
+      "ms": {
+        "draft": 4834,
+        "critique": 6728,
+        "solver": 1185,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for a real-valued function whose domain is the sample space of a random experiment?",
+      "ms": {
+        "draft": 5910,
+        "critique": 7996,
+        "solver": 1255,
+        "form": 3676
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A patient has a 40% chance of having a heart attack. A meditation and yoga course reduces the risk by 30%, and a drug reduces it by 25%. The patient chooses either option with equal probability. If the patient suffers a heart attack, what is the probability that they chose the meditation and yoga course?",
+      "ms": {
+        "draft": 7167,
+        "critique": 4667,
+        "solver": 886,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If P(B | A) = 1, then which of the following is true?",
+      "ms": {
+        "draft": 4701,
+        "critique": 6626,
+        "solver": 1503,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A die is thrown three times. Events A and B are defined as follows: A : 4 on the third throw, B : 6 on the first and 5 on the second throw. What is the probability of A given that B has already occurred?",
+      "ms": {
+        "draft": 7354,
+        "critique": 5516,
+        "solver": 730,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A box contains 10 balls, 6 red and 4 blue. Two balls are drawn at random. What is the probability that both are red, given that the first ball is red?",
+      "ms": {
+        "draft": 4332,
+        "critique": 6865,
+        "solver": 1490,
+        "form": 0,
+        "translation": 17000
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "In a school, 430 students are girls and 10% of them study in class XII. What is the probability that a student chosen randomly studies in Class XII given that the chosen student is a girl?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A die is thrown twice and the sum of the numbers is 6. What is the probability that the number 4 has appeared at least once?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A coin is tossed three times. What is the probability of getting a head on the third toss given that heads are on the first two tosses?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A die is thrown three times. What is the probability of getting a 4 on the third throw given that 6 is on the first and 5 is on the second?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If P(A) = 0.8, P(B) = 0.5 and P(B|A) = 0.4, find P(A ∩ B).",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "In which scenario is Bayes' theorem used?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A die is rolled. What is the probability of getting a number greater than 4, given that the number obtained is even?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A card is drawn from a standard deck of 52 cards. What is the probability that the card is a king, given that it is a face card?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the multiplication theorem on probability, what is the formula for the probability of the intersection of two events E and F?",
+      "reason": "options 0 and 2 say the same thing (\"P(E) + P(F)\" / \"P(E) × P(F|E)\"); options 0 and 3 say the same thing (\"P(E) + P(F)\" / \"P(E) × P(F|E) + P(F) × P(E|F)\"); options 2 and 3 say the same thing (\"P(E) × P(F|E)\" / \"P(E) × P(F|E) + P(F) × P(E|F)\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In the multiplication rule of probability, what does P(E|F) represent?",
+      "reason": "options 0 and 1 say the same thing (\"The probability of E occurring given that F has occurred\" / \"The probability of F occurring given that E has occurred\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the example where two balls are drawn from an urn without replacement, what is the probability of drawing a black ball on the second draw, given that the first ball drawn was black?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If two events A and B are independent, which of the following must be true?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the sample space of tossing three coins, what is the probability of getting exactly one head?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If two events E and F are independent, what is the relationship between P(E ∩ F) and P(E) and P(F)?",
+      "reason": "options 0 and 2 are the same (\"P(E ∩ F) = P(E) + P(F)\"); option 0 repeats the stem's wording (\"P(E ∩ F) = P(E) + P(F)\"); option 2 repeats the stem's wording (\"P(E ∩ F) = P(E) × P(F)\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A box contains 15 oranges, 12 of which are good and 3 are bad. Three oranges are drawn at random without replacement. What is the probability that all three oranges are good?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the case of three events A, B, and C, what is the condition for them to be mutually independent?",
+      "reason": "options 0 and 1 are the same (\"P(A ∩ B) = P(A) + P(B)\"); options 0 and 3 are the same (\"P(A ∩ B) = P(A) + P(B)\"); options 1 and 3 are the same (\"P(A ∩ B) = P(A) × P(B)\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If A and B are independent events, and P(A) = 0.3, P(B) = 0.4, what is the probability of at least one of the events occurring?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If two events A and B are such that P(A ∩ B) = P(A) × P(B), what can be said about the events?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the probability of an event A using the theorem of total probability?",
+      "reason": "options 0 and 1 say the same thing (\"P(A) = P(E1) + P(E2) + ... + P(En)\" / \"P(A) = P(E1) P(A|E1) + P(E2) P(A|E2) + ... + P(En) P(A|En)\"); options 0 and 2 say the same thing (\"P(A) = P(E1) + P(E2) + ... + P(En)\" / \"P(A) = P(E1) P(E1|A) + P(E2) P(E2|A) + ... + P(En) P(En|A)\"); options 0 and 3 say the same thing (\"P(A) = P(E1) + P(E2) + ... + P(En)\" / \"P(A) = P(A|E1) + P(A|E2) + ... + P(A|En)\"); options 1 and 2 say the same thing (\"P(A) = P(E1) P(A|E1) + P(E2) P(A|E2) + ... + P(En) P(A|En)\" / \"P(A) = P(E1) P(E1|A) + P(E2) P(E2|A) + ... + P(En) P(En|A)\"); options 1 and 3 say the same thing (\"P(A) = P(E1) P(A|E1) + P(E2) P(A|E2) + ... + P(En) P(A|En)\" / \"P(A) = P(A|E1) + P(A|E2) + ... + P(A|En)\"); options 2 and 3 say the same thing (\"P(A) = P(E1) P(E1|A) + P(E2) P(E2|A) + ... + P(En) P(En|A)\" / \"P(A) = P(A|E1) + P(A|E2) + ... + P(A|En)\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A bag contains 3 red and 4 black balls. Another bag contains 5 red and 6 black balls. A ball is drawn at random from one of the bags and it is found to be red. What is the probability that it was drawn from the second bag?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A machine produces 90% acceptable items when correctly set up and 40% when incorrectly set up. Past experience shows that 80% of setups are correct. After a setup, the machine produces 2 acceptable items. What is the probability that the machine is correctly set up?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If E and E' form a partition of the sample space, what is P(E) + P(E')?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "An electronic assembly has two subsystems, A and B. P(A fails) = 0.2, P(B fails alone) = 0.15, and P(A and B fail) = 0.15. What is P(A fails|B has failed)?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "A bag contains 3 red and 4 black balls. Another bag contains 4 red and 5 black balls. One ball is transferred from the first bag to the second, and then a ball is drawn from the second bag. The drawn ball is red. What is the probability that the transferred ball was black?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If P(A|B) > P(A), then which of the following is true?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does Bayes' theorem allow us to calculate?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is a correct statement about independent events?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A patient has a 40% chance of having a heart attack. A meditation and yoga course reduces the risk by 30%, and a drug reduces it by 25%. The patient chooses one of the two options with equal probability. If the patient suffers a heart attack, what is the probability that they chose the meditation and yoga course?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If each element of a second-order determinant is either zero or one, what is the probability that the value of the determinant is positive?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "A factory has two machines A and B. Machine A produces 60% of the items and machine B produces 40% of the items. 2% of items from A and 1% from B are defective. A defective item is chosen at random. What is the probability that it was produced by machine B?",
+      "reason": "the critic finds option 1 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound; option 1 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A girl throws a die. If she gets a 5 or 6, she tosses a coin three times and notes the number of heads. If she gets 1, 2, 3 or 4, she tosses a coin once and notes whether a head or tail is obtained. If she obtained exactly one head, what is the probability that she threw 1, 2, 3 or 4 with the die?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "An insurance company insured 2000 scooter drivers, 4000 car drivers, and 6000 truck drivers. The probability of an accident is 0.01, 0.03, and 0.15 respectively. One of the insured persons meets with an accident. What is the probability that he is a scooter driver?",
+      "reason": "the critic finds option 1 correct, the key is 0; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A card from a pack of 52 cards is lost. From the remaining cards of the pack, two cards are drawn and are found to be both diamonds. What is the probability of the lost card being a diamond?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"((12/51)*(11/50)*(13/52))/((12/51)*(11/50)*(13/52) + (13/51)*(12/50)*(39/52))\" = 0.22, but the key says 0.26"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a machine is correctly set up, it produces 90% acceptable items. If it is incorrectly set up, it produces 40% acceptable items. Past experience shows that 80% of the set ups are correctly done. If after a certain set up, the machine produces 2 acceptable items, find the probability that the machine is correctly setup.",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "A doctor is known to be late with certain probabilities based on his mode of transport. If he is late, what is the probability that he came by train?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula used to calculate the probability of an event given prior knowledge of conditions related to the event?",
+      "reason": "options 0 and 2 are the same (\"P(A|B) = P(A) * P(B|A)\"); options 1 and 3 are the same (\"P(A|B) = P(B) / P(A)\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In a scenario where a student either knows the answer or guesses, what is the probability that the student knows the answer given that he answered correctly?",
+      "reason": "options 0 and 1 say the same thing (\"P(knows) / (P(knows) * P(correct|knows) + P(guesses) * P(correct|guesses))\" / \"1: P(knows) * P(correct|guesses) / (P(knows) * P(correct|knows) + P(guesses) * P(correct|guesses))\"); options 0 and 3 say the same thing (\"P(knows) / (P(knows) * P(correct|knows) + P(guesses) * P(correct|guesses))\" / \"P(knows) * P(correct|knows) / (P(knows) * P(correct|knows) + P(guesses) * P(correct|guesses))\"); options 1 and 3 say the same thing (\"1: P(knows) * P(correct|guesses) / (P(knows) * P(correct|knows) + P(guesses) * P(correct|guesses))\" / \"P(knows) * P(correct|knows) / (P(knows) * P(correct|knows) + P(guesses) * P(correct|guesses))\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a correct statement about the theorem of total probability?",
+      "reason": "options 0 and 1 say the same thing (\"The theorem applies only when the events are not exhaustive.\" / \"The theorem applies only when the events are not disjoint.\"); options 2 and 3 say the same thing (\"The theorem states that the probability of an event is the sum of the probabilities of the event occurring in each partition.\" / \"The theorem states that the probability of an event is the product of the probabilities of the event occurring in each partition.\"); distractor 0's reason is not a one-line misconception (\"The passage states that the events must be exhaustive, so th…\"); distractor 1's reason is not a one-line misconception (\"The passage states that the events must be disjoint, so this…\"); distractor 3's reason is not a one-line misconception (\"The passage states that the probability is a sum, not a prod…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about a partition of a sample space?",
+      "reason": "options 0 and 1 say the same thing (\"The events in the partition are not pairwise disjoint but are exhaustive.\" / \"1: The events in the partition are not exhaustive but are pairwise disjoint.\"); options 0 and 2 say the same thing (\"The events in the partition are not pairwise disjoint but are exhaustive.\" / \"2: The events in the partition are pairwise disjoint but not exhaustive.\"); options 1 and 2 say the same thing (\"1: The events in the partition are not exhaustive but are pairwise disjoint.\" / \"2: The events in the partition are pairwise disjoint but not exhaustive.\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "If two events A and B are independent, which of the following is true?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Two events E and F are independent if",
+      "reason": "options 0 and 2 are the same (\"P(E ∩ F) = P(E) + P(F)\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In a class of 30 students, 12 play cricket, 10 play football, and 5 play both. What is the probability that a student plays cricket, given that they play football?",
+      "reason": "near-duplicate of served question cmvi2eqlq0bgogpfheky4q9l0 (cosine 0.988 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A bag contains 4 red balls and 6 blue balls. Two balls are drawn without replacement. What is the probability that the second ball is blue, given that the first ball was red?",
+      "reason": "near-duplicate of served question cmvi2eqlm0bgcgpfherr2n2jo (cosine 0.961 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A bag contains 5 white balls and 3 black balls. Two balls are drawn at random without replacement. What is the probability that both are white, given that at least one is white?",
+      "reason": "near-duplicate of served question cmvi2eqls0bgugpfhaqdc2han (cosine 0.963 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A die is thrown three times. What is the probability of getting a 4 on the third throw given that 6 is on the first and 5 is on the second?",
+      "reason": "near-duplicate of served question cmvi2eqlo0bgigpfhg59082ni (cosine 0.947 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the condition for a set of events to form a partition of a sample space?",
+      "reason": "near-duplicate of served question cmvi2eqlc0bfugpfhcaoujcon (cosine 0.929 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for a real-valued function whose domain is the sample space of a random experiment?",
+      "reason": "near-duplicate of served question cmvi2eqlh0bg0gpfhwgk3206p (cosine 0.915 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A patient has a 40% chance of having a heart attack. A meditation and yoga course reduces the risk by 30%, and a drug reduces it by 25%. The patient chooses either option with equal probability. If the patient suffers a heart attack, what is the probability that they chose the meditation and yoga course?",
+      "reason": "near-duplicate of served question cmvi2eqlu0bh0gpfhne058fek (cosine 0.956 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If P(B | A) = 1, then which of the following is true?",
+      "reason": "near-duplicate of served question cmvi2eqlk0bg6gpfhv2xfx3b5 (cosine 0.930 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A die is thrown three times. Events A and B are defined as follows: A : 4 on the third throw, B : 6 on the first and 5 on the second throw. What is the probability of A given that B has already occurred?",
+      "reason": "near-duplicate of served question cmvi2eqlw0bh6gpfhvh0tdbuc (cosine 0.975 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

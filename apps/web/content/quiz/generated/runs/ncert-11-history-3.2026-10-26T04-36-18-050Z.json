@@ -1,0 +1,537 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T04:36:18.050Z",
+  "finishedAt": "2026-10-26T04:40:26.904Z",
+  "seconds": 249,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Themes in World History",
+    "bookCode": "kehs1",
+    "document": "ncert/11/history/kehs103.pdf",
+    "classLevel": 11,
+    "subject": "History",
+    "chapter": "Chapter 3 — CHANGING TRADITIONS",
+    "edition": "Reprint 2026-27",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII History, sample question paper, 2026-27]\n10. The terms ‘Great and Little traditions’ were coined by a sociologist named ________. 1\n(A) John Marshall\n(B) Robert Redfield\n(C) Cyril Radcliffe\n(D) Francis Buchanan",
+      "[CBSE Class XII History, marking scheme, 2024-25]\nx. Worshippers entered through the eastern gateway and walked around the\nmound in a clockwise direction keeping the mound on the right, imitating the\nsun’s course through the sky.\nxi. Sanchi, Amaravati, and Shahji-ki-Dheri\nxii. Any other relevant point\nAny eight points to be explained.",
+      "[CBSE Class XII History, marking scheme, 2024-25]\n13. ANS- B-By providing information on administrative and cultural traditions. 1",
+      "[CBSE Class XII History, marking scheme, 2025-26]\n11. D. Sangama dynasty 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 72164,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 16774,
+      "completionTokens": 4655
+    },
+    "critique": {
+      "calls": 29,
+      "ms": 159803,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 13015,
+      "completionTokens": 5052
+    },
+    "solver": {
+      "calls": 152,
+      "ms": 72242,
+      "in": 23,
+      "out": 17,
+      "rejects": 6,
+      "promptTokens": 27420,
+      "completionTokens": 1657
+    },
+    "form": {
+      "calls": 7,
+      "ms": 17195,
+      "in": 17,
+      "out": 3,
+      "rejects": 14,
+      "promptTokens": 1751,
+      "completionTokens": 531
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 8,
+      "ms": 1242,
+      "in": 3,
+      "out": 2,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 75336,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5809,
+      "completionTokens": 3267
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following empires is described as continental or transcontinental in nature?",
+      "ms": {
+        "draft": 2905,
+        "critique": 4322,
+        "solver": 1084,
+        "form": 3384
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main feature of feudalism in western Europe?",
+      "ms": {
+        "draft": 2905,
+        "critique": 5594,
+        "solver": 1493,
+        "form": 2492
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How did the Church influence life in medieval Europe?",
+      "ms": {
+        "draft": 2905,
+        "critique": 4603,
+        "solver": 1640,
+        "form": 3727
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the role of trade in medieval Europe?",
+      "ms": {
+        "draft": 2905,
+        "critique": 4696,
+        "solver": 1427,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains the significance of the Crusades according to the passage?",
+      "ms": {
+        "draft": 2905,
+        "critique": 4906,
+        "solver": 1322,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How did the passage describe the influence of Islamic art and literature on Europe?",
+      "ms": {
+        "draft": 2905,
+        "critique": 4636,
+        "solver": 1890
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following best describes the attitude of the Catholic Church towards other cultures during the period discussed?",
+      "ms": {
+        "draft": 11176,
+        "critique": 6006,
+        "solver": 1640
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a painter from Australia wanted to record an event from the Americas, which of the following would be most relevant based on the passage?",
+      "ms": {
+        "draft": 11176,
+        "critique": 5668,
+        "solver": 11746,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why Europeans were often perceived as a curiosity in Islamic lands, India, and China?",
+      "ms": {
+        "draft": 11176,
+        "critique": 4210,
+        "solver": 15483
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, how did the encounter between Europeans and non-Europeans affect the lives of people in the long term?",
+      "ms": {
+        "draft": 11176,
+        "critique": 5504,
+        "solver": 1606,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Who coined the terms 'Great and Little traditions' according to the passage?",
+      "ms": {
+        "draft": 11176,
+        "critique": 5082
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following events from the passage could be interpreted as an example of how European technology influenced a non-European society?",
+      "ms": {
+        "draft": 11176,
+        "critique": 8226,
+        "solver": 11337,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the impact of European encounters on non-European societies according to the passage?",
+      "ms": {
+        "draft": 3100,
+        "critique": 5945,
+        "solver": 1415
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be inferred about the role of the Catholic Church in European encounters with other cultures?",
+      "ms": {
+        "draft": 3100,
+        "critique": 6479,
+        "solver": 1440,
+        "form": 2693
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following events is most likely to be recorded by an Australian painter based on the passage?",
+      "ms": {
+        "draft": 3100,
+        "critique": 6695,
+        "solver": 1642
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what can be concluded about the perception of Europeans in non-European societies?",
+      "ms": {
+        "draft": 3100,
+        "critique": 5034,
+        "solver": 1219
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is described as a new way of looking at the world in the passage?",
+      "ms": {
+        "draft": 2919,
+        "critique": 7744,
+        "solver": 1166,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why might an Australian painter choose to record events from the Americas over events from Europe, according to the passage?",
+      "ms": {
+        "draft": 3100,
+        "critique": 5333,
+        "solver": 13762,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the role of the Catholic Church in the feudal system according to the passage?",
+      "ms": {
+        "draft": 2919,
+        "critique": 6176,
+        "solver": 1447,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What was the significance of the Renaissance in the context of the passage?",
+      "ms": {
+        "draft": 2919,
+        "critique": 6516,
+        "solver": 1512,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the passage mentions the role of Mediterranean entrepreneurs in the feudal order?",
+      "ms": {
+        "draft": 2919,
+        "critique": 5025,
+        "solver": 928,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which sociologist coined the terms 'Great and Little traditions'?",
+      "ms": {
+        "draft": 3100,
+        "critique": 5782,
+        "solver": 1100,
+        "form": 3437
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main reason for the growth of commercial and urban centres in western Europe from the ninth to the eleventh centuries?",
+      "ms": {
+        "draft": 2919,
+        "critique": 7477,
+        "solver": 1362,
+        "form": 2356,
+        "translation": 34239
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the feudal system in western Europe?",
+      "ms": {
+        "draft": 2919,
+        "critique": 6307,
+        "solver": 11932,
+        "form": 953,
+        "translation": 38034
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following empires is described as continental or transcontinental in nature?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Misreads the passage, thinking the Roman Empire is described…\"); distractor 2's reason is not a one-line misconception (\"Misunderstands the passage, thinking the Arab Empire is desc…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What was the main feature of feudalism in western Europe?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the passage, thinking feudalism is a system o…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "How did the Church influence life in medieval Europe?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the passage, thinking the Church supported tr…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the role of trade in medieval Europe?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misreads the passage, thinking trade had no impact on feudal…\"); distractor 1's reason is not a one-line misconception (\"Confuses the passage's message about trade's impact on feuda…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage, thinking trade was limited to th…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best explains the significance of the Crusades according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misunderstands the passage, thinking trade decline caused th…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "How did the passage describe the influence of Islamic art and literature on Europe?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "According to the passage, which of the following best describes the attitude of the Catholic Church towards other cultures during the period discussed?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a painter from Australia wanted to record an event from the Americas, which of the following would be most relevant based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why Europeans were often perceived as a curiosity in Islamic lands, India, and China?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, how did the encounter between Europeans and non-Europeans affect the lives of people in the long term?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Misinterprets the passage's statement on cultural transforma…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Who coined the terms 'Great and Little traditions' according to the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following events from the passage could be interpreted as an example of how European technology influenced a non-European society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What was the impact of European encounters on non-European societies according to the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What can be inferred about the role of the Catholic Church in European encounters with other cultures?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Thinks the Church discouraged exploration, which is not stat…\"); distractor 3's reason is not a one-line misconception (\"Assumes the Church had no influence, which contradicts the p…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following events is most likely to be recorded by an Australian painter based on the passage?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Based on the passage, what can be concluded about the perception of Europeans in non-European societies?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is described as a new way of looking at the world in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why might an Australian painter choose to record events from the Americas over events from Europe, according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (123 vs 69 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What was the role of the Catholic Church in the feudal system according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What was the significance of the Renaissance in the context of the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why the passage mentions the role of Mediterranean entrepreneurs in the feudal order?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Mentions a negative impact that is not discussed in the pass…\"); distractor 1's reason is not a one-line misconception (\"Focuses on agricultural techniques not mentioned in the pass…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which sociologist coined the terms 'Great and Little traditions'?",
+      "reason": "near-duplicate of served question cmvl1ufl30lrxgpfh57z6tjxz (cosine 0.927 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for History (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

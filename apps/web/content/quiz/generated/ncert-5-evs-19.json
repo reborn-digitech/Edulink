@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Looking Around",
   "edition": "2024 edition (the site's Last-Modified)",
-  "generatedAt": "2026-10-23T02:18:51.237Z",
+  "generatedAt": "2026-10-28T07:08:03.300Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What was the name of the farmer who stored the seeds in a wooden box?",
+      "stem": "What is the name of the grain that the seed is talking about?",
       "choices": [
-        "Damjibhai",
-        "Hasmukh",
         "Bajra",
-        "Vangaam"
+        "Undhiya",
+        "Damjibhai",
+        "Hasmukh"
       ],
       "answerIndex": 0,
-      "solution": "The correct answer is Damjibhai because the story describes him as the farmer who created a wooden box to store seeds. Hasmukh is not mentioned as the one who stored seeds, Bajra refers to a type of grain, and Vangaam is likely a place name, not a person.",
+      "solution": "The correct answer is Bajra, which is a type of grain. The other options are names of people or a dish, not grains. Bajra is commonly known as millet and is a type of cereal grain.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "बीजों को लकड़ी के डिब्बे में रखने वाले किसान का नाम क्या था?",
+          "stem": "बीज किस अनाज के बारे में बात कर रहा है?",
           "choices": [
-            "दामजीभाई",
-            "हसमुख",
             "बाजरा",
-            "वंगाम"
+            "उंधिया",
+            "दमजीभाई",
+            "हसमुख"
           ],
-          "solution": "सही उत्तर दामजीभाई है क्योंकि कहानी में उसे बीज रखने के लिए लकड़ी का डिब्बा बनाने वाला किसान के रूप में वर्णित किया गया है। हसमुख को बीज रखने वाले के रूप में उल्लेख नहीं किया गया है, बाजरा एक प्रकार के अनाज के रूप में संदर्भित है और वंगाम एक स्थान के नाम के रूप में लगता है, न कि व्यक्ति के रूप में।",
+          "solution": "सही उत्तर बाजरा है, जो एक प्रकार का अनाज है। अन्य विकल्प मनुष्यों के नाम या एक व्यंजन हैं, अनाज नहीं। बाजरा सामान्य रूप से मिलेट के रूप में जाना जाता है और एक प्रकार का अनाज है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology and correct answer positioning.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "शेतकऱ्याचे नाव काय होते ज्याने बीजे लाकडी बॉक्समध्ये साठवले?",
+          "stem": "बियाचे नाव काय आहे ज्याच्याबद्दल बोलले जात आहे?",
           "choices": [
-            "दामजीभाई",
-            "हसमुख",
-            "बजरा",
-            "वंगाम"
+            "बाजरा",
+            "उंधिया",
+            "दमजीभाई",
+            "हसमुख"
           ],
-          "solution": "उत्तर दामजीभाई आहे कारण कथा त्याला बीजे साठवण्यासाठी लाकडी बॉक्स तयार करणारा शेतकरी म्हणून वर्णन करते. हसमुख बीजे साठवल्याचे उल्लेख नाही, बजरा एक प्रकारचे धान्य आहे आणि वंगाम शक्यतो एक ठिकाणाचे नाव आहे, माणसाचे नाही.",
+          "solution": "बरोबर उत्तर बाजरा आहे, जे एक प्रकारचे धान्य आहे. उर्वरित विकल्पांमध्ये लोकांचे नाव किंवा एक पाककृती आहे, धान्य नाही. बाजरा सामान्यतः मिलेट म्हणून ओळखला जातो आणि एक प्रकारचे शेंगदाणे धान्य आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology and correct answer positioning.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for grains and related concepts.",
           "flag": null
         }
       },
@@ -73,9 +73,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "confuses the seed name with the farmer's name",
-        "refers to the son of Damjibhai, not the farmer who stored the seeds",
-        "refers to the type of seed, not the farmer"
+        "Confuses a type of stew with a grain",
+        "Confuses the name of a person with the grain's name",
+        "Confuses the name of a person with the grain's name"
       ],
       "solverAnswers": [
         0,
@@ -85,7 +85,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the key is correct. The solution correctly identifies Damjibhai as the farmer who stored the seeds in a wooden box, and the reasoning for the distractors is valid.",
+      "critique": "The correct answer is 0 (Bajra), as the passage refers to a bajra seed. The other options are correctly identified as a dish and two names of people, which are plausible misconceptions for students.",
       "sources": [
         {
           "document": "ncert/5/environmental-studies/eeap119.pdf",
@@ -116,49 +116,49 @@
         }
       ],
       "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-23T02:18:51.237Z",
+      "generatedAt": "2026-10-28T07:08:03.300Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "Why did Damjibhai store seeds in a wooden box?",
+      "stem": "How did farmers in the past protect their seeds from insects?",
       "choices": [
-        "To make them look nice",
-        "To protect them from insects",
-        "To sell them later",
-        "To use them in cooking"
+        "By using neem leaves",
+        "By using chemicals",
+        "By using electric machines",
+        "By using water"
       ],
-      "answerIndex": 1,
-      "solution": "Damjibhai stored seeds in a wooden box to protect them from insects, as the presence of neem leaves suggests a natural insect-repelling method. The other options—making them look nice, selling them later, or using them in cooking—do not align with the purpose of storing seeds for long-term preservation.",
+      "answerIndex": 0,
+      "solution": "Neem leaves have natural insect-repelling properties that make them effective for protecting seeds from insects. Chemicals, electric machines, and water do not have the same protective qualities or historical use for this specific purpose.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "डैमजीभाई ने बीज क्यों लकड़ी के डिब्बे में रखे?",
+          "stem": "पहले के किसान बीज को कीटों से कैसे सुरक्षित रखते थे?",
           "choices": [
-            "उन्हें खूबसूरत दिखाने के लिए",
-            "उन्हें कीटों से बचाने के लिए",
-            "बाद में बेचने के लिए",
-            "उन्हें खाने में उपयोग करने के लिए"
+            "नीम के पत्ते द्वारा",
+            "रासायनिक पदार्थों द्वारा",
+            "विद्युत मशीनों द्वारा",
+            "पानी द्वारा"
           ],
-          "solution": "डैमजीभाई ने बीज लकड़ी के डिब्बे में रखे कीटों से बचाने के लिए, क्योंकि नीम के पत्तों की उपस्थिति एक प्राकृतिक कीट-अपकारक विधि को दर्शाती है। अन्य विकल्प—उन्हें खूबसूरत दिखाना, बाद में बेचना या खाने में उपयोग करना—बीजों के लंबे समय तक संरक्षण के उद्देश्य के साथ मेल नहीं खाते।",
+          "solution": "नीम के पत्ते प्राकृतिक कीट-प्रतिकार गुणों वाले होते हैं जो बीज को कीटों से सुरक्षित रखने में प्रभावी होते हैं। रासायनिक पदार्थ, विद्युत मशीनें और पानी इस विशिष्ट उद्देश्य के लिए समान सुरक्षात्मक गुणों या ऐतिहासिक उपयोग के साथ नहीं होते हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology, with the correct answer in the same position. All distractors remain incorrect, and technical terms like 'कीटों से बचाने' (to protect from insects) are appropriately used.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "डॅमजीभाईने बियांच्या बॉक्समध्ये का ठेवले?",
+          "stem": "भूतकाळात शेतकरी बियाणे कोणत्या प्रकारे कीटकांपासून बचावले?",
           "choices": [
-            "त्यांना चांगले दिसायला",
-            "त्यांना कीटकांपासून बचावासाठी",
-            "नंतर त्यांना विकायला",
-            "त्यांना राहून खायला"
+            "नीमच्या पानांचा वापर करून",
+            "रसायनांचा वापर करून",
+            "विद्युत मशीनचा वापर करून",
+            "पाण्याचा वापर करून"
           ],
-          "solution": "डॅमजीभाईने बिया लाकडी बॉक्समध्ये ठेवले कारण त्यांना कीटकांपासून बचावासाठी, जेणेकरून नीम पानांच्या उपस्थितीमुळे एक प्राकृतिक कीटक विरोधी विधी असल्याचे सूचित होते. इतर विकल्प- त्यांना चांगले दिसायला, नंतर त्यांना विकायला किंवा राहून खायला- बियांच्या लांबलचक रखवानीच्या उद्देशाशी जुळत नाहीत.",
+          "solution": "नीमच्या पानांमध्ये प्राकृतिक कीटक-विरोधी गुण असतात जे बियाणे कीटकांपासून बचावण्यास अत्यंत दक्ष आहेत. रसायने, विद्युत मशीन आणि पाणी ह्यांच्याकडे या विशिष्ट उद्देशासाठी तेवढे संरक्षक गुण नसतात किंवा ऐतिहासिक वापर नसतो.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology. The structure and logic of the question and solution are preserved.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
         }
       },
@@ -167,20 +167,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "imagines the box is for aesthetics",
         null,
-        "assumes the seeds are for sale",
-        "assumes the seeds are used in cooking"
+        "Believes modern methods were used in the past",
+        "Confuses modern methods with traditional ones",
+        "Confuses modern technology with traditional methods of seed protection"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 1, as the passage explicitly states that neem leaves were used to protect the seeds from insects. The other options are not supported by the text and represent common misconceptions.",
+      "critique": "The correct answer is 0, as neem leaves are a traditional method of protecting seeds from insects. The other options represent modern methods not used in the past, which aligns with the author's reasoning.",
       "sources": [
         {
           "document": "ncert/5/environmental-studies/eeap119.pdf",
@@ -211,7 +211,7 @@
         }
       ],
       "edition": "2024 edition (the site's Last-Modified)",
-      "generatedAt": "2026-10-23T02:18:51.237Z",
+      "generatedAt": "2026-10-28T07:08:03.300Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

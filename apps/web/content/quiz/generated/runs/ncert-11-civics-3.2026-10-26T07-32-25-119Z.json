@@ -1,0 +1,921 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T07:32:25.119Z",
+  "finishedAt": "2026-10-26T07:40:34.088Z",
+  "seconds": 489,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Political Theory",
+    "bookCode": "keps1",
+    "document": "ncert/11/political-science/keps103.pdf",
+    "classLevel": 11,
+    "subject": "Political Science",
+    "chapter": "Chapter 3 — Equality",
+    "edition": "Reprint 2026-27",
+    "chunks": 20,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\n17. Evaluate balance of power as a significant component of traditional security 1+1=2\npolicy.",
+      "[CBSE Class XII Political Science, marking scheme, 2025-26]\n11. C) Ghulam Mohammed Sadiq",
+      "[CBSE Class XII Political Science, marking scheme, 2024-25]\n11. B) Assam",
+      "[CBSE Class XII Political Science, marking scheme, 2022-23]\n1. Demands for Autonomy"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 195207,
+      "in": 49,
+      "out": 47,
+      "rejects": 2,
+      "promptTokens": 42186,
+      "completionTokens": 11258
+    },
+    "critique": {
+      "calls": 65,
+      "ms": 397382,
+      "in": 47,
+      "out": 28,
+      "rejects": 19,
+      "promptTokens": 28158,
+      "completionTokens": 11421
+    },
+    "solver": {
+      "calls": 253,
+      "ms": 136917,
+      "in": 28,
+      "out": 21,
+      "rejects": 7,
+      "promptTokens": 49728,
+      "completionTokens": 3013
+    },
+    "form": {
+      "calls": 4,
+      "ms": 9603,
+      "in": 21,
+      "out": 3,
+      "rejects": 18,
+      "promptTokens": 926,
+      "completionTokens": 310
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 7,
+      "ms": 1222,
+      "in": 3,
+      "out": 3,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 142705,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 7633,
+      "completionTokens": 4225
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following scenarios best illustrates the concept of equality as discussed in the passage?",
+      "ms": {
+        "draft": 4423,
+        "critique": 5331
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the idea of equality as discussed in the passage?",
+      "ms": {
+        "draft": 4423,
+        "critique": 5715
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements best explains the paradox of equality?",
+      "ms": {
+        "draft": 4423,
+        "critique": 6005
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student argues that equality means treating everyone the same way, but the passage challenges this. Which of the following best supports the passage's argument against this view?",
+      "ms": {
+        "draft": 4423,
+        "critique": 6290
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the relationship between religion and equality according to the passage?",
+      "ms": {
+        "draft": 4423,
+        "critique": 6013
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of an inequality that is considered unacceptable?",
+      "ms": {
+        "draft": 3411,
+        "critique": 5807
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about natural inequalities?",
+      "ms": {
+        "draft": 3411,
+        "critique": 6279
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage discusses the concept of equality in the context of different dimensions such as political, economic, and social. Based on this, which of the following is the most accurate interpretation of the passage’s message?",
+      "ms": {
+        "draft": 4423,
+        "critique": 6694,
+        "solver": 9827,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a society rewards people for their intellectual work more than for manual work, what type of inequality does this represent?",
+      "ms": {
+        "draft": 3411,
+        "critique": 6007
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main concern of advocates of equality?",
+      "ms": {
+        "draft": 3411,
+        "critique": 5488
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following scenarios best reflects the idea of unjust inequality as discussed in the passage?",
+      "ms": {
+        "draft": 3411,
+        "critique": 6161
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a society believes that certain differences are based on natural characteristics and thus justify unequal treatment, what might the passage suggest about this belief?",
+      "ms": {
+        "draft": 3411,
+        "critique": 5501,
+        "solver": 12474
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a dimension of equality discussed in the passage?",
+      "ms": {
+        "draft": 3502,
+        "critique": 5326,
+        "solver": 15457
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the role of the state in addressing social inequalities, according to the passage?",
+      "ms": {
+        "draft": 3502,
+        "critique": 8810,
+        "solver": 13199
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following would the passage most likely support as a solution to social inequality?",
+      "ms": {
+        "draft": 3502,
+        "critique": 5596,
+        "solver": 1510,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main idea of the passage regarding the relationship between political equality and a just society?",
+      "ms": {
+        "draft": 3502,
+        "critique": 7196,
+        "solver": 1568,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is the most likely reason for inequality in a society with equal political rights?",
+      "ms": {
+        "draft": 3502,
+        "critique": 6330,
+        "solver": 14973,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to the passage, what is the main problem with the public/private distinction?",
+      "ms": {
+        "draft": 3863,
+        "critique": 6871,
+        "solver": 1758,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main belief of feminists according to the passage?",
+      "ms": {
+        "draft": 3863,
+        "critique": 7044,
+        "solver": 10981,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between economic inequality and other forms of inequality?",
+      "ms": {
+        "draft": 3863,
+        "critique": 6309,
+        "solver": 1253,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a school wants to promote equality, which of the following would a liberal most likely support?",
+      "ms": {
+        "draft": 3863,
+        "critique": 6576
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the idea of 'seven revolutions' proposed by Rammanohar Lohia?",
+      "ms": {
+        "draft": 3863,
+        "critique": 6061,
+        "solver": 1242,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say is the first step towards bringing about equality?",
+      "ms": {
+        "draft": 8983,
+        "critique": 5511,
+        "solver": 13922,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main issue discussed in the passage about education and health care in India?",
+      "ms": {
+        "draft": 4319,
+        "critique": 5338
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following scenarios best illustrates the idea of differential treatment for the purpose of achieving equality?",
+      "ms": {
+        "draft": 4319,
+        "critique": 5368
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main argument against the idea of absolute economic equality?",
+      "ms": {
+        "draft": 4319,
+        "critique": 8804
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a government recommends that the government should intervene to ensure a better price for small and marginal farmers, is this consistent with the principle of equality?",
+      "ms": {
+        "draft": 4319,
+        "critique": 9345
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is an argument in favor of special treatment for women?",
+      "ms": {
+        "draft": 4319,
+        "critique": 5075,
+        "solver": 13446
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main point of the passage regarding the difference between treating everyone in an identical manner and treating everyone as equal?",
+      "ms": {
+        "draft": 4319,
+        "critique": 5904
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the passage say is the first step towards bringing about equality?",
+      "ms": {
+        "draft": 3726,
+        "critique": 5704
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a school provides special ramps for students with physical disabilities, what does this represent according to the passage?",
+      "ms": {
+        "draft": 3726,
+        "critique": 5301,
+        "solver": 12171,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is an example of formal equality?",
+      "ms": {
+        "draft": 3726,
+        "critique": 6124,
+        "solver": 13679,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for implementing affirmative action policies?",
+      "ms": {
+        "draft": 3726,
+        "critique": 5588,
+        "solver": 14091,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best represents the view of critics of affirmative action according to the passage?",
+      "ms": {
+        "draft": 3726,
+        "critique": 5807,
+        "solver": 1135,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a student from an economically disadvantaged background is given extra support to prepare for an exam, what does this reflect according to the passage?",
+      "ms": {
+        "draft": 3726,
+        "critique": 5055,
+        "solver": 1799,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason liberals believe in competition?",
+      "ms": {
+        "draft": 4123,
+        "critique": 5757
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a school wants to address the 'double burden' of women as described in the passage, what should it do?",
+      "ms": {
+        "draft": 4123,
+        "critique": 7175,
+        "solver": 1673
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main idea behind feminism?",
+      "ms": {
+        "draft": 4123,
+        "critique": 5649,
+        "solver": 9454,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a school wants to promote equality by ensuring that all students have equal opportunities, which approach would best align with liberal principles?",
+      "ms": {
+        "draft": 4123,
+        "critique": 5362,
+        "solver": 1732
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between economic inequality and other forms of inequality?",
+      "ms": {
+        "draft": 4123,
+        "critique": 5775,
+        "solver": 1735
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the chapter suggest is necessary for people to compete on equal terms in society?",
+      "ms": {
+        "draft": 3484,
+        "critique": 6696,
+        "solver": 11098,
+        "form": 3232
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a country where equal citizenship is granted, but some people still face inequality, what might be the reason?",
+      "ms": {
+        "draft": 3484,
+        "critique": 6861,
+        "solver": 14610,
+        "form": 2949
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is considered an unacceptable form of inequality?",
+      "ms": {
+        "draft": 55020,
+        "critique": 6754
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a group in society consistently has fewer opportunities due to social customs, what role does the state have according to the passage?",
+      "ms": {
+        "draft": 3484,
+        "critique": 7162,
+        "solver": 10002,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of differential treatment to promote equality?",
+      "ms": {
+        "draft": 5034,
+        "critique": 6650,
+        "solver": 8216,
+        "form": 0,
+        "translation": 49169
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What are the three main dimensions of equality discussed in the chapter?",
+      "ms": {
+        "draft": 3484,
+        "critique": 6702,
+        "solver": 12835,
+        "form": 3025,
+        "translation": 48581
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why might entrenched inequalities be more dangerous to a society than temporary ones?",
+      "ms": {
+        "draft": 3484,
+        "critique": 6948,
+        "solver": 8424,
+        "form": 1019,
+        "translation": 41146
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does the passage suggest is necessary to ensure fair competition among different groups in society?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following scenarios best illustrates the concept of equality as discussed in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the idea of equality as discussed in the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements best explains the paradox of equality?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student argues that equality means treating everyone the same way, but the passage challenges this. Which of the following best supports the passage's argument against this view?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the relationship between religion and equality according to the passage?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an example of an inequality that is considered unacceptable?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the passage say about natural inequalities?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage discusses the concept of equality in the context of different dimensions such as political, economic, and social. Based on this, which of the following is the most accurate interpretation of the passage’s message?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"misinterprets the passage's message about multiple dimension…\"); distractor 3's reason is not a one-line misconception (\"contradicts the passage's discussion of equality…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a society rewards people for their intellectual work more than for manual work, what type of inequality does this represent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, what is the main concern of advocates of equality?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following scenarios best reflects the idea of unjust inequality as discussed in the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If a society believes that certain differences are based on natural characteristics and thus justify unequal treatment, what might the passage suggest about this belief?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a dimension of equality discussed in the passage?",
+      "reason": "distractors 0, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What is the role of the state in addressing social inequalities, according to the passage?",
+      "reason": "after redrafting distractors 0, 2, 3: the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following would the passage most likely support as a solution to social inequality?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Supports the status quo, which the passage opposes…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What is the main idea of the passage regarding the relationship between political equality and a just society?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the passage's statement that political equalit…\"); distractor 3's reason is not a one-line misconception (\"Compares political and economic equality directly, which the…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is the most likely reason for inequality in a society with equal political rights?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to the passage, what is the main problem with the public/private distinction?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Incorrectly assumes women have more power in public life, bu…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main belief of feminists according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (74 vs 43 characters); distractor 3's reason is not a one-line misconception (\"Believing that gender roles are biologically determined, des…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage suggest about the relationship between economic inequality and other forms of inequality?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misunderstands the passage's argument…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's argument, which clearly states …\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a school wants to promote equality, which of the following would a liberal most likely support?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the idea of 'seven revolutions' proposed by Rammanohar Lohia?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 3 say the same thing (\"It is a way to promote only economic equality\" / \"It is a way to promote only political equality\"); distractor 3's reason is not a one-line misconception (\"Misunderstands the passage, which clearly states that Lohia'…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the passage say is the first step towards bringing about equality?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 are the same (\"Prohibiting discrimination on grounds of religion and caste\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What does the passage suggest about the term 'gender'?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main issue discussed in the passage about education and health care in India?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following scenarios best illustrates the idea of differential treatment for the purpose of achieving equality?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What is the main argument against the idea of absolute economic equality?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a government recommends that the government should intervene to ensure a better price for small and marginal farmers, is this consistent with the principle of equality?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, which of the following is an argument in favor of special treatment for women?",
+      "reason": "after redrafting distractors 1, 2, 3: the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main point of the passage regarding the difference between treating everyone in an identical manner and treating everyone as equal?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What does the passage say is the first step towards bringing about equality?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a school provides special ramps for students with physical disabilities, what does this represent according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is an example of formal equality?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason for implementing affirmative action policies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following best represents the view of critics of affirmative action according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Correct answer, as stated in the passage.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a student from an economically disadvantaged background is given extra support to prepare for an exam, what does this reflect according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer, as explained in the passage.…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the main reason liberals believe in competition?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a school wants to address the 'double burden' of women as described in the passage, what should it do?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main idea behind feminism?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a school wants to promote equality by ensuring that all students have equal opportunities, which approach would best align with liberal principles?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What does the passage suggest about the relationship between economic inequality and other forms of inequality?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the chapter suggest is necessary for people to compete on equal terms in society?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Too narrow, as the passage mentions more than just legal rig…\"); distractor 3's reason is not a one-line misconception (\"Not mentioned as a requirement in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a country where equal citizenship is granted, but some people still face inequality, what might be the reason?",
+      "reason": "the key is far longer than every distractor (51 vs 27 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is considered an unacceptable form of inequality?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a group in society consistently has fewer opportunities due to social customs, what role does the state have according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Contradicts the passage's suggestion that the state must act…\"); distractor 3's reason is not a one-line misconception (\"Incorrect, as the passage does not support this…\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

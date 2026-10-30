@@ -1,0 +1,322 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T02:46:20.092Z",
+  "finishedAt": "2026-10-28T02:48:43.384Z",
+  "seconds": 143,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm108.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 8 — Fair Share",
+    "edition": "Reprint 2026-27",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n6. (d) 2:3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n18. (a) 1/3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 42528,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8006,
+      "completionTokens": 2387
+    },
+    "critique": {
+      "calls": 18,
+      "ms": 104191,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 7858,
+      "completionTokens": 3068
+    },
+    "solver": {
+      "calls": 93,
+      "ms": 49952,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 16207,
+      "completionTokens": 922
+    },
+    "form": {
+      "calls": 8,
+      "ms": 26397,
+      "in": 11,
+      "out": 7,
+      "rejects": 4,
+      "promptTokens": 1923,
+      "completionTokens": 605
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 4542,
+      "in": 7,
+      "out": 3,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 85821,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 5917,
+      "completionTokens": 2622
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "If 10 marbles are the double of 5 marbles, how far is 10 from the double of 7?",
+      "ms": {
+        "draft": 3147,
+        "critique": 7504,
+        "solver": 1332,
+        "form": 6356
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Lakshanya tied half of her 16 flowers and Peehu tied a quarter of her 16 flowers, how many more flowers did Lakshanya tie than Peehu?",
+      "ms": {
+        "draft": 3147,
+        "critique": 7075,
+        "solver": 11472,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Shabnam has eaten some chikki from 3 sides. What is the correct answer for how much chikki is left?",
+      "ms": {
+        "draft": 3941,
+        "critique": 5647,
+        "solver": 12768,
+        "form": 2254
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Shabnam has 8 marbles and Mukta has 12 marbles. How many marbles must Shabnam give to Mukta so that both have the same number of marbles?",
+      "ms": {
+        "draft": 3941,
+        "critique": 7552
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Achintya has 10 marbles, and his friend has 5 marbles. Which of the following statements is true?",
+      "ms": {
+        "draft": 3941,
+        "critique": 6568,
+        "solver": 1179,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the share when 1 whole is divided equally between 2 people?",
+      "ms": {
+        "draft": 3147,
+        "critique": 4696,
+        "solver": 1133,
+        "form": 4840
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Shabnam has eaten some chikki from 3 sides, what is the most likely amount of chikki left?",
+      "ms": {
+        "draft": 3147,
+        "critique": 6881,
+        "solver": 14686,
+        "form": 4581
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 1 whole is divided into 4 equal parts, what is each part called?",
+      "ms": {
+        "draft": 3941,
+        "critique": 5047,
+        "solver": 11094,
+        "form": 3497
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When a whole is shared equally between 2 people, what is each share called?",
+      "ms": {
+        "draft": 3941,
+        "critique": 6552,
+        "solver": 10862,
+        "form": 3719
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If 3 is half of 6, what is 6 in relation to 3?",
+      "ms": {
+        "draft": 3147,
+        "critique": 4416,
+        "solver": 665,
+        "form": 1120,
+        "translation": 27828
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a rectangle is divided into 4 equal parts, what is each part called?",
+      "ms": {
+        "draft": 3147,
+        "critique": 5081,
+        "solver": 2089,
+        "form": 4253,
+        "translation": 29192
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A teacher gave 12 mangoes to be shared equally between two children. How many mangoes will each child get?",
+      "ms": {
+        "draft": 3941,
+        "critique": 6795,
+        "solver": 4297,
+        "form": 0,
+        "translation": 26059
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If 10 marbles are the double of 5 marbles, how far is 10 from the double of 7?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"14-10\" = 4, but the key says 3"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If Lakshanya tied half of her 16 flowers and Peehu tied a quarter of her 16 flowers, how many more flowers did Lakshanya tie than Peehu?",
+      "reason": "options 0 and 1 are the same (\"4\"); options 0 and 1 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Shabnam has eaten some chikki from 3 sides. What is the correct answer for how much chikki is left?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Chooses the opposite of what is described in the passage…\"); distractor 2's reason is not a one-line misconception (\"Chooses a more generous estimate than what the passage sugge…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Shabnam has 8 marbles and Mukta has 12 marbles. How many marbles must Shabnam give to Mukta so that both have the same number of marbles?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Achintya has 10 marbles, and his friend has 5 marbles. Which of the following statements is true?",
+      "reason": "options 0 and 1 say the same thing (\"Achintya has double the number of marbles that his friend has.\" / \"Achintya has half the number of marbles that his friend has.\"); options 0 and 2 say the same thing (\"Achintya has double the number of marbles that his friend has.\" / \"Achintya has more than double the number of marbles that his friend has.\"); options 1 and 3 say the same thing (\"Achintya has half the number of marbles that his friend has.\" / \"Achintya has less than half the number of marbles that his friend has.\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the name of the share when 1 whole is divided equally between 2 people?",
+      "reason": "near-duplicate of served question cmvgzcr6305qagpfh2jlaoeon (cosine 0.914 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If Shabnam has eaten some chikki from 3 sides, what is the most likely amount of chikki left?",
+      "reason": "near-duplicate of served question cmvgzcr6605qmgpfhc2juq8q2 (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If 1 whole is divided into 4 equal parts, what is each part called?",
+      "reason": "near-duplicate of batch item \"If a rectangle is divided into 4 equal parts, what…\" (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "When a whole is shared equally between 2 people, what is each share called?",
+      "reason": "near-duplicate of served question cmvgzcr6305qagpfh2jlaoeon (cosine 0.922 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

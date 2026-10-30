@@ -1,0 +1,861 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T07:54:06.758Z",
+  "finishedAt": "2026-10-30T08:15:57.943Z",
+  "seconds": 1311,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc107.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 7 — How do Organisms Reproduce?",
+    "edition": "Reprint 2026-27",
+    "chunks": 23,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?",
+      "[INJSO 2022 — question paper]\n11. The following observations were recorded after studying some organisms:\nCharacter Organism W Organism X Organism Y Organism Z\nWater essential for fertilization -\nFormation of filament from -\ngerminating spore\nPlant body sporophytic, differentiated +\nin root, stem and leaves\nMale and female sex organs arranged +\ncompactly in cone\nFemale gametophyte enveloped by +\nsingle layered covering\nTriploid tissue observed in zygote -\n+ - +\n- - +\n+ + -\n+ - -\n- - -\n- + -\nOn the basis of the data, identify the group of organisms:\nA. W- pteridophytes, X- bryophytes, Y- angiosperms, Z- gymnosperms\nB. W- angiosperms, X- gymnosperms, Y-pteridophytes, Z- bryophytes\nC. W- angiosperms, X- bryophytes, Y-gymnos",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n18. Assertion: Probability of survival of an organism produced through sexual reproduction is 1\nmore than that of organism produced through asexual mode.\nReason: Variations provide advantages to individuals for survival."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 470362,
+      "in": 47,
+      "out": 43,
+      "rejects": 5,
+      "promptTokens": 44241,
+      "completionTokens": 11137
+    },
+    "critique": {
+      "calls": 56,
+      "ms": 912424,
+      "in": 43,
+      "out": 33,
+      "rejects": 10,
+      "promptTokens": 26444,
+      "completionTokens": 9939
+    },
+    "solver": {
+      "calls": 244,
+      "ms": 226839,
+      "in": 33,
+      "out": 27,
+      "rejects": 6,
+      "promptTokens": 40309,
+      "completionTokens": 2495
+    },
+    "form": {
+      "calls": 20,
+      "ms": 104253,
+      "in": 27,
+      "out": 10,
+      "rejects": 17,
+      "promptTokens": 7009,
+      "completionTokens": 1656
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 53,
+      "ms": 10338,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 383599,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 20110,
+      "completionTokens": 10517
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the role of DNA copying in reproduction?",
+      "ms": {
+        "draft": 58626,
+        "critique": 25455,
+        "solver": 1403,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason organisms reproduce, according to the passage?",
+      "ms": {
+        "draft": 58626,
+        "critique": 25695,
+        "solver": 2894
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is variation in DNA copying important for the survival of a species over time?",
+      "ms": {
+        "draft": 58626,
+        "critique": 59207,
+        "solver": 2395,
+        "form": 4298
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of asexual reproduction as described in the passage?",
+      "ms": {
+        "draft": 58626,
+        "critique": 27419,
+        "solver": 88305
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of regeneration in organisms?",
+      "ms": {
+        "draft": 11567,
+        "critique": 40208
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that a population of bacteria in a temperate environment started to die when the temperature increased. However, a few bacteria survived. What could explain this phenomenon?",
+      "ms": {
+        "draft": 58626,
+        "critique": 51257,
+        "solver": 74466,
+        "form": 4595
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of asexual reproduction in fungi?",
+      "ms": {
+        "draft": 58626,
+        "critique": 59070,
+        "solver": 1769,
+        "form": 6862
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is not an advantage of vegetative propagation?",
+      "ms": {
+        "draft": 11567,
+        "critique": 31698
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following statements is true according to the passage?",
+      "ms": {
+        "draft": 11567,
+        "critique": 47678,
+        "solver": 10257,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is tissue culture a preferred method for growing plants like bananas and roses?",
+      "ms": {
+        "draft": 11567,
+        "critique": 36783
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why can't all multicellular organisms reproduce by simply dividing cell-by-cell?",
+      "ms": {
+        "draft": 11567,
+        "critique": 44390,
+        "solver": 29133,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why is the zygote able to grow and develop into a new organism with highly specialised tissues and organs?",
+      "ms": {
+        "draft": 4304,
+        "critique": 23709,
+        "solver": 3906
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of asexual reproduction?",
+      "ms": {
+        "draft": 11567,
+        "critique": 9618,
+        "solver": 32640,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the function of the scrotum in the male reproductive system?",
+      "ms": {
+        "draft": 4909,
+        "critique": 8924,
+        "solver": 2039,
+        "form": 4102
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the male reproductive system is responsible for the formation of sperms?",
+      "ms": {
+        "draft": 4909,
+        "critique": 13913,
+        "solver": 13698,
+        "form": 3720
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the female reproductive system carries the egg from the ovary to the uterus?",
+      "ms": {
+        "draft": 4909,
+        "critique": 8016,
+        "solver": 12413,
+        "form": 2749
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about the placenta?",
+      "ms": {
+        "draft": 4909,
+        "critique": 7804,
+        "solver": 1558,
+        "form": 2732
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the main reason why complex multicellular organisms cannot be reconstructed from a fragment?",
+      "ms": {
+        "draft": 15590,
+        "critique": 6796
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the female reproductive system prepares itself every month to receive a fertilised egg?",
+      "ms": {
+        "draft": 15590,
+        "critique": 7266
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are variations useful for the survival of a species in case of drastic environmental changes?",
+      "ms": {
+        "draft": 15590,
+        "critique": 6246
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main advantage of sexual reproduction over asexual reproduction?",
+      "ms": {
+        "draft": 8348,
+        "critique": 5537,
+        "solver": 1324,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which of the following organisms is reproduction through budding seen?",
+      "ms": {
+        "draft": 8348,
+        "critique": 5937,
+        "solver": 2072,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the testis in human beings?",
+      "ms": {
+        "draft": 8348,
+        "critique": 10071
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not a part of the female reproductive system in human beings?",
+      "ms": {
+        "draft": 8348,
+        "critique": 7037,
+        "solver": 15653
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is sexual reproduction more beneficial for species than asexual reproduction?",
+      "ms": {
+        "draft": 8348,
+        "critique": 8595,
+        "solver": 1554,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a sign of sexual maturation in girls?",
+      "ms": {
+        "draft": 4506,
+        "critique": 7788
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The passage discusses the role of the uterus and placenta in the development of the embryo. Which of the following is true about the uterus?",
+      "ms": {
+        "draft": 4506,
+        "critique": 9038
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a woman is using a copper-T, which of the following will it prevent?",
+      "ms": {
+        "draft": 4506,
+        "critique": 7988,
+        "solver": 12600,
+        "form": 2470
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is given a list of reproductive processes and is asked to identify the one that involves the creation of a DNA copy and additional cellular apparatus. Which process is this?",
+      "ms": {
+        "draft": 4506,
+        "critique": 8191,
+        "solver": 15425,
+        "form": 3237
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that variations are useful for ensuring the survival of the species. Which of the following scenarios best illustrates this concept?",
+      "ms": {
+        "draft": 4506,
+        "critique": 9110,
+        "solver": 13119
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is told that the human reproductive system involves the introduction of sperm into the vagina of the female. Which of the following is the primary purpose of this process?",
+      "ms": {
+        "draft": 4506,
+        "critique": 7384,
+        "solver": 17891,
+        "form": 2545
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main source of variations in populations of organisms?",
+      "ms": {
+        "draft": 3834,
+        "critique": 6614,
+        "solver": 1464
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of reproduction according to the passage?",
+      "ms": {
+        "draft": 4678,
+        "critique": 4869
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why is it not possible to reconstruct the whole organism from a fragment in complex multicellular organisms?",
+      "ms": {
+        "draft": 4304,
+        "critique": 14005,
+        "solver": 5438,
+        "form": 8616
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why is the process of DNA copying essential for reproduction?",
+      "ms": {
+        "draft": 3834,
+        "critique": 5901,
+        "solver": 1899,
+        "form": 2531
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is described as the creation of two new cells from one?",
+      "ms": {
+        "draft": 3834,
+        "critique": 7079,
+        "solver": 1933,
+        "form": 4052,
+        "translation": 39979
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a change that occurs during puberty in boys?",
+      "ms": {
+        "draft": 3580,
+        "critique": 9672,
+        "solver": 11561,
+        "form": 3399,
+        "translation": 52836
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of variations in a population of organisms?",
+      "ms": {
+        "draft": 4304,
+        "critique": 6480,
+        "solver": 2121,
+        "form": 2812,
+        "translation": 51607
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason that the testes are located outside the abdominal cavity?",
+      "ms": {
+        "draft": 3580,
+        "critique": 6954,
+        "solver": 1712,
+        "form": 2628,
+        "translation": 45643
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How does the process of sexual reproduction help in creating new combinations of variations?",
+      "ms": {
+        "draft": 4304,
+        "critique": 12533,
+        "solver": 6538,
+        "form": 10292,
+        "translation": 47919
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains how the uterus supports the development of the embryo?",
+      "ms": {
+        "draft": 3580,
+        "critique": 6626,
+        "solver": 1465,
+        "form": 2685,
+        "translation": 45274
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why does menstruation occur in human females?",
+      "ms": {
+        "draft": 8348,
+        "critique": 9977,
+        "solver": 13089,
+        "form": 1,
+        "translation": 35933
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the process of sexual reproduction, why is it necessary for the germ-cells to specialise?",
+      "ms": {
+        "draft": 4304,
+        "critique": 9959,
+        "solver": 2426,
+        "form": 14465,
+        "translation": 58695
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the role of the stigma in the process of pollination?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the role of DNA copying in reproduction?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"This is a misunderstanding of the passage, which states that…\"); distractor 1's reason is not a one-line misconception (\"This is incorrect because the passage highlights the importa…\"); distractor 3's reason is not a one-line misconception (\"This is incorrect because the passage states that variations…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the main reason organisms reproduce, according to the passage?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is variation in DNA copying important for the survival of a species over time?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"This is incorrect because the passage states that variation …\"); distractor 3's reason is not a one-line misconception (\"This is incorrect because the passage states that variation …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is an example of asexual reproduction as described in the passage?",
+      "reason": "after redrafting distractors 0, 1, 2: the critic finds option 1 correct, the key is 3; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of regeneration in organisms?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observed that a population of bacteria in a temperate environment started to die when the temperature increased. However, a few bacteria survived. What could explain this phenomenon?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 0's reason is not a one-line misconception (\"This is incorrect because the passage explains that variatio…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of asexual reproduction in fungi?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is not an advantage of vegetative propagation?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following statements is true according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why is tissue culture a preferred method for growing plants like bananas and roses?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, why can't all multicellular organisms reproduce by simply dividing cell-by-cell?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Why is the zygote able to grow and develop into a new organism with highly specialised tissues and organs?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of asexual reproduction?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the function of the scrotum in the male reproductive system?",
+      "reason": "the key is far longer than every distractor (51 vs 21 characters); distractor 2's reason is not a one-line misconception (\"Correct answer, no reason needed (skipped in distractor list…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the male reproductive system is responsible for the formation of sperms?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the female reproductive system carries the egg from the ovary to the uterus?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is true about the placenta?",
+      "reason": "the key is far longer than every distractor (110 vs 62 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "What is the main reason why complex multicellular organisms cannot be reconstructed from a fragment?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the female reproductive system prepares itself every month to receive a fertilised egg?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Why are variations useful for the survival of a species in case of drastic environmental changes?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the role of the seminal vesicles in the male reproductive system?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What happens to the egg after it is released from the ovary?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 4, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":1,\"stem\":\"Which of the following is an example of asexual reproduction in plants?\",\"options\":[\"B"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Why do organisms look similar according to the passage?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main advantage of sexual reproduction over asexual reproduction?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (distractor reason ski…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In which of the following organisms is reproduction through budding seen?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer, no misconception here (distractor reason ski…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the role of the testis in human beings?",
+      "reason": "the critic finds option 0 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is not a part of the female reproductive system in human beings?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is sexual reproduction more beneficial for species than asexual reproduction?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no misconception here (distractor reason ski…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a sign of sexual maturation in girls?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "The passage discusses the role of the uterus and placenta in the development of the embryo. Which of the following is true about the uterus?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a woman is using a copper-T, which of the following will it prevent?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"Confuses other contraceptive functions with copper-T's role …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is given a list of reproductive processes and is asked to identify the one that involves the creation of a DNA copy and additional cellular apparatus. Which process is this?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage states that variations are useful for ensuring the survival of the species. Which of the following scenarios best illustrates this concept?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student is told that the human reproductive system involves the introduction of sperm into the vagina of the female. Which of the following is the primary purpose of this process?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"The student may confuse the purpose of the process with the …\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "What is the main source of variations in populations of organisms?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main purpose of reproduction according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Why is it not possible to reconstruct the whole organism from a fragment in complex multicellular organisms?",
+      "reason": "near-duplicate of served question cmvgv7cpv052ogpfhlmirowql (cosine 0.921 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Why is the process of DNA copying essential for reproduction?",
+      "reason": "near-duplicate of served question cmvgw7d000576gpfh8cvj86nz (cosine 0.908 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

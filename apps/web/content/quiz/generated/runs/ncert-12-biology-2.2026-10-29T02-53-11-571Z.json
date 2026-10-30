@@ -1,0 +1,657 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T02:53:11.571Z",
+  "finishedAt": "2026-10-29T03:02:42.067Z",
+  "seconds": 570,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo102.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 2 — Human Reproduction",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, sample question paper, 2022-23]\n31. Trace the events from copulation to zygote formation in a human female. 5\nOR\nTrace the development of a megaspore mother cell to the formation of mature\nembryo sac in a flowering plant.",
+      "[CBSE Class XII Biology, sample question paper, 2026-27]\n13. to 16 consist of two statements – Assertion (A) and Reason (R). Answer\nthese questions selecting the appropriate option given below:\nA. Both A and R are true and R is the correct explanation of A.\nB. Both A and R are true but R is not the correct explanation of A.\nC. A is true but R is false.\nD. A is False but R is true.\n13 Assertion (A): Spermatogenesis is an ongoing process throughout the 1\nreproductive life of a human male, while oogenesis is a discontinuous process.\nReason (R): Oogenesis begins during the embryonic stage, gets arrested at\nprophase-I, resumes after puberty, and is arrested again at metaphase-II.",
+      "[CBSE Class XII Biology, sample question paper, 2025-26]\n23. Given below is a figure showing transport of ovum, fertilisation and 3\npassage of growing embryo through fallopian tube in a human female.\nAnswer the questions that follow:\n(i) What will be the ploidy of cells shown in (a) and (c) stage in the figure\ngiven below?\n(ii) What will happen if component L as shown in the figure (g) given\nbelow does not attach properly to the endometrium?\n(iii) In a pregnant mother (case X), during early pregnancy, the fertilised\negg splits into two embryos at stage C shown in the figure given\nbelow, resulting in the formation of twins. Will the genome of cells\nof these two embryos exhibit variation? Justify your answer.\n- - - - - - - - - - - - - - - - - - -\nFo",
+      "[CBSE Class XII Biology, marking scheme, 2024-25]\n31. Student to attempt either option A or B. 5\nA.\n(i)\n Sperm count decreases, spermatogenesis is impaired;\n Spermatids do not get nourishment to develop into spermatozoa\nthus spermiogenesis will be affected;\n Leydig cells synthesize and secrete androgen hormones (like\ntestosterone) so secretion of androgens will be affected.\n(0.5 x 3 = 1.5)\n(ii) Spremiation (0.5)\n(iii) Artificial insemination (AI) technique. In this technique, the semen\ncollected either from the husband or a healthy donor is artificially\nintroduced either into the vagina or into the uterus (IUI – intra –\nuterine insemination) of the female.\nOR\nIntra cytoplasmic sperm injection (ICSI) is another specialised\nprocedure to fo"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 148105,
+      "in": 37,
+      "out": 33,
+      "rejects": 4,
+      "promptTokens": 43520,
+      "completionTokens": 8490
+    },
+    "critique": {
+      "calls": 37,
+      "ms": 224182,
+      "in": 33,
+      "out": 24,
+      "rejects": 9,
+      "promptTokens": 16860,
+      "completionTokens": 6419
+    },
+    "solver": {
+      "calls": 147,
+      "ms": 61788,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 23512,
+      "completionTokens": 1371
+    },
+    "form": {
+      "calls": 13,
+      "ms": 53184,
+      "in": 23,
+      "out": 17,
+      "rejects": 6,
+      "promptTokens": 10552,
+      "completionTokens": 1745
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 47,
+      "ms": 8500,
+      "in": 17,
+      "out": 13,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 532268,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 31846,
+      "completionTokens": 16420
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 4,
+    "4": 1,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 7,
+  "needsFigure": 2,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which part of the female reproductive system is also called the womb?",
+      "ms": {
+        "draft": 3144,
+        "critique": 6547
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the process of formation of a mature female gamete?",
+      "ms": {
+        "draft": 3144,
+        "critique": 5750
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the female reproductive system, which part is responsible for collecting the ovum after ovulation?",
+      "ms": {
+        "draft": 11525,
+        "critique": 7006,
+        "solver": 1199,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a primary spermatocyte completes meiosis I, how many haploid cells are formed?",
+      "ms": {
+        "draft": 3144,
+        "critique": 6847
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the female reproductive system, which layer of the uterus undergoes cyclical changes during the menstrual cycle?",
+      "ms": {
+        "draft": 3144,
+        "critique": 5676
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason the secondary oocyte retains most of the cytoplasm during meiosis?",
+      "ms": {
+        "draft": 3876,
+        "critique": 5201,
+        "solver": 1451,
+        "form": 2456
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what happens to the corpus luteum if the ovum is not fertilised?",
+      "ms": {
+        "draft": 3876,
+        "critique": 7207,
+        "solver": 1185,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a key difference between spermatogenesis and oogenesis as described in the passage?",
+      "ms": {
+        "draft": 3876,
+        "critique": 8180,
+        "solver": 1430
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A human zygote is formed after the fusion of a sperm and an ovum. How many chromosomes will the zygote have?",
+      "ms": {
+        "draft": 4934,
+        "critique": 9228,
+        "solver": 13249,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many chromosomes will be present in the zygote formed after fertilization in humans?",
+      "ms": {
+        "draft": 4419,
+        "critique": 6604
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What term describes the type of reproduction in humans where the young are born alive?",
+      "ms": {
+        "draft": 3486,
+        "critique": 6605
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of reproduction do humans undergo?",
+      "ms": {
+        "draft": 3486,
+        "critique": 6987
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of the placenta in human pregnancy?",
+      "ms": {
+        "draft": 4419,
+        "critique": 6430,
+        "solver": 575,
+        "form": 3587
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a fertilized egg splits into two embryos at stage C, what will be the genetic relationship between the two embryos?",
+      "ms": {
+        "draft": 4419,
+        "critique": 6078,
+        "solver": 1216,
+        "form": 3508
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the primary oocyte when it develops into a tertiary follicle?",
+      "ms": {
+        "draft": 7937,
+        "critique": 6389
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the female reproductive system is described as having a narrow lumen and joining the uterus?",
+      "ms": {
+        "draft": 4264,
+        "critique": 6100
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the male reproductive system is responsible for storing and transporting sperm?",
+      "ms": {
+        "draft": 11525,
+        "critique": 4704,
+        "solver": 2062,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a part of the female external genitalia?",
+      "ms": {
+        "draft": 3144,
+        "critique": 5390,
+        "solver": 1629,
+        "form": 2163
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the fluid-filled cavity that forms in the tertiary follicle during oogenesis?",
+      "ms": {
+        "draft": 3876,
+        "critique": 4975,
+        "solver": 1339,
+        "form": 3486
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a sperm carrying a Y chromosome fertilizes an ovum, what will be the sex of the resulting baby?",
+      "ms": {
+        "draft": 4934,
+        "critique": 6585,
+        "solver": 1121,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of Sertoli cells in the testes?",
+      "ms": {
+        "draft": 11525,
+        "critique": 4276,
+        "solver": 1209,
+        "form": 0,
+        "translation": 32211
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the acrosome in a sperm?",
+      "ms": {
+        "draft": 3144,
+        "critique": 5955,
+        "solver": 1351,
+        "form": 2585,
+        "translation": 36574
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the scrotum is unable to maintain a lower temperature for the testes, what would most likely happen?",
+      "ms": {
+        "draft": 11525,
+        "critique": 4674,
+        "solver": 1292,
+        "form": 0,
+        "translation": 38983
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens if the component L, as shown in the figure, does not attach properly to the endometrium?",
+      "ms": {
+        "draft": 4419,
+        "critique": 6785,
+        "solver": 9595,
+        "form": 2609,
+        "translation": 40949
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A human zygote is formed after the fusion of male and female gametes. What is the ploidy of the zygote?",
+      "ms": {
+        "draft": 21693,
+        "critique": 5260,
+        "solver": 4124,
+        "form": 1,
+        "translation": 33182
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a woman's menstrual cycle is 30 days long, when is ovulation most likely to occur?",
+      "ms": {
+        "draft": 3876,
+        "critique": 6810,
+        "solver": 1611,
+        "form": 3136,
+        "translation": 29454
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the female reproductive system is responsible for collecting the ovum after ovulation?",
+      "ms": {
+        "draft": 7138,
+        "critique": 5159,
+        "solver": 1145,
+        "form": 0,
+        "translation": 30988
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A man is diagnosed with a condition where his Leydig cells are not functioning properly. What would be the most likely consequence?",
+      "ms": {
+        "draft": 11525,
+        "critique": 7073,
+        "solver": 1491,
+        "form": 0,
+        "translation": 43173
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A male human produces sperm throughout his reproductive life, while a female human produces eggs in a discontinuous manner. What is the main reason for this difference?",
+      "ms": {
+        "draft": 21693,
+        "critique": 6569,
+        "solver": 1285,
+        "form": 0,
+        "translation": 67096
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a woman does not experience menstruation, what could be a possible reason?",
+      "ms": {
+        "draft": 3876,
+        "critique": 7681,
+        "solver": 16577,
+        "form": 1883,
+        "translation": 35535
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A female is found to have a mutation that prevents the proper development of the oviducts. What would be the most immediate effect on her reproductive system?",
+      "ms": {
+        "draft": 11525,
+        "critique": 6431,
+        "solver": 3358,
+        "form": 0,
+        "translation": 38707
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the inner cell mass of the blastocyst contains stem cells, what is the significance of this in embryonic development?",
+      "ms": {
+        "draft": 4934,
+        "critique": 6666,
+        "solver": 1850,
+        "form": 0,
+        "translation": 49999
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In a female, the formation of a secondary oocyte is followed by a second meiotic division. Under what condition does this second division complete?",
+      "ms": {
+        "draft": 21693,
+        "critique": 5469,
+        "solver": 920,
+        "form": 0,
+        "translation": 52431
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "The placenta is formed by the interaction between the chorionic villi and the uterine tissue. What is the main function of the placenta?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the female reproductive system is also called the womb?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the process of formation of a mature female gamete?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of the female reproductive system, which part is responsible for collecting the ovum after ovulation?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a primary spermatocyte completes meiosis I, how many haploid cells are formed?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the female reproductive system, which layer of the uterus undergoes cyclical changes during the menstrual cycle?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main reason the secondary oocyte retains most of the cytoplasm during meiosis?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Believes the oocyte's mobility depends on cytoplasm, which i…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what happens to the corpus luteum if the ovum is not fertilised?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Believes the corpus luteum can divide, which is not mentione…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is a key difference between spermatogenesis and oogenesis as described in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A human zygote is formed after the fusion of a sperm and an ovum. How many chromosomes will the zygote have?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Where does fertilisation occur in humans?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the ploidy of male and female gametes in humans?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term for the release of an ovum from a mature follicle?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How many chromosomes will be present in the zygote formed after fertilization in humans?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What term describes the type of reproduction in humans where the young are born alive?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of reproduction do humans undergo?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the role of the placenta in human pregnancy?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a fertilized egg splits into two embryos at stage C, what will be the genetic relationship between the two embryos?",
+      "reason": "figure: figure spec refused: spec.parts: plantCell has no label \"cell\" (it has cellWall, membrane, nucleus, vacuole, chloroplast, cytoplasm)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What happens to the primary oocyte when it develops into a tertiary follicle?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which part of the female reproductive system is described as having a narrow lumen and joining the uterus?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which part of the male reproductive system is responsible for storing and transporting sperm?",
+      "reason": "near-duplicate of served question cmvlo7lx50ng0gpfhd26n48ql (cosine 0.963 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a part of the female external genitalia?",
+      "reason": "near-duplicate of served question cmvpby2bl091bgp21ezz23sl6 (cosine 0.950 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the fluid-filled cavity that forms in the tertiary follicle during oogenesis?",
+      "reason": "near-duplicate of served question cmvpby2bi090zgp21aou54uq5 (cosine 0.953 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a sperm carrying a Y chromosome fertilizes an ovum, what will be the sex of the resulting baby?",
+      "reason": "near-duplicate of served question cmvlo7lx10nfigpfhcy2l2n8n (cosine 0.964 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

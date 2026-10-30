@@ -1,0 +1,677 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T14:23:28.572Z",
+  "finishedAt": "2026-10-28T14:37:04.092Z",
+  "seconds": 816,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo110.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 10 — Cell Cycle and Cell Division",
+    "edition": "Reprint 2026-27",
+    "chunks": 12,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2025 — question paper]\n34. (2 points) A geneticist was studying the cell cycle in the root tip cells of a plant. She\nmicroscopically observed that 15 cells were in prophase, 7 cells were in prometaphase, 8\ncells were in metaphase, 7 were in anaphase, 5 were in telophase and 88 were in interphase.\nThe overall cell cycle for this particular species was recorded to be 23 hours. The time span\nthat the cells are in the mitotic phase is:\nNote that the final answer for the question will be given marks only if calculations are shown\nin the box given and the final answer is filled in the blank.",
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n1. C. Mitotic division of nucleus of generative cell 1",
+      "[INBO 2011 — solutions or answer key]\nINDIAN NATIONAL BIOLOGY OLYMPIAD- 2011\nANSWER SHEET\nTime: 2 hrs\nCentre:\n® Please write your INBO roll number on the top of this page in the space provided.\n® Please fill the top half of the Performance Card attached to this answer sheet. Do not\ndetach the Performance Card.\n® Please fill in all the data below correctly. The contact details provided here would be\nused for all further correspondence.\nFull Name (Block Letters):\nMale / Female Date of Birth (dd/mm/yyyy):\nResidential address (include city and PIN code):\nResidential Phone No. with STD Code:\nMobile number:\nE-mail address:\nClass: X / XI/ XII Board: ICSE / CBSE / State Board / Other\nI have read the Procedural Rules of INBO and agree to",
+      "[NSEB 2016 — question paper]\n27. Study the given illustration of a cell division\nIn which organ of the human body would this process take\nplace?\na) Liver b) Spleen\nc) Bone marrow d) Gonad\nB221"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 267685,
+      "in": 37,
+      "out": 35,
+      "rejects": 2,
+      "promptTokens": 33605,
+      "completionTokens": 10141
+    },
+    "critique": {
+      "calls": 38,
+      "ms": 354575,
+      "in": 35,
+      "out": 24,
+      "rejects": 11,
+      "promptTokens": 17515,
+      "completionTokens": 6764
+    },
+    "solver": {
+      "calls": 142,
+      "ms": 102948,
+      "in": 24,
+      "out": 23,
+      "rejects": 1,
+      "promptTokens": 22663,
+      "completionTokens": 1350
+    },
+    "form": {
+      "calls": 12,
+      "ms": 55152,
+      "in": 23,
+      "out": 17,
+      "rejects": 6,
+      "promptTokens": 4971,
+      "completionTokens": 1027
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 67,
+      "ms": 16533,
+      "in": 17,
+      "out": 13,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 783178,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 30004,
+      "completionTokens": 15051
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "6": 4
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "A geneticist observed 15 cells in prophase, 7 in prometaphase, 8 in metaphase, 7 in anaphase, 5 in telophase, and 88 in interphase. If the total cell cycle is 23 hours, how long is the mitotic phase?",
+      "ms": {
+        "draft": 5812,
+        "critique": 9744
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which phase of the cell cycle is described as the resting phase but is actually the time when the cell is preparing for division?",
+      "ms": {
+        "draft": 5812,
+        "critique": 8796,
+        "solver": 2734,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to chromosomes during anaphase?",
+      "ms": {
+        "draft": 12230,
+        "critique": 10412
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a key feature of metaphase in mitosis?",
+      "ms": {
+        "draft": 12230,
+        "critique": 12544
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell is observed to have chromosomes aligned at the metaphase plate, which phase of mitosis is it in?",
+      "ms": {
+        "draft": 12230,
+        "critique": 10721
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a plant root tip cell, 15 cells were in prophase, 7 in prometaphase, 8 in metaphase, 7 in anaphase, 5 in telophase, and 88 in interphase. The total cell cycle time is 23 hours. What is the time spent in the mitotic phase?",
+      "ms": {
+        "draft": 12230,
+        "critique": 8844
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of kinetochores during metaphase?",
+      "ms": {
+        "draft": 12230,
+        "critique": 10288
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key difference between meiosis I and meiosis II?",
+      "ms": {
+        "draft": 4711,
+        "critique": 9358,
+        "solver": 17883,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the main reason meiosis is important for sexually reproducing organisms?",
+      "ms": {
+        "draft": 4711,
+        "critique": 9499,
+        "solver": 2369,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which phase of the cell cycle is characterised by the alignment of chromosomes at the equatorial plate?",
+      "ms": {
+        "draft": 7212,
+        "critique": 11711
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A geneticist observed 15 cells in prophase, 7 in prometaphase, 8 in metaphase, 7 in anaphase, 5 in telophase, and 88 in interphase. The total cell cycle was 23 hours. What is the time spent in the mitotic phase?",
+      "ms": {
+        "draft": 7212,
+        "critique": 12014
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed 150 cells in a sample of root tip tissue. Out of these, 30 cells were in prophase, 10 in metaphase, 5 in anaphase, and 5 in telophase. The total cell cycle time was recorded as 12 hours. What is the approximate time spent by the cells in mitosis?",
+      "ms": {
+        "draft": 17730,
+        "critique": 11675
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which phase of meiosis is marked by the dissolution of the synaptonemal complex and the formation of chiasmata?",
+      "ms": {
+        "draft": 6971,
+        "critique": 9413,
+        "solver": 2614,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A scientist observed that 20 out of 100 cells were in prophase, 15 in metaphase, 10 in anaphase, and 5 in telophase. If the total cell cycle time is 10 hours, how many hours do the cells spend in mitosis?",
+      "ms": {
+        "draft": 6971,
+        "critique": 14566
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a cell has 2n = 46 chromosomes, what will be the number of chromosomes in each gamete after meiosis?",
+      "ms": {
+        "draft": 6971,
+        "critique": 12132,
+        "solver": 21744,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which phase of mitosis is characterised by the alignment of chromosomes at the equator of the cell?",
+      "ms": {
+        "draft": 8055,
+        "critique": 9742
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a cell has a cell cycle of 23 hours and 88 out of 120 cells are in interphase, what is the approximate duration of the mitotic phase?",
+      "ms": {
+        "draft": 8055,
+        "critique": 9618,
+        "solver": 2477
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe the sequence of events by which a cell duplicates its genome, synthesizes other cell components, and divides into two daughter cells?",
+      "ms": {
+        "draft": 13709,
+        "critique": 7324,
+        "solver": 1542,
+        "form": 3098
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the sequence of events by which a cell duplicates its genome, synthesises the other constituents of the cell, and eventually divides into two daughter cells?",
+      "ms": {
+        "draft": 5812,
+        "critique": 6728,
+        "solver": 1919,
+        "form": 6893
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell has 2C DNA content in the G1 phase, what will be its DNA content after the S phase?",
+      "ms": {
+        "draft": 5812,
+        "critique": 7490,
+        "solver": 2713,
+        "form": 6340
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which phase of the cell cycle involves DNA replication?",
+      "ms": {
+        "draft": 17730,
+        "critique": 7001,
+        "solver": 1213,
+        "form": 5493
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which phase of the cell cycle do homologous chromosomes pair up and undergo crossing over?",
+      "ms": {
+        "draft": 17730,
+        "critique": 8317,
+        "solver": 1600,
+        "form": 5932
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which phase of the cell cycle is known as the period of preparation for cell division?",
+      "ms": {
+        "draft": 17730,
+        "critique": 7001,
+        "solver": 2557,
+        "form": 5337,
+        "translation": 61771
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which phase of the cell cycle is described as the phase between two successive M phases?",
+      "ms": {
+        "draft": 5812,
+        "critique": 9047,
+        "solver": 2635,
+        "form": 3095,
+        "translation": 61132
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between mitosis and meiosis?",
+      "ms": {
+        "draft": 17730,
+        "critique": 7334,
+        "solver": 3396,
+        "form": 3504,
+        "translation": 70013
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the result of crossing over during meiosis?",
+      "ms": {
+        "draft": 6971,
+        "critique": 11271,
+        "solver": 2020,
+        "form": 0,
+        "translation": 48262
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a cell has 46 chromosomes in its nucleus, how many chromosomes will each daughter cell have after mitosis?",
+      "ms": {
+        "draft": 17730,
+        "critique": 9475,
+        "solver": 2687,
+        "form": 4247,
+        "translation": 55031
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which phase of meiosis is characterised by the pairing of homologous chromosomes?",
+      "ms": {
+        "draft": 4711,
+        "critique": 10047,
+        "solver": 4122,
+        "form": 0,
+        "translation": 52846
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which phase of meiosis do the homologous chromosomes align on the equatorial plate?",
+      "ms": {
+        "draft": 4711,
+        "critique": 8161,
+        "solver": 2644,
+        "form": 0,
+        "translation": 38116
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of recombination nodules during meiosis?",
+      "ms": {
+        "draft": 4711,
+        "critique": 10235,
+        "solver": 2097,
+        "form": 0,
+        "translation": 62493
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a cell is in the phase of meiosis where sister chromatids separate and move to opposite poles, which phase is it in?",
+      "ms": {
+        "draft": 4711,
+        "critique": 7815,
+        "solver": 2583,
+        "form": 0,
+        "translation": 47732
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In which of the following tissues would mitotic cell division most likely occur in a human body?",
+      "ms": {
+        "draft": 5812,
+        "critique": 9379,
+        "solver": 1916,
+        "form": 3261,
+        "translation": 64574
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is meiosis called reduction division, and how does it contribute to the restoration of the chromosome number in sexually reproducing organisms?",
+      "ms": {
+        "draft": 7212,
+        "critique": 7305,
+        "solver": 1087,
+        "form": 0,
+        "translation": 79631
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why cytokinesis in plant cells is different from that in animal cells?",
+      "ms": {
+        "draft": 12230,
+        "critique": 8597,
+        "solver": 22493,
+        "form": 5084,
+        "translation": 86585
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is meiosis essential for sexual reproduction?",
+      "ms": {
+        "draft": 6971,
+        "critique": 10457,
+        "solver": 2854,
+        "form": 0,
+        "translation": 49222
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the primary function of the S phase in the cell cycle?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A geneticist observed 15 cells in prophase, 7 in prometaphase, 8 in metaphase, 7 in anaphase, 5 in telophase, and 88 in interphase. If the total cell cycle is 23 hours, how long is the mitotic phase?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which phase of the cell cycle is described as the resting phase but is actually the time when the cell is preparing for division?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens to chromosomes during anaphase?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a key feature of metaphase in mitosis?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a cell is observed to have chromosomes aligned at the metaphase plate, which phase of mitosis is it in?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a plant root tip cell, 15 cells were in prophase, 7 in prometaphase, 8 in metaphase, 7 in anaphase, 5 in telophase, and 88 in interphase. The total cell cycle time is 23 hours. What is the time spent in the mitotic phase?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of kinetochores during metaphase?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key difference between meiosis I and meiosis II?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (122 vs 74 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the main reason meiosis is important for sexually reproducing organisms?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which phase of the cell cycle is characterised by the alignment of chromosomes at the equatorial plate?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A geneticist observed 15 cells in prophase, 7 in prometaphase, 8 in metaphase, 7 in anaphase, 5 in telophase, and 88 in interphase. The total cell cycle was 23 hours. What is the time spent in the mitotic phase?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following is a key event of anaphase?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student observed 150 cells in a sample of root tip tissue. Out of these, 30 cells were in prophase, 10 in metaphase, 5 in anaphase, and 5 in telophase. The total cell cycle time was recorded as 12 hours. What is the approximate time spent by the cells in mitosis?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which phase of meiosis is marked by the dissolution of the synaptonemal complex and the formation of chiasmata?",
+      "reason": "figure: figure spec refused: spec.parts: plantCell has no label \"diplotene\" (it has cellWall, membrane, nucleus, vacuole, chloroplast, cytoplasm)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A scientist observed that 20 out of 100 cells were in prophase, 15 in metaphase, 10 in anaphase, and 5 in telophase. If the total cell cycle time is 10 hours, how many hours do the cells spend in mitosis?",
+      "reason": "the critic finds option 2 correct, the key is 3; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "If a cell has 2n = 46 chromosomes, what will be the number of chromosomes in each gamete after meiosis?",
+      "reason": "options 2 and 3 are the same (\"92\"); options 2 and 3 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which phase of mitosis is characterised by the alignment of chromosomes at the equator of the cell?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a cell has a cell cycle of 23 hours and 88 out of 120 cells are in interphase, what is the approximate duration of the mitotic phase?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the term used to describe the sequence of events by which a cell duplicates its genome, synthesizes other cell components, and divides into two daughter cells?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"not the term used in the passage…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term used to describe the sequence of events by which a cell duplicates its genome, synthesises the other constituents of the cell, and eventually divides into two daughter cells?",
+      "reason": "near-duplicate of served question cmvhkouno09d2gpfhrzwusss5 (cosine 0.901 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a cell has 2C DNA content in the G1 phase, what will be its DNA content after the S phase?",
+      "reason": "near-duplicate of served question cmvhkouo109dwgpfhkrmzlij0 (cosine 0.962 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which phase of the cell cycle involves DNA replication?",
+      "reason": "near-duplicate of served question cmvoo6cw9073xgp21010z4jib (cosine 0.949 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In which phase of the cell cycle do homologous chromosomes pair up and undergo crossing over?",
+      "reason": "near-duplicate of batch item \"Which phase of meiosis is characterised by the pai…\" (cosine 0.901 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

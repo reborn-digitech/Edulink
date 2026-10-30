@@ -21,47 +21,350 @@
   "board": "NCERT",
   "book": "Chemistry Part-I",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-23T06:39:23.393Z",
+  "generatedAt": "2026-10-28T12:16:16.906Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "What is the term used to describe the equilibrium between a liquid and its vapour?",
+      "stem": "In a heterogeneous equilibrium, which of the following is true about the concentration of pure solids or liquids?",
       "choices": [
-        "Solid-liquid equilibrium",
-        "Gas-liquid equilibrium",
-        "Solid-gas equilibrium",
-        "Liquid-vapour equilibrium"
+        "It varies with the amount present",
+        "It is constant regardless of the amount present",
+        "It depends on the temperature",
+        "It is always zero"
       ],
-      "answerIndex": 3,
-      "solution": "The equilibrium between a liquid and its vapour is called liquid-vapour equilibrium. The other options refer to different types of equilibrium not involving a liquid and its vapour.",
+      "answerIndex": 1,
+      "solution": "The concentration of pure solids or liquids remains constant regardless of the amount present because their molar concentrations do not change during the reaction. This makes the second option correct. The first option is wrong because concentration is not affected by the quantity. The third and fourth options are incorrect because temperature does not alter their concentration, and their concentration is not zero.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक द्रव और इसकी वाष्प के बीच साम्य के लिए प्रयुक्त शब्द क्या है?",
+          "stem": "असमांगी साम्य में, शुद्ध ठोस या द्रव की सांद्रता के बारे में निम्नलिखित में से कौन-सा सत्य है?",
           "choices": [
-            "ठोस-द्रव साम्य",
-            "गैस-द्रव साम्य",
-            "ठोस-गैस साम्य",
-            "द्रव-वाष्प साम्य"
+            "यह उपस्थित मात्रा पर बदलता रहता है",
+            "यह उपस्थित मात्रा पर निर्भर नहीं करता है",
+            "यह तापमान पर निर्भर करता है",
+            "यह हमेशा शून्य होता है"
           ],
-          "solution": "एक द्रव और इसकी वाष्प के बीच साम्य को द्रव-वाष्प साम्य कहा जाता है। अन्य विकल्पों में द्रव और इसकी वाष्प के बीच साम्य शामिल नहीं है।",
+          "solution": "शुद्ध ठोस या द्रव की सांद्रता उपस्थित मात्रा पर निर्भर नहीं करती क्योंकि अभिक्रिया के दौरान उनके मोलर सांद्रता बदल नहीं जाती है। इस कारण दूसरा विकल्प सही है। पहला विकल्प गलत है क्योंकि सांद्रता मात्रा पर प्रभावित नहीं होती है। तीसरा और चौथा विकल्प गलत हैं क्योंकि तापमान उनकी सांद्रता को नहीं बदलता है और उनकी सांद्रता शून्य नहीं होती है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and the solution are correctly translated and maintain the intended scientific concepts.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "तरल आणि त्याच्या वाफ दरम्यानच्या समतोलाला कोणते नाव दिले जाते?",
+          "stem": "असमान साम्यावस्थेमध्ये, शुद्ध घन पदार्थांच्या किंवा द्रवांच्या सांद्रतेबद्दल खालीलपैकी कोणते खरे आहे?",
           "choices": [
-            "ठोस-तरल समतोल",
-            "वायू-तरल समतोल",
-            "ठोस-वायू समतोल",
-            "तरल-वाफ समतोल"
+            "त्यांच्या उपलब्ध राशीवर बदलते",
+            "त्यांच्या उपलब्ध राशीवर अविचलित राहते",
+            "तापमानावर अवलंबून असते",
+            "ती नेहमी शून्य असते"
           ],
-          "solution": "तरल आणि त्याच्या वाफ दरम्यानच्या समतोलाला तरल-वाफ समतोल म्हणतात. इतर विकल्पांमध्ये तरल आणि त्याच्या वाफ दरम्यानचा समतोल समाविष्ट नसतो.",
+          "solution": "शुद्ध घन पदार्थांच्या किंवा द्रवांच्या सांद्रता उपलब्ध राशीवर अविचलित राहते कारण त्यांची मोलार सांद्रता प्रतिक्रियेदरम्यान बदलत नाही. हे दुसरा विकल्प बरोबर आहे. पहिला विकल्प चूक आहे कारण सांद्रता मात्रावर प्रभावित होत नाही. तिसरा आणि चौथा विकल्प चूक आहेत कारण तापमान त्यांच्या सांद्रतेवर बदल करत नाही आणि त्यांची सांद्रता शून्य नसते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the behavior of solids and liquids with gases",
+        null,
+        "Incorrectly assumes that concentration depends on amount",
+        "Misunderstands the concept of pure substances in equilibrium equations"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the concentration of pure solids and liquids remains constant regardless of the amount present in a heterogeneous equilibrium. The author's reasoning aligns with standard chemical principles.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 17,
+          "pageStart": 12,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 18,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 19,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T12:16:16.906Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the significance of the double half arrows in a chemical equation representing equilibrium?",
+      "choices": [
+        "They indicate the reaction is irreversible",
+        "They indicate that the reaction occurs in one direction only",
+        "They indicate that the reaction is at equilibrium",
+        "They indicate that the reaction is not balanced"
+      ],
+      "answerIndex": 2,
+      "solution": "The double half arrows in a chemical equation indicate that the reaction is at equilibrium, with both forward and reverse reactions occurring simultaneously. The other options misinterpret the meaning of the arrows. Irreversibility, one-directional reactions, and unbalanced reactions are not represented by double half arrows.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "रासायनिक समीकरण में साम्य का प्रतिनिधित्व करते समय दोहरे अर्ध तीर का महत्व क्या है?",
+          "choices": [
+            "वे अभिक्रिया अनुत्क्रमणीय है का संकेत देते हैं",
+            "वे अभिक्रिया केवल एक दिशा में होती है का संकेत देते हैं",
+            "वे अभिक्रिया साम्य में है का संकेत देते हैं",
+            "वे अभिक्रिया असंतुलित है का संकेत देते हैं"
+          ],
+          "solution": "रासायनिक समीकरण में दोहरे अर्ध तीर अभिक्रिया साम्य में है, जहां अग्र एवं प्रतिलोम अभिक्रियाएं समान रूप से होती हैं। अन्य विकल्प तीर के अर्थ की गलत व्याख्या करते हैं। अनुत्क्रमणीयता, एक दिशा में अभिक्रिया एवं असंतुलित अभिक्रिया दोहरे अर्ध तीर द्वारा प्रतिनिधित्व नहीं की जाती है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "रासायनिक समीकरणातील संतुलन दर्शविणार्‍या दुहेरी अर्धा तीरांचा अर्थ काय आहे?",
+          "choices": [
+            "ते प्रतिक्रिया अनुत्क्रमणीय आहे असे दर्शवितात",
+            "ते प्रतिक्रिया एका दिशेने घडते असे दर्शवितात",
+            "ते प्रतिक्रिया संतुलनात आहे असे दर्शवितात",
+            "ते प्रतिक्रिया असंतुलित आहे असे दर्शवितात"
+          ],
+          "solution": "रासायनिक समीकरणातील दुहेरी अर्धा तीरांचा अर्थ असा आहे की प्रतिक्रिया संतुलनात आहे, जेथे आगाडी आणि पाठीमागे दोन्ही प्रतिक्रिया एकाच वेळी घडत असतात. इतर विकल्प तीरांचा अर्थ चुकीचा समजतात. अनुत्क्रमणीयता, एकदिशीय प्रतिक्रिया आणि असंतुलित प्रतिक्रिया दुहेरी अर्धा तीरांनी दर्शविल्या जात नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks the arrows indicate an irreversible reaction",
+        "Believes the reaction only goes in one direction",
+        null,
+        "Does not understand the significance of the arrows in equilibrium"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as double half arrows indeed indicate that a reaction is at equilibrium. The other options represent common misconceptions about the meaning of the arrows.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 3,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T12:16:16.906Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens to the vapour pressure of a liquid when it reaches equilibrium in a closed container?",
+      "choices": [
+        "It decreases continuously",
+        "It increases continuously",
+        "It becomes constant",
+        "It fluctuates unpredictably"
+      ],
+      "answerIndex": 2,
+      "solution": "When a liquid reaches equilibrium in a closed container, the vapour pressure becomes constant because the rate of evaporation equals the rate of condensation. The other options describe incorrect behaviors of vapour pressure during equilibrium. A decreasing or increasing vapour pressure would indicate that the system is not yet at equilibrium, and fluctuating pressure is not characteristic of a stable equilibrium state.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बंद पात्र में साम्यावस्था तक पहुंचे द्रव के वाष्प दाब पर क्या होता है?",
+          "choices": [
+            "यह लगातार घटता रहता है",
+            "यह लगातार बढ़ता रहता है",
+            "यह नियत हो जाता है",
+            "यह अनिश्चित रूप से उतार-चढ़ाव करता है"
+          ],
+          "solution": "जब कोई द्रव एक बंद पात्र में साम्यावस्था तक पहुंच जाता है, तो वाष्प दाब नियत हो जाता है क्योंकि वाष्पीकरण की दर संघनन की दर के बराबर हो जाती है। अन्य विकल्प वाष्प दाब के साम्यावस्था में गलत व्यवहार का वर्णन करते हैं। घटता या बढ़ता वाष्प दाब सूचित करता है कि प्रणाली अभी साम्यावस्था में नहीं है, और अनिश्चित रूप से उतार-चढ़ाव करना स्थिर साम्यावस्था की विशेषता नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, maintaining the intended scientific concepts and the correct answer position.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका बंद बरखान्यात द्रव पाणी संतुलन पावल्यावर त्याचा वाफ दाब काय होतो?",
+          "choices": [
+            "तो अविरतपणे कमी होतो",
+            "तो अविरतपणे वाढतो",
+            "तो अचूक राहतो",
+            "तो अपूर्वपणे विचलित होतो"
+          ],
+          "solution": "एका बंद बरखान्यात द्रव पाणी संतुलन पावल्यावर, वाफ दाब अचूक राहतो कारण बाष्पीभवनाचा दर व घनीभवनाचा दर समान होतो. इतर विकल्प संतुलनाच्या वेळी वाफ दाबाच्या चुकीच्या वर्तनाचे वर्णन करतात. घटता किंवा वाढता वाफ दाब संतुलनाच्या वेळी नसल्याचे सूचित करतो आणि अनिश्चित दाबाचा विचलन स्थिर संतुलनाच्या वैशिष्ट्यांचा नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific meaning, with appropriate Marathi terminology used for 'vapour pressure' and 'equilibrium'.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks vapour pressure keeps changing",
+        "Believes vapour pressure increases indefinitely",
+        null,
+        "Does not understand that equilibrium leads to a constant value"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed. The correct answer is 2, and the reasoning aligns with the principles of chemical equilibrium. The distractors reflect common misconceptions about vapor pressure and equilibrium.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 3,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T12:16:16.906Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "Which of the following statements best describes the dynamic nature of chemical equilibrium?",
+      "choices": [
+        "The reaction stops completely after reaching equilibrium",
+        "The concentrations of reactants and products change continuously",
+        "The forward and reverse reactions occur at different rates",
+        "The forward and reverse reactions occur at the same rate"
+      ],
+      "answerIndex": 3,
+      "solution": "The correct answer is that the forward and reverse reactions occur at the same rate. This is because dynamic equilibrium means that both the forward and reverse reactions are still taking place, but they happen at equal rates, leading to no net change in the concentrations of reactants and products. The incorrect options are wrong because they either suggest the reaction stops (which is not true) or that the rates are different (which contradicts the definition of equilibrium).",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कथन रासायनिक साम्य की गतिशील प्रकृति का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "साम्य तक पहुंचने के बाद अभिक्रिया पूरी तरह रुक जाती है",
+            "अभिकारकों और उत्पादों की सांद्रता लगातार बदलती रहती है",
+            "अग्र और प्रतिलोम अभिक्रियाएं अलग-अलग दरों पर होती हैं",
+            "अग्र और प्रतिलोम अभिक्रियाएं समान दरों पर होती हैं"
+          ],
+          "solution": "सही उत्तर यह है कि अग्र और प्रतिलोम अभिक्रियाएं समान दरों पर होती हैं। इसका कारण यह है कि गतिशील साम्य का अर्थ है कि अग्र और प्रतिलोम अभिक्रियाएं अभी भी हो रही हैं, लेकिन वे समान दरों पर होती हैं, जिसके कारण अभिकारकों और उत्पादों की सांद्रता में कोई शुद्ध परिवर्तन नहीं होता है। गलत विकल्प गलत हैं क्योंकि वे या तो अभिक्रिया के रुक जाने का सुझाव देते हैं (जो सही नहीं है) या दरों के अलग होने का सुझाव देते हैं (जो साम्य के परिभाषा के विरोधी है)।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for chemical equilibrium.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालील पैकी कोणता विधान रासायनिक संतुलनाच्या डायनॅमिक स्वभावाचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "संतुलन प्राप्त केल्यानंतर प्रतिक्रिया पूर्णपणे थांबते",
+            "प्रतिक्रियक आणि उत्पादकांच्या सांद्रता सतत बदलत असतात",
+            "उघड आणि मागे दिशेने प्रतिक्रिया वेगाने होतात",
+            "उघड आणि मागे दिशेने प्रतिक्रिया समान वेगाने होतात"
+          ],
+          "solution": "उघड आणि मागे दिशेने प्रतिक्रिया समान वेगाने होतात हे योग्य उत्तर आहे. हे डायनॅमिक संतुलनाचा अर्थ आहे की उघड आणि मागे दिशेने प्रतिक्रिया अजूनही होत असतात, परंतु ते समान वेगाने होतात, ज्यामुळे प्रतिक्रियक आणि उत्पादकांच्या सांद्रतेत कोणताही नेट बदल होत नाही. अयोग्य विकल्प चुकीचे आहेत कारण ते असे सूचित करतात की प्रतिक्रिया थांबते (जे खरे नाही) किंवा वेग वेगळे आहेत (जे संतुलनच्या व्याख्येला विरोधी आहे).",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for chemical equilibrium.",
           "flag": null
@@ -72,9 +375,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "This refers to the equilibrium between a solid and a liquid",
-        "Confuses the terms 'vapour' and 'gas', thinking they are the same phase",
-        "This refers to the equilibrium between a solid and a gas",
+        "Confuses equilibrium with a stopped reaction",
+        "Thinks that equilibrium means continuous change in concentrations",
+        "Believes that one reaction is faster than the other in equilibrium conditions",
         null
       ],
       "solverAnswers": [
@@ -85,467 +388,173 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the correct answer is clearly 3. The distractors are plausible and based on common misconceptions, such as confusing vapour with gas or misunderstanding the phases involved in different types of equilibrium.",
+      "critique": "The correct answer is 3, as dynamic equilibrium involves equal forward and reverse reaction rates. The other options reflect common misconceptions about equilibrium.",
       "sources": [
         {
           "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 1,
+          "ordinal": 8,
+          "pageStart": 5,
+          "pageEnd": 5,
           "headingPath": [
             "Chapter 6: EqUilibriUm"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 1,
-          "pageStart": 1,
-          "pageEnd": 1,
+          "ordinal": 9,
+          "pageStart": 5,
+          "pageEnd": 6,
           "headingPath": [
             "Chapter 6: EqUilibriUm"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 2,
-          "pageStart": 2,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 6: EqUilibriUm"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 3,
-          "pageStart": 2,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 6: EqUilibriUm"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T06:39:23.393Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which of the following best describes the state of a chemical reaction when it reaches equilibrium?",
-      "choices": [
-        "The reaction stops completely",
-        "The rate of the forward reaction is greater than the rate of the reverse reaction",
-        "The rate of the forward reaction is equal to the rate of the reverse reaction",
-        "The concentration of reactants is greater than the concentration of products"
-      ],
-      "answerIndex": 2,
-      "solution": "At equilibrium, the rates of the forward and reverse reactions are equal, leading to no net change in the concentrations of reactants and products. The reaction does not stop, so 'the reaction stops completely' is incorrect. 'The rate of the forward reaction is greater than the rate of the reverse reaction' is incorrect because the rates are equal. 'The concentration of reactants is greater than the concentration of products' is also incorrect as it depends on the reaction and the value of K.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा रासायनिक अभिक्रिया की अवस्था का सबसे अच्छा वर्णन करता है जब यह साम्यावस्था तक पहुंच जाती है?",
-          "choices": [
-            "अभिक्रिया पूरी तरह रुक जाती है",
-            "अग्र अभिक्रिया की दर प्रतिलोम अभिक्रिया की दर से अधिक होती है",
-            "अग्र अभिक्रिया की दर प्रतिलोम अभिक्रिया की दर के बराबर होती है",
-            "अभिकारकों की सांद्रता उत्पादों की सांद्रता से अधिक होती है"
-          ],
-          "solution": "साम्यावस्था पर, अग्र एवं प्रतिलोम अभिक्रियाओं की दरें बराबर होती हैं, जिसके कारण अभिकारकों एवं उत्पादों की सांद्रता में कोई शुद्ध परिवर्तन नहीं होता। अभिक्रिया रुक नहीं जाती है, अतः 'अभिक्रिया पूरी तरह रुक जाती है' गलत है। 'अग्र अभिक्रिया की दर प्रतिलोम अभिक्रिया की दर से अधिक होती है' भी गलत है क्योंकि दरें बराबर होती हैं। 'अभिकारकों की सांद्रता उत्पादों की सांद्रता से अधिक होती है' भी गलत है क्योंकि यह अभिक्रिया एवं K के मान पर निर्भर करता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and structure. All options and the solution are correctly translated and maintain their original intent and correctness.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते रासायनिक अभिक्रियेच्या साम्याच्या अवस्थेचे सर्वात चांगले वर्णन करते?",
-          "choices": [
-            "अभिक्रिया पूर्णपणे थांबते",
-            "उघड अभिक्रियेचा दर विलोम अभिक्रियेच्या दरापेक्षा जास्त असतो",
-            "उघड अभिक्रियेचा दर विलोम अभिक्रियेच्या दराबरोबर असतो",
-            "अभिकर्तांची एकाग्रता उत्पादकांच्या एकाग्रतेपेक्षा जास्त असते"
-          ],
-          "solution": "साम्यात, उघड आणि विलोम अभिक्रियांच्या दर समान असतात, ज्यामुळे अभिकर्ता आणि उत्पादकांच्या एकाग्रतेत कोणताही नेट बदल होत नाही. अभिक्रिया थांबत नाही, म्हणून 'अभिक्रिया पूर्णपणे थांबते' अयोग्य आहे. 'उघड अभिक्रियेचा दर विलोम अभिक्रियेच्या दरापेक्षा जास्त असतो' अयोग्य आहे कारण दर समान असतात. 'अभिकर्तांची एकाग्रता उत्पादकांच्या एकाग्रतेपेक्षा जास्त असते' देखील अयोग्य आहे कारण हे अभिक्रियेवर आणि K च्या मूल्यावर अवलंबून असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for chemical equilibrium.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses equilibrium with reaction stopping",
-        "Thinks the forward reaction is faster",
-        null,
-        "Believes equilibrium means more reactants than products"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 2, as equilibrium is defined by equal forward and reverse reaction rates. The author's reasoning for the distractors aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 11,
+          "ordinal": 10,
           "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 6: EqUilibriUm"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 12,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 6: EqUilibriUm"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 13,
-          "pageStart": 8,
-          "pageEnd": 9,
+          "pageEnd": 6,
           "headingPath": [
             "Chapter 6: EqUilibriUm"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T06:39:23.393Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the term used to describe the relationship between the concentrations of reactants and products in an equilibrium mixture?",
-      "choices": [
-        "Equilibrium constant",
-        "Reaction quotient",
-        "Rate constant",
-        "Equilibrium position"
-      ],
-      "answerIndex": 0,
-      "solution": "The equilibrium constant is the term used to describe the relationship between the concentrations of reactants and products at equilibrium. The reaction quotient is similar but is calculated at any point, not necessarily at equilibrium. The rate constant is a different concept related to the speed of the reaction, and activation energy is related to the energy required for a reaction to occur.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "साम्य मिश्रण में अभिकारकों और उत्पादों की सांद्रता के बीच संबंध को वर्णित करने के लिए किस शब्द का उपयोग किया जाता है?",
-          "choices": [
-            "साम्य स्थिरांक",
-            "अभिक्रिया भागफल",
-            "अभिक्रिया दर स्थिरांक",
-            "साम्य स्थिति"
-          ],
-          "solution": "साम्य स्थिरांक शब्द का उपयोग साम्य मिश्रण में अभिकारकों और उत्पादों की सांद्रता के बीच संबंध को वर्णित करने के लिए किया जाता है। अभिक्रिया भागफल समान होता है लेकिन यह किसी भी बिंदु पर गणना किया जाता है, आवश्यक नहीं कि साम्य पर हो। अभिक्रिया दर स्थिरांक अभिक्रिया की गति से संबंधित एक अलग अवधारणा है, और सक्रियण ऊर्जा अभिक्रिया होने के लिए आवश्यक ऊर्जा से संबंधित है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard terminology from Hindi-medium science textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "साम्यावस्थेमध्ये अभिकर्ता आणि उत्पादकांच्या सांद्रतांमधील संबंध वर्णन करण्यासाठी वापरलेला शब्द काय आहे?",
-          "choices": [
-            "साम्यावस्था स्थिरांक",
-            "अभिक्रिया भागाकार",
-            "दर स्थिरांक",
-            "साम्यावस्था स्थिती"
-          ],
-          "solution": "साम्यावस्था स्थिरांक हा साम्यावस्थेमध्ये अभिकर्ता आणि उत्पादकांच्या सांद्रतांमधील संबंध वर्णन करण्यासाठी वापरलेला शब्द आहे. अभिक्रिया भागाकार हा साम्यावस्थेपेक्षा वेगळ्या कोणत्याही बिंदूवर गणित केला जातो. दर स्थिरांक हा अभिक्रियाच्या गतीशी संबंधित एक वेगळा अर्थ आहे आणि सक्रियकरण ऊर्जा ही अभिक्रिया सुरू होण्यासाठी आवश्यक ऊर्जेशी संबंधित आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses equilibrium constant with reaction quotient",
-        "Confuses the equilibrium constant with the rate constant, thinking they describe the same relationship",
-        "Student confuses the concept of equilibrium with the specific concentrations at equilibrium"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the solution correctly identifies the equilibrium constant as the term describing the relationship between concentrations at equilibrium. The distractors reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 11,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 6: EqUilibriUm"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 12,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 6: EqUilibriUm"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 13,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 6: EqUilibriUm"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T06:39:23.393Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "What is the term used for the equilibrium constant of a sparingly soluble salt?",
-      "choices": [
-        "Solubility product",
-        "Dissociation constant",
-        "Ionization constant",
-        "Equilibrium constant"
-      ],
-      "answerIndex": 0,
-      "solution": "The term used for the equilibrium constant of a sparingly soluble salt is the solubility product, which specifically describes the equilibrium between a solid salt and its ions in solution. The dissociation constant refers to the extent of dissociation of a compound in solution, not specifically for sparingly soluble salts. The ionization constant relates to the strength of acids or bases, and the equilibrium constant is a general term that applies to all reactions, not specifically to salts.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक दुर्लभ विलेय लवण के साम्य स्थिरांक के लिए उपयोग किया जाने वाला शब्द क्या है?",
-          "choices": [
-            "विलेयता गुणनफल",
-            "अपघटन स्थिरांक",
-            "आयनीकरण स्थिरांक",
-            "साम्य स्थिरांक"
-          ],
-          "solution": "एक दुर्लभ विलेय लवण के साम्य स्थिरांक के लिए उपयोग किया जाने वाला शब्द विलेयता गुणनफल है, जो ठोस लवण और इसके आयनों के बीच विलयन में साम्य को विशेष रूप से वर्णित करता है। अपघटन स्थिरांक का अर्थ विलयन में एक यौगिक के अपघटन के विस्तार के बारे में होता है, जो विशेष रूप से दुर्लभ विलेय लवणों के लिए नहीं होता। आयनीकरण स्थिरांक अम्लों या क्षारों की शक्ति से संबंधित होता है, और साम्य स्थिरांक एक सामान्य शब्द है जो सभी अभिक्रियाओं पर लागू होता है, विशेष रूप से लवणों के लिए नहीं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question and solution, with appropriate technical terms used in a Hindi-medium context.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "अल्प विलेय लवणाच्या साम्य स्थिरांकासाठी वापरल्या जाणार्‍या शब्दाचे नाव काय आहे?",
-          "choices": [
-            "विलेयता उत्पादक",
-            "विघटन स्थिरांक",
-            "आयनीकरण स्थिरांक",
-            "साम्य स्थिरांक"
-          ],
-          "solution": "अल्प विलेय लवणाच्या साम्य स्थिरांकासाठी वापरल्या जाणार्‍या शब्दाचे नाव विलेयता उत्पादक आहे, जे घन लवण आणि त्याचे आयन द्रावणात साम्याचे वर्णन करते. विघटन स्थिरांक म्हणजे द्रावणात एखाद्या यौगिकाच्या विघटनाचा मापदंड आहे, जो विशेषतः अल्प विलेय लवणांसाठी नाही. आयनीकरण स्थिरांक अम्ल किंवा क्षारांच्या शक्तीशी संबंधित आहे, आणि साम्य स्थिरांक हा सामान्य शब्द आहे जो सर्व अभिक्रियांवर लागू होतो, विशेषतः लवणांवर नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks. The solution clearly explains why the other options are incorrect.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses solubility product with the equilibrium constant for dissociation of a weak acid or base",
-        "Confuses solubility product with the equilibrium constant for acid-base reactions",
-        "Confuses the general term 'equilibrium constant' with the specific term for sparingly soluble salts"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 'Solubility product' as it is the specific term for the equilibrium constant of a sparingly soluble salt. The other options are general terms that do not specifically apply to this case.",
-      "sources": [
-        {
-          "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 54,
-          "pageStart": 37,
-          "pageEnd": 37,
-          "headingPath": [
-            "Chapter 6: EqUilibriUm"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 55,
-          "pageStart": 37,
-          "pageEnd": 38,
-          "headingPath": [
-            "Chapter 6: EqUilibriUm"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 56,
-          "pageStart": 38,
-          "pageEnd": 39,
-          "headingPath": [
-            "Chapter 6: EqUilibriUm"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T06:39:23.393Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is true about the equilibrium constant of a reaction?",
-      "choices": [
-        "It changes with the initial concentrations of reactants",
-        "It depends on the path taken to reach equilibrium",
-        "It is a constant value at a given temperature",
-        "It varies with the volume of the reaction vessel"
-      ],
-      "answerIndex": 2,
-      "solution": "The equilibrium constant is a constant value at a given temperature and does not depend on the initial concentrations, the path taken, or the volume of the reaction vessel. It is determined by the stoichiometry of the reaction and the temperature. The other options are misconceptions about how equilibrium constants behave.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा अभिक्रिया के साम्य स्थिरांक के बारे में सत्य है?",
-          "choices": [
-            "यह अभिकारकों की प्रारंभिक सांद्रता पर बदल जाता है",
-            "यह साम्य तक पहुंचने के लिए लिए गए मार्ग पर निर्भर करता है",
-            "यह एक नियत मान है एक दिए गए ताप पर",
-            "यह अभिक्रिया पात्र के आयतन पर बदल जाता है"
-          ],
-          "solution": "साम्य स्थिरांक एक नियत मान है एक दिए गए ताप पर और प्रारंभिक सांद्रता, मार्ग या अभिक्रिया पात्र के आयतन पर निर्भर नहीं करता है। यह अभिक्रिया के स्टॉइकियोमेट्री और ताप पर निर्भर करता है। अन्य विकल्प साम्य स्थिरांक के व्यवहार के बारे में गलत धारणाएं हैं।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते अभिक्रियेच्या साम्य स्थिरांकाबद्दल खरे आहे?",
-          "choices": [
-            "ते अभिकर्मकांच्या प्रारंभिक गाढतेमुळे बदलते",
-            "ते साम्यापर्यंत पोहोचण्यासाठी घेतलेल्या मार्गावर अवलंबून असते",
-            "ते दिलेल्या तापमानावर एक स्थिर मूल्य असते",
-            "ते अभिक्रिया वास्तूच्या आयतनामुळे बदलते"
-          ],
-          "solution": "साम्य स्थिरांक दिलेल्या तापमानावर एक स्थिर मूल्य असतो आणि त्याचा प्रारंभिक गाढतेमुळे, मार्गावर अवलंबून नसतो किंवा अभिक्रिया वास्तूच्या आयतनामुळे बदलत नाही. तो अभिक्रियेच्या रासायनिक समीकरणावर आणि तापमानावर अवलंबून असतो. इतर विकल्प साम्य स्थिरांकाच्या कार्यपद्धतीबद्दल चूकीचे धारणा आहेत.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terminology consistent with Marathi-medium science education.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses equilibrium constant with reaction rate",
-        "Believes equilibrium constant depends on reaction path",
-        null,
-        "Incorrectly assumes equilibrium constant changes with volume"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 2, as the equilibrium constant is indeed a constant at a given temperature. The other options reflect common misconceptions about the nature of equilibrium constants.",
-      "sources": [
-        {
-          "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 14,
-          "pageStart": 9,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 6: EqUilibriUm"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 15,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 6: EqUilibriUm"
-          ]
-        },
-        {
-          "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 16,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 6: EqUilibriUm"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T06:39:23.393Z",
+      "generatedAt": "2026-10-28T12:16:16.906Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "If a reaction is carried out in a closed container and the concentrations of reactants and products remain constant, what can be concluded?",
+      "stem": "Which of the following is a characteristic of a system at equilibrium?",
       "choices": [
-        "The reaction is not reversible",
-        "The reaction has reached equilibrium",
-        "The reaction is not proceeding",
-        "The reaction is in a static state"
+        "It is open to the environment",
+        "The concentrations of reactants and products change over time",
+        "The rates of the forward and reverse reactions are equal",
+        "The reaction proceeds only in the forward direction"
       ],
-      "answerIndex": 1,
-      "solution": "If the concentrations of reactants and products remain constant, it indicates that the reaction has reached equilibrium. The other options are incorrect because they do not describe the characteristics of an equilibrium state.",
+      "answerIndex": 2,
+      "solution": "The correct answer is that the rates of the forward and reverse reactions are equal. This is a defining feature of dynamic equilibrium. The other options are incorrect because they either suggest the system is not closed (open to the environment), that concentrations are changing (which is not the case in equilibrium), or that the reaction only proceeds in one direction, which contradicts the dynamic nature of equilibrium.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि कोई अभिक्रिया एक बंद पात्र में की जाती है और अभिकारकों और उत्पादों की सांद्रता स्थिर रहती है, तो क्या निष्कर्ष निकाला जा सकता है?",
+          "stem": "निम्नलिखित में से कौन-सा एक संतुलन पर स्थित प्रणाली का गुण है?",
           "choices": [
-            "अभिक्रिया अपरिवर्तनीय है",
-            "अभिक्रिया साम्यावस्था तक पहुंच गई है",
-            "अभिक्रिया आगे नहीं बढ़ रही है",
-            "अभिक्रिया स्थैतिक अवस्था में है"
+            "यह पर्यावरण के साथ खुला होता है",
+            "अभिकर्मक एवं उत्पादों की सांद्रता समय के साथ बदलती है",
+            "अग्र एवं प्रतिलोम अभिक्रिया की दरें समान होती हैं",
+            "अभिक्रिया केवल अग्र दिशा में होती है"
           ],
-          "solution": "अभिकारकों और उत्पादों की सांद्रता स्थिर रहना इंगित करता है कि अभिक्रिया साम्यावस्था तक पहुंच गई है। अन्य विकल्प गलत हैं क्योंकि वे साम्यावस्था के गुणों का वर्णन नहीं करते हैं।",
+          "solution": "सही उत्तर यह है कि अग्र एवं प्रतिलोम अभिक्रिया की दरें समान होती हैं। यह गतिशील संतुलन की विशेषता है। अन्य विकल्प गलत हैं क्योंकि वे यह सुझाव देते हैं कि प्रणाली बंद नहीं है (पर्यावरण के साथ खुली है), कि सांद्रता बदल रही है (जो संतुलन में नहीं होता है), या कि अभिक्रिया केवल एक दिशा में होती है, जो संतुलन की गतिशील प्रकृति के विरोधी है।",
           "imageAlt": null,
-          "critique": "Hindi translation accurately reflects the original English question with appropriate terminology used in Indian curriculum.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology consistent with standard Hindi-medium science education.",
           "flag": null
         },
         "mr": {
-          "stem": "एका बंद टॅन्कमध्ये एका अभिक्रिया केली गेली आहे आणि अभिकारकांच्या आणि उत्पादकांच्या सांद्रता स्थिर राहतात, तर काय निष्कर्ष काढता येईल?",
+          "stem": "खालीलपैकी कोणते एक संतुलनाच्या अवस्थेतील प्रणालीचे लक्षण आहे?",
           "choices": [
-            "अभिक्रिया अनुवर्तनीय नाही",
-            "अभिक्रिया संतुलनात पोहोचली आहे",
-            "अभिक्रिया पुढे जात नाही",
-            "अभिक्रिया स्थैतिक अवस्थेत आहे"
+            "ते पर्यावरणाशी खुले आहे",
+            "प्रतिक्रियक आणि उत्पादकांच्या सांद्रता वेळेनुसार बदलतात",
+            "पुढील आणि मागील प्रतिक्रियांच्या दर समान आहेत",
+            "प्रतिक्रिया केवळ पुढे जाते"
           ],
-          "solution": "जर अभिकारकांच्या आणि उत्पादकांच्या सांद्रता स्थिर राहत असतील, तर अभिक्रिया संतुलनात पोहोचली आहे असे सूचित करते. इतर विकल्प चुकीचे आहेत कारण ते संतुलनाच्या अवस्थेच्या वैशिष्ट्यांना वर्णन करत नाहीत.",
+          "solution": "योग्य उत्तर हे आहे की पुढील आणि मागील प्रतिक्रियांच्या दर समान आहेत. हे डायनॅमिक संतुलनाचे निर्णायक लक्षण आहे. इतर विकल्प अयोग्य आहेत कारण ते प्रणाली बंद नसल्याचा अर्थ सूचित करतात (पर्यावरणाशी खुली), की सांद्रता बदलतात (जे संतुलनात नाही), किंवा प्रतिक्रिया केवळ एका दिशेने जाते, जे संतुलनाच्या डायनॅमिक प्रकृतीला विरोधी आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks equilibrium is possible in an open system",
+        "Believes equilibrium involves changing concentrations",
+        null,
+        "Fails to understand the concept of dynamic equilibrium"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is option 2, as equilibrium is defined by equal forward and reverse reaction rates. The other options reflect common misconceptions about open systems, changing concentrations, and unidirectional reactions.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 8,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 9,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 10,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T12:16:16.906Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a system where ice and water are in equilibrium, what can be said about the mass of ice and water?",
+      "choices": [
+        "It changes continuously",
+        "It increases over time",
+        "It decreases over time",
+        "It remains constant"
+      ],
+      "answerIndex": 3,
+      "solution": "At equilibrium, the mass of ice and water remains constant because the rate of melting of ice is equal to the rate of freezing of water. The other options incorrectly suggest that the mass changes over time, which is not true for a system at equilibrium. The option that says the mass changes continuously is not consistent with the concept of equilibrium.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रणाली में जहां बर्फ और पानी साम्यावस्था में हैं, बर्फ और पानी के द्रव्यमान के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "यह निरंतर बदलता रहता है",
+            "यह समय के साथ बढ़ता है",
+            "यह समय के साथ घटता है",
+            "यह नियत रहता है"
+          ],
+          "solution": "साम्यावस्था में, बर्फ और पानी का द्रव्यमान नियत रहता है क्योंकि बर्फ के पिघलने की दर पानी के हिमायन की दर के बराबर होती है। अन्य विकल्प गलत रूप से सुझाव देते हैं कि द्रव्यमान समय के साथ बदलता रहता है, जो साम्यावस्था वाली प्रणाली के लिए सही नहीं है। जो विकल्प कहता है कि द्रव्यमान निरंतर बदलता रहता है, यह साम्यावस्था के अवधारणा के साथ संगत नहीं है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms. The correct answer remains option (4) and the distractors are still incorrect.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "हिम आणि पाणी यांच्या संतुलनात असलेल्या प्रणालीत, हिम आणि पाणीच्या द्रव्यमानाबद्दल काय म्हणायला शकता?",
+          "choices": [
+            "ते सतत बदलत राहते",
+            "ते वेळेसह वाढते",
+            "ते वेळेसह कमी होते",
+            "ते अचल राहते"
+          ],
+          "solution": "संतुलनात, हिम आणि पाणीचे द्रव्यमान अचल राहते कारण हिम पाकळीच्या वितळण्याच्या दराचा पाणी जमण्याच्या दराशी समानता असते. इतर विकल्प चुकीचे असतात जे द्रव्यमानाच्या वेळेसह बदलण्याचा अंदाज देतात, जे संतुलनातील प्रणालीसाठी खरे नाही. जो विकल्प द्रव्यमान सतत बदलत राहते असे म्हणतो तो संतुलनाच्या अवधारणेशी असंगत आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -556,20 +565,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "This is not necessarily true for an equilibrium reaction",
-        null,
-        "This suggests no reaction is occurring, which is not correct",
-        "This describes a static situation, not a dynamic equilibrium"
+        "Believes equilibrium involves continuous change in mass",
+        "Thinks the mass of ice increases over time",
+        "Thinks the mass of water decreases over time",
+        null
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        3,
+        3,
+        3,
+        3,
+        3
       ],
-      "levelFlag": null,
-      "critique": "The question correctly identifies that constant concentrations imply equilibrium. The distractors reflect common misconceptions about reversibility, reaction progress, and static vs. dynamic states.",
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, and the solution correctly identifies that at equilibrium, the masses of ice and water remain constant. The distractors reflect common misconceptions about equilibrium.",
       "sources": [
         {
           "document": "ncert/11/chemistry/kech106.pdf",
@@ -609,49 +618,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T06:39:23.393Z",
+      "generatedAt": "2026-10-28T12:16:16.906Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "What will be the effect on the equilibrium constant (K) if the temperature is increased for an exothermic reaction?",
+      "stem": "Which of the following reactions will have appreciable concentrations of both reactants and products?",
       "choices": [
-        "K decreases",
-        "K increases",
-        "K remains unchanged",
-        "K becomes zero"
+        "N2(g) + 3H2(g) ⇌ 2NH3(g) with K = 10.1",
+        "2SO2(g) + O2(g) ⇌ 2SO3(g) with K = 4.0 × 10^2",
+        "H2(g) + I2(g) ⇌ 2HI(g) with K = 1.8",
+        "2NO(g) + O2(g) ⇌ 2NO2(g) with K = 1.7 × 10^12"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is 'K decreases' because for an exothermic reaction, increasing the temperature shifts the equilibrium towards the reactants, decreasing the value of K. This is based on Le Chatelier's principle, which states that a system at equilibrium will adjust to counteract changes in conditions. The other options are incorrect because they do not align with the behavior of K for exothermic reactions under temperature change.",
+      "answerIndex": 2,
+      "solution": "A reaction with a moderate K value (around 1) indicates that both reactants and products are present in appreciable amounts. The reaction H2 + I2 ⇌ 2HI has K = 1.8, which is close to 1, showing a balance between reactants and products. Other reactions have either very small or very large K values, indicating that either reactants or products dominate.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक उत्सर्जक अभिक्रिया के लिए तापमान बढ़ाने पर साम्य स्थिरांक (K) पर क्या प्रभाव पड़ेगा?",
+          "stem": "निम्नलिखित में से कौन-सी अभिक्रिया अभिकारकों और उत्पादों दोनों की अल्पाधिक मात्रा में उपस्थिति के लिए उपयुक्त होगी?",
           "choices": [
-            "K कम हो जाता है",
-            "K बढ़ जाता है",
-            "K अपरिवर्तित रहता है",
-            "K शून्य हो जाता है"
+            "N2(g) + 3H2(g) ⇌ 2NH3(g) के साथ K = 10.1",
+            "2SO2(g) + O2(g) ⇌ 2SO3(g) के साथ K = 4.0 × 10^2",
+            "H2(g) + I2(g) ⇌ 2HI(g) के साथ K = 1.8",
+            "2NO(g) + O2(g) ⇌ 2NO2(g) के साथ K = 1.7 × 10^12"
           ],
-          "solution": "सही उत्तर 'K कम हो जाता है' है क्योंकि एक उत्सर्जक अभिक्रिया के लिए, तापमान बढ़ाने से साम्य अभिकर्मक की ओर विस्थापित हो जाता है, जिससे K का मान कम हो जाता है। यह ली चैटेलियर के सिद्धांत पर आधारित है, जो कहता है कि साम्य में रहने वाली प्रणाली शर्तों में परिवर्तनों के विरोध में समायोजित हो जाती है। अन्य विकल्प गलत हैं क्योंकि वे तापमान में परिवर्तन के अंतर्गत उत्सर्जक अभिक्रियाओं के लिए K के व्यवहार के साथ मेल नहीं खाते।",
+          "solution": "एक अभिक्रिया जिसका मध्यम K मान (लगभग 1) होता है, यह दर्शाता है कि अभिकारकों और उत्पादों दोनों की अल्पाधिक मात्रा में उपस्थिति होती है। H2 + I2 ⇌ 2HI अभिक्रिया के K = 1.8 होता है, जो 1 के निकट होता है, जो अभिकारकों और उत्पादों के बीच संतुलन को दर्शाता है। अन्य अभिक्रियाओं के या तो बहुत कम या बहुत अधिक K मान होते हैं, जो यह दर्शाते हैं कि या तो अभिकारक या उत्पाद ही प्रभावी होते हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms commonly found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "उष्माक्षेपी प्रतिक्रियेसाठी तापमान वाढवल्यास साम्य स्थिरांक (K) वर काय परिणाम होईल?",
+          "stem": "खालीलपैकी कोणत्या अभिक्रियेमध्ये प्रतिक्रियक आणि उत्पादक दोन्हींची अपेक्षित प्रमाणे असतील?",
           "choices": [
-            "K कमी होते",
-            "K वाढते",
-            "K अचल राहते",
-            "K शून्य होते"
+            "N2(g) + 3H2(g) ⇌ 2NH3(g) चे K = 10.1",
+            "2SO2(g) + O2(g) ⇌ 2SO3(g) चे K = 4.0 × 10^2",
+            "H2(g) + I2(g) ⇌ 2HI(g) चे K = 1.8",
+            "2NO(g) + O2(g) ⇌ 2NO2(g) चे K = 1.7 × 10^12"
           ],
-          "solution": "बरोबर उत्तर 'K कमी होते' आहे कारण उष्माक्षेपी प्रतिक्रियेसाठी, तापमान वाढवल्यास साम्य पार्श्वापुढे असते, ज्यामुळे K ची किंमत कमी होते. हे ले चॅटेलियरच्या सिद्धांतावर आधारित आहे, जे सांगते की साम्यावस्थेत असलेल्या प्रणालीत तापमानाच्या बदलांचा प्रतिकार करण्याचा प्रयत्न करते. इतर विकल्प अयोग्य आहेत कारण ते उष्माक्षेपी प्रतिक्रियांच्या तापमान बदलांच्या वर्तनाशी जुळत नाहीत.",
+          "solution": "मध्यम K मूल्य (जवळजवळ 1) असलेल्या अभिक्रियेमध्ये प्रतिक्रियक आणि उत्पादक दोन्हींची अपेक्षित प्रमाणे असतात. H2 + I2 ⇌ 2HI चे K = 1.8 असून, हे 1 जवळ असल्यामुळे प्रतिक्रियक आणि उत्पादक दरम्यान संतुलन दर्शवते. इतर अभिक्रियांमध्ये K मूल्य खूप लहान किंवा खूप मोठे असते, जे प्रतिक्रियक किंवा उत्पादक वर अधिकाधिक असल्याचे दर्शवते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for chemical concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -660,20 +669,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Chooses a reaction with a very large K value",
+        "Chooses a reaction with a very small K value",
         null,
-        "Confuses the effect of temperature on exothermic and endothermic reactions",
-        "Fails to recognize that K depends on temperature",
-        "Misinterprets the effect of temperature on the equilibrium position"
+        "Assumes that K = 1 implies no reaction occurs"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies Le Chatelier's principle and the relationship between temperature and equilibrium constants for exothermic reactions. The reasoning aligns with standard chemistry principles.",
+      "critique": "The solution is correct. A K value close to 1 (like 1.8) indicates that both reactants and products are present in appreciable amounts. The other options have K values that are either very large (favoring products) or very small (favoring reactants).",
       "sources": [
         {
           "document": "ncert/11/chemistry/kech106.pdf",
@@ -704,36 +713,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T06:39:23.393Z",
+      "generatedAt": "2026-10-28T12:16:16.906Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "What is the initial effect of increasing the volume of a sealed container with a liquid in equilibrium with its vapour?",
+      "stem": "Which of the following statements is true about dynamic equilibrium?",
       "choices": [
-        "Vapour pressure increases",
-        "Vapour pressure decreases",
-        "Vapour pressure remains the same",
-        "Vapour pressure becomes zero"
+        "It is a static state with no movement between reactants and products",
+        "It occurs only when all reactants are completely converted into products",
+        "It is a state where the rates of forward and reverse reactions are equal",
+        "It is a state where the concentrations of reactants and products are the same"
       ],
-      "answerIndex": 1,
-      "solution": "When the volume of the container is increased, the concentration of the vapour decreases, which leads to a decrease in vapour pressure. Initially, the rate of evaporation increases because there is more space for molecules to move into, while the rate of condensation decreases because there are fewer vapour molecules to collide with the liquid surface. The correct answer is 'Vapour pressure decreases'. The option 'Vapour pressure increases' is incorrect because increasing the volume reduces the density of the vapour. 'Vapour pressure remains the same' is incorrect because the volume change affects the system. 'Vapour pressure becomes zero' is incorrect because some vapour molecules will still be present.",
+      "answerIndex": 2,
+      "solution": "Dynamic equilibrium is a state where the rates of the forward and reverse reactions are equal, leading to no net change in concentrations. The other options describe incorrect or incomplete understandings of dynamic equilibrium. A static state, complete conversion of reactants, or equal concentrations are not characteristics of equilibrium.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक बंद कंटेनर में तरल पदार्थ के वाष्प के साथ साम्य में आयतन बढ़ाने का प्रारंभिक प्रभाव क्या है?",
+          "stem": "निम्नलिखित में से कौन-सा कथन डायनामिक साम्य के बारे में सही है?",
           "choices": [
-            "वाष्प दाब बढ़ता है",
-            "वाष्प दाब घटता है",
-            "वाष्प दाब एक समान रहता है",
-            "वाष्प दाब शून्य हो जाता है"
+            "यह अभिकारकों और उत्पादों के बीच कोई गति न होने वाली स्थैतिक अवस्था है",
+            "यह केवल तभी होता है जब सभी अभिकारक पूरी तरह से उत्पाद में बदल जाते हैं",
+            "यह एक अवस्था है जहां अग्र और पृष्ठ की अभिक्रिया की दरें समान होती हैं",
+            "यह एक अवस्था है जहां अभिकारकों और उत्पादों की सांद्रता समान होती है"
           ],
-          "solution": "जब कंटेनर का आयतन बढ़ाया जाता है, तो वाष्प की सांद्रता घट जाती है, जिसके कारण वाष्प दाब घट जाता है। प्रारंभ में, वाष्पीकरण की दर बढ़ जाती है क्योंकि अणुओं के लिए अधिक स्थान होता है, जबकि संघनन की दर घट जाती है क्योंकि तरल सतह के साथ टकराने वाले वाष्प अणु कम हो जाते हैं। सही उत्तर 'वाष्प दाब घटता है' है। 'वाष्प दाब बढ़ता है' गलत है क्योंकि आयतन बढ़ाने से वाष्प का घनत्व घटता है। 'वाष्प दाब एक समान रहता है' गलत है क्योंकि आयतन परिवर्तन प्रणाली पर प्रभाव डालता है। 'वाष्प दाब शून्य हो जाता है' गलत है क्योंकि कुछ वाष्प अणु अवश्य उपस्थित रहते हैं।",
+          "solution": "डायनामिक साम्य एक अवस्था है जहां अग्र और पृष्ठ की अभिक्रिया की दरें समान होती हैं, जिसके कारण सांद्रता में कोई शुद्ध परिवर्तन नहीं होता। अन्य विकल्प डायनामिक साम्य की गलत या अधूरी समझ को दर्शाते हैं। एक स्थैतिक अवस्था, पूर्ण अभिकारक रूपांतरण, या समान सांद्रता साम्य की विशेषताएं नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium textbooks.",
+          "critique": "The Hindi translation accurately reflects the original English question and solution. All technical terms are appropriately translated using standard Hindi terminology used in textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता विधान डायनॅमिक संतुलन बद्दल खरा आहे?",
+          "choices": [
+            "ते अभिक्रियकांच्या आणि उत्पादकांच्या मध्ये गती नसलेले स्थैतिक अवस्था आहे",
+            "ते फक्त जेव्हा सर्व अभिक्रियक पूर्णपणे उत्पादकांमध्ये रूपांतरित होतात तेव्हा होते",
+            "ते एक अवस्था आहे जेथे आगाडी आणि पाठीमागे अभिक्रियांच्या दर समान असतात",
+            "ते एक अवस्था आहे जेथे अभिक्रियकांच्या आणि उत्पादकांच्या एकाच प्रमाणात असतात"
+          ],
+          "solution": "डायनॅमिक संतुलन ही एक अवस्था आहे जेथे आगाडी आणि पाठीमागे अभिक्रियांच्या दर समान असतात, ज्यामुळे एकूण एकाग्रतेत बदल होत नाही. इतर विधाने डायनॅमिक संतुलनच्या चुकीच्या किंवा अपूर्ण समजाचे वर्णन करतात. स्थैतिक अवस्था, पूर्णपणे रूपांतरित अभिक्रियक किंवा समान एकाग्रता संतुलनच्या लक्षणांचा भाग नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for chemical equilibrium concepts.",
           "flag": null
         }
       },
@@ -742,91 +764,100 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses the effect of volume increase on pressure",
+        "Confuses equilibrium with a static state",
+        "Believes equilibrium involves complete conversion of reactants",
         null,
-        "assumes pressure remains constant despite volume change",
-        "overestimates the effect of volume change on pressure"
+        "Thinks equilibrium means equal concentrations of reactants and products"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly explains that increasing the volume decreases the concentration of vapour, leading to a decrease in vapour pressure. The reasoning aligns with the principles of gas laws and phase equilibrium.",
+      "critique": "The correct answer is option 2, which accurately defines dynamic equilibrium as a state where forward and reverse reaction rates are equal. The other options reflect common misconceptions about equilibrium.",
       "sources": [
         {
           "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 57,
-          "pageStart": 39,
-          "pageEnd": 40,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
           "headingPath": [
             "Chapter 6: EqUilibriUm"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 58,
-          "pageStart": 40,
-          "pageEnd": 40,
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
           "headingPath": [
             "Chapter 6: EqUilibriUm"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 59,
-          "pageStart": 40,
-          "pageEnd": 41,
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 3,
+          "pageStart": 2,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 6: EqUilibriUm"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T06:39:23.393Z",
+      "generatedAt": "2026-10-28T12:16:16.906Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "At 700 K, the equilibrium constant for the reaction H2 (g) + I2 (g) ⇌ 2HI (g) is 54.8. If 0.5 mol/L of H2 and I2 are initially present, and the equilibrium concentration of HI is 0.4 mol/L, what is the value of K?",
+      "stem": "If the reaction N₂ + 3H₂ ⇌ 2NH₃ is carried out at high temperature and pressure, and the concentration of NH₃ remains constant, which of the following can be concluded?",
       "choices": [
-        "54.8",
-        "12.5",
-        "16.0",
-        "25.0"
+        "The reaction has stopped completely",
+        "The forward and reverse reactions have stopped",
+        "The forward and reverse reactions are occurring at the same rate",
+        "The reaction is proceeding only in the forward direction"
       ],
-      "answerIndex": 0,
-      "solution": "The equilibrium constant K is given as 54.8 for this reaction. The initial concentrations and the equilibrium concentration of HI do not change the value of K, which is a constant at a given temperature. The other options are incorrect because they suggest different values of K that do not match the given information.",
+      "answerIndex": 2,
+      "solution": "The correct answer is that the forward and reverse reactions are occurring at the same rate. This is because the concentration of NH₃ remains constant, indicating that the system has reached equilibrium. The other options are incorrect because they suggest the reaction has stopped or is only proceeding in one direction, which is not consistent with the concept of dynamic equilibrium.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "700 K पर, अभिक्रिया H2 (गैस) + I2 (गैस) ⇌ 2HI (गैस) के लिए साम्य स्थिरांक 54.8 है। यदि प्रारंभ में H2 और I2 के 0.5 मोल/लीटर उपस्थित हैं, और HI की साम्य सांद्रता 0.4 मोल/लीटर है, तो K का मान क्या है?",
+          "stem": "यदि अभिक्रिया N₂ + 3H₂ ⇌ 2NH₃ को उच्च तापमान एवं दाब पर किया जाता है, एवं NH₃ की सांद्रता स्थिर रहती है, तो निम्नलिखित में से कौन-सा निष्कर्ष निकाला जा सकता है?",
           "choices": [
-            "54.8",
-            "12.5",
-            "16.0",
-            "25.0"
+            "अभिक्रिया पूरी तरह से रुक गई है",
+            "अग्र एवं पश्च अभिक्रियाएं रुक गई हैं",
+            "अग्र एवं पश्च अभिक्रियाएं समान दर पर हो रही हैं",
+            "अभिक्रिया केवल अग्र दिशा में आगे बढ़ रही है"
           ],
-          "solution": "साम्य स्थिरांक K दी गई अभिक्रिया के लिए 54.8 है। प्रारंभिक सांद्रता और HI की साम्य सांद्रता K के मान को बदल नहीं सकती है, जो एक नियतांक है जो दिए गए ताप पर स्थिर रहता है। अन्य विकल्प गलत हैं क्योंकि वे K के अलग-अलग मान का सुझाव देते हैं जो दिए गए जानकारी के अनुरूप नहीं हैं।",
+          "solution": "सही उत्तर यह है कि अग्र एवं पश्च अभिक्रियाएं समान दर पर हो रही हैं। ऐसा इसलिए है क्योंकि NH₃ की सांद्रता स्थिर रहती है, जो इस बात का संकेत देता है कि प्रणाली साम्यावस्था में पहुंच गई है। अन्य विकल्प गलत हैं क्योंकि वे अभिक्रिया के रुक जाने या केवल एक दिशा में आगे बढ़ने का सुझाव देते हैं, जो गतिशील साम्यावस्था के अवधारणा के असंगत हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate technical terms as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "700 K वर, H2 (g) + I2 (g) ⇌ 2HI (g) अभिक्रियेचा साम्यावस्था नियतांक 54.8 आहे. जर H2 आणि I2 ची सुरुवातीची एकाग्रता 0.5 मोल/लीटर असेल आणि साम्यावस्था अवस्थेत HI ची एकाग्रता 0.4 मोल/लीटर असेल, तर K ची किंमत काय आहे?",
+          "stem": "जर अभिक्रिया N₂ + 3H₂ ⇌ 2NH₃ उच्च तापमान आणि दाबाखाली केली जाते आणि NH₃ ची एकाग्रता अचल राहते, तर खालीलपैकी काय निष्कर्ष काढता येईल?",
           "choices": [
-            "54.8",
-            "12.5",
-            "16.0",
-            "25.0"
+            "अभिक्रिया पूर्णपणे थांबली आहे",
+            "समोरच्या आणि विलोम अभिक्रिया थांबल्या आहेत",
+            "समोरच्या आणि विलोम अभिक्रिया समान दराने होत आहेत",
+            "अभिक्रिया केवळ समोरच्या दिशेने चालत आहे"
           ],
-          "solution": "साम्यावस्था नियतांक K ची दिलेली किंमत 54.8 आहे. सुरुवातीच्या एकाग्रता आणि HI ची साम्यावस्था एकाग्रता K च्या किंमत बदलत नाहीत, जी दिलेल्या तापमानावर स्थिर असते. इतर विकल्प चुकीचे आहेत कारण ते K च्या वेगळ्या किंमतींचा दावा करतात जे दिलेल्या माहितीशी जुळत नाहीत.",
+          "solution": "सही उत्तर हे आहे की समोरच्या आणि विलोम अभिक्रिया समान दराने होत आहेत. हे असे आहे कारण NH₃ ची एकाग्रता अचल राहते, जे संतुलनाच्या स्थितीला सूचित करते. इतर विकल्प चुकीचे आहेत कारण ते अभिक्रिया थांबली आहे किंवा केवळ एका दिशेने चालत आहे, असे सूचित करतात, जे गतिशील संतुलनाच्या अवधारणेशी असंगत आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
@@ -837,51 +868,250 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Believes equilibrium means the reaction stops",
+        "Confuses equilibrium with a one-way reaction",
         null,
-        "Calculates K using initial concentrations instead of equilibrium concentrations",
-        "Miscalculates the equilibrium expression by squaring the concentration of HI instead of using it as a product.",
-        "Confuses the square of the concentration of HI with the equilibrium constant value"
+        "Thinks that equilibrium means only one reaction is taking place"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is misleading because it states the equilibrium constant is 54.8 and then asks for the value of K again. The correct answer is 54.8, as K is a constant at a given temperature. The distractors reflect common misconceptions about how to calculate K.",
+      "critique": "The correct answer is 2, as a constant concentration of NH3 indicates dynamic equilibrium where forward and reverse reactions occur at the same rate. The other options reflect common misconceptions about equilibrium.",
       "sources": [
         {
           "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 60,
-          "pageStart": 41,
-          "pageEnd": 42,
+          "ordinal": 8,
+          "pageStart": 5,
+          "pageEnd": 5,
           "headingPath": [
             "Chapter 6: EqUilibriUm"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 61,
-          "pageStart": 42,
-          "pageEnd": 43,
+          "ordinal": 9,
+          "pageStart": 5,
+          "pageEnd": 6,
           "headingPath": [
             "Chapter 6: EqUilibriUm"
           ]
         },
         {
           "document": "ncert/11/chemistry/kech106.pdf",
-          "ordinal": 62,
-          "pageStart": 43,
-          "pageEnd": 44,
+          "ordinal": 10,
+          "pageStart": 6,
+          "pageEnd": 6,
           "headingPath": [
             "Chapter 6: EqUilibriUm"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-23T06:39:23.393Z",
+      "generatedAt": "2026-10-28T12:16:16.906Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the temperature of a system at equilibrium is changed, what will happen to the system?",
+      "choices": [
+        "It will remain in the same state of equilibrium",
+        "It will shift to a new equilibrium state",
+        "It will stop being in equilibrium",
+        "It will reach a new static state"
+      ],
+      "answerIndex": 1,
+      "solution": "When the temperature of a system at equilibrium is changed, the system will shift to a new equilibrium state to accommodate the change. The other options describe incorrect or incomplete understandings of how equilibrium responds to temperature changes. A system cannot remain in the same equilibrium state if temperature is changed, and it will not stop being in equilibrium or reach a static state.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि साम्यावस्था पर स्थित प्रणाली के तापमान में परिवर्तन किया जाता है, तो प्रणाली पर क्या प्रभाव पड़ेगा?",
+          "choices": [
+            "यह साम्यावस्था की उसी स्थिति में रहेगा",
+            "यह एक नई साम्यावस्था की स्थिति में स्थानांतरित हो जाएगा",
+            "यह साम्यावस्था में रहना बंद कर देगा",
+            "यह एक नई स्थैतिक स्थिति तक पहुंच जाएगा"
+          ],
+          "solution": "जब किसी साम्यावस्था पर स्थित प्रणाली के तापमान में परिवर्तन किया जाता है, तो प्रणाली उस परिवर्तन को स्वीकार करने के लिए एक नई साम्यावस्था की स्थिति में स्थानांतरित हो जाती है। अन्य विकल्प तापमान में परिवर्तन के प्रति साम्यावस्था के प्रतिक्रिया के गलत या अपूर्ण समझ को दर्शाते हैं। तापमान में परिवर्तन होने पर प्रणाली उसी साम्यावस्था में नहीं रह सकती है, और यह साम्यावस्था में रहना बंद नहीं करेगी या कोई स्थैतिक स्थिति तक नहीं पहुंचेगी।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (1). The distractors remain incorrect in the Hindi version, preserving the question's integrity.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एखाद्या प्रणालीच्या साम्यावस्थेच्या तापमानात बदल केला जाईल, तर प्रणालीला काय होईल?",
+          "choices": [
+            "ती साम्यावस्थेच्या त्याच अवस्थेत राहील",
+            "ती एका नवीन साम्यावस्थेच्या अवस्थेत खेचली जाईल",
+            "ती साम्यावस्थेतून बाहेर पडेल",
+            "ती एका नवीन स्थैतिक अवस्थेला पोहोचेल"
+          ],
+          "solution": "जर एखाद्या साम्यावस्थेत असलेल्या प्रणालीच्या तापमानात बदल केला जाईल, तर प्रणाली बदलाचे अनुरूप एका नवीन साम्यावस्थेच्या अवस्थेत खेचली जाईल. इतर विकल्प साम्यावस्थेच्या तापमानात बदलाच्या प्रतिक्रियेबद्दल चुकीचे किंवा अपूर्ण बुद्धी दर्शवतात. जर तापमानात बदल केला जाईल तर प्रणाली साम्यावस्थेच्या त्याच अवस्थेत राहू शकत नाही, आणि ती साम्यावस्थेतून बाहेर पडेल किंवा स्थैतिक अवस्थेला पोहोचेल असे घडू शकत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for equilibrium and related concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes equilibrium is unaffected by temperature",
+        null,
+        "Thinks the system will stop being in equilibrium",
+        "Thinks equilibrium leads to a static state"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as per Le Chatelier's principle, which states that a system at equilibrium will shift to counteract a change in conditions. The other options reflect common misconceptions about equilibrium behavior.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 3,
+          "pageStart": 2,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T12:16:16.906Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In the synthesis of ammonia, Haber used deuterium (D) instead of hydrogen (H) and observed that the equilibrium composition was the same. What does this suggest about the reaction?",
+      "choices": [
+        "The reaction is not reversible",
+        "The reaction is independent of the isotope used",
+        "The reaction depends on the isotope used",
+        "The reaction occurs only in the forward direction"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct answer is that the reaction is independent of the isotope used. This is because the equilibrium composition remained the same even when deuterium was used instead of hydrogen, showing that the reaction proceeds in the same way regardless of the isotope. The other options are incorrect because they contradict the dynamic nature of equilibrium or suggest the reaction is not reversible.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अमोनिया के संश्लेषण में, हैबर ने हाइड्रोजन (H) के स्थान पर ड्यूटीरियम (D) का उपयोग किया और देखा कि साम्य संरचना एक ही रही। इसका क्या अर्थ है कि अभिक्रिया के बारे में?",
+          "choices": [
+            "अभिक्रिया अपरिवर्तनीय है",
+            "अभिक्रिया उपस्थित आइसोटोप पर निर्भर नहीं करती है",
+            "अभिक्रिया उपस्थित आइसोटोप पर निर्भर करती है",
+            "अभिक्रिया केवल अग्र दिशा में होती है"
+          ],
+          "solution": "सही उत्तर यह है कि अभिक्रिया उपस्थित आइसोटोप पर निर्भर नहीं करती है। इसका कारण यह है कि जब हाइड्रोजन के स्थान पर ड्यूटीरियम का उपयोग किया गया तो साम्य संरचना एक ही रही, जो दर्शाता है कि अभिक्रिया आइसोटोप पर निर्भर किए बिना एक ही तरह से होती है। अन्य विकल्प गलत हैं क्योंकि वे साम्य की गतापरिवर्तनीय प्रकृति के विरोध में हैं या अभिक्रिया के अपरिवर्तनीय होने का अनुमान देते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for chemical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "अमोनियाच्या संश्लेषणात, हॅबरने हायड्रोजन (H) ऐवजी ड्यूटेरियम (D) वापरला आणि अंतिम संतुलन संघटना एकसारखी असल्याचे निरीक्षण केले. हे अभ्यासातून अभ्यासकांना काय सूचित करते?",
+          "choices": [
+            "प्रतिक्रिया अनुवर्तनीय नाही",
+            "प्रतिक्रिया वापरलेल्या समस्थानिकावर अवलंबून नाही",
+            "प्रतिक्रिया वापरलेल्या समस्थानिकावर अवलंबून आहे",
+            "प्रतिक्रिया केवळ पुढे दिशेने होते"
+          ],
+          "solution": "योग्य उत्तर हे आहे की प्रतिक्रिया वापरलेल्या समस्थानिकावर अवलंबून नाही. हे असे कारण आहे की ड्यूटेरियम वापरून हायड्रोजनऐवजी संतुलन संघटना एकसारखी राहिली, जे दर्शवते की प्रतिक्रिया समस्थानिकावर अवलंबून न राहता एकसारख्या प्रकारे घडते. इतर विकल्प असतील तर ते संतुलनच्या डायनॅमिक प्रकृतीला विरोध करतात किंवा प्रतिक्रिया अनुवर्तनीय नसल्याचा असा अर्थ देतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes isotopes affect the reaction differently",
+        null,
+        "Thinks that the reaction is not reversible",
+        "Assumes the reaction only proceeds in one direction"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the equilibrium composition being the same with deuterium suggests the reaction is independent of the isotope. The reasoning in the solution is sound and matches the author's key.",
+      "sources": [
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 8,
+          "pageStart": 5,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 9,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        },
+        {
+          "document": "ncert/11/chemistry/kech106.pdf",
+          "ordinal": 10,
+          "pageStart": 6,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: EqUilibriUm"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T12:16:16.906Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

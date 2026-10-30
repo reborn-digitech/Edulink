@@ -21,49 +21,313 @@
   "board": "NCERT",
   "book": "Maths Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T21:21:43.084Z",
+  "generatedAt": "2026-10-28T02:52:24.387Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 2,
-      "stem": "Which of the following is a unit used to measure weight?",
+      "stem": "Which of the following objects is likely to weigh more than 1 kilogram?",
       "choices": [
-        "Gram",
-        "Kilometer",
-        "Second",
-        "Liter"
+        "A pencil",
+        "A matchbox",
+        "A bag of rice",
+        "A feather"
       ],
-      "answerIndex": 0,
-      "solution": "The correct answer is Gram, as it is a unit used to measure weight. Kilometer is a unit of length, Second is a unit of time, and Liter is a unit of volume.",
+      "answerIndex": 2,
+      "solution": "The correct answer is 'A bag of rice' because it is a heavy object that is likely to weigh more than 1 kilogram. A pencil and a matchbox are light objects, and a feather is extremely light.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी एक इकाई है जिसका भार मापने के लिए उपयोग किया जाता है?",
+          "stem": "निम्नलिखित में से कौन-सा वस्तु लगभग 1 किलोग्राम से अधिक भार वाली हो सकती है?",
           "choices": [
-            "ग्राम",
-            "किलोमीटर",
-            "सेकंड",
-            "लीटर"
+            "एक पेंसिल",
+            "एक माचिस का डिब्बा",
+            "एक चावल का थैला",
+            "एक पंख"
           ],
-          "solution": "सही उत्तर ग्राम है, क्योंकि यह भार मापने के लिए उपयोग की जाने वाली एक इकाई है। किलोमीटर लंबाई की एक इकाई है, सेकंड समय की एक इकाई है, और लीटर आयतन की एक इकाई है।",
+          "solution": "सही उत्तर 'एक चावल का थैला' है क्योंकि यह एक भारी वस्तु है जिसका भार लगभग 1 किलोग्राम से अधिक हो सकता है। एक पेंसिल और एक माचिस का डिब्बा हल्की वस्तुएं हैं, और एक पंख बहुत हल्का होता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi scientific terminology.",
+          "critique": "The Hindi translation accurately reflects the English question, with appropriate terminology used in a Hindi-medium educational context.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते एक वजन मोजण्यासाठी वापरले जाणारे एकक आहे?",
+          "stem": "खालील पैकी कोणता वस्तू 1 किलोग्रामपेक्षा जास्त वजनाची असावी?",
           "choices": [
-            "ग्रॅम",
-            "किलोमीटर",
-            "सेकंद",
-            "लिटर"
+            "एक कलम",
+            "एक माचिसची बॉक्स",
+            "एक राईची बॅग",
+            "एक अंगुली"
           ],
-          "solution": "बरोबर उत्तर ग्रॅम आहे, कारण ते वजन मोजण्यासाठी वापरले जाणारे एकक आहे. किलोमीटर लांबीचे एकक आहे, सेकंद वेळेचे एकक आहे आणि लिटर आयतनाचे एकक आहे.",
+          "solution": "बरोबर उत्तर 'एक राईची बॅग' आहे कारण ही एक भारी वस्तू आहे जी 1 किलोग्रामपेक्षा जास्त वजनाची असावी. एक कलम आणि एक माचिसची बॉक्स ही हलक्या वस्तू आहेत, आणि एक अंगुली खूपच हलकी असते.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi technical terms used for units of measurement.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terms for the objects mentioned.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses small size with weight",
+        "Does not understand the concept of weight",
+        null,
+        "Believes that lighter objects are always smaller or less noticeable"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 'A bag of rice' as it is a common object that typically weighs more than 1 kilogram. The other options are all light objects, and the author's reasoning for the distractors aligns with common misconceptions about size and weight.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm111.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 11: Filling and L ifting",
+            "Let us Explore"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm111.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 11: Filling and L ifting",
+            "Let us Explore"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:52:24.387Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is the correct way to compare the weight of two objects?",
+      "choices": [
+        "By looking at their size",
+        "By feeling them with your hands",
+        "By using a pan-balance",
+        "By guessing"
+      ],
+      "answerIndex": 2,
+      "solution": "The correct answer is 'By using a pan-balance' because it is the most accurate and scientific way to compare the weight of two objects. Looking at size, feeling with hands, or guessing can be misleading.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा दो वस्तुओं के भार की तुलना करने का सही तरीका है?",
+          "choices": [
+            "उनके आकार को देखकर",
+            "अपने हाथों से छूकर",
+            "पैन-बैलेंस का उपयोग करके",
+            "अनुमान लगाकर"
+          ],
+          "solution": "सही उत्तर 'पैन-बैलेंस का उपयोग करके' है क्योंकि यह दो वस्तुओं के भार की तुलना करने का सबसे सटीक और वैज्ञानिक तरीका है। आकार को देखना, हाथों से छूना या अनुमान लगाना भ्रमित कर सकता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the structure matches the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणता दोन वस्तूंच्या वजनाची तुलना करण्याचा योग्य मार्ग आहे?",
+          "choices": [
+            "त्यांच्या आकारावरून पाहणे",
+            "तुमच्या हातांनी त्यांना स्पर्श करणे",
+            "पॅन-बॅलन्स वापरणे",
+            "अंदाज बांधणे"
+          ],
+          "solution": "बरोबर उत्तर 'पॅन-बॅलन्स वापरणे' आहे कारण ते दोन वस्तूंच्या वजनाची तुलना करण्याचा सर्वात अचूक आणि वैज्ञानिक मार्ग आहे. आकारावरून पाहणे, हातांनी स्पर्श करणे किंवा अंदाज बांधणे चुकीचे ठरू शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks that size indicates weight",
+        "Thinks that touch can determine weight",
+        null,
+        "Thinks that guessing is accurate."
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2, as a pan-balance is the most accurate method for comparing weight. The other options reflect common misconceptions about weight perception.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm111.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 11: Filling and L ifting",
+            "Let us Explore"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm111.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 11: Filling and L ifting",
+            "Let us Explore"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:52:24.387Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of the following is an example of an object that weighs about 1 kilogram?",
+      "choices": [
+        "A feather",
+        "A pencil",
+        "A salt packet",
+        "A matchbox"
+      ],
+      "answerIndex": 2,
+      "solution": "A salt packet is an example of an object that weighs about 1 kilogram because it is a common household item with a weight close to that measure. A feather is extremely light, a pencil is much lighter than 1 kilogram, and a matchbox also weighs significantly less than 1 kilogram.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा 1 किलोग्राम के लगभग भार वाले वस्तु का उदाहरण है?",
+          "choices": [
+            "एक पंख",
+            "एक पेंसिल",
+            "एक नमक का बैग",
+            "एक मैचबॉक्स"
+          ],
+          "solution": "एक नमक का बैग 1 किलोग्राम के लगभग भार वाले वस्तु का उदाहरण है क्योंकि यह एक सामान्य घरेलू वस्तु है जिसका भार इस माप के करीब होता है। एक पंख बहुत हल्का होता है, एक पेंसिल 1 किलोग्राम से बहुत हल्की होती है और एक मैचबॉक्स भी 1 किलोग्राम से काफी हल्का होता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi terms for technical concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते वस्तू 1 किलोग्रॅम वजनाचे नमुना आहे?",
+          "choices": [
+            "एक पानी",
+            "एक कलम",
+            "एक मीठाचा बॅग",
+            "एक माचिस बॉक्स"
+          ],
+          "solution": "मीठाचा बॅग ही 1 किलोग्रॅम वजनाचे नमुना आहे कारण ही सामान्य घरगुती वस्तू आहे जी वजनाच्या तुलनेत जवळपास असते. एक पानी खूप हलके असते, एक कलम 1 किलोग्रॅम पेक्षा खूप हलके असते आणि एक माचिस बॉक्स देखील 1 किलोग्रॅम पेक्षा खूप कमी वजनाचे असते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms used for common objects.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses light objects with heavy ones",
+        "Does not recognize typical weights of everyday objects",
+        null,
+        "Believes that small objects are heavy due to being made of dense material"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 2 (a salt packet), as it is a common object that weighs about 1 kilogram. The reasoning for the distractors aligns with typical misconceptions about weight and size.",
+      "sources": [
+        {
+          "document": "ncert/3/mathematics/cemm111.pdf",
+          "ordinal": 4,
+          "pageStart": 8,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 11: Filling and L ifting",
+            "Let us Explore"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm111.pdf",
+          "ordinal": 5,
+          "pageStart": 10,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 11: Filling and L ifting",
+            "Let us Explore"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T02:52:24.387Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a jug holds exactly 1 litre of water, which of the following is most likely to hold less than 1 litre?",
+      "choices": [
+        "A glass",
+        "A bottle",
+        "A bucket",
+        "A measuring cup"
+      ],
+      "answerIndex": 0,
+      "solution": "A glass is most likely to hold less than 1 litre. A bottle and a bucket are usually larger than a glass, and a measuring cup is designed to hold exactly 1 litre. Therefore, the glass is the best choice.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक बर्तन में ठीक 1 लीटर पानी आता है, तो निम्नलिखित में से कौन सा लगभग 1 लीटर से कम आता है?",
+          "choices": [
+            "एक गिलास",
+            "एक बोतल",
+            "एक बाल्टी",
+            "एक मापन कप"
+          ],
+          "solution": "एक गिलास लगभग 1 लीटर से कम आता है। एक बोतल और एक बाल्टी आमतौर पर एक गिलास से बड़ी होती हैं, और एक मापन कप को ठीक 1 लीटर आवंटित करने के लिए डिज़ाइन किया गया है। इसलिए, गिलास सबसे अच्छा विकल्प है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and maintains the correct answer and distractors.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एक भांडे अचूक 1 लीटर पाणी घेत असेल, तर खालीलपैकी कोणते अधिकतर 1 लीटरपेक्षा कमी घेण्यास शक्य आहे?",
+          "choices": [
+            "एक ग्लास",
+            "एक बॉटल",
+            "एक बाल्टी",
+            "एक मापन कप"
+          ],
+          "solution": "एक ग्लास अधिकतर 1 लीटरपेक्षा कमी घेण्यास शक्य आहे. बॉटल आणि बाल्टी सामान्यतः ग्लासपेक्षा मोठ्या असतात, आणि मापन कप अचूक 1 लीटर घेण्यासाठी डिझाइन केलेला असतो. म्हणून, ग्लास ही सर्वोत्तम निवड आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms used for everyday objects.",
           "flag": null
         }
       },
@@ -73,9 +337,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses unit of weight with unit of length",
-        "Confuses unit of weight with unit of time",
-        "Confuses unit of weight with unit of volume"
+        "Confuses 'glass' with 'bottle'",
+        "Confuses 'glass' with 'bucket'",
+        "Confuses 'glass' with 'measuring cup'"
       ],
       "solverAnswers": [
         0,
@@ -85,23 +349,42 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. Gram is a unit of weight, while the other options are units of length, time, and volume respectively. The reasoning for the distractors matches common misconceptions.",
+      "critique": "The solution is sound and aligns with the correct answer. A glass is typically smaller than a jug, while a bottle and bucket are usually larger, and a measuring cup is designed to hold exactly 1 litre.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm111.pdf",
-          "ordinal": 4,
-          "pageStart": 8,
-          "pageEnd": 10,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
-            "Chapter 11: Filling and L ifting",
-            "Let us Explore"
+            "Chapter 11: Filling and L ifting"
           ]
         },
         {
           "document": "ncert/3/mathematics/cemm111.pdf",
-          "ordinal": 5,
-          "pageStart": 10,
-          "pageEnd": 11,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: Filling and L ifting",
+            "Let us Discuss"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm111.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Filling and L ifting",
+            "Let us Discuss"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm111.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
           "headingPath": [
             "Chapter 11: Filling and L ifting",
             "Let us Explore"
@@ -109,225 +392,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:21:43.084Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is an example of an object that weighs about 1 kg?",
-      "choices": [
-        "A pencil",
-        "A bag of sugar",
-        "A feather",
-        "A small book"
-      ],
-      "answerIndex": 1,
-      "solution": "A bag of sugar is an example of an object that weighs about 1 kg. A pencil and a feather are much lighter, and a small book may weigh less than 1 kg. The other options are incorrect because they do not match the weight of 1 kg.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा 1 किग्रा के भार वाली वस्तु का उदाहरण है?",
-          "choices": [
-            "एक पेंसिल",
-            "चीनी का बैग",
-            "एक पंख",
-            "एक छोटी किताब"
-          ],
-          "solution": "चीनी का बैग 1 किग्रा के भार वाली वस्तु का उदाहरण है। एक पेंसिल और एक पंख बहुत हल्के होते हैं, और एक छोटी किताब के भार 1 किग्रा से कम हो सकता है। अन्य विकल्प गलत हैं क्योंकि वे 1 किग्रा के भार के बराबर नहीं होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and technical terms. All options are correctly translated, and the correct answer remains in the same position. The distractors remain incorrect in the Hindi version.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते वस्तू 1 किलोग्रॅम वजन असलेल्या उदाहरणाचे उदाहरण आहे?",
-          "choices": [
-            "एक पेन्सिल",
-            "एक चावलाची बॅग",
-            "एक अंगुली",
-            "लहान पुस्तक"
-          ],
-          "solution": "चावलाची बॅग ही 1 किलोग्रॅम वजन असलेल्या वस्तूचे उदाहरण आहे. पेन्सिल आणि अंगुली खूप हलक्या असतात, आणि लहान पुस्तक 1 किलोग्रॅम पेक्षा कमी वजन असू शकते. इतर विकल्प चूकीचे आहेत कारण ते 1 किलोग्रॅम वजनास सुसंगत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms used (e.g., 'चावलाची बॅग' for 'bag of sugar', 'अंगुली' for 'feather' – though 'अंगुली' literally means 'finger', it's used colloquially for 'feather' in some contexts).",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses weight with size",
-        null,
-        "Confuses weight with size",
-        "Confuses weight with size"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is a bag of sugar, which is a common object that weighs about 1 kg. The other options are lighter, and the author's reasoning for the distractors is valid, as they reflect a common misconception of confusing weight with size.",
-      "sources": [
-        {
-          "document": "ncert/3/mathematics/cemm111.pdf",
-          "ordinal": 4,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 11: Filling and L ifting",
-            "Let us Explore"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm111.pdf",
-          "ordinal": 5,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 11: Filling and L ifting",
-            "Let us Explore"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:21:43.084Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If 4 marbles balance with a pencil box, how many marbles would balance with 2 pencil boxes?",
-      "choices": [
-        "4",
-        "8",
-        "6",
-        "16"
-      ],
-      "answerIndex": 1,
-      "solution": "If 4 marbles balance with 1 pencil box, then 8 marbles would balance with 2 pencil boxes. This is because the number of marbles needed is directly proportional to the number of pencil boxes. The other options are incorrect because they do not follow this proportional relationship.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि 4 कंचे एक पेंसिल बॉक्स के साथ संतुलित होते हैं, तो 2 पेंसिल बॉक्स के साथ कितने कंचे संतुलित होंगे?",
-          "choices": [
-            "4",
-            "8",
-            "6",
-            "16"
-          ],
-          "solution": "यदि 4 कंचे 1 पेंसिल बॉक्स के साथ संतुलित होते हैं, तो 8 कंचे 2 पेंसिल बॉक्स के साथ संतुलित होंगे। ऐसा इसलिए है क्योंकि आवश्यक कंचों की संख्या पेंसिल बॉक्सों की संख्या के सीधे समानुपाती होती है। अन्य विकल्प गलत हैं क्योंकि वे इस समानुपाती संबंध का अनुसरण नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "4 गोली एक पेन्सिल बॉक्स ला संतुलित करतात, तर 2 पेन्सिल बॉक्स ला संतुलित करण्यासाठी किती गोली लागतील?",
-          "choices": [
-            "4",
-            "8",
-            "6",
-            "16"
-          ],
-          "solution": "जर 4 गोली एक पेन्सिल बॉक्स ला संतुलित करतात, तर 8 गोली 2 पेन्सिल बॉक्स ला संतुलित करतील. हे कारण गोलींची संख्या पेन्सिल बॉक्सच्या संख्येशी थेट आनुपातिक असते. इतर विकल्प चुकीचे आहेत कारण ते या आनुपातिक संबंधाचे अनुसरण करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Mistakes the number of marbles for the same number of pencil boxes",
-        null,
-        "Student incorrectly adds 4 marbles + 2 pencil boxes instead of multiplying",
-        "Multiplies incorrectly by 4"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution is mathematically sound. The proportional reasoning is correct, and the distractors reflect common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/3/mathematics/cemm111.pdf",
-          "ordinal": 4,
-          "pageStart": 8,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 11: Filling and L ifting",
-            "Let us Explore"
-          ]
-        },
-        {
-          "document": "ncert/3/mathematics/cemm111.pdf",
-          "ordinal": 5,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 11: Filling and L ifting",
-            "Let us Explore"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:21:43.084Z",
+      "generatedAt": "2026-10-28T02:52:24.387Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 4,
-      "stem": "Using a pan-balance, you find that 1 bag is heavier than another. Which of the following is the most likely reason?",
+      "stem": "Using a pan-balance, how many times do you need to weigh to find the heaviest ball among three balls of different weights?",
       "choices": [
-        "One bag has more books",
-        "One bag has fewer books",
-        "Both bags have the same number of books",
-        "The bags are made of different materials"
+        "Once",
+        "Twice",
+        "Three times",
+        "Four times"
       ],
       "answerIndex": 0,
-      "solution": "The most likely reason is that one bag has more books. This is because the number of books directly affects the weight of the bag. The other options are incorrect because they do not directly explain the difference in weight.",
+      "solution": "Once is correct because you can place two balls on the pan-balance. If one side is heavier, that ball is the heaviest. If they balance, the third ball not weighed is the heaviest. Weighing twice, three times, or four times is unnecessary since the heaviest can be determined in a single comparison.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "पैन-बैलेंस का उपयोग करके, आप पाते हैं कि एक बैग दूसरे के मुकाबले भारी है। निम्नलिखित में से कौन-सा सबसे संभावित कारण है?",
+          "stem": "तीन अलग-अलग भार वाले गेंदों में से सबसे भारी गेंद को खोजने के लिए पैन-बैलेंस का उपयोग करके कितनी बार भार डालने की आवश्यकता होती है?",
           "choices": [
-            "एक बैग में अधिक किताबें हैं",
-            "एक बैग में कम किताबें हैं",
-            "दोनों बैगों में समान संख्या में किताबें हैं",
-            "बैग अलग-अलग सामग्री से बने हैं"
+            "एक बार",
+            "दो बार",
+            "तीन बार",
+            "चार बार"
           ],
-          "solution": "सबसे संभावित कारण यह है कि एक बैग में अधिक किताबें हैं। ऐसा इसलिए है क्योंकि किताबों की संख्या बैग के भार को सीधे प्रभावित करती है। अन्य विकल्प गलत हैं क्योंकि वे भार में अंतर की व्याख्या सीधे नहीं करते।",
+          "solution": "एक बार सही है क्योंकि आप दो गेंदों को पैन-बैलेंस पर रख सकते हैं। यदि एक तरफ भारी होती है, तो वह गेंद सबसे भारी होती है। यदि वे संतुलित हो जाते हैं, तो भार नहीं डाली गई तीसरी गेंद सबसे भारी होती है। दो, तीन या चार बार भार डालना आवश्यक नहीं है क्योंकि सबसे भारी एक ही तुलना में निर्धारित किया जा सकता है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate terminology. The correct answer (1) is in the same position as in the English version. All distractors remain incorrect.",
           "flag": null
         },
         "mr": {
-          "stem": "पॅन-बॅलन्स वापरून, तुम्हाला असे आढळले की एक बॅग दुसऱ्यापेक्षा भारी आहे. खालीलपैकी कोणते सर्वात शक्य कारण आहे?",
+          "stem": "तीन वेगवेगळ्या वजनाच्या गोल्यांमध्ये सर्वात भारी गोली शोधण्यासाठी पॅन-बॅलन्स वापरून किती वेळा तुम्हाला तोलाच घ्यावा लागेल?",
           "choices": [
-            "एका बॅगमध्ये जास्त पुस्तके आहेत",
-            "एका बॅगमध्ये कमी पुस्तके आहेत",
-            "दोन्ही बॅगमध्ये समान संख्येने पुस्तके आहेत",
-            "बॅग वेगवेगळ्या सामग्रीतून बनलेल्या आहेत"
+            "एकदा",
+            "दुसेरा",
+            "तीनदा",
+            "चारदा"
           ],
-          "solution": "सर्वात शक्य कारण एका बॅगमध्ये जास्त पुस्तके असणे आहे. हे कारण त्यांच्या संख्येमुळे बॅगचा वजन प्रत्यक्षपणे प्रभावित होतो. इतर विकल्प अयोग्य आहेत कारण ते वजनातील फरकाचे स्पष्टीकरण दर्शवत नाहीत.",
+          "solution": "एकदा बरोबर आहे कारण तुम्ही दोन गोल्या पॅन-बॅलन्स वर ठेवू शकता. जर एका बाजू भारी असेल तर ती गोली सर्वात भारी असेल. जर ते संतुलित राहिले तर तिसरी गोली जी तोलली गेली नाही ती सर्वात भारी असेल. दुसेरा, तीनदा किंवा चारदा तोल घेणे आवश्यक नाही कारण एका तुलनेत सर्वात भारी शोधता येऊ शकते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for a textbook context.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology. The solution and options are correctly aligned with the English version.",
           "flag": null
         }
       },
@@ -337,9 +444,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses weight with number of books",
-        "Confuses weight with number of books",
-        "Confuses weight with material type"
+        "Assumes multiple weighings are needed for accuracy",
+        "Does not understand the logic of comparing two balls at once",
+        "Incorrectly assumes more weighings are required for three balls"
       ],
       "solverAnswers": [
         0,
@@ -349,7 +456,7 @@
         0
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is sound and correctly identifies that having more books is the most likely reason for a bag being heavier. The reasoning for the distractors is valid, as they reflect common misconceptions about weight and its determinants.",
+      "critique": "The solution is correct and logically sound. The key insight is that comparing two balls on a balance can determine the heaviest in one weighing, as the heavier side or the unweighed ball will be the heaviest.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm111.pdf",
@@ -373,49 +480,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:21:43.084Z",
+      "generatedAt": "2026-10-28T02:52:24.387Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If a 1 kg salt packet balances 5 matchboxes, how many matchboxes would balance 3 kg of salt?",
+      "difficulty": 6,
+      "stem": "If a bottle holds 1 litre and a glass holds a quarter litre, how many glasses are needed to fill the bottle?",
       "choices": [
-        "10",
-        "15",
-        "5",
-        "20"
+        "2",
+        "3",
+        "4",
+        "5"
       ],
-      "answerIndex": 1,
-      "solution": "If 5 matchboxes balance 1 kg, then 15 matchboxes would balance 3 kg. The other options do not follow from the given ratio.",
-      "checkExpr": "5*3",
+      "answerIndex": 2,
+      "solution": "If a bottle holds 1 litre and a glass holds a quarter litre, 4 glasses are needed to fill the bottle. This is because 1 litre divided by a quarter litre equals 4. The other options do not match this calculation.",
+      "checkExpr": "1/(0.25)",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि 1 किग्रा नमक के थैले में 5 मैचबॉक्स संतुलित होते हैं, तो 3 किग्रा नमक के लिए कितने मैचबॉक्स संतुलित होंगे?",
+          "stem": "यदि एक बोतल 1 लीटर धारण कर सकती है और एक गिलास एक चौथाई लीटर धारण कर सकता है, तो बोतल को भरने के लिए कितने गिलास चाहिए?",
           "choices": [
-            "10",
-            "15",
-            "5",
-            "20"
+            "2",
+            "3",
+            "4",
+            "5"
           ],
-          "solution": "यदि 5 मैचबॉक्स 1 किग्रा के साथ संतुलित होते हैं, तो 15 मैचबॉक्स 3 किग्रा के साथ संतुलित होंगे। अन्य विकल्प दिए गए अनुपात से नहीं निकलते हैं।",
+          "solution": "यदि एक बोतल 1 लीटर धारण कर सकती है और एक गिलास एक चौथाई लीटर धारण कर सकता है, तो बोतल को भरने के लिए 4 गिलास की आवश्यकता होती है। इसका कारण यह है कि 1 लीटर को एक चौथाई लीटर से विभाजित करने पर 4 प्राप्त होता है। अन्य विकल्प इस गणना के अनुरूप नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English question and solution, with appropriate terminology used in a Hindi-medium context.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "1 किलोग्राम लवंगाचा पॅकेज 5 बाजूच्या बॉक्सला संतुलित करतो, तर 3 किलोग्राम लवंगाला संतुलित करणारे किती बाजूचे बॉक्स असतील?",
+          "stem": "एक बाटली 1 लिटर धरू शकते आणि एक ग्लास चौथाई लिटर धरू शकते, बाटली भरण्यासाठी किती ग्लास लागतील?",
           "choices": [
-            "10",
-            "15",
-            "5",
-            "20"
+            "2",
+            "3",
+            "4",
+            "5"
           ],
-          "solution": "जर 5 बाजूचे बॉक्स 1 किलोग्रामला संतुलित करत असतील, तर 15 बाजूचे बॉक्स 3 किलोग्रामला संतुलित करतील. इतर विकल्प दिलेल्या गुणोत्तरापासून अनुसरण करत नाहीत.",
+          "solution": "एक बाटली 1 लिटर धरू शकते आणि एक ग्लास चौथाई लिटर धरू शकते, बाटली भरण्यासाठी 4 ग्लास लागतात. हे कारण एक लिटर चौथाई लिटर ने भागल्यास 4 मिळतात. इतर विकल्प ह्या गणनेशी मेळ नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for weights and balance.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terms for measurements.",
           "flag": null
         }
       },
@@ -424,36 +531,55 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Adds 5 and 5 instead of multiplying",
+        "Confuses the fraction 1/4 with 1/2, thinking a quarter litre is half a litre.",
+        "Confuses the fraction 1/4 with 1/3, thinking a quarter is the same as a third",
         null,
-        "Subtracts 5 from 10",
-        "Divides 5 by 2"
+        "Confuses the fraction 1/4 with 1/5, thinking a quarter is five parts instead of four"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and logically follows from the given ratio. The correct answer is 15 matchboxes for 3 kg of salt.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 4 glasses, which corresponds to option 2. The author's key is correct. The reasoning for the distractors is valid, as they reflect common misconceptions about fractions.",
       "sources": [
         {
           "document": "ncert/3/mathematics/cemm111.pdf",
-          "ordinal": 4,
-          "pageStart": 8,
-          "pageEnd": 10,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
-            "Chapter 11: Filling and L ifting",
-            "Let us Explore"
+            "Chapter 11: Filling and L ifting"
           ]
         },
         {
           "document": "ncert/3/mathematics/cemm111.pdf",
-          "ordinal": 5,
-          "pageStart": 10,
-          "pageEnd": 11,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 11: Filling and L ifting",
+            "Let us Discuss"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm111.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 11: Filling and L ifting",
+            "Let us Discuss"
+          ]
+        },
+        {
+          "document": "ncert/3/mathematics/cemm111.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 8,
           "headingPath": [
             "Chapter 11: Filling and L ifting",
             "Let us Explore"
@@ -461,7 +587,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T21:21:43.084Z",
+      "generatedAt": "2026-10-28T02:52:24.387Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

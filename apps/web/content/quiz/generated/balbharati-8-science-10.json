@@ -21,49 +21,49 @@
   "board": "BALBHARATI",
   "book": "८ वी सामान्य विज्ञान इंग्रजी",
   "edition": "First Edition 2018",
-  "generatedAt": "2026-10-22T07:20:33.663Z",
+  "generatedAt": "2026-10-29T20:46:51.431Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is the chemical factory of the cell?",
+      "stem": "Which of the following is described as a chemical factory of the cell?",
       "choices": [
-        "Mitochondria",
-        "Cell wall",
         "Endoplasmic reticulum",
-        "Ribosomes"
+        "Mitochondria",
+        "Lysosome",
+        "Vacuole"
       ],
-      "answerIndex": 2,
-      "solution": "The chemical factory of the cell is the endoplasmic reticulum. Mitochondria are the ATP-producing factories. The cell wall supports the cell but is not a chemical factory. Ribosomes are involved in protein synthesis, not chemical production.",
+      "answerIndex": 0,
+      "solution": "The endoplasmic reticulum is known as the chemical factory of the cell because it is responsible for synthesizing proteins and lipids. Mitochondria produce energy, lysosomes break down waste, and vacuoles store substances, none of which match the role of a chemical factory.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन कोशिका का रासायनिक फैक्टरी है?",
+          "stem": "निम्नलिखित में से कौन सी कोशिका के रासायनिक कारखाने के रूप में वर्णित की जाती है?",
           "choices": [
-            "माइटोकॉन्ड्रिया",
-            "कोशिका भित्ति",
             "एंडोप्लाज्मिक रेटिकुलम",
-            "राइबोसोम"
+            "माइटोकॉन्ड्रिया",
+            "लाइसोसोम",
+            "वैक्यूओल"
           ],
-          "solution": "कोशिका का रासायनिक फैक्टरी एंडोप्लाज्मिक रेटिकुलम है। माइटोकॉन्ड्रिया एटीपी उत्पादन के कारखाने हैं। कोशिका भित्ति कोशिका का समर्थन करती है लेकिन रासायनिक फैक्टरी नहीं है। राइबोसोम प्रोटीन संश्लेषण में लगे रहते हैं, रासायनिक उत्पादन में नहीं।",
+          "solution": "एंडोप्लाज्मिक रेटिकुलम को कोशिका के रासायनिक कारखाने के रूप में जाना जाता है क्योंकि यह प्रोटीन और लिपिड के संश्लेषण के लिए जिम्मेदार है। माइटोकॉन्ड्रिया ऊर्जा उत्पन्न करते हैं, लाइसोसोम अपशिष्ट के विघटन में सहायता करते हैं और वैक्यूओल पदार्थों के भंडारण में सहायता करते हैं, जिनमें से कोई भी रासायनिक कारखाने के कार्य के साथ मेल नहीं खाता।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi scientific terminology used.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard biological terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोशिकेचे रसायनिक कारखाना कोणता आहे?",
+          "stem": "खालीलपैकी कोशिकेचे रासायनिक कारखाना म्हणून वर्णन केले जाते?",
           "choices": [
+            "अंतर्ग्रंथिक जाल",
             "माइटोकॉन्ड्रिया",
-            "कोशिकाभित्ती",
-            "अंतर्ग्रंथी नलिका",
-            "राइबोसोम"
+            "लायसोम",
+            "रिकामा जागा"
           ],
-          "solution": "कोशिकेचा रसायनिक कारखाना अंतर्ग्रंथी नलिका आहे. माइटोकॉन्ड्रिया एटीपी उत्पादन करणारे कारखाने आहेत. कोशिकाभित्ती कोशिकेचा समर्थन करते परंतु रसायनिक कारखाना नाही. राइबोसोम प्रोटीन संश्लेषणात सहभागी होतात, रसायन उत्पादनात नाही.",
+          "solution": "अंतर्ग्रंथिक जाल कोशिकेचे रासायनिक कारखाना म्हणून ओळखले जाते कारण ते प्रोटीन आणि लिपिड तयार करण्यास जबाबदार आहे. माइटोकॉन्ड्रिया ऊर्जा तयार करतात, लायसोम अपशिष्ट तोडतात आणि रिकामा जागा पदार्थ जमा करतात, जे कोणतेही रासायनिक कारखाना च्या भूमिकेसह जुळत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
           "flag": null
         }
       },
@@ -72,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses mitochondria with the chemical factory",
-        "Thinks the cell wall is a chemical factory",
         null,
-        "Does not know the role of ribosomes"
+        "Confuses endoplasmic reticulum with mitochondria, which is the ATP producing factory.",
+        "Confuses endoplasmic reticulum with lysosome, which is involved in breaking down waste materials.",
+        "Confuses endoplasmic reticulum with vacuole, which is used for storage."
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "levelFlag": null,
-      "critique": "The solution is correct. The endoplasmic reticulum is indeed the chemical factory of the cell, as it is involved in the synthesis of lipids, proteins, and detoxification. The other options are correctly dismissed based on their actual functions.",
+      "critique": "The correct answer is 0 (Endoplasmic reticulum), as it is indeed referred to as the chemical factory of the cell due to its role in protein and lipid synthesis. The author's reasoning for the other options is valid and reflects common student misconceptions.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -99,47 +99,47 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:20:33.663Z",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "What is the function of the Golgi Complex in the cell?",
+      "stem": "What is the main function of the cell wall in plant cells?",
       "choices": [
-        "To produce energy-rich compounds",
-        "To digest waste materials",
-        "To modify, sort and package materials",
-        "To produce vacuoles and secretory vesicles"
+        "To control the cell's activities",
+        "To allow the entry of all substances",
+        "To provide strength and protection",
+        "To store genetic material"
       ],
       "answerIndex": 2,
-      "solution": "The Golgi Complex modifies, sorts, and packages materials like proteins and lipids, preparing them for transport to their final destinations within or outside the cell. This function is essential for organizing cellular products. Other organelles, such as lysosomes, handle digestion, while mitochondria generate energy, and vacuoles store materials.",
+      "solution": "The main function of the cell wall in plant cells is to provide strength and protection. It is not the control center, nor does it allow all substances to enter. It also does not store genetic material, which is the role of the nucleus.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "कोशिका में गॉल्गी जटिल का कार्य क्या है?",
+          "stem": "पादप कोशिकाओं में कोशिका भित्ति का मुख्य कार्य क्या है?",
           "choices": [
-            "ऊर्जा से समृद्ध यौगिक उत्पादित करना",
-            "अपशिष्ट सामग्री का पाचन करना",
-            "सामग्री को संशोधित, वर्गीकृत और पैक करना",
-            "वैक्यूओल्स और स्रावी वेसिकल्स का उत्पादन करना"
+            "कोशिका के कार्यों का नियंत्रण करना",
+            "सभी पदार्थों के प्रवेश की अनुमति देना",
+            "बल और सुरक्षा प्रदान करना",
+            "आनुवंशिक सामग्री को संग्रहीत करना"
           ],
-          "solution": "गॉल्गी जटिल प्रोटीन और लिपिड जैसी सामग्री को संशोधित, वर्गीकृत और पैक करता है, जिसके द्वारा उन्हें कोशिका के भीतर या बाहर अंतिम गंतव्य तक परिवहन के लिए तैयार किया जाता है। यह कार्य कोशिका उत्पादों के संगठन के लिए महत्वपूर्ण है। अन्य कोशिका अंग, जैसे लाइसोसोम, पाचन का कार्य करते हैं, जबकि माइटोकॉन्ड्रिया ऊर्जा उत्पन्न करते हैं और वैक्यूओल्स सामग्री को भंडारित करते हैं।",
+          "solution": "पादप कोशिकाओं में कोशिका भित्ति का मुख्य कार्य बल और सुरक्षा प्रदान करना है। यह नियंत्रण केंद्र नहीं है, न ही सभी पदार्थों के प्रवेश की अनुमति देता है। इसके अलावा, आनुवंशिक सामग्री को संग्रहीत करना नाभिक का कार्य है।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi biological terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "कोशिकेतील गॉल्गी कॉम्प्लेक्सचे कार्य काय आहे?",
+          "stem": "वनस्पती कोशिकांमध्ये कोशिका भित्तीचे मुख्य कार्य काय आहे?",
           "choices": [
-            "ऊर्जा-समृद्ध अणू तयार करणे",
-            "अपशिष्ट सामग्रीचे पाचन करणे",
-            "सामग्रींचे संशोधन, वर्गीकरण आणि पॅकेजिंग करणे",
-            "रिक्त अंगांचे आणि खाली टाकणाऱ्या वेसिकल्सचे तयार करणे"
+            "कोशिकेच्या क्रियांचे नियंत्रण करणे",
+            "सर्व पदार्थांच्या प्रवेशास परवानगी देणे",
+            "बल आणि संरक्षण प्रदान करणे",
+            "जीनेटिक सामग्री जमा करणे"
           ],
-          "solution": "गॉल्गी कॉम्प्लेक्स प्रोटीन आणि लिपिडसारख्या सामग्रींचे संशोधन, वर्गीकरण आणि पॅकेजिंग करते, ज्यामुळे त्यांचे अंतिम ठिकाणी वाहतूक करणे शक्य होते. हे कार्य कोशिकेच्या उत्पादनांच्या संगठनासाठी आवश्यक आहे. इतर ऑर्गेनेल्स, जसे की लाइसोसोम्स, पाचन व्हायचे आहेत, आणि माइटोकॉन्ड्रिया ऊर्जा तयार करतात, आणि रिक्त अंगांमध्ये सामग्री भंडारित करतात.",
+          "solution": "वनस्पती कोशिकांमध्ये कोशिका भित्तीचे मुख्य कार्य बल आणि संरक्षण प्रदान करणे आहे. ती नियंत्रण केंद्र नाही, आणि सर्व पदार्थांच्या प्रवेशास परवानगी देत नाही. ती जीनेटिक सामग्री जमा करत नाही, जे न्यूक्लियसचे कार्य आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
           "flag": null
@@ -150,10 +150,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the function of mitochondria with that of the Golgi Complex.",
-        "Confuses the function of lysosomes with that of the Golgi Complex.",
+        "Confuses the function of the nucleus",
+        "Confuses the function of the plasma membrane",
         null,
-        "Student confuses Golgi function with that of vesicle production, thinking it directly creates them instead of modifying and packaging"
+        "Confuses the function of the cell wall with that of the nucleus"
       ],
       "solverAnswers": [
         2,
@@ -163,258 +163,7 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 2, as the Golgi Complex is indeed responsible for modifying, sorting, and packaging materials. The author's explanations for the incorrect options align with common student misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 92,
-          "pageStart": 80,
-          "pageEnd": 81,
-          "headingPath": [
-            "10. Cell and Cell Organelles"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 93,
-          "pageStart": 81,
-          "pageEnd": 82,
-          "headingPath": [
-            "10. Cell and Cell Organelles"
-          ]
-        },
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 94,
-          "pageStart": 82,
-          "pageEnd": 83,
-          "headingPath": [
-            "10. Cell and Cell Organelles"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:20:33.663Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "If there had been no difference between mitochondria and plastids, what would have happened?",
-      "choices": [
-        "Cell would have been unable to perform photosynthesis.",
-        "Cell would have been unable to perform respiration.",
-        "Cell would have been unable to produce ATP.",
-        "Cell would have been unable to maintain osmotic pressure."
-      ],
-      "answerIndex": 0,
-      "solution": "If there had been no difference between mitochondria and plastids, the cell would have been unable to perform photosynthesis. Mitochondria are responsible for respiration, while plastids are responsible for photosynthesis. The inability to perform photosynthesis would affect the cell's ability to produce energy from light.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि माइटोकॉन्ड्रिया और प्लास्टिड में कोई अंतर नहीं होता, तो क्या होता?",
-          "choices": [
-            "कोशिका प्रकाश संश्लेषण करने में असमर्थ होती।",
-            "कोशिका श्वसन करने में असमर्थ होती।",
-            "कोशिका एटीपी उत्पादित करने में असमर्थ होती।",
-            "कोशिका ऑस्मोटिक दबाव को बनाए रखने में असमर्थ होती।"
-          ],
-          "solution": "यदि माइटोकॉन्ड्रिया और प्लास्टिड में कोई अंतर नहीं होता, तो कोशिका प्रकाश संश्लेषण करने में असमर्थ होती। माइटोकॉन्ड्रिया श्वसन के लिए उत्तरदायी होते हैं, जबकि प्लास्टिड प्रकाश संश्लेषण के लिए उत्तरदायी होते हैं। प्रकाश संश्लेषण करने में असमर्थता कोशिका के प्रकाश से ऊर्जा उत्पादन की क्षमता को प्रभावित करती।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard biological terminology appropriate for a Hindi-medium curriculum.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर माइटोकॉन्ड्रिया आणि प्लास्टिडमध्ये फरक नसत तर काय झाले असते?",
-          "choices": [
-            "कोशिका फोटोसंश्लेषण करू शकली नसती.",
-            "कोशिका श्वसन करू शकली नसती.",
-            "कोशिका एटीपी तयार करू शकली नसती.",
-            "कोशिका ऑस्मोटिक दाब बरोबर ठेवू शकली नसती."
-          ],
-          "solution": "जर माइटोकॉन्ड्रिया आणि प्लास्टिडमध्ये फरक नसत तर कोशिका फोटोसंश्लेषण करू शकली नसती. माइटोकॉन्ड्रिया श्वसनासाठी जबाबदार असतात, तर प्लास्टिड फोटोसंश्लेषणासाठी जबाबदार असतात. फोटोसंश्लेषण करण्याची अयोग्यता कोशिकेच्या प्रकाशापासून ऊर्जा तयार करण्याच्या क्षमतेवर प्रभाव टाकेल.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Thinks the main function of mitochondria is photosynthesis",
-        "Confuses the roles of mitochondria and plastids",
-        "Does not understand the role of plastids in photosynthesis"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution correctly identifies that plastids are responsible for photosynthesis, and if mitochondria and plastids were indistinguishable, photosynthesis would be impaired. The reasoning aligns with the key and the misconceptions described.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 95,
-          "pageStart": 83,
-          "pageEnd": 84,
-          "headingPath": [
-            "10. Cell and Cell Organelles",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:20:33.663Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a plant cell did not have a cell wall, what would most likely happen?",
-      "choices": [
-        "It would burst due to osmotic pressure",
-        "It would shrink due to plasmolysis",
-        "It would become rigid and lose shape",
-        "It would grow faster"
-      ],
-      "answerIndex": 0,
-      "solution": "The correct answer is It would burst due to osmotic pressure because the cell wall maintains the cell's shape and prevents it from bursting when water enters. Without a cell wall, the cell would not be able to withstand the pressure from osmosis.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक पौधे कोशिका के पास कोशिका भित्ति न हो, तो सबसे अधिक संभावना क्या होगी?",
-          "choices": [
-            "इसके अपोस्मोटिक दबाव के कारण फट जाएगा",
-            "इसके प्लाज्मोलिसिस के कारण सिकुड़ जाएगा",
-            "इसके कठोर हो जाने और आकृति खो जाने के कारण",
-            "इसके तेजी से बढ़ जाने के कारण"
-          ],
-          "solution": "सही उत्तर यह है कि इसके अपोस्मोटिक दबाव के कारण फट जाएगा क्योंकि कोशिका भित्ति कोशिका के आकार को बनाए रखती है और पानी प्रवेश करने पर इसके फटने से रोकती है। कोशिका भित्ति के बिना, कोशिका अपोस्मोसिस के दबाव को सहन नहीं कर सकेगी।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एका वनस्पतीच्या कोशिकेला कोशिका भित्ती नसेल, तर त्याला सर्वात जास्त काय होईल?",
-          "choices": [
-            "ती ओस्मोटिक दाबामुळे फुगेल",
-            "ती प्लाझ्मोलिसिसमुळे खाली पडेल",
-            "ती खुली रहाईल आणि आकार गमावेल",
-            "ती जास्त वेगाने वाढेल"
-          ],
-          "solution": "हे बरोबर उत्तर ओस्मोटिक दाबामुळे फुगेल कारण कोशिका भित्ती कोशिकेचा आकार टिकवून ठेवते आणि पाणी प्रवेश केल्यास तिच्यावरील दाब टाळते. कोशिका भित्ती नसल्यास, कोशिका ओस्मोसिसच्या दाबाला सहन करू शकत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses cell wall with the plasma membrane, which can cause plasmolysis.",
-        "Confuses cell wall with the cytoplasm, which is not related to rigidity.",
-        "Confuses cell wall with the nucleus, which is not related to growth."
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct. Without a cell wall, a plant cell cannot resist the osmotic pressure from water entering the cell, leading to bursting. The author's reasoning for the distractors is based on plausible student misconceptions.",
-      "sources": [
-        {
-          "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 95,
-          "pageStart": 83,
-          "pageEnd": 84,
-          "headingPath": [
-            "10. Cell and Cell Organelles",
-            "Exercises"
-          ]
-        }
-      ],
-      "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:20:33.663Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following is a function of the endoplasmic reticulum (ER)?",
-      "choices": [
-        "Controls the movement of substances in and out of the cell",
-        "Stores genetic material",
-        "Provides structural support to the cell",
-        "Transports proteins and detoxifies harmful substances"
-      ],
-      "answerIndex": 3,
-      "solution": "The endoplasmic reticulum transports proteins and detoxifies harmful substances. It is responsible for moving newly made proteins to their correct locations and neutralizing toxins. The plasma membrane controls substance movement, the nucleus stores genetic material, and the cell wall provides structural support.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा अंतःप्रद्रव्यी जालिका (ई.आर.) का कार्य है?",
-          "choices": [
-            "कोशिका में अंदर और बाहर अवयवों के गति का नियंत्रण करता है",
-            "आनुवंशिक सामग्री को भंडारित करता है",
-            "कोशिका के लिए संरचनात्मक समर्थन प्रदान करता है",
-            "प्रोटीन के परिवहन और हानिकारक पदार्थों के विश्लेषण में सहायता करता है"
-          ],
-          "solution": "अंतःप्रद्रव्यी जालिका प्रोटीन के परिवहन और हानिकारक पदार्थों के विश्लेषण में सहायता करता है। यह नए बने प्रोटीन के अपने सही स्थान पर ले जाने के लिए जिम्मेदार है और जहरीले तत्वों को अक्रिय करता है। प्लाज्मा झिल्ली अवयवों के गति का नियंत्रण करता है, केंद्रक आनुवंशिक सामग्री को भंडारित करता है, और कोशिका भित्ति कोशिका के लिए संरचनात्मक समर्थन प्रदान करता है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All options and the solution are correctly translated, with the correct answer remaining in the same position (option 3). The distractors remain incorrect as in the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एंडोप्लाझमिक रेटिकुलम (ई.आर.) चे कार्य आहे?",
-          "choices": [
-            "कोशिकेच्या आत आणि बाहेर द्रव्यांच्या गतीचा नियंत्रण करते",
-            "जीनेटिक द्रव्य जमा करते",
-            "कोशिकेला संरचनात्मक समर्थन पुरवते",
-            "प्रोटीन वाहते आणि अवांछित पदार्थांचे विशोधन करते"
-          ],
-          "solution": "एंडोप्लाझमिक रेटिकुलम प्रोटीन वाहते आणि अवांछित पदार्थांचे विशोधन करते. ते निर्मित प्रोटीन त्यांच्या योग्य स्थानावर पोहोचविण्यास जबाबदार आहे आणि विषाणूंचे निष्क्रिय करते. प्लाझमा कलेल द्रव्यांच्या गतीचा नियंत्रण करते, न्यूक्लियस जीनेटिक द्रव्य जमा करते आणि कोशिका भित्ती संरचनात्मक समर्थन पुरवते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with biology textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the ER with the plasma membrane, which controls substance movement.",
-        "Confuses the ER with the nucleus, which stores genetic material.",
-        "Confuses the ER with the cell wall, which provides structural support.",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies the function of the ER and distinguishes it from other organelles. The reasoning for the distractors is accurate and reflects common student misconceptions.",
+      "critique": "The correct answer is 2, as the cell wall's main function is to provide strength and protection. The other options correspond to known misconceptions about the nucleus and plasma membrane.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -445,49 +194,49 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:20:33.663Z",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If a cell is exposed to a condition that damages its mitochondria, what would be the immediate effect on the cell?",
+      "difficulty": 2,
+      "stem": "Which of the following is a function of the Golgi complex?",
       "choices": [
-        "The cell would stop producing proteins",
-        "The cell would stop digesting waste material",
-        "The cell would lose its ability to produce energy",
-        "The cell would stop producing lipids"
+        "It produces ATP for the cell",
+        "It digests worn-out cellular organelles",
+        "It modifies, sorts, and packs materials synthesized in the cell",
+        "It produces vacuoles and secretory vesicles"
       ],
       "answerIndex": 2,
-      "solution": "The immediate effect of damaged mitochondria would be the loss of the cell's ability to produce energy in the form of ATP. This is because the mitochondria are responsible for energy production. Lysosomes are for digestion, vacuoles for storage, and the nucleus for protein synthesis.",
+      "solution": "The Golgi complex is described as a packing department that modifies, sorts, and packs materials such as enzymes, mucus, proteins, and pigments. It does not produce ATP, which is the role of mitochondria. It does not digest worn-out organelles, which is the function of lysosomes. It does not provide structural support, which is not a function of the Golgi complex. Hence, the correct answer is that it modifies, sorts, and packs materials synthesized in the cell.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि किसी कोशिका को एक ऐसी स्थिति के सामना करना पड़ता है जो इसके माइटोकॉन्ड्रिया को क्षति पहुंचाती है, तो कोशिका पर तत्काल प्रभाव क्या होगा?",
+          "stem": "निम्नलिखित में से कौन-सा गॉल्गी अंग का कार्य है?",
           "choices": [
-            "कोशिका प्रोटीन बनाना बंद कर देगी",
-            "कोशिका अपशिष्ट सामग्री का अपचयन बंद कर देगी",
-            "कोशिका ऊर्जा उत्पादन क्षमता खो देगी",
-            "कोशिका लिपिड बनाना बंद कर देगी"
+            "यह कोशिका के लिए ATP उत्पन्न करता है",
+            "यह आत्मसात किए गए कोशिकीय ऑर्गेनेल्स का अपचयन करता है",
+            "यह कोशिका में संश्लेषित सामग्री को संशोधित, वर्गीकृत एवं पैक करता है",
+            "यह रिक्तिकाओं एवं स्रावी वेसिकल्स का उत्पादन करता है"
           ],
-          "solution": "क्षतिग्रस्त माइटोकॉन्ड्रिया का तत्काल प्रभाव कोशिका के एटीपी के रूप में ऊर्जा उत्पादन क्षमता खो देना होगा। इसका कारण यह है कि माइटोकॉन्ड्रिया ऊर्जा उत्पादन के लिए जिम्मेदार हैं। लाइसोसोम अपचयन के लिए होते हैं, वैक्यूओल्स भंडारण के लिए और केंद्रक प्रोटीन संश्लेषण के लिए।",
+          "solution": "गॉल्गी अंग को एक पैकिंग विभाग के रूप में वर्णित किया गया है जो कोशिका में संश्लेषित एंजाइम, म्यूसिन, प्रोटीन एवं वर्णक के जैसी सामग्री को संशोधित, वर्गीकृत एवं पैक करता है। यह ATP उत्पन्न नहीं करता है, जो माइटोकॉन्ड्रिया का कार्य है। यह आत्मसात किए गए ऑर्गेनेल्स का अपचयन नहीं करता है, जो लाइसोसोम का कार्य है। यह संरचनात्मक समर्थन प्रदान नहीं करता है, जो गॉल्गी अंग का कार्य नहीं है। अतः सही उत्तर यह है कि यह कोशिका में संश्लेषित सामग्री को संशोधित, वर्गीकृत एवं पैक करता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi biological terminology.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options and the solution are correctly translated, with technical terms like 'गॉल्गी अंग' (Golgi complex), 'माइटोकॉन्ड्रिया' (mitochondria), and 'लाइसोसोम' (lysosomes) using standard Hindi scientific vocabulary.",
           "flag": null
         },
         "mr": {
-          "stem": "जर कोशिकेला एखाद्या परिस्थितीमुळे माइटोकॉन्ड्रिया नुकसान होत असेल, तर कोशिकेवर तात्काळ परिणाम काय होईल?",
+          "stem": "खालीलपैकी कोणते गॉल्गी कॉम्प्लेक्सचे कार्य आहे?",
           "choices": [
-            "कोशिका प्रोटीन तयार करणे बंद करेल",
-            "कोशिका अपशिष्ट सामग्रीचे पाचन बंद करेल",
-            "कोशिका ऊर्जा तयार करण्याची क्षमता गमावेल",
-            "कोशिका लिपिड तयार करणे बंद करेल"
+            "ते सेलसाठी ATP तयार करते",
+            "ते त्रुटित असलेल्या सेल्युलर ऑर्गॅनेल्सचे पाचन करते",
+            "ते सेलमध्ये संश्लेषित केलेल्या पदार्थांचे संशोधन, विभाजन आणि पॅकिंग करते",
+            "ते वॅक्यूओल्स आणि सीक्रेटरी वेसिकल्स तयार करते"
           ],
-          "solution": "नुकसान झालेल्या माइटोकॉन्ड्रियांचा तात्काळ परिणाम कोशिकेच्या एटीपी च्या रूपात ऊर्जा तयार करण्याची क्षमता गमावणे असेल. हे कारण माइटोकॉन्ड्रिया ऊर्जा उत्पादनासाठी जबाबदार आहेत. लाइसोसोम्स पाचनासाठी आहेत, वॅक्यूओल्स साठवण्यासाठी आहेत आणि न्यूक्लियस प्रोटीन संश्लेषणासाठी जबाबदार आहे.",
+          "solution": "गॉल्गी कॉम्प्लेक्स एक पॅकिंग विभाग म्हणून वर्णिले जाते जे सेलमध्ये संश्लेषित केलेल्या पदार्थांचे जसे की एन्झाइम, म्यूकस, प्रोटीन आणि रंगद्रव्यांचे संशोधन, विभाजन आणि पॅकिंग करते. ते ATP तयार करत नाही, जे माइटोकॉन्ड्रियाचे कार्य आहे. ते त्रुटित असलेल्या ऑर्गॅनेल्सचे पाचन करत नाही, जे लायसोसोमचे कार्य आहे. ते संरचनात्मक साहाय्य प्रदान करत नाही, जे गॉल्गी कॉम्प्लेक्सचे कार्य नाही. त्यामुळे, योग्य उत्तर असे आहे की ते सेलमध्ये संश्लेषित केलेल्या पदार्थांचे संशोधन, विभाजन आणि पॅकिंग करते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi terminology consistent with biology textbooks.",
           "flag": null
         }
       },
@@ -496,10 +245,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the function of the nucleus with that of the mitochondria.",
-        "Confuses the function of lysosomes with that of the mitochondria.",
+        "Confuses the function of the Golgi complex with that of mitochondria",
+        "Confuses the function of the Golgi complex with that of lysosomes",
         null,
-        "Confuses mitochondria with the smooth endoplasmic reticulum, which is responsible for lipid synthesis"
+        "Student confuses Golgi function with that of the endoplasmic reticulum or misremembers the role of the Golgi in vesicle formation"
       ],
       "solverAnswers": [
         2,
@@ -508,8 +257,8 @@
         2,
         2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that mitochondria are the site of ATP production, and the other options confuse mitochondria with other organelles. The reasoning for the distractors aligns with common student misconceptions.",
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the function of the Golgi complex and appropriately explains why the other options are incorrect. The misconceptions listed for the wrong options are valid and reflect common student errors.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
@@ -540,47 +289,1024 @@
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:20:33.663Z",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "What is the primary reason for the loss of the nucleus in mammalian red blood cells?",
+      "difficulty": 2,
+      "stem": "What is the role of mitochondria in a cell?",
       "choices": [
-        "To allow more space for oxygen transport",
-        "To increase the surface area for gas exchange",
-        "To make the cell more flexible",
-        "To reduce the cell's size"
+        "They produce ATP for the cell",
+        "They store food and water",
+        "They help in the formation of the cell wall",
+        "They are involved in protein synthesis"
       ],
       "answerIndex": 0,
-      "solution": "The primary reason for the loss of the nucleus in mammalian red blood cells is to allow more space for oxygen transport. Without the nucleus, the cell can contain more hemoglobin, which is essential for carrying oxygen. The other options, while related to cell structure, do not address the main functional advantage of losing the nucleus.",
+      "solution": "Mitochondria are described as the energy-producing organelles that produce ATP through the oxidation of carbohydrates and fats. They do not store food and water, which is the role of vacuoles. They do not help in the formation of the cell wall, which is the role of the cell wall itself. They do not participate in protein synthesis, which is the role of ribosomes. Hence, the correct answer is that they produce ATP for the cell.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "मानव लाल रक्त कणिकाओं में नाभिक के नुकसान का प्राथमिक कारण क्या है?",
+          "stem": "कोशिका में माइटोकॉन्ड्रिया की भूमिका क्या है?",
           "choices": [
-            "ऑक्सीजन परिवहन के लिए अधिक जगह छोड़ने के लिए",
-            "गैस विनिमय के लिए सतह क्षेत्र बढ़ाने के लिए",
-            "कोशिका को अधिक लचीला बनाने के लिए",
-            "कोशिका के आकार को कम करने के लिए"
+            "वे कोशिका के लिए ATP उत्पादित करते हैं",
+            "वे भोजन और पानी का भंडारण करते हैं",
+            "वे कोशिका भित्ति के निर्माण में सहायता करते हैं",
+            "वे प्रोटीन संश्लेषण में शामिल होते हैं"
           ],
-          "solution": "मानव लाल रक्त कणिकाओं में नाभिक के नुकसान का प्राथमिक कारण ऑक्सीजन परिवहन के लिए अधिक जगह छोड़ना है। नाभिक के बिना कोशिका अधिक हीमोग्लोबिन धारण कर सकती है, जो ऑक्सीजन के परिवहन के लिए आवश्यक है। अन्य विकल्प, यद्यपि कोशिका संरचना से संबंधित हैं, लेकिन नाभिक के नुकसान के मुख्य कार्यात्मक लाभ को संबोधित नहीं करते।",
+          "solution": "माइटोकॉन्ड्रिया को ऊर्जा उत्पादक अंगक कहा जाता है जो कार्बोहाइड्रेट और वसा के ऑक्सीकरण द्वारा ATP उत्पादित करते हैं। वे भोजन और पानी का भंडारण नहीं करते, जो रिक्तिका की भूमिका है। वे कोशिका भित्ति के निर्माण में सहायता नहीं करते, जो कोशिका भित्ति की स्वयं की भूमिका है। वे प्रोटीन संश्लेषण में भाग नहीं लेते, जो राइबोसोम की भूमिका है। अतः सही उत्तर यह है कि वे कोशिका के लिए ATP उत्पादित करते हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium biology curriculum.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "मानवी लाल रक्त कणांमध्ये न्यूक्लियसच्या गमावण्याचा प्राथमिक कारण काय आहे?",
+          "stem": "कोशिकेतील माइटोकॉन्ड्रिया ची भूमिका काय आहे?",
           "choices": [
-            "ऑक्सीजन परिवहनासाठी जास्त जागा देण्यासाठी",
-            "गॅस विनिमयासाठी पृष्ठभागाच्या क्षेत्राचा वाढविण्यासाठी",
-            "कोशिकेची अधिक लचका बनविण्यासाठी",
-            "कोशिकेच्या आकाराचा घटविण्यासाठी"
+            "ते कोशिकेसाठी ATP तयार करतात",
+            "ते खाद्य पदार्थ आणि पाणी जमा करतात",
+            "ते कोशिका भित्ती तयार करण्यात मदत करतात",
+            "ते प्रोटीन संश्लेषणात सहभागी असतात"
           ],
-          "solution": "मानवी लाल रक्त कणांमध्ये न्यूक्लियसच्या गमावण्याचा प्राथमिक कारण ऑक्सीजन परिवहनासाठी जास्त जागा देण्यासाठी आहे. न्यूक्लियस नसल्यामुळे कोशिकेमध्ये अधिक हिमोग्लोबिन असू शकतो, जे ऑक्सीजन वाहून नेण्यासाठी आवश्यक आहे. इतर विकल्प, जे कोशिकेच्या रचनेशी संबंधित आहेत, ते न्यूक्लियस गमावण्याच्या मुख्य कार्यक्षमतेला जास्त नाहीत.",
+          "solution": "माइटोकॉन्ड्रियांना ऊर्जा उत्पादक अंगांमध्ये वर्णन केले जाते जे कार्बोहायड्रेट आणि तेलांच्या ऑक्सिडेशनद्वारे ATP तयार करतात. ते खाद्य पदार्थ आणि पाणी जमा करत नाहीत, ही वैक्यूओलची भूमिका आहे. ते कोशिका भित्ती तयार करण्यात मदत करत नाहीत, ही कोशिका भित्तीची भूमिका आहे. ते प्रोटीन संश्लेषणात सहभागी नसतात, ही राइबोसोमची भूमिका आहे. म्हणूनच, योग्य उत्तर ते कोशिकेसाठी ATP तयार करतात आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes mitochondria function like vacuoles in plant cells",
+        "Students often confuse the roles of the Golgi apparatus and mitochondria, thinking mitochondria are involved in structural components like the cell wall.",
+        "Confuses mitochondria with ribosomes, which are actually responsible for protein synthesis."
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies mitochondria as the organelles responsible for ATP production, and the reasons for the distractors align with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 92,
+          "pageStart": 80,
+          "pageEnd": 81,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 93,
+          "pageStart": 81,
+          "pageEnd": 82,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 94,
+          "pageStart": 82,
+          "pageEnd": 83,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the main function of vacuoles in plant cells?",
+      "choices": [
+        "They store food and water",
+        "They produce ATP",
+        "They help in protein synthesis",
+        "They store genetic material"
+      ],
+      "answerIndex": 0,
+      "solution": "Vacuoles in plant cells are described as storage sacs that store food, water, and other substances. They do not produce ATP, which is the role of mitochondria. They do not help in protein synthesis, which is the role of ribosomes. They do not store genetic material, which is the role of the nucleus. Hence, the correct answer is that they store food and water.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "पौधे के कोशिका में वैक्यूओल्स का मुख्य कार्य क्या है?",
+          "choices": [
+            "वे भोजन और जल को भंडारित करते हैं",
+            "वे एटीपी का उत्पादन करते हैं",
+            "वे प्रोटीन संश्लेषण में सहायता करते हैं",
+            "वे आनुवंशिक सामग्री को भंडारित करते हैं"
+          ],
+          "solution": "पौधे की कोशिका में वैक्यूओल्स को भंडारण थैली के रूप में वर्णित किया जाता है जो भोजन, जल और अन्य पदार्थ भंडारित करते हैं। वे एटीपी का उत्पादन नहीं करते, जो माइटोकॉन्ड्रिया का कार्य है। वे प्रोटीन संश्लेषण में सहायता नहीं करते, जो राइबोसोम का कार्य है। वे आनुवंशिक सामग्री को भंडारित नहीं करते, जो केंद्रक का कार्य है। अतः सही उत्तर यह है कि वे भोजन और जल को भंडारित करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "वनस्पतीच्या कोशिकांमध्ये वैक्यूओलचे मुख्य कार्य काय आहे?",
+          "choices": [
+            "ते खाद्य पदार्थ आणि पाणी जमा करतात",
+            "ते ATP तयार करतात",
+            "ते प्रोटीन संश्लेषणात मदत करतात",
+            "ते आनुवंशिक पदार्थ जमा करतात"
+          ],
+          "solution": "वनस्पतीच्या कोशिकांमधील वैक्यूओल जमा थैल्यांचे वर्णन केले जाते जे खाद्य पदार्थ, पाणी आणि इतर पदार्थ जमा करतात. ते ATP तयार करत नाहीत, जे माइटोकॉन्ड्रिया चे कार्य आहे. ते प्रोटीन संश्लेषणात मदत करत नाहीत, जे राइबोसोम चे कार्य आहे. ते आनुवंशिक पदार्थ जमा करत नाहीत, जे न्यूक्लियस चे कार्य आहे. त्यामुळे, खाद्य पदार्थ आणि पाणी जमा करणे हे योग्य उत्तर आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with standard biology textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses mitochondria with vacuoles, thinking vacuoles are involved in energy production",
+        "Confuses ribosomes with vacuoles, thinking vacuoles are involved in protein production",
+        "Confuses vacuoles with the nucleus, which stores genetic material"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The solution correctly identifies the main function of vacuoles as storing food and water, and the reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 92,
+          "pageStart": 80,
+          "pageEnd": 81,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 93,
+          "pageStart": 81,
+          "pageEnd": 82,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 94,
+          "pageStart": 82,
+          "pageEnd": 83,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What would happen if red blood cells had mitochondria?",
+      "choices": [
+        "They would be able to produce more energy",
+        "They would not be able to carry oxygen efficiently",
+        "They would become larger in size",
+        "They would not be able to divide"
+      ],
+      "answerIndex": 1,
+      "solution": "Red blood cells in mammals do not have mitochondria, which allows them to carry more oxygen. If they had mitochondria, they would use oxygen for their own energy needs, reducing the oxygen available for the body. The other options are not directly related to the absence of mitochondria in RBCs.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "लाल रक्त कोशिकाओं में माइटोकॉन्ड्रिया होने पर क्या होगा?",
+          "choices": [
+            "वे अधिक ऊर्जा उत्पन्न कर सकेंगी",
+            "वे ऑक्सीजन को प्रभावी ढंग से ले जा सकेंगी",
+            "वे आकार में बड़ी हो जाएंगी",
+            "वे विभाजित नहीं हो सकेंगी"
+          ],
+          "solution": "मानवों में लाल रक्त कोशिकाएं माइटोकॉन्ड्रिया नहीं रखती हैं, जिससे वे अधिक ऑक्सीजन ले जा सकती हैं। यदि उनमें माइटोकॉन्ड्रिया होते तो वे अपनी ऊर्जा की आवश्यकता के लिए ऑक्सीजन का उपयोग करतीं, जिससे शरीर के लिए ऑक्सीजन की उपलब्धता कम हो जाती। अन्य विकल्प लाल रक्त कोशिकाओं में माइटोकॉन्ड्रिया की अनुपस्थिति से सीधे संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "लाल रक्त चिंतांमध्ये माइटोकॉन्ड्रिया असल्यास काय होईल?",
+          "choices": [
+            "त्यांना अधिक ऊर्जा तयार करता येईल",
+            "त्यांना ऑक्सीजन वाहून नेणे अधिक प्रभावीपणे करता येणार नाही",
+            "त्यांचा आकार जास्त व्हाईल",
+            "त्यांना विभाजित होता येणार नाही"
+          ],
+          "solution": "मानवांमधील लाल रक्त चिंतांमध्ये माइटोकॉन्ड्रिया नसतात, जे त्यांना जास्त ऑक्सीजन वाहून नेण्यास परवानगी देतात. जर त्यांना माइटोकॉन्ड्रिया असतील तर ते आपल्या ऊर्जा आवश्यकतांसाठी ऑक्सीजन वापरतील, ज्यामुळे शरीरासाठी ऑक्सीजन उपलब्ध राहणार नाही. इतर विकल्प मायटोकॉन्ड्रियांच्या अनुपस्थितीशी सीधा संबंध नाहीत.",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Believes that having mitochondria would increase energy production, which is not the case in RBCs.",
+        null,
+        "Believes that having mitochondria would not affect oxygen transport, which is incorrect.",
+        "Believes that having mitochondria would affect cell size, which is not the main issue."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is sound and correctly identifies option 1 as the correct answer. The reasoning aligns with the biological function of red blood cells and the role of mitochondria.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 95,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "10. Cell and Cell Organelles",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a plant cell lacked chloroplasts, which of the following would be affected?",
+      "choices": [
+        "Cell division",
+        "Photosynthesis",
+        "Protein synthesis",
+        "Cellular respiration"
+      ],
+      "answerIndex": 1,
+      "solution": "Chloroplasts are the site of photosynthesis in plant cells. If they were absent, photosynthesis would not occur. Cell division, protein synthesis, and cellular respiration can still occur without chloroplasts.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक पौधे कोशिका में क्लोरोप्लास्ट न हों, तो निम्नलिखित में से कौन सा प्रभावित होगा?",
+          "choices": [
+            "कोशिका विभाजन",
+            "प्रकाश संश्लेषण",
+            "प्रोटीन संश्लेषण",
+            "कोशिकीय श्वसन"
+          ],
+          "solution": "क्लोरोप्लास्ट पौधे कोशिकाओं में प्रकाश संश्लेषण के स्थान होते हैं। यदि वे अनुपस्थित हों, तो प्रकाश संश्लेषण नहीं हो पाएगा। कोशिका विभाजन, प्रोटीन संश्लेषण और कोशिकीय श्वसन क्लोरोप्लास्ट के बिना भी हो सकते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका वनस्पतीच्या कोशिकेत क्लोरोप्लास्ट नसतील तर खालीलपैकी कोणते प्रभावित होईल?",
+          "choices": [
+            "कोशिका विभाजन",
+            "प्रकाशसंश्लेषण",
+            "प्रोटीन संश्लेषण",
+            "कोशिका श्वसन"
+          ],
+          "solution": "क्लोरोप्लास्ट हे वनस्पती कोशिकांमध्ये प्रकाशसंश्लेषणाचे स्थान आहे. जर ते अनुपस्थित असतील तर प्रकाशसंश्लेषण होणार नाही. कोशिका विभाजन, प्रोटीन संश्लेषण आणि कोशिका श्वसन क्लोरोप्लास्ट शिवाय देखील होऊ शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses cell division with photosynthesis",
+        null,
+        "Confuses protein synthesis with photosynthesis",
+        "Confuses cellular respiration with photosynthesis"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct and aligns with the key. Chloroplasts are indeed responsible for photosynthesis, and their absence would directly affect this process. The other options are not dependent on chloroplasts.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 95,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "10. Cell and Cell Organelles",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a function of the cell membrane?",
+      "choices": [
+        "It provides structural support to plant cells",
+        "It contains the genetic material of the cell",
+        "It allows certain substances to enter the cell while preventing others",
+        "It is responsible for the process of photosynthesis"
+      ],
+      "answerIndex": 2,
+      "solution": "The cell membrane is a selectively permeable membrane that allows certain substances to enter the cell while preventing others. This function is crucial for maintaining homeostasis. The other options are incorrect because the cell wall provides structural support in plant cells, the nucleus contains genetic material, and photosynthesis occurs in chloroplasts, not the cell membrane.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा कोशिका झिल्ली का कार्य है?",
+          "choices": [
+            "यह पौधे कोशिकाओं के लिए संरचनात्मक समर्थन प्रदान करता है",
+            "यह कोशिका के आनुवंशिक सामग्री को संग्रहीत करता है",
+            "यह कुछ पदार्थों को कोशिका में प्रवेश करने देता है जबकि अन्य को रोकता है",
+            "यह प्रकाश संश्लेषण की प्रक्रिया के लिए उत्तरदायी है"
+          ],
+          "solution": "कोशिका झिल्ली एक चयनात्मक रूप से पारगम्य झिल्ली है जो कुछ पदार्थों को कोशिका में प्रवेश करने देती है जबकि अन्य को रोकती है। यह कार्य होमियोस्टेसिस बनाए रखने के लिए महत्वपूर्ण है। अन्य विकल्प गलत हैं क्योंकि पौधे कोशिकाओं में संरचनात्मक समर्थन कोशिका भित्ति द्वारा प्रदान किया जाता है, नाभिक आनुवंशिक सामग्री को संग्रहीत करता है, और प्रकाश संश्लेषण क्लोरोप्लास्ट में होता है, न कि कोशिका झिल्ली में।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology from standard biology textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते कोशिका झिल्लीचे कार्य आहे?",
+          "choices": [
+            "ते वनस्पती कोशिकांना संरचनात्मक समर्थन प्रदान करते",
+            "ते कोशिकेचे आनुवंशिक पदार्थ अंगिकरण करते",
+            "ते काही पदार्थांना कोशिकेत प्रवेश करण्याची परवानगी देते जेणेकरून इतरांना रोखते",
+            "ते प्रकाशसंश्लेषणाच्या प्रक्रियेची जबाबदारी घेते"
+          ],
+          "solution": "कोशिका झिल्ली ही निवडक रूपाने पारदर्शक झिल्ली आहे जी काही पदार्थांना कोशिकेत प्रवेश करण्याची परवानगी देते जेणेकरून इतरांना रोखते. हे कार्य होमिओस्टॅसिस बरोबर ठेवण्यासाठी महत्वपूर्ण आहे. इतर विकल्प अयोग्य आहेत कारण वनस्पती कोशिकांना संरचनात्मक समर्थन प्रदान करते, न्यूक्लियस आनुवंशिक पदार्थ अंगिकरण करते आणि प्रकाशसंश्लेषण क्लोरोप्लास्टमध्ये होते, न की कोशिका झिल्लीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses cell wall function with cell membrane",
+        "Confuses nucleus function with cell membrane",
+        null,
+        "Confuses the function of the cell membrane with that of chloroplasts"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the selective permeability of the cell membrane and correctly dismisses the other options. The reasoning aligns with standard biology knowledge.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 89,
+          "pageStart": 77,
+          "pageEnd": 78,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 90,
+          "pageStart": 78,
+          "pageEnd": 79,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 91,
+          "pageStart": 79,
+          "pageEnd": 80,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is a characteristic of plastids?",
+      "choices": [
+        "They are present in both plant and animal cells",
+        "They are involved in energy production",
+        "They contain their own DNA and ribosomes",
+        "They are the site of protein synthesis"
+      ],
+      "answerIndex": 2,
+      "solution": "Plastids are described as having their own DNA and ribosomes, allowing them to produce proteins and replicate themselves. They are not present in animal cells. They are not involved in energy production, which is the role of mitochondria. They are not the site of protein synthesis, which is the role of ribosomes. Hence, the correct answer is that they contain their own DNA and ribosomes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा प्लास्टिड का लक्षण है?",
+          "choices": [
+            "वे पौधों और जानवरों की कोशिकाओं दोनों में पाए जाते हैं",
+            "वे ऊर्जा उत्पादन में लगे रहते हैं",
+            "वे अपने स्वयं के DNA और राइबोसोम रखते हैं",
+            "वे प्रोटीन संश्लेषण के स्थान हैं"
+          ],
+          "solution": "प्लास्टिड के अपने स्वयं के DNA और राइबोसोम होते हैं, जिससे वे प्रोटीन बना सकते हैं और स्वयं की प्रतिकृति बना सकते हैं। वे जानवरों की कोशिकाओं में नहीं पाए जाते हैं। वे ऊर्जा उत्पादन में शामिल नहीं होते हैं, जो माइटोकॉन्ड्रिया का कार्य है। वे प्रोटीन संश्लेषण के स्थान नहीं होते हैं, जो राइबोसोम का कार्य है। अतः सही उत्तर यह है कि वे अपने स्वयं के DNA और राइबोसोम रखते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते प्लास्टिडचे वैशिष्ट्य आहे?",
+          "choices": [
+            "ते वनस्पती आणि प्राणी कोशिकांमध्ये दोन्ही असतात",
+            "ते ऊर्जा उत्पादनामध्ये संलग्न असतात",
+            "त्यांमध्ये त्यांचे स्वतःचे डीएनए आणि राइबोसोम असतात",
+            "ते प्रोटीन संश्लेषणाचे स्थान आहेत"
+          ],
+          "solution": "प्लास्टिड्स त्यांचे स्वतःचे डीएनए आणि राइबोसोम असल्याचे वर्णन केले गेले आहे, ज्यामुळे ते प्रोटीन तयार करू शकतात आणि स्वतःचे प्रतिकृती करू शकतात. ते प्राणी कोशिकांमध्ये असत नाहीत. ऊर्जा उत्पादनामध्ये संलग्न असतात, जे माइटोकॉन्ड्रिया चे कार्य आहे. प्रोटीन संश्लेषणाचे स्थान नाहीत, जे राइबोसोम चे कार्य आहे. म्हणून, योग्य उत्तर त्यांमध्ये त्यांचे स्वतःचे डीएनए आणि राइबोसोम असतात असे आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the presence of plastids with that of other organelles",
+        "Confuses the function of plastids with that of mitochondria",
+        null,
+        "Confuses the function of plastids with that of ribosomes"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that plastids contain their own DNA and ribosomes, and correctly rules out the other options based on well-established biological facts.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 92,
+          "pageStart": 80,
+          "pageEnd": 81,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 93,
+          "pageStart": 81,
+          "pageEnd": 82,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 94,
+          "pageStart": 82,
+          "pageEnd": 83,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following is not a characteristic of eukaryotic cells?",
+      "choices": [
+        "They have a nucleus with a nuclear membrane",
+        "They have membrane-bound organelles",
+        "They have a nucleoid",
+        "They have more than one chromosome"
+      ],
+      "answerIndex": 2,
+      "solution": "Eukaryotic cells have a nucleus with a nuclear membrane and membrane-bound organelles. They also have more than one chromosome. However, a nucleoid is a feature of prokaryotic cells, not eukaryotic cells.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा यूकैरियोटिक कोशिकाओं का गुण नहीं है?",
+          "choices": [
+            "उनके पास एक केंद्रक होता है जिसके चारों ओर केंद्रक झिल्ली होती है",
+            "उनके पास केंद्रक झिल्ली वाले ऑर्गेनेल्स होते हैं",
+            "उनके पास एक न्यूक्लियॉइड होता है",
+            "उनके पास एक से अधिक गुणसूत्र होते हैं"
+          ],
+          "solution": "यूकैरियोटिक कोशिकाओं में एक केंद्रक होता है जिसके चारों ओर केंद्रक झिल्ली होती है और केंद्रक झिल्ली वाले ऑर्गेनेल्स होते हैं। उनके पास एक से अधिक गुणसूत्र भी होते हैं। हालांकि, एक न्यूक्लियॉइड प्रोकैरियोटिक कोशिकाओं की विशेषता है, न कि यूकैरियोटिक कोशिकाओं की।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard biological terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते यूकॅरियोटिक कोशिकांचे वैशिष्ट्य नाही?",
+          "choices": [
+            "त्यांना कोशिकाकेंद्राचा कोशिकाकला असतो",
+            "त्यांना कोशिकाकलाने वेढलेले अर्गनेल असतात",
+            "त्यांना न्यूक्लिओइड असतो",
+            "त्यांना एकापेक्षा जास्त गुणसूत्रे असतात"
+          ],
+          "solution": "यूकॅरियोटिक कोशिकांमध्ये कोशिकाकेंद्राचा कोशिकाकला असतो आणि कोशिकाकलाने वेढलेले अर्गनेल असतात. त्यांना एकापेक्षा जास्त गुणसूत्रे असतात. मात्र, न्यूक्लिओइड हे प्रोकॅरियोटिक कोशिकांचे वैशिष्ट्य आहे, यूकॅरियोटिक कोशिकांचे नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses nucleus with nucleoid",
+        "Confuses membrane-bound organelles with nucleoid",
+        null,
+        "Confuses chromosomes with nucleoid"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and matches the key. The nucleoid is a feature of prokaryotic cells, not eukaryotic cells, making option 2 the correct answer. The author's reasoning for the distractors is based on common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 95,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "10. Cell and Cell Organelles",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "In an experiment, a student observed that the cells in a solution swelled up and became turgid. What can be inferred about the solution?",
+      "choices": [
+        "It is hypertonic",
+        "It is isotonic",
+        "It is hypotonic",
+        "It is a saturated solution"
+      ],
+      "answerIndex": 2,
+      "solution": "If cells swell and become turgid, it means the solution is hypotonic, as water moves into the cells. A hypertonic solution would cause cells to shrink, an isotonic solution would keep them the same, and a saturated solution is not directly related to the process of osmosis.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रयोग में, एक छात्र ने देखा कि एक घोल में कोशिकाएं फूल गईं और टर्गिड हो गईं। घोल के बारे में क्या निष्कर्ष निकाला जा सकता है?",
+          "choices": [
+            "यह परासारी है",
+            "यह समपरासारी है",
+            "यह अपरासारी है",
+            "यह संतृप्त घोल है"
+          ],
+          "solution": "अगर कोशिकाएं फूल जाती हैं और टर्गिड हो जाती हैं, तो इसका अर्थ है कि घोल अपरासारी है, क्योंकि पानी कोशिकाओं में गमन करता है। एक परासारी घोल कोशिकाओं को सिकुड़ा देगा, समपरासारी घोल कोशिकाओं को वही रखेगा, और संतृप्त घोल ऑस्मोसिस की प्रक्रिया से सीधे संबंधित नहीं है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology used in Hindi textbooks, and preserves the logical structure of the question and answer.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका प्रयोगात, एका विद्यार्थ्याने असे निरीक्षण केले की एका द्रावणातील कोशिका फुगल्या आणि तुर्गिड झाल्या. द्रावणाबद्दल काय निष्कर्ष काढता येईल?",
+          "choices": [
+            "ते हायपरटोनिक आहे",
+            "ते इसोटोनिक आहे",
+            "ते हायपोटोनिक आहे",
+            "ते संतृप्त द्रावण आहे"
+          ],
+          "solution": "जर कोशिका फुगल्या आणि तुर्गिड झाल्या, तर ते द्रावण हायपोटोनिक आहे, कारण पाणी कोशिकांमध्ये प्रवेश करते. हायपरटोनिक द्रावणामुळे कोशिका खुलतील आणि इसोटोनिक द्रावणामुळे त्या त्यांच्या स्थितीत राहतील आणि संतृप्त द्रावण ऑस्मोसिसच्या प्रक्रियेशी सीधा संबंध नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the scientific terminology used in Marathi textbooks, and preserves the logical structure of the question and solution.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the effect of a hypertonic solution",
+        "Confuses the effect of an isotonic solution",
+        null,
+        "Confuses the effect of a saturated solution with osmosis"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that a hypotonic solution causes cells to swell and become turgid due to water moving into the cells. The reasoning for the other options aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 89,
+          "pageStart": 77,
+          "pageEnd": 78,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 90,
+          "pageStart": 78,
+          "pageEnd": 79,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 91,
+          "pageStart": 79,
+          "pageEnd": 80,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following best describes the role of the endoplasmic reticulum?",
+      "choices": [
+        "It stores genetic material",
+        "It helps in the synthesis and transport of proteins",
+        "It is the site of photosynthesis",
+        "It controls cell division"
+      ],
+      "answerIndex": 1,
+      "solution": "The endoplasmic reticulum is involved in the synthesis and transport of proteins, as well as the detoxification of harmful substances. The other options are incorrect because genetic material is stored in the nucleus, photosynthesis occurs in chloroplasts, and cell division is controlled by the nucleus.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा अंतःप्रद्रव्यी जालिका के कार्य का सबसे अच्छा वर्णन करता है?",
+          "choices": [
+            "यह आनुवंशिक सामग्री को संग्रहीत करता है",
+            "यह प्रोटीन के संश्लेषण एवं परिवहन में सहायता करता है",
+            "यह प्रकाश संश्लेषण का स्थल है",
+            "यह कोशिका विभाजन को नियंत्रित करता है"
+          ],
+          "solution": "अंतःप्रद्रव्यी जालिका प्रोटीन के संश्लेषण एवं परिवहन में सहायता करता है, साथ ही हानिकारक पदार्थों के विश्लेषण में भी। अन्य विकल्प गलत हैं क्योंकि आनुवंशिक सामग्री को केंद्रक में संग्रहीत किया जाता है, प्रकाश संश्लेषण क्लोरोप्लास्ट में होता है एवं कोशिका विभाजन को केंद्रक नियंत्रित करता है।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the correct answer remains option (2) as in the English version.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते अंतर्ग्रथन जालाच्या भूमिकेचे सर्वात चांगले वर्णन करते?",
+          "choices": [
+            "ते जीनेटिक द्रव्य जमा करते",
+            "ते प्रोटीनच्या संश्लेषण आणि परिवहनामध्ये मदत करते",
+            "ते प्रकाशसंश्लेषणाचे स्थान आहे",
+            "ते कोशिका विभाजन नियंत्रित करते"
+          ],
+          "solution": "अंतर्ग्रथन जाल प्रोटीनच्या संश्लेषण आणि परिवहनामध्ये आणि अवांछित पदार्थांच्या डिटॉक्सिफिकेशनमध्ये संलग्न असते. इतर विकल्प अयोग्य आहेत कारण जीनेटिक द्रव्य न्यूक्लियसमध्ये जमा असते, प्रकाशसंश्लेषण क्लोरोप्लास्टमध्ये होते आणि कोशिका विभाजन न्यूक्लियस द्वारे नियंत्रित केले जाते.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate biological terminology consistent with Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses nucleus function with endoplasmic reticulum",
+        null,
+        "Confuses the endoplasmic reticulum with the chloroplast",
+        "Confuses the endoplasmic reticulum with the nucleus or centrosome, which are involved in cell division"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 1, as the endoplasmic reticulum is indeed involved in protein synthesis and transport. The author's solution and reasoning are accurate and align with standard biology knowledge.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 89,
+          "pageStart": 77,
+          "pageEnd": 78,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 90,
+          "pageStart": 78,
+          "pageEnd": 79,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 91,
+          "pageStart": 79,
+          "pageEnd": 80,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the main purpose of the folds in the inner membrane of mitochondria?",
+      "choices": [
+        "To store ATP molecules",
+        "To increase the surface area for chemical reactions",
+        "To protect the cell from damage",
+        "To decrease the rate of energy production"
+      ],
+      "answerIndex": 1,
+      "solution": "The folds in the inner membrane of mitochondria, called cristae, increase the surface area for chemical reactions to occur, which helps in the efficient production of ATP. They do not store ATP, protect the cell, or decrease energy production.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "माइटोकॉन्ड्रिया के आंतरिक झिल्ली में मुड़ावों का मुख्य उद्देश्य क्या है?",
+          "choices": [
+            "एटीपी अणुओं को भंडारित करना",
+            "रासायनिक अभिक्रियाओं के लिए सतह क्षेत्र बढ़ाना",
+            "कोशिका को क्षति से बचाना",
+            "ऊर्जा उत्पादन की दर कम करना"
+          ],
+          "solution": "माइटोकॉन्ड्रिया के आंतरिक झिल्ली में मुड़ावों का उद्देश्य रासायनिक अभिक्रियाओं के लिए सतह क्षेत्र बढ़ाना होता है, जो एटीपी के प्रभावी उत्पादन में सहायता करता है। ये एटीपी को भंडारित नहीं करते, कोशिका को नहीं बचाते और ऊर्जा उत्पादन की दर कम नहीं करते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "माइटोकॉन्ड्रिया च्या आतल्या झिल्लीतील वळणांचा मुख्य उद्देश काय आहे?",
+          "choices": [
+            "ATP अणू भंडारणासाठी",
+            "रासायनिक अभिक्रियांसाठी पृष्ठभाग वाढविण्यासाठी",
+            "कोशिकेला नुकसानापासून बचावण्यासाठी",
+            "ऊर्जा उत्पादनाच्या दरात कमी करण्यासाठी"
+          ],
+          "solution": "माइटोकॉन्ड्रियाच्या आतल्या झिल्लीतील वळणांचे नाव क्रिस्टी आहे, जे रासायनिक अभिक्रियांसाठी पृष्ठभाग वाढवतात, जे ATP च्या दक्ष उत्पादनास मदत करते. ते ATP भंडारित करत नाहीत, कोशिकेला बचावत नाहीत किंवा ऊर्जा उत्पादनाच्या दरात कमी करत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Misunderstands the role of cristae as storage sites for ATP",
+        null,
+        "Believes the folds are a form of protection for the cell",
+        "Thinks the folds reduce the efficiency of energy production"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the role of cristae in increasing surface area for chemical reactions. The reasoning for the distractors aligns with common student misconceptions.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 92,
+          "pageStart": 80,
+          "pageEnd": 81,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 93,
+          "pageStart": 81,
+          "pageEnd": 82,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        },
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 94,
+          "pageStart": 82,
+          "pageEnd": 83,
+          "headingPath": [
+            "10. Cell and Cell Organelles"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "Which of the following would be most affected if the plasma membrane were not selectively permeable?",
+      "choices": [
+        "Cell size",
+        "Cell division",
+        "Osmotic pressure",
+        "Photosynthesis"
+      ],
+      "answerIndex": 2,
+      "solution": "The plasma membrane regulates what enters and exits the cell, maintaining osmotic pressure. If it were not selectively permeable, osmotic pressure could not be maintained. Cell size, cell division, and photosynthesis would not be directly affected in the same way.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा सबसे अधिक प्रभावित होगा यदि प्लाज्मा झिल्ली चयनात्मक रूप से पारगम्य न हो?",
+          "choices": [
+            "कोशिका का आकार",
+            "कोशिका विभाजन",
+            "आसमोटिक दबाव",
+            "प्रकाश संश्लेषण"
+          ],
+          "solution": "प्लाज्मा झिल्ली कोशिका में प्रवेश और बाहर निकलने वाले पदार्थों के नियमन को नियंत्रित करती है, आसमोटिक दबाव को बनाए रखती है। यदि यह चयनात्मक रूप से पारगम्य न होती तो आसमोटिक दबाव को बनाए रखा नहीं जा सकता था। कोशिका का आकार, कोशिका विभाजन और प्रकाश संश्लेषण इस तरह से सीधे प्रभावित नहीं होते।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते सर्वाधिक प्रभावित होईल जर प्लाज्मा झिल्ली निवडकरिता अपारगम्य नसत असेल?",
+          "choices": [
+            "कोशिका आकार",
+            "कोशिका विभाजन",
+            "आस्मोटिक दाब",
+            "प्रकाशसंश्लेषण"
+          ],
+          "solution": "प्लाज्मा झिल्ली कोशिकेत जाऊ शकणारे आणि बाहेर पडू शकणारे पदार्थ नियंत्रित करते, आस्मोटिक दाब बरोबर ठेवते. जर ती निवडकरिता अपारगम्य नसत असेल, तर आस्मोटिक दाब बरोबर ठेवता येणार नाही. कोशिका आकार, कोशिका विभाजन आणि प्रकाशसंश्लेषण यांना त्यापेक्षा वेगळ्या प्रकारे प्रभावित करण्याची शक्यता नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses cell size with osmotic pressure",
+        "Confuses cell division with osmotic pressure",
+        null,
+        "Confuses photosynthesis with osmotic pressure"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the plasma membrane's selective permeability is crucial for maintaining osmotic pressure. The other options are correctly dismissed as not being directly affected by the lack of selective permeability.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 95,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "10. Cell and Cell Organelles",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why are plastids important for plants?",
+      "choices": [
+        "They help in the production of ATP",
+        "They store waste materials in the cell",
+        "They give plants their colour and help in photosynthesis",
+        "They break down old cellular components"
+      ],
+      "answerIndex": 2,
+      "solution": "Plastids are important for plants because they give them their colour and are essential for photosynthesis. Chloroplasts, a type of plastid, trap solar energy and convert it into chemical energy. Plastids do not produce ATP, store waste, or break down old components, which are functions of other organelles like mitochondria and lysosomes.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "प्लास्टिड पौधों के लिए क्यों महत्वपूर्ण हैं?",
+          "choices": [
+            "वे कोशिका में ATP के उत्पादन में सहायता करते हैं",
+            "वे कोशिका में अपशिष्ट सामग्री को भंडारित करते हैं",
+            "वे पौधों के रंग को देते हैं और प्रकाश संश्लेषण में सहायता करते हैं",
+            "वे पुराने सेलुलर घटकों को तोड़ देते हैं"
+          ],
+          "solution": "प्लास्टिड पौधों के लिए महत्वपूर्ण हैं क्योंकि वे उन्हें अपना रंग देते हैं और प्रकाश संश्लेषण के लिए आवश्यक हैं। क्लोरोप्लास्ट, एक प्रकार का प्लास्टिड, सौर ऊर्जा को अवशोषित करता है और इसे रासायनिक ऊर्जा में परिवर्तित करता है। प्लास्टिड ATP उत्पादन नहीं करते, अपशिष्ट नहीं भंडारित करते, और पुराने घटकों को नहीं तोड़ते, जो माइटोकॉन्ड्रिया और लाइसोसोम जैसे अन्य ऑर्गेनेल्स के कार्य हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "प्लास्टिड्स महत्वाचे का आहेत?",
+          "choices": [
+            "ते सेलमध्ये ATP च्या उत्पादनात मदत करतात",
+            "ते सेलमध्ये अपशिष्ट सामग्री जमा करतात",
+            "ते वनस्पतींना त्यांचा रंग देतात आणि प्रकाशसंश्लेषणात मदत करतात",
+            "ते जुन्या सेलुलर घटकांचे विघटन करतात"
+          ],
+          "solution": "प्लास्टिड्स वनस्पतींसाठी महत्वाचे आहेत कारण ते त्यांना त्यांचा रंग देतात आणि प्रकाशसंश्लेषणासाठी आवश्यक असतात. क्लोरोप्लास्ट, एक प्रकारचे प्लास्टिड, सौर ऊर्जा अंकुरतात आणि ती रासायनिक ऊर्जेमध्ये बदलतात. प्लास्टिड्स ATP उत्पादन करत नाहीत, अपशिष्ट साठवत नाहीत किंवा जुन्या घटकांचे विघटन करत नाहीत, जे माइटोकॉन्ड्रिया आणि लायसोसोम यांसारख्या इतर अंगांचे कार्य आहेत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
           "flag": null
@@ -591,51 +1317,129 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "Confuses the function of mitochondria with that of plastids",
+        "Believes plastids are responsible for waste storage",
         null,
-        "Confuses the reason for nuclear loss with increased surface area for gas exchange.",
-        "Confuses the reason for nuclear loss with increased flexibility of the cell.",
-        "Confuses the reason for nuclear loss with reducing the cell's size."
+        "Thinks plastids are responsible for cellular breakdown"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies option 0 as the correct answer, and the reasoning aligns with the biological fact that the loss of the nucleus in mammalian red blood cells allows for more hemoglobin and thus more oxygen transport. The distractors represent common misconceptions about the purpose of nuclear loss.",
+      "critique": "The correct answer is 2, as plastids (especially chloroplasts) are responsible for photosynthesis and plant color. The other options correctly identify misconceptions about mitochondria, lysosomes, and plastids.",
       "sources": [
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 89,
-          "pageStart": 77,
-          "pageEnd": 78,
+          "ordinal": 92,
+          "pageStart": 80,
+          "pageEnd": 81,
           "headingPath": [
             "10. Cell and Cell Organelles"
           ]
         },
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 90,
-          "pageStart": 78,
-          "pageEnd": 79,
+          "ordinal": 93,
+          "pageStart": 81,
+          "pageEnd": 82,
           "headingPath": [
             "10. Cell and Cell Organelles"
           ]
         },
         {
           "document": "balbharati/8/science/803020012.pdf",
-          "ordinal": 91,
-          "pageStart": 79,
-          "pageEnd": 80,
+          "ordinal": 94,
+          "pageStart": 82,
+          "pageEnd": 83,
           "headingPath": [
             "10. Cell and Cell Organelles"
           ]
         }
       ],
       "edition": "First Edition 2018",
-      "generatedAt": "2026-10-22T07:20:33.663Z",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is most likely to be found in a prokaryotic cell but not in a eukaryotic cell?",
+      "choices": [
+        "Chloroplasts",
+        "Mitochondria",
+        "Ribosomes",
+        "Nucleoid"
+      ],
+      "answerIndex": 3,
+      "solution": "Prokaryotic cells have a nucleoid, which is a region where the genetic material is located, but it is not enclosed in a membrane. Eukaryotic cells have a nucleus with a nuclear membrane. Chloroplasts, mitochondria, and ribosomes can be found in both types of cells.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन-सा एक प्रोकैरियोटिक कोशिका में पाया जाने की संभावना सबसे अधिक है लेकिन यूकैरियोटिक कोशिका में नहीं पाया जाता?",
+          "choices": [
+            "क्लोरोप्लास्ट",
+            "माइटोकॉन्ड्रिया",
+            "राइबोसोम्स",
+            "न्यूक्लियॉइड"
+          ],
+          "solution": "प्रोकैरियोटिक कोशिकाओं में न्यूक्लियॉइड होता है, जो आनुवंशिक पदार्थ के स्थान का क्षेत्र होता है, लेकिन यह एक झिल्ली द्वारा घिरा नहीं होता है। यूकैरियोटिक कोशिकाओं में झिल्ली द्वारा घिरा हुआ केंद्रक होता है। क्लोरोप्लास्ट, माइटोकॉन्ड्रिया और राइबोसोम्स दोनों प्रकार की कोशिकाओं में पाए जा सकते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते एक प्रोकॅरियोटिक कोशिकेमध्ये असू शकते परंतु युकॅरियोटिक कोशिकेमध्ये नसू शकते?",
+          "choices": [
+            "क्लोरोप्लास्ट",
+            "माइटोकॉन्ड्रिया",
+            "राइबोसोम्स",
+            "न्यूक्लिओइड"
+          ],
+          "solution": "प्रोकॅरियोटिक कोशिकेत न्यूक्लिओइड असतो, जे जीनेटिक पदार्थ असलेल्या क्षेत्राचे वर्णन करतो, परंतु तो कोशिकाकिनारा नसतो. युकॅरियोटिक कोशिकेत कोशिकाकिनारा असलेले न्यूक्लियस असतो. क्लोरोप्लास्ट, माइटोकॉन्ड्रिया आणि राइबोसोम्स दोन्ही प्रकारच्या कोशिकांमध्ये असू शकतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses chloroplasts with prokaryotic-specific structures",
+        "Confuses mitochondria with prokaryotic-specific structures",
+        "Confuses ribosomes with prokaryotic-specific structures",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. Prokaryotic cells lack a true nucleus but have a nucleoid, while eukaryotic cells have a membrane-bound nucleus. Chloroplasts, mitochondria, and ribosomes are present in both cell types, though ribosomes differ in size.",
+      "sources": [
+        {
+          "document": "balbharati/8/science/803020012.pdf",
+          "ordinal": 95,
+          "pageStart": 83,
+          "pageEnd": 84,
+          "headingPath": [
+            "10. Cell and Cell Organelles",
+            "Exercises"
+          ]
+        }
+      ],
+      "edition": "First Edition 2018",
+      "generatedAt": "2026-10-29T20:46:51.431Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

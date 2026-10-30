@@ -1,0 +1,761 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T23:15:14.686Z",
+  "finishedAt": "2026-10-24T23:25:19.910Z",
+  "seconds": 605,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "hecu1",
+    "document": "ncert/8/science/hecu113.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 13 — Our Home: Earth, a Unique Life Sustaining Planet",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 6
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[INJSO 2015 — question paper]\n40. Origin of life in earth is traced back to about 3 billion years ago. Oparin (1924), and\nJohn Haldane (1929), independently suggested that if, the primitive atmosphere was\nreducing (as opposed to oxygen-rich), and if there was an appropriate supply of energy,\nsuch as lightning or ultraviolet light, then a wide range of organic compounds might be\nsynthesized. Their hypothesis was proven by the famous Miller and Urey experiment.\nUsing high voltage electric sparks they could experimentally generate bio-molecules\nfrom elemental gases.\nThese experiments helped us to understand the sequence of events that might have\nhelped in origin of life in earth.\n(i) Considering the above information into a",
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n16. B. Enrichment of oxygen in the atmosphere. 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 146869,
+      "in": 40,
+      "out": 39,
+      "rejects": 1,
+      "promptTokens": 40346,
+      "completionTokens": 9086
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 275797,
+      "in": 39,
+      "out": 37,
+      "rejects": 2,
+      "promptTokens": 22095,
+      "completionTokens": 8260
+    },
+    "solver": {
+      "calls": 242,
+      "ms": 105058,
+      "in": 37,
+      "out": 31,
+      "rejects": 6,
+      "promptTokens": 41389,
+      "completionTokens": 2411
+    },
+    "form": {
+      "calls": 25,
+      "ms": 68539,
+      "in": 31,
+      "out": 14,
+      "rejects": 17,
+      "promptTokens": 6607,
+      "completionTokens": 1855
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 82,
+      "ms": 12485,
+      "in": 14,
+      "out": 12,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 519146,
+      "in": 24,
+      "out": 24,
+      "rejects": 1,
+      "promptTokens": 31999,
+      "completionTokens": 16623
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 7,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What does the passage say about the reason for Venus being the hottest planet?",
+      "ms": {
+        "draft": 3292,
+        "critique": 6280,
+        "solver": 959
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a reason why Earth is considered a unique planet that sustains life?",
+      "ms": {
+        "draft": 3292,
+        "critique": 7217,
+        "solver": 1701
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is the Earth's crust compared to the skin of an apple?",
+      "ms": {
+        "draft": 3292,
+        "critique": 6463,
+        "solver": 1702,
+        "form": 3172
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why Earth is considered a unique planet?",
+      "ms": {
+        "draft": 3292,
+        "critique": 5977,
+        "solver": 1108,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT mentioned as a feature of Earth that supports life?",
+      "ms": {
+        "draft": 3292,
+        "critique": 7656,
+        "solver": 1766
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If Earth had no atmosphere, what would be the most likely consequence?",
+      "ms": {
+        "draft": 3292,
+        "critique": 7182,
+        "solver": 1139,
+        "form": 3708
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main difference between the greenhouse effect on Earth and a plant greenhouse?",
+      "ms": {
+        "draft": 13504,
+        "critique": 5606,
+        "solver": 1670,
+        "form": 3761
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, why is it unlikely that life exists on Mercury?",
+      "ms": {
+        "draft": 13504,
+        "critique": 5433,
+        "solver": 1544
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct reason why Earth is called the Blue Planet?",
+      "ms": {
+        "draft": 13504,
+        "critique": 7619,
+        "solver": 9913,
+        "form": 3173
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is released by plants during photosynthesis?",
+      "ms": {
+        "draft": 3359,
+        "critique": 6131
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the habitable zone?",
+      "ms": {
+        "draft": 13504,
+        "critique": 5637,
+        "solver": 1304,
+        "form": 2447
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a function of water in the environment?",
+      "ms": {
+        "draft": 3359,
+        "critique": 7802,
+        "solver": 14099
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of reproduction in living organisms according to the passage?",
+      "ms": {
+        "draft": 3016,
+        "critique": 5530,
+        "solver": 1258,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, how does a calf grow into a cow?",
+      "ms": {
+        "draft": 3016,
+        "critique": 5502,
+        "solver": 1595,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of these is an example of geodiversity?",
+      "ms": {
+        "draft": 3928,
+        "critique": 4745
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the Earth had no atmosphere, what would be the most likely effect on life?",
+      "ms": {
+        "draft": 4170,
+        "critique": 4338,
+        "solver": 1004,
+        "form": 4415
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the main reason Earth is able to support life?",
+      "ms": {
+        "draft": 4170,
+        "critique": 4709,
+        "solver": 1597,
+        "form": 4029
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If Earth's magnetic field disappeared, which of the following would be the most immediate consequence for life?",
+      "ms": {
+        "draft": 4170,
+        "critique": 5484,
+        "solver": 2041,
+        "form": 1629
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A scientist suggests that a planet in another solar system could support life if it is in a zone where the temperature allows liquid water. Which of the following best supports this idea?",
+      "ms": {
+        "draft": 4170,
+        "critique": 5533,
+        "solver": 10726,
+        "form": 4573
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of a flower contains the female gametes?",
+      "ms": {
+        "draft": 15819,
+        "critique": 6553,
+        "solver": 10442,
+        "form": 3082
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is one major reason Mars cannot currently support life like Earth?",
+      "ms": {
+        "draft": 4170,
+        "critique": 5868,
+        "solver": 12784,
+        "form": 4063
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of reproduction according to the passage?",
+      "ms": {
+        "draft": 4807,
+        "critique": 4430,
+        "solver": 1425,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How does the passage explain the variation in traits among siblings?",
+      "ms": {
+        "draft": 4807,
+        "critique": 5186,
+        "solver": 1262,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a consequence of climate change as described in the passage?",
+      "ms": {
+        "draft": 15819,
+        "critique": 4800,
+        "solver": 12625
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of how the geosphere supports life?",
+      "ms": {
+        "draft": 3276,
+        "critique": 5252,
+        "solver": 1633,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when the male and female gametes combine in plants?",
+      "ms": {
+        "draft": 15819,
+        "critique": 5770,
+        "solver": 1495,
+        "form": 3409
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What role does the atmosphere play in keeping Earth warm?",
+      "ms": {
+        "draft": 3276,
+        "critique": 4675,
+        "solver": 1518,
+        "form": 2376
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of a flower develops into a fruit after fertilisation?",
+      "ms": {
+        "draft": 3776,
+        "critique": 5256,
+        "solver": 1611,
+        "form": 2003,
+        "translation": 83717
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for all the water on Earth?",
+      "ms": {
+        "draft": 3276,
+        "critique": 4726,
+        "solver": 904,
+        "form": 3301,
+        "translation": 21166
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the role of the atmosphere in keeping the Earth warm?",
+      "ms": {
+        "draft": 3359,
+        "critique": 5846,
+        "solver": 12578,
+        "form": 3234,
+        "translation": 41739
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bird eats a fruit and drops a seed, what is the main benefit for the plant?",
+      "ms": {
+        "draft": 15819,
+        "critique": 4635,
+        "solver": 1418,
+        "form": 4538,
+        "translation": 36110
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant reproduces through vegetative propagation, what can be said about the offspring?",
+      "ms": {
+        "draft": 4807,
+        "critique": 6548,
+        "solver": 1640,
+        "form": 1651,
+        "translation": 43218
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the term 'Goldilocks zone' refer to?",
+      "ms": {
+        "draft": 4170,
+        "critique": 6306,
+        "solver": 13167,
+        "form": 2437,
+        "translation": 40872
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Why is the Earth's magnetic field important for sustaining life?",
+      "ms": {
+        "draft": 13504,
+        "critique": 6849,
+        "solver": 1216,
+        "form": 2749,
+        "translation": 45056
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If the Earth had no atmosphere, what would be the most likely effect on the planet?",
+      "ms": {
+        "draft": 3359,
+        "critique": 7800,
+        "solver": 10284,
+        "form": 3291,
+        "translation": 33160
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What is the main reason that some bacteria have become resistant to antibiotics?",
+      "ms": {
+        "draft": 3016,
+        "critique": 5660,
+        "solver": 1258,
+        "form": 2640,
+        "translation": 51226
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the main reason that a small increase in Earth's temperature can have severe consequences for life?",
+      "ms": {
+        "draft": 3776,
+        "critique": 4962,
+        "solver": 917,
+        "form": 1474,
+        "translation": 41683
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the significance of the balance between living and non-living components on Earth?",
+      "ms": {
+        "draft": 3359,
+        "critique": 4995,
+        "solver": 1609,
+        "form": 2081,
+        "translation": 68251
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do offspring in sexual reproduction not look exactly like either parent?",
+      "ms": {
+        "draft": 3016,
+        "critique": 5678,
+        "solver": 1255,
+        "form": 2665,
+        "translation": 49295
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What happens to the genetic instructions during sexual reproduction?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "What does the passage say about the reason for Venus being the hottest planet?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is NOT a reason why Earth is considered a unique planet that sustains life?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Why is the Earth's crust compared to the skin of an apple?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the purpose of the analogy in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains why Earth is considered a unique planet?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is NOT mentioned as a feature of Earth that supports life?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If Earth had no atmosphere, what would be the most likely consequence?",
+      "reason": "options 1 and 2 say the same thing (\"The Earth would be colder than it is now\" / \"The Earth would be hotter than it is now\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main difference between the greenhouse effect on Earth and a plant greenhouse?",
+      "reason": "options 0 and 1 say the same thing (\"A plant greenhouse traps heat by absorbing radiation, while Earth's greenhouse effect traps heat by trapping warmed air\" / \"A plant greenhouse traps heat by trapping warmed air, while Earth's greenhouse effect traps heat by absorbing radiation\"); distractor 2's reason is not a one-line misconception (\"Misunderstands the explanation given in the passage about th…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Based on the passage, why is it unlikely that life exists on Mercury?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct reason why Earth is called the Blue Planet?",
+      "reason": "options 0 and 1 say the same thing (\"Because it appears blue from space due to the presence of a large amount of oxygen\" / \"Because it appears blue from space due to the presence of a large amount of carbon dioxide\"); options 0 and 2 say the same thing (\"Because it appears blue from space due to the presence of a large amount of oxygen\" / \"Because it appears blue from space due to the presence of a large amount of water\"); options 0 and 3 say the same thing (\"Because it appears blue from space due to the presence of a large amount of oxygen\" / \"Because it appears blue from space due to the presence of a large amount of carbon dioxide\"); options 1 and 2 say the same thing (\"Because it appears blue from space due to the presence of a large amount of carbon dioxide\" / \"Because it appears blue from space due to the presence of a large amount of water\"); options 1 and 3 are the same (\"Because it appears blue from space due to the presence of a large amount of carbon dioxide\"); options 2 and 3 say the same thing (\"Because it appears blue from space due to the presence of a large amount of water\" / \"Because it appears blue from space due to the presence of a large amount of carbon dioxide\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is released by plants during photosynthesis?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the habitable zone?",
+      "reason": "options 0 and 1 say the same thing (\"The area around a star where liquid water can exist\" / \"The area around a star where solid water can exist\"); options 0 and 2 say the same thing (\"The area around a star where liquid water can exist\" / \"The area around a star where gaseous water can exist\"); options 1 and 2 say the same thing (\"The area around a star where solid water can exist\" / \"The area around a star where gaseous water can exist\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT a function of water in the environment?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of reproduction in living organisms according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, how does a calf grow into a cow?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of these is an example of geodiversity?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the Earth had no atmosphere, what would be the most likely effect on life?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correctly identifies the effect, but the other options are i…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the main reason Earth is able to support life?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the role of distance from the Sun in supporti…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If Earth's magnetic field disappeared, which of the following would be the most immediate consequence for life?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Incorrectly assumes that the absence of a magnetic field wou…\"); distractor 1's reason is not a one-line misconception (\"Incorrectly assumes that the absence of a magnetic field wou…\"); distractor 3's reason is not a one-line misconception (\"Correctly identifies the immediate consequence, but the othe…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A scientist suggests that a planet in another solar system could support life if it is in a zone where the temperature allows liquid water. Which of the following best supports this idea?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Incorrectly assumes that a thick atmosphere is the main fact…\"); distractor 1's reason is not a one-line misconception (\"Incorrectly assumes that a magnetic field is the main factor…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of a flower contains the female gametes?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is one major reason Mars cannot currently support life like Earth?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Incorrectly assumes that Mars being close to the Sun is a re…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of reproduction according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "How does the passage explain the variation in traits among siblings?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"contradicts the passage’s explanation of genetic variation…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is NOT a consequence of climate change as described in the passage?",
+      "reason": "after redrafting distractors 0, 1, 3: the critic finds option 1 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is an example of how the geosphere supports life?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What happens when the male and female gametes combine in plants?",
+      "reason": "near-duplicate of served question cmvgdpt7503k6gpfhojbcty8o (cosine 0.917 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What role does the atmosphere play in keeping Earth warm?",
+      "reason": "near-duplicate of batch item \"What is the role of the atmosphere in keeping the …\" (cosine 0.952 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

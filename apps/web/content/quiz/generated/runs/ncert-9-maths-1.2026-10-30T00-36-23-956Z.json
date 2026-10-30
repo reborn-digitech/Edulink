@@ -1,0 +1,531 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T00:36:23.956Z",
+  "finishedAt": "2026-10-30T00:42:13.438Z",
+  "seconds": 349,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Manjari PART-II",
+    "bookCode": "iemh2",
+    "document": "ncert/9/mathematics/iemh201.pdf",
+    "classLevel": 9,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — Propositions and their Converses",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 5,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n22. Given:-AB II CD II EF\nTo prove:- ா஽ ஺ா = ஻ி ி஼\nConstruction:- Join BD to\nintersect EF at G.\nProof:- in ∆ ABD\nEG II AB ( EF II AB )\nா஽ ஺ா = ஻ீீ ஽ ( by BPT )___________(1)\nIn ∆𝐷𝐵𝐶\nGF II CD ( EF II CD )\n஻ி ி஼ = ஻ீீ ஽ ( by BPT )___________(2)\n𝑓𝑟𝑜𝑚 (1) & (2)\nா஽ ஺ா = ஻ி ி஼\nGiven AD=6cm, DB=9cm\nAE=8cm, EC=12cm, ∠ADE=48\nTo find:- ∠ABC=?\nProof:\nIn ∆𝐴𝐵𝐶\n஽஻ ஺஽ = = ଺ ଽ ଶ ଷ ……(1)\n஺ா ா஼ = ଵଶ ଼ = ଶ ଷ ……..(2)\nFrom (1) & (2)\n஽஻ ஺஽ = ஺ா ா஼\nDE II BC (Converse of BPT)\n∠ADE=∠ABC (Corresponding angles)\n⇒ ∠ABC=48˚\nOR",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2023-24]\n29. A circle touches all the four sides of quadrilateral ABCD. Prove that AB + CD = AD + BC.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2022-23]\n22. In the figure, altitudes AD and CE of Δ ABC intersect 2\neach other at the point P. Show that:\n(i) ΔABD ~ ΔCBE\n(ii) ΔPDC ~ ΔBEC\n[OR]\nBF BE\nIn the figure, DE || AC and DF || AE. Prove that FE = EC",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n7. (a) ∆𝑃𝑄𝑅~ ∆ 𝐶𝐴𝐵"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 135114,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 17512,
+      "completionTokens": 7557
+    },
+    "critique": {
+      "calls": 30,
+      "ms": 207383,
+      "in": 24,
+      "out": 22,
+      "rejects": 2,
+      "promptTokens": 15450,
+      "completionTokens": 5125
+    },
+    "solver": {
+      "calls": 155,
+      "ms": 97602,
+      "in": 22,
+      "out": 17,
+      "rejects": 5,
+      "promptTokens": 36312,
+      "completionTokens": 1816
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 4,
+      "rejects": 13,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 29,
+      "ms": 5778,
+      "in": 4,
+      "out": 3,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 13,
+      "ms": 117240,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 6921,
+      "completionTokens": 3407
+    }
+  },
+  "kept": 3,
+  "keptByLevel": {
+    "1": 0,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In the passage, the Baudhāyana–Pythagoras theorem is discussed. The statement says, 'If a triangle is right-angled, then a² + b² = c².' What is the converse of this statement?",
+      "ms": {
+        "draft": 15896,
+        "critique": 5272,
+        "solver": 1423,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the passage, an example is given where it is stated that if a number is a multiple of 6, then it is a multiple of 3. Which of the following is a correct counterexample to the converse of this statement?",
+      "ms": {
+        "draft": 15896,
+        "critique": 6427,
+        "solver": 2782,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the passage, it is stated that if two triangles have the same area, then they are congruent. Which of the following is a correct counterexample to this statement?",
+      "ms": {
+        "draft": 15896,
+        "critique": 10991,
+        "solver": 2495
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, it is stated that if a number is a perfect square, it has an odd number of factors. Which of the following options correctly describes the converse of this statement?",
+      "ms": {
+        "draft": 15896,
+        "critique": 5761,
+        "solver": 17799,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the passage, it is stated that if two angles of a triangle are equal, then the sides opposite the equal angles are equal. Which of the following options correctly describes the form of this statement?",
+      "ms": {
+        "draft": 15896,
+        "critique": 7971,
+        "solver": 1317,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a triangle, if the angles are equal, then the sides opposite to them are equal. Which of the following is the correct converse of this statement?",
+      "ms": {
+        "draft": 6094,
+        "critique": 7657,
+        "solver": 1450,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the passage, it is discussed that if a number is a perfect square, it has an odd number of factors, and the converse is also true. Which of the following options best explains why the converse is true?",
+      "ms": {
+        "draft": 15896,
+        "critique": 8083,
+        "solver": 20214,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Given that the converse of a proposition is not always true, which of the following statements is true based on the passage?",
+      "ms": {
+        "draft": 6094,
+        "critique": 6932,
+        "solver": 2208,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, DE is parallel to BC. If AE = 8 cm and EC = 12 cm, what is the ratio of AE to EC?",
+      "ms": {
+        "draft": 6094,
+        "critique": 8062,
+        "solver": 19005
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the converse of the statement: 'If a quadrilateral is a square, then all its angles are equal'?",
+      "ms": {
+        "draft": 6094,
+        "critique": 7128,
+        "solver": 18031,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a valid counterexample for the proposition: 'If a number is divisible by 8, then it is divisible by both 2 and 4'?",
+      "ms": {
+        "draft": 6094,
+        "critique": 7732,
+        "solver": 19301
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is a perfect square, then the product of its factors is also a perfect square. Which of the following is the converse of this statement?",
+      "ms": {
+        "draft": 6094,
+        "critique": 5176,
+        "solver": 846,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the converse of the proposition: 'If two lines are parallel, then the corresponding angles formed by a transversal are equal'",
+      "ms": {
+        "draft": 7656,
+        "critique": 6420,
+        "solver": 1551,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In a triangle, if the sum of any two sides is greater than the third side, then the triangle is valid. Which of the following is the converse of this proposition?",
+      "ms": {
+        "draft": 7656,
+        "critique": 6871,
+        "solver": 1691,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, AB is parallel to CD, and PQ is a transversal. If ∠APQ = 55° and ∠PQR = 125°, what is the measure of ∠RQD?",
+      "ms": {
+        "draft": 7656,
+        "critique": 8352
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the given figure, AB is parallel to CD, and PQ is a transversal. If ∠APQ = 55°, and ∠PQR = 125°, what is the measure of ∠RQD?",
+      "ms": {
+        "draft": 7656,
+        "critique": 8491
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, AB is parallel to CD, and EF intersects AB at G and CD at H. If ∠AGE = 60°, what is the measure of ∠DHG?",
+      "ms": {
+        "draft": 7656,
+        "critique": 7100,
+        "solver": 13817
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the converse of the proposition: 'If a quadrilateral is a square, then all its angles are equal'",
+      "ms": {
+        "draft": 7656,
+        "critique": 6389,
+        "solver": 1505,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a quadrilateral ABCD, a circle is inscribed touching all four sides. Which of the following is true?",
+      "ms": {
+        "draft": 3097,
+        "critique": 7747,
+        "solver": 1900,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a triangle ABC, altitudes AD and CE intersect at point P. Which of the following must be true?",
+      "ms": {
+        "draft": 3097,
+        "critique": 7208,
+        "solver": 1582
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a triangle, if two angles are equal, what can be said about the sides opposite those angles?",
+      "ms": {
+        "draft": 3097,
+        "critique": 4657,
+        "solver": 526,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a triangle has two equal angles, which of the following must be true?",
+      "ms": {
+        "draft": 3097,
+        "critique": 6330,
+        "solver": 1486,
+        "form": 0,
+        "translation": 40116
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a triangle has all sides equal, what can be said about its angles?",
+      "ms": {
+        "draft": 3097,
+        "critique": 4947,
+        "solver": 997,
+        "form": 0,
+        "translation": 33570
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is a multiple of 6, then it is a multiple of 3. Is the converse of this statement also true?",
+      "ms": {
+        "draft": 3097,
+        "critique": 6557,
+        "solver": 1001,
+        "form": 0,
+        "translation": 39793
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, the Baudhāyana–Pythagoras theorem is discussed. The statement says, 'If a triangle is right-angled, then a² + b² = c².' What is the converse of this statement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"If a² + b² = c², then the triangle is right-angled.\" / \"If a triangle is right-angled, then a² + b² ≠ c².\"); options 0 and 3 say the same thing (\"If a² + b² = c², then the triangle is right-angled.\" / \"If a² + b² ≠ c², then the triangle is not right-angled.\"); options 1 and 2 say the same thing (\"If a triangle is not right-angled, then a² + b² ≠ c².\" / \"If a triangle is right-angled, then a² + b² ≠ c².\"); options 1 and 3 say the same thing (\"If a triangle is not right-angled, then a² + b² ≠ c².\" / \"If a² + b² ≠ c², then the triangle is not right-angled.\"); option 2 repeats the stem's wording (\"If a triangle is right-angled, then a² + b² ≠ c².\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the passage, an example is given where it is stated that if a number is a multiple of 6, then it is a multiple of 3. Which of the following is a correct counterexample to the converse of this statement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"2 is a multiple of 3 but not of 6.\" / \"6 is a multiple of 3 but not of 6.\"); options 0 and 2 say the same thing (\"2 is a multiple of 3 but not of 6.\" / \"3 is a multiple of 3 but not of 6.\"); options 0 and 3 say the same thing (\"2 is a multiple of 3 but not of 6.\" / \"9 is a multiple of 3 but not of 6.\"); options 1 and 2 say the same thing (\"6 is a multiple of 3 but not of 6.\" / \"3 is a multiple of 3 but not of 6.\"); options 1 and 3 say the same thing (\"6 is a multiple of 3 but not of 6.\" / \"9 is a multiple of 3 but not of 6.\"); options 2 and 3 say the same thing (\"3 is a multiple of 3 but not of 6.\" / \"9 is a multiple of 3 but not of 6.\"); distractor 3's reason is not a one-line misconception (\"Chooses the first correct counterexample but the passage emp…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the passage, it is stated that if two triangles have the same area, then they are congruent. Which of the following is a correct counterexample to this statement?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, it is stated that if a number is a perfect square, it has an odd number of factors. Which of the following options correctly describes the converse of this statement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"If a number has an odd number of factors, then it is a perfect square.\" / \"If a number is not a perfect square, then it has an odd number of factors.\"); options 0 and 2 say the same thing (\"If a number has an odd number of factors, then it is a perfect square.\" / \"If a number has an odd number of factors, then it is not a perfect square.\"); options 0 and 3 say the same thing (\"If a number has an odd number of factors, then it is a perfect square.\" / \"If a number is a perfect square, then it has an even number of factors.\"); options 1 and 2 say the same thing (\"If a number is not a perfect square, then it has an odd number of factors.\" / \"If a number has an odd number of factors, then it is not a perfect square.\"); options 1 and 3 say the same thing (\"If a number is not a perfect square, then it has an odd number of factors.\" / \"If a number is a perfect square, then it has an even number of factors.\"); options 2 and 3 say the same thing (\"If a number has an odd number of factors, then it is not a perfect square.\" / \"If a number is a perfect square, then it has an even number of factors.\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the passage, it is stated that if two angles of a triangle are equal, then the sides opposite the equal angles are equal. Which of the following options correctly describes the form of this statement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"If X, then Y.\" / \"If Y, then X.\"); options 0 and 2 say the same thing (\"If X, then Y.\" / \"If not X, then not Y.\"); options 0 and 3 say the same thing (\"If X, then Y.\" / \"If not Y, then not X.\"); options 1 and 2 say the same thing (\"If Y, then X.\" / \"If not X, then not Y.\"); options 1 and 3 say the same thing (\"If Y, then X.\" / \"If not Y, then not X.\"); options 2 and 3 say the same thing (\"If not X, then not Y.\" / \"If not Y, then not X.\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a triangle, if the angles are equal, then the sides opposite to them are equal. Which of the following is the correct converse of this statement?",
+      "reason": "options 0 and 1 say the same thing (\"If the sides opposite to the angles are equal, then the angles are equal.\" / \"If the angles are not equal, then the sides opposite to them are not equal.\"); options 0 and 2 say the same thing (\"If the sides opposite to the angles are equal, then the angles are equal.\" / \"If the sides opposite to the angles are not equal, then the angles are not equal.\"); options 0 and 3 say the same thing (\"If the sides opposite to the angles are equal, then the angles are equal.\" / \"If the sides opposite to the angles are equal, then the angles are not equal.\"); options 1 and 2 say the same thing (\"If the angles are not equal, then the sides opposite to them are not equal.\" / \"If the sides opposite to the angles are not equal, then the angles are not equal.\"); options 1 and 3 say the same thing (\"If the angles are not equal, then the sides opposite to them are not equal.\" / \"If the sides opposite to the angles are equal, then the angles are not equal.\"); options 2 and 3 say the same thing (\"If the sides opposite to the angles are not equal, then the angles are not equal.\" / \"If the sides opposite to the angles are equal, then the angles are not equal.\"); option 0 repeats the stem's wording (\"If the sides opposite to the angles are equal, then the angles are equal.\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the passage, it is discussed that if a number is a perfect square, it has an odd number of factors, and the converse is also true. Which of the following options best explains why the converse is true?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"2: If a number has an odd number of factors, it must be divisible by an odd number, which explains why the converse is true.\" / \"3: If a number has an odd number of factors, it must be divisible by 2, which explains why the converse is true.\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Given that the converse of a proposition is not always true, which of the following statements is true based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"If a proposition is true, then its converse is always true.\" / \"If a proposition is false, then its converse is always false.\"); options 1 and 3 say the same thing (\"If a proposition is true, then its converse is not necessarily true.\" / \"If a proposition is false, then its converse is not necessarily false.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the given figure, DE is parallel to BC. If AE = 8 cm and EC = 12 cm, what is the ratio of AE to EC?",
+      "reason": "distractors 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the converse of the statement: 'If a quadrilateral is a square, then all its angles are equal'?",
+      "reason": "options 0 and 3 say the same thing (\"If all the angles of a quadrilateral are equal, then it is a square.\" / \"If all the angles of a quadrilateral are equal, then it is not a square.\"); options 1 and 2 say the same thing (\"If a quadrilateral is not a square, then all its angles are equal.\" / \"If a quadrilateral is a square, then all its angles are not equal.\"); option 0 repeats the stem's wording (\"If all the angles of a quadrilateral are equal, then it is a square.\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following is a valid counterexample for the proposition: 'If a number is divisible by 8, then it is divisible by both 2 and 4'?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a number is a perfect square, then the product of its factors is also a perfect square. Which of the following is the converse of this statement?",
+      "reason": "options 0 and 1 say the same thing (\"If the product of the factors of a number is a perfect square, then the number is a perfect square.\" / \"If a number is not a perfect square, then the product of its factors is not a perfect square.\"); options 0 and 2 say the same thing (\"If the product of the factors of a number is a perfect square, then the number is a perfect square.\" / \"If the product of the factors of a number is not a perfect square, then the number is not a perfect square.\"); options 0 and 3 say the same thing (\"If the product of the factors of a number is a perfect square, then the number is a perfect square.\" / \"If a number is a perfect square, then the product of its factors is not a perfect square.\"); options 1 and 2 say the same thing (\"If a number is not a perfect square, then the product of its factors is not a perfect square.\" / \"If the product of the factors of a number is not a perfect square, then the number is not a perfect square.\"); options 1 and 3 say the same thing (\"If a number is not a perfect square, then the product of its factors is not a perfect square.\" / \"If a number is a perfect square, then the product of its factors is not a perfect square.\"); options 2 and 3 say the same thing (\"If the product of the factors of a number is not a perfect square, then the number is not a perfect square.\" / \"If a number is a perfect square, then the product of its factors is not a perfect square.\"); option 0 repeats the stem's wording (\"If the product of the factors of a number is a perfect square, then the number is a perfect square.\"); option 3 repeats the stem's wording (\"If a number is a perfect square, then the product of its factors is not a perfect square.\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the converse of the proposition: 'If two lines are parallel, then the corresponding angles formed by a transversal are equal'",
+      "reason": "options 0 and 1 say the same thing (\"If the corresponding angles formed by a transversal are equal, then the two lines are parallel\" / \"If two lines are not parallel, then the corresponding angles formed by a transversal are not equal\"); options 0 and 2 say the same thing (\"If the corresponding angles formed by a transversal are equal, then the two lines are parallel\" / \"If the corresponding angles formed by a transversal are not equal, then the two lines are not parallel\"); options 0 and 3 say the same thing (\"If the corresponding angles formed by a transversal are equal, then the two lines are parallel\" / \"If two lines are parallel, then the corresponding angles formed by a transversal are not equal\"); options 1 and 2 say the same thing (\"If two lines are not parallel, then the corresponding angles formed by a transversal are not equal\" / \"If the corresponding angles formed by a transversal are not equal, then the two lines are not parallel\"); options 1 and 3 say the same thing (\"If two lines are not parallel, then the corresponding angles formed by a transversal are not equal\" / \"If two lines are parallel, then the corresponding angles formed by a transversal are not equal\"); options 2 and 3 say the same thing (\"If the corresponding angles formed by a transversal are not equal, then the two lines are not parallel\" / \"If two lines are parallel, then the corresponding angles formed by a transversal are not equal\"); option 0 repeats the stem's wording (\"If the corresponding angles formed by a transversal are equal, then the two lines are parallel\"); option 3 repeats the stem's wording (\"If two lines are parallel, then the corresponding angles formed by a transversal are not equal\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In a triangle, if the sum of any two sides is greater than the third side, then the triangle is valid. Which of the following is the converse of this proposition?",
+      "reason": "options 0 and 1 say the same thing (\"If a triangle is valid, then the sum of any two sides is greater than the third side\" / \"If a triangle is not valid, then the sum of any two sides is not greater than the third side\"); options 0 and 2 say the same thing (\"If a triangle is valid, then the sum of any two sides is greater than the third side\" / \"If the sum of any two sides is not greater than the third side, then the triangle is not valid\"); options 0 and 3 say the same thing (\"If a triangle is valid, then the sum of any two sides is greater than the third side\" / \"If a triangle is valid, then the sum of any two sides is not greater than the third side\"); options 1 and 2 say the same thing (\"If a triangle is not valid, then the sum of any two sides is not greater than the third side\" / \"If the sum of any two sides is not greater than the third side, then the triangle is not valid\"); options 1 and 3 say the same thing (\"If a triangle is not valid, then the sum of any two sides is not greater than the third side\" / \"If a triangle is valid, then the sum of any two sides is not greater than the third side\"); options 2 and 3 say the same thing (\"If the sum of any two sides is not greater than the third side, then the triangle is not valid\" / \"If a triangle is valid, then the sum of any two sides is not greater than the third side\"); option 0 repeats the stem's wording (\"If a triangle is valid, then the sum of any two sides is greater than the third side\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In the given figure, AB is parallel to CD, and PQ is a transversal. If ∠APQ = 55° and ∠PQR = 125°, what is the measure of ∠RQD?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In the given figure, AB is parallel to CD, and PQ is a transversal. If ∠APQ = 55°, and ∠PQR = 125°, what is the measure of ∠RQD?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given figure, AB is parallel to CD, and EF intersects AB at G and CD at H. If ∠AGE = 60°, what is the measure of ∠DHG?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the converse of the proposition: 'If a quadrilateral is a square, then all its angles are equal'",
+      "reason": "options 0 and 1 say the same thing (\"If all its angles are equal, then the quadrilateral is a square\" / \"If a quadrilateral is not a square, then all its angles are not equal\"); options 0 and 2 say the same thing (\"If all its angles are equal, then the quadrilateral is a square\" / \"If all its angles are not equal, then the quadrilateral is not a square\"); options 0 and 3 say the same thing (\"If all its angles are equal, then the quadrilateral is a square\" / \"If a quadrilateral is a square, then all its angles are not equal\"); options 1 and 2 say the same thing (\"If a quadrilateral is not a square, then all its angles are not equal\" / \"If all its angles are not equal, then the quadrilateral is not a square\"); options 1 and 3 say the same thing (\"If a quadrilateral is not a square, then all its angles are not equal\" / \"If a quadrilateral is a square, then all its angles are not equal\"); options 2 and 3 say the same thing (\"If all its angles are not equal, then the quadrilateral is not a square\" / \"If a quadrilateral is a square, then all its angles are not equal\"); option 0 repeats the stem's wording (\"If all its angles are equal, then the quadrilateral is a square\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a quadrilateral ABCD, a circle is inscribed touching all four sides. Which of the following is true?",
+      "reason": "options 0 and 2 say the same thing (\"AB + CD = AD + BC\" / \"AB + AD = BC + CD\"); options 1 and 3 are the same (\"AB + BC = CD + DA\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In a triangle ABC, altitudes AD and CE intersect at point P. Which of the following must be true?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In a triangle, if two angles are equal, what can be said about the sides opposite those angles?",
+      "reason": "near-duplicate of batch item \"If a triangle has two equal angles, which of the f…\" (cosine 0.900 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

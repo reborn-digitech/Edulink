@@ -21,303 +21,49 @@
   "board": "NCERT",
   "book": "Biology",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T03:19:59.900Z",
+  "generatedAt": "2026-10-28T13:47:11.457Z",
   "model": "qwen3-30b-a3b",
-  "topicIsNew": true,
+  "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which of the following is a characteristic feature of prokaryotic cells?",
+      "stem": "Which of the following is a characteristic of chloroplasts?",
       "choices": [
-        "They have a well-defined nucleus",
-        "They have membrane-bound organelles",
-        "They have a nuclear membrane",
-        "They lack membrane-bound organelles"
+        "They are surrounded by a single membrane",
+        "They contain 70S ribosomes",
+        "They are found only in animal cells",
+        "They have a lumen enclosed by the thylakoid membrane"
       ],
       "answerIndex": 3,
-      "solution": "Prokaryotic cells lack membrane-bound organelles, which is a key characteristic that distinguishes them from eukaryotic cells. The other options describe features of eukaryotic cells, not prokaryotic ones.",
+      "solution": "Chloroplasts have a lumen enclosed by the thylakoid membrane, which is a defining feature of their structure. Chloroplasts are actually surrounded by two membranes, not one, and they contain 70S ribosomes, which are different from the 80S ribosomes found in animal cells. Chloroplasts are present in plant cells, not animal cells.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन सी प्रोकैरियोटिक कोशिकाओं की विशेषता है?",
+          "stem": "निम्नलिखित में से कौन-सा क्लोरोप्लास्ट का गुण है?",
           "choices": [
-            "उनके पास एक अच्छी तरह से परिभाषित केंद्रक होता है",
-            "उनके पास केंद्रकीय झिल्ली होती है",
-            "उनके पास मेम्ब्रेन-बाउंड ऑर्गेनेल्स होते हैं",
-            "उनके पास मेम्ब्रेन-बाउंड ऑर्गेनेल्स नहीं होते हैं"
+            "उन्हें एक झिल्ली द्वारा घिरा होता है",
+            "उनमें 70S राइबोसोम होते हैं",
+            "उन्हें केवल पशु कोशिकाओं में पाया जाता है",
+            "उनमें थायलेकॉइड झिल्ली द्वारा घिरा लुमेन होता है"
           ],
-          "solution": "प्रोकैरियोटिक कोशिकाओं में मेम्ब्रेन-बाउंड ऑर्गेनेल्स की कमी होती है, जो उन्हें यूकैरियोटिक कोशिकाओं से अलग करने वाली मुख्य विशेषता है। अन्य विकल्प यूकैरियोटिक कोशिकाओं की विशेषताओं को बताते हैं, न कि प्रोकैरियोटिक कोशिकाओं की।",
-          "imageAlt": "एक समतल दर्पण का चित्र जिसमें आपतित किरण, परावर्तित किरण और अभिलंब होता है",
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. The correct answer remains in the same position, and the distractors are still incorrect. Technical terms like 'मेम्ब्रेन-बाउंड ऑर्गेनेल्स' are used appropriately in the context of Hindi biology textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता प्रोकॅरियोटिक कोशिकांचा वैशिष्ट्य लक्षण आहे?",
-          "choices": [
-            "त्यांच्याकडे चांगल्या प्रकारे परिभाषित केलेले न्यूक्लियस असते",
-            "त्यांच्याकडे कोशिकाकला बांधलेले अर्गनेल असतात",
-            "त्यांच्याकडे न्यूक्लियस कला असते",
-            "त्यांच्याकडे कोशिकाकला बांधलेले अर्गनेल नसतात"
-          ],
-          "solution": "प्रोकॅरियोटिक कोशिकांमध्ये कोशिकाकला बांधलेले अर्गनेल असत नाहीत, जे त्यांना युकॅरियोटिक कोशिकांपासून वेगळे करणारे महत्वपूर्ण लक्षण आहे. इतर विकल्प युकॅरियोटिक कोशिकांचे लक्षण वर्णन करतात, न की प्रोकॅरियोटिक कोशिकांचे.",
-          "imageAlt": "समतल दर्पणाचा आकृती ज्यामध्ये आपातन किरण, प्रतिबिंबित किरण आणि सामान्य असते",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "Diagram showing a plane mirror with incident ray, reflected ray, and normal",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "planeMirror",
-              "x": 30,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "mirror",
-                "incidentRay",
-                "reflectedRay",
-                "normal"
-              ],
-              "text": {}
-            }
-          ]
-        },
-        "labels": {}
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "confuses prokaryotic and eukaryotic features",
-        "confuses prokaryotic and eukaryotic features",
-        "confuses prokaryotic and eukaryotic features",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The question is about prokaryotic cells, but the figure shown is about a plane mirror, which is unrelated to the content of the question. This is a clear mismatch and could confuse students.",
-      "sources": [
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T03:19:59.900Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which of the following is a non-membrane bound organelle found in all cells?",
-      "choices": [
-        "Endoplasmic reticulum",
-        "Mitochondria",
-        "Ribosomes",
-        "Lysosomes"
-      ],
-      "answerIndex": 2,
-      "solution": "Ribosomes are non-membrane bound organelles found in all cells, both eukaryotic and prokaryotic. The other options are membrane-bound organelles, which are not present in prokaryotic cells.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक गैर-कला-आवरित कोशिकांग है जो सभी कोशिकाओं में पाया जाता है?",
-          "choices": [
-            "एंडोप्लाज्मिक रेटिकुलम",
-            "माइटोकॉन्ड्रिया",
-            "राइबोसोम्स",
-            "लाइसोसोम्स"
-          ],
-          "solution": "राइबोसोम्स एक गैर-कला-आवरित कोशिकांग है जो सभी कोशिकाओं, दोनों यूकैरियोटिक और प्रोकैरियोटिक में पाया जाता है। अन्य विकल्प कला-आवरित कोशिकांग हैं, जो प्रोकैरियोटिक कोशिकाओं में उपस्थित नहीं होते हैं।",
-          "imageAlt": "एक जंतु कोशिका का चित्र जिसमें साइटोप्लाज्म में राइबोसोम दिखाया गया है।",
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi biological terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक सर्व सेलमध्ये आढळू शकणारे असं अवरोधक नसलेले अंगाचे आहे?",
-          "choices": [
-            "एंडोप्लाज्मिक रेटिक्युलम",
-            "माइटोकॉन्ड्रिया",
-            "राइबोसोम्स",
-            "लायसोसोम्स"
-          ],
-          "solution": "राइबोसोम्स सर्व सेलमध्ये आढळू शकणारे असं अवरोधक नसलेले अंग आहेत, जे एकार्थी आणि द्विकार्थी दोन्ही प्रकारच्या सेलमध्ये असतात. इतर विकल्प अवरोधक असलेले अंग आहेत, जे द्विकार्थी सेलमध्ये असत नाहीत.",
-          "imageAlt": "प्राणी सेलचा आकृती ज्यामध्ये साइटोप्लाझममध्ये राइबोसोम दाखवला आहे.",
-          "critique": "The Marathi translation accurately reflects the English question and solution, with appropriate terminology used in Marathi biology textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "Diagram of an animal cell showing a ribosome in the cytoplasm.",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "animalCell",
-              "x": 50,
-              "y": 30,
-              "size": 30,
-              "labels": [
-                "cytoplasm"
-              ],
-              "text": {
-                "cytoplasm": "ribosome"
-              }
-            }
-          ],
-          "texts": [
-            {
-              "x": 50,
-              "y": 50,
-              "label": "ribosome"
-            }
-          ]
-        },
-        "labels": {
-          "ribosome": {
-            "en": "Ribosome",
-            "hi": "राइबोसोम",
-            "mr": "राइबोसोम"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "confuses membrane-bound with non-membrane bound organelles",
-        "confuses membrane-bound with non-membrane bound organelles",
-        null,
-        "confuses membrane-bound with non-membrane bound organelles"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed. The correct answer is ribosomes, which are non-membrane bound and present in all cells. The other options are membrane-bound and not found in prokaryotic cells, which is a valid distinction.",
-      "sources": [
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T03:19:59.900Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "Which of the following is true about ribosomes?",
-      "choices": [
-        "They are surrounded by a membrane",
-        "They are composed of DNA and proteins",
-        "They are found only in eukaryotic cells",
-        "They are smaller in prokaryotes than in eukaryotes"
-      ],
-      "answerIndex": 3,
-      "solution": "The correct answer is that ribosomes are smaller in prokaryotes than in eukaryotes. Prokaryotic ribosomes are 70S, while eukaryotic ribosomes are 80S. The other options are incorrect because ribosomes are not surrounded by a membrane, they are composed of RNA and proteins, and they are found in both prokaryotes and eukaryotes.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा राइबोसोम के बारे में सही है?",
-          "choices": [
-            "वे एक झिल्ली द्वारा घिरे होते हैं",
-            "वे डीएनए और प्रोटीन से बने होते हैं",
-            "वे केवल यूकैरियोटिक कोशिकाओं में पाए जाते हैं",
-            "वे प्रोकैरियोट्स में यूकैरियोट्स की तुलना में छोटे होते हैं"
-          ],
-          "solution": "सही उत्तर यह है कि राइबोसोम प्रोकैरियोट्स में यूकैरियोट्स की तुलना में छोटे होते हैं। प्रोकैरियोटिक राइबोसोम 70S होते हैं, जबकि यूकैरियोटिक राइबोसोम 80S होते हैं। अन्य विकल्प गलत हैं क्योंकि राइबोसोम एक झिल्ली द्वारा घिरे नहीं होते हैं, वे आरएनए और प्रोटीन से बने होते हैं, और वे प्रोकैरियोट्स और यूकैरियोट्स दोनों में पाए जाते हैं।",
+          "solution": "क्लोरोप्लास्ट में थायलेकॉइड झिल्ली द्वारा घिरा लुमेन होता है, जो उनकी संरचना की एक परिभाषात्मक विशेषता है। क्लोरोप्लास्ट वास्तव में एक झिल्ली के बजाय दो झिल्लियों द्वारा घिरे होते हैं, और उनमें 70S राइबोसोम होते हैं, जो पशु कोशिकाओं में पाए जाने वाले 80S राइबोसोम से अलग होते हैं। क्लोरोप्लास्ट पौधों की कोशिकाओं में पाए जाते हैं, पशु कोशिकाओं में नहीं।",
           "imageAlt": null,
-          "critique": "All elements match the original English version in meaning, structure, and terminology. The Hindi translation uses standard biological terms used in Indian textbooks.",
+          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used for biological concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी रायबोसोमबद्दल कोणते खरे आहे?",
+          "stem": "ख्लोरोप्लास्टचा खालीलपैकी कोणता लक्षण आहे?",
           "choices": [
-            "ते कार्यकारी पटलाने वेढलेले असतात",
-            "ते डीएनए आणि प्रोटीनमध्ये बनलेले असतात",
-            "ते केवळ यूकॅरियोटिक कोशिकांमध्ये आढळतात",
-            "ते प्रोकॅरियोटीकमध्ये यूकॅरियोटीकमध्ये असतात"
+            "त्यांना एका झिल्लीने घेरले जाते",
+            "त्यांमध्ये 70S राइबोसोम असतात",
+            "ते केवळ जंतू कोशिकांमध्ये असतात",
+            "त्यांमध्ये थायलेकॉइड झिल्लीने घेरलेले लुमेन असते"
           ],
-          "solution": "रायबोसोम प्रोकॅरियोटीकमध्ये लहान असतात आणि यूकॅरियोटीकमध्ये मोठे असतात. प्रोकॅरियोटीक रायबोसोम 70S असतात, तर यूकॅरियोटीक रायबोसोम 80S असतात. इतर विकल्प चूकीचे आहेत कारण रायबोसोम एका पटलाने वेढलेले नसतात, ते आरएनए आणि प्रोटीनमध्ये बनलेले असतात आणि ते प्रोकॅरियोटीक आणि यूकॅरियोटीक दोन्ही कोशिकांमध्ये आढळतात.",
+          "solution": "ख्लोरोप्लास्टमध्ये थायलेकॉइड झिल्लीने घेरलेले लुमेन असते, जे त्यांच्या संरचनेचे निर्णायक लक्षण आहे. ख्लोरोप्लास्ट खरोखर दोन झिल्लीने घेरलेले असतात, न की एक. त्यांमध्ये 70S राइबोसोम असतात, जे जंतू कोशिकांमध्ये असलेल्या 80S राइबोसोमपासून वेगळे असतात. ख्लोरोप्लास्ट जंतू कोशिकांमध्ये नसून वनस्पती कोशिकांमध्ये असतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "critique": "The translation is accurate, maintains the correct answer position, and uses appropriate Marathi biological terminology.",
           "flag": null
         }
       },
@@ -326,9 +72,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses ribosomes with other organelles",
-        "Mixes up the components of ribosomes",
-        "Incorrectly assumes ribosomes are only in eukaryotes",
+        "Confuses chloroplasts with other organelles",
+        "Confuses ribosome types between chloroplasts and cytoplasm",
+        "Misunderstands the presence of chloroplasts in animal cells, which is incorrect as chloroplasts are found only in plant cells",
         null
       ],
       "solverAnswers": [
@@ -339,7 +85,7 @@
         3
       ],
       "levelFlag": null,
-      "critique": "The solution is accurate and matches the correct answer. The author's reasoning for the distractors is valid and reflects common student misconceptions.",
+      "critique": "The correct answer is 3, as chloroplasts do have a lumen enclosed by the thylakoid membrane. The other options are incorrect: chloroplasts have two membranes, not one; they contain 70S ribosomes, not 80S; and they are found in plant cells, not animal cells. The author's reasoning aligns with the correct biological facts.",
       "sources": [
         {
           "document": "ncert/11/biology/kebo108.pdf",
@@ -376,390 +122,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T03:19:59.900Z",
+      "generatedAt": "2026-10-28T13:47:11.457Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "Which of the following is a function of the stroma in a chloroplast?",
+      "stem": "Which of the following is a characteristic of prokaryotic ribosomes?",
       "choices": [
-        "It contains enzymes for the synthesis of carbohydrates and proteins",
-        "It stores proteins in the form of aleuroplasts",
-        "It contains ribosomes that are 80S in size",
-        "It is responsible for the movement of the cell"
-      ],
-      "answerIndex": 0,
-      "solution": "The stroma of the chloroplast contains enzymes required for the synthesis of carbohydrates and proteins. The other options are incorrect because aleuroplasts store proteins, ribosomes in chloroplasts are 70S, and movement is associated with cilia or flagella, not the stroma.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा स्ट्रोमा का कार्य है?",
-          "choices": [
-            "इसमें कार्बोहाइड्रेट एवं प्रोटीन के संश्लेषण के लिए एंजाइम होते हैं",
-            "इसमें एल्यूरोप्लास्ट के रूप में प्रोटीन संग्रहित होते हैं",
-            "इसमें 80S आकार के राइबोसोम होते हैं",
-            "इसके कारण कोशिका की गति होती है"
-          ],
-          "solution": "क्लोरोप्लास्ट के स्ट्रोमा में कार्बोहाइड्रेट एवं प्रोटीन के संश्लेषण के लिए आवश्यक एंजाइम होते हैं। अन्य विकल्प गलत हैं क्योंकि एल्यूरोप्लास्ट प्रोटीन के संग्रहण के लिए होते हैं, क्लोरोप्लास्ट में राइबोसोम 70S होते हैं, एवं गति के लिए सिलिया या फ्लैजेला संबंधित होते हैं, स्ट्रोमा के साथ नहीं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate biological terminology as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते रेशमाच्या कोशिकांमधील स्ट्रोमाचे कार्य आहे?",
-          "choices": [
-            "त्यामध्ये कार्बोहायड्रेट आणि प्रोटीनच्या संश्लेषणासाठी एन्झाइम असतात",
-            "त्यामध्ये एल्युरोप्लास्टच्या रूपात प्रोटीन भंडारले जातात",
-            "त्यामध्ये 80S आकाराचे राइबोसोम असतात",
-            "त्याची जबाबदारी कोशिकेच्या गतीसाठी असते"
-          ],
-          "solution": "क्लोरोप्लास्टच्या स्ट्रोमामध्ये कार्बोहायड्रेट आणि प्रोटीनच्या संश्लेषणासाठी आवश्यक एन्झाइम असतात. इतर विकल्प चुकीचे आहेत कारण एल्युरोप्लास्ट प्रोटीन भंडारतात, क्लोरोप्लास्टमधील राइबोसोम 70S आकाराचे असतात आणि गतीची जबाबदारी किल्ली किंवा फ्लॅजेलमशी जोडली जाते, स्ट्रोमाशी नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the function of the stroma with that of aleuroplasts",
-        "Misremember the size of chloroplast ribosomes",
-        "Associates movement with the stroma instead of cilia or flagella"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 0, as the stroma contains enzymes for carbohydrate and protein synthesis. The other options are incorrect due to common misconceptions about the functions of aleuroplasts, ribosome size, and cell movement.",
-      "sources": [
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 12,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 13,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 14,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T03:19:59.900Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the main difference between Gram-positive and Gram-negative bacteria?",
-      "choices": [
-        "Gram-positive bacteria have a cell wall, Gram-negative do not",
-        "Gram-positive bacteria are larger",
-        "Gram-positive bacteria take up the Gram stain, Gram-negative do not",
-        "Gram-positive bacteria have flagella, Gram-negative do not"
-      ],
-      "answerIndex": 2,
-      "solution": "Gram-positive bacteria take up the Gram stain, while Gram-negative bacteria do not. This is the basis of their classification. The other options are not accurate descriptions of the difference between the two groups.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "ग्राम-धनात्मक और ग्राम-ऋणात्मक बैक्टीरिया में मुख्य अंतर क्या है?",
-          "choices": [
-            "ग्राम-धनात्मक बैक्टीरिया में कोशिका भित्ति होती है, ग्राम-ऋणात्मक में नहीं",
-            "ग्राम-धनात्मक बैक्टीरिया बड़े होते हैं",
-            "ग्राम-धनात्मक बैक्टीरिया ग्राम रंजक को अवशोषित करते हैं, ग्राम-ऋणात्मक नहीं",
-            "ग्राम-धनात्मक बैक्टीरिया में फ्लैजेला होते हैं, ग्राम-ऋणात्मक में नहीं"
-          ],
-          "solution": "ग्राम-धनात्मक बैक्टीरिया ग्राम रंजक को अवशोषित करते हैं, जबकि ग्राम-ऋणात्मक नहीं करते। यह उनके वर्गीकरण का आधार है। अन्य विकल्प दोनों समूहों के बीच अंतर के सही वर्णन नहीं हैं।",
-          "imageAlt": "एक समतल दर्पण का चित्र जिसमें आपतित किरण, परावर्तित किरण और अभिलंब दिखाया गया है",
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "ग्रॅम-धनात्मक आणि ग्रॅम-ऋणात्मक बॅक्टेरिया दरम्यान मुख्य फरक काय आहे?",
-          "choices": [
-            "ग्रॅम-धनात्मक बॅक्टेरिया एक कोशिका भित्ती असते, ग्रॅम-ऋणात्मक नसते",
-            "ग्रॅम-धनात्मक बॅक्टेरिया जास्त मोठे असतात",
-            "ग्रॅम-धनात्मक बॅक्टेरिया ग्रॅम रंग घेतात, ग्रॅम-ऋणात्मक नाहीत",
-            "ग्रॅम-धनात्मक बॅक्टेरिया फ्लॅजेला असतात, ग्रॅम-ऋणात्मक नाहीत"
-          ],
-          "solution": "ग्रॅम-धनात्मक बॅक्टेरिया ग्रॅम रंग घेतात, तर ग्रॅम-ऋणात्मक बॅक्टेरिया घेत नाहीत. हा त्यांच्या वर्गीकरणाचा आधार आहे. इतर विकल्प दोन्ही गटांमधील फरकाचे अचूक वर्णन नाहीत.",
-          "imageAlt": "समतल दर्पणाचा आकृती ज्यात अंतर्गत किरण, प्रतिबिंबित किरण आणि सामान्य असते",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "Diagram showing a plane mirror with incident ray, reflected ray, and normal",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "planeMirror",
-              "x": 30,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "mirror",
-                "incidentRay",
-                "reflectedRay",
-                "normal"
-              ],
-              "text": {}
-            }
-          ]
-        },
-        "labels": {}
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "confuses the role of the cell wall",
-        "confuses size differences",
-        null,
-        "confuses the role of flagella"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The question is about the difference between Gram-positive and Gram-negative bacteria, and the correct answer is that Gram-positive bacteria take up the Gram stain. The other options are common misconceptions about cell walls, size, and flagella.",
-      "sources": [
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T03:19:59.900Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following is a unique feature of prokaryotic cells that helps in DNA replication and distribution to daughter cells?",
-      "choices": [
-        "Mesosomes",
-        "Ribosomes",
-        "Plasmids",
-        "Cell wall"
-      ],
-      "answerIndex": 0,
-      "solution": "Mesosomes are special membranous structures in prokaryotic cells that help in DNA replication and distribution to daughter cells. The other options do not have this specific role in prokaryotic cells.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी प्रोकैरियोटिक कोशिकाओं की एक विशिष्ट विशेषता है जो डीएनए प्रतिकृति और संतति कोशिकाओं में वितरण में सहायता करती है?",
-          "choices": [
-            "मेसोसोम्स",
-            "राइबोसोम्स",
-            "प्लाज्मिड्स",
-            "कोशिका भित्ति"
-          ],
-          "solution": "मेसोसोम्स प्रोकैरियोटिक कोशिकाओं में विशेष आवरण वाली संरचनाएं होती हैं जो डीएनए प्रतिकृति और संतति कोशिकाओं में वितरण में सहायता करती हैं। अन्य विकल्प प्रोकैरियोटिक कोशिकाओं में इस विशिष्ट भूमिका नहीं निभाते हैं।",
-          "imageAlt": "एक समतल दर्पण का चित्र जिसमें आपतित किरण, परावर्तित किरण और अभिलंब होता है",
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately used in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते प्रोकॅरियोटिक कोशिकांचे विशिष्ट लक्षण आहे जे डीएनए प्रतिकृती आणि डॉटर कोशिकांमध्ये वितरणास मदत करते?",
-          "choices": [
-            "मेसोसोम्स",
-            "राइबोसोम्स",
-            "प्लाझ्मिड्स",
-            "कोशिका भित्ती"
-          ],
-          "solution": "मेसोसोम्स हे प्रोकॅरियोटिक कोशिकांमधील विशेष आवरणात्मक संरचना आहेत जे डीएनए प्रतिकृती आणि डॉटर कोशिकांमध्ये वितरणास मदत करतात. इतर विकल्प प्रोकॅरियोटिक कोशिकांमध्ये या विशिष्ट भूमिकेसाठी नाहीत.",
-          "imageAlt": "समतल दर्पणाचा आकृती ज्यामध्ये आपतन किरण, प्रतिबिंबित किरण आणि सामान्य आहे",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "Diagram showing a plane mirror with incident ray, reflected ray, and normal",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "planeMirror",
-              "x": 30,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "mirror",
-                "incidentRay",
-                "reflectedRay",
-                "normal"
-              ],
-              "text": {}
-            }
-          ]
-        },
-        "labels": {}
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        null,
-        "confuses the role of mesosomes with ribosomes",
-        "confuses the role of plasmids with mesosomes",
-        "confuses the role of cell wall with mesosomes"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is unrelated to the diagram described (plane mirror, incident ray, reflected ray, and normal), which suggests a possible error in the question's context. The correct answer is 'Mesosomes' as they are involved in DNA replication and distribution in prokaryotic cells, while the other options do not have this specific role.",
-      "sources": [
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T03:19:59.900Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following is a correct feature of prokaryotic ribosomes?",
-      "choices": [
-        "They are 70S in size and made of 50S and 30S subunits",
-        "They are membrane-bound and found in the nucleus",
-        "They are responsible for lipid synthesis",
+        "They are 70S in size",
+        "They are membrane-bound",
+        "They are found in the nucleus",
         "They are larger than eukaryotic ribosomes"
       ],
       "answerIndex": 0,
-      "solution": "Prokaryotic ribosomes are 70S in size and consist of 50S and 30S subunits, which combine to form the 70S ribosome. This is a key characteristic of prokaryotes. The other options are incorrect because ribosomes in prokaryotes are not membrane-bound or found in the nucleus, they are not responsible for lipid synthesis, and they are not larger than eukaryotic ribosomes.",
+      "solution": "Prokaryotic ribosomes are made of two subunits, 50S and 30S, which together form 70S ribosomes. They are not membrane-bound and are found in the cytoplasm. Eukaryotic ribosomes are 80S in size, not 70S. Prokaryotic ribosomes are smaller than eukaryotic ones.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सी प्रोकैरियोटिक राइबोसोम की सही विशेषता है?",
+          "stem": "निम्नलिखित में से कौन-सा प्रोकैरियोटिक राइबोसोम का लक्षण है?",
           "choices": [
-            "वे 70S आकार के होते हैं और 50S और 30S उपइकाइयों से बने होते हैं",
-            "वे झिल्ली-आवृत होते हैं और केंद्रक में पाए जाते हैं",
-            "वे लिपिड संश्लेषण के लिए उत्तरदायी होते हैं",
+            "उनका आकार 70S होता है",
+            "वे झिल्ली-बाउंड होते हैं",
+            "वे नाभिक में पाए जाते हैं",
             "वे यूकैरियोटिक राइबोसोम की तुलना में बड़े होते हैं"
           ],
-          "solution": "प्रोकैरियोटिक राइबोसोम 70S आकार के होते हैं और 50S और 30S उपइकाइयों से बने होते हैं, जो 70S राइबोसोम बनाने के लिए एक साथ जुड़ जाते हैं। यह प्रोकैरियोट्स की एक मुख्य विशेषता है। अन्य विकल्प गलत हैं क्योंकि प्रोकैरियोटिक राइबोसोम झिल्ली-आवृत नहीं होते और केंद्रक में नहीं पाए जाते, वे लिपिड संश्लेषण के लिए उत्तरदायी नहीं होते, और वे यूकैरियोटिक राइबोसोम की तुलना में बड़े नहीं होते।",
+          "solution": "प्रोकैरियोटिक राइबोसोम दो उपइकाइयों, 50S और 30S से बने होते हैं, जो एक साथ 70S राइबोसोम बनाते हैं। वे झिल्ली-बाउंड नहीं होते हैं और कोशिका द्रव में पाए जाते हैं। यूकैरियोटिक राइबोसोम का आकार 80S होता है, न कि 70S। प्रोकैरियोटिक राइबोसोम यूकैरियोटिक राइबोसोम की तुलना में छोटे होते हैं।",
           "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard biological terminology in Hindi.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate biological terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता प्रोकॅरियोटिक राइबोसोमचा योग्य लक्षण आहे?",
+          "stem": "खालीलपैकी कोणते प्रोकॅरियोटिक राइबोसोमचे लक्षण आहे?",
           "choices": [
-            "ते 70S आकाराचे असतात आणि 50S आणि 30S उपसमूहांमधून बनलेले असतात",
-            "ते कोशिकाकवचाने बंद असतात आणि न्यूक्लियसमध्ये असतात",
-            "ते लिपिड संश्लेषणाची जबाबदारी घेतात",
-            "ते यूकॅरियोटिक राइबोसोमपेक्षा मोठे असतात"
+            "ते आकाराने 70S आहेत",
+            "ते कोशिकाकला बांधलेले आहेत",
+            "ते न्यूक्लियसमध्ये आढळतात",
+            "ते युकॅरियोटिक राइबोसोमपेक्षा मोठे असतात"
           ],
-          "solution": "प्रोकॅरियोटिक राइबोसोम 70S आकाराचे असतात आणि 50S आणि 30S उपसमूहांमधून बनलेले असतात, जे 70S राइबोसोम बनवतात. हे प्रोकॅरियोट्सचे मुख्य लक्षण आहे. इतर विकल्प अयोग्य आहेत कारण प्रोकॅरियोटिक राइबोसोम कोशिकाकवचाने बंद नसतात किंवा न्यूक्लियसमध्ये नसतात, ते लिपिड संश्लेषणाची जबाबदारी घेत नाहीत आणि ते यूकॅरियोटिक राइबोसोमपेक्षा मोठे नसतात.",
+          "solution": "प्रोकॅरियोटिक राइबोसोम दोन उपयुक्त एककांमध्ये बनलेले असतात, 50S आणि 30S, जे एकत्रितपणे 70S राइबोसोम बनवतात. ते कोशिकाकला बांधलेले नसतात आणि कोशिकाद्रव्यामध्ये आढळतात. युकॅरियोटिक राइबोसोम 80S आकाराचे असतात, नाही 70S. प्रोकॅरियोटिक राइबोसोम युकॅरियोटिक राइबोसोमपेक्षा लहान असतात.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
           "flag": null
@@ -771,9 +174,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "Confuses the structure of prokaryotic ribosomes with eukaryotic ones",
-        "Misunderstands the function and location of ribosomes",
-        "Incorrectly associates ribosomes with lipid synthesis instead of protein synthesis, and misidentifies their size and structure"
+        "Confuses prokaryotic ribosomes with eukaryotic organelles",
+        "Misunderstands the location of prokaryotic ribosomes",
+        "Incorrectly associates ribosomes with the nucleus, which is a feature of eukaryotes only (prokaryotes lack a nucleus)."
       ],
       "solverAnswers": [
         0,
@@ -783,7 +186,7 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 0, as prokaryotic ribosomes are indeed 70S in size and composed of 50S and 30S subunits. The other options reflect common misconceptions about ribosome structure, function, and size.",
+      "critique": "The correct answer is 0, as prokaryotic ribosomes are 70S in size. The other options reflect common misconceptions about ribosome structure, location, and size relative to eukaryotic cells.",
       "sources": [
         {
           "document": "ncert/11/biology/kebo108.pdf",
@@ -820,119 +223,97 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T03:19:59.900Z",
+      "generatedAt": "2026-10-28T13:47:11.457Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Based on the diagram, which of the following is a function of the plasma membrane in prokaryotic cells?",
+      "difficulty": 3,
+      "stem": "If a student is studying a single-celled organism, what can they conclude about its ability to perform life functions?",
       "choices": [
-        "To provide structural support",
-        "To store genetic material",
-        "To control the movement of substances",
-        "To produce energy"
+        "It cannot perform any life functions",
+        "It can perform all life functions independently",
+        "It needs other cells to perform life functions",
+        "It can only perform limited functions"
       ],
-      "answerIndex": 2,
-      "solution": "The plasma membrane controls the movement of substances in and out of the cell, acting as a selective barrier. The other options describe functions of other structures like the cell wall and mitochondria.",
+      "answerIndex": 1,
+      "solution": "A single-celled organism is capable of performing all necessary life functions on its own because it contains all the structures needed to carry out processes like growth, reproduction, and metabolism. The other options are incorrect because they suggest dependence on other cells or limited functionality, which does not apply to organisms that function as a single unit.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "आर्कियोटिक कोशिकाओं में प्लाज्मा झिल्ली के कार्य के बारे में आरेख के आधार पर, निम्नलिखित में से कौन-सा एक कार्य है?",
+          "stem": "यदि एक छात्र एक कोशिका वाले जीव का अध्ययन कर रहा है, तो वह इसकी जीवन क्रियाओं के करने की क्षमता के बारे में क्या निष्कर्ष निकाल सकता है?",
           "choices": [
-            "संरचनात्मक समर्थन प्रदान करना",
-            "आनुवंशिक सामग्री को भंडारित करना",
-            "पदार्थों के गति को नियंत्रित करना",
-            "ऊर्जा का उत्पादन करना"
+            "यह कोई जीवन क्रियाएं नहीं कर सकता",
+            "यह स्वतंत्र रूप से सभी जीवन क्रियाएं कर सकता है",
+            "इसे अन्य कोशिकाओं की आवश्यकता होती है जीवन क्रियाएं करने के लिए",
+            "यह केवल सीमित क्रियाएं कर सकता है"
           ],
-          "solution": "प्लाज्मा झिल्ली कोशिका के अंदर और बाहर पदार्थों के गति को नियंत्रित करती है, जो एक चयनात्मक बाधा के रूप में कार्य करती है। अन्य विकल्पों में कोशिका भित्ति और माइटोकॉन्ड्रिया जैसे अन्य संरचनाओं के कार्य वर्णित हैं।",
-          "imageAlt": "एक समतल दर्पण के साथ आपतित किरण, परावर्तित किरण और सामान्य",
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriate for Hindi-medium curriculum.",
+          "solution": "एक कोशिका वाले जीव में जीवन की आवश्यकता वाली सभी संरचनाएं होती हैं जिनके कारण यह वृद्धि, प्रजनन और एंजाइम के कारण उत्पादन जैसी प्रक्रियाएं अपने आप कर सकता है। अन्य विकल्प गलत हैं क्योंकि वे अन्य कोशिकाओं पर निर्भरता या सीमित कार्यक्षमता के बारे में संकेत देते हैं जो एक इकाई के रूप में कार्य करने वाले जीव के लिए लागू नहीं होते।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "चित्रावरून, खालीलपैकी कोणते प्रोकॅरियोटिक कोशिकांमधील प्लाझ्मा झिल्लीचे कार्य आहे?",
+          "stem": "एककोशिक जीवाचा अभ्यास करत असलेला विद्यार्थी त्याच्या जीवन क्रियांच्या क्षमतेबद्दल काय निष्कर्ष काढू शकतो?",
           "choices": [
-            "संरचनात्मक समर्थन प्रदान करणे",
-            "जीनेटिक द्रव्य भंडारण",
-            "द्रव्यांच्या गतीचे नियंत्रण करणे",
-            "ऊर्जा उत्पादन करणे"
+            "तो कोणत्याही जीवन क्रिया करू शकत नाही",
+            "तो स्वतंत्रपणे सर्व जीवन क्रिया करू शकतो",
+            "त्याला जीवन क्रिया करण्यासाठी इतर कोशिकांची आवश्यकता असते",
+            "तो मर्यादित क्रिया करू शकतो"
           ],
-          "solution": "प्लाझ्मा झिल्ली कोशिकेच्या आत आणि बाहेर द्रव्यांच्या गतीचे नियंत्रण करते, जे निवडक अवरोध असते. इतर विकल्पांमध्ये कोशिका भिंत आणि माइटोकॉन्ड्रिया यांच्या कार्याचे वर्णन केले जाते.",
-          "imageAlt": "समतल दर्पणाचे चित्र ज्यामध्ये आपतन किरण, परावर्तित किरण आणि सामान्य असते",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "solution": "एककोशिक जीव स्वतंत्रपणे आवश्यक जीवन क्रिया करू शकतो कारण त्यात वृद्धी, प्रजोत्पादन आणि अणुविनिमय या प्रक्रिया चालविण्यासाठी आवश्यक सर्व संरचना असतात. इतर विकल्प चुकीचे आहेत कारण ते इतर कोशिकांवर अवलंबून राहण्याचा किंवा मर्यादित क्षमतेचा अंदाज देतात, जे एक एकक एकक म्हणून कार्य करणाऱ्या जीवासाठी लागू होत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": "Diagram showing a plane mirror with incident ray, reflected ray, and normal",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "planeMirror",
-              "x": 30,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "mirror",
-                "incidentRay",
-                "reflectedRay",
-                "normal"
-              ],
-              "text": {}
-            }
-          ]
-        },
-        "labels": {}
-      },
-      "needsFigure": true,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
       "distractorReason": [
-        "confuses plasma membrane function with cell wall function",
-        "confuses plasma membrane function with nucleus function",
+        "Incorrectly assumes unicellular organisms cannot perform life functions",
         null,
-        "confuses plasma membrane function with mitochondria function"
+        "Believes that single-celled organisms cannot function on their own like multicellular organisms",
+        "Incorrectly assumes unicellular organisms depend on other cells"
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is incorrectly formulated. The diagram described is about a plane mirror with incident and reflected rays, which is unrelated to the question about the plasma membrane in prokaryotic cells. The question appears to be a mismatch between the diagram and the content.",
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as single-celled organisms can perform all life functions independently. The author's reasoning aligns with scientific understanding, and the distractors reflect common misconceptions.",
       "sources": [
         {
           "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 3,
-          "pageStart": 4,
-          "pageEnd": 5,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
           "headingPath": [
             "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
+            "CELL: STRUCTURE AND FUNCTIONS"
           ]
         },
         {
           "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
+            "CELL: STRUCTURE AND FUNCTIONS"
           ]
         },
         {
           "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 7,
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
           "headingPath": [
             "Chapter 8: Nit of",
             "CELL: STRUCTURE AND FUNCTIONS",
@@ -941,49 +322,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T03:19:59.900Z",
+      "generatedAt": "2026-10-28T13:47:11.457Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "What is the primary function of the Golgi apparatus?",
+      "difficulty": 5,
+      "stem": "If a cell lacks a nucleus, which of the following is most likely to be affected?",
       "choices": [
-        "Synthesis of lipids",
-        "Packaging and modification of proteins",
-        "Digestion of cellular waste",
-        "Production of ATP"
+        "Protein synthesis",
+        "Cell division",
+        "Energy production",
+        "Cell membrane formation"
       ],
       "answerIndex": 1,
-      "solution": "The Golgi apparatus is responsible for modifying and packaging proteins for transport to their final destinations within or outside the cell. This process involves adding carbohydrates and other molecules to proteins. The other options describe functions of different organelles, such as lipid synthesis by the smooth endoplasmic reticulum and ATP production by mitochondria.",
+      "solution": "The nucleus is essential for cell division, as it contains the genetic material necessary for this process. While protein synthesis is influenced by the nucleus, it can still occur to some extent in its absence. Energy production and cell membrane formation are not directly controlled by the nucleus. Therefore, the correct answer is cell division.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "गॉल्गी एपैरेटस का प्राथमिक कार्य क्या है?",
+          "stem": "यदि किसी कोशिका में केंद्रक की कमी है, तो निम्नलिखित में से कौन-सा सबसे अधिक प्रभावित होने की संभावना है?",
           "choices": [
-            "लिपिड का संश्लेषण",
-            "प्रोटीन के पैकेजिंग एवं संशोधन",
-            "कोशिकीय अपशिष्ट का पाचन",
-            "एटीपी का उत्पादन"
+            "प्रोटीन संश्लेषण",
+            "कोशिका विभाजन",
+            "ऊर्जा उत्पादन",
+            "कोशिका झिल्ली बनावट"
           ],
-          "solution": "गॉल्गी एपैरेटस कोशिका के भीतर या बाहर अपने अंतिम गंतव्य तक प्रोटीन के परिवहन के लिए उनके संशोधन एवं पैकेजिंग के लिए उत्तरदायी होता है। इस प्रक्रिया में प्रोटीन पर कार्बोहाइड्रेट एवं अन्य अणुओं को जोड़ा जाता है। अन्य विकल्प अन्य कोशिकांगों के कार्यों का वर्णन करते हैं, जैसे स्मूथ एंडोप्लाज्मिक रेटिकुलम द्वारा लिपिड का संश्लेषण एवं माइटोकॉन्ड्रिया द्वारा एटीपी का उत्पादन।",
+          "solution": "केंद्रक कोशिका विभाजन के लिए आवश्यक है, क्योंकि इसमें इस प्रक्रिया के लिए आवश्यक आनुवंशिक सामग्री होती है। यद्यपि प्रोटीन संश्लेषण केंद्रक द्वारा प्रभावित होता है, लेकिन इसकी उपस्थिति में इसका कुछ हद तक संश्लेषण हो सकता है। ऊर्जा उत्पादन और कोशिका झिल्ली बनावट को केंद्रक द्वारा सीधे नियंत्रित नहीं किया जाता है। इसलिए सही उत्तर कोशिका विभाजन है।",
           "imageAlt": null,
           "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "गॉल्गी अॅपरेटसचे प्राथमिक कार्य काय आहे?",
+          "stem": "जर एका कोशिकेला न्यूक्लियस नसेल, तर खालीलपैकी कोणते सर्वात जास्त प्रभावित होऊ शकते?",
           "choices": [
-            "लिपिडचे संश्लेषण",
-            "प्रोटीनचे पॅकिंग आणि संशोधन",
-            "सेलच्या कचराचे पाचन",
-            "एटीपीचे उत्पादन"
+            "प्रोटीन संश्लेषण",
+            "कोशिका विभाजन",
+            "ऊर्जा उत्पादन",
+            "कोशिका झिल्ली तयारी"
           ],
-          "solution": "गॉल्गी अॅपरेटस हे प्रोटीनचे संशोधन आणि पॅकिंग करण्यासाठी जबाबदार आहे, जेणेकरून ते त्यांच्या अंतिम ठिकाणी बाहेर किंवा अंतर्गत सेलमध्ये पाठवले जाईल. हा प्रक्रिया प्रोटीनवर कार्बोहायड्रेट आणि इतर अणू जोडण्याच्या समावेश करते. इतर विकल्पांमध्ये वेगवेगळ्या अर्गॅनेलच्या कार्याचे वर्णन आहे, उदाहरणार्थ, लिपिड संश्लेषण हे स्मूथ एंडोप्लाझ्मिक रेटिक्यूलममध्ये आणि एटीपी उत्पादन हे मायट्रोकॉन्ड्रियामध्ये होते.",
+          "solution": "न्यूक्लियस कोशिका विभाजनासाठी आवश्यक असतो, कारण त्यामध्ये या प्रक्रियेसाठी आवश्यक आनुवंशिक सामग्री असते. प्रोटीन संश्लेषण न्यूक्लियस वर अवलंबून असते, परंतु त्याची उपस्थिती नसल्यास ते अंशतः घडू शकते. ऊर्जा उत्पादन आणि कोशिका झिल्ली तयारी न्यूक्लियस द्वारे सीधा नियंत्रित केली जात नाहीत. त्यामुळे योग्य उत्तर कोशिका विभाजन आहे.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
+          "critique": "Translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
           "flag": null
         }
       },
@@ -992,111 +373,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the function of the smooth endoplasmic reticulum with the Golgi apparatus",
+        "Assumes protein synthesis is the primary function of the nucleus",
         null,
-        "Believes the Golgi is only involved in secretion",
-        "Mistakenly thinks the Golgi produces ATP"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies the function of the Golgi apparatus as packaging and modification of proteins, and the reasoning for the other options aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 9,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 10,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 11,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T03:19:59.900Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Which of the following is a feature of the centrioles?",
-      "choices": [
-        "They are surrounded by a membrane",
-        "They are made of nine triplets of tubulin protein",
-        "They are found in all types of cells",
-        "They are involved in the synthesis of ribosomal RNA"
-      ],
-      "answerIndex": 1,
-      "solution": "Centrioles are made of nine triplets of tubulin protein arranged in a cartwheel-like structure. The other options are incorrect because centrioles are not surrounded by a membrane, they are not found in all types of cells, and ribosomal RNA synthesis occurs in the nucleolus, not the centrioles.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी केंट्रिओल की विशेषता है?",
-          "choices": [
-            "वे एक झिल्ली से घिरे रहते हैं",
-            "वे ट्यूबूलिन प्रोटीन के नौ त्रिकों से बने होते हैं",
-            "वे सभी प्रकार की कोशिकाओं में पाए जाते हैं",
-            "वे राइबोसोमल आरएनए के संश्लेषण में भाग लेते हैं"
-          ],
-          "solution": "केंट्रिओल ट्यूबूलिन प्रोटीन के नौ त्रिकों से बने होते हैं जो कार्टवील जैसी संरचना में व्यवस्थित होते हैं। अन्य विकल्प गलत हैं क्योंकि केंट्रिओल एक झिल्ली से घिरे नहीं होते हैं, वे सभी प्रकार की कोशिकाओं में नहीं पाए जाते हैं और राइबोसोमल आरएनए का संश्लेषण न्यूक्लिओलस में होता है, न कि केंट्रिओल में।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard biological terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी केंट्रिओल्सचा एक वैशिष्ट्य आहे?",
-          "choices": [
-            "ते एका झिल्लीने वेढलेले असतात",
-            "ते ट्यूब्युलिन प्रोटीनच्या नऊ त्रिकांनी बनलेले असतात",
-            "ते सर्व प्रकारच्या कोशिकांमध्ये आढळतात",
-            "ते रायबोसोमल आरएनएच्या संश्लेषणात सहभागी असतात"
-          ],
-          "solution": "केंट्रिओल्स ट्यूब्युलिन प्रोटीनच्या नऊ त्रिकांनी बनलेले असतात आणि एका कार्टवील-सारख्या रचनेत व्यवस्थित असतात. इतर विकल्प चुकीचे आहेत कारण केंट्रिओल्स झिल्लीने वेढलेले नसतात, सर्व प्रकारच्या कोशिकांमध्ये आढळत नाहीत आणि रायबोसोमल आरएनएचे संश्लेषण न्यूक्लिओलसमध्ये होते, केंट्रिओल्समध्ये नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the structure of centrioles with a membrane-bound organelle",
-        null,
-        "Incorrectly assumes centrioles are found in all cells, such as plant cells",
-        "Misattributes ribosomal RNA synthesis to centrioles instead of the nucleolus"
+        "Fails to recognize the role of the nucleus in cell division",
+        "Misunderstands the role of the nucleus in energy production"
       ],
       "solverAnswers": [
         1,
@@ -1106,7 +386,7 @@
         1
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is option 1, as centrioles are composed of nine triplets of tubulin protein. The other options represent common misconceptions about centriole structure, distribution, and function.",
+      "critique": "The solution is correct. The nucleus is essential for cell division, as it houses the genetic material and controls the cell cycle. While protein synthesis can occur in the cytoplasm, it is still regulated by the nucleus. Energy production and cell membrane formation are not directly controlled by the nucleus.",
       "sources": [
         {
           "document": "ncert/11/biology/kebo108.pdf",
@@ -1143,251 +423,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T03:19:59.900Z",
+      "generatedAt": "2026-10-28T13:47:11.457Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If a cell is actively involved in protein synthesis, which structure would be most abundant?",
+      "stem": "Which of the following processes requires energy and is carried out by the plasma membrane?",
       "choices": [
-        "Smooth endoplasmic reticulum",
-        "Rough endoplasmic reticulum",
-        "Lysosomes",
-        "Mitochondria"
-      ],
-      "answerIndex": 1,
-      "solution": "The rough endoplasmic reticulum (RER) is most abundant in cells actively involved in protein synthesis because it has ribosomes on its surface, which are directly involved in making proteins. The smooth endoplasmic reticulum is involved in lipid synthesis, not protein production. Lysosomes are responsible for breaking down materials, and mitochondria generate energy, not proteins.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि कोशिका प्रोटीन संश्लेषण में सक्रिय रूप से लगी हुई है, तो कौन सी संरचना सबसे अधिक पाई जाएगी?",
-          "choices": [
-            "चिकना एंडोप्लाज्मिक रेटिकुलम",
-            "कांटेदार एंडोप्लाज्मिक रेटिकुलम",
-            "लाइसोसोम",
-            "माइटोकॉन्ड्रिया"
-          ],
-          "solution": "कांटेदार एंडोप्लाज्मिक रेटिकुलम (RER) प्रोटीन संश्लेषण में सक्रिय रूप से लगी कोशिकाओं में सबसे अधिक पाया जाता है क्योंकि इसकी सतह पर राइबोसोम होते हैं, जो प्रोटीन बनाने में सीधे लगे रहते हैं। चिकना एंडोप्लाज्मिक रेटिकुलम लिपिड संश्लेषण में लगा रहता है, प्रोटीन उत्पादन में नहीं। लाइसोसोम सामग्री के विघटन के लिए जिम्मेदार होते हैं और माइटोकॉन्ड्रिया ऊर्जा उत्पन्न करते हैं, प्रोटीन नहीं।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi biological terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर कोशिका प्रोटीन संश्लेषणात सक्रिय असेल, तर कोशिकामध्ये कोणती संरचना सर्वात जास्त प्रमाणात असेल?",
-          "choices": [
-            "स्मूथ एंडोप्लाझ्मिक रेटिक्युलम",
-            "रॉफ एंडोप्लाझ्मिक रेटिक्युलम",
-            "लायसोसोम्स",
-            "माइटोकॉन्ड्रिया"
-          ],
-          "solution": "रॉफ एंडोप्लाझ्मिक रेटिक्युलम (RER) प्रोटीन संश्लेषणात सक्रिय असलेल्या कोशिकांमध्ये सर्वात जास्त प्रमाणात असते कारण त्याच्या पृष्ठभागावर राइबोसोम्स असतात, जे प्रोटीन तयार करण्यात सीधा सहभागी असतात. स्मूथ एंडोप्लाझ्मिक रेटिक्युलम लिपिड संश्लेषणात असते, प्रोटीन उत्पादनात नाही. लायसोसोम्स द्रव्यांचे विघटन करतात आणि माइटोकॉन्ड्रिया ऊर्जा उत्पादन करतात, प्रोटीन नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi biological terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the function of smooth endoplasmic reticulum with the rough one",
-        null,
-        "Thinks lysosomes are involved in protein synthesis",
-        "Mistakenly believes mitochondria are responsible for protein synthesis"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 1 (Rough endoplasmic reticulum), as it is the site of protein synthesis. The distractors reflect common misconceptions about the functions of other organelles.",
-      "sources": [
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 9,
-          "pageStart": 10,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 10,
-          "pageStart": 11,
-          "pageEnd": 12,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 11,
-          "pageStart": 12,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T03:19:59.900Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "What is the significance of the 9+2 array in cilia and flagella?",
-      "choices": [
-        "It helps in the storage of genetic material",
-        "It enables the movement of the cell",
-        "It is responsible for protein synthesis",
-        "It regulates the flow of ions"
-      ],
-      "answerIndex": 1,
-      "solution": "The 9+2 array in cilia and flagella is significant because it enables the movement of the cell. This arrangement of microtubules allows the bending and movement of cilia and flagella. The other options are incorrect because the 9+2 array is not related to storing genetic material, protein synthesis, or ion regulation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "सीलिया और फ्लैजेला में 9+2 व्यवस्था का क्या महत्व है?",
-          "choices": [
-            "यह आनुवंशिक सामग्री के भंडारण में सहायता करता है",
-            "यह कोशिका के गति की अनुमति देता है",
-            "यह प्रोटीन संश्लेषण के लिए उत्तरदायी है",
-            "यह आयनों के प्रवाह को नियंत्रित करता है"
-          ],
-          "solution": "सीलिया और फ्लैजेला में 9+2 व्यवस्था का महत्व इसलिए है क्योंकि यह कोशिका की गति की अनुमति देता है। माइक्रोट्यूब्यूल की इस व्यवस्था के कारण सीलिया और फ्लैजेला के मुड़ने और गति की संभावना होती है। अन्य विकल्प गलत हैं क्योंकि 9+2 व्यवस्था आनुवंशिक सामग्री के भंडारण, प्रोटीन संश्लेषण या आयन नियंत्रण से संबंधित नहीं है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses standard biological terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "किलिया आणि फ्लॅजेला मध्ये 9+2 अॅरेची महत्त्वाची काय आहे?",
-          "choices": [
-            "ते जीनेटिक पदार्थाच्या भंडारणास मदत करते",
-            "ते कोशिकेच्या गतीला अनुमती देते",
-            "ते प्रोटीन संश्लेषणास जबाबदार आहे",
-            "ते आयनांच्या प्रवाहाचे नियमन करते"
-          ],
-          "solution": "किलिया आणि फ्लॅजेला मध्ये 9+2 अॅरेची महत्त्वाची काय आहे? हा अॅरेची गतीला अनुमती देते. हा मायक्रोट्यूब्यूल्सचा व्यवस्थित विन्यास किलिया आणि फ्लॅजेला च्या मोडती करण्यास मदत करतो. इतर विकल्प अयोग्य आहेत कारण 9+2 अॅरेची जीनेटिक पदार्थाच्या भंडारणाशी, प्रोटीन संश्लेषणाशी किंवा आयनांच्या नियमनाशी संबंधित नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the function of the 9+2 array with that of the nucleus",
-        null,
-        "Misunderstands the role of the 9+2 array",
-        "Confuses the function of the 9+2 array with that of the cell membrane"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as the 9+2 microtubule arrangement is indeed responsible for the movement of cilia and flagella. The other options represent common misconceptions about the functions of the nucleus, ribosomes, and cell membrane, respectively.",
-      "sources": [
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 12,
-          "pageStart": 13,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 13,
-          "pageStart": 14,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        },
-        {
-          "document": "ncert/11/biology/kebo108.pdf",
-          "ordinal": 14,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 8: Nit of",
-            "CELL: STRUCTURE AND FUNCTIONS",
-            "HAPTER"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T03:19:59.900Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why are prokaryotic ribosomes considered to be different from eukaryotic ribosomes in terms of function?",
-      "choices": [
-        "Because prokaryotic ribosomes are larger",
-        "Because prokaryotic ribosomes are not involved in protein synthesis",
-        "Because eukaryotic ribosomes are found in the cytoplasm",
-        "Because prokaryotic ribosomes can be targeted by certain antibiotics"
+        "Osmosis",
+        "Simple diffusion",
+        "Facilitated diffusion",
+        "Active transport"
       ],
       "answerIndex": 3,
-      "solution": "Prokaryotic ribosomes are different from eukaryotic ones in that they can be targeted by certain antibiotics, which is a key distinction in their function and structure. The other options are incorrect because prokaryotic ribosomes are not larger, are involved in protein synthesis, and eukaryotic ribosomes are also found in the cytoplasm.",
+      "solution": "Active transport requires energy in the form of ATP to move molecules against their concentration gradient. Osmosis and simple diffusion are passive processes that do not require energy. Facilitated diffusion also does not require energy, as it follows the concentration gradient. The plasma membrane is responsible for active transport through the use of carrier proteins and ATP.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "प्रोकैरियोटिक राइबोसोम को कार्य के संदर्भ में यूकैरियोटिक राइबोसोम से क्यों अलग माना जाता है?",
+          "stem": "निम्नलिखित में से कौन-सी प्रक्रिया ऊर्जा की आवश्यकता होती है और प्लाज्मा झिल्ली द्वारा की जाती है?",
           "choices": [
-            "क्योंकि प्रोकैरियोटिक राइबोसोम बड़े होते हैं",
-            "क्योंकि प्रोकैरियोटिक राइबोसोम प्रोटीन संश्लेषण में शामिल नहीं होते",
-            "क्योंकि यूकैरियोटिक राइबोसोम साइटोप्लाज्म में पाए जाते हैं",
-            "क्योंकि प्रोकैरियोटिक राइबोसोम कुछ एंटीबायोटिक्स द्वारा लक्षित किए जा सकते हैं"
+            "परासरण",
+            "साधारण विसरण",
+            "सहायता वाला विसरण",
+            "सक्रिय वहन"
           ],
-          "solution": "प्रोकैरियोटिक राइबोसोम यूकैरियोटिक राइबोसोम से अलग होते हैं क्योंकि वे कुछ एंटीबायोटिक्स द्वारा लक्षित किए जा सकते हैं, जो उनके कार्य और संरचना में मुख्य अंतर है। अन्य विकल्प गलत हैं क्योंकि प्रोकैरियोटिक राइबोसोम बड़े नहीं होते, प्रोटीन संश्लेषण में शामिल होते हैं और यूकैरियोटिक राइबोसोम भी साइटोप्लाज्म में पाए जाते हैं।",
+          "solution": "सक्रिय वहन अपने सांद्रता प्रवणता के विपरीत अणुओं के वहन के लिए एटीपी के रूप में ऊर्जा की आवश्यकता होती है। परासरण और साधारण विसरण अक्रिय प्रक्रियाएं हैं जिन्हें ऊर्जा की आवश्यकता नहीं होती है। सहायता वाला विसरण के लिए भी ऊर्जा की आवश्यकता नहीं होती है क्योंकि यह सांद्रता प्रवणता के अनुसार होता है। प्लाज्मा झिल्ली वाहक प्रोटीन और एटीपी के उपयोग द्वारा सक्रिय वहन के लिए जिम्मेदार होती है।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the original English question, with appropriate terminology and correct answer placement. All distractors remain incorrect in the translated version.",
+          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. All technical terms are correctly translated and match standard Hindi textbook usage.",
           "flag": null
         },
         "mr": {
-          "stem": "प्रोकॅरियोटिक राइबोसोम हे फंक्शनच्या दृष्टीने एक्युअरियोटिक राइबोसोमपेक्षा वेगळे का गणले जातात?",
+          "stem": "खालीलपैकी कोणता प्रक्रिया ऊर्जा आवश्यकता असते आणि प्लाझ्मा झिल्ली द्वारे केली जाते?",
           "choices": [
-            "कारण प्रोकॅरियोटिक राइबोसोम मोठे असतात",
-            "कारण प्रोकॅरियोटिक राइबोसोम प्रोटीन संश्लेषणात सहभागी नसतात",
-            "कारण एक्युअरियोटिक राइबोसोम साइटोप्लाझममध्ये असतात",
-            "कारण प्रोकॅरियोटिक राइबोसोम निश्चित एंटीबायोटिक्सद्वारे लक्ष्य केले जाऊ शकतात"
+            "ओस्मोसिस",
+            "साधी विसरण",
+            "सहाय्यक विसरण",
+            "क्रियात्मक वाहन"
           ],
-          "solution": "प्रोकॅरियोटिक राइबोसोम हे एक्युअरियोटिक राइबोसोमपेक्षा वेगळे असतात कारण ते निश्चित एंटीबायोटिक्सद्वारे लक्ष्य केले जाऊ शकतात, हे त्यांच्या फंक्शन आणि संरचनेमध्ये महत्वपूर्ण फरक आहे. इतर विकल्प चुकीचे आहेत कारण प्रोकॅरियोटिक राइबोसोम मोठे नसतात, प्रोटीन संश्लेषणात सहभागी असतात आणि एक्युअरियोटिक राइबोसोम साइटोप्लाझममध्ये असतात.",
+          "solution": "क्रियात्मक वाहनास एटीपी च्या रूपात ऊर्जा आवश्यक असते जेणेकरून अणूंचा त्यांच्या सांद्रता ढालाच्या विरुद्ध गती करता येईल. ओस्मोसिस आणि साधी विसरण ही अक्रिय प्रक्रिया आहेत ज्यांना ऊर्जा आवश्यक नाही. सहाय्यक विसरण देखील ऊर्जा आवश्यक नसते, कारण ते सांद्रता ढालाच्या अनुसार घडते. प्लाझ्मा झिल्ली क्रियात्मक वाहनास कॅरियर प्रोटीन आणि एटीपी च्या वापराद्वारे जबाबदार असते.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "critique": "The translation is accurate and uses appropriate Marathi terminology for biological processes.",
           "flag": null
         }
       },
@@ -1396,9 +474,9 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Incorrectly assumes that size is the main difference",
-        "Misunderstands the function of prokaryotic ribosomes",
-        "Confuses the location of eukaryotic ribosomes",
+        "Confuses passive and active transport",
+        "Incorrectly assumes that osmosis requires energy",
+        "Misunderstands the role of the membrane in transporting molecules",
         null
       ],
       "solverAnswers": [
@@ -1408,8 +486,8 @@
         3,
         3
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 3, as prokaryotic ribosomes can be targeted by antibiotics, which is a functional and structural difference. The other options reflect common misconceptions about size, function, and location of ribosomes.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies active transport as the only process requiring energy and being carried out by the plasma membrane. The reasoning aligns with standard biology concepts.",
       "sources": [
         {
           "document": "ncert/11/biology/kebo108.pdf",
@@ -1446,49 +524,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T03:19:59.900Z",
+      "generatedAt": "2026-10-28T13:47:11.457Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 6,
-      "stem": "Which organelle is known as the 'powerhouse of the cell'?",
+      "difficulty": 5,
+      "stem": "Which of the following is a correct statement about the endoplasmic reticulum?",
       "choices": [
-        "Endoplasmic reticulum",
-        "Golgi apparatus",
-        "Mitochondria",
-        "Lysosomes"
+        "It is not involved in protein synthesis",
+        "It is not connected to the nucleus",
+        "It has ribosomes on its surface only in animal cells",
+        "It divides the intracellular space into two compartments"
       ],
-      "answerIndex": 2,
-      "solution": "Mitochondria are known as the 'powerhouse of the cell' because they generate most of the cell's supply of adenosine triphosphate (ATP) through the process of cellular respiration. The endoplasmic reticulum is involved in protein and lipid synthesis, the Golgi apparatus modifies and packages proteins, and lysosomes contain enzymes for breaking down waste materials. None of these organelles are primarily responsible for energy production.",
+      "answerIndex": 3,
+      "solution": "The endoplasmic reticulum divides the intracellular space into two compartments: one inside the ER and one outside, which is the cytoplasm. The other options are incorrect because the ER is directly involved in protein synthesis, is physically connected to the nucleus, and has ribosomes on its surface in both animal and plant cells.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "कौन सा कोशिकांग कोशिका के 'ऊर्जा गृह' के रूप में जाना जाता है?",
+          "stem": "निम्नलिखित में से कौन-सा अंतःप्रद्रव्यी जालिका के बारे में सही कथन है?",
           "choices": [
-            "एंडोप्लाज्मिक रेटिकुलम",
-            "गॉल्जी उपकरण",
-            "माइटोकॉन्ड्रिया",
-            "लाइसोसोम"
+            "इसका प्रोटीन संश्लेषण में भाग नहीं होता है",
+            "इसका गुरुद्वारे से कोई संबंध नहीं होता है",
+            "इसकी सतह पर केवल प्राणी कोशिकाओं में राइबोसोम होते हैं",
+            "इसके द्वारा आंतरिक कोशिका अंतरिक्ष दो अंगों में विभाजित हो जाता है"
           ],
-          "solution": "माइटोकॉन्ड्रिया को कोशिका के 'ऊर्जा गृह' के रूप में जाना जाता है क्योंकि वे सेलुलर श्वसन की प्रक्रिया के माध्यम से कोशिका के अधिकांश एडीनोसाइन ट्राइफॉस्फेट (एटीपी) के आपूर्ति के लिए जिम्मेदार होते हैं। एंडोप्लाज्मिक रेटिकुलम प्रोटीन और लिपिड संश्लेषण में शामिल होता है, गॉल्जी उपकरण प्रोटीन के अनुकूलन और पैकेजिंग में शामिल होता है, और लाइसोसोम अपशिष्ट सामग्री के विघटन के लिए एंजाइमों के साथ होता है। इनमें से कोई भी कोशिकांग ऊर्जा उत्पादन के लिए मुख्य रूप से जिम्मेदार नहीं होता है।",
+          "solution": "अंतःप्रद्रव्यी जालिका आंतरिक कोशिका अंतरिक्ष को दो अंगों में विभाजित करती है: एक अंतःप्रद्रव्यी जालिका के भीतर और दूसरा बाहर जो कि कोशिकाद्रव्य है। अन्य विकल्प गलत हैं क्योंकि अंतःप्रद्रव्यी जालिका प्रोटीन संश्लेषण में सीधे भाग लेती है, गुरुद्वारे से भौतिक रूप से जुड़ी होती है और प्राणी और पौधे दोनों कोशिकाओं में इसकी सतह पर राइबोसोम होते हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi biological terminology.",
+          "critique": "The translation is accurate, maintains the meaning, and uses appropriate biological terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "कोशिकेच्या 'ऊर्जा केंद्र' म्हणून ओळखला जाणारा अंगरेखा कोणता आहे?",
+          "stem": "खालीलपैकी कोणता अंतर्ग्रंथिक जालाबद्दलचा योग्य विधान आहे?",
           "choices": [
-            "एंडोप्लाझमिक रेटिकुलम",
-            "गॉल्गी अपरेटस",
-            "माइटोकॉन्ड्रिया",
-            "लायसोसोम्स"
+            "त्याचा प्रोटीन संश्लेषणाशी संबंध नाही",
+            "त्याचा न्यूक्लियसशी संबंध नाही",
+            "त्याच्या सतही राइबोसोम फक्त जंतू कोशिकांमध्ये असतात",
+            "ते अंतर्कोशिकीय जागेला दोन विभागांमध्ये विभागते"
           ],
-          "solution": "माइटोकॉन्ड्रिया कोशिकेच्या 'ऊर्जा केंद्र' म्हणून ओळखले जातात कारण ते सेल्युलर श्वसनाच्या प्रक्रियेद्वारे कोशिकेच्या अधिकांश एडीनोसिन ट्रायफॉस्फेट (ATP) च्या पुरवठ्याचे उत्पादन करतात. एंडोप्लाझमिक रेटिकुलम प्रोटीन आणि लिपिड संश्लेषणात सहभागी आहे, गॉल्गी अपरेटस प्रोटीन विकसित करते आणि पॅकेज करते, आणि लायसोसोम्समध्ये विकास झालेल्या सामग्री तोडण्यासाठी एन्झाइम असतात. या सर्व अंगरेखांमध्ये ऊर्जा उत्पादनासाठी प्राथमिक जबाबदारी नाही.",
+          "solution": "अंतर्ग्रंथिक जाल अंतर्कोशिकीय जागेला दोन विभागांमध्ये विभागते: एक एर अंतर्ग्रंथिक जालाच्या आत आणि दुसरा बाहेर जो कोशिकाद्रव्य आहे. इतर विकल्प अयोग्य आहेत कारण एर प्रोटीन संश्लेषणाशी सीधा संबंध ठेवते, न्यूक्लियसशी शारीरिक रीतीने जोडलेले असते आणि एर च्या सतही राइबोसोम जंतू आणि वनस्पती कोशिकांमध्ये असतात.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological structures.",
+          "critique": "The Marathi translation is accurate and maintains the technical terms used in Marathi biology textbooks.",
           "flag": null
         }
       },
@@ -1497,20 +575,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the function of the endoplasmic reticulum with energy production",
-        "Mistakenly thinks the Golgi apparatus is responsible for energy production",
-        null,
-        "Believes lysosomes produce energy"
+        "Incorrectly states no role in protein synthesis",
+        "Incorrectly states no connection to the nucleus",
+        "Incorrectly states ribosomes are only in animal cells",
+        null
       ],
       "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
+        3,
+        3,
+        3,
+        3,
+        3
       ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is well-constructed, with a clear correct answer and plausible distractors based on common misconceptions about organelle functions.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 3, as the endoplasmic reticulum does divide the intracellular space into two compartments. The other options are incorrect, and the author's reasoning for the wrong options aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/11/biology/kebo108.pdf",
@@ -1547,7 +625,209 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T03:19:59.900Z",
+      "generatedAt": "2026-10-28T13:47:11.457Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why are the ribosomes in chloroplasts smaller (70S) compared to cytoplasmic ribosomes (80S)?",
+      "choices": [
+        "Because chloroplasts are prokaryotic in origin",
+        "Because chloroplasts are not involved in protein synthesis",
+        "Because chloroplasts are more complex than cytoplasm",
+        "Because chloroplasts have a different type of DNA"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is because chloroplasts are prokaryotic in origin, as their 70S ribosomes are similar to those found in prokaryotes. The other options are incorrect because chloroplasts do participate in protein synthesis, are not more complex than the cytoplasm, and the size difference of ribosomes is not related to the type of DNA they contain.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "क्योंकि क्लोरोप्लास्ट में राइबोसोम छोटे (70S) होते हैं, जबकि साइटोप्लाज्मिक राइबोसोम (80S) होते हैं?",
+          "choices": [
+            "क्योंकि क्लोरोप्लास्ट प्रोकैरियोटिक मूल के होते हैं",
+            "क्योंकि क्लोरोप्लास्ट प्रोटीन संश्लेषण में शामिल नहीं होते हैं",
+            "क्योंकि क्लोरोप्लास्ट साइटोप्लाज्म की तुलना में अधिक जटिल होते हैं",
+            "क्योंकि क्लोरोप्लास्ट में विभिन्न प्रकार का डीएनए होता है"
+          ],
+          "solution": "सही उत्तर यह है कि क्लोरोप्लास्ट प्रोकैरियोटिक मूल के होते हैं, क्योंकि उनके 70S राइबोसोम प्रोकैरियोट्स में पाए जाने वाले राइबोसोम के समान होते हैं। अन्य विकल्प गलत हैं क्योंकि क्लोरोप्लास्ट प्रोटीन संश्लेषण में भाग लेते हैं, वे साइटोप्लाज्म की तुलना में अधिक जटिल नहीं होते हैं और राइबोसोम के आकार में अंतर डीएनए के प्रकार से संबंधित नहीं होता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate biological terminology as found in Hindi textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "क्लोरोप्लास्टमधील राइबोसोम 70S असतात, जे कोशिकाद्रव्यातील 80S राइबोसोमांपेक्षा लहान असतात, तर त्याचे कारण काय आहे?",
+          "choices": [
+            "कारण क्लोरोप्लास्टम प्रोकॅरियोटिक मूळाचे असतात",
+            "कारण क्लोरोप्लास्टम प्रोटीन संश्लेषणात भाग घेत नाहीत",
+            "कारण क्लोरोप्लास्टम कोशिकाद्रव्यापेक्षा जास्त जटिल असतात",
+            "कारण क्लोरोप्लास्टममध्ये वेगळ्या प्रकारचे डीएनए असते"
+          ],
+          "solution": "योग्य उत्तर हे आहे की क्लोरोप्लास्टम प्रोकॅरियोटिक मूळाचे असतात, कारण त्यांचे 70S राइबोसोम प्रोकॅरियोट्समध्ये आढळणाऱ्या राइबोसोमसारखे असतात. इतर विकल्प चुकीचे आहेत कारण क्लोरोप्लास्टम प्रोटीन संश्लेषणात भाग घेतात, ते कोशिकाद्रव्यापेक्षा जास्त जटिल नसतात आणि राइबोसोमच्या आकारातील फरक त्यांच्या डीएनएच्या प्रकाराशी संबंधित नसतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Incorrectly assumes the reason for the size difference in ribosomes",
+        "Misunderstands the role of chloroplasts in protein synthesis",
+        "Confuses the role of DNA in ribosome size"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0, as chloroplasts are believed to have evolved from prokaryotes, explaining their 70S ribosomes. The other options reflect common misconceptions about chloroplast function and structure.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo108.pdf",
+          "ordinal": 12,
+          "pageStart": 13,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 8: Nit of",
+            "CELL: STRUCTURE AND FUNCTIONS",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo108.pdf",
+          "ordinal": 13,
+          "pageStart": 14,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 8: Nit of",
+            "CELL: STRUCTURE AND FUNCTIONS",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo108.pdf",
+          "ordinal": 14,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 8: Nit of",
+            "CELL: STRUCTURE AND FUNCTIONS",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T13:47:11.457Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Why is the fluidity of the cell membrane important for the function of the cell?",
+      "choices": [
+        "It allows the cell to change shape easily",
+        "It helps in the movement of proteins within the membrane",
+        "It prevents the cell from bursting",
+        "It enables the cell to divide"
+      ],
+      "answerIndex": 1,
+      "solution": "The fluidity of the cell membrane, due to the quasi-fluid nature of the lipid bilayer, allows proteins to move laterally within the membrane. This is crucial for processes like cell growth, cell division, and the formation of intercellular junctions. While fluidity may help the cell change shape, the primary reason for its importance is the movement of proteins. The membrane's fluidity is not directly responsible for preventing the cell from bursting or enabling division.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "कोशिका झिल्ली की द्रवता कोशिका के कार्य के लिए क्यों महत्वपूर्ण है?",
+          "choices": [
+            "यह कोशिका के आकार को आसानी से बदलने की अनुमति देती है",
+            "यह झिल्ली के भीतर प्रोटीन के गति में सहायता करती है",
+            "यह कोशिका के फटने से रोकती है",
+            "यह कोशिका के विभाजन की अनुमति देती है"
+          ],
+          "solution": "कोशिका झिल्ली की द्रवता, लिपिड द्विस्तर के अर्ध-द्रव प्रकृति के कारण, झिल्ली के भीतर प्रोटीन के बाजू में गति की अनुमति देती है। यह कोशिका वृद्धि, कोशिका विभाजन और अंतःकोशिका ज्वॉइंट के निर्माण के लिए महत्वपूर्ण है। यद्यपि द्रवता कोशिका के आकार को बदलने में सहायता कर सकती है, इसके महत्व का मुख्य कारण प्रोटीन की गति है। झिल्ली की द्रवता कोशिका के फटने से रोकने या विभाजन की अनुमति देने के लिए सीधे जिम्मेदार नहीं है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi curriculum, and the correct answer remains option 1.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "कोशिका झिल्लीच्या पारदर्शकतेचे कोशिकेच्या कार्यासाठी महत्त्व काय आहे?",
+          "choices": [
+            "ती कोशिकेच्या आकृती बदलण्यास सोय करते",
+            "ती झिल्लीत असलेल्या प्रोटीनच्या गतीला मदत करते",
+            "ती कोशिकेला फुगून जाण्यापासून रोखते",
+            "ती कोशिकेच्या विभाजनास परवानगी देते"
+          ],
+          "solution": "कोशिका झिल्लीची पारदर्शकता, तिच्या अर्धपारदर्शक प्रकृतीमुळे, झिल्लीत प्रोटीनच्या बाजूला गतीला परवानगी देते. हे कोशिका वाढी, कोशिका विभाजनाच्या आणि अंतरकोशिकीय जॉइंट्स तयार करण्यासारख्या प्रक्रियांसाठी आवश्यक आहे. जरी पारदर्शकता कोशिकेच्या आकृती बदलण्यास मदत करू शकत असली तरी, तिच्या महत्त्वाचे प्रमुख कारण प्रोटीनच्या गतीचे असते. झिल्लीची पारदर्शकता लक्ष्यात घेतल्यास कोशिकेला फुगून जाण्यापासून रोखत नाही किंवा विभाजनास परवानगी देत नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Focuses on a secondary effect of membrane fluidity",
+        null,
+        "Misunderstands the role of fluidity in protein movement",
+        "Confuses membrane fluidity with other cellular functions"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that the primary function of membrane fluidity is the lateral movement of proteins, which is essential for various cellular processes. The reasoning for the other options is valid as they represent common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/11/biology/kebo108.pdf",
+          "ordinal": 6,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 8: Nit of",
+            "CELL: STRUCTURE AND FUNCTIONS",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo108.pdf",
+          "ordinal": 7,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 8: Nit of",
+            "CELL: STRUCTURE AND FUNCTIONS",
+            "HAPTER"
+          ]
+        },
+        {
+          "document": "ncert/11/biology/kebo108.pdf",
+          "ordinal": 8,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 8: Nit of",
+            "CELL: STRUCTURE AND FUNCTIONS",
+            "HAPTER"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T13:47:11.457Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

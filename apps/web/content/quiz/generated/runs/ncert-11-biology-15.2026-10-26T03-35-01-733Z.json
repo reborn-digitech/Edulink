@@ -1,0 +1,769 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T03:35:01.733Z",
+  "finishedAt": "2026-10-26T03:42:46.890Z",
+  "seconds": 465,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo115.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 15 — Body Fluids and Circulation",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2013 — question paper]\n44. (4 points) In some organisms, the cells are in direct contact with the\nsurroundings. However in several multicellular organisms, cells are not in\ndirect contact with surroundings and hence require some medium for the\nexchange of nutrients, metabolic waste and respiratory gases. A few animals\nare listed below. Choose the appropriate medium of circulation and transport\nand fill the number against each animal.\na. Sponge 1\nb. Hydra\nc. Octopus\nd. Planarian\ne. Round worm\nf. Bony fish\ng. Prawn\nh. Earthworm\n1. Water surrounding the body\n2. Body fluids without respiratory pigments\n3. Haemolymph\n4. Blood",
+      "[INBO 2011 — question paper]\n21. (1 point) The three characteristic features of human circulatory system are\ntabulated below. P, Q and R respectively represent:\nP Q R\na. blood pressure, blood volume, blood velocity\nb. blood volume, blood pressure, blood velocity\nc. blood volume, blood velocity, blood pressure\nd. blood velocity, blood pressure, blood volume",
+      "[INBO 2019 — question paper]\n13. (1 point) The squid and octopus are molluscs that are known to be among the most\nactive aquatic invertebrates. The circulatory system of a squid is shown below. It shows\ntwo types of hearts, namely the gill hearts and body heart. The correct path of blood\nthrough this circulatory system is:\na. Body parts and head  gill heart  gills  body heart  Body parts and head\nb. Body parts  body heart  gills  gill heart  Body parts and head\nc. Body parts  body heart  gills  gill heart  body heart  Body parts and head\nd. Body parts and head  gills  gill heart  body heart  Body parts and head",
+      "[INBO 2012 — question paper]\n15. (1 point) The circulatory system shown below represents:\na. a bird.\nb. an amphibian.\nc. a mammal.\nd. a fish."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 188330,
+      "in": 42,
+      "out": 40,
+      "rejects": 2,
+      "promptTokens": 41773,
+      "completionTokens": 11825
+    },
+    "critique": {
+      "calls": 45,
+      "ms": 244800,
+      "in": 40,
+      "out": 18,
+      "rejects": 22,
+      "promptTokens": 21271,
+      "completionTokens": 7923
+    },
+    "solver": {
+      "calls": 126,
+      "ms": 55017,
+      "in": 18,
+      "out": 16,
+      "rejects": 2,
+      "promptTokens": 22948,
+      "completionTokens": 1350
+    },
+    "form": {
+      "calls": 7,
+      "ms": 18258,
+      "in": 16,
+      "out": 8,
+      "rejects": 8,
+      "promptTokens": 1926,
+      "completionTokens": 587
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 58,
+      "ms": 10429,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 33,
+      "ms": 294119,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 19845,
+      "completionTokens": 10130
+    }
+  },
+  "kept": 8,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a major function of lymphocytes in blood?",
+      "ms": {
+        "draft": 10895,
+        "critique": 4861
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of plasma in the blood?",
+      "ms": {
+        "draft": 10895,
+        "critique": 5030
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a low number of platelets in their blood, which of the following is most likely to occur?",
+      "ms": {
+        "draft": 10895,
+        "critique": 5261
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person has a blood group of O. Based on the passage, which of the following is true about this person?",
+      "ms": {
+        "draft": 10895,
+        "critique": 4885
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following blood groups can be safely given to a person with AB blood group?",
+      "ms": {
+        "draft": 10895,
+        "critique": 4661,
+        "solver": 1002,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a characteristic of the Rh blood group system?",
+      "ms": {
+        "draft": 3710,
+        "critique": 6858,
+        "solver": 1255,
+        "form": 2801
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which of the following situations would erythroblastosis foetalis most likely occur?",
+      "ms": {
+        "draft": 3710,
+        "critique": 6751,
+        "solver": 1398,
+        "form": 2856
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the case of a blood transfusion, which of the following is the most important factor to consider?",
+      "ms": {
+        "draft": 10895,
+        "critique": 4434,
+        "solver": 12335,
+        "form": 1957
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the function of the interstitial fluid?",
+      "ms": {
+        "draft": 3710,
+        "critique": 5324,
+        "solver": 1425,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is responsible for initiating and maintaining the rhythmic contractile activity of the heart?",
+      "ms": {
+        "draft": 4413,
+        "critique": 6016
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the function of the interatrial septum in the human heart?",
+      "ms": {
+        "draft": 3710,
+        "critique": 7736,
+        "solver": 1614,
+        "form": 2826
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens during ventricular systole?",
+      "ms": {
+        "draft": 4413,
+        "critique": 6019
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the function of the semilunar valves in the heart?",
+      "ms": {
+        "draft": 4413,
+        "critique": 6432
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the sino-atrial node (SAN) is damaged, which of the following is most likely to happen?",
+      "ms": {
+        "draft": 4413,
+        "critique": 6115
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why the ventricles have thicker walls than the atria?",
+      "ms": {
+        "draft": 4413,
+        "critique": 6115
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the heart is responsible for the depolarisation of the ventricles?",
+      "ms": {
+        "draft": 3742,
+        "critique": 7622
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not a component of the formed elements in blood?",
+      "ms": {
+        "draft": 3285,
+        "critique": 5647
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In which of the following organisms is the circulatory system considered to be open?",
+      "ms": {
+        "draft": 3285,
+        "critique": 4966
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a given organism, the blood is pumped to the gills and then to the body. Which of the following organisms is most likely to have this type of circulatory system?",
+      "ms": {
+        "draft": 2943,
+        "critique": 8271
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an organism, the heart has three chambers: two atria and one ventricle. What can be inferred about the type of circulation in this organism?",
+      "ms": {
+        "draft": 2943,
+        "critique": 6760,
+        "solver": 1186
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the T-wave in an ECG represent?",
+      "ms": {
+        "draft": 7725,
+        "critique": 5692
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of the circulatory system is responsible for carrying deoxygenated blood from the body to the heart?",
+      "ms": {
+        "draft": 7725,
+        "critique": 5395
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a function of the systemic circulation?",
+      "ms": {
+        "draft": 7725,
+        "critique": 4985
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A patient is brought to the hospital with chest pain and is diagnosed with angina. Which of the following could be the cause of this condition?",
+      "ms": {
+        "draft": 7725,
+        "critique": 4705,
+        "solver": 1547,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The heart is described as myogenic. What does this mean?",
+      "ms": {
+        "draft": 7725,
+        "critique": 5341
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the tunica media in blood vessels?",
+      "ms": {
+        "draft": 7725,
+        "critique": 5244
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the heart is responsible for initiating and maintaining the rhythmic contractile activity of the heart?",
+      "ms": {
+        "draft": 6855,
+        "critique": 6012
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following animals is the circulatory system not closed?",
+      "ms": {
+        "draft": 6855,
+        "critique": 6126
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is true about Rh incompatibility between a mother and her fetus?",
+      "ms": {
+        "draft": 4467,
+        "critique": 5656
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person with Rh-ve blood is exposed to Rh+ve blood, what is the most likely consequence?",
+      "ms": {
+        "draft": 4467,
+        "critique": 6443
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the term for the volume of blood pumped out by each ventricle per minute?",
+      "ms": {
+        "draft": 6855,
+        "critique": 5567,
+        "solver": 7960,
+        "form": 3313
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a major protein present in plasma?",
+      "ms": {
+        "draft": 3362,
+        "critique": 4896,
+        "solver": 7729
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the significance of the Sino-atrial node in the heart?",
+      "ms": {
+        "draft": 2943,
+        "critique": 4962,
+        "solver": 12611,
+        "form": 0,
+        "translation": 26319
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of lymph?",
+      "ms": {
+        "draft": 2943,
+        "critique": 5319,
+        "solver": 1472,
+        "form": 0,
+        "translation": 23333
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a blood group AB, which of the following statements is true?",
+      "ms": {
+        "draft": 2943,
+        "critique": 4120,
+        "solver": 1731,
+        "form": 0,
+        "translation": 33417
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the primary function of the hepatic portal system?",
+      "ms": {
+        "draft": 3742,
+        "critique": 6304,
+        "solver": 8173,
+        "form": 0,
+        "translation": 35668
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is NOT a function of the formed elements in blood?",
+      "ms": {
+        "draft": 2943,
+        "critique": 4099,
+        "solver": 997,
+        "form": 0,
+        "translation": 33027
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person with Rh-ve blood is pregnant with a foetus with Rh+ve blood. What is the most likely outcome if the mother is not given anti-Rh antibodies after delivery?",
+      "ms": {
+        "draft": 3710,
+        "critique": 5468,
+        "solver": 1553,
+        "form": 2789,
+        "translation": 48176
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In which of the following conditions would the heart's ability to pump blood effectively be compromised?",
+      "ms": {
+        "draft": 3742,
+        "critique": 5726,
+        "solver": 2030,
+        "form": 0,
+        "translation": 42181
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the closed circulatory system considered more advantageous than the open circulatory system?",
+      "ms": {
+        "draft": 3710,
+        "critique": 6376,
+        "solver": 1370,
+        "form": 2860,
+        "translation": 48487
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the role of the atrioventricular bundle (AV bundle)?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a major function of lymphocytes in blood?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a function of plasma in the blood?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person has a low number of platelets in their blood, which of the following is most likely to occur?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A person has a blood group of O. Based on the passage, which of the following is true about this person?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, which of the following blood groups can be safely given to a person with AB blood group?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a characteristic of the Rh blood group system?",
+      "reason": "options 0 and 2 say the same thing (\"It is determined by the presence of antibodies in the blood\" / \"It is determined by the presence of haemoglobin in the blood\"); options 0 and 3 say the same thing (\"It is determined by the presence of antibodies in the blood\" / \"It is determined by the presence of platelets in the blood\"); options 2 and 3 say the same thing (\"It is determined by the presence of haemoglobin in the blood\" / \"It is determined by the presence of platelets in the blood\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In which of the following situations would erythroblastosis foetalis most likely occur?",
+      "reason": "options 0 and 1 say the same thing (\"When an Rh+ve mother carries an Rh-ve foetus\" / \"When an Rh-ve mother carries an Rh+ve foetus\"); options 0 and 3 say the same thing (\"When an Rh+ve mother carries an Rh-ve foetus\" / \"When an Rh+ve mother carries an Rh+ve foetus\"); options 1 and 3 say the same thing (\"When an Rh-ve mother carries an Rh+ve foetus\" / \"When an Rh+ve mother carries an Rh+ve foetus\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the case of a blood transfusion, which of the following is the most important factor to consider?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the function of the interstitial fluid?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (64 vs 38 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is responsible for initiating and maintaining the rhythmic contractile activity of the heart?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the function of the interatrial septum in the human heart?",
+      "reason": "the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What happens during ventricular systole?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following best describes the function of the semilunar valves in the heart?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the sino-atrial node (SAN) is damaged, which of the following is most likely to happen?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Which of the following best explains why the ventricles have thicker walls than the atria?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the heart is responsible for the depolarisation of the ventricles?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is not a component of the formed elements in blood?",
+      "reason": "option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "In which of the following organisms is the circulatory system considered to be open?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "In the cardiac cycle, what is the primary cause of the closure of the semilunar valves?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In a given organism, the blood is pumped to the gills and then to the body. Which of the following organisms is most likely to have this type of circulatory system?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In an organism, the heart has three chambers: two atria and one ventricle. What can be inferred about the type of circulation in this organism?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the T-wave in an ECG represent?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which part of the circulatory system is responsible for carrying deoxygenated blood from the body to the heart?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is NOT a function of the systemic circulation?",
+      "reason": "option 0 is not wrong; option 1 is not wrong; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A patient is brought to the hospital with chest pain and is diagnosed with angina. Which of the following could be the cause of this condition?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The heart is described as myogenic. What does this mean?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the function of the tunica media in blood vessels?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which part of the heart is responsible for initiating and maintaining the rhythmic contractile activity of the heart?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In which of the following animals is the circulatory system not closed?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is true about Rh incompatibility between a mother and her fetus?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person with Rh-ve blood is exposed to Rh+ve blood, what is the most likely consequence?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the term for the volume of blood pumped out by each ventricle per minute?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Confuses cardiac output with blood pressure, which is a meas…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a major protein present in plasma?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

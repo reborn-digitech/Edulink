@@ -1,0 +1,495 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T02:52:24.387Z",
+  "finishedAt": "2026-10-28T02:57:05.764Z",
+  "seconds": 281,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm111.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 11 — Filling and L ifting",
+    "edition": "Reprint 2026-27",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2026-27]\n9. Draw neat and clean figures wherever required. Take 𝝅 = 7 wherever required if not stated.",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½",
+      "[CBSE Class XII Mathematics, marking scheme, 2023-24]\n18. (d) 2 2 2  1  2  1  2  1 2  1  2\nWe know, l  m  n  1           1  3    1  c   3 .\n c   c   c   c "
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 69653,
+      "in": 23,
+      "out": 23,
+      "rejects": 0,
+      "promptTokens": 15640,
+      "completionTokens": 4375
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 181527,
+      "in": 23,
+      "out": 20,
+      "rejects": 3,
+      "promptTokens": 13202,
+      "completionTokens": 5292
+    },
+    "solver": {
+      "calls": 155,
+      "ms": 76691,
+      "in": 20,
+      "out": 14,
+      "rejects": 6,
+      "promptTokens": 28471,
+      "completionTokens": 1653
+    },
+    "form": {
+      "calls": 4,
+      "ms": 11363,
+      "in": 14,
+      "out": 8,
+      "rejects": 6,
+      "promptTokens": 986,
+      "completionTokens": 326
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 25,
+      "ms": 4359,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 191359,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 12195,
+      "completionTokens": 5676
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where the quantity of water remains the same but the number of vessels changes?",
+      "ms": {
+        "draft": 2974,
+        "critique": 4843,
+        "solver": 1735
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which word is used in the passage to compare the amount of milk in different glasses?",
+      "ms": {
+        "draft": 2974,
+        "critique": 5088,
+        "solver": 2352,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the relationship between the size of a vessel and the number of times it needs to be filled?",
+      "ms": {
+        "draft": 2974,
+        "critique": 7027,
+        "solver": 1658,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a glass holds half a litre and a jug holds 1 litre, how many glasses can be filled from the jug?",
+      "ms": {
+        "draft": 2974,
+        "critique": 8146,
+        "solver": 13062
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 4 marbles balance with a pencil, and 2 marbles balance with a spoon, which object is the heaviest?",
+      "ms": {
+        "draft": 10627,
+        "critique": 6125,
+        "solver": 961
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Using a pan-balance, 3 balls are compared. One is heavier and two are equal. If you can use the balance only once, which of the following is the correct way to find the heaviest ball?",
+      "ms": {
+        "draft": 10627,
+        "critique": 5610,
+        "solver": 1563
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a bag of rice weighs 5 kg and a bag of wheat weighs 3 kg, how many bags of wheat are needed to balance the bag of rice?",
+      "ms": {
+        "draft": 10627,
+        "critique": 5806
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a red ball is heavier than a green ball, and a green ball is heavier than an orange ball, which is the heaviest ball?",
+      "ms": {
+        "draft": 10627,
+        "critique": 4982,
+        "solver": 936,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If one daal packet weighs a half kilogram, how many daal packets would weigh 2 kilograms?",
+      "ms": {
+        "draft": 3447,
+        "critique": 5876
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a bag contains 5 books and weighs 2 kilograms, and another bag has 10 books, what is the weight of the second bag if the books are of the same weight?",
+      "ms": {
+        "draft": 3447,
+        "critique": 7275
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which word is used in the passage to compare the amount of milk in glasses?",
+      "ms": {
+        "draft": 2871,
+        "critique": 6929,
+        "solver": 1874,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an object that weighs less than 1 kilogram?",
+      "ms": {
+        "draft": 3447,
+        "critique": 6330,
+        "solver": 10737
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a red ball is heavier than an orange ball and a green ball is lighter than the orange ball, what is the order of the balls from heaviest to lightest?",
+      "ms": {
+        "draft": 3447,
+        "critique": 4509,
+        "solver": 13807,
+        "form": 4554
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Ritu’s glass holds more milk than Nita’s glass. Monu’s glass holds less milk than Nita’s glass. Which glass holds the most milk?",
+      "ms": {
+        "draft": 2871,
+        "critique": 6145,
+        "solver": 8854
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a jug holds exactly 1 litre of water, which of the following is most likely to hold less than 1 litre?",
+      "ms": {
+        "draft": 2871,
+        "critique": 7540,
+        "solver": 12328,
+        "form": 1386
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 4 quarter litre glasses are equal to 1 litre, how many quarter litre glasses would be needed to fill 2 litres?",
+      "ms": {
+        "draft": 2871,
+        "critique": 5347,
+        "solver": 1316,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a jug holds 1 litre, and a glass holds half a litre, how many glasses can be filled with 3 jugs of lemonade?",
+      "ms": {
+        "draft": 2871,
+        "critique": 7650,
+        "solver": 1337,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following objects is likely to weigh more than 1 kilogram?",
+      "ms": {
+        "draft": 10627,
+        "critique": 8699,
+        "solver": 9860,
+        "form": 0,
+        "translation": 29349
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to compare the weight of two objects?",
+      "ms": {
+        "draft": 10627,
+        "critique": 4450,
+        "solver": 942,
+        "form": 0,
+        "translation": 31415
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an object that weighs about 1 kilogram?",
+      "ms": {
+        "draft": 3447,
+        "critique": 6690,
+        "solver": 9901,
+        "form": 3642,
+        "translation": 30286
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a jug holds exactly 1 litre of water, which of the following is most likely to hold less than 1 litre?",
+      "ms": {
+        "draft": 2974,
+        "critique": 4633,
+        "solver": 1212,
+        "form": 1,
+        "translation": 31306
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Using a pan-balance, how many times do you need to weigh to find the heaviest ball among three balls of different weights?",
+      "ms": {
+        "draft": 3447,
+        "critique": 6328,
+        "solver": 1147,
+        "form": 3865,
+        "translation": 33738
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a bottle holds 1 litre and a glass holds a quarter litre, how many glasses are needed to fill the bottle?",
+      "ms": {
+        "draft": 2974,
+        "critique": 6665,
+        "solver": 14613,
+        "form": 0,
+        "translation": 31512
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of a situation where the quantity of water remains the same but the number of vessels changes?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which word is used in the passage to compare the amount of milk in different glasses?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the relationship between the size of a vessel and the number of times it needs to be filled?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"The larger the vessel, the more times it needs to be filled\" / \"The larger the vessel, the fewer times it needs to be filled\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a glass holds half a litre and a jug holds 1 litre, how many glasses can be filled from the jug?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 4 marbles balance with a pencil, and 2 marbles balance with a spoon, which object is the heaviest?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Using a pan-balance, 3 balls are compared. One is heavier and two are equal. If you can use the balance only once, which of the following is the correct way to find the heaviest ball?",
+      "reason": "the solver picked option 1 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a bag of rice weighs 5 kg and a bag of wheat weighs 3 kg, how many bags of wheat are needed to balance the bag of rice?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a red ball is heavier than a green ball, and a green ball is heavier than an orange ball, which is the heaviest ball?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If one daal packet weighs a half kilogram, how many daal packets would weigh 2 kilograms?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a bag contains 5 books and weighs 2 kilograms, and another bag has 10 books, what is the weight of the second bag if the books are of the same weight?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which word is used in the passage to compare the amount of milk in glasses?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is an example of an object that weighs less than 1 kilogram?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a red ball is heavier than an orange ball and a green ball is lighter than the orange ball, what is the order of the balls from heaviest to lightest?",
+      "reason": "options 0 and 1 say the same thing (\"Red, Orange, Green\" / \"Green, Red, Orange\"); options 0 and 2 say the same thing (\"Red, Orange, Green\" / \"Orange, Green, Red\"); options 0 and 3 say the same thing (\"Red, Orange, Green\" / \"Green, Orange, Red\"); options 1 and 2 say the same thing (\"Green, Red, Orange\" / \"Orange, Green, Red\"); options 1 and 3 say the same thing (\"Green, Red, Orange\" / \"Green, Orange, Red\"); options 2 and 3 say the same thing (\"Orange, Green, Red\" / \"Green, Orange, Red\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Ritu’s glass holds more milk than Nita’s glass. Monu’s glass holds less milk than Nita’s glass. Which glass holds the most milk?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a jug holds exactly 1 litre of water, which of the following is most likely to hold less than 1 litre?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "If 4 quarter litre glasses are equal to 1 litre, how many quarter litre glasses would be needed to fill 2 litres?",
+      "reason": "near-duplicate of served question cmvo0z4aa04w7gp21s7wtm3kk (cosine 0.969 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a jug holds 1 litre, and a glass holds half a litre, how many glasses can be filled with 3 jugs of lemonade?",
+      "reason": "near-duplicate of served question cmvgzpq9r05swgpfhxmveeswn (cosine 0.932 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

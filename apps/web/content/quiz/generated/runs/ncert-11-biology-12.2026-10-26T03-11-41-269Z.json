@@ -1,0 +1,720 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T03:11:41.269Z",
+  "finishedAt": "2026-10-26T03:18:45.903Z",
+  "seconds": 425,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "kebo1",
+    "document": "ncert/11/biology/kebo112.pdf",
+    "classLevel": 11,
+    "subject": "Biology",
+    "chapter": "Chapter 12 — Respiration in Plants",
+    "edition": "Reprint 2026-27",
+    "chunks": 15,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INBO 2019 — question paper]\n38. (3 points) Respiration in three types of plant tissues/parts are listed below:\nM. Respiration of growing leaf cells\nN. Respiration of mature lemon fruit\nO. Respiration of sprouting mustard seeds\nRespiratory quotient (RQ) is defined as the ratio between CO 2 release and O 2 uptake\nmeasured at the same time. RQ can provide information on the nature of substrate\nused for respiration and relative rate of completing respiratory processes. This can be\ndemonstrated by balanced equations. Three such equations are given below:\nI] C 6 H 8 O 7 + 4.5O 2 6CO 2 + 4H 2 O\nII] C 6 H 12 O 6 + 6O 2 6CO 2 + 6H 2 O\nIII] C 57 H 104 O 6 + 36.5O 2 3.625 C 12 H 22 O 11 + 13.5CO 2 + 12.125H 2 O\nMatch the diffe",
+      "[NSEB 2015 — question paper]\n34. Respiration differs from photorespiration as the latter:\na) takes place only during day and within the chloroplast.\nb) yields less ATP.\nc) utilizes ATP.\nd) occurs in peroxisomes.",
+      "[INBO 2016 — question paper]\n8. (1 point) The process of photosynthesis needs carbon dioxide to diffuse from the\natmosphere into the leaf and into the carboxylation site of RUBISCO. This happens through\na series of steps. Each step in this diffusion pathway imposes resistance to CO 2 diffusion.\nThis is depicted in the diagram. Various resistances are listed below.\ni. Boundary layer resistance\nii. Stomatal resistance\niii. Liquid phase resistance\niv. Intercellular air space resistance\nP\nQ\nR\n3 S\nWhich of the following shows the correct combination?\na. P – i; Q – iii; R – ii; S – iv\nb. P – i; Q – ii; R – iii; S – iv\nc. P – iii; Q – iv; R – ii; S – i\nd. P – iv; Q – iii; R – ii; S – i",
+      "[NSEB 2015 — question paper]\n39. In C (photorespiration) cycle, RUBISCO utilizes: 2\na) CO 2\nb) O 2\nc) NADPH 2\nd) Inorganic phosphate"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 146142,
+      "in": 37,
+      "out": 36,
+      "rejects": 1,
+      "promptTokens": 37619,
+      "completionTokens": 9123
+    },
+    "critique": {
+      "calls": 40,
+      "ms": 216486,
+      "in": 36,
+      "out": 34,
+      "rejects": 2,
+      "promptTokens": 17953,
+      "completionTokens": 6834
+    },
+    "solver": {
+      "calls": 196,
+      "ms": 72526,
+      "in": 34,
+      "out": 31,
+      "rejects": 3,
+      "promptTokens": 28950,
+      "completionTokens": 1746
+    },
+    "form": {
+      "calls": 20,
+      "ms": 77159,
+      "in": 31,
+      "out": 13,
+      "rejects": 18,
+      "promptTokens": 10497,
+      "completionTokens": 2337
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 57,
+      "ms": 10201,
+      "in": 13,
+      "out": 10,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 399618,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 24456,
+      "completionTokens": 12615
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 0,
+    "2": 4,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 4,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is the correct sequence of respiration in plants?",
+      "ms": {
+        "draft": 3138,
+        "critique": 5740,
+        "solver": 1287,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the primary difference between glycolysis and the Krebs cycle?",
+      "ms": {
+        "draft": 3935,
+        "critique": 5494,
+        "solver": 1721
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In glycolysis, how many ATP molecules are directly synthesised from one glucose molecule?",
+      "ms": {
+        "draft": 3935,
+        "critique": 4980,
+        "solver": 1489,
+        "form": 2716
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the role of NADH+H in glycolysis?",
+      "ms": {
+        "draft": 3935,
+        "critique": 5613
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the context of glycolysis, what would happen if the enzyme hexokinase were not available?",
+      "ms": {
+        "draft": 3935,
+        "critique": 5100,
+        "solver": 1668
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the primary role of the citric acid cycle in cellular respiration?",
+      "ms": {
+        "draft": 3884,
+        "critique": 6121,
+        "solver": 1477,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is the citric acid cycle considered a central metabolic pathway?",
+      "ms": {
+        "draft": 3884,
+        "critique": 5296,
+        "solver": 1761,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "During aerobic respiration, how many ATP molecules are theoretically produced from one glucose molecule?",
+      "ms": {
+        "draft": 3616,
+        "critique": 7964,
+        "solver": 1222
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant is kept in a dark environment and the concentration of oxygen is maintained at a constant level, which of the following processes will still occur?",
+      "ms": {
+        "draft": 3884,
+        "critique": 5810,
+        "solver": 10467,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the respiratory quotient (RQ) when carbohydrates are completely oxidized?",
+      "ms": {
+        "draft": 3616,
+        "critique": 5747,
+        "solver": 1281,
+        "form": 3034
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main site of glycolysis in a plant cell?",
+      "ms": {
+        "draft": 3348,
+        "critique": 5499
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant uses a fatty acid as a respiratory substrate, what can be said about its respiratory quotient (RQ)?",
+      "ms": {
+        "draft": 3616,
+        "critique": 6132,
+        "solver": 7788,
+        "form": 1341
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the correct sequence of events during aerobic respiration in plant cells?",
+      "ms": {
+        "draft": 2782,
+        "critique": 4603,
+        "solver": 1618,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the diagram showing the Electron Transport System, which component is responsible for the final acceptance of electrons and the formation of water?",
+      "ms": {
+        "draft": 2782,
+        "critique": 4467,
+        "solver": 1033,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant tissue has a respiratory quotient (RQ) of 1.5, which type of substrate is most likely being used for respiration?",
+      "ms": {
+        "draft": 2782,
+        "critique": 4759,
+        "solver": 14566,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a part of the Electron Transport System (ETS) as described in the passage?",
+      "ms": {
+        "draft": 6002,
+        "critique": 4698,
+        "solver": 1417,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main difference between fermentation and aerobic respiration?",
+      "ms": {
+        "draft": 6002,
+        "critique": 5814,
+        "solver": 1151,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage states that the respiratory pathway is amphibolic. Which of the following best explains this?",
+      "ms": {
+        "draft": 6002,
+        "critique": 5493,
+        "solver": 1499,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which part of the mitochondria is responsible for the complete oxidation of pyruvate?",
+      "ms": {
+        "draft": 6727,
+        "critique": 5273,
+        "solver": 2767,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant tissue has an RQ of 0.7, which substrate is most likely being used for respiration?",
+      "ms": {
+        "draft": 6002,
+        "critique": 6420,
+        "solver": 948,
+        "form": 3913
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the final product of glycolysis?",
+      "ms": {
+        "draft": 6727,
+        "critique": 5971,
+        "solver": 1165,
+        "form": 2377
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is described as the partial oxidation of glucose to form two molecules of pyruvic acid?",
+      "ms": {
+        "draft": 4355,
+        "critique": 4955,
+        "solver": 1549,
+        "form": 2793
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many ATP molecules are directly synthesised during glycolysis from one glucose molecule?",
+      "ms": {
+        "draft": 4355,
+        "critique": 5806,
+        "solver": 4071,
+        "form": 1327
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant cell is subjected to a condition where oxygen is not available, which process will it primarily rely on for energy production?",
+      "ms": {
+        "draft": 3884,
+        "critique": 5591,
+        "solver": 1000,
+        "form": 3215
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the final acceptor of electrons in the electron transport system during aerobic respiration?",
+      "ms": {
+        "draft": 3884,
+        "critique": 6143,
+        "solver": 1685,
+        "form": 3399
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The respiratory pathway is described as amphibolic. Which of the following best explains this term?",
+      "ms": {
+        "draft": 2782,
+        "critique": 7617,
+        "solver": 1215,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of cellular respiration in plants?",
+      "ms": {
+        "draft": 3138,
+        "critique": 4402,
+        "solver": 1507,
+        "form": 3291,
+        "translation": 44447
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a respiratory substrate in plants?",
+      "ms": {
+        "draft": 3138,
+        "critique": 4236,
+        "solver": 1002,
+        "form": 3423,
+        "translation": 31939
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a common respiratory substrate in plants?",
+      "ms": {
+        "draft": 2782,
+        "critique": 5781,
+        "solver": 1324,
+        "form": 0,
+        "translation": 28590
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of glycolysis in plant cells?",
+      "ms": {
+        "draft": 3935,
+        "critique": 6601,
+        "solver": 1219,
+        "form": 2947,
+        "translation": 51370
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a plant cell is unable to perform glycolysis, what would be the immediate consequence?",
+      "ms": {
+        "draft": 3138,
+        "critique": 4792,
+        "solver": 1819,
+        "form": 2853,
+        "translation": 44796
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main function of the Electron Transport System in cellular respiration?",
+      "ms": {
+        "draft": 2782,
+        "critique": 6114,
+        "solver": 1448,
+        "form": 0,
+        "translation": 21430
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a plant has a respiratory quotient (RQ) of 1, which of the following is the most likely substrate being used for respiration?",
+      "ms": {
+        "draft": 3138,
+        "critique": 6263,
+        "solver": 1300,
+        "form": 4323,
+        "translation": 45868
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a plant cell is in an environment without oxygen, what process would it use to produce energy?",
+      "ms": {
+        "draft": 3935,
+        "critique": 5258,
+        "solver": 1537,
+        "form": 2678,
+        "translation": 39777
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a plant is respiring in the absence of oxygen, which of the following processes would it most likely use?",
+      "ms": {
+        "draft": 3138,
+        "critique": 5455,
+        "solver": 1218,
+        "form": 3830,
+        "translation": 44325
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the respiratory pathway considered amphibolic rather than purely catabolic?",
+      "ms": {
+        "draft": 3616,
+        "critique": 5253,
+        "solver": 1511,
+        "form": 1564,
+        "translation": 43443
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is a key difference between fermentation and aerobic respiration?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is the correct sequence of respiration in plants?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"Glycolysis → Electron Transport System → Fermentation\" / \"Glycolysis → Fermentation → Electron Transport System\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Based on the passage, what is the primary difference between glycolysis and the Krebs cycle?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In glycolysis, how many ATP molecules are directly synthesised from one glucose molecule?",
+      "reason": "checkExpr \"2\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "According to the passage, what is the role of NADH+H in glycolysis?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the context of glycolysis, what would happen if the enzyme hexokinase were not available?",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage, what is the primary role of the citric acid cycle in cellular respiration?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is the citric acid cycle considered a central metabolic pathway?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "During aerobic respiration, how many ATP molecules are theoretically produced from one glucose molecule?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a plant is kept in a dark environment and the concentration of oxygen is maintained at a constant level, which of the following processes will still occur?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the respiratory quotient (RQ) when carbohydrates are completely oxidized?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"chooses a value not mentioned in the passage…\"); distractor 3's reason is not a one-line misconception (\"chooses a value not mentioned in the passage…\"); checkExpr \"1.0\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the main site of glycolysis in a plant cell?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a plant uses a fatty acid as a respiratory substrate, what can be said about its respiratory quotient (RQ)?",
+      "reason": "checkExpr \"less than 1\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is the correct sequence of events during aerobic respiration in plant cells?",
+      "reason": "options 0 and 1 say the same thing (\"Glycolysis → Krebs’ cycle → Electron Transport System\" / \"Krebs’ cycle → Glycolysis → Electron Transport System\"); options 0 and 2 say the same thing (\"Glycolysis → Krebs’ cycle → Electron Transport System\" / \"Electron Transport System → Glycolysis → Krebs’ cycle\"); options 0 and 3 say the same thing (\"Glycolysis → Krebs’ cycle → Electron Transport System\" / \"Glycolysis → Electron Transport System → Krebs’ cycle\"); options 1 and 2 say the same thing (\"Krebs’ cycle → Glycolysis → Electron Transport System\" / \"Electron Transport System → Glycolysis → Krebs’ cycle\"); options 1 and 3 say the same thing (\"Krebs’ cycle → Glycolysis → Electron Transport System\" / \"Glycolysis → Electron Transport System → Krebs’ cycle\"); options 2 and 3 say the same thing (\"Electron Transport System → Glycolysis → Krebs’ cycle\" / \"Glycolysis → Electron Transport System → Krebs’ cycle\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the diagram showing the Electron Transport System, which component is responsible for the final acceptance of electrons and the formation of water?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a plant tissue has a respiratory quotient (RQ) of 1.5, which type of substrate is most likely being used for respiration?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a part of the Electron Transport System (ETS) as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the main difference between fermentation and aerobic respiration?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage states that the respiratory pathway is amphibolic. Which of the following best explains this?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which part of the mitochondria is responsible for the complete oxidation of pyruvate?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a plant tissue has an RQ of 0.7, which substrate is most likely being used for respiration?",
+      "reason": "figure: figure spec refused: spec.title: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the final product of glycolysis?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label glycolysis"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which process is described as the partial oxidation of glucose to form two molecules of pyruvic acid?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct term is glycolysis, not this…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "How many ATP molecules are directly synthesised during glycolysis from one glucose molecule?",
+      "reason": "checkExpr \"2\" is a bare literal"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a plant cell is subjected to a condition where oxygen is not available, which process will it primarily rely on for energy production?",
+      "reason": "near-duplicate of batch item \"If a plant cell is in an environment without oxyge…\" (cosine 0.936 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is the final acceptor of electrons in the electron transport system during aerobic respiration?",
+      "reason": "near-duplicate of served question cmvhlgih509fkgpfhkq553t8m (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "The respiratory pathway is described as amphibolic. Which of the following best explains this term?",
+      "reason": "near-duplicate of batch item \"Why is the respiratory pathway considered amphibol…\" (cosine 0.901 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

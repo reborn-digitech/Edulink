@@ -1,0 +1,757 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T06:28:33.508Z",
+  "finishedAt": "2026-10-27T06:38:13.049Z",
+  "seconds": 580,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "fecu1",
+    "document": "ncert/6/science/fecu107.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 7 — Temperature and its Measurement",
+    "edition": "Reprint 2026-27",
+    "chunks": 12,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2014 — question paper]\n28. On a summer day one feels very uncomfortable sitting in a room, without an air\nconditioner. A bucket of water is kept in the middle of the room for a long time.\nRoom is thermally insulated from the outside environment.\nWhich of the following statement is /are correct?\ni) If one puts her / his hand in the water, she / he feels water in the bucket to be\ncooler because the water is at a lower temperature than the surrounding.\nii) The quantity of water in the bucket will not change with time.\niii) If ice is brought into the room, the ice begins to melt and the room\ntemperature begins to fall. The room temperature and the temperature of the\nwater in the bucket will fall jointly.\niv) Two perso",
+      "[INJSO 2013 — question paper]\n59. A hot solid at temperature t is placed in a cool liquid at temperature t . Both 1 2\nacquire a common temperature t . Then: 0\nA. t 0 = (t 1 + t 2 )/2 always.\nB. t > (t + t )/2 if mass of solid is greater than the mass of the liquid. 0 1 2\nC. t > (t + t )/2 if specific heat capacity of solid is greater then the specific 0 1 2\nheat capacity of the liquid.\nD. Information provided is insufficient to draw any of the above con-\nclusion.",
+      "[INJSO 2009 — question paper]\n19. The temperature of a substance of mass:m (in g) and of specific heat capacity\n¢(@inJ g' K) increases by ¢ °C . What is the heat change in J ?\n| a) met b) me(t +273)\np- \"me(t +273)\n5) 1000 d) 1000",
+      "[INJSO 2023 — question paper]\n15. Evaporation of water, in the form of sweat is an essential mechanism in human beings for main-\ntaining normal body temperature. For human body, the specific heat capacity is 3.5 kJ/(kg K)\nand heat of vaporization of sweat at body temperature of 37 C is nearly 2.3 MJ/kg. ◦\nOn consuming a certain prescribed diet, the body temperature of Balvinder of mass 82 kg is\nexpected to increase by 2 C. To prevent this, Balviner drinks N bottles of mineral water ◦\n(250 mL water in each) kept at ambient temperature (37 C). Assume that the entire amount of this water is converted into sweat, which vaporizes. N is nearly ... A. 1 HBCSE B. 2 C. 3 D. 4 4 ◦"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 181934,
+      "in": 41,
+      "out": 38,
+      "rejects": 3,
+      "promptTokens": 35663,
+      "completionTokens": 9513
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 317861,
+      "in": 38,
+      "out": 32,
+      "rejects": 6,
+      "promptTokens": 21458,
+      "completionTokens": 8183
+    },
+    "solver": {
+      "calls": 220,
+      "ms": 123920,
+      "in": 32,
+      "out": 26,
+      "rejects": 6,
+      "promptTokens": 40500,
+      "completionTokens": 2312
+    },
+    "form": {
+      "calls": 10,
+      "ms": 45906,
+      "in": 26,
+      "out": 14,
+      "rejects": 12,
+      "promptTokens": 6293,
+      "completionTokens": 1201
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 46,
+      "ms": 8664,
+      "in": 14,
+      "out": 10,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 449270,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 26739,
+      "completionTokens": 13350
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 4,
+    "6": 2
+  },
+  "flagged": 8,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following is the correct unit of temperature on the Celsius scale?",
+      "ms": {
+        "draft": 4307,
+        "critique": 7348,
+        "solver": 2005,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A digital clinical thermometer is used to measure body temperature. Which of the following is NOT a correct precaution while using it?",
+      "ms": {
+        "draft": 4307,
+        "critique": 7574,
+        "solver": 19197
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, a student dips their right hand in container A (warm water) and left hand in container C (ice-cold water) for 1–2 minutes. After that, both hands are placed in container B (tap water). The student observes that the right hand feels the water as cool, while the left hand feels it as warm. What does this observation indicate?",
+      "ms": {
+        "draft": 4307,
+        "critique": 7128,
+        "solver": 20719
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to write the unit for a temperature of 25 degrees Celsius?",
+      "ms": {
+        "draft": 4703,
+        "critique": 7203,
+        "solver": 1878,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct way to write the symbol for a temperature of 25 degrees Celsius?",
+      "ms": {
+        "draft": 4703,
+        "critique": 6364,
+        "solver": 2401,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the SI unit of temperature?",
+      "ms": {
+        "draft": 4405,
+        "critique": 7642,
+        "solver": 1856,
+        "form": 2377
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student uses a laboratory thermometer to measure the temperature of a liquid. The bulb of the thermometer touches the bottom of the beaker. What will be the effect on the temperature reading?",
+      "ms": {
+        "draft": 4703,
+        "critique": 7063,
+        "solver": 12554,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which student followed the correct way to measure the temperature of water using a laboratory thermometer as shown in Fig. 7.6?",
+      "ms": {
+        "draft": 4405,
+        "critique": 7463,
+        "solver": 1526
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the temperature of a substance increases by 10 °C, what is the change in temperature in kelvin?",
+      "ms": {
+        "draft": 4405,
+        "critique": 6249,
+        "solver": 1968,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a person’s body temperature increases from 37 °C to 39 °C, what is the percentage increase in temperature?",
+      "ms": {
+        "draft": 4405,
+        "critique": 7723
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the temperature at the core of the Sun according to the passage?",
+      "ms": {
+        "draft": 3817,
+        "critique": 6909
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the temperature of planets according to the passage?",
+      "ms": {
+        "draft": 3817,
+        "critique": 6116,
+        "solver": 1871,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many divisions are there on a laboratory thermometer between 0 °C and 100 °C?",
+      "ms": {
+        "draft": 3817,
+        "critique": 6623
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person has a fever of 101 degrees, which temperature scale is it most likely measured on?",
+      "ms": {
+        "draft": 3817,
+        "critique": 6214
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a laboratory thermometer has 50 divisions between 0 °C and 100 °C, what is the value of each division?",
+      "ms": {
+        "draft": 3817,
+        "critique": 4434
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A laboratory thermometer has 50 divisions between 0 °C and 100 °C. What is the temperature measured by each division?",
+      "ms": {
+        "draft": 4632,
+        "critique": 6319,
+        "solver": 11919,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The figure shows a setup to measure the temperature of water and room temperature. What is the main purpose of the thermometer placed in the room?",
+      "ms": {
+        "draft": 4632,
+        "critique": 5289,
+        "solver": 1433,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the minimum temperature that can be achieved according to scientific understanding?",
+      "ms": {
+        "draft": 4632,
+        "critique": 6632,
+        "solver": 2266,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "The normal temperature of a healthy human being is close to",
+      "ms": {
+        "draft": 3869,
+        "critique": 7982
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a correct statement about the units of temperature?",
+      "ms": {
+        "draft": 6540,
+        "critique": 6202,
+        "solver": 2474
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the smallest temperature that the laboratory thermometer shown in Fig. 7.3b can read?",
+      "ms": {
+        "draft": 6540,
+        "critique": 7480,
+        "solver": 2006
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "37 °C is the same temperature as",
+      "ms": {
+        "draft": 3869,
+        "critique": 7184,
+        "solver": 19995
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Who do you think followed the correct way for measuring temperature?",
+      "ms": {
+        "draft": 3869,
+        "critique": 6860,
+        "solver": 14301,
+        "form": 2580
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the normal body temperature of a healthy human being?",
+      "ms": {
+        "draft": 22391,
+        "critique": 8125,
+        "solver": 1551,
+        "form": 2694
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a laboratory thermometer has a range from –10 °C to 110 °C, what is the total range of temperatures it can measure?",
+      "ms": {
+        "draft": 4703,
+        "critique": 7717,
+        "solver": 1164,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Komal tells you that she has a fever of 101 degrees. Does she mean it on the Celsius scale or Fahrenheit scale?",
+      "ms": {
+        "draft": 4632,
+        "critique": 5327,
+        "solver": 2071,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A hot solid at temperature t1 is placed in a cool liquid at temperature t2. Both acquire a common temperature t0. What can be said about t0?",
+      "ms": {
+        "draft": 4632,
+        "critique": 7608,
+        "solver": 1371,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of using a thermometer?",
+      "ms": {
+        "draft": 22391,
+        "critique": 7099,
+        "solver": 1675,
+        "form": 3109
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about a laboratory thermometer?",
+      "ms": {
+        "draft": 4405,
+        "critique": 7155,
+        "solver": 1432,
+        "form": 4400,
+        "translation": 47708
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a correct use of a digital clinical thermometer?",
+      "ms": {
+        "draft": 4307,
+        "critique": 7120,
+        "solver": 1946,
+        "form": 0,
+        "translation": 36517
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a clinical thermometer, what is the role of heat sensors?",
+      "ms": {
+        "draft": 22391,
+        "critique": 4718,
+        "solver": 4664,
+        "form": 1170,
+        "translation": 23057
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "The liquid in a laboratory thermometer rises when the temperature increases. What is the main reason for this?",
+      "ms": {
+        "draft": 4703,
+        "critique": 6844,
+        "solver": 1958,
+        "form": 0,
+        "translation": 51115
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student measures the body temperature of a friend using a digital clinical thermometer. The reading is 37.5°C. The student then measures their own temperature and gets 36.8°C. What can be inferred from these readings?",
+      "ms": {
+        "draft": 4307,
+        "critique": 10883,
+        "solver": 13053,
+        "form": 0,
+        "translation": 45362
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a bucket of water is kept in a thermally insulated room and the room temperature is 30 °C, what will be the final temperature of the water in the bucket after a long time?",
+      "ms": {
+        "draft": 4632,
+        "critique": 7799,
+        "solver": 1736,
+        "form": 0,
+        "translation": 48813
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A laboratory thermometer with a range from –10 °C to 110 °C is used to measure the temperature of a liquid. The liquid's temperature is 30 °C. If the thermometer is removed from the liquid, what will happen to the level of the liquid column?",
+      "ms": {
+        "draft": 4703,
+        "critique": 6238,
+        "solver": 1882,
+        "form": 0,
+        "translation": 55192
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a person uses a thermometer with a range of -10 °C to 110 °C, which of the following temperatures can it measure?",
+      "ms": {
+        "draft": 6540,
+        "critique": 8361,
+        "solver": 13332,
+        "form": 5562,
+        "translation": 37875
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A digital clinical thermometer is used to measure the temperature of two people. The first person has a body temperature of 37.0°C, and the second has a body temperature of 37.5°C. If the thermometer is used to measure the temperature of a third person, and the reading is 37.2°C, which of the following statements is true?",
+      "ms": {
+        "draft": 4307,
+        "critique": 7789,
+        "solver": 1167,
+        "form": 0,
+        "translation": 56331
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is it necessary to read the temperature while the thermometer is still immersed in water?",
+      "ms": {
+        "draft": 6540,
+        "critique": 7472,
+        "solver": 1514,
+        "form": 2244,
+        "translation": 43893
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is the correct unit of temperature on the Celsius scale?",
+      "reason": "options 1 and 3 are the same (\"Degree Fahrenheit\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A digital clinical thermometer is used to measure body temperature. Which of the following is NOT a correct precaution while using it?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In an experiment, a student dips their right hand in container A (warm water) and left hand in container C (ice-cold water) for 1–2 minutes. After that, both hands are placed in container B (tap water). The student observes that the right hand feels the water as cool, while the left hand feels it as warm. What does this observation indicate?",
+      "reason": "distractors 0, 1, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the correct way to write the unit for a temperature of 25 degrees Celsius?",
+      "reason": "options 1 and 2 are the same (\"25 degrees celsius\"); option 1 repeats the stem's wording (\"25 degrees celsius\"); option 2 repeats the stem's wording (\"25 degrees Celsius\"); options are in more than one unit (degree celsius, degrees celsius, degrees celsuis); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the correct way to write the symbol for a temperature of 25 degrees Celsius?",
+      "reason": "options 0 and 1 are the same (\"25°C\"); options 0 and 2 are the same (\"25°C\"); options 0 and 3 are the same (\"25°C\"); options 1 and 2 are the same (\"25 C\"); options 1 and 3 are the same (\"25 C\"); options 2 and 3 are the same (\"25°c\"); options are in more than one unit (°c, c, °c.); options 0 and 1 are the same number; options 0 and 2 are the same number; options 0 and 3 are the same number; options 1 and 2 are the same number; options 1 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the SI unit of temperature?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); distractor 3's reason is not a one-line misconception (\"Correct option is not the longest, but is the only valid SI …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student uses a laboratory thermometer to measure the temperature of a liquid. The bulb of the thermometer touches the bottom of the beaker. What will be the effect on the temperature reading?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which student followed the correct way to measure the temperature of water using a laboratory thermometer as shown in Fig. 7.6?",
+      "reason": "the solver picked option 2 3 times against the key's 2: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the temperature of a substance increases by 10 °C, what is the change in temperature in kelvin?",
+      "reason": "option 3 is a catch-all (\"None of the above\"); options mix numbers and words (3 of 4 are numbers); checkExpr \"10\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a person’s body temperature increases from 37 °C to 39 °C, what is the percentage increase in temperature?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the temperature at the core of the Sun according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is true about the temperature of planets according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 1 say the same thing (\"The temperature of all planets decreases as they are farther from the Sun\" / \"The temperature of all planets increases as they are farther from the Sun\"); distractor 1's reason is not a one-line misconception (\"contradicts the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How many divisions are there on a laboratory thermometer between 0 °C and 100 °C?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person has a fever of 101 degrees, which temperature scale is it most likely measured on?",
+      "reason": "the critic finds option 1 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a laboratory thermometer has 50 divisions between 0 °C and 100 °C, what is the value of each division?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "The unit of temperature is degree",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "The range of a laboratory thermometer is usually",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If you have to measure the temperature 22.5 °C, which of the following three thermometers will you use?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "A laboratory thermometer has 50 divisions between 0 °C and 100 °C. What is the temperature measured by each division?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "The figure shows a setup to measure the temperature of water and room temperature. What is the main purpose of the thermometer placed in the room?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'thermometer'"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the minimum temperature that can be achieved according to scientific understanding?",
+      "reason": "options are in more than one unit (°c, million °c); options are written to different precisions (0 and 2 decimals)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "The normal temperature of a healthy human being is close to",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a correct statement about the units of temperature?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What is the smallest temperature that the laboratory thermometer shown in Fig. 7.3b can read?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "37 °C is the same temperature as",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Who do you think followed the correct way for measuring temperature?",
+      "reason": "figure: figure spec refused: spec.arrows.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the normal body temperature of a healthy human being?",
+      "reason": "options are written to different precisions (0 and 1 decimals)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a laboratory thermometer has a range from –10 °C to 110 °C, what is the total range of temperatures it can measure?",
+      "reason": "near-duplicate of served question cmvemopyo00obgod82mvce949 (cosine 0.966 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Komal tells you that she has a fever of 101 degrees. Does she mean it on the Celsius scale or Fahrenheit scale?",
+      "reason": "near-duplicate of served question cmvmdg0n000i7gp21e9apnjyf (cosine 0.988 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "A hot solid at temperature t1 is placed in a cool liquid at temperature t2. Both acquire a common temperature t0. What can be said about t0?",
+      "reason": "near-duplicate of served question cmvft2w2a00ojgpfhrpk8q99o (cosine 0.905 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the main purpose of using a thermometer?",
+      "reason": "near-duplicate of served question cmvft2w2200nvgpfh6f6b3zex (cosine 0.909 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

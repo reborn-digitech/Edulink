@@ -1,0 +1,698 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T05:55:36.109Z",
+  "finishedAt": "2026-10-27T06:07:54.527Z",
+  "seconds": 738,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "fecu1",
+    "document": "ncert/6/science/fecu104.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 4 — Exploring Magnets",
+    "edition": "Reprint 2026-27",
+    "chunks": 12,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2022-23]\n32. A student fixes a white sheet of paper on a drawing board. He places a bar magnet 3\nin the centre and sprinkles some iron filings uniformly around the bar magnet. Then\nhe taps gently and observes that iron filings arrange themselves in a certain pattern.\n(a) Why do iron filings arrange themselves in a particular pattern?\n(b) Which physical quantity is indicated by the pattern of field lines around the\nbar magnet?\n(c) State any two properties of magnetic field lines.\nOR\nA compass needle is placed near a current carrying wire. State your observations for\nthe following cases and give reasons for the same in each case-\n(a) Magnitude of electric current in wire is increased.\n(b) The compass n",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n32. (a) When iron filings are placed in a magnetic field around a bar magnet, they 3\nbehave like tiny magnets. The magnetic force experienced by these tiny magnets\nmake them rotate and align themselves along the direction of field lines. (1 mark)\n(b)The physical property indicated by this arrangement is the magnetic field\nproduced by the bar magnet. (1 mark)\n(c) Magnetic field lines never intersect, magnetic field lines are closed curves.\n(1mark)\nOR\n(a) The deflection in the compass needle increases as Magnetic field of the current\ncarrying conductor is directly proportional to current flowing through it.\n(1.5marks)\n(b) The deflection in the needle decreases as the magnetic field is inversel",
+      "[INJSO 2011 — question paper]\n43. You are given two identical steel pieces A and B and only one of those is magnetized. In all the\nfollowing arrangements, there is attraction between A and B. Which of the following\narrangements helps us in identifying the magnet? HBCSE Homi Bhabha Centre for Science Education Tata Institute of Fundamental Research, Mumbai",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n20. Assertion: On freely suspending a current – carrying solenoid, it comes to rest in 1\nGeographical N-S direction.\nReason : One end of current carrying straight solenoid behaves as a North pole and\nthe other end as a South pole, just like a bar magnet."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 193946,
+      "in": 36,
+      "out": 35,
+      "rejects": 1,
+      "promptTokens": 27586,
+      "completionTokens": 9839
+    },
+    "critique": {
+      "calls": 43,
+      "ms": 307549,
+      "in": 35,
+      "out": 28,
+      "rejects": 7,
+      "promptTokens": 18467,
+      "completionTokens": 7420
+    },
+    "solver": {
+      "calls": 190,
+      "ms": 103694,
+      "in": 28,
+      "out": 26,
+      "rejects": 2,
+      "promptTokens": 30832,
+      "completionTokens": 1778
+    },
+    "form": {
+      "calls": 32,
+      "ms": 192519,
+      "in": 26,
+      "out": 11,
+      "rejects": 15,
+      "promptTokens": 27579,
+      "completionTokens": 4273
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 45,
+      "ms": 8812,
+      "in": 11,
+      "out": 9,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 37,
+      "ms": 411694,
+      "in": 18,
+      "out": 18,
+      "rejects": 0,
+      "promptTokens": 19492,
+      "completionTokens": 10301
+    }
+  },
+  "kept": 9,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 2,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 4,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a magnetic material?",
+      "ms": {
+        "draft": 4743,
+        "critique": 6256
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student suspends a bar magnet freely. What direction will the magnet come to rest in?",
+      "ms": {
+        "draft": 4743,
+        "critique": 6769
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Activity 4.2, why do iron filings stick more at the ends of a bar magnet?",
+      "ms": {
+        "draft": 4743,
+        "critique": 7098
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student finds a metal piece and suspects it is a magnet. What test can be performed to confirm?",
+      "ms": {
+        "draft": 4743,
+        "critique": 6258
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a magnet is broken into two pieces, what will happen to its poles?",
+      "ms": {
+        "draft": 4743,
+        "critique": 6397
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a non-magnetic material?",
+      "ms": {
+        "draft": 4743,
+        "critique": 6387,
+        "solver": 17168,
+        "form": 2380
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a magnetic material?",
+      "ms": {
+        "draft": 15592,
+        "critique": 8476,
+        "solver": 12701,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage say about the effect of non-magnetic materials on a magnet's influence?",
+      "ms": {
+        "draft": 15592,
+        "critique": 7434,
+        "solver": 1434,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Reshma observed that a steel ball in a maze moved when a magnet was moved under the table. What can we conclude about the magnet's influence?",
+      "ms": {
+        "draft": 15592,
+        "critique": 6956,
+        "solver": 2327,
+        "form": 2932
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In an experiment, two identical steel pieces A and B attract each other in all arrangements. What can we infer about their magnetic properties?",
+      "ms": {
+        "draft": 15592,
+        "critique": 7826,
+        "solver": 1619,
+        "form": 3179
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the purpose of the transparent cover in a magnetic compass?",
+      "ms": {
+        "draft": 15592,
+        "critique": 8991,
+        "solver": 1870,
+        "form": 3919
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bar magnet is suspended freely, in which direction will it rest?",
+      "ms": {
+        "draft": 13783,
+        "critique": 8148
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of a magnet?",
+      "ms": {
+        "draft": 13783,
+        "critique": 7312,
+        "solver": 1925,
+        "form": 3739
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the Earth is itself a magnet, can you guess the poles of Earth’s magnet by looking at the direction of the magnetic compass?",
+      "ms": {
+        "draft": 13783,
+        "critique": 7400
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Reshma bought three identical metal bars from the market. Out of these bars, two were magnets and one was just a piece of iron. How will she identify which two amongst the three could be magnets?",
+      "ms": {
+        "draft": 13783,
+        "critique": 8391,
+        "solver": 1661
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used for materials that are attracted towards a magnet?",
+      "ms": {
+        "draft": 4233,
+        "critique": 6348,
+        "solver": 14385,
+        "form": 3209
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment shown in Fig. 4.15, a bar magnet is rolled over a heap of steel U-clips. What is the most likely observation?",
+      "ms": {
+        "draft": 4233,
+        "critique": 6748,
+        "solver": 1435,
+        "form": 6885
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Reshma bought three identical metal bars from the market. Out of these bars, two were magnets and one was just a piece of iron. How can she identify which two could be magnets?",
+      "ms": {
+        "draft": 4233,
+        "critique": 6851,
+        "solver": 14105
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when the North pole of a bar magnet is brought close to the North pole of a compass needle?",
+      "ms": {
+        "draft": 10007,
+        "critique": 7369,
+        "solver": 1555,
+        "form": 2773
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a bar magnet is placed near a compass needle and a piece of cardboard is placed between them, what will happen to the compass needle?",
+      "ms": {
+        "draft": 10007,
+        "critique": 8966,
+        "solver": 1614,
+        "form": 3224
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In a science fair, a student uses two matchbox cars with magnets attached. When the cars are brought closer, what will happen if the like poles of the magnets are facing each other?",
+      "ms": {
+        "draft": 10007,
+        "critique": 8329,
+        "solver": 2497,
+        "form": 2726
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the function of the transparent cover in a magnetic compass?",
+      "ms": {
+        "draft": 10007,
+        "critique": 6860,
+        "solver": 1352,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is given two identical steel pieces, A and B, and only one of them is magnetized. When both are brought close to each other, there is attraction. What can the student conclude about the steel pieces?",
+      "ms": {
+        "draft": 10007,
+        "critique": 7743,
+        "solver": 2122,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a bar magnet is cut into two equal parts, what happens to the poles of each part?",
+      "ms": {
+        "draft": 14135,
+        "critique": 8182,
+        "solver": 2124,
+        "form": 3633
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when two like poles of magnets are brought close to each other?",
+      "ms": {
+        "draft": 4233,
+        "critique": 5766,
+        "solver": 13201,
+        "form": 3765
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when a bar magnet is broken into smaller pieces?",
+      "ms": {
+        "draft": 14135,
+        "critique": 6696,
+        "solver": 2062,
+        "form": 2798
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the device that helps in finding directions?",
+      "ms": {
+        "draft": 14135,
+        "critique": 6758,
+        "solver": 2136,
+        "form": 3182,
+        "translation": 43186
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the direction in which a freely suspended magnet rests?",
+      "ms": {
+        "draft": 4233,
+        "critique": 6307,
+        "solver": 13476,
+        "form": 3318,
+        "translation": 34243
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which materials are attracted towards a magnet?",
+      "ms": {
+        "draft": 14135,
+        "critique": 6607,
+        "solver": 2162,
+        "form": 2867,
+        "translation": 36831
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when the North pole of a bar magnet is brought near the North pole of a compass needle?",
+      "ms": {
+        "draft": 15592,
+        "critique": 7820,
+        "solver": 1081,
+        "form": 3522,
+        "translation": 50781
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the pattern of iron filings around a bar magnet indicate?",
+      "ms": {
+        "draft": 14135,
+        "critique": 7533,
+        "solver": 1901,
+        "form": 3679,
+        "translation": 38833
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, which of the following interactions is most likely to occur between the two magnets?",
+      "ms": {
+        "draft": 13783,
+        "critique": 8894,
+        "solver": 9584,
+        "form": 955,
+        "translation": 45415
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a freely suspended magnet always points in the north-south direction, which object is most likely to be a magnet?",
+      "ms": {
+        "draft": 14135,
+        "critique": 7655,
+        "solver": 1681,
+        "form": 2509,
+        "translation": 48718
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student places a bar magnet in a horizontal position and then brings a compass needle close to it. The compass needle does not deflect. What could be the reason for this?",
+      "ms": {
+        "draft": 10007,
+        "critique": 7600,
+        "solver": 1534,
+        "form": 0,
+        "translation": 58097
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the Earth is itself a magnet, which pole of the Earth’s magnet is located near the geographic North Pole?",
+      "ms": {
+        "draft": 4233,
+        "critique": 6560,
+        "solver": 14696,
+        "form": 3981,
+        "translation": 48989
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following materials are attracted towards a magnet?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is NOT a magnetic material?",
+      "reason": "option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "A student suspends a bar magnet freely. What direction will the magnet come to rest in?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In Activity 4.2, why do iron filings stick more at the ends of a bar magnet?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A student finds a metal piece and suspects it is a magnet. What test can be performed to confirm?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a magnet is broken into two pieces, what will happen to its poles?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a non-magnetic material?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a magnetic material?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the passage say about the effect of non-magnetic materials on a magnet's influence?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's statement about non-magnetic ma…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Reshma observed that a steel ball in a maze moved when a magnet was moved under the table. What can we conclude about the magnet's influence?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'steelBall'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In an experiment, two identical steel pieces A and B attract each other in all arrangements. What can we infer about their magnetic properties?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label attraction"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the purpose of the transparent cover in a magnetic compass?",
+      "reason": "figure: figure spec refused: spec.parts: compass has no label \"cover\" (it has needle, dial)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a bar magnet is suspended freely, in which direction will it rest?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of a magnet?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the Earth is itself a magnet, can you guess the poles of Earth’s magnet by looking at the direction of the magnetic compass?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Reshma bought three identical metal bars from the market. Out of these bars, two were magnets and one was just a piece of iron. How will she identify which two amongst the three could be magnets?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the term used for materials that are attracted towards a magnet?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment shown in Fig. 4.15, a bar magnet is rolled over a heap of steel U-clips. What is the most likely observation?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer, no reason needed for distractor error (not s…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Reshma bought three identical metal bars from the market. Out of these bars, two were magnets and one was just a piece of iron. How can she identify which two could be magnets?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens when the North pole of a bar magnet is brought close to the North pole of a compass needle?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Believes the needle rotates instead of moving away in a stra…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a bar magnet is placed near a compass needle and a piece of cardboard is placed between them, what will happen to the compass needle?",
+      "reason": "figure: figure spec refused: spec.parts.2.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'cardboard'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In a science fair, a student uses two matchbox cars with magnets attached. When the cars are brought closer, what will happen if the like poles of the magnets are facing each other?",
+      "reason": "figure: figure cannot be drawn in en: no en text for label repulsion"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the function of the transparent cover in a magnetic compass?",
+      "reason": "figure: figure spec refused: spec.parts: compass has no label \"cover\" (it has needle, dial)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student is given two identical steel pieces, A and B, and only one of them is magnetized. When both are brought close to each other, there is attraction. What can the student conclude about the steel pieces?",
+      "reason": "figure: figure spec refused: spec.parts.1.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'steelPiece'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a bar magnet is cut into two equal parts, what happens to the poles of each part?",
+      "reason": "figure: figure cannot be drawn in en: no en text for labels cut, original"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens when two like poles of magnets are brought close to each other?",
+      "reason": "near-duplicate of served question cmv48terx004xgnbak1ijaiw0 (cosine 0.946 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What happens when a bar magnet is broken into smaller pieces?",
+      "reason": "near-duplicate of served question cmvfs0idk00kfgpfhg9o3c3im (cosine 0.907 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

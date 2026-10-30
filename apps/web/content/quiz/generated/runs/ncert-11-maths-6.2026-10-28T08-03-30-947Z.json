@@ -1,0 +1,789 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T08:03:30.947Z",
+  "finishedAt": "2026-10-28T08:15:02.451Z",
+  "seconds": 692,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "kemh1",
+    "document": "ncert/11/mathematics/kemh106.pdf",
+    "classLevel": 11,
+    "subject": "Mathematics",
+    "chapter": "Chapter 6 — Permutations and Combinations",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[PRMO 2018 — question paper]\n26. What is the number of ways in which one can choose 60 unit squares from a 11 ⇥ 11\nchessboard such that no two chosen squares have a side in common?\nSPACE FOR ROUGH WORK\n22. एक पूणाӚक k को हम अ͚छा कह Ӓ गे अगर{1, 2, 3, . . . , 20} को हम उѠचत उपसमू֭Ӗ (proper subsets)\nमӒ џवभािजत कर सकते हӔ (ऐसे ўक एक सं͖या एक हҰ उपसमू֭ मӒ हो) ताўक हर उपसमू֭ मӒ आने\nवालҰ सं͖याओं का योग k हो। ўकतनी सं͖याएँ\n23. ऐसा सबसे बड़ा पूणाӚक n कौनसा है िजससे ўक\na 2 b 2\n+ +\nb c c a\n+ +\n29 31 29 31\nअ͚छұ ह Ӕ ?\nc 2\n≥ n(a + b + c)\na b\n+\n29 31\nसभी धनाͤमक वाःतџवक सं͖ याओं a, b, c के Ѡलए सच हो?\n24. अगर N अलग अलग आकार के िऽभुज (मतलब असमҋप िऽभुज) हӔ िजनके सभी कोण (ўडमी मӒ) पूणाӚक\nहӔ तो [N/100] का मान Թा होगा?\n25. मान लो ўक T सबसे छो",
+      "[PRMO 2017 — question paper]\n7. Find the number of positive integers n, such that n + n + 1 < 11.\n8 A pen costs 11 and a notebook costs 13. Find the number of ways in which a person\ncan spend exactly 1000 to buy pens and notebooks.\n9. There are five cities A, B, C, D, E on a certain island. Each city is connected to every\nother city by road. In how many ways can a person starting from city A come back to A\nafter visiting some cities without visiting a city more than once and without taking the\nsame road more than once? (The order in which he visits the cities also matters: e.g.,\nthe routes A ! B ! C ! A and A ! C ! B ! A are different.)",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2026-27]\n13. (A) 1 Total outcomes = 36 1\n4 Favourable outcomes = (1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3), (3, 1),\n(3, 2), (3, 3)\n9 1\nP (E) = 36 = 4",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n6. A) 11 9"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 298295,
+      "in": 44,
+      "out": 39,
+      "rejects": 5,
+      "promptTokens": 53961,
+      "completionTokens": 10061
+    },
+    "critique": {
+      "calls": 47,
+      "ms": 504186,
+      "in": 39,
+      "out": 31,
+      "rejects": 8,
+      "promptTokens": 22090,
+      "completionTokens": 8588
+    },
+    "solver": {
+      "calls": 207,
+      "ms": 165487,
+      "in": 31,
+      "out": 16,
+      "rejects": 15,
+      "promptTokens": 34693,
+      "completionTokens": 2047
+    },
+    "form": {
+      "calls": 2,
+      "ms": 9656,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 489,
+      "completionTokens": 125
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 34,
+      "ms": 10228,
+      "in": 13,
+      "out": 7,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 383915,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 16229,
+      "completionTokens": 7212
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 3
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 5,
+      "stem": "How many different signals can be generated using at least 2 flags from 5 different flags, arranged one below the other?",
+      "ms": {
+        "draft": 6678,
+        "critique": 13044
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many 3-letter words, with or without meaning, can be formed from the letters of the word 'NUMBER' without repeating any letters?",
+      "ms": {
+        "draft": 5271,
+        "critique": 10711,
+        "solver": 2655
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many different signals can be generated using 2 out of 5 flags of different colors, with one flag below the other?",
+      "ms": {
+        "draft": 5271,
+        "critique": 11077,
+        "solver": 1570
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many ways can you choose 60 unit squares from an 11 × 11 chessboard such that no two chosen squares share a side?",
+      "ms": {
+        "draft": 6678,
+        "critique": 13093,
+        "solver": 22318
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many ways can 60 unit squares be chosen from an 11 × 11 chessboard such that no two chosen squares have a side in common?",
+      "ms": {
+        "draft": 5271,
+        "critique": 13045
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many ways can the letters of the word INSTITUTE be rearranged if the letters I and T are considered the same?",
+      "ms": {
+        "draft": 6960,
+        "critique": 11249,
+        "solver": 2337
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many 3-digit numbers can be formed using the digits 0, 1, 2, 3, 4, 5 without repetition, excluding numbers where 0 is in the hundreds place?",
+      "ms": {
+        "draft": 6960,
+        "critique": 12478,
+        "solver": 3703
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many ways can the letters of the word DAUGHTER be arranged so that all vowels do not occur together?",
+      "ms": {
+        "draft": 6960,
+        "critique": 10606,
+        "solver": 3088,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many 4-digit numbers can be formed using the digits 1 to 9 without repetition?",
+      "ms": {
+        "draft": 6960,
+        "critique": 12323,
+        "solver": 20242
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many ways can 4 red, 3 yellow, and 2 green discs be arranged in a row if discs of the same color are indistinguishable?",
+      "ms": {
+        "draft": 6960,
+        "critique": 14693,
+        "solver": 17931,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many ways can a committee of 8 persons choose a chairman and a vice chairman if one person cannot hold more than one position?",
+      "ms": {
+        "draft": 6801,
+        "critique": 10029,
+        "solver": 23713
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the number of 3-digit numbers that can be formed using the digits 1 to 9 without repeating any digit?",
+      "ms": {
+        "draft": 6801,
+        "critique": 9758,
+        "solver": 26735
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the number of permutations of n different things taken r at a time?",
+      "ms": {
+        "draft": 7684,
+        "critique": 11843,
+        "solver": 16661,
+        "form": 5290
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many numbers greater than 1,000,000 can be formed using the digits 1, 2, 0, 2, 4, 2, 4?",
+      "ms": {
+        "draft": 7958,
+        "critique": 10768,
+        "solver": 3061
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many ways can 60 unit squares be chosen from an 11x11 chessboard such that no two chosen squares have a side in common?",
+      "ms": {
+        "draft": 8186,
+        "critique": 7365
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which mathematical concept was first treated as a self-contained topic in mathematics by the Jains?",
+      "ms": {
+        "draft": 6701,
+        "critique": 9684
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which mathematician provided the general formulae for permutations and combinations, as mentioned in the passage?",
+      "ms": {
+        "draft": 6701,
+        "critique": 8480,
+        "solver": 2475
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many combinations can be made out of 6 different tastes, taken one at a time, two at a time, etc., according to Sushruta?",
+      "ms": {
+        "draft": 6701,
+        "critique": 13570
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which mathematician, according to the passage, was the first to provide the general formulae for permutations and combinations?",
+      "ms": {
+        "draft": 6701,
+        "critique": 10430,
+        "solver": 2157
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person has to choose 60 unit squares from an 11 × 11 chessboard such that no two chosen squares have a side in common, how many ways can this be done?",
+      "ms": {
+        "draft": 6701,
+        "critique": 14573
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many different ways can the letters of the word 'AGAIN' be arranged?",
+      "ms": {
+        "draft": 6399,
+        "critique": 13049,
+        "solver": 1977
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many 7-digit numbers greater than 1000000 can be formed using the digits 1, 2, 0, 2, 4, 2, 4?",
+      "ms": {
+        "draft": 6399,
+        "critique": 9424,
+        "solver": 2150
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In how many ways can 5 girls and 3 boys be seated in a row so that no two boys are together?",
+      "ms": {
+        "draft": 6399,
+        "critique": 8757,
+        "solver": 3478
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many ways are there to choose 60 unit squares from an 11 × 11 chessboard such that no two chosen squares have a side in common?",
+      "ms": {
+        "draft": 6399,
+        "critique": 12744
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In how many ways can 4 people be seated in a row of 6 chairs?",
+      "ms": {
+        "draft": 7964,
+        "critique": 11535
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "How many 3-digit numbers can be formed by using the digits 1 to 9 if no digit is repeated?",
+      "ms": {
+        "draft": 7151,
+        "critique": 9427,
+        "solver": 13945
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If there are 4 different letters in the word ROSE and no repetition is allowed, how many 4-letter words can be formed?",
+      "ms": {
+        "draft": 6678,
+        "critique": 8077,
+        "solver": 2465,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many different signals can be made by using 2 flags out of 4 different flags, one below the other?",
+      "ms": {
+        "draft": 6678,
+        "critique": 8343,
+        "solver": 4152,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many 2-digit even numbers can be formed using the digits 1, 2, 3, 4, 5, if repetition is allowed?",
+      "ms": {
+        "draft": 6678,
+        "critique": 12591,
+        "solver": 3057,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many 3-digit numbers can be formed from the digits 1, 2, 3, 4 and 5 if repetition of the digits is not allowed?",
+      "ms": {
+        "draft": 5271,
+        "critique": 11283,
+        "solver": 1975,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How many different 4-letter codes can be formed using the first 10 letters of the English alphabet, if no letter can be repeated?",
+      "ms": {
+        "draft": 5271,
+        "critique": 13368,
+        "solver": 2526,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many different words can be formed using all the letters of the word 'AGAIN' where the letter 'A' appears twice?",
+      "ms": {
+        "draft": 7958,
+        "critique": 12601,
+        "solver": 3111,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the total number of ways to choose a pant and a shirt if there are 3 pants and 2 shirts available?",
+      "ms": {
+        "draft": 6678,
+        "critique": 7292,
+        "solver": 20076,
+        "form": 0,
+        "translation": 53941
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If C = C, what can be said about the values of r and n?",
+      "ms": {
+        "draft": 7684,
+        "critique": 13360,
+        "solver": 2723,
+        "form": 5565,
+        "translation": 46803
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the value of 7! - 5!?",
+      "ms": {
+        "draft": 5271,
+        "critique": 12688,
+        "solver": 2854,
+        "form": 0,
+        "translation": 36958
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many ways can 3 books be selected from a shelf of 5 books?",
+      "ms": {
+        "draft": 7964,
+        "critique": 10755,
+        "solver": 2038,
+        "form": 0,
+        "translation": 68050
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "How many ways can 6 people be seated around a circular table if 2 of them must sit together?",
+      "ms": {
+        "draft": 7964,
+        "critique": 10291,
+        "solver": 3139,
+        "form": 1,
+        "translation": 76838
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In how many ways can the letters of the word 'ASSASSINATION' be arranged so that all the S’s are together?",
+      "ms": {
+        "draft": 6399,
+        "critique": 12831,
+        "solver": 3304,
+        "form": 1,
+        "translation": 50973
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In how many ways can a committee of 8 persons choose a chairman and a vice chairman if one person cannot hold more than one position?",
+      "ms": {
+        "draft": 7151,
+        "critique": 9398,
+        "solver": 4409,
+        "form": 0,
+        "translation": 45016
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "How many ways can the letters of the word ROOT be rearranged if the two O's are considered the same?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "How many 4-digit numbers can be formed using the digits 1, 2, 3, 4, 5 without repeating any digit, and how many of these will be even?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "How many 4-digit numbers can be formed using the digits 1, 2, 3, 4, 5 without repeating any digit, and how many of these will be even?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "How many words, with or without meaning, can be formed using all the letters of the word EQUATION, using each letter exactly once?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the value of C when r = 0?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "How many different signals can be generated using at least 2 flags from 5 different flags, arranged one below the other?",
+      "reason": "the critic finds option 3 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "How many 3-letter words, with or without meaning, can be formed from the letters of the word 'NUMBER' without repeating any letters?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many different signals can be generated using 2 out of 5 flags of different colors, with one flag below the other?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "How many ways can you choose 60 unit squares from an 11 × 11 chessboard such that no two chosen squares share a side?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "How many ways can 60 unit squares be chosen from an 11 × 11 chessboard such that no two chosen squares have a side in common?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many ways can the letters of the word INSTITUTE be rearranged if the letters I and T are considered the same?",
+      "reason": "the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many 3-digit numbers can be formed using the digits 0, 1, 2, 3, 4, 5 without repetition, excluding numbers where 0 is in the hundreds place?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "How many ways can the letters of the word DAUGHTER be arranged so that all vowels do not occur together?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many 4-digit numbers can be formed using the digits 1 to 9 without repetition?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "How many ways can 4 red, 3 yellow, and 2 green discs be arranged in a row if discs of the same color are indistinguishable?",
+      "reason": "options are in more than one unit (none, !)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "How many ways can a committee of 8 persons choose a chairman and a vice chairman if one person cannot hold more than one position?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the number of 3-digit numbers that can be formed using the digits 1 to 9 without repeating any digit?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula for the number of permutations of n different things taken r at a time?",
+      "reason": "options 1 and 2 are the same (\"P = C + r!\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "How many numbers greater than 1,000,000 can be formed using the digits 1, 2, 0, 2, 4, 2, 4?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "How many ways can 60 unit squares be chosen from an 11x11 chessboard such that no two chosen squares have a side in common?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which mathematical concept was first treated as a self-contained topic in mathematics by the Jains?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which mathematician provided the general formulae for permutations and combinations, as mentioned in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How many combinations can be made out of 6 different tastes, taken one at a time, two at a time, etc., according to Sushruta?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which mathematician, according to the passage, was the first to provide the general formulae for permutations and combinations?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a person has to choose 60 unit squares from an 11 × 11 chessboard such that no two chosen squares have a side in common, how many ways can this be done?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "How many different ways can the letters of the word 'AGAIN' be arranged?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "How many 7-digit numbers greater than 1000000 can be formed using the digits 1, 2, 0, 2, 4, 2, 4?",
+      "reason": "the solver picked option 2 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In how many ways can 5 girls and 3 boys be seated in a row so that no two boys are together?",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "How many ways are there to choose 60 unit squares from an 11 × 11 chessboard such that no two chosen squares have a side in common?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In how many ways can 4 people be seated in a row of 6 chairs?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "How many 3-digit numbers can be formed by using the digits 1 to 9 if no digit is repeated?",
+      "reason": "distractors 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "If there are 4 different letters in the word ROSE and no repetition is allowed, how many 4-letter words can be formed?",
+      "reason": "near-duplicate of served question cmvkec3kd0k6vgpfhrwn40oci (cosine 0.940 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "How many different signals can be made by using 2 flags out of 4 different flags, one below the other?",
+      "reason": "near-duplicate of served question cmvkec3kb0k6pgpfhhb7spi4v (cosine 0.942 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "How many 2-digit even numbers can be formed using the digits 1, 2, 3, 4, 5, if repetition is allowed?",
+      "reason": "near-duplicate of served question cmvkec3ke0k71gpfhkp9jvdax (cosine 0.958 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "How many 3-digit numbers can be formed from the digits 1, 2, 3, 4 and 5 if repetition of the digits is not allowed?",
+      "reason": "near-duplicate of served question cmsmo5qbs0a1oy2vyxbxa1xuu (cosine 0.942 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "How many different 4-letter codes can be formed using the first 10 letters of the English alphabet, if no letter can be repeated?",
+      "reason": "near-duplicate of served question cmvod63d00661gp21b7sj614h (cosine 0.964 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "How many different words can be formed using all the letters of the word 'AGAIN' where the letter 'A' appears twice?",
+      "reason": "near-duplicate of served question cmvod63cw065pgp21ui4o8paz (cosine 0.957 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

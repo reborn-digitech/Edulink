@@ -1,0 +1,847 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T03:21:32.504Z",
+  "finishedAt": "2026-10-29T03:31:54.561Z",
+  "seconds": 622,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo105.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 5 — Molecular Basis of Inheritance",
+    "edition": "Reprint 2026-27",
+    "chunks": 35,
+    "groups": 11
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, sample question paper, 2026-27]\n25. How can a single gene defect caused by the mutation result in Phenylketonuria 3\n(PKU)? Explain the molecular mechanism underlying pleiotropy.",
+      "[CBSE Class XII Biology, sample question paper, 2022-23]\n29. and 30 are case based questions. Each question has subparts with internal choice in one\nsubpart.\n29 Study the Pedigree chart given below and answer the questions that follow: 4\n(a) On the basis of the inheritance pattern exhibited in this pedigree chart, what\nconclusion can you draw about the pattern of inheritance?\n(b) If the female is homozygous for the affected trait in this pedigree chart, then\nwhat percentage of her sons will be affected ?\n(c) Give the genotype of offsprings 1,2,3 and 4 in III generation.\nOR\n(c) In this type of inheritance pattern, out of male and female children which one\nhas less probability of receiving the trait from the parents. Give a reason.",
+      "[NSEB 2015 — question paper]\n52. Study the following pedigree. The transmission of the trait indicates:\na) X-linked inheritance.\nb) Autosomal dominance.\nc) Autosomal recessive type.\nd) Mitochondrial inheritance.",
+      "[INBO 2012 — question paper]\n1. (1 point) According to the current concept of Central Dogma of molecular\nbiology, information transfer from proteins to nucleic acids does not occur.\nWhich of the following could be considered a violation of the Central Dogma?\nI. Synthesis of DNA on an RNA template by reverse transcriptase.\nII. Gene transcription being activated by a protein binding to regulatory\nsequences.\nIII. Editing of RNA transcripts by the insertion and deletion of\nribonucleotides.\nIV. A polynucleotide polymerase specifically synthesizing a gene\nencoding itself from free deoxyribonucleotides.\na. I\nb. IV\nc. II and III\nd. None of the above"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 11,
+      "ms": 206546,
+      "in": 45,
+      "out": 43,
+      "rejects": 2,
+      "promptTokens": 44770,
+      "completionTokens": 12255
+    },
+    "critique": {
+      "calls": 52,
+      "ms": 323587,
+      "in": 43,
+      "out": 39,
+      "rejects": 4,
+      "promptTokens": 25158,
+      "completionTokens": 9100
+    },
+    "solver": {
+      "calls": 255,
+      "ms": 118095,
+      "in": 39,
+      "out": 35,
+      "rejects": 4,
+      "promptTokens": 46292,
+      "completionTokens": 2619
+    },
+    "form": {
+      "calls": 12,
+      "ms": 55916,
+      "in": 35,
+      "out": 11,
+      "rejects": 24,
+      "promptTokens": 7127,
+      "completionTokens": 1605
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 48,
+      "ms": 8789,
+      "in": 11,
+      "out": 10,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 41,
+      "ms": 462960,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 27039,
+      "completionTokens": 14218
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 3,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 4,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the structure of DNA?",
+      "ms": {
+        "draft": 4172,
+        "critique": 6554,
+        "solver": 1217,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a DNA strand has a sequence of adenine, thymine, cytosine, and guanine, what will be the sequence of its complementary strand?",
+      "ms": {
+        "draft": 4172,
+        "critique": 6846,
+        "solver": 1967,
+        "form": 2759
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the structure of a polynucleotide chain?",
+      "ms": {
+        "draft": 4172,
+        "critique": 7195,
+        "solver": 1925,
+        "form": 2483
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the main function of DNA?",
+      "ms": {
+        "draft": 4172,
+        "critique": 5792,
+        "solver": 1001,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a DNA strand has a sequence of adenine, thymine, guanine, and cytosine, what will be the sequence of the mRNA transcribed from it?",
+      "ms": {
+        "draft": 4172,
+        "critique": 7037,
+        "solver": 1663,
+        "form": 4722
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following correctly describes the arrangement of the two DNA strands in the double-helix structure?",
+      "ms": {
+        "draft": 13928,
+        "critique": 8601,
+        "solver": 1383,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a DNA segment has 1000 base pairs, what would be the approximate length of this DNA segment?",
+      "ms": {
+        "draft": 13928,
+        "critique": 8108
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the function of histones in eukaryotic cells?",
+      "ms": {
+        "draft": 13928,
+        "critique": 5525,
+        "solver": 1081,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the main reason the DNA in eukaryotes is packaged into nucleosomes?",
+      "ms": {
+        "draft": 13928,
+        "critique": 6617,
+        "solver": 1858,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following correctly describes the base pairing in DNA?",
+      "ms": {
+        "draft": 13928,
+        "critique": 5062,
+        "solver": 1273,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a genetic experiment, a scientist finds that the trait is passed from an affected mother to her sons but not to her daughters. Which type of inheritance pattern is most likely responsible for this?",
+      "ms": {
+        "draft": 13928,
+        "critique": 5662,
+        "solver": 1262,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best explains why DNA is considered a more stable genetic material than RNA?",
+      "ms": {
+        "draft": 4703,
+        "critique": 7679,
+        "solver": 1898,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a virus has an RNA genome, which of the following is most likely to be true about its rate of evolution?",
+      "ms": {
+        "draft": 4703,
+        "critique": 6111,
+        "solver": 1377,
+        "form": 3149
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best supports the idea that RNA was the first genetic material?",
+      "ms": {
+        "draft": 4703,
+        "critique": 5884,
+        "solver": 1531,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what was the conclusion of Avery, MacLeod, and McCarty's experiment?",
+      "ms": {
+        "draft": 4703,
+        "critique": 6025,
+        "solver": 1305,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the Meselson and Stahl experiment, if E. coli was grown in a medium with normal nitrogen (N) after being grown in a medium with heavy nitrogen (N), what would be the proportion of DNA molecules with intermediate density after two generations?",
+      "ms": {
+        "draft": 3677,
+        "critique": 5823,
+        "solver": 1013,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key reason why DNA is the preferred genetic material for storing genetic information?",
+      "ms": {
+        "draft": 4703,
+        "critique": 7565,
+        "solver": 12048,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is the replication of DNA in eukaryotes highly coordinated with the cell cycle?",
+      "ms": {
+        "draft": 3677,
+        "critique": 6658,
+        "solver": 1354
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct sequence of RNA transcribed from the DNA strand 3 -ATGCATGCATGCATGCATGCATGC-5?",
+      "ms": {
+        "draft": 10523,
+        "critique": 7611,
+        "solver": 1472,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If a double-stranded DNA has 20% cytosine, what is the percentage of adenine?",
+      "ms": {
+        "draft": 4030,
+        "critique": 5957
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sequence of one strand of DNA is 5'-ATGCATGCATGCATGCATGCATGCATGC-3', what is the sequence of the complementary strand in 5'→3' direction?",
+      "ms": {
+        "draft": 4030,
+        "critique": 6308,
+        "solver": 1338
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What property of the DNA double helix helped Watson and Crick propose the semi-conservative mode of DNA replication?",
+      "ms": {
+        "draft": 4030,
+        "critique": 7232
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a nitrogenous base?",
+      "ms": {
+        "draft": 4030,
+        "critique": 7005,
+        "solver": 10501,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In DNA fingerprinting, what is the key factor that ensures that the banding pattern is unique for each individual, except for identical twins?",
+      "ms": {
+        "draft": 4529,
+        "critique": 6482,
+        "solver": 1847,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a mutation occurs in a noncoding region of DNA, how is this likely to affect the process of DNA fingerprinting?",
+      "ms": {
+        "draft": 4529,
+        "critique": 6248
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the Central Dogma, which of the following could be considered a violation?",
+      "ms": {
+        "draft": 4030,
+        "critique": 7039,
+        "solver": 14207,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How does the process of DNA fingerprinting work, based on the passage?",
+      "ms": {
+        "draft": 4529,
+        "critique": 6365,
+        "solver": 1918,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the role of repetitive DNA sequences in DNA fingerprinting, as described in the passage?",
+      "ms": {
+        "draft": 4601,
+        "critique": 6334,
+        "solver": 2330,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has a genetic disorder caused by a single gene defect, what could be the molecular mechanism behind this?",
+      "ms": {
+        "draft": 4601,
+        "critique": 6994,
+        "solver": 1691,
+        "form": 4066
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements best explains the significance of SNPs in the human genome, as described in the passage?",
+      "ms": {
+        "draft": 4601,
+        "critique": 6587,
+        "solver": 1651,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a feature of the human genome as described in the passage?",
+      "ms": {
+        "draft": 4601,
+        "critique": 7831,
+        "solver": 16580
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when one or two bases are inserted or deleted in a DNA sequence?",
+      "ms": {
+        "draft": 4599,
+        "critique": 4582,
+        "solver": 4798
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe a variation in DNA sequences that occurs in more than 1% of a population?",
+      "ms": {
+        "draft": 4529,
+        "critique": 6262,
+        "solver": 1506,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the function of RNA polymerase III in eukaryotic transcription?",
+      "ms": {
+        "draft": 4333,
+        "critique": 8653,
+        "solver": 10745,
+        "form": 1613,
+        "translation": 43540
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for a cluster of genes regulated by a common promoter and regulatory genes in bacteria?",
+      "ms": {
+        "draft": 4057,
+        "critique": 5497,
+        "solver": 1605,
+        "form": 2609,
+        "translation": 34369
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which gene in the lac operon codes for the enzyme that breaks down lactose into glucose and galactose?",
+      "ms": {
+        "draft": 4057,
+        "critique": 5587,
+        "solver": 951,
+        "form": 2063,
+        "translation": 29560
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the role of DNA-dependent DNA polymerase in DNA replication?",
+      "ms": {
+        "draft": 3677,
+        "critique": 6285,
+        "solver": 12069,
+        "form": 3180,
+        "translation": 47807
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the primary purpose of using a VNTR probe in DNA fingerprinting?",
+      "ms": {
+        "draft": 4529,
+        "critique": 6630,
+        "solver": 1526,
+        "form": 0,
+        "translation": 37469
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the Meselson and Stahl experiment, why was it necessary to use cesium chloride (CsCl) density gradients to separate DNA molecules?",
+      "ms": {
+        "draft": 3677,
+        "critique": 6187,
+        "solver": 1377,
+        "form": 0,
+        "translation": 53264
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A forensic scientist finds a DNA sample at a crime scene and compares it to two suspects, A and B. The DNA fingerprint of the crime scene sample matches with suspect B but not with suspect A. What can be concluded about the suspects?",
+      "ms": {
+        "draft": 4529,
+        "critique": 5252,
+        "solver": 1324,
+        "form": 0,
+        "translation": 54282
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a gene defect leads to Phenylketonuria (PKU), what is the molecular mechanism behind this?",
+      "ms": {
+        "draft": 4030,
+        "critique": 7364,
+        "solver": 12670,
+        "form": 0,
+        "translation": 42397
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a genetic disorder is caused by a single gene mutation and results in multiple symptoms, what is the most likely explanation for this phenomenon?",
+      "ms": {
+        "draft": 4703,
+        "critique": 5652,
+        "solver": 1892,
+        "form": 0,
+        "translation": 98836
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a DNA molecule has a sequence of A-T-G-C on one strand, what will be the sequence on the complementary strand and how does this support the concept of genetic inheritance?",
+      "ms": {
+        "draft": 4172,
+        "critique": 6213,
+        "solver": 16318,
+        "form": 4055,
+        "translation": 68785
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In the Meselson and Stahl experiment, what was the significance of using NH Cl as a nitrogen source?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the structure of DNA?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"It is a single-stranded molecule with no base pairing\" / \"It is a single-stranded molecule with random base pairing\"); options 0 and 3 say the same thing (\"It is a single-stranded molecule with no base pairing\" / \"It is a double-stranded molecule with no base pairing\"); options 1 and 3 say the same thing (\"It is a double-stranded molecule with complementary base pairing\" / \"It is a double-stranded molecule with no base pairing\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a DNA strand has a sequence of adenine, thymine, cytosine, and guanine, what will be the sequence of its complementary strand?",
+      "reason": "options 0 and 1 say the same thing (\"Thymine, adenine, guanine, cytosine\" / \"Adenine, thymine, cytosine, guanine\"); options 0 and 2 say the same thing (\"Thymine, adenine, guanine, cytosine\" / \"Cytosine, guanine, thymine, adenine\"); options 0 and 3 say the same thing (\"Thymine, adenine, guanine, cytosine\" / \"Guanine, cytosine, thymine, adenine\"); options 1 and 2 say the same thing (\"Adenine, thymine, cytosine, guanine\" / \"Cytosine, guanine, thymine, adenine\"); options 1 and 3 say the same thing (\"Adenine, thymine, cytosine, guanine\" / \"Guanine, cytosine, thymine, adenine\"); options 2 and 3 say the same thing (\"Cytosine, guanine, thymine, adenine\" / \"Guanine, cytosine, thymine, adenine\"); option 0 repeats the stem's wording (\"Thymine, adenine, guanine, cytosine\"); option 1 repeats the stem's wording (\"Adenine, thymine, cytosine, guanine\"); option 2 repeats the stem's wording (\"Cytosine, guanine, thymine, adenine\"); option 3 repeats the stem's wording (\"Guanine, cytosine, thymine, adenine\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the structure of a polynucleotide chain?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"It refers to a single nucleotide instead of a chain of nucle…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the main function of DNA?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a DNA strand has a sequence of adenine, thymine, guanine, and cytosine, what will be the sequence of the mRNA transcribed from it?",
+      "reason": "options 0 and 1 say the same thing (\"Thymine, adenine, cytosine, guanine\" / \"Adenine, thymine, guanine, cytosine\"); options 0 and 3 say the same thing (\"Thymine, adenine, cytosine, guanine\" / \"Guanine, cytosine, thymine, adenine\"); options 1 and 3 say the same thing (\"Adenine, thymine, guanine, cytosine\" / \"Guanine, cytosine, thymine, adenine\"); option 0 repeats the stem's wording (\"Thymine, adenine, cytosine, guanine\"); option 1 repeats the stem's wording (\"Adenine, thymine, guanine, cytosine\"); option 3 repeats the stem's wording (\"Guanine, cytosine, thymine, adenine\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following correctly describes the arrangement of the two DNA strands in the double-helix structure?",
+      "reason": "options 0 and 2 say the same thing (\"They are parallel in direction and held together by hydrogen bonds.\" / \"They are parallel in direction and held together by covalent bonds.\"); options 1 and 3 say the same thing (\"They have opposite polarity and are held together by hydrogen bonds.\" / \"They have opposite polarity and are held together by covalent bonds.\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a DNA segment has 1000 base pairs, what would be the approximate length of this DNA segment?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the function of histones in eukaryotic cells?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the main reason the DNA in eukaryotes is packaged into nucleosomes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following correctly describes the base pairing in DNA?",
+      "reason": "options 0 and 1 say the same thing (\"Adenine pairs with cytosine, and thymine pairs with guanine.\" / \"Adenine pairs with thymine, and cytosine pairs with guanine.\"); options 0 and 2 say the same thing (\"Adenine pairs with cytosine, and thymine pairs with guanine.\" / \"Adenine pairs with guanine, and thymine pairs with cytosine.\"); options 1 and 2 say the same thing (\"Adenine pairs with thymine, and cytosine pairs with guanine.\" / \"Adenine pairs with guanine, and thymine pairs with cytosine.\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a genetic experiment, a scientist finds that the trait is passed from an affected mother to her sons but not to her daughters. Which type of inheritance pattern is most likely responsible for this?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.north: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best explains why DNA is considered a more stable genetic material than RNA?",
+      "reason": "options 0 and 1 say the same thing (\"RNA has a 2-OH group which makes it more stable\" / \"DNA has a 2-OH group which makes it more stable\"); options 2 and 3 say the same thing (\"DNA is more reactive and degradable than RNA\" / \"RNA is more reactive and degradable than DNA\"); distractor 2's reason is not a one-line misconception (\"Incorrectly states that DNA is more reactive and degradable …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a virus has an RNA genome, which of the following is most likely to be true about its rate of evolution?",
+      "reason": "options 0 and 2 say the same thing (\"It will evolve more slowly than viruses with DNA genomes\" / \"It will evolve more rapidly than viruses with DNA genomes\"); distractor 0's reason is not a one-line misconception (\"Incorrectly states that RNA viruses evolve more slowly, whic…\"); distractor 1's reason is not a one-line misconception (\"Incorrectly assumes that RNA cannot express genetic informat…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly states that RNA is more stable, which is the opp…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following best supports the idea that RNA was the first genetic material?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Incorrectly claims that RNA is more stable than DNA, which t…\"); distractor 2's reason is not a one-line misconception (\"Incorrectly suggests that DNA evolved from RNA for the sake …\"); distractor 3's reason is not a one-line misconception (\"Incorrectly states that only RNA can replicate itself, which…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what was the conclusion of Avery, MacLeod, and McCarty's experiment?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Incorrectly states that proteins are the genetic material, w…\"); distractor 2's reason is not a one-line misconception (\"Incorrectly states that RNA is the genetic material, which t…\"); distractor 3's reason is not a one-line misconception (\"Incorrectly states that both DNA and RNA are the genetic mat…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the Meselson and Stahl experiment, if E. coli was grown in a medium with normal nitrogen (N) after being grown in a medium with heavy nitrogen (N), what would be the proportion of DNA molecules with intermediate density after two generations?",
+      "reason": "options 1 and 3 say the same thing (\"75% hybrid and 25% light DNA\" / \"25% hybrid and 75% light DNA\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a key reason why DNA is the preferred genetic material for storing genetic information?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Incorrectly states that DNA can directly synthesize proteins…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "According to the passage, why is the replication of DNA in eukaryotes highly coordinated with the cell cycle?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the correct sequence of RNA transcribed from the DNA strand 3 -ATGCATGCATGCATGCATGCATGC-5?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'text'"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "According to the passage, what is the purpose of DNA fingerprinting?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "If a double-stranded DNA has 20% cytosine, what is the percentage of adenine?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the sequence of one strand of DNA is 5'-ATGCATGCATGCATGCATGCATGCATGC-3', what is the sequence of the complementary strand in 5'→3' direction?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What property of the DNA double helix helped Watson and Crick propose the semi-conservative mode of DNA replication?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a nitrogenous base?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In DNA fingerprinting, what is the key factor that ensures that the banding pattern is unique for each individual, except for identical twins?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes the number of nucleotides determines uni…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a mutation occurs in a noncoding region of DNA, how is this likely to affect the process of DNA fingerprinting?",
+      "reason": "the critic finds option 2 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the Central Dogma, which of the following could be considered a violation?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "How does the process of DNA fingerprinting work, based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"It uses the sequence of DNA to create a unique pattern\" / \"It uses the structure of DNA to create a unique pattern\"); options 0 and 3 say the same thing (\"It uses the sequence of DNA to create a unique pattern\" / \"It uses the type of DNA to create a unique pattern\"); options 2 and 3 say the same thing (\"It uses the structure of DNA to create a unique pattern\" / \"It uses the type of DNA to create a unique pattern\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the role of repetitive DNA sequences in DNA fingerprinting, as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the function of repetitive DNA sequences as c…\"); distractor 2's reason is not a one-line misconception (\"Confuses the role of repetitive DNA sequences in determining…\"); distractor 3's reason is not a one-line misconception (\"Believes that repetitive DNA sequences are used to identify …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person has a genetic disorder caused by a single gene defect, what could be the molecular mechanism behind this?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misinterprets the concept of a single gene defect as causing…\"); distractor 2's reason is not a one-line misconception (\"Believes that a single gene defect causes the loss of all ge…\"); distractor 3's reason is not a one-line misconception (\"Assumes that a gene defect makes the entire genome non-repli…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements best explains the significance of SNPs in the human genome, as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misinterprets the role of SNPs as identifying the number of …\"); distractor 2's reason is not a one-line misconception (\"Believes that SNPs are responsible for the majority of prote…\"); distractor 3's reason is not a one-line misconception (\"Assumes that SNPs are the primary cause of genetic variation…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a feature of the human genome as described in the passage?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What happens when one or two bases are inserted or deleted in a DNA sequence?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term used to describe a variation in DNA sequences that occurs in more than 1% of a population?",
+      "reason": "near-duplicate of served question cmvlpbryh0nkigpfhdhdx0keh (cosine 0.928 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,600 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T15:31:24.552Z",
+  "finishedAt": "2026-10-25T15:46:42.656Z",
+  "seconds": 918,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm107.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 7 — Raksha Bandhan",
+    "edition": "Reprint 2026-27",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n11. ( c) √3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n13. (𝑐) 𝜋:2",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n8. (d) RHS",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 290243,
+      "in": 33,
+      "out": 28,
+      "rejects": 5,
+      "promptTokens": 26250,
+      "completionTokens": 8288
+    },
+    "critique": {
+      "calls": 41,
+      "ms": 616150,
+      "in": 28,
+      "out": 19,
+      "rejects": 9,
+      "promptTokens": 19040,
+      "completionTokens": 7534
+    },
+    "solver": {
+      "calls": 192,
+      "ms": 250719,
+      "in": 19,
+      "out": 10,
+      "rejects": 9,
+      "promptTokens": 48112,
+      "completionTokens": 2457
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 8,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 8177,
+      "in": 8,
+      "out": 6,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 352757,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 11490,
+      "completionTokens": 4801
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "How many threads are needed to make 5 Rakhis if each Rakhi uses 2 threads?",
+      "ms": {
+        "draft": 7281,
+        "critique": 11679,
+        "solver": 25056
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many beads are needed to make 5 Rakhis if each Rakhi uses 4 beads?",
+      "ms": {
+        "draft": 7281,
+        "critique": 11036,
+        "solver": 28441
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If there are 30 flowers, 30 threads, and 30 beads, how many Rakhis can be made if each Rakhi needs 1 flower, 2 threads, and 4 beads?",
+      "ms": {
+        "draft": 7281,
+        "critique": 17265,
+        "solver": 27419
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If 18 laddoos are shared equally among 9 people, how many laddoos does each person get?",
+      "ms": {
+        "draft": 7281,
+        "critique": 13336,
+        "solver": 35783
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of skip jumping?",
+      "ms": {
+        "draft": 9003,
+        "critique": 12938
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Gopal skip jumps by 5, what number will he land on after 4 jumps?",
+      "ms": {
+        "draft": 9003,
+        "critique": 12369
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If a flower is placed on 12 and you can only jump with equal steps, what is the smallest number of jumps you can use to reach it?",
+      "ms": {
+        "draft": 9003,
+        "critique": 17413
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 5 spiders have 40 legs, how many spiders would have 32 legs?",
+      "ms": {
+        "draft": 9003,
+        "critique": 14900,
+        "solver": 40578
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many wheels does a 3-wheeled auto rickshaw have?",
+      "ms": {
+        "draft": 24611,
+        "critique": 19051,
+        "solver": 28662
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 18 auto rickshaws have 3 wheels each, how many wheels are there in total?",
+      "ms": {
+        "draft": 24611,
+        "critique": 21508,
+        "solver": 28564
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If a wall-hanging costs 42 rupees, how much do two wall-hangings cost?",
+      "ms": {
+        "draft": 24611,
+        "critique": 11504
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Dhara is skip jumping by 3. What number will she land on after 5 jumps?",
+      "ms": {
+        "draft": 14862,
+        "critique": 18552
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Toto does not take jumps of the same size and still reaches 18 in 6 jumps. How did Toto jump?",
+      "ms": {
+        "draft": 14862,
+        "critique": 18732
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Gopal notes down the jumps but misses the first few numbers. He writes 27, 30, 33, 36. By what number was Dhara skip jumping?",
+      "ms": {
+        "draft": 14862,
+        "critique": 18816,
+        "solver": 39266,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 10 wheels need 50 spokes, how many spokes will 30 wheels need?",
+      "ms": {
+        "draft": 14862,
+        "critique": 19930
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A spider has 8 legs. 23 spiders will have how many legs?",
+      "ms": {
+        "draft": 14862,
+        "critique": 23236,
+        "solver": 40320
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 18 laddoos are shared equally among 9 friends, how many laddoos does each friend get?",
+      "ms": {
+        "draft": 8634,
+        "critique": 17772
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If 30 flowers, 30 threads, and 30 beads are available, how many Rakhis can be made if each Rakhi requires 1 flower, 2 threads, and 4 beads?",
+      "ms": {
+        "draft": 8634,
+        "critique": 15260
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total number of laddoos if there are 3 groups of 3 laddoos each?",
+      "ms": {
+        "draft": 8634,
+        "critique": 14858,
+        "solver": 31061,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If 24 jalebis are to be distributed equally among 9 family members, how many jalebis will each person get, and how many will be left over?",
+      "ms": {
+        "draft": 8634,
+        "critique": 9441,
+        "solver": 1583
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If 20 kaju katlis are shared equally among 5 people, how many kaju katlis does each person get?",
+      "ms": {
+        "draft": 7281,
+        "critique": 9921,
+        "solver": 28715,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many wheels are there in 18 auto rickshaws if each has 3 wheels?",
+      "ms": {
+        "draft": 25124,
+        "critique": 16493,
+        "solver": 3540,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the pattern in the numbers 3, 6, 9, ...?",
+      "ms": {
+        "draft": 9003,
+        "critique": 16415,
+        "solver": 25147,
+        "form": 0,
+        "translation": 61759
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "How many wheels are there in 34 auto rickshaws if each has 3 wheels?",
+      "ms": {
+        "draft": 25124,
+        "critique": 13944,
+        "solver": 38137,
+        "form": 0,
+        "translation": 50707
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "If 36 wheels are in a garage and each auto rickshaw has 3 wheels, how many auto rickshaws are there?",
+      "ms": {
+        "draft": 25124,
+        "critique": 13836,
+        "solver": 3799,
+        "form": 0,
+        "translation": 58241
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many flowers are needed to make 5 Rakhis if each Rakhi uses 1 flower?",
+      "ms": {
+        "draft": 7281,
+        "critique": 9254,
+        "solver": 2004,
+        "form": 0,
+        "translation": 55027
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "If each Rakhi requires 1 flower, 2 threads, and 4 beads, how many beads are needed for 5 Rakhis?",
+      "ms": {
+        "draft": 8634,
+        "critique": 14842,
+        "solver": 3096,
+        "form": 0,
+        "translation": 53410
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a spider has 8 legs and 3 spiders have 24 legs, how many legs would 23 spiders have?",
+      "ms": {
+        "draft": 9003,
+        "critique": 13928,
+        "solver": 2631,
+        "form": 0,
+        "translation": 63691
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "If 34 auto rickshaws have 3 wheels each, how many wheels are there in total?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Preeti buys 5 cups of rabdi, each costing 75 rupees. How much does she pay in total?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many threads are needed to make 5 Rakhis if each Rakhi uses 2 threads?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "How many beads are needed to make 5 Rakhis if each Rakhi uses 4 beads?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If there are 30 flowers, 30 threads, and 30 beads, how many Rakhis can be made if each Rakhi needs 1 flower, 2 threads, and 4 beads?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "If 18 laddoos are shared equally among 9 people, how many laddoos does each person get?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of skip jumping?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If Gopal skip jumps by 5, what number will he land on after 4 jumps?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "If a flower is placed on 12 and you can only jump with equal steps, what is the smallest number of jumps you can use to reach it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 5 spiders have 40 legs, how many spiders would have 32 legs?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "How many wheels does a 3-wheeled auto rickshaw have?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If 18 auto rickshaws have 3 wheels each, how many wheels are there in total?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "If a wall-hanging costs 42 rupees, how much do two wall-hangings cost?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the total number of legs in a line of 55 ants if one ant has 6 legs?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "If Micky, the mouse, sees 48 legs of cows, how many cows are there?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "If Karry, the crow, sees 24 horns of cows, how many cows are there?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Dhara is skip jumping by 3. What number will she land on after 5 jumps?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "Toto does not take jumps of the same size and still reaches 18 in 6 jumps. How did Toto jump?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound; option 2 is not wrong; option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Gopal notes down the jumps but misses the first few numbers. He writes 27, 30, 33, 36. By what number was Dhara skip jumping?",
+      "reason": "checkExpr \"3\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 10 wheels need 50 spokes, how many spokes will 30 wheels need?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A spider has 8 legs. 23 spiders will have how many legs?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If 18 laddoos are shared equally among 9 friends, how many laddoos does each friend get?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If 30 flowers, 30 threads, and 30 beads are available, how many Rakhis can be made if each Rakhi requires 1 flower, 2 threads, and 4 beads?",
+      "reason": "the critic finds option 2 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total number of laddoos if there are 3 groups of 3 laddoos each?",
+      "reason": "options 0 and 2 are the same (\"6\"); options 0 and 3 are the same (\"6\"); options 2 and 3 are the same (\"6\"); options 0 and 2 are the same number; options 0 and 3 are the same number; options 2 and 3 are the same number"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If 24 jalebis are to be distributed equally among 9 family members, how many jalebis will each person get, and how many will be left over?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If 20 kaju katlis are shared equally among 5 people, how many kaju katlis does each person get?",
+      "reason": "near-duplicate of served question cmvk1hqd80ipwgpfh93ajgtxs (cosine 0.963 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "How many wheels are there in 18 auto rickshaws if each has 3 wheels?",
+      "reason": "near-duplicate of served question cmvgz8x5d05ongpfhvsramanh (cosine 0.958 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

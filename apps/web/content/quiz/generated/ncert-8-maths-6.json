@@ -21,49 +21,147 @@
   "board": "NCERT",
   "book": "Ganita Prakash Part-I",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T04:49:38.172Z",
+  "generatedAt": "2026-10-29T18:50:57.785Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "Which of the following is the general form of the distributive property for two expressions each with two terms?",
+      "difficulty": 2,
+      "stem": "Which of the following is an example of unlike terms?",
       "choices": [
-        "(a + b) × (c + d) = ac + ad + bc + bd",
-        "(a + b) × (c + d) = a + b + c + d",
-        "(a + b) × (c + d) = ac + bd",
-        "(a + b) × (c + d) = ab + cd"
+        "3a and 5a",
+        "1: 2ab and 4a",
+        "4a and 7b",
+        "6xy and 8xy"
       ],
-      "answerIndex": 0,
-      "solution": "The correct option shows the proper expansion of two binomials, where each term in the first binomial is multiplied by each term in the second binomial, resulting in four terms: ac + ad + bc + bd. The other options fail to account for all possible products, either by omitting terms or incorrectly combining them.",
+      "answerIndex": 2,
+      "solution": "Unlike terms are terms that do not have the same letter-numbers. '4a and 7b' are unlike terms because they have different letter-numbers. The other options have the same letter-numbers, so they are like terms.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा दो व्यंजकों के वितरण गुण का सामान्य रूप है जिनमें दो-दो पद हैं?",
+          "stem": "निम्नलिखित में से कौन-सा असमान पदों का उदाहरण है?",
           "choices": [
-            "(a + b) × (c + d) = ac + ad + bc + bd",
-            "(a + b) × (c + d) = a + b + c + d",
-            "(a + b) × (c + d) = ac + bd",
-            "(a + b) × (c + d) = ab + cd"
+            "3a और 5a",
+            "2ab और 4a",
+            "4a और 7b",
+            "6xy और 8xy"
           ],
-          "solution": "सही विकल्प दो द्विपद व्यंजकों के सही विस्तार को दर्शाता है, जहां पहले द्विपद के प्रत्येक पद को दूसरे द्विपद के प्रत्येक पद से गुणा किया जाता है, जिससे चार पद प्राप्त होते हैं: ac + ad + bc + bd। अन्य विकल्प या तो कुछ पदों को छोड़ देते हैं या गलत तरीके से उन्हें संयोजित कर देते हैं।",
+          "solution": "असमान पद वे पद होते हैं जिनमें समान अक्षर-संख्या नहीं होती। '4a और 7b' असमान पद हैं क्योंकि उनमें अलग-अलग अक्षर-संख्या होती है। अन्य विकल्पों में समान अक्षर-संख्या होती है, इसलिए वे समान पद हैं।",
           "imageAlt": null,
-          "critique": "Translation accurately preserves mathematical meaning and terminology; correct answer remains option 1.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणते दोन व्यंजकांच्या प्रत्येकाच्या दोन अवयवांच्या वितरक गुणधर्माचे सामान्य रूप आहे?",
+          "stem": "खालीलपैकी कोणते विषम पदांचे उदाहरण आहे?",
           "choices": [
-            "(a + b) × (c + d) = ac + ad + bc + bd",
-            "(a + b) × (c + d) = a + b + c + d",
-            "(a + b) × (c + d) = ac + bd",
-            "(a + b) × (c + d) = ab + cd"
+            "3a आणि 5a",
+            "2ab आणि 4a",
+            "4a आणि 7b",
+            "6xy आणि 8xy"
           ],
-          "solution": "योग्य विकल्प दोन द्विपदांच्या विस्ताराचे योग्य प्रतिनिधित्व करतो, जेथे पहिल्या द्विपदातील प्रत्येक अवयवाला दुसऱ्या द्विपदातील प्रत्येक अवयवाने गुणले जाते, ज्यामुळे चार अवयव मिळतात: ac + ad + bc + bd. इतर विकल्प अशा अवयवांच्या सर्व संभाव्य गुणाकार गमावतात किंवा चुकीच्या पद्धतीने त्यांचे संयोजन करतात.",
+          "solution": "विषम पदे ही पदे आहेत ज्यांना समान अक्षर-संख्या नसते. '4a आणि 7b' ही विषम पदे आहेत कारण त्यांना वेगळी अक्षर-संख्या आहे. इतर विकल्पांमध्ये समान अक्षर-संख्या असते, म्हणून ते सम पदे आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for algebraic concepts.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses like terms with unlike terms, thinking coefficients matter more than variables",
+        "Student confuses variables and thinks only one variable needs to match for terms to be like",
+        null,
+        "incorrectly identifies unlike terms"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The question is correctly formulated, and the solution is sound. The correct answer is 2, as '4a and 7b' are unlike terms due to different variables. The other options contain like terms, and the author's reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp106.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: We Distribute, Yet Things Multiply",
+            "6.1 Some Properties of Multiplication"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp106.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: We Distribute, Yet Things Multiply",
+            "6.1 Some Properties of Multiplication"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp106.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: We Distribute, Yet Things Multiply",
+            "6.1 Some Properties of Multiplication"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T18:50:57.785Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the expanded form of (a + 1)(b + 1) using the distributive property?",
+      "choices": [
+        "ab + a + b + 1",
+        "ab + a + 1",
+        "ab + b + 1",
+        "ab + a + b"
+      ],
+      "answerIndex": 0,
+      "solution": "Using the distributive property, (a + 1)(b + 1) expands to ab + a + b + 1. Each term in the first binomial is multiplied by each term in the second binomial, resulting in four terms. The other options are missing one or more of these terms.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "(a + 1)(b + 1) के विस्तारित रूप क्या है जिसमें वितरण गुण का उपयोग किया गया है?",
+          "choices": [
+            "ab + a + b + 1",
+            "ab + a + 1",
+            "ab + b + 1",
+            "ab + a + b"
+          ],
+          "solution": "वितरण गुण का उपयोग करके, (a + 1)(b + 1) का विस्तार ab + a + b + 1 होता है। पहले द्विपद के प्रत्येक पद को दूसरे द्विपद के प्रत्येक पद से गुणा किया जाता है, जिससे चार पद प्राप्त होते हैं। अन्य विकल्पों में इनमें से एक या अधिक पद अनुपस्थित होते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology appropriate for Hindi-medium education.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "(a + 1)(b + 1) ची विस्तारित रूपे काय आहे वितरक गुणधर्माचा वापर करून?",
+          "choices": [
+            "ab + a + b + 1",
+            "ab + a + 1",
+            "ab + b + 1",
+            "ab + a + b"
+          ],
+          "solution": "(a + 1)(b + 1) चा वितरक गुणधर्माचा वापर करून विस्तार करताना ab + a + b + 1 मिळते. पहिल्या द्विपदातील प्रत्येक पदाला दुसऱ्या द्विपदातील प्रत्येक पदाने गुणाकार केला जातो, ज्यामुळे चार पदे मिळतात. इतर विकल्पांमध्ये एक किंवा अधिक पद अनुपलब्ध असतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
@@ -73,9 +171,9 @@
       "needsFigure": false,
       "distractorReason": [
         null,
-        "confuses the distributive property with simple addition",
-        "incorrectly assumes the distributive property doesn't expand",
-        "incorrectly multiplies only the first and last terms"
+        "Forgets to include the +1 in the expansion",
+        "Forgets to include the +a term",
+        "Forgets to include the +b term"
       ],
       "solverAnswers": [
         0,
@@ -85,85 +183,93 @@
         0
       ],
       "levelFlag": null,
-      "critique": "The correct answer is option 0, which correctly applies the distributive property by expanding (a + b)(c + d) to ac + ad + bc + bd. The other options represent common misconceptions, such as adding terms directly, only multiplying the first and last terms, or not expanding at all.",
+      "critique": "The correct expansion of (a + 1)(b + 1) using the distributive property is ab + a + b + 1. All other options are missing at least one term, which matches the author's reasoning.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 13,
-          "pageStart": 21,
-          "pageEnd": 23,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
           "headingPath": [
             "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.4 This Way or That Way, All Ways Lead to the Bay"
+            "YET THINGS MULTIPLY"
           ]
         },
         {
           "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 14,
-          "pageStart": 24,
-          "pageEnd": 26,
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.4 This Way or That Way, All Ways Lead to the Bay",
-            "WE DISTRIUTE, YET THINGS MULTIPLY"
+            "6.1 Some Properties of Multiplication"
           ]
         },
         {
           "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 15,
-          "pageStart": 26,
-          "pageEnd": 29,
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 4,
           "headingPath": [
             "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.4 This Way or That Way, All Ways Lead to the Bay",
-            "WE DISTRIUTE, YET THINGS MULTIPLY"
+            "6.1 Some Properties of Multiplication"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp106.pdf",
+          "ordinal": 3,
+          "pageStart": 4,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: We Distribute, Yet Things Multiply",
+            "6.1 Some Properties of Multiplication"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:49:38.172Z",
+      "generatedAt": "2026-10-29T18:50:57.785Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 4,
-      "stem": "Which of the following expressions is equivalent to (x + 2)(x + 5)?",
+      "difficulty": 3,
+      "stem": "Expand the expression (a + b)(a + b).",
       "choices": [
-        "x^2 + 7x + 10",
-        "x^2 + 5x + 7",
-        "x^2 + 3x + 7",
-        "x^2 + 5x + 10"
+        "a + b",
+        "a + 2ab + b",
+        "a + b + ab",
+        "2a + 2b"
       ],
-      "answerIndex": 0,
-      "solution": "The correct expansion of (x + 2)(x + 5) is x^2 + 7x + 10. The other options are incorrect because they have incorrect coefficients for x or the constant term.",
+      "answerIndex": 1,
+      "solution": "The expression (a + b)(a + b) expands to a^2 + ab + ab + b^2, which simplifies to a^2 + 2ab + b^2. The other options do not correctly represent the expansion of the expression.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा व्यंजक (x + 2)(x + 5) के समतुल्य है?",
+          "stem": "अभिव्यक्ति (a + b)(a + b) का विस्तार कीजिए।",
           "choices": [
-            "x^2 + 7x + 10",
-            "x^2 + 5x + 7",
-            "x^2 + 3x + 7",
-            "x^2 + 5x + 10"
+            "a + b",
+            "a + 2ab + b",
+            "a + b + ab",
+            "2a + 2b"
           ],
-          "solution": "(x + 2)(x + 5) का सही विस्तार x^2 + 7x + 10 है। अन्य विकल्प गलत हैं क्योंकि वे x के गुणांक या अचर पद में गलत गुणांक रखते हैं।",
+          "solution": "अभिव्यक्ति (a + b)(a + b) का विस्तार a^2 + ab + ab + b^2 के रूप में होता है, जो a^2 + 2ab + b^2 में सरलीकृत हो जाता है। अन्य विकल्प अभिव्यक्ति के विस्तार को सही ढंग से प्रस्तुत नहीं करते।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "Hindi translation accurately reflects the original English question and solution, with appropriate mathematical terminology used in Hindi medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणता व्यंजक (x + 2)(x + 5) च्या समान आहे?",
+          "stem": "अभिव्यक्ती (a + b)(a + b) विस्तारित करा.",
           "choices": [
-            "x^2 + 7x + 10",
-            "x^2 + 5x + 7",
-            "x^2 + 3x + 7",
-            "x^2 + 5x + 10"
+            "a + b",
+            "a + 2ab + b",
+            "a + b + ab",
+            "2a + 2b"
           ],
-          "solution": "(x + 2)(x + 5) ची बरोबर विस्तार x^2 + 7x + 10 आहे. इतर विकल्प अचूक x चे गुणक किंवा अचूक अचल अंक नसल्यामुळे चुकीचे आहेत.",
+          "solution": "अभिव्यक्ती (a + b)(a + b) ही a^2 + ab + ab + b^2 असे विस्तारित करता येईल, जी a^2 + 2ab + b^2 असे संक्षिप्त केली जाऊ शकते. इतर विकल्प अभिव्यक्तीच्या विस्ताराचे योग्य रूप दर्शवत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for algebraic expressions.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -172,20 +278,118 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "fails to account for the middle term (2ab)",
         null,
-        "Confuses the middle term and constant term when multiplying binomials",
-        "Confuses the sum of the constants with the sum of the coefficients",
-        "Confuses the distributive property, only multiplying the second term by the second factor and forgetting to distribute the first term properly."
+        "incorrectly adds ab only once instead of twice",
+        "incorrectly represents the expansion"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct expansion of (a + b)(a + b) is a^2 + 2ab + b^2, which matches option 1. The other options fail to account for the proper distribution and combination of terms.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp106.pdf",
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 7,
+          "headingPath": [
+            "Chapter 6: We Distribute, Yet Things Multiply",
+            "6.1 Some Properties of Multiplication"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp106.pdf",
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: We Distribute, Yet Things Multiply",
+            "6.1 Some Properties of Multiplication"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp106.pdf",
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 6: We Distribute, Yet Things Multiply",
+            "6.1 Some Properties of Multiplication"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T18:50:57.785Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "The number of circles in Step k of a pattern is given by the expression k + 2k. What is the number of circles in Step 15?",
+      "choices": [
+        "30",
+        "45",
+        "60",
+        "75"
+      ],
+      "answerIndex": 1,
+      "solution": "The expression k + 2k simplifies to 3k. For Step 15, 3 × 15 equals 45. The option '30' is incorrect because it uses 2k instead of 3k. The option '60' is incorrect because it uses 4k instead of 3k. The option '75' is incorrect because it uses 5k instead of 3k.",
+      "checkExpr": "3*15",
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी पैटर्न के चरण k में वृत्तों की संख्या को व्यंजक k + 2k द्वारा दिया जाता है। चरण 15 में वृत्तों की संख्या क्या है?",
+          "choices": [
+            "30",
+            "45",
+            "60",
+            "75"
+          ],
+          "solution": "व्यंजक k + 2k को 3k में सरल किया जा सकता है। चरण 15 के लिए, 3 × 15 बराबर 45 है। विकल्प '30' गलत है क्योंकि इसमें 3k के बजाय 2k का उपयोग किया गया है। विकल्प '60' गलत है क्योंकि इसमें 3k के बजाय 4k का उपयोग किया गया है। विकल्प '75' गलत है क्योंकि इसमें 3k के बजाय 5k का उपयोग किया गया है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "क्रमांक k च्या आवृत्तीत वर्तुळांची संख्या k + 2k असे व्यक्त केली जाते. 15 व्या आवृत्तीत वर्तुळांची संख्या किती आहे?",
+          "choices": [
+            "30",
+            "45",
+            "60",
+            "75"
+          ],
+          "solution": "व्यंजक k + 2k ला 3k म्हणून सोपे केले जाते. 15 व्या आवृत्तीसाठी 3 × 15 चे मूल्य 45 आहे. '30' उत्तर अयोग्य आहे कारण ते 3k ऐवजी 2k वापरते. '60' उत्तर अयोग्य आहे कारण ते 3k ऐवजी 4k वापरते. '75' उत्तर अयोग्य आहे कारण ते 3k ऐवजी 5k वापरते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology for mathematical expressions.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "uses 2k instead of 3k",
+        null,
+        "incorrectly multiplies by 4",
+        "incorrectly multiplies by 5"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct expansion of (x + 2)(x + 5) is x^2 + 7x + 10. The author's solution and reasoning are accurate, and the distractors reflect common misconceptions.",
+      "critique": "The solution is correct. The expression k + 2k simplifies to 3k, and 3 × 15 = 45. The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp106.pdf",
@@ -219,49 +423,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:49:38.172Z",
+      "generatedAt": "2026-10-29T18:50:57.785Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If 26 × 74 is compared to 25 × 75, which product is larger?",
+      "stem": "If the area of the shaded region is given by the expression (m + n)² – 4mn, what is the simplified form of this expression?",
       "choices": [
-        "26 × 74",
-        "25 × 75",
-        "Both are equal",
-        "Cannot be determined"
+        "m² + n²",
+        "m² + 2mn + n²",
+        "m² – 2mn + n²",
+        "(m + n)²"
       ],
-      "answerIndex": 1,
-      "solution": "By using the identity (a + b)(a - b) = a² - b², 25 × 75 can be seen as (50 - 25)(50 + 25) = 50² - 25², while 26 × 74 is (50 - 24)(50 + 24) = 50² - 24². Since 25² is greater than 24², 25 × 75 is larger. The other options misinterpret the comparison based on the identity.",
+      "answerIndex": 2,
+      "solution": "Expanding (m + n)² gives m² + 2mn + n². Subtracting 4mn results in m² – 2mn + n². The option 'm² + n²' is incorrect because it does not account for the middle term. The option 'm² + 2mn + n²' is incorrect because it does not subtract the 4mn. The option '(m + n)²' is incorrect because it is the original expression and not the simplified form.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि 26 × 74 की तुलना 25 × 75 से की जाए, तो कौन-सा गुणनफल बड़ा है?",
+          "stem": "यदि छायांकित क्षेत्र का क्षेत्रफल व्यंजक (m + n)² – 4mn द्वारा दिया गया है, तो इस व्यंजक का सरलीकृत रूप क्या है?",
           "choices": [
-            "26 × 74",
-            "25 × 75",
-            "दोनों समान हैं",
-            "निर्धारित नहीं किया जा सकता"
+            "m² + n²",
+            "m² + 2mn + n²",
+            "m² – 2mn + n²",
+            "(m + n)²"
           ],
-          "solution": "सर्वसमिका (a + b)(a - b) = a² - b² का उपयोग करके, 25 × 75 को (50 - 25)(50 + 25) = 50² - 25² के रूप में देखा जा सकता है, जबकि 26 × 74 को (50 - 24)(50 + 24) = 50² - 24² के रूप में देखा जा सकता है। 25², 24² से बड़ा होने के कारण 25 × 75 बड़ा है। अन्य विकल्प सर्वसमिका के आधार पर तुलना के गलत अर्थ करते हैं।",
+          "solution": "(m + n)² का विस्तार करने पर m² + 2mn + n² प्राप्त होता है। 4mn को घटाने पर m² – 2mn + n² प्राप्त होता है। विकल्प 'm² + n²' गलत है क्योंकि यह मध्य पद को ध्यान में नहीं रखता। विकल्प 'm² + 2mn + n²' गलत है क्योंकि यह 4mn को घटाना नहीं चाहता। विकल्प '(m + n)²' गलत है क्योंकि यह मूल व्यंजक है और सरलीकृत रूप नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as found in Hindi-medium textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "26 × 74 ची तुलना 25 × 75 शी केली गेली असता, कोणता गुणाकार जास्त आहे?",
+          "stem": "जर छायांकित प्रदेशाचे क्षेत्रफळ व्यंजक (m + n)² – 4mn द्वारे दिले गेले असेल, तर या व्यंजकाचा सरलीकृत रूप काय असेल?",
           "choices": [
-            "26 × 74",
-            "25 × 75",
-            "दोन्ही समान आहेत",
-            "निश्चित करता येत नाही"
+            "m² + n²",
+            "m² + 2mn + n²",
+            "m² – 2mn + n²",
+            "(m + n)²"
           ],
-          "solution": "समीकरण (a + b)(a - b) = a² - b² चा वापर करून, 25 × 75 ला (50 - 25)(50 + 25) = 50² - 25² म्हणून पाहता जाते, तर 26 × 74 हे (50 - 24)(50 + 24) = 50² - 24² म्हणून पाहता जाते. कारण 25² 24² पेक्षा जास्त आहे, 25 × 75 जास्त आहे. इतर विकल्पांमध्ये समीकरणावर आधारित तुलनेचा चुकीचा अर्थ केला जातो.",
+          "solution": "(m + n)² चे विस्तार करणे म्हणजे m² + 2mn + n² मिळते. 4mn वजा करणे म्हणजे m² – 2mn + n² मिळते. 'm² + n²' विकल्प चुकीचा आहे कारण तो मध्यम पद गृहीत धरत नाही. 'm² + 2mn + n²' विकल्प चुकीचा आहे कारण तो 4mn वजा करत नाही. '(m + n)²' विकल्प चुकीचा आहे कारण तो मूळ व्यंजक आहे आणि सरलीकृत रूप नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the mathematical meaning, and uses appropriate Marathi terminology.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -270,10 +474,108 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "incorrectly assumes the larger numbers produce a larger product",
+        "does not account for the middle term",
+        "does not subtract the 4mn",
         null,
-        "confuses the identity",
-        "fails to compare the squares properly"
+        "is the original expression and not the simplified form"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly expands (m + n)² and subtracts 4mn to arrive at m² – 2mn + n², which matches the correct option. The reasoning for the wrong options is valid and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/8/mathematics/hegp106.pdf",
+          "ordinal": 10,
+          "pageStart": 15,
+          "pageEnd": 17,
+          "headingPath": [
+            "Chapter 6: We Distribute, Yet Things Multiply",
+            "6.4 This Way or That Way, All Ways Lead to the Bay"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp106.pdf",
+          "ordinal": 11,
+          "pageStart": 17,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 6: We Distribute, Yet Things Multiply",
+            "6.4 This Way or That Way, All Ways Lead to the Bay"
+          ]
+        },
+        {
+          "document": "ncert/8/mathematics/hegp106.pdf",
+          "ordinal": 12,
+          "pageStart": 19,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 6: We Distribute, Yet Things Multiply",
+            "6.4 This Way or That Way, All Ways Lead to the Bay"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T18:50:57.785Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "Which of the following is the correct expansion of (a + b)(a + b)?",
+      "choices": [
+        "a^2 + b^2",
+        "a^2 + 2ab + b^2",
+        "a^2 + ab + b^2",
+        "a^2 + 2a + 2b + b^2"
+      ],
+      "answerIndex": 1,
+      "solution": "The correct expansion of (a + b)(a + b) is a^2 + 2ab + b^2. This is derived by distributing each term in the first binomial to each term in the second binomial and then combining like terms. The option 'a^2 + b^2' misses the middle term 2ab. The option 'a^2 + ab + b^2' is missing the second 'ab' term. The option 'a^2 + 2a + 2b + b^2' incorrectly adds the coefficients of a and b instead of multiplying them.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित में से कौन (a + b)(a + b) के सही विस्तार है?",
+          "choices": [
+            "a^2 + b^2",
+            "a^2 + 2ab + b^2",
+            "a^2 + ab + b^2",
+            "a^2 + 2a + 2b + b^2"
+          ],
+          "solution": "(a + b)(a + b) का सही विस्तार a^2 + 2ab + b^2 है। इसे पहले बाइनॉमियल के प्रत्येक पद को दूसरे बाइनॉमियल के प्रत्येक पद से गुणा करके और फिर समान पदों को जोड़कर प्राप्त किया जाता है। विकल्प 'a^2 + b^2' में मध्य पद 2ab लुप्त है। विकल्प 'a^2 + ab + b^2' में दूसरा 'ab' पद लुप्त है। विकल्प 'a^2 + 2a + 2b + b^2' में a और b के गुणांकों को जोड़ दिया गया है बजाय उनके गुणा के।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "खालीलपैकी कोणते (a + b)(a + b) चे योग्य विस्तार आहे?",
+          "choices": [
+            "a^2 + b^2",
+            "a^2 + 2ab + b^2",
+            "a^2 + ab + b^2",
+            "a^2 + 2a + 2b + b^2"
+          ],
+          "solution": "(a + b)(a + b) चे योग्य विस्तार a^2 + 2ab + b^2 आहे. हे प्रत्येक पदाला दुसऱ्या द्विपदाच्या प्रत्येक पदाशी गुणून आणि नंतर समान पदांचे जोडण्याने मिळते. विकल्प 'a^2 + b^2' मध्ये मध्यम पद 2ab अनुपस्थित आहे. विकल्प 'a^2 + ab + b^2' मध्ये दुसरा 'ab' पद अनुपस्थित आहे. विकल्प 'a^2 + 2a + 2b + b^2' मध्ये a आणि b च्या गुणकांची बेरीज करून त्यांचा गुणाकार करण्याचा चूक केली आहे.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "misses the middle term 2ab",
+        null,
+        "Confuses the expansion by only multiplying each term once instead of applying the distributive property fully",
+        "misses the second 'ab' term"
       ],
       "solverAnswers": [
         1,
@@ -282,44 +584,42 @@
         1,
         1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly applies the difference of squares identity to show that 25 × 75 is larger. The reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct expansion of (a + b)(a + b) is a^2 + 2ab + b^2. The distractors reflect common misconceptions such as missing the middle term, incorrectly multiplying terms, or adding instead of multiplying.",
       "sources": [
         {
           "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 13,
-          "pageStart": 21,
-          "pageEnd": 23,
+          "ordinal": 4,
+          "pageStart": 5,
+          "pageEnd": 7,
           "headingPath": [
             "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.4 This Way or That Way, All Ways Lead to the Bay"
+            "6.1 Some Properties of Multiplication"
           ]
         },
         {
           "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 14,
-          "pageStart": 24,
-          "pageEnd": 26,
+          "ordinal": 5,
+          "pageStart": 7,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.4 This Way or That Way, All Ways Lead to the Bay",
-            "WE DISTRIUTE, YET THINGS MULTIPLY"
+            "6.1 Some Properties of Multiplication"
           ]
         },
         {
           "document": "ncert/8/mathematics/hegp106.pdf",
-          "ordinal": 15,
-          "pageStart": 26,
-          "pageEnd": 29,
+          "ordinal": 6,
+          "pageStart": 9,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 6: We Distribute, Yet Things Multiply",
-            "6.4 This Way or That Way, All Ways Lead to the Bay",
-            "WE DISTRIUTE, YET THINGS MULTIPLY"
+            "6.1 Some Properties of Multiplication"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T04:49:38.172Z",
+      "generatedAt": "2026-10-29T18:50:57.785Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

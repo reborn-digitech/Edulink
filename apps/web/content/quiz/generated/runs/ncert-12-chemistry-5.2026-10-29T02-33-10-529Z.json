@@ -1,0 +1,774 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T02:33:10.529Z",
+  "finishedAt": "2026-10-29T02:45:00.965Z",
+  "seconds": 710,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Chemistry-I",
+    "bookCode": "lech1",
+    "document": "ncert/12/chemistry/lech105.pdf",
+    "classLevel": 12,
+    "subject": "Chemistry",
+    "chapter": "Chapter 5 — Coordination Compounds",
+    "edition": "Reprint 2026-27",
+    "chunks": 27,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Chemistry, sample question paper, 2023-24]\n22. (a) Write the formula for the following coordination compound\nBis(ethane-1,2-diamine) dihydroxidochromium(III) chloride\n(b) Does ionization isomer for the following compound exist? Justify your answer.\nHg[Co(SCN) 4 ]\n(c) Is the central metal atom in coordination complexes a Lewis acid or a Lewis base? Explain.",
+      "[CBSE Class XII Chemistry, sample question paper, 2025-26]\n20. Write the formula of the following coordination complex: 2x1\nI. diaquasilver(I) dichloridoargentate(I)\nII. dihydroxidobis(triphenylphosphine)nickel(II)",
+      "[CBSE Class XII Chemistry, sample question paper, 2025-26]\n3. The counter ion in the coordination compound [Co(NH 3 ) 5 (NO 2 )] Cl 2 is 1\nA. Ammine\nB. Cobalt\nC. Chloride\nD. Nitro",
+      "[CBSE Class XII Chemistry, marking scheme, 2025-26]\n3. C. chloride\nCH 2 CH=CH 2\nCH(OH)CH 2\nCH 2 CHOH\nThe formula of coordination complex, the ions outside the square\nbracket are called counter ions."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 199640,
+      "in": 41,
+      "out": 41,
+      "rejects": 0,
+      "promptTokens": 42193,
+      "completionTokens": 11955
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 342440,
+      "in": 41,
+      "out": 38,
+      "rejects": 3,
+      "promptTokens": 25679,
+      "completionTokens": 9471
+    },
+    "solver": {
+      "calls": 273,
+      "ms": 144995,
+      "in": 38,
+      "out": 32,
+      "rejects": 6,
+      "promptTokens": 55160,
+      "completionTokens": 2961
+    },
+    "form": {
+      "calls": 10,
+      "ms": 58955,
+      "in": 32,
+      "out": 21,
+      "rejects": 11,
+      "promptTokens": 10017,
+      "completionTokens": 1489
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 21,
+      "out": 21,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 32,
+      "ms": 5896,
+      "in": 21,
+      "out": 15,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 61,
+      "ms": 577186,
+      "in": 30,
+      "out": 30,
+      "rejects": 0,
+      "promptTokens": 36424,
+      "completionTokens": 17532
+    }
+  },
+  "kept": 15,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 3,
+    "4": 3,
+    "5": 2,
+    "6": 3
+  },
+  "flagged": 8,
+  "needsFigure": 3,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the number of chloride ions that can be precipitated as AgCl from a coordination compound?",
+      "ms": {
+        "draft": 13116,
+        "critique": 6399,
+        "solver": 2014,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a coordination compound gives 1 mole of AgCl on reaction with excess AgNO3, what does this indicate about the number of counter ions?",
+      "ms": {
+        "draft": 13116,
+        "critique": 6059,
+        "solver": 9967,
+        "form": 4805
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a coordination compound, if the secondary valence is 6, what can be inferred about the geometry of the coordination entity?",
+      "ms": {
+        "draft": 13116,
+        "critique": 5588,
+        "solver": 2297,
+        "form": 3823
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A coordination compound is found to give 2 moles of AgCl when reacted with excess AgNO3. What can be concluded about the formula of the compound?",
+      "ms": {
+        "draft": 13116,
+        "critique": 6616,
+        "solver": 11430
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary valence of a metal ion in coordination compounds?",
+      "ms": {
+        "draft": 13116,
+        "critique": 5003,
+        "solver": 1505
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the term 'coordination number' in a coordination complex?",
+      "ms": {
+        "draft": 4803,
+        "critique": 6731,
+        "solver": 1817,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the coordination complex [Fe(CN)6]^3-, what is the coordination number of the central metal atom?",
+      "ms": {
+        "draft": 4803,
+        "critique": 5625,
+        "solver": 16869,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is not a type of isomerism found in coordination compounds?",
+      "ms": {
+        "draft": 4803,
+        "critique": 5441,
+        "solver": 17194
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the complex [Co(NH3)5Cl]Cl2, what is the oxidation state of the central metal atom?",
+      "ms": {
+        "draft": 4803,
+        "critique": 10167,
+        "solver": 14634,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The counter ion in the coordination compound [Co(NH3)5(NO2)]Cl2 is",
+      "ms": {
+        "draft": 5939,
+        "critique": 7046,
+        "solver": 1561,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following statements is correct regarding isomerism in coordination compounds?",
+      "ms": {
+        "draft": 5939,
+        "critique": 5959,
+        "solver": 1439
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the correct IUPAC name for the coordination compound [Pt(NH3)2Cl2] ?",
+      "ms": {
+        "draft": 5939,
+        "critique": 6099,
+        "solver": 12872
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is the correct IUPAC name for the coordination compound [Co(NH3)2(NO2)2] ?",
+      "ms": {
+        "draft": 5939,
+        "critique": 6716,
+        "solver": 1475,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which type of isomerism is shown by coordination compounds containing ambidentate ligands?",
+      "ms": {
+        "draft": 6262,
+        "critique": 5797
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is geometrical isomerism not possible in tetrahedral complexes having two different types of unidentate ligands coordinated with the central metal ion?",
+      "ms": {
+        "draft": 5939,
+        "critique": 6563,
+        "solver": 12856,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the magnetic moment of a complex ion with five unpaired electrons?",
+      "ms": {
+        "draft": 52727,
+        "critique": 5754,
+        "solver": 1559,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What determines whether a ligand is classified as a weak field ligand or a strong field ligand?",
+      "ms": {
+        "draft": 8254,
+        "critique": 5391
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the colour change observed when ethane-1,2-diamine is added to a solution of [Ni(H2O)6]^2+?",
+      "ms": {
+        "draft": 4448,
+        "critique": 8564
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the bonding in metal carbonyls?",
+      "ms": {
+        "draft": 4448,
+        "critique": 6899,
+        "solver": 1714
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the correct order of the spectrochemical series based on the absorption of light by complexes with different ligands?",
+      "ms": {
+        "draft": 4003,
+        "critique": 3801,
+        "solver": 635,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are chelate complexes more stable than complexes with unidentate ligands?",
+      "ms": {
+        "draft": 4803,
+        "critique": 6532,
+        "solver": 1210,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a counter ion in the coordination compound [Co(NH3)5(NO2)]Cl2?",
+      "ms": {
+        "draft": 4558,
+        "critique": 5893,
+        "solver": 1561,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which theory explains the formation, magnetic behaviour and geometrical shapes of coordination compounds?",
+      "ms": {
+        "draft": 3091,
+        "critique": 6783,
+        "solver": 1298,
+        "form": 4182
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the coordination compound [Co(NH3)5(NO2)]Cl2, which ion acts as the counter ion?",
+      "ms": {
+        "draft": 3091,
+        "critique": 5500,
+        "solver": 1224,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the counter ion in the coordination compound [Co(NH3)5(NO2)]Cl2?",
+      "ms": {
+        "draft": 4448,
+        "critique": 5924,
+        "solver": 1362,
+        "form": 3111
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is the counter ion in the coordination compound [Co(NH3)5(NO2)]Cl2?",
+      "ms": {
+        "draft": 4003,
+        "critique": 5815,
+        "solver": 1550,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the ion or molecule that is directly bonded to the central metal atom in a coordination complex?",
+      "ms": {
+        "draft": 4803,
+        "critique": 4666,
+        "solver": 2180,
+        "form": 0,
+        "translation": 38257
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a coordination entity?",
+      "ms": {
+        "draft": 13116,
+        "critique": 7466,
+        "solver": 2150,
+        "form": 0,
+        "translation": 32131
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a coordination isomer?",
+      "ms": {
+        "draft": 6262,
+        "critique": 9562,
+        "solver": 19023,
+        "form": 0,
+        "translation": 40526
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct formula for the coordination compound: Potassium hexacyanidoferrate(III)?",
+      "ms": {
+        "draft": 4558,
+        "critique": 7046,
+        "solver": 16034,
+        "form": 0,
+        "translation": 30120
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the name of the ligand that donates two pairs of electrons to the central metal ion?",
+      "ms": {
+        "draft": 3091,
+        "critique": 6214,
+        "solver": 1533,
+        "form": 3019,
+        "translation": 42020
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following coordination complexes is expected to be diamagnetic?",
+      "ms": {
+        "draft": 4558,
+        "critique": 8961,
+        "solver": 14202,
+        "form": 0,
+        "translation": 42184
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is the correct formula for the coordination compound 'dichloridobis(ethane-1,2-diamine)cobalt(III) chloride'?",
+      "ms": {
+        "draft": 5939,
+        "critique": 6848,
+        "solver": 13722,
+        "form": 0,
+        "translation": 47693
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following coordination complexes is optically active?",
+      "ms": {
+        "draft": 6262,
+        "critique": 6785,
+        "solver": 12376,
+        "form": 0,
+        "translation": 45534
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In the ruby gemstone, what role do chromium(III) ions play?",
+      "ms": {
+        "draft": 4448,
+        "critique": 7095,
+        "solver": 890,
+        "form": 3738,
+        "translation": 50477
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following has the highest magnetic moment value?",
+      "ms": {
+        "draft": 4558,
+        "critique": 6748,
+        "solver": 1544,
+        "form": 0,
+        "translation": 31738
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a homoleptic coordination complex?",
+      "ms": {
+        "draft": 3091,
+        "critique": 6878,
+        "solver": 1315,
+        "form": 0,
+        "translation": 24714
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is the correct formula for the coordination complex: diaquasilver(I) dichloridoargentate(I)?",
+      "ms": {
+        "draft": 4558,
+        "critique": 8549,
+        "solver": 1562,
+        "form": 0,
+        "translation": 33590
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about hybridisation in coordination compounds is correct?",
+      "ms": {
+        "draft": 6262,
+        "critique": 7185,
+        "solver": 1315,
+        "form": 0,
+        "translation": 58822
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct IUPAC name for the complex [PtCl2(NH3)2]?",
+      "ms": {
+        "draft": 3091,
+        "critique": 7378,
+        "solver": 1715,
+        "form": 0,
+        "translation": 28624
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does [Ni(CN)4]2- have a different colour in solution compared to [Ni(H2O)6]2+?",
+      "ms": {
+        "draft": 4558,
+        "critique": 6643,
+        "solver": 1386,
+        "form": 0,
+        "translation": 49620
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the number of chloride ions that can be precipitated as AgCl from a coordination compound?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 2 and 3 say the same thing (\"Only the chloride ions outside the coordination sphere can be precipitated\" / \"Only the chloride ions inside the coordination sphere can be precipitated\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a coordination compound gives 1 mole of AgCl on reaction with excess AgNO3, what does this indicate about the number of counter ions?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a coordination compound, if the secondary valence is 6, what can be inferred about the geometry of the coordination entity?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Assumes that a coordination number of 6 can only result in a…\"); distractor 1's reason is not a one-line misconception (\"Believes that a coordination number of 6 always results in a…\"); distractor 3's reason is not a one-line misconception (\"Misunderstands that any geometry is possible for a coordinat…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A coordination compound is found to give 2 moles of AgCl when reacted with excess AgNO3. What can be concluded about the formula of the compound?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What is the primary valence of a metal ion in coordination compounds?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the term 'coordination number' in a coordination complex?",
+      "reason": "options 2 and 3 say the same thing (\"The number of sigma bonds formed between the ligand and the central metal atom\" / \"The number of pi bonds formed between the ligand and the central metal atom\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the coordination complex [Fe(CN)6]^3-, what is the coordination number of the central metal atom?",
+      "reason": "checkExpr \"6\" is a bare literal"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is not a type of isomerism found in coordination compounds?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the complex [Co(NH3)5Cl]Cl2, what is the oxidation state of the central metal atom?",
+      "reason": "options 0 and 1 are the same (\"+1\"); checkExpr \"3\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "The counter ion in the coordination compound [Co(NH3)5(NO2)]Cl2 is",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is chloride, but the student might think 'nit…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following statements is correct regarding isomerism in coordination compounds?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is the correct IUPAC name for the coordination compound [Pt(NH3)2Cl2] ?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is the correct IUPAC name for the coordination compound [Co(NH3)2(NO2)2] ?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"Correct answer is the only one that aligns with the alphabet…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which type of isomerism is shown by coordination compounds containing ambidentate ligands?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is geometrical isomerism not possible in tetrahedral complexes having two different types of unidentate ligands coordinated with the central metal ion?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the magnetic moment of a complex ion with five unpaired electrons?",
+      "reason": "checkExpr \"5.9\" is a bare literal"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What determines whether a ligand is classified as a weak field ligand or a strong field ligand?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the colour change observed when ethane-1,2-diamine is added to a solution of [Ni(H2O)6]^2+?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is a correct statement about the bonding in metal carbonyls?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the correct order of the spectrochemical series based on the absorption of light by complexes with different ligands?",
+      "reason": "options 0 and 1 say the same thing (\"Weak field ligands > Strong field ligands\" / \"Strong field ligands > Weak field ligands\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why are chelate complexes more stable than complexes with unidentate ligands?",
+      "reason": "near-duplicate of served question cmvi98ui60c00gpfhjr652t5k (cosine 0.902 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a counter ion in the coordination compound [Co(NH3)5(NO2)]Cl2?",
+      "reason": "near-duplicate of served question cmvi98uhn0bxugpfhhunxi3rp (cosine 0.980 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which theory explains the formation, magnetic behaviour and geometrical shapes of coordination compounds?",
+      "reason": "near-duplicate of served question cmvi98uhl0bxogpfhc2cnzi60 (cosine 0.929 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In the coordination compound [Co(NH3)5(NO2)]Cl2, which ion acts as the counter ion?",
+      "reason": "near-duplicate of served question cmvi98uhn0bxugpfhhunxi3rp (cosine 0.958 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is the counter ion in the coordination compound [Co(NH3)5(NO2)]Cl2?",
+      "reason": "near-duplicate of served question cmvi98uhn0bxugpfhhunxi3rp (cosine 0.981 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which of the following is the counter ion in the coordination compound [Co(NH3)5(NO2)]Cl2?",
+      "reason": "near-duplicate of served question cmvi98uhn0bxugpfhhunxi3rp (cosine 0.981 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Chemistry (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Curiosity",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T23:29:38.283Z",
+  "generatedAt": "2026-10-29T12:22:11.619Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "What is the unit used to measure mass in the International System of Units?",
+      "difficulty": 1,
+      "stem": "Which of the following is a definition of matter?",
       "choices": [
-        "Gram",
-        "Kilogram",
-        "Millilitre",
-        "Litre"
+        "Anything that has mass and occupies space",
+        "Anything that is transparent",
+        "Anything that is hard",
+        "Anything that is lustrous"
       ],
-      "answerIndex": 1,
-      "solution": "The kilogram is the standard unit used to measure mass in the International System of Units. A gram is a smaller unit of mass, while a millilitre and a litre are units of volume, not mass. Therefore, the correct answer is kilogram.",
+      "answerIndex": 0,
+      "solution": "The correct definition of matter is anything that has mass and occupies space, as this is a fundamental scientific property of all matter. The other options describe specific physical characteristics, such as transparency, hardness, or luster, which are not defining features of all matter.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "अंतरराष्ट्रीय मात्रक प्रणाली में द्रव्यमान को मापने के लिए कौन सी इकाई प्रयोग की जाती है?",
+          "stem": "निम्नलिखित में से कौन-सा पदार्थ की परिभाषा है?",
           "choices": [
-            "ग्राम",
-            "किलोग्राम",
-            "मिलीलीटर",
-            "लीटर"
+            "कोई भी वस्तु जो द्रव्यमान रखती है और स्थान घेरती है",
+            "कोई भी वस्तु जो पारदर्शी होती है",
+            "कोई भी वस्तु जो कठोर होती है",
+            "कोई भी वस्तु जो चमकदार होती है"
           ],
-          "solution": "अंतरराष्ट्रीय मात्रक प्रणाली में द्रव्यमान को मापने के लिए किलोग्राम मानक इकाई है। एक ग्राम द्रव्यमान की छोटी इकाई है, जबकि मिलीलीटर और लीटर आयतन की इकाई हैं, द्रव्यमान की नहीं। इसलिए सही उत्तर किलोग्राम है।",
+          "solution": "पदार्थ की सही परिभाषा वह है जो द्रव्यमान रखती है और स्थान घेरती है, क्योंकि यह सभी पदार्थों के लिए एक मूल वैज्ञानिक गुण है। अन्य विकल्प ऐसे विशिष्ट भौतिक गुणों का वर्णन करते हैं, जैसे पारदर्शिता, कठोरता या चमक, जो सभी पदार्थों की परिभाषा के लिए आवश्यक नहीं हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard Hindi terminology for SI units.",
+          "critique": "The Hindi translation accurately reflects the original English question with appropriate scientific terminology used in Indian textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "आंतरराष्ट्रीय एकक प्रणालीमध्ये द्रव्यमान मोजण्यासाठी वापरल्या जाणार्‍या एककाचे नाव काय आहे?",
+          "stem": "खालीलपैकी कोणते द्रव्याचे विधान आहे?",
           "choices": [
-            "ग्रॅम",
-            "किलोग्रॅम",
-            "मिलीलीटर",
-            "लिटर"
+            "जे काही द्रव्यराशी आणि जागा घेते",
+            "जे काही पारदर्शक आहे",
+            "जे काही कठीण आहे",
+            "जे काही चमकदार आहे"
           ],
-          "solution": "आंतरराष्ट्रीय एकक प्रणालीमध्ये द्रव्यमान मोजण्यासाठी मानक एकक किलोग्रॅम आहे. ग्रॅम हे द्रव्यमानाचे लहान एकक आहे, तर मिलीलीटर आणि लिटर हे आयतनाचे एकक आहेत, द्रव्यमानाचे नाहीत. म्हणूनच योग्य उत्तर किलोग्रॅम आहे.",
+          "solution": "द्रव्याचे बरोबर विधान काही द्रव्यराशी आणि जागा घेते, कारण हे सर्व द्रव्याच्या मूलभूत वैज्ञानिक गुणधर्मांपैकी एक आहे. इतर विकल्पांमध्ये पारदर्शकता, कठीणपणा किंवा चमक यासारख्या विशिष्ट भौतिक वैशिष्ट्यांचे वर्णन केले आहे, जे सर्व द्रव्यांच्या वैशिष्ट्यांनी नाहीत.",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are correctly used in Marathi.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology used.",
           "flag": null
         }
       },
@@ -72,110 +72,532 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses gram with kilogram",
+        null,
+        "Thinks matter is transparent",
+        "Thinks matter is hard",
+        "Thinks matter is lustrous"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 0, as it aligns with the standard scientific definition of matter. The other options describe specific properties rather than the general definition, and the author's reasons for rejecting them reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.4 What is Matter?",
+            "गु मन्द हिम ह्निग्ध श् ‍लक्ष्ण सा नद्र मृ्दु ह्थिराः| गुष्णाः ससूक् म हिश्दा: हिंशहिः स हिपर्यराः||"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.4 What is Matter?",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 11,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.4 What is Matter?",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 12,
+          "pageStart": 21,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.4 What is Matter?",
+            "Learning further"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T12:22:11.619Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the main reason for grouping objects in Activity 6.2?",
+      "choices": [
+        "To make them look nice",
+        "To understand their properties",
+        "To count them",
+        "To store them in a cupboard"
+      ],
+      "answerIndex": 1,
+      "solution": "Grouping objects helps in identifying and comparing their characteristics, which is essential for understanding their properties. This approach allows for better analysis and classification based on observable features. Other options like making them look nice or storing them do not address the scientific purpose of grouping.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "गतिविधि 6.2 में वस्तुओं के समूहीकरण का मुख्य कारण क्या है?",
+          "choices": [
+            "उन्हें खूबसूरत दिखाने के लिए",
+            "उनके गुणों को समझने के लिए",
+            "उन्हें गिनने के लिए",
+            "एक कपड़ा बॉक्स में उन्हें रखने के लिए"
+          ],
+          "solution": "वस्तुओं के समूहीकरण उनके विशेषताओं की पहचान और तुलना करने में सहायता करता है, जो उनके गुणों को समझने के लिए आवश्यक है। इस प्रकार उनके निरीक्षण लेखन विशेषताओं के आधार पर बेहतर विश्लेषण और वर्गीकरण संभव बनाता है। अन्य विकल्प जैसे उन्हें खूबसूरत दिखाना या उन्हें भंडारित करना वस्तुओं के समूहीकरण के वैज्ञानिक उद्देश्य को नहीं संबोधित करते हैं।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "क्रियाकलाप 6.2 मध्ये वस्तूंचे गट करण्याचे मुख्य कारण काय आहे?",
+          "choices": [
+            "त्यांना चांगले दिसायला",
+            "त्यांच्या गुणधर्मांचे ज्ञान करून देण्यासाठी",
+            "त्यांची गणना करण्यासाठी",
+            "त्यांना एका ड्रॉअरमध्ये ठेवण्यासाठी"
+          ],
+          "solution": "वस्तूंचे गट करणे त्यांच्या वैशिष्ट्यांची ओळख करण्यास आणि तुलना करण्यास मदत करते, जे त्यांच्या गुणधर्मांचे ज्ञान करून देण्यासाठी आवश्यक आहे. हा प्रकार निरीक्षित वैशिष्ट्यांवर आधारित विश्लेषण आणि वर्गीकरणासाठी परवानगी देतो. त्यांना चांगले दिसायला किंवा त्यांना ठेवण्यासाठी असलेल्या इतर विकल्पांमध्ये वैज्ञानिक उद्देश नाही.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology consistent with educational materials.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Incorrect assumption about aesthetics",
+        null,
+        "Incorrect assumption about counting",
+        "Incorrect assumption about storage"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as the question implies that grouping is done for understanding properties. The reasoning in the solution is sound and matches the key. The distractors reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "उपादानं भवेत्तस्ा (मूषा्ा:) मृत् त्त का लोहमेव च।",
+            "(रसरतनसमुचच् –१०.३)"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.2 How to Group Materials?"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 2,
+          "pageStart": 5,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.2 How to Group Materials?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T12:22:11.619Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If two glass tumblers have the same capacity, but one is half-filled and the other is fully filled with water, which of the following is true?",
+      "choices": [
+        "The half-filled tumbler has more mass",
+        "The fully-filled tumbler has more mass",
+        "Both tumblers have the same mass",
+        "The mass of the tumblers cannot be determined"
+      ],
+      "answerIndex": 1,
+      "solution": "The fully-filled tumbler has more mass because it contains more water, and mass is directly related to the amount of substance present. The half-filled tumbler has less water, so it has less mass. Both tumblers cannot have the same mass because they hold different volumes of water, and the mass can be determined by comparing the amounts of water they contain.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "अगर दो ग्लास के गिलास समान क्षमता रखते हैं, लेकिन एक आधा भरा हुआ है और दूसरा पूरी तरह से पानी से भरा हुआ है, तो निम्नलिखित में से कौन सा सत्य है?",
+          "choices": [
+            "आधा भरा गिलास अधिक द्रव्यमान रखता है",
+            "पूरी तरह से भरा गिलास अधिक द्रव्यमान रखता है",
+            "दोनों गिलासों का द्रव्यमान समान है",
+            "गिलासों का द्रव्यमान निर्धारित नहीं किया जा सकता"
+          ],
+          "solution": "पूरी तरह से भरा गिलास अधिक द्रव्यमान रखता है क्योंकि इसमें अधिक पानी होता है और द्रव्यमान पदार्थ की मात्रा से सीधे संबंधित होता है। आधा भरा गिलास में कम पानी होता है, इसलिए इसका द्रव्यमान कम होता है। दोनों गिलास समान द्रव्यमान नहीं रख सकते क्योंकि वे अलग-अलग आयतन के पानी को धारण करते हैं, और द्रव्यमान उनके द्वारा धारित पानी की मात्रा की तुलना द्वारा निर्धारित किया जा सकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर दोन शीशाचे ग्लास ट्यूम्बलर्स एकसारख्या क्षमतेचे असतील, परंतु एक अर्ध्याने भरलेले असेल आणि दुसरे पूर्णपणे भरलेले असेल, तर खालीलपैकी कोणते खरे आहे?",
+          "choices": [
+            "अर्ध्याने भरलेल्या ट्यूम्बलरमध्ये जास्त द्रव्यमान असते",
+            "पूर्णपणे भरलेल्या ट्यूम्बलरमध्ये जास्त द्रव्यमान असते",
+            "दोन्ही ट्यूम्बलर्समध्ये समान द्रव्यमान असते",
+            "ट्यूम्बलर्सचे द्रव्यमान निश्चित करता येत नाही"
+          ],
+          "solution": "पूर्णपणे भरलेल्या ट्यूम्बलरमध्ये जास्त द्रव्यमान असते कारण त्यामध्ये जास्त पाणी असते आणि द्रव्यमान उपस्थित असलेल्या पदार्थाच्या प्रमाणाशी लागू आहे. अर्ध्याने भरलेल्या ट्यूम्बलरमध्ये कमी पाणी असते, म्हणून त्याचे द्रव्यमान कमी असते. दोन्ही ट्यूम्बलर्स समान द्रव्यमान असू शकत नाहीत कारण ते वेगवेगळ्या आयताच्या पाण्याचे भरतात आणि द्रव्यमान पाण्याच्या मात्रेच्या तुलनेने निश्चित केले जाऊ शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Mistakenly assumes that the half-filled tumbler has more mass",
+        null,
+        "Incorrectly states that both have the same mass",
+        "Believes the mass cannot be determined without additional information"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The solution is correct. The fully-filled tumbler has more mass because it contains more water. The reasoning for the distractors aligns with common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 6,
+          "pageStart": 11,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.3 What are the different Properties of",
+            "Make your own ORS!"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 7,
+          "pageStart": 13,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.3 What are the different Properties of",
+            "Make your own ORS!"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 8,
+          "pageStart": 15,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.4 What is Matter?"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T12:22:11.619Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "If a material is hard, which of the following is most likely to be true about it?",
+      "choices": [
+        "It is easy to bend",
+        "It is difficult to compress",
+        "It is transparent",
+        "It dissolves in water"
+      ],
+      "answerIndex": 1,
+      "solution": "A hard material is one that resists changes in shape, which means it is difficult to compress. This directly supports the option 'It is difficult to compress.' The other options describe properties like flexibility, transparency, and solubility, which are not related to hardness.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि कोई पदार्थ कठोर है, तो निम्नलिखित में से कौन-सा इसके बारे में अधिक संभावित रूप से सही होगा?",
+          "choices": [
+            "इसे मुश्किल से मोड़ा जा सकता है",
+            "इसे कम करना मुश्किल होता है",
+            "यह पारदर्शी होता है",
+            "यह पानी में घुल जाता है"
+          ],
+          "solution": "कठोर पदार्थ वह होता है जो आकृति में परिवर्तन का विरोध करता है, जिसका अर्थ है कि इसे कम करना मुश्किल होता है। इसका अपने विकल्प 'इसे कम करना मुश्किल होता है' के साथ सीधा समर्थन होता है। अन्य विकल्प लचीलापन, पारदर्शिता और विलेयता जैसे गुणों का वर्णन करते हैं, जो कठोरता से संबंधित नहीं हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका सामग्रीची कठोरता असल्यास, खालीलपैकी कोणते त्याबद्दल सर्वात जास्त खात्रीशीर असेल?",
+          "choices": [
+            "ती मोडण्यास सोपी आहे",
+            "ती दाबण्यास अवघड आहे",
+            "ती पारदर्शक आहे",
+            "ती पाण्यात विरघळते"
+          ],
+          "solution": "कठोर सामग्री म्हणजे ती आकृतीत बदलाचा विरोध करते, जे अर्थात ती दाबण्यास अवघड आहे. हे सीधा ऑप्शन 'ती दाबण्यास अवघड आहे' ला समर्थन करते. इतर ऑप्शन म्हणजे लचका, पारदर्शकता आणि विरघळता या गुणधर्मांचे वर्णन करतात, जे कठोरतेशी संबंधित नाहीत.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate technical terms as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Thinks hard means easy to bend",
+        null,
+        "Thinks hard means transparent",
+        "Thinks hard means soluble in water"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 1, as hard materials are typically difficult to compress. The other options represent common misconceptions about the property of hardness.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.4 What is Matter?",
+            "गु मन्द हिम ह्निग्ध श् ‍लक्ष्ण सा नद्र मृ्दु ह्थिराः| गुष्णाः ससूक् म हिश्दा: हिंशहिः स हिपर्यराः||"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.4 What is Matter?",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 11,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.4 What is Matter?",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 12,
+          "pageStart": 21,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.4 What is Matter?",
+            "Learning further"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T12:22:11.619Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which of the following materials would be best suited for making a container that allows us to see the contents inside?",
+      "choices": [
+        "Wood",
+        "Glass",
+        "Plastic",
+        "Iron"
+      ],
+      "answerIndex": 1,
+      "solution": "Glass is the best material for making a container that allows us to see the contents inside because it is transparent, meaning light can pass through it, making objects visible. Wood and iron are opaque, blocking light and preventing visibility. Plastic can be either transparent or opaque, depending on its type, making it less reliable than glass. The correct answer is glass.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "निम्नलिखित सामग्रियों में से कौन-सी सामग्री एक ऐसे बर्तन के लिए सबसे उपयुक्त होगी जिसमें भीतर के सामान को देखा जा सके?",
+          "choices": [
+            "लकड़ी",
+            "कांच",
+            "प्लास्टिक",
+            "लोहा"
+          ],
+          "solution": "कांच एक ऐसी सामग्री है जो भीतर के सामान को देखने वाले बर्तन के लिए सबसे अच्छी होती है क्योंकि यह पारदर्शी होता है, अर्थात रोशनी इसमें से गुजर सकती है, जिससे वस्तुएं दिखाई देती हैं। लकड़ी और लोहा अपारदर्शी होते हैं, जो रोशनी को रोक देते हैं और दृश्यता को रोक देते हैं। प्लास्टिक कई प्रकार का हो सकता है, जो पारदर्शी या अपारदर्शी हो सकता है, जिससे इसकी विश्वसनीयता कांच की तुलना में कम होती है। सही उत्तर कांच है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard technical terms as found in Hindi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Chooses wood, which is opaque and does not allow visibility through it.",
+        null,
+        "Chooses plastic, which is not always transparent and may not allow clear visibility.",
+        "Chooses iron, which is opaque and does not allow visibility through it."
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear correct answer (glass) based on transparency. The reasoning for the distractors is accurate and reflects common misconceptions about material properties.",
+      "sources": [
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 18,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.4 What is Matter?",
+            "गु मन्द हिम ह्निग्ध श् ‍लक्ष्ण सा नद्र मृ्दु ह्थिराः| गुष्णाः ससूक् म हिश्दा: हिंशहिः स हिपर्यराः||"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 10,
+          "pageStart": 18,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.4 What is Matter?",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 11,
+          "pageStart": 20,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.4 What is Matter?",
+            "Let us enhance our learning"
+          ]
+        },
+        {
+          "document": "ncert/6/science/fecu106.pdf",
+          "ordinal": 12,
+          "pageStart": 21,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 6: Materials Around Us",
+            "6.4 What is Matter?",
+            "Learning further"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T12:22:11.619Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student fills one glass tumbler with 500 mL of water and another with 1 L of water. Which of the following is true?",
+      "choices": [
+        "The mass of the second tumbler is double the first",
+        "The volume of the first tumbler is double the second",
+        "The density of the second tumbler is higher",
+        "The weight of the first tumbler is double the second"
+      ],
+      "answerIndex": 0,
+      "solution": "Since volume is directly proportional to mass (assuming the same substance and temperature), the mass of the second tumbler, which has twice the volume, will be twice that of the first. Density and weight depend on mass, not just volume, so they are not necessarily double.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक छात्र एक ग्लास टम्बलर में 500 मिलीलीटर पानी भरता है और दूसरे में 1 लीटर पानी भरता है। निम्न में से कौन सा सत्य है?",
+          "choices": [
+            "दूसरे टम्बलर का द्रव्यमान पहले के दोगुना है",
+            "पहले टम्बलर का आयतन दूसरे के दोगुना है",
+            "दूसरे टम्बलर का घनत्व अधिक है",
+            "पहले टम्बलर का भार दूसरे के दोगुना है"
+          ],
+          "solution": "क्योंकि आयतन द्रव्यमान के सीधे आनुपातिक होता है (मान लीजिए एक ही पदार्थ और तापमान), दूसरे टम्बलर का द्रव्यमान जिसका आयतन दोगुना है, पहले के दोगुना होगा। घनत्व और भार द्रव्यमान पर निर्भर करते हैं, न कि केवल आयतन पर, इसलिए वे आवश्यक रूप से दोगुने नहीं होते।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as used in Hindi-medium science textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका विद्यार्थ्याने एका काचेच्या टम्हाट्यात 500 मिली पाणी आणि दुसऱ्यात 1 लीटर पाणी भरले. खालीलपैकी कोणते खरे आहे?",
+          "choices": [
+            "दुसऱ्या टम्हाट्याचा द्रव्यमान पहिल्याच्या दुप्पट आहे",
+            "पहिल्या टम्हाट्याचा आयतन दुसऱ्याच्या दुप्पट आहे",
+            "दुसऱ्या टम्हाट्याची घनता जास्त आहे",
+            "पहिल्या टम्हाट्याचा वजन दुसऱ्याच्या दुप्पट आहे"
+          ],
+          "solution": "आयतन द्रव्यमानाशी लक्ष्यानुपाती असते (एकाच पदार्थ आणि तापमानाच्या अंदाजाने), दुसऱ्या टम्हाट्याचा द्रव्यमान पहिल्याच्या दुप्पट असेल, ज्याचा आयतन दुप्पट आहे. घनता आणि वजन द्रव्यमानावर अवलंबून असतात, न केवळ आयतनावर, त्यामुळे ते निश्चितपणे दुप्पट नसतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
         null,
         "Confuses volume with mass",
-        "Confuses volume with mass"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and correctly answered. The SI unit of mass is indeed the kilogram, and the other options are either smaller units of mass or units of volume, which is a common misconception.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 6,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.3 What are the different Properties of",
-            "Make your own ORS!"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 7,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.3 What are the different Properties of",
-            "Make your own ORS!"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 8,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T23:29:38.283Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the name given to the method of arranging objects into groups?",
-      "choices": [
-        "Classification",
-        "Observation",
-        "Prediction",
-        "Identification"
-      ],
-      "answerIndex": 0,
-      "solution": "Classification is the method of arranging objects into groups, which is a fundamental concept in science for organizing information. Observation involves noting characteristics, prediction involves forecasting outcomes, and identification is recognizing specific items. None of these other options involve grouping objects systematically.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "वस्तुओं के समूह में व्यवस्थित करने की विधि के लिए क्या नाम दिया जाता है?",
-          "choices": [
-            "वर्गीकरण",
-            "अवलोकन",
-            "अनुमान",
-            "पहचान"
-          ],
-          "solution": "वर्गीकरण वस्तुओं के समूह में व्यवस्थित करने की विधि है, जो विज्ञान में सूचना के संगठन के लिए एक मूलभूत अवधारणा है। अवलोकन विशेषताओं को ध्यान में रखना है, अनुमान परिणामों की भविष्यवाणी करना है, और पहचान विशिष्ट वस्तुओं की पहचान करना है। इनमें से कोई भी अन्य विकल्प वस्तुओं के सिस्टमेटिक रूप से समूह में व्यवस्थित करने में शामिल नहीं है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All terms are standard in Hindi science education.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "वस्तूंना समूहांमध्ये व्यवस्थित करण्याच्या पद्धतीला काय म्हणतात?",
-          "choices": [
-            "वर्गीकरण",
-            "अवलोकन",
-            "अंदाज",
-            "ओळख"
-          ],
-          "solution": "वर्गीकरण ही वस्तूंना समूहांमध्ये व्यवस्थित करण्याची पद्धत आहे, जी विज्ञानात माहिती व्यवस्थित करण्यासाठी मूलभूत अवधारणा आहे. अवलोकन हे वैशिष्ट्यांचे नोंद करणे आहे, अंदाज हे निर्णय घेणे आहे आणि ओळख ही विशिष्ट वस्तूंची ओळख करणे आहे. या इतर विकल्पांमध्ये कोणताही वस्तूंचा प्रणालीबद्धपणे समूह करण्याचा अंग नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the process of grouping with observation",
-        "Confuses the process of grouping with prediction",
-        "Confuses the process of grouping with identification"
+        "Misunderstands the relationship between volume and mass",
+        "Believes density changes with volume alone\",\"Incorrectly assumes weight is directly proportional to volume"
       ],
       "solverAnswers": [
         0,
@@ -184,164 +606,8 @@
         0,
         0
       ],
-      "levelFlag": null,
-      "critique": "The correct answer is 'Classification' as it refers to the process of arranging objects into groups. The other options are not appropriate terms for this process, and the author's reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 9,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "गु मन्द हिम ह्निग्ध श् ‍लक्ष्ण सा नद्र मृ्दु ह्थिराः| गुष्णाः ससूक् म हिश्दा: हिंशहिः स हिपर्यराः||"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 10,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "Let us enhance our learning"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 11,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "Let us enhance our learning"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 12,
-          "pageStart": 21,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "Learning further"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T23:29:38.283Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a glass tumbler is half-filled with water, what can be said about its volume compared to a fully-filled tumbler of the same size?",
-      "choices": [
-        "It is the same",
-        "It is less",
-        "It is more",
-        "It is unknown"
-      ],
-      "answerIndex": 1,
-      "solution": "A half-filled tumbler contains less water than a fully-filled one because the amount of water is directly related to the height of the water level. Since the tumbler's size is the same, the volume of water must be less when it is only half full. The other options are incorrect because the volume cannot be the same or more, and it is not unknown since the relationship between fill level and volume is predictable.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक कांच का टम्बलर आधा भरा हुआ है, तो इसकी मात्रा के बारे में क्या कहा जा सकता है एक ही आकार के पूर्ण रूप से भरे टम्बलर की तुलना में?",
-          "choices": [
-            "यह समान है",
-            "यह कम है",
-            "यह अधिक है",
-            "यह अज्ञात है"
-          ],
-          "solution": "आधा भरा टम्बलर पूर्ण रूप से भरे टम्बलर की तुलना में कम पानी रखता है क्योंकि पानी की मात्रा पानी के स्तर की ऊंचाई से सीधे संबंधित होती है। चूंकि टम्बलर का आकार समान है, इसलिए जब यह केवल आधा भरा होता है तो पानी की मात्रा कम होती है। अन्य विकल्प गलत हैं क्योंकि मात्रा समान या अधिक नहीं हो सकती है, और यह अज्ञात नहीं है क्योंकि भराव स्तर और मात्रा के बीच संबंध पूर्वानुमान लगाया जा सकता है।",
-          "imageAlt": "दो बीकर, एक आधा भरा हुआ और एक पूर्ण रूप से भरा हुआ पानी से",
-          "critique": "The Hindi translation accurately reflects the original English question, with equivalent technical terms and logical structure. The correct answer remains option (2) and the explanation is consistent.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक शीशा टम्बलर अर्धवट पाण्याने भरलेली असेल, तर तिच्या आयतनाबद्दल काय म्हणायला शकता? ज्या टम्बलरच्या आकाराचा तुलना केली जात आहे त्याच्या पूर्णपणे भरलेल्या टम्बलरच्या आयतनाशी.",
-          "choices": [
-            "ते समान आहे",
-            "ते कमी आहे",
-            "ते जास्त आहे",
-            "ते अज्ञात आहे"
-          ],
-          "solution": "अर्धवट टम्बलरमध्ये पूर्णपणे भरलेल्या टम्बलरच्या तुलनेत कमी पाणी असते कारण पाण्याची मात्रा पाण्याच्या पातळीच्या उंचीशी थेट संबंधित असते. टम्बलरच्या आकाराचा तुलना केली जात असल्याने, टम्बलर अर्धवट असल्यास पाण्याचा आयतन कमी असतो. इतर विकल्प अयोग्य आहेत कारण आयतन समान किंवा जास्त असू शकत नाही, आणि ते अज्ञात नसते कारण भरलेल्या पातळी आणि आयतनचा संबंध अचूक असतो.",
-          "imageAlt": "दोन बेकर, एक अर्धवट आणि एक पूर्णपणे पाण्याने भरलेले",
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms. The structure and logic of the question and solution are preserved.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": "Two beakers, one half-filled and one fully-filled with water",
-      "figure": {
-        "kind": "diagram",
-        "spec": {
-          "parts": [
-            {
-              "part": "beaker",
-              "x": 20,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "beaker"
-              ],
-              "text": {
-                "beaker": "tumblerA"
-              }
-            },
-            {
-              "part": "beaker",
-              "x": 60,
-              "y": 30,
-              "size": 20,
-              "labels": [
-                "beaker"
-              ],
-              "text": {
-                "beaker": "tumblerB"
-              }
-            }
-          ],
-          "arrows": [],
-          "texts": []
-        },
-        "labels": {
-          "tumblerA": {
-            "en": "Half-filled tumbler",
-            "hi": "आधा भरा टम्बलर",
-            "mr": "अर्धवट टम्बलर"
-          },
-          "tumblerB": {
-            "en": "Fully-filled tumbler",
-            "hi": "पूर्ण रूप से भरा टम्बलर",
-            "mr": "पूर्णपणे भरलेले टम्बलर"
-          }
-        }
-      },
-      "needsFigure": true,
-      "distractorReason": [
-        "Confuses volume with capacity",
-        null,
-        "Believes that filling a container partially adds more volume than filling it completely",
-        "Confuses volume with unknown"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution correctly identifies that a half-filled tumbler has less volume than a fully-filled one of the same size. The reasoning for the distractors aligns with common misconceptions.",
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct and aligns with the key. The correct answer is 0 because mass is directly proportional to volume when the substance and temperature are constant. The other options reflect common misconceptions about volume, mass, and density.",
       "sources": [
         {
           "document": "ncert/6/science/fecu106.pdf",
@@ -377,597 +643,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T23:29:38.283Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following is an example of a material that is both hard and lustrous?",
-      "choices": [
-        "Wood",
-        "Copper",
-        "Plastic",
-        "Glass"
-      ],
-      "answerIndex": 1,
-      "solution": "Copper is a material that is both hard and lustrous because it has a shiny surface and is resistant to deformation. Wood is not lustrous and is generally not hard. Plastic is typically not hard and lacks a shiny surface. Glass can be hard but is not always lustrous in the same way as copper.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा एक ऐसे पदार्थ का उदाहरण है जो कठोर और चमकदार दोनों होता है?",
-          "choices": [
-            "लकड़ी",
-            "तांबा",
-            "प्लास्टिक",
-            "कांच"
-          ],
-          "solution": "तांबा एक ऐसा पदार्थ है जो कठोर और चमकदार होता है क्योंकि इसकी सतह चमकदार होती है और इसके आकार में परिवर्तन के प्रति प्रतिरोध होता है। लकड़ी चमकदार नहीं होती और सामान्य रूप से कठोर नहीं होती। प्लास्टिक आमतौर पर कठोर नहीं होता और चमकदार सतह नहीं होता। कांच कठोर हो सकता है लेकिन तांबे की तरह चमकदार नहीं होता।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक अशा सामग्रीचे उदाहरण आहे जी खोल आणि चमकदार दोन्ही असते?",
-          "choices": [
-            "लाकड",
-            "तांबा",
-            "प्लास्टिक",
-            "काच"
-          ],
-          "solution": "तांबा खोल आणि चमकदार असलेल्या सामग्रीचे उदाहरण आहे कारण त्याचा चमकदार सतह असतो आणि तो आकृती बदलण्यास प्रतिकार करतो. लाकड चमकदार नसते आणि सामान्यतः खोल नसते. प्लास्टिक सामान्यतः खोल नसते आणि चमकदार सतह नसते. काच खोल असू शकते परंतु तांब्यापेक्षा चमकदार नसते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Incorrectly assumes wood is hard and lustrous",
-        null,
-        "Confuses the properties of plastic with those of copper",
-        "Misunderstands the hardness of glass"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1 (Copper), as it is both hard and lustrous. The author's reasoning for the other options is valid and reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 9,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "गु मन्द हिम ह्निग्ध श् ‍लक्ष्ण सा नद्र मृ्दु ह्थिराः| गुष्णाः ससूक् म हिश्दा: हिंशहिः स हिपर्यराः||"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 10,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "Let us enhance our learning"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 11,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "Let us enhance our learning"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 12,
-          "pageStart": 21,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "Learning further"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T23:29:38.283Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "Which of the following materials would be best suited for making a transparent container?",
-      "choices": [
-        "Glass",
-        "Wood",
-        "Iron",
-        "Copper"
-      ],
-      "answerIndex": 0,
-      "solution": "Glass is the best material for making a transparent container because it allows light to pass through it, making objects behind it visible. Wood, iron, and copper are opaque and do not allow light to pass through them.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित सामग्रियों में से कौन-सी सामग्री एक पारदर्शक बर्तन बनाने के लिए सबसे उपयुक्त होगी?",
-          "choices": [
-            "कांच",
-            "लकड़ी",
-            "लोहा",
-            "तांबा"
-          ],
-          "solution": "कांच एक पारदर्शक बर्तन बनाने के लिए सबसे अच्छी सामग्री है क्योंकि यह प्रकाश के पार होने की अनुमति देता है, जिससे इसके पीछे की वस्तुएं दिखाई देती हैं। लकड़ी, लोहा और तांबा अपारदर्शक हैं और प्रकाश के पार नहीं होते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate technical terms as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता सामग्री एका पारदर्शक वास्तव्यासाठी सर्वात योग्य असेल?",
-          "choices": [
-            "काच",
-            "लाकड",
-            "लोखंड",
-            "तांबे"
-          ],
-          "solution": "काच एका पारदर्शक वास्तव्यासाठी सर्वात योग्य सामग्री आहे कारण ती प्रकाशाला तिच्या माध्यमातून जाऊ देते, ज्यामुळे तिच्या मागे असलेल्या वस्तू दिसू शकतात. लाकड, लोखंड आणि तांबे अपारदर्शक असून त्यांनी प्रकाशाला तिच्या माध्यमातून जाऊ देत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Chooses a material that is not transparent",
-        "Thinks wood is transparent",
-        "Believes copper is transparent"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and aligns with the key. Glass is indeed transparent, while wood, iron, and copper are opaque. The reasons for the wrong options reflect common misconceptions about material transparency.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 9,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "गु मन्द हिम ह्निग्ध श् ‍लक्ष्ण सा नद्र मृ्दु ह्थिराः| गुष्णाः ससूक् म हिश्दा: हिंशहिः स हिपर्यराः||"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 10,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "Let us enhance our learning"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 11,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "Let us enhance our learning"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 12,
-          "pageStart": 21,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "Learning further"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T23:29:38.283Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "If a student pours 500 mL of water into a 1 L bottle, what happens to the volume of water?",
-      "choices": [
-        "It increases",
-        "It decreases",
-        "It remains the same",
-        "It becomes zero"
-      ],
-      "answerIndex": 2,
-      "solution": "The volume of water is determined by the amount of water, not the container's size. Pouring 500 mL of water into a 1 L bottle does not change the amount of water, so the volume remains 500 mL. The correct answer is that the volume remains the same. The other options are incorrect because the amount of water does not change when transferred to a larger container.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक छात्र 500 मिलीलीटर पानी एक 1 लीटर के बोतल में डालता है, तो पानी का आयतन क्या होता है?",
-          "choices": [
-            "इसमें वृद्धि होती है",
-            "इसमें कमी होती है",
-            "यह समान रहता है",
-            "यह शून्य हो जाता है"
-          ],
-          "solution": "पानी का आयतन पानी की मात्रा द्वारा निर्धारित होता है, न कि बर्तन के आकार द्वारा। 500 मिलीलीटर पानी को 1 लीटर की बोतल में डालने से पानी की मात्रा नहीं बदलती, इसलिए आयतन 500 मिलीलीटर रहता है। सही उत्तर यह है कि आयतन समान रहता है। अन्य विकल्प गलत हैं क्योंकि बड़े बर्तन में स्थानांतरित करने पर पानी की मात्रा नहीं बदलती।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the scientific concept. All terms are standard in Hindi science education.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थ्याने 500 मिली पाणी 1 लीटरच्या बाटलीत ओतले, तर पाण्याचा आयतन काय होतो?",
-          "choices": [
-            "तो वाढतो",
-            "तो घटतो",
-            "तो त्याच राहतो",
-            "तो शून्य होतो"
-          ],
-          "solution": "पाण्याचा आयतन पाण्याच्या प्रमाणावर अवलंबून असतो, नाहीतर वास्तविक वस्तूच्या आकारावर. 500 मिली पाणी 1 लीटरच्या बाटलीत ओतल्याने पाण्याच्या प्रमाणात कोणताही बदल होत नाही, म्हणून पाण्याचा आयतन 500 मिली राहतो. योग्य उत्तर आयतन त्याच राहतो हे आहे. इतर विकल्प चुकीचे आहेत कारण जेव्हा पाणी मोठ्या बाटलीत ओतले जाते तेव्हा पाण्याच्या प्रमाणात कोणताही बदल होत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses volume with capacity",
-        "Confuses volume with decrease",
-        null,
-        "Confuses volume with zero"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is clear and the solution is correct. The answer is 2 because the volume of water does not change when poured into a larger container.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 6,
-          "pageStart": 11,
-          "pageEnd": 13,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.3 What are the different Properties of",
-            "Make your own ORS!"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 7,
-          "pageStart": 13,
-          "pageEnd": 15,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.3 What are the different Properties of",
-            "Make your own ORS!"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 8,
-          "pageStart": 15,
-          "pageEnd": 16,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T23:29:38.283Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A student is given a list of materials: plastic, glass, wood, and copper. They are asked to identify which material is both transparent and hard. Which material would be the correct answer?",
-      "choices": [
-        "Plastic",
-        "Glass",
-        "Wood",
-        "Copper"
-      ],
-      "answerIndex": 1,
-      "solution": "Glass is both transparent and hard because it allows light to pass through and has a rigid structure. Plastic is not as hard as glass and is usually more flexible. Wood is not transparent and is not as hard as glass. Copper is a metal that is not transparent and is malleable, not hard.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र को सामग्रियों की सूची दी गई है: प्लास्टिक, कांच, लकड़ी, और तांबा। उन्हें बताना है कि कौन सी सामग्री दोनों पारदर्शी और कठोर है? कौन सी सामग्री सही उत्तर होगी?",
-          "choices": [
-            "प्लास्टिक",
-            "कांच",
-            "लकड़ी",
-            "तांबा"
-          ],
-          "solution": "कांच दोनों पारदर्शी और कठोर है क्योंकि यह प्रकाश के पार होने देता है और एक कठोर संरचना होता है। प्लास्टिक कांच के मुकाबले कम कठोर होता है और आमतौर पर लचीला होता है। लकड़ी पारदर्शी नहीं होती है और कांच के मुकाबले कम कठोर होती है। तांबा एक धातु है जो पारदर्शी नहीं होती है और कठोर नहीं होती है, बल्कि ढालने योग्य होती है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately preserves the meaning, technical terms, and logical structure of the original English question and solution.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थ्याला सामग्रीची यादी दिली गेली आहे: प्लास्टिक, काच, लाकडे आणि तांबे. त्यांना ओळखण्यास सांगितले गेले आहे की कोणती सामग्री दोन्ही अर्थाने पारदर्शक आणि कठीण आहे. योग्य उत्तर कोणते असेल?",
-          "choices": [
-            "प्लास्टिक",
-            "काच",
-            "लाकडे",
-            "तांबे"
-          ],
-          "solution": "काच पारदर्शक आणि कठीण आहे कारण ती प्रकाशाला जाऊ देते आणि एक कठोर संरचना असते. प्लास्टिक काचेपेक्षा कमी कठीण आहे आणि सामान्यतः अधिक लचका असते. लाकडे पारदर्शक नसते आणि काचेपेक्षा कमी कठीण असते. तांबे हा धातू आहे जो पारदर्शक नसतो आणि कठीण नसतो, तर तो नम्र असतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for scientific concepts.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the properties of plastic with those of glass",
-        null,
-        "Misunderstands the properties of wood",
-        "Confuses the properties of copper with those of glass"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is glass, which is both transparent and hard. The other options are correctly identified as not meeting both criteria. The author's reasoning for the wrong options reflects common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 9,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "गु मन्द हिम ह्निग्ध श् ‍लक्ष्ण सा नद्र मृ्दु ह्थिराः| गुष्णाः ससूक् म हिश्दा: हिंशहिः स हिपर्यराः||"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 10,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "Let us enhance our learning"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 11,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "Let us enhance our learning"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 12,
-          "pageStart": 21,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "Learning further"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T23:29:38.283Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A student wants to make a container for storing food. Which of the following properties of the material should be considered?",
-      "choices": [
-        "It should be transparent",
-        "It should be non-corrosive",
-        "It should be heavy",
-        "It should be flammable"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is 'It should be non-corrosive' because food containers need to be made of materials that do not react with the food. Transparency is not always necessary, weight is not the main concern, and flammability is dangerous for food storage.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक छात्र खाद्य सामग्री संग्रहीत करने के लिए एक बर्तन बनाना चाहता है। निम्नलिखित में से कौन-से सामग्री के गुण को ध्यान में रखना चाहिए?",
-          "choices": [
-            "इसे पारदर्शी होना चाहिए",
-            "इसे अक्रिय होना चाहिए",
-            "इसे भारी होना चाहिए",
-            "इसे ज्वलनशील होना चाहिए"
-          ],
-          "solution": "सही उत्तर 'इसे अक्रिय होना चाहिए' है क्योंकि खाद्य सामग्री के बर्तन सामग्री के बने होते हैं जो खाद्य सामग्री के साथ अभिक्रिया नहीं करते। पारदर्शिता हमेशा आवश्यक नहीं होती, भार मुख्य चिंता नहीं है और ज्वलनशीलता खाद्य सामग्री संग्रहण के लिए खतरनाक है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi technical terms.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका विद्यार्थीला खाद्य पदार्थ भंगीत करण्यासाठी एका वस्तूचा वापर करायचा आहे. खालीलपैकी कोणत्या वस्तूच्या गुणधर्माची विचार करायला हवा?",
-          "choices": [
-            "त्याला पारदर्शक असावे",
-            "त्याला अक्षयी असावे",
-            "त्याला भारी असावे",
-            "त्याला ज्वलनशील असावे"
-          ],
-          "solution": "बरोबर उत्तर 'त्याला अक्षयी असावे' आहे कारण खाद्य पदार्थांसाठी वापरल्या जाणाऱ्या वस्तूंनी खाद्य पदार्थांशी प्रतिक्रिया न करणे आवश्यक असते. पारदर्शकता आवश्यक नसू शकते, भार हा मुख्य विचार नसतो आणि ज्वलनशीलता खाद्य पदार्थ भंगीत करण्यासाठी धोकादायक असते.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Chooses a property that is not important for food storage",
-        null,
-        "Believes weight is the main factor",
-        "Thinks flammability is a desired property"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as non-corrosiveness is essential for food storage materials. The other options represent common misconceptions about the properties needed for such containers.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 9,
-          "pageStart": 16,
-          "pageEnd": 18,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "गु मन्द हिम ह्निग्ध श् ‍लक्ष्ण सा नद्र मृ्दु ह्थिराः| गुष्णाः ससूक् म हिश्दा: हिंशहिः स हिपर्यराः||"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 10,
-          "pageStart": 18,
-          "pageEnd": 19,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "Let us enhance our learning"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 11,
-          "pageStart": 20,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "Let us enhance our learning"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 12,
-          "pageStart": 21,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.4 What is Matter?",
-            "Learning further"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T23:29:38.283Z",
+      "generatedAt": "2026-10-29T12:22:11.619Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 6,
-      "stem": "Which of the following properties is most likely to determine whether a material is hard or soft?",
+      "stem": "If a student uses a balance to measure the mass of a cup filled with sand, and another cup filled with pebbles, and finds that the pebbles are heavier, what can be inferred about the materials?",
       "choices": [
-        "Its colour",
-        "Its ability to be scratched",
-        "Its weight",
-        "Its transparency"
+        "Pebbles have less volume than sand",
+        "Pebbles are less dense than sand",
+        "Pebbles occupy more space than sand",
+        "Pebbles have more mass than sand"
       ],
-      "answerIndex": 1,
-      "solution": "The ability of a material to be scratched determines its hardness. Hard materials are difficult to scratch, while soft materials can be scratched easily. Colour, weight, and transparency do not directly relate to hardness.",
+      "answerIndex": 3,
+      "solution": "The balance measures mass directly, so if the pebbles are heavier, they must have more mass. Density and volume depend on mass and space occupied, but the experiment only compares mass. The other options make assumptions not supported by the measurement alone.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "निम्नलिखित में से कौन-सा गुण यह निर्धारित करने में सबसे अधिक संभावना है कि कोई सामग्री कठोर है या नरम?",
+          "stem": "यदि एक छात्र एक तौलाने के बल्लेन का उपयोग एक कप में रेत के द्रव्यमान को मापने के लिए करता है, और दूसरे कप में छोटे पत्थरों के द्रव्यमान को मापता है, और निष्कर्ष निकालता है कि पत्थर भारी हैं, तो इसका क्या अर्थ हो सकता है?",
           "choices": [
-            "इसका रंग",
-            "इसके खरोंचने की क्षमता",
-            "इसका भार",
-            "इसकी पारदर्शिता"
+            "पत्थरों का आयतन रेत से कम होता है",
+            "पत्थर रेत की तुलना में कम घनत्व वाले होते हैं",
+            "पत्थर रेत की तुलना में अधिक जगह घेरते हैं",
+            "पत्थरों का द्रव्यमान रेत के द्रव्यमान से अधिक होता है"
           ],
-          "solution": "किसी सामग्री के खरोंचने की क्षमता इसकी कठोरता को निर्धारित करती है। कठोर सामग्री को खरोंचना कठिन होता है, जबकि नरम सामग्री को आसानी से खरोंचा जा सकता है। रंग, भार और पारदर्शिता कठोरता से सीधे संबंधित नहीं होते।",
+          "solution": "तौलाने के बल्लेन द्रव्यमान को सीधे मापता है, इसलिए यदि पत्थर भारी हैं, तो उनका द्रव्यमान अधिक होना चाहिए। घनत्व और आयतन द्रव्यमान और जगह पर निर्भर करते हैं, लेकिन प्रयोग केवल द्रव्यमान की तुलना करता है। अन्य विकल्प एकमात्र मापन से समर्थित अनुमानों पर आधारित नहीं हैं।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate scientific terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "खालीलपैकी कोणती गुणधर्म एखाद्या सामग्रीच्या कठीणतेच्या अथवा नरमतेच्या निर्धारासाठी सर्वात जास्त शक्यता असते?",
+          "stem": "एका विद्यार्थ्याने रेलिंग वापरून रेणूंनी भरलेल्या कपच्या द्रव्यमानाचे आणि गोल्यांनी भरलेल्या कपच्या द्रव्यमानाचे मोजणे केले आणि त्यांना गोल्या भारी असल्याचे आढळून आले, तर त्या सामग्रीबद्दल काय निष्कर्ष काढता येईल?",
           "choices": [
-            "त्याचा रंग",
-            "त्याची खुरकी लावण्याची क्षमता",
-            "त्याचा वजन",
-            "त्याची पारदर्शकता"
+            "गोल्या रेणूंपेक्षा कमी आयतन घेतात",
+            "गोल्या रेणूंपेक्षा कमी घनता असतात",
+            "गोल्या रेणूंपेक्षा जास्त जागा घेतात",
+            "गोल्यांचे द्रव्यमान रेणूंपेक्षा जास्त असते"
           ],
-          "solution": "एखाद्या सामग्रीची खुरकी लावण्याची क्षमता त्याच्या कठीणतेचा निर्धार करते. कठीण सामग्री खुरकी लावण्यास अडथळा निर्माण करतात, तर नरम सामग्री खुरकी लावण्यास सहज असतात. रंग, वजन आणि पारदर्शकता कठीणतेशी सीधा संबंध नसतो.",
+          "solution": "रेलिंग द्रव्यमान थेट मोजते, म्हणून जर गोल्या भारी असतील तर त्यांचे द्रव्यमान जास्त असावे. घनता आणि आयतन द्रव्यमान आणि जागा वर अवलंबून असतात, परंतु प्रयोगाने द्रव्यमानाची तुलना केली गेली आहे. इतर विकल्प द्रव्यमानावर आधारित मोजणीच्या अभावी असलेल्या अंदाजांवर आधारित आहेत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology commonly found in textbooks.",
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate scientific terminology.",
           "flag": null
         }
       },
@@ -976,121 +694,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Thinks colour determines hardness",
-        null,
-        "Confuses physical property of mass with hardness",
-        "Thinks weight determines hardness\", "
+        "Confuses mass with volume",
+        "Thinks density is the cause of weight difference",
+        "Believes space occupied determines weight\",\"Incorrectly assumes density is the reason for mass difference",
+        null
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that the ability to be scratched is the best indicator of hardness. The reasoning for the distractors aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 3,
-          "pageStart": 6,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.3 What are the different Properties of",
-            "Materials?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 4,
-          "pageStart": 7,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.3 What are the different Properties of",
-            "Materials?"
-          ]
-        },
-        {
-          "document": "ncert/6/science/fecu106.pdf",
-          "ordinal": 5,
-          "pageStart": 9,
-          "pageEnd": 11,
-          "headingPath": [
-            "Chapter 6: Materials Around Us",
-            "6.3 What are the different Properties of",
-            "Materials?"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T23:29:38.283Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Why is the word 'matter' used to describe all materials?",
-      "choices": [
-        "Because they all have colour",
-        "Because they all occupy space and have mass",
-        "Because they all dissolve in water",
-        "Because they all float in water"
-      ],
-      "answerIndex": 1,
-      "solution": "The correct answer is because all materials occupy space and have mass, which is the fundamental definition of matter in science. Other options, like color, solubility, or buoyancy, are not universal properties of all materials.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "सभी सामग्रियों को वर्णित करने के लिए शब्द 'पदार्थ' का उपयोग क्यों किया जाता है?",
-          "choices": [
-            "क्योंकि वे सभी रंग रखते हैं",
-            "क्योंकि वे सभी स्थान घेरते हैं और द्रव्यमान होता है",
-            "क्योंकि वे सभी पानी में घुल जाते हैं",
-            "क्योंकि वे सभी पानी में तैरते हैं"
-          ],
-          "solution": "सही उत्तर यह है क्योंकि सभी सामग्रियां स्थान घेरती हैं और द्रव्यमान होता है, जो विज्ञान में पदार्थ की मूल परिभाषा है। अन्य विकल्प, जैसे रंग, विलेयता या तैराकी, सभी सामग्रियों के सामान्य गुण नहीं हैं।",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains in the same position.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "सर्व सामग्रींना 'द्रव्य' म्हणून वर्णन करण्यासाठी शब्द 'द्रव्य' वापरला जातो कारण?",
-          "choices": [
-            "कारण ते सर्व रंगीत असतात",
-            "कारण ते सर्व जागा घेतात आणि वजन असतो",
-            "कारण ते सर्व पाण्यात विरघळतात",
-            "कारण ते सर्व पाण्यावर तरंगतात"
-          ],
-          "solution": "सर्व सामग्री जागा घेतात आणि वजन असतात, हे विज्ञानातील द्रव्याचे मूलभूत निर्वचन आहे. रंग, विरघळणे किंवा तरंगणे या सर्व सामग्रींच्या वैशिष्ट्यांच्या नसतात.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi scientific terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses property with colour",
-        null,
-        "Confuses property with solubility",
-        "Confuses property with floating"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 1, as all materials occupy space and have mass. The other options are incorrect because not all materials have color, dissolve in water, or float in water.",
+      "critique": "The solution correctly identifies that the balance measures mass, and since pebbles are heavier, they have more mass. The other options involve incorrect assumptions about density and volume, which are not directly addressed in the passage.",
       "sources": [
         {
           "document": "ncert/6/science/fecu106.pdf",
@@ -1126,7 +743,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T23:29:38.283Z",
+      "generatedAt": "2026-10-29T12:22:11.619Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

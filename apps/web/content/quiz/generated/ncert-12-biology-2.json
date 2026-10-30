@@ -21,49 +21,49 @@
   "board": "NCERT",
   "book": "Biology",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T15:26:30.977Z",
+  "generatedAt": "2026-10-29T02:53:11.571Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 1,
-      "stem": "Where does fertilisation take place in humans?",
+      "difficulty": 2,
+      "stem": "What is the primary function of Sertoli cells in the testes?",
       "choices": [
-        "Externally",
-        "Internally",
-        "In the ovary",
-        "In the fallopian tube"
+        "Producing sperm",
+        "Secreting testosterone",
+        "Providing nutrition to germ cells",
+        "Regulating body temperature"
       ],
-      "answerIndex": 3,
-      "solution": "Fertilisation in humans occurs when a sperm cell meets an egg cell, which typically happens in the fallopian tube. The other options are incorrect because external fertilisation is common in some animals but not humans, and the ovary is where eggs are produced, not where fertilisation occurs.",
+      "answerIndex": 2,
+      "solution": "Sertoli cells provide nutrition to germ cells, which are the cells that undergo meiosis to produce sperm. The testes produce sperm, Leydig cells secrete testosterone, and the scrotum regulates temperature. Sertoli cells play a supportive role in sperm development.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "मनुष्य में निषेचन कहाँ होता है?",
+          "stem": "टेस्टिस में सरटोली कोशिकाओं का प्राथमिक कार्य क्या है?",
           "choices": [
-            "बाहर से",
-            "आंतरिक रूप से",
-            "अंडाशय में",
-            "अंडवाहिनी में"
+            "शुक्राणु उत्पादन",
+            "टेस्टोस्टेरॉन का स्रावण",
+            "जनक कोशिकाओं को पोषण प्रदान करना",
+            "शरीर के तापमान का नियमन"
           ],
-          "solution": "मनुष्य में निषेचन तब होता है जब शुक्राणु कोशिका अंडे कोशिका से मिलती है, जो आमतौर पर अंडवाहिनी में होता है। अन्य विकल्प गलत हैं क्योंकि बाह्य निषेचन कुछ जीवों में सामान्य होता है लेकिन मनुष्य में नहीं, और अंडाशय में अंडे उत्पन्न होते हैं, निषेचन नहीं होता है।",
+          "solution": "सरटोली कोशिकाएं जनक कोशिकाओं को पोषण प्रदान करती हैं, जो शुक्राणु उत्पादन के लिए मीओसिस से गुजरती हैं। टेस्टिस शुक्राणु उत्पादित करते हैं, लेडिग कोशिकाएं टेस्टोस्टेरॉन का स्रावण करती हैं, और वृषण थैली तापमान का नियमन करती है। सरटोली कोशिकाएं शुक्राणु विकास में सहायता करती हैं।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate biological terminology as used in Hindi textbooks.",
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "मानवात निर्मोहन कुठे होते?",
+          "stem": "टेस्टिसमधील सर्टोली सेलचे प्राथमिक कार्य काय आहे?",
           "choices": [
-            "बाह्यरूपाने",
-            "आंतरिकरूपाने",
-            "अंडाशयात",
-            "अंडावर्तमान नलिकेत"
+            "शुक्राणू तयार करणे",
+            "टेस्टोस्टेरॉन खाली करणे",
+            "जर्म सेल्सला पोषण देणे",
+            "शरीराचे तापमान नियंत्रित करणे"
           ],
-          "solution": "मानवात निर्मोहन होत असतो जेव्हा शुक्राणू कोशिका अंड्याच्या कोशिकेशी भेटते, जे सामान्यतः अंडावर्तमान नलिकेत होते. इतर विकल्प चुकीचे आहेत कारण बाह्य निर्मोहन काही प्राण्यांमध्ये सामान्य आहे परंतु मानवांमध्ये नाही, आणि अंडाशय हा अंडे तयार करण्याचा ठिकाण आहे, निर्मोहन होण्याचा नाही.",
+          "solution": "सर्टोली सेल्स जर्म सेल्सला पोषण देतात, जे शुक्राणू तयार करण्यासाठी मियोसिस घडवून आणतात. टेस्टिस शुक्राणू तयार करतात, लेडिग सेल्स टेस्टोस्टेरॉन खाली करतात आणि स्क्रोटम तापमान नियंत्रित करते. सर्टोली सेल्स शुक्राणू विकासात सहाय्य करतात.",
           "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology common in Marathi-medium biology textbooks.",
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
           "flag": null
         }
       },
@@ -72,106 +72,105 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses external with internal fertilisation",
-        "Confuses internal with fallopian tube",
-        "Believes fertilization occurs where the egg is produced",
-        null
+        "Confuses the function of germ cells",
+        "Confuses the function of Leydig cells",
+        null,
+        "Confuses the function of the scrotum"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The correct answer is 'In the fallopian tube' as fertilization in humans occurs there. The other options represent common misconceptions about the process.",
+      "critique": "The solution is correct and aligns with the correct answer. The reasoning for the distractors is valid and reflects common student misconceptions.",
       "sources": [
         {
           "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 15,
-          "pageStart": 14,
-          "pageEnd": 14,
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
           "headingPath": [
-            "Chapter 2: Human Reproduction",
-            "EXERCISES"
+            "Chapter 2: Human Reproduction"
           ]
         },
         {
           "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 16,
-          "pageStart": 14,
-          "pageEnd": 14,
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
           "headingPath": [
             "Chapter 2: Human Reproduction",
-            "EXERCISES"
+            "2.1"
           ]
         },
         {
           "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 17,
-          "pageStart": 15,
-          "pageEnd": 15,
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
           "headingPath": [
             "Chapter 2: Human Reproduction",
-            "EXERCISES"
+            "2.1"
           ]
         },
         {
           "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 18,
-          "pageStart": 15,
-          "pageEnd": 15,
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
           "headingPath": [
             "Chapter 2: Human Reproduction",
-            "EXERCISES"
+            "2.2"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:26:30.977Z",
+      "generatedAt": "2026-10-29T02:53:11.571Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 2,
-      "stem": "Which part of the female reproductive system is described as a 'cushion of fatty tissue covered by skin and pubic hair'?",
+      "stem": "What is the function of the acrosome in a sperm?",
       "choices": [
-        "Labia majora",
-        "Labia minora",
-        "Hymen",
-        "Mons pubis"
+        "To provide energy for movement",
+        "To store genetic material",
+        "To help in the fertilisation of the ovum",
+        "To protect the sperm from the acidic environment of the vagina"
       ],
-      "answerIndex": 3,
-      "solution": "The mons pubis is a region of fatty tissue covered by skin and pubic hair, which matches the description given. The labia majora and labia minora are folds of skin near the vaginal opening but are not described as a cushion of fatty tissue. The hymen is a thin membrane and does not fit the description. Therefore, the correct answer is mons pubis.",
+      "answerIndex": 2,
+      "solution": "The acrosome contains enzymes that enable the sperm to penetrate the outer layers of the ovum, facilitating fertilisation. The mitochondria supply energy for movement, the nucleus holds genetic material, and the acrosome does not serve a protective role against acidity.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "मादा जनन तंत्र का कौन-सा भाग 'मांसल ऊतक का एक गद्दा' के रूप में वर्णित किया जाता है जो त्वचा और जननांग बालों द्वारा ढका होता है?",
+          "stem": "स्पर्म में एक्रोसोम का कार्य क्या है?",
           "choices": [
-            "लेबिया मेजोरा",
-            "लेबिया मिनोरा",
-            "हाइमन",
-            "मॉन्स पबिस"
+            "गति के लिए ऊर्जा प्रदान करना",
+            "जीनेटिक सामग्री को संग्रहीत करना",
+            "अंडाणु के निषेचन में सहायता करना",
+            "स्पर्म को वृषण के अम्लीय वातावरण से सुरक्षित रखना"
           ],
-          "solution": "मॉन्स पबिस एक मांसल ऊतक के क्षेत्र होता है जो त्वचा और जननांग बालों द्वारा ढका होता है, जो दी गई विवरण के अनुरूप होता है। लेबिया मेजोरा और लेबिया मिनोरा वैजिनल खोल के पास त्वचा के झुकाव होते हैं लेकिन इन्हें मांसल ऊतक के गद्दे के रूप में वर्णित नहीं किया जाता है। हाइमन एक पतली झिल्ली होती है और इसका विवरण नहीं मिलता है। इसलिए सही उत्तर मॉन्स पबिस है।",
+          "solution": "एक्रोसोम में एंजाइम होते हैं जो स्पर्म को अंडाणु की बाहरी परतों में प्रवेश करने में सक्षम बनाते हैं, जिससे निषेचन सुगम हो जाता है। माइटोकॉन्ड्रिया गति के लिए ऊर्जा प्रदान करते हैं, नाभिक जीनेटिक सामग्री को धारण करता है, और एक्रोसोम अम्लीय वातावरण के खिलाफ सुरक्षा का कार्य नहीं करता है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate anatomical terminology as used in Hindi medical textbooks.",
+          "critique": "Translation is accurate and maintains the scientific terminology used in Hindi textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "महिला जनन प्रणालीच्या कोणत्या भागाला 'मृदु चरबीचा गुंडा ज्यावर त्वचा आणि लैंगिक लूगडे असतात' असे वर्णन केले जाते?",
+          "stem": "स्पर्ममध्ये अक्रोसोमचे कार्य काय आहे?",
           "choices": [
-            "लॅबिया मेजॉरा",
-            "लॅबिया मिनॉरा",
-            "हायमन",
-            "मॉन्स पबिस"
+            "गतीसाठी ऊर्जा पुरविणे",
+            "जीनेटिक विषय भंडारण करणे",
+            "ओवमच्या प्रजोत्पादनास मदत करणे",
+            "स्त्री योनीच्या अम्लीय वातावरणापासून स्पर्मचे रक्षण करणे"
           ],
-          "solution": "मॉन्स पबिस हा त्वचा आणि लैंगिक लूगडे असलेल्या चरबीच्या भागाचा भाग आहे, जो दिलेल्या वर्णनाशी जुळतो. लॅबिया मेजॉरा आणि लॅबिया मिनॉरा हे जननांगाच्या उघडणीजवळ असलेल्या त्वचेच्या वाकड्या आहेत, परंतु त्यांना मृदु चरबीचा गुंडा म्हणून वर्णन केले जात नाही. हायमन हा एक थरा आहे आणि तो वर्णनाशी जुळत नाही. म्हणूनच योग्य उत्तर मॉन्स पबिस आहे.",
+          "solution": "अक्रोसोममध्ये एन्झाइम असतात जे स्पर्मला ओवमच्या बाह्य परतीत घुसण्यास मदत करतात, जे प्रजोत्पादनास अनुमती देते. माइटोकॉन्ड्रिया गतीसाठी ऊर्जा पुरवतात, न्यूक्लियस जीनेटिक विषय भंडारतो आणि अक्रोसोम अम्लीय वातावरणापासून संरक्षणाचे कार्य करत नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi medical terminology.",
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi textbooks.",
           "flag": null
         }
       },
@@ -180,20 +179,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Confuses the function of the labia majora with the description of the mons pubis.",
-        "Confuses the function of the labia minora with the description of the mons pubis.",
-        "Misinterprets the description of the hymen as a cushion of fatty tissue.",
-        null
+        "Refers to the function of the mitochondria in the middle piece",
+        "Refers to the function of the nucleus",
+        null,
+        "Refers to the function of the sperm's plasma membrane or other structures, not the acrosome"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        2,
+        2,
+        2,
+        2,
+        2
       ],
       "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is accurate. The correct answer is 'Mons pubis,' and the distractors are plausible based on common misconceptions about the anatomy of the female reproductive system.",
+      "critique": "The correct answer is 2, as the acrosome contains enzymes that aid in fertilization. The other options correspond to known functions of other parts of the sperm, making them plausible distractors.",
       "sources": [
         {
           "document": "ncert/12/biology/lebo102.pdf",
@@ -227,361 +226,47 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:26:30.977Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "What is the name of the process in which the Graafian follicle ruptures to release the secondary oocyte?",
-      "choices": [
-        "Ovulation",
-        "Oogenesis",
-        "Spermatogenesis",
-        "Fertilisation"
-      ],
-      "answerIndex": 0,
-      "solution": "The process in which the Graafian follicle ruptures to release the secondary oocyte is called ovulation. The other options are incorrect because oogenesis is the process of egg formation, spermatogenesis is the process of sperm formation, and fertilisation is the fusion of sperm and egg.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "ग्राफियन फॉलिकल जिसमें द्वितीयक अंडाणु के निकलने के लिए फटता है, उस प्रक्रिया का नाम क्या है?",
-          "choices": [
-            "ओवुलेशन",
-            "ओजीनेसिस",
-            "स्पर्मेटोजेनेसिस",
-            "निषेचन"
-          ],
-          "solution": "ग्राफियन फॉलिकल जिसमें द्वितीयक अंडाणु के निकलने के लिए फटता है, उस प्रक्रिया को ओवुलेशन कहते हैं। अन्य विकल्प गलत हैं क्योंकि ओजीनेसिस अंडे के निर्माण की प्रक्रिया है, स्पर्मेटोजेनेसिस शुक्राणु के निर्माण की प्रक्रिया है, और निषेचन शुक्राणु और अंडे के मिलन की प्रक्रिया है।",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses standard Hindi biological terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "ग्राफियन फॉलिकल फुटून द्वितीयक अंडाणु बाहेर काढण्याच्या प्रक्रियेचे नाव काय आहे?",
-          "choices": [
-            "ओव्ह्युलेशन",
-            "ओव्होजेनेसिस",
-            "स्पर्मॅटोजेनेसिस",
-            "प्रजोगमन"
-          ],
-          "solution": "ग्राफियन फॉलिकल फुटून द्वितीयक अंडाणु बाहेर काढण्याच्या प्रक्रियेला ओव्ह्युलेशन म्हणतात. इतर विकल्प अयोग्य आहेत कारण ओव्होजेनेसिस ही अंडाच्या निर्मितीची प्रक्रिया आहे, स्पर्मॅटोजेनेसिस ही शुक्राणूच्या निर्मितीची प्रक्रिया आहे आणि प्रजोगमन ही शुक्राणू आणि अंडाच्या संलयनाची प्रक्रिया आहे.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate and uses standard biological terminology used in Marathi textbooks.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses oogenesis with ovulation",
-        "Mixes up spermatogenesis with ovulation",
-        "Thinks fertilisation is the release of the oocyte"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is well-constructed and the solution is accurate. Ovulation is the correct term for the rupture of the Graafian follicle, and the author's explanations for the incorrect options align with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 7,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 2: Human Reproduction",
-            "2.3"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 8,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 2: Human Reproduction",
-            "2.4"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 9,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 2: Human Reproduction",
-            "2.4"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 10,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 2: Human Reproduction",
-            "2.5"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:26:30.977Z",
+      "generatedAt": "2026-10-29T02:53:11.571Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 3,
-      "stem": "What happens to the primary oocytes during the embryonic development stage?",
+      "stem": "If the scrotum is unable to maintain a lower temperature for the testes, what would most likely happen?",
       "choices": [
-        "They undergo spermatogenesis and form sperm.",
-        "They get surrounded by granulosa cells and form primary follicles.",
-        "They are released from the ovary and travel through the fallopian tube.",
-        "They undergo meiosis and form secondary oocytes."
+        "Sperm production would increase",
+        "Sperm production would decrease",
+        "Testosterone production would increase",
+        "Testosterone production would decrease"
       ],
       "answerIndex": 1,
-      "solution": "During the embryonic development stage, a large number of gamete mother cells (oogonia) are formed within each fetal ovary. These cells start division and enter into prophase-I of the meiotic division and get temporarily arrested at that stage, called primary oocytes. Each primary oocyte then gets surrounded by a layer of granulosa cells and is called the primary follicle. The other options describe processes like spermatogenesis, meiosis, and the movement of the egg, which are not directly related to what happens to the primary oocytes during the embryonic stage.",
+      "solution": "If the scrotum is unable to maintain a lower temperature, sperm production would decrease. The testes require a temperature lower than the body's normal temperature for spermatogenesis to occur. The scrotum's role is to regulate this temperature, so its failure would impact sperm production.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "भ्रूण विकास चरण के दौरान प्राथमिक अंडाणु क्या होता है?",
+          "stem": "यदि वृषण कोशिका अपने तापमान को नीचे रखने में असमर्थ हो जाए, तो सबसे अधिक संभावना क्या होगी?",
           "choices": [
-            "वे शुक्राणु बनाने के लिए शुक्रजनन करते हैं।",
-            "वे ग्रैनुलोसा कोशिकाओं से घिर जाते हैं और प्राथमिक फॉलिकल बनाते हैं।",
-            "वे अंडाशय से बाहर निकल जाते हैं और अंडवाहिनी मार्ग से यात्रा करते हैं।",
-            "वे मीओसिस करते हैं और द्वितीयक अंडाणु बनाते हैं।"
+            "शुक्राणु उत्पादन बढ़ जाएगा",
+            "शुक्राणु उत्पादन घट जाएगा",
+            "टेस्टोस्टेरॉन उत्पादन बढ़ जाएगा",
+            "टेस्टोस्टेरॉन उत्पादन घट जाएगा"
           ],
-          "solution": "भ्रूण विकास चरण के दौरान, प्रत्येक भ्रूण अंडाशय में बहुत सारे यौवन जनक कोशिकाएं (ओओगोनिया) बनती हैं। ये कोशिकाएं विभाजन शुरू करती हैं और माइटोसिस विभाजन के प्रोफेज-1 चरण में प्रवेश कर जाती हैं और उस चरण पर स्थायी रूप से रुक जाती हैं, जिसे प्राथमिक अंडाणु कहा जाता है। प्रत्येक प्राथमिक अंडाणु के चारों ओर ग्रैनुलोसा कोशिकाओं की एक परत घिर जाती है और इसे प्राथमिक फॉलिकल कहा जाता है। अन्य विकल्प शुक्रजनन, मीओसिस और अंडे की गति के प्रक्रमों का वर्णन करते हैं, जो प्राथमिक अंडाणु के भ्रूण चरण में होने वाले कार्यों से सीधे संबंधित नहीं हैं।",
+          "solution": "यदि वृषण कोशिका अपने तापमान को नीचे रखने में असमर्थ हो जाए, तो शुक्राणु उत्पादन घट जाएगा। शुक्राणु उत्पादन के लिए वृषण को शरीर के सामान्य तापमान से कम तापमान की आवश्यकता होती है। वृषण कोशिका की भूमिका इस तापमान को नियंत्रित करना होता है, इसलिए इसकी विफलता शुक्राणु उत्पादन पर प्रभाव डालेगी।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology as found in Hindi textbooks.",
+          "critique": "Translation accurately reflects the original meaning with appropriate Hindi terminology used for biological concepts.",
           "flag": null
         },
         "mr": {
-          "stem": "भ्रूणिक विकासाच्या टप्प्यात प्राथमिक अंडाशयाच्या कोशिका काय होते?",
+          "stem": "स्क्रॉटम टेस्टिससाठी खालचे तापमान टिकवू शकत नाही तर काय घडेल?",
           "choices": [
-            "त्या स्पर्मॅटोजेनेसिस द्वारे शुक्राणू तयार करतात.",
-            "त्या ग्रॅनुलोसा कोशिकांनी घेरली जातात आणि प्राथमिक फॉलिकल तयार करतात.",
-            "त्या अंडाशयातून मुक्त होतात आणि अंडनालात चालतात.",
-            "त्या मीओसिस द्वारे द्वितीयक अंडाशय तयार करतात."
+            "शुक्राणू उत्पादन वाढेल",
+            "शुक्राणू उत्पादन कमी होईल",
+            "टेस्टोस्टेरॉन उत्पादन वाढेल",
+            "टेस्टोस्टेरॉन उत्पादन कमी होईल"
           ],
-          "solution": "भ्रूणिक विकासाच्या टप्प्यात, प्रत्येक भ्रूणिक अंडाशयात अंडाशय जनक कोशिका (ओगोनिया) तयार होतात. या कोशिका विभाजन सुरू करतात आणि मीओटिक विभाजनाच्या प्रोफेज-आय टप्प्यात प्रवेश करतात आणि त्याच टप्प्यात अस्थायीपणे थांबवले जाते, ज्याला प्राथमिक अंडाशय म्हणतात. प्रत्येक प्राथमिक अंडाशयाला ग्रॅनुलोसा कोशिकांचा एक थर घेरतो आणि त्याला प्राथमिक फॉलिकल म्हणतात. इतर विकल्पांमध्ये स्पर्मॅटोजेनेसिस, मीओसिस आणि अंडाच्या गतीचे वर्णन आहे, जे प्राथमिक अंडाशयाच्या भ्रूणिक टप्प्यात काय होते याशी सीधा संबंध नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses oogenesis with spermatogenesis.",
-        null,
-        "Misunderstands the process of oogenesis and the formation of follicles.",
-        "Confuses the process of fertilization and implantation with the early stages of oogenesis."
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as primary oocytes are surrounded by granulosa cells to form primary follicles during embryonic development. The other options describe processes that occur at different stages of oogenesis or are unrelated to the embryonic stage.",
-      "sources": [
-        {
-          "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 2: Human Reproduction",
-            "2.2"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 2: Human Reproduction",
-            "2.3"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 7,
-          "headingPath": [
-            "Chapter 2: Human Reproduction",
-            "2.3"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:26:30.977Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "During oogenesis, the primary oocyte undergoes meiosis I and forms a secondary oocyte and a polar body. What is the main advantage of the secondary oocyte retaining most of the cytoplasm?",
-      "choices": [
-        "It helps in the formation of more polar bodies",
-        "It provides necessary nutrients for the early stages of embryonic development",
-        "It ensures the polar body can divide further",
-        "It allows the secondary oocyte to complete meiosis II"
-      ],
-      "answerIndex": 1,
-      "solution": "The secondary oocyte retains most of the cytoplasm to provide the necessary nutrients for the early stages of embryonic development. The other options are incorrect because the polar body does not divide further, the number of polar bodies is not increased by this, and the cytoplasm does not help the secondary oocyte complete meiosis II.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "ओओजेनेसिस के दौरान, प्राथमिक ओसाइट मेयोसिस I से गुजरता है और द्वितीयक ओसाइट और एक पोलर बॉडी बनाता है। द्वितीयक ओसाइट के अधिकांश साइटोप्लाज्म के बरकरार रहने का मुख्य लाभ क्या है?",
-          "choices": [
-            "इससे अधिक पोलर बॉडी के बनने में सहायता मिलती है",
-            "इससे भ्रूण के शुरुआती चरणों के लिए आवश्यक पोषक तत्व प्रदान किए जाते हैं",
-            "इससे पोलर बॉडी के आगे विभाजित होने की गारंटी मिलती है",
-            "इससे द्वितीयक ओसाइट मेयोसिस II पूरा कर सकता है"
-          ],
-          "solution": "द्वितीयक ओसाइट अपने साइटोप्लाज्म के अधिकांश हिस्से को बरकरार रखता है ताकि भ्रूण के शुरुआती चरणों के लिए आवश्यक पोषक तत्व प्रदान किए जा सकें। अन्य विकल्प गलत हैं क्योंकि पोलर बॉडी आगे विभाजित नहीं होता है, इससे पोलर बॉडी की संख्या बढ़ नहीं जाती है और साइटोप्लाज्म द्वितीयक ओसाइट के मेयोसिस II पूरा करने में सहायता नहीं करता है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate, maintains original meaning, and uses appropriate biological terminology in Hindi.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "ओओजेनेसिस दरम्यान, प्राथमिक ओसाइट कमीसाईट आणि एक ध्रुवीय शरीर तयार करण्यासाठी मीओसिस I ला जाते. द्वितीयक ओसाइट कमीसाईट अधिक अंतर्गत पदार्थ राखण्याचा मुख्य फायदा काय आहे?",
-          "choices": [
-            "त्यामुळे अधिक ध्रुवीय शरीर तयार होतात",
-            "त्यामुळे भ्रूण विकासाच्या प्रारंभिक टप्प्यांसाठी आवश्यक पोषक द्रव्ये उपलब्ध होतात",
-            "त्यामुळे ध्रुवीय शरीर आणखी विभाजित होऊ शकते",
-            "त्यामुळे द्वितीयक ओसाइट मीओसिस II पूर्ण करू शकते"
-          ],
-          "solution": "द्वितीयक ओसाइट कमीसाईट अंतर्गत पदार्थ राखते कारण भ्रूण विकासाच्या प्रारंभिक टप्प्यांसाठी आवश्यक पोषक द्रव्ये उपलब्ध होतात. इतर विकल्प चुकीचे आहेत कारण ध्रुवीय शरीर आणखी विभाजित होत नाही, ध्रुवीय शरीरांची संख्या यामुळे वाढत नाही आणि अंतर्गत पदार्थ द्वितीयक ओसाइटला मीओसिस II पूर्ण करण्यास मदत करत नाही.",
-          "imageAlt": null,
-          "critique": "Translation accurately reflects the original meaning with appropriate Marathi biological terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the role of cytoplasm in polar body formation",
-        null,
-        "Believes cytoplasm is used for polar body division",
-        "Thinks cytoplasm helps in meiosis II completion"
-      ],
-      "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 1, as the secondary oocyte retains cytoplasm to provide nutrients for early embryonic development. The other options reflect common misconceptions about the roles of polar bodies and meiosis.",
-      "sources": [
-        {
-          "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 7,
-          "pageStart": 7,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 2: Human Reproduction",
-            "2.3"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 8,
-          "pageStart": 8,
-          "pageEnd": 9,
-          "headingPath": [
-            "Chapter 2: Human Reproduction",
-            "2.4"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 9,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 2: Human Reproduction",
-            "2.4"
-          ]
-        },
-        {
-          "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 10,
-          "pageStart": 10,
-          "pageEnd": 10,
-          "headingPath": [
-            "Chapter 2: Human Reproduction",
-            "2.5"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:26:30.977Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "Which of the following is true about the sex of the baby?",
-      "choices": [
-        "The sex is determined by the mother's gamete",
-        "The sex is determined by the father's gamete",
-        "The sex is determined by the placenta",
-        "The sex is determined by the hormones"
-      ],
-      "answerIndex": 1,
-      "solution": "The sex is determined by the father's gamete because sperm can carry either an X or Y chromosome, while the egg only carries an X. The mother's gamete cannot determine sex because eggs only have X chromosomes. The placenta supports the pregnancy but does not influence the baby's sex. Hormones help with development but do not determine the sex of the baby.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा बच्चे के लिंग के बारे में सही है?",
-          "choices": [
-            "बच्चे का लिंग माता के युग्मक द्वारा निर्धारित होता है",
-            "बच्चे का लिंग पिता के युग्मक द्वारा निर्धारित होता है",
-            "बच्चे का लिंग प्लेसेंटा द्वारा निर्धारित होता है",
-            "बच्चे का लिंग हार्मोन द्वारा निर्धारित होता है"
-          ],
-          "solution": "बच्चे का लिंग पिता के युग्मक द्वारा निर्धारित होता है क्योंकि शुक्राणु या तो एक एक्स या वाई गुणसूत्र ले जा सकते हैं, जबकि अंडा केवल एक एक्स गुणसूत्र ले जाता है। माता के युग्मक लिंग के निर्धारण में सक्षम नहीं हो सकते क्योंकि अंडे केवल एक्स गुणसूत्र रखते हैं। प्लेसेंटा गर्भ के समर्थन में सहायता करता है लेकिन बच्चे के लिंग पर प्रभाव नहीं डालता है। हार्मोन विकास में सहायता करते हैं लेकिन बच्चे के लिंग के निर्धारण में सहायता नहीं करते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate biological terminology as found in Hindi textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी बाळाच्या लिंगाबद्दल कोणते खरे आहे?",
-          "choices": [
-            "बाळाचा लिंग आईच्या गॅमीटमद्वारे ठरतो",
-            "बाळाचा लिंग वडिलाच्या गॅमीटमद्वारे ठरतो",
-            "बाळाचा लिंग प्लॅसेंटामद्वारे ठरतो",
-            "बाळाचा लिंग हॉर्मोन्सद्वारे ठरतो"
-          ],
-          "solution": "बाळाचा लिंग वडिलाच्या गॅमीटमद्वारे ठरतो, कारण शुक्राणूमध्ये एक्स किंवा वाय क्रोमोसोम असू शकतो, तर अंडाण्यामध्ये फक्त एक्स क्रोमोसोम असतो. आईच्या गॅमीटममुळे लिंग ठरू शकत नाही कारण अंडाण्यामध्ये फक्त एक्स क्रोमोसोम असतो. प्लॅसेंटा गर्भाच्या विकासाला साथ देतो पण बाळाच्या लिंगावर प्रभाव टाकत नाही. हॉर्मोन्स विकासाला मदत करतात पण बाळाच्या लिंगाचे निर्धारण करत नाहीत.",
+          "solution": "जर स्क्रॉटम टेस्टिससाठी खालचे तापमान टिकवू शकत नाही, तर शुक्राणू उत्पादन कमी होईल. शुक्राणू उत्पादनासाठी टेस्टिससाठी शरीराच्या सामान्य तापमानापेक्षा खालचे तापमान आवश्यक असते. स्क्रॉटमची भूमिका ही या तापमानाचे नियमन करणे असते, म्हणून त्याच्या अयशस्वी होण्यामुळे शुक्राणू उत्पादनावर परिणाम होईल.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
           "flag": null
@@ -592,10 +277,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "confuses the role of gametes",
+        "Incorrectly assumes higher temperature aids sperm production",
         null,
-        "misunderstands the function of the placenta",
-        "misinterprets the role of hormones"
+        "Confuses testosterone production with temperature regulation",
+        "Confuses testosterone production with temperature regulation"
       ],
       "solverAnswers": [
         1,
@@ -604,8 +289,145 @@
         1,
         1
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the scientific understanding that the father's gamete (sperm) determines the sex of the baby based on whether it carries an X or Y chromosome.",
+      "levelFlag": null,
+      "critique": "The solution correctly identifies that the scrotum's role in maintaining lower temperature is essential for sperm production, and its failure would reduce sperm production. The reasoning aligns with biological principles.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 2: Human Reproduction"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.2"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T02:53:11.571Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What happens if the component L, as shown in the figure, does not attach properly to the endometrium?",
+      "choices": [
+        "Implantation fails",
+        "The embryo develops normally",
+        "The placenta forms correctly",
+        "The zygote divides rapidly"
+      ],
+      "answerIndex": 0,
+      "solution": "If component L does not attach properly to the endometrium, implantation fails because the blastocyst needs to embed in the uterine lining to establish a pregnancy. The embryo would not develop normally without this attachment, the placenta would not form correctly, and the zygote's division would not occur as it requires the proper environment for development.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि चित्र में दिखाए गए घटक L, एंडोमेट्रियम में सही तरह से चिपक नहीं पाता है तो क्या होता है?",
+          "choices": [
+            "आवेशन विफल रहता है",
+            "भ्रूण सामान्य रूप से विकसित होता है",
+            "प्लेसेंटा सही तरह से बनता है",
+            "जाइगोट तेजी से विभाजित होता है"
+          ],
+          "solution": "यदि घटक L एंडोमेट्रियम में सही तरह से चिपक नहीं पाता है तो आवेशन विफल रहता है क्योंकि ब्लास्टोसिस को गर्भाशय की आंतरिक परत में बैठना आवश्यक होता है। इस चिपकाव के बिना भ्रूण सामान्य रूप से विकसित नहीं हो सकता है, प्लेसेंटा सही तरह से नहीं बन सकता है और जाइगोट का विभाजन भी नहीं हो सकता है क्योंकि इसके लिए विकास के लिए उचित वातावरण की आवश्यकता होती है।",
+          "imageAlt": "एक पौधा कोशिका का चित्र जिसमें कोशिका भित्ति को L लेबल किया गया है, जो एंडोमेट्रियम का प्रतिनिधित्व करता है।",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate medical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर आकृतीत दर्शविल्याप्रमाणे घटक L अंडाशयाच्या आतल्या भिंतीशी योग्यरीत्या जुळत नाही, तर काय होईल?",
+          "choices": [
+            "रोपण अयशस्वी होते",
+            "भ्रूण सामान्यपणे विकसित होतो",
+            "प्लेसेंटा योग्यरीत्या तयार होते",
+            "जायगोट त्वरित विभाजित होतो"
+          ],
+          "solution": "जर घटक L अंडाशयाच्या आतल्या भिंतीशी योग्यरीत्या जुळत नाही, तर रोपण अयशस्वी होते कारण ब्लास्टोसिसला प्रजोत्पादन स्थापित करण्यासाठी रोपणाच्या भिंतीत रुजू होणे आवश्यक असते. या जोडणीशिवाय भ्रूण सामान्यपणे विकसित होणार नाही, प्लेसेंटा योग्यरीत्या तयार होणार नाही आणि जायगोटचे विभाजन त्वरित होणार नाही कारण त्याला विकासासाठी योग्य वातावरण आवश्यक असते.",
+          "imageAlt": "एका वनस्पतीच्या कोशिकेचा आकृती, ज्यात कोशिका भिंत लेबल L असून ती अंडाशयाच्या आतल्या भिंतीचे प्रतिनिधित्व करते.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "Diagram showing a plant cell with the cell wall labeled as L, representing the endometrium.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "plantCell",
+              "x": 50,
+              "y": 31.25,
+              "size": 40,
+              "labels": [
+                "cellWall",
+                "membrane",
+                "nucleus",
+                "vacuole",
+                "chloroplast",
+                "cytoplasm"
+              ],
+              "text": {
+                "cellWall": "L"
+              }
+            }
+          ],
+          "arrows": [],
+          "texts": []
+        },
+        "labels": {
+          "L": {
+            "en": "endometrium"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        null,
+        "Believes implantation is not necessary for embryo development",
+        "Confuses implantation with other stages of development",
+        "Fails to understand the role of implantation in pregnancy establishment"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is well-constructed, with a clear and correct answer. The reasoning provided by the author aligns with biological principles, and the misconceptions listed for the distractors are plausible for students at this level.",
       "sources": [
         {
           "document": "ncert/12/biology/lebo102.pdf",
@@ -649,49 +471,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:26:30.977Z",
+      "generatedAt": "2026-10-29T02:53:11.571Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "If a woman has a ruptured ovarian follicle but no fertilization occurs, what is the most likely outcome?",
+      "difficulty": 3,
+      "stem": "A human zygote is formed after the fusion of male and female gametes. What is the ploidy of the zygote?",
       "choices": [
-        "The egg is transported to the uterus and implants.",
-        "The endometrium is shed in the form of menstrual flow.",
-        "The ovary produces more oogonia.",
-        "The fallopian tube becomes the site of implantation."
+        "Diploid",
+        "Haploid",
+        "Triploid",
+        "Polyploid"
       ],
-      "answerIndex": 1,
-      "solution": "If a woman has a ruptured ovarian follicle but no fertilization occurs, the egg is not fertilized and is not implanted in the uterus. The endometrium, which has thickened in preparation for implantation, is shed in the form of menstrual flow. This is the process of menstruation. The other options describe processes that do not occur when no fertilization takes place. The ovary does not produce more oogonia after birth, and the fallopian tube is not the site of implantation.",
+      "answerIndex": 0,
+      "solution": "The correct answer is that the zygote is diploid. This is because the male and female gametes are haploid, and their fusion results in a diploid zygote. The other options are incorrect because they do not match the biological process of fertilisation.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक महिला के अंडाशय में फॉलिकल फट गया है लेकिन निषेचन नहीं होता है, तो सबसे संभावित परिणाम क्या होगा?",
+          "stem": "एक मानव जाइगोट नर और मादा गैमीट्स के संलयन के बाद बनता है। जाइगोट की प्लॉइडी क्या है?",
           "choices": [
-            "अंडा गर्भाशय में ले जाया जाता है और गर्भाशय ग्रीवा में लग जाता है।",
-            "गर्भाशय ग्रीवा रक्तस्राव के रूप में झिल्ली छोड़ देता है।",
-            "अंडाशय अधिक अंडाणुओं का उत्पादन करता है।",
-            "फैलोपियन नलिका लग जाने के स्थान के रूप में कार्य करती है।"
+            "डिप्लॉइड",
+            "हैप्लॉइड",
+            "ट्रिप्लॉइड",
+            "पॉलीप्लॉइड"
           ],
-          "solution": "यदि एक महिला के अंडाशय में फॉलिकल फट गया है लेकिन निषेचन नहीं होता है, तो अंडा निषेचित नहीं होता है और गर्भाशय में लग नहीं जाता है। गर्भाशय ग्रीवा, जो लग जाने के लिए मोटा हो गया है, रक्तस्राव के रूप में झिल्ली छोड़ देता है। यह मासिक धर्म की प्रक्रिया है। अन्य विकल्प निषेचन न होने पर होने वाली प्रक्रियाओं का वर्णन नहीं करते हैं। जन्म के बाद अंडाशय अधिक अंडाणुओं का उत्पादन नहीं करता है, और फैलोपियन नलिका लग जाने के स्थान के रूप में कार्य नहीं करती है।",
+          "solution": "सही उत्तर यह है कि जाइगोट डिप्लॉइड होता है। इसका कारण यह है कि नर और मादा गैमीट्स हैप्लॉइड होते हैं, और उनके संलयन से डिप्लॉइड जाइगोट बनता है। अन्य विकल्प गलत हैं क्योंकि वे निषेचन की जैविक प्रक्रिया के साथ मेल नहीं खाते।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, technical terms, and structure. The correct answer remains option (2), and all distractors are still incorrect.",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard biological terminology as taught in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एका स्त्रीच्या अंडाशयाचा फॉलिकल फुगला असेल परंतु निर्मोहन होऊ नये, तर त्याचा सर्वात शक्य निकाल काय असेल?",
+          "stem": "मानवाचा जीगोट शुक्राणू आणि अंडाणूच्या संलीननानंतर तयार होतो. जीगोटची प्लॉईडी किती असते?",
           "choices": [
-            "अंडाचा गर्भाशयात वाहतूक केली जाते आणि त्याचे अंतर्ग्रहण होते.",
-            "गर्भाशयाचा आतला पर्थ रक्तस्रावाच्या रूपात बाहेर पडतो.",
-            "अंडाशय अधिक ओगोनिया तयार करतो.",
-            "फॅलोपियन ट्यूब अंतर्ग्रहणाचे स्थान बनते."
+            "डिप्लॉइड",
+            "हॅप्लॉइड",
+            "ट्रिप्लॉइड",
+            "पॉलिप्लॉइड"
           ],
-          "solution": "जर एका स्त्रीच्या अंडाशयाचा फॉलिकल फुगला असेल परंतु निर्मोहन होऊ नये, तर अंडाचे निर्मोहन होत नाही आणि गर्भाशयात अंतर्ग्रहण होत नाही. गर्भाशयाचा आतला पर्थ जो अंतर्ग्रहणासाठी जास्त जास्त बाजू बनलेला असतो तो रक्तस्रावाच्या रूपात बाहेर पडतो. हा रक्तस्राव मासिक पाळीचा प्रक्रिया आहे. इतर विकल्पांमध्ये निर्मोहन न झाल्यास घडणारे प्रक्रिया वर्णन केलेल्या नाहीत. जन्मानंतर अंडाशय अधिक ओगोनिया तयार करत नाही आणि फॅलोपियन ट्यूब अंतर्ग्रहणाचे स्थान नसते.",
+          "solution": "योग्य उत्तर डिप्लॉइड आहे. कारण शुक्राणू आणि अंडाणू हे हॅप्लॉइड असतात आणि त्यांच्या संलीननामुळे डिप्लॉइड जीगोट तयार होतो. इतर विकल्प चुकीचे आहेत कारण ते निर्माणाच्या जैविक प्रक्रियेशी जुमानत नाहीत.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses standard Marathi biological terminology.",
           "flag": null
         }
       },
@@ -700,96 +522,106 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Misunderstands the process of implantation and menstruation.",
         null,
-        "Confuses the process of ovulation with the formation of new oogonia.",
-        "Misunderstands the role of the fallopian tube in implantation."
+        "Believes gametes remain haploid after fertilization",
+        "Refers to gametes, not the zygote",
+        "Incorrectly suggests an extra set of chromosomes"
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly explains that in the absence of fertilization, the endometrium is shed, resulting in menstruation. The other options represent common misconceptions about implantation, oogonia production, and the role of the fallopian tube.",
+      "levelFlag": null,
+      "critique": "The question is clear and the solution is correct. The zygote is diploid as it results from the fusion of two haploid gametes. The distractors reflect common misconceptions about ploidy in gametes and zygotes.",
       "sources": [
         {
           "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 4,
-          "pageStart": 5,
-          "pageEnd": 6,
+          "ordinal": 15,
+          "pageStart": 14,
+          "pageEnd": 14,
           "headingPath": [
             "Chapter 2: Human Reproduction",
-            "2.2"
+            "EXERCISES"
           ]
         },
         {
           "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 5,
-          "pageStart": 6,
-          "pageEnd": 6,
+          "ordinal": 16,
+          "pageStart": 14,
+          "pageEnd": 14,
           "headingPath": [
             "Chapter 2: Human Reproduction",
-            "2.3"
+            "EXERCISES"
           ]
         },
         {
           "document": "ncert/12/biology/lebo102.pdf",
-          "ordinal": 6,
-          "pageStart": 7,
-          "pageEnd": 7,
+          "ordinal": 17,
+          "pageStart": 15,
+          "pageEnd": 15,
           "headingPath": [
             "Chapter 2: Human Reproduction",
-            "2.3"
+            "EXERCISES"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 18,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "EXERCISES"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:26:30.977Z",
+      "generatedAt": "2026-10-29T02:53:11.571Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
-      "difficulty": 5,
-      "stem": "In a human female, if the corpus luteum degenerates before implantation occurs, what would be the most likely outcome?",
+      "difficulty": 3,
+      "stem": "If a woman's menstrual cycle is 30 days long, when is ovulation most likely to occur?",
       "choices": [
-        "Ovulation would not occur",
-        "Menstruation would occur",
-        "Fertilisation would take place",
-        "The secondary oocyte would divide again"
+        "Day 5",
+        "Day 14",
+        "Day 15",
+        "Day 28"
       ],
-      "answerIndex": 1,
-      "solution": "If the corpus luteum degenerates before implantation occurs, menstruation would occur because the endometrium would break down. The other options are incorrect because ovulation has already occurred, fertilisation is not related to the corpus luteum, and the secondary oocyte does not divide again after meiosis I.",
+      "answerIndex": 2,
+      "solution": "Ovulation typically occurs around the middle of the menstrual cycle. In a 30-day cycle, the middle would be approximately day 15. Day 14 is more common for a 28-day cycle, and day 5 is too early for ovulation, while day 28 is near the end of the cycle, not the middle.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "मानव मादा में, यदि एक गर्भाशय ग्रंथि गर्भावस्था होने से पहले अपक्षयित हो जाती है, तो सबसे संभावित परिणाम क्या होगा?",
+          "stem": "यदि एक महिला के मासिक चक्र 30 दिन का है, तो अंडोत्सर्ग सबसे अधिक संभावना कब होगा?",
           "choices": [
-            "अंडोत्सर्ग नहीं होगा",
-            "मासिक धर्म होगा",
-            "निषेचन हो जाएगा",
-            "द्वितीयक अंडाणु फिर से विभाजित हो जाएगा"
+            "दिन 5",
+            "दिन 14",
+            "दिन 15",
+            "दिन 28"
           ],
-          "solution": "यदि गर्भाशय ग्रंथि गर्भावस्था होने से पहले अपक्षयित हो जाती है, तो मासिक धर्म होगा क्योंकि गर्भाशय ग्रंथि का आवरण टूट जाएगा। अन्य विकल्प गलत हैं क्योंकि अंडोत्सर्ग पहले ही हो चुका है, निषेचन गर्भाशय ग्रंथि से संबंधित नहीं है, और द्वितीयक अंडाणु मेयोसिस I के बाद फिर से विभाजित नहीं होता।",
+          "solution": "अंडोत्सर्ग सामान्यतः मासिक चक्र के मध्य में होता है। 30 दिन के चक्र में मध्य लगभग दिन 15 होगा। दिन 14 एक 28 दिन के चक्र के लिए अधिक सामान्य है, जबकि दिन 5 अंडोत्सर्ग के लिए बहुत जल्दी है, जबकि दिन 28 चक्र के अंत के पास है, मध्य नहीं।",
           "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, terminology, and structure. Technical terms like 'corpus luteum' are correctly translated as 'गर्भाशय ग्रंथि' (which is the standard term in Hindi textbooks).",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate medical terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "मानव स्त्रीत, जर गर्भाशयाचा रोम (कॉर्पस ल्यूटियम) रोपण होण्यापूर्वी नष्ट होतो, तर त्याचा असाधारण परिणाम काय असेल?",
+          "stem": "जर एका महिलेचा मासिक चक्र 30 दिवसांचा असेल, तर ओव्ह्युलेशन सर्वात जास्त शक्यतो तयार होईल?",
           "choices": [
-            "ओव्ह्युलेशन होणार नाही",
-            "मासिक पाळी होईल",
-            "गर्भधारणा घडेल",
-            "द्वितीयक अंडाणू पुन्हा विभाजित होईल"
+            "दिवस 5",
+            "दिवस 14",
+            "दिवस 15",
+            "दिवस 28"
           ],
-          "solution": "जर कॉर्पस ल्यूटियम रोपण होण्यापूर्वी नष्ट होतो, तर मासिक पाळी होईल, कारण एंडोमेट्रियम तुटेल. इतर विकल्प अयोग्य आहेत कारण ओव्ह्युलेशन आधीच झालेला आहे, गर्भधारणा कॉर्पस ल्यूटियमशी संबंधित नाही आणि द्वितीयक अंडाणू मेयोसिस I नंतर पुन्हा विभाजित होत नाही.",
+          "solution": "ओव्ह्युलेशन सामान्यतः मासिक चक्राच्या मध्यात होते. 30 दिवसांच्या चक्रात, मध्य दिवस 15 असेल. 28 दिवसांच्या चक्रासाठी दिवस 14 अधिक सामान्य आहे, आणि दिवस 5 ओव्ह्युलेशनसाठी खूप लहान आहे, तर दिवस 28 चक्राच्या अखेरच्या भागात असतो, मध्यात नाही.",
           "imageAlt": null,
-          "critique": "The translation is accurate and maintains the scientific terminology appropriate for a Marathi-medium curriculum.",
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
           "flag": null
         }
       },
@@ -798,20 +630,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Believes ovulation depends on the corpus luteum",
+        "Assumes the cycle is 28 days and chooses the typical day 14.",
+        "Confuses the middle of the cycle with day 15, which is correct but not the most likely choice.",
         null,
-        "Thinks fertilisation affects the corpus luteum",
-        "Misunderstands the role of the secondary oocyte after meiosis I"
+        "Chooses the last day of the cycle, which is not the middle."
       ],
       "solverAnswers": [
         1,
-        1,
-        1,
-        1,
-        1
+        2,
+        2,
+        2,
+        2
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and aligns with the biological understanding that the corpus luteum's degeneration leads to the breakdown of the endometrium, resulting in menstruation. The reasoning for the distractors reflects common misconceptions.",
+      "levelFlag": null,
+      "critique": "The correct answer is day 15 for a 30-day cycle, as the middle of the cycle is around that time. The author's reasoning is sound, but the explanation for option 1 is misleading, as day 14 is not the most likely choice for a 30-day cycle.",
       "sources": [
         {
           "document": "ncert/12/biology/lebo102.pdf",
@@ -855,7 +687,864 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T15:26:30.977Z",
+      "generatedAt": "2026-10-29T02:53:11.571Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "Which part of the female reproductive system is responsible for collecting the ovum after ovulation?",
+      "choices": [
+        "Ovary",
+        "Uterus",
+        "Vagina",
+        "Fimbriae"
+      ],
+      "answerIndex": 3,
+      "solution": "The fimbriae are finger-like projections at the edge of the infundibulum of the oviduct, which help in collecting the ovum after ovulation. The ovary produces the ovum, the uterus is where the embryo implants, and the vagina is part of the birth canal. Therefore, the correct answer is fimbriae.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "मादा जनन प्रणाली का कौन-सा भाग अंडोत्सर्ग के बाद अंडा एकत्र करता है?",
+          "choices": [
+            "अंडाशय",
+            "गर्भाशय",
+            "जननांग",
+            "फिम्ब्रिए"
+          ],
+          "solution": "फिम्ब्रिए अंडवाहिनी के इन्फंडिबुलम के किनारे पर उंगली के समान उभार होते हैं, जो अंडोत्सर्ग के बाद अंडा एकत्र करने में सहायता करते हैं। अंडाशय अंडा उत्पन्न करता है, गर्भाशय में भ्रूण लगता है, और जननांग जन्म मार्ग का हिस्सा है। इसलिए सही उत्तर फिम्ब्रिए है।",
+          "imageAlt": "मादा जनन प्रणाली का चित्र जिसमें अंडवाहिनी, अंडाशय, गर्भाशय और जननांग दिखाए गए हैं, अंडवाहिनी के अंत में फिम्ब्रिए भी दिखाए गए हैं।",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard medical terminology as taught in Hindi-medium textbooks.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "महिला जनन प्रणालीच्या कोणत्या भागाची जबाबदारी अंडाकोशिका अंडावर्तनानंतर घेण्याची असते?",
+          "choices": [
+            "अंडाशय",
+            "गर्भाशय",
+            "जननांग",
+            "फिंब्रिए"
+          ],
+          "solution": "फिंब्रिए हे अंडावाहिनीच्या इंफंडिबुलमच्या कडेवरील अंगुलीसारख्या प्रक्षेपांचे असतात, जे अंडावर्तनानंतर अंडाकोशिका घेण्यामध्ये मदत करतात. अंडाशय अंडाकोशिका तयार करतो, गर्भाशयात भ्रूण लागतो आणि जननांग जन्म मार्गाचा भाग असतो. म्हणूनच योग्य उत्तर फिंब्रिए आहे.",
+          "imageAlt": "महिला जनन प्रणालीचा आरेख, ज्यामध्ये अंडावाहिनी, अंडाशय, गर्भाशय आणि जननांग दाखवले गेले आहेत, आणि अंडावाहिनीच्या शेवटी फिंब्रिए दाखवले गेले आहेत.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Marathi-medium textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "Diagram of the female reproductive system showing the oviduct, ovary, uterus, and vagina, with fimbriae at the end of the oviduct.",
+      "figure": {
+        "kind": "diagram",
+        "spec": {
+          "parts": [
+            {
+              "part": "plantCell",
+              "x": 50,
+              "y": 30,
+              "size": 30,
+              "labels": [
+                "cellWall",
+                "membrane",
+                "nucleus",
+                "vacuole",
+                "chloroplast",
+                "cytoplasm"
+              ],
+              "text": {
+                "cellWall": "infundibulum",
+                "membrane": "fimbriae"
+              }
+            },
+            {
+              "part": "plantCell",
+              "x": 20,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "cellWall",
+                "membrane",
+                "nucleus",
+                "vacuole",
+                "chloroplast",
+                "cytoplasm"
+              ],
+              "text": {
+                "cellWall": "ovary"
+              }
+            },
+            {
+              "part": "plantCell",
+              "x": 80,
+              "y": 30,
+              "size": 20,
+              "labels": [
+                "cellWall",
+                "membrane",
+                "nucleus",
+                "vacuole",
+                "chloroplast",
+                "cytoplasm"
+              ],
+              "text": {
+                "cellWall": "uterus"
+              }
+            },
+            {
+              "part": "plantCell",
+              "x": 80,
+              "y": 50,
+              "size": 20,
+              "labels": [
+                "cellWall",
+                "membrane",
+                "nucleus",
+                "vacuole",
+                "chloroplast",
+                "cytoplasm"
+              ],
+              "text": {
+                "cellWall": "vagina"
+              }
+            }
+          ],
+          "arrows": [],
+          "texts": []
+        },
+        "labels": {
+          "infundibulum": {
+            "en": "infundibulum",
+            "hi": "इन्फंडिबुलम",
+            "mr": "इंफंडिबुलम"
+          },
+          "fimbriae": {
+            "en": "fimbriae",
+            "hi": "फिम्ब्रिए",
+            "mr": "फिंब्रिए"
+          },
+          "ovary": {
+            "en": "ovary",
+            "hi": "अंडाशय",
+            "mr": "अंडाशय"
+          },
+          "uterus": {
+            "en": "uterus",
+            "hi": "गर्भाशय",
+            "mr": "गर्भाशय"
+          },
+          "vagina": {
+            "en": "vagina",
+            "hi": "जननांग",
+            "mr": "जननांग"
+          }
+        }
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses the ovary, which produces the ovum, with the correct answer.",
+        "Confuses the uterus, which is where the embryo implants, with the correct answer.",
+        "Confuses the vagina, which is part of the birth canal, with the correct answer.",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed, with a clear and accurate solution. The correct answer is fimbriae, and the distractors are based on common misconceptions about the roles of the ovary, uterus, and vagina.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 2: Human Reproduction"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.2"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T02:53:11.571Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A man is diagnosed with a condition where his Leydig cells are not functioning properly. What would be the most likely consequence?",
+      "choices": [
+        "Decreased sperm production",
+        "Increased sperm production",
+        "Decreased testosterone production",
+        "Increased testosterone production"
+      ],
+      "answerIndex": 2,
+      "solution": "If Leydig cells are not functioning properly, the most likely consequence is decreased testosterone production. Leydig cells are responsible for producing androgens like testosterone, which are essential for male sexual development and sperm production. The testes would still produce sperm, but testosterone levels would drop.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक व्यक्ति के लेडिग कोशिकाओं के सामान्य रूप से कार्य न करने के कारण एक स्थिति के लिए निदान किया जाता है। सबसे संभावित परिणाम क्या होगा?",
+          "choices": [
+            "कम स्पर्म उत्पादन",
+            "अधिक स्पर्म उत्पादन",
+            "कम टेस्टोस्टेरॉन उत्पादन",
+            "अधिक टेस्टोस्टेरॉन उत्पादन"
+          ],
+          "solution": "अगर लेडिग कोशिकाएं सामान्य रूप से कार्य नहीं कर रही हैं, तो सबसे संभावित परिणाम कम टेस्टोस्टेरॉन उत्पादन होगा। लेडिग कोशिकाएं एंड्रोजन जैसे टेस्टोस्टेरॉन के उत्पादन के लिए उत्तरदायी होती हैं, जो पुरुष लैंगिक विकास और स्पर्म उत्पादन के लिए आवश्यक होते हैं। अंडकोशिका अभी भी स्पर्म उत्पादित करेगी, लेकिन टेस्टोस्टेरॉन के स्तर गिर जाएंगे।",
+          "imageAlt": null,
+          "critique": "Translation is accurate, maintains original meaning, and uses appropriate Hindi medical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका माणसाला असा आजार असल्याचे निदान केले जाते की त्याच्या लेडिग कोशिका अपयशी आहेत. त्याचे सर्वात शक्य परिणाम काय असेल?",
+          "choices": [
+            "कमी शुक्राणू उत्पादन",
+            "वाढलेले शुक्राणू उत्पादन",
+            "कमी टेस्टोस्टेरॉन उत्पादन",
+            "वाढलेले टेस्टोस्टेरॉन उत्पादन"
+          ],
+          "solution": "जर लेडिग कोशिका अपयशी असतील तर सर्वात शक्य परिणाम कमी टेस्टोस्टेरॉन उत्पादन असेल. लेडिग कोशिका अंडरोजन्स असलेल्या टेस्टोस्टेरॉन चे उत्पादन करतात, जे पुरुष लैंगिक विकास आणि शुक्राणू उत्पादनासाठी आवश्यक आहेत. त्याच्या अंडकोशांमध्ये शुक्राणू उत्पादन होत राहील, परंतु टेस्टोस्टेरॉनच्या पातळी कमी होईल.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of Leydig cells with sperm production",
+        "Incorrectly assumes that Leydig cells influence sperm production directly",
+        null,
+        "Confuses the role of Leydig cells with testosterone production"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies that Leydig cells are responsible for testosterone production, and their dysfunction leads to decreased testosterone. The reasoning for the distractors aligns with common misconceptions about the roles of Leydig cells.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 2: Human Reproduction"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.2"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T02:53:11.571Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "A male human produces sperm throughout his reproductive life, while a female human produces eggs in a discontinuous manner. What is the main reason for this difference?",
+      "choices": [
+        "Spermatogenesis occurs continuously in the testes, while oogenesis stops after the formation of primary oocytes",
+        "Spermatogenesis requires constant nourishment from Sertoli cells, while oogenesis does not",
+        "Spermatogenesis involves meiosis only once, while oogenesis involves multiple stages",
+        "Spermatogenesis is controlled by testosterone, while oogenesis is controlled by estrogen"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is that spermatogenesis occurs continuously in the testes, while oogenesis stops after the formation of primary oocytes. Spermatogenesis is an ongoing process because sperm production can continue throughout a male's life, while oogenesis begins during the embryonic stage and is arrested at prophase-I until puberty. The other options are incorrect because they either misrepresent the process or focus on secondary factors.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक पुरुष मनुष्य अपने जनन जीवन के दौरान बार-बार शुक्राणु उत्पन्न करता है, जबकि एक महिला मनुष्य असतत रूप से अंडे उत्पन्न करती है। इस अंतर का मुख्य कारण क्या है?",
+          "choices": [
+            "शुक्राणुजनन टेस्टिस में लगातार होता है, जबकि प्राथमिक अंडाणु के बनने के बाद अंडाणुजनन रुक जाता है",
+            "शुक्राणुजनन के लिए सर्टोली कोशिकाओं से लगातार पोषण की आवश्यकता होती है, जबकि अंडाणुजनन के लिए नहीं",
+            "शुक्राणुजनन में केवल एक बार मेयोसिस होती है, जबकि अंडाणुजनन में कई चरण होते हैं",
+            "शुक्राणुजनन टेस्टोस्टेरोन द्वारा नियंत्रित होता है, जबकि अंडाणुजनन एस्ट्रोजन द्वारा नियंत्रित होता है"
+          ],
+          "solution": "सही उत्तर यह है कि शुक्राणुजनन टेस्टिस में लगातार होता है, जबकि प्राथमिक अंडाणु के बनने के बाद अंडाणुजनन रुक जाता है। शुक्राणुजनन एक लगातार प्रक्रिया है क्योंकि शुक्राणु उत्पादन पुरुष के जीवन के दौरान जारी रह सकता है, जबकि अंडाणुजनन भ्रूण के चरण में शुरू होता है और पबर्टी तक प्रोफेज-1 पर रुक जाता है। अन्य विकल्प गलत हैं क्योंकि ये प्रक्रिया को गलत तरीके से प्रस्तुत करते हैं या द्विगुणित कारकों पर ध्यान केंद्रित करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका मानव पुरुषाने त्याच्या जनन काळात अखंडपणे शुक्राणू तयार केले, तर मानव स्त्री असत्य विधीने अंडाणू तयार करते. ह्या फरकाचे मुख्य कारण काय आहे?",
+          "choices": [
+            "स्पर्माटोजेनेसिस टेस्टिसमध्ये अखंडपणे होते, तर प्राथमिक ओओसाईट्सच्या निर्मितीनंतर ओओजेनेसिस थांबते",
+            "स्पर्माटोजेनेसिसला सर्टोली कोशिकांकडून अखंड पोषण आवश्यक असते, तर ओओजेनेसिसला नाही",
+            "स्पर्माटोजेनेसिसमध्ये एकदा मीओसिस होते, तर ओओजेनेसिसमध्ये अनेक टप्पे असतात",
+            "स्पर्माटोजेनेसिस टेस्टोस्टेरॉनने नियंत्रित केले जाते, तर ओओजेनेसिस एस्ट्रोजेनने नियंत्रित केले जाते"
+          ],
+          "solution": "बरोबर उत्तर हे आहे की स्पर्माटोजेनेसिस टेस्टिसमध्ये अखंडपणे होते, तर प्राथमिक ओओसाईट्सच्या निर्मितीनंतर ओओजेनेसिस थांबते. स्पर्माटोजेनेसिस हा एक अखंड प्रक्रिया आहे कारण शुक्राणू उत्पादन मानव पुरुषाच्या जनन काळात चालू राहते, तर ओओजेनेसिस भ्रूणिक टप्प्यात सुरू होते आणि पबर्टीपर्यंत प्रोफेज-I च्या टप्प्यात थांबते. इतर विकल्प चुकीचे आहेत कारण ते प्रक्रियेचे अपुरे वर्णन करतात किंवा द्वितीयक सामग्रीवर लक्ष केंद्रित करतात.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the scientific terminology used in Marathi biology textbooks. The structure and meaning of the question and options are preserved.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the stages of spermatogenesis and oogenesis",
+        "Focuses on Sertoli cells, which are not the main reason for the difference",
+        "Incorrectly states that spermatogenesis involves meiosis only once, while it involves two rounds of meiosis like oogenesis"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is option 0, as it accurately reflects the continuous nature of spermatogenesis and the arrested state of oogenesis. The other options contain misconceptions about the processes involved.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 15,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "EXERCISES"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 16,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "EXERCISES"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 17,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "EXERCISES"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 18,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T02:53:11.571Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 5,
+      "stem": "If a woman does not experience menstruation, what could be a possible reason?",
+      "choices": [
+        "She is pregnant",
+        "She is in her teenage years",
+        "She is undergoing menopause",
+        "She is experiencing a normal menstrual cycle"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is that she is pregnant because pregnancy causes the body to stop menstruating. Being in her teenage years or undergoing menopause does not necessarily mean she would not have a menstrual cycle. A normal menstrual cycle would involve menstruation, so it cannot be the reason for its absence.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक महिला को मासिक धर्म नहीं होता है, तो संभावित कारण क्या हो सकता है?",
+          "choices": [
+            "वह गर्भवती है",
+            "वह किशोरावस्था में है",
+            "वह अंतर्मासिक अवस्था में है",
+            "वह एक सामान्य मासिक धर्म चक्र का अनुभव कर रही है"
+          ],
+          "solution": "सही उत्तर यह है कि वह गर्भवती है क्योंकि गर्भावस्था शरीर को मासिक धर्म रोक देती है। उसकी किशोरावस्था या अंतर्मासिक अवस्था आवश्यक रूप से उसके मासिक धर्म चक्र के अभाव का कारण नहीं हो सकती है। एक सामान्य मासिक धर्म चक्र में मासिक धर्म शामिल होता है, इसलिए इसके अभाव का कारण नहीं हो सकता है।",
+          "imageAlt": null,
+          "critique": "The Hindi translation accurately reflects the original English question and maintains the correct answer and distractors. Technical terms like 'मासिक धर्म' (menstruation) and 'गर्भवती' (pregnant) are appropriately used.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर एका स्त्रीला मासिक पाळी जाणवत नसेल तर त्याचे शक्य कारण काय असू शकते?",
+          "choices": [
+            "ती गर्भवती आहे",
+            "ती तरुण वयात आहे",
+            "ती अंतर्गत निर्मोक्षाच्या प्रक्रियेत आहे",
+            "ती सामान्य मासिक पाळी अनुभवत आहे"
+          ],
+          "solution": "योग्य उत्तर ती गर्भवती आहे कारण गर्भधारणेमुळे शरीराने मासिक पाळी थांबवली जाते. तिच्या तरुण वयात किंवा अंतर्गत निर्मोक्षाच्या प्रक्रियेत असणे तिला मासिक पाळी नसण्याचे निश्चित कारण नाही. सामान्य मासिक पाळीमध्ये मासिक पाळी असते, म्हणून ती तिच्या अनुपस्थितीचे कारण नसू शकते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Believes that menstruation starts only after puberty and not during it",
+        "Believes menopause causes immediate cessation of menstruation without considering that it's a gradual process",
+        "Confuses the absence of menstruation with a normal condition rather than recognizing it as a sign of possible pregnancy or other factors"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
+      "critique": "The correct answer is 0 (She is pregnant), as lack of menstruation is a common early sign of pregnancy. The other options are incorrect: teenagers can still menstruate, menopause involves a gradual cessation, and absence of menstruation is not normal.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 7,
+          "pageStart": 7,
+          "pageEnd": 8,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.3"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 8,
+          "pageStart": 8,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.4"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 9,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.4"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 10,
+          "pageStart": 10,
+          "pageEnd": 10,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.5"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T02:53:11.571Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "A female is found to have a mutation that prevents the proper development of the oviducts. What would be the most immediate effect on her reproductive system?",
+      "choices": [
+        "Ovulation would not occur",
+        "Fertilisation would not occur",
+        "Implantation would not occur",
+        "Gestation would not occur"
+      ],
+      "answerIndex": 1,
+      "solution": "If the oviducts are not properly developed, the most immediate effect would be that fertilisation would not occur. The oviducts are the site where fertilisation typically takes place. Ovulation, implantation, and gestation can still happen, but fertilisation is essential for the formation of a zygote.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक महिला के अंडवाहिनी के सामान्य विकास को रोकने वाले उत्परिवर्तन के कारण पाया जाता है। उसके जनन प्रणाली पर सबसे आम प्रभाव क्या होगा?",
+          "choices": [
+            "अंडोत्सर्ग नहीं होगा",
+            "निषेचन नहीं होगा",
+            "भ्रूण के अंग में बैठना नहीं होगा",
+            "गर्भावस्था नहीं होगी"
+          ],
+          "solution": "अगर अंडवाहिनी सामान्य रूप से विकसित नहीं होती है, तो सबसे आम प्रभाव यह होगा कि निषेचन नहीं होगा। अंडवाहिनी निषेचन के लिए सामान्य स्थान होती है। अंडोत्सर्ग, भ्रूण के अंग में बैठना और गर्भावस्था हो सकती है, लेकिन जीवित अंडे के बनने के लिए निषेचन आवश्यक है।",
+          "imageAlt": null,
+          "critique": "Translation accurately reflects the original meaning, technical terms are appropriate for Hindi-medium curriculum, and the correct answer remains option (1).",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका महिलेला अशी उत्परिवर्तन आहे जी अंडाशयाच्या योनीच्या योग्य विकासाला अडथळा निर्माण करते. तिच्या जनन प्रणालीवर सर्वात आधी काय परिणाम होईल?",
+          "choices": [
+            "अंडास्राव होणार नाही",
+            "गर्भधारणा होणार नाही",
+            "गर्भाशयात बसणे नको होईल",
+            "गर्भधारणा होणार नाही"
+          ],
+          "solution": "जर अंडाशयाच्या योनी योग्यरित्या विकसित झालेल्या नाहीत, तर त्याचा सर्वात आधीचा परिणाम असेल की गर्भधारणा होणार नाही. अंडाशयाच्या योनी हे गर्भधारणेचे स्थान असते. अंडास्राव, गर्भाशयात बसणे आणि गर्भधारणा अजूनही होऊ शकतात, परंतु गर्भधारणा जीवनाच्या निर्मितीसाठी आवश्यक आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi medical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Confuses the role of the oviducts with ovulation",
+        null,
+        "Confuses the role of the oviducts with implantation",
+        "Confuses the role of the oviducts with gestation"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. The oviducts are the site of fertilization, so their improper development would prevent fertilization. The other options are based on common misconceptions about the roles of other reproductive structures.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 1,
+          "headingPath": [
+            "Chapter 2: Human Reproduction"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 1,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 2,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.1"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 3,
+          "pageStart": 3,
+          "pageEnd": 4,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.2"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T02:53:11.571Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If the inner cell mass of the blastocyst contains stem cells, what is the significance of this in embryonic development?",
+      "choices": [
+        "They give rise to all tissues and organs",
+        "They help in the formation of the placenta",
+        "They produce hormones for pregnancy",
+        "They form the outer layer of the blastocyst"
+      ],
+      "answerIndex": 0,
+      "solution": "Stem cells in the inner cell mass have the potential to give rise to all tissues and organs in the adult. 'They help in the formation of the placenta' is incorrect because the trophoblast forms the placenta. 'They produce hormones for pregnancy' is incorrect because the placenta produces hormones. 'They form the outer layer of the blastocyst' is incorrect because the outer layer is the trophoblast.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि ब्लास्टोसिस के आंतरिक कोशिका द्रव्य में स्टेम सेल हैं, तो इसका भ्रूण विकास में क्या महत्व है?",
+          "choices": [
+            "वे सभी ऊतकों एवं अंगों के उत्पादन में सक्षम होते हैं",
+            "वे प्लेसेंटा के निर्माण में सहायता करते हैं",
+            "वे गर्भावस्था के लिए हार्मोन उत्पादित करते हैं",
+            "वे ब्लास्टोसिस की बाहरी परत बनाते हैं"
+          ],
+          "solution": "आंतरिक कोशिका द्रव्य में स्टेम सेल के वयस्क में सभी ऊतकों एवं अंगों के उत्पादन की क्षमता होती है। 'वे प्लेसेंटा के निर्माण में सहायता करते हैं' गलत है क्योंकि प्लेसेंटा ट्रॉफोब्लास्ट द्वारा बनता है। 'वे गर्भावस्था के लिए हार्मोन उत्पादित करते हैं' गलत है क्योंकि प्लेसेंटा हार्मोन उत्पादित करता है। 'वे ब्लास्टोसिस की बाहरी परत बनाते हैं' गलत है क्योंकि बाहरी परत ट्रॉफोब्लास्ट होती है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi terminology for biological concepts.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "जर ब्लास्टोसिसच्या आंतरिक कोशिका द्रव्यामध्ये स्टेम सेल असतात, तर याचा भ्रूण विकासात काय अर्थ आहे?",
+          "choices": [
+            "ते सर्व ऊतींच्या आणि अवयवांच्या उत्पत्तीला प्रेरित करतात",
+            "ते जठराच्या निर्मितीमध्ये मदत करतात",
+            "ते गर्भधारणेसाठी हॉर्मोन तयार करतात",
+            "ते ब्लास्टोसिसच्या बाह्य बर्माच्या निर्मितीला प्रेरित करतात"
+          ],
+          "solution": "आंतरिक कोशिका द्रव्यामधील स्टेम सेल वयस्क व्यक्तीतील सर्व ऊतींच्या आणि अवयवांच्या उत्पत्तीला प्रेरित करण्याची क्षमता असते. 'ते जठराच्या निर्मितीमध्ये मदत करतात' हे अयोग्य आहे कारण जठराची निर्मिती ट्रॉफोब्लास्ट द्वारे केली जाते. 'ते गर्भधारणेसाठी हॉर्मोन तयार करतात' हे अयोग्य आहे कारण जठराच्या द्वारे हॉर्मोन तयार केले जातात. 'ते ब्लास्टोसिसच्या बाह्य बर्माच्या निर्मितीला प्रेरित करतात' हे अयोग्य आहे कारण बाह्य बर्मा ट्रॉफोब्लास्ट द्वारे बनते.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for biological concepts.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "confuses the role of the trophoblast with the inner cell mass",
+        "misattributes placental function to stem cells",
+        "confuses the outer layer with the inner cell mass"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution correctly identifies the inner cell mass as the source of all tissues and organs, and correctly explains why the other options are wrong. The misconceptions cited by the author are accurate and reflect common student errors.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 11,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.5"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 12,
+          "pageStart": 12,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.6"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 13,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.6"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 14,
+          "pageStart": 13,
+          "pageEnd": 13,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "2.7"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T02:53:11.571Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a female, the formation of a secondary oocyte is followed by a second meiotic division. Under what condition does this second division complete?",
+      "choices": [
+        "When the secondary oocyte is fertilised by a sperm",
+        "When the oocyte reaches the uterus",
+        "When the corpus luteum forms",
+        "When the secondary oocyte is released from the ovary"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is that the second meiotic division of the secondary oocyte completes only when it is fertilised by a sperm. This is because the secondary oocyte is arrested at metaphase-II until fertilisation occurs, which triggers the completion of meiosis. The other options are incorrect because they do not reflect the biological requirement for fertilisation to complete the process.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक मादा में, द्वितीयक अंडाणु के निर्माण के बाद द्वितीय मेयोटिक विभाजन होता है। इस द्वितीय विभाजन की पूर्ति किस स्थिति में होती है?",
+          "choices": [
+            "जब द्वितीयक अंडाणु शुक्राणु द्वारा निषेचित होता है",
+            "जब अंडाणु गर्भाशय तक पहुँचता है",
+            "जब कॉर्पस ल्यूटियम बनता है",
+            "जब द्वितीयक अंडाणु अंडाशय से बाहर निकलता है"
+          ],
+          "solution": "सही उत्तर यह है कि द्वितीयक अंडाणु का द्वितीय मेयोटिक विभाजन केवल तभी पूर्ण होता है जब इसे शुक्राणु द्वारा निषेचित किया जाता है। ऐसा इसलिए होता है क्योंकि द्वितीयक अंडाणु मेटाफेज-II में रुका रहता है जब तक कि निषेचन नहीं हो जाता, जो मेयोसिस की पूर्ति को उत्तेजित करता है। अन्य विकल्प गलत हैं क्योंकि वे निषेचन के आवश्यकता को प्रतिबिंबित नहीं करते हैं।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate biological terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "स्त्रीमध्ये, द्वितीयक अंडाण्याच्या निर्मितीनंतर दुसरी मीओसिस विभाजन होते. हे दुसरे विभाजन कोणत्या परिस्थितीत पूर्ण होते?",
+          "choices": [
+            "जेव्हा द्वितीयक अंडाण्याला शुक्राणूने गर्भधारणा होते",
+            "जेव्हा अंडाण्याला गर्भाशयात पोहोचते",
+            "जेव्हा कॉर्पस ल्यूटियम तयार होते",
+            "जेव्हा द्वितीयक अंडाण्याला अंडाशयातून सोडले जाते"
+          ],
+          "solution": "द्वितीयक अंडाण्याचे दुसरे मीओसिस विभाजन फक्त तेव्हाच पूर्ण होते जेव्हा त्याला शुक्राणूने गर्भधारणा होते. कारण द्वितीयक अंडाण्याला मेटाफेज-II मध्ये थांबवले जाते जोपर्यंत गर्भधारणा होत नाही. गर्भधारणा होण्याने मीओसिस पूर्ण होते. इतर विकल्प अयोग्य आहेत कारण ते गर्भधारणा न करता प्रक्रिया पूर्ण करण्याची आवश्यकता दर्शवत नाहीत.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi biological terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Incorrectly assumes the second division completes without fertilisation",
+        "Refers to the uterus, which is not involved in the completion of meiosis",
+        "Refers to the corpus luteum, which is not directly involved in the completion of meiosis"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is well-constructed and the solution is accurate. The correct answer is option 0, as the second meiotic division of the secondary oocyte only completes upon fertilization. The other options reflect common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 15,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "EXERCISES"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 16,
+          "pageStart": 14,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "EXERCISES"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 17,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "EXERCISES"
+          ]
+        },
+        {
+          "document": "ncert/12/biology/lebo102.pdf",
+          "ordinal": 18,
+          "pageStart": 15,
+          "pageEnd": 15,
+          "headingPath": [
+            "Chapter 2: Human Reproduction",
+            "EXERCISES"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T02:53:11.571Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

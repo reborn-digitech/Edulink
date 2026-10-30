@@ -1,0 +1,609 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T14:46:07.583Z",
+  "finishedAt": "2026-10-27T14:54:15.346Z",
+  "seconds": 488,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Human Body and Organ System",
+    "edition": "First Edition 2018",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n11. Students to attempt either option A or B. 2\nA. How many chambers are there in the heart of the following organisms?\nHow is mixing of oxygenated and deoxygenated blood prevented in their\nbody?\n(i) Fishes\n(ii) Humans\nOR\nB. Explain the mechanism by which the water is transported in plants?",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n23. What is the purpose of making urine in the human body? Name the organs that stores and 2\nreleases the urine.\nOR\nWhy do arteries have thick and elastic walls whereas veins have valves?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 114529,
+      "in": 32,
+      "out": 31,
+      "rejects": 1,
+      "promptTokens": 25716,
+      "completionTokens": 5656
+    },
+    "critique": {
+      "calls": 40,
+      "ms": 269555,
+      "in": 31,
+      "out": 25,
+      "rejects": 6,
+      "promptTokens": 16879,
+      "completionTokens": 6922
+    },
+    "solver": {
+      "calls": 181,
+      "ms": 102800,
+      "in": 25,
+      "out": 24,
+      "rejects": 1,
+      "promptTokens": 27326,
+      "completionTokens": 1758
+    },
+    "form": {
+      "calls": 12,
+      "ms": 35810,
+      "in": 24,
+      "out": 16,
+      "rejects": 8,
+      "promptTokens": 2987,
+      "completionTokens": 963
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 86,
+      "ms": 14565,
+      "in": 16,
+      "out": 13,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 531132,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 30088,
+      "completionTokens": 15260
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 0,
+    "2": 3,
+    "3": 1,
+    "4": 3,
+    "5": 4,
+    "6": 2
+  },
+  "flagged": 9,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "What is the main function of the diaphragm during breathing?",
+      "ms": {
+        "draft": 3562,
+        "critique": 7631,
+        "solver": 13816,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is responsible for the exchange of gases in the lungs?",
+      "ms": {
+        "draft": 3562,
+        "critique": 8446,
+        "solver": 14036,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the respiratory system is responsible for filtering the air before it reaches the lungs?",
+      "ms": {
+        "draft": 3562,
+        "critique": 7596,
+        "solver": 15504,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person has a blockage in their trachea, which of the following would most likely occur?",
+      "ms": {
+        "draft": 3562,
+        "critique": 7929,
+        "solver": 15578,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about the alveoli in the lungs?",
+      "ms": {
+        "draft": 3562,
+        "critique": 8307,
+        "solver": 15349,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which blood group is considered a universal donor?",
+      "ms": {
+        "draft": 3717,
+        "critique": 5655
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the function of a blood donor?",
+      "ms": {
+        "draft": 3717,
+        "critique": 7866
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person with AB blood group needs blood, which blood groups can they receive from?",
+      "ms": {
+        "draft": 3717,
+        "critique": 5595
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about blood pressure?",
+      "ms": {
+        "draft": 3717,
+        "critique": 6299
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person with a blood pressure of 140/90 mm of Hg is classified as having:",
+      "ms": {
+        "draft": 3717,
+        "critique": 5710,
+        "solver": 5023,
+        "form": 2056
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about blood pressure?",
+      "ms": {
+        "draft": 2622,
+        "critique": 6492,
+        "solver": 2155,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is NOT a part of the circulatory system?",
+      "ms": {
+        "draft": 2622,
+        "critique": 7850,
+        "solver": 14816
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is blood donation considered a 'superior' donation according to the passage?",
+      "ms": {
+        "draft": 2622,
+        "critique": 7956,
+        "solver": 1831,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is it important for the diaphragm to move up and down during breathing?",
+      "ms": {
+        "draft": 4832,
+        "critique": 7062
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which system in the human body is responsible for the exchange of gases like oxygen and carbon dioxide?",
+      "ms": {
+        "draft": 4832,
+        "critique": 8560
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why are veins provided with valves?",
+      "ms": {
+        "draft": 3852,
+        "critique": 7153,
+        "solver": 2372,
+        "form": 3444
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why is blood donation considered a life-saving act?",
+      "ms": {
+        "draft": 3717,
+        "critique": 6104,
+        "solver": 1499,
+        "form": 2471
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "ms": {
+        "draft": 2622,
+        "critique": 6703,
+        "solver": 1341,
+        "form": 5034
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of blood donation?",
+      "ms": {
+        "draft": 2622,
+        "critique": 6737,
+        "solver": 2206,
+        "form": 5056,
+        "translation": 36888
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of blood?",
+      "ms": {
+        "draft": 3852,
+        "critique": 9719,
+        "solver": 2398,
+        "form": 3361,
+        "translation": 41354
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main function of red blood cells?",
+      "ms": {
+        "draft": 3852,
+        "critique": 5700,
+        "solver": 1204,
+        "form": 2895,
+        "translation": 40107
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best explains why the heart has a thick wall?",
+      "ms": {
+        "draft": 3503,
+        "critique": 9788,
+        "solver": 14918,
+        "form": 0,
+        "translation": 62747
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the structure of capillaries?",
+      "ms": {
+        "draft": 3852,
+        "critique": 6167,
+        "solver": 1388,
+        "form": 4417,
+        "translation": 49287
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct statement about the structure of blood vessels?",
+      "ms": {
+        "draft": 3503,
+        "critique": 6295,
+        "solver": 1526,
+        "form": 0,
+        "translation": 45002
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a function of red blood cells?",
+      "ms": {
+        "draft": 3503,
+        "critique": 7922,
+        "solver": 2293,
+        "form": 0,
+        "translation": 29263
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a reason why a person with 'AB' blood group is called a 'universal recipient'?",
+      "ms": {
+        "draft": 2622,
+        "critique": 5347,
+        "solver": 1535,
+        "form": 4877,
+        "translation": 48239
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following would happen if the diaphragm stopped moving?",
+      "ms": {
+        "draft": 3562,
+        "critique": 5444,
+        "solver": 1634,
+        "form": 0,
+        "translation": 36264
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person's heart beats 72 times per minute. What is the total volume of blood pumped by the heart in one minute?",
+      "ms": {
+        "draft": 3852,
+        "critique": 6421,
+        "solver": 2943,
+        "form": 3981,
+        "translation": 44998
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A person is experiencing an increase in heart rate. Which of the following could be the reason for this?",
+      "ms": {
+        "draft": 3503,
+        "critique": 8226,
+        "solver": 1860,
+        "form": 0,
+        "translation": 36442
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If the alveoli in the lungs were not present, what would most likely happen?",
+      "ms": {
+        "draft": 4832,
+        "critique": 3914,
+        "solver": 4809,
+        "form": 1585,
+        "translation": 41722
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the blood in the arteries more oxygenated than the blood in the veins?",
+      "ms": {
+        "draft": 3852,
+        "critique": 6239,
+        "solver": 2064,
+        "form": 2883,
+        "translation": 50972
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main function of the diaphragm during breathing?",
+      "reason": "the key is far longer than every distractor (54 vs 19 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is responsible for the exchange of gases in the lungs?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which part of the respiratory system is responsible for filtering the air before it reaches the lungs?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a person has a blockage in their trachea, which of the following would most likely occur?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is true about the alveoli in the lungs?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which blood group is considered a universal donor?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the function of a blood donor?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a person with AB blood group needs blood, which blood groups can they receive from?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is true about blood pressure?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A person with a blood pressure of 140/90 mm of Hg is classified as having:",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 5,
+      "stem": "Which of the following is the correct sequence of blood flow through the heart?",
+      "reason": "level 5 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is a correct statement about blood pressure?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is NOT a part of the circulatory system?",
+      "reason": "distractors 0, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is blood donation considered a 'superior' donation according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Why is it important for the diaphragm to move up and down during breathing?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which system in the human body is responsible for the exchange of gases like oxygen and carbon dioxide?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Why are veins provided with valves?",
+      "reason": "near-duplicate of served question cmvj88zid0fx6gpfhfwhtgr0v (cosine 0.915 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why is blood donation considered a life-saving act?",
+      "reason": "near-duplicate of served question cmvmun5km02avgp21icfmqmk8 (cosine 0.941 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "reason": "near-duplicate of served question cmvf2pnyn02w6god80r3gf6bo (cosine 0.954 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

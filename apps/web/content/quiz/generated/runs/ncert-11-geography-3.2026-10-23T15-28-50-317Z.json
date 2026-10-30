@@ -1,0 +1,406 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T15:28:50.317Z",
+  "finishedAt": "2026-10-23T15:40:37.774Z",
+  "seconds": 707,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Pratical Work in Geography",
+    "bookCode": "kegy3",
+    "document": "ncert/11/geography/kegy303.pdf",
+    "classLevel": 11,
+    "subject": "Geography",
+    "chapter": "Chapter 3 — Latitude, Longitude and Time",
+    "edition": "2026 edition (the site's Last-Modified)",
+    "chunks": 6,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n1. c. London with Paris",
+      "[CBSE Class XII Geography, marking scheme, 2022-23]\n11. a. (iv) - (ii) - (i) - (iii)",
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\nSection E\n29 A- Northern part of Eurasia 1X5\nB- Vancouver\nC- Kolkata\nD- Jeddah\nE- Darwin\nF- Panama Canal\nG- St. Lawrence waterway\nFor Visually Impaired Candidates only\n29 A- Arabian peninsula /Mongolia/Central China\n29 B- Vancouver\n29 C- Kolkata\n29 D- Johannesburg\n29 E- Darwin\n29 F- Suez Canal\n29 G- St. Lawrence waterway\n30 Locate and label any five of the following geographical features on the 1x5\nPolitical Outline map of India with appropriate symbols:\nA. Arunachal Pradesh\nB. Paradwip\nC. Neyveli\nD. Bailadila iron-ore mines, Chattisgarh\nE. Jamnagar\nF. Uttar Pradesh\nG. Thiruvananthapuram\nFor visually impaired students\nAttempt any five.\nA. Arunachal Pradesh\nB. Paradwip\nC. Neyveli\nD. Chhatisga",
+      "[CBSE Class XII Geography, marking scheme, 2026-27]\nGEOGRAPHY CODE - 029\nMARKING SCHEME\nCLASS: XII (2026- 27)\nTime allowed: 3 Hours Maximum marks: 70\nGeneral Instructions:"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 3,
+      "ms": 126414,
+      "in": 18,
+      "out": 18,
+      "rejects": 1,
+      "promptTokens": 13870,
+      "completionTokens": 5262
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 204569,
+      "in": 18,
+      "out": 14,
+      "rejects": 4,
+      "promptTokens": 10582,
+      "completionTokens": 3988
+    },
+    "solver": {
+      "calls": 98,
+      "ms": 63809,
+      "in": 14,
+      "out": 10,
+      "rejects": 4,
+      "promptTokens": 19799,
+      "completionTokens": 1009
+    },
+    "form": {
+      "calls": 6,
+      "ms": 67966,
+      "in": 10,
+      "out": 7,
+      "rejects": 3,
+      "promptTokens": 6888,
+      "completionTokens": 1107
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 10,
+      "ms": 1990,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 428041,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 17017,
+      "completionTokens": 8509
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 1,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the shape of the Earth according to the passage?",
+      "ms": {
+        "draft": 19787,
+        "critique": 7896
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a student draws a line 20°S on a circle, where would it be located relative to the equator?",
+      "ms": {
+        "draft": 19787,
+        "critique": 6844,
+        "solver": 2094,
+        "form": 6644
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the significance of the equator in the system of latitudes?",
+      "ms": {
+        "draft": 19787,
+        "critique": 12385
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A ship is sailing from London (0°) to New York (75°W). If the time at London is 6:00 PM, what will be the time at New York?",
+      "ms": {
+        "draft": 18301,
+        "critique": 10068,
+        "solver": 2536
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the time at 82°30'E is 5:30 PM, what will be the time at 150°E?",
+      "ms": {
+        "draft": 18301,
+        "critique": 6774
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 10 a.m., what will be the time at a place located at 60° east longitude?",
+      "ms": {
+        "draft": 8362,
+        "critique": 14708
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the time at the Prime Meridian is 12:00 noon, and a place located at 105° east longitude is 7 hours ahead, what could be the reason?",
+      "ms": {
+        "draft": 8362,
+        "critique": 10809,
+        "solver": 2162
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains why the time at 180° longitude is exactly 12 hours different from the time at the Prime Meridian?",
+      "ms": {
+        "draft": 8362,
+        "critique": 9957,
+        "solver": 1927,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A person starts a journey on Monday from a place at 150° east longitude and crosses the International Date Line moving east. What day will they experience after crossing the line?",
+      "ms": {
+        "draft": 8362,
+        "critique": 10526,
+        "solver": 23957
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes the difference between latitudes and longitudes?",
+      "ms": {
+        "draft": 8362,
+        "critique": 9280,
+        "solver": 1393,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 6 a.m., what will be the time at a place located at 30° west longitude?",
+      "ms": {
+        "draft": 8362,
+        "critique": 6270,
+        "solver": 10588
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of a standard meridian in a country?",
+      "ms": {
+        "draft": 18301,
+        "critique": 8398,
+        "solver": 1354,
+        "form": 0,
+        "translation": 44116
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 12:00 noon, what will be the local time at a place located at 60°E longitude?",
+      "ms": {
+        "draft": 18301,
+        "critique": 9597,
+        "solver": 2087,
+        "form": 0,
+        "translation": 65181
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct statement about the meridians of longitude?",
+      "ms": {
+        "draft": 19787,
+        "critique": 7942,
+        "solver": 16735,
+        "form": 2713,
+        "translation": 66852
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best describes the relationship between longitude and time?",
+      "ms": {
+        "draft": 18301,
+        "critique": 8830,
+        "solver": 2477,
+        "form": 0,
+        "translation": 72427
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a place is located at 30°N and another at 45°S, what is the total angular distance between them?",
+      "ms": {
+        "draft": 19787,
+        "critique": 11259,
+        "solver": 2594,
+        "form": 0,
+        "translation": 42942
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are the meridians of longitude not all the same length as the parallels of latitude?",
+      "ms": {
+        "draft": 19787,
+        "critique": 11362,
+        "solver": 17799,
+        "form": 3648,
+        "translation": 62941
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are time zones not always exactly 15° apart?",
+      "ms": {
+        "draft": 18301,
+        "critique": 8800,
+        "solver": 1770,
+        "form": 0,
+        "translation": 68125
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best describes the shape of the Earth according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a student draws a line 20°S on a circle, where would it be located relative to the equator?",
+      "reason": "figure: figure spec refused: spec.arrows.1.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the significance of the equator in the system of latitudes?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A ship is sailing from London (0°) to New York (75°W). If the time at London is 6:00 PM, what will be the time at New York?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the time at 82°30'E is 5:30 PM, what will be the time at 150°E?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 2)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"Which of the following statements about the equator is correct?\",\"options\":[\"It is the"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 10 a.m., what will be the time at a place located at 60° east longitude?",
+      "reason": "the critic finds option 2 correct, the key is 3; the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the time at the Prime Meridian is 12:00 noon, and a place located at 105° east longitude is 7 hours ahead, what could be the reason?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best explains why the time at 180° longitude is exactly 12 hours different from the time at the Prime Meridian?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A person starts a journey on Monday from a place at 150° east longitude and crosses the International Date Line moving east. What day will they experience after crossing the line?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following best describes the difference between latitudes and longitudes?",
+      "reason": "options 0 and 2 say the same thing (\"Latitudes are parallel to the equator and longitudes meet at the poles\" / \"Latitudes meet at the poles and longitudes are parallel to the equator\"); options 1 and 3 say the same thing (\"Latitudes are parallel to the equator and longitudes are parallel to the equator\" / \"Latitudes are parallel to the equator and longitudes are curved\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the time at the Prime Meridian is 6 a.m., what will be the time at a place located at 30° west longitude?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

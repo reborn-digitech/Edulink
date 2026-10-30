@@ -21,243 +21,47 @@
   "board": "NCERT",
   "book": "Ganita Prakash",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-21T22:01:45.005Z",
+  "generatedAt": "2026-10-29T10:30:57.694Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "What is the area of a rectangle with length 4 units and width 3 units?",
+      "difficulty": 1,
+      "stem": "What is the area of a square if its side is 5 units?",
       "choices": [
-        "12 sq. units",
-        "7 sq. units",
-        "4 sq. units",
-        "3 sq. units"
-      ],
-      "answerIndex": 0,
-      "solution": "The area of a rectangle is calculated by multiplying its length and width. So, 4 units × 3 units = 12 sq. units. The other options are incorrect because they do not follow the formula for area.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "4 इकाई लंबाई और 3 इकाई चौड़ाई वाले आयत का क्षेत्रफल क्या है?",
-          "choices": [
-            "12 वर्ग इकाई",
-            "7 वर्ग इकाई",
-            "4 वर्ग इकाई",
-            "3 वर्ग इकाई"
-          ],
-          "solution": "एक आयत का क्षेत्रफल उसकी लंबाई और चौड़ाई के गुणनफल से निकाला जाता है। अतः 4 इकाई × 3 इकाई = 12 वर्ग इकाई। अन्य विकल्प गलत हैं क्योंकि वे क्षेत्रफल के सूत्र का पालन नहीं करते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एका आयताचे क्षेत्रफळ किती असेल ज्याची लांबी 4 एकके आहे आणि रुंदी 3 एकके आहे?",
-          "choices": [
-            "12 चौ. एकके",
-            "7 चौ. एकके",
-            "4 चौ. एकके",
-            "3 चौ. एकके"
-          ],
-          "solution": "एका आयताचे क्षेत्रफळ त्याच्या लांबी आणि रुंदीच्या गुणाकाराने काढले जाते. म्हणून, 4 एकके × 3 एकके = 12 चौ. एकके. इतर विकल्प चौ. एकके च्या सूत्राचा अनुसरण करत नाहीत म्हणून चुकीचे आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses multiplication with addition",
-        "Thinks the area is the sum of the length and width",
-        "Thinks the area is the length only or the width only"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and the solution correctly applies the formula for the area of a rectangle. The distractors reflect common misconceptions, such as confusing multiplication with addition or misunderstanding the concept of area.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 14,
-          "pageStart": 25,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 15,
-          "pageStart": 27,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 16,
-          "pageStart": 29,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T22:01:45.005Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 2,
-      "stem": "If the area of a square is 25 square meters, what is the length of one side of the square?",
-      "choices": [
-        "5 m",
-        "10 m",
-        "15 m",
-        "25 m"
-      ],
-      "answerIndex": 0,
-      "solution": "The area of a square is given by side × side. So if the area is 25, the side length is √25 = 5 m. The other options are incorrect because 10, 15, and 25 are not square roots of 25.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक वर्ग का क्षेत्रफल 25 वर्ग मीटर है, तो वर्ग के एक भुजा की लंबाई क्या है?",
-          "choices": [
-            "5 मी",
-            "10 मी",
-            "15 मी",
-            "25 मी"
-          ],
-          "solution": "एक वर्ग का क्षेत्रफल भुजा × भुजा द्वारा दिया जाता है। इसलिए यदि क्षेत्रफल 25 है, तो भुजा की लंबाई √25 = 5 मी है। अन्य विकल्प गलत हैं क्योंकि 10, 15 और 25, 25 के वर्गमूल नहीं हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एका चौरसाचे क्षेत्रफळ 25 चौरस मीटर असेल, तर चौरसाच्या एका बाजूची लांबी किती असेल?",
-          "choices": [
-            "5 मी",
-            "10 मी",
-            "15 मी",
-            "25 मी"
-          ],
-          "solution": "चौरसाचे क्षेत्रफळ बाजू × बाजू असते. म्हणून जर क्षेत्रफळ 25 असेल तर बाजूची लांबी √25 = 5 मी असेल. उरलेल्या विकल्पांमध्ये 10, 15 आणि 25 25 च्या वर्गमूळ नाहीत म्हणून ते चुकीचे आहेत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "confuses perimeter with side length",
-        "confuses area with side length",
-        "mistakenly takes area as side length"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is clear and the solution is correct. The correct answer is 5 m, and the author's reasoning for the distractors is valid.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 14,
-          "pageStart": 25,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 15,
-          "pageStart": 27,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 16,
-          "pageStart": 29,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T22:01:45.005Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "What is the perimeter of a regular hexagon if each side is 5 cm?",
-      "choices": [
-        "15 cm",
-        "25 cm",
-        "30 cm",
-        "40 cm"
+        "10 square units",
+        "20 square units",
+        "25 square units",
+        "15 square units"
       ],
       "answerIndex": 2,
-      "solution": "The perimeter of a regular polygon is calculated by multiplying the length of one side by the number of sides. A regular hexagon has 6 sides. So, the perimeter is 6 × 5 cm = 30 cm. The other options are incorrect because they use incorrect multiplication or do not account for all sides.",
-      "checkExpr": "6*5",
+      "solution": "The area of a square is calculated by squaring the length of one of its sides. Here, 5 units squared equals 25 square units. The option '10 square units' is incorrect because it doubles the side length. '20 square units' is incorrect because it multiplies 4 by 5. '15 square units' is incorrect because it multiplies 3 by 5.",
+      "checkExpr": "5*5",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक समषट्भुज का परिमाप क्या है यदि प्रत्येक भुजा 5 सेमी है?",
+          "stem": "एक वर्ग का क्षेत्रफल क्या होगा यदि इसकी भुजा 5 इकाई है?",
           "choices": [
-            "15 सेमी",
-            "25 सेमी",
-            "30 सेमी",
-            "40 सेमी"
+            "10 वर्ग इकाई",
+            "20 वर्ग इकाई",
+            "25 वर्ग इकाई",
+            "15 वर्ग इकाई"
           ],
-          "solution": "एक नियमित बहुभुज का परिमाप एक भुजा की लंबाई को भुजाओं की संख्या से गुणा करके निकाला जाता है। एक समषट्भुज में 6 भुजाएं होती हैं। इसलिए, परिमाप 6 × 5 सेमी = 30 सेमी है। अन्य विकल्प गलत हैं क्योंकि वे गलत गुणा करते हैं या सभी भुजाओं को ध्यान में नहीं रखते।",
+          "solution": "एक वर्ग का क्षेत्रफल इसकी एक भुजा की लंबाई के वर्ग द्वारा निकाला जाता है। यहां 5 इकाई का वर्ग 25 वर्ग इकाई होता है। '10 वर्ग इकाई' गलत है क्योंकि यह भुजा की लंबाई को दोगुना कर देता है। '20 वर्ग इकाई' गलत है क्योंकि यह 4 को 5 से गुणा कर देता है। '15 वर्ग इकाई' गलत है क्योंकि यह 3 को 5 से गुणा कर देता है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "critique": "The translation is accurate, maintains the correct answer position, and uses appropriate Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एका नियमित षट्कोनाचा परिमाण किती असेल जर प्रत्येक बाजू 5 सेंमी असेल?",
+          "stem": "एका चौरसाचे क्षेत्रफळ किती असेल जर त्याच्या बाजू 5 एकके असतील?",
           "choices": [
-            "15 सेंमी",
-            "25 सेंमी",
-            "30 सेंमी",
-            "40 सेंमी"
+            "10 चौरस एकके",
+            "20 चौरस एकके",
+            "25 चौरस एकके",
+            "15 चौरस एकके"
           ],
-          "solution": "एका नियमित बहुभुजाचा परिमाण एका बाजूच्या लांबीला बाजूंच्या संख्येने गुणून शोधला जातो. नियमित षट्कोनाला 6 बाजू असतात. म्हणून, परिमाण 6 × 5 सेंमी = 30 सेंमी असेल. इतर विकल्प चुकीच्या गुणाकाराचा वापर किंवा सर्व बाजूंचा विचार न करून चुकीचे असतात.",
+          "solution": "एका चौरसाचे क्षेत्रफळ त्याच्या बाजूच्या लांबीच्या वर्गाने काढले जाते. इथे 5 एककांचा वर्ग 25 चौरस एकके असतो. '10 चौरस एकके' चूक असेल कारण बाजूच्या लांबीचे दुप्पट केले आहे. '20 चौरस एकके' चूक असेल कारण 4 ने 5 गुणिले आहे. '15 चौरस एकके' चूक असेल कारण 3 ने 5 गुणिले आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -268,10 +72,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Adds 5 and 6 instead of multiplying",
-        "Counts only 5 sides",
+        "doubles the side length",
+        "multiplies 4 and 5",
         null,
-        "Counts only 4 sides"
+        "multiplies 3 and 5"
       ],
       "solverAnswers": [
         2,
@@ -281,7 +85,213 @@
         2
       ],
       "levelFlag": null,
-      "critique": "The solution is correct and matches the key. The reasoning for the distractors is plausible and reflects common misconceptions.",
+      "critique": "The correct answer is 25 square units, as the area of a square is side squared. The distractors represent common misconceptions such as doubling the side, multiplying by 4, or multiplying by 3.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 14,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.2 Area"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 8,
+          "pageStart": 14,
+          "pageEnd": 16,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.3 Area of a Triangle"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.3 Area of a Triangle"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T10:30:57.694Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the perimeter of a square with a side length of 7 cm?",
+      "choices": [
+        "28 cm",
+        "21 cm",
+        "14 cm",
+        "49 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "The perimeter of a square is calculated as 4 × side length. Substituting the value, 4 × 7 = 28 cm. The other options are incorrect because they either multiply the side length by 3, divide by 2, or square the side length.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वर्ग की परिमाप क्या है जिसकी भुजा की लंबाई 7 सेमी है?",
+          "choices": [
+            "28 सेमी",
+            "21 सेमी",
+            "14 सेमी",
+            "49 सेमी"
+          ],
+          "solution": "एक वर्ग की परिमाप 4 × भुजा की लंबाई के रूप में गणना की जाती है। मान के स्थान पर रखने पर, 4 × 7 = 28 सेमी। अन्य विकल्प गलत हैं क्योंकि वे भुजा की लंबाई को 3 से गुणा करते हैं, आधा कर देते हैं या भुजा की लंबाई का वर्ग बना देते हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका चौरसाची बाजू 7 सेमी असल्यास त्याचा परिमाण किती असेल?",
+          "choices": [
+            "28 सेमी",
+            "21 सेमी",
+            "14 सेमी",
+            "49 सेमी"
+          ],
+          "solution": "एका चौरसाचा परिमाण 4 × बाजू असतो. मूल्य ठेवल्यास, 4 × 7 = 28 सेमी. इतर विकल्प अयोग्य असतात कारण ते बाजूच्या मूल्याला 3 ने गुणतात, अर्ध्याने भागतात किंवा बाजूचा वर्ग करतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "multiplies side length by 3",
+        "divides side length by 2",
+        "squares the side length"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 28 cm, as the perimeter of a square is 4 × side length. The author's reasoning for the distractors is accurate and reflects common misconceptions.",
+      "sources": [
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 10,
+          "pageStart": 19,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.3 Area of a Triangle"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 11,
+          "pageStart": 21,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.3 Area of a Triangle"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 12,
+          "pageStart": 22,
+          "pageEnd": 23,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "S u m m a r y"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 13,
+          "pageStart": 23,
+          "pageEnd": 25,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "S u m m a r y"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-29T10:30:57.694Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the perimeter of an equilateral triangle with a side length of 6 units?",
+      "choices": [
+        "12 units",
+        "15 units",
+        "18 units",
+        "21 units"
+      ],
+      "answerIndex": 2,
+      "solution": "The perimeter of an equilateral triangle is 3 times the length of one side. So, 3 × 6 = 18 units. The option '12 units' is incorrect because it is only 2 times the side length. '15 units' is incorrect because it is not a multiple of 3. '21 units' is incorrect because it is more than 3 times the side length.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समबाहु त्रिभुज का परिमाप क्या होगा जिसकी एक भुजा की लंबाई 6 इकाई है?",
+          "choices": [
+            "12 इकाई",
+            "15 इकाई",
+            "18 इकाई",
+            "21 इकाई"
+          ],
+          "solution": "एक समबाहु त्रिभुज का परिमाप एक भुजा की लंबाई के 3 गुना होता है। इसलिए, 3 × 6 = 18 इकाई। विकल्प '12 इकाई' गलत है क्योंकि यह केवल भुजा की लंबाई के 2 गुना है। '15 इकाई' गलत है क्योंकि यह 3 का गुणज नहीं है। '21 इकाई' गलत है क्योंकि यह भुजा की लंबाई के 3 गुना से अधिक है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Hindi mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक समभुज त्रिकोणाची परिमिती किती असेल ज्याच्या बाजूची लांबी 6 एकक आहे?",
+          "choices": [
+            "12 एकक",
+            "15 एकक",
+            "18 एकक",
+            "21 एकक"
+          ],
+          "solution": "समभुज त्रिकोणाची परिमिती एका बाजूच्या लांबीच्या 3 पट असते. म्हणून, 3 × 6 = 18 एकक. '12 एकक' हा निवडक अयोग्य आहे कारण हे केवळ बाजूच्या लांबीच्या 2 पट आहे. '15 एकक' हा निवडक अयोग्य आहे कारण हे 3 चा गुणाकार नाही. '21 एकक' हा निवडक अयोग्य आहे कारण हे बाजूच्या लांबीच्या 3 पटपेक्षा जास्त आहे.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "multiplies by 2 instead of 3",
+        "adds 3 to 12",
+        null,
+        "adds 3 to 18"
+      ],
+      "solverAnswers": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "levelFlag": null,
+      "critique": "The correct answer is 18 units, as the perimeter of an equilateral triangle is 3 times the side length. The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp106.pdf",
@@ -323,147 +333,49 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T22:01:45.005Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "A rectangular plot has an area of 35 ft × 30 ft. What is the perimeter of the plot?",
-      "choices": [
-        "130 ft",
-        "140 ft",
-        "150 ft",
-        "160 ft"
-      ],
-      "answerIndex": 0,
-      "solution": "The perimeter of a rectangle is 2 × (length + breadth). So if the length is 35 ft and the breadth is 30 ft, the perimeter is 2 × (35 + 30) = 130 ft. The other options are incorrect because they do not match the calculated value.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक आयताकार खेत का क्षेत्रफल 35 फुट × 30 फुट है। खेत का परिमाप क्या है?",
-          "choices": [
-            "130 फुट",
-            "140 फुट",
-            "150 फुट",
-            "160 फुट"
-          ],
-          "solution": "एक आयत का परिमाप 2 × (लंबाई + चौड़ाई) होता है। इसलिए यदि लंबाई 35 फुट और चौड़ाई 30 फुट है, तो परिमाप 2 × (35 + 30) = 130 फुट होगा। अन्य विकल्प गलत हैं क्योंकि वे गणना के मान के बराबर नहीं हैं।",
-          "imageAlt": null,
-          "critique": "All elements match the original. Technical terms like 'लंबाई' (length) and 'चौड़ाई' (breadth) are standard in Hindi math textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक आयताकृती प्लॉटचे क्षेत्रफळ 35 फूट × 30 फूट आहे. प्लॉटचा परिमाण किती आहे?",
-          "choices": [
-            "130 फूट",
-            "140 फूट",
-            "150 फूट",
-            "160 फूट"
-          ],
-          "solution": "आयताचा परिमाण 2 × (लांबी + रुंदी) असतो. म्हणून जर लांबी 35 फूट आणि रुंदी 30 फूट असेल तर परिमाण 2 × (35 + 30) = 130 फूट असेल. इतर विकल्प चुकीचे आहेत कारण ते गणित केलेल्या मूल्याशी मेळ नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "mistakenly calculates length + breadth instead of 2 × (length + breadth)",
-        "Confuses the area with the perimeter by adding 35 + 30 instead of doubling the sum of length and width.",
-        "confuses area with perimeter"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is 130 ft, as calculated by the formula for the perimeter of a rectangle. The author's solution is correct, and the reasons for the distractors are valid misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 14,
-          "pageStart": 25,
-          "pageEnd": 27,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 15,
-          "pageStart": 27,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 16,
-          "pageStart": 29,
-          "pageEnd": 29,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area",
-            "S u m m a r y"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T22:01:45.005Z",
+      "generatedAt": "2026-10-29T10:30:57.694Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "A rectangular piece of land is 80 m long and 50 m wide. A square garden of side 20 m is planted in the center of the land. What is the area of the land that is not covered by the garden?",
+      "stem": "If the perimeter of a square is 20 units, what is the area of the square?",
       "choices": [
-        "3600 sq m",
-        "3800 sq m",
-        "3900 sq m",
-        "4000 sq m"
+        "16 square units",
+        "25 square units",
+        "20 square units",
+        "10 square units"
       ],
-      "answerIndex": 0,
-      "solution": "The total area of the land is 80 m × 50 m = 4000 sq m. The area of the square garden is 20 m × 20 m = 400 sq m. Subtracting the area of the garden from the total area gives 4000 sq m – 400 sq m = 3600 sq m. The other options incorrectly calculate the total area or the area of the garden.",
-      "checkExpr": null,
+      "answerIndex": 1,
+      "solution": "The perimeter of a square is four times the length of one side. If the perimeter is 20 units, each side is 5 units. The area of a square is the side length squared, so 5 squared is 25 square units. The option '16 square units' is incorrect because it suggests a side length of 4. '20 square units' is incorrect because it uses the perimeter instead of the area. '10 square units' is incorrect because it adds the side length twice.",
+      "checkExpr": "(20/4)*(20/4)",
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "एक आयताकार भूमि 80 मीटर लंबी और 50 मीटर चौड़ी है। भूमि के केंद्र में 20 मीटर भुजा वाला एक वर्गाकार बगीचा लगाया गया है। भूमि के वह हिस्सा क्षेत्रफल क्या है जो बगीचे द्वारा नहीं कवर किया गया है?",
+          "stem": "यदि एक वर्ग की परिमाप 20 इकाई है, तो वर्ग का क्षेत्रफल क्या है?",
           "choices": [
-            "3600 वर्ग मीटर",
-            "3800 वर्ग मीटर",
-            "3900 वर्ग मीटर",
-            "4000 वर्ग मीटर"
+            "16 वर्ग इकाई",
+            "25 वर्ग इकाई",
+            "20 वर्ग इकाई",
+            "10 वर्ग इकाई"
           ],
-          "solution": "भूमि का कुल क्षेत्रफल 80 मीटर × 50 मीटर = 4000 वर्ग मीटर है। वर्गाकार बगीचे का क्षेत्रफल 20 मीटर × 20 मीटर = 400 वर्ग मीटर है। बगीचे के क्षेत्रफल को कुल क्षेत्रफल में से घटाने पर 4000 वर्ग मीटर – 400 वर्ग मीटर = 3600 वर्ग मीटर प्राप्त होता है। अन्य विकल्प गलत तरीके से कुल क्षेत्रफल या बगीचे के क्षेत्रफल की गणना करते हैं।",
+          "solution": "एक वर्ग की परिमाप एक भुजा की लंबाई के चार गुना होती है। यदि परिमाप 20 इकाई है, तो प्रत्येक भुजा 5 इकाई होती है। एक वर्ग का क्षेत्रफल भुजा की लंबाई के वर्ग के बराबर होता है, अतः 5 का वर्ग 25 वर्ग इकाई होता है। '16 वर्ग इकाई' गलत है क्योंकि इसका अर्थ भुजा की लंबाई 4 होना है। '20 वर्ग इकाई' गलत है क्योंकि इसमें परिमाप का उपयोग किया गया है और क्षेत्रफल के बजाय। '10 वर्ग इकाई' गलत है क्योंकि इसमें भुजा की लंबाई को दो बार जोड़ दिया गया है।",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Hindi technical terms for geometry.",
+          "critique": "Translation is accurate, maintains original meaning, and uses standard Hindi mathematical terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "एक आयताकृती जमीन 80 मी लांब आणि 50 मी रुंद आहे. जमीनच्या मध्यात 20 मी बाजूचे चौरस बाग लावली गेली आहे. बागेने कव्हर केलेल्या जमीनीविना जमीनीचे क्षेत्रफळ किती आहे?",
+          "stem": "एका चौरसाच्या परिमाणाचे 20 एकके आहेत, तर चौरसाचे क्षेत्रफळ किती असेल?",
           "choices": [
-            "3600 चौ. मी",
-            "3800 चौ. मी",
-            "3900 चौ. मी",
-            "4000 चौ. मी"
+            "16 चौरस एकके",
+            "25 चौरस एकके",
+            "20 चौरस एकके",
+            "10 चौरस एकके"
           ],
-          "solution": "जमीनीचे एकूण क्षेत्रफळ 80 मी × 50 मी = 4000 चौ. मी आहे. चौरस बागेचे क्षेत्रफळ 20 मी × 20 मी = 400 चौ. मी आहे. बागेचे क्षेत्रफळ एकूण क्षेत्रफळापासून वजा करण्यास 4000 चौ. मी – 400 चौ. मी = 3600 चौ. मी मिळते. इतर विकल्प एकूण क्षेत्रफळ किंवा बागेचे क्षेत्रफळ चुकीचे गणना करतात.",
+          "solution": "चौरसाचे परिमाण एका बाजूच्या लांबीच्या चार पट असते. जर परिमाण 20 एकके असेल, तर प्रत्येक बाजू 5 एकके असेल. चौरसाचे क्षेत्रफळ बाजूच्या लांबीच्या वर्गाचे असते, म्हणून 5 चा वर्ग 25 चौरस एकके असेल. '16 चौरस एकके' ही अपयश असेल कारण ती बाजूच्या लांबीचे 4 असण्याचा अंदाज दर्शवते. '20 चौरस एकके' ही अपयश असेल कारण ती परिमाणाच्या जागी क्षेत्रफळ वापरते. '10 चौरस एकके' ही अपयश असेल कारण ती बाजूच्या लांबीचे दोन पट जोडते.",
           "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms for area and measurements.",
+          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
           "flag": null
         }
       },
@@ -472,44 +384,26 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
+        "suggests a side length of 4",
         null,
-        "Calculates area of land as 80+50=130 and multiplies by 20",
-        "Calculates area of land as 80*50=4000, subtracts 20*20=400 but incorrectly subtracts 100 instead of 400",
-        "Confuses the area of the garden with the area of the land"
+        "uses the perimeter instead of the area",
+        "adds the side length twice"
       ],
       "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. The area of the land is 80 × 50 = 4000 sq m, and the area of the garden is 20 × 20 = 400 sq m. Subtracting gives 3600 sq m, which matches option 0.",
+      "critique": "The solution is correct. The perimeter of 20 units implies a side length of 5 units, and the area is 5² = 25 square units. The author's reasoning for the distractors is valid and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 3,
-          "pageStart": 6,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 4,
-          "pageStart": 8,
-          "pageEnd": 8,
-          "headingPath": [
-            "Chapter 6: Perimeter and Area"
-          ]
-        },
-        {
-          "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 5,
-          "pageStart": 9,
-          "pageEnd": 10,
+          "ordinal": 7,
+          "pageStart": 12,
+          "pageEnd": 14,
           "headingPath": [
             "Chapter 6: Perimeter and Area",
             "6.2 Area"
@@ -517,17 +411,27 @@
         },
         {
           "document": "ncert/6/mathematics/fegp106.pdf",
-          "ordinal": 6,
-          "pageStart": 10,
-          "pageEnd": 12,
+          "ordinal": 8,
+          "pageStart": 14,
+          "pageEnd": 16,
           "headingPath": [
             "Chapter 6: Perimeter and Area",
-            "6.2 Area"
+            "6.3 Area of a Triangle"
+          ]
+        },
+        {
+          "document": "ncert/6/mathematics/fegp106.pdf",
+          "ordinal": 9,
+          "pageStart": 16,
+          "pageEnd": 19,
+          "headingPath": [
+            "Chapter 6: Perimeter and Area",
+            "6.3 Area of a Triangle"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-21T22:01:45.005Z",
+      "generatedAt": "2026-10-29T10:30:57.694Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

@@ -1,0 +1,926 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-23T22:29:10.530Z",
+  "finishedAt": "2026-10-23T22:39:36.720Z",
+  "seconds": 626,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Physics Part-II",
+    "bookCode": "leph2",
+    "document": "ncert/12/physics/leph204.pdf",
+    "classLevel": 12,
+    "subject": "Physics",
+    "chapter": "Chapter 4 — Atoms",
+    "edition": "Reprint 2026-27",
+    "chunks": 20,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Physics, sample question paper, 2024-25]\n14. Assertion (A): In a hydrogen atom there is only one electron but its emission spectrum shows many\nlines.\nReason (R): In a given sample of hydrogen there are many atoms each containing one electron;\nhence many electrons in different atoms may be in different orbits so many transitions from higher\nto lower orbits are possible.",
+      "[CBSE Class XII Physics, sample question paper, 2026-27]\n11. If nucleus scaled to football size is approximately 22cm, then the radius of the orbit of 1\nelectron will be approximately:\nA. 22 cm\nB. 22 m\nC. 22 km\nD. 22000 km",
+      "[CBSE Class XII Physics, marking scheme, 2022-23]\n12. (iv) 4.77 X 10 -10 m",
+      "[CBSE Class XII Physics, sample question paper, 2025-26]\n13. Assertion (A): Total energy of an electron in hydrogen atom is negative. 1\nReason (R): The centripetal force is provided by electrostatic force."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 197980,
+      "in": 48,
+      "out": 45,
+      "rejects": 4,
+      "promptTokens": 48389,
+      "completionTokens": 11139
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 369138,
+      "in": 45,
+      "out": 36,
+      "rejects": 9,
+      "promptTokens": 25963,
+      "completionTokens": 9639
+    },
+    "solver": {
+      "calls": 254,
+      "ms": 127607,
+      "in": 36,
+      "out": 28,
+      "rejects": 8,
+      "promptTokens": 43477,
+      "completionTokens": 2539
+    },
+    "form": {
+      "calls": 10,
+      "ms": 50500,
+      "in": 28,
+      "out": 7,
+      "rejects": 21,
+      "promptTokens": 8026,
+      "completionTokens": 1346
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 30,
+      "ms": 5960,
+      "in": 7,
+      "out": 1,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 24809,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2873,
+      "completionTokens": 1674
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "In the Rutherford model of the atom, what is the main reason for the large deflection of alpha particles?",
+      "ms": {
+        "draft": 4254,
+        "critique": 6405,
+        "solver": 1739,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why does the emission spectrum of hydrogen consist of discrete lines?",
+      "ms": {
+        "draft": 4254,
+        "critique": 6602,
+        "solver": 2263,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why is the total energy of an electron in a hydrogen atom negative?",
+      "ms": {
+        "draft": 4254,
+        "critique": 5388,
+        "solver": 1855,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the radius of the nucleus of a hydrogen atom is scaled to 22 cm, what would be the approximate radius of the electron's orbit?",
+      "ms": {
+        "draft": 4254,
+        "critique": 6220,
+        "solver": 873,
+        "form": 5618
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason an electron in a hydrogen atom does not spiral into the nucleus according to classical electromagnetic theory?",
+      "ms": {
+        "draft": 4258,
+        "critique": 7372
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the significance of the Balmer series in the hydrogen spectrum?",
+      "ms": {
+        "draft": 4254,
+        "critique": 5210,
+        "solver": 2335,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, why does the emission spectrum of hydrogen contain multiple lines?",
+      "ms": {
+        "draft": 4258,
+        "critique": 7296
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What does the negative sign in the total energy of an electron in a hydrogen atom indicate?",
+      "ms": {
+        "draft": 4258,
+        "critique": 8538,
+        "solver": 11757,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the kinetic energy of an electron in a hydrogen atom is 13.6 eV, what is the total energy of the electron?",
+      "ms": {
+        "draft": 4258,
+        "critique": 9071
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the radius of a gold nucleus is 6 fm, and the distance of closest approach of an alpha particle is 30 fm, what is the approximate ratio of the radius of the gold nucleus to the distance of closest approach?",
+      "ms": {
+        "draft": 4258,
+        "critique": 7142
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why does the total energy of an electron in a hydrogen atom have to be negative?",
+      "ms": {
+        "draft": 4258,
+        "critique": 7229
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a hydrogen atom receives enough energy to raise its electron to the second excited state, how much energy is required?",
+      "ms": {
+        "draft": 4275,
+        "critique": 7179,
+        "solver": 1550
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what does the negative sign in the total energy of an electron in a hydrogen atom indicate?",
+      "ms": {
+        "draft": 4275,
+        "critique": 8087,
+        "solver": 1196,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the main reason an electron in an atom does not emit radiant energy while in a stable orbit?",
+      "ms": {
+        "draft": 4275,
+        "critique": 6468,
+        "solver": 10512,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, why do the energy levels of a hydrogen atom come closer together as the principal quantum number n increases?",
+      "ms": {
+        "draft": 4275,
+        "critique": 7042,
+        "solver": 1155,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the nucleus of a hydrogen atom is scaled to a football size (22 cm), approximately how large would the radius of the electron's orbit be?",
+      "ms": {
+        "draft": 4275,
+        "critique": 8372,
+        "solver": 13658
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the third postulate of Bohr's theory state about the emission of a photon?",
+      "ms": {
+        "draft": 4275,
+        "critique": 6486,
+        "solver": 12431,
+        "form": 5128
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the reason for the emission of spectral lines in hydrogen according to the passage?",
+      "ms": {
+        "draft": 17019,
+        "critique": 6160,
+        "solver": 1632,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the total energy of an electron in a hydrogen atom negative according to the passage?",
+      "ms": {
+        "draft": 17019,
+        "critique": 6179,
+        "solver": 1193,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which model of the atom states that the positive charge is distributed throughout a sphere with electrons embedded in it?",
+      "ms": {
+        "draft": 5073,
+        "critique": 6738
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the nucleus of a hydrogen atom were scaled to the size of a football (approximately 22 cm), what would be the approximate radius of the electron's orbit?",
+      "ms": {
+        "draft": 17019,
+        "critique": 6445,
+        "solver": 11291,
+        "form": 2836
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which model of the atom has a nearly continuous mass distribution?",
+      "ms": {
+        "draft": 3006,
+        "critique": 4646,
+        "solver": 1446,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the nucleus of a hydrogen atom is scaled to the size of a football (22 cm), what would be the approximate size of the electron's orbit?",
+      "ms": {
+        "draft": 3006,
+        "critique": 5926,
+        "solver": 1863
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which model of the atom is based on a nearly continuous mass distribution?",
+      "ms": {
+        "draft": 3006,
+        "critique": 7264,
+        "solver": 1091,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the total energy of an electron in a hydrogen atom?",
+      "ms": {
+        "draft": 3006,
+        "critique": 7457,
+        "solver": 1686,
+        "form": 2731
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the model in which an atom is described as a spherical cloud of positive charges with electrons embedded in it?",
+      "ms": {
+        "draft": 2886,
+        "critique": 8414
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which model of the atom suggests that the nucleus is extremely small compared to the size of the atom?",
+      "ms": {
+        "draft": 2886,
+        "critique": 6758
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best explains why the emission spectrum of hydrogen shows many lines?",
+      "ms": {
+        "draft": 2886,
+        "critique": 7275
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What is the frequency of radiation emitted when an atom makes a transition between two energy levels that differ by 2.3 eV?",
+      "ms": {
+        "draft": 3006,
+        "critique": 5890,
+        "solver": 18092
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The figure shows standing waves on a circular orbit of an electron. What does the number of wavelengths in the orbit represent?",
+      "ms": {
+        "draft": 4381,
+        "critique": 5924,
+        "solver": 1551
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the nucleus of a hydrogen atom is scaled to a size of 22 cm, what would be the approximate radius of the electron's orbit?",
+      "ms": {
+        "draft": 4381,
+        "critique": 6565,
+        "solver": 1417
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to Bohr's model, why does the emission spectrum of hydrogen contain multiple lines?",
+      "ms": {
+        "draft": 5191,
+        "critique": 6630,
+        "solver": 1816,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the nucleus of a hydrogen atom were scaled to a size of 22 cm, what would be the approximate size of the electron's orbit?",
+      "ms": {
+        "draft": 5191,
+        "critique": 6648,
+        "solver": 1447
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "According to Bohr's second postulate, what is the condition for an electron to be in a stable orbit?",
+      "ms": {
+        "draft": 5191,
+        "critique": 6074,
+        "solver": 13165,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "The total energy of an electron in a hydrogen atom is negative. What does this imply about the electron's state?",
+      "ms": {
+        "draft": 5075,
+        "critique": 7622,
+        "solver": 10853,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the radius of a gold nucleus is scaled to a football size (22 cm), what would be the approximate radius of the electron's orbit in a hydrogen atom?",
+      "ms": {
+        "draft": 5075,
+        "critique": 8035,
+        "solver": 13812
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the emission spectrum of hydrogen show many lines even though there is only one electron in a hydrogen atom?",
+      "ms": {
+        "draft": 10131,
+        "critique": 6140,
+        "solver": 2205,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the emission spectrum of hydrogen, bright lines appear on a dark background. What causes these bright lines?",
+      "ms": {
+        "draft": 5075,
+        "critique": 7580,
+        "solver": 12498,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the gold foil in Rutherford's alpha particle scattering experiment?",
+      "ms": {
+        "draft": 4254,
+        "critique": 6404,
+        "solver": 884,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which model of the atom accounts for almost all the general features of the hydrogen spectrum?",
+      "ms": {
+        "draft": 53913,
+        "critique": 4896,
+        "solver": 6841,
+        "form": 1309
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In the ground state of which model do electrons experience a net force?",
+      "ms": {
+        "draft": 3006,
+        "critique": 5200,
+        "solver": 1696,
+        "form": 3314
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "An electron in a hydrogen atom transitions from a higher energy state to a lower energy state. What happens to the energy of the electron?",
+      "ms": {
+        "draft": 4381,
+        "critique": 6137,
+        "solver": 1629,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the total energy of an electron in a hydrogen atom negative?",
+      "ms": {
+        "draft": 4381,
+        "critique": 7170,
+        "solver": 1074,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the total energy of an electron in a hydrogen atom negative?",
+      "ms": {
+        "draft": 5191,
+        "critique": 6718,
+        "solver": 12654,
+        "form": 1
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is true about the emission spectrum of hydrogen?",
+      "ms": {
+        "draft": 17019,
+        "critique": 8511,
+        "solver": 1743,
+        "form": 3386,
+        "translation": 21164
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "(group 1, round 1)",
+      "reason": "the model's answer was not JSON (finish: length): {\"items\":[{\"difficulty\":2,\"stem\":\"According to the passage, what is the main reason that most alpha-particles go through"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "In the Rutherford model of the atom, what is the main reason for the large deflection of alpha particles?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct reason is not chosen…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, why does the emission spectrum of hydrogen consist of discrete lines?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why is the total energy of an electron in a hydrogen atom negative?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the radius of the nucleus of a hydrogen atom is scaled to 22 cm, what would be the approximate radius of the electron's orbit?",
+      "reason": "options are in more than one unit (cm, m, km); options 0 and 1 are the same number; options 0 and 2 are the same number; options 1 and 2 are the same number"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main reason an electron in a hydrogen atom does not spiral into the nucleus according to classical electromagnetic theory?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the significance of the Balmer series in the hydrogen spectrum?",
+      "reason": "figure: figure spec refused: spec.curves.0.poly: Array must contain at most 5 element(s)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, why does the emission spectrum of hydrogen contain multiple lines?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What does the negative sign in the total energy of an electron in a hydrogen atom indicate?",
+      "reason": "options 0 and 2 say the same thing (\"The electron is not bound to the nucleus\" / \"The electron is bound to the nucleus\"); options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the kinetic energy of an electron in a hydrogen atom is 13.6 eV, what is the total energy of the electron?",
+      "reason": "the solution's working is not sound; option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the radius of a gold nucleus is 6 fm, and the distance of closest approach of an alpha particle is 30 fm, what is the approximate ratio of the radius of the gold nucleus to the distance of closest approach?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound; option 0 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, why does the total energy of an electron in a hydrogen atom have to be negative?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a hydrogen atom receives enough energy to raise its electron to the second excited state, how much energy is required?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what does the negative sign in the total energy of an electron in a hydrogen atom indicate?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Correct answer is not the longest option, so it is chosen he…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the main reason an electron in an atom does not emit radiant energy while in a stable orbit?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, why do the energy levels of a hydrogen atom come closer together as the principal quantum number n increases?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Correct answer is not the longest option, so it is chosen he…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the nucleus of a hydrogen atom is scaled to a football size (22 cm), approximately how large would the radius of the electron's orbit be?",
+      "reason": "after redraft: the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the third postulate of Bohr's theory state about the emission of a photon?",
+      "reason": "options 0 and 1 say the same thing (\"An electron emits a photon when it moves to a higher energy state\" / \"An electron emits a photon when it moves to a lower energy state\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the reason for the emission of spectral lines in hydrogen according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the total energy of an electron in a hydrogen atom negative according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which model of the atom states that the positive charge is distributed throughout a sphere with electrons embedded in it?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If the nucleus of a hydrogen atom were scaled to the size of a football (approximately 22 cm), what would be the approximate radius of the electron's orbit?",
+      "reason": "options are in more than one unit (cm, m, km); options 0 and 1 are the same number; options 0 and 2 are the same number; options 1 and 2 are the same number"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which model of the atom is known for its inability to explain the characteristic line spectra of atoms?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term used to describe the orbits in which an electron revolves around the nucleus without emitting energy?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "According to the passage, what is the main reason that the Rutherford model of the atom is considered unstable?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which model of the atom has a nearly continuous mass distribution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the nucleus of a hydrogen atom is scaled to the size of a football (22 cm), what would be the approximate size of the electron's orbit?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which model of the atom is based on a nearly continuous mass distribution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the total energy of an electron in a hydrogen atom?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the model in which an atom is described as a spherical cloud of positive charges with electrons embedded in it?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which model of the atom suggests that the nucleus is extremely small compared to the size of the atom?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following best explains why the emission spectrum of hydrogen shows many lines?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "What is the frequency of radiation emitted when an atom makes a transition between two energy levels that differ by 2.3 eV?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The figure shows standing waves on a circular orbit of an electron. What does the number of wavelengths in the orbit represent?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the nucleus of a hydrogen atom is scaled to a size of 22 cm, what would be the approximate radius of the electron's orbit?",
+      "reason": "the solver picked option 1 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to Bohr's model, why does the emission spectrum of hydrogen contain multiple lines?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, no reason needed here for distractors…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the nucleus of a hydrogen atom were scaled to a size of 22 cm, what would be the approximate size of the electron's orbit?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "According to Bohr's second postulate, what is the condition for an electron to be in a stable orbit?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "The total energy of an electron in a hydrogen atom is negative. What does this imply about the electron's state?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the radius of a gold nucleus is scaled to a football size (22 cm), what would be the approximate radius of the electron's orbit in a hydrogen atom?",
+      "reason": "after redraft: the solver picked option 2 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the emission spectrum of hydrogen show many lines even though there is only one electron in a hydrogen atom?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.south: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the emission spectrum of hydrogen, bright lines appear on a dark background. What causes these bright lines?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'atom'"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the main purpose of the gold foil in Rutherford's alpha particle scattering experiment?",
+      "reason": "near-duplicate of served question cmvi4djam0bkmgpfhwcy408qt (cosine 0.936 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which model of the atom accounts for almost all the general features of the hydrogen spectrum?",
+      "reason": "near-duplicate of served question cmvi4djak0bkggpfhlyaevw1b (cosine 0.966 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "In the ground state of which model do electrons experience a net force?",
+      "reason": "near-duplicate of served question cmvi4djaq0bkygpfhjjfsrq2d (cosine 0.946 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "An electron in a hydrogen atom transitions from a higher energy state to a lower energy state. What happens to the energy of the electron?",
+      "reason": "near-duplicate of served question cmvi4djao0bksgpfhuy90siet (cosine 0.951 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is the total energy of an electron in a hydrogen atom negative?",
+      "reason": "near-duplicate of served question cmvi4djar0bl4gpfhv0eojfrk (cosine 0.938 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why is the total energy of an electron in a hydrogen atom negative?",
+      "reason": "near-duplicate of served question cmvi4djar0bl4gpfhv0eojfrk (cosine 0.938 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Physics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

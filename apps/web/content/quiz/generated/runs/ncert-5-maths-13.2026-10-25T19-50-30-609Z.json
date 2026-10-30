@@ -1,0 +1,302 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T19:50:30.609Z",
+  "finishedAt": "2026-10-25T19:53:14.320Z",
+  "seconds": 164,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Math-Mela",
+    "bookCode": "eemm1",
+    "document": "ncert/5/mathematics/eemm113.pdf",
+    "classLevel": 5,
+    "subject": "Mathematics",
+    "chapter": "Chapter 13 — Animal Jumps",
+    "edition": "Reprint 2026-27",
+    "chunks": 4,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2025-26]\n6. Answer – B\n50(51)\nAs, 2 = 25𝑘 ⟹ 𝑘 = 51\nAnswer – D",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n6. (c) 5 Unit",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2025-26]\n5. (D) ଵ\n௫\n௦௘௖௾ା௧௔௡௾ ଵ = (௦௘௖௾ା௧௔௡௾)(௦௘௖௾ି ௧௔௡௾) (௦௘௖௾ି௧௔௡௾ ) = (௦௘௖௾ି௧௔௡௾ ) ଵ = secϴ-tanϴ",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n5. B) 20 cm"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 39981,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 9444,
+      "completionTokens": 2343
+    },
+    "critique": {
+      "calls": 14,
+      "ms": 89653,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 6323,
+      "completionTokens": 2480
+    },
+    "solver": {
+      "calls": 75,
+      "ms": 36924,
+      "in": 12,
+      "out": 10,
+      "rejects": 2,
+      "promptTokens": 13720,
+      "completionTokens": 769
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 10,
+      "out": 7,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 4517,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 192422,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 14234,
+      "completionTokens": 6046
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Using the number line, which numbers will Mowgli touch if he jumps by 5 steps starting from 0?",
+      "ms": {
+        "draft": 3895,
+        "critique": 7326,
+        "solver": 1667
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a multiple of 1, 2, and 4?",
+      "ms": {
+        "draft": 3895,
+        "critique": 6835,
+        "solver": 15279
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number is divisible by 6, which of the following must also be true?",
+      "ms": {
+        "draft": 2769,
+        "critique": 7347,
+        "solver": 1677,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number is a multiple of 12, what is the largest number that can be a factor of it?",
+      "ms": {
+        "draft": 2769,
+        "critique": 9026,
+        "solver": 1415,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a number is a multiple of 4, which of the following must also be true?",
+      "ms": {
+        "draft": 2769,
+        "critique": 7347,
+        "solver": 11718,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the least common multiple of 2 and 3?",
+      "ms": {
+        "draft": 3895,
+        "critique": 4214,
+        "solver": 713,
+        "form": 0,
+        "translation": 24671
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the definition of a factor of a number?",
+      "ms": {
+        "draft": 2769,
+        "critique": 4012,
+        "solver": 691,
+        "form": 0,
+        "translation": 16780
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a rabbit takes jumps of 4 and a frog takes jumps of 3, what is the first number they both touch on the number line?",
+      "ms": {
+        "draft": 3895,
+        "critique": 7532,
+        "solver": 2733,
+        "form": 0,
+        "translation": 32264
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the least common multiple of 3 and 4?",
+      "ms": {
+        "draft": 2769,
+        "critique": 6315,
+        "solver": 1558,
+        "form": 0,
+        "translation": 21314
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "On a number line, a frog jumps by 3 steps and a rabbit jumps by 4 steps. Which of the following numbers will they both land on?",
+      "ms": {
+        "draft": 2769,
+        "critique": 5958,
+        "solver": 942,
+        "form": 0,
+        "translation": 27595
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a spider takes a jump of 3 and a grasshopper takes a jump of 6, what is the least common multiple of 3 and 6?",
+      "ms": {
+        "draft": 3895,
+        "critique": 7814,
+        "solver": 1627,
+        "form": 0,
+        "translation": 32934
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If 10 is a common factor of certain numbers, which of the following numbers could be included?",
+      "ms": {
+        "draft": 3895,
+        "critique": 7641,
+        "solver": 1437,
+        "form": 1,
+        "translation": 32678
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Using the number line, which numbers will Mowgli touch if he jumps by 5 steps starting from 0?",
+      "reason": "the solver picked option 0 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a multiple of 1, 2, and 4?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a number is divisible by 6, which of the following must also be true?",
+      "reason": "options 0 and 1 say the same thing (\"It is divisible by 3 but not by 2\" / \"It is divisible by 2 but not by 3\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a number is a multiple of 12, what is the largest number that can be a factor of it?",
+      "reason": "the key is far longer than every distractor (24 vs 2 characters); options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a number is a multiple of 4, which of the following must also be true?",
+      "reason": "options 2 and 3 are the same (\"It is a factor of 4\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

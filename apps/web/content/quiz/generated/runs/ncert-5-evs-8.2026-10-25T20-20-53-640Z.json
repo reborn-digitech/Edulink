@@ -1,0 +1,400 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T20:20:53.640Z",
+  "finishedAt": "2026-10-25T20:23:23.851Z",
+  "seconds": 150,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap108.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 8 — A Treat for Mosquitoes",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 49918,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 15552,
+      "completionTokens": 2743
+    },
+    "critique": {
+      "calls": 22,
+      "ms": 132164,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 9106,
+      "completionTokens": 3754
+    },
+    "solver": {
+      "calls": 123,
+      "ms": 69900,
+      "in": 16,
+      "out": 15,
+      "rejects": 1,
+      "promptTokens": 22512,
+      "completionTokens": 1334
+    },
+    "form": {
+      "calls": 5,
+      "ms": 12413,
+      "in": 15,
+      "out": 5,
+      "rejects": 10,
+      "promptTokens": 1187,
+      "completionTokens": 321
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 21,
+      "ms": 3288,
+      "in": 5,
+      "out": 1,
+      "rejects": 4,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 5,
+      "ms": 18276,
+      "in": 2,
+      "out": 2,
+      "rejects": 0,
+      "promptTokens": 2193,
+      "completionTokens": 1194
+    }
+  },
+  "kept": 1,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What does the passage say about malaria?",
+      "ms": {
+        "draft": 3170,
+        "critique": 4731,
+        "solver": 1180,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for having a blood test according to the passage?",
+      "ms": {
+        "draft": 3170,
+        "critique": 4924,
+        "solver": 1721,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What should be done to prevent the breeding of mosquitoes according to the passage?",
+      "ms": {
+        "draft": 3170,
+        "critique": 5394,
+        "solver": 2047,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main cause of anaemia?",
+      "ms": {
+        "draft": 3170,
+        "critique": 6656,
+        "solver": 1765,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the cause of malaria in the past?",
+      "ms": {
+        "draft": 2530,
+        "critique": 7336,
+        "solver": 2935
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the name of the scientist who discovered that mosquitoes spread malaria?",
+      "ms": {
+        "draft": 2530,
+        "critique": 7042,
+        "solver": 17326,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what did Ronald Ross do to prove that mosquitoes spread malaria?",
+      "ms": {
+        "draft": 2530,
+        "critique": 7735,
+        "solver": 15684,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has anaemia, what does the passage suggest they should do?",
+      "ms": {
+        "draft": 3081,
+        "critique": 8206,
+        "solver": 1535,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which of the following is a way to prevent the spread of mosquitoes?",
+      "ms": {
+        "draft": 3081,
+        "critique": 6636,
+        "solver": 11897,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for taking a blood test according to the passage?",
+      "ms": {
+        "draft": 3081,
+        "critique": 5932,
+        "solver": 15084,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the main difference between a mosquito that spreads malaria and others?",
+      "ms": {
+        "draft": 3081,
+        "critique": 3689,
+        "solver": 540,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the disease that was once called 'bad air'?",
+      "ms": {
+        "draft": 3698,
+        "critique": 5760,
+        "solver": 1139,
+        "form": 4253
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be done to prevent mosquitoes from breeding near a school?",
+      "ms": {
+        "draft": 3698,
+        "critique": 6562,
+        "solver": 872,
+        "form": 1640
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What did the scientist do to prove that mosquitoes spread malaria?",
+      "ms": {
+        "draft": 3698,
+        "critique": 5731,
+        "solver": 6538,
+        "form": 998
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What can be done to prevent mosquitoes from breeding in and around a school?",
+      "ms": {
+        "draft": 2530,
+        "critique": 7313,
+        "solver": 14862,
+        "form": 3652
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did the scientist find in the stomach of the mosquito?",
+      "ms": {
+        "draft": 3698,
+        "critique": 5377,
+        "solver": 2349,
+        "form": 3035,
+        "translation": 14226
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about malaria?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main reason for having a blood test according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Ignores the context of the passage…\"); distractor 3's reason is not a one-line misconception (\"Ignores the context of the passage and the specific purpose …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What should be done to prevent the breeding of mosquitoes according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Confuses the advice given in the passage with other methods…\"); distractor 3's reason is not a one-line misconception (\"Confuses the advice given in the passage with other methods…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what is the main cause of anaemia?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage say about the cause of malaria in the past?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, what is the name of the scientist who discovered that mosquitoes spread malaria?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, what did Ronald Ross do to prove that mosquitoes spread malaria?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a person has anaemia, what does the passage suggest they should do?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Does not understand the advice given in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which of the following is a way to prevent the spread of mosquitoes?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Misunderstands the advice given in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main reason for taking a blood test according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the main difference between a mosquito that spreads malaria and others?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the name of the disease that was once called 'bad air'?",
+      "reason": "near-duplicate of served question cmvh8e1vl07j2gpfh3o80mkiy (cosine 0.927 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What can be done to prevent mosquitoes from breeding near a school?",
+      "reason": "near-duplicate of served question cmvkat9qq0jvkgpfhdrmvy9bs (cosine 0.947 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What did the scientist do to prove that mosquitoes spread malaria?",
+      "reason": "near-duplicate of served question cmvh8e1vn07j8gpfht9h6x0mv (cosine 0.916 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "What can be done to prevent mosquitoes from breeding in and around a school?",
+      "reason": "near-duplicate of served question cmvkat9qq0jvkgpfhdrmvy9bs (cosine 0.946 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

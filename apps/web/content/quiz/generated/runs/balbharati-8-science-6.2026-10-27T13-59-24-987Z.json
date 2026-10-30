@@ -1,0 +1,700 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-27T13:59:24.987Z",
+  "finishedAt": "2026-10-27T14:14:26.625Z",
+  "seconds": 902,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 6 — Composition of matter",
+    "edition": "First Edition 2018",
+    "chunks": 13,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2026-27]\n25. Carbon forms millions of compounds whereas silicon, which is just below it in 2\nthe Periodic Table, forms a few compounds. Explain the reason for the\ndifference in their ability to form compounds.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n37. to 39 are case-based/data -based questions.\n37 4\nA. Derive the names of A, Y, Z, M, P & R\nAttempt either subpart B or C.\nB. Improvise an activity to test Z.\nOR\nC. Name the process in which compounds X, Y & Z are formed from A.\nJustify your response.\n- - - - - - - - - - - - - -\nFor visually impaired students\nA. Distinguish between ethanol and ethanoic acid experimentally.\nAttempt either subpart B or C.\nB. Give the IUPAC name of the first member of Alkene which is formed by\naddition of conc. sulphuric acid to it. Illustrate the change with the help\nof a chemical equation.\nOR\nC. “All combustion reactions are oxidation but all oxidation reactions are\nnot combustion.” Justify.",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n20. Assertion: Biodegradable substances result in the formation of compost and natural 1\nreplenishment.\nReason: It is due to breakdown of complex inorganic substances into simple organic\nsubstances.",
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 278539,
+      "in": 36,
+      "out": 36,
+      "rejects": 0,
+      "promptTokens": 33926,
+      "completionTokens": 9924
+    },
+    "critique": {
+      "calls": 53,
+      "ms": 515556,
+      "in": 36,
+      "out": 35,
+      "rejects": 1,
+      "promptTokens": 25315,
+      "completionTokens": 9211
+    },
+    "solver": {
+      "calls": 283,
+      "ms": 219672,
+      "in": 35,
+      "out": 31,
+      "rejects": 4,
+      "promptTokens": 49619,
+      "completionTokens": 2985
+    },
+    "form": {
+      "calls": 15,
+      "ms": 72174,
+      "in": 31,
+      "out": 13,
+      "rejects": 18,
+      "promptTokens": 5540,
+      "completionTokens": 1255
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 85,
+      "ms": 18716,
+      "in": 13,
+      "out": 13,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 53,
+      "ms": 716837,
+      "in": 26,
+      "out": 26,
+      "rejects": 0,
+      "promptTokens": 28761,
+      "completionTokens": 14399
+    }
+  },
+  "kept": 13,
+  "keptByLevel": {
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 1,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 7,
+  "needsFigure": 1,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What is the main criterion used to classify matter into elements, compounds, and mixtures?",
+      "ms": {
+        "draft": 6000,
+        "critique": 7871,
+        "solver": 1804,
+        "form": 7559
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a mixture?",
+      "ms": {
+        "draft": 6000,
+        "critique": 8593,
+        "solver": 16232,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the intermolecular force in a substance is very weak, what state of matter is it most likely to be in?",
+      "ms": {
+        "draft": 6000,
+        "critique": 8145,
+        "solver": 18245,
+        "form": 5180
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about the properties of a compound?",
+      "ms": {
+        "draft": 6000,
+        "critique": 10001,
+        "solver": 15453,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does water have different properties from hydrogen and oxygen, even though it is made up of these elements?",
+      "ms": {
+        "draft": 6000,
+        "critique": 9653,
+        "solver": 2808,
+        "form": 4342
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why are elements classified as metals, non-metals, and metalloids?",
+      "ms": {
+        "draft": 8414,
+        "critique": 9660,
+        "solver": 2291,
+        "form": 4750
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the main difference between a compound and a mixture?",
+      "ms": {
+        "draft": 4218,
+        "critique": 8854,
+        "solver": 1887,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the mixture in which the components are uniformly distributed throughout the bulk?",
+      "ms": {
+        "draft": 4218,
+        "critique": 10143,
+        "solver": 16558,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the basis for deducing the valencies of elements from molecular formulae?",
+      "ms": {
+        "draft": 30797,
+        "critique": 9212
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the molecular formula of a compound formed between nitrogen (valency 3) and hydrogen (valency 1)?",
+      "ms": {
+        "draft": 30797,
+        "critique": 11125,
+        "solver": 19424,
+        "form": 4544
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student wrote the molecular formula of a compound formed between carbon (valency 4) and oxygen (valency 2) as CO. What is the correct molecular formula of the compound?",
+      "ms": {
+        "draft": 30797,
+        "critique": 10175,
+        "solver": 19474,
+        "form": 4778
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "From the information in the passage, which of the following is an example of a compound with a molecular formula that can be derived using the cross multiplication method?",
+      "ms": {
+        "draft": 30797,
+        "critique": 12713,
+        "solver": 24968,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the molecular formula of a compound like CO2 considered to be the simplest possible representation according to the passage?",
+      "ms": {
+        "draft": 30797,
+        "critique": 10176,
+        "solver": 10320,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Using the cross multiplication method, what is the molecular formula of a compound formed between an element with valency 3 and another with valency 1?",
+      "ms": {
+        "draft": 9826,
+        "critique": 9021,
+        "solver": 3520
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following compounds has a molecular formula that follows the rule of the smallest whole number ratio?",
+      "ms": {
+        "draft": 9826,
+        "critique": 8481,
+        "solver": 18503,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the correct way to deduce the valency of an element?",
+      "ms": {
+        "draft": 9826,
+        "critique": 7805,
+        "solver": 20996
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the passage, the method of cross multiplication is used to find the molecular formula. Based on this, which of the following pairs of elements would form a compound with the formula CCl4?",
+      "ms": {
+        "draft": 9826,
+        "critique": 15200,
+        "solver": 23744,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the correct molecular formula for a compound formed between sulfur (valency 2) and hydrogen (valency 1)?",
+      "ms": {
+        "draft": 9826,
+        "critique": 14225,
+        "solver": 16652,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage describes the valency of elements and how to deduce molecular formulas. Based on this, which of the following is the most logical reason why the formula for carbon dioxide is CO2?",
+      "ms": {
+        "draft": 9826,
+        "critique": 13906,
+        "solver": 20271
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following can be separated by filtration?",
+      "ms": {
+        "draft": 4408,
+        "critique": 12655,
+        "solver": 1607,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a homogeneous mixture?",
+      "ms": {
+        "draft": 4408,
+        "critique": 11352,
+        "solver": 19698
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the experiment described in the passage, what happens when organic compounds are strongly heated?",
+      "ms": {
+        "draft": 5161,
+        "critique": 8320,
+        "solver": 1671,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a characteristic of a compound?",
+      "ms": {
+        "draft": 5161,
+        "critique": 9930,
+        "solver": 15859,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the smallest particle of matter called?",
+      "ms": {
+        "draft": 5125,
+        "critique": 10438,
+        "solver": 2154,
+        "form": 2705,
+        "translation": 33979
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following best describes a compound?",
+      "ms": {
+        "draft": 8414,
+        "critique": 10903,
+        "solver": 18600,
+        "form": 4558,
+        "translation": 63937
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main difference between a mixture and a compound?",
+      "ms": {
+        "draft": 8414,
+        "critique": 9797,
+        "solver": 1756,
+        "form": 4211,
+        "translation": 72168
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a homogeneous mixture?",
+      "ms": {
+        "draft": 4218,
+        "critique": 9376,
+        "solver": 3021,
+        "form": 0,
+        "translation": 41141
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a substance is heated and leaves behind a residue, what type of compound is it most likely to be?",
+      "ms": {
+        "draft": 8414,
+        "critique": 9843,
+        "solver": 1990,
+        "form": 3440,
+        "translation": 53330
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens when a horse shoe magnet is brought near a mixture of iron filings and sulphur?",
+      "ms": {
+        "draft": 4218,
+        "critique": 9904,
+        "solver": 2960,
+        "form": 0,
+        "translation": 48050
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the activity described, which of the following is a homogeneous mixture?",
+      "ms": {
+        "draft": 8414,
+        "critique": 10240,
+        "solver": 2106,
+        "form": 4323,
+        "translation": 61070
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A student observes that a substance has a definite volume but no definite shape. What can be inferred about the intermolecular forces in this substance?",
+      "ms": {
+        "draft": 6000,
+        "critique": 11027,
+        "solver": 18833,
+        "form": 7340,
+        "translation": 74263
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In an experiment, a student heats a compound and notices that it leaves a black residue. What can be concluded about the compound?",
+      "ms": {
+        "draft": 8414,
+        "critique": 8833,
+        "solver": 2614,
+        "form": 5200,
+        "translation": 64678
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a heterogeneous mixture?",
+      "ms": {
+        "draft": 4218,
+        "critique": 8400,
+        "solver": 3926,
+        "form": 0,
+        "translation": 39220
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are complex compounds different from other types of compounds?",
+      "ms": {
+        "draft": 5161,
+        "critique": 10134,
+        "solver": 2571,
+        "form": 2964,
+        "translation": 53779
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What happens when a compound is formed from its elements?",
+      "ms": {
+        "draft": 4218,
+        "critique": 10173,
+        "solver": 2681,
+        "form": 0,
+        "translation": 42565
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why a compound cannot be separated into its components by physical means?",
+      "ms": {
+        "draft": 4408,
+        "critique": 11420,
+        "solver": 2738,
+        "form": 0,
+        "translation": 62907
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main criterion used to classify matter into elements, compounds, and mixtures?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"correct answer is not the longest option and is not the only…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a mixture?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the intermolecular force in a substance is very weak, what state of matter is it most likely to be in?",
+      "reason": "options mix numbers and words (1 of 4 are numbers); distractor 3's reason is not a one-line misconception (\"not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following statements is true about the properties of a compound?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does water have different properties from hydrogen and oxygen, even though it is made up of these elements?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"correct answer is not the longest option and is not the only…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why are elements classified as metals, non-metals, and metalloids?",
+      "reason": "the key is far longer than every distractor (65 vs 30 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What is the main difference between a compound and a mixture?",
+      "reason": "options 0 and 1 say the same thing (\"A compound is formed by physical combination, while a mixture is formed by chemical combination\" / \"A mixture is formed by physical combination, while a compound is formed by chemical combination\"); options 2 and 3 say the same thing (\"A compound is always homogeneous, while a mixture is always heterogeneous\" / \"A mixture is always homogeneous, while a compound is always heterogeneous\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the name of the mixture in which the components are uniformly distributed throughout the bulk?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is the basis for deducing the valencies of elements from molecular formulae?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the molecular formula of a compound formed between nitrogen (valency 3) and hydrogen (valency 1)?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that nitrogen forms only two bonds with …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student wrote the molecular formula of a compound formed between carbon (valency 4) and oxygen (valency 2) as CO. What is the correct molecular formula of the compound?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Fails to apply the cross multiplication method to the valenc…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "From the information in the passage, which of the following is an example of a compound with a molecular formula that can be derived using the cross multiplication method?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the molecular formula of a compound like CO2 considered to be the simplest possible representation according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Using the cross multiplication method, what is the molecular formula of a compound formed between an element with valency 3 and another with valency 1?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following compounds has a molecular formula that follows the rule of the smallest whole number ratio?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is the correct way to deduce the valency of an element?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the passage, the method of cross multiplication is used to find the molecular formula. Based on this, which of the following pairs of elements would form a compound with the formula CCl4?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options 0 and 3 say the same thing (\"Carbon (valency 4) and Chlorine (valency 1)\" / \"Carbon (valency 1) and Chlorine (valency 4)\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the correct molecular formula for a compound formed between sulfur (valency 2) and hydrogen (valency 1)?",
+      "reason": "options 1 and 2 are the same (\"H2S2\")"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "The passage describes the valency of elements and how to deduce molecular formulas. Based on this, which of the following is the most logical reason why the formula for carbon dioxide is CO2?",
+      "reason": "distractors 0, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following can be separated by filtration?",
+      "reason": "option 3 is a catch-all (\"All of the above\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a homogeneous mixture?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the experiment described in the passage, what happens when organic compounds are strongly heated?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a characteristic of a compound?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

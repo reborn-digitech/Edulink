@@ -1,0 +1,822 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T05:59:41.142Z",
+  "finishedAt": "2026-10-29T06:07:19.289Z",
+  "seconds": 458,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Fundamentals of Human Geography",
+    "bookCode": "legy1",
+    "document": "ncert/12/geography/legy106.pdf",
+    "classLevel": 12,
+    "subject": "Geography",
+    "chapter": "Chapter 6 — Tertiary and Quaternary Activities",
+    "edition": "Reprint 2026-27",
+    "chunks": 12,
+    "groups": 4
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Geography, sample question paper, 2023-24]\n23. “Quaternary activities centre around research and development.” 3\nExamine the statement.",
+      "[CBSE Class XII Geography, sample question paper, 2025-26]\n4. of economic development, social upliftment, and historical and cultural 1\nbackground of the region.\nReason (R): The population growth or population change refers to the\nchange in the number of inhabitants of a territory during a specific\nperiod of time, which can be expressed in terms of absolute numbers\nor percentage.\nA. Both (A) and (R) are true, and (R) is the correct explanation of\n(A).\nB. Both (A) and (R) are true, but (R) is not the correct explanation\nof (A).\nC. (A) is true, but (R) is false.\nD. (A) is false, but (R) is true.\nWhich of the following activities is an example of a quaternary",
+      "[CBSE Class XII Geography, marking scheme, 2023-24]\n With social and cultural Development, humans develop better and more\nefficient technology.\n They move from a state of Necessity to a state of freedom.\n They create Possibilities with the resources obtained from the\nenvironment.\n Human has modified their surroundings according to their needs.\n Imprints of human may be seen everywhere on the earth.\nOR\nAns. The three dualism in geography which started wide-ranging debates in\nthe discipline of geography are:\na. Whether geography as a discipline should be a law making/ the orising\n(nomothetic) or descriptive (idiographic).\nb. Whether the approach of the study should be regional or systematic?\nc. Whether geographical phenomena can be interpr",
+      "[CBSE Class XII Geography, marking scheme, 2024-25]\n18. & 19 are Source based questions. (2X3=6)\n18 (I) Travel undertaken for purposes of recreation rather than business. 1+1+1\n(II) The Mediterranean Coast and the West Coast of India. =3\n(III) Tourism has become the world’s single largest tertiary activity in total registered\njobs (250 million) and total revenue (40 per cent of the total GDP).\nBesides, many local people are employed to provide services like accommodation,\nmeals, transport, entertainment and special shops serving the tourists.\nTourism fosters the growth of infrastructure industries, retail trading, and craft\nindustries (souvenirs)."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "glossary lines from the corpus for Geography in the prompt",
+  "stages": {
+    "draft": {
+      "calls": 8,
+      "ms": 136927,
+      "in": 44,
+      "out": 40,
+      "rejects": 4,
+      "promptTokens": 33784,
+      "completionTokens": 7759
+    },
+    "critique": {
+      "calls": 51,
+      "ms": 323506,
+      "in": 40,
+      "out": 33,
+      "rejects": 7,
+      "promptTokens": 21944,
+      "completionTokens": 8725
+    },
+    "solver": {
+      "calls": 238,
+      "ms": 119257,
+      "in": 33,
+      "out": 32,
+      "rejects": 1,
+      "promptTokens": 38398,
+      "completionTokens": 2403
+    },
+    "form": {
+      "calls": 13,
+      "ms": 36582,
+      "in": 32,
+      "out": 12,
+      "rejects": 20,
+      "promptTokens": 3246,
+      "completionTokens": 956
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 14,
+      "ms": 2274,
+      "in": 12,
+      "out": 6,
+      "rejects": 6,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 25,
+      "ms": 294037,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 15483,
+      "completionTokens": 8262
+    }
+  },
+  "kept": 6,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 1,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 3,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a tertiary activity?",
+      "ms": {
+        "draft": 2596,
+        "critique": 5016
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of transport in tertiary activities?",
+      "ms": {
+        "draft": 2596,
+        "critique": 5970
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a quaternary activity, based on the passage?",
+      "ms": {
+        "draft": 2596,
+        "critique": 6955
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the difference between secondary and tertiary activities?",
+      "ms": {
+        "draft": 2596,
+        "critique": 7226
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is most likely to be a service provided by a rural marketing centre?",
+      "ms": {
+        "draft": 2596,
+        "critique": 5302,
+        "solver": 11887,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of transport according to the passage?",
+      "ms": {
+        "draft": 3004,
+        "critique": 7329,
+        "solver": 967,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the role of communication services?",
+      "ms": {
+        "draft": 3004,
+        "critique": 4711,
+        "solver": 1076,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of tertiary activities?",
+      "ms": {
+        "draft": 2596,
+        "critique": 6394,
+        "solver": 14852,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following is a reason for the importance of transport networks?",
+      "ms": {
+        "draft": 3004,
+        "critique": 7042,
+        "solver": 12746,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for the seasonal nature of tourism in certain regions?",
+      "ms": {
+        "draft": 3139,
+        "critique": 6532,
+        "solver": 1790,
+        "form": 2688
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Based on the passage, which of the following best describes the role of the government in services?",
+      "ms": {
+        "draft": 3004,
+        "critique": 5479,
+        "solver": 16249,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the role of medical tourism in developing countries?",
+      "ms": {
+        "draft": 3139,
+        "critique": 6970,
+        "solver": 2281,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a quaternary activity according to the passage?",
+      "ms": {
+        "draft": 2953,
+        "critique": 7670
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, what is the main reason for the continuation of outsourcing?",
+      "ms": {
+        "draft": 2953,
+        "critique": 5654
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the quinary sector in advanced economies?",
+      "ms": {
+        "draft": 3139,
+        "critique": 7936,
+        "solver": 11417,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a tertiary activity as described in the passage?",
+      "ms": {
+        "draft": 2953,
+        "critique": 5745
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the concept of the 'digital divide' as discussed in the passage?",
+      "ms": {
+        "draft": 2953,
+        "critique": 6430,
+        "solver": 814,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a secondary sector activity?",
+      "ms": {
+        "draft": 2892,
+        "critique": 8248,
+        "solver": 9903,
+        "form": 4263
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the digital divide?",
+      "ms": {
+        "draft": 2892,
+        "critique": 6937,
+        "solver": 1837,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, which of the following best explains the role of the quaternary sector in developed economies?",
+      "ms": {
+        "draft": 3314,
+        "critique": 6176,
+        "solver": 1215,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "According to the passage, which of the following is the most significant factor influencing the demand for transport?",
+      "ms": {
+        "draft": 13589,
+        "critique": 7388,
+        "solver": 1409,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the role of transport in the development of a region?",
+      "ms": {
+        "draft": 13589,
+        "critique": 6298,
+        "solver": 10642,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a quaternary activity as described in the passage?",
+      "ms": {
+        "draft": 13589,
+        "critique": 7579,
+        "solver": 14383,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements best reflects the relationship between services and economic development as described in the passage?",
+      "ms": {
+        "draft": 13589,
+        "critique": 6863,
+        "solver": 1473,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, what is the main difference between secondary and tertiary activities?",
+      "ms": {
+        "draft": 4276,
+        "critique": 6679,
+        "solver": 1197
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a tertiary activity?",
+      "ms": {
+        "draft": 4276,
+        "critique": 7925,
+        "solver": 11384,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a quaternary activity, as mentioned in the passage?",
+      "ms": {
+        "draft": 4276,
+        "critique": 7694,
+        "solver": 10078,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements best explains the role of tertiary activities in a developed economy?",
+      "ms": {
+        "draft": 4276,
+        "critique": 7825,
+        "solver": 1667,
+        "form": 2723
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a quaternary activity?",
+      "ms": {
+        "draft": 3004,
+        "critique": 5427,
+        "solver": 2015,
+        "form": 3879
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a high-order service?",
+      "ms": {
+        "draft": 3004,
+        "critique": 6061,
+        "solver": 1591,
+        "form": 3020
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a quaternary activity?",
+      "ms": {
+        "draft": 3139,
+        "critique": 6865,
+        "solver": 1590,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an example of a quaternary activity?",
+      "ms": {
+        "draft": 2892,
+        "critique": 6611,
+        "solver": 1103,
+        "form": 4569
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a tertiary activity?",
+      "ms": {
+        "draft": 2892,
+        "critique": 5331,
+        "solver": 1776,
+        "form": 2746
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a quaternary activity?",
+      "ms": {
+        "draft": 3314,
+        "critique": 6655,
+        "solver": 2258,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main reason for the continued practice of outsourcing?",
+      "ms": {
+        "draft": 2892,
+        "critique": 6958,
+        "solver": 1543,
+        "form": 3269,
+        "translation": 40188
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a region has a high number of tourists visiting throughout the year, which of the following is most likely to be true about the region?",
+      "ms": {
+        "draft": 3314,
+        "critique": 6117,
+        "solver": 951,
+        "form": 5159,
+        "translation": 53896
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a company in Hyderabad is doing work for a country like the U.S.A, what is the likely reason for this?",
+      "ms": {
+        "draft": 2892,
+        "critique": 5394,
+        "solver": 1876,
+        "form": 2477,
+        "translation": 48714
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains why tourism is considered a tertiary activity?",
+      "ms": {
+        "draft": 3314,
+        "critique": 7037,
+        "solver": 1972,
+        "form": 2928,
+        "translation": 46126
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following best explains the statement, 'Quaternary activities centre around research and development'?",
+      "ms": {
+        "draft": 3139,
+        "critique": 8226,
+        "solver": 12180,
+        "form": 2406,
+        "translation": 50835
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is medical tourism considered a special form of tertiary activity?",
+      "ms": {
+        "draft": 3314,
+        "critique": 5851,
+        "solver": 2081,
+        "form": 2448,
+        "translation": 50299
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of a tertiary activity?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "Which of the following is NOT a secondary sector activity according to the passage?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a tertiary activity?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best describes the role of transport in tertiary activities?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following is an example of a quaternary activity, based on the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the difference between secondary and tertiary activities?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is most likely to be a service provided by a rural marketing centre?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of transport according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (65 vs 36 characters); distractor 2's reason is not a one-line misconception (\"Misunderstands the text.…\"); distractor 3's reason is not a one-line misconception (\"Focuses on a secondary aspect of the passage.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what is the role of communication services?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is NOT a characteristic of tertiary activities?",
+      "reason": "options 0 and 1 are the same (\"They involve the production of goods\"); options 2 and 3 are the same (\"They involve the processing of raw materials\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, which of the following is a reason for the importance of transport networks?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the text.…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main reason for the seasonal nature of tourism in certain regions?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the passage content…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Based on the passage, which of the following best describes the role of the government in services?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (70 vs 35 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be inferred about the role of medical tourism in developing countries?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Overlooks the benefits mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is an example of a quaternary activity according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "According to the passage, what is the main reason for the continuation of outsourcing?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, what is the significance of the quinary sector in advanced economies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is an example of a tertiary activity as described in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains the concept of the 'digital divide' as discussed in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main purpose of tourism according to the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "Which of the following is an example of a high-order service as described in the passage?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a secondary sector activity?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the digital divide?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, which of the following best explains the role of the quaternary sector in developed economies?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "According to the passage, which of the following is the most significant factor influencing the demand for transport?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains the role of transport in the development of a region?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Misunderstands the passage's emphasis on transport…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a quaternary activity as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements best reflects the relationship between services and economic development as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "According to the passage, what is the main difference between secondary and tertiary activities?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is an example of a tertiary activity?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a quaternary activity, as mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements best explains the role of tertiary activities in a developed economy?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Incorrectly assumes that tertiary activities are the primary…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of a quaternary activity?",
+      "reason": "near-duplicate of served question cmvt4n11s0jbhgp21sxb63473 (cosine 0.920 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is an example of a high-order service?",
+      "reason": "near-duplicate of served question cmvigaqej0d3kgpfh4ag6s3md (cosine 0.955 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a quaternary activity?",
+      "reason": "near-duplicate of served question cmvt4n11s0jbhgp21sxb63473 (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is an example of a quaternary activity?",
+      "reason": "near-duplicate of served question cmvt4n11s0jbhgp21sxb63473 (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a tertiary activity?",
+      "reason": "near-duplicate of served question cmvigaqee0d38gpfhug0es4ck (cosine 0.941 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of a quaternary activity?",
+      "reason": "near-duplicate of served question cmvt4n11s0jbhgp21sxb63473 (cosine 0.952 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "glossary lines from the corpus for Geography in the prompt"
+  ]
+}

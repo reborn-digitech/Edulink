@@ -1,0 +1,790 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T07:03:30.914Z",
+  "finishedAt": "2026-10-30T07:14:36.593Z",
+  "seconds": 666,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc103.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 3 — Metals and Non-metals",
+    "edition": "Reprint 2026-27",
+    "chunks": 27,
+    "groups": 7
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n6. C. X is a non-metal and Y is a metal.",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n6. The electronic configuration of three elements X, Y and Z are X- 2, 8, 7; Y- 2,\n8, 2; and Z - 2, 8 1\nA. Y and Z are metals\nB. Y and X are non-metals\nC. X is a non -metal and Y is a metal\nD. Y is a non-metal and Z is a metal",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n2. Match column I with column II and select the correct option using the given\ncodes. 1\nColumn I Column II\na. A metal that forms amphoteric oxides (i) Ga\nb. A metal which melts when kept on our palm (ii) Au\nc. A metal that reacts with nitric acid (iii) Al\nd. A metal which cannot displace hydrogen from (iv) Mn\nacids\nA. a – (ii), b – (i), c – (iii), d – (iv)\nB. a – (iii), b – (i), c – (iv), d – (ii)\nC. a – (iv), b – (ii), c – (iii), d – (i)\nD. a – (iii), b – (ii), c – (i), d – (iv)\nThe solution in the given figure is likely to be\nA. HNO 3\nB. C 2 H 5 OH\nC. H 2 SO 4\nD. CO 2 in water\n- - - - - - - - - - - - - -\nFor Visual Impaired Students\nWhich among the following is considered as the strongest ",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n4. On adding dilute sulphuric acid to a test tube containing a metal ‘X’, a colourless gas is 1\nproduced when a burning match stick is brought near it. Which of the following correctly\nrepresents metal ‘X’?\na) Sodium\nb) Sulphur\nc) Copper\nd) Silver"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 157830,
+      "in": 42,
+      "out": 41,
+      "rejects": 1,
+      "promptTokens": 38683,
+      "completionTokens": 7721
+    },
+    "critique": {
+      "calls": 49,
+      "ms": 343653,
+      "in": 41,
+      "out": 31,
+      "rejects": 10,
+      "promptTokens": 20973,
+      "completionTokens": 8370
+    },
+    "solver": {
+      "calls": 210,
+      "ms": 115661,
+      "in": 31,
+      "out": 29,
+      "rejects": 2,
+      "promptTokens": 31293,
+      "completionTokens": 2132
+    },
+    "form": {
+      "calls": 13,
+      "ms": 36837,
+      "in": 29,
+      "out": 16,
+      "rejects": 13,
+      "promptTokens": 3091,
+      "completionTokens": 959
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 50,
+      "ms": 10808,
+      "in": 16,
+      "out": 11,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 47,
+      "ms": 941957,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 26095,
+      "completionTokens": 12909
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 3,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which of the following is a physical property of metals?",
+      "ms": {
+        "draft": 3926,
+        "critique": 5415,
+        "solver": 2218,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following metals is the most ductile?",
+      "ms": {
+        "draft": 3926,
+        "critique": 7403
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which metal is a liquid at room temperature?",
+      "ms": {
+        "draft": 3926,
+        "critique": 5414,
+        "solver": 12896,
+        "form": 3398
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is a correct match for the properties of elements?",
+      "ms": {
+        "draft": 3926,
+        "critique": 7309,
+        "solver": 2120,
+        "form": 2761
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is an amphoteric oxide?",
+      "ms": {
+        "draft": 2817,
+        "critique": 6614
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is true about the chemical properties of metals and non-metals?",
+      "ms": {
+        "draft": 3926,
+        "critique": 8607,
+        "solver": 1531,
+        "form": 3104
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens when a metal reacts with water?",
+      "ms": {
+        "draft": 2817,
+        "critique": 8052
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A metal X reacts with dilute sulphuric acid to produce a colourless gas. Which of the following could be X?",
+      "ms": {
+        "draft": 2817,
+        "critique": 8814
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following statements correctly describes the reactivity of metals based on their ability to displace other metals from their salt solutions?",
+      "ms": {
+        "draft": 3847,
+        "critique": 7858
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following metals reacts with cold water to produce hydrogen gas?",
+      "ms": {
+        "draft": 2817,
+        "critique": 7811,
+        "solver": 16821,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a metal reacts with dilute hydrochloric acid to produce a colourless gas, which of the following metals is most likely to be the one reacting?",
+      "ms": {
+        "draft": 3847,
+        "critique": 8369
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A metal 'X' reacts with dilute hydrochloric acid to produce a colourless gas. When the gas is ignited, it burns with a 'pop' sound. Which of the following metals is 'X'?",
+      "ms": {
+        "draft": 3847,
+        "critique": 8953
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an ionic compound formed by the transfer of electrons between a metal and a non-metal?",
+      "ms": {
+        "draft": 3847,
+        "critique": 8591
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the activity series given in the passage, which of the following metals can displace lead from its salt solution?",
+      "ms": {
+        "draft": 3847,
+        "critique": 9063,
+        "solver": 15934,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of ionic compounds?",
+      "ms": {
+        "draft": 4368,
+        "critique": 8292,
+        "solver": 1502
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the reactivity series, potassium is the most reactive metal. Which of the following statements best explains why potassium is placed at the top of the series?",
+      "ms": {
+        "draft": 3847,
+        "critique": 8908,
+        "solver": 16228,
+        "form": 4443
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method used to convert metal sulphides into metal oxides?",
+      "ms": {
+        "draft": 5521,
+        "critique": 5821,
+        "solver": 1696,
+        "form": 1567
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a chemical property of metals?",
+      "ms": {
+        "draft": 3265,
+        "critique": 5236,
+        "solver": 1479,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student observed that a metal 'X' did not react with dilute hydrochloric acid. Which of the following could 'X' be?",
+      "ms": {
+        "draft": 3265,
+        "critique": 8540,
+        "solver": 13546,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A metal 'X' reacts with water to produce a highly reactive gas. Which of the following could 'X' be?",
+      "ms": {
+        "draft": 3265,
+        "critique": 6498,
+        "solver": 17839,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a metal that is a liquid at room temperature?",
+      "ms": {
+        "draft": 3910,
+        "critique": 7449
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which of the following cases will a displacement reaction take place?",
+      "ms": {
+        "draft": 3910,
+        "critique": 7027,
+        "solver": 1829
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a property of non-metals?",
+      "ms": {
+        "draft": 3910,
+        "critique": 5998,
+        "solver": 2030,
+        "form": 3670
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which process is used to convert sulphide ores into oxides by heating strongly in the presence of excess air?",
+      "ms": {
+        "draft": 4153,
+        "critique": 6914,
+        "solver": 2190,
+        "form": 2967
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a property of ionic compounds?",
+      "ms": {
+        "draft": 3806,
+        "critique": 8115
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following metals can displace hydrogen from dilute acids?",
+      "ms": {
+        "draft": 2817,
+        "critique": 7404,
+        "solver": 1760,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A metal X reacts with dilute sulfuric acid to produce a colorless gas. Which of the following metals is X most likely to be?",
+      "ms": {
+        "draft": 4368,
+        "critique": 6974,
+        "solver": 1999,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A metal 'X' reacts with dilute sulphuric acid to produce a colourless gas. Which of the following could 'X' be?",
+      "ms": {
+        "draft": 3265,
+        "critique": 6249,
+        "solver": 2285,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of an amphoteric oxide?",
+      "ms": {
+        "draft": 3910,
+        "critique": 6099,
+        "solver": 2042,
+        "form": 2925
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following metals can be extracted by heating its ore in air alone?",
+      "ms": {
+        "draft": 3806,
+        "critique": 4553,
+        "solver": 544,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of electrolytic refining of metals?",
+      "ms": {
+        "draft": 4153,
+        "critique": 7173,
+        "solver": 1591,
+        "form": 3263,
+        "translation": 184557
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following metals is obtained by the electrolytic reduction of its molten chloride?",
+      "ms": {
+        "draft": 4153,
+        "critique": 6905,
+        "solver": 2364,
+        "form": 3220,
+        "translation": 52530
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a correct statement about non-metals?",
+      "ms": {
+        "draft": 3926,
+        "critique": 5712,
+        "solver": 13519,
+        "form": 0,
+        "translation": 43429
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why is copper used to make hot water tanks instead of steel?",
+      "ms": {
+        "draft": 3265,
+        "critique": 7153,
+        "solver": 11033,
+        "form": 2571,
+        "translation": 183381
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a salt is placed in water and conducts electricity, what can be concluded about the salt?",
+      "ms": {
+        "draft": 4368,
+        "critique": 7494,
+        "solver": 1843,
+        "form": 0,
+        "translation": 45245
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following metals is found in a free state in nature?",
+      "ms": {
+        "draft": 3806,
+        "critique": 6917,
+        "solver": 1220,
+        "form": 0,
+        "translation": 33612
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A student conducts an experiment by heating a salt and finds that it melts and conducts electricity. What is the likely state of the salt?",
+      "ms": {
+        "draft": 4368,
+        "critique": 7417,
+        "solver": 1498,
+        "form": 0,
+        "translation": 42827
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "A metal 'X' was found to form an amphoteric oxide. Which of the following could 'X' be?",
+      "ms": {
+        "draft": 3265,
+        "critique": 5701,
+        "solver": 1960,
+        "form": 4037,
+        "translation": 54221
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Based on the reaction of a metal with dilute hydrochloric acid, what can be concluded about the metal?",
+      "ms": {
+        "draft": 2817,
+        "critique": 8084,
+        "solver": 2028,
+        "form": 0,
+        "translation": 59403
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following metals is used to make electrical circuits?",
+      "ms": {
+        "draft": 3910,
+        "critique": 6992,
+        "solver": 1654,
+        "form": 1915,
+        "translation": 167812
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements about the extraction of metals is correct?",
+      "ms": {
+        "draft": 4368,
+        "critique": 6286,
+        "solver": 1061,
+        "form": 1,
+        "translation": 68322
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a physical property of metals?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, not a distractor, so no reason needed, but t…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following metals is the most ductile?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which metal is a liquid at room temperature?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is a correct match for the properties of elements?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, not a distractor, so no reason needed, but t…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is an amphoteric oxide?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following is true about the chemical properties of metals and non-metals?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer, not a distractor, so no reason needed, but t…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What happens when a metal reacts with water?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A metal X reacts with dilute sulphuric acid to produce a colourless gas. Which of the following could be X?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following statements correctly describes the reactivity of metals based on their ability to displace other metals from their salt solutions?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following metals reacts with cold water to produce hydrogen gas?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a metal reacts with dilute hydrochloric acid to produce a colourless gas, which of the following metals is most likely to be the one reacting?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A metal 'X' reacts with dilute hydrochloric acid to produce a colourless gas. When the gas is ignited, it burns with a 'pop' sound. Which of the following metals is 'X'?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of an ionic compound formed by the transfer of electrons between a metal and a non-metal?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the activity series given in the passage, which of the following metals can displace lead from its salt solution?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is a property of ionic compounds?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In the reactivity series, potassium is the most reactive metal. Which of the following statements best explains why potassium is placed at the top of the series?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a method used to convert metal sulphides into metal oxides?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks electrolysis is used for sulphides directly instead o…\")"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is a method of preventing the rusting of iron?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a chemical property of metals?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is not a direct copy of the passage but is a …\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A student observed that a metal 'X' did not react with dilute hydrochloric acid. Which of the following could 'X' be?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A metal 'X' reacts with water to produce a highly reactive gas. Which of the following could 'X' be?",
+      "reason": "options 2 and 3 are the same (\"2: Iron\"); options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of a metal that is a liquid at room temperature?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In which of the following cases will a displacement reaction take place?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is a property of non-metals?",
+      "reason": "the key is far longer than every distractor (42 vs 19 characters)"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which process is used to convert sulphide ores into oxides by heating strongly in the presence of excess air?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Not mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a property of ionic compounds?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which of the following metals can displace hydrogen from dilute acids?",
+      "reason": "near-duplicate of served question cmvgubvvk04x6gpfhizudt3z9 (cosine 0.948 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A metal X reacts with dilute sulfuric acid to produce a colorless gas. Which of the following metals is X most likely to be?",
+      "reason": "near-duplicate of served question cmvni7x4v04angp21it0t52s7 (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "A metal 'X' reacts with dilute sulphuric acid to produce a colourless gas. Which of the following could 'X' be?",
+      "reason": "near-duplicate of served question cmvgubvva04wcgpfhda2wskap (cosine 0.919 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Which of the following is an example of an amphoteric oxide?",
+      "reason": "near-duplicate of served question cmvgubvuy04vigpfhmomr72cu (cosine 0.969 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Which of the following metals can be extracted by heating its ore in air alone?",
+      "reason": "near-duplicate of served question cmvrecr800durgp21yig3jvvg (cosine 0.940 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

@@ -1,0 +1,842 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T13:20:17.737Z",
+  "finishedAt": "2026-10-29T13:34:07.985Z",
+  "seconds": 830,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Curiosity",
+    "bookCode": "fecu1",
+    "document": "ncert/6/science/fecu111.pdf",
+    "classLevel": 6,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Nature’s Treasures",
+    "edition": "Reprint 2026-27",
+    "chunks": 17,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, sample question paper, 2025-26]\n12. About 100 acres of forest land was declared as Natural reserve park. The 2\nfollowing organisms were predominant in the Natural reserve park:\nrabbit, frog, grass, fish, fox, water insects, zebra, peacock, snake, trees, bird,\nowl, insects, tiger, vulture, duck.\nCreate a food web comprising two separate food chains with different\nproducers by using the above data.",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n6. B. (ii), (iii), (iv)",
+      "[CBSE Class X Science, marking scheme, 2025-26]\n1. C. Cuscuta, ticks, lice, leeches and tapeworm; as all of these are parasites. 1",
+      "[CBSE Class X Science, sample question paper, 2024-25]\n6. Section E would have 3 source based/case based/passage based/integrated units of\nassessment (04 marks each) with sub-parts of the values of 1/2/3 marks."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 209600,
+      "in": 45,
+      "out": 43,
+      "rejects": 2,
+      "promptTokens": 41252,
+      "completionTokens": 8810
+    },
+    "critique": {
+      "calls": 56,
+      "ms": 461965,
+      "in": 43,
+      "out": 41,
+      "rejects": 2,
+      "promptTokens": 23611,
+      "completionTokens": 9392
+    },
+    "solver": {
+      "calls": 290,
+      "ms": 202721,
+      "in": 41,
+      "out": 38,
+      "rejects": 3,
+      "promptTokens": 47618,
+      "completionTokens": 3039
+    },
+    "form": {
+      "calls": 9,
+      "ms": 45375,
+      "in": 38,
+      "out": 17,
+      "rejects": 21,
+      "promptTokens": 3794,
+      "completionTokens": 850
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 17,
+      "out": 17,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 53,
+      "ms": 10658,
+      "in": 17,
+      "out": 12,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 49,
+      "ms": 628341,
+      "in": 24,
+      "out": 24,
+      "rejects": 0,
+      "promptTokens": 27078,
+      "completionTokens": 13773
+    }
+  },
+  "kept": 12,
+  "keptByLevel": {
+    "1": 3,
+    "2": 1,
+    "3": 3,
+    "4": 1,
+    "5": 2,
+    "6": 2
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Which of the following is a use of water mentioned in the passage?",
+      "ms": {
+        "draft": 15765,
+        "critique": 6915,
+        "solver": 2415
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the information in the passage and the figure, what percentage of air is made up of oxygen?",
+      "ms": {
+        "draft": 15765,
+        "critique": 7528,
+        "solver": 2980,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is water considered a precious resource according to the passage?",
+      "ms": {
+        "draft": 15765,
+        "critique": 9471,
+        "solver": 2262,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of water harvesting as described in the passage?",
+      "ms": {
+        "draft": 4542,
+        "critique": 9000
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a source of wind energy?",
+      "ms": {
+        "draft": 15765,
+        "critique": 8536,
+        "solver": 3317,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains how the Sun contributes to the food chain?",
+      "ms": {
+        "draft": 4542,
+        "critique": 9672,
+        "solver": 1968,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a family in a water-scarce region starts collecting rainwater, what is the most likely outcome?",
+      "ms": {
+        "draft": 4542,
+        "critique": 8751,
+        "solver": 17609
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is one way to reduce water wastage at home?",
+      "ms": {
+        "draft": 4542,
+        "critique": 10434,
+        "solver": 2298,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The passage mentions that forests provide food and shelter to animals. If a large area of forest is cut down, what is the most significant impact on the ecosystem?",
+      "ms": {
+        "draft": 4542,
+        "critique": 7484,
+        "solver": 22931,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the formation of soil?",
+      "ms": {
+        "draft": 4618,
+        "critique": 9323,
+        "solver": 2800,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a large forest area is cut down, which of the following is most likely to happen?",
+      "ms": {
+        "draft": 4618,
+        "critique": 9413,
+        "solver": 2227,
+        "form": 5748
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a natural agent that helps in turning and loosening the soil?",
+      "ms": {
+        "draft": 4618,
+        "critique": 10407,
+        "solver": 20738,
+        "form": 3886
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why it is important to conserve and use rocks and minerals responsibly?",
+      "ms": {
+        "draft": 4618,
+        "critique": 9926,
+        "solver": 18873,
+        "form": 4116
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a non-renewable natural resource?",
+      "ms": {
+        "draft": 4863,
+        "critique": 7912,
+        "solver": 16669,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the purpose of the Chipko movement mentioned in the passage?",
+      "ms": {
+        "draft": 4618,
+        "critique": 7047,
+        "solver": 21460,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which natural resource is used to generate electricity in the given scenario?",
+      "ms": {
+        "draft": 4350,
+        "critique": 8869
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a human-made resource?",
+      "ms": {
+        "draft": 4863,
+        "critique": 10636,
+        "solver": 15548,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a renewable resource that is also a source of energy?",
+      "ms": {
+        "draft": 4863,
+        "critique": 10817,
+        "solver": 15320,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is not a nonrenewable resource?",
+      "ms": {
+        "draft": 4350,
+        "critique": 10287,
+        "solver": 10358
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a renewable natural resource?",
+      "ms": {
+        "draft": 6563,
+        "critique": 7290,
+        "solver": 1678,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, which item represents a non-renewable resource?",
+      "ms": {
+        "draft": 6563,
+        "critique": 10621,
+        "solver": 2257,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A student is preparing a report on air pollution. Which of the following sources is most likely to contribute the most to air pollution in a city?",
+      "ms": {
+        "draft": 3964,
+        "critique": 9099,
+        "solver": 18947,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is an example of a human-made resource?",
+      "ms": {
+        "draft": 6563,
+        "critique": 8186,
+        "solver": 2285,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is it important to conserve natural resources?",
+      "ms": {
+        "draft": 6563,
+        "critique": 8782,
+        "solver": 1929,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of recycling in nature, as described in the passage?",
+      "ms": {
+        "draft": 4558,
+        "critique": 9680,
+        "solver": 2071,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a correct statement about soil, based on the passage?",
+      "ms": {
+        "draft": 4558,
+        "critique": 7973,
+        "solver": 2635,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a person holds their breath for too long, what happens?",
+      "ms": {
+        "draft": 15765,
+        "critique": 10366,
+        "solver": 1588,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a renewable resource?",
+      "ms": {
+        "draft": 4863,
+        "critique": 8006,
+        "solver": 2391,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a natural resource?",
+      "ms": {
+        "draft": 3964,
+        "critique": 5893,
+        "solver": 1973,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a renewable resource?",
+      "ms": {
+        "draft": 3964,
+        "critique": 6593,
+        "solver": 2358,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a way to reduce air pollution?",
+      "ms": {
+        "draft": 6563,
+        "critique": 9478,
+        "solver": 12734,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name given to resources that are created by human beings?",
+      "ms": {
+        "draft": 6563,
+        "critique": 8064,
+        "solver": 1796,
+        "form": 3239,
+        "translation": 49842
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which method is used to store rainwater for later use?",
+      "ms": {
+        "draft": 27687,
+        "critique": 7595,
+        "solver": 2727,
+        "form": 2875,
+        "translation": 49766
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the purpose of digging and loosening the soil before planting vegetables?",
+      "ms": {
+        "draft": 4558,
+        "critique": 8501,
+        "solver": 2262,
+        "form": 0,
+        "translation": 59200
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which gas makes up the largest percentage of the air we breathe?",
+      "ms": {
+        "draft": 5537,
+        "critique": 8254,
+        "solver": 2199,
+        "form": 2790,
+        "translation": 39843
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a windmill farm is built in an area with no wind, what would happen?",
+      "ms": {
+        "draft": 15765,
+        "critique": 6388,
+        "solver": 1719,
+        "form": 0,
+        "translation": 53751
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student wants to reduce water usage in their school. Which of the following actions would be the most effective?",
+      "ms": {
+        "draft": 3964,
+        "critique": 7639,
+        "solver": 17611,
+        "form": 0,
+        "translation": 56836
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a large forest area is cut down, what is one possible consequence?",
+      "ms": {
+        "draft": 4558,
+        "critique": 8178,
+        "solver": 2272,
+        "form": 0,
+        "translation": 53992
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a renewable resource that can be used to generate electricity?",
+      "ms": {
+        "draft": 3964,
+        "critique": 11235,
+        "solver": 2003,
+        "form": 0,
+        "translation": 42946
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A village is facing a shortage of water. Which of the following methods would best help in conserving water?",
+      "ms": {
+        "draft": 3964,
+        "critique": 11280,
+        "solver": 2366,
+        "form": 0,
+        "translation": 50201
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a village where water is scarce, a farmer starts using a traditional water harvesting method. What is the most likely long-term benefit for the village?",
+      "ms": {
+        "draft": 4542,
+        "critique": 8014,
+        "solver": 1701,
+        "form": 5489,
+        "translation": 73928
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a windmill farm uses 10 windmills, and each windmill can generate 500 units of electricity, how many total units of electricity can be generated?",
+      "ms": {
+        "draft": 5537,
+        "critique": 7260,
+        "solver": 1076,
+        "form": 0,
+        "translation": 46541
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a person is using a fuel that is cleaner than petrol or diesel, which fuel is he most likely using?",
+      "ms": {
+        "draft": 4558,
+        "critique": 9237,
+        "solver": 13739,
+        "form": 1959,
+        "translation": 42550
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is a use of water mentioned in the passage?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the information in the passage and the figure, what percentage of air is made up of oxygen?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is water considered a precious resource according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of water harvesting as described in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a source of wind energy?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'windmill'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following best explains how the Sun contributes to the food chain?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a family in a water-scarce region starts collecting rainwater, what is the most likely outcome?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is one way to reduce water wastage at home?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "The passage mentions that forests provide food and shelter to animals. If a large area of forest is cut down, what is the most significant impact on the ecosystem?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the formation of soil?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (69 vs 43 characters); distractor 0's reason is not a one-line misconception (\"The passage says soil is formed over thousands of years, not…\"); distractor 2's reason is not a one-line misconception (\"The passage says soil is formed by the disintegration of roc…\"); distractor 3's reason is not a one-line misconception (\"The passage does not say that soil is formed only by human a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a large forest area is cut down, which of the following is most likely to happen?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"The passage suggests that cutting trees leads to negative co…\"); distractor 1's reason is not a one-line misconception (\"The passage indicates that leaves and roots enrich the soil,…\"); distractor 3's reason is not a one-line misconception (\"The passage does not mention that the climate of the entire …\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Which of the following is an example of a natural agent that helps in turning and loosening the soil?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following best explains why it is important to conserve and use rocks and minerals responsibly?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"The passage states that fossil fuels are found in limited qu…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a non-renewable natural resource?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the purpose of the Chipko movement mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which natural resource is used to generate electricity in the given scenario?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a human-made resource?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a renewable resource that is also a source of energy?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which of the following is not a nonrenewable resource?",
+      "reason": "after redrafting distractors 0, 1, 3: the critic finds option 0 correct, the key is 2; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main source of energy on Earth according to the passage?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which of the following is an example of a traditional water harvesting practice in India?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of a renewable natural resource?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is water, which is renewable and replenished …\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the given figure, which item represents a non-renewable resource?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is coal, which is a non-renewable resource as…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A student is preparing a report on air pollution. Which of the following sources is most likely to contribute the most to air pollution in a city?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is an example of a human-made resource?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct answer is petrol, which is a human-made resource der…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is it important to conserve natural resources?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Correct answer is to meet the needs of future generations, a…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is an example of recycling in nature, as described in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a correct statement about soil, based on the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; the key is far longer than every distractor (69 vs 42 characters)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "If a person holds their breath for too long, what happens?",
+      "reason": "near-duplicate of served question cmveo0lxm00u9god8r8nlns0u (cosine 0.906 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following is a renewable resource?",
+      "reason": "near-duplicate of served question cmveo0lxh00u3god8ll4lx6ld (cosine 0.916 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is a natural resource?",
+      "reason": "near-duplicate of served question cmvfui0m300t7gpfh3cqybbsr (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is a renewable resource?",
+      "reason": "near-duplicate of served question cmveo0lxh00u3god8ll4lx6ld (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which of the following is a way to reduce air pollution?",
+      "reason": "near-duplicate of served question cmvfui0m900tjgpfhocccmqw2 (cosine 0.915 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

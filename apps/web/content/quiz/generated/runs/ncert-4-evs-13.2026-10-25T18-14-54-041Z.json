@@ -1,0 +1,241 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T18:14:54.041Z",
+  "finishedAt": "2026-10-25T18:17:07.473Z",
+  "seconds": 133,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap113.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 13 — A River’s Tale",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 29890,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 7046,
+      "completionTokens": 1645
+    },
+    "critique": {
+      "calls": 10,
+      "ms": 55061,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 4346,
+      "completionTokens": 1717
+    },
+    "solver": {
+      "calls": 56,
+      "ms": 33493,
+      "in": 8,
+      "out": 7,
+      "rejects": 1,
+      "promptTokens": 10209,
+      "completionTokens": 609
+    },
+    "form": {
+      "calls": 6,
+      "ms": 14443,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 1471,
+      "completionTokens": 393
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 3737,
+      "in": 5,
+      "out": 4,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 134651,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9021,
+      "completionTokens": 4463
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If you wanted to drink water from a river, which part would be the safest to get water from?",
+      "ms": {
+        "draft": 4211,
+        "critique": 5654,
+        "solver": 1891
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the cleanliness of water?",
+      "ms": {
+        "draft": 4211,
+        "critique": 7668,
+        "solver": 970,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is NOT a reason for the change in the colour of the river water as it flows through different places?",
+      "ms": {
+        "draft": 3262,
+        "critique": 6138,
+        "solver": 13706,
+        "form": 1147
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is mentioned as a reason for the change in the colour of the river water?",
+      "ms": {
+        "draft": 4211,
+        "critique": 5422,
+        "solver": 12261,
+        "form": 1076
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a thing that does not dissolve in water?",
+      "ms": {
+        "draft": 4211,
+        "critique": 5882,
+        "solver": 2995,
+        "form": 3817,
+        "translation": 34631
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why is it important to clean water before drinking it?",
+      "ms": {
+        "draft": 3262,
+        "critique": 5504,
+        "solver": 1913,
+        "form": 3465,
+        "translation": 34898
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If you wanted to drink water from a river, from which part would you prefer to drink?",
+      "ms": {
+        "draft": 3262,
+        "critique": 5253,
+        "solver": 1390,
+        "form": 4468,
+        "translation": 39699
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What can you infer from the observation that oil does not dissolve in water?",
+      "ms": {
+        "draft": 3262,
+        "critique": 5401,
+        "solver": 948,
+        "form": 2351,
+        "translation": 21958
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If you wanted to drink water from a river, which part would be the safest to get water from?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what can be concluded about the cleanliness of water?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"refers to a statement that is not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is NOT a reason for the change in the colour of the river water as it flows through different places?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which of the following is mentioned as a reason for the change in the colour of the river water?",
+      "reason": "near-duplicate of served question cmvk61i4c0j9egpfhgchhsrrh (cosine 0.911 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

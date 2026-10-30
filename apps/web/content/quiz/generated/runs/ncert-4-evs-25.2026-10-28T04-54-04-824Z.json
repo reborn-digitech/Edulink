@@ -1,0 +1,244 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T04:54:04.824Z",
+  "finishedAt": "2026-10-28T04:56:11.969Z",
+  "seconds": 127,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around(EVS)",
+    "bookCode": "deap1",
+    "document": "ncert/4/environmental-studies/deap125.pdf",
+    "classLevel": 4,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 25 — Spicy Riddles",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 2,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 23080,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 6694,
+      "completionTokens": 1543
+    },
+    "critique": {
+      "calls": 8,
+      "ms": 38949,
+      "in": 8,
+      "out": 4,
+      "rejects": 4,
+      "promptTokens": 3533,
+      "completionTokens": 1343
+    },
+    "solver": {
+      "calls": 20,
+      "ms": 7596,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 2280,
+      "completionTokens": 160
+    },
+    "form": {
+      "calls": 4,
+      "ms": 5572,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 994,
+      "completionTokens": 264
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 27,
+      "ms": 3911,
+      "in": 4,
+      "out": 2,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 9,
+      "ms": 56564,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 4341,
+      "completionTokens": 2250
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "Which spice is described as being small and round like a pearl, black when whole, and having a sharp and spicy taste?",
+      "ms": {
+        "draft": 14740,
+        "critique": 6470
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which spice is described as looking like zeera but being green, and is used to make the stomach healthy?",
+      "ms": {
+        "draft": 14740,
+        "critique": 6719
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which spice is described as 'look[ing] like Zeera though green am I' and is used to make the stomach healthy?",
+      "ms": {
+        "draft": 2788,
+        "critique": 4567
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which spice is described as 'small and round like a pearl, black when it is whole' and is used to add a sharp and spicy taste to food?",
+      "ms": {
+        "draft": 2788,
+        "critique": 4597
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which spice is used to make food look yellow and is mixed in oil by granny to heal wounds?",
+      "ms": {
+        "draft": 2788,
+        "critique": 4180,
+        "solver": 1134,
+        "form": 1571
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which spice is described as 'look[ing] like a nail but a bud am I, chocolate brown colour and a strong smell have I' and is used to soothe toothache?",
+      "ms": {
+        "draft": 2788,
+        "critique": 3520,
+        "solver": 667,
+        "form": 1196
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which spice is described as being used in both sweet and salty things?",
+      "ms": {
+        "draft": 14740,
+        "critique": 6112,
+        "solver": 1161,
+        "form": 1780,
+        "translation": 25171
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a spice is used to make food look yellow and is mixed in oil by granny to heal wounds, what is the spice?",
+      "ms": {
+        "draft": 14740,
+        "critique": 3641,
+        "solver": 644,
+        "form": 1025,
+        "translation": 27620
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which spice is described as being small and round like a pearl, black when whole, and having a sharp and spicy taste?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which spice is described as looking like zeera but being green, and is used to make the stomach healthy?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which spice is described as 'look[ing] like Zeera though green am I' and is used to make the stomach healthy?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which spice is described as 'small and round like a pearl, black when it is whole' and is used to add a sharp and spicy taste to food?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which spice is used to make food look yellow and is mixed in oil by granny to heal wounds?",
+      "reason": "near-duplicate of batch item \"If a spice is used to make food look yellow and is…\" (cosine 0.975 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which spice is described as 'look[ing] like a nail but a bud am I, chocolate brown colour and a strong smell have I' and is used to soothe toothache?",
+      "reason": "near-duplicate of served question cmvo6evhv05grgp21w9q02n3i (cosine 0.901 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

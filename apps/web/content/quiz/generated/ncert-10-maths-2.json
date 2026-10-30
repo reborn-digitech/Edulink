@@ -21,337 +21,85 @@
   "board": "NCERT",
   "book": "Mathematics",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T16:58:10.975Z",
+  "generatedAt": "2026-10-30T04:26:18.641Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
-      "difficulty": 2,
-      "stem": "Which of the following is a linear polynomial?",
-      "choices": [
-        "2x + 5 - x",
-        "3x^2 + 2x",
-        "2x + 3",
-        "x^3 - 4x"
-      ],
-      "answerIndex": 2,
-      "solution": "A linear polynomial is a polynomial of degree 1. Among the given options, 2x + 3 is a linear polynomial because the highest power of x is 1. The option 2x + 5 - x simplifies to x + 5, which is also linear, but it is not one of the options. The other options are quadratic and cubic polynomials, which have degrees higher than 1.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन एक रैखिक बहुपद है?",
-          "choices": [
-            "2x + 5 - x",
-            "3x^2 + 2x",
-            "2x + 3",
-            "x^3 - 4x"
-          ],
-          "solution": "एक रैखिक बहुपद एक घात 1 का बहुपद होता है। दिए गए विकल्पों में, 2x + 3 एक रैखिक बहुपद है क्योंकि x की उच्चतम घात 1 है। विकल्प 2x + 5 - x सरलीकृत करने पर x + 5 प्राप्त होता है, जो भी रैखिक है, लेकिन यह विकल्प विकल्पों में नहीं है। अन्य विकल्प द्विघात और त्रिघात बहुपद हैं, जिनकी घात 1 से अधिक है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक रेषीय बहुपदी आहे?",
-          "choices": [
-            "2x + 5 - x",
-            "3x^2 + 2x",
-            "2x + 3",
-            "x^3 - 4x"
-          ],
-          "solution": "रेषीय बहुपदी हे एक अशा बहुपदी आहे ज्याची अंकगणितीय घात 1 आहे. दिलेल्या विकल्पांमध्ये 2x + 3 हा रेषीय बहुपदी आहे कारण x ची सर्वात मोठी घात 1 आहे. विकल्प 2x + 5 - x हा x + 5 असा सोपा करता येईल, जो देखील रेषीय आहे, परंतु तो विकल्पांमध्ये नाही. इतर विकल्प द्विघात आणि त्रिघात बहुपदी आहेत, ज्यांची घात 1 पेक्षा जास्त आहे.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the form of a linear polynomial with an expression that simplifies to linear",
-        "Confuses degree with the number of terms or ignores the highest power when simplifying",
-        null,
-        "Confuses the degree of a polynomial with its structure"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is option 2 (2x + 3), which is a linear polynomial. Option 0 simplifies to x + 5, which is also linear, but it is not listed as a choice. Options 1 and 3 are quadratic and cubic, respectively. The author's reasoning is sound and matches the misconceptions students might have.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh102.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 2: Polynomials"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh102.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 2: Polynomials"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh102.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 2: Polynomials"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T16:58:10.975Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
       "difficulty": 3,
-      "stem": "If the zero of a linear polynomial is -3, what is the polynomial?",
+      "stem": "What is the sum of the zeroes of the quadratic polynomial 3x² + 6x - 9?",
       "choices": [
-        "2x + 6",
-        "x - 3",
-        "3x + 1",
-        "x + 3"
+        "-2",
+        "2",
+        "3",
+        "-3"
       ],
-      "answerIndex": 3,
-      "solution": "The zero of a linear polynomial ax + b is given by -b/a. If the zero is -3, then -b/a = -3, which implies b = 3a. If a = 1, then b = 3, and the polynomial is x + 3. The other options do not satisfy the condition that the zero is -3.",
+      "answerIndex": 0,
+      "solution": "The sum of the zeroes of a quadratic polynomial ax² + bx + c is given by -b/a. In this case, a = 3 and b = 6, so the sum of the zeroes is -6/3 = -2. This matches the first option. The other options either have incorrect signs or values that do not match the formula.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक रैखिक बहुपद का शून्यक -3 है, तो बहुपद क्या है?",
+          "stem": "क्वाड्रेटिक बहुपद 3x² + 6x - 9 के शून्यकों का योग क्या है?",
           "choices": [
-            "2x + 6",
-            "x - 3",
-            "3x + 1",
-            "x + 3"
+            "-2",
+            "2",
+            "3",
+            "-3"
           ],
-          "solution": "एक रैखिक बहुपद ax + b का शून्यक -b/a द्वारा दिया जाता है। यदि शून्यक -3 है, तो -b/a = -3, जिसका अर्थ है b = 3a। यदि a = 1, तो b = 3, और बहुपद x + 3 है। अन्य विकल्प शून्यक -3 होने की शर्त को पूरा नहीं करते।",
-          "imageAlt": null,
+          "solution": "क्वाड्रेटिक बहुपद ax² + bx + c के शून्यकों का योग -b/a द्वारा दिया जाता है। इस मामले में, a = 3 और b = 6, इसलिए शून्यकों का योग -6/3 = -2 है। यह पहले विकल्प के साथ मेल खाता है। अन्य विकल्पों में गलत चिह्न हो सकते हैं या मान सूत्र के साथ मेल नहीं खाते।",
+          "imageAlt": "एक क्वाड्रेटिक बहुपद 3x² + 6x - 9 का ग्राफ",
           "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Hindi-medium textbooks.",
           "flag": null
         },
         "mr": {
-          "stem": "जर एक रेषीय बहुपदीचे शून्य -3 असेल, तर बहुपदी कोणती असेल?",
+          "stem": "3x² + 6x - 9 च्या द्विघात बहुपदीच्या शून्यांची बेरीज किती आहे?",
           "choices": [
-            "2x + 6",
-            "x - 3",
-            "3x + 1",
-            "x + 3"
+            "-2",
+            "2",
+            "3",
+            "-3"
           ],
-          "solution": "एक रेषीय बहुपदी ax + b चे शून्य -b/a द्वारे दिले जाते. जर शून्य -3 असेल, तर -b/a = -3, जे बरोबरीने b = 3a असे दर्शवते. जर a = 1 असेल, तर b = 3 असेल आणि बहुपदी x + 3 असेल. इतर विकल्प शून्य -3 असण्याच्या अटीला पूर्ण करत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and maintains the original meaning, with appropriate Marathi terminology used for mathematical concepts.",
+          "solution": "द्विघात बहुपदी ax² + bx + c च्या शून्यांची बेरीज -b/a द्वारे दिली जाते. या उदाहरणात, a = 3 आणि b = 6, तर शून्यांची बेरीज -6/3 = -2 आहे. हे पहिल्या विकल्पाशी जुळते. इतर विकल्पांमध्ये चूकीचे चिन्ह किंवा सूत्राशी जुळत नसलेल्या मूल्यांचा समावेश आहे.",
+          "imageAlt": "3x² + 6x - 9 च्या द्विघात बहुपदीचा आलेख",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
         }
       },
       "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Confuses the sign of the constant term",
-        "Confuses the zero with the coefficient of x",
-        "Fails to apply the formula for the zero of a linear polynomial",
-        null
-      ],
-      "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "levelFlag": null,
-      "critique": "The solution is correct and logically leads to the correct answer. The reasoning about the zero of a linear polynomial is accurate.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh102.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
-          "headingPath": [
-            "Chapter 2: Polynomials"
+      "imageAlt": "A graph of a quadratic polynomial 3x² + 6x - 9",
+      "figure": {
+        "kind": "graph",
+        "spec": {
+          "x": {
+            "min": 0,
+            "max": 10,
+            "step": 1
+          },
+          "y": {
+            "min": 0,
+            "max": 50,
+            "step": 10
+          },
+          "curves": [
+            {
+              "poly": [
+                3,
+                6,
+                -9
+              ]
+            }
           ]
         },
-        {
-          "document": "ncert/10/mathematics/jemh102.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 2: Polynomials"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh102.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 6,
-          "headingPath": [
-            "Chapter 2: Polynomials"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T16:58:10.975Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 3,
-      "stem": "If a quadratic polynomial has zeroes at 2 and -3, what is the polynomial?",
-      "choices": [
-        "x² - 5x + 6",
-        "x² - 2x + 3",
-        "x² + x - 6",
-        "2x² + x + 6"
-      ],
-      "answerIndex": 2,
-      "solution": "The polynomial can be written as (x - 2)(x + 3) = x² + x - 6. The other options do not match this product. Adding the coefficients instead of multiplying leads to the wrong answer in option 1. Option 2 incorrectly uses signs, and option 4 incorrectly uses signs and coefficients.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि एक द्विघात बहुपद के शून्यक 2 और -3 हैं, तो बहुपद क्या है?",
-          "choices": [
-            "x² - 5x + 6",
-            "x² - 2x + 3",
-            "x² + x - 6",
-            "2x² + x + 6"
-          ],
-          "solution": "बहुपद को (x - 2)(x + 3) = x² + x - 6 के रूप में लिखा जा सकता है। अन्य विकल्प इस गुणनफल के अनुरूप नहीं हैं। गुणा के स्थान पर गुणांकों को जोड़ने से विकल्प 1 में गलत उत्तर प्राप्त होता है। विकल्प 2 में चिह्न गलत रूप से उपयोग किए गए हैं, और विकल्प 4 में चिह्न और गुणांक दोनों गलत रूप से उपयोग किए गए हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर एक द्विघात बहुपदीचे शून्य 2 आणि -3 असतील, तर बहुपदी कोणती असेल?",
-          "choices": [
-            "x² - 5x + 6",
-            "x² - 2x + 3",
-            "x² + x - 6",
-            "2x² + x + 6"
-          ],
-          "solution": "बहुपदी (x - 2)(x + 3) = x² + x - 6 असू शकते. इतर विकल्प या गुणाकाराशी जुळत नाहीत. गुणाकाराऐवजी गुणोत्तर जोडल्यामुळे पहिल्या विकल्पात चूक होते. दुसरा विकल्प चुकीच्या चिन्हांचा वापर करतो आणि चौथा विकल्प चुकीच्या चिन्हांचा आणि गुणोत्तरांचा वापर करतो.",
-          "imageAlt": null,
-          "critique": "The Marathi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology as used in Marathi textbooks.",
-          "flag": null
-        }
+        "labels": {}
       },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Student incorrectly uses the sum of the roots as the coefficient of x instead of the negative sum.",
-        "Incorrect sign usage",
-        null,
-        "Incorrect sign usage and coefficients"
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": null,
-      "critique": "The correct polynomial is (x - 2)(x + 3) = x² + x - 6, which matches option 2. The author's solution is correct, and the reasoning for the distractors aligns with common student misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh102.pdf",
-          "ordinal": 6,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 2: Polynomials"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh102.pdf",
-          "ordinal": 7,
-          "pageStart": 14,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 2: Polynomials"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T16:58:10.975Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 5,
-      "stem": "A quadratic polynomial has zeroes at 2 and -3. What is the value of the polynomial when x = 0?",
-      "choices": [
-        "-6",
-        "6",
-        "-5",
-        "5"
-      ],
-      "answerIndex": 0,
-      "solution": "If the polynomial has zeroes at 2 and -3, it can be written as (x - 2)(x + 3). Expanding this, we get x^2 + x - 6. When x = 0, the value is -6. The other options are incorrect because they do not correctly expand the polynomial. For example, 6 would be the result if the constant term were positive, and -5 or 5 are not derived from the correct expansion of the polynomial.",
-      "checkExpr": "-6",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "एक द्विघात बहुपद के शून्यक 2 और -3 हैं। x = 0 पर बहुपद का मान क्या है?",
-          "choices": [
-            "-6",
-            "6",
-            "-5",
-            "5"
-          ],
-          "solution": "यदि बहुपद के शून्यक 2 और -3 हैं, तो इसे (x - 2)(x + 3) के रूप में लिखा जा सकता है। इसका विस्तार करने पर हमें x^2 + x - 6 प्राप्त होता है। जब x = 0 होता है, तो मान -6 होता है। अन्य विकल्प गलत हैं क्योंकि वे बहुपद के सही विस्तार के अनुसार नहीं हैं। उदाहरण के लिए, 6 तब प्राप्त होता अगर अचर पद धनात्मक होता। -5 या 5 बहुपद के सही विस्तार से नहीं प्राप्त होते।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their original correctness. The solution is logically consistent and uses standard Hindi mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "एक द्विघात बहुपदीचे शून्य 2 आणि -3 आहेत. x = 0 वर बहुपदीचे मूल्य किती आहे?",
-          "choices": [
-            "-6",
-            "6",
-            "-5",
-            "5"
-          ],
-          "solution": "जर बहुपदीचे शून्य 2 आणि -3 असतील, तर ती (x - 2)(x + 3) असे लिहिता येईल. याचा विस्तार करून x^2 + x - 6 मिळतो. x = 0 वर बहुपदीचे मूल्य -6 असते. इतर विकल्प चुकीचे आहेत कारण बहुपदीचा विस्तार चुकीचा आहे. उदाहरणार्थ, 6 हा असा निकाल असतो जर अचल पद धनात्मक असता, आणि -5 किंवा 5 हे बहुपदीच्या चुकीच्या विस्तारापासून मिळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the same meaning, and uses appropriate Marathi mathematical terminology.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
+      "needsFigure": true,
       "distractorReason": [
         null,
-        "incorrectly assumes the constant term is positive",
-        "confuses the sign of the constant term",
-        "fails to correctly expand the polynomial and arrives at an incorrect constant term."
+        "Confuses the signs of the coefficients",
+        "Adds the coefficients incorrectly",
+        "Assumes the sum is positive"
       ],
       "solverAnswers": [
         0,
@@ -360,79 +108,198 @@
         0,
         0
       ],
-      "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct. A quadratic polynomial with zeros at 2 and -3 is (x - 2)(x + 3), which expands to x^2 + x - 6. Substituting x = 0 gives -6, which matches the correct answer.",
+      "levelFlag": null,
+      "critique": "The solution correctly applies the formula for the sum of the zeroes of a quadratic polynomial, -b/a, and arrives at the correct answer of -2.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh102.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 2,
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 9,
           "headingPath": [
             "Chapter 2: Polynomials"
           ]
         },
         {
           "document": "ncert/10/mathematics/jemh102.pdf",
-          "ordinal": 1,
-          "pageStart": 2,
-          "pageEnd": 3,
+          "ordinal": 4,
+          "pageStart": 9,
+          "pageEnd": 11,
           "headingPath": [
             "Chapter 2: Polynomials"
           ]
         },
         {
           "document": "ncert/10/mathematics/jemh102.pdf",
-          "ordinal": 2,
-          "pageStart": 3,
-          "pageEnd": 6,
+          "ordinal": 5,
+          "pageStart": 11,
+          "pageEnd": 12,
           "headingPath": [
             "Chapter 2: Polynomials"
           ]
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T16:58:10.975Z",
+      "generatedAt": "2026-10-30T04:26:18.641Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 4,
+      "stem": "The graph of a polynomial intersects the x-axis at three points. What is the maximum degree of the polynomial?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answerIndex": 1,
+      "solution": "A polynomial's degree determines the maximum number of real roots it can have. Since the graph intersects the x-axis at three points, the polynomial must have three real roots, meaning its degree must be at least 3. A degree of 2 can only have up to 2 real roots, and degrees 4 or 5 would allow more than 3 roots, which is not the case here.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "एक बहुपद का ग्राफ x-अक्ष के तीन बिंदुओं पर प्रतिच्छेद करता है। बहुपद की अधिकतम डिग्री क्या है?",
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "solution": "एक बहुपद की डिग्री उसके अधिकतम वास्तविक मूलों की संख्या को निर्धारित करती है। चूंकि ग्राफ x-अक्ष के तीन बिंदुओं पर प्रतिच्छेद करता है, इसलिए बहुपद के तीन वास्तविक मूल होने चाहिए, जिसका अर्थ है कि इसकी डिग्री कम से कम 3 होनी चाहिए। डिग्री 2 के लिए अधिकतम 2 वास्तविक मूल हो सकते हैं, और डिग्री 4 या 5 के लिए अधिकतम 3 से अधिक मूल हो सकते हैं, जो यहां स्थिति नहीं है।",
+          "imageAlt": "एक द्विघात बहुपद का ग्राफ x-अक्ष के तीन बिंदुओं पर प्रतिच्छेद करता है",
+          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एका बहुपदीचा आलेख x-अक्षाला तीन बिंदूंमध्ये छेदतो. बहुपदीचा महाधिक अंक किती असू शकतो?",
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "solution": "बहुपदीचा अंक त्याच्या वास्तविक मूलांच्या महाधिक संख्येने निश्चित करतो. आलेख x-अक्षाला तीन बिंदूंमध्ये छेदत असल्याने, बहुपदीला तीन वास्तविक मूले असावीत, ज्यामुळे त्याचा अंक कमीत कमी 3 असावा. 2 अंकाची बहुपदी केवळ 2 वास्तविक मूले असू शकतात, आणि 4 किंवा 5 अंकाच्या बहुपदींना 3 पेक्षा जास्त मूले असू शकतात, जे येथे नाही.",
+          "imageAlt": "एका द्विघात बहुपदीचा आलेख x-अक्षाला तीन बिंदूंमध्ये छेदतो",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": "A graph of a quadratic polynomial intersecting the x-axis at three points",
+      "figure": {
+        "kind": "graph",
+        "spec": {
+          "x": {
+            "min": 0,
+            "max": 10,
+            "step": 1
+          },
+          "y": {
+            "min": 0,
+            "max": 50,
+            "step": 10
+          },
+          "curves": [
+            {
+              "poly": [
+                1,
+                -3,
+                2
+              ]
+            }
+          ]
+        },
+        "labels": {}
+      },
+      "needsFigure": true,
+      "distractorReason": [
+        "Confuses degree with number of roots",
+        null,
+        "Assumes the degree is higher than the number of roots",
+        "Assumes the degree is lower than the number of roots"
+      ],
+      "solverAnswers": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
+      "critique": "The question is flawed because a quadratic polynomial (degree 2) cannot intersect the x-axis at three points. The correct answer should be that no such polynomial exists, but the author's key assumes the question is about a general polynomial, not a quadratic. The solution is logically consistent with the author's assumptions, but the premise is mathematically incorrect.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh102.pdf",
+          "ordinal": 3,
+          "pageStart": 6,
+          "pageEnd": 9,
+          "headingPath": [
+            "Chapter 2: Polynomials"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh102.pdf",
+          "ordinal": 4,
+          "pageStart": 9,
+          "pageEnd": 11,
+          "headingPath": [
+            "Chapter 2: Polynomials"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh102.pdf",
+          "ordinal": 5,
+          "pageStart": 11,
+          "pageEnd": 12,
+          "headingPath": [
+            "Chapter 2: Polynomials"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T04:26:18.641Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If a polynomial of degree 3 has zeroes at 1, 2, and -3, what is the coefficient of x² in the expanded form?",
+      "stem": "A quadratic polynomial is given with zeroes at 3 and -2. If the polynomial is written in the form ax² + bx + c, where a is a non-zero real number, how many such polynomials can be formed?",
       "choices": [
-        "-6",
-        "-4",
-        "-2",
-        "-1"
+        "One",
+        "Two",
+        "Three",
+        "Infinitely many"
       ],
-      "answerIndex": 1,
-      "solution": "The polynomial is (x - 1)(x - 2)(x + 3). When expanded, the coefficient of x² is -4. Other options arise from miscalculating the sum of roots or misapplying Vieta's formulas. Option 0 is the sum of roots, option 2 is incorrect, and option 3 is incorrect.",
-      "checkExpr": "-4",
+      "answerIndex": 3,
+      "solution": "The polynomial with zeroes 3 and -2 can be written as a(x - 3)(x + 2), where a is any non-zero real number. Since a can be any non-zero value, there are infinitely many such polynomials. This is because multiplying the polynomial by any non-zero constant does not change its zeroes. The other options are incorrect because they suggest a limited number of polynomials, which is not true. For example, 'one' would imply only one specific value of a, but since a can be any non-zero value, the number of polynomials is not limited to one.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि एक बहुपद घात 3 के मूल 1, 2 और -3 हैं, तो विस्तारित रूप में x² का गुणांक क्या है?",
+          "stem": "एक द्विघात बहुपद दिया गया है जिसके शून्यक 3 और -2 हैं। यदि बहुपद को ax² + bx + c के रूप में लिखा जाता है, जहाँ a एक अशून्य वास्तविक संख्या है, तो कितने ऐसे बहुपद बनाए जा सकते हैं?",
           "choices": [
-            "-6",
-            "-4",
-            "-2",
-            "-1"
+            "एक",
+            "दो",
+            "तीन",
+            "अनंत रूप से कई"
           ],
-          "solution": "बहुपद (x - 1)(x - 2)(x + 3) है। विस्तारित करने पर x² का गुणांक -4 है। अन्य विकल्प मूलों के योग की गलत गणना या वियेता के सूत्र के गलत उपयोग से आते हैं। विकल्प 0 मूलों के योग है, विकल्प 2 गलत है, और विकल्प 3 गलत है।",
+          "solution": "शून्यक 3 और -2 वाला बहुपद a(x - 3)(x + 2) के रूप में लिखा जा सकता है, जहाँ a कोई भी अशून्य वास्तविक संख्या है। क्योंकि a कोई भी अशून्य मान हो सकता है, इसलिए ऐसे बहुपद अनंत रूप से कई हो सकते हैं। ऐसा इसलिए है क्योंकि किसी भी अशून्य स्थिरांक से बहुपद को गुणा करने से इसके शून्यक नहीं बदलते। अन्य विकल्प गलत हैं क्योंकि वे एक सीमित संख्या में बहुपद के अस्तित्व का सुझाव देते हैं, जो सही नहीं है। उदाहरण के लिए, 'एक' का अर्थ केवल एक विशिष्ट a के मान का होता है, लेकिन a कोई भी अशून्य मान हो सकता है, इसलिए बहुपदों की संख्या एक तक सीमित नहीं है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate mathematical terminology. The correct answer remains in the same position, and the distractors are still incorrect.",
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
           "flag": null
         },
         "mr": {
-          "stem": "एका तृतीय अंकाच्या बहुपदीला 1, 2 आणि -3 शून्ये असल्यास, विस्तारित रूपात x² चा गुणक काय असेल?",
+          "stem": "एक वर्ग बहुपदी दिली आहे ज्याचे शून्य 3 आणि -2 आहेत. जर बहुपदी ax² + bx + c च्या रूपात लिहिली गेली असेल, जेथे a एक शून्येतर वास्तविक संख्या आहे, तर किती अशा बहुपदी तयार करता येतील?",
           "choices": [
-            "-6",
-            "-4",
-            "-2",
-            "-1"
+            "एक",
+            "दोन",
+            "तीन",
+            "अनंतपणे एक"
           ],
-          "solution": "बहुपदी (x - 1)(x - 2)(x + 3) आहे. विस्तारित केल्यास, x² चा गुणक -4 असतो. इतर विकल्प मूळांच्या बेरजेच्या चुकीच्या गणनेमुळे किंवा वियेटाच्या सूत्रांच्या चुकीच्या अनुप्रयोगामुळे येतात. विकल्प 0 मूळांची बेरजा आहे, विकल्प 2 चूक आहे, आणि विकल्प 3 चूक आहे.",
+          "solution": "शून्य 3 आणि -2 असलेले बहुपदी a(x - 3)(x + 2) रूपात लिहिले जाऊ शकते, जेथे a शून्येतर वास्तविक संख्या आहे. कारण a शून्येतर कोणतीही मूल्य असू शकते, तर अशा बहुपदींची संख्या अनंत आहे. कारण बहुपदीला कोणत्याही शून्येतर अचूक संख्येने गुणिले जाते तर त्याचे शून्य बदलत नाहीत. इतर विकल्प चुकीचे आहेत कारण ते बहुपदींची मर्यादित संख्या सूचित करतात, जे खरे नाही. उदाहरणार्थ, 'एक' असे म्हणते की केवळ एक विशिष्ट a मूल्य असेल, परंतु a शून्येतर कोणत्याही मूल्यासाठी असू शकते, तर बहुपदींची संख्या एकापेक्षा मर्यादित नाही.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
           "flag": null
@@ -443,106 +310,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Miscalculates the sum of roots",
-        null,
-        "Incorrect application of Vieta's formula",
-        "Incorrect calculation of the coefficient of x²"
+        "Believes that there is only one specific polynomial that can be formed with the given zeroes, not considering that any non-zero multiple of the polynomial will have the same zeroes.",
+        "Believes that there are two possible forms of the polynomial, but this is incorrect because any non-zero multiple of the polynomial will have the same zeroes, leading to infinitely many possibilities.",
+        "Believes that there are three possible forms of the polynomial, but this is incorrect because any non-zero multiple of the polynomial will have the same zeroes, leading to infinitely many possibilities.",
+        null
       ],
       "solverAnswers": [
-        1,
-        1,
-        1,
-        1,
-        1
+        3,
+        3,
+        3,
+        3,
+        3
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The correct answer is -4, which matches the author's key. The solution correctly expands the polynomial and identifies the coefficient of x². The distractors are based on plausible misconceptions such as miscalculating the sum of roots or misapplying Vieta's formulas.",
-      "sources": [
-        {
-          "document": "ncert/10/mathematics/jemh102.pdf",
-          "ordinal": 6,
-          "pageStart": 12,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 2: Polynomials"
-          ]
-        },
-        {
-          "document": "ncert/10/mathematics/jemh102.pdf",
-          "ordinal": 7,
-          "pageStart": 14,
-          "pageEnd": 14,
-          "headingPath": [
-            "Chapter 2: Polynomials"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T16:58:10.975Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "Which of the following cannot be the number of zeroes of a cubic polynomial?",
-      "choices": [
-        "0",
-        "1",
-        "2",
-        "3"
-      ],
-      "answerIndex": 0,
-      "solution": "A cubic polynomial can have up to three real zeroes, depending on its shape. It can have one or three real zeroes (counting multiplicity). However, it cannot have zero real zeroes because a cubic polynomial always crosses the x-axis at least once. Therefore, 0 cannot be the number of zeroes of a cubic polynomial.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सी एक घात बहुपद के शून्यकों की संख्या नहीं हो सकती?",
-          "choices": [
-            "0",
-            "1",
-            "2",
-            "3"
-          ],
-          "solution": "एक घात बहुपद अधिकतम तीन वास्तविक शून्यक हो सकते हैं, इसके आकार पर निर्भर करता है। यह एक या तीन वास्तविक शून्यक हो सकते हैं (गणना में गुणित के साथ)। हालांकि, यह शून्य वास्तविक शून्यक नहीं हो सकता क्योंकि एक घात बहुपद हमेशा x-अक्ष को कम से कम एक बार काटता है। इसलिए, 0 घात बहुपद के शून्यकों की संख्या नहीं हो सकती।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणते एक घन बहुपदीच्या शून्यांचे संख्या असू शकत नाही?",
-          "choices": [
-            "0",
-            "1",
-            "2",
-            "3"
-          ],
-          "solution": "एक घन बहुपदीला तीन पर्यंत वास्तविक शून्ये असू शकतात, तिच्या आकृतीवर अवलंबून. तिला एक किंवा तीन वास्तविक शून्ये (प्रमाणात) असू शकतात. तथापि, तिला शून्य वास्तविक शून्ये असू शकत नाहीत कारण एक घन बहुपदी अवश्यपणे x-अक्षाला एकदा छेदते. म्हणून, 0 घन बहुपदीच्या शून्यांचे संख्या असू शकत नाही.",
-          "imageAlt": null,
-          "critique": "The translation is accurate and natural for a Marathi-medium student. Technical terms like 'घन बहुपदी' (cubic polynomial) and 'वास्तविक शून्ये' (real zeros) are correctly used.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the number of real zeroes with the number of complex zeroes",
-        "Fails to consider the fundamental theorem of algebra",
-        "Incorrectly assumes that a cubic polynomial can have no real zeroes"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution correctly identifies that a cubic polynomial must have at least one real zero, and thus 0 cannot be the number of real zeros. The reasoning aligns with the fundamental theorem of algebra and the properties of cubic polynomials.",
+      "critique": "The solution is correct and logically explains that any non-zero scalar multiple of the polynomial will have the same roots, leading to infinitely many such polynomials.",
       "sources": [
         {
           "document": "ncert/10/mathematics/jemh102.pdf",
@@ -573,7 +354,102 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T16:58:10.975Z",
+      "generatedAt": "2026-10-30T04:26:18.641Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 6,
+      "stem": "If a quadratic polynomial has a zero at x = 3, what can be said about its other zero?",
+      "choices": [
+        "It must also be 3",
+        "It must be -3",
+        "It must be a real number",
+        "It can be any real number"
+      ],
+      "answerIndex": 3,
+      "solution": "For a quadratic polynomial with one zero at x = 3, the other zero can be any real number because the polynomial can be written as (x - 3)(x - a), where a is any real number. The option 'It must also be 3' is incorrect because it assumes a double root, which is not necessarily the case. The option 'It must be -3' is incorrect because it assumes a specific relationship between the roots. The option 'It must be a real number' is incorrect because the other zero could be complex if the polynomial has complex coefficients.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "यदि एक द्विघात बहुपद का शून्यक x = 3 पर है, तो इसके अन्य शून्यक के बारे में क्या कहा जा सकता है?",
+          "choices": [
+            "इसका अन्य शून्यक भी 3 होना चाहिए",
+            "इसका अन्य शून्यक -3 होना चाहिए",
+            "इसका अन्य शून्यक वास्तविक संख्या होना चाहिए",
+            "इसका अन्य शून्यक कोई भी वास्तविक संख्या हो सकती है"
+          ],
+          "solution": "एक द्विघात बहुपद जिसका एक शून्यक x = 3 पर है, अन्य शून्यक कोई भी वास्तविक संख्या हो सकती है क्योंकि बहुपद को (x - 3)(x - a) के रूप में लिखा जा सकता है, जहां a कोई भी वास्तविक संख्या है। विकल्प 'इसका अन्य शून्यक भी 3 होना चाहिए' गलत है क्योंकि यह एक दोहरा मूल मान लेता है, जो आवश्यक नहीं है। विकल्प 'इसका अन्य शून्यक -3 होना चाहिए' गलत है क्योंकि यह मूलों के बीच एक विशिष्ट संबंध मान लेता है। विकल्प 'इसका अन्य शून्यक वास्तविक संख्या होना चाहिए' गलत है क्योंकि यदि बहुपद के गुणांक सम्मिश्र हैं, तो अन्य शून्यक सम्मिश्र हो सकता है।",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate mathematical terminology in Hindi.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "एक द्विघात बहुपदीचा शून्यक x = 3 असल्यास, त्याचा दुसरा शून्यक काय म्हणता येईल?",
+          "choices": [
+            "तो देखील 3 असल्याचे खात्री असते",
+            "तो -3 असल्याचे खात्री असते",
+            "तो वास्तविक संख्या असल्याचे खात्री असते",
+            "तो कोणतीही वास्तविक संख्या असू शकते"
+          ],
+          "solution": "एका द्विघात बहुपदीचा शून्यक x = 3 असल्यास, दुसरा शून्यक कोणतीही वास्तविक संख्या असू शकते कारण बहुपदी (x - 3)(x - a) असे लिहिता येऊ शकते, जेथे a कोणतीही वास्तविक संख्या असू शकते. 'तो देखील 3 असल्याचे खात्री असते' ही विकल्प चुकीचा आहे कारण तो दुबळा मूळ मानतो, जे आवश्यक नाही. 'तो -3 असल्याचे खात्री असते' ही विकल्प चुकीचा आहे कारण तो मूळांमध्ये विशिष्ट संबंध मानतो. 'तो वास्तविक संख्या असल्याचे खात्री असते' ही विकल्प चुकीचा आहे कारण बहुपदीच्या सहगुणकांमध्ये जटिल संख्या असल्यास दुसरा शून्यक जटिल असू शकतो.",
+          "imageAlt": null,
+          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi mathematical terminology.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        "Assumes the polynomial has a double root",
+        "Assumes a specific relationship between the roots",
+        "Fails to consider complex roots",
+        null
+      ],
+      "solverAnswers": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
+      "critique": "The solution is correct. A quadratic polynomial with a zero at x = 3 can have any other real or complex zero, depending on the coefficients. The key correctly identifies that the other zero can be any real number, and the reasoning for the incorrect options is valid.",
+      "sources": [
+        {
+          "document": "ncert/10/mathematics/jemh102.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 2,
+          "headingPath": [
+            "Chapter 2: Polynomials"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh102.pdf",
+          "ordinal": 1,
+          "pageStart": 2,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 2: Polynomials"
+          ]
+        },
+        {
+          "document": "ncert/10/mathematics/jemh102.pdf",
+          "ordinal": 2,
+          "pageStart": 3,
+          "pageEnd": 6,
+          "headingPath": [
+            "Chapter 2: Polynomials"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-30T04:26:18.641Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

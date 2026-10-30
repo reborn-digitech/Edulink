@@ -1,0 +1,832 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T13:53:29.339Z",
+  "finishedAt": "2026-10-26T14:06:21.118Z",
+  "seconds": 772,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo102.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 2 — Human Reproduction",
+    "edition": "Reprint 2026-27",
+    "chunks": 19,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, sample question paper, 2022-23]\n31. Trace the events from copulation to zygote formation in a human female. 5\nOR\nTrace the development of a megaspore mother cell to the formation of mature\nembryo sac in a flowering plant.",
+      "[CBSE Class XII Biology, sample question paper, 2026-27]\n13. to 16 consist of two statements – Assertion (A) and Reason (R). Answer\nthese questions selecting the appropriate option given below:\nA. Both A and R are true and R is the correct explanation of A.\nB. Both A and R are true but R is not the correct explanation of A.\nC. A is true but R is false.\nD. A is False but R is true.\n13 Assertion (A): Spermatogenesis is an ongoing process throughout the 1\nreproductive life of a human male, while oogenesis is a discontinuous process.\nReason (R): Oogenesis begins during the embryonic stage, gets arrested at\nprophase-I, resumes after puberty, and is arrested again at metaphase-II.",
+      "[CBSE Class XII Biology, sample question paper, 2025-26]\n23. Given below is a figure showing transport of ovum, fertilisation and 3\npassage of growing embryo through fallopian tube in a human female.\nAnswer the questions that follow:\n(i) What will be the ploidy of cells shown in (a) and (c) stage in the figure\ngiven below?\n(ii) What will happen if component L as shown in the figure (g) given\nbelow does not attach properly to the endometrium?\n(iii) In a pregnant mother (case X), during early pregnancy, the fertilised\negg splits into two embryos at stage C shown in the figure given\nbelow, resulting in the formation of twins. Will the genome of cells\nof these two embryos exhibit variation? Justify your answer.\n- - - - - - - - - - - - - - - - - - -\nFo",
+      "[CBSE Class XII Biology, marking scheme, 2024-25]\n31. Student to attempt either option A or B. 5\nA.\n(i)\n Sperm count decreases, spermatogenesis is impaired;\n Spermatids do not get nourishment to develop into spermatozoa\nthus spermiogenesis will be affected;\n Leydig cells synthesize and secrete androgen hormones (like\ntestosterone) so secretion of androgens will be affected.\n(0.5 x 3 = 1.5)\n(ii) Spremiation (0.5)\n(iii) Artificial insemination (AI) technique. In this technique, the semen\ncollected either from the husband or a healthy donor is artificially\nintroduced either into the vagina or into the uterus (IUI – intra –\nuterine insemination) of the female.\nOR\nIntra cytoplasmic sperm injection (ICSI) is another specialised\nprocedure to fo"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 210958,
+      "in": 46,
+      "out": 44,
+      "rejects": 2,
+      "promptTokens": 45245,
+      "completionTokens": 12210
+    },
+    "critique": {
+      "calls": 51,
+      "ms": 307941,
+      "in": 44,
+      "out": 32,
+      "rejects": 12,
+      "promptTokens": 22799,
+      "completionTokens": 8833
+    },
+    "solver": {
+      "calls": 202,
+      "ms": 94388,
+      "in": 32,
+      "out": 31,
+      "rejects": 1,
+      "promptTokens": 34325,
+      "completionTokens": 2012
+    },
+    "form": {
+      "calls": 22,
+      "ms": 162448,
+      "in": 31,
+      "out": 16,
+      "rejects": 15,
+      "promptTokens": 24079,
+      "completionTokens": 4125
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 37,
+      "ms": 6913,
+      "in": 16,
+      "out": 14,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 57,
+      "ms": 572874,
+      "in": 28,
+      "out": 28,
+      "rejects": 0,
+      "promptTokens": 33761,
+      "completionTokens": 17036
+    }
+  },
+  "kept": 14,
+  "keptByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 3,
+    "4": 1,
+    "5": 3,
+    "6": 2
+  },
+  "flagged": 6,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If the Leydig cells in the testes are damaged, what will be the effect on the male reproductive system?",
+      "ms": {
+        "draft": 7352,
+        "critique": 4470,
+        "solver": 1403,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the male reproductive system is responsible for producing sperm?",
+      "ms": {
+        "draft": 7352,
+        "critique": 5090,
+        "solver": 2868,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the function of the Sertoli cells in the seminiferous tubules?",
+      "ms": {
+        "draft": 7352,
+        "critique": 4440,
+        "solver": 1131,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the scrotum located outside the abdominal cavity in males?",
+      "ms": {
+        "draft": 7352,
+        "critique": 6830,
+        "solver": 1419,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A male is found to have a low sperm count. Which part of the reproductive system is most likely to be affected?",
+      "ms": {
+        "draft": 7352,
+        "critique": 6373,
+        "solver": 1448,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the female reproductive system is also called the womb?",
+      "ms": {
+        "draft": 3568,
+        "critique": 5320
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the structure that lines the uterine cavity and undergoes cyclical changes during the menstrual cycle?",
+      "ms": {
+        "draft": 3568,
+        "critique": 5791
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which part of the female reproductive system is described as a cushion of fatty tissue covered by skin and pubic hair?",
+      "ms": {
+        "draft": 3568,
+        "critique": 5339
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the female reproductive system is responsible for collecting the ovum after ovulation?",
+      "ms": {
+        "draft": 7352,
+        "critique": 5980,
+        "solver": 1661,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which process results in the formation of a large haploid secondary oocyte and a tiny first polar body?",
+      "ms": {
+        "draft": 19294,
+        "critique": 8341
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the secondary oocyte retaining most of the cytoplasm from the primary oocyte?",
+      "ms": {
+        "draft": 19294,
+        "critique": 6965
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is the correct sequence of parts in the female reproductive system, from the site of ovum production to the birth canal?",
+      "ms": {
+        "draft": 3568,
+        "critique": 6402,
+        "solver": 11120,
+        "form": 3346
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the endometrium does not attach properly to the fertilised ovum, what would happen?",
+      "ms": {
+        "draft": 19294,
+        "critique": 6696
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the primary oocyte undergoes meiosis I and forms a secondary oocyte and a first polar body, what would happen to the first polar body?",
+      "ms": {
+        "draft": 19294,
+        "critique": 6146
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How many chromosomes are present in a human zygote?",
+      "ms": {
+        "draft": 3125,
+        "critique": 5517
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about the sex of the baby?",
+      "ms": {
+        "draft": 3125,
+        "critique": 6480
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the fluid-filled cavity that forms in the tertiary follicle?",
+      "ms": {
+        "draft": 19294,
+        "critique": 5163,
+        "solver": 10012,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why is the placenta considered an endocrine tissue?",
+      "ms": {
+        "draft": 3125,
+        "critique": 5942,
+        "solver": 14922,
+        "form": 3090
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which part of the female reproductive system is responsible for providing nourishment to the developing embryo?",
+      "ms": {
+        "draft": 3923,
+        "critique": 5803,
+        "solver": 1655,
+        "form": 2644
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a sperm carries a Y chromosome, what is the sex of the resulting embryo?",
+      "ms": {
+        "draft": 3923,
+        "critique": 6043,
+        "solver": 473,
+        "form": 926
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In a scenario where a female has a twin pregnancy, which of the following is most likely to be true?",
+      "ms": {
+        "draft": 3345,
+        "critique": 7997,
+        "solver": 14755,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the diagram of the female reproductive system, which part is responsible for producing the female gamete?",
+      "ms": {
+        "draft": 3345,
+        "critique": 7276,
+        "solver": 1389,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the diagram showing the transport of the ovum and fertilisation, what happens after the zygote reaches the uterus?",
+      "ms": {
+        "draft": 11850,
+        "critique": 6044,
+        "solver": 1895,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What happens to the primary oocyte during the formation of the tertiary follicle?",
+      "ms": {
+        "draft": 3960,
+        "critique": 6057,
+        "solver": 1435,
+        "form": 3260
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the female reproductive system is referred to as the 'womb' in the passage?",
+      "ms": {
+        "draft": 20791,
+        "critique": 5731
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which layer of the uterus undergoes cyclical changes during the menstrual cycle?",
+      "ms": {
+        "draft": 20791,
+        "critique": 8077
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the male reproductive system is responsible for storing and transporting sperm from the testes to the outside?",
+      "ms": {
+        "draft": 4619,
+        "critique": 6792
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What is the main function of the acrosome in a sperm, as described in the passage?",
+      "ms": {
+        "draft": 20791,
+        "critique": 6704,
+        "solver": 4455
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a sperm carrying a Y chromosome fertilises an ovum, what will be the sex of the baby?",
+      "ms": {
+        "draft": 11850,
+        "critique": 6919,
+        "solver": 1392,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a fertilised egg splits into two embryos during the early stages of development, what can be said about the genetic material of the two embryos?",
+      "ms": {
+        "draft": 3960,
+        "critique": 6346,
+        "solver": 1621,
+        "form": 2483
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used for the process of fertilisation in humans?",
+      "ms": {
+        "draft": 11850,
+        "critique": 6044,
+        "solver": 1335,
+        "form": 0,
+        "translation": 33009
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the fluid-filled cavity that forms in the tertiary follicle during oogenesis?",
+      "ms": {
+        "draft": 3960,
+        "critique": 5379,
+        "solver": 1315,
+        "form": 3026,
+        "translation": 36535
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the ploidy of the zygote formed after fertilisation in humans?",
+      "ms": {
+        "draft": 11850,
+        "critique": 8397,
+        "solver": 1446,
+        "form": 0,
+        "translation": 34856
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a part of the female external genitalia?",
+      "ms": {
+        "draft": 3345,
+        "critique": 4653,
+        "solver": 2240,
+        "form": 0,
+        "translation": 35513
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is true about the menstrual cycle?",
+      "ms": {
+        "draft": 3345,
+        "critique": 4593,
+        "solver": 1461,
+        "form": 0,
+        "translation": 37646
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens if the placenta does not attach properly to the endometrium?",
+      "ms": {
+        "draft": 3125,
+        "critique": 6727,
+        "solver": 1703,
+        "form": 2334,
+        "translation": 40558
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following correctly describes the reproductive system of humans?",
+      "ms": {
+        "draft": 3923,
+        "critique": 7445,
+        "solver": 11510,
+        "form": 3375,
+        "translation": 51522
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a female is pregnant, what happens to her menstrual cycle?",
+      "ms": {
+        "draft": 3345,
+        "critique": 4301,
+        "solver": 1261,
+        "form": 0,
+        "translation": 33255
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the significance of the secondary oocyte retaining most of the cytoplasm from the primary oocyte?",
+      "ms": {
+        "draft": 3960,
+        "critique": 6415,
+        "solver": 1634,
+        "form": 3626,
+        "translation": 34661
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a fertilized egg splits into two embryos at stage C, what will be the genome of the two embryos?",
+      "ms": {
+        "draft": 3125,
+        "critique": 5926,
+        "solver": 16895,
+        "form": 3017,
+        "translation": 49531
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In a scenario where the placenta fails to attach properly to the endometrium, what is the most likely consequence?",
+      "ms": {
+        "draft": 11850,
+        "critique": 6758,
+        "solver": 1717,
+        "form": 0,
+        "translation": 35923
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "A male individual is found to have a low sperm count. Which of the following is most likely the cause of this condition?",
+      "ms": {
+        "draft": 3923,
+        "critique": 7127,
+        "solver": 1393,
+        "form": 3940,
+        "translation": 55915
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the sex of the baby determined by the father and not the mother?",
+      "ms": {
+        "draft": 11850,
+        "critique": 6584,
+        "solver": 1946,
+        "form": 0,
+        "translation": 45572
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If a male has a condition that affects the function of Sertoli cells, which of the following would most likely be impacted?",
+      "ms": {
+        "draft": 3345,
+        "critique": 6536,
+        "solver": 1557,
+        "form": 0,
+        "translation": 45251
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Which structure in the female reproductive system is covered by a membrane called the hymen?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term used to describe the process by which gametes are produced in females?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If the Leydig cells in the testes are damaged, what will be the effect on the male reproductive system?",
+      "reason": "figure: figure spec refused: spec.parts.1.size: Number must be greater than or equal to 10"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which part of the male reproductive system is responsible for producing sperm?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.nucleus: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the function of the Sertoli cells in the seminiferous tubules?",
+      "reason": "figure: figure spec refused: spec.parts.0.text.cellWall: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the scrotum located outside the abdominal cavity in males?",
+      "reason": "figure: figure spec refused: labels.diagram.en: String must contain at most 40 character(s)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A male is found to have a low sperm count. Which part of the reproductive system is most likely to be affected?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'testis'"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the female reproductive system is also called the womb?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the name of the structure that lines the uterine cavity and undergoes cyclical changes during the menstrual cycle?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which part of the female reproductive system is described as a cushion of fatty tissue covered by skin and pubic hair?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which part of the female reproductive system is responsible for collecting the ovum after ovulation?",
+      "reason": "figure: figure spec refused: spec.parts.3.x: Number must be less than or equal to 100"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which process results in the formation of a large haploid secondary oocyte and a tiny first polar body?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the significance of the secondary oocyte retaining most of the cytoplasm from the primary oocyte?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is the correct sequence of parts in the female reproductive system, from the site of ovum production to the birth canal?",
+      "reason": "options 0 and 1 say the same thing (\"Ovary, fallopian tube, uterus, vagina\" / \"Ovary, uterus, vagina, fallopian tube\"); options 0 and 2 say the same thing (\"Ovary, fallopian tube, uterus, vagina\" / \"Vagina, uterus, fallopian tube, ovary\"); options 0 and 3 say the same thing (\"Ovary, fallopian tube, uterus, vagina\" / \"Fallopian tube, ovary, uterus, vagina\"); options 1 and 2 say the same thing (\"Ovary, uterus, vagina, fallopian tube\" / \"Vagina, uterus, fallopian tube, ovary\"); options 1 and 3 say the same thing (\"Ovary, uterus, vagina, fallopian tube\" / \"Fallopian tube, ovary, uterus, vagina\"); options 2 and 3 say the same thing (\"Vagina, uterus, fallopian tube, ovary\" / \"Fallopian tube, ovary, uterus, vagina\")"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the endometrium does not attach properly to the fertilised ovum, what would happen?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the primary oocyte undergoes meiosis I and forms a secondary oocyte and a first polar body, what would happen to the first polar body?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "How many chromosomes are present in a human zygote?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is true about the sex of the baby?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the name of the fluid-filled cavity that forms in the tertiary follicle?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'ovary'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why is the placenta considered an endocrine tissue?",
+      "reason": "options 0 and 3 are the same (\"Because it produces hormones\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which part of the female reproductive system is responsible for providing nourishment to the developing embryo?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'uterus'"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "If a sperm carries a Y chromosome, what is the sex of the resulting embryo?",
+      "reason": "option 3 is a catch-all (\"None of the above\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In a scenario where a female has a twin pregnancy, which of the following is most likely to be true?",
+      "reason": "options 2 and 3 say the same thing (\"The fertilised egg splits into two embryos during oogenesis\" / \"The fertilised egg splits into two embryos during spermatogenesis\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the diagram of the female reproductive system, which part is responsible for producing the female gamete?",
+      "reason": "figure: figure spec refused: spec.parts.3.text.fallopian tube: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In the diagram showing the transport of the ovum and fertilisation, what happens after the zygote reaches the uterus?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'uterus'"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What happens to the primary oocyte during the formation of the tertiary follicle?",
+      "reason": "the key is far longer than every distractor (64 vs 37 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the female reproductive system is referred to as the 'womb' in the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "According to the passage, which layer of the uterus undergoes cyclical changes during the menstrual cycle?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which part of the male reproductive system is responsible for storing and transporting sperm from the testes to the outside?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "What is the main function of the acrosome in a sperm, as described in the passage?",
+      "reason": "after redrafting distractor 3: the critic finds option 3 correct, the key is 2; the solution's working is not sound"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a sperm carrying a Y chromosome fertilises an ovum, what will be the sex of the baby?",
+      "reason": "near-duplicate of served question cmvlo7lx10nfigpfhcy2l2n8n (cosine 0.979 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "If a fertilised egg splits into two embryos during the early stages of development, what can be said about the genetic material of the two embryos?",
+      "reason": "near-duplicate of batch item \"If a fertilized egg splits into two embryos at sta…\" (cosine 0.905 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

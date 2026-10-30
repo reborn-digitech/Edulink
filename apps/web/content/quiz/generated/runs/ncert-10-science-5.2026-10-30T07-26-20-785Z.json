@@ -1,0 +1,574 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T07:26:20.785Z",
+  "finishedAt": "2026-10-30T07:42:33.346Z",
+  "seconds": 973,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Science",
+    "bookCode": "jesc1",
+    "document": "ncert/10/science/jesc105.pdf",
+    "classLevel": 10,
+    "subject": "Science",
+    "chapter": "Chapter 5 — Life Processes",
+    "edition": "Reprint 2026-27",
+    "chunks": 30,
+    "groups": 8
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2022-23]\n29. No photosynthesis will occur so no glucose will be made. Also no respiration will 3\ntake place as no Oxygen will be taken in. (1)\nNo transpiration will occur so there would be no upward movement of water or\nminerals from the soil as there will be no transpirational pull.(1)\nTemperature regulation of leaf surface will be affected. (1)\nOR\nLymph carries digested and absorbed fat from the intestine (1) and drains excess\nfluid from extracellular space back into the blood (1). Blockage of lymphatic\nsystem will lead to water retention and poor fat absorption in the body\n(1- any one)",
+      "[CBSE Class X Science, marking scheme, 2023-24]\nMarking Scheme (2023-24)\nClass-X\nScience (Subject Code – 086) b\nQ. No. Answer Marks\nSection–A\n1 b) Barium sulphate\n2 b) Colourless\n3 d) NaHCO 3\n4 a) Sodium\n6 d) 11 (2,8,1)\n7 c) 14\n8 b) Mushroom\n9 a) tongue\n10 c) Vegetative propagation\n11 c) Growth hormones under the influence of the enzymes coded by a gene. 1\n12 c) lack of oxygen and formation of lactic acid. 1\n13 d) behind the mirror and its position varies according to the object distance. 1\n14 c) scattering of light.\n15 c) CFCs, Ozone\n16 a) Broken down by biological processes\n17 d) Assertion is false but Reason is true\n18 a) Both A and R are true and R is the correct explanation of A. 1\n19 d) Assertion is false but Reason is true 1\n20 c) ",
+      "[CBSE Class X Science, marking scheme, 2022-23]\n35. (a) The reason is that many multi-cellular organisms are not simply a random 5\ncollection of cells. Specialised cells are organised as tissues, and tissues are\norganised into organs, which then have to be placed at definite positions in the\nbody. Therefore, cell-by-cell division would be impractical. (2 marks)\n(b) Sexual maturation of reproductive tissues is a necessary link for reproduction\nbecause of the need for specialised cell called germ-cells to participate in\nsexual reproduction. The body of the individual organism has to grow to its\nadult size, the rate of general body growth begins to slow down, reproductive\ntissues begin to mature. (1½ marks)\nA whole new set of changes in the ",
+      "[CBSE Class X Science, sample question paper, 2022-23]\n35. (a) Why is it not possible to reconstruct the whole organism from a fragment in 5\ncomplex multicellular organisms?\n(b) Sexual maturation of reproductive tissues and organs are necessary link for\nreproduction. Elucidate.\nOR\n(a) How are variations useful for species if there is drastic alteration in the niches?\n(b) Explain how the uterus and placenta provide necessary conditions for proper\ngrowth and development of the embryo after implantation?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 7,
+      "ms": 139648,
+      "in": 31,
+      "out": 31,
+      "rejects": 0,
+      "promptTokens": 31091,
+      "completionTokens": 6130
+    },
+    "critique": {
+      "calls": 35,
+      "ms": 549177,
+      "in": 31,
+      "out": 26,
+      "rejects": 5,
+      "promptTokens": 15259,
+      "completionTokens": 5903
+    },
+    "solver": {
+      "calls": 150,
+      "ms": 122919,
+      "in": 26,
+      "out": 24,
+      "rejects": 2,
+      "promptTokens": 21433,
+      "completionTokens": 1345
+    },
+    "form": {
+      "calls": 15,
+      "ms": 185707,
+      "in": 24,
+      "out": 21,
+      "rejects": 3,
+      "promptTokens": 5491,
+      "completionTokens": 1173
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 21,
+      "out": 21,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 52,
+      "ms": 11879,
+      "in": 21,
+      "out": 19,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 79,
+      "ms": 1110410,
+      "in": 38,
+      "out": 38,
+      "rejects": 0,
+      "promptTokens": 46532,
+      "completionTokens": 23615
+    }
+  },
+  "kept": 19,
+  "keptByLevel": {
+    "1": 4,
+    "2": 3,
+    "3": 2,
+    "4": 3,
+    "5": 3,
+    "6": 4
+  },
+  "flagged": 10,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What is the role of enzymes in heterotrophic organisms?",
+      "ms": {
+        "draft": 3641,
+        "critique": 7601,
+        "solver": 1513,
+        "form": 5511
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a raw material used by plants for photosynthesis?",
+      "ms": {
+        "draft": 4123,
+        "critique": 7319
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why do multi-cellular organisms need a transportation system?",
+      "ms": {
+        "draft": 3641,
+        "critique": 8113,
+        "solver": 15795
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which part of the plant are stomata found, and what is their function?",
+      "ms": {
+        "draft": 4123,
+        "critique": 6461,
+        "solver": 13942,
+        "form": 2725
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student performed an experiment to test the effect of saliva on starch. He placed 1 mL of starch solution in two test tubes, added 1 mL of saliva to test tube A, and left both test tubes undisturbed for 30 minutes. Then he added iodine solution to both tubes. Which test tube would show a colour change and why?",
+      "ms": {
+        "draft": 5741,
+        "critique": 7597,
+        "solver": 1740
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the function of the sphincter muscle at the exit of the stomach?",
+      "ms": {
+        "draft": 5741,
+        "critique": 7252,
+        "solver": 1416,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In which part of the cell does the breakdown of glucose into pyruvate occur?",
+      "ms": {
+        "draft": 20485,
+        "critique": 8630
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the excretory system in humans?",
+      "ms": {
+        "draft": 25590,
+        "critique": 74969
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is it necessary for mammals and birds to separate oxygenated and deoxygenated blood?",
+      "ms": {
+        "draft": 25590,
+        "critique": 71522
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What happens to the initial filtrate produced in the kidneys?",
+      "ms": {
+        "draft": 25590,
+        "critique": 55788
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why do terrestrial organisms have an advantage over aquatic organisms in obtaining oxygen?",
+      "ms": {
+        "draft": 5054,
+        "critique": 7733,
+        "solver": 1485,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of the plant is responsible for transporting water and minerals from the roots to the leaves?",
+      "ms": {
+        "draft": 4440,
+        "critique": 25214,
+        "solver": 1989,
+        "form": 42870
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of life processes in living organisms?",
+      "ms": {
+        "draft": 3641,
+        "critique": 5902,
+        "solver": 2220,
+        "form": 3651,
+        "translation": 53645
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the source of energy for life processes in organisms?",
+      "ms": {
+        "draft": 3641,
+        "critique": 6242,
+        "solver": 2997,
+        "form": 2885,
+        "translation": 47789
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the process called when organisms take in oxygen from the environment and use it for breaking down food sources?",
+      "ms": {
+        "draft": 3641,
+        "critique": 5597,
+        "solver": 1511,
+        "form": 5437,
+        "translation": 71610
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the primary function of ATP in cells?",
+      "ms": {
+        "draft": 20485,
+        "critique": 6562,
+        "solver": 13537,
+        "form": 1,
+        "translation": 62902
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of a heterotrophic organism?",
+      "ms": {
+        "draft": 3641,
+        "critique": 7982,
+        "solver": 1879,
+        "form": 5088,
+        "translation": 55176
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which system in the human body is responsible for removing waste products like soluble nitrogen compounds?",
+      "ms": {
+        "draft": 4440,
+        "critique": 25743,
+        "solver": 5403,
+        "form": 35300,
+        "translation": 44625
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following organisms uses a parasitic mode of nutrition?",
+      "ms": {
+        "draft": 4123,
+        "critique": 7180,
+        "solver": 2955,
+        "form": 2194,
+        "translation": 39369
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the carbohydrates produced during photosynthesis in plants?",
+      "ms": {
+        "draft": 4123,
+        "critique": 7656,
+        "solver": 1778,
+        "form": 2460,
+        "translation": 81035
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which part of the human digestive system is responsible for the initial breakdown of starch into simple sugars?",
+      "ms": {
+        "draft": 5741,
+        "critique": 9265,
+        "solver": 2042,
+        "form": 1,
+        "translation": 49061
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How does the human respiratory system ensure efficient gas exchange?",
+      "ms": {
+        "draft": 5054,
+        "critique": 8632,
+        "solver": 1654,
+        "form": 0,
+        "translation": 69272
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the main function of the nephrons in the human body?",
+      "ms": {
+        "draft": 4440,
+        "critique": 25787,
+        "solver": 9874,
+        "form": 40529,
+        "translation": 45032
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "What is the main function of the villi in the small intestine?",
+      "ms": {
+        "draft": 5741,
+        "critique": 6727,
+        "solver": 2036,
+        "form": 0,
+        "translation": 55844
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What happens to pyruvate in the presence of oxygen?",
+      "ms": {
+        "draft": 20485,
+        "critique": 8973,
+        "solver": 17032,
+        "form": 0,
+        "translation": 79302
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a plant is unable to store waste materials in its cell vacuoles, which of the following is most likely to happen?",
+      "ms": {
+        "draft": 4440,
+        "critique": 66772,
+        "solver": 18469,
+        "form": 35738,
+        "translation": 44519
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a plant is kept in a dark room for three days, what happens to the starch in its leaves?",
+      "ms": {
+        "draft": 4123,
+        "critique": 7237,
+        "solver": 1833,
+        "form": 4038,
+        "translation": 70006
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why do aquatic animals have a faster rate of breathing compared to terrestrial animals?",
+      "ms": {
+        "draft": 20485,
+        "critique": 8282,
+        "solver": 1614,
+        "form": 0,
+        "translation": 56344
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the purpose of the separation of the right and left sides of the heart?",
+      "ms": {
+        "draft": 5054,
+        "critique": 4666,
+        "solver": 677,
+        "form": 0,
+        "translation": 55680
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "What is the role of guard cells in the stomata of a plant?",
+      "ms": {
+        "draft": 4123,
+        "critique": 7713,
+        "solver": 1678,
+        "form": 3197,
+        "translation": 53025
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the small intestine in herbivores longer than in carnivores?",
+      "ms": {
+        "draft": 5741,
+        "critique": 8107,
+        "solver": 1681,
+        "form": 0,
+        "translation": 68266
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the role of enzymes in heterotrophic organisms?",
+      "reason": "the key is far longer than every distractor (50 vs 18 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a raw material used by plants for photosynthesis?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Why do multi-cellular organisms need a transportation system?",
+      "reason": "after redrafting distractors 2, 3: the critic finds option 3 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "In which part of the plant are stomata found, and what is their function?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A student performed an experiment to test the effect of saliva on starch. He placed 1 mL of starch solution in two test tubes, added 1 mL of saliva to test tube A, and left both test tubes undisturbed for 30 minutes. Then he added iodine solution to both tubes. Which test tube would show a colour change and why?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the function of the sphincter muscle at the exit of the stomach?",
+      "reason": "the key is far longer than every distractor (57 vs 29 characters)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In which part of the cell does the breakdown of glucose into pyruvate occur?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main purpose of the excretory system in humans?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Why is it necessary for mammals and birds to separate oxygenated and deoxygenated blood?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What happens to the initial filtrate produced in the kidneys?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "Why do terrestrial organisms have an advantage over aquatic organisms in obtaining oxygen?",
+      "reason": "near-duplicate of served question cmvntja4804cdgp21aif52p75 (cosine 0.931 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "Which part of the plant is responsible for transporting water and minerals from the roots to the leaves?",
+      "reason": "near-duplicate of served question cmvjy5ptj0i56gpfhnw6xf8sa (cosine 0.931 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

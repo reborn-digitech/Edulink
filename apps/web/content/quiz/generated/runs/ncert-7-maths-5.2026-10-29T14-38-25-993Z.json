@@ -1,0 +1,718 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-29T14:38:25.993Z",
+  "finishedAt": "2026-10-29T14:55:17.742Z",
+  "seconds": 1012,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Ganita Prakash",
+    "bookCode": "gegp1",
+    "document": "ncert/7/mathematics/gegp105.pdf",
+    "classLevel": 7,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Parallel and Intersecting Lines",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2022-23]\n4. (b) Parallel.",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2023-24]\n3. The lines representing the given pair of linear equations are non-intersecting. Which of the 1\nfollowing statements is true?\n௔ଵ ௕ଵ ௖ଵ\n(a) ௔ଶ = ௕ଶ = ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(b) ௔ଶ = ௕ଶ ≠ ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(c) ௔ଶ ≠ ௕ଶ = ௖ଶ\n௔ଵ ௕ଵ ௖ଵ\n(d) ௔ଶ ≠ ௕ଶ ≠ ௖ଶ",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2022-23]\n33. Prove that if a line is drawn parallel to one side of a triangle intersecting the other 5\ntwo sides in distinct points, then the other two sides are divided in the same ratio.\nUsing the above theorem prove that a line through the point of intersection of the\ndiagonals and parallel to the base of the trapezium divides the non parallel sides in\nthe same ratio.",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2025-26]\n32. Prove that a line drawn parallel to one side of a triangle intersecting other two sides 5\nin distinct points, divides the other two sides in the same ratio."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 362599,
+      "in": 39,
+      "out": 36,
+      "rejects": 3,
+      "promptTokens": 42438,
+      "completionTokens": 15163
+    },
+    "critique": {
+      "calls": 45,
+      "ms": 397154,
+      "in": 36,
+      "out": 31,
+      "rejects": 5,
+      "promptTokens": 21944,
+      "completionTokens": 7761
+    },
+    "solver": {
+      "calls": 216,
+      "ms": 152483,
+      "in": 31,
+      "out": 25,
+      "rejects": 6,
+      "promptTokens": 42588,
+      "completionTokens": 2209
+    },
+    "form": {
+      "calls": 20,
+      "ms": 212367,
+      "in": 25,
+      "out": 12,
+      "rejects": 13,
+      "promptTokens": 16332,
+      "completionTokens": 4013
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 36,
+      "ms": 8166,
+      "in": 12,
+      "out": 11,
+      "rejects": 1,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 47,
+      "ms": 632902,
+      "in": 22,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 27154,
+      "completionTokens": 13685
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 4
+  },
+  "flagged": 8,
+  "needsFigure": 5,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "In Fig. 5.6, which pair of lines are parallel?",
+      "ms": {
+        "draft": 22968,
+        "critique": 9173,
+        "solver": 3704
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When two lines intersect, what is the relationship between vertically opposite angles?",
+      "ms": {
+        "draft": 22968,
+        "critique": 9138,
+        "solver": 26089
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a transversal intersects two parallel lines, which of the following is always true?",
+      "ms": {
+        "draft": 5316,
+        "critique": 8923,
+        "solver": 2302,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Two lines are intersected by a transversal. If the corresponding angles are equal, which of the following must be true?",
+      "ms": {
+        "draft": 5316,
+        "critique": 8446,
+        "solver": 1961,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In a diagram, two lines are intersected by a transversal. The corresponding angles are found to be equal. Which of the following is the most accurate conclusion?",
+      "ms": {
+        "draft": 5316,
+        "critique": 8557,
+        "solver": 2452,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a property of parallel lines when intersected by a transversal?",
+      "ms": {
+        "draft": 12930,
+        "critique": 9401,
+        "solver": 2031,
+        "form": 6678
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, line l is parallel to line m, and line t is a transversal. If ∠6 is 135°, what is the measure of ∠2?",
+      "ms": {
+        "draft": 12930,
+        "critique": 11101,
+        "solver": 20824
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, line l is parallel to line m, and line t is a transversal. If ∠a is 120° and ∠f is 70°, are lines l and m parallel?",
+      "ms": {
+        "draft": 12930,
+        "critique": 8728,
+        "solver": 2369,
+        "form": 4667
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When two lines intersect, the sum of the measures of a linear pair of angles is always:",
+      "ms": {
+        "draft": 7056,
+        "critique": 8204
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, line a is parallel to line c. What is the relationship between the corresponding angles formed by a transversal?",
+      "ms": {
+        "draft": 7056,
+        "critique": 9328
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method to draw a line parallel to a given line through a point?",
+      "ms": {
+        "draft": 6113,
+        "critique": 9577
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the given figure, lines a and b are parallel, and line c is a transversal. Which of the following must be true?",
+      "ms": {
+        "draft": 7056,
+        "critique": 9296,
+        "solver": 10954
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the reason given in the passage for lines l and m being parallel?",
+      "ms": {
+        "draft": 7152,
+        "critique": 6321,
+        "solver": 1686,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two lines are parallel and a transversal intersects them, which of the following is true?",
+      "ms": {
+        "draft": 7152,
+        "critique": 6677,
+        "solver": 2401,
+        "form": 4770
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following describes how to draw a line parallel to a given line through a point?",
+      "ms": {
+        "draft": 7152,
+        "critique": 7457,
+        "solver": 2940,
+        "form": 4972
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the given figure, AB is parallel to CD, and CD is parallel to EF. If EA is perpendicular to AB, and ∠BEF = 55°, what is the value of ∠x?",
+      "ms": {
+        "draft": 7152,
+        "critique": 10124,
+        "solver": 2450
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If two lines are parallel and a transversal intersects them, which of the following must be true?",
+      "ms": {
+        "draft": 7152,
+        "critique": 8754,
+        "solver": 1926,
+        "form": 4992
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the measure of angle ∠NOP in Fig. 5.35, given that lines LM and PQ are parallel and ∠LNO = 40°, ∠PON = 96°?",
+      "ms": {
+        "draft": 10866,
+        "critique": 9384
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the condition for two lines to be parallel based on the angles they form with a transversal?",
+      "ms": {
+        "draft": 37754,
+        "critique": 10144,
+        "solver": 3443,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In Fig. 5.21, two lines are drawn perpendicular to line l. What can be said about these two lines?",
+      "ms": {
+        "draft": 37754,
+        "critique": 9189,
+        "solver": 2156,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe lines that never meet and are always the same distance apart?",
+      "ms": {
+        "draft": 6207,
+        "critique": 9918
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In Fig. 5.28, parallel lines l and m are intersected by the transversal t. If ∠3 is 50°, what is the measure of ∠6?",
+      "ms": {
+        "draft": 37754,
+        "critique": 11121,
+        "solver": 19796
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "When two lines intersect, what are the angles that are opposite to each other called?",
+      "ms": {
+        "draft": 15029,
+        "critique": 7128,
+        "solver": 13352,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "If two lines are parallel, what can be said about their corresponding angles when a transversal intersects them?",
+      "ms": {
+        "draft": 6207,
+        "critique": 9073,
+        "solver": 14193,
+        "form": 2212
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two lines intersect and form four angles, and one of the angles measures 110°, what is the measure of its vertically opposite angle?",
+      "ms": {
+        "draft": 22968,
+        "critique": 8570,
+        "solver": 18048,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term used to describe lines that never meet, no matter how far they are extended?",
+      "ms": {
+        "draft": 5316,
+        "critique": 7711,
+        "solver": 1991,
+        "form": 3874,
+        "translation": 79268
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following statements about parallel lines is true?",
+      "ms": {
+        "draft": 22968,
+        "critique": 8058,
+        "solver": 1708,
+        "form": 3227,
+        "translation": 52151
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If two lines are parallel, how many points do they have in common?",
+      "ms": {
+        "draft": 5316,
+        "critique": 7608,
+        "solver": 2618,
+        "form": 0,
+        "translation": 42082
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In Fig. 5.14, if ∠1 is 60°, which of the following angles must also be 60°?",
+      "ms": {
+        "draft": 5316,
+        "critique": 9276,
+        "solver": 2251,
+        "form": 0,
+        "translation": 50332
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "In Fig. 5.21, two lines are drawn perpendicular to line l. What can be concluded about these two lines?",
+      "ms": {
+        "draft": 12930,
+        "critique": 9978,
+        "solver": 17608,
+        "form": 5021,
+        "translation": 61717
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If two lines are parallel, what can be said about their slopes?",
+      "ms": {
+        "draft": 22968,
+        "critique": 9982,
+        "solver": 19231,
+        "form": 3903,
+        "translation": 56881
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "In the given figure, if line l is parallel to line m and line n is a transversal intersecting them at points A and B, and if ∠1 = 110°, what is the measure of ∠2?",
+      "ms": {
+        "draft": 10866,
+        "critique": 10308,
+        "solver": 2801,
+        "form": 0,
+        "translation": 57160
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If two lines intersect at a point and the sum of two adjacent angles formed is 180°, what can be concluded?",
+      "ms": {
+        "draft": 22968,
+        "critique": 8654,
+        "solver": 2112,
+        "form": 5329,
+        "translation": 64143
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If two lines are cut by a transversal and the corresponding angles are equal, what can be concluded about the lines?",
+      "ms": {
+        "draft": 10866,
+        "critique": 9621,
+        "solver": 1892,
+        "form": 5529,
+        "translation": 50514
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "If two lines are parallel and a transversal intersects them, and one of the corresponding angles is 60°, what is the measure of the alternate interior angle?",
+      "ms": {
+        "draft": 7152,
+        "critique": 7976,
+        "solver": 2454,
+        "form": 3074,
+        "translation": 49815
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "In the given figure, line l is parallel to line m, and line t is a transversal. If ∠3 is 50°, what is the measure of ∠6?",
+      "ms": {
+        "draft": 12930,
+        "critique": 9738,
+        "solver": 2268,
+        "form": 6496,
+        "translation": 61088
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In the given figure, lines a and b are parallel, and line c is a transversal. What is the measure of ∠1 if ∠2 is 120°?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In Fig. 5.6, which pair of lines are parallel?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "When two lines intersect, what is the relationship between vertically opposite angles?",
+      "reason": "after redraft: the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a transversal intersects two parallel lines, which of the following is always true?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Correct option, so no reason given here (but included for fo…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Two lines are intersected by a transversal. If the corresponding angles are equal, which of the following must be true?",
+      "reason": "options 0 and 3 say the same thing (\"The lines are parallel\" / \"The lines are not parallel\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "In a diagram, two lines are intersected by a transversal. The corresponding angles are found to be equal. Which of the following is the most accurate conclusion?",
+      "reason": "options 0 and 1 say the same thing (\"The lines are parallel\" / \"The lines are not parallel\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a property of parallel lines when intersected by a transversal?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Believes interior angles on the same side are equal, but the…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In the given figure, line l is parallel to line m, and line t is a transversal. If ∠6 is 135°, what is the measure of ∠2?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "In the given figure, line l is parallel to line m, and line t is a transversal. If ∠a is 120° and ∠f is 70°, are lines l and m parallel?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Believes that alternate angles are the main factor in determ…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "When two lines intersect, the sum of the measures of a linear pair of angles is always:",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the given figure, line a is parallel to line c. What is the relationship between the corresponding angles formed by a transversal?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which of the following is a method to draw a line parallel to a given line through a point?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "In the given figure, lines a and b are parallel, and line c is a transversal. Which of the following must be true?",
+      "reason": "distractor 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In which of the following figures are the pairs of lines a and i, h and c, d and f, and e and b parallel?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "In Fig. 5.13, which line is parallel to line a — line b or line c?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the reason given in the passage for lines l and m being parallel?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Mentions slope, which is not discussed in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If two lines are parallel and a transversal intersects them, which of the following is true?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Mentions vertical angles, which are not discussed in the pas…\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following describes how to draw a line parallel to a given line through a point?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Describes a process not mentioned in the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the given figure, AB is parallel to CD, and CD is parallel to EF. If EA is perpendicular to AB, and ∠BEF = 55°, what is the value of ∠x?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If two lines are parallel and a transversal intersects them, which of the following must be true?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Mentions vertical angles, which are not discussed in the pas…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What is the measure of angle ∠NOP in Fig. 5.35, given that lines LM and PQ are parallel and ∠LNO = 40°, ∠PON = 96°?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the condition for two lines to be parallel based on the angles they form with a transversal?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Thinks that alternate angles being equal is the primary cond…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "In Fig. 5.21, two lines are drawn perpendicular to line l. What can be said about these two lines?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Believes that lines perpendicular to the same line must be p…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe lines that never meet and are always the same distance apart?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "In Fig. 5.28, parallel lines l and m are intersected by the transversal t. If ∠3 is 50°, what is the measure of ∠6?",
+      "reason": "distractors 1, 2, 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "When two lines intersect, what are the angles that are opposite to each other called?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "If two lines are parallel, what can be said about their corresponding angles when a transversal intersects them?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Confuses parallel with intersecting lines, as intersecting l…\"); distractor 3's reason is not a one-line misconception (\"Confuses corresponding angles with other angle types, which …\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If two lines intersect and form four angles, and one of the angles measures 110°, what is the measure of its vertically opposite angle?",
+      "reason": "near-duplicate of served question cmvfwhle9012ngpfhpvarw7ny (cosine 0.932 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

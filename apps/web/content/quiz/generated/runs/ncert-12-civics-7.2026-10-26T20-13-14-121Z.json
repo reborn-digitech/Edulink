@@ -1,0 +1,881 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-26T20:13:14.121Z",
+  "finishedAt": "2026-10-26T20:26:07.071Z",
+  "seconds": 773,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Politics in India Since Independence",
+    "bookCode": "leps2",
+    "document": "ncert/12/political-science/leps207.pdf",
+    "classLevel": 12,
+    "subject": "Political Science",
+    "chapter": "Chapter 7 — In this chapter…",
+    "edition": "Reprint 2026-27",
+    "chunks": 27,
+    "groups": 9
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Political Science, sample question paper, 2023-24]\nSECTION-D (12 MARKS)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSECTION – B\n(12 Marks)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSECTION – A\n(12 Marks)",
+      "[CBSE Class XII Political Science, sample question paper, 2022-23]\nSection – D\n(12 Marks)"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 12,
+      "ms": 238513,
+      "in": 49,
+      "out": 44,
+      "rejects": 5,
+      "promptTokens": 46340,
+      "completionTokens": 11781
+    },
+    "critique": {
+      "calls": 61,
+      "ms": 491175,
+      "in": 44,
+      "out": 33,
+      "rejects": 11,
+      "promptTokens": 28542,
+      "completionTokens": 10696
+    },
+    "solver": {
+      "calls": 291,
+      "ms": 210496,
+      "in": 33,
+      "out": 26,
+      "rejects": 7,
+      "promptTokens": 60944,
+      "completionTokens": 3744
+    },
+    "form": {
+      "calls": 12,
+      "ms": 48058,
+      "in": 26,
+      "out": 7,
+      "rejects": 19,
+      "promptTokens": 3315,
+      "completionTokens": 991
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 2,
+      "ms": 490,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 29,
+      "ms": 412683,
+      "in": 14,
+      "out": 14,
+      "rejects": 0,
+      "promptTokens": 18484,
+      "completionTokens": 9900
+    }
+  },
+  "kept": 7,
+  "keptByLevel": {
+    "1": 2,
+    "2": 0,
+    "3": 3,
+    "4": 0,
+    "5": 2,
+    "6": 0
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 1,
+      "stem": "What was the main challenge faced by India after Independence according to the passage?",
+      "ms": {
+        "draft": 4811,
+        "critique": 5732
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for the creation of new states in India, according to the passage?",
+      "ms": {
+        "draft": 4811,
+        "critique": 6070
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the passage suggest about the Indian approach to managing regional aspirations?",
+      "ms": {
+        "draft": 4811,
+        "critique": 8167
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage imply about regional aspirations in India?",
+      "ms": {
+        "draft": 4811,
+        "critique": 6045,
+        "solver": 15709,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the term 'Kashmiriyat' refer to in the context of Jammu and Kashmir?",
+      "ms": {
+        "draft": 4321,
+        "critique": 10037
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What does the passage imply about the relationship between regionalism and nationalism in India?",
+      "ms": {
+        "draft": 4811,
+        "critique": 8881,
+        "solver": 17262,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the long-term success of balancing regional aspirations and national unity?",
+      "ms": {
+        "draft": 4811,
+        "critique": 8384,
+        "solver": 15872,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How did the Dravidian movement achieve political influence in Tamil Nadu?",
+      "ms": {
+        "draft": 4321,
+        "critique": 7950
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Why did the Dravidian movement initially focus on Tamil Nadu rather than the whole of South India?",
+      "ms": {
+        "draft": 4321,
+        "critique": 8404,
+        "solver": 1524
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the success of the anti-Hindi agitation of 1965 indicate about regional movements in India?",
+      "ms": {
+        "draft": 4321,
+        "critique": 9802
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main reason for the political instability in Jammu and Kashmir?",
+      "ms": {
+        "draft": 4321,
+        "critique": 7467
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "In which year did Sheikh Abdullah become the Chief Minister of Jammu and Kashmir?",
+      "ms": {
+        "draft": 13140,
+        "critique": 8045,
+        "solver": 1667
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which political party exercised influence on the politics of Jammu and Kashmir between 1953 and 1974?",
+      "ms": {
+        "draft": 13140,
+        "critique": 7615,
+        "solver": 1120
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What was the main issue of conflict between India and Pakistan regarding Jammu and Kashmir?",
+      "ms": {
+        "draft": 13140,
+        "critique": 7807,
+        "solver": 1964,
+        "form": 3049
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the outcome of the 1987 Assembly election in Kashmir, according to the passage?",
+      "ms": {
+        "draft": 7640,
+        "critique": 9971,
+        "solver": 1594
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the main reason for the escalation of violence in Punjab after the Akali Dal's movement turned into an armed insurgency?",
+      "ms": {
+        "draft": 5019,
+        "critique": 6180
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the political dynamics in Jammu and Kashmir after the 2002 elections?",
+      "ms": {
+        "draft": 7640,
+        "critique": 7401,
+        "solver": 17415,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the main objective of the Akali Dal's movement in the 1980s?",
+      "ms": {
+        "draft": 5019,
+        "critique": 7863
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What was the outcome of the Rajiv Gandhi - Longowal Accord in 1985?",
+      "ms": {
+        "draft": 5019,
+        "critique": 8593,
+        "solver": 13261,
+        "form": 3812
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why did the passage mention the delay in restoring normalcy and punishing the perpetrators of the anti-Sikh violence?",
+      "ms": {
+        "draft": 5019,
+        "critique": 7254,
+        "solver": 14820,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the view on regional movements?",
+      "ms": {
+        "draft": 4073,
+        "critique": 6336,
+        "solver": 1475,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about the Assam movement?",
+      "ms": {
+        "draft": 4073,
+        "critique": 7287,
+        "solver": 2584,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What does the poet in the passage emphasize in the song?",
+      "ms": {
+        "draft": 4073,
+        "critique": 9559,
+        "solver": 1587,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage say about the principle of unity with diversity?",
+      "ms": {
+        "draft": 4073,
+        "critique": 6656,
+        "solver": 14904,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Why were some states of the North-East created separately from Assam according to the passage?",
+      "ms": {
+        "draft": 4073,
+        "critique": 8551,
+        "solver": 14726,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Based on the passage, what does the poet's reference to 'seven sisters' suggest about the relationship between the states of the North-East?",
+      "ms": {
+        "draft": 4073,
+        "critique": 8626,
+        "solver": 27281,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a reason for regional aspirations in India?",
+      "ms": {
+        "draft": 4816,
+        "critique": 7271,
+        "solver": 26994
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which of the following is a key reason for the success of Indian politics in dealing with regional aspirations?",
+      "ms": {
+        "draft": 4816,
+        "critique": 10218,
+        "solver": 1062,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why does the passage suggest that the Indian Constitution is farsighted in dealing with regional aspirations?",
+      "ms": {
+        "draft": 4816,
+        "critique": 8838,
+        "solver": 2172,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which agreement in Mizoram led to it being granted full-fledged statehood?",
+      "ms": {
+        "draft": 4886,
+        "critique": 10235
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Who was the leader of the Naga National Council that declared independence from India in 1951?",
+      "ms": {
+        "draft": 4886,
+        "critique": 9536
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "What was the outcome of the opinion poll held in Goa in 1967?",
+      "ms": {
+        "draft": 4816,
+        "critique": 10324,
+        "solver": 15163,
+        "form": 3975
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following best explains why the North-East region of India is politically complex?",
+      "ms": {
+        "draft": 26137,
+        "critique": 7525,
+        "solver": 2198,
+        "form": 4570
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "What does the passage suggest about the importance of federal provisions in managing the political demands of the North-East region?",
+      "ms": {
+        "draft": 26137,
+        "critique": 7339,
+        "solver": 2279,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What was the main reason for the conflict between the Akali Dal and the government in Punjab?",
+      "ms": {
+        "draft": 5360,
+        "critique": 8297,
+        "solver": 2213
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains the reason for the political crisis in Kashmir after the 1987 Assembly elections?",
+      "ms": {
+        "draft": 5989,
+        "critique": 9332,
+        "solver": 16875
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following statements is correct about the political situation in Jammu and Kashmir after 1948?",
+      "ms": {
+        "draft": 7488,
+        "critique": 8799,
+        "solver": 14679,
+        "form": 1347
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which movement in Assam was against illegal migration and sought to deport outsiders?",
+      "ms": {
+        "draft": 4886,
+        "critique": 7457,
+        "solver": 18693,
+        "form": 3693,
+        "translation": 29313
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Who was the leader of Jammu and Kashmir after the 1947 conflict?",
+      "ms": {
+        "draft": 13140,
+        "critique": 7812,
+        "solver": 1346,
+        "form": 3837,
+        "translation": 51314
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is an example of a region in India that has a special provision in the Constitution due to its unique identity?",
+      "ms": {
+        "draft": 4816,
+        "critique": 12391,
+        "solver": 2800,
+        "form": 6077,
+        "translation": 51665
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What was the primary aim of the Dravidian movement in Tamil Nadu?",
+      "ms": {
+        "draft": 4321,
+        "critique": 8373,
+        "solver": 17905,
+        "form": 5171,
+        "translation": 75679
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following best describes the reason for the political crisis in Kashmir in the late 1980s?",
+      "ms": {
+        "draft": 7640,
+        "critique": 8038,
+        "solver": 17580,
+        "form": 5638,
+        "translation": 72576
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following was a major factor in the formation of the Mizo National Front (MNF)?",
+      "ms": {
+        "draft": 26137,
+        "critique": 10022,
+        "solver": 1602,
+        "form": 5043,
+        "translation": 60230
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "What was the significance of the Anandpur Sahib Resolution passed in 1973?",
+      "ms": {
+        "draft": 7640,
+        "critique": 8968,
+        "solver": 19145,
+        "form": 3321,
+        "translation": 65422
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "Who was the first Chief Minister of Jammu and Kashmir after the 1965 constitutional change?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What was the purpose of the United Nations resolution dated 21 April 1948 regarding Kashmir?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What was the main challenge faced by India after Independence according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the main reason for the creation of new states in India, according to the passage?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What does the passage suggest about the Indian approach to managing regional aspirations?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage imply about regional aspirations in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What does the term 'Kashmiriyat' refer to in the context of Jammu and Kashmir?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What does the passage imply about the relationship between regionalism and nationalism in India?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers); distractor 1's reason is not a one-line misconception (\"The passage explicitly says that regional aspirations can be…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the long-term success of balancing regional aspirations and national unity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"The passage explicitly states that the challenge of diversit…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "How did the Dravidian movement achieve political influence in Tamil Nadu?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Why did the Dravidian movement initially focus on Tamil Nadu rather than the whole of South India?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "What does the success of the anti-Hindi agitation of 1965 indicate about regional movements in India?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What was the main reason for the political instability in Jammu and Kashmir?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "In which year did Sheikh Abdullah become the Chief Minister of Jammu and Kashmir?",
+      "reason": "the solver picked option 0 3 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which political party exercised influence on the politics of Jammu and Kashmir between 1953 and 1974?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What was the main issue of conflict between India and Pakistan regarding Jammu and Kashmir?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"Misinterprets the passage as discussing economic issues…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What was the outcome of the 1987 Assembly election in Kashmir, according to the passage?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "What was the main reason for the escalation of violence in Punjab after the Akali Dal's movement turned into an armed insurgency?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the political dynamics in Jammu and Kashmir after the 2002 elections?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What was the main objective of the Akali Dal's movement in the 1980s?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What was the outcome of the Rajiv Gandhi - Longowal Accord in 1985?",
+      "reason": "options 2 and 3 say the same thing (\"It transferred Chandigarh to Punjab and set up a commission for the border dispute\" / \"It transferred Chandigarh to Haryana and set up a commission for the border dispute\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why did the passage mention the delay in restoring normalcy and punishing the perpetrators of the anti-Sikh violence?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "What is the main lesson about responding to regional aspirations, according to the passage?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What was the name of the political party formed by the AASU and the Asom Gana Sangram Parishad after the Assam Accord?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 4,
+      "stem": "What was the outcome of the 'Operation Blue Star' carried out by the Indian government?",
+      "reason": "level 4 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the view on regional movements?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 1 and 2 say the same thing (\"Regional movements are not always separatist\" / \"Regional movements are always separatist\"); distractor 0's reason is not a one-line misconception (\"misinterprets the passage as stating that all regional movem…\"); distractor 2's reason is not a one-line misconception (\"overlooks the word 'need not' in the passage, which indicate…\"); distractor 3's reason is not a one-line misconception (\"misrepresents the passage as stating that all regional movem…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage suggest about the Assam movement?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"confuses the movement with separatist goals and not cultural…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What does the poet in the passage emphasize in the song?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"misinterprets the passage as emphasizing separation, while t…\"); distractor 1's reason is not a one-line misconception (\"is not mentioned in the passage as the main focus of the son…\"); distractor 2's reason is not a one-line misconception (\"refers to cultural differences, which are not the main point…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What does the passage say about the principle of unity with diversity?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"misinterprets the passage as not supporting the idea of unit…\"); distractor 3's reason is not a one-line misconception (\"fails to recognize that the passage explicitly states that r…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Why were some states of the North-East created separately from Assam according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"does not align with the passage, which does not state that c…\"); distractor 3's reason is not a one-line misconception (\"is not mentioned in the passage as a reason for the creation…\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Based on the passage, what does the poet's reference to 'seven sisters' suggest about the relationship between the states of the North-East?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 are the same (\"They are all part of a single, unified state\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a reason for regional aspirations in India?",
+      "reason": "distractors 0, 1, 2 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which of the following is a key reason for the success of Indian politics in dealing with regional aspirations?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Chooses a method that the passage explicitly rejects…\"); distractor 1's reason is not a one-line misconception (\"Chooses a method that the passage does not support…\"); distractor 3's reason is not a one-line misconception (\"Chooses a method that the passage states is ineffective…\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Why does the passage suggest that the Indian Constitution is farsighted in dealing with regional aspirations?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Chooses a method the passage explicitly rejects…\"); distractor 1's reason is not a one-line misconception (\"Chooses a result the passage does not support…\"); distractor 3's reason is not a one-line misconception (\"Chooses a negative outcome not mentioned in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which agreement in Mizoram led to it being granted full-fledged statehood?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Who was the leader of the Naga National Council that declared independence from India in 1951?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "What was the outcome of the opinion poll held in Goa in 1967?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Chooses an unrealistic outcome not mentioned in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following best explains why the North-East region of India is politically complex?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's content about foreign influence …\")"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "What does the passage suggest about the importance of federal provisions in managing the political demands of the North-East region?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's message about the central gover…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "What was the main reason for the conflict between the Akali Dal and the government in Punjab?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "Which of the following best explains the reason for the political crisis in Kashmir after the 1987 Assembly elections?",
+      "reason": "distractor 0 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "Which of the following statements is correct about the political situation in Jammu and Kashmir after 1948?",
+      "reason": "options 1 and 2 are the same (\"The state was ruled by the National Conference party without any opposition.\")"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Political Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

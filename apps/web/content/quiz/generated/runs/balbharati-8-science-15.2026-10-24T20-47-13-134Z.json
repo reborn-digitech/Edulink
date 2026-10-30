@@ -1,0 +1,603 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T20:47:13.134Z",
+  "finishedAt": "2026-10-24T20:53:22.043Z",
+  "seconds": 369,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 15 — Sound",
+    "edition": "First Edition 2018",
+    "chunks": 7,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[INJSO 2021 — question paper]\n20. (6 marks) Smartphones can be used to perform simple experiments related to sound. There are various\napps which record the intensity of an audio signal. An app (WaveEditor TM here) displays the audio signal\nin the form of a wave, whose amplitude is proportional to the loudness of the audio signal.\nTwo students Fatima (F) and Bharat (B) conduct a simple experiment using smartphones. In an open\nfield, both place their smartphones at a distance d from each other as shown in the figure. They stand\nnext to their smartphones, and clap one after another. The audio signals from the claps are digitally\nrecorded by WaveEditor TM and the output produced on their smartphone screens are shown next to ",
+      "[INJSO 2022 — solutions or answer key]\n6. A. frequency of sound waves will not change due to motion of air.",
+      "[INJSO 2022 — question paper]\n6. On a windy day, standing on your balcony, you hear the whistle of a stationary train at a distance. Which\namong the velocity and frequency of the sound is/are affected by the wind?\nA. only velocity B. only frequency\nB. both velocity and frequency D. neither velocity nor frequency",
+      "[CBSE Class X Science, sample question paper, 2026-27]\nthe inference he draws on the basis of his experiment be correct? Justify\nyour answer."
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 101950,
+      "in": 33,
+      "out": 29,
+      "rejects": 4,
+      "promptTokens": 24146,
+      "completionTokens": 6129
+    },
+    "critique": {
+      "calls": 34,
+      "ms": 186895,
+      "in": 29,
+      "out": 22,
+      "rejects": 7,
+      "promptTokens": 14270,
+      "completionTokens": 5702
+    },
+    "solver": {
+      "calls": 144,
+      "ms": 67039,
+      "in": 22,
+      "out": 20,
+      "rejects": 2,
+      "promptTokens": 23398,
+      "completionTokens": 1404
+    },
+    "form": {
+      "calls": 12,
+      "ms": 43959,
+      "in": 20,
+      "out": 15,
+      "rejects": 5,
+      "promptTokens": 4727,
+      "completionTokens": 1078
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 15,
+      "out": 15,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 74,
+      "ms": 11383,
+      "in": 15,
+      "out": 10,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 43,
+      "ms": 411462,
+      "in": 20,
+      "out": 20,
+      "rejects": 0,
+      "promptTokens": 25428,
+      "completionTokens": 13026
+    }
+  },
+  "kept": 10,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 2,
+    "4": 1,
+    "5": 3,
+    "6": 3
+  },
+  "flagged": 7,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "What happens to the air molecules when the prongs of a tuning fork move apart?",
+      "ms": {
+        "draft": 4021,
+        "critique": 5006,
+        "solver": 2134
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a tuning fork vibrates 440 times per second, what is its frequency?",
+      "ms": {
+        "draft": 4021,
+        "critique": 4578,
+        "solver": 1618,
+        "form": 3049
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does the diagram in Figure 15.2 (b) represent?",
+      "ms": {
+        "draft": 4021,
+        "critique": 5151,
+        "solver": 1625,
+        "form": 3489
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is true about the sound produced by a flute when a musician changes the length of the air column?",
+      "ms": {
+        "draft": 3249,
+        "critique": 5695
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What determines the frequency of the sound produced when a glass cup is struck in the Jaltarang experiment?",
+      "ms": {
+        "draft": 3249,
+        "critique": 7748,
+        "solver": 12415
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the Jaltarang experiment, why is the sound produced by each glass cup different?",
+      "ms": {
+        "draft": 3249,
+        "critique": 5624
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In which part of the human body are the vocal cords located?",
+      "ms": {
+        "draft": 3249,
+        "critique": 5376
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a student uses a smartphone app to measure the frequency of sound from a glass cup in the Jaltarang experiment, what would they observe if they fill the cup with more water?",
+      "ms": {
+        "draft": 3249,
+        "critique": 5245,
+        "solver": 11202,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what happens in a loudspeaker when it produces sound?",
+      "ms": {
+        "draft": 3291,
+        "critique": 5649,
+        "solver": 1563,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main factor that determines the frequency of sound produced when a glass cup is struck in the Jaltarang experiment?",
+      "ms": {
+        "draft": 3291,
+        "critique": 6088,
+        "solver": 10726,
+        "form": 3385
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main cause of sound production according to the passage?",
+      "ms": {
+        "draft": 3125,
+        "critique": 6056
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens to the air when the prongs of a tuning fork move away from each other?",
+      "ms": {
+        "draft": 3125,
+        "critique": 6910
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, what can we infer about the relationship between the frequency of a tuning fork and its vibrations?",
+      "ms": {
+        "draft": 3125,
+        "critique": 5712
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a tuning fork vibrates 512 times per second, how many cycles of compression and rarefaction will it produce in one second?",
+      "ms": {
+        "draft": 3125,
+        "critique": 4708
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the unit of frequency of a sound wave?",
+      "ms": {
+        "draft": 4021,
+        "critique": 4555,
+        "solver": 748,
+        "form": 3472
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "ms": {
+        "draft": 2676,
+        "critique": 6559,
+        "solver": 1687,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "In the Jaltarang experiment, how does changing the water level in the glass cups affect the sound produced?",
+      "ms": {
+        "draft": 3249,
+        "critique": 5665,
+        "solver": 12053,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "ms": {
+        "draft": 2221,
+        "critique": 6088,
+        "solver": 1484,
+        "form": 3471
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with lower pressure and density?",
+      "ms": {
+        "draft": 2221,
+        "critique": 5935,
+        "solver": 982,
+        "form": 4669
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term for the number of compressions and rarefactions produced per second in a sound wave?",
+      "ms": {
+        "draft": 2676,
+        "critique": 4366,
+        "solver": 1267,
+        "form": 0,
+        "translation": 35433
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "In which way do musical instruments like the flute and the sitar produce different sound notes?",
+      "ms": {
+        "draft": 3291,
+        "critique": 5151,
+        "solver": 1536,
+        "form": 3201,
+        "translation": 40952
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A student claps in an open field and records the sound wave on a smartphone. What does the amplitude of the wave represent?",
+      "ms": {
+        "draft": 2676,
+        "critique": 5602,
+        "solver": 1172,
+        "form": 0,
+        "translation": 37714
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an experiment, a student uses a tuning fork and observes that the sound produced travels through a medium. Which of the following is necessary for sound to propagate?",
+      "ms": {
+        "draft": 2676,
+        "critique": 4691,
+        "solver": 1853,
+        "form": 0,
+        "translation": 37439
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a tuning fork is placed in a vacuum, what will happen to the sound it produces?",
+      "ms": {
+        "draft": 4021,
+        "critique": 4839,
+        "solver": 842,
+        "form": 2723,
+        "translation": 38732
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "If a student measures the sound level of a loudspeaker from different distances, what is the expected relationship between distance and sound level?",
+      "ms": {
+        "draft": 3291,
+        "critique": 6066,
+        "solver": 1676,
+        "form": 2454,
+        "translation": 43166
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 5,
+      "stem": "Two students conduct an experiment where they clap in an open field and record the sound waves on their smartphones. If the wind is blowing, how will it affect the sound wave recorded?",
+      "ms": {
+        "draft": 2676,
+        "critique": 5586,
+        "solver": 1334,
+        "form": 1,
+        "translation": 40756
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why does the frequency of a tuning fork not change even if it is struck harder?",
+      "ms": {
+        "draft": 4021,
+        "critique": 5694,
+        "solver": 15604,
+        "form": 2480,
+        "translation": 48467
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "How does the human larynx produce different sounds?",
+      "ms": {
+        "draft": 3291,
+        "critique": 6341,
+        "solver": 1038,
+        "form": 2953,
+        "translation": 40793
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "A student uses a tuning fork and observes that the sound produced can be heard through a string. What is the reason behind this phenomenon?",
+      "ms": {
+        "draft": 2676,
+        "critique": 4810,
+        "solver": 929,
+        "form": 0,
+        "translation": 44449
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What happens to the air molecules when the prongs of a tuning fork move apart?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a tuning fork vibrates 440 times per second, what is its frequency?",
+      "reason": "checkExpr \"440\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "What does the diagram in Figure 15.2 (b) represent?",
+      "reason": "figure: figure spec refused: spec.texts.0.label: label key: letters, digits, _ and ', or a number"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following is true about the sound produced by a flute when a musician changes the length of the air column?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What determines the frequency of the sound produced when a glass cup is struck in the Jaltarang experiment?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "In the Jaltarang experiment, why is the sound produced by each glass cup different?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "In which part of the human body are the vocal cords located?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "If a student uses a smartphone app to measure the frequency of sound from a glass cup in the Jaltarang experiment, what would they observe if they fill the cup with more water?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the term for the medium required for the generation of sound?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the frequency of a sound wave if it produces 1000 compressions and rarefactions per second?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What determines the different sound notes produced by various instruments?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What type of energy is converted into sound energy in a loudspeaker?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, what happens in a loudspeaker when it produces sound?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main factor that determines the frequency of sound produced when a glass cup is struck in the Jaltarang experiment?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "What is the main cause of sound production according to the passage?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What happens to the air when the prongs of a tuning fork move away from each other?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what can we infer about the relationship between the frequency of a tuning fork and its vibrations?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If a tuning fork vibrates 512 times per second, how many cycles of compression and rarefaction will it produce in one second?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the unit of frequency of a sound wave?",
+      "reason": "near-duplicate of served question cmvj9fojy0g28gpfh4a27zut0 (cosine 0.908 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "reason": "near-duplicate of served question cmvf42blf032dgod809nefod1 (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "In the Jaltarang experiment, how does changing the water level in the glass cups affect the sound produced?",
+      "reason": "near-duplicate of served question cmvf42bm1033jgod82p4i3d42 (cosine 0.912 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with higher pressure and density?",
+      "reason": "near-duplicate of served question cmvf42blf032dgod809nefod1 (cosine 0.937 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the term for the region in a sound wave with lower pressure and density?",
+      "reason": "near-duplicate of served question cmvf42bln032pgod8dx393ak6 (cosine 0.938 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

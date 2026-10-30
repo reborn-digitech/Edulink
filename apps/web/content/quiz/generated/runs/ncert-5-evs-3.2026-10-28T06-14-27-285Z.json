@@ -1,0 +1,502 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T06:14:27.285Z",
+  "finishedAt": "2026-10-28T06:18:01.488Z",
+  "seconds": 214,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap103.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 3 — From Tasting to Digesting",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 8,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 69436,
+      "in": 23,
+      "out": 22,
+      "rejects": 1,
+      "promptTokens": 21507,
+      "completionTokens": 4209
+    },
+    "critique": {
+      "calls": 31,
+      "ms": 176920,
+      "in": 22,
+      "out": 21,
+      "rejects": 1,
+      "promptTokens": 12843,
+      "completionTokens": 5330
+    },
+    "solver": {
+      "calls": 158,
+      "ms": 80650,
+      "in": 21,
+      "out": 15,
+      "rejects": 6,
+      "promptTokens": 30368,
+      "completionTokens": 1782
+    },
+    "form": {
+      "calls": 11,
+      "ms": 27097,
+      "in": 15,
+      "out": 5,
+      "rejects": 10,
+      "promptTokens": 2537,
+      "completionTokens": 738
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 5,
+      "out": 5,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 24,
+      "ms": 3512,
+      "in": 5,
+      "out": 2,
+      "rejects": 3,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 11,
+      "ms": 65564,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 5841,
+      "completionTokens": 3081
+    }
+  },
+  "kept": 2,
+  "keptByLevel": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 2,
+      "stem": "Why did Jhumpa guess the jaggery easily?",
+      "ms": {
+        "draft": 3154,
+        "critique": 6193,
+        "solver": 1319
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen if you put a few drops of lemon juice on your tongue with your eyes closed?",
+      "ms": {
+        "draft": 3154,
+        "critique": 6503,
+        "solver": 11833,
+        "form": 3471
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Nitu get confused about the glucose drip?",
+      "ms": {
+        "draft": 2849,
+        "critique": 5250,
+        "solver": 1677
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why was Nitu given a sugar and salt solution?",
+      "ms": {
+        "draft": 2849,
+        "critique": 8041,
+        "solver": 11044
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "How did Jhumpa identify the fried fish without seeing it?",
+      "ms": {
+        "draft": 3154,
+        "critique": 7057,
+        "solver": 16436,
+        "form": 1735
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What did Dr. Beaumont discover about the digestion of food in the stomach?",
+      "ms": {
+        "draft": 2849,
+        "critique": 5084,
+        "solver": 1597,
+        "form": 3543
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Why does Rashmi not get enough food to eat?",
+      "ms": {
+        "draft": 3333,
+        "critique": 5993,
+        "solver": 1519,
+        "form": 2756
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What does the passage suggest about Kailash's eating habits?",
+      "ms": {
+        "draft": 3333,
+        "critique": 6760,
+        "solver": 1628
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the table, which food item took the least time to digest in the stomach?",
+      "ms": {
+        "draft": 2849,
+        "critique": 5550,
+        "solver": 14666,
+        "form": 2750
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the meaning of 'proper' food according to the passage?",
+      "ms": {
+        "draft": 3333,
+        "critique": 5604,
+        "solver": 13116,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, which child does not get enough food to grow and develop properly?",
+      "ms": {
+        "draft": 2471,
+        "critique": 4359,
+        "solver": 1238,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, what is the right of every child?",
+      "ms": {
+        "draft": 2471,
+        "critique": 4980,
+        "solver": 1423
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "According to the passage, why could Rashmi eat only one roti in a day?",
+      "ms": {
+        "draft": 2471,
+        "critique": 4999,
+        "solver": 10640,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child does not get enough food for a long time, what health problem might they face?",
+      "ms": {
+        "draft": 2471,
+        "critique": 7315,
+        "solver": 941,
+        "form": 3548
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "When Jhumpa heard the word 'imli', her mouth started watering. When does your mouth water?",
+      "ms": {
+        "draft": 3843,
+        "critique": 6123
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Jhumpa could tell the taste of the food even when her nose was closed. What does this suggest about the sense of taste?",
+      "ms": {
+        "draft": 3843,
+        "critique": 5864,
+        "solver": 7185
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Jhumpa was able to guess the fried fish even before tasting it. How did she make out the fried fish?",
+      "ms": {
+        "draft": 3843,
+        "critique": 6459,
+        "solver": 7239,
+        "form": 721
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Nitu's father give her when she was sick?",
+      "ms": {
+        "draft": 2671,
+        "critique": 6911,
+        "solver": 1488,
+        "form": 3042
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person is vomiting and has loose motions, what is the best way to help them?",
+      "ms": {
+        "draft": 2671,
+        "critique": 5358,
+        "solver": 1660,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why did Nitu's teacher give glucose to the girls during games?",
+      "ms": {
+        "draft": 2671,
+        "critique": 4981,
+        "solver": 1602,
+        "form": 2227
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Jhumpa say when she tasted the lemon juice?",
+      "ms": {
+        "draft": 3154,
+        "critique": 5650,
+        "solver": 1339,
+        "form": 4551,
+        "translation": 33248
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a child does not get enough food for a long time, what health problems might they face?",
+      "ms": {
+        "draft": 3333,
+        "critique": 7440,
+        "solver": 8797,
+        "form": 899,
+        "translation": 27181
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did Jhumpa guess the jaggery easily?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What would happen if you put a few drops of lemon juice on your tongue with your eyes closed?",
+      "reason": "options 0 and 1 say the same thing (\"You would be able to taste it\" / \"You would not be able to taste it\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Why did Nitu get confused about the glucose drip?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Why was Nitu given a sugar and salt solution?",
+      "reason": "after redrafting distractors 2, 3: the critic finds option 2 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "How did Jhumpa identify the fried fish without seeing it?",
+      "reason": "options 1 and 2 are the same (\"By its sound\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What did Dr. Beaumont discover about the digestion of food in the stomach?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Assumes the rate is the same, which is not mentioned in the …\")"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Why does Rashmi not get enough food to eat?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"contradicts the passage which says she is not from a rich fa…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What does the passage suggest about Kailash's eating habits?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the table, which food item took the least time to digest in the stomach?",
+      "reason": "options mix numbers and words (2 of 4 are numbers); checkExpr \"1.5\" is a bare literal"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the meaning of 'proper' food according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "draft",
+      "level": 1,
+      "stem": "What is the main purpose of the sugar and salt solution given to Nitu?",
+      "reason": "level 1 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, which child does not get enough food to grow and develop properly?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; option 3 is a catch-all (\"Neither of them\"); distractor 2's reason is not a one-line misconception (\"Misunderstands the passage's comparison between the two chil…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "According to the passage, what is the right of every child?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "According to the passage, why could Rashmi eat only one roti in a day?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 0's reason is not a one-line misconception (\"Assumes Rashmi disliked roti, but the passage says she had n…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a child does not get enough food for a long time, what health problem might they face?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"Misunderstands the passage's description of health…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "When Jhumpa heard the word 'imli', her mouth started watering. When does your mouth water?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Jhumpa could tell the taste of the food even when her nose was closed. What does this suggest about the sense of taste?",
+      "reason": "after redrafting distractor 0: option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "Jhumpa was able to guess the fried fish even before tasting it. How did she make out the fried fish?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"The passage does not mention any sound related to the fish…\"); distractor 3's reason is not a one-line misconception (\"The passage does not mention the color of the fish as a clue…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What did Nitu's father give her when she was sick?",
+      "reason": "near-duplicate of served question cmvh7yqzz07fggpfh85anbahp (cosine 0.921 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a person is vomiting and has loose motions, what is the best way to help them?",
+      "reason": "near-duplicate of served question cmvh7yr0607g4gpfh08yu01n6 (cosine 0.909 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why did Nitu's teacher give glucose to the girls during games?",
+      "reason": "near-duplicate of served question cmvh7yr0707gagpfhqo6nqlmw (cosine 0.919 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

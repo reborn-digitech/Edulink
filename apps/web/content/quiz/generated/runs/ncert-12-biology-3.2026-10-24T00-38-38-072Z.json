@@ -1,0 +1,801 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T00:38:38.072Z",
+  "finishedAt": "2026-10-24T00:47:28.287Z",
+  "seconds": 530,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Biology",
+    "bookCode": "lebo1",
+    "document": "ncert/12/biology/lebo103.pdf",
+    "classLevel": 12,
+    "subject": "Biology",
+    "chapter": "Chapter 3 — Reproductive Health",
+    "edition": "Reprint 2026-27",
+    "chunks": 14,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Biology, marking scheme, 2025-26]\n22. (i) Condoms; these act by blocking the entry of microbes and sperms in the 3\ncervix.\n(ii) Surgical methods such as Tubectomy by her or vasectomy by her\nhusband as these are highly effective but irreversible methods.\n(iii) Oral pills containing progestogens or progestogen – estrogen combination\nare very effective and can be repeated as long as the female derives to\nprevent conception. (1 x 3 =3)",
+      "[CBSE Class XII Biology, sample question paper, 2025-26]\n22. Suggest a suitable contraceptive device for the following cases with 3\njustification.\n(i) Mohini does not want to take the risk of conception and sexually\ntransmitted infections (STIs).\n(ii) Lalita has two children and does not want any more children.\n(iii) Geeta wants a contraceptive that she can take till she wants to\navoid conception and can resume back to her fertile life without the\nintervention of the doctor. Also, it should have a lower failure rate.",
+      "[CBSE Class XII Biology, marking scheme, 2022-23]\n17. (a) A –Pituitary gland; B: Ovary(½ x 2 =1 Mark) 2\n(b) Endometrium of the uterus regenerates through proliferation.\n(1 Mark)",
+      "[CBSE Class XII Biology, marking scheme, 2026-27]\n2. A. Blockage of sperm transport into the ejaculatory duct and urethra 1"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 9,
+      "ms": 148081,
+      "in": 42,
+      "out": 42,
+      "rejects": 0,
+      "promptTokens": 35468,
+      "completionTokens": 8131
+    },
+    "critique": {
+      "calls": 57,
+      "ms": 379772,
+      "in": 42,
+      "out": 34,
+      "rejects": 8,
+      "promptTokens": 23613,
+      "completionTokens": 9769
+    },
+    "solver": {
+      "calls": 275,
+      "ms": 146174,
+      "in": 34,
+      "out": 27,
+      "rejects": 7,
+      "promptTokens": 49894,
+      "completionTokens": 3019
+    },
+    "form": {
+      "calls": 16,
+      "ms": 49102,
+      "in": 27,
+      "out": 11,
+      "rejects": 16,
+      "promptTokens": 5699,
+      "completionTokens": 1233
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 30,
+      "ms": 5861,
+      "in": 11,
+      "out": 11,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 492044,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 25868,
+      "completionTokens": 13788
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 4
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "Which of the following contraceptive methods is described as highly effective but irreversible?",
+      "ms": {
+        "draft": 3337,
+        "critique": 6339
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which organization defines reproductive health as a total well-being in all aspects of reproduction?",
+      "ms": {
+        "draft": 3337,
+        "critique": 6867
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a reason for implementing reproductive health programs?",
+      "ms": {
+        "draft": 3337,
+        "critique": 8434
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following contraceptive methods is described as having a lower failure rate and being reversible?",
+      "ms": {
+        "draft": 3337,
+        "critique": 8423
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a method to achieve reproductive health according to the passage?",
+      "ms": {
+        "draft": 3337,
+        "critique": 7167,
+        "solver": 15065,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method of contraception that prevents the meeting of ovum and sperms?",
+      "ms": {
+        "draft": 3705,
+        "critique": 6943,
+        "solver": 12261,
+        "form": 3369
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which contraceptive method is described as increasing the phagocytosis of sperms and suppressing their motility?",
+      "ms": {
+        "draft": 3705,
+        "critique": 6391
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following contraceptive methods is described as being highly effective but irreversible?",
+      "ms": {
+        "draft": 3705,
+        "critique": 8012,
+        "solver": 11970,
+        "form": 2658
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a couple wants to avoid pregnancy and also protect against sexually transmitted infections, which contraceptive method would be most suitable?",
+      "ms": {
+        "draft": 3705,
+        "critique": 6503,
+        "solver": 10827,
+        "form": 2622
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A woman wants a contraceptive method that she can take until she decides to stop, and it should not require a doctor's intervention. Which of the following would best suit her needs?",
+      "ms": {
+        "draft": 3705,
+        "critique": 7647
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "A couple is looking for a contraceptive method that is reversible, has a low failure rate, and can be used without medical assistance. Which of the following would be the most suitable option?",
+      "ms": {
+        "draft": 3705,
+        "critique": 7660,
+        "solver": 16478,
+        "form": 2434
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "According to the passage, which method of contraception blocks gamete transport and is considered a terminal method?",
+      "ms": {
+        "draft": 3498,
+        "critique": 7624,
+        "solver": 17632,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which contraceptive method is described as being ideal for females who want to delay pregnancy and/or space children?",
+      "ms": {
+        "draft": 3498,
+        "critique": 6349,
+        "solver": 1750
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which contraceptive method is suitable for a woman who wants to avoid conception for a long time and can resume her fertility later?",
+      "ms": {
+        "draft": 3159,
+        "critique": 8002
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a sexually transmitted infection (STI)?",
+      "ms": {
+        "draft": 3159,
+        "critique": 7011,
+        "solver": 12239,
+        "form": 2497
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for the high incidence of STIs among people aged 15-24 years?",
+      "ms": {
+        "draft": 3159,
+        "critique": 7322,
+        "solver": 12096,
+        "form": 3572
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a woman is infected with HIV, what is the most likely way the infection could spread to her child?",
+      "ms": {
+        "draft": 3159,
+        "critique": 6732,
+        "solver": 1379
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method of contraception mentioned in the passage?",
+      "ms": {
+        "draft": 2843,
+        "critique": 6651,
+        "solver": 793,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A couple wants a contraceptive that can be used until they want to avoid conception and can be resumed without doctor intervention. Which method is most suitable?",
+      "ms": {
+        "draft": 3184,
+        "critique": 5310,
+        "solver": 1466
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A person is unable to conceive after two years of unprotected cohabitation. What is the term used to describe this condition?",
+      "ms": {
+        "draft": 3184,
+        "critique": 8258,
+        "solver": 1359,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which method of contraception is suitable for a person who wants to avoid conception and also has a lower failure rate?",
+      "ms": {
+        "draft": 3184,
+        "critique": 5690,
+        "solver": 14799,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A woman wants a contraceptive that prevents STIs and is easily reversible. Which is the best option?",
+      "ms": {
+        "draft": 3184,
+        "critique": 8354,
+        "solver": 15305,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a reversible contraceptive method that can be stopped at any time without affecting fertility?",
+      "ms": {
+        "draft": 2833,
+        "critique": 7743,
+        "solver": 1606
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A couple wants a contraceptive method that allows them to have children in the future and has a low failure rate. Which method would be most suitable?",
+      "ms": {
+        "draft": 2833,
+        "critique": 6507,
+        "solver": 1257
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which of the following is a method used to treat infertility caused by low sperm count in the male partner?",
+      "ms": {
+        "draft": 2833,
+        "critique": 7823,
+        "solver": 1795
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main purpose of contraceptive pills according to the passage?",
+      "ms": {
+        "draft": 3435,
+        "critique": 6843,
+        "solver": 2007,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which contraceptive method is described as a 'once a week' pill with very few side effects?",
+      "ms": {
+        "draft": 3435,
+        "critique": 5361,
+        "solver": 1281,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a method that allows the transfer of a donor's ovum into the fallopian tube of another woman?",
+      "ms": {
+        "draft": 2833,
+        "critique": 7429,
+        "solver": 14916,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which contraceptive method is described as being effective only up to six months after childbirth?",
+      "ms": {
+        "draft": 6398,
+        "critique": 6446
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which contraceptive method is described as a thin rubber/latex sheath used to cover the penis in the male or vagina and cervix in the female?",
+      "ms": {
+        "draft": 6398,
+        "critique": 7478,
+        "solver": 10126
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A couple wants to prevent conception and also protect against sexually transmitted infections. Which method would be most suitable for them?",
+      "ms": {
+        "draft": 6398,
+        "critique": 5899,
+        "solver": 8467,
+        "form": 1072
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method to prevent the entry of microbes and sperms into the cervix?",
+      "ms": {
+        "draft": 3184,
+        "critique": 4720,
+        "solver": 1503,
+        "form": 0,
+        "translation": 32309
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which of the following is a method of contraception that involves the use of implants?",
+      "ms": {
+        "draft": 3435,
+        "critique": 5645,
+        "solver": 1503,
+        "form": 4398,
+        "translation": 39779
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which contraceptive method is described as a 'once a week' pill with very few side effects?",
+      "ms": {
+        "draft": 3498,
+        "critique": 6289,
+        "solver": 2189,
+        "form": 2658,
+        "translation": 49729
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following contraceptive methods is described as highly effective but irreversible?",
+      "ms": {
+        "draft": 3435,
+        "critique": 6823,
+        "solver": 2054,
+        "form": 3928,
+        "translation": 41917
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "A female wants a contraceptive that she can take till she wants to avoid conception and can resume her fertile life without a doctor's help. Which method should she choose?",
+      "ms": {
+        "draft": 3498,
+        "critique": 7907,
+        "solver": 1407,
+        "form": 2267,
+        "translation": 55031
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Which contraceptive method is most effective in preventing both pregnancy and sexually transmitted infections (STIs)?",
+      "ms": {
+        "draft": 2833,
+        "critique": 6360,
+        "solver": 1470,
+        "form": 0,
+        "translation": 33993
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a woman uses emergency contraception within 72 hours of coitus, what is the most likely reason?",
+      "ms": {
+        "draft": 3498,
+        "critique": 7004,
+        "solver": 1853,
+        "form": 2820,
+        "translation": 50035
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is an example of a medical procedure used to detect genetic disorders in a fetus?",
+      "ms": {
+        "draft": 3337,
+        "critique": 7438,
+        "solver": 945,
+        "form": 4138,
+        "translation": 47506
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a reason to ban amniocentesis for sex determination?",
+      "ms": {
+        "draft": 3184,
+        "critique": 8436,
+        "solver": 1412,
+        "form": 0,
+        "translation": 31104
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why are surgical methods of contraception considered irreversible?",
+      "ms": {
+        "draft": 3498,
+        "critique": 7417,
+        "solver": 12122,
+        "form": 2264,
+        "translation": 45749
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following is a correct statement about assisted reproductive technologies (ART)?",
+      "ms": {
+        "draft": 3159,
+        "critique": 6723,
+        "solver": 10262,
+        "form": 1126,
+        "translation": 58558
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Which of the following contraceptive methods is described as highly effective but irreversible?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "Which organization defines reproductive health as a total well-being in all aspects of reproduction?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which of the following is a reason for implementing reproductive health programs?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "Which of the following contraceptive methods is described as having a lower failure rate and being reversible?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is a method to achieve reproductive health according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a method of contraception that prevents the meeting of ovum and sperms?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, which contraceptive method is described as increasing the phagocytosis of sperms and suppressing their motility?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following contraceptive methods is described as being highly effective but irreversible?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a couple wants to avoid pregnancy and also protect against sexually transmitted infections, which contraceptive method would be most suitable?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "A woman wants a contraceptive method that she can take until she decides to stop, and it should not require a doctor's intervention. Which of the following would best suit her needs?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "A couple is looking for a contraceptive method that is reversible, has a low failure rate, and can be used without medical assistance. Which of the following would be the most suitable option?",
+      "reason": "figure: figure spec refused: spec.parts.0.part: Invalid enum value. Expected 'beaker' | 'spiritLamp' | 'planeMirror' | 'concaveMirror' | 'convexLens' | 'prism' | 'barMagnet' | 'compass' | 'dryCell' | 'plantCell' | 'animalCell' | 'leaf' | 'flower' | 'plant' | 'waterCycle' | 'digestiveTract' | 'eye' | 'pendulum' | 'sunEarthMoon' | 'lever', received 'barrier'"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "According to the passage, which method of contraception blocks gamete transport and is considered a terminal method?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which contraceptive method is described as being ideal for females who want to delay pregnancy and/or space children?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which contraceptive method is suitable for a woman who wants to avoid conception for a long time and can resume her fertility later?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a sexually transmitted infection (STI)?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What is the main reason for the high incidence of STIs among people aged 15-24 years?",
+      "reason": "the key is far longer than every distractor (53 vs 30 characters); distractor 3's reason is not a one-line misconception (\"Misinterprets the passage's message about STI prevention…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a woman is infected with HIV, what is the most likely way the infection could spread to her child?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "Which of the following is a method of contraception mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 2's reason is not a one-line misconception (\"Ignores the context of the passage…\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "A couple wants a contraceptive that can be used until they want to avoid conception and can be resumed without doctor intervention. Which method is most suitable?",
+      "reason": "the solver picked option 3 4 times against the key's 1: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A person is unable to conceive after two years of unprotected cohabitation. What is the term used to describe this condition?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Refers to a condition not described in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which method of contraception is suitable for a person who wants to avoid conception and also has a lower failure rate?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A woman wants a contraceptive that prevents STIs and is easily reversible. Which is the best option?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "Which of the following is a reversible contraceptive method that can be stopped at any time without affecting fertility?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "A couple wants a contraceptive method that allows them to have children in the future and has a low failure rate. Which method would be most suitable?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "Which of the following is a method used to treat infertility caused by low sperm count in the male partner?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the main purpose of contraceptive pills according to the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which contraceptive method is described as a 'once a week' pill with very few side effects?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Which of the following is a method that allows the transfer of a donor's ovum into the fallopian tube of another woman?",
+      "reason": "options mix numbers and words (2 of 4 are numbers)"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which contraceptive method is described as being effective only up to six months after childbirth?",
+      "reason": "option 1 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 1,
+      "stem": "Which contraceptive method is described as a thin rubber/latex sheath used to cover the penis in the male or vagina and cervix in the female?",
+      "reason": "distractor 3 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "A couple wants to prevent conception and also protect against sexually transmitted infections. Which method would be most suitable for them?",
+      "reason": "options mix numbers and words (1 of 4 are numbers)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Biology (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

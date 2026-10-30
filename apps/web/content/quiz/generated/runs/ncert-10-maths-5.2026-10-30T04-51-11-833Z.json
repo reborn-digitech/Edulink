@@ -1,0 +1,824 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-30T04:51:11.833Z",
+  "finishedAt": "2026-10-30T05:01:07.030Z",
+  "seconds": 595,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Mathematics",
+    "bookCode": "jemh1",
+    "document": "ncert/10/mathematics/jemh105.pdf",
+    "classLevel": 10,
+    "subject": "Mathematics",
+    "chapter": "Chapter 5 — Arithmetic Progressions",
+    "edition": "Reprint 2026-27",
+    "chunks": 16,
+    "groups": 5
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2026-27]\n6. C 𝑎 10 = 𝑎 + (10 − 1)𝑑 = 𝑝 + 9𝑞\n(C) 𝒑 + 𝟗𝒒",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2025-26]\n21. (A) The A.P 8, 10, 12,……. has 60 terms. Find the sum of last 10 terms. 2\nOR\n(B) Find the middle term of A.P 6,13, 20, ……., 230",
+      "[CBSE Class X Mathematics (Basic), sample question paper, 2024-25]\n19. Assertion(A): The sequence −1, −1 − 1, . . . , −1 is an AP. 1\nReason(R): In an AP, 𝑎 − 𝑎 𝑛 𝑛−1 is constant where 𝑛 ≥ 2 and 𝑛 ∈ 𝑁",
+      "[CBSE Class X Mathematics (Standard), sample question paper, 2026-27]\n5. The middle term of the A.P.: 10, 7, 4, …, – 62 is: 1\n(A) – 26 (B) – 29 (C) – 32 (D) – 35"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 10,
+      "ms": 256035,
+      "in": 47,
+      "out": 41,
+      "rejects": 6,
+      "promptTokens": 51123,
+      "completionTokens": 11743
+    },
+    "critique": {
+      "calls": 48,
+      "ms": 350079,
+      "in": 41,
+      "out": 18,
+      "rejects": 23,
+      "promptTokens": 22217,
+      "completionTokens": 8560
+    },
+    "solver": {
+      "calls": 134,
+      "ms": 70859,
+      "in": 18,
+      "out": 11,
+      "rejects": 7,
+      "promptTokens": 25748,
+      "completionTokens": 1339
+    },
+    "form": {
+      "calls": 0,
+      "ms": 0,
+      "in": 11,
+      "out": 6,
+      "rejects": 5,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 6,
+      "out": 6,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 31,
+      "ms": 6960,
+      "in": 6,
+      "out": 4,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 17,
+      "ms": 117405,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 8241,
+      "completionTokens": 3413
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 1
+  },
+  "flagged": 2,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If the first term of an AP is 2 and the common difference is 3, what is the 5th term?",
+      "ms": {
+        "draft": 4166,
+        "critique": 5333
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of an Arithmetic Progression (AP)?",
+      "ms": {
+        "draft": 4166,
+        "critique": 6089
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an arithmetic progression?",
+      "ms": {
+        "draft": 4166,
+        "critique": 6429
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The sum of the first 20 terms of an AP is 400. What is the average of these terms?",
+      "ms": {
+        "draft": 4166,
+        "critique": 5829
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In an AP, the 10th term is 15 and the 5th term is 5. What is the common difference?",
+      "ms": {
+        "draft": 4166,
+        "critique": 6958
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "In an arithmetic progression, what is the term used for the constant difference between consecutive terms?",
+      "ms": {
+        "draft": 16574,
+        "critique": 6666
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the nth term of an arithmetic progression?",
+      "ms": {
+        "draft": 16574,
+        "critique": 8510
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the 10th term of the arithmetic progression 2, 7, 12, ...?",
+      "ms": {
+        "draft": 16574,
+        "critique": 6710
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which term of the arithmetic progression 21, 18, 15, ... is -81?",
+      "ms": {
+        "draft": 16574,
+        "critique": 6783
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the third term of an arithmetic progression is 5 and the seventh term is 9, what is the first term?",
+      "ms": {
+        "draft": 16574,
+        "critique": 6419
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the 5th term of an arithmetic progression is 10 and the 10th term is 25, what is the common difference?",
+      "ms": {
+        "draft": 16574,
+        "critique": 6329
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to find the nth term of an arithmetic progression?",
+      "ms": {
+        "draft": 5828,
+        "critique": 6349
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the 10th term of an AP is 50 and the common difference is 3, what is the first term?",
+      "ms": {
+        "draft": 5828,
+        "critique": 7431
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "The 3rd term of an AP is 16, and the 7th term is 40. What is the 10th term?",
+      "ms": {
+        "draft": 5828,
+        "critique": 8854
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the first term of an AP is 5 and the common difference is 3, what is the 10th term of the AP?",
+      "ms": {
+        "draft": 6321,
+        "critique": 6932
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "The formula for the sum of the first n terms of an arithmetic progression (AP) is given as S = n/2 [2a + (n – 1)d]. What is the meaning of the symbol 'a' in this formula?",
+      "ms": {
+        "draft": 6321,
+        "critique": 7828
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "The sum of the first 14 terms of an AP is 1050, and the first term is 10. What is the 20th term of this AP?",
+      "ms": {
+        "draft": 6321,
+        "critique": 7131,
+        "solver": 1620
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "An AP has its 3rd term as 600 and 7th term as 700. What is the production in the 10th year if the production increases uniformly each year?",
+      "ms": {
+        "draft": 6321,
+        "critique": 6884
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The sum of the first n terms of an AP is 78. The first term is 24, and the common difference is –3. What is the possible number of terms?",
+      "ms": {
+        "draft": 6321,
+        "critique": 8801,
+        "solver": 1221
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the nth term of an arithmetic progression (AP) with first term 'a' and common difference 'd'?",
+      "ms": {
+        "draft": 4228,
+        "critique": 7088,
+        "solver": 1714,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sum of the first n terms of an AP is given by S = 4n - n², what is the first term of the AP?",
+      "ms": {
+        "draft": 4228,
+        "critique": 8332,
+        "solver": 1743
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the general form of an arithmetic progression (AP)?",
+      "ms": {
+        "draft": 4228,
+        "critique": 9284,
+        "solver": 2323,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "A contractor has to pay a penalty for delaying a construction job, with the penalty increasing by Rs 50 each day. If the penalty for the first day is Rs 200, what is the total penalty for delaying the work by 30 days?",
+      "ms": {
+        "draft": 4228,
+        "critique": 6949,
+        "solver": 2750,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The sum of the first n terms of an AP is given as 4n - n². What is the sum of the first 10 terms of the AP?",
+      "ms": {
+        "draft": 4228,
+        "critique": 9500
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the sum of the first 10 terms of the AP: 2, 7, 12, ..., to 10 terms?",
+      "ms": {
+        "draft": 7193,
+        "critique": 9468
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the sum of the first 100 terms of the AP: 0.6, 1.7, 2.8, ...?",
+      "ms": {
+        "draft": 7193,
+        "critique": 8870
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If the sum of the first 7 terms of an AP is 49 and the sum of the first 17 terms is 289, what is the sum of the first n terms?",
+      "ms": {
+        "draft": 4228,
+        "critique": 7559,
+        "solver": 19243
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is the formula to find the nth term of an arithmetic progression?",
+      "ms": {
+        "draft": 4615,
+        "critique": 8337,
+        "solver": 1461,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In the AP: 10, 7, 4, ..., -62, the 11th term from the last term is",
+      "ms": {
+        "draft": 4615,
+        "critique": 8074,
+        "solver": 2213
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the 3rd and 9th terms of an AP are 4 and -8 respectively, which term of this AP is zero?",
+      "ms": {
+        "draft": 4615,
+        "critique": 7631,
+        "solver": 1695
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If the 3rd term of an AP is 5 and the 7th term is 9, what is the first term of the AP?",
+      "ms": {
+        "draft": 26719,
+        "critique": 9626
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If the 5th term of an AP is 17 and the 10th term is 32, what is the 15th term of the AP?",
+      "ms": {
+        "draft": 26719,
+        "critique": 9568,
+        "solver": 1779
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula to find the nth term of an arithmetic progression?",
+      "ms": {
+        "draft": 26719,
+        "critique": 8246,
+        "solver": 14546,
+        "form": 1
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the definition of an arithmetic progression (AP)?",
+      "ms": {
+        "draft": 6708,
+        "critique": 8737
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the term used to describe the fixed number added to each term in an arithmetic progression?",
+      "ms": {
+        "draft": 6708,
+        "critique": 4236
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What is the common difference of the AP: 7, 3, -1, -5, ...?",
+      "ms": {
+        "draft": 4166,
+        "critique": 6139,
+        "solver": 10235,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "In an AP, the 5th term is 17 and the 8th term is 29. What is the common difference?",
+      "ms": {
+        "draft": 5828,
+        "critique": 8356,
+        "solver": 14704,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the formula for the sum of the first n terms of an arithmetic progression?",
+      "ms": {
+        "draft": 7689,
+        "critique": 6181,
+        "solver": 5426,
+        "form": 0,
+        "translation": 32582
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an arithmetic progression?",
+      "ms": {
+        "draft": 5828,
+        "critique": 6992,
+        "solver": 13293,
+        "form": 1,
+        "translation": 31305
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "The sum of the first 10 terms of an AP is 150, and the 10th term is 25. What is the first term?",
+      "ms": {
+        "draft": 5828,
+        "critique": 7510,
+        "solver": 12897,
+        "form": 0,
+        "translation": 32657
+      },
+      "outcome": "kept",
+      "flag": "level 5 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Two APs have the same common difference. The difference between their 100th terms is 100. What is the difference between their 1000th terms?",
+      "ms": {
+        "draft": 4615,
+        "critique": 8626,
+        "solver": 1677,
+        "form": 0,
+        "translation": 15955
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "The sum of the first 10 terms of an AP is 100. If the first term is 5, what is the common difference of the AP?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the first term of an AP is 2 and the common difference is 3, what is the 5th term?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the definition of an Arithmetic Progression (AP)?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is an example of an arithmetic progression?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The sum of the first 20 terms of an AP is 400. What is the average of these terms?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In an AP, the 10th term is 15 and the 5th term is 5. What is the common difference?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "In an arithmetic progression, what is the term used for the constant difference between consecutive terms?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the formula for the nth term of an arithmetic progression?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the 10th term of the arithmetic progression 2, 7, 12, ...?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which term of the arithmetic progression 21, 18, 15, ... is -81?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the third term of an arithmetic progression is 5 and the seventh term is 9, what is the first term?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If the 5th term of an arithmetic progression is 10 and the 10th term is 25, what is the common difference?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the formula to find the nth term of an arithmetic progression?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the 10th term of an AP is 50 and the common difference is 3, what is the first term?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "The 3rd term of an AP is 16, and the 7th term is 40. What is the 10th term?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If the first term of an AP is 5 and the common difference is 3, what is the 10th term of the AP?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "The formula for the sum of the first n terms of an arithmetic progression (AP) is given as S = n/2 [2a + (n – 1)d]. What is the meaning of the symbol 'a' in this formula?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "The sum of the first 14 terms of an AP is 1050, and the first term is 10. What is the 20th term of this AP?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "An AP has its 3rd term as 600 and 7th term as 700. What is the production in the 10th year if the production increases uniformly each year?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "The sum of the first n terms of an AP is 78. The first term is 24, and the common difference is –3. What is the possible number of terms?",
+      "reason": "the solver picked option 1 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the sum of the first 12 terms of the AP: –37, –33, –29, ...?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the sum of the first 11 terms of the AP: 7 + 10 + 14 + ... + 84?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the sum of the first 10 terms of the AP: –5 + (–8) + (–11) + ... + (–230)?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 3,
+      "stem": "What is the sum of the first 10 terms of the AP: 34 + 32 + 30 + ... + 10?",
+      "reason": "level 3 already has its 4"
+    },
+    {
+      "stage": "draft",
+      "level": 2,
+      "stem": "Which of the following is an example of an arithmetic progression?",
+      "reason": "level 2 already has its 4"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the nth term of an arithmetic progression (AP) with first term 'a' and common difference 'd'?",
+      "reason": "options 0 and 2 say the same thing (\"a + (n - 1)d\" / \"a + (n + 1)d\"); options 0 and 3 say the same thing (\"a + (n - 1)d\" / \"a - (n - 1)d\"); options 2 and 3 say the same thing (\"a + (n + 1)d\" / \"a - (n - 1)d\")"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the sum of the first n terms of an AP is given by S = 4n - n², what is the first term of the AP?",
+      "reason": "the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the general form of an arithmetic progression (AP)?",
+      "reason": "options 0 and 1 say the same thing (\"a, a + d, a + 2d, a + 3d,...\" / \"a, a - d, a - 2d, a - 3d,...\")"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "A contractor has to pay a penalty for delaying a construction job, with the penalty increasing by Rs 50 each day. If the penalty for the first day is Rs 200, what is the total penalty for delaying the work by 30 days?",
+      "reason": "ARITHMETIC MISMATCH — checkExpr \"(30/2)*(2*200 + (30-1)*50)\" = 27750, but the key says 28500"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "The sum of the first n terms of an AP is given as 4n - n². What is the sum of the first 10 terms of the AP?",
+      "reason": "the critic finds option 0 correct, the key is 1; more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the sum of the first 10 terms of the AP: 2, 7, 12, ..., to 10 terms?",
+      "reason": "more than one defensible answer, or none; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "What is the sum of the first 100 terms of the AP: 0.6, 1.7, 2.8, ...?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If the sum of the first 7 terms of an AP is 49 and the sum of the first 17 terms is 289, what is the sum of the first n terms?",
+      "reason": "distractor 1 picked by nobody and no real misconception, after one redraft"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "Which of the following is the formula to find the nth term of an arithmetic progression?",
+      "reason": "options 2 and 3 say the same thing (\"a + (n+1)*d\" / \"a + n*d +1\")"
+    },
+    {
+      "stage": "solver",
+      "level": 4,
+      "stem": "In the AP: 10, 7, 4, ..., -62, the 11th term from the last term is",
+      "reason": "the solver picked option 1 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If the 3rd and 9th terms of an AP are 4 and -8 respectively, which term of this AP is zero?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "If the 3rd term of an AP is 5 and the 7th term is 9, what is the first term of the AP?",
+      "reason": "the solution's working is not sound"
+    },
+    {
+      "stage": "solver",
+      "level": 6,
+      "stem": "If the 5th term of an AP is 17 and the 10th term is 32, what is the 15th term of the AP?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What is the formula to find the nth term of an arithmetic progression?",
+      "reason": "options 1 and 2 say the same thing (\"a = a + (n + 1) d\" / \"a = a + (n - 1) d\")"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the definition of an arithmetic progression (AP)?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 1,
+      "stem": "What is the term used to describe the fixed number added to each term in an arithmetic progression?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What is the common difference of the AP: 7, 3, -1, -5, ...?",
+      "reason": "near-duplicate of served question cmvjtx2670hu0gpfh3eh560xx (cosine 0.940 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "In an AP, the 5th term is 17 and the 8th term is 29. What is the common difference?",
+      "reason": "near-duplicate of served question cmskyzj9305loy2bx5hjhrpzw (cosine 0.904 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

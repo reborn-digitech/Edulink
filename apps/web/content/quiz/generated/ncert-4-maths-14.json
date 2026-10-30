@@ -21,261 +21,47 @@
   "board": "NCERT",
   "book": "Math-Mela",
   "edition": "Reprint 2026-27",
-  "generatedAt": "2026-10-22T22:50:45.235Z",
+  "generatedAt": "2026-10-28T04:07:02.779Z",
   "model": "qwen3-30b-a3b",
   "topicIsNew": false,
   "questions": [
     {
       "difficulty": 1,
-      "stem": "Which subject is liked the most by the children?",
+      "stem": "Which of the following is used to record the responses to a question?",
       "choices": [
-        "Mathematics",
-        "Languages",
-        "The World Around Us",
-        "Physical Education"
+        "A table",
+        "A graph",
+        "A diagram",
+        "A number line"
       ],
       "answerIndex": 0,
-      "solution": "The correct answer is Mathematics because it received the highest number of responses among the subjects listed. Languages, The World Around Us, and Physical Education all received fewer responses, making them incorrect choices based on the data provided.",
+      "solution": "A table is used to record responses because it allows for organized and structured data entry. A graph is used to display data visually, a diagram shows the structure or components of something, and a number line represents numerical values in sequence. A table is the best choice for recording responses to a question.",
       "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "बच्चों द्वारा सबसे अधिक पसंद किया जाने वाला विषय कौन-सा है?",
+          "stem": "निम्नलिखित में से किसका उपयोग प्रश्न के उत्तरों को दर्ज करने के लिए किया जाता है?",
           "choices": [
-            "गणित",
-            "भाषाएँ",
-            "हमारे आसपास की दुनिया",
-            "शारीरिक शिक्षा"
+            "एक तालिका",
+            "एक ग्राफ",
+            "एक आरेख",
+            "एक संख्या रेखा"
           ],
-          "solution": "सही उत्तर गणित है क्योंकि इस विषय के लिए सबसे अधिक प्रतिक्रियाएँ प्राप्त हुईं। भाषाएँ, हमारे आसपास की दुनिया और शारीरिक शिक्षा के लिए कम प्रतिक्रियाएँ प्राप्त हुईं, जिसके कारण इन्हें गलत विकल्प माना गया।",
+          "solution": "एक तालिका का उपयोग उत्तरों को दर्ज करने के लिए किया जाता है क्योंकि यह संगठित और संरचित डेटा प्रविष्टि की अनुमति देता है। एक ग्राफ का उपयोग डेटा को दृश्य रूप से प्रदर्शित करने के लिए किया जाता है, एक आरेख कुछ के संरचना या घटकों को दिखाता है, और एक संख्या रेखा अनुक्रम में संख्यात्मक मानों का प्रतिनिधित्व करती है। एक तालिका प्रश्न के उत्तरों को दर्ज करने के लिए सबसे अच्छा विकल्प है।",
           "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses standard educational terminology as found in Hindi-medium textbooks.",
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard educational terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "कोणता विषय मुलांना सर्वात जास्त आवडतो?",
+          "stem": "खालीलपैकी कोणते एक प्रश्नाच्या उत्तरांची नोंद करण्यासाठी वापरले जाते?",
           "choices": [
-            "गणित",
-            "भाषा",
-            "आजूबाजूचा जग",
-            "शारीरिक शिक्षण"
+            "एका टेबल",
+            "एका ग्राफ",
+            "एका आकृती",
+            "एका संख्या रेषा"
           ],
-          "solution": "बरोबर उत्तर गणित आहे कारण त्याला विषयांमध्ये सर्वात जास्त प्रतिसाद मिळाला. भाषा, आजूबाजूचा जग आणि शारीरिक शिक्षण यांना कमी प्रतिसाद मिळाला, ज्यामुळे ते दिलेल्या डेटावर आधारित चुकीचे निवडी बनतात.",
-          "imageAlt": null,
-          "critique": "The Marathi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated and maintain their original intent. The solution is also properly translated, preserving the reasoning.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses the subject with the highest number of responses",
-        "Selects the second most common subject",
-        "Chooses the third most common subject"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The question is straightforward and requires recalling the subject with the most responses. The correct answer is Mathematics, and the author's reasoning aligns with the data handling concept.",
-      "sources": [
-        {
-          "document": "ncert/4/mathematics/demm114.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 14: Data Handling"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm114.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 14: Data Handling"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm114.pdf",
-          "ordinal": 2,
-          "pageStart": 6,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 14: Data Handling",
-            "Bal Mela"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm114.pdf",
-          "ordinal": 3,
-          "pageStart": 21,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 14: Data Handling",
-            "Bal Mela",
-            "Nets of a Triangular Prism and Rectangular Prism/Cuboid"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T22:50:45.235Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 1,
-      "stem": "Which of the following is a way to display data?",
-      "choices": [
-        "A pie chart",
-        "A story",
-        "A song",
-        "A game"
-      ],
-      "answerIndex": 0,
-      "solution": "A pie chart is a visual method used to represent data, showing proportions of a whole. A story, a song, and a game are not methods of displaying data but rather forms of communication or entertainment. A pie chart clearly illustrates data in a structured and understandable way, making it the correct choice.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा डेटा प्रदर्शित करने का एक तरीका है?",
-          "choices": [
-            "एक पाई चार्ट",
-            "एक कहानी",
-            "एक गीत",
-            "एक खेल"
-          ],
-          "solution": "एक पाई चार्ट डेटा को प्रदर्शित करने के लिए एक दृश्य विधि है, जो पूर्ण के अंशों को दर्शाता है। एक कहानी, एक गीत और एक खेल डेटा के प्रदर्शन के तरीके नहीं हैं बल्कि संचार या मनोरंजन के रूप हैं। एक पाई चार्ट स्पष्ट रूप से एक संरचित और समझदार तरीके से डेटा को दर्शाता है, इसलिए यह सही विकल्प है।",
-          "imageAlt": null,
-          "critique": "The Hindi translation accurately reflects the English original in meaning, structure, and terminology. All options are correctly translated, and the correct answer remains option (1). The distractors remain incorrect as in the original.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता डेटा दर्शविण्याचा प्रकार आहे?",
-          "choices": [
-            "एक पाय चार्ट",
-            "एक कथा",
-            "एक गाणे",
-            "एक खेळ"
-          ],
-          "solution": "पाय चार्ट हा डेटा दर्शविण्यासाठी विज्ञानी पद्धत आहे, जो एकूण भागांचे अंश दर्शवतो. एक कथा, एक गाणे आणि एक खेळ डेटा दर्शविण्याच्या पद्धती नाहीत तर संदेश वा मनोरंजनाच्या स्वरूपात आहेत. पाय चार्ट डेटा संरचित आणि समजण्यासारखा दर्शवतो, ज्यमुळे तो योग्य निवड बनतो.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology for 'pie chart' (पाय चार्ट).",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        null,
-        "Confuses a story with a data display",
-        "Confuses a song with a data display",
-        "Confuses a game with a data display"
-      ],
-      "solverAnswers": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "levelFlag": null,
-      "critique": "The correct answer is 'A pie chart' as it is a standard method for displaying data. The other options are not valid data display methods, and the author's reasoning aligns with common misconceptions.",
-      "sources": [
-        {
-          "document": "ncert/4/mathematics/demm114.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 14: Data Handling"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm114.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 14: Data Handling"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm114.pdf",
-          "ordinal": 2,
-          "pageStart": 6,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 14: Data Handling",
-            "Bal Mela"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm114.pdf",
-          "ordinal": 3,
-          "pageStart": 21,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 14: Data Handling",
-            "Bal Mela",
-            "Nets of a Triangular Prism and Rectangular Prism/Cuboid"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T22:50:45.235Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 4,
-      "stem": "Which of the following is the correct way to represent the data?",
-      "choices": [
-        "A bar graph",
-        "A paragraph",
-        "A list of numbers",
-        "A table"
-      ],
-      "answerIndex": 3,
-      "solution": "A table is the correct way to represent the data because it organizes information in rows and columns, making it easy to compare and understand. A bar graph is used to show comparisons among categories, a paragraph is too informal for data representation, and a list of numbers lacks structure for clear interpretation.",
-      "checkExpr": null,
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "निम्नलिखित में से कौन-सा डेटा के प्रतिनिधित्व का सही तरीका है?",
-          "choices": [
-            "एक बार ग्राफ",
-            "एक पैराग्राफ",
-            "संख्याओं की सूची",
-            "एक तालिका"
-          ],
-          "solution": "एक तालिका डेटा के प्रतिनिधित्व का सही तरीका है क्योंकि यह जानकारी के पंक्तियों और स्तंभों में संगठित करता है, जो तुलना और समझने में आसान होता है। एक बार ग्राफ श्रेणियों के बीच तुलना दिखाने के लिए उपयोग किया जाता है, एक पैराग्राफ डेटा प्रतिनिधित्व के लिए बहुत अनौपचारिक है और संख्याओं की सूची स्पष्ट व्याख्या के लिए संरचना की कमी होती है।",
-          "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, technical terms are appropriately translated, and the structure matches the English version.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "खालीलपैकी कोणता डेटा दर्शविण्याचा योग्य प्रकार आहे?",
-          "choices": [
-            "एका बार ग्राफ",
-            "एका पॅराग्राफ",
-            "संख्यांची यादी",
-            "एका टेबल"
-          ],
-          "solution": "टेबल हा डेटा दर्शविण्याचा योग्य प्रकार आहे कारण तो माहिती ओळी आणि स्तंभांमध्ये व्यवस्थित करतो, जे तुलना आणि समज अत्यंत सोपे करते. बार ग्राफ वर्गीकरणांमध्ये तुलना दर्शविण्यासाठी वापरला जातो, पॅराग्राफ डेटा दर्शविण्यासाठी खूप अनौपचारिक आहे आणि संख्यांची यादी स्पष्ट अर्थ देण्यासाठी संरचना नसते.",
+          "solution": "टेबल उत्तरांची नोंद करण्यासाठी वापरले जाते कारण ते संरचित आणि व्यवस्थित डेटा दाखला अनुमत करते. ग्राफ डेटा दृश्य रूपात दाखवण्यासाठी वापरला जातो, आकृती काही गोष्टीच्या संरचना किंवा घटकांचे दर्शन करते आणि संख्या रेषा संख्यात्मक मूल्यांचे क्रम दर्शवते. एका प्रश्नाच्या उत्तरांची नोंद करण्यासाठी टेबल हा सर्वोत्तम निवड आहे.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi technical terms.",
           "flag": null
@@ -286,20 +72,20 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Chooses a bar graph as the correct representation",
-        "Chooses a paragraph as the correct representation",
-        "Chooses a list of numbers as the correct representation",
-        null
+        null,
+        "Confuses a table with a graph",
+        "Confuses a table with a diagram",
+        "Confuses a table with a number line"
       ],
       "solverAnswers": [
-        3,
-        3,
-        3,
-        3,
-        3
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "levelFlag": "level 4 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is ambiguous without context, but the author's key and solution suggest that the correct answer is a table. The reasoning is sound, as a table is a standard way to represent organized data. However, the question lacks specific context about the data being presented, which makes the answer somewhat dependent on the author's assumptions.",
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution correctly identifies a table as the appropriate tool for recording responses. The reasoning for the distractors aligns with common misconceptions.",
       "sources": [
         {
           "document": "ncert/4/mathematics/demm114.pdf",
@@ -342,47 +128,154 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T22:50:45.235Z",
+      "generatedAt": "2026-10-28T04:07:02.779Z",
+      "model": "qwen3-30b-a3b",
+      "stamps": []
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the most common favourite subject among the children?",
+      "choices": [
+        "Mathematics",
+        "Languages",
+        "The World Around Us",
+        "Arts"
+      ],
+      "answerIndex": 0,
+      "solution": "The correct answer is Mathematics because it has the highest frequency in the recorded responses. The other options have fewer occurrences than Mathematics, making them less common.",
+      "checkExpr": null,
+      "reviewedAt": null,
+      "reviewedBy": null,
+      "translations": {
+        "hi": {
+          "stem": "बच्चों में सबसे अधिक पसंदीदा विषय क्या है?",
+          "choices": [
+            "गणित",
+            "भाषाएँ",
+            "हमारे आसपास की दुनिया",
+            "कला"
+          ],
+          "solution": "सही उत्तर गणित है क्योंकि इसकी आवृत्ति दर्ज किए गए उत्तरों में सबसे अधिक है। अन्य विकल्पों की घटनाएँ गणित की तुलना में कम हैं, जिसके कारण वे कम सामान्य हैं।",
+          "imageAlt": null,
+          "critique": "The Hindi translation is accurate, maintains the original meaning, and uses standard educational terminology.",
+          "flag": null
+        },
+        "mr": {
+          "stem": "बालकांमध्ये सर्वात सामान्य आवडता विषय कोणता आहे?",
+          "choices": [
+            "गणित",
+            "भाषा",
+            "आजूबाजूचा जग",
+            "कला"
+          ],
+          "solution": "बरोबर उत्तर गणित आहे कारण त्याची नोंदवलेल्या प्रतिसादांमध्ये सर्वाधिक वारंवारता आहे. इतर विकल्पांमध्ये गणितापेक्षा कमी वारंवारता असल्याने ते कमी सामान्य ठरतात.",
+          "imageAlt": null,
+          "critique": "The Marathi translation is accurate, maintains the original meaning, and uses appropriate terminology as used in Marathi textbooks.",
+          "flag": null
+        }
+      },
+      "imageKey": null,
+      "imageAlt": null,
+      "figure": null,
+      "needsFigure": false,
+      "distractorReason": [
+        null,
+        "Confuses the most common subject with the second most common",
+        "Confuses the most common subject with the third most common",
+        "Confuses the most common subject with the least common"
+      ],
+      "solverAnswers": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "levelFlag": null,
+      "critique": "The question is straightforward and the solution is correct. The correct answer is Mathematics, as it has the highest frequency. The distractors are plausible misconceptions where students might confuse the most common with the second, third, or least common subject.",
+      "sources": [
+        {
+          "document": "ncert/4/mathematics/demm114.pdf",
+          "ordinal": 0,
+          "pageStart": 1,
+          "pageEnd": 3,
+          "headingPath": [
+            "Chapter 14: Data Handling"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm114.pdf",
+          "ordinal": 1,
+          "pageStart": 3,
+          "pageEnd": 5,
+          "headingPath": [
+            "Chapter 14: Data Handling"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm114.pdf",
+          "ordinal": 2,
+          "pageStart": 6,
+          "pageEnd": 21,
+          "headingPath": [
+            "Chapter 14: Data Handling",
+            "Bal Mela"
+          ]
+        },
+        {
+          "document": "ncert/4/mathematics/demm114.pdf",
+          "ordinal": 3,
+          "pageStart": 21,
+          "pageEnd": 22,
+          "headingPath": [
+            "Chapter 14: Data Handling",
+            "Bal Mela",
+            "Nets of a Triangular Prism and Rectangular Prism/Cuboid"
+          ]
+        }
+      ],
+      "edition": "Reprint 2026-27",
+      "generatedAt": "2026-10-28T04:07:02.779Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     },
     {
       "difficulty": 5,
-      "stem": "If the number of children who like Mathematics increases by 5, what will be the new total?",
+      "stem": "If the number of children who like The World Around Us is doubled, what will be the new count?",
       "choices": [
-        "15",
-        "20",
-        "25",
-        "30"
+        "4",
+        "6",
+        "8",
+        "10"
       ],
       "answerIndex": 2,
-      "solution": "The original number of children who like Mathematics is 20. Adding 5 to this number results in 25. The other options do not match the calculation of 20 + 5.",
-      "checkExpr": "20+5",
+      "solution": "The correct answer is 8 because the original count for The World Around Us is 4, and doubling it gives 8. The other options are incorrect because they do not reflect the correct doubling of the original count.",
+      "checkExpr": null,
       "reviewedAt": null,
       "reviewedBy": null,
       "translations": {
         "hi": {
-          "stem": "यदि गणित पसंद करने वाले बच्चों की संख्या में 5 की वृद्धि होती है, तो नया कुल क्या होगा?",
+          "stem": "यदि 'द वर्ल्ड अराउंड अस' पसंद करने वाले बच्चों की संख्या दोगुनी कर दी जाए, तो नया गणना क्या होगा?",
           "choices": [
-            "15",
-            "20",
-            "25",
-            "30"
+            "4",
+            "6",
+            "8",
+            "10"
           ],
-          "solution": "गणित पसंद करने वाले बच्चों की मूल संख्या 20 है। इस संख्या में 5 जोड़ने से 25 प्राप्त होता है। अन्य विकल्प 20 + 5 की गणना के साथ मेल नहीं खाते।",
+          "solution": "सही उत्तर 8 है क्योंकि 'द वर्ल्ड अराउंड अस' के लिए मूल गणना 4 है, और इसे दोगुना करने पर 8 प्राप्त होता है। अन्य विकल्प गलत हैं क्योंकि वे मूल गणना के सही दोगुना को प्रतिबिंबित नहीं करते।",
           "imageAlt": null,
-          "critique": "Translation is accurate and maintains the original meaning, with appropriate Hindi terminology used.",
+          "critique": "Translation is accurate and maintains the original meaning, with correct use of Hindi terminology.",
           "flag": null
         },
         "mr": {
-          "stem": "गणित आवडणाऱ्या मुलांची संख्या 5 ने वाढली असती तर नवीन एकूण किती असती?",
+          "stem": "जर ते बालक जे 'संसाराचे आजूबाजू' ला आवडते त्यांची संख्या दुप्पट केली जाईल, तर नवीन गणना काय असेल?",
           "choices": [
-            "15",
-            "20",
-            "25",
-            "30"
+            "4",
+            "6",
+            "8",
+            "10"
           ],
-          "solution": "गणित आवडणाऱ्या मुलांची मूळ संख्या 20 आहे. या संख्येला 5 मिळवल्यास ती 25 होते. इतर विकल्प 20 + 5 च्या गणिताशी जुळत नाहीत.",
+          "solution": "बरोबर उत्तर 8 आहे कारण 'संसाराचे आजूबाजू' साठी मूळ गणना 4 आहे, आणि त्याची दुप्पट केल्याने 8 मिळते. इतर उत्तरे अचूक नाहीत कारण ते मूळ गणनेची योग्य दुप्पट दर्शवत नाहीत.",
           "imageAlt": null,
           "critique": "The translation is accurate, maintains the original meaning, and uses appropriate Marathi terminology.",
           "flag": null
@@ -393,10 +286,10 @@
       "figure": null,
       "needsFigure": false,
       "distractorReason": [
-        "Adds 5 to the number of Languages responses",
-        "Adds 5 to the number of Arts responses",
+        "Adds 4 to the original count instead of doubling it",
+        "Multiplies the original count by 1.5 instead of 2",
         null,
-        "Adds 5 to the number of Physical Education responses"
+        "Multiplies the original count by 1.25 instead of 2"
       ],
       "solverAnswers": [
         2,
@@ -406,7 +299,7 @@
         2
       ],
       "levelFlag": "level 5 but the solver got it right 5 of 5 times without the working",
-      "critique": "The question is clear and the solution is logically sound. The correct answer is 25, and the distractors are based on plausible errors of misreading the data.",
+      "critique": "The solution is correct. The original count for The World Around Us is 4, and doubling it gives 8. The author's reasoning for the distractors is plausible and reflects common misconceptions.",
       "sources": [
         {
           "document": "ncert/4/mathematics/demm114.pdf",
@@ -449,114 +342,7 @@
         }
       ],
       "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T22:50:45.235Z",
-      "model": "qwen3-30b-a3b",
-      "stamps": []
-    },
-    {
-      "difficulty": 6,
-      "stem": "If the number of children who like The World Around Us decreases by 3, what will be the new total?",
-      "choices": [
-        "6",
-        "8",
-        "9",
-        "11"
-      ],
-      "answerIndex": 2,
-      "solution": "The original number of children who like The World Around Us is 12. If this number decreases by 3, 12 minus 3 equals 9. Therefore, the new total is 9. The other options do not result from subtracting 3 from 12.",
-      "checkExpr": "12-3",
-      "reviewedAt": null,
-      "reviewedBy": null,
-      "translations": {
-        "hi": {
-          "stem": "यदि ऐसे बच्चों की संख्या जो 'हमारा दुनिया आसपास की' पसंद करते हैं, 3 कम हो जाती है, तो नई कुल संख्या क्या होगी?",
-          "choices": [
-            "6",
-            "8",
-            "9",
-            "11"
-          ],
-          "solution": "हमारा दुनिया आसपास की पसंद करने वाले बच्चों की मूल संख्या 12 है। यदि इस संख्या में 3 कमी हो जाती है, तो 12 में से 3 घटाने पर 9 प्राप्त होता है। अतः नई कुल संख्या 9 है। अन्य विकल्प 12 में से 3 को घटाने पर प्राप्त नहीं होते हैं।",
-          "imageAlt": null,
-          "critique": "The Hindi translation is accurate, maintains the same meaning, and uses appropriate terminology as found in Hindi-medium textbooks.",
-          "flag": null
-        },
-        "mr": {
-          "stem": "जर ज्या मुलांनी 'जगाच्या आजूबाजूचे' आवडत नाही त्यांची संख्या 3 ने कमी होते, तर नवीन एकूण किती होईल?",
-          "choices": [
-            "6",
-            "8",
-            "9",
-            "11"
-          ],
-          "solution": "जगाच्या आजूबाजूचे आवडणाऱ्या मुलांची मूळ संख्या 12 आहे. जर या संख्येत 3 ने कमी केली जाते, तर 12 चे 3 ने बेरीज केल्यास 9 मिळते. म्हणून, नवीन एकूण 9 आहे. इतर विकल्प 12 मधून 3 वजा करून मिळत नाहीत.",
-          "imageAlt": null,
-          "critique": "The translation is accurate, with appropriate Marathi terminology and correct mathematical phrasing.",
-          "flag": null
-        }
-      },
-      "imageKey": null,
-      "imageAlt": null,
-      "figure": null,
-      "needsFigure": false,
-      "distractorReason": [
-        "Student subtracts 3 from the wrong number of children who like The World Around Us",
-        "The student subtracts 3 from the wrong subject's count instead of the correct one.",
-        null,
-        "The student subtracts 3 from the wrong number of children who like The World Around Us, thinking it was 14 instead of 12."
-      ],
-      "solverAnswers": [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      "levelFlag": "level 6 but the solver got it right 5 of 5 times without the working",
-      "critique": "The solution is correct and matches the key. The author correctly identifies that 12 children like The World Around Us, subtracts 3 to get 9, and provides plausible misconceptions for the other options.",
-      "sources": [
-        {
-          "document": "ncert/4/mathematics/demm114.pdf",
-          "ordinal": 0,
-          "pageStart": 1,
-          "pageEnd": 3,
-          "headingPath": [
-            "Chapter 14: Data Handling"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm114.pdf",
-          "ordinal": 1,
-          "pageStart": 3,
-          "pageEnd": 5,
-          "headingPath": [
-            "Chapter 14: Data Handling"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm114.pdf",
-          "ordinal": 2,
-          "pageStart": 6,
-          "pageEnd": 21,
-          "headingPath": [
-            "Chapter 14: Data Handling",
-            "Bal Mela"
-          ]
-        },
-        {
-          "document": "ncert/4/mathematics/demm114.pdf",
-          "ordinal": 3,
-          "pageStart": 21,
-          "pageEnd": 22,
-          "headingPath": [
-            "Chapter 14: Data Handling",
-            "Bal Mela",
-            "Nets of a Triangular Prism and Rectangular Prism/Cuboid"
-          ]
-        }
-      ],
-      "edition": "Reprint 2026-27",
-      "generatedAt": "2026-10-22T22:50:45.235Z",
+      "generatedAt": "2026-10-28T04:07:02.779Z",
       "model": "qwen3-30b-a3b",
       "stamps": []
     }

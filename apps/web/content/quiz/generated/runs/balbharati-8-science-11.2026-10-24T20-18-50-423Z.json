@@ -1,0 +1,614 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-24T20:18:50.423Z",
+  "finishedAt": "2026-10-24T20:26:25.946Z",
+  "seconds": 456,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "Balbharati",
+    "book": "८ वी सामान्य विज्ञान इंग्रजी",
+    "bookCode": "803020012",
+    "document": "balbharati/8/science/803020012.pdf",
+    "classLevel": 8,
+    "subject": "Science",
+    "chapter": "Chapter 11 — Human Body and Organ System",
+    "edition": "First Edition 2018",
+    "chunks": 9,
+    "groups": 3
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class X Science, marking scheme, 2024-25]\n8. D. carbon dioxide in human cells",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n8. Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?\na) Amoeba\nb) Mushroom\nc) Paramoecium\nd) Lice",
+      "[CBSE Class X Science, sample question paper, 2025-26]\n11. Students to attempt either option A or B. 2\nA. How many chambers are there in the heart of the following organisms?\nHow is mixing of oxygenated and deoxygenated blood prevented in their\nbody?\n(i) Fishes\n(ii) Humans\nOR\nB. Explain the mechanism by which the water is transported in plants?",
+      "[CBSE Class X Science, sample question paper, 2023-24]\n23. What is the purpose of making urine in the human body? Name the organs that stores and 2\nreleases the urine.\nOR\nWhy do arteries have thick and elastic walls whereas veins have valves?"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 6,
+      "ms": 103338,
+      "in": 31,
+      "out": 31,
+      "rejects": 0,
+      "promptTokens": 25711,
+      "completionTokens": 6133
+    },
+    "critique": {
+      "calls": 39,
+      "ms": 223828,
+      "in": 31,
+      "out": 27,
+      "rejects": 4,
+      "promptTokens": 16510,
+      "completionTokens": 6557
+    },
+    "solver": {
+      "calls": 194,
+      "ms": 92966,
+      "in": 27,
+      "out": 23,
+      "rejects": 4,
+      "promptTokens": 33156,
+      "completionTokens": 2070
+    },
+    "form": {
+      "calls": 13,
+      "ms": 36284,
+      "in": 23,
+      "out": 19,
+      "rejects": 4,
+      "promptTokens": 3122,
+      "completionTokens": 946
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 19,
+      "out": 19,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 73,
+      "ms": 11149,
+      "in": 19,
+      "out": 11,
+      "rejects": 8,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 45,
+      "ms": 462011,
+      "in": 22,
+      "out": 22,
+      "rejects": 0,
+      "promptTokens": 27154,
+      "completionTokens": 14163
+    }
+  },
+  "kept": 11,
+  "keptByLevel": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 2,
+    "5": 0,
+    "6": 3
+  },
+  "flagged": 5,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Based on the passage, what is the role of hemoglobin in the respiratory system?",
+      "ms": {
+        "draft": 3010,
+        "critique": 4542
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "Why is it important for the diaphragm to move up and down during breathing?",
+      "ms": {
+        "draft": 3010,
+        "critique": 4867
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is a function of the respiratory system?",
+      "ms": {
+        "draft": 3010,
+        "critique": 4868
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "In which of the following organisms is the process of respiration carried out without the use of lungs?",
+      "ms": {
+        "draft": 3010,
+        "critique": 4575
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the importance of the thin walls of the alveoli?",
+      "ms": {
+        "draft": 3010,
+        "critique": 5477,
+        "solver": 10609,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is not a function of blood?",
+      "ms": {
+        "draft": 11730,
+        "critique": 6078,
+        "solver": 15321
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a part of the circulatory system?",
+      "ms": {
+        "draft": 3121,
+        "critique": 7150,
+        "solver": 11709
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is NOT a function of blood?",
+      "ms": {
+        "draft": 3121,
+        "critique": 4646,
+        "solver": 6536
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is not a part of the circulatory system?",
+      "ms": {
+        "draft": 3326,
+        "critique": 6525,
+        "solver": 15700,
+        "form": 2387
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is NOT a function of blood?",
+      "ms": {
+        "draft": 3033,
+        "critique": 5497,
+        "solver": 15046
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the structure of arteries?",
+      "ms": {
+        "draft": 3033,
+        "critique": 5868,
+        "solver": 1848,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "Which of the following is the correct sequence of steps in the process of respiration?",
+      "ms": {
+        "draft": 5467,
+        "critique": 5167,
+        "solver": 2061,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Which of the following is an example of an organ system in the human body?",
+      "ms": {
+        "draft": 3010,
+        "critique": 4576,
+        "solver": 1376,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "Why do arteries have thick and elastic walls?",
+      "ms": {
+        "draft": 11730,
+        "critique": 6936,
+        "solver": 1245,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "ms": {
+        "draft": 3121,
+        "critique": 7455,
+        "solver": 1591,
+        "form": 2547
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main reason for blood donation?",
+      "ms": {
+        "draft": 3121,
+        "critique": 6425,
+        "solver": 976,
+        "form": 4304
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person has blood group 'AB', which blood groups can they receive blood from?",
+      "ms": {
+        "draft": 3121,
+        "critique": 6278,
+        "solver": 1702,
+        "form": 2607
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "ms": {
+        "draft": 3326,
+        "critique": 5850,
+        "solver": 1130,
+        "form": 3393
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is a function of blood?",
+      "ms": {
+        "draft": 3326,
+        "critique": 6122,
+        "solver": 1565,
+        "form": 3821
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "A student is measuring their pulse and notices that it increases after doing exercise. What is the most likely reason for this?",
+      "ms": {
+        "draft": 3033,
+        "critique": 5743,
+        "solver": 1758,
+        "form": 3300
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "Which part of the heart receives oxygenated blood from the lungs?",
+      "ms": {
+        "draft": 11730,
+        "critique": 5968,
+        "solver": 1797,
+        "form": 0,
+        "translation": 43124
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why is blood donation considered a life-saving act?",
+      "ms": {
+        "draft": 3326,
+        "critique": 6113,
+        "solver": 1618,
+        "form": 3544,
+        "translation": 37511
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the primary function of the valves in the heart?",
+      "ms": {
+        "draft": 11730,
+        "critique": 7639,
+        "solver": 12837,
+        "form": 0,
+        "translation": 39014
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What happens if blood is transfused without matching the blood group?",
+      "ms": {
+        "draft": 3326,
+        "critique": 6560,
+        "solver": 1872,
+        "form": 3243,
+        "translation": 44496
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a person's heart rate increases during physical exercise, what is the most likely reason?",
+      "ms": {
+        "draft": 11730,
+        "critique": 6335,
+        "solver": 1256,
+        "form": 0,
+        "translation": 50225
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What is the main reason for the presence of valves in veins?",
+      "ms": {
+        "draft": 3033,
+        "critique": 6114,
+        "solver": 11587,
+        "form": 2873,
+        "translation": 46421
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is an example of a blood disease?",
+      "ms": {
+        "draft": 3121,
+        "critique": 6392,
+        "solver": 1274,
+        "form": 2186,
+        "translation": 30937
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 4,
+      "stem": "Which of the following is true about capillaries?",
+      "ms": {
+        "draft": 11730,
+        "critique": 7040,
+        "solver": 1328,
+        "form": 0,
+        "translation": 43941
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the pH of oxygenated blood alkaline?",
+      "ms": {
+        "draft": 3326,
+        "critique": 5901,
+        "solver": 1166,
+        "form": 3948,
+        "translation": 38847
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Why is the diaphragm important in the process of breathing?",
+      "ms": {
+        "draft": 5467,
+        "critique": 3791,
+        "solver": 540,
+        "form": 0,
+        "translation": 43185
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    },
+    {
+      "level": 6,
+      "stem": "Which of the following best explains why capillaries have extremely thin walls?",
+      "ms": {
+        "draft": 3033,
+        "critique": 4685,
+        "solver": 1230,
+        "form": 3948,
+        "translation": 40140
+      },
+      "outcome": "kept",
+      "flag": "level 6 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, what is the role of hemoglobin in the respiratory system?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "Why is it important for the diaphragm to move up and down during breathing?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 2,
+      "stem": "Which of the following is a function of the respiratory system?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 5,
+      "stem": "In which of the following organisms is the process of respiration carried out without the use of lungs?",
+      "reason": "option 3 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 6,
+      "stem": "According to the passage, which of the following best explains the importance of the thin walls of the alveoli?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is not a function of blood?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a part of the circulatory system?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "Which of the following is NOT a function of blood?",
+      "reason": "after redraft: the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is not a part of the circulatory system?",
+      "reason": "options mix numbers and words (3 of 4 are numbers)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "Which of the following is NOT a function of blood?",
+      "reason": "after redraft: the solver picked option 0 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 4,
+      "stem": "Based on the passage, which of the following is true about the structure of arteries?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; options 0 and 2 say the same thing (\"They have thin walls and no valves\" / \"They have thin walls and valves\"); options 1 and 3 say the same thing (\"They have thick walls and no valves\" / \"They have thick walls and valves\")"
+    },
+    {
+      "stage": "form",
+      "level": 5,
+      "stem": "Which of the following is the correct sequence of steps in the process of respiration?",
+      "reason": "options 0 and 1 say the same thing (\"External respiration, internal respiration, cellular respiration\" / \"Internal respiration, external respiration, cellular respiration\"); options 0 and 2 say the same thing (\"External respiration, internal respiration, cellular respiration\" / \"Cellular respiration, internal respiration, external respiration\"); options 0 and 3 say the same thing (\"External respiration, internal respiration, cellular respiration\" / \"Cellular respiration, external respiration, internal respiration\"); options 1 and 2 say the same thing (\"Internal respiration, external respiration, cellular respiration\" / \"Cellular respiration, internal respiration, external respiration\"); options 1 and 3 say the same thing (\"Internal respiration, external respiration, cellular respiration\" / \"Cellular respiration, external respiration, internal respiration\"); options 2 and 3 say the same thing (\"Cellular respiration, internal respiration, external respiration\" / \"Cellular respiration, external respiration, internal respiration\"); distractor 3's reason is not a one-line misconception (\"thinks cellular respiration happens first before gas exchang…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Which of the following is an example of an organ system in the human body?",
+      "reason": "near-duplicate of served question cmvf2pnyy02xagod83v18fles (cosine 0.904 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 6,
+      "stem": "Why do arteries have thick and elastic walls?",
+      "reason": "near-duplicate of served question cmvf2pnz702yagod86oh0zygv (cosine 0.913 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "reason": "near-duplicate of served question cmvf2pnyn02w6god80r3gf6bo (cosine 0.954 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "What is the main reason for blood donation?",
+      "reason": "near-duplicate of served question cmvg7g0hk02klgpfhiutv3dhh (cosine 0.905 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 3,
+      "stem": "If a person has blood group 'AB', which blood groups can they receive blood from?",
+      "reason": "near-duplicate of served question cmvf2pnyx02x6god8gc2g0k2x (cosine 0.960 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 1,
+      "stem": "Which blood group can donate blood to any other blood group?",
+      "reason": "near-duplicate of served question cmvf2pnyn02w6god80r3gf6bo (cosine 0.954 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "Which of the following is a function of blood?",
+      "reason": "near-duplicate of served question cmvg7g0hf02kfgpfhujeqltnx (cosine 0.915 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 5,
+      "stem": "A student is measuring their pulse and notices that it increases after doing exercise. What is the most likely reason for this?",
+      "reason": "near-duplicate of batch item \"If a person's heart rate increases during physical…\" (cosine 0.907 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Science (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

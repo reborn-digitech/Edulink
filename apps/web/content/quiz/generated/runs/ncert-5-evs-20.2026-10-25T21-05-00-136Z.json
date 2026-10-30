@@ -1,0 +1,376 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-25T21:05:00.136Z",
+  "finishedAt": "2026-10-25T21:09:19.169Z",
+  "seconds": 259,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Looking Around",
+    "bookCode": "eeap1",
+    "document": "ncert/5/environmental-studies/eeap120.pdf",
+    "classLevel": 5,
+    "subject": "Environmental Studies",
+    "chapter": "Chapter 20 — Whose Forests?",
+    "edition": "2024 edition (the site's Last-Modified)",
+    "chunks": 7,
+    "groups": 2
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 0,
+    "6": 0
+  },
+  "style": {
+    "present": false,
+    "excerpts": [],
+    "note": "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped"
+  },
+  "glossary": "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 4,
+      "ms": 56391,
+      "in": 16,
+      "out": 16,
+      "rejects": 0,
+      "promptTokens": 16032,
+      "completionTokens": 3227
+    },
+    "critique": {
+      "calls": 21,
+      "ms": 139477,
+      "in": 16,
+      "out": 14,
+      "rejects": 2,
+      "promptTokens": 9464,
+      "completionTokens": 3577
+    },
+    "solver": {
+      "calls": 105,
+      "ms": 58843,
+      "in": 14,
+      "out": 13,
+      "rejects": 1,
+      "promptTokens": 20418,
+      "completionTokens": 1191
+    },
+    "form": {
+      "calls": 9,
+      "ms": 22861,
+      "in": 13,
+      "out": 7,
+      "rejects": 6,
+      "promptTokens": 2273,
+      "completionTokens": 634
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 7,
+      "out": 7,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 3584,
+      "in": 7,
+      "out": 5,
+      "rejects": 2,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 21,
+      "ms": 184474,
+      "in": 10,
+      "out": 10,
+      "rejects": 0,
+      "promptTokens": 11016,
+      "completionTokens": 5393
+    }
+  },
+  "kept": 5,
+  "keptByLevel": {
+    "1": 2,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 1,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 3,
+      "stem": "If a family in Mizoram wants to farm on land that belongs to the whole village, what method do they use to decide who gets to farm first?",
+      "ms": {
+        "draft": 3884,
+        "critique": 5884,
+        "solver": 1368
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the ‘Torang’ centre created by Suryamani?",
+      "ms": {
+        "draft": 3884,
+        "critique": 7977,
+        "solver": 12129,
+        "form": 3145
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the passage, what is the significance of forests for the adivasis?",
+      "ms": {
+        "draft": 3884,
+        "critique": 8229,
+        "solver": 12958,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a family in Mizoram cannot farm their land on time, what do other families do?",
+      "ms": {
+        "draft": 3884,
+        "critique": 7568,
+        "solver": 11561,
+        "form": 1688
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If a family in Mizoram wants to farm on a piece of land, what method do they use to decide which family gets which land?",
+      "ms": {
+        "draft": 3435,
+        "critique": 7095
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "Based on the passage, how does jhoom farming help maintain soil fertility?",
+      "ms": {
+        "draft": 3435,
+        "critique": 9881
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the main purpose of the 'Torang' centre mentioned in the passage?",
+      "ms": {
+        "draft": 3435,
+        "critique": 7582,
+        "solver": 15616,
+        "form": 0
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "According to the Right to Forest Act 2007, who has the right to forest land and what is grown on it?",
+      "ms": {
+        "draft": 3435,
+        "critique": 6894,
+        "solver": 17281,
+        "form": 3457
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen to the people of Suryamani’s village if the forests disappeared?",
+      "ms": {
+        "draft": 16749,
+        "critique": 5590,
+        "solver": 1664,
+        "form": 1588
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does Budhiyamai mean when she says, “The forest is like our ‘collective bank’”?",
+      "ms": {
+        "draft": 3245,
+        "critique": 5651,
+        "solver": 1762,
+        "form": 0
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does Suryamani say that learning to read the forest is as important as reading books?",
+      "ms": {
+        "draft": 16749,
+        "critique": 6632,
+        "solver": 1800,
+        "form": 2405
+      },
+      "outcome": "dedupe",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main activity that Suryamani does with the children?",
+      "ms": {
+        "draft": 3245,
+        "critique": 5924,
+        "solver": 1430,
+        "form": 3800,
+        "translation": 51660
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the name of the girl who takes children to the forest to learn about it?",
+      "ms": {
+        "draft": 16749,
+        "critique": 7696,
+        "solver": 1418,
+        "form": 2341,
+        "translation": 26769
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "Why does Suryamani say that it is important to read the forest?",
+      "ms": {
+        "draft": 3245,
+        "critique": 6983,
+        "solver": 1370,
+        "form": 3173,
+        "translation": 42420
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "What would happen to Suryamani’s people if the forests disappeared?",
+      "ms": {
+        "draft": 3245,
+        "critique": 6551,
+        "solver": 1043,
+        "form": 2863,
+        "translation": 35916
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 4,
+      "stem": "What does Budhiyamai mean when she says, 'Forest is our ‘collective bank’ – not yours or mine alone.'?",
+      "ms": {
+        "draft": 16749,
+        "critique": 6031,
+        "solver": 696,
+        "form": 0,
+        "translation": 23924
+      },
+      "outcome": "kept",
+      "flag": "level 4 but the solver got it right 5 of 5 times without the working"
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "solver",
+      "level": 3,
+      "stem": "If a family in Mizoram wants to farm on land that belongs to the whole village, what method do they use to decide who gets to farm first?",
+      "reason": "the solver picked option 0 4 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of the ‘Torang’ centre created by Suryamani?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"This contradicts the passage, which says people should not f…\"); distractor 3's reason is not a one-line misconception (\"Correct option, so no reason needed for this one, but this i…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the passage, what is the significance of forests for the adivasis?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 1's reason is not a one-line misconception (\"Students may confuse the role of forests in the passage with…\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "If a family in Mizoram cannot farm their land on time, what do other families do?",
+      "reason": "distractor 1's reason is not a one-line misconception (\"This contradicts the passage, which says people help each ot…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "If a family in Mizoram wants to farm on a piece of land, what method do they use to decide which family gets which land?",
+      "reason": "option 2 is not wrong"
+    },
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Based on the passage, how does jhoom farming help maintain soil fertility?",
+      "reason": "more than one defensible answer, or none; option 2 is not wrong"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What is the main purpose of the 'Torang' centre mentioned in the passage?",
+      "reason": "the stem refers to the passage or the text, which the pupil never sees; the solution refers to the passage or the text, which the pupil never sees; distractor 3's reason is not a one-line misconception (\"This is a misunderstanding of the purpose of the centre as d…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "According to the Right to Forest Act 2007, who has the right to forest land and what is grown on it?",
+      "reason": "options 0 and 1 say the same thing (\"Only the people living in the forests for 5 years have the right\" / \"Only the people living in the forests for 25 years have the right\"); options 0 and 3 say the same thing (\"Only the people living in the forests for 5 years have the right\" / \"Only the people living in the forests for 10 years have the right\"); options 1 and 3 say the same thing (\"Only the people living in the forests for 25 years have the right\" / \"Only the people living in the forests for 10 years have the right\")"
+    },
+    {
+      "stage": "form",
+      "level": 3,
+      "stem": "What would happen to the people of Suryamani’s village if the forests disappeared?",
+      "reason": "distractor 0's reason is not a one-line misconception (\"assumes a different action without evidence from the passage…\"); distractor 3's reason is not a one-line misconception (\"refers to an action not mentioned in the passage…\")"
+    },
+    {
+      "stage": "dedupe",
+      "level": 4,
+      "stem": "What does Budhiyamai mean when she says, “The forest is like our ‘collective bank’”?",
+      "reason": "near-duplicate of served question cmvh9tl3f07s6gpfhic15ozt3 (cosine 0.911 ≥ 0.9)"
+    },
+    {
+      "stage": "dedupe",
+      "level": 2,
+      "stem": "Why does Suryamani say that learning to read the forest is as important as reading books?",
+      "reason": "near-duplicate of served question cmvh9tl3907s0gpfhup86dzh4 (cosine 0.956 ≥ 0.9)"
+    }
+  ],
+  "notes": [
+    "the papers corpus has nothing for Environmental Studies: levels 5 and 6 skipped",
+    "no glossary in the corpus for Environmental Studies (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}

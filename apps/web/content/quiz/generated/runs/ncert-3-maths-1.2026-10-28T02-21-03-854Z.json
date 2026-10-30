@@ -1,0 +1,311 @@
+{
+  "task": "quiz-gen",
+  "startedAt": "2026-10-28T02:21:03.854Z",
+  "finishedAt": "2026-10-28T02:24:10.696Z",
+  "seconds": 187,
+  "model": "qwen3-30b-a3b",
+  "chapter": {
+    "board": "NCERT",
+    "book": "Maths Mela",
+    "bookCode": "cemm1",
+    "document": "ncert/3/mathematics/cemm101.pdf",
+    "classLevel": 3,
+    "subject": "Mathematics",
+    "chapter": "Chapter 1 — What’s in a Name?",
+    "edition": "Reprint 2026-27",
+    "chunks": 3,
+    "groups": 1
+  },
+  "targets": {
+    "1": 4,
+    "2": 4,
+    "3": 4,
+    "4": 4,
+    "5": 4,
+    "6": 4
+  },
+  "style": {
+    "present": true,
+    "excerpts": [
+      "[CBSE Class XII Applied Mathematics, marking scheme, 2022-23]\n3. (B) option\nn = 34 ⇒ 𝑣 = 34 − 1 = 33",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2022-23]\n3. (b) 2/3",
+      "[CBSE Class X Mathematics (Standard), marking scheme, 2024-25]\n12. 3\nC)\n√3",
+      "[CBSE Class X Mathematics (Basic), marking scheme, 2023-24]\n3. (b) ½"
+    ],
+    "note": "4 excerpts from 642 paper documents"
+  },
+  "glossary": "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms",
+  "stages": {
+    "draft": {
+      "calls": 2,
+      "ms": 37248,
+      "in": 12,
+      "out": 12,
+      "rejects": 0,
+      "promptTokens": 8172,
+      "completionTokens": 2338
+    },
+    "critique": {
+      "calls": 13,
+      "ms": 70826,
+      "in": 12,
+      "out": 9,
+      "rejects": 3,
+      "promptTokens": 5471,
+      "completionTokens": 2210
+    },
+    "solver": {
+      "calls": 53,
+      "ms": 22695,
+      "in": 9,
+      "out": 7,
+      "rejects": 2,
+      "promptTokens": 7879,
+      "completionTokens": 512
+    },
+    "form": {
+      "calls": 7,
+      "ms": 14148,
+      "in": 7,
+      "out": 4,
+      "rejects": 3,
+      "promptTokens": 1710,
+      "completionTokens": 474
+    },
+    "verify": {
+      "calls": 0,
+      "ms": 0,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "dedupe": {
+      "calls": 23,
+      "ms": 4093,
+      "in": 4,
+      "out": 4,
+      "rejects": 0,
+      "promptTokens": 0,
+      "completionTokens": 0
+    },
+    "translation": {
+      "calls": 19,
+      "ms": 127309,
+      "in": 8,
+      "out": 8,
+      "rejects": 0,
+      "promptTokens": 9172,
+      "completionTokens": 4240
+    }
+  },
+  "kept": 4,
+  "keptByLevel": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "flagged": 0,
+  "needsFigure": 0,
+  "duplicateThreshold": 0.9,
+  "items": [
+    {
+      "level": 4,
+      "stem": "Which animal has the longest name among the ones listed?",
+      "ms": {
+        "draft": 11813,
+        "critique": 4926
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many cows had reached home if two marks were left on the wall after all cows had returned?",
+      "ms": {
+        "draft": 11813,
+        "critique": 5072
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Deba and Deep use to keep track of the number of cows?",
+      "ms": {
+        "draft": 11813,
+        "critique": 4230,
+        "solver": 1455,
+        "form": 2665
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 6,
+      "stem": "If a number's name has two words, the first with 6 letters and the second with 5, and it is very near to 100, what is the number?",
+      "ms": {
+        "draft": 11813,
+        "critique": 7886
+      },
+      "outcome": "critique",
+      "flag": null
+    },
+    {
+      "level": 5,
+      "stem": "If a number's name has 8 letters, which number could it be?",
+      "ms": {
+        "draft": 11813,
+        "critique": 7311,
+        "solver": 1175
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What did Deba and Deep use to keep track of their cows?",
+      "ms": {
+        "draft": 2773,
+        "critique": 6283,
+        "solver": 1581,
+        "form": 3179
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "How did Deba and Deep know that all the cows had returned home?",
+      "ms": {
+        "draft": 2773,
+        "critique": 6509,
+        "solver": 2306,
+        "form": 2649
+      },
+      "outcome": "form",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What did Hemant have that Deba and Deep did not?",
+      "ms": {
+        "draft": 2773,
+        "critique": 5102,
+        "solver": 1308
+      },
+      "outcome": "solver",
+      "flag": null
+    },
+    {
+      "level": 1,
+      "stem": "What is the main idea of the story about Deba and Deep?",
+      "ms": {
+        "draft": 2773,
+        "critique": 6095,
+        "solver": 1104,
+        "form": 3537,
+        "translation": 39390
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 2,
+      "stem": "What is the name of the place with the longest name in India?",
+      "ms": {
+        "draft": 11813,
+        "critique": 5611,
+        "solver": 6137,
+        "form": 952,
+        "translation": 28300
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "If Deba and Deep had 15 cows and 5 marks were left on the wall, how many cows had not returned home?",
+      "ms": {
+        "draft": 2773,
+        "critique": 5109,
+        "solver": 1652,
+        "form": 2023,
+        "translation": 33641
+      },
+      "outcome": "kept",
+      "flag": null
+    },
+    {
+      "level": 3,
+      "stem": "How many letters are there in the number name for the number 17?",
+      "ms": {
+        "draft": 2773,
+        "critique": 4912,
+        "solver": 2146,
+        "form": 1377,
+        "translation": 22484
+      },
+      "outcome": "kept",
+      "flag": null
+    }
+  ],
+  "rejects": [
+    {
+      "stage": "critique",
+      "level": 4,
+      "stem": "Which animal has the longest name among the ones listed?",
+      "reason": "the critic finds option 0 correct, the key is 1; the solution's working is not sound"
+    },
+    {
+      "stage": "critique",
+      "level": 3,
+      "stem": "How many cows had reached home if two marks were left on the wall after all cows had returned?",
+      "reason": "the critic finds option 3 correct, the key is 0; the solution's working is not sound"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "What did Deba and Deep use to keep track of the number of cows?",
+      "reason": "distractor 3's reason is not a one-line misconception (\"imagines a different method not described in the passage…\")"
+    },
+    {
+      "stage": "critique",
+      "level": 6,
+      "stem": "If a number's name has two words, the first with 6 letters and the second with 5, and it is very near to 100, what is the number?",
+      "reason": "the solution's working is not sound; option 2 is not wrong"
+    },
+    {
+      "stage": "solver",
+      "level": 5,
+      "stem": "If a number's name has 8 letters, which number could it be?",
+      "reason": "the solver picked option 3 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    },
+    {
+      "stage": "form",
+      "level": 1,
+      "stem": "What did Deba and Deep use to keep track of their cows?",
+      "reason": "distractor 2's reason is not a one-line misconception (\"Does not understand the method described in the passage…\")"
+    },
+    {
+      "stage": "form",
+      "level": 2,
+      "stem": "How did Deba and Deep know that all the cows had returned home?",
+      "reason": "the key is far longer than every distractor (59 vs 29 characters)"
+    },
+    {
+      "stage": "solver",
+      "level": 2,
+      "stem": "What did Hemant have that Deba and Deep did not?",
+      "reason": "the solver picked option 2 5 times against the key's 0: the key is wrong or the stem is ambiguous"
+    }
+  ],
+  "notes": [
+    "levels 5–6 drafted with a style block: 4 excerpts from 642 paper documents",
+    "no glossary in the corpus for Mathematics (NCERT's trilingual dictionaries cover economics, geography and sociology only): the model's own terms"
+  ]
+}
